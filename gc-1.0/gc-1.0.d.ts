@@ -38,25 +38,25 @@ export namespace Gc {
      * @gir-type Enum
      */
     enum Category {
-        NONE,
-        LETTER,
-        LETTER_PUNCTUATION,
-        LETTER_ARROW,
-        LETTER_BULLET,
-        LETTER_PICTURE,
-        LETTER_CURRENCY,
-        LETTER_MATH,
-        LETTER_LATIN,
-        EMOJI,
-        EMOJI_SMILEYS,
-        EMOJI_PEOPLE,
-        EMOJI_ANIMALS,
-        EMOJI_FOOD,
-        EMOJI_ACTIVITIES,
-        EMOJI_TRAVEL,
-        EMOJI_OBJECTS,
-        EMOJI_SYMBOLS,
-        EMOJI_FLAGS,
+        NONE = 0,
+        LETTER = 1,
+        LETTER_PUNCTUATION = 2,
+        LETTER_ARROW = 3,
+        LETTER_BULLET = 4,
+        LETTER_PICTURE = 5,
+        LETTER_CURRENCY = 6,
+        LETTER_MATH = 7,
+        LETTER_LATIN = 8,
+        EMOJI = 9,
+        EMOJI_SMILEYS = 10,
+        EMOJI_PEOPLE = 11,
+        EMOJI_ANIMALS = 12,
+        EMOJI_FOOD = 13,
+        EMOJI_ACTIVITIES = 14,
+        EMOJI_TRAVEL = 15,
+        EMOJI_OBJECTS = 16,
+        EMOJI_SYMBOLS = 17,
+        EMOJI_FLAGS = 18,
     }
 
 
@@ -71,8 +71,8 @@ export namespace Gc {
      * @gir-type Enum
      */
     enum SearchError {
-        FAILED,
-        INVALID_STATE,
+        FAILED = 0,
+        INVALID_STATE = 1,
     }
 
 
@@ -132,8 +132,8 @@ export namespace Gc {
      * @gir-type Flags
      */
     enum SearchFlag {
-        NONE,
-        WORD,
+        NONE = 0,
+        WORD = 1,
     }
 
 
@@ -224,6 +224,7 @@ export namespace Gc {
         /**
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of characters.
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): SearchResult;
     }

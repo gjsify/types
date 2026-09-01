@@ -29,39 +29,39 @@ export namespace Modulemd {
         /**
          * Zstandard compression; since 2.15
          */
-        ZSTD_COMPRESSION,
+        ZSTD_COMPRESSION = -3,
         /**
          * Autodetection failure
          */
-        DETECTION_FAILED,
+        DETECTION_FAILED = -2,
         /**
          * Unknown compression
          */
-        UNKNOWN_COMPRESSION,
+        UNKNOWN_COMPRESSION = -1,
         /**
          * No compression
          */
-        NO_COMPRESSION,
+        NO_COMPRESSION = 0,
         /**
          * gzip compression
          */
-        GZ_COMPRESSION,
+        GZ_COMPRESSION = 1,
         /**
          * bzip2 compression
          */
-        BZ2_COMPRESSION,
+        BZ2_COMPRESSION = 2,
         /**
          * LZMA compression
          */
-        XZ_COMPRESSION,
+        XZ_COMPRESSION = 3,
         /**
          * zchunk compression
          */
-        ZCK_COMPRESSION,
+        ZCK_COMPRESSION = 4,
         /**
          * Enum list terminator
          */
-        SENTINEL,
+        SENTINEL = 5,
     }
 
 
@@ -73,21 +73,21 @@ export namespace Modulemd {
         /**
          * Represents an error handling mdversion.
          */
-        ERROR,
+        ERROR = -1,
         /**
          * Represents an unset mdversion.
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Represents v1 of the {@link Modulemd.Defaults} metadata
          * format.
          */
-        ONE,
+        ONE = 1,
         /**
          * Represents the highest-supported version of the
          * {@link Modulemd.Defaults} metadata format.
          */
-        LATEST,
+        LATEST = 1,
     }
 
 
@@ -163,39 +163,39 @@ export namespace Modulemd {
          * Represents an error encountered while upgrading the
          * metadata version of a module stream or module defaults.
          */
-        UPGRADE,
+        UPGRADE = 0,
         /**
          * Represents an error encountered while validating
          * module metadata.
          */
-        VALIDATE,
+        VALIDATE = 1,
         /**
          * Represents an error encountered when attempting
          * to access a file.
          */
-        FILE_ACCESS,
+        FILE_ACCESS = 2,
         /**
          * Represents an error indicating that no streams
          * matched when searching for a specific module stream. Since: 2.2
          */
-        NO_MATCHES,
+        NO_MATCHES = 3,
         /**
          * Represents an error indicating that
          * multiple streams matched when searching for a specific module
          * stream. Since: 2.2
          */
-        TOO_MANY_MATCHES,
+        TOO_MANY_MATCHES = 4,
         /**
          * Could not detect the mime type of a file for
          * automatic detection of compression format. Since: 2.8
          */
-        MAGIC,
+        MAGIC = 5,
         /**
          * The requested function is not implemented
          * on this platform, likely due to needing a newer version of a dependency
          * library. Since: 2.8
          */
-        NOT_IMPLEMENTED,
+        NOT_IMPLEMENTED = 6,
     }
 
 
@@ -208,26 +208,26 @@ export namespace Modulemd {
          * Represents an error handling module stream
          * version.
          */
-        ERROR,
+        ERROR = -1,
         /**
          * Represents an unset module stream version.
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Represents v1 of the {@link Modulemd.ModuleStream}
          * metadata format.
          */
-        ONE,
+        ONE = 1,
         /**
          * Represents v2 of the {@link Modulemd.ModuleStream}
          * metadata format.
          */
-        TWO,
+        TWO = 2,
         /**
          * Represents the highest-supported version of
          * the {@link Modulemd.ModuleStream} metadata format.
          */
-        LATEST,
+        LATEST = 2,
     }
 
 
@@ -239,21 +239,21 @@ export namespace Modulemd {
         /**
          * Represents an error handling mdversion.
          */
-        ERROR,
+        ERROR = -1,
         /**
          * Represents an unset mdversion.
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Represents v1 of the {@link Modulemd.Obsoletes} metadata
          * format.
          */
-        ONE,
+        ONE = 1,
         /**
          * Represents the highest-supported version of the
          * {@link Modulemd.Obsoletes} metadata format.
          */
-        LATEST,
+        LATEST = 1,
     }
 
 
@@ -266,26 +266,26 @@ export namespace Modulemd {
          * Represents an error handling module stream
          * version.
          */
-        ERROR,
+        ERROR = -1,
         /**
          * Represents an unset module stream version.
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Represents v2 of the ModulePackager
          * metadata format. Since: 2.11
          */
-        TWO,
+        TWO = 2,
         /**
          * Represents v3 of the ModulePackager
          * metadata format. Since: 2.11
          */
-        THREE,
+        THREE = 3,
         /**
          * Represents the highest-supported version of
          * the ModulePackager metadata format.
          */
-        LATEST,
+        LATEST = 3,
     }
 
 
@@ -363,43 +363,43 @@ export namespace Modulemd {
          * Represents an error encountered while opening a
          * YAML file.
          */
-        OPEN,
+        OPEN = 0,
         /**
          * Represents an internal programming error
          * encountered while parsing a YAML document.
          */
-        PROGRAMMING,
+        PROGRAMMING = 1,
         /**
          * Represents an error indicating that
          * unexpected data or some other parsing error was encountered while parsing a
          * YAML document.
          */
-        UNPARSEABLE,
+        UNPARSEABLE = 2,
         /**
          * Represents an error indicating invalid data was
          * encountered while parsing a YAML document.
          */
-        PARSE,
+        PARSE = 3,
         /**
          * Represents an error encountered while writing a
          * YAML file.
          */
-        EMIT,
+        EMIT = 4,
         /**
          * Represents an error indicating that
          * required elements are missing while parsing a YAML document.
          */
-        MISSING_REQUIRED,
+        MISSING_REQUIRED = 5,
         /**
          * Represents an error indicating that a YAML
          * output event could not be initialized.
          */
-        EVENT_INIT,
+        EVENT_INIT = 6,
         /**
          * Represents a data inconsistency error
          * encountered while parsing a YAML document.
          */
-        INCONSISTENT,
+        INCONSISTENT = 7,
     }
 
 
@@ -407,12 +407,14 @@ export namespace Modulemd {
      * The ModuleStream v3 specification defines the maximum length of the context
      * field.
      * @since 2.10
+     * @default 10
      */
     const MMD_MAXCONTEXTLEN: number;
 
     /**
      * The {@link Modulemd.PackagerV3} default module metadata license.
      * @since 2.11
+     * @default MIT
      */
     const MMD_PACKAGER_DEFAULT_MODULE_LICENSE: string;
 
@@ -448,6 +450,7 @@ export namespace Modulemd {
      * @param yaml_file A YAML file containing the module metadata and other related information such as default streams.
      * @returns A newly-allocated {@link Modulemd.ModuleIndex} object initialized with the content from `yaml_file`. Returns NULL and sets `error` if the file is not completely valid.
      * @since 2.10
+     * @throws GLib.Error
      */
     function load_file(yaml_file: string): ModuleIndex;
 
@@ -464,6 +467,7 @@ export namespace Modulemd {
      * @param yaml_string A YAML string containing the module metadata and other related information such as default streams.
      * @returns A newly-allocated {@link Modulemd.ModuleIndex} object initialized with the content from `yaml_string`. Returns NULL and sets `error` if the metadata is not completely valid.
      * @since 2.10
+     * @throws GLib.Error
      */
     function load_string(yaml_string: string): ModuleIndex;
 
@@ -473,6 +477,7 @@ export namespace Modulemd {
      * @param module_stream An optional module stream name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
      * @returns `MODULEMD_TYPE_MODULE_STREAM_V2`, `MODULEMD_TYPE_PACKAGER_V3`, or `G_TYPE_INVALID`. Returns the matching GObject through the `object` parameter. If the return value is `G_TYPE_INVALID`, returns the reason as `error`.
      * @since 2.11
+     * @throws GLib.Error
      */
     function read_packager_file(yaml_path: string, module_name: string | null, module_stream: string | null): [GObject.GType, GObject.Object];
 
@@ -482,6 +487,7 @@ export namespace Modulemd {
      * @param module_stream An optional module stream name to override the document on disk. Mostly useful in cases where the name is being auto-detected from git.
      * @returns `MODULEMD_TYPE_MODULE_STREAM_V2`, `MODULEMD_TYPE_PACKAGER_V3`, or `G_TYPE_INVALID`. Returns the matching GObject through the `object` parameter. If the return value is `G_TYPE_INVALID`, returns the reason as `error`.
      * @since 2.11
+     * @throws GLib.Error
      */
     function read_packager_string(yaml_string: string, module_name: string | null, module_stream: string | null): [GObject.GType, GObject.Object];
 
@@ -691,6 +697,7 @@ export namespace Modulemd {
          * specification.
          * @returns TRUE if validation passes. Returns FALSE and sets `error` appropriately on validation failure.
          * @since 2.11
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -1045,6 +1052,7 @@ export namespace Modulemd {
          * implicitly before attempting to emit the contents.
          * @returns TRUE if the {@link Modulemd.Component} passed validation. FALSE and sets `error` appropriately if validation fails.
          * @since 2.2
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -1497,12 +1505,14 @@ export namespace Modulemd {
          * @param mdversion The version to upgrade to.
          * @returns A newly-allocated copy of `self` upgraded to the requested defaults version. NULL if the upgrade cannot be performed and sets `error` appropriately. This function does not modify `self`.
          * @since 2.0
+         * @throws GLib.Error
          */
         upgrade(mdversion: bigint | number): Defaults;
 
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` appropriately if validation failed.
          * @since 2.0
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -1878,6 +1888,7 @@ export namespace Modulemd {
          * @param arch The processor architecture of the stream to retrieve. If NULL, the architecture is not included in the search.
          * @returns The requested stream object. NULL and sets `error` appropriately if the provided information is not sufficient to return exactly one {@link Modulemd.ModuleStream} result.
          * @since 2.2
+         * @throws GLib.Error
          */
         get_stream_by_NSVCA(stream_name: string, version: bigint | number, context: string | null, arch: string | null): ModuleStream;
 
@@ -1944,6 +1955,7 @@ export namespace Modulemd {
         /**
          * @returns TRUE if validation passed, FALSE and sets `error` if failed.
          * @since 2.0
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -1997,6 +2009,7 @@ export namespace Modulemd {
          * @param defaults The {@link Modulemd.Defaults} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Defaults} was added successfully. If the defaults already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
          * @since 2.0
+         * @throws GLib.Error
          */
         add_defaults(defaults: Defaults): boolean;
 
@@ -2009,6 +2022,7 @@ export namespace Modulemd {
          * @param stream The {@link Modulemd.ModuleStream} to add to the index. The stream added must have a module name and stream name set on it or it will be rejected.
          * @returns TRUE if the {@link Modulemd.ModuleStream} was added successfully. If the stream already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
          * @since 2.0
+         * @throws GLib.Error
          */
         add_module_stream(stream: ModuleStream): boolean;
 
@@ -2016,6 +2030,7 @@ export namespace Modulemd {
          * @param obsoletes The {@link Modulemd.Obsoletes} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Obsoletes} was added successfully. If the obsoletes already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
          * @since 2.10
+         * @throws GLib.Error
          */
         add_obsoletes(obsoletes: Obsoletes): boolean;
 
@@ -2023,6 +2038,7 @@ export namespace Modulemd {
          * @param translation The {@link Modulemd.Translation} object to add to the index.
          * @returns TRUE if the {@link Modulemd.Translation} was added successfully. If the translation already existed in the index, it will be replaced by the new one. On failure, returns FALSE and sets `error` appropriately.
          * @since 2.0
+         * @throws GLib.Error
          */
         add_translation(translation: Translation): boolean;
 
@@ -2038,6 +2054,7 @@ export namespace Modulemd {
         /**
          * @returns A YAML representation of the index as a string. In the event of an error, sets `error` appropriately and returns NULL.
          * @since 2.0
+         * @throws GLib.Error
          */
         dump_to_string(): string;
 
@@ -2130,6 +2147,7 @@ export namespace Modulemd {
          * @param overrides_path If non-`null`, the path to a directory containing defaults documents that should override those in `path`.
          * @returns `true` if all ".yaml" files in the directory were imported successfully (this includes if no ".yaml" files were present). `false` if one or more files could not be read successfully and sets `error` appropriately.
          * @since 2.8
+         * @throws GLib.Error
          */
         update_from_defaults_directory(path: string, strict: boolean, overrides_path: string | null): boolean;
 
@@ -2138,6 +2156,7 @@ export namespace Modulemd {
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @returns `true` if the update was successful. Returns `false` and sets `failures` appropriately if any of the YAML subdocuments were invalid or sets `error` if there was a fatal parse error.
          * @since 2.0
+         * @throws GLib.Error
          */
         update_from_file(yaml_file: string, strict: boolean): [boolean, SubdocumentInfo[]];
 
@@ -2146,6 +2165,7 @@ export namespace Modulemd {
          * @param strict Whether the parser should return failure if it encounters an unknown mapping key or if it should ignore it.
          * @returns `true` if the update was successful. Returns `false` and sets `failures` appropriately if any of the YAML subdocuments were invalid or sets `error` if there was a fatal parse error.
          * @since 2.0
+         * @throws GLib.Error
          */
         update_from_string(yaml_string: string, strict: boolean): [boolean, SubdocumentInfo[]];
 
@@ -2158,6 +2178,7 @@ export namespace Modulemd {
          * state.
          * @param mdversion The {@link Modulemd.Defaults} metadata version to upgrade to.
          * @since 2.0
+         * @throws GLib.Error
          */
         upgrade_defaults(mdversion: DefaultsVersionEnum): boolean;
 
@@ -2166,6 +2187,7 @@ export namespace Modulemd {
          * they are not already at that version.
          * @param mdversion The {@link Modulemd.ModuleStream} metadata version to upgrade to.
          * @since 2.0
+         * @throws GLib.Error
          */
         upgrade_streams(mdversion: ModuleStreamVersionEnum): boolean;
     }
@@ -2242,6 +2264,7 @@ export namespace Modulemd {
          * `strict_default_streams=FALSE`.
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing the merged results. If this function encounters an unresolvable merge conflict, it will return NULL and set `error` appropriately.
          * @since 2.0
+         * @throws GLib.Error
          */
         resolve(): ModuleIndex;
 
@@ -2256,6 +2279,7 @@ export namespace Modulemd {
          * @param strict_default_streams If TRUE, merging two {@link Modulemd.Defaults} with conflicting default streams will raise an error. If FALSE, the module will have its default stream blocked.
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing the merged results. If this function encounters an unresolvable merge conflict, it will return NULL and set `error` appropriately.
          * @since 2.6
+         * @throws GLib.Error
          */
         resolve_ext(strict_default_streams: boolean): ModuleIndex;
     }
@@ -2567,6 +2591,7 @@ export namespace Modulemd {
          * @returns A newly-allocated {@link Modulemd.ModuleStream} copy of this object upgraded to the requested version. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
          * @since 2.0
          * @deprecated since 2.10: Use `modulemd_module_stream_upgrade_ext()` instead.
+         * @throws GLib.Error
          */
         upgrade(mdversion: bigint | number): ModuleStream;
 
@@ -2575,6 +2600,7 @@ export namespace Modulemd {
          * @param mdversion The metadata version to upgrade to. If zero, upgrades to the highest-supported version.
          * @returns A newly-allocated {@link Modulemd.Module} containing a copy of this object upgraded to the requested version, possibly with multiple streams. Returns NULL and sets `error` appropriately if the upgrade could not be completed automatically.
          * @since 2.10
+         * @throws GLib.Error
          */
         upgrade_ext(mdversion: bigint | number): Module;
 
@@ -2584,6 +2610,7 @@ export namespace Modulemd {
          * implicitly before attempting to emit the contents.
          * @returns TRUE if the {@link Modulemd.ModuleStream} passed validation. FALSE and sets `error` appropriately if validation fails.
          * @since 2.0
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -3948,6 +3975,7 @@ export namespace Modulemd {
          * is not a complete linter, merely a sanity check that the values are not
          * impossible.
          * @since 2.10
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -4093,6 +4121,7 @@ export namespace Modulemd {
         /**
          * @returns A newly-allocated {@link Modulemd.ModuleIndex} object containing a set of one or more {@link Modulemd.ModuleStreamV2} objects and possibly a {@link Modulemd.Defaults} object corresponding to the {@link Modulemd.PackagerV3} object `self`. NULL if there was an error doing the mapping and sets `error` appropriately. One of the errors is missing a module name or a stream name if a default profile is present.
          * @since 2.11
+         * @throws GLib.Error
          */
         convert_to_index(): ModuleIndex;
 
@@ -4670,6 +4699,7 @@ export namespace Modulemd {
 
         /**
          * @since 2.2
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -4974,6 +5004,7 @@ export namespace Modulemd {
          * is not a complete linter, merely a sanity check that the values are not
          * impossible.
          * @since 2.0
+         * @throws GLib.Error
          */
         validate(): boolean;
     }

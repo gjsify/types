@@ -359,6 +359,7 @@ export function registerClass<
 
     /**
      * Mask containing the bits of {@link GObject.ParamSpec}.flags which are reserved for GLib.
+     * @default 255
      */
     const PARAM_MASK: number;
 
@@ -372,72 +373,85 @@ export function registerClass<
      * nickname or blurb.
      * 
      * Since 2.13.0
+     * @default 224
      */
     const PARAM_STATIC_STRINGS: number;
 
     /**
      * Minimum shift count to be used for user defined flags, to be stored in
      * {@link GObject.ParamSpec}.flags. The maximum allowed is 10.
+     * @default 8
      */
     const PARAM_USER_SHIFT: number;
 
     /**
      * A mask for all {@link GObject.SignalFlags} bits.
+     * @default 511
      */
     const SIGNAL_FLAGS_MASK: number;
 
     /**
      * A mask for all {@link GObject.SignalMatchType} bits.
+     * @default 63
      */
     const SIGNAL_MATCH_MASK: number;
 
     /**
      * A bit in the type number that's supposed to be left untouched.
+     * @default 1
      */
     const TYPE_FLAG_RESERVED_ID_BIT: Type;
 
     /**
      * An integer constant that represents the number of identifiers reserved
      * for types that are assigned at compile-time.
+     * @default 1020
      */
     const TYPE_FUNDAMENTAL_MAX: number;
 
     /**
      * Shift value used in converting numbers to type IDs.
+     * @default 2
      */
     const TYPE_FUNDAMENTAL_SHIFT: number;
 
     /**
      * First fundamental type number to create a new fundamental type id with
      * G_TYPE_MAKE_FUNDAMENTAL() reserved for BSE.
+     * @default 32
      */
     const TYPE_RESERVED_BSE_FIRST: number;
 
     /**
      * Last fundamental type number reserved for BSE.
+     * @default 48
      */
     const TYPE_RESERVED_BSE_LAST: number;
 
     /**
      * First fundamental type number to create a new fundamental type id with
      * G_TYPE_MAKE_FUNDAMENTAL() reserved for GLib.
+     * @default 22
      */
     const TYPE_RESERVED_GLIB_FIRST: number;
 
     /**
      * Last fundamental type number reserved for GLib.
+     * @default 31
      */
     const TYPE_RESERVED_GLIB_LAST: number;
 
     /**
      * First available fundamental type number to create new fundamental
      * type id with G_TYPE_MAKE_FUNDAMENTAL().
+     * @default 49
      */
     const TYPE_RESERVED_USER_FIRST: number;
 
     /**
      * The maximal number of `GTypeCValues` which can be collected for a
      * single {@link GObject.Value}.
+     * @default 8
      */
     const VALUE_COLLECT_FORMAT_MAX_LENGTH: number;
 
@@ -451,6 +465,7 @@ export function registerClass<
      * {@link GObject.TypeValueFreeFunc}, {@link GObject.TypeValueCollectFunc}
      * and {@link GObject.TypeValueLCopyFunc}.
      * @since 2.66
+     * @default 268435456
      */
     const VALUE_INTERNED_STRING: number;
 
@@ -467,6 +482,7 @@ export function registerClass<
      * This flag should be checked by implementations of
      * {@link GObject.TypeValueFreeFunc}, {@link GObject.TypeValueCollectFunc}
      * and {@link GObject.TypeValueLCopyFunc}.
+     * @default 134217728
      */
     const VALUE_NOCOPY_CONTENTS: number;
 
@@ -2780,19 +2796,19 @@ export function registerClass<
          * The default binding; if the source property
          *   changes, the target property is updated with its value.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Bidirectional binding; if either the
          *   property of the source or the property of the target changes,
          *   the other is updated.
          */
-        BIDIRECTIONAL,
+        BIDIRECTIONAL = 1,
         /**
          * Synchronize the values of the source and
          *   target properties when creating the binding; the direction of
          *   the synchronization is always from the source to the target.
          */
-        SYNC_CREATE,
+        SYNC_CREATE = 2,
         /**
          * If the two properties being bound are
          *   booleans, setting one to `true` will result in the other being
@@ -2800,7 +2816,7 @@ export function registerClass<
          *   boolean properties, and cannot be used when passing custom
          *   transformation functions to `g_object_bind_property_full()`.
          */
-        INVERT_BOOLEAN,
+        INVERT_BOOLEAN = 4,
     }
 
 
@@ -2812,19 +2828,20 @@ export function registerClass<
     enum ConnectFlags {
         /**
          * Default behaviour (no special flags).
+         * @since 2.74
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * If set, the handler should be called after the
          *  default handler of the signal. Normally, the handler is called before
          *  the default handler.
          */
-        AFTER,
+        AFTER = 1,
         /**
          * If set, the instance and data should be swapped when
          *  calling the handler; see `g_signal_connect_swapped()` for an example.
          */
-        SWAPPED,
+        SWAPPED = 2,
     }
 
 
@@ -2839,12 +2856,12 @@ export function registerClass<
      * @gir-type Flags
      */
     enum IOCondition {
-        IN,
-        OUT,
-        PRI,
-        ERR,
-        HUP,
-        NVAL,
+        IN = 1,
+        OUT = 4,
+        PRI = 2,
+        ERR = 8,
+        HUP = 16,
+        NVAL = 32,
     }
 
 
@@ -2859,69 +2876,69 @@ export function registerClass<
         /**
          * the parameter is readable
          */
-        READABLE,
+        READABLE = 1,
         /**
          * the parameter is writable
          */
-        WRITABLE,
+        WRITABLE = 2,
         /**
          * alias for {@link GObject.ParamFlags.READABLE} | {@link GObject.ParamFlags.WRITABLE}
          */
-        READWRITE,
+        READWRITE = 3,
         /**
          * the parameter will be set upon object construction.
          *   See {@link Object.constructed} for more details
          */
-        CONSTRUCT,
+        CONSTRUCT = 4,
         /**
          * the parameter can only be set upon object construction.
          *   See {@link Object.constructed} for more details
          */
-        CONSTRUCT_ONLY,
+        CONSTRUCT_ONLY = 8,
         /**
          * upon parameter conversion (see `g_param_value_convert()`)
          *  strict validation is not required
          */
-        LAX_VALIDATION,
+        LAX_VALIDATION = 16,
         /**
          * the string used as name when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_NAME,
+        STATIC_NAME = 32,
         /**
          * internal
          */
-        PRIVATE,
+        PRIVATE = 32,
         /**
          * the string used as nick when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_NICK,
+        STATIC_NICK = 64,
         /**
          * the string used as blurb when constructing the
          *  parameter is guaranteed to remain valid and
          *  unmodified for the lifetime of the parameter.
          *  Since 2.8
          */
-        STATIC_BLURB,
+        STATIC_BLURB = 128,
         /**
          * calls to `g_object_set_property()` for this
          *   property will not automatically result in a "notify" signal being
          *   emitted: the implementation must call `g_object_notify()` themselves
          *   in case the property actually changes.  Since: 2.42.
          */
-        EXPLICIT_NOTIFY,
+        EXPLICIT_NOTIFY = 1073741824,
         /**
          * the parameter is deprecated and will be removed
          *  in a future version. A warning will be generated if it is used
          *  while running with G_ENABLE_DIAGNOSTIC=1.
          *  Since 2.26
          */
-        DEPRECATED,
+        DEPRECATED = 2147483648,
     }
 
 
@@ -2933,26 +2950,26 @@ export function registerClass<
         /**
          * Invoke the default signal handler in the first emission stage
          */
-        RUN_FIRST,
+        RUN_FIRST = 1,
         /**
          * Invoke the default signal handler in the third emission stage
          */
-        RUN_LAST,
+        RUN_LAST = 2,
         /**
          * Invoke the default signal handler in the last emission stage
          */
-        RUN_CLEANUP,
+        RUN_CLEANUP = 4,
         /**
          * Signals being emitted for an object while currently being in
          *  emission for this very object will not be emitted recursively,
          *  but instead cause the first emission to be restarted.
          */
-        NO_RECURSE,
+        NO_RECURSE = 8,
         /**
          * This signal supports `::detail` appendices to the signal name
          *  upon handler connections and emissions.
          */
-        DETAILED,
+        DETAILED = 16,
         /**
          * Action signals are signals that may freely be emitted on alive
          *  objects from user code via {@link GObject.signal_emit} and friends, without
@@ -2961,31 +2978,34 @@ export function registerClass<
          *  of as object methods which can be called generically by
          *  third-party code.
          */
-        ACTION,
+        ACTION = 32,
         /**
          * No emissions hooks are supported for this signal.
          */
-        NO_HOOKS,
+        NO_HOOKS = 64,
         /**
          * Varargs signal emission will always collect the arguments, even if there
          * are no signal handlers connected.
+         * @since 2.30
          */
-        MUST_COLLECT,
+        MUST_COLLECT = 128,
         /**
          * The signal is deprecated and will be removed in a future version.
          * 
          * A warning will be generated if it is connected while running with
          * `G_ENABLE_DIAGNOSTIC=1`.
+         * @since 2.32
          */
-        DEPRECATED,
+        DEPRECATED = 256,
         /**
          * The signal accumulator was invoked for the first time.
          * 
          * This flag is only used in {@link GObject.SignalAccumulator}[accumulator functions]
          * for the `run_type` field of the {@link GObject.SignalInvocationHint}, to
          * mark the first call to the accumulator function for a signal emission.
+         * @since 2.68
          */
-        ACCUMULATOR_FIRST_RUN,
+        ACCUMULATOR_FIRST_RUN = 131072,
     }
 
 
@@ -2999,27 +3019,27 @@ export function registerClass<
         /**
          * The signal id must be equal.
          */
-        ID,
+        ID = 1,
         /**
          * The signal detail must be equal.
          */
-        DETAIL,
+        DETAIL = 2,
         /**
          * The closure must be the same.
          */
-        CLOSURE,
+        CLOSURE = 4,
         /**
          * The C closure callback must be the same.
          */
-        FUNC,
+        FUNC = 8,
         /**
          * The closure data must be the same.
          */
-        DATA,
+        DATA = 16,
         /**
          * Only unblocked signals may be matched.
          */
-        UNBLOCKED,
+        UNBLOCKED = 32,
     }
 
 
@@ -3036,23 +3056,23 @@ export function registerClass<
         /**
          * Print no messages
          */
-        NONE,
+        NONE = 0,
         /**
          * Print messages about object bookkeeping
          */
-        OBJECTS,
+        OBJECTS = 1,
         /**
          * Print messages about signal emissions
          */
-        SIGNALS,
+        SIGNALS = 2,
         /**
          * Keep a count of instances of each type
          */
-        INSTANCE_COUNT,
+        INSTANCE_COUNT = 4,
         /**
          * Mask covering all debug flags
          */
-        MASK,
+        MASK = 7,
     }
 
 
@@ -3063,30 +3083,31 @@ export function registerClass<
     enum TypeFlags {
         /**
          * No special flags.
+         * @since 2.74
          */
-        NONE,
+        NONE = 0,
         /**
          * Indicates an abstract type. No instances can be
          *  created for an abstract type
          */
-        ABSTRACT,
+        ABSTRACT = 16,
         /**
          * Indicates an abstract value type, i.e. a type
          *  that introduces a value table, but can't be used for
          *  `g_value_init()`
          */
-        VALUE_ABSTRACT,
+        VALUE_ABSTRACT = 32,
         /**
          * Indicates a final type. A final type is a non-derivable
          *  leaf node in a deep derivable type hierarchy tree. Since: 2.70
          */
-        FINAL,
+        FINAL = 64,
         /**
          * The type is deprecated and may be removed in a
          *  future version. A warning will be emitted if it is instantiated while
          *  running with `G_ENABLE_DIAGNOSTIC=1`. Since 2.76
          */
-        DEPRECATED,
+        DEPRECATED = 128,
     }
 
 
@@ -3099,19 +3120,19 @@ export function registerClass<
         /**
          * Indicates a classed type
          */
-        CLASSED,
+        CLASSED = 1,
         /**
          * Indicates an instantiatable type (implies classed)
          */
-        INSTANTIATABLE,
+        INSTANTIATABLE = 2,
         /**
          * Indicates a flat derivable type
          */
-        DERIVABLE,
+        DERIVABLE = 4,
         /**
          * Indicates a deep derivable type (implies derivable)
          */
-        DEEP_DERIVABLE,
+        DEEP_DERIVABLE = 8,
     }
 
 
@@ -3616,7 +3637,7 @@ export function registerClass<
              * @action
              * @run-first
              */
-            notify: (arg0: ParamSpec) => void;
+            notify: (pspec: ParamSpec) => void;
             [key: `notify::${string}`]: (pspec: ParamSpec) => void;
         }
 
@@ -4631,7 +4652,7 @@ export function registerClass<
              * @since 2.72
              * @run-last
              */
-            bind: (arg0: Object) => void;
+            bind: (instance: Object) => void;
             /**
              * This signal is emitted when the target instance of `self` is set to a
              * new {@link GObject.Object}.

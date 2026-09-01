@@ -36,15 +36,15 @@ export namespace GUdev {
         /**
          * Device does not have a device file.
          */
-        NONE,
+        NONE = 0,
         /**
          * Device is a block device.
          */
-        BLOCK,
+        BLOCK = 98,
         /**
          * Device is a character device.
          */
-        CHAR,
+        CHAR = 99,
     }
 
 
@@ -67,7 +67,7 @@ export namespace GUdev {
              * @signal
              * @run-last
              */
-            uevent: (arg0: string, arg1: Device) => void;
+            uevent: (action: string, device: Device) => void;
             "notify::subsystems": (pspec: GObject.ParamSpec) => void;
         }
 

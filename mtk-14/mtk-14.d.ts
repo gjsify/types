@@ -26,9 +26,9 @@ export namespace Mtk {
      * @gir-type Enum
      */
     enum RegionOverlap {
-        OUT,
-        IN,
-        PART,
+        OUT = 0,
+        IN = 1,
+        PART = 2,
     }
 
 
@@ -36,14 +36,20 @@ export namespace Mtk {
      * @gir-type Enum
      */
     enum RoundingStrategy {
-        SHRINK,
-        GROW,
-        ROUND,
+        SHRINK = 0,
+        GROW = 1,
+        ROUND = 2,
     }
 
 
+    /**
+     * @default 256
+     */
     const RECTANGLE_MAX_STACK_RECTS: number;
 
+    /**
+     * @default 16
+     */
     const REGION_BUILDER_MAX_LEVELS: number;
 
     /**

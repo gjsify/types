@@ -34,42 +34,42 @@ export namespace Zeitgeist {
      * @gir-type Enum
      */
     enum ResultType {
-        MOST_RECENT_EVENTS,
-        LEAST_RECENT_EVENTS,
-        MOST_RECENT_SUBJECTS,
-        LEAST_RECENT_SUBJECTS,
-        MOST_POPULAR_SUBJECTS,
-        LEAST_POPULAR_SUBJECTS,
-        MOST_POPULAR_ACTOR,
-        LEAST_POPULAR_ACTOR,
-        MOST_RECENT_ACTOR,
-        LEAST_RECENT_ACTOR,
-        MOST_RECENT_ORIGIN,
-        LEAST_RECENT_ORIGIN,
-        MOST_POPULAR_ORIGIN,
-        LEAST_POPULAR_ORIGIN,
-        OLDEST_ACTOR,
-        MOST_RECENT_SUBJECT_INTERPRETATION,
-        LEAST_RECENT_SUBJECT_INTERPRETATION,
-        MOST_POPULAR_SUBJECT_INTERPRETATION,
-        LEAST_POPULAR_SUBJECT_INTERPRETATION,
-        MOST_RECENT_MIMETYPE,
-        LEAST_RECENT_MIMETYPE,
-        MOST_POPULAR_MIMETYPE,
-        LEAST_POPULAR_MIMETYPE,
-        MOST_RECENT_CURRENT_URI,
-        LEAST_RECENT_CURRENT_URI,
-        MOST_POPULAR_CURRENT_URI,
-        LEAST_POPULAR_CURRENT_URI,
-        MOST_RECENT_EVENT_ORIGIN,
-        LEAST_RECENT_EVENT_ORIGIN,
-        MOST_POPULAR_EVENT_ORIGIN,
-        LEAST_POPULAR_EVENT_ORIGIN,
-        MOST_RECENT_CURRENT_ORIGIN,
-        LEAST_RECENT_CURRENT_ORIGIN,
-        MOST_POPULAR_CURRENT_ORIGIN,
-        LEAST_POPULAR_CURRENT_ORIGIN,
-        RELEVANCY,
+        MOST_RECENT_EVENTS = 0,
+        LEAST_RECENT_EVENTS = 1,
+        MOST_RECENT_SUBJECTS = 2,
+        LEAST_RECENT_SUBJECTS = 3,
+        MOST_POPULAR_SUBJECTS = 4,
+        LEAST_POPULAR_SUBJECTS = 5,
+        MOST_POPULAR_ACTOR = 6,
+        LEAST_POPULAR_ACTOR = 7,
+        MOST_RECENT_ACTOR = 8,
+        LEAST_RECENT_ACTOR = 9,
+        MOST_RECENT_ORIGIN = 10,
+        LEAST_RECENT_ORIGIN = 11,
+        MOST_POPULAR_ORIGIN = 12,
+        LEAST_POPULAR_ORIGIN = 13,
+        OLDEST_ACTOR = 14,
+        MOST_RECENT_SUBJECT_INTERPRETATION = 15,
+        LEAST_RECENT_SUBJECT_INTERPRETATION = 16,
+        MOST_POPULAR_SUBJECT_INTERPRETATION = 17,
+        LEAST_POPULAR_SUBJECT_INTERPRETATION = 18,
+        MOST_RECENT_MIMETYPE = 19,
+        LEAST_RECENT_MIMETYPE = 20,
+        MOST_POPULAR_MIMETYPE = 21,
+        LEAST_POPULAR_MIMETYPE = 22,
+        MOST_RECENT_CURRENT_URI = 23,
+        LEAST_RECENT_CURRENT_URI = 24,
+        MOST_POPULAR_CURRENT_URI = 25,
+        LEAST_POPULAR_CURRENT_URI = 26,
+        MOST_RECENT_EVENT_ORIGIN = 27,
+        LEAST_RECENT_EVENT_ORIGIN = 28,
+        MOST_POPULAR_EVENT_ORIGIN = 29,
+        LEAST_POPULAR_EVENT_ORIGIN = 30,
+        MOST_RECENT_CURRENT_ORIGIN = 31,
+        LEAST_RECENT_CURRENT_ORIGIN = 32,
+        MOST_POPULAR_CURRENT_ORIGIN = 33,
+        LEAST_POPULAR_CURRENT_ORIGIN = 34,
+        RELEVANCY = 100,
     }
 
 
@@ -84,8 +84,8 @@ export namespace Zeitgeist {
      * @gir-type Enum
      */
     enum RelevantResultType {
-        RECENT,
-        RELATED,
+        RECENT = 0,
+        RELATED = 1,
     }
 
 
@@ -100,9 +100,9 @@ export namespace Zeitgeist {
      * @gir-type Enum
      */
     enum StorageState {
-        NOT_AVAILABLE,
-        AVAILABLE,
-        ANY,
+        NOT_AVAILABLE = 0,
+        AVAILABLE = 1,
+        ANY = 2,
     }
 
 
@@ -156,216 +156,529 @@ export namespace Zeitgeist {
     }
 
 
+    /**
+     * @default (null)
+     */
     const DataSourcesSIG_DATASOURCES: string;
 
+    /**
+     * @default 1000
+     */
     const TimestampSECOND: number;
 
+    /**
+     * @default 60000
+     */
     const TimestampMINUTE: number;
 
+    /**
+     * @default 3600000
+     */
     const TimestampHOUR: number;
 
+    /**
+     * @default 86400000
+     */
     const TimestampDAY: number;
 
+    /**
+     * @default 604800000
+     */
     const TimestampWEEK: number;
 
+    /**
+     * @default 31556952000
+     */
     const TimestampYEAR: number;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm
+     */
     const NCALALARM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Attachment
+     */
     const NCALATTACHMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Calendar
+     */
     const NCALCALENDAR: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#CalendarDataObject
+     */
     const NCALCALENDAR_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Event
+     */
     const NCALEVENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Freebusy
+     */
     const NCALFREEBUSY: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Journal
+     */
     const NCALJOURNAL: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Timezone
+     */
     const NCALTIMEZONE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Todo
+     */
     const NCALTODO: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact
+     */
     const NCOCONTACT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#ContactGroup
+     */
     const NCOCONTACT_GROUP: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#ContactList
+     */
     const NCOCONTACT_LIST: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#ContactListDataObject
+     */
     const NCOCONTACT_LIST_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#OrganizationContact
+     */
     const NCOORGANIZATION_CONTACT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nco#PersonContact
+     */
     const NCOPERSON_CONTACT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Application
+     */
     const NFOAPPLICATION: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Archive
+     */
     const NFOARCHIVE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#ArchiveItem
+     */
     const NFOARCHIVE_ITEM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Attachment
+     */
     const NFOATTACHMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Audio
+     */
     const NFOAUDIO: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Bookmark
+     */
     const NFOBOOKMARK: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#BookmarkFolder
+     */
     const NFOBOOKMARK_FOLDER: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Cursor
+     */
     const NFOCURSOR: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer
+     */
     const NFODATA_CONTAINER: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DeletedResource
+     */
     const NFODELETED_RESOURCE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document
+     */
     const NFODOCUMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#EmbeddedFileDataObject
+     */
     const NFOEMBEDDED_FILE_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Executable
+     */
     const NFOEXECUTABLE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem
+     */
     const NFOFILESYSTEM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FilesystemImage
+     */
     const NFOFILESYSTEM_IMAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject
+     */
     const NFOFILE_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder
+     */
     const NFOFOLDER: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Font
+     */
     const NFOFONT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HardDiskPartition
+     */
     const NFOHARD_DISK_PARTITION: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HtmlDocument
+     */
     const NFOHTML_DOCUMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Icon
+     */
     const NFOICON: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Image
+     */
     const NFOIMAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media
+     */
     const NFOMEDIA: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaList
+     */
     const NFOMEDIA_LIST: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaStream
+     */
     const NFOMEDIA_STREAM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MindMap
+     */
     const NFOMIND_MAP: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#OperatingSystem
+     */
     const NFOOPERATING_SYSTEM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PaginatedTextDocument
+     */
     const NFOPAGINATED_TEXT_DOCUMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PlainTextDocument
+     */
     const NFOPLAIN_TEXT_DOCUMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Presentation
+     */
     const NFOPRESENTATION: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RasterImage
+     */
     const NFORASTER_IMAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject
+     */
     const NFOREMOTE_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemotePortAddress
+     */
     const NFOREMOTE_PORT_ADDRESS: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software
+     */
     const NFOSOFTWARE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareItem
+     */
     const NFOSOFTWARE_ITEM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareService
+     */
     const NFOSOFTWARE_SERVICE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode
+     */
     const NFOSOURCE_CODE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet
+     */
     const NFOSPREADSHEET: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#TextDocument
+     */
     const NFOTEXT_DOCUMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
+     */
     const NFOTRASH: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#VectorImage
+     */
     const NFOVECTOR_IMAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Video
+     */
     const NFOVIDEO: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Visual
+     */
     const NFOVISUAL: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Website
+     */
     const NFOWEBSITE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#WebDataObject
+     */
     const NFOWEB_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/01/19/nie#DataObject
+     */
     const NIEDATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement
+     */
     const NIEINFORMATION_ELEMENT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#Movie
+     */
     const NMMMOVIE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicAlbum
+     */
     const NMMMUSIC_ALBUM: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicPiece
+     */
     const NMMMUSIC_PIECE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVSeries
+     */
     const NMMTVSERIES: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVShow
+     */
     const NMMTVSHOW: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email
+     */
     const NMOEMAIL: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage
+     */
     const NMOIMMESSAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox
+     */
     const NMOMAILBOX: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject
+     */
     const NMOMAILBOX_DATA_OBJECT: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message
+     */
     const NMOMESSAGE: string;
 
+    /**
+     * @default http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity
+     */
     const NMOMIME_ENTITY: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AcceptEvent
+     */
     const ZGACCEPT_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent
+     */
     const ZGACCESS_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ApplicationAction
+     */
     const ZGAPPLICATION_ACTION: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#CreateEvent
+     */
     const ZGCREATE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DeleteEvent
+     */
     const ZGDELETE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DenyEvent
+     */
     const ZGDENY_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation
+     */
     const ZGEVENT_INTERPRETATION: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventManifestation
+     */
     const ZGEVENT_MANIFESTATION: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ExpireEvent
+     */
     const ZGEXPIRE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#HeuristicActivity
+     */
     const ZGHEURISTIC_ACTIVITY: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#LeaveEvent
+     */
     const ZGLEAVE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ModifyEvent
+     */
     const ZGMODIFY_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#MoveEvent
+     */
     const ZGMOVE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent
+     */
     const ZGRECEIVE_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ScheduledActivity
+     */
     const ZGSCHEDULED_ACTIVITY: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent
+     */
     const ZGSEND_EVENT: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SystemNotification
+     */
     const ZGSYSTEM_NOTIFICATION: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity
+     */
     const ZGUSER_ACTIVITY: string;
 
+    /**
+     * @default http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#WorldActivity
+     */
     const ZGWORLD_ACTIVITY: string;
 
+    /**
+     * @default org.gnome.zeitgeist.Engine
+     */
     const UtilsENGINE_DBUS_NAME: string;
 
+    /**
+     * @default /org/gnome/zeitgeist/log/activity
+     */
     const UtilsENGINE_DBUS_PATH: string;
 
+    /**
+     * @default asaasay
+     */
     const UtilsSIG_EVENT: string;
 
+    /**
+     * @default (null)
+     */
     const UtilsMAX_DBUS_RESULT_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const UtilsCACHE_SIZE: number;
 
     /**
      * @param sources_variant 
+     * @throws GLib.Error
      */
     function data_sources_from_variant(sources_variant: GLib.Variant): DataSource[];
 
@@ -376,6 +689,7 @@ export namespace Zeitgeist {
 
     /**
      * @param vevents 
+     * @throws GLib.Error
      */
     function events_from_variant(vevents: GLib.Variant): Event[];
 
@@ -387,6 +701,7 @@ export namespace Zeitgeist {
     /**
      * @param events 
      * @param limit 
+     * @throws GLib.Error
      */
     function events_to_variant_with_limit(events: Event[], limit: bigint | number): GLib.Variant;
 
@@ -494,6 +809,9 @@ export namespace Zeitgeist {
 
     function utils_using_in_memory_database(): boolean;
 
+    /**
+     * @throws GLib.Error
+     */
     function utils_backup_database(): void;
 
     /**
@@ -557,15 +875,15 @@ export namespace Zeitgeist {
             /**
              * @signal
              */
-            "source-disconnected": (arg0: DataSource) => void;
+            "source-disconnected": (data_source: DataSource) => void;
             /**
              * @signal
              */
-            "source-enabled": (arg0: string, arg1: boolean) => void;
+            "source-enabled": (unique_id: string, enabled: boolean) => void;
             /**
              * @signal
              */
-            "source-registered": (arg0: DataSource) => void;
+            "source-registered": (data_source: DataSource) => void;
             "notify::proxy-created": (pspec: GObject.ParamSpec) => void;
             "notify::is-connected": (pspec: GObject.ParamSpec) => void;
         }
@@ -629,6 +947,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[];
 
@@ -654,6 +973,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): DataSource;
 
@@ -679,6 +999,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         register_data_source_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -707,6 +1028,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
     }
@@ -796,6 +1118,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_finish(_res_: Gio.AsyncResult): ResultSet;
 
@@ -839,6 +1162,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [ResultSet, number[]];
     }
@@ -916,6 +1240,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         insert_event_finish(_res_: Gio.AsyncResult): number[];
 
@@ -941,16 +1266,19 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         insert_events_finish(_res_: Gio.AsyncResult): number[];
 
         /**
          * @param event 
+         * @throws GLib.Error
          */
         insert_event_no_reply(event: Event): void;
 
         /**
          * @param events 
+         * @throws GLib.Error
          */
         insert_events_no_reply(events: Event[]): void;
 
@@ -988,6 +1316,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_events_finish(_res_: Gio.AsyncResult): ResultSet;
 
@@ -1025,6 +1354,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_event_ids_finish(_res_: Gio.AsyncResult): number[];
 
@@ -1050,6 +1380,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_events_finish(_res_: Gio.AsyncResult): ResultSet;
 
@@ -1090,6 +1421,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_related_uris_finish(_res_: Gio.AsyncResult): string[];
 
@@ -1115,6 +1447,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_events_finish(_res_: Gio.AsyncResult): TimeRange;
 
@@ -1137,16 +1470,19 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         quit_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param monitor 
+         * @throws GLib.Error
          */
         install_monitor(monitor: Monitor): void;
 
         /**
          * @param monitor 
+         * @throws GLib.Error
          */
         remove_monitor(monitor: Monitor): void;
 
@@ -1164,11 +1500,11 @@ export namespace Zeitgeist {
             /**
              * @signal
              */
-            "events-inserted": (arg0: TimeRange, arg1: ResultSet) => void;
+            "events-inserted": (time_range: TimeRange, events: ResultSet) => void;
             /**
              * @signal
              */
-            "events-deleted": (arg0: TimeRange, arg1: number[]) => void;
+            "events-deleted": (time_range: TimeRange, event_ids: number[]) => void;
             "notify::time-range": (pspec: GObject.ParamSpec) => void;
             "notify::event-templates": (pspec: GObject.ParamSpec) => void;
         }
@@ -1271,6 +1607,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         notify_insert_finish(_res_: Gio.AsyncResult): void;
 
@@ -1296,6 +1633,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         notify_delete_finish(_res_: Gio.AsyncResult): void;
 
@@ -1438,6 +1776,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         wait_for_proxy_finish(_res_: Gio.AsyncResult): void;
 
@@ -2460,6 +2799,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
@@ -2497,6 +2837,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         register_data_source_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -2525,6 +2866,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         set_data_source_enabled_finish(_res_: Gio.AsyncResult): void;
 
@@ -2550,6 +2892,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant;
     }
@@ -2769,6 +3112,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
@@ -2809,6 +3153,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_event_ids_finish(_res_: Gio.AsyncResult): number[];
 
@@ -2849,6 +3194,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
@@ -2892,6 +3238,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_related_uris_finish(_res_: Gio.AsyncResult): string[];
 
@@ -2920,6 +3267,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_events_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
@@ -2948,6 +3296,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         insert_events_finish(_res_: Gio.AsyncResult): number[];
 
@@ -2979,6 +3328,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         install_monitor_finish(_res_: Gio.AsyncResult): void;
 
@@ -3004,6 +3354,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_monitor_finish(_res_: Gio.AsyncResult): void;
 
@@ -3026,6 +3377,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         quit_finish(_res_: Gio.AsyncResult): void;
 
@@ -3115,6 +3467,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         notify_insert_finish(_res_: Gio.AsyncResult): void;
 
@@ -3140,6 +3493,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         notify_delete_finish(_res_: Gio.AsyncResult): void;
     }
@@ -3249,6 +3603,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_finish(_res_: Gio.AsyncResult): [GLib.Variant, number];
 
@@ -3292,6 +3647,7 @@ export namespace Zeitgeist {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_with_relevancies_finish(_res_: Gio.AsyncResult): [GLib.Variant, number[], number];
     }
@@ -3330,6 +3686,9 @@ export namespace Zeitgeist {
     interface NetworkManagerDBus extends GObject.Object, NetworkManagerDBus.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         state(): number;
     }
 
@@ -3367,6 +3726,9 @@ export namespace Zeitgeist {
     interface ConnmanManagerDBus extends GObject.Object, ConnmanManagerDBus.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         get_state(): string;
     }
 

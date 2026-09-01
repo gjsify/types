@@ -21,771 +21,1855 @@ export namespace GTop {
      */
 
 
+    /**
+     * @default 15
+     */
     const AUTH_NAMESZ: number;
 
+    /**
+     * @default 15
+     */
     const AUTH_TIMEOUT: number;
 
+    /**
+     * @default 1
+     */
     const CONN_INTERNET: number;
 
+    /**
+     * @default 2
+     */
     const CONN_IPC: number;
 
+    /**
+     * @default 0
+     */
     const CONN_UNIX: number;
 
+    /**
+     * @default 21490
+     */
     const DEFAULT_PORT: number;
 
+    /**
+     * @default GNU-SECURE
+     */
     const DEFAUTH_NAME: string;
 
+    /**
+     * @default 92
+     */
     const EOT_CHR: number;
 
+    /**
+     * @default 
+     */
     const EOT_STR: string;
 
+    /**
+     * @default 0
+     */
     const FALSE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_CMND_CPU: number;
 
+    /**
+     * @default 29
+     */
     const GLIBTOP_CMND_DISK: number;
 
+    /**
+     * @default 21
+     */
     const GLIBTOP_CMND_FSUSAGE: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_CMND_LOADAVG: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_CMND_MEM: number;
 
+    /**
+     * @default 20
+     */
     const GLIBTOP_CMND_MOUNTLIST: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_CMND_MSG_LIMITS: number;
 
+    /**
+     * @default 24
+     */
     const GLIBTOP_CMND_NETLIST: number;
 
+    /**
+     * @default 22
+     */
     const GLIBTOP_CMND_NETLOAD: number;
 
+    /**
+     * @default 23
+     */
     const GLIBTOP_CMND_PPP: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_CMND_PROCLIST: number;
 
+    /**
+     * @default 27
+     */
     const GLIBTOP_CMND_PROC_AFFINITY: number;
 
+    /**
+     * @default 18
+     */
     const GLIBTOP_CMND_PROC_ARGS: number;
 
+    /**
+     * @default 28
+     */
     const GLIBTOP_CMND_PROC_IO: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_CMND_PROC_KERNEL: number;
 
+    /**
+     * @default 19
+     */
     const GLIBTOP_CMND_PROC_MAP: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_CMND_PROC_MEM: number;
 
+    /**
+     * @default 25
+     */
     const GLIBTOP_CMND_PROC_OPEN_FILES: number;
 
+    /**
+     * @default 17
+     */
     const GLIBTOP_CMND_PROC_SEGMENT: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_CMND_PROC_SIGNAL: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_CMND_PROC_STATE: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_CMND_PROC_TIME: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_CMND_PROC_UID: number;
 
+    /**
+     * @default 26
+     */
     const GLIBTOP_CMND_PROC_WD: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_CMND_QUIT: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_CMND_SEM_LIMITS: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_CMND_SHM_LIMITS: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_CMND_SWAP: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_CMND_SYSDEPS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_CMND_UPTIME: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_CPU_FREQUENCY: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_CPU_IDLE: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_CPU_IOWAIT: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_CPU_IRQ: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_CPU_NICE: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_CPU_SOFTIRQ: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_CPU_SYS: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_CPU_TOTAL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_CPU_USER: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_ERROR_METHOD_ABORT: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_ERROR_METHOD_IGNORE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_ERROR_METHOD_WARN: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_ERROR_METHOD_WARN_ONCE: number;
 
     /**
      * Exclude idle processes.
+     * @default 4096
      */
     const GLIBTOP_EXCLUDE_IDLE: number;
 
     /**
      * Exclude processes without a controlling terminal.
+     * @default 16384
      */
     const GLIBTOP_EXCLUDE_NOTTY: number;
 
     /**
      * Exclude system (on most UNIXes root's) processes.
+     * @default 8192
      */
     const GLIBTOP_EXCLUDE_SYSTEM: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_FEATURES_EXCEPT: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_FEATURES_NO_SERVER: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_FILE_ENTRY_FD: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_FILE_ENTRY_INETSOCKET_DST_HOST: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_FILE_ENTRY_INETSOCKET_DST_PORT: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_FILE_ENTRY_NAME: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_FILE_ENTRY_TYPE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_FSUSAGE_BAVAIL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_FSUSAGE_BFREE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_FSUSAGE_BLOCKS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_FSUSAGE_BLOCK_SIZE: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_FSUSAGE_FFREE: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_FSUSAGE_FILES: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_FSUSAGE_READ: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_FSUSAGE_WRITE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_INIT_NO_INIT: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_INIT_NO_OPEN: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_IPC_MSGMAP: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_IPC_MSGMAX: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_IPC_MSGMNB: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_IPC_MSGMNI: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_IPC_MSGPOOL: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_IPC_MSGSSZ: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_IPC_MSGTQL: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_IPC_SEMAEM: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_IPC_SEMMAP: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_IPC_SEMMNI: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_IPC_SEMMNS: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_IPC_SEMMNU: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_IPC_SEMMSL: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_IPC_SEMOPM: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_IPC_SEMUME: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_IPC_SEMUSZ: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_IPC_SEMVMX: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_IPC_SHMALL: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_IPC_SHMMAX: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_IPC_SHMMIN: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_IPC_SHMMNI: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_IPC_SHMSEG: number;
 
     /**
      * Return information about all processes
+     * @default 0
      */
     const GLIBTOP_KERN_PROC_ALL: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_KERN_PROC_MASK: number;
 
     /**
      * Return all processes in the process group passed in `arg`.
+     * @default 2
      */
     const GLIBTOP_KERN_PROC_PGRP: number;
 
     /**
      * Return all processes with the pid which is passed in `arg`. You can use this to find out whether some process still exists.
+     * @default 1
      */
     const GLIBTOP_KERN_PROC_PID: number;
 
     /**
      * Return all processes with the real uid passed in `arg`.
+     * @default 6
      */
     const GLIBTOP_KERN_PROC_RUID: number;
 
     /**
      * Return all processes in the session passed in `arg`.
+     * @default 3
      */
     const GLIBTOP_KERN_PROC_SESSION: number;
 
     /**
      * Return all processes which have the controlling tty passed in `arg`
      * (which is interpreted as the device number).
+     * @default 4
      */
     const GLIBTOP_KERN_PROC_TTY: number;
 
     /**
      * Return all processes with the effective uid passed in `arg`.
+     * @default 5
      */
     const GLIBTOP_KERN_PROC_UID: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_LOADAVG_LAST_PID: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_LOADAVG_LOADAVG: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_LOADAVG_NR_RUNNING: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_LOADAVG_NR_TASKS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_MAP_ENTRY_DEVICE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MAP_ENTRY_END: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_MAP_ENTRY_FILENAME: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MAP_ENTRY_INODE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MAP_ENTRY_OFFSET: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAP_ENTRY_PERM: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_MAP_ENTRY_PRIVATE_CLEAN: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_MAP_ENTRY_PRIVATE_DIRTY: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_MAP_ENTRY_PSS: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_MAP_ENTRY_RSS: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_MAP_ENTRY_SHARED_CLEAN: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_MAP_ENTRY_SHARED_DIRTY: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_MAP_ENTRY_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_MAP_ENTRY_START: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_MAP_ENTRY_SWAP: number;
 
+    /**
+     * @default 215
+     */
     const GLIBTOP_MAP_FILENAME_LEN: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MAP_PERM_EXECUTE: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_MAP_PERM_PRIVATE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MAP_PERM_READ: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_MAP_PERM_SHARED: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MAP_PERM_WRITE: number;
 
+    /**
+     * @default 30
+     */
     const GLIBTOP_MAX_CMND: number;
 
+    /**
+     * @default 18
+     */
     const GLIBTOP_MAX_CPU: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MAX_DISK: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_MAX_FSUSAGE: number;
 
+    /**
+     * @default 64
+     */
     const GLIBTOP_MAX_GROUPS: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MAX_LOADAVG: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_MAX_MAP_ENTRY: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_MAX_MEM: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_MOUNTLIST: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_MAX_MSG_LIMITS: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MAX_NETLIST: number;
 
+    /**
+     * @default 18
+     */
     const GLIBTOP_MAX_NETLOAD: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_MAX_OPEN_FILE_ENTRY: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PPP: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PROCLIST: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MAX_PROC_AFFINITY: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MAX_PROC_ARGS: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PROC_IO: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_MAX_PROC_KERNEL: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PROC_MAP: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_MAX_PROC_MEM: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PROC_OPEN_FILES: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_MAX_PROC_SEGMENT: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MAX_PROC_SIGNAL: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_MAX_PROC_STATE: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_MAX_PROC_TIME: number;
 
+    /**
+     * @default 18
+     */
     const GLIBTOP_MAX_PROC_UID: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_PROC_WD: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_MAX_SEM_LIMITS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_MAX_SHM_LIMITS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_MAX_SWAP: number;
 
+    /**
+     * @default 29
+     */
     const GLIBTOP_MAX_SYSDEPS: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MAX_SYSINFO: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MAX_UPTIME: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_MEM_BUFFER: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_MEM_CACHED: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MEM_FREE: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_MEM_LOCKED: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_MEM_SHARED: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_MEM_TOTAL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MEM_USED: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_MEM_USER: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_METHOD_DIRECT: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_METHOD_INET: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_METHOD_PIPE: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_METHOD_UNIX: number;
 
+    /**
+     * @default 79
+     */
     const GLIBTOP_MOUNTENTRY_LEN: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_MOUNTLIST_NUMBER: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_MOUNTLIST_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_MOUNTLIST_TOTAL: number;
 
+    /**
+     * @default 1024
+     */
     const GLIBTOP_NCPU: number;
 
+    /**
+     * @default 1024
+     */
     const GLIBTOP_NDISK: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_NETLIST_NUMBER: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_NETLOAD_ADDRESS: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_NETLOAD_ADDRESS6: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_NETLOAD_BYTES_IN: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_NETLOAD_BYTES_OUT: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_NETLOAD_BYTES_TOTAL: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_NETLOAD_COLLISIONS: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_NETLOAD_ERRORS_IN: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_NETLOAD_ERRORS_OUT: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_NETLOAD_ERRORS_TOTAL: number;
 
+    /**
+     * @default 17
+     */
     const GLIBTOP_NETLOAD_HWADDRESS: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_NETLOAD_IF_FLAGS: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_NETLOAD_MTU: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_NETLOAD_PACKETS_IN: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_NETLOAD_PACKETS_OUT: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_NETLOAD_PACKETS_TOTAL: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_NETLOAD_PREFIX6: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_NETLOAD_SCOPE6: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_NETLOAD_SUBNET: number;
 
+    /**
+     * @default 46
+     */
     const GLIBTOP_OPEN_DEST_HOST_LEN: number;
 
+    /**
+     * @default 215
+     */
     const GLIBTOP_OPEN_FILENAME_LEN: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PARAM_COMMAND: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PARAM_ERROR_METHOD: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PARAM_FEATURES: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PARAM_HOST: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PARAM_METHOD: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PARAM_PORT: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PARAM_REQUIRED: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PPP_BYTES_IN: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PPP_BYTES_OUT: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PPP_STATE: number;
 
+    /**
+     * @default 64
+     */
     const GLIBTOP_PROCESS_DEAD: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROCESS_INTERRUPTIBLE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROCESS_RUNNING: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_PROCESS_STOPPED: number;
 
+    /**
+     * @default 32
+     */
     const GLIBTOP_PROCESS_SWAPPING: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROCESS_UNINTERRUPTIBLE: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_PROCESS_ZOMBIE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROCLIST_NUMBER: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROCLIST_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROCLIST_TOTAL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_AFFINITY_ALL: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_AFFINITY_NUMBER: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_ARGS_SIZE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_IO_DISK_RBYTES: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_IO_DISK_RCHAR: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_IO_DISK_WBYTES: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_IO_DISK_WCHAR: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_KERNEL_CMAJ_FLT: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_KERNEL_CMIN_FLT: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PROC_KERNEL_KSTK_EIP: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_KERNEL_KSTK_ESP: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_KERNEL_K_FLAGS: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_KERNEL_MAJ_FLT: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_KERNEL_MIN_FLT: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PROC_KERNEL_NWCHAN: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_PROC_KERNEL_WCHAN: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_MAP_NUMBER: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_MAP_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_MAP_TOTAL: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_MEM_RESIDENT: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_MEM_RSS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_MEM_RSS_RLIM: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_MEM_SHARE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_MEM_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_MEM_VSIZE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_OPEN_FILES_NUMBER: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_OPEN_FILES_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_OPEN_FILES_TOTAL: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_SEGMENT_DATA_RSS: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_SEGMENT_DIRTY_SIZE: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PROC_SEGMENT_END_CODE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_SEGMENT_SHLIB_RSS: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_SEGMENT_STACK_RSS: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_SEGMENT_START_CODE: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PROC_SEGMENT_START_STACK: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_SEGMENT_TEXT_RSS: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_SIGNAL_BLOCKED: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_SIGNAL_SIGCATCH: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_SIGNAL_SIGIGNORE: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_SIGNAL_SIGNAL: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_STATE_CMD: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_STATE_GID: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PROC_STATE_HAS_CPU: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_PROC_STATE_LAST_PROCESSOR: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PROC_STATE_PROCESSOR: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_STATE_RGID: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_STATE_RUID: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_STATE_STATE: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_STATE_UID: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_TIME_CSTIME: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_TIME_CUTIME: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_PROC_TIME_FREQUENCY: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PROC_TIME_IT_REAL_VALUE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_TIME_RTIME: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_TIME_START_TIME: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_TIME_STIME: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PROC_TIME_TIMEOUT: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_TIME_UTIME: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_PROC_TIME_XCPU_STIME: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_PROC_TIME_XCPU_UTIME: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_PROC_UID_EGID: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_UID_EUID: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_PROC_UID_FSGID: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_PROC_UID_FSUID: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_UID_GID: number;
 
+    /**
+     * @default 17
+     */
     const GLIBTOP_PROC_UID_GROUPS: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_PROC_UID_NGROUPS: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_PROC_UID_NICE: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_PROC_UID_PGRP: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_PROC_UID_PID: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_PROC_UID_PPID: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_PROC_UID_PRIORITY: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_PROC_UID_SESSION: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_PROC_UID_SGID: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_PROC_UID_SUID: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_PROC_UID_TPGID: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_PROC_UID_TTY: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_UID_UID: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_PROC_WD_EXE: number;
 
+    /**
+     * @default 215
+     */
     const GLIBTOP_PROC_WD_EXE_LEN: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_PROC_WD_NUMBER: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_PROC_WD_ROOT: number;
 
+    /**
+     * @default 215
+     */
     const GLIBTOP_PROC_WD_ROOT_LEN: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_SWAP_FREE: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_SWAP_PAGEIN: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_SWAP_PAGEOUT: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_SWAP_TOTAL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_SWAP_USED: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_SYSDEPS_ALL: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_SYSDEPS_CPU: number;
 
+    /**
+     * @default 28
+     */
     const GLIBTOP_SYSDEPS_DISK: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_SYSDEPS_FEATURES: number;
 
+    /**
+     * @default 20
+     */
     const GLIBTOP_SYSDEPS_FSUSAGE: number;
 
+    /**
+     * @default 5
+     */
     const GLIBTOP_SYSDEPS_LOADAVG: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_SYSDEPS_MEM: number;
 
+    /**
+     * @default 19
+     */
     const GLIBTOP_SYSDEPS_MOUNTLIST: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_SYSDEPS_MSG_LIMITS: number;
 
+    /**
+     * @default 23
+     */
     const GLIBTOP_SYSDEPS_NETLIST: number;
 
+    /**
+     * @default 21
+     */
     const GLIBTOP_SYSDEPS_NETLOAD: number;
 
+    /**
+     * @default 22
+     */
     const GLIBTOP_SYSDEPS_PPP: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_SYSDEPS_PROCLIST: number;
 
+    /**
+     * @default 26
+     */
     const GLIBTOP_SYSDEPS_PROC_AFFINITY: number;
 
+    /**
+     * @default 17
+     */
     const GLIBTOP_SYSDEPS_PROC_ARGS: number;
 
+    /**
+     * @default 27
+     */
     const GLIBTOP_SYSDEPS_PROC_IO: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_SYSDEPS_PROC_KERNEL: number;
 
+    /**
+     * @default 18
+     */
     const GLIBTOP_SYSDEPS_PROC_MAP: number;
 
+    /**
+     * @default 12
+     */
     const GLIBTOP_SYSDEPS_PROC_MEM: number;
 
+    /**
+     * @default 24
+     */
     const GLIBTOP_SYSDEPS_PROC_OPEN_FILES: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_SYSDEPS_PROC_SEGMENT: number;
 
+    /**
+     * @default 14
+     */
     const GLIBTOP_SYSDEPS_PROC_SIGNAL: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_SYSDEPS_PROC_STATE: number;
 
+    /**
+     * @default 13
+     */
     const GLIBTOP_SYSDEPS_PROC_TIME: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_SYSDEPS_PROC_UID: number;
 
+    /**
+     * @default 25
+     */
     const GLIBTOP_SYSDEPS_PROC_WD: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_SYSDEPS_SEM_LIMITS: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_SYSDEPS_SHM_LIMITS: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_SYSDEPS_SWAP: number;
 
+    /**
+     * @default 4
+     */
     const GLIBTOP_SYSDEPS_UPTIME: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_SYSINFO_CPUINFO: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_SYSINFO_NCPU: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_UPTIME_BOOT_TIME: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_UPTIME_IDLETIME: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_UPTIME_UPTIME: number;
 
+    /**
+     * @default 11
+     */
     const GLIBTOP_XCPU_FLAGS: number;
 
+    /**
+     * @default 10
+     */
     const GLIBTOP_XCPU_IDLE: number;
 
+    /**
+     * @default 15
+     */
     const GLIBTOP_XCPU_IOWAIT: number;
 
+    /**
+     * @default 16
+     */
     const GLIBTOP_XCPU_IRQ: number;
 
+    /**
+     * @default 8
+     */
     const GLIBTOP_XCPU_NICE: number;
 
+    /**
+     * @default 17
+     */
     const GLIBTOP_XCPU_SOFTIRQ: number;
 
+    /**
+     * @default 9
+     */
     const GLIBTOP_XCPU_SYS: number;
 
+    /**
+     * @default 6
+     */
     const GLIBTOP_XCPU_TOTAL: number;
 
+    /**
+     * @default 7
+     */
     const GLIBTOP_XCPU_USER: number;
 
+    /**
+     * @default 0
+     */
     const GLIBTOP_XDISK_SECTORS_READ: number;
 
+    /**
+     * @default 2
+     */
     const GLIBTOP_XDISK_SECTORS_WRITE: number;
 
+    /**
+     * @default 1
+     */
     const GLIBTOP_XDISK_TIME_READ: number;
 
+    /**
+     * @default 3
+     */
     const GLIBTOP_XDISK_TIME_WRITE: number;
 
+    /**
+     * @default 255
+     */
     const HOSTNAMSZ: number;
 
+    /**
+     * @default 2
+     */
     const LIBGTOP_MAJOR_VERSION: number;
 
+    /**
+     * @default 3
+     */
     const LIBGTOP_MICRO_VERSION: number;
 
+    /**
+     * @default 41
+     */
     const LIBGTOP_MINOR_VERSION: number;
 
+    /**
+     * @default MAGIC-1
+     */
     const MCOOKIE_NAME: string;
 
+    /**
+     * @default 42980
+     */
     const MCOOKIE_SCREEN: string;
 
+    /**
+     * @default MIT-MAGIC-COOKIE-1
+     */
     const MCOOKIE_X_NAME: string;
 
+    /**
+     * @default 2
+     */
     const PATCHLEVEL: number;
 
+    /**
+     * @default 300
+     */
     const REPLYSIZ: number;
 
+    /**
+     * @default 101
+     */
     const TABLE_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const TRUE: number;
 
     function glibtop_close(): void;

@@ -38,16 +38,16 @@ export namespace Xkl {
          * The listener process should handle the per-window states
          *                       and all the related activity
          */
-        MANAGE_WINDOW_STATES,
+        MANAGE_WINDOW_STATES = 1,
         /**
          * Just track the state and pass it to the application above.
          */
-        TRACK_KEYBOARD_STATE,
+        TRACK_KEYBOARD_STATE = 2,
         /**
          * The listener process should help backend to maintain the configuration
          *                  (manually switch layouts etc).
          */
-        MANAGE_LAYOUTS,
+        MANAGE_LAYOUTS = 4,
     }
 
 
@@ -66,18 +66,27 @@ export namespace Xkl {
         /**
          * Group was changed
          */
-        GROUP_CHANGED,
+        GROUP_CHANGED = 0,
         /**
          * Indicators were changed
          */
-        INDICATORS_CHANGED,
+        INDICATORS_CHANGED = 1,
     }
 
 
+    /**
+     * @default 192
+     */
     const MAX_CI_DESC_LENGTH: number;
 
+    /**
+     * @default 32
+     */
     const MAX_CI_NAME_LENGTH: number;
 
+    /**
+     * @default 10
+     */
     const MAX_CI_SHORT_DESC_LENGTH: number;
 
     /**
@@ -142,28 +151,28 @@ export namespace Xkl {
         /**
          * Backend allows to toggls indicators on/off
          */
-        CAN_TOGGLE_INDICATORS,
+        CAN_TOGGLE_INDICATORS = 1,
         /**
          * Backend allows writing ASCII representation of the configuration
          */
-        CAN_OUTPUT_CONFIG_AS_ASCII,
+        CAN_OUTPUT_CONFIG_AS_ASCII = 2,
         /**
          * Backend allows writing binary representation of the configuration
          */
-        CAN_OUTPUT_CONFIG_AS_BINARY,
+        CAN_OUTPUT_CONFIG_AS_BINARY = 4,
         /**
          * Backend supports multiple layouts
          */
-        MULTIPLE_LAYOUTS_SUPPORTED,
+        MULTIPLE_LAYOUTS_SUPPORTED = 8,
         /**
          * Backend requires manual configuration, some daemon should do
          *                                   xkl_start_listen(engine,XKLL_MANAGE_LAYOUTS);
          */
-        REQUIRES_MANUAL_LAYOUT_MANAGEMENT,
+        REQUIRES_MANUAL_LAYOUT_MANAGEMENT = 16,
         /**
          * Backend supports device discovery, can notify
          */
-        DEVICE_DISCOVERY,
+        DEVICE_DISCOVERY = 32,
     }
 
 
@@ -608,12 +617,12 @@ export namespace Xkl {
              * @signal
              * @run-last
              */
-            "X-state-changed": (arg0: EngineStateChange, arg1: number, arg2: boolean) => void;
+            "X-state-changed": (object: EngineStateChange, p0: number, p1: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "new-toplevel-window": (arg0: number, arg1: number) => number;
+            "new-toplevel-window": (object: number, p0: number) => number;
             "notify::backend-name": (pspec: GObject.ParamSpec) => void;
             "notify::default-group": (pspec: GObject.ParamSpec) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;

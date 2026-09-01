@@ -24,9 +24,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum BackgroundShading {
-        SOLID,
-        VERTICAL,
-        HORIZONTAL,
+        SOLID = 0,
+        VERTICAL = 1,
+        HORIZONTAL = 2,
     }
 
 
@@ -34,13 +34,13 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum BackgroundStyle {
-        NONE,
-        WALLPAPER,
-        CENTERED,
-        SCALED,
-        STRETCHED,
-        ZOOM,
-        SPANNED,
+        NONE = 0,
+        WALLPAPER = 1,
+        CENTERED = 2,
+        SCALED = 3,
+        STRETCHED = 4,
+        ZOOM = 5,
+        SPANNED = 6,
     }
 
 
@@ -48,9 +48,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum DeviceSendEvents {
-        ENABLED,
-        DISABLED,
-        DISABLED_ON_EXTERNAL_MOUSE,
+        ENABLED = 0,
+        DISABLED = 1,
+        DISABLED_ON_EXTERNAL_MOUSE = 2,
     }
 
 
@@ -58,9 +58,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum FocusMode {
-        CLICK,
-        SLOPPY,
-        MOUSE,
+        CLICK = 0,
+        SLOPPY = 1,
+        MOUSE = 2,
     }
 
 
@@ -68,8 +68,8 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum FocusNewWindows {
-        SMART,
-        STRICT,
+        SMART = 0,
+        STRICT = 1,
     }
 
 
@@ -77,10 +77,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MagnifierLensShape {
-        NONE,
-        SQUARE,
-        HORIZONTAL,
-        VERTICAL,
+        NONE = 0,
+        SQUARE = 1,
+        HORIZONTAL = 2,
+        VERTICAL = 3,
     }
 
 
@@ -88,10 +88,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MagnifierMouseTrackingMode {
-        NONE,
-        CENTERED,
-        PROPORTIONAL,
-        PUSH,
+        NONE = 0,
+        CENTERED = 1,
+        PROPORTIONAL = 2,
+        PUSH = 3,
     }
 
 
@@ -99,12 +99,12 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MagnifierScreenPosition {
-        NONE,
-        FULL_SCREEN,
-        TOP_HALF,
-        BOTTOM_HALF,
-        LEFT_HALF,
-        RIGHT_HALF,
+        NONE = 0,
+        FULL_SCREEN = 1,
+        TOP_HALF = 2,
+        BOTTOM_HALF = 3,
+        LEFT_HALF = 4,
+        RIGHT_HALF = 5,
     }
 
 
@@ -112,61 +112,61 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MediaKeyType {
-        MUTE,
-        MUTE_QUIET,
-        VOLUME_UP,
-        VOLUME_UP_QUIET,
-        VOLUME_DOWN,
-        VOLUME_DOWN_QUIET,
-        MIC_MUTE,
-        EJECT,
-        MEDIA,
-        PLAY,
-        PAUSE,
-        STOP,
-        PREVIOUS,
-        NEXT,
-        REWIND,
-        FORWARD,
-        REPEAT,
-        RANDOM,
-        SCREENSHOT,
-        SCREENSHOT_CLIP,
-        SEPARATOR,
-        WINDOW_SCREENSHOT,
-        WINDOW_SCREENSHOT_CLIP,
-        AREA_SCREENSHOT,
-        AREA_SCREENSHOT_CLIP,
-        TOUCHPAD,
-        TOUCHPAD_ON,
-        TOUCHPAD_OFF,
-        LOGOUT,
-        SHUTDOWN,
-        HOME,
-        CALCULATOR,
-        SEARCH,
-        EMAIL,
-        SCREENSAVER,
-        HELP,
-        TERMINAL,
-        WWW,
-        VIDEO_OUT,
-        ROTATE_VIDEO,
-        ROTATE_VIDEO_LOCK,
-        SCREENREADER,
-        ON_SCREEN_KEYBOARD,
-        INCREASE_TEXT,
-        DECREASE_TEXT,
-        TOGGLE_CONTRAST,
-        SUSPEND,
-        HIBERNATE,
-        SCREEN_BRIGHTNESS_UP,
-        SCREEN_BRIGHTNESS_DOWN,
-        KEYBOARD_BRIGHTNESS_UP,
-        KEYBOARD_BRIGHTNESS_DOWN,
-        KEYBOARD_BRIGHTNESS_TOGGLE,
-        BATTERY,
-        LAST,
+        MUTE = 0,
+        MUTE_QUIET = 1,
+        VOLUME_UP = 2,
+        VOLUME_UP_QUIET = 3,
+        VOLUME_DOWN = 4,
+        VOLUME_DOWN_QUIET = 5,
+        MIC_MUTE = 6,
+        EJECT = 7,
+        MEDIA = 8,
+        PLAY = 9,
+        PAUSE = 10,
+        STOP = 11,
+        PREVIOUS = 12,
+        NEXT = 13,
+        REWIND = 14,
+        FORWARD = 15,
+        REPEAT = 16,
+        RANDOM = 17,
+        SCREENSHOT = 18,
+        SCREENSHOT_CLIP = 19,
+        SEPARATOR = 20,
+        WINDOW_SCREENSHOT = 21,
+        WINDOW_SCREENSHOT_CLIP = 22,
+        AREA_SCREENSHOT = 23,
+        AREA_SCREENSHOT_CLIP = 24,
+        TOUCHPAD = 25,
+        TOUCHPAD_ON = 26,
+        TOUCHPAD_OFF = 27,
+        LOGOUT = 28,
+        SHUTDOWN = 29,
+        HOME = 30,
+        CALCULATOR = 31,
+        SEARCH = 32,
+        EMAIL = 33,
+        SCREENSAVER = 34,
+        HELP = 35,
+        TERMINAL = 36,
+        WWW = 37,
+        VIDEO_OUT = 38,
+        ROTATE_VIDEO = 39,
+        ROTATE_VIDEO_LOCK = 40,
+        SCREENREADER = 41,
+        ON_SCREEN_KEYBOARD = 42,
+        INCREASE_TEXT = 43,
+        DECREASE_TEXT = 44,
+        TOGGLE_CONTRAST = 45,
+        SUSPEND = 46,
+        HIBERNATE = 47,
+        SCREEN_BRIGHTNESS_UP = 48,
+        SCREEN_BRIGHTNESS_DOWN = 49,
+        KEYBOARD_BRIGHTNESS_UP = 50,
+        KEYBOARD_BRIGHTNESS_DOWN = 51,
+        KEYBOARD_BRIGHTNESS_TOGGLE = 52,
+        BATTERY = 53,
+        LAST = 54,
     }
 
 
@@ -174,10 +174,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MouseDwellDirection {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
+        LEFT = 0,
+        RIGHT = 1,
+        UP = 2,
+        DOWN = 3,
     }
 
 
@@ -185,8 +185,8 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum MouseDwellMode {
-        WINDOW,
-        GESTURE,
+        WINDOW = 0,
+        GESTURE = 1,
     }
 
 
@@ -194,9 +194,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum NotificationScreenDisplay {
-        PRIMARY_SCREEN,
-        ACTIVE_SCREEN,
-        FIXED_SCREEN,
+        PRIMARY_SCREEN = 0,
+        ACTIVE_SCREEN = 1,
+        FIXED_SCREEN = 2,
     }
 
 
@@ -204,10 +204,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum PadButtonAction {
-        NONE,
-        HELP,
-        SWITCH_MONITOR,
-        KEYBINDING,
+        NONE = 0,
+        HELP = 1,
+        SWITCH_MONITOR = 2,
+        KEYBINDING = 3,
     }
 
 
@@ -215,9 +215,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum PointerAccelProfile {
-        DEFAULT,
-        FLAT,
-        ADAPTIVE,
+        DEFAULT = 0,
+        FLAT = 1,
+        ADAPTIVE = 2,
     }
 
 
@@ -225,9 +225,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum ProxyMode {
-        NONE,
-        MANUAL,
-        AUTO,
+        NONE = 0,
+        MANUAL = 1,
+        AUTO = 2,
     }
 
 
@@ -235,9 +235,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum ScreensaverMode {
-        BLANK_ONLY,
-        RANDOM,
-        SINGLE,
+        BLANK_ONLY = 0,
+        RANDOM = 1,
+        SINGLE = 2,
     }
 
 
@@ -245,12 +245,12 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum StylusButtonAction {
-        DEFAULT,
-        MIDDLE,
-        RIGHT,
-        BACK,
-        FORWARD,
-        DISABLED,
+        DEFAULT = 0,
+        MIDDLE = 1,
+        RIGHT = 2,
+        BACK = 3,
+        FORWARD = 4,
+        DISABLED = 5,
     }
 
 
@@ -258,8 +258,8 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum TabletMapping {
-        ABSOLUTE,
-        RELATIVE,
+        ABSOLUTE = 0,
+        RELATIVE = 1,
     }
 
 
@@ -267,16 +267,16 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum TitlebarAction {
-        TOGGLE_SHADE,
-        TOGGLE_MAXIMIZE,
-        TOGGLE_MAXIMIZE_HORIZONTALLY,
-        TOGGLE_MAXIMIZE_VERTICALLY,
-        TOGGLE_STUCK,
-        TOGGLE_ABOVE,
-        MINIMIZE,
-        NONE,
-        LOWER,
-        MENU,
+        TOGGLE_SHADE = 0,
+        TOGGLE_MAXIMIZE = 1,
+        TOGGLE_MAXIMIZE_HORIZONTALLY = 2,
+        TOGGLE_MAXIMIZE_VERTICALLY = 3,
+        TOGGLE_STUCK = 4,
+        TOGGLE_ABOVE = 5,
+        MINIMIZE = 6,
+        NONE = 7,
+        LOWER = 8,
+        MENU = 9,
     }
 
 
@@ -284,9 +284,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum TitlebarScrollAction {
-        SHADE,
-        OPACITY,
-        NONE,
+        SHADE = 10,
+        OPACITY = 11,
+        NONE = 12,
     }
 
 
@@ -294,8 +294,8 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum ToolbarIconSize {
-        SMALL,
-        LARGE,
+        SMALL = 0,
+        LARGE = 1,
     }
 
 
@@ -303,10 +303,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum ToolbarStyle {
-        BOTH,
-        BOTH_HORIZ,
-        ICONS,
-        TEXT,
+        BOTH = 0,
+        BOTH_HORIZ = 1,
+        ICONS = 2,
+        TEXT = 3,
     }
 
 
@@ -314,10 +314,10 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum TouchpadClickMethod {
-        DEFAULT,
-        NONE,
-        AREAS,
-        FINGERS,
+        DEFAULT = 0,
+        NONE = 1,
+        AREAS = 2,
+        FINGERS = 3,
     }
 
 
@@ -325,9 +325,9 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum TouchpadHandedness {
-        RIGHT,
-        LEFT,
-        MOUSE,
+        RIGHT = 0,
+        LEFT = 1,
+        MOUSE = 2,
     }
 
 
@@ -335,8 +335,8 @@ export namespace CDesktopEnums {
      * @gir-type Enum
      */
     enum VisualBellType {
-        FULLSCREEN_FLASH,
-        FRAME_FLASH,
+        FULLSCREEN_FLASH = 0,
+        FRAME_FLASH = 1,
     }
 
 

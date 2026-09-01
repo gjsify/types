@@ -89,7 +89,7 @@ export namespace Abi {
              * @signal
              * @run-last
              */
-            selected: (arg0: number, arg1: number) => void;
+            selected: (object: number, p0: number) => void;
             "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
             "notify::image": (pspec: GObject.ParamSpec) => void;
             "notify::image-position": (pspec: GObject.ParamSpec) => void;
@@ -612,27 +612,27 @@ export namespace Abi {
              * @signal
              * @run-last
              */
-            bold: (arg0: boolean) => void;
+            bold: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            bottomline: (arg0: boolean) => void;
+            bottomline: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "can-redo": (arg0: boolean) => void;
+            "can-redo": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "can-undo": (arg0: boolean) => void;
+            "can-undo": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "center-align": (arg0: boolean) => void;
+            "center-align": (object: boolean) => void;
             /**
              * @signal
              * @run-last
@@ -642,122 +642,122 @@ export namespace Abi {
              * @signal
              * @run-last
              */
-            color: (arg0: number, arg1: number, arg2: number) => void;
+            color: (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "current-page": (arg0: number) => void;
+            "current-page": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "enter-selection": (arg0: boolean) => void;
+            "enter-selection": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "font-family": (arg0: string) => void;
+            "font-family": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "font-size": (arg0: number) => void;
+            "font-size": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "image-selected": (arg0: boolean) => void;
+            "image-selected": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "is-dirty": (arg0: boolean) => void;
+            "is-dirty": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            italic: (arg0: boolean) => void;
+            italic: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "justify-align": (arg0: boolean) => void;
+            "justify-align": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "leave-selection": (arg0: boolean) => void;
+            "leave-selection": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "left-align": (arg0: boolean) => void;
+            "left-align": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "line-through": (arg0: boolean) => void;
+            "line-through": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            overline: (arg0: boolean) => void;
+            overline: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "page-count": (arg0: number) => void;
+            "page-count": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "right-align": (arg0: boolean) => void;
+            "right-align": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "selection-cleared": (arg0: boolean) => void;
+            "selection-cleared": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "style-name": (arg0: string) => void;
+            "style-name": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            subscript: (arg0: boolean) => void;
+            subscript: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            superscript: (arg0: boolean) => void;
+            superscript: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "table-state": (arg0: boolean) => void;
+            "table-state": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "text-selected": (arg0: boolean) => void;
+            "text-selected": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            topline: (arg0: boolean) => void;
+            topline: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            underline: (arg0: boolean) => void;
+            underline: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            zoom: (arg0: number) => void;
+            zoom: (object: number) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::content-length": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-on": (pspec: GObject.ParamSpec) => void;

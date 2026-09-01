@@ -43,6 +43,7 @@ export namespace GnomeMaps {
      * @param content XML data
      * @param length Length of data
      * @returns A MapsOSMObject
+     * @throws GLib.Error
      */
     function osm_parse(content: string, length: number): OSMObject;
 
@@ -112,6 +113,7 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         compute_size_finish(result: Gio.AsyncResult): number;
 
@@ -139,6 +141,7 @@ export namespace GnomeMaps {
          * Finishes an `exec_async()` operation.
          * @param result 
          * @returns `true` if the operation succeeded, `false` otherwise
+         * @throws GLib.Error
          */
         exec_finish(result: Gio.AsyncResult): boolean;
 
@@ -167,6 +170,7 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         filter_by_mtime_finish(result: Gio.AsyncResult): string[];
 
@@ -194,6 +198,7 @@ export namespace GnomeMaps {
          * Finishes a `get_async()` operation.
          * @param result a {@link Gio.AsyncResult}
          * @returns the data, or `null` if the data was not found or an error occurred
+         * @throws GLib.Error
          */
         get_finish(result: Gio.AsyncResult): GLib.Bytes | null;
 
@@ -228,6 +233,7 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         insert_finish(result: Gio.AsyncResult): boolean;
 
@@ -250,6 +256,7 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         list_tiles_finish(result: Gio.AsyncResult): string[];
 
@@ -267,11 +274,13 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         list_tilesets_finish(result: Gio.AsyncResult): string[];
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         open(path: string): boolean;
 
@@ -297,6 +306,7 @@ export namespace GnomeMaps {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
     }

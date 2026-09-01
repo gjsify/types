@@ -40,27 +40,27 @@ export namespace Manette {
         /**
          * Left analog stick, horizontal axis
          */
-        LEFT_X,
+        LEFT_X = 0,
         /**
          * Left analog stick, vertical axis
          */
-        LEFT_Y,
+        LEFT_Y = 1,
         /**
          * Right analog stick, horizontal axis
          */
-        RIGHT_X,
+        RIGHT_X = 2,
         /**
          * Right analog stick, vertical axis
          */
-        RIGHT_Y,
+        RIGHT_Y = 3,
         /**
          * Left trigger (L2, LT or ZL)
          */
-        LEFT_TRIGGER,
+        LEFT_TRIGGER = 4,
         /**
          * Right trigger (R2, RT or ZR)
          */
-        RIGHT_TRIGGER,
+        RIGHT_TRIGGER = 5,
     }
 
 
@@ -81,116 +81,116 @@ export namespace Manette {
         /**
          * D-pad (up)
          */
-        DPAD_UP,
+        DPAD_UP = 0,
         /**
          * D-pad (down)
          */
-        DPAD_DOWN,
+        DPAD_DOWN = 1,
         /**
          * D-pad (left)
          */
-        DPAD_LEFT,
+        DPAD_LEFT = 2,
         /**
          * D-pad (right)
          */
-        DPAD_RIGHT,
+        DPAD_RIGHT = 3,
         /**
          * Top face button
          *     (XBox Y, Nintendo X, PlayStation triangle)
          */
-        NORTH,
+        NORTH = 4,
         /**
          * Bottom face button
          *     (XBox A, Nintendo B, PlayStation X)
          */
-        SOUTH,
+        SOUTH = 5,
         /**
          * Left face button
          *     (XBox X, Nintendo Y, PlayStation square)
          */
-        WEST,
+        WEST = 6,
         /**
          * Right face button
          *     (XBox B, Nintendo A, PlayStation circle)
          */
-        EAST,
+        EAST = 7,
         /**
          * Left menu button
          */
-        SELECT,
+        SELECT = 8,
         /**
          * Right menu button
          */
-        START,
+        START = 9,
         /**
          * Center menu button (Home, Guide, Steam etc)
          */
-        MODE,
+        MODE = 10,
         /**
          * Left shoulder button (L, L1 or LB)
          */
-        LEFT_SHOULDER,
+        LEFT_SHOULDER = 11,
         /**
          * Right shoulder button (R, R1 or RB)
          */
-        RIGHT_SHOULDER,
+        RIGHT_SHOULDER = 12,
         /**
          * Left stick
          */
-        LEFT_STICK,
+        LEFT_STICK = 13,
         /**
          * Right stick
          */
-        RIGHT_STICK,
+        RIGHT_STICK = 14,
         /**
          * Upper left paddle
          *     (Steam Deck L4 or XBox Elite P3)
          */
-        LEFT_PADDLE1,
+        LEFT_PADDLE1 = 15,
         /**
          * Lower left paddle
          *     (Steam Deck L5 or XBox Elite P4)
          */
-        LEFT_PADDLE2,
+        LEFT_PADDLE2 = 16,
         /**
          * Upper right paddle
          *     (Steam Deck R4 or XBox Elite P1)
          */
-        RIGHT_PADDLE1,
+        RIGHT_PADDLE1 = 17,
         /**
          * Lower right paddle
          *     (Steam Deck R5 or XBox Elite P2)
          */
-        RIGHT_PADDLE2,
+        RIGHT_PADDLE2 = 18,
         /**
          * Additional button
          *     (Steam Deck QAM button, Xbox Series X share button etc)
          */
-        MISC1,
+        MISC1 = 19,
         /**
          * Additional button
          */
-        MISC2,
+        MISC2 = 20,
         /**
          * Additional button
          */
-        MISC3,
+        MISC3 = 21,
         /**
          * Additional button
          */
-        MISC4,
+        MISC4 = 22,
         /**
          * Additional button
          */
-        MISC5,
+        MISC5 = 23,
         /**
          * Additional button
          */
-        MISC6,
+        MISC6 = 24,
         /**
          * PS4/PS5 touchpad button
          */
-        TOUCHPAD,
+        TOUCHPAD = 25,
     }
 
 
@@ -211,32 +211,36 @@ export namespace Manette {
         /**
          * Generic gamepads
          */
-        GENERIC,
+        GENERIC = 0,
         /**
          * Steam Deck
          */
-        STEAM_DECK,
+        STEAM_DECK = 1,
     }
 
 
     /**
      * libmanette major version component (e.g. 1 if the version is 1.2.3).
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * libmanette micro version component (e.g. 3 if the version is 1.2.3).
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * libmanette minor version component (e.g. 2 if the version is 1.2.3).
+     * @default 0
      */
     const MINOR_VERSION: number;
 
     /**
      * libmanette version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 1.0.alpha
      */
     const VERSION_S: string;
 
@@ -287,19 +291,19 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            "absolute-axis-changed": (arg0: Axis, arg1: number) => void;
+            "absolute-axis-changed": (axis: Axis, value: number) => void;
             /**
              * Emitted when `button` is pressed.
              * @signal
              * @run-last
              */
-            "button-pressed": (arg0: Button) => void;
+            "button-pressed": (button: Button) => void;
             /**
              * Emitted when `button` is released.
              * @signal
              * @run-last
              */
-            "button-released": (arg0: Button) => void;
+            "button-released": (button: Button) => void;
             /**
              * Emitted when the device is disconnected.
              * @signal
@@ -311,25 +315,25 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            "unmapped-absolute-axis-changed": (arg0: number, arg1: number) => void;
+            "unmapped-absolute-axis-changed": (axis: number, value: number) => void;
             /**
              * Emitted when an unmapped button is pressed.
              * @signal
              * @run-last
              */
-            "unmapped-button-pressed": (arg0: number) => void;
+            "unmapped-button-pressed": (index: number) => void;
             /**
              * Emitted when an unmapped button is released.
              * @signal
              * @run-last
              */
-            "unmapped-button-released": (arg0: number) => void;
+            "unmapped-button-released": (index: number) => void;
             /**
              * Emitted when an unmapped hat axis' value changes.
              * @signal
              * @run-last
              */
-            "unmapped-hat-axis-changed": (arg0: number, arg1: number) => void;
+            "unmapped-hat-axis-changed": (axis: number, value: number) => void;
         }
 
         // Constructor properties interface
@@ -487,13 +491,13 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            "device-connected": (arg0: Device) => void;
+            "device-connected": (device: Device) => void;
             /**
              * Emitted when `device` is disconnected.
              * @signal
              * @run-last
              */
-            "device-disconnected": (arg0: Device) => void;
+            "device-disconnected": (device: Device) => void;
         }
 
         // Constructor properties interface

@@ -103,6 +103,7 @@ export namespace Xfconf {
      * Initializes the Xfconf library.  Can be called multiple times with no
      * adverse effects.
      * @returns `true` if the library was initialized succesfully, `false` on          error.  If there is an error `error` will be set.
+     * @throws GLib.Error
      */
     function init(): boolean;
 
@@ -263,7 +264,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            "property-changed": (arg0: string, arg1: unknown) => void;
+            "property-changed": (property: string, value: unknown) => void;
             "notify::channel-name": (pspec: GObject.ParamSpec) => void;
             "notify::is-singleton": (pspec: GObject.ParamSpec) => void;
             "notify::property-base": (pspec: GObject.ParamSpec) => void;
@@ -278,7 +279,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            "property-changed::channel-name": (arg0: string, arg1: unknown) => void;
+            "property-changed::channel-name": (property: string, value: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -290,7 +291,7 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            "property-changed::is-singleton": (arg0: string, arg1: unknown) => void;
+            "property-changed::is-singleton": (property: string, value: unknown) => void;
             /**
              * Emitted whenever a property on `channel` has changed.  If
              * the change was caused by the removal of `property`, `value`
@@ -302,8 +303,8 @@ export namespace Xfconf {
              * @detailed
              * @run-last
              */
-            "property-changed::property-base": (arg0: string, arg1: unknown) => void;
-            [key: `property-changed::${string}`]: (arg0: string, arg1: unknown) => void;
+            "property-changed::property-base": (property: string, value: unknown) => void;
+            [key: `property-changed::${string}`]: (property: string, value: unknown) => void;
         }
 
         // Constructor properties interface

@@ -4,82 +4,96 @@
 ![version](https://img.shields.io/npm/v/@girs/retro-2)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/retro-2)
 
+GJS TypeScript type definitions for Retro-2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for Retro-2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/retro-2
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/retro-2` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/retro-2/ambient` | only the `gi://` module declarations |
+| `@girs/retro-2/import` | only the `imports.gi` declarations |
+| `@girs/retro-2/retro-2` | the namespace, without the side-effecting declarations |
+| `@girs/retro-2/vocabulary` | GIR-derived widget data: settable properties, enum nicks, slot candidates |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import Retro from '@girs/retro-2';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/retro-2` or `@girs/retro-2/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/retro-2'
+import '@girs/retro-2';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/retro-2"],
-  ...
-}
+{ "include": ["@girs/retro-2"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import Retro from 'gi://Retro?version=2';
 ```
 
-### Global import
+Referencing `@girs/retro-2/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/retro-2` or `@girs/retro-2/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/retro-2'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/retro-2"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/retro-2/import`:
 
 ```ts
 const Retro = imports.gi.Retro;
 ```
 
-### Bundle
+## Widget vocabulary
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+`retro-2` declares widgets, so it also carries what the GIR says about them, as
+types and as values a test can read:
+
+```ts
+import type { Widgets, PropsOf } from '@girs/retro-2/vocabulary';
+import { OWN_PROPS, ENUM_NICKS, PROVENANCE } from '@girs/retro-2/vocabulary';
+```
+
+Properties are keyed the way GObject registered them, writable-only and optional, so they
+match `g_object_set`, GtkBuilder XML and Blueprint. `PROVENANCE.libraryVersion` names the
+library release this was generated from, which lets a check tell "newer than what is
+installed" from "wrong".
+
+This subpath answers what the GIR says, not what the installed library has. For the
+second question, ask the library.
+
+## Building
+
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

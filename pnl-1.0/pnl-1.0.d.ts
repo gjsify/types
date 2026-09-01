@@ -43,13 +43,13 @@ export namespace Pnl {
      * @gir-type Enum
      */
     enum AnimationMode {
-        LINEAR,
-        EASE_IN_QUAD,
-        EASE_IN_OUT_QUAD,
-        EASE_OUT_QUAD,
-        EASE_IN_CUBIC,
-        EASE_OUT_CUBIC,
-        EASE_IN_OUT_CUBIC,
+        LINEAR = 0,
+        EASE_IN_QUAD = 1,
+        EASE_IN_OUT_QUAD = 3,
+        EASE_OUT_QUAD = 2,
+        EASE_IN_CUBIC = 4,
+        EASE_OUT_CUBIC = 5,
+        EASE_IN_OUT_CUBIC = 6,
     }
 
 
@@ -64,32 +64,36 @@ export namespace Pnl {
      * @gir-type Enum
      */
     enum DockRevealerTransitionType {
-        NONE,
-        SLIDE_RIGHT,
-        SLIDE_LEFT,
-        SLIDE_UP,
-        SLIDE_DOWN,
+        NONE = 0,
+        SLIDE_RIGHT = 1,
+        SLIDE_LEFT = 2,
+        SLIDE_UP = 3,
+        SLIDE_DOWN = 4,
     }
 
 
     /**
      * pnl major version component (e.g. 1 if `PNL_VERSION` is 1.2.3)
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * pnl micro version component (e.g. 3 if `PNL_VERSION` is 1.2.3)
+     * @default 1
      */
     const MICRO_VERSION: number;
 
     /**
      * pnl minor version component (e.g. 2 if `PNL_VERSION` is 1.2.3)
+     * @default 25
      */
     const MINOR_VERSION: number;
 
     /**
      * pnl version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 3.25.1
      */
     const VERSION_S: string;
 
@@ -742,12 +746,12 @@ export namespace Pnl {
              * @signal
              * @run-last
              */
-            "register-dock": (arg0: Dock) => void;
+            "register-dock": (object: Dock) => void;
             /**
              * @signal
              * @run-last
              */
-            "unregister-dock": (arg0: Dock) => void;
+            "unregister-dock": (object: Dock) => void;
         }
 
         // Constructor properties interface
@@ -2706,12 +2710,12 @@ export namespace Pnl {
              * @signal
              * @run-last
              */
-            "resize-drag-begin": (arg0: Gtk.Widget) => void;
+            "resize-drag-begin": (object: Gtk.Widget) => void;
             /**
              * @signal
              * @run-last
              */
-            "resize-drag-end": (arg0: Gtk.Widget) => void;
+            "resize-drag-end": (object: Gtk.Widget) => void;
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;

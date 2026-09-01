@@ -27,12 +27,12 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum AudioFormatType {
-        U8,
-        S8,
-        U16,
-        S16,
-        U32,
-        S32,
+        U8 = 0,
+        S8 = 1,
+        U16 = 2,
+        S16 = 3,
+        U32 = 4,
+        S32 = 5,
     }
 
 
@@ -47,55 +47,55 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionAuth {
-        INVALID,
+        INVALID = 0,
         /**
          * No authentication is needed and protocol data is to be sent unencrypted.
          */
-        NONE,
+        NONE = 1,
         /**
          * VNC authentication is to be used and protocol data is to be sent unencrypted.
          */
-        VNC,
+        VNC = 2,
         /**
          * RealVNC authentication.
          */
-        RA2,
+        RA2 = 5,
         /**
          * RealVNC authentication.
          */
-        RA2NE,
+        RA2NE = 6,
         /**
          * The Tight security type is a generic protocol extension.
          */
-        TIGHT,
+        TIGHT = 16,
         /**
          * Ultra authentication.
          */
-        ULTRA,
+        ULTRA = 17,
         /**
          * TLS authentication.
          */
-        TLS,
+        TLS = 18,
         /**
          * The VeNCrypt security type is a generic authentication method which encapsulates multiple authentication subtypes.
          */
-        VENCRYPT,
+        VENCRYPT = 19,
         /**
          * SASL authentication.
          */
-        SASL,
+        SASL = 20,
         /**
          * Apple remote desktop (screen sharing) authentication.
          */
-        ARD,
+        ARD = 30,
         /**
          * Authentication used by UltraVNC.
          */
-        MSLOGONII,
+        MSLOGONII = 113,
         /**
          * Authentication used by UltraVNC.
          */
-        MSLOGON,
+        MSLOGON = 4294967290,
     }
 
 
@@ -110,15 +110,15 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionAuthVencrypt {
-        PLAIN,
-        TLSNONE,
-        TLSVNC,
-        TLSPLAIN,
-        X509NONE,
-        X509VNC,
-        X509PLAIN,
-        X509SASL,
-        TLSSASL,
+        PLAIN = 256,
+        TLSNONE = 257,
+        TLSVNC = 258,
+        TLSPLAIN = 259,
+        X509NONE = 260,
+        X509VNC = 261,
+        X509PLAIN = 262,
+        X509SASL = 263,
+        TLSSASL = 264,
     }
 
 
@@ -133,10 +133,10 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionCredential {
-        PASSWORD,
-        USERNAME,
-        CLIENTNAME,
-        CA_CERT_DATA,
+        PASSWORD = 0,
+        USERNAME = 1,
+        CLIENTNAME = 2,
+        CA_CERT_DATA = 3,
     }
 
 
@@ -151,37 +151,37 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionEncoding {
-        RAW,
-        COPY_RECT,
-        RRE,
-        CORRE,
-        HEXTILE,
-        TIGHT,
-        ZRLE,
-        TIGHT_JPEG0,
-        TIGHT_JPEG1,
-        TIGHT_JPEG2,
-        TIGHT_JPEG3,
-        TIGHT_JPEG4,
-        TIGHT_JPEG5,
-        TIGHT_JPEG6,
-        TIGHT_JPEG7,
-        TIGHT_JPEG8,
-        TIGHT_JPEG9,
-        DESKTOP_RESIZE,
-        LAST_RECT,
-        WMVI,
-        CURSOR_POS,
-        RICH_CURSOR,
-        XCURSOR,
-        POINTER_CHANGE,
-        EXT_KEY_EVENT,
-        AUDIO,
-        LED_STATE,
-        DESKTOP_NAME,
-        EXTENDED_DESKTOP_RESIZE,
-        XVP,
-        ALPHA_CURSOR,
+        RAW = 0,
+        COPY_RECT = 1,
+        RRE = 2,
+        CORRE = 4,
+        HEXTILE = 5,
+        TIGHT = 7,
+        ZRLE = 16,
+        TIGHT_JPEG0 = -32,
+        TIGHT_JPEG1 = -31,
+        TIGHT_JPEG2 = -30,
+        TIGHT_JPEG3 = -29,
+        TIGHT_JPEG4 = -28,
+        TIGHT_JPEG5 = -27,
+        TIGHT_JPEG6 = -26,
+        TIGHT_JPEG7 = -25,
+        TIGHT_JPEG8 = -24,
+        TIGHT_JPEG9 = -23,
+        DESKTOP_RESIZE = -223,
+        LAST_RECT = -224,
+        WMVI = 1464686185,
+        CURSOR_POS = -232,
+        RICH_CURSOR = -239,
+        XCURSOR = -240,
+        POINTER_CHANGE = -257,
+        EXT_KEY_EVENT = -258,
+        AUDIO = -259,
+        LED_STATE = -261,
+        DESKTOP_NAME = -307,
+        EXTENDED_DESKTOP_RESIZE = -308,
+        XVP = -309,
+        ALPHA_CURSOR = -314,
     }
 
 
@@ -196,9 +196,9 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionPowerAction {
-        SHUTDOWN,
-        REBOOT,
-        RESET,
+        SHUTDOWN = 2,
+        REBOOT = 3,
+        RESET = 4,
     }
 
 
@@ -213,29 +213,53 @@ export namespace GVnc {
      * @gir-type Enum
      */
     enum ConnectionResizeStatus {
-        UNSUPPORTED,
-        OK,
-        ADMIN_PROHIBITED,
-        OUT_OF_RESOURCES,
-        INVALID_LAOUT,
-        FORWARDED,
+        UNSUPPORTED = -1,
+        OK = 0,
+        ADMIN_PROHIBITED = 1,
+        OUT_OF_RESOURCES = 2,
+        INVALID_LAOUT = 3,
+        FORWARDED = 4,
     }
 
 
+    /**
+     * @default 4
+     */
     const LEDSTATE_CAPS_LOCK: number;
 
+    /**
+     * @default 2
+     */
     const LEDSTATE_NUM_LOCK: number;
 
+    /**
+     * @default 1
+     */
     const LEDSTATE_SCROLL_LOCK: number;
 
+    /**
+     * @default 1
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 0
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 5
+     */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 4
+     */
     const PADDING: number;
 
+    /**
+     * @default 20
+     */
     const PADDING_LARGE: number;
 
     /**
@@ -284,12 +308,12 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-audio-playback-data": (arg0: AudioSample) => void;
+            "vnc-audio-playback-data": (object: AudioSample) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-audio-playback-start": (arg0: AudioFormat) => void;
+            "vnc-audio-playback-start": (object: AudioFormat) => void;
             /**
              * @signal
              * @run-first
@@ -712,27 +736,27 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-auth-choose-subtype": (arg0: number, arg1: GObject.ValueArray) => void;
+            "vnc-auth-choose-subtype": (object: number, p0: GObject.ValueArray) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-auth-choose-type": (arg0: GObject.ValueArray) => void;
+            "vnc-auth-choose-type": (object: GObject.ValueArray) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-auth-credential": (arg0: GObject.ValueArray) => void;
+            "vnc-auth-credential": (object: GObject.ValueArray) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-auth-failure": (arg0: string) => void;
+            "vnc-auth-failure": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-auth-unsupported": (arg0: number) => void;
+            "vnc-auth-unsupported": (object: number) => void;
             /**
              * @signal
              * @run-first
@@ -748,17 +772,17 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-cursor-changed": (arg0: Cursor | null) => void;
+            "vnc-cursor-changed": (cursor: Cursor | null) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-desktop-rename": (arg0: string) => void;
+            "vnc-desktop-rename": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-desktop-resize": (arg0: number, arg1: number) => void;
+            "vnc-desktop-resize": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-first
@@ -768,12 +792,12 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-error": (arg0: string) => void;
+            "vnc-error": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-framebuffer-update": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "vnc-framebuffer-update": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-first
@@ -788,12 +812,12 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-pixel-format-changed": (arg0: PixelFormat) => void;
+            "vnc-pixel-format-changed": (object: PixelFormat) => void;
             /**
              * @signal
              * @run-first
              */
-            "vnc-pointer-mode-changed": (arg0: boolean) => void;
+            "vnc-pointer-mode-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-first
@@ -808,7 +832,7 @@ export namespace GVnc {
              * @signal
              * @run-first
              */
-            "vnc-server-cut-text": (arg0: string) => void;
+            "vnc-server-cut-text": (object: string) => void;
             "notify::framebuffer": (pspec: GObject.ParamSpec) => void;
         }
 

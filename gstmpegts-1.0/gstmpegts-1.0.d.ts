@@ -31,28 +31,28 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum ATSCDescriptorType {
-        STUFFING,
-        AC3,
-        CAPTION_SERVICE,
-        CONTENT_ADVISORY,
-        EXTENDED_CHANNEL_NAME,
-        SERVICE_LOCATION,
-        TIME_SHIFTED_SERVICE,
-        COMPONENT_NAME,
-        DCC_DEPARTING_REQUEST,
-        DCC_ARRIVING_REQUEST,
-        REDISTRIBUTION_CONTROL,
-        GENRE,
-        PRIVATE_INFORMATION,
-        EAC3,
-        ENHANCED_SIGNALING,
-        DATA_SERVICE,
-        PID_COUNT,
-        DOWNLOAD_DESCRIPTOR,
-        MULTIPROTOCOL_ENCAPSULATION,
-        MODULE_LINK,
-        CRC32,
-        GROUP_LINK,
+        STUFFING = 128,
+        AC3 = 129,
+        CAPTION_SERVICE = 134,
+        CONTENT_ADVISORY = 135,
+        EXTENDED_CHANNEL_NAME = 160,
+        SERVICE_LOCATION = 161,
+        TIME_SHIFTED_SERVICE = 162,
+        COMPONENT_NAME = 163,
+        DCC_DEPARTING_REQUEST = 168,
+        DCC_ARRIVING_REQUEST = 169,
+        REDISTRIBUTION_CONTROL = 170,
+        GENRE = 171,
+        PRIVATE_INFORMATION = 173,
+        EAC3 = 204,
+        ENHANCED_SIGNALING = 178,
+        DATA_SERVICE = 164,
+        PID_COUNT = 165,
+        DOWNLOAD_DESCRIPTOR = 166,
+        MULTIPROTOCOL_ENCAPSULATION = 167,
+        MODULE_LINK = 180,
+        CRC32 = 181,
+        GROUP_LINK = 184,
     }
 
 
@@ -67,31 +67,31 @@ export namespace GstMpegts {
         /**
          * DigiCipher II video | Identical to ITU-T Rec. H.262 | ISO/IEC 13818-2 Video
          */
-        DCII_VIDEO,
+        DCII_VIDEO = 128,
         /**
          * ATSC A/53 Audio | AC-3
          */
-        AUDIO_AC3,
+        AUDIO_AC3 = 129,
         /**
          * SCTE-27 Subtitling
          */
-        SUBTITLING,
+        SUBTITLING = 130,
         /**
          * SCTE-19 Isochronous data | Reserved
          */
-        ISOCH_DATA,
+        ISOCH_DATA = 131,
         /**
          * SCTE-35 Splice Information Table
          */
-        SIT,
+        SIT = 134,
         /**
          * E-AC-3 A/52:2018
          */
-        AUDIO_EAC3,
+        AUDIO_EAC3 = 135,
         /**
          * E-AC-3 A/107 (ATSC 2.0)
          */
-        AUDIO_DTS_HD,
+        AUDIO_DTS_HD = 136,
     }
 
 
@@ -99,10 +99,10 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum AtscMGTTableType {
-        EIT0,
-        EIT127,
-        ETT0,
-        ETT127,
+        EIT0 = 256,
+        EIT127 = 383,
+        ETT0 = 512,
+        ETT127 = 639,
     }
 
 
@@ -110,9 +110,9 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum CableOuterFECScheme {
-        UNDEFINED,
-        NONE,
-        RS_204_188,
+        UNDEFINED = 0,
+        NONE = 1,
+        RS_204_188 = 2,
     }
 
 
@@ -120,14 +120,14 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum ComponentStreamContent {
-        MPEG2_VIDEO,
-        MPEG1_LAYER2_AUDIO,
-        TELETEXT_OR_SUBTITLE,
-        AC_3,
-        AVC,
-        AAC,
-        DTS,
-        SRM_CPCM,
+        MPEG2_VIDEO = 1,
+        MPEG1_LAYER2_AUDIO = 2,
+        TELETEXT_OR_SUBTITLE = 3,
+        AC_3 = 4,
+        AVC = 5,
+        AAC = 6,
+        DTS = 7,
+        SRM_CPCM = 8,
     }
 
 
@@ -135,17 +135,17 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum ContentNibbleHi {
-        MOVIE_DRAMA,
-        NEWS_CURRENT_AFFAIRS,
-        SHOW_GAME_SHOW,
-        SPORTS,
-        CHILDREN_YOUTH_PROGRAM,
-        MUSIC_BALLET_DANCE,
-        ARTS_CULTURE,
-        SOCIAL_POLITICAL_ECONOMICS,
-        EDUCATION_SCIENCE_FACTUAL,
-        LEISURE_HOBBIES,
-        SPECIAL_CHARACTERISTICS,
+        MOVIE_DRAMA = 1,
+        NEWS_CURRENT_AFFAIRS = 2,
+        SHOW_GAME_SHOW = 3,
+        SPORTS = 4,
+        CHILDREN_YOUTH_PROGRAM = 5,
+        MUSIC_BALLET_DANCE = 6,
+        ARTS_CULTURE = 7,
+        SOCIAL_POLITICAL_ECONOMICS = 8,
+        EDUCATION_SCIENCE_FACTUAL = 9,
+        LEISURE_HOBBIES = 10,
+        SPECIAL_CHARACTERISTICS = 11,
     }
 
 
@@ -153,19 +153,19 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBCodeRate {
-        NONE,
-        "1_2",
-        "2_3",
-        "3_4",
-        "4_5",
-        "5_6",
-        "6_7",
-        "7_8",
-        "8_9",
-        AUTO,
-        "3_5",
-        "9_10",
-        "2_5",
+        NONE = 0,
+        "1_2" = 1,
+        "2_3" = 2,
+        "3_4" = 3,
+        "4_5" = 4,
+        "5_6" = 5,
+        "6_7" = 6,
+        "7_8" = 7,
+        "8_9" = 8,
+        AUTO = 9,
+        "3_5" = 10,
+        "9_10" = 11,
+        "2_5" = 12,
     }
 
 
@@ -179,75 +179,75 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBDescriptorType {
-        NETWORK_NAME,
-        SERVICE_LIST,
-        STUFFING,
-        SATELLITE_DELIVERY_SYSTEM,
-        CABLE_DELIVERY_SYSTEM,
-        VBI_DATA,
-        VBI_TELETEXT,
-        BOUQUET_NAME,
-        SERVICE,
-        COUNTRY_AVAILABILITY,
-        LINKAGE,
-        NVOD_REFERENCE,
-        TIME_SHIFTED_SERVICE,
-        SHORT_EVENT,
-        EXTENDED_EVENT,
-        TIME_SHIFTED_EVENT,
-        COMPONENT,
-        MOSAIC,
-        STREAM_IDENTIFIER,
-        CA_IDENTIFIER,
-        CONTENT,
-        PARENTAL_RATING,
-        TELETEXT,
-        TELEPHONE,
-        LOCAL_TIME_OFFSET,
-        SUBTITLING,
-        TERRESTRIAL_DELIVERY_SYSTEM,
-        MULTILINGUAL_NETWORK_NAME,
-        MULTILINGUAL_BOUQUET_NAME,
-        MULTILINGUAL_SERVICE_NAME,
-        MULTILINGUAL_COMPONENT,
-        PRIVATE_DATA_SPECIFIER,
-        SERVICE_MOVE,
-        SHORT_SMOOTHING_BUFFER,
-        FREQUENCY_LIST,
+        NETWORK_NAME = 64,
+        SERVICE_LIST = 65,
+        STUFFING = 66,
+        SATELLITE_DELIVERY_SYSTEM = 67,
+        CABLE_DELIVERY_SYSTEM = 68,
+        VBI_DATA = 69,
+        VBI_TELETEXT = 70,
+        BOUQUET_NAME = 71,
+        SERVICE = 72,
+        COUNTRY_AVAILABILITY = 73,
+        LINKAGE = 74,
+        NVOD_REFERENCE = 75,
+        TIME_SHIFTED_SERVICE = 76,
+        SHORT_EVENT = 77,
+        EXTENDED_EVENT = 78,
+        TIME_SHIFTED_EVENT = 79,
+        COMPONENT = 80,
+        MOSAIC = 81,
+        STREAM_IDENTIFIER = 82,
+        CA_IDENTIFIER = 83,
+        CONTENT = 84,
+        PARENTAL_RATING = 85,
+        TELETEXT = 86,
+        TELEPHONE = 87,
+        LOCAL_TIME_OFFSET = 88,
+        SUBTITLING = 89,
+        TERRESTRIAL_DELIVERY_SYSTEM = 90,
+        MULTILINGUAL_NETWORK_NAME = 91,
+        MULTILINGUAL_BOUQUET_NAME = 92,
+        MULTILINGUAL_SERVICE_NAME = 93,
+        MULTILINGUAL_COMPONENT = 94,
+        PRIVATE_DATA_SPECIFIER = 95,
+        SERVICE_MOVE = 96,
+        SHORT_SMOOTHING_BUFFER = 97,
+        FREQUENCY_LIST = 98,
         /**
          * Partial Transport Stream descriptor. Only present in SIT Sections.
          * 
          * See also: {@link GstMpegts.SectionType.SIT}, %GstMpegtsSIT
          */
-        PARTIAL_TRANSPORT_STREAM,
-        DATA_BROADCAST,
-        SCRAMBLING,
-        DATA_BROADCAST_ID,
-        TRANSPORT_STREAM,
-        DSNG,
-        PDC,
-        AC3,
-        ANCILLARY_DATA,
-        CELL_LIST,
-        CELL_FREQUENCY_LINK,
-        ANNOUNCEMENT_SUPPORT,
-        APPLICATION_SIGNALLING,
-        ADAPTATION_FIELD_DATA,
-        SERVICE_IDENTIFIER,
-        SERVICE_AVAILABILITY,
-        DEFAULT_AUTHORITY,
-        RELATED_CONTENT,
-        TVA_ID,
-        CONTENT_IDENTIFIER,
-        TIMESLICE_FEC_IDENTIFIER,
-        ECM_REPETITION_RATE,
-        S2_SATELLITE_DELIVERY_SYSTEM,
-        ENHANCED_AC3,
-        DTS,
-        AAC,
-        XAIT_LOCATION,
-        FTA_CONTENT_MANAGEMENT,
-        EXTENSION,
+        PARTIAL_TRANSPORT_STREAM = 99,
+        DATA_BROADCAST = 100,
+        SCRAMBLING = 101,
+        DATA_BROADCAST_ID = 102,
+        TRANSPORT_STREAM = 103,
+        DSNG = 104,
+        PDC = 105,
+        AC3 = 106,
+        ANCILLARY_DATA = 107,
+        CELL_LIST = 108,
+        CELL_FREQUENCY_LINK = 109,
+        ANNOUNCEMENT_SUPPORT = 110,
+        APPLICATION_SIGNALLING = 111,
+        ADAPTATION_FIELD_DATA = 112,
+        SERVICE_IDENTIFIER = 113,
+        SERVICE_AVAILABILITY = 114,
+        DEFAULT_AUTHORITY = 115,
+        RELATED_CONTENT = 116,
+        TVA_ID = 117,
+        CONTENT_IDENTIFIER = 118,
+        TIMESLICE_FEC_IDENTIFIER = 119,
+        ECM_REPETITION_RATE = 120,
+        S2_SATELLITE_DELIVERY_SYSTEM = 121,
+        ENHANCED_AC3 = 122,
+        DTS = 123,
+        AAC = 124,
+        XAIT_LOCATION = 125,
+        FTA_CONTENT_MANAGEMENT = 126,
+        EXTENSION = 127,
     }
 
 
@@ -261,30 +261,31 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBExtendedDescriptorType {
-        IMAGE_ICON,
-        CPCM_DELIVERY_SIGNALLING,
-        CP,
-        CP_IDENTIFIER,
-        T2_DELIVERY_SYSTEM,
-        SH_DELIVERY_SYSTEM,
-        SUPPLEMENTARY_AUDIO,
-        NETWORK_CHANGE_NOTIFY,
-        MESSAGE,
-        TARGET_REGION,
-        TARGET_REGION_NAME,
-        SERVICE_RELOCATED,
-        XAIT_PID,
-        C2_DELIVERY_SYSTEM,
-        DTS_HD_AUDIO_STREAM,
-        DTS_NEUTRAL,
-        VIDEO_DEPTH_RANGE,
-        T2MI,
-        URI_LINKAGE,
-        AC4,
+        IMAGE_ICON = 0,
+        CPCM_DELIVERY_SIGNALLING = 1,
+        CP = 2,
+        CP_IDENTIFIER = 3,
+        T2_DELIVERY_SYSTEM = 4,
+        SH_DELIVERY_SYSTEM = 5,
+        SUPPLEMENTARY_AUDIO = 6,
+        NETWORK_CHANGE_NOTIFY = 7,
+        MESSAGE = 8,
+        TARGET_REGION = 9,
+        TARGET_REGION_NAME = 10,
+        SERVICE_RELOCATED = 11,
+        XAIT_PID = 12,
+        C2_DELIVERY_SYSTEM = 13,
+        DTS_HD_AUDIO_STREAM = 14,
+        DTS_NEUTRAL = 15,
+        VIDEO_DEPTH_RANGE = 16,
+        T2MI = 17,
+        URI_LINKAGE = 19,
+        AC4 = 21,
         /**
          * Provide all avaliable audio programme for user selection
+         * @since 1.20
          */
-        AUDIO_PRESELECTION,
+        AUDIO_PRESELECTION = 25,
     }
 
 
@@ -292,10 +293,10 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBLinkageHandOverType {
-        RESERVED,
-        IDENTICAL,
-        LOCAL_VARIATION,
-        ASSOCIATED,
+        RESERVED = 0,
+        IDENTICAL = 1,
+        LOCAL_VARIATION = 2,
+        ASSOCIATED = 3,
     }
 
 
@@ -304,21 +305,21 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBLinkageType {
-        RESERVED_00,
-        INFORMATION,
-        EPG,
-        CA_REPLACEMENT,
-        TS_CONTAINING_COMPLETE_SI,
-        SERVICE_REPLACEMENT,
-        DATA_BROADCAST,
-        RCS_MAP,
-        MOBILE_HAND_OVER,
-        SYSTEM_SOFTWARE_UPDATE,
-        TS_CONTAINING_SSU,
-        IP_MAC_NOTIFICATION,
-        TS_CONTAINING_INT,
-        EVENT,
-        EXTENDED_EVENT,
+        RESERVED_00 = 0,
+        INFORMATION = 1,
+        EPG = 2,
+        CA_REPLACEMENT = 3,
+        TS_CONTAINING_COMPLETE_SI = 4,
+        SERVICE_REPLACEMENT = 5,
+        DATA_BROADCAST = 6,
+        RCS_MAP = 7,
+        MOBILE_HAND_OVER = 8,
+        SYSTEM_SOFTWARE_UPDATE = 9,
+        TS_CONTAINING_SSU = 10,
+        IP_MAC_NOTIFICATION = 11,
+        TS_CONTAINING_INT = 12,
+        EVENT = 13,
+        EXTENDED_EVENT = 14,
     }
 
 
@@ -326,15 +327,15 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBScramblingModeType {
-        RESERVED,
-        CSA1,
-        CSA2,
-        CSA3_STANDARD,
-        CSA3_MINIMAL_ENHANCED,
-        CSA3_FULL_ENHANCED,
-        CISSA,
-        ATIS_0,
-        ATIS_F,
+        RESERVED = 0,
+        CSA1 = 1,
+        CSA2 = 2,
+        CSA3_STANDARD = 3,
+        CSA3_MINIMAL_ENHANCED = 4,
+        CSA3_FULL_ENHANCED = 5,
+        CISSA = 16,
+        ATIS_0 = 112,
+        ATIS_F = 127,
     }
 
 
@@ -345,34 +346,34 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBServiceType {
-        RESERVED_00,
-        DIGITAL_TELEVISION,
-        DIGITAL_RADIO_SOUND,
-        TELETEXT,
-        NVOD_REFERENCE,
-        NVOD_TIME_SHIFTED,
-        MOSAIC,
-        FM_RADIO,
-        DVB_SRM,
-        RESERVED_09,
-        ADVANCED_CODEC_DIGITAL_RADIO_SOUND,
-        ADVANCED_CODEC_MOSAIC,
-        DATA_BROADCAST,
-        RESERVED_0D_COMMON_INTERFACE,
-        RCS_MAP,
-        RCS_FLS,
-        DVB_MHP,
-        MPEG2_HD_DIGITAL_TELEVISION,
-        ADVANCED_CODEC_SD_DIGITAL_TELEVISION,
-        ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED,
-        ADVANCED_CODEC_SD_NVOD_REFERENCE,
-        ADVANCED_CODEC_HD_DIGITAL_TELEVISION,
-        ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED,
-        ADVANCED_CODEC_HD_NVOD_REFERENCE,
-        ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION,
-        ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED,
-        ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE,
-        RESERVED_FF,
+        RESERVED_00 = 0,
+        DIGITAL_TELEVISION = 1,
+        DIGITAL_RADIO_SOUND = 2,
+        TELETEXT = 3,
+        NVOD_REFERENCE = 4,
+        NVOD_TIME_SHIFTED = 5,
+        MOSAIC = 6,
+        FM_RADIO = 7,
+        DVB_SRM = 8,
+        RESERVED_09 = 9,
+        ADVANCED_CODEC_DIGITAL_RADIO_SOUND = 10,
+        ADVANCED_CODEC_MOSAIC = 11,
+        DATA_BROADCAST = 12,
+        RESERVED_0D_COMMON_INTERFACE = 13,
+        RCS_MAP = 14,
+        RCS_FLS = 15,
+        DVB_MHP = 16,
+        MPEG2_HD_DIGITAL_TELEVISION = 17,
+        ADVANCED_CODEC_SD_DIGITAL_TELEVISION = 22,
+        ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED = 23,
+        ADVANCED_CODEC_SD_NVOD_REFERENCE = 24,
+        ADVANCED_CODEC_HD_DIGITAL_TELEVISION = 25,
+        ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED = 26,
+        ADVANCED_CODEC_HD_NVOD_REFERENCE = 27,
+        ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION = 28,
+        ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED = 29,
+        ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE = 30,
+        RESERVED_FF = 31,
     }
 
 
@@ -383,11 +384,11 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DVBTeletextType {
-        NITIAL_PAGE,
-        UBTITLE_PAGE,
-        DDITIONAL_INFO_PAGE,
-        ROGRAMME_SCHEDULE_PAGE,
-        EARING_IMPAIRED_PAGE,
+        NITIAL_PAGE = 1,
+        UBTITLE_PAGE = 2,
+        DDITIONAL_INFO_PAGE = 3,
+        ROGRAMME_SCHEDULE_PAGE = 4,
+        EARING_IMPAIRED_PAGE = 5,
     }
 
 
@@ -401,64 +402,65 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum DescriptorType {
-        RESERVED_00,
-        RESERVED_01,
-        VIDEO_STREAM,
-        AUDIO_STREAM,
-        HIERARCHY,
-        REGISTRATION,
-        DATA_STREAM_ALIGNMENT,
-        TARGET_BACKGROUND_GRID,
-        VIDEO_WINDOW,
-        CA,
-        ISO_639_LANGUAGE,
-        SYSTEM_CLOCK,
-        MULTIPLEX_BUFFER_UTILISATION,
-        COPYRIGHT,
-        MAXIMUM_BITRATE,
-        PRIVATE_DATA_INDICATOR,
-        SMOOTHING_BUFFER,
-        STD,
-        IBP,
-        DSMCC_CAROUSEL_IDENTIFIER,
-        DSMCC_ASSOCIATION_TAG,
-        DSMCC_DEFERRED_ASSOCIATION_TAG,
-        DSMCC_NPT_REFERENCE,
-        DSMCC_NPT_ENDPOINT,
-        DSMCC_STREAM_MODE,
-        DSMCC_STREAM_EVENT,
-        MPEG4_VIDEO,
-        MPEG4_AUDIO,
-        IOD,
-        SL,
-        FMC,
-        EXTERNAL_ES_ID,
-        MUX_CODE,
-        FMX_BUFFER_SIZE,
-        MULTIPLEX_BUFFER,
-        CONTENT_LABELING,
-        METADATA_POINTER,
-        METADATA,
-        METADATA_STD,
-        AVC_VIDEO,
-        IPMP,
-        AVC_TIMING_AND_HRD,
-        MPEG2_AAC_AUDIO,
-        FLEX_MUX_TIMING,
-        MPEG4_TEXT,
-        MPEG4_AUDIO_EXTENSION,
-        AUXILIARY_VIDEO_STREAM,
-        SVC_EXTENSION,
-        MVC_EXTENSION,
-        J2K_VIDEO,
-        MVC_OPERATION_POINT,
-        MPEG2_STEREOSCOPIC_VIDEO_FORMAT,
-        STEREOSCOPIC_PROGRAM_INFO,
-        STEREOSCOPIC_VIDEO_INFO,
+        RESERVED_00 = 0,
+        RESERVED_01 = 1,
+        VIDEO_STREAM = 2,
+        AUDIO_STREAM = 3,
+        HIERARCHY = 4,
+        REGISTRATION = 5,
+        DATA_STREAM_ALIGNMENT = 6,
+        TARGET_BACKGROUND_GRID = 7,
+        VIDEO_WINDOW = 8,
+        CA = 9,
+        ISO_639_LANGUAGE = 10,
+        SYSTEM_CLOCK = 11,
+        MULTIPLEX_BUFFER_UTILISATION = 12,
+        COPYRIGHT = 13,
+        MAXIMUM_BITRATE = 14,
+        PRIVATE_DATA_INDICATOR = 15,
+        SMOOTHING_BUFFER = 16,
+        STD = 17,
+        IBP = 18,
+        DSMCC_CAROUSEL_IDENTIFIER = 19,
+        DSMCC_ASSOCIATION_TAG = 20,
+        DSMCC_DEFERRED_ASSOCIATION_TAG = 21,
+        DSMCC_NPT_REFERENCE = 23,
+        DSMCC_NPT_ENDPOINT = 24,
+        DSMCC_STREAM_MODE = 25,
+        DSMCC_STREAM_EVENT = 26,
+        MPEG4_VIDEO = 27,
+        MPEG4_AUDIO = 28,
+        IOD = 29,
+        SL = 30,
+        FMC = 31,
+        EXTERNAL_ES_ID = 32,
+        MUX_CODE = 33,
+        FMX_BUFFER_SIZE = 34,
+        MULTIPLEX_BUFFER = 35,
+        CONTENT_LABELING = 36,
+        METADATA_POINTER = 37,
+        METADATA = 38,
+        METADATA_STD = 39,
+        AVC_VIDEO = 40,
+        IPMP = 41,
+        AVC_TIMING_AND_HRD = 42,
+        MPEG2_AAC_AUDIO = 43,
+        FLEX_MUX_TIMING = 44,
+        MPEG4_TEXT = 45,
+        MPEG4_AUDIO_EXTENSION = 46,
+        AUXILIARY_VIDEO_STREAM = 47,
+        SVC_EXTENSION = 48,
+        MVC_EXTENSION = 49,
+        J2K_VIDEO = 50,
+        MVC_OPERATION_POINT = 51,
+        MPEG2_STEREOSCOPIC_VIDEO_FORMAT = 52,
+        STEREOSCOPIC_PROGRAM_INFO = 53,
+        STEREOSCOPIC_VIDEO_INFO = 54,
         /**
          * Extension Descriptor.
+         * @since 1.26
          */
-        EXTENSION,
+        EXTENSION = 63,
     }
 
 
@@ -473,7 +475,7 @@ export namespace GstMpegts {
      * @since 1.26
      */
     enum ExtendedDescriptorType {
-        MTS_DESC_EXT_JXS_VIDEO,
+        MTS_DESC_EXT_JXS_VIDEO = 20,
     }
 
 
@@ -484,19 +486,19 @@ export namespace GstMpegts {
      * @since 1.20
      */
     enum HdmvStreamType {
-        AUDIO_LPCM,
-        AUDIO_AC3,
-        AUDIO_DTS,
-        AUDIO_AC3_TRUE_HD,
-        AUDIO_AC3_PLUS,
-        AUDIO_DTS_HD,
-        AUDIO_DTS_HD_MASTER_AUDIO,
-        AUDIO_EAC3,
-        SUBPICTURE_PGS,
-        IGS,
-        SUBTITLE,
-        AUDIO_AC3_PLUS_SECONDARY,
-        AUDIO_DTS_HD_SECONDARY,
+        AUDIO_LPCM = 128,
+        AUDIO_AC3 = 129,
+        AUDIO_DTS = 130,
+        AUDIO_AC3_TRUE_HD = 131,
+        AUDIO_AC3_PLUS = 132,
+        AUDIO_DTS_HD = 133,
+        AUDIO_DTS_HD_MASTER_AUDIO = 134,
+        AUDIO_EAC3 = 135,
+        SUBPICTURE_PGS = 144,
+        IGS = 145,
+        SUBTITLE = 146,
+        AUDIO_AC3_PLUS_SECONDARY = 161,
+        AUDIO_DTS_HD_SECONDARY = 162,
     }
 
 
@@ -508,38 +510,38 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum ISDBDescriptorType {
-        HIERARCHICAL_TRANSMISSION,
-        DIGITAL_COPY_CONTROL,
-        NETWORK_IDENTIFICATION,
-        PARTIAL_TS_TIME,
-        AUDIO_COMPONENT,
-        HYPERLINK,
-        TARGET_REGION,
-        DATA_CONTENT,
-        VIDEO_DECODE_CONTROL,
-        DOWNLOAD_CONTENT,
-        CA_EMM_TS,
-        CA_CONTRACT_INFORMATION,
-        CA_SERVICE,
-        TS_INFORMATION,
-        EXTENDED_BROADCASTER,
-        LOGO_TRANSMISSION,
-        BASIC_LOCAL_EVENT,
-        REFERENCE,
-        NODE_RELATION,
-        SHORT_NODE_INFORMATION,
-        STC_REFERENCE,
-        SERIES,
-        EVENT_GROUP,
-        SI_PARAMETER,
-        BROADCASTER_NAME,
-        COMPONENT_GROUP,
-        SI_PRIME_TS,
-        BOARD_INFORMATION,
-        LDT_LINKAGE,
-        CONNECTED_TRANSMISSION,
-        CONTENT_AVAILABILITY,
-        SERVICE_GROUP,
+        HIERARCHICAL_TRANSMISSION = 192,
+        DIGITAL_COPY_CONTROL = 193,
+        NETWORK_IDENTIFICATION = 194,
+        PARTIAL_TS_TIME = 195,
+        AUDIO_COMPONENT = 196,
+        HYPERLINK = 197,
+        TARGET_REGION = 198,
+        DATA_CONTENT = 199,
+        VIDEO_DECODE_CONTROL = 200,
+        DOWNLOAD_CONTENT = 201,
+        CA_EMM_TS = 202,
+        CA_CONTRACT_INFORMATION = 203,
+        CA_SERVICE = 204,
+        TS_INFORMATION = 205,
+        EXTENDED_BROADCASTER = 206,
+        LOGO_TRANSMISSION = 207,
+        BASIC_LOCAL_EVENT = 208,
+        REFERENCE = 209,
+        NODE_RELATION = 210,
+        SHORT_NODE_INFORMATION = 211,
+        STC_REFERENCE = 212,
+        SERIES = 213,
+        EVENT_GROUP = 214,
+        SI_PARAMETER = 215,
+        BROADCASTER_NAME = 216,
+        COMPONENT_GROUP = 217,
+        SI_PRIME_TS = 218,
+        BOARD_INFORMATION = 219,
+        LDT_LINKAGE = 220,
+        CONNECTED_TRANSMISSION = 221,
+        CONTENT_AVAILABILITY = 222,
+        SERVICE_GROUP = 224,
     }
 
 
@@ -547,10 +549,10 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum Iso639AudioType {
-        UNDEFINED,
-        CLEAN_EFFECTS,
-        HEARING_IMPAIRED,
-        VISUAL_IMPAIRED_COMMENTARY,
+        UNDEFINED = 0,
+        CLEAN_EFFECTS = 1,
+        HEARING_IMPAIRED = 2,
+        VISUAL_IMPAIRED_COMMENTARY = 3,
     }
 
 
@@ -564,9 +566,9 @@ export namespace GstMpegts {
      * @since 1.26
      */
     enum MetadataApplicationFormat {
-        ISAN,
-        VSAN,
-        IDENTIFIER_FIELD,
+        ISAN = 16,
+        VSAN = 17,
+        IDENTIFIER_FIELD = 65535,
     }
 
 
@@ -578,20 +580,24 @@ export namespace GstMpegts {
     enum MetadataFormat {
         /**
          * ISO/IEC 15938-1 TeM.
+         * @since 1.24
          */
-        TEM,
+        TEM = 16,
         /**
          * ISO/IEC 15938-1 BiM.
+         * @since 1.24
          */
-        BIM,
+        BIM = 17,
         /**
          * Defined by metadata application format.
+         * @since 1.24
          */
-        APPLICATION_FORMAT,
+        APPLICATION_FORMAT = 63,
         /**
          * Defined by metadata_format_identifier field.
+         * @since 1.24
          */
-        IDENTIFIER_FIELD,
+        IDENTIFIER_FIELD = 255,
     }
 
 
@@ -603,7 +609,7 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum MiscDescriptorType {
-        MTS_DESC_DTG_LOGICAL_CHANNEL,
+        MTS_DESC_DTG_LOGICAL_CHANNEL = 131,
     }
 
 
@@ -611,21 +617,21 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum ModulationType {
-        QPSK,
-        QAM_16,
-        QAM_32,
-        QAM_64,
-        QAM_128,
-        QAM_256,
-        QAM_AUTO,
-        VSB_8,
-        VSB_16,
-        PSK_8,
-        APSK_16,
-        APSK_32,
-        DQPSK,
-        QAM_4_NR_,
-        NONE,
+        QPSK = 0,
+        QAM_16 = 1,
+        QAM_32 = 2,
+        QAM_64 = 3,
+        QAM_128 = 4,
+        QAM_256 = 5,
+        QAM_AUTO = 6,
+        VSB_8 = 7,
+        VSB_16 = 8,
+        PSK_8 = 9,
+        APSK_16 = 10,
+        APSK_32 = 11,
+        DQPSK = 12,
+        QAM_4_NR_ = 13,
+        NONE = 14,
     }
 
 
@@ -636,12 +642,12 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum RunningStatus {
-        UNDEFINED,
-        NOT_RUNNING,
-        STARTS_IN_FEW_SECONDS,
-        PAUSING,
-        RUNNING,
-        OFF_AIR,
+        UNDEFINED = 0,
+        NOT_RUNNING = 1,
+        STARTS_IN_FEW_SECONDS = 2,
+        PAUSING = 3,
+        RUNNING = 4,
+        OFF_AIR = 5,
     }
 
 
@@ -651,14 +657,14 @@ export namespace GstMpegts {
      * @since 1.20
      */
     enum SCTEDescriptorType {
-        STUFFING,
-        AC3,
-        FRAME_RATE,
-        EXTENDED_VIDEO,
-        COMPONENT_NAME,
-        FREQUENCY_SPEC,
-        MODULATION_PARAMS,
-        TRANSPORT_STREAM_ID,
+        STUFFING = 128,
+        AC3 = 129,
+        FRAME_RATE = 130,
+        EXTENDED_VIDEO = 131,
+        COMPONENT_NAME = 132,
+        FREQUENCY_SPEC = 144,
+        MODULATION_PARAMS = 145,
+        TRANSPORT_STREAM_ID = 146,
     }
 
 
@@ -666,12 +672,12 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum SCTESpliceCommandType {
-        NULL,
-        SCHEDULE,
-        INSERT,
-        TIME,
-        BANDWIDTH,
-        PRIVATE,
+        NULL = 0,
+        SCHEDULE = 4,
+        INSERT = 5,
+        TIME = 6,
+        BANDWIDTH = 7,
+        PRIVATE = 255,
     }
 
 
@@ -679,11 +685,11 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum SCTESpliceDescriptor {
-        AVAIL,
-        DTMF,
-        SEGMENTATION,
-        TIME,
-        AUDIO,
+        AVAIL = 0,
+        DTMF = 1,
+        SEGMENTATION = 2,
+        TIME = 3,
+        AUDIO = 4,
     }
 
 
@@ -691,10 +697,10 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum SatellitePolarizationType {
-        LINEAR_HORIZONTAL,
-        LINEAR_VERTICAL,
-        CIRCULAR_LEFT,
-        CIRCULAR_RIGHT,
+        LINEAR_HORIZONTAL = 0,
+        LINEAR_VERTICAL = 1,
+        CIRCULAR_LEFT = 2,
+        CIRCULAR_RIGHT = 3,
     }
 
 
@@ -726,38 +732,38 @@ export namespace GstMpegts {
         /**
          * SCTE-27 Subtitling
          */
-        SUBTITLING,
+        SUBTITLING = 130,
         /**
          * SCTE-19 Isochronous data
          */
-        ISOCH_DATA,
+        ISOCH_DATA = 131,
         /**
          * SCTE-35 Splice Information Table
          */
-        SIT,
+        SIT = 134,
         /**
          * SCTE-07 Data Service or
          * Network Resource Table
          */
-        DST_NRT,
+        DST_NRT = 149,
         /**
          * Type B - DSM-CC Data Carousel
          * [IEC 13818-6])
          */
-        DSMCC_DCB,
+        DSMCC_DCB = 176,
         /**
          * Enhanced Television Application
          * Signaling (OC-SP-ETV-AM1.0.1-120614)
          */
-        SIGNALING,
+        SIGNALING = 192,
         /**
          * SCTE-07 Synchronous data
          */
-        SYNC_DATA,
+        SYNC_DATA = 194,
         /**
          * SCTE-53 Asynchronous data
          */
-        ASYNC_DATA,
+        ASYNC_DATA = 195,
     }
 
 
@@ -774,66 +780,67 @@ export namespace GstMpegts {
         /**
          * Master Guide Table (MGT)
          */
-        MASTER_GUIDE,
+        MASTER_GUIDE = 199,
         /**
          * Terrestrial Virtual Channel Table (TVCT)
          */
-        TERRESTRIAL_VIRTUAL_CHANNEL,
+        TERRESTRIAL_VIRTUAL_CHANNEL = 200,
         /**
          * Cable Virtual Channel Table (CVCT)
          */
-        CABLE_VIRTUAL_CHANNEL,
+        CABLE_VIRTUAL_CHANNEL = 201,
         /**
          * Rating Region Table (RRT)
          */
-        RATING_REGION,
+        RATING_REGION = 202,
         /**
          * Event Information Table (EIT)
          */
-        EVENT_INFORMATION,
+        EVENT_INFORMATION = 203,
         /**
          * Extended Text Table (ETT)
          */
-        CHANNEL_OR_EVENT_EXTENDED_TEXT,
+        CHANNEL_OR_EVENT_EXTENDED_TEXT = 204,
         /**
          * System Time Table (STT)
          */
-        SYSTEM_TIME,
+        SYSTEM_TIME = 205,
         /**
          * A/90: Data Event Table (DET)
          */
-        DATA_EVENT,
+        DATA_EVENT = 206,
         /**
          * A/90: Data Service Table (DST)
          */
-        DATA_SERVICE,
+        DATA_SERVICE = 207,
         /**
          * A/57B: Program Identifier Table.
+         * @since 1.20
          */
-        PROGRAM_IDENTIFIER,
+        PROGRAM_IDENTIFIER = 208,
         /**
          * A/90: Network Resources Table (NRT)
          */
-        NETWORK_RESOURCE,
+        NETWORK_RESOURCE = 209,
         /**
          * A/90: Long Term Service Table (LTST)
          */
-        LONG_TERM_SERVICE,
+        LONG_TERM_SERVICE = 210,
         /**
          * Directed Channel Change Table (DCCT)
          */
-        DIRECTED_CHANNEL_CHANGE,
+        DIRECTED_CHANNEL_CHANGE = 211,
         /**
          * Directed Channel Change Selection Code Table (DCCSCT)
          */
-        DIRECTED_CHANNEL_CHANGE_SECTION_CODE,
-        AGGREGATE_EVENT_INFORMATION,
-        AGGREGATE_EXTENDED_TEXT,
-        AGGREGATE_DATA_EVENT,
+        DIRECTED_CHANNEL_CHANGE_SECTION_CODE = 212,
+        AGGREGATE_EVENT_INFORMATION = 214,
+        AGGREGATE_EXTENDED_TEXT = 215,
+        AGGREGATE_DATA_EVENT = 217,
         /**
          * A/81: Satellite Virtual Channel Table
          */
-        SATELLITE_VIRTUAL_CHANNEL,
+        SATELLITE_VIRTUAL_CHANNEL = 218,
     }
 
 
@@ -850,137 +857,140 @@ export namespace GstMpegts {
         /**
          * Network Information Table (NIT), Actual Network
          */
-        NETWORK_INFORMATION_ACTUAL_NETWORK,
+        NETWORK_INFORMATION_ACTUAL_NETWORK = 64,
         /**
          * Network Information Table (NIT), Other Network
          */
-        NETWORK_INFORMATION_OTHER_NETWORK,
+        NETWORK_INFORMATION_OTHER_NETWORK = 65,
         /**
          * Service Description Table (SDT), Actual Transport Stream
          */
-        SERVICE_DESCRIPTION_ACTUAL_TS,
+        SERVICE_DESCRIPTION_ACTUAL_TS = 66,
         /**
          * Service Description Table (SDT), Other Transport Stream
          */
-        SERVICE_DESCRIPTION_OTHER_TS,
+        SERVICE_DESCRIPTION_OTHER_TS = 70,
         /**
          * Bouquet Association Table (BAT)
          */
-        BOUQUET_ASSOCIATION,
+        BOUQUET_ASSOCIATION = 74,
         /**
          * ETSI TS 102 006: Update Notification Table (UNT)
+         * @since 1.20
          */
-        UPDATE_NOTIFICATION,
+        UPDATE_NOTIFICATION = 75,
         /**
          * ETSI EN 303 560: Downloadable Font Info
+         * @since 1.20
          */
-        DOWNLOADABLE_FONT_INFO,
+        DOWNLOADABLE_FONT_INFO = 76,
         /**
          * Event Information Table (EIT), Actual Transport Stream, present/following
          */
-        EVENT_INFORMATION_ACTUAL_TS_PRESENT,
+        EVENT_INFORMATION_ACTUAL_TS_PRESENT = 78,
         /**
          * Event Information Table (EIT), Other Transport Stream, present/following
          */
-        EVENT_INFORMATION_OTHER_TS_PRESENT,
+        EVENT_INFORMATION_OTHER_TS_PRESENT = 79,
         /**
          * Event Information Table (EIT), Actual Transport Stream, Schedule (first)
          */
-        EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1,
+        EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1 = 80,
         /**
          * Event Information Table (EIT), Actual Transport Stream, Schedule (last)
          */
-        EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N,
+        EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N = 95,
         /**
          * Event Information Table (EIT), Other Transport Stream, Schedule (first)
          */
-        EVENT_INFORMATION_OTHER_TS_SCHEDULE_1,
+        EVENT_INFORMATION_OTHER_TS_SCHEDULE_1 = 96,
         /**
          * Event Information Table (EIT), Other Transport Stream, Schedule (last)
          */
-        EVENT_INFORMATION_OTHER_TS_SCHEDULE_N,
+        EVENT_INFORMATION_OTHER_TS_SCHEDULE_N = 111,
         /**
          * Time Date Table (TDT)
          */
-        TIME_DATE,
+        TIME_DATE = 112,
         /**
          * Running Status Table (RST)
          */
-        RUNNING_STATUS,
+        RUNNING_STATUS = 113,
         /**
          * Stuffing Table (ST)
          */
-        STUFFING,
+        STUFFING = 114,
         /**
          * Time Offset Table (TOT)
          */
-        TIME_OFFSET,
+        TIME_OFFSET = 115,
         /**
          * ETSI TS 102 323: Application Information Table (AIT)
          */
-        APPLICATION_INFORMATION_TABLE,
+        APPLICATION_INFORMATION_TABLE = 116,
         /**
          * ETSI TS 102 323: Container Section
          */
-        CONTAINER,
+        CONTAINER = 117,
         /**
          * ETSI TS 102 323: Related Content Table (RCT)
          */
-        RELATED_CONTENT,
+        RELATED_CONTENT = 118,
         /**
          * ETSI TS 102 323: Content Identifier Table (CIT)
          */
-        CONTENT_IDENTIFIER,
+        CONTENT_IDENTIFIER = 119,
         /**
          * ETSI TS 301 192: MPE-FEC Section
          */
-        MPE_FEC,
+        MPE_FEC = 120,
         /**
          * ETSI 103 323: Resolution Provider Notification Table (RNT)
          */
-        RESOLUTION_NOTIFICATION,
+        RESOLUTION_NOTIFICATION = 121,
         /**
          * ETSI TS 102 772: MPE-IFEC Section
          */
-        MPE_IFEC,
+        MPE_IFEC = 122,
         /**
          * ETSI TS 102 809: Protection Message Section
+         * @since 1.20
          */
-        PROTECTION_MESSAGE,
+        PROTECTION_MESSAGE = 123,
         /**
          * Discontinuity Information Table (DIT)
          */
-        DISCONTINUITY_INFORMATION,
+        DISCONTINUITY_INFORMATION = 126,
         /**
          * Selection Information Table (SIT)
          */
-        SELECTION_INFORMATION,
+        SELECTION_INFORMATION = 127,
         /**
          * ETSI TR 289: CA Message Table (CMT): ECM 0
          */
-        CA_MESSAGE_ECM_0,
+        CA_MESSAGE_ECM_0 = 128,
         /**
          * ETSI TR 289: CA Message Table (CMT): ECM 1
          */
-        CA_MESSAGE_ECM_1,
+        CA_MESSAGE_ECM_1 = 129,
         /**
          * ETSI TR 289: CA Message Table (CMT): CA System Private (First)
          */
-        CA_MESSAGE_SYSTEM_PRIVATE_1,
+        CA_MESSAGE_SYSTEM_PRIVATE_1 = 130,
         /**
          * ETSI TR 289: CA Message Table (CMT): CA System Private (Last)
          */
-        CA_MESSAGE_SYSTEM_PRIVATE_N,
-        SCT,
-        FCT,
-        TCT,
-        SPT,
-        CMT,
-        TBTP,
-        PCR_PACKET_PAYLOAD,
-        TRANSMISSION_MODE_SUPPORT_PAYLOAD,
-        TIM,
-        LL_FEC_PARITY_DATA_TABLE,
+        CA_MESSAGE_SYSTEM_PRIVATE_N = 143,
+        SCT = 160,
+        FCT = 161,
+        TCT = 162,
+        SPT = 163,
+        CMT = 164,
+        TBTP = 165,
+        PCR_PACKET_PAYLOAD = 166,
+        TRANSMISSION_MODE_SUPPORT_PAYLOAD = 170,
+        TIM = 176,
+        LL_FEC_PARITY_DATA_TABLE = 177,
     }
 
 
@@ -996,31 +1006,31 @@ export namespace GstMpegts {
         /**
          * SCTE-18 Emergency Alert System
          */
-        EAS,
+        EAS = 216,
         /**
          * CL-SP-ETV-AM 1.0.1 EBIF message
          */
-        EBIF,
-        RESERVED,
+        EBIF = 224,
+        RESERVED = 225,
         /**
          * CL-SP-ETV-AM 1.0.1 EBIF Int. Signaling Sect.
          */
-        EISS,
+        EISS = 226,
         /**
          * CL-SP-ETV-AM 1.0.1 DSMCC DII message
          */
-        DII,
+        DII = 227,
         /**
          * CL-SP-ETV-AM 1.0.1 DSMCC Data Download Block
          */
-        DDB,
+        DDB = 228,
         /**
          * SCTE-35 splice information is carried in a
          * section stream on a separate PID in the program’s Map Table (PMT) allowing
          * Splice Event notifications to remain associated with the program and pass
          * through multiplexers.
          */
-        SPLICE,
+        SPLICE = 252,
     }
 
 
@@ -1037,75 +1047,78 @@ export namespace GstMpegts {
         /**
          * Program Association Table (PAT)
          */
-        PROGRAM_ASSOCIATION,
+        PROGRAM_ASSOCIATION = 0,
         /**
          * Conditional Access Table (CAT)
          */
-        CONDITIONAL_ACCESS,
+        CONDITIONAL_ACCESS = 1,
         /**
          * Program Map Table (PMT)
          */
-        TS_PROGRAM_MAP,
+        TS_PROGRAM_MAP = 2,
         /**
          * Transport Stream Description Table
          */
-        TS_DESCRIPTION,
+        TS_DESCRIPTION = 3,
         /**
          * ISO/IEC 14496 Scene Description Table
          */
-        "14496_SCENE_DESCRIPTION",
+        "14496_SCENE_DESCRIPTION" = 4,
         /**
          * ISO/IEC 14496 Object Descriptor Table
          */
-        "14496_OBJET_DESCRIPTOR",
+        "14496_OBJET_DESCRIPTOR" = 5,
         /**
          * Metadata Section
          */
-        METADATA,
+        METADATA = 6,
         /**
          * IPMP Control Information
          */
-        IPMP_CONTROL_INFORMATION,
+        IPMP_CONTROL_INFORMATION = 7,
         /**
          * ISO/IEC 14496 Section.
+         * @since 1.20
          */
-        "14496_SECTION",
+        "14496_SECTION" = 8,
         /**
          * ISO/IEC 23001-11 (Green Access Unit) Section.
+         * @since 1.20
          */
-        "23001_11_SECTION",
+        "23001_11_SECTION" = 9,
         /**
          * ISO/ISO 23001-10 (Quality Access Unit) Section.
+         * @since 1.20
          */
-        "23001_10_SECTION",
+        "23001_10_SECTION" = 10,
         /**
          * DSM-CC Multi-Protocol Encapsulated (MPE) Data
          */
-        DSM_CC_MULTIPROTO_ENCAPSULATED_DATA,
+        DSM_CC_MULTIPROTO_ENCAPSULATED_DATA = 58,
         /**
          * DSM-CC U-N Messages
          */
-        DSM_CC_U_N_MESSAGES,
+        DSM_CC_U_N_MESSAGES = 59,
         /**
          * DSM-CC Download Data Messages
          */
-        DSM_CC_DOWNLOAD_DATA_MESSAGES,
+        DSM_CC_DOWNLOAD_DATA_MESSAGES = 60,
         /**
          * DSM-CC Stream Descriptors
          */
-        DSM_CC_STREAM_DESCRIPTORS,
+        DSM_CC_STREAM_DESCRIPTORS = 61,
         /**
          * DSM-CC Private Data
          */
-        DSM_CC_PRIVATE_DATA,
+        DSM_CC_PRIVATE_DATA = 62,
         /**
          * DSM-CC Addressable Section
          */
-        DSM_CC_ADDRESSABLE_SECTIONS,
+        DSM_CC_ADDRESSABLE_SECTIONS = 63,
         /**
          * Unset section table_id (value is forbidden to use in actual sections)
          */
-        UNSET,
+        UNSET = 255,
     }
 
 
@@ -1119,83 +1132,84 @@ export namespace GstMpegts {
         /**
          * Unknown section type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Program Association Table (ISO/IEC 13818-1)
          */
-        PAT,
+        PAT = 1,
         /**
          * Program Map Table (ISO/IEC 13818-1)
          */
-        PMT,
+        PMT = 2,
         /**
          * Conditional Access Table (ISO/IEC 13818-1)
          */
-        CAT,
+        CAT = 3,
         /**
          * Transport Stream Description Table (ISO/IEC 13818-1)
          */
-        TSDT,
+        TSDT = 4,
         /**
          * Event Information Table (EN 300 468)
          */
-        EIT,
+        EIT = 5,
         /**
          * Network Information Table (ISO/IEC 13818-1 / EN 300 468)
          */
-        NIT,
+        NIT = 6,
         /**
          * Bouquet Association Table ((EN 300 468)
          */
-        BAT,
+        BAT = 7,
         /**
          * Service Description Table (EN 300 468)
          */
-        SDT,
+        SDT = 8,
         /**
          * Time and Date Table (EN 300 468)
          */
-        TDT,
+        TDT = 9,
         /**
          * Time Offset Table (EN 300 468)
          */
-        TOT,
+        TOT = 10,
         /**
          * Selection Information Table (EN 300 468)
+         * @since 1.20
          */
-        SIT,
+        SIT = 11,
         /**
          * ATSC Terrestrial Virtual Channel Table (A65)
          */
-        ATSC_TVCT,
+        ATSC_TVCT = 12,
         /**
          * ATSC Cable Virtual Channel Table (A65)
          */
-        ATSC_CVCT,
+        ATSC_CVCT = 13,
         /**
          * ATSC Master Guide Table (A65)
          */
-        ATSC_MGT,
+        ATSC_MGT = 14,
         /**
          * ATSC Extended Text Table (A65)
          */
-        ATSC_ETT,
+        ATSC_ETT = 15,
         /**
          * ATSC Event Information Table (A65)
          */
-        ATSC_EIT,
+        ATSC_EIT = 16,
         /**
          * ATSC System Time Table (A65)
          */
-        ATSC_STT,
+        ATSC_STT = 17,
         /**
          * ATSC Rating Region Table (A65)
          */
-        ATSC_RRT,
+        ATSC_RRT = 18,
         /**
          * SCTE Splice Information Table (SCTE-35)
          */
-        SCTE_SIT,
+        SCTE_SIT = 19,
     }
 
 
@@ -1213,122 +1227,122 @@ export namespace GstMpegts {
         /**
          * ITU-T | ISO/IEC Reserved
          */
-        RESERVED_00,
+        RESERVED_00 = 0,
         /**
          * ISO/IEC 11172-2 Video (i.e. MPEG-1 Video)
          */
-        VIDEO_MPEG1,
+        VIDEO_MPEG1 = 1,
         /**
          * Rec. ITU-T H.262 | ISO/IEC 13818-2
          *       Video or ISO/IEC 11172-2 constrained parameter video stream (i.e.
          *       MPEG-2 Video)
          */
-        VIDEO_MPEG2,
+        VIDEO_MPEG2 = 2,
         /**
          * ISO/IEC 11172-3 Audio
          */
-        AUDIO_MPEG1,
+        AUDIO_MPEG1 = 3,
         /**
          * ISO/IEC 13818-3 Audio
          */
-        AUDIO_MPEG2,
+        AUDIO_MPEG2 = 4,
         /**
          * private sections
          */
-        PRIVATE_SECTIONS,
+        PRIVATE_SECTIONS = 5,
         /**
          * PES packets containing private data
          */
-        PRIVATE_PES_PACKETS,
+        PRIVATE_PES_PACKETS = 6,
         /**
          * ISO/IEC 13522 MHEG
          */
-        MHEG,
+        MHEG = 7,
         /**
          * Annex A DSM-CC
          */
-        DSM_CC,
+        DSM_CC = 8,
         /**
          * Rec. ITU-T H.222.1
          */
-        H_222_1,
+        H_222_1 = 9,
         /**
          * ISO/IEC 13818-6 type A
          */
-        DSMCC_A,
+        DSMCC_A = 10,
         /**
          * ISO/IEC 13818-6 type B
          */
-        DSMCC_B,
+        DSMCC_B = 11,
         /**
          * ISO/IEC 13818-6 type C
          */
-        DSMCC_C,
+        DSMCC_C = 12,
         /**
          * ISO/IEC 13818-6 type D
          */
-        DSMCC_D,
+        DSMCC_D = 13,
         /**
          * auxiliary streams
          */
-        AUXILIARY,
+        AUXILIARY = 14,
         /**
          * ISO/IEC 13818-7 Audio (AAC) with ADTS
          *       transport syntax
          */
-        AUDIO_AAC_ADTS,
+        AUDIO_AAC_ADTS = 15,
         /**
          * ISO/IEC 14496-2 Visual (MPEG-4 Video)
          */
-        VIDEO_MPEG4,
+        VIDEO_MPEG4 = 16,
         /**
          * ISO/IEC 14496-3 Audio (AAC) with the LATM
          *       transport syntax as defined in ISO/IEC 14496-3
          */
-        AUDIO_AAC_LATM,
+        AUDIO_AAC_LATM = 17,
         /**
          * ISO/IEC 14496-1
          *       SL-packetized stream or FlexMux stream carried in PES packets
          */
-        SL_FLEXMUX_PES_PACKETS,
+        SL_FLEXMUX_PES_PACKETS = 18,
         /**
          * ISO/IEC 14496-1 SL-packetized
          *       stream or FlexMux stream carried in ISO/IEC 14496_sections
          */
-        SL_FLEXMUX_SECTIONS,
+        SL_FLEXMUX_SECTIONS = 19,
         /**
          * ISO/IEC 13818-6 Synchronized
          *       Download Protocol
          */
-        SYNCHRONIZED_DOWNLOAD,
+        SYNCHRONIZED_DOWNLOAD = 20,
         /**
          * Metadata carried in PES packets
          */
-        METADATA_PES_PACKETS,
+        METADATA_PES_PACKETS = 21,
         /**
          * Metadata carried in metadata_sections
          */
-        METADATA_SECTIONS,
+        METADATA_SECTIONS = 22,
         /**
          * Metadata carried in ISO/IEC
          *       13818-6 Data Carousel
          */
-        METADATA_DATA_CAROUSEL,
+        METADATA_DATA_CAROUSEL = 23,
         /**
          * Metadata carried in
          *       ISO/IEC 13818-6 Object Carousel
          */
-        METADATA_OBJECT_CAROUSEL,
+        METADATA_OBJECT_CAROUSEL = 24,
         /**
          * Metadata carried in
          *       ISO/IEC 13818-6 Synchronized Download Protocol
          */
-        METADATA_SYNCHRONIZED_DOWNLOAD,
+        METADATA_SYNCHRONIZED_DOWNLOAD = 25,
         /**
          * IPMP stream (defined in ISO/IEC 13818-11,
          *       MPEG-2 IPMP)
          */
-        MPEG2_IPMP,
+        MPEG2_IPMP = 26,
         /**
          * AVC video stream conforming to one or
          * more profiles defined in Annex A of Rec. ITU-T H.264 | ISO/IEC 14496-10 or
@@ -1336,71 +1350,74 @@ export namespace GstMpegts {
          * sub-bitstream, as defined in 2.1.85, or AVC video sub-bitstream of MVC, as
          * defined in 2.1.88
          */
-        VIDEO_H264,
+        VIDEO_H264 = 27,
         /**
          * ISO/IEC 14496-3 (AAC) Audio, without
          *       using any additional transport syntax, such as DST, ALS and SLS
          */
-        AUDIO_AAC_CLEAN,
+        AUDIO_AAC_CLEAN = 28,
         /**
          * ISO/IEC 14496-17 Text
          */
-        MPEG4_TIMED_TEXT,
+        MPEG4_TIMED_TEXT = 29,
         /**
          * Auxiliary video stream as defined in
          * ISO/IEC 23002-3
          */
-        VIDEO_RVC,
+        VIDEO_RVC = 30,
         /**
          * SVC video sub-bitstream
          * of an AVC video stream conforming to one or more profiles defined in Annex G
          * of Rec. ITU-T H.264 | ISO/IEC 14496-10
          */
-        VIDEO_H264_SVC_SUB_BITSTREAM,
+        VIDEO_H264_SVC_SUB_BITSTREAM = 31,
         /**
          * MVC video sub-bitstream
          * of an AVC video stream conforming to one or more profiles defined in Annex H
          * of Rec. ITU-T H.264 | ISO/IEC 14496-10
          */
-        VIDEO_H264_MVC_SUB_BITSTREAM,
+        VIDEO_H264_MVC_SUB_BITSTREAM = 32,
         /**
          * Video stream conforming to one or more
          *       profiles as defined in Rec. ITU-T T.800 | ISO/IEC 15444-1 (i.e. JPEG 2000)
          */
-        VIDEO_JP2K,
+        VIDEO_JP2K = 33,
         /**
          * Additional view
          * Rec. ITU-T H.262 | ISO/IEC 13818-2 video stream for service-compatible
          * stereoscopic 3D services
          */
-        VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW,
+        VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW = 34,
         /**
          * Additional view
          * Rec. ITU-T H.264 | ISO/IEC 14496-10 video stream conforming to one or more
          * profiles defined in Annex A for service-compatible stereoscopic 3D services
          */
-        VIDEO_H264_STEREO_ADDITIONAL_VIEW,
+        VIDEO_H264_STEREO_ADDITIONAL_VIEW = 35,
         /**
          * Rec. ITU-T H.265 | ISO/IEC 23008-2 video
          *      stream or an HEVC temporal video sub-bitstream
          */
-        VIDEO_HEVC,
+        VIDEO_HEVC = 36,
         /**
          * JPEG-XS stream type
+         * @since 1.26
          */
-        VIDEO_JPEG_XS,
+        VIDEO_JPEG_XS = 50,
         /**
          * VVC/H.266 video stream type
+         * @since 1.26
          */
-        VIDEO_VVC,
+        VIDEO_VVC = 51,
         /**
          * IPMP stream
          */
-        IPMP_STREAM,
+        IPMP_STREAM = 127,
         /**
          * User Private stream id (used for VC-1) as defined by SMPTE RP227.
+         * @since 1.20
          */
-        USER_PRIVATE_EA,
+        USER_PRIVATE_EA = 234,
     }
 
 
@@ -1408,17 +1425,17 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum TerrestrialGuardInterval {
-        "1_32",
-        "1_16",
-        "1_8",
-        "1_4",
-        AUTO,
-        "1_128",
-        "19_128",
-        "19_256",
-        PN420,
-        PN595,
-        PN945,
+        "1_32" = 0,
+        "1_16" = 1,
+        "1_8" = 2,
+        "1_4" = 3,
+        AUTO = 4,
+        "1_128" = 5,
+        "19_128" = 6,
+        "19_256" = 7,
+        PN420 = 8,
+        PN595 = 9,
+        PN945 = 10,
     }
 
 
@@ -1445,15 +1462,15 @@ export namespace GstMpegts {
      * @gir-type Enum
      */
     enum TerrestrialTransmissionMode {
-        "2K",
-        "8K",
-        AUTO,
-        "4K",
-        "1K",
-        "16K",
-        "32K",
-        C1,
-        C3780,
+        "2K" = 0,
+        "8K" = 1,
+        AUTO = 2,
+        "4K" = 3,
+        "1K" = 4,
+        "16K" = 5,
+        "32K" = 6,
+        C1 = 7,
+        C3780 = 8,
     }
 
 

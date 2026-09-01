@@ -139,20 +139,26 @@ export namespace UDisks {
     }
 
 
+    /**
+     * @default 27
+     */
     const ERROR_NUM_ENTRIES: number;
 
     /**
      * The major version of the libudisks2 header files.
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version of the libudisks2 header files.
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version of the libudisks2 header files.
+     * @default 11
      */
     const MINOR_VERSION: number;
 
@@ -615,27 +621,27 @@ export namespace UDisks {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Partition type is used for swap.
          */
-        SWAP,
+        SWAP = 1,
         /**
          * Partition type is used for RAID/LVM or similar.
          */
-        RAID,
+        RAID = 2,
         /**
          * Partition type indicates the partition is hidden (e.g. 'dos' type 0x1b "Hidden W95 FAT32"). Note that this is not the same as user-toggleable attributes/flags for a partition.
          */
-        HIDDEN,
+        HIDDEN = 4,
         /**
          * Partition type can only be used when creating a partition and e.g. should not be selectable in a "change partition type" user interface (e.g. 'dos' type 0x05, 0x0f and 0x85 for extended partitions).
          */
-        CREATE_ONLY,
+        CREATE_ONLY = 8,
         /**
          * Partition type indicates the partition is part of the system / bootloader (e.g. 'dos' types 0xee, 0xff, 'gpt' types for 'EFI System partition' and 'BIOS Boot partition').
          */
-        SYSTEM,
+        SYSTEM = 16,
     }
 
 
@@ -916,6 +922,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -925,6 +932,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): BlockLVM2Proxy;
 
@@ -1089,6 +1097,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1985,6 +1994,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1994,6 +2004,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): BlockProxy;
 
@@ -2158,6 +2169,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2248,6 +2260,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_add_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_add_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -2259,6 +2272,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2304,6 +2318,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_finish(res: Gio.AsyncResult): boolean;
 
@@ -2315,6 +2330,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2357,6 +2373,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_get_secret_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_get_secret_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -2367,6 +2384,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -2419,6 +2437,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2432,6 +2451,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_sync(arg_mode: string, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2477,6 +2497,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_backup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2488,6 +2509,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2533,6 +2555,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_benchmark()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_benchmark()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2544,6 +2567,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2589,6 +2613,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_restore()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_restore()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2600,6 +2625,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -2645,6 +2671,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_remove_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_remove_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -2656,6 +2683,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2698,6 +2726,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_rescan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_rescan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_finish(res: Gio.AsyncResult): boolean;
 
@@ -2708,6 +2737,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2757,6 +2787,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_restore_encrypted_header()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
 
@@ -2769,6 +2800,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2817,6 +2849,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_update_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_update_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -2829,6 +2862,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_sync(arg_old_item: GLib.Variant, arg_new_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3643,6 +3677,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_add_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_add_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -3654,6 +3689,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3699,6 +3735,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_finish(res: Gio.AsyncResult): boolean;
 
@@ -3710,6 +3747,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3752,6 +3790,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_get_secret_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_get_secret_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -3762,6 +3801,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -3814,6 +3854,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3827,6 +3868,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_sync(arg_mode: string, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3872,6 +3914,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_backup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3883,6 +3926,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3928,6 +3972,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_benchmark()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_benchmark()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3939,6 +3984,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3984,6 +4030,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_restore()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_restore()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -3995,6 +4042,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -4040,6 +4088,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_remove_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_remove_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -4051,6 +4100,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4093,6 +4143,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_rescan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_rescan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_finish(res: Gio.AsyncResult): boolean;
 
@@ -4103,6 +4154,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4152,6 +4204,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_restore_encrypted_header()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
 
@@ -4164,6 +4217,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4212,6 +4266,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_update_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_update_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -4224,6 +4279,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_sync(arg_old_item: GLib.Variant, arg_new_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5028,6 +5084,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5037,6 +5094,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -5136,6 +5194,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5962,6 +6021,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5971,6 +6031,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DriveAtaProxy;
 
@@ -6135,6 +6196,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6222,6 +6284,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_get_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_get_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -6232,6 +6295,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -6274,6 +6338,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_standby()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_standby()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_finish(res: Gio.AsyncResult): boolean;
 
@@ -6284,6 +6349,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6326,6 +6392,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_wakeup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_wakeup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_finish(res: Gio.AsyncResult): boolean;
 
@@ -6336,6 +6403,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6378,6 +6446,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_security_erase_unit()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_security_erase_unit()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_finish(res: Gio.AsyncResult): boolean;
 
@@ -6388,6 +6457,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6430,6 +6500,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_get_attributes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -6440,6 +6511,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -6482,6 +6554,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_abort()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -6492,6 +6565,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6537,6 +6611,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -6548,6 +6623,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6597,6 +6673,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_set_enabled()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_finish(res: Gio.AsyncResult): boolean;
 
@@ -6609,6 +6686,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6651,6 +6729,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_update()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -6661,6 +6740,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7497,6 +7577,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_get_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_get_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -7507,6 +7588,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -7549,6 +7631,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_standby()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_standby()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_finish(res: Gio.AsyncResult): boolean;
 
@@ -7559,6 +7642,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7601,6 +7685,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_wakeup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_wakeup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_finish(res: Gio.AsyncResult): boolean;
 
@@ -7611,6 +7696,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7653,6 +7739,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_security_erase_unit()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_security_erase_unit()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_finish(res: Gio.AsyncResult): boolean;
 
@@ -7663,6 +7750,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7705,6 +7793,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_get_attributes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -7715,6 +7804,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -7757,6 +7847,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_abort()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -7767,6 +7858,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7812,6 +7904,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -7823,6 +7916,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7872,6 +7966,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_set_enabled()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_finish(res: Gio.AsyncResult): boolean;
 
@@ -7884,6 +7979,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7926,6 +8022,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_update()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -7936,6 +8033,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8574,6 +8672,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8583,6 +8682,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DriveLSMProxy;
 
@@ -8747,6 +8847,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9399,6 +9500,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9408,6 +9510,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DriveLsmLocalProxy;
 
@@ -9572,6 +9675,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9663,6 +9767,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -9674,6 +9779,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9720,6 +9826,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -9731,6 +9838,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9777,6 +9885,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -9788,6 +9897,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9834,6 +9944,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -9845,6 +9956,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10079,6 +10191,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -10090,6 +10203,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10136,6 +10250,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -10147,6 +10262,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10193,6 +10309,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -10204,6 +10321,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10250,6 +10368,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -10261,6 +10380,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11061,6 +11181,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11070,6 +11191,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DriveProxy;
 
@@ -11234,6 +11356,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11321,6 +11444,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_eject()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_eject()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_finish(res: Gio.AsyncResult): boolean;
 
@@ -11331,6 +11455,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11377,6 +11502,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_power_off()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_finish(res: Gio.AsyncResult): boolean;
 
@@ -11388,6 +11514,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11433,6 +11560,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_set_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_set_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_finish(res: Gio.AsyncResult): boolean;
 
@@ -11444,6 +11572,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_sync(arg_value: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12132,6 +12261,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_eject()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_eject()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_finish(res: Gio.AsyncResult): boolean;
 
@@ -12142,6 +12272,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12188,6 +12319,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_power_off()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_finish(res: Gio.AsyncResult): boolean;
 
@@ -12199,6 +12331,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12244,6 +12377,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_set_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_set_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_finish(res: Gio.AsyncResult): boolean;
 
@@ -12255,6 +12389,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_sync(arg_value: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12643,6 +12778,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12652,6 +12788,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): EncryptedProxy;
 
@@ -12816,6 +12953,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12909,6 +13047,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_change_passphrase()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_change_passphrase()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_finish(res: Gio.AsyncResult): boolean;
 
@@ -12921,6 +13060,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_sync(arg_passphrase: string, arg_new_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12970,6 +13110,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_convert()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_finish(res: Gio.AsyncResult): boolean;
 
@@ -12982,6 +13123,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_sync(arg_target_version: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13031,6 +13173,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_header_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_finish(res: Gio.AsyncResult): boolean;
 
@@ -13043,6 +13186,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13085,6 +13229,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -13095,6 +13240,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13144,6 +13290,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -13156,6 +13303,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13201,6 +13349,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_unlock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_unlock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -13212,6 +13361,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_sync(arg_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -13568,6 +13718,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_change_passphrase()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_change_passphrase()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_finish(res: Gio.AsyncResult): boolean;
 
@@ -13580,6 +13731,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_sync(arg_passphrase: string, arg_new_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13629,6 +13781,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_convert()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_finish(res: Gio.AsyncResult): boolean;
 
@@ -13641,6 +13794,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_sync(arg_target_version: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13690,6 +13844,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_header_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_finish(res: Gio.AsyncResult): boolean;
 
@@ -13702,6 +13857,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13744,6 +13900,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -13754,6 +13911,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13803,6 +13961,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -13815,6 +13974,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13860,6 +14020,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_unlock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_unlock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -13871,6 +14032,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_sync(arg_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -14295,6 +14457,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -14304,6 +14467,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): FilesystemBTRFSProxy;
 
@@ -14468,6 +14632,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -14562,6 +14727,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -14574,6 +14740,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14629,6 +14796,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): boolean;
 
@@ -14643,6 +14811,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_source: string, arg_dest: string, arg_ro: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14692,6 +14861,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -14704,6 +14874,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14750,6 +14921,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -14761,6 +14933,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -14810,6 +14983,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_subvolumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -14822,6 +14996,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_sync(arg_snapshots_only: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -14871,6 +15046,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -14883,6 +15059,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14932,6 +15109,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -14944,6 +15122,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14990,6 +15169,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -15001,6 +15181,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15050,6 +15231,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -15062,6 +15244,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15111,6 +15294,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -15123,6 +15307,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_sync(arg_id: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15172,6 +15357,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -15184,6 +15370,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15614,6 +15801,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -15626,6 +15814,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15681,6 +15870,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): boolean;
 
@@ -15695,6 +15885,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_source: string, arg_dest: string, arg_ro: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15744,6 +15935,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -15756,6 +15948,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15802,6 +15995,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -15813,6 +16007,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -15862,6 +16057,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_subvolumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -15874,6 +16070,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_sync(arg_snapshots_only: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -15923,6 +16120,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -15935,6 +16133,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15984,6 +16183,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -15996,6 +16196,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16042,6 +16243,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -16053,6 +16255,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16102,6 +16305,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -16114,6 +16318,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16163,6 +16368,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -16175,6 +16381,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_sync(arg_id: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16224,6 +16431,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -16236,6 +16444,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16723,6 +16932,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16732,6 +16942,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): FilesystemProxy;
 
@@ -16896,6 +17107,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16983,6 +17195,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_check()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -16993,6 +17206,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -17035,6 +17249,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_mount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_mount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -17045,6 +17260,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -17087,6 +17303,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_repair()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -17097,6 +17314,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -17146,6 +17364,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -17158,6 +17377,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17203,6 +17423,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -17214,6 +17435,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17263,6 +17485,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -17275,6 +17498,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17317,6 +17541,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_take_ownership()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_take_ownership()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_finish(res: Gio.AsyncResult): boolean;
 
@@ -17327,6 +17552,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17369,6 +17595,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_unmount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_unmount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_finish(res: Gio.AsyncResult): boolean;
 
@@ -17379,6 +17606,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17707,6 +17935,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_check()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -17717,6 +17946,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -17759,6 +17989,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_mount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_mount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -17769,6 +18000,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -17811,6 +18043,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_repair()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -17821,6 +18054,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -17870,6 +18104,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -17882,6 +18117,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17927,6 +18163,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -17938,6 +18175,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17987,6 +18225,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -17999,6 +18238,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18041,6 +18281,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_take_ownership()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_take_ownership()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_finish(res: Gio.AsyncResult): boolean;
 
@@ -18051,6 +18292,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18093,6 +18335,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_unmount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_unmount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_finish(res: Gio.AsyncResult): boolean;
 
@@ -18103,6 +18346,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18675,6 +18919,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18684,6 +18929,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ISCSISessionProxy;
 
@@ -18848,6 +19094,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18939,6 +19186,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -18988,6 +19236,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout_interface()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_finish(res: Gio.AsyncResult): boolean;
 
@@ -19000,6 +19249,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_sync(arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19011,6 +19261,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19392,6 +19643,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -19441,6 +19693,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout_interface()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_finish(res: Gio.AsyncResult): boolean;
 
@@ -19453,6 +19706,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_sync(arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19464,6 +19718,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19904,6 +20159,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -19913,6 +20169,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): JobProxy;
 
@@ -20077,6 +20334,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -20164,6 +20422,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_job_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_job_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -20174,6 +20433,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20516,6 +20776,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_job_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_job_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -20526,6 +20787,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21070,6 +21332,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -21079,6 +21342,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): LogicalVolumeProxy;
 
@@ -21243,6 +21507,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21334,6 +21599,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -21345,6 +21611,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -21394,6 +21661,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_attach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_finish(res: Gio.AsyncResult): boolean;
 
@@ -21406,6 +21674,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_sync(arg_cache_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21452,6 +21721,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_detach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_finish(res: Gio.AsyncResult): boolean;
 
@@ -21463,6 +21733,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21509,6 +21780,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_split()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_finish(res: Gio.AsyncResult): boolean;
 
@@ -21520,6 +21792,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21572,6 +21845,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -21585,6 +21859,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -21631,6 +21906,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_deactivate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_finish(res: Gio.AsyncResult): boolean;
 
@@ -21642,6 +21918,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21688,6 +21965,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -21699,6 +21977,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21748,6 +22027,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -21760,6 +22040,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -21809,6 +22090,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -21821,6 +22103,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21870,6 +22153,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -21882,6 +22166,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_new_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22482,6 +22767,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -22493,6 +22779,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -22542,6 +22829,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_attach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_finish(res: Gio.AsyncResult): boolean;
 
@@ -22554,6 +22842,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_sync(arg_cache_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22600,6 +22889,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_detach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_finish(res: Gio.AsyncResult): boolean;
 
@@ -22611,6 +22901,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22657,6 +22948,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_split()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_finish(res: Gio.AsyncResult): boolean;
 
@@ -22668,6 +22960,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22720,6 +23013,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -22733,6 +23027,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -22779,6 +23074,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_deactivate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_finish(res: Gio.AsyncResult): boolean;
 
@@ -22790,6 +23086,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22836,6 +23133,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -22847,6 +23145,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22896,6 +23195,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -22908,6 +23208,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -22957,6 +23258,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -22969,6 +23271,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23018,6 +23321,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -23030,6 +23334,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_new_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23518,6 +23823,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -23527,6 +23833,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): LoopProxy;
 
@@ -23691,6 +23998,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -23778,6 +24086,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -23788,6 +24097,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23833,6 +24143,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_set_autoclear()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_autoclear()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_finish(res: Gio.AsyncResult): boolean;
 
@@ -23844,6 +24155,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23890,6 +24202,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_capacity()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_finish(res: Gio.AsyncResult): boolean;
 
@@ -23901,6 +24214,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24166,6 +24480,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -24176,6 +24491,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24221,6 +24537,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_set_autoclear()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_autoclear()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_finish(res: Gio.AsyncResult): boolean;
 
@@ -24232,6 +24549,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24278,6 +24596,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_capacity()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_finish(res: Gio.AsyncResult): boolean;
 
@@ -24289,6 +24608,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24896,6 +25216,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -24905,6 +25226,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MDRaidProxy;
 
@@ -25069,6 +25391,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -25163,6 +25486,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -25175,6 +25499,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25221,6 +25546,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -25232,6 +25558,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25281,6 +25608,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -25293,6 +25621,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25342,6 +25671,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_request_sync_action()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_finish(res: Gio.AsyncResult): boolean;
 
@@ -25354,6 +25684,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_sync(arg_sync_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25403,6 +25734,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_set_bitmap_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_finish(res: Gio.AsyncResult): boolean;
 
@@ -25415,6 +25747,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_sync(arg_value: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25461,6 +25794,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -25472,6 +25806,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25518,6 +25853,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -25529,6 +25865,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26120,6 +26457,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -26132,6 +26470,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26178,6 +26517,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -26189,6 +26529,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26238,6 +26579,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -26250,6 +26592,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26299,6 +26642,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_request_sync_action()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_finish(res: Gio.AsyncResult): boolean;
 
@@ -26311,6 +26655,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_sync(arg_sync_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26360,6 +26705,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_set_bitmap_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_finish(res: Gio.AsyncResult): boolean;
 
@@ -26372,6 +26718,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_sync(arg_value: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26418,6 +26765,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -26429,6 +26777,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26475,6 +26824,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -26486,6 +26836,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26868,6 +27219,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -26877,6 +27229,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerBTRFSProxy;
 
@@ -27041,6 +27394,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -27144,6 +27498,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_btrfs_call_create_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_finish(res: Gio.AsyncResult): boolean;
 
@@ -27159,6 +27514,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_sync(arg_devices: string, arg_label: string, arg_data_level: string, arg_md_level: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27359,6 +27715,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_btrfs_call_create_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_finish(res: Gio.AsyncResult): boolean;
 
@@ -27374,6 +27731,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_sync(arg_devices: string, arg_label: string, arg_data_level: string, arg_md_level: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27677,6 +28035,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -27686,6 +28045,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerISCSIInitiatorProxy;
 
@@ -27850,6 +28210,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -27941,6 +28302,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_firmware()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -27952,6 +28314,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -28004,6 +28367,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_send_targets()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -28017,6 +28381,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_sync(arg_address: string, arg_port: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -28060,6 +28425,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_firmware_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28070,6 +28436,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28113,6 +28480,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28156,6 +28524,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name_raw()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28166,6 +28535,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28176,6 +28546,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28237,6 +28608,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -28253,6 +28625,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28314,6 +28687,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -28330,6 +28704,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28379,6 +28754,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_set_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -28391,6 +28767,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28734,6 +29111,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_firmware()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -28745,6 +29123,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -28797,6 +29176,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_send_targets()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -28810,6 +29190,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_sync(arg_address: string, arg_port: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -28853,6 +29234,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_firmware_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28863,6 +29245,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28906,6 +29289,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28949,6 +29333,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name_raw()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28959,6 +29344,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28969,6 +29355,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -29030,6 +29417,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -29046,6 +29434,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29107,6 +29496,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -29123,6 +29513,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29172,6 +29563,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_set_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -29184,6 +29576,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29596,6 +29989,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -29605,6 +29999,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerLVM2Proxy;
 
@@ -29769,6 +30164,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -29866,6 +30262,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_lvm2_call_volume_group_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -29879,6 +30276,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_sync(arg_name: string, arg_blocks: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -30072,6 +30470,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_lvm2_call_volume_group_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -30085,6 +30484,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_sync(arg_name: string, arg_blocks: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -30403,6 +30803,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -30412,6 +30813,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerNVMeProxy;
 
@@ -30576,6 +30978,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -30676,6 +31079,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -30690,6 +31094,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_sync(arg_subsysnqn: string, arg_transport: string, arg_transport_addr: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -30739,6 +31144,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -30751,6 +31157,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_sync(arg_hostid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -30800,6 +31207,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_nqn()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_finish(res: Gio.AsyncResult): boolean;
 
@@ -30812,6 +31220,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_sync(arg_hostnqn: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -31086,6 +31495,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -31100,6 +31510,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_sync(arg_subsysnqn: string, arg_transport: string, arg_transport_addr: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -31149,6 +31560,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -31161,6 +31573,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_sync(arg_hostid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -31210,6 +31623,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_nqn()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_finish(res: Gio.AsyncResult): boolean;
 
@@ -31222,6 +31636,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_sync(arg_hostnqn: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -31609,6 +32024,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -31618,6 +32034,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerProxy;
 
@@ -31782,6 +32199,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -31873,6 +32291,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -31884,6 +32303,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -31930,6 +32350,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -31941,6 +32362,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -31987,6 +32409,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -31998,6 +32421,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -32044,6 +32468,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -32055,6 +32480,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -32104,6 +32530,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_module()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_finish(res: Gio.AsyncResult): boolean;
 
@@ -32116,6 +32543,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_sync(arg_name: string, arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -32162,6 +32590,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_modules()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_finish(res: Gio.AsyncResult): boolean;
 
@@ -32173,6 +32602,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -32219,6 +32649,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_block_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -32230,6 +32661,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -32276,6 +32708,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_drives()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -32287,6 +32720,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -32335,6 +32769,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_manager_call_loop_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_loop_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_finish(res: Gio.AsyncResult): [boolean, string, Gio.UnixFDList | null];
 
@@ -32347,6 +32782,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_sync(arg_fd: GLib.Variant, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, string, Gio.UnixFDList | null];
 
@@ -32405,6 +32841,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_mdraid_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -32420,6 +32857,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_sync(arg_blocks: string, arg_level: string, arg_name: string, arg_chunk: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -32469,6 +32907,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_resolve_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -32481,6 +32920,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_sync(arg_devspec: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -32925,6 +33365,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -32936,6 +33377,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -32982,6 +33424,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -32993,6 +33436,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -33039,6 +33483,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -33050,6 +33495,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -33096,6 +33542,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -33107,6 +33554,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -33156,6 +33604,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_module()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_finish(res: Gio.AsyncResult): boolean;
 
@@ -33168,6 +33617,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_sync(arg_name: string, arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -33214,6 +33664,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_modules()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_finish(res: Gio.AsyncResult): boolean;
 
@@ -33225,6 +33676,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -33271,6 +33723,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_block_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -33282,6 +33735,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -33328,6 +33782,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_drives()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -33339,6 +33794,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -33387,6 +33843,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_manager_call_loop_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_loop_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_finish(res: Gio.AsyncResult): [boolean, string, Gio.UnixFDList | null];
 
@@ -33399,6 +33856,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_sync(arg_fd: GLib.Variant, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, string, Gio.UnixFDList | null];
 
@@ -33457,6 +33915,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_mdraid_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -33472,6 +33931,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_sync(arg_blocks: string, arg_level: string, arg_name: string, arg_chunk: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -33521,6 +33981,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_resolve_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -33533,6 +33994,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_sync(arg_devspec: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -34269,6 +34731,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -34278,6 +34741,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): NVMeControllerProxy;
 
@@ -34442,6 +34906,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -34536,6 +35001,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_sanitize_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -34548,6 +35014,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_sync(arg_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -34594,6 +35061,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -34605,6 +35073,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -34651,6 +35120,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -34662,6 +35132,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -34711,6 +35182,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -34723,6 +35195,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -34769,6 +35242,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -34780,6 +35254,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35313,6 +35788,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_sanitize_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -35325,6 +35801,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_sync(arg_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35371,6 +35848,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -35382,6 +35860,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -35428,6 +35907,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -35439,6 +35919,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35488,6 +35969,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -35500,6 +35982,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35546,6 +36029,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -35557,6 +36041,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35975,6 +36460,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -35984,6 +36470,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): NVMeFabricsProxy;
 
@@ -36148,6 +36635,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -36239,6 +36727,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_fabrics_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -36250,6 +36739,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36507,6 +36997,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_fabrics_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -36518,6 +37009,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36961,6 +37453,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -36970,6 +37463,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): NVMeNamespaceProxy;
 
@@ -37134,6 +37628,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -37225,6 +37720,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_namespace_call_format_namespace()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_finish(res: Gio.AsyncResult): boolean;
 
@@ -37236,6 +37732,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37589,6 +38086,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_namespace_call_format_namespace()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_finish(res: Gio.AsyncResult): boolean;
 
@@ -37600,6 +38098,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -38018,6 +38517,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -38027,6 +38527,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
@@ -38226,6 +38727,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40338,6 +40840,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -40347,6 +40850,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PartitionProxy;
 
@@ -40511,6 +41015,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40598,6 +41103,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -40608,6 +41114,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40653,6 +41160,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_resize()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -40664,6 +41172,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40709,6 +41218,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_flags()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_flags()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_finish(res: Gio.AsyncResult): boolean;
 
@@ -40720,6 +41230,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_sync(arg_flags: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40765,6 +41276,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_name()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -40776,6 +41288,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40821,6 +41334,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_type()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_type()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_finish(res: Gio.AsyncResult): boolean;
 
@@ -40832,6 +41346,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40881,6 +41396,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -40893,6 +41409,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41287,6 +41804,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -41297,6 +41815,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41342,6 +41861,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_resize()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -41353,6 +41873,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41398,6 +41919,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_flags()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_flags()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_finish(res: Gio.AsyncResult): boolean;
 
@@ -41409,6 +41931,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_sync(arg_flags: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41454,6 +41977,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_name()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -41465,6 +41989,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41510,6 +42035,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_type()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_type()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_finish(res: Gio.AsyncResult): boolean;
 
@@ -41521,6 +42047,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41570,6 +42097,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -41582,6 +42110,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41961,6 +42490,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -41970,6 +42500,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PartitionTableProxy;
 
@@ -42134,6 +42665,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -42286,6 +42818,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition_and_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition_and_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42302,6 +42835,7 @@ export namespace UDisks {
          * @param arg_format_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, arg_format_type: string, arg_format_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -42309,6 +42843,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42323,6 +42858,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -42615,6 +43151,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition_and_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition_and_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42631,6 +43168,7 @@ export namespace UDisks {
          * @param arg_format_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, arg_format_type: string, arg_format_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -42638,6 +43176,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42652,6 +43191,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -43013,6 +43553,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -43022,6 +43563,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PhysicalVolumeProxy;
 
@@ -43186,6 +43728,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -43677,6 +44220,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -43686,6 +44230,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): SwapspaceProxy;
 
@@ -43850,6 +44395,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -43940,6 +44486,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -43951,6 +44498,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44000,6 +44548,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -44012,6 +44561,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44054,6 +44604,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -44064,6 +44615,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44106,6 +44658,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_stop()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -44116,6 +44669,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44359,6 +44913,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -44370,6 +44925,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44419,6 +44975,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -44431,6 +44988,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44473,6 +45031,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -44483,6 +45042,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44525,6 +45085,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_stop()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -44535,6 +45096,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45000,6 +45562,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -45009,6 +45572,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): VDOVolumeProxy;
 
@@ -45173,6 +45737,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -45267,6 +45832,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_compression()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_finish(res: Gio.AsyncResult): boolean;
 
@@ -45279,6 +45845,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45328,6 +45895,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_deduplication()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_finish(res: Gio.AsyncResult): boolean;
 
@@ -45340,6 +45908,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45386,6 +45955,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_get_statistics()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -45397,6 +45967,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -45446,6 +46017,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_logical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_finish(res: Gio.AsyncResult): boolean;
 
@@ -45458,6 +46030,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45507,6 +46080,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_physical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_finish(res: Gio.AsyncResult): boolean;
 
@@ -45519,6 +46093,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45918,6 +46493,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_compression()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_finish(res: Gio.AsyncResult): boolean;
 
@@ -45930,6 +46506,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45979,6 +46556,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_deduplication()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_finish(res: Gio.AsyncResult): boolean;
 
@@ -45991,6 +46569,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46037,6 +46616,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_get_statistics()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -46048,6 +46628,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -46097,6 +46678,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_logical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_finish(res: Gio.AsyncResult): boolean;
 
@@ -46109,6 +46691,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46158,6 +46741,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_physical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_finish(res: Gio.AsyncResult): boolean;
 
@@ -46170,6 +46754,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46645,6 +47230,7 @@ export namespace UDisks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -46654,6 +47240,7 @@ export namespace UDisks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): VolumeGroupProxy;
 
@@ -46818,6 +47405,7 @@ export namespace UDisks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -46912,6 +47500,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -46924,6 +47513,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46976,6 +47566,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -46989,6 +47580,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47047,6 +47639,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume_with_layout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -47062,6 +47655,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_sync(arg_name: string, arg_size: bigint | number, arg_layout: string, arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47114,6 +47708,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_pool_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -47127,6 +47722,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47182,6 +47778,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -47196,6 +47793,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_sync(arg_name: string, arg_size: bigint | number, arg_pool: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47266,6 +47864,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_vdo_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -47285,6 +47884,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_sync(arg_lv_name: string, arg_pool_name: string, arg_data_size: bigint | number, arg_virtual_size: bigint | number, arg_index_memory: bigint | number, arg_compression: boolean, arg_deduplication: boolean, arg_write_policy: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47334,6 +47934,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -47346,6 +47947,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47395,6 +47997,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_empty_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -47407,6 +48010,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47450,6 +48054,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_poll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_finish(res: Gio.AsyncResult): boolean;
 
@@ -47460,6 +48065,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -47512,6 +48118,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -47525,6 +48132,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_block: string, arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47571,6 +48179,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_missing_physical_volumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_finish(res: Gio.AsyncResult): boolean;
 
@@ -47582,6 +48191,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47631,6 +48241,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -47643,6 +48254,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48173,6 +48785,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -48185,6 +48798,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48237,6 +48851,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48250,6 +48865,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48308,6 +48924,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume_with_layout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48323,6 +48940,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_sync(arg_name: string, arg_size: bigint | number, arg_layout: string, arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48375,6 +48993,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_pool_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48388,6 +49007,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48443,6 +49063,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48457,6 +49078,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_sync(arg_name: string, arg_size: bigint | number, arg_pool: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48527,6 +49149,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_vdo_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48546,6 +49169,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_sync(arg_lv_name: string, arg_pool_name: string, arg_data_size: bigint | number, arg_virtual_size: bigint | number, arg_index_memory: bigint | number, arg_compression: boolean, arg_deduplication: boolean, arg_write_policy: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -48595,6 +49219,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -48607,6 +49232,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48656,6 +49282,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_empty_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -48668,6 +49295,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48711,6 +49339,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_poll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_finish(res: Gio.AsyncResult): boolean;
 
@@ -48721,6 +49350,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -48773,6 +49403,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -48786,6 +49417,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_block: string, arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48832,6 +49464,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_missing_physical_volumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_finish(res: Gio.AsyncResult): boolean;
 
@@ -48843,6 +49476,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48892,6 +49526,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -48904,6 +49539,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -50691,6 +51327,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_add_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_add_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -50702,6 +51339,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50747,6 +51385,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_finish(res: Gio.AsyncResult): boolean;
 
@@ -50758,6 +51397,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_format_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50800,6 +51440,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_get_secret_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_get_secret_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -50810,6 +51451,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_secret_configuration_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -50862,6 +51504,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -50875,6 +51518,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_open_device_sync(arg_mode: string, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -50920,6 +51564,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_backup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -50931,6 +51576,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_backup_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -50976,6 +51622,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_benchmark()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_benchmark()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -50987,6 +51634,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_benchmark_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -51032,6 +51680,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_open_for_restore()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_open_for_restore()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -51043,6 +51692,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_for_restore_sync(arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, Gio.UnixFDList | null];
 
@@ -51088,6 +51738,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_remove_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_remove_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -51099,6 +51750,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_configuration_item_sync(arg_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51141,6 +51793,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_rescan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_rescan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_finish(res: Gio.AsyncResult): boolean;
 
@@ -51151,6 +51804,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_rescan_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51200,6 +51854,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_restore_encrypted_header()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_finish(res: Gio.AsyncResult): boolean;
 
@@ -51212,6 +51867,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_restore_encrypted_header_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51260,6 +51916,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_block_call_update_configuration_item()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_block_call_update_configuration_item()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_finish(res: Gio.AsyncResult): boolean;
 
@@ -51272,6 +51929,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_update_configuration_item_sync(arg_old_item: GLib.Variant, arg_new_item: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51987,6 +52645,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_eject()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_eject()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_finish(res: Gio.AsyncResult): boolean;
 
@@ -51997,6 +52656,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_eject_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52043,6 +52703,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_power_off()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_finish(res: Gio.AsyncResult): boolean;
 
@@ -52054,6 +52715,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_power_off_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52099,6 +52761,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_call_set_configuration()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_call_set_configuration()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_finish(res: Gio.AsyncResult): boolean;
 
@@ -52110,6 +52773,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_configuration_sync(arg_value: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52795,6 +53459,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_get_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_get_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -52805,6 +53470,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_get_state_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -52847,6 +53513,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_standby()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_standby()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_finish(res: Gio.AsyncResult): boolean;
 
@@ -52857,6 +53524,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_standby_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52899,6 +53567,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_pm_wakeup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_pm_wakeup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_finish(res: Gio.AsyncResult): boolean;
 
@@ -52909,6 +53578,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_pm_wakeup_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52951,6 +53621,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_security_erase_unit()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_security_erase_unit()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_finish(res: Gio.AsyncResult): boolean;
 
@@ -52961,6 +53632,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_security_erase_unit_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53003,6 +53675,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_get_attributes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -53013,6 +53686,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -53055,6 +53729,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_abort()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -53065,6 +53740,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53110,6 +53786,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_selftest_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -53121,6 +53798,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53170,6 +53848,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_set_enabled()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_finish(res: Gio.AsyncResult): boolean;
 
@@ -53182,6 +53861,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_smart_set_enabled_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53224,6 +53904,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_drive_ata_call_smart_update()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_ata_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -53234,6 +53915,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53685,6 +54367,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -53696,6 +54379,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53742,6 +54426,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_fault_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -53753,6 +54438,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_fault_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53799,6 +54485,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledoff()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_finish(res: Gio.AsyncResult): boolean;
 
@@ -53810,6 +54497,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledoff_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53856,6 +54544,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_drive_lsm_local_call_turn_ident_ledon()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_finish(res: Gio.AsyncResult): boolean;
 
@@ -53867,6 +54556,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.6.3
+         * @throws GLib.Error
          */
         call_turn_ident_ledon_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54127,6 +54817,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_change_passphrase()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_change_passphrase()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_finish(res: Gio.AsyncResult): boolean;
 
@@ -54139,6 +54830,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_passphrase_sync(arg_passphrase: string, arg_new_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54188,6 +54880,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_convert()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_finish(res: Gio.AsyncResult): boolean;
 
@@ -54200,6 +54893,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_convert_sync(arg_target_version: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54249,6 +54943,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_header_backup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_finish(res: Gio.AsyncResult): boolean;
 
@@ -54261,6 +54956,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_header_backup_sync(arg_backup_file: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54303,6 +54999,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -54313,6 +55010,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_lock_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54362,6 +55060,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -54374,6 +55073,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54419,6 +55119,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_encrypted_call_unlock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_encrypted_call_unlock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -54430,6 +55131,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unlock_sync(arg_passphrase: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -54663,6 +55365,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_check()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -54673,6 +55376,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_check_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -54715,6 +55419,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_mount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_mount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -54725,6 +55430,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_mount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -54767,6 +55473,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_repair()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -54777,6 +55484,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -54826,6 +55534,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -54838,6 +55547,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54883,6 +55593,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -54894,6 +55605,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54943,6 +55655,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -54955,6 +55668,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54997,6 +55711,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_take_ownership()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_take_ownership()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_finish(res: Gio.AsyncResult): boolean;
 
@@ -55007,6 +55722,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_take_ownership_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55049,6 +55765,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_filesystem_call_unmount()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_call_unmount()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_finish(res: Gio.AsyncResult): boolean;
 
@@ -55059,6 +55776,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_unmount_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55376,6 +56094,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -55388,6 +56107,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55443,6 +56163,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): boolean;
 
@@ -55457,6 +56178,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_source: string, arg_dest: string, arg_ro: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55506,6 +56228,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_create_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -55518,6 +56241,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_create_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55564,6 +56288,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -55575,6 +56300,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_get_default_subvolume_id_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -55624,6 +56350,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_get_subvolumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -55636,6 +56363,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_get_subvolumes_sync(arg_snapshots_only: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -55685,6 +56413,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -55697,6 +56426,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55746,6 +56476,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_remove_subvolume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_finish(res: Gio.AsyncResult): boolean;
 
@@ -55758,6 +56489,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_remove_subvolume_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55804,6 +56536,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -55815,6 +56548,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55864,6 +56598,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -55876,6 +56611,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55925,6 +56661,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_default_subvolume_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -55937,6 +56674,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_default_subvolume_id_sync(arg_id: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55986,6 +56724,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_filesystem_btrfs_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -55998,6 +56737,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56377,6 +57117,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -56426,6 +57167,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_iscsi_session_call_logout_interface()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_finish(res: Gio.AsyncResult): boolean;
 
@@ -56438,6 +57180,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_interface_sync(arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56449,6 +57192,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56708,6 +57452,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_job_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_job_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -56718,6 +57463,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57149,6 +57895,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -57160,6 +57907,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_activate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -57209,6 +57957,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_attach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_finish(res: Gio.AsyncResult): boolean;
 
@@ -57221,6 +57970,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_attach_sync(arg_cache_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57267,6 +58017,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_detach()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_finish(res: Gio.AsyncResult): boolean;
 
@@ -57278,6 +58029,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_detach_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57324,6 +58076,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_cache_split()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_finish(res: Gio.AsyncResult): boolean;
 
@@ -57335,6 +58088,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_cache_split_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57387,6 +58141,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_create_snapshot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -57400,6 +58155,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_snapshot_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -57446,6 +58202,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_deactivate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_finish(res: Gio.AsyncResult): boolean;
 
@@ -57457,6 +58214,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_deactivate_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57503,6 +58261,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -57514,6 +58273,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57563,6 +58323,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -57575,6 +58336,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -57624,6 +58386,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_finish(res: Gio.AsyncResult): boolean;
 
@@ -57636,6 +58399,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_repair_sync(arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57685,6 +58449,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_logical_volume_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -57697,6 +58462,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_resize_sync(arg_new_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57951,6 +58717,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -57961,6 +58728,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58006,6 +58774,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_loop_call_set_autoclear()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_autoclear()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_finish(res: Gio.AsyncResult): boolean;
 
@@ -58017,6 +58786,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_autoclear_sync(arg_value: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58063,6 +58833,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_loop_call_set_capacity()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_finish(res: Gio.AsyncResult): boolean;
 
@@ -58074,6 +58845,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11.0
+         * @throws GLib.Error
          */
         call_set_capacity_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58535,6 +59307,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -58547,6 +59320,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58593,6 +59367,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -58604,6 +59379,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58653,6 +59429,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -58665,6 +59442,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_device: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58714,6 +59492,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_request_sync_action()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_finish(res: Gio.AsyncResult): boolean;
 
@@ -58726,6 +59505,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_request_sync_action_sync(arg_sync_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58775,6 +59555,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_set_bitmap_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_finish(res: Gio.AsyncResult): boolean;
 
@@ -58787,6 +59568,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_set_bitmap_location_sync(arg_value: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58833,6 +59615,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -58844,6 +59627,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58890,6 +59674,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_mdraid_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -58901,6 +59686,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -59220,6 +60006,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_check()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -59231,6 +60018,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_check_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -59277,6 +60065,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -59288,6 +60077,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_format_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -59334,6 +60124,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_repair()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -59345,6 +60136,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_repair_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -59391,6 +60183,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_can_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -59402,6 +60195,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_can_resize_sync(arg_type: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -59451,6 +60245,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_module()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_finish(res: Gio.AsyncResult): boolean;
 
@@ -59463,6 +60258,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_module_sync(arg_name: string, arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -59509,6 +60305,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_enable_modules()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_finish(res: Gio.AsyncResult): boolean;
 
@@ -59520,6 +60317,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @deprecated The D-Bus method has been deprecated.
+         * @throws GLib.Error
          */
         call_enable_modules_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -59566,6 +60364,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_block_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -59577,6 +60376,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.2
+         * @throws GLib.Error
          */
         call_get_block_devices_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -59623,6 +60423,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_get_drives()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -59634,6 +60435,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.11
+         * @throws GLib.Error
          */
         call_get_drives_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -59682,6 +60484,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_manager_call_loop_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_loop_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_finish(res: Gio.AsyncResult): [boolean, string, Gio.UnixFDList | null];
 
@@ -59694,6 +60497,7 @@ export namespace UDisks {
          * @param fd_list A {@link Gio.UnixFDList} or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_loop_setup_sync(arg_fd: GLib.Variant, arg_options: GLib.Variant, fd_list: Gio.UnixFDList | null, cancellable: Gio.Cancellable | null): [boolean, string, Gio.UnixFDList | null];
 
@@ -59752,6 +60556,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_mdraid_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -59767,6 +60572,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_mdraid_create_sync(arg_blocks: string, arg_level: string, arg_name: string, arg_chunk: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -59816,6 +60622,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_call_resolve_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -59828,6 +60635,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.7.3
+         * @throws GLib.Error
          */
         call_resolve_device_sync(arg_devspec: GLib.Variant, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -60049,6 +60857,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_btrfs_call_create_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_finish(res: Gio.AsyncResult): boolean;
 
@@ -60064,6 +60873,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.0
+         * @throws GLib.Error
          */
         call_create_volume_sync(arg_devices: string, arg_label: string, arg_data_level: string, arg_md_level: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60260,6 +61070,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_firmware()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -60271,6 +61082,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_discover_firmware_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -60323,6 +61135,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_discover_send_targets()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null, number];
 
@@ -60336,6 +61149,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.3.1
+         * @throws GLib.Error
          */
         call_discover_send_targets_sync(arg_address: string, arg_port: number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null, number];
 
@@ -60379,6 +61193,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_firmware_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -60389,6 +61204,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.4.0
+         * @throws GLib.Error
          */
         call_get_firmware_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -60432,6 +61248,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -60475,6 +61292,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_get_initiator_name_raw()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -60485,6 +61303,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.8.3
+         * @throws GLib.Error
          */
         call_get_initiator_name_raw_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -60495,6 +61314,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.1
+         * @throws GLib.Error
          */
         call_get_initiator_name_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -60556,6 +61376,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -60572,6 +61393,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_login_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60633,6 +61455,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_logout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_finish(res: Gio.AsyncResult): boolean;
 
@@ -60649,6 +61472,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_logout_sync(arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60698,6 +61522,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_iscsi_initiator_call_set_initiator_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -60710,6 +61535,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.1.3
+         * @throws GLib.Error
          */
         call_set_initiator_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60894,6 +61720,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_lvm2_call_volume_group_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -60907,6 +61734,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_volume_group_create_sync(arg_name: string, arg_blocks: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -61085,6 +61913,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -61099,6 +61928,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_connect_sync(arg_subsysnqn: string, arg_transport: string, arg_transport_addr: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -61148,6 +61978,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_id()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -61160,6 +61991,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_id_sync(arg_hostid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -61209,6 +62041,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_manager_nvme_call_set_host_nqn()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_finish(res: Gio.AsyncResult): boolean;
 
@@ -61221,6 +62054,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_host_nqn_sync(arg_hostnqn: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -61646,6 +62480,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_sanitize_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -61658,6 +62493,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_sanitize_start_sync(arg_action: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -61704,6 +62540,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_get_attributes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -61715,6 +62552,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_get_attributes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -61761,6 +62599,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_abort()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_finish(res: Gio.AsyncResult): boolean;
 
@@ -61772,6 +62611,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_abort_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -61821,6 +62661,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_selftest_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -61833,6 +62674,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_selftest_start_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -61879,6 +62721,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_controller_call_smart_update()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -61890,6 +62733,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_smart_update_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -62104,6 +62948,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_fabrics_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -62115,6 +62960,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -62381,6 +63227,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_nvme_namespace_call_format_namespace()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_finish(res: Gio.AsyncResult): boolean;
 
@@ -62392,6 +63239,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_format_namespace_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63299,6 +64147,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -63309,6 +64158,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63354,6 +64204,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_resize()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_resize()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_finish(res: Gio.AsyncResult): boolean;
 
@@ -63365,6 +64216,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_resize_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63410,6 +64262,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_flags()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_flags()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_finish(res: Gio.AsyncResult): boolean;
 
@@ -63421,6 +64274,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_flags_sync(arg_flags: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63466,6 +64320,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_name()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_name()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_finish(res: Gio.AsyncResult): boolean;
 
@@ -63477,6 +64332,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_name_sync(arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63522,6 +64378,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_call_set_type()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_type()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_finish(res: Gio.AsyncResult): boolean;
 
@@ -63533,6 +64390,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_type_sync(arg_type: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63582,6 +64440,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -63594,6 +64453,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63839,6 +64699,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition_and_format()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition_and_format()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -63855,6 +64716,7 @@ export namespace UDisks {
          * @param arg_format_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_and_format_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, arg_format_type: string, arg_format_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -63862,6 +64724,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_partition_table_call_create_partition()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_partition_table_call_create_partition()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -63876,6 +64739,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_partition_sync(arg_offset: bigint | number, arg_size: bigint | number, arg_type: string, arg_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -64118,6 +64982,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_set_label()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_label()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_finish(res: Gio.AsyncResult): boolean;
 
@@ -64129,6 +64994,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_label_sync(arg_label: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64178,6 +65044,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_set_uuid()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_finish(res: Gio.AsyncResult): boolean;
 
@@ -64190,6 +65057,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.10.0
+         * @throws GLib.Error
          */
         call_set_uuid_sync(arg_uuid: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64232,6 +65100,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -64242,6 +65111,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64284,6 +65154,7 @@ export namespace UDisks {
          * Finishes an operation started with `udisks_swapspace_call_stop()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_swapspace_call_stop()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_finish(res: Gio.AsyncResult): boolean;
 
@@ -64294,6 +65165,7 @@ export namespace UDisks {
          * @param arg_options Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64597,6 +65469,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_compression()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_finish(res: Gio.AsyncResult): boolean;
 
@@ -64609,6 +65482,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_compression_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64658,6 +65532,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_enable_deduplication()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_finish(res: Gio.AsyncResult): boolean;
 
@@ -64670,6 +65545,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_enable_deduplication_sync(arg_enable: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64716,6 +65592,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_get_statistics()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -64727,6 +65604,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_get_statistics_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -64776,6 +65654,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_logical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_finish(res: Gio.AsyncResult): boolean;
 
@@ -64788,6 +65667,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_logical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64837,6 +65717,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_vdo_volume_call_resize_physical()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_finish(res: Gio.AsyncResult): boolean;
 
@@ -64849,6 +65730,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.9.0
+         * @throws GLib.Error
          */
         call_resize_physical_sync(arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65228,6 +66110,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_add_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -65240,6 +66123,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_add_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65292,6 +66176,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65305,6 +66190,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -65363,6 +66249,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_plain_volume_with_layout()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65378,6 +66265,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_plain_volume_with_layout_sync(arg_name: string, arg_size: bigint | number, arg_layout: string, arg_pvs: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -65430,6 +66318,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_pool_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65443,6 +66332,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_pool_volume_sync(arg_name: string, arg_size: bigint | number, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -65498,6 +66388,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_thin_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65512,6 +66403,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_thin_volume_sync(arg_name: string, arg_size: bigint | number, arg_pool: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -65582,6 +66474,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_create_vdo_volume()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65601,6 +66494,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_create_vdo_volume_sync(arg_lv_name: string, arg_pool_name: string, arg_data_size: bigint | number, arg_virtual_size: bigint | number, arg_index_memory: bigint | number, arg_compression: boolean, arg_deduplication: boolean, arg_write_policy: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -65650,6 +66544,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -65662,6 +66557,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_delete_sync(arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65711,6 +66607,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_empty_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -65723,6 +66620,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_empty_device_sync(arg_block: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65766,6 +66664,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_poll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_finish(res: Gio.AsyncResult): boolean;
 
@@ -65776,6 +66675,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_poll_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -65828,6 +66728,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -65841,6 +66742,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_device_sync(arg_block: string, arg_wipe: boolean, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65887,6 +66789,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_remove_missing_physical_volumes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_finish(res: Gio.AsyncResult): boolean;
 
@@ -65898,6 +66801,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_remove_missing_physical_volumes_sync(arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65947,6 +66851,7 @@ export namespace UDisks {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `udisks_volume_group_call_rename()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -65959,6 +66864,7 @@ export namespace UDisks {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         call_rename_sync(arg_new_name: string, arg_options: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 

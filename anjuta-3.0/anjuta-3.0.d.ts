@@ -51,7 +51,7 @@ export namespace Anjuta {
          * 								action bar. The entry's action name and
          * 								callback are ignored.
          */
-        FRAME,
+        FRAME = 0,
         /**
          * This entry adds a button to the action bar,
          * 								 either to the last frame to appear in the
@@ -59,7 +59,7 @@ export namespace Anjuta {
          * 								 of the bar if no frames were previously
          * 								 added.
          */
-        BUTTON,
+        BUTTON = 1,
     }
 
 
@@ -74,8 +74,8 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum CommandQueueExecuteMode {
-        AUTOMATIC,
-        MANUAL,
+        AUTOMATIC = 0,
+        MANUAL = 1,
     }
 
 
@@ -111,9 +111,9 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum LauncherOutputType {
-        STDOUT,
-        STDERR,
-        PTY,
+        STDOUT = 0,
+        STDERR = 1,
+        PTY = 2,
     }
 
 
@@ -212,10 +212,10 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum ProjectValueType {
-        STRING,
-        LIST,
-        BOOLEAN,
-        MAP,
+        STRING = 1,
+        LIST = 2,
+        BOOLEAN = 3,
+        MAP = 4,
     }
 
 
@@ -230,8 +230,8 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum SerializerMode {
-        READ,
-        WRITE,
+        READ = 0,
+        WRITE = 1,
     }
 
 
@@ -246,11 +246,11 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum SessionPhase {
-        START,
-        FIRST,
-        NORMAL,
-        LAST,
-        END,
+        START = 0,
+        FIRST = 1,
+        NORMAL = 2,
+        LAST = 3,
+        END = 4,
     }
 
 
@@ -282,18 +282,24 @@ export namespace Anjuta {
      * @gir-type Enum
      */
     enum ShellPlacement {
-        NONE,
-        TOP,
-        BOTTOM,
-        RIGHT,
-        LEFT,
-        CENTER,
-        FLOATING,
+        NONE = 0,
+        TOP = 1,
+        BOTTOM = 2,
+        RIGHT = 3,
+        LEFT = 4,
+        CENTER = 5,
+        FLOATING = 6,
     }
 
 
+    /**
+     * @default system
+     */
     const SYSTEM_PROFILE_NAME: string;
 
+    /**
+     * @default 15
+     */
     const VCS_DEFAULT_STATUS_CODES: number;
 
     /**
@@ -399,6 +405,7 @@ export namespace Anjuta {
      * @param len 
      * @param encoding 
      * @param new_len 
+     * @throws GLib.Error
      */
     function convert_from_utf8(content: string, len: bigint | number, encoding: Encoding, new_len: bigint | number): string;
 
@@ -407,6 +414,7 @@ export namespace Anjuta {
      * @param len 
      * @param encoding 
      * @param new_len 
+     * @throws GLib.Error
      */
     function convert_to_utf8(content: string, len: bigint | number, encoding: Encoding, new_len: bigint | number): string;
 
@@ -812,19 +820,19 @@ export namespace Anjuta {
      * @gir-type Flags
      */
     enum ProjectNodeState {
-        OK,
-        MODIFIED,
-        INCOMPLETE,
-        LOADING,
-        REMOVED,
-        CAN_ADD_GROUP,
-        CAN_ADD_TARGET,
-        CAN_ADD_SOURCE,
-        CAN_ADD_MODULE,
-        CAN_ADD_PACKAGE,
-        CAN_REMOVE,
-        CAN_SAVE,
-        REMOVE_FILE,
+        OK = 0,
+        MODIFIED = 1,
+        INCOMPLETE = 2,
+        LOADING = 4,
+        REMOVED = 8,
+        CAN_ADD_GROUP = 256,
+        CAN_ADD_TARGET = 512,
+        CAN_ADD_SOURCE = 1024,
+        CAN_ADD_MODULE = 2048,
+        CAN_ADD_PACKAGE = 4096,
+        CAN_REMOVE = 65536,
+        CAN_SAVE = 131072,
+        REMOVE_FILE = 262144,
     }
 
 
@@ -839,44 +847,44 @@ export namespace Anjuta {
      * @gir-type Flags
      */
     enum ProjectNodeType {
-        UNKNOWN,
-        SHAREDLIB,
-        STATICLIB,
-        PROGRAM,
-        PYTHON,
-        JAVA,
-        LISP,
-        HEADER,
-        MAN,
-        INFO,
-        GENERIC,
-        DATA,
-        EXTRA,
-        INTLTOOL,
-        CONFIGURE,
-        IDL,
-        MKENUMS,
-        GENMARSHAL,
-        SCRIPT,
-        ROOT_GROUP,
-        LT_MODULE,
-        PROXY,
-        PROJECT,
-        PRIMARY,
-        EXECUTABLE,
-        READ_ONLY,
-        FRAME,
-        ID_MASK,
-        FLAG_MASK,
-        TYPE_MASK,
-        ROOT,
-        GROUP,
-        TARGET,
-        SOURCE,
-        MODULE,
-        PACKAGE,
-        VARIABLE,
-        OBJECT,
+        UNKNOWN = 0,
+        SHAREDLIB = 1,
+        STATICLIB = 2,
+        PROGRAM = 3,
+        PYTHON = 4,
+        JAVA = 5,
+        LISP = 6,
+        HEADER = 7,
+        MAN = 8,
+        INFO = 9,
+        GENERIC = 10,
+        DATA = 11,
+        EXTRA = 12,
+        INTLTOOL = 13,
+        CONFIGURE = 14,
+        IDL = 15,
+        MKENUMS = 16,
+        GENMARSHAL = 17,
+        SCRIPT = 18,
+        ROOT_GROUP = 19,
+        LT_MODULE = 20,
+        PROXY = 65536,
+        PROJECT = 131072,
+        PRIMARY = 262144,
+        EXECUTABLE = 524288,
+        READ_ONLY = 1048576,
+        FRAME = 2097152,
+        ID_MASK = 65535,
+        FLAG_MASK = 16711680,
+        TYPE_MASK = 4278190080,
+        ROOT = 16777216,
+        GROUP = 33554432,
+        TARGET = 50331648,
+        SOURCE = 67108864,
+        MODULE = 83886080,
+        PACKAGE = 100663296,
+        VARIABLE = 117440512,
+        OBJECT = 134217728,
     }
 
 
@@ -891,10 +899,10 @@ export namespace Anjuta {
      * @gir-type Flags
      */
     enum ProjectPropertyFlags {
-        READ_ONLY,
-        READ_WRITE,
-        HIDDEN,
-        STATIC,
+        READ_ONLY = 1,
+        READ_WRITE = 2,
+        HIDDEN = 4,
+        STATIC = 8,
     }
 
 
@@ -909,53 +917,53 @@ export namespace Anjuta {
      * @gir-type Flags
      */
     enum TokenType {
-        NONE,
-        EOL,
-        COMMA,
-        TYPE,
-        FIRST,
-        FILE,
-        MACRO,
-        CONTENT,
-        ARGUMENT,
-        VALUE,
-        EOV,
-        PARSED,
-        KEYWORD,
-        OPERATOR,
-        NAME,
-        VARIABLE,
-        DEFINITION,
-        STATEMENT,
-        NUMBER,
-        JUNK,
-        COMMENT,
-        OPEN_QUOTE,
-        CLOSE_QUOTE,
-        ESCAPE,
-        FUNCTION,
-        SPACE,
-        START,
-        NEXT,
-        LAST,
-        ITEM,
-        STRING,
-        ERROR,
-        WORD,
-        LIST,
-        ANY,
-        USER,
-        FLAGS,
-        PUBLIC_FLAGS,
-        IRRELEVANT,
-        OPEN,
-        CLOSE,
-        SIGNIFICANT,
-        PRIVATE_FLAGS,
-        CASE_INSENSITIVE,
-        STATIC,
-        REMOVED,
-        ADDED,
+        NONE = 0,
+        EOL = 92,
+        COMMA = 44,
+        TYPE = 65535,
+        FIRST = 16384,
+        FILE = 16385,
+        MACRO = 16386,
+        CONTENT = 16387,
+        ARGUMENT = 16388,
+        VALUE = 16389,
+        EOV = 16390,
+        PARSED = 16391,
+        KEYWORD = 16392,
+        OPERATOR = 16393,
+        NAME = 16394,
+        VARIABLE = 16395,
+        DEFINITION = 16396,
+        STATEMENT = 16397,
+        NUMBER = 16398,
+        JUNK = 16399,
+        COMMENT = 16400,
+        OPEN_QUOTE = 16401,
+        CLOSE_QUOTE = 16402,
+        ESCAPE = 16403,
+        FUNCTION = 16404,
+        SPACE = 16405,
+        START = 16406,
+        NEXT = 16407,
+        LAST = 16408,
+        ITEM = 16409,
+        STRING = 16410,
+        ERROR = 16411,
+        WORD = 16412,
+        LIST = 16413,
+        ANY = 16414,
+        USER = 16415,
+        FLAGS = 4294901760,
+        PUBLIC_FLAGS = 16711680,
+        IRRELEVANT = 65536,
+        OPEN = 131072,
+        CLOSE = 262144,
+        SIGNIFICANT = 1048576,
+        PRIVATE_FLAGS = 4278190080,
+        CASE_INSENSITIVE = 16777216,
+        STATIC = 33554432,
+        REMOVED = 67108864,
+        ADDED = 134217728,
     }
 
 
@@ -970,16 +978,16 @@ export namespace Anjuta {
      * @gir-type Flags
      */
     enum VcsStatus {
-        MODIFIED,
-        ADDED,
-        DELETED,
-        CONFLICTED,
-        UPTODATE,
-        LOCKED,
-        MISSING,
-        UNVERSIONED,
-        IGNORED,
-        ALL,
+        MODIFIED = 1,
+        ADDED = 2,
+        DELETED = 4,
+        CONFLICTED = 8,
+        UPTODATE = 16,
+        LOCKED = 32,
+        MISSING = 64,
+        UNVERSIONED = 128,
+        IGNORED = 256,
+        ALL = -1,
     }
 
 
@@ -1108,6 +1116,7 @@ export namespace Anjuta {
         // Methods
         /**
          * Gets the error set on `self`.
+         * @throws GLib.Error
          */
         get_error(): void;
 
@@ -1181,6 +1190,7 @@ export namespace Anjuta {
          * process is completed.
          * @param func A function called when autogen is terminated
          * @returns `true` if the file has been processed without error.
+         * @throws GLib.Error
          */
         execute(func: AutogenFunc | null): boolean;
 
@@ -1249,6 +1259,7 @@ export namespace Anjuta {
          * is destroyed.
          * @param values A hash table containing all definitions
          * @returns `true` if the file has been written without error,
+         * @throws GLib.Error
          */
         write_definition_file(values: { [key: string]: string }): boolean;
     }
@@ -1301,6 +1312,7 @@ export namespace Anjuta {
         /**
          * Receives the error that occured when the module was loaded
          * @returns `true` if there was an Error, `false` otherwise
+         * @throws GLib.Error
          */
         get_last_error(): boolean;
 
@@ -2151,7 +2163,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "command-finished": (arg0: number) => void;
+            "command-finished": (return_code: number) => void;
             /**
              * @signal
              * @run-first
@@ -2169,7 +2181,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            progress: (arg0: number) => void;
+            progress: (progress: number) => void;
         }
 
         // Constructor properties interface
@@ -4072,7 +4084,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            busy: (arg0: boolean) => void;
+            busy: (busy: boolean) => void;
             /**
              * Emitted when the child has exited and all i/o channels have
              * been closed. If the terminate on exit flag is set, the i/o
@@ -4082,7 +4094,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "child-exited": (arg0: number, arg1: number, arg2: number) => void;
+            "child-exited": (child_pid: number, status: number, time: number) => void;
         }
 
         // Constructor properties interface
@@ -4231,12 +4243,12 @@ export namespace Anjuta {
              * The ::package-activated signal is emitted when a package is activated in the list
              * @signal
              */
-            "package-activated": (arg0: string) => void;
+            "package-activated": (_package: string) => void;
             /**
              * The ::package-activated signal is emitted when a package is deactivated in the list
              * @signal
              */
-            "package-deactivated": (arg0: string) => void;
+            "package-deactivated": (_package: string) => void;
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
             "notify::enable-search": (pspec: GObject.ParamSpec) => void;
@@ -4997,12 +5009,12 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "plugin-activated": (arg0: null, arg1: Plugin) => void;
+            "plugin-activated": (object: null, p0: Plugin) => void;
             /**
              * @signal
              * @run-first
              */
-            "plugin-deactivated": (arg0: null, arg1: Plugin) => void;
+            "plugin-deactivated": (object: null, p0: Plugin) => void;
             "notify::activated-plugins": (pspec: GObject.ParamSpec) => void;
             "notify::available-plugins": (pspec: GObject.ParamSpec) => void;
             "notify::profiles": (pspec: GObject.ParamSpec) => void;
@@ -5402,13 +5414,13 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "plugin-added": (arg0: null) => void;
+            "plugin-added": (plugin: null) => void;
             /**
              * Emitted when a plugin is removed from the list.
              * @signal
              * @run-first
              */
-            "plugin-removed": (arg0: null) => void;
+            "plugin-removed": (plugin: null) => void;
             /**
              * @signal
              * @run-first
@@ -5531,6 +5543,7 @@ export namespace Anjuta {
          * @param profile_xml_file xml file containing plugin list.
          * @param exclude_from_sync `true` if these plugins shouldn't be saved in user session.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         add_plugins_from_xml(profile_xml_file: Gio.File, exclude_from_sync: boolean): boolean;
 
@@ -5550,6 +5563,7 @@ export namespace Anjuta {
         /**
          * Load the profile
          * @returns TRUE on success, FALSE otherwise.
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -5568,12 +5582,14 @@ export namespace Anjuta {
         /**
          * Save the current plugins list in the xml file set with `anjuta_profile_set_sync_file()`.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         sync(): boolean;
 
         /**
          * Unload the profile
          * @returns TRUE on success, FALSE otherwise.
+         * @throws GLib.Error
          */
         unload(): boolean;
     }
@@ -5589,7 +5605,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "profile-popped": (arg0: Profile) => void;
+            "profile-popped": (profile: Profile) => void;
             /**
              * Emitted when a profile is added in the stack. If the profile manager is
              * not frozen, the current profile will be unloaded and the new one
@@ -5597,7 +5613,7 @@ export namespace Anjuta {
              * @signal
              * @run-first
              */
-            "profile-pushed": (arg0: Profile) => void;
+            "profile-pushed": (profile: Profile) => void;
             "notify::plugin-manager": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -5694,6 +5710,7 @@ export namespace Anjuta {
          * can be removed.
          * @param profile the {@link Anjuta.Profile} to remove.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         pop(profile: Profile): boolean;
 
@@ -5703,6 +5720,7 @@ export namespace Anjuta {
          * become the current profile.
          * @param profile the new {@link Anjuta.Profile}.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         push(profile: Profile): boolean;
 
@@ -5711,6 +5729,7 @@ export namespace Anjuta {
          * `anjuta_profile_manager_freeze()`. It will load a new profile if one has been
          * added while the manager was frozen.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         thaw(): boolean;
     }
@@ -5723,12 +5742,12 @@ export namespace Anjuta {
              * @signal
              * @run-last
              */
-            loaded: (arg0: null, arg1: GLib.Error) => void;
+            loaded: (object: null, p0: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            updated: (arg0: null, arg1: GLib.Error) => void;
+            updated: (object: null, p0: GLib.Error) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -6337,7 +6356,7 @@ export namespace Anjuta {
              * @signal
              * @run-last
              */
-            busy: (arg0: boolean) => void;
+            busy: (object: boolean) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -6737,6 +6756,9 @@ export namespace Anjuta {
          */
         move(new_file: Gio.File): void;
 
+        /**
+         * @throws GLib.Error
+         */
         save(): boolean;
 
         unload(): boolean;
@@ -9053,6 +9075,7 @@ export namespace Anjuta {
          * to this signal can then update their data according to the new value.
          * @param name Name of the value
          * @param value Value to add
+         * @throws GLib.Error
          */
         add_value(name: string, value: GObject.Value | any): void;
 
@@ -9065,6 +9088,7 @@ export namespace Anjuta {
          * @param title Translated string which is displayed along side the widget when required (eg. as window title or notebook tab label).
          * @param stock_id Icon stock ID. Could be null.
          * @param placement Placement of the widget in shell.
+         * @throws GLib.Error
          */
         add_widget(widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement): void;
 
@@ -9080,6 +9104,7 @@ export namespace Anjuta {
          * @param stock_id Icon stock ID. Could be null.
          * @param label Label widget to use
          * @param placement Placement of the widget in shell.
+         * @throws GLib.Error
          */
         add_widget_custom(widget: Gtk.Widget, name: string, title: string, stock_id: string, label: Gtk.Widget, placement: ShellPlacement): void;
 
@@ -9096,6 +9121,7 @@ export namespace Anjuta {
          * @param stock_id Icon stock ID. Could be null.
          * @param placement Placement of the widget in shell.
          * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
+         * @throws GLib.Error
          */
         add_widget_full(widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement, locked: boolean): void;
 
@@ -9105,6 +9131,7 @@ export namespace Anjuta {
          * Any number of this function can be called and each call will increase
          * the freeze count. `anjuta_shell_thaw()` will reduce the freeze count by
          * 1 and real thawing happens when the count reaches 0.
+         * @throws GLib.Error
          */
         freeze(): void;
 
@@ -9127,36 +9154,42 @@ export namespace Anjuta {
          * `anjuta_plugins_get_interface()` which takes the type directly.
          * @param iface_name The interface implemented by the object to be found
          * @returns A plugin object implementing the primary interface or `null`.
+         * @throws GLib.Error
          */
         get_object<T = GObject.Object>(iface_name: string): T;
 
         /**
          * Retrieves the {@link Anjuta.PluginManager} object associated with the shell.
          * @returns The {@link Anjuta.PluginManager} object.
+         * @throws GLib.Error
          */
         get_plugin_manager(): PluginManager;
 
         /**
          * Retrieves the {@link Anjuta.Preferences} object associated with the shell.
          * @returns The {@link Anjuta.Preferences} object.
+         * @throws GLib.Error
          */
         get_preferences(): Preferences;
 
         /**
          * Retrieves the {@link Anjuta.ProfileManager} object associated with the shell.
          * @returns The {@link Anjuta.ProfileManager} object.
+         * @throws GLib.Error
          */
         get_profile_manager(): ProfileManager;
 
         /**
          * Retrieves the {@link Anjuta.Status} object associated with the shell.
          * @returns The {@link Anjuta.Status} object.
+         * @throws GLib.Error
          */
         get_status(): Status;
 
         /**
          * Retrieves the {@link Anjuta.UI} object associated with the shell.
          * @returns The {@link Anjuta.UI} object.
+         * @throws GLib.Error
          */
         get_ui(): UI;
 
@@ -9165,24 +9198,28 @@ export namespace Anjuta {
          * in the passed value pointer.
          * @param name Name of the value to get
          * @param value Value to get
+         * @throws GLib.Error
          */
         get_value(name: string, value: GObject.Value | any): void;
 
         /**
          * If the widget is dockable, it hides it.
          * @param widget a {@link Gtk.Widget} to hide.
+         * @throws GLib.Error
          */
         hide_dockable_widget(widget: Gtk.Widget): void;
 
         /**
          * If the widget is dockable, it iconifies it.
          * @param widget a {@link Gtk.Widget} to iconify.
+         * @throws GLib.Error
          */
         iconify_dockable_widget(widget: Gtk.Widget): void;
 
         /**
          * Maximizes a widget so it will occupy all the possible space.
          * @param widget_name Name of the widget to be maximized.
+         * @throws GLib.Error
          */
         maximize_widget(widget_name: string): void;
 
@@ -9190,6 +9227,7 @@ export namespace Anjuta {
          * Make sure the widget is visible to user. If the widget is hidden, it will
          * be shown. If it is not visible to user, it will be made visible.
          * @param widget The widget to present
+         * @throws GLib.Error
          */
         present_widget(widget: Gtk.Widget): void;
 
@@ -9198,6 +9236,7 @@ export namespace Anjuta {
          * will be emitted. Objects connecting to this signal can then update their
          * data/internal-state accordingly.
          * @param name Name of the value to remove
+         * @throws GLib.Error
          */
         remove_value(name: string): void;
 
@@ -9205,11 +9244,13 @@ export namespace Anjuta {
          * Removes the widget from shell. The widget should have been added before
          * with `anjuta_shell_add_widget`.
          * @param widget The widget to remove
+         * @throws GLib.Error
          */
         remove_widget(widget: Gtk.Widget): void;
 
         /**
          * @param prompt 
+         * @throws GLib.Error
          */
         save_prompt(prompt: SavePrompt): void;
 
@@ -9225,29 +9266,34 @@ export namespace Anjuta {
 
         /**
          * @param session_directory 
+         * @throws GLib.Error
          */
         session_load(session_directory: string): void;
 
         /**
          * @param session_directory 
+         * @throws GLib.Error
          */
         session_save(session_directory: string): void;
 
         /**
          * If the widget was hidden or iconified, it will make it visible.
          * @param widget a {@link Gtk.Widget} to show.
+         * @throws GLib.Error
          */
         show_dockable_widget(widget: Gtk.Widget): void;
 
         /**
          * Reduces the freeze count by one and performs pending widget additions
          * when the count reaches 0.
+         * @throws GLib.Error
          */
         thaw(): void;
 
         /**
          * Unmaximizes the UI which was previously maximized by
          * `anjuta_shell_maximize_widget`
+         * @throws GLib.Error
          */
         unmaximize(): void;
     }

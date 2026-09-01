@@ -44,191 +44,191 @@ export namespace WebKitWebExtension {
         /**
          * No action, used by separator menu items.
          */
-        NO_ACTION,
+        NO_ACTION = 0,
         /**
          * Open current link.
          */
-        OPEN_LINK,
+        OPEN_LINK = 1,
         /**
          * Open current link in a new window.
          */
-        OPEN_LINK_IN_NEW_WINDOW,
+        OPEN_LINK_IN_NEW_WINDOW = 2,
         /**
          * Download link destination.
          */
-        DOWNLOAD_LINK_TO_DISK,
+        DOWNLOAD_LINK_TO_DISK = 3,
         /**
          * Copy link location to the clipboard.
          */
-        COPY_LINK_TO_CLIPBOARD,
+        COPY_LINK_TO_CLIPBOARD = 4,
         /**
          * Open current image in a new window.
          */
-        OPEN_IMAGE_IN_NEW_WINDOW,
+        OPEN_IMAGE_IN_NEW_WINDOW = 5,
         /**
          * Download current image.
          */
-        DOWNLOAD_IMAGE_TO_DISK,
+        DOWNLOAD_IMAGE_TO_DISK = 6,
         /**
          * Copy current image to the clipboard.
          */
-        COPY_IMAGE_TO_CLIPBOARD,
+        COPY_IMAGE_TO_CLIPBOARD = 7,
         /**
          * Copy current image location to the clipboard.
          */
-        COPY_IMAGE_URL_TO_CLIPBOARD,
+        COPY_IMAGE_URL_TO_CLIPBOARD = 8,
         /**
          * Open current frame in a new window.
          */
-        OPEN_FRAME_IN_NEW_WINDOW,
+        OPEN_FRAME_IN_NEW_WINDOW = 9,
         /**
          * Load the previous history item.
          */
-        GO_BACK,
+        GO_BACK = 10,
         /**
          * Load the next history item.
          */
-        GO_FORWARD,
+        GO_FORWARD = 11,
         /**
          * Stop any ongoing loading operation.
          */
-        STOP,
+        STOP = 12,
         /**
          * Reload the contents of current view.
          */
-        RELOAD,
+        RELOAD = 13,
         /**
          * Copy current selection the clipboard.
          */
-        COPY,
+        COPY = 14,
         /**
          * Cut current selection to the clipboard.
          */
-        CUT,
+        CUT = 15,
         /**
          * Paste clipboard contents.
          */
-        PASTE,
+        PASTE = 16,
         /**
          * Delete current selection.
          */
-        DELETE,
+        DELETE = 17,
         /**
          * Select all text.
          */
-        SELECT_ALL,
+        SELECT_ALL = 18,
         /**
          * Input methods menu.
          */
-        INPUT_METHODS,
+        INPUT_METHODS = 19,
         /**
          * Unicode menu.
          */
-        UNICODE,
+        UNICODE = 20,
         /**
          * A proposed replacement for a misspelled word.
          */
-        SPELLING_GUESS,
+        SPELLING_GUESS = 21,
         /**
          * An indicator that spellchecking found no proposed replacements.
          */
-        NO_GUESSES_FOUND,
+        NO_GUESSES_FOUND = 22,
         /**
          * Causes the spellchecker to ignore the word for this session.
          */
-        IGNORE_SPELLING,
+        IGNORE_SPELLING = 23,
         /**
          * Causes the spellchecker to add the word to the dictionary.
          */
-        LEARN_SPELLING,
+        LEARN_SPELLING = 24,
         /**
          * Ignore grammar.
          */
-        IGNORE_GRAMMAR,
+        IGNORE_GRAMMAR = 25,
         /**
          * Font options menu.
          */
-        FONT_MENU,
+        FONT_MENU = 26,
         /**
          * Bold.
          */
-        BOLD,
+        BOLD = 27,
         /**
          * Italic.
          */
-        ITALIC,
+        ITALIC = 28,
         /**
          * Underline.
          */
-        UNDERLINE,
+        UNDERLINE = 29,
         /**
          * Outline.
          */
-        OUTLINE,
+        OUTLINE = 30,
         /**
          * Open current element in the inspector.
          */
-        INSPECT_ELEMENT,
+        INSPECT_ELEMENT = 31,
         /**
          * Open current video element in a new window.
          */
-        OPEN_VIDEO_IN_NEW_WINDOW,
+        OPEN_VIDEO_IN_NEW_WINDOW = 32,
         /**
          * Open current audio element in a new window.
          */
-        OPEN_AUDIO_IN_NEW_WINDOW,
+        OPEN_AUDIO_IN_NEW_WINDOW = 33,
         /**
          * Copy video link location in to the clipboard.
          */
-        COPY_VIDEO_LINK_TO_CLIPBOARD,
+        COPY_VIDEO_LINK_TO_CLIPBOARD = 34,
         /**
          * Copy audio link location in to the clipboard.
          */
-        COPY_AUDIO_LINK_TO_CLIPBOARD,
+        COPY_AUDIO_LINK_TO_CLIPBOARD = 35,
         /**
          * Enable or disable media controls.
          */
-        TOGGLE_MEDIA_CONTROLS,
+        TOGGLE_MEDIA_CONTROLS = 36,
         /**
          * Enable or disable media loop.
          */
-        TOGGLE_MEDIA_LOOP,
+        TOGGLE_MEDIA_LOOP = 37,
         /**
          * Show current video element in fullscreen mode.
          */
-        ENTER_VIDEO_FULLSCREEN,
+        ENTER_VIDEO_FULLSCREEN = 38,
         /**
          * Play current media element.
          */
-        MEDIA_PLAY,
+        MEDIA_PLAY = 39,
         /**
          * Pause current media element.
          */
-        MEDIA_PAUSE,
+        MEDIA_PAUSE = 40,
         /**
          * Mute current media element.
          */
-        MEDIA_MUTE,
+        MEDIA_MUTE = 41,
         /**
          * Download video to disk. Since 2.2
          */
-        DOWNLOAD_VIDEO_TO_DISK,
+        DOWNLOAD_VIDEO_TO_DISK = 42,
         /**
          * Download audio to disk. Since 2.2
          */
-        DOWNLOAD_AUDIO_TO_DISK,
+        DOWNLOAD_AUDIO_TO_DISK = 43,
         /**
          * Insert an emoji. Since 2.26
          */
-        INSERT_EMOJI,
+        INSERT_EMOJI = 44,
         /**
          * Paste clipboard contents as plain text. Since 2.30
          */
-        PASTE_AS_PLAIN_TEXT,
+        PASTE_AS_PLAIN_TEXT = 45,
         /**
          * Custom action defined by applications.
          */
-        CUSTOM,
+        CUSTOM = 10000,
     }
 
 
@@ -241,7 +241,7 @@ export namespace WebKitWebExtension {
         /**
          * The message was not handled by the receiver.
          */
-        USER_MESSAGE_UNHANDLED_MESSAGE,
+        USER_MESSAGE_UNHANDLED_MESSAGE = 0,
     }
 
 
@@ -267,31 +267,31 @@ export namespace WebKitWebExtension {
         /**
          * anywhere in the document.
          */
-        DOCUMENT,
+        DOCUMENT = 2,
         /**
          * a hyperlink element.
          */
-        LINK,
+        LINK = 4,
         /**
          * an image element.
          */
-        IMAGE,
+        IMAGE = 8,
         /**
          * a video or audio element.
          */
-        MEDIA,
+        MEDIA = 16,
         /**
          * an editable element
          */
-        EDITABLE,
+        EDITABLE = 32,
         /**
          * a scrollbar element.
          */
-        SCROLLBAR,
+        SCROLLBAR = 64,
         /**
          * a selected element. Since 2.8
          */
-        SELECTION,
+        SELECTION = 128,
     }
 
 
@@ -930,7 +930,7 @@ export namespace WebKitWebExtension {
              * @since 2.2
              * @run-last
              */
-            "window-object-cleared": (arg0: WebPage, arg1: Frame) => void;
+            "window-object-cleared": (page: WebPage, frame: Frame) => void;
         }
 
         // Constructor properties interface
@@ -1488,7 +1488,7 @@ export namespace WebKitWebExtension {
              * @signal
              * @run-last
              */
-            "page-created": (arg0: WebPage) => void;
+            "page-created": (web_page: WebPage) => void;
             /**
              * This signal is emitted when a {@link WebKitWebExtension.UserMessage} is received from the
              * `WebKitWebContext` corresponding to `extension`. Messages sent by `WebKitWebContext`
@@ -1498,7 +1498,7 @@ export namespace WebKitWebExtension {
              * @since 2.28
              * @run-last
              */
-            "user-message-received": (arg0: UserMessage) => void;
+            "user-message-received": (message: UserMessage) => void;
         }
 
         // Constructor properties interface
@@ -1660,6 +1660,7 @@ export namespace WebKitWebExtension {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKitWebExtension.UserMessage} with the reply or `null` in case of error.
          * @since 2.28
+         * @throws GLib.Error
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
     }
@@ -1682,7 +1683,7 @@ export namespace WebKitWebExtension {
              * @since 2.40
              * @run-last
              */
-            "form-controls-associated": (arg0: Frame, arg1: JavaScriptCore.Value[]) => void;
+            "form-controls-associated": (frame: Frame, elements: JavaScriptCore.Value[]) => void;
             /**
              * This signal is emitted when the DOM submit event is about to be fired for `form`.
              * JavaScript code may rely on the submit event to detect that the user has clicked
@@ -1700,7 +1701,7 @@ export namespace WebKitWebExtension {
              * @since 2.40
              * @run-last
              */
-            "will-send-submit-event": (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
+            "will-send-submit-event": (form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void;
             /**
              * This signal is emitted when `form` will imminently be submitted. It can no longer
              * be cancelled. This event always occurs immediately before a form is submitted to
@@ -1711,7 +1712,7 @@ export namespace WebKitWebExtension {
              * @since 2.40
              * @run-last
              */
-            "will-submit-form": (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
+            "will-submit-form": (form: JavaScriptCore.Value, source_frame: Frame, target_frame: Frame) => void;
         }
 
         // Constructor properties interface
@@ -1943,7 +1944,7 @@ export namespace WebKitWebExtension {
              * @since 2.8
              * @run-last
              */
-            "context-menu": (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
+            "context-menu": (context_menu: ContextMenu, hit_test_result: WebHitTestResult) => boolean | void;
             /**
              * This signal is emitted when the DOM document of a {@link WebKitWebExtension.WebPage} has been
              * loaded.
@@ -1971,7 +1972,7 @@ export namespace WebKitWebExtension {
              * @signal
              * @run-last
              */
-            "send-request": (arg0: URIRequest, arg1: URIResponse) => boolean | void;
+            "send-request": (request: URIRequest, redirected_response: URIResponse) => boolean | void;
             /**
              * This signal is emitted when a {@link WebKitWebExtension.UserMessage} is received from the
              * `WebKitWebView` corresponding to `web_page`. You can reply to the message
@@ -1985,7 +1986,7 @@ export namespace WebKitWebExtension {
              * @since 2.28
              * @run-last
              */
-            "user-message-received": (arg0: UserMessage) => boolean | void;
+            "user-message-received": (message: UserMessage) => boolean | void;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2118,6 +2119,7 @@ export namespace WebKitWebExtension {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKitWebExtension.UserMessage} with the reply or `null` in case of error.
          * @since 2.28
+         * @throws GLib.Error
          */
         send_message_to_view_finish(result: Gio.AsyncResult): UserMessage;
     }

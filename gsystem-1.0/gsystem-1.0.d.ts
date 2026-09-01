@@ -33,19 +33,19 @@ export namespace GSystem {
         /**
          * Redirect to operating system's null output stream
          */
-        NULL,
+        NULL = 0,
         /**
          * Keep the stream from the parent process
          */
-        INHERIT,
+        INHERIT = 1,
         /**
          * Open a private unidirectional channel between the processes
          */
-        PIPE,
+        PIPE = 2,
         /**
          * Only applicable to standard error; causes it to be merged with standard output
          */
-        STDERR_MERGE,
+        STDERR_MERGE = 3,
     }
 
 
@@ -55,6 +55,7 @@ export namespace GSystem {
      * @param dfd Parent directory file descriptor
      * @param name File name
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function dfd_and_name_get_all_xattrs(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
@@ -63,6 +64,7 @@ export namespace GSystem {
      * @param name 
      * @param xattrs 
      * @param cancellable 
+     * @throws GLib.Error
      */
     function dfd_and_name_set_all_xattrs(dfd: number, name: string, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -76,12 +78,14 @@ export namespace GSystem {
      * @param path 
      * @param follow 
      * @param dfd_iter 
+     * @throws GLib.Error
      */
     function dirfd_iterator_init_at(dfd: number, path: string, follow: boolean, dfd_iter: DirFdIterator): boolean;
 
     /**
      * @param dfd 
      * @param dfd_iter 
+     * @throws GLib.Error
      */
     function dirfd_iterator_init_take_fd(dfd: number, dfd_iter: DirFdIterator): boolean;
 
@@ -93,6 +97,7 @@ export namespace GSystem {
      * will have 0 elements, and this function will return successfully.
      * @param fd a file descriptor
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function fd_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
@@ -103,6 +108,7 @@ export namespace GSystem {
      * @param fd File descriptor
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -112,6 +118,7 @@ export namespace GSystem {
      * @param mode UNIX mode
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
+     * @throws GLib.Error
      */
     function file_chmod(path: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -122,6 +129,7 @@ export namespace GSystem {
      * @param group UNIX group
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
+     * @throws GLib.Error
      */
     function file_chown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -131,6 +139,7 @@ export namespace GSystem {
      * @param file Path to non-existent file
      * @param mode Unix access permissions
      * @param cancellable a {@link Gio.Cancellable}
+     * @throws GLib.Error
      */
     function file_create(file: Gio.File, mode: number, cancellable: Gio.Cancellable | null): [boolean, Gio.OutputStream | null];
 
@@ -140,6 +149,7 @@ export namespace GSystem {
      * @param dir Path to create as directory
      * @param with_parents Also create parent directories
      * @param cancellable a {@link Gio.Cancellable}
+     * @throws GLib.Error
      */
     function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -149,6 +159,7 @@ export namespace GSystem {
      * @param dir Path to create as directory
      * @param mode Create directory with these permissions
      * @param cancellable a {@link Gio.Cancellable}
+     * @throws GLib.Error
      */
     function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -193,6 +204,7 @@ export namespace GSystem {
      * 
      * @param direnum an open {@link Gio.FileEnumerator}
      * @param cancellable a {@link Gio.Cancellable}
+     * @throws GLib.Error
      */
     function file_enumerator_iterate(direnum: Gio.FileEnumerator, cancellable: Gio.Cancellable | null): [boolean, Gio.FileInfo | null, Gio.File | null];
 
@@ -204,6 +216,7 @@ export namespace GSystem {
      * will have 0 elements, and this function will return successfully.
      * @param f a {@link Gio.File}
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function file_get_all_xattrs(f: Gio.File, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant];
 
@@ -238,6 +251,7 @@ export namespace GSystem {
      * @param group UNIX group
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
+     * @throws GLib.Error
      */
     function file_lchown(path: Gio.File, owner: number, group: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -261,6 +275,7 @@ export namespace GSystem {
      * @param dest Destination file
      * @param flags flags
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_linkcopy(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -272,6 +287,7 @@ export namespace GSystem {
      * @param dest Destination file
      * @param flags flags
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_linkcopy_sync_data(src: Gio.File, dest: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -280,6 +296,7 @@ export namespace GSystem {
      * UTF-8.
      * @param file Path to file whose contents must be UTF-8
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_load_contents_utf8(file: Gio.File, cancellable: Gio.Cancellable | null): string;
 
@@ -289,6 +306,7 @@ export namespace GSystem {
      * @param file a {@link Gio.File}
      * @param cancellable 
      * @returns a newly referenced {@link GLib.Bytes}
+     * @throws GLib.Error
      */
     function file_map_readonly(file: Gio.File, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -297,6 +315,7 @@ export namespace GSystem {
      * that can be used with UNIX functions such as `openat()`.
      * @param path Directory name
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function file_open_dir_fd(path: Gio.File, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -306,6 +325,7 @@ export namespace GSystem {
      * @param parent_dfd Parent directory file descriptor
      * @param name Directory name
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function file_open_dir_fd_at(parent_dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -317,6 +337,7 @@ export namespace GSystem {
      * @param tmpdir Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_open_in_tmpdir(tmpdir: Gio.File, mode: number, cancellable: Gio.Cancellable | null): [boolean, Gio.File, Gio.OutputStream | null];
 
@@ -328,6 +349,7 @@ export namespace GSystem {
      * @param tmpdir_fd Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_open_in_tmpdir_at(tmpdir_fd: number, mode: number, cancellable: Gio.Cancellable | null): [boolean, string, Gio.OutputStream | null];
 
@@ -336,6 +358,7 @@ export namespace GSystem {
      * @param dfd File descriptor for directory
      * @param name Pathname, relative to `dfd`
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function file_openat_noatime(dfd: number, name: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -346,6 +369,7 @@ export namespace GSystem {
      * @param file a {@link Gio.File}
      * @param cancellable a {@link Gio.Cancellable}
      * @returns A new input stream, or `null` on error
+     * @throws GLib.Error
      */
     function file_read_noatime(file: Gio.File, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -364,6 +388,7 @@ export namespace GSystem {
      * @param to New path
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
+     * @throws GLib.Error
      */
     function file_rename(from: Gio.File, to: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -374,6 +399,7 @@ export namespace GSystem {
      * @param file File descriptor
      * @param xattrs Extended attributes
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -382,6 +408,7 @@ export namespace GSystem {
      * ensures that the data in `file` is on non-volatile storage.
      * @param file a {@link Gio.File}
      * @param cancellable 
+     * @throws GLib.Error
      */
     function file_sync_data(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -393,6 +420,7 @@ export namespace GSystem {
      * @param path Path to file
      * @param cancellable a {@link Gio.Cancellable}
      * @returns `true` on success, `false` on error
+     * @throws GLib.Error
      */
     function file_unlink(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -431,6 +459,7 @@ export namespace GSystem {
      * @param path Pathname, relative to `dfd`
      * @param follow Whether or not to follow symbolic links
      * @param out_fd 
+     * @throws GLib.Error
      */
     function opendirat(dfd: number, path: string, follow: boolean, out_fd: number): boolean;
 
@@ -459,6 +488,7 @@ export namespace GSystem {
      * @param dest Destination path
      * @param cancellable 
      * @returns `true` on success
+     * @throws GLib.Error
      */
     function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -471,6 +501,7 @@ export namespace GSystem {
      * @param dest Destination path
      * @param cancellable 
      * @returns `true` on success
+     * @throws GLib.Error
      */
     function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -479,6 +510,7 @@ export namespace GSystem {
      * file or directory.  No error is thrown if `path` does not exist.
      * @param path A file or directory
      * @param cancellable 
+     * @throws GLib.Error
      */
     function shutil_rm_rf(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -489,6 +521,7 @@ export namespace GSystem {
      * @param dfd A directory file descriptor, or -1 for current
      * @param path Path
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function shutil_rm_rf_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -577,6 +610,7 @@ export namespace GSystem {
          * behavior.
          * @param line String to output
          * @param cancellable 
+         * @throws GLib.Error
          */
         begin_status_line(line: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -586,6 +620,7 @@ export namespace GSystem {
          * remains on the console; if this is not desired, print an empty
          * string to clear it before invoking this function.
          * @param cancellable 
+         * @throws GLib.Error
          */
         end_status_line(cancellable: Gio.Cancellable | null): boolean;
 
@@ -595,6 +630,7 @@ export namespace GSystem {
          * @param prompt A string to output before reading the password
          * @param cancellable 
          * @returns A string, or `null` on error
+         * @throws GLib.Error
          */
         read_password(prompt: string, cancellable: Gio.Cancellable | null): string;
     }
@@ -771,6 +807,7 @@ export namespace GSystem {
          * must use `g_spawn_check_exit_status()` for that.
          * @param result a {@link Gio.AsyncResult}
          * @since 2.36
+         * @throws GLib.Error
          */
         wait_finish(result: Gio.AsyncResult): [boolean, number];
 
@@ -782,6 +819,7 @@ export namespace GSystem {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if `cancellable` was cancelled
          * @since 2.36
+         * @throws GLib.Error
          */
         wait_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -790,6 +828,7 @@ export namespace GSystem {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
          * @since 2.36
+         * @throws GLib.Error
          */
         wait_sync_check(cancellable: Gio.Cancellable | null): boolean;
 
@@ -835,6 +874,7 @@ export namespace GSystem {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -979,6 +1019,7 @@ export namespace GSystem {
          * this pipe to send a password, provide
          * <literal>--password-fd=&lt;fdno string&gt;</literal>.
          * @returns `true` on success, `false` on error (and `error` will be set)
+         * @throws GLib.Error
          */
         open_pipe_read(): [boolean, Gio.InputStream, number];
 
@@ -986,6 +1027,7 @@ export namespace GSystem {
          * Like `gs_subprocess_context_open_pipe_read()`, but returns a writable
          * channel from which the child process can read.
          * @returns `true` on success, `false` on error (and `error` will be set)
+         * @throws GLib.Error
          */
         open_pipe_write(): [boolean, Gio.OutputStream, number];
 

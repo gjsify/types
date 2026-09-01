@@ -33,6 +33,9 @@ export namespace DbusmenuGtk3 {
      */
 
 
+    /**
+     * @default 1
+     */
     const GTK_MENUITEM_H__: number;
 
     /**

@@ -38,19 +38,19 @@ export namespace AppStream {
         /**
          * Unknown value
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A generic agreement without a specific type
          */
-        GENERIC,
+        GENERIC = 1,
         /**
          * An End User License Agreement
          */
-        EULA,
+        EULA = 2,
         /**
          * A privacy agreement, typically a GDPR statement
          */
-        PRIVACY,
+        PRIVACY = 3,
     }
 
 
@@ -69,15 +69,15 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The artifact describes software sources.
          */
-        SOURCE,
+        SOURCE = 1,
         /**
          * The artifact describes a binary distribution of the component.
          */
-        BINARY,
+        BINARY = 2,
     }
 
 
@@ -96,43 +96,43 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A native package (currently not used)
          */
-        PACKAGE,
+        PACKAGE = 1,
         /**
          * A Limba bundle
          */
-        LIMBA,
+        LIMBA = 2,
         /**
          * A Flatpak bundle
          */
-        FLATPAK,
+        FLATPAK = 3,
         /**
          * An AppImageKit bundle
          */
-        APPIMAGE,
+        APPIMAGE = 4,
         /**
          * A Snap/Snappy bundle
          */
-        SNAP,
+        SNAP = 5,
         /**
          * A (maybe compressed) tarball.
          */
-        TARBALL,
+        TARBALL = 6,
         /**
          * Cabinet firmware deployment
          */
-        CABINET,
+        CABINET = 7,
         /**
          * A Linglong bundle
          */
-        LINGLONG,
+        LINGLONG = 8,
         /**
          * A systemd-sysupdate bundle
          */
-        SYSUPDATE,
+        SYSUPDATE = 9,
     }
 
 
@@ -151,27 +151,27 @@ export namespace AppStream {
         /**
          * Unknown chassis.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A desktop/workstation
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * A mobile computer with a bigger screen / laptop
          */
-        LAPTOP,
+        LAPTOP = 2,
         /**
          * A server, often without GUI
          */
-        SERVER,
+        SERVER = 3,
         /**
          * A tablet with touch as primary input method
          */
-        TABLET,
+        TABLET = 4,
         /**
          * A smaller touch-input device, like a smartphone
          */
-        HANDSET,
+        HANDSET = 5,
     }
 
 
@@ -190,19 +190,19 @@ export namespace AppStream {
         /**
          * The check failed.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * The outcome could not be determined.
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * False/No
          */
-        FALSE,
+        FALSE = 2,
         /**
          * True/Yes
          */
-        TRUE,
+        TRUE = 3,
     }
 
 
@@ -221,27 +221,27 @@ export namespace AppStream {
         /**
          * No checksum
          */
-        NONE,
+        NONE = 0,
         /**
          * SHA1 checksum
          */
-        SHA1,
+        SHA1 = 1,
         /**
          * SHA256 checksum
          */
-        SHA256,
+        SHA256 = 2,
         /**
          * SHA512 checksum
          */
-        SHA512,
+        SHA512 = 3,
         /**
          * BLAKE2 checksum
          */
-        BLAKE2B,
+        BLAKE2B = 4,
         /**
          * BLAKE3 checksum
          */
-        BLAKE3,
+        BLAKE3 = 5,
     }
 
 
@@ -260,11 +260,11 @@ export namespace AppStream {
         /**
          * Color type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Primary accent color
          */
-        PRIMARY,
+        PRIMARY = 1,
     }
 
 
@@ -283,15 +283,15 @@ export namespace AppStream {
         /**
          * Color scheme invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A light color scheme
          */
-        LIGHT,
+        LIGHT = 1,
         /**
          * A dark color scheme
          */
-        DARK,
+        DARK = 2,
     }
 
 
@@ -310,71 +310,71 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A generic (= without specialized type) component
          */
-        GENERIC,
+        GENERIC = 1,
         /**
          * An application with a .desktop-file
          */
-        DESKTOP_APP,
+        DESKTOP_APP = 2,
         /**
          * A console application
          */
-        CONSOLE_APP,
+        CONSOLE_APP = 3,
         /**
          * A web application
          */
-        WEB_APP,
+        WEB_APP = 4,
         /**
          * A system service launched by the init system
          */
-        SERVICE,
+        SERVICE = 5,
         /**
          * An extension of existing software, which does not run standalone
          */
-        ADDON,
+        ADDON = 6,
         /**
          * An application runtime platform
          */
-        RUNTIME,
+        RUNTIME = 7,
         /**
          * A font
          */
-        FONT,
+        FONT = 8,
         /**
          * A multimedia codec
          */
-        CODEC,
+        CODEC = 9,
         /**
          * An input-method provider
          */
-        INPUT_METHOD,
+        INPUT_METHOD = 10,
         /**
          * A computer operating system
          */
-        OPERATING_SYSTEM,
+        OPERATING_SYSTEM = 11,
         /**
          * Firmware
          */
-        FIRMWARE,
+        FIRMWARE = 12,
         /**
          * A driver
          */
-        DRIVER,
+        DRIVER = 13,
         /**
          * Software localization (usually l10n resources)
          */
-        LOCALIZATION,
+        LOCALIZATION = 14,
         /**
          * A remote software or data source
          */
-        REPOSITORY,
+        REPOSITORY = 15,
         /**
          * An icon theme following the XDG specification
          */
-        ICON_THEME,
+        ICON_THEME = 16,
     }
 
 
@@ -393,15 +393,15 @@ export namespace AppStream {
         /**
          * Unknown scope
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * System scope
          */
-        SYSTEM,
+        SYSTEM = 1,
         /**
          * User scope
          */
-        USER,
+        USER = 2,
     }
 
 
@@ -421,67 +421,67 @@ export namespace AppStream {
         /**
          * Unknown ratings system
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * INCAA
          */
-        INCAA,
+        INCAA = 1,
         /**
          * ACB
          */
-        ACB,
+        ACB = 2,
         /**
          * DJCTQ
          */
-        DJCTQ,
+        DJCTQ = 3,
         /**
          * GSRR
          */
-        GSRR,
+        GSRR = 4,
         /**
          * PEGI
          */
-        PEGI,
+        PEGI = 5,
         /**
          * KAVI
          */
-        KAVI,
+        KAVI = 6,
         /**
          * USK
          */
-        USK,
+        USK = 7,
         /**
          * ESRA
          */
-        ESRA,
+        ESRA = 8,
         /**
          * CERO
          */
-        CERO,
+        CERO = 9,
         /**
          * OFLCNZ
          */
-        OFLCNZ,
+        OFLCNZ = 10,
         /**
          * Russia
          */
-        RUSSIA,
+        RUSSIA = 11,
         /**
          * MDA
          */
-        MDA,
+        MDA = 12,
         /**
          * GRAC
          */
-        GRAC,
+        GRAC = 13,
         /**
          * ESRB
          */
-        ESRB,
+        ESRB = 14,
         /**
          * IARC
          */
-        IARC,
+        IARC = 15,
     }
 
 
@@ -500,23 +500,23 @@ export namespace AppStream {
         /**
          * Unknown value
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * None
          */
-        NONE,
+        NONE = 1,
         /**
          * A small amount
          */
-        MILD,
+        MILD = 2,
         /**
          * A moderate amount
          */
-        MODERATE,
+        MODERATE = 3,
         /**
          * An intense amount
          */
-        INTENSE,
+        INTENSE = 4,
     }
 
 
@@ -535,43 +535,43 @@ export namespace AppStream {
         /**
          * Unknown kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Mouse/cursors/other precision pointing device
          */
-        POINTING,
+        POINTING = 1,
         /**
          * Keyboard input
          */
-        KEYBOARD,
+        KEYBOARD = 2,
         /**
          * Console / command-line interface
          */
-        CONSOLE,
+        CONSOLE = 3,
         /**
          * Touch input
          */
-        TOUCH,
+        TOUCH = 4,
         /**
          * Gamepad input (any game controller with wheels/buttons/joysticks)
          */
-        GAMEPAD,
+        GAMEPAD = 5,
         /**
          * Control via voice recognition/activation
          */
-        VOICE,
+        VOICE = 6,
         /**
          * Computer vision / visual object and sign detection
          */
-        VISION,
+        VISION = 7,
         /**
          * Input via a television remote
          */
-        TV_REMOTE,
+        TV_REMOTE = 8,
         /**
          * Graphics tablet input
          */
-        TABLET,
+        TABLET = 9,
     }
 
 
@@ -590,15 +590,15 @@ export namespace AppStream {
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Shortest side of the display rectangle.
          */
-        SHORTEST,
+        SHORTEST = 1,
         /**
          * Longest side of the display rectangle.
          */
-        LONGEST,
+        LONGEST = 2,
     }
 
 
@@ -617,19 +617,19 @@ export namespace AppStream {
         /**
          * Unknown metadata format.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * AppStream XML metadata.
          */
-        XML,
+        XML = 1,
         /**
          * AppStream YAML (DEP-11) metadata.
          */
-        YAML,
+        YAML = 2,
         /**
          * XDG Desktop Entry data.
          */
-        DESKTOP_ENTRY,
+        DESKTOP_ENTRY = 3,
     }
 
 
@@ -651,15 +651,15 @@ export namespace AppStream {
         /**
          * The format style is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Parse AppStream upstream metadata (metainfo files)
          */
-        METAINFO,
+        METAINFO = 1,
         /**
          * Parse AppStream metadata catalog (shipped by software distributors)
          */
-        CATALOG,
+        CATALOG = 2,
     }
 
 
@@ -678,11 +678,11 @@ export namespace AppStream {
         /**
          * Unknown format version
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * 1
          */
-        V1_0,
+        V1_0 = 1,
     }
 
 
@@ -701,23 +701,23 @@ export namespace AppStream {
         /**
          * Unknown icon kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Stock icon name
          */
-        STOCK,
+        STOCK = 1,
         /**
          * Icon in the internal caches
          */
-        CACHED,
+        CACHED = 2,
         /**
          * Local icon name
          */
-        LOCAL,
+        LOCAL = 3,
         /**
          * Remote icon URL
          */
-        REMOTE,
+        REMOTE = 4,
     }
 
 
@@ -736,15 +736,15 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The source image at full resolution
          */
-        SOURCE,
+        SOURCE = 1,
         /**
          * A thumbnail at reduced resolution
          */
-        THUMBNAIL,
+        THUMBNAIL = 2,
     }
 
 
@@ -765,19 +765,19 @@ export namespace AppStream {
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Always requires/recommends internet
          */
-        ALWAYS,
+        ALWAYS = 1,
         /**
          * Application is offline-only
          */
-        OFFLINE_ONLY,
+        OFFLINE_ONLY = 2,
         /**
          * Requires/Recommends internet on first run only
          */
-        FIRST_RUN,
+        FIRST_RUN = 3,
     }
 
 
@@ -796,15 +796,15 @@ export namespace AppStream {
         /**
          * Unknown issue type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Generic issue type
          */
-        GENERIC,
+        GENERIC = 1,
         /**
          * Common Vulnerabilities and Exposures issue
          */
-        CVE,
+        CVE = 2,
     }
 
 
@@ -823,23 +823,23 @@ export namespace AppStream {
         /**
          * The severity is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Pedantic information about ways to improve the data, but could also be ignored.
          */
-        PEDANTIC,
+        PEDANTIC = 1,
         /**
          * Non-essential information on how to improve metadata, no immediate action needed.
          */
-        INFO,
+        INFO = 2,
         /**
          * Something metadata issue which should be fixed as soon as possible.
          */
-        WARNING,
+        WARNING = 3,
         /**
          * There is a serious, fatal error in your metadata
          */
-        ERROR,
+        ERROR = 4,
     }
 
 
@@ -858,23 +858,23 @@ export namespace AppStream {
         /**
          * Unknown kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Launch by desktop-id
          */
-        DESKTOP_ID,
+        DESKTOP_ID = 1,
         /**
          * A systemd/SysV-init service name
          */
-        SERVICE,
+        SERVICE = 2,
         /**
          * A Cockpit manifest / package name
          */
-        COCKPIT_MANIFEST,
+        COCKPIT_MANIFEST = 3,
         /**
          * A web HTTPS URL to launch a web application from
          */
-        URL,
+        URL = 4,
     }
 
 
@@ -893,19 +893,19 @@ export namespace AppStream {
         /**
          * Unknown markup.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * XML markup.
          */
-        XML,
+        XML = 1,
         /**
          * Simple text with unicode symbols.
          */
-        TEXT,
+        TEXT = 2,
         /**
          * Markdown
          */
-        MARKDOWN,
+        MARKDOWN = 3,
     }
 
 
@@ -925,19 +925,19 @@ export namespace AppStream {
         /**
          * No merge is happening.
          */
-        NONE,
+        NONE = 0,
         /**
          * Merge replacing data of target.
          */
-        REPLACE,
+        REPLACE = 1,
         /**
          * Merge appending data to target.
          */
-        APPEND,
+        APPEND = 2,
         /**
          * Remove the entire component if it matches.
          */
-        REMOVE_COMPONENT,
+        REMOVE_COMPONENT = 3,
     }
 
 
@@ -997,23 +997,23 @@ export namespace AppStream {
         /**
          * An unknown/invalid location.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Installed by the vendor, shared
          */
-        SHARED,
+        SHARED = 1,
         /**
          * Installed as metadata into /var/lib, shared
          */
-        STATE,
+        STATE = 2,
         /**
          * Installed as metadata into /var/cache, shared
          */
-        CACHE,
+        CACHE = 3,
         /**
          * Installed for the current user
          */
-        USER,
+        USER = 4,
     }
 
 
@@ -1073,51 +1073,51 @@ export namespace AppStream {
         /**
          * Unknown kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A shared library
          */
-        LIBRARY,
+        LIBRARY = 1,
         /**
          * A binary installed into a directory in PATH
          */
-        BINARY,
+        BINARY = 2,
         /**
          * Provides a handler for a mimetype
          */
-        MEDIATYPE,
+        MEDIATYPE = 3,
         /**
          * A font
          */
-        FONT,
+        FONT = 4,
         /**
          * A modalias
          */
-        MODALIAS,
+        MODALIAS = 5,
         /**
          * A Python 3 module
          */
-        PYTHON,
+        PYTHON = 6,
         /**
          * A DBus service name on the system bus.
          */
-        DBUS_SYSTEM,
+        DBUS_SYSTEM = 7,
         /**
          * A DBus service name on the user/session bus.
          */
-        DBUS_USER,
+        DBUS_USER = 8,
         /**
          * Firmware flashed at runtime.
          */
-        FIRMWARE_RUNTIME,
+        FIRMWARE_RUNTIME = 9,
         /**
          * Firmware flashed permanently to the device.
          */
-        FIRMWARE_FLASHED,
+        FIRMWARE_FLASHED = 10,
         /**
          * An AppStream component
          */
-        ID,
+        ID = 11,
     }
 
 
@@ -1136,19 +1136,19 @@ export namespace AppStream {
         /**
          * Unknown reference kind.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Digital Object Identifier
          */
-        DOI,
+        DOI = 1,
         /**
          * Web URL to a Citation File Format file
          */
-        CITATION_CFF,
+        CITATION_CFF = 2,
         /**
          * A generic registry.
          */
-        REGISTRY,
+        REGISTRY = 3,
     }
 
 
@@ -1167,31 +1167,31 @@ export namespace AppStream {
         /**
          * Comparison predicate invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Equal to
          */
-        EQ,
+        EQ = 1,
         /**
          * Not equal to
          */
-        NE,
+        NE = 2,
         /**
          * Less than
          */
-        LT,
+        LT = 3,
         /**
          * Greater than
          */
-        GT,
+        GT = 4,
         /**
          * Less than or equal to
          */
-        LE,
+        LE = 5,
         /**
          * Greater than or equal to
          */
-        GE,
+        GE = 6,
     }
 
 
@@ -1244,43 +1244,43 @@ export namespace AppStream {
         /**
          * Unknown kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A component ID
          */
-        ID,
+        ID = 1,
         /**
          * A hardware modalias
          */
-        MODALIAS,
+        MODALIAS = 2,
         /**
          * An operating system kernel (like Linux)
          */
-        KERNEL,
+        KERNEL = 3,
         /**
          * A system RAM requirement
          */
-        MEMORY,
+        MEMORY = 4,
         /**
          * A device firmware requirement (used by fwupd)
          */
-        FIRMWARE,
+        FIRMWARE = 5,
         /**
          * An input method for users to control software
          */
-        CONTROL,
+        CONTROL = 6,
         /**
          * Display edge length
          */
-        DISPLAY_LENGTH,
+        DISPLAY_LENGTH = 7,
         /**
          * A Computer Hardware ID (CHID) to depend on system hardware
          */
-        HARDWARE,
+        HARDWARE = 8,
         /**
          * Internet connectivity (Since: 0.15.5)
          */
-        INTERNET,
+        INTERNET = 9,
     }
 
 
@@ -1299,19 +1299,19 @@ export namespace AppStream {
         /**
          * Unknown kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The referenced item is required by the component
          */
-        REQUIRES,
+        REQUIRES = 1,
         /**
          * The referenced item is recommended
          */
-        RECOMMENDS,
+        RECOMMENDS = 2,
         /**
          * The referenced item is supported
          */
-        SUPPORTS,
+        SUPPORTS = 3,
     }
 
 
@@ -1330,19 +1330,19 @@ export namespace AppStream {
         /**
          * Unknown status.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * An error occured and the status could not be checked.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * The relation is not satisfied.
          */
-        NOT_SATISFIED,
+        NOT_SATISFIED = 2,
         /**
          * The relation is satisfied.
          */
-        SATISFIED,
+        SATISFIED = 3,
     }
 
 
@@ -1362,19 +1362,19 @@ export namespace AppStream {
         /**
          * Unknown release type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A stable release for end-users
          */
-        STABLE,
+        STABLE = 1,
         /**
          * A development release or pre-release for testing
          */
-        DEVELOPMENT,
+        DEVELOPMENT = 2,
         /**
          * A snapshot of a software being worked on
          */
-        SNAPSHOT,
+        SNAPSHOT = 3,
     }
 
 
@@ -1394,15 +1394,15 @@ export namespace AppStream {
         /**
          * Unknown releases type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Release info is embedded in metainfo file
          */
-        EMBEDDED,
+        EMBEDDED = 1,
         /**
          * Release info is split to a separate file
          */
-        EXTERNAL,
+        EXTERNAL = 2,
     }
 
 
@@ -1420,11 +1420,11 @@ export namespace AppStream {
      * @since 0.12.5
      */
     enum ReleaseUrlKind {
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Weblink to detailed release notes.
          */
-        DETAILS,
+        DETAILS = 1,
     }
 
 
@@ -1443,15 +1443,15 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The primary screenshot to show by default
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Optional screenshot
          */
-        EXTRA,
+        EXTRA = 2,
     }
 
 
@@ -1470,15 +1470,15 @@ export namespace AppStream {
         /**
          * Media kind is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The screenshot contains images
          */
-        IMAGE,
+        IMAGE = 1,
         /**
          * The screenshot contains videos
          */
-        VIDEO,
+        VIDEO = 2,
     }
 
 
@@ -1498,15 +1498,15 @@ export namespace AppStream {
         /**
          * Unknown size
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Size of download of component
          */
-        DOWNLOAD,
+        DOWNLOAD = 1,
         /**
          * Size of installed component
          */
-        INSTALLED,
+        INSTALLED = 2,
     }
 
 
@@ -1525,15 +1525,15 @@ export namespace AppStream {
         /**
          * Unknown suggested kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Suggestions provided by the upstream project.
          */
-        UPSTREAM,
+        UPSTREAM = 1,
         /**
          * Suggestions provided by automatic heuristics.
          */
-        HEURISTIC,
+        HEURISTIC = 2,
     }
 
 
@@ -1581,15 +1581,15 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Gettext translation domain
          */
-        GETTEXT,
+        GETTEXT = 1,
         /**
          * Qt translation domain
          */
-        QT,
+        QT = 2,
     }
 
 
@@ -1608,23 +1608,23 @@ export namespace AppStream {
         /**
          * Urgency is unknown or not set
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Low urgency
          */
-        LOW,
+        LOW = 1,
         /**
          * Medium urgency
          */
-        MEDIUM,
+        MEDIUM = 2,
         /**
          * High urgency
          */
-        HIGH,
+        HIGH = 3,
         /**
          * Critical urgency
          */
-        CRITICAL,
+        CRITICAL = 4,
     }
 
 
@@ -1643,43 +1643,43 @@ export namespace AppStream {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Project homepage
          */
-        HOMEPAGE,
+        HOMEPAGE = 1,
         /**
          * Bugtracker
          */
-        BUGTRACKER,
+        BUGTRACKER = 2,
         /**
          * FAQ page
          */
-        FAQ,
+        FAQ = 3,
         /**
          * Help manual
          */
-        HELP,
+        HELP = 4,
         /**
          * Page with information about how to donate to the project
          */
-        DONATION,
+        DONATION = 5,
         /**
          * Page with instructions on how to translate the project / submit translations.
          */
-        TRANSLATE,
+        TRANSLATE = 6,
         /**
          * Contact the developers
          */
-        CONTACT,
+        CONTACT = 7,
         /**
          * Browse the source code
          */
-        VCS_BROWSER,
+        VCS_BROWSER = 8,
         /**
          * Help developing
          */
-        CONTRIBUTE,
+        CONTRIBUTE = 9,
     }
 
 
@@ -1756,15 +1756,15 @@ export namespace AppStream {
         /**
          * Unknown video codec
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The VP9 video codec
          */
-        VP9,
+        VP9 = 1,
         /**
          * The AV1 video codec
          */
-        AV1,
+        AV1 = 2,
     }
 
 
@@ -1783,22 +1783,31 @@ export namespace AppStream {
         /**
          * Unknown video container
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The Matroska video (MKV) container
          */
-        MKV,
+        MKV = 1,
         /**
          * The WebM video container
          */
-        WEBM,
+        WEBM = 2,
     }
 
 
+    /**
+     * @default 1
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 3
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 1
+     */
     const MINOR_VERSION: number;
 
     /**
@@ -2282,6 +2291,7 @@ export namespace AppStream {
      * @param markup the XML markup to transform.
      * @param to_kind The markup style to convert into.
      * @returns a newly allocated string, or `null` on error.
+     * @throws GLib.Error
      */
     function markup_convert(markup: string, to_kind: MarkupKind): string;
 
@@ -2699,6 +2709,7 @@ export namespace AppStream {
      * @param destdir the destdir to use, or `null`
      * @returns `true` for success, `false` if error is set
      * @since 0.14.0
+     * @throws GLib.Error
      */
     function utils_install_metadata_file(location: MetadataLocation, filename: string, origin: string, destdir: string): boolean;
 
@@ -2860,23 +2871,23 @@ export namespace AppStream {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Create an user-specific metadata cache.
          */
-        USE_USER,
+        USE_USER = 1,
         /**
          * Use and - if possible - update the system metadata cache.
          */
-        USE_SYSTEM,
+        USE_SYSTEM = 2,
         /**
          * Don't clear the cache when opening it.
          */
-        NO_CLEAR,
+        NO_CLEAR = 4,
         /**
          * Refresh the system cache that is shared between applications.
          */
-        REFRESH_SYSTEM,
+        REFRESH_SYSTEM = 8,
     }
 
 
@@ -2895,11 +2906,11 @@ export namespace AppStream {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Only perform the most basic verification.
          */
-        NO_CHECKS,
+        NO_CHECKS = 1,
     }
 
 
@@ -2918,27 +2929,27 @@ export namespace AppStream {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Scope, e.g. a {@link AppStream.ComponentScope}
          */
-        SCOPE,
+        SCOPE = 1,
         /**
          * Bundle kind, e.g. a {@link AppStream.BundleKind}
          */
-        BUNDLE_KIND,
+        BUNDLE_KIND = 2,
         /**
          * Origin
          */
-        ORIGIN,
+        ORIGIN = 4,
         /**
          * Component AppStream ID
          */
-        ID,
+        ID = 8,
         /**
          * Branch
          */
-        BRANCH,
+        BRANCH = 16,
     }
 
 
@@ -2957,11 +2968,11 @@ export namespace AppStream {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not process the media_baseurl document property.
          */
-        IGNORE_MEDIABASEURL,
+        IGNORE_MEDIABASEURL = 1,
     }
 
 
@@ -2980,39 +2991,39 @@ export namespace AppStream {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Load AppStream catalog metadata from OS locations.
          */
-        LOAD_OS_CATALOG,
+        LOAD_OS_CATALOG = 1,
         /**
          * Load MetaInfo data from OS locations.
          */
-        LOAD_OS_METAINFO,
+        LOAD_OS_METAINFO = 2,
         /**
          * Load components from desktop-entry files in OS locations.
          */
-        LOAD_OS_DESKTOP_FILES,
+        LOAD_OS_DESKTOP_FILES = 4,
         /**
          * Load AppStream catalog metadata from Flatpak.
          */
-        LOAD_FLATPAK,
+        LOAD_FLATPAK = 8,
         /**
          * Load fresh data even if an up-o-date cache is available.
          */
-        IGNORE_CACHE_AGE,
+        IGNORE_CACHE_AGE = 16,
         /**
          * Always resolve addons for returned components.
          */
-        RESOLVE_ADDONS,
+        RESOLVE_ADDONS = 32,
         /**
          * Prefer local metainfo data over the system-provided catalog data. Useful for previewing local data.
          */
-        PREFER_OS_METAINFO,
+        PREFER_OS_METAINFO = 64,
         /**
          * Monitor registered directories for changes, and auto-reload metadata if necessary.
          */
-        MONITOR,
+        MONITOR = 128,
     }
 
 
@@ -3032,15 +3043,15 @@ export namespace AppStream {
         /**
          * No special flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * The user wrote the review themselves
          */
-        SELF,
+        SELF = 1,
         /**
          * The user voted on the review
          */
-        VOTED,
+        VOTED = 2,
     }
 
 
@@ -3060,15 +3071,15 @@ export namespace AppStream {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Check for duplicates when adding items to list values.
          */
-        DUPLICATE_CHECK,
+        DUPLICATE_CHECK = 1,
         /**
          * Don't fall back to C when retrieving translated values.
          */
-        NO_TRANSLATION_FALLBACK,
+        NO_TRANSLATION_FALLBACK = 2,
     }
 
 
@@ -3087,11 +3098,11 @@ export namespace AppStream {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore epoch part of a version string.
          */
-        IGNORE_EPOCH,
+        IGNORE_EPOCH = 1,
     }
 
 
@@ -4754,6 +4765,7 @@ export namespace AppStream {
          * @param bytes the data to load.
          * @returns `true` on success.
          * @since 0.14.0
+         * @throws GLib.Error
          */
         load_from_bytes(context: Context, format: FormatKind, bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -4762,6 +4774,7 @@ export namespace AppStream {
          * if necessary.
          * @param allow_net 
          * @returns Release information as {@link AppStream.ReleaseList}, or `null` if loading failed.
+         * @throws GLib.Error
          */
         load_releases(allow_net: boolean): ReleaseList | null;
 
@@ -5004,6 +5017,7 @@ export namespace AppStream {
          * @param context an {@link AppStream.Context} instance.
          * @returns `true` on success.
          * @since 0.12.10
+         * @throws GLib.Error
          */
         to_xml_data(context: Context): string;
     }
@@ -5071,6 +5085,7 @@ export namespace AppStream {
          * (most likely due to component box constraints).
          * @param cpt 
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         add(cpt: Component): boolean;
 
@@ -5989,6 +6004,7 @@ export namespace AppStream {
          * In case no component is present, `null` is returned.
          * @param format The format to use (XML or YAML)
          * @returns A string containing the XML metadata. Free with `g_free()`
+         * @throws GLib.Error
          */
         component_to_metainfo(format: FormatKind): string;
 
@@ -5998,6 +6014,7 @@ export namespace AppStream {
          * `null` is returned if there is nothing to serialize.
          * @param format The format to serialize the data to (XML or YAML).
          * @returns A string containing the YAML or XML data. Free with `g_free()`
+         * @throws GLib.Error
          */
         components_to_catalog(format: FormatKind): string;
 
@@ -6078,6 +6095,7 @@ export namespace AppStream {
          * @param format The format of the data (XML or YAML).
          * @returns `true` on success.
          * @since 0.14.0
+         * @throws GLib.Error
          */
         parse_bytes(bytes: GLib.Bytes | Uint8Array, format: FormatKind): boolean;
 
@@ -6087,6 +6105,7 @@ export namespace AppStream {
          * @param data_len Length of `data`, or -1 if length is unknown and `data` is NULL-terminated.
          * @param format The format of the data (XML or YAML).
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         parse_data(data: string, data_len: bigint | number, format: FormatKind): boolean;
 
@@ -6100,6 +6119,7 @@ export namespace AppStream {
          * @param data Metadata describing one or more software components.
          * @param data_len The data length, or -1 if unknown and null-terminated.
          * @returns `true` if the file was parsed without error.
+         * @throws GLib.Error
          */
         parse_desktop_data(cid: string, data: string, data_len: bigint | number): boolean;
 
@@ -6111,6 +6131,7 @@ export namespace AppStream {
          * @param file {@link Gio.File} for the upstream metadata
          * @param format The format the data is in, or {@link AppStream.FormatKind.UNKNOWN} if not known.
          * @returns `true` if the file was parsed without error.
+         * @throws GLib.Error
          */
         parse_file(file: Gio.File, format: FormatKind): boolean;
 
@@ -6120,6 +6141,7 @@ export namespace AppStream {
          * @param bytes Metadata describing release notes.
          * @returns `true` on success.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         parse_releases_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -6130,6 +6152,7 @@ export namespace AppStream {
          * @param file {@link Gio.File} for the release metadata
          * @returns `true` on success.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         parse_releases_file(file: Gio.File): boolean;
 
@@ -6138,6 +6161,7 @@ export namespace AppStream {
          * @param releases the {@link AppStream.ReleaseList} to convert.
          * @returns The XML representation or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         releases_to_data(releases: ReleaseList): string;
 
@@ -6148,6 +6172,7 @@ export namespace AppStream {
          * @param fname The filename for the new metadata file.
          * @param format 
          * @returns `true` if the file was written without error.
+         * @throws GLib.Error
          */
         save_catalog(fname: string, format: FormatKind): boolean;
 
@@ -6157,6 +6182,7 @@ export namespace AppStream {
          * @param fname The filename for the new metadata file.
          * @param format The format to save this file in. Only XML is supported at time.
          * @returns `true` if the file was written without error.
+         * @throws GLib.Error
          */
         save_metainfo(fname: string, format: FormatKind): boolean;
 
@@ -6296,6 +6322,7 @@ export namespace AppStream {
          * @param cbox Components to add to the pool.
          * @returns `true` if the new components were successfully added to the pool.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         add_components(cbox: ComponentBox): boolean;
 
@@ -6432,6 +6459,7 @@ export namespace AppStream {
          * are up to date.
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` if update completed without error.
+         * @throws GLib.Error
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6466,6 +6494,7 @@ export namespace AppStream {
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` for success
          * @since 0.12.10
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -6832,6 +6861,7 @@ export namespace AppStream {
          * @param system_info an {@link AppStream.SystemInfo} to use for system information.
          * @param pool an {@link AppStream.Pool} to find component dependencies in.
          * @returns an {@link AppStream.RelationCheckResult} with details about the result, or `null` on error.
+         * @throws GLib.Error
          */
         is_satisfied(system_info: SystemInfo | null, pool: Pool | null): RelationCheckResult | null;
 
@@ -6921,6 +6951,7 @@ export namespace AppStream {
          * @param version a version number, e.g. `1.2.0`
          * @returns `true` if the version from the parameter is sufficient.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         version_compare(version: string): boolean;
     }
@@ -7382,6 +7413,7 @@ export namespace AppStream {
          * @param bytes the release XML data as {@link GLib.Bytes}
          * @returns `true` on success.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         load_from_bytes(context: Context | null, bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -8083,6 +8115,7 @@ export namespace AppStream {
          * @param modalias the modalias value to resolve (may contain wildcards).
          * @param allow_fallback fall back to low-quality data if no better information is available
          * @returns a human-readable device name, or `null` on error.
+         * @throws GLib.Error
          */
         get_device_name_for_modalias(modalias: string, allow_fallback: boolean): string;
 
@@ -8167,6 +8200,7 @@ export namespace AppStream {
          * {@link AppStream.CheckResult.ERROR} on error and {@link AppStream.CheckResult.FALSE} if the control was not found.
          * @param kind the {@link AppStream.ControlKind} to test for.
          * @returns {@link AppStream.CheckResult.TRUE} if control was found
+         * @throws GLib.Error
          */
         has_input_control(kind: ControlKind): CheckResult;
 
@@ -8342,6 +8376,7 @@ export namespace AppStream {
          * @param tag the issue tag to override, e.g. "release-time-missing"
          * @param severity_override the new severity for the tag.
          * @since 0.15.4
+         * @throws GLib.Error
          */
         add_override(tag: string, severity_override: IssueSeverity): boolean;
 
@@ -8350,6 +8385,7 @@ export namespace AppStream {
          * @param release_fname File basename of the release metadata file to add.
          * @param release_metadata Data of the release metadata file.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         add_release_bytes(release_fname: string, release_metadata: GLib.Bytes | Uint8Array): boolean;
 
@@ -8357,6 +8393,7 @@ export namespace AppStream {
          * Add a release metadata file to the validation process.
          * @param release_file Release metadata file to add.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         add_release_file(release_file: Gio.File): boolean;
 
@@ -8406,6 +8443,9 @@ export namespace AppStream {
          */
         get_issues_per_file(): { [key: string]: any };
 
+        /**
+         * @throws GLib.Error
+         */
         get_report_yaml(): string;
 
         /**

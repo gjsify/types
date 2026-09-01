@@ -38,35 +38,44 @@ export namespace GstBase {
         /**
          * Start at running time 0.
          */
-        ZERO,
+        ZERO = 0,
         /**
          * Start at the running time of
          * the first buffer that is received.
          */
-        FIRST,
+        FIRST = 1,
         /**
          * Start at the running time
          * selected by the `start-time` property.
          */
-        SET,
+        SET = 2,
         /**
          * Start at the current running time when reaching {@link Gst.State.PLAYING}.
+         * @since 1.28
          */
-        NOW,
+        NOW = 3,
     }
 
 
+    /**
+     * @default 2
+     */
     const BASE_PARSE_FLAG_DRAINING: number;
 
+    /**
+     * @default 1
+     */
     const BASE_PARSE_FLAG_LOST_SYNC: number;
 
     /**
      * The name of the templates for the sink pad.
+     * @default sink
      */
     const BASE_TRANSFORM_SINK_NAME: string;
 
     /**
      * The name of the templates for the source pad.
+     * @default src
      */
     const BASE_TRANSFORM_SRC_NAME: string;
 
@@ -367,37 +376,37 @@ export namespace GstBase {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * set by baseclass if current frame
          *   is passed for processing to the subclass for the first time
          *   (and not set on subsequent calls with same data).
          */
-        NEW_FRAME,
+        NEW_FRAME = 1,
         /**
          * set to indicate this buffer should not be
          *   counted as frame, e.g. if this frame is dependent on a previous one.
          *   As it is not counted as a frame, bitrate increases but frame to time
          *   conversions are maintained.
          */
-        NO_FRAME,
+        NO_FRAME = 2,
         /**
          * `pre_push_frame` can set this to indicate
          *    that regular segment clipping can still be performed (as opposed to
          *    any custom one having been done).
          */
-        CLIP,
+        CLIP = 4,
         /**
          * indicates to `finish_frame` that the
          *    the frame should be dropped (and might be handled internally by subclass)
          */
-        DROP,
+        DROP = 8,
         /**
          * indicates to `finish_frame` that the
          *    the frame should be queued for now and processed fully later
          *    when the first non-queued frame is finished
          */
-        QUEUE,
+        QUEUE = 16,
     }
 
 
@@ -409,15 +418,15 @@ export namespace GstBase {
         /**
          * has source is starting
          */
-        STARTING,
+        STARTING = 16384,
         /**
          * has source been started
          */
-        STARTED,
+        STARTED = 32768,
         /**
          * offset to define more flags
          */
-        LAST,
+        LAST = 1048576,
     }
 
 
@@ -428,27 +437,27 @@ export namespace GstBase {
         /**
          * Set if collectdata's pad is EOS.
          */
-        EOS,
+        EOS = 1,
         /**
          * Set if collectdata's pad is flushing.
          */
-        FLUSHING,
+        FLUSHING = 2,
         /**
          * Set if collectdata's pad received a
          *                                      new_segment event.
          */
-        NEW_SEGMENT,
+        NEW_SEGMENT = 4,
         /**
          * Set if collectdata's pad must be waited
          *                                      for when collecting.
          */
-        WAITING,
+        WAITING = 8,
         /**
          * Set collectdata's pad WAITING state must
          *                                      not be changed.
          * {@link GstBase.CollectPadsStateFlags} indicate private state of a collectdata('s pad).
          */
-        LOCKED,
+        LOCKED = 16,
     }
 
 
@@ -992,7 +1001,7 @@ export namespace GstBase {
              * @since 1.18
              * @run-first
              */
-            "samples-selected": (arg0: Gst.Segment, arg1: number, arg2: number, arg3: number, arg4: Gst.Structure | null) => void;
+            "samples-selected": (segment: Gst.Segment, pts: number, dts: number, duration: number, info: Gst.Structure | null) => void;
             "notify::emit-signals": (pspec: GObject.ParamSpec) => void;
             "notify::latency": (pspec: GObject.ParamSpec) => void;
             "notify::min-upstream-latency": (pspec: GObject.ParamSpec) => void;
@@ -1584,7 +1593,7 @@ export namespace GstBase {
              * @signal
              * @run-first
              */
-            "buffer-consumed": (arg0: Gst.Buffer) => void;
+            "buffer-consumed": (object: Gst.Buffer) => void;
             "notify::current-level-buffers": (pspec: GObject.ParamSpec) => void;
             "notify::current-level-bytes": (pspec: GObject.ParamSpec) => void;
             "notify::current-level-time": (pspec: GObject.ParamSpec) => void;

@@ -92,6 +92,7 @@ export namespace GrlPls {
      * @param filter_func A filter function, or `null`
      * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
      * @since 0.2.0
+     * @throws GLib.Error
      */
     function browse_sync(source: Grl.Source, playlist: Grl.Media, keys: Grl.KeyID[], options: Grl.OperationOptions, filter_func: FilterFunc | null): Grl.Media[];
 

@@ -46,13 +46,13 @@ export namespace Clapper {
          *   This mode is useful when application presents a list of items to select from to the user before playback.
          *   It will scan every single item in queue, so user can have an updated list of items when selecting what to play.
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * Only run discovery on an item if it is not a currently selected item in {@link Clapper.Queue}.
          *   This mode is optimal when application always plays (or at least goes into paused) after selecting item from queue.
          *   It will skip discovery of such items since they will be discovered by {@link Clapper.Player} anyway.
          */
-        NONCURRENT,
+        NONCURRENT = 1,
     }
 
 
@@ -70,22 +70,22 @@ export namespace Clapper {
         /**
          * Unknown marker type.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A title marker in timeline.
          */
-        TITLE,
+        TITLE = 1,
         /**
          * A chapter marker in timeline.
          */
-        CHAPTER,
+        CHAPTER = 2,
         /**
          * A track marker in timeline.
          */
-        TRACK,
-        CUSTOM_1,
-        CUSTOM_2,
-        CUSTOM_3,
+        TRACK = 3,
+        CUSTOM_1 = 101,
+        CUSTOM_2 = 102,
+        CUSTOM_3 = 103,
     }
 
 
@@ -104,15 +104,15 @@ export namespace Clapper {
         /**
          * Messaging from application or reactable enhancers to the player itself.
          */
-        PLAYER,
+        PLAYER = 0,
         /**
          * Messaging from application to the reactable enhancers.
          */
-        REACTABLES,
+        REACTABLES = 1,
         /**
          * Messaging from reactable enhancers to the application.
          */
-        APPLICATION,
+        APPLICATION = 2,
     }
 
 
@@ -130,15 +130,15 @@ export namespace Clapper {
         /**
          * Seek to exact position (slow).
          */
-        ACCURATE,
+        ACCURATE = 0,
         /**
          * Seek to approximated position.
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * Seek to position of nearest keyframe (fast).
          */
-        FAST,
+        FAST = 2,
     }
 
 
@@ -156,19 +156,19 @@ export namespace Clapper {
         /**
          * Player is stopped.
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * Player is buffering.
          */
-        BUFFERING,
+        BUFFERING = 1,
         /**
          * Player is paused.
          */
-        PAUSED,
+        PAUSED = 2,
         /**
          * Player is playing.
          */
-        PLAYING,
+        PLAYING = 3,
     }
 
 
@@ -186,27 +186,27 @@ export namespace Clapper {
         /**
          * Queue will not change current item after playback finishes.
          */
-        NONE,
+        NONE = 0,
         /**
          * Queue selects items one after another until the end.
          *   When end of queue is reached, this mode will continue one another item is added to the queue,
          *   playing it if player autoplay property is set, otherwise current player state is kept.
          */
-        CONSECUTIVE,
+        CONSECUTIVE = 1,
         /**
          * Queue keeps repeating current media item.
          */
-        REPEAT_ITEM,
+        REPEAT_ITEM = 2,
         /**
          * Queue starts from beginning after last media item.
          */
-        CAROUSEL,
+        CAROUSEL = 3,
         /**
          * Queue selects a random media item after current one.
          *   Shuffle mode will avoid reselecting previously shuffled items as long as possible.
          *   After it runs out of unused items, shuffling begins anew.
          */
-        SHUFFLE,
+        SHUFFLE = 4,
     }
 
 
@@ -224,69 +224,79 @@ export namespace Clapper {
         /**
          * Unknown stream type.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Stream is a {@link Clapper.VideoStream}.
          */
-        VIDEO,
+        VIDEO = 1,
         /**
          * Stream is a {@link Clapper.AudioStream}.
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * Stream is a {@link Clapper.SubtitleStream}.
          */
-        SUBTITLE,
+        SUBTITLE = 3,
     }
 
 
     /**
      * Check if Clapper was compiled with Discoverer feature.
+     * @default true
      */
     const HAVE_DISCOVERER: boolean;
 
     /**
      * Check if Clapper was compiled with MPRIS feature.
+     * @default true
      */
     const HAVE_MPRIS: boolean;
 
     /**
      * Check if Clapper was compiled with Server feature.
+     * @default true
      */
     const HAVE_SERVER: boolean;
 
     /**
      * Clapper major version component
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The value used to indicate that marker does not have an ending time specified
+     * @default -1
      */
     const MARKER_NO_END: number;
 
     /**
      * Clapper micro version component
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * Clapper minor version component
+     * @default 10
      */
     const MINOR_VERSION: number;
 
     /**
      * The value used to refer to an invalid position in a {@link Clapper.Queue}
+     * @default 4294967295
      */
     const QUEUE_INVALID_POSITION: number;
 
     /**
      * The value used to refer to an invalid position in a {@link Clapper.StreamList}
+     * @default 4294967295
      */
     const STREAM_LIST_INVALID_POSITION: number;
 
     /**
      * Clapper version, encoded as a string
+     * @default 0.10.0
      */
     const VERSION_S: string;
 
@@ -296,6 +306,7 @@ export namespace Clapper {
      * Alternatively, apps before compiling can also check whether `pkgconfig`
      * variable named `functionalities` contains `enhancers-loader` string.
      * @since 0.8
+     * @default true
      */
     const WITH_ENHANCERS_LOADER: boolean;
 
@@ -434,22 +445,22 @@ export namespace Clapper {
          * Use this flag for enhancer properties that should have global access scope.
          *   Such are meant for application `USER` to configure.
          */
-        GLOBAL,
+        GLOBAL = 131072,
         /**
          * Use this flag for enhancer properties that should have local access scope.
          *   Such are meant for `APPLICATION` to configure.
          */
-        LOCAL,
+        LOCAL = 262144,
         /**
          * Use this flag for enhancer properties that store string with a file path.
          *   Applications can use this as a hint to show file selection instead of a text entry.
          */
-        FILEPATH,
+        FILEPATH = 524288,
         /**
          * Use this flag for enhancer properties that store string with a directory path.
          *   Applications can use this as a hint to show directory selection instead of a text entry.
          */
-        DIRPATH,
+        DIRPATH = 1048576,
     }
 
 
@@ -469,27 +480,27 @@ export namespace Clapper {
         /**
          * Media item title was updated.
          */
-        TITLE,
+        TITLE = 1,
         /**
          * Media item duration was updated.
          */
-        DURATION,
+        DURATION = 2,
         /**
          * Media item timeline was updated.
          */
-        TIMELINE,
+        TIMELINE = 4,
         /**
          * Media item tags were updated.
          */
-        TAGS,
+        TAGS = 8,
         /**
          * Media item redirect URI was updated.
          */
-        REDIRECT_URI,
+        REDIRECT_URI = 16,
         /**
          * Media item cache location was updated.
          */
-        CACHE_LOCATION,
+        CACHE_LOCATION = 32,
     }
 
 
@@ -2364,14 +2375,14 @@ export namespace Clapper {
              * @since 0.8
              * @run-last
              */
-            "download-complete": (arg0: MediaItem, arg1: string) => void;
+            "download-complete": (item: MediaItem, location: string) => void;
             /**
              * These are normal error messages. Upon emitting this signal,
              * playback will stop due to the error.
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error, arg1: string | null) => void;
+            error: (error: GLib.Error, debug_info: string | null) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2388,7 +2399,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            message: (arg0: Gst.Message) => void;
+            message: (msg: Gst.Message) => void;
             /**
              * A `GStreamer` plugin or one of its features needed for playback is missing.
              * 
@@ -2397,7 +2408,7 @@ export namespace Clapper {
              * @signal
              * @run-last
              */
-            "missing-plugin": (arg0: string, arg1: string | null) => void;
+            "missing-plugin": (name: string, installer_detail: string | null) => void;
             /**
              * A seeking operation has finished. Player is now at playback position after seek.
              * @signal
@@ -2410,7 +2421,7 @@ export namespace Clapper {
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error, arg1: string | null) => void;
+            warning: (error: GLib.Error, debug_info: string | null) => void;
             "notify::adaptive-bandwidth": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-max-bitrate": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-min-bitrate": (pspec: GObject.ParamSpec) => void;
@@ -2458,7 +2469,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::adaptive-bandwidth": (arg0: Gst.Message) => void;
+            "message::adaptive-bandwidth": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2475,7 +2486,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::adaptive-max-bitrate": (arg0: Gst.Message) => void;
+            "message::adaptive-max-bitrate": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2492,7 +2503,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::adaptive-min-bitrate": (arg0: Gst.Message) => void;
+            "message::adaptive-min-bitrate": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2509,7 +2520,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::adaptive-start-bitrate": (arg0: Gst.Message) => void;
+            "message::adaptive-start-bitrate": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2526,7 +2537,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::audio-enabled": (arg0: Gst.Message) => void;
+            "message::audio-enabled": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2543,7 +2554,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::audio-filter": (arg0: Gst.Message) => void;
+            "message::audio-filter": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2560,7 +2571,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::audio-offset": (arg0: Gst.Message) => void;
+            "message::audio-offset": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2577,7 +2588,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::audio-sink": (arg0: Gst.Message) => void;
+            "message::audio-sink": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2594,7 +2605,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::audio-streams": (arg0: Gst.Message) => void;
+            "message::audio-streams": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2611,7 +2622,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::autoplay": (arg0: Gst.Message) => void;
+            "message::autoplay": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2628,7 +2639,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::current-audio-decoder": (arg0: Gst.Message) => void;
+            "message::current-audio-decoder": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2645,7 +2656,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::current-video-decoder": (arg0: Gst.Message) => void;
+            "message::current-video-decoder": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2662,7 +2673,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::download-dir": (arg0: Gst.Message) => void;
+            "message::download-dir": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2679,7 +2690,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::download-enabled": (arg0: Gst.Message) => void;
+            "message::download-enabled": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2696,7 +2707,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::enhancer-proxies": (arg0: Gst.Message) => void;
+            "message::enhancer-proxies": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2713,7 +2724,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::mute": (arg0: Gst.Message) => void;
+            "message::mute": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2730,7 +2741,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::position": (arg0: Gst.Message) => void;
+            "message::position": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2747,7 +2758,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::queue": (arg0: Gst.Message) => void;
+            "message::queue": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2764,7 +2775,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::speed": (arg0: Gst.Message) => void;
+            "message::speed": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2781,7 +2792,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::state": (arg0: Gst.Message) => void;
+            "message::state": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2798,7 +2809,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::subtitle-font-desc": (arg0: Gst.Message) => void;
+            "message::subtitle-font-desc": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2815,7 +2826,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::subtitle-offset": (arg0: Gst.Message) => void;
+            "message::subtitle-offset": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2832,7 +2843,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::subtitle-streams": (arg0: Gst.Message) => void;
+            "message::subtitle-streams": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2849,7 +2860,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::subtitles-enabled": (arg0: Gst.Message) => void;
+            "message::subtitles-enabled": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2866,7 +2877,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::video-enabled": (arg0: Gst.Message) => void;
+            "message::video-enabled": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2883,7 +2894,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::video-filter": (arg0: Gst.Message) => void;
+            "message::video-filter": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2900,7 +2911,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::video-sink": (arg0: Gst.Message) => void;
+            "message::video-sink": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2917,7 +2928,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::video-streams": (arg0: Gst.Message) => void;
+            "message::video-streams": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2934,7 +2945,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::volume": (arg0: Gst.Message) => void;
+            "message::volume": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2951,7 +2962,7 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::name": (arg0: Gst.Message) => void;
+            "message::name": (msg: Gst.Message) => void;
             /**
              * Allows for applications to receive element messages posted
              * on the underlaying pipeline bus.
@@ -2968,8 +2979,8 @@ export namespace Clapper {
              * @detailed
              * @run-last
              */
-            "message::parent": (arg0: Gst.Message) => void;
-            [key: `message::${string}`]: (arg0: Gst.Message) => void;
+            "message::parent": (msg: Gst.Message) => void;
+            [key: `message::${string}`]: (msg: Gst.Message) => void;
         }
 
         // Constructor properties interface
@@ -4435,7 +4446,7 @@ export namespace Clapper {
              * @deprecated since 0.10: Use Control Hub from `clapper-enhancers` repo instead.
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             "notify::current-port": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::port": (pspec: GObject.ParamSpec) => void;

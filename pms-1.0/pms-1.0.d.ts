@@ -38,7 +38,7 @@ export namespace Pms {
      * @gir-type Enum
      */
     enum OsUpdateFlags {
-        OS_UPDATE_FLAG_NONE,
+        OS_UPDATE_FLAG_NONE = 0,
     }
 
 
@@ -53,13 +53,13 @@ export namespace Pms {
      * @gir-type Enum
      */
     enum OsUpdateState {
-        FAILED,
-        UNKNOWN,
-        READY,
-        FETCHING,
-        FETCHED,
-        INSTALLING,
-        INSTALLED,
+        FAILED = -1,
+        UNKNOWN = 0,
+        READY = 1,
+        FETCHING = 2,
+        FETCHED = 3,
+        INSTALLING = 4,
+        INSTALLED = 5,
     }
 
 
@@ -461,6 +461,7 @@ export namespace Pms {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         cancel_fetch_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -489,6 +490,7 @@ export namespace Pms {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         cancel_install_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -517,6 +519,7 @@ export namespace Pms {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         fetch_update_finish(res: Gio.AsyncResult): boolean;
 
@@ -556,6 +559,7 @@ export namespace Pms {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         install_update_finish(res: Gio.AsyncResult): boolean;
     }
@@ -690,6 +694,7 @@ export namespace Pms {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         load_osk_layouts_finish(res: Gio.AsyncResult): boolean;
     }

@@ -29,19 +29,19 @@ export namespace GIRepository {
         /**
          * a C array, char[] for instance
          */
-        C,
+        C = 0,
         /**
          * a `GArray` array
          */
-        ARRAY,
+        ARRAY = 1,
         /**
          * a {@link GLib.PtrArray} array
          */
-        PTR_ARRAY,
+        PTR_ARRAY = 2,
         /**
          * a {@link GLib.ByteArray} array
          */
-        BYTE_ARRAY,
+        BYTE_ARRAY = 3,
     }
 
 
@@ -53,15 +53,15 @@ export namespace GIRepository {
         /**
          * in argument.
          */
-        IN,
+        IN = 0,
         /**
          * out argument.
          */
-        OUT,
+        OUT = 1,
         /**
          * in and out argument.
          */
-        INOUT,
+        INOUT = 2,
     }
 
 
@@ -73,84 +73,84 @@ export namespace GIRepository {
         /**
          * invalid type
          */
-        INVALID,
+        INVALID = 0,
         /**
          * function, see {@link GIRepository.FunctionInfo}
          */
-        FUNCTION,
+        FUNCTION = 1,
         /**
          * callback, see {@link GIRepository.FunctionInfo}
          */
-        CALLBACK,
+        CALLBACK = 2,
         /**
          * struct, see {@link GIRepository.StructInfo}
          */
-        STRUCT,
+        STRUCT = 3,
         /**
          * boxed, see {@link GIRepository.StructInfo} or {@link GIRepository.UnionInfo}
          */
-        BOXED,
+        BOXED = 4,
         /**
          * enum, see {@link GIRepository.EnumInfo}
          */
-        ENUM,
+        ENUM = 5,
         /**
          * flags, see {@link GIRepository.EnumInfo}
          */
-        FLAGS,
+        FLAGS = 6,
         /**
          * object, see {@link GIRepository.ObjectInfo}
          */
-        OBJECT,
+        OBJECT = 7,
         /**
          * interface, see {@link GIRepository.InterfaceInfo}
          */
-        INTERFACE,
+        INTERFACE = 8,
         /**
          * contant, see {@link GIRepository.ConstantInfo}
          */
-        CONSTANT,
+        CONSTANT = 9,
         /**
          * deleted, used to be GI_INFO_TYPE_ERROR_DOMAIN.
          */
-        INVALID_0,
+        INVALID_0 = 10,
         /**
          * union, see {@link GIRepository.UnionInfo}
          */
-        UNION,
+        UNION = 11,
         /**
          * enum value, see {@link GIRepository.ValueInfo}
          */
-        VALUE,
+        VALUE = 12,
         /**
          * signal, see {@link GIRepository.SignalInfo}
          */
-        SIGNAL,
+        SIGNAL = 13,
         /**
          * virtual function, see {@link GIRepository.VFuncInfo}
          */
-        VFUNC,
+        VFUNC = 14,
         /**
          * GObject property, see {@link GIRepository.PropertyInfo}
          */
-        PROPERTY,
+        PROPERTY = 15,
         /**
          * struct or union field, see {@link GIRepository.FieldInfo}
          */
-        FIELD,
+        FIELD = 16,
         /**
          * argument of a function or callback, see {@link GIRepository.ArgInfo}
          */
-        ARG,
+        ARG = 17,
         /**
          * type information, see {@link GIRepository.TypeInfo}
          */
-        TYPE,
+        TYPE = 18,
         /**
          * unresolved type, a type which is not present in
          *   the typelib, or any of its dependencies.
          */
-        UNRESOLVED,
+        UNRESOLVED = 19,
     }
 
 
@@ -163,22 +163,22 @@ export namespace GIRepository {
         /**
          * the typelib could not be found.
          */
-        TYPELIB_NOT_FOUND,
+        TYPELIB_NOT_FOUND = 0,
         /**
          * the namespace does not match the
          *   requested namespace.
          */
-        NAMESPACE_MISMATCH,
+        NAMESPACE_MISMATCH = 1,
         /**
          * the version of the
          *   typelib does not match the requested version.
          */
-        NAMESPACE_VERSION_CONFLICT,
+        NAMESPACE_VERSION_CONFLICT = 2,
         /**
          * the library used by the typelib
          *   could not be found.
          */
-        LIBRARY_NOT_FOUND,
+        LIBRARY_NOT_FOUND = 3,
     }
 
 
@@ -192,28 +192,28 @@ export namespace GIRepository {
         /**
          * The argument is not of callback type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The callback and associated user_data is only
          *   used during the call to this function.
          */
-        CALL,
+        CALL = 1,
         /**
          * The callback and associated user_data is
          *   only used until the callback is invoked, and the callback.
          *   is invoked always exactly once.
          */
-        ASYNC,
+        ASYNC = 2,
         /**
          * The callback and associated
          *   user_data is used until the caller is notfied via the destroy_notify.
          */
-        NOTIFIED,
+        NOTIFIED = 3,
         /**
          * The callback and associated user_data is
          *   used until the process terminates
          */
-        FOREVER,
+        FOREVER = 4,
     }
 
 
@@ -237,21 +237,21 @@ export namespace GIRepository {
          * ownership of the transfer and the caller doesn't need to do anything to free
          * up the resources of this transfer.
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * transfer the container (list, array, hash table) from
          * the callee to the caller. The callee retains the ownership of the individual
          * items in the container and the caller has to free up the container resources
          * (g_list_free()/g_hash_table_destroy() etc) of this transfer.
          */
-        CONTAINER,
+        CONTAINER = 1,
         /**
          * transfer everything, eg the container and its
          * contents from the callee to the caller. This is the case when the callee
          * creates a copy of all the data it returns. The caller is responsible for
          * cleaning up the container and item resources of this transfer.
          */
-        EVERYTHING,
+        EVERYTHING = 2,
     }
 
 
@@ -263,92 +263,92 @@ export namespace GIRepository {
         /**
          * void
          */
-        VOID,
+        VOID = 0,
         /**
          * boolean
          */
-        BOOLEAN,
+        BOOLEAN = 1,
         /**
          * 8-bit signed integer
          */
-        INT8,
+        INT8 = 2,
         /**
          * 8-bit unsigned integer
          */
-        UINT8,
+        UINT8 = 3,
         /**
          * 16-bit signed integer
          */
-        INT16,
+        INT16 = 4,
         /**
          * 16-bit unsigned integer
          */
-        UINT16,
+        UINT16 = 5,
         /**
          * 32-bit signed integer
          */
-        INT32,
+        INT32 = 6,
         /**
          * 32-bit unsigned integer
          */
-        UINT32,
+        UINT32 = 7,
         /**
          * 64-bit signed integer
          */
-        INT64,
+        INT64 = 8,
         /**
          * 64-bit unsigned integer
          */
-        UINT64,
+        UINT64 = 9,
         /**
          * float
          */
-        FLOAT,
+        FLOAT = 10,
         /**
          * double floating point
          */
-        DOUBLE,
+        DOUBLE = 11,
         /**
          * a {@link GObject.GType}
          */
-        GTYPE,
+        GTYPE = 12,
         /**
          * a UTF-8 encoded string
          */
-        UTF8,
+        UTF8 = 13,
         /**
          * a filename, encoded in the same encoding
          *   as the native filesystem is using.
          */
-        FILENAME,
+        FILENAME = 14,
         /**
          * an array
          */
-        ARRAY,
+        ARRAY = 15,
         /**
          * an extended interface object
          */
-        INTERFACE,
+        INTERFACE = 16,
         /**
          * a {@link GLib.List}
          */
-        GLIST,
+        GLIST = 17,
         /**
          * a {@link GLib.SList}
          */
-        GSLIST,
+        GSLIST = 18,
         /**
          * a {@link GLib.HashTable}
          */
-        GHASH,
+        GHASH = 19,
         /**
          * a {@link GLib.Error}
          */
-        ERROR,
+        ERROR = 20,
         /**
          * Unicode character
          */
-        UNICHAR,
+        UNICHAR = 21,
     }
 
 
@@ -361,40 +361,44 @@ export namespace GIRepository {
         /**
          * invokation failed, unknown error.
          */
-        FAILED,
+        FAILED = 0,
         /**
          * symbol couldn't be found in any of the
          * libraries associated with the typelib of the function.
          */
-        SYMBOL_NOT_FOUND,
+        SYMBOL_NOT_FOUND = 1,
         /**
          * the arguments provided didn't match
          * the expected arguments for the functions type signature.
          */
-        ARGUMENT_MISMATCH,
+        ARGUMENT_MISMATCH = 2,
     }
 
 
     /**
      * The major version number of the girepository library.
      * @since 1.60
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version number of the girepository library.
      * @since 1.60
+     * @default 1
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version number of the girepository library.
      * @since 1.60
+     * @default 86
      */
     const MINOR_VERSION: number;
 
     /**
      * TODO
+     * @default 22
      */
     const TYPE_TAG_N_TYPES: number;
 
@@ -566,6 +570,7 @@ export namespace GIRepository {
      * @param return_value TODO
      * @param is_method TODO
      * @param _throws TODO
+     * @throws GLib.Error
      */
     function callable_info_invoke(info: CallableInfo, _function: null, in_args: Argument[], out_args: Argument[], return_value: Argument, is_method: boolean, _throws: boolean): boolean;
 
@@ -1671,6 +1676,7 @@ export namespace GIRepository {
      * @param info a {@link GIRepository.VFuncInfo}
      * @param implementor_gtype {@link GObject.GType} implementing this virtual function
      * @returns address to a function or `null` if an error happened
+     * @throws GLib.Error
      */
     function vfunc_info_get_address(info: VFuncInfo, implementor_gtype: GObject.GType): null;
 
@@ -1717,11 +1723,11 @@ export namespace GIRepository {
         /**
          * field is readable.
          */
-        READABLE,
+        READABLE = 1,
         /**
          * field is writable.
          */
-        WRITABLE,
+        WRITABLE = 2,
     }
 
 
@@ -1733,27 +1739,27 @@ export namespace GIRepository {
         /**
          * is a method.
          */
-        IS_METHOD,
+        IS_METHOD = 1,
         /**
          * is a constructor.
          */
-        IS_CONSTRUCTOR,
+        IS_CONSTRUCTOR = 2,
         /**
          * is a getter of a {@link GIRepository.PropertyInfo}.
          */
-        IS_GETTER,
+        IS_GETTER = 4,
         /**
          * is a setter of a {@link GIRepository.PropertyInfo}.
          */
-        IS_SETTER,
+        IS_SETTER = 8,
         /**
          * represents a virtual function.
          */
-        WRAPS_VFUNC,
+        WRAPS_VFUNC = 16,
         /**
          * the function may throw an error.
          */
-        THROWS,
+        THROWS = 32,
     }
 
 
@@ -1765,7 +1771,7 @@ export namespace GIRepository {
         /**
          * Lazily load the typelib.
          */
-        IREPOSITORY_LOAD_FLAG_LAZY,
+        IREPOSITORY_LOAD_FLAG_LAZY = 1,
     }
 
 
@@ -1777,19 +1783,19 @@ export namespace GIRepository {
         /**
          * chains up to the parent type
          */
-        MUST_CHAIN_UP,
+        MUST_CHAIN_UP = 1,
         /**
          * overrides
          */
-        MUST_OVERRIDE,
+        MUST_OVERRIDE = 2,
         /**
          * does not override
          */
-        MUST_NOT_OVERRIDE,
+        MUST_NOT_OVERRIDE = 4,
         /**
          * Includes a {@link GLib.Error}
          */
-        THROWS,
+        THROWS = 8,
     }
 
 
@@ -2077,6 +2083,7 @@ export namespace GIRepository {
          * TODO
          * @param typelib TODO
          * @param flags TODO
+         * @throws GLib.Error
          */
         load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
 
@@ -2090,6 +2097,7 @@ export namespace GIRepository {
          * @param version Version of namespace, may be `null` for latest
          * @param flags Set of %GIRepositoryLoadFlags, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if successful, `null` otherwise
+         * @throws GLib.Error
          */
         require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
 
@@ -2104,6 +2112,7 @@ export namespace GIRepository {
          * @param version Version of namespace, may be `null` for latest
          * @param flags Set of %GIRepositoryLoadFlags, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if successful, `null` otherwise
+         * @throws GLib.Error
          */
         require_private(typelib_dir: string, namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
     }

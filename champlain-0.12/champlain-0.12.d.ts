@@ -49,7 +49,7 @@ export namespace Champlain {
         /**
          * Currently the only supported projection
          */
-        MERCATOR,
+        MERCATOR = 0,
     }
 
 
@@ -68,15 +68,15 @@ export namespace Champlain {
         /**
          * No marker can be selected.
          */
-        NONE,
+        NONE = 0,
         /**
          * Only one marker can be selected.
          */
-        SINGLE,
+        SINGLE = 1,
         /**
          * Multiple marker can be selected.
          */
-        MULTIPLE,
+        MULTIPLE = 2,
     }
 
 
@@ -95,20 +95,20 @@ export namespace Champlain {
         /**
          * Initial or undefined state
          */
-        NONE,
+        NONE = 0,
         /**
          * Tile is loading
          */
-        LOADING,
+        LOADING = 1,
         /**
          * Tile is loaded but not yet displayed
          */
-        LOADED,
+        LOADED = 2,
         /**
          * Tile loading finished. Also used to inform map sources
          *     that tile loading has been cancelled.
          */
-        DONE,
+        DONE = 3,
     }
 
 
@@ -127,122 +127,159 @@ export namespace Champlain {
         /**
          * kilometers
          */
-        KM,
+        KM = 0,
         /**
          * miles
          */
-        MILES,
+        MILES = 1,
     }
 
 
     /**
      * The major version of libchamplain (1, if `CHAMPLAIN_VERSION` is 1.2.3)
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default memphis-local
+     */
     const MAP_SOURCE_MEMPHIS_LOCAL: string;
 
+    /**
+     * @default memphis-network
+     */
     const MAP_SOURCE_MEMPHIS_NETWORK: string;
 
     /**
      * Maps for Free Relief
+     * @default mff-relief
      */
     const MAP_SOURCE_MFF_RELIEF: string;
 
     /**
      * OpenAerialMap
      * @deprecated OpenAerialMap isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
+     * @default OpenAerialMap
      */
     const MAP_SOURCE_OAM: string;
 
     /**
      * Mapquest Open Aerial
      * @deprecated Mapquest isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
+     * @default osm-aerialmap
      */
     const MAP_SOURCE_OSM_AERIAL_MAP: string;
 
     /**
      * OpenStreetMap Cycle Map
+     * @default osm-cyclemap
      */
     const MAP_SOURCE_OSM_CYCLE_MAP: string;
 
     /**
      * OpenStreetMap Mapnik
+     * @default osm-mapnik
      */
     const MAP_SOURCE_OSM_MAPNIK: string;
 
     /**
      * @deprecated Mapquest isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
+     * @default osm-mapquest
      */
     const MAP_SOURCE_OSM_MAPQUEST: string;
 
     /**
      * OpenStreetMap Osmarender
      * @deprecated Osmarender isn't available any more and will be removed in the next release. As it doens't exist, it isn't registered to the factory and the 'create' method won't return any source.
+     * @default osm-osmarender
      */
     const MAP_SOURCE_OSM_OSMARENDER: string;
 
     /**
      * OpenStreetMap Transport Map
+     * @default osm-transportmap
      */
     const MAP_SOURCE_OSM_TRANSPORT_MAP: string;
 
     /**
      * OpenWeatherMap clouds layer
+     * @default owm-clouds
      */
     const MAP_SOURCE_OWM_CLOUDS: string;
 
     /**
      * OpenWeatherMap precipitation
+     * @default owm-precipitation
      */
     const MAP_SOURCE_OWM_PRECIPITATION: string;
 
     /**
      * OpenWeatherMap sea level pressure
+     * @default owm-pressure
      */
     const MAP_SOURCE_OWM_PRESSURE: string;
 
     /**
      * OpenWeatherMap temperature
+     * @default owm-temperature
      */
     const MAP_SOURCE_OWM_TEMPERATURE: string;
 
     /**
      * OpenWeatherMap wind
+     * @default owm-wind
      */
     const MAP_SOURCE_OWM_WIND: string;
 
+    /**
+     * @default 85.051129
+     */
     const MAX_LATITUDE: number;
 
+    /**
+     * @default 180.000000
+     */
     const MAX_LONGITUDE: number;
 
     /**
      * The micro version of libchamplain (3, if `CHAMPLAIN_VERSION` is 1.2.3)
+     * @default 22
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version of libchamplain (2, if `CHAMPLAIN_VERSION` is 1.2.3)
+     * @default 12
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 85.051129
+     */
     const MIN_LATITUDE: number;
 
+    /**
+     * @default 180.000000
+     */
     const MIN_LONGITUDE: number;
 
     /**
      * The full version of libchamplain, like 1.2.3
+     * @default 0.120000
      */
     const VERSION: number;
 
     /**
      * Numerically encoded version of libchamplain, like 0x010203
+     * @default 0
      */
     const VERSION_HEX: number;
 
     /**
      * The full version of libchamplain, in string form (suited for
      * string concatenation)
+     * @default 0.12.22
      */
     const VERSION_S: string;
 
@@ -4587,14 +4624,14 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            "button-press": (arg0: Clutter.Event) => void;
+            "button-press": (event: Clutter.Event) => void;
             /**
              * Emitted when button is released. This signal is not emmitted at the end of dragging.
              * @signal
              * @since 0.10
              * @run-last
              */
-            "button-release": (arg0: Clutter.Event) => void;
+            "button-release": (event: Clutter.Event) => void;
             /**
              * Emitted when marker dragging ends (i.e. the button is released at the end
              * of dragging).
@@ -4602,7 +4639,7 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            "drag-finish": (arg0: Clutter.Event) => void;
+            "drag-finish": (event: Clutter.Event) => void;
             /**
              * Emmitted when the marker is dragged by mouse. dx and dy specify by how much
              * the marker has been dragged since last time.
@@ -4610,7 +4647,7 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            "drag-motion": (arg0: number, arg1: number, arg2: Clutter.Event) => void;
+            "drag-motion": (dx: number, dy: number, event: Clutter.Event) => void;
             "notify::draggable": (pspec: GObject.ParamSpec) => void;
             "notify::selectable": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
@@ -7903,7 +7940,7 @@ export namespace Champlain {
              * @since 0.10
              * @run-last
              */
-            "render-complete": (arg0: null, arg1: number, arg2: boolean) => void;
+            "render-complete": (data: null, size: number, error: boolean) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::etag": (pspec: GObject.ParamSpec) => void;
             "notify::fade-in": (pspec: GObject.ParamSpec) => void;

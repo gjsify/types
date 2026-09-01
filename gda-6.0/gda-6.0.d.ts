@@ -28,7 +28,7 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum BatchError {
-        BATCH_CONFLICTING_PARAMETER_ERROR,
+        BATCH_CONFLICTING_PARAMETER_ERROR = 0,
     }
 
 
@@ -36,10 +36,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ConfigError {
-        DSN_NOT_FOUND_ERROR,
-        PERMISSION_ERROR,
-        PROVIDER_NOT_FOUND_ERROR,
-        PROVIDER_CREATION_ERROR,
+        DSN_NOT_FOUND_ERROR = 0,
+        PERMISSION_ERROR = 1,
+        PROVIDER_NOT_FOUND_ERROR = 2,
+        PROVIDER_CREATION_ERROR = 3,
     }
 
 
@@ -47,19 +47,19 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ConnectionError {
-        DSN_NOT_FOUND_ERROR,
-        PROVIDER_NOT_FOUND_ERROR,
-        PROVIDER_ERROR,
-        NO_CNC_SPEC_ERROR,
-        NO_PROVIDER_SPEC_ERROR,
-        OPEN_ERROR,
-        ALREADY_OPENED_ERROR,
-        STATEMENT_TYPE_ERROR,
-        CANT_LOCK_ERROR,
-        TASK_NOT_FOUND_ERROR,
-        CLOSED_ERROR,
-        META_DATA_CONTEXT_ERROR,
-        NO_MAIN_CONTEXT_ERROR,
+        DSN_NOT_FOUND_ERROR = 0,
+        PROVIDER_NOT_FOUND_ERROR = 1,
+        PROVIDER_ERROR = 2,
+        NO_CNC_SPEC_ERROR = 3,
+        NO_PROVIDER_SPEC_ERROR = 4,
+        OPEN_ERROR = 5,
+        ALREADY_OPENED_ERROR = 6,
+        STATEMENT_TYPE_ERROR = 7,
+        CANT_LOCK_ERROR = 8,
+        TASK_NOT_FOUND_ERROR = 9,
+        CLOSED_ERROR = 10,
+        META_DATA_CONTEXT_ERROR = 11,
+        NO_MAIN_CONTEXT_ERROR = 12,
     }
 
 
@@ -67,25 +67,25 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ConnectionEventCode {
-        CONSTRAINT_VIOLATION,
-        RESTRICT_VIOLATION,
-        NOT_NULL_VIOLATION,
-        FOREIGN_KEY_VIOLATION,
-        UNIQUE_VIOLATION,
-        CHECK_VIOLATION,
-        INSUFFICIENT_PRIVILEGES,
-        UNDEFINED_COLUMN,
-        UNDEFINED_FUNCTION,
-        UNDEFINED_TABLE,
-        DUPLICATE_COLUMN,
-        DUPLICATE_DATABASE,
-        DUPLICATE_FUNCTION,
-        DUPLICATE_SCHEMA,
-        DUPLICATE_TABLE,
-        DUPLICATE_ALIAS,
-        DUPLICATE_OBJECT,
-        SYNTAX_ERROR,
-        UNKNOWN,
+        CONSTRAINT_VIOLATION = 0,
+        RESTRICT_VIOLATION = 1,
+        NOT_NULL_VIOLATION = 2,
+        FOREIGN_KEY_VIOLATION = 3,
+        UNIQUE_VIOLATION = 4,
+        CHECK_VIOLATION = 5,
+        INSUFFICIENT_PRIVILEGES = 6,
+        UNDEFINED_COLUMN = 7,
+        UNDEFINED_FUNCTION = 8,
+        UNDEFINED_TABLE = 9,
+        DUPLICATE_COLUMN = 10,
+        DUPLICATE_DATABASE = 11,
+        DUPLICATE_FUNCTION = 12,
+        DUPLICATE_SCHEMA = 13,
+        DUPLICATE_TABLE = 14,
+        DUPLICATE_ALIAS = 15,
+        DUPLICATE_OBJECT = 16,
+        SYNTAX_ERROR = 17,
+        UNKNOWN = 18,
     }
 
 
@@ -93,10 +93,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ConnectionEventType {
-        NOTICE,
-        WARNING,
-        ERROR,
-        COMMAND,
+        NOTICE = 0,
+        WARNING = 1,
+        ERROR = 2,
+        COMMAND = 3,
     }
 
 
@@ -109,87 +109,87 @@ export namespace Gda {
         /**
          * test for aggregates support
          */
-        AGGREGATES,
+        AGGREGATES = 0,
         /**
          * test for BLOBS (binary large objects) support
          */
-        BLOBS,
+        BLOBS = 1,
         /**
          * test for indexes support
          */
-        INDEXES,
+        INDEXES = 2,
         /**
          * test for tables inheritance support
          */
-        INHERITANCE,
+        INHERITANCE = 3,
         /**
          * test for namespaces support
          */
-        NAMESPACES,
+        NAMESPACES = 4,
         /**
          * test for functions support
          */
-        PROCEDURES,
+        PROCEDURES = 5,
         /**
          * test for sequences support
          */
-        SEQUENCES,
+        SEQUENCES = 6,
         /**
          * test for SQL language (even specific to the database) support
          */
-        SQL,
+        SQL = 7,
         /**
          * test for transactions support
          */
-        TRANSACTIONS,
+        TRANSACTIONS = 8,
         /**
          * test for savepoints within transactions support
          */
-        SAVEPOINTS,
+        SAVEPOINTS = 9,
         /**
          * test if savepoints can be removed
          */
-        SAVEPOINTS_REMOVE,
+        SAVEPOINTS_REMOVE = 10,
         /**
          * test for triggers support
          */
-        TRIGGERS,
+        TRIGGERS = 11,
         /**
          * test for updatable cursors support
          */
-        UPDATABLE_CURSOR,
+        UPDATABLE_CURSOR = 12,
         /**
          * test for users support
          */
-        USERS,
+        USERS = 13,
         /**
          * test for views support
          */
-        VIEWS,
+        VIEWS = 14,
         /**
          * test for READ COMMITTED transaction isolation level
          */
-        TRANSACTION_ISOLATION_READ_COMMITTED,
+        TRANSACTION_ISOLATION_READ_COMMITTED = 15,
         /**
          * test for READ UNCOMMITTED transaction isolation level
          */
-        TRANSACTION_ISOLATION_READ_UNCOMMITTED,
+        TRANSACTION_ISOLATION_READ_UNCOMMITTED = 16,
         /**
          * test for REPEATABLE READ transaction isolation level
          */
-        TRANSACTION_ISOLATION_REPEATABLE_READ,
+        TRANSACTION_ISOLATION_REPEATABLE_READ = 17,
         /**
          * test for SERIALIZABLE transaction isolation level
          */
-        TRANSACTION_ISOLATION_SERIALIZABLE,
+        TRANSACTION_ISOLATION_SERIALIZABLE = 18,
         /**
          * test for distributed transactions support
          */
-        XA_TRANSACTIONS,
+        XA_TRANSACTIONS = 19,
         /**
          * not used
          */
-        LAST,
+        LAST = 20,
     }
 
 
@@ -202,27 +202,27 @@ export namespace Gda {
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_NAMESPACES">namespaces</link> (or schemas for PostgreSQL)
          */
-        NAMESPACES,
+        NAMESPACES = 0,
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_TYPES">database types</link>
          */
-        TYPES,
+        TYPES = 1,
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_TABLES">tables</link>
          */
-        TABLES,
+        TABLES = 2,
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_VIEWS">views</link>
          */
-        VIEWS,
+        VIEWS = 3,
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_FIELDS">table's or view's fields</link>
          */
-        FIELDS,
+        FIELDS = 4,
         /**
          * lists the <link linkend="GdaConnectionMetaTypeGDA_CONNECTION_META_INDEXES">table's indexes</link>
          */
-        INDEXES,
+        INDEXES = 5,
     }
 
 
@@ -243,19 +243,19 @@ export namespace Gda {
         /**
          * the connection is closed (default status upon creation)
          */
-        CLOSED,
+        CLOSED = 0,
         /**
          * the connection is currently being opened
          */
-        OPENING,
+        OPENING = 1,
         /**
          * the connection is opened but not currently used
          */
-        IDLE,
+        IDLE = 2,
         /**
          * the connection is opened and currently being used
          */
-        BUSY,
+        BUSY = 3,
     }
 
 
@@ -263,10 +263,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataComparatorError {
-        MISSING_DATA_MODEL_ERROR,
-        COLUMN_TYPES_MISMATCH_ERROR,
-        MODEL_ACCESS_ERROR,
-        USER_CANCELLED_ERROR,
+        MISSING_DATA_MODEL_ERROR = 0,
+        COLUMN_TYPES_MISMATCH_ERROR = 1,
+        MODEL_ACCESS_ERROR = 2,
+        USER_CANCELLED_ERROR = 3,
     }
 
 
@@ -310,9 +310,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataModelHint {
-        START_BATCH_UPDATE,
-        END_BATCH_UPDATE,
-        REFRESH,
+        START_BATCH_UPDATE = 0,
+        END_BATCH_UPDATE = 1,
+        REFRESH = 2,
     }
 
 
@@ -324,15 +324,15 @@ export namespace Gda {
         /**
          * data is exported as an XML structure
          */
-        DATA_ARRAY_XML,
+        DATA_ARRAY_XML = 0,
         /**
          * data is exported as CSV
          */
-        TEXT_SEPARATED,
+        TEXT_SEPARATED = 1,
         /**
          * data is exported as a human readable table
          */
-        TEXT_TABLE,
+        TEXT_TABLE = 2,
     }
 
 
@@ -340,7 +340,7 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataModelIterError {
-        DATA_MODEL_ITER_COLUMN_OUT_OF_RANGE_ERROR,
+        DATA_MODEL_ITER_COLUMN_OUT_OF_RANGE_ERROR = 0,
     }
 
 
@@ -349,11 +349,11 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataPivotAggregate {
-        AVG,
-        COUNT,
-        MAX,
-        MIN,
-        SUM,
+        AVG = 0,
+        COUNT = 1,
+        MAX = 2,
+        MIN = 3,
+        SUM = 4,
     }
 
 
@@ -362,11 +362,11 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataPivotError {
-        INTERNAL_ERROR,
-        SOURCE_MODEL_ERROR,
-        FIELD_FORMAT_ERROR,
-        USAGE_ERROR,
-        OVERFLOW_ERROR,
+        INTERNAL_ERROR = 0,
+        SOURCE_MODEL_ERROR = 1,
+        FIELD_FORMAT_ERROR = 2,
+        USAGE_ERROR = 3,
+        OVERFLOW_ERROR = 4,
     }
 
 
@@ -375,8 +375,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataPivotFieldType {
-        ROW,
-        COLUMN,
+        ROW = 0,
+        COLUMN = 1,
     }
 
 
@@ -384,11 +384,11 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataProxyError {
-        COMMIT_ERROR,
-        COMMIT_CANCELLED,
-        READ_ONLY_VALUE,
-        READ_ONLY_ROW,
-        FILTER_ERROR,
+        COMMIT_ERROR = 0,
+        COMMIT_CANCELLED = 1,
+        READ_ONLY_VALUE = 2,
+        READ_ONLY_ROW = 3,
+        FILTER_ERROR = 4,
     }
 
 
@@ -401,11 +401,11 @@ export namespace Gda {
         /**
          * only primary key fields are used
          */
-        PK,
+        PK = 0,
         /**
          * all the columns of the tables are used
          */
-        ALL_COLUMNS,
+        ALL_COLUMNS = 1,
     }
 
 
@@ -413,12 +413,12 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DataSelectError {
-        MODIFICATION_STATEMENT_ERROR,
-        MISSING_MODIFICATION_STATEMENT_ERROR,
-        CONNECTION_ERROR,
-        ACCESS_ERROR,
-        SQL_ERROR,
-        SAFETY_LOCKED_ERROR,
+        MODIFICATION_STATEMENT_ERROR = 0,
+        MISSING_MODIFICATION_STATEMENT_ERROR = 1,
+        CONNECTION_ERROR = 2,
+        ACCESS_ERROR = 3,
+        SQL_ERROR = 4,
+        SAFETY_LOCKED_ERROR = 5,
     }
 
 
@@ -430,44 +430,44 @@ export namespace Gda {
         /**
          * Context is `null`. Should not be `null` for normal operation.
          */
-        CONTEXT_NULL,
+        CONTEXT_NULL = 0,
         /**
          * #xmlDocPtr is `null`.
          */
-        DOC_NULL,
+        DOC_NULL = 1,
         /**
          * Sets if xml check fails. Xml file structure doesn't match with DTD
          * file
          */
-        INVALID_XML,
+        INVALID_XML = 2,
         /**
          * Sets if the used schema is invalid.
          */
-        INVALID_SCHEMA,
+        INVALID_SCHEMA = 3,
         /**
          * Sets if server operation is `null`.
          */
-        SERVER_OPERATION,
+        SERVER_OPERATION = 4,
         /**
          * Sets if xml file is not readable
          */
-        FILE_READ,
+        FILE_READ = 5,
         /**
          * Sets if an error with context during parsing an xml file
          */
-        PARSE_CONTEXT,
+        PARSE_CONTEXT = 6,
         /**
          * Sets if parsing reports an error
          */
-        PARSE,
+        PARSE = 7,
         /**
          * If set, error with parse chunk algorithm.
          */
-        PARSE_CHUNK,
+        PARSE_CHUNK = 8,
         /**
          * Connection is not open.
          */
-        CONNECTION_CLOSED,
+        CONNECTION_CLOSED = 9,
     }
 
 
@@ -479,11 +479,11 @@ export namespace Gda {
         /**
          * Set if wrong column type was given in the xml file.
          */
-        TYPE,
+        TYPE = 0,
         /**
          * Wrong operation requested
          */
-        WRONG_OPERATION,
+        WRONG_OPERATION = 1,
     }
 
 
@@ -495,23 +495,23 @@ export namespace Gda {
         /**
          * Action is not specified.
          */
-        NO_ACTION,
+        NO_ACTION = 0,
         /**
          * Action value is set to `null`
          */
-        SET_NULL,
+        SET_NULL = 1,
         /**
          * Value is set to "RESTRICT"
          */
-        RESTRICT,
+        RESTRICT = 2,
         /**
          * Value is set to default behavior
          */
-        SET_DEFAULT,
+        SET_DEFAULT = 3,
         /**
          * Value is set to cascade
          */
-        CASCADE,
+        CASCADE = 4,
     }
 
 
@@ -519,8 +519,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DbIndexError {
-        CONNECTION_NOT_OPENED,
-        SERVER_OPERATION,
+        CONNECTION_NOT_OPENED = 0,
+        SERVER_OPERATION = 1,
     }
 
 
@@ -532,11 +532,11 @@ export namespace Gda {
         /**
          * ascending sorting
          */
-        ASC,
+        ASC = 0,
         /**
          * descending sorting
          */
-        DESC,
+        DESC = 1,
     }
 
 
@@ -547,15 +547,15 @@ export namespace Gda {
         /**
          * Table doesn't contain columns
          */
-        COLUMN_EMPTY,
+        COLUMN_EMPTY = 0,
         /**
          * Closed connection was passed as parameter
          */
-        CONNECTION_NOT_OPENED,
+        CONNECTION_NOT_OPENED = 1,
         /**
          * Error related to {@link Gda.ServerOperation}
          */
-        SERVER_OPERATION,
+        SERVER_OPERATION = 2,
     }
 
 
@@ -563,8 +563,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DbViewRefAction {
-        RESTRICT,
-        CASCADE,
+        RESTRICT = 0,
+        CASCADE = 1,
     }
 
 
@@ -590,9 +590,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum DiffType {
-        ADD_ROW,
-        REMOVE_ROW,
-        MODIFY_ROW,
+        ADD_ROW = 0,
+        REMOVE_ROW = 1,
+        MODIFY_ROW = 2,
     }
 
 
@@ -607,9 +607,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ForeignKeyMatch {
-        NONE,
-        FULL,
-        PARTIAL,
+        NONE = 0,
+        FULL = 1,
+        PARTIAL = 2,
     }
 
 
@@ -624,12 +624,12 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ForeignKeyRule {
-        NONE,
-        CASCADE,
-        SET_NULL,
-        SET_DEFAULT,
-        RESTRICT,
-        NO_ACTION,
+        NONE = 0,
+        CASCADE = 1,
+        SET_NULL = 2,
+        SET_DEFAULT = 3,
+        RESTRICT = 4,
+        NO_ACTION = 5,
     }
 
 
@@ -637,10 +637,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum HolderError {
-        STRING_CONVERSION_ERROR,
-        VALUE_TYPE_ERROR,
-        VALUE_NULL_ERROR,
-        VALUE_CHANGE_ERROR,
+        STRING_CONVERSION_ERROR = 0,
+        VALUE_TYPE_ERROR = 1,
+        VALUE_NULL_ERROR = 2,
+        VALUE_CHANGE_ERROR = 3,
     }
 
 
@@ -652,15 +652,15 @@ export namespace Gda {
         /**
          * unknown type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * represents a table
          */
-        TABLE,
+        TABLE = 1,
         /**
          * represents a view
          */
-        VIEW,
+        VIEW = 2,
     }
 
 
@@ -673,31 +673,31 @@ export namespace Gda {
         /**
          * unspecified policy
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * not enforced policy
          */
-        NONE,
+        NONE = 1,
         /**
          * return an error, no action taken
          */
-        NO_ACTION,
+        NO_ACTION = 2,
         /**
          * same as `GDA_META_FOREIGN_KEY_NO_ACTION`, not deferrable
          */
-        RESTRICT,
+        RESTRICT = 3,
         /**
          * policy is to delete any rows referencing the deleted row, or update the value of the referencing column to the new value of the referenced column, respectively
          */
-        CASCADE,
+        CASCADE = 4,
         /**
          * policy is to set the referencing column to NULL
          */
-        SET_NULL,
+        SET_NULL = 5,
         /**
          * policy is to set the referencing column to its default value
          */
-        SET_DEFAULT,
+        SET_DEFAULT = 6,
     }
 
 
@@ -709,11 +709,11 @@ export namespace Gda {
         /**
          * sort alphabetically
          */
-        ALHAPETICAL,
+        ALHAPETICAL = 0,
         /**
          * sort by dependencies
          */
-        DEPENDENCIES,
+        DEPENDENCIES = 1,
     }
 
 
@@ -721,9 +721,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum MetaStoreChangeType {
-        ADD,
-        REMOVE,
-        MODIFY,
+        ADD = 0,
+        REMOVE = 1,
+        MODIFY = 2,
     }
 
 
@@ -731,18 +731,18 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum MetaStoreError {
-        INCORRECT_SCHEMA_ERROR,
-        UNSUPPORTED_PROVIDER_ERROR,
-        INTERNAL_ERROR,
-        META_CONTEXT_ERROR,
-        MODIFY_CONTENTS_ERROR,
-        EXTRACT_SQL_ERROR,
-        ATTRIBUTE_NOT_FOUND_ERROR,
-        ATTRIBUTE_ERROR,
-        SCHEMA_OBJECT_NOT_FOUND_ERROR,
-        SCHEMA_OBJECT_CONFLICT_ERROR,
-        SCHEMA_OBJECT_DESCR_ERROR,
-        TRANSACTION_ALREADY_STARTED_ERROR,
+        INCORRECT_SCHEMA_ERROR = 0,
+        UNSUPPORTED_PROVIDER_ERROR = 1,
+        INTERNAL_ERROR = 2,
+        META_CONTEXT_ERROR = 3,
+        MODIFY_CONTENTS_ERROR = 4,
+        EXTRACT_SQL_ERROR = 5,
+        ATTRIBUTE_NOT_FOUND_ERROR = 6,
+        ATTRIBUTE_ERROR = 7,
+        SCHEMA_OBJECT_NOT_FOUND_ERROR = 8,
+        SCHEMA_OBJECT_CONFLICT_ERROR = 9,
+        SCHEMA_OBJECT_DESCR_ERROR = 10,
+        TRANSACTION_ALREADY_STARTED_ERROR = 11,
     }
 
 
@@ -750,10 +750,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum MetaStructError {
-        UNKNOWN_OBJECT_ERROR,
-        DUPLICATE_OBJECT_ERROR,
-        INCOHERENCE_ERROR,
-        XML_ERROR,
+        UNKNOWN_OBJECT_ERROR = 0,
+        DUPLICATE_OBJECT_ERROR = 1,
+        INCOHERENCE_ERROR = 2,
+        XML_ERROR = 3,
     }
 
 
@@ -777,9 +777,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerOperationError {
-        OBJECT_NAME_ERROR,
-        INCORRECT_VALUE_ERROR,
-        XML_ERROR,
+        OBJECT_NAME_ERROR = 0,
+        INCORRECT_VALUE_ERROR = 1,
+        XML_ERROR = 2,
     }
 
 
@@ -787,9 +787,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerOperationNodeStatus {
-        OPTIONAL,
-        REQUIRED,
-        UNKNOWN,
+        OPTIONAL = 0,
+        REQUIRED = 1,
+        UNKNOWN = 2,
     }
 
 
@@ -797,13 +797,13 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerOperationNodeType {
-        PARAMLIST,
-        DATA_MODEL,
-        PARAM,
-        SEQUENCE,
-        SEQUENCE_ITEM,
-        DATA_MODEL_COLUMN,
-        UNKNOWN,
+        PARAMLIST = 0,
+        DATA_MODEL = 1,
+        PARAM = 2,
+        SEQUENCE = 3,
+        SEQUENCE_ITEM = 4,
+        DATA_MODEL_COLUMN = 5,
+        UNKNOWN = 6,
     }
 
 
@@ -811,25 +811,25 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerOperationType {
-        CREATE_DB,
-        DROP_DB,
-        CREATE_TABLE,
-        DROP_TABLE,
-        RENAME_TABLE,
-        ADD_COLUMN,
-        DROP_COLUMN,
-        RENAME_COLUMN,
-        CREATE_INDEX,
-        DROP_INDEX,
-        RENAME_INDEX,
-        CREATE_VIEW,
-        DROP_VIEW,
-        COMMENT_TABLE,
-        COMMENT_COLUMN,
-        CREATE_USER,
-        ALTER_USER,
-        DROP_USER,
-        LAST,
+        CREATE_DB = 0,
+        DROP_DB = 1,
+        CREATE_TABLE = 2,
+        DROP_TABLE = 3,
+        RENAME_TABLE = 4,
+        ADD_COLUMN = 5,
+        DROP_COLUMN = 6,
+        RENAME_COLUMN = 7,
+        CREATE_INDEX = 8,
+        DROP_INDEX = 9,
+        RENAME_INDEX = 10,
+        CREATE_VIEW = 11,
+        DROP_VIEW = 12,
+        COMMENT_TABLE = 13,
+        COMMENT_COLUMN = 14,
+        CREATE_USER = 15,
+        ALTER_USER = 16,
+        DROP_USER = 17,
+        LAST = 18,
     }
 
 
@@ -837,20 +837,20 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerProviderError {
-        METHOD_NON_IMPLEMENTED_ERROR,
-        PREPARE_STMT_ERROR,
-        EMPTY_STMT_ERROR,
-        MISSING_PARAM_ERROR,
-        STATEMENT_EXEC_ERROR,
-        OPERATION_ERROR,
-        INTERNAL_ERROR,
-        BUSY_ERROR,
-        NON_SUPPORTED_ERROR,
-        SERVER_VERSION_ERROR,
-        DATA_ERROR,
-        DEFAULT_VALUE_HANDLING_ERROR,
-        MISUSE_ERROR,
-        FILE_NOT_FOUND_ERROR,
+        METHOD_NON_IMPLEMENTED_ERROR = 0,
+        PREPARE_STMT_ERROR = 1,
+        EMPTY_STMT_ERROR = 2,
+        MISSING_PARAM_ERROR = 3,
+        STATEMENT_EXEC_ERROR = 4,
+        OPERATION_ERROR = 5,
+        INTERNAL_ERROR = 6,
+        BUSY_ERROR = 7,
+        NON_SUPPORTED_ERROR = 8,
+        SERVER_VERSION_ERROR = 9,
+        DATA_ERROR = 10,
+        DEFAULT_VALUE_HANDLING_ERROR = 11,
+        MISUSE_ERROR = 12,
+        FILE_NOT_FOUND_ERROR = 13,
     }
 
 
@@ -859,10 +859,10 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerProviderFunctionsType {
-        BASE,
-        META,
-        XA,
-        MAX,
+        BASE = 0,
+        META = 1,
+        XA = 2,
+        MAX = 3,
     }
 
 
@@ -870,52 +870,52 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum ServerProviderMetaType {
-        _INFO,
-        _BTYPES,
-        _UDT,
-        UDT,
-        _UDT_COLS,
-        UDT_COLS,
-        _ENUMS,
-        ENUMS,
-        _DOMAINS,
-        DOMAINS,
-        _CONSTRAINTS_DOM,
-        CONSTRAINTS_DOM,
-        _EL_TYPES,
-        EL_TYPES,
-        _COLLATIONS,
-        COLLATIONS,
-        _CHARACTER_SETS,
-        CHARACTER_SETS,
-        _SCHEMATA,
-        SCHEMATA,
-        _TABLES_VIEWS,
-        TABLES_VIEWS,
-        _COLUMNS,
-        COLUMNS,
-        _VIEW_COLS,
-        VIEW_COLS,
-        _CONSTRAINTS_TAB,
-        CONSTRAINTS_TAB,
-        _CONSTRAINTS_REF,
-        CONSTRAINTS_REF,
-        _KEY_COLUMNS,
-        KEY_COLUMNS,
-        _CHECK_COLUMNS,
-        CHECK_COLUMNS,
-        _TRIGGERS,
-        TRIGGERS,
-        _ROUTINES,
-        ROUTINES,
-        _ROUTINE_COL,
-        ROUTINE_COL,
-        _ROUTINE_PAR,
-        ROUTINE_PAR,
-        _INDEXES_TAB,
-        INDEXES_TAB,
-        _INDEX_COLS,
-        INDEX_COLS,
+        _INFO = 0,
+        _BTYPES = 1,
+        _UDT = 2,
+        UDT = 3,
+        _UDT_COLS = 4,
+        UDT_COLS = 5,
+        _ENUMS = 6,
+        ENUMS = 7,
+        _DOMAINS = 8,
+        DOMAINS = 9,
+        _CONSTRAINTS_DOM = 10,
+        CONSTRAINTS_DOM = 11,
+        _EL_TYPES = 12,
+        EL_TYPES = 13,
+        _COLLATIONS = 14,
+        COLLATIONS = 15,
+        _CHARACTER_SETS = 16,
+        CHARACTER_SETS = 17,
+        _SCHEMATA = 18,
+        SCHEMATA = 19,
+        _TABLES_VIEWS = 20,
+        TABLES_VIEWS = 21,
+        _COLUMNS = 22,
+        COLUMNS = 23,
+        _VIEW_COLS = 24,
+        VIEW_COLS = 25,
+        _CONSTRAINTS_TAB = 26,
+        CONSTRAINTS_TAB = 27,
+        _CONSTRAINTS_REF = 28,
+        CONSTRAINTS_REF = 29,
+        _KEY_COLUMNS = 30,
+        KEY_COLUMNS = 31,
+        _CHECK_COLUMNS = 32,
+        CHECK_COLUMNS = 33,
+        _TRIGGERS = 34,
+        TRIGGERS = 35,
+        _ROUTINES = 36,
+        ROUTINES = 37,
+        _ROUTINE_COL = 38,
+        ROUTINE_COL = 39,
+        _ROUTINE_PAR = 40,
+        ROUTINE_PAR = 41,
+        _INDEXES_TAB = 42,
+        INDEXES_TAB = 43,
+        _INDEX_COLS = 44,
+        INDEX_COLS = 45,
     }
 
 
@@ -923,11 +923,11 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SetError {
-        XML_SPEC_ERROR,
-        HOLDER_NOT_FOUND_ERROR,
-        INVALID_ERROR,
-        READ_ONLY_ERROR,
-        IMPLEMENTATION_ERROR,
+        XML_SPEC_ERROR = 0,
+        HOLDER_NOT_FOUND_ERROR = 1,
+        INVALID_ERROR = 2,
+        READ_ONLY_ERROR = 3,
+        IMPLEMENTATION_ERROR = 4,
     }
 
 
@@ -939,95 +939,95 @@ export namespace Gda {
         /**
          * structure is a {@link Gda.SqlStatementSelect}
          */
-        STMT_SELECT,
+        STMT_SELECT = 0,
         /**
          * structure is a {@link Gda.SqlStatementInsert}
          */
-        STMT_INSERT,
+        STMT_INSERT = 1,
         /**
          * structure is a {@link Gda.SqlStatementUpdate}
          */
-        STMT_UPDATE,
+        STMT_UPDATE = 2,
         /**
          * structure is a {@link Gda.SqlStatementDelete}
          */
-        STMT_DELETE,
+        STMT_DELETE = 3,
         /**
          * structure is a {@link Gda.SqlStatementCompound}
          */
-        STMT_COMPOUND,
+        STMT_COMPOUND = 4,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_BEGIN,
+        STMT_BEGIN = 5,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_ROLLBACK,
+        STMT_ROLLBACK = 6,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_COMMIT,
+        STMT_COMMIT = 7,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_SAVEPOINT,
+        STMT_SAVEPOINT = 8,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_ROLLBACK_SAVEPOINT,
+        STMT_ROLLBACK_SAVEPOINT = 9,
         /**
          * structure is a {@link Gda.SqlStatementTransaction}
          */
-        STMT_DELETE_SAVEPOINT,
+        STMT_DELETE_SAVEPOINT = 10,
         /**
          * structure is a {@link Gda.SqlStatementUnknown}
          */
-        STMT_UNKNOWN,
+        STMT_UNKNOWN = 11,
         /**
          * structure is a {@link Gda.SqlExpr}
          */
-        EXPR,
+        EXPR = 500,
         /**
          * structure is a {@link Gda.SqlField}
          */
-        SQL_FIELD,
+        SQL_FIELD = 501,
         /**
          * structure is a {@link Gda.SqlTable}
          */
-        SQL_TABLE,
+        SQL_TABLE = 502,
         /**
          * structure is a {@link Gda.SqlFunction}
          */
-        SQL_FUNCTION,
+        SQL_FUNCTION = 503,
         /**
          * structure is a {@link Gda.SqlOperation}
          */
-        SQL_OPERATION,
+        SQL_OPERATION = 504,
         /**
          * structure is a {@link Gda.SqlCase}
          */
-        SQL_CASE,
+        SQL_CASE = 505,
         /**
          * structure is a {@link Gda.SqlSelectField}
          */
-        SQL_SELECT_FIELD,
+        SQL_SELECT_FIELD = 506,
         /**
          * structure is a {@link Gda.SqlSelectTarget}
          */
-        SQL_SELECT_TARGET,
+        SQL_SELECT_TARGET = 507,
         /**
          * structure is a {@link Gda.SqlSelectJoin}
          */
-        SQL_SELECT_JOIN,
+        SQL_SELECT_JOIN = 508,
         /**
          * structure is a {@link Gda.SqlSelectFrom}
          */
-        SQL_SELECT_FROM,
+        SQL_SELECT_FROM = 509,
         /**
          * structure is a {@link Gda.SqlSelectOrder}
          */
-        SQL_SELECT_ORDER,
+        SQL_SELECT_ORDER = 510,
     }
 
 
@@ -1035,8 +1035,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlBuilderError {
-        WRONG_TYPE_ERROR,
-        MISUSE_ERROR,
+        WRONG_TYPE_ERROR = 0,
+        MISUSE_ERROR = 1,
     }
 
 
@@ -1064,39 +1064,39 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlOperatorType {
-        AND,
-        OR,
-        EQ,
-        IS,
-        LIKE,
-        BETWEEN,
-        GT,
-        LT,
-        GEQ,
-        LEQ,
-        DIFF,
-        REGEXP,
-        REGEXP_CI,
-        NOT_REGEXP,
-        NOT_REGEXP_CI,
-        SIMILAR,
-        ISNULL,
-        ISNOTNULL,
-        NOT,
-        IN,
-        NOTIN,
-        CONCAT,
-        PLUS,
-        MINUS,
-        STAR,
-        DIV,
-        REM,
-        BITAND,
-        BITOR,
-        BITNOT,
-        ILIKE,
-        NOTLIKE,
-        NOTILIKE,
+        AND = 0,
+        OR = 1,
+        EQ = 2,
+        IS = 3,
+        LIKE = 4,
+        BETWEEN = 5,
+        GT = 6,
+        LT = 7,
+        GEQ = 8,
+        LEQ = 9,
+        DIFF = 10,
+        REGEXP = 11,
+        REGEXP_CI = 12,
+        NOT_REGEXP = 13,
+        NOT_REGEXP_CI = 14,
+        SIMILAR = 15,
+        ISNULL = 16,
+        ISNOTNULL = 17,
+        NOT = 18,
+        IN = 19,
+        NOTIN = 20,
+        CONCAT = 21,
+        PLUS = 22,
+        MINUS = 23,
+        STAR = 24,
+        DIV = 25,
+        REM = 26,
+        BITAND = 27,
+        BITOR = 28,
+        BITNOT = 29,
+        ILIKE = 30,
+        NOTLIKE = 31,
+        NOTILIKE = 32,
     }
 
 
@@ -1104,9 +1104,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlParserError {
-        SYNTAX_ERROR,
-        OVERFLOW_ERROR,
-        EMPTY_SQL_ERROR,
+        SYNTAX_ERROR = 0,
+        OVERFLOW_ERROR = 1,
+        EMPTY_SQL_ERROR = 2,
     }
 
 
@@ -1114,11 +1114,11 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlParserFlavour {
-        STANDARD,
-        SQLITE,
-        MYSQL,
-        ORACLE,
-        POSTGRESQL,
+        STANDARD = 0,
+        SQLITE = 1,
+        MYSQL = 2,
+        ORACLE = 3,
+        POSTGRESQL = 4,
     }
 
 
@@ -1126,8 +1126,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlParserMode {
-        PARSE,
-        DELIMIT,
+        PARSE = 0,
+        DELIMIT = 1,
     }
 
 
@@ -1135,12 +1135,12 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlSelectJoinType {
-        CROSS,
-        NATURAL,
-        INNER,
-        LEFT,
-        RIGHT,
-        FULL,
+        CROSS = 0,
+        NATURAL = 1,
+        INNER = 2,
+        LEFT = 3,
+        RIGHT = 4,
+        FULL = 5,
     }
 
 
@@ -1148,12 +1148,12 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum SqlStatementCompoundType {
-        UNION,
-        UNION_ALL,
-        INTERSECT,
-        INTERSECT_ALL,
-        EXCEPT,
-        EXCEPT_ALL,
+        UNION = 0,
+        UNION_ALL = 1,
+        INTERSECT = 2,
+        INTERSECT_ALL = 3,
+        EXCEPT = 4,
+        EXCEPT_ALL = 5,
     }
 
 
@@ -1165,55 +1165,55 @@ export namespace Gda {
         /**
          * a SELECT statement
          */
-        SELECT,
+        SELECT = 0,
         /**
          * an INSERT statement
          */
-        INSERT,
+        INSERT = 1,
         /**
          * an UPDATE statement
          */
-        UPDATE,
+        UPDATE = 2,
         /**
          * a DELETE statement
          */
-        DELETE,
+        DELETE = 3,
         /**
          * a compound statement: multiple SELECT statements grouped together using an operator
          */
-        COMPOUND,
+        COMPOUND = 4,
         /**
          * start of transaction statement
          */
-        BEGIN,
+        BEGIN = 5,
         /**
          * transaction abort statement
          */
-        ROLLBACK,
+        ROLLBACK = 6,
         /**
          * transaction commit statement
          */
-        COMMIT,
+        COMMIT = 7,
         /**
          * new savepoint definition statement
          */
-        SAVEPOINT,
+        SAVEPOINT = 8,
         /**
          * return to savepoint statement
          */
-        ROLLBACK_SAVEPOINT,
+        ROLLBACK_SAVEPOINT = 9,
         /**
          * savepoint deletion statement
          */
-        DELETE_SAVEPOINT,
+        DELETE_SAVEPOINT = 10,
         /**
          * unknown statement, only identifies variables
          */
-        UNKNOWN,
+        UNKNOWN = 11,
         /**
          * not used
          */
-        NONE,
+        NONE = 12,
     }
 
 
@@ -1221,13 +1221,13 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum StatementError {
-        PARSE_ERROR,
-        SYNTAX_ERROR,
-        NO_CNC_ERROR,
-        CNC_CLOSED_ERROR,
-        EXEC_ERROR,
-        PARAM_TYPE_ERROR,
-        PARAM_ERROR,
+        PARSE_ERROR = 0,
+        SYNTAX_ERROR = 1,
+        NO_CNC_ERROR = 2,
+        CNC_CLOSED_ERROR = 3,
+        EXEC_ERROR = 4,
+        PARAM_TYPE_ERROR = 5,
+        PARAM_ERROR = 6,
     }
 
 
@@ -1239,11 +1239,11 @@ export namespace Gda {
         /**
          * isolation level defined by the server
          */
-        SERVER_DEFAULT,
-        READ_COMMITTED,
-        READ_UNCOMMITTED,
-        REPEATABLE_READ,
-        SERIALIZABLE,
+        SERVER_DEFAULT = 0,
+        READ_COMMITTED = 1,
+        READ_UNCOMMITTED = 2,
+        REPEATABLE_READ = 3,
+        SERIALIZABLE = 4,
     }
 
 
@@ -1251,9 +1251,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum TransactionStatusEventType {
-        SAVEPOINT,
-        SQL,
-        SUB_TRANSACTION,
+        SAVEPOINT = 0,
+        SQL = 1,
+        SUB_TRANSACTION = 2,
     }
 
 
@@ -1261,8 +1261,8 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum TransactionStatusState {
-        OK,
-        FAILED,
+        OK = 0,
+        FAILED = 1,
     }
 
 
@@ -1270,7 +1270,7 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum TreeError {
-        TREE_UNKNOWN_ERROR,
+        TREE_UNKNOWN_ERROR = 0,
     }
 
 
@@ -1278,7 +1278,7 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum TreeManagerError {
-        TREE_MANAGER_UNKNOWN_ERROR,
+        TREE_MANAGER_UNKNOWN_ERROR = 0,
     }
 
 
@@ -1286,7 +1286,7 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum TreeNodeError {
-        TREE_NODE_UNKNOWN_ERROR,
+        TREE_NODE_UNKNOWN_ERROR = 0,
     }
 
 
@@ -1320,9 +1320,9 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum XaTransactionError {
-        ALREADY_REGISTERED_ERROR,
-        DTP_NOT_SUPPORTED_ERROR,
-        CONNECTION_BRANCH_LENGTH_ERROR,
+        ALREADY_REGISTERED_ERROR = 0,
+        DTP_NOT_SUPPORTED_ERROR = 1,
+        CONNECTION_BRANCH_LENGTH_ERROR = 2,
     }
 
 
@@ -1330,56 +1330,75 @@ export namespace Gda {
      * @gir-type Enum
      */
     enum XaType {
-        START,
-        END,
-        PREPARE,
-        COMMIT,
-        ROLLBACK,
-        RECOVER,
+        START = 0,
+        END = 1,
+        PREPARE = 2,
+        COMMIT = 3,
+        ROLLBACK = 4,
+        RECOVER = 5,
     }
 
 
     /**
      * The corresponding attribute specifies if the object it refers to is auto incremented (value has a G_TYPE_BOOLEAN type).
+     * @default __gda_attr_autoinc
      */
     const ATTRIBUTE_AUTO_INCREMENT: string;
 
     /**
      * The corresponding attribute is the description of the object it refers to (value has a G_TYPE_STRING type).
+     * @default __gda_attr_descr
      */
     const ATTRIBUTE_DESCRIPTION: string;
 
     /**
      * The corresponding attribute specifies if the object it refers to has its value to default (value has a G_TYPE_BOOLEAN type).
+     * @default __gda_attr_is_default
      */
     const ATTRIBUTE_IS_DEFAULT: string;
 
     /**
      * The corresponding attribute is the name of the object it refers to (value has a G_TYPE_STRING type).
+     * @default __gda_attr_name
      */
     const ATTRIBUTE_NAME: string;
 
     /**
      * The corresponding attribute is the number of significant digits of the object it refers to (value has a G_TYPE_INT type).
+     * @default __gda_attr_numeric_precision
      */
     const ATTRIBUTE_NUMERIC_PRECISION: string;
 
     /**
      * The corresponding attribute is the number of significant digits to the right of the decimal point of the object it refers to (value has a G_TYPE_INT type).
+     * @default __gda_attr_numeric_scale
      */
     const ATTRIBUTE_NUMERIC_SCALE: string;
 
     /**
      * This attribute, if `true` specifies that a tree node may or may not have any children nodes (value has a G_TYPE_BOOLEAN type).
+     * @default __gda_attr_tnuchild
      */
     const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string;
 
+    /**
+     * @default AUTO_INCREMENT
+     */
     const EXTRA_AUTO_INCREMENT: string;
 
+    /**
+     * @default HY000
+     */
     const SQLSTATE_GENERAL_ERROR: string;
 
+    /**
+     * @default 00000
+     */
     const SQLSTATE_NO_ERROR: string;
 
+    /**
+     * @default 86400
+     */
     const TIMEZONE_INVALID: number;
 
     /**
@@ -1424,6 +1443,7 @@ export namespace Gda {
      * @param select_stmt a SELECT {@link Gda.Statement} (compound statements not handled)
      * @param require_pk TRUE if the created statement have to use a primary key
      * @returns `true` if no error occurred
+     * @throws GLib.Error
      */
     function compute_dml_statements(cnc: Connection, select_stmt: Statement, require_pk: boolean): [boolean, Statement | null, Statement | null, Statement | null];
 
@@ -1433,6 +1453,7 @@ export namespace Gda {
      * and before being usable, one needs to add some fields to actually select.
      * @param update_stmt an UPDATE statement
      * @returns a new {@link Gda.Statement} if no error occurred, or `null` otherwise
+     * @throws GLib.Error
      */
     function compute_select_statement_from_update(update_stmt: Statement): SqlStatement | null;
 
@@ -1443,6 +1464,7 @@ export namespace Gda {
      * @param mtable a {@link Gda.MetaTable}
      * @param require_pk set to TRUE if a primary key ir required
      * @returns a new {@link Gda.SqlExpr}, or `null` if an error occurred.
+     * @throws GLib.Error
      */
     function compute_unique_table_row_condition(stsel: SqlStatementSelect, mtable: MetaTable, require_pk: boolean): SqlExpr | null;
 
@@ -1459,6 +1481,7 @@ export namespace Gda {
      * @param require_pk set to `true` if a primary key is required
      * @returns a new {@link Gda.SqlExpr}, or `null` if an error occurred.
      * @since 4.0.3
+     * @throws GLib.Error
      */
     function compute_unique_table_row_condition_with_cnc(cnc: Connection | null, stsel: SqlStatementSelect, mtable: MetaTable, require_pk: boolean): SqlExpr | null;
 
@@ -1688,6 +1711,7 @@ export namespace Gda {
      * @param params a {@link Gda.Set} to be used as parameters when executing `stmt`
      * @returns the modified `sqlst` statement, or `null` if an error occurred
      * @since 4.2.9
+     * @throws GLib.Error
      */
     function rewrite_sql_statement_for_null_parameters(sqlst: SqlStatement, params: Set): [SqlStatement | null, boolean];
 
@@ -1716,6 +1740,7 @@ export namespace Gda {
      * @param params a {@link Gda.Set} to be used as parameters when executing `stmt`
      * @returns `true` if `stmt` needs to be transformed to handle NULL parameters, and `false` otherwise
      * @since 4.2.9
+     * @throws GLib.Error
      */
     function rewrite_statement_for_null_parameters(stmt: Statement, params: Set): [boolean, Statement | null];
 
@@ -1750,6 +1775,7 @@ export namespace Gda {
      * empty (no row) data model. This is use dy database providers' implementations.
      * @param stmt a SELECT {@link Gda.Statement}
      * @returns a new {@link Gda.Statement}
+     * @throws GLib.Error
      */
     function select_alter_select_for_empty(stmt: Statement): Statement;
 
@@ -2096,6 +2122,7 @@ export namespace Gda {
      * @param node an xmlNodePtr with a &lt;parameter&gt; tag
      * @param sources a list of {@link Gda.DataModel}
      * @returns `true` if no error occurred
+     * @throws GLib.Error
      */
     function utility_holder_load_attributes(holder: Holder, node: libxml2.NodePtr, sources: DataModel[] | null): boolean;
 
@@ -2538,14 +2565,14 @@ export namespace Gda {
      * @gir-type Flags
      */
     enum ColumnAttributes {
-        NONE,
-        PRIMARY_KEY,
-        UNIQUE,
-        FOREIGN_KEY,
-        CHECK,
-        HAVE_DEFAULT,
-        CAN_BE_NULL,
-        AUTO_INCREMENT,
+        NONE = 1,
+        PRIMARY_KEY = 2,
+        UNIQUE = 4,
+        FOREIGN_KEY = 8,
+        CHECK = 16,
+        HAVE_DEFAULT = 32,
+        CAN_BE_NULL = 64,
+        AUTO_INCREMENT = 128,
     }
 
 
@@ -2578,24 +2605,24 @@ export namespace Gda {
         /**
          * no specific aspect
          */
-        NONE,
+        NONE = 0,
         /**
          * this flag specifies that the connection to open should be in a read-only mode
          *                                    (this policy is not correctly enforced at the moment)
          */
-        READ_ONLY,
+        READ_ONLY = 1,
         /**
          * this flag specifies that SQL identifiers submitted as input
          *                                      to Libgda have to keep their case sensitivity.
          */
-        SQL_IDENTIFIERS_CASE_SENSITIVE,
+        SQL_IDENTIFIERS_CASE_SENSITIVE = 2,
         /**
          * this flags specifies that if a {@link Gda.MetaStore} has been associated
          *                                     to the connection, then it is kept up to date with the evolutions in the
          *                                     database's structure. Be aware however that there are some drawbacks
          *                                     explained below.
          */
-        AUTO_META_DATA,
+        AUTO_META_DATA = 16,
     }
 
 
@@ -2603,14 +2630,14 @@ export namespace Gda {
      * @gir-type Flags
      */
     enum DataModelAccessFlags {
-        RANDOM,
-        CURSOR_FORWARD,
-        CURSOR_BACKWARD,
-        CURSOR,
-        INSERT,
-        UPDATE,
-        DELETE,
-        WRITE,
+        RANDOM = 1,
+        CURSOR_FORWARD = 2,
+        CURSOR_BACKWARD = 4,
+        CURSOR = 6,
+        INSERT = 8,
+        UPDATE = 16,
+        DELETE = 32,
+        WRITE = 56,
     }
 
 
@@ -2618,7 +2645,7 @@ export namespace Gda {
      * @gir-type Flags
      */
     enum MetaGraphInfo {
-        META_GRAPH_COLUMNS,
+        META_GRAPH_COLUMNS = 1,
     }
 
 
@@ -2630,19 +2657,19 @@ export namespace Gda {
         /**
          * database objects only have their own attributes
          */
-        NONE,
+        NONE = 0,
         /**
          * foreign keys are computed for tables
          */
-        FOREIGN_KEYS,
+        FOREIGN_KEYS = 1,
         /**
          * for views, the tables they use are also computed
          */
-        VIEW_DEPENDENCIES,
+        VIEW_DEPENDENCIES = 2,
         /**
          * all the features are computed
          */
-        ALL,
+        ALL = 3,
     }
 
 
@@ -2650,13 +2677,13 @@ export namespace Gda {
      * @gir-type Flags
      */
     enum ServerOperationCreateTableFlag {
-        NOTHING_FLAG,
-        PKEY_FLAG,
-        NOT_NULL_FLAG,
-        UNIQUE_FLAG,
-        AUTOINC_FLAG,
-        FKEY_FLAG,
-        PKEY_AUTOINC_FLAG,
+        NOTHING_FLAG = 1,
+        PKEY_FLAG = 2,
+        NOT_NULL_FLAG = 4,
+        UNIQUE_FLAG = 8,
+        AUTOINC_FLAG = 16,
+        FKEY_FLAG = 32,
+        PKEY_AUTOINC_FLAG = 18,
     }
 
 
@@ -2668,11 +2695,11 @@ export namespace Gda {
         /**
          * case insensitive SQL identifiers are represented in lower case (meaning that any SQL identifier which has a non lower case character is case sensitive)
          */
-        LOWER_CASE,
+        LOWER_CASE = 1,
         /**
          * case insensitive SQL identifiers are represented in upper case (meaning that any SQL identifier which has a non upper case character is case sensitive)
          */
-        UPPER_CASE,
+        UPPER_CASE = 2,
     }
 
 
@@ -2684,27 +2711,27 @@ export namespace Gda {
         /**
          * access to the data model will be random (usually this will result in a data model completely stored in memory)
          */
-        RANDOM_ACCESS,
+        RANDOM_ACCESS = 1,
         /**
          * access to the data model will be done using a cursor moving forward
          */
-        CURSOR_FORWARD,
+        CURSOR_FORWARD = 2,
         /**
          * access to the data model will be done using a cursor moving backward
          */
-        CURSOR_BACKWARD,
+        CURSOR_BACKWARD = 4,
         /**
          * access to the data model will be done using a cursor (moving both forward and backward)
          */
-        CURSOR,
+        CURSOR = 6,
         /**
          * specifies that the data model should be executed even if some parameters required to execute it are invalid (in this case the data model will have no row, and will automatically be re-run when the missing parameters are once again valid)
          */
-        ALLOW_NOPARAM,
+        ALLOW_NOPARAM = 8,
         /**
          * specifies that the data model's contents will be fully loaded into the client side (the memory of the process using Libgda), not requiring the server any more to access the data (the default behaviour is to access the server any time data is to be read, and data is cached in memory). This flag is useful only if used in conjunction with the GDA_STATEMENT_MODEL_RANDOM_ACCESS flag (otherwise an error will be returned).
          */
-        OFFLINE,
+        OFFLINE = 16,
     }
 
 
@@ -2716,39 +2743,39 @@ export namespace Gda {
         /**
          * rendering will replace parameters with their values
          */
-        PARAMS_AS_VALUES,
+        PARAMS_AS_VALUES = 0,
         /**
          * rendering will include newlines and indentation to make it easy to read
          */
-        PRETTY,
+        PRETTY = 1,
         /**
          * parameters will be rendered using the "/&ast; name:&lt;param_name&gt; ... &ast;/" syntax
          */
-        PARAMS_LONG,
+        PARAMS_LONG = 2,
         /**
          * parameters will be rendered using the "##&lt;param_name&gt;..." syntax
          */
-        PARAMS_SHORT,
+        PARAMS_SHORT = 4,
         /**
          * parameters will be rendered using the ":&lt;param_name&gt;" syntax
          */
-        PARAMS_AS_COLON,
+        PARAMS_AS_COLON = 8,
         /**
          * parameters will be rendered using the "$&lt;param_number&gt;" syntax where parameters are numbered starting from 1
          */
-        PARAMS_AS_DOLLAR,
+        PARAMS_AS_DOLLAR = 16,
         /**
          * parameters will be rendered using the "?&lt;param_number&gt;" syntax where parameters are numbered starting from 1
          */
-        PARAMS_AS_QMARK,
+        PARAMS_AS_QMARK = 32,
         /**
          * parameters will be rendered using the "?" syntax
          */
-        PARAMS_AS_UQMARK,
+        PARAMS_AS_UQMARK = 64,
         /**
          * time and timestamp with a timezone information are converted to GMT before rendering, and rendering does not show the timezone information
          */
-        TIMEZONE_TO_GMT,
+        TIMEZONE_TO_GMT = 128,
     }
 
 
@@ -2760,40 +2787,40 @@ export namespace Gda {
         /**
          * no specific attribute
          */
-        NONE,
+        NONE = 0,
         /**
          * value is NULL (in the SQL sense)
          */
-        IS_NULL,
+        IS_NULL = 1,
         /**
          * value can be set to NULL (in the SQL sense)
          */
-        CAN_BE_NULL,
+        CAN_BE_NULL = 2,
         /**
          * value is defined as the default value (the value itself is not specified)
          */
-        IS_DEFAULT,
+        IS_DEFAULT = 4,
         /**
          * a default value (not specified) exists for the value
          */
-        CAN_BE_DEFAULT,
+        CAN_BE_DEFAULT = 8,
         /**
          * the value has not been changed (in the context of the attribute usage)
          */
-        IS_UNCHANGED,
+        IS_UNCHANGED = 16,
         /**
          * the value is not valid (with regards to the context)
          */
-        DATA_NON_VALID,
+        DATA_NON_VALID = 64,
         /**
          * the value can be resetted to its "original" value (i.e. before it was modified)
          */
-        HAS_VALUE_ORIG,
-        NO_MODIF,
+        HAS_VALUE_ORIG = 128,
+        NO_MODIF = 256,
         /**
          * the value can't be modified
          */
-        READ_ONLY,
+        READ_ONLY = 256,
     }
 
 
@@ -2805,7 +2832,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            changed: (arg0: GObject.Object) => void;
+            changed: (changed_stmt: GObject.Object) => void;
         }
 
         // Constructor properties interface
@@ -2879,6 +2906,7 @@ export namespace Gda {
          * 
          * Note that if `batch` does not need any parameter, then `out_params` is set to `null`.
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         get_parameters(): [boolean, Set | null];
 
@@ -3006,13 +3034,13 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "g-type-changed": (arg0: GObject.GType, arg1: GObject.GType) => void;
+            "g-type-changed": (old_type: GObject.GType, new_type: GObject.GType) => void;
             /**
              * Gets emitted whenever `column`'s name has been changed
              * @signal
              * @run-last
              */
-            "name-changed": (arg0: string) => void;
+            "name-changed": (old_name: string) => void;
             "notify::desc": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -3201,25 +3229,25 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "dsn-added": (arg0: null) => void;
+            "dsn-added": (new_dsn: null) => void;
             /**
              * Gets emitted whenever a DSN's definition has been changed
              * @signal
              * @run-first
              */
-            "dsn-changed": (arg0: null) => void;
+            "dsn-changed": (dsn: null) => void;
             /**
              * Gets emitted whenever a DSN has been removed
              * @signal
              * @run-first
              */
-            "dsn-removed": (arg0: null) => void;
+            "dsn-removed": (old_dsn: null) => void;
             /**
              * Gets emitted whenever a DSN is about to be removed
              * @signal
              * @run-first
              */
-            "dsn-to-be-removed": (arg0: null) => void;
+            "dsn-to-be-removed": (old_dsn: null) => void;
             "notify::system-filename": (pspec: GObject.ParamSpec) => void;
             "notify::user-filename": (pspec: GObject.ParamSpec) => void;
         }
@@ -3453,7 +3481,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            error: (arg0: ConnectionEvent) => void;
+            error: (event: ConnectionEvent) => void;
             /**
              * Gets emitted when the connection has been opened to the database
              * @signal
@@ -3467,7 +3495,7 @@ export namespace Gda {
              * @since 6.0
              * @run-last
              */
-            "status-changed": (arg0: ConnectionStatus) => void;
+            "status-changed": (status: ConnectionStatus) => void;
             /**
              * Gets emitted when the transaction status of `cnc` has changed (a transaction has been
              * started, rolled back, a savepoint added,...)
@@ -3783,6 +3811,7 @@ export namespace Gda {
          * Adds a SAVEPOINT named `name`.
          * @param name name of the savepoint to add
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         add_savepoint(name: string | null): boolean;
 
@@ -3798,6 +3827,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_batch_get_parameters()`), or `null`
          * @param model_usage specifies how the returned data model(s) will be used, as a {@link Gda.StatementModelUsage} enum
          * @returns a new list of {@link GObject.Object} objects
+         * @throws GLib.Error
          */
         batch_execute(batch: Batch, params: Set | null, model_usage: StatementModelUsage): GObject.Object[];
 
@@ -3809,6 +3839,7 @@ export namespace Gda {
          * @param name the name of the transation to start, or `null`
          * @param level the requested transaction level (use {@link Gda.TransactionIsolation.SERVER_DEFAULT} to apply the server default)
          * @returns `true` if the transaction was started successfully with the corresponding isolation level, `false` otherwise.
+         * @throws GLib.Error
          */
         begin_transaction(name: string | null, level: TransactionIsolation): boolean;
 
@@ -3820,6 +3851,7 @@ export namespace Gda {
 
         /**
          * Closes the connection to the underlying data source.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -3828,6 +3860,7 @@ export namespace Gda {
          * `gda_connection_begin_transaction()` first.
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the transaction was finished successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         commit_transaction(name: string | null): boolean;
 
@@ -3850,6 +3883,7 @@ export namespace Gda {
          * @param type the type of operation requested
          * @param options an optional list of parameters
          * @returns a new {@link Gda.ServerOperation} object, or `null` in the connection's provider does not support the `type` type of operation or if an error occurred
+         * @throws GLib.Error
          */
         create_operation(type: ServerOperationType, options: Set | null): ServerOperation;
 
@@ -3921,6 +3955,7 @@ export namespace Gda {
          * @param condition_value the `condition_column_type`'s GType
          * @returns TRUE if no error occurred, FALSE otherwise
          * @since 4.2.3
+         * @throws GLib.Error
          */
         delete_row_from_table(table: string, condition_column_name: string, condition_value: GObject.Value | any): boolean;
 
@@ -3928,6 +3963,7 @@ export namespace Gda {
          * Delete the SAVEPOINT named `name` when not used anymore.
          * @param name name of the savepoint to delete
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         delete_savepoint(name: string | null): boolean;
 
@@ -3937,6 +3973,7 @@ export namespace Gda {
          * @param sql a query statement that must not begin with "SELECT"
          * @returns the number of rows affected or -1, or -2
          * @since 4.2.3
+         * @throws GLib.Error
          */
         execute_non_select_command(sql: string): number;
 
@@ -3945,6 +3982,7 @@ export namespace Gda {
          * @param sql a query statement that must begin with "SELECT"
          * @returns a new {@link Gda.DataModel} if successful, `null` otherwise
          * @since 4.2.3
+         * @throws GLib.Error
          */
         execute_select_command(sql: string): DataModel;
 
@@ -3968,6 +4006,7 @@ export namespace Gda {
          * This function allows you to determine the actual format for the date values.
          * @returns `true` if no error occurred
          * @since 5.2
+         * @throws GLib.Error
          */
         get_date_format(): [boolean, GLib.DateDMY | null, GLib.DateDMY | null, GLib.DateDMY | null, string];
 
@@ -4009,6 +4048,7 @@ export namespace Gda {
          * @param meta_type describes which data to get.
          * @param filters a {@link GLib.List} of {@link Gda.Holder} objects
          * @returns a {@link Gda.DataModel} containing the data required. The caller is responsible for freeing the returned model using `g_object_unref()`.
+         * @throws GLib.Error
          */
         get_meta_store_data(meta_type: ConnectionMetaType, filters: Holder[]): DataModel;
 
@@ -4067,6 +4107,7 @@ export namespace Gda {
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
          * @since 4.2.3
+         * @throws GLib.Error
          */
         insert_row_into_table_v(table: string, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -4082,6 +4123,7 @@ export namespace Gda {
          * If it's not set, then add a connection event and returns `null`
          * @returns the pointer to the opaque structure set using `gda_connection_internal_set_provider_data()`, or `null`
          * @since 5.0.2
+         * @throws GLib.Error
          */
         internal_get_provider_data_error(): ServerProviderConnectionData | null;
 
@@ -4190,6 +4232,7 @@ export namespace Gda {
          * 
          * If the connection is already opened, then this function returns `true` immediately.
          * @returns TRUE if the connection is opened, and FALSE otherwise.
+         * @throws GLib.Error
          */
         open(): boolean;
 
@@ -4203,6 +4246,7 @@ export namespace Gda {
          * @param callback a {@link Gda.ConnectionOpenFunc} which will be called after the connection has been opened (of failed to open)
          * @returns a job ID
          * @since 6.0
+         * @throws GLib.Error
          */
         open_async(callback: ConnectionOpenFunc): number;
 
@@ -4214,6 +4258,7 @@ export namespace Gda {
          * @param path a complete path to a node (starting with "/")
          * @returns a new string, or `null` if the value is undefined or if the `path` is not defined or `path` does not hold any value, or if the value held is not a string or a valid SQL identifier.
          * @since 6.0
+         * @throws GLib.Error
          */
         operation_get_sql_identifier_at_path(op: ServerOperation, path: string): string | null;
 
@@ -4222,6 +4267,7 @@ export namespace Gda {
          * @param sql an SQL command to parse, not `null`
          * @returns a {@link Gda.Statement} representing the SQL command, or `null` if an error occurred
          * @since 4.2.3
+         * @throws GLib.Error
          */
         parse_sql_string(sql: string): [Statement, Set | null];
 
@@ -4231,6 +4277,7 @@ export namespace Gda {
          * method.
          * @param op a {@link Gda.ServerOperation} object
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         perform_operation(op: ServerOperation): boolean;
 
@@ -4270,6 +4317,7 @@ export namespace Gda {
          * @param _arguments list of arguments as `GdaServerOperationPrepareCreateTableArg` containing column's name, column's {@link GObject.GType} and a {@link Gda.ServerOperationCreateTableFlag} flag
          * @returns a {@link Gda.ServerOperation} if no errors; NULL and set `error` otherwise
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_operation_create_table(table_name: string, _arguments: ServerOperationCreateTableArg[]): ServerOperation | null;
 
@@ -4279,6 +4327,7 @@ export namespace Gda {
          * @param table_name name of the table to drop
          * @returns a new {@link Gda.ServerOperation} or `null` if couldn't create the opereration.
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_operation_drop_table(table_name: string): ServerOperation | null;
 
@@ -4315,6 +4364,7 @@ export namespace Gda {
          * @param stop_on_error set to TRUE if the method has to stop on the first error.
          * @returns a new list of {@link GObject.Object} pointers (see `gda_connection_statement_execute()` for more information about what they represent), one for each actual execution of the statement upon which `rstmt` is built. If `stop_on_error` is `false`, then the list may contain some `null` pointers which refer to statements which failed to execute.
          * @since 4.2
+         * @throws GLib.Error
          */
         repetitive_statement_execute(rstmt: RepetitiveStatement, model_usage: StatementModelUsage, col_types: GObject.GType[] | null, stop_on_error: boolean): GObject.Object[];
 
@@ -4322,6 +4372,7 @@ export namespace Gda {
          * Rollback all the modifications made after the SAVEPOINT named `name`.
          * @param name name of the savepoint to rollback to
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         rollback_savepoint(name: string | null): boolean;
 
@@ -4332,6 +4383,7 @@ export namespace Gda {
          * will be discarded.
          * @param name the name of the transation to commit, or `null`
          * @returns `true` if the operation was successful, `false` otherwise.
+         * @throws GLib.Error
          */
         rollback_transaction(name: string | null): boolean;
 
@@ -4424,6 +4476,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @param model_usage in the case where `stmt` is a SELECT statement, specifies how the returned data model will be used
          * @returns a {@link GObject.Object}, or `null` if an error occurred
+         * @throws GLib.Error
          */
         statement_execute<T = GObject.Object>(stmt: Statement, params: Set | null, model_usage: StatementModelUsage): [T, Set | null];
 
@@ -4442,6 +4495,7 @@ export namespace Gda {
          * @param stmt a {@link Gda.Statement} object.
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns the number of rows affected (&gt;=0) or -1 or -2
+         * @throws GLib.Error
          */
         statement_execute_non_select(stmt: Statement, params: Set | null): [number, Set | null];
 
@@ -4459,6 +4513,7 @@ export namespace Gda {
          * @param stmt a {@link Gda.Statement} object.
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @returns a {@link Gda.DataModel} containing the data returned by the data source, or `null` if an error occurred
+         * @throws GLib.Error
          */
         statement_execute_select(stmt: Statement, params: Set | null): DataModel;
 
@@ -4478,6 +4533,7 @@ export namespace Gda {
          * @param model_usage specifies how the returned data model will be used as a {@link Gda.StatementModelUsage} enum
          * @param col_types an array of GType to request each returned {@link Gda.DataModel}'s column's GType, terminated with the G_TYPE_NONE value. Any value left to 0 will make the database provider determine the real GType. `col_types` can also be `null` if no column type is specified.
          * @returns a {@link Gda.DataModel} containing the data returned by the data source, or `null` if an error occurred
+         * @throws GLib.Error
          */
         statement_execute_select_full(stmt: Statement, params: Set | null, model_usage: StatementModelUsage, col_types: GObject.GType[] | null): DataModel;
 
@@ -4494,6 +4550,7 @@ export namespace Gda {
          * table name).
          * @param stmt a {@link Gda.Statement} object
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         statement_prepare(stmt: Statement): boolean;
 
@@ -4503,6 +4560,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} object (which can be obtained using `gda_statement_get_parameters()`), or `null`
          * @param flags SQL rendering flags, as {@link Gda.StatementSqlFlag} OR'ed values
          * @returns a new string, or `null` if an error occurred
+         * @throws GLib.Error
          */
         statement_to_sql(stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
 
@@ -4555,6 +4613,7 @@ export namespace Gda {
          * the <link linkend="howto-meta2">Update the meta data about a table</link> howto.
          * @param context description of which part of `cnc`'s associated {@link Gda.MetaStore} should be updated, or `null`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         update_meta_store(context: MetaContext | null): boolean;
 
@@ -4572,6 +4631,7 @@ export namespace Gda {
          * @param values a list of values (as {@link GObject.Value})
          * @returns TRUE if no error occurred, FALSE otherwise
          * @since 4.2.3
+         * @throws GLib.Error
          */
         update_row_in_table_v(table: string, condition_column_name: string, condition_value: GObject.Value | any, col_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -4967,6 +5027,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -4977,6 +5038,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -4988,12 +5050,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -5003,6 +5067,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5120,6 +5185,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -5239,6 +5305,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -5269,6 +5336,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -5281,6 +5349,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -5307,6 +5376,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -5319,6 +5389,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -5351,6 +5422,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -5419,6 +5491,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -5434,6 +5507,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -5451,7 +5525,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "diff-computed": (arg0: null) => boolean | void;
+            "diff-computed": (object: null) => boolean | void;
             "notify::new-model": (pspec: GObject.ParamSpec) => void;
             "notify::old-model": (pspec: GObject.ParamSpec) => void;
         }
@@ -5531,6 +5605,7 @@ export namespace Gda {
          * If one connects to this signal and returns FALSE in the signal handler, then computing differences will be
          * stopped and an error will be returned.
          * @returns TRUE if all the differences have been successfully computed, and FALSE if an error occurred
+         * @throws GLib.Error
          */
         compute_diff(): boolean;
 
@@ -5657,6 +5732,7 @@ export namespace Gda {
          * Get a pointer to a row in `model`
          * @param row row number (starting from 0)
          * @returns the {@link Gda.Row}, or `null` if an error occurred
+         * @throws GLib.Error
          */
         get_row(row: number): Row;
 
@@ -5677,6 +5753,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -5687,6 +5764,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -5698,12 +5776,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -5713,6 +5793,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -5830,6 +5911,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -5949,6 +6031,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -5979,6 +6062,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -5991,6 +6075,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -6017,6 +6102,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -6029,6 +6115,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -6061,6 +6148,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -6129,6 +6217,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -6144,6 +6233,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -6233,6 +6323,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -6243,6 +6334,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -6254,12 +6346,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -6269,6 +6363,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -6386,6 +6481,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -6505,6 +6601,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -6535,6 +6632,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -6547,6 +6645,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -6573,6 +6672,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -6585,6 +6685,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -6617,6 +6718,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -6685,6 +6787,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -6700,6 +6803,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -6898,6 +7002,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -6908,6 +7013,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -6919,12 +7025,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -6934,6 +7042,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -7051,6 +7160,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -7170,6 +7280,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -7200,6 +7311,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -7212,6 +7324,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -7238,6 +7351,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -7250,6 +7364,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -7282,6 +7397,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -7350,6 +7466,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -7365,6 +7482,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -7442,7 +7560,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "row-changed": (arg0: number) => void;
+            "row-changed": (row: number) => void;
             "notify::current-row": (pspec: GObject.ParamSpec) => void;
             "notify::data-model": (pspec: GObject.ParamSpec) => void;
             "notify::update-model": (pspec: GObject.ParamSpec) => void;
@@ -7632,6 +7750,7 @@ export namespace Gda {
          * @param col the requested column
          * @returns the {@link GObject.Value}, or `null` if the value could not be fetched
          * @since 4.2.10
+         * @throws GLib.Error
          */
         get_value_at_e(col: number): unknown | null;
 
@@ -7715,6 +7834,7 @@ export namespace Gda {
          * @param col the column number
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, value: GObject.Value | any): boolean;
     }
@@ -7815,6 +7935,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -7825,6 +7946,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -7836,12 +7958,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -7851,6 +7975,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -7968,6 +8093,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -8087,6 +8213,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -8117,6 +8244,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -8129,6 +8257,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -8155,6 +8284,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -8167,6 +8297,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -8199,6 +8330,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -8267,6 +8399,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -8282,6 +8415,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -8371,6 +8505,7 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          * @since 5.0
+         * @throws GLib.Error
          */
         add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean;
 
@@ -8394,6 +8529,7 @@ export namespace Gda {
          * @param alias the field alias, or `null`
          * @returns `true` if no error occurred
          * @since 5.0
+         * @throws GLib.Error
          */
         add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean;
 
@@ -8401,6 +8537,7 @@ export namespace Gda {
          * Acutally populates `pivot` by analysing the data from the provided data model.
          * @returns `true` if no error occurred.
          * @since 5.0
+         * @throws GLib.Error
          */
         populate(): boolean;
 
@@ -8412,6 +8549,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -8422,6 +8560,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -8433,12 +8572,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -8448,6 +8589,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -8565,6 +8707,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -8684,6 +8827,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -8714,6 +8858,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -8726,6 +8871,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -8752,6 +8898,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -8764,6 +8911,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -8796,6 +8944,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -8864,6 +9013,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -8879,6 +9029,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -8903,33 +9054,33 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "row-changes-applied": (arg0: number, arg1: number) => void;
+            "row-changes-applied": (row: number, proxied_row: number) => void;
             /**
              * Gets emitted whenever a row has been marked to be deleted, or has been unmarked to be deleted
              * @signal
              * @run-first
              */
-            "row-delete-changed": (arg0: number, arg1: boolean) => void;
+            "row-delete-changed": (row: number, to_be_deleted: boolean) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed. `sample_start` and `sample_end` are
              * in reference to the proxied data model.
              * @signal
              * @run-first
              */
-            "sample-changed": (arg0: number, arg1: number) => void;
+            "sample-changed": (sample_start: number, sample_end: number) => void;
             /**
              * Gets emitted whenever `proxy`'s sample size has been changed
              * @signal
              * @run-first
              */
-            "sample-size-changed": (arg0: number) => void;
+            "sample-size-changed": (sample_size: number) => void;
             /**
              * Gets emitted when `proxy` is about to commit a row change to the proxied data model. If any
              * callback returns a non `null` value, then the change commit fails with the returned {@link GLib.Error}
              * @signal
              * @run-last
              */
-            "validate-row-changes": (arg0: number, arg1: number) => GLib.Error;
+            "validate-row-changes": (row: number, proxied_row: number) => GLib.Error;
             "notify::cache-changes": (pspec: GObject.ParamSpec) => void;
             "notify::defer-sync": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
@@ -9121,6 +9272,7 @@ export namespace Gda {
          * after row, and if an error
          * occurs, then it is possible that not all the changes to all the rows have been applied.
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         apply_all_changes(): boolean;
 
@@ -9128,6 +9280,7 @@ export namespace Gda {
          * Commits the modified data in the proxy back into the {@link Gda.DataModel}.
          * @param proxy_row the row number to commit
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         apply_row_changes(proxy_row: number): boolean;
 
@@ -9292,6 +9445,7 @@ export namespace Gda {
          * (if an error occurs, then any previous filter is left unchanged).
          * @param filter_expr an SQL based expression which will filter the contents of `proxy`, or `null` to remove any previous filter
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_filter_expr(filter_expr: string | null): boolean;
 
@@ -9299,6 +9453,7 @@ export namespace Gda {
          * Orders by the `col` column
          * @param col the column number to order from
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_ordering_column(col: number): boolean;
 
@@ -9338,6 +9493,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -9348,6 +9504,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -9359,12 +9516,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -9374,6 +9533,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -9491,6 +9651,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -9610,6 +9771,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -9640,6 +9802,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -9652,6 +9815,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -9678,6 +9842,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -9690,6 +9855,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -9722,6 +9888,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -9790,6 +9957,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -9805,6 +9973,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -10024,6 +10193,7 @@ export namespace Gda {
          * Computes correct attributes for each of `model`'s columns, which includes the "NOT NULL" attribute, the
          * default value, the precision and scale for numeric values.
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         compute_columns_attributes(): boolean;
 
@@ -10034,6 +10204,7 @@ export namespace Gda {
          * This function is similar to calling `gda_data_select_compute_modification_statements_ext()` with
          * `cond_type` set to {@link Gda.DataSelectConditionType.PK}
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
+         * @throws GLib.Error
          */
         compute_modification_statements(): boolean;
 
@@ -10043,6 +10214,7 @@ export namespace Gda {
          * @param cond_type the type of condition for the modifications where one row only should be identified
          * @returns `true` if no error occurred. If `false` is returned, then some modification statement may still have been computed
          * @since 4.2.9
+         * @throws GLib.Error
          */
         compute_modification_statements_ext(cond_type: DataSelectConditionType): boolean;
 
@@ -10056,6 +10228,7 @@ export namespace Gda {
          * NOTE2: if the SELECT statement from which `model` has been created uses more than one table, or
          * if the table used does not have any primary key, then this method will fail
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         compute_row_selection_condition(): boolean;
 
@@ -10091,6 +10264,7 @@ export namespace Gda {
          * </itemizedlist>
          * @returns `true` if no error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         prepare_for_offline(): boolean;
 
@@ -10148,6 +10322,7 @@ export namespace Gda {
          * the WHERE part of `mod_stmt` will be used as if one of these functions had been called.
          * @param mod_stmt a {@link Gda.Statement} (INSERT, UPDATE or DELETE)
          * @returns `true` if no error occurred.
+         * @throws GLib.Error
          */
         set_modification_statement(mod_stmt: Statement): boolean;
 
@@ -10155,6 +10330,7 @@ export namespace Gda {
          * Offers the same feature as `gda_data_select_set_modification_statement()` but using an SQL statement.
          * @param sql an SQL text
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         set_modification_statement_sql(sql: string): boolean;
 
@@ -10163,6 +10339,7 @@ export namespace Gda {
          * structure instead of an SQL syntax.
          * @param expr a {@link Gda.SqlExpr} expression
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_row_selection_condition(expr: SqlExpr): boolean;
 
@@ -10182,6 +10359,7 @@ export namespace Gda {
          * `gda_data_select_set_modification_statement()`.
          * @param sql_where an SQL condition (without the WHERE keyword)
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_row_selection_condition_sql(sql_where: string): boolean;
 
@@ -10193,6 +10371,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -10203,6 +10382,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -10214,12 +10394,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -10229,6 +10411,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -10346,6 +10529,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -10465,6 +10649,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -10495,6 +10680,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -10507,6 +10693,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -10533,6 +10720,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -10545,6 +10733,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -10577,6 +10766,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -10645,6 +10835,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -10660,6 +10851,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -10951,6 +11143,7 @@ export namespace Gda {
          * method will return `false` if no internal {@link Gda.Connection} available.
          * @returns Returns `true` if succeeded, `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_cnc(): boolean;
 
@@ -10958,6 +11151,7 @@ export namespace Gda {
          * For detailed description see `gda_db_catalog_parse_file_from_path()`
          * @param xmlfile xml file as {@link Gio.File} instance
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_file(xmlfile: Gio.File): boolean;
 
@@ -11019,6 +11213,7 @@ export namespace Gda {
          * `gda_db_catalog_validate_file_from_path()`. he same method can be used to validate xmlfile
          * before parsing it.
          * @param xmlfile xml file to parse
+         * @throws GLib.Error
          */
         parse_file_from_path(xmlfile: string): boolean;
 
@@ -11042,6 +11237,7 @@ export namespace Gda {
          * 
          * Note: Pkeys are not checked. This is a limitation that should be removed. The corresponding
          * issue was open on gitlab page.
+         * @throws GLib.Error
          */
         perform_operation(): boolean;
 
@@ -11051,6 +11247,7 @@ export namespace Gda {
          * @param file a {@link Gio.File} to write database description
          * @returns `true` if no error occurred, `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         write_to_file(file: Gio.File): boolean;
 
@@ -11059,6 +11256,7 @@ export namespace Gda {
          * @param path path to xml file to save {@link Gda.DbCatalog}
          * @returns `true` is no error, `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         write_to_path(path: string): boolean;
     }
@@ -11288,6 +11486,7 @@ export namespace Gda {
          * @param op {@link Gda.ServerOperation} to add information
          * @returns `true` if success, `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_add(op: ServerOperation): boolean;
 
@@ -11297,6 +11496,7 @@ export namespace Gda {
          * @param order Order number for the column
          * @returns `true` if successful, `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_create(op: ServerOperation, order: number): boolean;
 
@@ -11383,6 +11583,7 @@ export namespace Gda {
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -11391,6 +11592,7 @@ export namespace Gda {
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         write_node(node: libxml2.NodePtr): boolean;
 
@@ -11417,6 +11619,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -11425,6 +11628,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -11434,6 +11638,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -11559,6 +11764,7 @@ export namespace Gda {
          * @param i Order number
          * @returns `true` if no error or `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_create(op: ServerOperation, i: number): boolean;
 
@@ -11596,6 +11802,7 @@ export namespace Gda {
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -11604,6 +11811,7 @@ export namespace Gda {
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         write_node(node: libxml2.NodePtr): boolean;
 
@@ -11723,6 +11931,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -11731,6 +11940,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -11740,6 +11950,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -11990,6 +12201,7 @@ export namespace Gda {
          * @param ifnotexists Set it to TRUE if "IF NOT EXISTS" should be added
          * @returns `true` if no error occured and `false` otherwise.
          * @since 6.0
+         * @throws GLib.Error
          */
         prepare_create(op: ServerOperation, ifnotexists: boolean): boolean;
 
@@ -12007,6 +12219,7 @@ export namespace Gda {
          * @param obj The corresponding meta object to take data from
          * @param cnc opened connection
          * @returns `true` if no error and `false` otherwise
+         * @throws GLib.Error
          */
         update(obj: MetaTable, cnc: Connection): boolean;
 
@@ -12015,6 +12228,7 @@ export namespace Gda {
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -12023,6 +12237,7 @@ export namespace Gda {
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         write_node(node: libxml2.NodePtr): boolean;
 
@@ -12049,6 +12264,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -12057,6 +12273,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -12066,6 +12283,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -12206,6 +12424,7 @@ export namespace Gda {
          * for internal use and will be obsolete in the future. Do not use it for the new code.
          * @param op {@link Gda.ServerOperation} instance to populate
          * @returns `true` if succeeded and `false` otherwise.
+         * @throws GLib.Error
          */
         prepare_create(op: ServerOperation): boolean;
 
@@ -12238,6 +12457,7 @@ export namespace Gda {
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -12246,6 +12466,7 @@ export namespace Gda {
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         write_node(node: libxml2.NodePtr): boolean;
 
@@ -12272,6 +12493,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -12280,6 +12502,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -12289,6 +12512,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         rename(cnc: Connection, user_data: null): boolean;
 
@@ -13792,7 +14016,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "validate-change": (arg0: unknown) => GLib.Error;
+            "validate-change": (new_value: unknown) => GLib.Error;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::full-bind": (pspec: GObject.ParamSpec) => void;
             "notify::g-type": (pspec: GObject.ParamSpec) => void;
@@ -14090,6 +14314,7 @@ export namespace Gda {
          * Get the validity of `holder` (that is, of the value held by `holder`)
          * @returns TRUE if `holder`'s value can safely be used
          * @since 4.2.10
+         * @throws GLib.Error
          */
         is_valid_e(): boolean;
 
@@ -14102,6 +14327,7 @@ export namespace Gda {
          * If `bind_to` is `null`, then `holder` will not be bound anymore.
          * @param bind_to a {@link Gda.Holder} or `null`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_bind(bind_to: Holder): boolean;
 
@@ -14131,6 +14357,7 @@ export namespace Gda {
          * @param model a {@link Gda.DataModel} object or `null`
          * @param col the reference column in `model`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_source_model(model: DataModel, col: number): boolean;
 
@@ -14154,6 +14381,7 @@ export namespace Gda {
          * of which values `holder` can have, or implement some business rules.
          * @param value a value to set the holder to, or `null`
          * @returns TRUE if value has been set
+         * @throws GLib.Error
          */
         set_value(value: GObject.Value | any | null): boolean;
 
@@ -14168,6 +14396,7 @@ export namespace Gda {
          * @param dh a {@link Gda.DataHandler} to use, or `null`
          * @param value a value to set the holder to, as a string
          * @returns TRUE if value has been set
+         * @throws GLib.Error
          */
         set_value_str(dh: DataHandler, value: string): boolean;
 
@@ -14196,6 +14425,7 @@ export namespace Gda {
          * @param value a const value to set the holder to
          * @param value_changed a boolean set with TRUE if the value changes, FALSE elsewhere.
          * @returns NULL if an error occurred or if the previous GValue was NULL itself. It returns the static GValue user set previously, so that he can free it.
+         * @throws GLib.Error
          */
         take_static_value(value: GObject.Value | any, value_changed: boolean): unknown;
 
@@ -14224,6 +14454,7 @@ export namespace Gda {
          * have been freed. If necessary, use `gda_holder_get_value()` to get the real value.
          * @param value a value to set the holder to
          * @returns TRUE if value has been set
+         * @throws GLib.Error
          */
         take_value(value: GObject.Value | any): boolean;
 
@@ -14295,7 +14526,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "meta-changed": (arg0: MetaStoreChange[]) => void;
+            "meta-changed": (changes: MetaStoreChange[]) => void;
             /**
              * This signal is emitted when the `store`'s contents have been reset completely and when
              * no detailed changes are available
@@ -14310,7 +14541,7 @@ export namespace Gda {
              * @signal
              * @run-last
              */
-            "suggest-update": (arg0: MetaContext) => GLib.Error;
+            "suggest-update": (suggest: MetaContext) => GLib.Error;
             "notify::catalog": (pspec: GObject.ParamSpec) => void;
             "notify::cnc": (pspec: GObject.ParamSpec) => void;
             "notify::cnc-string": (pspec: GObject.ParamSpec) => void;
@@ -14469,6 +14700,7 @@ export namespace Gda {
          * @param ref_colnames an array of column names from the referenced table
          * @returns `true` if no error occurred
          * @since 4.2.4
+         * @throws GLib.Error
          */
         declare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string, colnames: string[], ref_colnames: string[]): boolean;
 
@@ -14484,6 +14716,7 @@ export namespace Gda {
          * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
          * @returns a new {@link Gda.DataModel}, or `null` if an error occurred
          * @since 4.2.6
+         * @throws GLib.Error
          */
         extract(select_sql: string, vars: { [key: string]: GObject.Value } | null): DataModel;
 
@@ -14499,6 +14732,7 @@ export namespace Gda {
          * and `error` will contain the GDA_META_STORE_ATTRIBUTE_NOT_FOUND_ERROR error code, and FALSE is returned.
          * @param att_name name of the attribute to get
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         get_attribute_value(att_name: string): [boolean, string];
 
@@ -14529,6 +14763,7 @@ export namespace Gda {
          * @param values values
          * @returns `true` if no error occurred
          * @since 4.2.6
+         * @throws GLib.Error
          */
         modify(table_name: string, new_data: DataModel | null, condition: string | null, value_names: string[], values: (GObject.Value | any)[]): boolean;
 
@@ -14538,6 +14773,7 @@ export namespace Gda {
          * @param context a {@link Gda.MetaContext} context describing what to modify in `store`
          * @param new_data a {@link Gda.DataModel} containing the new data to set in `table_name`, or `null` (treated as a data model with no row at all)
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         modify_with_context(context: MetaContext, new_data: DataModel | null): boolean;
 
@@ -14591,6 +14827,7 @@ export namespace Gda {
          * <!ELEMENT definition (`PCDATA`)>]]></programlisting>
          * @param xml_description an XML description of the table or view to add to `store`
          * @returns TRUE if the new object has successfully been added
+         * @throws GLib.Error
          */
         schema_add_custom_object(xml_description: string): boolean;
 
@@ -14615,6 +14852,7 @@ export namespace Gda {
         /**
          * Creates a new {@link Gda.MetaStruct} object representing `store`'s internal database structure.
          * @returns a new {@link Gda.MetaStruct} object, or `null` if an error occurred
+         * @throws GLib.Error
          */
         schema_get_structure(): MetaStruct;
 
@@ -14622,6 +14860,7 @@ export namespace Gda {
          * Removes the custom database object named `obj_name`.
          * @param obj_name name of the custom object to remove
          * @returns TRUE if the custom object has successfully been removed
+         * @throws GLib.Error
          */
         schema_remove_custom_object(obj_name: string): boolean;
 
@@ -14631,6 +14870,7 @@ export namespace Gda {
          * @param att_name name of the attribute to set
          * @param att_value value of the attribute to set, or `null` to unset the attribute
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         set_attribute_value(att_name: string, att_value: string | null): boolean;
 
@@ -14675,6 +14915,7 @@ export namespace Gda {
          * @param ref_table the name of the referenced table
          * @returns `true` if no error occurred
          * @since 4.2.4
+         * @throws GLib.Error
          */
         undeclare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string): boolean;
     }
@@ -14774,6 +15015,7 @@ export namespace Gda {
          * @param schema the schema the object belongs to (as a G_TYPE_STRING GValue), or `null`
          * @param name the object's name (as a G_TYPE_STRING GValue), not `null`
          * @returns the {@link Gda.MetaDbObject} corresponding to the database object if no error occurred, or `null`
+         * @throws GLib.Error
          */
         complement(type: MetaDbObjectType, catalog: GObject.Value | any | null, schema: GObject.Value | any | null, name: GObject.Value | any): MetaDbObject | null;
 
@@ -14783,6 +15025,7 @@ export namespace Gda {
          * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         complement_all(): boolean;
 
@@ -14794,6 +15037,7 @@ export namespace Gda {
          * 
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         complement_default(): boolean;
 
@@ -14804,6 +15048,7 @@ export namespace Gda {
          * Please refer to `gda_meta_struct_complement()` form more information.
          * @param dbo a {@link Gda.MetaDbObject} part of `mstruct`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         complement_depend(dbo: MetaDbObject): boolean;
 
@@ -14817,6 +15062,7 @@ export namespace Gda {
          * @param catalog name of a catalog, or `null`
          * @param schema name of a schema, or `null`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         complement_schema(catalog: GObject.Value | any | null, schema: GObject.Value | any | null): boolean;
 
@@ -14824,6 +15070,7 @@ export namespace Gda {
          * Creates a new graph (in the GraphViz syntax) representation of `mstruct`.
          * @param info informs what kind of information to show in the resulting graph
          * @returns a new string, or `null` if an error occurred.
+         * @throws GLib.Error
          */
         dump_as_graph(info: MetaGraphInfo): string | null;
 
@@ -14862,6 +15109,7 @@ export namespace Gda {
          * @param schema the schema name, or `null`
          * @param xml_spec_file the specifications as the name of an XML file
          * @returns TRUE if no error has occurred
+         * @throws GLib.Error
          */
         load_from_xml_file(catalog: string | null, schema: string | null, xml_spec_file: string): boolean;
 
@@ -14869,6 +15117,7 @@ export namespace Gda {
          * Reorders the list of database objects within `mstruct` in a way specified by `sort_type`.
          * @param sort_type the kind of sorting requested
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         sort_db_objects(sort_type: MetaSortType): boolean;
     }
@@ -15078,6 +15327,7 @@ export namespace Gda {
          * @param set a place to store the returned template set
          * @returns `true` on success, `false` on error
          * @since 4.2
+         * @throws GLib.Error
          */
         get_template_set(set: Set): boolean;
     }
@@ -15216,6 +15466,7 @@ export namespace Gda {
          * @param value a {@link GObject.Value} belonging to `row` (obtained with `gda_row_get_value()`).
          * @returns `true` if `value` is valid
          * @since 4.2.10
+         * @throws GLib.Error
          */
         value_is_valid_e(value: GObject.Value | any): boolean;
     }
@@ -15229,13 +15480,13 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "sequence-item-added": (arg0: string, arg1: number) => void;
+            "sequence-item-added": (seq_path: string, item_index: number) => void;
             /**
              * Gets emitted whenever a sequence item is about to be removed
              * @signal
              * @run-first
              */
-            "sequence-item-remove": (arg0: string, arg1: number) => void;
+            "sequence-item-remove": (seq_path: string, item_index: number) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::op-type": (pspec: GObject.ParamSpec) => void;
             "notify::provider": (pspec: GObject.ParamSpec) => void;
@@ -15476,6 +15727,7 @@ export namespace Gda {
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         get_sql_identifier_at_path(path: string): string;
 
@@ -15495,6 +15747,7 @@ export namespace Gda {
          * @param xml_file an XML specification file (see `gda_server_operation_new()`) or `null`
          * @returns `true` if `op` is valid
          * @since 6.0
+         * @throws GLib.Error
          */
         is_valid(xml_file: string | null): boolean;
 
@@ -15505,6 +15758,7 @@ export namespace Gda {
          * and not against the current `op`'s specification.
          * @param resource the name of a resource containing an XML specification data (see `gda_server_operation_new()`) or `null`
          * @returns `true` if `op` is valid
+         * @throws GLib.Error
          */
         is_valid_from_resource(resource: string | null): boolean;
 
@@ -15513,6 +15767,7 @@ export namespace Gda {
          * argument must correspond to an XML tree saved using `gda_server_operation_save_data_to_xml()`.
          * @param node a #xmlNodePtr
          * @returns `true` if no error occurred
+         * @throws GLib.Error
          */
         load_data_from_xml(node: libxml2.NodePtr): boolean;
 
@@ -15522,6 +15777,7 @@ export namespace Gda {
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_create_database()`
          * @returns TRUE if no error occurred and the database has been created, FALSE otherwise
          * @since 4.2.3
+         * @throws GLib.Error
          */
         perform_create_database(provider: string | null): boolean;
 
@@ -15531,6 +15787,7 @@ export namespace Gda {
          * @param provider the database provider to use, or `null` if `op` has been created using `gda_server_operation_prepare_drop_database()`
          * @returns TRUE if no error occurred and the database has been destroyed
          * @since 4.2.3
+         * @throws GLib.Error
          */
         perform_drop_database(provider: string | null): boolean;
 
@@ -15541,11 +15798,13 @@ export namespace Gda {
          * This function's purpose is mainly informative to get the actual SQL code which would be executed to perform
          * the operation; to actually perform the operation, use `gda_server_operation_perform()`.
          * @returns a new string, or `null` if an error occurred or operation cannot be rendered as SQL.
+         * @throws GLib.Error
          */
         render(): string | null;
 
         /**
          * @returns an XML string representation of {@link Gda.ServerOperation}
+         * @throws GLib.Error
          */
         save_data_to_xml_string(): string;
 
@@ -15583,6 +15842,7 @@ export namespace Gda {
          * @param path a complete path to a node (starting with "/")
          * @returns `true` if no error occurred
          * @since 4.2.6
+         * @throws GLib.Error
          */
         set_value_at(value: string | null, path: string): boolean;
     }
@@ -15683,6 +15943,7 @@ export namespace Gda {
          * @param type the type of operation requested
          * @param options a list of parameters or `null`
          * @returns a new {@link Gda.ServerOperation} object, or `null` in the provider does not support the `type` type of operation or if an error occurred
+         * @throws GLib.Error
          */
         create_operation(cnc: Connection | null, type: ServerOperationType, options: Set | null): ServerOperation | null;
 
@@ -15796,6 +16057,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection} object which will be used to perform the action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @returns `true` if no error occurred
+         * @throws GLib.Error
          */
         perform_operation(cnc: Connection | null, op: ServerOperation): boolean;
 
@@ -15804,6 +16066,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection} object which will be used to perform an action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @returns `true` if no error occurred
+         * @throws GLib.Error
          */
         perform_operation_default(cnc: Connection | null, op: ServerOperation): boolean;
 
@@ -15816,6 +16079,7 @@ export namespace Gda {
          * @param cnc a {@link Gda.Connection} object which will be used to render the action, or `null`
          * @param op a {@link Gda.ServerOperation} object
          * @returns a new string, or `null` if an error occurred or operation cannot be rendered as SQL.
+         * @throws GLib.Error
          */
         render_operation(cnc: Connection | null, op: ServerOperation): string | null;
 
@@ -15938,12 +16202,12 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            "holder-attr-changed": (arg0: Holder, arg1: string, arg2: unknown) => void;
+            "holder-attr-changed": (holder: Holder, attr_name: string, attr_value: unknown) => void;
             /**
              * @signal
              * @run-first
              */
-            "holder-changed": (arg0: Holder) => void;
+            "holder-changed": (object: Holder) => void;
             /**
              * Gets emitted when `holder` in `set` has its type finally set, in case
              * it was #GDA_TYPE_NULL
@@ -15951,7 +16215,7 @@ export namespace Gda {
              * @since 4.2
              * @run-first
              */
-            "holder-type-set": (arg0: Holder) => void;
+            "holder-type-set": (holder: Holder) => void;
             /**
              * Gets emitted when `set`'s public data ({@link Gda.SetNode}, {@link Gda.SetGroup} or {@link Gda.SetSource} values) have changed
              * @signal
@@ -15964,14 +16228,14 @@ export namespace Gda {
              * @since 4.2
              * @run-first
              */
-            "source-model-changed": (arg0: null) => void;
+            "source-model-changed": (source: null) => void;
             /**
              * Gets emitted when a {@link Gda.Holder}'s in `set` is going to change its value. One can connect to
              * this signal to control which values `holder` can have (for example to implement some business rules)
              * @signal
              * @run-last
              */
-            "validate-holder-change": (arg0: Holder, arg1: unknown) => GLib.Error;
+            "validate-holder-change": (holder: Holder, new_value: unknown) => GLib.Error;
             /**
              * Gets emitted when `gda_set_is_valid()` is called, use
              * this signal to control which combination of values `set`'s holder can have (for example to implement some business rules)
@@ -16227,6 +16491,7 @@ export namespace Gda {
          * error, then the returned value is TRUE, otherwise the return value is FALSE as soon as a signal handler
          * returns an error.
          * @returns TRUE if the set is valid
+         * @throws GLib.Error
          */
         is_valid(): boolean;
 
@@ -16545,6 +16810,7 @@ export namespace Gda {
          * Creates a new {@link Gda.Statement} statement from `builder`'s contents.
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
          * @since 4.2
+         * @throws GLib.Error
          */
         get_statement(): Statement;
 
@@ -16811,6 +17077,7 @@ export namespace Gda {
          * if `sql` is `null`, then the returned {@link Gda.Batch} object will contain no statement.
          * @param filename name of the file to parse
          * @returns a new {@link Gda.Batch} object, or `null` if an error occurred
+         * @throws GLib.Error
          */
         parse_file_as_batch(filename: string): Batch | null;
 
@@ -16823,6 +17090,7 @@ export namespace Gda {
          * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
          * @param sql the SQL string to parse
          * @returns a new {@link Gda.Statement} object, or `null` if an error occurred
+         * @throws GLib.Error
          */
         parse_string(sql: string): [Statement | null, string];
 
@@ -16840,6 +17108,7 @@ export namespace Gda {
          * <link linkend="GdaSqlParser.description">GdaSqlParser's object description</link>.
          * @param sql the SQL string to parse
          * @returns a new {@link Gda.Batch} object, or `null` if an error occurred
+         * @throws GLib.Error
          */
         parse_string_as_batch(sql: string): [Batch | null, string];
 
@@ -16910,7 +17179,7 @@ export namespace Gda {
              * @signal
              * @run-first
              */
-            checked: (arg0: Connection, arg1: boolean) => void;
+            checked: (cnc: Connection, checked: boolean) => void;
             /**
              * Gets emitted whenever the `stmt` has changed
              * @signal
@@ -16985,6 +17254,7 @@ export namespace Gda {
         /**
          * Checks that `stmt`'s structure is correct.
          * @returns TRUE if `stmt`'s structure is correct
+         * @throws GLib.Error
          */
         check_structure(): boolean;
 
@@ -16997,6 +17267,7 @@ export namespace Gda {
          * See `gda_sql_statement_check_validity()` for more information.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @returns TRUE if every object actually exists in `cnc`'s database
+         * @throws GLib.Error
          */
         check_validity(cnc: Connection | null): boolean;
 
@@ -17012,6 +17283,7 @@ export namespace Gda {
          * 
          * Note that if `stmt` does not need any parameter, then `out_params` is set to `null`.
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         get_parameters(): [boolean, Set | null];
 
@@ -17034,6 +17306,7 @@ export namespace Gda {
          * information.
          * @param cnc a {@link Gda.Connection} object
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         normalize(cnc: Connection): boolean;
 
@@ -17054,6 +17327,7 @@ export namespace Gda {
          * @param remove set to `true` if DEFAULT fields are removed, of `false` if the "DEFAULT" keyword is used
          * @returns a new {@link Gda.SqlStatement}, or `null` if an error occurred
          * @since 4.2
+         * @throws GLib.Error
          */
         rewrite_for_default_values(params: Set, remove: boolean): SqlStatement | null;
 
@@ -17073,6 +17347,7 @@ export namespace Gda {
          * @param params parameters contained in a single {@link Gda.Set} object, or `null`
          * @param flags a set of flags to control the rendering
          * @returns a new string if no error occurred
+         * @throws GLib.Error
          */
         to_sql_extended(cnc: Connection | null, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
     }
@@ -17183,14 +17458,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            "node-changed": (arg0: TreeNode) => void;
+            "node-changed": (node: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed from `tree`
              * @signal
              * @since 4.2
              * @run-last
              */
-            "node-deleted": (arg0: string) => void;
+            "node-deleted": (node_path: string) => void;
             /**
              * Gets emitted when a `node` has has a child when it did not have any or when it
              * does not have a ny children anymore when it had some
@@ -17198,14 +17473,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            "node-has-child-toggled": (arg0: TreeNode) => void;
+            "node-has-child-toggled": (node: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted in `tree`
              * @signal
              * @since 4.2
              * @run-last
              */
-            "node-inserted": (arg0: TreeNode) => void;
+            "node-inserted": (node: TreeNode) => void;
             "notify::is-list": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -17366,6 +17641,7 @@ export namespace Gda {
          * unchanged, and otherwise `tree`'s previous contents is completely replaced by the new one.
          * @returns TRUE if no error occurred.
          * @since 4.2
+         * @throws GLib.Error
          */
         update_all(): boolean;
 
@@ -17375,6 +17651,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} node in `tree`, or `null`
          * @returns TRUE if no error occurred.
          * @since 4.2.8
+         * @throws GLib.Error
          */
         update_children(node: TreeNode | null): boolean;
 
@@ -17383,6 +17660,7 @@ export namespace Gda {
          * @param node a {@link Gda.TreeNode} node in `tree`
          * @returns TRUE if no error occurred.
          * @since 4.2
+         * @throws GLib.Error
          */
         update_part(node: TreeNode): boolean;
     }
@@ -17933,14 +18211,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            "node-changed": (arg0: TreeNode) => void;
+            "node-changed": (node: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been removed
              * @signal
              * @since 4.2
              * @run-last
              */
-            "node-deleted": (arg0: string) => void;
+            "node-deleted": (relative_path: string) => void;
             /**
              * Gets emitted when a `node` has has a child when it did not have any or when it
              * does not have a ny children anymore when it had some
@@ -17948,14 +18226,14 @@ export namespace Gda {
              * @since 4.2
              * @run-last
              */
-            "node-has-child-toggled": (arg0: TreeNode) => void;
+            "node-has-child-toggled": (node: TreeNode) => void;
             /**
              * Gets emitted when a `node` has been inserted
              * @signal
              * @since 4.2
              * @run-last
              */
-            "node-inserted": (arg0: TreeNode) => void;
+            "node-inserted": (node: TreeNode) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -18252,6 +18530,7 @@ export namespace Gda {
          * provider being used), so it's better to avoid starting any (normal) transaction on any of the
          * connections registered with `xa_trans`.
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         begin(): boolean;
 
@@ -18267,6 +18546,7 @@ export namespace Gda {
          * fails and FALSE is returned. During the COMMIT phase, some commit may actually fail but the transaction can
          * still be completed because the PREPARE phase succeeded (through the recover method).
          * @returns TRUE if no error occurred (there may be some connections to recover, though)
+         * @throws GLib.Error
          */
         commit(): [boolean, Connection[] | null];
 
@@ -18275,6 +18555,7 @@ export namespace Gda {
          * method allows one to terminate a distributed transaction which succeeded but for which some
          * connections needed to be recovered.
          * @returns `true` if all the data which was still uncommitted has been committed
+         * @throws GLib.Error
          */
         commit_recovered(): [boolean, Connection[] | null];
 
@@ -18287,12 +18568,14 @@ export namespace Gda {
          * @param cnc the connection to add to `xa_trans`
          * @param branch the branch qualifier
          * @returns `true` if no error occurred
+         * @throws GLib.Error
          */
         register_connection(cnc: Connection, branch: string): boolean;
 
         /**
          * Cancels a distributed transaction (managed by `xa_trans`).
          * @returns `true` if no error occurred
+         * @throws GLib.Error
          */
         rollback(): boolean;
 
@@ -19796,6 +20079,7 @@ export namespace Gda {
          * is the same as `gda_sql_statement_check_structure()` but for individual {@link Gda.SqlAnyPart}
          * parts. This function is mainly for database provider's implementations
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         check_structure(): boolean;
 
@@ -19803,6 +20087,7 @@ export namespace Gda {
          * Calls a function for each element of a {@link Gda.SqlAnyPart} node
          * @param func function to call for each sub node
          * @returns TRUE if `func` has been called for any sub node of `node` and always returned TRUE, or FALSE otherwise.
+         * @throws GLib.Error
          */
         foreach(func: SqlForeachFunc): boolean;
     }
@@ -20458,6 +20743,7 @@ export namespace Gda {
          * (for example a SELECT statement must at least return a column, a DELETE statement must specify which table
          * is targeted).
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         check_structure(): boolean;
 
@@ -20473,6 +20759,7 @@ export namespace Gda {
          * objects names will be removed.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         check_validity(cnc: Connection | null): boolean;
 
@@ -20491,6 +20778,7 @@ export namespace Gda {
          * @param mstruct a {@link Gda.MetaStruct} object, or `null`
          * @returns TRUE if no error occurred
          * @since 4.2
+         * @throws GLib.Error
          */
         check_validity_m(mstruct: MetaStruct | null): boolean;
 
@@ -20584,6 +20872,7 @@ export namespace Gda {
          * {@link Gda.SqlSelectField} structure for each field in the referenced table.
          * @param cnc a {@link Gda.Connection} object, or `null`
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         normalize(cnc: Connection | null): boolean;
 
@@ -21244,6 +21533,7 @@ export namespace Gda {
          * @param job_id the ID of the job, as returned by `gda_worker_submit_job()`
          * @returns `true` if the job was cancelled
          * @since 6.0
+         * @throws GLib.Error
          */
         cancel_job(job_id: number): boolean;
 
@@ -21281,6 +21571,7 @@ export namespace Gda {
          * @param func the function to call from the worker thread
          * @returns `true` if no error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         do_job(context: GLib.MainContext | null, timeout_ms: number, out_result: null, out_job_id: number | null, func: WorkerFunc): boolean;
 
@@ -21297,6 +21588,7 @@ export namespace Gda {
          * @param out_result a place to store the value returned by the execution of the requested function within the worker thread, or `null`
          * @returns `true` if the jobs has completed
          * @since 6.0
+         * @throws GLib.Error
          */
         fetch_job_result(job_id: number, out_result: null): boolean;
 
@@ -21344,6 +21636,7 @@ export namespace Gda {
          * @param callback the function to call when a job submitted from within the calling thread using `gda_worker_submit_job()` has finished being processed.
          * @returns `true` if no error occurred.
          * @since 6.0
+         * @throws GLib.Error
          */
         set_callback(context: GLib.MainContext | null, callback: WorkerCallback | null): boolean;
 
@@ -21367,6 +21660,7 @@ export namespace Gda {
          * @param func the function to call from the worker thread
          * @returns a job ID, or %0 if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         submit_job(callback_context: GLib.MainContext | null, func: WorkerFunc): number;
 
@@ -21396,6 +21690,7 @@ export namespace Gda {
          * @param func the function to call from the worker thread
          * @returns the result of `func`'s execution
          * @since 6.0
+         * @throws GLib.Error
          */
         wait_job(func: WorkerFunc): null;
     }
@@ -21717,6 +22012,9 @@ export namespace Gda {
 
         get_is_opened(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         open(): boolean;
 
         /**
@@ -22104,6 +22402,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param node an XML node representing a &lt;gda_array_data&gt; XML node.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         add_data_from_xml_node(node: libxml2.NodePtr): boolean;
 
@@ -22114,6 +22413,7 @@ export namespace Gda {
          * Upon errors -1 will be returned and `error` will be assigned a
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_row(): number;
 
@@ -22125,12 +22425,14 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param values {@link GLib.List} of {@link GObject.Value}* representing the row to add.  The          length must match model's column count.  These {@link GObject.Value}     are value-copied (the user is still responsible for freeing them).
          * @returns the number of the added row, or -1 if an error occurred
+         * @throws GLib.Error
          */
         append_values(values: (GObject.Value | any)[] | null): number;
 
         /**
          * Makes a copy of `src` into a new {@link Gda.DataModelArray} object
          * @returns a new data model, or `null` if an error occurred
+         * @throws GLib.Error
          */
         array_copy_model(): DataModelArray | null;
 
@@ -22140,6 +22442,7 @@ export namespace Gda {
          * @param cols array of `src`'s columns to copy into the new array, not `null`
          * @returns a new data model, or `null` if an error occurred
          * @since 5.2.0
+         * @throws GLib.Error
          */
         array_copy_model_ext(cols: number[]): DataModelArray | null;
 
@@ -22257,6 +22560,7 @@ export namespace Gda {
          * @param rows an array containing which rows of `model` will be exported, or `null` for all rows
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean;
 
@@ -22376,6 +22680,7 @@ export namespace Gda {
          * @param expected_type the expected data type of the returned value
          * @param nullok if TRUE, then NULL values (value of type `GDA_TYPE_NULL`) will not generate any error
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, wrong data type, etc).
+         * @throws GLib.Error
          */
         get_typed_value_at(col: number, row: number, expected_type: GObject.GType, nullok: boolean): unknown | null;
 
@@ -22406,6 +22711,7 @@ export namespace Gda {
          * @param col a valid column number.
          * @param row a valid row number.
          * @returns a {@link GObject.Value} containing the value stored in the given position, or `null` on error (out-of-bound position, etc).
+         * @throws GLib.Error
          */
         get_value_at(col: number, row: number): unknown | null;
 
@@ -22418,6 +22724,7 @@ export namespace Gda {
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred
+         * @throws GLib.Error
          */
         import_from_file(file: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -22444,6 +22751,7 @@ export namespace Gda {
          * @param overwrite TRUE if `to` is completely overwritten by `from`'s data, and FALSE if `from`'s data is appended to `to`
          * @param cols_trans a {@link GLib.HashTable} for columns translating, or `null`
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_model(from: DataModel, overwrite: boolean, cols_trans: { [key: number]: number } | null): boolean;
 
@@ -22456,6 +22764,7 @@ export namespace Gda {
          * @param cols_trans a hash table containing which columns of `model` will be imported, or `null` for all columns, see `gda_data_model_import_from_model()`
          * @param options list of options for the export
          * @returns TRUE if no error occurred.
+         * @throws GLib.Error
          */
         import_from_string(string: string, cols_trans: { [key: number]: number } | null, options: Set): boolean;
 
@@ -22488,6 +22797,7 @@ export namespace Gda {
          * {@link GLib.Error} from the #GDA_DATA_MODEL_ERROR domain.
          * @param row the row number to be removed.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_row(row: number): boolean;
 
@@ -22556,6 +22866,7 @@ export namespace Gda {
          * @param row row number.
          * @param value a {@link GObject.Value} (not `null`)
          * @returns TRUE if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_value_at(col: number, row: number, value: GObject.Value | any): boolean;
 
@@ -22571,6 +22882,7 @@ export namespace Gda {
          * @param row row number.
          * @param values a list of {@link GObject.Value} (or `null`), one for at most the number of columns of `model`
          * @returns `true` if the value in the data model has been updated and no error occurred
+         * @throws GLib.Error
          */
         set_values(row: number, values: (GObject.Value | any)[] | null): boolean;
 
@@ -22630,6 +22942,7 @@ export namespace Gda {
          * @param node a node to parse
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         parse_node(node: libxml2.NodePtr): boolean;
 
@@ -22638,6 +22951,7 @@ export namespace Gda {
          * @param node a node to write data in
          * @returns `true` on success, `false` if an error occurred
          * @since 6.0
+         * @throws GLib.Error
          */
         write_node(node: libxml2.NodePtr): boolean;
     }
@@ -22706,6 +23020,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         create(cnc: Connection, user_data: null): boolean;
 
@@ -22714,6 +23029,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         drop(cnc: Connection, user_data: null): boolean;
 
@@ -22723,6 +23039,7 @@ export namespace Gda {
          * @param cnc Opened connection
          * @param user_data Additional information provided by the user
          * @since 6.0
+         * @throws GLib.Error
          */
         rename(cnc: Connection, user_data: null): boolean;
     }
@@ -23867,6 +24184,7 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @since 6.0
+         * @throws GLib.Error
          */
         add_savepoint(cnc: Connection, name: string): boolean;
 
@@ -23875,6 +24193,7 @@ export namespace Gda {
          * @param name 
          * @param level 
          * @since 6.0
+         * @throws GLib.Error
          */
         begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean;
 
@@ -23888,6 +24207,7 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @since 6.0
+         * @throws GLib.Error
          */
         commit_transaction(cnc: Connection, name: string): boolean;
 
@@ -23901,6 +24221,7 @@ export namespace Gda {
          * @param type 
          * @param options 
          * @since 6.0
+         * @throws GLib.Error
          */
         create_operation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation;
 
@@ -23914,6 +24235,7 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @since 6.0
+         * @throws GLib.Error
          */
         delete_savepoint(cnc: Connection, name: string): boolean;
 
@@ -23943,6 +24265,7 @@ export namespace Gda {
          * This command should be called inmediately called after a INSERT SQL command
          * @param cnc a {@link Gda.Connection} to get last inserted from
          * @returns a {@link Gda.Set} with all data of the last inserted row
+         * @throws GLib.Error
          */
         get_last_inserted(cnc: Connection): Set;
 
@@ -23983,6 +24306,7 @@ export namespace Gda {
          * @param cnc 
          * @param op 
          * @since 6.0
+         * @throws GLib.Error
          */
         perform_operation(cnc: Connection, op: ServerOperation): boolean;
 
@@ -23998,6 +24322,7 @@ export namespace Gda {
          * @param cnc 
          * @param op 
          * @since 6.0
+         * @throws GLib.Error
          */
         render_operation(cnc: Connection, op: ServerOperation): string;
 
@@ -24005,6 +24330,7 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @since 6.0
+         * @throws GLib.Error
          */
         rollback_savepoint(cnc: Connection, name: string): boolean;
 
@@ -24012,6 +24338,7 @@ export namespace Gda {
          * @param cnc 
          * @param name 
          * @since 6.0
+         * @throws GLib.Error
          */
         rollback_transaction(cnc: Connection, name: string): boolean;
 
@@ -24023,6 +24350,7 @@ export namespace Gda {
          * @param col_types 
          * @param last_inserted_row 
          * @since 6.0
+         * @throws GLib.Error
          */
         statement_execute<T = GObject.Object>(cnc: Connection, stmt: Statement, params: Set, model_usage: StatementModelUsage, col_types: GObject.GType, last_inserted_row: Set): T;
 
@@ -24030,6 +24358,7 @@ export namespace Gda {
          * @param cnc 
          * @param stmt 
          * @since 6.0
+         * @throws GLib.Error
          */
         statement_prepare(cnc: Connection, stmt: Statement): boolean;
 
@@ -24038,6 +24367,7 @@ export namespace Gda {
          * @param stmt 
          * @param params 
          * @since 6.0
+         * @throws GLib.Error
          */
         statement_rewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement;
 
@@ -24047,6 +24377,7 @@ export namespace Gda {
          * @param params 
          * @param flags 
          * @since 6.0
+         * @throws GLib.Error
          */
         statement_to_sql(cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag): [string, Holder[] | null];
 
@@ -24528,6 +24859,7 @@ export namespace Gda {
         // Methods
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         btypes(): DataModel;
 
@@ -24536,11 +24868,13 @@ export namespace Gda {
          * @param chset_schema 
          * @param chset_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         character_set(chset_catalog: string, chset_schema: string, chset_name_n: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         character_sets(): DataModel;
 
@@ -24550,11 +24884,13 @@ export namespace Gda {
          * @param table_name 
          * @param constraint_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         check_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         check_columns(): DataModel;
 
@@ -24563,16 +24899,19 @@ export namespace Gda {
          * @param collation_schema 
          * @param collation_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         collation(collation_catalog: string, collation_schema: string, collation_name_n: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         collations(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         columns(): DataModel;
 
@@ -24582,6 +24921,7 @@ export namespace Gda {
          * @param table_name 
          * @param constraint_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         constraint_ref(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
@@ -24591,11 +24931,13 @@ export namespace Gda {
          * @param table_name 
          * @param constraint_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         constraint_table(table_catalog: string, table_schema: string, table_name: string, constraint_name_n: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         constraints_ref(): DataModel;
 
@@ -24604,6 +24946,7 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         constraints_ref_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
@@ -24612,11 +24955,13 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         constraints_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         constraints_tables(): DataModel;
 
@@ -24624,6 +24969,7 @@ export namespace Gda {
          * @param domain_catalog 
          * @param domain_schema 
          * @since 6.0
+         * @throws GLib.Error
          */
         domain(domain_catalog: string, domain_schema: string): Row;
 
@@ -24633,6 +24979,7 @@ export namespace Gda {
          * @param domain_name 
          * @param contraint_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         domain_constraint(domain_catalog: string, domain_schema: string, domain_name: string, contraint_name: string): Row;
 
@@ -24641,27 +24988,32 @@ export namespace Gda {
          * @param domain_schema 
          * @param domain_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         domain_constraints(domain_catalog: string, domain_schema: string, domain_name: string): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         domains(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         domains_constraints(): DataModel;
 
         /**
          * @param specific_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         element_type(specific_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         element_types(): DataModel;
 
@@ -24670,11 +25022,13 @@ export namespace Gda {
          * @param udt_schema 
          * @param udt_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         enum_type(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         enums_type(): DataModel;
 
@@ -24684,6 +25038,7 @@ export namespace Gda {
          * @param params a {@link Gda.Set} with all paramaters to use in query
          * @returns a new {@link Gda.DataModel} with as a result of the query
          * @since 6.0
+         * @throws GLib.Error
          */
         execute_query(sql: string, params: Set | null): DataModel | null;
 
@@ -24693,6 +25048,7 @@ export namespace Gda {
          * @param params 
          * @returns a new {@link Gda.DataModel} with as a result of the query
          * @since 6.0
+         * @throws GLib.Error
          */
         execute_query_row(sql: string, params: Set): Row | null;
 
@@ -24708,11 +25064,13 @@ export namespace Gda {
          * @param table_name 
          * @param index_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         index_col(table_catalog: string, table_schema: string, table_name: string, index_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         index_cols(): DataModel;
 
@@ -24722,6 +25080,7 @@ export namespace Gda {
          * @param table_name 
          * @param index_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         index_table(table_catalog: string, table_schema: string, table_name: string, index_name_n: string): Row;
 
@@ -24730,11 +25089,13 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         indexes_table(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         indexes_tables(): DataModel;
 
@@ -24744,11 +25105,13 @@ export namespace Gda {
          * @param table_name 
          * @param constraint_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         key_column(table_catalog: string, table_schema: string, table_name: string, constraint_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         key_columns(): DataModel;
 
@@ -24757,6 +25120,7 @@ export namespace Gda {
          * @param routine_schema 
          * @param routine_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         routine(routine_catalog: string, routine_schema: string, routine_name_n: string): Row;
 
@@ -24765,6 +25129,7 @@ export namespace Gda {
          * @param rout_schema 
          * @param rout_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         routine_col(rout_catalog: string, rout_schema: string, rout_name: string): Row;
 
@@ -24773,21 +25138,25 @@ export namespace Gda {
          * @param rout_schema 
          * @param rout_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         routine_pars(rout_catalog: string, rout_schema: string, rout_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         routines(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         routines_col(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         routines_pars(): DataModel;
 
@@ -24795,11 +25164,13 @@ export namespace Gda {
          * @param catalog_name 
          * @param schema_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         schemata(catalog_name: string, schema_name_n: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         schematas(): DataModel;
 
@@ -24808,6 +25179,7 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         table(table_catalog: string, table_schema: string, table_name_n: string): Row;
 
@@ -24817,6 +25189,7 @@ export namespace Gda {
          * @param table_name 
          * @param column_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         table_column(table_catalog: string, table_schema: string, table_name: string, column_name: string): Row;
 
@@ -24825,16 +25198,19 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         table_columns(table_catalog: string, table_schema: string, table_name: string): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         tables(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         tables_columns(): DataModel;
 
@@ -24843,11 +25219,13 @@ export namespace Gda {
          * @param table_schema 
          * @param table_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         trigger(table_catalog: string, table_schema: string, table_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         triggers(): DataModel;
 
@@ -24855,6 +25233,7 @@ export namespace Gda {
          * @param udt_catalog 
          * @param udt_schema 
          * @since 6.0
+         * @throws GLib.Error
          */
         udt(udt_catalog: string, udt_schema: string): Row;
 
@@ -24863,16 +25242,19 @@ export namespace Gda {
          * @param udt_schema 
          * @param udt_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         udt_col(udt_catalog: string, udt_schema: string, udt_name: string): Row;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         udt_cols(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         udts(): DataModel;
 
@@ -24881,6 +25263,7 @@ export namespace Gda {
          * @param view_schema 
          * @param view_name_n 
          * @since 6.0
+         * @throws GLib.Error
          */
         view(view_catalog: string, view_schema: string, view_name_n: string): Row;
 
@@ -24890,6 +25273,7 @@ export namespace Gda {
          * @param view_name 
          * @param column_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         view_column(view_catalog: string, view_schema: string, view_name: string, column_name: string): Row;
 
@@ -24898,16 +25282,19 @@ export namespace Gda {
          * @param view_schema 
          * @param view_name 
          * @since 6.0
+         * @throws GLib.Error
          */
         view_columns(view_catalog: string, view_schema: string, view_name: string): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         views(): DataModel;
 
         /**
          * @since 6.0
+         * @throws GLib.Error
          */
         views_columns(): DataModel;
     }
@@ -25126,21 +25513,25 @@ export namespace Gda {
         // Methods
         /**
          * @param name 
+         * @throws GLib.Error
          */
         add_savepoint(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         begin_transaction(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         commit_transaction(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         delete_savepoint(name: string): boolean;
 
@@ -25150,11 +25541,13 @@ export namespace Gda {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         rollback_savepoint(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         rollback_transaction(name: string): boolean;
 

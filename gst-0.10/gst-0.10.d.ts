@@ -37,9 +37,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ActivateMode {
-        NONE,
-        PUSH,
-        PULL,
+        NONE = 0,
+        PUSH = 1,
+        PULL = 2,
     }
 
 
@@ -56,9 +56,9 @@ export namespace Gst {
      * @since 0.10.24
      */
     enum BufferListItem {
-        CONTINUE,
-        SKIP_GROUP,
-        END,
+        CONTINUE = 0,
+        SKIP_GROUP = 1,
+        END = 2,
     }
 
 
@@ -74,10 +74,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum BufferingMode {
-        STREAM,
-        DOWNLOAD,
-        TIMESHIFT,
-        LIVE,
+        STREAM = 0,
+        DOWNLOAD = 1,
+        TIMESHIFT = 2,
+        LIVE = 3,
     }
 
 
@@ -93,9 +93,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum BusSyncReply {
-        DROP,
-        PASS,
-        ASYNC,
+        DROP = 0,
+        PASS = 1,
+        ASYNC = 2,
     }
 
 
@@ -111,8 +111,8 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ClockEntryType {
-        SINGLE,
-        PERIODIC,
+        SINGLE = 0,
+        PERIODIC = 1,
     }
 
 
@@ -128,13 +128,13 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ClockReturn {
-        OK,
-        EARLY,
-        UNSCHEDULED,
-        BUSY,
-        BADTIME,
-        ERROR,
-        UNSUPPORTED,
+        OK = 0,
+        EARLY = 1,
+        UNSCHEDULED = 2,
+        BUSY = 3,
+        BADTIME = 4,
+        ERROR = 5,
+        UNSUPPORTED = 6,
     }
 
 
@@ -150,8 +150,8 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ClockType {
-        REALTIME,
-        MONOTONIC,
+        REALTIME = 0,
+        MONOTONIC = 1,
     }
 
 
@@ -167,21 +167,21 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum CoreError {
-        FAILED,
-        TOO_LAZY,
-        NOT_IMPLEMENTED,
-        STATE_CHANGE,
-        PAD,
-        THREAD,
-        NEGOTIATION,
-        EVENT,
-        SEEK,
-        CAPS,
-        TAG,
-        MISSING_PLUGIN,
-        CLOCK,
-        DISABLED,
-        NUM_ERRORS,
+        FAILED = 1,
+        TOO_LAZY = 2,
+        NOT_IMPLEMENTED = 3,
+        STATE_CHANGE = 4,
+        PAD = 5,
+        THREAD = 6,
+        NEGOTIATION = 7,
+        EVENT = 8,
+        SEEK = 9,
+        CAPS = 10,
+        TAG = 11,
+        MISSING_PLUGIN = 12,
+        CLOCK = 13,
+        DISABLED = 14,
+        NUM_ERRORS = 15,
     }
 
 
@@ -198,24 +198,24 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum DebugColorFlags {
-        FG_BLACK,
-        FG_RED,
-        FG_GREEN,
-        FG_YELLOW,
-        FG_BLUE,
-        FG_MAGENTA,
-        FG_CYAN,
-        FG_WHITE,
-        BG_BLACK,
-        BG_RED,
-        BG_GREEN,
-        BG_YELLOW,
-        BG_BLUE,
-        BG_MAGENTA,
-        BG_CYAN,
-        BG_WHITE,
-        BOLD,
-        UNDERLINE,
+        FG_BLACK = 0,
+        FG_RED = 1,
+        FG_GREEN = 2,
+        FG_YELLOW = 3,
+        FG_BLUE = 4,
+        FG_MAGENTA = 5,
+        FG_CYAN = 6,
+        FG_WHITE = 7,
+        BG_BLACK = 0,
+        BG_RED = 16,
+        BG_GREEN = 32,
+        BG_YELLOW = 48,
+        BG_BLUE = 64,
+        BG_MAGENTA = 80,
+        BG_CYAN = 96,
+        BG_WHITE = 112,
+        BOLD = 256,
+        UNDERLINE = 512,
     }
 
 
@@ -232,16 +232,16 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum DebugLevel {
-        NONE,
-        ERROR,
-        WARNING,
-        INFO,
-        DEBUG,
-        LOG,
-        FIXME,
-        TRACE,
-        MEMDUMP,
-        COUNT,
+        NONE = 0,
+        ERROR = 1,
+        WARNING = 2,
+        INFO = 3,
+        DEBUG = 4,
+        LOG = 5,
+        FIXME = 6,
+        TRACE = 7,
+        MEMDUMP = 9,
+        COUNT = 10,
     }
 
 
@@ -262,24 +262,24 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum EventType {
-        UNKNOWN,
-        FLUSH_START,
-        FLUSH_STOP,
-        EOS,
-        NEWSEGMENT,
-        TAG,
-        BUFFERSIZE,
-        SINK_MESSAGE,
-        QOS,
-        SEEK,
-        NAVIGATION,
-        LATENCY,
-        STEP,
-        CUSTOM_UPSTREAM,
-        CUSTOM_DOWNSTREAM,
-        CUSTOM_DOWNSTREAM_OOB,
-        CUSTOM_BOTH,
-        CUSTOM_BOTH_OOB,
+        UNKNOWN = 0,
+        FLUSH_START = 19,
+        FLUSH_STOP = 39,
+        EOS = 86,
+        NEWSEGMENT = 102,
+        TAG = 118,
+        BUFFERSIZE = 134,
+        SINK_MESSAGE = 150,
+        QOS = 241,
+        SEEK = 257,
+        NAVIGATION = 273,
+        LATENCY = 289,
+        STEP = 305,
+        CUSTOM_UPSTREAM = 513,
+        CUSTOM_DOWNSTREAM = 518,
+        CUSTOM_DOWNSTREAM_OOB = 514,
+        CUSTOM_BOTH = 519,
+        CUSTOM_BOTH_OOB = 515,
     }
 
 
@@ -308,20 +308,20 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum FlowReturn {
-        CUSTOM_SUCCESS_2,
-        CUSTOM_SUCCESS_1,
-        CUSTOM_SUCCESS,
-        RESEND,
-        OK,
-        NOT_LINKED,
-        WRONG_STATE,
-        UNEXPECTED,
-        NOT_NEGOTIATED,
-        ERROR,
-        NOT_SUPPORTED,
-        CUSTOM_ERROR,
-        CUSTOM_ERROR_1,
-        CUSTOM_ERROR_2,
+        CUSTOM_SUCCESS_2 = 102,
+        CUSTOM_SUCCESS_1 = 101,
+        CUSTOM_SUCCESS = 100,
+        RESEND = 1,
+        OK = 0,
+        NOT_LINKED = -1,
+        WRONG_STATE = -2,
+        UNEXPECTED = -3,
+        NOT_NEGOTIATED = -4,
+        ERROR = -5,
+        NOT_SUPPORTED = -6,
+        CUSTOM_ERROR = -100,
+        CUSTOM_ERROR_1 = -101,
+        CUSTOM_ERROR_2 = -102,
     }
 
 
@@ -337,12 +337,12 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum Format {
-        UNDEFINED,
-        DEFAULT,
-        BYTES,
-        TIME,
-        BUFFERS,
-        PERCENT,
+        UNDEFINED = 0,
+        DEFAULT = 1,
+        BYTES = 2,
+        TIME = 3,
+        BUFFERS = 4,
+        PERCENT = 5,
     }
 
 
@@ -358,9 +358,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IndexCertainty {
-        UNKNOWN,
-        CERTAIN,
-        FUZZY,
+        UNKNOWN = 0,
+        CERTAIN = 1,
+        FUZZY = 2,
     }
 
 
@@ -376,10 +376,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IndexEntryType {
-        ID,
-        ASSOCIATION,
-        OBJECT,
-        FORMAT,
+        ID = 0,
+        ASSOCIATION = 1,
+        OBJECT = 2,
+        FORMAT = 3,
     }
 
 
@@ -395,9 +395,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IndexLookupMethod {
-        EXACT,
-        BEFORE,
-        AFTER,
+        EXACT = 0,
+        BEFORE = 1,
+        AFTER = 2,
     }
 
 
@@ -413,9 +413,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IndexResolverMethod {
-        CUSTOM,
-        GTYPE,
-        PATH,
+        CUSTOM = 0,
+        GTYPE = 1,
+        PATH = 2,
     }
 
 
@@ -431,9 +431,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IteratorItem {
-        SKIP,
-        PASS,
-        END,
+        SKIP = 0,
+        PASS = 1,
+        END = 2,
     }
 
 
@@ -449,10 +449,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum IteratorResult {
-        DONE,
-        OK,
-        RESYNC,
-        ERROR,
+        DONE = 0,
+        OK = 1,
+        RESYNC = 2,
+        ERROR = 3,
     }
 
 
@@ -469,13 +469,13 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum LibraryError {
-        FAILED,
-        TOO_LAZY,
-        INIT,
-        SHUTDOWN,
-        SETTINGS,
-        ENCODE,
-        NUM_ERRORS,
+        FAILED = 1,
+        TOO_LAZY = 2,
+        INIT = 3,
+        SHUTDOWN = 4,
+        SETTINGS = 5,
+        ENCODE = 6,
+        NUM_ERRORS = 7,
     }
 
 
@@ -491,9 +491,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum PadDirection {
-        UNKNOWN,
-        SRC,
-        SINK,
+        UNKNOWN = 0,
+        SRC = 1,
+        SINK = 2,
     }
 
 
@@ -509,13 +509,13 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum PadLinkReturn {
-        OK,
-        WRONG_HIERARCHY,
-        WAS_LINKED,
-        WRONG_DIRECTION,
-        NOFORMAT,
-        NOSCHED,
-        REFUSED,
+        OK = 0,
+        WRONG_HIERARCHY = -1,
+        WAS_LINKED = -2,
+        WRONG_DIRECTION = -3,
+        NOFORMAT = -4,
+        NOSCHED = -5,
+        REFUSED = -6,
     }
 
 
@@ -531,9 +531,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum PadPresence {
-        ALWAYS,
-        SOMETIMES,
-        REQUEST,
+        ALWAYS = 0,
+        SOMETIMES = 1,
+        REQUEST = 2,
     }
 
 
@@ -549,13 +549,13 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ParseError {
-        SYNTAX,
-        NO_SUCH_ELEMENT,
-        NO_SUCH_PROPERTY,
-        LINK,
-        COULD_NOT_SET_PROPERTY,
-        EMPTY_BIN,
-        EMPTY,
+        SYNTAX = 0,
+        NO_SUCH_ELEMENT = 1,
+        NO_SUCH_PROPERTY = 2,
+        LINK = 3,
+        COULD_NOT_SET_PROPERTY = 4,
+        EMPTY_BIN = 5,
+        EMPTY = 6,
     }
 
 
@@ -571,9 +571,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum PluginError {
-        MODULE,
-        DEPENDENCIES,
-        NAME_MISMATCH,
+        MODULE = 0,
+        DEPENDENCIES = 1,
+        NAME_MISMATCH = 2,
     }
 
 
@@ -589,19 +589,19 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum QueryType {
-        NONE,
-        POSITION,
-        DURATION,
-        LATENCY,
-        JITTER,
-        RATE,
-        SEEKING,
-        SEGMENT,
-        CONVERT,
-        FORMATS,
-        BUFFERING,
-        CUSTOM,
-        URI,
+        NONE = 0,
+        POSITION = 1,
+        DURATION = 2,
+        LATENCY = 3,
+        JITTER = 4,
+        RATE = 5,
+        SEEKING = 6,
+        SEGMENT = 7,
+        CONVERT = 8,
+        FORMATS = 9,
+        BUFFERING = 10,
+        CUSTOM = 11,
+        URI = 12,
     }
 
 
@@ -621,10 +621,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum Rank {
-        NONE,
-        MARGINAL,
-        SECONDARY,
-        PRIMARY,
+        NONE = 0,
+        MARGINAL = 64,
+        SECONDARY = 128,
+        PRIMARY = 256,
     }
 
 
@@ -642,21 +642,21 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum ResourceError {
-        FAILED,
-        TOO_LAZY,
-        NOT_FOUND,
-        BUSY,
-        OPEN_READ,
-        OPEN_WRITE,
-        OPEN_READ_WRITE,
-        CLOSE,
-        READ,
-        WRITE,
-        SEEK,
-        SYNC,
-        SETTINGS,
-        NO_SPACE_LEFT,
-        NUM_ERRORS,
+        FAILED = 1,
+        TOO_LAZY = 2,
+        NOT_FOUND = 3,
+        BUSY = 4,
+        OPEN_READ = 5,
+        OPEN_WRITE = 6,
+        OPEN_READ_WRITE = 7,
+        CLOSE = 8,
+        READ = 9,
+        WRITE = 10,
+        SEEK = 11,
+        SYNC = 12,
+        SETTINGS = 13,
+        NO_SPACE_LEFT = 14,
+        NUM_ERRORS = 15,
     }
 
 
@@ -673,9 +673,9 @@ export namespace Gst {
      * @since 0.10.23
      */
     enum SearchMode {
-        EXACT,
-        BEFORE,
-        AFTER,
+        EXACT = 0,
+        BEFORE = 1,
+        AFTER = 2,
     }
 
 
@@ -694,10 +694,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum SeekType {
-        NONE,
-        CUR,
-        SET,
-        END,
+        NONE = 0,
+        CUR = 1,
+        SET = 2,
+        END = 3,
     }
 
 
@@ -714,11 +714,11 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum State {
-        VOID_PENDING,
-        NULL,
-        READY,
-        PAUSED,
-        PLAYING,
+        VOID_PENDING = 0,
+        NULL = 1,
+        READY = 2,
+        PAUSED = 3,
+        PLAYING = 4,
     }
 
 
@@ -736,12 +736,12 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum StateChange {
-        NULL_TO_READY,
-        READY_TO_PAUSED,
-        PAUSED_TO_PLAYING,
-        PLAYING_TO_PAUSED,
-        PAUSED_TO_READY,
-        READY_TO_NULL,
+        NULL_TO_READY = 10,
+        READY_TO_PAUSED = 19,
+        PAUSED_TO_PLAYING = 28,
+        PLAYING_TO_PAUSED = 35,
+        PAUSED_TO_READY = 26,
+        READY_TO_NULL = 17,
     }
 
 
@@ -757,10 +757,10 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum StateChangeReturn {
-        FAILURE,
-        SUCCESS,
-        ASYNC,
-        NO_PREROLL,
+        FAILURE = 0,
+        SUCCESS = 1,
+        ASYNC = 2,
+        NO_PREROLL = 3,
     }
 
 
@@ -778,20 +778,20 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum StreamError {
-        FAILED,
-        TOO_LAZY,
-        NOT_IMPLEMENTED,
-        TYPE_NOT_FOUND,
-        WRONG_TYPE,
-        CODEC_NOT_FOUND,
-        DECODE,
-        ENCODE,
-        DEMUX,
-        MUX,
-        FORMAT,
-        DECRYPT,
-        DECRYPT_NOKEY,
-        NUM_ERRORS,
+        FAILED = 1,
+        TOO_LAZY = 2,
+        NOT_IMPLEMENTED = 3,
+        TYPE_NOT_FOUND = 4,
+        WRONG_TYPE = 5,
+        CODEC_NOT_FOUND = 6,
+        DECODE = 7,
+        ENCODE = 8,
+        DEMUX = 9,
+        MUX = 10,
+        FORMAT = 11,
+        DECRYPT = 12,
+        DECRYPT_NOKEY = 13,
+        NUM_ERRORS = 14,
     }
 
 
@@ -809,13 +809,13 @@ export namespace Gst {
      * @since 0.10.24
      */
     enum StreamStatusType {
-        CREATE,
-        ENTER,
-        LEAVE,
-        DESTROY,
-        START,
-        PAUSE,
-        STOP,
+        CREATE = 0,
+        ENTER = 1,
+        LEAVE = 2,
+        DESTROY = 3,
+        START = 8,
+        PAUSE = 9,
+        STOP = 10,
     }
 
 
@@ -832,8 +832,8 @@ export namespace Gst {
      * @since 0.10.22
      */
     enum StructureChangeType {
-        LINK,
-        UNLINK,
+        LINK = 0,
+        UNLINK = 1,
     }
 
 
@@ -849,11 +849,11 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum TagFlag {
-        UNDEFINED,
-        META,
-        ENCODED,
-        DECODED,
-        COUNT,
+        UNDEFINED = 0,
+        META = 1,
+        ENCODED = 2,
+        DECODED = 3,
+        COUNT = 4,
     }
 
 
@@ -932,14 +932,14 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum TagMergeMode {
-        UNDEFINED,
-        REPLACE_ALL,
-        REPLACE,
-        APPEND,
-        PREPEND,
-        KEEP,
-        KEEP_ALL,
-        COUNT,
+        UNDEFINED = 0,
+        REPLACE_ALL = 1,
+        REPLACE = 2,
+        APPEND = 3,
+        PREPEND = 4,
+        KEEP = 5,
+        KEEP_ALL = 6,
+        COUNT = 7,
     }
 
 
@@ -955,9 +955,9 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum TaskState {
-        STARTED,
-        STOPPED,
-        PAUSED,
+        STARTED = 0,
+        STOPPED = 1,
+        PAUSED = 2,
     }
 
 
@@ -974,11 +974,11 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum TypeFindProbability {
-        MINIMUM,
-        POSSIBLE,
-        LIKELY,
-        NEARLY_CERTAIN,
-        MAXIMUM,
+        MINIMUM = 1,
+        POSSIBLE = 50,
+        LIKELY = 80,
+        NEARLY_CERTAIN = 99,
+        MAXIMUM = 100,
     }
 
 
@@ -994,266 +994,650 @@ export namespace Gst {
      * @gir-type Enum
      */
     enum URIType {
-        UNKNOWN,
-        SINK,
-        SRC,
+        UNKNOWN = 0,
+        SINK = 1,
+        SRC = 2,
     }
 
 
+    /**
+     * @default sink
+     */
     const BASE_TRANSFORM_SINK_NAME: string;
 
+    /**
+     * @default src
+     */
     const BASE_TRANSFORM_SRC_NAME: string;
 
+    /**
+     * @default 0
+     */
     const BUFFER_COPY_ALL: number;
 
+    /**
+     * @default -1
+     */
     const BUFFER_OFFSET_NONE: number;
 
+    /**
+     * @default GstBuffer
+     */
     const BUFFER_TRACE_NAME: string;
 
+    /**
+     * @default 1
+     */
     const CAN_INLINE: number;
 
+    /**
+     * @default GstClockEntry
+     */
     const CLOCK_ENTRY_TRACE_NAME: string;
 
+    /**
+     * @default -1
+     */
     const CLOCK_TIME_NONE: number;
 
+    /**
+     * @default 240
+     */
     const DEBUG_BG_MASK: number;
 
+    /**
+     * @default 15
+     */
     const DEBUG_FG_MASK: number;
 
+    /**
+     * @default 65280
+     */
     const DEBUG_FORMAT_MASK: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_ALLOC_TRACE: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_GST_DEBUG: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_LOADSAVE: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_LOADSAVE_REGISTRY: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_PARSE: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_PLUGIN: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_REGISTRY: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_TRACE: number;
 
+    /**
+     * @default 1
+     */
     const DISABLE_XML: number;
 
+    /**
+     * @default system error: %s
+     */
     const ERROR_SYSTEM: string;
 
+    /**
+     * @default GstEvent
+     */
     const EVENT_TRACE_NAME: string;
 
+    /**
+     * @default 0
+     */
     const EVENT_TYPE_BOTH: number;
 
+    /**
+     * @default 4
+     */
     const EVENT_TYPE_SHIFT: number;
 
+    /**
+     * @default c%c%c%c
+     */
     const FOURCC_FORMAT: string;
 
+    /**
+     * @default 1
+     */
     const HAVE_GLIB_2_8: number;
 
+    /**
+     * @default 1
+     */
     const HAVE_UNALIGNED_ACCESS: number;
 
+    /**
+     * @default -1
+     */
     const INDEX_ID_INVALID: number;
 
+    /**
+     * @default unknown
+     */
     const LICENSE_UNKNOWN: string;
 
+    /**
+     * @default GstMessage
+     */
     const MESSAGE_TRACE_NAME: string;
 
+    /**
+     * @default 0
+     */
     const MSECOND: number;
 
+    /**
+     * @default 3.14159265359
+     */
     const M_PI: number;
 
+    /**
+     * @default 0
+     */
     const NSECOND: number;
 
+    /**
+     * @default 4
+     */
     const PADDING: number;
 
+    /**
+     * @default 20
+     */
     const PADDING_LARGE: number;
 
+    /**
+     * @default 0
+     */
     const PAD_LINK_CHECK_DEFAULT: number;
 
+    /**
+     * @default 2
+     */
     const PARAM_CONTROLLABLE: number;
 
+    /**
+     * @default 8
+     */
     const PARAM_MUTABLE_PAUSED: number;
 
+    /**
+     * @default 16
+     */
     const PARAM_MUTABLE_PLAYING: number;
 
+    /**
+     * @default 4
+     */
     const PARAM_MUTABLE_READY: number;
 
+    /**
+     * @default 256
+     */
     const PARAM_USER_SHIFT: number;
 
+    /**
+     * @default P
+     */
     const PTR_FORMAT: string;
 
+    /**
+     * @default 0
+     */
     const SECOND: number;
 
+    /**
+     * @default Q
+     */
     const SEGMENT_FORMAT: string;
 
+    /**
+     * @default album
+     */
     const TAG_ALBUM: string;
 
+    /**
+     * @default album-artist
+     */
     const TAG_ALBUM_ARTIST: string;
 
+    /**
+     * @default album-artist-sortname
+     */
     const TAG_ALBUM_ARTIST_SORTNAME: string;
 
+    /**
+     * @default replaygain-album-gain
+     */
     const TAG_ALBUM_GAIN: string;
 
+    /**
+     * @default replaygain-album-peak
+     */
     const TAG_ALBUM_PEAK: string;
 
+    /**
+     * @default album-sortname
+     */
     const TAG_ALBUM_SORTNAME: string;
 
+    /**
+     * @default album-disc-count
+     */
     const TAG_ALBUM_VOLUME_COUNT: string;
 
+    /**
+     * @default album-disc-number
+     */
     const TAG_ALBUM_VOLUME_NUMBER: string;
 
+    /**
+     * @default artist
+     */
     const TAG_ARTIST: string;
 
+    /**
+     * @default musicbrainz-sortname
+     */
     const TAG_ARTIST_SORTNAME: string;
 
+    /**
+     * @default attachment
+     */
     const TAG_ATTACHMENT: string;
 
+    /**
+     * @default audio-codec
+     */
     const TAG_AUDIO_CODEC: string;
 
+    /**
+     * @default beats-per-minute
+     */
     const TAG_BEATS_PER_MINUTE: string;
 
+    /**
+     * @default bitrate
+     */
     const TAG_BITRATE: string;
 
+    /**
+     * @default codec
+     */
     const TAG_CODEC: string;
 
+    /**
+     * @default comment
+     */
     const TAG_COMMENT: string;
 
+    /**
+     * @default composer
+     */
     const TAG_COMPOSER: string;
 
+    /**
+     * @default composer-sortname
+     */
     const TAG_COMPOSER_SORTNAME: string;
 
+    /**
+     * @default contact
+     */
     const TAG_CONTACT: string;
 
+    /**
+     * @default container-format
+     */
     const TAG_CONTAINER_FORMAT: string;
 
+    /**
+     * @default copyright
+     */
     const TAG_COPYRIGHT: string;
 
+    /**
+     * @default copyright-uri
+     */
     const TAG_COPYRIGHT_URI: string;
 
+    /**
+     * @default date
+     */
     const TAG_DATE: string;
 
+    /**
+     * @default description
+     */
     const TAG_DESCRIPTION: string;
 
+    /**
+     * @default device-manufacturer
+     */
     const TAG_DEVICE_MANUFACTURER: string;
 
+    /**
+     * @default device-model
+     */
     const TAG_DEVICE_MODEL: string;
 
+    /**
+     * @default duration
+     */
     const TAG_DURATION: string;
 
+    /**
+     * @default encoder
+     */
     const TAG_ENCODER: string;
 
+    /**
+     * @default encoder-version
+     */
     const TAG_ENCODER_VERSION: string;
 
+    /**
+     * @default extended-comment
+     */
     const TAG_EXTENDED_COMMENT: string;
 
+    /**
+     * @default genre
+     */
     const TAG_GENRE: string;
 
+    /**
+     * @default geo-location-capture-direction
+     */
     const TAG_GEO_LOCATION_CAPTURE_DIRECTION: string;
 
+    /**
+     * @default geo-location-city
+     */
     const TAG_GEO_LOCATION_CITY: string;
 
+    /**
+     * @default geo-location-country
+     */
     const TAG_GEO_LOCATION_COUNTRY: string;
 
+    /**
+     * @default geo-location-elevation
+     */
     const TAG_GEO_LOCATION_ELEVATION: string;
 
+    /**
+     * @default geo-location-latitude
+     */
     const TAG_GEO_LOCATION_LATITUDE: string;
 
+    /**
+     * @default geo-location-longitude
+     */
     const TAG_GEO_LOCATION_LONGITUDE: string;
 
+    /**
+     * @default geo-location-movement-direction
+     */
     const TAG_GEO_LOCATION_MOVEMENT_DIRECTION: string;
 
+    /**
+     * @default geo-location-movement-speed
+     */
     const TAG_GEO_LOCATION_MOVEMENT_SPEED: string;
 
+    /**
+     * @default geo-location-name
+     */
     const TAG_GEO_LOCATION_NAME: string;
 
+    /**
+     * @default geo-location-sublocation
+     */
     const TAG_GEO_LOCATION_SUBLOCATION: string;
 
+    /**
+     * @default grouping
+     */
     const TAG_GROUPING: string;
 
+    /**
+     * @default homepage
+     */
     const TAG_HOMEPAGE: string;
 
+    /**
+     * @default image
+     */
     const TAG_IMAGE: string;
 
+    /**
+     * @default image-orientation
+     */
     const TAG_IMAGE_ORIENTATION: string;
 
+    /**
+     * @default isrc
+     */
     const TAG_ISRC: string;
 
+    /**
+     * @default keywords
+     */
     const TAG_KEYWORDS: string;
 
+    /**
+     * @default language-code
+     */
     const TAG_LANGUAGE_CODE: string;
 
+    /**
+     * @default license
+     */
     const TAG_LICENSE: string;
 
+    /**
+     * @default license-uri
+     */
     const TAG_LICENSE_URI: string;
 
+    /**
+     * @default location
+     */
     const TAG_LOCATION: string;
 
+    /**
+     * @default lyrics
+     */
     const TAG_LYRICS: string;
 
+    /**
+     * @default maximum-bitrate
+     */
     const TAG_MAXIMUM_BITRATE: string;
 
+    /**
+     * @default minimum-bitrate
+     */
     const TAG_MINIMUM_BITRATE: string;
 
+    /**
+     * @default nominal-bitrate
+     */
     const TAG_NOMINAL_BITRATE: string;
 
+    /**
+     * @default organization
+     */
     const TAG_ORGANIZATION: string;
 
+    /**
+     * @default performer
+     */
     const TAG_PERFORMER: string;
 
+    /**
+     * @default preview-image
+     */
     const TAG_PREVIEW_IMAGE: string;
 
+    /**
+     * @default replaygain-reference-level
+     */
     const TAG_REFERENCE_LEVEL: string;
 
+    /**
+     * @default serial
+     */
     const TAG_SERIAL: string;
 
+    /**
+     * @default show-episode-number
+     */
     const TAG_SHOW_EPISODE_NUMBER: string;
 
+    /**
+     * @default show-name
+     */
     const TAG_SHOW_NAME: string;
 
+    /**
+     * @default show-season-number
+     */
     const TAG_SHOW_SEASON_NUMBER: string;
 
+    /**
+     * @default show-sortname
+     */
     const TAG_SHOW_SORTNAME: string;
 
+    /**
+     * @default subtitle-codec
+     */
     const TAG_SUBTITLE_CODEC: string;
 
+    /**
+     * @default title
+     */
     const TAG_TITLE: string;
 
+    /**
+     * @default title-sortname
+     */
     const TAG_TITLE_SORTNAME: string;
 
+    /**
+     * @default track-count
+     */
     const TAG_TRACK_COUNT: string;
 
+    /**
+     * @default replaygain-track-gain
+     */
     const TAG_TRACK_GAIN: string;
 
+    /**
+     * @default track-number
+     */
     const TAG_TRACK_NUMBER: string;
 
+    /**
+     * @default replaygain-track-peak
+     */
     const TAG_TRACK_PEAK: string;
 
+    /**
+     * @default user-rating
+     */
     const TAG_USER_RATING: string;
 
+    /**
+     * @default version
+     */
     const TAG_VERSION: string;
 
+    /**
+     * @default video-codec
+     */
     const TAG_VIDEO_CODEC: string;
 
+    /**
+     * @default u:%02u:%02u.%09u
+     */
     const TIME_FORMAT: string;
 
+    /**
+     * @default 0
+     */
     const USECOND: number;
 
+    /**
+     * @default 0
+     */
     const VALUE_EQUAL: number;
 
+    /**
+     * @default 1
+     */
     const VALUE_GREATER_THAN: number;
 
+    /**
+     * @default -1
+     */
     const VALUE_LESS_THAN: number;
 
+    /**
+     * @default 2
+     */
     const VALUE_UNORDERED: number;
 
+    /**
+     * @default 0
+     */
     const VERSION_MAJOR: number;
 
+    /**
+     * @default 29
+     */
     const VERSION_MICRO: number;
 
+    /**
+     * @default 10
+     */
     const VERSION_MINOR: number;
 
+    /**
+     * @default 4
+     */
     const VERSION_NANO: number;
 
     function alloc_trace_available(): boolean;
@@ -1495,6 +1879,7 @@ export namespace Gst {
 
     /**
      * @param argv 
+     * @throws GLib.Error
      */
     function init_check(argv: string[]): [boolean, number];
 
@@ -1531,6 +1916,7 @@ export namespace Gst {
     /**
      * @param bin_description 
      * @param ghost_unlinked_pads 
+     * @throws GLib.Error
      */
     function parse_bin_from_description(bin_description: string, ghost_unlinked_pads: boolean): Element;
 
@@ -1539,11 +1925,13 @@ export namespace Gst {
      * @param ghost_unlinked_pads 
      * @param context 
      * @param flags 
+     * @throws GLib.Error
      */
     function parse_bin_from_description_full(bin_description: string, ghost_unlinked_pads: boolean, context: ParseContext, flags: ParseFlags): Element;
 
     /**
      * @param pipeline_description 
+     * @throws GLib.Error
      */
     function parse_launch(pipeline_description: string): Element;
 
@@ -1551,11 +1939,13 @@ export namespace Gst {
      * @param pipeline_description 
      * @param context 
      * @param flags 
+     * @throws GLib.Error
      */
     function parse_launch_full(pipeline_description: string, context: ParseContext, flags: ParseFlags): Element;
 
     /**
      * @param argv 
+     * @throws GLib.Error
      */
     function parse_launchv(argv: string[]): Element;
 
@@ -1563,6 +1953,7 @@ export namespace Gst {
      * @param argv 
      * @param context 
      * @param flags 
+     * @throws GLib.Error
      */
     function parse_launchv_full(argv: string[], context: ParseContext, flags: ParseFlags): Element;
 
@@ -2673,8 +3064,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum AllocTraceFlags {
-        LIVE,
-        MEM_LIVE,
+        LIVE = 1,
+        MEM_LIVE = 2,
     }
 
 
@@ -2690,10 +3081,10 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum AssocFlags {
-        NONE,
-        KEY_UNIT,
-        DELTA_UNIT,
-        LAST,
+        NONE = 0,
+        KEY_UNIT = 1,
+        DELTA_UNIT = 2,
+        LAST = 256,
     }
 
 
@@ -2702,8 +3093,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum BaseSrcFlags {
-        STARTED,
-        FLAG_LAST,
+        STARTED = 1048576,
+        FLAG_LAST = 4194304,
     }
 
 
@@ -2721,7 +3112,7 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum BinFlags {
-        LAST,
+        LAST = 33554432,
     }
 
 
@@ -2739,9 +3130,9 @@ export namespace Gst {
      * @since 0.10.13
      */
     enum BufferCopyFlags {
-        FLAGS,
-        TIMESTAMPS,
-        CAPS,
+        FLAGS = 1,
+        TIMESTAMPS = 2,
+        CAPS = 4,
     }
 
 
@@ -2757,16 +3148,16 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum BufferFlag {
-        READONLY,
-        PREROLL,
-        DISCONT,
-        IN_CAPS,
-        GAP,
-        DELTA_UNIT,
-        MEDIA1,
-        MEDIA2,
-        MEDIA3,
-        LAST,
+        READONLY = 1,
+        PREROLL = 16,
+        DISCONT = 32,
+        IN_CAPS = 64,
+        GAP = 128,
+        DELTA_UNIT = 256,
+        MEDIA1 = 512,
+        MEDIA2 = 1024,
+        MEDIA3 = 2048,
+        LAST = 4096,
     }
 
 
@@ -2782,8 +3173,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum BusFlags {
-        FLUSHING,
-        FLAG_LAST,
+        FLUSHING = 16,
+        FLAG_LAST = 32,
     }
 
 
@@ -2799,7 +3190,7 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum CapsFlags {
-        ANY,
+        ANY = 1,
     }
 
 
@@ -2815,13 +3206,13 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum ClockFlags {
-        CAN_DO_SINGLE_SYNC,
-        CAN_DO_SINGLE_ASYNC,
-        CAN_DO_PERIODIC_SYNC,
-        CAN_DO_PERIODIC_ASYNC,
-        CAN_SET_RESOLUTION,
-        CAN_SET_MASTER,
-        LAST,
+        CAN_DO_SINGLE_SYNC = 16,
+        CAN_DO_SINGLE_ASYNC = 32,
+        CAN_DO_PERIODIC_SYNC = 64,
+        CAN_DO_PERIODIC_ASYNC = 128,
+        CAN_SET_RESOLUTION = 256,
+        CAN_SET_MASTER = 512,
+        LAST = 4096,
     }
 
 
@@ -2839,11 +3230,11 @@ export namespace Gst {
      * @since 0.10.15
      */
     enum DebugGraphDetails {
-        MEDIA_TYPE,
-        CAPS_DETAILS,
-        NON_DEFAULT_PARAMS,
-        STATES,
-        ALL,
+        MEDIA_TYPE = 1,
+        CAPS_DETAILS = 2,
+        NON_DEFAULT_PARAMS = 4,
+        STATES = 8,
+        ALL = 15,
     }
 
 
@@ -2859,10 +3250,10 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum ElementFlags {
-        LOCKED_STATE,
-        IS_SINK,
-        UNPARENTING,
-        FLAG_LAST,
+        LOCKED_STATE = 16,
+        IS_SINK = 32,
+        UNPARENTING = 64,
+        FLAG_LAST = 1048576,
     }
 
 
@@ -2880,9 +3271,9 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum EventTypeFlags {
-        UPSTREAM,
-        DOWNSTREAM,
-        SERIALIZED,
+        UPSTREAM = 1,
+        DOWNSTREAM = 2,
+        SERIALIZED = 4,
     }
 
 
@@ -2898,9 +3289,9 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum IndexFlags {
-        WRITABLE,
-        READABLE,
-        FLAG_LAST,
+        WRITABLE = 16,
+        READABLE = 32,
+        FLAG_LAST = 4096,
     }
 
 
@@ -2916,33 +3307,33 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum MessageType {
-        UNKNOWN,
-        EOS,
-        ERROR,
-        WARNING,
-        INFO,
-        TAG,
-        BUFFERING,
-        STATE_CHANGED,
-        STATE_DIRTY,
-        STEP_DONE,
-        CLOCK_PROVIDE,
-        CLOCK_LOST,
-        NEW_CLOCK,
-        STRUCTURE_CHANGE,
-        STREAM_STATUS,
-        APPLICATION,
-        ELEMENT,
-        SEGMENT_START,
-        SEGMENT_DONE,
-        DURATION,
-        LATENCY,
-        ASYNC_START,
-        ASYNC_DONE,
-        REQUEST_STATE,
-        STEP_START,
-        QOS,
-        ANY,
+        UNKNOWN = 0,
+        EOS = 1,
+        ERROR = 2,
+        WARNING = 4,
+        INFO = 8,
+        TAG = 16,
+        BUFFERING = 32,
+        STATE_CHANGED = 64,
+        STATE_DIRTY = 128,
+        STEP_DONE = 256,
+        CLOCK_PROVIDE = 512,
+        CLOCK_LOST = 1024,
+        NEW_CLOCK = 2048,
+        STRUCTURE_CHANGE = 4096,
+        STREAM_STATUS = 8192,
+        APPLICATION = 16384,
+        ELEMENT = 32768,
+        SEGMENT_START = 65536,
+        SEGMENT_DONE = 131072,
+        DURATION = 262144,
+        LATENCY = 524288,
+        ASYNC_START = 1048576,
+        ASYNC_DONE = 2097152,
+        REQUEST_STATE = 4194304,
+        STEP_START = 8388608,
+        QOS = 16777216,
+        ANY = -1,
     }
 
 
@@ -2958,8 +3349,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum MiniObjectFlags {
-        READONLY,
-        LAST,
+        READONLY = 1,
+        LAST = 16,
     }
 
 
@@ -2975,9 +3366,9 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum ObjectFlags {
-        DISPOSING,
-        FLOATING,
-        FLAG_LAST,
+        DISPOSING = 1,
+        FLOATING = 2,
+        FLAG_LAST = 16,
     }
 
 
@@ -2993,12 +3384,12 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum PadFlags {
-        BLOCKED,
-        FLUSHING,
-        IN_GETCAPS,
-        IN_SETCAPS,
-        BLOCKING,
-        FLAG_LAST,
+        BLOCKED = 16,
+        FLUSHING = 32,
+        IN_GETCAPS = 64,
+        IN_SETCAPS = 128,
+        BLOCKING = 256,
+        FLAG_LAST = 4096,
     }
 
 
@@ -3023,10 +3414,10 @@ export namespace Gst {
      * @since 0.10.30
      */
     enum PadLinkCheck {
-        NOTHING,
-        HIERARCHY,
-        TEMPLATE_CAPS,
-        CAPS,
+        NOTHING = 0,
+        HIERARCHY = 1,
+        TEMPLATE_CAPS = 2,
+        CAPS = 4,
     }
 
 
@@ -3042,8 +3433,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum PadTemplateFlags {
-        FIXED,
-        FLAG_LAST,
+        FIXED = 16,
+        FLAG_LAST = 256,
     }
 
 
@@ -3060,8 +3451,8 @@ export namespace Gst {
      * @since 0.10.20
      */
     enum ParseFlags {
-        NONE,
-        FATAL_ERRORS,
+        NONE = 0,
+        FATAL_ERRORS = 1,
     }
 
 
@@ -3077,8 +3468,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum PipelineFlags {
-        FIXED_CLOCK,
-        LAST,
+        FIXED_CLOCK = 33554432,
+        LAST = 536870912,
     }
 
 
@@ -3095,10 +3486,10 @@ export namespace Gst {
      * @since 0.10.22
      */
     enum PluginDependencyFlags {
-        NONE,
-        RECURSE,
-        PATHS_ARE_DEFAULT_ONLY,
-        FILE_NAME_IS_SUFFIX,
+        NONE = 0,
+        RECURSE = 1,
+        PATHS_ARE_DEFAULT_ONLY = 2,
+        FILE_NAME_IS_SUFFIX = 4,
     }
 
 
@@ -3114,8 +3505,8 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum PluginFlags {
-        CACHED,
-        BLACKLISTED,
+        CACHED = 1,
+        BLACKLISTED = 2,
     }
 
 
@@ -3146,12 +3537,12 @@ export namespace Gst {
      * @gir-type Flags
      */
     enum SeekFlags {
-        NONE,
-        FLUSH,
-        ACCURATE,
-        KEY_UNIT,
-        SEGMENT,
-        SKIP,
+        NONE = 0,
+        FLUSH = 1,
+        ACCURATE = 2,
+        KEY_UNIT = 4,
+        SEGMENT = 8,
+        SKIP = 16,
     }
 
 
@@ -4092,11 +4483,11 @@ export namespace Gst {
             /**
              * @signal
              */
-            "element-added": (arg0: Element) => void;
+            "element-added": (object: Element) => void;
             /**
              * @signal
              */
-            "element-removed": (arg0: Element) => void;
+            "element-removed": (object: Element) => void;
             "notify::async-handling": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
@@ -4437,11 +4828,11 @@ export namespace Gst {
             /**
              * @signal
              */
-            message: (arg0: Message) => void;
+            message: (object: Message) => void;
             /**
              * @signal
              */
-            "sync-message": (arg0: Message) => void;
+            "sync-message": (object: Message) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -5156,11 +5547,11 @@ export namespace Gst {
             /**
              * @signal
              */
-            "pad-added": (arg0: Pad) => void;
+            "pad-added": (object: Pad) => void;
             /**
              * @signal
              */
-            "pad-removed": (arg0: Pad) => void;
+            "pad-removed": (object: Pad) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6008,7 +6399,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            "entry-added": (arg0: IndexEntry) => void;
+            "entry-added": (object: IndexEntry) => void;
             "notify::resolver": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
@@ -6596,19 +6987,19 @@ export namespace Gst {
             /**
              * @signal
              */
-            "deep-notify": (arg0: Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify": (object: Object, p0: GObject.ParamSpec) => void;
             /**
              * @signal
              */
-            "object-saved": (arg0: any) => void;
+            "object-saved": (object: any) => void;
             /**
              * @signal
              */
-            "parent-set": (arg0: Object) => void;
+            "parent-set": (object: Object) => void;
             /**
              * @signal
              */
-            "parent-unset": (arg0: Object) => void;
+            "parent-unset": (object: Object) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6767,11 +7158,11 @@ export namespace Gst {
             /**
              * @signal
              */
-            "have-data": (arg0: MiniObject) => boolean | void;
+            "have-data": (object: MiniObject) => boolean | void;
             /**
              * @signal
              */
-            linked: (arg0: Pad) => void;
+            linked: (object: Pad) => void;
             /**
              * @signal
              */
@@ -6779,7 +7170,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            unlinked: (arg0: Pad) => void;
+            unlinked: (object: Pad) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
             "notify::template": (pspec: GObject.ParamSpec) => void;
@@ -7336,7 +7727,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            "pad-created": (arg0: Pad) => void;
+            "pad-created": (object: Pad) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
             "notify::name-template": (pspec: GObject.ParamSpec) => void;
@@ -8198,11 +8589,11 @@ export namespace Gst {
             /**
              * @signal
              */
-            "feature-added": (arg0: any) => void;
+            "feature-added": (object: any) => void;
             /**
              * @signal
              */
-            "plugin-added": (arg0: any) => void;
+            "plugin-added": (object: any) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -8580,11 +8971,15 @@ export namespace Gst {
         vfunc_join(id: any): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         prepare(): void;
 
         /**
          * @param func 
          * @param user_data 
+         * @throws GLib.Error
          */
         push(func: TaskPoolFunction, user_data: any): any;
 
@@ -8670,7 +9065,7 @@ export namespace Gst {
             /**
              * @signal
              */
-            "object-loaded": (arg0: Object, arg1: any) => void;
+            "object-loaded": (object: Object, p0: any) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 

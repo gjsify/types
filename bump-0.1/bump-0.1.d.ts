@@ -293,6 +293,7 @@ export namespace Bump {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable): boolean;
 
@@ -330,6 +331,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         init_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -347,6 +349,7 @@ export namespace Bump {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Claim;
     }
@@ -473,6 +476,7 @@ export namespace Bump {
 
         /**
          * @param value 
+         * @throws GLib.Error
          */
         trigger(value: never): void;
 
@@ -480,6 +484,7 @@ export namespace Bump {
          * @param func 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         add(func: Event.SourceFunc, priority: number, cancellable: Gio.Cancellable): void;
 
@@ -489,6 +494,7 @@ export namespace Bump {
          * @param func 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: Event.Callback, priority: number, cancellable: Gio.Cancellable): null;
 
@@ -525,6 +531,7 @@ export namespace Bump {
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
@@ -561,6 +568,7 @@ export namespace Bump {
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
@@ -730,6 +738,7 @@ export namespace Bump {
         /**
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         create(priority: number, cancellable: Gio.Cancellable): null;
 
@@ -755,6 +764,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_finish(_res_: Gio.AsyncResult): null;
 
@@ -780,12 +790,14 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_background_finish(_res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         acquire(priority: number, cancellable: Gio.Cancellable): null;
 
@@ -811,6 +823,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         acquire_finish(_res_: Gio.AsyncResult): null;
 
@@ -836,6 +849,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         acquire_background_finish(_res_: Gio.AsyncResult): null;
 
@@ -1259,6 +1273,7 @@ export namespace Bump {
          * @param func 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, func: ResourcePool.Callback, priority: number, cancellable: Gio.Cancellable): null;
 
@@ -1295,6 +1310,7 @@ export namespace Bump {
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
@@ -1331,12 +1347,14 @@ export namespace Bump {
          * @param r_type 
          * @param r_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_background_finish(r_type: GObject.GType, r_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
         /**
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         claim(priority: number, cancellable: Gio.Cancellable): ResourceClaim;
 
@@ -1362,6 +1380,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         claim_finish(_res_: Gio.AsyncResult): ResourceClaim;
 
@@ -1486,6 +1505,7 @@ export namespace Bump {
         /**
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         lock(priority: number, cancellable: Gio.Cancellable): void;
 
@@ -1511,12 +1531,14 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         lock_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         claim(priority: number, cancellable: Gio.Cancellable): SemaphoreClaim;
 
@@ -1542,6 +1564,7 @@ export namespace Bump {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         claim_finish(_res_: Gio.AsyncResult): SemaphoreClaim;
 
@@ -1740,6 +1763,7 @@ export namespace Bump {
          * @param task 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         add(task: GLib.SourceFunc, priority: number, cancellable: Gio.Cancellable): void;
 
@@ -1754,6 +1778,7 @@ export namespace Bump {
          * @param func 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: Callback, priority: number, cancellable: Gio.Cancellable): null;
 
@@ -1790,6 +1815,7 @@ export namespace Bump {
          * @param g_type 
          * @param g_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 
@@ -1826,6 +1852,7 @@ export namespace Bump {
          * @param g_type 
          * @param g_dup_func 
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_background_finish(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, _res_: Gio.AsyncResult): null;
 

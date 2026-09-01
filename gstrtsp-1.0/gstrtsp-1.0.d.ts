@@ -41,15 +41,15 @@ export namespace GstRtsp {
         /**
          * no authentication
          */
-        NONE,
+        NONE = 0,
         /**
          * basic authentication
          */
-        BASIC,
+        BASIC = 1,
         /**
          * digest authentication
          */
-        DIGEST,
+        DIGEST = 2,
     }
 
 
@@ -68,15 +68,15 @@ export namespace GstRtsp {
         /**
          * unknown network family
          */
-        NONE,
+        NONE = 0,
         /**
          * internet
          */
-        INET,
+        INET = 1,
         /**
          * internet V6
          */
-        INET6,
+        INET6 = 2,
     }
 
 
@@ -92,96 +92,96 @@ export namespace GstRtsp {
      * @gir-type Enum
      */
     enum RTSPHeaderField {
-        INVALID,
-        ACCEPT,
-        ACCEPT_ENCODING,
-        ACCEPT_LANGUAGE,
-        ALLOW,
-        AUTHORIZATION,
-        BANDWIDTH,
-        BLOCKSIZE,
-        CACHE_CONTROL,
-        CONFERENCE,
-        CONNECTION,
-        CONTENT_BASE,
-        CONTENT_ENCODING,
-        CONTENT_LANGUAGE,
-        CONTENT_LENGTH,
-        CONTENT_LOCATION,
-        CONTENT_TYPE,
-        CSEQ,
-        DATE,
-        EXPIRES,
-        FROM,
-        IF_MODIFIED_SINCE,
-        LAST_MODIFIED,
-        PROXY_AUTHENTICATE,
-        PROXY_REQUIRE,
-        PUBLIC,
-        RANGE,
-        REFERER,
-        REQUIRE,
-        RETRY_AFTER,
-        RTP_INFO,
-        SCALE,
-        SESSION,
-        SERVER,
-        SPEED,
-        TRANSPORT,
-        UNSUPPORTED,
-        USER_AGENT,
-        VIA,
-        WWW_AUTHENTICATE,
-        CLIENT_CHALLENGE,
-        REAL_CHALLENGE1,
-        REAL_CHALLENGE2,
-        REAL_CHALLENGE3,
-        SUBSCRIBE,
-        ALERT,
-        CLIENT_ID,
-        COMPANY_ID,
-        GUID,
-        REGION_DATA,
-        MAX_ASM_WIDTH,
-        LANGUAGE,
-        PLAYER_START_TIME,
-        LOCATION,
-        ETAG,
-        IF_MATCH,
-        ACCEPT_CHARSET,
-        SUPPORTED,
-        VARY,
-        X_ACCELERATE_STREAMING,
-        X_ACCEPT_AUTHENT,
-        X_ACCEPT_PROXY_AUTHENT,
-        X_BROADCAST_ID,
-        X_BURST_STREAMING,
-        X_NOTICE,
-        X_PLAYER_LAG_TIME,
-        X_PLAYLIST,
-        X_PLAYLIST_CHANGE_NOTICE,
-        X_PLAYLIST_GEN_ID,
-        X_PLAYLIST_SEEK_ID,
-        X_PROXY_CLIENT_AGENT,
-        X_PROXY_CLIENT_VERB,
-        X_RECEDING_PLAYLISTCHANGE,
-        X_RTP_INFO,
-        X_STARTUPPROFILE,
-        TIMESTAMP,
-        AUTHENTICATION_INFO,
-        HOST,
-        PRAGMA,
-        X_SERVER_IP_ADDRESS,
-        X_SESSIONCOOKIE,
-        RTCP_INTERVAL,
-        KEYMGMT,
-        PIPELINED_REQUESTS,
-        MEDIA_PROPERTIES,
-        SEEK_STYLE,
-        ACCEPT_RANGES,
-        FRAMES,
-        RATE_CONTROL,
-        LAST,
+        INVALID = 0,
+        ACCEPT = 1,
+        ACCEPT_ENCODING = 2,
+        ACCEPT_LANGUAGE = 3,
+        ALLOW = 4,
+        AUTHORIZATION = 5,
+        BANDWIDTH = 6,
+        BLOCKSIZE = 7,
+        CACHE_CONTROL = 8,
+        CONFERENCE = 9,
+        CONNECTION = 10,
+        CONTENT_BASE = 11,
+        CONTENT_ENCODING = 12,
+        CONTENT_LANGUAGE = 13,
+        CONTENT_LENGTH = 14,
+        CONTENT_LOCATION = 15,
+        CONTENT_TYPE = 16,
+        CSEQ = 17,
+        DATE = 18,
+        EXPIRES = 19,
+        FROM = 20,
+        IF_MODIFIED_SINCE = 21,
+        LAST_MODIFIED = 22,
+        PROXY_AUTHENTICATE = 23,
+        PROXY_REQUIRE = 24,
+        PUBLIC = 25,
+        RANGE = 26,
+        REFERER = 27,
+        REQUIRE = 28,
+        RETRY_AFTER = 29,
+        RTP_INFO = 30,
+        SCALE = 31,
+        SESSION = 32,
+        SERVER = 33,
+        SPEED = 34,
+        TRANSPORT = 35,
+        UNSUPPORTED = 36,
+        USER_AGENT = 37,
+        VIA = 38,
+        WWW_AUTHENTICATE = 39,
+        CLIENT_CHALLENGE = 40,
+        REAL_CHALLENGE1 = 41,
+        REAL_CHALLENGE2 = 42,
+        REAL_CHALLENGE3 = 43,
+        SUBSCRIBE = 44,
+        ALERT = 45,
+        CLIENT_ID = 46,
+        COMPANY_ID = 47,
+        GUID = 48,
+        REGION_DATA = 49,
+        MAX_ASM_WIDTH = 50,
+        LANGUAGE = 51,
+        PLAYER_START_TIME = 52,
+        LOCATION = 53,
+        ETAG = 54,
+        IF_MATCH = 55,
+        ACCEPT_CHARSET = 56,
+        SUPPORTED = 57,
+        VARY = 58,
+        X_ACCELERATE_STREAMING = 59,
+        X_ACCEPT_AUTHENT = 60,
+        X_ACCEPT_PROXY_AUTHENT = 61,
+        X_BROADCAST_ID = 62,
+        X_BURST_STREAMING = 63,
+        X_NOTICE = 64,
+        X_PLAYER_LAG_TIME = 65,
+        X_PLAYLIST = 66,
+        X_PLAYLIST_CHANGE_NOTICE = 67,
+        X_PLAYLIST_GEN_ID = 68,
+        X_PLAYLIST_SEEK_ID = 69,
+        X_PROXY_CLIENT_AGENT = 70,
+        X_PROXY_CLIENT_VERB = 71,
+        X_RECEDING_PLAYLISTCHANGE = 72,
+        X_RTP_INFO = 73,
+        X_STARTUPPROFILE = 74,
+        TIMESTAMP = 75,
+        AUTHENTICATION_INFO = 76,
+        HOST = 77,
+        PRAGMA = 78,
+        X_SERVER_IP_ADDRESS = 79,
+        X_SESSIONCOOKIE = 80,
+        RTCP_INTERVAL = 81,
+        KEYMGMT = 82,
+        PIPELINED_REQUESTS = 83,
+        MEDIA_PROPERTIES = 84,
+        SEEK_STYLE = 85,
+        ACCEPT_RANGES = 86,
+        FRAMES = 87,
+        RATE_CONTROL = 88,
+        LAST = 89,
     }
 
 
@@ -200,27 +200,27 @@ export namespace GstRtsp {
         /**
          * invalid message type
          */
-        INVALID,
+        INVALID = 0,
         /**
          * RTSP request message
          */
-        REQUEST,
+        REQUEST = 1,
         /**
          * RTSP response message
          */
-        RESPONSE,
+        RESPONSE = 2,
         /**
          * HTTP request message.
          */
-        HTTP_REQUEST,
+        HTTP_REQUEST = 3,
         /**
          * HTTP response message.
          */
-        HTTP_RESPONSE,
+        HTTP_RESPONSE = 4,
         /**
          * data message
          */
-        DATA,
+        DATA = 5,
     }
 
 
@@ -239,23 +239,23 @@ export namespace GstRtsp {
         /**
          * SMPTE timecode
          */
-        SMPTE,
+        SMPTE = 0,
         /**
          * 29.97 frames per second
          */
-        SMPTE_30_DROP,
+        SMPTE_30_DROP = 1,
         /**
          * 25 frames per second
          */
-        SMPTE_25,
+        SMPTE_25 = 2,
         /**
          * Normal play time
          */
-        NPT,
+        NPT = 3,
         /**
          * Absolute time expressed as ISO 8601 timestamps
          */
-        CLOCK,
+        CLOCK = 4,
     }
 
 
@@ -274,79 +274,80 @@ export namespace GstRtsp {
         /**
          * no error
          */
-        OK,
+        OK = 0,
         /**
          * RTSP request is successful, but was redirected.
+         * @since 1.24
          */
-        OK_REDIRECT,
+        OK_REDIRECT = 1,
         /**
          * some unspecified error occurred
          */
-        ERROR,
+        ERROR = -1,
         /**
          * invalid arguments were provided to a function
          */
-        EINVAL,
+        EINVAL = -2,
         /**
          * an operation was canceled
          */
-        EINTR,
+        EINTR = -3,
         /**
          * no memory was available for the operation
          */
-        ENOMEM,
+        ENOMEM = -4,
         /**
          * a host resolve error occurred
          */
-        ERESOLV,
+        ERESOLV = -5,
         /**
          * function not implemented
          */
-        ENOTIMPL,
+        ENOTIMPL = -6,
         /**
          * a system error occurred, errno contains more details
          */
-        ESYS,
+        ESYS = -7,
         /**
          * a parsing error occurred
          */
-        EPARSE,
+        EPARSE = -8,
         /**
          * windows networking could not start
          */
-        EWSASTART,
+        EWSASTART = -9,
         /**
          * windows networking stack has wrong version
          */
-        EWSAVERSION,
+        EWSAVERSION = -10,
         /**
          * end-of-file was reached
          */
-        EEOF,
+        EEOF = -11,
         /**
          * a network problem occurred, h_errno contains more details
          */
-        ENET,
+        ENET = -12,
         /**
          * the host is not an IP host
          */
-        ENOTIP,
+        ENOTIP = -13,
         /**
          * a timeout occurred
          */
-        ETIMEOUT,
+        ETIMEOUT = -14,
         /**
          * the tunnel GET request has been performed
          */
-        ETGET,
+        ETGET = -15,
         /**
          * the tunnel POST request has been performed
          */
-        ETPOST,
+        ETPOST = -16,
         /**
          * last error
          */
-        ELAST,
+        ELAST = -17,
     }
 
 
@@ -365,27 +366,27 @@ export namespace GstRtsp {
         /**
          * invalid state
          */
-        INVALID,
+        INVALID = 0,
         /**
          * initializing
          */
-        INIT,
+        INIT = 1,
         /**
          * ready for operation
          */
-        READY,
+        READY = 2,
         /**
          * seeking in progress
          */
-        SEEKING,
+        SEEKING = 3,
         /**
          * playing
          */
-        PLAYING,
+        PLAYING = 4,
         /**
          * recording
          */
-        RECORDING,
+        RECORDING = 5,
     }
 
 
@@ -401,60 +402,62 @@ export namespace GstRtsp {
      * @gir-type Enum
      */
     enum RTSPStatusCode {
-        INVALID,
-        CONTINUE,
-        OK,
-        CREATED,
-        LOW_ON_STORAGE,
-        MULTIPLE_CHOICES,
-        MOVED_PERMANENTLY,
-        MOVE_TEMPORARILY,
-        SEE_OTHER,
-        NOT_MODIFIED,
-        USE_PROXY,
+        INVALID = 0,
+        CONTINUE = 100,
+        OK = 200,
+        CREATED = 201,
+        LOW_ON_STORAGE = 250,
+        MULTIPLE_CHOICES = 300,
+        MOVED_PERMANENTLY = 301,
+        MOVE_TEMPORARILY = 302,
+        SEE_OTHER = 303,
+        NOT_MODIFIED = 304,
+        USE_PROXY = 305,
         /**
          * RTSP request is temporarily redirected
+         * @since 1.24
          */
-        REDIRECT_TEMPORARILY,
+        REDIRECT_TEMPORARILY = 307,
         /**
          * RTSP request is permanently redirected
+         * @since 1.24
          */
-        REDIRECT_PERMANENTLY,
-        BAD_REQUEST,
-        UNAUTHORIZED,
-        PAYMENT_REQUIRED,
-        FORBIDDEN,
-        NOT_FOUND,
-        METHOD_NOT_ALLOWED,
-        NOT_ACCEPTABLE,
-        PROXY_AUTH_REQUIRED,
-        REQUEST_TIMEOUT,
-        GONE,
-        LENGTH_REQUIRED,
-        PRECONDITION_FAILED,
-        REQUEST_ENTITY_TOO_LARGE,
-        REQUEST_URI_TOO_LARGE,
-        UNSUPPORTED_MEDIA_TYPE,
-        PARAMETER_NOT_UNDERSTOOD,
-        CONFERENCE_NOT_FOUND,
-        NOT_ENOUGH_BANDWIDTH,
-        SESSION_NOT_FOUND,
-        METHOD_NOT_VALID_IN_THIS_STATE,
-        HEADER_FIELD_NOT_VALID_FOR_RESOURCE,
-        INVALID_RANGE,
-        PARAMETER_IS_READONLY,
-        AGGREGATE_OPERATION_NOT_ALLOWED,
-        ONLY_AGGREGATE_OPERATION_ALLOWED,
-        UNSUPPORTED_TRANSPORT,
-        DESTINATION_UNREACHABLE,
-        KEY_MANAGEMENT_FAILURE,
-        INTERNAL_SERVER_ERROR,
-        NOT_IMPLEMENTED,
-        BAD_GATEWAY,
-        SERVICE_UNAVAILABLE,
-        GATEWAY_TIMEOUT,
-        RTSP_VERSION_NOT_SUPPORTED,
-        OPTION_NOT_SUPPORTED,
+        REDIRECT_PERMANENTLY = 308,
+        BAD_REQUEST = 400,
+        UNAUTHORIZED = 401,
+        PAYMENT_REQUIRED = 402,
+        FORBIDDEN = 403,
+        NOT_FOUND = 404,
+        METHOD_NOT_ALLOWED = 405,
+        NOT_ACCEPTABLE = 406,
+        PROXY_AUTH_REQUIRED = 407,
+        REQUEST_TIMEOUT = 408,
+        GONE = 410,
+        LENGTH_REQUIRED = 411,
+        PRECONDITION_FAILED = 412,
+        REQUEST_ENTITY_TOO_LARGE = 413,
+        REQUEST_URI_TOO_LARGE = 414,
+        UNSUPPORTED_MEDIA_TYPE = 415,
+        PARAMETER_NOT_UNDERSTOOD = 451,
+        CONFERENCE_NOT_FOUND = 452,
+        NOT_ENOUGH_BANDWIDTH = 453,
+        SESSION_NOT_FOUND = 454,
+        METHOD_NOT_VALID_IN_THIS_STATE = 455,
+        HEADER_FIELD_NOT_VALID_FOR_RESOURCE = 456,
+        INVALID_RANGE = 457,
+        PARAMETER_IS_READONLY = 458,
+        AGGREGATE_OPERATION_NOT_ALLOWED = 459,
+        ONLY_AGGREGATE_OPERATION_ALLOWED = 460,
+        UNSUPPORTED_TRANSPORT = 461,
+        DESTINATION_UNREACHABLE = 462,
+        KEY_MANAGEMENT_FAILURE = 463,
+        INTERNAL_SERVER_ERROR = 500,
+        NOT_IMPLEMENTED = 501,
+        BAD_GATEWAY = 502,
+        SERVICE_UNAVAILABLE = 503,
+        GATEWAY_TIMEOUT = 504,
+        RTSP_VERSION_NOT_SUPPORTED = 505,
+        OPTION_NOT_SUPPORTED = 551,
     }
 
 
@@ -473,23 +476,23 @@ export namespace GstRtsp {
         /**
          * seconds
          */
-        SECONDS,
+        SECONDS = 0,
         /**
          * now
          */
-        NOW,
+        NOW = 1,
         /**
          * end
          */
-        END,
+        END = 2,
         /**
          * frames and subframes
          */
-        FRAMES,
+        FRAMES = 3,
         /**
          * UTC time
          */
-        UTC,
+        UTC = 4,
     }
 
 
@@ -508,24 +511,25 @@ export namespace GstRtsp {
         /**
          * unknown/invalid version
          */
-        INVALID,
+        INVALID = 0,
         /**
          * version 1.0
          */
-        "1_0",
+        "1_0" = 16,
         /**
          * version 1.1.
          */
-        "1_1",
+        "1_1" = 17,
         /**
          * version 2.0.
          */
-        "2_0",
+        "2_0" = 32,
     }
 
 
     /**
      * The default RTSP port to connect to.
+     * @default 554
      */
     const RTSP_DEFAULT_PORT: number;
 
@@ -831,11 +835,11 @@ export namespace GstRtsp {
         /**
          * connection is readable
          */
-        READ,
+        READ = 1,
         /**
          * connection is writable
          */
-        WRITE,
+        WRITE = 2,
     }
 
 
@@ -854,27 +858,27 @@ export namespace GstRtsp {
         /**
          * invalid transport flag
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * stream data over UDP
          */
-        UDP,
+        UDP = 1,
         /**
          * stream data over UDP multicast
          */
-        UDP_MCAST,
+        UDP_MCAST = 2,
         /**
          * stream data over TCP
          */
-        TCP,
+        TCP = 4,
         /**
          * stream data tunneled over HTTP.
          */
-        HTTP,
+        HTTP = 16,
         /**
          * encrypt TCP and HTTP with TLS
          */
-        TLS,
+        TLS = 32,
     }
 
 
@@ -893,59 +897,59 @@ export namespace GstRtsp {
         /**
          * invalid method
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the DESCRIBE method
          */
-        DESCRIBE,
+        DESCRIBE = 1,
         /**
          * the ANNOUNCE method
          */
-        ANNOUNCE,
+        ANNOUNCE = 2,
         /**
          * the GET_PARAMETER method
          */
-        GET_PARAMETER,
+        GET_PARAMETER = 4,
         /**
          * the OPTIONS method
          */
-        OPTIONS,
+        OPTIONS = 8,
         /**
          * the PAUSE method
          */
-        PAUSE,
+        PAUSE = 16,
         /**
          * the PLAY method
          */
-        PLAY,
+        PLAY = 32,
         /**
          * the RECORD method
          */
-        RECORD,
+        RECORD = 64,
         /**
          * the REDIRECT method
          */
-        REDIRECT,
+        REDIRECT = 128,
         /**
          * the SETUP method
          */
-        SETUP,
+        SETUP = 256,
         /**
          * the SET_PARAMETER method
          */
-        SET_PARAMETER,
+        SET_PARAMETER = 512,
         /**
          * the TEARDOWN method
          */
-        TEARDOWN,
+        TEARDOWN = 1024,
         /**
          * the GET method (HTTP).
          */
-        GET,
+        GET = 2048,
         /**
          * the POST method (HTTP).
          */
-        POST,
+        POST = 4096,
     }
 
 
@@ -964,23 +968,23 @@ export namespace GstRtsp {
         /**
          * invalid profile
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the Audio/Visual profile (RFC 3551)
          */
-        AVP,
+        AVP = 1,
         /**
          * the secure Audio/Visual profile (RFC 3711)
          */
-        SAVP,
+        SAVP = 2,
         /**
          * the Audio/Visual profile with feedback (RFC 4585)
          */
-        AVPF,
+        AVPF = 4,
         /**
          * the secure Audio/Visual profile with feedback (RFC 5124)
          */
-        SAVPF,
+        SAVPF = 8,
     }
 
 
@@ -999,15 +1003,15 @@ export namespace GstRtsp {
         /**
          * invalid tansport mode
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * transfer RTP data
          */
-        RTP,
+        RTP = 1,
         /**
          * transfer RDT (RealMedia) data
          */
-        RDT,
+        RDT = 2,
     }
 
 
@@ -1239,6 +1243,7 @@ export namespace GstRtsp {
          * calls. The server is then responsible for configuring the TLS connection.
          * @returns the TLS connection for `conn`.
          * @since 1.2
+         * @throws GLib.Error
          */
         get_tls(): Gio.TlsConnection;
 

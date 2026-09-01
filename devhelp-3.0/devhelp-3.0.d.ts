@@ -50,43 +50,43 @@ export namespace Devhelp {
         /**
          * The top-level page of a {@link Devhelp.Book}.
          */
-        BOOK,
+        BOOK = 0,
         /**
          * A page.
          */
-        PAGE,
+        PAGE = 1,
         /**
          * Another kind of keyword.
          */
-        KEYWORD,
+        KEYWORD = 2,
         /**
          * A function keyword.
          */
-        FUNCTION,
+        FUNCTION = 3,
         /**
          * A struct keyword.
          */
-        STRUCT,
+        STRUCT = 4,
         /**
          * A macro keyword.
          */
-        MACRO,
+        MACRO = 5,
         /**
          * An enum keyword.
          */
-        ENUM,
+        ENUM = 6,
         /**
          * A typedef keyword.
          */
-        TYPEDEF,
+        TYPEDEF = 7,
         /**
          * A property keyword.
          */
-        PROPERTY,
+        PROPERTY = 8,
         /**
          * A signal keyword.
          */
-        SIGNAL,
+        SIGNAL = 9,
     }
 
 
@@ -151,11 +151,11 @@ export namespace Devhelp {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The symbol that the link points to is deprecated.
          */
-        DEPRECATED,
+        DEPRECATED = 1,
     }
 
 
@@ -165,7 +165,7 @@ export namespace Devhelp {
             /**
              * @signal
              */
-            "open-uri": (arg0: string) => void;
+            "open-uri": (uri: string) => void;
             "notify::automation-presentation-type": (pspec: GObject.ParamSpec) => void;
             "notify::camera-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::default-content-security-policy": (pspec: GObject.ParamSpec) => void;
@@ -426,7 +426,7 @@ export namespace Devhelp {
              * @since 3.30
              * @run-last
              */
-            "add-book": (arg0: Book) => void;
+            "add-book": (book: Book) => void;
             /**
              * The ::remove-book signal is emitted when a {@link Devhelp.Book} is removed from a
              * {@link Devhelp.BookList}.
@@ -438,7 +438,7 @@ export namespace Devhelp {
              * @since 3.30
              * @run-last
              */
-            "remove-book": (arg0: Book) => void;
+            "remove-book": (book: Book) => void;
         }
 
         // Constructor properties interface
@@ -790,7 +790,7 @@ export namespace Devhelp {
              * @signal
              * @run-last
              */
-            "link-selected": (arg0: Link) => void;
+            "link-selected": (link: Link) => void;
             "notify::profile": (pspec: GObject.ParamSpec) => void;
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
@@ -2485,7 +2485,7 @@ export namespace Devhelp {
              * @signal
              * @run-last
              */
-            "link-selected": (arg0: Link) => void;
+            "link-selected": (link: Link) => void;
             "notify::profile": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
             "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -2959,7 +2959,7 @@ export namespace Devhelp {
              * @since 3.30
              * @run-last
              */
-            "open-new-tab": (arg0: string) => void;
+            "open-new-tab": (uri: string) => void;
             "notify::profile": (pspec: GObject.ParamSpec) => void;
             "notify::automation-presentation-type": (pspec: GObject.ParamSpec) => void;
             "notify::camera-capture-state": (pspec: GObject.ParamSpec) => void;

@@ -33,18 +33,39 @@ export namespace TimezoneMap {
      */
 
 
+    /**
+     * @default 2
+     */
     const TIMEZONE_COMPLETION_ADMIN1: number;
 
+    /**
+     * @default 3
+     */
     const TIMEZONE_COMPLETION_COUNTRY: number;
 
+    /**
+     * @default 6
+     */
     const TIMEZONE_COMPLETION_LAST: number;
 
+    /**
+     * @default 5
+     */
     const TIMEZONE_COMPLETION_LATITUDE: number;
 
+    /**
+     * @default 4
+     */
     const TIMEZONE_COMPLETION_LONGITUDE: number;
 
+    /**
+     * @default 1
+     */
     const TIMEZONE_COMPLETION_NAME: number;
 
+    /**
+     * @default 0
+     */
     const TIMEZONE_COMPLETION_ZONE: number;
 
     namespace TimezoneCompletion {
@@ -692,7 +713,7 @@ export namespace TimezoneMap {
              * @signal
              * @run-first
              */
-            "location-changed": (arg0: TimezoneLocation) => void;
+            "location-changed": (object: TimezoneLocation) => void;
             "notify::selected-offset": (pspec: GObject.ParamSpec) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;

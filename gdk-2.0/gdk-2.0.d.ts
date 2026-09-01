@@ -39,14 +39,14 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum AxisUse {
-        IGNORE,
-        X,
-        Y,
-        PRESSURE,
-        XTILT,
-        YTILT,
-        WHEEL,
-        LAST,
+        IGNORE = 0,
+        X = 1,
+        Y = 2,
+        PRESSURE = 3,
+        XTILT = 4,
+        YTILT = 5,
+        WHEEL = 6,
+        LAST = 7,
     }
 
 
@@ -61,8 +61,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum ByteOrder {
-        LSB_FIRST,
-        MSB_FIRST,
+        LSB_FIRST = 0,
+        MSB_FIRST = 1,
     }
 
 
@@ -77,10 +77,10 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum CapStyle {
-        NOT_LAST,
-        BUTT,
-        ROUND,
-        PROJECTING,
+        NOT_LAST = 0,
+        BUTT = 1,
+        ROUND = 2,
+        PROJECTING = 3,
     }
 
 
@@ -95,12 +95,12 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum CrossingMode {
-        NORMAL,
-        GRAB,
-        UNGRAB,
-        GTK_GRAB,
-        GTK_UNGRAB,
-        STATE_CHANGED,
+        NORMAL = 0,
+        GRAB = 1,
+        UNGRAB = 2,
+        GTK_GRAB = 3,
+        GTK_UNGRAB = 4,
+        STATE_CHANGED = 5,
     }
 
 
@@ -115,86 +115,86 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum CursorType {
-        X_CURSOR,
-        ARROW,
-        BASED_ARROW_DOWN,
-        BASED_ARROW_UP,
-        BOAT,
-        BOGOSITY,
-        BOTTOM_LEFT_CORNER,
-        BOTTOM_RIGHT_CORNER,
-        BOTTOM_SIDE,
-        BOTTOM_TEE,
-        BOX_SPIRAL,
-        CENTER_PTR,
-        CIRCLE,
-        CLOCK,
-        COFFEE_MUG,
-        CROSS,
-        CROSS_REVERSE,
-        CROSSHAIR,
-        DIAMOND_CROSS,
-        DOT,
-        DOTBOX,
-        DOUBLE_ARROW,
-        DRAFT_LARGE,
-        DRAFT_SMALL,
-        DRAPED_BOX,
-        EXCHANGE,
-        FLEUR,
-        GOBBLER,
-        GUMBY,
-        HAND1,
-        HAND2,
-        HEART,
-        ICON,
-        IRON_CROSS,
-        LEFT_PTR,
-        LEFT_SIDE,
-        LEFT_TEE,
-        LEFTBUTTON,
-        LL_ANGLE,
-        LR_ANGLE,
-        MAN,
-        MIDDLEBUTTON,
-        MOUSE,
-        PENCIL,
-        PIRATE,
-        PLUS,
-        QUESTION_ARROW,
-        RIGHT_PTR,
-        RIGHT_SIDE,
-        RIGHT_TEE,
-        RIGHTBUTTON,
-        RTL_LOGO,
-        SAILBOAT,
-        SB_DOWN_ARROW,
-        SB_H_DOUBLE_ARROW,
-        SB_LEFT_ARROW,
-        SB_RIGHT_ARROW,
-        SB_UP_ARROW,
-        SB_V_DOUBLE_ARROW,
-        SHUTTLE,
-        SIZING,
-        SPIDER,
-        SPRAYCAN,
-        STAR,
-        TARGET,
-        TCROSS,
-        TOP_LEFT_ARROW,
-        TOP_LEFT_CORNER,
-        TOP_RIGHT_CORNER,
-        TOP_SIDE,
-        TOP_TEE,
-        TREK,
-        UL_ANGLE,
-        UMBRELLA,
-        UR_ANGLE,
-        WATCH,
-        XTERM,
-        LAST_CURSOR,
-        BLANK_CURSOR,
-        CURSOR_IS_PIXMAP,
+        X_CURSOR = 0,
+        ARROW = 2,
+        BASED_ARROW_DOWN = 4,
+        BASED_ARROW_UP = 6,
+        BOAT = 8,
+        BOGOSITY = 10,
+        BOTTOM_LEFT_CORNER = 12,
+        BOTTOM_RIGHT_CORNER = 14,
+        BOTTOM_SIDE = 16,
+        BOTTOM_TEE = 18,
+        BOX_SPIRAL = 20,
+        CENTER_PTR = 22,
+        CIRCLE = 24,
+        CLOCK = 26,
+        COFFEE_MUG = 28,
+        CROSS = 30,
+        CROSS_REVERSE = 32,
+        CROSSHAIR = 34,
+        DIAMOND_CROSS = 36,
+        DOT = 38,
+        DOTBOX = 40,
+        DOUBLE_ARROW = 42,
+        DRAFT_LARGE = 44,
+        DRAFT_SMALL = 46,
+        DRAPED_BOX = 48,
+        EXCHANGE = 50,
+        FLEUR = 52,
+        GOBBLER = 54,
+        GUMBY = 56,
+        HAND1 = 58,
+        HAND2 = 60,
+        HEART = 62,
+        ICON = 64,
+        IRON_CROSS = 66,
+        LEFT_PTR = 68,
+        LEFT_SIDE = 70,
+        LEFT_TEE = 72,
+        LEFTBUTTON = 74,
+        LL_ANGLE = 76,
+        LR_ANGLE = 78,
+        MAN = 80,
+        MIDDLEBUTTON = 82,
+        MOUSE = 84,
+        PENCIL = 86,
+        PIRATE = 88,
+        PLUS = 90,
+        QUESTION_ARROW = 92,
+        RIGHT_PTR = 94,
+        RIGHT_SIDE = 96,
+        RIGHT_TEE = 98,
+        RIGHTBUTTON = 100,
+        RTL_LOGO = 102,
+        SAILBOAT = 104,
+        SB_DOWN_ARROW = 106,
+        SB_H_DOUBLE_ARROW = 108,
+        SB_LEFT_ARROW = 110,
+        SB_RIGHT_ARROW = 112,
+        SB_UP_ARROW = 114,
+        SB_V_DOUBLE_ARROW = 116,
+        SHUTTLE = 118,
+        SIZING = 120,
+        SPIDER = 122,
+        SPRAYCAN = 124,
+        STAR = 126,
+        TARGET = 128,
+        TCROSS = 130,
+        TOP_LEFT_ARROW = 132,
+        TOP_LEFT_CORNER = 134,
+        TOP_RIGHT_CORNER = 136,
+        TOP_SIDE = 138,
+        TOP_TEE = 140,
+        TREK = 142,
+        UL_ANGLE = 144,
+        UMBRELLA = 146,
+        UR_ANGLE = 148,
+        WATCH = 150,
+        XTERM = 152,
+        LAST_CURSOR = 153,
+        BLANK_CURSOR = -2,
+        CURSOR_IS_PIXMAP = -1,
     }
 
 
@@ -209,13 +209,13 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum DragProtocol {
-        MOTIF,
-        XDND,
-        ROOTWIN,
-        NONE,
-        WIN32_DROPFILES,
-        OLE2,
-        LOCAL,
+        MOTIF = 0,
+        XDND = 1,
+        ROOTWIN = 2,
+        NONE = 3,
+        WIN32_DROPFILES = 4,
+        OLE2 = 5,
+        LOCAL = 6,
     }
 
 
@@ -230,45 +230,45 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum EventType {
-        NOTHING,
-        DELETE,
-        DESTROY,
-        EXPOSE,
-        MOTION_NOTIFY,
-        BUTTON_PRESS,
-        "2BUTTON_PRESS",
-        "3BUTTON_PRESS",
-        BUTTON_RELEASE,
-        KEY_PRESS,
-        KEY_RELEASE,
-        ENTER_NOTIFY,
-        LEAVE_NOTIFY,
-        FOCUS_CHANGE,
-        CONFIGURE,
-        MAP,
-        UNMAP,
-        PROPERTY_NOTIFY,
-        SELECTION_CLEAR,
-        SELECTION_REQUEST,
-        SELECTION_NOTIFY,
-        PROXIMITY_IN,
-        PROXIMITY_OUT,
-        DRAG_ENTER,
-        DRAG_LEAVE,
-        DRAG_MOTION,
-        DRAG_STATUS,
-        DROP_START,
-        DROP_FINISHED,
-        CLIENT_EVENT,
-        VISIBILITY_NOTIFY,
-        NO_EXPOSE,
-        SCROLL,
-        WINDOW_STATE,
-        SETTING,
-        OWNER_CHANGE,
-        GRAB_BROKEN,
-        DAMAGE,
-        EVENT_LAST,
+        NOTHING = -1,
+        DELETE = 0,
+        DESTROY = 1,
+        EXPOSE = 2,
+        MOTION_NOTIFY = 3,
+        BUTTON_PRESS = 4,
+        "2BUTTON_PRESS" = 5,
+        "3BUTTON_PRESS" = 6,
+        BUTTON_RELEASE = 7,
+        KEY_PRESS = 8,
+        KEY_RELEASE = 9,
+        ENTER_NOTIFY = 10,
+        LEAVE_NOTIFY = 11,
+        FOCUS_CHANGE = 12,
+        CONFIGURE = 13,
+        MAP = 14,
+        UNMAP = 15,
+        PROPERTY_NOTIFY = 16,
+        SELECTION_CLEAR = 17,
+        SELECTION_REQUEST = 18,
+        SELECTION_NOTIFY = 19,
+        PROXIMITY_IN = 20,
+        PROXIMITY_OUT = 21,
+        DRAG_ENTER = 22,
+        DRAG_LEAVE = 23,
+        DRAG_MOTION = 24,
+        DRAG_STATUS = 25,
+        DROP_START = 26,
+        DROP_FINISHED = 27,
+        CLIENT_EVENT = 28,
+        VISIBILITY_NOTIFY = 29,
+        NO_EXPOSE = 30,
+        SCROLL = 31,
+        WINDOW_STATE = 32,
+        SETTING = 33,
+        OWNER_CHANGE = 34,
+        GRAB_BROKEN = 35,
+        DAMAGE = 36,
+        EVENT_LAST = 37,
     }
 
 
@@ -283,9 +283,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum ExtensionMode {
-        NONE,
-        ALL,
-        CURSOR,
+        NONE = 0,
+        ALL = 1,
+        CURSOR = 2,
     }
 
 
@@ -300,10 +300,10 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum Fill {
-        SOLID,
-        TILED,
-        STIPPLED,
-        OPAQUE_STIPPLED,
+        SOLID = 0,
+        TILED = 1,
+        STIPPLED = 2,
+        OPAQUE_STIPPLED = 3,
     }
 
 
@@ -318,8 +318,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum FillRule {
-        EVEN_ODD_RULE,
-        WINDING_RULE,
+        EVEN_ODD_RULE = 0,
+        WINDING_RULE = 1,
     }
 
 
@@ -334,9 +334,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum FilterReturn {
-        CONTINUE,
-        TRANSLATE,
-        REMOVE,
+        CONTINUE = 0,
+        TRANSLATE = 1,
+        REMOVE = 2,
     }
 
 
@@ -351,8 +351,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum FontType {
-        FONT,
-        FONTSET,
+        FONT = 0,
+        FONTSET = 1,
     }
 
 
@@ -367,22 +367,22 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum Function {
-        COPY,
-        INVERT,
-        XOR,
-        CLEAR,
-        AND,
-        AND_REVERSE,
-        AND_INVERT,
-        NOOP,
-        OR,
-        EQUIV,
-        OR_REVERSE,
-        COPY_INVERT,
-        OR_INVERT,
-        NAND,
-        NOR,
-        SET,
+        COPY = 0,
+        INVERT = 1,
+        XOR = 2,
+        CLEAR = 3,
+        AND = 4,
+        AND_REVERSE = 5,
+        AND_INVERT = 6,
+        NOOP = 7,
+        OR = 8,
+        EQUIV = 9,
+        OR_REVERSE = 10,
+        COPY_INVERT = 11,
+        OR_INVERT = 12,
+        NAND = 13,
+        NOR = 14,
+        SET = 15,
     }
 
 
@@ -397,11 +397,11 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum GrabStatus {
-        SUCCESS,
-        ALREADY_GRABBED,
-        INVALID_TIME,
-        NOT_VIEWABLE,
-        FROZEN,
+        SUCCESS = 0,
+        ALREADY_GRABBED = 1,
+        INVALID_TIME = 2,
+        NOT_VIEWABLE = 3,
+        FROZEN = 4,
     }
 
 
@@ -416,16 +416,16 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum Gravity {
-        NORTH_WEST,
-        NORTH,
-        NORTH_EAST,
-        WEST,
-        CENTER,
-        EAST,
-        SOUTH_WEST,
-        SOUTH,
-        SOUTH_EAST,
-        STATIC,
+        NORTH_WEST = 1,
+        NORTH = 2,
+        NORTH_EAST = 3,
+        WEST = 4,
+        CENTER = 5,
+        EAST = 6,
+        SOUTH_WEST = 7,
+        SOUTH = 8,
+        SOUTH_EAST = 9,
+        STATIC = 10,
     }
 
 
@@ -440,9 +440,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum ImageType {
-        NORMAL,
-        SHARED,
-        FASTEST,
+        NORMAL = 0,
+        SHARED = 1,
+        FASTEST = 2,
     }
 
 
@@ -457,9 +457,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum InputMode {
-        DISABLED,
-        SCREEN,
-        WINDOW,
+        DISABLED = 0,
+        SCREEN = 1,
+        WINDOW = 2,
     }
 
 
@@ -474,10 +474,10 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum InputSource {
-        MOUSE,
-        PEN,
-        ERASER,
-        CURSOR,
+        MOUSE = 0,
+        PEN = 1,
+        ERASER = 2,
+        CURSOR = 3,
     }
 
 
@@ -492,9 +492,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum JoinStyle {
-        MITER,
-        ROUND,
-        BEVEL,
+        MITER = 0,
+        ROUND = 1,
+        BEVEL = 2,
     }
 
 
@@ -509,9 +509,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum LineStyle {
-        SOLID,
-        ON_OFF_DASH,
-        DOUBLE_DASH,
+        SOLID = 0,
+        ON_OFF_DASH = 1,
+        DOUBLE_DASH = 2,
     }
 
 
@@ -526,12 +526,12 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum NotifyType {
-        ANCESTOR,
-        VIRTUAL,
-        INFERIOR,
-        NONLINEAR,
-        NONLINEAR_VIRTUAL,
-        UNKNOWN,
+        ANCESTOR = 0,
+        VIRTUAL = 1,
+        INFERIOR = 2,
+        NONLINEAR = 3,
+        NONLINEAR_VIRTUAL = 4,
+        UNKNOWN = 5,
     }
 
 
@@ -546,9 +546,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum OverlapType {
-        IN,
-        OUT,
-        PART,
+        IN = 0,
+        OUT = 1,
+        PART = 2,
     }
 
 
@@ -563,9 +563,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum OwnerChange {
-        NEW_OWNER,
-        DESTROY,
-        CLOSE,
+        NEW_OWNER = 0,
+        DESTROY = 1,
+        CLOSE = 2,
     }
 
 
@@ -580,9 +580,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum PropMode {
-        REPLACE,
-        PREPEND,
-        APPEND,
+        REPLACE = 0,
+        PREPEND = 1,
+        APPEND = 2,
     }
 
 
@@ -597,8 +597,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum PropertyState {
-        NEW_VALUE,
-        DELETE,
+        NEW_VALUE = 0,
+        DELETE = 1,
     }
 
 
@@ -613,9 +613,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum RgbDither {
-        NONE,
-        NORMAL,
-        MAX,
+        NONE = 0,
+        NORMAL = 1,
+        MAX = 2,
     }
 
 
@@ -630,10 +630,10 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum ScrollDirection {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
     }
 
 
@@ -648,9 +648,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum SettingAction {
-        NEW,
-        CHANGED,
-        DELETED,
+        NEW = 0,
+        CHANGED = 1,
+        DELETED = 2,
     }
 
 
@@ -665,11 +665,11 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum Status {
-        OK,
-        ERROR,
-        ERROR_PARAM,
-        ERROR_FILE,
-        ERROR_MEM,
+        OK = 0,
+        ERROR = -1,
+        ERROR_PARAM = -2,
+        ERROR_FILE = -3,
+        ERROR_MEM = -4,
     }
 
 
@@ -684,8 +684,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum SubwindowMode {
-        CLIP_BY_CHILDREN,
-        INCLUDE_INFERIORS,
+        CLIP_BY_CHILDREN = 0,
+        INCLUDE_INFERIORS = 1,
     }
 
 
@@ -700,9 +700,9 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum VisibilityState {
-        UNOBSCURED,
-        PARTIAL,
-        FULLY_OBSCURED,
+        UNOBSCURED = 0,
+        PARTIAL = 1,
+        FULLY_OBSCURED = 2,
     }
 
 
@@ -717,12 +717,12 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum VisualType {
-        STATIC_GRAY,
-        GRAYSCALE,
-        STATIC_COLOR,
-        PSEUDO_COLOR,
-        TRUE_COLOR,
-        DIRECT_COLOR,
+        STATIC_GRAY = 0,
+        GRAYSCALE = 1,
+        STATIC_COLOR = 2,
+        PSEUDO_COLOR = 3,
+        TRUE_COLOR = 4,
+        DIRECT_COLOR = 5,
     }
 
 
@@ -737,8 +737,8 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum WindowClass {
-        OUTPUT,
-        ONLY,
+        OUTPUT = 0,
+        ONLY = 1,
     }
 
 
@@ -753,14 +753,14 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum WindowEdge {
-        NORTH_WEST,
-        NORTH,
-        NORTH_EAST,
-        WEST,
-        EAST,
-        SOUTH_WEST,
-        SOUTH,
-        SOUTH_EAST,
+        NORTH_WEST = 0,
+        NORTH = 1,
+        NORTH_EAST = 2,
+        WEST = 3,
+        EAST = 4,
+        SOUTH_WEST = 5,
+        SOUTH = 6,
+        SOUTH_EAST = 7,
     }
 
 
@@ -775,13 +775,13 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum WindowType {
-        ROOT,
-        TOPLEVEL,
-        CHILD,
-        DIALOG,
-        TEMP,
-        FOREIGN,
-        OFFSCREEN,
+        ROOT = 0,
+        TOPLEVEL = 1,
+        CHILD = 2,
+        DIALOG = 3,
+        TEMP = 4,
+        FOREIGN = 5,
+        OFFSCREEN = 6,
     }
 
 
@@ -796,4383 +796,10926 @@ export namespace Gdk {
      * @gir-type Enum
      */
     enum WindowTypeHint {
-        NORMAL,
-        DIALOG,
-        MENU,
-        TOOLBAR,
-        SPLASHSCREEN,
-        UTILITY,
-        DOCK,
-        DESKTOP,
-        DROPDOWN_MENU,
-        POPUP_MENU,
-        TOOLTIP,
-        NOTIFICATION,
-        COMBO,
-        DND,
+        NORMAL = 0,
+        DIALOG = 1,
+        MENU = 2,
+        TOOLBAR = 3,
+        SPLASHSCREEN = 4,
+        UTILITY = 5,
+        DOCK = 6,
+        DESKTOP = 7,
+        DROPDOWN_MENU = 8,
+        POPUP_MENU = 9,
+        TOOLTIP = 10,
+        NOTIFICATION = 11,
+        COMBO = 12,
+        DND = 13,
     }
 
 
+    /**
+     * @default 0
+     */
     const CURRENT_TIME: number;
 
+    /**
+     * @default 48
+     */
     const KEY_0: number;
 
+    /**
+     * @default 49
+     */
     const KEY_1: number;
 
+    /**
+     * @default 50
+     */
     const KEY_2: number;
 
+    /**
+     * @default 51
+     */
     const KEY_3: number;
 
+    /**
+     * @default 64784
+     */
     const KEY_3270_AltCursor: number;
 
+    /**
+     * @default 64782
+     */
     const KEY_3270_Attn: number;
 
+    /**
+     * @default 64773
+     */
     const KEY_3270_BackTab: number;
 
+    /**
+     * @default 64793
+     */
     const KEY_3270_ChangeScreen: number;
 
+    /**
+     * @default 64789
+     */
     const KEY_3270_Copy: number;
 
+    /**
+     * @default 64783
+     */
     const KEY_3270_CursorBlink: number;
 
+    /**
+     * @default 64796
+     */
     const KEY_3270_CursorSelect: number;
 
+    /**
+     * @default 64794
+     */
     const KEY_3270_DeleteWord: number;
 
+    /**
+     * @default 64769
+     */
     const KEY_3270_Duplicate: number;
 
+    /**
+     * @default 64798
+     */
     const KEY_3270_Enter: number;
 
+    /**
+     * @default 64774
+     */
     const KEY_3270_EraseEOF: number;
 
+    /**
+     * @default 64775
+     */
     const KEY_3270_EraseInput: number;
 
+    /**
+     * @default 64795
+     */
     const KEY_3270_ExSelect: number;
 
+    /**
+     * @default 64770
+     */
     const KEY_3270_FieldMark: number;
 
+    /**
+     * @default 64787
+     */
     const KEY_3270_Ident: number;
 
+    /**
+     * @default 64786
+     */
     const KEY_3270_Jump: number;
 
+    /**
+     * @default 64785
+     */
     const KEY_3270_KeyClick: number;
 
+    /**
+     * @default 64772
+     */
     const KEY_3270_Left2: number;
 
+    /**
+     * @default 64778
+     */
     const KEY_3270_PA1: number;
 
+    /**
+     * @default 64779
+     */
     const KEY_3270_PA2: number;
 
+    /**
+     * @default 64780
+     */
     const KEY_3270_PA3: number;
 
+    /**
+     * @default 64790
+     */
     const KEY_3270_Play: number;
 
+    /**
+     * @default 64797
+     */
     const KEY_3270_PrintScreen: number;
 
+    /**
+     * @default 64777
+     */
     const KEY_3270_Quit: number;
 
+    /**
+     * @default 64792
+     */
     const KEY_3270_Record: number;
 
+    /**
+     * @default 64776
+     */
     const KEY_3270_Reset: number;
 
+    /**
+     * @default 64771
+     */
     const KEY_3270_Right2: number;
 
+    /**
+     * @default 64788
+     */
     const KEY_3270_Rule: number;
 
+    /**
+     * @default 64791
+     */
     const KEY_3270_Setup: number;
 
+    /**
+     * @default 64781
+     */
     const KEY_3270_Test: number;
 
+    /**
+     * @default 52
+     */
     const KEY_4: number;
 
+    /**
+     * @default 53
+     */
     const KEY_5: number;
 
+    /**
+     * @default 54
+     */
     const KEY_6: number;
 
+    /**
+     * @default 55
+     */
     const KEY_7: number;
 
+    /**
+     * @default 56
+     */
     const KEY_8: number;
 
+    /**
+     * @default 57
+     */
     const KEY_9: number;
 
+    /**
+     * @default 65
+     */
     const KEY_A: number;
 
+    /**
+     * @default 198
+     */
     const KEY_AE: number;
 
+    /**
+     * @default 193
+     */
     const KEY_Aacute: number;
 
+    /**
+     * @default 16785056
+     */
     const KEY_Abelowdot: number;
 
+    /**
+     * @default 451
+     */
     const KEY_Abreve: number;
 
+    /**
+     * @default 16785070
+     */
     const KEY_Abreveacute: number;
 
+    /**
+     * @default 16785078
+     */
     const KEY_Abrevebelowdot: number;
 
+    /**
+     * @default 16785072
+     */
     const KEY_Abrevegrave: number;
 
+    /**
+     * @default 16785074
+     */
     const KEY_Abrevehook: number;
 
+    /**
+     * @default 16785076
+     */
     const KEY_Abrevetilde: number;
 
+    /**
+     * @default 65136
+     */
     const KEY_AccessX_Enable: number;
 
+    /**
+     * @default 65137
+     */
     const KEY_AccessX_Feedback_Enable: number;
 
+    /**
+     * @default 194
+     */
     const KEY_Acircumflex: number;
 
+    /**
+     * @default 16785060
+     */
     const KEY_Acircumflexacute: number;
 
+    /**
+     * @default 16785068
+     */
     const KEY_Acircumflexbelowdot: number;
 
+    /**
+     * @default 16785062
+     */
     const KEY_Acircumflexgrave: number;
 
+    /**
+     * @default 16785064
+     */
     const KEY_Acircumflexhook: number;
 
+    /**
+     * @default 16785066
+     */
     const KEY_Acircumflextilde: number;
 
+    /**
+     * @default 269025081
+     */
     const KEY_AddFavorite: number;
 
+    /**
+     * @default 196
+     */
     const KEY_Adiaeresis: number;
 
+    /**
+     * @default 192
+     */
     const KEY_Agrave: number;
 
+    /**
+     * @default 16785058
+     */
     const KEY_Ahook: number;
 
+    /**
+     * @default 65513
+     */
     const KEY_Alt_L: number;
 
+    /**
+     * @default 65514
+     */
     const KEY_Alt_R: number;
 
+    /**
+     * @default 960
+     */
     const KEY_Amacron: number;
 
+    /**
+     * @default 417
+     */
     const KEY_Aogonek: number;
 
+    /**
+     * @default 269025104
+     */
     const KEY_ApplicationLeft: number;
 
+    /**
+     * @default 269025105
+     */
     const KEY_ApplicationRight: number;
 
+    /**
+     * @default 16778848
+     */
     const KEY_Arabic_0: number;
 
+    /**
+     * @default 16778849
+     */
     const KEY_Arabic_1: number;
 
+    /**
+     * @default 16778850
+     */
     const KEY_Arabic_2: number;
 
+    /**
+     * @default 16778851
+     */
     const KEY_Arabic_3: number;
 
+    /**
+     * @default 16778852
+     */
     const KEY_Arabic_4: number;
 
+    /**
+     * @default 16778853
+     */
     const KEY_Arabic_5: number;
 
+    /**
+     * @default 16778854
+     */
     const KEY_Arabic_6: number;
 
+    /**
+     * @default 16778855
+     */
     const KEY_Arabic_7: number;
 
+    /**
+     * @default 16778856
+     */
     const KEY_Arabic_8: number;
 
+    /**
+     * @default 16778857
+     */
     const KEY_Arabic_9: number;
 
+    /**
+     * @default 1497
+     */
     const KEY_Arabic_ain: number;
 
+    /**
+     * @default 1479
+     */
     const KEY_Arabic_alef: number;
 
+    /**
+     * @default 1513
+     */
     const KEY_Arabic_alefmaksura: number;
 
+    /**
+     * @default 1480
+     */
     const KEY_Arabic_beh: number;
 
+    /**
+     * @default 1452
+     */
     const KEY_Arabic_comma: number;
 
+    /**
+     * @default 1494
+     */
     const KEY_Arabic_dad: number;
 
+    /**
+     * @default 1487
+     */
     const KEY_Arabic_dal: number;
 
+    /**
+     * @default 1519
+     */
     const KEY_Arabic_damma: number;
 
+    /**
+     * @default 1516
+     */
     const KEY_Arabic_dammatan: number;
 
+    /**
+     * @default 16778888
+     */
     const KEY_Arabic_ddal: number;
 
+    /**
+     * @default 16778956
+     */
     const KEY_Arabic_farsi_yeh: number;
 
+    /**
+     * @default 1518
+     */
     const KEY_Arabic_fatha: number;
 
+    /**
+     * @default 1515
+     */
     const KEY_Arabic_fathatan: number;
 
+    /**
+     * @default 1505
+     */
     const KEY_Arabic_feh: number;
 
+    /**
+     * @default 16778964
+     */
     const KEY_Arabic_fullstop: number;
 
+    /**
+     * @default 16778927
+     */
     const KEY_Arabic_gaf: number;
 
+    /**
+     * @default 1498
+     */
     const KEY_Arabic_ghain: number;
 
+    /**
+     * @default 1511
+     */
     const KEY_Arabic_ha: number;
 
+    /**
+     * @default 1485
+     */
     const KEY_Arabic_hah: number;
 
+    /**
+     * @default 1473
+     */
     const KEY_Arabic_hamza: number;
 
+    /**
+     * @default 16778836
+     */
     const KEY_Arabic_hamza_above: number;
 
+    /**
+     * @default 16778837
+     */
     const KEY_Arabic_hamza_below: number;
 
+    /**
+     * @default 1475
+     */
     const KEY_Arabic_hamzaonalef: number;
 
+    /**
+     * @default 1476
+     */
     const KEY_Arabic_hamzaonwaw: number;
 
+    /**
+     * @default 1478
+     */
     const KEY_Arabic_hamzaonyeh: number;
 
+    /**
+     * @default 1477
+     */
     const KEY_Arabic_hamzaunderalef: number;
 
+    /**
+     * @default 1511
+     */
     const KEY_Arabic_heh: number;
 
+    /**
+     * @default 16778942
+     */
     const KEY_Arabic_heh_doachashmee: number;
 
+    /**
+     * @default 16778945
+     */
     const KEY_Arabic_heh_goal: number;
 
+    /**
+     * @default 1484
+     */
     const KEY_Arabic_jeem: number;
 
+    /**
+     * @default 16778904
+     */
     const KEY_Arabic_jeh: number;
 
+    /**
+     * @default 1507
+     */
     const KEY_Arabic_kaf: number;
 
+    /**
+     * @default 1520
+     */
     const KEY_Arabic_kasra: number;
 
+    /**
+     * @default 1517
+     */
     const KEY_Arabic_kasratan: number;
 
+    /**
+     * @default 16778921
+     */
     const KEY_Arabic_keheh: number;
 
+    /**
+     * @default 1486
+     */
     const KEY_Arabic_khah: number;
 
+    /**
+     * @default 1508
+     */
     const KEY_Arabic_lam: number;
 
+    /**
+     * @default 16778835
+     */
     const KEY_Arabic_madda_above: number;
 
+    /**
+     * @default 1474
+     */
     const KEY_Arabic_maddaonalef: number;
 
+    /**
+     * @default 1509
+     */
     const KEY_Arabic_meem: number;
 
+    /**
+     * @default 1510
+     */
     const KEY_Arabic_noon: number;
 
+    /**
+     * @default 16778938
+     */
     const KEY_Arabic_noon_ghunna: number;
 
+    /**
+     * @default 16778878
+     */
     const KEY_Arabic_peh: number;
 
+    /**
+     * @default 16778858
+     */
     const KEY_Arabic_percent: number;
 
+    /**
+     * @default 1506
+     */
     const KEY_Arabic_qaf: number;
 
+    /**
+     * @default 1471
+     */
     const KEY_Arabic_question_mark: number;
 
+    /**
+     * @default 1489
+     */
     const KEY_Arabic_ra: number;
 
+    /**
+     * @default 16778897
+     */
     const KEY_Arabic_rreh: number;
 
+    /**
+     * @default 1493
+     */
     const KEY_Arabic_sad: number;
 
+    /**
+     * @default 1491
+     */
     const KEY_Arabic_seen: number;
 
+    /**
+     * @default 1467
+     */
     const KEY_Arabic_semicolon: number;
 
+    /**
+     * @default 1521
+     */
     const KEY_Arabic_shadda: number;
 
+    /**
+     * @default 1492
+     */
     const KEY_Arabic_sheen: number;
 
+    /**
+     * @default 1522
+     */
     const KEY_Arabic_sukun: number;
 
+    /**
+     * @default 16778864
+     */
     const KEY_Arabic_superscript_alef: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Arabic_switch: number;
 
+    /**
+     * @default 1495
+     */
     const KEY_Arabic_tah: number;
 
+    /**
+     * @default 1504
+     */
     const KEY_Arabic_tatweel: number;
 
+    /**
+     * @default 16778886
+     */
     const KEY_Arabic_tcheh: number;
 
+    /**
+     * @default 1482
+     */
     const KEY_Arabic_teh: number;
 
+    /**
+     * @default 1481
+     */
     const KEY_Arabic_tehmarbuta: number;
 
+    /**
+     * @default 1488
+     */
     const KEY_Arabic_thal: number;
 
+    /**
+     * @default 1483
+     */
     const KEY_Arabic_theh: number;
 
+    /**
+     * @default 16778873
+     */
     const KEY_Arabic_tteh: number;
 
+    /**
+     * @default 16778916
+     */
     const KEY_Arabic_veh: number;
 
+    /**
+     * @default 1512
+     */
     const KEY_Arabic_waw: number;
 
+    /**
+     * @default 1514
+     */
     const KEY_Arabic_yeh: number;
 
+    /**
+     * @default 16778962
+     */
     const KEY_Arabic_yeh_baree: number;
 
+    /**
+     * @default 1496
+     */
     const KEY_Arabic_zah: number;
 
+    /**
+     * @default 1490
+     */
     const KEY_Arabic_zain: number;
 
+    /**
+     * @default 197
+     */
     const KEY_Aring: number;
 
+    /**
+     * @default 16778552
+     */
     const KEY_Armenian_AT: number;
 
+    /**
+     * @default 16778545
+     */
     const KEY_Armenian_AYB: number;
 
+    /**
+     * @default 16778546
+     */
     const KEY_Armenian_BEN: number;
 
+    /**
+     * @default 16778569
+     */
     const KEY_Armenian_CHA: number;
 
+    /**
+     * @default 16778548
+     */
     const KEY_Armenian_DA: number;
 
+    /**
+     * @default 16778561
+     */
     const KEY_Armenian_DZA: number;
 
+    /**
+     * @default 16778551
+     */
     const KEY_Armenian_E: number;
 
+    /**
+     * @default 16778582
+     */
     const KEY_Armenian_FE: number;
 
+    /**
+     * @default 16778562
+     */
     const KEY_Armenian_GHAT: number;
 
+    /**
+     * @default 16778547
+     */
     const KEY_Armenian_GIM: number;
 
+    /**
+     * @default 16778565
+     */
     const KEY_Armenian_HI: number;
 
+    /**
+     * @default 16778560
+     */
     const KEY_Armenian_HO: number;
 
+    /**
+     * @default 16778555
+     */
     const KEY_Armenian_INI: number;
 
+    /**
+     * @default 16778571
+     */
     const KEY_Armenian_JE: number;
 
+    /**
+     * @default 16778580
+     */
     const KEY_Armenian_KE: number;
 
+    /**
+     * @default 16778559
+     */
     const KEY_Armenian_KEN: number;
 
+    /**
+     * @default 16778557
+     */
     const KEY_Armenian_KHE: number;
 
+    /**
+     * @default 16778556
+     */
     const KEY_Armenian_LYUN: number;
 
+    /**
+     * @default 16778564
+     */
     const KEY_Armenian_MEN: number;
 
+    /**
+     * @default 16778566
+     */
     const KEY_Armenian_NU: number;
 
+    /**
+     * @default 16778581
+     */
     const KEY_Armenian_O: number;
 
+    /**
+     * @default 16778570
+     */
     const KEY_Armenian_PE: number;
 
+    /**
+     * @default 16778579
+     */
     const KEY_Armenian_PYUR: number;
 
+    /**
+     * @default 16778572
+     */
     const KEY_Armenian_RA: number;
 
+    /**
+     * @default 16778576
+     */
     const KEY_Armenian_RE: number;
 
+    /**
+     * @default 16778573
+     */
     const KEY_Armenian_SE: number;
 
+    /**
+     * @default 16778567
+     */
     const KEY_Armenian_SHA: number;
 
+    /**
+     * @default 16778563
+     */
     const KEY_Armenian_TCHE: number;
 
+    /**
+     * @default 16778553
+     */
     const KEY_Armenian_TO: number;
 
+    /**
+     * @default 16778558
+     */
     const KEY_Armenian_TSA: number;
 
+    /**
+     * @default 16778577
+     */
     const KEY_Armenian_TSO: number;
 
+    /**
+     * @default 16778575
+     */
     const KEY_Armenian_TYUN: number;
 
+    /**
+     * @default 16778574
+     */
     const KEY_Armenian_VEV: number;
 
+    /**
+     * @default 16778568
+     */
     const KEY_Armenian_VO: number;
 
+    /**
+     * @default 16778578
+     */
     const KEY_Armenian_VYUN: number;
 
+    /**
+     * @default 16778549
+     */
     const KEY_Armenian_YECH: number;
 
+    /**
+     * @default 16778550
+     */
     const KEY_Armenian_ZA: number;
 
+    /**
+     * @default 16778554
+     */
     const KEY_Armenian_ZHE: number;
 
+    /**
+     * @default 16778587
+     */
     const KEY_Armenian_accent: number;
 
+    /**
+     * @default 16778588
+     */
     const KEY_Armenian_amanak: number;
 
+    /**
+     * @default 16778586
+     */
     const KEY_Armenian_apostrophe: number;
 
+    /**
+     * @default 16778600
+     */
     const KEY_Armenian_at: number;
 
+    /**
+     * @default 16778593
+     */
     const KEY_Armenian_ayb: number;
 
+    /**
+     * @default 16778594
+     */
     const KEY_Armenian_ben: number;
 
+    /**
+     * @default 16778589
+     */
     const KEY_Armenian_but: number;
 
+    /**
+     * @default 16778617
+     */
     const KEY_Armenian_cha: number;
 
+    /**
+     * @default 16778596
+     */
     const KEY_Armenian_da: number;
 
+    /**
+     * @default 16778609
+     */
     const KEY_Armenian_dza: number;
 
+    /**
+     * @default 16778599
+     */
     const KEY_Armenian_e: number;
 
+    /**
+     * @default 16778588
+     */
     const KEY_Armenian_exclam: number;
 
+    /**
+     * @default 16778630
+     */
     const KEY_Armenian_fe: number;
 
+    /**
+     * @default 16778633
+     */
     const KEY_Armenian_full_stop: number;
 
+    /**
+     * @default 16778610
+     */
     const KEY_Armenian_ghat: number;
 
+    /**
+     * @default 16778595
+     */
     const KEY_Armenian_gim: number;
 
+    /**
+     * @default 16778613
+     */
     const KEY_Armenian_hi: number;
 
+    /**
+     * @default 16778608
+     */
     const KEY_Armenian_ho: number;
 
+    /**
+     * @default 16778634
+     */
     const KEY_Armenian_hyphen: number;
 
+    /**
+     * @default 16778603
+     */
     const KEY_Armenian_ini: number;
 
+    /**
+     * @default 16778619
+     */
     const KEY_Armenian_je: number;
 
+    /**
+     * @default 16778628
+     */
     const KEY_Armenian_ke: number;
 
+    /**
+     * @default 16778607
+     */
     const KEY_Armenian_ken: number;
 
+    /**
+     * @default 16778605
+     */
     const KEY_Armenian_khe: number;
 
+    /**
+     * @default 16778631
+     */
     const KEY_Armenian_ligature_ew: number;
 
+    /**
+     * @default 16778604
+     */
     const KEY_Armenian_lyun: number;
 
+    /**
+     * @default 16778612
+     */
     const KEY_Armenian_men: number;
 
+    /**
+     * @default 16778614
+     */
     const KEY_Armenian_nu: number;
 
+    /**
+     * @default 16778629
+     */
     const KEY_Armenian_o: number;
 
+    /**
+     * @default 16778590
+     */
     const KEY_Armenian_paruyk: number;
 
+    /**
+     * @default 16778618
+     */
     const KEY_Armenian_pe: number;
 
+    /**
+     * @default 16778627
+     */
     const KEY_Armenian_pyur: number;
 
+    /**
+     * @default 16778590
+     */
     const KEY_Armenian_question: number;
 
+    /**
+     * @default 16778620
+     */
     const KEY_Armenian_ra: number;
 
+    /**
+     * @default 16778624
+     */
     const KEY_Armenian_re: number;
 
+    /**
+     * @default 16778621
+     */
     const KEY_Armenian_se: number;
 
+    /**
+     * @default 16778589
+     */
     const KEY_Armenian_separation_mark: number;
 
+    /**
+     * @default 16778615
+     */
     const KEY_Armenian_sha: number;
 
+    /**
+     * @default 16778587
+     */
     const KEY_Armenian_shesht: number;
 
+    /**
+     * @default 16778611
+     */
     const KEY_Armenian_tche: number;
 
+    /**
+     * @default 16778601
+     */
     const KEY_Armenian_to: number;
 
+    /**
+     * @default 16778606
+     */
     const KEY_Armenian_tsa: number;
 
+    /**
+     * @default 16778625
+     */
     const KEY_Armenian_tso: number;
 
+    /**
+     * @default 16778623
+     */
     const KEY_Armenian_tyun: number;
 
+    /**
+     * @default 16778633
+     */
     const KEY_Armenian_verjaket: number;
 
+    /**
+     * @default 16778622
+     */
     const KEY_Armenian_vev: number;
 
+    /**
+     * @default 16778616
+     */
     const KEY_Armenian_vo: number;
 
+    /**
+     * @default 16778626
+     */
     const KEY_Armenian_vyun: number;
 
+    /**
+     * @default 16778597
+     */
     const KEY_Armenian_yech: number;
 
+    /**
+     * @default 16778634
+     */
     const KEY_Armenian_yentamna: number;
 
+    /**
+     * @default 16778598
+     */
     const KEY_Armenian_za: number;
 
+    /**
+     * @default 16778602
+     */
     const KEY_Armenian_zhe: number;
 
+    /**
+     * @default 195
+     */
     const KEY_Atilde: number;
 
+    /**
+     * @default 65146
+     */
     const KEY_AudibleBell_Enable: number;
 
+    /**
+     * @default 269025179
+     */
     const KEY_AudioCycleTrack: number;
 
+    /**
+     * @default 269025175
+     */
     const KEY_AudioForward: number;
 
+    /**
+     * @default 269025041
+     */
     const KEY_AudioLowerVolume: number;
 
+    /**
+     * @default 269025074
+     */
     const KEY_AudioMedia: number;
 
+    /**
+     * @default 269025042
+     */
     const KEY_AudioMute: number;
 
+    /**
+     * @default 269025047
+     */
     const KEY_AudioNext: number;
 
+    /**
+     * @default 269025073
+     */
     const KEY_AudioPause: number;
 
+    /**
+     * @default 269025044
+     */
     const KEY_AudioPlay: number;
 
+    /**
+     * @default 269025046
+     */
     const KEY_AudioPrev: number;
 
+    /**
+     * @default 269025043
+     */
     const KEY_AudioRaiseVolume: number;
 
+    /**
+     * @default 269025177
+     */
     const KEY_AudioRandomPlay: number;
 
+    /**
+     * @default 269025052
+     */
     const KEY_AudioRecord: number;
 
+    /**
+     * @default 269025176
+     */
     const KEY_AudioRepeat: number;
 
+    /**
+     * @default 269025086
+     */
     const KEY_AudioRewind: number;
 
+    /**
+     * @default 269025045
+     */
     const KEY_AudioStop: number;
 
+    /**
+     * @default 269025165
+     */
     const KEY_Away: number;
 
+    /**
+     * @default 66
+     */
     const KEY_B: number;
 
+    /**
+     * @default 16784898
+     */
     const KEY_Babovedot: number;
 
+    /**
+     * @default 269025062
+     */
     const KEY_Back: number;
 
+    /**
+     * @default 269025087
+     */
     const KEY_BackForward: number;
 
+    /**
+     * @default 65288
+     */
     const KEY_BackSpace: number;
 
+    /**
+     * @default 269025171
+     */
     const KEY_Battery: number;
 
+    /**
+     * @default 65368
+     */
     const KEY_Begin: number;
 
+    /**
+     * @default 269025190
+     */
     const KEY_Blue: number;
 
+    /**
+     * @default 269025172
+     */
     const KEY_Bluetooth: number;
 
+    /**
+     * @default 269025106
+     */
     const KEY_Book: number;
 
+    /**
+     * @default 65140
+     */
     const KEY_BounceKeys_Enable: number;
 
+    /**
+     * @default 65387
+     */
     const KEY_Break: number;
 
+    /**
+     * @default 269025083
+     */
     const KEY_BrightnessAdjust: number;
 
+    /**
+     * @default 1726
+     */
     const KEY_Byelorussian_SHORTU: number;
 
+    /**
+     * @default 1710
+     */
     const KEY_Byelorussian_shortu: number;
 
+    /**
+     * @default 67
+     */
     const KEY_C: number;
 
+    /**
+     * @default 269025107
+     */
     const KEY_CD: number;
 
+    /**
+     * @default 709
+     */
     const KEY_Cabovedot: number;
 
+    /**
+     * @default 454
+     */
     const KEY_Cacute: number;
 
+    /**
+     * @default 269025053
+     */
     const KEY_Calculator: number;
 
+    /**
+     * @default 269025056
+     */
     const KEY_Calendar: number;
 
+    /**
+     * @default 65385
+     */
     const KEY_Cancel: number;
 
+    /**
+     * @default 65509
+     */
     const KEY_Caps_Lock: number;
 
+    /**
+     * @default 456
+     */
     const KEY_Ccaron: number;
 
+    /**
+     * @default 199
+     */
     const KEY_Ccedilla: number;
 
+    /**
+     * @default 710
+     */
     const KEY_Ccircumflex: number;
 
+    /**
+     * @default 65291
+     */
     const KEY_Clear: number;
 
+    /**
+     * @default 269024801
+     */
     const KEY_ClearGrab: number;
 
+    /**
+     * @default 269025110
+     */
     const KEY_Close: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Codeinput: number;
 
+    /**
+     * @default 16785569
+     */
     const KEY_ColonSign: number;
 
+    /**
+     * @default 269025085
+     */
     const KEY_Community: number;
 
+    /**
+     * @default 269025058
+     */
     const KEY_ContrastAdjust: number;
 
+    /**
+     * @default 65507
+     */
     const KEY_Control_L: number;
 
+    /**
+     * @default 65508
+     */
     const KEY_Control_R: number;
 
+    /**
+     * @default 269025111
+     */
     const KEY_Copy: number;
 
+    /**
+     * @default 16785570
+     */
     const KEY_CruzeiroSign: number;
 
+    /**
+     * @default 269025112
+     */
     const KEY_Cut: number;
 
+    /**
+     * @default 269025180
+     */
     const KEY_CycleAngle: number;
 
+    /**
+     * @default 1761
+     */
     const KEY_Cyrillic_A: number;
 
+    /**
+     * @default 1762
+     */
     const KEY_Cyrillic_BE: number;
 
+    /**
+     * @default 1790
+     */
     const KEY_Cyrillic_CHE: number;
 
+    /**
+     * @default 16778422
+     */
     const KEY_Cyrillic_CHE_descender: number;
 
+    /**
+     * @default 16778424
+     */
     const KEY_Cyrillic_CHE_vertstroke: number;
 
+    /**
+     * @default 1764
+     */
     const KEY_Cyrillic_DE: number;
 
+    /**
+     * @default 1727
+     */
     const KEY_Cyrillic_DZHE: number;
 
+    /**
+     * @default 1788
+     */
     const KEY_Cyrillic_E: number;
 
+    /**
+     * @default 1766
+     */
     const KEY_Cyrillic_EF: number;
 
+    /**
+     * @default 1772
+     */
     const KEY_Cyrillic_EL: number;
 
+    /**
+     * @default 1773
+     */
     const KEY_Cyrillic_EM: number;
 
+    /**
+     * @default 1774
+     */
     const KEY_Cyrillic_EN: number;
 
+    /**
+     * @default 16778402
+     */
     const KEY_Cyrillic_EN_descender: number;
 
+    /**
+     * @default 1778
+     */
     const KEY_Cyrillic_ER: number;
 
+    /**
+     * @default 1779
+     */
     const KEY_Cyrillic_ES: number;
 
+    /**
+     * @default 1767
+     */
     const KEY_Cyrillic_GHE: number;
 
+    /**
+     * @default 16778386
+     */
     const KEY_Cyrillic_GHE_bar: number;
 
+    /**
+     * @default 1768
+     */
     const KEY_Cyrillic_HA: number;
 
+    /**
+     * @default 1791
+     */
     const KEY_Cyrillic_HARDSIGN: number;
 
+    /**
+     * @default 16778418
+     */
     const KEY_Cyrillic_HA_descender: number;
 
+    /**
+     * @default 1769
+     */
     const KEY_Cyrillic_I: number;
 
+    /**
+     * @default 1765
+     */
     const KEY_Cyrillic_IE: number;
 
+    /**
+     * @default 1715
+     */
     const KEY_Cyrillic_IO: number;
 
+    /**
+     * @default 16778466
+     */
     const KEY_Cyrillic_I_macron: number;
 
+    /**
+     * @default 1720
+     */
     const KEY_Cyrillic_JE: number;
 
+    /**
+     * @default 1771
+     */
     const KEY_Cyrillic_KA: number;
 
+    /**
+     * @default 16778394
+     */
     const KEY_Cyrillic_KA_descender: number;
 
+    /**
+     * @default 16778396
+     */
     const KEY_Cyrillic_KA_vertstroke: number;
 
+    /**
+     * @default 1721
+     */
     const KEY_Cyrillic_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const KEY_Cyrillic_NJE: number;
 
+    /**
+     * @default 1775
+     */
     const KEY_Cyrillic_O: number;
 
+    /**
+     * @default 16778472
+     */
     const KEY_Cyrillic_O_bar: number;
 
+    /**
+     * @default 1776
+     */
     const KEY_Cyrillic_PE: number;
 
+    /**
+     * @default 16778456
+     */
     const KEY_Cyrillic_SCHWA: number;
 
+    /**
+     * @default 1787
+     */
     const KEY_Cyrillic_SHA: number;
 
+    /**
+     * @default 1789
+     */
     const KEY_Cyrillic_SHCHA: number;
 
+    /**
+     * @default 16778426
+     */
     const KEY_Cyrillic_SHHA: number;
 
+    /**
+     * @default 1770
+     */
     const KEY_Cyrillic_SHORTI: number;
 
+    /**
+     * @default 1784
+     */
     const KEY_Cyrillic_SOFTSIGN: number;
 
+    /**
+     * @default 1780
+     */
     const KEY_Cyrillic_TE: number;
 
+    /**
+     * @default 1763
+     */
     const KEY_Cyrillic_TSE: number;
 
+    /**
+     * @default 1781
+     */
     const KEY_Cyrillic_U: number;
 
+    /**
+     * @default 16778478
+     */
     const KEY_Cyrillic_U_macron: number;
 
+    /**
+     * @default 16778414
+     */
     const KEY_Cyrillic_U_straight: number;
 
+    /**
+     * @default 16778416
+     */
     const KEY_Cyrillic_U_straight_bar: number;
 
+    /**
+     * @default 1783
+     */
     const KEY_Cyrillic_VE: number;
 
+    /**
+     * @default 1777
+     */
     const KEY_Cyrillic_YA: number;
 
+    /**
+     * @default 1785
+     */
     const KEY_Cyrillic_YERU: number;
 
+    /**
+     * @default 1760
+     */
     const KEY_Cyrillic_YU: number;
 
+    /**
+     * @default 1786
+     */
     const KEY_Cyrillic_ZE: number;
 
+    /**
+     * @default 1782
+     */
     const KEY_Cyrillic_ZHE: number;
 
+    /**
+     * @default 16778390
+     */
     const KEY_Cyrillic_ZHE_descender: number;
 
+    /**
+     * @default 1729
+     */
     const KEY_Cyrillic_a: number;
 
+    /**
+     * @default 1730
+     */
     const KEY_Cyrillic_be: number;
 
+    /**
+     * @default 1758
+     */
     const KEY_Cyrillic_che: number;
 
+    /**
+     * @default 16778423
+     */
     const KEY_Cyrillic_che_descender: number;
 
+    /**
+     * @default 16778425
+     */
     const KEY_Cyrillic_che_vertstroke: number;
 
+    /**
+     * @default 1732
+     */
     const KEY_Cyrillic_de: number;
 
+    /**
+     * @default 1711
+     */
     const KEY_Cyrillic_dzhe: number;
 
+    /**
+     * @default 1756
+     */
     const KEY_Cyrillic_e: number;
 
+    /**
+     * @default 1734
+     */
     const KEY_Cyrillic_ef: number;
 
+    /**
+     * @default 1740
+     */
     const KEY_Cyrillic_el: number;
 
+    /**
+     * @default 1741
+     */
     const KEY_Cyrillic_em: number;
 
+    /**
+     * @default 1742
+     */
     const KEY_Cyrillic_en: number;
 
+    /**
+     * @default 16778403
+     */
     const KEY_Cyrillic_en_descender: number;
 
+    /**
+     * @default 1746
+     */
     const KEY_Cyrillic_er: number;
 
+    /**
+     * @default 1747
+     */
     const KEY_Cyrillic_es: number;
 
+    /**
+     * @default 1735
+     */
     const KEY_Cyrillic_ghe: number;
 
+    /**
+     * @default 16778387
+     */
     const KEY_Cyrillic_ghe_bar: number;
 
+    /**
+     * @default 1736
+     */
     const KEY_Cyrillic_ha: number;
 
+    /**
+     * @default 16778419
+     */
     const KEY_Cyrillic_ha_descender: number;
 
+    /**
+     * @default 1759
+     */
     const KEY_Cyrillic_hardsign: number;
 
+    /**
+     * @default 1737
+     */
     const KEY_Cyrillic_i: number;
 
+    /**
+     * @default 16778467
+     */
     const KEY_Cyrillic_i_macron: number;
 
+    /**
+     * @default 1733
+     */
     const KEY_Cyrillic_ie: number;
 
+    /**
+     * @default 1699
+     */
     const KEY_Cyrillic_io: number;
 
+    /**
+     * @default 1704
+     */
     const KEY_Cyrillic_je: number;
 
+    /**
+     * @default 1739
+     */
     const KEY_Cyrillic_ka: number;
 
+    /**
+     * @default 16778395
+     */
     const KEY_Cyrillic_ka_descender: number;
 
+    /**
+     * @default 16778397
+     */
     const KEY_Cyrillic_ka_vertstroke: number;
 
+    /**
+     * @default 1705
+     */
     const KEY_Cyrillic_lje: number;
 
+    /**
+     * @default 1706
+     */
     const KEY_Cyrillic_nje: number;
 
+    /**
+     * @default 1743
+     */
     const KEY_Cyrillic_o: number;
 
+    /**
+     * @default 16778473
+     */
     const KEY_Cyrillic_o_bar: number;
 
+    /**
+     * @default 1744
+     */
     const KEY_Cyrillic_pe: number;
 
+    /**
+     * @default 16778457
+     */
     const KEY_Cyrillic_schwa: number;
 
+    /**
+     * @default 1755
+     */
     const KEY_Cyrillic_sha: number;
 
+    /**
+     * @default 1757
+     */
     const KEY_Cyrillic_shcha: number;
 
+    /**
+     * @default 16778427
+     */
     const KEY_Cyrillic_shha: number;
 
+    /**
+     * @default 1738
+     */
     const KEY_Cyrillic_shorti: number;
 
+    /**
+     * @default 1752
+     */
     const KEY_Cyrillic_softsign: number;
 
+    /**
+     * @default 1748
+     */
     const KEY_Cyrillic_te: number;
 
+    /**
+     * @default 1731
+     */
     const KEY_Cyrillic_tse: number;
 
+    /**
+     * @default 1749
+     */
     const KEY_Cyrillic_u: number;
 
+    /**
+     * @default 16778479
+     */
     const KEY_Cyrillic_u_macron: number;
 
+    /**
+     * @default 16778415
+     */
     const KEY_Cyrillic_u_straight: number;
 
+    /**
+     * @default 16778417
+     */
     const KEY_Cyrillic_u_straight_bar: number;
 
+    /**
+     * @default 1751
+     */
     const KEY_Cyrillic_ve: number;
 
+    /**
+     * @default 1745
+     */
     const KEY_Cyrillic_ya: number;
 
+    /**
+     * @default 1753
+     */
     const KEY_Cyrillic_yeru: number;
 
+    /**
+     * @default 1728
+     */
     const KEY_Cyrillic_yu: number;
 
+    /**
+     * @default 1754
+     */
     const KEY_Cyrillic_ze: number;
 
+    /**
+     * @default 1750
+     */
     const KEY_Cyrillic_zhe: number;
 
+    /**
+     * @default 16778391
+     */
     const KEY_Cyrillic_zhe_descender: number;
 
+    /**
+     * @default 68
+     */
     const KEY_D: number;
 
+    /**
+     * @default 269025114
+     */
     const KEY_DOS: number;
 
+    /**
+     * @default 16784906
+     */
     const KEY_Dabovedot: number;
 
+    /**
+     * @default 463
+     */
     const KEY_Dcaron: number;
 
+    /**
+     * @default 65535
+     */
     const KEY_Delete: number;
 
+    /**
+     * @default 269025113
+     */
     const KEY_Display: number;
 
+    /**
+     * @default 269025115
+     */
     const KEY_Documents: number;
 
+    /**
+     * @default 16785579
+     */
     const KEY_DongSign: number;
 
+    /**
+     * @default 65364
+     */
     const KEY_Down: number;
 
+    /**
+     * @default 464
+     */
     const KEY_Dstroke: number;
 
+    /**
+     * @default 69
+     */
     const KEY_E: number;
 
+    /**
+     * @default 957
+     */
     const KEY_ENG: number;
 
+    /**
+     * @default 208
+     */
     const KEY_ETH: number;
 
+    /**
+     * @default 972
+     */
     const KEY_Eabovedot: number;
 
+    /**
+     * @default 201
+     */
     const KEY_Eacute: number;
 
+    /**
+     * @default 16785080
+     */
     const KEY_Ebelowdot: number;
 
+    /**
+     * @default 460
+     */
     const KEY_Ecaron: number;
 
+    /**
+     * @default 202
+     */
     const KEY_Ecircumflex: number;
 
+    /**
+     * @default 16785086
+     */
     const KEY_Ecircumflexacute: number;
 
+    /**
+     * @default 16785094
+     */
     const KEY_Ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785088
+     */
     const KEY_Ecircumflexgrave: number;
 
+    /**
+     * @default 16785090
+     */
     const KEY_Ecircumflexhook: number;
 
+    /**
+     * @default 16785092
+     */
     const KEY_Ecircumflextilde: number;
 
+    /**
+     * @default 16785568
+     */
     const KEY_EcuSign: number;
 
+    /**
+     * @default 203
+     */
     const KEY_Ediaeresis: number;
 
+    /**
+     * @default 200
+     */
     const KEY_Egrave: number;
 
+    /**
+     * @default 16785082
+     */
     const KEY_Ehook: number;
 
+    /**
+     * @default 65327
+     */
     const KEY_Eisu_Shift: number;
 
+    /**
+     * @default 65328
+     */
     const KEY_Eisu_toggle: number;
 
+    /**
+     * @default 269025068
+     */
     const KEY_Eject: number;
 
+    /**
+     * @default 938
+     */
     const KEY_Emacron: number;
 
+    /**
+     * @default 65367
+     */
     const KEY_End: number;
 
+    /**
+     * @default 458
+     */
     const KEY_Eogonek: number;
 
+    /**
+     * @default 65307
+     */
     const KEY_Escape: number;
 
+    /**
+     * @default 208
+     */
     const KEY_Eth: number;
 
+    /**
+     * @default 16785084
+     */
     const KEY_Etilde: number;
 
+    /**
+     * @default 8364
+     */
     const KEY_EuroSign: number;
 
+    /**
+     * @default 269025116
+     */
     const KEY_Excel: number;
 
+    /**
+     * @default 65378
+     */
     const KEY_Execute: number;
 
+    /**
+     * @default 269025117
+     */
     const KEY_Explorer: number;
 
+    /**
+     * @default 70
+     */
     const KEY_F: number;
 
+    /**
+     * @default 65470
+     */
     const KEY_F1: number;
 
+    /**
+     * @default 65479
+     */
     const KEY_F10: number;
 
+    /**
+     * @default 65480
+     */
     const KEY_F11: number;
 
+    /**
+     * @default 65481
+     */
     const KEY_F12: number;
 
+    /**
+     * @default 65482
+     */
     const KEY_F13: number;
 
+    /**
+     * @default 65483
+     */
     const KEY_F14: number;
 
+    /**
+     * @default 65484
+     */
     const KEY_F15: number;
 
+    /**
+     * @default 65485
+     */
     const KEY_F16: number;
 
+    /**
+     * @default 65486
+     */
     const KEY_F17: number;
 
+    /**
+     * @default 65487
+     */
     const KEY_F18: number;
 
+    /**
+     * @default 65488
+     */
     const KEY_F19: number;
 
+    /**
+     * @default 65471
+     */
     const KEY_F2: number;
 
+    /**
+     * @default 65489
+     */
     const KEY_F20: number;
 
+    /**
+     * @default 65490
+     */
     const KEY_F21: number;
 
+    /**
+     * @default 65491
+     */
     const KEY_F22: number;
 
+    /**
+     * @default 65492
+     */
     const KEY_F23: number;
 
+    /**
+     * @default 65493
+     */
     const KEY_F24: number;
 
+    /**
+     * @default 65494
+     */
     const KEY_F25: number;
 
+    /**
+     * @default 65495
+     */
     const KEY_F26: number;
 
+    /**
+     * @default 65496
+     */
     const KEY_F27: number;
 
+    /**
+     * @default 65497
+     */
     const KEY_F28: number;
 
+    /**
+     * @default 65498
+     */
     const KEY_F29: number;
 
+    /**
+     * @default 65472
+     */
     const KEY_F3: number;
 
+    /**
+     * @default 65499
+     */
     const KEY_F30: number;
 
+    /**
+     * @default 65500
+     */
     const KEY_F31: number;
 
+    /**
+     * @default 65501
+     */
     const KEY_F32: number;
 
+    /**
+     * @default 65502
+     */
     const KEY_F33: number;
 
+    /**
+     * @default 65503
+     */
     const KEY_F34: number;
 
+    /**
+     * @default 65504
+     */
     const KEY_F35: number;
 
+    /**
+     * @default 65473
+     */
     const KEY_F4: number;
 
+    /**
+     * @default 65474
+     */
     const KEY_F5: number;
 
+    /**
+     * @default 65475
+     */
     const KEY_F6: number;
 
+    /**
+     * @default 65476
+     */
     const KEY_F7: number;
 
+    /**
+     * @default 65477
+     */
     const KEY_F8: number;
 
+    /**
+     * @default 65478
+     */
     const KEY_F9: number;
 
+    /**
+     * @default 16785571
+     */
     const KEY_FFrancSign: number;
 
+    /**
+     * @default 16784926
+     */
     const KEY_Fabovedot: number;
 
+    /**
+     * @default 16778992
+     */
     const KEY_Farsi_0: number;
 
+    /**
+     * @default 16778993
+     */
     const KEY_Farsi_1: number;
 
+    /**
+     * @default 16778994
+     */
     const KEY_Farsi_2: number;
 
+    /**
+     * @default 16778995
+     */
     const KEY_Farsi_3: number;
 
+    /**
+     * @default 16778996
+     */
     const KEY_Farsi_4: number;
 
+    /**
+     * @default 16778997
+     */
     const KEY_Farsi_5: number;
 
+    /**
+     * @default 16778998
+     */
     const KEY_Farsi_6: number;
 
+    /**
+     * @default 16778999
+     */
     const KEY_Farsi_7: number;
 
+    /**
+     * @default 16779000
+     */
     const KEY_Farsi_8: number;
 
+    /**
+     * @default 16779001
+     */
     const KEY_Farsi_9: number;
 
+    /**
+     * @default 16778956
+     */
     const KEY_Farsi_yeh: number;
 
+    /**
+     * @default 269025072
+     */
     const KEY_Favorites: number;
 
+    /**
+     * @default 269025084
+     */
     const KEY_Finance: number;
 
+    /**
+     * @default 65384
+     */
     const KEY_Find: number;
 
+    /**
+     * @default 65232
+     */
     const KEY_First_Virtual_Screen: number;
 
+    /**
+     * @default 269025063
+     */
     const KEY_Forward: number;
 
+    /**
+     * @default 269025181
+     */
     const KEY_FrameBack: number;
 
+    /**
+     * @default 269025182
+     */
     const KEY_FrameForward: number;
 
+    /**
+     * @default 71
+     */
     const KEY_G: number;
 
+    /**
+     * @default 725
+     */
     const KEY_Gabovedot: number;
 
+    /**
+     * @default 269025118
+     */
     const KEY_Game: number;
 
+    /**
+     * @default 683
+     */
     const KEY_Gbreve: number;
 
+    /**
+     * @default 16777702
+     */
     const KEY_Gcaron: number;
 
+    /**
+     * @default 939
+     */
     const KEY_Gcedilla: number;
 
+    /**
+     * @default 728
+     */
     const KEY_Gcircumflex: number;
 
+    /**
+     * @default 16781520
+     */
     const KEY_Georgian_an: number;
 
+    /**
+     * @default 16781521
+     */
     const KEY_Georgian_ban: number;
 
+    /**
+     * @default 16781546
+     */
     const KEY_Georgian_can: number;
 
+    /**
+     * @default 16781549
+     */
     const KEY_Georgian_char: number;
 
+    /**
+     * @default 16781545
+     */
     const KEY_Georgian_chin: number;
 
+    /**
+     * @default 16781548
+     */
     const KEY_Georgian_cil: number;
 
+    /**
+     * @default 16781523
+     */
     const KEY_Georgian_don: number;
 
+    /**
+     * @default 16781524
+     */
     const KEY_Georgian_en: number;
 
+    /**
+     * @default 16781558
+     */
     const KEY_Georgian_fi: number;
 
+    /**
+     * @default 16781522
+     */
     const KEY_Georgian_gan: number;
 
+    /**
+     * @default 16781542
+     */
     const KEY_Georgian_ghan: number;
 
+    /**
+     * @default 16781552
+     */
     const KEY_Georgian_hae: number;
 
+    /**
+     * @default 16781556
+     */
     const KEY_Georgian_har: number;
 
+    /**
+     * @default 16781553
+     */
     const KEY_Georgian_he: number;
 
+    /**
+     * @default 16781554
+     */
     const KEY_Georgian_hie: number;
 
+    /**
+     * @default 16781557
+     */
     const KEY_Georgian_hoe: number;
 
+    /**
+     * @default 16781528
+     */
     const KEY_Georgian_in: number;
 
+    /**
+     * @default 16781551
+     */
     const KEY_Georgian_jhan: number;
 
+    /**
+     * @default 16781547
+     */
     const KEY_Georgian_jil: number;
 
+    /**
+     * @default 16781529
+     */
     const KEY_Georgian_kan: number;
 
+    /**
+     * @default 16781541
+     */
     const KEY_Georgian_khar: number;
 
+    /**
+     * @default 16781530
+     */
     const KEY_Georgian_las: number;
 
+    /**
+     * @default 16781531
+     */
     const KEY_Georgian_man: number;
 
+    /**
+     * @default 16781532
+     */
     const KEY_Georgian_nar: number;
 
+    /**
+     * @default 16781533
+     */
     const KEY_Georgian_on: number;
 
+    /**
+     * @default 16781534
+     */
     const KEY_Georgian_par: number;
 
+    /**
+     * @default 16781540
+     */
     const KEY_Georgian_phar: number;
 
+    /**
+     * @default 16781543
+     */
     const KEY_Georgian_qar: number;
 
+    /**
+     * @default 16781536
+     */
     const KEY_Georgian_rae: number;
 
+    /**
+     * @default 16781537
+     */
     const KEY_Georgian_san: number;
 
+    /**
+     * @default 16781544
+     */
     const KEY_Georgian_shin: number;
 
+    /**
+     * @default 16781527
+     */
     const KEY_Georgian_tan: number;
 
+    /**
+     * @default 16781538
+     */
     const KEY_Georgian_tar: number;
 
+    /**
+     * @default 16781539
+     */
     const KEY_Georgian_un: number;
 
+    /**
+     * @default 16781525
+     */
     const KEY_Georgian_vin: number;
 
+    /**
+     * @default 16781555
+     */
     const KEY_Georgian_we: number;
 
+    /**
+     * @default 16781550
+     */
     const KEY_Georgian_xan: number;
 
+    /**
+     * @default 16781526
+     */
     const KEY_Georgian_zen: number;
 
+    /**
+     * @default 16781535
+     */
     const KEY_Georgian_zhar: number;
 
+    /**
+     * @default 269025119
+     */
     const KEY_Go: number;
 
+    /**
+     * @default 1985
+     */
     const KEY_Greek_ALPHA: number;
 
+    /**
+     * @default 1953
+     */
     const KEY_Greek_ALPHAaccent: number;
 
+    /**
+     * @default 1986
+     */
     const KEY_Greek_BETA: number;
 
+    /**
+     * @default 2007
+     */
     const KEY_Greek_CHI: number;
 
+    /**
+     * @default 1988
+     */
     const KEY_Greek_DELTA: number;
 
+    /**
+     * @default 1989
+     */
     const KEY_Greek_EPSILON: number;
 
+    /**
+     * @default 1954
+     */
     const KEY_Greek_EPSILONaccent: number;
 
+    /**
+     * @default 1991
+     */
     const KEY_Greek_ETA: number;
 
+    /**
+     * @default 1955
+     */
     const KEY_Greek_ETAaccent: number;
 
+    /**
+     * @default 1987
+     */
     const KEY_Greek_GAMMA: number;
 
+    /**
+     * @default 1993
+     */
     const KEY_Greek_IOTA: number;
 
+    /**
+     * @default 1956
+     */
     const KEY_Greek_IOTAaccent: number;
 
+    /**
+     * @default 1957
+     */
     const KEY_Greek_IOTAdiaeresis: number;
 
+    /**
+     * @default 1957
+     */
     const KEY_Greek_IOTAdieresis: number;
 
+    /**
+     * @default 1994
+     */
     const KEY_Greek_KAPPA: number;
 
+    /**
+     * @default 1995
+     */
     const KEY_Greek_LAMBDA: number;
 
+    /**
+     * @default 1995
+     */
     const KEY_Greek_LAMDA: number;
 
+    /**
+     * @default 1996
+     */
     const KEY_Greek_MU: number;
 
+    /**
+     * @default 1997
+     */
     const KEY_Greek_NU: number;
 
+    /**
+     * @default 2009
+     */
     const KEY_Greek_OMEGA: number;
 
+    /**
+     * @default 1963
+     */
     const KEY_Greek_OMEGAaccent: number;
 
+    /**
+     * @default 1999
+     */
     const KEY_Greek_OMICRON: number;
 
+    /**
+     * @default 1959
+     */
     const KEY_Greek_OMICRONaccent: number;
 
+    /**
+     * @default 2006
+     */
     const KEY_Greek_PHI: number;
 
+    /**
+     * @default 2000
+     */
     const KEY_Greek_PI: number;
 
+    /**
+     * @default 2008
+     */
     const KEY_Greek_PSI: number;
 
+    /**
+     * @default 2001
+     */
     const KEY_Greek_RHO: number;
 
+    /**
+     * @default 2002
+     */
     const KEY_Greek_SIGMA: number;
 
+    /**
+     * @default 2004
+     */
     const KEY_Greek_TAU: number;
 
+    /**
+     * @default 1992
+     */
     const KEY_Greek_THETA: number;
 
+    /**
+     * @default 2005
+     */
     const KEY_Greek_UPSILON: number;
 
+    /**
+     * @default 1960
+     */
     const KEY_Greek_UPSILONaccent: number;
 
+    /**
+     * @default 1961
+     */
     const KEY_Greek_UPSILONdieresis: number;
 
+    /**
+     * @default 1998
+     */
     const KEY_Greek_XI: number;
 
+    /**
+     * @default 1990
+     */
     const KEY_Greek_ZETA: number;
 
+    /**
+     * @default 1966
+     */
     const KEY_Greek_accentdieresis: number;
 
+    /**
+     * @default 2017
+     */
     const KEY_Greek_alpha: number;
 
+    /**
+     * @default 1969
+     */
     const KEY_Greek_alphaaccent: number;
 
+    /**
+     * @default 2018
+     */
     const KEY_Greek_beta: number;
 
+    /**
+     * @default 2039
+     */
     const KEY_Greek_chi: number;
 
+    /**
+     * @default 2020
+     */
     const KEY_Greek_delta: number;
 
+    /**
+     * @default 2021
+     */
     const KEY_Greek_epsilon: number;
 
+    /**
+     * @default 1970
+     */
     const KEY_Greek_epsilonaccent: number;
 
+    /**
+     * @default 2023
+     */
     const KEY_Greek_eta: number;
 
+    /**
+     * @default 1971
+     */
     const KEY_Greek_etaaccent: number;
 
+    /**
+     * @default 2035
+     */
     const KEY_Greek_finalsmallsigma: number;
 
+    /**
+     * @default 2019
+     */
     const KEY_Greek_gamma: number;
 
+    /**
+     * @default 1967
+     */
     const KEY_Greek_horizbar: number;
 
+    /**
+     * @default 2025
+     */
     const KEY_Greek_iota: number;
 
+    /**
+     * @default 1972
+     */
     const KEY_Greek_iotaaccent: number;
 
+    /**
+     * @default 1974
+     */
     const KEY_Greek_iotaaccentdieresis: number;
 
+    /**
+     * @default 1973
+     */
     const KEY_Greek_iotadieresis: number;
 
+    /**
+     * @default 2026
+     */
     const KEY_Greek_kappa: number;
 
+    /**
+     * @default 2027
+     */
     const KEY_Greek_lambda: number;
 
+    /**
+     * @default 2027
+     */
     const KEY_Greek_lamda: number;
 
+    /**
+     * @default 2028
+     */
     const KEY_Greek_mu: number;
 
+    /**
+     * @default 2029
+     */
     const KEY_Greek_nu: number;
 
+    /**
+     * @default 2041
+     */
     const KEY_Greek_omega: number;
 
+    /**
+     * @default 1979
+     */
     const KEY_Greek_omegaaccent: number;
 
+    /**
+     * @default 2031
+     */
     const KEY_Greek_omicron: number;
 
+    /**
+     * @default 1975
+     */
     const KEY_Greek_omicronaccent: number;
 
+    /**
+     * @default 2038
+     */
     const KEY_Greek_phi: number;
 
+    /**
+     * @default 2032
+     */
     const KEY_Greek_pi: number;
 
+    /**
+     * @default 2040
+     */
     const KEY_Greek_psi: number;
 
+    /**
+     * @default 2033
+     */
     const KEY_Greek_rho: number;
 
+    /**
+     * @default 2034
+     */
     const KEY_Greek_sigma: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Greek_switch: number;
 
+    /**
+     * @default 2036
+     */
     const KEY_Greek_tau: number;
 
+    /**
+     * @default 2024
+     */
     const KEY_Greek_theta: number;
 
+    /**
+     * @default 2037
+     */
     const KEY_Greek_upsilon: number;
 
+    /**
+     * @default 1976
+     */
     const KEY_Greek_upsilonaccent: number;
 
+    /**
+     * @default 1978
+     */
     const KEY_Greek_upsilonaccentdieresis: number;
 
+    /**
+     * @default 1977
+     */
     const KEY_Greek_upsilondieresis: number;
 
+    /**
+     * @default 2030
+     */
     const KEY_Greek_xi: number;
 
+    /**
+     * @default 2022
+     */
     const KEY_Greek_zeta: number;
 
+    /**
+     * @default 269025188
+     */
     const KEY_Green: number;
 
+    /**
+     * @default 72
+     */
     const KEY_H: number;
 
+    /**
+     * @default 65329
+     */
     const KEY_Hangul: number;
 
+    /**
+     * @default 3775
+     */
     const KEY_Hangul_A: number;
 
+    /**
+     * @default 3776
+     */
     const KEY_Hangul_AE: number;
 
+    /**
+     * @default 3830
+     */
     const KEY_Hangul_AraeA: number;
 
+    /**
+     * @default 3831
+     */
     const KEY_Hangul_AraeAE: number;
 
+    /**
+     * @default 65337
+     */
     const KEY_Hangul_Banja: number;
 
+    /**
+     * @default 3770
+     */
     const KEY_Hangul_Cieuc: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Hangul_Codeinput: number;
 
+    /**
+     * @default 3751
+     */
     const KEY_Hangul_Dikeud: number;
 
+    /**
+     * @default 3780
+     */
     const KEY_Hangul_E: number;
 
+    /**
+     * @default 3779
+     */
     const KEY_Hangul_EO: number;
 
+    /**
+     * @default 3793
+     */
     const KEY_Hangul_EU: number;
 
+    /**
+     * @default 65331
+     */
     const KEY_Hangul_End: number;
 
+    /**
+     * @default 65332
+     */
     const KEY_Hangul_Hanja: number;
 
+    /**
+     * @default 3774
+     */
     const KEY_Hangul_Hieuh: number;
 
+    /**
+     * @default 3795
+     */
     const KEY_Hangul_I: number;
 
+    /**
+     * @default 3767
+     */
     const KEY_Hangul_Ieung: number;
 
+    /**
+     * @default 3818
+     */
     const KEY_Hangul_J_Cieuc: number;
 
+    /**
+     * @default 3802
+     */
     const KEY_Hangul_J_Dikeud: number;
 
+    /**
+     * @default 3822
+     */
     const KEY_Hangul_J_Hieuh: number;
 
+    /**
+     * @default 3816
+     */
     const KEY_Hangul_J_Ieung: number;
 
+    /**
+     * @default 3817
+     */
     const KEY_Hangul_J_Jieuj: number;
 
+    /**
+     * @default 3819
+     */
     const KEY_Hangul_J_Khieuq: number;
 
+    /**
+     * @default 3796
+     */
     const KEY_Hangul_J_Kiyeog: number;
 
+    /**
+     * @default 3798
+     */
     const KEY_Hangul_J_KiyeogSios: number;
 
+    /**
+     * @default 3833
+     */
     const KEY_Hangul_J_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3811
+     */
     const KEY_Hangul_J_Mieum: number;
 
+    /**
+     * @default 3799
+     */
     const KEY_Hangul_J_Nieun: number;
 
+    /**
+     * @default 3801
+     */
     const KEY_Hangul_J_NieunHieuh: number;
 
+    /**
+     * @default 3800
+     */
     const KEY_Hangul_J_NieunJieuj: number;
 
+    /**
+     * @default 3832
+     */
     const KEY_Hangul_J_PanSios: number;
 
+    /**
+     * @default 3821
+     */
     const KEY_Hangul_J_Phieuf: number;
 
+    /**
+     * @default 3812
+     */
     const KEY_Hangul_J_Pieub: number;
 
+    /**
+     * @default 3813
+     */
     const KEY_Hangul_J_PieubSios: number;
 
+    /**
+     * @default 3803
+     */
     const KEY_Hangul_J_Rieul: number;
 
+    /**
+     * @default 3810
+     */
     const KEY_Hangul_J_RieulHieuh: number;
 
+    /**
+     * @default 3804
+     */
     const KEY_Hangul_J_RieulKiyeog: number;
 
+    /**
+     * @default 3805
+     */
     const KEY_Hangul_J_RieulMieum: number;
 
+    /**
+     * @default 3809
+     */
     const KEY_Hangul_J_RieulPhieuf: number;
 
+    /**
+     * @default 3806
+     */
     const KEY_Hangul_J_RieulPieub: number;
 
+    /**
+     * @default 3807
+     */
     const KEY_Hangul_J_RieulSios: number;
 
+    /**
+     * @default 3808
+     */
     const KEY_Hangul_J_RieulTieut: number;
 
+    /**
+     * @default 3814
+     */
     const KEY_Hangul_J_Sios: number;
 
+    /**
+     * @default 3797
+     */
     const KEY_Hangul_J_SsangKiyeog: number;
 
+    /**
+     * @default 3815
+     */
     const KEY_Hangul_J_SsangSios: number;
 
+    /**
+     * @default 3820
+     */
     const KEY_Hangul_J_Tieut: number;
 
+    /**
+     * @default 3834
+     */
     const KEY_Hangul_J_YeorinHieuh: number;
 
+    /**
+     * @default 65333
+     */
     const KEY_Hangul_Jamo: number;
 
+    /**
+     * @default 65336
+     */
     const KEY_Hangul_Jeonja: number;
 
+    /**
+     * @default 3768
+     */
     const KEY_Hangul_Jieuj: number;
 
+    /**
+     * @default 3771
+     */
     const KEY_Hangul_Khieuq: number;
 
+    /**
+     * @default 3745
+     */
     const KEY_Hangul_Kiyeog: number;
 
+    /**
+     * @default 3747
+     */
     const KEY_Hangul_KiyeogSios: number;
 
+    /**
+     * @default 3827
+     */
     const KEY_Hangul_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3761
+     */
     const KEY_Hangul_Mieum: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_Hangul_MultipleCandidate: number;
 
+    /**
+     * @default 3748
+     */
     const KEY_Hangul_Nieun: number;
 
+    /**
+     * @default 3750
+     */
     const KEY_Hangul_NieunHieuh: number;
 
+    /**
+     * @default 3749
+     */
     const KEY_Hangul_NieunJieuj: number;
 
+    /**
+     * @default 3783
+     */
     const KEY_Hangul_O: number;
 
+    /**
+     * @default 3786
+     */
     const KEY_Hangul_OE: number;
 
+    /**
+     * @default 3826
+     */
     const KEY_Hangul_PanSios: number;
 
+    /**
+     * @default 3773
+     */
     const KEY_Hangul_Phieuf: number;
 
+    /**
+     * @default 3762
+     */
     const KEY_Hangul_Pieub: number;
 
+    /**
+     * @default 3764
+     */
     const KEY_Hangul_PieubSios: number;
 
+    /**
+     * @default 65339
+     */
     const KEY_Hangul_PostHanja: number;
 
+    /**
+     * @default 65338
+     */
     const KEY_Hangul_PreHanja: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_Hangul_PreviousCandidate: number;
 
+    /**
+     * @default 3753
+     */
     const KEY_Hangul_Rieul: number;
 
+    /**
+     * @default 3760
+     */
     const KEY_Hangul_RieulHieuh: number;
 
+    /**
+     * @default 3754
+     */
     const KEY_Hangul_RieulKiyeog: number;
 
+    /**
+     * @default 3755
+     */
     const KEY_Hangul_RieulMieum: number;
 
+    /**
+     * @default 3759
+     */
     const KEY_Hangul_RieulPhieuf: number;
 
+    /**
+     * @default 3756
+     */
     const KEY_Hangul_RieulPieub: number;
 
+    /**
+     * @default 3757
+     */
     const KEY_Hangul_RieulSios: number;
 
+    /**
+     * @default 3758
+     */
     const KEY_Hangul_RieulTieut: number;
 
+    /**
+     * @default 3823
+     */
     const KEY_Hangul_RieulYeorinHieuh: number;
 
+    /**
+     * @default 65334
+     */
     const KEY_Hangul_Romaja: number;
 
+    /**
+     * @default 65340
+     */
     const KEY_Hangul_SingleCandidate: number;
 
+    /**
+     * @default 3765
+     */
     const KEY_Hangul_Sios: number;
 
+    /**
+     * @default 65343
+     */
     const KEY_Hangul_Special: number;
 
+    /**
+     * @default 3752
+     */
     const KEY_Hangul_SsangDikeud: number;
 
+    /**
+     * @default 3769
+     */
     const KEY_Hangul_SsangJieuj: number;
 
+    /**
+     * @default 3746
+     */
     const KEY_Hangul_SsangKiyeog: number;
 
+    /**
+     * @default 3763
+     */
     const KEY_Hangul_SsangPieub: number;
 
+    /**
+     * @default 3766
+     */
     const KEY_Hangul_SsangSios: number;
 
+    /**
+     * @default 65330
+     */
     const KEY_Hangul_Start: number;
 
+    /**
+     * @default 3824
+     */
     const KEY_Hangul_SunkyeongeumMieum: number;
 
+    /**
+     * @default 3828
+     */
     const KEY_Hangul_SunkyeongeumPhieuf: number;
 
+    /**
+     * @default 3825
+     */
     const KEY_Hangul_SunkyeongeumPieub: number;
 
+    /**
+     * @default 3772
+     */
     const KEY_Hangul_Tieut: number;
 
+    /**
+     * @default 3788
+     */
     const KEY_Hangul_U: number;
 
+    /**
+     * @default 3784
+     */
     const KEY_Hangul_WA: number;
 
+    /**
+     * @default 3785
+     */
     const KEY_Hangul_WAE: number;
 
+    /**
+     * @default 3790
+     */
     const KEY_Hangul_WE: number;
 
+    /**
+     * @default 3789
+     */
     const KEY_Hangul_WEO: number;
 
+    /**
+     * @default 3791
+     */
     const KEY_Hangul_WI: number;
 
+    /**
+     * @default 3777
+     */
     const KEY_Hangul_YA: number;
 
+    /**
+     * @default 3778
+     */
     const KEY_Hangul_YAE: number;
 
+    /**
+     * @default 3782
+     */
     const KEY_Hangul_YE: number;
 
+    /**
+     * @default 3781
+     */
     const KEY_Hangul_YEO: number;
 
+    /**
+     * @default 3794
+     */
     const KEY_Hangul_YI: number;
 
+    /**
+     * @default 3787
+     */
     const KEY_Hangul_YO: number;
 
+    /**
+     * @default 3792
+     */
     const KEY_Hangul_YU: number;
 
+    /**
+     * @default 3829
+     */
     const KEY_Hangul_YeorinHieuh: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Hangul_switch: number;
 
+    /**
+     * @default 65321
+     */
     const KEY_Hankaku: number;
 
+    /**
+     * @default 678
+     */
     const KEY_Hcircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Hebrew_switch: number;
 
+    /**
+     * @default 65386
+     */
     const KEY_Help: number;
 
+    /**
+     * @default 65315
+     */
     const KEY_Henkan: number;
 
+    /**
+     * @default 65315
+     */
     const KEY_Henkan_Mode: number;
 
+    /**
+     * @default 269025192
+     */
     const KEY_Hibernate: number;
 
+    /**
+     * @default 65317
+     */
     const KEY_Hiragana: number;
 
+    /**
+     * @default 65319
+     */
     const KEY_Hiragana_Katakana: number;
 
+    /**
+     * @default 269025079
+     */
     const KEY_History: number;
 
+    /**
+     * @default 65360
+     */
     const KEY_Home: number;
 
+    /**
+     * @default 269025048
+     */
     const KEY_HomePage: number;
 
+    /**
+     * @default 269025082
+     */
     const KEY_HotLinks: number;
 
+    /**
+     * @default 673
+     */
     const KEY_Hstroke: number;
 
+    /**
+     * @default 65517
+     */
     const KEY_Hyper_L: number;
 
+    /**
+     * @default 65518
+     */
     const KEY_Hyper_R: number;
 
+    /**
+     * @default 73
+     */
     const KEY_I: number;
 
+    /**
+     * @default 65075
+     */
     const KEY_ISO_Center_Object: number;
 
+    /**
+     * @default 65072
+     */
     const KEY_ISO_Continuous_Underline: number;
 
+    /**
+     * @default 65073
+     */
     const KEY_ISO_Discontinuous_Underline: number;
 
+    /**
+     * @default 65074
+     */
     const KEY_ISO_Emphasize: number;
 
+    /**
+     * @default 65076
+     */
     const KEY_ISO_Enter: number;
 
+    /**
+     * @default 65071
+     */
     const KEY_ISO_Fast_Cursor_Down: number;
 
+    /**
+     * @default 65068
+     */
     const KEY_ISO_Fast_Cursor_Left: number;
 
+    /**
+     * @default 65069
+     */
     const KEY_ISO_Fast_Cursor_Right: number;
 
+    /**
+     * @default 65070
+     */
     const KEY_ISO_Fast_Cursor_Up: number;
 
+    /**
+     * @default 65036
+     */
     const KEY_ISO_First_Group: number;
 
+    /**
+     * @default 65037
+     */
     const KEY_ISO_First_Group_Lock: number;
 
+    /**
+     * @default 65030
+     */
     const KEY_ISO_Group_Latch: number;
 
+    /**
+     * @default 65031
+     */
     const KEY_ISO_Group_Lock: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_ISO_Group_Shift: number;
 
+    /**
+     * @default 65038
+     */
     const KEY_ISO_Last_Group: number;
 
+    /**
+     * @default 65039
+     */
     const KEY_ISO_Last_Group_Lock: number;
 
+    /**
+     * @default 65056
+     */
     const KEY_ISO_Left_Tab: number;
 
+    /**
+     * @default 65026
+     */
     const KEY_ISO_Level2_Latch: number;
 
+    /**
+     * @default 65028
+     */
     const KEY_ISO_Level3_Latch: number;
 
+    /**
+     * @default 65029
+     */
     const KEY_ISO_Level3_Lock: number;
 
+    /**
+     * @default 65027
+     */
     const KEY_ISO_Level3_Shift: number;
 
+    /**
+     * @default 65042
+     */
     const KEY_ISO_Level5_Latch: number;
 
+    /**
+     * @default 65043
+     */
     const KEY_ISO_Level5_Lock: number;
 
+    /**
+     * @default 65041
+     */
     const KEY_ISO_Level5_Shift: number;
 
+    /**
+     * @default 65025
+     */
     const KEY_ISO_Lock: number;
 
+    /**
+     * @default 65058
+     */
     const KEY_ISO_Move_Line_Down: number;
 
+    /**
+     * @default 65057
+     */
     const KEY_ISO_Move_Line_Up: number;
 
+    /**
+     * @default 65032
+     */
     const KEY_ISO_Next_Group: number;
 
+    /**
+     * @default 65033
+     */
     const KEY_ISO_Next_Group_Lock: number;
 
+    /**
+     * @default 65060
+     */
     const KEY_ISO_Partial_Line_Down: number;
 
+    /**
+     * @default 65059
+     */
     const KEY_ISO_Partial_Line_Up: number;
 
+    /**
+     * @default 65061
+     */
     const KEY_ISO_Partial_Space_Left: number;
 
+    /**
+     * @default 65062
+     */
     const KEY_ISO_Partial_Space_Right: number;
 
+    /**
+     * @default 65034
+     */
     const KEY_ISO_Prev_Group: number;
 
+    /**
+     * @default 65035
+     */
     const KEY_ISO_Prev_Group_Lock: number;
 
+    /**
+     * @default 65067
+     */
     const KEY_ISO_Release_Both_Margins: number;
 
+    /**
+     * @default 65065
+     */
     const KEY_ISO_Release_Margin_Left: number;
 
+    /**
+     * @default 65066
+     */
     const KEY_ISO_Release_Margin_Right: number;
 
+    /**
+     * @default 65063
+     */
     const KEY_ISO_Set_Margin_Left: number;
 
+    /**
+     * @default 65064
+     */
     const KEY_ISO_Set_Margin_Right: number;
 
+    /**
+     * @default 681
+     */
     const KEY_Iabovedot: number;
 
+    /**
+     * @default 205
+     */
     const KEY_Iacute: number;
 
+    /**
+     * @default 16785098
+     */
     const KEY_Ibelowdot: number;
 
+    /**
+     * @default 16777516
+     */
     const KEY_Ibreve: number;
 
+    /**
+     * @default 206
+     */
     const KEY_Icircumflex: number;
 
+    /**
+     * @default 207
+     */
     const KEY_Idiaeresis: number;
 
+    /**
+     * @default 204
+     */
     const KEY_Igrave: number;
 
+    /**
+     * @default 16785096
+     */
     const KEY_Ihook: number;
 
+    /**
+     * @default 975
+     */
     const KEY_Imacron: number;
 
+    /**
+     * @default 65379
+     */
     const KEY_Insert: number;
 
+    /**
+     * @default 967
+     */
     const KEY_Iogonek: number;
 
+    /**
+     * @default 933
+     */
     const KEY_Itilde: number;
 
+    /**
+     * @default 74
+     */
     const KEY_J: number;
 
+    /**
+     * @default 684
+     */
     const KEY_Jcircumflex: number;
 
+    /**
+     * @default 75
+     */
     const KEY_K: number;
 
+    /**
+     * @default 65456
+     */
     const KEY_KP_0: number;
 
+    /**
+     * @default 65457
+     */
     const KEY_KP_1: number;
 
+    /**
+     * @default 65458
+     */
     const KEY_KP_2: number;
 
+    /**
+     * @default 65459
+     */
     const KEY_KP_3: number;
 
+    /**
+     * @default 65460
+     */
     const KEY_KP_4: number;
 
+    /**
+     * @default 65461
+     */
     const KEY_KP_5: number;
 
+    /**
+     * @default 65462
+     */
     const KEY_KP_6: number;
 
+    /**
+     * @default 65463
+     */
     const KEY_KP_7: number;
 
+    /**
+     * @default 65464
+     */
     const KEY_KP_8: number;
 
+    /**
+     * @default 65465
+     */
     const KEY_KP_9: number;
 
+    /**
+     * @default 65451
+     */
     const KEY_KP_Add: number;
 
+    /**
+     * @default 65437
+     */
     const KEY_KP_Begin: number;
 
+    /**
+     * @default 65454
+     */
     const KEY_KP_Decimal: number;
 
+    /**
+     * @default 65439
+     */
     const KEY_KP_Delete: number;
 
+    /**
+     * @default 65455
+     */
     const KEY_KP_Divide: number;
 
+    /**
+     * @default 65433
+     */
     const KEY_KP_Down: number;
 
+    /**
+     * @default 65436
+     */
     const KEY_KP_End: number;
 
+    /**
+     * @default 65421
+     */
     const KEY_KP_Enter: number;
 
+    /**
+     * @default 65469
+     */
     const KEY_KP_Equal: number;
 
+    /**
+     * @default 65425
+     */
     const KEY_KP_F1: number;
 
+    /**
+     * @default 65426
+     */
     const KEY_KP_F2: number;
 
+    /**
+     * @default 65427
+     */
     const KEY_KP_F3: number;
 
+    /**
+     * @default 65428
+     */
     const KEY_KP_F4: number;
 
+    /**
+     * @default 65429
+     */
     const KEY_KP_Home: number;
 
+    /**
+     * @default 65438
+     */
     const KEY_KP_Insert: number;
 
+    /**
+     * @default 65430
+     */
     const KEY_KP_Left: number;
 
+    /**
+     * @default 65450
+     */
     const KEY_KP_Multiply: number;
 
+    /**
+     * @default 65435
+     */
     const KEY_KP_Next: number;
 
+    /**
+     * @default 65435
+     */
     const KEY_KP_Page_Down: number;
 
+    /**
+     * @default 65434
+     */
     const KEY_KP_Page_Up: number;
 
+    /**
+     * @default 65434
+     */
     const KEY_KP_Prior: number;
 
+    /**
+     * @default 65432
+     */
     const KEY_KP_Right: number;
 
+    /**
+     * @default 65452
+     */
     const KEY_KP_Separator: number;
 
+    /**
+     * @default 65408
+     */
     const KEY_KP_Space: number;
 
+    /**
+     * @default 65453
+     */
     const KEY_KP_Subtract: number;
 
+    /**
+     * @default 65417
+     */
     const KEY_KP_Tab: number;
 
+    /**
+     * @default 65431
+     */
     const KEY_KP_Up: number;
 
+    /**
+     * @default 65325
+     */
     const KEY_Kana_Lock: number;
 
+    /**
+     * @default 65326
+     */
     const KEY_Kana_Shift: number;
 
+    /**
+     * @default 65313
+     */
     const KEY_Kanji: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Kanji_Bangou: number;
 
+    /**
+     * @default 65318
+     */
     const KEY_Katakana: number;
 
+    /**
+     * @default 269025030
+     */
     const KEY_KbdBrightnessDown: number;
 
+    /**
+     * @default 269025029
+     */
     const KEY_KbdBrightnessUp: number;
 
+    /**
+     * @default 269025028
+     */
     const KEY_KbdLightOnOff: number;
 
+    /**
+     * @default 979
+     */
     const KEY_Kcedilla: number;
 
+    /**
+     * @default 3839
+     */
     const KEY_Korean_Won: number;
 
+    /**
+     * @default 76
+     */
     const KEY_L: number;
 
+    /**
+     * @default 65480
+     */
     const KEY_L1: number;
 
+    /**
+     * @default 65489
+     */
     const KEY_L10: number;
 
+    /**
+     * @default 65481
+     */
     const KEY_L2: number;
 
+    /**
+     * @default 65482
+     */
     const KEY_L3: number;
 
+    /**
+     * @default 65483
+     */
     const KEY_L4: number;
 
+    /**
+     * @default 65484
+     */
     const KEY_L5: number;
 
+    /**
+     * @default 65485
+     */
     const KEY_L6: number;
 
+    /**
+     * @default 65486
+     */
     const KEY_L7: number;
 
+    /**
+     * @default 65487
+     */
     const KEY_L8: number;
 
+    /**
+     * @default 65488
+     */
     const KEY_L9: number;
 
+    /**
+     * @default 453
+     */
     const KEY_Lacute: number;
 
+    /**
+     * @default 65236
+     */
     const KEY_Last_Virtual_Screen: number;
 
+    /**
+     * @default 269025088
+     */
     const KEY_Launch0: number;
 
+    /**
+     * @default 269025089
+     */
     const KEY_Launch1: number;
 
+    /**
+     * @default 269025090
+     */
     const KEY_Launch2: number;
 
+    /**
+     * @default 269025091
+     */
     const KEY_Launch3: number;
 
+    /**
+     * @default 269025092
+     */
     const KEY_Launch4: number;
 
+    /**
+     * @default 269025093
+     */
     const KEY_Launch5: number;
 
+    /**
+     * @default 269025094
+     */
     const KEY_Launch6: number;
 
+    /**
+     * @default 269025095
+     */
     const KEY_Launch7: number;
 
+    /**
+     * @default 269025096
+     */
     const KEY_Launch8: number;
 
+    /**
+     * @default 269025097
+     */
     const KEY_Launch9: number;
 
+    /**
+     * @default 269025098
+     */
     const KEY_LaunchA: number;
 
+    /**
+     * @default 269025099
+     */
     const KEY_LaunchB: number;
 
+    /**
+     * @default 269025100
+     */
     const KEY_LaunchC: number;
 
+    /**
+     * @default 269025101
+     */
     const KEY_LaunchD: number;
 
+    /**
+     * @default 269025102
+     */
     const KEY_LaunchE: number;
 
+    /**
+     * @default 269025103
+     */
     const KEY_LaunchF: number;
 
+    /**
+     * @default 16784950
+     */
     const KEY_Lbelowdot: number;
 
+    /**
+     * @default 421
+     */
     const KEY_Lcaron: number;
 
+    /**
+     * @default 934
+     */
     const KEY_Lcedilla: number;
 
+    /**
+     * @default 65361
+     */
     const KEY_Left: number;
 
+    /**
+     * @default 269025077
+     */
     const KEY_LightBulb: number;
 
+    /**
+     * @default 65290
+     */
     const KEY_Linefeed: number;
 
+    /**
+     * @default 16785572
+     */
     const KEY_LiraSign: number;
 
+    /**
+     * @default 269025121
+     */
     const KEY_LogOff: number;
 
+    /**
+     * @default 419
+     */
     const KEY_Lstroke: number;
 
+    /**
+     * @default 77
+     */
     const KEY_M: number;
 
+    /**
+     * @default 16784960
+     */
     const KEY_Mabovedot: number;
 
+    /**
+     * @default 1717
+     */
     const KEY_Macedonia_DSE: number;
 
+    /**
+     * @default 1714
+     */
     const KEY_Macedonia_GJE: number;
 
+    /**
+     * @default 1724
+     */
     const KEY_Macedonia_KJE: number;
 
+    /**
+     * @default 1701
+     */
     const KEY_Macedonia_dse: number;
 
+    /**
+     * @default 1698
+     */
     const KEY_Macedonia_gje: number;
 
+    /**
+     * @default 1708
+     */
     const KEY_Macedonia_kje: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_Mae_Koho: number;
 
+    /**
+     * @default 269025049
+     */
     const KEY_Mail: number;
 
+    /**
+     * @default 269025168
+     */
     const KEY_MailForward: number;
 
+    /**
+     * @default 269025122
+     */
     const KEY_Market: number;
 
+    /**
+     * @default 65324
+     */
     const KEY_Massyo: number;
 
+    /**
+     * @default 269025123
+     */
     const KEY_Meeting: number;
 
+    /**
+     * @default 269025054
+     */
     const KEY_Memo: number;
 
+    /**
+     * @default 65383
+     */
     const KEY_Menu: number;
 
+    /**
+     * @default 269025125
+     */
     const KEY_MenuKB: number;
 
+    /**
+     * @default 269025126
+     */
     const KEY_MenuPB: number;
 
+    /**
+     * @default 269025166
+     */
     const KEY_Messenger: number;
 
+    /**
+     * @default 65511
+     */
     const KEY_Meta_L: number;
 
+    /**
+     * @default 65512
+     */
     const KEY_Meta_R: number;
 
+    /**
+     * @default 16785573
+     */
     const KEY_MillSign: number;
 
+    /**
+     * @default 269025025
+     */
     const KEY_ModeLock: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Mode_switch: number;
 
+    /**
+     * @default 269025027
+     */
     const KEY_MonBrightnessDown: number;
 
+    /**
+     * @default 269025026
+     */
     const KEY_MonBrightnessUp: number;
 
+    /**
+     * @default 65143
+     */
     const KEY_MouseKeys_Accel_Enable: number;
 
+    /**
+     * @default 65142
+     */
     const KEY_MouseKeys_Enable: number;
 
+    /**
+     * @default 65314
+     */
     const KEY_Muhenkan: number;
 
+    /**
+     * @default 65312
+     */
     const KEY_Multi_key: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_MultipleCandidate: number;
 
+    /**
+     * @default 269025170
+     */
     const KEY_Music: number;
 
+    /**
+     * @default 269025075
+     */
     const KEY_MyComputer: number;
 
+    /**
+     * @default 269025127
+     */
     const KEY_MySites: number;
 
+    /**
+     * @default 78
+     */
     const KEY_N: number;
 
+    /**
+     * @default 465
+     */
     const KEY_Nacute: number;
 
+    /**
+     * @default 16785574
+     */
     const KEY_NairaSign: number;
 
+    /**
+     * @default 466
+     */
     const KEY_Ncaron: number;
 
+    /**
+     * @default 977
+     */
     const KEY_Ncedilla: number;
 
+    /**
+     * @default 269025128
+     */
     const KEY_New: number;
 
+    /**
+     * @default 16785578
+     */
     const KEY_NewSheqelSign: number;
 
+    /**
+     * @default 269025129
+     */
     const KEY_News: number;
 
+    /**
+     * @default 65366
+     */
     const KEY_Next: number;
 
+    /**
+     * @default 269024802
+     */
     const KEY_Next_VMode: number;
 
+    /**
+     * @default 65234
+     */
     const KEY_Next_Virtual_Screen: number;
 
+    /**
+     * @default 209
+     */
     const KEY_Ntilde: number;
 
+    /**
+     * @default 65407
+     */
     const KEY_Num_Lock: number;
 
+    /**
+     * @default 79
+     */
     const KEY_O: number;
 
+    /**
+     * @default 5052
+     */
     const KEY_OE: number;
 
+    /**
+     * @default 211
+     */
     const KEY_Oacute: number;
 
+    /**
+     * @default 16777631
+     */
     const KEY_Obarred: number;
 
+    /**
+     * @default 16785100
+     */
     const KEY_Obelowdot: number;
 
+    /**
+     * @default 16777681
+     */
     const KEY_Ocaron: number;
 
+    /**
+     * @default 212
+     */
     const KEY_Ocircumflex: number;
 
+    /**
+     * @default 16785104
+     */
     const KEY_Ocircumflexacute: number;
 
+    /**
+     * @default 16785112
+     */
     const KEY_Ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785106
+     */
     const KEY_Ocircumflexgrave: number;
 
+    /**
+     * @default 16785108
+     */
     const KEY_Ocircumflexhook: number;
 
+    /**
+     * @default 16785110
+     */
     const KEY_Ocircumflextilde: number;
 
+    /**
+     * @default 214
+     */
     const KEY_Odiaeresis: number;
 
+    /**
+     * @default 469
+     */
     const KEY_Odoubleacute: number;
 
+    /**
+     * @default 269025130
+     */
     const KEY_OfficeHome: number;
 
+    /**
+     * @default 210
+     */
     const KEY_Ograve: number;
 
+    /**
+     * @default 16785102
+     */
     const KEY_Ohook: number;
 
+    /**
+     * @default 16777632
+     */
     const KEY_Ohorn: number;
 
+    /**
+     * @default 16785114
+     */
     const KEY_Ohornacute: number;
 
+    /**
+     * @default 16785122
+     */
     const KEY_Ohornbelowdot: number;
 
+    /**
+     * @default 16785116
+     */
     const KEY_Ohorngrave: number;
 
+    /**
+     * @default 16785118
+     */
     const KEY_Ohornhook: number;
 
+    /**
+     * @default 16785120
+     */
     const KEY_Ohorntilde: number;
 
+    /**
+     * @default 978
+     */
     const KEY_Omacron: number;
 
+    /**
+     * @default 216
+     */
     const KEY_Ooblique: number;
 
+    /**
+     * @default 269025131
+     */
     const KEY_Open: number;
 
+    /**
+     * @default 269025080
+     */
     const KEY_OpenURL: number;
 
+    /**
+     * @default 269025132
+     */
     const KEY_Option: number;
 
+    /**
+     * @default 216
+     */
     const KEY_Oslash: number;
 
+    /**
+     * @default 213
+     */
     const KEY_Otilde: number;
 
+    /**
+     * @default 65144
+     */
     const KEY_Overlay1_Enable: number;
 
+    /**
+     * @default 65145
+     */
     const KEY_Overlay2_Enable: number;
 
+    /**
+     * @default 80
+     */
     const KEY_P: number;
 
+    /**
+     * @default 16784982
+     */
     const KEY_Pabovedot: number;
 
+    /**
+     * @default 65366
+     */
     const KEY_Page_Down: number;
 
+    /**
+     * @default 65365
+     */
     const KEY_Page_Up: number;
 
+    /**
+     * @default 269025133
+     */
     const KEY_Paste: number;
 
+    /**
+     * @default 65299
+     */
     const KEY_Pause: number;
 
+    /**
+     * @default 16785575
+     */
     const KEY_PesetaSign: number;
 
+    /**
+     * @default 269025134
+     */
     const KEY_Phone: number;
 
+    /**
+     * @default 269025169
+     */
     const KEY_Pictures: number;
 
+    /**
+     * @default 65274
+     */
     const KEY_Pointer_Accelerate: number;
 
+    /**
+     * @default 65257
+     */
     const KEY_Pointer_Button1: number;
 
+    /**
+     * @default 65258
+     */
     const KEY_Pointer_Button2: number;
 
+    /**
+     * @default 65259
+     */
     const KEY_Pointer_Button3: number;
 
+    /**
+     * @default 65260
+     */
     const KEY_Pointer_Button4: number;
 
+    /**
+     * @default 65261
+     */
     const KEY_Pointer_Button5: number;
 
+    /**
+     * @default 65256
+     */
     const KEY_Pointer_Button_Dflt: number;
 
+    /**
+     * @default 65263
+     */
     const KEY_Pointer_DblClick1: number;
 
+    /**
+     * @default 65264
+     */
     const KEY_Pointer_DblClick2: number;
 
+    /**
+     * @default 65265
+     */
     const KEY_Pointer_DblClick3: number;
 
+    /**
+     * @default 65266
+     */
     const KEY_Pointer_DblClick4: number;
 
+    /**
+     * @default 65267
+     */
     const KEY_Pointer_DblClick5: number;
 
+    /**
+     * @default 65262
+     */
     const KEY_Pointer_DblClick_Dflt: number;
 
+    /**
+     * @default 65275
+     */
     const KEY_Pointer_DfltBtnNext: number;
 
+    /**
+     * @default 65276
+     */
     const KEY_Pointer_DfltBtnPrev: number;
 
+    /**
+     * @default 65251
+     */
     const KEY_Pointer_Down: number;
 
+    /**
+     * @default 65254
+     */
     const KEY_Pointer_DownLeft: number;
 
+    /**
+     * @default 65255
+     */
     const KEY_Pointer_DownRight: number;
 
+    /**
+     * @default 65269
+     */
     const KEY_Pointer_Drag1: number;
 
+    /**
+     * @default 65270
+     */
     const KEY_Pointer_Drag2: number;
 
+    /**
+     * @default 65271
+     */
     const KEY_Pointer_Drag3: number;
 
+    /**
+     * @default 65272
+     */
     const KEY_Pointer_Drag4: number;
 
+    /**
+     * @default 65277
+     */
     const KEY_Pointer_Drag5: number;
 
+    /**
+     * @default 65268
+     */
     const KEY_Pointer_Drag_Dflt: number;
 
+    /**
+     * @default 65273
+     */
     const KEY_Pointer_EnableKeys: number;
 
+    /**
+     * @default 65248
+     */
     const KEY_Pointer_Left: number;
 
+    /**
+     * @default 65249
+     */
     const KEY_Pointer_Right: number;
 
+    /**
+     * @default 65250
+     */
     const KEY_Pointer_Up: number;
 
+    /**
+     * @default 65252
+     */
     const KEY_Pointer_UpLeft: number;
 
+    /**
+     * @default 65253
+     */
     const KEY_Pointer_UpRight: number;
 
+    /**
+     * @default 269025057
+     */
     const KEY_PowerDown: number;
 
+    /**
+     * @default 269025066
+     */
     const KEY_PowerOff: number;
 
+    /**
+     * @default 269024803
+     */
     const KEY_Prev_VMode: number;
 
+    /**
+     * @default 65233
+     */
     const KEY_Prev_Virtual_Screen: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_PreviousCandidate: number;
 
+    /**
+     * @default 65377
+     */
     const KEY_Print: number;
 
+    /**
+     * @default 65365
+     */
     const KEY_Prior: number;
 
+    /**
+     * @default 81
+     */
     const KEY_Q: number;
 
+    /**
+     * @default 82
+     */
     const KEY_R: number;
 
+    /**
+     * @default 65490
+     */
     const KEY_R1: number;
 
+    /**
+     * @default 65499
+     */
     const KEY_R10: number;
 
+    /**
+     * @default 65500
+     */
     const KEY_R11: number;
 
+    /**
+     * @default 65501
+     */
     const KEY_R12: number;
 
+    /**
+     * @default 65502
+     */
     const KEY_R13: number;
 
+    /**
+     * @default 65503
+     */
     const KEY_R14: number;
 
+    /**
+     * @default 65504
+     */
     const KEY_R15: number;
 
+    /**
+     * @default 65491
+     */
     const KEY_R2: number;
 
+    /**
+     * @default 65492
+     */
     const KEY_R3: number;
 
+    /**
+     * @default 65493
+     */
     const KEY_R4: number;
 
+    /**
+     * @default 65494
+     */
     const KEY_R5: number;
 
+    /**
+     * @default 65495
+     */
     const KEY_R6: number;
 
+    /**
+     * @default 65496
+     */
     const KEY_R7: number;
 
+    /**
+     * @default 65497
+     */
     const KEY_R8: number;
 
+    /**
+     * @default 65498
+     */
     const KEY_R9: number;
 
+    /**
+     * @default 448
+     */
     const KEY_Racute: number;
 
+    /**
+     * @default 472
+     */
     const KEY_Rcaron: number;
 
+    /**
+     * @default 931
+     */
     const KEY_Rcedilla: number;
 
+    /**
+     * @default 269025187
+     */
     const KEY_Red: number;
 
+    /**
+     * @default 65382
+     */
     const KEY_Redo: number;
 
+    /**
+     * @default 269025065
+     */
     const KEY_Refresh: number;
 
+    /**
+     * @default 269025139
+     */
     const KEY_Reload: number;
 
+    /**
+     * @default 65138
+     */
     const KEY_RepeatKeys_Enable: number;
 
+    /**
+     * @default 269025138
+     */
     const KEY_Reply: number;
 
+    /**
+     * @default 65293
+     */
     const KEY_Return: number;
 
+    /**
+     * @default 65363
+     */
     const KEY_Right: number;
 
+    /**
+     * @default 269025060
+     */
     const KEY_RockerDown: number;
 
+    /**
+     * @default 269025061
+     */
     const KEY_RockerEnter: number;
 
+    /**
+     * @default 269025059
+     */
     const KEY_RockerUp: number;
 
+    /**
+     * @default 65316
+     */
     const KEY_Romaji: number;
 
+    /**
+     * @default 269025140
+     */
     const KEY_RotateWindows: number;
 
+    /**
+     * @default 269025142
+     */
     const KEY_RotationKB: number;
 
+    /**
+     * @default 269025141
+     */
     const KEY_RotationPB: number;
 
+    /**
+     * @default 16785576
+     */
     const KEY_RupeeSign: number;
 
+    /**
+     * @default 83
+     */
     const KEY_S: number;
 
+    /**
+     * @default 16777615
+     */
     const KEY_SCHWA: number;
 
+    /**
+     * @default 16784992
+     */
     const KEY_Sabovedot: number;
 
+    /**
+     * @default 422
+     */
     const KEY_Sacute: number;
 
+    /**
+     * @default 269025143
+     */
     const KEY_Save: number;
 
+    /**
+     * @default 425
+     */
     const KEY_Scaron: number;
 
+    /**
+     * @default 426
+     */
     const KEY_Scedilla: number;
 
+    /**
+     * @default 734
+     */
     const KEY_Scircumflex: number;
 
+    /**
+     * @default 269025069
+     */
     const KEY_ScreenSaver: number;
 
+    /**
+     * @default 269025146
+     */
     const KEY_ScrollClick: number;
 
+    /**
+     * @default 269025145
+     */
     const KEY_ScrollDown: number;
 
+    /**
+     * @default 269025144
+     */
     const KEY_ScrollUp: number;
 
+    /**
+     * @default 65300
+     */
     const KEY_Scroll_Lock: number;
 
+    /**
+     * @default 269025051
+     */
     const KEY_Search: number;
 
+    /**
+     * @default 65376
+     */
     const KEY_Select: number;
 
+    /**
+     * @default 269025184
+     */
     const KEY_SelectButton: number;
 
+    /**
+     * @default 269025147
+     */
     const KEY_Send: number;
 
+    /**
+     * @default 1713
+     */
     const KEY_Serbian_DJE: number;
 
+    /**
+     * @default 1727
+     */
     const KEY_Serbian_DZE: number;
 
+    /**
+     * @default 1720
+     */
     const KEY_Serbian_JE: number;
 
+    /**
+     * @default 1721
+     */
     const KEY_Serbian_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const KEY_Serbian_NJE: number;
 
+    /**
+     * @default 1723
+     */
     const KEY_Serbian_TSHE: number;
 
+    /**
+     * @default 1697
+     */
     const KEY_Serbian_dje: number;
 
+    /**
+     * @default 1711
+     */
     const KEY_Serbian_dze: number;
 
+    /**
+     * @default 1704
+     */
     const KEY_Serbian_je: number;
 
+    /**
+     * @default 1705
+     */
     const KEY_Serbian_lje: number;
 
+    /**
+     * @default 1706
+     */
     const KEY_Serbian_nje: number;
 
+    /**
+     * @default 1707
+     */
     const KEY_Serbian_tshe: number;
 
+    /**
+     * @default 65505
+     */
     const KEY_Shift_L: number;
 
+    /**
+     * @default 65510
+     */
     const KEY_Shift_Lock: number;
 
+    /**
+     * @default 65506
+     */
     const KEY_Shift_R: number;
 
+    /**
+     * @default 269025078
+     */
     const KEY_Shop: number;
 
+    /**
+     * @default 65340
+     */
     const KEY_SingleCandidate: number;
 
+    /**
+     * @default 269025071
+     */
     const KEY_Sleep: number;
 
+    /**
+     * @default 65139
+     */
     const KEY_SlowKeys_Enable: number;
 
+    /**
+     * @default 269025148
+     */
     const KEY_Spell: number;
 
+    /**
+     * @default 269025149
+     */
     const KEY_SplitScreen: number;
 
+    /**
+     * @default 269025040
+     */
     const KEY_Standby: number;
 
+    /**
+     * @default 269025050
+     */
     const KEY_Start: number;
 
+    /**
+     * @default 65141
+     */
     const KEY_StickyKeys_Enable: number;
 
+    /**
+     * @default 269025064
+     */
     const KEY_Stop: number;
 
+    /**
+     * @default 269025178
+     */
     const KEY_Subtitle: number;
 
+    /**
+     * @default 65515
+     */
     const KEY_Super_L: number;
 
+    /**
+     * @default 65516
+     */
     const KEY_Super_R: number;
 
+    /**
+     * @default 269025150
+     */
     const KEY_Support: number;
 
+    /**
+     * @default 269025191
+     */
     const KEY_Suspend: number;
 
+    /**
+     * @default 269024769
+     */
     const KEY_Switch_VT_1: number;
 
+    /**
+     * @default 269024778
+     */
     const KEY_Switch_VT_10: number;
 
+    /**
+     * @default 269024779
+     */
     const KEY_Switch_VT_11: number;
 
+    /**
+     * @default 269024780
+     */
     const KEY_Switch_VT_12: number;
 
+    /**
+     * @default 269024770
+     */
     const KEY_Switch_VT_2: number;
 
+    /**
+     * @default 269024771
+     */
     const KEY_Switch_VT_3: number;
 
+    /**
+     * @default 269024772
+     */
     const KEY_Switch_VT_4: number;
 
+    /**
+     * @default 269024773
+     */
     const KEY_Switch_VT_5: number;
 
+    /**
+     * @default 269024774
+     */
     const KEY_Switch_VT_6: number;
 
+    /**
+     * @default 269024775
+     */
     const KEY_Switch_VT_7: number;
 
+    /**
+     * @default 269024776
+     */
     const KEY_Switch_VT_8: number;
 
+    /**
+     * @default 269024777
+     */
     const KEY_Switch_VT_9: number;
 
+    /**
+     * @default 65301
+     */
     const KEY_Sys_Req: number;
 
+    /**
+     * @default 84
+     */
     const KEY_T: number;
 
+    /**
+     * @default 222
+     */
     const KEY_THORN: number;
 
+    /**
+     * @default 65289
+     */
     const KEY_Tab: number;
 
+    /**
+     * @default 16785002
+     */
     const KEY_Tabovedot: number;
 
+    /**
+     * @default 269025151
+     */
     const KEY_TaskPane: number;
 
+    /**
+     * @default 427
+     */
     const KEY_Tcaron: number;
 
+    /**
+     * @default 478
+     */
     const KEY_Tcedilla: number;
 
+    /**
+     * @default 269025152
+     */
     const KEY_Terminal: number;
 
+    /**
+     * @default 65237
+     */
     const KEY_Terminate_Server: number;
 
+    /**
+     * @default 3551
+     */
     const KEY_Thai_baht: number;
 
+    /**
+     * @default 3514
+     */
     const KEY_Thai_bobaimai: number;
 
+    /**
+     * @default 3496
+     */
     const KEY_Thai_chochan: number;
 
+    /**
+     * @default 3498
+     */
     const KEY_Thai_chochang: number;
 
+    /**
+     * @default 3497
+     */
     const KEY_Thai_choching: number;
 
+    /**
+     * @default 3500
+     */
     const KEY_Thai_chochoe: number;
 
+    /**
+     * @default 3502
+     */
     const KEY_Thai_dochada: number;
 
+    /**
+     * @default 3508
+     */
     const KEY_Thai_dodek: number;
 
+    /**
+     * @default 3517
+     */
     const KEY_Thai_fofa: number;
 
+    /**
+     * @default 3519
+     */
     const KEY_Thai_fofan: number;
 
+    /**
+     * @default 3531
+     */
     const KEY_Thai_hohip: number;
 
+    /**
+     * @default 3534
+     */
     const KEY_Thai_honokhuk: number;
 
+    /**
+     * @default 3490
+     */
     const KEY_Thai_khokhai: number;
 
+    /**
+     * @default 3493
+     */
     const KEY_Thai_khokhon: number;
 
+    /**
+     * @default 3491
+     */
     const KEY_Thai_khokhuat: number;
 
+    /**
+     * @default 3492
+     */
     const KEY_Thai_khokhwai: number;
 
+    /**
+     * @default 3494
+     */
     const KEY_Thai_khorakhang: number;
 
+    /**
+     * @default 3489
+     */
     const KEY_Thai_kokai: number;
 
+    /**
+     * @default 3557
+     */
     const KEY_Thai_lakkhangyao: number;
 
+    /**
+     * @default 3575
+     */
     const KEY_Thai_lekchet: number;
 
+    /**
+     * @default 3573
+     */
     const KEY_Thai_lekha: number;
 
+    /**
+     * @default 3574
+     */
     const KEY_Thai_lekhok: number;
 
+    /**
+     * @default 3577
+     */
     const KEY_Thai_lekkao: number;
 
+    /**
+     * @default 3569
+     */
     const KEY_Thai_leknung: number;
 
+    /**
+     * @default 3576
+     */
     const KEY_Thai_lekpaet: number;
 
+    /**
+     * @default 3571
+     */
     const KEY_Thai_leksam: number;
 
+    /**
+     * @default 3572
+     */
     const KEY_Thai_leksi: number;
 
+    /**
+     * @default 3570
+     */
     const KEY_Thai_leksong: number;
 
+    /**
+     * @default 3568
+     */
     const KEY_Thai_leksun: number;
 
+    /**
+     * @default 3532
+     */
     const KEY_Thai_lochula: number;
 
+    /**
+     * @default 3525
+     */
     const KEY_Thai_loling: number;
 
+    /**
+     * @default 3526
+     */
     const KEY_Thai_lu: number;
 
+    /**
+     * @default 3563
+     */
     const KEY_Thai_maichattawa: number;
 
+    /**
+     * @default 3560
+     */
     const KEY_Thai_maiek: number;
 
+    /**
+     * @default 3537
+     */
     const KEY_Thai_maihanakat: number;
 
+    /**
+     * @default 3550
+     */
     const KEY_Thai_maihanakat_maitho: number;
 
+    /**
+     * @default 3559
+     */
     const KEY_Thai_maitaikhu: number;
 
+    /**
+     * @default 3561
+     */
     const KEY_Thai_maitho: number;
 
+    /**
+     * @default 3562
+     */
     const KEY_Thai_maitri: number;
 
+    /**
+     * @default 3558
+     */
     const KEY_Thai_maiyamok: number;
 
+    /**
+     * @default 3521
+     */
     const KEY_Thai_moma: number;
 
+    /**
+     * @default 3495
+     */
     const KEY_Thai_ngongu: number;
 
+    /**
+     * @default 3565
+     */
     const KEY_Thai_nikhahit: number;
 
+    /**
+     * @default 3507
+     */
     const KEY_Thai_nonen: number;
 
+    /**
+     * @default 3513
+     */
     const KEY_Thai_nonu: number;
 
+    /**
+     * @default 3533
+     */
     const KEY_Thai_oang: number;
 
+    /**
+     * @default 3535
+     */
     const KEY_Thai_paiyannoi: number;
 
+    /**
+     * @default 3546
+     */
     const KEY_Thai_phinthu: number;
 
+    /**
+     * @default 3518
+     */
     const KEY_Thai_phophan: number;
 
+    /**
+     * @default 3516
+     */
     const KEY_Thai_phophung: number;
 
+    /**
+     * @default 3520
+     */
     const KEY_Thai_phosamphao: number;
 
+    /**
+     * @default 3515
+     */
     const KEY_Thai_popla: number;
 
+    /**
+     * @default 3523
+     */
     const KEY_Thai_rorua: number;
 
+    /**
+     * @default 3524
+     */
     const KEY_Thai_ru: number;
 
+    /**
+     * @default 3536
+     */
     const KEY_Thai_saraa: number;
 
+    /**
+     * @default 3538
+     */
     const KEY_Thai_saraaa: number;
 
+    /**
+     * @default 3553
+     */
     const KEY_Thai_saraae: number;
 
+    /**
+     * @default 3556
+     */
     const KEY_Thai_saraaimaimalai: number;
 
+    /**
+     * @default 3555
+     */
     const KEY_Thai_saraaimaimuan: number;
 
+    /**
+     * @default 3539
+     */
     const KEY_Thai_saraam: number;
 
+    /**
+     * @default 3552
+     */
     const KEY_Thai_sarae: number;
 
+    /**
+     * @default 3540
+     */
     const KEY_Thai_sarai: number;
 
+    /**
+     * @default 3541
+     */
     const KEY_Thai_saraii: number;
 
+    /**
+     * @default 3554
+     */
     const KEY_Thai_sarao: number;
 
+    /**
+     * @default 3544
+     */
     const KEY_Thai_sarau: number;
 
+    /**
+     * @default 3542
+     */
     const KEY_Thai_saraue: number;
 
+    /**
+     * @default 3543
+     */
     const KEY_Thai_sarauee: number;
 
+    /**
+     * @default 3545
+     */
     const KEY_Thai_sarauu: number;
 
+    /**
+     * @default 3529
+     */
     const KEY_Thai_sorusi: number;
 
+    /**
+     * @default 3528
+     */
     const KEY_Thai_sosala: number;
 
+    /**
+     * @default 3499
+     */
     const KEY_Thai_soso: number;
 
+    /**
+     * @default 3530
+     */
     const KEY_Thai_sosua: number;
 
+    /**
+     * @default 3564
+     */
     const KEY_Thai_thanthakhat: number;
 
+    /**
+     * @default 3505
+     */
     const KEY_Thai_thonangmontho: number;
 
+    /**
+     * @default 3506
+     */
     const KEY_Thai_thophuthao: number;
 
+    /**
+     * @default 3511
+     */
     const KEY_Thai_thothahan: number;
 
+    /**
+     * @default 3504
+     */
     const KEY_Thai_thothan: number;
 
+    /**
+     * @default 3512
+     */
     const KEY_Thai_thothong: number;
 
+    /**
+     * @default 3510
+     */
     const KEY_Thai_thothung: number;
 
+    /**
+     * @default 3503
+     */
     const KEY_Thai_topatak: number;
 
+    /**
+     * @default 3509
+     */
     const KEY_Thai_totao: number;
 
+    /**
+     * @default 3527
+     */
     const KEY_Thai_wowaen: number;
 
+    /**
+     * @default 3522
+     */
     const KEY_Thai_yoyak: number;
 
+    /**
+     * @default 3501
+     */
     const KEY_Thai_yoying: number;
 
+    /**
+     * @default 222
+     */
     const KEY_Thorn: number;
 
+    /**
+     * @default 269025183
+     */
     const KEY_Time: number;
 
+    /**
+     * @default 269025055
+     */
     const KEY_ToDoList: number;
 
+    /**
+     * @default 269025153
+     */
     const KEY_Tools: number;
 
+    /**
+     * @default 269025186
+     */
     const KEY_TopMenu: number;
 
+    /**
+     * @default 269025193
+     */
     const KEY_TouchpadToggle: number;
 
+    /**
+     * @default 65323
+     */
     const KEY_Touroku: number;
 
+    /**
+     * @default 269025154
+     */
     const KEY_Travel: number;
 
+    /**
+     * @default 940
+     */
     const KEY_Tslash: number;
 
+    /**
+     * @default 85
+     */
     const KEY_U: number;
 
+    /**
+     * @default 269025174
+     */
     const KEY_UWB: number;
 
+    /**
+     * @default 218
+     */
     const KEY_Uacute: number;
 
+    /**
+     * @default 16785124
+     */
     const KEY_Ubelowdot: number;
 
+    /**
+     * @default 733
+     */
     const KEY_Ubreve: number;
 
+    /**
+     * @default 219
+     */
     const KEY_Ucircumflex: number;
 
+    /**
+     * @default 220
+     */
     const KEY_Udiaeresis: number;
 
+    /**
+     * @default 475
+     */
     const KEY_Udoubleacute: number;
 
+    /**
+     * @default 217
+     */
     const KEY_Ugrave: number;
 
+    /**
+     * @default 16785126
+     */
     const KEY_Uhook: number;
 
+    /**
+     * @default 16777647
+     */
     const KEY_Uhorn: number;
 
+    /**
+     * @default 16785128
+     */
     const KEY_Uhornacute: number;
 
+    /**
+     * @default 16785136
+     */
     const KEY_Uhornbelowdot: number;
 
+    /**
+     * @default 16785130
+     */
     const KEY_Uhorngrave: number;
 
+    /**
+     * @default 16785132
+     */
     const KEY_Uhornhook: number;
 
+    /**
+     * @default 16785134
+     */
     const KEY_Uhorntilde: number;
 
+    /**
+     * @default 1725
+     */
     const KEY_Ukrainian_GHE_WITH_UPTURN: number;
 
+    /**
+     * @default 1718
+     */
     const KEY_Ukrainian_I: number;
 
+    /**
+     * @default 1716
+     */
     const KEY_Ukrainian_IE: number;
 
+    /**
+     * @default 1719
+     */
     const KEY_Ukrainian_YI: number;
 
+    /**
+     * @default 1709
+     */
     const KEY_Ukrainian_ghe_with_upturn: number;
 
+    /**
+     * @default 1702
+     */
     const KEY_Ukrainian_i: number;
 
+    /**
+     * @default 1700
+     */
     const KEY_Ukrainian_ie: number;
 
+    /**
+     * @default 1703
+     */
     const KEY_Ukrainian_yi: number;
 
+    /**
+     * @default 1718
+     */
     const KEY_Ukranian_I: number;
 
+    /**
+     * @default 1716
+     */
     const KEY_Ukranian_JE: number;
 
+    /**
+     * @default 1719
+     */
     const KEY_Ukranian_YI: number;
 
+    /**
+     * @default 1702
+     */
     const KEY_Ukranian_i: number;
 
+    /**
+     * @default 1700
+     */
     const KEY_Ukranian_je: number;
 
+    /**
+     * @default 1703
+     */
     const KEY_Ukranian_yi: number;
 
+    /**
+     * @default 990
+     */
     const KEY_Umacron: number;
 
+    /**
+     * @default 65381
+     */
     const KEY_Undo: number;
 
+    /**
+     * @default 269024800
+     */
     const KEY_Ungrab: number;
 
+    /**
+     * @default 985
+     */
     const KEY_Uogonek: number;
 
+    /**
+     * @default 65362
+     */
     const KEY_Up: number;
 
+    /**
+     * @default 473
+     */
     const KEY_Uring: number;
 
+    /**
+     * @default 269025157
+     */
     const KEY_User1KB: number;
 
+    /**
+     * @default 269025158
+     */
     const KEY_User2KB: number;
 
+    /**
+     * @default 269025156
+     */
     const KEY_UserPB: number;
 
+    /**
+     * @default 989
+     */
     const KEY_Utilde: number;
 
+    /**
+     * @default 86
+     */
     const KEY_V: number;
 
+    /**
+     * @default 269025076
+     */
     const KEY_VendorHome: number;
 
+    /**
+     * @default 269025159
+     */
     const KEY_Video: number;
 
+    /**
+     * @default 269025185
+     */
     const KEY_View: number;
 
+    /**
+     * @default 16777215
+     */
     const KEY_VoidSymbol: number;
 
+    /**
+     * @default 87
+     */
     const KEY_W: number;
 
+    /**
+     * @default 269025173
+     */
     const KEY_WLAN: number;
 
+    /**
+     * @default 269025070
+     */
     const KEY_WWW: number;
 
+    /**
+     * @default 16785026
+     */
     const KEY_Wacute: number;
 
+    /**
+     * @default 269025067
+     */
     const KEY_WakeUp: number;
 
+    /**
+     * @default 16777588
+     */
     const KEY_Wcircumflex: number;
 
+    /**
+     * @default 16785028
+     */
     const KEY_Wdiaeresis: number;
 
+    /**
+     * @default 269025167
+     */
     const KEY_WebCam: number;
 
+    /**
+     * @default 16785024
+     */
     const KEY_Wgrave: number;
 
+    /**
+     * @default 269025160
+     */
     const KEY_WheelButton: number;
 
+    /**
+     * @default 269025109
+     */
     const KEY_WindowClear: number;
 
+    /**
+     * @default 16785577
+     */
     const KEY_WonSign: number;
 
+    /**
+     * @default 269025161
+     */
     const KEY_Word: number;
 
+    /**
+     * @default 88
+     */
     const KEY_X: number;
 
+    /**
+     * @default 16785034
+     */
     const KEY_Xabovedot: number;
 
+    /**
+     * @default 269025162
+     */
     const KEY_Xfer: number;
 
+    /**
+     * @default 89
+     */
     const KEY_Y: number;
 
+    /**
+     * @default 221
+     */
     const KEY_Yacute: number;
 
+    /**
+     * @default 16785140
+     */
     const KEY_Ybelowdot: number;
 
+    /**
+     * @default 16777590
+     */
     const KEY_Ycircumflex: number;
 
+    /**
+     * @default 5054
+     */
     const KEY_Ydiaeresis: number;
 
+    /**
+     * @default 269025189
+     */
     const KEY_Yellow: number;
 
+    /**
+     * @default 16785138
+     */
     const KEY_Ygrave: number;
 
+    /**
+     * @default 16785142
+     */
     const KEY_Yhook: number;
 
+    /**
+     * @default 16785144
+     */
     const KEY_Ytilde: number;
 
+    /**
+     * @default 90
+     */
     const KEY_Z: number;
 
+    /**
+     * @default 431
+     */
     const KEY_Zabovedot: number;
 
+    /**
+     * @default 428
+     */
     const KEY_Zacute: number;
 
+    /**
+     * @default 430
+     */
     const KEY_Zcaron: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_Zen_Koho: number;
 
+    /**
+     * @default 65320
+     */
     const KEY_Zenkaku: number;
 
+    /**
+     * @default 65322
+     */
     const KEY_Zenkaku_Hankaku: number;
 
+    /**
+     * @default 269025163
+     */
     const KEY_ZoomIn: number;
 
+    /**
+     * @default 269025164
+     */
     const KEY_ZoomOut: number;
 
+    /**
+     * @default 16777653
+     */
     const KEY_Zstroke: number;
 
+    /**
+     * @default 97
+     */
     const KEY_a: number;
 
+    /**
+     * @default 225
+     */
     const KEY_aacute: number;
 
+    /**
+     * @default 16785057
+     */
     const KEY_abelowdot: number;
 
+    /**
+     * @default 511
+     */
     const KEY_abovedot: number;
 
+    /**
+     * @default 483
+     */
     const KEY_abreve: number;
 
+    /**
+     * @default 16785071
+     */
     const KEY_abreveacute: number;
 
+    /**
+     * @default 16785079
+     */
     const KEY_abrevebelowdot: number;
 
+    /**
+     * @default 16785073
+     */
     const KEY_abrevegrave: number;
 
+    /**
+     * @default 16785075
+     */
     const KEY_abrevehook: number;
 
+    /**
+     * @default 16785077
+     */
     const KEY_abrevetilde: number;
 
+    /**
+     * @default 226
+     */
     const KEY_acircumflex: number;
 
+    /**
+     * @default 16785061
+     */
     const KEY_acircumflexacute: number;
 
+    /**
+     * @default 16785069
+     */
     const KEY_acircumflexbelowdot: number;
 
+    /**
+     * @default 16785063
+     */
     const KEY_acircumflexgrave: number;
 
+    /**
+     * @default 16785065
+     */
     const KEY_acircumflexhook: number;
 
+    /**
+     * @default 16785067
+     */
     const KEY_acircumflextilde: number;
 
+    /**
+     * @default 180
+     */
     const KEY_acute: number;
 
+    /**
+     * @default 228
+     */
     const KEY_adiaeresis: number;
 
+    /**
+     * @default 230
+     */
     const KEY_ae: number;
 
+    /**
+     * @default 224
+     */
     const KEY_agrave: number;
 
+    /**
+     * @default 16785059
+     */
     const KEY_ahook: number;
 
+    /**
+     * @default 992
+     */
     const KEY_amacron: number;
 
+    /**
+     * @default 38
+     */
     const KEY_ampersand: number;
 
+    /**
+     * @default 433
+     */
     const KEY_aogonek: number;
 
+    /**
+     * @default 39
+     */
     const KEY_apostrophe: number;
 
+    /**
+     * @default 16785992
+     */
     const KEY_approxeq: number;
 
+    /**
+     * @default 2248
+     */
     const KEY_approximate: number;
 
+    /**
+     * @default 229
+     */
     const KEY_aring: number;
 
+    /**
+     * @default 94
+     */
     const KEY_asciicircum: number;
 
+    /**
+     * @default 126
+     */
     const KEY_asciitilde: number;
 
+    /**
+     * @default 42
+     */
     const KEY_asterisk: number;
 
+    /**
+     * @default 64
+     */
     const KEY_at: number;
 
+    /**
+     * @default 227
+     */
     const KEY_atilde: number;
 
+    /**
+     * @default 98
+     */
     const KEY_b: number;
 
+    /**
+     * @default 16784899
+     */
     const KEY_babovedot: number;
 
+    /**
+     * @default 92
+     */
     const KEY_backslash: number;
 
+    /**
+     * @default 2804
+     */
     const KEY_ballotcross: number;
 
+    /**
+     * @default 124
+     */
     const KEY_bar: number;
 
+    /**
+     * @default 16785973
+     */
     const KEY_because: number;
 
+    /**
+     * @default 2527
+     */
     const KEY_blank: number;
 
+    /**
+     * @default 2213
+     */
     const KEY_botintegral: number;
 
+    /**
+     * @default 2220
+     */
     const KEY_botleftparens: number;
 
+    /**
+     * @default 2216
+     */
     const KEY_botleftsqbracket: number;
 
+    /**
+     * @default 2226
+     */
     const KEY_botleftsummation: number;
 
+    /**
+     * @default 2222
+     */
     const KEY_botrightparens: number;
 
+    /**
+     * @default 2218
+     */
     const KEY_botrightsqbracket: number;
 
+    /**
+     * @default 2230
+     */
     const KEY_botrightsummation: number;
 
+    /**
+     * @default 2550
+     */
     const KEY_bott: number;
 
+    /**
+     * @default 2228
+     */
     const KEY_botvertsummationconnector: number;
 
+    /**
+     * @default 123
+     */
     const KEY_braceleft: number;
 
+    /**
+     * @default 125
+     */
     const KEY_braceright: number;
 
+    /**
+     * @default 91
+     */
     const KEY_bracketleft: number;
 
+    /**
+     * @default 93
+     */
     const KEY_bracketright: number;
 
+    /**
+     * @default 16787456
+     */
     const KEY_braille_blank: number;
 
+    /**
+     * @default 65521
+     */
     const KEY_braille_dot_1: number;
 
+    /**
+     * @default 65530
+     */
     const KEY_braille_dot_10: number;
 
+    /**
+     * @default 65522
+     */
     const KEY_braille_dot_2: number;
 
+    /**
+     * @default 65523
+     */
     const KEY_braille_dot_3: number;
 
+    /**
+     * @default 65524
+     */
     const KEY_braille_dot_4: number;
 
+    /**
+     * @default 65525
+     */
     const KEY_braille_dot_5: number;
 
+    /**
+     * @default 65526
+     */
     const KEY_braille_dot_6: number;
 
+    /**
+     * @default 65527
+     */
     const KEY_braille_dot_7: number;
 
+    /**
+     * @default 65528
+     */
     const KEY_braille_dot_8: number;
 
+    /**
+     * @default 65529
+     */
     const KEY_braille_dot_9: number;
 
+    /**
+     * @default 16787457
+     */
     const KEY_braille_dots_1: number;
 
+    /**
+     * @default 16787459
+     */
     const KEY_braille_dots_12: number;
 
+    /**
+     * @default 16787463
+     */
     const KEY_braille_dots_123: number;
 
+    /**
+     * @default 16787471
+     */
     const KEY_braille_dots_1234: number;
 
+    /**
+     * @default 16787487
+     */
     const KEY_braille_dots_12345: number;
 
+    /**
+     * @default 16787519
+     */
     const KEY_braille_dots_123456: number;
 
+    /**
+     * @default 16787583
+     */
     const KEY_braille_dots_1234567: number;
 
+    /**
+     * @default 16787711
+     */
     const KEY_braille_dots_12345678: number;
 
+    /**
+     * @default 16787647
+     */
     const KEY_braille_dots_1234568: number;
 
+    /**
+     * @default 16787551
+     */
     const KEY_braille_dots_123457: number;
 
+    /**
+     * @default 16787679
+     */
     const KEY_braille_dots_1234578: number;
 
+    /**
+     * @default 16787615
+     */
     const KEY_braille_dots_123458: number;
 
+    /**
+     * @default 16787503
+     */
     const KEY_braille_dots_12346: number;
 
+    /**
+     * @default 16787567
+     */
     const KEY_braille_dots_123467: number;
 
+    /**
+     * @default 16787695
+     */
     const KEY_braille_dots_1234678: number;
 
+    /**
+     * @default 16787631
+     */
     const KEY_braille_dots_123468: number;
 
+    /**
+     * @default 16787535
+     */
     const KEY_braille_dots_12347: number;
 
+    /**
+     * @default 16787663
+     */
     const KEY_braille_dots_123478: number;
 
+    /**
+     * @default 16787599
+     */
     const KEY_braille_dots_12348: number;
 
+    /**
+     * @default 16787479
+     */
     const KEY_braille_dots_1235: number;
 
+    /**
+     * @default 16787511
+     */
     const KEY_braille_dots_12356: number;
 
+    /**
+     * @default 16787575
+     */
     const KEY_braille_dots_123567: number;
 
+    /**
+     * @default 16787703
+     */
     const KEY_braille_dots_1235678: number;
 
+    /**
+     * @default 16787639
+     */
     const KEY_braille_dots_123568: number;
 
+    /**
+     * @default 16787543
+     */
     const KEY_braille_dots_12357: number;
 
+    /**
+     * @default 16787671
+     */
     const KEY_braille_dots_123578: number;
 
+    /**
+     * @default 16787607
+     */
     const KEY_braille_dots_12358: number;
 
+    /**
+     * @default 16787495
+     */
     const KEY_braille_dots_1236: number;
 
+    /**
+     * @default 16787559
+     */
     const KEY_braille_dots_12367: number;
 
+    /**
+     * @default 16787687
+     */
     const KEY_braille_dots_123678: number;
 
+    /**
+     * @default 16787623
+     */
     const KEY_braille_dots_12368: number;
 
+    /**
+     * @default 16787527
+     */
     const KEY_braille_dots_1237: number;
 
+    /**
+     * @default 16787655
+     */
     const KEY_braille_dots_12378: number;
 
+    /**
+     * @default 16787591
+     */
     const KEY_braille_dots_1238: number;
 
+    /**
+     * @default 16787467
+     */
     const KEY_braille_dots_124: number;
 
+    /**
+     * @default 16787483
+     */
     const KEY_braille_dots_1245: number;
 
+    /**
+     * @default 16787515
+     */
     const KEY_braille_dots_12456: number;
 
+    /**
+     * @default 16787579
+     */
     const KEY_braille_dots_124567: number;
 
+    /**
+     * @default 16787707
+     */
     const KEY_braille_dots_1245678: number;
 
+    /**
+     * @default 16787643
+     */
     const KEY_braille_dots_124568: number;
 
+    /**
+     * @default 16787547
+     */
     const KEY_braille_dots_12457: number;
 
+    /**
+     * @default 16787675
+     */
     const KEY_braille_dots_124578: number;
 
+    /**
+     * @default 16787611
+     */
     const KEY_braille_dots_12458: number;
 
+    /**
+     * @default 16787499
+     */
     const KEY_braille_dots_1246: number;
 
+    /**
+     * @default 16787563
+     */
     const KEY_braille_dots_12467: number;
 
+    /**
+     * @default 16787691
+     */
     const KEY_braille_dots_124678: number;
 
+    /**
+     * @default 16787627
+     */
     const KEY_braille_dots_12468: number;
 
+    /**
+     * @default 16787531
+     */
     const KEY_braille_dots_1247: number;
 
+    /**
+     * @default 16787659
+     */
     const KEY_braille_dots_12478: number;
 
+    /**
+     * @default 16787595
+     */
     const KEY_braille_dots_1248: number;
 
+    /**
+     * @default 16787475
+     */
     const KEY_braille_dots_125: number;
 
+    /**
+     * @default 16787507
+     */
     const KEY_braille_dots_1256: number;
 
+    /**
+     * @default 16787571
+     */
     const KEY_braille_dots_12567: number;
 
+    /**
+     * @default 16787699
+     */
     const KEY_braille_dots_125678: number;
 
+    /**
+     * @default 16787635
+     */
     const KEY_braille_dots_12568: number;
 
+    /**
+     * @default 16787539
+     */
     const KEY_braille_dots_1257: number;
 
+    /**
+     * @default 16787667
+     */
     const KEY_braille_dots_12578: number;
 
+    /**
+     * @default 16787603
+     */
     const KEY_braille_dots_1258: number;
 
+    /**
+     * @default 16787491
+     */
     const KEY_braille_dots_126: number;
 
+    /**
+     * @default 16787555
+     */
     const KEY_braille_dots_1267: number;
 
+    /**
+     * @default 16787683
+     */
     const KEY_braille_dots_12678: number;
 
+    /**
+     * @default 16787619
+     */
     const KEY_braille_dots_1268: number;
 
+    /**
+     * @default 16787523
+     */
     const KEY_braille_dots_127: number;
 
+    /**
+     * @default 16787651
+     */
     const KEY_braille_dots_1278: number;
 
+    /**
+     * @default 16787587
+     */
     const KEY_braille_dots_128: number;
 
+    /**
+     * @default 16787461
+     */
     const KEY_braille_dots_13: number;
 
+    /**
+     * @default 16787469
+     */
     const KEY_braille_dots_134: number;
 
+    /**
+     * @default 16787485
+     */
     const KEY_braille_dots_1345: number;
 
+    /**
+     * @default 16787517
+     */
     const KEY_braille_dots_13456: number;
 
+    /**
+     * @default 16787581
+     */
     const KEY_braille_dots_134567: number;
 
+    /**
+     * @default 16787709
+     */
     const KEY_braille_dots_1345678: number;
 
+    /**
+     * @default 16787645
+     */
     const KEY_braille_dots_134568: number;
 
+    /**
+     * @default 16787549
+     */
     const KEY_braille_dots_13457: number;
 
+    /**
+     * @default 16787677
+     */
     const KEY_braille_dots_134578: number;
 
+    /**
+     * @default 16787613
+     */
     const KEY_braille_dots_13458: number;
 
+    /**
+     * @default 16787501
+     */
     const KEY_braille_dots_1346: number;
 
+    /**
+     * @default 16787565
+     */
     const KEY_braille_dots_13467: number;
 
+    /**
+     * @default 16787693
+     */
     const KEY_braille_dots_134678: number;
 
+    /**
+     * @default 16787629
+     */
     const KEY_braille_dots_13468: number;
 
+    /**
+     * @default 16787533
+     */
     const KEY_braille_dots_1347: number;
 
+    /**
+     * @default 16787661
+     */
     const KEY_braille_dots_13478: number;
 
+    /**
+     * @default 16787597
+     */
     const KEY_braille_dots_1348: number;
 
+    /**
+     * @default 16787477
+     */
     const KEY_braille_dots_135: number;
 
+    /**
+     * @default 16787509
+     */
     const KEY_braille_dots_1356: number;
 
+    /**
+     * @default 16787573
+     */
     const KEY_braille_dots_13567: number;
 
+    /**
+     * @default 16787701
+     */
     const KEY_braille_dots_135678: number;
 
+    /**
+     * @default 16787637
+     */
     const KEY_braille_dots_13568: number;
 
+    /**
+     * @default 16787541
+     */
     const KEY_braille_dots_1357: number;
 
+    /**
+     * @default 16787669
+     */
     const KEY_braille_dots_13578: number;
 
+    /**
+     * @default 16787605
+     */
     const KEY_braille_dots_1358: number;
 
+    /**
+     * @default 16787493
+     */
     const KEY_braille_dots_136: number;
 
+    /**
+     * @default 16787557
+     */
     const KEY_braille_dots_1367: number;
 
+    /**
+     * @default 16787685
+     */
     const KEY_braille_dots_13678: number;
 
+    /**
+     * @default 16787621
+     */
     const KEY_braille_dots_1368: number;
 
+    /**
+     * @default 16787525
+     */
     const KEY_braille_dots_137: number;
 
+    /**
+     * @default 16787653
+     */
     const KEY_braille_dots_1378: number;
 
+    /**
+     * @default 16787589
+     */
     const KEY_braille_dots_138: number;
 
+    /**
+     * @default 16787465
+     */
     const KEY_braille_dots_14: number;
 
+    /**
+     * @default 16787481
+     */
     const KEY_braille_dots_145: number;
 
+    /**
+     * @default 16787513
+     */
     const KEY_braille_dots_1456: number;
 
+    /**
+     * @default 16787577
+     */
     const KEY_braille_dots_14567: number;
 
+    /**
+     * @default 16787705
+     */
     const KEY_braille_dots_145678: number;
 
+    /**
+     * @default 16787641
+     */
     const KEY_braille_dots_14568: number;
 
+    /**
+     * @default 16787545
+     */
     const KEY_braille_dots_1457: number;
 
+    /**
+     * @default 16787673
+     */
     const KEY_braille_dots_14578: number;
 
+    /**
+     * @default 16787609
+     */
     const KEY_braille_dots_1458: number;
 
+    /**
+     * @default 16787497
+     */
     const KEY_braille_dots_146: number;
 
+    /**
+     * @default 16787561
+     */
     const KEY_braille_dots_1467: number;
 
+    /**
+     * @default 16787689
+     */
     const KEY_braille_dots_14678: number;
 
+    /**
+     * @default 16787625
+     */
     const KEY_braille_dots_1468: number;
 
+    /**
+     * @default 16787529
+     */
     const KEY_braille_dots_147: number;
 
+    /**
+     * @default 16787657
+     */
     const KEY_braille_dots_1478: number;
 
+    /**
+     * @default 16787593
+     */
     const KEY_braille_dots_148: number;
 
+    /**
+     * @default 16787473
+     */
     const KEY_braille_dots_15: number;
 
+    /**
+     * @default 16787505
+     */
     const KEY_braille_dots_156: number;
 
+    /**
+     * @default 16787569
+     */
     const KEY_braille_dots_1567: number;
 
+    /**
+     * @default 16787697
+     */
     const KEY_braille_dots_15678: number;
 
+    /**
+     * @default 16787633
+     */
     const KEY_braille_dots_1568: number;
 
+    /**
+     * @default 16787537
+     */
     const KEY_braille_dots_157: number;
 
+    /**
+     * @default 16787665
+     */
     const KEY_braille_dots_1578: number;
 
+    /**
+     * @default 16787601
+     */
     const KEY_braille_dots_158: number;
 
+    /**
+     * @default 16787489
+     */
     const KEY_braille_dots_16: number;
 
+    /**
+     * @default 16787553
+     */
     const KEY_braille_dots_167: number;
 
+    /**
+     * @default 16787681
+     */
     const KEY_braille_dots_1678: number;
 
+    /**
+     * @default 16787617
+     */
     const KEY_braille_dots_168: number;
 
+    /**
+     * @default 16787521
+     */
     const KEY_braille_dots_17: number;
 
+    /**
+     * @default 16787649
+     */
     const KEY_braille_dots_178: number;
 
+    /**
+     * @default 16787585
+     */
     const KEY_braille_dots_18: number;
 
+    /**
+     * @default 16787458
+     */
     const KEY_braille_dots_2: number;
 
+    /**
+     * @default 16787462
+     */
     const KEY_braille_dots_23: number;
 
+    /**
+     * @default 16787470
+     */
     const KEY_braille_dots_234: number;
 
+    /**
+     * @default 16787486
+     */
     const KEY_braille_dots_2345: number;
 
+    /**
+     * @default 16787518
+     */
     const KEY_braille_dots_23456: number;
 
+    /**
+     * @default 16787582
+     */
     const KEY_braille_dots_234567: number;
 
+    /**
+     * @default 16787710
+     */
     const KEY_braille_dots_2345678: number;
 
+    /**
+     * @default 16787646
+     */
     const KEY_braille_dots_234568: number;
 
+    /**
+     * @default 16787550
+     */
     const KEY_braille_dots_23457: number;
 
+    /**
+     * @default 16787678
+     */
     const KEY_braille_dots_234578: number;
 
+    /**
+     * @default 16787614
+     */
     const KEY_braille_dots_23458: number;
 
+    /**
+     * @default 16787502
+     */
     const KEY_braille_dots_2346: number;
 
+    /**
+     * @default 16787566
+     */
     const KEY_braille_dots_23467: number;
 
+    /**
+     * @default 16787694
+     */
     const KEY_braille_dots_234678: number;
 
+    /**
+     * @default 16787630
+     */
     const KEY_braille_dots_23468: number;
 
+    /**
+     * @default 16787534
+     */
     const KEY_braille_dots_2347: number;
 
+    /**
+     * @default 16787662
+     */
     const KEY_braille_dots_23478: number;
 
+    /**
+     * @default 16787598
+     */
     const KEY_braille_dots_2348: number;
 
+    /**
+     * @default 16787478
+     */
     const KEY_braille_dots_235: number;
 
+    /**
+     * @default 16787510
+     */
     const KEY_braille_dots_2356: number;
 
+    /**
+     * @default 16787574
+     */
     const KEY_braille_dots_23567: number;
 
+    /**
+     * @default 16787702
+     */
     const KEY_braille_dots_235678: number;
 
+    /**
+     * @default 16787638
+     */
     const KEY_braille_dots_23568: number;
 
+    /**
+     * @default 16787542
+     */
     const KEY_braille_dots_2357: number;
 
+    /**
+     * @default 16787670
+     */
     const KEY_braille_dots_23578: number;
 
+    /**
+     * @default 16787606
+     */
     const KEY_braille_dots_2358: number;
 
+    /**
+     * @default 16787494
+     */
     const KEY_braille_dots_236: number;
 
+    /**
+     * @default 16787558
+     */
     const KEY_braille_dots_2367: number;
 
+    /**
+     * @default 16787686
+     */
     const KEY_braille_dots_23678: number;
 
+    /**
+     * @default 16787622
+     */
     const KEY_braille_dots_2368: number;
 
+    /**
+     * @default 16787526
+     */
     const KEY_braille_dots_237: number;
 
+    /**
+     * @default 16787654
+     */
     const KEY_braille_dots_2378: number;
 
+    /**
+     * @default 16787590
+     */
     const KEY_braille_dots_238: number;
 
+    /**
+     * @default 16787466
+     */
     const KEY_braille_dots_24: number;
 
+    /**
+     * @default 16787482
+     */
     const KEY_braille_dots_245: number;
 
+    /**
+     * @default 16787514
+     */
     const KEY_braille_dots_2456: number;
 
+    /**
+     * @default 16787578
+     */
     const KEY_braille_dots_24567: number;
 
+    /**
+     * @default 16787706
+     */
     const KEY_braille_dots_245678: number;
 
+    /**
+     * @default 16787642
+     */
     const KEY_braille_dots_24568: number;
 
+    /**
+     * @default 16787546
+     */
     const KEY_braille_dots_2457: number;
 
+    /**
+     * @default 16787674
+     */
     const KEY_braille_dots_24578: number;
 
+    /**
+     * @default 16787610
+     */
     const KEY_braille_dots_2458: number;
 
+    /**
+     * @default 16787498
+     */
     const KEY_braille_dots_246: number;
 
+    /**
+     * @default 16787562
+     */
     const KEY_braille_dots_2467: number;
 
+    /**
+     * @default 16787690
+     */
     const KEY_braille_dots_24678: number;
 
+    /**
+     * @default 16787626
+     */
     const KEY_braille_dots_2468: number;
 
+    /**
+     * @default 16787530
+     */
     const KEY_braille_dots_247: number;
 
+    /**
+     * @default 16787658
+     */
     const KEY_braille_dots_2478: number;
 
+    /**
+     * @default 16787594
+     */
     const KEY_braille_dots_248: number;
 
+    /**
+     * @default 16787474
+     */
     const KEY_braille_dots_25: number;
 
+    /**
+     * @default 16787506
+     */
     const KEY_braille_dots_256: number;
 
+    /**
+     * @default 16787570
+     */
     const KEY_braille_dots_2567: number;
 
+    /**
+     * @default 16787698
+     */
     const KEY_braille_dots_25678: number;
 
+    /**
+     * @default 16787634
+     */
     const KEY_braille_dots_2568: number;
 
+    /**
+     * @default 16787538
+     */
     const KEY_braille_dots_257: number;
 
+    /**
+     * @default 16787666
+     */
     const KEY_braille_dots_2578: number;
 
+    /**
+     * @default 16787602
+     */
     const KEY_braille_dots_258: number;
 
+    /**
+     * @default 16787490
+     */
     const KEY_braille_dots_26: number;
 
+    /**
+     * @default 16787554
+     */
     const KEY_braille_dots_267: number;
 
+    /**
+     * @default 16787682
+     */
     const KEY_braille_dots_2678: number;
 
+    /**
+     * @default 16787618
+     */
     const KEY_braille_dots_268: number;
 
+    /**
+     * @default 16787522
+     */
     const KEY_braille_dots_27: number;
 
+    /**
+     * @default 16787650
+     */
     const KEY_braille_dots_278: number;
 
+    /**
+     * @default 16787586
+     */
     const KEY_braille_dots_28: number;
 
+    /**
+     * @default 16787460
+     */
     const KEY_braille_dots_3: number;
 
+    /**
+     * @default 16787468
+     */
     const KEY_braille_dots_34: number;
 
+    /**
+     * @default 16787484
+     */
     const KEY_braille_dots_345: number;
 
+    /**
+     * @default 16787516
+     */
     const KEY_braille_dots_3456: number;
 
+    /**
+     * @default 16787580
+     */
     const KEY_braille_dots_34567: number;
 
+    /**
+     * @default 16787708
+     */
     const KEY_braille_dots_345678: number;
 
+    /**
+     * @default 16787644
+     */
     const KEY_braille_dots_34568: number;
 
+    /**
+     * @default 16787548
+     */
     const KEY_braille_dots_3457: number;
 
+    /**
+     * @default 16787676
+     */
     const KEY_braille_dots_34578: number;
 
+    /**
+     * @default 16787612
+     */
     const KEY_braille_dots_3458: number;
 
+    /**
+     * @default 16787500
+     */
     const KEY_braille_dots_346: number;
 
+    /**
+     * @default 16787564
+     */
     const KEY_braille_dots_3467: number;
 
+    /**
+     * @default 16787692
+     */
     const KEY_braille_dots_34678: number;
 
+    /**
+     * @default 16787628
+     */
     const KEY_braille_dots_3468: number;
 
+    /**
+     * @default 16787532
+     */
     const KEY_braille_dots_347: number;
 
+    /**
+     * @default 16787660
+     */
     const KEY_braille_dots_3478: number;
 
+    /**
+     * @default 16787596
+     */
     const KEY_braille_dots_348: number;
 
+    /**
+     * @default 16787476
+     */
     const KEY_braille_dots_35: number;
 
+    /**
+     * @default 16787508
+     */
     const KEY_braille_dots_356: number;
 
+    /**
+     * @default 16787572
+     */
     const KEY_braille_dots_3567: number;
 
+    /**
+     * @default 16787700
+     */
     const KEY_braille_dots_35678: number;
 
+    /**
+     * @default 16787636
+     */
     const KEY_braille_dots_3568: number;
 
+    /**
+     * @default 16787540
+     */
     const KEY_braille_dots_357: number;
 
+    /**
+     * @default 16787668
+     */
     const KEY_braille_dots_3578: number;
 
+    /**
+     * @default 16787604
+     */
     const KEY_braille_dots_358: number;
 
+    /**
+     * @default 16787492
+     */
     const KEY_braille_dots_36: number;
 
+    /**
+     * @default 16787556
+     */
     const KEY_braille_dots_367: number;
 
+    /**
+     * @default 16787684
+     */
     const KEY_braille_dots_3678: number;
 
+    /**
+     * @default 16787620
+     */
     const KEY_braille_dots_368: number;
 
+    /**
+     * @default 16787524
+     */
     const KEY_braille_dots_37: number;
 
+    /**
+     * @default 16787652
+     */
     const KEY_braille_dots_378: number;
 
+    /**
+     * @default 16787588
+     */
     const KEY_braille_dots_38: number;
 
+    /**
+     * @default 16787464
+     */
     const KEY_braille_dots_4: number;
 
+    /**
+     * @default 16787480
+     */
     const KEY_braille_dots_45: number;
 
+    /**
+     * @default 16787512
+     */
     const KEY_braille_dots_456: number;
 
+    /**
+     * @default 16787576
+     */
     const KEY_braille_dots_4567: number;
 
+    /**
+     * @default 16787704
+     */
     const KEY_braille_dots_45678: number;
 
+    /**
+     * @default 16787640
+     */
     const KEY_braille_dots_4568: number;
 
+    /**
+     * @default 16787544
+     */
     const KEY_braille_dots_457: number;
 
+    /**
+     * @default 16787672
+     */
     const KEY_braille_dots_4578: number;
 
+    /**
+     * @default 16787608
+     */
     const KEY_braille_dots_458: number;
 
+    /**
+     * @default 16787496
+     */
     const KEY_braille_dots_46: number;
 
+    /**
+     * @default 16787560
+     */
     const KEY_braille_dots_467: number;
 
+    /**
+     * @default 16787688
+     */
     const KEY_braille_dots_4678: number;
 
+    /**
+     * @default 16787624
+     */
     const KEY_braille_dots_468: number;
 
+    /**
+     * @default 16787528
+     */
     const KEY_braille_dots_47: number;
 
+    /**
+     * @default 16787656
+     */
     const KEY_braille_dots_478: number;
 
+    /**
+     * @default 16787592
+     */
     const KEY_braille_dots_48: number;
 
+    /**
+     * @default 16787472
+     */
     const KEY_braille_dots_5: number;
 
+    /**
+     * @default 16787504
+     */
     const KEY_braille_dots_56: number;
 
+    /**
+     * @default 16787568
+     */
     const KEY_braille_dots_567: number;
 
+    /**
+     * @default 16787696
+     */
     const KEY_braille_dots_5678: number;
 
+    /**
+     * @default 16787632
+     */
     const KEY_braille_dots_568: number;
 
+    /**
+     * @default 16787536
+     */
     const KEY_braille_dots_57: number;
 
+    /**
+     * @default 16787664
+     */
     const KEY_braille_dots_578: number;
 
+    /**
+     * @default 16787600
+     */
     const KEY_braille_dots_58: number;
 
+    /**
+     * @default 16787488
+     */
     const KEY_braille_dots_6: number;
 
+    /**
+     * @default 16787552
+     */
     const KEY_braille_dots_67: number;
 
+    /**
+     * @default 16787680
+     */
     const KEY_braille_dots_678: number;
 
+    /**
+     * @default 16787616
+     */
     const KEY_braille_dots_68: number;
 
+    /**
+     * @default 16787520
+     */
     const KEY_braille_dots_7: number;
 
+    /**
+     * @default 16787648
+     */
     const KEY_braille_dots_78: number;
 
+    /**
+     * @default 16787584
+     */
     const KEY_braille_dots_8: number;
 
+    /**
+     * @default 418
+     */
     const KEY_breve: number;
 
+    /**
+     * @default 166
+     */
     const KEY_brokenbar: number;
 
+    /**
+     * @default 99
+     */
     const KEY_c: number;
 
+    /**
+     * @default 741
+     */
     const KEY_cabovedot: number;
 
+    /**
+     * @default 486
+     */
     const KEY_cacute: number;
 
+    /**
+     * @default 2744
+     */
     const KEY_careof: number;
 
+    /**
+     * @default 2812
+     */
     const KEY_caret: number;
 
+    /**
+     * @default 439
+     */
     const KEY_caron: number;
 
+    /**
+     * @default 488
+     */
     const KEY_ccaron: number;
 
+    /**
+     * @default 231
+     */
     const KEY_ccedilla: number;
 
+    /**
+     * @default 742
+     */
     const KEY_ccircumflex: number;
 
+    /**
+     * @default 184
+     */
     const KEY_cedilla: number;
 
+    /**
+     * @default 162
+     */
     const KEY_cent: number;
 
+    /**
+     * @default 2529
+     */
     const KEY_checkerboard: number;
 
+    /**
+     * @default 2803
+     */
     const KEY_checkmark: number;
 
+    /**
+     * @default 3023
+     */
     const KEY_circle: number;
 
+    /**
+     * @default 2796
+     */
     const KEY_club: number;
 
+    /**
+     * @default 58
+     */
     const KEY_colon: number;
 
+    /**
+     * @default 44
+     */
     const KEY_comma: number;
 
+    /**
+     * @default 16785931
+     */
     const KEY_containsas: number;
 
+    /**
+     * @default 169
+     */
     const KEY_copyright: number;
 
+    /**
+     * @default 2532
+     */
     const KEY_cr: number;
 
+    /**
+     * @default 2542
+     */
     const KEY_crossinglines: number;
 
+    /**
+     * @default 16785947
+     */
     const KEY_cuberoot: number;
 
+    /**
+     * @default 164
+     */
     const KEY_currency: number;
 
+    /**
+     * @default 2815
+     */
     const KEY_cursor: number;
 
+    /**
+     * @default 100
+     */
     const KEY_d: number;
 
+    /**
+     * @default 16784907
+     */
     const KEY_dabovedot: number;
 
+    /**
+     * @default 2801
+     */
     const KEY_dagger: number;
 
+    /**
+     * @default 495
+     */
     const KEY_dcaron: number;
 
+    /**
+     * @default 65153
+     */
     const KEY_dead_A: number;
 
+    /**
+     * @default 65155
+     */
     const KEY_dead_E: number;
 
+    /**
+     * @default 65157
+     */
     const KEY_dead_I: number;
 
+    /**
+     * @default 65159
+     */
     const KEY_dead_O: number;
 
+    /**
+     * @default 65161
+     */
     const KEY_dead_U: number;
 
+    /**
+     * @default 65152
+     */
     const KEY_dead_a: number;
 
+    /**
+     * @default 65124
+     */
     const KEY_dead_abovecomma: number;
 
+    /**
+     * @default 65110
+     */
     const KEY_dead_abovedot: number;
 
+    /**
+     * @default 65125
+     */
     const KEY_dead_abovereversedcomma: number;
 
+    /**
+     * @default 65112
+     */
     const KEY_dead_abovering: number;
 
+    /**
+     * @default 65105
+     */
     const KEY_dead_acute: number;
 
+    /**
+     * @default 65131
+     */
     const KEY_dead_belowbreve: number;
 
+    /**
+     * @default 65129
+     */
     const KEY_dead_belowcircumflex: number;
 
+    /**
+     * @default 65134
+     */
     const KEY_dead_belowcomma: number;
 
+    /**
+     * @default 65132
+     */
     const KEY_dead_belowdiaeresis: number;
 
+    /**
+     * @default 65120
+     */
     const KEY_dead_belowdot: number;
 
+    /**
+     * @default 65128
+     */
     const KEY_dead_belowmacron: number;
 
+    /**
+     * @default 65127
+     */
     const KEY_dead_belowring: number;
 
+    /**
+     * @default 65130
+     */
     const KEY_dead_belowtilde: number;
 
+    /**
+     * @default 65109
+     */
     const KEY_dead_breve: number;
 
+    /**
+     * @default 65163
+     */
     const KEY_dead_capital_schwa: number;
 
+    /**
+     * @default 65114
+     */
     const KEY_dead_caron: number;
 
+    /**
+     * @default 65115
+     */
     const KEY_dead_cedilla: number;
 
+    /**
+     * @default 65106
+     */
     const KEY_dead_circumflex: number;
 
+    /**
+     * @default 65135
+     */
     const KEY_dead_currency: number;
 
+    /**
+     * @default 65125
+     */
     const KEY_dead_dasia: number;
 
+    /**
+     * @default 65111
+     */
     const KEY_dead_diaeresis: number;
 
+    /**
+     * @default 65113
+     */
     const KEY_dead_doubleacute: number;
 
+    /**
+     * @default 65126
+     */
     const KEY_dead_doublegrave: number;
 
+    /**
+     * @default 65154
+     */
     const KEY_dead_e: number;
 
+    /**
+     * @default 65104
+     */
     const KEY_dead_grave: number;
 
+    /**
+     * @default 65121
+     */
     const KEY_dead_hook: number;
 
+    /**
+     * @default 65122
+     */
     const KEY_dead_horn: number;
 
+    /**
+     * @default 65156
+     */
     const KEY_dead_i: number;
 
+    /**
+     * @default 65133
+     */
     const KEY_dead_invertedbreve: number;
 
+    /**
+     * @default 65117
+     */
     const KEY_dead_iota: number;
 
+    /**
+     * @default 65108
+     */
     const KEY_dead_macron: number;
 
+    /**
+     * @default 65158
+     */
     const KEY_dead_o: number;
 
+    /**
+     * @default 65116
+     */
     const KEY_dead_ogonek: number;
 
+    /**
+     * @default 65107
+     */
     const KEY_dead_perispomeni: number;
 
+    /**
+     * @default 65124
+     */
     const KEY_dead_psili: number;
 
+    /**
+     * @default 65119
+     */
     const KEY_dead_semivoiced_sound: number;
 
+    /**
+     * @default 65162
+     */
     const KEY_dead_small_schwa: number;
 
+    /**
+     * @default 65123
+     */
     const KEY_dead_stroke: number;
 
+    /**
+     * @default 65107
+     */
     const KEY_dead_tilde: number;
 
+    /**
+     * @default 65160
+     */
     const KEY_dead_u: number;
 
+    /**
+     * @default 65118
+     */
     const KEY_dead_voiced_sound: number;
 
+    /**
+     * @default 2749
+     */
     const KEY_decimalpoint: number;
 
+    /**
+     * @default 176
+     */
     const KEY_degree: number;
 
+    /**
+     * @default 168
+     */
     const KEY_diaeresis: number;
 
+    /**
+     * @default 2797
+     */
     const KEY_diamond: number;
 
+    /**
+     * @default 2725
+     */
     const KEY_digitspace: number;
 
+    /**
+     * @default 16785964
+     */
     const KEY_dintegral: number;
 
+    /**
+     * @default 247
+     */
     const KEY_division: number;
 
+    /**
+     * @default 36
+     */
     const KEY_dollar: number;
 
+    /**
+     * @default 2735
+     */
     const KEY_doubbaselinedot: number;
 
+    /**
+     * @default 445
+     */
     const KEY_doubleacute: number;
 
+    /**
+     * @default 2802
+     */
     const KEY_doubledagger: number;
 
+    /**
+     * @default 2814
+     */
     const KEY_doublelowquotemark: number;
 
+    /**
+     * @default 2302
+     */
     const KEY_downarrow: number;
 
+    /**
+     * @default 2984
+     */
     const KEY_downcaret: number;
 
+    /**
+     * @default 3030
+     */
     const KEY_downshoe: number;
 
+    /**
+     * @default 3012
+     */
     const KEY_downstile: number;
 
+    /**
+     * @default 3010
+     */
     const KEY_downtack: number;
 
+    /**
+     * @default 496
+     */
     const KEY_dstroke: number;
 
+    /**
+     * @default 101
+     */
     const KEY_e: number;
 
+    /**
+     * @default 1004
+     */
     const KEY_eabovedot: number;
 
+    /**
+     * @default 233
+     */
     const KEY_eacute: number;
 
+    /**
+     * @default 16785081
+     */
     const KEY_ebelowdot: number;
 
+    /**
+     * @default 492
+     */
     const KEY_ecaron: number;
 
+    /**
+     * @default 234
+     */
     const KEY_ecircumflex: number;
 
+    /**
+     * @default 16785087
+     */
     const KEY_ecircumflexacute: number;
 
+    /**
+     * @default 16785095
+     */
     const KEY_ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785089
+     */
     const KEY_ecircumflexgrave: number;
 
+    /**
+     * @default 16785091
+     */
     const KEY_ecircumflexhook: number;
 
+    /**
+     * @default 16785093
+     */
     const KEY_ecircumflextilde: number;
 
+    /**
+     * @default 235
+     */
     const KEY_ediaeresis: number;
 
+    /**
+     * @default 232
+     */
     const KEY_egrave: number;
 
+    /**
+     * @default 16785083
+     */
     const KEY_ehook: number;
 
+    /**
+     * @default 16785544
+     */
     const KEY_eightsubscript: number;
 
+    /**
+     * @default 16785528
+     */
     const KEY_eightsuperior: number;
 
+    /**
+     * @default 16785928
+     */
     const KEY_elementof: number;
 
+    /**
+     * @default 2734
+     */
     const KEY_ellipsis: number;
 
+    /**
+     * @default 2723
+     */
     const KEY_em3space: number;
 
+    /**
+     * @default 2724
+     */
     const KEY_em4space: number;
 
+    /**
+     * @default 954
+     */
     const KEY_emacron: number;
 
+    /**
+     * @default 2729
+     */
     const KEY_emdash: number;
 
+    /**
+     * @default 2782
+     */
     const KEY_emfilledcircle: number;
 
+    /**
+     * @default 2783
+     */
     const KEY_emfilledrect: number;
 
+    /**
+     * @default 2766
+     */
     const KEY_emopencircle: number;
 
+    /**
+     * @default 2767
+     */
     const KEY_emopenrectangle: number;
 
+    /**
+     * @default 16785925
+     */
     const KEY_emptyset: number;
 
+    /**
+     * @default 2721
+     */
     const KEY_emspace: number;
 
+    /**
+     * @default 2730
+     */
     const KEY_endash: number;
 
+    /**
+     * @default 2790
+     */
     const KEY_enfilledcircbullet: number;
 
+    /**
+     * @default 2791
+     */
     const KEY_enfilledsqbullet: number;
 
+    /**
+     * @default 959
+     */
     const KEY_eng: number;
 
+    /**
+     * @default 2784
+     */
     const KEY_enopencircbullet: number;
 
+    /**
+     * @default 2785
+     */
     const KEY_enopensquarebullet: number;
 
+    /**
+     * @default 2722
+     */
     const KEY_enspace: number;
 
+    /**
+     * @default 490
+     */
     const KEY_eogonek: number;
 
+    /**
+     * @default 61
+     */
     const KEY_equal: number;
 
+    /**
+     * @default 240
+     */
     const KEY_eth: number;
 
+    /**
+     * @default 16785085
+     */
     const KEY_etilde: number;
 
+    /**
+     * @default 33
+     */
     const KEY_exclam: number;
 
+    /**
+     * @default 161
+     */
     const KEY_exclamdown: number;
 
+    /**
+     * @default 102
+     */
     const KEY_f: number;
 
+    /**
+     * @default 16784927
+     */
     const KEY_fabovedot: number;
 
+    /**
+     * @default 2808
+     */
     const KEY_femalesymbol: number;
 
+    /**
+     * @default 2531
+     */
     const KEY_ff: number;
 
+    /**
+     * @default 2747
+     */
     const KEY_figdash: number;
 
+    /**
+     * @default 2780
+     */
     const KEY_filledlefttribullet: number;
 
+    /**
+     * @default 2779
+     */
     const KEY_filledrectbullet: number;
 
+    /**
+     * @default 2781
+     */
     const KEY_filledrighttribullet: number;
 
+    /**
+     * @default 2793
+     */
     const KEY_filledtribulletdown: number;
 
+    /**
+     * @default 2792
+     */
     const KEY_filledtribulletup: number;
 
+    /**
+     * @default 2757
+     */
     const KEY_fiveeighths: number;
 
+    /**
+     * @default 2743
+     */
     const KEY_fivesixths: number;
 
+    /**
+     * @default 16785541
+     */
     const KEY_fivesubscript: number;
 
+    /**
+     * @default 16785525
+     */
     const KEY_fivesuperior: number;
 
+    /**
+     * @default 2741
+     */
     const KEY_fourfifths: number;
 
+    /**
+     * @default 16785540
+     */
     const KEY_foursubscript: number;
 
+    /**
+     * @default 16785524
+     */
     const KEY_foursuperior: number;
 
+    /**
+     * @default 16785948
+     */
     const KEY_fourthroot: number;
 
+    /**
+     * @default 2294
+     */
     const KEY_function: number;
 
+    /**
+     * @default 103
+     */
     const KEY_g: number;
 
+    /**
+     * @default 757
+     */
     const KEY_gabovedot: number;
 
+    /**
+     * @default 699
+     */
     const KEY_gbreve: number;
 
+    /**
+     * @default 16777703
+     */
     const KEY_gcaron: number;
 
+    /**
+     * @default 955
+     */
     const KEY_gcedilla: number;
 
+    /**
+     * @default 760
+     */
     const KEY_gcircumflex: number;
 
+    /**
+     * @default 96
+     */
     const KEY_grave: number;
 
+    /**
+     * @default 62
+     */
     const KEY_greater: number;
 
+    /**
+     * @default 2238
+     */
     const KEY_greaterthanequal: number;
 
+    /**
+     * @default 171
+     */
     const KEY_guillemotleft: number;
 
+    /**
+     * @default 187
+     */
     const KEY_guillemotright: number;
 
+    /**
+     * @default 104
+     */
     const KEY_h: number;
 
+    /**
+     * @default 2728
+     */
     const KEY_hairspace: number;
 
+    /**
+     * @default 694
+     */
     const KEY_hcircumflex: number;
 
+    /**
+     * @default 2798
+     */
     const KEY_heart: number;
 
+    /**
+     * @default 3296
+     */
     const KEY_hebrew_aleph: number;
 
+    /**
+     * @default 3314
+     */
     const KEY_hebrew_ayin: number;
 
+    /**
+     * @default 3297
+     */
     const KEY_hebrew_bet: number;
 
+    /**
+     * @default 3297
+     */
     const KEY_hebrew_beth: number;
 
+    /**
+     * @default 3303
+     */
     const KEY_hebrew_chet: number;
 
+    /**
+     * @default 3299
+     */
     const KEY_hebrew_dalet: number;
 
+    /**
+     * @default 3299
+     */
     const KEY_hebrew_daleth: number;
 
+    /**
+     * @default 3295
+     */
     const KEY_hebrew_doublelowline: number;
 
+    /**
+     * @default 3306
+     */
     const KEY_hebrew_finalkaph: number;
 
+    /**
+     * @default 3309
+     */
     const KEY_hebrew_finalmem: number;
 
+    /**
+     * @default 3311
+     */
     const KEY_hebrew_finalnun: number;
 
+    /**
+     * @default 3315
+     */
     const KEY_hebrew_finalpe: number;
 
+    /**
+     * @default 3317
+     */
     const KEY_hebrew_finalzade: number;
 
+    /**
+     * @default 3317
+     */
     const KEY_hebrew_finalzadi: number;
 
+    /**
+     * @default 3298
+     */
     const KEY_hebrew_gimel: number;
 
+    /**
+     * @default 3298
+     */
     const KEY_hebrew_gimmel: number;
 
+    /**
+     * @default 3300
+     */
     const KEY_hebrew_he: number;
 
+    /**
+     * @default 3303
+     */
     const KEY_hebrew_het: number;
 
+    /**
+     * @default 3307
+     */
     const KEY_hebrew_kaph: number;
 
+    /**
+     * @default 3319
+     */
     const KEY_hebrew_kuf: number;
 
+    /**
+     * @default 3308
+     */
     const KEY_hebrew_lamed: number;
 
+    /**
+     * @default 3310
+     */
     const KEY_hebrew_mem: number;
 
+    /**
+     * @default 3312
+     */
     const KEY_hebrew_nun: number;
 
+    /**
+     * @default 3316
+     */
     const KEY_hebrew_pe: number;
 
+    /**
+     * @default 3319
+     */
     const KEY_hebrew_qoph: number;
 
+    /**
+     * @default 3320
+     */
     const KEY_hebrew_resh: number;
 
+    /**
+     * @default 3313
+     */
     const KEY_hebrew_samech: number;
 
+    /**
+     * @default 3313
+     */
     const KEY_hebrew_samekh: number;
 
+    /**
+     * @default 3321
+     */
     const KEY_hebrew_shin: number;
 
+    /**
+     * @default 3322
+     */
     const KEY_hebrew_taf: number;
 
+    /**
+     * @default 3322
+     */
     const KEY_hebrew_taw: number;
 
+    /**
+     * @default 3304
+     */
     const KEY_hebrew_tet: number;
 
+    /**
+     * @default 3304
+     */
     const KEY_hebrew_teth: number;
 
+    /**
+     * @default 3301
+     */
     const KEY_hebrew_waw: number;
 
+    /**
+     * @default 3305
+     */
     const KEY_hebrew_yod: number;
 
+    /**
+     * @default 3318
+     */
     const KEY_hebrew_zade: number;
 
+    /**
+     * @default 3318
+     */
     const KEY_hebrew_zadi: number;
 
+    /**
+     * @default 3302
+     */
     const KEY_hebrew_zain: number;
 
+    /**
+     * @default 3302
+     */
     const KEY_hebrew_zayin: number;
 
+    /**
+     * @default 2778
+     */
     const KEY_hexagram: number;
 
+    /**
+     * @default 2211
+     */
     const KEY_horizconnector: number;
 
+    /**
+     * @default 2543
+     */
     const KEY_horizlinescan1: number;
 
+    /**
+     * @default 2544
+     */
     const KEY_horizlinescan3: number;
 
+    /**
+     * @default 2545
+     */
     const KEY_horizlinescan5: number;
 
+    /**
+     * @default 2546
+     */
     const KEY_horizlinescan7: number;
 
+    /**
+     * @default 2547
+     */
     const KEY_horizlinescan9: number;
 
+    /**
+     * @default 689
+     */
     const KEY_hstroke: number;
 
+    /**
+     * @default 2530
+     */
     const KEY_ht: number;
 
+    /**
+     * @default 173
+     */
     const KEY_hyphen: number;
 
+    /**
+     * @default 105
+     */
     const KEY_i: number;
 
+    /**
+     * @default 269025120
+     */
     const KEY_iTouch: number;
 
+    /**
+     * @default 237
+     */
     const KEY_iacute: number;
 
+    /**
+     * @default 16785099
+     */
     const KEY_ibelowdot: number;
 
+    /**
+     * @default 16777517
+     */
     const KEY_ibreve: number;
 
+    /**
+     * @default 238
+     */
     const KEY_icircumflex: number;
 
+    /**
+     * @default 2255
+     */
     const KEY_identical: number;
 
+    /**
+     * @default 239
+     */
     const KEY_idiaeresis: number;
 
+    /**
+     * @default 697
+     */
     const KEY_idotless: number;
 
+    /**
+     * @default 2253
+     */
     const KEY_ifonlyif: number;
 
+    /**
+     * @default 236
+     */
     const KEY_igrave: number;
 
+    /**
+     * @default 16785097
+     */
     const KEY_ihook: number;
 
+    /**
+     * @default 1007
+     */
     const KEY_imacron: number;
 
+    /**
+     * @default 2254
+     */
     const KEY_implies: number;
 
+    /**
+     * @default 2266
+     */
     const KEY_includedin: number;
 
+    /**
+     * @default 2267
+     */
     const KEY_includes: number;
 
+    /**
+     * @default 2242
+     */
     const KEY_infinity: number;
 
+    /**
+     * @default 2239
+     */
     const KEY_integral: number;
 
+    /**
+     * @default 2268
+     */
     const KEY_intersection: number;
 
+    /**
+     * @default 999
+     */
     const KEY_iogonek: number;
 
+    /**
+     * @default 949
+     */
     const KEY_itilde: number;
 
+    /**
+     * @default 106
+     */
     const KEY_j: number;
 
+    /**
+     * @default 700
+     */
     const KEY_jcircumflex: number;
 
+    /**
+     * @default 3018
+     */
     const KEY_jot: number;
 
+    /**
+     * @default 107
+     */
     const KEY_k: number;
 
+    /**
+     * @default 1201
+     */
     const KEY_kana_A: number;
 
+    /**
+     * @default 1217
+     */
     const KEY_kana_CHI: number;
 
+    /**
+     * @default 1204
+     */
     const KEY_kana_E: number;
 
+    /**
+     * @default 1228
+     */
     const KEY_kana_FU: number;
 
+    /**
+     * @default 1226
+     */
     const KEY_kana_HA: number;
 
+    /**
+     * @default 1229
+     */
     const KEY_kana_HE: number;
 
+    /**
+     * @default 1227
+     */
     const KEY_kana_HI: number;
 
+    /**
+     * @default 1230
+     */
     const KEY_kana_HO: number;
 
+    /**
+     * @default 1228
+     */
     const KEY_kana_HU: number;
 
+    /**
+     * @default 1202
+     */
     const KEY_kana_I: number;
 
+    /**
+     * @default 1206
+     */
     const KEY_kana_KA: number;
 
+    /**
+     * @default 1209
+     */
     const KEY_kana_KE: number;
 
+    /**
+     * @default 1207
+     */
     const KEY_kana_KI: number;
 
+    /**
+     * @default 1210
+     */
     const KEY_kana_KO: number;
 
+    /**
+     * @default 1208
+     */
     const KEY_kana_KU: number;
 
+    /**
+     * @default 1231
+     */
     const KEY_kana_MA: number;
 
+    /**
+     * @default 1234
+     */
     const KEY_kana_ME: number;
 
+    /**
+     * @default 1232
+     */
     const KEY_kana_MI: number;
 
+    /**
+     * @default 1235
+     */
     const KEY_kana_MO: number;
 
+    /**
+     * @default 1233
+     */
     const KEY_kana_MU: number;
 
+    /**
+     * @default 1245
+     */
     const KEY_kana_N: number;
 
+    /**
+     * @default 1221
+     */
     const KEY_kana_NA: number;
 
+    /**
+     * @default 1224
+     */
     const KEY_kana_NE: number;
 
+    /**
+     * @default 1222
+     */
     const KEY_kana_NI: number;
 
+    /**
+     * @default 1225
+     */
     const KEY_kana_NO: number;
 
+    /**
+     * @default 1223
+     */
     const KEY_kana_NU: number;
 
+    /**
+     * @default 1205
+     */
     const KEY_kana_O: number;
 
+    /**
+     * @default 1239
+     */
     const KEY_kana_RA: number;
 
+    /**
+     * @default 1242
+     */
     const KEY_kana_RE: number;
 
+    /**
+     * @default 1240
+     */
     const KEY_kana_RI: number;
 
+    /**
+     * @default 1243
+     */
     const KEY_kana_RO: number;
 
+    /**
+     * @default 1241
+     */
     const KEY_kana_RU: number;
 
+    /**
+     * @default 1211
+     */
     const KEY_kana_SA: number;
 
+    /**
+     * @default 1214
+     */
     const KEY_kana_SE: number;
 
+    /**
+     * @default 1212
+     */
     const KEY_kana_SHI: number;
 
+    /**
+     * @default 1215
+     */
     const KEY_kana_SO: number;
 
+    /**
+     * @default 1213
+     */
     const KEY_kana_SU: number;
 
+    /**
+     * @default 1216
+     */
     const KEY_kana_TA: number;
 
+    /**
+     * @default 1219
+     */
     const KEY_kana_TE: number;
 
+    /**
+     * @default 1217
+     */
     const KEY_kana_TI: number;
 
+    /**
+     * @default 1220
+     */
     const KEY_kana_TO: number;
 
+    /**
+     * @default 1218
+     */
     const KEY_kana_TSU: number;
 
+    /**
+     * @default 1218
+     */
     const KEY_kana_TU: number;
 
+    /**
+     * @default 1203
+     */
     const KEY_kana_U: number;
 
+    /**
+     * @default 1244
+     */
     const KEY_kana_WA: number;
 
+    /**
+     * @default 1190
+     */
     const KEY_kana_WO: number;
 
+    /**
+     * @default 1236
+     */
     const KEY_kana_YA: number;
 
+    /**
+     * @default 1238
+     */
     const KEY_kana_YO: number;
 
+    /**
+     * @default 1237
+     */
     const KEY_kana_YU: number;
 
+    /**
+     * @default 1191
+     */
     const KEY_kana_a: number;
 
+    /**
+     * @default 1187
+     */
     const KEY_kana_closingbracket: number;
 
+    /**
+     * @default 1188
+     */
     const KEY_kana_comma: number;
 
+    /**
+     * @default 1189
+     */
     const KEY_kana_conjunctive: number;
 
+    /**
+     * @default 1194
+     */
     const KEY_kana_e: number;
 
+    /**
+     * @default 1185
+     */
     const KEY_kana_fullstop: number;
 
+    /**
+     * @default 1192
+     */
     const KEY_kana_i: number;
 
+    /**
+     * @default 1189
+     */
     const KEY_kana_middledot: number;
 
+    /**
+     * @default 1195
+     */
     const KEY_kana_o: number;
 
+    /**
+     * @default 1186
+     */
     const KEY_kana_openingbracket: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_kana_switch: number;
 
+    /**
+     * @default 1199
+     */
     const KEY_kana_tsu: number;
 
+    /**
+     * @default 1199
+     */
     const KEY_kana_tu: number;
 
+    /**
+     * @default 1193
+     */
     const KEY_kana_u: number;
 
+    /**
+     * @default 1196
+     */
     const KEY_kana_ya: number;
 
+    /**
+     * @default 1198
+     */
     const KEY_kana_yo: number;
 
+    /**
+     * @default 1197
+     */
     const KEY_kana_yu: number;
 
+    /**
+     * @default 930
+     */
     const KEY_kappa: number;
 
+    /**
+     * @default 1011
+     */
     const KEY_kcedilla: number;
 
+    /**
+     * @default 930
+     */
     const KEY_kra: number;
 
+    /**
+     * @default 108
+     */
     const KEY_l: number;
 
+    /**
+     * @default 485
+     */
     const KEY_lacute: number;
 
+    /**
+     * @default 2777
+     */
     const KEY_latincross: number;
 
+    /**
+     * @default 16784951
+     */
     const KEY_lbelowdot: number;
 
+    /**
+     * @default 437
+     */
     const KEY_lcaron: number;
 
+    /**
+     * @default 950
+     */
     const KEY_lcedilla: number;
 
+    /**
+     * @default 2748
+     */
     const KEY_leftanglebracket: number;
 
+    /**
+     * @default 2299
+     */
     const KEY_leftarrow: number;
 
+    /**
+     * @default 2979
+     */
     const KEY_leftcaret: number;
 
+    /**
+     * @default 2770
+     */
     const KEY_leftdoublequotemark: number;
 
+    /**
+     * @default 2223
+     */
     const KEY_leftmiddlecurlybrace: number;
 
+    /**
+     * @default 2764
+     */
     const KEY_leftopentriangle: number;
 
+    /**
+     * @default 2794
+     */
     const KEY_leftpointer: number;
 
+    /**
+     * @default 2209
+     */
     const KEY_leftradical: number;
 
+    /**
+     * @default 3034
+     */
     const KEY_leftshoe: number;
 
+    /**
+     * @default 2768
+     */
     const KEY_leftsinglequotemark: number;
 
+    /**
+     * @default 2548
+     */
     const KEY_leftt: number;
 
+    /**
+     * @default 3036
+     */
     const KEY_lefttack: number;
 
+    /**
+     * @default 60
+     */
     const KEY_less: number;
 
+    /**
+     * @default 2236
+     */
     const KEY_lessthanequal: number;
 
+    /**
+     * @default 2533
+     */
     const KEY_lf: number;
 
+    /**
+     * @default 2270
+     */
     const KEY_logicaland: number;
 
+    /**
+     * @default 2271
+     */
     const KEY_logicalor: number;
 
+    /**
+     * @default 2541
+     */
     const KEY_lowleftcorner: number;
 
+    /**
+     * @default 2538
+     */
     const KEY_lowrightcorner: number;
 
+    /**
+     * @default 435
+     */
     const KEY_lstroke: number;
 
+    /**
+     * @default 109
+     */
     const KEY_m: number;
 
+    /**
+     * @default 16784961
+     */
     const KEY_mabovedot: number;
 
+    /**
+     * @default 175
+     */
     const KEY_macron: number;
 
+    /**
+     * @default 2807
+     */
     const KEY_malesymbol: number;
 
+    /**
+     * @default 2800
+     */
     const KEY_maltesecross: number;
 
+    /**
+     * @default 2751
+     */
     const KEY_marker: number;
 
+    /**
+     * @default 186
+     */
     const KEY_masculine: number;
 
+    /**
+     * @default 45
+     */
     const KEY_minus: number;
 
+    /**
+     * @default 2774
+     */
     const KEY_minutes: number;
 
+    /**
+     * @default 181
+     */
     const KEY_mu: number;
 
+    /**
+     * @default 215
+     */
     const KEY_multiply: number;
 
+    /**
+     * @default 2806
+     */
     const KEY_musicalflat: number;
 
+    /**
+     * @default 2805
+     */
     const KEY_musicalsharp: number;
 
+    /**
+     * @default 110
+     */
     const KEY_n: number;
 
+    /**
+     * @default 2245
+     */
     const KEY_nabla: number;
 
+    /**
+     * @default 497
+     */
     const KEY_nacute: number;
 
+    /**
+     * @default 498
+     */
     const KEY_ncaron: number;
 
+    /**
+     * @default 1009
+     */
     const KEY_ncedilla: number;
 
+    /**
+     * @default 16785545
+     */
     const KEY_ninesubscript: number;
 
+    /**
+     * @default 16785529
+     */
     const KEY_ninesuperior: number;
 
+    /**
+     * @default 2536
+     */
     const KEY_nl: number;
 
+    /**
+     * @default 160
+     */
     const KEY_nobreakspace: number;
 
+    /**
+     * @default 16785991
+     */
     const KEY_notapproxeq: number;
 
+    /**
+     * @default 16785929
+     */
     const KEY_notelementof: number;
 
+    /**
+     * @default 2237
+     */
     const KEY_notequal: number;
 
+    /**
+     * @default 16786018
+     */
     const KEY_notidentical: number;
 
+    /**
+     * @default 172
+     */
     const KEY_notsign: number;
 
+    /**
+     * @default 241
+     */
     const KEY_ntilde: number;
 
+    /**
+     * @default 35
+     */
     const KEY_numbersign: number;
 
+    /**
+     * @default 1712
+     */
     const KEY_numerosign: number;
 
+    /**
+     * @default 111
+     */
     const KEY_o: number;
 
+    /**
+     * @default 243
+     */
     const KEY_oacute: number;
 
+    /**
+     * @default 16777845
+     */
     const KEY_obarred: number;
 
+    /**
+     * @default 16785101
+     */
     const KEY_obelowdot: number;
 
+    /**
+     * @default 16777682
+     */
     const KEY_ocaron: number;
 
+    /**
+     * @default 244
+     */
     const KEY_ocircumflex: number;
 
+    /**
+     * @default 16785105
+     */
     const KEY_ocircumflexacute: number;
 
+    /**
+     * @default 16785113
+     */
     const KEY_ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785107
+     */
     const KEY_ocircumflexgrave: number;
 
+    /**
+     * @default 16785109
+     */
     const KEY_ocircumflexhook: number;
 
+    /**
+     * @default 16785111
+     */
     const KEY_ocircumflextilde: number;
 
+    /**
+     * @default 246
+     */
     const KEY_odiaeresis: number;
 
+    /**
+     * @default 501
+     */
     const KEY_odoubleacute: number;
 
+    /**
+     * @default 5053
+     */
     const KEY_oe: number;
 
+    /**
+     * @default 434
+     */
     const KEY_ogonek: number;
 
+    /**
+     * @default 242
+     */
     const KEY_ograve: number;
 
+    /**
+     * @default 16785103
+     */
     const KEY_ohook: number;
 
+    /**
+     * @default 16777633
+     */
     const KEY_ohorn: number;
 
+    /**
+     * @default 16785115
+     */
     const KEY_ohornacute: number;
 
+    /**
+     * @default 16785123
+     */
     const KEY_ohornbelowdot: number;
 
+    /**
+     * @default 16785117
+     */
     const KEY_ohorngrave: number;
 
+    /**
+     * @default 16785119
+     */
     const KEY_ohornhook: number;
 
+    /**
+     * @default 16785121
+     */
     const KEY_ohorntilde: number;
 
+    /**
+     * @default 1010
+     */
     const KEY_omacron: number;
 
+    /**
+     * @default 2755
+     */
     const KEY_oneeighth: number;
 
+    /**
+     * @default 2738
+     */
     const KEY_onefifth: number;
 
+    /**
+     * @default 189
+     */
     const KEY_onehalf: number;
 
+    /**
+     * @default 188
+     */
     const KEY_onequarter: number;
 
+    /**
+     * @default 2742
+     */
     const KEY_onesixth: number;
 
+    /**
+     * @default 16785537
+     */
     const KEY_onesubscript: number;
 
+    /**
+     * @default 185
+     */
     const KEY_onesuperior: number;
 
+    /**
+     * @default 2736
+     */
     const KEY_onethird: number;
 
+    /**
+     * @default 248
+     */
     const KEY_ooblique: number;
 
+    /**
+     * @default 2786
+     */
     const KEY_openrectbullet: number;
 
+    /**
+     * @default 2789
+     */
     const KEY_openstar: number;
 
+    /**
+     * @default 2788
+     */
     const KEY_opentribulletdown: number;
 
+    /**
+     * @default 2787
+     */
     const KEY_opentribulletup: number;
 
+    /**
+     * @default 170
+     */
     const KEY_ordfeminine: number;
 
+    /**
+     * @default 248
+     */
     const KEY_oslash: number;
 
+    /**
+     * @default 245
+     */
     const KEY_otilde: number;
 
+    /**
+     * @default 3008
+     */
     const KEY_overbar: number;
 
+    /**
+     * @default 1150
+     */
     const KEY_overline: number;
 
+    /**
+     * @default 112
+     */
     const KEY_p: number;
 
+    /**
+     * @default 16784983
+     */
     const KEY_pabovedot: number;
 
+    /**
+     * @default 182
+     */
     const KEY_paragraph: number;
 
+    /**
+     * @default 40
+     */
     const KEY_parenleft: number;
 
+    /**
+     * @default 41
+     */
     const KEY_parenright: number;
 
+    /**
+     * @default 16785922
+     */
     const KEY_partdifferential: number;
 
+    /**
+     * @default 2287
+     */
     const KEY_partialderivative: number;
 
+    /**
+     * @default 37
+     */
     const KEY_percent: number;
 
+    /**
+     * @default 46
+     */
     const KEY_period: number;
 
+    /**
+     * @default 183
+     */
     const KEY_periodcentered: number;
 
+    /**
+     * @default 2811
+     */
     const KEY_phonographcopyright: number;
 
+    /**
+     * @default 43
+     */
     const KEY_plus: number;
 
+    /**
+     * @default 177
+     */
     const KEY_plusminus: number;
 
+    /**
+     * @default 2772
+     */
     const KEY_prescription: number;
 
+    /**
+     * @default 1200
+     */
     const KEY_prolongedsound: number;
 
+    /**
+     * @default 2726
+     */
     const KEY_punctspace: number;
 
+    /**
+     * @default 113
+     */
     const KEY_q: number;
 
+    /**
+     * @default 3020
+     */
     const KEY_quad: number;
 
+    /**
+     * @default 63
+     */
     const KEY_question: number;
 
+    /**
+     * @default 191
+     */
     const KEY_questiondown: number;
 
+    /**
+     * @default 34
+     */
     const KEY_quotedbl: number;
 
+    /**
+     * @default 96
+     */
     const KEY_quoteleft: number;
 
+    /**
+     * @default 39
+     */
     const KEY_quoteright: number;
 
+    /**
+     * @default 114
+     */
     const KEY_r: number;
 
+    /**
+     * @default 480
+     */
     const KEY_racute: number;
 
+    /**
+     * @default 2262
+     */
     const KEY_radical: number;
 
+    /**
+     * @default 504
+     */
     const KEY_rcaron: number;
 
+    /**
+     * @default 947
+     */
     const KEY_rcedilla: number;
 
+    /**
+     * @default 174
+     */
     const KEY_registered: number;
 
+    /**
+     * @default 2750
+     */
     const KEY_rightanglebracket: number;
 
+    /**
+     * @default 2301
+     */
     const KEY_rightarrow: number;
 
+    /**
+     * @default 2982
+     */
     const KEY_rightcaret: number;
 
+    /**
+     * @default 2771
+     */
     const KEY_rightdoublequotemark: number;
 
+    /**
+     * @default 2224
+     */
     const KEY_rightmiddlecurlybrace: number;
 
+    /**
+     * @default 2231
+     */
     const KEY_rightmiddlesummation: number;
 
+    /**
+     * @default 2765
+     */
     const KEY_rightopentriangle: number;
 
+    /**
+     * @default 2795
+     */
     const KEY_rightpointer: number;
 
+    /**
+     * @default 3032
+     */
     const KEY_rightshoe: number;
 
+    /**
+     * @default 2769
+     */
     const KEY_rightsinglequotemark: number;
 
+    /**
+     * @default 2549
+     */
     const KEY_rightt: number;
 
+    /**
+     * @default 3068
+     */
     const KEY_righttack: number;
 
+    /**
+     * @default 115
+     */
     const KEY_s: number;
 
+    /**
+     * @default 16784993
+     */
     const KEY_sabovedot: number;
 
+    /**
+     * @default 438
+     */
     const KEY_sacute: number;
 
+    /**
+     * @default 441
+     */
     const KEY_scaron: number;
 
+    /**
+     * @default 442
+     */
     const KEY_scedilla: number;
 
+    /**
+     * @default 16777817
+     */
     const KEY_schwa: number;
 
+    /**
+     * @default 766
+     */
     const KEY_scircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_script_switch: number;
 
+    /**
+     * @default 2775
+     */
     const KEY_seconds: number;
 
+    /**
+     * @default 167
+     */
     const KEY_section: number;
 
+    /**
+     * @default 59
+     */
     const KEY_semicolon: number;
 
+    /**
+     * @default 1247
+     */
     const KEY_semivoicedsound: number;
 
+    /**
+     * @default 2758
+     */
     const KEY_seveneighths: number;
 
+    /**
+     * @default 16785543
+     */
     const KEY_sevensubscript: number;
 
+    /**
+     * @default 16785527
+     */
     const KEY_sevensuperior: number;
 
+    /**
+     * @default 2762
+     */
     const KEY_signaturemark: number;
 
+    /**
+     * @default 2732
+     */
     const KEY_signifblank: number;
 
+    /**
+     * @default 2249
+     */
     const KEY_similarequal: number;
 
+    /**
+     * @default 2813
+     */
     const KEY_singlelowquotemark: number;
 
+    /**
+     * @default 16785542
+     */
     const KEY_sixsubscript: number;
 
+    /**
+     * @default 16785526
+     */
     const KEY_sixsuperior: number;
 
+    /**
+     * @default 47
+     */
     const KEY_slash: number;
 
+    /**
+     * @default 2528
+     */
     const KEY_soliddiamond: number;
 
+    /**
+     * @default 32
+     */
     const KEY_space: number;
 
+    /**
+     * @default 16785946
+     */
     const KEY_squareroot: number;
 
+    /**
+     * @default 223
+     */
     const KEY_ssharp: number;
 
+    /**
+     * @default 163
+     */
     const KEY_sterling: number;
 
+    /**
+     * @default 16786019
+     */
     const KEY_stricteq: number;
 
+    /**
+     * @default 116
+     */
     const KEY_t: number;
 
+    /**
+     * @default 16785003
+     */
     const KEY_tabovedot: number;
 
+    /**
+     * @default 443
+     */
     const KEY_tcaron: number;
 
+    /**
+     * @default 510
+     */
     const KEY_tcedilla: number;
 
+    /**
+     * @default 2809
+     */
     const KEY_telephone: number;
 
+    /**
+     * @default 2810
+     */
     const KEY_telephonerecorder: number;
 
+    /**
+     * @default 2240
+     */
     const KEY_therefore: number;
 
+    /**
+     * @default 2727
+     */
     const KEY_thinspace: number;
 
+    /**
+     * @default 254
+     */
     const KEY_thorn: number;
 
+    /**
+     * @default 2756
+     */
     const KEY_threeeighths: number;
 
+    /**
+     * @default 2740
+     */
     const KEY_threefifths: number;
 
+    /**
+     * @default 190
+     */
     const KEY_threequarters: number;
 
+    /**
+     * @default 16785539
+     */
     const KEY_threesubscript: number;
 
+    /**
+     * @default 179
+     */
     const KEY_threesuperior: number;
 
+    /**
+     * @default 16785965
+     */
     const KEY_tintegral: number;
 
+    /**
+     * @default 2212
+     */
     const KEY_topintegral: number;
 
+    /**
+     * @default 2219
+     */
     const KEY_topleftparens: number;
 
+    /**
+     * @default 2210
+     */
     const KEY_topleftradical: number;
 
+    /**
+     * @default 2215
+     */
     const KEY_topleftsqbracket: number;
 
+    /**
+     * @default 2225
+     */
     const KEY_topleftsummation: number;
 
+    /**
+     * @default 2221
+     */
     const KEY_toprightparens: number;
 
+    /**
+     * @default 2217
+     */
     const KEY_toprightsqbracket: number;
 
+    /**
+     * @default 2229
+     */
     const KEY_toprightsummation: number;
 
+    /**
+     * @default 2551
+     */
     const KEY_topt: number;
 
+    /**
+     * @default 2227
+     */
     const KEY_topvertsummationconnector: number;
 
+    /**
+     * @default 2761
+     */
     const KEY_trademark: number;
 
+    /**
+     * @default 2763
+     */
     const KEY_trademarkincircle: number;
 
+    /**
+     * @default 956
+     */
     const KEY_tslash: number;
 
+    /**
+     * @default 2739
+     */
     const KEY_twofifths: number;
 
+    /**
+     * @default 16785538
+     */
     const KEY_twosubscript: number;
 
+    /**
+     * @default 178
+     */
     const KEY_twosuperior: number;
 
+    /**
+     * @default 2737
+     */
     const KEY_twothirds: number;
 
+    /**
+     * @default 117
+     */
     const KEY_u: number;
 
+    /**
+     * @default 250
+     */
     const KEY_uacute: number;
 
+    /**
+     * @default 16785125
+     */
     const KEY_ubelowdot: number;
 
+    /**
+     * @default 765
+     */
     const KEY_ubreve: number;
 
+    /**
+     * @default 251
+     */
     const KEY_ucircumflex: number;
 
+    /**
+     * @default 252
+     */
     const KEY_udiaeresis: number;
 
+    /**
+     * @default 507
+     */
     const KEY_udoubleacute: number;
 
+    /**
+     * @default 249
+     */
     const KEY_ugrave: number;
 
+    /**
+     * @default 16785127
+     */
     const KEY_uhook: number;
 
+    /**
+     * @default 16777648
+     */
     const KEY_uhorn: number;
 
+    /**
+     * @default 16785129
+     */
     const KEY_uhornacute: number;
 
+    /**
+     * @default 16785137
+     */
     const KEY_uhornbelowdot: number;
 
+    /**
+     * @default 16785131
+     */
     const KEY_uhorngrave: number;
 
+    /**
+     * @default 16785133
+     */
     const KEY_uhornhook: number;
 
+    /**
+     * @default 16785135
+     */
     const KEY_uhorntilde: number;
 
+    /**
+     * @default 1022
+     */
     const KEY_umacron: number;
 
+    /**
+     * @default 3014
+     */
     const KEY_underbar: number;
 
+    /**
+     * @default 95
+     */
     const KEY_underscore: number;
 
+    /**
+     * @default 2269
+     */
     const KEY_union: number;
 
+    /**
+     * @default 1017
+     */
     const KEY_uogonek: number;
 
+    /**
+     * @default 2300
+     */
     const KEY_uparrow: number;
 
+    /**
+     * @default 2985
+     */
     const KEY_upcaret: number;
 
+    /**
+     * @default 2540
+     */
     const KEY_upleftcorner: number;
 
+    /**
+     * @default 2539
+     */
     const KEY_uprightcorner: number;
 
+    /**
+     * @default 3011
+     */
     const KEY_upshoe: number;
 
+    /**
+     * @default 3027
+     */
     const KEY_upstile: number;
 
+    /**
+     * @default 3022
+     */
     const KEY_uptack: number;
 
+    /**
+     * @default 505
+     */
     const KEY_uring: number;
 
+    /**
+     * @default 1021
+     */
     const KEY_utilde: number;
 
+    /**
+     * @default 118
+     */
     const KEY_v: number;
 
+    /**
+     * @default 2241
+     */
     const KEY_variation: number;
 
+    /**
+     * @default 2552
+     */
     const KEY_vertbar: number;
 
+    /**
+     * @default 2214
+     */
     const KEY_vertconnector: number;
 
+    /**
+     * @default 1246
+     */
     const KEY_voicedsound: number;
 
+    /**
+     * @default 2537
+     */
     const KEY_vt: number;
 
+    /**
+     * @default 119
+     */
     const KEY_w: number;
 
+    /**
+     * @default 16785027
+     */
     const KEY_wacute: number;
 
+    /**
+     * @default 16777589
+     */
     const KEY_wcircumflex: number;
 
+    /**
+     * @default 16785029
+     */
     const KEY_wdiaeresis: number;
 
+    /**
+     * @default 16785025
+     */
     const KEY_wgrave: number;
 
+    /**
+     * @default 120
+     */
     const KEY_x: number;
 
+    /**
+     * @default 16785035
+     */
     const KEY_xabovedot: number;
 
+    /**
+     * @default 121
+     */
     const KEY_y: number;
 
+    /**
+     * @default 253
+     */
     const KEY_yacute: number;
 
+    /**
+     * @default 16785141
+     */
     const KEY_ybelowdot: number;
 
+    /**
+     * @default 16777591
+     */
     const KEY_ycircumflex: number;
 
+    /**
+     * @default 255
+     */
     const KEY_ydiaeresis: number;
 
+    /**
+     * @default 165
+     */
     const KEY_yen: number;
 
+    /**
+     * @default 16785139
+     */
     const KEY_ygrave: number;
 
+    /**
+     * @default 16785143
+     */
     const KEY_yhook: number;
 
+    /**
+     * @default 16785145
+     */
     const KEY_ytilde: number;
 
+    /**
+     * @default 122
+     */
     const KEY_z: number;
 
+    /**
+     * @default 447
+     */
     const KEY_zabovedot: number;
 
+    /**
+     * @default 444
+     */
     const KEY_zacute: number;
 
+    /**
+     * @default 446
+     */
     const KEY_zcaron: number;
 
+    /**
+     * @default 16785536
+     */
     const KEY_zerosubscript: number;
 
+    /**
+     * @default 16785520
+     */
     const KEY_zerosuperior: number;
 
+    /**
+     * @default 16777654
+     */
     const KEY_zstroke: number;
 
+    /**
+     * @default 128
+     */
     const MAX_TIMECOORD_AXES: number;
 
+    /**
+     * @default 2
+     */
     const NO_BG: Pixmap;
 
+    /**
+     * @default 1
+     */
     const PARENT_RELATIVE: number;
 
+    /**
+     * @default 1
+     */
     const PARENT_RELATIVE_BG: Pixmap;
 
+    /**
+     * @default 20
+     */
     const PRIORITY_REDRAW: number;
 
     /**
@@ -6793,6 +13336,7 @@ export namespace Gdk {
      * @returns `true` on success, `false` if error is set.
      * @since 2.4
      * @deprecated since 2.24: This function is being removed in 3.0. Use     either `g_spawn_command_line_sync()`, `g_spawn_command_line_async()` or     {@link Gdk.AppLaunchContext} instead.
+     * @throws GLib.Error
      */
     function spawn_command_line_on_screen(screen: Screen, command_line: string): boolean;
 
@@ -7332,12 +13876,12 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum DragAction {
-        DEFAULT,
-        COPY,
-        MOVE,
-        LINK,
-        PRIVATE,
-        ASK,
+        DEFAULT = 1,
+        COPY = 2,
+        MOVE = 4,
+        LINK = 8,
+        PRIVATE = 16,
+        ASK = 32,
     }
 
 
@@ -7352,28 +13896,28 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum EventMask {
-        EXPOSURE_MASK,
-        POINTER_MOTION_MASK,
-        POINTER_MOTION_HINT_MASK,
-        BUTTON_MOTION_MASK,
-        BUTTON1_MOTION_MASK,
-        BUTTON2_MOTION_MASK,
-        BUTTON3_MOTION_MASK,
-        BUTTON_PRESS_MASK,
-        BUTTON_RELEASE_MASK,
-        KEY_PRESS_MASK,
-        KEY_RELEASE_MASK,
-        ENTER_NOTIFY_MASK,
-        LEAVE_NOTIFY_MASK,
-        FOCUS_CHANGE_MASK,
-        STRUCTURE_MASK,
-        PROPERTY_CHANGE_MASK,
-        VISIBILITY_NOTIFY_MASK,
-        PROXIMITY_IN_MASK,
-        PROXIMITY_OUT_MASK,
-        SUBSTRUCTURE_MASK,
-        SCROLL_MASK,
-        ALL_EVENTS_MASK,
+        EXPOSURE_MASK = 2,
+        POINTER_MOTION_MASK = 4,
+        POINTER_MOTION_HINT_MASK = 8,
+        BUTTON_MOTION_MASK = 16,
+        BUTTON1_MOTION_MASK = 32,
+        BUTTON2_MOTION_MASK = 64,
+        BUTTON3_MOTION_MASK = 128,
+        BUTTON_PRESS_MASK = 256,
+        BUTTON_RELEASE_MASK = 512,
+        KEY_PRESS_MASK = 1024,
+        KEY_RELEASE_MASK = 2048,
+        ENTER_NOTIFY_MASK = 4096,
+        LEAVE_NOTIFY_MASK = 8192,
+        FOCUS_CHANGE_MASK = 16384,
+        STRUCTURE_MASK = 32768,
+        PROPERTY_CHANGE_MASK = 65536,
+        VISIBILITY_NOTIFY_MASK = 131072,
+        PROXIMITY_IN_MASK = 262144,
+        PROXIMITY_OUT_MASK = 524288,
+        SUBSTRUCTURE_MASK = 1048576,
+        SCROLL_MASK = 2097152,
+        ALL_EVENTS_MASK = 4194302,
     }
 
 
@@ -7388,24 +13932,24 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum GCValuesMask {
-        FOREGROUND,
-        BACKGROUND,
-        FONT,
-        FUNCTION,
-        FILL,
-        TILE,
-        STIPPLE,
-        CLIP_MASK,
-        SUBWINDOW,
-        TS_X_ORIGIN,
-        TS_Y_ORIGIN,
-        CLIP_X_ORIGIN,
-        CLIP_Y_ORIGIN,
-        EXPOSURES,
-        LINE_WIDTH,
-        LINE_STYLE,
-        CAP_STYLE,
-        JOIN_STYLE,
+        FOREGROUND = 1,
+        BACKGROUND = 2,
+        FONT = 4,
+        FUNCTION = 8,
+        FILL = 16,
+        TILE = 32,
+        STIPPLE = 64,
+        CLIP_MASK = 128,
+        SUBWINDOW = 256,
+        TS_X_ORIGIN = 512,
+        TS_Y_ORIGIN = 1024,
+        CLIP_X_ORIGIN = 2048,
+        CLIP_Y_ORIGIN = 4096,
+        EXPOSURES = 8192,
+        LINE_WIDTH = 16384,
+        LINE_STYLE = 32768,
+        CAP_STYLE = 65536,
+        JOIN_STYLE = 131072,
     }
 
 
@@ -7420,9 +13964,9 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum InputCondition {
-        READ,
-        WRITE,
-        EXCEPTION,
+        READ = 1,
+        WRITE = 2,
+        EXCEPTION = 4,
     }
 
 
@@ -7437,24 +13981,24 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum ModifierType {
-        SHIFT_MASK,
-        LOCK_MASK,
-        CONTROL_MASK,
-        MOD1_MASK,
-        MOD2_MASK,
-        MOD3_MASK,
-        MOD4_MASK,
-        MOD5_MASK,
-        BUTTON1_MASK,
-        BUTTON2_MASK,
-        BUTTON3_MASK,
-        BUTTON4_MASK,
-        BUTTON5_MASK,
-        SUPER_MASK,
-        HYPER_MASK,
-        META_MASK,
-        RELEASE_MASK,
-        MODIFIER_MASK,
+        SHIFT_MASK = 1,
+        LOCK_MASK = 2,
+        CONTROL_MASK = 4,
+        MOD1_MASK = 8,
+        MOD2_MASK = 16,
+        MOD3_MASK = 32,
+        MOD4_MASK = 64,
+        MOD5_MASK = 128,
+        BUTTON1_MASK = 256,
+        BUTTON2_MASK = 512,
+        BUTTON3_MASK = 1024,
+        BUTTON4_MASK = 2048,
+        BUTTON5_MASK = 4096,
+        SUPER_MASK = 67108864,
+        HYPER_MASK = 134217728,
+        META_MASK = 268435456,
+        RELEASE_MASK = 1073741824,
+        MODIFIER_MASK = 1543512063,
     }
 
 
@@ -7469,13 +14013,13 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum WMDecoration {
-        ALL,
-        BORDER,
-        RESIZEH,
-        TITLE,
-        MENU,
-        MINIMIZE,
-        MAXIMIZE,
+        ALL = 1,
+        BORDER = 2,
+        RESIZEH = 4,
+        TITLE = 8,
+        MENU = 16,
+        MINIMIZE = 32,
+        MAXIMIZE = 64,
     }
 
 
@@ -7490,12 +14034,12 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum WMFunction {
-        ALL,
-        RESIZE,
-        MOVE,
-        MINIMIZE,
-        MAXIMIZE,
-        CLOSE,
+        ALL = 1,
+        RESIZE = 2,
+        MOVE = 4,
+        MINIMIZE = 8,
+        MAXIMIZE = 16,
+        CLOSE = 32,
     }
 
 
@@ -7510,15 +14054,15 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum WindowAttributesType {
-        TITLE,
-        X,
-        Y,
-        CURSOR,
-        COLORMAP,
-        VISUAL,
-        WMCLASS,
-        NOREDIR,
-        TYPE_HINT,
+        TITLE = 2,
+        X = 4,
+        Y = 8,
+        CURSOR = 16,
+        COLORMAP = 32,
+        VISUAL = 64,
+        WMCLASS = 128,
+        NOREDIR = 256,
+        TYPE_HINT = 512,
     }
 
 
@@ -7533,15 +14077,15 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum WindowHints {
-        POS,
-        MIN_SIZE,
-        MAX_SIZE,
-        BASE_SIZE,
-        ASPECT,
-        RESIZE_INC,
-        WIN_GRAVITY,
-        USER_POS,
-        USER_SIZE,
+        POS = 1,
+        MIN_SIZE = 2,
+        MAX_SIZE = 4,
+        BASE_SIZE = 8,
+        ASPECT = 16,
+        RESIZE_INC = 32,
+        WIN_GRAVITY = 64,
+        USER_POS = 128,
+        USER_SIZE = 256,
     }
 
 
@@ -7556,13 +14100,13 @@ export namespace Gdk {
      * @gir-type Flags
      */
     enum WindowState {
-        WITHDRAWN,
-        ICONIFIED,
-        MAXIMIZED,
-        STICKY,
-        FULLSCREEN,
-        ABOVE,
-        BELOW,
+        WITHDRAWN = 1,
+        ICONIFIED = 2,
+        MAXIMIZED = 4,
+        STICKY = 8,
+        FULLSCREEN = 16,
+        ABOVE = 32,
+        BELOW = 64,
     }
 
 
@@ -7993,7 +14537,7 @@ export namespace Gdk {
              * @since 2.2
              * @run-last
              */
-            closed: (arg0: boolean) => void;
+            closed: (is_error: boolean) => void;
         }
 
         // Constructor properties interface
@@ -8338,7 +14882,7 @@ export namespace Gdk {
              * @since 2.2
              * @run-last
              */
-            "display-opened": (arg0: Display) => void;
+            "display-opened": (display: Display) => void;
             "notify::default-display": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10538,7 +17082,7 @@ export namespace Gdk {
              * @since 2.18
              * @run-last
              */
-            "from-embedder": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "from-embedder": (embedder_x: number, embedder_y: number, offscreen_x: number, offscreen_y: number) => void;
             /**
              * The ::pick-embedded-child signal is emitted to find an embedded
              * child at the given position.
@@ -10546,7 +17090,7 @@ export namespace Gdk {
              * @since 2.18
              * @run-last
              */
-            "pick-embedded-child": (arg0: number, arg1: number) => Window;
+            "pick-embedded-child": (x: number, y: number) => Window;
             /**
              * The ::to-embedder signal is emitted to translate coordinates
              * in an offscreen window to its embedder.
@@ -10556,7 +17100,7 @@ export namespace Gdk {
              * @since 2.18
              * @run-last
              */
-            "to-embedder": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "to-embedder": (offscreen_x: number, offscreen_y: number, embedder_x: number, embedder_y: number) => void;
             "notify::cursor": (pspec: GObject.ParamSpec) => void;
         }
 

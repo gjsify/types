@@ -39,19 +39,19 @@ export namespace GnomeQR {
         /**
          * Low error correction (~7% recovery capability)
          */
-        LOW,
+        LOW = 0,
         /**
          * Medium error correction (~15% recovery capability)
          */
-        MEDIUM,
+        MEDIUM = 1,
         /**
          * Quartile error correction (~25% recovery capability)
          */
-        QUARTILE,
+        QUARTILE = 2,
         /**
          * High error correction (~30% recovery capability)
          */
-        HIGH,
+        HIGH = 3,
     }
 
 
@@ -67,16 +67,16 @@ export namespace GnomeQR {
      * @gir-type Enum
      */
     enum PixelFormat {
-        A_8,
-        G_8,
+        A_8 = 0,
+        G_8 = 1,
         /**
          * 24-bit RGB format (3 bytes per pixel)
          */
-        RGB_888,
+        RGB_888 = 2,
         /**
          * 32-bit RGBA format (4 bytes per pixel)
          */
-        RGBA_8888,
+        RGBA_8888 = 3,
     }
 
 
@@ -127,6 +127,7 @@ export namespace GnomeQR {
      * `gnome_qr_generate_qr_code_async()` and obtain its result.
      * @param result the {@link Gio.AsyncResult} that was provided to the callback
      * @returns The pixel data or `null` on error
+     * @throws GLib.Error
      */
     function generate_qr_code_finish(result: Gio.AsyncResult): [GLib.Bytes, number];
 
@@ -140,6 +141,7 @@ export namespace GnomeQR {
      * @param ecc The error correction level
      * @param cancellable A {@link Gio.Cancellable} to cancel the operation
      * @returns The pixel data or `null` on error
+     * @throws GLib.Error
      */
     function generate_qr_code_sync(text: string, requested_size: bigint | number, bg_color: Color | null, fg_color: Color | null, format: PixelFormat, ecc: EccLevel, cancellable: Gio.Cancellable | null): [GLib.Bytes, number];
 

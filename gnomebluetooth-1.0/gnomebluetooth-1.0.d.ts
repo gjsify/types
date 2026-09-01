@@ -40,23 +40,23 @@ export namespace GnomeBluetooth {
         /**
          * all devices
          */
-        ALL,
+        ALL = 0,
         /**
          * paired devices
          */
-        PAIRED,
+        PAIRED = 1,
         /**
          * trusted devices
          */
-        TRUSTED,
+        TRUSTED = 2,
         /**
          * neither paired, nor trusted devices
          */
-        NOT_PAIRED_OR_TRUSTED,
+        NOT_PAIRED_OR_TRUSTED = 3,
         /**
          * paired and/or trusted devices
          */
-        PAIRED_OR_TRUSTED,
+        PAIRED_OR_TRUSTED = 4,
     }
 
 
@@ -68,71 +68,71 @@ export namespace GnomeBluetooth {
         /**
          * a {@link Gio.DBusProxy} object
          */
-        PROXY,
+        PROXY = 0,
         /**
          * Used to be {@link Gio.DBusProxy} object for DBus.Properties, now always `null`
          */
-        PROPERTIES,
+        PROPERTIES = 1,
         /**
          * a string representing a Bluetooth address
          */
-        ADDRESS,
+        ADDRESS = 2,
         /**
          * a string to use for display (the name of the device, or its address if the name is not known). Only available for devices.
          */
-        ALIAS,
+        ALIAS = 3,
         /**
          * a string representing the device or adapter's name
          */
-        NAME,
+        NAME = 4,
         /**
          * the {@link GnomeBluetooth.Type} of the device. Only available for devices.
          */
-        TYPE,
+        TYPE = 5,
         /**
          * a string representing the icon name for the device. Only available for devices.
          */
-        ICON,
+        ICON = 6,
         /**
          * whether the adapter is the default one. Only available for adapters.
          */
-        DEFAULT,
+        DEFAULT = 7,
         /**
          * whether the device is paired to its parent adapter. Only available for devices.
          */
-        PAIRED,
+        PAIRED = 8,
         /**
          * whether the device is trusted. Only available for devices.
          */
-        TRUSTED,
+        TRUSTED = 9,
         /**
          * whether the device is connected. Only available for devices.
          */
-        CONNECTED,
+        CONNECTED = 10,
         /**
          * whether the adapter is discoverable/visible. Only available for adapters.
          */
-        DISCOVERABLE,
+        DISCOVERABLE = 11,
         /**
          * whether the adapter is discovering. Only available for adapters.
          */
-        DISCOVERING,
+        DISCOVERING = 12,
         /**
          * whether the device does not support Bluetooth 2.1 Simple Secure Pairing. Only available for devices.
          */
-        LEGACYPAIRING,
+        LEGACYPAIRING = 13,
         /**
          * whether the adapter is powered. Only available for adapters.
          */
-        POWERED,
+        POWERED = 14,
         /**
          * an array of service names and {@link GnomeBluetooth.Status} connection statuses.
          */
-        SERVICES,
+        SERVICES = 15,
         /**
          * a string array of human-readable UUIDs.
          */
-        UUIDS,
+        UUIDS = 16,
     }
 
 
@@ -144,89 +144,167 @@ export namespace GnomeBluetooth {
         /**
          * whether the status has been set yet
          */
-        INVALID,
+        INVALID = 0,
         /**
          * whether the service is disconnected
          */
-        DISCONNECTED,
+        DISCONNECTED = 1,
         /**
          * whether the service is connected
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * whether the service is connecting
          */
-        CONNECTING,
+        CONNECTING = 3,
         /**
          * whether the service is playing (only used by the audio service)
          */
-        PLAYING,
+        PLAYING = 4,
     }
 
 
     /**
      * A convenience value used to select the first device regardless of its address.
+     * @default 00:00:00:00:00:00
      */
     const CHOOSER_COMBO_FIRST_DEVICE: string;
 
     /**
      * Use this value to select any Bluetooth audio device where a {@link GnomeBluetooth.Type} enum is required.
+     * @default 1048800
      */
     const TYPE_AUDIO: number;
 
     /**
      * Use this value to select any Bluetooth input device where a {@link GnomeBluetooth.Type} enum is required.
+     * @default 13056
      */
     const TYPE_INPUT: number;
 
+    /**
+     * @default 4365
+     */
     const UUID_A2DP: number;
 
+    /**
+     * @default 4363
+     */
     const UUID_A2DP_SINK: number;
 
+    /**
+     * @default 4362
+     */
     const UUID_A2DP_SOURCE: number;
 
+    /**
+     * @default 4366
+     */
     const UUID_AVRCP_CONTROL: number;
 
+    /**
+     * @default 4364
+     */
     const UUID_AVRCP_TARGET: number;
 
+    /**
+     * @default 4355
+     */
     const UUID_DUN: number;
 
+    /**
+     * @default 4358
+     */
     const UUID_FTP: number;
 
+    /**
+     * @default 4611
+     */
     const UUID_GENERIC_AUDIO: number;
 
+    /**
+     * @default 4609
+     */
     const UUID_GENERIC_NET: number;
 
+    /**
+     * @default 4383
+     */
     const UUID_HFP_AG: number;
 
+    /**
+     * @default 4382
+     */
     const UUID_HFP_HF: number;
 
+    /**
+     * @default 4388
+     */
     const UUID_HID: number;
 
+    /**
+     * @default 4360
+     */
     const UUID_HSP: number;
 
+    /**
+     * @default 4370
+     */
     const UUID_HSP_AG: number;
 
+    /**
+     * @default 4356
+     */
     const UUID_IRMC: number;
 
+    /**
+     * @default 4357
+     */
     const UUID_OPP: number;
 
+    /**
+     * @default 4375
+     */
     const UUID_PAN_GN: number;
 
+    /**
+     * @default 4374
+     */
     const UUID_PAN_NAP: number;
 
+    /**
+     * @default 4373
+     */
     const UUID_PAN_PANU: number;
 
+    /**
+     * @default 4399
+     */
     const UUID_PBAP: number;
 
+    /**
+     * @default 4608
+     */
     const UUID_PNP: number;
 
+    /**
+     * @default 4397
+     */
     const UUID_SAP: number;
 
+    /**
+     * @default 4096
+     */
     const UUID_SDP: number;
 
+    /**
+     * @default 4353
+     */
     const UUID_SPP: number;
 
+    /**
+     * @default 4867
+     */
     const UUID_VDP_SOURCE: number;
 
     /**
@@ -290,87 +368,87 @@ export namespace GnomeBluetooth {
         /**
          * any device, or a device of an unknown type
          */
-        ANY,
+        ANY = 1,
         /**
          * a telephone (usually a cell/mobile phone)
          */
-        PHONE,
+        PHONE = 2,
         /**
          * a modem
          */
-        MODEM,
+        MODEM = 4,
         /**
          * a computer, can be a laptop, a wearable computer, etc.
          */
-        COMPUTER,
+        COMPUTER = 8,
         /**
          * a network device, such as a router
          */
-        NETWORK,
+        NETWORK = 16,
         /**
          * a headset (usually a hands-free device)
          */
-        HEADSET,
+        HEADSET = 32,
         /**
          * headphones (covers two ears)
          */
-        HEADPHONES,
+        HEADPHONES = 64,
         /**
          * another type of audio device
          */
-        OTHER_AUDIO,
+        OTHER_AUDIO = 128,
         /**
          * a keyboard
          */
-        KEYBOARD,
+        KEYBOARD = 256,
         /**
          * a mouse
          */
-        MOUSE,
+        MOUSE = 512,
         /**
          * a camera (still or moving)
          */
-        CAMERA,
+        CAMERA = 1024,
         /**
          * a printer
          */
-        PRINTER,
+        PRINTER = 2048,
         /**
          * a joypad, joystick, or other game controller
          */
-        JOYPAD,
+        JOYPAD = 4096,
         /**
          * a drawing tablet
          */
-        TABLET,
+        TABLET = 8192,
         /**
          * a video device, such as a webcam
          */
-        VIDEO,
+        VIDEO = 16384,
         /**
          * a remote control
          */
-        REMOTE_CONTROL,
+        REMOTE_CONTROL = 32768,
         /**
          * a scanner
          */
-        SCANNER,
+        SCANNER = 65536,
         /**
          * a display
          */
-        DISPLAY,
+        DISPLAY = 131072,
         /**
          * a wearable computer
          */
-        WEARABLE,
+        WEARABLE = 262144,
         /**
          * a toy or game
          */
-        TOY,
+        TOY = 524288,
         /**
          * audio speaker or speakers
          */
-        SPEAKERS,
+        SPEAKERS = 1048576,
     }
 
 
@@ -383,14 +461,14 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "selected-device-activated": (arg0: string) => void;
+            "selected-device-activated": (address: string) => void;
             /**
              * The {@link GnomeBluetooth.Chooser.SignalSignatures.selected_device_changed | GnomeBluetooth.Chooser::selected-device-changed} signal is launched when the
              * selected device is changed, it will be `null` if a device was unselected.
              * @signal
              * @run-last
              */
-            "selected-device-changed": (arg0: string) => void;
+            "selected-device-changed": (address: string) => void;
             "notify::device-selected": (pspec: GObject.ParamSpec) => void;
             "notify::device-service-filter": (pspec: GObject.ParamSpec) => void;
             "notify::device-type-filter": (pspec: GObject.ParamSpec) => void;
@@ -748,7 +826,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "chooser-created": (arg0: GObject.Object) => void;
+            "chooser-created": (chooser: GObject.Object) => void;
             "notify::device": (pspec: GObject.ParamSpec) => void;
             "notify::is-available": (pspec: GObject.ParamSpec) => void;
             "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
@@ -1264,7 +1342,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "chooser-created": (arg0: GObject.Object) => void;
+            "chooser-created": (chooser: GObject.Object) => void;
             "notify::chooser": (pspec: GObject.ParamSpec) => void;
             "notify::device": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -1405,7 +1483,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: string) => void;
+            "device-removed": (device: string) => void;
             "notify::default-adapter": (pspec: GObject.ParamSpec) => void;
             "notify::default-adapter-discoverable": (pspec: GObject.ParamSpec) => void;
             "notify::default-adapter-discovering": (pspec: GObject.ParamSpec) => void;
@@ -1573,6 +1651,7 @@ export namespace GnomeBluetooth {
          * Finishes the connection operation. See `bluetooth_client_connect_service()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if the connection operation succeeded, `false` otherwise.
+         * @throws GLib.Error
          */
         connect_service_finish(res: Gio.AsyncResult): boolean;
 
@@ -1815,7 +1894,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "panel-changed": (arg0: string) => void;
+            "panel-changed": (panel: string) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;

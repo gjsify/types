@@ -71,15 +71,15 @@ export namespace GstGL {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * slow
          */
-        SLOW,
+        SLOW = 1,
         /**
          * non-conformant
          */
-        NON_CONFORMANT,
+        NON_CONFORMANT = 2,
     }
 
 
@@ -144,83 +144,83 @@ export namespace GstGL {
          * Single component replicated across R, G, and B textures
          *                    components
          */
-        LUMINANCE,
+        LUMINANCE = 6409,
         /**
          * Single component stored in the A texture component
          */
-        ALPHA,
+        ALPHA = 6406,
         /**
          * Combination of #GST_GL_LUMINANCE and #GST_GL_ALPHA
          */
-        LUMINANCE_ALPHA,
+        LUMINANCE_ALPHA = 6410,
         /**
          * Single component stored in the R texture component
          */
-        RED,
+        RED = 6403,
         /**
          * Single 8-bit component stored in the R texture component
          */
-        R8,
+        R8 = 33321,
         /**
          * Two components stored in the R and G texture components
          */
-        RG,
+        RG = 33319,
         /**
          * Two 8-bit components stored in the R and G texture components
          */
-        RG8,
+        RG8 = 33323,
         /**
          * Three components stored in the R, G, and B texture components
          */
-        RGB,
+        RGB = 6407,
         /**
          * Three 8-bit components stored in the R, G, and B
          *               texture components
          */
-        RGB8,
+        RGB8 = 32849,
         /**
          * Three components of bit depth 5, 6 and 5 stored in the R, G,
          *                 and B texture components respectively.
          */
-        RGB565,
+        RGB565 = 36194,
         /**
          * Three 16-bit components stored in the R, G, and B
          *               texture components
          */
-        RGB16,
+        RGB16 = 32852,
         /**
          * Four components stored in the R, G, B, and A texture
          *               components respectively.
          */
-        RGBA,
+        RGBA = 6408,
         /**
          * Four 8-bit components stored in the R, G, B, and A texture
          *                components respectively.
          */
-        RGBA8,
+        RGBA8 = 32856,
         /**
          * Four 16-bit components stored in the R, G, B, and A texture
          *                components respectively.
          */
-        RGBA16,
+        RGBA16 = 32859,
         /**
          * A single 16-bit component for depth information.
          */
-        DEPTH_COMPONENT16,
+        DEPTH_COMPONENT16 = 33189,
         /**
          * A 24-bit component for depth information and
          *                           a 8-bit component for stencil informat.
          */
-        DEPTH24_STENCIL8,
-        RGB10_A2,
+        DEPTH24_STENCIL8 = 35056,
+        RGB10_A2 = 32857,
         /**
          * Single 16-bit component stored in the R texture component
          */
-        R16,
+        R16 = 33322,
         /**
          * Two 16-bit components stored in the R and G texture components
          */
-        RG16,
+        RG16 = 33324,
     }
 
 
@@ -238,15 +238,15 @@ export namespace GstGL {
         /**
          * no query
          */
-        NONE,
+        NONE = 0,
         /**
          * query the time elapsed
          */
-        TIME_ELAPSED,
+        TIME_ELAPSED = 1,
         /**
          * query the current time
          */
-        TIMESTAMP,
+        TIMESTAMP = 2,
     }
 
 
@@ -391,15 +391,15 @@ export namespace GstGL {
         /**
          * Dubois optimised Green-Magenta anaglyph
          */
-        GREEN_MAGENTA_DUBOIS,
+        GREEN_MAGENTA_DUBOIS = 0,
         /**
          * Dubois optimised Red-Cyan anaglyph
          */
-        RED_CYAN_DUBOIS,
+        RED_CYAN_DUBOIS = 1,
         /**
          * Dubois optimised Amber-Blue anaglyph
          */
-        AMBER_BLUE_DUBOIS,
+        AMBER_BLUE_DUBOIS = 2,
     }
 
 
@@ -423,21 +423,21 @@ export namespace GstGL {
         /**
          * no texture target
          */
-        NONE,
+        NONE = 0,
         /**
          * 2D texture target (`GL_TEXTURE_2D`)
          */
-        "2D",
+        "2D" = 1,
         /**
          * rectangle texture target
          *     (`GL_TEXTURE_RECTANGLE`)
          */
-        RECTANGLE,
+        RECTANGLE = 2,
         /**
          * external oes texture target
          *     (`GL_TEXTURE_EXTERNAL_OES`)
          */
-        EXTERNAL_OES,
+        EXTERNAL_OES = 3,
     }
 
 
@@ -455,23 +455,23 @@ export namespace GstGL {
         /**
          * No further processing required
          */
-        DONE,
+        DONE = 1,
         /**
          * An unspecified error occurred
          */
-        ERROR,
+        ERROR = -1,
         /**
          * The configuration is unsupported.
          */
-        UNSUPPORTED,
+        UNSUPPORTED = -2,
         /**
          * This element requires a reconfiguration.
          */
-        RECONFIGURE,
+        RECONFIGURE = -3,
         /**
          * private return value.
          */
-        UNSHARED_GL_CONTEXT,
+        UNSHARED_GL_CONTEXT = -100,
     }
 
 
@@ -508,104 +508,124 @@ export namespace GstGL {
     /**
      * An option that can be activated on bufferpools to request OpenGL
      * synchronization metadata on buffers from the pool.
+     * @default GstBufferPoolOptionGLSyncMeta
      */
     const BUFFER_POOL_OPTION_GL_SYNC_META: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.2D} as a {@link Gst.BufferPool} pool option
+     * @default GstBufferPoolOptionGLTextureTarget2D
      */
     const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.EXTERNAL_OES} as a {@link Gst.BufferPool} pool option
+     * @default GstBufferPoolOptionGLTextureTargetExternalOES
      */
     const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.RECTANGLE} as a {@link Gst.BufferPool} pool option
+     * @default GstBufferPoolOptionGLTextureTargetRectangle
      */
     const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE: string;
 
     /**
      * Name of the caps feature indicating the use of GL buffers
+     * @default memory:GLBuffer
      */
     const CAPS_FEATURE_MEMORY_GL_BUFFER: string;
 
     /**
      * Name of the caps feature for indicating the use of {@link GstGL.GLMemory}
+     * @default memory:GLMemory
      */
     const CAPS_FEATURE_MEMORY_GL_MEMORY: string;
 
     /**
      * GL Allocation flag indicating that the implementation should allocate the
      * necessary resources.
+     * @default 1
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_ALLOC: number;
 
     /**
      * GL allocation flag indicating the allocation of a GL buffer.
+     * @default 16
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_BUFFER: number;
 
     /**
      * Values >= than #GST_GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER can be used for
      * user-defined purposes.
+     * @default 65536
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_USER: number;
 
     /**
      * GL allocation flag indicating the allocation of 2D video frames
+     * @default 8
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_VIDEO: number;
 
     /**
      * GL Allocation flag for using the provided GPU handle as storage.
+     * @default 4
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_GPU_HANDLE: number;
 
     /**
      * GL Allocation flag for using the provided system memory data as storage.
+     * @default 2
      */
     const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM: number;
 
     /**
      * The name for {@link GstGL.GLAPI.GLES1} used in various places
+     * @default gles1
      */
     const GL_API_GLES1_NAME: string;
 
     /**
      * The name for {@link GstGL.GLAPI.GLES2} used in various places
+     * @default gles2
      */
     const GL_API_GLES2_NAME: string;
 
     /**
      * The name for {@link GstGL.GLAPI.OPENGL3} used in various places
+     * @default opengl3
      */
     const GL_API_OPENGL3_NAME: string;
 
     /**
      * The name for {@link GstGL.GLAPI.OPENGL} used in various places
+     * @default opengl
      */
     const GL_API_OPENGL_NAME: string;
 
     /**
      * The name of the GL buffer allocator
      * @since 1.8
+     * @default GLBaseMemory
      */
     const GL_BASE_MEMORY_ALLOCATOR_NAME: string;
 
     /**
      * The name of the GL buffer allocator
+     * @default GLBuffer
      */
     const GL_BUFFER_ALLOCATOR_NAME: string;
 
     /**
      * The currently supported formats that can be converted
+     * @default { RGBA, RGB, RGBx, BGR, BGRx, BGRA, xRGB, xBGR, ARGB, ABGR, GBRA, GBR, RGBP, BGRP, Y444, I420, YV12, Y42B, Y41B, NV12, NV21, NV16, NV61, NV24, YUY2, UYVY, Y210, AYUV, VUYA, Y410, A444, A422, GRAY8, GRAY16_LE, GRAY16_BE, RGB16, BGR16, ARGB64, A420, AV12, NV12_16L32S, NV12_4L4, RBGA, v210
      */
     const GL_COLOR_CONVERT_FORMATS: string;
 
     /**
      * The currently supported {@link Gst.Caps} that can be converted
+     * @default video/x-raw(
      */
     const GL_COLOR_CONVERT_VIDEO_CAPS: string;
 
@@ -613,56 +633,80 @@ export namespace GstGL {
      * The canonical name of a {@link Gst.Structure} that contains a configuration for a
      * {@link GstGL.GLContext}.
      * @since 1.20
+     * @default gst-gl-context-config
      */
     const GL_CONFIG_STRUCTURE_NAME: string;
 
+    /**
+     * @default gst.gl.context.CGL
+     */
     const GL_CONTEXT_TYPE_CGL: string;
 
+    /**
+     * @default gst.gl.context.EAGL
+     */
     const GL_CONTEXT_TYPE_EAGL: string;
 
+    /**
+     * @default gst.gl.context.EGL
+     */
     const GL_CONTEXT_TYPE_EGL: string;
 
+    /**
+     * @default gst.gl.context.GLX
+     */
     const GL_CONTEXT_TYPE_GLX: string;
 
+    /**
+     * @default gst.gl.context.WGL
+     */
     const GL_CONTEXT_TYPE_WGL: string;
 
     /**
      * The name used in {@link Gst.Context} queries for requesting a {@link GstGL.GLDisplay}
+     * @default gst.gl.GLDisplay
      */
     const GL_DISPLAY_CONTEXT_TYPE: string;
 
     /**
      * The name of the GL memory allocator
+     * @default GLMemory
      */
     const GL_MEMORY_ALLOCATOR_NAME: string;
 
     /**
      * The name of the GL Memory PBO allocator
+     * @default GLMemoryPBO
      */
     const GL_MEMORY_PBO_ALLOCATOR_NAME: string;
 
     /**
      * List of video formats that are supported by {@link GstGL.GLMemory}
+     * @default { RGBA, BGRA, RGBx, BGRx, ARGB, ABGR, xRGB, xBGR, GBRA, GBR, RGBP, BGRP, RGB, BGR, RGB16, BGR16, AYUV, VUYA, A444, A422, Y410, I420, YV12, NV12, NV21, NV16, NV61, NV24, YUY2, UYVY, Y210, Y41B, Y42B, Y444, GRAY8, GRAY16_LE, GRAY16_BE, ARGB64, A420, AV12, NV12_16L32S, NV12_4L4, RBGA, v210
      */
     const GL_MEMORY_VIDEO_FORMATS_STR: string;
 
     /**
      * The name of the GL renderbuffer allocator
+     * @default GLRenderbuffer
      */
     const GL_RENDERBUFFER_ALLOCATOR_NAME: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.2D} in things like caps values
+     * @default 2D
      */
     const GL_TEXTURE_TARGET_2D_STR: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.EXTERNAL_OES} in things like caps values
+     * @default external-oes
      */
     const GL_TEXTURE_TARGET_EXTERNAL_OES_STR: string;
 
     /**
      * String used for {@link GstGL.GLTextureTarget.RECTANGLE} in things like caps values
+     * @default rectangle
      */
     const GL_TEXTURE_TARGET_RECTANGLE_STR: string;
 
@@ -672,6 +716,7 @@ export namespace GstGL {
      * Combining #GST_MAP_GL with #GST_MAP_WRITE has the same semantics as though
      * you are writing to OpenGL. Conversely, combining #GST_MAP_GL with
      * #GST_MAP_READ has the same semantics as though you are reading from OpenGL.
+     * @default 131072
      */
     const MAP_GL: number;
 
@@ -1320,28 +1365,28 @@ export namespace GstGL {
         /**
          * no API
          */
-        NONE,
+        NONE = 0,
         /**
          * Desktop OpenGL up to and including 3.1.  The
          *                    compatibility profile when the OpenGL version is >= 3.2
          */
-        OPENGL,
+        OPENGL = 1,
         /**
          * Desktop OpenGL >= 3.2 core profile
          */
-        OPENGL3,
+        OPENGL3 = 2,
         /**
          * OpenGL ES 1.x
          */
-        GLES1,
+        GLES1 = 32768,
         /**
          * OpenGL ES 2.x and 3.x
          */
-        GLES2,
+        GLES2 = 65536,
         /**
          * Any OpenGL API
          */
-        ANY,
+        ANY = 4294967295,
     }
 
 
@@ -1360,12 +1405,12 @@ export namespace GstGL {
          * the texture needs downloading
          *                                             to the data pointer
          */
-        DOWNLOAD,
+        DOWNLOAD = 1048576,
         /**
          * the data pointer needs uploading
          *                                             to the texture
          */
-        UPLOAD,
+        UPLOAD = 2097152,
     }
 
 
@@ -1384,19 +1429,19 @@ export namespace GstGL {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * window
          */
-        WINDOW,
+        WINDOW = 1,
         /**
          * pbuffer
          */
-        PBUFFER,
+        PBUFFER = 2,
         /**
          * pixmap
          */
-        PIXMAP,
+        PIXMAP = 4,
     }
 
 
@@ -1414,64 +1459,69 @@ export namespace GstGL {
         /**
          * no display type
          */
-        NONE,
+        NONE = 0,
         /**
          * X11 display
          */
-        X11,
+        X11 = 1,
         /**
          * Wayland display
          */
-        WAYLAND,
+        WAYLAND = 2,
         /**
          * Cocoa display
          */
-        COCOA,
+        COCOA = 4,
         /**
          * Win32 display
          */
-        WIN32,
+        WIN32 = 8,
         /**
          * Dispmanx display
          */
-        DISPMANX,
+        DISPMANX = 16,
         /**
          * EGL display
          */
-        EGL,
+        EGL = 32,
         /**
          * Vivante Framebuffer display
          */
-        VIV_FB,
+        VIV_FB = 64,
         /**
          * Mesa3D GBM display
          */
-        GBM,
+        GBM = 128,
         /**
          * EGLDevice display.
+         * @since 1.18
          */
-        EGL_DEVICE,
+        EGL_DEVICE = 256,
         /**
          * EAGL display.
+         * @since 1.20
          */
-        EAGL,
+        EAGL = 512,
         /**
          * WinRT display.
+         * @since 1.20
          */
-        WINRT,
+        WINRT = 1024,
         /**
          * Android display.
+         * @since 1.20
          */
-        ANDROID,
+        ANDROID = 2048,
         /**
          * Mesa3D surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA
          * extension.
+         * @since 1.24
          */
-        EGL_SURFACELESS,
+        EGL_SURFACELESS = 4096,
         /**
          * any display type
          */
-        ANY,
+        ANY = 4294967295,
     }
 
 
@@ -1489,21 +1539,25 @@ export namespace GstGL {
     enum GLDrmFormatFlags {
         /**
          * include external-only formats
+         * @since 1.26
          */
-        INCLUDE_EXTERNAL,
+        INCLUDE_EXTERNAL = 1,
         /**
          * only include formats with linear modifier
+         * @since 1.26
          */
-        LINEAR_ONLY,
+        LINEAR_ONLY = 2,
         /**
          * include emulated formats
+         * @since 1.26
          */
-        INCLUDE_EMULATED,
+        INCLUDE_EMULATED = 4,
         /**
          * EGL is responsible for the colorspace conversion. In this case, all
          * supported modifiers get translated to RGBA.
+         * @since 1.28
          */
-        DIRECT_IMPORT,
+        DIRECT_IMPORT = 8,
     }
 
 
@@ -1521,32 +1575,32 @@ export namespace GstGL {
         /**
          * no platform
          */
-        NONE,
+        NONE = 0,
         /**
          * the EGL platform used primarily with the X11, wayland
          *                      and android window systems as well as on embedded Linux
          */
-        EGL,
+        EGL = 1,
         /**
          * the GLX platform used primarily with the X11 window system
          */
-        GLX,
+        GLX = 2,
         /**
          * the WGL platform used primarily on Windows
          */
-        WGL,
+        WGL = 4,
         /**
          * the CGL platform used primarily on OS X
          */
-        CGL,
+        CGL = 8,
         /**
          * the EAGL platform used primarily on iOS
          */
-        EAGL,
+        EAGL = 16,
         /**
          * any OpenGL platform
          */
-        ANY,
+        ANY = 4294967295,
     }
 
 
@@ -1566,23 +1620,23 @@ export namespace GstGL {
         /**
          * no profile supported/available
          */
-        NONE,
+        NONE = 0,
         /**
          * OpenGL|ES profile
          */
-        ES,
+        ES = 1,
         /**
          * OpenGL core profile
          */
-        CORE,
+        CORE = 2,
         /**
          * OpenGL compatibility profile
          */
-        COMPATIBILITY,
+        COMPATIBILITY = 4,
         /**
          * any OpenGL/OpenGL|ES profile
          */
-        ANY,
+        ANY = 4294967295,
     }
 
 
@@ -2558,6 +2612,7 @@ export namespace GstGL {
          * @param other_context a {@link GstGL.GLContext} to share OpenGL objects with
          * @returns whether the context could successfully be created
          * @since 1.4
+         * @throws GLib.Error
          */
         create(other_context: GLContext | null): boolean;
 
@@ -2575,6 +2630,7 @@ export namespace GstGL {
          * context in the current thread.  Typically used with wrapped contexts to
          * allow wrapped contexts to be used as regular {@link GstGL.GLContext}'s.
          * @since 1.6
+         * @throws GLib.Error
          */
         fill_info(): boolean;
 
@@ -2765,7 +2821,7 @@ export namespace GstGL {
              * @signal
              * @run-last
              */
-            "create-context": (arg0: GLContext) => GLContext | null;
+            "create-context": (context: GLContext) => GLContext | null;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -2856,6 +2912,7 @@ export namespace GstGL {
          * @param other_context other {@link GstGL.GLContext} to share resources with.
          * @returns whether a new context could be created.
          * @since 1.6
+         * @throws GLib.Error
          */
         create_context(other_context: GLContext | null): [boolean, GLContext];
 
@@ -2871,6 +2928,7 @@ export namespace GstGL {
          * @param context the resulting {@link GstGL.GLContext}
          * @returns wether `context` contains a valid context.
          * @since 1.24
+         * @throws GLib.Error
          */
         ensure_context(other_context: GLContext | null, context: GLContext | null): [boolean, GLContext | null];
 
@@ -3647,6 +3705,7 @@ export namespace GstGL {
         /**
          * @returns whether the compilation succeeded
          * @since 1.8
+         * @throws GLib.Error
          */
         compile(): boolean;
 
@@ -3824,6 +3883,7 @@ export namespace GstGL {
          * @param stage a {@link GstGL.GLSLStage} to attach
          * @returns whether `stage` could be compiled and attached to `shader`
          * @since 1.8
+         * @throws GLib.Error
          */
         compile_attach_stage(stage: GLSLStage): boolean;
 
@@ -3872,6 +3932,7 @@ export namespace GstGL {
          * Note: must be called in the GL thread
          * @returns whether `shader` could be linked together.
          * @since 1.8
+         * @throws GLib.Error
          */
         link(): boolean;
 
@@ -4433,21 +4494,21 @@ export namespace GstGL {
              * @since 1.6
              * @run-last
              */
-            "key-event": (arg0: string, arg1: string) => void;
+            "key-event": (id: string, key: string) => void;
             /**
              * Will be emitted when a mouse event is received by the GstGLwindow.
              * @signal
              * @since 1.6
              * @run-last
              */
-            "mouse-event": (arg0: string, arg1: number, arg2: number, arg3: number) => void;
+            "mouse-event": (id: string, button: number, x: number, y: number) => void;
             /**
              * Will be emitted when a mouse scroll event is received by the GstGLwindow.
              * @signal
              * @since 1.18
              * @run-last
              */
-            "scroll-event": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "scroll-event": (x: number, y: number, delta_x: number, delta_y: number) => void;
             /**
              * Will be emitted when the window handle has been set into the native
              * implementation, but before the context is re-activated. By using this

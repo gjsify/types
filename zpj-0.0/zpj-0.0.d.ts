@@ -69,23 +69,23 @@ export namespace Zpj {
         /**
          * A file.
          */
-        FILE,
+        FILE = 0,
         /**
          * A folder.
          */
-        FOLDER,
+        FOLDER = 1,
         /**
          * A photo.
          */
-        PHOTO,
+        PHOTO = 2,
         /**
          * A video.
          */
-        VIDEO,
+        VIDEO = 3,
         /**
          * Invalid or unknown object.
          */
-        INVALID,
+        INVALID = 4,
     }
 
 
@@ -101,11 +101,11 @@ export namespace Zpj {
         /**
          * Smallest possible size.
          */
-        SMALL,
+        SMALL = 0,
         /**
          * The default.
          */
-        NORMAL,
+        NORMAL = 1,
     }
 
 
@@ -114,6 +114,7 @@ export namespace Zpj {
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Documents folder. It can be used as
      * the {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
+     * @default me/skydrive/my_documents
      */
     const SKYDRIVE_FOLDER_MY_DOCUMENTS: string;
 
@@ -122,6 +123,7 @@ export namespace Zpj {
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Pictures folder. It can be used as the
      * {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
+     * @default me/skydrive/my_photos
      */
     const SKYDRIVE_FOLDER_MY_PHOTOS: string;
 
@@ -130,6 +132,7 @@ export namespace Zpj {
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Public folder. It can be used as the
      * {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
+     * @default me/skydrive/public_documents
      */
     const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string;
 
@@ -138,6 +141,7 @@ export namespace Zpj {
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Skydrive top-level folder. It can be
      * used as the {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
+     * @default me/skydrive
      */
     const SKYDRIVE_FOLDER_SKYDRIVE: string;
 
@@ -297,6 +301,7 @@ export namespace Zpj {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -349,6 +354,7 @@ export namespace Zpj {
          * `zpj_authorizer_refresh_authorization_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization_finish(res: Gio.AsyncResult): boolean;
 
@@ -453,6 +459,7 @@ export namespace Zpj {
         /**
          * @param folder 
          * @param cancellable 
+         * @throws GLib.Error
          */
         create_folder(folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean;
 
@@ -460,6 +467,7 @@ export namespace Zpj {
          * @param name 
          * @param parent_id 
          * @param cancellable 
+         * @throws GLib.Error
          */
         create_folder_from_name(name: string, parent_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -470,6 +478,7 @@ export namespace Zpj {
          * @param entry_id The ID of the {@link Zpj.SkydriveEntry} to be deleted.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveEntry} was deleted successfully.
+         * @throws GLib.Error
          */
         delete_entry_id(entry_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -484,6 +493,7 @@ export namespace Zpj {
          * @param path The destination.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
+         * @throws GLib.Error
          */
         download_file_id_to_path(file_id: string, path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -497,6 +507,7 @@ export namespace Zpj {
          * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         download_file_id_to_stream(file_id: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -552,6 +563,7 @@ export namespace Zpj {
          * `zpj_skydrive_download_file_id_to_stream_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         download_file_id_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
 
@@ -566,6 +578,7 @@ export namespace Zpj {
          * @param path The destination.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
+         * @throws GLib.Error
          */
         download_file_to_path(file: SkydriveFile, path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -577,6 +590,7 @@ export namespace Zpj {
          * @param file The {@link Zpj.SkydriveFile} to be downloaded.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         download_file_to_stream(file: SkydriveFile, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -629,6 +643,7 @@ export namespace Zpj {
          * `zpj_skydrive_download_file_to_stream_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         download_file_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
 
@@ -645,6 +660,7 @@ export namespace Zpj {
          * @param folder The {@link Zpj.SkydriveFolder} to be listed.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         list_folder(folder: SkydriveFolder, cancellable: Gio.Cancellable | null): SkydriveEntry[];
 
@@ -656,6 +672,7 @@ export namespace Zpj {
          * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}, or `null` on error. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         list_folder_id(folder_id: string, cancellable: Gio.Cancellable | null): SkydriveEntry[];
 
@@ -711,6 +728,7 @@ export namespace Zpj {
          * `zpj_skydrive_list_folder_id_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}, or `null` on error. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         list_folder_id_finish(res: Gio.AsyncResult): SkydriveEntry[];
 
@@ -723,6 +741,7 @@ export namespace Zpj {
          * @param id An ID to be queried.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A new {@link Zpj.SkydriveEntry}. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         query_info_from_id(id: string, cancellable: Gio.Cancellable | null): SkydriveEntry;
 
@@ -778,6 +797,7 @@ export namespace Zpj {
          * `zpj_skydrive_query_info_from_id_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns A new {@link Zpj.SkydriveEntry}. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         query_info_from_id_finish(res: Gio.AsyncResult): SkydriveEntry;
 
@@ -804,6 +824,7 @@ export namespace Zpj {
          * @param size The thumbnail size.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns A {@link Gio.InputStream} to read the thumbnail data from. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         thumbnail_file_id_to_stream(file_id: string, size: ThumbnailSize, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -815,6 +836,7 @@ export namespace Zpj {
          * @param folder The destination {@link Zpj.SkydriveFolder}.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the file was uploaded successfully.
+         * @throws GLib.Error
          */
         upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean;
 
@@ -827,6 +849,7 @@ export namespace Zpj {
          * @param folder_id The ID of the destination {@link Zpj.SkydriveFolder}.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the file was uploaded successfully.
+         * @throws GLib.Error
          */
         upload_path_to_folder_id(path: string, folder_id: string, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1590,6 +1613,7 @@ export namespace Zpj {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1642,6 +1666,7 @@ export namespace Zpj {
          * `zpj_authorizer_refresh_authorization_async()`.
          * @param res A {@link Gio.AsyncResult}.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization_finish(res: Gio.AsyncResult): boolean;
     }

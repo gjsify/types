@@ -47,11 +47,11 @@ export namespace GtkSource {
         /**
          * no pattern
          */
-        NONE,
+        NONE = 0,
         /**
          * grid pattern
          */
-        GRID,
+        GRID = 1,
     }
 
 
@@ -69,20 +69,20 @@ export namespace GtkSource {
         /**
          * there is no bracket to match.
          */
-        NONE,
+        NONE = 0,
         /**
          * matching a bracket
          *  failed because the maximum range was reached.
          */
-        OUT_OF_RANGE,
+        OUT_OF_RANGE = 1,
         /**
          * a matching bracket was not found.
          */
-        NOT_FOUND,
+        NOT_FOUND = 2,
         /**
          * a matching bracket was found.
          */
-        FOUND,
+        FOUND = 3,
     }
 
 
@@ -101,19 +101,19 @@ export namespace GtkSource {
         /**
          * change case to lowercase.
          */
-        LOWER,
+        LOWER = 0,
         /**
          * change case to uppercase.
          */
-        UPPER,
+        UPPER = 1,
         /**
          * toggle case of each character.
          */
-        TOGGLE,
+        TOGGLE = 2,
         /**
          * capitalize each word.
          */
-        TITLE,
+        TITLE = 3,
     }
 
 
@@ -161,11 +161,11 @@ export namespace GtkSource {
         /**
          * plain text.
          */
-        NONE,
+        NONE = 0,
         /**
          * gzip compression.
          */
-        GZIP,
+        GZIP = 1,
     }
 
 
@@ -246,15 +246,15 @@ export namespace GtkSource {
         /**
          * The full cell.
          */
-        CELL,
+        CELL = 0,
         /**
          * The first line.
          */
-        FIRST,
+        FIRST = 1,
         /**
          * The last line.
          */
-        LAST,
+        LAST = 2,
     }
 
 
@@ -273,16 +273,16 @@ export namespace GtkSource {
         /**
          * line feed, used on UNIX.
          */
-        LF,
+        LF = 0,
         /**
          * carriage return, used on Mac.
          */
-        CR,
+        CR = 1,
         /**
          * carriage return followed by a line feed, used
          *   on Windows.
          */
-        CR_LF,
+        CR_LF = 2,
     }
 
 
@@ -300,24 +300,24 @@ export namespace GtkSource {
         /**
          * smart-home-end disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * move to the first/last
          * non-whitespace character on the first press of the HOME/END keys and
          * to the beginning/end of the line on the second press.
          */
-        BEFORE,
+        BEFORE = 1,
         /**
          * move to the beginning/end of the
          * line on the first press of the HOME/END keys and to the first/last
          * non-whitespace character on the second press.
          */
-        AFTER,
+        AFTER = 2,
         /**
          * always move to the first/last
          * non-whitespace character when the HOME/END keys are pressed.
          */
-        ALWAYS,
+        ALWAYS = 3,
     }
 
 
@@ -336,12 +336,12 @@ export namespace GtkSource {
          * the gutter position of the lines
          * renderer
          */
-        LINES,
+        LINES = -30,
         /**
          * the gutter position of the marks
          * renderer
          */
-        MARKS,
+        MARKS = -20,
     }
 
 
@@ -444,19 +444,19 @@ export namespace GtkSource {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Interactive activation. By
          * default, it occurs on each insertion in the {@link Gtk.TextBuffer}. This can be
          * blocked temporarily with `gtk_source_completion_block_interactive()`.
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
         /**
          * User requested activation.
          * By default, it occurs when the user presses
          * <keycombo><keycap>Control</keycap><keycap>space</keycap></keycombo>.
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 2,
     }
 
 
@@ -479,37 +479,37 @@ export namespace GtkSource {
         /**
          * whether the space character should be drawn.
          */
-        SPACE,
+        SPACE = 1,
         /**
          * whether the tab character should be drawn.
          */
-        TAB,
+        TAB = 2,
         /**
          * whether the line breaks should be drawn. If
          *   the {@link GtkSource.Buffer.implicit_trailing_newline} property is `true`, a line
          *   break is also drawn at the end of the buffer.
          */
-        NEWLINE,
+        NEWLINE = 4,
         /**
          * whether the non-breaking whitespaces should be drawn.
          */
-        NBSP,
+        NBSP = 8,
         /**
          * whether leading whitespaces should be drawn.
          */
-        LEADING,
+        LEADING = 16,
         /**
          * whether whitespaces inside text should be drawn.
          */
-        TEXT,
+        TEXT = 32,
         /**
          * whether trailing whitespaces should be drawn.
          */
-        TRAILING,
+        TRAILING = 64,
         /**
          * wheter all kind of spaces should be drawn.
          */
-        ALL,
+        ALL = 127,
     }
 
 
@@ -529,19 +529,19 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore invalid characters.
          */
-        IGNORE_INVALID_CHARS,
+        IGNORE_INVALID_CHARS = 1,
         /**
          * Save file despite external modifications.
          */
-        IGNORE_MODIFICATION_TIME,
+        IGNORE_MODIFICATION_TIME = 2,
         /**
          * Create a backup before saving the file.
          */
-        CREATE_BACKUP,
+        CREATE_BACKUP = 4,
     }
 
 
@@ -559,22 +559,22 @@ export namespace GtkSource {
         /**
          * normal state
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * area in the renderer represents the
          * line on which the insert cursor is currently positioned
          */
-        CURSOR,
+        CURSOR = 1,
         /**
          * the mouse pointer is currently
          * over the activatable area of the renderer
          */
-        PRELIT,
+        PRELIT = 2,
         /**
          * area in the renderer represents
          * a line in the buffer which contains part of the selection
          */
-        SELECTED,
+        SELECTED = 4,
     }
 
 
@@ -593,19 +593,19 @@ export namespace GtkSource {
         /**
          * no flags specified
          */
-        NONE,
+        NONE = 0,
         /**
          * case sensitive sort
          */
-        CASE_SENSITIVE,
+        CASE_SENSITIVE = 1,
         /**
          * sort in reverse order
          */
-        REVERSE_ORDER,
+        REVERSE_ORDER = 2,
         /**
          * remove duplicates
          */
-        REMOVE_DUPLICATES,
+        REMOVE_DUPLICATES = 4,
     }
 
 
@@ -628,24 +628,24 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Leading white spaces on a line, i.e. the
          *   indentation.
          */
-        LEADING,
+        LEADING = 1,
         /**
          * White spaces inside a line of text.
          */
-        INSIDE_TEXT,
+        INSIDE_TEXT = 2,
         /**
          * Trailing white spaces on a line.
          */
-        TRAILING,
+        TRAILING = 4,
         /**
          * White spaces anywhere.
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -665,29 +665,29 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Space character.
          */
-        SPACE,
+        SPACE = 1,
         /**
          * Tab character.
          */
-        TAB,
+        TAB = 2,
         /**
          * Line break character. If the
          *   {@link GtkSource.Buffer.implicit_trailing_newline} property is `true`,
          *   {@link GtkSource.SpaceDrawer} also draws a line break at the end of the buffer.
          */
-        NEWLINE,
+        NEWLINE = 4,
         /**
          * Non-breaking space character.
          */
-        NBSP,
+        NBSP = 8,
         /**
          * All white spaces.
          */
-        ALL,
+        ALL = 15,
     }
 
 
@@ -707,7 +707,7 @@ export namespace GtkSource {
              * @since 2.12
              * @run-last
              */
-            "bracket-matched": (arg0: Gtk.TextIter | null, arg1: BracketMatchType) => void;
+            "bracket-matched": (iter: Gtk.TextIter | null, state: BracketMatchType) => void;
             /**
              * The ::highlight-updated signal is emitted when the syntax
              * highlighting and [context classes][context-classes] are updated in a
@@ -715,7 +715,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "highlight-updated": (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
+            "highlight-updated": (start: Gtk.TextIter, end: Gtk.TextIter) => void;
             /**
              * The ::redo signal is emitted to redo the last undo operation.
              * @signal
@@ -728,7 +728,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "source-mark-updated": (arg0: Gtk.TextMark) => void;
+            "source-mark-updated": (mark: Gtk.TextMark) => void;
             /**
              * The ::undo signal is emitted to undo the last user action which
              * modified the buffer.
@@ -1345,7 +1345,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.ScrollStep, arg1: number) => void;
+            "move-cursor": (step: Gtk.ScrollStep, num: number) => void;
             /**
              * The {@link GtkSource.Completion.SignalSignatures.move_page | GtkSource.Completion::move-page} signal is a keybinding
              * signal which gets emitted when the user initiates a page
@@ -1370,7 +1370,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-page": (arg0: Gtk.ScrollStep, arg1: number) => void;
+            "move-page": (step: Gtk.ScrollStep, num: number) => void;
             /**
              * Emitted just before starting to populate the completion with providers.
              * You can use this signal to add additional attributes in the context.
@@ -1378,7 +1378,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "populate-context": (arg0: CompletionContext) => void;
+            "populate-context": (context: CompletionContext) => void;
             /**
              * Emitted when the completion window is shown. The default handler
              * will actually show the window.
@@ -1645,6 +1645,7 @@ export namespace GtkSource {
          * no longer need it.
          * @param provider a {@link GtkSource.CompletionProvider}.
          * @returns `true` if `provider` was successfully added, otherwise if `error`          is provided, it will be set with the error and `false` is returned.
+         * @throws GLib.Error
          */
         add_provider(provider: CompletionProvider): boolean;
 
@@ -1706,6 +1707,7 @@ export namespace GtkSource {
          * Remove `provider` from the completion.
          * @param provider a {@link GtkSource.CompletionProvider}.
          * @returns `true` if `provider` was successfully removed, otherwise if `error`          is provided, it will be set with the error and `false` is returned.
+         * @throws GLib.Error
          */
         remove_provider(provider: CompletionProvider): boolean;
 
@@ -3383,6 +3385,7 @@ export namespace GtkSource {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the contents has been loaded successfully.
          * @since 3.14
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -3630,6 +3633,7 @@ export namespace GtkSource {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
          * @since 3.14
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -3842,14 +3846,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            activate: (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: Gdk.Event) => void;
+            activate: (iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => void;
             /**
              * The ::query-activatable signal is emitted when the renderer
              * can possibly be activated.
              * @signal
              * @run-last
              */
-            "query-activatable": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: Gdk.Event) => boolean | void;
+            "query-activatable": (iter: Gtk.TextIter, area: Gdk.Rectangle, event: Gdk.Event) => boolean | void;
             /**
              * The ::query-data signal is emitted when the renderer needs
              * to be filled with data just before a cell is drawn. This can
@@ -3858,14 +3862,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-data": (arg0: Gtk.TextIter, arg1: Gtk.TextIter, arg2: GutterRendererState) => void;
+            "query-data": (start: Gtk.TextIter, end: Gtk.TextIter, state: GutterRendererState) => void;
             /**
              * The ::query-tooltip signal is emitted when the renderer can
              * show a tooltip.
              * @signal
              * @run-last
              */
-            "query-tooltip": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: number, arg3: number, arg4: Gtk.Tooltip) => boolean | void;
+            "query-tooltip": (iter: Gtk.TextIter, area: Gdk.Rectangle, x: number, y: number, tooltip: Gtk.Tooltip) => boolean | void;
             /**
              * The ::queue-draw signal is emitted when the renderer needs
              * to be redrawn. Use `gtk_source_gutter_renderer_queue_draw()`
@@ -5168,14 +5172,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-tooltip-markup": (arg0: Mark) => string;
+            "query-tooltip-markup": (mark: Mark) => string;
             /**
              * The code should connect to this signal to provide a tooltip for given
              * `mark`. The tooltip should be just a plain text.
              * @signal
              * @run-last
              */
-            "query-tooltip-text": (arg0: Mark) => string;
+            "query-tooltip-text": (mark: Mark) => string;
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::gicon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -6594,6 +6598,7 @@ export namespace GtkSource {
          * @returns whether a match was found.
          * @since 3.10
          * @deprecated since 3.22: Use `gtk_source_search_context_backward_finish2()` instead.
+         * @throws GLib.Error
          */
         backward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6606,6 +6611,7 @@ export namespace GtkSource {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
          * @since 3.22
+         * @throws GLib.Error
          */
         backward_finish2(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -6700,6 +6706,7 @@ export namespace GtkSource {
          * @returns whether a match was found.
          * @since 3.10
          * @deprecated since 3.22: Use `gtk_source_search_context_forward_finish2()` instead.
+         * @throws GLib.Error
          */
         forward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null];
 
@@ -6712,6 +6719,7 @@ export namespace GtkSource {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
          * @since 3.22
+         * @throws GLib.Error
          */
         forward_finish2(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -6785,6 +6793,7 @@ export namespace GtkSource {
          * @returns whether the match has been replaced.
          * @since 3.10
          * @deprecated since 3.22: Use `gtk_source_search_context_replace2()` instead.
+         * @throws GLib.Error
          */
         replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean;
 
@@ -6804,6 +6813,7 @@ export namespace GtkSource {
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns whether the match has been replaced.
          * @since 3.22
+         * @throws GLib.Error
          */
         replace2(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean;
 
@@ -6818,6 +6828,7 @@ export namespace GtkSource {
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns the number of replaced matches.
          * @since 3.10
+         * @throws GLib.Error
          */
         replace_all(replace: string, replace_length: number): number;
 
@@ -8647,7 +8658,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "change-case": (arg0: ChangeCaseType) => void;
+            "change-case": (case_type: ChangeCaseType) => void;
             /**
              * Keybinding signal to edit a number at the current cursor position.
              * @signal
@@ -8655,7 +8666,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "change-number": (arg0: number) => void;
+            "change-number": (count: number) => void;
             /**
              * Keybinding signal to join the lines currently selected.
              * @signal
@@ -8671,7 +8682,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "line-mark-activated": (arg0: Gtk.TextIter, arg1: Gdk.Event) => void;
+            "line-mark-activated": (iter: Gtk.TextIter, event: Gdk.Event) => void;
             /**
              * The ::move-lines signal is a keybinding which gets emitted
              * when the user initiates moving a line. The default binding key
@@ -8686,7 +8697,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-lines": (arg0: boolean, arg1: number) => void;
+            "move-lines": (copy: boolean, count: number) => void;
             /**
              * Keybinding signal to move the cursor to the matching bracket.
              * @signal
@@ -8694,7 +8705,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-to-matching-bracket": (arg0: boolean) => void;
+            "move-to-matching-bracket": (extend_selection: boolean) => void;
             /**
              * The ::move-words signal is a keybinding which gets emitted
              * when the user initiates moving a word. The default binding key
@@ -8705,7 +8716,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-words": (arg0: number) => void;
+            "move-words": (count: number) => void;
             /**
              * @signal
              * @action
@@ -8738,7 +8749,7 @@ export namespace GtkSource {
              * @since 3.0
              * @run-last
              */
-            "smart-home-end": (arg0: Gtk.TextIter, arg1: number) => void;
+            "smart-home-end": (iter: Gtk.TextIter, count: number) => void;
             /**
              * @signal
              * @action

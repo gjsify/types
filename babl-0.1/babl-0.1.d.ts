@@ -24,11 +24,11 @@ export namespace Babl {
      * @gir-type Enum
      */
     enum IccIntent {
-        PERCEPTUAL,
-        RELATIVE_COLORIMETRIC,
-        SATURATION,
-        ABSOLUTE_COLORIMETRIC,
-        PERFORMANCE,
+        PERCEPTUAL = 0,
+        RELATIVE_COLORIMETRIC = 1,
+        SATURATION = 2,
+        ABSOLUTE_COLORIMETRIC = 3,
+        PERFORMANCE = 32,
     }
 
 
@@ -36,19 +36,34 @@ export namespace Babl {
      * @gir-type Enum
      */
     enum SpaceFlags {
-        NONE,
-        EQUALIZE,
+        NONE = 0,
+        EQUALIZE = 1,
     }
 
 
+    /**
+     * @default 0
+     */
     const ALPHA_FLOOR: number;
 
+    /**
+     * @default 0
+     */
     const ALPHA_FLOOR_F: number;
 
+    /**
+     * @default 0
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 128
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 1
+     */
     const MINOR_VERSION: number;
 
     /**
@@ -511,43 +526,43 @@ export namespace Babl {
         /**
          * the model encodes alpha.
          */
-        ALPHA,
+        ALPHA = 2,
         /**
          * the alpha is associated alpha.
          */
-        ASSOCIATED,
+        ASSOCIATED = 4,
         /**
          * the components are inverted (used for getting the additive complement space of CMYK).
          */
-        INVERTED,
+        INVERTED = 8,
         /**
          * the data has no TRC, i.e. is linear
          */
-        LINEAR,
+        LINEAR = 1024,
         /**
          * the data has a TRC - the TRC from the configured space
          */
-        NONLINEAR,
+        NONLINEAR = 2048,
         /**
          * the data has a TRC - a perceptual TRC where 50% gray is 0.5
          */
-        PERCEPTUAL,
+        PERCEPTUAL = 4096,
         /**
          * this is a gray component model
          */
-        GRAY,
+        GRAY = 1048576,
         /**
          * this is an RGB based component model, the space associated is expected to contain an RGB matrix profile.
          */
-        RGB,
+        RGB = 2097152,
         /**
          * this model is part of the CIE family of spaces
          */
-        CIE,
+        CIE = 8388608,
         /**
          * the encodings described are CMYK encodings, the space associated is expected to contain an CMYK ICC profile.
          */
-        CMYK,
+        CMYK = 16777216,
     }
 
 

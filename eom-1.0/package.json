@@ -1,6 +1,6 @@
 {
     "name": "@girs/eom-1.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for Eom-1.0",
     "type": "module",
     "module": "eom-1.0.js",
@@ -16,10 +16,10 @@
         "import": "./eom-1.0-import.js",
         "default": "./eom-1.0-import.js"
       },
-      "./surface": {
-        "types": "./eom-1.0-surface.d.ts",
-        "import": "./eom-1.0-surface.js",
-        "default": "./eom-1.0-surface.js"
+      "./vocabulary": {
+        "types": "./eom-1.0-vocabulary.d.ts",
+        "import": "./eom-1.0-vocabulary.js",
+        "default": "./eom-1.0-vocabulary.js"
       },
       "./eom-1.0": {
         "types": "./eom-1.0.d.ts",
@@ -36,20 +36,20 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/gtk-3.0": "^4.4.0",
-      "@girs/xlib-2.0": "^4.4.0",
-      "@girs/gdk-3.0": "^4.4.0",
-      "@girs/cairo-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/pango-1.0": "^4.4.0",
-      "@girs/harfbuzz-0.0": "^4.4.0",
-      "@girs/freetype2-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gdkpixbuf-2.0": "^4.4.0",
-      "@girs/atk-1.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/gtk-3.0": "^4.5.0",
+      "@girs/xlib-2.0": "^4.5.0",
+      "@girs/gdk-3.0": "^4.5.0",
+      "@girs/cairo-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/pango-1.0": "^4.5.0",
+      "@girs/harfbuzz-0.0": "^4.5.0",
+      "@girs/freetype2-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gdkpixbuf-2.0": "^4.5.0",
+      "@girs/atk-1.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

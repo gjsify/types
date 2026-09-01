@@ -37,91 +37,181 @@ export namespace GstVideo {
      * @gir-type Enum
      */
     enum Format {
-        UNKNOWN,
-        I420,
-        YV12,
-        YUY2,
-        UYVY,
-        AYUV,
-        RGBX,
-        BGRX,
-        XRGB,
-        XBGR,
-        RGBA,
-        BGRA,
-        ARGB,
-        ABGR,
-        RGB,
-        BGR,
-        Y41B,
-        Y42B,
-        YVYU,
-        Y444,
-        V210,
-        V216,
-        NV12,
-        NV21,
+        UNKNOWN = 0,
+        I420 = 1,
+        YV12 = 2,
+        YUY2 = 3,
+        UYVY = 4,
+        AYUV = 5,
+        RGBX = 6,
+        BGRX = 7,
+        XRGB = 8,
+        XBGR = 9,
+        RGBA = 10,
+        BGRA = 11,
+        ARGB = 12,
+        ABGR = 13,
+        RGB = 14,
+        BGR = 15,
+        Y41B = 16,
+        Y42B = 17,
+        YVYU = 18,
+        Y444 = 19,
+        V210 = 20,
+        V216 = 21,
+        NV12 = 22,
+        NV21 = 23,
     }
 
 
+    /**
+     * @default 0x001f
+     */
     const BLUE_MASK_15: string;
 
+    /**
+     * @default 31
+     */
     const BLUE_MASK_15_INT: number;
 
+    /**
+     * @default 0x001f
+     */
     const BLUE_MASK_16: string;
 
+    /**
+     * @default 31
+     */
     const BLUE_MASK_16_INT: number;
 
+    /**
+     * @default 0x00FF0000
+     */
     const BYTE1_MASK_24: string;
 
+    /**
+     * @default 16711680
+     */
     const BYTE1_MASK_24_INT: number;
 
+    /**
+     * @default 0xFF000000
+     */
     const BYTE1_MASK_32: string;
 
+    /**
+     * @default 2147483647
+     */
     const BYTE1_MASK_32_INT: number;
 
+    /**
+     * @default 0x0000FF00
+     */
     const BYTE2_MASK_24: string;
 
+    /**
+     * @default 65280
+     */
     const BYTE2_MASK_24_INT: number;
 
+    /**
+     * @default 0x00FF0000
+     */
     const BYTE2_MASK_32: string;
 
+    /**
+     * @default 16711680
+     */
     const BYTE2_MASK_32_INT: number;
 
+    /**
+     * @default 0x000000FF
+     */
     const BYTE3_MASK_24: string;
 
+    /**
+     * @default 255
+     */
     const BYTE3_MASK_24_INT: number;
 
+    /**
+     * @default 0x0000FF00
+     */
     const BYTE3_MASK_32: string;
 
+    /**
+     * @default 65280
+     */
     const BYTE3_MASK_32_INT: number;
 
+    /**
+     * @default 0x000000FF
+     */
     const BYTE4_MASK_32: string;
 
+    /**
+     * @default 255
+     */
     const BYTE4_MASK_32_INT: number;
 
+    /**
+     * @default video/x-raw-rgb, bpp = (int) 16, depth = (int) 15, endianness = (int) BYTE_ORDER, red_mask = (int)
+     */
     const CAPS_RGB_15: string;
 
+    /**
+     * @default video/x-raw-rgb, bpp = (int) 16, depth = (int) 16, endianness = (int) BYTE_ORDER, red_mask = (int)
+     */
     const CAPS_RGB_16: string;
 
+    /**
+     * @default (fraction) [ 0, max ]
+     */
     const FPS_RANGE: string;
 
+    /**
+     * @default 0x03e0
+     */
     const GREEN_MASK_15: string;
 
+    /**
+     * @default 992
+     */
     const GREEN_MASK_15_INT: number;
 
+    /**
+     * @default 0x07e0
+     */
     const GREEN_MASK_16: string;
 
+    /**
+     * @default 2016
+     */
     const GREEN_MASK_16_INT: number;
 
+    /**
+     * @default 0x7c00
+     */
     const RED_MASK_15: string;
 
+    /**
+     * @default 31744
+     */
     const RED_MASK_15_INT: number;
 
+    /**
+     * @default 0xf800
+     */
     const RED_MASK_16: string;
 
+    /**
+     * @default 63488
+     */
     const RED_MASK_16_INT: number;
 
+    /**
+     * @default (int) [ 1, max ]
+     */
     const SIZE_RANGE: string;
 
     /**

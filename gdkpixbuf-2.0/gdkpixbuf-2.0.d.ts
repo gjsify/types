@@ -41,7 +41,7 @@ export namespace GdkPixbuf {
         /**
          * Indicates a red/green/blue additive color space.
          */
-        RGB,
+        RGB = 0,
     }
 
 
@@ -70,7 +70,7 @@ export namespace GdkPixbuf {
          *  and lowest quality mode. Quality is normally unacceptable when scaling
          *  down, but may be OK when scaling up.
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * This is an accurate simulation of the PostScript
          *  image operator without any interpolation enabled.  Each pixel is
@@ -78,7 +78,7 @@ export namespace GdkPixbuf {
          *  are implemented with antialiasing.  It resembles nearest neighbor for
          *  enlargement, and bilinear for reduction.
          */
-        TILES,
+        TILES = 1,
         /**
          * Best quality/speed balance; use this mode by
          *  default. Bilinear interpolation.  For enlargement, it is
@@ -86,7 +86,7 @@ export namespace GdkPixbuf {
          *  For reduction, it is equivalent to laying down small tiles and
          *  integrating over the coverage area.
          */
-        BILINEAR,
+        BILINEAR = 2,
         /**
          * This is the slowest and highest quality
          *  reconstruction function. It is derived from the hyperbolic filters in
@@ -97,7 +97,7 @@ export namespace GdkPixbuf {
          *  it has a lower quality than the `GDK_INTERP_BILINEAR` filter
          *  (Since: 2.38)
          */
-        HYPER,
+        HYPER = 3,
     }
 
 
@@ -131,12 +131,12 @@ export namespace GdkPixbuf {
          *  will be considered fully transparent, and all others will be
          *  considered fully opaque.
          */
-        BILEVEL,
+        BILEVEL = 0,
         /**
          * For now falls back to #GDK_PIXBUF_ALPHA_BILEVEL.
          *  In the future it will do full alpha compositing.
          */
-        FULL,
+        FULL = 1,
     }
 
 
@@ -212,37 +212,40 @@ export namespace GdkPixbuf {
         /**
          * No rotation.
          */
-        NONE,
+        NONE = 0,
         /**
          * Rotate by 90 degrees.
          */
-        COUNTERCLOCKWISE,
+        COUNTERCLOCKWISE = 90,
         /**
          * Rotate by 180 degrees.
          */
-        UPSIDEDOWN,
+        UPSIDEDOWN = 180,
         /**
          * Rotate by 270 degrees.
          */
-        CLOCKWISE,
+        CLOCKWISE = 270,
     }
 
 
     /**
      * Major version of gdk-pixbuf library, that is the "0" in
      * "0.8.2" for example.
+     * @default 2
      */
     const PIXBUF_MAJOR: number;
 
     /**
      * Micro version of gdk-pixbuf library, that is the "2" in
      * "0.8.2" for example.
+     * @default 8
      */
     const PIXBUF_MICRO: number;
 
     /**
      * Minor version of gdk-pixbuf library, that is the "8" in
      * "0.8.2" for example.
+     * @default 44
      */
     const PIXBUF_MINOR: number;
 
@@ -251,6 +254,7 @@ export namespace GdkPixbuf {
      * 
      * This is the version being compiled against; contrast with
      * `gdk_pixbuf_version`.
+     * @default 2.44.8
      */
     const PIXBUF_VERSION: string;
 
@@ -364,16 +368,16 @@ export namespace GdkPixbuf {
         /**
          * the module can write out images in the format.
          */
-        WRITABLE,
+        WRITABLE = 1,
         /**
          * the image format is scalable
          */
-        SCALABLE,
+        SCALABLE = 2,
         /**
          * the module is threadsafe. gdk-pixbuf
          *     ignores modules that are not marked as threadsafe. (Since 2.28).
          */
-        THREADSAFE,
+        THREADSAFE = 4,
     }
 
 
@@ -1175,6 +1179,7 @@ export namespace GdkPixbuf {
          * @param option_values values for named options
          * @returns whether an error was set
          * @since 2.4
+         * @throws GLib.Error
          */
         save_to_bufferv(type: string, option_keys: string[] | null, option_values: string[] | null): [boolean, Uint8Array];
 
@@ -1193,6 +1198,7 @@ export namespace GdkPixbuf {
          * @param option_values values for named options
          * @returns whether an error was set
          * @since 2.4
+         * @throws GLib.Error
          */
         save_to_callbackv(save_func: PixbufSaveFunc, type: string, option_keys: string[] | null, option_values: string[] | null): boolean;
 
@@ -1210,6 +1216,7 @@ export namespace GdkPixbuf {
          * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore
          * @returns `TRUE` if the pixbuf was saved successfully, `FALSE` if an   error was set.
          * @since 2.36
+         * @throws GLib.Error
          */
         save_to_streamv(stream: Gio.OutputStream, type: string, option_keys: string[] | null, option_values: string[] | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1246,6 +1253,7 @@ export namespace GdkPixbuf {
          * @param option_keys name of options to set
          * @param option_values values for named options
          * @returns whether an error was set
+         * @throws GLib.Error
          */
         savev(filename: string, type: string, option_keys: string[] | null, option_values: string[] | null): boolean;
 
@@ -1398,6 +1406,7 @@ export namespace GdkPixbuf {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
@@ -1434,6 +1443,7 @@ export namespace GdkPixbuf {
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
 
@@ -1939,7 +1949,7 @@ export namespace GdkPixbuf {
              * @signal
              * @run-last
              */
-            "area-updated": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "area-updated": (x: number, y: number, width: number, height: number) => void;
             /**
              * This signal is emitted when `gdk_pixbuf_loader_close()` is called.
              * 
@@ -1961,7 +1971,7 @@ export namespace GdkPixbuf {
              * @signal
              * @run-last
              */
-            "size-prepared": (arg0: number, arg1: number) => void;
+            "size-prepared": (width: number, height: number) => void;
         }
 
         // Constructor properties interface
@@ -2097,6 +2107,7 @@ export namespace GdkPixbuf {
          * Remember that this function does not release a reference on the loader, so
          * you will need to explicitly release any reference you hold.
          * @returns `TRUE` if all image data written so far was successfully   passed out via the update_area signal
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -2160,6 +2171,7 @@ export namespace GdkPixbuf {
          * Parses the next `count` bytes in the given image buffer.
          * @param buf Pointer to image data.
          * @returns `TRUE` if the write was successful, or   `FALSE` if the loader cannot parse the buffer
+         * @throws GLib.Error
          */
         write(buf: Uint8Array | string): boolean;
 
@@ -2168,6 +2180,7 @@ export namespace GdkPixbuf {
          * @param buffer The image data as a {@link GLib.Bytes} buffer.
          * @returns `TRUE` if the write was successful, or `FALSE` if   the loader cannot parse the buffer
          * @since 2.30
+         * @throws GLib.Error
          */
         write_bytes(buffer: GLib.Bytes | Uint8Array): boolean;
     }

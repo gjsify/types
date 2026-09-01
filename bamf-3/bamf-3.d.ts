@@ -25,14 +25,14 @@ export namespace Bamf {
      * @gir-type Enum
      */
     enum ClickBehavior {
-        NONE,
-        OPEN,
-        FOCUS,
-        FOCUS_ALL,
-        MINIMIZE,
-        RESTORE,
-        RESTORE_ALL,
-        PICKER,
+        NONE = 0,
+        OPEN = 1,
+        FOCUS = 2,
+        FOCUS_ALL = 3,
+        MINIMIZE = 4,
+        RESTORE = 5,
+        RESTORE_ALL = 6,
+        PICKER = 7,
     }
 
 
@@ -40,10 +40,10 @@ export namespace Bamf {
      * @gir-type Enum
      */
     enum WindowMaximizationType {
-        FLOATING,
-        HORIZONTAL_MAXIMIZED,
-        VERTICAL_MAXIMIZED,
-        MAXIMIZED,
+        FLOATING = 0,
+        HORIZONTAL_MAXIMIZED = 1,
+        VERTICAL_MAXIMIZED = 2,
+        MAXIMIZED = 3,
     }
 
 
@@ -51,58 +51,121 @@ export namespace Bamf {
      * @gir-type Enum
      */
     enum WindowType {
-        NORMAL,
-        DESKTOP,
-        DOCK,
-        DIALOG,
-        TOOLBAR,
-        MENU,
-        UTILITY,
-        SPLASHSCREEN,
-        UNKNOWN,
+        NORMAL = 0,
+        DESKTOP = 1,
+        DOCK = 2,
+        DIALOG = 3,
+        TOOLBAR = 4,
+        MENU = 5,
+        UTILITY = 6,
+        SPLASHSCREEN = 7,
+        UNKNOWN = 8,
     }
 
 
+    /**
+     * @default desktop-file-updated
+     */
     const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string;
 
+    /**
+     * @default window-added
+     */
     const APPLICATION_SIGNAL_WINDOW_ADDED: string;
 
+    /**
+     * @default window-removed
+     */
     const APPLICATION_SIGNAL_WINDOW_REMOVED: string;
 
+    /**
+     * @default active-application-changed
+     */
     const MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED: string;
 
+    /**
+     * @default active-window-changed
+     */
     const MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED: string;
 
+    /**
+     * @default stacking-order-changed
+     */
     const MATCHER_SIGNAL_STACKING_ORDER_CHANGED: string;
 
+    /**
+     * @default view-closed
+     */
     const MATCHER_SIGNAL_VIEW_CLOSED: string;
 
+    /**
+     * @default view-opened
+     */
     const MATCHER_SIGNAL_VIEW_OPENED: string;
 
+    /**
+     * @default active-changed
+     */
     const VIEW_SIGNAL_ACTIVE_CHANGED: string;
 
+    /**
+     * @default child-added
+     */
     const VIEW_SIGNAL_CHILD_ADDED: string;
 
+    /**
+     * @default child-moved
+     */
     const VIEW_SIGNAL_CHILD_MOVED: string;
 
+    /**
+     * @default child-removed
+     */
     const VIEW_SIGNAL_CHILD_REMOVED: string;
 
+    /**
+     * @default closed
+     */
     const VIEW_SIGNAL_CLOSED: string;
 
+    /**
+     * @default icon-changed
+     */
     const VIEW_SIGNAL_ICON_CHANGED: string;
 
+    /**
+     * @default name-changed
+     */
     const VIEW_SIGNAL_NAME_CHANGED: string;
 
+    /**
+     * @default running-changed
+     */
     const VIEW_SIGNAL_RUNNING_CHANGED: string;
 
+    /**
+     * @default starting-changed
+     */
     const VIEW_SIGNAL_STARTING_CHANGED: string;
 
+    /**
+     * @default urgent-changed
+     */
     const VIEW_SIGNAL_URGENT_CHANGED: string;
 
+    /**
+     * @default user-visible-changed
+     */
     const VIEW_SIGNAL_USER_VISIBLE_CHANGED: string;
 
+    /**
+     * @default maximized-changed
+     */
     const WINDOW_SIGNAL_MAXIMIZED_CHANGED: string;
 
+    /**
+     * @default monitor-changed
+     */
     const WINDOW_SIGNAL_MONITOR_CHANGED: string;
 
     /**
@@ -118,15 +181,15 @@ export namespace Bamf {
             /**
              * @signal
              */
-            "desktop-file-updated": (arg0: string) => void;
+            "desktop-file-updated": (object: string) => void;
             /**
              * @signal
              */
-            "window-added": (arg0: Window) => void;
+            "window-added": (object: Window) => void;
             /**
              * @signal
              */
-            "window-removed": (arg0: Window) => void;
+            "window-removed": (object: Window) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::running": (pspec: GObject.ParamSpec) => void;
@@ -301,11 +364,11 @@ export namespace Bamf {
             /**
              * @signal
              */
-            "active-application-changed": (arg0: Application, arg1: Application) => void;
+            "active-application-changed": (object: Application, p0: Application) => void;
             /**
              * @signal
              */
-            "active-window-changed": (arg0: Window, arg1: Window) => void;
+            "active-window-changed": (object: Window, p0: Window) => void;
             /**
              * @signal
              */
@@ -313,11 +376,11 @@ export namespace Bamf {
             /**
              * @signal
              */
-            "view-closed": (arg0: View) => void;
+            "view-closed": (object: View) => void;
             /**
              * @signal
              */
-            "view-opened": (arg0: View) => void;
+            "view-opened": (object: View) => void;
         }
 
         // Constructor properties interface
@@ -626,22 +689,22 @@ export namespace Bamf {
              * @signal
              * @run-first
              */
-            "active-changed": (arg0: boolean) => void;
+            "active-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-first
              */
-            "child-added": (arg0: View) => void;
+            "child-added": (object: View) => void;
             /**
              * @signal
              * @run-first
              */
-            "child-moved": (arg0: View) => void;
+            "child-moved": (object: View) => void;
             /**
              * @signal
              * @run-first
              */
-            "child-removed": (arg0: View) => void;
+            "child-removed": (object: View) => void;
             /**
              * @signal
              * @run-last
@@ -650,31 +713,31 @@ export namespace Bamf {
             /**
              * @signal
              */
-            "icon-changed": (arg0: string) => void;
+            "icon-changed": (object: string) => void;
             /**
              * @signal
              */
-            "name-changed": (arg0: string, arg1: string) => void;
-            /**
-             * @signal
-             * @run-first
-             */
-            "running-changed": (arg0: boolean) => void;
+            "name-changed": (object: string, p0: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "starting-changed": (arg0: boolean) => void;
+            "running-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-first
              */
-            "urgent-changed": (arg0: boolean) => void;
+            "starting-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-first
              */
-            "user-visible-changed": (arg0: boolean) => void;
+            "urgent-changed": (object: boolean) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "user-visible-changed": (object: boolean) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::running": (pspec: GObject.ParamSpec) => void;
@@ -996,12 +1059,12 @@ export namespace Bamf {
              * @signal
              * @run-first
              */
-            "maximized-changed": (arg0: number, arg1: number) => void;
+            "maximized-changed": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "monitor-changed": (arg0: number, arg1: number) => void;
+            "monitor-changed": (object: number, p0: number) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::running": (pspec: GObject.ParamSpec) => void;

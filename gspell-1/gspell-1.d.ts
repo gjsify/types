@@ -92,14 +92,14 @@ export namespace Gspell {
              * @signal
              * @run-last
              */
-            "word-added-to-personal": (arg0: string) => void;
+            "word-added-to-personal": (word: string) => void;
             /**
              * Emitted when a word is added to the session dictionary. See
              * `gspell_checker_add_word_to_session()`.
              * @signal
              * @run-last
              */
-            "word-added-to-session": (arg0: string) => void;
+            "word-added-to-session": (word: string) => void;
             "notify::language": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -196,6 +196,7 @@ export namespace Gspell {
          * @param word the word to check.
          * @param word_length the byte length of `word`, or -1 if `word` is nul-terminated.
          * @returns `true` if `word` is correctly spelled, `false` otherwise.
+         * @throws GLib.Error
          */
         check_word(word: string, word_length: bigint | number): boolean;
 
@@ -1440,6 +1441,7 @@ export namespace Gspell {
          * Goes to the next misspelled word. When called the first time, goes to the
          * first misspelled word.
          * @returns `true` if a next misspelled word has been found, `false` if the spell checking is finished or if an error occurred.
+         * @throws GLib.Error
          */
         goto_next(): [boolean, string, Checker | null];
 
@@ -2032,6 +2034,7 @@ export namespace Gspell {
          * Goes to the next misspelled word. When called the first time, goes to the
          * first misspelled word.
          * @returns `true` if a next misspelled word has been found, `false` if the spell checking is finished or if an error occurred.
+         * @throws GLib.Error
          */
         goto_next(): [boolean, string, Checker | null];
     }

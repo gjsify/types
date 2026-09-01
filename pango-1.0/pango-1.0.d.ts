@@ -48,15 +48,15 @@ export namespace Pango {
         /**
          * Put all available space on the right
          */
-        LEFT,
+        LEFT = 0,
         /**
          * Center the line within the available space
          */
-        CENTER,
+        CENTER = 1,
         /**
          * Put all available space on the left
          */
-        RIGHT,
+        RIGHT = 2,
     }
 
 
@@ -80,156 +80,156 @@ export namespace Pango {
         /**
          * does not happen
          */
-        INVALID,
+        INVALID = 0,
         /**
          * language ({@link Pango.AttrLanguage})
          */
-        LANGUAGE,
+        LANGUAGE = 1,
         /**
          * font family name list ({@link Pango.AttrString})
          */
-        FAMILY,
+        FAMILY = 2,
         /**
          * font slant style ({@link Pango.AttrInt})
          */
-        STYLE,
+        STYLE = 3,
         /**
          * font weight ({@link Pango.AttrInt})
          */
-        WEIGHT,
+        WEIGHT = 4,
         /**
          * font variant (normal or small caps) ({@link Pango.AttrInt})
          */
-        VARIANT,
+        VARIANT = 5,
         /**
          * font stretch ({@link Pango.AttrInt})
          */
-        STRETCH,
+        STRETCH = 6,
         /**
          * font size in points scaled by `PANGO_SCALE` ({@link Pango.AttrInt})
          */
-        SIZE,
+        SIZE = 7,
         /**
          * font description ({@link Pango.AttrFontDesc})
          */
-        FONT_DESC,
+        FONT_DESC = 8,
         /**
          * foreground color ({@link Pango.AttrColor})
          */
-        FOREGROUND,
+        FOREGROUND = 9,
         /**
          * background color ({@link Pango.AttrColor})
          */
-        BACKGROUND,
+        BACKGROUND = 10,
         /**
          * whether the text has an underline ({@link Pango.AttrInt})
          */
-        UNDERLINE,
+        UNDERLINE = 11,
         /**
          * whether the text is struck-through ({@link Pango.AttrInt})
          */
-        STRIKETHROUGH,
+        STRIKETHROUGH = 12,
         /**
          * baseline displacement ({@link Pango.AttrInt})
          */
-        RISE,
+        RISE = 13,
         /**
          * shape ({@link Pango.AttrShape})
          */
-        SHAPE,
+        SHAPE = 14,
         /**
          * font size scale factor ({@link Pango.AttrFloat})
          */
-        SCALE,
+        SCALE = 15,
         /**
          * whether fallback is enabled ({@link Pango.AttrInt})
          */
-        FALLBACK,
+        FALLBACK = 16,
         /**
          * letter spacing ({@link PangoAttrInt})
          */
-        LETTER_SPACING,
+        LETTER_SPACING = 17,
         /**
          * underline color ({@link Pango.AttrColor})
          */
-        UNDERLINE_COLOR,
+        UNDERLINE_COLOR = 18,
         /**
          * strikethrough color ({@link Pango.AttrColor})
          */
-        STRIKETHROUGH_COLOR,
+        STRIKETHROUGH_COLOR = 19,
         /**
          * font size in pixels scaled by `PANGO_SCALE` ({@link Pango.AttrInt})
          */
-        ABSOLUTE_SIZE,
+        ABSOLUTE_SIZE = 20,
         /**
          * base text gravity ({@link Pango.AttrInt})
          */
-        GRAVITY,
+        GRAVITY = 21,
         /**
          * gravity hint ({@link Pango.AttrInt})
          */
-        GRAVITY_HINT,
+        GRAVITY_HINT = 22,
         /**
          * OpenType font features ({@link Pango.AttrFontFeatures}). Since 1.38
          */
-        FONT_FEATURES,
+        FONT_FEATURES = 23,
         /**
          * foreground alpha ({@link Pango.AttrInt}). Since 1.38
          */
-        FOREGROUND_ALPHA,
+        FOREGROUND_ALPHA = 24,
         /**
          * background alpha ({@link Pango.AttrInt}). Since 1.38
          */
-        BACKGROUND_ALPHA,
+        BACKGROUND_ALPHA = 25,
         /**
          * whether breaks are allowed ({@link Pango.AttrInt}). Since 1.44
          */
-        ALLOW_BREAKS,
+        ALLOW_BREAKS = 26,
         /**
          * how to render invisible characters ({@link Pango.AttrInt}). Since 1.44
          */
-        SHOW,
+        SHOW = 27,
         /**
          * whether to insert hyphens at intra-word line breaks ({@link Pango.AttrInt}). Since 1.44
          */
-        INSERT_HYPHENS,
+        INSERT_HYPHENS = 28,
         /**
          * whether the text has an overline ({@link Pango.AttrInt}). Since 1.46
          */
-        OVERLINE,
+        OVERLINE = 29,
         /**
          * overline color ({@link Pango.AttrColor}). Since 1.46
          */
-        OVERLINE_COLOR,
+        OVERLINE_COLOR = 30,
         /**
          * line height factor ({@link Pango.AttrFloat}). Since: 1.50
          */
-        LINE_HEIGHT,
+        LINE_HEIGHT = 31,
         /**
          * line height ({@link Pango.AttrInt}). Since: 1.50
          */
-        ABSOLUTE_LINE_HEIGHT,
-        TEXT_TRANSFORM,
+        ABSOLUTE_LINE_HEIGHT = 32,
+        TEXT_TRANSFORM = 33,
         /**
          * override segmentation to classify the range of the attribute as a single word ({@link Pango.AttrInt}). Since 1.50
          */
-        WORD,
+        WORD = 34,
         /**
          * override segmentation to classify the range of the attribute as a single sentence ({@link Pango.AttrInt}). Since 1.50
          */
-        SENTENCE,
+        SENTENCE = 35,
         /**
          * baseline displacement ({@link Pango.AttrInt}). Since 1.50
          */
-        BASELINE_SHIFT,
+        BASELINE_SHIFT = 36,
         /**
          * font-relative size change ({@link Pango.AttrInt}). Since 1.50
          */
-        FONT_SCALE,
+        FONT_SCALE = 37,
         /**
          * font width ({@link Pango.AttrInt}). Since: 1.58
          */
-        WIDTH,
+        WIDTH = 38,
     }
 
 
@@ -249,17 +249,17 @@ export namespace Pango {
         /**
          * Leave the baseline unchanged
          */
-        NONE,
+        NONE = 0,
         /**
          * Shift the baseline to the superscript position,
          *   relative to the previous run
          */
-        SUPERSCRIPT,
+        SUPERSCRIPT = 1,
         /**
          * Shift the baseline to the subscript position,
          *   relative to the previous run
          */
-        SUBSCRIPT,
+        SUBSCRIPT = 2,
     }
 
 
@@ -284,95 +284,95 @@ export namespace Pango {
         /**
          * Left-to-Right
          */
-        L,
+        L = 0,
         /**
          * Left-to-Right Embedding
          */
-        LRE,
+        LRE = 1,
         /**
          * Left-to-Right Override
          */
-        LRO,
+        LRO = 2,
         /**
          * Right-to-Left
          */
-        R,
+        R = 3,
         /**
          * Right-to-Left Arabic
          */
-        AL,
+        AL = 4,
         /**
          * Right-to-Left Embedding
          */
-        RLE,
+        RLE = 5,
         /**
          * Right-to-Left Override
          */
-        RLO,
+        RLO = 6,
         /**
          * Pop Directional Format
          */
-        PDF,
+        PDF = 7,
         /**
          * European Number
          */
-        EN,
+        EN = 8,
         /**
          * European Number Separator
          */
-        ES,
+        ES = 9,
         /**
          * European Number Terminator
          */
-        ET,
+        ET = 10,
         /**
          * Arabic Number
          */
-        AN,
+        AN = 11,
         /**
          * Common Number Separator
          */
-        CS,
+        CS = 12,
         /**
          * Nonspacing Mark
          */
-        NSM,
+        NSM = 13,
         /**
          * Boundary Neutral
          */
-        BN,
+        BN = 14,
         /**
          * Paragraph Separator
          */
-        B,
+        B = 15,
         /**
          * Segment Separator
          */
-        S,
+        S = 16,
         /**
          * Whitespace
          */
-        WS,
+        WS = 17,
         /**
          * Other Neutrals
          */
-        ON,
+        ON = 18,
         /**
          * Left-to-Right isolate. Since 1.48.6
          */
-        LRI,
+        LRI = 19,
         /**
          * Right-to-Left isolate. Since 1.48.6
          */
-        RLI,
+        RLI = 20,
         /**
          * First strong isolate. Since 1.48.6
          */
-        FSI,
+        FSI = 21,
         /**
          * Pop directional isolate. Since 1.48.6
          */
-        PDI,
+        PDI = 22,
     }
 
 
@@ -396,7 +396,7 @@ export namespace Pango {
          * The character is not representable with
          *   the font.
          */
-        NONE,
+        NONE = 0,
         /**
          * The character is represented in a
          *   way that may be comprehensible but is not the correct
@@ -404,18 +404,18 @@ export namespace Pango {
          *   as a a sequence of Jamos, or a Latin transliteration of a
          *   Cyrillic word.
          */
-        FALLBACK,
+        FALLBACK = 1,
         /**
          * The character is represented as
          *   basically the correct graphical form, but with a stylistic
          *   variant inappropriate for the current script.
          */
-        APPROXIMATE,
+        APPROXIMATE = 2,
         /**
          * The character is represented as the
          *   correct graphical form.
          */
-        EXACT,
+        EXACT = 3,
     }
 
 
@@ -451,33 +451,33 @@ export namespace Pango {
         /**
          * A strong left-to-right direction
          */
-        LTR,
+        LTR = 0,
         /**
          * A strong right-to-left direction
          */
-        RTL,
+        RTL = 1,
         /**
          * Deprecated value; treated the
          *   same as `PANGO_DIRECTION_RTL`.
          */
-        TTB_LTR,
+        TTB_LTR = 2,
         /**
          * Deprecated value; treated the
          *   same as `PANGO_DIRECTION_LTR`
          */
-        TTB_RTL,
+        TTB_RTL = 3,
         /**
          * A weak left-to-right direction
          */
-        WEAK_LTR,
+        WEAK_LTR = 4,
         /**
          * A weak right-to-left direction
          */
-        WEAK_RTL,
+        WEAK_RTL = 5,
         /**
          * No direction specified
          */
-        NEUTRAL,
+        NEUTRAL = 6,
     }
 
 
@@ -501,19 +501,19 @@ export namespace Pango {
         /**
          * No ellipsization
          */
-        NONE,
+        NONE = 0,
         /**
          * Omit characters at the start of the text
          */
-        START,
+        START = 1,
         /**
          * Omit characters in the middle of the text
          */
-        MIDDLE,
+        MIDDLE = 2,
         /**
          * Omit characters at the end of the text
          */
-        END,
+        END = 3,
     }
 
 
@@ -533,15 +533,15 @@ export namespace Pango {
         /**
          * The font should not have color glyphs
          */
-        FORBIDDEN,
+        FORBIDDEN = 0,
         /**
          * The font should have color glyphs
          */
-        REQUIRED,
+        REQUIRED = 1,
         /**
          * The font may or may not use color
          */
-        DONT_CARE,
+        DONT_CARE = 2,
     }
 
 
@@ -562,19 +562,19 @@ export namespace Pango {
         /**
          * Leave the font size unchanged
          */
-        NONE,
+        NONE = 0,
         /**
          * Change the font to a size suitable for superscripts
          */
-        SUPERSCRIPT,
+        SUPERSCRIPT = 1,
         /**
          * Change the font to a size suitable for subscripts
          */
-        SUBSCRIPT,
+        SUBSCRIPT = 2,
         /**
          * Change the font to a size suitable for Small Caps
          */
-        SMALL_CAPS,
+        SMALL_CAPS = 3,
     }
 
 
@@ -606,23 +606,23 @@ export namespace Pango {
         /**
          * Glyphs stand upright (default) <img align="right" valign="center" src="https://docs.gtk.org/Pango/m-south.png">
          */
-        SOUTH,
+        SOUTH = 0,
         /**
          * Glyphs are rotated 90 degrees counter-clockwise. <img align="right" valign="center" src="https://docs.gtk.org/Pango/m-east.png">
          */
-        EAST,
+        EAST = 1,
         /**
          * Glyphs are upside-down. <img align="right" valign="cener" src="https://docs.gtk.org/Pango/m-north.png">
          */
-        NORTH,
+        NORTH = 2,
         /**
          * Glyphs are rotated 90 degrees clockwise. <img align="right" valign="center" src="https://docs.gtk.org/Pango/m-west.png">
          */
-        WEST,
+        WEST = 3,
         /**
          * Gravity is resolved from the context matrix
          */
-        AUTO,
+        AUTO = 4,
     }
 
 
@@ -648,19 +648,19 @@ export namespace Pango {
          * scripts will take their natural gravity based
          *   on the base gravity and the script.  This is the default.
          */
-        NATURAL,
+        NATURAL = 0,
         /**
          * always use the base gravity set, regardless of
          *   the script.
          */
-        STRONG,
+        STRONG = 1,
         /**
          * for scripts not in their natural direction (eg.
          *   Latin in East gravity), choose per-script gravity such that every script
          *   respects the line progression. This means, Latin and Arabic will take
          *   opposite gravities and both flow top-to-bottom for example.
          */
-        LINE,
+        LINE = 2,
     }
 
 
@@ -714,12 +714,12 @@ export namespace Pango {
         /**
          * no overline should be drawn
          */
-        NONE,
+        NONE = 0,
         /**
          * Draw a single line above the ink
          *   extents of the text being underlined.
          */
-        SINGLE,
+        SINGLE = 1,
     }
 
 
@@ -740,23 +740,23 @@ export namespace Pango {
         /**
          * the text itself
          */
-        FOREGROUND,
+        FOREGROUND = 0,
         /**
          * the area behind the text
          */
-        BACKGROUND,
+        BACKGROUND = 1,
         /**
          * underlines
          */
-        UNDERLINE,
+        UNDERLINE = 2,
         /**
          * strikethrough lines
          */
-        STRIKETHROUGH,
+        STRIKETHROUGH = 3,
         /**
          * overlines
          */
-        OVERLINE,
+        OVERLINE = 4,
     }
 
 
@@ -784,476 +784,476 @@ export namespace Pango {
         /**
          * a value never returned from `pango_script_for_unichar()`
          */
-        INVALID_CODE,
+        INVALID_CODE = -1,
         /**
          * a character used by multiple different scripts
          */
-        COMMON,
+        COMMON = 0,
         /**
          * a mark glyph that takes its script from the
          * base glyph to which it is attached
          */
-        INHERITED,
+        INHERITED = 1,
         /**
          * Arabic
          */
-        ARABIC,
+        ARABIC = 2,
         /**
          * Armenian
          */
-        ARMENIAN,
+        ARMENIAN = 3,
         /**
          * Bengali
          */
-        BENGALI,
+        BENGALI = 4,
         /**
          * Bopomofo
          */
-        BOPOMOFO,
+        BOPOMOFO = 5,
         /**
          * Cherokee
          */
-        CHEROKEE,
+        CHEROKEE = 6,
         /**
          * Coptic
          */
-        COPTIC,
+        COPTIC = 7,
         /**
          * Cyrillic
          */
-        CYRILLIC,
+        CYRILLIC = 8,
         /**
          * Deseret
          */
-        DESERET,
+        DESERET = 9,
         /**
          * Devanagari
          */
-        DEVANAGARI,
+        DEVANAGARI = 10,
         /**
          * Ethiopic
          */
-        ETHIOPIC,
+        ETHIOPIC = 11,
         /**
          * Georgian
          */
-        GEORGIAN,
+        GEORGIAN = 12,
         /**
          * Gothic
          */
-        GOTHIC,
+        GOTHIC = 13,
         /**
          * Greek
          */
-        GREEK,
+        GREEK = 14,
         /**
          * Gujarati
          */
-        GUJARATI,
+        GUJARATI = 15,
         /**
          * Gurmukhi
          */
-        GURMUKHI,
+        GURMUKHI = 16,
         /**
          * Han
          */
-        HAN,
+        HAN = 17,
         /**
          * Hangul
          */
-        HANGUL,
+        HANGUL = 18,
         /**
          * Hebrew
          */
-        HEBREW,
+        HEBREW = 19,
         /**
          * Hiragana
          */
-        HIRAGANA,
+        HIRAGANA = 20,
         /**
          * Kannada
          */
-        KANNADA,
+        KANNADA = 21,
         /**
          * Katakana
          */
-        KATAKANA,
+        KATAKANA = 22,
         /**
          * Khmer
          */
-        KHMER,
+        KHMER = 23,
         /**
          * Lao
          */
-        LAO,
+        LAO = 24,
         /**
          * Latin
          */
-        LATIN,
+        LATIN = 25,
         /**
          * Malayalam
          */
-        MALAYALAM,
+        MALAYALAM = 26,
         /**
          * Mongolian
          */
-        MONGOLIAN,
+        MONGOLIAN = 27,
         /**
          * Myanmar
          */
-        MYANMAR,
+        MYANMAR = 28,
         /**
          * Ogham
          */
-        OGHAM,
+        OGHAM = 29,
         /**
          * Old Italic
          */
-        OLD_ITALIC,
+        OLD_ITALIC = 30,
         /**
          * Oriya
          */
-        ORIYA,
+        ORIYA = 31,
         /**
          * Runic
          */
-        RUNIC,
+        RUNIC = 32,
         /**
          * Sinhala
          */
-        SINHALA,
+        SINHALA = 33,
         /**
          * Syriac
          */
-        SYRIAC,
+        SYRIAC = 34,
         /**
          * Tamil
          */
-        TAMIL,
+        TAMIL = 35,
         /**
          * Telugu
          */
-        TELUGU,
+        TELUGU = 36,
         /**
          * Thaana
          */
-        THAANA,
+        THAANA = 37,
         /**
          * Thai
          */
-        THAI,
+        THAI = 38,
         /**
          * Tibetan
          */
-        TIBETAN,
+        TIBETAN = 39,
         /**
          * Canadian Aboriginal
          */
-        CANADIAN_ABORIGINAL,
+        CANADIAN_ABORIGINAL = 40,
         /**
          * Yi
          */
-        YI,
+        YI = 41,
         /**
          * Tagalog
          */
-        TAGALOG,
+        TAGALOG = 42,
         /**
          * Hanunoo
          */
-        HANUNOO,
+        HANUNOO = 43,
         /**
          * Buhid
          */
-        BUHID,
+        BUHID = 44,
         /**
          * Tagbanwa
          */
-        TAGBANWA,
+        TAGBANWA = 45,
         /**
          * Braille
          */
-        BRAILLE,
+        BRAILLE = 46,
         /**
          * Cypriot
          */
-        CYPRIOT,
+        CYPRIOT = 47,
         /**
          * Limbu
          */
-        LIMBU,
+        LIMBU = 48,
         /**
          * Osmanya
          */
-        OSMANYA,
+        OSMANYA = 49,
         /**
          * Shavian
          */
-        SHAVIAN,
+        SHAVIAN = 50,
         /**
          * Linear B
          */
-        LINEAR_B,
+        LINEAR_B = 51,
         /**
          * Tai Le
          */
-        TAI_LE,
+        TAI_LE = 52,
         /**
          * Ugaritic
          */
-        UGARITIC,
+        UGARITIC = 53,
         /**
          * New Tai Lue. Since 1.10
          */
-        NEW_TAI_LUE,
+        NEW_TAI_LUE = 54,
         /**
          * Buginese. Since 1.10
          */
-        BUGINESE,
+        BUGINESE = 55,
         /**
          * Glagolitic. Since 1.10
          */
-        GLAGOLITIC,
+        GLAGOLITIC = 56,
         /**
          * Tifinagh. Since 1.10
          */
-        TIFINAGH,
+        TIFINAGH = 57,
         /**
          * Syloti Nagri. Since 1.10
          */
-        SYLOTI_NAGRI,
+        SYLOTI_NAGRI = 58,
         /**
          * Old Persian. Since 1.10
          */
-        OLD_PERSIAN,
+        OLD_PERSIAN = 59,
         /**
          * Kharoshthi. Since 1.10
          */
-        KHAROSHTHI,
+        KHAROSHTHI = 60,
         /**
          * an unassigned code point. Since 1.14
          */
-        UNKNOWN,
+        UNKNOWN = 61,
         /**
          * Balinese. Since 1.14
          */
-        BALINESE,
+        BALINESE = 62,
         /**
          * Cuneiform. Since 1.14
          */
-        CUNEIFORM,
+        CUNEIFORM = 63,
         /**
          * Phoenician. Since 1.14
          */
-        PHOENICIAN,
+        PHOENICIAN = 64,
         /**
          * Phags-pa. Since 1.14
          */
-        PHAGS_PA,
+        PHAGS_PA = 65,
         /**
          * N'Ko. Since 1.14
          */
-        NKO,
+        NKO = 66,
         /**
          * Kayah Li. Since 1.20.1
          */
-        KAYAH_LI,
+        KAYAH_LI = 67,
         /**
          * Lepcha. Since 1.20.1
          */
-        LEPCHA,
+        LEPCHA = 68,
         /**
          * Rejang. Since 1.20.1
          */
-        REJANG,
+        REJANG = 69,
         /**
          * Sundanese. Since 1.20.1
          */
-        SUNDANESE,
+        SUNDANESE = 70,
         /**
          * Saurashtra. Since 1.20.1
          */
-        SAURASHTRA,
+        SAURASHTRA = 71,
         /**
          * Cham. Since 1.20.1
          */
-        CHAM,
+        CHAM = 72,
         /**
          * Ol Chiki. Since 1.20.1
          */
-        OL_CHIKI,
+        OL_CHIKI = 73,
         /**
          * Vai. Since 1.20.1
          */
-        VAI,
+        VAI = 74,
         /**
          * Carian. Since 1.20.1
          */
-        CARIAN,
+        CARIAN = 75,
         /**
          * Lycian. Since 1.20.1
          */
-        LYCIAN,
+        LYCIAN = 76,
         /**
          * Lydian. Since 1.20.1
          */
-        LYDIAN,
+        LYDIAN = 77,
         /**
          * Batak. Since 1.32
          */
-        BATAK,
+        BATAK = 78,
         /**
          * Brahmi. Since 1.32
          */
-        BRAHMI,
+        BRAHMI = 79,
         /**
          * Mandaic. Since 1.32
          */
-        MANDAIC,
+        MANDAIC = 80,
         /**
          * Chakma. Since: 1.32
          */
-        CHAKMA,
+        CHAKMA = 81,
         /**
          * Meroitic Cursive. Since: 1.32
          */
-        MEROITIC_CURSIVE,
+        MEROITIC_CURSIVE = 82,
         /**
          * Meroitic Hieroglyphs. Since: 1.32
          */
-        MEROITIC_HIEROGLYPHS,
+        MEROITIC_HIEROGLYPHS = 83,
         /**
          * Miao. Since: 1.32
          */
-        MIAO,
+        MIAO = 84,
         /**
          * Sharada. Since: 1.32
          */
-        SHARADA,
+        SHARADA = 85,
         /**
          * Sora Sompeng. Since: 1.32
          */
-        SORA_SOMPENG,
+        SORA_SOMPENG = 86,
         /**
          * Takri. Since: 1.32
          */
-        TAKRI,
+        TAKRI = 87,
         /**
          * Bassa. Since: 1.40
          */
-        BASSA_VAH,
+        BASSA_VAH = 88,
         /**
          * Caucasian Albanian. Since: 1.40
          */
-        CAUCASIAN_ALBANIAN,
+        CAUCASIAN_ALBANIAN = 89,
         /**
          * Duployan. Since: 1.40
          */
-        DUPLOYAN,
+        DUPLOYAN = 90,
         /**
          * Elbasan. Since: 1.40
          */
-        ELBASAN,
+        ELBASAN = 91,
         /**
          * Grantha. Since: 1.40
          */
-        GRANTHA,
+        GRANTHA = 92,
         /**
          * Kjohki. Since: 1.40
          */
-        KHOJKI,
+        KHOJKI = 93,
         /**
          * Khudawadi, Sindhi. Since: 1.40
          */
-        KHUDAWADI,
+        KHUDAWADI = 94,
         /**
          * Linear A. Since: 1.40
          */
-        LINEAR_A,
+        LINEAR_A = 95,
         /**
          * Mahajani. Since: 1.40
          */
-        MAHAJANI,
+        MAHAJANI = 96,
         /**
          * Manichaean. Since: 1.40
          */
-        MANICHAEAN,
+        MANICHAEAN = 97,
         /**
          * Mende Kikakui. Since: 1.40
          */
-        MENDE_KIKAKUI,
+        MENDE_KIKAKUI = 98,
         /**
          * Modi. Since: 1.40
          */
-        MODI,
+        MODI = 99,
         /**
          * Mro. Since: 1.40
          */
-        MRO,
+        MRO = 100,
         /**
          * Nabataean. Since: 1.40
          */
-        NABATAEAN,
+        NABATAEAN = 101,
         /**
          * Old North Arabian. Since: 1.40
          */
-        OLD_NORTH_ARABIAN,
+        OLD_NORTH_ARABIAN = 102,
         /**
          * Old Permic. Since: 1.40
          */
-        OLD_PERMIC,
+        OLD_PERMIC = 103,
         /**
          * Pahawh Hmong. Since: 1.40
          */
-        PAHAWH_HMONG,
+        PAHAWH_HMONG = 104,
         /**
          * Palmyrene. Since: 1.40
          */
-        PALMYRENE,
+        PALMYRENE = 105,
         /**
          * Pau Cin Hau. Since: 1.40
          */
-        PAU_CIN_HAU,
+        PAU_CIN_HAU = 106,
         /**
          * Psalter Pahlavi. Since: 1.40
          */
-        PSALTER_PAHLAVI,
+        PSALTER_PAHLAVI = 107,
         /**
          * Siddham. Since: 1.40
          */
-        SIDDHAM,
+        SIDDHAM = 108,
         /**
          * Tirhuta. Since: 1.40
          */
-        TIRHUTA,
+        TIRHUTA = 109,
         /**
          * Warang Citi. Since: 1.40
          */
-        WARANG_CITI,
+        WARANG_CITI = 110,
         /**
          * Ahom. Since: 1.40
          */
-        AHOM,
+        AHOM = 111,
         /**
          * Anatolian Hieroglyphs. Since: 1.40
          */
-        ANATOLIAN_HIEROGLYPHS,
+        ANATOLIAN_HIEROGLYPHS = 112,
         /**
          * Hatran. Since: 1.40
          */
-        HATRAN,
+        HATRAN = 113,
         /**
          * Multani. Since: 1.40
          */
-        MULTANI,
+        MULTANI = 114,
         /**
          * Old Hungarian. Since: 1.40
          */
-        OLD_HUNGARIAN,
+        OLD_HUNGARIAN = 115,
         /**
          * Signwriting. Since: 1.40
          */
-        SIGNWRITING,
+        SIGNWRITING = 116,
     }
 
 
@@ -1273,39 +1273,39 @@ export namespace Pango {
         /**
          * ultra condensed width
          */
-        ULTRA_CONDENSED,
+        ULTRA_CONDENSED = 0,
         /**
          * extra condensed width
          */
-        EXTRA_CONDENSED,
+        EXTRA_CONDENSED = 1,
         /**
          * condensed width
          */
-        CONDENSED,
+        CONDENSED = 2,
         /**
          * semi condensed width
          */
-        SEMI_CONDENSED,
+        SEMI_CONDENSED = 3,
         /**
          * the normal width
          */
-        NORMAL,
+        NORMAL = 4,
         /**
          * semi expanded width
          */
-        SEMI_EXPANDED,
+        SEMI_EXPANDED = 5,
         /**
          * expanded width
          */
-        EXPANDED,
+        EXPANDED = 6,
         /**
          * extra expanded width
          */
-        EXTRA_EXPANDED,
+        EXTRA_EXPANDED = 7,
         /**
          * ultra expanded width
          */
-        ULTRA_EXPANDED,
+        ULTRA_EXPANDED = 8,
     }
 
 
@@ -1324,15 +1324,15 @@ export namespace Pango {
         /**
          * the font is upright.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * the font is slanted, but in a roman style.
          */
-        OBLIQUE,
+        OBLIQUE = 1,
         /**
          * the font is slanted in an italic style.
          */
-        ITALIC,
+        ITALIC = 2,
     }
 
 
@@ -1352,23 +1352,23 @@ export namespace Pango {
         /**
          * the text appears to the right of the tab stop position
          */
-        LEFT,
+        LEFT = 0,
         /**
          * the text appears to the left of the tab stop position
          *   until the available space is filled. Since: 1.50
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * the text is centered at the tab stop position
          *   until the available space is filled. Since: 1.50
          */
-        CENTER,
+        CENTER = 2,
         /**
          * text before the first occurrence of the decimal point
          *   character appears to the left of the tab stop position (until the available
          *   space is filled), the rest to the right. Since: 1.50
          */
-        DECIMAL,
+        DECIMAL = 3,
     }
 
 
@@ -1388,20 +1388,20 @@ export namespace Pango {
         /**
          * Leave text unchanged
          */
-        NONE,
+        NONE = 0,
         /**
          * Display letters and numbers as lowercase
          */
-        LOWERCASE,
+        LOWERCASE = 1,
         /**
          * Display letters and numbers as uppercase
          */
-        UPPERCASE,
+        UPPERCASE = 2,
         /**
          * Display the first character of a word
          *   in titlecase
          */
-        CAPITALIZE,
+        CAPITALIZE = 3,
     }
 
 
@@ -1421,15 +1421,15 @@ export namespace Pango {
         /**
          * no underline should be drawn
          */
-        NONE,
+        NONE = 0,
         /**
          * a single underline should be drawn
          */
-        SINGLE,
+        SINGLE = 1,
         /**
          * a double underline should be drawn
          */
-        DOUBLE,
+        DOUBLE = 2,
         /**
          * a single underline should be drawn at a
          *   position beneath the ink extents of the text being
@@ -1438,7 +1438,7 @@ export namespace Pango {
          *   {@link Pango.Underline.SINGLE} should be used for extended
          *   portions of text.
          */
-        LOW,
+        LOW = 3,
         /**
          * an underline indicating an error should
          *   be drawn below. The exact style of rendering is up to the
@@ -1449,25 +1449,25 @@ export namespace Pango {
          *   may automatically be used. This type of underlining is
          *   available since Pango 1.4.
          */
-        ERROR,
+        ERROR = 4,
         /**
          * Like `PANGO_UNDERLINE_SINGLE`, but
          *   drawn continuously across multiple runs. This type
          *   of underlining is available since Pango 1.46.
          */
-        SINGLE_LINE,
+        SINGLE_LINE = 5,
         /**
          * Like `PANGO_UNDERLINE_DOUBLE`, but
          *   drawn continuously across multiple runs. This type
          *   of underlining is available since Pango 1.46.
          */
-        DOUBLE_LINE,
+        DOUBLE_LINE = 6,
         /**
          * Like `PANGO_UNDERLINE_ERROR`, but
          *   drawn continuously across multiple runs. This type
          *   of underlining is available since Pango 1.46.
          */
-        ERROR_LINE,
+        ERROR_LINE = 7,
     }
 
 
@@ -1486,39 +1486,39 @@ export namespace Pango {
         /**
          * A normal font.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * A font with the lower case characters
          *   replaced by smaller variants of the capital characters.
          */
-        SMALL_CAPS,
+        SMALL_CAPS = 1,
         /**
          * A font with all characters
          *   replaced by smaller variants of the capital characters. Since: 1.50
          */
-        ALL_SMALL_CAPS,
+        ALL_SMALL_CAPS = 2,
         /**
          * A font with the lower case characters
          *   replaced by smaller variants of the capital characters.
          *   Petite Caps can be even smaller than Small Caps. Since: 1.50
          */
-        PETITE_CAPS,
+        PETITE_CAPS = 3,
         /**
          * A font with all characters
          *   replaced by smaller variants of the capital characters.
          *   Petite Caps can be even smaller than Small Caps. Since: 1.50
          */
-        ALL_PETITE_CAPS,
+        ALL_PETITE_CAPS = 4,
         /**
          * A font with the upper case characters
          *   replaced by smaller variants of the capital letters. Since: 1.50
          */
-        UNICASE,
+        UNICASE = 5,
         /**
          * A font with capital letters that
          *   are more suitable for all-uppercase titles. Since: 1.50
          */
-        TITLE_CAPS,
+        TITLE_CAPS = 6,
     }
 
 
@@ -1540,51 +1540,51 @@ export namespace Pango {
         /**
          * the thin weight (= 100) Since: 1.24
          */
-        THIN,
+        THIN = 100,
         /**
          * the ultralight weight (= 200)
          */
-        ULTRALIGHT,
+        ULTRALIGHT = 200,
         /**
          * the light weight (= 300)
          */
-        LIGHT,
+        LIGHT = 300,
         /**
          * the semilight weight (= 350) Since: 1.36.7
          */
-        SEMILIGHT,
+        SEMILIGHT = 350,
         /**
          * the book weight (= 380) Since: 1.24)
          */
-        BOOK,
+        BOOK = 380,
         /**
          * the default weight (= 400)
          */
-        NORMAL,
+        NORMAL = 400,
         /**
          * the medium weight (= 500) Since: 1.24
          */
-        MEDIUM,
+        MEDIUM = 500,
         /**
          * the semibold weight (= 600)
          */
-        SEMIBOLD,
+        SEMIBOLD = 600,
         /**
          * the bold weight (= 700)
          */
-        BOLD,
+        BOLD = 700,
         /**
          * the ultrabold weight (= 800)
          */
-        ULTRABOLD,
+        ULTRABOLD = 800,
         /**
          * the heavy weight (= 900)
          */
-        HEAVY,
+        HEAVY = 900,
         /**
          * the ultraheavy weight (= 1000) Since: 1.24
          */
-        ULTRAHEAVY,
+        ULTRAHEAVY = 1000,
     }
 
 
@@ -1609,39 +1609,39 @@ export namespace Pango {
         /**
          * ultra condensed width
          */
-        ULTRA_CONDENSED,
+        ULTRA_CONDENSED = 500,
         /**
          * extra condensed width
          */
-        EXTRA_CONDENSED,
+        EXTRA_CONDENSED = 625,
         /**
          * condensed width
          */
-        CONDENSED,
+        CONDENSED = 750,
         /**
          * semi condensed width
          */
-        SEMI_CONDENSED,
+        SEMI_CONDENSED = 875,
         /**
          * the normal width
          */
-        NORMAL,
+        NORMAL = 1000,
         /**
          * semi expanded width
          */
-        SEMI_EXPANDED,
+        SEMI_EXPANDED = 1125,
         /**
          * expanded width
          */
-        EXPANDED,
+        EXPANDED = 1250,
         /**
          * extra expanded width
          */
-        EXTRA_EXPANDED,
+        EXTRA_EXPANDED = 1500,
         /**
          * ultra expanded width
          */
-        ULTRA_EXPANDED,
+        ULTRA_EXPANDED = 2000,
     }
 
 
@@ -1666,20 +1666,21 @@ export namespace Pango {
         /**
          * wrap lines at word boundaries.
          */
-        WORD,
+        WORD = 0,
         /**
          * wrap lines at character boundaries.
          */
-        CHAR,
+        CHAR = 1,
         /**
          * wrap lines at word boundaries, but fall back to
          *   character boundaries if there is not enough space for a full word.
          */
-        WORD_CHAR,
+        WORD_CHAR = 2,
         /**
          * do not wrap.
+         * @since 1.56
          */
-        NONE,
+        NONE = 3,
     }
 
 
@@ -1688,18 +1689,21 @@ export namespace Pango {
      * 
      * This is mainly used in vertical writing directions.
      * @since 1.16
+     * @default 1
      */
     const ANALYSIS_FLAG_CENTERED_BASELINE: number;
 
     /**
      * Whether this run holds ellipsized text.
      * @since 1.36.7
+     * @default 2
      */
     const ANALYSIS_FLAG_IS_ELLIPSIS: number;
 
     /**
      * Whether to add a hyphen at the end of the run during shaping.
      * @since 1.44
+     * @default 4
      */
     const ANALYSIS_FLAG_NEED_HYPHEN: number;
 
@@ -1707,6 +1711,7 @@ export namespace Pango {
      * Value for `start_index` in {@link Pango.Attribute} that indicates
      * the beginning of the text.
      * @since 1.24
+     * @default 0
      */
     const ATTR_INDEX_FROM_TEXT_BEGINNING: number;
 
@@ -1714,6 +1719,7 @@ export namespace Pango {
      * Value for `end_index` in {@link Pango.Attribute} that indicates
      * the end of the text.
      * @since 1.24
+     * @default 4294967295
      */
     const ATTR_INDEX_TO_TEXT_END: number;
 
@@ -1722,6 +1728,7 @@ export namespace Pango {
      * 
      * This is useful for example in shaper modules, to use as the glyph for
      * various zero-width Unicode characters (those passing {@link is_zero_width}).
+     * @default 268435455
      */
     const GLYPH_EMPTY: Glyph;
 
@@ -1734,6 +1741,7 @@ export namespace Pango {
      * Note that this value is defined such that it has the `PANGO_GLYPH_UNKNOWN_FLAG`
      * set.
      * @since 1.20
+     * @default 4294967295
      */
     const GLYPH_INVALID_INPUT: Glyph;
 
@@ -1742,9 +1750,13 @@ export namespace Pango {
      * character into an unknown-character glyph for that `gunichar`.
      * 
      * Such unknown-character glyphs may be rendered as a 'hex box'.
+     * @default 268435456
      */
     const GLYPH_UNKNOWN_FLAG: Glyph;
 
+    /**
+     * @default 62
+     */
     const RENDER_COMPONENT_ALL: number;
 
     /**
@@ -1756,26 +1768,31 @@ export namespace Pango {
      * 
      * When setting font sizes, device units are always considered to be
      * points (as in "12 point font"), rather than pixels.
+     * @default 1024
      */
     const SCALE: number;
 
     /**
      * The major component of the version of Pango available at compile-time.
+     * @default 1
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro component of the version of Pango available at compile-time.
+     * @default 2
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor component of the version of Pango available at compile-time.
+     * @default 58
      */
     const VERSION_MINOR: number;
 
     /**
      * A string literal containing the version of Pango available at compile-time.
+     * @default 1.58.2
      */
     const VERSION_STRING: string;
 
@@ -2599,6 +2616,7 @@ export namespace Pango {
      * @param context A valid parse context that was returned from {@link markup_parser_new}
      * @returns `false` if `error` is set, otherwise `true`
      * @since 1.31.0
+     * @throws GLib.Error
      */
     function markup_parser_finish(context: GLib.MarkupParseContext): [boolean, AttrList | null, string, string];
 
@@ -2673,6 +2691,7 @@ export namespace Pango {
      * @param length length of `markup_text`, or -1 if nul-terminated
      * @param accel_marker character that precedes an accelerator, or 0 for none
      * @returns `false` if `error` is set, otherwise `true`
+     * @throws GLib.Error
      */
     function parse_markup(markup_text: string, length: number, accel_marker: string): [boolean, AttrList | null, string, string];
 
@@ -3144,19 +3163,19 @@ export namespace Pango {
         /**
          * the font family is specified.
          */
-        FAMILY,
+        FAMILY = 1,
         /**
          * the font style is specified.
          */
-        STYLE,
+        STYLE = 2,
         /**
          * the font variant is specified.
          */
-        VARIANT,
+        VARIANT = 4,
         /**
          * the font weight is specified.
          */
-        WEIGHT,
+        WEIGHT = 8,
         /**
          * Font width is specified.
          * 
@@ -3164,31 +3183,35 @@ export namespace Pango {
          * 
          * 1.58
          */
-        WIDTH,
+        WIDTH = 16,
         /**
          * the font stretch/width is specified.
          */
-        STRETCH,
+        STRETCH = 16,
         /**
          * the font size is specified.
          */
-        SIZE,
+        SIZE = 32,
         /**
          * The font gravity is specified.
+         * @since 1.16
          */
-        GRAVITY,
+        GRAVITY = 64,
         /**
          * OpenType font variations are specified.
+         * @since 1.42
          */
-        VARIATIONS,
+        VARIATIONS = 128,
         /**
          * OpenType font features are specified.
+         * @since 1.56
          */
-        FEATURES,
+        FEATURES = 256,
         /**
          * Font color is specified.
+         * @since 1.57
          */
-        COLOR,
+        COLOR = 512,
     }
 
 
@@ -3210,12 +3233,12 @@ export namespace Pango {
         /**
          * Default behavior
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Apply context information
          *   from the serialization to the {@link Pango.Context}
          */
-        CONTEXT,
+        CONTEXT = 1,
     }
 
 
@@ -3237,15 +3260,15 @@ export namespace Pango {
         /**
          * Default behavior
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Include context information
          */
-        CONTEXT,
+        CONTEXT = 1,
         /**
          * Include information about the formatted output
          */
-        OUTPUT,
+        OUTPUT = 2,
     }
 
 
@@ -3270,31 +3293,31 @@ export namespace Pango {
         /**
          * No components
          */
-        NONE,
+        NONE = 0,
         /**
          * The plain glyphs of the layout
          */
-        PLAIN_GLYPH,
+        PLAIN_GLYPH = 2,
         /**
          * The color glyphs of the layout
          */
-        COLOR_GLYPH,
+        COLOR_GLYPH = 4,
         /**
          * Background of the layout
          */
-        BACKGROUND,
+        BACKGROUND = 8,
         /**
          * Underlines of the layout
          */
-        UNDERLINE,
+        UNDERLINE = 8,
         /**
          * Strikethrough lines of the layout
          */
-        STRIKETHROUGH,
+        STRIKETHROUGH = 16,
         /**
          * Overlines of the layout
          */
-        OVERLINE,
+        OVERLINE = 32,
     }
 
 
@@ -3316,12 +3339,12 @@ export namespace Pango {
         /**
          * Default value
          */
-        NONE,
+        NONE = 0,
         /**
          * Round glyph positions and widths to whole device units
          *   This option should be set if the target renderer can't do subpixel positioning of glyphs
          */
-        ROUND_POSITIONS,
+        ROUND_POSITIONS = 1,
     }
 
 
@@ -3342,20 +3365,20 @@ export namespace Pango {
         /**
          * No special treatment for invisible characters
          */
-        NONE,
+        NONE = 0,
         /**
          * Render spaces, tabs and newlines visibly
          */
-        SPACES,
+        SPACES = 1,
         /**
          * Render line breaks visibly
          */
-        LINE_BREAKS,
+        LINE_BREAKS = 2,
         /**
          * Render default-ignorable Unicode
          *   characters visibly
          */
-        IGNORABLES,
+        IGNORABLES = 4,
     }
 
 
@@ -4708,6 +4731,7 @@ export namespace Pango {
          * @param filename Path to the font file
          * @returns True if the font file is successfully loaded     into the fontmap, false if an error occurred.
          * @since 1.56
+         * @throws GLib.Error
          */
         add_font_file(filename: string): boolean;
 
@@ -5958,6 +5982,7 @@ export namespace Pango {
          * @param filename the file to save it to
          * @returns `true` if saving was successful
          * @since 1.50
+         * @throws GLib.Error
          */
         write_to_file(flags: LayoutSerializeFlags, filename: string): boolean;
 

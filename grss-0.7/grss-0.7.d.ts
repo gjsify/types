@@ -141,6 +141,7 @@ export namespace Grss {
          * (with `grss_feed_channel_set_source()`). Be aware this function is sync, do not
          * returns until the feed isn't downloaded and parsed.
          * @returns `true` if the feed is correctly fetched and parsed, `false` otherwise.
+         * @throws GLib.Error
          */
         fetch(): boolean;
 
@@ -148,6 +149,7 @@ export namespace Grss {
          * Utility to fetch and populate a {@link Grss.FeedChannel}, and retrieve all its
          * items.
          * @returns a GList of {@link Grss.FeedItem}, to be completely unreferenced and freed when no longer in use, or `null` if an error occurs.
+         * @throws GLib.Error
          */
         fetch_all(): FeedItem[];
 
@@ -173,6 +175,7 @@ export namespace Grss {
          * `grss_feed_channel_fetch_all_async()`.
          * @param res the {@link Gio.AsyncResult} passed to the callback.
          * @returns list of items fetched from the {@link Grss.FeedChannel}, or `null` if `error` is set. The list (and contained items) is freed at the end of the callback
+         * @throws GLib.Error
          */
         fetch_all_finish(res: Gio.AsyncResult): FeedItem[];
 
@@ -205,6 +208,7 @@ export namespace Grss {
          * `grss_feed_channel_fetch_async()`.
          * @param res the {@link Gio.AsyncResult} passed to the callback.
          * @returns `true` if `channel` informations have been successfully fetched, `false` otherwise.
+         * @throws GLib.Error
          */
         fetch_finish(res: Gio.AsyncResult): boolean;
 
@@ -515,6 +519,7 @@ export namespace Grss {
          * {@link Gio.File}, which is suggested to move on a permanent location to keep it over
          * time.
          * @returns temporary file where the contents have been written, or `null` if an error occours.
+         * @throws GLib.Error
          */
         fetch(): Gio.File;
 
@@ -540,6 +545,7 @@ export namespace Grss {
          * `grss_feed_enclosure_fetch_async()`.
          * @param res the {@link Gio.AsyncResult} passed to the callback.
          * @returns temporary file where the contents have been written, or `null` if an error occours.
+         * @throws GLib.Error
          */
         fetch_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -964,6 +970,7 @@ export namespace Grss {
          * @param feed a {@link Grss.FeedChannel} to be parsed.
          * @param doc XML document extracted from the contents of the feed, which must       already been fetched.
          * @returns a list of {@link Grss.FeedItem}, to be freed when no longer in use, or NULL if anerror occours and `error` is set.
+         * @throws GLib.Error
          */
         parse(feed: FeedChannel, doc: libxml2.DocPtr): FeedItem[];
 
@@ -974,6 +981,7 @@ export namespace Grss {
          * skips parsing of items into the document.
          * @param feed a {@link Grss.FeedChannel} to be parsed.
          * @param doc XML document extracted from the contents of the feed, which must       already been fetched.
+         * @throws GLib.Error
          */
         parse_channel(feed: FeedChannel, doc: libxml2.DocPtr): void;
     }
@@ -1075,6 +1083,7 @@ export namespace Grss {
          * @param format string rappresenting the desired export format, as returnes by          `grss_feeds_group_get_formats()`.
          * @param uri URI of the file to write.
          * @returns `true` if the file is created correctly, or `false` if an error occours and `error` is set.
+         * @throws GLib.Error
          */
         export_file(channels: FeedChannel[], format: string, uri: string): boolean;
 
@@ -1088,6 +1097,7 @@ export namespace Grss {
          * Parses the given file to obtain list of listed feeds.
          * @param path path of the file to parse.
          * @returns a list of `GrssFeedChannels`, or NULL if an error occours and `error` is set.
+         * @throws GLib.Error
          */
         parse_file(path: string): FeedChannel[];
     }
@@ -1102,14 +1112,14 @@ export namespace Grss {
              * @signal
              * @run-last
              */
-            "feed-fail": (arg0: GObject.Object) => void;
+            "feed-fail": (feed: GObject.Object) => void;
             /**
              * Emitted when the `pool` starts fetching a new {@link Grss.FeedChannel}. To be
              * used to know the internal status of the component.
              * @signal
              * @run-last
              */
-            "feed-fetching": (arg0: GObject.Object) => void;
+            "feed-fetching": (feed: GObject.Object) => void;
             /**
              * Emitted when a {@link Grss.FeedChannel} assigned to the `pool` has been fetched
              * and parsed. All parsed items are exposed in the array, with no
@@ -1119,7 +1129,7 @@ export namespace Grss {
              * @signal
              * @run-last
              */
-            "feed-ready": (arg0: GObject.Object, arg1: FeedItem[]) => void;
+            "feed-ready": (feed: GObject.Object, items: FeedItem[]) => void;
         }
 
         // Constructor properties interface
@@ -1219,12 +1229,12 @@ export namespace Grss {
              * @signal
              * @run-last
              */
-            "delete-subscription": (arg0: FeedChannel, arg1: string) => void;
+            "delete-subscription": (object: FeedChannel, p0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "new-subscription": (arg0: FeedChannel, arg1: string) => void;
+            "new-subscription": (object: FeedChannel, p0: string) => void;
         }
 
         // Constructor properties interface
@@ -1288,6 +1298,7 @@ export namespace Grss {
          * @param items list of `GrssFeedItems` to be added in         the feed.
          * @returns a newly allocated string holding the formatted feed, to be freed when no longer in use.
          * @deprecated since 0.6: Use `grss_feed_formatter_format()` instead.
+         * @throws GLib.Error
          */
         format_content(channel: FeedChannel, items: FeedItem[]): string;
 
@@ -1325,6 +1336,7 @@ export namespace Grss {
          * @param items list of `GrssFeedItems` to be added in         the feed.
          * @param uri URI of the file to write. The full path must exists.
          * @returns `true` if the file is successfully written, `false` otherwise.
+         * @throws GLib.Error
          */
         publish_file(channel: FeedChannel, items: FeedItem[], uri: string): boolean;
 
@@ -1336,6 +1348,7 @@ export namespace Grss {
          * @param items list of `GrssFeedItems` to be added in         the feed.
          * @param id name used in the external URL of the feed.
          * @returns `true` if the file is successfully written, `false` otherwise.
+         * @throws GLib.Error
          */
         publish_web(channel: FeedChannel, items: FeedItem[], id: string): boolean;
     }
@@ -1465,7 +1478,7 @@ export namespace Grss {
              * @signal
              * @run-last
              */
-            "notification-received": (arg0: GObject.Object, arg1: GObject.Object) => void;
+            "notification-received": (feed: GObject.Object, item: GObject.Object) => void;
         }
 
         // Constructor properties interface

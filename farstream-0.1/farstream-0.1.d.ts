@@ -36,11 +36,11 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum CandidateType {
-        HOST,
-        SRFLX,
-        PRFLX,
-        RELAY,
-        MULTICAST,
+        HOST = 0,
+        SRFLX = 1,
+        PRFLX = 2,
+        RELAY = 3,
+        MULTICAST = 4,
     }
 
 
@@ -56,9 +56,9 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum ComponentType {
-        NONE,
-        RTP,
-        RTCP,
+        NONE = 0,
+        RTP = 1,
+        RTCP = 2,
     }
 
 
@@ -119,8 +119,8 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum DTMFMethod {
-        RTP_RFC4733,
-        SOUND,
+        RTP_RFC4733 = 1,
+        SOUND = 2,
     }
 
 
@@ -177,9 +177,9 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum MediaType {
-        AUDIO,
-        VIDEO,
-        LAST,
+        AUDIO = 0,
+        VIDEO = 1,
+        LAST = 1,
     }
 
 
@@ -195,8 +195,8 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum NetworkProtocol {
-        UDP,
-        TCP,
+        UDP = 0,
+        TCP = 1,
     }
 
 
@@ -214,21 +214,33 @@ export namespace Farstream {
      * @gir-type Enum
      */
     enum StreamState {
-        FAILED,
-        DISCONNECTED,
-        GATHERING,
-        CONNECTING,
-        CONNECTED,
-        READY,
+        FAILED = 0,
+        DISCONNECTED = 1,
+        GATHERING = 2,
+        CONNECTING = 3,
+        CONNECTED = 4,
+        READY = 5,
     }
 
 
+    /**
+     * @default %d: %s %s clock:%d channels:%d params:%p
+     */
     const CODEC_FORMAT: string;
 
+    /**
+     * @default -1
+     */
     const CODEC_ID_ANY: number;
 
+    /**
+     * @default -2
+     */
     const CODEC_ID_DISABLE: number;
 
+    /**
+     * @default %d: (%s) %s
+     */
     const RTP_HEADER_EXTENSION_FORMAT: string;
 
     /**
@@ -279,6 +291,7 @@ export namespace Farstream {
      * 
      * @param filename Name of the {@link GLib.KeyFile} to read the codecs parameters from
      * @returns The {@link GLib.List} of {@link Farstream.Codec} or `null` if the keyfile was empty or an error occured.
+     * @throws GLib.Error
      */
     function codec_list_from_keyfile(filename: string): Codec[];
 
@@ -339,6 +352,7 @@ export namespace Farstream {
      * @param filename Name of the {@link GLib.KeyFile} to read the RTP Header Extensions from
      * @param media_type The media type for which to get header extensions
      * @returns a {@link GLib.List} of {@link Farstream.RtpHeaderExtension} that must be freed with `fs_rtp_header_extension_list_destroy()`
+     * @throws GLib.Error
      */
     function rtp_header_extension_list_from_keyfile(filename: string, media_type: MediaType): RtpHeaderExtension[];
 
@@ -409,10 +423,10 @@ export namespace Farstream {
      * @gir-type Flags
      */
     enum StreamDirection {
-        NONE,
-        SEND,
-        RECV,
-        BOTH,
+        NONE = 0,
+        SEND = 1,
+        RECV = 2,
+        BOTH = 3,
     }
 
 
@@ -479,6 +493,7 @@ export namespace Farstream {
         /**
          * Create a new Farstream Participant for the type of the given conference.
          * @returns the new {@link Farstream.Participant} that has been created. The {@link Farstream.Participant} is owned by the user and he must unref it when he is done with it.
+         * @throws GLib.Error
          */
         new_participant(): Participant;
 
@@ -486,6 +501,7 @@ export namespace Farstream {
          * Create a new Farstream session for the given conference.
          * @param media_type {@link Farstream.MediaType} of the new session
          * @returns the new {@link Farstream.Session} that has been created. The {@link Farstream.Session} must be unref'd by the user when closing the session.
+         * @throws GLib.Error
          */
         new_session(media_type: MediaType): Session;
 
@@ -526,7 +542,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            "element-added": (arg0: Gst.Bin, arg1: Gst.Element) => void;
+            "element-added": (bin: Gst.Bin, element: Gst.Element) => void;
         }
 
         // Constructor properties interface
@@ -600,6 +616,7 @@ export namespace Farstream {
          * the name of the file to load instead of the {@link GLib.KeyFile} directly.
          * @param filename The name of the keyfile to use
          * @returns `true` if the file was successfully loaded, `false` otherwise
+         * @throws GLib.Error
          */
         set_properties_from_file(filename: string): boolean;
 
@@ -762,7 +779,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            error: (arg0: GObject.Object, arg1: Error, arg2: string) => void;
+            error: (object: GObject.Object, error_no: Error, error_msg: string) => void;
             "notify::codec-preferences": (pspec: GObject.ParamSpec) => void;
             "notify::codecs": (pspec: GObject.ParamSpec) => void;
             "notify::codecs-without-config": (pspec: GObject.ParamSpec) => void;
@@ -1132,6 +1149,7 @@ export namespace Farstream {
          * @param participant {@link Farstream.Participant} of a participant for the new stream
          * @param direction {@link Farstream.StreamDirection} describing the direction of the new stream that will be created for this participant
          * @returns the new {@link Farstream.Stream} that has been created. User must unref the {@link Farstream.Stream} when the stream is ended. If an error occured, returns NULL.
+         * @throws GLib.Error
          */
         new_stream(participant: Participant, direction: StreamDirection): Stream;
 
@@ -1184,6 +1202,7 @@ export namespace Farstream {
          * be returned.
          * @param codec_preferences a {@link GLib.List} of {@link Farstream.Codec} with the desired configuration
          * @returns `true` on success, `false` on error.
+         * @throws GLib.Error
          */
         set_codec_preferences(codec_preferences: Codec[]): boolean;
 
@@ -1195,6 +1214,7 @@ export namespace Farstream {
          * copied so it must be free'd using `fs_codec_destroy()` when done.
          * @param send_codec a {@link Farstream.Codec} representing the codec to send
          * @returns `false` if the send codec couldn't be set.
+         * @throws GLib.Error
          */
         set_send_codec(send_codec: Codec): boolean;
 
@@ -1234,7 +1254,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            error: (arg0: Error, arg1: string) => void;
+            error: (errorno: Error, error_msg: string) => void;
             /**
              * This signal is emitted when a new gst source pad has been created for a
              * specific codec being received. There will be a different source pad for
@@ -1247,7 +1267,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            "src-pad-added": (arg0: Gst.Pad, arg1: Codec) => void;
+            "src-pad-added": (pad: Gst.Pad, codec: Codec) => void;
             "notify::current-recv-codecs": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
             "notify::negotiated-codecs": (pspec: GObject.ParamSpec) => void;
@@ -1479,6 +1499,7 @@ export namespace Farstream {
          * passed candidate using `fs_candidate_destroy()` when done.
          * @param candidates an {@link GLib.List} of {@link Farstream.Candidate} representing the remote candidates
          * @returns TRUE if the candidate was valid, FALSE otherwise
+         * @throws GLib.Error
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
 
@@ -1514,6 +1535,7 @@ export namespace Farstream {
          * one candidate per component.
          * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to force
          * @returns `true` if the candidates could be forced, `false` otherwise
+         * @throws GLib.Error
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
 
@@ -1565,6 +1587,7 @@ export namespace Farstream {
          * copied so it must be free'd using `fs_codec_list_destroy()` when done.
          * @param remote_codecs a {@link GLib.List} of {@link Farstream.Codec} representing the remote codecs
          * @returns `false` if the remote codecs couldn't be set.
+         * @throws GLib.Error
          */
         set_remote_codecs(remote_codecs: Codec[]): boolean;
 
@@ -1578,6 +1601,7 @@ export namespace Farstream {
          * @param stream_transmitter_parameters (array length=stream_transmitter_n_parameters) (allow-none): an array of n_parameters {@link GObject.Parameter} struct that will be passed to the newly-create {@link Farstream.StreamTransmitter}
          * @param stream_transmitter_n_parameters Number of parametrs passed to the stream transmitter
          * @returns `true` if the transmitter could be set, `false` otherwise
+         * @throws GLib.Error
          */
         set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter, stream_transmitter_n_parameters: number): boolean;
     }
@@ -1591,14 +1615,14 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            error: (arg0: Error, arg1: string) => void;
+            error: (errorno: Error, error_msg: string) => void;
             /**
              * This signal is emitted when a buffer coming from a confirmed known source
              * is received.
              * @signal
              * @run-last
              */
-            "known-source-packet-received": (arg0: number, arg1: null) => void;
+            "known-source-packet-received": (component: number, buffer: null) => void;
             /**
              * This signal is emitted when all local candidates have been
              * prepared, an ICE implementation would send its SDP offer or answer.
@@ -1615,20 +1639,20 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            "new-active-candidate-pair": (arg0: Candidate, arg1: Candidate) => void;
+            "new-active-candidate-pair": (local_candidate: Candidate, remote_candidate: Candidate) => void;
             /**
              * This signal is emitted when a new local candidate is discovered.
              * @signal
              * @run-last
              */
-            "new-local-candidate": (arg0: Candidate) => void;
+            "new-local-candidate": (local_candidate: Candidate) => void;
             /**
              * This signal is emitted when the ICE state (or equivalent) of the component
              * changes
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: number, arg1: StreamState) => void;
+            "state-changed": (component: number, state: StreamState) => void;
             "notify::associate-on-source": (pspec: GObject.ParamSpec) => void;
             "notify::preferred-local-candidates": (pspec: GObject.ParamSpec) => void;
             "notify::sending": (pspec: GObject.ParamSpec) => void;
@@ -1747,6 +1771,7 @@ export namespace Farstream {
          * This function is used to add remote candidates to the transmitter
          * @param candidates a {@link GLib.List} of the remote candidates
          * @returns TRUE of the candidate could be added, FALSE if it couldnt (and the {@link Gst.GError} will be set)
+         * @throws GLib.Error
          */
         add_remote_candidates(candidates: Candidate[]): boolean;
 
@@ -1764,6 +1789,7 @@ export namespace Farstream {
          * one candidate per component.
          * @param remote_candidates a {@link GLib.List} of {@link Farstream.Candidate} to force
          * @returns `true` if the candidates could be forced, `false` otherwise
+         * @throws GLib.Error
          */
         force_remote_candidates(remote_candidates: Candidate[]): boolean;
 
@@ -1772,6 +1798,7 @@ export namespace Farstream {
          * signals for new candidates and newly active candidates can be emitted
          * during the call to this function.
          * @returns `true` if it succeeds (or is not implemented), `false` otherwise
+         * @throws GLib.Error
          */
         gather_local_candidates(): boolean;
 
@@ -1791,7 +1818,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            error: (arg0: Error, arg1: string) => void;
+            error: (errorno: Error, error_msg: string) => void;
             /**
              * This signal is emitted when the transmitter wants to get a filter for
              * to use if sending is disabled. If you want to drop all buffers, just
@@ -1802,7 +1829,7 @@ export namespace Farstream {
              * @signal
              * @run-last
              */
-            "get-recvonly-filter": (arg0: number) => Gst.Element;
+            "get-recvonly-filter": (component: number) => Gst.Element;
             "notify::components": (pspec: GObject.ParamSpec) => void;
             "notify::gst-sink": (pspec: GObject.ParamSpec) => void;
             "notify::gst-src": (pspec: GObject.ParamSpec) => void;
@@ -1970,6 +1997,7 @@ export namespace Farstream {
          * @param n_parameters The number of parameters to pass to the newly created {@link Farstream.StreamTransmitter}
          * @param parameters an array of {@link GObject.Parameter}
          * @returns a new {@link Farstream.StreamTransmitter}, or NULL if there is an error
+         * @throws GLib.Error
          */
         new_stream_transmitter(participant: Participant, n_parameters: number, parameters: GObject.Parameter): StreamTransmitter;
     }

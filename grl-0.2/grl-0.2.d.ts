@@ -31,79 +31,79 @@ export namespace Grl {
         /**
          * The browse operation failed
          */
-        BROWSE_FAILED,
+        BROWSE_FAILED = 1,
         /**
          * The search operation failed
          */
-        SEARCH_FAILED,
+        SEARCH_FAILED = 2,
         /**
          * Searching NULL-text is not supported
          */
-        SEARCH_NULL_UNSUPPORTED,
+        SEARCH_NULL_UNSUPPORTED = 3,
         /**
          * The query operation failed
          */
-        QUERY_FAILED,
+        QUERY_FAILED = 4,
         /**
          * The resolution operation failed
          */
-        RESOLVE_FAILED,
+        RESOLVE_FAILED = 5,
         /**
          * The media was not found
          */
-        MEDIA_NOT_FOUND,
+        MEDIA_NOT_FOUND = 6,
         /**
          * The store operation failed
          */
-        STORE_FAILED,
+        STORE_FAILED = 7,
         /**
          * The store metadata operation failed
          */
-        STORE_METADATA_FAILED,
+        STORE_METADATA_FAILED = 8,
         /**
          * The removal operation failed
          */
-        REMOVE_FAILED,
+        REMOVE_FAILED = 9,
         /**
          * The media from_uri operation failed
          */
-        MEDIA_FROM_URI_FAILED,
+        MEDIA_FROM_URI_FAILED = 10,
         /**
          * Failed to load plugin configuration from a file
          */
-        CONFIG_LOAD_FAILED,
+        CONFIG_LOAD_FAILED = 11,
         /**
          * Failed to set configuration for plugin
          */
-        CONFIG_FAILED,
+        CONFIG_FAILED = 12,
         /**
          * Failed to unregister source
          */
-        UNREGISTER_SOURCE_FAILED,
+        UNREGISTER_SOURCE_FAILED = 13,
         /**
          * Failed to load plugin
          */
-        LOAD_PLUGIN_FAILED,
+        LOAD_PLUGIN_FAILED = 14,
         /**
          * Failed to unload plugin
          */
-        UNLOAD_PLUGIN_FAILED,
+        UNLOAD_PLUGIN_FAILED = 15,
         /**
          * Failed to register metadata key
          */
-        REGISTER_METADATA_KEY_FAILED,
+        REGISTER_METADATA_KEY_FAILED = 16,
         /**
          * Failed to start changed notifications
          */
-        NOTIFY_CHANGED_FAILED,
+        NOTIFY_CHANGED_FAILED = 17,
         /**
          * The operation was cancelled
          */
-        OPERATION_CANCELLED,
+        OPERATION_CANCELLED = 18,
         /**
          * Invalid authentication token
          */
-        AUTHENTICATION_TOKEN,
+        AUTHENTICATION_TOKEN = 19,
     }
 
 
@@ -115,31 +115,31 @@ export namespace Grl {
         /**
          * Log level none
          */
-        NONE,
+        NONE = 0,
         /**
          * Log on error
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Log on warning
          */
-        WARNING,
+        WARNING = 2,
         /**
          * Log on message
          */
-        MESSAGE,
+        MESSAGE = 3,
         /**
          * Log on info
          */
-        INFO,
+        INFO = 4,
         /**
          * Log on debug
          */
-        DEBUG,
+        DEBUG = 5,
         /**
          * Last level of log
          */
-        LAST,
+        LAST = 6,
     }
 
 
@@ -159,15 +159,15 @@ export namespace Grl {
         /**
          * Basic mode
          */
-        BASIC,
+        BASIC = 0,
         /**
          * Partial mode
          */
-        PARTIAL,
+        PARTIAL = 1,
         /**
          * Full mode
          */
-        FULL,
+        FULL = 2,
     }
 
 
@@ -185,23 +185,23 @@ export namespace Grl {
         /**
          * will be chosen last or not at all
          */
-        LOWEST,
+        LOWEST = -64,
         /**
          * unlikely to be chosen
          */
-        LOW,
+        LOW = -32,
         /**
          * likely to be chosen
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * will be chosen
          */
-        HIGH,
+        HIGH = 32,
         /**
          * will be chosen first
          */
-        HIGHEST,
+        HIGHEST = 64,
     }
 
 
@@ -222,192 +222,456 @@ export namespace Grl {
          * {@link Grl.Media} has changed, or in case of {@link Grl.MediaBox}, if several children have
          * been added and removed.
          */
-        CHANGED,
+        CHANGED = 0,
         /**
          * new content has been added.
          */
-        ADDED,
+        ADDED = 1,
         /**
          * content has been removed
          */
-        REMOVED,
+        REMOVED = 2,
     }
 
 
+    /**
+     * @default api-key
+     */
     const CONFIG_KEY_APIKEY: string;
 
+    /**
+     * @default api-key-blob
+     */
     const CONFIG_KEY_APIKEY_BLOB: string;
 
+    /**
+     * @default api-secret
+     */
     const CONFIG_KEY_APISECRET: string;
 
+    /**
+     * @default api-token
+     */
     const CONFIG_KEY_APITOKEN: string;
 
+    /**
+     * @default api-token-secret
+     */
     const CONFIG_KEY_APITOKEN_SECRET: string;
 
+    /**
+     * @default password
+     */
     const CONFIG_KEY_PASSWORD: string;
 
+    /**
+     * @default target-plugin
+     */
     const CONFIG_KEY_PLUGIN: string;
 
+    /**
+     * @default target-source
+     */
     const CONFIG_KEY_SOURCE: string;
 
+    /**
+     * @default username
+     */
     const CONFIG_KEY_USERNAME: string;
 
+    /**
+     * @default -1
+     */
     const COUNT_INFINITY: number;
 
+    /**
+     * @default u
+     */
     const KEYID_FORMAT: string;
 
+    /**
+     * @default 1
+     */
     const METADATA_KEY_ALBUM: number;
 
+    /**
+     * @default 2
+     */
     const METADATA_KEY_ARTIST: number;
 
+    /**
+     * @default 57
+     */
     const METADATA_KEY_AUDIO_TRACK: number;
 
+    /**
+     * @default 3
+     */
     const METADATA_KEY_AUTHOR: number;
 
+    /**
+     * @default 4
+     */
     const METADATA_KEY_BITRATE: number;
 
+    /**
+     * @default 35
+     */
     const METADATA_KEY_CAMERA_MODEL: number;
 
+    /**
+     * @default 5
+     */
     const METADATA_KEY_CERTIFICATE: number;
 
+    /**
+     * @default 6
+     */
     const METADATA_KEY_CHILDCOUNT: number;
 
+    /**
+     * @default -1
+     */
     const METADATA_KEY_CHILDCOUNT_UNKNOWN: number;
 
+    /**
+     * @default 34
+     */
     const METADATA_KEY_CREATION_DATE: number;
 
+    /**
+     * @default 8
+     */
     const METADATA_KEY_DESCRIPTION: number;
 
+    /**
+     * @default 48
+     */
     const METADATA_KEY_DIRECTOR: number;
 
+    /**
+     * @default 9
+     */
     const METADATA_KEY_DURATION: number;
 
+    /**
+     * @default 32
+     */
     const METADATA_KEY_EPISODE: number;
 
+    /**
+     * @default 56
+     */
     const METADATA_KEY_EPISODE_TITLE: number;
 
+    /**
+     * @default 38
+     */
     const METADATA_KEY_EXPOSURE_TIME: number;
 
+    /**
+     * @default 10
+     */
     const METADATA_KEY_EXTERNAL_PLAYER: number;
 
+    /**
+     * @default 11
+     */
     const METADATA_KEY_EXTERNAL_URL: number;
 
+    /**
+     * @default 43
+     */
     const METADATA_KEY_FAVOURITE: number;
 
+    /**
+     * @default 37
+     */
     const METADATA_KEY_FLASH_USED: number;
 
+    /**
+     * @default 12
+     */
     const METADATA_KEY_FRAMERATE: number;
 
+    /**
+     * @default 13
+     */
     const METADATA_KEY_GENRE: number;
 
+    /**
+     * @default 14
+     */
     const METADATA_KEY_HEIGHT: number;
 
+    /**
+     * @default 15
+     */
     const METADATA_KEY_ID: number;
 
+    /**
+     * @default 0
+     */
     const METADATA_KEY_INVALID: number;
 
+    /**
+     * @default 39
+     */
     const METADATA_KEY_ISO_SPEED: number;
 
+    /**
+     * @default 45
+     */
     const METADATA_KEY_KEYWORD: number;
 
+    /**
+     * @default 16
+     */
     const METADATA_KEY_LAST_PLAYED: number;
 
+    /**
+     * @default 17
+     */
     const METADATA_KEY_LAST_POSITION: number;
 
+    /**
+     * @default 18
+     */
     const METADATA_KEY_LICENSE: number;
 
+    /**
+     * @default 19
+     */
     const METADATA_KEY_LYRICS: number;
 
+    /**
+     * @default 52
+     */
     const METADATA_KEY_MB_ALBUM_ID: number;
 
+    /**
+     * @default 54
+     */
     const METADATA_KEY_MB_ARTIST_ID: number;
 
+    /**
+     * @default 55
+     */
     const METADATA_KEY_MB_RECORDING_ID: number;
 
+    /**
+     * @default 53
+     */
     const METADATA_KEY_MB_TRACK_ID: number;
 
+    /**
+     * @default 20
+     */
     const METADATA_KEY_MIME: number;
 
+    /**
+     * @default 41
+     */
     const METADATA_KEY_MODIFICATION_DATE: number;
 
+    /**
+     * @default 36
+     */
     const METADATA_KEY_ORIENTATION: number;
 
+    /**
+     * @default 49
+     */
     const METADATA_KEY_ORIGINAL_TITLE: number;
 
+    /**
+     * @default 46
+     */
     const METADATA_KEY_PERFORMER: number;
 
+    /**
+     * @default 21
+     */
     const METADATA_KEY_PLAY_COUNT: number;
 
+    /**
+     * @default 47
+     */
     const METADATA_KEY_PRODUCER: number;
 
+    /**
+     * @default 7
+     */
     const METADATA_KEY_PUBLICATION_DATE: number;
 
+    /**
+     * @default 22
+     */
     const METADATA_KEY_RATING: number;
 
+    /**
+     * @default 44
+     */
     const METADATA_KEY_REGION: number;
 
+    /**
+     * @default 31
+     */
     const METADATA_KEY_SEASON: number;
 
+    /**
+     * @default 33
+     */
     const METADATA_KEY_SHOW: number;
 
+    /**
+     * @default 23
+     */
     const METADATA_KEY_SITE: number;
 
+    /**
+     * @default 50
+     */
     const METADATA_KEY_SIZE: number;
 
+    /**
+     * @default 24
+     */
     const METADATA_KEY_SOURCE: number;
 
+    /**
+     * @default 42
+     */
     const METADATA_KEY_START_TIME: number;
 
+    /**
+     * @default 25
+     */
     const METADATA_KEY_STUDIO: number;
 
+    /**
+     * @default 26
+     */
     const METADATA_KEY_THUMBNAIL: number;
 
+    /**
+     * @default 27
+     */
     const METADATA_KEY_THUMBNAIL_BINARY: number;
 
+    /**
+     * @default 28
+     */
     const METADATA_KEY_TITLE: number;
 
+    /**
+     * @default 51
+     */
     const METADATA_KEY_TITLE_FROM_FILENAME: number;
 
+    /**
+     * @default 40
+     */
     const METADATA_KEY_TRACK_NUMBER: number;
 
+    /**
+     * @default 29
+     */
     const METADATA_KEY_URL: number;
 
+    /**
+     * @default 30
+     */
     const METADATA_KEY_WIDTH: number;
 
+    /**
+     * @default count
+     */
     const OPERATION_OPTION_COUNT: string;
 
+    /**
+     * @default key-equal-filter
+     */
     const OPERATION_OPTION_KEY_EQUAL_FILTER: string;
 
+    /**
+     * @default key-range-filter
+     */
     const OPERATION_OPTION_KEY_RANGE_FILTER: string;
 
+    /**
+     * @default resolution-flags
+     */
     const OPERATION_OPTION_RESOLUTION_FLAGS: string;
 
+    /**
+     * @default skip
+     */
     const OPERATION_OPTION_SKIP: string;
 
+    /**
+     * @default type-filter
+     */
     const OPERATION_OPTION_TYPE_FILTER: string;
 
+    /**
+     * @default 16
+     */
     const PADDING: number;
 
+    /**
+     * @default 8
+     */
     const PADDING_SMALL: number;
 
+    /**
+     * @default author
+     */
     const PLUGIN_AUTHOR: string;
 
+    /**
+     * @default description
+     */
     const PLUGIN_DESCRIPTION: string;
 
+    /**
+     * @default license
+     */
     const PLUGIN_LICENSE: string;
 
+    /**
+     * @default GRL_PLUGIN_LIST
+     */
     const PLUGIN_LIST_VAR: string;
 
+    /**
+     * @default name
+     */
     const PLUGIN_NAME: string;
 
+    /**
+     * @default GRL_PLUGIN_PATH
+     */
     const PLUGIN_PATH_VAR: string;
 
+    /**
+     * @default GRL_PLUGIN_RANKS
+     */
     const PLUGIN_RANKS_VAR: string;
 
+    /**
+     * @default site
+     */
     const PLUGIN_SITE: string;
 
+    /**
+     * @default version
+     */
     const PLUGIN_VERSION: string;
 
+    /**
+     * @default -1
+     */
     const SOURCE_REMAINING_UNKNOWN: number;
 
     /**
@@ -585,6 +849,7 @@ export namespace Grl {
      * @param options options wanted for that operation
      * @returns a list with {@link Grl.Media} elements
      * @since 0.2.0
+     * @throws GLib.Error
      */
     function multiple_search_sync(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -724,23 +989,23 @@ export namespace Grl {
         /**
          * no media
          */
-        NONE,
+        NONE = 0,
         /**
          * audio media
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * video media
          */
-        VIDEO,
+        VIDEO = 2,
         /**
          * image media
          */
-        IMAGE,
+        IMAGE = 4,
         /**
          * any media
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -759,19 +1024,19 @@ export namespace Grl {
         /**
          * Normal mode.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Try other plugins if necessary.
          */
-        FULL,
+        FULL = 1,
         /**
          * Use idle loop to relay results.
          */
-        IDLE_RELAY,
+        IDLE_RELAY = 2,
         /**
          * Only resolve fast metadata keys.
          */
-        FAST_ONLY,
+        FAST_ONLY = 4,
     }
 
 
@@ -791,48 +1056,48 @@ export namespace Grl {
         /**
          * no operation is supported
          */
-        NONE,
+        NONE = 0,
         /**
          * Fetch specific keys of metadata based on other metadata.
          */
-        RESOLVE,
+        RESOLVE = 1,
         /**
          * Retrieve complete sets of {@link Grl.Media}
          */
-        BROWSE,
+        BROWSE = 2,
         /**
          * Look up for {@link Grl.Media} given a search text
          */
-        SEARCH,
+        SEARCH = 4,
         /**
          * Look up for {@link Grl.Media} give a service specific query
          */
-        QUERY,
+        QUERY = 8,
         /**
          * Store content in a service
          */
-        STORE,
+        STORE = 16,
         /**
          * Store content as child of a certian parent category.
          */
-        STORE_PARENT,
+        STORE_PARENT = 32,
         /**
          * Update metadata of a {@link Grl.Media} in a service.
          */
-        STORE_METADATA,
+        STORE_METADATA = 64,
         /**
          * Remove content from a service.
          */
-        REMOVE,
+        REMOVE = 128,
         /**
          * Create a {@link Grl.Media} instance from an URI
          * representing a media resource.
          */
-        MEDIA_FROM_URI,
+        MEDIA_FROM_URI = 256,
         /**
          * Notify about changes in the {@link Grl.Source}.
          */
-        NOTIFY_CHANGE,
+        NOTIFY_CHANGE = 512,
     }
 
 
@@ -851,23 +1116,23 @@ export namespace Grl {
         /**
          * allow no content (only {@link Grl.MediaBox})
          */
-        NONE,
+        NONE = 0,
         /**
          * allow audio content
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * allow video content
          */
-        VIDEO,
+        VIDEO = 2,
         /**
          * allow image content
          */
-        IMAGE,
+        IMAGE = 4,
         /**
          * allow any type of content
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -886,11 +1151,11 @@ export namespace Grl {
         /**
          * Normal mode.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Try other plugins if necessary.
          */
-        FULL,
+        FULL = 1,
     }
 
 
@@ -3497,7 +3762,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "metadata-key-added": (arg0: string) => void;
+            "metadata-key-added": (key: string) => void;
             /**
              * Signals that a source has been added to the registry.
              * @signal
@@ -3505,7 +3770,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "source-added": (arg0: Source) => void;
+            "source-added": (source: Source) => void;
             /**
              * Signals that a source has been removed from the registry.
              * @signal
@@ -3513,7 +3778,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "source-removed": (arg0: Source) => void;
+            "source-removed": (source: Source) => void;
         }
 
         // Constructor properties interface
@@ -3568,6 +3833,7 @@ export namespace Grl {
          * @param config a configuration set
          * @returns `true` on success
          * @since 0.2.0
+         * @throws GLib.Error
          */
         add_config(config: Config): boolean;
 
@@ -3576,6 +3842,7 @@ export namespace Grl {
          * @param config_file a key-value file containing the configuration
          * @returns `true` on success
          * @since 0.2.0
+         * @throws GLib.Error
          */
         add_config_from_file(config_file: string): boolean;
 
@@ -3584,6 +3851,7 @@ export namespace Grl {
          * @param resource_path a key-value file containing the configuration
          * @returns `true` on success
          * @since 0.2.8
+         * @throws GLib.Error
          */
         add_config_from_resource(resource_path: string): boolean;
 
@@ -3642,6 +3910,7 @@ export namespace Grl {
          * by ":"
          * @returns `false`% is all the configured plugin paths are invalid, `true`% otherwise.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         load_all_plugins(): boolean;
 
@@ -3650,6 +3919,7 @@ export namespace Grl {
          * @param library_filename the path to the so file
          * @returns `true` if the module is loaded correctly
          * @since 0.2.0
+         * @throws GLib.Error
          */
         load_plugin(library_filename: string): boolean;
 
@@ -3662,6 +3932,7 @@ export namespace Grl {
          * @param plugin_id plugin identifier
          * @returns `true` if the plugin is loaded correctly
          * @since 0.2.0
+         * @throws GLib.Error
          */
         load_plugin_by_id(plugin_id: string): boolean;
 
@@ -3671,6 +3942,7 @@ export namespace Grl {
          * @param path the path to the directory
          * @returns `true` if the directory is valid.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         load_plugin_directory(path: string): boolean;
 
@@ -3748,6 +4020,7 @@ export namespace Grl {
          * @param param_spec The definition of the key to register
          * @returns The {@link Grl.KeyID} registered.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         register_metadata_key(param_spec: GObject.ParamSpec): KeyID;
 
@@ -3770,6 +4043,7 @@ export namespace Grl {
         /**
          * @param param_spec 
          * @param key 
+         * @throws GLib.Error
          */
         register_metadata_key_system(param_spec: GObject.ParamSpec, key: KeyID): KeyID;
 
@@ -3779,6 +4053,7 @@ export namespace Grl {
          * @param source the source to register
          * @returns `true` if success, `false`% otherwise.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         register_source(plugin: Plugin, source: Source): boolean;
 
@@ -3795,6 +4070,7 @@ export namespace Grl {
          * @param plugin_id the identifier of the plugin
          * @returns `true`% on success.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         unload_plugin(plugin_id: string): boolean;
 
@@ -3803,6 +4079,7 @@ export namespace Grl {
          * @param source the source to unregister
          * @returns `true` if success, `false`% otherwise.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         unregister_source(source: Source): boolean;
     }
@@ -4063,7 +4340,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "content-changed": (arg0: Media[], arg1: SourceChangeType, arg2: boolean) => void;
+            "content-changed": (changed_medias: Media[], change_type: SourceChangeType, location_unknown: boolean) => void;
             "notify::auto-split-threshold": (pspec: GObject.ParamSpec) => void;
             "notify::plugin": (pspec: GObject.ParamSpec) => void;
             "notify::rank": (pspec: GObject.ParamSpec) => void;
@@ -4515,6 +4792,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         browse_sync(container: Media | null, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -4584,6 +4862,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @returns a filled {@link Grl.Media}
          * @since 0.2.0
+         * @throws GLib.Error
          */
         get_media_from_uri_sync(uri: string, keys: KeyID[], options: OperationOptions): Media;
 
@@ -4683,6 +4962,7 @@ export namespace Grl {
          * of changes in the content.
          * @returns `TRUE` if initialization has succeed.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         notify_change_start(): boolean;
 
@@ -4692,6 +4972,7 @@ export namespace Grl {
          * the content.
          * @returns `TRUE` if stop has succeed.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         notify_change_stop(): boolean;
 
@@ -4722,6 +5003,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         query_sync(query: string, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -4741,6 +5023,7 @@ export namespace Grl {
          * This method is synchronous.
          * @param media a data transfer object
          * @since 0.2.0
+         * @throws GLib.Error
          */
         remove_sync(media: Media): void;
 
@@ -4768,6 +5051,7 @@ export namespace Grl {
          * @param options options to pass to this operation
          * @returns a filled {@link Grl.Media}
          * @since 0.2.0
+         * @throws GLib.Error
          */
         resolve_sync(media: Media | null, keys: KeyID[], options: OperationOptions): Media;
 
@@ -4803,6 +5087,7 @@ export namespace Grl {
          * @param options options wanted for that operation
          * @returns a {@link GLib.List} with {@link Grl.Media} elements. After use `g_object_unref()` every element and `g_list_free()` the list.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         search_sync(text: string, keys: KeyID[], options: OperationOptions): Media[];
 
@@ -4872,6 +5157,7 @@ export namespace Grl {
          * @param flags Flags to configure specific behaviors of the operation.
          * @returns a {@link GLib.List} of keys that could not be updated, or `NULL`
          * @since 0.2.0
+         * @throws GLib.Error
          */
         store_metadata_sync(media: Media, keys: KeyID[] | null, flags: WriteFlags): KeyID[];
 
@@ -4883,6 +5169,7 @@ export namespace Grl {
          * @param media a {@link Grl.Media} data transfer object
          * @param flags flags to configure specific behaviour of the operation
          * @since 0.2.0
+         * @throws GLib.Error
          */
         store_sync(parent: MediaBox | null, media: Media, flags: WriteFlags): void;
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./casilda-0.1.d.ts","./casilda-0.1-surface.d.ts"]
+  "include": ["./casilda-0.1.d.ts","./casilda-0.1-vocabulary.d.ts"]
 }
 
 

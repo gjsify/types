@@ -1,6 +1,6 @@
 {
     "name": "@girs/libvirtsandbox-1.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for LibvirtSandbox-1.0",
     "type": "module",
     "module": "libvirtsandbox-1.0.js",
@@ -31,15 +31,15 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/libvirtgobject-1.0": "^4.4.0",
-      "@girs/libvirtglib-1.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/libvirtgconfig-1.0": "^4.4.0",
-      "@girs/libxml2-2.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/libvirtgobject-1.0": "^4.5.0",
+      "@girs/libvirtglib-1.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/libvirtgconfig-1.0": "^4.5.0",
+      "@girs/libxml2-2.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

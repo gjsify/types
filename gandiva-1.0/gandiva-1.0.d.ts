@@ -40,34 +40,37 @@ export namespace Gandiva {
          * This means the result validity is an intersection of
          *   the validity of the children.
          */
-        IF_NULL,
+        IF_NULL = 0,
         /**
          * This means that the result is always valid.
          */
-        NEVER,
+        NEVER = 1,
         /**
          * This means that the result validity depends on some
          *   internal logic.
          */
-        INTERNAL,
+        INTERNAL = 2,
     }
 
 
     /**
      * The major version.
      * @since 1.0.0
+     * @default 3
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro version.
      * @since 1.0.0
+     * @default 0
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor version.
      * @since 1.0.0
+     * @default 0
      */
     const VERSION_MINOR: number;
 
@@ -1447,6 +1450,7 @@ export namespace Gandiva {
          * @param record_batch A {@link Arrow.RecordBatch}.
          * @returns The {@link Arrow.Array} as the result evaluated on success, `null` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         evaluate(record_batch: Arrow.RecordBatch): Arrow.Array[] | null;
     }

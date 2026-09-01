@@ -38,22 +38,22 @@ export namespace GstController {
         /**
          * steps-like interpolation, default
          */
-        NONE,
+        NONE = 0,
         /**
          * linear interpolation
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * cubic interpolation (natural), may overshoot
          *   the min or max values set by the control point, but is more 'curvy'
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * monotonic cubic interpolation, will not
          *   produce any values outside of the min-max range set by the control points
          *   (Since: 1.8)
          */
-        CUBIC_MONOTONIC,
+        CUBIC_MONOTONIC = 3,
     }
 
 
@@ -72,23 +72,23 @@ export namespace GstController {
         /**
          * sine waveform
          */
-        SINE,
+        SINE = 0,
         /**
          * square waveform
          */
-        SQUARE,
+        SQUARE = 1,
         /**
          * saw waveform
          */
-        SAW,
+        SAW = 2,
         /**
          * reverse saw waveform
          */
-        REVERSE_SAW,
+        REVERSE_SAW = 3,
         /**
          * triangle waveform
          */
-        TRIANGLE,
+        TRIANGLE = 4,
     }
 
 
@@ -512,21 +512,21 @@ export namespace GstController {
              * @since 1.6
              * @run-first
              */
-            "value-added": (arg0: ControlPoint) => void;
+            "value-added": (timed_value: ControlPoint) => void;
             /**
              * Emitted right after the new value has been set on `timed_signals`
              * @signal
              * @since 1.6
              * @run-first
              */
-            "value-changed": (arg0: ControlPoint) => void;
+            "value-changed": (timed_value: ControlPoint) => void;
             /**
              * Emitted when `timed_value` is removed from `self`
              * @signal
              * @since 1.6
              * @run-first
              */
-            "value-removed": (arg0: ControlPoint) => void;
+            "value-removed": (timed_value: ControlPoint) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }

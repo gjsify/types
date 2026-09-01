@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./atrilview-1.5.0.d.ts","./atrilview-1.5.0-surface.d.ts"]
+  "include": ["./atrilview-1.5.0.d.ts","./atrilview-1.5.0-vocabulary.d.ts"]
 }
 
 

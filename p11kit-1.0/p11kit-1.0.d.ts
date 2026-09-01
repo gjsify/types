@@ -26,20 +26,26 @@ export namespace P11Kit {
      * @gir-type Enum
      */
     enum UriResult {
-        OK,
-        UNEXPECTED,
-        BAD_SCHEME,
-        BAD_ENCODING,
-        BAD_SYNTAX,
-        BAD_VERSION,
-        NOT_FOUND,
+        OK = 0,
+        UNEXPECTED = -1,
+        BAD_SCHEME = -2,
+        BAD_ENCODING = -3,
+        BAD_SYNTAX = -4,
+        BAD_VERSION = -5,
+        NOT_FOUND = -6,
     }
 
 
     const PIN_FALLBACK: string;
 
+    /**
+     * @default pkcs11
+     */
     const URI_SCHEME: string;
 
+    /**
+     * @default 6
+     */
     const URI_SCHEME_LEN: number;
 
     /**
@@ -122,12 +128,12 @@ export namespace P11Kit {
      * @gir-type Flags
      */
     enum PinFlags {
-        USER_LOGIN,
-        SO_LOGIN,
-        CONTEXT_LOGIN,
-        RETRY,
-        MANY_TRIES,
-        FINAL_TRY,
+        USER_LOGIN = 1,
+        SO_LOGIN = 2,
+        CONTEXT_LOGIN = 4,
+        RETRY = 8,
+        MANY_TRIES = 16,
+        FINAL_TRY = 32,
     }
 
 
@@ -139,13 +145,13 @@ export namespace P11Kit {
      * @gir-type Flags
      */
     enum UriType {
-        OBJECT,
-        TOKEN,
-        MODULE,
-        MODULE_WITH_VERSION,
-        OBJECT_ON_TOKEN,
-        OBJECT_ON_TOKEN_AND_MODULE,
-        ANY,
+        OBJECT = 2,
+        TOKEN = 4,
+        MODULE = 8,
+        MODULE_WITH_VERSION = 24,
+        OBJECT_ON_TOKEN = 6,
+        OBJECT_ON_TOKEN_AND_MODULE = 14,
+        ANY = 65535,
     }
 
 

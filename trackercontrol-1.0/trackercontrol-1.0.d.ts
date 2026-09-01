@@ -34,12 +34,12 @@ export namespace TrackerControl {
          * The miner in question
          * is not active and can so can not be used.
          */
-        NOT_AVAILABLE,
+        NOT_AVAILABLE = 0,
         /**
          * The resource that the
          * miner is handling (for example a file or URI) does not exist.
          */
-        NOENT,
+        NOENT = 1,
     }
 
 
@@ -54,7 +54,7 @@ export namespace TrackerControl {
              * @since 0.8
              * @run-last
              */
-            "miner-activated": (arg0: string) => void;
+            "miner-activated": (miner: string) => void;
             /**
              * The ::miner-deactivated signal will be emitted whenever a miner
              * (referenced by `miner`) is deactivated (technically, this means
@@ -63,7 +63,7 @@ export namespace TrackerControl {
              * @since 0.8
              * @run-last
              */
-            "miner-deactivated": (arg0: string) => void;
+            "miner-deactivated": (miner: string) => void;
             /**
              * The ::miner-paused signal will be emitted whenever a miner
              * (referenced by `miner`) is paused.
@@ -71,7 +71,7 @@ export namespace TrackerControl {
              * @since 0.8
              * @run-last
              */
-            "miner-paused": (arg0: string) => void;
+            "miner-paused": (miner: string) => void;
             /**
              * The ::miner-progress signal is meant to report status/progress changes
              * in any tracked miner.
@@ -79,7 +79,7 @@ export namespace TrackerControl {
              * @since 0.12
              * @run-last
              */
-            "miner-progress": (arg0: string, arg1: string, arg2: number, arg3: number) => void;
+            "miner-progress": (miner: string, status: string, progress: number, remaining_time: number) => void;
             /**
              * The ::miner-resumed signal will be emitted whenever a miner
              * (referenced by `miner`) is resumed.
@@ -87,7 +87,7 @@ export namespace TrackerControl {
              * @since 0.8
              * @run-last
              */
-            "miner-resumed": (arg0: string) => void;
+            "miner-resumed": (miner: string) => void;
             "notify::auto-start": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -250,6 +250,7 @@ export namespace TrackerControl {
          * @param file a URL valid in GIO of a file to give to the miner for processing
          * @returns `true` on success, otherwise `false`.
          * @since 0.10
+         * @throws GLib.Error
          */
         index_file(file: Gio.File): boolean;
 
@@ -292,6 +293,7 @@ export namespace TrackerControl {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false`.
          * @since 0.16
+         * @throws GLib.Error
          */
         index_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -307,6 +309,7 @@ export namespace TrackerControl {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, otherwise `false`.
          * @since 1.10
+         * @throws GLib.Error
          */
         index_file_for_process(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -367,6 +370,7 @@ export namespace TrackerControl {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false`.
          * @since 1.10
+         * @throws GLib.Error
          */
         index_file_for_process_finish(result: Gio.AsyncResult): boolean;
 
@@ -426,6 +430,7 @@ export namespace TrackerControl {
          * @param mimetypes an array of mimetypes (E.G. "text/plain"). All items with a mimetype in that list will be reindexed.
          * @returns `true` on success, otherwise `false`.
          * @since 0.10
+         * @throws GLib.Error
          */
         reindex_by_mimetype(mimetypes: string[]): boolean;
 
@@ -481,6 +486,7 @@ export namespace TrackerControl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

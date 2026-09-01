@@ -39,13 +39,13 @@ export namespace RygelCore {
      * @gir-type Enum
      */
     enum LogLevel {
-        INVALID,
-        ERROR,
-        CRITICAL,
-        WARNING,
-        INFO,
-        DEFAULT,
-        DEBUG,
+        INVALID = 0,
+        ERROR = 1,
+        CRITICAL = 2,
+        WARNING = 3,
+        INFO = 4,
+        DEFAULT = 4,
+        DEBUG = 5,
     }
 
 
@@ -60,16 +60,16 @@ export namespace RygelCore {
      * @gir-type Enum
      */
     enum ConfigurationEntry {
-        INTERFACE,
-        PORT,
-        TRANSCODING,
-        ALLOW_UPLOAD,
-        ALLOW_DELETION,
-        LOG_LEVELS,
-        PLUGIN_PATH,
-        VIDEO_UPLOAD_FOLDER,
-        MUSIC_UPLOAD_FOLDER,
-        PICTURE_UPLOAD_FOLDER,
+        INTERFACE = 0,
+        PORT = 1,
+        TRANSCODING = 2,
+        ALLOW_UPLOAD = 3,
+        ALLOW_DELETION = 4,
+        LOG_LEVELS = 5,
+        PLUGIN_PATH = 6,
+        VIDEO_UPLOAD_FOLDER = 7,
+        MUSIC_UPLOAD_FOLDER = 8,
+        PICTURE_UPLOAD_FOLDER = 9,
     }
 
 
@@ -84,8 +84,8 @@ export namespace RygelCore {
      * @gir-type Enum
      */
     enum SectionEntry {
-        TITLE,
-        ENABLED,
+        TITLE = 0,
+        ENABLED = 1,
     }
 
 
@@ -132,15 +132,15 @@ export namespace RygelCore {
      * @gir-type Flags
      */
     enum PluginCapabilities {
-        NONE,
-        IMAGE_UPLOAD,
-        VIDEO_UPLOAD,
-        AUDIO_UPLOAD,
+        NONE = 0,
+        IMAGE_UPLOAD = 1,
+        VIDEO_UPLOAD = 2,
+        AUDIO_UPLOAD = 4,
         UPLOAD,
-        TRACK_CHANGES,
-        CREATE_CONTAINERS,
-        DIAGNOSTICS,
-        ENERGY_MANAGEMENT,
+        TRACK_CHANGES = 8,
+        CREATE_CONTAINERS = 16,
+        DIAGNOSTICS = 32,
+        ENERGY_MANAGEMENT = 64,
     }
 
 
@@ -347,6 +347,7 @@ export namespace RygelCore {
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         save(path: string): void;
     }
@@ -508,6 +509,7 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -614,6 +616,7 @@ export namespace RygelCore {
         // Methods
         /**
          * @param plugin 
+         * @throws GLib.Error
          */
         create(plugin: Plugin): RootDevice;
 
@@ -661,6 +664,7 @@ export namespace RygelCore {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -812,52 +816,93 @@ export namespace RygelCore {
 
         /**
          * @deprecated since 0.19.2
+         * @throws GLib.Error
          */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -873,18 +918,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
 
@@ -1011,7 +1059,7 @@ export namespace RygelCore {
             /**
              * @signal
              */
-            "plugin-available": (arg0: Plugin) => void;
+            "plugin-available": (plugin: Plugin) => void;
             "notify::base-path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1307,6 +1355,7 @@ export namespace RygelCore {
         /**
          * @param device 
          * @param description_path 
+         * @throws GLib.Error
          */
         apply_hacks(device: RootDevice, description_path: string): void;
 
@@ -1635,51 +1684,94 @@ export namespace RygelCore {
         vfunc_get_bool(section: string, key: string): boolean;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -1688,18 +1780,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
 
@@ -1764,56 +1859,100 @@ export namespace RygelCore {
          */
         set_options(args: GLib.VariantDict): void;
 
+        /**
+         * @throws GLib.Error
+         */
         get_config_file(): string;
 
         /**
          * @deprecated since 0.19.2
+         * @throws GLib.Error
          */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -1829,18 +1968,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
 
@@ -2009,52 +2151,93 @@ export namespace RygelCore {
 
         /**
          * @deprecated since 0.19.2
+         * @throws GLib.Error
          */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -2070,18 +2253,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
 
@@ -2257,52 +2443,93 @@ export namespace RygelCore {
 
         /**
          * @deprecated since 0.19.2
+         * @throws GLib.Error
          */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -2318,18 +2545,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
 
@@ -2525,6 +2755,7 @@ export namespace RygelCore {
         /**
          * @param device 
          * @param template_path 
+         * @throws GLib.Error
          */
         apply_on_device(device: RootDevice, template_path: string | null): void;
 
@@ -2853,6 +3084,7 @@ export namespace RygelCore {
         /**
          * @param device 
          * @param template_path 
+         * @throws GLib.Error
          */
         apply_on_device(device: RootDevice, template_path: string | null): void;
     }
@@ -3206,6 +3438,9 @@ export namespace RygelCore {
     interface DBusInterface extends GObject.Object, DBusInterface.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         shutdown(): void;
     }
 
@@ -3286,6 +3521,7 @@ export namespace RygelCore {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         is_allowed_finish(_res_: Gio.AsyncResult): boolean;
     }
@@ -3436,52 +3672,93 @@ export namespace RygelCore {
         // Methods
         /**
          * @deprecated since 0.19.2
+         * @throws GLib.Error
          */
         get_interface(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_interfaces(): string[];
 
+        /**
+         * @throws GLib.Error
+         */
         get_port(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         get_transcoding(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_upload(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_allow_deletion(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_log_levels(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_plugin_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_engine_path(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_media_engine(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_video_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_music_upload_folder(): string | null;
 
+        /**
+         * @throws GLib.Error
+         */
         get_picture_upload_folder(): string | null;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_enabled(section: string): boolean;
 
         /**
          * @param section 
+         * @throws GLib.Error
          */
         get_title(section: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string(section: string, key: string): string;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_string_list(section: string, key: string): Gee.ArrayList;
 
@@ -3497,18 +3774,21 @@ export namespace RygelCore {
          * @param key 
          * @param min 
          * @param max 
+         * @throws GLib.Error
          */
         get_int(section: string, key: string, min: number, max: number): number;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_int_list(section: string, key: string): Gee.ArrayList;
 
         /**
          * @param section 
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(section: string, key: string): boolean;
     }

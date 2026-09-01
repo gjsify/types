@@ -41,43 +41,43 @@ export namespace GstPbutils {
         /**
          * no shading
          */
-        NONE,
+        NONE = 0,
         /**
          * plain fading
          */
-        FADE,
+        FADE = 1,
         /**
          * fade and move up
          */
-        FADE_AND_MOVE_UP,
+        FADE_AND_MOVE_UP = 2,
         /**
          * fade and move down
          */
-        FADE_AND_MOVE_DOWN,
+        FADE_AND_MOVE_DOWN = 3,
         /**
          * fade and move left
          */
-        FADE_AND_MOVE_LEFT,
+        FADE_AND_MOVE_LEFT = 4,
         /**
          * fade and move right
          */
-        FADE_AND_MOVE_RIGHT,
+        FADE_AND_MOVE_RIGHT = 5,
         /**
          * fade and move horizontally out
          */
-        FADE_AND_MOVE_HORIZ_OUT,
+        FADE_AND_MOVE_HORIZ_OUT = 6,
         /**
          * fade and move horizontally in
          */
-        FADE_AND_MOVE_HORIZ_IN,
+        FADE_AND_MOVE_HORIZ_IN = 7,
         /**
          * fade and move vertically out
          */
-        FADE_AND_MOVE_VERT_OUT,
+        FADE_AND_MOVE_VERT_OUT = 8,
         /**
          * fade and move vertically in
          */
-        FADE_AND_MOVE_VERT_IN,
+        FADE_AND_MOVE_VERT_IN = 9,
     }
 
 
@@ -96,27 +96,27 @@ export namespace GstPbutils {
         /**
          * The discovery was successful
          */
-        OK,
+        OK = 0,
         /**
          * the URI is invalid
          */
-        URI_INVALID,
+        URI_INVALID = 1,
         /**
          * an error happened and the GError is set
          */
-        ERROR,
+        ERROR = 2,
         /**
          * the discovery timed-out
          */
-        TIMEOUT,
+        TIMEOUT = 3,
         /**
          * the discoverer was already discovering a file
          */
-        BUSY,
+        BUSY = 4,
         /**
          * Some plugins are missing for full discovery
          */
-        MISSING_PLUGINS,
+        MISSING_PLUGINS = 5,
     }
 
 
@@ -141,65 +141,66 @@ export namespace GstPbutils {
          * all of the requested plugins could be
          *     installed
          */
-        SUCCESS,
+        SUCCESS = 0,
         /**
          * no appropriate installation candidate for
          *     any of the requested plugins could be found. Only return this if nothing
          *     has been installed. Return #GST_INSTALL_PLUGINS_PARTIAL_SUCCESS if
          *     some (but not all) of the requested plugins could be installed.
          */
-        NOT_FOUND,
+        NOT_FOUND = 1,
         /**
          * an error occurred during the installation. If
          *     this happens, the  user has already seen an error message and another
          *     one should not be displayed
          */
-        ERROR,
+        ERROR = 2,
         /**
          * some of the requested plugins could
          *     be installed, but not all
          */
-        PARTIAL_SUCCESS,
+        PARTIAL_SUCCESS = 3,
         /**
          * the user has aborted the installation
          */
-        USER_ABORT,
+        USER_ABORT = 4,
         /**
          * the installer had an unclean exit code
          *     (ie. death by signal)
          */
-        CRASHED,
+        CRASHED = 100,
         /**
          * the helper returned an invalid status code
          */
-        INVALID,
+        INVALID = 101,
         /**
          * returned by `gst_install_plugins_async()` to
          *     indicate that everything went fine so far and the provided callback
          *     will be called with the result of the installation later
          */
-        STARTED_OK,
+        STARTED_OK = 200,
         /**
          * some internal failure has
          *     occurred when trying to start the installer
          */
-        INTERNAL_FAILURE,
+        INTERNAL_FAILURE = 201,
         /**
          * the helper script to call the
          *     actual installer is not installed
          */
-        HELPER_MISSING,
+        HELPER_MISSING = 202,
         /**
          * a previously-started plugin
          *     installation is still in progress, try again later
          */
-        INSTALL_IN_PROGRESS,
+        INSTALL_IN_PROGRESS = 203,
     }
 
 
     /**
      * {@link GstPbutils.EncodingTarget} category for recording and capture.
      * Targets within this category are optimized for low latency encoding.
+     * @default capture
      */
     const ENCODING_CATEGORY_CAPTURE: string;
 
@@ -207,6 +208,7 @@ export namespace GstPbutils {
      * {@link GstPbutils.EncodingTarget} category for device-specific targets.
      * The name of the target will usually be the constructor and model of the device,
      * and that target will contain `GstEncodingProfiles` suitable for that device.
+     * @default device
      */
     const ENCODING_CATEGORY_DEVICE: string;
 
@@ -215,6 +217,7 @@ export namespace GstPbutils {
      * The name of the target will be the name of the file extensions possible
      * for a particular target. Those targets are defining like 'default' formats
      * usually used for a particular file extension.
+     * @default file-extension
      */
     const ENCODING_CATEGORY_FILE_EXTENSION: string;
 
@@ -223,6 +226,7 @@ export namespace GstPbutils {
      * The name of the target will usually be the name of the online service
      * and that target will contain `GstEncodingProfiles` suitable for that online
      * service.
+     * @default online-service
      */
     const ENCODING_CATEGORY_ONLINE_SERVICE: string;
 
@@ -232,27 +236,32 @@ export namespace GstPbutils {
      * The name of the target will usually be the container type or editing target,
      * and that target will contain `GstEncodingProfiles` suitable for editing or
      * storage.
+     * @default storage-editing
      */
     const ENCODING_CATEGORY_STORAGE_EDITING: string;
 
     /**
      * The major version of GStreamer's gst-plugins-base libraries at compile time.
+     * @default 1
      */
     const PLUGINS_BASE_VERSION_MAJOR: number;
 
     /**
      * The micro version of GStreamer's gst-plugins-base libraries at compile time.
+     * @default 6
      */
     const PLUGINS_BASE_VERSION_MICRO: number;
 
     /**
      * The minor version of GStreamer's gst-plugins-base libraries at compile time.
+     * @default 28
      */
     const PLUGINS_BASE_VERSION_MINOR: number;
 
     /**
      * The nano version of GStreamer's gst-plugins-base libraries at compile time.
      * Actual releases have 0, GIT versions have 1, prerelease versions have 2-...
+     * @default 0
      */
     const PLUGINS_BASE_VERSION_NANO: number;
 
@@ -1041,24 +1050,24 @@ export namespace GstPbutils {
          * Serialize only basic information, excluding
          * caps, tags and miscellaneous information
          */
-        BASIC,
+        BASIC = 0,
         /**
          * Serialize the caps for each stream
          */
-        CAPS,
+        CAPS = 1,
         /**
          * Serialize the tags for each stream
          */
-        TAGS,
+        TAGS = 2,
         /**
          * Serialize miscellaneous information for each stream
          */
-        MISC,
+        MISC = 4,
         /**
          * Serialize all the available info, including
          * caps, tags and miscellaneous information
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -1079,41 +1088,42 @@ export namespace GstPbutils {
         /**
          * Caps describe a container format.
          */
-        CONTAINER,
+        CONTAINER = 1,
         /**
          * Caps describe an audio format, or a
          *     container format that can store audio.
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * Caps describe an video format, or a
          *     container format that can store video.
          */
-        VIDEO,
+        VIDEO = 4,
         /**
          * Caps describe an image format, or a
          *     container format that can store image.
          */
-        IMAGE,
+        IMAGE = 8,
         /**
          * Caps describe an subtitle format, or a
          *     container format that can store subtitles.
          */
-        SUBTITLE,
+        SUBTITLE = 16,
         /**
          * Container format is a tags container.
          */
-        TAG,
+        TAG = 32,
         /**
          * Container format can store any kind of
          *     stream type.
          */
-        GENERIC,
+        GENERIC = 64,
         /**
          * Caps describe a metadata format, or a container format that can store
          * metadata.
+         * @since 1.22
          */
-        METADATA,
+        METADATA = 128,
     }
 
 
@@ -1229,7 +1239,7 @@ export namespace GstPbutils {
              * @signal
              * @run-last
              */
-            discovered: (arg0: DiscovererInfo, arg1: GLib.Error | null) => void;
+            discovered: (info: DiscovererInfo, error: GLib.Error | null) => void;
             /**
              * Will be emitted in async mode when all pending URIs have been processed.
              * @signal
@@ -1244,7 +1254,7 @@ export namespace GstPbutils {
              * @since 1.24
              * @run-last
              */
-            "load-serialized-info": (arg0: string) => DiscovererInfo | null;
+            "load-serialized-info": (uri: string) => DiscovererInfo | null;
             /**
              * This signal is emitted after the source element has been created for, so
              * the URI being discovered, so it can be configured by setting additional
@@ -1256,7 +1266,7 @@ export namespace GstPbutils {
              * @signal
              * @run-last
              */
-            "source-setup": (arg0: Gst.Element) => void;
+            "source-setup": (source: Gst.Element) => void;
             /**
              * Will be emitted when the discover starts analyzing the pending URIs
              * @signal
@@ -1390,6 +1400,7 @@ export namespace GstPbutils {
          * afterwards.
          * @param uri The URI to run on.
          * @returns the result of the scanning. Can be `null` if an error occurred.
+         * @throws GLib.Error
          */
         discover_uri(uri: string): DiscovererInfo;
 
@@ -2543,6 +2554,7 @@ export namespace GstPbutils {
         /**
          * Saves the `target` to a default user-local directory.
          * @returns `true` if the target was correctly saved, else `false`.
+         * @throws GLib.Error
          */
         save(): boolean;
 
@@ -2550,6 +2562,7 @@ export namespace GstPbutils {
          * Saves the `target` to the provided file location.
          * @param filepath the location to store the `target` at.
          * @returns `true` if the target was correctly saved, else `false`.
+         * @throws GLib.Error
          */
         save_to_file(filepath: string): boolean;
     }

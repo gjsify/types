@@ -62,24 +62,24 @@ export namespace HarfBuzz {
          * Return cluster values grouped by graphemes into
          *   monotone order.
          */
-        MONOTONE_GRAPHEMES,
+        MONOTONE_GRAPHEMES = 0,
         /**
          * Return cluster values grouped into monotone order.
          */
-        MONOTONE_CHARACTERS,
+        MONOTONE_CHARACTERS = 1,
         /**
          * Don't group cluster values.
          */
-        CHARACTERS,
+        CHARACTERS = 2,
         /**
          * Only group clusters, but don't enforce monotone order.
          */
-        GRAPHEMES,
+        GRAPHEMES = 3,
         /**
          * Default cluster level,
          *   equal to `HB_BUFFER_CLUSTER_LEVEL_MONOTONE_GRAPHEMES`.
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -91,15 +91,15 @@ export namespace HarfBuzz {
         /**
          * Initial value for new buffer.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The buffer contains input characters (before shaping).
          */
-        UNICODE,
+        UNICODE = 1,
         /**
          * The buffer contains output glyphs (after shaping).
          */
-        GLYPHS,
+        GLYPHS = 2,
     }
 
 
@@ -115,23 +115,23 @@ export namespace HarfBuzz {
         /**
          * Initial, unset direction.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Text is set horizontally from left to right.
          */
-        LTR,
+        LTR = 4,
         /**
          * Text is set horizontally from right to left.
          */
-        RTL,
+        RTL = 5,
         /**
          * Text is set vertically from top to bottom.
          */
-        TTB,
+        TTB = 6,
         /**
          * Text is set vertically from bottom to top.
          */
-        BTT,
+        BTT = 7,
     }
 
 
@@ -145,14 +145,14 @@ export namespace HarfBuzz {
          * No cap; the line ends exactly at
          *   its endpoint.
          */
-        BUTT,
+        BUTT = 0,
         /**
          * Square cap; the line is extended
          *   past its endpoint by half the local stroke width.  Useful
          *   for composing closed shapes from line segments (e.g. a
          *   rectangle made from four lines).
          */
-        SQUARE,
+        SQUARE = 1,
     }
 
 
@@ -183,21 +183,21 @@ export namespace HarfBuzz {
         /**
          * HarfBuzz immediately makes a copy of the data.
          */
-        DUPLICATE,
+        DUPLICATE = 0,
         /**
          * HarfBuzz client will never modify the data,
          *     and HarfBuzz will never modify the data.
          */
-        READONLY,
+        READONLY = 1,
         /**
          * HarfBuzz client made a copy of the data solely
          *     for HarfBuzz, so HarfBuzz may modify the data.
          */
-        WRITABLE,
+        WRITABLE = 2,
         /**
          * See above
          */
-        READONLY_MAY_MAKE_WRITABLE,
+        READONLY_MAY_MAKE_WRITABLE = 3,
     }
 
 
@@ -209,23 +209,23 @@ export namespace HarfBuzz {
         /**
          * Glyphs not matching the other classifications
          */
-        UNCLASSIFIED,
+        UNCLASSIFIED = 0,
         /**
          * Spacing, single characters, capable of accepting marks
          */
-        BASE_GLYPH,
+        BASE_GLYPH = 1,
         /**
          * Glyphs that represent ligation of multiple characters
          */
-        LIGATURE,
+        LIGATURE = 2,
         /**
          * Non-spacing, combining glyphs that represent marks
          */
-        MARK,
+        MARK = 3,
         /**
          * Spacing glyphs that represent part of a single character
          */
-        COMPONENT,
+        COMPONENT = 4,
     }
 
 
@@ -240,227 +240,227 @@ export namespace HarfBuzz {
         /**
          * scriptPercentScaleDown
          */
-        SCRIPT_PERCENT_SCALE_DOWN,
+        SCRIPT_PERCENT_SCALE_DOWN = 0,
         /**
          * scriptScriptPercentScaleDown
          */
-        SCRIPT_SCRIPT_PERCENT_SCALE_DOWN,
+        SCRIPT_SCRIPT_PERCENT_SCALE_DOWN = 1,
         /**
          * delimitedSubFormulaMinHeight
          */
-        DELIMITED_SUB_FORMULA_MIN_HEIGHT,
+        DELIMITED_SUB_FORMULA_MIN_HEIGHT = 2,
         /**
          * displayOperatorMinHeight
          */
-        DISPLAY_OPERATOR_MIN_HEIGHT,
+        DISPLAY_OPERATOR_MIN_HEIGHT = 3,
         /**
          * mathLeading
          */
-        MATH_LEADING,
+        MATH_LEADING = 4,
         /**
          * axisHeight
          */
-        AXIS_HEIGHT,
+        AXIS_HEIGHT = 5,
         /**
          * accentBaseHeight
          */
-        ACCENT_BASE_HEIGHT,
+        ACCENT_BASE_HEIGHT = 6,
         /**
          * flattenedAccentBaseHeight
          */
-        FLATTENED_ACCENT_BASE_HEIGHT,
+        FLATTENED_ACCENT_BASE_HEIGHT = 7,
         /**
          * subscriptShiftDown
          */
-        SUBSCRIPT_SHIFT_DOWN,
+        SUBSCRIPT_SHIFT_DOWN = 8,
         /**
          * subscriptTopMax
          */
-        SUBSCRIPT_TOP_MAX,
+        SUBSCRIPT_TOP_MAX = 9,
         /**
          * subscriptBaselineDropMin
          */
-        SUBSCRIPT_BASELINE_DROP_MIN,
+        SUBSCRIPT_BASELINE_DROP_MIN = 10,
         /**
          * superscriptShiftUp
          */
-        SUPERSCRIPT_SHIFT_UP,
+        SUPERSCRIPT_SHIFT_UP = 11,
         /**
          * superscriptShiftUpCramped
          */
-        SUPERSCRIPT_SHIFT_UP_CRAMPED,
+        SUPERSCRIPT_SHIFT_UP_CRAMPED = 12,
         /**
          * superscriptBottomMin
          */
-        SUPERSCRIPT_BOTTOM_MIN,
+        SUPERSCRIPT_BOTTOM_MIN = 13,
         /**
          * superscriptBaselineDropMax
          */
-        SUPERSCRIPT_BASELINE_DROP_MAX,
+        SUPERSCRIPT_BASELINE_DROP_MAX = 14,
         /**
          * subSuperscriptGapMin
          */
-        SUB_SUPERSCRIPT_GAP_MIN,
+        SUB_SUPERSCRIPT_GAP_MIN = 15,
         /**
          * superscriptBottomMaxWithSubscript
          */
-        SUPERSCRIPT_BOTTOM_MAX_WITH_SUBSCRIPT,
+        SUPERSCRIPT_BOTTOM_MAX_WITH_SUBSCRIPT = 16,
         /**
          * spaceAfterScript
          */
-        SPACE_AFTER_SCRIPT,
+        SPACE_AFTER_SCRIPT = 17,
         /**
          * upperLimitGapMin
          */
-        UPPER_LIMIT_GAP_MIN,
+        UPPER_LIMIT_GAP_MIN = 18,
         /**
          * upperLimitBaselineRiseMin
          */
-        UPPER_LIMIT_BASELINE_RISE_MIN,
+        UPPER_LIMIT_BASELINE_RISE_MIN = 19,
         /**
          * lowerLimitGapMin
          */
-        LOWER_LIMIT_GAP_MIN,
+        LOWER_LIMIT_GAP_MIN = 20,
         /**
          * lowerLimitBaselineDropMin
          */
-        LOWER_LIMIT_BASELINE_DROP_MIN,
+        LOWER_LIMIT_BASELINE_DROP_MIN = 21,
         /**
          * stackTopShiftUp
          */
-        STACK_TOP_SHIFT_UP,
+        STACK_TOP_SHIFT_UP = 22,
         /**
          * stackTopDisplayStyleShiftUp
          */
-        STACK_TOP_DISPLAY_STYLE_SHIFT_UP,
+        STACK_TOP_DISPLAY_STYLE_SHIFT_UP = 23,
         /**
          * stackBottomShiftDown
          */
-        STACK_BOTTOM_SHIFT_DOWN,
+        STACK_BOTTOM_SHIFT_DOWN = 24,
         /**
          * stackBottomDisplayStyleShiftDown
          */
-        STACK_BOTTOM_DISPLAY_STYLE_SHIFT_DOWN,
+        STACK_BOTTOM_DISPLAY_STYLE_SHIFT_DOWN = 25,
         /**
          * stackGapMin
          */
-        STACK_GAP_MIN,
+        STACK_GAP_MIN = 26,
         /**
          * stackDisplayStyleGapMin
          */
-        STACK_DISPLAY_STYLE_GAP_MIN,
+        STACK_DISPLAY_STYLE_GAP_MIN = 27,
         /**
          * stretchStackTopShiftUp
          */
-        STRETCH_STACK_TOP_SHIFT_UP,
+        STRETCH_STACK_TOP_SHIFT_UP = 28,
         /**
          * stretchStackBottomShiftDown
          */
-        STRETCH_STACK_BOTTOM_SHIFT_DOWN,
+        STRETCH_STACK_BOTTOM_SHIFT_DOWN = 29,
         /**
          * stretchStackGapAboveMin
          */
-        STRETCH_STACK_GAP_ABOVE_MIN,
+        STRETCH_STACK_GAP_ABOVE_MIN = 30,
         /**
          * stretchStackGapBelowMin
          */
-        STRETCH_STACK_GAP_BELOW_MIN,
+        STRETCH_STACK_GAP_BELOW_MIN = 31,
         /**
          * fractionNumeratorShiftUp
          */
-        FRACTION_NUMERATOR_SHIFT_UP,
+        FRACTION_NUMERATOR_SHIFT_UP = 32,
         /**
          * fractionNumeratorDisplayStyleShiftUp
          */
-        FRACTION_NUMERATOR_DISPLAY_STYLE_SHIFT_UP,
+        FRACTION_NUMERATOR_DISPLAY_STYLE_SHIFT_UP = 33,
         /**
          * fractionDenominatorShiftDown
          */
-        FRACTION_DENOMINATOR_SHIFT_DOWN,
+        FRACTION_DENOMINATOR_SHIFT_DOWN = 34,
         /**
          * fractionDenominatorDisplayStyleShiftDown
          */
-        FRACTION_DENOMINATOR_DISPLAY_STYLE_SHIFT_DOWN,
+        FRACTION_DENOMINATOR_DISPLAY_STYLE_SHIFT_DOWN = 35,
         /**
          * fractionNumeratorGapMin
          */
-        FRACTION_NUMERATOR_GAP_MIN,
+        FRACTION_NUMERATOR_GAP_MIN = 36,
         /**
          * fractionNumDisplayStyleGapMin
          */
-        FRACTION_NUM_DISPLAY_STYLE_GAP_MIN,
+        FRACTION_NUM_DISPLAY_STYLE_GAP_MIN = 37,
         /**
          * fractionRuleThickness
          */
-        FRACTION_RULE_THICKNESS,
+        FRACTION_RULE_THICKNESS = 38,
         /**
          * fractionDenominatorGapMin
          */
-        FRACTION_DENOMINATOR_GAP_MIN,
+        FRACTION_DENOMINATOR_GAP_MIN = 39,
         /**
          * fractionDenomDisplayStyleGapMin
          */
-        FRACTION_DENOM_DISPLAY_STYLE_GAP_MIN,
+        FRACTION_DENOM_DISPLAY_STYLE_GAP_MIN = 40,
         /**
          * skewedFractionHorizontalGap
          */
-        SKEWED_FRACTION_HORIZONTAL_GAP,
+        SKEWED_FRACTION_HORIZONTAL_GAP = 41,
         /**
          * skewedFractionVerticalGap
          */
-        SKEWED_FRACTION_VERTICAL_GAP,
+        SKEWED_FRACTION_VERTICAL_GAP = 42,
         /**
          * overbarVerticalGap
          */
-        OVERBAR_VERTICAL_GAP,
+        OVERBAR_VERTICAL_GAP = 43,
         /**
          * overbarRuleThickness
          */
-        OVERBAR_RULE_THICKNESS,
+        OVERBAR_RULE_THICKNESS = 44,
         /**
          * overbarExtraAscender
          */
-        OVERBAR_EXTRA_ASCENDER,
+        OVERBAR_EXTRA_ASCENDER = 45,
         /**
          * underbarVerticalGap
          */
-        UNDERBAR_VERTICAL_GAP,
+        UNDERBAR_VERTICAL_GAP = 46,
         /**
          * underbarRuleThickness
          */
-        UNDERBAR_RULE_THICKNESS,
+        UNDERBAR_RULE_THICKNESS = 47,
         /**
          * underbarExtraDescender
          */
-        UNDERBAR_EXTRA_DESCENDER,
+        UNDERBAR_EXTRA_DESCENDER = 48,
         /**
          * radicalVerticalGap
          */
-        RADICAL_VERTICAL_GAP,
+        RADICAL_VERTICAL_GAP = 49,
         /**
          * radicalDisplayStyleVerticalGap
          */
-        RADICAL_DISPLAY_STYLE_VERTICAL_GAP,
+        RADICAL_DISPLAY_STYLE_VERTICAL_GAP = 50,
         /**
          * radicalRuleThickness
          */
-        RADICAL_RULE_THICKNESS,
+        RADICAL_RULE_THICKNESS = 51,
         /**
          * radicalExtraAscender
          */
-        RADICAL_EXTRA_ASCENDER,
+        RADICAL_EXTRA_ASCENDER = 52,
         /**
          * radicalKernBeforeDegree
          */
-        RADICAL_KERN_BEFORE_DEGREE,
+        RADICAL_KERN_BEFORE_DEGREE = 53,
         /**
          * radicalKernAfterDegree
          */
-        RADICAL_KERN_AFTER_DEGREE,
+        RADICAL_KERN_AFTER_DEGREE = 54,
         /**
          * radicalDegreeBottomRaisePercent
          */
-        RADICAL_DEGREE_BOTTOM_RAISE_PERCENT,
+        RADICAL_DEGREE_BOTTOM_RAISE_PERCENT = 55,
     }
 
 
@@ -474,19 +474,19 @@ export namespace HarfBuzz {
         /**
          * The top right corner of the glyph.
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 0,
         /**
          * The top left corner of the glyph.
          */
-        TOP_LEFT,
+        TOP_LEFT = 1,
         /**
          * The bottom right corner of the glyph.
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 2,
         /**
          * The bottom left corner of the glyph.
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 3,
     }
 
 
@@ -502,109 +502,109 @@ export namespace HarfBuzz {
         /**
          * Copyright notice
          */
-        COPYRIGHT,
+        COPYRIGHT = 0,
         /**
          * Font Family name
          */
-        FONT_FAMILY,
+        FONT_FAMILY = 1,
         /**
          * Font Subfamily name
          */
-        FONT_SUBFAMILY,
+        FONT_SUBFAMILY = 2,
         /**
          * Unique font identifier
          */
-        UNIQUE_ID,
+        UNIQUE_ID = 3,
         /**
          * Full font name that reflects
          * all family and relevant subfamily descriptors
          */
-        FULL_NAME,
+        FULL_NAME = 4,
         /**
          * Version string
          */
-        VERSION_STRING,
+        VERSION_STRING = 5,
         /**
          * PostScript name for the font
          */
-        POSTSCRIPT_NAME,
+        POSTSCRIPT_NAME = 6,
         /**
          * Trademark
          */
-        TRADEMARK,
+        TRADEMARK = 7,
         /**
          * Manufacturer Name
          */
-        MANUFACTURER,
+        MANUFACTURER = 8,
         /**
          * Designer
          */
-        DESIGNER,
+        DESIGNER = 9,
         /**
          * Description
          */
-        DESCRIPTION,
+        DESCRIPTION = 10,
         /**
          * URL of font vendor
          */
-        VENDOR_URL,
+        VENDOR_URL = 11,
         /**
          * URL of typeface designer
          */
-        DESIGNER_URL,
+        DESIGNER_URL = 12,
         /**
          * License Description
          */
-        LICENSE,
+        LICENSE = 13,
         /**
          * URL where additional licensing
          * information can be found
          */
-        LICENSE_URL,
+        LICENSE_URL = 14,
         /**
          * Typographic Family name
          */
-        TYPOGRAPHIC_FAMILY,
+        TYPOGRAPHIC_FAMILY = 16,
         /**
          * Typographic Subfamily name
          */
-        TYPOGRAPHIC_SUBFAMILY,
+        TYPOGRAPHIC_SUBFAMILY = 17,
         /**
          * Compatible Full Name for MacOS
          */
-        MAC_FULL_NAME,
+        MAC_FULL_NAME = 18,
         /**
          * Sample text
          */
-        SAMPLE_TEXT,
+        SAMPLE_TEXT = 19,
         /**
          * PostScript CID findfont name
          */
-        CID_FINDFONT_NAME,
+        CID_FINDFONT_NAME = 20,
         /**
          * WWS Family Name
          */
-        WWS_FAMILY,
+        WWS_FAMILY = 21,
         /**
          * WWS Subfamily Name
          */
-        WWS_SUBFAMILY,
+        WWS_SUBFAMILY = 22,
         /**
          * Light Background Palette
          */
-        LIGHT_BACKGROUND,
+        LIGHT_BACKGROUND = 23,
         /**
          * Dark Background Palette
          */
-        DARK_BACKGROUND,
+        DARK_BACKGROUND = 24,
         /**
          * Variations PostScript Name Prefix
          */
-        VARIATIONS_PS_PREFIX,
+        VARIATIONS_PS_PREFIX = 25,
         /**
          * Value to represent a nonexistent name ID.
          */
-        INVALID,
+        INVALID = 65535,
     }
 
 
@@ -622,143 +622,143 @@ export namespace HarfBuzz {
         /**
          * clear destination layer (bounded)
          */
-        CLEAR,
+        CLEAR = 0,
         /**
          * replace destination layer (bounded)
          */
-        SRC,
+        SRC = 1,
         /**
          * ignore the source
          */
-        DEST,
+        DEST = 2,
         /**
          * draw source layer on top of destination layer
          * (bounded)
          */
-        SRC_OVER,
+        SRC_OVER = 3,
         /**
          * draw destination on top of source
          */
-        DEST_OVER,
+        DEST_OVER = 4,
         /**
          * draw source where there was destination content
          * (unbounded)
          */
-        SRC_IN,
+        SRC_IN = 5,
         /**
          * leave destination only where there was
          * source content (unbounded)
          */
-        DEST_IN,
+        DEST_IN = 6,
         /**
          * draw source where there was no destination
          * content (unbounded)
          */
-        SRC_OUT,
+        SRC_OUT = 7,
         /**
          * leave destination only where there was no
          * source content
          */
-        DEST_OUT,
+        DEST_OUT = 8,
         /**
          * draw source on top of destination content and
          * only there
          */
-        SRC_ATOP,
+        SRC_ATOP = 9,
         /**
          * leave destination on top of source content
          * and only there (unbounded)
          */
-        DEST_ATOP,
+        DEST_ATOP = 10,
         /**
          * source and destination are shown where there is only
          * one of them
          */
-        XOR,
+        XOR = 11,
         /**
          * source and destination layers are accumulated
          */
-        PLUS,
+        PLUS = 12,
         /**
          * source and destination are complemented and
          * multiplied. This causes the result to be at least as light as the lighter
          * inputs.
          */
-        SCREEN,
+        SCREEN = 13,
         /**
          * multiplies or screens, depending on the
          * lightness of the destination color.
          */
-        OVERLAY,
+        OVERLAY = 14,
         /**
          * replaces the destination with the source if it
          * is darker, otherwise keeps the source.
          */
-        DARKEN,
+        DARKEN = 15,
         /**
          * replaces the destination with the source if it
          * is lighter, otherwise keeps the source.
          */
-        LIGHTEN,
+        LIGHTEN = 16,
         /**
          * brightens the destination color to reflect
          * the source color.
          */
-        COLOR_DODGE,
+        COLOR_DODGE = 17,
         /**
          * darkens the destination color to reflect
          * the source color.
          */
-        COLOR_BURN,
+        COLOR_BURN = 18,
         /**
          * Multiplies or screens, dependent on source
          * color.
          */
-        HARD_LIGHT,
+        HARD_LIGHT = 19,
         /**
          * Darkens or lightens, dependent on source
          * color.
          */
-        SOFT_LIGHT,
+        SOFT_LIGHT = 20,
         /**
          * Takes the difference of the source and
          * destination color.
          */
-        DIFFERENCE,
+        DIFFERENCE = 21,
         /**
          * Produces an effect similar to difference, but
          * with lower contrast.
          */
-        EXCLUSION,
+        EXCLUSION = 22,
         /**
          * source and destination layers are multiplied.
          * This causes the result to be at least as dark as the darker inputs.
          */
-        MULTIPLY,
+        MULTIPLY = 23,
         /**
          * Creates a color with the hue of the source
          * and the saturation and luminosity of the target.
          */
-        HSL_HUE,
+        HSL_HUE = 24,
         /**
          * Creates a color with the saturation
          * of the source and the hue and luminosity of the target. Painting with
          * this mode onto a gray area produces no change.
          */
-        HSL_SATURATION,
+        HSL_SATURATION = 25,
         /**
          * Creates a color with the hue and saturation
          * of the source and the luminosity of the target. This preserves the gray
          * levels of the target and is useful for coloring monochrome images or
          * tinting color images.
          */
-        HSL_COLOR,
+        HSL_COLOR = 26,
         /**
          * Creates a color with the luminosity of
          * the source and the hue and saturation of the target. This produces an
          * inverse effect to `HB_PAINT_COMPOSITE_MODE_HSL_COLOR`.
          */
-        HSL_LUMINOSITY,
+        HSL_LUMINOSITY = 27,
     }
 
 
@@ -777,19 +777,19 @@ export namespace HarfBuzz {
          * Outside the defined interval,
          *   the color of the closest color stop is used.
          */
-        PAD,
+        PAD = 0,
         /**
          * The color line is repeated over
          *   repeated multiples of the defined interval
          */
-        REPEAT,
+        REPEAT = 1,
         /**
          * The color line is repeated over
          *      repeated intervals, as for the repeat mode.
          *      However, in each repeated interval, the ordering of
          *      color stops is the reverse of the adjacent interval.
          */
-        REFLECT,
+        REFLECT = 2,
     }
 
 
@@ -806,231 +806,231 @@ export namespace HarfBuzz {
         /**
          * Spacing and enclosing marks; also many vowel and consonant signs, even if nonspacing
          */
-        NOT_REORDERED,
+        NOT_REORDERED = 0,
         /**
          * Marks which overlay a base letter or symbol
          */
-        OVERLAY,
+        OVERLAY = 1,
         /**
          * Diacritic nukta marks in Brahmi-derived scripts
          */
-        NUKTA,
+        NUKTA = 7,
         /**
          * Hiragana/Katakana voicing marks
          */
-        KANA_VOICING,
+        KANA_VOICING = 8,
         /**
          * Viramas
          */
-        VIRAMA,
+        VIRAMA = 9,
         /**
          * [Hebrew]
          */
-        CCC10,
+        CCC10 = 10,
         /**
          * [Hebrew]
          */
-        CCC11,
+        CCC11 = 11,
         /**
          * [Hebrew]
          */
-        CCC12,
+        CCC12 = 12,
         /**
          * [Hebrew]
          */
-        CCC13,
+        CCC13 = 13,
         /**
          * [Hebrew]
          */
-        CCC14,
+        CCC14 = 14,
         /**
          * [Hebrew]
          */
-        CCC15,
+        CCC15 = 15,
         /**
          * [Hebrew]
          */
-        CCC16,
+        CCC16 = 16,
         /**
          * [Hebrew]
          */
-        CCC17,
+        CCC17 = 17,
         /**
          * [Hebrew]
          */
-        CCC18,
+        CCC18 = 18,
         /**
          * [Hebrew]
          */
-        CCC19,
+        CCC19 = 19,
         /**
          * [Hebrew]
          */
-        CCC20,
+        CCC20 = 20,
         /**
          * [Hebrew]
          */
-        CCC21,
+        CCC21 = 21,
         /**
          * [Hebrew]
          */
-        CCC22,
+        CCC22 = 22,
         /**
          * [Hebrew]
          */
-        CCC23,
+        CCC23 = 23,
         /**
          * [Hebrew]
          */
-        CCC24,
+        CCC24 = 24,
         /**
          * [Hebrew]
          */
-        CCC25,
+        CCC25 = 25,
         /**
          * [Hebrew]
          */
-        CCC26,
+        CCC26 = 26,
         /**
          * [Arabic]
          */
-        CCC27,
+        CCC27 = 27,
         /**
          * [Arabic]
          */
-        CCC28,
+        CCC28 = 28,
         /**
          * [Arabic]
          */
-        CCC29,
+        CCC29 = 29,
         /**
          * [Arabic]
          */
-        CCC30,
+        CCC30 = 30,
         /**
          * [Arabic]
          */
-        CCC31,
+        CCC31 = 31,
         /**
          * [Arabic]
          */
-        CCC32,
+        CCC32 = 32,
         /**
          * [Arabic]
          */
-        CCC33,
+        CCC33 = 33,
         /**
          * [Arabic]
          */
-        CCC34,
+        CCC34 = 34,
         /**
          * [Arabic]
          */
-        CCC35,
+        CCC35 = 35,
         /**
          * [Syriac]
          */
-        CCC36,
+        CCC36 = 36,
         /**
          * [Telugu]
          */
-        CCC84,
+        CCC84 = 84,
         /**
          * [Telugu]
          */
-        CCC91,
+        CCC91 = 91,
         /**
          * [Thai]
          */
-        CCC103,
+        CCC103 = 103,
         /**
          * [Thai]
          */
-        CCC107,
+        CCC107 = 107,
         /**
          * [Lao]
          */
-        CCC118,
+        CCC118 = 118,
         /**
          * [Lao]
          */
-        CCC122,
+        CCC122 = 122,
         /**
          * [Tibetan]
          */
-        CCC129,
+        CCC129 = 129,
         /**
          * [Tibetan]
          */
-        CCC130,
+        CCC130 = 130,
         /**
          * [Tibetan] Since: 7.2.0
          */
-        CCC132,
+        CCC132 = 132,
         /**
          * Marks attached at the bottom left
          */
-        ATTACHED_BELOW_LEFT,
+        ATTACHED_BELOW_LEFT = 200,
         /**
          * Marks attached directly below
          */
-        ATTACHED_BELOW,
+        ATTACHED_BELOW = 202,
         /**
          * Marks attached directly above
          */
-        ATTACHED_ABOVE,
+        ATTACHED_ABOVE = 214,
         /**
          * Marks attached at the top right
          */
-        ATTACHED_ABOVE_RIGHT,
+        ATTACHED_ABOVE_RIGHT = 216,
         /**
          * Distinct marks at the bottom left
          */
-        BELOW_LEFT,
+        BELOW_LEFT = 218,
         /**
          * Distinct marks directly below
          */
-        BELOW,
+        BELOW = 220,
         /**
          * Distinct marks at the bottom right
          */
-        BELOW_RIGHT,
+        BELOW_RIGHT = 222,
         /**
          * Distinct marks to the left
          */
-        LEFT,
+        LEFT = 224,
         /**
          * Distinct marks to the right
          */
-        RIGHT,
+        RIGHT = 226,
         /**
          * Distinct marks at the top left
          */
-        ABOVE_LEFT,
+        ABOVE_LEFT = 228,
         /**
          * Distinct marks directly above
          */
-        ABOVE,
+        ABOVE = 230,
         /**
          * Distinct marks at the top right
          */
-        ABOVE_RIGHT,
+        ABOVE_RIGHT = 232,
         /**
          * Distinct marks subtending two bases
          */
-        DOUBLE_BELOW,
+        DOUBLE_BELOW = 233,
         /**
          * Distinct marks extending above two bases
          */
-        DOUBLE_ABOVE,
+        DOUBLE_ABOVE = 234,
         /**
          * Greek iota subscript only
          */
-        IOTA_SUBSCRIPT,
+        IOTA_SUBSCRIPT = 240,
         /**
          * Invalid combining class
          */
-        INVALID,
+        INVALID = 255,
     }
 
 
@@ -1043,129 +1043,130 @@ export namespace HarfBuzz {
         /**
          * [Cc]
          */
-        CONTROL,
+        CONTROL = 0,
         /**
          * [Cf]
          */
-        FORMAT,
+        FORMAT = 1,
         /**
          * [Cn]
          */
-        UNASSIGNED,
+        UNASSIGNED = 2,
         /**
          * [Co]
          */
-        PRIVATE_USE,
+        PRIVATE_USE = 3,
         /**
          * [Cs]
          */
-        SURROGATE,
+        SURROGATE = 4,
         /**
          * [Ll]
          */
-        LOWERCASE_LETTER,
+        LOWERCASE_LETTER = 5,
         /**
          * [Lm]
          */
-        MODIFIER_LETTER,
+        MODIFIER_LETTER = 6,
         /**
          * [Lo]
          */
-        OTHER_LETTER,
+        OTHER_LETTER = 7,
         /**
          * [Lt]
          */
-        TITLECASE_LETTER,
+        TITLECASE_LETTER = 8,
         /**
          * [Lu]
          */
-        UPPERCASE_LETTER,
+        UPPERCASE_LETTER = 9,
         /**
          * [Mc]
          */
-        SPACING_MARK,
+        SPACING_MARK = 10,
         /**
          * [Me]
          */
-        ENCLOSING_MARK,
+        ENCLOSING_MARK = 11,
         /**
          * [Mn]
          */
-        NON_SPACING_MARK,
+        NON_SPACING_MARK = 12,
         /**
          * [Nd]
          */
-        DECIMAL_NUMBER,
+        DECIMAL_NUMBER = 13,
         /**
          * [Nl]
          */
-        LETTER_NUMBER,
+        LETTER_NUMBER = 14,
         /**
          * [No]
          */
-        OTHER_NUMBER,
+        OTHER_NUMBER = 15,
         /**
          * [Pc]
          */
-        CONNECT_PUNCTUATION,
+        CONNECT_PUNCTUATION = 16,
         /**
          * [Pd]
          */
-        DASH_PUNCTUATION,
+        DASH_PUNCTUATION = 17,
         /**
          * [Pe]
          */
-        CLOSE_PUNCTUATION,
+        CLOSE_PUNCTUATION = 18,
         /**
          * [Pf]
          */
-        FINAL_PUNCTUATION,
+        FINAL_PUNCTUATION = 19,
         /**
          * [Pi]
          */
-        INITIAL_PUNCTUATION,
+        INITIAL_PUNCTUATION = 20,
         /**
          * [Po]
          */
-        OTHER_PUNCTUATION,
+        OTHER_PUNCTUATION = 21,
         /**
          * [Ps]
          */
-        OPEN_PUNCTUATION,
+        OPEN_PUNCTUATION = 22,
         /**
          * [Sc]
          */
-        CURRENCY_SYMBOL,
+        CURRENCY_SYMBOL = 23,
         /**
          * [Sk]
          */
-        MODIFIER_SYMBOL,
+        MODIFIER_SYMBOL = 24,
         /**
          * [Sm]
          */
-        MATH_SYMBOL,
+        MATH_SYMBOL = 25,
         /**
          * [So]
          */
-        OTHER_SYMBOL,
+        OTHER_SYMBOL = 26,
         /**
          * [Zl]
          */
-        LINE_SEPARATOR,
+        LINE_SEPARATOR = 27,
         /**
          * [Zp]
          */
-        PARAGRAPH_SEPARATOR,
+        PARAGRAPH_SEPARATOR = 28,
         /**
          * [Zs]
          */
-        SPACE_SEPARATOR,
+        SPACE_SEPARATOR = 29,
     }
 
 
     /**
      * Used when getting or setting AAT feature selectors. Indicates that
      * there is no selector index corresponding to the selector of interest.
+     * @default 65535
      */
     const AAT_LAYOUT_NO_SELECTOR_INDEX: number;
 
@@ -1173,12 +1174,14 @@ export namespace HarfBuzz {
      * The default code point for replacing invalid characters in a given encoding.
      * Set to U+FFFD REPLACEMENT CHARACTER.
      * @since 0.9.31
+     * @default 65533
      */
     const BUFFER_REPLACEMENT_CODEPOINT_DEFAULT: number;
 
     /**
      * Unused {@link HarfBuzz.codepoint_t} value.
      * @since 8.0.0
+     * @default 4294967295
      */
     const CODEPOINT_INVALID: codepoint_t;
 
@@ -1186,6 +1189,7 @@ export namespace HarfBuzz {
      * Special setting for {@link HarfBuzz.feature_t}.start to apply the feature from the start
      * of the buffer.
      * @since 2.0.0
+     * @default 0
      */
     const FEATURE_GLOBAL_START: number;
 
@@ -1194,44 +1198,52 @@ export namespace HarfBuzz {
      * named-instance index set.  This is the default of
      * a font.
      * @since 7.0.0
+     * @default 4294967295
      */
     const FONT_NO_VAR_NAMED_INSTANCE: number;
 
     /**
      * An unset {@link HarfBuzz.language_t}.
      * @since 0.6.0
+     * @default 0
      */
     const LANGUAGE_INVALID: language_t;
 
     /**
      * Special value for language index indicating default or unsupported language.
+     * @default 65535
      */
     const OT_LAYOUT_DEFAULT_LANGUAGE_INDEX: number;
 
     /**
      * Special value for feature index indicating unsupported feature.
+     * @default 65535
      */
     const OT_LAYOUT_NO_FEATURE_INDEX: number;
 
     /**
      * Special value for script index indicating unsupported script.
+     * @default 65535
      */
     const OT_LAYOUT_NO_SCRIPT_INDEX: number;
 
     /**
      * Special value for variations index indicating unsupported variation.
+     * @default 4294967295
      */
     const OT_LAYOUT_NO_VARIATIONS_INDEX: number;
 
     /**
      * Maximum number of OpenType tags that can correspond to a give {@link HarfBuzz.language_t}.
      * @since 2.0.0
+     * @default 3
      */
     const OT_MAX_TAGS_PER_LANGUAGE: number;
 
     /**
      * Maximum number of OpenType tags that can correspond to a give {@link HarfBuzz.script_t}.
      * @since 2.0.0
+     * @default 3
      */
     const OT_MAX_TAGS_PER_SCRIPT: number;
 
@@ -1241,6 +1253,7 @@ export namespace HarfBuzz {
      * The serial number will increase when internal {@link HarfBuzz.glyph_info_t} and
      * {@link HarfBuzz.glyph_position_t} members change their format.
      * @since 13.2.0
+     * @default 1
      */
     const OT_SHAPE_BUFFER_FORMAT_SERIAL: number;
 
@@ -1248,33 +1261,49 @@ export namespace HarfBuzz {
      * Do not use.
      * @since 1.4.2
      * @deprecated since 2.2.0
+     * @default 4294967295
      */
     const OT_VAR_NO_AXIS_INDEX: number;
 
     /**
      * [Tibetan]
      * @deprecated since 7.2.0
+     * @default 133
      */
     const UNICODE_COMBINING_CLASS_CCC133: number;
 
     /**
      * Maximum valid Unicode code point.
      * @since 1.9.0
+     * @default 1114111
      */
     const UNICODE_MAX: number;
 
     /**
      * See Unicode 6.1 for details on the maximum decomposition length.
      * @deprecated since 2.0.0
+     * @default 19
      */
     const UNICODE_MAX_DECOMPOSITION_LEN: number;
 
+    /**
+     * @default 14
+     */
     const VERSION_MAJOR: number;
 
+    /**
+     * @default 0
+     */
     const VERSION_MICRO: number;
 
+    /**
+     * @default 4
+     */
     const VERSION_MINOR: number;
 
+    /**
+     * @default 14.4.0
+     */
     const VERSION_STRING: string;
 
     /**
@@ -7328,1007 +7357,1007 @@ export namespace HarfBuzz {
         /**
          * Initial, unset feature selector
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INVALID,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INVALID = 65535,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALL_TYPOGRAPHIC
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_TYPE_FEATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_TYPE_FEATURES_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALL_TYPOGRAPHIC
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_TYPE_FEATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_TYPE_FEATURES_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_REQUIRED_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_REQUIRED_LIGATURES_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_REQUIRED_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_REQUIRED_LIGATURES_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_COMMON_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_COMMON_LIGATURES_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_COMMON_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_COMMON_LIGATURES_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_RARE_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_RARE_LIGATURES_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_RARE_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_RARE_LIGATURES_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LOGOS_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LOGOS_ON = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LOGOS_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LOGOS_OFF = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_REBUS_PICTURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_REBUS_PICTURES_ON = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_REBUS_PICTURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_REBUS_PICTURES_OFF = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DIPHTHONG_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DIPHTHONG_LIGATURES_ON = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DIPHTHONG_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DIPHTHONG_LIGATURES_OFF = 11,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SQUARED_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SQUARED_LIGATURES_ON = 12,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SQUARED_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SQUARED_LIGATURES_OFF = 13,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ABBREV_SQUARED_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ABBREV_SQUARED_LIGATURES_ON = 14,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ABBREV_SQUARED_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ABBREV_SQUARED_LIGATURES_OFF = 15,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SYMBOL_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SYMBOL_LIGATURES_ON = 16,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SYMBOL_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SYMBOL_LIGATURES_OFF = 17,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_LIGATURES_ON = 18,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_LIGATURES_OFF = 19,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HISTORICAL_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HISTORICAL_LIGATURES_ON = 20,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HISTORICAL_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HISTORICAL_LIGATURES_OFF = 21,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_UNCONNECTED,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_UNCONNECTED = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PARTIALLY_CONNECTED,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PARTIALLY_CONNECTED = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LIGATURES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CURSIVE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CURSIVE = 2,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_AND_LOWER_CASE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_AND_LOWER_CASE = 0,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_CAPS = 1,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_LOWER_CASE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALL_LOWER_CASE = 2,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SMALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SMALL_CAPS = 3,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INITIAL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INITIAL_CAPS = 4,
         /**
          * Deprecated
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INITIAL_CAPS_AND_SMALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INITIAL_CAPS_AND_SMALL_CAPS = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_SUBSTITUTION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SUBSTITUTE_VERTICAL_FORMS_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SUBSTITUTE_VERTICAL_FORMS_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_SUBSTITUTION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SUBSTITUTE_VERTICAL_FORMS_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SUBSTITUTE_VERTICAL_FORMS_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LINGUISTIC_REARRANGEMENT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINGUISTIC_REARRANGEMENT_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINGUISTIC_REARRANGEMENT_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LINGUISTIC_REARRANGEMENT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINGUISTIC_REARRANGEMENT_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINGUISTIC_REARRANGEMENT_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_MONOSPACED_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_MONOSPACED_NUMBERS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_NUMBERS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_THIRD_WIDTH_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_THIRD_WIDTH_NUMBERS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_QUARTER_WIDTH_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_QUARTER_WIDTH_NUMBERS = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_INITIAL_SWASHES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_INITIAL_SWASHES_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_INITIAL_SWASHES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_INITIAL_SWASHES_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_FINAL_SWASHES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_FINAL_SWASHES_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_FINAL_SWASHES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_WORD_FINAL_SWASHES_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_INITIAL_SWASHES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_INITIAL_SWASHES_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_INITIAL_SWASHES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_INITIAL_SWASHES_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_FINAL_SWASHES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_FINAL_SWASHES_ON = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_FINAL_SWASHES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LINE_FINAL_SWASHES_OFF = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NON_FINAL_SWASHES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NON_FINAL_SWASHES_ON = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NON_FINAL_SWASHES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NON_FINAL_SWASHES_OFF = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DIACRITICS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SHOW_DIACRITICS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SHOW_DIACRITICS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DIACRITICS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HIDE_DIACRITICS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HIDE_DIACRITICS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DIACRITICS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DECOMPOSE_DIACRITICS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DECOMPOSE_DIACRITICS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NORMAL_POSITION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NORMAL_POSITION = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SUPERIORS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SUPERIORS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INFERIORS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INFERIORS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ORDINALS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ORDINALS = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SCIENTIFIC_INFERIORS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SCIENTIFIC_INFERIORS = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_FRACTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_FRACTIONS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_FRACTIONS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_FRACTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_VERTICAL_FRACTIONS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_VERTICAL_FRACTIONS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_FRACTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DIAGONAL_FRACTIONS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DIAGONAL_FRACTIONS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_OVERLAPPING_CHARACTERS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PREVENT_OVERLAP_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PREVENT_OVERLAP_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_OVERLAPPING_CHARACTERS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PREVENT_OVERLAP_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PREVENT_OVERLAP_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHENS_TO_EM_DASH_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHENS_TO_EM_DASH_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHENS_TO_EM_DASH_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHENS_TO_EM_DASH_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_EN_DASH_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_EN_DASH_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_EN_DASH_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_EN_DASH_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASHED_ZERO_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASHED_ZERO_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASHED_ZERO_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASHED_ZERO_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FORM_INTERROBANG_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FORM_INTERROBANG_ON = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FORM_INTERROBANG_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FORM_INTERROBANG_OFF = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SMART_QUOTES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SMART_QUOTES_ON = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SMART_QUOTES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SMART_QUOTES_OFF = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIODS_TO_ELLIPSIS_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIODS_TO_ELLIPSIS_ON = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIODS_TO_ELLIPSIS_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIODS_TO_ELLIPSIS_OFF = 11,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_MINUS_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_MINUS_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_MINUS_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HYPHEN_TO_MINUS_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ASTERISK_TO_MULTIPLY_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ASTERISK_TO_MULTIPLY_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ASTERISK_TO_MULTIPLY_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ASTERISK_TO_MULTIPLY_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASH_TO_DIVIDE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASH_TO_DIVIDE_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASH_TO_DIVIDE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SLASH_TO_DIVIDE_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INEQUALITY_LIGATURES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INEQUALITY_LIGATURES_ON = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INEQUALITY_LIGATURES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INEQUALITY_LIGATURES_OFF = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPONENTS_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPONENTS_ON = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPONENTS_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPONENTS_OFF = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_MATHEMATICAL_GREEK_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_MATHEMATICAL_GREEK_ON = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_MATHEMATICAL_GREEK_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_MATHEMATICAL_GREEK_OFF = 11,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ORNAMENTS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ORNAMENTS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DINGBATS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DINGBATS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PI_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PI_CHARACTERS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FLEURONS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FLEURONS = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DECORATIVE_BORDERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DECORATIVE_BORDERS = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INTERNATIONAL_SYMBOLS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INTERNATIONAL_SYMBOLS = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_MATH_SYMBOLS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_MATH_SYMBOLS = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ALTERNATES,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ALTERNATES = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL1,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL1 = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL2,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL2 = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL3,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL3 = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL4,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL4 = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL5,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DESIGN_LEVEL5 = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_STYLE_OPTIONS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_STYLE_OPTIONS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DISPLAY_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DISPLAY_TEXT = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ENGRAVED_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ENGRAVED_TEXT = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ILLUMINATED_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ILLUMINATED_CAPS = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TITLING_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TITLING_CAPS = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TALL_CAPS = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_CHARACTERS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SIMPLIFIED_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SIMPLIFIED_CHARACTERS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1978_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1978_CHARACTERS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1983_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1983_CHARACTERS = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1990_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS1990_CHARACTERS = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_ONE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_ONE = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_TWO,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_TWO = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_THREE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_THREE = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_FOUR,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_FOUR = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_FIVE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_ALT_FIVE = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPERT_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_EXPERT_CHARACTERS = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS2004_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_JIS2004_CHARACTERS = 11,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HOJO_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HOJO_CHARACTERS = 12,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NLCCHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NLCCHARACTERS = 13,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_NAMES_CHARACTERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRADITIONAL_NAMES_CHARACTERS = 14,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_NUMBERS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_NUMBER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_NUMBERS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_NUMBERS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_TEXT = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_MONOSPACED_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_MONOSPACED_TEXT = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_TEXT = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_THIRD_WIDTH_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_THIRD_WIDTH_TEXT = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_QUARTER_WIDTH_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_QUARTER_WIDTH_TEXT = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALT_PROPORTIONAL_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALT_PROPORTIONAL_TEXT = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALT_HALF_WIDTH_TEXT,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALT_HALF_WIDTH_TEXT = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_TRANSLITERATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_TRANSLITERATION = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HIRAGANA_TO_KATAKANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HIRAGANA_TO_KATAKANA = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_KATAKANA_TO_HIRAGANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_KATAKANA_TO_HIRAGANA = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_KANA_TO_ROMANIZATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_KANA_TO_ROMANIZATION = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMANIZATION_TO_HIRAGANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMANIZATION_TO_HIRAGANA = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMANIZATION_TO_KATAKANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMANIZATION_TO_KATAKANA = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_ONE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_ONE = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_TWO,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_TWO = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_THREE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HANJA_TO_HANGUL_ALT_THREE = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_ANNOTATION = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_BOX_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_BOX_ANNOTATION = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ROUNDED_BOX_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ROUNDED_BOX_ANNOTATION = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CIRCLE_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CIRCLE_ANNOTATION = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_CIRCLE_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_CIRCLE_ANNOTATION = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PARENTHESIS_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PARENTHESIS_ANNOTATION = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIOD_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PERIOD_ANNOTATION = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMAN_NUMERAL_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ROMAN_NUMERAL_ANNOTATION = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DIAMOND_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DIAMOND_ANNOTATION = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_BOX_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_BOX_ANNOTATION = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_ROUNDED_BOX_ANNOTATION,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_INVERTED_ROUNDED_BOX_ANNOTATION = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_KANA_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_KANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_KANA = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_KANA_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_KANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_KANA = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_IDEOGRAPHS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_IDEOGRAPHS = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_IDEOGRAPHS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_IDEOGRAPHS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_IDEOGRAPHS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_IDEOGRAPHS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CANONICAL_COMPOSITION_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CANONICAL_COMPOSITION_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CANONICAL_COMPOSITION_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CANONICAL_COMPOSITION_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_COMPATIBILITY_COMPOSITION_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_COMPATIBILITY_COMPOSITION_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_COMPATIBILITY_COMPOSITION_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_COMPATIBILITY_COMPOSITION_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRANSCODING_COMPOSITION_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRANSCODING_COMPOSITION_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_TRANSCODING_COMPOSITION_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_TRANSCODING_COMPOSITION_OFF = 5,
         /**
          * Deprecated; use #HB_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_OFF instead
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_RUBY_KANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_RUBY_KANA = 0,
         /**
          * Deprecated; use #HB_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_ON instead
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_RUBY_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_RUBY_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_RUBY_KANA_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_CJK_SYMBOL_ALTERNATIVES,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_CJK_SYMBOL_ALTERNATIVES = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_ONE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_ONE = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_TWO,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_TWO = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_THREE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_THREE = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_FOUR,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_FOUR = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_FIVE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_SYMBOL_ALT_FIVE = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_IDEOGRAPHIC_ALTERNATIVES,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_IDEOGRAPHIC_ALTERNATIVES = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_ONE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_ONE = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_TWO,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_TWO = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_THREE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_THREE = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_FOUR,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_FOUR = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_FIVE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_IDEOGRAPHIC_ALT_FIVE = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_VERTICAL_ROMAN_PLACEMENT_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_VERTICAL_ROMAN_CENTERED,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_VERTICAL_ROMAN_CENTERED = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_VERTICAL_ROMAN_PLACEMENT_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_VERTICAL_ROMAN_HBASELINE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_VERTICAL_ROMAN_HBASELINE = 1,
         /**
          * Deprecated; use #HB_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_OFF instead
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_CJK_ITALIC_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_CJK_ITALIC_ROMAN = 0,
         /**
          * Deprecated; use #HB_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_ON instead
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ITALIC_CJK_ROMAN
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ITALIC_CJK_ROMAN
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CJK_ITALIC_ROMAN_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_LAYOUT_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_LAYOUT_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_LAYOUT_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_LAYOUT_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_SPACING_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_SPACING_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_SPACING_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CASE_SENSITIVE_SPACING_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_HORIZ_KANA_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_HORIZ_KANA_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_HORIZ_KANA_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_HORIZ_KANA_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_VERT_KANA_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_VERT_KANA_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_VERT_KANA_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_ALTERNATE_VERT_KANA_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_STYLISTIC_ALTERNATES,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_NO_STYLISTIC_ALTERNATES = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ONE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ONE_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ONE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ONE_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWO_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWO_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWO_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWO_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THREE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THREE_ON = 6,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THREE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THREE_OFF = 7,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOUR_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOUR_ON = 8,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOUR_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOUR_OFF = 9,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIVE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIVE_ON = 10,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIVE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIVE_OFF = 11,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIX_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIX_ON = 12,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIX_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIX_OFF = 13,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVEN_ON = 14,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVEN_OFF = 15,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHT_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHT_ON = 16,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHT_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHT_OFF = 17,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINE_ON = 18,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINE_OFF = 19,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TEN_ON = 20,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TEN_OFF = 21,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ELEVEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ELEVEN_ON = 22,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ELEVEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_ELEVEN_OFF = 23,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWELVE_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWELVE_ON = 24,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWELVE_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWELVE_OFF = 25,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THIRTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THIRTEEN_ON = 26,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THIRTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_THIRTEEN_OFF = 27,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOURTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOURTEEN_ON = 28,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOURTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FOURTEEN_OFF = 29,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIFTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIFTEEN_ON = 30,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIFTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_FIFTEEN_OFF = 31,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIXTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIXTEEN_ON = 32,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIXTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SIXTEEN_OFF = 33,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVENTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVENTEEN_ON = 34,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVENTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_SEVENTEEN_OFF = 35,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHTEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHTEEN_ON = 36,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHTEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_EIGHTEEN_OFF = 37,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINETEEN_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINETEEN_ON = 38,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINETEEN_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_NINETEEN_OFF = 39,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWENTY_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWENTY_ON = 40,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWENTY_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_STYLISTIC_ALT_TWENTY_OFF = 41,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_ALTERNATES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_ALTERNATES_ON = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_ALTERNATES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_ALTERNATES_OFF = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SWASH_ALTERNATES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SWASH_ALTERNATES_ON = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_SWASH_ALTERNATES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_SWASH_ALTERNATES_OFF = 3,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_SWASH_ALTERNATES_ON,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_SWASH_ALTERNATES_ON = 4,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_SWASH_ALTERNATES_OFF,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_CONTEXTUAL_SWASH_ALTERNATES_OFF = 5,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LOWER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_LOWER_CASE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_LOWER_CASE = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LOWER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_SMALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_SMALL_CAPS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_LOWER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_PETITE_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_LOWER_CASE_PETITE_CAPS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UPPER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_UPPER_CASE,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_UPPER_CASE = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UPPER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_SMALL_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_SMALL_CAPS = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_UPPER_CASE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_PETITE_CAPS,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_UPPER_CASE_PETITE_CAPS = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_CJK_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_HALF_WIDTH_CJK_ROMAN = 0,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_CJK_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_PROPORTIONAL_CJK_ROMAN = 1,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_CJK_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_DEFAULT_CJK_ROMAN = 2,
         /**
          * for #HB_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE
          */
-        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_CJK_ROMAN,
+        B_AAT_LAYOUT_FEATURE_SELECTOR_FULL_WIDTH_CJK_ROMAN = 3,
     }
 
 
@@ -8341,163 +8370,163 @@ export namespace HarfBuzz {
         /**
          * Initial, unset feature type
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_INVALID,
+        B_AAT_LAYOUT_FEATURE_TYPE_INVALID = 65535,
         /**
          * [All Typographic Features](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type0)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_ALL_TYPOGRAPHIC,
+        B_AAT_LAYOUT_FEATURE_TYPE_ALL_TYPOGRAPHIC = 0,
         /**
          * [Ligatures](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type1)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_LIGATURES,
+        B_AAT_LAYOUT_FEATURE_TYPE_LIGATURES = 1,
         /**
          * [Cursive Connection](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type2)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CURSIVE_CONNECTION,
+        B_AAT_LAYOUT_FEATURE_TYPE_CURSIVE_CONNECTION = 2,
         /**
          * [Letter Case](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type3)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_LETTER_CASE,
+        B_AAT_LAYOUT_FEATURE_TYPE_LETTER_CASE = 3,
         /**
          * [Vertical Substitution](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type4)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_SUBSTITUTION,
+        B_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_SUBSTITUTION = 4,
         /**
          * [Linguistic Rearrangement](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type5)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_LINGUISTIC_REARRANGEMENT,
+        B_AAT_LAYOUT_FEATURE_TYPE_LINGUISTIC_REARRANGEMENT = 5,
         /**
          * [Number Spacing](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type6)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING,
+        B_AAT_LAYOUT_FEATURE_TYPE_NUMBER_SPACING = 6,
         /**
          * [Smart Swash](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type8)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_SMART_SWASH_TYPE = 8,
         /**
          * [Diacritics](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type9)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_DIACRITICS_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_DIACRITICS_TYPE = 9,
         /**
          * [Vertical Position](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type10)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION,
+        B_AAT_LAYOUT_FEATURE_TYPE_VERTICAL_POSITION = 10,
         /**
          * [Fractions](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type11)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_FRACTIONS,
+        B_AAT_LAYOUT_FEATURE_TYPE_FRACTIONS = 11,
         /**
          * [Overlapping Characters](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type13)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_OVERLAPPING_CHARACTERS_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_OVERLAPPING_CHARACTERS_TYPE = 13,
         /**
          * [Typographic Extras](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type14)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS,
+        B_AAT_LAYOUT_FEATURE_TYPE_TYPOGRAPHIC_EXTRAS = 14,
         /**
          * [Mathematical Extras](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type15)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS,
+        B_AAT_LAYOUT_FEATURE_TYPE_MATHEMATICAL_EXTRAS = 15,
         /**
          * [Ornament Sets](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type16)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_ORNAMENT_SETS_TYPE = 16,
         /**
          * [Character Alternatives](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type17)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_ALTERNATIVES,
+        B_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_ALTERNATIVES = 17,
         /**
          * [Design Complexity](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type18)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_DESIGN_COMPLEXITY_TYPE = 18,
         /**
          * [Style Options](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type19)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS,
+        B_AAT_LAYOUT_FEATURE_TYPE_STYLE_OPTIONS = 19,
         /**
          * [Character Shape](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type20)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_CHARACTER_SHAPE = 20,
         /**
          * [Number Case](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type21)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_NUMBER_CASE,
+        B_AAT_LAYOUT_FEATURE_TYPE_NUMBER_CASE = 21,
         /**
          * [Text Spacing](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type22)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING,
+        B_AAT_LAYOUT_FEATURE_TYPE_TEXT_SPACING = 22,
         /**
          * [Transliteration](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type23)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION,
+        B_AAT_LAYOUT_FEATURE_TYPE_TRANSLITERATION = 23,
         /**
          * [Annotation](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type24)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_ANNOTATION_TYPE = 24,
         /**
          * [Kana Spacing](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type25)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_KANA_SPACING_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_KANA_SPACING_TYPE = 25,
         /**
          * [Ideographic Spacing](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type26)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_SPACING_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_SPACING_TYPE = 26,
         /**
          * [Unicode Decomposition](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type27)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_UNICODE_DECOMPOSITION_TYPE = 27,
         /**
          * [Ruby Kana](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type28)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_RUBY_KANA,
+        B_AAT_LAYOUT_FEATURE_TYPE_RUBY_KANA = 28,
         /**
          * [CJK Symbol Alternatives](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type29)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_CJK_SYMBOL_ALTERNATIVES_TYPE = 29,
         /**
          * [Ideographic Alternatives](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type30)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_IDEOGRAPHIC_ALTERNATIVES_TYPE = 30,
         /**
          * [CJK Vertical Roman Placement](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type31)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CJK_VERTICAL_ROMAN_PLACEMENT_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_CJK_VERTICAL_ROMAN_PLACEMENT_TYPE = 31,
         /**
          * [Italic CJK Roman](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type32)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_ITALIC_CJK_ROMAN,
+        B_AAT_LAYOUT_FEATURE_TYPE_ITALIC_CJK_ROMAN = 32,
         /**
          * [Case Sensitive Layout](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type33)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT,
+        B_AAT_LAYOUT_FEATURE_TYPE_CASE_SENSITIVE_LAYOUT = 33,
         /**
          * [Alternate Kana](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type34)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA,
+        B_AAT_LAYOUT_FEATURE_TYPE_ALTERNATE_KANA = 34,
         /**
          * [Stylistic Alternatives](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type35)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES,
+        B_AAT_LAYOUT_FEATURE_TYPE_STYLISTIC_ALTERNATIVES = 35,
         /**
          * [Contextual Alternatives](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type36)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES,
+        B_AAT_LAYOUT_FEATURE_TYPE_CONTEXTUAL_ALTERNATIVES = 36,
         /**
          * [Lower Case](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type37)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_LOWER_CASE,
+        B_AAT_LAYOUT_FEATURE_TYPE_LOWER_CASE = 37,
         /**
          * [Upper Case](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type38)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_UPPER_CASE,
+        B_AAT_LAYOUT_FEATURE_TYPE_UPPER_CASE = 38,
         /**
          * [Language Tag](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type39)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_LANGUAGE_TAG_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_LANGUAGE_TAG_TYPE = 39,
         /**
          * [CJK Roman Spacing](https://developer.apple.com/fonts/TrueType-Reference-Manual/RM09/AppendixF.html#Type103)
          */
-        B_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE,
+        B_AAT_LAYOUT_FEATURE_TYPE_CJK_ROMAN_SPACING_TYPE = 103,
     }
 
 
@@ -8520,42 +8549,42 @@ export namespace HarfBuzz {
         /**
          * equal buffers.
          */
-        EQUAL,
+        EQUAL = 0,
         /**
          * buffers with different
          *     {@link HarfBuzz.buffer_content_type_t}.
          */
-        CONTENT_TYPE_MISMATCH,
+        CONTENT_TYPE_MISMATCH = 1,
         /**
          * buffers with differing length.
          */
-        LENGTH_MISMATCH,
+        LENGTH_MISMATCH = 2,
         /**
          * `.notdef` glyph is present in the
          *     reference buffer.
          */
-        NOTDEF_PRESENT,
+        NOTDEF_PRESENT = 4,
         /**
          * dotted circle glyph is present
          *     in the reference buffer.
          */
-        DOTTED_CIRCLE_PRESENT,
+        DOTTED_CIRCLE_PRESENT = 8,
         /**
          * difference in {@link HarfBuzz.glyph_info_t}.codepoint
          */
-        CODEPOINT_MISMATCH,
+        CODEPOINT_MISMATCH = 16,
         /**
          * difference in {@link HarfBuzz.glyph_info_t}.cluster
          */
-        CLUSTER_MISMATCH,
+        CLUSTER_MISMATCH = 32,
         /**
          * difference in {@link HarfBuzz.glyph_flags_t}.
          */
-        GLYPH_FLAGS_MISMATCH,
+        GLYPH_FLAGS_MISMATCH = 64,
         /**
          * difference in {@link HarfBuzz.glyph_position_t}.
          */
-        POSITION_MISMATCH,
+        POSITION_MISMATCH = 128,
     }
 
 
@@ -8568,20 +8597,20 @@ export namespace HarfBuzz {
         /**
          * the default buffer flag.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * flag indicating that special handling of the beginning
          *                      of text paragraph can be applied to this buffer. Should usually
          *                      be set, unless you are passing to the buffer only part
          *                      of the text without the full context.
          */
-        BOT,
+        BOT = 1,
         /**
          * flag indicating that special handling of the end of text
          *                      paragraph can be applied to this buffer, similar to
          *                      `HB_BUFFER_FLAG_BOT`.
          */
-        EOT,
+        EOT = 2,
         /**
          * flag indication that character with Default_Ignorable
          *                      Unicode property should use the corresponding glyph
@@ -8590,7 +8619,7 @@ export namespace HarfBuzz {
          *                      advance width.)  This flag takes precedence over
          *                      `HB_BUFFER_FLAG_REMOVE_DEFAULT_IGNORABLES`.
          */
-        PRESERVE_DEFAULT_IGNORABLES,
+        PRESERVE_DEFAULT_IGNORABLES = 4,
         /**
          * flag indication that character with Default_Ignorable
          *                      Unicode property should be removed from glyph string
@@ -8599,13 +8628,13 @@ export namespace HarfBuzz {
          *                      `HB_BUFFER_FLAG_PRESERVE_DEFAULT_IGNORABLES` takes
          *                      precedence over this flag. Since: 1.8.0
          */
-        REMOVE_DEFAULT_IGNORABLES,
+        REMOVE_DEFAULT_IGNORABLES = 8,
         /**
          * flag indicating that a dotted circle should
          *                      not be inserted in the rendering of incorrect
          *                      character sequences (such at <0905 093E>). Since: 2.4.0
          */
-        DO_NOT_INSERT_DOTTED_CIRCLE,
+        DO_NOT_INSERT_DOTTED_CIRCLE = 16,
         /**
          * flag indicating that the `hb_shape()` call and its variants
          *                      should perform various verification processes on the results
@@ -8615,23 +8644,23 @@ export namespace HarfBuzz {
          *                      to standard error.  In either case, the shaping result might
          *                      be modified to show the failed output. Since: 3.4.0
          */
-        VERIFY,
+        VERIFY = 32,
         /**
          * flag indicating that the `HB_GLYPH_FLAG_UNSAFE_TO_CONCAT`
          *                      glyph-flag should be produced by the shaper. By default
          *                      it will not be produced since it incurs a cost. Since: 4.0.0
          */
-        PRODUCE_UNSAFE_TO_CONCAT,
+        PRODUCE_UNSAFE_TO_CONCAT = 64,
         /**
          * flag indicating that the `HB_GLYPH_FLAG_SAFE_TO_INSERT_TATWEEL`
          *                      glyph-flag should be produced by the shaper. By default
          *                      it will not be produced. Since: 5.1.0
          */
-        PRODUCE_SAFE_TO_INSERT_TATWEEL,
+        PRODUCE_SAFE_TO_INSERT_TATWEEL = 128,
         /**
          * All currently defined flags: Since: 4.4.0
          */
-        DEFINED,
+        DEFINED = 255,
     }
 
 
@@ -8644,27 +8673,27 @@ export namespace HarfBuzz {
         /**
          * serialize glyph names, clusters and positions.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * do not serialize glyph cluster.
          */
-        NO_CLUSTERS,
+        NO_CLUSTERS = 1,
         /**
          * do not serialize glyph position information.
          */
-        NO_POSITIONS,
+        NO_POSITIONS = 2,
         /**
          * do no serialize glyph name.
          */
-        NO_GLYPH_NAMES,
+        NO_GLYPH_NAMES = 4,
         /**
          * serialize glyph extents.
          */
-        GLYPH_EXTENTS,
+        GLYPH_EXTENTS = 8,
         /**
          * serialize glyph flags. Since: 1.5.0
          */
-        GLYPH_FLAGS,
+        GLYPH_FLAGS = 16,
         /**
          * do not serialize glyph advances,
          *  glyph offsets will reflect absolute glyph positions. Since: 1.8.0.
@@ -8674,11 +8703,11 @@ export namespace HarfBuzz {
          *  chunks, this can lead to quadratic behavior. It is recommended to
          *  use a larger `buf_size` to minimize this cost.
          */
-        NO_ADVANCES,
+        NO_ADVANCES = 32,
         /**
          * All currently defined flags. Since: 4.4.0
          */
-        DEFINED,
+        DEFINED = 63,
     }
 
 
@@ -8692,15 +8721,15 @@ export namespace HarfBuzz {
         /**
          * a human-readable, plain text format.
          */
-        TEXT,
+        TEXT = 1413830740,
         /**
          * a machine-readable JSON format.
          */
-        JSON,
+        JSON = 1246973774,
         /**
          * invalid format.
          */
-        INVALID,
+        INVALID = 0,
     }
 
 
@@ -8726,7 +8755,7 @@ export namespace HarfBuzz {
          * 				   layout, by avoiding re-shaping of each line
          * 				   after line-breaking.
          */
-        UNSAFE_TO_BREAK,
+        UNSAFE_TO_BREAK = 1,
         /**
          * Indicates that if input text is changed on one
          * 				   side of the beginning of the cluster this glyph
@@ -8784,7 +8813,7 @@ export namespace HarfBuzz {
          * 			   reliably produced.
          * 				   Since: 4.0.0
          */
-        UNSAFE_TO_CONCAT,
+        UNSAFE_TO_CONCAT = 2,
         /**
          * In scripts that use elongation (Arabic,
          * 				   Mongolian, Syriac, etc.), this flag signifies
@@ -8796,11 +8825,11 @@ export namespace HarfBuzz {
          * 				   interrupting text shaping.
          * 				   Since: 5.1.0
          */
-        SAFE_TO_INSERT_TATWEEL,
+        SAFE_TO_INSERT_TATWEEL = 4,
         /**
          * All the currently defined flags.
          */
-        DEFINED,
+        DEFINED = 7,
     }
 
 
@@ -8813,43 +8842,43 @@ export namespace HarfBuzz {
         /**
          * `fsType` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_FS_TYPE,
+        B_OT_BITS_TAG_FS_TYPE = 1718842480,
         /**
          * `fsSelection` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_FS_SELECTION,
+        B_OT_BITS_TAG_FS_SELECTION = 1718842220,
         /**
          * `macStyle` of the `head` table.
          */
-        B_OT_BITS_TAG_MAC_STYLE,
+        B_OT_BITS_TAG_MAC_STYLE = 1835234164,
         /**
          * `isFixedPitch` of the `post` table.
          */
-        B_OT_BITS_TAG_IS_FIXED_PITCH,
+        B_OT_BITS_TAG_IS_FIXED_PITCH = 1719169140,
         /**
          * `ulUnicodeRange1` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_UNICODE_RANGE_1,
+        B_OT_BITS_TAG_UNICODE_RANGE_1 = 1970433585,
         /**
          * `ulUnicodeRange2` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_UNICODE_RANGE_2,
+        B_OT_BITS_TAG_UNICODE_RANGE_2 = 1970433586,
         /**
          * `ulUnicodeRange3` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_UNICODE_RANGE_3,
+        B_OT_BITS_TAG_UNICODE_RANGE_3 = 1970433587,
         /**
          * `ulUnicodeRange4` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_UNICODE_RANGE_4,
+        B_OT_BITS_TAG_UNICODE_RANGE_4 = 1970433588,
         /**
          * `ulCodePageRange1` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_CODE_PAGE_RANGE_1,
+        B_OT_BITS_TAG_CODE_PAGE_RANGE_1 = 1668313649,
         /**
          * `ulCodePageRange2` of the `OS/2` table.
          */
-        B_OT_BITS_TAG_CODE_PAGE_RANGE_2,
+        B_OT_BITS_TAG_CODE_PAGE_RANGE_2 = 1668313650,
     }
 
 
@@ -8863,17 +8892,17 @@ export namespace HarfBuzz {
          * Default indicating that there is nothing special
          *   to note about a color palette.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Flag indicating that the color
          *   palette is appropriate to use when displaying the font on a light background such as white.
          */
-        USABLE_WITH_LIGHT_BACKGROUND,
+        USABLE_WITH_LIGHT_BACKGROUND = 1,
         /**
          * Flag indicating that the color
          *   palette is appropriate to use when displaying the font on a dark background such as black.
          */
-        USABLE_WITH_DARK_BACKGROUND,
+        USABLE_WITH_DARK_BACKGROUND = 2,
     }
 
 
@@ -8889,46 +8918,46 @@ export namespace HarfBuzz {
          * (This would not apply to alphabetic characters that remain upright in vertical writing mode, since these
          * characters are not rotated.)
          */
-        B_OT_LAYOUT_BASELINE_TAG_ROMAN,
+        B_OT_LAYOUT_BASELINE_TAG_ROMAN = 1919905134,
         /**
          * The hanging baseline. In horizontal direction, this is the horizontal
          * line from which syllables seem, to hang in Tibetan and other similar scripts. In vertical writing mode,
          * for Tibetan (or some other similar script) characters rotated 90 degrees clockwise.
          */
-        B_OT_LAYOUT_BASELINE_TAG_HANGING,
+        B_OT_LAYOUT_BASELINE_TAG_HANGING = 1751215719,
         /**
          * Ideographic character face bottom or left edge,
          * if the direction is horizontal or vertical, respectively.
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_BOTTOM_OR_LEFT,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_BOTTOM_OR_LEFT = 1768121954,
         /**
          * Ideographic character face top or right edge,
          * if the direction is horizontal or vertical, respectively.
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_TOP_OR_RIGHT,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_TOP_OR_RIGHT = 1768121972,
         /**
          * The center of the ideographic character face. Since: 4.0.0
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_CENTRAL,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_FACE_CENTRAL = 1231251043,
         /**
          * Ideographic em-box bottom or left edge,
          * if the direction is horizontal or vertical, respectively.
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_BOTTOM_OR_LEFT,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_BOTTOM_OR_LEFT = 1768187247,
         /**
          * Ideographic em-box top or right edge baseline,
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_TOP_OR_RIGHT,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_TOP_OR_RIGHT = 1768191088,
         /**
          * The center of the ideographic em-box. Since: 4.0.0
          * if the direction is horizontal or vertical, respectively.
          */
-        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_CENTRAL,
+        B_OT_LAYOUT_BASELINE_TAG_IDEO_EMBOX_CENTRAL = 1231315813,
         /**
          * The baseline about which mathematical characters are centered.
          * In vertical writing mode when mathematical characters rotated 90 degrees clockwise, are centered.
          */
-        B_OT_LAYOUT_BASELINE_TAG_MATH,
+        B_OT_LAYOUT_BASELINE_TAG_MATH = 1835103336,
     }
 
 
@@ -8942,7 +8971,7 @@ export namespace HarfBuzz {
          * This is an extender glyph part that
          * can be repeated to reach the desired length.
          */
-        OT_MATH_GLYPH_PART_FLAG_EXTENDER,
+        OT_MATH_GLYPH_PART_FLAG_EXTENDER = 1,
     }
 
 
@@ -8957,13 +8986,13 @@ export namespace HarfBuzz {
          * Basic Latin (ASCII) characters. Indicates languages and/or scripts
          * for the user audiences that the font was primarily designed for.
          */
-        B_OT_META_TAG_DESIGN_LANGUAGES,
+        B_OT_META_TAG_DESIGN_LANGUAGES = 1684827751,
         /**
          * Supported languages. Text, using
          * only Basic Latin (ASCII) characters. Indicates languages and/or scripts
          * that the font is declared to be capable of supporting.
          */
-        B_OT_META_TAG_SUPPORTED_LANGUAGES,
+        B_OT_META_TAG_SUPPORTED_LANGUAGES = 1936485991,
     }
 
 
@@ -8977,115 +9006,115 @@ export namespace HarfBuzz {
         /**
          * horizontal ascender.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_ASCENDER,
+        B_OT_METRICS_TAG_HORIZONTAL_ASCENDER = 1751216995,
         /**
          * horizontal descender.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_DESCENDER,
+        B_OT_METRICS_TAG_HORIZONTAL_DESCENDER = 1751413603,
         /**
          * horizontal line gap.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_LINE_GAP,
+        B_OT_METRICS_TAG_HORIZONTAL_LINE_GAP = 1751934832,
         /**
          * horizontal clipping ascent.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_CLIPPING_ASCENT,
+        B_OT_METRICS_TAG_HORIZONTAL_CLIPPING_ASCENT = 1751346273,
         /**
          * horizontal clipping descent.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_CLIPPING_DESCENT,
+        B_OT_METRICS_TAG_HORIZONTAL_CLIPPING_DESCENT = 1751346276,
         /**
          * vertical ascender.
          */
-        B_OT_METRICS_TAG_VERTICAL_ASCENDER,
+        B_OT_METRICS_TAG_VERTICAL_ASCENDER = 1986098019,
         /**
          * vertical descender.
          */
-        B_OT_METRICS_TAG_VERTICAL_DESCENDER,
+        B_OT_METRICS_TAG_VERTICAL_DESCENDER = 1986294627,
         /**
          * vertical line gap.
          */
-        B_OT_METRICS_TAG_VERTICAL_LINE_GAP,
+        B_OT_METRICS_TAG_VERTICAL_LINE_GAP = 1986815856,
         /**
          * horizontal caret rise.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_CARET_RISE,
+        B_OT_METRICS_TAG_HORIZONTAL_CARET_RISE = 1751347827,
         /**
          * horizontal caret run.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_CARET_RUN,
+        B_OT_METRICS_TAG_HORIZONTAL_CARET_RUN = 1751347822,
         /**
          * horizontal caret offset.
          */
-        B_OT_METRICS_TAG_HORIZONTAL_CARET_OFFSET,
+        B_OT_METRICS_TAG_HORIZONTAL_CARET_OFFSET = 1751347046,
         /**
          * vertical caret rise.
          */
-        B_OT_METRICS_TAG_VERTICAL_CARET_RISE,
+        B_OT_METRICS_TAG_VERTICAL_CARET_RISE = 1986228851,
         /**
          * vertical caret run.
          */
-        B_OT_METRICS_TAG_VERTICAL_CARET_RUN,
+        B_OT_METRICS_TAG_VERTICAL_CARET_RUN = 1986228846,
         /**
          * vertical caret offset.
          */
-        B_OT_METRICS_TAG_VERTICAL_CARET_OFFSET,
+        B_OT_METRICS_TAG_VERTICAL_CARET_OFFSET = 1986228070,
         /**
          * x height.
          */
-        B_OT_METRICS_TAG_X_HEIGHT,
+        B_OT_METRICS_TAG_X_HEIGHT = 2020108148,
         /**
          * cap height.
          */
-        B_OT_METRICS_TAG_CAP_HEIGHT,
+        B_OT_METRICS_TAG_CAP_HEIGHT = 1668311156,
         /**
          * subscript em x size.
          */
-        B_OT_METRICS_TAG_SUBSCRIPT_EM_X_SIZE,
+        B_OT_METRICS_TAG_SUBSCRIPT_EM_X_SIZE = 1935833203,
         /**
          * subscript em y size.
          */
-        B_OT_METRICS_TAG_SUBSCRIPT_EM_Y_SIZE,
+        B_OT_METRICS_TAG_SUBSCRIPT_EM_Y_SIZE = 1935833459,
         /**
          * subscript em x offset.
          */
-        B_OT_METRICS_TAG_SUBSCRIPT_EM_X_OFFSET,
+        B_OT_METRICS_TAG_SUBSCRIPT_EM_X_OFFSET = 1935833199,
         /**
          * subscript em y offset.
          */
-        B_OT_METRICS_TAG_SUBSCRIPT_EM_Y_OFFSET,
+        B_OT_METRICS_TAG_SUBSCRIPT_EM_Y_OFFSET = 1935833455,
         /**
          * superscript em x size.
          */
-        B_OT_METRICS_TAG_SUPERSCRIPT_EM_X_SIZE,
+        B_OT_METRICS_TAG_SUPERSCRIPT_EM_X_SIZE = 1936750707,
         /**
          * superscript em y size.
          */
-        B_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_SIZE,
+        B_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_SIZE = 1936750963,
         /**
          * superscript em x offset.
          */
-        B_OT_METRICS_TAG_SUPERSCRIPT_EM_X_OFFSET,
+        B_OT_METRICS_TAG_SUPERSCRIPT_EM_X_OFFSET = 1936750703,
         /**
          * superscript em y offset.
          */
-        B_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_OFFSET,
+        B_OT_METRICS_TAG_SUPERSCRIPT_EM_Y_OFFSET = 1936750959,
         /**
          * strikeout size.
          */
-        B_OT_METRICS_TAG_STRIKEOUT_SIZE,
+        B_OT_METRICS_TAG_STRIKEOUT_SIZE = 1937011315,
         /**
          * strikeout offset.
          */
-        B_OT_METRICS_TAG_STRIKEOUT_OFFSET,
+        B_OT_METRICS_TAG_STRIKEOUT_OFFSET = 1937011311,
         /**
          * underline size.
          */
-        B_OT_METRICS_TAG_UNDERLINE_SIZE,
+        B_OT_METRICS_TAG_UNDERLINE_SIZE = 1970168947,
         /**
          * underline offset.
          */
-        B_OT_METRICS_TAG_UNDERLINE_OFFSET,
+        B_OT_METRICS_TAG_UNDERLINE_OFFSET = 1970168943,
     }
 
 
@@ -9098,19 +9127,19 @@ export namespace HarfBuzz {
         /**
          * `xMin` of the `head` table.
          */
-        B_OT_NUMBER_TAG_FONT_X_MIN,
+        B_OT_NUMBER_TAG_FONT_X_MIN = 2020436334,
         /**
          * `yMin` of the `head` table.
          */
-        B_OT_NUMBER_TAG_FONT_Y_MIN,
+        B_OT_NUMBER_TAG_FONT_Y_MIN = 2037213550,
         /**
          * `xMax` of the `head` table.
          */
-        B_OT_NUMBER_TAG_FONT_X_MAX,
+        B_OT_NUMBER_TAG_FONT_X_MAX = 2020434296,
         /**
          * `yMax` of the `head` table.
          */
-        B_OT_NUMBER_TAG_FONT_Y_MAX,
+        B_OT_NUMBER_TAG_FONT_Y_MAX = 2037211512,
     }
 
 
@@ -9123,7 +9152,7 @@ export namespace HarfBuzz {
         /**
          * The axis should not be exposed directly in user interfaces.
          */
-        B_OT_VAR_AXIS_FLAG_HIDDEN,
+        B_OT_VAR_AXIS_FLAG_HIDDEN = 1,
     }
 
 
@@ -9138,711 +9167,711 @@ export namespace HarfBuzz {
         /**
          * `Zyyy`
          */
-        B_SCRIPT_COMMON,
+        B_SCRIPT_COMMON = 1517910393,
         /**
          * `Zinh`
          */
-        B_SCRIPT_INHERITED,
+        B_SCRIPT_INHERITED = 1516858984,
         /**
          * `Zzzz`
          */
-        B_SCRIPT_UNKNOWN,
+        B_SCRIPT_UNKNOWN = 1517976186,
         /**
          * `Arab`
          */
-        B_SCRIPT_ARABIC,
+        B_SCRIPT_ARABIC = 1098015074,
         /**
          * `Armn`
          */
-        B_SCRIPT_ARMENIAN,
+        B_SCRIPT_ARMENIAN = 1098018158,
         /**
          * `Beng`
          */
-        B_SCRIPT_BENGALI,
+        B_SCRIPT_BENGALI = 1113943655,
         /**
          * `Cyrl`
          */
-        B_SCRIPT_CYRILLIC,
+        B_SCRIPT_CYRILLIC = 1132032620,
         /**
          * `Deva`
          */
-        B_SCRIPT_DEVANAGARI,
+        B_SCRIPT_DEVANAGARI = 1147500129,
         /**
          * `Geor`
          */
-        B_SCRIPT_GEORGIAN,
+        B_SCRIPT_GEORGIAN = 1197830002,
         /**
          * `Grek`
          */
-        B_SCRIPT_GREEK,
+        B_SCRIPT_GREEK = 1198679403,
         /**
          * `Gujr`
          */
-        B_SCRIPT_GUJARATI,
+        B_SCRIPT_GUJARATI = 1198877298,
         /**
          * `Guru`
          */
-        B_SCRIPT_GURMUKHI,
+        B_SCRIPT_GURMUKHI = 1198879349,
         /**
          * `Hang`
          */
-        B_SCRIPT_HANGUL,
+        B_SCRIPT_HANGUL = 1214344807,
         /**
          * `Hani`
          */
-        B_SCRIPT_HAN,
+        B_SCRIPT_HAN = 1214344809,
         /**
          * `Hebr`
          */
-        B_SCRIPT_HEBREW,
+        B_SCRIPT_HEBREW = 1214603890,
         /**
          * `Hira`
          */
-        B_SCRIPT_HIRAGANA,
+        B_SCRIPT_HIRAGANA = 1214870113,
         /**
          * `Knda`
          */
-        B_SCRIPT_KANNADA,
+        B_SCRIPT_KANNADA = 1265525857,
         /**
          * `Kana`
          */
-        B_SCRIPT_KATAKANA,
+        B_SCRIPT_KATAKANA = 1264676449,
         /**
          * `Laoo`
          */
-        B_SCRIPT_LAO,
+        B_SCRIPT_LAO = 1281453935,
         /**
          * `Latn`
          */
-        B_SCRIPT_LATIN,
+        B_SCRIPT_LATIN = 1281455214,
         /**
          * `Mlym`
          */
-        B_SCRIPT_MALAYALAM,
+        B_SCRIPT_MALAYALAM = 1298954605,
         /**
          * `Orya`
          */
-        B_SCRIPT_ORIYA,
+        B_SCRIPT_ORIYA = 1332902241,
         /**
          * `Taml`
          */
-        B_SCRIPT_TAMIL,
+        B_SCRIPT_TAMIL = 1415671148,
         /**
          * `Telu`
          */
-        B_SCRIPT_TELUGU,
+        B_SCRIPT_TELUGU = 1415933045,
         /**
          * `Thai`
          */
-        B_SCRIPT_THAI,
+        B_SCRIPT_THAI = 1416126825,
         /**
          * `Tibt`
          */
-        B_SCRIPT_TIBETAN,
+        B_SCRIPT_TIBETAN = 1416192628,
         /**
          * `Bopo`
          */
-        B_SCRIPT_BOPOMOFO,
+        B_SCRIPT_BOPOMOFO = 1114599535,
         /**
          * `Brai`
          */
-        B_SCRIPT_BRAILLE,
+        B_SCRIPT_BRAILLE = 1114792297,
         /**
          * `Cans`
          */
-        B_SCRIPT_CANADIAN_SYLLABICS,
+        B_SCRIPT_CANADIAN_SYLLABICS = 1130458739,
         /**
          * `Cher`
          */
-        B_SCRIPT_CHEROKEE,
+        B_SCRIPT_CHEROKEE = 1130915186,
         /**
          * `Ethi`
          */
-        B_SCRIPT_ETHIOPIC,
+        B_SCRIPT_ETHIOPIC = 1165256809,
         /**
          * `Khmr`
          */
-        B_SCRIPT_KHMER,
+        B_SCRIPT_KHMER = 1265134962,
         /**
          * `Mong`
          */
-        B_SCRIPT_MONGOLIAN,
+        B_SCRIPT_MONGOLIAN = 1299148391,
         /**
          * `Mymr`
          */
-        B_SCRIPT_MYANMAR,
+        B_SCRIPT_MYANMAR = 1299803506,
         /**
          * `Ogam`
          */
-        B_SCRIPT_OGHAM,
+        B_SCRIPT_OGHAM = 1332175213,
         /**
          * `Runr`
          */
-        B_SCRIPT_RUNIC,
+        B_SCRIPT_RUNIC = 1383427698,
         /**
          * `Sinh`
          */
-        B_SCRIPT_SINHALA,
+        B_SCRIPT_SINHALA = 1399418472,
         /**
          * `Syrc`
          */
-        B_SCRIPT_SYRIAC,
+        B_SCRIPT_SYRIAC = 1400468067,
         /**
          * `Thaa`
          */
-        B_SCRIPT_THAANA,
+        B_SCRIPT_THAANA = 1416126817,
         /**
          * `Yiii`
          */
-        B_SCRIPT_YI,
+        B_SCRIPT_YI = 1500080489,
         /**
          * `Dsrt`
          */
-        B_SCRIPT_DESERET,
+        B_SCRIPT_DESERET = 1148416628,
         /**
          * `Goth`
          */
-        B_SCRIPT_GOTHIC,
+        B_SCRIPT_GOTHIC = 1198486632,
         /**
          * `Ital`
          */
-        B_SCRIPT_OLD_ITALIC,
+        B_SCRIPT_OLD_ITALIC = 1232363884,
         /**
          * `Buhd`
          */
-        B_SCRIPT_BUHID,
+        B_SCRIPT_BUHID = 1114990692,
         /**
          * `Hano`
          */
-        B_SCRIPT_HANUNOO,
+        B_SCRIPT_HANUNOO = 1214344815,
         /**
          * `Tglg`
          */
-        B_SCRIPT_TAGALOG,
+        B_SCRIPT_TAGALOG = 1416064103,
         /**
          * `Tagb`
          */
-        B_SCRIPT_TAGBANWA,
+        B_SCRIPT_TAGBANWA = 1415669602,
         /**
          * `Cprt`
          */
-        B_SCRIPT_CYPRIOT,
+        B_SCRIPT_CYPRIOT = 1131442804,
         /**
          * `Limb`
          */
-        B_SCRIPT_LIMBU,
+        B_SCRIPT_LIMBU = 1281977698,
         /**
          * `Linb`
          */
-        B_SCRIPT_LINEAR_B,
+        B_SCRIPT_LINEAR_B = 1281977954,
         /**
          * `Osma`
          */
-        B_SCRIPT_OSMANYA,
+        B_SCRIPT_OSMANYA = 1332964705,
         /**
          * `Shaw`
          */
-        B_SCRIPT_SHAVIAN,
+        B_SCRIPT_SHAVIAN = 1399349623,
         /**
          * `Tale`
          */
-        B_SCRIPT_TAI_LE,
+        B_SCRIPT_TAI_LE = 1415670885,
         /**
          * `Ugar`
          */
-        B_SCRIPT_UGARITIC,
+        B_SCRIPT_UGARITIC = 1432838514,
         /**
          * `Bugi`
          */
-        B_SCRIPT_BUGINESE,
+        B_SCRIPT_BUGINESE = 1114990441,
         /**
          * `Copt`
          */
-        B_SCRIPT_COPTIC,
+        B_SCRIPT_COPTIC = 1131376756,
         /**
          * `Glag`
          */
-        B_SCRIPT_GLAGOLITIC,
+        B_SCRIPT_GLAGOLITIC = 1198285159,
         /**
          * `Khar`
          */
-        B_SCRIPT_KHAROSHTHI,
+        B_SCRIPT_KHAROSHTHI = 1265131890,
         /**
          * `Talu`
          */
-        B_SCRIPT_NEW_TAI_LUE,
+        B_SCRIPT_NEW_TAI_LUE = 1415670901,
         /**
          * `Xpeo`
          */
-        B_SCRIPT_OLD_PERSIAN,
+        B_SCRIPT_OLD_PERSIAN = 1483761007,
         /**
          * `Sylo`
          */
-        B_SCRIPT_SYLOTI_NAGRI,
+        B_SCRIPT_SYLOTI_NAGRI = 1400466543,
         /**
          * `Tfng`
          */
-        B_SCRIPT_TIFINAGH,
+        B_SCRIPT_TIFINAGH = 1415999079,
         /**
          * `Bali`
          */
-        B_SCRIPT_BALINESE,
+        B_SCRIPT_BALINESE = 1113681001,
         /**
          * `Xsux`
          */
-        B_SCRIPT_CUNEIFORM,
+        B_SCRIPT_CUNEIFORM = 1483961720,
         /**
          * `Nkoo`
          */
-        B_SCRIPT_NKO,
+        B_SCRIPT_NKO = 1315663727,
         /**
          * `Phag`
          */
-        B_SCRIPT_PHAGS_PA,
+        B_SCRIPT_PHAGS_PA = 1349017959,
         /**
          * `Phnx`
          */
-        B_SCRIPT_PHOENICIAN,
+        B_SCRIPT_PHOENICIAN = 1349021304,
         /**
          * `Cari`
          */
-        B_SCRIPT_CARIAN,
+        B_SCRIPT_CARIAN = 1130459753,
         /**
          * `Cham`
          */
-        B_SCRIPT_CHAM,
+        B_SCRIPT_CHAM = 1130914157,
         /**
          * `Kali`
          */
-        B_SCRIPT_KAYAH_LI,
+        B_SCRIPT_KAYAH_LI = 1264675945,
         /**
          * `Lepc`
          */
-        B_SCRIPT_LEPCHA,
+        B_SCRIPT_LEPCHA = 1281716323,
         /**
          * `Lyci`
          */
-        B_SCRIPT_LYCIAN,
+        B_SCRIPT_LYCIAN = 1283023721,
         /**
          * `Lydi`
          */
-        B_SCRIPT_LYDIAN,
+        B_SCRIPT_LYDIAN = 1283023977,
         /**
          * `Olck`
          */
-        B_SCRIPT_OL_CHIKI,
+        B_SCRIPT_OL_CHIKI = 1332503403,
         /**
          * `Rjng`
          */
-        B_SCRIPT_REJANG,
+        B_SCRIPT_REJANG = 1382706791,
         /**
          * `Saur`
          */
-        B_SCRIPT_SAURASHTRA,
+        B_SCRIPT_SAURASHTRA = 1398895986,
         /**
          * `Sund`
          */
-        B_SCRIPT_SUNDANESE,
+        B_SCRIPT_SUNDANESE = 1400204900,
         /**
          * `Vaii`
          */
-        B_SCRIPT_VAI,
+        B_SCRIPT_VAI = 1449224553,
         /**
          * `Avst`
          */
-        B_SCRIPT_AVESTAN,
+        B_SCRIPT_AVESTAN = 1098281844,
         /**
          * `Bamu`
          */
-        B_SCRIPT_BAMUM,
+        B_SCRIPT_BAMUM = 1113681269,
         /**
          * `Egyp`
          */
-        B_SCRIPT_EGYPTIAN_HIEROGLYPHS,
+        B_SCRIPT_EGYPTIAN_HIEROGLYPHS = 1164409200,
         /**
          * `Armi`
          */
-        B_SCRIPT_IMPERIAL_ARAMAIC,
+        B_SCRIPT_IMPERIAL_ARAMAIC = 1098018153,
         /**
          * `Phli`
          */
-        B_SCRIPT_INSCRIPTIONAL_PAHLAVI,
+        B_SCRIPT_INSCRIPTIONAL_PAHLAVI = 1349020777,
         /**
          * `Prti`
          */
-        B_SCRIPT_INSCRIPTIONAL_PARTHIAN,
+        B_SCRIPT_INSCRIPTIONAL_PARTHIAN = 1349678185,
         /**
          * `Java`
          */
-        B_SCRIPT_JAVANESE,
+        B_SCRIPT_JAVANESE = 1247901281,
         /**
          * `Kthi`
          */
-        B_SCRIPT_KAITHI,
+        B_SCRIPT_KAITHI = 1265920105,
         /**
          * `Lisu`
          */
-        B_SCRIPT_LISU,
+        B_SCRIPT_LISU = 1281979253,
         /**
          * `Mtei`
          */
-        B_SCRIPT_MEETEI_MAYEK,
+        B_SCRIPT_MEETEI_MAYEK = 1299473769,
         /**
          * `Sarb`
          */
-        B_SCRIPT_OLD_SOUTH_ARABIAN,
+        B_SCRIPT_OLD_SOUTH_ARABIAN = 1398895202,
         /**
          * `Orkh`
          */
-        B_SCRIPT_OLD_TURKIC,
+        B_SCRIPT_OLD_TURKIC = 1332898664,
         /**
          * `Samr`
          */
-        B_SCRIPT_SAMARITAN,
+        B_SCRIPT_SAMARITAN = 1398893938,
         /**
          * `Lana`
          */
-        B_SCRIPT_TAI_THAM,
+        B_SCRIPT_TAI_THAM = 1281453665,
         /**
          * `Tavt`
          */
-        B_SCRIPT_TAI_VIET,
+        B_SCRIPT_TAI_VIET = 1415673460,
         /**
          * `Batk`
          */
-        B_SCRIPT_BATAK,
+        B_SCRIPT_BATAK = 1113683051,
         /**
          * `Brah`
          */
-        B_SCRIPT_BRAHMI,
+        B_SCRIPT_BRAHMI = 1114792296,
         /**
          * `Mand`
          */
-        B_SCRIPT_MANDAIC,
+        B_SCRIPT_MANDAIC = 1298230884,
         /**
          * `Cakm`
          */
-        B_SCRIPT_CHAKMA,
+        B_SCRIPT_CHAKMA = 1130457965,
         /**
          * `Merc`
          */
-        B_SCRIPT_MEROITIC_CURSIVE,
+        B_SCRIPT_MEROITIC_CURSIVE = 1298494051,
         /**
          * `Mero`
          */
-        B_SCRIPT_MEROITIC_HIEROGLYPHS,
+        B_SCRIPT_MEROITIC_HIEROGLYPHS = 1298494063,
         /**
          * `Plrd`
          */
-        B_SCRIPT_MIAO,
+        B_SCRIPT_MIAO = 1349284452,
         /**
          * `Shrd`
          */
-        B_SCRIPT_SHARADA,
+        B_SCRIPT_SHARADA = 1399353956,
         /**
          * `Sora`
          */
-        B_SCRIPT_SORA_SOMPENG,
+        B_SCRIPT_SORA_SOMPENG = 1399812705,
         /**
          * `Takr`
          */
-        B_SCRIPT_TAKRI,
+        B_SCRIPT_TAKRI = 1415670642,
         /**
          * `Bass`, Since: 0.9.30
          */
-        B_SCRIPT_BASSA_VAH,
+        B_SCRIPT_BASSA_VAH = 1113682803,
         /**
          * `Aghb`, Since: 0.9.30
          */
-        B_SCRIPT_CAUCASIAN_ALBANIAN,
+        B_SCRIPT_CAUCASIAN_ALBANIAN = 1097295970,
         /**
          * `Dupl`, Since: 0.9.30
          */
-        B_SCRIPT_DUPLOYAN,
+        B_SCRIPT_DUPLOYAN = 1148547180,
         /**
          * `Elba`, Since: 0.9.30
          */
-        B_SCRIPT_ELBASAN,
+        B_SCRIPT_ELBASAN = 1164730977,
         /**
          * `Gran`, Since: 0.9.30
          */
-        B_SCRIPT_GRANTHA,
+        B_SCRIPT_GRANTHA = 1198678382,
         /**
          * `Khoj`, Since: 0.9.30
          */
-        B_SCRIPT_KHOJKI,
+        B_SCRIPT_KHOJKI = 1265135466,
         /**
          * `Sind`, Since: 0.9.30
          */
-        B_SCRIPT_KHUDAWADI,
+        B_SCRIPT_KHUDAWADI = 1399418468,
         /**
          * `Lina`, Since: 0.9.30
          */
-        B_SCRIPT_LINEAR_A,
+        B_SCRIPT_LINEAR_A = 1281977953,
         /**
          * `Mahj`, Since: 0.9.30
          */
-        B_SCRIPT_MAHAJANI,
+        B_SCRIPT_MAHAJANI = 1298229354,
         /**
          * `Mani`, Since: 0.9.30
          */
-        B_SCRIPT_MANICHAEAN,
+        B_SCRIPT_MANICHAEAN = 1298230889,
         /**
          * `Mend`, Since: 0.9.30
          */
-        B_SCRIPT_MENDE_KIKAKUI,
+        B_SCRIPT_MENDE_KIKAKUI = 1298493028,
         /**
          * `Modi`, Since: 0.9.30
          */
-        B_SCRIPT_MODI,
+        B_SCRIPT_MODI = 1299145833,
         /**
          * `Mroo`, Since: 0.9.30
          */
-        B_SCRIPT_MRO,
+        B_SCRIPT_MRO = 1299345263,
         /**
          * `Nbat`, Since: 0.9.30
          */
-        B_SCRIPT_NABATAEAN,
+        B_SCRIPT_NABATAEAN = 1315070324,
         /**
          * `Narb`, Since: 0.9.30
          */
-        B_SCRIPT_OLD_NORTH_ARABIAN,
+        B_SCRIPT_OLD_NORTH_ARABIAN = 1315009122,
         /**
          * `Perm`, Since: 0.9.30
          */
-        B_SCRIPT_OLD_PERMIC,
+        B_SCRIPT_OLD_PERMIC = 1348825709,
         /**
          * `Hmng`, Since: 0.9.30
          */
-        B_SCRIPT_PAHAWH_HMONG,
+        B_SCRIPT_PAHAWH_HMONG = 1215131239,
         /**
          * `Palm`, Since: 0.9.30
          */
-        B_SCRIPT_PALMYRENE,
+        B_SCRIPT_PALMYRENE = 1348562029,
         /**
          * `Pauc`, Since: 0.9.30
          */
-        B_SCRIPT_PAU_CIN_HAU,
+        B_SCRIPT_PAU_CIN_HAU = 1348564323,
         /**
          * `Phlp`, Since: 0.9.30
          */
-        B_SCRIPT_PSALTER_PAHLAVI,
+        B_SCRIPT_PSALTER_PAHLAVI = 1349020784,
         /**
          * `Sidd`, Since: 0.9.30
          */
-        B_SCRIPT_SIDDHAM,
+        B_SCRIPT_SIDDHAM = 1399415908,
         /**
          * `Tirh`, Since: 0.9.30
          */
-        B_SCRIPT_TIRHUTA,
+        B_SCRIPT_TIRHUTA = 1416196712,
         /**
          * `Wara`, Since: 0.9.30
          */
-        B_SCRIPT_WARANG_CITI,
+        B_SCRIPT_WARANG_CITI = 1466004065,
         /**
          * `Ahom`, Since: 0.9.30
          */
-        B_SCRIPT_AHOM,
+        B_SCRIPT_AHOM = 1097363309,
         /**
          * `Hluw`, Since: 0.9.30
          */
-        B_SCRIPT_ANATOLIAN_HIEROGLYPHS,
+        B_SCRIPT_ANATOLIAN_HIEROGLYPHS = 1215067511,
         /**
          * `Hatr`, Since: 0.9.30
          */
-        B_SCRIPT_HATRAN,
+        B_SCRIPT_HATRAN = 1214346354,
         /**
          * `Mult`, Since: 0.9.30
          */
-        B_SCRIPT_MULTANI,
+        B_SCRIPT_MULTANI = 1299541108,
         /**
          * `Hung`, Since: 0.9.30
          */
-        B_SCRIPT_OLD_HUNGARIAN,
+        B_SCRIPT_OLD_HUNGARIAN = 1215655527,
         /**
          * `Sgnw`, Since: 0.9.30
          */
-        B_SCRIPT_SIGNWRITING,
+        B_SCRIPT_SIGNWRITING = 1399287415,
         /**
          * `Adlm`, Since: 1.3.0
          */
-        B_SCRIPT_ADLAM,
+        B_SCRIPT_ADLAM = 1097100397,
         /**
          * `Bhks`, Since: 1.3.0
          */
-        B_SCRIPT_BHAIKSUKI,
+        B_SCRIPT_BHAIKSUKI = 1114139507,
         /**
          * `Marc`, Since: 1.3.0
          */
-        B_SCRIPT_MARCHEN,
+        B_SCRIPT_MARCHEN = 1298231907,
         /**
          * `Osge`, Since: 1.3.0
          */
-        B_SCRIPT_OSAGE,
+        B_SCRIPT_OSAGE = 1332963173,
         /**
          * `Tang`, Since: 1.3.0
          */
-        B_SCRIPT_TANGUT,
+        B_SCRIPT_TANGUT = 1415671399,
         /**
          * `Newa`, Since: 1.3.0
          */
-        B_SCRIPT_NEWA,
+        B_SCRIPT_NEWA = 1315272545,
         /**
          * `Gonm`, Since: 1.6.0
          */
-        B_SCRIPT_MASARAM_GONDI,
+        B_SCRIPT_MASARAM_GONDI = 1198485101,
         /**
          * `Nshu`, Since: 1.6.0
          */
-        B_SCRIPT_NUSHU,
+        B_SCRIPT_NUSHU = 1316186229,
         /**
          * `Soyo`, Since: 1.6.0
          */
-        B_SCRIPT_SOYOMBO,
+        B_SCRIPT_SOYOMBO = 1399814511,
         /**
          * `Zanb`, Since: 1.6.0
          */
-        B_SCRIPT_ZANABAZAR_SQUARE,
+        B_SCRIPT_ZANABAZAR_SQUARE = 1516334690,
         /**
          * `Dogr`, Since: 1.8.0
          */
-        B_SCRIPT_DOGRA,
+        B_SCRIPT_DOGRA = 1148151666,
         /**
          * `Gong`, Since: 1.8.0
          */
-        B_SCRIPT_GUNJALA_GONDI,
+        B_SCRIPT_GUNJALA_GONDI = 1198485095,
         /**
          * `Rohg`, Since: 1.8.0
          */
-        B_SCRIPT_HANIFI_ROHINGYA,
+        B_SCRIPT_HANIFI_ROHINGYA = 1383032935,
         /**
          * `Maka`, Since: 1.8.0
          */
-        B_SCRIPT_MAKASAR,
+        B_SCRIPT_MAKASAR = 1298230113,
         /**
          * `Medf`, Since: 1.8.0
          */
-        B_SCRIPT_MEDEFAIDRIN,
+        B_SCRIPT_MEDEFAIDRIN = 1298490470,
         /**
          * `Sogo`, Since: 1.8.0
          */
-        B_SCRIPT_OLD_SOGDIAN,
+        B_SCRIPT_OLD_SOGDIAN = 1399809903,
         /**
          * `Sogd`, Since: 1.8.0
          */
-        B_SCRIPT_SOGDIAN,
+        B_SCRIPT_SOGDIAN = 1399809892,
         /**
          * `Elym`, Since: 2.4.0
          */
-        B_SCRIPT_ELYMAIC,
+        B_SCRIPT_ELYMAIC = 1164736877,
         /**
          * `Nand`, Since: 2.4.0
          */
-        B_SCRIPT_NANDINAGARI,
+        B_SCRIPT_NANDINAGARI = 1315008100,
         /**
          * `Hmnp`, Since: 2.4.0
          */
-        B_SCRIPT_NYIAKENG_PUACHUE_HMONG,
+        B_SCRIPT_NYIAKENG_PUACHUE_HMONG = 1215131248,
         /**
          * `Wcho`, Since: 2.4.0
          */
-        B_SCRIPT_WANCHO,
+        B_SCRIPT_WANCHO = 1466132591,
         /**
          * `Chrs`, Since: 2.6.7
          */
-        B_SCRIPT_CHORASMIAN,
+        B_SCRIPT_CHORASMIAN = 1130918515,
         /**
          * `Diak`, Since: 2.6.7
          */
-        B_SCRIPT_DIVES_AKURU,
+        B_SCRIPT_DIVES_AKURU = 1147756907,
         /**
          * `Kits`, Since: 2.6.7
          */
-        B_SCRIPT_KHITAN_SMALL_SCRIPT,
+        B_SCRIPT_KHITAN_SMALL_SCRIPT = 1265202291,
         /**
          * `Yezi`, Since: 2.6.7
          */
-        B_SCRIPT_YEZIDI,
+        B_SCRIPT_YEZIDI = 1499822697,
         /**
          * `Cpmn`, Since: 3.0.0
          */
-        B_SCRIPT_CYPRO_MINOAN,
+        B_SCRIPT_CYPRO_MINOAN = 1131441518,
         /**
          * `Ougr`, Since: 3.0.0
          */
-        B_SCRIPT_OLD_UYGHUR,
+        B_SCRIPT_OLD_UYGHUR = 1333094258,
         /**
          * `Tnsa`, Since: 3.0.0
          */
-        B_SCRIPT_TANGSA,
+        B_SCRIPT_TANGSA = 1416524641,
         /**
          * `Toto`, Since: 3.0.0
          */
-        B_SCRIPT_TOTO,
+        B_SCRIPT_TOTO = 1416590447,
         /**
          * `Vith`, Since: 3.0.0
          */
-        B_SCRIPT_VITHKUQI,
+        B_SCRIPT_VITHKUQI = 1449751656,
         /**
          * `Zmth`, Since: 3.4.0
          */
-        B_SCRIPT_MATH,
+        B_SCRIPT_MATH = 1517122664,
         /**
          * `Kawi`, Since: 5.2.0
          */
-        B_SCRIPT_KAWI,
+        B_SCRIPT_KAWI = 1264678761,
         /**
          * `Nagm`, Since: 5.2.0
          */
-        B_SCRIPT_NAG_MUNDARI,
+        B_SCRIPT_NAG_MUNDARI = 1315006317,
         /**
          * `Gara`, Since: 10.0.0
          */
-        B_SCRIPT_GARAY,
+        B_SCRIPT_GARAY = 1197568609,
         /**
          * `Gukh`, Since: 10.0.0
          */
-        B_SCRIPT_GURUNG_KHEMA,
+        B_SCRIPT_GURUNG_KHEMA = 1198877544,
         /**
          * `Krai`, Since: 10.0.0
          */
-        B_SCRIPT_KIRAT_RAI,
+        B_SCRIPT_KIRAT_RAI = 1265787241,
         /**
          * `Onao`, Since: 10.0.0
          */
-        B_SCRIPT_OL_ONAL,
+        B_SCRIPT_OL_ONAL = 1332633967,
         /**
          * `Sunu`, Since: 10.0.0
          */
-        B_SCRIPT_SUNUWAR,
+        B_SCRIPT_SUNUWAR = 1400204917,
         /**
          * `Todr`, Since: 10.0.0
          */
-        B_SCRIPT_TODHRI,
+        B_SCRIPT_TODHRI = 1416586354,
         /**
          * `Tutg`, Since: 10.0.0
          */
-        B_SCRIPT_TULU_TIGALARI,
+        B_SCRIPT_TULU_TIGALARI = 1416983655,
         /**
          * `Berf`, Since: 11.5.0
          */
-        B_SCRIPT_BERIA_ERFE,
+        B_SCRIPT_BERIA_ERFE = 1113944678,
         /**
          * `Sidt`, Since: 11.5.0
          */
-        B_SCRIPT_SIDETIC,
+        B_SCRIPT_SIDETIC = 1399415924,
         /**
          * `Tayo`, Since: 11.5.0
          */
-        B_SCRIPT_TAI_YO,
+        B_SCRIPT_TAI_YO = 1415674223,
         /**
          * `Tols`, Since: 11.5.0
          */
-        B_SCRIPT_TOLONG_SIKI,
+        B_SCRIPT_TOLONG_SIKI = 1416588403,
         /**
          * No script set
          */
-        B_SCRIPT_INVALID,
+        B_SCRIPT_INVALID = 0,
     }
 
 
@@ -9857,12 +9886,12 @@ export namespace HarfBuzz {
          * A value of 0 can be interpreted as "Roman" (non-italic); a value of 1 can
          * be interpreted as (fully) italic.
          */
-        B_STYLE_TAG_ITALIC,
+        B_STYLE_TAG_ITALIC = 1769234796,
         /**
          * Used to vary design to suit different text sizes.
          * Non-zero. Values can be interpreted as text size, in points.
          */
-        B_STYLE_TAG_OPTICAL_SIZE,
+        B_STYLE_TAG_OPTICAL_SIZE = 1869640570,
         /**
          * Used to vary between upright and slanted text. Values
          * must be greater than -90 and less than +90. Values can be interpreted as
@@ -9870,25 +9899,25 @@ export namespace HarfBuzz {
          * designer considers to be upright for that font design. Typical right-leaning
          * Italic fonts have a negative slant angle (typically around -12)
          */
-        B_STYLE_TAG_SLANT_ANGLE,
+        B_STYLE_TAG_SLANT_ANGLE = 1936486004,
         /**
          * same as `HB_STYLE_TAG_SLANT_ANGLE` expression as ratio.
          * Typical right-leaning Italic fonts have a positive slant ratio (typically around 0.2)
          */
-        B_STYLE_TAG_SLANT_RATIO,
+        B_STYLE_TAG_SLANT_RATIO = 1399615092,
         /**
          * Used to vary width of text from narrower to wider.
          * Non-zero. Values can be interpreted as a percentage of whatever the font
          * designer considers “normal width” for that font design.
          */
-        B_STYLE_TAG_WIDTH,
+        B_STYLE_TAG_WIDTH = 2003072104,
         /**
          * Used to vary stroke thicknesses or other design details
          * to give variation from lighter to blacker. Values can be interpreted in direct
          * comparison to values for usWeightClass in the OS/2 table,
          * or the CSS font-weight property.
          */
-        B_STYLE_TAG_WEIGHT,
+        B_STYLE_TAG_WEIGHT = 2003265652,
     }
 
 

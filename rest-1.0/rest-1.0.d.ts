@@ -32,16 +32,16 @@ export namespace Rest {
          * the memory block can be assumed to always exist for the
          * lifetime of the parameter, {@link Rest.Param} will use it directly.
          */
-        STATIC,
+        STATIC = 0,
         /**
          * {@link Rest.Param} will take ownership of the memory block, and
          * `g_free()` it when it isn't used.
          */
-        TAKE,
+        TAKE = 1,
         /**
          * {@link Rest.Param} will make a copy of the memory block.
          */
-        COPY,
+        COPY = 2,
     }
 
 
@@ -529,6 +529,7 @@ export namespace Rest {
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @throws GLib.Error
          */
         fetch_access_token_finish(result: Gio.AsyncResult): boolean;
 
@@ -548,6 +549,9 @@ export namespace Rest {
 
         get_token_url(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         refresh_access_token(): boolean;
 
         /**
@@ -569,6 +573,7 @@ export namespace Rest {
 
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
+         * @throws GLib.Error
          */
         refresh_access_token_finish(result: Gio.AsyncResult): boolean;
 
@@ -1098,6 +1103,7 @@ export namespace Rest {
         /**
          * @param result the result from the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success
+         * @throws GLib.Error
          */
         invoke_finish(result: Gio.AsyncResult): boolean;
 
@@ -1138,6 +1144,7 @@ export namespace Rest {
          * Invoker for a virtual method to serialize the parameters for this
          * {@link Rest.ProxyCall}.
          * @returns TRUE if the serialization was successful, FALSE otherwise.
+         * @throws GLib.Error
          */
         serialize_params(): [boolean, string, string, number];
 
@@ -1164,6 +1171,7 @@ export namespace Rest {
          * Note that this will block an undefined amount of time, so
          * `rest_proxy_call_invoke_async()` is generally recommended.
          * @returns `true` on success, `false` if a failure occurred,   in which case `error_out` will be set.
+         * @throws GLib.Error
          */
         sync(): boolean;
 
@@ -1182,6 +1190,7 @@ export namespace Rest {
          * internal reference, or you may unref in the callback.
          * @param callback a {@link Rest.ProxyCallUploadCallback} to invoke when a chunk   of data was uploaded
          * @param weak_object The {@link GObject.Object} to weakly reference and tie the lifecycle to
+         * @throws GLib.Error
          */
         upload(callback: ProxyCallUploadCallback, weak_object: GObject.Object): boolean;
     }

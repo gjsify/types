@@ -77,7 +77,7 @@
       ]
 }
   },
-  "include": ["./midori-0.6.d.ts","./midori-0.6-surface.d.ts"]
+  "include": ["./midori-0.6.d.ts","./midori-0.6-vocabulary.d.ts"]
 }
 
 

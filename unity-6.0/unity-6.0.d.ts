@@ -36,33 +36,33 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum CategoryType {
-        NONE,
-        APPLICATION,
-        BOOK,
-        MUSIC,
-        MOVIE,
-        GAMES,
-        ELECTRONICS,
-        COMPUTERS,
-        OFFICE,
-        HOME,
-        GARDEN,
-        PETS,
-        TOYS,
-        CHILDREN,
-        BABY,
-        CLOTHES,
-        SHOES,
-        WATCHES,
-        SPORTS,
-        OUTDOORS,
-        GROCERY,
-        HEALTH,
-        BEAUTY,
-        DIY,
-        TOOLS,
-        CAR,
-        N_CATEGORIES,
+        NONE = 0,
+        APPLICATION = 1,
+        BOOK = 2,
+        MUSIC = 3,
+        MOVIE = 4,
+        GAMES = 5,
+        ELECTRONICS = 6,
+        COMPUTERS = 7,
+        OFFICE = 8,
+        HOME = 9,
+        GARDEN = 10,
+        PETS = 11,
+        TOYS = 12,
+        CHILDREN = 13,
+        BABY = 14,
+        CLOTHES = 15,
+        SHOES = 16,
+        WATCHES = 17,
+        SPORTS = 18,
+        OUTDOORS = 19,
+        GROCERY = 20,
+        HEALTH = 21,
+        BEAUTY = 22,
+        DIY = 23,
+        TOOLS = 24,
+        CAR = 25,
+        N_CATEGORIES = 26,
     }
 
 
@@ -77,9 +77,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum IconSizeHint {
-        DEFAULT,
-        SMALL,
-        LARGE,
+        DEFAULT = 0,
+        SMALL = 1,
+        LARGE = 2,
     }
 
 
@@ -94,11 +94,11 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum HandledType {
-        NOT_HANDLED,
-        SHOW_DASH,
-        HIDE_DASH,
-        GOTO_DASH_URI,
-        SHOW_PREVIEW,
+        NOT_HANDLED = 0,
+        SHOW_DASH = 1,
+        HIDE_DASH = 2,
+        GOTO_DASH_URI = 3,
+        SHOW_PREVIEW = 4,
     }
 
 
@@ -113,10 +113,10 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum CategoryRenderer {
-        VERTICAL_TILE,
-        HORIZONTAL_TILE,
-        LIST_TILE,
-        FLOW,
+        VERTICAL_TILE = 0,
+        HORIZONTAL_TILE = 1,
+        LIST_TILE = 2,
+        FLOW = 3,
     }
 
 
@@ -131,11 +131,11 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum FilterRenderer {
-        CHECK_OPTIONS,
-        RADIO_OPTIONS,
-        MULTIRANGE,
-        RATINGS,
-        CHECK_OPTIONS_COMPACT,
+        CHECK_OPTIONS = 0,
+        RADIO_OPTIONS = 1,
+        MULTIRANGE = 2,
+        RATINGS = 3,
+        CHECK_OPTIONS_COMPACT = 4,
     }
 
 
@@ -150,11 +150,11 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum LayoutHint {
-        NONE,
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM,
+        NONE = 0,
+        LEFT = 1,
+        RIGHT = 2,
+        TOP = 3,
+        BOTTOM = 4,
     }
 
 
@@ -169,9 +169,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum SearchType {
-        DEFAULT,
-        GLOBAL,
-        N_TYPES,
+        DEFAULT = 0,
+        GLOBAL = 1,
+        N_TYPES = 2,
     }
 
 
@@ -186,8 +186,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum PlaybackState {
-        PLAYING,
-        PAUSED,
+        PLAYING = 0,
+        PAUSED = 1,
     }
 
 
@@ -202,9 +202,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum OptionsFilterSortType {
-        MANUAL,
-        DISPLAY_NAME,
-        ID,
+        MANUAL = 0,
+        DISPLAY_NAME = 1,
+        ID = 2,
     }
 
 
@@ -219,8 +219,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum PreferencesManagerRemoteContent {
-        ALL,
-        NONE,
+        ALL = 0,
+        NONE = 1,
     }
 
 
@@ -235,9 +235,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum MusicPreviewTrackState {
-        STOPPED,
-        PLAYING,
-        PAUSED,
+        STOPPED = 0,
+        PLAYING = 1,
+        PAUSED = 2,
     }
 
 
@@ -267,6 +267,7 @@ export namespace Unity {
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function io_read_stream_finish(_res_: Gio.AsyncResult): [Uint8Array, number];
 
@@ -299,6 +300,7 @@ export namespace Unity {
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function io_open_from_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
 
@@ -325,6 +327,7 @@ export namespace Unity {
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function io_open_from_data_dirs_finish(_res_: Gio.AsyncResult): Gio.FileInputStream;
 
@@ -337,7 +340,7 @@ export namespace Unity {
              * <para>Emitted whenever an AppInfo in any of the monitored paths change. Note that &commat;new_appinfo may be null in case it has been removed.</para>
              * @signal
              */
-            changed: (arg0: string, arg1: Gio.AppInfo) => void;
+            changed: (id: string, new_appinfo: Gio.AppInfo) => void;
         }
 
         // Constructor properties interface
@@ -450,6 +453,7 @@ export namespace Unity {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo;
 
@@ -1865,6 +1869,9 @@ export namespace Unity {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         ["export"](): void;
 
         /**
@@ -2005,7 +2012,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            activated: (arg0: string) => ActivationResponse;
+            activated: (uri: string) => ActivationResponse;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::extra-text": (pspec: GObject.ParamSpec) => void;
@@ -2381,11 +2388,11 @@ export namespace Unity {
             /**
              * @signal
              */
-            play: (arg0: string) => void;
+            play: (uri: string) => void;
             /**
              * @signal
              */
-            pause: (arg0: string) => void;
+            pause: (uri: string) => void;
             "notify::current-track-uri": (pspec: GObject.ParamSpec) => void;
             "notify::current-progress": (pspec: GObject.ParamSpec) => void;
             "notify::current-track-state": (pspec: GObject.ParamSpec) => void;
@@ -2690,7 +2697,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            preview_ready: (arg0: Preview) => void;
+            preview_ready: (preview: Preview) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::subtitle": (pspec: GObject.ParamSpec) => void;
@@ -2760,11 +2767,11 @@ export namespace Unity {
             /**
              * @signal
              */
-            activate_uri: (arg0: string) => ActivationResponse;
+            activate_uri: (uri: string) => ActivationResponse;
             /**
              * @signal
              */
-            preview_uri: (arg0: string) => Preview;
+            preview_uri: (uri: string) => Preview;
             /**
              * @signal
              */
@@ -2772,15 +2779,15 @@ export namespace Unity {
             /**
              * @signal
              */
-            active_sources_changed: (arg0: string[]) => void;
+            active_sources_changed: (active_ids: string[]) => void;
             /**
              * @signal
              */
-            search_changed: (arg0: LensSearch, arg1: SearchType, arg2: Gio.Cancellable) => void;
+            search_changed: (search: LensSearch, search_type: SearchType, cancellable: Gio.Cancellable) => void;
             /**
              * @signal
              */
-            generate_search_key: (arg0: LensSearch) => string;
+            generate_search_key: (search: LensSearch) => string;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::exported": (pspec: GObject.ParamSpec) => void;
             "notify::search-in-global": (pspec: GObject.ParamSpec) => void;
@@ -2904,6 +2911,9 @@ export namespace Unity {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         ["export"](): void;
 
         /**
@@ -3146,7 +3156,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            activate_playlist: (arg0: never) => void;
+            activate_playlist: (playlist_id: never) => void;
             "notify::app-info": (pspec: GObject.ParamSpec) => void;
             "notify::desktop-file-name": (pspec: GObject.ParamSpec) => void;
             "notify::is-blacklisted": (pspec: GObject.ParamSpec) => void;

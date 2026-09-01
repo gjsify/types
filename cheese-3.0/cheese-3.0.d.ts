@@ -45,16 +45,16 @@ export namespace Cheese {
         /**
          * unknown error
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a required GStreamer element was not
          * found
          */
-        ELEMENT_NOT_FOUND,
+        ELEMENT_NOT_FOUND = 1,
         /**
          * a {@link Cheese.CameraDevice} was not found
          */
-        NO_DEVICE,
+        NO_DEVICE = 2,
     }
 
 
@@ -67,25 +67,27 @@ export namespace Cheese {
         /**
          * photo
          */
-        PHOTO,
+        PHOTO = 0,
         /**
          * video
          */
-        VIDEO,
+        VIDEO = 1,
         /**
          * a burst of photos
          */
-        BURST,
+        BURST = 2,
     }
 
 
     /**
      * The filename suffix for photos saved by Cheese.
+     * @default .jpg
      */
     const PHOTO_NAME_SUFFIX: string;
 
     /**
      * The filename suffix for videos saved by Cheese.
+     * @default .webm
      */
     const VIDEO_NAME_SUFFIX: string;
 
@@ -105,14 +107,14 @@ export namespace Cheese {
              * @action
              * @run-last
              */
-            "photo-taken": (arg0: GdkPixbuf.Pixbuf) => void;
+            "photo-taken": (pixbuf: GdkPixbuf.Pixbuf) => void;
             /**
              * Emitted when the state of the `camera` {@link Gst.Element} changed.
              * @signal
              * @action
              * @run-last
              */
-            "state-flags-changed": (arg0: number) => void;
+            "state-flags-changed": (state: number) => void;
             /**
              * Emitted when a video was saved to disk.
              * @signal
@@ -319,6 +321,7 @@ export namespace Cheese {
         /**
          * Setup a video capture device.
          * @param device the video capture device, or `null`
+         * @throws GLib.Error
          */
         setup(device: CameraDevice | null): void;
 
@@ -528,6 +531,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -588,7 +592,7 @@ export namespace Cheese {
              * @action
              * @run-last
              */
-            added: (arg0: CameraDevice) => void;
+            added: (device: CameraDevice) => void;
             /**
              * The ::removed signal is emitted when a camera is unplugged, or disabled on
              * the system.
@@ -596,7 +600,7 @@ export namespace Cheese {
              * @action
              * @run-last
              */
-            removed: (arg0: CameraDevice) => void;
+            removed: (device: CameraDevice) => void;
         }
 
         // Constructor properties interface
@@ -814,6 +818,7 @@ export namespace Cheese {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -823,6 +828,7 @@ export namespace Cheese {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): CameraDeviceMonitor;
 
@@ -922,6 +928,7 @@ export namespace Cheese {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

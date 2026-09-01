@@ -37,10 +37,10 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum ClientEndStyle {
-        END_SESSION_DEFAULT,
-        LOGOUT,
-        REBOOT,
-        SHUTDOWN,
+        END_SESSION_DEFAULT = 0,
+        LOGOUT = 1,
+        REBOOT = 2,
+        SHUTDOWN = 3,
     }
 
 
@@ -48,9 +48,9 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum ClientMode {
-        DISABLED,
-        NO_RESTART,
-        NORMAL,
+        DISABLED = 0,
+        NO_RESTART = 1,
+        NORMAL = 2,
     }
 
 
@@ -58,14 +58,14 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum ClientXSMPState {
-        START,
-        IDLE,
-        SAVE_YOURSELF,
-        INTERACT_REQUEST,
-        INTERACT,
-        SAVE_YOURSELF_DONE,
-        SHUTDOWN_CANCELLED,
-        CONNECTION_CLOSED,
+        START = 0,
+        IDLE = 1,
+        SAVE_YOURSELF = 2,
+        INTERACT_REQUEST = 3,
+        INTERACT = 4,
+        SAVE_YOURSELF_DONE = 5,
+        SHUTDOWN_CANCELLED = 6,
+        CONNECTION_CLOSED = 7,
     }
 
 
@@ -73,9 +73,9 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum SessionLogoutMode {
-        NORMAL,
-        NO_CONFIRMATION,
-        FORCE,
+        NORMAL = 0,
+        NO_CONFIRMATION = 1,
+        FORCE = 2,
     }
 
 
@@ -83,8 +83,8 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum SessionLogoutType {
-        LOGOUT,
-        SHUTDOWN,
+        LOGOUT = 0,
+        SHUTDOWN = 1,
     }
 
 
@@ -92,14 +92,14 @@ export namespace SugarExt {
      * @gir-type Enum
      */
     enum SessionPhase {
-        STARTUP,
-        INITIALIZATION,
-        WINDOW_MANAGER,
-        PANEL,
-        DESKTOP,
-        APPLICATION,
-        RUNNING,
-        SHUTDOWN,
+        STARTUP = 0,
+        INITIALIZATION = 1,
+        WINDOW_MANAGER = 2,
+        PANEL = 3,
+        DESKTOP = 4,
+        APPLICATION = 5,
+        RUNNING = 6,
+        SHUTDOWN = 7,
     }
 
 
@@ -197,7 +197,7 @@ export namespace SugarExt {
              * @signal
              * @run-last
              */
-            "save-state": (arg0: null) => void;
+            "save-state": (object: null) => void;
         }
 
         // Constructor properties interface
@@ -626,13 +626,13 @@ export namespace SugarExt {
              * @action
              * @run-last
              */
-            "key-pressed": (arg0: number, arg1: number, arg2: number) => boolean | void;
+            "key-pressed": (object: number, p0: number, p1: number) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "key-released": (arg0: number, arg1: number, arg2: number) => boolean | void;
+            "key-released": (object: number, p0: number, p1: number) => boolean | void;
         }
 
         // Constructor properties interface

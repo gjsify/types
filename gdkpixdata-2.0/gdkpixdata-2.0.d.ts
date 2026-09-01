@@ -26,12 +26,14 @@ export namespace GdkPixdata {
 
     /**
      * Magic number for {@link GdkPixdata.Pixdata} structures.
+     * @default 1197763408
      */
     const PIXBUF_MAGIC_NUMBER: number;
 
     /**
      * The length of a {@link GdkPixdata.Pixdata} structure without the `pixel_data` pointer.
      * @deprecated since 2.32
+     * @default 24
      */
     const PIXDATA_HEADER_LENGTH: number;
 
@@ -45,6 +47,7 @@ export namespace GdkPixdata {
      * @param copy_pixels whether to copy raw pixel data; run-length encoded   pixel data is always copied.
      * @returns a new pixbuf
      * @deprecated since 2.32: Use {@link Gio.Resource} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_pixdata(pixdata: Pixdata, copy_pixels: boolean): GdkPixbuf.Pixbuf;
 
@@ -64,12 +67,12 @@ export namespace GdkPixdata {
          *    string containing a serialized {@link GdkPixdata.Pixdata} structure in network byte
          *    order).
          */
-        PIXDATA_STREAM,
+        PIXDATA_STREAM = 0,
         /**
          * Generate {@link GdkPixdata.Pixdata} structure (needs
          *    the {@link GdkPixdata.Pixdata} structure definition from gdk-pixdata.h).
          */
-        PIXDATA_STRUCT,
+        PIXDATA_STRUCT = 1,
         /**
          * Generate <function>*_ROWSTRIDE</function>,
          *    <function>*_WIDTH</function>, <function>*_HEIGHT</function>,
@@ -77,30 +80,30 @@ export namespace GdkPixdata {
          *    <function>*_RLE_PIXEL_DATA</function> or <function>*_PIXEL_DATA</function>
          *    macro definitions for the image.
          */
-        MACROS,
+        MACROS = 2,
         /**
          * Generate GLib data types instead of
          *    standard C data types.
          */
-        GTYPES,
+        GTYPES = 0,
         /**
          * Generate standard C data types instead of
          *    GLib data types.
          */
-        CTYPES,
+        CTYPES = 256,
         /**
          * Generate static symbols.
          */
-        STATIC,
+        STATIC = 512,
         /**
          * Generate const symbols.
          */
-        CONST,
+        CONST = 1024,
         /**
          * Provide a <function>*_RUN_LENGTH_DECODE(image_buf, rle_data, size, bpp)</function>
          *    macro definition  to  decode  run-length encoded image data.
          */
-        RLE_DECODER,
+        RLE_DECODER = 65536,
     }
 
 
@@ -115,28 +118,28 @@ export namespace GdkPixdata {
         /**
          * each pixel has red, green and blue samples.
          */
-        COLOR_TYPE_RGB,
+        COLOR_TYPE_RGB = 1,
         /**
          * each pixel has red, green and blue samples
          *    and an alpha value.
          */
-        COLOR_TYPE_RGBA,
+        COLOR_TYPE_RGBA = 2,
         /**
          * mask for the colortype flags of the enum.
          */
-        COLOR_TYPE_MASK,
+        COLOR_TYPE_MASK = 255,
         /**
          * each sample has 8 bits.
          */
-        SAMPLE_WIDTH_8,
+        SAMPLE_WIDTH_8 = 65536,
         /**
          * mask for the sample width flags of the enum.
          */
-        SAMPLE_WIDTH_MASK,
+        SAMPLE_WIDTH_MASK = 983040,
         /**
          * the pixel data is in raw form.
          */
-        ENCODING_RAW,
+        ENCODING_RAW = 16777216,
         /**
          * the pixel data is run-length encoded. Runs may
          *    be up to 127 bytes long; their length is stored in a single byte
@@ -144,11 +147,11 @@ export namespace GdkPixdata {
          *    byte has the high bit set and the pixel data consists of a single pixel
          *    which must be repeated.
          */
-        ENCODING_RLE,
+        ENCODING_RLE = 33554432,
         /**
          * mask for the encoding flags of the enum.
          */
-        ENCODING_MASK,
+        ENCODING_MASK = 251658240,
     }
 
 
@@ -211,6 +214,7 @@ export namespace GdkPixdata {
          * @param stream stream of bytes containing a   serialized {@link GdkPixdata.Pixdata} structure.
          * @returns Upon successful deserialization `TRUE` is returned, `FALSE` otherwise.
          * @deprecated since 2.32: Use {@link Gio.Resource} instead.
+         * @throws GLib.Error
          */
         deserialize(stream: Uint8Array | string): boolean;
 

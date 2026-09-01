@@ -73,6 +73,9 @@ export namespace Goa {
     }
 
 
+    /**
+     * @default 6
+     */
     const ERROR_NUM_ENTRIES: number;
 
     /**
@@ -82,6 +85,7 @@ export namespace Goa {
      * application compile time, rather than from the library
      * linked against at application run time.
      * @since 3.8
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
@@ -92,6 +96,7 @@ export namespace Goa {
      * application compile time, rather than from the library
      * linked against at application run time.
      * @since 3.8
+     * @default 1
      */
     const MICRO_VERSION: number;
 
@@ -102,6 +107,7 @@ export namespace Goa {
      * application compile time, rather than from the library
      * linked against at application run time.
      * @since 3.8
+     * @default 58
      */
     const MINOR_VERSION: number;
 
@@ -1170,6 +1176,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1179,6 +1186,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): AccountProxy;
 
@@ -1343,6 +1351,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1427,6 +1436,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_ensure_credentials()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_ensure_credentials()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -1436,6 +1446,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1475,6 +1486,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_remove()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_remove()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_finish(res: Gio.AsyncResult): boolean;
 
@@ -1484,6 +1496,7 @@ export namespace Goa {
          * See `goa_account_call_remove()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2126,6 +2139,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_ensure_credentials()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_ensure_credentials()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -2135,6 +2149,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -2174,6 +2189,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_remove()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_remove()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_finish(res: Gio.AsyncResult): boolean;
 
@@ -2183,6 +2199,7 @@ export namespace Goa {
          * See `goa_account_call_remove()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2502,6 +2519,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2511,6 +2529,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): CalendarProxy;
 
@@ -2675,6 +2694,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3128,6 +3148,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3137,6 +3158,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ChatProxy;
 
@@ -3301,6 +3323,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3480,19 +3503,19 @@ export namespace Goa {
              * @signal
              * @run-last
              */
-            "account-added": (arg0: Object) => void;
+            "account-added": (object: Object) => void;
             /**
              * Emitted when something on `object` changes.
              * @signal
              * @run-last
              */
-            "account-changed": (arg0: Object) => void;
+            "account-changed": (object: Object) => void;
             /**
              * Emitted when `object` has been removed.
              * @signal
              * @run-last
              */
-            "account-removed": (arg0: Object) => void;
+            "account-removed": (object: Object) => void;
             "notify::object-manager": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -3740,6 +3763,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3749,6 +3773,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -3848,6 +3873,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4181,6 +4207,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4190,6 +4217,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ContactsProxy;
 
@@ -4354,6 +4382,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4810,6 +4839,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4819,6 +4849,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DocumentsProxy;
 
@@ -4983,6 +5014,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5443,6 +5475,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5452,6 +5485,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ExchangeProxy;
 
@@ -5616,6 +5650,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6111,6 +6146,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6120,6 +6156,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): FilesProxy;
 
@@ -6284,6 +6321,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7109,6 +7147,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7118,6 +7157,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MailProxy;
 
@@ -7282,6 +7322,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8071,6 +8112,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8080,6 +8122,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerProxy;
 
@@ -8244,6 +8287,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8343,6 +8387,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_add_account()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_add_account()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -8357,6 +8402,7 @@ export namespace Goa {
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_sync(arg_provider: string, arg_identity: string, arg_presentation_identity: string, arg_credentials: GLib.Variant, arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8399,6 +8445,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_is_supported_provider()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_is_supported_provider()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -8409,6 +8456,7 @@ export namespace Goa {
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_sync(arg_provider_type: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -8621,6 +8669,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_add_account()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_add_account()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -8635,6 +8684,7 @@ export namespace Goa {
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_sync(arg_provider: string, arg_identity: string, arg_presentation_identity: string, arg_credentials: GLib.Variant, arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8677,6 +8727,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_is_supported_provider()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_is_supported_provider()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -8687,6 +8738,7 @@ export namespace Goa {
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_sync(arg_provider_type: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -8987,6 +9039,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8996,6 +9049,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MapsProxy;
 
@@ -9160,6 +9214,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9627,6 +9682,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9636,6 +9692,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MediaServerProxy;
 
@@ -9800,6 +9857,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10264,6 +10322,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10273,6 +10332,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MusicProxy;
 
@@ -10437,6 +10497,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10901,6 +10962,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10910,6 +10972,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): OAuth2BasedProxy;
 
@@ -11074,6 +11137,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11158,6 +11222,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth2_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth2_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, number];
 
@@ -11167,6 +11232,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -11385,6 +11451,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth2_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth2_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, number];
 
@@ -11394,6 +11461,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -11709,6 +11777,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11718,6 +11787,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): OAuthBasedProxy;
 
@@ -11882,6 +11952,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11966,6 +12037,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, string, number];
 
@@ -11975,6 +12047,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
 
@@ -12194,6 +12267,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, string, number];
 
@@ -12203,6 +12277,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
 
@@ -12486,6 +12561,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12495,6 +12571,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
@@ -12694,6 +12771,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -14161,6 +14239,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -14170,6 +14249,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PasswordBasedProxy;
 
@@ -14334,6 +14414,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -14425,6 +14506,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -14436,6 +14518,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -14621,6 +14704,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -14632,6 +14716,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -14909,6 +14994,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -14918,6 +15004,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PhotosProxy;
 
@@ -15082,6 +15169,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15510,6 +15598,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15519,6 +15608,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): PrintersProxy;
 
@@ -15683,6 +15773,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16112,6 +16203,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16121,6 +16213,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ReadLaterProxy;
 
@@ -16285,6 +16378,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16722,6 +16816,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16731,6 +16826,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): TicketingProxy;
 
@@ -16895,6 +16991,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16983,6 +17080,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -16993,6 +17091,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17184,6 +17283,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -17194,6 +17294,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17472,6 +17573,7 @@ export namespace Goa {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17481,6 +17583,7 @@ export namespace Goa {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): TodoProxy;
 
@@ -17645,6 +17748,7 @@ export namespace Goa {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19004,6 +19108,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_ensure_credentials()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_ensure_credentials()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -19013,6 +19118,7 @@ export namespace Goa {
          * See `goa_account_call_ensure_credentials()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_ensure_credentials_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -19052,6 +19158,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_account_call_remove()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_account_call_remove()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_finish(res: Gio.AsyncResult): boolean;
 
@@ -19061,6 +19168,7 @@ export namespace Goa {
          * See `goa_account_call_remove()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_remove_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19914,6 +20022,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_add_account()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_add_account()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -19928,6 +20037,7 @@ export namespace Goa {
          * @param arg_details Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_add_account_sync(arg_provider: string, arg_identity: string, arg_presentation_identity: string, arg_credentials: GLib.Variant, arg_details: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -19970,6 +20080,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_manager_call_is_supported_provider()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_manager_call_is_supported_provider()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -19980,6 +20091,7 @@ export namespace Goa {
          * @param arg_provider_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_is_supported_provider_sync(arg_provider_type: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -20270,6 +20382,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth2_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth2_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, number];
 
@@ -20279,6 +20392,7 @@ export namespace Goa {
          * See `goa_oauth2_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -20419,6 +20533,7 @@ export namespace Goa {
          * Finishes an operation started with `goa_oauth_based_call_get_access_token()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_oauth_based_call_get_access_token()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_finish(res: Gio.AsyncResult): [boolean, string, string, number];
 
@@ -20428,6 +20543,7 @@ export namespace Goa {
          * See `goa_oauth_based_call_get_access_token()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_access_token_sync(cancellable: Gio.Cancellable | null): [boolean, string, string, number];
 
@@ -20945,6 +21061,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_password_based_call_get_password()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -20956,6 +21073,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_password_sync(arg_id: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -21175,6 +21293,7 @@ export namespace Goa {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `goa_ticketing_call_get_ticket()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_finish(res: Gio.AsyncResult): boolean;
 
@@ -21185,6 +21304,7 @@ export namespace Goa {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 3.6.0
+         * @throws GLib.Error
          */
         call_get_ticket_sync(cancellable: Gio.Cancellable | null): boolean;
 

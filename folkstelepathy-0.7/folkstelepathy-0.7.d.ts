@@ -393,6 +393,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_alias_finish(_res_: Gio.AsyncResult): void;
 
@@ -446,6 +447,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -499,6 +501,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
 
@@ -521,6 +524,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
@@ -605,6 +609,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -658,6 +663,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
 
@@ -714,6 +720,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
 
@@ -736,6 +743,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
 
@@ -831,6 +839,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -884,6 +893,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -906,6 +916,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -928,6 +939,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
@@ -1043,6 +1055,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
 
@@ -1170,6 +1183,7 @@ export namespace FolksTelepathy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
 

@@ -38,11 +38,11 @@ export namespace GExiv2 {
         /**
          * Use little-endian byte order
          */
-        LITTLE,
+        LITTLE = 0,
         /**
          * Use big-endian byte order
          */
-        BIG,
+        BIG = 1,
     }
 
 
@@ -63,23 +63,23 @@ export namespace GExiv2 {
         /**
          * Log level for debugging
          */
-        DEBUG,
+        DEBUG = 0,
         /**
          * Log level for informational messages
          */
-        INFO,
+        INFO = 1,
         /**
          * Log level for warning messages
          */
-        WARN,
+        WARN = 2,
         /**
          * Log level for error messages
          */
-        ERROR,
+        ERROR = 3,
         /**
          * Suppress all log messages
          */
-        MUTE,
+        MUTE = 4,
     }
 
 
@@ -103,39 +103,39 @@ export namespace GExiv2 {
         /**
          * The orientation of the image is unknown
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 0,
         /**
          * The orientation of the image is without any rotation.
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * The image is flipped on its horizontal axis
          */
-        HFLIP,
+        HFLIP = 2,
         /**
          * The image is rotated by 180 degrees
          */
-        ROT_180,
+        ROT_180 = 3,
         /**
          * The Image is flipped on its vertical axis
          */
-        VFLIP,
+        VFLIP = 4,
         /**
          * The image is rotated by 90 degrees clockwise and flipped on its horizontal axis
          */
-        ROT_90_HFLIP,
+        ROT_90_HFLIP = 5,
         /**
          * The image is rotated by 90 degrees clockwise
          */
-        ROT_90,
+        ROT_90 = 6,
         /**
          * The image is rotated by 90 degrees clockwise and flipped on its vertical axis
          */
-        ROT_90_VFLIP,
+        ROT_90_VFLIP = 7,
         /**
          * The image is rotated 270 degrees clockwise
          */
-        ROT_270,
+        ROT_270 = 8,
     }
 
 
@@ -154,30 +154,39 @@ export namespace GExiv2 {
         /**
          * Structure is not an array
          */
-        NONE,
+        NONE = 0,
         /**
          * A list of alternative values
          */
-        ALT,
+        ALT = 20,
         /**
          * An unordered list of values
          */
-        BAG,
+        BAG = 21,
         /**
          * An ordered list of values
          */
-        SEQ,
+        SEQ = 22,
         /**
          * Not supported. For completeness only
          */
-        LANG,
+        LANG = 23,
     }
 
 
+    /**
+     * @default 0
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 2
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 16
+     */
     const MINOR_VERSION: number;
 
     /**
@@ -263,31 +272,31 @@ export namespace GExiv2 {
         /**
          * Omit the XML packet wrapper.
          */
-        OMIT_PACKET_WRAPPER,
+        OMIT_PACKET_WRAPPER = 16,
         /**
          * Default is a writeable packet.
          */
-        READ_ONLY_PACKET,
+        READ_ONLY_PACKET = 32,
         /**
          * Use a compact form of RDF.
          */
-        USE_COMPACT_FORMAT,
+        USE_COMPACT_FORMAT = 64,
         /**
          * Include a padding allowance for a thumbnail image.
          */
-        INCLUDE_THUMBNAIL_PAD,
+        INCLUDE_THUMBNAIL_PAD = 256,
         /**
          * The padding parameter is the overall packet length.
          */
-        EXACT_PACKET_LENGTH,
+        EXACT_PACKET_LENGTH = 512,
         /**
          * Show aliases as XML comments.
          */
-        WRITE_ALIAS_COMMENTS,
+        WRITE_ALIAS_COMMENTS = 1024,
         /**
          * Omit all formatting whitespace.
          */
-        OMIT_ALL_FORMATTING,
+        OMIT_ALL_FORMATTING = 2048,
     }
 
 
@@ -510,6 +519,7 @@ export namespace GExiv2 {
          * @param bytes An image buffer to update the metadata on, nor `null`
          * @returns A newly allocated GBytes object containing the image with new metadata
          * @since 0.16.0
+         * @throws GLib.Error
          */
         as_bytes(bytes: GLib.Bytes | Uint8Array | null): GLib.Bytes;
 
@@ -541,6 +551,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag
          * @returns `true` if the tag was present.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         clear_tag(tag: string): boolean;
 
@@ -552,11 +563,13 @@ export namespace GExiv2 {
         /**
          * Removes all GPS metadata from the loaded image
          * @since 0.16.0
+         * @throws GLib.Error
          */
         delete_gps_info(): void;
 
         /**
          * Removes the EXIF thumbnail from the loaded image.
+         * @throws GLib.Error
          */
         erase_exif_thumbnail(): void;
 
@@ -564,6 +577,7 @@ export namespace GExiv2 {
          * Load only an EXIF buffer, typically stored in a JPEG's APP1 segment.
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator.
+         * @throws GLib.Error
          */
         from_app1_segment(data: Uint8Array | string): boolean;
 
@@ -572,6 +586,7 @@ export namespace GExiv2 {
          * efficient in places since it needs to copy memory to fullfil underlying
          * requirements by exiv2, which expects everything to be memory-mappable.
          * @param stream 
+         * @throws GLib.Error
          */
         from_stream(stream: Gio.InputStream): boolean;
 
@@ -581,6 +596,7 @@ export namespace GExiv2 {
          * @param padding The padding before the closing `<?xpacket>` tag
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
@@ -608,6 +624,7 @@ export namespace GExiv2 {
          * which is more useful for quick or casual use.
          * @returns The photo's comment field.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_comment(): string | null;
 
@@ -616,6 +633,7 @@ export namespace GExiv2 {
          * @param byte_order Whether to export the data in little or big endian format
          * @returns The content of the EXIF data or `null` on error
          * @since 0.12.2
+         * @throws GLib.Error
          */
         get_exif_data(byte_order: ByteOrder): GLib.Bytes | null;
 
@@ -625,6 +643,7 @@ export namespace GExiv2 {
          * @param tag The tag you want the rational value for
          * @returns Boolean success value
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_exif_tag_rational(tag: string): [boolean, number, number];
 
@@ -645,6 +664,7 @@ export namespace GExiv2 {
          * rational.  See <https://en.wikipedia.org/wiki/Shutter_speed> for more information.
          * @returns Boolean success value
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_exposure_time(): [boolean, number, number];
 
@@ -654,6 +674,7 @@ export namespace GExiv2 {
          * Exif.Photo.ApertureValue (if available)
          * @returns The exposure Fnumber as a gdouble, or -1.0 if tag is not present or invalid.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_fnumber(): number;
 
@@ -661,6 +682,7 @@ export namespace GExiv2 {
          * See <https://en.wikipedia.org/wiki/Flange_focal_distance> for more information.
          * @returns The focal length as a gdouble, or -1.0 if tag is not present or invalid.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_focal_length(): number;
 
@@ -669,6 +691,7 @@ export namespace GExiv2 {
          * image
          * @returns The altitude value, or -inf on error, or nan if no altitude value.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_gps_altitude(): number;
 
@@ -679,6 +702,7 @@ export namespace GExiv2 {
          * parameters.
          * @returns Boolean success value. Indicates if any of the queries failed.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_gps_info(): [boolean, number, number, number];
 
@@ -686,6 +710,7 @@ export namespace GExiv2 {
          * Query the latitude stored in the GPS tags of `self`
          * @returns The latitude or -inf on error, nan if no altitude value is found.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_gps_latitude(): number;
 
@@ -693,6 +718,7 @@ export namespace GExiv2 {
          * Query the longitude stored in the GPS tags of `self`
          * @returns The longitude value, or -inf on error, or nan if no altitude value.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_gps_longitude(): number;
 
@@ -706,6 +732,7 @@ export namespace GExiv2 {
          * See <https://en.wikipedia.org/wiki/Iso_speed> for more information.
          * @returns The ISO speed rating as a gint, or 0 if tag is not present or invalid.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_iso_speed(): number;
 
@@ -715,6 +742,7 @@ export namespace GExiv2 {
          * {@link Metadata.get_pixel_height}
          * @returns Height of images in pixels as stored in the metadata
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_metadata_pixel_height(): number;
 
@@ -724,6 +752,7 @@ export namespace GExiv2 {
          * {@link Metadata.get_pixel_width}
          * @returns Width of images in pixels as stored in the metadata
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_metadata_pixel_width(): number;
 
@@ -737,6 +766,7 @@ export namespace GExiv2 {
          * The EXIF Orientation field
          * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_orientation(): Orientation;
 
@@ -760,6 +790,7 @@ export namespace GExiv2 {
          * @param props A {@link GExiv2.PreviewProperties} instance
          * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_preview_image(props: PreviewProperties): PreviewImage;
 
@@ -800,6 +831,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's interpreted value as a string
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_tag_interpreted_string(tag: string): string | null;
 
@@ -808,6 +840,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's value as a glong
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_tag_long(tag: string): number;
 
@@ -820,6 +853,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The multiple string values of the tag.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_tag_multiple(tag: string): string[] | null;
 
@@ -831,6 +865,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's raw value as a byte array
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_tag_raw(tag: string): GLib.Bytes | null;
 
@@ -845,6 +880,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @returns The tag's value as a string
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_tag_string(tag: string): string | null;
 
@@ -852,6 +888,7 @@ export namespace GExiv2 {
          * Get the currently encoded XMP packet (after having called {@link GExiv2.Metadata.try_get_xmp_packet})
          * @returns The currently-encoded XMP packet (see {@link Metadata.generate_xmp_packet}).
          * @since 0.16.0
+         * @throws GLib.Error
          */
         get_xmp_packet(): string | null;
 
@@ -882,6 +919,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag
          * @returns `true` if the tag is present.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         has_tag(tag: string): boolean;
 
@@ -903,6 +941,7 @@ export namespace GExiv2 {
          * state but be in a similar state after calling {@link GExiv2.Metadata.new}.
          * @param data A buffer containing the data to be read
          * @returns Boolean success indicator
+         * @throws GLib.Error
          */
         open_buf(data: Uint8Array | string): boolean;
 
@@ -913,6 +952,7 @@ export namespace GExiv2 {
          * current metadata will be replaced by the content of the last file opened.
          * @param path Path to the file you want to open
          * @returns Boolean success indicator
+         * @throws GLib.Error
          */
         open_path(path: string): boolean;
 
@@ -921,6 +961,7 @@ export namespace GExiv2 {
          * @param path Path to the file you want to save to.
          * @returns Boolean success indicator.
          * @since 0.10.6
+         * @throws GLib.Error
          */
         save_external(path: string): boolean;
 
@@ -929,6 +970,7 @@ export namespace GExiv2 {
          * metadata into the image, then writing the image back out.
          * @param path Path to the file you want to save to.
          * @returns Boolean success indicator.
+         * @throws GLib.Error
          */
         save_file(path: string): boolean;
 
@@ -937,6 +979,7 @@ export namespace GExiv2 {
          * {@link Metadata.get_comment} for more information.
          * @param comment Comment string to set. Must not be `null`
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_comment(comment: string): void;
 
@@ -948,6 +991,7 @@ export namespace GExiv2 {
          * @param den Rational denominator
          * @returns Boolean success value
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
 
@@ -955,6 +999,7 @@ export namespace GExiv2 {
          * Sets or replaces the EXIF thumbnail with the data in `buffer`.
          * @param buffer A buffer containing thumbnail data
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
@@ -962,6 +1007,7 @@ export namespace GExiv2 {
          * Sets or replaces the EXIF thumbnail with the image in the file
          * @param path Path of image file
          * @returns Boolean success value
+         * @throws GLib.Error
          */
         set_exif_thumbnail_from_file(path: string): boolean;
 
@@ -974,6 +1020,7 @@ export namespace GExiv2 {
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
@@ -981,6 +1028,7 @@ export namespace GExiv2 {
          * Update the image's metadata with `height`
          * @param height The width of the image as it should be put into the metadata.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_metadata_pixel_height(height: number): void;
 
@@ -988,6 +1036,7 @@ export namespace GExiv2 {
          * Composite setter to update the image's metadata with `width`
          * @param width The width of the image as it should be put into the metadata
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_metadata_pixel_width(width: number): void;
 
@@ -995,6 +1044,7 @@ export namespace GExiv2 {
          * The orientation must be valid and cannot be {@link GExiv2.Orientation.UNSPECIFIED}.
          * @param orientation The new {@link GExiv2.Orientation} for the image.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_orientation(orientation: Orientation): void;
 
@@ -1004,6 +1054,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_tag_long(tag: string, value: bigint | number): boolean;
 
@@ -1016,6 +1067,7 @@ export namespace GExiv2 {
          * @param tag Exiv2 tag name
          * @param values An array of values to set or replace the existing value(s)
          * @returns Boolean success value
+         * @throws GLib.Error
          */
         set_tag_multiple(tag: string, values: string[]): boolean;
 
@@ -1032,6 +1084,7 @@ export namespace GExiv2 {
          * @param value The value to set or replace the existing value
          * @returns TRUE on success
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_tag_string(tag: string, value: string): boolean;
 
@@ -1041,6 +1094,7 @@ export namespace GExiv2 {
          * @param type The GExiv2StructureType specifying the type of structure
          * @returns TRUE on success
          * @since 0.16.0
+         * @throws GLib.Error
          */
         set_xmp_tag_struct(tag: string, type: StructureType): boolean;
 
@@ -1055,6 +1109,7 @@ export namespace GExiv2 {
          * @param tag An Exiv2 tag
          * @returns Whether `tag` is capable of storing multiple values or not. If `tag` is undefined (i.e. not built-in and not added to `self`), then `error` is set and `false` is returned.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         tag_supports_multiple_values(tag: string): boolean;
 
@@ -1066,6 +1121,7 @@ export namespace GExiv2 {
          * @returns TRUE if the tag was present.
          * @since 0.14.0
          * @deprecated since 0.14.0: Use {@link Metadata.clear_tag} instead.
+         * @throws GLib.Error
          */
         try_clear_tag(tag: string): boolean;
 
@@ -1073,6 +1129,7 @@ export namespace GExiv2 {
          * Removes all GPS metadata from the loaded image
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.delete_gps_info} instead.
+         * @throws GLib.Error
          */
         try_delete_gps_info(): void;
 
@@ -1080,6 +1137,7 @@ export namespace GExiv2 {
          * Removes the EXIF thumbnail from the loaded image.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.erase_exif_thumbnail} instead.
+         * @throws GLib.Error
          */
         try_erase_exif_thumbnail(): void;
 
@@ -1090,6 +1148,7 @@ export namespace GExiv2 {
          * @returns Encode the XMP packet and return as a `null`-terminated string.
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.try_generate_xmp_packet} instead.
+         * @throws GLib.Error
          */
         try_generate_xmp_packet(xmp_format_flags: XmpFormatFlags, padding: number): string | null;
 
@@ -1118,6 +1177,7 @@ export namespace GExiv2 {
          * @returns The photo's comment field.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_comment} instead.
+         * @throws GLib.Error
          */
         try_get_comment(): string | null;
 
@@ -1128,6 +1188,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_exif_tag_rational} instead.
+         * @throws GLib.Error
          */
         try_get_exif_tag_rational(tag: string): [boolean, number, number];
 
@@ -1137,6 +1198,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_exposure_time} instead.
+         * @throws GLib.Error
          */
         try_get_exposure_time(): [boolean, number, number];
 
@@ -1147,6 +1209,7 @@ export namespace GExiv2 {
          * @returns The exposure Fnumber as a gdouble, or -1.0 if tag is not present or invalid.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_fnumber} instead.
+         * @throws GLib.Error
          */
         try_get_fnumber(): number;
 
@@ -1155,6 +1218,7 @@ export namespace GExiv2 {
          * @returns The focal length as a gdouble, or -1.0 if tag is not present or invalid.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_focal_length} instead.
+         * @throws GLib.Error
          */
         try_get_focal_length(): number;
 
@@ -1164,6 +1228,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_gps_latitude} instead.
+         * @throws GLib.Error
          */
         try_get_gps_altitude(): [boolean, number];
 
@@ -1172,6 +1237,7 @@ export namespace GExiv2 {
          * @returns Boolean success value.
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_gps_info} instead.
+         * @throws GLib.Error
          */
         try_get_gps_info(): [boolean, number, number, number];
 
@@ -1180,6 +1246,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_gps_altitude} instead.
+         * @throws GLib.Error
          */
         try_get_gps_latitude(): [boolean, number];
 
@@ -1188,6 +1255,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_gps_longitude} instead.
+         * @throws GLib.Error
          */
         try_get_gps_longitude(): [boolean, number];
 
@@ -1196,6 +1264,7 @@ export namespace GExiv2 {
          * @returns The ISO speed rating as a gint, or 0 if tag is not present or invalid.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_iso_speed} instead.
+         * @throws GLib.Error
          */
         try_get_iso_speed(): number;
 
@@ -1206,6 +1275,7 @@ export namespace GExiv2 {
          * @returns Height of images in pixels as stored in the metadata
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_metadata_pixel_height} instead.
+         * @throws GLib.Error
          */
         try_get_metadata_pixel_height(): number;
 
@@ -1216,6 +1286,7 @@ export namespace GExiv2 {
          * @returns Width of images in pixels as stored in the metadata
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_metadata_pixel_width} instead.
+         * @throws GLib.Error
          */
         try_get_metadata_pixel_width(): number;
 
@@ -1224,6 +1295,7 @@ export namespace GExiv2 {
          * @returns A {@link GExiv2.Orientation} value representing the EXIF orientation value.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_orientation} instead.
+         * @throws GLib.Error
          */
         try_get_orientation(): Orientation;
 
@@ -1233,6 +1305,7 @@ export namespace GExiv2 {
          * @returns A {@link GExiv2.PreviewImage} instance for the particular {@link GExiv2.PreviewProperties}.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.get_preview_image} instead.
+         * @throws GLib.Error
          */
         try_get_preview_image(props: PreviewProperties): PreviewImage;
 
@@ -1247,6 +1320,7 @@ export namespace GExiv2 {
          * @returns The tag's interpreted value as a string
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_tag_interpreted_string} instead.
+         * @throws GLib.Error
          */
         try_get_tag_interpreted_string(tag: string): string | null;
 
@@ -1256,6 +1330,7 @@ export namespace GExiv2 {
          * @returns The tag's value as a glong
          * @since 0.12.2
          * @deprecated since 0.12.2: Use {@link Metadata.get_tag_long} instead.
+         * @throws GLib.Error
          */
         try_get_tag_long(tag: string): number;
 
@@ -1265,6 +1340,7 @@ export namespace GExiv2 {
          * @returns The multiple string values of `tag`.  Returns `null` if parameters are `null` or `tag` does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed `tag`, returns array[0] = `null` if `tag` is undefined or is not set in the current metadata.
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_tag_multiple} instead.
+         * @throws GLib.Error
          */
         try_get_tag_multiple(tag: string): string[] | null;
 
@@ -1277,6 +1353,7 @@ export namespace GExiv2 {
          * @returns The tag's raw value as a byte array
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_tag_raw} instead.
+         * @throws GLib.Error
          */
         try_get_tag_raw(tag: string): GLib.Bytes | null;
 
@@ -1290,6 +1367,7 @@ export namespace GExiv2 {
          * @returns The tag's value as a string
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.get_tag_string} instead.
+         * @throws GLib.Error
          */
         try_get_tag_string(tag: string): string | null;
 
@@ -1298,6 +1376,7 @@ export namespace GExiv2 {
          * @returns `null` if no packet was generated previously, the XMP packet contents otherwise
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.try_get_xmp_packet} instead.
+         * @throws GLib.Error
          */
         try_get_xmp_packet(): string | null;
 
@@ -1307,6 +1386,7 @@ export namespace GExiv2 {
          * @returns TRUE if the tag is present.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.has_tag} instead.
+         * @throws GLib.Error
          */
         try_has_tag(tag: string): boolean;
 
@@ -1316,6 +1396,7 @@ export namespace GExiv2 {
          * @param comment Comment string to set. Must not be `null`
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.set_comment} instead.
+         * @throws GLib.Error
          */
         try_set_comment(comment: string): void;
 
@@ -1328,6 +1409,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_exif_tag_rational} instead.
+         * @throws GLib.Error
          */
         try_set_exif_tag_rational(tag: string, nom: number, den: number): boolean;
 
@@ -1336,6 +1418,7 @@ export namespace GExiv2 {
          * @param buffer A buffer containing thumbnail data
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.set_exif_thumbnail_from_buffer} instead.
+         * @throws GLib.Error
          */
         try_set_exif_thumbnail_from_buffer(buffer: Uint8Array | string): void;
 
@@ -1349,6 +1432,7 @@ export namespace GExiv2 {
          * @returns Boolean success value.
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_gps_info} instead.
+         * @throws GLib.Error
          */
         try_set_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
@@ -1357,6 +1441,7 @@ export namespace GExiv2 {
          * @param height The width of the image as it should be put into the metadata.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.set_metadata_pixel_height} instead.
+         * @throws GLib.Error
          */
         try_set_metadata_pixel_height(height: number): void;
 
@@ -1365,6 +1450,7 @@ export namespace GExiv2 {
          * @param width The width of the image as it should be put into the metadata
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.set_metadata_pixel_width} instead.
+         * @throws GLib.Error
          */
         try_set_metadata_pixel_width(width: number): void;
 
@@ -1373,6 +1459,7 @@ export namespace GExiv2 {
          * @param orientation The new {@link GExiv2.Orientation} for the image.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link Metadata.set_orientation} instead.
+         * @throws GLib.Error
          */
         try_set_orientation(orientation: Orientation): void;
 
@@ -1383,6 +1470,7 @@ export namespace GExiv2 {
          * @returns TRUE on success
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_tag_long} instead.
+         * @throws GLib.Error
          */
         try_set_tag_long(tag: string, value: bigint | number): boolean;
 
@@ -1397,6 +1485,7 @@ export namespace GExiv2 {
          * @returns Boolean success value
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_tag_multiple} instead.
+         * @throws GLib.Error
          */
         try_set_tag_multiple(tag: string, values: string[]): boolean;
 
@@ -1412,6 +1501,7 @@ export namespace GExiv2 {
          * @returns TRUE on success
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_tag_string} instead.
+         * @throws GLib.Error
          */
         try_set_tag_string(tag: string, value: string): boolean;
 
@@ -1422,6 +1512,7 @@ export namespace GExiv2 {
          * @returns TRUE on success
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.set_xmp_tag_struct} instead.
+         * @throws GLib.Error
          */
         try_set_xmp_tag_struct(tag: string, type: StructureType): boolean;
 
@@ -1437,6 +1528,7 @@ export namespace GExiv2 {
          * @returns Whether `tag` is capable of storing multiple values or not. If `tag` is undefined (i.e. not built-in and not added to `self`), then `error` is set and `false` is returned.
          * @since 0.14.0
          * @deprecated since 0.16.0.: Use {@link GExiv2.Metadata.tag_supports_multiple_values} instead.
+         * @throws GLib.Error
          */
         try_tag_supports_multiple_values(tag: string): boolean;
 
@@ -1448,6 +1540,7 @@ export namespace GExiv2 {
          * @returns Boolean success value.
          * @since 0.12.2
          * @deprecated since 0.16.0: Use {@link Metadata.update_gps_info} instead.
+         * @throws GLib.Error
          */
         try_update_gps_info(longitude: number, latitude: number, altitude: number): boolean;
 
@@ -1458,6 +1551,7 @@ export namespace GExiv2 {
          * @param altitude Altitude value to set or replace current value
          * @returns Boolean success value.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         update_gps_info(longitude: number, latitude: number, altitude: number): boolean;
     }
@@ -1566,6 +1660,7 @@ export namespace GExiv2 {
          * @returns The number of bytes written to the file.
          * @since 0.14.0
          * @deprecated since 0.16.0: Use {@link GExiv2.PreviewImage.write_file} instead.
+         * @throws GLib.Error
          */
         try_write_file(path: string): number;
 
@@ -1574,6 +1669,7 @@ export namespace GExiv2 {
          * @param path The file path to write the preview image to.
          * @returns The number of bytes written to the file.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         write_file(path: string): number;
     }

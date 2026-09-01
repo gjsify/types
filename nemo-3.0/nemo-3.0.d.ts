@@ -40,11 +40,11 @@ export namespace Nemo {
          * Returned if the call succeeded, and the extension is done
          *  with the request.
          */
-        COMPLETE,
+        COMPLETE = 0,
         /**
          * Returned if the call failed.
          */
-        FAILED,
+        FAILED = 1,
         /**
          * Returned if the extension has begun an async operation.
          *  For C extensions, if this is returned, the extension must set the handle parameter.
@@ -52,7 +52,7 @@ export namespace Nemo {
          *  identifying purposes within the extension.  In either case, the extension must call
          *  the callback closure when the operation is complete (complete_invoke.)
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 2,
     }
 
 

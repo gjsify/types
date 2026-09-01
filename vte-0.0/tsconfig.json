@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./vte-0.0.d.ts","./vte-0.0-surface.d.ts"]
+  "include": ["./vte-0.0.d.ts","./vte-0.0-vocabulary.d.ts"]
 }
 
 

@@ -27,10 +27,10 @@ export namespace Translit {
      * @gir-type Enum
      */
     enum ErrorEnum {
-        NO_SUCH_BACKEND,
-        LOAD_FAILED,
-        INVALID_INPUT,
-        FAILED,
+        NO_SUCH_BACKEND = 0,
+        LOAD_FAILED = 1,
+        INVALID_INPUT = 2,
+        FAILED = 3,
     }
 
 
@@ -114,6 +114,7 @@ export namespace Translit {
         /**
          * @param input an input string in UTF-8
          * @returns a newly allocated output string
+         * @throws GLib.Error
          */
         transliterate(input: string): [string, number];
     }

@@ -116,7 +116,7 @@
       ]
 }
   },
-  "include": ["./shell-0.1.d.ts","./shell-0.1-surface.d.ts"]
+  "include": ["./shell-0.1.d.ts","./shell-0.1-vocabulary.d.ts"]
 }
 
 

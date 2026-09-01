@@ -58,23 +58,23 @@ export namespace Meta {
         /**
          * Menu
          */
-        MENU,
+        MENU = 0,
         /**
          * Minimize
          */
-        MINIMIZE,
+        MINIMIZE = 1,
         /**
          * Maximize
          */
-        MAXIMIZE,
+        MAXIMIZE = 2,
         /**
          * Close
          */
-        CLOSE,
+        CLOSE = 3,
         /**
          * Marks the end of the {@link Meta.ButtonFunction} enumeration
          */
-        LAST,
+        LAST = 4,
     }
 
 
@@ -89,8 +89,8 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum CloseDialogResponse {
-        WAIT,
-        FORCE_CLOSE,
+        WAIT = 0,
+        FORCE_CLOSE = 1,
     }
 
 
@@ -113,26 +113,26 @@ export namespace Meta {
          *   workspace and is changed to become visible on the active
          *   workspace.)
          */
-        CREATE,
+        CREATE = 0,
         /**
          * The window should be shown
          *   as unminimizing from its icon geometry.
          */
-        UNMINIMIZE,
+        UNMINIMIZE = 1,
         /**
          * The window is being destroyed
          */
-        DESTROY,
+        DESTROY = 2,
         /**
          * The window should be shown
          *   as minimizing to its icon geometry.
          */
-        MINIMIZE,
+        MINIMIZE = 3,
         /**
          * No effect, the window should be
          *   shown or hidden immediately.
          */
-        NONE,
+        NONE = 4,
     }
 
 
@@ -147,8 +147,8 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum CompositorType {
-        WAYLAND,
-        X11,
+        WAYLAND = 0,
+        X11 = 1,
     }
 
 
@@ -163,84 +163,84 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum Cursor {
-        NONE,
+        NONE = 0,
         /**
          * Default cursor
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Resize northern edge cursor
          */
-        NORTH_RESIZE,
+        NORTH_RESIZE = 2,
         /**
          * Resize southern edge cursor
          */
-        SOUTH_RESIZE,
+        SOUTH_RESIZE = 3,
         /**
          * Resize western edge cursor
          */
-        WEST_RESIZE,
+        WEST_RESIZE = 4,
         /**
          * Resize eastern edge cursor
          */
-        EAST_RESIZE,
+        EAST_RESIZE = 5,
         /**
          * Resize south-eastern corner cursor
          */
-        SE_RESIZE,
+        SE_RESIZE = 6,
         /**
          * Resize south-western corner cursor
          */
-        SW_RESIZE,
+        SW_RESIZE = 7,
         /**
          * Resize north-eastern corner cursor
          */
-        NE_RESIZE,
+        NE_RESIZE = 8,
         /**
          * Resize north-western corner cursor
          */
-        NW_RESIZE,
+        NW_RESIZE = 9,
         /**
          * Move or resize cursor
          */
-        MOVE_OR_RESIZE_WINDOW,
+        MOVE_OR_RESIZE_WINDOW = 10,
         /**
          * Busy cursor
          */
-        BUSY,
+        BUSY = 11,
         /**
          * DND in drag cursor
          */
-        DND_IN_DRAG,
+        DND_IN_DRAG = 12,
         /**
          * DND move cursor
          */
-        DND_MOVE,
+        DND_MOVE = 13,
         /**
          * DND copy cursor
          */
-        DND_COPY,
+        DND_COPY = 14,
         /**
          * DND unsupported target
          */
-        DND_UNSUPPORTED_TARGET,
+        DND_UNSUPPORTED_TARGET = 15,
         /**
          * pointing hand
          */
-        POINTING_HAND,
+        POINTING_HAND = 16,
         /**
          * crosshair (action forbidden)
          */
-        CROSSHAIR,
+        CROSSHAIR = 17,
         /**
          * I-beam (text input)
          */
-        IBEAM,
+        IBEAM = 18,
         /**
          * Invisible cursor
          */
-        BLANK,
-        LAST,
+        BLANK = 19,
+        LAST = 20,
     }
 
 
@@ -258,19 +258,19 @@ export namespace Meta {
         /**
          * top-left corner
          */
-        TOPLEFT,
+        TOPLEFT = 0,
         /**
          * top-right corner
          */
-        TOPRIGHT,
+        TOPRIGHT = 1,
         /**
          * bottom-left corner
          */
-        BOTTOMLEFT,
+        BOTTOMLEFT = 2,
         /**
          * bottom-right corner
          */
-        BOTTOMRIGHT,
+        BOTTOMRIGHT = 3,
     }
 
 
@@ -288,19 +288,19 @@ export namespace Meta {
         /**
          * up
          */
-        UP,
+        UP = 0,
         /**
          * down
          */
-        DOWN,
+        DOWN = 1,
         /**
          * left
          */
-        LEFT,
+        LEFT = 2,
         /**
          * right
          */
-        RIGHT,
+        RIGHT = 3,
     }
 
 
@@ -318,15 +318,15 @@ export namespace Meta {
         /**
          * Whether the edge belongs to a window
          */
-        WINDOW,
+        WINDOW = 0,
         /**
          * Whether the edge belongs to a monitor
          */
-        MONITOR,
+        MONITOR = 1,
         /**
          * Whether the edge belongs to a screen
          */
-        SCREEN,
+        SCREEN = 2,
     }
 
 
@@ -344,11 +344,11 @@ export namespace Meta {
         /**
          * Success
          */
-        SUCCESS,
+        SUCCESS = 0,
         /**
          * Error
          */
-        ERROR,
+        ERROR = 1,
     }
 
 
@@ -366,35 +366,35 @@ export namespace Meta {
         /**
          * Normal frame
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Dialog frame
          */
-        DIALOG,
+        DIALOG = 1,
         /**
          * Modal dialog frame
          */
-        MODAL_DIALOG,
+        MODAL_DIALOG = 2,
         /**
          * Utility frame
          */
-        UTILITY,
+        UTILITY = 3,
         /**
          * Menu frame
          */
-        MENU,
+        MENU = 4,
         /**
          * Border frame
          */
-        BORDER,
+        BORDER = 5,
         /**
          * Attached frame
          */
-        ATTACHED,
+        ATTACHED = 6,
         /**
          * Marks the end of the {@link Meta.FrameType} enumeration
          */
-        LAST,
+        LAST = 7,
     }
 
 
@@ -412,90 +412,90 @@ export namespace Meta {
         /**
          * None
          */
-        NONE,
-        WINDOW_BASE,
+        NONE = 0,
+        WINDOW_BASE = 1,
         /**
          * Compositor asked for grab
          */
-        COMPOSITOR,
-        WAYLAND_POPUP,
-        FRAME_BUTTON,
+        COMPOSITOR = 2,
+        WAYLAND_POPUP = 3,
+        FRAME_BUTTON = 4,
         /**
          * Moving with pointer
          */
-        MOVING,
+        MOVING = 1,
         /**
          * Resizing NW with pointer
          */
-        RESIZING_NW,
+        RESIZING_NW = 36865,
         /**
          * Resizing N with pointer
          */
-        RESIZING_N,
+        RESIZING_N = 32769,
         /**
          * Resizing NE with pointer
          */
-        RESIZING_NE,
+        RESIZING_NE = 40961,
         /**
          * Resizing E with pointer
          */
-        RESIZING_E,
+        RESIZING_E = 8193,
         /**
          * Resizing SW with pointer
          */
-        RESIZING_SW,
+        RESIZING_SW = 20481,
         /**
          * Resizing S with pointer
          */
-        RESIZING_S,
+        RESIZING_S = 16385,
         /**
          * Resizing SE with pointer
          */
-        RESIZING_SE,
+        RESIZING_SE = 24577,
         /**
          * Resizing W with pointer
          */
-        RESIZING_W,
+        RESIZING_W = 4097,
         /**
          * Moving with keyboard
          */
-        KEYBOARD_MOVING,
+        KEYBOARD_MOVING = 257,
         /**
          * Resizing with keyboard
          */
-        KEYBOARD_RESIZING_UNKNOWN,
+        KEYBOARD_RESIZING_UNKNOWN = 769,
         /**
          * Resizing NS with keyboard
          */
-        KEYBOARD_RESIZING_NW,
+        KEYBOARD_RESIZING_NW = 37121,
         /**
          * Resizing N with keyboard
          */
-        KEYBOARD_RESIZING_N,
+        KEYBOARD_RESIZING_N = 33025,
         /**
          * Resizing NE with keyboard
          */
-        KEYBOARD_RESIZING_NE,
+        KEYBOARD_RESIZING_NE = 41217,
         /**
          * Resizing E with keyboard
          */
-        KEYBOARD_RESIZING_E,
+        KEYBOARD_RESIZING_E = 8449,
         /**
          * Resizing SW with keyboard
          */
-        KEYBOARD_RESIZING_SW,
+        KEYBOARD_RESIZING_SW = 20737,
         /**
          * Resizing S with keyboard
          */
-        KEYBOARD_RESIZING_S,
+        KEYBOARD_RESIZING_S = 16641,
         /**
          * Resizing SE with keyboard
          */
-        KEYBOARD_RESIZING_SE,
+        KEYBOARD_RESIZING_SE = 24833,
         /**
          * Resizing W with keyboard
          */
-        KEYBOARD_RESIZING_W,
+        KEYBOARD_RESIZING_W = 4353,
     }
 
 
@@ -510,17 +510,17 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum Gravity {
-        NONE,
-        NORTH_WEST,
-        NORTH,
-        NORTH_EAST,
-        WEST,
-        CENTER,
-        EAST,
-        SOUTH_WEST,
-        SOUTH,
-        SOUTH_EAST,
-        STATIC,
+        NONE = 0,
+        NORTH_WEST = 1,
+        NORTH = 2,
+        NORTH_EAST = 3,
+        WEST = 4,
+        CENTER = 5,
+        EAST = 6,
+        SOUTH_WEST = 7,
+        SOUTH = 8,
+        SOUTH_EAST = 9,
+        STATIC = 10,
     }
 
 
@@ -535,8 +535,8 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum InhibitShortcutsDialogResponse {
-        ALLOW,
-        DENY,
+        ALLOW = 0,
+        DENY = 1,
     }
 
 
@@ -554,362 +554,362 @@ export namespace Meta {
         /**
          * FILLME
          */
-        NONE,
+        NONE = 0,
         /**
          * FILLME
          */
-        WORKSPACE_1,
+        WORKSPACE_1 = 1,
         /**
          * FILLME
          */
-        WORKSPACE_2,
+        WORKSPACE_2 = 2,
         /**
          * FILLME
          */
-        WORKSPACE_3,
+        WORKSPACE_3 = 3,
         /**
          * FILLME
          */
-        WORKSPACE_4,
+        WORKSPACE_4 = 4,
         /**
          * FILLME
          */
-        WORKSPACE_5,
+        WORKSPACE_5 = 5,
         /**
          * FILLME
          */
-        WORKSPACE_6,
+        WORKSPACE_6 = 6,
         /**
          * FILLME
          */
-        WORKSPACE_7,
+        WORKSPACE_7 = 7,
         /**
          * FILLME
          */
-        WORKSPACE_8,
+        WORKSPACE_8 = 8,
         /**
          * FILLME
          */
-        WORKSPACE_9,
+        WORKSPACE_9 = 9,
         /**
          * FILLME
          */
-        WORKSPACE_10,
+        WORKSPACE_10 = 10,
         /**
          * FILLME
          */
-        WORKSPACE_11,
+        WORKSPACE_11 = 11,
         /**
          * FILLME
          */
-        WORKSPACE_12,
+        WORKSPACE_12 = 12,
         /**
          * FILLME
          */
-        WORKSPACE_LEFT,
+        WORKSPACE_LEFT = 13,
         /**
          * FILLME
          */
-        WORKSPACE_RIGHT,
+        WORKSPACE_RIGHT = 14,
         /**
          * FILLME
          */
-        WORKSPACE_UP,
+        WORKSPACE_UP = 15,
         /**
          * FILLME
          */
-        WORKSPACE_DOWN,
+        WORKSPACE_DOWN = 16,
         /**
          * FILLME
          */
-        WORKSPACE_LAST,
+        WORKSPACE_LAST = 17,
         /**
          * FILLME
          */
-        SWITCH_APPLICATIONS,
+        SWITCH_APPLICATIONS = 18,
         /**
          * FILLME
          */
-        SWITCH_APPLICATIONS_BACKWARD,
+        SWITCH_APPLICATIONS_BACKWARD = 19,
         /**
          * FILLME
          */
-        SWITCH_GROUP,
+        SWITCH_GROUP = 20,
         /**
          * FILLME
          */
-        SWITCH_GROUP_BACKWARD,
+        SWITCH_GROUP_BACKWARD = 21,
         /**
          * FILLME
          */
-        SWITCH_WINDOWS,
+        SWITCH_WINDOWS = 22,
         /**
          * FILLME
          */
-        SWITCH_WINDOWS_BACKWARD,
+        SWITCH_WINDOWS_BACKWARD = 23,
         /**
          * FILLME
          */
-        SWITCH_PANELS,
+        SWITCH_PANELS = 24,
         /**
          * FILLME
          */
-        SWITCH_PANELS_BACKWARD,
+        SWITCH_PANELS_BACKWARD = 25,
         /**
          * FILLME
          */
-        CYCLE_GROUP,
+        CYCLE_GROUP = 26,
         /**
          * FILLME
          */
-        CYCLE_GROUP_BACKWARD,
+        CYCLE_GROUP_BACKWARD = 27,
         /**
          * FILLME
          */
-        CYCLE_WINDOWS,
+        CYCLE_WINDOWS = 28,
         /**
          * FILLME
          */
-        CYCLE_WINDOWS_BACKWARD,
+        CYCLE_WINDOWS_BACKWARD = 29,
         /**
          * FILLME
          */
-        CYCLE_PANELS,
+        CYCLE_PANELS = 30,
         /**
          * FILLME
          */
-        CYCLE_PANELS_BACKWARD,
+        CYCLE_PANELS_BACKWARD = 31,
         /**
          * FILLME
          */
-        SHOW_DESKTOP,
+        SHOW_DESKTOP = 32,
         /**
          * FILLME
          */
-        PANEL_RUN_DIALOG,
+        PANEL_RUN_DIALOG = 33,
         /**
          * FILLME
          */
-        TOGGLE_RECORDING,
+        TOGGLE_RECORDING = 34,
         /**
          * FILLME
          */
-        SET_SPEW_MARK,
+        SET_SPEW_MARK = 35,
         /**
          * FILLME
          */
-        ACTIVATE_WINDOW_MENU,
+        ACTIVATE_WINDOW_MENU = 36,
         /**
          * FILLME
          */
-        TOGGLE_FULLSCREEN,
+        TOGGLE_FULLSCREEN = 37,
         /**
          * FILLME
          */
-        TOGGLE_MAXIMIZED,
+        TOGGLE_MAXIMIZED = 38,
         /**
          * FILLME
          */
-        TOGGLE_TILED_LEFT,
+        TOGGLE_TILED_LEFT = 39,
         /**
          * FILLME
          */
-        TOGGLE_TILED_RIGHT,
+        TOGGLE_TILED_RIGHT = 40,
         /**
          * FILLME
          */
-        TOGGLE_ABOVE,
+        TOGGLE_ABOVE = 41,
         /**
          * FILLME
          */
-        MAXIMIZE,
+        MAXIMIZE = 42,
         /**
          * FILLME
          */
-        UNMAXIMIZE,
+        UNMAXIMIZE = 43,
         /**
          * FILLME
          */
-        TOGGLE_SHADED,
+        TOGGLE_SHADED = 44,
         /**
          * FILLME
          */
-        MINIMIZE,
+        MINIMIZE = 45,
         /**
          * FILLME
          */
-        CLOSE,
+        CLOSE = 46,
         /**
          * FILLME
          */
-        BEGIN_MOVE,
+        BEGIN_MOVE = 47,
         /**
          * FILLME
          */
-        BEGIN_RESIZE,
+        BEGIN_RESIZE = 48,
         /**
          * FILLME
          */
-        TOGGLE_ON_ALL_WORKSPACES,
+        TOGGLE_ON_ALL_WORKSPACES = 49,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_1,
+        MOVE_TO_WORKSPACE_1 = 50,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_2,
+        MOVE_TO_WORKSPACE_2 = 51,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_3,
+        MOVE_TO_WORKSPACE_3 = 52,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_4,
+        MOVE_TO_WORKSPACE_4 = 53,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_5,
+        MOVE_TO_WORKSPACE_5 = 54,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_6,
+        MOVE_TO_WORKSPACE_6 = 55,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_7,
+        MOVE_TO_WORKSPACE_7 = 56,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_8,
+        MOVE_TO_WORKSPACE_8 = 57,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_9,
+        MOVE_TO_WORKSPACE_9 = 58,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_10,
+        MOVE_TO_WORKSPACE_10 = 59,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_11,
+        MOVE_TO_WORKSPACE_11 = 60,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_12,
+        MOVE_TO_WORKSPACE_12 = 61,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_LEFT,
+        MOVE_TO_WORKSPACE_LEFT = 62,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_RIGHT,
+        MOVE_TO_WORKSPACE_RIGHT = 63,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_UP,
+        MOVE_TO_WORKSPACE_UP = 64,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_DOWN,
+        MOVE_TO_WORKSPACE_DOWN = 65,
         /**
          * FILLME
          */
-        MOVE_TO_WORKSPACE_LAST,
+        MOVE_TO_WORKSPACE_LAST = 66,
         /**
          * FILLME
          */
-        MOVE_TO_MONITOR_LEFT,
+        MOVE_TO_MONITOR_LEFT = 67,
         /**
          * FILLME
          */
-        MOVE_TO_MONITOR_RIGHT,
+        MOVE_TO_MONITOR_RIGHT = 68,
         /**
          * FILLME
          */
-        MOVE_TO_MONITOR_UP,
+        MOVE_TO_MONITOR_UP = 69,
         /**
          * FILLME
          */
-        MOVE_TO_MONITOR_DOWN,
+        MOVE_TO_MONITOR_DOWN = 70,
         /**
          * FILLME
          */
-        RAISE_OR_LOWER,
+        RAISE_OR_LOWER = 71,
         /**
          * FILLME
          */
-        RAISE,
+        RAISE = 72,
         /**
          * FILLME
          */
-        LOWER,
+        LOWER = 73,
         /**
          * FILLME
          */
-        MAXIMIZE_VERTICALLY,
+        MAXIMIZE_VERTICALLY = 74,
         /**
          * FILLME
          */
-        MAXIMIZE_HORIZONTALLY,
+        MAXIMIZE_HORIZONTALLY = 75,
         /**
          * FILLME
          */
-        MOVE_TO_CORNER_NW,
+        MOVE_TO_CORNER_NW = 76,
         /**
          * FILLME
          */
-        MOVE_TO_CORNER_NE,
+        MOVE_TO_CORNER_NE = 77,
         /**
          * FILLME
          */
-        MOVE_TO_CORNER_SW,
+        MOVE_TO_CORNER_SW = 78,
         /**
          * FILLME
          */
-        MOVE_TO_CORNER_SE,
+        MOVE_TO_CORNER_SE = 79,
         /**
          * FILLME
          */
-        MOVE_TO_SIDE_N,
+        MOVE_TO_SIDE_N = 80,
         /**
          * FILLME
          */
-        MOVE_TO_SIDE_S,
+        MOVE_TO_SIDE_S = 81,
         /**
          * FILLME
          */
-        MOVE_TO_SIDE_E,
+        MOVE_TO_SIDE_E = 82,
         /**
          * FILLME
          */
-        MOVE_TO_SIDE_W,
+        MOVE_TO_SIDE_W = 83,
         /**
          * FILLME
          */
-        MOVE_TO_CENTER,
+        MOVE_TO_CENTER = 84,
         /**
          * FILLME
          */
-        OVERLAY_KEY,
+        OVERLAY_KEY = 85,
         /**
          * FILLME
          */
-        LOCATE_POINTER_KEY,
-        ISO_NEXT_GROUP,
+        LOCATE_POINTER_KEY = 86,
+        ISO_NEXT_GROUP = 87,
         /**
          * FILLME
          */
-        ALWAYS_ON_TOP,
-        SWITCH_MONITOR,
-        ROTATE_MONITOR,
+        ALWAYS_ON_TOP = 88,
+        SWITCH_MONITOR = 89,
+        ROTATE_MONITOR = 90,
         /**
          * FILLME
          */
-        LAST,
+        LAST = 91,
     }
 
 
@@ -928,28 +928,28 @@ export namespace Meta {
          * call in a resize processing phase that is done
          *   before GTK+ repainting (including window borders) is done.
          */
-        RESIZE,
+        RESIZE = 0,
         /**
          * used by Mutter to compute which windows should be mapped
          */
-        CALC_SHOWING,
+        CALC_SHOWING = 1,
         /**
          * used by Mutter to see if there's a fullscreen window
          */
-        CHECK_FULLSCREEN,
+        CHECK_FULLSCREEN = 2,
         /**
          * used by Mutter to send it's idea of the stacking order to the server
          */
-        SYNC_STACK,
+        SYNC_STACK = 3,
         /**
          * call before the stage is redrawn
          */
-        BEFORE_REDRAW,
+        BEFORE_REDRAW = 4,
         /**
          * call at a very low priority (can be blocked
          *    by running animations or redrawing applications)
          */
-        IDLE,
+        IDLE = 5,
     }
 
 
@@ -964,8 +964,8 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum LocaleDirection {
-        LTR,
-        RTL,
+        LTR = 0,
+        RTL = 1,
     }
 
 
@@ -980,11 +980,11 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum MonitorSwitchConfigType {
-        ALL_MIRROR,
-        ALL_LINEAR,
-        EXTERNAL,
-        BUILTIN,
-        UNKNOWN,
+        ALL_MIRROR = 0,
+        ALL_LINEAR = 1,
+        EXTERNAL = 2,
+        BUILTIN = 3,
+        UNKNOWN = 4,
     }
 
 
@@ -1002,35 +1002,35 @@ export namespace Meta {
         /**
          * Upwards motion
          */
-        UP,
+        UP = -1,
         /**
          * Downwards motion
          */
-        DOWN,
+        DOWN = -2,
         /**
          * Motion to the left
          */
-        LEFT,
+        LEFT = -3,
         /**
          * Motion to the right
          */
-        RIGHT,
+        RIGHT = -4,
         /**
          * Motion up and to the left
          */
-        UP_LEFT,
+        UP_LEFT = -5,
         /**
          * Motion up and to the right
          */
-        UP_RIGHT,
+        UP_RIGHT = -6,
         /**
          * Motion down and to the left
          */
-        DOWN_LEFT,
+        DOWN_LEFT = -7,
         /**
          * Motion down and to the right
          */
-        DOWN_RIGHT,
+        DOWN_RIGHT = -8,
     }
 
 
@@ -1045,9 +1045,9 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum PadActionType {
-        BUTTON,
-        RING,
-        STRIP,
+        BUTTON = 0,
+        RING = 1,
+        STRIP = 2,
     }
 
 
@@ -1065,140 +1065,140 @@ export namespace Meta {
         /**
          * mouse button modifiers
          */
-        MOUSE_BUTTON_MODS,
+        MOUSE_BUTTON_MODS = 0,
         /**
          * focus mode
          */
-        FOCUS_MODE,
+        FOCUS_MODE = 1,
         /**
          * focus new windows
          */
-        FOCUS_NEW_WINDOWS,
+        FOCUS_NEW_WINDOWS = 2,
         /**
          * attach modal dialogs
          */
-        ATTACH_MODAL_DIALOGS,
+        ATTACH_MODAL_DIALOGS = 3,
         /**
          * raise on click
          */
-        RAISE_ON_CLICK,
+        RAISE_ON_CLICK = 4,
         /**
          * action double click titlebar
          */
-        ACTION_DOUBLE_CLICK_TITLEBAR,
+        ACTION_DOUBLE_CLICK_TITLEBAR = 5,
         /**
          * action middle click titlebar
          */
-        ACTION_MIDDLE_CLICK_TITLEBAR,
+        ACTION_MIDDLE_CLICK_TITLEBAR = 6,
         /**
          * action right click titlebar
          */
-        ACTION_RIGHT_CLICK_TITLEBAR,
+        ACTION_RIGHT_CLICK_TITLEBAR = 7,
         /**
          * auto-raise
          */
-        AUTO_RAISE,
+        AUTO_RAISE = 8,
         /**
          * auto-raise delay
          */
-        AUTO_RAISE_DELAY,
+        AUTO_RAISE_DELAY = 9,
         /**
          * focus change on pointer rest
          */
-        FOCUS_CHANGE_ON_POINTER_REST,
+        FOCUS_CHANGE_ON_POINTER_REST = 10,
         /**
          * title-bar font
          */
-        TITLEBAR_FONT,
+        TITLEBAR_FONT = 11,
         /**
          * number of workspaces
          */
-        NUM_WORKSPACES,
+        NUM_WORKSPACES = 12,
         /**
          * dynamic workspaces
          */
-        DYNAMIC_WORKSPACES,
+        DYNAMIC_WORKSPACES = 13,
         /**
          * keybindings
          */
-        KEYBINDINGS,
+        KEYBINDINGS = 14,
         /**
          * disable workarounds
          */
-        DISABLE_WORKAROUNDS,
+        DISABLE_WORKAROUNDS = 15,
         /**
          * button layout
          */
-        BUTTON_LAYOUT,
+        BUTTON_LAYOUT = 16,
         /**
          * workspace names
          */
-        WORKSPACE_NAMES,
+        WORKSPACE_NAMES = 17,
         /**
          * visual bell
          */
-        VISUAL_BELL,
+        VISUAL_BELL = 18,
         /**
          * audible bell
          */
-        AUDIBLE_BELL,
+        AUDIBLE_BELL = 19,
         /**
          * visual bell type
          */
-        VISUAL_BELL_TYPE,
+        VISUAL_BELL_TYPE = 20,
         /**
          * GNOME accessibility
          */
-        GNOME_ACCESSIBILITY,
+        GNOME_ACCESSIBILITY = 21,
         /**
          * GNOME animations
          */
-        GNOME_ANIMATIONS,
+        GNOME_ANIMATIONS = 22,
         /**
          * cursor theme
          */
-        CURSOR_THEME,
+        CURSOR_THEME = 23,
         /**
          * cursor size
          */
-        CURSOR_SIZE,
+        CURSOR_SIZE = 24,
         /**
          * resize with right button
          */
-        RESIZE_WITH_RIGHT_BUTTON,
+        RESIZE_WITH_RIGHT_BUTTON = 25,
         /**
          * edge tiling
          */
-        EDGE_TILING,
+        EDGE_TILING = 26,
         /**
          * force fullscreen
          */
-        FORCE_FULLSCREEN,
+        FORCE_FULLSCREEN = 27,
         /**
          * workspaces only on primary
          */
-        WORKSPACES_ONLY_ON_PRIMARY,
+        WORKSPACES_ONLY_ON_PRIMARY = 28,
         /**
          * draggable border width
          */
-        DRAGGABLE_BORDER_WIDTH,
+        DRAGGABLE_BORDER_WIDTH = 29,
         /**
          * auto-maximize
          */
-        AUTO_MAXIMIZE,
+        AUTO_MAXIMIZE = 30,
         /**
          * center new windows
          */
-        CENTER_NEW_WINDOWS,
+        CENTER_NEW_WINDOWS = 31,
         /**
          * drag threshold
          */
-        DRAG_THRESHOLD,
+        DRAG_THRESHOLD = 32,
         /**
          * show pointer location
          */
-        LOCATE_POINTER,
-        CHECK_ALIVE_TIMEOUT,
+        LOCATE_POINTER = 33,
+        CHECK_ALIVE_TIMEOUT = 34,
     }
 
 
@@ -1213,10 +1213,10 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum SelectionType {
-        SELECTION_PRIMARY,
-        SELECTION_CLIPBOARD,
-        SELECTION_DND,
-        N_SELECTION_TYPES,
+        SELECTION_PRIMARY = 0,
+        SELECTION_CLIPBOARD = 1,
+        SELECTION_DND = 2,
+        N_SELECTION_TYPES = 3,
     }
 
 
@@ -1231,9 +1231,9 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum ShadowMode {
-        AUTO,
-        FORCED_OFF,
-        FORCED_ON,
+        AUTO = 0,
+        FORCED_OFF = 1,
+        FORCED_ON = 2,
     }
 
 
@@ -1251,19 +1251,19 @@ export namespace Meta {
         /**
          * Left side
          */
-        LEFT,
+        LEFT = 1,
         /**
          * Right side
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Top side
          */
-        TOP,
+        TOP = 4,
         /**
          * Bottom side
          */
-        BOTTOM,
+        BOTTOM = 8,
     }
 
 
@@ -1278,10 +1278,10 @@ export namespace Meta {
      * @gir-type Enum
      */
     enum SizeChange {
-        MAXIMIZE,
-        UNMAXIMIZE,
-        FULLSCREEN,
-        UNFULLSCREEN,
+        MAXIMIZE = 0,
+        UNMAXIMIZE = 1,
+        FULLSCREEN = 2,
+        UNFULLSCREEN = 3,
     }
 
 
@@ -1301,31 +1301,31 @@ export namespace Meta {
         /**
          * Desktop layer
          */
-        DESKTOP,
+        DESKTOP = 0,
         /**
          * Bottom layer
          */
-        BOTTOM,
+        BOTTOM = 1,
         /**
          * Normal layer
          */
-        NORMAL,
+        NORMAL = 2,
         /**
          * Top layer
          */
-        TOP,
+        TOP = 4,
         /**
          * Dock layer
          */
-        DOCK,
+        DOCK = 4,
         /**
          * Override-redirect layer
          */
-        OVERRIDE_REDIRECT,
+        OVERRIDE_REDIRECT = 7,
         /**
          * Marks the end of the {@link Meta.StackLayer} enumeration
          */
-        LAST,
+        LAST = 8,
     }
 
 
@@ -1343,19 +1343,19 @@ export namespace Meta {
         /**
          * Normal windows
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Dock windows
          */
-        DOCKS,
+        DOCKS = 1,
         /**
          * Groups
          */
-        GROUP,
+        GROUP = 2,
         /**
          * All windows
          */
-        NORMAL_ALL,
+        NORMAL_ALL = 3,
     }
 
 
@@ -1373,11 +1373,11 @@ export namespace Meta {
         /**
          * Show icon (Alt-Tab mode)
          */
-        ICON,
+        ICON = 0,
         /**
          * Show instantly (Alt-Esc mode)
          */
-        INSTANTLY,
+        INSTANTLY = 1,
     }
 
 
@@ -1395,11 +1395,11 @@ export namespace Meta {
         /**
          * A Wayland based window
          */
-        WAYLAND,
+        WAYLAND = 0,
         /**
          * An X11 based window
          */
-        X11,
+        X11 = 1,
     }
 
 
@@ -1418,11 +1418,11 @@ export namespace Meta {
         /**
          * the window manager menu
          */
-        WM,
+        WM = 0,
         /**
          * the (fallback) app menu
          */
-        APP,
+        APP = 1,
     }
 
 
@@ -1440,92 +1440,128 @@ export namespace Meta {
         /**
          * Normal
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Desktop
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * Dock
          */
-        DOCK,
+        DOCK = 2,
         /**
          * Dialog
          */
-        DIALOG,
+        DIALOG = 3,
         /**
          * Modal dialog
          */
-        MODAL_DIALOG,
+        MODAL_DIALOG = 4,
         /**
          * Toolbar
          */
-        TOOLBAR,
+        TOOLBAR = 5,
         /**
          * Menu
          */
-        MENU,
+        MENU = 6,
         /**
          * Utility
          */
-        UTILITY,
+        UTILITY = 7,
         /**
          * Splashcreen
          */
-        SPLASHSCREEN,
+        SPLASHSCREEN = 8,
         /**
          * Dropdown menu
          */
-        DROPDOWN_MENU,
+        DROPDOWN_MENU = 9,
         /**
          * Popup menu
          */
-        POPUP_MENU,
+        POPUP_MENU = 10,
         /**
          * Tooltip
          */
-        TOOLTIP,
+        TOOLTIP = 11,
         /**
          * Notification
          */
-        NOTIFICATION,
+        NOTIFICATION = 12,
         /**
          * Combobox
          */
-        COMBO,
+        COMBO = 13,
         /**
          * Drag and drop
          */
-        DND,
+        DND = 14,
         /**
          * Other override-redirect window type
          */
-        OVERRIDE_OTHER,
+        OVERRIDE_OTHER = 15,
     }
 
 
+    /**
+     * @default 0
+     */
     const CURRENT_TIME: number;
 
+    /**
+     * @default window
+     */
     const DEFAULT_ICON_NAME: string;
 
+    /**
+     * @default 96
+     */
     const ICON_HEIGHT: number;
 
+    /**
+     * @default 96
+     */
     const ICON_WIDTH: number;
 
+    /**
+     * @default 16
+     */
     const MINI_ICON_HEIGHT: number;
 
+    /**
+     * @default 16
+     */
     const MINI_ICON_WIDTH: number;
 
+    /**
+     * @default 40
+     */
     const PRIORITY_BEFORE_REDRAW: number;
 
+    /**
+     * @default 10
+     */
     const PRIORITY_PREFS_NOTIFY: number;
 
+    /**
+     * @default 50
+     */
     const PRIORITY_REDRAW: number;
 
+    /**
+     * @default 15
+     */
     const PRIORITY_RESIZE: number;
 
+    /**
+     * @default 3
+     */
     const VIRTUAL_CORE_KEYBOARD_ID: number;
 
+    /**
+     * @default 2
+     */
     const VIRTUAL_CORE_POINTER_ID: number;
 
     /**
@@ -1878,6 +1914,9 @@ export namespace Meta {
      */
     function x11_error_trap_push(x11_display: X11Display): void;
 
+    /**
+     * @throws GLib.Error
+     */
     function x11_init_gdk_display(): boolean;
 
     /**
@@ -1922,19 +1961,19 @@ export namespace Meta {
         /**
          * Positive direction in the X axis
          */
-        POSITIVE_X,
+        POSITIVE_X = 1,
         /**
          * Positive direction in the Y axis
          */
-        POSITIVE_Y,
+        POSITIVE_Y = 2,
         /**
          * Negative direction in the X axis
          */
-        NEGATIVE_X,
+        NEGATIVE_X = 4,
         /**
          * Negative direction in the Y axis
          */
-        NEGATIVE_Y,
+        NEGATIVE_Y = 8,
     }
 
 
@@ -1952,11 +1991,11 @@ export namespace Meta {
         /**
          * default
          */
-        NONE,
+        NONE = 0,
         /**
          * paint opaque regions
          */
-        OPAQUE_REGION,
+        OPAQUE_REGION = 1,
     }
 
 
@@ -1974,101 +2013,101 @@ export namespace Meta {
         /**
          * verbose logging
          */
-        VERBOSE,
+        VERBOSE = -1,
         /**
          * focus
          */
-        FOCUS,
+        FOCUS = 1,
         /**
          * workarea
          */
-        WORKAREA,
+        WORKAREA = 2,
         /**
          * stack
          */
-        STACK,
+        STACK = 4,
         /**
          * session management
          */
-        SM,
+        SM = 8,
         /**
          * events
          */
-        EVENTS,
+        EVENTS = 16,
         /**
          * window state
          */
-        WINDOW_STATE,
+        WINDOW_STATE = 32,
         /**
          * window operations
          */
-        WINDOW_OPS,
+        WINDOW_OPS = 64,
         /**
          * geometry
          */
-        GEOMETRY,
+        GEOMETRY = 128,
         /**
          * window placement
          */
-        PLACEMENT,
+        PLACEMENT = 256,
         /**
          * ping
          */
-        PING,
+        PING = 512,
         /**
          * keybindings
          */
-        KEYBINDINGS,
+        KEYBINDINGS = 1024,
         /**
          * sync
          */
-        SYNC,
+        SYNC = 2048,
         /**
          * startup
          */
-        STARTUP,
+        STARTUP = 4096,
         /**
          * preferences
          */
-        PREFS,
+        PREFS = 8192,
         /**
          * groups
          */
-        GROUPS,
+        GROUPS = 16384,
         /**
          * resizing
          */
-        RESIZING,
+        RESIZING = 32768,
         /**
          * shapes
          */
-        SHAPES,
+        SHAPES = 65536,
         /**
          * edge resistance
          */
-        EDGE_RESISTANCE,
-        DBUS,
-        INPUT,
+        EDGE_RESISTANCE = 131072,
+        DBUS = 262144,
+        INPUT = 524288,
         /**
          * Wayland
          */
-        WAYLAND,
+        WAYLAND = 1048576,
         /**
          * kernel mode setting
          */
-        KMS,
+        KMS = 2097152,
         /**
          * screencasting
          */
-        SCREEN_CAST,
+        SCREEN_CAST = 4194304,
         /**
          * remote desktop
          */
-        REMOTE_DESKTOP,
+        REMOTE_DESKTOP = 8388608,
         /**
          * backend
          */
-        BACKEND,
+        BACKEND = 16777216,
     }
 
 
@@ -2086,35 +2125,35 @@ export namespace Meta {
         /**
          * Left
          */
-        LEFT,
+        LEFT = 1,
         /**
          * Right
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Top
          */
-        TOP,
+        TOP = 4,
         /**
          * Bottom
          */
-        BOTTOM,
+        BOTTOM = 8,
         /**
          * Up
          */
-        UP,
+        UP = 4,
         /**
          * Down
          */
-        DOWN,
+        DOWN = 8,
         /**
          * Horizontal
          */
-        HORIZONTAL,
+        HORIZONTAL = 3,
         /**
          * Vertical
          */
-        VERTICAL,
+        VERTICAL = 12,
     }
 
 
@@ -2132,67 +2171,67 @@ export namespace Meta {
         /**
          * frame allows delete
          */
-        ALLOWS_DELETE,
+        ALLOWS_DELETE = 1,
         /**
          * frame allows menu
          */
-        ALLOWS_MENU,
+        ALLOWS_MENU = 2,
         /**
          * frame allows minimize
          */
-        ALLOWS_MINIMIZE,
+        ALLOWS_MINIMIZE = 4,
         /**
          * frame allows maximize
          */
-        ALLOWS_MAXIMIZE,
+        ALLOWS_MAXIMIZE = 8,
         /**
          * frame allows vertical resize
          */
-        ALLOWS_VERTICAL_RESIZE,
+        ALLOWS_VERTICAL_RESIZE = 16,
         /**
          * frame allows horizontal resize
          */
-        ALLOWS_HORIZONTAL_RESIZE,
+        ALLOWS_HORIZONTAL_RESIZE = 32,
         /**
          * frame has focus
          */
-        HAS_FOCUS,
+        HAS_FOCUS = 64,
         /**
          * frame is shaded
          */
-        SHADED,
+        SHADED = 128,
         /**
          * frame is stuck
          */
-        STUCK,
+        STUCK = 256,
         /**
          * frame is maximized
          */
-        MAXIMIZED,
+        MAXIMIZED = 512,
         /**
          * frame allows shade
          */
-        ALLOWS_SHADE,
+        ALLOWS_SHADE = 1024,
         /**
          * frame allows move
          */
-        ALLOWS_MOVE,
+        ALLOWS_MOVE = 2048,
         /**
          * frame allows fullscreen
          */
-        FULLSCREEN,
+        FULLSCREEN = 4096,
         /**
          * frame is above
          */
-        ABOVE,
+        ABOVE = 8192,
         /**
          * frame is tiled to the left
          */
-        TILED_LEFT,
+        TILED_LEFT = 16384,
         /**
          * frame is tiled to the right
          */
-        TILED_RIGHT,
+        TILED_RIGHT = 32768,
     }
 
 
@@ -2210,28 +2249,28 @@ export namespace Meta {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * per-window
          */
-        PER_WINDOW,
+        PER_WINDOW = 1,
         /**
          * built-in
          */
-        BUILTIN,
+        BUILTIN = 2,
         /**
          * is reversed
          */
-        IS_REVERSED,
+        IS_REVERSED = 4,
         /**
          * always active
          */
-        NON_MASKABLE,
-        IGNORE_AUTOREPEAT,
+        NON_MASKABLE = 8,
+        IGNORE_AUTOREPEAT = 16,
         /**
          * not grabbed automatically
          */
-        NO_AUTO_GRAB,
+        NO_AUTO_GRAB = 32,
     }
 
 
@@ -2249,15 +2288,15 @@ export namespace Meta {
         /**
          * Horizontal
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * Vertical
          */
-        VERTICAL,
+        VERTICAL = 2,
         /**
          * Both
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -2277,12 +2316,12 @@ export namespace Meta {
          * if set the pointer is already
          *   grabbed by the plugin and should not be grabbed again.
          */
-        POINTER_ALREADY_GRABBED,
+        POINTER_ALREADY_GRABBED = 1,
         /**
          * if set the keyboard is already
          *   grabbed by the plugin and should not be grabbed again.
          */
-        KEYBOARD_ALREADY_GRABBED,
+        KEYBOARD_ALREADY_GRABBED = 2,
     }
 
 
@@ -2300,43 +2339,43 @@ export namespace Meta {
         /**
          * Shift mask
          */
-        SHIFT_MASK,
+        SHIFT_MASK = 32,
         /**
          * Control mask
          */
-        CONTROL_MASK,
+        CONTROL_MASK = 64,
         /**
          * Alt mask
          */
-        ALT_MASK,
+        ALT_MASK = 128,
         /**
          * Meta mask
          */
-        META_MASK,
+        META_MASK = 256,
         /**
          * Super mask
          */
-        SUPER_MASK,
+        SUPER_MASK = 512,
         /**
          * Hyper mask
          */
-        HYPER_MASK,
+        HYPER_MASK = 1024,
         /**
          * Mod2 mask
          */
-        MOD2_MASK,
+        MOD2_MASK = 2048,
         /**
          * Mod3 mask
          */
-        MOD3_MASK,
+        MOD3_MASK = 4096,
         /**
          * Mod4 mask
          */
-        MOD4_MASK,
+        MOD4_MASK = 8192,
         /**
          * Mod5 mask
          */
-        MOD5_MASK,
+        MOD5_MASK = 16384,
     }
 
 
@@ -2347,7 +2386,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "gpu-added": (arg0: unknown) => void;
+            "gpu-added": (gpu: unknown) => void;
             /**
              * @signal
              * @run-last
@@ -2357,17 +2396,17 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "keymap-layout-group-changed": (arg0: number) => void;
+            "keymap-layout-group-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "last-device-changed": (arg0: Clutter.InputDevice) => void;
+            "last-device-changed": (object: Clutter.InputDevice) => void;
             /**
              * @signal
              * @run-last
              */
-            "lid-is-closed-changed": (arg0: boolean) => void;
+            "lid-is-closed-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-last
@@ -2508,6 +2547,7 @@ export namespace Meta {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4249,14 +4289,14 @@ export namespace Meta {
              * @signal
              * @run-first
              */
-            hit: (arg0: BarrierEvent) => void;
+            hit: (event: BarrierEvent) => void;
             /**
              * When a pointer barrier hitbox was left, this will trigger.
              * This requires an XI2-enabled server.
              * @signal
              * @run-first
              */
-            left: (arg0: BarrierEvent) => void;
+            left: (event: BarrierEvent) => void;
             "notify::directions": (pspec: GObject.ParamSpec) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;
             "notify::x1": (pspec: GObject.ParamSpec) => void;
@@ -4435,6 +4475,7 @@ export namespace Meta {
         /**
          * @param argv Address of the`argv` parameter of `main()`, or `null`.
          * @returns `true` if the commandline arguments (if any) were valid and if the configuration has been successfull, `false` otherwise
+         * @throws GLib.Error
          */
         configure(argv: string[] | null): [boolean, string[] | null];
 
@@ -4456,6 +4497,9 @@ export namespace Meta {
 
         notify_ready(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         run_main_loop(): boolean;
 
         /**
@@ -4473,8 +4517,14 @@ export namespace Meta {
          */
         set_plugin_name(plugin_name: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         setup(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         start(): boolean;
 
         terminate(): void;
@@ -4588,7 +4638,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "accelerator-activated": (arg0: number, arg1: Clutter.InputDevice, arg2: number) => void;
+            "accelerator-activated": (object: number, p0: Clutter.InputDevice, p1: number) => void;
             /**
              * @signal
              * @run-last
@@ -4608,12 +4658,12 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "grab-op-begin": (arg0: Window, arg1: GrabOp) => void;
+            "grab-op-begin": (object: Window, p0: GrabOp) => void;
             /**
              * @signal
              * @run-last
              */
-            "grab-op-end": (arg0: Window, arg1: GrabOp) => void;
+            "grab-op-end": (object: Window, p0: GrabOp) => void;
             /**
              * @signal
              * @run-last
@@ -4623,7 +4673,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "init-xserver": (arg0: Gio.Task) => boolean | void;
+            "init-xserver": (object: Gio.Task) => boolean | void;
             /**
              * The ::modifiers-accelerator-activated signal will be emitted when
              * a special modifiers-only keybinding is activated.
@@ -4640,7 +4690,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "pad-mode-switch": (arg0: Clutter.InputDevice, arg1: number, arg2: number) => void;
+            "pad-mode-switch": (object: Clutter.InputDevice, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
@@ -4660,18 +4710,18 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "show-osd": (arg0: number, arg1: string, arg2: string) => void;
+            "show-osd": (object: number, p0: string, p1: string) => void;
             /**
              * Requests the pad button mapping OSD to be shown.
              * @signal
              * @run-last
              */
-            "show-pad-osd": (arg0: Clutter.InputDevice, arg1: Gio.Settings, arg2: string, arg3: boolean, arg4: number) => Clutter.Actor | null;
+            "show-pad-osd": (pad: Clutter.InputDevice, settings: Gio.Settings, layout_path: string, edition_mode: boolean, monitor_idx: number) => Clutter.Actor | null;
             /**
              * @signal
              * @run-last
              */
-            "show-resize-popup": (arg0: boolean, arg1: Rectangle, arg2: number, arg3: number) => boolean | void;
+            "show-resize-popup": (object: boolean, p0: Rectangle, p1: number, p2: number) => boolean | void;
             /**
              * The ::show-restart-message signal will be emitted to indicate
              * that the compositor should show a message during restart. This is
@@ -4686,7 +4736,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "show-restart-message": (arg0: string | null) => boolean | void;
+            "show-restart-message": (message: string | null) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4696,27 +4746,27 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "window-created": (arg0: Window) => void;
+            "window-created": (object: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            "window-demands-attention": (arg0: Window) => void;
+            "window-demands-attention": (object: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            "window-entered-monitor": (arg0: number, arg1: Window) => void;
+            "window-entered-monitor": (object: number, p0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            "window-left-monitor": (arg0: number, arg1: Window) => void;
+            "window-left-monitor": (object: number, p0: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            "window-marked-urgent": (arg0: Window) => void;
+            "window-marked-urgent": (object: Window) => void;
             /**
              * @signal
              * @run-last
@@ -5142,7 +5192,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "dnd-position-change": (arg0: number, arg1: number) => void;
+            "dnd-position-change": (object: number, p0: number) => void;
         }
 
         // Constructor properties interface
@@ -5720,7 +5770,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "new-handle": (arg0: RemoteAccessHandle) => void;
+            "new-handle": (object: RemoteAccessHandle) => void;
         }
 
         // Constructor properties interface
@@ -5862,7 +5912,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "owner-changed": (arg0: number, arg1: SelectionSource) => void;
+            "owner-changed": (object: number, p0: SelectionSource) => void;
         }
 
         // Constructor properties interface
@@ -5959,6 +6009,7 @@ export namespace Meta {
          * Finishes the transfer of a queried mimetype.
          * @param result The async result
          * @returns `TRUE` if the transfer was successful.
+         * @throws GLib.Error
          */
         transfer_finish(result: Gio.AsyncResult): boolean;
 
@@ -6095,6 +6146,7 @@ export namespace Meta {
          * Finishes a read from the selection source.
          * @param result The async result
          * @returns The resulting {@link Gio.InputStream}
+         * @throws GLib.Error
          */
         read_finish(result: Gio.AsyncResult): Gio.InputStream;
     }
@@ -6591,7 +6643,7 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            changed: (arg0: null) => void;
+            changed: (object: null) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6853,6 +6905,7 @@ export namespace Meta {
          * @param display the current MetaDisplay
          * @param argv Command line arguments
          * @returns A new {@link Gio.Subprocess}, or `null` on error (and `error` will be set)
+         * @throws GLib.Error
          */
         spawnv(display: Display, argv: string[]): Gio.Subprocess;
     }
@@ -7956,6 +8009,7 @@ export namespace Meta {
         /**
          * @param clip A clipping rectangle, in actor coordinates, to help prevent extra processing. In the case that the clipping rectangle is partially or fully outside the bounds of the actor, the rectangle will be clipped.
          * @returns a new {@link Clutter.Content}
+         * @throws GLib.Error
          */
         paint_to_content(clip: Rectangle | null): Clutter.Content | null;
 
@@ -9024,12 +9078,12 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "window-added": (arg0: Window) => void;
+            "window-added": (object: Window) => void;
             /**
              * @signal
              * @run-last
              */
-            "window-removed": (arg0: Window) => void;
+            "window-removed": (object: Window) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::n-windows": (pspec: GObject.ParamSpec) => void;
             "notify::workspace-index": (pspec: GObject.ParamSpec) => void;
@@ -9191,17 +9245,17 @@ export namespace Meta {
              * @signal
              * @run-last
              */
-            "workspace-added": (arg0: number) => void;
+            "workspace-added": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "workspace-removed": (arg0: number) => void;
+            "workspace-removed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "workspace-switched": (arg0: number, arg1: number, arg2: MotionDirection) => void;
+            "workspace-switched": (object: number, p0: number, p1: MotionDirection) => void;
             /**
              * @signal
              * @run-last

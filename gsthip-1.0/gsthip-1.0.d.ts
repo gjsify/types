@@ -37,22 +37,40 @@ export namespace GstHip {
      * @since 1.28
      */
     enum HipVendor {
-        UNKNOWN,
-        AMD,
-        NVIDIA,
+        UNKNOWN = 0,
+        AMD = 1,
+        NVIDIA = 2,
     }
 
 
+    /**
+     * @default memory:HIPMemory
+     */
     const CAPS_FEATURE_MEMORY_HIP_MEMORY: string;
 
+    /**
+     * @default gst.hip.device
+     */
     const HIP_DEVICE_CONTEXT_TYPE: string;
 
+    /**
+     * @default HIPMemory
+     */
     const HIP_MEMORY_NAME: string;
 
+    /**
+     * @default 131072
+     */
     const MAP_HIP: Gst.MapFlags;
 
+    /**
+     * @default 1
+     */
     const MAP_READ_HIP: Gst.MapFlags;
 
+    /**
+     * @default 2
+     */
     const MAP_WRITE_HIP: Gst.MapFlags;
 
     /**
@@ -139,8 +157,8 @@ export namespace GstHip {
      * @gir-type Flags
      */
     enum HipMemoryTransfer {
-        DOWNLOAD,
-        UPLOAD,
+        DOWNLOAD = 1048576,
+        UPLOAD = 2097152,
     }
 
 

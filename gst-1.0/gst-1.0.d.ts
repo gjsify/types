@@ -37,19 +37,19 @@ export namespace Gst {
         /**
          * a small amount of data is buffered
          */
-        STREAM,
+        STREAM = 0,
         /**
          * the stream is being downloaded
          */
-        DOWNLOAD,
+        DOWNLOAD = 1,
         /**
          * the stream is being downloaded in a ringbuffer
          */
-        TIMESHIFT,
+        TIMESHIFT = 2,
         /**
          * the stream is a live stream
          */
-        LIVE,
+        LIVE = 3,
     }
 
 
@@ -68,15 +68,15 @@ export namespace Gst {
         /**
          * drop the message
          */
-        DROP,
+        DROP = 0,
         /**
          * pass the message to the async queue
          */
-        PASS,
+        PASS = 1,
         /**
          * pass message to async queue, continue if message is handled
          */
-        ASYNC,
+        ASYNC = 2,
     }
 
 
@@ -115,11 +115,11 @@ export namespace Gst {
         /**
          * Zig-zags over both caps.
          */
-        ZIG_ZAG,
+        ZIG_ZAG = 0,
         /**
          * Keeps the first caps order.
          */
-        FIRST,
+        FIRST = 1,
     }
 
 
@@ -138,11 +138,11 @@ export namespace Gst {
         /**
          * a single shot timeout
          */
-        SINGLE,
+        SINGLE = 0,
         /**
          * a periodic timeout request
          */
-        PERIODIC,
+        PERIODIC = 1,
     }
 
 
@@ -161,35 +161,35 @@ export namespace Gst {
         /**
          * The operation succeeded.
          */
-        OK,
+        OK = 0,
         /**
          * The operation was scheduled too late.
          */
-        EARLY,
+        EARLY = 1,
         /**
          * The clockID was unscheduled
          */
-        UNSCHEDULED,
+        UNSCHEDULED = 2,
         /**
          * The ClockID is busy
          */
-        BUSY,
+        BUSY = 3,
         /**
          * A bad time was provided to a function.
          */
-        BADTIME,
+        BADTIME = 4,
         /**
          * An error occurred
          */
-        ERROR,
+        ERROR = 5,
         /**
          * Operation is not supported
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 6,
         /**
          * The ClockID is done waiting
          */
-        DONE,
+        DONE = 7,
     }
 
 
@@ -208,21 +208,21 @@ export namespace Gst {
         /**
          * time since Epoch
          */
-        REALTIME,
+        REALTIME = 0,
         /**
          * monotonic time since some unspecified starting
          *                            point
          */
-        MONOTONIC,
+        MONOTONIC = 1,
         /**
          * some other time source is used (Since: 1.0.5)
          */
-        OTHER,
+        OTHER = 2,
         /**
          * time since Epoch, but using International Atomic Time
          *                      as reference (Since: 1.18)
          */
-        TAI,
+        TAI = 3,
     }
 
 
@@ -335,16 +335,16 @@ export namespace Gst {
         /**
          * Do not use colors in logs.
          */
-        OFF,
+        OFF = 0,
         /**
          * Paint logs in a platform-specific way.
          */
-        ON,
+        ON = 1,
         /**
          * Paint logs with UNIX terminal color codes
          *                             no matter what platform GStreamer is running on.
          */
-        UNIX,
+        UNIX = 2,
     }
 
 
@@ -365,21 +365,21 @@ export namespace Gst {
          * No debugging level specified or desired. Used to deactivate
          *  debugging output.
          */
-        NONE,
+        NONE = 0,
         /**
          * Error messages are to be used only when an error occurred
          *  that stops the application from keeping working correctly.
          *  An examples is gst_element_error, which outputs a message with this priority.
          *  It does not mean that the application is terminating as with g_error.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Warning messages are to inform about abnormal behaviour
          *  that could lead to problems or weird behaviour later on. An example of this
          *  would be clocking issues ("your computer is pretty slow") or broken input
          *  data ("Can't synchronize to stream.")
          */
-        WARNING,
+        WARNING = 2,
         /**
          * Fixme messages are messages that indicate that something
          *  in the executed code path is not fully implemented or handled yet. Note
@@ -387,7 +387,7 @@ export namespace Gst {
          *  of this message is to make it easier to spot incomplete/unfinished pieces
          *  of code when reading the debug log.
          */
-        FIXME,
+        FIXME = 3,
         /**
          * Informational messages should be used to keep the developer
          *  updated about what is happening.
@@ -395,7 +395,7 @@ export namespace Gst {
          *  successfully determined the type of the stream or when an mp3 plugin detects
          *  the format to be used. ("This file has mono sound.")
          */
-        INFO,
+        INFO = 4,
         /**
          * Debugging messages should be used when something common
          *  happens that is not the expected default behavior, or something that's
@@ -404,7 +404,7 @@ export namespace Gst {
          *  An example would be notifications about state changes or receiving/sending
          *  of events.
          */
-        DEBUG,
+        DEBUG = 5,
         /**
          * Log messages are messages that are very common but might be
          *  useful to know. As a rule of thumb a pipeline that is running as expected
@@ -412,22 +412,22 @@ export namespace Gst {
          *  Use this log level to log recurring information in chain functions and
          *  loop functions, for example.
          */
-        LOG,
+        LOG = 6,
         /**
          * Tracing-related messages.
          *  Examples for this are referencing/dereferencing of objects.
          */
-        TRACE,
+        TRACE = 7,
         /**
          * memory dump messages are used to log (small) chunks of
          *  data as memory dumps in the log. They will be displayed as hexdump with
          *  ASCII characters.
          */
-        MEMDUMP,
+        MEMDUMP = 9,
         /**
          * The number of defined debugging levels.
          */
-        COUNT,
+        COUNT = 10,
     }
 
 
@@ -452,159 +452,159 @@ export namespace Gst {
         /**
          * unknown event.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Start a flush operation. This event clears all data
          *                 from the pipeline and unblock all streaming threads.
          */
-        FLUSH_START,
+        FLUSH_START = 2563,
         /**
          * Stop a flush operation. This event resets the
          *                 running-time of the pipeline.
          */
-        FLUSH_STOP,
+        FLUSH_STOP = 5127,
         /**
          * Event to mark the start of a new stream. Sent before any
          *                 other serialized event and only sent at the start of a new stream,
          *                 not after flushing seeks.
          */
-        STREAM_START,
+        STREAM_START = 10254,
         /**
          * {@link Gst.Caps} event. Notify the pad of a new media type.
          */
-        CAPS,
+        CAPS = 12814,
         /**
          * A new media segment follows in the dataflow. The
          *                 segment events contains information for clipping buffers and
          *                 converting buffer timestamps to running-time and
          *                 stream-time.
          */
-        SEGMENT,
+        SEGMENT = 17934,
         /**
          * A new {@link Gst.StreamCollection} is available (Since: 1.10)
          */
-        STREAM_COLLECTION,
+        STREAM_COLLECTION = 19230,
         /**
          * A new set of metadata tags has been found in the stream.
          */
-        TAG,
+        TAG = 20510,
         /**
          * Notification of buffering requirements. Currently not
          *                 used yet.
          */
-        BUFFERSIZE,
+        BUFFERSIZE = 23054,
         /**
          * An event that sinks turn into a message. Used to
          *                          send messages that should be emitted in sync with
          *                          rendering.
          */
-        SINK_MESSAGE,
+        SINK_MESSAGE = 25630,
         /**
          * Indicates that there is no more data for
          *                 the stream group ID in the message. Sent before EOS
          *                 in some instances and should be handled mostly the same. (Since: 1.10)
          */
-        STREAM_GROUP_DONE,
+        STREAM_GROUP_DONE = 26894,
         /**
          * End-Of-Stream. No more data is to be expected to follow
          *                 without either a STREAM_START event, or a FLUSH_STOP and a SEGMENT
          *                 event.
          */
-        EOS,
+        EOS = 28174,
         /**
          * An event which indicates that a new table of contents (TOC)
          *                 was found or updated.
          */
-        TOC,
+        TOC = 30750,
         /**
          * An event which indicates that new or updated
          *                 encryption information has been found in the stream.
          */
-        PROTECTION,
+        PROTECTION = 33310,
         /**
          * Marks the end of a segment playback.
          */
-        SEGMENT_DONE,
+        SEGMENT_DONE = 38406,
         /**
          * Marks a gap in the datastream.
          */
-        GAP,
+        GAP = 40966,
         /**
          * Notify downstream that a playback rate override
          *                                 should be applied as soon as possible. (Since: 1.18)
          */
-        INSTANT_RATE_CHANGE,
+        INSTANT_RATE_CHANGE = 46090,
         /**
          * A quality message. Used to indicate to upstream elements
          *                 that the downstream elements should adjust their processing
          *                 rate.
          */
-        QOS,
+        QOS = 48641,
         /**
          * A request for a new playback position and rate.
          */
-        SEEK,
+        SEEK = 51201,
         /**
          * Navigation events are usually used for communicating
          *                        user requests, such as mouse or keyboard movements,
          *                        to upstream elements.
          */
-        NAVIGATION,
+        NAVIGATION = 53761,
         /**
          * Notification of new latency adjustment. Sinks will use
          *                     the latency information to adjust their synchronisation.
          */
-        LATENCY,
+        LATENCY = 56321,
         /**
          * A request for stepping through the media. Sinks will usually
          *                  execute the step operation.
          */
-        STEP,
+        STEP = 58881,
         /**
          * A request for upstream renegotiating caps and reconfiguring.
          */
-        RECONFIGURE,
+        RECONFIGURE = 61441,
         /**
          * A request for a new playback position based on TOC
          *                        entry's UID.
          */
-        TOC_SELECT,
+        TOC_SELECT = 64001,
         /**
          * A request to select one or more streams (Since: 1.10)
          */
-        SELECT_STREAMS,
+        SELECT_STREAMS = 66561,
         /**
          * Sent by the pipeline to notify elements that handle the
          *                                    instant-rate-change event about the running-time when
          *                                    the rate multiplier should be applied (or was applied). (Since: 1.18)
          */
-        INSTANT_RATE_SYNC_TIME,
+        INSTANT_RATE_SYNC_TIME = 66817,
         /**
          * Upstream custom event
          */
-        CUSTOM_UPSTREAM,
+        CUSTOM_UPSTREAM = 69121,
         /**
          * Downstream custom event that travels in the
          *                        data flow.
          */
-        CUSTOM_DOWNSTREAM,
+        CUSTOM_DOWNSTREAM = 71686,
         /**
          * Custom out-of-band downstream event.
          */
-        CUSTOM_DOWNSTREAM_OOB,
+        CUSTOM_DOWNSTREAM_OOB = 74242,
         /**
          * Custom sticky downstream event.
          */
-        CUSTOM_DOWNSTREAM_STICKY,
+        CUSTOM_DOWNSTREAM_STICKY = 76830,
         /**
          * Custom upstream or downstream event.
          *                         In-band when travelling downstream.
          */
-        CUSTOM_BOTH,
+        CUSTOM_BOTH = 79367,
         /**
          * Custom upstream or downstream out-of-band event.
          */
-        CUSTOM_BOTH_OOB,
+        CUSTOM_BOTH_OOB = 81923,
     }
 
 
@@ -626,64 +626,64 @@ export namespace Gst {
         /**
          * Pre-defined custom success code.
          */
-        CUSTOM_SUCCESS_2,
+        CUSTOM_SUCCESS_2 = 102,
         /**
          * Pre-defined custom success code (define your
          *                               custom success code to this to avoid compiler
          *                               warnings).
          */
-        CUSTOM_SUCCESS_1,
+        CUSTOM_SUCCESS_1 = 101,
         /**
          * Elements can use values starting from
          *                               this (and higher) to define custom success
          *                               codes.
          */
-        CUSTOM_SUCCESS,
+        CUSTOM_SUCCESS = 100,
         /**
          * Data passing was ok.
          */
-        OK,
+        OK = 0,
         /**
          * Pad is not linked.
          */
-        NOT_LINKED,
+        NOT_LINKED = -1,
         /**
          * Pad is flushing.
          */
-        FLUSHING,
+        FLUSHING = -2,
         /**
          * Pad is EOS.
          */
-        EOS,
+        EOS = -3,
         /**
          * Pad is not negotiated.
          */
-        NOT_NEGOTIATED,
+        NOT_NEGOTIATED = -4,
         /**
          * Some (fatal) error occurred. Element generating
          *                               this error should post an error message using
          *                               GST_ELEMENT_ERROR() with more details.
          */
-        ERROR,
+        ERROR = -5,
         /**
          * This operation is not supported.
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = -6,
         /**
          * Elements can use values starting from
          *                               this (and lower) to define custom error codes.
          */
-        CUSTOM_ERROR,
+        CUSTOM_ERROR = -100,
         /**
          * Pre-defined custom error code (define your
          *                               custom error code to this to avoid compiler
          *                               warnings).
          */
-        CUSTOM_ERROR_1,
+        CUSTOM_ERROR_1 = -101,
         /**
          * Pre-defined custom error code.
          */
-        CUSTOM_ERROR_2,
+        CUSTOM_ERROR_2 = -102,
     }
 
 
@@ -702,32 +702,32 @@ export namespace Gst {
         /**
          * undefined format
          */
-        UNDEFINED,
+        UNDEFINED = 0,
         /**
          * the default format of the pad/element. This can be
          *    samples for raw audio, frames/fields for raw video (some, but not all,
          *    elements support this; use `GST_FORMAT_TIME` if you don't have a good
          *    reason to query for samples/frames)
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * bytes
          */
-        BYTES,
+        BYTES = 2,
         /**
          * time in nanoseconds
          */
-        TIME,
+        TIME = 3,
         /**
          * buffers (few, if any, elements implement this as of
          *     May 2009)
          */
-        BUFFERS,
+        BUFFERS = 4,
         /**
          * percentage of stream (few, if any, elements implement
          *     this as of May 2009)
          */
-        PERCENT,
+        PERCENT = 5,
     }
 
 
@@ -746,15 +746,15 @@ export namespace Gst {
         /**
          * Skip this item
          */
-        SKIP,
+        SKIP = 0,
         /**
          * Return item
          */
-        PASS,
+        PASS = 1,
         /**
          * Stop after this item.
          */
-        END,
+        END = 2,
     }
 
 
@@ -773,19 +773,19 @@ export namespace Gst {
         /**
          * No more items in the iterator
          */
-        DONE,
+        DONE = 0,
         /**
          * An item was retrieved
          */
-        OK,
+        OK = 1,
         /**
          * Datastructure changed while iterating
          */
-        RESYNC,
+        RESYNC = 2,
         /**
          * An error happened
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -858,15 +858,15 @@ export namespace Gst {
         /**
          * direction is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the pad is a source pad.
          */
-        SRC,
+        SRC = 1,
         /**
          * the pad is a sink pad.
          */
-        SINK,
+        SINK = 2,
     }
 
 
@@ -885,31 +885,31 @@ export namespace Gst {
         /**
          * link succeeded
          */
-        OK,
+        OK = 0,
         /**
          * pads have no common grandparent
          */
-        WRONG_HIERARCHY,
+        WRONG_HIERARCHY = -1,
         /**
          * pad was already linked
          */
-        WAS_LINKED,
+        WAS_LINKED = -2,
         /**
          * pads have wrong direction
          */
-        WRONG_DIRECTION,
+        WRONG_DIRECTION = -3,
         /**
          * pads do not have common format
          */
-        NOFORMAT,
+        NOFORMAT = -4,
         /**
          * pads cannot cooperate in scheduling
          */
-        NOSCHED,
+        NOSCHED = -5,
         /**
          * refused for some reason
          */
-        REFUSED,
+        REFUSED = -6,
     }
 
 
@@ -930,15 +930,15 @@ export namespace Gst {
         /**
          * Pad will not handle dataflow
          */
-        NONE,
+        NONE = 0,
         /**
          * Pad handles dataflow in downstream push mode
          */
-        PUSH,
+        PUSH = 1,
         /**
          * Pad handles dataflow in upstream pull mode
          */
-        PULL,
+        PULL = 2,
     }
 
 
@@ -957,16 +957,16 @@ export namespace Gst {
         /**
          * the pad is always available
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * the pad will become available depending on the media stream
          */
-        SOMETIMES,
+        SOMETIMES = 1,
         /**
          * the pad is only available on request with
          *  `gst_element_request_pad()`.
          */
-        REQUEST,
+        REQUEST = 2,
     }
 
 
@@ -989,7 +989,7 @@ export namespace Gst {
          *        are called for this item and {@link Gst.FlowReturn.OK} or `true` is returned to the
          *        caller.
          */
-        DROP,
+        DROP = 0,
         /**
          * normal probe return value. This leaves the probe in
          *        place, and defers decisions about dropping or passing data to other
@@ -997,19 +997,19 @@ export namespace Gst {
          *        for the probe type applies ('block' for blocking probes,
          *        and 'pass' for non-blocking probes).
          */
-        OK,
+        OK = 1,
         /**
          * remove this probe, passing the data. For blocking probes
          *        this will cause data flow to unblock, unless there are also other
          *        blocking probes installed.
          */
-        REMOVE,
+        REMOVE = 2,
         /**
          * pass the data item in the block probe and block on the
          *        next item. Note, that if there are multiple pad probes installed and
          *        any probe returns PASS, the data will be passed.
          */
-        PASS,
+        PASS = 3,
         /**
          * Data has been handled in the probe and will not be
          *        forwarded further. For events and buffers this is the same behaviour as
@@ -1020,7 +1020,7 @@ export namespace Gst {
          *        Note that the resulting query must contain valid entries.
          *        Since: 1.6
          */
-        HANDLED,
+        HANDLED = 4,
     }
 
 
@@ -1133,24 +1133,24 @@ export namespace Gst {
         /**
          * A new task started.
          */
-        START,
+        START = 0,
         /**
          * A task completed and a new one continues.
          */
-        CONTINUE,
+        CONTINUE = 1,
         /**
          * A task completed.
          */
-        COMPLETE,
+        COMPLETE = 2,
         /**
          * A task was canceled.
          */
-        CANCELED,
+        CANCELED = 3,
         /**
          * A task caused an error. An error message is also
          *          posted on the bus.
          */
-        ERROR,
+        ERROR = 4,
     }
 
 
@@ -1171,21 +1171,21 @@ export namespace Gst {
          * Initial state. Waiting for transition to any
          * 	other state.
          */
-        PENDING,
+        PENDING = 0,
         /**
          * Interrupted by the consumer as it doesn't
          * 	want the value anymore.
          */
-        INTERRUPTED,
+        INTERRUPTED = 1,
         /**
          * A producer marked a reply
          */
-        REPLIED,
+        REPLIED = 2,
         /**
          * The promise expired (the carrying object
          * 	lost all refs) and the promise will never be fulfilled.
          */
-        EXPIRED,
+        EXPIRED = 3,
     }
 
 
@@ -1208,18 +1208,18 @@ export namespace Gst {
          *    processing the data. Upstream should reduce their production rate. This
          *    type is also used when buffers arrive early or in time.
          */
-        OVERFLOW,
+        OVERFLOW = 0,
         /**
          * The QoS event type that is produced when upstream
          *    elements are producing data too slowly and need to speed up their
          *    production rate.
          */
-        UNDERFLOW,
+        UNDERFLOW = 1,
         /**
          * The QoS event type that is produced when the
          *    application enabled throttling to limit the data rate.
          */
-        THROTTLE,
+        THROTTLE = 2,
     }
 
 
@@ -1238,88 +1238,89 @@ export namespace Gst {
         /**
          * unknown query type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * current position in stream
          */
-        POSITION,
+        POSITION = 2563,
         /**
          * total duration of the stream
          */
-        DURATION,
+        DURATION = 5123,
         /**
          * latency of stream
          */
-        LATENCY,
+        LATENCY = 7683,
         /**
          * current jitter of stream
          */
-        JITTER,
+        JITTER = 10243,
         /**
          * current rate of the stream
          */
-        RATE,
+        RATE = 12803,
         /**
          * seeking capabilities
          */
-        SEEKING,
+        SEEKING = 15363,
         /**
          * segment start/stop positions
          */
-        SEGMENT,
+        SEGMENT = 17923,
         /**
          * convert values between formats
          */
-        CONVERT,
+        CONVERT = 20483,
         /**
          * query supported formats for convert
          */
-        FORMATS,
+        FORMATS = 23043,
         /**
          * query available media for efficient seeking.
          */
-        BUFFERING,
+        BUFFERING = 28163,
         /**
          * a custom application or element defined query.
          */
-        CUSTOM,
+        CUSTOM = 30723,
         /**
          * query the URI of the source or sink.
          */
-        URI,
+        URI = 33283,
         /**
          * the buffer allocation properties
          */
-        ALLOCATION,
+        ALLOCATION = 35846,
         /**
          * the scheduling properties
          */
-        SCHEDULING,
+        SCHEDULING = 38401,
         /**
          * the accept caps query
          */
-        ACCEPT_CAPS,
+        ACCEPT_CAPS = 40963,
         /**
          * the caps query
          */
-        CAPS,
+        CAPS = 43523,
         /**
          * wait till all serialized data is consumed downstream
          */
-        DRAIN,
+        DRAIN = 46086,
         /**
          * query the pipeline-local context from
          *     downstream or upstream (since 1.2)
          */
-        CONTEXT,
+        CONTEXT = 48643,
         /**
          * the bitrate query (since 1.16)
          */
-        BITRATE,
+        BITRATE = 51202,
         /**
          * Query stream selection capability.
+         * @since 1.22
          */
-        SELECTABLE,
+        SELECTABLE = 53763,
     }
 
 
@@ -1344,19 +1345,19 @@ export namespace Gst {
         /**
          * will be chosen last or not at all
          */
-        NONE,
+        NONE = 0,
         /**
          * unlikely to be chosen
          */
-        MARGINAL,
+        MARGINAL = 64,
         /**
          * likely to be chosen
          */
-        SECONDARY,
+        SECONDARY = 128,
         /**
          * will be chosen first
          */
-        PRIMARY,
+        PRIMARY = 256,
     }
 
 
@@ -1478,15 +1479,15 @@ export namespace Gst {
         /**
          * Only search for exact matches.
          */
-        EXACT,
+        EXACT = 0,
         /**
          * Search for an exact match or the element just before.
          */
-        BEFORE,
+        BEFORE = 1,
         /**
          * Search for an exact match or the element just after.
          */
-        AFTER,
+        AFTER = 2,
     }
 
 
@@ -1506,15 +1507,15 @@ export namespace Gst {
         /**
          * no change in position is required
          */
-        NONE,
+        NONE = 0,
         /**
          * absolute position is requested
          */
-        SET,
+        SET = 1,
         /**
          * relative position to duration is requested
          */
-        END,
+        END = 2,
     }
 
 
@@ -1534,26 +1535,26 @@ export namespace Gst {
         /**
          * no pending state.
          */
-        VOID_PENDING,
+        VOID_PENDING = 0,
         /**
          * the NULL state or initial state of an element.
          */
-        NULL,
+        NULL = 1,
         /**
          * the element is ready to go to PAUSED.
          */
-        READY,
+        READY = 2,
         /**
          * the element is PAUSED, it is ready to accept and
          *                          process data. Sink elements however only accept one
          *                          buffer and then block.
          */
-        PAUSED,
+        PAUSED = 3,
         /**
          * the element is PLAYING, the {@link Gst.Clock} is running and
          *                          the data is flowing.
          */
-        PLAYING,
+        PLAYING = 4,
     }
 
 
@@ -1578,7 +1579,7 @@ export namespace Gst {
          *     caps.
          *   * The element opens the device (in case feature need to be probed).
          */
-        NULL_TO_READY,
+        NULL_TO_READY = 10,
         /**
          * state change from READY to PAUSED.
          *   * The element pads are activated in order to receive data in PAUSED.
@@ -1591,7 +1592,7 @@ export namespace Gst {
          *   * A pipeline resets the running_time to 0.
          *   * Live sources return {@link Gst.StateChangeReturn.NO_PREROLL} and don't generate data.
          */
-        READY_TO_PAUSED,
+        READY_TO_PAUSED = 19,
         /**
          * state change from PAUSED to PLAYING.
          *   * Most elements ignore this state change.
@@ -1609,7 +1610,7 @@ export namespace Gst {
          *     sometimes pads.
          *   * Live sources start generating data and return {@link Gst.StateChangeReturn.SUCCESS}.
          */
-        PAUSED_TO_PLAYING,
+        PAUSED_TO_PLAYING = 28,
         /**
          * state change from PLAYING to PAUSED.
          *   * Most elements ignore this state change.
@@ -1625,7 +1626,7 @@ export namespace Gst {
          *     {@link Gst.Bin} containers.
          *   * Live sources stop generating data and return {@link Gst.StateChangeReturn.NO_PREROLL}.
          */
-        PLAYING_TO_PAUSED,
+        PLAYING_TO_PAUSED = 35,
         /**
          * state change from PAUSED to READY.
          *   * Sinks unblock any waits in the preroll.
@@ -1636,33 +1637,33 @@ export namespace Gst {
          *   * The sink forgets all negotiated formats
          *   * Elements remove all sometimes pads
          */
-        PAUSED_TO_READY,
+        PAUSED_TO_READY = 26,
         /**
          * state change from READY to NULL.
          *   * Elements close devices
          *   * Elements reset any internal state.
          */
-        READY_TO_NULL,
+        READY_TO_NULL = 17,
         /**
          * state change from NULL to NULL. (Since: 1.14)
          */
-        NULL_TO_NULL,
+        NULL_TO_NULL = 9,
         /**
          * state change from READY to READY,
          * This might happen when going to PAUSED asynchronously failed, in that case
          * elements should make sure they are in a proper, coherent READY state. (Since: 1.14)
          */
-        READY_TO_READY,
+        READY_TO_READY = 18,
         /**
          * state change from PAUSED to PAUSED.
          * This might happen when elements were in PLAYING state and 'lost state',
          * they should make sure to go back to real 'PAUSED' state (prerolling for example). (Since: 1.14)
          */
-        PAUSED_TO_PAUSED,
+        PAUSED_TO_PAUSED = 27,
         /**
          * state change from PLAYING to PLAYING. (Since: 1.14)
          */
-        PLAYING_TO_PLAYING,
+        PLAYING_TO_PLAYING = 36,
     }
 
 
@@ -1682,21 +1683,21 @@ export namespace Gst {
         /**
          * the state change failed
          */
-        FAILURE,
+        FAILURE = 0,
         /**
          * the state change succeeded
          */
-        SUCCESS,
+        SUCCESS = 1,
         /**
          * the state change will happen asynchronously
          */
-        ASYNC,
+        ASYNC = 2,
         /**
          * the state change succeeded but the element
          *                               cannot produce data in {@link Gst.State.PAUSED}.
          *                               This typically happens with live sources.
          */
-        NO_PREROLL,
+        NO_PREROLL = 3,
     }
 
 
@@ -1813,31 +1814,31 @@ export namespace Gst {
         /**
          * A new thread need to be created.
          */
-        CREATE,
+        CREATE = 0,
         /**
          * a thread entered its loop function
          */
-        ENTER,
+        ENTER = 1,
         /**
          * a thread left its loop function
          */
-        LEAVE,
+        LEAVE = 2,
         /**
          * a thread is destroyed
          */
-        DESTROY,
+        DESTROY = 3,
         /**
          * a thread is started
          */
-        START,
+        START = 8,
         /**
          * a thread is paused
          */
-        PAUSE,
+        PAUSE = 9,
         /**
          * a thread is stopped
          */
-        STOP,
+        STOP = 10,
     }
 
 
@@ -1856,11 +1857,11 @@ export namespace Gst {
         /**
          * Pad linking is starting or done.
          */
-        LINK,
+        LINK = 0,
         /**
          * Pad unlinking is starting or done.
          */
-        UNLINK,
+        UNLINK = 1,
     }
 
 
@@ -1879,23 +1880,23 @@ export namespace Gst {
         /**
          * undefined flag
          */
-        UNDEFINED,
+        UNDEFINED = 0,
         /**
          * tag is meta data
          */
-        META,
+        META = 1,
         /**
          * tag is encoded
          */
-        ENCODED,
+        ENCODED = 2,
         /**
          * tag is decoded
          */
-        DECODED,
+        DECODED = 3,
         /**
          * number of tag flags
          */
-        COUNT,
+        COUNT = 4,
     }
 
 
@@ -1929,35 +1930,35 @@ export namespace Gst {
         /**
          * undefined merge mode
          */
-        UNDEFINED,
+        UNDEFINED = 0,
         /**
          * replace all tags (clear list and append)
          */
-        REPLACE_ALL,
+        REPLACE_ALL = 1,
         /**
          * replace tags
          */
-        REPLACE,
+        REPLACE = 2,
         /**
          * append tags
          */
-        APPEND,
+        APPEND = 3,
         /**
          * prepend tags
          */
-        PREPEND,
+        PREPEND = 4,
         /**
          * keep existing tags
          */
-        KEEP,
+        KEEP = 5,
         /**
          * keep all existing tags
          */
-        KEEP_ALL,
+        KEEP_ALL = 6,
         /**
          * the number of merge modes
          */
-        COUNT,
+        COUNT = 7,
     }
 
 
@@ -1977,11 +1978,11 @@ export namespace Gst {
         /**
          * tags specific to this single stream
          */
-        STREAM,
+        STREAM = 0,
         /**
          * global tags for the complete medium
          */
-        GLOBAL,
+        GLOBAL = 1,
     }
 
 
@@ -2000,15 +2001,15 @@ export namespace Gst {
         /**
          * the task is started and running
          */
-        STARTED,
+        STARTED = 0,
         /**
          * the task is stopped
          */
-        STOPPED,
+        STOPPED = 1,
         /**
          * the task is paused
          */
-        PAUSED,
+        PAUSED = 2,
     }
 
 
@@ -2029,31 +2030,31 @@ export namespace Gst {
         /**
          * entry is an angle (i.e. an alternative)
          */
-        ANGLE,
+        ANGLE = -3,
         /**
          * entry is a version (i.e. alternative)
          */
-        VERSION,
+        VERSION = -2,
         /**
          * entry is an edition (i.e. alternative)
          */
-        EDITION,
+        EDITION = -1,
         /**
          * invalid entry type value
          */
-        INVALID,
+        INVALID = 0,
         /**
          * entry is a title (i.e. a part of a sequence)
          */
-        TITLE,
+        TITLE = 1,
         /**
          * entry is a track (i.e. a part of a sequence)
          */
-        TRACK,
+        TRACK = 2,
         /**
          * entry is a chapter (i.e. a part of a sequence)
          */
-        CHAPTER,
+        CHAPTER = 3,
     }
 
 
@@ -2074,19 +2075,19 @@ export namespace Gst {
         /**
          * single forward playback
          */
-        NONE,
+        NONE = 0,
         /**
          * repeat forward
          */
-        FORWARD,
+        FORWARD = 1,
         /**
          * repeat backward
          */
-        REVERSE,
+        REVERSE = 2,
         /**
          * repeat forward and backward
          */
-        PING_PONG,
+        PING_PONG = 3,
     }
 
 
@@ -2106,7 +2107,7 @@ export namespace Gst {
          * global TOC representing all selectable options
          *     (this is what applications are usually interested in)
          */
-        GLOBAL,
+        GLOBAL = 1,
         /**
          * TOC for the currently active/selected stream
          *     (this is a TOC representing the current stream from start to EOS,
@@ -2115,7 +2116,7 @@ export namespace Gst {
          *     the current title, or the chapters selected for playback from the
          *     current title)
          */
-        CURRENT,
+        CURRENT = 2,
     }
 
 
@@ -2139,19 +2140,19 @@ export namespace Gst {
         /**
          * the value is related to the process
          */
-        PROCESS,
+        PROCESS = 0,
         /**
          * the value is related to a thread
          */
-        THREAD,
+        THREAD = 1,
         /**
          * the value is related to an {@link Gst.Element}
          */
-        ELEMENT,
+        ELEMENT = 2,
         /**
          * the value is related to a {@link Gst.Pad}
          */
-        PAD,
+        PAD = 3,
     }
 
 
@@ -2171,27 +2172,27 @@ export namespace Gst {
         /**
          * type undetected.
          */
-        NONE,
+        NONE = 0,
         /**
          * unlikely typefind.
          */
-        MINIMUM,
+        MINIMUM = 1,
         /**
          * possible type detected.
          */
-        POSSIBLE,
+        POSSIBLE = 50,
         /**
          * likely a type was detected.
          */
-        LIKELY,
+        LIKELY = 80,
         /**
          * nearly certain that a type was detected.
          */
-        NEARLY_CERTAIN,
+        NEARLY_CERTAIN = 99,
         /**
          * very certain a type was detected.
          */
-        MAXIMUM,
+        MAXIMUM = 100,
     }
 
 
@@ -2248,67 +2249,108 @@ export namespace Gst {
         /**
          * The URI direction is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The URI is a consumer.
          */
-        SINK,
+        SINK = 1,
         /**
          * The URI is a producer.
          */
-        SRC,
+        SRC = 2,
     }
 
 
     /**
      * The allocator name for the default system memory allocator
+     * @default SystemMemory
      */
     const ALLOCATOR_SYSMEM: string;
 
     /**
      * Combination of all possible fields that can be copied with
      * `gst_buffer_copy_into()`.
+     * @default 15
      */
     const BUFFER_COPY_ALL: BufferCopyFlags;
 
     /**
      * Combination of all possible metadata fields that can be copied with
      * `gst_buffer_copy_into()`.
+     * @default 7
      */
     const BUFFER_COPY_METADATA: BufferCopyFlags;
 
     /**
      * Constant for no-offset return results.
+     * @default 18446744073709551615
      */
     const BUFFER_OFFSET_NONE: number;
 
+    /**
+     * @default 1
+     */
     const CAN_INLINE: number;
 
+    /**
+     * @default memory:SystemMemory
+     */
     const CAPS_FEATURE_MEMORY_SYSTEM_MEMORY: string;
 
     /**
      * Constant to define an undefined clock time.
+     * @default 18446744073709551615
      */
     const CLOCK_TIME_NONE: ClockTime;
 
+    /**
+     * @default 240
+     */
     const DEBUG_BG_MASK: number;
 
+    /**
+     * @default 15
+     */
     const DEBUG_FG_MASK: number;
 
+    /**
+     * @default 65280
+     */
     const DEBUG_FORMAT_MASK: number;
 
+    /**
+     * @default Decoder
+     */
     const ELEMENT_FACTORY_KLASS_DECODER: string;
 
+    /**
+     * @default Decryptor
+     */
     const ELEMENT_FACTORY_KLASS_DECRYPTOR: string;
 
+    /**
+     * @default Demuxer
+     */
     const ELEMENT_FACTORY_KLASS_DEMUXER: string;
 
+    /**
+     * @default Depayloader
+     */
     const ELEMENT_FACTORY_KLASS_DEPAYLOADER: string;
 
+    /**
+     * @default Encoder
+     */
     const ELEMENT_FACTORY_KLASS_ENCODER: string;
 
+    /**
+     * @default Encryptor
+     */
     const ELEMENT_FACTORY_KLASS_ENCRYPTOR: string;
 
+    /**
+     * @default Formatter
+     */
     const ELEMENT_FACTORY_KLASS_FORMATTER: string;
 
     /**
@@ -2316,65 +2358,127 @@ export namespace Gst {
      * their metadata. You may need to put the element in "READY" state to test if
      * the hardware is present in the system.
      * @since 1.16
+     * @default Hardware
      */
     const ELEMENT_FACTORY_KLASS_HARDWARE: string;
 
+    /**
+     * @default Audio
+     */
     const ELEMENT_FACTORY_KLASS_MEDIA_AUDIO: string;
 
+    /**
+     * @default Image
+     */
     const ELEMENT_FACTORY_KLASS_MEDIA_IMAGE: string;
 
+    /**
+     * @default Metadata
+     */
     const ELEMENT_FACTORY_KLASS_MEDIA_METADATA: string;
 
+    /**
+     * @default Subtitle
+     */
     const ELEMENT_FACTORY_KLASS_MEDIA_SUBTITLE: string;
 
+    /**
+     * @default Video
+     */
     const ELEMENT_FACTORY_KLASS_MEDIA_VIDEO: string;
 
+    /**
+     * @default Muxer
+     */
     const ELEMENT_FACTORY_KLASS_MUXER: string;
 
+    /**
+     * @default Parser
+     */
     const ELEMENT_FACTORY_KLASS_PARSER: string;
 
+    /**
+     * @default Payloader
+     */
     const ELEMENT_FACTORY_KLASS_PAYLOADER: string;
 
+    /**
+     * @default Sink
+     */
     const ELEMENT_FACTORY_KLASS_SINK: string;
 
+    /**
+     * @default Source
+     */
     const ELEMENT_FACTORY_KLASS_SRC: string;
 
     /**
      * Elements of any of the defined GST_ELEMENT_FACTORY_LIST types
+     * @default 562949953421311
      */
     const ELEMENT_FACTORY_TYPE_ANY: ElementFactoryListType;
 
     /**
      * All sinks handling audio, video or image media types
+     * @default 3940649673949188
      */
     const ELEMENT_FACTORY_TYPE_AUDIOVIDEO_SINKS: ElementFactoryListType;
 
     /**
      * All encoders handling audio media types
+     * @default 1125899906842626
      */
     const ELEMENT_FACTORY_TYPE_AUDIO_ENCODER: ElementFactoryListType;
 
     /**
      * All elements used to 'decode' streams (decoders, demuxers, parsers, depayloaders)
+     * @default 1377
      */
     const ELEMENT_FACTORY_TYPE_DECODABLE: ElementFactoryListType;
 
+    /**
+     * @default 1
+     */
     const ELEMENT_FACTORY_TYPE_DECODER: ElementFactoryListType;
 
+    /**
+     * @default 1024
+     */
     const ELEMENT_FACTORY_TYPE_DECRYPTOR: ElementFactoryListType;
 
+    /**
+     * @default 32
+     */
     const ELEMENT_FACTORY_TYPE_DEMUXER: ElementFactoryListType;
 
+    /**
+     * @default 256
+     */
     const ELEMENT_FACTORY_TYPE_DEPAYLOADER: ElementFactoryListType;
 
+    /**
+     * @default 2
+     */
     const ELEMENT_FACTORY_TYPE_ENCODER: ElementFactoryListType;
 
+    /**
+     * @default 2048
+     */
     const ELEMENT_FACTORY_TYPE_ENCRYPTOR: ElementFactoryListType;
 
+    /**
+     * @default 512
+     */
     const ELEMENT_FACTORY_TYPE_FORMATTER: ElementFactoryListType;
 
+    /**
+     * @default 4096
+     */
     const ELEMENT_FACTORY_TYPE_HARDWARE: ElementFactoryListType;
 
+    /**
+     * @default 281474976710656
+     */
     const ELEMENT_FACTORY_TYPE_MAX_ELEMENTS: ElementFactoryListType;
 
     /**
@@ -2383,37 +2487,70 @@ export namespace Gst {
      * Note: Do not use this if you wish to not filter against any of the defined
      * media types. If you wish to do this, simply don't specify any
      * GST_ELEMENT_FACTORY_TYPE_MEDIA flag.
+     * @default 18446462598732840960
      */
     const ELEMENT_FACTORY_TYPE_MEDIA_ANY: ElementFactoryListType;
 
+    /**
+     * @default 1125899906842624
+     */
     const ELEMENT_FACTORY_TYPE_MEDIA_AUDIO: ElementFactoryListType;
 
+    /**
+     * @default 2251799813685248
+     */
     const ELEMENT_FACTORY_TYPE_MEDIA_IMAGE: ElementFactoryListType;
 
+    /**
+     * @default 9007199254740992
+     */
     const ELEMENT_FACTORY_TYPE_MEDIA_METADATA: ElementFactoryListType;
 
+    /**
+     * @default 4503599627370496
+     */
     const ELEMENT_FACTORY_TYPE_MEDIA_SUBTITLE: ElementFactoryListType;
 
+    /**
+     * @default 562949953421312
+     */
     const ELEMENT_FACTORY_TYPE_MEDIA_VIDEO: ElementFactoryListType;
 
+    /**
+     * @default 16
+     */
     const ELEMENT_FACTORY_TYPE_MUXER: ElementFactoryListType;
 
+    /**
+     * @default 64
+     */
     const ELEMENT_FACTORY_TYPE_PARSER: ElementFactoryListType;
 
+    /**
+     * @default 128
+     */
     const ELEMENT_FACTORY_TYPE_PAYLOADER: ElementFactoryListType;
 
+    /**
+     * @default 4
+     */
     const ELEMENT_FACTORY_TYPE_SINK: ElementFactoryListType;
 
+    /**
+     * @default 8
+     */
     const ELEMENT_FACTORY_TYPE_SRC: ElementFactoryListType;
 
     /**
      * Timestamp correcting elements
      * @since 1.24
+     * @default 8192
      */
     const ELEMENT_FACTORY_TYPE_TIMESTAMPER: ElementFactoryListType;
 
     /**
      * All encoders handling video or image media types
+     * @default 2814749767106562
      */
     const ELEMENT_FACTORY_TYPE_VIDEO_ENCODER: ElementFactoryListType;
 
@@ -2421,18 +2558,21 @@ export namespace Gst {
      * Name and contact details of the author(s). Use \n to separate
      * multiple author details.
      * E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
+     * @default author
      */
     const ELEMENT_METADATA_AUTHOR: string;
 
     /**
      * Sentence describing the purpose of the element.
      * E.g: "Write stream to a file"
+     * @default description
      */
     const ELEMENT_METADATA_DESCRIPTION: string;
 
     /**
      * Set uri pointing to user documentation. Applications can use this to show
      * help for e.g. effects to users.
+     * @default doc-uri
      */
     const ELEMENT_METADATA_DOC_URI: string;
 
@@ -2440,6 +2580,7 @@ export namespace Gst {
      * Elements that bridge to certain other products can include an icon of that
      * used product. Application can show the icon in menus/selectors to help
      * identifying specific elements.
+     * @default icon-name
      */
     const ELEMENT_METADATA_ICON_NAME: string;
 
@@ -2447,18 +2588,24 @@ export namespace Gst {
      * String describing the type of element, as an unordered list
      * separated with slashes ('/'). See draft-klass.txt of the design docs
      * for more details and common types. E.g: "Sink/File"
+     * @default klass
      */
     const ELEMENT_METADATA_KLASS: string;
 
     /**
      * The long English name of the element. E.g. "File Sink"
+     * @default long-name
      */
     const ELEMENT_METADATA_LONGNAME: string;
 
+    /**
+     * @default 8
+     */
     const EVENT_NUM_SHIFT: number;
 
     /**
      * The same thing as #GST_EVENT_TYPE_UPSTREAM | #GST_EVENT_TYPE_DOWNSTREAM.
+     * @default 3
      */
     const EVENT_TYPE_BOTH: EventTypeFlags;
 
@@ -2467,17 +2614,20 @@ export namespace Gst {
      * GstFlagSet mask where all flag bits must match
      * exactly
      * @since 1.6
+     * @default 4294967295
      */
     const FLAG_SET_MASK_EXACT: number;
 
     /**
      * The PERCENT format is between 0 and this value
+     * @default 1000000
      */
     const FORMAT_PERCENT_MAX: number;
 
     /**
      * The value used to scale down the reported PERCENT format value to
      * its real value.
+     * @default 10000
      */
     const FORMAT_PERCENT_SCALE: number;
 
@@ -2487,27 +2637,32 @@ export namespace Gst {
      * 
      * Can be used as a default value in variables used to store group_id.
      * @since 1.14
+     * @default 0
      */
     const GROUP_ID_INVALID: number;
 
     /**
      * To be used in GST_PLUGIN_DEFINE if unsure about the licence.
+     * @default unknown
      */
     const LICENSE_UNKNOWN: string;
 
     /**
      * GstLockFlags value alias for GST_LOCK_FLAG_READ | GST_LOCK_FLAG_WRITE
+     * @default 3
      */
     const LOCK_FLAG_READWRITE: LockFlags;
 
     /**
      * GstMapFlags value alias for GST_MAP_READ | GST_MAP_WRITE
+     * @default 3
      */
     const MAP_READWRITE: MapFlags;
 
     /**
      * This metadata stays relevant until a deep copy is made.
      * @since 1.20.4
+     * @default memory-reference
      */
     const META_TAG_MEMORY_REFERENCE_STR: string;
 
@@ -2515,16 +2670,19 @@ export namespace Gst {
      * This metadata stays relevant as long as memory layout is unchanged.
      * In hindsight, this tag should have been called "memory-layout".
      * @since 1.2
+     * @default memory
      */
     const META_TAG_MEMORY_STR: string;
 
     /**
      * Constant that defines one GStreamer millisecond.
+     * @default 1000000
      */
     const MSECOND: ClockTimeDiff;
 
     /**
      * Constant that defines one GStreamer nanosecond
+     * @default 1
      */
     const NSECOND: ClockTimeDiff;
 
@@ -2534,12 +2692,14 @@ export namespace Gst {
      * so such properties will be installed conditionally only if the GstObject is
      * able to support it.
      * @since 1.18
+     * @default 16384
      */
     const PARAM_CONDITIONALLY_AVAILABLE: number;
 
     /**
      * Use this flag on GObject properties to signal they can make sense to be.
      * controlled over time. This hint is used by the GstController.
+     * @default 512
      */
     const PARAM_CONTROLLABLE: number;
 
@@ -2548,6 +2708,7 @@ export namespace Gst {
      * during `gst-inspect` and friends, the default value should be used
      * as default instead of the current value.
      * @since 1.18
+     * @default 8192
      */
     const PARAM_DOC_SHOW_DEFAULT: number;
 
@@ -2555,6 +2716,7 @@ export namespace Gst {
      * Use this flag on GObject properties of GstElements to indicate that
      * they can be changed when the element is in the PAUSED or lower state.
      * This flag implies GST_PARAM_MUTABLE_READY.
+     * @default 2048
      */
     const PARAM_MUTABLE_PAUSED: number;
 
@@ -2562,17 +2724,20 @@ export namespace Gst {
      * Use this flag on GObject properties of GstElements to indicate that
      * they can be changed when the element is in the PLAYING or lower state.
      * This flag implies GST_PARAM_MUTABLE_PAUSED.
+     * @default 4096
      */
     const PARAM_MUTABLE_PLAYING: number;
 
     /**
      * Use this flag on GObject properties of GstElements to indicate that
      * they can be changed when the element is in the READY or lower state.
+     * @default 1024
      */
     const PARAM_MUTABLE_READY: number;
 
     /**
      * Bits based on GST_PARAM_USER_SHIFT can be used by 3rd party applications.
+     * @default 65536
      */
     const PARAM_USER_SHIFT: number;
 
@@ -2580,6 +2745,7 @@ export namespace Gst {
      * The field name in a GstCaps that is used to signal the UUID of the protection
      * system.
      * @since 1.6
+     * @default protection-system
      */
     const PROTECTION_SYSTEM_ID_CAPS_FIELD: string;
 
@@ -2595,21 +2761,30 @@ export namespace Gst {
      * the application will choose the appropriate protection system based on the information
      * received through EME API.
      * @since 1.16
+     * @default unspecified-system-id
      */
     const PROTECTION_UNSPECIFIED_SYSTEM_ID: string;
 
+    /**
+     * @default 8
+     */
     const QUERY_NUM_SHIFT: number;
 
     /**
      * The same thing as #GST_QUERY_TYPE_UPSTREAM | #GST_QUERY_TYPE_DOWNSTREAM.
+     * @default 3
      */
     const QUERY_TYPE_BOTH: QueryTypeFlags;
 
     /**
      * Constant that defines one GStreamer second.
+     * @default 1000000000
      */
     const SECOND: ClockTimeDiff;
 
+    /**
+     * @default 912
+     */
     const SEGMENT_INSTANT_FLAGS: number;
 
     /**
@@ -2618,6 +2793,7 @@ export namespace Gst {
      * 
      * Can be used as a default value in variables used to store seqnum.
      * @since 1.14
+     * @default 0
      */
     const SEQNUM_INVALID: number;
 
@@ -2625,32 +2801,38 @@ export namespace Gst {
      * album containing this data (string)
      * 
      * The album name as it should be displayed, e.g. 'The Jazz Guitar'
+     * @default album
      */
     const TAG_ALBUM: string;
 
     /**
      * The artist of the entire album, as it should be displayed.
+     * @default album-artist
      */
     const TAG_ALBUM_ARTIST: string;
 
     /**
      * The artist of the entire album, as it should be sorted.
+     * @default album-artist-sortname
      */
     const TAG_ALBUM_ARTIST_SORTNAME: string;
 
     /**
      * album gain in dB (double)
+     * @default replaygain-album-gain
      */
     const TAG_ALBUM_GAIN: string;
 
     /**
      * track gain in dB (double)
      * @since 1.28
+     * @default r128-album-gain
      */
     const TAG_ALBUM_GAIN_R128: string;
 
     /**
      * peak of the album (double)
+     * @default replaygain-album-peak
      */
     const TAG_ALBUM_PEAK: string;
 
@@ -2658,16 +2840,19 @@ export namespace Gst {
      * album containing this data, as used for sorting (string)
      * 
      * The album name as it should be sorted, e.g. 'Jazz Guitar, The'
+     * @default album-sortname
      */
     const TAG_ALBUM_SORTNAME: string;
 
     /**
      * count of discs inside collection this disc belongs to (unsigned integer)
+     * @default album-disc-count
      */
     const TAG_ALBUM_VOLUME_COUNT: string;
 
     /**
      * disc number inside a collection (unsigned integer)
+     * @default album-disc-number
      */
     const TAG_ALBUM_VOLUME_NUMBER: string;
 
@@ -2676,11 +2861,13 @@ export namespace Gst {
      * 
      * Some formats allow applications to add their own arbitrary data
      * into files. This data is application dependent.
+     * @default application-data
      */
     const TAG_APPLICATION_DATA: string;
 
     /**
      * Name of the application used to create the media (string)
+     * @default application-name
      */
     const TAG_APPLICATION_NAME: string;
 
@@ -2689,6 +2876,7 @@ export namespace Gst {
      * 
      * The artist name as it should be displayed, e.g. 'Jimi Hendrix' or
      * 'The Guitar Heroes'
+     * @default artist
      */
     const TAG_ARTIST: string;
 
@@ -2697,6 +2885,7 @@ export namespace Gst {
      * 
      * The artist name as it should be sorted, e.g. 'Hendrix, Jimi' or
      * 'Guitar Heroes, The'
+     * @default artist-sortname
      */
     const TAG_ARTIST_SORTNAME: string;
 
@@ -2704,57 +2893,68 @@ export namespace Gst {
      * generic file attachment (sample) (sample taglist should specify the content
      * type and if possible set "filename" to the file name of the
      * attachment)
+     * @default attachment
      */
     const TAG_ATTACHMENT: string;
 
     /**
      * codec the audio data is stored in (string)
+     * @default audio-codec
      */
     const TAG_AUDIO_CODEC: string;
 
     /**
      * number of beats per minute in audio (double)
+     * @default beats-per-minute
      */
     const TAG_BEATS_PER_MINUTE: string;
 
     /**
      * exact or average bitrate in bits/s (unsigned integer)
+     * @default bitrate
      */
     const TAG_BITRATE: string;
 
     /**
      * codec the data is stored in (string)
+     * @default codec
      */
     const TAG_CODEC: string;
 
     /**
      * free text commenting the data (string)
+     * @default comment
      */
     const TAG_COMMENT: string;
 
     /**
      * person(s) who composed the recording (string)
+     * @default composer
      */
     const TAG_COMPOSER: string;
 
     /**
      * The composer's name, used for sorting (string)
+     * @default composer-sortname
      */
     const TAG_COMPOSER_SORTNAME: string;
 
     /**
      * conductor/performer refinement (string)
      * @since 1.8
+     * @default conductor
      */
     const TAG_CONDUCTOR: string;
 
     /**
      * contact information (string)
+     * @default contact
      */
     const TAG_CONTACT: string;
 
     /**
      * container format the data is stored in (string)
+     * @default container-format
      */
     const TAG_CONTAINER_FORMAT: string;
 
@@ -2764,46 +2964,55 @@ export namespace Gst {
      * In-band Media Resource Tracks from Media Containers into HTML
      * specification](https://dev.w3.org/html5/html-sourcing-inband-tracks/).
      * @since 1.24
+     * @default container-specific-track-id
      */
     const TAG_CONTAINER_SPECIFIC_TRACK_ID: string;
 
     /**
      * copyright notice of the data (string)
+     * @default copyright
      */
     const TAG_COPYRIGHT: string;
 
     /**
      * URI to location where copyright details can be found (string)
+     * @default copyright-uri
      */
     const TAG_COPYRIGHT_URI: string;
 
     /**
      * date the data was created ({@link GLib.Date} structure)
+     * @default date
      */
     const TAG_DATE: string;
 
     /**
      * date and time the data was created ({@link Gst.DateTime} structure)
+     * @default datetime
      */
     const TAG_DATE_TIME: string;
 
     /**
      * short text describing the content of the data (string)
+     * @default description
      */
     const TAG_DESCRIPTION: string;
 
     /**
      * Manufacturer of the device used to create the media (string)
+     * @default device-manufacturer
      */
     const TAG_DEVICE_MANUFACTURER: string;
 
     /**
      * Model of the device used to create the media (string)
+     * @default device-model
      */
     const TAG_DEVICE_MODEL: string;
 
     /**
      * length in GStreamer time units (nanoseconds) (unsigned 64-bit integer)
+     * @default duration
      */
     const TAG_DURATION: string;
 
@@ -2814,16 +3023,19 @@ export namespace Gst {
      * 
      * Note: do not use this field to describe the encoding application. Use
      * #GST_TAG_APPLICATION_NAME or #GST_TAG_COMMENT for that.
+     * @default encoded-by
      */
     const TAG_ENCODED_BY: string;
 
     /**
      * encoder used to encode this stream (string)
+     * @default encoder
      */
     const TAG_ENCODER: string;
 
     /**
      * version of the encoder used to encode this stream (unsigned integer)
+     * @default encoder-version
      */
     const TAG_ENCODER_VERSION: string;
 
@@ -2836,11 +3048,13 @@ export namespace Gst {
      * 
      * This tag is used for unknown Vorbis comment tags,
      * unknown APE tags and certain ID3v2 comment fields.
+     * @default extended-comment
      */
     const TAG_EXTENDED_COMMENT: string;
 
     /**
      * genre this data belongs to (string)
+     * @default genre
      */
     const TAG_GENRE: string;
 
@@ -2850,28 +3064,33 @@ export namespace Gst {
      * 0 means the geographic north, and increases clockwise (double from 0 to 360)
      * 
      * See also #GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION
+     * @default geo-location-capture-direction
      */
     const TAG_GEO_LOCATION_CAPTURE_DIRECTION: string;
 
     /**
      * The city (english name) where the media has been produced (string).
+     * @default geo-location-city
      */
     const TAG_GEO_LOCATION_CITY: string;
 
     /**
      * The country (english name) where the media has been produced (string).
+     * @default geo-location-country
      */
     const TAG_GEO_LOCATION_COUNTRY: string;
 
     /**
      * geo elevation of where the media has been recorded or produced in meters
      * according to WGS84 (zero is average sea level) (double).
+     * @default geo-location-elevation
      */
     const TAG_GEO_LOCATION_ELEVATION: string;
 
     /**
      * Represents the expected error on the horizontal positioning in
      * meters (double).
+     * @default geo-location-horizontal-error
      */
     const TAG_GEO_LOCATION_HORIZONTAL_ERROR: string;
 
@@ -2879,6 +3098,7 @@ export namespace Gst {
      * geo latitude location of where the media has been recorded or produced in
      * degrees according to WGS84 (zero at the equator, negative values for southern
      * latitudes) (double).
+     * @default geo-location-latitude
      */
     const TAG_GEO_LOCATION_LATITUDE: string;
 
@@ -2886,6 +3106,7 @@ export namespace Gst {
      * geo longitude location of where the media has been recorded or produced in
      * degrees according to WGS84 (zero at the prime meridian in Greenwich/UK,
      * negative values for western longitudes). (double).
+     * @default geo-location-longitude
      */
     const TAG_GEO_LOCATION_LONGITUDE: string;
 
@@ -2895,6 +3116,7 @@ export namespace Gst {
      * 0 means the geographic north, and increases clockwise (double from 0 to 360)
      * 
      * See also #GST_TAG_GEO_LOCATION_CAPTURE_DIRECTION
+     * @default geo-location-movement-direction
      */
     const TAG_GEO_LOCATION_MOVEMENT_DIRECTION: string;
 
@@ -2903,12 +3125,14 @@ export namespace Gst {
      * Represented in m/s. (double)
      * 
      * See also #GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION
+     * @default geo-location-movement-speed
      */
     const TAG_GEO_LOCATION_MOVEMENT_SPEED: string;
 
     /**
      * human readable descriptive location of where the media has been recorded or
      * produced. (string).
+     * @default geo-location-name
      */
     const TAG_GEO_LOCATION_NAME: string;
 
@@ -2918,23 +3142,27 @@ export namespace Gst {
      * 
      * This tag has been added as this is how it is handled/named in XMP's
      * Iptc4xmpcore schema.
+     * @default geo-location-sublocation
      */
     const TAG_GEO_LOCATION_SUBLOCATION: string;
 
     /**
      * Groups together media that are related and spans multiple tracks. An
      * example are multiple pieces of a concerto. (string)
+     * @default grouping
      */
     const TAG_GROUPING: string;
 
     /**
      * Homepage for this media (i.e. artist or movie homepage) (string)
+     * @default homepage
      */
     const TAG_HOMEPAGE: string;
 
     /**
      * image (sample) (sample taglist should specify the content type and preferably
      * also set "image-type" field as `GstTagImageType`)
+     * @default image
      */
     const TAG_IMAGE: string;
 
@@ -2958,6 +3186,7 @@ export namespace Gst {
      * 
      * Rotations indicated by the values are in clockwise direction and
      * 'flip' means an horizontal mirroring.
+     * @default image-orientation
      */
     const TAG_IMAGE_ORIENTATION: string;
 
@@ -2965,16 +3194,19 @@ export namespace Gst {
      * Information about the people behind a remix and similar
      * interpretations of another existing piece (string)
      * @since 1.2
+     * @default interpreted-by
      */
     const TAG_INTERPRETED_BY: string;
 
     /**
      * International Standard Recording Code - see http://www.ifpi.org/isrc/ (string)
+     * @default isrc
      */
     const TAG_ISRC: string;
 
     /**
      * comma separated keywords describing the content (string).
+     * @default keywords
      */
     const TAG_KEYWORDS: string;
 
@@ -2983,6 +3215,7 @@ export namespace Gst {
      * 
      * There is utility API in libgsttag in gst-plugins-base to obtain a translated
      * language name from the language code: `gst_tag_get_language_name()`
+     * @default language-code
      */
     const TAG_LANGUAGE_CODE: string;
 
@@ -2992,32 +3225,38 @@ export namespace Gst {
      * Free-form name of the language the content is in, if a language code
      * is not available. This tag should not be set in addition to a language
      * code. It is undefined what language or locale the language name is in.
+     * @default language-name
      */
     const TAG_LANGUAGE_NAME: string;
 
     /**
      * license of data (string)
+     * @default license
      */
     const TAG_LICENSE: string;
 
     /**
      * URI to location where license details can be found (string)
+     * @default license-uri
      */
     const TAG_LICENSE_URI: string;
 
     /**
      * Origin of media as a URI (location, where the original of the file or stream
      * is hosted) (string)
+     * @default location
      */
     const TAG_LOCATION: string;
 
     /**
      * The lyrics of the media (string)
+     * @default lyrics
      */
     const TAG_LYRICS: string;
 
     /**
      * maximum bitrate in bits/s (unsigned integer)
+     * @default maximum-bitrate
      */
     const TAG_MAXIMUM_BITRATE: string;
 
@@ -3026,33 +3265,39 @@ export namespace Gst {
      * of the audio track. This is useful for sample instruments and in particular
      * for multi-samples.
      * @since 1.4
+     * @default midi-base-note
      */
     const TAG_MIDI_BASE_NOTE: string;
 
     /**
      * minimum bitrate in bits/s (unsigned integer)
+     * @default minimum-bitrate
      */
     const TAG_MINIMUM_BITRATE: string;
 
     /**
      * nominal bitrate in bits/s (unsigned integer). The actual bitrate might be
      * different from this target bitrate.
+     * @default nominal-bitrate
      */
     const TAG_NOMINAL_BITRATE: string;
 
     /**
      * organization (string)
+     * @default organization
      */
     const TAG_ORGANIZATION: string;
 
     /**
      * person(s) performing (string)
+     * @default performer
      */
     const TAG_PERFORMER: string;
 
     /**
      * image that is meant for preview purposes, e.g. small icon-sized version
      * (sample) (sample taglist should specify the content type)
+     * @default preview-image
      */
     const TAG_PREVIEW_IMAGE: string;
 
@@ -3068,47 +3313,56 @@ export namespace Gst {
      * "ID3PrivateFrame" and contain a field named "owner" of type string
      * which contains the owner-identification string from the tag.
      * @since 1.8
+     * @default private-data
      */
     const TAG_PRIVATE_DATA: string;
 
     /**
      * Name of the label or publisher (string)
      * @since 1.2
+     * @default publisher
      */
     const TAG_PUBLISHER: string;
 
     /**
      * reference level of track and album gain values (double)
+     * @default replaygain-reference-level
      */
     const TAG_REFERENCE_LEVEL: string;
 
     /**
      * serial number of track (unsigned integer)
+     * @default serial
      */
     const TAG_SERIAL: string;
 
     /**
      * Number of the episode within a season/show (unsigned integer)
+     * @default show-episode-number
      */
     const TAG_SHOW_EPISODE_NUMBER: string;
 
     /**
      * Name of the show, used for displaying (string)
+     * @default show-name
      */
     const TAG_SHOW_NAME: string;
 
     /**
      * Number of the season of a show/series (unsigned integer)
+     * @default show-season-number
      */
     const TAG_SHOW_SEASON_NUMBER: string;
 
     /**
      * Name of the show, used for sorting (string)
+     * @default show-sortname
      */
     const TAG_SHOW_SORTNAME: string;
 
     /**
      * codec/format the subtitle data is stored in (string)
+     * @default subtitle-codec
      */
     const TAG_SUBTITLE_CODEC: string;
 
@@ -3116,6 +3370,7 @@ export namespace Gst {
      * commonly used title (string)
      * 
      * The title as it should be displayed, e.g. 'The Doll House'
+     * @default title
      */
     const TAG_TITLE: string;
 
@@ -3123,32 +3378,38 @@ export namespace Gst {
      * commonly used title, as used for sorting (string)
      * 
      * The title as it should be sorted, e.g. 'Doll House, The'
+     * @default title-sortname
      */
     const TAG_TITLE_SORTNAME: string;
 
     /**
      * count of tracks inside collection this track belongs to (unsigned integer)
+     * @default track-count
      */
     const TAG_TRACK_COUNT: string;
 
     /**
      * track gain in dB (double)
+     * @default replaygain-track-gain
      */
     const TAG_TRACK_GAIN: string;
 
     /**
      * track gain in dB (double)
      * @since 1.28
+     * @default r128-track-gain
      */
     const TAG_TRACK_GAIN_R128: string;
 
     /**
      * track number inside a collection (unsigned integer)
+     * @default track-number
      */
     const TAG_TRACK_NUMBER: string;
 
     /**
      * peak of the track (double)
+     * @default replaygain-track-peak
      */
     const TAG_TRACK_PEAK: string;
 
@@ -3156,16 +3417,19 @@ export namespace Gst {
      * Rating attributed by a person (likely the application user).
      * The higher the value, the more the user likes this media
      * (unsigned int from 0 to 100)
+     * @default user-rating
      */
     const TAG_USER_RATING: string;
 
     /**
      * version of this data (string)
+     * @default version
      */
     const TAG_VERSION: string;
 
     /**
      * codec the video data is stored in (string)
+     * @default video-codec
      */
     const TAG_VIDEO_CODEC: string;
 
@@ -3179,6 +3443,7 @@ export namespace Gst {
      * query neighbors for this context type as the task pool is optional and
      * elements will fall back to their default behavior if no pool is provided.
      * @since 1.28
+     * @default gst.task.pool
      */
     const TASK_POOL_CONTEXT_TYPE: string;
 
@@ -3186,61 +3451,72 @@ export namespace Gst {
      * Special value for the repeat_count set in `gst_toc_entry_set_loop()` or
      * returned by `gst_toc_entry_set_loop()` to indicate infinite looping.
      * @since 1.4
+     * @default -1
      */
     const TOC_REPEAT_COUNT_INFINITE: number;
 
     /**
      * Value for {@link Gst.Uri}<!-- -->.port to indicate no port number.
+     * @default 0
      */
     const URI_NO_PORT: number;
 
     /**
      * Constant that defines one GStreamer microsecond.
+     * @default 1000
      */
     const USECOND: ClockTimeDiff;
 
     /**
      * Indicates that the first value provided to a comparison function
      * (gst_value_compare()) is equal to the second one.
+     * @default 0
      */
     const VALUE_EQUAL: number;
 
     /**
      * Indicates that the first value provided to a comparison function
      * (gst_value_compare()) is greater than the second one.
+     * @default 1
      */
     const VALUE_GREATER_THAN: number;
 
     /**
      * Indicates that the first value provided to a comparison function
      * (gst_value_compare()) is lesser than the second one.
+     * @default -1
      */
     const VALUE_LESS_THAN: number;
 
     /**
      * Indicates that the comparison function (gst_value_compare()) can not
      * determine a order for the two provided values.
+     * @default 2
      */
     const VALUE_UNORDERED: number;
 
     /**
      * The major version of GStreamer at compile time:
+     * @default 1
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro version of GStreamer at compile time:
+     * @default 6
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor version of GStreamer at compile time:
+     * @default 28
      */
     const VERSION_MINOR: number;
 
     /**
      * The nano version of GStreamer at compile time:
      * Actual releases have 0, GIT versions have 1, prerelease versions have 2-...
+     * @default 0
      */
     const VERSION_NANO: number;
 
@@ -3824,6 +4100,7 @@ export namespace Gst {
      * On Windows `filename` should be in UTF-8 encoding.
      * @param filename absolute or relative file name path
      * @returns newly-allocated URI string, or NULL on error. The caller must   free the URI string with `g_free()` when no longer needed.
+     * @throws GLib.Error
      */
     function filename_to_uri(filename: string): string | null;
 
@@ -3933,6 +4210,7 @@ export namespace Gst {
      * use `gst_init()` instead.
      * @param argv pointer to application's argv
      * @returns `true` if GStreamer could be initialized.
+     * @throws GLib.Error
      */
     function init_check(argv?: string[]): [boolean, string[]];
 
@@ -4176,6 +4454,7 @@ export namespace Gst {
      * @param bin_description command line describing the bin
      * @param ghost_unlinked_pads whether to automatically create ghost pads     for unlinked source or sink pads within the bin
      * @returns a   newly-created bin, or `null` if an error occurred.
+     * @throws GLib.Error
      */
     function parse_bin_from_description(bin_description: string, ghost_unlinked_pads: boolean): Bin;
 
@@ -4194,6 +4473,7 @@ export namespace Gst {
      * @param context a parse context allocated with     `gst_parse_context_new()`, or `null`
      * @param flags parsing options, or #GST_PARSE_FLAG_NONE
      * @returns a newly-created   element, which is guaranteed to be a bin unless   #GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS was passed, or `null` if an error   occurred.
+     * @throws GLib.Error
      */
     function parse_bin_from_description_full(bin_description: string, ghost_unlinked_pads: boolean, context: ParseContext | null, flags: ParseFlags): Element;
 
@@ -4213,6 +4493,7 @@ export namespace Gst {
      * use `gst_parse_bin_from_description()`.
      * @param pipeline_description the command line describing the pipeline
      * @returns a new element on success, `null` on   failure. If more than one toplevel element is specified by the   `pipeline_description`, all elements are put into a {@link Gst.Pipeline}, which   than is returned.
+     * @throws GLib.Error
      */
     function parse_launch(pipeline_description: string): Element;
 
@@ -4228,6 +4509,7 @@ export namespace Gst {
      * @param context a parse context allocated with      `gst_parse_context_new()`, or `null`
      * @param flags parsing options, or #GST_PARSE_FLAG_NONE
      * @returns a new element on success, `null` on    failure. If more than one toplevel element is specified by the    `pipeline_description`, all elements are put into a {@link Gst.Pipeline}, which    then is returned (unless the GST_PARSE_FLAG_PLACE_IN_BIN flag is set, in    which case they are put in a {@link Gst.Bin} instead).
+     * @throws GLib.Error
      */
     function parse_launch_full(pipeline_description: string, context: ParseContext | null, flags: ParseFlags): Element;
 
@@ -4237,6 +4519,7 @@ export namespace Gst {
      * An error does not mean that the pipeline could not be constructed.
      * @param argv null-terminated array of arguments
      * @returns a new element on success and `null` on failure.
+     * @throws GLib.Error
      */
     function parse_launchv(argv: string[]): Element;
 
@@ -4248,6 +4531,7 @@ export namespace Gst {
      * @param context a parse context allocated with     `gst_parse_context_new()`, or `null`
      * @param flags parsing options, or #GST_PARSE_FLAG_NONE
      * @returns a new element on success; on   failure, either `null` or a partially-constructed bin or element will be   returned and `error` will be set (unless you passed   #GST_PARSE_FLAG_FATAL_ERRORS in `flags`, then `null` will always be returned   on failure)
+     * @throws GLib.Error
      */
     function parse_launchv_full(argv: string[], context: ParseContext | null, flags: ParseFlags): Element;
 
@@ -6024,18 +6308,19 @@ export namespace Gst {
          *    other elements should ignore it from allocation propositions.
          *    This implies {@link Gst.AllocatorFlags.NO_COPY}.
          */
-        CUSTOM_ALLOC,
+        CUSTOM_ALLOC = 16,
         /**
          * When copying a {@link Gst.Memory} allocated with this allocator, the copy will
          * instead be allocated using the default allocator. Use this when allocating a
          * new memory is an heavy opperation that should only be done with a
          * {@link Gst.BufferPool} for example.
+         * @since 1.24
          */
-        NO_COPY,
+        NO_COPY = 32,
         /**
          * first flag that can be used for custom purposes
          */
-        LAST,
+        LAST = 1048576,
     }
 
 
@@ -6055,18 +6340,20 @@ export namespace Gst {
     enum BinFlags {
         /**
          * Don't resync a state change when elements are added or linked in the bin
+         * @since 1.0.5
          */
-        NO_RESYNC,
+        NO_RESYNC = 16384,
         /**
          * Indicates whether the bin can handle elements that add/remove source pads
          * at any point in time without first posting a no-more-pads signal.
+         * @since 1.10
          */
-        STREAMS_AWARE,
+        STREAMS_AWARE = 32768,
         /**
          * The last enum in the series of flags for bins. Derived classes can use this
          * as first value in a list of flags.
          */
-        LAST,
+        LAST = 524288,
     }
 
 
@@ -6086,37 +6373,38 @@ export namespace Gst {
         /**
          * copy nothing
          */
-        NONE,
+        NONE = 0,
         /**
          * flag indicating that buffer flags should be copied
          */
-        FLAGS,
+        FLAGS = 1,
         /**
          * flag indicating that buffer pts, dts,
          *   duration, offset and offset_end should be copied
          */
-        TIMESTAMPS,
+        TIMESTAMPS = 2,
         /**
          * flag indicating that buffer meta should be
          *   copied
          */
-        META,
+        META = 4,
         /**
          * flag indicating that buffer memory should be reffed
          *   and appended to already existing memory. Unless the memory is marked as
          *   NO_SHARE, no actual copy of the memory is made but it is simply reffed.
          *   Add `GST_BUFFER_COPY_DEEP` to force a real copy.
          */
-        MEMORY,
+        MEMORY = 8,
         /**
          * flag indicating that buffer memory should be
          *   merged
          */
-        MERGE,
+        MERGE = 16,
         /**
          * flag indicating that memory should always be copied instead of reffed
+         * @since 1.2
          */
-        DEEP,
+        DEEP = 32,
     }
 
 
@@ -6136,29 +6424,29 @@ export namespace Gst {
          * the buffer is live data and should be discarded in
          *                                 the PAUSED state.
          */
-        LIVE,
+        LIVE = 16,
         /**
          * the buffer contains data that should be dropped
          *                                 because it will be clipped against the segment
          *                                 boundaries or because it does not contain data
          *                                 that should be shown to the user.
          */
-        DECODE_ONLY,
+        DECODE_ONLY = 32,
         /**
          * the buffer marks a data discontinuity in the stream.
          *                                 This typically occurs after a seek or a dropped buffer
          *                                 from a live or network source.
          */
-        DISCONT,
+        DISCONT = 64,
         /**
          * the buffer timestamps might have a discontinuity
          *                                 and this buffer is a good point to resynchronize.
          */
-        RESYNC,
+        RESYNC = 128,
         /**
          * the buffer data is corrupted.
          */
-        CORRUPTED,
+        CORRUPTED = 256,
         /**
          * the buffer contains a media specific marker. for
          *                                 video this is the end of a frame boundary, for audio
@@ -6166,38 +6454,39 @@ export namespace Gst {
          *                                 packets this matches the marker flag in the
          *                                 RTP packet header.
          */
-        MARKER,
+        MARKER = 512,
         /**
          * the buffer contains header information that is
          *                                 needed to decode the following data.
          */
-        HEADER,
+        HEADER = 1024,
         /**
          * the buffer has been created to fill a gap in the
          *                                 stream and contains media neutral data (elements can
          *                                 switch to optimized code path that ignores the buffer
          *                                 content).
          */
-        GAP,
+        GAP = 2048,
         /**
          * the buffer can be dropped without breaking the
          *                                 stream, for example to reduce bandwidth.
          */
-        DROPPABLE,
+        DROPPABLE = 4096,
         /**
          * this unit cannot be decoded independently.
          */
-        DELTA_UNIT,
+        DELTA_UNIT = 8192,
         /**
          * this flag is set when memory of the buffer
          *                                 is added/removed
          */
-        TAG_MEMORY,
+        TAG_MEMORY = 16384,
         /**
          * Elements which write to disk or permanent storage should ensure the data
          * is synced after writing the contents of this buffer.
+         * @since 1.6
          */
-        SYNC_AFTER,
+        SYNC_AFTER = 32768,
         /**
          * This buffer is important and should not be dropped.
          * 
@@ -6205,13 +6494,14 @@ export namespace Gst {
          * carrying keyframes or codec setup data for RTP Forward Error Correction
          * purposes, or to prevent still video frames from being dropped by elements
          * due to QoS.
+         * @since 1.14
          */
-        NON_DROPPABLE,
+        NON_DROPPABLE = 65536,
         /**
          * additional media specific flags can be added starting from
          *                                 this flag.
          */
-        LAST,
+        LAST = 1048576,
     }
 
 
@@ -6230,26 +6520,26 @@ export namespace Gst {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * buffer is keyframe
          */
-        KEY_UNIT,
+        KEY_UNIT = 1,
         /**
          * when the bufferpool is empty, acquire_buffer
          * will by default block until a buffer is released into the pool again. Setting
          * this flag makes acquire_buffer return #GST_FLOW_EOS instead of blocking.
          */
-        DONTWAIT,
+        DONTWAIT = 2,
         /**
          * buffer is discont
          */
-        DISCONT,
+        DISCONT = 4,
         /**
          * last flag, subclasses can use private flags
          *    starting from this value.
          */
-        LAST,
+        LAST = 65536,
     }
 
 
@@ -6268,11 +6558,11 @@ export namespace Gst {
         /**
          * The bus is currently dropping all messages
          */
-        FLUSHING,
+        FLUSHING = 16,
         /**
          * offset to define more flags
          */
-        FLAG_LAST,
+        FLAG_LAST = 32,
     }
 
 
@@ -6292,7 +6582,7 @@ export namespace Gst {
          * Caps has no specific content, but can contain
          *    anything.
          */
-        ANY,
+        ANY = 16,
     }
 
 
@@ -6311,35 +6601,36 @@ export namespace Gst {
         /**
          * clock can do a single sync timeout request
          */
-        CAN_DO_SINGLE_SYNC,
+        CAN_DO_SINGLE_SYNC = 16,
         /**
          * clock can do a single async timeout request
          */
-        CAN_DO_SINGLE_ASYNC,
+        CAN_DO_SINGLE_ASYNC = 32,
         /**
          * clock can do sync periodic timeout requests
          */
-        CAN_DO_PERIODIC_SYNC,
+        CAN_DO_PERIODIC_SYNC = 64,
         /**
          * clock can do async periodic timeout callbacks
          */
-        CAN_DO_PERIODIC_ASYNC,
+        CAN_DO_PERIODIC_ASYNC = 128,
         /**
          * clock's resolution can be changed
          */
-        CAN_SET_RESOLUTION,
+        CAN_SET_RESOLUTION = 256,
         /**
          * clock can be slaved to a master clock
          */
-        CAN_SET_MASTER,
+        CAN_SET_MASTER = 512,
         /**
          * clock needs to be synced before it can be used
+         * @since 1.6
          */
-        NEEDS_STARTUP_SYNC,
+        NEEDS_STARTUP_SYNC = 1024,
         /**
          * subclasses can add additional flags starting from this flag
          */
-        LAST,
+        LAST = 4096,
     }
 
 
@@ -6359,75 +6650,75 @@ export namespace Gst {
         /**
          * Use black as foreground color.
          */
-        FG_BLACK,
+        FG_BLACK = 0,
         /**
          * Use red as foreground color.
          */
-        FG_RED,
+        FG_RED = 1,
         /**
          * Use green as foreground color.
          */
-        FG_GREEN,
+        FG_GREEN = 2,
         /**
          * Use yellow as foreground color.
          */
-        FG_YELLOW,
+        FG_YELLOW = 3,
         /**
          * Use blue as foreground color.
          */
-        FG_BLUE,
+        FG_BLUE = 4,
         /**
          * Use magenta as foreground color.
          */
-        FG_MAGENTA,
+        FG_MAGENTA = 5,
         /**
          * Use cyan as foreground color.
          */
-        FG_CYAN,
+        FG_CYAN = 6,
         /**
          * Use white as foreground color.
          */
-        FG_WHITE,
+        FG_WHITE = 7,
         /**
          * Use black as background color.
          */
-        BG_BLACK,
+        BG_BLACK = 0,
         /**
          * Use red as background color.
          */
-        BG_RED,
+        BG_RED = 16,
         /**
          * Use green as background color.
          */
-        BG_GREEN,
+        BG_GREEN = 32,
         /**
          * Use yellow as background color.
          */
-        BG_YELLOW,
+        BG_YELLOW = 48,
         /**
          * Use blue as background color.
          */
-        BG_BLUE,
+        BG_BLUE = 64,
         /**
          * Use magenta as background color.
          */
-        BG_MAGENTA,
+        BG_MAGENTA = 80,
         /**
          * Use cyan as background color.
          */
-        BG_CYAN,
+        BG_CYAN = 96,
         /**
          * Use white as background color.
          */
-        BG_WHITE,
+        BG_WHITE = 112,
         /**
          * Make the output bold.
          */
-        BOLD,
+        BOLD = 256,
         /**
          * Underline the output.
          */
-        UNDERLINE,
+        UNDERLINE = 512,
     }
 
 
@@ -6447,34 +6738,34 @@ export namespace Gst {
         /**
          * show caps-name on edges
          */
-        MEDIA_TYPE,
+        MEDIA_TYPE = 1,
         /**
          * show caps-details on edges
          */
-        CAPS_DETAILS,
+        CAPS_DETAILS = 2,
         /**
          * show modified parameters on
          *                                           elements
          */
-        NON_DEFAULT_PARAMS,
+        NON_DEFAULT_PARAMS = 4,
         /**
          * show element states
          */
-        STATES,
+        STATES = 8,
         /**
          * show full element parameter values even
          *                                    if they are very long
          */
-        FULL_PARAMS,
+        FULL_PARAMS = 16,
         /**
          * show all the typical details that one might want
          */
-        ALL,
+        ALL = 15,
         /**
          * show all details regardless of how large or
          *                                verbose they make the resulting output
          */
-        VERBOSE,
+        VERBOSE = 4294967295,
     }
 
 
@@ -6493,31 +6784,31 @@ export namespace Gst {
         /**
          * ignore state changes from parent
          */
-        LOCKED_STATE,
+        LOCKED_STATE = 16,
         /**
          * the element is a sink
          */
-        SINK,
+        SINK = 32,
         /**
          * the element is a source.
          */
-        SOURCE,
+        SOURCE = 64,
         /**
          * the element can provide a clock
          */
-        PROVIDE_CLOCK,
+        PROVIDE_CLOCK = 128,
         /**
          * the element requires a clock
          */
-        REQUIRE_CLOCK,
+        REQUIRE_CLOCK = 256,
         /**
          * the element can use an index
          */
-        INDEXABLE,
+        INDEXABLE = 512,
         /**
          * offset to define more flags
          */
-        LAST,
+        LAST = 16384,
     }
 
 
@@ -6538,25 +6829,25 @@ export namespace Gst {
         /**
          * Set if the event can travel upstream.
          */
-        UPSTREAM,
+        UPSTREAM = 1,
         /**
          * Set if the event can travel downstream.
          */
-        DOWNSTREAM,
+        DOWNSTREAM = 2,
         /**
          * Set if the event should be serialized with data
          *                               flow.
          */
-        SERIALIZED,
+        SERIALIZED = 4,
         /**
          * Set if the event is sticky on the pads.
          */
-        STICKY,
+        STICKY = 8,
         /**
          * Multiple sticky events can be on a pad, each
          *                               identified by the event name.
          */
-        STICKY_MULTI,
+        STICKY_MULTI = 16,
     }
 
 
@@ -6578,7 +6869,7 @@ export namespace Gst {
          * The #GST_EVENT_GAP signals missing data,
          *    for example because of packet loss.
          */
-        DATA,
+        DATA = 1,
     }
 
 
@@ -6597,19 +6888,19 @@ export namespace Gst {
         /**
          * lock for read access
          */
-        READ,
+        READ = 1,
         /**
          * lock for write access
          */
-        WRITE,
+        WRITE = 2,
         /**
          * lock for exclusive access
          */
-        EXCLUSIVE,
+        EXCLUSIVE = 4,
         /**
          * first flag that can be used for custom purposes
          */
-        LAST,
+        LAST = 256,
     }
 
 
@@ -6629,7 +6920,7 @@ export namespace Gst {
         /**
          * No special behavior (empty flags)
          */
-        NONE,
+        NONE = 0,
         /**
          * Enable message throttling/deduplication. This
          *  makes the context track which messages have been logged already based on
@@ -6637,7 +6928,7 @@ export namespace Gst {
          *  interval is set). Without this flag, all messages will be logged regardless
          *  of whether they've been logged before.
          */
-        THROTTLE,
+        THROTTLE = 1,
     }
 
 
@@ -6660,28 +6951,28 @@ export namespace Gst {
          * Default behavior for logging context
          *                          (uses object, format, file but not line number or string args)
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Ignore object pointer or object ID when calculating message hash
          */
-        IGNORE_OBJECT,
+        IGNORE_OBJECT = 1,
         /**
          * Ignore the "format" part of the debug
          * log message
          */
-        IGNORE_FORMAT,
+        IGNORE_FORMAT = 2,
         /**
          * Ignore file name when calculating message hash
          */
-        IGNORE_FILE,
+        IGNORE_FILE = 4,
         /**
          * Use line number when calculating message hash (not used by default)
          */
-        USE_LINE_NUMBER,
+        USE_LINE_NUMBER = 8,
         /**
          * Use the arguments part of the string message (not used by default)
          */
-        USE_STRING_ARGS,
+        USE_STRING_ARGS = 16,
     }
 
 
@@ -6700,21 +6991,22 @@ export namespace Gst {
         /**
          * map for read access
          */
-        READ,
+        READ = 1,
         /**
          * map for write access
          */
-        WRITE,
+        WRITE = 2,
         /**
          * Take another reference of the memory and store it in the GstMapInfo. This
          * makes sure that the memory stays valid  while it is mapped and
          * automatically unrefs it on unmap.
+         * @since 1.28
          */
-        REF_MEMORY,
+        REF_MEMORY = 256,
         /**
          * first flag that can be used for custom purposes
          */
-        FLAG_LAST,
+        FLAG_LAST = 65536,
     }
 
 
@@ -6734,7 +7026,7 @@ export namespace Gst {
          * memory is readonly. It is not allowed to map the
          * memory with #GST_MAP_WRITE.
          */
-        READONLY,
+        READONLY = 2,
         /**
          * memory must not be shared. Copies will have to be
          * made when this memory needs to be shared between buffers. (DEPRECATED:
@@ -6742,29 +7034,29 @@ export namespace Gst {
          * memory pooling instead of relying on the GstBuffer they were originally
          * attached to.)
          */
-        NO_SHARE,
+        NO_SHARE = 16,
         /**
          * the memory prefix is filled with 0 bytes
          */
-        ZERO_PREFIXED,
+        ZERO_PREFIXED = 32,
         /**
          * the memory padding is filled with 0 bytes
          */
-        ZERO_PADDED,
+        ZERO_PADDED = 64,
         /**
          * the memory is physically
          * contiguous. (Since: 1.2)
          */
-        PHYSICALLY_CONTIGUOUS,
+        PHYSICALLY_CONTIGUOUS = 128,
         /**
          * the memory can't be mapped via
          * `gst_memory_map()` without any preconditions. (Since: 1.2)
          */
-        NOT_MAPPABLE,
+        NOT_MAPPABLE = 256,
         /**
          * first flag that can be used for custom purposes
          */
-        LAST,
+        LAST = 1048576,
     }
 
 
@@ -6783,14 +7075,14 @@ export namespace Gst {
         /**
          * an undefined message
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * end-of-stream reached in a pipeline. The application will
          * only receive this message in the PLAYING state and every time it sets a
          * pipeline to PLAYING that is in the EOS state. The application can perform a
          * flushing seek in the pipeline, which will undo the EOS state again.
          */
-        EOS,
+        EOS = 1,
         /**
          * an error occurred. When the application receives an error
          * message it should stop playback of the pipeline and not assume that more
@@ -6798,19 +7090,19 @@ export namespace Gst {
          * messages by setting a `redirect-location` field into the error message, application
          * or high level bins might use the information as required.
          */
-        ERROR,
+        ERROR = 2,
         /**
          * a warning occurred.
          */
-        WARNING,
+        WARNING = 4,
         /**
          * an info message occurred
          */
-        INFO,
+        INFO = 8,
         /**
          * a tag was found.
          */
-        TAG,
+        TAG = 16,
         /**
          * the pipeline is buffering. When the application
          * receives a buffering message in the PLAYING state for a non-live pipeline it
@@ -6819,26 +7111,26 @@ export namespace Gst {
          * performed and the buffering percentage can be used to inform the user about
          * the progress.
          */
-        BUFFERING,
+        BUFFERING = 32,
         /**
          * a state change happened
          */
-        STATE_CHANGED,
+        STATE_CHANGED = 64,
         /**
          * an element changed state in a streaming thread.
          * This message is deprecated.
          */
-        STATE_DIRTY,
+        STATE_DIRTY = 128,
         /**
          * a stepping operation finished.
          */
-        STEP_DONE,
+        STEP_DONE = 256,
         /**
          * an element notifies its capability of providing
          *                             a clock. This message is used internally and
          *                             never forwarded to the application.
          */
-        CLOCK_PROVIDE,
+        CLOCK_PROVIDE = 512,
         /**
          * The current clock as selected by the pipeline became
          *                          unusable. The pipeline will select a new clock on
@@ -6846,109 +7138,109 @@ export namespace Gst {
          *                          should set the pipeline to PAUSED and back to
          *                          PLAYING when this message is received.
          */
-        CLOCK_LOST,
+        CLOCK_LOST = 1024,
         /**
          * a new clock was selected in the pipeline.
          */
-        NEW_CLOCK,
+        NEW_CLOCK = 2048,
         /**
          * the structure of the pipeline changed. This
          * message is used internally and never forwarded to the application.
          */
-        STRUCTURE_CHANGE,
+        STRUCTURE_CHANGE = 4096,
         /**
          * status about a stream, emitted when it starts,
          *                             stops, errors, etc..
          */
-        STREAM_STATUS,
+        STREAM_STATUS = 8192,
         /**
          * message posted by the application, possibly
          *                           via an application-specific element.
          */
-        APPLICATION,
+        APPLICATION = 16384,
         /**
          * element-specific message, see the specific element's
          *                       documentation
          */
-        ELEMENT,
+        ELEMENT = 32768,
         /**
          * pipeline started playback of a segment. This
          * message is used internally and never forwarded to the application.
          */
-        SEGMENT_START,
+        SEGMENT_START = 65536,
         /**
          * pipeline completed playback of a segment. This
          * message is forwarded to the application after all elements that posted
          * `GST_MESSAGE_SEGMENT_START` posted a GST_MESSAGE_SEGMENT_DONE message.
          */
-        SEGMENT_DONE,
+        SEGMENT_DONE = 131072,
         /**
          * The duration of a pipeline changed. The
          * application can get the new duration with a duration query.
          */
-        DURATION_CHANGED,
+        DURATION_CHANGED = 262144,
         /**
          * Posted by elements when their latency changes. The
          * application should recalculate and distribute a new latency.
          */
-        LATENCY,
+        LATENCY = 524288,
         /**
          * Posted by elements when they start an ASYNC
          * {@link Gst.StateChange}. This message is not forwarded to the application but is used
          * internally.
          */
-        ASYNC_START,
+        ASYNC_START = 1048576,
         /**
          * Posted by elements when they complete an ASYNC
          * {@link Gst.StateChange}. The application will only receive this message from the toplevel
          * pipeline.
          */
-        ASYNC_DONE,
+        ASYNC_DONE = 2097152,
         /**
          * Posted by elements when they want the pipeline to
          * change state. This message is a suggestion to the application which can
          * decide to perform the state change on (part of) the pipeline.
          */
-        REQUEST_STATE,
+        REQUEST_STATE = 4194304,
         /**
          * A stepping operation was started.
          */
-        STEP_START,
+        STEP_START = 8388608,
         /**
          * A buffer was dropped or an element changed its processing
          * strategy for Quality of Service reasons.
          */
-        QOS,
+        QOS = 16777216,
         /**
          * A progress message.
          */
-        PROGRESS,
+        PROGRESS = 33554432,
         /**
          * A new table of contents (TOC) was found or previously found TOC
          * was updated.
          */
-        TOC,
+        TOC = 67108864,
         /**
          * Message to request resetting the pipeline's
          *     running time from the pipeline. This is an internal message which
          *     applications will likely never receive.
          */
-        RESET_TIME,
+        RESET_TIME = 134217728,
         /**
          * Message indicating start of a new stream. Useful
          *     e.g. when using playbin in gapless playback mode, to get notified when
          *     the next title actually starts playing (which will be some time after
          *     the URI for the next title has been set).
          */
-        STREAM_START,
+        STREAM_START = 268435456,
         /**
          * Message indicating that an element wants a specific context (Since: 1.2)
          */
-        NEED_CONTEXT,
+        NEED_CONTEXT = 536870912,
         /**
          * Message indicating that an element created a context (Since: 1.2)
          */
-        HAVE_CONTEXT,
+        HAVE_CONTEXT = 1073741824,
         /**
          * Message is an extended message type (see below).
          *     These extended message IDs can't be used directly with mask-based API
@@ -6956,57 +7248,58 @@ export namespace Gst {
          *     filter for GST_MESSAGE_EXTENDED and then check the result for the
          *     specific type. (Since: 1.4)
          */
-        EXTENDED,
+        EXTENDED = 2147483648,
         /**
          * Message indicating a {@link Gst.Device} was added to
          *     a {@link Gst.DeviceProvider} (Since: 1.4)
          */
-        DEVICE_ADDED,
+        DEVICE_ADDED = 2147483649,
         /**
          * Message indicating a {@link Gst.Device} was removed
          *     from a {@link Gst.DeviceProvider} (Since: 1.4)
          */
-        DEVICE_REMOVED,
+        DEVICE_REMOVED = 2147483650,
         /**
          * Message indicating a {@link GObject.Object} property has
          *     changed (Since: 1.10)
          */
-        PROPERTY_NOTIFY,
+        PROPERTY_NOTIFY = 2147483651,
         /**
          * Message indicating a new {@link Gst.StreamCollection}
          *     is available (Since: 1.10)
          */
-        STREAM_COLLECTION,
+        STREAM_COLLECTION = 2147483652,
         /**
          * Message indicating the active selection of
          *     `GstStreams` has changed (Since: 1.10)
          */
-        STREAMS_SELECTED,
+        STREAMS_SELECTED = 2147483653,
         /**
          * Message indicating to request the application to
          *     try to play the given URL(s). Useful if for example a HTTP 302/303
          *     response is received with a non-HTTP URL inside. (Since: 1.10)
          */
-        REDIRECT,
+        REDIRECT = 2147483654,
         /**
          * Message indicating a {@link Gst.Device} was changed
          *     a {@link Gst.DeviceProvider} (Since: 1.16)
          */
-        DEVICE_CHANGED,
+        DEVICE_CHANGED = 2147483655,
         /**
          * Message sent by elements to request the
          *     running time from the pipeline when an instant rate change should
          *     be applied (which may be in the past when the answer arrives). (Since: 1.18)
          */
-        INSTANT_RATE_REQUEST,
+        INSTANT_RATE_REQUEST = 2147483656,
         /**
          * Message indicating the {@link Gst.DeviceMonitor} has completed async startup.
+         * @since 1.28
          */
-        DEVICE_MONITOR_STARTED,
+        DEVICE_MONITOR_STARTED = 2147483657,
         /**
          * mask for all of the above messages.
          */
-        ANY,
+        ANY = 4294967295,
     }
 
 
@@ -7025,23 +7318,23 @@ export namespace Gst {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * metadata should not be modified
          */
-        READONLY,
+        READONLY = 1,
         /**
          * metadata is managed by a bufferpool
          */
-        POOLED,
+        POOLED = 2,
         /**
          * metadata should not be removed
          */
-        LOCKED,
+        LOCKED = 4,
         /**
          * additional flags can be added starting from this flag.
          */
-        LAST,
+        LAST = 65536,
     }
 
 
@@ -7061,22 +7354,22 @@ export namespace Gst {
          * the object can be locked and unlocked with
          * `gst_mini_object_lock()` and `gst_mini_object_unlock()`.
          */
-        LOCKABLE,
+        LOCKABLE = 1,
         /**
          * the object is permanently locked in
          * READONLY mode. Only read locks can be performed on the object.
          */
-        LOCK_READONLY,
+        LOCK_READONLY = 2,
         /**
          * the object is expected to stay alive
          * even after `gst_deinit()` has been called and so should be ignored by leak
          * detection tools. (Since: 1.10)
          */
-        MAY_BE_LEAKED,
+        MAY_BE_LEAKED = 4,
         /**
          * first flag that can be used by subclasses.
          */
-        LAST,
+        LAST = 16,
     }
 
 
@@ -7097,7 +7390,7 @@ export namespace Gst {
          * after `gst_deinit()` has been called and so should be ignored by leak
          * detection tools. (Since: 1.10)
          */
-        MAY_BE_LEAKED,
+        MAY_BE_LEAKED = 1,
         /**
          * Flag that's set when the object has been constructed. This can be used by
          * API such as base class setters to differentiate between the case where
@@ -7105,12 +7398,13 @@ export namespace Gst {
          * object isn't fully constructed yet, and so one shouldn't do anything but
          * set values in the instance structure), and the case where the object is
          * constructed.
+         * @since 1.24
          */
-        CONSTRUCTED,
+        CONSTRUCTED = 2,
         /**
          * subclasses can add additional flags starting from this flag
          */
-        LAST,
+        LAST = 16,
     }
 
 
@@ -7129,76 +7423,76 @@ export namespace Gst {
         /**
          * is dataflow on a pad blocked
          */
-        BLOCKED,
+        BLOCKED = 16,
         /**
          * is pad flushing
          */
-        FLUSHING,
+        FLUSHING = 32,
         /**
          * is pad in EOS state
          */
-        EOS,
+        EOS = 64,
         /**
          * is pad currently blocking on a buffer or event
          */
-        BLOCKING,
+        BLOCKING = 128,
         /**
          * ensure that there is a parent object before calling
          *                       into the pad callbacks.
          */
-        NEED_PARENT,
+        NEED_PARENT = 256,
         /**
          * the pad should be reconfigured/renegotiated.
          *                            The flag has to be unset manually after
          *                            reconfiguration happened.
          */
-        NEED_RECONFIGURE,
+        NEED_RECONFIGURE = 512,
         /**
          * the pad has pending events
          */
-        PENDING_EVENTS,
+        PENDING_EVENTS = 1024,
         /**
          * the pad is using fixed caps. This means that
          *     once the caps are set on the pad, the default caps query function
          *     will only return those caps.
          */
-        FIXED_CAPS,
+        FIXED_CAPS = 2048,
         /**
          * the default event and query handler will forward
          *                      all events and queries to the internally linked pads
          *                      instead of discarding them.
          */
-        PROXY_CAPS,
+        PROXY_CAPS = 4096,
         /**
          * the default query handler will forward
          *                      allocation queries to the internally linked pads
          *                      instead of discarding them.
          */
-        PROXY_ALLOCATION,
+        PROXY_ALLOCATION = 8192,
         /**
          * the default query handler will forward
          *                      scheduling queries to the internally linked pads
          *                      instead of discarding them.
          */
-        PROXY_SCHEDULING,
+        PROXY_SCHEDULING = 16384,
         /**
          * the default accept-caps handler will check
          *                      it the caps intersect the query-caps result instead
          *                      of checking for a subset. This is interesting for
          *                      parsers that can accept incompletely specified caps.
          */
-        ACCEPT_INTERSECT,
+        ACCEPT_INTERSECT = 32768,
         /**
          * the default accept-caps handler will use
          *                      the template pad caps instead of query caps to
          *                      compare with the accept caps. Use this in combination
          *                      with {@link Gst.PadFlags.ACCEPT_INTERSECT}. (Since: 1.6)
          */
-        ACCEPT_TEMPLATE,
+        ACCEPT_TEMPLATE = 65536,
         /**
          * offset to define more flags
          */
-        LAST,
+        LAST = 1048576,
     }
 
 
@@ -7224,34 +7518,34 @@ export namespace Gst {
         /**
          * Don't check hierarchy or caps compatibility.
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * Check the pads have same parents/grandparents.
          *   Could be omitted if it is already known that the two elements that own the
          *   pads are in the same bin.
          */
-        HIERARCHY,
+        HIERARCHY = 1,
         /**
          * Check if the pads are compatible by using
          *   their template caps. This is much faster than `GST_PAD_LINK_CHECK_CAPS`, but
          *   would be unsafe e.g. if one pad has `GST_CAPS_ANY`.
          */
-        TEMPLATE_CAPS,
+        TEMPLATE_CAPS = 2,
         /**
          * Check if the pads are compatible by comparing the
          *   caps returned by `gst_pad_query_caps()`.
          */
-        CAPS,
+        CAPS = 4,
         /**
          * Disables pushing a reconfigure event when pads are
          *   linked.
          */
-        NO_RECONFIGURE,
+        NO_RECONFIGURE = 8,
         /**
          * The default checks done when linking
          *   pads (i.e. the ones used by `gst_pad_link()`).
          */
-        DEFAULT,
+        DEFAULT = 5,
     }
 
 
@@ -7272,94 +7566,94 @@ export namespace Gst {
         /**
          * invalid probe type
          */
-        INVALID,
+        INVALID = 0,
         /**
          * probe idle pads and block while the callback is called
          */
-        IDLE,
+        IDLE = 1,
         /**
          * probe and block pads
          */
-        BLOCK,
+        BLOCK = 2,
         /**
          * probe buffers
          */
-        BUFFER,
+        BUFFER = 16,
         /**
          * probe buffer lists
          */
-        BUFFER_LIST,
+        BUFFER_LIST = 32,
         /**
          * probe downstream events
          */
-        EVENT_DOWNSTREAM,
+        EVENT_DOWNSTREAM = 64,
         /**
          * probe upstream events
          */
-        EVENT_UPSTREAM,
+        EVENT_UPSTREAM = 128,
         /**
          * probe flush events. This probe has to be
          *     explicitly enabled and is not included in the
          *     @`GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM` or
          *     @`GST_PAD_PROBE_TYPE_EVENT_UPSTREAM` probe types.
          */
-        EVENT_FLUSH,
+        EVENT_FLUSH = 256,
         /**
          * probe downstream queries
          */
-        QUERY_DOWNSTREAM,
+        QUERY_DOWNSTREAM = 512,
         /**
          * probe upstream queries
          */
-        QUERY_UPSTREAM,
+        QUERY_UPSTREAM = 1024,
         /**
          * probe push
          */
-        PUSH,
+        PUSH = 4096,
         /**
          * probe pull
          */
-        PULL,
+        PULL = 8192,
         /**
          * probe and block at the next opportunity, at data flow or when idle
          */
-        BLOCKING,
+        BLOCKING = 3,
         /**
          * probe downstream data (buffers, buffer lists, and events)
          */
-        DATA_DOWNSTREAM,
+        DATA_DOWNSTREAM = 112,
         /**
          * probe upstream data (events)
          */
-        DATA_UPSTREAM,
+        DATA_UPSTREAM = 128,
         /**
          * probe upstream and downstream data (buffers, buffer lists, and events)
          */
-        DATA_BOTH,
+        DATA_BOTH = 240,
         /**
          * probe and block downstream data (buffers, buffer lists, and events)
          */
-        BLOCK_DOWNSTREAM,
+        BLOCK_DOWNSTREAM = 114,
         /**
          * probe and block upstream data (events)
          */
-        BLOCK_UPSTREAM,
+        BLOCK_UPSTREAM = 130,
         /**
          * probe upstream and downstream events
          */
-        EVENT_BOTH,
+        EVENT_BOTH = 192,
         /**
          * probe upstream and downstream queries
          */
-        QUERY_BOTH,
+        QUERY_BOTH = 1536,
         /**
          * probe upstream events and queries and downstream buffers, buffer lists, events and queries
          */
-        ALL_BOTH,
+        ALL_BOTH = 1776,
         /**
          * probe push and pull
          */
-        SCHEDULING,
+        SCHEDULING = 12288,
     }
 
 
@@ -7378,7 +7672,7 @@ export namespace Gst {
         /**
          * first flag that can be used by subclasses.
          */
-        LAST,
+        LAST = 256,
     }
 
 
@@ -7397,24 +7691,24 @@ export namespace Gst {
         /**
          * Do not use any special parsing options.
          */
-        NONE,
+        NONE = 0,
         /**
          * Always return `null` when an error occurs
          *     (default behaviour is to return partially constructed bins or elements
          *      in some cases)
          */
-        FATAL_ERRORS,
+        FATAL_ERRORS = 1,
         /**
          * If a bin only has a single element,
          *     just return the element.
          */
-        NO_SINGLE_ELEMENT_BINS,
+        NO_SINGLE_ELEMENT_BINS = 2,
         /**
          * If more than one toplevel element is described
          *     by the pipeline description string, put them in a {@link Gst.Bin} instead of a
          *     {@link Gst.Pipeline}. (Since: 1.10)
          */
-        PLACE_IN_BIN,
+        PLACE_IN_BIN = 4,
     }
 
 
@@ -7433,11 +7727,11 @@ export namespace Gst {
         /**
          * this pipeline works with a fixed clock
          */
-        FIXED_CLOCK,
+        FIXED_CLOCK = 524288,
         /**
          * offset to define more flags
          */
-        LAST,
+        LAST = 8388608,
     }
 
 
@@ -7458,7 +7752,7 @@ export namespace Gst {
          *   the plugins cache. This is useful if the members of the enum are generated
          *   dynamically, in order not to expose incorrect documentation to the end user.
          */
-        MEMBERS,
+        MEMBERS = 1,
     }
 
 
@@ -7477,34 +7771,34 @@ export namespace Gst {
         /**
          * no special flags
          */
-        NONE,
+        NONE = 0,
         /**
          * recurse into subdirectories
          */
-        RECURSE,
+        RECURSE = 1,
         /**
          * use paths
          *         argument only if none of the environment variables is set
          */
-        PATHS_ARE_DEFAULT_ONLY,
+        PATHS_ARE_DEFAULT_ONLY = 2,
         /**
          * interpret
          *         filename argument as filter suffix and check all matching files in
          *         the directory
          */
-        FILE_NAME_IS_SUFFIX,
+        FILE_NAME_IS_SUFFIX = 4,
         /**
          * interpret
          *         filename argument as filter prefix and check all matching files in
          *         the directory. Since: 1.8.
          */
-        FILE_NAME_IS_PREFIX,
+        FILE_NAME_IS_PREFIX = 8,
         /**
          * interpret
          *   non-absolute paths as relative to the main executable directory. Since
          *   1.14.
          */
-        PATHS_ARE_RELATIVE_TO_EXE,
+        PATHS_ARE_RELATIVE_TO_EXE = 16,
     }
 
 
@@ -7523,11 +7817,11 @@ export namespace Gst {
         /**
          * Temporarily loaded plugins
          */
-        CACHED,
+        CACHED = 16,
         /**
          * The plugin won't be scanned (again)
          */
-        BLACKLISTED,
+        BLACKLISTED = 32,
     }
 
 
@@ -7548,16 +7842,16 @@ export namespace Gst {
         /**
          * Set if the query can travel upstream.
          */
-        UPSTREAM,
+        UPSTREAM = 1,
         /**
          * Set if the query can travel downstream.
          */
-        DOWNSTREAM,
+        DOWNSTREAM = 2,
         /**
          * Set if the query should be serialized with data
          *                               flow.
          */
-        SERIALIZED,
+        SERIALIZED = 4,
     }
 
 
@@ -7576,15 +7870,15 @@ export namespace Gst {
         /**
          * if seeking is possible
          */
-        SEEKABLE,
+        SEEKABLE = 1,
         /**
          * if sequential access is recommended
          */
-        SEQUENTIAL,
+        SEQUENTIAL = 2,
         /**
          * if bandwidth is limited and buffering possible (since 1.2)
          */
-        BANDWIDTH_LIMITED,
+        BANDWIDTH_LIMITED = 4,
     }
 
 
@@ -7653,68 +7947,68 @@ export namespace Gst {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * flush pipeline
          */
-        FLUSH,
+        FLUSH = 1,
         /**
          * accurate position is requested, this might
          *                     be considerably slower for some formats.
          */
-        ACCURATE,
+        ACCURATE = 2,
         /**
          * seek to the nearest keyframe. This might be
          *                     faster but less accurate.
          */
-        KEY_UNIT,
+        KEY_UNIT = 4,
         /**
          * perform a segment seek.
          */
-        SEGMENT,
+        SEGMENT = 8,
         /**
          * when doing fast forward or fast reverse playback, allow
          *                     elements to skip frames instead of generating all
          *                     frames. (Since: 1.6)
          */
-        TRICKMODE,
+        TRICKMODE = 16,
         /**
          * Deprecated backward compatibility flag, replaced
          *                     by {@link Gst.SeekFlags.TRICKMODE}
          */
-        SKIP,
+        SKIP = 16,
         /**
          * go to a location before the requested position,
          *                     if {@link Gst.SeekFlags.KEY_UNIT} this means the keyframe at or before
          *                     the requested position the one at or before the seek target.
          */
-        SNAP_BEFORE,
+        SNAP_BEFORE = 32,
         /**
          * go to a location after the requested position,
          *                     if {@link Gst.SeekFlags.KEY_UNIT} this means the keyframe at of after the
          *                     requested position.
          */
-        SNAP_AFTER,
+        SNAP_AFTER = 64,
         /**
          * go to a position near the requested position,
          *                     if {@link Gst.SeekFlags.KEY_UNIT} this means the keyframe closest
          *                     to the requested position, if both keyframes are at an equal
          *                     distance, behaves like {@link Gst.SeekFlags.SNAP_BEFORE}.
          */
-        SNAP_NEAREST,
+        SNAP_NEAREST = 96,
         /**
          * when doing fast forward or fast reverse
          *                     playback, request that elements only decode keyframes
          *                     and skip all other content, for formats that have
          *                     keyframes. (Since: 1.6)
          */
-        TRICKMODE_KEY_UNITS,
+        TRICKMODE_KEY_UNITS = 128,
         /**
          * when doing fast forward or fast reverse
          *                     playback, request that audio decoder elements skip
          *                     decoding and output only gap events or silence. (Since: 1.6)
          */
-        TRICKMODE_NO_AUDIO,
+        TRICKMODE_NO_AUDIO = 256,
         /**
          * When doing fast forward or fast reverse
          *                     playback, request that elements only decode keyframes and
@@ -7722,14 +8016,14 @@ export namespace Gst {
          *                     B-Frames), for formats that have keyframes and forward predicted
          *                     frames. (Since: 1.18)
          */
-        TRICKMODE_FORWARD_PREDICTED,
+        TRICKMODE_FORWARD_PREDICTED = 512,
         /**
          * Signals that a rate change should be
          *                     applied immediately. Only valid if start/stop position
          *                     are GST_CLOCK_TIME_NONE, the playback direction does not change
          *                     and the seek is not flushing. (Since: 1.18)
          */
-        INSTANT_RATE_CHANGE,
+        INSTANT_RATE_CHANGE = 1024,
     }
 
 
@@ -7749,40 +8043,40 @@ export namespace Gst {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * reset the pipeline running_time to the segment
          *                          running_time
          */
-        RESET,
+        RESET = 1,
         /**
          * perform skip playback (Since: 1.6)
          */
-        TRICKMODE,
+        TRICKMODE = 16,
         /**
          * Deprecated backward compatibility flag, replaced
          *                         by `GST_SEGMENT_FLAG_TRICKMODE`
          */
-        SKIP,
+        SKIP = 16,
         /**
          * send SEGMENT_DONE instead of EOS
          */
-        SEGMENT,
+        SEGMENT = 8,
         /**
          * Decode only keyframes, where
          *                                        possible (Since: 1.6)
          */
-        TRICKMODE_KEY_UNITS,
+        TRICKMODE_KEY_UNITS = 128,
         /**
          * Decode only keyframes or forward
          *                                        predicted frames, where possible (Since: 1.18)
          */
-        TRICKMODE_FORWARD_PREDICTED,
+        TRICKMODE_FORWARD_PREDICTED = 512,
         /**
          * Do not decode any audio, where
          *                                        possible (Since: 1.6)
          */
-        TRICKMODE_NO_AUDIO,
+        TRICKMODE_NO_AUDIO = 256,
     }
 
 
@@ -7801,17 +8095,18 @@ export namespace Gst {
         /**
          * No special flags specified.
          */
-        NONE,
+        NONE = 0,
         /**
          * Serialize using the old format for
          *                                      nested structures.
          */
-        BACKWARD_COMPAT,
+        BACKWARD_COMPAT = 1,
         /**
          * Serialization fails if a value cannot be serialized instead of using
          * placeholder "NULL" value (e.g. pointers, objects).
+         * @since 1.24
          */
-        STRICT,
+        STRICT = 2,
     }
 
 
@@ -7832,13 +8127,13 @@ export namespace Gst {
          *                             available, which may be none on some platforms
          *                             (Since: 1.18)
          */
-        NONE,
+        NONE = 0,
         /**
          * Try to retrieve as much information as possible,
          *                             including source information when getting the
          *                             stack trace
          */
-        FULL,
+        FULL = 1,
     }
 
 
@@ -7857,19 +8152,19 @@ export namespace Gst {
         /**
          * This stream has no special attributes
          */
-        NONE,
+        NONE = 0,
         /**
          * This stream is a sparse stream (e.g. a subtitle
          *    stream), data may flow only in irregular intervals with large gaps in
          *    between.
          */
-        SPARSE,
+        SPARSE = 1,
         /**
          * This stream should be selected by default. This
          *    flag may be used by demuxers to signal that a stream should be selected
          *    by default in a playback scenario.
          */
-        SELECT,
+        SELECT = 2,
         /**
          * This stream should not be selected by default.
          *    This flag may be used by demuxers to signal that a stream should not
@@ -7877,7 +8172,7 @@ export namespace Gst {
          *    selected by the user (e.g. an audio track for the hard of hearing or
          *    a director's commentary track).
          */
-        UNSELECT,
+        UNSELECT = 4,
     }
 
 
@@ -7902,27 +8197,28 @@ export namespace Gst {
         /**
          * The stream is of unknown (unclassified) type.
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * The stream is of audio data
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * The stream carries video data
          */
-        VIDEO,
+        VIDEO = 4,
         /**
          * The stream is a muxed container type
          */
-        CONTAINER,
+        CONTAINER = 8,
         /**
          * The stream contains subtitle / subpicture data.
          */
-        TEXT,
+        TEXT = 16,
         /**
          * The stream contains metadata.
+         * @since 1.28
          */
-        METADATA,
+        METADATA = 32,
     }
 
 
@@ -7942,18 +8238,18 @@ export namespace Gst {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * the value is optional. When using this flag
          *   one need to have an additional boolean arg before this value in the
          *   var-args list passed to  `gst_tracer_record_log()`.
          */
-        OPTIONAL,
+        OPTIONAL = 1,
         /**
          * the value is a combined figure, since the
          *   start of tracing. Examples are averages or timestamps.
          */
-        AGGREGATED,
+        AGGREGATED = 2,
     }
 
 
@@ -8121,14 +8417,14 @@ export namespace Gst {
              * @since 1.10
              * @run-first
              */
-            "deep-element-added": (arg0: Bin, arg1: Element) => void;
+            "deep-element-added": (sub_bin: Bin, element: Element) => void;
             /**
              * Will be emitted after the element was removed from `sub_bin`.
              * @signal
              * @since 1.10
              * @run-first
              */
-            "deep-element-removed": (arg0: Bin, arg1: Element) => void;
+            "deep-element-removed": (sub_bin: Bin, element: Element) => void;
             /**
              * Will be emitted when the bin needs to perform latency calculations. This
              * signal is only emitted for toplevel bins or when {@link Gst.Bin.async_handling} is
@@ -8150,13 +8446,13 @@ export namespace Gst {
              * @signal
              * @run-first
              */
-            "element-added": (arg0: Element) => void;
+            "element-added": (element: Element) => void;
             /**
              * Will be emitted after the element was removed from the bin.
              * @signal
              * @run-first
              */
-            "element-removed": (arg0: Element) => void;
+            "element-removed": (element: Element) => void;
             "notify::async-handling": (pspec: GObject.ParamSpec) => void;
             "notify::message-forward": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -9186,7 +9482,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            message: (arg0: Message) => void;
+            message: (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from the
              * thread that posted the message so one has to be careful with locking.
@@ -9197,7 +9493,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "sync-message": (arg0: Message) => void;
+            "sync-message": (message: Message) => void;
             "notify::enable-async": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -9209,7 +9505,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "message::enable-async": (arg0: Message) => void;
+            "message::enable-async": (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from a
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
@@ -9218,7 +9514,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "message::name": (arg0: Message) => void;
+            "message::name": (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from a
              * {@link GLib.Source} added to the mainloop. this signal will only be emitted when
@@ -9227,8 +9523,8 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "message::parent": (arg0: Message) => void;
-            [key: `message::${string}`]: (arg0: Message) => void;
+            "message::parent": (message: Message) => void;
+            [key: `message::${string}`]: (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from the
              * thread that posted the message so one has to be careful with locking.
@@ -9239,7 +9535,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "sync-message::enable-async": (arg0: Message) => void;
+            "sync-message::enable-async": (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from the
              * thread that posted the message so one has to be careful with locking.
@@ -9250,7 +9546,7 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "sync-message::name": (arg0: Message) => void;
+            "sync-message::name": (message: Message) => void;
             /**
              * A message has been posted on the bus. This signal is emitted from the
              * thread that posted the message so one has to be careful with locking.
@@ -9261,8 +9557,8 @@ export namespace Gst {
              * @detailed
              * @run-last
              */
-            "sync-message::parent": (arg0: Message) => void;
-            [key: `sync-message::${string}`]: (arg0: Message) => void;
+            "sync-message::parent": (message: Message) => void;
+            [key: `sync-message::${string}`]: (message: Message) => void;
         }
 
         // Constructor properties interface
@@ -9682,7 +9978,7 @@ export namespace Gst {
              * @since 1.6
              * @run-last
              */
-            synced: (arg0: boolean) => void;
+            synced: (synced: boolean) => void;
             "notify::timeout": (pspec: GObject.ParamSpec) => void;
             "notify::window-size": (pspec: GObject.ParamSpec) => void;
             "notify::window-threshold": (pspec: GObject.ParamSpec) => void;
@@ -10931,12 +11227,12 @@ export namespace Gst {
              * @signal
              * @run-first
              */
-            "provider-hidden": (arg0: string) => void;
+            "provider-hidden": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "provider-unhidden": (arg0: string) => void;
+            "provider-unhidden": (object: string) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -11453,13 +11749,13 @@ export namespace Gst {
              * @signal
              * @run-last
              */
-            "pad-added": (arg0: Pad) => void;
+            "pad-added": (new_pad: Pad) => void;
             /**
              * a {@link Gst.Pad} has been removed from the element
              * @signal
              * @run-last
              */
-            "pad-removed": (arg0: Pad) => void;
+            "pad-removed": (old_pad: Pad) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -13337,7 +13633,7 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "deep-notify": (arg0: Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify": (prop_object: Object, prop: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
             /**
@@ -13348,7 +13644,7 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "deep-notify::name": (arg0: Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::name": (prop_object: Object, prop: GObject.ParamSpec) => void;
             /**
              * The deep notify signal is used to be notified of property changes. It is
              * typically attached to the toplevel bin to receive notifications from all
@@ -13357,8 +13653,8 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "deep-notify::parent": (arg0: Object, arg1: GObject.ParamSpec) => void;
-            [key: `deep-notify::${string}`]: (arg0: Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::parent": (prop_object: Object, prop: GObject.ParamSpec) => void;
+            [key: `deep-notify::${string}`]: (prop_object: Object, prop: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13774,13 +14070,13 @@ export namespace Gst {
              * @signal
              * @run-last
              */
-            linked: (arg0: Pad) => void;
+            linked: (peer: Pad) => void;
             /**
              * Signals that a pad has been unlinked from the peer pad.
              * @signal
              * @run-last
              */
-            unlinked: (arg0: Pad) => void;
+            unlinked: (peer: Pad) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
             "notify::offset": (pspec: GObject.ParamSpec) => void;
@@ -14836,7 +15132,7 @@ export namespace Gst {
              * @signal
              * @run-last
              */
-            "pad-created": (arg0: Pad) => void;
+            "pad-created": (pad: Pad) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
             "notify::gtype": (pspec: GObject.ParamSpec) => void;
@@ -16022,14 +16318,14 @@ export namespace Gst {
              * @signal
              * @run-last
              */
-            "feature-added": (arg0: PluginFeature) => void;
+            "feature-added": (feature: PluginFeature) => void;
             /**
              * Signals that a plugin has been added to the registry (possibly
              * replacing a previously-added one by the same name)
              * @signal
              * @run-last
              */
-            "plugin-added": (arg0: Plugin) => void;
+            "plugin-added": (plugin: Plugin) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -16571,7 +16867,7 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "stream-notify": (arg0: Stream, arg1: GObject.ParamSpec) => void;
+            "stream-notify": (prop_stream: Stream, prop: GObject.ParamSpec) => void;
             "notify::upstream-id": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -16582,7 +16878,7 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "stream-notify::upstream-id": (arg0: Stream, arg1: GObject.ParamSpec) => void;
+            "stream-notify::upstream-id": (prop_stream: Stream, prop: GObject.ParamSpec) => void;
             /**
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
@@ -16590,7 +16886,7 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "stream-notify::name": (arg0: Stream, arg1: GObject.ParamSpec) => void;
+            "stream-notify::name": (prop_stream: Stream, prop: GObject.ParamSpec) => void;
             /**
              * The stream notify signal is used to be notified of property changes to
              * streams within the collection.
@@ -16598,8 +16894,8 @@ export namespace Gst {
              * @detailed
              * @run-first
              */
-            "stream-notify::parent": (arg0: Stream, arg1: GObject.ParamSpec) => void;
-            [key: `stream-notify::${string}`]: (arg0: Stream, arg1: GObject.ParamSpec) => void;
+            "stream-notify::parent": (prop_stream: Stream, prop: GObject.ParamSpec) => void;
+            [key: `stream-notify::${string}`]: (prop_stream: Stream, prop: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -17187,6 +17483,7 @@ export namespace Gst {
          * Prepare the taskpool for accepting `gst_task_pool_push()` operations.
          * 
          * MT safe.
+         * @throws GLib.Error
          */
         prepare(): void;
 
@@ -17194,6 +17491,7 @@ export namespace Gst {
          * Start the execution of a new thread from `pool`.
          * @param func the function to call
          * @returns a pointer that should be used for the gst_task_pool_join function. This pointer can be `null`, you must check `error` to detect errors. If the pointer is not `null` and `gst_task_pool_join()` is not used, call `gst_task_pool_dispose_handle()` instead.
+         * @throws GLib.Error
          */
         push(func: TaskPoolFunction): null;
     }
@@ -27154,6 +27452,7 @@ export namespace Gst {
          * Tries to set the URI of the given handler.
          * @param uri URI to set
          * @returns `true` if the URI was set successfully, else `false`.
+         * @throws GLib.Error
          */
         set_uri(uri: string): boolean;
     }

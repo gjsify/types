@@ -36,33 +36,33 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum CategoryType {
-        NONE,
-        APPLICATION,
-        BOOK,
-        MUSIC,
-        MOVIE,
-        GAMES,
-        ELECTRONICS,
-        COMPUTERS,
-        OFFICE,
-        HOME,
-        GARDEN,
-        PETS,
-        TOYS,
-        CHILDREN,
-        BABY,
-        CLOTHES,
-        SHOES,
-        WATCHES,
-        SPORTS,
-        OUTDOORS,
-        GROCERY,
-        HEALTH,
-        BEAUTY,
-        DIY,
-        TOOLS,
-        CAR,
-        N_CATEGORIES,
+        NONE = 0,
+        APPLICATION = 1,
+        BOOK = 2,
+        MUSIC = 3,
+        MOVIE = 4,
+        GAMES = 5,
+        ELECTRONICS = 6,
+        COMPUTERS = 7,
+        OFFICE = 8,
+        HOME = 9,
+        GARDEN = 10,
+        PETS = 11,
+        TOYS = 12,
+        CHILDREN = 13,
+        BABY = 14,
+        CLOTHES = 15,
+        SHOES = 16,
+        WATCHES = 17,
+        SPORTS = 18,
+        OUTDOORS = 19,
+        GROCERY = 20,
+        HEALTH = 21,
+        BEAUTY = 22,
+        DIY = 23,
+        TOOLS = 24,
+        CAR = 25,
+        N_CATEGORIES = 26,
     }
 
 
@@ -77,9 +77,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum IconSizeHint {
-        DEFAULT,
-        SMALL,
-        LARGE,
+        DEFAULT = 0,
+        SMALL = 1,
+        LARGE = 2,
     }
 
 
@@ -94,14 +94,14 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum CategoryRenderer {
-        DEFAULT,
-        GRID,
-        CAROUSEL,
-        LIST,
-        DYNAMIC,
-        SPECIAL,
-        VERTICAL_TILE,
-        HORIZONTAL_TILE,
+        DEFAULT = 0,
+        GRID = 1,
+        CAROUSEL = 2,
+        LIST = 3,
+        DYNAMIC = 1000,
+        SPECIAL = 1001,
+        VERTICAL_TILE = 0,
+        HORIZONTAL_TILE = 1,
     }
 
 
@@ -116,13 +116,13 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum CategoryContentType {
-        DEFAULT,
-        APPLICATIONS,
-        MUSIC,
-        VIDEO,
-        PLACES,
-        SOCIAL,
-        WEATHER,
+        DEFAULT = 0,
+        APPLICATIONS = 1,
+        MUSIC = 2,
+        VIDEO = 3,
+        PLACES = 4,
+        SOCIAL = 5,
+        WEATHER = 6,
     }
 
 
@@ -137,11 +137,11 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum FilterRenderer {
-        CHECK_OPTIONS,
-        RADIO_OPTIONS,
-        MULTIRANGE,
-        RATINGS,
-        CHECK_OPTIONS_COMPACT,
+        CHECK_OPTIONS = 0,
+        RADIO_OPTIONS = 1,
+        MULTIRANGE = 2,
+        RATINGS = 3,
+        CHECK_OPTIONS_COMPACT = 4,
     }
 
 
@@ -156,11 +156,11 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum LayoutHint {
-        NONE,
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM,
+        NONE = 0,
+        LEFT = 1,
+        RIGHT = 2,
+        TOP = 3,
+        BOTTOM = 4,
     }
 
 
@@ -175,12 +175,12 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum HandledType {
-        NOT_HANDLED,
-        SHOW_DASH,
-        HIDE_DASH,
-        GOTO_DASH_URI,
-        SHOW_PREVIEW,
-        PERFORM_SEARCH,
+        NOT_HANDLED = 0,
+        SHOW_DASH = 1,
+        HIDE_DASH = 2,
+        GOTO_DASH_URI = 3,
+        SHOW_PREVIEW = 4,
+        PERFORM_SEARCH = 5,
     }
 
 
@@ -195,9 +195,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum SearchType {
-        DEFAULT,
-        GLOBAL,
-        N_TYPES,
+        DEFAULT = 0,
+        GLOBAL = 1,
+        N_TYPES = 2,
     }
 
 
@@ -212,9 +212,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum ResultType {
-        DEFAULT,
-        PERSONAL,
-        SEMI_PERSONAL,
+        DEFAULT = 0,
+        PERSONAL = 1,
+        SEMI_PERSONAL = 2,
     }
 
 
@@ -229,8 +229,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum SerializationType {
-        BINARY,
-        JSON,
+        BINARY = 0,
+        JSON = 1,
     }
 
 
@@ -245,8 +245,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum PlaybackState {
-        PLAYING,
-        PAUSED,
+        PLAYING = 0,
+        PAUSED = 1,
     }
 
 
@@ -261,9 +261,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum OptionsFilterSortType {
-        MANUAL,
-        DISPLAY_NAME,
-        ID,
+        MANUAL = 0,
+        DISPLAY_NAME = 1,
+        ID = 2,
     }
 
 
@@ -278,8 +278,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum PreferencesManagerRemoteContent {
-        ALL,
-        NONE,
+        ALL = 0,
+        NONE = 1,
     }
 
 
@@ -294,9 +294,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum MusicPreviewTrackState {
-        STOPPED,
-        PLAYING,
-        PAUSED,
+        STOPPED = 0,
+        PLAYING = 1,
+        PAUSED = 2,
     }
 
 
@@ -311,9 +311,9 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum PaymentPreviewType {
-        APPLICATION,
-        MUSIC,
-        ERROR,
+        APPLICATION = 0,
+        MUSIC = 1,
+        ERROR = 2,
     }
 
 
@@ -328,8 +328,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum SchemaFieldType {
-        OPTIONAL,
-        REQUIRED,
+        OPTIONAL = 0,
+        REQUIRED = 1,
     }
 
 
@@ -344,8 +344,8 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum AggregatorScopeSortFlags {
-        ASCENDING,
-        DESCENDING,
+        ASCENDING = 0,
+        DESCENDING = 1,
         CASE_INSENSITIVE,
     }
 
@@ -361,11 +361,14 @@ export namespace Unity {
      * @gir-type Enum
      */
     enum AggregatorScopeMergeMode {
-        CATEGORY_ID,
-        OWNER_SCOPE,
+        CATEGORY_ID = 0,
+        OWNER_SCOPE = 1,
     }
 
 
+    /**
+     * @default 7
+     */
     const SCOPE_API_VERSION: number;
 
     /**
@@ -400,6 +403,9 @@ export namespace Unity {
 
     function scope_module_get_version(): number;
 
+    /**
+     * @throws GLib.Error
+     */
     function scope_module_load_scopes(): AbstractScope[];
 
     /**
@@ -427,7 +433,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            changed: (arg0: string, arg1: Gio.AppInfo | null) => void;
+            changed: (id: string, new_appinfo: Gio.AppInfo | null) => void;
         }
 
         // Constructor properties interface
@@ -515,6 +521,7 @@ export namespace Unity {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null;
 
@@ -2215,11 +2222,11 @@ export namespace Unity {
             /**
              * @signal
              */
-            "transaction-complete": (arg0: string) => void;
+            "transaction-complete": (origin_scope_id: string) => void;
             /**
              * @signal
              */
-            "category-order-changed": (arg0: number[]) => void;
+            "category-order-changed": (category_indices: number[]) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
             "notify::search-string": (pspec: GObject.ParamSpec) => void;
             "notify::search-type": (pspec: GObject.ParamSpec) => void;
@@ -2296,6 +2303,7 @@ export namespace Unity {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_scope_finish(_res_: Gio.AsyncResult): { [key: string]: GLib.Variant };
 
@@ -2504,7 +2512,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            activated: (arg0: string) => ActivationResponse;
+            activated: (uri: string) => ActivationResponse;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::extra-text": (pspec: GObject.ParamSpec) => void;
@@ -4314,7 +4322,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            "results-invalidated-internal": (arg0: SearchType) => void;
+            "results-invalidated-internal": (search_type: SearchType) => void;
         }
 
         // Constructor properties interface
@@ -4514,6 +4522,9 @@ export namespace Unity {
         static quit(): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         ["export"](): void;
 
         unexport(): void;
@@ -4528,7 +4539,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            "active-sources-changed": (arg0: string[]) => void;
+            "active-sources-changed": (active_ids: string[]) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-path": (pspec: GObject.ParamSpec) => void;
             "notify::search-in-global": (pspec: GObject.ParamSpec) => void;
@@ -4655,6 +4666,9 @@ export namespace Unity {
         // Methods
         create_impl<T = GObject.Object>(): T;
 
+        /**
+         * @throws GLib.Error
+         */
         ["export"](): void;
 
         unexport(): void;
@@ -4717,19 +4731,19 @@ export namespace Unity {
             /**
              * @signal
              */
-            "activate-uri": (arg0: string) => ActivationResponse | null;
+            "activate-uri": (uri: string) => ActivationResponse | null;
             /**
              * @signal
              */
-            "preview-uri": (arg0: string) => Preview | null;
+            "preview-uri": (uri: string) => Preview | null;
             /**
              * @signal
              */
-            "generate-search-key": (arg0: DeprecatedScopeSearch) => string;
+            "generate-search-key": (search: DeprecatedScopeSearch) => string;
             /**
              * @signal
              */
-            "search-changed": (arg0: DeprecatedScopeSearch, arg1: SearchType, arg2: Gio.Cancellable) => void;
+            "search-changed": (search: DeprecatedScopeSearch, search_type: SearchType, cancellable: Gio.Cancellable) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-path": (pspec: GObject.ParamSpec) => void;
             "notify::search-in-global": (pspec: GObject.ParamSpec) => void;
@@ -5380,27 +5394,32 @@ export namespace Unity {
         /**
          * @param module_name 
          * @param module_type 
+         * @throws GLib.Error
          */
         get_scopes(module_name: string, module_type: string | null): AbstractScope[];
 
         /**
          * @param scopes 
+         * @throws GLib.Error
          */
         export_scopes(scopes: AbstractScope[]): void;
 
         /**
          * @param group_name 
+         * @throws GLib.Error
          */
         load_group(group_name: string): void;
 
         /**
          * @param scope_id 
+         * @throws GLib.Error
          */
         load_scope(scope_id: string): void;
 
         /**
          * @param module 
          * @param module_type 
+         * @throws GLib.Error
          */
         load_module(module: string, module_type: string | null): void;
     }
@@ -5717,7 +5736,7 @@ export namespace Unity {
             /**
              * @signal
              */
-            "activate-playlist": (arg0: never) => void;
+            "activate-playlist": (playlist_id: never) => void;
             "notify::app-info": (pspec: GObject.ParamSpec) => void;
             "notify::desktop-file-name": (pspec: GObject.ParamSpec) => void;
             "notify::is-blacklisted": (pspec: GObject.ParamSpec) => void;

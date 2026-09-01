@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./mks-1.d.ts","./mks-1-surface.d.ts"]
+  "include": ["./mks-1.d.ts","./mks-1-vocabulary.d.ts"]
 }
 
 

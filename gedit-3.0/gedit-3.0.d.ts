@@ -51,52 +51,52 @@ export namespace Gedit {
         /**
          * Normal state.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Loading.
          */
-        LOADING,
+        LOADING = 1,
         /**
          * Reverting.
          */
-        REVERTING,
+        REVERTING = 2,
         /**
          * Saving.
          */
-        SAVING,
+        SAVING = 3,
         /**
          * Printing.
          */
-        PRINTING,
+        PRINTING = 4,
         /**
          * Showing print preview.
          */
-        SHOWING_PRINT_PREVIEW,
+        SHOWING_PRINT_PREVIEW = 5,
         /**
          * There is a loading error.
          */
-        LOADING_ERROR,
+        LOADING_ERROR = 6,
         /**
          * There is a reverting error.
          */
-        REVERTING_ERROR,
+        REVERTING_ERROR = 7,
         /**
          * There is a saving error.
          */
-        SAVING_ERROR,
+        SAVING_ERROR = 8,
         /**
          * There is another kind of error.
          */
-        GENERIC_ERROR,
+        GENERIC_ERROR = 9,
         /**
          * Closing.
          */
-        CLOSING,
+        CLOSING = 10,
         /**
          * There is a notification
          *   about the document being externally modified.
          */
-        EXTERNALLY_MODIFIED_NOTIFICATION,
+        EXTERNALLY_MODIFIED_NOTIFICATION = 11,
     }
 
 
@@ -318,15 +318,15 @@ export namespace Gedit {
      * @gir-type Flags
      */
     enum DebugSection {
-        NO_DEBUG,
-        DEBUG_WINDOW,
-        DEBUG_PANEL,
-        DEBUG_PLUGINS,
-        DEBUG_TAB,
-        DEBUG_DOCUMENT,
-        DEBUG_COMMANDS,
-        DEBUG_APP,
-        DEBUG_UTILS,
+        NO_DEBUG = 0,
+        DEBUG_WINDOW = 1,
+        DEBUG_PANEL = 2,
+        DEBUG_PLUGINS = 4,
+        DEBUG_TAB = 8,
+        DEBUG_DOCUMENT = 16,
+        DEBUG_COMMANDS = 32,
+        DEBUG_APP = 64,
+        DEBUG_UTILS = 128,
     }
 
 
@@ -348,23 +348,23 @@ export namespace Gedit {
         /**
          * No flags.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * A tab is in saving state.
          */
-        SAVING,
+        SAVING = 2,
         /**
          * There is a printing operation on a tab.
          */
-        PRINTING,
+        PRINTING = 4,
         /**
          * A tab is in loading or reverting state.
          */
-        LOADING,
+        LOADING = 8,
         /**
          * A tab is in an error state.
          */
-        ERROR,
+        ERROR = 16,
     }
 
 
@@ -1434,21 +1434,21 @@ export namespace Gedit {
              * @signal
              * @run-last
              */
-            dispatch: (arg0: Message) => void;
+            dispatch: (message: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
              * @run-last
              */
-            registered: (arg0: string, arg1: string) => void;
+            registered: (object_path: string, method: string) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
              * @run-last
              */
-            unregistered: (arg0: string, arg1: string) => void;
+            unregistered: (object_path: string, method: string) => void;
         }
 
         // Constructor properties interface
@@ -1949,7 +1949,7 @@ export namespace Gedit {
              * @action
              * @run-last
              */
-            "drop-uris": (arg0: string[]) => void;
+            "drop-uris": (uri_list: string[]) => void;
             "notify::auto-indent": (pspec: GObject.ParamSpec) => void;
             "notify::completion": (pspec: GObject.ParamSpec) => void;
             "notify::highlight-current-line": (pspec: GObject.ParamSpec) => void;
@@ -2101,7 +2101,7 @@ export namespace Gedit {
              * @signal
              * @run-first
              */
-            "tab-added": (arg0: Tab) => void;
+            "tab-added": (tab: Tab) => void;
             /**
              * The ::tab-removed signal is emitted right after a {@link Gedit.Tab} is
              * removed from `window`.
@@ -2117,7 +2117,7 @@ export namespace Gedit {
              * @signal
              * @run-first
              */
-            "tab-removed": (arg0: Tab) => void;
+            "tab-removed": (tab: Tab) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;

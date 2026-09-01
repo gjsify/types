@@ -43,12 +43,12 @@ export namespace RB {
      * @gir-type Enum
      */
     enum DisplayPageGroupCategory {
-        FIXED,
-        REMOVABLE,
-        PERSISTENT,
-        TRANSIENT,
-        TOOLS,
-        LAST,
+        FIXED = 0,
+        REMOVABLE = 1,
+        PERSISTENT = 2,
+        TRANSIENT = 3,
+        TOOLS = 4,
+        LAST = 5,
     }
 
 
@@ -68,23 +68,23 @@ export namespace RB {
         /**
          * Fixed single instance sources (e.g., library)
          */
-        FIXED,
+        FIXED = 0,
         /**
          * Persistent multiple-instance sources (e.g. playlists)
          */
-        PERSISTENT,
+        PERSISTENT = 2,
         /**
          * Sources representing removable devices
          */
-        REMOVABLE,
+        REMOVABLE = 1,
         /**
          * Transient sources (e.g. network shares)
          */
-        TRANSIENT,
+        TRANSIENT = 3,
         /**
          * Utility (ie non-source) pages
          */
-        TOOLS,
+        TOOLS = 4,
     }
 
 
@@ -103,11 +103,11 @@ export namespace RB {
         /**
          * TRUE if the page is the playing source
          */
-        PLAYING,
+        PLAYING = 0,
         /**
          * the {@link RB.DisplayPage} object
          */
-        PAGE,
+        PAGE = 1,
     }
 
 
@@ -156,75 +156,75 @@ export namespace RB {
         /**
          * the track number column
          */
-        TRACK_NUMBER,
+        TRACK_NUMBER = 0,
         /**
          * the title column
          */
-        TITLE,
+        TITLE = 1,
         /**
          * the artist column
          */
-        ARTIST,
+        ARTIST = 2,
         /**
          * the album column
          */
-        ALBUM,
+        ALBUM = 3,
         /**
          * the genre column
          */
-        GENRE,
+        GENRE = 4,
         /**
          * the comment column
          */
-        COMMENT,
+        COMMENT = 5,
         /**
          * the duration column
          */
-        DURATION,
+        DURATION = 6,
         /**
          * the quality (bitrate) column
          */
-        QUALITY,
+        QUALITY = 7,
         /**
          * the rating column
          */
-        RATING,
+        RATING = 8,
         /**
          * the play count column
          */
-        PLAY_COUNT,
+        PLAY_COUNT = 9,
         /**
          * the year (release date) column
          */
-        YEAR,
+        YEAR = 10,
         /**
          * the last played time column
          */
-        LAST_PLAYED,
+        LAST_PLAYED = 11,
         /**
          * the first seen (imported) column
          */
-        FIRST_SEEN,
+        FIRST_SEEN = 12,
         /**
          * the last seen column
          */
-        LAST_SEEN,
+        LAST_SEEN = 13,
         /**
          * the location column
          */
-        LOCATION,
+        LOCATION = 14,
         /**
          * the BPM column
          */
-        BPM,
+        BPM = 15,
         /**
          * the error column
          */
-        ERROR,
+        ERROR = 16,
         /**
          * the composer column
          */
-        COMPOSER,
+        COMPOSER = 17,
     }
 
 
@@ -239,9 +239,9 @@ export namespace RB {
      * @gir-type Enum
      */
     enum EntryViewState {
-        NOT_PLAYING,
-        PLAYING,
-        PAUSED,
+        NOT_PLAYING = 0,
+        PLAYING = 1,
+        PAUSED = 2,
     }
 
 
@@ -256,11 +256,11 @@ export namespace RB {
      * @gir-type Enum
      */
     enum ExtDBSourceType {
-        NONE,
-        SEARCH,
-        EMBEDDED,
-        USER,
-        USER_EXPLICIT,
+        NONE = 0,
+        SEARCH = 1,
+        EMBEDDED = 2,
+        USER = 3,
+        USER_EXPLICIT = 4,
     }
 
 
@@ -268,11 +268,11 @@ export namespace RB {
      * @gir-type Enum
      */
     enum GstMediaType {
-        NONE,
-        CONTAINER,
-        AUDIO,
-        VIDEO,
-        OTHER,
+        NONE = 0,
+        CONTAINER = 1,
+        AUDIO = 2,
+        VIDEO = 3,
+        OTHER = 4,
     }
 
 
@@ -280,13 +280,13 @@ export namespace RB {
      * @gir-type Enum
      */
     enum MetaDataError {
-        IO,
-        MISSING_PLUGIN,
-        UNRECOGNIZED,
-        UNSUPPORTED,
-        GENERAL,
-        INTERNAL,
-        EMPTY_FILE,
+        IO = 0,
+        MISSING_PLUGIN = 1,
+        UNRECOGNIZED = 2,
+        UNSUPPORTED = 3,
+        GENERAL = 4,
+        INTERNAL = 5,
+        EMPTY_FILE = 6,
     }
 
 
@@ -298,159 +298,159 @@ export namespace RB {
         /**
          * Title of the recording
          */
-        TITLE,
+        TITLE = 0,
         /**
          * Person(s) responsible for the recording
          */
-        ARTIST,
+        ARTIST = 1,
         /**
          * Album containing the recording
          */
-        ALBUM,
+        ALBUM = 2,
         /**
          * Release date of the album
          */
-        DATE,
+        DATE = 3,
         /**
          * Genre of the recording
          */
-        GENRE,
+        GENRE = 4,
         /**
          * Free form comment on the recording
          */
-        COMMENT,
+        COMMENT = 5,
         /**
          * Track number inside a collection
          */
-        TRACK_NUMBER,
+        TRACK_NUMBER = 6,
         /**
          * Count of tracks inside the collection
          */
-        MAX_TRACK_NUMBER,
+        MAX_TRACK_NUMBER = 7,
         /**
          * Disc number inside a collection
          */
-        DISC_NUMBER,
+        DISC_NUMBER = 8,
         /**
          * Count of discs inside the collection
          */
-        MAX_DISC_NUMBER,
+        MAX_DISC_NUMBER = 9,
         /**
          * Short text describing the recording
          */
-        DESCRIPTION,
+        DESCRIPTION = 10,
         /**
          * Version of the recording
          */
-        VERSION,
+        VERSION = 11,
         /**
          * International Standard Recording Code
          */
-        ISRC,
+        ISRC = 12,
         /**
          * Organization responsible for the recording
          */
-        ORGANIZATION,
+        ORGANIZATION = 13,
         /**
          * Copyright notice on the recording
          */
-        COPYRIGHT,
+        COPYRIGHT = 14,
         /**
          * Contact information
          */
-        CONTACT,
+        CONTACT = 15,
         /**
          * License of the recording
          */
-        LICENSE,
+        LICENSE = 16,
         /**
          * Person(s) performing in the recording
          */
-        PERFORMER,
+        PERFORMER = 17,
         /**
          * Duration of the recording
          */
-        DURATION,
+        DURATION = 18,
         /**
          * Codec used to store the recording
          */
-        CODEC,
+        CODEC = 19,
         /**
          * Exact or average encoding bitrate in bits/s
          */
-        BITRATE,
+        BITRATE = 20,
         /**
          * Track gain in dB for replaygain
          */
-        TRACK_GAIN,
+        TRACK_GAIN = 21,
         /**
          * Track peak volume level
          */
-        TRACK_PEAK,
+        TRACK_PEAK = 22,
         /**
          * Album gain in dB for replaygain
          */
-        ALBUM_GAIN,
+        ALBUM_GAIN = 23,
         /**
          * Album peak volume level
          */
-        ALBUM_PEAK,
+        ALBUM_PEAK = 24,
         /**
          * Language code (ISO-639-1)
          */
-        LANGUAGE_CODE,
+        LANGUAGE_CODE = 25,
         /**
          * Beats Per Minute
          */
-        BPM,
+        BPM = 26,
         /**
          * MusicBrainz track ID
          */
-        MUSICBRAINZ_TRACKID,
+        MUSICBRAINZ_TRACKID = 27,
         /**
          * MusicBrainz artist ID
          */
-        MUSICBRAINZ_ARTISTID,
+        MUSICBRAINZ_ARTISTID = 28,
         /**
          * MusicBrainz album ID
          */
-        MUSICBRAINZ_ALBUMID,
+        MUSICBRAINZ_ALBUMID = 29,
         /**
          * MusicBrainz album artist ID
          */
-        MUSICBRAINZ_ALBUMARTISTID,
+        MUSICBRAINZ_ALBUMARTISTID = 30,
         /**
          * Person(s) responsible for the recording, as used for sorting
          */
-        ARTIST_SORTNAME,
+        ARTIST_SORTNAME = 31,
         /**
          * Album containing the recording, as used for sorting
          */
-        ALBUM_SORTNAME,
+        ALBUM_SORTNAME = 32,
         /**
          * Title of the recording, as used for sorting
          */
-        TITLE_SORTNAME,
+        TITLE_SORTNAME = 33,
         /**
          * The artist of the entire album
          */
-        ALBUM_ARTIST,
+        ALBUM_ARTIST = 34,
         /**
          * The artist of the entire album, as it should be sorted
          */
-        ALBUM_ARTIST_SORTNAME,
+        ALBUM_ARTIST_SORTNAME = 35,
         /**
          * The composer of the recording
          */
-        COMPOSER,
+        COMPOSER = 36,
         /**
          * The composer of the recording, as it should be sorted
          */
-        COMPOSER_SORTNAME,
+        COMPOSER_SORTNAME = 37,
         /**
          * invalid field
          */
-        LAST,
+        LAST = 38,
     }
 
 
@@ -494,44 +494,44 @@ export namespace RB {
      * @gir-type Enum
      */
     enum MetadataFieldType {
-        TITLE,
-        ARTIST,
-        ALBUM,
-        DATE,
-        GENRE,
-        COMMENT,
-        TRACK_NUMBER,
-        TRACK_COUNT,
-        ALBUM_DISC_NUMBER,
-        ALBUM_DISC_COUNT,
-        DESCRIPTION,
-        VERSION,
-        ISRC,
-        ORGANIZATION,
-        COPYRIGHT,
-        CONTACT,
-        LICENSE,
-        PERFORMER,
-        DURATION,
-        CODEC,
-        BITRATE,
-        REPLAYGAIN_TRACK_GAIN,
-        REPLAYGAIN_TRACK_PEAK,
-        REPLAYGAIN_ALBUM_GAIN,
-        REPLAYGAIN_ALBUM_PEAK,
-        BEATS_PER_MINUTE,
-        LANGUAGE_CODE,
-        MUSICBRAINZ_TRACKID,
-        MUSICBRAINZ_ARTISTID,
-        MUSICBRAINZ_ALBUMID,
-        MUSICBRAINZ_ALBUMARTISTID,
-        MUSICBRAINZ_SORTNAME,
-        ALBUM_SORTNAME,
-        TITLE_SORTNAME,
-        ALBUM_ARTIST,
-        ALBUM_ARTIST_SORTNAME,
-        COMPOSER,
-        COMPOSER_SORTNAME,
+        TITLE = 0,
+        ARTIST = 1,
+        ALBUM = 2,
+        DATE = 3,
+        GENRE = 4,
+        COMMENT = 5,
+        TRACK_NUMBER = 6,
+        TRACK_COUNT = 7,
+        ALBUM_DISC_NUMBER = 8,
+        ALBUM_DISC_COUNT = 9,
+        DESCRIPTION = 10,
+        VERSION = 11,
+        ISRC = 12,
+        ORGANIZATION = 13,
+        COPYRIGHT = 14,
+        CONTACT = 15,
+        LICENSE = 16,
+        PERFORMER = 17,
+        DURATION = 18,
+        CODEC = 19,
+        BITRATE = 20,
+        REPLAYGAIN_TRACK_GAIN = 21,
+        REPLAYGAIN_TRACK_PEAK = 22,
+        REPLAYGAIN_ALBUM_GAIN = 23,
+        REPLAYGAIN_ALBUM_PEAK = 24,
+        BEATS_PER_MINUTE = 26,
+        LANGUAGE_CODE = 25,
+        MUSICBRAINZ_TRACKID = 27,
+        MUSICBRAINZ_ARTISTID = 28,
+        MUSICBRAINZ_ALBUMID = 29,
+        MUSICBRAINZ_ALBUMARTISTID = 30,
+        MUSICBRAINZ_SORTNAME = 31,
+        ALBUM_SORTNAME = 32,
+        TITLE_SORTNAME = 33,
+        ALBUM_ARTIST = 34,
+        ALBUM_ARTIST_SORTNAME = 35,
+        COMPOSER = 36,
+        COMPOSER_SORTNAME = 37,
     }
 
 
@@ -584,15 +584,15 @@ export namespace RB {
         /**
          * Replace the existing stream
          */
-        REPLACE,
+        REPLACE = 0,
         /**
          * Start the new stream after the current stream ends
          */
-        START_AFTER_EOS,
+        START_AFTER_EOS = 1,
         /**
          * Crossfade between the existing stream and the new stream
          */
-        CROSSFADE,
+        CROSSFADE = 2,
     }
 
 
@@ -600,10 +600,10 @@ export namespace RB {
      * @gir-type Enum
      */
     enum PlaylistExportType {
-        UNKNOWN,
-        M3U,
-        PLS,
-        XSPF,
+        UNKNOWN = 0,
+        M3U = 1,
+        PLS = 2,
+        XSPF = 3,
     }
 
 
@@ -611,9 +611,9 @@ export namespace RB {
      * @gir-type Enum
      */
     enum PlaylistManagerError {
-        PARSE,
-        PLAYLIST_EXISTS,
-        PLAYLIST_NOT_FOUND,
+        PARSE = 0,
+        PLAYLIST_EXISTS = 1,
+        PLAYLIST_NOT_FOUND = 2,
     }
 
 
@@ -628,14 +628,14 @@ export namespace RB {
      * @gir-type Enum
      */
     enum PodcastFeedUpdateStatus {
-        STARTED,
-        ERROR,
-        ERROR_BACKGROUND,
-        CONFLICT,
-        CANCELLED,
-        SUBSCRIBED,
-        UNCHANGED,
-        UPDATED,
+        STARTED = 0,
+        ERROR = 1,
+        ERROR_BACKGROUND = 2,
+        CONFLICT = 3,
+        CANCELLED = 4,
+        SUBSCRIBED = 5,
+        UNCHANGED = 6,
+        UPDATED = 7,
     }
 
 
@@ -663,9 +663,9 @@ export namespace RB {
      * @gir-type Enum
      */
     enum PodcastParseStatus {
-        UNPARSED,
-        SUCCESS,
-        ERROR,
+        UNPARSED = 0,
+        SUCCESS = 1,
+        ERROR = 2,
     }
 
 
@@ -684,19 +684,19 @@ export namespace RB {
         /**
          * File was checked and found present
          */
-        CHECKED,
+        CHECKED = 0,
         /**
          * Filesystem holding the file was mounted
          */
-        MOUNTED,
+        MOUNTED = 1,
         /**
          * Filesystem holding the file was unmounted
          */
-        UNMOUNTED,
+        UNMOUNTED = 2,
         /**
          * File was checked or played and could not be found
          */
-        NOT_FOUND,
+        NOT_FOUND = 3,
     }
 
 
@@ -716,19 +716,19 @@ export namespace RB {
         /**
          * Normal files on disk
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Endless streams (eg shoutcast)
          */
-        STREAM,
+        STREAM = 1,
         /**
          * Containers for other entries (eg podcast feeds)
          */
-        CONTAINER,
+        CONTAINER = 2,
         /**
          * Things Rhythmbox shouldn't normally deal with
          */
-        VIRTUAL,
+        VIRTUAL = 3,
     }
 
 
@@ -736,7 +736,7 @@ export namespace RB {
      * @gir-type Enum
      */
     enum RhythmDBError {
-        RHYTHMDB_ERROR_ACCESS_FAILED,
+        RHYTHMDB_ERROR_ACCESS_FAILED = 0,
     }
 
 
@@ -751,85 +751,85 @@ export namespace RB {
      * @gir-type Enum
      */
     enum RhythmDBPropType {
-        TYPE,
-        ENTRY_ID,
-        TITLE,
-        GENRE,
-        ARTIST,
-        ALBUM,
-        TRACK_NUMBER,
-        TRACK_TOTAL,
-        DISC_NUMBER,
-        DISC_TOTAL,
-        DURATION,
-        FILE_SIZE,
-        LOCATION,
-        MOUNTPOINT,
-        MTIME,
-        FIRST_SEEN,
-        LAST_SEEN,
-        RATING,
-        PLAY_COUNT,
-        LAST_PLAYED,
-        BITRATE,
-        DATE,
-        REPLAYGAIN_TRACK_GAIN,
-        REPLAYGAIN_TRACK_PEAK,
-        REPLAYGAIN_ALBUM_GAIN,
-        REPLAYGAIN_ALBUM_PEAK,
-        MEDIA_TYPE,
-        TITLE_SORT_KEY,
-        GENRE_SORT_KEY,
-        ARTIST_SORT_KEY,
-        ALBUM_SORT_KEY,
-        TITLE_FOLDED,
-        GENRE_FOLDED,
-        ARTIST_FOLDED,
-        ALBUM_FOLDED,
-        LAST_PLAYED_STR,
-        HIDDEN,
-        PLAYBACK_ERROR,
-        FIRST_SEEN_STR,
-        LAST_SEEN_STR,
-        SEARCH_MATCH,
-        YEAR,
-        KEYWORD,
-        STATUS,
-        DESCRIPTION,
-        SUBTITLE,
-        SUMMARY,
-        LANG,
-        COPYRIGHT,
-        IMAGE,
-        POST_TIME,
-        PODCAST_GUID,
-        MB_TRACKID,
-        MB_ARTISTID,
-        MB_ALBUMID,
-        MB_ALBUMARTISTID,
-        MB_ARTISTSORTNAME,
-        ALBUM_SORTNAME,
-        ARTIST_SORTNAME_SORT_KEY,
-        ARTIST_SORTNAME_FOLDED,
-        ALBUM_SORTNAME_SORT_KEY,
-        ALBUM_SORTNAME_FOLDED,
-        COMMENT,
-        ALBUM_ARTIST,
-        ALBUM_ARTIST_SORT_KEY,
-        ALBUM_ARTIST_FOLDED,
-        ALBUM_ARTIST_SORTNAME,
-        ALBUM_ARTIST_SORTNAME_SORT_KEY,
-        ALBUM_ARTIST_SORTNAME_FOLDED,
-        BEATS_PER_MINUTE,
-        COMPOSER,
-        COMPOSER_SORT_KEY,
-        COMPOSER_FOLDED,
-        COMPOSER_SORTNAME,
-        COMPOSER_SORTNAME_SORT_KEY,
-        COMPOSER_SORTNAME_FOLDED,
-        TITLE_SORTNAME,
-        TITLE_SORTNAME_SORT_KEY,
-        TITLE_SORTNAME_FOLDED,
+        TYPE = 0,
+        ENTRY_ID = 1,
+        TITLE = 2,
+        GENRE = 3,
+        ARTIST = 4,
+        ALBUM = 5,
+        TRACK_NUMBER = 6,
+        TRACK_TOTAL = 7,
+        DISC_NUMBER = 8,
+        DISC_TOTAL = 9,
+        DURATION = 10,
+        FILE_SIZE = 11,
+        LOCATION = 12,
+        MOUNTPOINT = 13,
+        MTIME = 14,
+        FIRST_SEEN = 15,
+        LAST_SEEN = 16,
+        RATING = 17,
+        PLAY_COUNT = 18,
+        LAST_PLAYED = 19,
+        BITRATE = 20,
+        DATE = 21,
+        REPLAYGAIN_TRACK_GAIN = 22,
+        REPLAYGAIN_TRACK_PEAK = 23,
+        REPLAYGAIN_ALBUM_GAIN = 24,
+        REPLAYGAIN_ALBUM_PEAK = 25,
+        MEDIA_TYPE = 26,
+        TITLE_SORT_KEY = 27,
+        GENRE_SORT_KEY = 28,
+        ARTIST_SORT_KEY = 29,
+        ALBUM_SORT_KEY = 30,
+        TITLE_FOLDED = 31,
+        GENRE_FOLDED = 32,
+        ARTIST_FOLDED = 33,
+        ALBUM_FOLDED = 34,
+        LAST_PLAYED_STR = 35,
+        HIDDEN = 36,
+        PLAYBACK_ERROR = 37,
+        FIRST_SEEN_STR = 38,
+        LAST_SEEN_STR = 39,
+        SEARCH_MATCH = 40,
+        YEAR = 41,
+        KEYWORD = 42,
+        STATUS = 43,
+        DESCRIPTION = 44,
+        SUBTITLE = 45,
+        SUMMARY = 46,
+        LANG = 47,
+        COPYRIGHT = 48,
+        IMAGE = 49,
+        POST_TIME = 50,
+        PODCAST_GUID = 51,
+        MB_TRACKID = 52,
+        MB_ARTISTID = 53,
+        MB_ALBUMID = 54,
+        MB_ALBUMARTISTID = 55,
+        MB_ARTISTSORTNAME = 56,
+        ALBUM_SORTNAME = 57,
+        ARTIST_SORTNAME_SORT_KEY = 58,
+        ARTIST_SORTNAME_FOLDED = 59,
+        ALBUM_SORTNAME_SORT_KEY = 60,
+        ALBUM_SORTNAME_FOLDED = 61,
+        COMMENT = 62,
+        ALBUM_ARTIST = 63,
+        ALBUM_ARTIST_SORT_KEY = 64,
+        ALBUM_ARTIST_FOLDED = 65,
+        ALBUM_ARTIST_SORTNAME = 66,
+        ALBUM_ARTIST_SORTNAME_SORT_KEY = 67,
+        ALBUM_ARTIST_SORTNAME_FOLDED = 68,
+        BEATS_PER_MINUTE = 69,
+        COMPOSER = 70,
+        COMPOSER_SORT_KEY = 71,
+        COMPOSER_FOLDED = 72,
+        COMPOSER_SORTNAME = 73,
+        COMPOSER_SORTNAME_SORT_KEY = 74,
+        COMPOSER_SORTNAME_FOLDED = 75,
+        TITLE_SORTNAME = 76,
+        TITLE_SORTNAME_SORT_KEY = 77,
+        TITLE_SORTNAME_FOLDED = 78,
     }
 
 
@@ -844,9 +844,9 @@ export namespace RB {
      * @gir-type Enum
      */
     enum RhythmDBPropertyModelColumn {
-        PROPERTY_TITLE,
-        VALUE_PRIORITY,
-        TRACK_COUNT,
+        PROPERTY_TITLE = 0,
+        VALUE_PRIORITY = 1,
+        TRACK_COUNT = 2,
     }
 
 
@@ -861,10 +861,10 @@ export namespace RB {
      * @gir-type Enum
      */
     enum RhythmDBQueryModelLimitType {
-        NO_LIMIT,
-        LIMIT_COUNT,
-        LIMIT_SIZE,
-        LIMIT_DURATION,
+        NO_LIMIT = 0,
+        LIMIT_COUNT = 1,
+        LIMIT_SIZE = 2,
+        LIMIT_DURATION = 3,
     }
 
 
@@ -879,23 +879,23 @@ export namespace RB {
      * @gir-type Enum
      */
     enum RhythmDBQueryType {
-        QUERY_END,
-        DISJUNCTIVE_MARKER,
-        SUBQUERY,
-        EQUALS,
-        NOT_EQUAL,
-        FUZZY_MATCH,
-        INVERTED_FUZZY_MATCH,
-        STARTS_WITH,
-        ENDS_WITH,
-        GREATER_THAN,
-        LESS_THAN,
-        WITHIN_CURRENT_TIME,
-        NOT_WITHIN_CURRENT_TIME,
-        YEAR_EQUALS,
-        YEAR_NOT_EQUALS,
-        YEAR_GREATER_THAN,
-        YEAR_LESS_THAN,
+        QUERY_END = 0,
+        DISJUNCTIVE_MARKER = 1,
+        SUBQUERY = 2,
+        EQUALS = 3,
+        NOT_EQUAL = 4,
+        FUZZY_MATCH = 5,
+        INVERTED_FUZZY_MATCH = 6,
+        STARTS_WITH = 7,
+        ENDS_WITH = 8,
+        GREATER_THAN = 9,
+        LESS_THAN = 10,
+        WITHIN_CURRENT_TIME = 11,
+        NOT_WITHIN_CURRENT_TIME = 12,
+        YEAR_EQUALS = 13,
+        YEAR_NOT_EQUALS = 14,
+        YEAR_GREATER_THAN = 15,
+        YEAR_LESS_THAN = 16,
     }
 
 
@@ -910,9 +910,9 @@ export namespace RB {
      * @gir-type Enum
      */
     enum ShellActivationType {
-        SELECT,
-        PLAY,
-        ALWAYS_PLAY,
+        SELECT = 0,
+        PLAY = 1,
+        ALWAYS_PLAY = 2,
     }
 
 
@@ -920,11 +920,11 @@ export namespace RB {
      * @gir-type Enum
      */
     enum ShellError {
-        NO_SUCH_URI,
-        NO_SUCH_PROPERTY,
-        IMMUTABLE_PROPERTY,
-        INVALID_PROPERTY_TYPE,
-        NO_SOURCE_FOR_URI,
+        NO_SUCH_URI = 0,
+        NO_SUCH_PROPERTY = 1,
+        IMMUTABLE_PROPERTY = 2,
+        INVALID_PROPERTY_TYPE = 3,
+        NO_SOURCE_FOR_URI = 4,
     }
 
 
@@ -996,11 +996,11 @@ export namespace RB {
         /**
          * The "general" preferences page
          */
-        GENERAL,
+        GENERAL = 0,
         /**
          * THe "playback" preferences page
          */
-        PLAYBACK,
+        PLAYBACK = 1,
     }
 
 
@@ -1015,10 +1015,10 @@ export namespace RB {
      * @gir-type Enum
      */
     enum ShellUILocation {
-        SIDEBAR,
-        RIGHT_SIDEBAR,
-        MAIN_TOP,
-        MAIN_BOTTOM,
+        SIDEBAR = 0,
+        RIGHT_SIDEBAR = 1,
+        MAIN_TOP = 2,
+        MAIN_BOTTOM = 3,
     }
 
 
@@ -1033,10 +1033,10 @@ export namespace RB {
      * @gir-type Enum
      */
     enum SourceEOFType {
-        ERROR,
-        STOP,
-        RETRY,
-        NEXT,
+        ERROR = 0,
+        STOP = 1,
+        RETRY = 2,
+        NEXT = 3,
     }
 
 
@@ -1051,10 +1051,10 @@ export namespace RB {
      * @gir-type Enum
      */
     enum SourceLoadStatus {
-        NOT_LOADED,
-        WAITING,
-        LOADING,
-        LOADED,
+        NOT_LOADED = 0,
+        WAITING = 1,
+        LOADING = 2,
+        LOADED = 3,
     }
 
 
@@ -1069,80 +1069,185 @@ export namespace RB {
      * @gir-type Enum
      */
     enum TaskOutcome {
-        NONE,
-        COMPLETE,
-        CANCELLED,
+        NONE = 0,
+        COMPLETE = 1,
+        CANCELLED = 2,
     }
 
 
+    /**
+     * @default 1
+     */
     const ENABLE_PROFILING: number;
 
+    /**
+     * @default x-rb-tmp://
+     */
     const ENCODER_DEST_TEMPFILE: string;
 
+    /**
+     * @default cbr
+     */
     const ENCODING_STYLE_CBR: string;
 
+    /**
+     * @default vbr
+     */
     const ENCODING_STYLE_VBR: string;
 
+    /**
+     * @default 20
+     */
     const FFWD_OFFSET: number;
 
+    /**
+     * @default audio/x-aac
+     */
     const GST_MEDIA_TYPE_AAC: string;
 
+    /**
+     * @default audio/x-flac
+     */
     const GST_MEDIA_TYPE_FLAC: string;
 
+    /**
+     * @default audio/mpeg
+     */
     const GST_MEDIA_TYPE_MP3: string;
 
+    /**
+     * @default audio/x-vorbis
+     */
     const GST_MEDIA_TYPE_OGG_VORBIS: string;
 
+    /**
+     * @default 0
+     */
     const PLAYER_SECOND: number;
 
+    /**
+     * @default automatic
+     */
     const PLAYLIST_AUTOMATIC: string;
 
+    /**
+     * @default browser-position
+     */
     const PLAYLIST_BROWSER_POSITION: string;
 
+    /**
+     * @default limit
+     */
     const PLAYLIST_LIMIT: string;
 
+    /**
+     * @default limit-count
+     */
     const PLAYLIST_LIMIT_COUNT: string;
 
+    /**
+     * @default limit-size
+     */
     const PLAYLIST_LIMIT_SIZE: string;
 
+    /**
+     * @default limit-time
+     */
     const PLAYLIST_LIMIT_TIME: string;
 
+    /**
+     * @default location
+     */
     const PLAYLIST_LOCATION: string;
 
+    /**
+     * @default name
+     */
     const PLAYLIST_NAME: string;
 
+    /**
+     * @default playlist
+     */
     const PLAYLIST_PLAYLIST: string;
 
+    /**
+     * @default queue
+     */
     const PLAYLIST_QUEUE: string;
 
+    /**
+     * @default search-type
+     */
     const PLAYLIST_SEARCH_TYPE: string;
 
+    /**
+     * @default show-browser
+     */
     const PLAYLIST_SHOW_BROWSER: string;
 
+    /**
+     * @default sort-direction
+     */
     const PLAYLIST_SORT_DIRECTION: string;
 
+    /**
+     * @default sort-key
+     */
     const PLAYLIST_SORT_KEY: string;
 
+    /**
+     * @default static
+     */
     const PLAYLIST_STATIC: string;
 
+    /**
+     * @default type
+     */
     const PLAYLIST_TYPE: string;
 
+    /**
+     * @default 1.0
+     */
     const PLAYLIST_XML_VERSION: string;
 
+    /**
+     * @default 4
+     */
     const PROFILE_INDENTATION: number;
 
+    /**
+     * @default rb:coverArt
+     */
     const RHYTHMDB_PROP_COVER_ART: string;
 
+    /**
+     * @default rb:coverArt-uri
+     */
     const RHYTHMDB_PROP_COVER_ART_URI: string;
 
+    /**
+     * @default rb:stream-song-album
+     */
     const RHYTHMDB_PROP_STREAM_SONG_ALBUM: string;
 
+    /**
+     * @default rb:stream-song-artist
+     */
     const RHYTHMDB_PROP_STREAM_SONG_ARTIST: string;
 
+    /**
+     * @default rb:stream-song-title
+     */
     const RHYTHMDB_PROP_STREAM_SONG_TITLE: string;
 
+    /**
+     * @default 1024
+     */
     const RHYTHMDB_QUERY_MODEL_SUGGESTED_UPDATE_CHUNK: number;
 
+    /**
+     * @default 10
+     */
     const RWD_OFFSET: number;
 
     /**
@@ -1368,6 +1473,7 @@ export namespace RB {
      * Attempts to resolve symlinks leading to `file` and return a canonical location.
      * @param file the file to process
      * @returns a {@link Gio.File} representing the canonical location, or NULL on error
+     * @throws GLib.Error
      */
     function file_resolve_symlink(file: Gio.File): Gio.File;
 
@@ -1662,6 +1768,7 @@ export namespace RB {
      * Creates a new player object.
      * @param want_crossfade if TRUE, try to use a backend that supports 		    crossfading and other track transitions.
      * @returns new player object.
+     * @throws GLib.Error
      */
     function player_new(want_crossfade: boolean): Player;
 
@@ -1856,6 +1963,7 @@ export namespace RB {
      * `uri` itself can be created directly.
      * @param uri a URI for which to create parent directories
      * @returns `true` if successful
+     * @throws GLib.Error
      */
     function uri_create_parent_dirs(uri: string): boolean;
 
@@ -2000,6 +2108,7 @@ export namespace RB {
      * @param uri_ret returns the temporary file URI
      * @param stream returns a `GOutputStream` for the temporary file
      * @returns `true` if successful
+     * @throws GLib.Error
      */
     function uri_mkstemp(prefix: string, uri_ret: string, stream: Gio.OutputStream): boolean;
 
@@ -2008,6 +2117,7 @@ export namespace RB {
      * it identifies.
      * @param uri the URI to process
      * @returns resolved URI, or NULL on error
+     * @throws GLib.Error
      */
     function uri_resolve_symlink(uri: string): string;
 
@@ -2820,7 +2930,7 @@ export namespace RB {
              * @signal
              * @run-first
              */
-            "pixbuf-clicked": (arg0: string) => void;
+            "pixbuf-clicked": (path: string) => void;
             "notify::follow-state": (pspec: GObject.ParamSpec) => void;
             "notify::gicon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -2907,7 +3017,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            rated: (arg0: string, arg1: number) => void;
+            rated: (score: string, path: number) => void;
             "notify::rating": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background-gdk": (pspec: GObject.ParamSpec) => void;
@@ -3574,7 +3684,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "drop-received": (arg0: DisplayPage, arg1: number, arg2: null) => void;
+            "drop-received": (target: DisplayPage, pos: number, data: null) => void;
             /**
              * Emitted when a new page is inserted into the model.
              * Use this instead of GtkTreeModel::row-inserted as this
@@ -3582,7 +3692,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "page-inserted": (arg0: DisplayPage, arg1: Gtk.TreeIter) => void;
+            "page-inserted": (page: DisplayPage, iter: Gtk.TreeIter) => void;
             "notify::child-model": (pspec: GObject.ParamSpec) => void;
             "notify::virtual-root": (pspec: GObject.ParamSpec) => void;
         }
@@ -4248,13 +4358,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "drop-received": (arg0: null, arg1: null) => void;
+            "drop-received": (page: null, data: null) => void;
             /**
              * Emitted when a page is selected from the tree
              * @signal
              * @run-last
              */
-            selected: (arg0: GObject.Object) => void;
+            selected: (page: GObject.Object) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::shell": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
@@ -4449,7 +4559,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "prepare-sink": (arg0: string, arg1: GObject.Object) => void;
+            "prepare-sink": (uri: string, sink: GObject.Object) => void;
             /**
              * Emitted when creating a source to read the specified URI.
              * Plugins can use this when just creating a GStreamer element from the URI
@@ -4458,7 +4568,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "prepare-source": (arg0: string, arg1: GObject.Object) => void;
+            "prepare-source": (uri: string, source: GObject.Object) => void;
         }
 
         // Constructor properties interface
@@ -4539,19 +4649,19 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-activated": (arg0: RhythmDBEntry) => void;
+            "entry-activated": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when an entry is added to the view
              * @signal
              * @run-last
              */
-            "entry-added": (arg0: RhythmDBEntry) => void;
+            "entry-added": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when an entry has been removed from the view
              * @signal
              * @run-last
              */
-            "entry-deleted": (arg0: RhythmDBEntry) => void;
+            "entry-deleted": (entry: RhythmDBEntry) => void;
             /**
              * Returns the name of an icon to be used in the 'playing' column for a given entry.
              * If the standard processing for this column produces an icon name to use, it will
@@ -4560,14 +4670,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "get-playing-icon": (arg0: RhythmDBEntry, arg1: string) => string;
+            "get-playing-icon": (entry: RhythmDBEntry, current: string) => string;
             /**
              * Emitted when the user first selects a row, or when no rows are selected
              * any more.
              * @signal
              * @run-last
              */
-            "have-selection-changed": (arg0: boolean) => void;
+            "have-selection-changed": (have_selection: boolean) => void;
             /**
              * Emitted when the set of selected entries changes
              * @signal
@@ -4583,7 +4693,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "show-popup": (arg0: boolean) => void;
+            "show-popup": (over_entry: boolean) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
             "notify::is-drag-dest": (pspec: GObject.ParamSpec) => void;
             "notify::is-drag-source": (pspec: GObject.ParamSpec) => void;
@@ -5093,14 +5203,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            added: (arg0: ExtDBKey, arg1: string, arg2: unknown) => void;
+            added: (key: ExtDBKey, filename: string, data: unknown) => void;
             /**
              * Emitted when loading a metadata item from a local file or from a
              * URI.
              * @signal
              * @run-last
              */
-            load: (arg0: unknown) => null;
+            load: (data: unknown) => null;
             /**
              * Emitted when a metadata request cannot be satisfied from the local
              * store.  Metadata providers initiate searches in response to this
@@ -5108,7 +5218,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            request: (arg0: ExtDBKey, arg1: number) => boolean | void;
+            request: (key: ExtDBKey, last_time: number) => boolean | void;
             /**
              * Emitted when a metadata item needs to be written to a local file.
              * This only needs to be used for metadata that needs to be encoded
@@ -5116,7 +5226,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            store: (arg0: unknown) => null;
+            store: (data: unknown) => null;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -5268,13 +5378,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "pixbuf-dropped": (arg0: GdkPixbuf.Pixbuf) => void;
+            "pixbuf-dropped": (pixbuf: GdkPixbuf.Pixbuf) => void;
             /**
              * Emitted when a URI is dragged and dropped on the image
              * @signal
              * @run-last
              */
-            "uri-dropped": (arg0: string) => void;
+            "uri-dropped": (uri: string) => void;
             "notify::fallback": (pspec: GObject.ParamSpec) => void;
             "notify::use-tooltip": (pspec: GObject.ParamSpec) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
@@ -6112,7 +6222,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "items-changed": (arg0: number, arg1: number, arg2: number) => void;
+            "items-changed": (object: number, p0: number, p1: number) => void;
         }
 
         // Constructor properties interface
@@ -6625,6 +6735,7 @@ export namespace RB {
          * rb_metadata_get, rb_metadata_get_media_type, rb_metadata_has_missing_plugins,
          * and rb_metadata_get_missing_plugins can usefully be called.
          * @param uri URI from which to load metadata
+         * @throws GLib.Error
          */
         load(uri: string): void;
 
@@ -6638,6 +6749,7 @@ export namespace RB {
          * Saves all metadata changes made with rb_metadata_set to the
          * target URI.
          * @param uri the target URI
+         * @throws GLib.Error
          */
         save(uri: string): void;
 
@@ -6667,7 +6779,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "have-next-previous-changed": (arg0: boolean, arg1: boolean) => void;
+            "have-next-previous-changed": (have_next: boolean, have_previous: boolean) => void;
             "notify::player": (pspec: GObject.ParamSpec) => void;
             "notify::playing-entry": (pspec: GObject.ParamSpec) => void;
         }
@@ -6974,13 +7086,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "playlist-added": (arg0: GObject.Object) => void;
+            "playlist-added": (source: GObject.Object) => void;
             /**
              * Emitted when a new playlist is created.
              * @signal
              * @run-last
              */
-            "playlist-created": (arg0: GObject.Object) => void;
+            "playlist-created": (source: GObject.Object) => void;
             "notify::playlists-file": (pspec: GObject.ParamSpec) => void;
             "notify::shell": (pspec: GObject.ParamSpec) => void;
             "notify::source": (pspec: GObject.ParamSpec) => void;
@@ -7086,6 +7198,7 @@ export namespace RB {
          * @param name name of the playlist to add to
          * @param uri URI of the entry to add to the playlist
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         add_to_playlist(name: string, uri: string): boolean;
 
@@ -7095,6 +7208,7 @@ export namespace RB {
          * This is part of the playlist manager dbus interface.
          * @param name name of the new playlist
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         create_static_playlist(name: string): boolean;
 
@@ -7103,6 +7217,7 @@ export namespace RB {
          * that name exists. This is part of the playlist manager dbus interface.
          * @param name name of the playlist to delete
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         delete_playlist(name: string): boolean;
 
@@ -7113,6 +7228,7 @@ export namespace RB {
          * @param uri playlist save location
          * @param m3u_format if TRUE, save in M3U format, otherwise save in PLS format
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         export_playlist(name: string, uri: string, m3u_format: boolean): boolean;
 
@@ -7120,6 +7236,7 @@ export namespace RB {
          * Allocates and returns an array containing the names of all local
          * playlists.  This is part of the playlist manager dbus interface.
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         get_playlist_names(): [boolean, string];
 
@@ -7158,6 +7275,7 @@ export namespace RB {
          * playlist created will have the same title.
          * @param uri URI of the playlist to load
          * @returns TRUE on success
+         * @throws GLib.Error
          */
         parse_file(uri: string): boolean;
 
@@ -7168,6 +7286,7 @@ export namespace RB {
          * @param name name of the playlist to remove from
          * @param uri URI of the entry to remove from the playlist
          * @returns TRUE if successful.
+         * @throws GLib.Error
          */
         remove_from_playlist(name: string, uri: string): boolean;
 
@@ -7451,7 +7570,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "feed-update-status": (arg0: string, arg1: PodcastFeedUpdateStatus, arg2: string) => void;
+            "feed-update-status": (object: string, p0: PodcastFeedUpdateStatus, p1: string) => void;
             "notify::shell": (pspec: GObject.ParamSpec) => void;
             "notify::updating": (pspec: GObject.ParamSpec) => void;
         }
@@ -7612,12 +7731,12 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            finished: (arg0: boolean) => void;
+            finished: (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            result: (arg0: null) => void;
+            result: (object: null) => void;
         }
 
         // Constructor properties interface
@@ -7716,6 +7835,7 @@ export namespace RB {
         /**
          * @param result 
          * @param orig_url 
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult, orig_url: string): string;
 
@@ -7791,13 +7911,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "properties-selected": (arg0: null) => void;
+            "properties-selected": (properties: null) => void;
             /**
              * Emitted when a row in a property view is activated by double clicking.
              * @signal
              * @run-last
              */
-            "property-activated": (arg0: string) => void;
+            "property-activated": (name: string) => void;
             /**
              * Emitted when an individual property value becomes selected.  This is only
              * emitted for single-selection property views.  For multiple-selection views,
@@ -7805,7 +7925,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "property-selected": (arg0: string) => void;
+            "property-selected": (name: string) => void;
             /**
              * Emitted when the selection is reset.  At this point, no property values
              * are selected.
@@ -8082,20 +8202,20 @@ export namespace RB {
              * @action
              * @run-last
              */
-            "adjust-rating": (arg0: number) => void;
+            "adjust-rating": (adjust: number) => void;
             /**
              * Emitted when the user changes the rating.
              * @signal
              * @run-last
              */
-            rated: (arg0: number) => void;
+            rated: (score: number) => void;
             /**
              * Action signal used to change the rating.
              * @signal
              * @action
              * @run-last
              */
-            "set-rating": (arg0: number) => void;
+            "set-rating": (score: number) => void;
             "notify::rating": (pspec: GObject.ParamSpec) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
@@ -8430,7 +8550,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "create-source-device": (arg0: GObject.Object) => Source;
+            "create-source-device": (device: GObject.Object) => Source;
             /**
              * Emitted when a new mount is added to allow plugins to create a
              * corresponding {@link RB.Source}.  The first signal handler that returns
@@ -8439,7 +8559,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "create-source-mount": (arg0: Gio.Mount, arg1: MPID.Device) => Source;
+            "create-source-mount": (device_info: Gio.Mount, mount: MPID.Device) => Source;
             /**
              * Emitted when a new volume is added to allow plugins to create a
              * corresponding {@link RB.Source}.  The first signal handler that returns
@@ -8449,13 +8569,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "create-source-volume": (arg0: Gio.Volume) => Source;
+            "create-source-volume": (volume: Gio.Volume) => Source;
             /**
              * Emitted when a new source is added for a removable medium.
              * @signal
              * @run-last
              */
-            "medium-added": (arg0: GObject.Object) => void;
+            "medium-added": (source: GObject.Object) => void;
             "notify::scanned": (pspec: GObject.ParamSpec) => void;
             "notify::shell": (pspec: GObject.ParamSpec) => void;
         }
@@ -8567,20 +8687,20 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-added": (arg0: RhythmDBEntry) => void;
+            "entry-added": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when a database entry is modified.  The `changes` list
              * contains a structure for each entry property that has been modified.
              * @signal
              * @run-last
              */
-            "entry-changed": (arg0: RhythmDBEntry, arg1: RhythmDBEntryChange[]) => void;
+            "entry-changed": (entry: RhythmDBEntry, changes: RhythmDBEntryChange[]) => void;
             /**
              * Emitted when an entry is deleted from the database.
              * @signal
              * @run-last
              */
-            "entry-deleted": (arg0: RhythmDBEntry) => void;
+            "entry-deleted": (entry: RhythmDBEntry) => void;
             /**
              * Emitted to gather all available extra metadata for a database entry.
              * Handlers for this signal should insert any metadata they can provide
@@ -8591,7 +8711,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-extra-metadata-gather": (arg0: RhythmDBEntry, arg1: StringValueMap) => void;
+            "entry-extra-metadata-gather": (entry: RhythmDBEntry, data: StringValueMap) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8599,7 +8719,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-notify": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify": (entry: RhythmDBEntry, field: string, metadata: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8611,19 +8731,19 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-request": (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request": (entry: RhythmDBEntry) => GObject.Value | any;
             /**
              * Emitted when a keyword is added to an entry.
              * @signal
              * @run-last
              */
-            "entry-keyword-added": (arg0: RhythmDBEntry, arg1: RefString) => void;
+            "entry-keyword-added": (entry: RhythmDBEntry, keyword: RefString) => void;
             /**
              * Emitted when a keyword is removed from an entry.
              * @signal
              * @run-last
              */
-            "entry-keyword-removed": (arg0: RhythmDBEntry, arg1: RefString) => void;
+            "entry-keyword-removed": (entry: RhythmDBEntry, keyword: RefString) => void;
             /**
              * Emitted when the database is fully loaded.
              * @signal
@@ -8636,7 +8756,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "read-only": (arg0: boolean) => void;
+            "read-only": (readonly: boolean) => void;
             /**
              * Emitted when the database has been saved.
              * @signal
@@ -8648,7 +8768,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "save-error": (arg0: string, arg1: null) => void;
+            "save-error": (uri: string, error: null) => void;
             "notify::dry-run": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::no-update": (pspec: GObject.ParamSpec) => void;
@@ -8659,7 +8779,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-notify::dry-run": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::dry-run": (entry: RhythmDBEntry, field: string, metadata: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8667,7 +8787,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-notify::name": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::name": (entry: RhythmDBEntry, field: string, metadata: unknown) => void;
             /**
              * This signal is emitted when an extra metadata value is provided for a specific
              * entry independantly of an extra metadata request.
@@ -8675,8 +8795,8 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-notify::no-update": (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
-            [key: `entry-extra-metadata-notify::${string}`]: (arg0: RhythmDBEntry, arg1: string, arg2: unknown) => void;
+            "entry-extra-metadata-notify::no-update": (entry: RhythmDBEntry, field: string, metadata: unknown) => void;
+            [key: `entry-extra-metadata-notify::${string}`]: (entry: RhythmDBEntry, field: string, metadata: unknown) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8688,7 +8808,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-request::dry-run": (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::dry-run": (entry: RhythmDBEntry) => GObject.Value | any;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8700,7 +8820,7 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-request::name": (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::name": (entry: RhythmDBEntry) => GObject.Value | any;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -8712,8 +8832,8 @@ export namespace RB {
              * @detailed
              * @run-last
              */
-            "entry-extra-metadata-request::no-update": (arg0: RhythmDBEntry) => GObject.Value | any;
-            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => GObject.Value | any;
+            "entry-extra-metadata-request::no-update": (entry: RhythmDBEntry) => GObject.Value | any;
+            [key: `entry-extra-metadata-request::${string}`]: (entry: RhythmDBEntry) => GObject.Value | any;
         }
 
         // Constructor properties interface
@@ -9304,6 +9424,7 @@ export namespace RB {
          * to the file at the entry's location.
          * @param entry the {@link RB.RhythmDBEntry} to update
          * @param changes a list of changes to write
+         * @throws GLib.Error
          */
         entry_write_metadata_changes(entry: RhythmDBEntry, changes: RhythmDBEntryChange[]): void;
 
@@ -9660,14 +9781,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            complete: (arg0: number) => void;
+            complete: (total: number) => void;
             /**
              * Emitted when an entry has been added to the database by the
              * import job.
              * @signal
              * @run-last
              */
-            "entry-added": (arg0: RhythmDBEntry) => void;
+            "entry-added": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when the directory scan is complete.  Once
              * the scan is complete, the total number of files to
@@ -9675,13 +9796,13 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "scan-complete": (arg0: number) => void;
+            "scan-complete": (total: number) => void;
             /**
              * Emitted when the status of the import job has changed.
              * @signal
              * @run-last
              */
-            "status-changed": (arg0: number, arg1: number) => void;
+            "status-changed": (total: number, imported: number) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
             "notify::entry-type": (pspec: GObject.ParamSpec) => void;
             "notify::error-type": (pspec: GObject.ParamSpec) => void;
@@ -10579,7 +10700,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-prop-changed": (arg0: RhythmDBEntry, arg1: number, arg2: unknown, arg3: unknown) => void;
+            "entry-prop-changed": (entry: RhythmDBEntry, prop: number, old: unknown, new_value: unknown) => void;
             /**
              * Emitted when an entry is removed from the model.  There is some
              * difference between this and the {@link Gtk.TreeModel} row-removed signal
@@ -10587,7 +10708,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "entry-removed": (arg0: RhythmDBEntry) => void;
+            "entry-removed": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when an entry is being added to a model by drag-and-drop.
              * This allows the owner of the model to filter out entries that should
@@ -10596,20 +10717,20 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "filter-entry-drop": (arg0: RhythmDBEntry) => boolean | void;
+            "filter-entry-drop": (entry: RhythmDBEntry) => boolean | void;
             /**
              * Emitted when a URI that does not match an existing {@link RB.RhythmDBEntry}
              * is dropped into the query model.
              * @signal
              * @run-last
              */
-            "non-entry-dropped": (arg0: string, arg1: number) => void;
+            "non-entry-dropped": (uri: string, position: number) => void;
             /**
              * Emitted after an entry has been removed from the model.
              * @signal
              * @run-last
              */
-            "post-entry-delete": (arg0: RhythmDBEntry) => void;
+            "post-entry-delete": (entry: RhythmDBEntry) => void;
             "notify::base-model": (pspec: GObject.ParamSpec) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
             "notify::limit-type": (pspec: GObject.ParamSpec) => void;
@@ -11683,7 +11804,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            activate: (arg0: string) => void;
+            activate: (text: string) => void;
             /**
              * Emitted when the search text changes.  A signal
              * handler must initiate a search on the current
@@ -11691,7 +11812,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            search: (arg0: string) => void;
+            search: (text: string) => void;
             /**
              * Emitted when a popup menu should be shown
              * @signal
@@ -12302,21 +12423,21 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "create-song-info": (arg0: SongInfo, arg1: boolean) => void;
+            "create-song-info": (song_info: SongInfo, multi: boolean) => void;
             /**
              * Emitted when a notification should be displayed showing the current
              * playing entry.
              * @signal
              * @run-last
              */
-            "notify-playing-entry": (arg0: boolean) => void;
+            "notify-playing-entry": (requested: boolean) => void;
             /**
              * Emitted after the visibility of the main Rhythmbox window has
              * changed.
              * @signal
              * @run-last
              */
-            "visibility-changed": (arg0: boolean) => void;
+            "visibility-changed": (visibile: boolean) => void;
             /**
              * Emitted before the visibility of the main window changes.  The return
              * value overrides the visibility setting.  If multiple signal handlers
@@ -12324,7 +12445,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "visibility-changing": (arg0: boolean, arg1: boolean) => boolean | void;
+            "visibility-changing": (initial: boolean, visible: boolean) => boolean | void;
             "notify::accel-group": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::autostarted": (pspec: GObject.ParamSpec) => void;
@@ -12705,6 +12826,7 @@ export namespace RB {
         /**
          * @param source 
          * @param play 
+         * @throws GLib.Error
          */
         activate_source(source: Source, play: number): boolean;
 
@@ -12717,6 +12839,7 @@ export namespace RB {
          * @param source_uri URI for the source to activate
          * @param play 0: select source, 1: play source if not playing, 2: play source
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         activate_source_by_uri(source_uri: string, play: number): boolean;
 
@@ -12728,6 +12851,7 @@ export namespace RB {
          * @param title optional title value for the URI
          * @param genre optional genre value for the URI
          * @returns TRUE if the URI was added successfully
+         * @throws GLib.Error
          */
         add_uri(uri: string, title: string, genre: string): boolean;
 
@@ -12752,6 +12876,7 @@ export namespace RB {
          * Displays a notification of the current playing track.
          * @param requested if `true`, the notification was requested by some explicit user action
          * @returns not important
+         * @throws GLib.Error
          */
         do_notify(requested: boolean): boolean;
 
@@ -12760,6 +12885,7 @@ export namespace RB {
          * art URIs and lyrics) for the specified URI.
          * @param uri the URI to query
          * @returns `true` if the URI is found in the database
+         * @throws GLib.Error
          */
         get_song_properties(uri: string): [boolean, { [key: string]: GObject.Value }];
 
@@ -12793,6 +12919,7 @@ export namespace RB {
          * @param uri the URI to load
          * @param play if TRUE, start playing the URI (if possible)
          * @returns TRUE if the URI was added successfully
+         * @throws GLib.Error
          */
         load_uri(uri: string, play: boolean): boolean;
 
@@ -12800,6 +12927,7 @@ export namespace RB {
          * Attempts to display the main window to the user.  See `gtk_window_present` for details.
          * @param timestamp GTK timestamp to use (for focus-stealing prevention)
          * @returns not used.
+         * @throws GLib.Error
          */
         present(timestamp: number): boolean;
 
@@ -12808,6 +12936,7 @@ export namespace RB {
          * return.  The error parameter and return value only exist because this
          * function is part of the DBus interface.
          * @returns not important
+         * @throws GLib.Error
          */
         quit(): boolean;
 
@@ -12836,6 +12965,7 @@ export namespace RB {
          * @param propname the name of the property to modify
          * @param value the new value to set
          * @returns `true` if the property was set successfully.
+         * @throws GLib.Error
          */
         set_song_property(uri: string, propname: string, value: GObject.Value | any): boolean;
 
@@ -12854,7 +12984,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "elapsed-changed": (arg0: number) => void;
+            "elapsed-changed": (elapsed: number) => void;
             /**
              * Emitted when the playback position changes.  Only use this (as opposed to
              * elapsed-changed) when you require subsecond precision.  This signal will be
@@ -12862,44 +12992,44 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "elapsed-nano-changed": (arg0: number) => void;
+            "elapsed-nano-changed": (elapsed: number) => void;
             /**
              * Emitted when playback either stops or starts.
              * @signal
              * @run-last
              */
-            "playing-changed": (arg0: boolean) => void;
+            "playing-changed": (playing: boolean) => void;
             /**
              * Emitted when the playing database entry changes
              * @signal
              * @run-last
              */
-            "playing-song-changed": (arg0: RhythmDBEntry) => void;
+            "playing-song-changed": (entry: RhythmDBEntry) => void;
             /**
              * Emitted when a property of the playing database entry changes.
              * @signal
              * @run-last
              */
-            "playing-song-property-changed": (arg0: string, arg1: string, arg2: unknown, arg3: unknown) => void;
+            "playing-song-property-changed": (uri: string, property: string, old: unknown, newvalue: unknown) => void;
             /**
              * Emitted when a new {@link RB.Source} instance starts playing
              * @signal
              * @run-last
              */
-            "playing-source-changed": (arg0: Source) => void;
+            "playing-source-changed": (source: Source) => void;
             /**
              * Emitted when the playing database entry changes, providing the
              * URI of the entry.
              * @signal
              * @run-last
              */
-            "playing-uri-changed": (arg0: string) => void;
+            "playing-uri-changed": (uri: string) => void;
             /**
              * Emitted when the main window title text should be changed
              * @signal
              * @run-last
              */
-            "window-title-changed": (arg0: string) => void;
+            "window-title-changed": (title: string) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
             "notify::has-next": (pspec: GObject.ParamSpec) => void;
             "notify::has-prev": (pspec: GObject.ParamSpec) => void;
@@ -13179,6 +13309,7 @@ export namespace RB {
          * transitions between the play queue and the active source.
          * Fails if there is no entry to play after the current one.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         do_next(): boolean;
 
@@ -13188,6 +13319,7 @@ export namespace RB {
          * Fails if there is no current song, or if inside the first
          * 3 seconds of the first song in the play order.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         do_previous(): boolean;
 
@@ -13201,6 +13333,7 @@ export namespace RB {
         /**
          * Returns `true` if currently muted
          * @returns `true` if currently muted
+         * @throws GLib.Error
          */
         get_mute(): [boolean, boolean];
 
@@ -13213,6 +13346,7 @@ export namespace RB {
         /**
          * Reports whether playback is occuring by setting #playing.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         get_playing(): [boolean, boolean];
 
@@ -13228,6 +13362,7 @@ export namespace RB {
          * Retrieves the URI of the current playing entry.  The
          * caller must not free the returned string.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         get_playing_path(): [boolean, string];
 
@@ -13251,6 +13386,7 @@ export namespace RB {
          * the player currently cannot provide the playback
          * position.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         get_playing_time(): [boolean, number];
 
@@ -13264,6 +13400,7 @@ export namespace RB {
         /**
          * Returns the current volume level
          * @returns the current volume level.
+         * @throws GLib.Error
          */
         get_volume(): [boolean, number];
 
@@ -13272,12 +13409,14 @@ export namespace RB {
         /**
          * Pauses playback if possible, completely stopping if not.
          * @returns whether playback is not occurring (TRUE when successfully paused/stopped or playback was not occurring).
+         * @throws GLib.Error
          */
         pause(): boolean;
 
         /**
          * Starts playback, if it is not already playing.
          * @returns whether playback is now occurring (TRUE when successfully started or already playing).
+         * @throws GLib.Error
          */
         play(): boolean;
 
@@ -13293,6 +13432,7 @@ export namespace RB {
          * entry, chooses an entry from (in order of preference) the play queue,
          * the selection in the current source, or the play order.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         playpause(): boolean;
 
@@ -13308,6 +13448,7 @@ export namespace RB {
          * song. Fails if the current song is not seekable.
          * @param offset relative seek target (in seconds)
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         seek(offset: number): boolean;
 
@@ -13315,6 +13456,7 @@ export namespace RB {
          * Updates the mute setting on the player.
          * @param mute `true` to mute playback
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         set_mute(mute: boolean): boolean;
 
@@ -13336,6 +13478,7 @@ export namespace RB {
          * current song is not seekable.
          * @param time the target playback position (in seconds)
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         set_playing_time(time: number): boolean;
 
@@ -13349,6 +13492,7 @@ export namespace RB {
          * Sets the playback volume level.
          * @param volume the volume level (between 0 and 1)
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_volume(volume: number): boolean;
 
@@ -13356,6 +13500,7 @@ export namespace RB {
          * Adds the specified value to the current volume level.
          * @param delta difference to apply to the volume level (between -1 and 1)
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_volume_relative(delta: number): boolean;
 
@@ -13542,7 +13687,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "post-metadata-change": (arg0: RhythmDBEntry) => void;
+            "post-metadata-change": (entry: RhythmDBEntry) => void;
             /**
              * Emitted just before the changes made in the song properties window
              * are applied to the database.  This is only emitted in the single-entry
@@ -13550,7 +13695,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "pre-metadata-change": (arg0: RhythmDBEntry) => void;
+            "pre-metadata-change": (entry: RhythmDBEntry) => void;
             "notify::current-entry": (pspec: GObject.ParamSpec) => void;
             "notify::entry-view": (pspec: GObject.ParamSpec) => void;
             "notify::selected-entries": (pspec: GObject.ParamSpec) => void;
@@ -15630,7 +15775,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "get-dest-uri": (arg0: RhythmDBEntry, arg1: string, arg2: string) => string;
+            "get-dest-uri": (entry: RhythmDBEntry, mediatype: string, extension: string) => string;
             /**
              * Emitted when the destination URI for a transfer already exists.
              * The handler must call _rb_track_transfer_batch_continue or
@@ -15639,7 +15784,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "overwrite-prompt": (arg0: string) => void;
+            "overwrite-prompt": (uri: string) => void;
             /**
              * Emitted when the batch is started.  This will be after
              * all previous batches have finished, which is not necessarily
@@ -15655,7 +15800,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "track-done": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: string, arg4: null) => void;
+            "track-done": (entry: RhythmDBEntry, dest: string, dest_size: number, dest_mediatype: string, error: null) => void;
             /**
              * Emitted when a track transfer is finishing, allowing signal handlers
              * to perform any post-processing required.  The signal is emitted on the
@@ -15665,7 +15810,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "track-postprocess": (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string, arg3: number, arg4: string) => void;
+            "track-postprocess": (task: Gio.Task, entry: RhythmDBEntry, dest: string, dest_size: number, dest_mediatype: string) => void;
             /**
              * Emitted when a track transfer is about to start, allowing signal handlers
              * to perform any preparation required.  The signal is emitted on the task
@@ -15675,14 +15820,14 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "track-prepare": (arg0: Gio.Task, arg1: RhythmDBEntry, arg2: string) => void;
+            "track-prepare": (task: Gio.Task, entry: RhythmDBEntry, dest: string) => void;
             /**
              * Emitted regularly throughout the transfer to allow progress bars
              * and other UI elements to be updated.
              * @signal
              * @run-last
              */
-            "track-progress": (arg0: RhythmDBEntry, arg1: string, arg2: number, arg3: number, arg4: number) => void;
+            "track-progress": (entry: RhythmDBEntry, dest: string, done: number, total: number, fraction: number) => void;
             /**
              * Emitted when a new entry is about to be transferred.
              * This will be emitted for each entry in the batch, unless
@@ -15690,7 +15835,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "track-started": (arg0: RhythmDBEntry, arg1: string) => void;
+            "track-started": (entry: RhythmDBEntry, dest: string) => void;
             "notify::destination": (pspec: GObject.ParamSpec) => void;
             "notify::done-entries": (pspec: GObject.ParamSpec) => void;
             "notify::encoding-target": (pspec: GObject.ParamSpec) => void;
@@ -16062,7 +16207,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "missing-plugins": (arg0: string[], arg1: string[], arg2: GObject.Closure) => boolean | void;
+            "missing-plugins": (details: string[], descriptions: string[], closure: GObject.Closure) => boolean | void;
             /**
              * Emitted regularly to convey progress information.  At the end of any given
              * transfer batch, there will be one signal emission with `done` == `total` and
@@ -16070,7 +16215,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "transfer-progress": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "transfer-progress": (done: number, total: number, fraction: number, time_left: number) => void;
             "notify::batch": (pspec: GObject.ParamSpec) => void;
             "notify::shell": (pspec: GObject.ParamSpec) => void;
         }
@@ -16183,7 +16328,7 @@ export namespace RB {
              * @signal
              * @run-last
              */
-            "location-added": (arg0: string) => void;
+            "location-added": (uri: string) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
@@ -17128,6 +17273,7 @@ export namespace RB {
         /**
          * Calls the entry type's method to sync metadata changes for `entry`.
          * @param changes a list of {@link RB.RhythmDBEntryChange} structures
+         * @throws GLib.Error
          */
         sync_metadata(changes: RhythmDBEntryChange[]): void;
 
@@ -17923,6 +18069,7 @@ export namespace RB {
          * be released.
          * @param uri optionally, the URI of the stream to close
          * @returns TRUE if a stream was found and closed
+         * @throws GLib.Error
          */
         close(uri: string): boolean;
 
@@ -17953,6 +18100,7 @@ export namespace RB {
          * @param uri URI to open
          * @param stream_data arbitrary data to associate with the stream
          * @returns TRUE if the stream preparation was not unsuccessful
+         * @throws GLib.Error
          */
         open(uri: string, stream_data: null): boolean;
 
@@ -17991,6 +18139,7 @@ export namespace RB {
          * @param play_type requested playback start type
          * @param crossfade requested crossfade duration (nanoseconds)
          * @returns `true` if playback started successfully
+         * @throws GLib.Error
          */
         play(play_type: PlayerPlayType, crossfade: bigint | number): boolean;
 
@@ -18584,6 +18733,7 @@ export namespace RB {
          * This is called on a task thread, so no UI interaction is possible.
          * @param entry the source {@link RB.RhythmDBEntry} for the transfer
          * @param uri the destination URI
+         * @throws GLib.Error
          */
         track_prepare(entry: RhythmDBEntry, uri: string): void;
 
@@ -18595,6 +18745,7 @@ export namespace RB {
          * @param uri the destination URI
          * @param dest_size the size of the destination file
          * @param media_type the media type of the destination file
+         * @throws GLib.Error
          */
         track_upload(entry: RhythmDBEntry, uri: string, dest_size: bigint | number, media_type: string): void;
 

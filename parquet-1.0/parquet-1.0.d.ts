@@ -27,18 +27,21 @@ export namespace Parquet {
     /**
      * The major version.
      * @since 0.16.0
+     * @default 3
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro version.
      * @since 0.16.0
+     * @default 0
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor version.
      * @since 0.16.0
+     * @default 0
      */
     const VERSION_MINOR: number;
 
@@ -120,6 +123,7 @@ export namespace Parquet {
         /**
          * @returns A got {@link Arrow.Schema}.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         get_schema(): Arrow.Schema | null;
 
@@ -127,6 +131,7 @@ export namespace Parquet {
          * @param i The index of the column to be read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.ChunkedArray}.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         read_column_data(i: number): Arrow.ChunkedArray | null;
 
@@ -135,12 +140,14 @@ export namespace Parquet {
          * @param column_indices Column indices to be read. `null` means that all columns are read.   If an index is negative, the index is counted backward from the   end of the columns. `-1` means the last column.
          * @returns A read {@link Arrow.Table}.
          * @since 1.0.0
+         * @throws GLib.Error
          */
         read_row_group(row_group_index: number, column_indices: number[] | null): Arrow.Table | null;
 
         /**
          * @returns A read {@link Arrow.Table}.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         read_table(): Arrow.Table | null;
 
@@ -216,6 +223,7 @@ export namespace Parquet {
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -224,6 +232,7 @@ export namespace Parquet {
          * @param chunk_size The max number of rows in a row group.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         write_table(table: Arrow.Table, chunk_size: bigint | number): boolean;
     }

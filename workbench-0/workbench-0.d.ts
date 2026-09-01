@@ -49,15 +49,15 @@ export namespace Workbench {
         /**
          * the request state is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the request was cancelled
          */
-        CANCELLED,
+        CANCELLED = 1,
         /**
          * the request is complete
          */
-        COMPLETE,
+        COMPLETE = 2,
     }
 
 
@@ -73,7 +73,7 @@ export namespace Workbench {
              * @signal
              * @run-last
              */
-            "completion-request": (arg0: CompletionRequest) => void;
+            "completion-request": (request: CompletionRequest) => void;
         }
 
         // Constructor properties interface
@@ -258,6 +258,7 @@ export namespace Workbench {
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link Gio.ListModel} of {@link GtkSource.CompletionProposal}
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): Gio.ListModel;
 

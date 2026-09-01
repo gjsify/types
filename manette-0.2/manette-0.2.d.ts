@@ -42,11 +42,11 @@ export namespace Manette {
         /**
          * Generic gamepads
          */
-        GENERIC,
+        GENERIC = 0,
         /**
          * Steam Deck
          */
-        STEAM_DECK,
+        STEAM_DECK = 1,
     }
 
 
@@ -65,41 +65,44 @@ export namespace Manette {
         /**
          * a special code to indicate a null event
          */
-        EVENT_NOTHING,
+        EVENT_NOTHING = -1,
         /**
          * a button has been pressed
          */
-        EVENT_BUTTON_PRESS,
+        EVENT_BUTTON_PRESS = 0,
         /**
          * a button has been released
          */
-        EVENT_BUTTON_RELEASE,
+        EVENT_BUTTON_RELEASE = 1,
         /**
          * an absolute axis has been moved
          */
-        EVENT_ABSOLUTE,
+        EVENT_ABSOLUTE = 2,
         /**
          * a hat axis has been moved
          */
-        EVENT_HAT,
+        EVENT_HAT = 3,
     }
 
 
     /**
      * libmanette major version component (e.g. 1 if the version is 1.2.3).
      * @since 0.2.10
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * libmanette micro version component (e.g. 3 if the version is 1.2.3).
      * @since 0.2.10
+     * @default 13
      */
     const MICRO_VERSION: number;
 
     /**
      * libmanette minor version component (e.g. 2 if the version is 1.2.3).
      * @since 0.2.10
+     * @default 2
      */
     const MINOR_VERSION: number;
 
@@ -107,6 +110,7 @@ export namespace Manette {
      * libmanette version, encoded as a string, useful for printing and
      * concatenation.
      * @since 0.2.10
+     * @default 0.2.13
      */
     const VERSION_S: string;
 
@@ -159,19 +163,19 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            "absolute-axis-event": (arg0: Event) => void;
+            "absolute-axis-event": (event: Event) => void;
             /**
              * Emitted when a button is pressed.
              * @signal
              * @run-last
              */
-            "button-press-event": (arg0: Event) => void;
+            "button-press-event": (event: Event) => void;
             /**
              * Emitted when a button is released.
              * @signal
              * @run-last
              */
-            "button-release-event": (arg0: Event) => void;
+            "button-release-event": (event: Event) => void;
             /**
              * Emitted when the device is disconnected.
              * @signal
@@ -183,13 +187,13 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            event: (arg0: Event) => void;
+            event: (event: Event) => void;
             /**
              * Emitted when a hat axis' value changes.
              * @signal
              * @run-last
              */
-            "hat-axis-event": (arg0: Event) => void;
+            "hat-axis-event": (event: Event) => void;
         }
 
         // Constructor properties interface
@@ -328,13 +332,13 @@ export namespace Manette {
              * @signal
              * @run-last
              */
-            "device-connected": (arg0: Device) => void;
+            "device-connected": (device: Device) => void;
             /**
              * Emitted when `device` is disconnected.
              * @signal
              * @run-last
              */
-            "device-disconnected": (arg0: Device) => void;
+            "device-disconnected": (device: Device) => void;
         }
 
         // Constructor properties interface

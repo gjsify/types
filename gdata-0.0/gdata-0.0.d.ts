@@ -43,19 +43,19 @@ export namespace GData {
         /**
          * a query operation
          */
-        QUERY,
+        QUERY = 0,
         /**
          * an insertion operation
          */
-        INSERTION,
+        INSERTION = 1,
         /**
          * an update operation
          */
-        UPDATE,
+        UPDATE = 2,
         /**
          * a deletion operation
          */
-        DELETION,
+        DELETION = 3,
     }
 
 
@@ -95,15 +95,15 @@ export namespace GData {
         /**
          * the media is a sample of a larger video
          */
-        SAMPLE,
+        SAMPLE = 0,
         /**
          * the media is the full version
          */
-        FULL,
+        FULL = 1,
         /**
          * the media is a continuous stream
          */
-        NONSTOP,
+        NONSTOP = 2,
     }
 
 
@@ -123,27 +123,27 @@ export namespace GData {
         /**
          * the type of the media is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the media is an image
          */
-        IMAGE,
+        IMAGE = 1,
         /**
          * the media is an audio stream
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * the media is a video
          */
-        VIDEO,
+        VIDEO = 3,
         /**
          * the media is another type of document
          */
-        DOCUMENT,
+        DOCUMENT = 4,
         /**
          * the media is an executable file
          */
-        EXECUTABLE,
+        EXECUTABLE = 5,
     }
 
 
@@ -163,35 +163,35 @@ export namespace GData {
         /**
          * a query
          */
-        QUERY,
+        QUERY = 1,
         /**
          * an insertion of a {@link GData.Entry}
          */
-        INSERTION,
+        INSERTION = 2,
         /**
          * an update of a {@link GData.Entry}
          */
-        UPDATE,
+        UPDATE = 3,
         /**
          * a deletion of a {@link GData.Entry}
          */
-        DELETION,
+        DELETION = 4,
         /**
          * a download of a file
          */
-        DOWNLOAD,
+        DOWNLOAD = 5,
         /**
          * an upload of a file
          */
-        UPLOAD,
+        UPLOAD = 6,
         /**
          * authentication with the service
          */
-        AUTHENTICATION,
+        AUTHENTICATION = 7,
         /**
          * a batch operation with {@link GData.BatchOperation}
          */
-        BATCH,
+        BATCH = 8,
     }
 
 
@@ -238,11 +238,11 @@ export namespace GData {
         /**
          * the album is visible to everyone, regardless of whether they're authenticated
          */
-        PUBLIC,
+        PUBLIC = 1,
         /**
          * the album is visible only to authenticated users in an allowlist
          */
-        PRIVATE,
+        PRIVATE = 2,
     }
 
 
@@ -342,19 +342,19 @@ export namespace GData {
         /**
          * retrieve all videos, regardless of the date they were uploaded
          */
-        ALL_TIME,
+        ALL_TIME = 0,
         /**
          * retrieve only videos uploaded in the past day
          */
-        TODAY,
+        TODAY = 1,
         /**
          * retrieve only videos uploaded in the past week
          */
-        THIS_WEEK,
+        THIS_WEEK = 2,
         /**
          * retrieve only videos uploaded in the past month
          */
-        THIS_MONTH,
+        THIS_MONTH = 3,
     }
 
 
@@ -377,15 +377,15 @@ export namespace GData {
         /**
          * the action is allowed for everyone
          */
-        ALLOWED,
+        ALLOWED = 0,
         /**
          * the action is denied for everyone
          */
-        DENIED,
+        DENIED = 1,
         /**
          * the action is moderated by the video owner
          */
-        MODERATED,
+        MODERATED = 2,
     }
 
 
@@ -406,16 +406,16 @@ export namespace GData {
         /**
          * YouTube will not perform any filtering on the search result set
          */
-        NONE,
+        NONE = 0,
         /**
          * YouTube will filter some content from search results and, at the least,
          * will filter content that is restricted in your locale
          */
-        MODERATE,
+        MODERATE = 1,
         /**
          * YouTube will try to exclude all restricted content from the search result set
          */
-        STRICT,
+        STRICT = 2,
     }
 
 
@@ -473,31 +473,35 @@ export namespace GData {
          *   determine overall popularity. As of version 0.17.0, this is the only
          *   supported feed type.
          */
-        FEED,
+        FEED = 0,
     }
 
 
     /**
      * The users specified by the {@link GData.AccessRule} have no rights.
      * @since 0.7.0
+     * @default none
      */
     const ACCESS_ROLE_NONE: string;
 
     /**
      * The {@link GData.AccessRule} applies to all users.
      * @since 0.7.0
+     * @default default
      */
     const ACCESS_SCOPE_DEFAULT: string;
 
     /**
      * The {@link GData.AccessRule} applies to all users in a Google Apps For Your Domain domain, given in {@link GData.AccessRule.scope_value}.
      * @since 0.7.0
+     * @default domain
      */
     const ACCESS_SCOPE_DOMAIN: string;
 
     /**
      * The {@link GData.AccessRule} applies to a single individual, whose e-mail address is given in {@link GData.AccessRule.scope_value}.
      * @since 0.7.0
+     * @default user
      */
     const ACCESS_SCOPE_USER: string;
 
@@ -505,6 +509,7 @@ export namespace GData {
      * The users specified by the {@link GData.CalendarAccessRule} have full edit access to
      * the calendar, except they can’t change the calendar’s access rules.
      * @since 0.7.0
+     * @default http://schemas.google.com/gCal/2005#editor
      */
     const CALENDAR_ACCESS_ROLE_EDITOR: string;
 
@@ -512,6 +517,7 @@ export namespace GData {
      * The users specified by the {@link GData.CalendarAccessRule} can only see the
      * free/busy information on the calendar; not event details.
      * @since 0.7.0
+     * @default http://schemas.google.com/gCal/2005#freebusy
      */
     const CALENDAR_ACCESS_ROLE_FREE_BUSY: string;
 
@@ -519,6 +525,7 @@ export namespace GData {
      * The users specified by the {@link GData.CalendarAccessRule} have full owner access
      * to the calendar.
      * @since 0.7.0
+     * @default http://schemas.google.com/gCal/2005#owner
      */
     const CALENDAR_ACCESS_ROLE_OWNER: string;
 
@@ -526,6 +533,7 @@ export namespace GData {
      * The users specified by the {@link GData.CalendarAccessRule} have read-only access to
      * the calendar.
      * @since 0.7.0
+     * @default http://schemas.google.com/gCal/2005#read
      */
     const CALENDAR_ACCESS_ROLE_READ: string;
 
@@ -534,6 +542,7 @@ export namespace GData {
      * access to the calendar server. This is only available in Google Apps For
      * Your Domain.
      * @since 0.7.0
+     * @default http://schemas.google.com/gCal/2005#root
      */
     const CALENDAR_ACCESS_ROLE_ROOT: string;
 
@@ -541,6 +550,7 @@ export namespace GData {
      * A schema for categories which label the entry they're applied to in some way, such as starring it. The semantics of the various labels
      * (such as `GDATA_CATEGORY_SCHEMA_LABELS_STARRED`) are service-specific.
      * @since 0.11.0
+     * @default http://schemas.google.com/g/2005/labels
      */
     const CATEGORY_SCHEMA_LABELS: string;
 
@@ -548,18 +558,21 @@ export namespace GData {
      * The users specified by the {@link GData.AccessRule} have full owner access to the document. This allows them to modify the access rules and delete
      * the document, amongst other things.
      * @since 0.7.0
+     * @default owner
      */
     const DOCUMENTS_ACCESS_ROLE_OWNER: string;
 
     /**
      * The users specified by the {@link GData.AccessRule} have read-only access to the document.
      * @since 0.7.0
+     * @default reader
      */
     const DOCUMENTS_ACCESS_ROLE_READER: string;
 
     /**
      * The users specified by the {@link GData.AccessRule} have write access to the document. They cannot modify the access rules or delete the document.
      * @since 0.7.0
+     * @default writer
      */
     const DOCUMENTS_ACCESS_ROLE_WRITER: string;
 
@@ -570,6 +583,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_drawings`">
      * GData protocol specification</ulink>.
      * @since 0.13.1
+     * @default jpeg
      */
     const DOCUMENTS_DRAWING_JPEG: string;
 
@@ -580,6 +594,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_drawings`">
      * GData protocol specification</ulink>.
      * @since 0.13.1
+     * @default pdf
      */
     const DOCUMENTS_DRAWING_PDF: string;
 
@@ -590,6 +605,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_drawings`">
      * GData protocol specification</ulink>.
      * @since 0.13.1
+     * @default png
      */
     const DOCUMENTS_DRAWING_PNG: string;
 
@@ -600,6 +616,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_drawings`">
      * GData protocol specification</ulink>.
      * @since 0.13.1
+     * @default svg
      */
     const DOCUMENTS_DRAWING_SVG: string;
 
@@ -610,6 +627,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_presentations`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default pdf
      */
     const DOCUMENTS_PRESENTATION_PDF: string;
 
@@ -620,6 +638,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_presentations`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default png
      */
     const DOCUMENTS_PRESENTATION_PNG: string;
 
@@ -630,6 +649,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_presentations`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default ppt
      */
     const DOCUMENTS_PRESENTATION_PPT: string;
 
@@ -640,6 +660,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_presentations`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default txt
      */
     const DOCUMENTS_PRESENTATION_TXT: string;
 
@@ -647,6 +668,7 @@ export namespace GData {
      * The {@link GData.DocumentsProperty} having the visibility set to FALSE (default) corresponds to having the visibility property on a Drive Property Resource
      * set to "PRIVATE". This makes the Property Resource accessible only by the app that created it.
      * @since 0.17.11
+     * @default PRIVATE
      */
     const DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE: string;
 
@@ -655,6 +677,7 @@ export namespace GData {
      * on a Drive Property Resource
      * set to "PUBLIC". This makes the Property Resource visible to other apps.
      * @since 0.17.11
+     * @default PUBLIC
      */
     const DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC: string;
 
@@ -665,6 +688,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default csv
      */
     const DOCUMENTS_SPREADSHEET_CSV: string;
 
@@ -675,6 +699,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default html
      */
     const DOCUMENTS_SPREADSHEET_HTML: string;
 
@@ -685,6 +710,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default ods
      */
     const DOCUMENTS_SPREADSHEET_ODS: string;
 
@@ -695,6 +721,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default pdf
      */
     const DOCUMENTS_SPREADSHEET_PDF: string;
 
@@ -705,6 +732,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default tsv
      */
     const DOCUMENTS_SPREADSHEET_TSV: string;
 
@@ -715,6 +743,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_formats_for_spreadsheets`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default xls
      */
     const DOCUMENTS_SPREADSHEET_XLS: string;
 
@@ -725,6 +754,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default doc
      */
     const DOCUMENTS_TEXT_DOC: string;
 
@@ -735,6 +765,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default html
      */
     const DOCUMENTS_TEXT_HTML: string;
 
@@ -745,6 +776,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.13.0
+     * @default jpeg
      */
     const DOCUMENTS_TEXT_JPEG: string;
 
@@ -755,6 +787,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default odt
      */
     const DOCUMENTS_TEXT_ODT: string;
 
@@ -765,6 +798,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default pdf
      */
     const DOCUMENTS_TEXT_PDF: string;
 
@@ -775,6 +809,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default png
      */
     const DOCUMENTS_TEXT_PNG: string;
 
@@ -785,6 +820,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default rtf
      */
     const DOCUMENTS_TEXT_RTF: string;
 
@@ -795,6 +831,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default txt
      */
     const DOCUMENTS_TEXT_TXT: string;
 
@@ -805,6 +842,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/`valid_download_formats_for_text_documents`">
      * GData protocol specification</ulink>.
      * @since 0.7.0
+     * @default zip
      */
     const DOCUMENTS_TEXT_ZIP: string;
 
@@ -814,6 +852,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default free-busy
      */
     const GCONTACT_CALENDAR_FREE_BUSY: string;
 
@@ -823,6 +862,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default home
      */
     const GCONTACT_CALENDAR_HOME: string;
 
@@ -832,6 +872,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default work
      */
     const GCONTACT_CALENDAR_WORK: string;
 
@@ -841,6 +882,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default anniversary
      */
     const GCONTACT_EVENT_ANNIVERSARY: string;
 
@@ -850,6 +892,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default other
      */
     const GCONTACT_EVENT_OTHER: string;
 
@@ -859,6 +902,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default account
      */
     const GCONTACT_EXTERNAL_ID_ACCOUNT: string;
 
@@ -868,6 +912,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default customer
      */
     const GCONTACT_EXTERNAL_ID_CUSTOMER: string;
 
@@ -877,6 +922,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default network
      */
     const GCONTACT_EXTERNAL_ID_NETWORK: string;
 
@@ -886,6 +932,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default organization
      */
     const GCONTACT_EXTERNAL_ID_ORGANIZATION: string;
 
@@ -895,6 +942,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default home
      */
     const GCONTACT_JOT_HOME: string;
 
@@ -904,6 +952,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default keywords
      */
     const GCONTACT_JOT_KEYWORDS: string;
 
@@ -913,6 +962,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default other
      */
     const GCONTACT_JOT_OTHER: string;
 
@@ -922,6 +972,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default user
      */
     const GCONTACT_JOT_USER: string;
 
@@ -931,6 +982,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default work
      */
     const GCONTACT_JOT_WORK: string;
 
@@ -940,6 +992,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default assistant
      */
     const GCONTACT_RELATION_ASSISTANT: string;
 
@@ -949,6 +1002,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default brother
      */
     const GCONTACT_RELATION_BROTHER: string;
 
@@ -958,6 +1012,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default child
      */
     const GCONTACT_RELATION_CHILD: string;
 
@@ -967,6 +1022,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default domestic-partner
      */
     const GCONTACT_RELATION_DOMESTIC_PARTNER: string;
 
@@ -976,6 +1032,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default father
      */
     const GCONTACT_RELATION_FATHER: string;
 
@@ -985,6 +1042,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default friend
      */
     const GCONTACT_RELATION_FRIEND: string;
 
@@ -994,6 +1052,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default manager
      */
     const GCONTACT_RELATION_MANAGER: string;
 
@@ -1003,6 +1062,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default mother
      */
     const GCONTACT_RELATION_MOTHER: string;
 
@@ -1012,6 +1072,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default parent
      */
     const GCONTACT_RELATION_PARENT: string;
 
@@ -1021,6 +1082,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default partner
      */
     const GCONTACT_RELATION_PARTNER: string;
 
@@ -1030,6 +1092,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default referred-by
      */
     const GCONTACT_RELATION_REFERRER: string;
 
@@ -1039,6 +1102,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default relative
      */
     const GCONTACT_RELATION_RELATIVE: string;
 
@@ -1048,6 +1112,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default sister
      */
     const GCONTACT_RELATION_SISTER: string;
 
@@ -1057,6 +1122,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default spouse
      */
     const GCONTACT_RELATION_SPOUSE: string;
 
@@ -1066,6 +1132,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default blog
      */
     const GCONTACT_WEBSITE_BLOG: string;
 
@@ -1075,6 +1142,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default ftp
      */
     const GCONTACT_WEBSITE_FTP: string;
 
@@ -1084,6 +1152,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default home
      */
     const GCONTACT_WEBSITE_HOME: string;
 
@@ -1093,6 +1162,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default home-page
      */
     const GCONTACT_WEBSITE_HOME_PAGE: string;
 
@@ -1102,6 +1172,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default other
      */
     const GCONTACT_WEBSITE_OTHER: string;
 
@@ -1111,6 +1182,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default profile
      */
     const GCONTACT_WEBSITE_PROFILE: string;
 
@@ -1120,396 +1192,462 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
      * gContact specification</ulink>.
      * @since 0.7.0
+     * @default work
      */
     const GCONTACT_WEBSITE_WORK: string;
 
     /**
      * The address is for general usage. Value for {@link GData.GDPostalAddress.usage}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#general
      */
     const GD_ADDRESS_USAGE_GENERAL: string;
 
     /**
      * The address is for local usage. Value for {@link GData.GDPostalAddress.usage}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#local
      */
     const GD_ADDRESS_USAGE_LOCAL: string;
 
     /**
      * The relation type URI for a home e-mail address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#home
      */
     const GD_EMAIL_ADDRESS_HOME: string;
 
     /**
      * The relation type URI for a miscellaneous e-mail address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other
      */
     const GD_EMAIL_ADDRESS_OTHER: string;
 
     /**
      * The relation type URI for a work e-mail address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work
      */
     const GD_EMAIL_ADDRESS_WORK: string;
 
     /**
      * The event has been canceled.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.canceled
      */
     const GD_EVENT_STATUS_CANCELED: string;
 
     /**
      * The event has been planned and confirmed.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.confirmed
      */
     const GD_EVENT_STATUS_CONFIRMED: string;
 
     /**
      * The event has been planned, but only tentatively scheduled.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.tentative
      */
     const GD_EVENT_STATUS_TENTATIVE: string;
 
     /**
      * The event consumes time in calendars; its time will be marked as busy in a free/busy search.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.opaque
      */
     const GD_EVENT_TRANSPARENCY_OPAQUE: string;
 
     /**
      * The event does not consume time in calendars; its time will be not marked as busy in a free/busy search.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.transparent
      */
     const GD_EVENT_TRANSPARENCY_TRANSPARENT: string;
 
     /**
      * The event is visible to only certain people.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.confidential
      */
     const GD_EVENT_VISIBILITY_CONFIDENTIAL: string;
 
     /**
      * The event's visibility is inherited from the preferences of its owner.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.default
      */
     const GD_EVENT_VISIBILITY_DEFAULT: string;
 
     /**
      * The event is visible to very few people.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.private
      */
     const GD_EVENT_VISIBILITY_PRIVATE: string;
 
     /**
      * The event is visible to most people.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.public
      */
     const GD_EVENT_VISIBILITY_PUBLIC: string;
 
     /**
      * The relation type URI for a home IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#home
      */
     const GD_IM_ADDRESS_HOME: string;
 
     /**
      * The relation type URI for a Microsoft NetMeeting IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#netmeeting
      */
     const GD_IM_ADDRESS_NETMEETING: string;
 
     /**
      * The relation type URI for a miscellaneous IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other
      */
     const GD_IM_ADDRESS_OTHER: string;
 
     /**
      * The relation type URI for a work IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work
      */
     const GD_IM_ADDRESS_WORK: string;
 
     /**
      * The protocol type URI for an AIM IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#AIM
      */
     const GD_IM_PROTOCOL_AIM: string;
 
     /**
      * The protocol type URI for a Google Talk IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#GOOGLE_TALK
      */
     const GD_IM_PROTOCOL_GOOGLE_TALK: string;
 
     /**
      * The protocol type URI for an ICQ IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#ICQ
      */
     const GD_IM_PROTOCOL_ICQ: string;
 
     /**
      * The protocol type URI for a Jabber IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#JABBER
      */
     const GD_IM_PROTOCOL_JABBER: string;
 
     /**
      * The protocol type URI for an Windows Live Messenger IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#MSN
      */
     const GD_IM_PROTOCOL_LIVE_MESSENGER: string;
 
     /**
      * The protocol type URI for a QQ IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#QQ
      */
     const GD_IM_PROTOCOL_QQ: string;
 
     /**
      * The protocol type URI for a Skype IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#SKYPE
      */
     const GD_IM_PROTOCOL_SKYPE: string;
 
     /**
      * The protocol type URI for a Yahoo! Messenger IM address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#YAHOO
      */
     const GD_IM_PROTOCOL_YAHOO_MESSENGER: string;
 
     /**
      * Parcels and letters can be sent to the address. Value for {@link GData.GDPostalAddress.mail_class}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#both
      */
     const GD_MAIL_CLASS_BOTH: string;
 
     /**
      * Only letters can be sent to the address. Value for {@link GData.GDPostalAddress.mail_class}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#letters
      */
     const GD_MAIL_CLASS_LETTERS: string;
 
     /**
      * Address is purely locational and cannot be used for mail. Value for {@link GData.GDPostalAddress.mail_class}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#neither
      */
     const GD_MAIL_CLASS_NEITHER: string;
 
     /**
      * Only parcels can be sent to the address. Value for {@link GData.GDPostalAddress.mail_class}.
      * @since 0.5.0
+     * @default http://schemas.google.com/g/2005#parcels
      */
     const GD_MAIL_CLASS_PARCELS: string;
 
     /**
      * The relation type URI for a miscellaneous organization.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other
      */
     const GD_ORGANIZATION_OTHER: string;
 
     /**
      * The relation type URI for a work organization.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work
      */
     const GD_ORGANIZATION_WORK: string;
 
     /**
      * The relation type URI for the phone number of an assistant.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#assistant
      */
     const GD_PHONE_NUMBER_ASSISTANT: string;
 
     /**
      * The relation type URI for the phone number of a callback service.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#callback
      */
     const GD_PHONE_NUMBER_CALLBACK: string;
 
     /**
      * The relation type URI for the phone number of a car phone.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#car
      */
     const GD_PHONE_NUMBER_CAR: string;
 
     /**
      * The relation type URI for the main phone number of a company.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#company_main
      */
     const GD_PHONE_NUMBER_COMPANY_MAIN: string;
 
     /**
      * The relation type URI for the phone number of a fax machine.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#fax
      */
     const GD_PHONE_NUMBER_FAX: string;
 
     /**
      * The relation type URI for a home phone number.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#home
      */
     const GD_PHONE_NUMBER_HOME: string;
 
     /**
      * The relation type URI for the phone number of a home fax machine.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#home_fax
      */
     const GD_PHONE_NUMBER_HOME_FAX: string;
 
     /**
      * The relation type URI for the phone number of an ISDN phone.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#isdn
      */
     const GD_PHONE_NUMBER_ISDN: string;
 
     /**
      * The relation type URI for the main phone number of a person.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#main
      */
     const GD_PHONE_NUMBER_MAIN: string;
 
     /**
      * The relation type URI for the phone number of a mobile phone.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#mobile
      */
     const GD_PHONE_NUMBER_MOBILE: string;
 
     /**
      * The relation type URI for a miscellaneous phone number.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other
      */
     const GD_PHONE_NUMBER_OTHER: string;
 
     /**
      * The relation type URI for a miscellaneous fax machine's phone number.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other_fax
      */
     const GD_PHONE_NUMBER_OTHER_FAX: string;
 
     /**
      * The relation type URI for the phone number of a pager.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#pager
      */
     const GD_PHONE_NUMBER_PAGER: string;
 
     /**
      * The relation type URI for the phone number of a radio phone.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#radio
      */
     const GD_PHONE_NUMBER_RADIO: string;
 
     /**
      * The relation type URI for the phone number of a telex machine.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#telex
      */
     const GD_PHONE_NUMBER_TELEX: string;
 
     /**
      * The relation type URI for the phone number of a TTY TTD.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#tty_tdd
      */
     const GD_PHONE_NUMBER_TTY_TDD: string;
 
     /**
      * The relation type URI for the phone number of a work place.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work
      */
     const GD_PHONE_NUMBER_WORK: string;
 
     /**
      * The relation type URI for the phone number of a work fax machine.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work_fax
      */
     const GD_PHONE_NUMBER_WORK_FAX: string;
 
     /**
      * The relation type URI for the phone number of a work mobile phone.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work_mobile
      */
     const GD_PHONE_NUMBER_WORK_MOBILE: string;
 
     /**
      * The relation type URI for the phone number of a work pager.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work_pager
      */
     const GD_PHONE_NUMBER_WORK_PAGER: string;
 
     /**
      * The relation type URI for the postal address of a home.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#home
      */
     const GD_POSTAL_ADDRESS_HOME: string;
 
     /**
      * The relation type URI for a miscellaneous postal address.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#other
      */
     const GD_POSTAL_ADDRESS_OTHER: string;
 
     /**
      * The relation type URI for the postal address of a workplace.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#work
      */
     const GD_POSTAL_ADDRESS_WORK: string;
 
     /**
      * The {@link GData.GDReminder.method} for an alert to appear in the user's browser.
      * @since 0.7.0
+     * @default alert
      */
     const GD_REMINDER_ALERT: string;
 
     /**
      * The {@link GData.GDReminder.method} for an alert to be sent to the user by e-mail.
      * @since 0.7.0
+     * @default email
      */
     const GD_REMINDER_EMAIL: string;
 
     /**
      * The {@link GData.GDReminder.method} for an alert to be sent to the user by SMS.
      * @since 0.7.0
+     * @default sms
      */
     const GD_REMINDER_SMS: string;
 
     /**
      * The relation type URI for an event location.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event
      */
     const GD_WHERE_EVENT: string;
 
     /**
      * The relation type URI for an alternate event location, such as a video conference site.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.alternate
      */
     const GD_WHERE_EVENT_ALTERNATE: string;
 
     /**
      * The relation type URI for an event's parking lot.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.parking
      */
     const GD_WHERE_EVENT_PARKING: string;
 
     /**
      * The relation type URI for a general meeting or event attendee.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.attendee
      */
     const GD_WHO_EVENT_ATTENDEE: string;
 
     /**
      * The relation type URI for an event organizer (not necessarily an attendee).
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.organizer
      */
     const GD_WHO_EVENT_ORGANIZER: string;
 
     /**
      * The relation type URI for an event performer, which is similar to `GDATA_GD_WHO_EVENT_SPEAKER`, but with more emphasis on art rather than speaking.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.performer
      */
     const GD_WHO_EVENT_PERFORMER: string;
 
     /**
      * The relation type URI for a speaker at an event.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#event.speaker
      */
     const GD_WHO_EVENT_SPEAKER: string;
 
@@ -1519,6 +1657,7 @@ export namespace GData {
      * For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/calendar/data/2.0/developers_guide_protocol.html#SharingACalendar">ACL specification</ulink>.
      * @since 0.7.0
+     * @default http://schemas.google.com/acl/2007#accessControlList
      */
     const LINK_ACCESS_CONTROL_LIST: string;
 
@@ -1528,6 +1667,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
      * Atom specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/alternate
      */
     const LINK_ALTERNATE: string;
 
@@ -1536,6 +1676,7 @@ export namespace GData {
      * 
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/batch.html#Submit_HTTP">GData specification</ulink>.
      * @since 0.7.0
+     * @default http://schemas.google.com/g/2005#batch
      */
     const LINK_BATCH: string;
 
@@ -1545,6 +1686,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/atom-protocol-spec.php#new-link-relation">
      * Atom Publishing Protocol specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/edit
      */
     const LINK_EDIT: string;
 
@@ -1555,6 +1697,7 @@ export namespace GData {
      * <ulink type="http" url="http://www.atomenabled.org/developers/protocol/atom-protocol-spec.php#new-media-link-relation">
      * Atom Publishing Protocol specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/edit-media
      */
     const LINK_EDIT_MEDIA: string;
 
@@ -1564,6 +1707,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
      * Atom specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/enclosure
      */
     const LINK_ENCLOSURE: string;
 
@@ -1576,6 +1720,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/v2/schema/document_list_atom.rnc">
      * RelaxNG schema</ulink>.
      * @since 0.15.1
+     * @default http://schemas.google.com/docs/2007#parent
      */
     const LINK_PARENT: string;
 
@@ -1585,6 +1730,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
      * Atom specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/related
      */
     const LINK_RELATED: string;
 
@@ -1595,6 +1741,7 @@ export namespace GData {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/resumable_upload.html#ResumableUploadInitiate">GData resumable upload protocol
      * specification</ulink>.
      * @since 0.13.0
+     * @default http://schemas.google.com/g/2005#resumable-create-media
      */
     const LINK_RESUMABLE_CREATE_MEDIA: string;
 
@@ -1605,6 +1752,7 @@ export namespace GData {
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/resumable_upload.html#ResumableUploadInitiate">GData resumable upload protocol
      * specification</ulink>.
      * @since 0.13.0
+     * @default http://schemas.google.com/g/2005#resumable-edit-media
      */
     const LINK_RESUMABLE_EDIT_MEDIA: string;
 
@@ -1614,6 +1762,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
      * Atom specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/self
      */
     const LINK_SELF: string;
 
@@ -1623,6 +1772,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
      * Atom specification</ulink>.
      * @since 0.4.0
+     * @default http://www.iana.org/assignments/relation/via
      */
     const LINK_VIA: string;
 
@@ -1630,6 +1780,7 @@ export namespace GData {
      * Evaluates to the major version of the GData headers at compile time.
      * (e.g. in libgdata version 1.2.3 this is 1).
      * @since 0.11.0
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
@@ -1637,6 +1788,7 @@ export namespace GData {
      * Evaluates to the micro version of the GData headers at compile time.
      * (e.g. in libgdata version 1.2.3 this is 3).
      * @since 0.11.0
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -1644,6 +1796,7 @@ export namespace GData {
      * Evaluates to the minor version of the GData headers at compile time.
      * (e.g. in libgdata version 1.2.3 this is 2).
      * @since 0.11.0
+     * @default 19
      */
     const MINOR_VERSION: number;
 
@@ -1655,6 +1808,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
      * documentation</ulink> for details.
      * @since 0.17.0
+     * @default urn:ietf:wg:oauth:2.0:oob
      */
     const OAUTH2_REDIRECT_URI_OOB: string;
 
@@ -1666,30 +1820,35 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
      * documentation</ulink> for details.
      * @since 0.17.0
+     * @default urn:ietf:wg:oauth:2.0:oob:auto
      */
     const OAUTH2_REDIRECT_URI_OOB_AUTO: string;
 
     /**
      * There was an error while processing or thumbnailing the video and it should be deleted.
      * @since 0.7.0
+     * @default failed
      */
     const PICASAWEB_VIDEO_STATUS_FAILED: string;
 
     /**
      * The video has been processed and thumbnailed.
      * @since 0.7.0
+     * @default final
      */
     const PICASAWEB_VIDEO_STATUS_FINAL: string;
 
     /**
      * The video is still being processed.
      * @since 0.7.0
+     * @default pending
      */
     const PICASAWEB_VIDEO_STATUS_PENDING: string;
 
     /**
      * The video has been processed, but still needs thumbnailing.
      * @since 0.7.0
+     * @default ready
      */
     const PICASAWEB_VIDEO_STATUS_READY: string;
 
@@ -1700,6 +1859,7 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/tasks/v1/reference/tasks#status">
      * Google Tasks documentation</ulink>.
      * @since 0.16.0
+     * @default completed
      */
     const TASKS_STATUS_COMPLETED: string;
 
@@ -1711,42 +1871,49 @@ export namespace GData {
      * <ulink type="http" url="https://developers.google.com/google-apps/tasks/v1/reference/tasks#status">
      * Google Tasks documentation</ulink>.
      * @since 0.16.0
+     * @default needsAction
      */
     const TASKS_STATUS_NEEDS_ACTION: string;
 
     /**
      * An action to comment on a video, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default comment
      */
     const YOUTUBE_ACTION_COMMENT: string;
 
     /**
      * An action to rate other users' comments on a video, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default commentVote
      */
     const YOUTUBE_ACTION_COMMENT_VOTE: string;
 
     /**
      * An action to embed a video on third-party websites, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default embed
      */
     const YOUTUBE_ACTION_EMBED: string;
 
     /**
      * An action to rate a video, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default rate
      */
     const YOUTUBE_ACTION_RATE: string;
 
     /**
      * An action allowing YouTube to show the video on mobile phones and televisions, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default syndicate
      */
     const YOUTUBE_ACTION_SYNDICATE: string;
 
     /**
      * An action to add a video response to a video, for use with `gdata_youtube_video_set_access_control()`.
      * @since 0.7.0
+     * @default videoRespond
      */
     const YOUTUBE_ACTION_VIDEO_RESPOND: string;
 
@@ -1756,6 +1923,7 @@ export namespace GData {
      * For more information, see the <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:aspectratio">
      * online documentation</ulink>.
      * @since 0.7.0
+     * @default widescreen
      */
     const YOUTUBE_ASPECT_RATIO_WIDESCREEN: string;
 
@@ -1764,12 +1932,14 @@ export namespace GData {
      * is the Creative Commons Attribution 3.0 Unported license; see the
      * <ulink type="http" url="http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=1284989">YouTube Help</ulink> for more information.
      * @since 0.11.0
+     * @default cc
      */
     const YOUTUBE_LICENSE_CC: string;
 
     /**
      * Value for {@link GData.YouTubeQuery.license} to restrict search results to only videos which are under the standard YouTube license.
      * @since 0.11.0
+     * @default youtube
      */
     const YOUTUBE_LICENSE_STANDARD: string;
 
@@ -1778,6 +1948,7 @@ export namespace GData {
      * values which can be returned for such ratings are: <code class="literal">g</code>, <code class="literal">pg</code>,
      * <code class="literal">pg-13</code>, <code class="literal">r</code> and <code class="literal">nc-17</code>.
      * @since 0.10.0
+     * @default mpaa
      */
     const YOUTUBE_RATING_TYPE_MPAA: string;
 
@@ -1787,6 +1958,7 @@ export namespace GData {
      * <code class="literal">tv-y</code>, <code class="literal">tv-y7</code>, <code class="literal">tv-y7-fv</code>, <code class="literal">tv-g</code>,
      * <code class="literal">tv-pg</code>, <code class="literal">tv-14</code> and <code class="literal">tv-ma</code>.
      * @since 0.10.0
+     * @default v-chip
      */
     const YOUTUBE_RATING_TYPE_V_CHIP: string;
 
@@ -2565,6 +2737,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` otherwise
          * @since 0.7.0
+         * @throws GLib.Error
          */
         run(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2619,6 +2792,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise
          * @since 0.7.0
+         * @throws GLib.Error
          */
         run_finish(async_result: Gio.AsyncResult): boolean;
     }
@@ -2891,6 +3065,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -3904,6 +4079,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.CalendarEvent}, or `null`; unref with `g_object_unref()`
          * @since 0.17.2
+         * @throws GLib.Error
          */
         insert_calendar_event(calendar: CalendarCalendar, event: CalendarEvent, cancellable: Gio.Cancellable | null): CalendarEvent;
 
@@ -3937,6 +4113,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_all_calendars(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -3964,6 +4141,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_events(calendar: CalendarCalendar, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -3994,6 +4172,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_own_calendars(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -4407,6 +4586,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the document with, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         download(service: DocumentsService, export_format: string, cancellable: Gio.Cancellable | null): DownloadStream;
 
@@ -4483,6 +4663,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -5094,6 +5275,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -5277,6 +5459,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -6054,6 +6237,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         add_entry_to_folder(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): DocumentsEntry;
 
@@ -6109,6 +6293,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         add_entry_to_folder_finish(async_result: Gio.AsyncResult): DocumentsEntry;
 
@@ -6120,6 +6305,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the duplicate {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
          * @since 0.13.1
+         * @throws GLib.Error
          */
         copy_document(document: DocumentsDocument, cancellable: Gio.Cancellable | null): DocumentsDocument;
 
@@ -6172,6 +6358,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns the duplicate {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
          * @since 0.13.1
+         * @throws GLib.Error
          */
         copy_document_finish(async_result: Gio.AsyncResult): DocumentsDocument;
 
@@ -6189,6 +6376,7 @@ export namespace GData {
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new or updated {@link GData.DocumentsDocument}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         finish_upload(upload_stream: UploadStream): DocumentsDocument;
 
@@ -6198,6 +6386,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the service's metadata object; unref with `g_object_unref()`
          * @since 0.17.9
+         * @throws GLib.Error
          */
         get_metadata(cancellable: Gio.Cancellable | null): DocumentsMetadata;
 
@@ -6247,6 +6436,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns the service's metadata object; unref with `g_object_unref()`
          * @since 0.17.9
+         * @throws GLib.Error
          */
         get_metadata_finish(async_result: Gio.AsyncResult): DocumentsMetadata;
 
@@ -6260,6 +6450,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.DocumentsFeed} of query results; unref with `g_object_unref()`
          * @since 0.4.0
+         * @throws GLib.Error
          */
         query_documents(query: DocumentsQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): DocumentsFeed;
 
@@ -6286,6 +6477,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.DocumentsFeed} of query results; unref with `g_object_unref()`
          * @since 0.18.0
+         * @throws GLib.Error
          */
         query_drives(query: DocumentsDriveQuery | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): DocumentsFeed;
 
@@ -6313,6 +6505,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         remove_entry_from_folder(entry: DocumentsEntry, folder: DocumentsFolder, cancellable: Gio.Cancellable | null): DocumentsEntry;
 
@@ -6369,6 +6562,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.DocumentsEntry}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         remove_entry_from_folder_finish(async_result: Gio.AsyncResult): DocumentsEntry;
 
@@ -6397,6 +6591,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         update_document(document: DocumentsDocument, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6426,6 +6621,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to; unref with `g_object_unref()`
          * @since 0.13.0
+         * @throws GLib.Error
          */
         update_document_resumable(document: DocumentsDocument, slug: string, content_type: string, content_length: bigint | number, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6456,6 +6652,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         upload_document(document: DocumentsDocument | null, slug: string, content_type: string, folder: DocumentsFolder | null, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -6494,6 +6691,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the document data to, or `null`; unref with `g_object_unref()`
          * @since 0.13.0
+         * @throws GLib.Error
          */
         upload_document_resumable(document: DocumentsDocument | null, slug: string, content_type: string, content_length: bigint | number, query: DocumentsUploadQuery | null, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -7035,6 +7233,7 @@ export namespace GData {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7057,6 +7256,7 @@ export namespace GData {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12094,6 +12294,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12157,6 +12358,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -12864,6 +13066,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the content with, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         download(service: Service, cancellable: Gio.Cancellable | null): DownloadStream;
 
@@ -13140,6 +13343,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire download stream, or `null`
          * @returns a {@link GData.DownloadStream} to download the thumbnail with, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         download(service: Service, cancellable: Gio.Cancellable | null): DownloadStream;
 
@@ -13540,6 +13744,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` otherwise
          * @since 0.17.0
+         * @throws GLib.Error
          */
         request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13575,6 +13780,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if authorization was successful, `false` otherwise
          * @since 0.17.0
+         * @throws GLib.Error
          */
         request_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -13683,6 +13889,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13746,6 +13953,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -15387,6 +15595,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15442,6 +15651,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -15454,6 +15664,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -15509,6 +15720,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -15524,6 +15736,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -15582,6 +15795,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
 
@@ -15919,6 +16133,7 @@ export namespace GData {
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new {@link GData.PicasaWebFile}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         finish_file_upload(upload_stream: UploadStream): PicasaWebFile;
 
@@ -15928,6 +16143,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link GData.PicasaWebUser}; unref with `g_object_unref()`
          * @since 0.6.0
+         * @throws GLib.Error
          */
         get_user(username: string | null, cancellable: Gio.Cancellable | null): PicasaWebUser;
 
@@ -15977,6 +16193,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.PicasaWebUser}; unref with `g_object_unref()`
          * @since 0.9.1
+         * @throws GLib.Error
          */
         get_user_finish(result: Gio.AsyncResult): PicasaWebUser;
 
@@ -15987,6 +16204,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the inserted {@link GData.PicasaWebAlbum}; unref with `g_object_unref()`
          * @since 0.6.0
+         * @throws GLib.Error
          */
         insert_album(album: PicasaWebAlbum, cancellable: Gio.Cancellable | null): PicasaWebAlbum;
 
@@ -16020,6 +16238,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
          * @since 0.4.0
+         * @throws GLib.Error
          */
         query_all_albums(query: Query | null, username: string | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -16050,6 +16269,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
          * @since 0.4.0
+         * @throws GLib.Error
          */
         query_files(album: PicasaWebAlbum | null, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -16095,6 +16315,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the file data to, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         upload_file(album: PicasaWebAlbum | null, file_entry: PicasaWebFile, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
     }
@@ -16937,6 +17158,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
          * @since 0.9.0
+         * @throws GLib.Error
          */
         delete_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16992,6 +17214,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise
          * @since 0.3.0
+         * @throws GLib.Error
          */
         delete_entry_finish(async_result: Gio.AsyncResult): boolean;
 
@@ -17047,6 +17270,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         insert_entry(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null): Entry;
 
@@ -17105,6 +17329,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         insert_entry_finish(async_result: Gio.AsyncResult): Entry;
 
@@ -17147,6 +17372,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results, or `null`; unref with `g_object_unref()`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         query(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -17210,6 +17436,7 @@ export namespace GData {
          * Finishes an asynchronous query operation started with `gdata_service_query_async()`.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of query results, or `null`; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_finish(async_result: Gio.AsyncResult): Feed;
 
@@ -17229,6 +17456,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         query_single_entry(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): Entry;
 
@@ -17293,6 +17521,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.7.0
+         * @throws GLib.Error
          */
         query_single_entry_finish(async_result: Gio.AsyncResult): Entry;
 
@@ -17352,6 +17581,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         update_entry(domain: AuthorizationDomain | null, entry: Entry, cancellable: Gio.Cancellable | null): Entry;
 
@@ -17407,6 +17637,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns an updated {@link GData.Entry}, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         update_entry_finish(async_result: Gio.AsyncResult): Entry;
     }
@@ -17795,6 +18026,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
          * @since 0.15.0
+         * @throws GLib.Error
          */
         delete_task(task: TasksTask, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17822,6 +18054,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` otherwise
          * @since 0.15.0
+         * @throws GLib.Error
          */
         delete_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17850,6 +18083,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTask}, or `null`; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         insert_task(task: TasksTask, tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTask;
 
@@ -17878,6 +18112,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTasklist}, or `null`; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         insert_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTasklist;
 
@@ -17907,6 +18142,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         query_all_tasklists(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -17935,6 +18171,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         query_tasks(tasklist: TasksTasklist, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -17963,6 +18200,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTask}, or `null`; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         update_task(task: TasksTask, cancellable: Gio.Cancellable | null): TasksTask;
 
@@ -17990,6 +18228,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an updated {@link GData.TasksTasklist}, or `null`; unref with `g_object_unref()`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         update_tasklist(tasklist: TasksTasklist, cancellable: Gio.Cancellable | null): TasksTasklist;
 
@@ -19332,6 +19571,7 @@ export namespace GData {
          * @param upload_stream the {@link GData.UploadStream} from the operation
          * @returns the new {@link GData.YouTubeVideo}, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         finish_video_upload(upload_stream: UploadStream): YouTubeVideo;
 
@@ -19343,6 +19583,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link GData.APPCategories}, or `null`; unref with `g_object_unref()`
          * @since 0.7.0
+         * @throws GLib.Error
          */
         get_categories(cancellable: Gio.Cancellable | null): APPCategories;
 
@@ -19392,6 +19633,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link GData.APPCategories}, or `null`; unref with `g_object_unref()`
          * @since 0.7.0
+         * @throws GLib.Error
          */
         get_categories_finish(async_result: Gio.AsyncResult): APPCategories;
 
@@ -19410,6 +19652,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_related(video: YouTubeVideo, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -19444,6 +19687,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results, or `null`; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_standard_feed(feed_type: YouTubeStandardFeedType, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -19473,6 +19717,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when an entry is loaded, or `null`
          * @returns a {@link GData.Feed} of query results, or `null`; unref with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_videos(query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -19513,6 +19758,7 @@ export namespace GData {
          * @param cancellable a {@link Gio.Cancellable} for the entire upload stream, or `null`
          * @returns a {@link GData.UploadStream} to write the video data to, or `null`; unref with `g_object_unref()`
          * @since 0.8.0
+         * @throws GLib.Error
          */
         upload_video(video: YouTubeVideo, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream;
 
@@ -20300,6 +20546,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20355,6 +20602,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -20367,6 +20615,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -20422,6 +20671,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -20437,6 +20687,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -20495,6 +20746,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
 
@@ -21625,6 +21877,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a rule is loaded, or `null`
          * @returns a {@link GData.Feed} of access control rules, or `null`; unref with `g_object_unref()`
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_rules(service: Service, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed;
 
@@ -21836,6 +22089,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21899,6 +22153,7 @@ export namespace GData {
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` if an authorization refresh was attempted and was successful, `false` if a refresh wasn't attempted or was unsuccessful
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_authorization_finish(async_result: Gio.AsyncResult): boolean;
     }
@@ -21997,6 +22252,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22052,6 +22308,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the comment was successfully deleted, `false` otherwise
          * @since 0.10.0
+         * @throws GLib.Error
          */
         delete_comment_finish(result: Gio.AsyncResult): boolean;
 
@@ -22064,6 +22321,7 @@ export namespace GData {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment(service: Service, comment_: Comment, cancellable: Gio.Cancellable | null): Comment | null;
 
@@ -22119,6 +22377,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns the added {@link GData.Comment}, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         insert_comment_finish(result: Gio.AsyncResult): Comment | null;
 
@@ -22134,6 +22393,7 @@ export namespace GData {
          * @param progress_callback a {@link GData.QueryProgressCallback} to call when a comment is loaded, or `null`
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments(service: Service, query: Query | null, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed | null;
 
@@ -22192,6 +22452,7 @@ export namespace GData {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GData.Feed} of `GDataComments`, or `null`; unref with `g_object_unref()`
          * @since 0.10.0
+         * @throws GLib.Error
          */
         query_comments_finish(result: Gio.AsyncResult): Feed | null;
     }

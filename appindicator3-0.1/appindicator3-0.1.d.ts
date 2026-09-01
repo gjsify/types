@@ -41,23 +41,23 @@ export namespace AppIndicator3 {
         /**
          * The indicator is used to display the status of the application.
          */
-        APPLICATION_STATUS,
+        APPLICATION_STATUS = 0,
         /**
          * The application is used for communication with other people.
          */
-        COMMUNICATIONS,
+        COMMUNICATIONS = 1,
         /**
          * A system indicator relating to something in the user's system.
          */
-        SYSTEM_SERVICES,
+        SYSTEM_SERVICES = 2,
         /**
          * An indicator relating to the user's hardware.
          */
-        HARDWARE,
+        HARDWARE = 3,
         /**
          * Something not defined in this enum, please don't use unless you really need it.
          */
-        OTHER,
+        OTHER = 4,
     }
 
 
@@ -72,50 +72,57 @@ export namespace AppIndicator3 {
         /**
          * The indicator should not be shown to the user.
          */
-        PASSIVE,
+        PASSIVE = 0,
         /**
          * The indicator should be shown in it's default state.
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * The indicator should show it's attention icon.
          */
-        ATTENTION,
+        ATTENTION = 2,
     }
 
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.connection_changed | AppIndicator3.Indicator::connection-changed} signal.
+     * @default connection-changed
      */
     const INDICATOR_SIGNAL_CONNECTION_CHANGED: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.new_attention_icon | AppIndicator3.Indicator::new-attention-icon} signal.
+     * @default new-attention-icon
      */
     const INDICATOR_SIGNAL_NEW_ATTENTION_ICON: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.new_icon | AppIndicator3.Indicator::new-icon} signal.
+     * @default new-icon
      */
     const INDICATOR_SIGNAL_NEW_ICON: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.new_icon_theme_path | AppIndicator3.Indicator::new-icon-theme-path} signal.
+     * @default new-icon-theme-path
      */
     const INDICATOR_SIGNAL_NEW_ICON_THEME_PATH: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.new_label | AppIndicator3.Indicator::new-label} signal.
+     * @default new-label
      */
     const INDICATOR_SIGNAL_NEW_LABEL: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.new_status | AppIndicator3.Indicator::new-status} signal.
+     * @default new-status
      */
     const INDICATOR_SIGNAL_NEW_STATUS: string;
 
     /**
      * String identifier for the {@link AppIndicator3.Indicator.SignalSignatures.scroll_event | AppIndicator3.Indicator::scroll-event} signal.
+     * @default scroll-event
      */
     const INDICATOR_SIGNAL_SCROLL_EVENT: string;
 
@@ -127,7 +134,7 @@ export namespace AppIndicator3 {
              * @signal
              * @run-last
              */
-            "connection-changed": (arg0: boolean) => void;
+            "connection-changed": (arg1: boolean) => void;
             /**
              * Emitted when {@link AppIndicator3.Indicator.attention_icon_name} is changed
              * @signal
@@ -146,26 +153,26 @@ export namespace AppIndicator3 {
              * @signal
              * @run-last
              */
-            "new-icon-theme-path": (arg0: string) => void;
+            "new-icon-theme-path": (object: string) => void;
             /**
              * Emitted when either {@link AppIndicator3.Indicator.label} or {@link AppIndicator3.Indicator.label_guide} are
              * changed.
              * @signal
              * @run-last
              */
-            "new-label": (arg0: string, arg1: string) => void;
+            "new-label": (object: string, p0: string) => void;
             /**
              * Emitted when {@link AppIndicator3.Indicator.status} is changed
              * @signal
              * @run-last
              */
-            "new-status": (arg0: string) => void;
+            "new-status": (arg1: string) => void;
             /**
              * Signaled when the {@link AppIndicator3.Indicator} receives a scroll event.
              * @signal
              * @run-last
              */
-            "scroll-event": (arg0: number, arg1: Gdk.ScrollDirection) => void;
+            "scroll-event": (arg1: number, arg2: Gdk.ScrollDirection) => void;
             "notify::attention-icon-desc": (pspec: GObject.ParamSpec) => void;
             "notify::attention-icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::category": (pspec: GObject.ParamSpec) => void;

@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./inputpad-1.1.d.ts","./inputpad-1.1-surface.d.ts"]
+  "include": ["./inputpad-1.1.d.ts","./inputpad-1.1-vocabulary.d.ts"]
 }
 
 

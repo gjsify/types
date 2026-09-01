@@ -24,9 +24,9 @@ export namespace AvahiCore {
      * @gir-type Enum
      */
     enum Protocol {
-        INET,
-        INET6,
-        UNSPEC,
+        INET = 0,
+        INET6 = 1,
+        UNSPEC = -1,
     }
 
 
@@ -36,15 +36,15 @@ export namespace AvahiCore {
      * @gir-type Flags
      */
     enum PublishFlags {
-        UNIQUE,
-        NO_PROBE,
-        NO_ANNOUNCE,
-        ALLOW_MULTIPLE,
-        NO_REVERSE,
-        NO_COOKIE,
-        UPDATE,
-        USE_WIDE_AREA,
-        USE_MULTICAST,
+        UNIQUE = 1,
+        NO_PROBE = 2,
+        NO_ANNOUNCE = 4,
+        ALLOW_MULTIPLE = 8,
+        NO_REVERSE = 16,
+        NO_COOKIE = 32,
+        UPDATE = 64,
+        USE_WIDE_AREA = 128,
+        USE_MULTICAST = 256,
     }
 
 

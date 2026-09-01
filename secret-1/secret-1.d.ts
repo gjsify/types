@@ -39,17 +39,17 @@ export namespace Secret {
         /**
          * no flags for initializing the {@link Secret.Backend}
          */
-        NONE,
+        NONE = 0,
         /**
          * establish a session for transfer of secrets
          *   while initializing the {@link Secret.Backend}
          */
-        OPEN_SESSION,
+        OPEN_SESSION = 2,
         /**
          * load collections while initializing the
          *   {@link Secret.Backend}
          */
-        LOAD_COLLECTIONS,
+        LOAD_COLLECTIONS = 4,
     }
 
 
@@ -72,43 +72,47 @@ export namespace Secret {
          * received an invalid data or message from the Secret
          *   Service
          */
-        PROTOCOL,
+        PROTOCOL = 1,
         /**
          * the item or collection is locked and the operation
          *   cannot be performed
          */
-        IS_LOCKED,
+        IS_LOCKED = 2,
         /**
          * no such item or collection found in the Secret
          *   Service
          */
-        NO_SUCH_OBJECT,
+        NO_SUCH_OBJECT = 3,
         /**
          * a relevant item or collection already exists
          */
-        ALREADY_EXISTS,
+        ALREADY_EXISTS = 4,
         /**
          * the file format is not valid
          */
-        INVALID_FILE_FORMAT,
+        INVALID_FILE_FORMAT = 5,
         /**
          * the xdg:schema attribute of the table does not match the schema name
+         * @since 0.21.2
          */
-        MISMATCHED_SCHEMA,
+        MISMATCHED_SCHEMA = 6,
         /**
          * attribute contained in table not found in corresponding schema
+         * @since 0.21.2
          */
-        NO_MATCHING_ATTRIBUTE,
+        NO_MATCHING_ATTRIBUTE = 7,
         /**
          * attribute could not be parsed according to its type reported in the table's
          * schema
+         * @since 0.21.2
          */
-        WRONG_TYPE,
+        WRONG_TYPE = 8,
         /**
          * attribute list passed to secret_attributes_validate has no elements to
          * validate
+         * @since 0.21.2
          */
-        EMPTY_TABLE,
+        EMPTY_TABLE = 9,
     }
 
 
@@ -131,15 +135,15 @@ export namespace Secret {
         /**
          * a utf-8 string attribute
          */
-        STRING,
+        STRING = 0,
         /**
          * an integer attribute, stored as a decimal
          */
-        INTEGER,
+        INTEGER = 1,
         /**
          * a boolean attribute, stored as 'true' or 'false'
          */
-        BOOLEAN,
+        BOOLEAN = 2,
     }
 
 
@@ -215,17 +219,18 @@ export namespace Secret {
         /**
          * Personal passwords
          */
-        NOTE,
+        NOTE = 0,
         /**
          * Network passwords from older
          *    libgnome-keyring storage
          */
-        COMPAT_NETWORK,
+        COMPAT_NETWORK = 1,
     }
 
 
     /**
      * Extension point for the secret backend.
+     * @default secret-backend
      */
     const BACKEND_EXTENSION_POINT_NAME: string;
 
@@ -233,6 +238,7 @@ export namespace Secret {
      * An alias to the default collection.
      * 
      * This can be passed to {@link password_store} {@link Collection.for_alias}.
+     * @default default
      */
     const COLLECTION_DEFAULT: string;
 
@@ -242,21 +248,25 @@ export namespace Secret {
      * 
      * This can be passed to {@link password_store}, {@link Collection.for_alias} or
      * similar functions.
+     * @default session
      */
     const COLLECTION_SESSION: string;
 
     /**
      * The major version of libsecret.
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version of libsecret.
+     * @default 7
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version of libsecret.
+     * @default 21
      */
     const MINOR_VERSION: number;
 
@@ -269,6 +279,7 @@ export namespace Secret {
      * @param attributes the attributes to be validated
      * @returns whether or not the given attributes table is valid
      * @since 0.21.2
+     * @throws GLib.Error
      */
     function attributes_validate(schema: Schema, attributes: never): boolean;
 
@@ -322,6 +333,7 @@ export namespace Secret {
      * @param result the asynchronous result passed to the callback
      * @returns a new reference to a {@link Secret.Backend} proxy, which   should be released with {@link GObject.Object.unref}.
      * @since 0.19.0
+     * @throws GLib.Error
      */
     function backend_get_finish(result: Gio.AsyncResult): Backend;
 
@@ -347,6 +359,7 @@ export namespace Secret {
      * service.
      * @param result the asynchronous result passed to the callback
      * @returns whether any passwords were removed
+     * @throws GLib.Error
      */
     function password_clear_finish(result: Gio.AsyncResult): boolean;
 
@@ -405,6 +418,7 @@ export namespace Secret {
      * @param attributes the attribute keys and values
      * @param cancellable optional cancellation object
      * @returns whether any passwords were removed
+     * @throws GLib.Error
      */
     function password_clear_sync(schema: Schema | null, attributes: { [key: string]: string }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -412,6 +426,7 @@ export namespace Secret {
      * Finish an asynchronous operation to lookup a password in the secret service.
      * @param result the asynchronous result passed to the callback
      * @returns a new password string which should be freed with   {@link password_free} or may be freed with {@link GLib.free} when done
+     * @throws GLib.Error
      */
     function password_lookup_finish(result: Gio.AsyncResult): string;
 
@@ -470,6 +485,7 @@ export namespace Secret {
      * @param attributes the attribute keys and values
      * @param cancellable optional cancellation object
      * @returns a new password string which should be freed with   {@link password_free} or may be freed with {@link GLib.free} when done
+     * @throws GLib.Error
      */
     function password_lookup_sync(schema: Schema | null, attributes: { [key: string]: string }, cancellable: Gio.Cancellable | null): string;
 
@@ -478,6 +494,7 @@ export namespace Secret {
      * @param result the asynchronous result passed to the callback
      * @returns a list of   {@link Retrievable} containing attributes of the matched items
      * @since 0.19.0
+     * @throws GLib.Error
      */
     function password_search_finish(result: Gio.AsyncResult): Retrievable[];
 
@@ -538,6 +555,7 @@ export namespace Secret {
      * @param cancellable optional cancellation object
      * @returns a list of   {@link Retrievable} containing attributes of the matched items
      * @since 0.19.0
+     * @throws GLib.Error
      */
     function password_search_sync(schema: Schema | null, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable | null): Retrievable[];
 
@@ -545,6 +563,7 @@ export namespace Secret {
      * Finish asynchronous operation to store a password in the secret service.
      * @param result the asynchronous result passed to the callback
      * @returns whether the storage was successful or not
+     * @throws GLib.Error
      */
     function password_store_finish(result: Gio.AsyncResult): boolean;
 
@@ -648,6 +667,7 @@ export namespace Secret {
      * @param cancellable optional cancellation object
      * @returns whether the storage was successful or not
      * @since 0.19.0
+     * @throws GLib.Error
      */
     function password_store_binary_sync(schema: Schema | null, attributes: { [key: string]: string }, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null): boolean;
 
@@ -672,6 +692,7 @@ export namespace Secret {
      * @param password the null-terminated password to store
      * @param cancellable optional cancellation object
      * @returns whether the storage was successful or not
+     * @throws GLib.Error
      */
     function password_store_sync(schema: Schema | null, attributes: { [key: string]: string }, collection: string | null, label: string, password: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -696,7 +717,7 @@ export namespace Secret {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
     }
 
 
@@ -715,11 +736,11 @@ export namespace Secret {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * items have or should be loaded
          */
-        LOAD_ITEMS,
+        LOAD_ITEMS = 2,
     }
 
 
@@ -738,11 +759,11 @@ export namespace Secret {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * replace an item with the same attributes.
          */
-        REPLACE,
+        REPLACE = 2,
     }
 
 
@@ -761,11 +782,11 @@ export namespace Secret {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * a secret has been (or should be) loaded for {@link Secret.Item}
          */
-        LOAD_SECRET,
+        LOAD_SECRET = 2,
     }
 
 
@@ -784,12 +805,12 @@ export namespace Secret {
         /**
          * no flags for the schema
          */
-        NONE,
+        NONE = 0,
         /**
          * don't match the schema name when looking up or
          *   removing passwords
          */
-        DONT_MATCH_NAME,
+        DONT_MATCH_NAME = 2,
     }
 
 
@@ -808,19 +829,19 @@ export namespace Secret {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * all the items matching the search will be returned, instead of just the first one
          */
-        ALL,
+        ALL = 2,
         /**
          * unlock locked items while searching
          */
-        UNLOCK,
+        UNLOCK = 4,
         /**
          * while searching load secrets for items that are not locked
          */
-        LOAD_SECRETS,
+        LOAD_SECRETS = 8,
     }
 
 
@@ -840,17 +861,17 @@ export namespace Secret {
         /**
          * no flags for initializing the {@link Secret.Service}
          */
-        NONE,
+        NONE = 0,
         /**
          * establish a session for transfer of secrets
          *   while initializing the {@link Secret.Service}
          */
-        OPEN_SESSION,
+        OPEN_SESSION = 2,
         /**
          * load collections while initializing the
          *   {@link Secret.Service}
          */
-        LOAD_COLLECTIONS,
+        LOAD_COLLECTIONS = 4,
     }
 
 
@@ -1112,6 +1133,7 @@ export namespace Secret {
          * Complete operation to delete this collection.
          * @param result asynchronous result passed to the callback
          * @returns whether the collection was successfully deleted or not
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -1123,6 +1145,7 @@ export namespace Secret {
          * be used to handle any prompts that show up.
          * @param cancellable optional cancellation object
          * @returns whether the collection was successfully deleted or not
+         * @throws GLib.Error
          */
         delete_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1236,6 +1259,7 @@ export namespace Secret {
          * has loaded all the items present in the Secret Service.
          * @param result the asynchronous result passed to the callback
          * @returns whether the load was successful or not
+         * @throws GLib.Error
          */
         load_items_finish(result: Gio.AsyncResult): boolean;
 
@@ -1251,6 +1275,7 @@ export namespace Secret {
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
+         * @throws GLib.Error
          */
         load_items_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1338,6 +1363,7 @@ export namespace Secret {
          * Complete asynchronous operation to search for items in a collection.
          * @param result asynchronous result passed to callback
          * @returns a list of items that matched the search
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): Item[];
 
@@ -1363,6 +1389,7 @@ export namespace Secret {
          * @param flags search option flags
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
+         * @throws GLib.Error
          */
         search_sync(schema: Schema | null, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable | null): Item[];
 
@@ -1399,6 +1426,7 @@ export namespace Secret {
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_label_finish(result: Gio.AsyncResult): boolean;
 
@@ -1410,6 +1438,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1550,6 +1579,7 @@ export namespace Secret {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1559,6 +1589,7 @@ export namespace Secret {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Collection;
 
@@ -1723,6 +1754,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2004,6 +2036,7 @@ export namespace Secret {
          * Complete asynchronous operation to delete the secret item.
          * @param result asynchronous result passed to the callback
          * @returns whether the item was successfully deleted or not
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -2015,6 +2048,7 @@ export namespace Secret {
          * {@link Service.prompt} will be used to handle any prompts that show up.
          * @param cancellable optional cancellation object
          * @returns whether the item was successfully deleted or not
+         * @throws GLib.Error
          */
         delete_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2152,6 +2186,7 @@ export namespace Secret {
          * {@link Item.get_secret}.
          * @param result asynchronous result passed to callback
          * @returns whether the secret item successfully loaded or not
+         * @throws GLib.Error
          */
         load_secret_finish(result: Gio.AsyncResult): boolean;
 
@@ -2165,6 +2200,7 @@ export namespace Secret {
          * in user interface threads.
          * @param cancellable optional cancellation object
          * @returns whether the secret item successfully loaded or not
+         * @throws GLib.Error
          */
         load_secret_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2227,6 +2263,7 @@ export namespace Secret {
          * Complete operation to set the attributes of this item.
          * @param result asynchronous result passed to the callback
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_attributes_finish(result: Gio.AsyncResult): boolean;
 
@@ -2243,6 +2280,7 @@ export namespace Secret {
          * @param attributes a new set of attributes
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_attributes_sync(schema: Schema | null, attributes: { [key: string]: string }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2279,6 +2317,7 @@ export namespace Secret {
          * Complete asynchronous operation to set the label of this collection.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_label_finish(result: Gio.AsyncResult): boolean;
 
@@ -2290,6 +2329,7 @@ export namespace Secret {
          * @param label a new label
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2335,6 +2375,7 @@ export namespace Secret {
          * Complete asynchronous operation to set the secret value of this item.
          * @param result asynchronous result passed to callback
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_secret_finish(result: Gio.AsyncResult): boolean;
 
@@ -2349,6 +2390,7 @@ export namespace Secret {
          * @param value a new secret value
          * @param cancellable optional cancellation object
          * @returns whether the change was successful or not
+         * @throws GLib.Error
          */
         set_secret_sync(value: Value, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2529,6 +2571,7 @@ export namespace Secret {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2538,6 +2581,7 @@ export namespace Secret {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Item;
 
@@ -2702,6 +2746,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2793,6 +2838,7 @@ export namespace Secret {
          * @param result asynchronous result passed to callback
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         retrieve_secret_finish(result: Gio.AsyncResult): Value | null;
 
@@ -2807,6 +2853,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         retrieve_secret_sync(cancellable: Gio.Cancellable | null): Value | null;
 
@@ -2964,6 +3011,7 @@ export namespace Secret {
          * defined in the Secret Service DBus API specification.
          * @param result the asynchronous result passed to the callback
          * @returns `null` if the prompt was dismissed or an error occurred,   a variant result if the prompt was successful
+         * @throws GLib.Error
          */
         perform_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2986,6 +3034,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
+         * @throws GLib.Error
          */
         perform_sync(window_id: string | null, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant;
 
@@ -3010,6 +3059,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred
+         * @throws GLib.Error
          */
         run(window_id: string | null, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant;
 
@@ -3150,6 +3200,7 @@ export namespace Secret {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3159,6 +3210,7 @@ export namespace Secret {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Prompt;
 
@@ -3323,6 +3375,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3684,6 +3737,7 @@ export namespace Secret {
          * service.
          * @param result the asynchronous result passed to the callback
          * @returns whether items were removed or not
+         * @throws GLib.Error
          */
         clear_finish(result: Gio.AsyncResult): boolean;
 
@@ -3701,6 +3755,7 @@ export namespace Secret {
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          * @returns whether items were removed or not
+         * @throws GLib.Error
          */
         clear_sync(schema: Schema | null, attributes: { [key: string]: string }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3730,6 +3785,7 @@ export namespace Secret {
          * @param flags flags for the creation of the new item
          * @param cancellable optional cancellation object
          * @returns a new string containing the D-Bus object path   of the item
+         * @throws GLib.Error
          */
         create_item_dbus_path_sync(collection_path: string, properties: { [key: string]: GLib.Variant }, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null): string;
 
@@ -3813,6 +3869,7 @@ export namespace Secret {
          * has established a session with the Secret Service.
          * @param result the asynchronous result passed to the callback
          * @returns whether a session is established or not
+         * @throws GLib.Error
          */
         ensure_session_finish(result: Gio.AsyncResult): boolean;
 
@@ -3831,6 +3888,7 @@ export namespace Secret {
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether a session is established or not
+         * @throws GLib.Error
          */
         ensure_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3949,6 +4007,7 @@ export namespace Secret {
          * has loaded all the collections present in the Secret Service.
          * @param result the asynchronous result passed to the callback
          * @returns whether the load was successful or not
+         * @throws GLib.Error
          */
         load_collections_finish(result: Gio.AsyncResult): boolean;
 
@@ -3966,6 +4025,7 @@ export namespace Secret {
          * threads.
          * @param cancellable optional cancellation object
          * @returns whether the load was successful or not
+         * @throws GLib.Error
          */
         load_collections_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4030,6 +4090,7 @@ export namespace Secret {
          * lock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were locked
+         * @throws GLib.Error
          */
         lock_finish(result: Gio.AsyncResult): [number, Gio.DBusProxy[] | null];
 
@@ -4048,6 +4109,7 @@ export namespace Secret {
          * @param objects the items or collections to lock
          * @param cancellable optional cancellation object
          * @returns the number of items or collections that were locked
+         * @throws GLib.Error
          */
         lock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
 
@@ -4104,6 +4166,7 @@ export namespace Secret {
          * If no secret is found then `null` is returned.
          * @param result the asynchronous result passed to the callback
          * @returns a newly allocated {@link Value}, which should be   released with {@link Value.unref}, or `null` if no secret found
+         * @throws GLib.Error
          */
         lookup_finish(result: Gio.AsyncResult): Value;
 
@@ -4121,6 +4184,7 @@ export namespace Secret {
          * @param attributes the attribute keys and values
          * @param cancellable optional cancellation object
          * @returns a newly allocated {@link Value}, which should be   released with {@link Value.unref}, or `null` if no secret found
+         * @throws GLib.Error
          */
         lookup_sync(schema: Schema | null, attributes: { [key: string]: string }, cancellable: Gio.Cancellable | null): Value;
 
@@ -4179,6 +4243,7 @@ export namespace Secret {
          * in the Secret Service DBus API specification.
          * @param result the asynchronous result passed to the callback
          * @returns `null` if the prompt was dismissed or an error occurred,   a variant result if the prompt was successful
+         * @throws GLib.Error
          */
         prompt_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -4200,6 +4265,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @param return_type the variant type of the prompt result
          * @returns `null` if the prompt was dismissed or an error occurred,   a variant result if the prompt was successful
+         * @throws GLib.Error
          */
         prompt_sync(prompt: Prompt, cancellable: Gio.Cancellable | null, return_type: GLib.VariantType): GLib.Variant;
 
@@ -4293,6 +4359,7 @@ export namespace Secret {
          * Complete asynchronous operation to search for items.
          * @param result asynchronous result passed to callback
          * @returns a list of items that matched the search
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): Item[];
 
@@ -4325,6 +4392,7 @@ export namespace Secret {
          * @param flags search option flags
          * @param cancellable optional cancellation object
          * @returns a list of items that matched the search
+         * @throws GLib.Error
          */
         search_sync(schema: Schema | null, attributes: { [key: string]: string }, flags: SearchFlags, cancellable: Gio.Cancellable | null): Item[];
 
@@ -4379,6 +4447,7 @@ export namespace Secret {
          * Finish an asynchronous operation to assign a collection to an alias.
          * @param result asynchronous result passed to callback
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         set_alias_finish(result: Gio.AsyncResult): boolean;
 
@@ -4394,6 +4463,7 @@ export namespace Secret {
          * @param collection the collection to assign to the alias
          * @param cancellable optional cancellation object
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         set_alias_sync(alias: string, collection: Collection | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4478,6 +4548,7 @@ export namespace Secret {
          * Finish asynchronous operation to store a secret value in the secret service.
          * @param result the asynchronous result passed to the callback
          * @returns whether the storage was successful or not
+         * @throws GLib.Error
          */
         store_finish(result: Gio.AsyncResult): boolean;
 
@@ -4505,6 +4576,7 @@ export namespace Secret {
          * @param value the secret value
          * @param cancellable optional cancellation object
          * @returns whether the storage was successful or not
+         * @throws GLib.Error
          */
         store_sync(schema: Schema | null, attributes: { [key: string]: string }, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4569,6 +4641,7 @@ export namespace Secret {
          * unlock an entire collection instead.
          * @param result asynchronous result passed to the callback
          * @returns the number of items or collections that were unlocked
+         * @throws GLib.Error
          */
         unlock_finish(result: Gio.AsyncResult): [number, Gio.DBusProxy[] | null];
 
@@ -4587,6 +4660,7 @@ export namespace Secret {
          * @param objects the items or collections to unlock
          * @param cancellable optional cancellation object
          * @returns the number of items or collections that were unlocked
+         * @throws GLib.Error
          */
         unlock_sync(objects: Gio.DBusProxy[], cancellable: Gio.Cancellable | null): [number, Gio.DBusProxy[] | null];
 
@@ -4737,6 +4811,7 @@ export namespace Secret {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4746,6 +4821,7 @@ export namespace Secret {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Service;
 
@@ -4910,6 +4986,7 @@ export namespace Secret {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5616,6 +5693,7 @@ export namespace Secret {
          * @param result asynchronous result passed to callback
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         retrieve_secret_finish(result: Gio.AsyncResult): Value | null;
 
@@ -5630,6 +5708,7 @@ export namespace Secret {
          * @param cancellable optional cancellation object
          * @returns the secret value which should be   released with {@link Value.unref}, or `null`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         retrieve_secret_sync(cancellable: Gio.Cancellable | null): Value | null;
     }

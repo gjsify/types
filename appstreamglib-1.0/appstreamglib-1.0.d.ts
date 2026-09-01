@@ -32,19 +32,19 @@ export namespace AppStreamGlib {
         /**
          * Unknown value
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A generic agreement without a specific type
          */
-        GENERIC,
+        GENERIC = 1,
         /**
          * An End User License Agreement
          */
-        EULA,
+        EULA = 2,
         /**
          * A privacy agreement, typically a GDPR statement
          */
-        PRIVACY,
+        PRIVACY = 3,
     }
 
 
@@ -56,11 +56,11 @@ export namespace AppStreamGlib {
         /**
          * Generic failure
          */
-        FAILED,
+        FAILED = 0,
         /**
          * Invalid type
          */
-        INVALID_TYPE,
+        INVALID_TYPE = 1,
     }
 
 
@@ -72,75 +72,75 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A desktop application
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * A font add-on
          */
-        FONT,
+        FONT = 2,
         /**
          * A codec add-on
          */
-        CODEC,
+        CODEC = 3,
         /**
          * An input method add-on
          */
-        INPUT_METHOD,
+        INPUT_METHOD = 4,
         /**
          * A web application
          */
-        WEB_APP,
+        WEB_APP = 5,
         /**
          * A software source
          */
-        SOURCE,
+        SOURCE = 6,
         /**
          * An addon, e.g. a plugin
          */
-        ADDON,
+        ADDON = 7,
         /**
          * A firmware update
          */
-        FIRMWARE,
+        FIRMWARE = 8,
         /**
          * Runtime platform
          */
-        RUNTIME,
+        RUNTIME = 9,
         /**
          * Generic component
          */
-        GENERIC,
+        GENERIC = 10,
         /**
          * Operating system update
          */
-        OS_UPDATE,
+        OS_UPDATE = 11,
         /**
          * Operating system upgrade
          */
-        OS_UPGRADE,
+        OS_UPGRADE = 12,
         /**
          * GNOME Shell extension
          */
-        SHELL_EXTENSION,
+        SHELL_EXTENSION = 13,
         /**
          * Localization data
          */
-        LOCALIZATION,
+        LOCALIZATION = 14,
         /**
          * Console program
          */
-        CONSOLE,
+        CONSOLE = 15,
         /**
          * Driver for hardware support
          */
-        DRIVER,
+        DRIVER = 16,
         /**
          * An icon theme
          */
-        ICON_THEME,
+        ICON_THEME = 17,
     }
 
 
@@ -152,19 +152,19 @@ export namespace AppStreamGlib {
         /**
          * Unknown merge type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No merge to be done
          */
-        NONE,
+        NONE = 1,
         /**
          * Merge components, replacing
          */
-        REPLACE,
+        REPLACE = 2,
         /**
          * Merge components, appending
          */
-        APPEND,
+        APPEND = 3,
     }
 
 
@@ -176,15 +176,15 @@ export namespace AppStreamGlib {
         /**
          * Unknown scope
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * User scope
          */
-        USER,
+        USER = 1,
         /**
          * System scope
          */
-        SYSTEM,
+        SYSTEM = 2,
     }
 
 
@@ -196,51 +196,51 @@ export namespace AppStreamGlib {
         /**
          * Unknown state
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Application is installed
          */
-        INSTALLED,
+        INSTALLED = 1,
         /**
          * Application is available
          */
-        AVAILABLE,
+        AVAILABLE = 2,
         /**
          * Application is locally available as a file
          */
-        AVAILABLE_LOCAL,
+        AVAILABLE_LOCAL = 3,
         /**
          * Application is installed and updatable
          */
-        UPDATABLE,
+        UPDATABLE = 4,
         /**
          * Application is referenced, but not available
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 5,
         /**
          * Application is queued for install
          */
-        QUEUED_FOR_INSTALL,
+        QUEUED_FOR_INSTALL = 6,
         /**
          * Application is being installed
          */
-        INSTALLING,
+        INSTALLING = 7,
         /**
          * Application is being removed
          */
-        REMOVING,
+        REMOVING = 8,
         /**
          * Application is installed and updatable live
          */
-        UPDATABLE_LIVE,
+        UPDATABLE_LIVE = 9,
         /**
          * Application is available for purchasing
          */
-        PURCHASABLE,
+        PURCHASABLE = 10,
         /**
          * Application is being purchased
          */
-        PURCHASING,
+        PURCHASING = 11,
     }
 
 
@@ -252,15 +252,15 @@ export namespace AppStreamGlib {
         /**
          * Trusted data with no validation
          */
-        COMPLETE,
+        COMPLETE = 0,
         /**
          * Check for duplicates
          */
-        CHECK_DUPLICATES,
+        CHECK_DUPLICATES = 1,
         /**
          * Check for valid UTF-8
          */
-        CHECK_VALID_UTF8,
+        CHECK_VALID_UTF8 = 2,
     }
 
 
@@ -272,23 +272,23 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Relax the checks
          */
-        RELAX,
+        RELAX = 1,
         /**
          * Make the checks more strict
          */
-        STRICT,
+        STRICT = 2,
         /**
          * Do not use the network
          */
-        NO_NETWORK,
+        NO_NETWORK = 4,
         /**
          * Check all applications in a store
          */
-        ALL_APPS,
+        ALL_APPS = 8,
     }
 
 
@@ -300,31 +300,31 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Limba application bundle
          */
-        LIMBA,
+        LIMBA = 1,
         /**
          * Flatpak application deployment
          */
-        FLATPAK,
+        FLATPAK = 2,
         /**
          * Snap application deployment
          */
-        SNAP,
+        SNAP = 3,
         /**
          * Package-based application deployment
          */
-        PACKAGE,
+        PACKAGE = 4,
         /**
          * Cabinet firmware deployment
          */
-        CABINET,
+        CABINET = 5,
         /**
          * AppImage application bundle
          */
-        APPIMAGE,
+        APPIMAGE = 6,
     }
 
 
@@ -336,23 +336,23 @@ export namespace AppStreamGlib {
         /**
          * Unknown state
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Container file, e.g. `.cab`
          */
-        CONTAINER,
+        CONTAINER = 1,
         /**
          * Extracted file, e.g. `.bin`
          */
-        CONTENT,
+        CONTENT = 2,
         /**
          * Signature, e.g. `.asc` or `.cat`
          */
-        SIGNATURE,
+        SIGNATURE = 3,
         /**
          * Device-reported value
          */
-        DEVICE,
+        DEVICE = 4,
     }
 
 
@@ -365,67 +365,67 @@ export namespace AppStreamGlib {
         /**
          * Unknown ratings system
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * INCAA
          */
-        INCAA,
+        INCAA = 1,
         /**
          * ACB
          */
-        ACB,
+        ACB = 2,
         /**
          * DJCTQ
          */
-        DJCTQ,
+        DJCTQ = 3,
         /**
          * GSRR
          */
-        GSRR,
+        GSRR = 4,
         /**
          * PEGI
          */
-        PEGI,
+        PEGI = 5,
         /**
          * KAVI
          */
-        KAVI,
+        KAVI = 6,
         /**
          * USK
          */
-        USK,
+        USK = 7,
         /**
          * ESRA
          */
-        ESRA,
+        ESRA = 8,
         /**
          * CERO
          */
-        CERO,
+        CERO = 9,
         /**
          * OFLCNZ
          */
-        OFLCNZ,
+        OFLCNZ = 10,
         /**
          * Russia
          */
-        RUSSIA,
+        RUSSIA = 11,
         /**
          * MDA
          */
-        MDA,
+        MDA = 12,
         /**
          * GRAC
          */
-        GRAC,
+        GRAC = 13,
         /**
          * ESRB
          */
-        ESRB,
+        ESRB = 14,
         /**
          * IARC
          */
-        IARC,
+        IARC = 15,
     }
 
 
@@ -437,23 +437,23 @@ export namespace AppStreamGlib {
         /**
          * Unknown value
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * None
          */
-        NONE,
+        NONE = 1,
         /**
          * A small amount
          */
-        MILD,
+        MILD = 2,
         /**
          * A moderate amount
          */
-        MODERATE,
+        MODERATE = 3,
         /**
          * An intense amount
          */
-        INTENSE,
+        INTENSE = 4,
     }
 
 
@@ -465,23 +465,23 @@ export namespace AppStreamGlib {
         /**
          * Not formatd from a file
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * AppStream file
          */
-        APPSTREAM,
+        APPSTREAM = 1,
         /**
          * Desktop file
          */
-        DESKTOP,
+        DESKTOP = 2,
         /**
          * AppData file
          */
-        APPDATA,
+        APPDATA = 3,
         /**
          * MetaInfo file
          */
-        METAINFO,
+        METAINFO = 4,
     }
 
 
@@ -493,7 +493,7 @@ export namespace AppStreamGlib {
         /**
          * Generic failure
          */
-        FAILED,
+        FAILED = 0,
     }
 
 
@@ -505,27 +505,27 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Stock icon or present in the generic icon theme
          */
-        STOCK,
+        STOCK = 1,
         /**
          * An icon shipped with the AppStream metadata
          */
-        CACHED,
+        CACHED = 2,
         /**
          * An icon referenced by a remote URL
          */
-        REMOTE,
+        REMOTE = 3,
         /**
          * An embedded Base64 icon
          */
-        EMBEDDED,
+        EMBEDDED = 4,
         /**
          * An icon with absolute path and filename
          */
-        LOCAL,
+        LOCAL = 5,
     }
 
 
@@ -537,11 +537,11 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Search first in a size-specific directory
          */
-        SEARCH_SIZE,
+        SEARCH_SIZE = 1,
     }
 
 
@@ -553,47 +553,47 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A desktop application
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * A font add-on
          */
-        FONT,
+        FONT = 2,
         /**
          * A codec add-on
          */
-        CODEC,
+        CODEC = 3,
         /**
          * An input method add-on
          */
-        INPUT_METHOD,
+        INPUT_METHOD = 4,
         /**
          * A web application
          */
-        WEB_APP,
+        WEB_APP = 5,
         /**
          * A software source
          */
-        SOURCE,
+        SOURCE = 6,
         /**
          * An addon, e.g. a plugin
          */
-        ADDON,
+        ADDON = 7,
         /**
          * A firmware update
          */
-        FIRMWARE,
+        FIRMWARE = 8,
         /**
          * Runtime platform
          */
-        RUNTIME,
+        RUNTIME = 9,
         /**
          * Generic component
          */
-        GENERIC,
+        GENERIC = 10,
     }
 
 
@@ -605,15 +605,15 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The source image at full resolution
          */
-        SOURCE,
+        SOURCE = 1,
         /**
          * A thumbnail at reduced resolution
          */
-        THUMBNAIL,
+        THUMBNAIL = 2,
     }
 
 
@@ -625,27 +625,27 @@ export namespace AppStreamGlib {
         /**
          * No special flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Sharpen the resulting image
          */
-        SHARPEN,
+        SHARPEN = 1,
         /**
          * Set the image basename
          */
-        SET_BASENAME,
+        SET_BASENAME = 2,
         /**
          * Set the image checksum
          */
-        SET_CHECKSUM,
+        SET_CHECKSUM = 4,
         /**
          * Only load supported formats like PNG and JPG
          */
-        ONLY_SUPPORTED,
+        ONLY_SUPPORTED = 8,
         /**
          * Always resize the source icon to the perfect size
          */
-        ALWAYS_RESIZE,
+        ALWAYS_RESIZE = 16,
     }
 
 
@@ -657,19 +657,19 @@ export namespace AppStreamGlib {
         /**
          * No special flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Pad with alpha to 16:9 aspect
          */
-        PAD_16_9,
+        PAD_16_9 = 1,
         /**
          * Sharpen the image to clarify detail
          */
-        SHARPEN,
+        SHARPEN = 2,
         /**
          * Blur the image to clear detail
          */
-        BLUR,
+        BLUR = 4,
     }
 
 
@@ -709,35 +709,35 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Installs a search provider
          */
-        SEARCH_PROVIDER,
+        SEARCH_PROVIDER = 1,
         /**
          * Installs user documentation
          */
-        USER_DOCS,
+        USER_DOCS = 2,
         /**
          * Uses the GNOME application menu
          */
-        APP_MENU,
+        APP_MENU = 3,
         /**
          * Uses a modern toolkit like GTK3 or QT5
          */
-        MODERN_TOOLKIT,
+        MODERN_TOOLKIT = 4,
         /**
          * Registers notifications with KDE or GNOME
          */
-        NOTIFICATIONS,
+        NOTIFICATIONS = 5,
         /**
          * Installs a high contrast icon
          */
-        HIGH_CONTRAST,
+        HIGH_CONTRAST = 6,
         /**
          * Installs a high DPI icon
          */
-        HI_DPI_ICON,
+        HI_DPI_ICON = 7,
     }
 
 
@@ -749,23 +749,23 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A desktop ID
          */
-        DESKTOP_ID,
+        DESKTOP_ID = 1,
         /**
          * A system service
          */
-        SERVICE,
+        SERVICE = 2,
         /**
          * A manifest run by the cockpit project
          */
-        COCKPIT_MANIFEST,
+        COCKPIT_MANIFEST = 3,
         /**
          * A web-app
          */
-        URL,
+        URL = 4,
     }
 
 
@@ -777,23 +777,23 @@ export namespace AppStreamGlib {
         /**
          * UTF-8 text
          */
-        SIMPLE,
+        SIMPLE = 0,
         /**
          * Markdown format
          */
-        MARKDOWN,
+        MARKDOWN = 1,
         /**
          * No output
          */
-        NULL,
+        NULL = 2,
         /**
          * AppStream (passthrough)
          */
-        APPSTREAM,
+        APPSTREAM = 3,
         /**
          * HyperText Markup Language
          */
-        HTML,
+        HTML = 4,
     }
 
 
@@ -833,31 +833,31 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * The data is already XML escaped
          */
-        PRE_ESCAPED,
+        PRE_ESCAPED = 1,
         /**
          * The name and key should be swapped
          */
-        SWAPPED,
+        SWAPPED = 2,
         /**
          * Preformat the 'description' markup
          */
-        NO_MARKUP,
+        NO_MARKUP = 4,
         /**
          * No xml:lang keys where text matches 'C'
          */
-        DEDUPE_LANG,
+        DEDUPE_LANG = 8,
         /**
          * Mark the tag name as translatable
          */
-        MARK_TRANSLATABLE,
+        MARK_TRANSLATABLE = 16,
         /**
          * The data is Base64 encoded
          */
-        BASE64_ENCODED,
+        BASE64_ENCODED = 32,
     }
 
 
@@ -869,27 +869,27 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Add an XML header to the data
          */
-        ADD_HEADER,
+        ADD_HEADER = 1,
         /**
          * Split up children with a newline
          */
-        FORMAT_MULTILINE,
+        FORMAT_MULTILINE = 2,
         /**
          * Indent the XML by child depth
          */
-        FORMAT_INDENT,
+        FORMAT_INDENT = 4,
         /**
          * Include the siblings when converting
          */
-        INCLUDE_SIBLINGS,
+        INCLUDE_SIBLINGS = 8,
         /**
          * Sort the tags by alphabetical order
          */
-        SORT_CHILDREN,
+        SORT_CHILDREN = 16,
     }
 
 
@@ -901,63 +901,63 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A tag is duplicated
          */
-        TAG_DUPLICATED,
+        TAG_DUPLICATED = 1,
         /**
          * A required tag is missing
          */
-        TAG_MISSING,
+        TAG_MISSING = 2,
         /**
          * A tag value is invalid
          */
-        TAG_INVALID,
+        TAG_INVALID = 3,
         /**
          * A required attribute is missing
          */
-        ATTRIBUTE_MISSING,
+        ATTRIBUTE_MISSING = 4,
         /**
          * An attribute is invalid
          */
-        ATTRIBUTE_INVALID,
+        ATTRIBUTE_INVALID = 5,
         /**
          * The XML markup is invalid
          */
-        MARKUP_INVALID,
+        MARKUP_INVALID = 6,
         /**
          * Style guidelines are incorrect
          */
-        STYLE_INCORRECT,
+        STYLE_INCORRECT = 7,
         /**
          * Translations are required
          */
-        TRANSLATIONS_REQUIRED,
+        TRANSLATIONS_REQUIRED = 8,
         /**
          * Some data is duplicated
          */
-        DUPLICATE_DATA,
+        DUPLICATE_DATA = 9,
         /**
          * A value is required
          */
-        VALUE_MISSING,
+        VALUE_MISSING = 10,
         /**
          * The URL is not found
          */
-        URL_NOT_FOUND,
+        URL_NOT_FOUND = 11,
         /**
          * The file is invalid
          */
-        FILE_INVALID,
+        FILE_INVALID = 12,
         /**
          * The image aspect ratio is wrong
          */
-        ASPECT_RATIO_INCORRECT,
+        ASPECT_RATIO_INCORRECT = 13,
         /**
          * The image resolution is wrong
          */
-        RESOLUTION_INCORRECT,
+        RESOLUTION_INCORRECT = 14,
     }
 
 
@@ -969,51 +969,51 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A library file
          */
-        LIBRARY,
+        LIBRARY = 1,
         /**
          * A binary file
          */
-        BINARY,
+        BINARY = 2,
         /**
          * A font file
          */
-        FONT,
+        FONT = 3,
         /**
          * A hardware modalias
          */
-        MODALIAS,
+        MODALIAS = 4,
         /**
          * A runtime-loadable firmware file
          */
-        FIRMWARE_RUNTIME,
+        FIRMWARE_RUNTIME = 5,
         /**
          * A Python 2 module
          */
-        PYTHON2,
+        PYTHON2 = 6,
         /**
          * A Python 3 module
          */
-        PYTHON3,
+        PYTHON3 = 7,
         /**
          * A D-Bus session service
          */
-        DBUS_SESSION,
+        DBUS_SESSION = 8,
         /**
          * A D-Bus system service
          */
-        DBUS_SYSTEM,
+        DBUS_SYSTEM = 9,
         /**
          * A flashed firmware GUID
          */
-        FIRMWARE_FLASHED,
+        FIRMWARE_FLASHED = 10,
         /**
          * An AppStream component ID
          */
-        ID,
+        ID = 11,
     }
 
 
@@ -1026,15 +1026,15 @@ export namespace AppStreamGlib {
         /**
          * Unknown release type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A stable release
          */
-        STABLE,
+        STABLE = 1,
         /**
          * A development release
          */
-        DEVELOPMENT,
+        DEVELOPMENT = 2,
     }
 
 
@@ -1046,15 +1046,15 @@ export namespace AppStreamGlib {
         /**
          * Unknown state
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Release is installed
          */
-        INSTALLED,
+        INSTALLED = 1,
         /**
          * Release is available
          */
-        AVAILABLE,
+        AVAILABLE = 2,
     }
 
 
@@ -1066,39 +1066,39 @@ export namespace AppStreamGlib {
         /**
          * Comparison predicate invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Equal to
          */
-        EQ,
+        EQ = 1,
         /**
          * Not equal to
          */
-        NE,
+        NE = 2,
         /**
          * Less than
          */
-        LT,
+        LT = 3,
         /**
          * Greater than
          */
-        GT,
+        GT = 4,
         /**
          * Less than or equal to
          */
-        LE,
+        LE = 5,
         /**
          * Greater than or equal to
          */
-        GE,
+        GE = 6,
         /**
          * Filename glob, e.g. `test*`
          */
-        GLOB,
+        GLOB = 7,
         /**
          * A regular expression, e.g. `fw[0-255]`
          */
-        REGEX,
+        REGEX = 8,
     }
 
 
@@ -1110,31 +1110,31 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Component ID
          */
-        ID,
+        ID = 1,
         /**
          * Device firmware version
          */
-        FIRMWARE,
+        FIRMWARE = 2,
         /**
          * Hardware device, typically a GUID
          */
-        HARDWARE,
+        HARDWARE = 3,
         /**
          * Modalias string
          */
-        MODALIAS,
+        MODALIAS = 4,
         /**
          * Kernel version
          */
-        KERNEL,
+        KERNEL = 5,
         /**
          * Amount of installed memory in MiB
          */
-        MEMORY,
+        MEMORY = 6,
     }
 
 
@@ -1146,15 +1146,15 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Optional screenshot
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * Screenshot to show by default
          */
-        DEFAULT,
+        DEFAULT = 2,
     }
 
 
@@ -1166,15 +1166,15 @@ export namespace AppStreamGlib {
         /**
          * Not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Installed size
          */
-        INSTALLED,
+        INSTALLED = 1,
         /**
          * Download size
          */
-        DOWNLOAD,
+        DOWNLOAD = 2,
     }
 
 
@@ -1186,7 +1186,7 @@ export namespace AppStreamGlib {
         /**
          * Generic failure
          */
-        FAILED,
+        FAILED = 0,
     }
 
 
@@ -1198,11 +1198,11 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Process the globs
          */
-        USE_WILDCARDS,
+        USE_WILDCARDS = 1,
     }
 
 
@@ -1214,15 +1214,15 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Add applications if files change or are added
          */
-        ADDED,
+        ADDED = 1,
         /**
          * Remove applications if files are changed or deleted
          */
-        REMOVED,
+        REMOVED = 2,
     }
 
 
@@ -1234,15 +1234,15 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Upstream-specified suggestion
          */
-        UPSTREAM,
+        UPSTREAM = 1,
         /**
          * Suggestion from a heuristic
          */
-        HEURISTIC,
+        HEURISTIC = 2,
     }
 
 
@@ -1254,260 +1254,260 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * `components`
          */
-        COMPONENTS,
+        COMPONENTS = 1,
         /**
          * `component`
          */
-        COMPONENT,
+        COMPONENT = 2,
         /**
          * `id`
          */
-        ID,
+        ID = 3,
         /**
          * `pkgname`
          */
-        PKGNAME,
+        PKGNAME = 4,
         /**
          * `name`
          */
-        NAME,
+        NAME = 5,
         /**
          * `summary`
          */
-        SUMMARY,
+        SUMMARY = 6,
         /**
          * `description`
          */
-        DESCRIPTION,
+        DESCRIPTION = 7,
         /**
          * `url`
          */
-        URL,
+        URL = 8,
         /**
          * `icon`
          */
-        ICON,
+        ICON = 9,
         /**
          * `categories`
          */
-        CATEGORIES,
+        CATEGORIES = 10,
         /**
          * `category`
          */
-        CATEGORY,
+        CATEGORY = 11,
         /**
          * `keywords`
          */
-        KEYWORDS,
+        KEYWORDS = 12,
         /**
          * `keyword`
          */
-        KEYWORD,
+        KEYWORD = 13,
         /**
          * `mimetypes`
          */
-        MIMETYPES,
+        MIMETYPES = 14,
         /**
          * `mimetype`
          */
-        MIMETYPE,
+        MIMETYPE = 15,
         /**
          * `project_group`
          */
-        PROJECT_GROUP,
+        PROJECT_GROUP = 16,
         /**
          * `project_license`
          */
-        PROJECT_LICENSE,
+        PROJECT_LICENSE = 17,
         /**
          * `screenshot`
          */
-        SCREENSHOT,
+        SCREENSHOT = 18,
         /**
          * `screenshots`
          */
-        SCREENSHOTS,
+        SCREENSHOTS = 19,
         /**
          * `update_contact`
          */
-        UPDATE_CONTACT,
+        UPDATE_CONTACT = 20,
         /**
          * `image`
          */
-        IMAGE,
+        IMAGE = 21,
         /**
          * `compulsory_for_desktop`
          */
-        COMPULSORY_FOR_DESKTOP,
+        COMPULSORY_FOR_DESKTOP = 22,
         /**
          * `priority`
          */
-        PRIORITY,
+        PRIORITY = 23,
         /**
          * `caption`
          */
-        CAPTION,
+        CAPTION = 24,
         /**
          * `languages`
          */
-        LANGUAGES,
+        LANGUAGES = 25,
         /**
          * `lang`
          */
-        LANG,
+        LANG = 26,
         /**
          * `metadata`
          */
-        METADATA,
+        METADATA = 27,
         /**
          * `value`
          */
-        VALUE,
+        VALUE = 28,
         /**
          * `releases`
          */
-        RELEASES,
+        RELEASES = 29,
         /**
          * `release`
          */
-        RELEASE,
+        RELEASE = 30,
         /**
          * `architectures`
          */
-        ARCHITECTURES,
+        ARCHITECTURES = 31,
         /**
          * `arch`
          */
-        ARCH,
+        ARCH = 32,
         /**
          * `metadata_license`
          */
-        METADATA_LICENSE,
+        METADATA_LICENSE = 33,
         /**
          * `provides`
          */
-        PROVIDES,
+        PROVIDES = 34,
         /**
          * `extends`
          */
-        EXTENDS,
+        EXTENDS = 35,
         /**
          * `developer_name`
          */
-        DEVELOPER_NAME,
+        DEVELOPER_NAME = 36,
         /**
          * `kudos`
          */
-        KUDOS,
+        KUDOS = 37,
         /**
          * `kudo`
          */
-        KUDO,
+        KUDO = 38,
         /**
          * `source_pkgname`
          */
-        SOURCE_PKGNAME,
+        SOURCE_PKGNAME = 39,
         /**
          * `vetos`
          */
-        VETOS,
+        VETOS = 40,
         /**
          * `veto`
          */
-        VETO,
+        VETO = 41,
         /**
          * `bundle`
          */
-        BUNDLE,
+        BUNDLE = 42,
         /**
          * `permissions`
          */
-        PERMISSIONS,
+        PERMISSIONS = 43,
         /**
          * `permission`
          */
-        PERMISSION,
+        PERMISSION = 44,
         /**
          * `location`
          */
-        LOCATION,
+        LOCATION = 45,
         /**
          * `checksum`
          */
-        CHECKSUM,
+        CHECKSUM = 46,
         /**
          * `size`
          */
-        SIZE,
+        SIZE = 47,
         /**
          * `translation`
          */
-        TRANSLATION,
+        TRANSLATION = 48,
         /**
          * `content_rating`
          */
-        CONTENT_RATING,
+        CONTENT_RATING = 49,
         /**
          * `content_attribute`
          */
-        CONTENT_ATTRIBUTE,
+        CONTENT_ATTRIBUTE = 50,
         /**
          * `version`
          */
-        VERSION,
+        VERSION = 51,
         /**
          * `reviews`
          */
-        REVIEWS,
+        REVIEWS = 52,
         /**
          * `review`
          */
-        REVIEW,
+        REVIEW = 53,
         /**
          * `reviewer_name`
          */
-        REVIEWER_NAME,
+        REVIEWER_NAME = 54,
         /**
          * `reviewer_id`
          */
-        REVIEWER_ID,
+        REVIEWER_ID = 55,
         /**
          * `suggests`
          */
-        SUGGESTS,
+        SUGGESTS = 56,
         /**
          * `requires`
          */
-        REQUIRES,
+        REQUIRES = 57,
         /**
          * `custom`
          */
-        CUSTOM,
+        CUSTOM = 58,
         /**
          * `launchable`
          */
-        LAUNCHABLE,
+        LAUNCHABLE = 59,
         /**
          * `agreement`
          */
-        AGREEMENT,
+        AGREEMENT = 60,
         /**
          * `agreement_section`
          */
-        AGREEMENT_SECTION,
-        P,
-        LI,
-        UL,
-        OL,
-        BINARY,
-        FONT,
-        DBUS,
-        MODALIAS,
-        LIBRARY,
+        AGREEMENT_SECTION = 61,
+        P = 62,
+        LI = 63,
+        UL = 64,
+        OL = 65,
+        BINARY = 66,
+        FONT = 67,
+        DBUS = 68,
+        MODALIAS = 69,
+        LIBRARY = 70,
     }
 
 
@@ -1519,15 +1519,15 @@ export namespace AppStreamGlib {
         /**
          * No special actions to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Use fallback tag names
          */
-        USE_FALLBACKS,
+        USE_FALLBACKS = 1,
         /**
          * Use translated tag names
          */
-        USE_TRANSLATED,
+        USE_TRANSLATED = 2,
     }
 
 
@@ -1539,15 +1539,15 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Gettext translation system
          */
-        GETTEXT,
+        GETTEXT = 1,
         /**
          * QT translation system
          */
-        QT,
+        QT = 2,
     }
 
 
@@ -1559,23 +1559,23 @@ export namespace AppStreamGlib {
         /**
          * Urgency invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Low urgency release
          */
-        LOW,
+        LOW = 1,
         /**
          * Medium urgency release
          */
-        MEDIUM,
+        MEDIUM = 2,
         /**
          * High urgency release
          */
-        HIGH,
+        HIGH = 3,
         /**
          * Critically urgent release
          */
-        CRITICAL,
+        CRITICAL = 4,
     }
 
 
@@ -1587,55 +1587,55 @@ export namespace AppStreamGlib {
         /**
          * Type invalid or not known
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Application project homepage
          */
-        HOMEPAGE,
+        HOMEPAGE = 1,
         /**
          * Application bugtracker
          */
-        BUGTRACKER,
+        BUGTRACKER = 2,
         /**
          * Application FAQ page
          */
-        FAQ,
+        FAQ = 3,
         /**
          * Application donation page
          */
-        DONATION,
+        DONATION = 4,
         /**
          * Application help manual
          */
-        HELP,
+        HELP = 5,
         /**
          * The package is available, but missing
          */
-        MISSING,
+        MISSING = 6,
         /**
          * Application translation page
          */
-        TRANSLATE,
+        TRANSLATE = 7,
         /**
          * Release details
          */
-        DETAILS,
+        DETAILS = 8,
         /**
          * Link to source code
          */
-        SOURCE,
+        SOURCE = 9,
         /**
          * URL to contact developer on
          */
-        CONTACT,
+        CONTACT = 10,
         /**
          * Browse the source code
          */
-        VCS_BROWSER,
+        VCS_BROWSER = 11,
         /**
          * Help developing
          */
-        CONTRIBUTE,
+        CONTRIBUTE = 12,
     }
 
 
@@ -1670,44 +1670,86 @@ export namespace AppStreamGlib {
         /**
          * Installed by the vendor, shared
          */
-        SHARED,
+        SHARED = 0,
         /**
          * Installed as metadata, shared
          */
-        CACHE,
+        CACHE = 1,
         /**
          * Installed by the user
          */
-        USER,
+        USER = 2,
     }
 
 
+    /**
+     * @default 6208094264
+     */
     const APP_SUBSUME_FLAG_DEDUPE: number;
 
+    /**
+     * @default 266555883456
+     */
     const APP_SUBSUME_FLAG_MERGE: number;
 
+    /**
+     * @default 2
+     */
     const IMAGE_ALPHA_FLAG_BOTTOM: number;
 
+    /**
+     * @default 16
+     */
     const IMAGE_ALPHA_FLAG_INTERNAL: number;
 
+    /**
+     * @default 4
+     */
     const IMAGE_ALPHA_FLAG_LEFT: number;
 
+    /**
+     * @default 0
+     */
     const IMAGE_ALPHA_FLAG_NONE: number;
 
+    /**
+     * @default 8
+     */
     const IMAGE_ALPHA_FLAG_RIGHT: number;
 
+    /**
+     * @default 1
+     */
     const IMAGE_ALPHA_FLAG_TOP: number;
 
+    /**
+     * @default 423
+     */
     const IMAGE_LARGE_HEIGHT: number;
 
+    /**
+     * @default 752
+     */
     const IMAGE_LARGE_WIDTH: number;
 
+    /**
+     * @default 351
+     */
     const IMAGE_NORMAL_HEIGHT: number;
 
+    /**
+     * @default 624
+     */
     const IMAGE_NORMAL_WIDTH: number;
 
+    /**
+     * @default 63
+     */
     const IMAGE_THUMBNAIL_HEIGHT: number;
 
+    /**
+     * @default 112
+     */
     const IMAGE_THUMBNAIL_WIDTH: number;
 
     /**
@@ -1738,6 +1780,7 @@ export namespace AppStreamGlib {
      * @param timestamp the returned driverver timestamp, or `null`
      * @returns the version string, or `null` for error.
      * @since 0.3.5
+     * @throws GLib.Error
      */
     function inf_get_driver_version(keyfile: GLib.KeyFile, timestamp: bigint | number): string;
 
@@ -1752,6 +1795,7 @@ export namespace AppStreamGlib {
      * @param flags {@link AppStreamGlib.InfLoadFlags}, e.g. {@link AppStreamGlib.InfLoadFlags.NONE}
      * @returns `true` for success
      * @since 0.3.5
+     * @throws GLib.Error
      */
     function inf_load_data(keyfile: GLib.KeyFile, data: string, flags: InfLoadFlags): boolean;
 
@@ -1762,6 +1806,7 @@ export namespace AppStreamGlib {
      * @param flags {@link AppStreamGlib.InfLoadFlags}, e.g. {@link AppStreamGlib.InfLoadFlags.NONE}
      * @returns `true` for success
      * @since 0.3.5
+     * @throws GLib.Error
      */
     function inf_load_file(keyfile: GLib.KeyFile, filename: string, flags: InfLoadFlags): boolean;
 
@@ -1787,6 +1832,7 @@ export namespace AppStreamGlib {
      * @param format the {@link AppStreamGlib.MarkupConvertFormat}, e.g. {@link AppStreamGlib.MarkupConvertFormat.MARKDOWN}
      * @returns a newly allocated `null` terminated string
      * @since 0.3.5
+     * @throws GLib.Error
      */
     function markup_convert(markup: string, format: MarkupConvertFormat): string;
 
@@ -1797,6 +1843,7 @@ export namespace AppStreamGlib {
      * @param flags the {@link AppStreamGlib.MarkupConvertFlag}, e.g. {@link AppStreamGlib.MarkupConvertFlag.IGNORE_ERRORS}
      * @returns a newly allocated `null` terminated string
      * @since 0.3.5
+     * @throws GLib.Error
      */
     function markup_convert_full(markup: string, format: MarkupConvertFormat, flags: MarkupConvertFlag): string;
 
@@ -1805,6 +1852,7 @@ export namespace AppStreamGlib {
      * @param markup the text to copy.
      * @returns a newly allocated `null` terminated string
      * @since 0.1.0
+     * @throws GLib.Error
      */
     function markup_convert_simple(markup: string): string;
 
@@ -1814,6 +1862,7 @@ export namespace AppStreamGlib {
      * @param format the {@link AppStreamGlib.MarkupConvertFormat}, e.g. {@link AppStreamGlib.MarkupConvertFormat.SIMPLE}
      * @returns appstream markup, or `null` in event of an error
      * @since 0.5.11
+     * @throws GLib.Error
      */
     function markup_import(text: string, format: MarkupConvertFormat): string;
 
@@ -1832,6 +1881,7 @@ export namespace AppStreamGlib {
      * @param markup the text to validate
      * @returns `true` if the appstream description was valid
      * @since 0.5.1
+     * @throws GLib.Error
      */
     function markup_validate(markup: string): boolean;
 
@@ -1929,6 +1979,7 @@ export namespace AppStreamGlib {
      * @param node a {@link AppStreamGlib.Node}.
      * @returns a hash table of data
      * @since 0.1.0
+     * @throws GLib.Error
      */
     function node_get_localized_unwrap(node: GLib.Node): never;
 
@@ -2090,6 +2141,7 @@ export namespace AppStreamGlib {
      * @param search the icon search name, e.g. "microphone.svg"
      * @returns a newly allocated `null` terminated string
      * @since 0.2.5
+     * @throws GLib.Error
      */
     function utils_find_icon_filename(destdir: string, search: string): string;
 
@@ -2100,6 +2152,7 @@ export namespace AppStreamGlib {
      * @param flags A {@link AppStreamGlib.UtilsFindIconFlag} bitfield
      * @returns a newly allocated `null` terminated string
      * @since 0.3.1
+     * @throws GLib.Error
      */
     function utils_find_icon_filename_full(destdir: string, search: string, flags: UtilsFindIconFlag): string;
 
@@ -2114,6 +2167,7 @@ export namespace AppStreamGlib {
      * @param data_len length of `data`
      * @returns A new GUID, or `null` if the namespace_id was invalid
      * @since 0.6.13
+     * @throws GLib.Error
      */
     function utils_guid_from_data(namespace_id: string, data: number, data_len: bigint | number): string;
 
@@ -2150,6 +2204,7 @@ export namespace AppStreamGlib {
      * @param destdir the destdir to use, or `null`
      * @returns `true` for success, `false` if error is set
      * @since 0.3.4
+     * @throws GLib.Error
      */
     function utils_install_filename(location: UtilsLocation, filename: string, origin: string, destdir: string): boolean;
 
@@ -2377,39 +2432,39 @@ export namespace AppStreamGlib {
         /**
          * No special actions to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Use heuristic to infer properties
          */
-        USE_HEURISTICS,
+        USE_HEURISTICS = 1,
         /**
          * Save comments from the file
          */
-        KEEP_COMMENTS,
+        KEEP_COMMENTS = 2,
         /**
          * Allow translatable flags like <_p>
          */
-        CONVERT_TRANSLATABLE,
+        CONVERT_TRANSLATABLE = 4,
         /**
          * Append new data rather than replacing
          */
-        APPEND_DATA,
+        APPEND_DATA = 8,
         /**
          * Do not return errors for vetoed apps
          */
-        ALLOW_VETO,
+        ALLOW_VETO = 16,
         /**
          * Fall back to suboptimal data where required
          */
-        USE_FALLBACKS,
+        USE_FALLBACKS = 32,
         /**
          * Add all extra metadata from the source file
          */
-        ADD_ALL_METADATA,
+        ADD_ALL_METADATA = 64,
         /**
          * Only load native languages
          */
-        ONLY_NATIVE_LANGS,
+        ONLY_NATIVE_LANGS = 128,
     }
 
 
@@ -2421,55 +2476,55 @@ export namespace AppStreamGlib {
         /**
          * No special attributes
          */
-        NONE,
+        NONE = 0,
         /**
          * Installed by OS vendor
          */
-        PROVENANCE,
+        PROVENANCE = 1,
         /**
          * Cannot be removed
          */
-        COMPULSORY,
+        COMPULSORY = 2,
         /**
          * Has a source to allow staying up-to-date
          */
-        HAS_SOURCE,
+        HAS_SOURCE = 4,
         /**
          * Matches applications with any prefix
          */
-        MATCH_ANY_PREFIX,
+        MATCH_ANY_PREFIX = 8,
         /**
          * A reboot is required after the action
          */
-        NEEDS_REBOOT,
+        NEEDS_REBOOT = 16,
         /**
          * The app is not reviewable
          */
-        NOT_REVIEWABLE,
+        NOT_REVIEWABLE = 32,
         /**
          * The app has a shortcut in the system
          */
-        HAS_SHORTCUT,
+        HAS_SHORTCUT = 64,
         /**
          * The app is not launchable (run-able)
          */
-        NOT_LAUNCHABLE,
+        NOT_LAUNCHABLE = 128,
         /**
          * The component requires some kind of user action
          */
-        NEEDS_USER_ACTION,
+        NEEDS_USER_ACTION = 256,
         /**
          * Is a proxy app that operates on other applications
          */
-        IS_PROXY,
+        IS_PROXY = 512,
         /**
          * The device is unusable whilst the action is performed
          */
-        REMOVABLE_HARDWARE,
+        REMOVABLE_HARDWARE = 1024,
         /**
          * The app developer has been verified
          */
-        DEVELOPER_VERIFIED,
+        DEVELOPER_VERIFIED = 2048,
     }
 
 
@@ -2482,39 +2537,39 @@ export namespace AppStreamGlib {
         /**
          * No token matching
          */
-        NONE,
+        NONE = 0,
         /**
          * Use the app mimetypes
          */
-        MIMETYPE,
+        MIMETYPE = 1,
         /**
          * Use the app package name
          */
-        PKGNAME,
+        PKGNAME = 2,
         /**
          * Use the app description
          */
-        DESCRIPTION,
+        DESCRIPTION = 4,
         /**
          * Use the app comment
          */
-        COMMENT,
+        COMMENT = 8,
         /**
          * Use the app name
          */
-        NAME,
+        NAME = 16,
         /**
          * Use the app keyword
          */
-        KEYWORD,
+        KEYWORD = 32,
         /**
          * Use the app application ID
          */
-        ID,
+        ID = 64,
         /**
          * Use the app origin
          */
-        ORIGIN,
+        ORIGIN = 128,
     }
 
 
@@ -2526,153 +2581,153 @@ export namespace AppStreamGlib {
         /**
          * No special actions to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not overwrite already set properties
          */
-        NO_OVERWRITE,
+        NO_OVERWRITE = 1,
         /**
          * Copy unset properties both ways
          */
-        BOTH_WAYS,
-        REPLACE,
+        BOTH_WAYS = 2,
+        REPLACE = 4,
         /**
          * Copy the kind
          */
-        KIND,
+        KIND = 8,
         /**
          * Copy the state
          */
-        STATE,
+        STATE = 16,
         /**
          * Copy the bundles
          */
-        BUNDLES,
+        BUNDLES = 32,
         /**
          * Copy the translations
          */
-        TRANSLATIONS,
+        TRANSLATIONS = 64,
         /**
          * Copy the releases
          */
-        RELEASES,
+        RELEASES = 128,
         /**
          * Copy the kudos
          */
-        KUDOS,
+        KUDOS = 256,
         /**
          * Copy the categories
          */
-        CATEGORIES,
+        CATEGORIES = 512,
         /**
          * Copy the permissions
          */
-        PERMISSIONS,
+        PERMISSIONS = 1024,
         /**
          * Copy the extends
          */
-        EXTENDS,
+        EXTENDS = 2048,
         /**
          * Copy the compulsory-for-desktop
          */
-        COMPULSORY,
+        COMPULSORY = 4096,
         /**
          * Copy the screenshots
          */
-        SCREENSHOTS,
+        SCREENSHOTS = 8192,
         /**
          * Copy the reviews
          */
-        REVIEWS,
+        REVIEWS = 16384,
         /**
          * Copy the content ratings
          */
-        CONTENT_RATINGS,
+        CONTENT_RATINGS = 32768,
         /**
          * Copy the provides
          */
-        PROVIDES,
+        PROVIDES = 65536,
         /**
          * Copy the icons
          */
-        ICONS,
+        ICONS = 131072,
         /**
          * Copy the mimetypes
          */
-        MIMETYPES,
+        MIMETYPES = 262144,
         /**
          * Copy the vetos
          */
-        VETOS,
+        VETOS = 524288,
         /**
          * Copy the languages
          */
-        LANGUAGES,
+        LANGUAGES = 1048576,
         /**
          * Copy the name
          */
-        NAME,
+        NAME = 2097152,
         /**
          * Copy the comment
          */
-        COMMENT,
+        COMMENT = 4194304,
         /**
          * Copy the developer name
          */
-        DEVELOPER_NAME,
+        DEVELOPER_NAME = 8388608,
         /**
          * Copy the description
          */
-        DESCRIPTION,
+        DESCRIPTION = 16777216,
         /**
          * Copy the metadata
          */
-        METADATA,
+        METADATA = 33554432,
         /**
          * Copy the urls
          */
-        URL,
+        URL = 67108864,
         /**
          * Copy the keywords
          */
-        KEYWORDS,
+        KEYWORDS = 134217728,
         /**
          * Copy the source file
          */
-        FORMATS,
+        FORMATS = 268435456,
         /**
          * Copy the branch
          */
-        BRANCH,
+        BRANCH = 536870912,
         /**
          * Copy the origin
          */
-        ORIGIN,
+        ORIGIN = 1073741824,
         /**
          * Copy the metadata license
          */
-        METADATA_LICENSE,
+        METADATA_LICENSE = 2147483648,
         /**
          * Copy the project license
          */
-        PROJECT_LICENSE,
+        PROJECT_LICENSE = 4294967296,
         /**
          * Copy the project group
          */
-        PROJECT_GROUP,
+        PROJECT_GROUP = 8589934592,
         /**
          * Copy the source kind
          */
-        SOURCE_KIND,
-        SUGGESTS,
+        SOURCE_KIND = 17179869184,
+        SUGGESTS = 34359738368,
         /**
          * Copy the launchables
          */
-        LAUNCHABLES,
+        LAUNCHABLES = 68719476736,
         /**
          * Copy the agreements
          */
-        AGREEMENTS,
+        AGREEMENTS = 137438953472,
     }
 
 
@@ -2684,15 +2739,15 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Be strict when loading the file
          */
-        STRICT,
+        STRICT = 1,
         /**
          * Load keys and groups case insensitive
          */
-        CASE_INSENSITIVE,
+        CASE_INSENSITIVE = 2,
     }
 
 
@@ -2704,11 +2759,11 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore errors where possible
          */
-        IGNORE_ERRORS,
+        IGNORE_ERRORS = 1,
     }
 
 
@@ -2720,19 +2775,19 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Treat the text as an exact string
          */
-        LITERAL_TEXT,
+        LITERAL_TEXT = 1,
         /**
          * Retain comments in the XML file
          */
-        KEEP_COMMENTS,
+        KEEP_COMMENTS = 2,
         /**
          * Only load native languages
          */
-        ONLY_NATIVE_LANGS,
+        ONLY_NATIVE_LANGS = 4,
     }
 
 
@@ -2745,15 +2800,15 @@ export namespace AppStreamGlib {
         /**
          * No special flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * The user wrote the review themselves
          */
-        SELF,
+        SELF = 1,
         /**
          * The user voted on the review
          */
-        VOTED,
+        VOTED = 2,
     }
 
 
@@ -2765,23 +2820,23 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Local files will be used by default
          */
-        PREFER_LOCAL,
+        PREFER_LOCAL = 1,
         /**
          * Allow multiple apps with the same AppStream ID
          */
-        USE_UNIQUE_ID,
+        USE_UNIQUE_ID = 2,
         /**
          * Use a heuristic when adding merge components
          */
-        USE_MERGE_HEURISTIC,
+        USE_MERGE_HEURISTIC = 4,
         /**
          * Only load native languages
          */
-        ONLY_NATIVE_LANGS,
+        ONLY_NATIVE_LANGS = 8,
     }
 
 
@@ -2793,51 +2848,51 @@ export namespace AppStreamGlib {
         /**
          * No extra flags to use
          */
-        NONE,
+        NONE = 0,
         /**
          * The system app-info AppStream data
          */
-        APP_INFO_SYSTEM,
+        APP_INFO_SYSTEM = 1,
         /**
          * The per-user app-info AppStream data
          */
-        APP_INFO_USER,
+        APP_INFO_USER = 2,
         /**
          * The ubuntu-specific app-install data (obsolete)
          */
-        APP_INSTALL,
+        APP_INSTALL = 4,
         /**
          * The installed AppData files
          */
-        APPDATA,
+        APPDATA = 8,
         /**
          * The installed desktop files
          */
-        DESKTOP,
+        DESKTOP = 16,
         /**
          * Add vetoed applications
          */
-        ALLOW_VETO,
+        ALLOW_VETO = 32,
         /**
          * Add flatpak user applications (obsolete)
          */
-        FLATPAK_USER,
+        FLATPAK_USER = 64,
         /**
          * Add flatpak system applications (obsolete)
          */
-        FLATPAK_SYSTEM,
+        FLATPAK_SYSTEM = 128,
         /**
          * Ignore invalid files
          */
-        IGNORE_INVALID,
+        IGNORE_INVALID = 256,
         /**
          * Ignore compressed files
          */
-        ONLY_UNCOMPRESSED,
+        ONLY_UNCOMPRESSED = 512,
         /**
          * Ignore non-wildcard matches
          */
-        ONLY_MERGE_APPS,
+        ONLY_MERGE_APPS = 1024,
     }
 
 
@@ -2849,31 +2904,31 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Scope, e.g. a {@link AppStreamGlib.AppScope}
          */
-        SCOPE,
+        SCOPE = 1,
         /**
          * Bundle kind, e.g. a {@link AppStreamGlib.BundleKind}
          */
-        BUNDLE_KIND,
+        BUNDLE_KIND = 2,
         /**
          * Origin
          */
-        ORIGIN,
+        ORIGIN = 4,
         /**
          * Component kind, e.g. a {@link AppStreamGlib.AppKind}
          */
-        KIND,
+        KIND = 8,
         /**
          * Component AppStream ID
          */
-        ID,
+        ID = 16,
         /**
          * Branch
          */
-        BRANCH,
+        BRANCH = 32,
     }
 
 
@@ -2885,11 +2940,11 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Prefer a HiDPI icon
          */
-        HI_DPI,
+        HI_DPI = 1,
     }
 
 
@@ -2901,11 +2956,11 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Use a heuristic to parse version numbers
          */
-        USE_HEURISTICS,
+        USE_HEURISTICS = 1,
     }
 
 
@@ -2917,15 +2972,15 @@ export namespace AppStreamGlib {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Use Microsoft-style version numbers
          */
-        USE_TRIPLET,
+        USE_TRIPLET = 1,
         /**
          * Use binary coded decimal notation
          */
-        USE_BCD,
+        USE_BCD = 2,
     }
 
 
@@ -3454,6 +3509,7 @@ export namespace AppStreamGlib {
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          * @since 0.3.1
+         * @throws GLib.Error
          */
         convert_icons(kind: IconKind): boolean;
 
@@ -4085,6 +4141,7 @@ export namespace AppStreamGlib {
          * @param flags {@link AppStreamGlib.AppParseFlags}, e.g. {@link AppStreamGlib.AppParseFlags.USE_HEURISTICS}
          * @returns `true` for success
          * @since 0.7.5
+         * @throws GLib.Error
          */
         parse_data(data: GLib.Bytes | Uint8Array, flags: number): boolean;
 
@@ -4096,6 +4153,7 @@ export namespace AppStreamGlib {
          * @param flags {@link AppStreamGlib.AppParseFlags}, e.g. {@link AppStreamGlib.AppParseFlags.USE_HEURISTICS}
          * @returns `true` for success
          * @since 0.1.2
+         * @throws GLib.Error
          */
         parse_file(filename: string, flags: number): boolean;
 
@@ -4339,6 +4397,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` for success
          * @since 0.2.0
+         * @throws GLib.Error
          */
         to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4346,6 +4405,7 @@ export namespace AppStreamGlib {
          * Exports a DOM tree to an XML string.
          * @returns an XML string, or `null`
          * @since 0.7.14
+         * @throws GLib.Error
          */
         to_xml(): GLib.String;
 
@@ -4354,6 +4414,7 @@ export namespace AppStreamGlib {
          * @param flags the {@link AppStreamGlib.AppValidateFlags} to use, e.g. {@link AppStreamGlib.AppValidateFlags.NONE}
          * @returns A list of problems, or `null`
          * @since 0.1.4
+         * @throws GLib.Error
          */
         validate(flags: number): Problem[];
     }
@@ -4966,6 +5027,7 @@ export namespace AppStreamGlib {
          * @param kind a %AsIconKind, e.g. #AS_ICON_KIND_EMBEDDED
          * @returns `true` for success
          * @since 0.3.1
+         * @throws GLib.Error
          */
         convert_to_kind(kind: IconKind): boolean;
 
@@ -5039,6 +5101,7 @@ export namespace AppStreamGlib {
          * @param flags a {@link AppStreamGlib.IconLoadFlags}, e.g. {@link AppStreamGlib.IconLoadFlags.SEARCH_SIZE}
          * @returns `true` for success
          * @since 0.3.1
+         * @throws GLib.Error
          */
         load(flags: IconLoadFlags): boolean;
 
@@ -5238,6 +5301,7 @@ export namespace AppStreamGlib {
          * @param filename filename to read from
          * @returns `true` for success
          * @since 0.1.6
+         * @throws GLib.Error
          */
         load_filename(filename: string): boolean;
 
@@ -5249,6 +5313,7 @@ export namespace AppStreamGlib {
          * @param flags a {@link AppStreamGlib.ImageLoadFlags}, e.g. {@link AppStreamGlib.ImageLoadFlags.NONE}
          * @returns `true` for success
          * @since 0.5.6
+         * @throws GLib.Error
          */
         load_filename_full(filename: string, dest_size: number, src_size_min: number, flags: ImageLoadFlags): boolean;
 
@@ -5260,6 +5325,7 @@ export namespace AppStreamGlib {
          * @param flags some {@link AppStreamGlib.ImageSaveFlags} values, e.g. {@link AppStreamGlib.ImageSaveFlags.PAD_16_9}
          * @returns `true` for success
          * @since 0.1.6
+         * @throws GLib.Error
          */
         save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags): boolean;
 
@@ -6024,6 +6090,7 @@ export namespace AppStreamGlib {
          * @param version a version number, e.g. `0.1.3`
          * @returns `true` if the predicate was true
          * @since 0.6.7
+         * @throws GLib.Error
          */
         version_compare(version: string): boolean;
     }
@@ -6554,7 +6621,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            "app-added": (arg0: App) => void;
+            "app-added": (app: App) => void;
             /**
              * The ::app-changed signal is emitted when a component has been changed
              * in the store.
@@ -6562,7 +6629,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            "app-changed": (arg0: App) => void;
+            "app-changed": (app: App) => void;
             /**
              * The ::app-removed signal is emitted when a component has been removed
              * from the store.
@@ -6570,7 +6637,7 @@ export namespace AppStreamGlib {
              * @since 0.6.5
              * @run-last
              */
-            "app-removed": (arg0: App) => void;
+            "app-removed": (app: App) => void;
             /**
              * The ::changed signal is emitted when components have been added
              * or removed from the store.
@@ -6697,6 +6764,7 @@ export namespace AppStreamGlib {
          * @param kind the AsIconKind, e.g. {@link AppStreamGlib.IconKind.EMBEDDED}.
          * @returns `true` for success
          * @since 0.3.1
+         * @throws GLib.Error
          */
         convert_icons(kind: IconKind): boolean;
 
@@ -6722,6 +6790,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          * @since 0.5.2
+         * @throws GLib.Error
          */
         from_bytes(bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6740,6 +6809,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         from_file(file: Gio.File, icon_root: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6753,6 +6823,7 @@ export namespace AppStreamGlib {
          * @param icon_root the icon path, or `null` for the default.
          * @returns `true` for success
          * @since 0.1.1
+         * @throws GLib.Error
          */
         from_xml(data: string, icon_root: string | null): boolean;
 
@@ -6944,6 +7015,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          * @since 0.1.2
+         * @throws GLib.Error
          */
         load(flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6978,6 +7050,7 @@ export namespace AppStreamGlib {
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` for success
          * @since 0.7.11
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -6987,6 +7060,7 @@ export namespace AppStreamGlib {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` for success
          * @since 0.2.2
+         * @throws GLib.Error
          */
         load_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7021,6 +7095,7 @@ export namespace AppStreamGlib {
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` for success
          * @since 0.7.11
+         * @throws GLib.Error
          */
         load_path_finish(result: Gio.AsyncResult): boolean;
 
@@ -7141,6 +7216,7 @@ export namespace AppStreamGlib {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A {@link GLib.String}
          * @since 0.1.0
+         * @throws GLib.Error
          */
         to_file(file: Gio.File, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7158,6 +7234,7 @@ export namespace AppStreamGlib {
          * @param flags the {@link AppStreamGlib.AppValidateFlags} to use, e.g. {@link AppStreamGlib.AppValidateFlags.NONE}
          * @returns A list of problems, or `null`
          * @since 0.2.4
+         * @throws GLib.Error
          */
         validate(flags: number): Problem[];
     }

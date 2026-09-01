@@ -31,15 +31,15 @@ export namespace Libxfce4util {
         /**
          * the BSD License.
          */
-        BSD,
+        BSD = 0,
         /**
          * the GNU General Public License.
          */
-        GPL,
+        GPL = 1,
         /**
          * the GNU Lesser General Public License.
          */
-        LGPL,
+        LGPL = 2,
     }
 
 
@@ -50,28 +50,34 @@ export namespace Libxfce4util {
         /**
          * where applications store data.
          */
-        DATA,
+        DATA = 0,
         /**
          * configuration files.
          */
-        CONFIG,
+        CONFIG = 1,
         /**
          * cached information.
          */
-        CACHE,
+        CACHE = 2,
         /**
          * icon search path.
          */
-        ICONS,
+        ICONS = 3,
         /**
          * themes search path.
          */
-        THEMES,
+        THEMES = 4,
     }
 
 
+    /**
+     * @default 50
+     */
     const LOCALE_FULL_MATCH: number;
 
+    /**
+     * @default 0
+     */
     const LOCALE_NO_MATCH: number;
 
     /**
@@ -122,6 +128,7 @@ export namespace Libxfce4util {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @returns Checksum of the `file`. If file read fails, returns `null`. Free with `g_free()`.
      * @since 4.17
+     * @throws GLib.Error
      */
     function g_file_create_checksum(file: Gio.File, cancellable: Gio.Cancellable | null): string | null;
 
@@ -136,6 +143,7 @@ export namespace Libxfce4util {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @returns `true` if safety flag is verified or not supported. `false` otherwise.
      * @since 4.17
+     * @throws GLib.Error
      */
     function g_file_is_trusted(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -167,6 +175,7 @@ export namespace Libxfce4util {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @returns `true` on success, `false` on error.
      * @since 4.17
+     * @throws GLib.Error
      */
     function g_file_set_trusted(file: Gio.File, is_trusted: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -307,6 +316,7 @@ export namespace Libxfce4util {
      * @param mode file permissions to use for the newly created directories.
      * @returns `true` on success, else `false`.
      * @since 4.2
+     * @throws GLib.Error
      */
     function mkdirhier(whole_path: string, mode: bigint | number): boolean;
 
@@ -314,6 +324,7 @@ export namespace Libxfce4util {
      * Initializes the POSIX signal handler system.  Must be called
      * before setting any POSIX signal handlers.
      * @returns `true` on success, `false` on failure, in which case          `error` will be set.
+     * @throws GLib.Error
      */
     function posix_signal_handler_init(): boolean;
 
@@ -330,6 +341,7 @@ export namespace Libxfce4util {
      * @param signal A POSIX signal id number.
      * @param handler A callback function.
      * @returns `true` on success, `false` otherwise, in which case          `error` will be set.
+     * @throws GLib.Error
      */
     function posix_signal_handler_set_handler(signal: number, handler: PosixSignalHandler): boolean;
 
@@ -634,6 +646,7 @@ export namespace Libxfce4util {
          * Check whether ConsoleKit can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_hibernate(): [boolean, boolean, boolean];
 
@@ -641,6 +654,7 @@ export namespace Libxfce4util {
          * Check whether ConsoleKit can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
 
@@ -648,6 +662,7 @@ export namespace Libxfce4util {
          * Check whether ConsoleKit can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_power_off(): [boolean, boolean, boolean];
 
@@ -655,6 +670,7 @@ export namespace Libxfce4util {
          * Check whether ConsoleKit can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_reboot(): [boolean, boolean, boolean];
 
@@ -662,6 +678,7 @@ export namespace Libxfce4util {
          * Check whether ConsoleKit can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_suspend(): [boolean, boolean, boolean];
 
@@ -670,6 +687,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         hibernate(polkit_interactive: boolean): boolean;
 
@@ -678,6 +696,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
 
@@ -686,6 +705,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         power_off(polkit_interactive: boolean): boolean;
 
@@ -694,6 +714,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         reboot(polkit_interactive: boolean): boolean;
 
@@ -702,6 +723,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         suspend(polkit_interactive: boolean): boolean;
     }
@@ -822,6 +844,7 @@ export namespace Libxfce4util {
          * Check whether systemd can trigger and has authorization for Hibernate.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_hibernate(): [boolean, boolean, boolean];
 
@@ -829,6 +852,7 @@ export namespace Libxfce4util {
          * Check whether systemd can trigger and has authorization for HybridSleep.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_hybrid_sleep(): [boolean, boolean, boolean];
 
@@ -836,6 +860,7 @@ export namespace Libxfce4util {
          * Check whether systemd can trigger PowerOff.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_power_off(): [boolean, boolean, boolean];
 
@@ -843,6 +868,7 @@ export namespace Libxfce4util {
          * Check whether systemd can trigger Reboot.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_reboot(): [boolean, boolean, boolean];
 
@@ -850,6 +876,7 @@ export namespace Libxfce4util {
          * Check whether systemd can trigger and has authorization for Suspend.
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         can_suspend(): [boolean, boolean, boolean];
 
@@ -858,6 +885,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         hibernate(polkit_interactive: boolean): boolean;
 
@@ -866,6 +894,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         hybrid_sleep(polkit_interactive: boolean): boolean;
 
@@ -874,6 +903,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         power_off(polkit_interactive: boolean): boolean;
 
@@ -882,6 +912,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         reboot(polkit_interactive: boolean): boolean;
 
@@ -890,6 +921,7 @@ export namespace Libxfce4util {
          * @param polkit_interactive whether PolicyKit should ask the user to authenticate if needed
          * @returns `true` if the D-Bus request was successful, `false` otherwise and `error` is set.
          * @since 4.19.1
+         * @throws GLib.Error
          */
         suspend(polkit_interactive: boolean): boolean;
     }

@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./egg-1.0.d.ts","./egg-1.0-surface.d.ts"]
+  "include": ["./egg-1.0.d.ts","./egg-1.0-vocabulary.d.ts"]
 }
 
 

@@ -32,19 +32,19 @@ export namespace GIRepository {
         /**
          * a C array, `char[]` for instance
          */
-        C,
+        C = 0,
         /**
          * a {@link GLib.Array} array
          */
-        ARRAY,
+        ARRAY = 1,
         /**
          * a {@link GLib.PtrArray} array
          */
-        PTR_ARRAY,
+        PTR_ARRAY = 2,
         /**
          * a {@link GLib.ByteArray} array
          */
-        BYTE_ARRAY,
+        BYTE_ARRAY = 3,
     }
 
 
@@ -57,15 +57,15 @@ export namespace GIRepository {
         /**
          * ‘in’ argument.
          */
-        IN,
+        IN = 0,
         /**
          * ‘out’ argument.
          */
-        OUT,
+        OUT = 1,
         /**
          * ‘in and out’ argument.
          */
-        INOUT,
+        INOUT = 2,
     }
 
 
@@ -110,22 +110,22 @@ export namespace GIRepository {
         /**
          * the typelib could not be found.
          */
-        TYPELIB_NOT_FOUND,
+        TYPELIB_NOT_FOUND = 0,
         /**
          * the namespace does not match the
          *   requested namespace.
          */
-        NAMESPACE_MISMATCH,
+        NAMESPACE_MISMATCH = 1,
         /**
          * the version of the
          *   typelib does not match the requested version.
          */
-        NAMESPACE_VERSION_CONFLICT,
+        NAMESPACE_VERSION_CONFLICT = 2,
         /**
          * the library used by the typelib
          *   could not be found.
          */
-        LIBRARY_NOT_FOUND,
+        LIBRARY_NOT_FOUND = 3,
     }
 
 
@@ -140,29 +140,29 @@ export namespace GIRepository {
         /**
          * The argument is not of callback type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The callback and associated `user_data` is only
          *   used during the call to this function.
          */
-        CALL,
+        CALL = 1,
         /**
          * The callback and associated `user_data` is
          *   only used until the callback is invoked, and the callback.
          *   is invoked always exactly once.
          */
-        ASYNC,
+        ASYNC = 2,
         /**
          * The callback and associated
          *   `user_data` is used until the caller is notified via the
          *   {@link GLib.DestroyNotify}.
          */
-        NOTIFIED,
+        NOTIFIED = 3,
         /**
          * The callback and associated `user_data` is
          *   used until the process terminates
          */
-        FOREVER,
+        FOREVER = 4,
     }
 
 
@@ -191,7 +191,7 @@ export namespace GIRepository {
          *   ownership of the transfer and the caller doesn’t need to do anything to
          *   free up the resources of this transfer.
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * Transfer the container (list, array, hash table) from
          *   the callee to the caller. The callee retains the ownership of the
@@ -199,14 +199,14 @@ export namespace GIRepository {
          *   container resources ({@link GLib.List.free},
          *   {@link GLib.HashTable.destroy}, etc) of this transfer.
          */
-        CONTAINER,
+        CONTAINER = 1,
         /**
          * Transfer everything, e.g. the container and its
          *   contents from the callee to the caller. This is the case when the callee
          *   creates a copy of all the data it returns. The caller is responsible for
          *   cleaning up the container and item resources of this transfer.
          */
-        EVERYTHING,
+        EVERYTHING = 2,
     }
 
 
@@ -219,98 +219,99 @@ export namespace GIRepository {
         /**
          * void
          */
-        VOID,
+        VOID = 0,
         /**
          * boolean
          */
-        BOOLEAN,
+        BOOLEAN = 1,
         /**
          * 8-bit signed integer
          */
-        INT8,
+        INT8 = 2,
         /**
          * 8-bit unsigned integer
          */
-        UINT8,
+        UINT8 = 3,
         /**
          * 16-bit signed integer
          */
-        INT16,
+        INT16 = 4,
         /**
          * 16-bit unsigned integer
          */
-        UINT16,
+        UINT16 = 5,
         /**
          * 32-bit signed integer
          */
-        INT32,
+        INT32 = 6,
         /**
          * 32-bit unsigned integer
          */
-        UINT32,
+        UINT32 = 7,
         /**
          * 64-bit signed integer
          */
-        INT64,
+        INT64 = 8,
         /**
          * 64-bit unsigned integer
          */
-        UINT64,
+        UINT64 = 9,
         /**
          * float
          */
-        FLOAT,
+        FLOAT = 10,
         /**
          * double floating point
          */
-        DOUBLE,
+        DOUBLE = 11,
         /**
          * a {@link GObject.Type}
          */
-        GTYPE,
+        GTYPE = 12,
         /**
          * a UTF-8 encoded string
          */
-        UTF8,
+        UTF8 = 13,
         /**
          * a filename, encoded in the same encoding
          *   as the native filesystem is using.
          */
-        FILENAME,
+        FILENAME = 14,
         /**
          * an array
          */
-        ARRAY,
+        ARRAY = 15,
         /**
          * an extended interface object
          */
-        INTERFACE,
+        INTERFACE = 16,
         /**
          * a {@link GLib.List}
          */
-        GLIST,
+        GLIST = 17,
         /**
          * a {@link GLib.SList}
          */
-        GSLIST,
+        GSLIST = 18,
         /**
          * a {@link GLib.HashTable}
          */
-        GHASH,
+        GHASH = 19,
         /**
          * a {@link GLib.Error}
          */
-        ERROR,
+        ERROR = 20,
         /**
          * Unicode character
          */
-        UNICHAR,
+        UNICHAR = 21,
     }
 
 
     /**
      * Number of entries in {@link GIRepository.TypeTag}.
      * @since 2.80
+     * @default 22
      */
     const TYPE_TAG_N_TYPES: number;
 
@@ -383,15 +384,15 @@ export namespace GIRepository {
         /**
          * no flags set (since: 2.86)
          */
-        INFO_FLAGS_NONE,
+        INFO_FLAGS_NONE = 0,
         /**
          * field is readable.
          */
-        IS_READABLE,
+        IS_READABLE = 1,
         /**
          * field is writable.
          */
-        IS_WRITABLE,
+        IS_WRITABLE = 2,
     }
 
 
@@ -404,28 +405,28 @@ export namespace GIRepository {
         /**
          * no flags set (since: 2.86)
          */
-        INFO_FLAGS_NONE,
+        INFO_FLAGS_NONE = 0,
         /**
          * is a method.
          */
-        IS_METHOD,
+        IS_METHOD = 1,
         /**
          * is a constructor.
          */
-        IS_CONSTRUCTOR,
+        IS_CONSTRUCTOR = 2,
         /**
          * is a getter of a {@link GIRepository.PropertyInfo}.
          */
-        IS_GETTER,
+        IS_GETTER = 4,
         /**
          * is a setter of a {@link GIRepository.PropertyInfo}.
          */
-        IS_SETTER,
+        IS_SETTER = 8,
         /**
          * represents a virtual function.
          */
-        WRAPS_VFUNC,
-        IS_ASYNC,
+        WRAPS_VFUNC = 16,
+        IS_ASYNC = 32,
     }
 
 
@@ -438,11 +439,11 @@ export namespace GIRepository {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Lazily load the typelib.
          */
-        LAZY,
+        LAZY = 1,
     }
 
 
@@ -455,19 +456,19 @@ export namespace GIRepository {
         /**
          * no flags set (since: 2.86)
          */
-        INFO_FLAGS_NONE,
+        INFO_FLAGS_NONE = 0,
         /**
          * chains up to the parent type
          */
-        MUST_CHAIN_UP,
+        MUST_CHAIN_UP = 1,
         /**
          * overrides
          */
-        MUST_OVERRIDE,
+        MUST_OVERRIDE = 2,
         /**
          * does not override
          */
-        MUST_NOT_OVERRIDE,
+        MUST_NOT_OVERRIDE = 4,
     }
 
 
@@ -932,6 +933,7 @@ export namespace GIRepository {
          * @param out_args array of ‘out’ arguments allocated by   the caller, to be populated with outputted values
          * @returns `TRUE` if the callable was executed successfully and didn’t throw   a {@link GLib.Error}; `FALSE` if `error` is set
          * @since 2.80
+         * @throws GLib.Error
          */
         invoke(_function: null, in_args: Argument[], out_args: Argument[]): [boolean, Argument];
 
@@ -2441,6 +2443,7 @@ export namespace GIRepository {
          * @param flags flags affecting the loading operation
          * @returns namespace of the loaded typelib
          * @since 2.80
+         * @throws GLib.Error
          */
         load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string;
 
@@ -2485,6 +2488,7 @@ export namespace GIRepository {
          * @param flags Set of {@link GIRepository.RepositoryLoadFlags}, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if   successful, `NULL` otherwise
          * @since 2.80
+         * @throws GLib.Error
          */
         require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
 
@@ -2501,6 +2505,7 @@ export namespace GIRepository {
          * @param flags Set of {@link GIRepository.RepositoryLoadFlags}, may be 0
          * @returns a pointer to the {@link GIRepository.Typelib} if   successful, `NULL` otherwise
          * @since 2.80
+         * @throws GLib.Error
          */
         require_private(typelib_dir: string, namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib;
     }
@@ -3090,6 +3095,7 @@ export namespace GIRepository {
          * @param implementor_gtype {@link GObject.Type} implementing this virtual function
          * @returns address to a function
          * @since 2.80
+         * @throws GLib.Error
          */
         get_address(implementor_gtype: GObject.GType): null;
 

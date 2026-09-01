@@ -40,15 +40,15 @@ export namespace Arrow {
         /**
          * Raise an error on ambiguous times.
          */
-        RAISE,
+        RAISE = 0,
         /**
          * Emit the earliest instant.
          */
-        EARLIEST,
+        EARLIEST = 1,
         /**
          * Emit the latest instant.
          */
-        LATEST,
+        LATEST = 2,
     }
 
 
@@ -69,16 +69,16 @@ export namespace Arrow {
         /**
          * Raise an error on nonexistent times.
          */
-        RAISE,
+        RAISE = 0,
         /**
          * Emit the instant just before the DST
          * shift.
          */
-        EARLIEST,
+        EARLIEST = 1,
         /**
          * Emit the DST shift instant.
          */
-        LATEST,
+        LATEST = 2,
     }
 
 
@@ -98,15 +98,15 @@ export namespace Arrow {
         /**
          * Only enclose values in quotes which need them.
          */
-        NEEDED,
+        NEEDED = 0,
         /**
          * Enclose all valid values in quotes.
          */
-        ALL_VALID,
+        ALL_VALID = 1,
         /**
          * Do not enclose any values in quotes.
          */
-        NONE,
+        NONE = 2,
     }
 
 
@@ -126,47 +126,47 @@ export namespace Arrow {
         /**
          * Nanosecond
          */
-        NANOSECOND,
+        NANOSECOND = 0,
         /**
          * Microsecond
          */
-        MICROSECOND,
+        MICROSECOND = 1,
         /**
          * Millisecond
          */
-        MILLISECOND,
+        MILLISECOND = 2,
         /**
          * Second
          */
-        SECOND,
+        SECOND = 3,
         /**
          * Minute
          */
-        MINUTE,
+        MINUTE = 4,
         /**
          * Hour
          */
-        HOUR,
+        HOUR = 5,
         /**
          * Day
          */
-        DAY,
+        DAY = 6,
         /**
          * Week
          */
-        WEEK,
+        WEEK = 7,
         /**
          * Month
          */
-        MONTH,
+        MONTH = 8,
         /**
          * Quarter
          */
-        QUARTER,
+        QUARTER = 9,
         /**
          * Year
          */
-        YEAR,
+        YEAR = 10,
     }
 
 
@@ -185,35 +185,35 @@ export namespace Arrow {
         /**
          * Not compressed.
          */
-        UNCOMPRESSED,
+        UNCOMPRESSED = 0,
         /**
          * Snappy compression.
          */
-        SNAPPY,
+        SNAPPY = 1,
         /**
          * gzip compression.
          */
-        GZIP,
+        GZIP = 2,
         /**
          * Brotli compression.
          */
-        BROTLI,
+        BROTLI = 3,
         /**
          * Zstandard compression.
          */
-        ZSTD,
+        ZSTD = 4,
         /**
          * LZ4 compression.
          */
-        LZ4,
+        LZ4 = 5,
         /**
          * LZO compression.
          */
-        LZO,
+        LZO = 6,
         /**
          * bzip2 compression.
          */
-        BZ2,
+        BZ2 = 7,
     }
 
 
@@ -232,15 +232,15 @@ export namespace Arrow {
         /**
          * Only non-null values will be counted.
          */
-        ONLY_VALID,
+        ONLY_VALID = 0,
         /**
          * Only null values will be counted.
          */
-        ONLY_NULL,
+        ONLY_NULL = 1,
         /**
          * All will be counted.
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -262,12 +262,12 @@ export namespace Arrow {
          * The null value will be added to the
          * dictionary with a proper index.
          */
-        ENCODE,
+        ENCODE = 0,
         /**
          * The null value will be masked in the
          * indices array.
          */
-        MASK,
+        MASK = 1,
     }
 
 
@@ -377,15 +377,15 @@ export namespace Arrow {
         /**
          * For read.
          */
-        READ,
+        READ = 0,
         /**
          * For write.
          */
-        WRITE,
+        WRITE = 1,
         /**
          * For read-write.
          */
-        READWRITE,
+        READWRITE = 2,
     }
 
 
@@ -405,19 +405,19 @@ export namespace Arrow {
         /**
          * Entry is not found
          */
-        NOT_FOUND,
+        NOT_FOUND = 0,
         /**
          * Entry exists but its type is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * Entry is a regular file
          */
-        FILE,
+        FILE = 2,
         /**
          * Entry is a directory
          */
-        DIR,
+        DIR = 3,
     }
 
 
@@ -437,11 +437,11 @@ export namespace Arrow {
         /**
          * Filtered value will be removed in the output.
          */
-        DROP,
+        DROP = 0,
         /**
          * Filtered value will be null in the output.
          */
-        EMIT_NULL,
+        EMIT_NULL = 1,
     }
 
 
@@ -462,17 +462,17 @@ export namespace Arrow {
         /**
          * A number of months.
          */
-        MONTH,
+        MONTH = 0,
         /**
          * A number of days and
          *   milliseconds (fraction of day).
          */
-        DAY_TIME,
+        DAY_TIME = 1,
         /**
          * A number of months, days and
          *   nanoseconds between two dates.
          */
-        MONTH_DAY_NANO,
+        MONTH_DAY_NANO = 2,
     }
 
 
@@ -491,15 +491,15 @@ export namespace Arrow {
         /**
          * Ignore other fields.
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * Return error.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Infer a type.
          */
-        INFER_TYPE,
+        INFER_TYPE = 2,
     }
 
 
@@ -521,16 +521,16 @@ export namespace Arrow {
          * A null in any input results in a null in the
          * output.
          */
-        EMIT_NULL,
+        EMIT_NULL = 0,
         /**
          * Nulls in inputs are skipped.
          */
-        SKIP,
+        SKIP = 1,
         /**
          * Nulls in inputs are replaced with the replacement
          * string.
          */
-        REPLACE,
+        REPLACE = 2,
     }
 
 
@@ -547,14 +547,14 @@ export namespace Arrow {
      * @since 7.0.0
      */
     enum JoinType {
-        LEFT_SEMI,
-        RIGHT_SEMI,
-        LEFT_ANTI,
-        RIGHT_ANTI,
-        INNER,
-        LEFT_OUTER,
-        RIGHT_OUTER,
-        FULL_OUTER,
+        LEFT_SEMI = 0,
+        RIGHT_SEMI = 1,
+        LEFT_ANTI = 2,
+        RIGHT_ANTI = 3,
+        INNER = 4,
+        LEFT_OUTER = 5,
+        RIGHT_OUTER = 6,
+        FULL_OUTER = 7,
     }
 
 
@@ -576,18 +576,18 @@ export namespace Arrow {
          * Return the same type which was passed
          * in (default).
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Explicitly return the same type which
          * was passed in.
          */
-        FALSE,
+        FALSE = 1,
         /**
          * Return a FixedSizeListArray. If stop is
          * after a list element's length, nulls will be appended to create the requested slice
          * size.
          */
-        TRUE,
+        TRUE = 2,
     }
 
 
@@ -608,15 +608,15 @@ export namespace Arrow {
         /**
          * Return the first matching value.
          */
-        FIRST,
+        FIRST = 0,
         /**
          * Return the last matching value.
          */
-        LAST,
+        LAST = 1,
         /**
          * Return all matching values.
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -636,15 +636,15 @@ export namespace Arrow {
         /**
          * Version 1.
          */
-        V1,
+        V1 = 0,
         /**
          * Version 2.
          */
-        V2,
+        V2 = 1,
         /**
          * Version 3.
          */
-        V3,
+        V3 = 2,
     }
 
 
@@ -665,12 +665,12 @@ export namespace Arrow {
          * Place nulls and NaNs before any non-null values.
          *   NaNs will come after nulls.
          */
-        AT_START,
+        AT_START = 0,
         /**
          * Place nulls and NaNs after any non-null values.
          *   NaNs will come before nulls.
          */
-        AT_END,
+        AT_END = 1,
     }
 
 
@@ -692,12 +692,12 @@ export namespace Arrow {
          * Unexpected pivot keys are ignored
          * silently.
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * Unexpected pivot keys return a
          * KeyError.
          */
-        RAISE,
+        RAISE = 1,
     }
 
 
@@ -718,23 +718,23 @@ export namespace Arrow {
         /**
          * Linear.
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Lower.
          */
-        LOWER,
+        LOWER = 1,
         /**
          * Higher.
          */
-        HIGHER,
+        HIGHER = 2,
         /**
          * Nearest.
          */
-        NEAREST,
+        NEAREST = 3,
         /**
          * Midpoint.
          */
-        MIDPOINT,
+        MIDPOINT = 4,
     }
 
 
@@ -749,10 +749,10 @@ export namespace Arrow {
      * @gir-type Enum
      */
     enum RankTiebreaker {
-        MIN,
-        MAX,
-        FIRST,
-        DENSE,
+        MIN = 0,
+        MAX = 1,
+        FIRST = 2,
+        DENSE = 3,
     }
 
 
@@ -769,8 +769,8 @@ export namespace Arrow {
      * @since 7.0.0
      */
     enum RoundMode {
-        DOWN,
-        UP,
+        DOWN = 0,
+        UP = 1,
         /**
          * Get the integral part without fractional digits (aka "trunc")
          * `GARROW_ROUND_TOWARDS_INFINITY`,
@@ -793,14 +793,14 @@ export namespace Arrow {
          * `GARROW_ROUND_HALF_TO_ODD`,
          *   Round ties to nearest odd integer
          */
-        TOWARDS_ZERO,
-        TOWARDS_INFINITY,
-        HALF_DOWN,
-        HALF_UP,
-        HALF_TOWARDS_ZERO,
-        HALF_TOWARDS_INFINITY,
-        HALF_TO_EVEN,
-        HALF_TO_ODD,
+        TOWARDS_ZERO = 2,
+        TOWARDS_INFINITY = 3,
+        HALF_DOWN = 4,
+        HALF_UP = 5,
+        HALF_TOWARDS_ZERO = 6,
+        HALF_TOWARDS_INFINITY = 7,
+        HALF_TO_EVEN = 8,
+        HALF_TO_ODD = 9,
     }
 
 
@@ -820,31 +820,31 @@ export namespace Arrow {
         /**
          * Off.
          */
-        OFF,
+        OFF = 0,
         /**
          * Fatal. This is the default.
          */
-        FATAL,
+        FATAL = 1,
         /**
          * Error.
          */
-        ERROR,
+        ERROR = 2,
         /**
          * Warn.
          */
-        WARN,
+        WARN = 3,
         /**
          * Info.
          */
-        INFO,
+        INFO = 4,
         /**
          * Debug.
          */
-        DEBUG,
+        DEBUG = 5,
         /**
          * Trace.
          */
-        TRACE,
+        TRACE = 6,
     }
 
 
@@ -864,11 +864,11 @@ export namespace Arrow {
         /**
          * Sort in ascending order.
          */
-        ASCENDING,
+        ASCENDING = 0,
         /**
          * Sort in descending order.
          */
-        DESCENDING,
+        DESCENDING = 1,
     }
 
 
@@ -887,19 +887,19 @@ export namespace Arrow {
         /**
          * Second.
          */
-        SECOND,
+        SECOND = 0,
         /**
          * Millisecond.
          */
-        MILLI,
+        MILLI = 1,
         /**
          * Microsecond.
          */
-        MICRO,
+        MICRO = 2,
         /**
          * Nanosecond.
          */
-        NANO,
+        NANO = 3,
     }
 
 
@@ -918,184 +918,184 @@ export namespace Arrow {
         /**
          * A degenerate NULL type represented as 0 bytes/bits.
          */
-        NA,
+        NA = 0,
         /**
          * A boolean value represented as 1-bit.
          */
-        BOOLEAN,
+        BOOLEAN = 1,
         /**
          * Little-endian 8-bit unsigned integer.
          */
-        UINT8,
+        UINT8 = 2,
         /**
          * Little-endian 8-bit signed integer.
          */
-        INT8,
+        INT8 = 3,
         /**
          * Little-endian 16-bit unsigned integer.
          */
-        UINT16,
+        UINT16 = 4,
         /**
          * Little-endian 16-bit signed integer.
          */
-        INT16,
+        INT16 = 5,
         /**
          * Little-endian 32-bit unsigned integer.
          */
-        UINT32,
+        UINT32 = 6,
         /**
          * Little-endian 32-bit signed integer.
          */
-        INT32,
+        INT32 = 7,
         /**
          * Little-endian 64-bit unsigned integer.
          */
-        UINT64,
+        UINT64 = 8,
         /**
          * Little-endian 64-bit signed integer.
          */
-        INT64,
+        INT64 = 9,
         /**
          * 2-byte floating point value.
          */
-        HALF_FLOAT,
+        HALF_FLOAT = 10,
         /**
          * 4-byte floating point value.
          */
-        FLOAT,
+        FLOAT = 11,
         /**
          * 8-byte floating point value.
          */
-        DOUBLE,
+        DOUBLE = 12,
         /**
          * UTF-8 variable-length string.
          */
-        STRING,
+        STRING = 13,
         /**
          * Variable-length bytes (no guarantee of UTF-8-ness).
          */
-        BINARY,
+        BINARY = 14,
         /**
          * Fixed-size binary. Each value occupies
          *   the same number of bytes.
          */
-        FIXED_SIZE_BINARY,
+        FIXED_SIZE_BINARY = 15,
         /**
          * int32 days since the UNIX epoch.
          */
-        DATE32,
+        DATE32 = 16,
         /**
          * int64 milliseconds since the UNIX epoch.
          */
-        DATE64,
+        DATE64 = 17,
         /**
          * Exact timestamp encoded with int64 since UNIX epoch.
          *   Default unit millisecond.
          */
-        TIMESTAMP,
+        TIMESTAMP = 18,
         /**
          * Exact time encoded with int32, supporting seconds or milliseconds
          */
-        TIME32,
+        TIME32 = 19,
         /**
          * Exact time encoded with int64, supporting micro- or nanoseconds
          */
-        TIME64,
+        TIME64 = 20,
         /**
          * YEAR_MONTH interval in SQL style.
          */
-        MONTH_INTERVAL,
+        MONTH_INTERVAL = 21,
         /**
          * DAY_TIME interval in SQL style.
          */
-        DAY_TIME_INTERVAL,
+        DAY_TIME_INTERVAL = 22,
         /**
          * Precision- and scale-based decimal
          *   type with 128-bit. Storage type depends on the parameters.
          */
-        DECIMAL128,
+        DECIMAL128 = 23,
         /**
          * Precision- and scale-based decimal
          *   type with 256-bit. Storage type depends on the parameters.
          */
-        DECIMAL256,
+        DECIMAL256 = 24,
         /**
          * A list of some logical data type.
          */
-        LIST,
+        LIST = 25,
         /**
          * Struct of logical types.
          */
-        STRUCT,
+        STRUCT = 26,
         /**
          * Sparse unions of logical types.
          */
-        SPARSE_UNION,
+        SPARSE_UNION = 27,
         /**
          * Dense unions of logical types.
          */
-        DENSE_UNION,
+        DENSE_UNION = 28,
         /**
          * Dictionary aka Category type.
          */
-        DICTIONARY,
+        DICTIONARY = 29,
         /**
          * A repeated struct logical type.
          */
-        MAP,
+        MAP = 30,
         /**
          * Custom data type, implemented by user.
          */
-        EXTENSION,
+        EXTENSION = 31,
         /**
          * Fixed size list of some logical type.
          */
-        FIXED_SIZE_LIST,
+        FIXED_SIZE_LIST = 32,
         /**
          * Measure of elapsed time in either seconds,
          *   milliseconds, microseconds or nanoseconds.
          */
-        DURATION,
+        DURATION = 33,
         /**
          * 64bit offsets UTF-8 variable-length string.
          */
-        LARGE_STRING,
+        LARGE_STRING = 34,
         /**
          * 64bit offsets Variable-length bytes (no guarantee of
          * UTF-8-ness).
          */
-        LARGE_BINARY,
+        LARGE_BINARY = 35,
         /**
          * A list of some logical data type with 64-bit offsets.
          */
-        LARGE_LIST,
+        LARGE_LIST = 36,
         /**
          * MONTH_DAY_NANO interval in SQL style.
          */
-        MONTH_DAY_NANO_INTERVAL,
+        MONTH_DAY_NANO_INTERVAL = 37,
         /**
          * Run-end encoded data.
          */
-        RUN_END_ENCODED,
+        RUN_END_ENCODED = 38,
         /**
          * String (UTF8) view type with 4-byte prefix and inline small
          *   string optimization.
          */
-        STRING_VIEW,
+        STRING_VIEW = 39,
         /**
          * Bytes view type with 4-byte prefix and inline small string
          *   optimization.
          */
-        BINARY_VIEW,
+        BINARY_VIEW = 40,
         /**
          * Precision- and scale-based decimal
          */
-        DECIMAL32,
+        DECIMAL32 = 43,
         /**
          * Precision- and scale-based decimal
          *   type with 64-bit. Storage type depends on the parameters.
          */
-        DECIMAL64,
+        DECIMAL64 = 44,
     }
 
 
@@ -1115,21 +1115,21 @@ export namespace Arrow {
         /**
          * Normalization Form Canonical Composition.
          */
-        NFC,
+        NFC = 0,
         /**
          * Normalization Form Compatibility
          *   Composition.
          */
-        NFKC,
+        NFKC = 1,
         /**
          * Normalization Form Canonical Decomposition.
          */
-        NFD,
+        NFD = 2,
         /**
          * Normalization Form Compatibility
          *   Decomposition.
          */
-        NFKD,
+        NFKD = 3,
     }
 
 
@@ -1138,24 +1138,28 @@ export namespace Arrow {
      * that the stop value is not set. When this value is used, the slice will
      * continue to the end of the list.
      * @since 23.0.0
+     * @default -1
      */
     const LIST_SLICE_OPTIONS_STOP_UNSPECIFIED: number;
 
     /**
      * The major version.
      * @since 0.10.0
+     * @default 23
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro version.
      * @since 0.10.0
+     * @default 1
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor version.
      * @since 0.10.0
+     * @default 0
      */
     const VERSION_MINOR: number;
 
@@ -1171,6 +1175,7 @@ export namespace Arrow {
      * features.
      * @returns `true` if initializing the compute module completed successfully,   `false` otherwise.
      * @since 21.0.0
+     * @throws GLib.Error
      */
     function compute_initialize(): boolean;
 
@@ -1180,6 +1185,7 @@ export namespace Arrow {
      * Finalize the S3 APIs.
      * @returns `true` on success, `false` on error.
      * @since 7.0.0
+     * @throws GLib.Error
      */
     function s3_finalize(): boolean;
 
@@ -1191,6 +1197,7 @@ export namespace Arrow {
      * @param options Options to initialize the S3 APIs.
      * @returns `true` on success, `false` on error.
      * @since 7.0.0
+     * @throws GLib.Error
      */
     function s3_initialize(options: S3GlobalOptions | null): boolean;
 
@@ -1446,6 +1453,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.CastOptions}.
          * @returns A newly created casted array on success, `null` on error.
          * @since 0.7.0
+         * @throws GLib.Error
          */
         cast(target_data_type: DataType, options: CastOptions | null): Array | null;
 
@@ -1453,6 +1461,7 @@ export namespace Arrow {
          * @param other_arrays A {@link Arrow.Array} to be   concatenated.
          * @returns The concatenated array.
          * @since 4.0.0
+         * @throws GLib.Error
          */
         concatenate(other_arrays: Array[]): Array | null;
 
@@ -1460,18 +1469,21 @@ export namespace Arrow {
          * @param options A {@link Arrow.CountOptions}.
          * @returns The number of target values on success. If an error is occurred,   the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         count(options: CountOptions | null): number;
 
         /**
          * @returns A {@link Arrow.StructArray} of `{input type "values", int64_t "counts"}`   on success, `null` on error.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         count_values(): StructArray | null;
 
         /**
          * @returns A newly created {@link Arrow.DictionaryArray} for the `array` on success,   `null` on error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         dictionary_encode(): DictionaryArray | null;
 
@@ -1518,6 +1530,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): [boolean, null, null];
 
@@ -1526,6 +1539,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Array} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter(filter: BooleanArray, options: FilterOptions | null): Array | null;
 
@@ -1572,6 +1586,7 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.Array}.
          * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right array.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         is_in(right: Array): BooleanArray | null;
 
@@ -1579,6 +1594,7 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.ChunkedArray}.
          * @returns The {@link Arrow.BooleanArray}   showing whether each element in the left array is contained   in right chunked array.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         is_in_chunked_array(right: ChunkedArray): BooleanArray | null;
 
@@ -1600,6 +1616,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.RunEndEncodeOptions}.
          * @returns A newly created `GArrowRunEndEncodeArray` for the `array` on success,   `null` on error.
          * @since 13.0.0
+         * @throws GLib.Error
          */
         run_end_encode(options: RunEndEncodeOptions | null): RunEndEncodedArray | null;
 
@@ -1614,6 +1631,7 @@ export namespace Arrow {
          * @param order The order for sort.
          * @returns The indices that would sort   an array in the specified order on success, `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         sort_indices(order: SortOrder): UInt64Array | null;
 
@@ -1621,6 +1639,7 @@ export namespace Arrow {
          * @returns The indices that would sort   an array in ascending order on success, `null` on error.
          * @since 0.15.0
          * @deprecated since 3.0.0: Use `garrow_array_sort_indices()` instead.
+         * @throws GLib.Error
          */
         sort_to_indices(): UInt64Array | null;
 
@@ -1629,6 +1648,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Array} taken from   an array of values at indices in input array or `null` on error.
          * @since 0.14.0
+         * @throws GLib.Error
          */
         take(indices: Array, options: TakeOptions | null): Array | null;
 
@@ -1637,30 +1657,35 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
 
         /**
          * @returns The formatted array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          * @since 0.4.0
+         * @throws GLib.Error
          */
         to_string(): string | null;
 
         /**
          * @returns A newly created unique elements array on success, `null` on error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         unique(): Array | null;
 
         /**
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate(): boolean;
 
         /**
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate_full(): boolean;
 
@@ -1668,6 +1693,7 @@ export namespace Arrow {
          * @param return_type A {@link Arrow.DataType} of the returned view.
          * @returns A zero-copy view of this array   with the given type. This method checks if the `return_type` are   layout-compatible.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         view(return_type: DataType): Array | null;
     }
@@ -1734,6 +1760,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_empty_value(): boolean;
 
@@ -1743,12 +1770,14 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_empty_values(n: bigint | number): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_null(): boolean;
 
@@ -1758,11 +1787,13 @@ export namespace Arrow {
          * @param n The number of null values to be appended.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_nulls(n: bigint | number): boolean;
 
         /**
          * @returns The built {@link Arrow.Array} on success,   `null` on error.
+         * @throws GLib.Error
          */
         finish(): Array;
 
@@ -1813,6 +1844,7 @@ export namespace Arrow {
          * @param additional_capacity The additional capacity to be reserved.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         reserve(additional_capacity: bigint | number): boolean;
 
@@ -1825,6 +1857,7 @@ export namespace Arrow {
          * @param capacity A new capacity.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         resize(capacity: bigint | number): boolean;
     }
@@ -2497,6 +2530,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_binary_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: Uint8Array | string): boolean;
 
@@ -2504,6 +2538,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: Uint8Array | string): boolean;
 
@@ -2511,6 +2546,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
@@ -2521,6 +2557,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
@@ -2623,6 +2660,7 @@ export namespace Arrow {
          * @param array A {@link Arrow.BinaryArray}.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_array(array: BinaryArray): boolean;
 
@@ -2632,6 +2670,7 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
 
@@ -2639,6 +2678,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_value(value: Uint8Array | string): boolean;
 
@@ -2646,12 +2686,14 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         finish_delta(): [boolean, Array, Array];
 
@@ -2665,6 +2707,7 @@ export namespace Arrow {
          * @param values A {@link Arrow.BinaryArray}.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         insert_memo_values(values: BinaryArray): boolean;
 
@@ -2886,6 +2929,7 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.BooleanArray}.
          * @returns The element-wise AND operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         and(right: BooleanArray): BooleanArray;
 
@@ -2903,6 +2947,7 @@ export namespace Arrow {
         /**
          * @returns The element-wise inverted boolean array.   It should be freed with `g_object_unref()` when no longer needed.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         invert(): BooleanArray;
 
@@ -2910,6 +2955,7 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.BooleanArray}.
          * @returns The element-wise OR operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         or(right: BooleanArray): BooleanArray;
 
@@ -2917,6 +2963,7 @@ export namespace Arrow {
          * @param right A right hand side {@link Arrow.BooleanArray}.
          * @returns The element-wise XOR operated boolean array.   It should be freed with `g_object_unref()` when no longer needed.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         xor(right: BooleanArray): BooleanArray;
     }
@@ -2972,6 +3019,7 @@ export namespace Arrow {
          * @param value A boolean value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_boolean_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: boolean): boolean;
 
@@ -2979,6 +3027,7 @@ export namespace Arrow {
          * @param value A boolean value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: boolean): boolean;
 
@@ -2989,6 +3038,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: boolean[], is_valids: boolean[] | null): boolean;
     }
@@ -3171,6 +3221,7 @@ export namespace Arrow {
          * @param size The number of bytes to be copied from the start.
          * @returns A newly copied {@link Arrow.Buffer} on success, `null` on error.
          * @since 0.3.0
+         * @throws GLib.Error
          */
         copy(start: bigint | number, size: bigint | number): Buffer | null;
 
@@ -3350,6 +3401,7 @@ export namespace Arrow {
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -3366,18 +3418,21 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -3879,6 +3934,7 @@ export namespace Arrow {
         /**
          * @returns A read {@link Arrow.Table} or `null` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         read(): Table | null;
     }
@@ -4413,6 +4469,7 @@ export namespace Arrow {
         /**
          * @returns The combined array that has   all data in all chunks.
          * @since 4.0.0
+         * @throws GLib.Error
          */
         combine(): Array | null;
 
@@ -4426,6 +4483,7 @@ export namespace Arrow {
         /**
          * @returns An exported chunked array as   `struct ArrowArrayStream *` on success, `null` on error.   It should be freed with the `ArrowArrayStream::release` callback then   `g_free()` when no longer needed.
          * @since 21.0.0
+         * @throws GLib.Error
          */
         ["export"](): null;
 
@@ -4434,6 +4492,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.ChunkedArray} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter(filter: BooleanArray, options: FilterOptions | null): ChunkedArray | null;
 
@@ -4442,6 +4501,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.ChunkedArray} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): ChunkedArray | null;
 
@@ -4501,6 +4561,7 @@ export namespace Arrow {
          * @param order The order for sort.
          * @returns The indices that would sort   a chunked array in the specified order on success, `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         sort_indices(order: SortOrder): UInt64Array | null;
 
@@ -4509,6 +4570,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take(indices: Array, options: TakeOptions | null): ChunkedArray | null;
 
@@ -4517,12 +4579,14 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in chunked array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): ChunkedArray | null;
 
         /**
          * @returns The formatted chunked array content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         to_string(): string | null;
     }
@@ -4721,6 +4785,7 @@ export namespace Arrow {
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -4737,12 +4802,14 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         * @throws GLib.Error
          */
         read(n_bytes: bigint | number): Buffer | null;
 
@@ -4756,6 +4823,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
@@ -4830,6 +4898,7 @@ export namespace Arrow {
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -4846,18 +4915,21 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -5071,6 +5143,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.DataType} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): null;
 
@@ -5209,6 +5282,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.7.0
          * @deprecated since 0.12.0: Use `garrow_date32_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -5216,6 +5290,7 @@ export namespace Arrow {
          * @param value The number of days since UNIX epoch in signed 32bit integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -5226,6 +5301,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -5450,6 +5526,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.7.0
          * @deprecated since 0.12.0: Use `garrow_date64_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -5457,6 +5534,7 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -5467,6 +5545,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -5952,6 +6031,7 @@ export namespace Arrow {
          * @param value A {@link Arrow.DayMillisecond}.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_value(value: DayMillisecond): boolean;
 
@@ -5962,6 +6042,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_values(values: DayMillisecond[], is_valids: boolean[] | null): boolean;
     }
@@ -6141,6 +6222,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal128}.
          * @returns The divided value of   these decimals or `null` on error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         divide(right: Decimal128): [Decimal128 | null, Decimal128 | null];
 
@@ -6218,6 +6300,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         rescale(original_scale: number, new_scale: number): Decimal128 | null;
 
@@ -6370,6 +6453,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.10.0
          * @deprecated since 0.12.0: Use `garrow_decimal128_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: Decimal128): boolean;
 
@@ -6377,6 +6461,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: Decimal128 | null): boolean;
 
@@ -6393,6 +6478,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_values(values: Decimal128[], is_valids: boolean[] | null): boolean;
 
@@ -6598,6 +6684,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal256}.
          * @returns The divided value of   these decimals or `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         divide(right: Decimal256): [Decimal256 | null, Decimal256 | null];
 
@@ -6668,6 +6755,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         rescale(original_scale: number, new_scale: number): Decimal256 | null;
 
@@ -6813,6 +6901,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_value(value: Decimal256 | null): boolean;
 
@@ -6829,6 +6918,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_values(values: Decimal256[], is_valids: boolean[] | null): boolean;
 
@@ -7034,6 +7124,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal32}.
          * @returns The divided value of   these decimals or `null` on error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         divide(right: Decimal32): [Decimal32 | null, Decimal32 | null];
 
@@ -7111,6 +7202,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         rescale(original_scale: number, new_scale: number): Decimal32 | null;
 
@@ -7262,6 +7354,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         append_value(value: Decimal32 | null): boolean;
 
@@ -7278,6 +7371,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         append_values(values: Decimal32[], is_valids: boolean[] | null): boolean;
 
@@ -7483,6 +7577,7 @@ export namespace Arrow {
          * @param right A {@link Arrow.Decimal64}.
          * @returns The divided value of   these decimals or `null` on error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         divide(right: Decimal64): [Decimal64 | null, Decimal64 | null];
 
@@ -7560,6 +7655,7 @@ export namespace Arrow {
          * @param new_scale A scale to be converted to.
          * @returns The rescaled decimal or `null` on error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         rescale(original_scale: number, new_scale: number): Decimal64 | null;
 
@@ -7711,6 +7807,7 @@ export namespace Arrow {
          * @param value A decimal value.
          * @returns `true` on success, `false` if there was an error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         append_value(value: Decimal64 | null): boolean;
 
@@ -7727,6 +7824,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 19.0.0
+         * @throws GLib.Error
          */
         append_values(values: Decimal64[], is_valids: boolean[] | null): boolean;
 
@@ -8430,6 +8528,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -8485,6 +8584,7 @@ export namespace Arrow {
          * @param value A double value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_double_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -8492,6 +8592,7 @@ export namespace Arrow {
          * @param value A double value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -8502,6 +8603,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -8725,6 +8827,7 @@ export namespace Arrow {
          * @param value The elapsed time in 64-bit signed integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 23.0.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -8735,6 +8838,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 23.0.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -9267,6 +9371,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.AggregateNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for aggregation on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         build_aggregate_node(input: ExecuteNode, options: AggregateNodeOptions): ExecuteNode;
 
@@ -9277,6 +9382,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for filter on success, `null` on error.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         build_filter_node(input: ExecuteNode, options: FilterNodeOptions): ExecuteNode;
 
@@ -9288,6 +9394,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.HashJoinNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for hash join on success, `null` on error.
          * @since 7.0.0
+         * @throws GLib.Error
          */
         build_hash_join_node(left: ExecuteNode, right: ExecuteNode, options: HashJoinNodeOptions): ExecuteNode;
 
@@ -9297,6 +9404,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.ExecuteNodeOptions} for new node.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         build_node(factory_name: string, inputs: ExecuteNode[], options: ExecuteNodeOptions): ExecuteNode;
 
@@ -9307,6 +9415,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.ProjectNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for project on success, `null` on error.
          * @since 11.0.0
+         * @throws GLib.Error
          */
         build_project_node(input: ExecuteNode, options: ProjectNodeOptions): ExecuteNode;
 
@@ -9317,6 +9426,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.SinkNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for sink on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         build_sink_node(input: ExecuteNode, options: SinkNodeOptions): ExecuteNode;
 
@@ -9326,6 +9436,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.SourceNodeOptions}.
          * @returns A newly built and added {@link Arrow.ExecuteNode}   for source on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         build_source_node(options: SourceNodeOptions): ExecuteNode;
 
@@ -9350,6 +9461,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -9357,6 +9469,7 @@ export namespace Arrow {
          * Waits for finishing this plan.
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         wait(): boolean;
     }
@@ -9719,6 +9832,7 @@ export namespace Arrow {
          * @param data_type A {@link Arrow.ExtensionDataType} to be registered.
          * @returns `true` on success, `false` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         register(data_type: ExtensionDataType): boolean;
 
@@ -9728,6 +9842,7 @@ export namespace Arrow {
          * @param name An extension data type name to be unregistered.
          * @returns `true` on success, `false` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         unregister(name: string): boolean;
     }
@@ -9962,6 +10077,7 @@ export namespace Arrow {
         /**
          * @returns The table in the file that has all columns.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         read(): Table;
 
@@ -9969,6 +10085,7 @@ export namespace Arrow {
          * @param indices The indices of column to be read.
          * @returns The table in the file that has only the   specified columns.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         read_indices(indices: number[]): Table;
 
@@ -9976,6 +10093,7 @@ export namespace Arrow {
          * @param names The names of column to be read.
          * @returns The table in the file that has only the   specified columns.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         read_names(names: string[]): Table;
     }
@@ -10131,6 +10249,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.Field} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): null;
 
@@ -10500,6 +10619,7 @@ export namespace Arrow {
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -10516,18 +10636,21 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -10725,6 +10848,7 @@ export namespace Arrow {
          * @param dest The path of the destination.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         copy_file(src: string, dest: string): boolean;
 
@@ -10735,6 +10859,7 @@ export namespace Arrow {
          * @param recursive Whether creating directory recursively or not.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         create_dir(path: string, recursive: boolean): boolean;
 
@@ -10743,6 +10868,7 @@ export namespace Arrow {
          * @param path The paths of the directory.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         delete_dir(path: string): boolean;
 
@@ -10754,6 +10880,7 @@ export namespace Arrow {
          * @param path The paths of the directory.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         delete_dir_contents(path: string): boolean;
 
@@ -10762,6 +10889,7 @@ export namespace Arrow {
          * @param path The paths of the file to be delete.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         delete_file(path: string): boolean;
 
@@ -10770,6 +10898,7 @@ export namespace Arrow {
          * @param paths The paths of the files to be delete.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         delete_files(paths: string[]): boolean;
 
@@ -10784,6 +10913,7 @@ export namespace Arrow {
          * @param path The path of the target.
          * @returns A {@link Arrow.FileInfo}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         get_file_info(path: string): FileInfo | null;
 
@@ -10793,6 +10923,7 @@ export namespace Arrow {
          * @param paths The paths of the targets.
          * @returns A list of {@link Arrow.FileInfo}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         get_file_infos_paths(paths: string[]): FileInfo[];
 
@@ -10805,6 +10936,7 @@ export namespace Arrow {
          * @param file_selector A {@link Arrow.FileSelector}.
          * @returns A list of {@link Arrow.FileInfo}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         get_file_infos_selector(file_selector: FileSelector): FileInfo[];
 
@@ -10824,6 +10956,7 @@ export namespace Arrow {
          * @param dest The path of the destination.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         move(src: string, dest: string): boolean;
 
@@ -10833,6 +10966,7 @@ export namespace Arrow {
          * @param path The path of the output stream.
          * @returns A newly created {@link Arrow.OutputStream}   for appending.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         open_append_stream(path: string): OutputStream | null;
 
@@ -10841,6 +10975,7 @@ export namespace Arrow {
          * @param path The path of the input file.
          * @returns A newly created   {@link Arrow.SeekableInputStream}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         open_input_file(path: string): SeekableInputStream | null;
 
@@ -10849,6 +10984,7 @@ export namespace Arrow {
          * @param path The path of the input stream.
          * @returns A newly created   {@link Arrow.InputStream}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         open_input_stream(path: string): InputStream | null;
 
@@ -10858,6 +10994,7 @@ export namespace Arrow {
          * @param path The path of the output stream.
          * @returns A newly created   {@link Arrow.OutputStream}.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         open_output_stream(path: string): OutputStream | null;
     }
@@ -11189,6 +11326,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_value(value: Uint8Array | string | null): boolean;
 
@@ -11196,6 +11334,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
@@ -11206,6 +11345,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
 
@@ -11219,6 +11359,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         append_values_packed(values: GLib.Bytes | Uint8Array, is_valids: boolean[] | null): boolean;
     }
@@ -11489,6 +11630,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_fixed_size_list_array_builder_get_value_builder()`.
          * @since 23.0.0
+         * @throws GLib.Error
          */
         append_value(): boolean;
 
@@ -11682,6 +11824,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -11737,6 +11880,7 @@ export namespace Arrow {
          * @param value A float value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_float_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -11744,6 +11888,7 @@ export namespace Arrow {
          * @param value A float value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -11754,6 +11899,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -11983,6 +12129,7 @@ export namespace Arrow {
          * @param context A {@link Arrow.ExecuteContext} for the execution.
          * @returns A return value of the execution as {@link Arrow.Datum} on success, `null` on error.
          * @since 1.0.0
+         * @throws GLib.Error
          */
         execute(args: Datum[], options: FunctionOptions | null, context: ExecuteContext | null): Datum | null;
 
@@ -12326,6 +12473,7 @@ export namespace Arrow {
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -12342,18 +12490,21 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -12520,6 +12671,7 @@ export namespace Arrow {
          * @param value A 16-bit float value.
          * @returns `true` on success, `false` if there was an error.
          * @since 11.0.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -12530,6 +12682,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 11.0.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -12687,6 +12840,7 @@ export namespace Arrow {
          * @param outputs Output fields.
          * @returns `true` on success, `false` on error.
          * @since 7.0.0
+         * @throws GLib.Error
          */
         set_left_outputs(outputs: string[]): boolean;
 
@@ -12694,6 +12848,7 @@ export namespace Arrow {
          * @param outputs Output fields.
          * @returns `true` on success, `false` on error.
          * @since 7.0.0
+         * @throws GLib.Error
          */
         set_right_outputs(outputs: string[]): boolean;
     }
@@ -12865,6 +13020,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be advanced.
          * @returns `true` on success, `false` on error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         advance(n_bytes: bigint | number): boolean;
 
@@ -12872,6 +13028,7 @@ export namespace Arrow {
          * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
          * @returns `true` on success, `false` on error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         align(alignment: number): boolean;
 
@@ -12880,17 +13037,20 @@ export namespace Arrow {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns {@link Arrow.RecordBatch} on success, `null` on error.
          * @since 1.0.0
+         * @throws GLib.Error
          */
         read_record_batch(schema: Schema, options: ReadOptions | null): RecordBatch | null;
 
         /**
          * @returns {@link Arrow.Tensor} on success, `null` on error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         read_tensor(): Tensor | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -12907,12 +13067,14 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         * @throws GLib.Error
          */
         read(n_bytes: bigint | number): Buffer | null;
 
@@ -12926,6 +13088,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
@@ -13002,6 +13165,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -13057,6 +13221,7 @@ export namespace Arrow {
          * @param value A int16 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_int16_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -13064,6 +13229,7 @@ export namespace Arrow {
          * @param value A int16 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -13074,6 +13240,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -13246,6 +13413,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -13301,6 +13469,7 @@ export namespace Arrow {
          * @param value A int32 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_int32_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -13308,6 +13477,7 @@ export namespace Arrow {
          * @param value A int32 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -13318,6 +13488,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -13490,6 +13661,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -13545,6 +13717,7 @@ export namespace Arrow {
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_int64_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -13552,6 +13725,7 @@ export namespace Arrow {
          * @param value A int64 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -13562,6 +13736,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -13734,6 +13909,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -13789,6 +13965,7 @@ export namespace Arrow {
          * @param value A int8 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_int8_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -13796,6 +13973,7 @@ export namespace Arrow {
          * @param value A int8 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -13806,6 +13984,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
@@ -13964,6 +14143,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.6.0
          * @deprecated since 0.12.0: Use `garrow_int_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -13971,6 +14151,7 @@ export namespace Arrow {
          * @param value A int value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -13981,6 +14162,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -14297,6 +14479,7 @@ export namespace Arrow {
         /**
          * @returns A read {@link Arrow.Table} or `null` on error.
          * @since 0.14.0
+         * @throws GLib.Error
          */
         read(): Table | null;
     }
@@ -14515,6 +14698,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_value(value: Uint8Array | string): boolean;
 
@@ -14522,6 +14706,7 @@ export namespace Arrow {
          * @param value A binary value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_value_bytes(value: GLib.Bytes | Uint8Array): boolean;
 
@@ -14532,6 +14717,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_values(values: (GLib.Bytes | Uint8Array)[], is_valids: boolean[] | null): boolean;
     }
@@ -14793,6 +14979,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_large_list_array_builder_get_value_builder()`.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_value(): boolean;
 
@@ -15017,6 +15204,7 @@ export namespace Arrow {
          * @param value A string value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_string(value: string): boolean;
 
@@ -15025,6 +15213,7 @@ export namespace Arrow {
          * @param length The length of `value`.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_string_len(value: string, length: bigint | number): boolean;
 
@@ -15035,6 +15224,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
@@ -15294,12 +15484,14 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_list_array_builder_get_value_builder()`. |[<!-- language="C" --> GArrowInt8ArrayBuilder *value_builder; GArrowListArrayBuilder *builder; value_builder = `garrow_int8_array_builder_new()`; builder = garrow_list_array_builder_new(value_builder, NULL); // Start 0th list element: [1, 0, -1] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, 1); garrow_int8_array_builder_append(value_builder, 0); garrow_int8_array_builder_append(value_builder, -1); // Start 1st list element: [-29, 29] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, -29); garrow_int8_array_builder_append(value_builder, 29); {   // [[1, 0, -1], [-29, 29]]   GArrowArray *array = garrow_array_builder_finish(builder);   // Now, builder is needless.   g_object_unref(builder);   g_object_unref(value_builder);   // Use array...   g_object_unref(array); } ]|
          * @deprecated since 0.12.0: Use `garrow_list_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new list element. To append a new list element, you need to call this function then append list element values to `value_builder`. `value_builder` is the {@link Arrow.ArrayBuilder} specified to constructor. You can get `value_builder` by `garrow_list_array_builder_get_value_builder()`. |[<!-- language="C" --> GArrowInt8ArrayBuilder *value_builder; GArrowListArrayBuilder *builder; value_builder = `garrow_int8_array_builder_new()`; builder = garrow_list_array_builder_new(value_builder, NULL); // Start 0th list element: [1, 0, -1] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, 1); garrow_int8_array_builder_append(value_builder, 0); garrow_int8_array_builder_append(value_builder, -1); // Start 1st list element: [-29, 29] garrow_list_array_builder_append(builder, NULL); garrow_int8_array_builder_append(value_builder, -29); garrow_int8_array_builder_append(value_builder, 29); {   // [[1, 0, -1], [-29, 29]]   GArrowArray *array = garrow_array_builder_finish(builder);   // Now, builder is needless.   g_object_unref(builder);   g_object_unref(value_builder);   // Use array...   g_object_unref(array); } ]|
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(): boolean;
 
@@ -15942,6 +16134,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         append_value(): boolean;
 
@@ -15952,6 +16145,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         append_values(offsets: number[], is_valids: boolean[] | null): boolean;
 
@@ -16715,6 +16909,7 @@ export namespace Arrow {
          * @param value A {@link Arrow.MonthDayNano}.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_value(value: MonthDayNano): boolean;
 
@@ -16725,6 +16920,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_values(values: MonthDayNano[], is_valids: boolean[] | null): boolean;
     }
@@ -16948,6 +17144,7 @@ export namespace Arrow {
          * @param value The month.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -16958,6 +17155,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -17120,6 +17318,7 @@ export namespace Arrow {
          * @param data The data to be written.
          * @returns `true` on success, `false` otherwise.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         set_data(offset: bigint | number, data: Uint8Array | string): boolean;
 
@@ -17452,6 +17651,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed mean.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         mean(): number;
     }
@@ -17598,18 +17798,21 @@ export namespace Arrow {
          * @param i The stripe index to be read.
          * @returns A newly read stripe as   {@link Arrow.RecordBatch} or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         read_stripe(i: bigint | number): RecordBatch | null;
 
         /**
          * @returns A newly read stripes as   {@link Arrow.Table} or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         read_stripes(): Table | null;
 
         /**
          * @returns A newly read type as   {@link Arrow.Schema} or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         read_type(): Schema | null;
 
@@ -17690,6 +17893,7 @@ export namespace Arrow {
          * @param alignment The byte multiple for the metadata prefix, usually 8   or 64, to ensure the body starts on a multiple of that alignment.
          * @returns `true` on success, `false` on error.
          * @since 0.11.0
+         * @throws GLib.Error
          */
         align(alignment: number): boolean;
 
@@ -17698,6 +17902,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.WriteOptions}.
          * @returns The number of written bytes on success, -1 on error.
          * @since 1.0.0
+         * @throws GLib.Error
          */
         write_record_batch(record_batch: RecordBatch, options: WriteOptions | null): number;
 
@@ -17705,11 +17910,13 @@ export namespace Arrow {
          * @param tensor A {@link Arrow.Tensor} to be written.
          * @returns The number of written bytes on success, -1 on error.
          * @since 0.4.0
+         * @throws GLib.Error
          */
         write_tensor(tensor: Tensor): number;
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -17726,18 +17933,21 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -18647,6 +18857,7 @@ export namespace Arrow {
          * @param column The column to be added.
          * @returns The newly allocated   {@link Arrow.RecordBatch} that has a new column or `null` on error.
          * @since 0.9.0
+         * @throws GLib.Error
          */
         add_column(i: number, field: Field, column: Array): RecordBatch | null;
 
@@ -18668,6 +18879,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): [boolean, null, null];
 
@@ -18676,6 +18888,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.RecordBatch} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter(filter: BooleanArray, options: FilterOptions | null): RecordBatch | null;
 
@@ -18711,6 +18924,7 @@ export namespace Arrow {
          * @param i The index of the new column.
          * @returns The newly allocated   {@link Arrow.RecordBatch} that doesn't have the column or `null` on error.
          * @since 0.9.0
+         * @throws GLib.Error
          */
         remove_column(i: number): RecordBatch | null;
 
@@ -18718,6 +18932,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.WriteOptions}.
          * @returns The newly allocated   {@link Arrow.Buffer} that contains a serialized record batch or `null` on   error.
          * @since 1.0.0
+         * @throws GLib.Error
          */
         serialize(options: WriteOptions | null): Buffer | null;
 
@@ -18732,6 +18947,7 @@ export namespace Arrow {
          * @param options The options to be used.
          * @returns The indices that would sort   a record batch with the specified options on success, `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         sort_indices(options: SortOptions): UInt64Array | null;
 
@@ -18740,24 +18956,28 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.ChunkedArray} taken from   an array of values at indices in input array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take(indices: Array, options: TakeOptions | null): RecordBatch | null;
 
         /**
          * @returns The formatted record batch content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          * @since 0.4.0
+         * @throws GLib.Error
          */
         to_string(): string | null;
 
         /**
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate(): boolean;
 
         /**
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate_full(): boolean;
     }
@@ -18826,6 +19046,7 @@ export namespace Arrow {
         /**
          * @returns The built {@link Arrow.RecordBatch} on success,   `null` on error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         flush(): RecordBatch;
 
@@ -19004,6 +19225,7 @@ export namespace Arrow {
          * @returns The i-th record batch in the file or `null` on error.
          * @since 0.4.0
          * @deprecated since 0.5.0: Use `garrow_record_batch_file_reader_read_record_batch()` instead.
+         * @throws GLib.Error
          */
         get_record_batch(i: number): RecordBatch | null;
 
@@ -19023,6 +19245,7 @@ export namespace Arrow {
          * @param i The index of the target record batch.
          * @returns The i-th record batch in the file or `null` on error.
          * @since 0.5.0
+         * @throws GLib.Error
          */
         read_record_batch(i: number): RecordBatch | null;
     }
@@ -19139,12 +19362,14 @@ export namespace Arrow {
         /**
          * @returns The next {@link Arrow.RecordBatch}, or `null` when the iterator is completed.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         next(): RecordBatch | null;
 
         /**
          * @returns A {@link GLib.List} contains every moved elements from the iterator.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         to_list(): RecordBatch[];
     }
@@ -19227,6 +19452,7 @@ export namespace Arrow {
         /**
          * @returns An exported   {@link Arrow.RecordBatchReader} as `struct ArrowArrayStream *` on   success, `null` on error.   It should be freed with the `ArrowArrayStream::release` callback then   `g_free()` when no longer needed.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): null;
 
@@ -19234,6 +19460,7 @@ export namespace Arrow {
          * @returns The next record batch in the stream or `null` on end of stream.
          * @since 0.4.0
          * @deprecated since 0.5.0: Use `garrow_record_batch_reader_read_next()` instead.
+         * @throws GLib.Error
          */
         get_next_record_batch(): RecordBatch | null;
 
@@ -19252,12 +19479,14 @@ export namespace Arrow {
         /**
          * @returns The all record batches in the stream as {@link Arrow.Table}.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         read_all(): Table | null;
 
         /**
          * @returns The next record batch in the stream or `null` on end of stream.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         read_next(): RecordBatch | null;
 
@@ -19265,6 +19494,7 @@ export namespace Arrow {
          * @returns The next record batch in the stream or `null` on end of stream.
          * @since 0.5.0
          * @deprecated since 0.8.0: Use `garrow_record_batch_reader_read_next()` instead.
+         * @throws GLib.Error
          */
         read_next_record_batch(): RecordBatch | null;
     }
@@ -19429,6 +19659,7 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 0.4.0
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -19442,6 +19673,7 @@ export namespace Arrow {
          * @param record_batch The record batch to be written.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.4.0
+         * @throws GLib.Error
          */
         write_record_batch(record_batch: RecordBatch): boolean;
 
@@ -19449,6 +19681,7 @@ export namespace Arrow {
          * @param table The table to be written.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         write_table(table: Table): boolean;
     }
@@ -19671,6 +19904,7 @@ export namespace Arrow {
          * @param new_capacity The new buffer capacity in bytes.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.3.0
+         * @throws GLib.Error
          */
         reserve(new_capacity: bigint | number): boolean;
 
@@ -19678,6 +19912,7 @@ export namespace Arrow {
          * @param new_size The new buffer size in bytes.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.3.0
+         * @throws GLib.Error
          */
         resize(new_size: bigint | number): boolean;
     }
@@ -20162,6 +20397,7 @@ export namespace Arrow {
         /**
          * @returns A newly decoded {@link Arrow.Array} for the `array` on success,   `null` on error.
          * @since 13.0.0
+         * @throws GLib.Error
          */
         decode(): Array | null;
 
@@ -20180,6 +20416,7 @@ export namespace Arrow {
         /**
          * @returns The logical indexes of each run-end or   `null` on error.   If a non-zero logical offset is set, this function allocates a   new array and rewrites all the run end values to be relative to   the logical offset and cuts the end of the array to the logical   length.
          * @since 13.0.0
+         * @throws GLib.Error
          */
         get_logical_run_ends(): Array;
 
@@ -20457,6 +20694,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.CastOptions}.
          * @returns A newly created casted scalar on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         cast(data_type: DataType, options: CastOptions | null): Scalar | null;
 
@@ -20703,6 +20941,7 @@ export namespace Arrow {
          * @param field The field to be added.
          * @returns The newly allocated {@link Arrow.Schema} that has a new field or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         add_field(i: number, field: Field): Schema | null;
 
@@ -20716,6 +20955,7 @@ export namespace Arrow {
         /**
          * @returns An exported {@link Arrow.Schema} as   `struct ArrowStruct *` on success, `null` on error.   It should be freed with the `ArrowSchema::release` callback then   `g_free()` when no longer needed.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         ["export"](): null;
 
@@ -20764,6 +21004,7 @@ export namespace Arrow {
          * @param i The index of the field to be removed.
          * @returns The newly allocated {@link Arrow.Schema} that doesn't have the field or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         remove_field(i: number): Schema | null;
 
@@ -20772,6 +21013,7 @@ export namespace Arrow {
          * @param field The newly added {@link Arrow.Field}.
          * @returns The newly allocated {@link Arrow.Schema} that has `field` as the `i`-th field or `null` on error.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         replace_field(i: number, field: Field): Schema | null;
 
@@ -20842,6 +21084,7 @@ export namespace Arrow {
         // Methods
         /**
          * @returns The size of the file.
+         * @throws GLib.Error
          */
         get_size(): number;
 
@@ -20854,6 +21097,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be peeked.
          * @returns The data of the buffer, up to the   indicated number. The data becomes invalid after any operation on   the stream. If the stream is unbuffered, the data is empty.   It should be freed with `g_bytes_unref()` when no longer needed.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         peek(n_bytes: bigint | number): GLib.Bytes;
 
@@ -20861,6 +21105,7 @@ export namespace Arrow {
          * @param position The read start position.
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         * @throws GLib.Error
          */
         read_at(position: bigint | number, n_bytes: bigint | number): Buffer | null;
 
@@ -20869,11 +21114,13 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on   success, `null` if there was an error.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         read_at_bytes(position: bigint | number, n_bytes: bigint | number): GLib.Bytes | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -20890,12 +21137,14 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         * @throws GLib.Error
          */
         read(n_bytes: bigint | number): Buffer | null;
 
@@ -20909,6 +21158,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
 
@@ -22033,6 +22283,7 @@ export namespace Arrow {
          * @param buffer A {@link Arrow.Buffer} to be decoded.
          * @returns `true` on success, `false` if there was an error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         consume_buffer(buffer: Buffer): boolean;
 
@@ -22045,6 +22296,7 @@ export namespace Arrow {
          * @param bytes A {@link GLib.Bytes} to be decoded.
          * @returns `true` on success, `false` if there was an error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         consume_bytes(bytes: GLib.Bytes | Uint8Array): boolean;
 
@@ -22121,6 +22373,7 @@ export namespace Arrow {
          * You can reuse this decoder for new stream after calling this.
          * @returns `true` on success, `false` if there was an error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         reset(): boolean;
     }
@@ -22198,6 +22451,7 @@ export namespace Arrow {
          * Processes an EOS event.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         on_eos(): boolean;
 
@@ -22207,6 +22461,7 @@ export namespace Arrow {
          * @param metadata A decoded metadata.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         on_record_batch_decoded(record_batch: RecordBatch, metadata: { [key: string]: string } | null): boolean;
 
@@ -22216,6 +22471,7 @@ export namespace Arrow {
          * @param filtered_schema A decoded {@link Arrow.Schema} that only has read fields.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         on_schema_decoded(schema: Schema, filtered_schema: Schema): boolean;
     }
@@ -22398,6 +22654,7 @@ export namespace Arrow {
          * @param value A string value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_string_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: string): boolean;
 
@@ -22411,6 +22668,7 @@ export namespace Arrow {
          * @param value A string value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_string(value: string): boolean;
 
@@ -22419,6 +22677,7 @@ export namespace Arrow {
          * @param length The length of `value`.
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         append_string_len(value: string, length: number): boolean;
 
@@ -22429,6 +22688,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         append_strings(values: string[], is_valids: boolean[] | null): boolean;
     }
@@ -22531,6 +22791,7 @@ export namespace Arrow {
          * @param array A {@link Arrow.StringArray}.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_array(array: StringArray): boolean;
 
@@ -22540,6 +22801,7 @@ export namespace Arrow {
          * @param is_valids The array of   `true` or `false` that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_indices(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
 
@@ -22547,12 +22809,14 @@ export namespace Arrow {
          * @param value A string value.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         append_string(value: string): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         finish_delta(): [boolean, Array, Array];
 
@@ -22566,6 +22830,7 @@ export namespace Arrow {
          * @param values A {@link Arrow.StringArray}.
          * @returns `true` on success, `false` if there was an error.
          * @since 2.0.0
+         * @throws GLib.Error
          */
         insert_memo_values(values: StringArray): boolean;
 
@@ -22926,6 +23191,7 @@ export namespace Arrow {
         /**
          * @returns The fields in the struct.
          * @since 0.10.0
+         * @throws GLib.Error
          */
         flatten(): Array[];
 
@@ -22991,12 +23257,14 @@ export namespace Arrow {
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new struct element. To append a new struct element, you need to call this function then append struct element field values to all `field_builder`s. `field_value`s are the {@link Arrow.ArrayBuilder} specified to constructor. You can get `field_builder` by `garrow_struct_array_builder_get_field_builder()` or `garrow_struct_array_builder_get_field_builders()`. |[<!-- language="C" --> // TODO ]|
          * @deprecated since 0.12.0: Use `garrow_struct_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error. It appends a new struct element. To append a new struct element, you need to call this function then append struct element field values to all `field_builder`s. `field_value`s are the {@link Arrow.ArrayBuilder} specified to constructor. You can get `field_builder` by `garrow_struct_array_builder_get_field_builder()` or `garrow_struct_array_builder_get_field_builders()`. |[<!-- language="C" --> // TODO ]|
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(): boolean;
 
@@ -23159,6 +23427,7 @@ export namespace Arrow {
         /**
          * @param field_ref The name or dot path specifying what to extract from struct or  union.
          * @since 16.0.0
+         * @throws GLib.Error
          */
         set_field_ref(field_ref: string): void;
     }
@@ -23481,12 +23750,14 @@ export namespace Arrow {
          * @param chunked_array The column data to be added.
          * @returns The newly allocated   {@link Arrow.Table} that has a new column or `null` on error.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         add_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
 
         /**
          * @returns The {@link Arrow.Table} with   chunks combined, or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         combine_chunks(): Table | null;
 
@@ -23495,6 +23766,7 @@ export namespace Arrow {
          * @param options The options to customize concatenation.
          * @returns The table concatenated vertically.
          * @since 0.14.0
+         * @throws GLib.Error
          */
         concatenate(other_tables: Table[], options: TableConcatenateOptions | null): Table | null;
 
@@ -23518,6 +23790,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Table} filtered   with a boolean selection filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter(filter: BooleanArray, options: FilterOptions | null): Table | null;
 
@@ -23526,6 +23799,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.FilterOptions}.
          * @returns The {@link Arrow.Table} filtered   with a chunked array filter. Nulls in the filter will   result in nulls in the output.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         filter_chunked_array(filter: ChunkedArray, options: FilterOptions | null): Table | null;
 
@@ -23555,6 +23829,7 @@ export namespace Arrow {
          * @param i The index of the column to be removed.
          * @returns The newly allocated   {@link Arrow.Table} that doesn't have the column or `null` on error.
          * @since 0.3.0
+         * @throws GLib.Error
          */
         remove_column(i: number): Table | null;
 
@@ -23564,6 +23839,7 @@ export namespace Arrow {
          * @param chunked_array The newly added column data.
          * @returns The newly allocated {@link Arrow.Table} that has `column` as the `i`-th column or `null` on error.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         replace_column(i: number, field: Field, chunked_array: ChunkedArray): Table | null;
 
@@ -23579,6 +23855,7 @@ export namespace Arrow {
          * @param options The options to be used.
          * @returns The indices that would sort   a table with the specified options on success, `null` on error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         sort_indices(options: SortOptions): UInt64Array | null;
 
@@ -23587,6 +23864,7 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Table} taken from   an array of values at indices in input array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take(indices: Array, options: TakeOptions | null): Table | null;
 
@@ -23595,12 +23873,14 @@ export namespace Arrow {
          * @param options A {@link Arrow.TakeOptions}.
          * @returns The {@link Arrow.Table} taken from   an array of values at indices in chunked array or `null` on error.
          * @since 0.16.0
+         * @throws GLib.Error
          */
         take_chunked_array(indices: ChunkedArray, options: TakeOptions | null): Table | null;
 
         /**
          * @returns The formatted table content or `null` on error.   It should be freed with `g_free()` when no longer needed.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         to_string(): string | null;
 
@@ -23608,6 +23888,7 @@ export namespace Arrow {
          * Validate the given table. This is a cheap validation.
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -23615,6 +23896,7 @@ export namespace Arrow {
          * Validate the given table. This is an extensive validation.
          * @returns `true` on success, `false` on error.
          * @since 20.0.0
+         * @throws GLib.Error
          */
         validate_full(): boolean;
 
@@ -23624,6 +23906,7 @@ export namespace Arrow {
          * @param properties The properties for this write.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         write_as_feather(sink: OutputStream, properties: FeatherWriteProperties | null): boolean;
     }
@@ -24252,6 +24535,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.7.0
          * @deprecated since 0.12.0: Use `garrow_time32_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -24259,6 +24543,7 @@ export namespace Arrow {
          * @param value The number of days since UNIX epoch in signed 32bit integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -24269,6 +24554,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -24493,6 +24779,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.7.0
          * @deprecated since 0.12.0: Use `garrow_time64_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -24500,6 +24787,7 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -24510,6 +24798,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -24786,6 +25075,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.7.0
          * @deprecated since 0.12.0: Use `garrow_timestamp_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -24793,6 +25083,7 @@ export namespace Arrow {
          * @param value The number of milliseconds since UNIX epoch in signed 64bit integer.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -24803,6 +25094,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -25118,6 +25410,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -25173,6 +25466,7 @@ export namespace Arrow {
          * @param value An uint16 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_uint16_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -25180,6 +25474,7 @@ export namespace Arrow {
          * @param value An uint16 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -25190,6 +25485,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -25362,6 +25658,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -25417,6 +25714,7 @@ export namespace Arrow {
          * @param value An uint32 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_uint32_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -25424,6 +25722,7 @@ export namespace Arrow {
          * @param value An uint32 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -25434,6 +25733,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: number[], is_valids: boolean[] | null): boolean;
     }
@@ -25606,6 +25906,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -25661,6 +25962,7 @@ export namespace Arrow {
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_uint64_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -25668,6 +25970,7 @@ export namespace Arrow {
          * @param value An uint64 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -25678,6 +25981,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -25850,6 +26154,7 @@ export namespace Arrow {
         /**
          * @returns The value of the computed sum on success,   If an error is occurred, the returned value is untrustful value.
          * @since 0.13.0
+         * @throws GLib.Error
          */
         sum(): number;
     }
@@ -25905,6 +26210,7 @@ export namespace Arrow {
          * @param value An uint8 value.
          * @returns `true` on success, `false` if there was an error.
          * @deprecated since 0.12.0: Use `garrow_uint8_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: number): boolean;
 
@@ -25912,6 +26218,7 @@ export namespace Arrow {
          * @param value An uint8 value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
 
@@ -25922,6 +26229,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: Uint8Array | string, is_valids: boolean[] | null): boolean;
     }
@@ -26080,6 +26388,7 @@ export namespace Arrow {
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
          * @deprecated since 0.12.0: Use `garrow_uint_array_builder_append_value()` instead.
+         * @throws GLib.Error
          */
         append(value: bigint | number): boolean;
 
@@ -26087,6 +26396,7 @@ export namespace Arrow {
          * @param value A unsigned int value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         append_value(value: bigint | number): boolean;
 
@@ -26097,6 +26407,7 @@ export namespace Arrow {
          * @param is_valids The array of   boolean that shows whether the Nth value is valid or not. If the   Nth `is_valids` is `true`, the Nth `values` is valid value. Otherwise   the Nth value is null value.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         append_values(values: (bigint | number)[], is_valids: boolean[] | null): boolean;
     }
@@ -26360,6 +26671,7 @@ export namespace Arrow {
          * @param value A type ID value.
          * @returns `true` on success, `false` if there was an error.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         append_value(value: number): boolean;
     }
@@ -28766,6 +29078,7 @@ export namespace Arrow {
         // Methods
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -28782,6 +29095,7 @@ export namespace Arrow {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
     }
@@ -28810,6 +29124,7 @@ export namespace Arrow {
         /**
          * @param n_bytes The number of bytes to be read.
          * @returns {@link Arrow.Buffer} that has read   data on success, `null` if there was an error.
+         * @throws GLib.Error
          */
         read(n_bytes: bigint | number): Buffer | null;
 
@@ -28817,6 +29132,7 @@ export namespace Arrow {
          * @param n_bytes The number of bytes to be read.
          * @returns {@link GLib.Bytes} that has read data on success, `null` if there was an error.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         read_bytes(n_bytes: bigint | number): GLib.Bytes | null;
     }
@@ -28845,12 +29161,14 @@ export namespace Arrow {
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -28880,6 +29198,7 @@ export namespace Arrow {
          * @param position The write start position.
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write_at(position: bigint | number, data: Uint8Array | string): boolean;
     }

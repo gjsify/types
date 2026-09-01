@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./builder-1.0.d.ts","./builder-1.0-surface.d.ts"]
+  "include": ["./builder-1.0.d.ts","./builder-1.0-vocabulary.d.ts"]
 }
 
 

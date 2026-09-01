@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./gcrgtk4-4.d.ts","./gcrgtk4-4-surface.d.ts"]
+  "include": ["./gcrgtk4-4.d.ts","./gcrgtk4-4-vocabulary.d.ts"]
 }
 
 

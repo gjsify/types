@@ -56,41 +56,47 @@ export namespace ClutterGst {
         /**
          * In-memory buffering
          */
-        STREAM,
+        STREAM = 0,
         /**
          * On-disk buffering
          */
-        DOWNLOAD,
+        DOWNLOAD = 1,
     }
 
 
     /**
      * ClutterGst major version (e.g. "1", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * ClutterGst micro version (e.g. "3", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 28
      */
     const MICRO_VERSION: number;
 
     /**
      * ClutterGst minor version (e.g. "2", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 0
      */
     const MINOR_VERSION: number;
 
     /**
      * ClutterGst full version (e.g. "1.2.3")
+     * @default 3.000000
      */
     const VERSION: number;
 
     /**
      * ClutterGst full version, encoded as an hexadecimal value.
+     * @default 0
      */
     const VERSION_HEX: number;
 
     /**
      * ClutterGst full version, encoded as a string.
+     * @default 3.0.28
      */
     const VERSION_S: string;
 
@@ -126,6 +132,7 @@ export namespace ClutterGst {
      * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    with `gettext()`, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      * @since 1.0
+     * @throws GLib.Error
      */
     function init_with_args(argv: string[] | null, parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
 
@@ -145,11 +152,11 @@ export namespace ClutterGst {
         /**
          * Fast seeks (key frame boundaries, default)
          */
-        NONE,
+        NONE = 0,
         /**
          * Accurate seeks (potentially slower)
          */
-        ACCURATE,
+        ACCURATE = 1,
     }
 
 
@@ -330,14 +337,14 @@ export namespace ClutterGst {
              * @action
              * @run-last
              */
-            "photo-taken": (arg0: GdkPixbuf.Pixbuf) => void;
+            "photo-taken": (pixbuf: GdkPixbuf.Pixbuf) => void;
             /**
              * The ::ready-for-capture signal is emitted whenever the value of
              * clutter_gst_camera_is_ready_for_capture changes.
              * @signal
              * @run-last
              */
-            "ready-for-capture": (arg0: boolean) => void;
+            "ready-for-capture": (ready: boolean) => void;
             /**
              * The ::video-saved signal is emitted when a video was saved to disk.
              * @signal
@@ -877,7 +884,7 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            "capture-resolution-changed": (arg0: number, arg1: number) => void;
+            "capture-resolution-changed": (width: number, height: number) => void;
             "notify::element-factory": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::node": (pspec: GObject.ParamSpec) => void;
@@ -1006,14 +1013,14 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            "camera-added": (arg0: CameraDevice) => void;
+            "camera-added": (camera_device: CameraDevice) => void;
             /**
              * The ::camera-removed signal is emitted whenever a camera device
              * is unplugged/removed from the system.
              * @signal
              * @run-last
              */
-            "camera-removed": (arg0: CameraDevice) => void;
+            "camera-removed": (camera_device: CameraDevice) => void;
         }
 
         // Constructor properties interface
@@ -1083,7 +1090,7 @@ export namespace ClutterGst {
              * @signal
              * @run-last
              */
-            "size-change": (arg0: number, arg1: number) => void;
+            "size-change": (width: number, height: number) => void;
             "notify::frame": (pspec: GObject.ParamSpec) => void;
             "notify::paint-frame": (pspec: GObject.ParamSpec) => void;
             "notify::paint-overlays": (pspec: GObject.ParamSpec) => void;
@@ -1501,7 +1508,7 @@ export namespace ClutterGst {
              * @since 1.4
              * @run-last
              */
-            "should-buffer": (arg0: Gst.Query) => boolean | void;
+            "should-buffer": (query: Gst.Query) => boolean | void;
             "notify::audio-stream": (pspec: GObject.ParamSpec) => void;
             "notify::audio-streams": (pspec: GObject.ParamSpec) => void;
             "notify::buffer-fill": (pspec: GObject.ParamSpec) => void;

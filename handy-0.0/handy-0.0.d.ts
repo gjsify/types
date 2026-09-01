@@ -46,19 +46,19 @@ export namespace Handy {
         /**
          * Arrows point upwards
          */
-        UP,
+        UP = 0,
         /**
          * Arrows point to the left
          */
-        DOWN,
+        DOWN = 1,
         /**
          * Arrows point to the right
          */
-        LEFT,
+        LEFT = 2,
         /**
          * Arrows point downwards
          */
-        RIGHT,
+        RIGHT = 3,
     }
 
 
@@ -76,11 +76,11 @@ export namespace Handy {
         /**
          * Keep the title centered when possible
          */
-        LOOSE,
+        LOOSE = 0,
         /**
          * Keep the title centered at all cost
          */
-        STRICT,
+        STRICT = 1,
     }
 
 
@@ -100,11 +100,11 @@ export namespace Handy {
         /**
          * The element isn't folded
          */
-        UNFOLDED,
+        UNFOLDED = 0,
         /**
          * The element is folded
          */
-        FOLDED,
+        FOLDED = 1,
     }
 
 
@@ -125,23 +125,23 @@ export namespace Handy {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * A cross-fade
          */
-        CROSSFADE,
+        CROSSFADE = 1,
         /**
          * Slide from left, right, up or down according to the orientation, text direction and the children order
          */
-        SLIDE,
+        SLIDE = 2,
         /**
          * Cover the old page or uncover the new page, sliding from or towards the end according to orientation, text direction and children order
          */
-        OVER,
+        OVER = 3,
         /**
          * Uncover the new page or cover the old page, sliding from or towards the start according to orientation, text direction and children order
          */
-        UNDER,
+        UNDER = 4,
     }
 
 
@@ -162,11 +162,11 @@ export namespace Handy {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * Slide from left, right, up or down according to the orientation, text direction and the children order
          */
-        SLIDE,
+        SLIDE = 1,
     }
 
 
@@ -189,19 +189,19 @@ export namespace Handy {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * Slide from left, right, up or down according to the orientation, text direction and the children order
          */
-        SLIDE,
+        SLIDE = 1,
         /**
          * Cover the old page or uncover the new page, sliding from or towards the end according to orientation, text direction and children order
          */
-        OVER,
+        OVER = 2,
         /**
          * Uncover the new page or cover the old page, sliding from or towards the start according to orientation, text direction and children order
          */
-        UNDER,
+        UNDER = 3,
     }
 
 
@@ -223,15 +223,15 @@ export namespace Handy {
         /**
          * No indicators
          */
-        NONE,
+        NONE = 0,
         /**
          * Each page is represented by a dot. Active dot gradually becomes larger and more opaque.
          */
-        DOTS,
+        DOTS = 1,
         /**
          * Each page is represented by a thin and long line, and active view is shown with another line that moves between them
          */
-        LINES,
+        LINES = 2,
     }
 
 
@@ -251,11 +251,11 @@ export namespace Handy {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * A cross-fade
          */
-        CROSSFADE,
+        CROSSFADE = 1,
     }
 
 
@@ -273,15 +273,15 @@ export namespace Handy {
         /**
          * Automatically adapt to the best fitting mode
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Force the narrow mode
          */
-        NARROW,
+        NARROW = 1,
         /**
          * Force the wide mode
          */
-        WIDE,
+        WIDE = 2,
     }
 
 
@@ -1277,7 +1277,7 @@ export namespace Handy {
              * @signal
              * @run-last
              */
-            submitted: (arg0: string) => void;
+            submitted: (number: string) => void;
             /**
              * This signal is emitted when one of the symbol buttons (0-9, # or *)
              * is clicked. Connect to this signal to find out which button was pressed.
@@ -1287,7 +1287,7 @@ export namespace Handy {
              * @signal
              * @run-last
              */
-            "symbol-clicked": (arg0: number) => void;
+            "symbol-clicked": (button: number) => void;
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
             "notify::number": (pspec: GObject.ParamSpec) => void;
             "notify::relief": (pspec: GObject.ParamSpec) => void;
@@ -4249,7 +4249,7 @@ export namespace Handy {
              * @since 0.0.12
              * @run-last
              */
-            "page-changed": (arg0: number) => void;
+            "page-changed": (index: number) => void;
             "notify::allow-mouse-drag": (pspec: GObject.ParamSpec) => void;
             "notify::animation-duration": (pspec: GObject.ParamSpec) => void;
             "notify::center-content": (pspec: GObject.ParamSpec) => void;

@@ -39,11 +39,11 @@ export namespace GtkosxApplication {
         /**
          * Bounce the icon until the app is activated.
          */
-        RITICAL_REQUEST,
+        RITICAL_REQUEST = 0,
         /**
          * Bounce the icon for one second.
          */
-        NFO_REQUEST,
+        NFO_REQUEST = 10,
     }
 
 
@@ -64,7 +64,7 @@ export namespace GtkosxApplication {
              * @signal
              * @action
              */
-            NSApplicationOpenFile: (arg0: string) => boolean | void;
+            NSApplicationOpenFile: (object: string) => boolean | void;
             /**
              * @signal
              * @action

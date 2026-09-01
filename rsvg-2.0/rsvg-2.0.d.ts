@@ -62,50 +62,60 @@ export namespace Rsvg {
         /**
          * percentage values; where <literal>1.0</literal> means 100%.
          */
-        PERCENT,
+        PERCENT = 0,
         /**
          * pixels
          */
-        PX,
+        PX = 1,
         /**
          * em, or the current font size
          */
-        EM,
+        EM = 2,
         /**
          * x-height of the current font
          */
-        EX,
+        EX = 3,
         /**
          * inches
          */
-        IN,
+        IN = 4,
         /**
          * centimeters
          */
-        CM,
+        CM = 5,
         /**
          * millimeters
          */
-        MM,
+        MM = 6,
         /**
          * points, or 1/72 inch
          */
-        PT,
+        PT = 7,
         /**
          * picas, or 1/6 inch (12 points)
          */
-        PC,
+        PC = 8,
         /**
          * advance measure of a '0' character (depends on the text orientation)
+         * @since 2.58
          */
-        CH,
+        CH = 9,
     }
 
 
+    /**
+     * @default true
+     */
     const HAVE_CSS: boolean;
 
+    /**
+     * @default 1
+     */
     const HAVE_PIXBUF: number;
 
+    /**
+     * @default true
+     */
     const HAVE_SVGZ: boolean;
 
     /**
@@ -123,6 +133,7 @@ export namespace Rsvg {
      * program is running with (e.g. the version which the linker used for
      * your program), or for programs not written in C, use
      * `rsvg_major_version` instead.
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
@@ -141,6 +152,7 @@ export namespace Rsvg {
      * program is running with (e.g. the version which the linker used for
      * your program), or for programs not written in C, use
      * `rsvg_micro_version` instead.
+     * @default 3
      */
     const MICRO_VERSION: number;
 
@@ -159,6 +171,7 @@ export namespace Rsvg {
      * program is running with (e.g. the version which the linker used for
      * your program), or for programs not written in C, use
      * `rsvg_minor_version` instead.
+     * @default 62
      */
     const MINOR_VERSION: number;
 
@@ -178,6 +191,7 @@ export namespace Rsvg {
      * program is running with (e.g. the version which the linker used for
      * your program), or for programs not written in C, use
      * `rsvg_version` instead.
+     * @default 2.62.3
      */
     const VERSION: string;
 
@@ -208,6 +222,7 @@ export namespace Rsvg {
      * @param filename A file name
      * @returns A pixbuf, or `null` on error.
      * @deprecated Use {@link Rsvg.Handle.new_from_file} and {@link Rsvg.Handle.render_document} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_file(filename: string): GdkPixbuf.Pixbuf | null;
 
@@ -221,6 +236,7 @@ export namespace Rsvg {
      * @param max_height The requested max height
      * @returns A pixbuf, or `null` on error.
      * @deprecated Use {@link Rsvg.Handle.new_from_file} and {@link Rsvg.Handle.render_document} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_file_at_max_size(filename: string, max_width: number, max_height: number): GdkPixbuf.Pixbuf | null;
 
@@ -235,6 +251,7 @@ export namespace Rsvg {
      * @param height The new height, or -1
      * @returns A pixbuf, or `null` on error.
      * @deprecated Use {@link Rsvg.Handle.new_from_file} and {@link Rsvg.Handle.render_document} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_file_at_size(filename: string, width: number, height: number): GdkPixbuf.Pixbuf | null;
 
@@ -248,6 +265,7 @@ export namespace Rsvg {
      * @param y_zoom The vertical zoom factor
      * @returns A pixbuf, or `null` on error.
      * @deprecated Use {@link Rsvg.Handle.new_from_file} and {@link Rsvg.Handle.render_document} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_file_at_zoom(filename: string, x_zoom: number, y_zoom: number): GdkPixbuf.Pixbuf | null;
 
@@ -264,6 +282,7 @@ export namespace Rsvg {
      * @param max_height The requested max height
      * @returns A pixbuf, or `null` on error.
      * @deprecated Use {@link Rsvg.Handle.new_from_file} and {@link Rsvg.Handle.render_document} instead.
+     * @throws GLib.Error
      */
     function pixbuf_from_file_at_zoom_with_max(filename: string, x_zoom: number, y_zoom: number, max_width: number, max_height: number): GdkPixbuf.Pixbuf | null;
 
@@ -318,14 +337,14 @@ export namespace Rsvg {
         /**
          * No flags are set.
          */
-        FLAGS_NONE,
+        FLAGS_NONE = 0,
         /**
          * Disable safety limits in the XML parser.  Libxml2 has
          * [several limits](https://gitlab.gnome.org/GNOME/libxml2/blob/master/include/libxml/parserInternals.h)
          * designed to keep malicious XML content from consuming too much memory while parsing.
          * For security reasons, this should only be used for trusted input!  Since: 2.40.3
          */
-        FLAG_UNLIMITED,
+        FLAG_UNLIMITED = 1,
         /**
          * Use this if the Cairo surface to which you are
          * rendering is a PDF, PostScript, SVG, or Win32 Printing surface.  This will make librsvg
@@ -335,7 +354,7 @@ export namespace Rsvg {
          * documentation](https://www.cairographics.org/manual/cairo-cairo-surface-t.html#cairo-surface-set-mime-data)
          * for details.
          */
-        FLAG_KEEP_IMAGE_DATA,
+        FLAG_KEEP_IMAGE_DATA = 2,
     }
 
 
@@ -724,6 +743,7 @@ export namespace Rsvg {
          * {@link GObject.Object.unref} is called.
          * @returns `TRUE` on success, or `FALSE` on error.
          * @deprecated since 2.46.: Use {@link Rsvg.Handle.read_stream_sync} or the constructor functions {@link Rsvg.Handle.new_from_gfile_sync} or {@link Rsvg.Handle.new_from_stream_sync}.  See the deprecation notes for {@link Rsvg.Handle.write} for more information.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -807,6 +827,7 @@ export namespace Rsvg {
          * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.  Alternatively, pass `NULL` to compute the geometry for the whole SVG.
          * @returns `TRUE` if the geometry could be obtained, or `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
          * @since 2.46
+         * @throws GLib.Error
          */
         get_geometry_for_element(id: string | null): [boolean, Rectangle | null, Rectangle | null];
 
@@ -837,6 +858,7 @@ export namespace Rsvg {
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` if the geometry could be obtained, or `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
          * @since 2.46
+         * @throws GLib.Error
          */
         get_geometry_for_layer(id: string | null, viewport: Rectangle): [boolean, Rectangle | null, Rectangle | null];
 
@@ -979,6 +1001,7 @@ export namespace Rsvg {
          * beforehand.
          * @returns A pixbuf, or `null` on error during rendering.
          * @since 2.59
+         * @throws GLib.Error
          */
         get_pixbuf_and_error(): GdkPixbuf.Pixbuf | null;
 
@@ -1067,6 +1090,7 @@ export namespace Rsvg {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns `TRUE` if reading `stream` succeeded, or `FALSE` otherwise   with `error` filled in
          * @since 2.32
+         * @throws GLib.Error
          */
         read_stream_sync(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1185,6 +1209,7 @@ export namespace Rsvg {
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
          * @since 2.46
+         * @throws GLib.Error
          */
         render_document(cr: cairo.Context, viewport: Rectangle): boolean;
 
@@ -1211,6 +1236,7 @@ export namespace Rsvg {
          * @param element_viewport Viewport size in which to fit the element
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
          * @since 2.46
+         * @throws GLib.Error
          */
         render_element(cr: cairo.Context, id: string | null, element_viewport: Rectangle): boolean;
 
@@ -1240,6 +1266,7 @@ export namespace Rsvg {
          * @param viewport Viewport size at which the whole SVG would be fitted.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument. API ordering: This function must be called on a fully-loaded `handle`.  See the section "[API ordering](class.Handle.html#api-ordering)" for details. Panics: this function will panic if the `handle` is not fully-loaded.
          * @since 2.46
+         * @throws GLib.Error
          */
         render_layer(cr: cairo.Context, id: string | null, viewport: Rectangle): boolean;
 
@@ -1337,6 +1364,7 @@ export namespace Rsvg {
          * @param css String with CSS data; must be valid UTF-8.
          * @returns `TRUE` on success, `FALSE` on error.  Errors are returned in the `error` argument.
          * @since 2.48
+         * @throws GLib.Error
          */
         set_stylesheet(css: Uint8Array | string): boolean;
 
@@ -1353,6 +1381,7 @@ export namespace Rsvg {
          * @param buf pointer to svg data
          * @returns `TRUE` on success, or `FALSE` on error.
          * @deprecated since 2.46.: Use {@link Rsvg.Handle.read_stream_sync} or the constructor functions {@link Rsvg.Handle.new_from_gfile_sync} or {@link Rsvg.Handle.new_from_stream_sync}.  This function is deprecated because it will accumulate data from the `buf` in memory until {@link Rsvg.Handle.close} gets called.  To avoid a big temporary buffer, use the suggested functions, which take a {@link Gio.File} or a {@link Gio.InputStream} and do not require a temporary buffer.
+         * @throws GLib.Error
          */
         write(buf: Uint8Array | string): boolean;
     }

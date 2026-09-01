@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./nemo-3.0.d.ts","./nemo-3.0-surface.d.ts"]
+  "include": ["./nemo-3.0.d.ts","./nemo-3.0-vocabulary.d.ts"]
 }
 
 

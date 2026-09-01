@@ -326,6 +326,7 @@ export namespace GnomeBG {
         /**
          * Tries to load the slide show.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -361,6 +362,7 @@ export namespace GnomeBG {
          * @param res A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
          * @since 50.
+         * @throws GLib.Error
          */
         load_finish(res: Gio.AsyncResult): boolean;
     }

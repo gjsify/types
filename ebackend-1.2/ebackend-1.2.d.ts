@@ -44,15 +44,15 @@ export namespace EBackend {
         /**
          * An error occurred while authenticating.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * Client reported successful authentication.
          */
-        SUCCESS,
+        SUCCESS = 1,
         /**
          * User dismissed the authentication prompt.
          */
-        DISMISSED,
+        DISMISSED = 2,
     }
 
 
@@ -65,11 +65,11 @@ export namespace EBackend {
         /**
          * Do not include locally deleted objects
          */
-        EXCLUDE_DELETED,
+        EXCLUDE_DELETED = 0,
         /**
          * Include locally deleted objects
          */
-        INCLUDE_DELETED,
+        INCLUDE_DELETED = 1,
     }
 
 
@@ -82,41 +82,41 @@ export namespace EBackend {
         /**
          * An error was reported from the SQLite engine
          */
-        ENGINE,
+        ENGINE = 0,
         /**
          * The error occurred due to an explicit constraint, like
          *    when attempting to add two objects with the same UID.
          */
-        CONSTRAINT,
+        CONSTRAINT = 1,
         /**
          * An object was not found by UID (this is
          *    different from a query that returns no results, which is not an error).
          */
-        NOT_FOUND,
+        NOT_FOUND = 2,
         /**
          * A query was invalid.
          */
-        INVALID_QUERY,
+        INVALID_QUERY = 3,
         /**
          * A field requested for inclusion in summary is not supported.
          */
-        UNSUPPORTED_FIELD,
+        UNSUPPORTED_FIELD = 4,
         /**
          * A query was not supported.
          */
-        UNSUPPORTED_QUERY,
+        UNSUPPORTED_QUERY = 5,
         /**
          * An attempt was made to fetch results past the end of a the list.
          */
-        END_OF_LIST,
+        END_OF_LIST = 6,
         /**
          * An error occured while loading or creating the database.
          */
-        LOAD,
+        LOAD = 7,
         /**
          * The database file is corrupt. (Since: 3.44)
          */
-        CORRUPT,
+        CORRUPT = 8,
     }
 
 
@@ -129,11 +129,11 @@ export namespace EBackend {
         /**
          * Obtain a lock for reading.
          */
-        READ,
+        READ = 0,
         /**
          * Obtain a lock for writing. This also starts a transaction.
          */
-        WRITE,
+        WRITE = 1,
     }
 
 
@@ -147,15 +147,15 @@ export namespace EBackend {
         /**
          * Do not know current online/offline state
          */
-        OFFLINE_UNKNOWN,
+        OFFLINE_UNKNOWN = -1,
         /**
          * The operation is done in online
          */
-        IS_ONLINE,
+        IS_ONLINE = 0,
         /**
          * The operation is done in offline
          */
-        IS_OFFLINE,
+        IS_OFFLINE = 1,
     }
 
 
@@ -168,15 +168,15 @@ export namespace EBackend {
         /**
          * Just unlock, this is appropriate for locks which were obtained with {@link EBackend.CacheLockType.READ}.
          */
-        NONE,
+        NONE = 0,
         /**
          * Commit any modifications which were made while the lock was held.
          */
-        COMMIT,
+        COMMIT = 1,
         /**
          * Rollback any modifications which were made while the lock was held.
          */
-        ROLLBACK,
+        ROLLBACK = 2,
     }
 
 
@@ -197,17 +197,17 @@ export namespace EBackend {
         /**
          * The server's run state is unchanged.
          */
-        NONE,
+        NONE = 0,
         /**
          * Normal termination.  The process itself may now terminate.
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * The server should reload its configuration and start again.
          *   Servers that do not support reloading may wish to intercept
          *   this exit code and stop the {@link EBackend.DBusServer.SignalSignatures.quit_server | EBackend.DBusServer::quit-server} emission.
          */
-        RELOAD,
+        RELOAD = 2,
     }
 
 
@@ -228,53 +228,74 @@ export namespace EBackend {
         /**
          * Unknown offline state.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * The object if synchnized with no local changes.
          */
-        SYNCED,
+        SYNCED = 0,
         /**
          * The object is locally created.
          */
-        LOCALLY_CREATED,
+        LOCALLY_CREATED = 1,
         /**
          * The object is locally modified.
          */
-        LOCALLY_MODIFIED,
+        LOCALLY_MODIFIED = 2,
         /**
          * The object is locally deleted.
          */
-        LOCALLY_DELETED,
+        LOCALLY_DELETED = 3,
     }
 
 
+    /**
+     * @default ECacheOBJ
+     */
     const CACHE_COLUMN_OBJECT: string;
 
+    /**
+     * @default ECacheREV
+     */
     const CACHE_COLUMN_REVISION: string;
 
+    /**
+     * @default ECacheState
+     */
     const CACHE_COLUMN_STATE: string;
 
+    /**
+     * @default ECacheUID
+     */
     const CACHE_COLUMN_UID: string;
 
+    /**
+     * @default ECacheKeys
+     */
     const CACHE_TABLE_KEYS: string;
 
+    /**
+     * @default ECacheObjects
+     */
     const CACHE_TABLE_OBJECTS: string;
 
     /**
      * This environment variable configures where the registry
      * server loads it's backend modules from.
+     * @default EDS_REGISTRY_MODULES
      */
     const EDS_REGISTRY_MODULES: string;
 
     /**
      * D-Bus object path of the data source server.
      * @since 3.6
+     * @default /org/gnome/evolution/dataserver/SourceManager
      */
     const SOURCE_REGISTRY_SERVER_OBJECT_PATH: string;
 
     /**
      * D-Bus object path of the user prompter.
      * @since 3.8
+     * @default /org/gnome/evolution/dataserver/UserPrompter
      */
     const USER_PROMPTER_SERVER_OBJECT_PATH: string;
 
@@ -343,23 +364,23 @@ export namespace EBackend {
         /**
          * None part.
          */
-        NONE,
+        NONE = 0,
         /**
          * Check the calendar part.
          */
-        CALENDAR,
+        CALENDAR = 1,
         /**
          * Check the contacts part.
          */
-        CONTACTS,
+        CONTACTS = 2,
         /**
          * Check the mail part.
          */
-        MAIL,
+        MAIL = 4,
         /**
          * Shortcut to have all parts checked.
          */
-        ANY,
+        ANY = -1,
     }
 
 
@@ -379,15 +400,15 @@ export namespace EBackend {
         /**
          * The data source gets no initial permissions.
          */
-        NONE,
+        NONE = 0,
         /**
          * The data source is initially writable.
          */
-        WRITABLE,
+        WRITABLE = 1,
         /**
          * The data source is initially removable.
          */
-        REMOVABLE,
+        REMOVABLE = 2,
     }
 
 
@@ -581,6 +602,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.16
+         * @throws GLib.Error
          */
         credentials_required_finish(result: Gio.AsyncResult): boolean;
 
@@ -600,6 +622,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.16
+         * @throws GLib.Error
          */
         credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -682,6 +705,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable} instance, or `null`
          * @returns `true`, when destination server address is reachable or    the backend doesn't provide destination address; `false` if    the backend destination server cannot be reached currently.
          * @since 3.8
+         * @throws GLib.Error
          */
         is_destination_reachable(cancellable: Gio.Cancellable | null): boolean;
 
@@ -812,6 +836,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns an {@link EDataServer.TrustPromptResponse} what user responded Note: The function can return also {@link EDataServer.TrustPromptResponse.UNKNOWN},    it's on error or if user closes the trust prompt dialog with other    than the offered buttons. Usual behaviour in such case is to treat    it as a temporary reject.
          * @since 3.8
+         * @throws GLib.Error
          */
         trust_prompt_finish(result: Gio.AsyncResult): EDataServer.TrustPromptResponse;
 
@@ -822,6 +847,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.TrustPromptResponse} what user responded Note: The function can return also {@link EDataServer.TrustPromptResponse.UNKNOWN},    it's on error or if user closes the trust prompt dialog with other    than the offered buttons. Usual behaviour in such case is to treat    it as a temporary reject.
          * @since 3.8
+         * @throws GLib.Error
          */
         trust_prompt_sync(parameters: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): EDataServer.TrustPromptResponse;
     }
@@ -936,12 +962,12 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "before-put": (arg0: string, arg1: string, arg2: string, arg3: CacheColumnValues, arg4: boolean, arg5: Gio.Cancellable | null, arg6: null) => boolean | void;
+            "before-put": (object: string, p0: string, p1: string, p2: CacheColumnValues, p3: boolean, p4: Gio.Cancellable | null, p5: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "before-remove": (arg0: string, arg1: Gio.Cancellable | null, arg2: null) => boolean | void;
+            "before-remove": (object: string, p0: Gio.Cancellable | null, p1: null) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -1069,6 +1095,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         clear_offline_changes(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1099,6 +1126,7 @@ export namespace EBackend {
          * @param key a key name
          * @returns a value of the `key`. Free the returned string    with `g_free()`, when no longer needed.
          * @since 3.26
+         * @throws GLib.Error
          */
         dup_key(key: string): string;
 
@@ -1127,6 +1155,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         foreach(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1146,6 +1175,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         foreach_update(deleted_flag: CacheDeletedFlag, where_clause: string | null, func: CacheUpdateFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1170,6 +1200,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
          * @since 3.26
+         * @throws GLib.Error
          */
         get(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
@@ -1178,6 +1209,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Count of objects stored in the `cache`.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_count(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): number;
 
@@ -1192,6 +1224,7 @@ export namespace EBackend {
          * @param key a key name
          * @returns The user `key` value or -1 on error.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_key_int(key: string): number;
 
@@ -1201,6 +1234,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns An object with the given `uid`. Free it    with `g_free()`, when no longer needed. Returns `null` on error, like when    the object could not be found.
          * @since 3.30
+         * @throws GLib.Error
          */
         get_object_include_deleted(uid: string, cancellable: Gio.Cancellable | null): [string | null, string, CacheColumnValues | null];
 
@@ -1216,6 +1250,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_objects(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
@@ -1227,6 +1262,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cache_offline_change_free);    when no longer needed.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_offline_changes(cancellable: Gio.Cancellable | null): CacheOfflineChange[];
 
@@ -1235,6 +1271,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Current offline state {@link EBackend.OfflineState} for the given object.    It returns {@link EBackend.OfflineState.UNKNOWN} when the object could not be    found or other error happened.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_offline_state(uid: string, cancellable: Gio.Cancellable | null): OfflineState;
 
@@ -1256,6 +1293,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't necessarily mean that there was    any object stored in the `cache`.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_uids(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): [boolean, string[], string[] | null];
 
@@ -1277,6 +1315,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         initialize_sync(filename: string, other_columns: CacheColumnInfo[] | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1310,6 +1349,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         put(uid: string, revision: string | null, object: string, other_columns: CacheColumnValues | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1323,6 +1363,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove(uid: string, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1331,6 +1372,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove_all(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1340,6 +1382,7 @@ export namespace EBackend {
          * @param value a value to set, or `null` to delete the key
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         set_key(key: string, value: string | null): boolean;
 
@@ -1349,6 +1392,7 @@ export namespace EBackend {
          * @param value an integer value to set
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         set_key_int(key: string, value: number): boolean;
 
@@ -1359,6 +1403,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         set_offline_state(uid: string, state: OfflineState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1386,6 +1431,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         sqlite_exec(sql_stmt: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1394,6 +1440,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. It doesn't mean that the vacuum had been run,    only that no error happened during the call.
          * @since 3.26
+         * @throws GLib.Error
          */
         sqlite_maybe_vacuum(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1405,6 +1452,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         sqlite_select(sql_stmt: string, func: CacheSelectFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1561,6 +1609,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         count_keys_sync(cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1571,6 +1620,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         foreach_sync(func: CacheKeysForeachFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1596,6 +1646,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         get_ref_count_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1608,6 +1659,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         get_sync(key: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -1630,6 +1682,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         init_table_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1642,6 +1695,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         put_sync(key: string, value: string, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1650,6 +1704,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         remove_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1665,6 +1720,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.48
+         * @throws GLib.Error
          */
         remove_sync(key: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1786,7 +1842,7 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "child-added": (arg0: ServerSideSource) => void;
+            "child-added": (child_source: ServerSideSource) => void;
             /**
              * Emitted when an {@link EBackend.ServerSideSource} that is a child of
              * `backend`'s collection {@link EBackend.Backend.source} is removed from
@@ -1798,7 +1854,7 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "child-removed": (arg0: ServerSideSource) => void;
+            "child-removed": (child_source: ServerSideSource) => void;
             "notify::proxy-resolver": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
             "notify::connectable": (pspec: GObject.ParamSpec) => void;
@@ -2127,6 +2183,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         create_resource_finish(result: Gio.AsyncResult): boolean;
 
@@ -2150,6 +2207,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         create_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2216,6 +2274,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         delete_resource_finish(result: Gio.AsyncResult): boolean;
 
@@ -2233,6 +2292,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         delete_resource_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2491,26 +2551,26 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "bus-acquired": (arg0: Gio.DBusConnection) => void;
+            "bus-acquired": (connection: Gio.DBusConnection) => void;
             /**
              * Emitted when `server` acquires its well-known session bus name.
              * @signal
              * @run-last
              */
-            "bus-name-acquired": (arg0: Gio.DBusConnection) => void;
+            "bus-name-acquired": (connection: Gio.DBusConnection) => void;
             /**
              * Emitted when `server` loses its well-known session bus name
              * or the session bus connection has been closed.
              * @signal
              * @run-last
              */
-            "bus-name-lost": (arg0: Gio.DBusConnection) => void;
+            "bus-name-lost": (connection: Gio.DBusConnection) => void;
             /**
              * Emitted to request that `server` quit its main loop.
              * @signal
              * @run-last
              */
-            "quit-server": (arg0: DBusServerExitCode) => void;
+            "quit-server": (code: DBusServerExitCode) => void;
             /**
              * Emitted to request that `server` start its main loop and
              * attempt to acquire its well-known session bus name.
@@ -2855,6 +2915,7 @@ export namespace EBackend {
          * @param backend 
          * @param connection 
          * @param cancellable 
+         * @throws GLib.Error
          */
         open_backend(backend: Backend, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): string;
 
@@ -2959,6 +3020,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3426,6 +3488,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3573,6 +3636,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3650,6 +3714,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
          * @since 2.26
+         * @throws GLib.Error
          */
         lookup(uri: string, cancellable: Gio.Cancellable | null): string[];
 
@@ -3689,6 +3754,7 @@ export namespace EBackend {
          * @param result the result passed to your {@link Gio.AsyncReadyCallback}
          * @returns A               NULL-terminated array of proxy URIs. Must be freed               with `g_strfreev()`.
          * @since 2.26
+         * @throws GLib.Error
          */
         lookup_finish(result: Gio.AsyncResult): string[];
 
@@ -3845,19 +3911,19 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            "load-error": (arg0: Gio.File, arg1: GLib.Error) => void;
+            "load-error": (file: Gio.File, error: GLib.Error) => void;
             /**
              * Emitted when an {@link EBackend.ServerSideSource} is added to `server`.
              * @signal
              * @run-last
              */
-            "source-added": (arg0: ServerSideSource) => void;
+            "source-added": (source: ServerSideSource) => void;
             /**
              * Emitted when an {@link EBackend.ServerSideSource} is removed from `server`.
              * @signal
              * @run-last
              */
-            "source-removed": (arg0: ServerSideSource) => void;
+            "source-removed": (source: ServerSideSource) => void;
             /**
              * Emitted from `e_source_registry_server_load_file()` just prior
              * to instantiating an {@link EBackend.ServerSideSource}.  Signal handlers can
@@ -3874,7 +3940,7 @@ export namespace EBackend {
              * @since 3.8
              * @run-last
              */
-            "tweak-key-file": (arg0: GLib.KeyFile, arg1: string) => boolean | void;
+            "tweak-key-file": (key_file: GLib.KeyFile, uid: string) => boolean | void;
             "notify::backend-per-process": (pspec: GObject.ParamSpec) => void;
             "notify::registry": (pspec: GObject.ParamSpec) => void;
             "notify::reload-supported": (pspec: GObject.ParamSpec) => void;
@@ -4030,6 +4096,7 @@ export namespace EBackend {
          * @param flags permission flags for files loaded from `path`
          * @returns `true` if `path` was successfully opened, but this          does not imply the key files were successfully loaded
          * @since 3.6
+         * @throws GLib.Error
          */
         load_directory(path: string, flags: SourcePermissionFlags): boolean;
 
@@ -4051,6 +4118,7 @@ export namespace EBackend {
          * @param flags initial permission flags for the data source
          * @returns the newly-added {@link EDataServer.Source}, or `null` on error
          * @since 3.6
+         * @throws GLib.Error
          */
         load_file(file: Gio.File, flags: SourcePermissionFlags): EDataServer.Source | null;
 
@@ -4065,6 +4133,7 @@ export namespace EBackend {
          * @param flags permission flags for files loaded from `path`
          * @returns `true` if `path` was successfully located, but this does not          imply the key files were successfully loaded
          * @since 3.8
+         * @throws GLib.Error
          */
         load_resource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags): boolean;
 
@@ -4192,6 +4261,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.8
+         * @throws GLib.Error
          */
         get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -4205,6 +4275,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.8
+         * @throws GLib.Error
          */
         get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -4289,6 +4360,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4453,6 +4525,7 @@ export namespace EBackend {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a newly allocated string that represents the {@link EBackend.Backend}          data D-Bus object path.
          * @since 3.16
+         * @throws GLib.Error
          */
         open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable: Gio.Cancellable | null): string;
 
@@ -4474,6 +4547,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EBackend.Backend} for `source`, or `null`
          * @since 3.16
+         * @throws GLib.Error
          */
         ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable: Gio.Cancellable | null): Backend | null;
 
@@ -4528,6 +4602,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4694,6 +4769,7 @@ export namespace EBackend {
          * @param out_values Where to store values from the extension, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
          * @since 3.8
+         * @throws GLib.Error
          */
         extension_prompt_finish(result: Gio.AsyncResult, out_values: EDataServer.NamedParameters | null): number;
 
@@ -4719,6 +4795,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Result code of the prompt, as defined by the extension, or -1 on error.
          * @since 3.8
+         * @throws GLib.Error
          */
         extension_prompt_sync(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, out_values: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): number;
 
@@ -4797,6 +4874,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns 0-based index of a button being used by a user as a response,   corresponding to 'button_captions' from `e_user_prompter_prompt()` call.
          * @since 3.8
+         * @throws GLib.Error
          */
         prompt_finish(result: Gio.AsyncResult): number;
 
@@ -4819,6 +4897,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0-based index of a button being used by a user as a response,   corresponding to `button_captions` list.
          * @since 3.8
+         * @throws GLib.Error
          */
         prompt_sync(type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null, cancellable: Gio.Cancellable | null): number;
     }
@@ -4831,7 +4910,7 @@ export namespace EBackend {
              * @signal
              * @run-last
              */
-            prompt: (arg0: number, arg1: string | null, arg2: string | null, arg3: string | null, arg4: string | null, arg5: boolean, arg6: string[] | null) => void;
+            prompt: (prompt_id: number, type: string | null, title: string | null, primary_text: string | null, secondary_text: string | null, use_markup: boolean, button_captions: string[] | null) => void;
         }
 
         // Constructor properties interface
@@ -5124,6 +5203,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link EDataServer.SourceAuthenticationResult} describing whether discovery on given    addresses succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         discover_sync(calendar_url: string | null, contacts_url: string | null, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): [EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags | null];
 
@@ -5680,6 +5760,7 @@ export namespace EBackend {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.8
+         * @throws GLib.Error
          */
         get_access_token_finish(result: Gio.AsyncResult): [boolean, string, number];
 
@@ -5693,6 +5774,7 @@ export namespace EBackend {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.8
+         * @throws GLib.Error
          */
         get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [boolean, string, number];
     }

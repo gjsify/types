@@ -35,51 +35,51 @@ export namespace Mirage {
         /**
          * error message
          */
-        ERROR,
+        ERROR = -1,
         /**
          * warning message
          */
-        WARNING,
+        WARNING = -2,
         /**
          * message belonging to image parser and file stream parser
          */
-        PARSER,
+        PARSER = 1,
         /**
          * message belonging to disc
          */
-        DISC,
+        DISC = 2,
         /**
          * message belonging to session
          */
-        SESSION,
+        SESSION = 4,
         /**
          * message belonging to track
          */
-        TRACK,
+        TRACK = 8,
         /**
          * message belonging to sector
          */
-        SECTOR,
+        SECTOR = 16,
         /**
          * message belonging to fragment
          */
-        FRAGMENT,
+        FRAGMENT = 32,
         /**
          * message belonging to CD-TEXT encoder/decoder
          */
-        CDTEXT,
+        CDTEXT = 64,
         /**
          * messages belonging to file and filter stream I/O operations
          */
-        STREAM,
+        STREAM = 128,
         /**
          * messages belonging to image identification part of image parsers
          */
-        IMAGE_ID,
+        IMAGE_ID = 256,
         /**
          * messages belonging to image writer
          */
-        WRITER,
+        WRITER = 512,
     }
 
 
@@ -137,59 +137,59 @@ export namespace Mirage {
         /**
          * error in core libMirage code
          */
-        LIBRARY_ERROR,
+        LIBRARY_ERROR = 0,
         /**
          * error in parser code
          */
-        PARSER_ERROR,
+        PARSER_ERROR = 1,
         /**
          * error in fragment code
          */
-        FRAGMENT_ERROR,
+        FRAGMENT_ERROR = 2,
         /**
          * error in disc code
          */
-        DISC_ERROR,
+        DISC_ERROR = 3,
         /**
          * error in language/CD-TEXT code
          */
-        LANGUAGE_ERROR,
+        LANGUAGE_ERROR = 4,
         /**
          * error in sector code
          */
-        SECTOR_ERROR,
+        SECTOR_ERROR = 5,
         /**
          * error in session code
          */
-        SESSION_ERROR,
+        SESSION_ERROR = 6,
         /**
          * error in track code
          */
-        TRACK_ERROR,
+        TRACK_ERROR = 7,
         /**
          * error in stream code
          */
-        STREAM_ERROR,
+        STREAM_ERROR = 8,
         /**
          * error related to image file
          */
-        IMAGE_FILE_ERROR,
+        IMAGE_FILE_ERROR = 9,
         /**
          * error related to data file
          */
-        DATA_FILE_ERROR,
+        DATA_FILE_ERROR = 10,
         /**
          * parser/writer/filter stream cannot handle given file
          */
-        CANNOT_HANDLE,
+        CANNOT_HANDLE = 11,
         /**
          * image is encrypted and password needs to be provided
          */
-        ENCRYPTED_IMAGE,
+        ENCRYPTED_IMAGE = 12,
         /**
          * error in image writer code
          */
-        WRITER_ERROR,
+        WRITER_ERROR = 13,
     }
 
 
@@ -201,11 +201,11 @@ export namespace Mirage {
         /**
          * pregap fragment
          */
-        PREGAP,
+        PREGAP = 0,
         /**
          * data fragment
          */
-        DATA,
+        DATA = 1,
     }
 
 
@@ -217,67 +217,67 @@ export namespace Mirage {
         /**
          * Album name and Track titles
          */
-        TITLE,
+        TITLE = 128,
         /**
          * Singer/player/conductor/orchestra
          */
-        PERFORMER,
+        PERFORMER = 129,
         /**
          * Name of the songwriter
          */
-        SONGWRITER,
+        SONGWRITER = 130,
         /**
          * Name of the composer
          */
-        COMPOSER,
+        COMPOSER = 131,
         /**
          * Name of the arranger
          */
-        ARRANGER,
+        ARRANGER = 132,
         /**
          * Message from content provider or artist
          */
-        MESSAGE,
+        MESSAGE = 133,
         /**
          * Disc identification information
          */
-        DISC_ID,
+        DISC_ID = 134,
         /**
          * Genre identification / information
          */
-        GENRE,
+        GENRE = 135,
         /**
          * TOC information
          */
-        TOC,
+        TOC = 136,
         /**
          * Second TOC
          */
-        TOC2,
+        TOC2 = 137,
         /**
          * Reserved 8A
          */
-        RES_8A,
+        RES_8A = 138,
         /**
          * Reserved 8B
          */
-        RES_8B,
+        RES_8B = 139,
         /**
          * Reserved 8C
          */
-        RES_8C,
+        RES_8C = 140,
         /**
          * For internal use by content provider
          */
-        CLOSED_INFO,
+        CLOSED_INFO = 141,
         /**
          * UPC/EAN code of album and ISRC for tracks
          */
-        UPC_ISRC,
+        UPC_ISRC = 142,
         /**
          * Size information of the block
          */
-        SIZE,
+        SIZE = 143,
     }
 
 
@@ -289,15 +289,15 @@ export namespace Mirage {
         /**
          * binary data
          */
-        DATA,
+        DATA = 1,
         /**
          * audio data
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * audio data that needs to be swapped
          */
-        AUDIO_SWAP,
+        AUDIO_SWAP = 4,
     }
 
 
@@ -309,23 +309,23 @@ export namespace Mirage {
         /**
          * CD disc
          */
-        CD,
+        CD = 1,
         /**
          * DVD disc
          */
-        DVD,
+        DVD = 2,
         /**
          * BD (Blue-Ray) disc
          */
-        BD,
+        BD = 3,
         /**
          * HD-DVD disc
          */
-        HD,
+        HD = 4,
         /**
          * Hard-disk
          */
-        HDD,
+        HDD = 5,
     }
 
 
@@ -337,19 +337,19 @@ export namespace Mirage {
         /**
          * no subchannel
          */
-        NONE,
+        NONE = 0,
         /**
          * PW subchannel; 96 bytes, interleaved P-W
          */
-        PW,
+        PW = 1,
         /**
          * Q subchannel; 16 bytes, Q subchannel
          */
-        Q,
+        Q = 2,
         /**
          * RW subchannel; 96 bytes, cooked R-W
          */
-        RW,
+        RW = 3,
     }
 
 
@@ -361,39 +361,39 @@ export namespace Mirage {
         /**
          * Mode 0 sector
          */
-        MODE0,
+        MODE0 = 0,
         /**
          * Audio sector
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * Mode 1 sector
          */
-        MODE1,
+        MODE1 = 2,
         /**
          * Mode 2 Formless sector
          */
-        MODE2,
+        MODE2 = 3,
         /**
          * Mode 2 Form 1 sector
          */
-        MODE2_FORM1,
+        MODE2_FORM1 = 4,
         /**
          * Mode 2 Form 2 sector
          */
-        MODE2_FORM2,
+        MODE2_FORM2 = 5,
         /**
          * Mode 2 Mixed sector
          */
-        MODE2_MIXED,
+        MODE2_MIXED = 6,
         /**
          * raw sector (automatic sector type detection)
          */
-        RAW,
+        RAW = 7,
         /**
          * scrambled raw sector (automatic sector type detection)
          */
-        RAW_SCRAMBLED,
+        RAW_SCRAMBLED = 8,
     }
 
 
@@ -405,27 +405,27 @@ export namespace Mirage {
         /**
          * sync pattern valid
          */
-        SYNC,
+        SYNC = 1,
         /**
          * header valid
          */
-        HEADER,
+        HEADER = 2,
         /**
          * subheader valid
          */
-        SUBHEADER,
+        SUBHEADER = 4,
         /**
          * user data valid
          */
-        DATA,
+        DATA = 8,
         /**
          * EDC/ECC data valid
          */
-        EDC_ECC,
+        EDC_ECC = 16,
         /**
          * subchannel valid
          */
-        SUBCHAN,
+        SUBCHAN = 32,
     }
 
 
@@ -437,19 +437,19 @@ export namespace Mirage {
         /**
          * CD AUDIO
          */
-        CDDA,
+        CDDA = 0,
         /**
          * CD-ROM
          */
-        CDROM,
+        CDROM = 1,
         /**
          * CD-I
          */
-        CDI,
+        CDI = 2,
         /**
          * CD-ROM XA
          */
-        CDROM_XA,
+        CDROM_XA = 3,
     }
 
 
@@ -461,35 +461,35 @@ export namespace Mirage {
         /**
          * W subchannel data
          */
-        W,
+        W = 0,
         /**
          * V subchannel data
          */
-        V,
+        V = 1,
         /**
          * U subchannel data
          */
-        U,
+        U = 2,
         /**
          * T subchannel data
          */
-        T,
+        T = 3,
         /**
          * S subchannel data
          */
-        S,
+        S = 4,
         /**
          * R subchannel data
          */
-        R,
+        R = 5,
         /**
          * Q subchannel data
          */
-        Q,
+        Q = 6,
         /**
          * P subchannel data
          */
-        P,
+        P = 7,
     }
 
 
@@ -501,27 +501,27 @@ export namespace Mirage {
         /**
          * internal subchannel (i.e. included in track file)
          */
-        INTERNAL,
+        INTERNAL = 1,
         /**
          * external subchannel (i.e. provided by separate file)
          */
-        EXTERNAL,
+        EXTERNAL = 2,
         /**
          * P-W subchannel, 96 bytes, interleaved
          */
-        PW96_INTERLEAVED,
+        PW96_INTERLEAVED = 16,
         /**
          * P-W subchannel, 96 bytes, linear
          */
-        PW96_LINEAR,
+        PW96_LINEAR = 32,
         /**
          * R-W subchannel, 96 bytes, cooked
          */
-        RW96,
+        RW96 = 64,
         /**
          * Q subchannel, 16 bytes
          */
-        Q16,
+        Q16 = 128,
     }
 
 
@@ -533,11 +533,11 @@ export namespace Mirage {
         /**
          * Lead-in track
          */
-        LEADIN,
+        LEADIN = 0,
         /**
          * Lead-out track
          */
-        LEADOUT,
+        LEADOUT = 170,
     }
 
 
@@ -549,25 +549,27 @@ export namespace Mirage {
         /**
          * four channel audio
          */
-        FOURCHANNEL,
+        FOURCHANNEL = 1,
         /**
          * copy permitted
          */
-        COPYPERMITTED,
+        COPYPERMITTED = 2,
         /**
          * pre-emphasis
          */
-        PREEMPHASIS,
+        PREEMPHASIS = 4,
     }
 
 
     /**
      * Length of ISRC string.
+     * @default 12
      */
     const ISRC_SIZE: number;
 
     /**
      * Length of MCN string.
+     * @default 13
      */
     const MCN_SIZE: number;
 
@@ -577,6 +579,7 @@ export namespace Mirage {
      * `mirage_soversion_major`, but from the headers used at application compile time,
      * rather than from the library linked against at application run time.
      * </para>
+     * @default 11
      */
     const SOVERSION_MAJOR: number;
 
@@ -586,6 +589,7 @@ export namespace Mirage {
      * `mirage_soversion_minor`, but from the headers used at application compile time,
      * rather than from the library linked against at application run time.
      * </para>
+     * @default 0
      */
     const SOVERSION_MINOR: number;
 
@@ -595,6 +599,7 @@ export namespace Mirage {
      * `mirage_soversion_patch`, but from the headers used at application compile time,
      * rather than from the library linked against at application run time.
      * </para>
+     * @default 0
      */
     const SOVERSION_PATCH: number;
 
@@ -604,6 +609,7 @@ export namespace Mirage {
      * but from the headers used at application compile time, rather than from the
      * library linked against at application run time.
      * </para>
+     * @default 3.2.9
      */
     const VERSION_LONG: string;
 
@@ -613,6 +619,7 @@ export namespace Mirage {
      * but from the headers used at application compile time, rather than from the
      * library linked against at application run time.
      * </para>
+     * @default 3
      */
     const VERSION_MAJOR: number;
 
@@ -622,6 +629,7 @@ export namespace Mirage {
      * but from the headers used at application compile time, rather than from the
      * library linked against at application run time.
      * </para>
+     * @default 9
      */
     const VERSION_MICRO: number;
 
@@ -631,6 +639,7 @@ export namespace Mirage {
      * but from the headers used at application compile time, rather than from the
      * library linked against at application run time.
      * </para>
+     * @default 2
      */
     const VERSION_MINOR: number;
 
@@ -640,6 +649,7 @@ export namespace Mirage {
      * but from the headers used at application compile time, rather than from the
      * library linked against at application run time.
      * </para>
+     * @default 3.2
      */
     const VERSION_SHORT: string;
 
@@ -651,6 +661,7 @@ export namespace Mirage {
      * @param self a {@link Mirage.CdTextCoder}
      * @param block block number
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function cdtext_decoder_get_block_info(self: CdTextCoder, block: number): [boolean, number, number, number];
 
@@ -728,6 +739,7 @@ export namespace Mirage {
      * @param charset character set
      * @param copyright copyright flag
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function cdtext_encoder_set_block_info(self: CdTextCoder, block: number, code: number, charset: number, copyright: number): boolean;
 
@@ -735,6 +747,7 @@ export namespace Mirage {
      * Attempts to create an instance of image writer whose ID is `writer_id`.
      * @param writer_id ID of writer to create
      * @returns newly-created writer object on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+     * @throws GLib.Error
      */
     function create_writer(writer_id: string): Writer;
 
@@ -744,6 +757,7 @@ export namespace Mirage {
      * If `func` returns `false`, the function immediately returns `false`.
      * @param func callback function
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function enumerate_filter_streams(func: EnumFilterStreamInfoCallback): boolean;
 
@@ -753,6 +767,7 @@ export namespace Mirage {
      * If `func` returns `false`, the function immediately returns `false`.
      * @param func callback function
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function enumerate_parsers(func: EnumParserInfoCallback): boolean;
 
@@ -762,6 +777,7 @@ export namespace Mirage {
      * If `func` returns `false`, the function immediately returns `false`.
      * @param func callback function
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function enumerate_writers(func: EnumWriterInfoCallback): boolean;
 
@@ -774,24 +790,28 @@ export namespace Mirage {
     /**
      * Retrieves information structures for supported filter streams.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_filter_streams_info(): [boolean, FilterStreamInfo[]];
 
     /**
      * Retrieves {@link GObject.GType} values for supported filter streams.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_filter_streams_type(): [boolean, GObject.GType[]];
 
     /**
      * Retrieves information structures for supported parsers.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_parsers_info(): [boolean, ParserInfo[]];
 
     /**
      * Retrieves {@link GObject.GType} values for supported parsers.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_parsers_type(): [boolean, GObject.GType[]];
 
@@ -801,18 +821,21 @@ export namespace Mirage {
      * number of elements in the array is stored in `num_masks`. The array belongs to
      * libMirage and should not be altered or freed.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_supported_debug_masks(): [boolean, DebugMaskInfo[]];
 
     /**
      * Retrieves information structures for supported parsers.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_writers_info(): [boolean, WriterInfo[]];
 
     /**
      * Retrieves {@link GObject.GType} values for supported writers.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function get_writers_type(): [boolean, GObject.GType[]];
 
@@ -1179,6 +1202,7 @@ export namespace Mirage {
      * Initializes libMirage library. It should be called before any other of
      * libMirage functions.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function initialize(): boolean;
 
@@ -1186,6 +1210,7 @@ export namespace Mirage {
      * Shuts down libMirage library. It should be called when libMirage is no longer
      * needed.
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function shutdown(): boolean;
 
@@ -1313,6 +1338,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -1327,6 +1353,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -1377,6 +1404,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -1456,6 +1484,7 @@ export namespace Mirage {
          * streams on top of it.
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -1473,6 +1502,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -1511,6 +1541,7 @@ export namespace Mirage {
          * only the first filename is used.
          * @param filenames filename(s)
          * @returns a {@link Mirage.Disc} object on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         load_image(filenames: string[]): Disc;
 
@@ -1518,6 +1549,7 @@ export namespace Mirage {
          * Obtains password string, using the {@link Mirage.PasswordFunction} callback
          * that was provided via `mirage_context_set_password_function()`.
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -1640,6 +1672,7 @@ export namespace Mirage {
          * @param number session number for the added session
          * @param session a {@link Mirage.Session} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_session_by_number(number: number, session: Session): boolean;
 
@@ -1664,6 +1697,7 @@ export namespace Mirage {
          * @param index index at which track should be added
          * @param track a {@link Mirage.Track} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_track_by_index(index: number, track: Track): boolean;
 
@@ -1687,6 +1721,7 @@ export namespace Mirage {
          * @param number track number for the added track
          * @param track a {@link Mirage.Track} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_track_by_number(number: number, track: Track): boolean;
 
@@ -1712,6 +1747,7 @@ export namespace Mirage {
          * @param layer disc layer
          * @param type disc structure type
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_disc_structure(layer: number, type: number): [boolean, Uint8Array | null];
 
@@ -1729,6 +1765,7 @@ export namespace Mirage {
          * other one is sector density at given address, expressed in degrees per sector).
          * @param address address of sector to retrieve DPM data for
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_dpm_data_for_sector(address: number): [boolean, number, number];
 
@@ -1764,6 +1801,7 @@ export namespace Mirage {
          * then retrieves sector object using `mirage_track_get_sector()`.
          * @param address sector address
          * @returns sector object on success, `null` on failure
+         * @throws GLib.Error
          */
         get_sector(address: number): Sector;
 
@@ -1771,6 +1809,7 @@ export namespace Mirage {
          * Retrieves session that comes after `session`.
          * @param session a session
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_after(session: Session): Session;
 
@@ -1778,6 +1817,7 @@ export namespace Mirage {
          * Retrieves session that comes before `session`.
          * @param session a session
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_before(session: Session): Session;
 
@@ -1787,6 +1827,7 @@ export namespace Mirage {
          * start and end sector).
          * @param address address belonging to session to be retrieved
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_by_address(address: number): Session;
 
@@ -1797,6 +1838,7 @@ export namespace Mirage {
          * function fails.
          * @param index index of session to be retrieved
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_by_index(index: number): Session;
 
@@ -1804,6 +1846,7 @@ export namespace Mirage {
          * Retrieves session by session number.
          * @param number number of session to be retrieved
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_by_number(number: number): Session;
 
@@ -1812,6 +1855,7 @@ export namespace Mirage {
          * that is part of the session.
          * @param track number of track belonging to session to be retrieved
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_session_by_track(track: number): Session;
 
@@ -1827,6 +1871,7 @@ export namespace Mirage {
          * The rest of behavior is same as of `mirage_session_get_track_by_address()`.
          * @param address address belonging to track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_address(address: number): Track;
 
@@ -1841,6 +1886,7 @@ export namespace Mirage {
          * The rest of behavior is same as of `mirage_session_get_track_by_index()`.
          * @param index index of track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_index(index: number): Track;
 
@@ -1852,6 +1898,7 @@ export namespace Mirage {
          * The rest of behavior is same as of `mirage_session_get_track_by_number()`.
          * @param number track number of track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_number(number: number): Track;
 
@@ -1953,6 +2000,7 @@ export namespace Mirage {
          * directly to track.
          * @param sector a {@link Mirage.Sector} representing sector to be written
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         put_sector(sector: Sector): boolean;
 
@@ -1968,6 +2016,7 @@ export namespace Mirage {
          * </note>
          * @param index index of session to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_session_by_index(index: number): boolean;
 
@@ -1981,6 +2030,7 @@ export namespace Mirage {
          * </note>
          * @param number session number of session to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_session_by_number(number: number): boolean;
 
@@ -2008,6 +2058,7 @@ export namespace Mirage {
          * </note>
          * @param index index of track to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_track_by_index(index: number): boolean;
 
@@ -2023,6 +2074,7 @@ export namespace Mirage {
          * </note>
          * @param number track number of track to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_track_by_number(number: number): boolean;
 
@@ -2093,6 +2145,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -2107,6 +2160,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -2157,6 +2211,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -2233,6 +2288,7 @@ export namespace Mirage {
          * @param filename name of file on which the stream is to be opened
          * @param writable a boolean indicating whether stream should be opened for read/write access
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         open(filename: string, writable: boolean): boolean;
 
@@ -2246,6 +2302,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -2260,6 +2317,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -2310,6 +2368,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -2363,6 +2422,7 @@ export namespace Mirage {
          * otherwise a copy + delete fallback is used.
          * @param new_filename the new filename
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         move_file(new_filename: string): boolean;
 
@@ -2372,6 +2432,7 @@ export namespace Mirage {
          * @param buffer a buffer to read data into
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
+         * @throws GLib.Error
          */
         read(buffer: null, count: bigint | number): number;
 
@@ -2380,6 +2441,7 @@ export namespace Mirage {
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
@@ -2395,6 +2457,7 @@ export namespace Mirage {
          * @param buffer a buffer to write data from
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
+         * @throws GLib.Error
          */
         write(buffer: null, count: bigint | number): number;
 
@@ -2575,6 +2638,7 @@ export namespace Mirage {
          * @param stream an underlying stream
          * @param writable a flag indicating whether the stream should be opened in read/write mode or not
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         open(stream: Stream, writable: boolean): boolean;
 
@@ -2611,6 +2675,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -2625,6 +2690,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -2675,6 +2741,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -2728,6 +2795,7 @@ export namespace Mirage {
          * otherwise a copy + delete fallback is used.
          * @param new_filename the new filename
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         move_file(new_filename: string): boolean;
 
@@ -2737,6 +2805,7 @@ export namespace Mirage {
          * @param buffer a buffer to read data into
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
+         * @throws GLib.Error
          */
         read(buffer: null, count: bigint | number): number;
 
@@ -2745,6 +2814,7 @@ export namespace Mirage {
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
@@ -2760,6 +2830,7 @@ export namespace Mirage {
          * @param buffer a buffer to write data from
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
+         * @throws GLib.Error
          */
         write(buffer: null, count: bigint | number): number;
 
@@ -2933,6 +3004,7 @@ export namespace Mirage {
          * `length`.
          * @param address address
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         read_main_data(address: number): [boolean, Uint8Array | null];
 
@@ -2942,6 +3014,7 @@ export namespace Mirage {
          * @param address address
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         read_subchannel_data(address: number, buffer: Uint8Array | string | null): boolean;
 
@@ -3026,6 +3099,7 @@ export namespace Mirage {
          * Uses the rest of data file. It automatically calculates and sets fragment's
          * length.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         use_the_rest_of_file(): boolean;
 
@@ -3035,6 +3109,7 @@ export namespace Mirage {
          * @param address address
          * @param buffer buffer with data to write, or `null`
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         write_main_data(address: number, buffer: Uint8Array | string | null): boolean;
 
@@ -3047,6 +3122,7 @@ export namespace Mirage {
          * @param address address
          * @param buffer buffer with read data, or `null`
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         write_subchannel_data(address: number, buffer: Uint8Array | string | null): boolean;
 
@@ -3060,6 +3136,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -3074,6 +3151,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -3124,6 +3202,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -3227,6 +3306,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -3241,6 +3321,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -3291,6 +3372,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -3372,6 +3454,7 @@ export namespace Mirage {
          * should not be modified.
          * @param pack_type pack type
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_pack_data(pack_type: LanguagePackType): [boolean, Uint8Array | null];
 
@@ -3387,6 +3470,7 @@ export namespace Mirage {
          * @param pack_type pack type
          * @param pack_data pack data
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_pack_data(pack_type: LanguagePackType, pack_data: Uint8Array | string): boolean;
 
@@ -3400,6 +3484,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -3414,6 +3499,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -3464,6 +3550,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -3563,6 +3650,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -3577,6 +3665,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -3627,6 +3716,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -3726,6 +3816,7 @@ export namespace Mirage {
          * is created, which can be used to read text file line-by-line.
          * @param stream a {@link Mirage.Stream}
          * @returns a {@link Gio.DataInputStream} object on success, or `null` on failure.
+         * @throws GLib.Error
          */
         create_text_stream(stream: Stream): Gio.DataInputStream;
 
@@ -3752,6 +3843,7 @@ export namespace Mirage {
          * Loads the image stored in `streams`.
          * @param streams `null`-terminated array of data streams
          * @returns a {@link Mirage.Disc} object representing image on success, `null` on failure
+         * @throws GLib.Error
          */
         load_image(streams: Stream[]): Disc;
 
@@ -3765,6 +3857,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -3779,6 +3872,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -3829,6 +3923,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -4008,6 +4103,7 @@ export namespace Mirage {
          * @param subchannel_data location to store pointer to subchannel data buffer, or `null`
          * @param subchannel_data_length requested length of data in subchannel data buffer
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         extract_data(main_data_length: number, subchannel_data: number | null, subchannel_data_length: number): [boolean, number, SectorSubchannelFormat];
 
@@ -4027,6 +4123,7 @@ export namespace Mirage {
          * @param subchannel_data_length length of data in subchannel data buffer
          * @param ignore_data_mask a mask of {@link Mirage.SectorValidData} values, indicating which parts of main channel sector data, if any, should be ignored and regerated even though they are provided by the data feed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         feed_data(address: number, type: SectorType, main_data: number, main_data_length: number, subchannel_format: SectorSubchannelFormat, subchannel_data: number | null, subchannel_data_length: number, ignore_data_mask: number): boolean;
 
@@ -4041,6 +4138,7 @@ export namespace Mirage {
          * sector's data buffer is stored into `ret_buf`;  therefore, the buffer should not
          * be modified.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_data(): [boolean, Uint8Array | null];
 
@@ -4057,6 +4155,7 @@ export namespace Mirage {
          * 
          * If EDC/ECC data is not provided by image file(s), it is generated.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_edc_ecc(): [boolean, Uint8Array | null];
 
@@ -4067,6 +4166,7 @@ export namespace Mirage {
          * 
          * If header is not provided by image file(s), it is generated.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_header(): [boolean, Uint8Array | null];
 
@@ -4084,6 +4184,7 @@ export namespace Mirage {
          * If subchannel is not provided by image file(s), it is generated.
          * @param format subchannel format
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_subchannel(format: SectorSubchannelFormat): [boolean, Uint8Array | null];
 
@@ -4094,6 +4195,7 @@ export namespace Mirage {
          * 
          * If subheader is not provided by image file(s), it is generated.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_subheader(): [boolean, Uint8Array | null];
 
@@ -4104,6 +4206,7 @@ export namespace Mirage {
          * 
          * If sync pattern is not provided by image file(s), it is generated.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_sync(): [boolean, Uint8Array | null];
 
@@ -4118,6 +4221,7 @@ export namespace Mirage {
          * Sets sector's user data to that stored in `buf`.
          * @param buf buffer containing user data
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_data(buf: Uint8Array | string): boolean;
 
@@ -4131,6 +4235,7 @@ export namespace Mirage {
          * Sets sector's EDC/ECC data to that stored in `buf`.
          * @param buf buffer containing EDC/ECC data
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_edc_ecc(buf: Uint8Array | string): boolean;
 
@@ -4138,6 +4243,7 @@ export namespace Mirage {
          * Sets sector's header to that stored in `buf`.
          * @param buf buffer containing header
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_header(buf: Uint8Array | string): boolean;
 
@@ -4147,6 +4253,7 @@ export namespace Mirage {
          * @param format subchannel format
          * @param buf buffer containing subchannel data
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_subchannel(format: SectorSubchannelFormat, buf: Uint8Array | string): boolean;
 
@@ -4154,6 +4261,7 @@ export namespace Mirage {
          * Sets sector's subheader to that stored in `buf`.
          * @param buf buffer containing subheader
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_subheader(buf: Uint8Array | string): boolean;
 
@@ -4161,6 +4269,7 @@ export namespace Mirage {
          * Sets sector's sync pattern to that stored in `buf`.
          * @param buf buffer containing sync pattern
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_sync(buf: Uint8Array | string): boolean;
 
@@ -4208,6 +4317,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -4222,6 +4332,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -4272,6 +4383,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -4356,6 +4468,7 @@ export namespace Mirage {
          * @param code language code for the added language
          * @param language a {@link Mirage.Language} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_language(code: number, language: Language): boolean;
 
@@ -4388,6 +4501,7 @@ export namespace Mirage {
          * @param number track number for the added track
          * @param track a {@link Mirage.Track} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_track_by_number(number: number, track: Track): boolean;
 
@@ -4415,6 +4529,7 @@ export namespace Mirage {
          * its tracks. Buffer with encoded data is stored in `data`; it should be freed with
          * `g_free()` when no longer needed.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         get_cdtext_data(): [boolean, Uint8Array];
 
@@ -4422,6 +4537,7 @@ export namespace Mirage {
          * Retrieves language by language code.
          * @param code language code of language to be retrieved
          * @returns a {@link Mirage.Language} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_language_by_code(code: number): Language;
 
@@ -4432,6 +4548,7 @@ export namespace Mirage {
          * function fails.
          * @param index index of language to be retrieved
          * @returns a {@link Mirage.Language} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_language_by_index(index: number): Language;
 
@@ -4454,6 +4571,7 @@ export namespace Mirage {
         /**
          * Retrieves session that is placed after `self` in disc layout.
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_next(): Session;
 
@@ -4472,6 +4590,7 @@ export namespace Mirage {
         /**
          * Retrieves session that is placed before `self` in disc layout.
          * @returns a {@link Mirage.Session} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_prev(): Session;
 
@@ -4485,6 +4604,7 @@ export namespace Mirage {
          * Retrieves track that comes after `track`.
          * @param track a track
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_after(track: Track): Track;
 
@@ -4492,6 +4612,7 @@ export namespace Mirage {
          * Retrieves track that comes before `track`.
          * @param track a track
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_before(track: Track): Track;
 
@@ -4501,6 +4622,7 @@ export namespace Mirage {
          * start and end sector).
          * @param address address belonging to track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_address(address: number): Track;
 
@@ -4511,6 +4633,7 @@ export namespace Mirage {
          * function fails.
          * @param index index of track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_index(index: number): Track;
 
@@ -4518,6 +4641,7 @@ export namespace Mirage {
          * Retrieves track by track number.
          * @param number number of track to be retrieved
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_track_by_number(number: number): Track;
 
@@ -4608,6 +4732,7 @@ export namespace Mirage {
          * `code` is language code the language to be removed.
          * @param code language code of language to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_language_by_code(code: number): boolean;
 
@@ -4619,6 +4744,7 @@ export namespace Mirage {
          * function.
          * @param index index of language to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_language_by_index(index: number): boolean;
 
@@ -4642,6 +4768,7 @@ export namespace Mirage {
          * </note>
          * @param index index of track to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_track_by_index(index: number): boolean;
 
@@ -4655,6 +4782,7 @@ export namespace Mirage {
          * </note>
          * @param number track number of track to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_track_by_number(number: number): boolean;
 
@@ -4677,6 +4805,7 @@ export namespace Mirage {
          * as the encoded CD-TEXT data.
          * @param data buffer containing encoded CD-TEXT data
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         set_cdtext_data(data: Uint8Array | string): boolean;
 
@@ -4722,6 +4851,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -4736,6 +4866,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -4786,6 +4917,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -4893,6 +5025,7 @@ export namespace Mirage {
          * using `mirage_track_set_track_start()`), the function fails.
          * @param address address at which the index is to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_index(address: number): boolean;
 
@@ -4904,6 +5037,7 @@ export namespace Mirage {
          * @param code language code for the added language
          * @param language a {@link Mirage.Language} to be added
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         add_language(code: number, language: Language | null): boolean;
 
@@ -4943,6 +5077,7 @@ export namespace Mirage {
          * Intended for internal use only.
          * </note>
          * @returns a {@link Mirage.Fragment} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         find_fragment_with_subchannel(): Fragment;
 
@@ -4975,6 +5110,7 @@ export namespace Mirage {
          * start and end address).
          * @param address address belonging to fragment to be retrieved
          * @returns a {@link Mirage.Fragment} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_fragment_by_address(address: number): Fragment;
 
@@ -4985,6 +5121,7 @@ export namespace Mirage {
          * function fails.
          * @param index index of fragment to be retrieved
          * @returns a {@link Mirage.Fragment} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_fragment_by_index(index: number): Fragment;
 
@@ -4994,6 +5131,7 @@ export namespace Mirage {
          * start and end sector).
          * @param address address belonging to index to be retrieved
          * @returns a {@link Mirage.Index} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_index_by_address(address: number): Index;
 
@@ -5003,6 +5141,7 @@ export namespace Mirage {
          * If `number` is out of range, regardless of the sign, the function fails.
          * @param number index number of index to be retrieved
          * @returns a {@link Mirage.Index} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_index_by_number(number: number): Index;
 
@@ -5016,6 +5155,7 @@ export namespace Mirage {
          * Retrieves language by language code.
          * @param code language code of language to be retrieved
          * @returns a {@link Mirage.Language} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_language_by_code(code: number): Language;
 
@@ -5026,12 +5166,14 @@ export namespace Mirage {
          * function fails.
          * @param index index of language to be retrieved
          * @returns a {@link Mirage.Language} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_language_by_index(index: number): Language;
 
         /**
          * Retrieves track that is placed after `self` in session layout
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_next(): Track;
 
@@ -5057,6 +5199,7 @@ export namespace Mirage {
         /**
          * Retrieves track that is placed before `self` in session layout.
          * @returns a {@link Mirage.Track} on success, `null` on failure. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_prev(): Track;
 
@@ -5071,6 +5214,7 @@ export namespace Mirage {
          * @param address sector address
          * @param abs absolute address
          * @returns sector object on success, `null` on failure. The sector object should be released with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_sector(address: number, abs: boolean): Sector;
 
@@ -5154,6 +5298,7 @@ export namespace Mirage {
          * fragment is extended before data is written to it).
          * @param sector a {@link Mirage.Sector} representing sector to be written
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         put_sector(sector: Sector): boolean;
 
@@ -5169,6 +5314,7 @@ export namespace Mirage {
          * </note>
          * @param index index of fragment to be removed.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_fragment_by_index(index: number): boolean;
 
@@ -5190,6 +5336,7 @@ export namespace Mirage {
          * `number` is index number of index to be removed. It must be greater or equal than 2.
          * @param number index number of index to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_index_by_number(number: number): boolean;
 
@@ -5207,6 +5354,7 @@ export namespace Mirage {
          * `code` is language code the language to be removed.
          * @param code language code of language to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_language_by_code(code: number): boolean;
 
@@ -5218,6 +5366,7 @@ export namespace Mirage {
          * function.
          * @param index index of language to be removed
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remove_language_by_index(index: number): boolean;
 
@@ -5276,6 +5425,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -5290,6 +5440,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -5340,6 +5491,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -5372,7 +5524,7 @@ export namespace Mirage {
              * @signal
              * @run-last
              */
-            "conversion-progress": (arg0: number) => void;
+            "conversion-progress": (progress: number) => void;
         }
 
         // Constructor properties interface
@@ -5483,6 +5635,7 @@ export namespace Mirage {
          * @param parameters writer parameters
          * @param cancellable optional %GCancellable object, NULL to ignore.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         convert_image(filename: string, original_disc: Disc, parameters: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5496,6 +5649,7 @@ export namespace Mirage {
          * @param track track for which the fragment is to be created
          * @param role fragment role
          * @returns pointer to created fragment object on success, `null` on failure
+         * @throws GLib.Error
          */
         create_fragment(track: Track, role: FragmentRole): Fragment;
 
@@ -5504,6 +5658,7 @@ export namespace Mirage {
          * necessary.
          * @param disc disc object for which the image is being written
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         finalize_image(disc: Disc): boolean;
 
@@ -5586,6 +5741,7 @@ export namespace Mirage {
          * @param disc disc object for which the image will be created
          * @param parameters writer parameters
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         open_image(disc: Disc, parameters: { [key: string]: GLib.Variant }): boolean;
 
@@ -5606,6 +5762,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -5620,6 +5777,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -5670,6 +5828,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -6100,6 +6259,7 @@ export namespace Mirage {
          * </note>
          * @param filename filename to create input stream on
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to access data stored in file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_input_stream(filename: string): Stream;
 
@@ -6114,6 +6274,7 @@ export namespace Mirage {
          * @param filename filename to create output stream on
          * @param filter_chain NULL-terminated array of strings describing types of filters to include in the filter chain, or `null`
          * @returns on success, an object implementing {@link Mirage.Stream} interface is returned, which can be used to write data to file. On failure, `null` is returned. The reference to the object should be released using `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_output_stream(filename: string, filter_chain: string[] | null): Stream;
 
@@ -6164,6 +6325,7 @@ export namespace Mirage {
          * `self` and calls `mirage_context_obtain_password()`.
          * </note>
          * @returns password string on success, `null` on failure. The string should be freed with `g_free()` when no longer needed.
+         * @throws GLib.Error
          */
         obtain_password(): string;
 
@@ -6293,6 +6455,7 @@ export namespace Mirage {
          * otherwise a copy + delete fallback is used.
          * @param new_filename the new filename
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         move_file(new_filename: string): boolean;
 
@@ -6302,6 +6465,7 @@ export namespace Mirage {
          * @param buffer a buffer to read data into
          * @param count number of bytes to read from stream
          * @returns number of bytes read, or -1 on error, or 0 on end of file.
+         * @throws GLib.Error
          */
         read(buffer: null, count: bigint | number): number;
 
@@ -6310,6 +6474,7 @@ export namespace Mirage {
          * @param offset offset to seek
          * @param type seek type
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType): boolean;
 
@@ -6325,6 +6490,7 @@ export namespace Mirage {
          * @param buffer a buffer to write data from
          * @param count number of bytes to write to stream
          * @returns number of bytes written, or -1 on error.
+         * @throws GLib.Error
          */
         write(buffer: null, count: bigint | number): number;
     }

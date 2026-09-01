@@ -43,13 +43,13 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum AnimationMode {
-        LINEAR,
-        EASE_IN_QUAD,
-        EASE_IN_OUT_QUAD,
-        EASE_OUT_QUAD,
-        EASE_IN_CUBIC,
-        EASE_OUT_CUBIC,
-        EASE_IN_OUT_CUBIC,
+        LINEAR = 0,
+        EASE_IN_QUAD = 1,
+        EASE_IN_OUT_QUAD = 3,
+        EASE_OUT_QUAD = 2,
+        EASE_IN_CUBIC = 4,
+        EASE_OUT_CUBIC = 5,
+        EASE_IN_OUT_CUBIC = 6,
     }
 
 
@@ -64,11 +64,11 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum DockRevealerTransitionType {
-        NONE,
-        SLIDE_RIGHT,
-        SLIDE_LEFT,
-        SLIDE_UP,
-        SLIDE_DOWN,
+        NONE = 0,
+        SLIDE_RIGHT = 1,
+        SLIDE_LEFT = 2,
+        SLIDE_UP = 3,
+        SLIDE_DOWN = 4,
     }
 
 
@@ -83,9 +83,9 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum ShortcutMatch {
-        NONE,
-        EQUAL,
-        PARTIAL,
+        NONE = 0,
+        EQUAL = 1,
+        PARTIAL = 2,
     }
 
 
@@ -100,36 +100,36 @@ export namespace Dazzle {
          * The shortcut is a keyboard accelerator. The {@link Dazzle.ShortcutsShortcut.accelerator}
          *   property will be used.
          */
-        ACCELERATOR,
+        ACCELERATOR = 0,
         /**
          * The shortcut is a pinch gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_PINCH,
+        GESTURE_PINCH = 1,
         /**
          * The shortcut is a stretch gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_STRETCH,
+        GESTURE_STRETCH = 2,
         /**
          * The shortcut is a clockwise rotation gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_ROTATE_CLOCKWISE,
+        GESTURE_ROTATE_CLOCKWISE = 3,
         /**
          * The shortcut is a counterclockwise rotation gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_ROTATE_COUNTERCLOCKWISE,
+        GESTURE_ROTATE_COUNTERCLOCKWISE = 4,
         /**
          * The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_TWO_FINGER_SWIPE_LEFT,
+        GESTURE_TWO_FINGER_SWIPE_LEFT = 5,
         /**
          * The shortcut is a two-finger swipe gesture. GTK+ provides an icon and subtitle.
          */
-        GESTURE_TWO_FINGER_SWIPE_RIGHT,
+        GESTURE_TWO_FINGER_SWIPE_RIGHT = 6,
         /**
          * The shortcut is a gesture. The {@link Dazzle.ShortcutsShortcut.icon} property will be
          *   used.
          */
-        GESTURE,
+        GESTURE = 7,
     }
 
 
@@ -144,11 +144,11 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum SliderPosition {
-        NONE,
-        TOP,
-        RIGHT,
-        BOTTOM,
-        LEFT,
+        NONE = 0,
+        TOP = 1,
+        RIGHT = 2,
+        BOTTOM = 3,
+        LEFT = 4,
     }
 
 
@@ -163,9 +163,9 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum ThreeGridColumn {
-        LEFT,
-        CENTER,
-        RIGHT,
+        LEFT = 0,
+        CENTER = 1,
+        RIGHT = 2,
     }
 
 
@@ -180,10 +180,10 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum TitlebarAnimation {
-        HIDDEN,
-        SHOWING,
-        SHOWN,
-        HIDING,
+        HIDDEN = 0,
+        SHOWING = 1,
+        SHOWN = 2,
+        HIDING = 3,
     }
 
 
@@ -198,36 +198,49 @@ export namespace Dazzle {
      * @gir-type Enum
      */
     enum TreeDropPosition {
-        INTO,
-        BEFORE,
-        AFTER,
+        INTO = 0,
+        BEFORE = 1,
+        AFTER = 2,
     }
 
 
+    /**
+     * @default 1
+     */
     const COUNTER_REQUIRES_ATOMIC: number;
 
+    /**
+     * @default pinned
+     */
     const DOCK_BIN_STYLE_CLASS_PINNED: string;
 
+    /**
+     * @default 0
+     */
     const ENABLE_TRACE: number;
 
     /**
      * Dzl major version component (e.g. 1 if `DZL_VERSION` is 1.2.3)
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * Dzl micro version component (e.g. 3 if `DZL_VERSION` is 1.2.3)
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * Dzl minor version component (e.g. 2 if `DZL_VERSION` is 1.2.3)
+     * @default 44
      */
     const MINOR_VERSION: number;
 
     /**
      * Dazzle version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 3.44.0
      */
     const VERSION_S: string;
 
@@ -284,6 +297,7 @@ export namespace Dazzle {
 
     /**
      * @param file 
+     * @throws GLib.Error
      */
     function file_manager_show(file: Gio.File): boolean;
 
@@ -596,8 +610,8 @@ export namespace Dazzle {
      * @gir-type Flags
      */
     enum FileTransferFlags {
-        NONE,
-        MOVE,
+        NONE = 0,
+        MOVE = 1,
     }
 
 
@@ -605,8 +619,8 @@ export namespace Dazzle {
      * @gir-type Flags
      */
     enum PropertiesFlags {
-        NONE,
-        STATEFUL_BOOLEANS,
+        NONE = 0,
+        STATEFUL_BOOLEANS = 1,
     }
 
 
@@ -621,15 +635,15 @@ export namespace Dazzle {
      * @gir-type Flags
      */
     enum ShortcutPhase {
-        DISPATCH,
+        DISPATCH = 0,
         /**
          * Indicates the capture phase of the shortcut
          *   activation. This allows parent widgets to intercept the keybinding before
          *   it is dispatched to the target {@link Gdk.Window}.
          */
-        CAPTURE,
-        BUBBLE,
-        GLOBAL,
+        CAPTURE = 1,
+        BUBBLE = 2,
+        GLOBAL = 4,
     }
 
 
@@ -644,9 +658,9 @@ export namespace Dazzle {
      * @gir-type Flags
      */
     enum TabStyle {
-        ICONS,
-        TEXT,
-        BOTH,
+        ICONS = 2,
+        TEXT = 1,
+        BOTH = 3,
     }
 
 
@@ -3678,7 +3692,7 @@ export namespace Dazzle {
              * @since 3.32
              * @run-last
              */
-            "remove-file": (arg0: Gio.File) => void;
+            "remove-file": (file: Gio.File) => void;
         }
 
         // Constructor properties interface
@@ -3742,6 +3756,7 @@ export namespace Dazzle {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3764,6 +3779,7 @@ export namespace Dazzle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
     }
@@ -4675,12 +4691,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "register-dock": (arg0: Dock) => void;
+            "register-dock": (object: Dock) => void;
             /**
              * @signal
              * @run-last
              */
-            "unregister-dock": (arg0: Dock) => void;
+            "unregister-dock": (object: Dock) => void;
         }
 
         // Constructor properties interface
@@ -8446,6 +8462,7 @@ export namespace Dazzle {
         /**
          * @param io_priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8471,6 +8488,7 @@ export namespace Dazzle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -8560,6 +8578,7 @@ export namespace Dazzle {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8585,6 +8604,7 @@ export namespace Dazzle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         load_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -8615,6 +8635,7 @@ export namespace Dazzle {
          * Completes an asynchronous request to `dzl_fuzzy_index_query_async()`.
          * @param result 
          * @returns A {@link Gio.ListModel} of results.
+         * @throws GLib.Error
          */
         query_finish(result: Gio.AsyncResult): Gio.ListModel;
     }
@@ -8742,6 +8763,7 @@ export namespace Dazzle {
          * @param file 
          * @param io_priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8779,6 +8801,7 @@ export namespace Dazzle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): boolean;
     }
@@ -9024,6 +9047,7 @@ export namespace Dazzle {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9033,6 +9057,7 @@ export namespace Dazzle {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): FuzzyIndexCursor;
 
@@ -11399,11 +11424,13 @@ export namespace Dazzle {
         // Methods
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         add_filename(filename: string): number;
 
         /**
          * @param resource 
+         * @throws GLib.Error
          */
         add_resource(resource: string): number;
 
@@ -11437,12 +11464,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "resize-drag-begin": (arg0: Gtk.Widget) => void;
+            "resize-drag-begin": (object: Gtk.Widget) => void;
             /**
              * @signal
              * @run-last
              */
-            "resize-drag-end": (arg0: Gtk.Widget) => void;
+            "resize-drag-end": (object: Gtk.Widget) => void;
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -11682,12 +11709,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "element-selected": (arg0: Path, arg1: PathElement) => void;
+            "element-selected": (object: Path, p0: PathElement) => void;
             /**
              * @signal
              * @run-last
              */
-            "populate-menu": (arg0: Path, arg1: PathElement, arg2: Gio.Menu) => void;
+            "populate-menu": (object: Path, p0: PathElement, p1: Gio.Menu) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -12223,7 +12250,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            changed: (arg0: string) => void;
+            changed: (object: string) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::keywords": (pspec: GObject.ParamSpec) => void;
@@ -15556,7 +15583,7 @@ export namespace Dazzle {
              * @since 3.28
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
+            changed: (file: Gio.File, other_file: Gio.File | null, event: Gio.FileMonitorEvent) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -15653,6 +15680,7 @@ export namespace Dazzle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
     }
@@ -16765,11 +16793,13 @@ export namespace Dazzle {
         /**
          * @param data 
          * @param len 
+         * @throws GLib.Error
          */
         load_from_data(data: string, len: bigint | number): boolean;
 
         /**
          * @param resource_path 
+         * @throws GLib.Error
          */
         load_from_resource(resource_path: string): boolean;
 
@@ -16802,7 +16832,7 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            "set-context-named": (arg0: string) => void;
+            "set-context-named": (name: string) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::current-chord": (pspec: GObject.ParamSpec) => void;
             "notify::manager": (pspec: GObject.ParamSpec) => void;
@@ -17382,6 +17412,7 @@ export namespace Dazzle {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18910,18 +18941,21 @@ export namespace Dazzle {
         /**
          * @param data 
          * @param len 
+         * @throws GLib.Error
          */
         load_from_data(data: string, len: bigint | number): boolean;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_from_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18933,18 +18967,21 @@ export namespace Dazzle {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_to_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19451,7 +19488,7 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            "change-current-page": (arg0: number) => boolean | void;
+            "change-current-page": (object: number) => boolean | void;
             "notify::max-height": (pspec: GObject.ParamSpec) => void;
             "notify::section-name": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -20169,7 +20206,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            bind: (arg0: GObject.Object) => void;
+            bind: (instance: GObject.Object) => void;
             /**
              * This signal is emitted when the target instance of `self`
              * is set to a new {@link GObject.Object}.
@@ -20687,7 +20724,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            activate: (arg0: string) => void;
+            activate: (text: string) => void;
             /**
              * This signal is emitted when the entry text changes.
              * @signal
@@ -20701,7 +20738,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
+            "insert-text": (position: number, chars: string, n_chars: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -21017,12 +21054,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "header-activated": (arg0: Gtk.ListBoxRow) => void;
+            "header-activated": (object: Gtk.ListBoxRow) => void;
             /**
              * @signal
              * @run-last
              */
-            "row-activated": (arg0: Gtk.ListBoxRow) => void;
+            "row-activated": (object: Gtk.ListBoxRow) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -21483,12 +21520,12 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "replace-typed-text": (arg0: string) => string;
+            "replace-typed-text": (object: string) => string;
             /**
              * @signal
              * @run-last
              */
-            "suggest-suffix": (arg0: string) => string;
+            "suggest-suffix": (object: string) => string;
             "notify::icon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -21903,7 +21940,7 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            action: (arg0: string, arg1: string, arg2: string) => void;
+            action: (object: string, p0: string, p1: string) => void;
             /**
              * @signal
              * @action
@@ -21923,7 +21960,7 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            "move-suggestion": (arg0: number) => void;
+            "move-suggestion": (amount: number) => void;
             /**
              * @signal
              * @action
@@ -21934,7 +21971,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "suggestion-activated": (arg0: Suggestion) => void;
+            "suggestion-activated": (object: Suggestion) => void;
             /**
              * This signal is emitted when a selection has been specifically selected
              * by the user, such as by clicking on the row or moving to the row with
@@ -21943,7 +21980,7 @@ export namespace Dazzle {
              * @since 3.30
              * @run-last
              */
-            "suggestion-selected": (arg0: Suggestion) => void;
+            "suggestion-selected": (suggestion: Suggestion) => void;
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::compact": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
@@ -22651,7 +22688,7 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            "suggestion-activated": (arg0: Suggestion) => void;
+            "suggestion-activated": (object: Suggestion) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::relative-to": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
@@ -23811,6 +23848,7 @@ export namespace Dazzle {
          * Finish a call to `dzl_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
+         * @throws GLib.Error
          */
         get_finish(result: Gio.AsyncResult): null;
 
@@ -24039,12 +24077,12 @@ export namespace Dazzle {
              * @action
              * @run-last
              */
-            action: (arg0: string, arg1: string, arg2: string) => void;
+            action: (object: string, p0: string, p1: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Gtk.Widget) => void;
+            "populate-popup": (object: Gtk.Widget) => void;
             "notify::always-expand": (pspec: GObject.ParamSpec) => void;
             "notify::context-menu": (pspec: GObject.ParamSpec) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
@@ -24465,82 +24503,82 @@ export namespace Dazzle {
              * @signal
              * @run-last
              */
-            added: (arg0: Tree) => void;
+            added: (object: Tree) => void;
             /**
              * @signal
              * @run-last
              */
-            "build-children": (arg0: TreeNode) => void;
+            "build-children": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "build-node": (arg0: TreeNode) => void;
+            "build-node": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "drag-data-get": (arg0: TreeNode, arg1: Gtk.SelectionData) => boolean | void;
+            "drag-data-get": (object: TreeNode, p0: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-data-received": (arg0: TreeNode, arg1: TreeDropPosition, arg2: Gdk.DragAction, arg3: Gtk.SelectionData) => boolean | void;
+            "drag-data-received": (object: TreeNode, p0: TreeDropPosition, p1: Gdk.DragAction, p2: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-node-delete": (arg0: TreeNode) => boolean | void;
+            "drag-node-delete": (object: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-node-received": (arg0: TreeNode, arg1: TreeNode, arg2: TreeDropPosition, arg3: Gdk.DragAction, arg4: Gtk.SelectionData) => boolean | void;
+            "drag-node-received": (object: TreeNode, p0: TreeNode, p1: TreeDropPosition, p2: Gdk.DragAction, p3: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-activated": (arg0: TreeNode) => boolean | void;
+            "node-activated": (object: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-collapsed": (arg0: TreeNode) => void;
+            "node-collapsed": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-draggable": (arg0: TreeNode) => boolean | void;
+            "node-draggable": (object: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-droppable": (arg0: TreeNode, arg1: Gtk.SelectionData) => boolean | void;
+            "node-droppable": (object: TreeNode, p0: Gtk.SelectionData) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-expanded": (arg0: TreeNode) => void;
+            "node-expanded": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-popup": (arg0: TreeNode, arg1: Gio.Menu) => void;
+            "node-popup": (object: TreeNode, p0: Gio.Menu) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-selected": (arg0: TreeNode) => void;
+            "node-selected": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-unselected": (arg0: TreeNode) => void;
+            "node-unselected": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            removed: (arg0: Tree) => void;
+            removed: (object: Tree) => void;
             "notify::tree": (pspec: GObject.ParamSpec) => void;
         }
 

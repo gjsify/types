@@ -40,11 +40,11 @@ export namespace ArrowDataset {
         /**
          * No encoding.
          */
-        NONE,
+        NONE = 0,
         /**
          * Segment values are URL-encoded.
          */
-        URI,
+        URI = 1,
     }
 
 
@@ -150,6 +150,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link ArrowDataset.ScannerBuilder} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         begin_scan(): ScannerBuilder | null;
 
@@ -162,6 +163,7 @@ export namespace ArrowDataset {
         /**
          * @returns A loaded {@link Arrow.Table} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         to_table(): Arrow.Table | null;
     }
@@ -228,6 +230,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link ArrowDataset.Dataset} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         finish(): Dataset | null;
     }
@@ -362,6 +365,7 @@ export namespace ArrowDataset {
          * @param options A {@link ArrowDataset.FileWriteOptions}.
          * @returns The newly created {@link ArrowDataset.FileWriter} of `format`   on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         open_writer(destination: Arrow.OutputStream, file_system: Arrow.FileSystem, path: string, schema: Arrow.Schema, options: FileWriteOptions): FileWriter;
     }
@@ -561,12 +565,14 @@ export namespace ArrowDataset {
          * @param path A path to be added.
          * @returns `true` on success, `false` otherwise.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         add_path(path: string): boolean;
 
         /**
          * @returns A newly created {@link ArrowDataset.FileSystemDataset} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         finish(): FileSystemDataset | null;
 
@@ -574,6 +580,7 @@ export namespace ArrowDataset {
          * @param file_system A {@link Arrow.FileSystem}.
          * @returns `true` on success, `false` otherwise.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         set_file_system(file_system: Arrow.FileSystem): boolean;
 
@@ -581,6 +588,7 @@ export namespace ArrowDataset {
          * @param uri An URI for file system.
          * @returns `true` on success, `false` otherwise.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         set_file_system_uri(uri: string): boolean;
     }
@@ -814,6 +822,7 @@ export namespace ArrowDataset {
         /**
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         finish(): boolean;
 
@@ -821,6 +830,7 @@ export namespace ArrowDataset {
          * @param record_batch A {@link Arrow.RecordBatch} to be written.
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         write_record_batch(record_batch: Arrow.RecordBatch): boolean;
 
@@ -828,6 +838,7 @@ export namespace ArrowDataset {
          * @param reader A {@link Arrow.RecordBatchReader} to be written.
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         write_record_batch_reader(reader: Arrow.RecordBatchReader): boolean;
     }
@@ -1292,6 +1303,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link Arrow.Table} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         to_table(): Arrow.Table | null;
     }
@@ -1362,6 +1374,7 @@ export namespace ArrowDataset {
         /**
          * @returns A newly created {@link ArrowDataset.Scanner} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         finish(): Scanner | null;
 
@@ -1369,6 +1382,7 @@ export namespace ArrowDataset {
          * @param expression A {@link Arrow.Expression} to filter rows with.
          * @returns `true` on success, `false` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         set_filter(expression: Arrow.Expression): boolean;
     }

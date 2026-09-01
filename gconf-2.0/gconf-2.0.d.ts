@@ -32,9 +32,9 @@ export namespace GConf {
      * @gir-type Enum
      */
     enum ClientErrorHandlingMode {
-        HANDLE_NONE,
-        HANDLE_UNRETURNED,
-        HANDLE_ALL,
+        HANDLE_NONE = 0,
+        HANDLE_UNRETURNED = 1,
+        HANDLE_ALL = 2,
     }
 
 
@@ -49,9 +49,9 @@ export namespace GConf {
      * @gir-type Enum
      */
     enum ClientPreloadType {
-        PRELOAD_NONE,
-        PRELOAD_ONELEVEL,
-        PRELOAD_RECURSIVE,
+        PRELOAD_NONE = 0,
+        PRELOAD_ONELEVEL = 1,
+        PRELOAD_RECURSIVE = 2,
     }
 
 
@@ -115,14 +115,14 @@ export namespace GConf {
      * @gir-type Enum
      */
     enum ValueType {
-        INVALID,
-        STRING,
-        INT,
-        FLOAT,
-        BOOL,
-        SCHEMA,
-        LIST,
-        PAIR,
+        INVALID = 0,
+        STRING = 1,
+        INT = 2,
+        FLOAT = 3,
+        BOOL = 4,
+        SCHEMA = 5,
+        LIST = 6,
+        PAIR = 7,
     }
 
 
@@ -161,6 +161,7 @@ export namespace GConf {
     /**
      * @param argc 
      * @param argv 
+     * @throws GLib.Error
      */
     function init(argc: number, argv: string): boolean;
 
@@ -259,7 +260,7 @@ export namespace GConf {
      * @gir-type Flags
      */
     enum UnsetFlags {
-        NAMES,
+        NAMES = 1,
     }
 
 
@@ -270,17 +271,17 @@ export namespace GConf {
              * @signal
              * @run-last
              */
-            error: (arg0: null) => void;
+            error: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "unreturned-error": (arg0: null) => void;
+            "unreturned-error": (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: string, arg1: null) => void;
+            "value-changed": (object: string, p0: null) => void;
         }
 
         // Constructor properties interface
@@ -358,6 +359,7 @@ export namespace GConf {
         /**
          * @param dir 
          * @param preload 
+         * @throws GLib.Error
          */
         add_dir(dir: string, preload: ClientPreloadType): void;
 
@@ -369,6 +371,7 @@ export namespace GConf {
          * but uses {@link GConf.Client} caching and error-handling features.
          * @param dir directory to get subdirectories from.
          * @returns List of allocated subdirectory names.
+         * @throws GLib.Error
          */
         all_dirs(dir: string): string[];
 
@@ -382,11 +385,13 @@ export namespace GConf {
          * Just like gconf_engine_all_entries (), but uses {@link GConf.Client} caching and error-handling features.
          * @param dir directory to list.
          * @returns List of {@link GConf.Entry}.
+         * @throws GLib.Error
          */
         all_entries(dir: string): Entry[];
 
         /**
          * @param keys 
+         * @throws GLib.Error
          */
         change_set_from_currentv(keys: string): ChangeSet;
 
@@ -395,11 +400,13 @@ export namespace GConf {
         /**
          * @param cs 
          * @param remove_committed 
+         * @throws GLib.Error
          */
         commit_change_set(cs: ChangeSet, remove_committed: boolean): boolean;
 
         /**
          * @param dir 
+         * @throws GLib.Error
          */
         dir_exists(dir: string): boolean;
 
@@ -410,16 +417,19 @@ export namespace GConf {
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get(key: string): Value;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_bool(key: string): boolean;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_default_from_schema(key: string): Value;
 
@@ -427,16 +437,19 @@ export namespace GConf {
          * @param key 
          * @param locale 
          * @param use_schema_default 
+         * @throws GLib.Error
          */
         get_entry(key: string, locale: string, use_schema_default: boolean): Entry;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_float(key: string): number;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_int(key: string): number;
 
@@ -446,21 +459,25 @@ export namespace GConf {
          * @param cdr_type 
          * @param car_retloc 
          * @param cdr_retloc 
+         * @throws GLib.Error
          */
         get_pair(key: string, car_type: ValueType, cdr_type: ValueType, car_retloc: null, cdr_retloc: null): boolean;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_string(key: string): string;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_without_default(key: string): Value;
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         key_is_writable(key: string): boolean;
 
@@ -473,6 +490,7 @@ export namespace GConf {
          * @param namespace_section 
          * @param func 
          * @param destroy_notify 
+         * @throws GLib.Error
          */
         notify_add(namespace_section: string, func: ClientNotifyFunc, destroy_notify: GLib.FreeFunc): number;
 
@@ -484,28 +502,33 @@ export namespace GConf {
         /**
          * @param dirname 
          * @param type 
+         * @throws GLib.Error
          */
         preload(dirname: string, type: ClientPreloadType): void;
 
         /**
          * @param key 
          * @param flags 
+         * @throws GLib.Error
          */
         recursive_unset(key: string, flags: UnsetFlags): boolean;
 
         /**
          * @param dir 
+         * @throws GLib.Error
          */
         remove_dir(dir: string): void;
 
         /**
          * @param cs 
+         * @throws GLib.Error
          */
         reverse_change_set(cs: ChangeSet): ChangeSet;
 
         /**
          * @param key 
          * @param val 
+         * @throws GLib.Error
          */
         set(key: string, val: Value): void;
 
@@ -518,6 +541,7 @@ export namespace GConf {
         /**
          * @param key 
          * @param val 
+         * @throws GLib.Error
          */
         set_bool(key: string, val: boolean): boolean;
 
@@ -529,12 +553,14 @@ export namespace GConf {
         /**
          * @param key 
          * @param val 
+         * @throws GLib.Error
          */
         set_float(key: string, val: number): boolean;
 
         /**
          * @param key 
          * @param val 
+         * @throws GLib.Error
          */
         set_int(key: string, val: number): boolean;
 
@@ -544,15 +570,20 @@ export namespace GConf {
          * @param cdr_type 
          * @param address_of_car 
          * @param address_of_cdr 
+         * @throws GLib.Error
          */
         set_pair(key: string, car_type: ValueType, cdr_type: ValueType, address_of_car: null, address_of_cdr: null): boolean;
 
         /**
          * @param key 
          * @param val 
+         * @throws GLib.Error
          */
         set_string(key: string, val: string): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         suggest_sync(): void;
 
         /**
@@ -562,6 +593,7 @@ export namespace GConf {
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         unset(key: string): boolean;
 

@@ -49,11 +49,11 @@ export namespace Tepl {
         /**
          * plain text.
          */
-        NONE,
+        NONE = 0,
         /**
          * gzip compression.
          */
-        GZIP,
+        GZIP = 1,
     }
 
 
@@ -127,16 +127,16 @@ export namespace Tepl {
         /**
          * line feed, used on UNIX.
          */
-        LF,
+        LF = 0,
         /**
          * carriage return, used on Mac.
          */
-        CR,
+        CR = 1,
         /**
          * carriage return followed by a line feed, used
          *   on Windows.
          */
-        CR_LF,
+        CR_LF = 2,
     }
 
 
@@ -155,16 +155,16 @@ export namespace Tepl {
         /**
          * No selection.
          */
-        NO_SELECTION,
+        NO_SELECTION = 0,
         /**
          * The start and end selection bounds are on
          *   the same line.
          */
-        ON_SAME_LINE,
+        ON_SAME_LINE = 1,
         /**
          * The selection spans multiple lines.
          */
-        MULTIPLE_LINES,
+        MULTIPLE_LINES = 2,
     }
 
 
@@ -328,6 +328,7 @@ export namespace Tepl {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 4.6
+     * @throws GLib.Error
      */
     function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -428,19 +429,19 @@ export namespace Tepl {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore invalid characters.
          */
-        IGNORE_INVALID_CHARS,
+        IGNORE_INVALID_CHARS = 1,
         /**
          * Save file despite external modifications.
          */
-        IGNORE_MODIFICATION_TIME,
+        IGNORE_MODIFICATION_TIME = 2,
         /**
          * Create a backup before saving the file.
          */
-        CREATE_BACKUP,
+        CREATE_BACKUP = 4,
     }
 
 
@@ -464,25 +465,25 @@ export namespace Tepl {
         /**
          * No code folding here.
          */
-        NONE,
+        NONE = 0,
         /**
          * Start of currently folded
          *   fold region.
          */
-        START_FOLDED,
+        START_FOLDED = 1,
         /**
          * Start of currently opened
          *   fold region.
          */
-        START_OPENED,
+        START_OPENED = 2,
         /**
          * Fold region continues.
          */
-        CONTINUE,
+        CONTINUE = 4,
         /**
          * End of fold region.
          */
-        END,
+        END = 8,
     }
 
 
@@ -1808,6 +1809,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the content has been loaded successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -1909,6 +1911,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1961,6 +1964,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was loaded successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -1974,6 +1978,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         save(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2023,6 +2028,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was saved successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -2266,6 +2272,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -2773,6 +2780,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was loaded successfully.
          * @since 4.6
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -2789,6 +2797,7 @@ export namespace Tepl {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          * @since 4.6
+         * @throws GLib.Error
          */
         save(cancellable: Gio.Cancellable | null): boolean;
 

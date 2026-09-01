@@ -182,6 +182,7 @@ export namespace RestExtras {
          * uploading to Flickr.
          * @param filename the file to upload
          * @returns a new {@link RestExtras.FlickrProxyCall}
+         * @throws GLib.Error
          */
         new_upload_for_file(filename: string): FlickrProxyCall;
 
@@ -548,6 +549,7 @@ export namespace RestExtras {
          * @param callback callback to invoke upon completion
          * @param weak_object an object instance used to tie the life cycle of the proxy to
          * @returns `true`, or `false` if the file could not be opened
+         * @throws GLib.Error
          */
         upload_async(filename: string, fields: { [key: string]: string }, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object | null): boolean;
     }

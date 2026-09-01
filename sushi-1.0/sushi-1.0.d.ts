@@ -58,6 +58,7 @@ export namespace Sushi {
 
     /**
      * @param result 
+     * @throws GLib.Error
      */
     function convert_libreoffice_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -81,6 +82,7 @@ export namespace Sushi {
 
     /**
      * @param result 
+     * @throws GLib.Error
      */
     function get_asin_for_track_finish(result: Gio.AsyncResult): string;
 
@@ -157,7 +159,7 @@ export namespace Sushi {
              * @signal
              * @run-first
              */
-            error: (arg0: GLib.Error) => void;
+            error: (object: GLib.Error) => void;
             /**
              * @signal
              * @run-first

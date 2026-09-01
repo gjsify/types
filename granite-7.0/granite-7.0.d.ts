@@ -67,11 +67,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum SettingsPageStatusType {
-        ERROR,
-        OFFLINE,
-        SUCCESS,
-        WARNING,
-        NONE,
+        ERROR = 0,
+        OFFLINE = 1,
+        SUCCESS = 2,
+        WARNING = 3,
+        NONE = 4,
     }
 
 
@@ -87,11 +87,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @since 7.7.0
      */
     enum BoxSpacing {
-        NONE,
-        HALF,
-        SINGLE,
-        DOUBLE,
-        LINKED,
+        NONE = 0,
+        HALF = 1,
+        SINGLE = 2,
+        DOUBLE = 3,
+        LINKED = 4,
     }
 
 
@@ -107,10 +107,10 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @since 7.7.0
      */
     enum HeaderLabelSize {
-        H1,
-        H2,
-        H3,
-        H4,
+        H1 = 0,
+        H2 = 1,
+        H3 = 2,
+        H4 = 3,
     }
 
 
@@ -125,9 +125,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum SettingsColorScheme {
-        NO_PREFERENCE,
-        DARK,
-        LIGHT,
+        NO_PREFERENCE = 0,
+        DARK = 1,
+        LIGHT = 2,
     }
 
 
@@ -143,292 +143,379 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @since 7.5.0
      */
     enum ToastDismissReason {
-        EXPIRED,
-        CLOSED,
-        WITHDRAWN,
+        EXPIRED = 1,
+        CLOSED = 2,
+        WITHDRAWN = 3,
     }
 
 
     /**
      * @since 7.7.0
+     * @default accent
      */
     const CssClassACCENT: string;
 
     /**
      * @since 7.7.0
+     * @default card
      */
     const CssClassCARD: string;
 
     /**
      * @since 7.7.0
+     * @default checkerboard
      */
     const CssClassCHECKERBOARD: string;
 
     /**
      * @since 7.7.0
+     * @default circular
      */
     const CssClassCIRCULAR: string;
 
     /**
      * @since 7.7.0
+     * @default destructive
      */
     const CssClassDESTRUCTIVE: string;
 
     /**
      * @since 7.7.0
+     * @default dim-label
      */
     const CssClassDIM: string;
 
     /**
      * @since 7.7.0
+     * @default error
      */
     const CssClassERROR: string;
 
     /**
      * @since 7.7.0
+     * @default numeric
      */
     const CssClassNUMERIC: string;
 
     /**
      * @since 7.7.0
+     * @default small-label
      */
     const CssClassSMALL: string;
 
     /**
      * @since 7.7.0
+     * @default suggested
      */
     const CssClassSUGGESTED: string;
 
     /**
      * @since 7.7.0
+     * @default success
      */
     const CssClassSUCCESS: string;
 
     /**
      * @since 7.7.0
+     * @default warning
      */
     const CssClassWARNING: string;
 
     /**
      * @since 7.7.0
+     * @default monospace
      */
     const CssClassMONOSPACE: string;
 
     /**
      * @since 7.3.0
+     * @default settings://privacy/location
      */
     const SettingsUriLOCATION: string;
 
     /**
      * @since 7.3.0
+     * @default settings://accounts/online
      */
     const SettingsUriONLINE_ACCOUNTS: string;
 
     /**
      * @since 7.3.0
+     * @default settings://network
      */
     const SettingsUriNETWORK: string;
 
     /**
      * @since 7.3.0
+     * @default settings://applications/permissions
      */
     const SettingsUriPERMISSIONS: string;
 
     /**
      * @since 7.3.0
+     * @default settings://notifications
      */
     const SettingsUriNOTIFICATIONS: string;
 
     /**
      * @since 7.3.0
+     * @default settings://sound/input
      */
     const SettingsUriSOUND_INPUT: string;
 
     /**
      * @since 7.3.0
+     * @default settings://input/keyboard/shortcuts/custom
      */
     const SettingsUriSHORTCUTS: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default accent
      */
     const STYLE_CLASS_ACCENT: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default back-button
      */
     const STYLE_CLASS_BACK_BUTTON: string;
 
     /**
      * @since 7.1.0
+     * @default background
      */
     const STYLE_CLASS_BACKGROUND: string;
 
+    /**
+     * @default badge
+     */
     const STYLE_CLASS_BADGE: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default card
      */
     const STYLE_CLASS_CARD: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default checkerboard
      */
     const STYLE_CLASS_CHECKERBOARD: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default circular
      */
     const STYLE_CLASS_CIRCULAR: string;
 
+    /**
+     * @default color-button
+     */
     const STYLE_CLASS_COLOR_BUTTON: string;
 
+    /**
+     * @default default-decoration
+     */
     const STYLE_CLASS_DEFAULT_DECORATION: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default destructive-action
      */
     const STYLE_CLASS_DESTRUCTIVE_ACTION: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default dialog-content-area
      */
     const STYLE_CLASS_DIALOG_CONTENT_AREA: string;
 
     /**
      * @since 7.1.0
      * @deprecated since 7.7.0
+     * @default frame
      */
     const STYLE_CLASS_FRAME: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default title-1
      */
     const STYLE_CLASS_H1_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default title-2
      */
     const STYLE_CLASS_H2_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default title-3
      */
     const STYLE_CLASS_H3_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default title-4
      */
     const STYLE_CLASS_H4_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default keycap
      */
     const STYLE_CLASS_KEYCAP: string;
 
+    /**
+     * @default large-icons
+     */
     const STYLE_CLASS_LARGE_ICONS: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default mode-switch
      */
     const STYLE_CLASS_MODE_SWITCH: string;
 
+    /**
+     * @default osd
+     */
     const STYLE_CLASS_OSD: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default rounded
      */
     const STYLE_CLASS_ROUNDED: string;
 
     /**
      * @since 7.1.0
+     * @default sidebar
      */
     const STYLE_CLASS_SIDEBAR: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default small-label
      */
     const STYLE_CLASS_SMALL_LABEL: string;
 
     /**
      * @since 7.5.0
      * @deprecated since 7.7.0
+     * @default success
      */
     const STYLE_CLASS_SUCCESS: string;
 
+    /**
+     * @default terminal
+     */
     const STYLE_CLASS_TERMINAL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default title
      */
     const STYLE_CLASS_TITLE_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default warmth
      */
     const STYLE_CLASS_WARMTH: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default temperature
      */
     const STYLE_CLASS_TEMPERATURE: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default linked
      */
     const STYLE_CLASS_LINKED: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default menu
      */
     const STYLE_CLASS_MENU: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default menuitem
      */
     const STYLE_CLASS_MENUITEM: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default dim-label
      */
     const STYLE_CLASS_DIM_LABEL: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default error
      */
     const STYLE_CLASS_ERROR: string;
 
+    /**
+     * @default flat
+     */
     const STYLE_CLASS_FLAT: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default message
      */
     const STYLE_CLASS_MESSAGE_DIALOG: string;
 
     /**
      * @since 7.1.0
      * @deprecated since 7.7.0
+     * @default rich-list
      */
     const STYLE_CLASS_RICH_LIST: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default suggested-action
      */
     const STYLE_CLASS_SUGGESTED_ACTION: string;
 
+    /**
+     * @default view
+     */
     const STYLE_CLASS_VIEW: string;
 
     /**
      * @deprecated since 7.7.0
+     * @default warning
      */
     const STYLE_CLASS_WARNING: string;
 
+    /**
+     * @default 200
+     */
     const TRANSITION_DURATION_CLOSE: number;
 
+    /**
+     * @default 100
+     */
     const TRANSITION_DURATION_IN_PLACE: number;
 
+    /**
+     * @default 250
+     */
     const TRANSITION_DURATION_OPEN: number;
 
+    /**
+     * @default <span weight="600" size="smaller" alpha="75%">%s</span>
+     */
     const TOOLTIP_SECONDARY_TEXT_MARKUP: string;
 
     /**
@@ -477,6 +564,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -497,6 +585,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -517,6 +606,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -537,6 +627,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -3807,7 +3898,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            dismissed: (arg0: ToastDismissReason) => void;
+            dismissed: (reason: ToastDismissReason) => void;
             /**
              * @signal
              */
@@ -4482,11 +4573,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         /**
          * @param file 
+         * @throws GLib.Error
          */
         execute_with_file(file: Gio.File): void;
 
         /**
          * @param files 
+         * @throws GLib.Error
          */
         execute_with_files(files: Gio.File[]): void;
     }

@@ -45,10 +45,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum BtrfsTech {
-        FS,
-        MULTI_DEV,
-        SUBVOL,
-        SNAPSHOT,
+        FS = 0,
+        MULTI_DEV = 1,
+        SUBVOL = 2,
+        SNAPSHOT = 3,
     }
 
 
@@ -104,11 +104,11 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum CryptoKeyslotContextType {
-        NONE,
-        PASSPHRASE,
-        KEYFILE,
-        KEYRING,
-        VOLUME_KEY,
+        NONE = 0,
+        PASSPHRASE = 1,
+        KEYFILE = 2,
+        KEYRING = 3,
+        VOLUME_KEY = 4,
     }
 
 
@@ -120,20 +120,20 @@ export namespace BlockDev {
          * used for unknown/unsupported hardware encryption or when
          *                                        error was detected when getting the information
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * hardware encryption is not configured on this device
          */
-        SW_ONLY,
+        SW_ONLY = 1,
         /**
          * only OPAL hardware encryption is configured on this device
          */
-        OPAL_HW_ONLY,
+        OPAL_HW_ONLY = 2,
         /**
          * both OPAL hardware encryption and software encryption
          *                                               (using LUKS/dm-crypt) is configured on this device
          */
-        OPAL_HW_AND_SW,
+        OPAL_HW_AND_SW = 3,
     }
 
 
@@ -141,8 +141,8 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum CryptoLUKSVersion {
-        LUKS1,
-        LUKS2,
+        LUKS1 = 0,
+        LUKS2 = 1,
     }
 
 
@@ -150,14 +150,14 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum CryptoTech {
-        LUKS,
-        TRUECRYPT,
-        ESCROW,
-        INTEGRITY,
-        BITLK,
-        KEYRING,
-        FVAULT2,
-        SED_OPAL,
+        LUKS = 0,
+        TRUECRYPT = 1,
+        ESCROW = 2,
+        INTEGRITY = 3,
+        BITLK = 4,
+        KEYRING = 5,
+        FVAULT2 = 6,
+        SED_OPAL = 7,
     }
 
 
@@ -193,7 +193,7 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum DMTech {
-        DM_TECH_MAP,
+        DM_TECH_MAP = 0,
     }
 
 
@@ -239,19 +239,19 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum FSTech {
-        GENERIC,
-        MOUNT,
-        EXT2,
-        EXT3,
-        EXT4,
-        XFS,
-        VFAT,
-        NTFS,
-        F2FS,
-        NILFS2,
-        EXFAT,
-        BTRFS,
-        UDF,
+        GENERIC = 0,
+        MOUNT = 1,
+        EXT2 = 2,
+        EXT3 = 3,
+        EXT4 = 4,
+        XFS = 5,
+        VFAT = 6,
+        NTFS = 7,
+        F2FS = 8,
+        NILFS2 = 9,
+        EXFAT = 10,
+        BTRFS = 11,
+        UDF = 12,
     }
 
 
@@ -277,9 +277,9 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMCacheMode {
-        UNKNOWN,
-        WRITETHROUGH,
-        WRITEBACK,
+        UNKNOWN = 0,
+        WRITETHROUGH = 1,
+        WRITEBACK = 2,
     }
 
 
@@ -321,20 +321,20 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMTech {
-        BASIC,
-        BASIC_SNAP,
-        THIN,
-        CACHE,
-        CALCS,
-        THIN_CALCS,
-        CACHE_CALCS,
-        GLOB_CONF,
-        VDO,
-        WRITECACHE,
-        DEVICES,
-        SHARED,
-        CONFIG,
-        VG_CFG_BACKUP_RESTORE,
+        BASIC = 0,
+        BASIC_SNAP = 1,
+        THIN = 2,
+        CACHE = 3,
+        CALCS = 4,
+        THIN_CALCS = 5,
+        CACHE_CALCS = 6,
+        GLOB_CONF = 7,
+        VDO = 8,
+        WRITECACHE = 9,
+        DEVICES = 10,
+        SHARED = 11,
+        CONFIG = 12,
+        VG_CFG_BACKUP_RESTORE = 13,
     }
 
 
@@ -342,9 +342,9 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMVDOCompressionState {
-        UNKNOWN,
-        ONLINE,
-        OFFLINE,
+        UNKNOWN = 0,
+        ONLINE = 1,
+        OFFLINE = 2,
     }
 
 
@@ -352,13 +352,13 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMVDOIndexState {
-        UNKNOWN,
-        ERROR,
-        CLOSED,
-        OPENING,
-        CLOSING,
-        OFFLINE,
-        ONLINE,
+        UNKNOWN = 0,
+        ERROR = 1,
+        CLOSED = 2,
+        OPENING = 3,
+        CLOSING = 4,
+        OFFLINE = 5,
+        ONLINE = 6,
     }
 
 
@@ -366,10 +366,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMVDOOperatingMode {
-        UNKNOWN,
-        RECOVERING,
-        READ_ONLY,
-        NORMAL,
+        UNKNOWN = 0,
+        RECOVERING = 1,
+        READ_ONLY = 2,
+        NORMAL = 3,
     }
 
 
@@ -377,10 +377,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LVMVDOWritePolicy {
-        UNKNOWN,
-        AUTO,
-        SYNC,
-        ASYNC,
+        UNKNOWN = 0,
+        AUTO = 1,
+        SYNC = 2,
+        ASYNC = 3,
     }
 
 
@@ -406,7 +406,7 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum LoopTech {
-        LOOP_TECH_LOOP,
+        LOOP_TECH_LOOP = 0,
     }
 
 
@@ -438,7 +438,7 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum MDTech {
-        MD_TECH_MDRAID,
+        MD_TECH_MDRAID = 0,
     }
 
 
@@ -468,8 +468,8 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum MpathTech {
-        BASE,
-        FRIENDLY_NAMES,
+        BASE = 0,
+        FRIENDLY_NAMES = 1,
     }
 
 
@@ -499,13 +499,13 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVDIMMNamespaceMode {
-        RAW,
-        SECTOR,
-        MEMORY,
-        DAX,
-        FSDAX,
-        DEVDAX,
-        UNKNOWN,
+        RAW = 0,
+        SECTOR = 1,
+        MEMORY = 2,
+        DAX = 3,
+        FSDAX = 4,
+        DEVDAX = 5,
+        UNKNOWN = 6,
     }
 
 
@@ -513,7 +513,7 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVDIMMTech {
-        NVDIMM_TECH_NAMESPACE,
+        NVDIMM_TECH_NAMESPACE = 0,
     }
 
 
@@ -521,10 +521,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMEControllerType {
-        UNKNOWN,
-        IO,
-        DISCOVERY,
-        ADMIN,
+        UNKNOWN = 0,
+        IO = 1,
+        DISCOVERY = 2,
+        ADMIN = 3,
     }
 
 
@@ -580,9 +580,9 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMEFormatSecureErase {
-        NONE,
-        USER_DATA,
-        CRYPTO,
+        NONE = 0,
+        USER_DATA = 1,
+        CRYPTO = 2,
     }
 
 
@@ -590,11 +590,11 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMELBAFormatRelativePerformance {
-        UNKNOWN,
-        BEST,
-        BETTER,
-        GOOD,
-        DEGRADED,
+        UNKNOWN = 0,
+        BEST = 1,
+        BETTER = 2,
+        GOOD = 3,
+        DEGRADED = 4,
     }
 
 
@@ -602,10 +602,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMESanitizeAction {
-        EXIT_FAILURE,
-        BLOCK_ERASE,
-        OVERWRITE,
-        CRYPTO_ERASE,
+        EXIT_FAILURE = 0,
+        BLOCK_ERASE = 1,
+        OVERWRITE = 2,
+        CRYPTO_ERASE = 3,
     }
 
 
@@ -613,12 +613,12 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMESanitizeStatus {
-        NEVER_SANITIZED,
-        IN_PROGRESS,
-        IN_PROGESS,
-        SUCCESS,
-        SUCCESS_NO_DEALLOC,
-        FAILED,
+        NEVER_SANITIZED = 0,
+        IN_PROGRESS = 1,
+        IN_PROGESS = 1,
+        SUCCESS = 2,
+        SUCCESS_NO_DEALLOC = 3,
+        FAILED = 4,
     }
 
 
@@ -626,11 +626,11 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMESelfTestAction {
-        NOT_RUNNING,
-        SHORT,
-        EXTENDED,
-        VENDOR_SPECIFIC,
-        ABORT,
+        NOT_RUNNING = 0,
+        SHORT = 1,
+        EXTENDED = 2,
+        VENDOR_SPECIFIC = 3,
+        ABORT = 4,
     }
 
 
@@ -638,16 +638,16 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMESelfTestResult {
-        NO_ERROR,
-        ABORTED,
-        CTRL_RESET,
-        NS_REMOVED,
-        ABORTED_FORMAT,
-        FATAL_ERROR,
-        UNKNOWN_SEG_FAIL,
-        KNOWN_SEG_FAIL,
-        ABORTED_UNKNOWN,
-        ABORTED_SANITIZE,
+        NO_ERROR = 0,
+        ABORTED = 1,
+        CTRL_RESET = 2,
+        NS_REMOVED = 3,
+        ABORTED_FORMAT = 4,
+        FATAL_ERROR = 5,
+        UNKNOWN_SEG_FAIL = 6,
+        KNOWN_SEG_FAIL = 7,
+        ABORTED_UNKNOWN = 8,
+        ABORTED_SANITIZE = 9,
     }
 
 
@@ -655,8 +655,8 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMETech {
-        NVME,
-        FABRICS,
+        NVME = 0,
+        FABRICS = 1,
     }
 
 
@@ -664,11 +664,11 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum NVMETransportType {
-        UNSPECIFIED,
-        RDMA,
-        FC,
-        TCP,
-        LOOP,
+        UNSPECIFIED = 0,
+        RDMA = 1,
+        FC = 2,
+        TCP = 3,
+        LOOP = 254,
     }
 
 
@@ -676,9 +676,9 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum PartAlign {
-        NONE,
-        MINIMAL,
-        OPTIMAL,
+        NONE = 0,
+        MINIMAL = 1,
+        OPTIMAL = 2,
     }
 
 
@@ -706,9 +706,9 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum PartTableType {
-        MSDOS,
-        GPT,
-        UNDEF,
+        MSDOS = 0,
+        GPT = 1,
+        UNDEF = 2,
     }
 
 
@@ -716,8 +716,8 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum PartTech {
-        MBR,
-        GPT,
+        MBR = 0,
+        GPT = 1,
     }
 
 
@@ -725,12 +725,12 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum PartType {
-        NORMAL,
-        LOGICAL,
-        EXTENDED,
-        FREESPACE,
-        METADATA,
-        PROTECTED,
+        NORMAL = 0,
+        LOGICAL = 1,
+        EXTENDED = 2,
+        FREESPACE = 4,
+        METADATA = 8,
+        PROTECTED = 16,
     }
 
 
@@ -738,10 +738,10 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum PartTypeReq {
-        NORMAL,
-        LOGICAL,
-        EXTENDED,
-        NEXT,
+        NORMAL = 0,
+        LOGICAL = 1,
+        EXTENDED = 2,
+        NEXT = 4,
     }
 
 
@@ -749,21 +749,21 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum Plugin {
-        LVM,
-        BTRFS,
-        SWAP,
-        LOOP,
-        CRYPTO,
-        MPATH,
-        DM,
-        MDRAID,
-        S390,
-        PART,
-        FS,
-        NVDIMM,
-        NVME,
-        SMART,
-        UNDEF,
+        LVM = 0,
+        BTRFS = 1,
+        SWAP = 2,
+        LOOP = 3,
+        CRYPTO = 4,
+        MPATH = 5,
+        DM = 6,
+        MDRAID = 7,
+        S390 = 8,
+        PART = 9,
+        FS = 10,
+        NVDIMM = 11,
+        NVME = 12,
+        SMART = 13,
+        UNDEF = 14,
     }
 
 
@@ -771,13 +771,13 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartATAAttributeFlag {
-        PREFAILURE,
-        ONLINE,
-        PERFORMANCE,
-        ERROR_RATE,
-        EVENT_COUNT,
-        SELF_PRESERVING,
-        OTHER,
+        PREFAILURE = 1,
+        ONLINE = 2,
+        PERFORMANCE = 4,
+        ERROR_RATE = 8,
+        EVENT_COUNT = 16,
+        SELF_PRESERVING = 32,
+        OTHER = 65472,
     }
 
 
@@ -785,14 +785,14 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartATAAttributeUnit {
-        UNKNOWN,
-        NONE,
-        MSECONDS,
-        SECTORS,
-        MKELVIN,
-        SMALL_PERCENT,
-        PERCENT,
-        MB,
+        UNKNOWN = 0,
+        NONE = 1,
+        MSECONDS = 2,
+        SECTORS = 3,
+        MKELVIN = 4,
+        SMALL_PERCENT = 5,
+        PERCENT = 6,
+        MB = 7,
     }
 
 
@@ -800,13 +800,13 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartATAOfflineDataCollectionCapabilities {
-        NOT_SUPPORTED,
-        EXEC_OFFLINE_IMMEDIATE,
-        OFFLINE_ABORT,
-        OFFLINE_SURFACE_SCAN,
-        SELF_TEST,
-        CONVEYANCE_SELF_TEST,
-        SELECTIVE_SELF_TEST,
+        NOT_SUPPORTED = 0,
+        EXEC_OFFLINE_IMMEDIATE = 1,
+        OFFLINE_ABORT = 4,
+        OFFLINE_SURFACE_SCAN = 8,
+        SELF_TEST = 16,
+        CONVEYANCE_SELF_TEST = 32,
+        SELECTIVE_SELF_TEST = 64,
     }
 
 
@@ -814,14 +814,14 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartATAOfflineDataCollectionStatus {
-        NEVER_STARTED,
-        NO_ERROR,
-        IN_PROGRESS,
-        SUSPENDED_INTR,
-        ABORTED_INTR,
-        ABORTED_ERROR,
-        VENDOR_SPECIFIC,
-        RESERVED,
+        NEVER_STARTED = 0,
+        NO_ERROR = 2,
+        IN_PROGRESS = 3,
+        SUSPENDED_INTR = 4,
+        ABORTED_INTR = 5,
+        ABORTED_ERROR = 6,
+        VENDOR_SPECIFIC = 64,
+        RESERVED = 63,
     }
 
 
@@ -829,16 +829,16 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartATASelfTestStatus {
-        COMPLETED_NO_ERROR,
-        ABORTED_HOST,
-        INTR_HOST_RESET,
-        ERROR_FATAL,
-        ERROR_UNKNOWN,
-        ERROR_ELECTRICAL,
-        ERROR_SERVO,
-        ERROR_READ,
-        ERROR_HANDLING,
-        IN_PROGRESS,
+        COMPLETED_NO_ERROR = 0,
+        ABORTED_HOST = 1,
+        INTR_HOST_RESET = 2,
+        ERROR_FATAL = 3,
+        ERROR_UNKNOWN = 4,
+        ERROR_ELECTRICAL = 5,
+        ERROR_SERVO = 6,
+        ERROR_READ = 7,
+        ERROR_HANDLING = 8,
+        IN_PROGRESS = 15,
     }
 
 
@@ -864,15 +864,15 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartSCSIBackgroundScanStatus {
-        NO_SCANS_ACTIVE,
-        SCAN_ACTIVE,
-        PRESCAN_ACTIVE,
-        HALTED_ERROR_FATAL,
-        HALTED_PATTERN_VENDOR_SPECIFIC,
-        HALTED_ERROR_PLIST,
-        HALTED_VENDOR_SPECIFIC,
-        HALTED_TEMPERATURE,
-        BMS_TIMER,
+        NO_SCANS_ACTIVE = 0,
+        SCAN_ACTIVE = 1,
+        PRESCAN_ACTIVE = 2,
+        HALTED_ERROR_FATAL = 3,
+        HALTED_PATTERN_VENDOR_SPECIFIC = 4,
+        HALTED_ERROR_PLIST = 5,
+        HALTED_VENDOR_SPECIFIC = 6,
+        HALTED_TEMPERATURE = 7,
+        BMS_TIMER = 8,
     }
 
 
@@ -880,40 +880,40 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartSCSIInformationalException {
-        NONE,
-        ABORTED_COMMAND,
-        TEMPERATURE_EXCEEDED,
-        ENCLOSURE_DEGRADED,
-        BACKGROUND_SELFTEST_FAILED,
-        BACKGROUND_PRESCAN_MEDIUM_ERROR,
-        BACKGROUND_SCAN_MEDIUM_ERROR,
-        NV_CACHE_VOLATILE,
-        NV_CACHE_DEGRADED_POWER,
-        POWER_LOSS_EXPECTED,
-        STATISTICS_NOTIFICATION,
-        HIGH_CRITICAL_TEMP,
-        LOW_CRITICAL_TEMP,
-        HIGH_OPERATING_TEMP,
-        LOW_OPERATING_TEMP,
-        HIGH_CRITICAL_HUMIDITY,
-        LOW_CRITICAL_HUMIDITY,
-        HIGH_OPERATING_HUMIDITY,
-        LOW_OPERATING_HUMIDITY,
-        MICROCODE_SECURITY_RISK,
-        MICROCODE_SIGNATURE_VALIDATION_FAILURE,
-        PHYSICAL_ELEMENT_STATUS_CHANGE,
-        FAILURE_PREDICTION_THRESH,
-        MEDIA_FAILURE_PREDICTION_THRESH,
-        LOGICAL_UNIT_FAILURE_PREDICTION_THRESH,
-        SPARE_EXHAUSTION_PREDICTION_THRESH,
-        HARDWARE_IMPENDING_FAILURE,
-        CONTROLLER_IMPENDING_FAILURE,
-        DATA_CHANNEL_IMPENDING_FAILURE,
-        SERVO_IMPENDING_FAILURE,
-        SPINDLE_IMPENDING_FAILURE,
-        FIRMWARE_IMPENDING_FAILURE,
-        MEDIA_ENDURANCE_LIMIT,
-        UNSPECIFIED,
+        NONE = 0,
+        ABORTED_COMMAND = 1,
+        TEMPERATURE_EXCEEDED = 2,
+        ENCLOSURE_DEGRADED = 3,
+        BACKGROUND_SELFTEST_FAILED = 4,
+        BACKGROUND_PRESCAN_MEDIUM_ERROR = 5,
+        BACKGROUND_SCAN_MEDIUM_ERROR = 6,
+        NV_CACHE_VOLATILE = 7,
+        NV_CACHE_DEGRADED_POWER = 8,
+        POWER_LOSS_EXPECTED = 9,
+        STATISTICS_NOTIFICATION = 10,
+        HIGH_CRITICAL_TEMP = 11,
+        LOW_CRITICAL_TEMP = 12,
+        HIGH_OPERATING_TEMP = 13,
+        LOW_OPERATING_TEMP = 14,
+        HIGH_CRITICAL_HUMIDITY = 15,
+        LOW_CRITICAL_HUMIDITY = 16,
+        HIGH_OPERATING_HUMIDITY = 17,
+        LOW_OPERATING_HUMIDITY = 18,
+        MICROCODE_SECURITY_RISK = 19,
+        MICROCODE_SIGNATURE_VALIDATION_FAILURE = 20,
+        PHYSICAL_ELEMENT_STATUS_CHANGE = 21,
+        FAILURE_PREDICTION_THRESH = 22,
+        MEDIA_FAILURE_PREDICTION_THRESH = 23,
+        LOGICAL_UNIT_FAILURE_PREDICTION_THRESH = 24,
+        SPARE_EXHAUSTION_PREDICTION_THRESH = 25,
+        HARDWARE_IMPENDING_FAILURE = 26,
+        CONTROLLER_IMPENDING_FAILURE = 27,
+        DATA_CHANNEL_IMPENDING_FAILURE = 28,
+        SERVO_IMPENDING_FAILURE = 29,
+        SPINDLE_IMPENDING_FAILURE = 30,
+        FIRMWARE_IMPENDING_FAILURE = 31,
+        MEDIA_ENDURANCE_LIMIT = 32,
+        UNSPECIFIED = 33,
     }
 
 
@@ -921,11 +921,11 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartSelfTestOp {
-        ABORT,
-        OFFLINE,
-        SHORT,
-        LONG,
-        CONVEYANCE,
+        ABORT = 0,
+        OFFLINE = 1,
+        SHORT = 2,
+        LONG = 3,
+        CONVEYANCE = 4,
     }
 
 
@@ -933,8 +933,8 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SmartTech {
-        ATA,
-        SCSI,
+        ATA = 0,
+        SCSI = 1,
     }
 
 
@@ -972,7 +972,7 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum SwapTech {
-        SWAP_TECH_SWAP,
+        SWAP_TECH_SWAP = 0,
     }
 
 
@@ -1062,34 +1062,70 @@ export namespace BlockDev {
      * @gir-type Enum
      */
     enum UtilsProgStatus {
-        STARTED,
-        PROGRESS,
-        FINISHED,
+        STARTED = 0,
+        PROGRESS = 1,
+        FINISHED = 2,
     }
 
 
+    /**
+     * @default 5
+     */
     const BTRFS_MAIN_VOLUME_ID: number;
 
+    /**
+     * @default 134217728
+     */
     const BTRFS_MIN_MEMBER_SIZE: number;
 
+    /**
+     * @default 524288
+     */
     const MD_CHUNK_SIZE: number;
 
+    /**
+     * @default 2097152
+     */
     const MD_SUPERBLOCK_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const UTILS_LOG_ALERT: number;
 
+    /**
+     * @default 2
+     */
     const UTILS_LOG_CRIT: number;
 
+    /**
+     * @default 7
+     */
     const UTILS_LOG_DEBUG: number;
 
+    /**
+     * @default 0
+     */
     const UTILS_LOG_EMERG: number;
 
+    /**
+     * @default 3
+     */
     const UTILS_LOG_ERR: number;
 
+    /**
+     * @default 6
+     */
     const UTILS_LOG_INFO: number;
 
+    /**
+     * @default 5
+     */
     const UTILS_LOG_NOTICE: number;
 
+    /**
+     * @default 4
+     */
     const UTILS_LOG_WARNING: number;
 
     /**
@@ -1097,6 +1133,7 @@ export namespace BlockDev {
      * @param device a device to add to the btrfs volume
      * @param extra extra options for the addition (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `device` was successfully added to the `mountpoint` btrfs volume or not Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_add_device(mountpoint: string, device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1104,6 +1141,7 @@ export namespace BlockDev {
      * @param mountpoint a mountpoint of the btrfs filesystem to change label of
      * @param label new label for the filesystem
      * @returns whether the label of the `mountpoint` filesystem was successfully set to `label` or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_change_label(mountpoint: string, label: string): boolean;
 
@@ -1111,6 +1149,7 @@ export namespace BlockDev {
      * @param device a device that is part of the checked btrfs volume
      * @param extra extra options for the check (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_check(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1120,6 +1159,7 @@ export namespace BlockDev {
      * @param ro whether the snapshot should be read-only
      * @param extra extra options for the snapshot creation (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `dest` snapshot of `source` was successfully created or not Tech category: {@link BlockDev.BtrfsTech.SNAPSHOT}-{@link BlockDev.BtrfsTechMode.CREATE}
+     * @throws GLib.Error
      */
     function btrfs_create_snapshot(source: string, dest: string, ro: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -1128,6 +1168,7 @@ export namespace BlockDev {
      * @param name name of the subvolume
      * @param extra extra options for the subvolume creation (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint`/`name` subvolume was successfully created or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.CREATE}
+     * @throws GLib.Error
      */
     function btrfs_create_subvolume(mountpoint: string, name: string, extra: ExtraArg[] | null): boolean;
 
@@ -1138,6 +1179,7 @@ export namespace BlockDev {
      * @param md_level RAID level for the metadata or `null` to use the default
      * @param extra extra options for the volume creation (right now                                                 passed to the 'mkfs.btrfs' utility)
      * @returns whether the new btrfs volume was created from `devices` or not See mkfs.btrfs(8) for details about `data_level`, `md_level` and btrfs in general. Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.CREATE}
+     * @throws GLib.Error
      */
     function btrfs_create_volume(devices: string[], label: string | null, data_level: string | null, md_level: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -1146,6 +1188,7 @@ export namespace BlockDev {
      * @param name name of the subvolume
      * @param extra extra options for the subvolume deletion (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint`/`name` subvolume was successfully deleted or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE}
+     * @throws GLib.Error
      */
     function btrfs_delete_subvolume(mountpoint: string, name: string, extra: ExtraArg[] | null): boolean;
 
@@ -1155,12 +1198,14 @@ export namespace BlockDev {
      * @param recursive whether to delete child subvolumes recursively
      * @param extra extra options for the subvolume deletion (right now                                               passed to the 'btrfs' utility)
      * @returns whether the `mountpoint`/`name` subvolume was successfully deleted or not If `recursive` is `true`, all child subvolumes will be deleted before deleting the subvolume itself. This requires btrfs-progs >= 6.12. Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE} if `recursive` is `false`,                {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.DELETE_RECURSIVE} if `recursive` is `true`
+     * @throws GLib.Error
      */
     function btrfs_delete_subvolume_recursive(mountpoint: string, name: string, recursive: boolean, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param mountpoint a mountpoint of the queried btrfs volume
      * @returns device stats for each device that is part of the btrfs volume mounted at `mountpoint` or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_device_stats(mountpoint: string): BtrfsDeviceStats[];
 
@@ -1169,12 +1214,14 @@ export namespace BlockDev {
     /**
      * @param device a device that is part of the queried btrfs volume
      * @returns information about the `device`'s volume's filesystem or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_filesystem_info(device: string): BtrfsFilesystemInfo;
 
     /**
      * @param mountpoint mountpoint of the volume to get the default subvolume ID of
      * @returns ID of the `mountpoint` volume's default subvolume. If 0,          `error` may be set to indicate error Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_get_default_subvolume_id(mountpoint: string): number;
 
@@ -1182,12 +1229,14 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.BtrfsTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function btrfs_is_tech_avail(tech: BtrfsTech, mode: bigint | number): boolean;
 
     /**
      * @param device a device that is part of the queried btrfs volume
      * @returns information about the devices that are part of the btrfs volume containing `device` or `null` in case of error Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_list_devices(device: string): BtrfsDeviceInfo[];
 
@@ -1195,6 +1244,7 @@ export namespace BlockDev {
      * @param mountpoint a mountpoint of the queried btrfs volume
      * @param snapshots_only whether to list only snapshot subvolumes or not
      * @returns information about the subvolumes that are part of the btrfs volume mounted at `mountpoint` or `null` in case of error The subvolumes are sorted in a way that no child subvolume appears in the list before its parent (sub)volume. Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.QUERY}
+     * @throws GLib.Error
      */
     function btrfs_list_subvolumes(mountpoint: string, snapshots_only: boolean): BtrfsSubvolumeInfo[];
 
@@ -1205,6 +1255,7 @@ export namespace BlockDev {
      * @param md_level RAID level for the metadata or `null` to use the default
      * @param extra extra options for the volume creation (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the new btrfs volume was created from `devices` or not See mkfs.btrfs(8) for details about `data_level`, `md_level` and btrfs in general. Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.CREATE}
+     * @throws GLib.Error
      */
     function btrfs_mkfs(devices: string[], label: string | null, data_level: string | null, md_level: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -1213,6 +1264,7 @@ export namespace BlockDev {
      * @param device a device to remove from the btrfs volume
      * @param extra extra options for the removal (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `device` was successfully removed from the `mountpoint` btrfs volume or not Tech category: {@link BlockDev.BtrfsTech.MULTI_DEV}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_remove_device(mountpoint: string, device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1220,6 +1272,7 @@ export namespace BlockDev {
      * @param device a device that is part of the to be repaired btrfs volume
      * @param extra extra options for the repair (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked and repaired or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1228,6 +1281,7 @@ export namespace BlockDev {
      * @param size requested new size
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint` filesystem was successfully resized to `size` or not Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_resize(mountpoint: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -1236,12 +1290,14 @@ export namespace BlockDev {
      * @param subvol_id ID of the subvolume to be set as the default subvolume
      * @param extra extra options for the setting (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mountpoint` volume's default subvolume was correctly set          to `subvol_id` or not Tech category: {@link BlockDev.BtrfsTech.SUBVOL}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function btrfs_set_default_subvolume(mountpoint: string, subvol_id: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param bitlk_device BITLK device to close
      * @returns whether the given `bitlk_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_bitlk_close(bitlk_device: string): boolean;
 
@@ -1250,6 +1306,7 @@ export namespace BlockDev {
      * 
      * Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.QUERY}
      * @param device a device to get information about
+     * @throws GLib.Error
      */
     function crypto_bitlk_info(device: string): CryptoBITLKInfo;
 
@@ -1260,6 +1317,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this BITLK device
      * @param read_only whether to open as read-only or not (meaning read-write)
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_bitlk_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
 
@@ -1270,12 +1328,14 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this BITLK device
      * @param flags activation flags for the BITLK device
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.BITLK}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_bitlk_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
 
     /**
      * @param device the queried device
      * @returns `true` if the given `device` is a LUKS device or `false` if not or failed to determine (the `error`) is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_device_is_luks(device: string): boolean;
 
@@ -1293,6 +1353,7 @@ export namespace BlockDev {
      * For the reasoning, see: https://gitlab.tails.boum.org/tails/blueprints/-/wikis/veracrypt/#detecting-veracrypt-volumes
      * @param device the queried device
      * @returns `true` if the given `device` seems to be encrypted or `false` if not or failed to determine (the `error`) is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_device_seems_encrypted(device: string): boolean;
 
@@ -1305,12 +1366,14 @@ export namespace BlockDev {
      * @param directory directory to put escrow data into
      * @param backup_passphrase backup passphrase for the device or `null`
      * @returns whether the escrow data was successfully created for `device` or not Tech category: {@link BlockDev.CryptoTech.ESCROW}-{@link BlockDev.CryptoTechMode.CREATE}
+     * @throws GLib.Error
      */
     function crypto_escrow_device(device: string, passphrase: string, cert_data: number[], directory: string, backup_passphrase: string | null): boolean;
 
     /**
      * @param fvault2_device FVAULT2 device to close
      * @returns whether the given `fvault2_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.FVAULT2}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_fvault2_close(fvault2_device: string): boolean;
 
@@ -1321,6 +1384,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this FVAULT2 volume
      * @param read_only whether to open as read-only or not (meaning read-write)
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.FVAULT2}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_fvault2_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
 
@@ -1331,17 +1395,20 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this FVAULT2 volume
      * @param flags activation flags for the FVAULT2 device
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.FVAULT2}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_fvault2_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
 
     /**
      * @returns A newly generated `BD_CRYPTO_BACKUP_PASSPHRASE_LENGTH`-long passphrase. See `BD_CRYPTO_BACKUP_PASSPHRASE_CHARSET` for the definition of the charset used for the passphrase. Tech category: always available
+     * @throws GLib.Error
      */
     function crypto_generate_backup_passphrase(): string;
 
     /**
      * @param integrity_device integrity device to close
      * @returns whether the given `integrity_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.INTEGRITY}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_integrity_close(integrity_device: string): boolean;
 
@@ -1355,12 +1422,14 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this device
      * @param extra extra arguments for integrity format creation
      * @returns whether the given `device` was successfully formatted as integrity or not (the `error`) contains the error in such cases) Tech category: {@link BlockDev.CryptoTech.INTEGRITY}-{@link BlockDev.CryptoTechMode.CREATE}
+     * @throws GLib.Error
      */
     function crypto_integrity_format(device: string, algorithm: string, wipe: boolean, context: CryptoKeyslotContext | null, extra: CryptoIntegrityExtra | null): boolean;
 
     /**
      * @param device a device to get information about
      * @returns information about the `device` or `null` in case of error Tech category: {@link BlockDev.CryptoTech.INTEGRITY}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_integrity_info(device: string): CryptoIntegrityInfo;
 
@@ -1373,6 +1442,7 @@ export namespace BlockDev {
      * @param flags flags for the integrity device activation
      * @param extra extra arguments for integrity open
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.INTEGRITY}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_integrity_open(device: string, name: string, algorithm: string, context: CryptoKeyslotContext | null, flags: CryptoIntegrityOpenFlags, extra: CryptoIntegrityExtra | null): boolean;
 
@@ -1380,6 +1450,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.CryptoTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function crypto_is_tech_avail(tech: CryptoTech, mode: bigint | number): boolean;
 
@@ -1387,6 +1458,7 @@ export namespace BlockDev {
      * @param key_desc kernel keyring key description
      * @param key_data a key to add to kernel keyring (may contain arbitrary binary data)
      * @returns whether the given key was successfully saved to kernel keyring or not Tech category: {@link BlockDev.CryptoTech.KEYRING}-{@link BlockDev.CryptoTechMode.ADD_KEY}
+     * @throws GLib.Error
      */
     function crypto_keyring_add_key(key_desc: string, key_data: Uint8Array | string): boolean;
 
@@ -1396,6 +1468,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) to for this LUKS `device`
      * @param ncontext new key slot context (passphrase/keyfile/token...) to add to this LUKS `device`
      * @returns whether the `ncontext` was successfully added to `device` or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.ADD_KEY}
+     * @throws GLib.Error
      */
     function crypto_luks_add_key(device: string, context: CryptoKeyslotContext, ncontext: CryptoKeyslotContext): boolean;
 
@@ -1405,6 +1478,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) for this LUKS `device`
      * @param ncontext new key slot context (passphrase/keyfile/token...) to add to this LUKS `device`
      * @returns whether the key was successfully changed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.ADD_KEY}&{@link BlockDev.CryptoTechMode.REMOVE_KEY}
+     * @throws GLib.Error
      */
     function crypto_luks_change_key(device: string, context: CryptoKeyslotContext, ncontext: CryptoKeyslotContext): boolean;
 
@@ -1412,12 +1486,14 @@ export namespace BlockDev {
      * @param label label to check
      * @param subsystem subsystem to check
      * @returns whether `label` and `subsystem` are valid for LUKS2 or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function crypto_luks_check_label(label: string | null, subsystem: string | null): boolean;
 
     /**
      * @param luks_device LUKS device to close
      * @returns whether the given `luks_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_luks_close(luks_device: string): boolean;
 
@@ -1425,6 +1501,7 @@ export namespace BlockDev {
      * @param device a LUKS device to convert to a different version of LUKS
      * @param target_version the LUKS version to convert to
      * @returns whether the `device` was converted to `target_version`.          False, if the `device` is already in the `target_version` format. Warning: LUKS header loss is possible. See `bd_crypto_luks_header_backup()` and `bd_crypto_luks_header_restore()` Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_luks_convert(device: string, target_version: CryptoLUKSVersion): boolean;
 
@@ -1443,6 +1520,7 @@ export namespace BlockDev {
      * @param luks_version whether to use LUKS v1 or LUKS v2
      * @param extra extra arguments for LUKS format creation
      * @returns whether the given `device` was successfully formatted as LUKS or not (the `error`) contains the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.CREATE}
+     * @throws GLib.Error
      */
     function crypto_luks_format(device: string, cipher: string | null, key_size: bigint | number, context: CryptoKeyslotContext, min_entropy: bigint | number, luks_version: CryptoLUKSVersion, extra: CryptoLUKSExtra | null): boolean;
 
@@ -1450,6 +1528,7 @@ export namespace BlockDev {
      * @param device device to backup the LUKS header
      * @param backup_file file to save the header backup to
      * @returns whether the given backup of `device` was successfully written to          `backup_file` or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.BACKUP_RESTORE}
+     * @throws GLib.Error
      */
     function crypto_luks_header_backup(device: string, backup_file: string): boolean;
 
@@ -1457,12 +1536,14 @@ export namespace BlockDev {
      * @param device device to restore the LUKS header to
      * @param backup_file existing file with a LUKS header backup
      * @returns whether the given `device` LUKS header was successfully restored          from `backup_file` Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.BACKUP_RESTORE}
+     * @throws GLib.Error
      */
     function crypto_luks_header_restore(device: string, backup_file: string): boolean;
 
     /**
      * @param device a device to get information about
      * @returns information about the `device` or `null` in case of error Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_luks_info(device: string): CryptoLUKSInfo;
 
@@ -1472,6 +1553,7 @@ export namespace BlockDev {
      * @param device device to kill slot on
      * @param slot keyslot to destroy
      * @returns whether the given `slot` was successfully destroyed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.REMOVE_KEY}
+     * @throws GLib.Error
      */
     function crypto_luks_kill_slot(device: string, slot: number): boolean;
 
@@ -1482,6 +1564,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) to open this LUKS `device`
      * @param read_only whether to open as read-only or not (meaning read-write)
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE} Example of using %bd_crypto_luks_open with %BDCryptoKeyslotContext: |[<!-- language="C" --> BDCryptoKeyslotContext *context = NULL; context = bd_crypto_keyslot_context_new_passphrase ("passphrase", 10, NULL); bd_crypto_luks_open ("/dev/vda1", "luks-device", context, FALSE, NULL); ]|
+     * @throws GLib.Error
      */
     function crypto_luks_open(device: string, name: string, context: CryptoKeyslotContext, read_only: boolean): boolean;
 
@@ -1492,6 +1575,7 @@ export namespace BlockDev {
      * @param context key slot context (passphrase/keyfile/token...) to open this LUKS `device`
      * @param flags activation flags for the LUKS device
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE} Example of using %bd_crypto_luks_open_flags with %BDCryptoKeyslotContext: |[<!-- language="C" --> BDCryptoKeyslotContext *context = NULL; context = bd_crypto_keyslot_context_new_passphrase ("passphrase", 10, NULL); bd_crypto_luks_open_flags ("/dev/vda1", "luks-device", context, 0, NULL); ]|
+     * @throws GLib.Error
      */
     function crypto_luks_open_flags(device: string, name: string, context: CryptoKeyslotContext, flags: CryptoOpenFlags): boolean;
 
@@ -1500,6 +1584,7 @@ export namespace BlockDev {
      * @param device device to add new key to
      * @param context key slot context (passphrase/keyfile/token...) to remove from this LUKS `device`
      * @returns whether the key was successfully removed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.REMOVE_KEY}
+     * @throws GLib.Error
      */
     function crypto_luks_remove_key(device: string, context: CryptoKeyslotContext): boolean;
 
@@ -1509,6 +1594,7 @@ export namespace BlockDev {
      * @param size requested size in sectors or 0 to adapt to the backing device
      * @param context key slot context (passphrase/keyfile/token...) for this LUKS `device`
      * @returns whether the `luks_device` was successfully resized or not You need to specify either `context` for LUKS 2 devices that don't have verified key loaded in kernel. For LUKS 1 devices you can set `context` `null`. Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function crypto_luks_resize(luks_device: string, size: bigint | number, context: CryptoKeyslotContext | null): boolean;
 
@@ -1517,6 +1603,7 @@ export namespace BlockDev {
      * @param luks_device LUKS device to resume
      * @param context key slot context (passphrase/keyfile/token...) for `luks_device`
      * @returns whether the given `luks_device` was successfully resumed or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.SUSPEND_RESUME}
+     * @throws GLib.Error
      */
     function crypto_luks_resume(luks_device: string, context: CryptoKeyslotContext): boolean;
 
@@ -1525,6 +1612,7 @@ export namespace BlockDev {
      * @param label label to set
      * @param subsystem subsystem to set
      * @returns whether the given `label` and `subsystem` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_luks_set_label(device: string, label: string | null, subsystem: string | null): boolean;
 
@@ -1533,6 +1621,7 @@ export namespace BlockDev {
      * @param device a LUKS device to set the persistent flags on
      * @param flags flags to set
      * @returns whether the given `flags` were successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_luks_set_persistent_flags(device: string, flags: CryptoLUKSPersistentFlags): boolean;
 
@@ -1540,24 +1629,28 @@ export namespace BlockDev {
      * @param device device to set UUID on
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the given `uuid` was successfully set or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_luks_set_uuid(device: string, uuid: string | null): boolean;
 
     /**
      * @param luks_device the queried LUKS device
      * @returns one of "invalid", "inactive", "active" or "busy" or `null` if failed to determine (`error` is populated with the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_luks_status(luks_device: string): string;
 
     /**
      * @param luks_device LUKS device to suspend
      * @returns whether the given `luks_device` was successfully suspended or not Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.SUSPEND_RESUME}
+     * @throws GLib.Error
      */
     function crypto_luks_suspend(luks_device: string): boolean;
 
     /**
      * @param device a device to get LUKS2 token information about
      * @returns information about tokens on `device` Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_luks_token_info(device: string): CryptoLUKSTokenInfo[];
 
@@ -1578,12 +1671,14 @@ export namespace BlockDev {
      * @param opal_context OPAL admin passphrase
      * @param extra extra arguments for LUKS format creation
      * @returns whether the given `device` was successfully formatted as LUKS HW-OPAL or not (the `error` contains the error in such cases) Tech category: {@link BlockDev.CryptoTech.LUKS}-{@link BlockDev.CryptoTechMode.CREATE}
+     * @throws GLib.Error
      */
     function crypto_opal_format(device: string, cipher: string | null, key_size: bigint | number, context: CryptoKeyslotContext, min_entropy: bigint | number, hw_encryption: CryptoLUKSHWEncryptionType, opal_context: CryptoKeyslotContext, extra: CryptoLUKSExtra | null): boolean;
 
     /**
      * @param device device to check for OPAL support
      * @returns `true` if the given `device` supports OPAL or `false` if not or failed to determine (the `error` is populated with the error in such cases). Tech category: {@link BlockDev.CryptoTech.SED_OPAL}-{@link BlockDev.CryptoTechMode.QUERY}
+     * @throws GLib.Error
      */
     function crypto_opal_is_supported(device: string): boolean;
 
@@ -1591,6 +1686,7 @@ export namespace BlockDev {
      * @param device LUKS HW-OPAL device to run PSID reset on
      * @param context PSID context
      * @returns whether PSI reset on `device` was successful or not. Warning: PSID reset will remove all data from `device`! Supported `context` types for this function: passphrase, key file Tech category: {@link BlockDev.CryptoTech.SED_OPAL}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_opal_reset_device(device: string, context: CryptoKeyslotContext): boolean;
 
@@ -1598,12 +1694,14 @@ export namespace BlockDev {
      * @param device LUKS HW-OPAL device to wipe
      * @param context OPAL admin passphrase context
      * @returns whether `device` was successfully wiped or not. Supported `context` types for this function: passphrase Tech category: {@link BlockDev.CryptoTech.SED_OPAL}-{@link BlockDev.CryptoTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function crypto_opal_wipe_device(device: string, context: CryptoKeyslotContext): boolean;
 
     /**
      * @param tc_device TrueCrypt/VeraCrypt device to close
      * @returns whether the given `tc_device` was successfully closed or not Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_tc_close(tc_device: string): boolean;
 
@@ -1619,6 +1717,7 @@ export namespace BlockDev {
      * @param veracrypt_pim VeraCrypt PIM value (only used if `veracrypt` is `true`)
      * @param read_only whether to open as read-only or not (meaning read-write)
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_tc_open(device: string, name: string, context: CryptoKeyslotContext | null, keyfiles: string[] | null, hidden: boolean, system: boolean, veracrypt: boolean, veracrypt_pim: number, read_only: boolean): boolean;
 
@@ -1634,6 +1733,7 @@ export namespace BlockDev {
      * @param veracrypt_pim VeraCrypt PIM value (only used if `veracrypt` is `true`)
      * @param flags activation flags for the TrueCrypt/VeraCrypt device
      * @returns whether the `device` was successfully opened or not Tech category: {@link BlockDev.CryptoTech.TRUECRYPT}-{@link BlockDev.CryptoTechMode.OPEN_CLOSE}
+     * @throws GLib.Error
      */
     function crypto_tc_open_flags(device: string, name: string, context: CryptoKeyslotContext | null, keyfiles: string[] | null, hidden: boolean, system: boolean, veracrypt: boolean, veracrypt_pim: number, flags: CryptoOpenFlags): boolean;
 
@@ -1643,6 +1743,7 @@ export namespace BlockDev {
      * @param length length of the mapping in sectors
      * @param uuid UUID for the new dev mapper device or `null` if not specified
      * @returns whether the new linear mapping `map_name` was successfully created for the `device` or not Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.CREATE_ACTIVATE}
+     * @throws GLib.Error
      */
     function dm_create_linear(map_name: string, device: string, length: bigint | number, uuid: string | null): boolean;
 
@@ -1651,6 +1752,7 @@ export namespace BlockDev {
     /**
      * @param device_name name of the device
      * @returns subsystem of the given device Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function dm_get_subsystem_from_name(device_name: string): string;
 
@@ -1658,6 +1760,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.DMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function dm_is_tech_avail(tech: DMTech, mode: bigint | number): boolean;
 
@@ -1666,24 +1769,28 @@ export namespace BlockDev {
      * @param live_only whether to go through the live maps only or not
      * @param active_only whether to ignore suspended maps or not
      * @returns whether the given `map_name` exists (and is live if `live_only` is `true` (and is active if `active_only` is `true`)). If `false` is returned, `error` indicates whether error appeared (non-`null`) or not (`null`). Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function dm_map_exists(map_name: string, live_only: boolean, active_only: boolean): boolean;
 
     /**
      * @param dm_node name of the DM node (e.g. "dm-0")
      * @returns map name of the map providing the `dm_node` device or `null` (`error`) contains the error in such cases Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function dm_name_from_node(dm_node: string): string;
 
     /**
      * @param map_name name of the queried DM map
      * @returns DM node name for the `map_name` map or `null` (`error`) contains the error in such cases Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function dm_node_from_name(map_name: string): string;
 
     /**
      * @param map_name name of the map to remove
      * @returns whether the `map_name` map was successfully removed or not Tech category: {@link BlockDev.DMTech.DM_TECH_MAP}-{@link BlockDev.DMTechMode.REMOVE_DEACTIVATE}
+     * @throws GLib.Error
      */
     function dm_remove(map_name: string): boolean;
 
@@ -1705,6 +1812,7 @@ export namespace BlockDev {
      * @param require_plugins `null`-terminated list                 of plugins that should be loaded (if no so_name is specified                 for the plugin, the default is used) or `null` to load all                 plugins
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not either          before or by this call
+     * @throws GLib.Error
      */
     function ensure_init(require_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): boolean;
 
@@ -1718,24 +1826,28 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the check (right now                                                 passed to the 'btrfsck' utility)
      * @returns whether the filesystem was successfully checked or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_btrfs_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the Btrfs file system or not          (reason is provided in `error`) Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: always available
+     * @throws GLib.Error
      */
     function fs_btrfs_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the Btrfs file system or not          (reason is provided in `error`) Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: always available
+     * @throws GLib.Error
      */
     function fs_btrfs_check_uuid(uuid: string): boolean;
 
     /**
      * @param mpoint a mountpoint of the btrfs filesystem to get information about
      * @returns information about the file system on `device` or                           `null` in case of error Note: This function WON'T WORK for multi device btrfs filesystems,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_btrfs_get_info(mpoint: string): FSBtrfsInfo;
 
@@ -1743,6 +1855,7 @@ export namespace BlockDev {
      * @param device the device to create a new btrfs fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.btrfs' utility)
      * @returns whether a new btrfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_btrfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1750,6 +1863,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the filesystem was successfully checked and repaired or not Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_btrfs_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1758,6 +1872,7 @@ export namespace BlockDev {
      * @param new_size requested new size
      * @param extra extra options for the volume resize (right now                                                 passed to the 'btrfs' utility)
      * @returns whether the `mpoint` filesystem was successfully resized to `new_size` or not Note: This function WON'T WORK for multi device btrfs filesystems,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.BtrfsTech.FS}-{@link BlockDev.BtrfsTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function fs_btrfs_resize(mpoint: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -1765,6 +1880,7 @@ export namespace BlockDev {
      * @param mpoint the mount point of the file system to set label for
      * @param label label to set
      * @returns whether the label of Btrfs file system on the `mpoint` was          successfully set or not Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_btrfs_set_label(mpoint: string, label: string): boolean;
 
@@ -1772,6 +1888,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set the UUID (serial number) for
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the Btrfs file system on the `device` was          successfully set or not Note: This function is intended to be used for btrfs filesystem on a single device,       for more complicated setups use the btrfs plugin instead. Tech category: {@link BlockDev.FSTech.BTRFS}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_btrfs_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -1781,6 +1898,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support checking result in errors.
      * @param type the filesystem type to be tested for installed consistency check support
      * @returns whether filesystem check is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_check(type: string): [boolean, string];
 
@@ -1790,6 +1908,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support free space querying result in errors.
      * @param type the filesystem type to be tested for installed free space querying support
      * @returns whether getting filesystem free space is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_get_free_space(type: string): [boolean, string];
 
@@ -1799,6 +1918,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support info querying result in errors.
      * @param type the filesystem type to be tested for info querying support
      * @returns whether getting filesystem info is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_get_info(type: string): [boolean, string];
 
@@ -1808,6 +1928,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support minimum size querying result in errors.
      * @param type the filesystem type to be tested for installed minimum size querying support
      * @returns whether getting filesystem size is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_get_min_size(type: string): [boolean, string];
 
@@ -1817,6 +1938,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support size querying result in errors.
      * @param type the filesystem type to be tested for installed size querying support
      * @returns whether getting filesystem size is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_get_size(type: string): [boolean, string];
 
@@ -1826,6 +1948,7 @@ export namespace BlockDev {
      * Unknown filesystems result in errors.
      * @param type the filesystem type to be tested for installed mkfs support
      * @returns whether filesystem mkfs tool is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_mkfs(type: string): [boolean, FSMkfsOptionsFlags, string];
 
@@ -1835,6 +1958,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support reparing result in errors.
      * @param type the filesystem type to be tested for installed repair support
      * @returns whether filesystem repair is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_repair(type: string): [boolean, string];
 
@@ -1845,6 +1969,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support resizing result in errors.
      * @param type the filesystem type to be tested for installed resize support
      * @returns whether filesystem resize is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_resize(type: string): [boolean, FSResizeFlags, string];
 
@@ -1854,6 +1979,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support setting the label result in errors.
      * @param type the filesystem type to be tested for installed label support
      * @returns whether setting filesystem label is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_set_label(type: string): [boolean, string];
 
@@ -1863,6 +1989,7 @@ export namespace BlockDev {
      * Unknown filesystems or filesystems which do not support setting the UUID result in errors.
      * @param type the filesystem type to be tested for installed UUID support
      * @returns whether setting filesystem UUID is available Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_can_set_uuid(type: string): [boolean, string];
 
@@ -1878,6 +2005,7 @@ export namespace BlockDev {
      * @param device the device the file system of which to check
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` passed the consistency check or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_check(device: string, fstype: string | null): boolean;
 
@@ -1888,6 +2016,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type to check `label` for
      * @param label label to check
      * @returns whether `label` is a valid label for the `fstype` file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_check_label(fstype: string, label: string): boolean;
 
@@ -1898,6 +2027,7 @@ export namespace BlockDev {
      * @param fstype the filesystem type to check `uuid` for
      * @param uuid uuid to check
      * @returns whether `uuid` is a valid UUID for the `fstype` file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_check_uuid(fstype: string, uuid: string): boolean;
 
@@ -1909,6 +2039,7 @@ export namespace BlockDev {
      * @param device the device to clean
      * @param force whether to wipe signatures on a mounted `device`
      * @returns whether `device` was successfully cleaned or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.WIPE}
+     * @throws GLib.Error
      */
     function fs_clean(device: string, force: boolean): boolean;
 
@@ -1918,24 +2049,28 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                                 passed to the 'exfatfsck' utility)
      * @returns whether the exfat file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_exfat_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the exfat file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_exfat_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the exFAT file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_exfat_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_exfat_get_info(device: string): FSExfatInfo;
 
@@ -1943,6 +2078,7 @@ export namespace BlockDev {
      * @param device the device to create a new exfat fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkexfatfs' utility)
      * @returns whether a new exfat fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_exfat_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1950,6 +2086,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'exfatfsck' utility)
      * @returns whether the exfat file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_exfat_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -1957,6 +2094,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set label for
      * @param label label to set
      * @returns whether the label of exfat file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_exfat_set_label(device: string, label: string): boolean;
 
@@ -1964,6 +2102,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set uuid for
      * @param uuid volume ID to set or `null` to generate a new one
      * @returns whether the volume ID of exFAT file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXFAT}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_exfat_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -1971,30 +2110,35 @@ export namespace BlockDev {
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext2 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_ext2_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext2 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext2_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the ext2 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext2_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device the file system of which to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_ext2_get_info(device: string): FSExt2Info;
 
     /**
      * @param device the device containing the file system to get min size for
      * @returns smallest shrunken filesystem size as reported by resize2fs          in case of error 0 is returned and `error` is set Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext2_get_min_size(device: string): number;
 
@@ -2002,6 +2146,7 @@ export namespace BlockDev {
      * @param device the device to create a new ext2 fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mke2fs' utility)
      * @returns whether a new ext2 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_ext2_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2010,6 +2155,7 @@ export namespace BlockDev {
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext2 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_ext2_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -2018,6 +2164,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext2_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -2025,6 +2172,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set label for
      * @param label label to set
      * @returns whether the label of ext2 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_ext2_set_label(device: string, label: string): boolean;
 
@@ -2032,6 +2180,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set UUID for
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext2 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT2}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_ext2_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2039,30 +2188,35 @@ export namespace BlockDev {
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext3 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_ext3_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext3 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext3_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the ext3 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext3_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device the file system of which to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_ext3_get_info(device: string): FSExt3Info;
 
     /**
      * @param device the device containing the file system to get min size for
      * @returns smallest shrunken filesystem size as reported by resize2fs          in case of error 0 is returned and `error` is set Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext3_get_min_size(device: string): number;
 
@@ -2070,6 +2224,7 @@ export namespace BlockDev {
      * @param device the device to create a new ext3 fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mke2fs' utility)
      * @returns whether a new ext3 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_ext3_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2078,6 +2233,7 @@ export namespace BlockDev {
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext3 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_ext3_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -2086,6 +2242,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext3_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -2093,6 +2250,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set label for
      * @param label label to set
      * @returns whether the label of ext3 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_ext3_set_label(device: string, label: string): boolean;
 
@@ -2100,6 +2258,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set UUID for
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext3 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_ext3_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2107,30 +2266,35 @@ export namespace BlockDev {
      * @param device the device the file system on which to check
      * @param extra extra options for the check (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext4 file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_ext4_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ext4 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext4_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the ext4 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ext4_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device the file system of which to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_ext4_get_info(device: string): FSExt4Info;
 
     /**
      * @param device the device containing the file system to get min size for
      * @returns smallest shrunken filesystem size as reported by resize2fs          in case of error 0 is returned and `error` is set Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext4_get_min_size(device: string): number;
 
@@ -2138,6 +2302,7 @@ export namespace BlockDev {
      * @param device the device to create a new ext4 fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.ext4' utility)
      * @returns whether a new ext4 fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_ext4_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2146,6 +2311,7 @@ export namespace BlockDev {
      * @param unsafe whether to do unsafe operations too
      * @param extra extra options for the repair (right now                                                 passed to the 'e2fsck' utility)
      * @returns whether an ext4 file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_ext4_repair(device: string, unsafe: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -2154,6 +2320,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ext4_resize(device: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -2161,6 +2328,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set label for
      * @param label label to set
      * @returns whether the label of ext4 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT3}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_ext4_set_label(device: string, label: string): boolean;
 
@@ -2168,6 +2336,7 @@ export namespace BlockDev {
      * @param device the device the file system on which to set UUID for
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "clear", "random" and "time" to clear,                      generate a new random/time-based UUID
      * @returns whether the UUID of ext4 file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.EXT4}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_ext4_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2175,18 +2344,21 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.f2fs' utility)
      * @returns whether an f2fs file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_f2fs_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the f2fs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_f2fs_check_label(label: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_f2fs_get_info(device: string): FSF2FSInfo;
 
@@ -2194,6 +2366,7 @@ export namespace BlockDev {
      * @param device the device to create a new f2fs fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.f2fs' utility)
      * @returns whether a new f2fs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_f2fs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2201,6 +2374,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.f2fs' utility)
      * @returns whether an f2fs file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_f2fs_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2210,6 +2384,7 @@ export namespace BlockDev {
      * @param safe whether to perform safe resize or not (does not resize metadata)
      * @param extra extra options for the resize (right now                                                 passed to the 'resize.f2fs' utility)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.F2FS}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_f2fs_resize(device: string, new_size: bigint | number, safe: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -2218,6 +2393,7 @@ export namespace BlockDev {
      * 
      * Tech category: always available
      * @param fstype name of the filesystem to get features for (e.g. "ext4")
+     * @throws GLib.Error
      */
     function fs_features(fstype: string): FSFeatures;
 
@@ -2226,6 +2402,7 @@ export namespace BlockDev {
      * support freezing.
      * @param mountpoint mountpoint of the device (filesystem) to freeze
      * @returns whether `mountpoint` was successfully freezed or not
+     * @throws GLib.Error
      */
     function fs_freeze(mountpoint: string): boolean;
 
@@ -2236,6 +2413,7 @@ export namespace BlockDev {
      * @param device the device with file system to get free space for
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns free space of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_get_free_space(device: string, fstype: string | null): number;
 
@@ -2243,6 +2421,7 @@ export namespace BlockDev {
      * Get first signature on `device` as a string.
      * @param device the device to probe
      * @returns type of filesystem found on `device`, `null` in case                           no signature has been detected or in case of error                           (`error` is set in this case) Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_get_fstype(device: string): string;
 
@@ -2253,6 +2432,7 @@ export namespace BlockDev {
      * @param device the device with file system to get minimum size for
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns minimum size of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_get_min_size(device: string, fstype: string | null): number;
 
@@ -2261,6 +2441,7 @@ export namespace BlockDev {
      * one mountpoint will be returned.
      * @param device device to find mountpoint for
      * @returns mountpoint for `device`, `null` in case device is                           not mounted or in case of an error (`error` is set                           in this case) Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
+     * @throws GLib.Error
      */
     function fs_get_mountpoint(device: string): string;
 
@@ -2274,12 +2455,14 @@ export namespace BlockDev {
      * @param device the device with file system to get size for
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns size of filesystem on `device`, 0 in case of error. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_get_size(device: string, fstype: string | null): number;
 
     /**
      * @param path path (folder) to check
      * @returns whether `path` is a mountpoint or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
+     * @throws GLib.Error
      */
     function fs_is_mountpoint(path: string): boolean;
 
@@ -2287,6 +2470,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.FSTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function fs_is_tech_avail(tech: FSTech, mode: bigint | number): boolean;
 
@@ -2307,6 +2491,7 @@ export namespace BlockDev {
      * @param options additional options like label or UUID for the filesystem
      * @param extra extra mkfs options not provided in `options`
      * @returns whether `fstype` was successfully created on `device` or not. Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_mkfs(device: string, fstype: string, options: FSMkfsOptions, extra: ExtraArg[] | null): boolean;
 
@@ -2317,24 +2502,28 @@ export namespace BlockDev {
      * @param options comma delimited options for mount
      * @param extra extra options for the mount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user                                               and/or group ID set to these values.
      * @returns whether `device` (or `mountpoint`) was successfully mounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
+     * @throws GLib.Error
      */
     function fs_mount(device: string | null, mountpoint: string | null, fstype: string | null, options: string | null, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the nilfs2 file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_nilfs2_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the nilfs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_nilfs2_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_nilfs2_get_info(device: string): FSNILFS2Info;
 
@@ -2342,6 +2531,7 @@ export namespace BlockDev {
      * @param device the device to create a new nilfs fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.nilfs2' utility)
      * @returns whether a new nilfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_nilfs2_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2349,6 +2539,7 @@ export namespace BlockDev {
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_nilfs2_resize(device: string, new_size: bigint | number): boolean;
 
@@ -2356,6 +2547,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set label for
      * @param label label to set
      * @returns whether the label of nilfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_nilfs2_set_label(device: string, label: string): boolean;
 
@@ -2363,6 +2555,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set UUID for
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the uuid of nilfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NILFS2}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_nilfs2_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2370,30 +2563,35 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                               passed to the 'ntfsfix' utility)
      * @returns whether an ntfs file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_ntfs_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the ntfs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ntfs_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the ntfs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_ntfs_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for (device must             not be mounted, trying to get info for a mounted device will result             in an error)
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_ntfs_get_info(device: string): FSNtfsInfo;
 
     /**
      * @param device the device containing the file system to get min size for
      * @returns smallest shrunken filesystem size as reported by ntfsresize          in case of error 0 is returned and `error` is set Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ntfs_get_min_size(device: string): number;
 
@@ -2401,6 +2599,7 @@ export namespace BlockDev {
      * @param device the device to create a new ntfs fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkntfs' utility)
      * @returns whether a new NTFS fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_ntfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2408,6 +2607,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                               passed to the 'ntfsfix' utility)
      * @returns whether an NTFS file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_ntfs_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2415,6 +2615,7 @@ export namespace BlockDev {
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system in bytes (if 0, the file system            is adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_ntfs_resize(device: string, new_size: bigint | number): boolean;
 
@@ -2422,6 +2623,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set the label for
      * @param label label to set
      * @returns whether the label of the NTFS file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_ntfs_set_label(device: string, label: string): boolean;
 
@@ -2429,6 +2631,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set the UUID (serial number) for
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the NTFS file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.NTFS}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_ntfs_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2441,6 +2644,7 @@ export namespace BlockDev {
      * @param device the device the file system of which to repair
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully repaired or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_repair(device: string, fstype: string | null): boolean;
 
@@ -2455,6 +2659,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_resize(device: string, new_size: bigint | number, fstype: string | null): boolean;
 
@@ -2469,6 +2674,7 @@ export namespace BlockDev {
      * @param label label to set
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the file system on `device` was successfully relabeled or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_set_label(device: string, label: string, fstype: string | null): boolean;
 
@@ -2480,11 +2686,13 @@ export namespace BlockDev {
      * @param uuid UUID to set or `null` to generate a new one
      * @param fstype the filesystem type on `device` or `null` to detect
      * @returns whether the UUID on the file system on `device` was successfully changed or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_set_uuid(device: string, uuid: string | null, fstype: string | null): boolean;
 
     /**
      * @returns list of filesystems supported by this plugin Note: This returns filesystems supported by libblockdev, but not necessarily       by the systems this is running on, for this information you need to       run one of the `bd_fs_can_` functions. Tech category: always available
+     * @throws GLib.Error
      */
     function fs_supported_filesystems(): string[];
 
@@ -2493,18 +2701,21 @@ export namespace BlockDev {
      *       not the stricter limits for Volume Identifier.
      * @param label label to check
      * @returns whether `label` is a valid label for the UDF file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_udf_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the UDF file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_udf_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.UDF}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_udf_get_info(device: string): FSUdfInfo;
 
@@ -2515,6 +2726,7 @@ export namespace BlockDev {
      * @param block_size block size in bytes or 0 for auto detection (device logical block size)
      * @param extra extra options for the creation (right now                                                 passed to the 'mkudffs' utility)
      * @returns whether a new UDF fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.UDF}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_udf_mkfs(device: string, media_type: string | null, revision: string | null, block_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -2525,6 +2737,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set label for
      * @param label label to set
      * @returns whether the label of UDF file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.UDF}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_udf_set_label(device: string, label: string): boolean;
 
@@ -2532,6 +2745,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set the UUID (serial number) for
      * @param uuid UUID to set or `null` to generate a new one
      * @returns whether the UUID of the UDF file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.UDF}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_udf_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2540,6 +2754,7 @@ export namespace BlockDev {
      * support freezing.
      * @param mountpoint mountpoint of the device (filesystem) to un-freeze
      * @returns whether `mountpoint` was successfully unfreezed or not
+     * @throws GLib.Error
      */
     function fs_unfreeze(mountpoint: string): boolean;
 
@@ -2549,6 +2764,7 @@ export namespace BlockDev {
      * @param force enable/disable force unmount
      * @param extra extra options for the unmount;                                               currently only 'run_as_uid'                                               and 'run_as_gid' are supported;                                               value must be a valid non zero                                               uid (gid), if you specify one of                                               these, the function will run in                                               a child process with real user                                               and/or group ID set to these values.
      * @returns whether `spec` was successfully unmounted or not Tech category: {@link BlockDev.FSTech.MOUNT} (no mode, ignored)
+     * @throws GLib.Error
      */
     function fs_unmount(spec: string, lazy: boolean, force: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -2556,24 +2772,28 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.vfat' utility)
      * @returns whether an vfat file system on the `device` is clean or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_vfat_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the vfat file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_vfat_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the vfat file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_vfat_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_vfat_get_info(device: string): FSVfatInfo;
 
@@ -2582,6 +2802,7 @@ export namespace BlockDev {
      * @param device the device to create a new vfat fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.vfat' utility)
      * @returns whether a new vfat fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_vfat_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2589,6 +2810,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'fsck.vfat' utility)
      * @returns whether an vfat file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_vfat_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2596,6 +2818,7 @@ export namespace BlockDev {
      * @param device the device the file system of which to resize
      * @param new_size new requested size for the file system (if 0, the file system is            adapted to the underlying block device)
      * @returns whether the file system on `device` was successfully resized or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_vfat_resize(device: string, new_size: bigint | number): boolean;
 
@@ -2603,6 +2826,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set label for
      * @param label label to set
      * @returns whether the label of vfat file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_vfat_set_label(device: string, label: string): boolean;
 
@@ -2610,6 +2834,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set uuid for
      * @param uuid volume ID to set or `null` to generate a new one
      * @returns whether the volume ID of vfat file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.VFAT}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_vfat_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2618,6 +2843,7 @@ export namespace BlockDev {
      * @param all whether to wipe all (`true`) signatures or just the first (`false`) one
      * @param force whether to wipe signatures on a mounted `device`
      * @returns whether signatures were successfully wiped on `device` or not Tech category: {@link BlockDev.FSTech.GENERIC}-{@link BlockDev.FSTechMode.WIPE}
+     * @throws GLib.Error
      */
     function fs_wipe(device: string, all: boolean, force: boolean): boolean;
 
@@ -2625,24 +2851,28 @@ export namespace BlockDev {
      * @param device the device containing the file system to check
      * @param extra extra options for the repair (right now                                               passed to the 'xfs_repair' utility)
      * @returns whether an xfs file system on the `device` is clean or not Note: If the file system is mounted RW, it will always be reported as not       clean! Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.CHECK}
+     * @throws GLib.Error
      */
     function fs_xfs_check(device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for the xfs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_xfs_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for the xfs file system or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function fs_xfs_check_uuid(uuid: string): boolean;
 
     /**
      * @param device the device containing the file system to get info for (device must             be mounted, trying to get info for an unmounted device will result             in an error)
      * @returns information about the file system on `device` or                           `null` in case of error Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.QUERY}
+     * @throws GLib.Error
      */
     function fs_xfs_get_info(device: string): FSXfsInfo;
 
@@ -2650,6 +2880,7 @@ export namespace BlockDev {
      * @param device the device to create a new xfs fs on
      * @param extra extra options for the creation (right now                                                 passed to the 'mkfs.xfs' utility)
      * @returns whether a new xfs fs was successfully created on `device` or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.MKFS}
+     * @throws GLib.Error
      */
     function fs_xfs_mkfs(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2657,6 +2888,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to repair
      * @param extra extra options for the repair (right now                                                 passed to the 'xfs_repair' utility)
      * @returns whether an xfs file system on the `device` was successfully repaired          (if needed) or not (error is set in that case) Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.REPAIR}
+     * @throws GLib.Error
      */
     function fs_xfs_repair(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -2665,6 +2897,7 @@ export namespace BlockDev {
      * @param new_size new requested size for the file system *in file system blocks* (see `bd_fs_xfs_get_info()`)            (if 0, the file system is adapted to the underlying block device)
      * @param extra extra options for the resize (right now                                                 passed to the 'xfs_growfs' utility)
      * @returns whether the file system mounted on `mpoint` was successfully resized or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.RESIZE}
+     * @throws GLib.Error
      */
     function fs_xfs_resize(mpoint: string, new_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -2672,6 +2905,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set label for
      * @param label label to set
      * @returns whether the label of xfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function fs_xfs_set_label(device: string, label: string): boolean;
 
@@ -2679,6 +2913,7 @@ export namespace BlockDev {
      * @param device the device containing the file system to set uuid for
      * @param uuid UUID to set `null` to generate a new one                      UUID can also be one of "nil" and "generate" to clear or                      generate a new UUID
      * @returns whether the UUID of xfs file system on the `device` was          successfully set or not Tech category: {@link BlockDev.FSTech.XFS}-{@link BlockDev.FSTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function fs_xfs_set_uuid(device: string, uuid: string | null): boolean;
 
@@ -2703,6 +2938,7 @@ export namespace BlockDev {
      * @param require_plugins `null`-terminated list                 of plugins that should be loaded (if no so_name is specified                 for the plugin, the default is used) or `null` to load all                 plugins
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not Example of libblockdev initialization with 'fs' and 'lvm' plugins. Specific version of the lvm plugin is required: |[<!-- language="C" --> GError *error = NULL; gboolean ret = FALSE; BDPluginSpec fs_plugin = {BD_PLUGIN_FS, NULL}; BDPluginSpec lvm_plugin = {BD_PLUGIN_LVM, "libbd_lvm.so.3"}; BDPluginSpec *plugins[] = {&fs_plugin, &lvm_plugin, NULL}; ret = bd_init (plugins, NULL, &error); ]|
+     * @throws GLib.Error
      */
     function init(require_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): boolean;
 
@@ -2722,12 +2958,14 @@ export namespace BlockDev {
     /**
      * @param file path of the backing file to get loop name for
      * @returns name of the loop device associated with the given `file` or `null` if failed to determine Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.QUERY}
+     * @throws GLib.Error
      */
     function loop_get_loop_name(file: string): string;
 
     /**
      * @param loop name of the loop device to get information about (e.g. "loop0")
      * @returns information about the `loop` device or `null` in case of error Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.QUERY}
+     * @throws GLib.Error
      */
     function loop_info(loop: string): LoopInfo;
 
@@ -2735,6 +2973,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LoopTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function loop_is_tech_avail(tech: LoopTech, mode: bigint | number): boolean;
 
@@ -2742,6 +2981,7 @@ export namespace BlockDev {
      * @param loop path or name of the loop device
      * @param autoclear whether to set or unset the autoclear flag
      * @returns whether the autoclear flag was successfully set on the `loop` device or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function loop_set_autoclear(loop: string, autoclear: boolean): boolean;
 
@@ -2750,6 +2990,7 @@ export namespace BlockDev {
      * specified `loop` device.
      * @param loop path or name of the loop device
      * @returns whether the LOOP_SET_CAPACITY ioctl was successfully issued or not. Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function loop_set_capacity(loop: string): boolean;
 
@@ -2761,6 +3002,7 @@ export namespace BlockDev {
      * @param part_scan whether to enforce partition scan on the newly created device or not
      * @param sector_size logical sector size for the loop device in bytes (or 0 for default)
      * @returns whether the `file` was successfully setup as a loop device or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.CREATE}
+     * @throws GLib.Error
      */
     function loop_setup(file: string, offset: bigint | number, size: bigint | number, read_only: boolean, part_scan: boolean, sector_size: bigint | number): [boolean, string];
 
@@ -2772,12 +3014,14 @@ export namespace BlockDev {
      * @param part_scan whether to enforce partition scan on the newly created device or not
      * @param sector_size logical sector size for the loop device in bytes (or 0 for default)
      * @returns whether a new loop device was successfully setup for `fd` or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.CREATE}
+     * @throws GLib.Error
      */
     function loop_setup_from_fd(fd: number, offset: bigint | number, size: bigint | number, read_only: boolean, part_scan: boolean, sector_size: bigint | number): [boolean, string];
 
     /**
      * @param loop path or name of the loop device to tear down
      * @returns whether the `loop` device was successfully torn down or not Tech category: {@link BlockDev.LoopTech.LOOP_TECH_LOOP}-{@link BlockDev.LoopTechMode.DESTROY}
+     * @throws GLib.Error
      */
     function loop_teardown(loop: string): boolean;
 
@@ -2786,6 +3030,7 @@ export namespace BlockDev {
      * @param lv_name name of the LV to set tags on
      * @param tags list of tags to add
      * @returns whether the tags were successfully added to `device` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_add_lv_tags(vg_name: string, lv_name: string, tags: string[]): boolean;
 
@@ -2793,6 +3038,7 @@ export namespace BlockDev {
      * @param device the device to set PV tags for
      * @param tags list of tags to add
      * @returns whether the tags were successfully added to `device` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_add_pv_tags(device: string, tags: string[]): boolean;
 
@@ -2800,6 +3046,7 @@ export namespace BlockDev {
      * @param vg_name the VG to set tags on
      * @param tags list of tags to add
      * @returns whether the tags were successfully added to `vg_name` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_add_vg_tags(vg_name: string, tags: string[]): boolean;
 
@@ -2809,6 +3056,7 @@ export namespace BlockDev {
      * @param cache_pool_lv cache pool LV to attach to the `data_lv`
      * @param extra extra options for the cache attachment                                                 (just passed to LVM as is)
      * @returns whether the `cache_pool_lv` was successfully attached to the `data_lv` or not Note: Both `data_lv` and `cache_lv` will be deactivated before the operation. Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_cache_attach(vg_name: string, data_lv: string, cache_pool_lv: string, extra: ExtraArg[] | null): boolean;
 
@@ -2823,6 +3071,7 @@ export namespace BlockDev {
      * @param slow_pvs list of slow PVs (used for the data LV)
      * @param fast_pvs list of fast PVs (used for the cache LV)
      * @returns whether the cached LV `lv_name` was successfully created or not Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_cache_create_cached_lv(vg_name: string, lv_name: string, data_size: bigint | number, cache_size: bigint | number, md_size: bigint | number, mode: LVMCacheMode, flags: LVMCachePoolFlags, slow_pvs: string[], fast_pvs: string[]): boolean;
 
@@ -2835,6 +3084,7 @@ export namespace BlockDev {
      * @param flags a combination of (ORed) {@link BlockDev.LVMCachePoolFlags}
      * @param fast_pvs list of (fast) PVs to create the `pool_name`                                       cache pool (and the metadata LV)
      * @returns whether the cache pool `vg_name`/`pool_name` was successfully created or not Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_cache_create_pool(vg_name: string, pool_name: string, pool_size: bigint | number, md_size: bigint | number, mode: LVMCacheMode, flags: LVMCachePoolFlags, fast_pvs: string[]): boolean;
 
@@ -2844,24 +3094,28 @@ export namespace BlockDev {
      * @param destroy whether to destroy the cache after detach or not
      * @param extra extra options for the cache detachment                                                 (just passed to LVM as is)
      * @returns whether the cache was successfully detached from the `cached_lv` or not Note: synces the cache first Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_cache_detach(vg_name: string, cached_lv: string, destroy: boolean, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param cache_size size of the cache to determine MD size for
      * @returns recommended default size of the cache metadata LV or 0 in case of error Tech category: {@link BlockDev.LVMTech.CACHE_CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_cache_get_default_md_size(cache_size: bigint | number): number;
 
     /**
      * @param mode_str string representation of a cache mode
      * @returns cache mode for the `mode_str` or {@link BlockDev.LVMCacheMode.UNKNOWN} if          failed to determine Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_cache_get_mode_from_str(mode_str: string): LVMCacheMode;
 
     /**
      * @param mode mode to get the string representation for
      * @returns string representation of `mode` or `null` in case of error Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_cache_get_mode_str(mode: LVMCacheMode): string;
 
@@ -2874,6 +3128,7 @@ export namespace BlockDev {
      * @param name name for the thin pool (if `null`, the name `data_lv` is inherited)
      * @param extra extra options for the thin pool creation                                                 (just passed to LVM as is)
      * @returns whether the new cache pool was successfully created from `data_lv` and          `metadata_lv` or not Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_cache_pool_convert(vg_name: string, data_lv: string, metadata_lv: string, name: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -2881,6 +3136,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG containing the `cached_lv`
      * @param cached_lv cached LV to get the name of the its pool LV for
      * @returns name of the cache pool LV used by the `cached_lv` or `null` in case of error Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_cache_pool_name(vg_name: string, cached_lv: string): string;
 
@@ -2888,6 +3144,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG containing the `cached_lv`
      * @param cached_lv cached LV to get stats for
      * @returns stats for the `cached_lv` or `null` in case of error Tech category: {@link BlockDev.LVMTech.CACHE}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_cache_stats(vg_name: string, cached_lv: string): LVMCacheStats;
 
@@ -2899,6 +3156,7 @@ export namespace BlockDev {
      * @param global_config whether to include our internal global config in the call or not
      * @param extra extra options for the lvmconfig command                                               (just passed to LVM as is)
      * @returns Requested LVM config `section` and `setting` configuration or `null` in case of error. Tech category: {@link BlockDev.LVMTech.CONFIG} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_config_get(section: string | null, setting: string | null, type: string, values_only: boolean, global_config: boolean, extra: ExtraArg[] | null): string;
 
@@ -2907,6 +3165,7 @@ export namespace BlockDev {
      * @param lv_name name of the LV to set tags on
      * @param tags list of tags to remove
      * @returns whether the tags were successfully removed from `device` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_delete_lv_tags(vg_name: string, lv_name: string, tags: string[]): boolean;
 
@@ -2914,6 +3173,7 @@ export namespace BlockDev {
      * @param device the device to set PV tags for
      * @param tags list of tags to remove
      * @returns whether the tags were successfully removed from `device` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_delete_pv_tags(device: string, tags: string[]): boolean;
 
@@ -2921,6 +3181,7 @@ export namespace BlockDev {
      * @param vg_name the VG to set tags on
      * @param tags list of tags to remove
      * @returns whether the tags were successfully removed from `vg_name` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_delete_vg_tags(vg_name: string, tags: string[]): boolean;
 
@@ -2929,6 +3190,7 @@ export namespace BlockDev {
      * @param devices_file LVM devices file or `null` for default
      * @param extra extra options for the lvmdevices command
      * @returns whether the `device` was successfully added to `devices_file` or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_devices_add(device: string, devices_file: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -2937,6 +3199,7 @@ export namespace BlockDev {
      * @param devices_file LVM devices file or `null` for default
      * @param extra extra options for the lvmdevices command
      * @returns whether the `device` was successfully removed from `devices_file` or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_devices_delete(device: string, devices_file: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -2944,11 +3207,13 @@ export namespace BlockDev {
 
     /**
      * @returns a copy of a string representation of                                                     the currently set LVM devices filter Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_devices_filter(): string[];
 
     /**
      * @returns a copy of a string representation of the currently                           set libblockdev LVM global configuration Note: This function does not change the global `lvm.conf` config       file, see %bd_lvm_set_global_config for details. Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_global_config(): string;
 
@@ -2956,16 +3221,19 @@ export namespace BlockDev {
      * @param lv_size LV size
      * @param pe_size PE size
      * @returns space taken on disk(s) by the LV with given `size` Gives number of bytes needed for an LV with the size `lv_size` on an LVM stack using given `pe_size`. Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_lv_physical_size(lv_size: bigint | number, pe_size: bigint | number): number;
 
     /**
      * @returns maximum LV size in bytes Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_max_lv_size(): number;
 
     /**
      * @returns list of supported PE sizes Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_supported_pe_sizes(): number[];
 
@@ -2976,6 +3244,7 @@ export namespace BlockDev {
      * @param chunk_size chunk size of the thin pool or 0 to use the default
      * @param n_snapshots ignored
      * @returns recommended size of the metadata space for the specified pool Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_thpool_meta_size(size: bigint | number, chunk_size: bigint | number, n_snapshots: bigint | number): number;
 
@@ -2984,42 +3253,49 @@ export namespace BlockDev {
      * @param pe_size PE size or 0 if the default value should be used
      * @param included if padding is already included in the size
      * @returns size of the padding needed for a thin pool with the given `size`         according to the `pe_size` and `included` Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_get_thpool_padding(size: bigint | number, pe_size: bigint | number, included: boolean): number;
 
     /**
      * @param state state to get the string representation for
      * @returns string representation of `state` or `null` in case of error Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_get_vdo_compression_state_str(state: LVMVDOCompressionState): string;
 
     /**
      * @param state state to get the string representation for
      * @returns string representation of `state` or `null` in case of error Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_get_vdo_index_state_str(state: LVMVDOIndexState): string;
 
     /**
      * @param mode mode to get the string representation for
      * @returns string representation of `mode` or `null` in case of error Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_get_vdo_operating_mode_str(mode: LVMVDOOperatingMode): string;
 
     /**
      * @param policy_str string representation of a policy
      * @returns write policy for the `policy_str` or {@link BlockDev.LVMVDOWritePolicy.UNKNOWN} if          failed to determine Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_get_vdo_write_policy_from_str(policy_str: string): LVMVDOWritePolicy;
 
     /**
      * @param policy policy to get the string representation for
      * @returns string representation of `policy` or `null` in case of error Tech category: always provided/supported
+     * @throws GLib.Error
      */
     function lvm_get_vdo_write_policy_str(policy: LVMVDOWritePolicy): string;
 
     /**
      * @param size size (in bytes) to test
      * @returns whether the given size is supported physical extent size or not Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_is_supported_pe_size(size: bigint | number): boolean;
 
@@ -3027,6 +3303,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.LVMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function lvm_is_tech_avail(tech: LVMTech, mode: bigint | number): boolean;
 
@@ -3034,12 +3311,14 @@ export namespace BlockDev {
      * @param size the size to be tested
      * @param discard whether discard/TRIM is required to be supported or not
      * @returns whether the given size is a valid thin pool chunk size or not Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_is_valid_thpool_chunk_size(size: bigint | number, discard: boolean): boolean;
 
     /**
      * @param size the size to be tested
      * @returns whether the given size is a valid thin pool metadata size or not Tech category: {@link BlockDev.LVMTech.THIN_CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_is_valid_thpool_md_size(size: bigint | number): boolean;
 
@@ -3050,6 +3329,7 @@ export namespace BlockDev {
      * @param shared whether to activate the LV in shared mode (used for shared LVM setups with lvmlockd,          use `false` if not sure)
      * @param extra extra options for the LV activation                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully activated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvactivate(vg_name: string, lv_name: string, ignore_skip: boolean, shared: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3061,6 +3341,7 @@ export namespace BlockDev {
      * @param pv_list list of PVs the newly created LV should use or `null` if not specified
      * @param extra extra options for the LV creation                                                 (just passed to LVM as is)
      * @returns whether the given `vg_name`/`lv_name` LV was successfully created or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_lvcreate(vg_name: string, lv_name: string, size: bigint | number, type: string | null, pv_list: string[] | null, extra: ExtraArg[] | null): boolean;
 
@@ -3069,6 +3350,7 @@ export namespace BlockDev {
      * @param lv_name name of the to-be-deactivated LV
      * @param extra extra options for the LV deactivation                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully deactivated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvdeactivate(vg_name: string, lv_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3076,6 +3358,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG that contains the LV to get information about
      * @param lv_name name of the LV to get information about
      * @returns information about the `vg_name`/`lv_name` LV or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_lvinfo(vg_name: string, lv_name: string): LVMLVdata;
 
@@ -3084,6 +3367,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG that contains the LV to get information about
      * @param lv_name name of the LV to get information about
      * @returns information about the `vg_name`/`lv_name` LV or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_lvinfo_tree(vg_name: string, lv_name: string): LVMLVdata;
 
@@ -3091,6 +3375,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG containing the queried LV
      * @param lv_name name of the queried LV
      * @returns the origin volume for the `vg_name`/`lv_name` LV or `null` if failed to determine (`error`) is set in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_lvorigin(vg_name: string, lv_name: string): string;
 
@@ -3100,6 +3385,7 @@ export namespace BlockDev {
      * @param force whether to force removal or not
      * @param extra extra options for the LV removal                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully removed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
+     * @throws GLib.Error
      */
     function lvm_lvremove(vg_name: string, lv_name: string, force: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3109,6 +3395,7 @@ export namespace BlockDev {
      * @param new_name new name for the `vg_name`/`lv_name` LV
      * @param extra extra options for the LV rename                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully renamed to `vg_name`/`new_name` or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvrename(vg_name: string, lv_name: string, new_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3118,6 +3405,7 @@ export namespace BlockDev {
      * @param pv_list list of PVs to be used for the repair
      * @param extra extra options for the LV repair                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully repaired or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvrepair(vg_name: string, lv_name: string, pv_list: string[], extra: ExtraArg[] | null): boolean;
 
@@ -3127,12 +3415,14 @@ export namespace BlockDev {
      * @param size the requested new size of the LV
      * @param extra extra options for the LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` LV was successfully resized or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvresize(vg_name: string, lv_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param vg_name name of the VG to get information about LVs from
      * @returns information about LVs found in the given `vg_name` VG or in system if `vg_name` is `null` Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_lvs(vg_name: string | null): LVMLVdata[];
 
@@ -3140,6 +3430,7 @@ export namespace BlockDev {
      * This function will fill out the data_lvs, metadata_lvs, and segs fields as well.
      * @param vg_name name of the VG to get information about LVs from
      * @returns information about LVs found in the given `vg_name` VG or in system if `vg_name` is `null`. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_lvs_tree(vg_name: string | null): LVMLVdata[];
 
@@ -3150,6 +3441,7 @@ export namespace BlockDev {
      * @param size requested size for the snapshot
      * @param extra extra options for the LV snapshot creation                                                 (just passed to LVM as is)
      * @returns whether the `snapshot_name` snapshot of the `vg_name`/`origin_name` LV was successfully created or not. Tech category: {@link BlockDev.LVMTech.BASIC_SNAP}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_lvsnapshotcreate(vg_name: string, origin_name: string, snapshot_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -3158,6 +3450,7 @@ export namespace BlockDev {
      * @param snapshot_name name of the to-be-merged LV snapshot
      * @param extra extra options for the LV snapshot merge                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`snapshot_name` LV snapshot was successfully merged or not Tech category: {@link BlockDev.LVMTech.BASIC_SNAP}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_lvsnapshotmerge(vg_name: string, snapshot_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3167,12 +3460,14 @@ export namespace BlockDev {
      * @param metadata_size size of the area reserved for metadata or 0 to use the default
      * @param extra extra options for the PV creation                                                 (just passed to LVM as is)
      * @returns whether the PV was successfully created or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_pvcreate(device: string, data_alignment: bigint | number, metadata_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param device a PV to get information about or `null`
      * @returns information about the PV on the given `device` or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_pvinfo(device: string): LVMPVdata;
 
@@ -3181,6 +3476,7 @@ export namespace BlockDev {
      * @param dest the PV device to move extents onto or `null`
      * @param extra extra options for the PV move                                                 (just passed to LVM as is)
      * @returns whether the extents from the `src` PV where successfully moved or not If `dest` is `null`, VG allocation rules are used for the extents from the `src` PV (see pvmove(8)). Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_pvmove(src: string, dest: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3188,6 +3484,7 @@ export namespace BlockDev {
      * @param device the PV device to be removed/destroyed
      * @param extra extra options for the PV removal                                                 (just passed to LVM as is)
      * @returns whether the PV was successfully removed/destroyed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
+     * @throws GLib.Error
      */
     function lvm_pvremove(device: string, extra: ExtraArg[] | null): boolean;
 
@@ -3196,11 +3493,13 @@ export namespace BlockDev {
      * @param size the new requested size of the PV or 0 if it should be adjusted to device's size
      * @param extra extra options for the PV resize                                                 (just passed to LVM as is)
      * @returns whether the PV's size was successfully changed or not If given `size` different from 0, sets the PV's size to the given value (see pvresize(8)). If given `size` 0, adjusts the PV's size to the underlying block device's size. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_pvresize(device: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @returns information about PVs found in the system Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_pvs(): LVMPVdata[];
 
@@ -3209,6 +3508,7 @@ export namespace BlockDev {
      * @param update_cache whether to update the lvmetad cache or not
      * @param extra extra options for the PV scan                                                 (just passed to LVM as is)
      * @returns whether the system or `device` was successfully scanned for PVs or not The `device` argument is used only if `update_cache` is `true`. Otherwise the whole system is scanned for PVs. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_pvscan(device: string | null, update_cache: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3217,12 +3517,14 @@ export namespace BlockDev {
      * @param pe_size physical extent (PE) size or 0 to use the default
      * @param roundup whether to round up or down (ceil or floor)
      * @returns `size` rounded to `pe_size` according to the `roundup` Rounds given `size` up/down to a multiple of `pe_size` according to the value of the `roundup` parameter. If the rounded value is too big to fit in the return type, the result is rounded down (floored) regardless of the `roundup` parameter. Tech category: {@link BlockDev.LVMTech.CALCS} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_round_size_to_pe(size: bigint | number, pe_size: bigint | number, roundup: boolean): number;
 
     /**
      * @param devices list of devices for lvm commands to work on
      * @returns whether the devices filter was successfully set or not Tech category: {@link BlockDev.LVMTech.DEVICES} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_set_devices_filter(devices: string[] | null): boolean;
 
@@ -3234,6 +3536,7 @@ export namespace BlockDev {
      *       calls libblockdev makes.
      * @param new_config string representation of the new global libblockdev LVM                          configuration to set or `null` to reset to default
      * @returns whether the new requested global config `new_config` was successfully          set or not Tech category: {@link BlockDev.LVMTech.GLOB_CONF} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_set_global_config(new_config: string | null): boolean;
 
@@ -3244,6 +3547,7 @@ export namespace BlockDev {
      * @param size requested virtual size of the to-be-created thin LV
      * @param extra extra options for the thin LV creation                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` thin LV was successfully created or not Tech category: {@link BlockDev.LVMTech.THIN}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_thlvcreate(vg_name: string, pool_name: string, lv_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -3251,6 +3555,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG containing the queried thin LV
      * @param lv_name name of the queried thin LV
      * @returns the name of the pool volume for the `vg_name`/`lv_name` thin LV or `null` if failed to determine (`error`) is set in those cases) Tech category: {@link BlockDev.LVMTech.THIN}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_thlvpoolname(vg_name: string, lv_name: string): string;
 
@@ -3263,6 +3568,7 @@ export namespace BlockDev {
      * @param name name for the thin pool (if `null`, the name `data_lv` is inherited)
      * @param extra extra options for the thin pool creation                                                 (just passed to LVM as is)
      * @returns whether the new thin pool was successfully created from `data_lv` and          `metadata_lv` or not Tech category: {@link BlockDev.LVMTech.THIN}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_thpool_convert(vg_name: string, data_lv: string, metadata_lv: string, name: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3275,6 +3581,7 @@ export namespace BlockDev {
      * @param profile profile to use (see lvm(8) for more information) or `null` to use                         the default
      * @param extra extra options for the thin pool creation                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` thin pool was successfully created or not Tech category: {@link BlockDev.LVMTech.THIN}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_thpoolcreate(vg_name: string, lv_name: string, size: bigint | number, md_size: bigint | number, chunk_size: bigint | number, profile: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3285,6 +3592,7 @@ export namespace BlockDev {
      * @param pool_name name of the thin pool to create the snapshot in or `null` if not specified
      * @param extra extra options for the thin LV snapshot creation                                                 (just passed to LVM as is)
      * @returns whether the `snapshot_name` snapshot of the `vg_name`/`origin_name` thin LV was successfully created or not. Tech category: {@link BlockDev.LVMTech.THIN}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_thsnapshotcreate(vg_name: string, origin_name: string, snapshot_name: string, pool_name: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3293,6 +3601,7 @@ export namespace BlockDev {
      * @param pool_name name of the VDO pool LV to disable compression on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether compression was successfully disabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_disable_compression(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3301,6 +3610,7 @@ export namespace BlockDev {
      * @param pool_name name of the VDO pool LV to disable deduplication on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether deduplication was successfully disabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_disable_deduplication(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3309,6 +3619,7 @@ export namespace BlockDev {
      * @param pool_name name of the VDO pool LV to enable compression on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether compression was successfully enabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_enable_compression(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3317,6 +3628,7 @@ export namespace BlockDev {
      * @param pool_name name of the VDO pool LV to enable deduplication on
      * @param extra extra options for the VDO change                                                 (just passed to LVM as is)
      * @returns whether deduplication was successfully enabled on `vg_name`/`pool_name` LV or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_enable_deduplication(vg_name: string, pool_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3324,6 +3636,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG that contains `pool_name` VDO pool
      * @param pool_name name of the VDO pool to get statistics for
      * @returns a structure containing selected statistics or `null` in case of error                           (`error` gets populated in those cases) In contrast to `bd_lvm_vdo_get_stats_full` this function will only return selected statistics in a fixed structure. In case a value is not available, -1 would be returned. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vdo_get_stats(vg_name: string, pool_name: string): LVMVDOStats;
 
@@ -3331,6 +3644,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG that contains `pool_name` VDO pool
      * @param pool_name name of the VDO pool to get statistics for
      * @returns hashtable of type string - string of available                                                    statistics or `null` in case of error                                                    (`error` gets populated in those cases) Statistics are collected from the values exposed by the kernel `dm-vdo` module. Some of the keys are computed to mimic the information produced by the vdo tools. Please note the contents of the hashtable may vary depending on the actual dm-vdo module version. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vdo_get_stats_full(vg_name: string, pool_name: string): { [key: string]: string };
 
@@ -3338,6 +3652,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG that contains the LV to get information about
      * @param lv_name name of the LV to get information about
      * @returns information about the `vg_name`/`lv_name` LV or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vdo_info(vg_name: string, lv_name: string): LVMVDOPooldata;
 
@@ -3356,6 +3671,7 @@ export namespace BlockDev {
      * @param write_policy write policy for the volume
      * @param extra extra options for the VDO pool creation                                                 (just passed to LVM as is)
      * @returns whether the new VDO pool LV was successfully created from `pool_lv` and or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.CREATE}&{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_pool_convert(vg_name: string, pool_lv: string, name: string | null, virtual_size: bigint | number, index_memory: bigint | number, compression: boolean, deduplication: boolean, write_policy: LVMVDOWritePolicy, extra: ExtraArg[] | null): boolean;
 
@@ -3371,6 +3687,7 @@ export namespace BlockDev {
      * @param write_policy write policy for the volume
      * @param extra extra options for the VDO LV creation                                                 (just passed to LVM as is)
      * @returns whether the given `vg_name`/`lv_name` VDO LV was successfully created or not Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_vdo_pool_create(vg_name: string, lv_name: string, pool_name: string | null, data_size: bigint | number, virtual_size: bigint | number, index_memory: bigint | number, compression: boolean, deduplication: boolean, write_policy: LVMVDOWritePolicy, extra: ExtraArg[] | null): boolean;
 
@@ -3380,6 +3697,7 @@ export namespace BlockDev {
      * @param size the requested new size of the VDO pool LV
      * @param extra extra options for the VDO pool LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`pool_name` VDO pool LV was successfully resized or not Note: Size of the VDO pool LV can be only extended, not reduced. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_pool_resize(vg_name: string, pool_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -3389,6 +3707,7 @@ export namespace BlockDev {
      * @param size the requested new size of the VDO LV
      * @param extra extra options for the VDO LV resize                                                 (just passed to LVM as is)
      * @returns whether the `vg_name`/`lv_name` VDO LV was successfully resized or not Note: Reduction needs to process TRIM for reduced disk area to unmap used data blocks       from the VDO pool LV and it may take a long time. Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vdo_resize(vg_name: string, lv_name: string, size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -3396,6 +3715,7 @@ export namespace BlockDev {
      * @param vg_name name of the VG containing the queried VDO LV
      * @param lv_name name of the queried VDO LV
      * @returns the name of the pool volume for the `vg_name`/`lv_name` VDO LV or `null` if failed to determine (`error`) is set in those cases) Tech category: {@link BlockDev.LVMTech.VDO}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vdolvpoolname(vg_name: string, lv_name: string): string;
 
@@ -3403,6 +3723,7 @@ export namespace BlockDev {
      * @param vg_name name of the to be activated VG
      * @param extra extra options for the VG activation                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully activated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vgactivate(vg_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3413,6 +3734,7 @@ export namespace BlockDev {
      * @param backup_file file to save the backup to or `null` for using the default backup file                           in /etc/lvm/backup
      * @param extra extra options for the vgcfgbackup command                                               (just passed to LVM as is)
      * @returns Whether the backup was successfully created or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_vgcfgbackup(vg_name: string, backup_file: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3423,6 +3745,7 @@ export namespace BlockDev {
      * @param backup_file file to restore VG configuration from to or `null` for using the                           latest backup in /etc/lvm/backup
      * @param extra extra options for the vgcfgrestore command                                               (just passed to LVM as is)
      * @returns Whether the configuration was successfully restored or not. Tech category: {@link BlockDev.LVMTech.VG_CFG_BACKUP_RESTORE} no mode (it is ignored)
+     * @throws GLib.Error
      */
     function lvm_vgcfgrestore(vg_name: string, backup_file: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3432,6 +3755,7 @@ export namespace BlockDev {
      * @param pe_size PE size or 0 if the default value should be used
      * @param extra extra options for the VG creation                                                 (just passed to LVM as is)
      * @returns whether the VG `name` was successfully created or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_vgcreate(name: string, pv_list: string[], pe_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
@@ -3439,6 +3763,7 @@ export namespace BlockDev {
      * @param vg_name name of the to be deactivated VG
      * @param extra extra options for the VG deactivation                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully deactivated or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vgdeactivate(vg_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3447,12 +3772,14 @@ export namespace BlockDev {
      * @param device PV device to extend the `vg_name` VG with
      * @param extra extra options for the VG extension                                                 (just passed to LVM as is)
      * @returns whether the VG `vg_name` was successfully extended with the given `device` or not. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vgextend(vg_name: string, device: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param vg_name a VG to get information about
      * @returns information about the `vg_name` VG or `null` in case of error (the `error`) gets populated in those cases) Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vginfo(vg_name: string): LVMVGdata;
 
@@ -3460,6 +3787,7 @@ export namespace BlockDev {
      * @param vg_name a shared VG to start the lockspace in lvmlockd
      * @param extra extra options for the vgchange command                                               (just passed to LVM as is)
      * @returns whether the lock was successfully started for `vg_name` or not Tech category: {@link BlockDev.LVMTech.SHARED}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vglock_start(vg_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3467,6 +3795,7 @@ export namespace BlockDev {
      * @param vg_name a shared VG to stop the lockspace in lvmlockd
      * @param extra extra options for the vgchange command                                               (just passed to LVM as is)
      * @returns whether the lock was successfully stopped for `vg_name` or not Tech category: {@link BlockDev.LVMTech.SHARED}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vglock_stop(vg_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3475,6 +3804,7 @@ export namespace BlockDev {
      * @param device PV device the `vg_name` VG should be reduced of or `null`                        if the VG should be reduced of the missing PVs
      * @param extra extra options for the VG reduction                                                 (just passed to LVM as is)
      * @returns whether the VG `vg_name` was successfully reduced of the given `device` or not Note: This function does not move extents off of the PV before removing       it from the VG. You must do that first by calling `bd_lvm_pvmove`. Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vgreduce(vg_name: string, device: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3482,6 +3812,7 @@ export namespace BlockDev {
      * @param vg_name name of the to be removed VG
      * @param extra extra options for the VG removal                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully removed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.REMOVE}
+     * @throws GLib.Error
      */
     function lvm_vgremove(vg_name: string, extra: ExtraArg[] | null): boolean;
 
@@ -3490,11 +3821,13 @@ export namespace BlockDev {
      * @param new_vg_name new name for the `old_vg_name` VG
      * @param extra extra options for the VG rename                                                 (just passed to LVM as is)
      * @returns whether the VG was successfully renamed or not Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_vgrename(old_vg_name: string, new_vg_name: string, extra: ExtraArg[] | null): boolean;
 
     /**
      * @returns information about VGs found in the system Tech category: {@link BlockDev.LVMTech.BASIC}-{@link BlockDev.LVMTechMode.QUERY}
+     * @throws GLib.Error
      */
     function lvm_vgs(): LVMVGdata[];
 
@@ -3504,6 +3837,7 @@ export namespace BlockDev {
      * @param cache_lv cache (fast) LV to attach to the `data_lv`
      * @param extra extra options for the cache attachment                                                 (just passed to LVM as is)
      * @returns whether the `cache_lv` was successfully attached to the `data_lv` or not Tech category: {@link BlockDev.LVMTech.WRITECACHE}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_writecache_attach(vg_name: string, data_lv: string, cache_lv: string, extra: ExtraArg[] | null): boolean;
 
@@ -3515,6 +3849,7 @@ export namespace BlockDev {
      * @param slow_pvs list of slow PVs (used for the data LV)
      * @param fast_pvs list of fast PVs (used for the cache LV)
      * @returns whether the cached LV `lv_name` was successfully created or not Tech category: {@link BlockDev.LVMTech.WRITECACHE}-{@link BlockDev.LVMTechMode.CREATE}
+     * @throws GLib.Error
      */
     function lvm_writecache_create_cached_lv(vg_name: string, lv_name: string, data_size: bigint | number, cache_size: bigint | number, slow_pvs: string[], fast_pvs: string[]): boolean;
 
@@ -3524,6 +3859,7 @@ export namespace BlockDev {
      * @param destroy whether to destroy the cache after detach or not
      * @param extra extra options for the cache detachment                                                 (just passed to LVM as is)
      * @returns whether the cache was successfully detached from the `cached_lv` or not Note: synces the cache first Tech category: {@link BlockDev.LVMTech.WRITECACHE}-{@link BlockDev.LVMTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function lvm_writecache_detach(vg_name: string, cached_lv: string, destroy: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3534,6 +3870,7 @@ export namespace BlockDev {
      * @param start_degraded whether to start the array even if it's degraded
      * @param extra extra options for the activation (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the MD RAID `device` was successfully activated or not Note: either `members` or `uuid` (or both) have to be specified. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_activate(raid_spec: string | null, members: string[] | null, uuid: string | null, start_degraded: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3543,12 +3880,14 @@ export namespace BlockDev {
      * @param raid_devs number of devices the `raid_spec` RAID should actively use or 0             to leave unspecified (see below)
      * @param extra extra options for the addition (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the `device` was successfully added to the `raid_spec` RAID or not The `raid_devs` parameter is used when adding devices to a raid array that has no actual redundancy. In this case it is necessary to explicitly grow the array all at once rather than manage it in the sense of adding spares. Whether the new device will be added as a spare or an active member is decided by mdadm. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_add(raid_spec: string, device: string, raid_devs: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param uuid UUID to canonicalize
      * @returns canonicalized form of `uuid` or `null` in case of error This function expects a UUID in the form that mdadm returns. The change is as follows: 3386ff85:f5012621:4a435f06:1eb47236 -> 3386ff85-f501-2621-4a43-5f061eb47236 Tech category: always available
+     * @throws GLib.Error
      */
     function md_canonicalize_uuid(uuid: string): string;
 
@@ -3562,30 +3901,35 @@ export namespace BlockDev {
      * @param chunk_size chunk size of the device to create
      * @param extra extra options for the creation (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the new MD RAID device `device_name` was successfully created or not Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.CREATE}
+     * @throws GLib.Error
      */
     function md_create(device_name: string, level: string, disks: string[], spares: bigint | number, version: string | null, bitmap: string | null, chunk_size: bigint | number, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param raid_spec specification of the RAID device (name, node or path)
      * @returns whether the RAID device `raid_spec` was successfully deactivated or not Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_deactivate(raid_spec: string): boolean;
 
     /**
      * @param device device to denominate (remove from its appropriate RAID) as a MD RAID device
      * @returns whether the `device` was successfully denominated (added to its appropriate RAID) or not Note: may start the MD RAID if it becomes ready by adding `device`. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_denominate(device: string): boolean;
 
     /**
      * @param device device to destroy MD RAID metadata on
      * @returns whether the MD RAID metadata was successfully destroyed on `device` or not Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.DELETE}
+     * @throws GLib.Error
      */
     function md_destroy(device: string): boolean;
 
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to examine
      * @returns information about the MD RAID `raid_spec` Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.QUERY}
+     * @throws GLib.Error
      */
     function md_detail(raid_spec: string): MDDetailData;
 
@@ -3594,24 +3938,28 @@ export namespace BlockDev {
     /**
      * @param device name of the device (a member of an MD RAID) to examine
      * @returns information about the MD RAID extracted from the `device` Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.QUERY}
+     * @throws GLib.Error
      */
     function md_examine(device: string): MDExamineData;
 
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to get the bitmap location
      * @returns bitmap location for `raid_spec` Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.QUERY}
+     * @throws GLib.Error
      */
     function md_get_bitmap_location(raid_spec: string): string;
 
     /**
      * @param uuid UUID to transform into format used by MD RAID
      * @returns transformed form of `uuid` or `null` in case of error This function expects a UUID in the canonical (traditional format) and returns a UUID in the format used by MD RAID and is thus reverse to `bd_md_canonicalize_uuid()`. The change is as follows: 3386ff85-f501-2621-4a43-5f061eb47236 -> 3386ff85:f5012621:4a435f06:1eb47236 Tech category: always available
+     * @throws GLib.Error
      */
     function md_get_md_uuid(uuid: string): string;
 
     /**
      * @param raid_spec specification of the RAID device (name, node or path) to get status
      * @returns status of the `raid_spec` RAID. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.QUERY}
+     * @throws GLib.Error
      */
     function md_get_status(raid_spec: string): string;
 
@@ -3619,6 +3967,7 @@ export namespace BlockDev {
      * @param member_size size of an array member
      * @param version metadata version or `null` to use the current default version
      * @returns Calculated superblock size for an array with a given `member_size` and metadata `version` or default if unsupported `version` is used. Tech category: always available
+     * @throws GLib.Error
      */
     function md_get_superblock_size(member_size: bigint | number, version: string | null): number;
 
@@ -3626,24 +3975,28 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function md_is_tech_avail(tech: MDTech, mode: bigint | number): boolean;
 
     /**
      * @param node path of the MD RAID's device node
      * @returns `name` of the MD RAID the device node belongs to or `null` in case of error Tech category: always available
+     * @throws GLib.Error
      */
     function md_name_from_node(node: string): string;
 
     /**
      * @param name name of the MD RAID
      * @returns device node of the `name` MD RAID or `null` in case of error Tech category: always available
+     * @throws GLib.Error
      */
     function md_node_from_name(name: string): string;
 
     /**
      * @param device device to nominate (add to its appropriate RAID) as a MD RAID device
      * @returns whether the `device` was successfully nominated (added to its appropriate RAID) or not Note: may start the MD RAID if it becomes ready by adding `device`. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_nominate(device: string): boolean;
 
@@ -3653,6 +4006,7 @@ export namespace BlockDev {
      * @param fail whether to mark the `device` as failed before removing
      * @param extra extra options for the removal (right now                                                 passed to the 'mdadm' utility)
      * @returns whether the `device` was successfully removed from the `raid_spec` RAID or not. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_remove(raid_spec: string, device: string, fail: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3660,12 +4014,14 @@ export namespace BlockDev {
      * @param raid_spec specification of the RAID device (name, node or path) to request sync action on
      * @param action requested sync action (resync, recovery, check, repair or idle)
      * @returns whether the `action` was successfully requested for the `raid_spec` RAID or not. Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_request_sync_action(raid_spec: string, action: string): boolean;
 
     /**
      * @param raid_spec specification of the (possibly degraded) RAID device (name, node or path) to be started
      * @returns whether the `raid_spec` was successfully started or not Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_run(raid_spec: string): boolean;
 
@@ -3673,6 +4029,7 @@ export namespace BlockDev {
      * @param raid_spec specification of the RAID device (name, node or path) to set the bitmap location
      * @param location bitmap location (none, internal or path)
      * @returns whether `location` was successfully set for `raid_spec` Tech category: {@link BlockDev.MDTech.MD_TECH_MDRAID}-{@link BlockDev.MDTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function md_set_bitmap_location(raid_spec: string, location: string): boolean;
 
@@ -3680,17 +4037,20 @@ export namespace BlockDev {
 
     /**
      * @returns whether multipath device maps were successfully flushed or not Flushes all unused multipath device maps. Tech category: {@link BlockDev.MpathTech.BASE}-{@link BlockDev.MpathTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function mpath_flush_mpaths(): boolean;
 
     /**
      * @returns list of names of all devices that are                                                     members of the mpath mappings (or `null`                                                     in case of error) Tech category: {@link BlockDev.MpathTech.BASE}-{@link BlockDev.MpathTechMode.QUERY}
+     * @throws GLib.Error
      */
     function mpath_get_mpath_members(): string[];
 
     /**
      * @param device device to test
      * @returns `true` if the device is a multipath member, `false` if not or an error appeared when queried (`error` is set in those cases) Tech category: {@link BlockDev.MpathTech.BASE}-{@link BlockDev.MpathTechMode.QUERY}
+     * @throws GLib.Error
      */
     function mpath_is_mpath_member(device: string): boolean;
 
@@ -3698,12 +4058,14 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function mpath_is_tech_avail(tech: MpathTech, mode: bigint | number): boolean;
 
     /**
      * @param enabled whether friendly names should be enabled or not
      * @returns if successfully set or not Tech category: {@link BlockDev.MpathTech.FRIENDLY_NAMES}-{@link BlockDev.MpathTechMode.MODIFY}
+     * @throws GLib.Error
      */
     function mpath_set_friendly_names(enabled: boolean): boolean;
 
@@ -3714,6 +4076,7 @@ export namespace BlockDev {
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.NVDIMMTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_is_tech_avail(tech: NVDIMMTech, mode: bigint | number): boolean;
 
@@ -3724,6 +4087,7 @@ export namespace BlockDev {
      * @param extra extra options (currently unused)
      * @returns information about the namespaces on `bus` and `region` or                                     `null` if no namespaces were found (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_list_namespaces(bus: string | null, region: string | null, idle: boolean, extra: ExtraArg[] | null): NVDIMMNamespaceInfo[];
 
@@ -3732,6 +4096,7 @@ export namespace BlockDev {
      * @param extra extra options (currently unused)
      * @returns whether the `namespace` was successfully disabled or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.ACTIVATE_DEACTIVATE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_disable(namespace: string, extra: ExtraArg[] | null): boolean;
 
@@ -3740,6 +4105,7 @@ export namespace BlockDev {
      * @param extra extra options (currently unused)
      * @returns whether the `namespace` was successfully enabled or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.ACTIVATE_DEACTIVATE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_enable(namespace: string, extra: ExtraArg[] | null): boolean;
 
@@ -3747,6 +4113,7 @@ export namespace BlockDev {
      * @param device name or path of a block device (e.g. "/dev/pmem0")
      * @returns namespace device name (e.g. "namespaceX.Y") for `device`                           or `null` if `device` is not a NVDIMM namespace                           (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_get_devname(device: string): string;
 
@@ -3754,6 +4121,7 @@ export namespace BlockDev {
      * @param mode_str string representation of mode
      * @returns mode matching the `mode_str` given or {@link BlockDev.NVDIMMNamespaceMode.UNKNOWN} in case of no match Tech category: always available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_get_mode_from_str(mode_str: string): NVDIMMNamespaceMode;
 
@@ -3761,6 +4129,7 @@ export namespace BlockDev {
      * @param mode mode to get string representation of
      * @returns string representation of `mode` or `null` in case of error Tech category: always available
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_get_mode_str(mode: NVDIMMNamespaceMode): string;
 
@@ -3768,6 +4137,7 @@ export namespace BlockDev {
      * @param mode namespace mode
      * @returns list of supported sector sizes for `mode` Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_get_supported_sector_sizes(mode: NVDIMMNamespaceMode): number[];
 
@@ -3776,6 +4146,7 @@ export namespace BlockDev {
      * @param extra extra options (currently unused)
      * @returns information about given namespace or `null` if no such                           namespace was found (`error` may be set to indicate error) Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.QUERY}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_info(namespace: string, extra: ExtraArg[] | null): NVDIMMNamespaceInfo;
 
@@ -3786,6 +4157,7 @@ export namespace BlockDev {
      * @param extra extra options for the creation (right now                                                 passed to the 'ndctl' utility)
      * @returns whether `namespace` was successfully reconfigured or not Tech category: {@link BlockDev.NVDIMMTech.NVDIMM_TECH_NAMESPACE}-{@link BlockDev.NVDIMMTechMode.RECONFIGURE}
      * @deprecated since 3.1: NVDIMM plugin will be removed in the next major release
+     * @throws GLib.Error
      */
     function nvdimm_namespace_reconfigure(namespace: string, mode: NVDIMMNamespaceMode, force: boolean, extra: ExtraArg[] | null): boolean;
 
@@ -3845,6 +4217,7 @@ export namespace BlockDev {
      * @param host_id User-defined host UUID or `null` to use default (as defined in `/etc/nvme/hostid`)
      * @param extra Additional arguments.
      * @returns `true` if the subsystem was connected successfully, `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_connect(subsysnqn: string, transport: string, transport_addr: string | null, transport_svcid: string | null, host_traddr: string | null, host_iface: string | null, host_nqn: string | null, host_id: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -3859,6 +4232,7 @@ export namespace BlockDev {
      * @param device a NVMe controller or namespace device (e.g. `/dev/nvme0`)
      * @param action self-test action to take.
      * @returns `true` if the device self-test command was issued successfully,          `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
+     * @throws GLib.Error
      */
     function nvme_device_self_test(device: string, action: NVMESelfTestAction): boolean;
 
@@ -3868,6 +4242,7 @@ export namespace BlockDev {
      * is only returned when all controllers were disconnected successfully.
      * @param subsysnqn The name of the NVMe subsystem to disconnect.
      * @returns `true` if all matching controllers were disconnected successfully, `false` with `error`          set in case of a disconnect error or when no matching controllers were found. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_disconnect(subsysnqn: string): boolean;
 
@@ -3876,6 +4251,7 @@ export namespace BlockDev {
      * by a block device path.
      * @param path NVMe controller device to disconnect (e.g. `/dev/nvme0`).
      * @returns `true` if the controller was disconnected successfully,          `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_disconnect_by_path(path: string): boolean;
 
@@ -3889,6 +4265,7 @@ export namespace BlockDev {
      * @param host_nqn Limit matching to the specified host NQN.
      * @param host_id Limit matching to the specified host ID.
      * @returns list of controller sysfs paths          or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_find_ctrls_for_ns(ns_sysfs_path: string, subsysnqn: string | null, host_nqn: string | null, host_id: string | null): string[];
 
@@ -3900,6 +4277,7 @@ export namespace BlockDev {
      * @param host_nqn Limit matching to the specified host NQN.
      * @param host_id Limit matching to the specified host ID.
      * @returns list of namespace sysfs paths          or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_find_namespaces_for_ctrl(ctrl_sysfs_path: string, subsysnqn: string | null, host_nqn: string | null, host_id: string | null): string[];
 
@@ -3926,6 +4304,7 @@ export namespace BlockDev {
      * @param metadata_size desired metadata size in bytes or `0` for default. See {@link BlockDev.NVMELBAFormat} and `bd_nvme_get_namespace_info()`.
      * @param secure_erase optional secure erase action to take.
      * @returns `true` if the format command finished successfully, `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
+     * @throws GLib.Error
      */
     function nvme_format(device: string, lba_data_size: number, metadata_size: number, secure_erase: NVMEFormatSecureErase): boolean;
 
@@ -3934,6 +4313,7 @@ export namespace BlockDev {
      * takes in account various system identifiers (DMI, device tree) with the goal
      * of a stable unique identifier whenever feasible.
      * @returns the Host NQN string or `null` with `error` set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_generate_host_nqn(): string;
 
@@ -3942,6 +4322,7 @@ export namespace BlockDev {
      * as specified by the `device` block device path.
      * @param device a NVMe controller device (e.g. `/dev/nvme0`)
      * @returns information about given controller or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_controller_info(device: string): NVMEControllerInfo;
 
@@ -3955,6 +4336,7 @@ export namespace BlockDev {
      * most recent entries are provided.
      * @param device a NVMe controller device (e.g. `/dev/nvme0`)
      * @returns null-terminated list          of error entries or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_error_log_entries(device: string): NVMEErrorLogEntry[];
 
@@ -3962,6 +4344,7 @@ export namespace BlockDev {
      * Reads the Host ID value from the global `/etc/nvme/hostid` file. An empty
      * string is an indication that no Host ID has been set.
      * @returns the Host ID string or an empty string if none set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_get_host_id(): string;
 
@@ -3969,6 +4352,7 @@ export namespace BlockDev {
      * Reads the Host NQN (NVM Qualified Name) value from the global `/etc/nvme/hostnqn`
      * file. An empty string is an indication that no Host NQN has been set.
      * @returns the Host NQN string or an empty string if none set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_get_host_nqn(): string;
 
@@ -3977,6 +4361,7 @@ export namespace BlockDev {
      * as specified by the `device` block device path.
      * @param device a NVMe namespace device (e.g. `/dev/nvme0n1`)
      * @returns information about given namespace or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_namespace_info(device: string): NVMENamespaceInfo;
 
@@ -3989,6 +4374,7 @@ export namespace BlockDev {
      * several minutes) to avoid interfering with the progress of the sanitize operation itself.
      * @param device a NVMe controller device (e.g. `/dev/nvme0`)
      * @returns sanitize log data or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_sanitize_log(device: string): NVMESanitizeLog;
 
@@ -3998,6 +4384,7 @@ export namespace BlockDev {
      * 20 device self-test operations.
      * @param device a NVMe controller device (e.g. `/dev/nvme0`)
      * @returns self-test log data or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_self_test_log(device: string): NVMESelfTestLog;
 
@@ -4006,6 +4393,7 @@ export namespace BlockDev {
      * The information provided is over the life of the controller and is retained across power cycles.
      * @param device a NVMe controller device (e.g. `/dev/nvme0`)
      * @returns health log data or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.INFO}
+     * @throws GLib.Error
      */
     function nvme_get_smart_log(device: string): NVMESmartLog;
 
@@ -4013,6 +4401,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.NVMETechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function nvme_is_tech_avail(tech: NVMETech, mode: bigint | number): boolean;
 
@@ -4053,12 +4442,14 @@ export namespace BlockDev {
      * @param overwrite_pattern a 32-bit pattern used for the Overwrite sanitize operation.
      * @param overwrite_invert_pattern invert the overwrite pattern between passes.
      * @returns `true` if the sanitize command was successfully submitted, `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.NVME}-{@link BlockDev.NVMETechMode.MANAGE}
+     * @throws GLib.Error
      */
     function nvme_sanitize(device: string, action: NVMESanitizeAction, no_dealloc: boolean, overwrite_pass_count: number, overwrite_pattern: number, overwrite_invert_pattern: boolean): boolean;
 
     /**
      * @param result A %BDNVMESelfTestResult.
      * @returns A string representation of `result` for use as an identifier string                           or `null` when the code is unknown.
+     * @throws GLib.Error
      */
     function nvme_self_test_result_to_string(result: NVMESelfTestResult): string;
 
@@ -4067,6 +4458,7 @@ export namespace BlockDev {
      * No validation of the string is performed.
      * @param host_id The Host ID.
      * @returns `true` if the value was set successfully or `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_set_host_id(host_id: string): boolean;
 
@@ -4075,6 +4467,7 @@ export namespace BlockDev {
      * No validation of the string is performed.
      * @param host_nqn The Host NVM Qualified Name.
      * @returns `true` if the value was set successfully or `false` otherwise with `error` set. Tech category: {@link BlockDev.NVMETech.FABRICS}-{@link BlockDev.NVMETechMode.INITIATOR}
+     * @throws GLib.Error
      */
     function nvme_set_host_nqn(host_nqn: string): boolean;
 
@@ -4085,6 +4478,7 @@ export namespace BlockDev {
      * @param size desired size of the partition (if 0, a max-sized partition is created)
      * @param align alignment to use for the partition
      * @returns specification of the created partition or `null` in case of error NOTE: The resulting partition may start at a different position than given by       `start` and can have different size than `size` due to alignment. Tech category: {@link BlockDev.PartTechMode.MODIFY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_create_part(disk: string, type: PartTypeReq, start: bigint | number, size: bigint | number, align: PartAlign): PartSpec;
 
@@ -4093,6 +4487,7 @@ export namespace BlockDev {
      * @param type type of the partition table to create
      * @param ignore_existing whether to ignore/overwrite the existing table or not                   (reports an error if `false` and there's some table on `disk`)
      * @returns whether the partition table was successfully created or not Tech category: {@link BlockDev.PartTechMode.CREATE_TABLE} + the tech according to `type`
+     * @throws GLib.Error
      */
     function part_create_table(disk: string, type: PartTableType, ignore_existing: boolean): boolean;
 
@@ -4100,6 +4495,7 @@ export namespace BlockDev {
      * @param disk disk to remove the partition from
      * @param part partition to remove
      * @returns whether the `part` partition was successfully deleted from `disk` Tech category: {@link BlockDev.PartTechMode.MODIFY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_delete_part(disk: string, part: string): boolean;
 
@@ -4110,24 +4506,28 @@ export namespace BlockDev {
      * @param type type of the partition that is planned to be added
      * @param size size of the partition to be added
      * @returns spec of the best free region on `disk` for a new partition of type `type`                           with the size of `size` or `null` if there is none such region or if                           there was an error (`error` gets populated) Note: For the `type` {@link BlockDev.PartType.NORMAL}, the smallest possible space that *is not* in an extended partition       is found. For the `type` {@link BlockDev.PartType.LOGICAL}, the smallest possible space that *is* in an extended       partition is found. For {@link BlockDev.PartType.EXTENDED}, the biggest possible space is found as long as there       is no other extended partition (there can only be one). Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_best_free_region(disk: string, type: PartType, size: bigint | number): PartSpec;
 
     /**
      * @param disk disk to get free regions for
      * @returns specs of the free regions from `disk` or `null` in case of error Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_disk_free_regions(disk: string): PartSpec[];
 
     /**
      * @param disk disk to get information about partitions for
      * @returns specs of the partitions from `disk` or `null` in case of error Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_disk_parts(disk: string): PartSpec[];
 
     /**
      * @param disk disk to get information about
      * @returns information about the given `disk` or `null` (in case of error) Tech category: {@link BlockDev.PartTechMode.QUERY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_disk_spec(disk: string): PartDiskSpec;
 
@@ -4135,6 +4535,7 @@ export namespace BlockDev {
      * @param disk disk to remove the partition from
      * @param position position (in bytes) determining the partition
      * @returns spec of the partition from `disk` spanning over the `position` or `null` if no such          partition exists or in case of error (`error` is set) Tech category: {@link BlockDev.PartTechMode.QUERY_PART} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_part_by_pos(disk: string, position: bigint | number): PartSpec;
 
@@ -4142,18 +4543,21 @@ export namespace BlockDev {
      * @param disk disk to remove the partition from
      * @param part partition to get spec for
      * @returns spec of the `part` partition from `disk` or `null` in case of error Tech category: {@link BlockDev.PartTechMode.QUERY_PART} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_get_part_spec(disk: string, part: string): PartSpec;
 
     /**
      * @param type table type to get string representation for
      * @returns string representation of `table_type` Tech category: the tech according to `type`
+     * @throws GLib.Error
      */
     function part_get_part_table_type_str(type: PartTableType): string;
 
     /**
      * @param type type to get string representation for
      * @returns string representation of `type` Tech category: always available
+     * @throws GLib.Error
      */
     function part_get_type_str(type: PartType): string;
 
@@ -4161,6 +4565,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.PartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function part_is_tech_avail(tech: PartTech, mode: bigint | number): boolean;
 
@@ -4170,6 +4575,7 @@ export namespace BlockDev {
      * @param size new partition size, 0 for maximal size
      * @param align alignment to use for the partition end
      * @returns whether the `part` partition was successfully resized on `disk` to `size` NOTE: The resulting partition may be slightly bigger than requested due to alignment. Tech category: {@link BlockDev.PartTechMode.MODIFY_TABLE} + the tech according to the partition table type
+     * @throws GLib.Error
      */
     function part_resize_part(disk: string, part: string, size: bigint | number, align: PartAlign): boolean;
 
@@ -4178,6 +4584,7 @@ export namespace BlockDev {
      * @param part partition the attributes should be set for
      * @param attrs GPT attributes to set on `part`
      * @returns whether the `attrs` GPT attributes were successfully set for `part` or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_attributes(disk: string, part: string, attrs: bigint | number): boolean;
 
@@ -4186,6 +4593,7 @@ export namespace BlockDev {
      * @param part partition the bootable flag should be set for
      * @param bootable whether to set or unset the bootable flag
      * @returns whether the `bootable` flag was successfully set for `part` or not Tech category: {@link BlockDev.PartTech.MBR}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_bootable(disk: string, part: string, bootable: boolean): boolean;
 
@@ -4194,6 +4602,7 @@ export namespace BlockDev {
      * @param part partition the ID should be set for
      * @param part_id partition Id
      * @returns whether the `part_id` type was successfully set for `part` or not Tech category: {@link BlockDev.PartTech.MBR}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_id(disk: string, part: string, part_id: string): boolean;
 
@@ -4202,6 +4611,7 @@ export namespace BlockDev {
      * @param part partition the name should be set for
      * @param name name to set
      * @returns whether the name was successfully set or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_name(disk: string, part: string, name: string): boolean;
 
@@ -4210,6 +4620,7 @@ export namespace BlockDev {
      * @param part partition the type should be set for
      * @param type_guid GUID of the type
      * @returns whether the `type_guid` type was successfully set for `part` or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_type(disk: string, part: string, type_guid: string): boolean;
 
@@ -4218,6 +4629,7 @@ export namespace BlockDev {
      * @param part partition the UUID should be set for
      * @param uuid partition UUID to set
      * @returns whether the `uuid` type was successfully set for `part` or not Tech category: {@link BlockDev.PartTech.GPT}-{@link BlockDev.PartTechMode.MODIFY_PART}
+     * @throws GLib.Error
      */
     function part_set_part_uuid(disk: string, part: string, uuid: string): boolean;
 
@@ -4226,6 +4638,7 @@ export namespace BlockDev {
      * @param reload whether to reload the already loaded plugins or not
      * @param log_func logging function to use or `null`                                           to keep the old one
      * @returns whether the library was successfully initialized or not If `reload` is `true` all the plugins are closed and reloaded otherwise only the missing plugins are loaded.
+     * @throws GLib.Error
      */
     function reinit(require_plugins: PluginSpec[] | null, reload: boolean, log_func: UtilsLogFunc | null): boolean;
 
@@ -4234,6 +4647,7 @@ export namespace BlockDev {
      * @param device device to check.
      * @param extra extra options to pass through.
      * @returns ATA SMART log or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.INFO}
+     * @throws GLib.Error
      */
     function smart_ata_get_info(device: string, extra: ExtraArg[] | null): SmartATA;
 
@@ -4241,6 +4655,7 @@ export namespace BlockDev {
      * Retrieve SMART information from the supplied data.
      * @param data binary data to parse.
      * @returns ATA SMART log or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.INFO}
+     * @throws GLib.Error
      */
     function smart_ata_get_info_from_data(data: Uint8Array | string): SmartATA;
 
@@ -4250,6 +4665,7 @@ export namespace BlockDev {
      * @param operation {@link BlockDev.SmartSelfTestOp} self-test operation.
      * @param extra extra options to pass through.
      * @returns `true` when the self-test was triggered successfully or `false` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.SELFTEST}
+     * @throws GLib.Error
      */
     function smart_device_self_test(device: string, operation: SmartSelfTestOp, extra: ExtraArg[] | null): boolean;
 
@@ -4259,6 +4675,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SmartTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function smart_is_tech_avail(tech: SmartTech, mode: bigint | number): boolean;
 
@@ -4267,6 +4684,7 @@ export namespace BlockDev {
      * @param device device to check.
      * @param extra extra options to pass through.
      * @returns SCSI SMART log or `null` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.SCSI}-{@link BlockDev.SmartTechMode.INFO}
+     * @throws GLib.Error
      */
     function smart_scsi_get_info(device: string, extra: ExtraArg[] | null): SmartSCSI;
 
@@ -4276,18 +4694,21 @@ export namespace BlockDev {
      * @param enabled whether to enable or disable the SMART functionality
      * @param extra extra options to pass through.
      * @returns `true` when the functionality was set successfully or `false` in case of an error (with `error` set). Tech category: {@link BlockDev.SmartTech.ATA}-{@link BlockDev.SmartTechMode.INFO}
+     * @throws GLib.Error
      */
     function smart_set_enabled(device: string, enabled: boolean, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param label label to check
      * @returns whether `label` is a valid label for swap or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function swap_check_label(label: string): boolean;
 
     /**
      * @param uuid UUID to check
      * @returns whether `uuid` is a valid UUID for swap or not          (reason is provided in `error`) Tech category: always available
+     * @throws GLib.Error
      */
     function swap_check_uuid(uuid: string): boolean;
 
@@ -4297,6 +4718,7 @@ export namespace BlockDev {
      * @param tech the queried tech
      * @param mode a bit mask of queried modes of operation ({@link BlockDev.SwapTechMode}) for `tech`
      * @returns whether the `tech`-`mode` combination is available -- supported by the          plugin implementation and having all the runtime dependencies available
+     * @throws GLib.Error
      */
     function swap_is_tech_avail(tech: SwapTech, mode: bigint | number): boolean;
 
@@ -4306,6 +4728,7 @@ export namespace BlockDev {
      * @param uuid UUID for the swap space device
      * @param extra extra options for the creation (right now                                                 passed to the 'mkswap' utility)
      * @returns whether the swap space was successfully created or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.CREATE}
+     * @throws GLib.Error
      */
     function swap_mkswap(device: string, label: string | null, uuid: string | null, extra: ExtraArg[] | null): boolean;
 
@@ -4313,6 +4736,7 @@ export namespace BlockDev {
      * @param device a device to set label on
      * @param label label that will be set
      * @returns whether the label was successfully set or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.SET_LABEL}
+     * @throws GLib.Error
      */
     function swap_set_label(device: string, label: string): boolean;
 
@@ -4320,12 +4744,14 @@ export namespace BlockDev {
      * @param device a device to set UUID on
      * @param uuid UUID that will be set
      * @returns whether the UUID was successfully set or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.SET_UUID}
+     * @throws GLib.Error
      */
     function swap_set_uuid(device: string, uuid: string): boolean;
 
     /**
      * @param device swap device to deactivate
      * @returns whether the swap device was successfully deactivated or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.ACTIVATE_DEACTIVATE}
+     * @throws GLib.Error
      */
     function swap_swapoff(device: string): boolean;
 
@@ -4333,12 +4759,14 @@ export namespace BlockDev {
      * @param device swap device to activate
      * @param priority priority of the activated device or -1 to use the default
      * @returns whether the swap device was successfully activated or not Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.ACTIVATE_DEACTIVATE}
+     * @throws GLib.Error
      */
     function swap_swapon(device: string, priority: number): boolean;
 
     /**
      * @param device swap device to get status of
      * @returns `true` if the swap device is active, `false` if not active or failed to determine (`error`) is set not a non-NULL value in such case) Tech category: {@link BlockDev.SwapTech.SWAP_TECH_SWAP}-{@link BlockDev.SwapTechMode.QUERY}
+     * @throws GLib.Error
      */
     function swap_swapstatus(device: string): boolean;
 
@@ -4346,6 +4774,7 @@ export namespace BlockDev {
      * @param request_plugins `null`-terminated list                   of plugins that should be loaded (if no so_name is specified                   for the plugin, the default is used) or `null` to load all                   plugins
      * @param log_func logging function to use
      * @returns whether the library was successfully initialized with all the          required or default (see `require_plugins`) plugins or not *UNLIKE IN CASE OF `bd_init()` AND `bd_ensure_init()`, FAILURE TO LOAD A PLUGIN  IS NOT CONSIDERED ERROR*
+     * @throws GLib.Error
      */
     function try_init(request_plugins: PluginSpec[] | null, log_func: UtilsLogFunc | null): [boolean, string[] | null];
 
@@ -4354,6 +4783,7 @@ export namespace BlockDev {
      * @param reload whether to reload the already loaded plugins or not
      * @param log_func logging function to use or `null`                                           to keep the old one
      * @returns whether the library was successfully initialized or not If `reload` is `true` all the plugins are closed and reloaded otherwise only the missing plugins are loaded. *UNLIKE IN CASE OF `bd_init()` AND `bd_ensure_init()`, FAILURE TO LOAD A PLUGIN  IS NOT CONSIDERED ERROR*
+     * @throws GLib.Error
      */
     function try_reinit(require_plugins: PluginSpec[] | null, reload: boolean, log_func: UtilsLogFunc | null): [boolean, string[] | null];
 
@@ -4376,6 +4806,7 @@ export namespace BlockDev {
      * @param version_arg argument to use with the `util` to get version               info or `null` to use "--version"
      * @param version_regexp regexp to extract version from the version                  info or `null` if only version is printed by "$ `util` `version_arg`"
      * @returns whether the `util` is available in a version >= `version` or not          (`error` is set in such case).
+     * @throws GLib.Error
      */
     function utils_check_util_version(util: string, version: string | null, version_arg: string | null, version_regexp: string | null): boolean;
 
@@ -4385,6 +4816,7 @@ export namespace BlockDev {
      * @param bus_name name of the service to check (e.g. "com.redhat.lvmdbus1")
      * @param obj_prefix object path prefix for the service (e.g. "/com/redhat/lvmdbus1")
      * @returns whether the service was found in the system
+     * @throws GLib.Error
      */
     function utils_dbus_service_available(connection: Gio.DBusConnection | null, bus_type: Gio.BusType, bus_name: string, obj_prefix: string): boolean;
 
@@ -4392,6 +4824,7 @@ export namespace BlockDev {
      * @param str string to write to `file_path`
      * @param file_path path to file
      * @returns whether the `str` was successfully written to `file_path` or not.
+     * @throws GLib.Error
      */
     function utils_echo_str_to_file(str: string, file_path: string): boolean;
 
@@ -4401,6 +4834,7 @@ export namespace BlockDev {
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed capturing the output or not
+     * @throws GLib.Error
      */
     function utils_exec_and_capture_output(argv: string[], extra: ExtraArg[] | null): [boolean, string];
 
@@ -4408,6 +4842,7 @@ export namespace BlockDev {
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed capturing the output or not
+     * @throws GLib.Error
      */
     function utils_exec_and_capture_output_no_progress(argv: string[], extra: ExtraArg[] | null): [boolean, string, string, number];
 
@@ -4415,6 +4850,7 @@ export namespace BlockDev {
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
+     * @throws GLib.Error
      */
     function utils_exec_and_report_error(argv: string[], extra: ExtraArg[] | null): boolean;
 
@@ -4422,6 +4858,7 @@ export namespace BlockDev {
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
+     * @throws GLib.Error
      */
     function utils_exec_and_report_error_no_progress(argv: string[], extra: ExtraArg[] | null): boolean;
 
@@ -4433,6 +4870,7 @@ export namespace BlockDev {
      * @param extra extra arguments
      * @param prog_extract function for extracting progress information
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
+     * @throws GLib.Error
      */
     function utils_exec_and_report_progress(argv: string[], extra: ExtraArg[] | null, prog_extract: UtilsProgExtract | null): [boolean, number];
 
@@ -4440,6 +4878,7 @@ export namespace BlockDev {
      * @param argv the argv array for the call
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
+     * @throws GLib.Error
      */
     function utils_exec_and_report_status_error(argv: string[], extra: ExtraArg[] | null): [boolean, number];
 
@@ -4448,18 +4887,21 @@ export namespace BlockDev {
      * @param input input for the executed program
      * @param extra extra arguments
      * @returns whether the `argv` was successfully executed (no error and exit code 0) or not
+     * @throws GLib.Error
      */
     function utils_exec_with_input(argv: string[], input: string | null, extra: ExtraArg[] | null): boolean;
 
     /**
      * @param dev_spec specification of the device (e.g. "/dev/sda", any symlink, or the name of a file            under "/dev")
      * @returns a list of all symlinks (known to udev) for the                                                     device specified with `dev_spec` or `null` in                                                     case of error
+     * @throws GLib.Error
      */
     function utils_get_device_symlinks(dev_spec: string): string[];
 
     /**
      * Retrieves version of currently running Linux kernel. Acts also as an initializer for statically cached data.
      * @returns Detected Linux kernel version or `null` in case of an error. The returned value belongs to the library, do not free.
+     * @throws GLib.Error
      */
     function utils_get_linux_version(): UtilsLinuxVersion;
 
@@ -4468,24 +4910,28 @@ export namespace BlockDev {
     /**
      * @param module_name name of the kernel module to check
      * @returns whether the `module_name` was found in the system, either as a module or built-in in the kernel
+     * @throws GLib.Error
      */
     function utils_have_kernel_module(module_name: string): boolean;
 
     /**
      * @param new_log_func logging function to use or                                               `null` to disable logging; use                                               `bd_utils_log_stdout` to reset to                                               the default behaviour
      * @returns whether logging was successfully initialized or not
+     * @throws GLib.Error
      */
     function utils_init_logging(new_log_func: UtilsLogFunc | null): boolean;
 
     /**
      * @param new_prog_func progress reporting function to                                                use or `null` to reset to default
      * @returns whether progress reporting was successfully initialized or not
+     * @throws GLib.Error
      */
     function utils_init_prog_reporting(new_prog_func: UtilsProgFunc | null): boolean;
 
     /**
      * @param new_prog_func progress reporting function to                                                use on current thread or `null`                                                to reset to default or global
      * @returns whether progress reporting was successfully initialized or not
+     * @throws GLib.Error
      */
     function utils_init_prog_reporting_thread(new_prog_func: UtilsProgFunc | null): boolean;
 
@@ -4493,6 +4939,7 @@ export namespace BlockDev {
      * @param module_name name of the kernel module to load
      * @param options module options
      * @returns whether the `module_name` was successfully loaded or not
+     * @throws GLib.Error
      */
     function utils_load_kernel_module(module_name: string, options: string | null): boolean;
 
@@ -4521,6 +4968,7 @@ export namespace BlockDev {
 
     /**
      * @returns whether progress reporting for the current thread was successfully muted (deinitialized even in presence of a global reporting function) or not
+     * @throws GLib.Error
      */
     function utils_mute_prog_reporting_thread(): boolean;
 
@@ -4551,6 +4999,7 @@ export namespace BlockDev {
     /**
      * @param dev_spec specification of the device (e.g. "/dev/sda", any symlink, or the name of a file            under "/dev")
      * @returns the full real path of the device (e.g. "/dev/md126"                           for "/dev/md/my_raid") or `null` in case of error
+     * @throws GLib.Error
      */
     function utils_resolve_device(dev_spec: string): string;
 
@@ -4569,6 +5018,7 @@ export namespace BlockDev {
     /**
      * @param module_name name of the kernel module to unload
      * @returns whether the `module_name` was successfully unloaded or not
+     * @throws GLib.Error
      */
     function utils_unload_kernel_module(module_name: string): boolean;
 
@@ -4576,6 +5026,7 @@ export namespace BlockDev {
      * @param ver_string1 first version string
      * @param ver_string2 second version string
      * @returns -1, 0 or 1 if `ver_string1` is lower, the same or higher version as          `ver_string2` respectively. If an error occurs, returns -2 and `error`          is set. **ONLY SUPPORTS VERSION STRINGS OF FORMAT `X[.Y[.Z[.Z2[.Z3...[-R]]]]]` where all components   are natural numbers!**
+     * @throws GLib.Error
      */
     function utils_version_cmp(ver_string1: string, ver_string2: string): number;
 
@@ -4604,11 +5055,11 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum BtrfsTechMode {
-        CREATE,
-        DELETE,
-        MODIFY,
-        QUERY,
-        DELETE_RECURSIVE,
+        CREATE = 1,
+        DELETE = 2,
+        MODIFY = 4,
+        QUERY = 8,
+        DELETE_RECURSIVE = 16,
     }
 
 
@@ -4616,12 +5067,12 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum CryptoIntegrityOpenFlags {
-        NO_JOURNAL,
-        RECOVERY,
-        NO_JOURNAL_BITMAP,
-        RECALCULATE,
-        RECALCULATE_RESET,
-        ALLOW_DISCARDS,
+        NO_JOURNAL = 1,
+        RECOVERY = 2,
+        NO_JOURNAL_BITMAP = 4,
+        RECALCULATE = 8,
+        RECALCULATE_RESET = 16,
+        ALLOW_DISCARDS = 32,
     }
 
 
@@ -4629,13 +5080,13 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum CryptoLUKSPersistentFlags {
-        ALLOW_DISCARDS,
-        SAME_CPU_CRYPT,
-        SUBMIT_FROM_CRYPT_CPUS,
-        NO_JOURNAL,
-        NO_READ_WORKQUEUE,
-        NO_WRITE_WORKQUEUE,
-        HIGH_PRIORITY,
+        ALLOW_DISCARDS = 1,
+        SAME_CPU_CRYPT = 2,
+        SUBMIT_FROM_CRYPT_CPUS = 4,
+        NO_JOURNAL = 8,
+        NO_READ_WORKQUEUE = 16,
+        NO_WRITE_WORKQUEUE = 32,
+        HIGH_PRIORITY = 64,
     }
 
 
@@ -4643,8 +5094,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum CryptoOpenFlags {
-        ALLOW_DISCARDS,
-        READONLY,
+        ALLOW_DISCARDS = 1,
+        READONLY = 2,
     }
 
 
@@ -4652,15 +5103,15 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum CryptoTechMode {
-        CREATE,
-        OPEN_CLOSE,
-        QUERY,
-        ADD_KEY,
-        REMOVE_KEY,
-        RESIZE,
-        SUSPEND_RESUME,
-        BACKUP_RESTORE,
-        MODIFY,
+        CREATE = 1,
+        OPEN_CLOSE = 2,
+        QUERY = 4,
+        ADD_KEY = 8,
+        REMOVE_KEY = 16,
+        RESIZE = 32,
+        SUSPEND_RESUME = 64,
+        BACKUP_RESTORE = 128,
+        MODIFY = 256,
     }
 
 
@@ -4668,9 +5119,9 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum DMTechMode {
-        CREATE_ACTIVATE,
-        REMOVE_DEACTIVATE,
-        QUERY,
+        CREATE_ACTIVATE = 1,
+        REMOVE_DEACTIVATE = 2,
+        QUERY = 4,
     }
 
 
@@ -4678,8 +5129,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSConfigureFlags {
-        LABEL,
-        UUID,
+        LABEL = 2,
+        UUID = 4,
     }
 
 
@@ -4687,18 +5138,18 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSF2FSFeature {
-        ENCRYPT,
-        BLKZONED,
-        ATOMIC_WRITE,
-        EXTRA_ATTR,
-        PRJQUOTA,
-        INODE_CHKSUM,
-        FLEXIBLE_INLINE_XATTR,
-        QUOTA_INO,
-        INODE_CRTIME,
-        LOST_FOUND,
-        VERITY,
-        SB_CHKSUM,
+        ENCRYPT = 1,
+        BLKZONED = 2,
+        ATOMIC_WRITE = 4,
+        EXTRA_ATTR = 8,
+        PRJQUOTA = 16,
+        INODE_CHKSUM = 32,
+        FLEXIBLE_INLINE_XATTR = 64,
+        QUOTA_INO = 128,
+        INODE_CRTIME = 256,
+        LOST_FOUND = 512,
+        VERITY = 1024,
+        SB_CHKSUM = 2048,
     }
 
 
@@ -4706,8 +5157,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSFeatureFlags {
-        OWNERS,
-        PARTITION_TABLE,
+        OWNERS = 2,
+        PARTITION_TABLE = 4,
     }
 
 
@@ -4715,8 +5166,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSFsckFlags {
-        CHECK,
-        REPAIR,
+        CHECK = 2,
+        REPAIR = 4,
     }
 
 
@@ -4725,12 +5176,12 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSMkfsOptionsFlags {
-        LABEL,
-        UUID,
-        DRY_RUN,
-        NODISCARD,
-        FORCE,
-        NOPT,
+        LABEL = 1,
+        UUID = 2,
+        DRY_RUN = 4,
+        NODISCARD = 8,
+        FORCE = 16,
+        NOPT = 32,
     }
 
 
@@ -4740,10 +5191,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSResizeFlags {
-        OFFLINE_SHRINK,
-        OFFLINE_GROW,
-        ONLINE_SHRINK,
-        ONLINE_GROW,
+        OFFLINE_SHRINK = 2,
+        OFFLINE_GROW = 4,
+        ONLINE_SHRINK = 8,
+        ONLINE_GROW = 16,
     }
 
 
@@ -4751,14 +5202,14 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum FSTechMode {
-        MKFS,
-        WIPE,
-        CHECK,
-        REPAIR,
-        SET_LABEL,
-        QUERY,
-        RESIZE,
-        SET_UUID,
+        MKFS = 1,
+        WIPE = 2,
+        CHECK = 4,
+        REPAIR = 8,
+        SET_LABEL = 16,
+        QUERY = 32,
+        RESIZE = 64,
+        SET_UUID = 128,
     }
 
 
@@ -4766,16 +5217,16 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum LVMCachePoolFlags {
-        STRIPED,
-        RAID1,
-        RAID5,
-        RAID6,
-        RAID10,
-        META_STRIPED,
-        META_RAID1,
-        META_RAID5,
-        META_RAID6,
-        META_RAID10,
+        STRIPED = 1,
+        RAID1 = 2,
+        RAID5 = 4,
+        RAID6 = 8,
+        RAID10 = 16,
+        META_STRIPED = 1024,
+        META_RAID1 = 2048,
+        META_RAID5 = 4096,
+        META_RAID6 = 8192,
+        META_RAID10 = 16384,
     }
 
 
@@ -4783,10 +5234,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum LVMTechMode {
-        CREATE,
-        REMOVE,
-        MODIFY,
-        QUERY,
+        CREATE = 1,
+        REMOVE = 4,
+        MODIFY = 8,
+        QUERY = 16,
     }
 
 
@@ -4794,10 +5245,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum LoopTechMode {
-        CREATE,
-        DESTROY,
-        MODIFY,
-        QUERY,
+        CREATE = 1,
+        DESTROY = 2,
+        MODIFY = 4,
+        QUERY = 8,
     }
 
 
@@ -4805,10 +5256,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum MDTechMode {
-        CREATE,
-        DELETE,
-        MODIFY,
-        QUERY,
+        CREATE = 1,
+        DELETE = 2,
+        MODIFY = 4,
+        QUERY = 8,
     }
 
 
@@ -4816,8 +5267,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum MpathTechMode {
-        QUERY,
-        MODIFY,
+        QUERY = 1,
+        MODIFY = 2,
     }
 
 
@@ -4825,11 +5276,11 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum NVDIMMTechMode {
-        CREATE,
-        REMOVE,
-        ACTIVATE_DEACTIVATE,
-        QUERY,
-        RECONFIGURE,
+        CREATE = 1,
+        REMOVE = 2,
+        ACTIVATE_DEACTIVATE = 4,
+        QUERY = 8,
+        RECONFIGURE = 16,
     }
 
 
@@ -4837,24 +5288,24 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum NVMEControllerFeature {
-        MULTIPORT,
-        MULTICTRL,
-        SRIOV,
-        ANA_REPORTING,
-        FORMAT,
-        FORMAT_ALL_NS,
-        NS_MGMT,
-        SELFTEST,
-        SELFTEST_SINGLE,
-        SANITIZE_CRYPTO,
-        SANITIZE_BLOCK,
-        SANITIZE_OVERWRITE,
-        SECURE_ERASE_ALL_NS,
-        SECURE_ERASE_CRYPTO,
-        STORAGE_DEVICE,
-        ENCLOSURE,
-        MGMT_PCIE,
-        MGMT_SMBUS,
+        MULTIPORT = 1,
+        MULTICTRL = 2,
+        SRIOV = 4,
+        ANA_REPORTING = 8,
+        FORMAT = 16,
+        FORMAT_ALL_NS = 32,
+        NS_MGMT = 64,
+        SELFTEST = 128,
+        SELFTEST_SINGLE = 256,
+        SANITIZE_CRYPTO = 512,
+        SANITIZE_BLOCK = 1024,
+        SANITIZE_OVERWRITE = 2048,
+        SECURE_ERASE_ALL_NS = 4096,
+        SECURE_ERASE_CRYPTO = 8192,
+        STORAGE_DEVICE = 16384,
+        ENCLOSURE = 32768,
+        MGMT_PCIE = 65536,
+        MGMT_SMBUS = 131072,
     }
 
 
@@ -4862,10 +5313,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum NVMENamespaceFeature {
-        THIN,
-        MULTIPATH_SHARED,
-        FORMAT_PROGRESS,
-        ROTATIONAL,
+        THIN = 1,
+        MULTIPATH_SHARED = 2,
+        FORMAT_PROGRESS = 4,
+        ROTATIONAL = 8,
     }
 
 
@@ -4873,12 +5324,12 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum NVMESmartCriticalWarning {
-        SPARE,
-        TEMPERATURE,
-        DEGRADED,
-        READONLY,
-        VOLATILE_MEM,
-        PMR_READONLY,
+        SPARE = 1,
+        TEMPERATURE = 2,
+        DEGRADED = 4,
+        READONLY = 8,
+        VOLATILE_MEM = 16,
+        PMR_READONLY = 32,
     }
 
 
@@ -4886,9 +5337,9 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum NVMETechMode {
-        INFO,
-        MANAGE,
-        INITIATOR,
+        INFO = 1,
+        MANAGE = 2,
+        INITIATOR = 4,
     }
 
 
@@ -4896,11 +5347,11 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum PartTechMode {
-        CREATE_TABLE,
-        MODIFY_TABLE,
-        QUERY_TABLE,
-        MODIFY_PART,
-        QUERY_PART,
+        CREATE_TABLE = 1,
+        MODIFY_TABLE = 2,
+        QUERY_TABLE = 4,
+        MODIFY_PART = 8,
+        QUERY_PART = 16,
     }
 
 
@@ -4908,10 +5359,10 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum SmartATACapabilities {
-        ATTRIBUTE_AUTOSAVE,
-        AUTOSAVE_TIMER,
-        ERROR_LOGGING,
-        GP_LOGGING,
+        ATTRIBUTE_AUTOSAVE = 1,
+        AUTOSAVE_TIMER = 2,
+        ERROR_LOGGING = 4,
+        GP_LOGGING = 8,
     }
 
 
@@ -4919,8 +5370,8 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum SmartTechMode {
-        INFO,
-        SELFTEST,
+        INFO = 1,
+        SELFTEST = 2,
     }
 
 
@@ -4928,11 +5379,11 @@ export namespace BlockDev {
      * @gir-type Flags
      */
     enum SwapTechMode {
-        CREATE,
-        ACTIVATE_DEACTIVATE,
-        QUERY,
-        SET_LABEL,
-        SET_UUID,
+        CREATE = 1,
+        ACTIVATE_DEACTIVATE = 2,
+        QUERY = 4,
+        SET_LABEL = 8,
+        SET_UUID = 16,
     }
 
 

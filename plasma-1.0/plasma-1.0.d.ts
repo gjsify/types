@@ -85,12 +85,14 @@ export namespace Plasma {
          * @param options The option for creating an object.
          * @returns A newly created {@link Plasma.CreatedObject}   on success, `null` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         create(id: ObjectID, data_size: bigint | number, options: ClientCreateOptions | null): CreatedObject | null;
 
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         disconnect(): boolean;
 
@@ -105,6 +107,7 @@ export namespace Plasma {
          * @param timeout_ms The timeout in milliseconds. -1 means no timeout.
          * @returns A found {@link Plasma.ReferredObject}   on success, `null` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         refer_object(id: ObjectID, timeout_ms: bigint | number): ReferredObject | null;
     }
@@ -305,6 +308,7 @@ export namespace Plasma {
          * object anymore.
          * @returns `true` on success, `false` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         abort(): boolean;
 
@@ -313,6 +317,7 @@ export namespace Plasma {
          * object anymore.
          * @returns `true` on success, `false` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         seal(): boolean;
     }
@@ -543,6 +548,7 @@ export namespace Plasma {
          * Releases the object explicitly. The object is no longer valid.
          * @returns `true` on success, `false` on error.
          * @since 0.12.0
+         * @throws GLib.Error
          */
         release(): boolean;
     }

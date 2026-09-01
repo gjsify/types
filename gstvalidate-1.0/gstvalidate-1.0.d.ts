@@ -46,19 +46,23 @@ export namespace GstValidate {
      * @gir-type Enum
      */
     enum ActionReturn {
-        ERROR,
-        OK,
-        ASYNC,
+        ERROR = 0,
+        OK = 1,
+        ASYNC = 2,
         /**
          * The action will be executed asynchronously without blocking further
          * actions to be executed
+         * @since 1.20
          */
-        NON_BLOCKING,
-        INTERLACED,
-        ERROR_REPORTED,
-        IN_PROGRESS,
-        NONE,
-        DONE,
+        NON_BLOCKING = 3,
+        /**
+         * @deprecated since 1.20: Use #GST_VALIDATE_EXECUTE_ACTION_NON_BLOCKING instead.
+         */
+        INTERLACED = 3,
+        ERROR_REPORTED = 4,
+        IN_PROGRESS = 5,
+        NONE = 6,
+        DONE = 7,
     }
 
 
@@ -76,17 +80,17 @@ export namespace GstValidate {
         /**
          * The report will be completely ignored.
          */
-        DROP,
+        DROP = 0,
         /**
          * The report will be kept by the reporter,
          *                              but not reported to the runner.
          */
-        KEEP,
+        KEEP = 1,
         /**
          * The report will be kept by the reporter
          *                                and reported to the runner.
          */
-        REPORT,
+        REPORT = 2,
     }
 
 
@@ -101,13 +105,13 @@ export namespace GstValidate {
      * @gir-type Enum
      */
     enum ReportLevel {
-        CRITICAL,
-        WARNING,
-        ISSUE,
-        IGNORE,
-        UNKNOWN,
-        EXPECTED,
-        NUM_ENTRIES,
+        CRITICAL = 0,
+        WARNING = 1,
+        ISSUE = 2,
+        IGNORE = 3,
+        UNKNOWN = 4,
+        EXPECTED = 5,
+        NUM_ENTRIES = 6,
     }
 
 
@@ -135,17 +139,17 @@ export namespace GstValidate {
          * No reporting level known,
          * reporting will default to the global reporting level.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No debugging level specified or desired. Used to deactivate
          *  debugging output.
          */
-        NONE,
+        NONE = 1,
         /**
          * Summary of the issues found, with no
          *  details.
          */
-        SYNTHETIC,
+        SYNTHETIC = 2,
         /**
          * If set as the default level, similar
          *  issues can be reported multiple times for different subchains.
@@ -153,7 +157,7 @@ export namespace GstValidate {
          *  will report the issues where the object is the first to report an issue for
          *  a subchain.
          */
-        SUBCHAIN,
+        SUBCHAIN = 3,
         /**
          * If set as the default level, all the
          * distinct issues for all the monitors will be reported.
@@ -162,24 +166,30 @@ export namespace GstValidate {
          * Note that if the same issue happens twice on the same object, up until this
          * level that issue is only reported once.
          */
-        MONITOR,
+        MONITOR = 4,
         /**
          * All the issues will be reported, even those
          * that repeat themselves inside the same object. This can be *very* verbose if
          * set globally.
          */
-        ALL,
+        ALL = 5,
         /**
          * Sythetic for not fatal issues and detailed for
          * others
          */
-        SMART,
-        COUNT,
+        SMART = 6,
+        COUNT = 7,
     }
 
 
+    /**
+     * @default -1
+     */
     const UNKNOWN_BOOL: number;
 
+    /**
+     * @default -1
+     */
     const UNKNOWN_UINT64: number;
 
     /**
@@ -508,56 +518,61 @@ export namespace GstValidate {
         /**
          * No special flag
          */
-        NONE,
+        NONE = 0,
         /**
          * The action is a config
          */
-        CONFIG,
+        CONFIG = 2,
         /**
          * The action can be executed ASYNC
          */
-        ASYNC,
+        ASYNC = 4,
         /**
          * The action can be executed asynchronously but without blocking further
          * actions execution.
+         * @since 1.20
          */
-        NON_BLOCKING,
-        INTERLACED,
+        NON_BLOCKING = 8,
+        /**
+         * @deprecated since 1.20: Use #GST_VALIDATE_ACTION_TYPE_NON_BLOCKING instead.
+         */
+        INTERLACED = 8,
         /**
          * The action will be executed on 'element-added'
          *                                                 for a particular element type if no playback-time
          *                                                 is specified
          */
-        CAN_EXECUTE_ON_ADDITION,
+        CAN_EXECUTE_ON_ADDITION = 16,
         /**
          * The pipeline will need to be synchronized with the clock
          *                                        for that action type to be used.
          */
-        NEEDS_CLOCK,
+        NEEDS_CLOCK = 32,
         /**
          * Do not consider the non execution of the action
          *                                                   as a fatal error.
          */
-        NO_EXECUTION_NOT_FATAL,
+        NO_EXECUTION_NOT_FATAL = 64,
         /**
          * The action can use the 'optional' keyword. Such action
          *                                            instances will have the #GST_VALIDATE_ACTION_TYPE_NO_EXECUTION_NOT_FATAL
          *                                            flag set and won't be considered as fatal if they fail.
          */
-        CAN_BE_OPTIONAL,
-        DOESNT_NEED_PIPELINE,
+        CAN_BE_OPTIONAL = 128,
+        DOESNT_NEED_PIPELINE = 256,
         /**
          * The action can be used in config files even if it is not strictly a config
          *                                              action (ie. it needs a scenario to run).
          */
-        HANDLED_IN_CONFIG,
+        HANDLED_IN_CONFIG = 512,
         /**
          * The action is checking some state from objects in the pipeline. It means that it can
          * be used as 'check' in different action which have a `check` "sub action", such as the 'wait' action type.
          * This implies that the action can be executed from any thread and not only from the scenario thread as other
          * types.
+         * @since 1.22
          */
-        CHECK,
+        CHECK = 1024,
     }
 
 
@@ -579,13 +594,13 @@ export namespace GstValidate {
      * @gir-type Flags
      */
     enum DebugFlags {
-        FATAL_DEFAULT,
-        FATAL_ISSUES,
-        FATAL_WARNINGS,
-        FATAL_CRITICALS,
-        PRINT_ISSUES,
-        PRINT_WARNINGS,
-        PRINT_CRITICALS,
+        FATAL_DEFAULT = 0,
+        FATAL_ISSUES = 1,
+        FATAL_WARNINGS = 2,
+        FATAL_CRITICALS = 4,
+        PRINT_ISSUES = 8,
+        PRINT_WARNINGS = 16,
+        PRINT_CRITICALS = 32,
     }
 
 
@@ -603,13 +618,14 @@ export namespace GstValidate {
      * @gir-type Flags
      */
     enum IssueFlags {
-        NONE,
-        FULL_DETAILS,
-        NO_BACKTRACE,
+        NONE = 0,
+        FULL_DETAILS = 1,
+        NO_BACKTRACE = 2,
         /**
          * Always generate backtrace, even if not a critical issue
+         * @since 1.20
          */
-        FORCE_BACKTRACE,
+        FORCE_BACKTRACE = 4,
     }
 
 
@@ -624,10 +640,10 @@ export namespace GstValidate {
      * @gir-type Flags
      */
     enum MediaDescriptorWriterFlags {
-        NONE,
-        NO_PARSER,
-        FULL,
-        HANDLE_GLOGS,
+        NONE = 1,
+        NO_PARSER = 2,
+        FULL = 4,
+        HANDLE_GLOGS = 8,
     }
 
 
@@ -647,12 +663,12 @@ export namespace GstValidate {
          * The property is optional, if it
          * is not found on the object, nothing happens.
          */
-        OPTIONAL,
+        OPTIONAL = 1,
         /**
          * Do not check that after
          * setting the property, the value is the one we set.
          */
-        NO_VALUE_CHECK,
+        NO_VALUE_CHECK = 2,
     }
 
 
@@ -668,10 +684,10 @@ export namespace GstValidate {
      * @since 1.20
      */
     enum StructureResolveVariablesFlags {
-        ALL,
-        LOCAL_ONLY,
-        NO_FAILURE,
-        NO_EXPRESSION,
+        ALL = 0,
+        LOCAL_ONLY = 1,
+        NO_FAILURE = 2,
+        NO_EXPRESSION = 2,
     }
 
 
@@ -687,12 +703,12 @@ export namespace GstValidate {
      * @gir-type Flags
      */
     enum VerbosityFlags {
-        NONE,
-        POSITION,
-        MESSAGES,
-        PROPS_CHANGES,
-        NEW_ELEMENTS,
-        ALL,
+        NONE = 0,
+        POSITION = 2,
+        MESSAGES = 4,
+        PROPS_CHANGES = 8,
+        NEW_ELEMENTS = 16,
+        ALL = 30,
     }
 
 
@@ -2449,7 +2465,7 @@ export namespace GstValidate {
              * @signal
              * @run-last
              */
-            "report-added": (arg0: Report) => void;
+            "report-added": (object: Report) => void;
             /**
              * @signal
              * @run-last
@@ -2561,7 +2577,7 @@ export namespace GstValidate {
              * @since 1.20
              * @run-last
              */
-            "action-done": (arg0: Action) => void;
+            "action-done": (action: Action) => void;
             /**
              * Emitted once all actions have been executed
              * @signal
@@ -3090,11 +3106,13 @@ export namespace GstValidate {
         /**
          * @param uri 
          * @param discover_only 
+         * @throws GLib.Error
          */
         inspect_uri(uri: string, discover_only: boolean): boolean;
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         save(path: string): boolean;
 

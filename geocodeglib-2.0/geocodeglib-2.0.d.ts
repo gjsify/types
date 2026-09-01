@@ -84,7 +84,7 @@ export namespace GeocodeGlib {
         /**
          * CRS is World Geodetic System, standard for Earth.
          */
-        WGS84,
+        WGS84 = 0,
     }
 
 
@@ -103,7 +103,7 @@ export namespace GeocodeGlib {
         /**
          * The 'geo' URI scheme, RFC 5870
          */
-        GEO,
+        GEO = 0,
     }
 
 
@@ -122,19 +122,19 @@ export namespace GeocodeGlib {
         /**
          * Unknown type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Defines a point in space.
          */
-        NODE,
+        NODE = 1,
         /**
          * Used to explain how other elements work together.
          */
-        RELATION,
+        RELATION = 2,
         /**
          * Defines a linear feature and area boundaries.
          */
-        WAY,
+        WAY = 3,
     }
 
 
@@ -153,173 +153,179 @@ export namespace GeocodeGlib {
         /**
          * Type is unknown for this place.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A building or house.
          */
-        BUILDING,
+        BUILDING = 1,
         /**
          * A street.
          */
-        STREET,
+        STREET = 2,
         /**
          * A populated settlement such as a city, town, village.
          */
-        TOWN,
+        TOWN = 3,
         /**
          * One of the primary administrative areas within a country.
          */
-        STATE,
+        STATE = 4,
         /**
          * One of the secondary administrative areas within a country.
          */
-        COUNTY,
+        COUNTY = 5,
         /**
          * One of the tertiary administrative areas within a country.
          */
-        LOCAL_ADMINISTRATIVE_AREA,
+        LOCAL_ADMINISTRATIVE_AREA = 6,
         /**
          * A partial or full postal code.
          */
-        POSTAL_CODE,
+        POSTAL_CODE = 7,
         /**
          * One of the countries or dependent territories defined by the ISO 3166-1 standard.
          */
-        COUNTRY,
+        COUNTRY = 8,
         /**
          * An island.
          */
-        ISLAND,
+        ISLAND = 9,
         /**
          * An airport.
          */
-        AIRPORT,
+        AIRPORT = 10,
         /**
          * A railway station.
          */
-        RAILWAY_STATION,
+        RAILWAY_STATION = 11,
         /**
          * A bus stop.
          */
-        BUS_STOP,
+        BUS_STOP = 12,
         /**
          * A high capacity highways designed to safely carry fast motor traffic.
          */
-        MOTORWAY,
+        MOTORWAY = 13,
         /**
          * A water feature such as a river, canal, lake, bay or ocean.
          */
-        DRAINAGE,
+        DRAINAGE = 14,
         /**
          * A land feature such as a park, mountain or beach.
          */
-        LAND_FEATURE,
+        LAND_FEATURE = 15,
         /**
          * A uncategorized place.
          */
-        MISCELLANEOUS,
+        MISCELLANEOUS = 16,
         /**
          * An area covering multiple countries.
          */
-        SUPERNAME,
+        SUPERNAME = 17,
         /**
          * A point of interest such as a school, hospital or tourist attraction.
          */
-        POINT_OF_INTEREST,
+        POINT_OF_INTEREST = 18,
         /**
          * A subdivision of a town such as a suburb or neighborhood.
          */
-        SUBURB,
+        SUBURB = 19,
         /**
          * A place known by a colloquial name.
          */
-        COLLOQUIAL,
+        COLLOQUIAL = 20,
         /**
          * An area known within a specific context such as MSA or area code.
          */
-        ZONE,
+        ZONE = 21,
         /**
          * A historical primary administrative area within a country.
          */
-        HISTORICAL_STATE,
+        HISTORICAL_STATE = 22,
         /**
          * A historical secondary administrative area within a country.
          */
-        HISTORICAL_COUNTY,
+        HISTORICAL_COUNTY = 23,
         /**
          * One of the major land masses on the Earth.
          */
-        CONTINENT,
+        CONTINENT = 24,
         /**
          * An area defined by the Olson standard (tz database).
          */
-        TIME_ZONE,
+        TIME_ZONE = 25,
         /**
          * A housing development or subdivision known by name.
          */
-        ESTATE,
+        ESTATE = 26,
         /**
          * A historical populated settlement that is no longer known by its original name.
          */
-        HISTORICAL_TOWN,
+        HISTORICAL_TOWN = 27,
         /**
          * One of the five major bodies of water on the Earth.
          */
-        OCEAN,
+        OCEAN = 28,
         /**
          * An area of open water smaller than an ocean.
          */
-        SEA,
+        SEA = 29,
         /**
          * Institution designed for learning under the supervision of teachers.
          */
-        SCHOOL,
+        SCHOOL = 30,
         /**
          * All places of worship independently of the religion or denomination.
          */
-        PLACE_OF_WORSHIP,
+        PLACE_OF_WORSHIP = 31,
         /**
          * Generally formal place with sit-down facilities selling full meals served by waiters.
          */
-        RESTAURANT,
+        RESTAURANT = 32,
         /**
          * A bar or pub.
          */
-        BAR,
+        BAR = 33,
         /**
          * A light rail station or tram stop.
          */
-        LIGHT_RAIL_STATION,
+        LIGHT_RAIL_STATION = 34,
     }
 
 
     /**
      * Constant representing city-level accuracy.
+     * @default 15000
      */
     const LOCATION_ACCURACY_CITY: number;
 
     /**
      * Constant representing continent-level accuracy.
+     * @default 3000000
      */
     const LOCATION_ACCURACY_CONTINENT: number;
 
     /**
      * Constant representing country-level accuracy.
+     * @default 300000
      */
     const LOCATION_ACCURACY_COUNTRY: number;
 
     /**
      * Constant representing region-level accuracy.
+     * @default 50000
      */
     const LOCATION_ACCURACY_REGION: number;
 
     /**
      * Constant representing street-level accuracy.
+     * @default 1000
      */
     const LOCATION_ACCURACY_STREET: number;
 
     /**
      * Constant representing unknown accuracy.
+     * @default -1
      */
     const LOCATION_ACCURACY_UNKNOWN: number;
 
@@ -574,6 +580,7 @@ export namespace GeocodeGlib {
          * 
          * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
+         * @throws GLib.Error
          */
         search(): Place[];
 
@@ -616,6 +623,7 @@ export namespace GeocodeGlib {
          * Finishes a forward geocoding operation. See `geocode_forward_search_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
+         * @throws GLib.Error
          */
         search_finish(res: Gio.AsyncResult): Place[];
 
@@ -859,6 +867,7 @@ export namespace GeocodeGlib {
          * - geo:0,0?q=latitude,longitude(description)
          * @param uri a URI mapping out a location
          * @returns `true` on success and `false` on error.
+         * @throws GLib.Error
          */
         set_from_uri(uri: string): boolean;
 
@@ -995,6 +1004,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -1057,6 +1067,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
 
@@ -1075,6 +1086,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -1160,6 +1172,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
 
@@ -1441,6 +1454,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -1503,6 +1517,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
 
@@ -1521,6 +1536,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -1606,6 +1622,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
 
@@ -2264,6 +2281,7 @@ export namespace GeocodeGlib {
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          * @returns A {@link GeocodeGlib.Place} instance, or `null` in case of errors. Free the returned instance with `g_object_unref`() when done.
+         * @throws GLib.Error
          */
         resolve(): Place;
 
@@ -2306,6 +2324,7 @@ export namespace GeocodeGlib {
          * Finishes a reverse geocoding operation. See `geocode_reverse_resolve_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns A {@link GeocodeGlib.Place} instance, or `null` in case of errors. Free the returned instance with `g_object_unref`() when done.
+         * @throws GLib.Error
          */
         resolve_finish(res: Gio.AsyncResult): Place;
 
@@ -2560,6 +2579,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -2622,6 +2642,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
 
@@ -2640,6 +2661,7 @@ export namespace GeocodeGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve(params: { [key: string]: GObject.Value }, cancellable: Gio.Cancellable | null): Place[];
 
@@ -2725,6 +2747,7 @@ export namespace GeocodeGlib {
          * @param result a {@link Gio.AsyncResult}.
          * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          * @since 3.23.1
+         * @throws GLib.Error
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
     }

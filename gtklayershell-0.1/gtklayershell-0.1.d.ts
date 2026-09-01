@@ -39,24 +39,24 @@ export namespace GtkLayerShell {
         /**
          * The left edge of the screen.
          */
-        LEFT,
+        LEFT = 0,
         /**
          * The right edge of the screen.
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The top edge of the screen.
          */
-        TOP,
+        TOP = 2,
         /**
          * The bottom edge of the screen.
          */
-        BOTTOM,
+        BOTTOM = 3,
         /**
          * Should not be used except to get the number of entries. (NOTE: may change in
          * future releases as more entries are added)
          */
-        ENTRY_NUMBER,
+        ENTRY_NUMBER = 4,
     }
 
 
@@ -67,21 +67,21 @@ export namespace GtkLayerShell {
         /**
          * This window should not receive keyboard events.
          */
-        NONE,
+        NONE = 0,
         /**
          * This window should have exclusive focus if it is on the top or overlay layer.
          */
-        EXCLUSIVE,
+        EXCLUSIVE = 1,
         /**
          * The user should be able to focus and unfocues this window in an implementation
          * defined way. Not supported for protocol version < 4.
          */
-        ON_DEMAND,
+        ON_DEMAND = 2,
         /**
          * Should not be used except to get the number of entries. (NOTE: may change in
          * future releases as more entries are added)
          */
-        ENTRY_NUMBER,
+        ENTRY_NUMBER = 3,
     }
 
 
@@ -92,24 +92,24 @@ export namespace GtkLayerShell {
         /**
          * The background layer.
          */
-        BACKGROUND,
+        BACKGROUND = 0,
         /**
          * The bottom layer.
          */
-        BOTTOM,
+        BOTTOM = 1,
         /**
          * The top layer.
          */
-        TOP,
+        TOP = 2,
         /**
          * The overlay layer.
          */
-        OVERLAY,
+        OVERLAY = 3,
         /**
          * Should not be used except to get the number of entries. (NOTE: may change in
          * future releases as more entries are added)
          */
-        ENTRY_NUMBER,
+        ENTRY_NUMBER = 4,
     }
 
 

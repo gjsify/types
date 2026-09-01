@@ -41,21 +41,25 @@ export namespace GPluginGtk4 {
 
     /**
      * This is the major version number of GPluginGtk that was compiled against.
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * This is the micro version number of GPluginGtk that was compiled against.
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * This is the minor version number of GPluginGtk that was compiled against.
+     * @default 44
      */
     const MINOR_VERSION: number;
 
     /**
      * This is the string version number of GPluginGtk that was compiled against.
+     * @default 0.44.2
      */
     const VERSION: string;
 
@@ -74,6 +78,7 @@ export namespace GPluginGtk4 {
      * `GPLUGIN_GTK_VERSION_MIN_REQUIRED` or earlier will cause warnings (but using
      * functions deprecated in later releases will not).
      * @since 0.42
+     * @default 1
      */
     const VERSION_MIN_REQUIRED: number;
 
@@ -106,7 +111,7 @@ export namespace GPluginGtk4 {
              * @since 0.39
              * @run-last
              */
-            "plugin-state-set": (arg0: boolean) => void;
+            "plugin-state-set": (enabled: boolean) => void;
             "notify::plugin": (pspec: GObject.ParamSpec) => void;
             "notify::settings-backend": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-child": (pspec: GObject.ParamSpec) => void;
@@ -290,7 +295,7 @@ export namespace GPluginGtk4 {
              * @since 0.38
              * @run-last
              */
-            "plugin-state-set": (arg0: boolean) => void;
+            "plugin-state-set": (enabled: boolean) => void;
             "notify::plugin": (pspec: GObject.ParamSpec) => void;
             "notify::activatable": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;

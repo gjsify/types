@@ -34,13 +34,13 @@ export namespace GjsPrivate {
      * @gir-type Enum
      */
     enum LocaleCategory {
-        ALL,
-        COLLATE,
-        CTYPE,
-        MESSAGES,
-        MONETARY,
-        NUMERIC,
-        TIME,
+        ALL = 6,
+        COLLATE = 3,
+        CTYPE = 0,
+        MESSAGES = 5,
+        MONETARY = 4,
+        NUMERIC = 1,
+        TIME = 2,
     }
 
 
@@ -152,6 +152,7 @@ export namespace GjsPrivate {
      * @param bytes 
      * @param start_position 
      * @param match_options 
+     * @throws GLib.Error
      */
     function regex_match_all_full(regex: GLib.Regex, bytes: Uint8Array | string, start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
 
@@ -160,6 +161,7 @@ export namespace GjsPrivate {
      * @param bytes 
      * @param start_position 
      * @param match_options 
+     * @throws GLib.Error
      */
     function regex_match_full(regex: GLib.Regex, bytes: Uint8Array | string, start_position: number, match_options: GLib.RegexMatchFlags): [boolean, MatchInfo];
 
@@ -202,17 +204,17 @@ export namespace GjsPrivate {
              * @signal
              * @run-LAST
              */
-            "handle-method-call": (arg0: string, arg1: GLib.Variant, arg2: Gio.DBusMethodInvocation) => void;
+            "handle-method-call": (object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation) => void;
             /**
              * @signal
              * @run-LAST
              */
-            "handle-property-get": (arg0: string) => GLib.Variant;
+            "handle-property-get": (object: string) => GLib.Variant;
             /**
              * @signal
              * @run-LAST
              */
-            "handle-property-set": (arg0: string, arg1: GLib.Variant) => void;
+            "handle-property-set": (object: string, p0: GLib.Variant) => void;
             "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
@@ -387,6 +389,7 @@ export namespace GjsPrivate {
         // Methods
         /**
          * @param string_to_expand 
+         * @throws GLib.Error
          */
         expand_references(string_to_expand: string): string;
 
@@ -424,6 +427,9 @@ export namespace GjsPrivate {
 
         matches(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         next(): boolean;
 
         ref(): MatchInfo;

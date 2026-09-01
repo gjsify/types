@@ -27,15 +27,21 @@ export namespace CloudProviders {
      * @gir-type Enum
      */
     enum AccountStatus {
-        INVALID,
-        IDLE,
-        SYNCING,
-        ERROR,
+        INVALID = 0,
+        IDLE = 1,
+        SYNCING = 2,
+        ERROR = 3,
     }
 
 
+    /**
+     * @default org.freedesktop.CloudProviders.Account
+     */
     const ACCOUNT_DBUS_IFACE: string;
 
+    /**
+     * @default org.freedesktop.CloudProviders.Provider
+     */
     const PROVIDER_DBUS_IFACE: string;
 
     /**
@@ -812,6 +818,7 @@ export namespace CloudProviders {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -821,6 +828,7 @@ export namespace CloudProviders {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DbusAccountProxy;
 
@@ -985,6 +993,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1480,6 +1489,7 @@ export namespace CloudProviders {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1489,6 +1499,7 @@ export namespace CloudProviders {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DbusObjectManagerClient;
 
@@ -1688,6 +1699,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2294,6 +2306,7 @@ export namespace CloudProviders {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2303,6 +2316,7 @@ export namespace CloudProviders {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DbusProviderProxy;
 
@@ -2467,6 +2481,7 @@ export namespace CloudProviders {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

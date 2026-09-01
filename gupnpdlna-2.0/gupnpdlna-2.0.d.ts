@@ -29,15 +29,15 @@ export namespace GUPnPDLNA {
         /**
          * Value is set.
          */
-        SET,
+        SET = 0,
         /**
          * Value is unset.
          */
-        UNSET,
+        UNSET = 1,
         /**
          * Value is unsupported.
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 2,
     }
 
 
@@ -369,7 +369,7 @@ export namespace GUPnPDLNA {
              * @signal
              * @run-last
              */
-            done: (arg0: Information, arg1: GLib.Error | null) => void;
+            done: (info: Information, error: GLib.Error | null) => void;
         }
 
         // Constructor properties interface
@@ -445,6 +445,7 @@ export namespace GUPnPDLNA {
          * @param uri URI to gather metadata for
          * @param timeout_in_ms Timeout in miliseconds.
          * @returns `true` if `uri` was successfully queued, `false` otherwise.
+         * @throws GLib.Error
          */
         extract_async(uri: string, timeout_in_ms: number): boolean;
 
@@ -453,6 +454,7 @@ export namespace GUPnPDLNA {
          * @param uri URI to gather metadata for
          * @param timeout_in_ms Timeout in miliseconds.
          * @returns A {@link GUPnPDLNA.Information} object if discovery succeeded, otherwise `null`.
+         * @throws GLib.Error
          */
         extract_sync(uri: string, timeout_in_ms: number): Information;
     }
@@ -633,7 +635,7 @@ export namespace GUPnPDLNA {
              * @signal
              * @run-last
              */
-            done: (arg0: Information, arg1: Profile | null, arg2: GLib.Error | null) => void;
+            done: (info: Information, dlna: Profile | null, error: GLib.Error | null) => void;
             "notify::extended-mode": (pspec: GObject.ParamSpec) => void;
             "notify::relaxed-mode": (pspec: GObject.ParamSpec) => void;
         }
@@ -748,6 +750,7 @@ export namespace GUPnPDLNA {
          * @param uri URI of media.
          * @param timeout_in_ms Timeout of guessing in miliseconds.
          * @returns `true` if `uri` was successfully queued, `false` otherwise.
+         * @throws GLib.Error
          */
         guess_profile_async(uri: string, timeout_in_ms: number): boolean;
 
@@ -763,6 +766,7 @@ export namespace GUPnPDLNA {
          * @param uri URI of media.
          * @param timeout_in_ms Timeout of guessing in miliseconds.
          * @returns DLNA profile if any had matched, `null` otherwise.
+         * @throws GLib.Error
          */
         guess_profile_sync(uri: string, timeout_in_ms: number): [Profile, Information | null];
 

@@ -39,15 +39,15 @@ export namespace GstTag {
         /**
          * cannot parse tag, just skip it
          */
-        BROKEN_TAG,
+        BROKEN_TAG = 0,
         /**
          * call again with less or more data
          */
-        AGAIN,
+        AGAIN = 1,
         /**
          * parsed tag successfully
          */
-        OK,
+        OK = 2,
     }
 
 
@@ -69,95 +69,97 @@ export namespace GstTag {
          *      tell functions such as `gst_tag_image_data_to_image_sample()` that no
          *      image type should be set.
          */
-        NONE,
+        NONE = -1,
         /**
          * Undefined/other image type
          */
-        UNDEFINED,
+        UNDEFINED = 0,
         /**
          * Cover (front)
          */
-        FRONT_COVER,
+        FRONT_COVER = 1,
         /**
          * Cover (back)
          */
-        BACK_COVER,
+        BACK_COVER = 2,
         /**
          * Leaflet page
          */
-        LEAFLET_PAGE,
+        LEAFLET_PAGE = 3,
         /**
          * Medium (e.g. label side of CD)
          */
-        MEDIUM,
+        MEDIUM = 4,
         /**
          * Lead artist/lead performer/soloist
          */
-        LEAD_ARTIST,
+        LEAD_ARTIST = 5,
         /**
          * Artist/performer
          */
-        ARTIST,
+        ARTIST = 6,
         /**
          * Conductor
          */
-        CONDUCTOR,
+        CONDUCTOR = 7,
         /**
          * Band/orchestra
          */
-        BAND_ORCHESTRA,
+        BAND_ORCHESTRA = 8,
         /**
          * Composer
          */
-        COMPOSER,
+        COMPOSER = 9,
         /**
          * Lyricist/text writer
          */
-        LYRICIST,
+        LYRICIST = 10,
         /**
          * Recording location
          */
-        RECORDING_LOCATION,
+        RECORDING_LOCATION = 11,
         /**
          * During recording
          */
-        DURING_RECORDING,
+        DURING_RECORDING = 12,
         /**
          * During performance
          */
-        DURING_PERFORMANCE,
+        DURING_PERFORMANCE = 13,
         /**
          * Movie/video screen capture
          */
-        VIDEO_CAPTURE,
+        VIDEO_CAPTURE = 14,
         /**
          * A fish as funny as the ID3v2 spec
          */
-        FISH,
+        FISH = 15,
         /**
          * Illustration
          */
-        ILLUSTRATION,
+        ILLUSTRATION = 16,
         /**
          * Band/artist logotype
          */
-        BAND_ARTIST_LOGO,
+        BAND_ARTIST_LOGO = 17,
         /**
          * Publisher/studio logotype
          */
-        PUBLISHER_STUDIO_LOGO,
+        PUBLISHER_STUDIO_LOGO = 18,
     }
 
 
     /**
      * AcoustID Fingerprint (Chromaprint)
      * @since 1.18
+     * @default chromaprint-fingerprint
      */
     const TAG_ACOUSTID_FINGERPRINT: string;
 
     /**
      * AcoustID Identifier
      * @since 1.18
+     * @default acoustid-id
      */
     const TAG_ACOUSTID_ID: string;
 
@@ -168,16 +170,19 @@ export namespace GstTag {
      *  "normal"
      *  "soft"
      *  "hard"
+     * @default capturing-contrast
      */
     const TAG_CAPTURING_CONTRAST: string;
 
     /**
      * Digital zoom ratio used when capturing an image. (double)
+     * @default capturing-digital-zoom-ratio
      */
     const TAG_CAPTURING_DIGITAL_ZOOM_RATIO: string;
 
     /**
      * Exposure compensation using when capturing an image in EV. (double)
+     * @default capturing-exposure-compensation
      */
     const TAG_CAPTURING_EXPOSURE_COMPENSATION: string;
 
@@ -188,6 +193,7 @@ export namespace GstTag {
      *   "auto-exposure"
      *   "manual-exposure"
      *   "auto-bracket"
+     * @default capturing-exposure-mode
      */
     const TAG_CAPTURING_EXPOSURE_MODE: string;
 
@@ -204,6 +210,7 @@ export namespace GstTag {
      *   "action" - biased towards fast shutter speed
      *   "portrait" - closeup, leaving background out of focus
      *   "landscape" - landscape photos, background in focus
+     * @default capturing-exposure-program
      */
     const TAG_CAPTURING_EXPOSURE_PROGRAM: string;
 
@@ -212,6 +219,7 @@ export namespace GstTag {
      * 
      * Note that if this tag isn't present, it should not be assumed that
      * the flash did not fire. It should be treated as unknown.
+     * @default capturing-flash-fired
      */
     const TAG_CAPTURING_FLASH_FIRED: string;
 
@@ -222,17 +230,20 @@ export namespace GstTag {
      *  "auto"
      *  "always"
      *  "never"
+     * @default capturing-flash-mode
      */
     const TAG_CAPTURING_FLASH_MODE: string;
 
     /**
      * Focal length used when capturing an image, in mm. (double)
+     * @default capturing-focal-length
      */
     const TAG_CAPTURING_FOCAL_LENGTH: string;
 
     /**
      * 35 mm equivalent focal length used when capturing an image, in mm. (double)
      * @since 1.10
+     * @default capturing-focal-length-35mm
      */
     const TAG_CAPTURING_FOCAL_LENGTH_35_MM: string;
 
@@ -241,6 +252,7 @@ export namespace GstTag {
      * 
      * The value stored is the denominator of the focal ratio (f-number).
      * For example, if this tag value is 2, the focal ratio is f/2.
+     * @default capturing-focal-ratio
      */
     const TAG_CAPTURING_FOCAL_RATIO: string;
 
@@ -253,11 +265,13 @@ export namespace GstTag {
      *   "high-gain-up"
      *   "low-gain-down"
      *   "high-gain-down"
+     * @default capturing-gain-adjustment
      */
     const TAG_CAPTURING_GAIN_ADJUSTMENT: string;
 
     /**
      * ISO speed used when capturing an image. (integer)
+     * @default capturing-iso-speed
      */
     const TAG_CAPTURING_ISO_SPEED: string;
 
@@ -288,6 +302,7 @@ export namespace GstTag {
      *   "iso-studio-tungsten"
      *   "other"
      * @since 1.26
+     * @default capturing-light-source
      */
     const TAG_CAPTURING_LIGHT_SOURCE: string;
 
@@ -303,6 +318,7 @@ export namespace GstTag {
      *   "pattern"
      *   "partial"
      *   "other"
+     * @default capturing-metering-mode
      */
     const TAG_CAPTURING_METERING_MODE: string;
 
@@ -313,6 +329,7 @@ export namespace GstTag {
      *  "normal"
      *  "low-saturation"
      *  "high-saturation"
+     * @default capturing-saturation
      */
     const TAG_CAPTURING_SATURATION: string;
 
@@ -324,6 +341,7 @@ export namespace GstTag {
      *   "landscape"
      *   "portrait"
      *   "night-scene"
+     * @default capturing-scene-capture-type
      */
     const TAG_CAPTURING_SCENE_CAPTURE_TYPE: string;
 
@@ -334,11 +352,13 @@ export namespace GstTag {
      *  "normal"
      *  "soft"
      *  "hard"
+     * @default capturing-sharpness
      */
     const TAG_CAPTURING_SHARPNESS: string;
 
     /**
      * Shutter speed used when capturing an image, in seconds. (fraction)
+     * @default capturing-shutter-speed
      */
     const TAG_CAPTURING_SHUTTER_SPEED: string;
 
@@ -351,6 +371,7 @@ export namespace GstTag {
      *   "transparent-scanner"
      *   "reflex-scanner"
      *   "other"
+     * @default capturing-source
      */
     const TAG_CAPTURING_SOURCE: string;
 
@@ -366,57 +387,68 @@ export namespace GstTag {
      *   "fluorescent"
      *   "fluorescent h" (newer daylight-calibrated fluorescents)
      *   "flash"
+     * @default capturing-white-balance
      */
     const TAG_CAPTURING_WHITE_BALANCE: string;
 
     /**
      * CDDB disc id in its short form (e.g. 'aa063d0f')
+     * @default discid
      */
     const TAG_CDDA_CDDB_DISCID: string;
 
     /**
      * CDDB disc id including all details
+     * @default discid-full
      */
     const TAG_CDDA_CDDB_DISCID_FULL: string;
 
     /**
      * Musicbrainz disc id (e.g. 'ahg7JUcfR3vCYBphSDIogOOWrr0-')
+     * @default musicbrainz-discid
      */
     const TAG_CDDA_MUSICBRAINZ_DISCID: string;
 
     /**
      * Musicbrainz disc id details
+     * @default musicbrainz-discid-full
      */
     const TAG_CDDA_MUSICBRAINZ_DISCID_FULL: string;
 
     /**
      * Annodex CMML clip element tag
+     * @default cmml-clip
      */
     const TAG_CMML_CLIP: string;
 
     /**
      * Annodex CMML head element tag
+     * @default cmml-head
      */
     const TAG_CMML_HEAD: string;
 
     /**
      * Annodex CMML stream element tag
+     * @default cmml-stream
      */
     const TAG_CMML_STREAM: string;
 
     /**
      * ID3V2 header size considered minimum input for some functions such as
      * `gst_tag_list_from_id3v2_tag()` and `gst_tag_get_id3v2_tag_size()` for example.
+     * @default 10
      */
     const TAG_ID3V2_HEADER_SIZE: number;
 
     /**
      * Media (image/video) intended horizontal pixel density in ppi. (double)
+     * @default image-horizontal-ppi
      */
     const TAG_IMAGE_HORIZONTAL_PPI: string;
 
     /**
      * Media (image/video) intended vertical pixel density in ppi. (double)
+     * @default image-vertical-ppi
      */
     const TAG_IMAGE_VERTICAL_PPI: string;
 
@@ -429,43 +461,51 @@ export namespace GstTag {
      * This notation might be extended in the future to support non-minor/major
      * keys.
      * @since 1.2
+     * @default musical-key
      */
     const TAG_MUSICAL_KEY: string;
 
     /**
      * MusicBrainz album artist ID
+     * @default musicbrainz-albumartistid
      */
     const TAG_MUSICBRAINZ_ALBUMARTISTID: string;
 
     /**
      * MusicBrainz album ID
+     * @default musicbrainz-albumid
      */
     const TAG_MUSICBRAINZ_ALBUMID: string;
 
     /**
      * MusicBrainz artist ID
+     * @default musicbrainz-artistid
      */
     const TAG_MUSICBRAINZ_ARTISTID: string;
 
     /**
      * MusicBrainz Release Group ID
      * @since 1.18
+     * @default musicbrainz-releasegroupid
      */
     const TAG_MUSICBRAINZ_RELEASEGROUPID: string;
 
     /**
      * MusicBrainz Release Track ID
      * @since 1.18
+     * @default musicbrainz-releasetrackid
      */
     const TAG_MUSICBRAINZ_RELEASETRACKID: string;
 
     /**
      * MusicBrainz track ID
+     * @default musicbrainz-trackid
      */
     const TAG_MUSICBRAINZ_TRACKID: string;
 
     /**
      * MusicBrainz track TRM ID
+     * @default musicbrainz-trmid
      */
     const TAG_MUSICBRAINZ_TRMID: string;
 
@@ -881,76 +921,76 @@ export namespace GstTag {
          * making multiple copies
          *     is allowed
          */
-        PERMITS_REPRODUCTION,
+        PERMITS_REPRODUCTION = 1,
         /**
          * distribution, public display
          *     and public performance are allowed
          */
-        PERMITS_DISTRIBUTION,
+        PERMITS_DISTRIBUTION = 2,
         /**
          * distribution of derivative
          *     works is allowed
          */
-        PERMITS_DERIVATIVE_WORKS,
+        PERMITS_DERIVATIVE_WORKS = 4,
         /**
          * commercial derivatives are allowed,
          *     but only non-commercial distribution is allowed
          */
-        PERMITS_SHARING,
+        PERMITS_SHARING = 8,
         /**
          * copyright and license notices
          *     must be kept intact
          */
-        REQUIRES_NOTICE,
+        REQUIRES_NOTICE = 256,
         /**
          * credit must be given to
          *     copyright holder and/or author
          */
-        REQUIRES_ATTRIBUTION,
+        REQUIRES_ATTRIBUTION = 512,
         /**
          * derivative works must be
          *     licensed under the same terms or compatible terms as the original work
          */
-        REQUIRES_SHARE_ALIKE,
+        REQUIRES_SHARE_ALIKE = 1024,
         /**
          * source code (the preferred
          *     form for making modifications) must be provided when exercising some
          *     rights granted by the license
          */
-        REQUIRES_SOURCE_CODE,
+        REQUIRES_SOURCE_CODE = 2048,
         /**
          * derivative and combined works
          *     must be licensed under specified terms, similar to those of the original
          *     work
          */
-        REQUIRES_COPYLEFT,
+        REQUIRES_COPYLEFT = 4096,
         /**
          * derivative works must be
          *     licensed under specified terms, with at least the same conditions as
          *     the original work; combinations with the work may be licensed under
          *     different terms
          */
-        REQUIRES_LESSER_COPYLEFT,
+        REQUIRES_LESSER_COPYLEFT = 8192,
         /**
          * exercising rights for
          *     commercial purposes is prohibited
          */
-        PROHIBITS_COMMERCIAL_USE,
+        PROHIBITS_COMMERCIAL_USE = 65536,
         /**
          * use in a
          *     non-developing country is prohibited
          */
-        PROHIBITS_HIGH_INCOME_NATION_USE,
+        PROHIBITS_HIGH_INCOME_NATION_USE = 131072,
         /**
          * this license was created
          *     by the Creative Commons project
          */
-        CREATIVE_COMMONS_LICENSE,
+        CREATIVE_COMMONS_LICENSE = 16777216,
         /**
          * this license was
          *     created by the Free Software Foundation (FSF)
          */
-        FREE_SOFTWARE_FOUNDATION_LICENSE,
+        FREE_SOFTWARE_FOUNDATION_LICENSE = 33554432,
     }
 
 

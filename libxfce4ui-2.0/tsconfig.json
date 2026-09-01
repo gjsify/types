@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./libxfce4ui-2.0.d.ts","./libxfce4ui-2.0-surface.d.ts"]
+  "include": ["./libxfce4ui-2.0.d.ts","./libxfce4ui-2.0-vocabulary.d.ts"]
 }
 
 

@@ -32,7 +32,7 @@ export namespace Uhm {
         /**
          * In comparison mode, a message received from the client did not match the next message in the current trace file.
          */
-        SERVER_ERROR_MESSAGE_MISMATCH,
+        SERVER_ERROR_MESSAGE_MISMATCH = 1,
     }
 
 
@@ -40,6 +40,7 @@ export namespace Uhm {
      * Evaluates to the major version of the libuhttpmock headers at compile time.
      * (e.g. in libuhttpmock version 1.2.3 this is 1).
      * @since 0.1.0
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
@@ -47,6 +48,7 @@ export namespace Uhm {
      * Evaluates to the micro version of the libuhttpmock headers at compile time.
      * (e.g. in libuhttpmock version 1.2.3 this is 3).
      * @since 0.1.0
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -54,6 +56,7 @@ export namespace Uhm {
      * Evaluates to the minor version of the libuhttpmock headers at compile time.
      * (e.g. in libuhttpmock version 1.2.3 this is 2).
      * @since 0.1.0
+     * @default 11
      */
     const MINOR_VERSION: number;
 
@@ -236,7 +239,7 @@ export namespace Uhm {
              * @since 1.0.0
              * @run-last
              */
-            "compare-messages": (arg0: Message, arg1: Message) => boolean | void;
+            "compare-messages": (expected_message: Message, actual_message: Message) => boolean | void;
             /**
              * Emitted whenever the mock server is running and receives a request from a client. Test code may connect to this signal and implement a handler
              * which builds and returns a suitable response for a given message. The default handler reads a request–response pair from the current trace file,
@@ -247,7 +250,7 @@ export namespace Uhm {
              * @since 0.1.0
              * @run-last
              */
-            "handle-message": (arg0: Message) => boolean | void;
+            "handle-message": (message: Message) => boolean | void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
             "notify::enable-logging": (pspec: GObject.ParamSpec) => void;
             "notify::enable-online": (pspec: GObject.ParamSpec) => void;
@@ -586,6 +589,7 @@ export namespace Uhm {
          * @param trace_file trace file to load
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @since 0.1.0
+         * @throws GLib.Error
          */
         load_trace(trace_file: Gio.File, cancellable: Gio.Cancellable | null): void;
 
@@ -622,6 +626,7 @@ export namespace Uhm {
          * See `uhm_server_load_trace()` for details on the error domains used.
          * @param result asynchronous operation result passed to the callback
          * @since 0.1.0
+         * @throws GLib.Error
          */
         load_trace_finish(result: Gio.AsyncResult): void;
 
@@ -642,6 +647,7 @@ export namespace Uhm {
          * @param message_chunk single line of a message which was received
          * @param message_chunk_length length of `message_chunk` in bytes
          * @since 0.1.0
+         * @throws GLib.Error
          */
         received_message_chunk(message_chunk: string, message_chunk_length: bigint | number): void;
 
@@ -677,6 +683,7 @@ export namespace Uhm {
          * @param data single line of a message which was received
          * @param data_length length of `data` in bytes
          * @since 0.3.0
+         * @throws GLib.Error
          */
         received_message_chunk_with_direction(direction: number, data: string, data_length: bigint | number): void;
 
@@ -756,6 +763,7 @@ export namespace Uhm {
          * details of the error domains used.
          * @param trace_name name of the trace
          * @since 0.1.0
+         * @throws GLib.Error
          */
         start_trace(trace_name: string): void;
 
@@ -774,6 +782,7 @@ export namespace Uhm {
          * reading from the trace file.
          * @param trace_file a trace file to load
          * @since 0.1.0
+         * @throws GLib.Error
          */
         start_trace_full(trace_file: Gio.File): void;
 

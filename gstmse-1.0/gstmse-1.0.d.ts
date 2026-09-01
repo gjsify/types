@@ -41,15 +41,15 @@ export namespace GstMse {
         /**
          * End the stream successfully
          */
-        NONE,
+        NONE = 0,
         /**
          * End the stream due to a networking error
          */
-        NETWORK,
+        NETWORK = 1,
         /**
          * End the stream due to a decoding error
          */
-        DECODE,
+        DECODE = 2,
     }
 
 
@@ -105,17 +105,17 @@ export namespace GstMse {
          * The {@link GstMse.MediaSource} is not connected to
          * any playback element.
          */
-        CLOSED,
+        CLOSED = 0,
         /**
          * The {@link GstMse.MediaSource} is connected to a
          * playback element and ready to append data to its {@link GstMse.SourceBuffer} (s).
          */
-        OPEN,
+        OPEN = 1,
         /**
          * `gst_media_source_end_of_stream()` has
          * been called on the current {@link GstMse.MediaSource}
          */
-        ENDED,
+        ENDED = 2,
     }
 
 
@@ -141,28 +141,28 @@ export namespace GstMse {
          * No information is available about the
          * stream
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * The duration is available and video
          * dimensions are available if the stream contains video
          */
-        METADATA,
+        METADATA = 1,
         /**
          * The current playback position can
          * be presented but future information is not available
          */
-        CURRENT_DATA,
+        CURRENT_DATA = 2,
         /**
          * There is data for the current
          * position and some amount in the future and any text tracks are ready.
          */
-        FUTURE_DATA,
+        FUTURE_DATA = 3,
         /**
          * Either there is enough data to
          * play the stream through at the current playback and input rate or the input
          * buffer is full.
          */
-        ENOUGH_DATA,
+        ENOUGH_DATA = 4,
     }
 
 
@@ -179,8 +179,8 @@ export namespace GstMse {
      * @since 1.24
      */
     enum SourceBufferAppendMode {
-        SEGMENTS,
-        SEQUENCE,
+        SEGMENTS = 0,
+        SEQUENCE = 1,
     }
 
 
@@ -379,6 +379,7 @@ export namespace GstMse {
          * @param type A MIME type describing the format of the incoming media
          * @returns a new {@link GstMse.SourceBuffer} instance on success, otherwise `NULL`
          * @since 1.24
+         * @throws GLib.Error
          */
         add_source_buffer(type: string): SourceBuffer;
 
@@ -406,6 +407,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-clearliveseekablerange)
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         clear_live_seekable_range(): boolean;
 
@@ -422,6 +424,7 @@ export namespace GstMse {
          * @param eos_error The error type, if any
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         end_of_stream(eos_error: MediaSourceEOSError): boolean;
 
@@ -492,6 +495,7 @@ export namespace GstMse {
          * @param buffer {@link GstMse.SourceBuffer} instance
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         remove_source_buffer(buffer: SourceBuffer): boolean;
 
@@ -502,6 +506,7 @@ export namespace GstMse {
          * @param duration The new duration to apply to `self`.
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_duration(duration: Gst.ClockTime): boolean;
 
@@ -517,6 +522,7 @@ export namespace GstMse {
          * @param end The latest point in the stream considered seekable
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_live_seekable_range(start: Gst.ClockTime, end: Gst.ClockTime): boolean;
     }
@@ -761,6 +767,7 @@ export namespace GstMse {
          * Tries to set the URI of the given handler.
          * @param uri URI to set
          * @returns `true` if the URI was set successfully, else `false`.
+         * @throws GLib.Error
          */
         set_uri(uri: string): boolean;
 
@@ -1141,6 +1148,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-abort)
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         abort(): boolean;
 
@@ -1153,6 +1161,7 @@ export namespace GstMse {
          * @param buf The media data to append
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         append_buffer(buf: Gst.Buffer): boolean;
 
@@ -1162,6 +1171,7 @@ export namespace GstMse {
          * @param type the desired content type
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         change_content_type(type: string): boolean;
 
@@ -1199,6 +1209,7 @@ export namespace GstMse {
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-buffered)
          * @returns a {@link GLib.Array} of {@link GstMse.MediaSourceRange} values.
          * @since 1.24
+         * @throws GLib.Error
          */
         get_buffered(): MediaSourceRange[];
 
@@ -1231,6 +1242,7 @@ export namespace GstMse {
          * @param end The end timestamp of data to remove
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         remove(start: Gst.ClockTime, end: Gst.ClockTime): boolean;
 
@@ -1245,6 +1257,7 @@ export namespace GstMse {
          * @param mode {@link GstMse.SourceBufferAppendMode} the desired Append Mode
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_append_mode(mode: SourceBufferAppendMode): boolean;
 
@@ -1257,6 +1270,7 @@ export namespace GstMse {
          * @param end the append window end
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_append_window_end(end: Gst.ClockTime): boolean;
 
@@ -1269,6 +1283,7 @@ export namespace GstMse {
          * @param start the append window start
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_append_window_start(start: Gst.ClockTime): boolean;
 
@@ -1280,6 +1295,7 @@ export namespace GstMse {
          * @param offset The new timestamp offset
          * @returns `TRUE` on success, `FALSE` otherwise
          * @since 1.24
+         * @throws GLib.Error
          */
         set_timestamp_offset(offset: Gst.ClockTime): boolean;
     }

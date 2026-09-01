@@ -38,19 +38,19 @@ export namespace Gdaui {
      * @gir-type Enum
      */
     enum Action {
-        NEW_DATA,
-        WRITE_MODIFIED_DATA,
-        DELETE_SELECTED_DATA,
-        UNDELETE_SELECTED_DATA,
-        RESET_DATA,
-        MOVE_FIRST_RECORD,
-        MOVE_PREV_RECORD,
-        MOVE_NEXT_RECORD,
-        MOVE_LAST_RECORD,
-        MOVE_FIRST_CHUNK,
-        MOVE_PREV_CHUNK,
-        MOVE_NEXT_CHUNK,
-        MOVE_LAST_CHUNK,
+        NEW_DATA = 0,
+        WRITE_MODIFIED_DATA = 1,
+        DELETE_SELECTED_DATA = 2,
+        UNDELETE_SELECTED_DATA = 3,
+        RESET_DATA = 4,
+        MOVE_FIRST_RECORD = 5,
+        MOVE_PREV_RECORD = 6,
+        MOVE_NEXT_RECORD = 7,
+        MOVE_LAST_RECORD = 8,
+        MOVE_FIRST_CHUNK = 9,
+        MOVE_PREV_CHUNK = 10,
+        MOVE_NEXT_CHUNK = 11,
+        MOVE_LAST_CHUNK = 12,
     }
 
 
@@ -58,8 +58,8 @@ export namespace Gdaui {
      * @gir-type Enum
      */
     enum BasicFormPart {
-        LABELS,
-        ENTRIES,
+        LABELS = 0,
+        ENTRIES = 1,
     }
 
 
@@ -88,19 +88,19 @@ export namespace Gdaui {
         /**
          * write only when explicitly requested
          */
-        DEMAND,
+        DEMAND = 0,
         /**
          * write when the current selected row changes
          */
-        ROW_CHANGE,
+        ROW_CHANGE = 1,
         /**
          * write when user activates a value change
          */
-        VALUE_ACTIVATED,
+        VALUE_ACTIVATED = 2,
         /**
          * write when a parameters's value changes
          */
-        VALUE_CHANGE,
+        VALUE_CHANGE = 3,
     }
 
 
@@ -122,38 +122,83 @@ export namespace Gdaui {
      * @gir-type Enum
      */
     enum RtEditorError {
-        RT_EDITOR_GENERAL_ERROR,
+        RT_EDITOR_GENERAL_ERROR = 0,
     }
 
 
+    /**
+     * @default __gdaui_attr_plugin
+     */
     const ATTRIBUTE_PLUGIN: string;
 
+    /**
+     * @default #6495ed
+     */
     const COLOR_NORMAL_DEFAULT: string;
 
+    /**
+     * @default #ff6a6a
+     */
     const COLOR_NORMAL_INVALID: string;
 
+    /**
+     * @default #cacaee
+     */
     const COLOR_NORMAL_MODIF: string;
 
+    /**
+     * @default #00cd66
+     */
     const COLOR_NORMAL_NULL: string;
 
+    /**
+     * @default #75a6fe
+     */
     const COLOR_PRELIGHT_DEFAULT: string;
 
+    /**
+     * @default #ff7b7b
+     */
     const COLOR_PRELIGHT_INVALID: string;
 
+    /**
+     * @default #cfcffe
+     */
     const COLOR_PRELIGHT_MODIF: string;
 
+    /**
+     * @default #00ef77
+     */
     const COLOR_PRELIGHT_NULL: string;
 
+    /**
+     * @default 0.300000
+     */
     const COLOR_UNKNOWN_MASK: number;
 
+    /**
+     * @default 18
+     */
     const HIG_FORM_HBORDER: number;
 
+    /**
+     * @default 12
+     */
     const HIG_FORM_HSPACE: number;
 
+    /**
+     * @default 18
+     */
     const HIG_FORM_VBORDER: number;
 
+    /**
+     * @default 18
+     */
     const HIG_FORM_VSEP: number;
 
+    /**
+     * @default 6
+     */
     const HIG_FORM_VSPACE: number;
 
     function data_entry_error_quark(): GLib.Quark;
@@ -229,14 +274,14 @@ export namespace Gdaui {
      * @gir-type Flags
      */
     enum ActionMode {
-        NAVIGATION_ARROWS,
-        NAVIGATION_SCROLL,
-        MODIF_AUTO_COMMIT,
-        MODIF_COMMIT_IMMEDIATE,
-        ASK_CONFIRM_UPDATE,
-        ASK_CONFIRM_DELETE,
-        ASK_CONFIRM_INSERT,
-        REPORT_ERROR,
+        NAVIGATION_ARROWS = 1,
+        NAVIGATION_SCROLL = 2,
+        MODIF_AUTO_COMMIT = 4,
+        MODIF_COMMIT_IMMEDIATE = 8,
+        ASK_CONFIRM_UPDATE = 16,
+        ASK_CONFIRM_DELETE = 32,
+        ASK_CONFIRM_INSERT = 64,
+        REPORT_ERROR = 128,
     }
 
 
@@ -244,12 +289,12 @@ export namespace Gdaui {
      * @gir-type Flags
      */
     enum DataProxyInfoFlag {
-        NONE,
-        CURRENT_ROW,
-        ROW_MODIFY_BUTTONS,
-        ROW_MOVE_BUTTONS,
-        CHUNK_CHANGE_BUTTONS,
-        NO_FILTER,
+        NONE = 0,
+        CURRENT_ROW = 1,
+        ROW_MODIFY_BUTTONS = 4,
+        ROW_MOVE_BUTTONS = 8,
+        CHUNK_CHANGE_BUTTONS = 16,
+        NO_FILTER = 32,
     }
 
 
@@ -258,9 +303,9 @@ export namespace Gdaui {
      * @gir-type Flags
      */
     enum LoginMode {
-        ENABLE_CONTROL_CENTRE_MODE,
-        HIDE_DSN_SELECTION_MODE,
-        HIDE_DIRECT_CONNECTION_MODE,
+        ENABLE_CONTROL_CENTRE_MODE = 1,
+        HIDE_DSN_SELECTION_MODE = 2,
+        HIDE_DIRECT_CONNECTION_MODE = 4,
     }
 
 
@@ -279,7 +324,7 @@ export namespace Gdaui {
              * @signal
              * @run-first
              */
-            "holder-changed": (arg0: Gda.Holder, arg1: boolean) => void;
+            "holder-changed": (param: Gda.Holder, is_user_modif: boolean) => void;
             /**
              * Emitted when the form's layout changes
              * @signal
@@ -292,7 +337,7 @@ export namespace Gdaui {
              * @since 4.2.4
              * @run-first
              */
-            "populate-popup": (arg0: Gtk.Menu) => void;
+            "populate-popup": (menu: Gtk.Menu) => void;
             "notify::can-expand-v": (pspec: GObject.ParamSpec) => void;
             "notify::entries-auto-default": (pspec: GObject.ParamSpec) => void;
             "notify::paramlist": (pspec: GObject.ParamSpec) => void;
@@ -591,6 +636,7 @@ export namespace Gdaui {
 
         /**
          * Updates values in all {@link Gda.Holder} in current {@link Gda.Set}
+         * @throws GLib.Error
          */
         update_data_set(): void;
 
@@ -626,7 +672,7 @@ export namespace Gdaui {
              * @signal
              * @run-first
              */
-            activate: (arg0: number) => void;
+            activate: (object: number) => void;
             "notify::label-column": (pspec: GObject.ParamSpec) => void;
             "notify::max-scale": (pspec: GObject.ParamSpec) => void;
             "notify::min-scale": (pspec: GObject.ParamSpec) => void;
@@ -1634,7 +1680,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: unknown) => void;
+            changed: (object: string, p0: unknown) => void;
             "notify::data-handler": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::to-be-deleted": (pspec: GObject.ParamSpec) => void;
@@ -1772,7 +1818,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: unknown) => void;
+            changed: (object: string, p0: unknown) => void;
             "notify::data-handler": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::to-be-deleted": (pspec: GObject.ParamSpec) => void;
@@ -1905,7 +1951,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: null, arg2: null) => void;
+            changed: (object: string, p0: null, p1: null) => void;
             "notify::data-set": (pspec: GObject.ParamSpec) => void;
             "notify::data-set-source": (pspec: GObject.ParamSpec) => void;
             "notify::set-default-if-invalid": (pspec: GObject.ParamSpec) => void;
@@ -2116,7 +2162,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            "status-changed": (arg0: string, arg1: Gda.ValueAttribute) => void;
+            "status-changed": (path: string, requested_action: Gda.ValueAttribute) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::group": (pspec: GObject.ParamSpec) => void;
             "notify::iter": (pspec: GObject.ParamSpec) => void;
@@ -2237,7 +2283,7 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: unknown) => void;
+            changed: (object: string, p0: unknown) => void;
             "notify::data-handler": (pspec: GObject.ParamSpec) => void;
             "notify::options": (pspec: GObject.ParamSpec) => void;
             "notify::to-be-deleted": (pspec: GObject.ParamSpec) => void;
@@ -4272,6 +4318,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -4693,6 +4740,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -5184,6 +5232,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -5622,6 +5671,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -6106,6 +6156,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -6566,6 +6617,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -7018,6 +7070,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -7525,6 +7578,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -8009,6 +8063,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -8479,6 +8534,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -9738,7 +9794,7 @@ export namespace Gdaui {
              * @signal
              * @run-first
              */
-            changed: (arg0: boolean) => void;
+            changed: (object: boolean) => void;
             "notify::dsn": (pspec: GObject.ParamSpec) => void;
             "notify::valid": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -10854,13 +10910,13 @@ export namespace Gdaui {
              * @signal
              * @run-first
              */
-            "double-clicked": (arg0: number) => void;
+            "double-clicked": (row: number) => void;
             /**
              * Connect this signal and modify the popup menu.
              * @signal
              * @run-first
              */
-            "populate-popup": (arg0: Gtk.Menu) => void;
+            "populate-popup": (menu: Gtk.Menu) => void;
             "notify::info-cell-visible": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::xml-layout": (pspec: GObject.ParamSpec) => void;
@@ -11834,6 +11890,9 @@ export namespace Gdaui {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         update_parameters(): void;
 
         /**
@@ -11877,7 +11936,7 @@ export namespace Gdaui {
              * @since 4.2
              * @run-first
              */
-            "source-model-changed": (arg0: SetSource) => void;
+            "source-model-changed": (source: SetSource) => void;
             "notify::set": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11976,27 +12035,27 @@ export namespace Gdaui {
              * @signal
              * @run-last
              */
-            "drag-can-drag": (arg0: string) => boolean | void;
+            "drag-can-drag": (object: string) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-can-drop": (arg0: string, arg1: null) => boolean | void;
+            "drag-can-drop": (object: string, p0: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-delete": (arg0: string) => boolean | void;
+            "drag-delete": (object: string) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-drop": (arg0: string, arg1: null) => boolean | void;
+            "drag-drop": (object: string, p0: null) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "drag-get": (arg0: string, arg1: null) => boolean | void;
+            "drag-get": (object: string, p0: null) => boolean | void;
             "notify::tree": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -13377,6 +13436,7 @@ export namespace Gdaui {
          * Default implementation returns TRUE.
          * @returns TRUE if `de`'s contents is valid
          * @since 5.2
+         * @throws GLib.Error
          */
         validate(): boolean;
     }

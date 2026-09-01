@@ -1,6 +1,6 @@
 {
     "name": "@girs/gnomeqrgtk-4.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for GnomeQRGtk-4.0",
     "type": "module",
     "module": "gnomeqrgtk-4.0.js",
@@ -16,10 +16,10 @@
         "import": "./gnomeqrgtk-4.0-import.js",
         "default": "./gnomeqrgtk-4.0-import.js"
       },
-      "./surface": {
-        "types": "./gnomeqrgtk-4.0-surface.d.ts",
-        "import": "./gnomeqrgtk-4.0-surface.js",
-        "default": "./gnomeqrgtk-4.0-surface.js"
+      "./vocabulary": {
+        "types": "./gnomeqrgtk-4.0-vocabulary.d.ts",
+        "import": "./gnomeqrgtk-4.0-vocabulary.js",
+        "default": "./gnomeqrgtk-4.0-vocabulary.js"
       },
       "./gnomeqrgtk-4.0": {
         "types": "./gnomeqrgtk-4.0.d.ts",
@@ -36,22 +36,22 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/gtk-4.0": "^4.4.0",
-      "@girs/gsk-4.0": "^4.4.0",
-      "@girs/graphene-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/gdk-4.0": "^4.4.0",
-      "@girs/cairo-1.0": "^4.4.0",
-      "@girs/pangocairo-1.0": "^4.4.0",
-      "@girs/pango-1.0": "^4.4.0",
-      "@girs/harfbuzz-0.0": "^4.4.0",
-      "@girs/freetype2-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gdkpixbuf-2.0": "^4.4.0",
-      "@girs/gnomeqr-4.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/gtk-4.0": "^4.5.0",
+      "@girs/gsk-4.0": "^4.5.0",
+      "@girs/graphene-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/gdk-4.0": "^4.5.0",
+      "@girs/cairo-1.0": "^4.5.0",
+      "@girs/pangocairo-1.0": "^4.5.0",
+      "@girs/pango-1.0": "^4.5.0",
+      "@girs/harfbuzz-0.0": "^4.5.0",
+      "@girs/freetype2-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gdkpixbuf-2.0": "^4.5.0",
+      "@girs/gnomeqr-4.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

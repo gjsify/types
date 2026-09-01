@@ -32,19 +32,19 @@ export namespace Peas {
         /**
          * The plugin failed to load.
          */
-        LOADING_FAILED,
+        LOADING_FAILED = 0,
         /**
          * The plugin's loader was not found.
          */
-        LOADER_NOT_FOUND,
+        LOADER_NOT_FOUND = 1,
         /**
          * A dependency of the plugin was not found.
          */
-        DEP_NOT_FOUND,
+        DEP_NOT_FOUND = 2,
         /**
          * A dependency of the plugin failed to load.
          */
-        DEP_LOADING_FAILED,
+        DEP_LOADING_FAILED = 3,
     }
 
 
@@ -76,7 +76,7 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            "load-plugin": (arg0: PluginInfo) => void;
+            "load-plugin": (info: PluginInfo) => void;
             /**
              * The unload-plugin signal is emitted when a plugin is being unloaded.
              * 
@@ -88,7 +88,7 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            "unload-plugin": (arg0: PluginInfo) => void;
+            "unload-plugin": (info: PluginInfo) => void;
             "notify::loaded-plugins": (pspec: GObject.ParamSpec) => void;
             "notify::nonglobal-loaders": (pspec: GObject.ParamSpec) => void;
         }
@@ -603,7 +603,7 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            "extension-added": (arg0: PluginInfo, arg1: GObject.Object) => void;
+            "extension-added": (info: PluginInfo, extension: GObject.Object) => void;
             /**
              * Emitted when a new extension is about to be removed from the
              * {@link Peas.ExtensionSet}.
@@ -618,7 +618,7 @@ export namespace Peas {
              * @signal
              * @run-last
              */
-            "extension-removed": (arg0: PluginInfo, arg1: GObject.Object) => void;
+            "extension-removed": (info: PluginInfo, extension: GObject.Object) => void;
             "notify::construct-properties": (pspec: GObject.ParamSpec) => void;
             "notify::engine": (pspec: GObject.ParamSpec) => void;
             "notify::extension-type": (pspec: GObject.ParamSpec) => void;
@@ -1379,6 +1379,7 @@ export namespace Peas {
          * then "${module_name}.gresource" will be loaded.
          * @param filename The filename of the resource, or `null`.
          * @returns a new {@link Gio.Resource}, or `null`.
+         * @throws GLib.Error
          */
         get_resource(filename: string | null): Gio.Resource;
 
@@ -1422,6 +1423,7 @@ export namespace Peas {
          * load it, or when there has been an error when trying to load it previously.
          * If not available then `error` will be set.
          * @returns `true` if the plugin is available.
+         * @throws GLib.Error
          */
         is_available(): boolean;
 
@@ -1468,6 +1470,7 @@ export namespace Peas {
          * 
          * See `peas_plugin_info_get_resource()` for more information.
          * @param filename The filename of the resource, or `null`.
+         * @throws GLib.Error
          */
         load_resource(filename: string | null): void;
     }

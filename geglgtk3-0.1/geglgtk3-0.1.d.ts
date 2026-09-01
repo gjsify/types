@@ -49,15 +49,15 @@ export namespace GeglGtk3 {
         /**
          * Do not autoscale
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Automatically scale the widget size
          */
-        WIDGET,
+        WIDGET = 1,
         /**
          * Automatically scale content to fit widget
          */
-        CONTENT,
+        CONTENT = 2,
     }
 
 
@@ -73,7 +73,7 @@ export namespace GeglGtk3 {
              * This signal is only available if GEGL-GTK was build with Cairo GObject support.
              * @signal
              */
-            "draw-background": (arg0: cairo.Context, arg1: Gdk.Rectangle) => void;
+            "draw-background": (cr: cairo.Context, rect: Gdk.Rectangle) => void;
             /**
              * Emitted during painting, before the node contents has been rendered.
              * 
@@ -85,7 +85,7 @@ export namespace GeglGtk3 {
              * This signal is only available if GEGL-GTK was build with Cairo GObject support.
              * @signal
              */
-            "draw-overlay": (arg0: cairo.Context, arg1: Gdk.Rectangle) => void;
+            "draw-overlay": (cr: cairo.Context, rect: Gdk.Rectangle) => void;
             "notify::autoscale-policy": (pspec: GObject.ParamSpec) => void;
             "notify::block": (pspec: GObject.ParamSpec) => void;
             "notify::node": (pspec: GObject.ParamSpec) => void;

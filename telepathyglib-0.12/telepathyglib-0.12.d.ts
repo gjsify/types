@@ -33,31 +33,31 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Only allow contacts that are in a certain whitelist.            The associated variant             in Access_Control is a list of             Contact_Handle representing             the whitelist, with signature au.         ]]>
          */
-        WHITELIST,
+        WHITELIST = 0,
         /**
          * <![CDATA[           Allow contacts in the user's 'publish' list. The associated           variant in Access_Control is ignored.         ]]>
          */
-        PUBLISH_LIST,
+        PUBLISH_LIST = 1,
         /**
          * <![CDATA[           Only allow contacts that are in a certain group.            The associated variant in Access_Control is a             Group_Handle representing the permitted             group.         ]]>
          */
-        GROUP,
+        GROUP = 2,
         /**
          * <![CDATA[           Allow all contacts.  The associated           variant in Access_Control is ignored.         ]]>
          */
-        OPEN,
+        OPEN = 3,
         /**
          * <![CDATA[           Allow all contacts in the user's 'subscribe' or 'publish'           list. The associated variant in Access_Control is           ignored.         ]]>
          */
-        SUBSCRIBE_OR_PUBLISH_LIST,
+        SUBSCRIBE_OR_PUBLISH_LIST = 4,
         /**
          * <![CDATA[           Forbid all contacts. The associated variant in           Access_Control is ignored.         ]]>
          */
-        CLOSED,
+        CLOSED = 5,
         /**
          * <![CDATA[           The access control rule is too complex to be represented             in the current Telepathy API. The associated variant is             meaningless. Setting this mode is never valid; the             connection manager MUST raise an error if this is attempted.                         XEP-0016 Privacy Lists can easily produce access control             mechanisms that can't be expressed in a simpler API. We             need to be able to at least indicate that fact.                       The associated variant in Access_Control is             ignored.         ]]>
          */
-        NOT_UNDERSTOOD,
+        NOT_UNDERSTOOD = 6,
     }
 
 
@@ -74,15 +74,15 @@ export namespace TelepathyGLib {
         /**
          * no information available
          */
-        NONE,
+        NONE = 0,
         /**
          * information came from a .manager file
          */
-        FILE,
+        FILE = 1,
         /**
          * information came from the connection manager
          */
-        LIVE,
+        LIVE = 2,
     }
 
 
@@ -96,11 +96,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The content has no specific disposition.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The content was initially part of the call. When           Accept           is called on the channel, all streams of this content with           LocalSendingState           set to Pending_Send will be           moved to Sending as if           SetSending           (True) had been called.         ]]>
          */
-        INITIAL,
+        INITIAL = 1,
     }
 
 
@@ -114,15 +114,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Real-time Transport Protocol, as documented by RFC 3550.         ]]>
          */
-        RTP,
+        RTP = 0,
         /**
          * <![CDATA[           Raw media.         ]]>
          */
-        RAW,
+        RAW = 1,
         /**
          * <![CDATA[           MSN webcam. This is the video-only one-way type which was           used in earlier versions of WLM. Although no longer used,           modern WLM clients still support the MSN webcam protocol.         ]]>
          */
-        MSN_WEBCAM,
+        MSN_WEBCAM = 2,
     }
 
 
@@ -136,31 +136,31 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The call state is not known. This call state MUST NOT appear as a           value of the CallState property, but           MAY be used by client code to represent calls whose state is as yet           unknown.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           The initiator of the call hasn't accepted the call yet. This state           only makes sense for outgoing calls, where it means that the local           user has not yet sent any signalling messages to the remote user(s),           and will not do so until Accept is           called.         ]]>
          */
-        PENDING_INITIATOR,
+        PENDING_INITIATOR = 1,
         /**
          * <![CDATA[           Progress has been made in placing the call, but the           contact has not been made aware of the call yet. This corresponds to SIP's           status code 183 Session Progress, and should be used for the period           where the CM is waiting for the streaming implementation to           initialise (before sending the initial INVITE or equivalent) and when the           outgoing call has reached a gateway or ICE negotiation is pending.           UIs should not produce a dialtone or start ringing if the call is in           this state.         ]]>
          */
-        INITIALISING,
+        INITIALISING = 2,
         /**
          * <![CDATA[           In the outgoing case: at least one called user has been alerted           about the call (a SIP 180 (Ringing) packet or equivalent has been           received) but none have answered, so the call cannot go to Accepted           (use Ringing to determine which           members have been informed and which haven't, if you care). UIs           SHOULD produce a dialtone for outgoing calls in this state.            In the incoming case, the local user should be informed of the call           as soon as the call reaches this state (and           SetRinging should be called           to inform the CM that this has happened, so that it can relay this           fact to the caller using a SIP 180 (Ringing) packet or equivalent).         ]]>
          */
-        INITIALISED,
+        INITIALISED = 3,
         /**
          * <![CDATA[           The contact being called has accepted the call, but the call is not           in the Active state (The most common reason for this is that the           streaming implementation hasn't connected yet).         ]]>
          */
-        ACCEPTED,
+        ACCEPTED = 4,
         /**
          * <![CDATA[           The contact being called has accepted the call, and discourse between           at least two parties should now be possible.         ]]>
          */
-        ACTIVE,
+        ACTIVE = 5,
         /**
          * <![CDATA[           The call has ended, either via normal termination or an error.         ]]>
          */
-        ENDED,
+        ENDED = 6,
     }
 
 
@@ -174,59 +174,59 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           We just don't know. Unknown values of this enum SHOULD also be           treated like this.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           Situation normal. Progress has been made in the setup/teardown of           the call (and it didn't require any user interaction).         ]]>
          */
-        PROGRESS_MADE,
+        PROGRESS_MADE = 1,
         /**
          * <![CDATA[           The change was requested by the contact indicated by the Actor             member of a Call_State_Reason struct.            The DBus_Reason SHOULD be the empty string if the call             was terminated normally, but MAY be a non-empty error name             to indicate error-like call termination reasons (kicked from             a conference by a moderator, etc.).         ]]>
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 2,
         /**
          * <![CDATA[           The call was forwarded. If known, the handle of the           contact the call was forwarded to will be indicated by the           "forwarded-to" member of a           CallStateDetails dictionnary           in the CallStateChanged           signal.         ]]>
          */
-        FORWARDED,
+        FORWARDED = 3,
         /**
          * <![CDATA[           The CallState changed from             Initialised or             Ended (or a content's direction             changed) because it was rejected by the remote user.           Corresponds to Rejected         ]]>
          */
-        REJECTED,
+        REJECTED = 4,
         /**
          * <![CDATA[           The CallState changed from             Initialised or             Ended because the initiator             ended the call before the receiver accepted it. With an             incoming call this state change reason signifies a missed             call, or one that was picked up elsewhere before it was             picked up here.           Corresponds to NoAnswer or             PickedUpElsewhere         ]]>
          */
-        NO_ANSWER,
+        NO_ANSWER = 5,
         /**
          * <![CDATA[           The CallState changed because one             of the addresses does not exist on the network.           Corresponds to DoesNotExist         ]]>
          */
-        INVALID_CONTACT,
+        INVALID_CONTACT = 6,
         /**
          * <![CDATA[           The CallState changed because the           local user is not authorised.           Corresponds to PermissionDenied or             InsufficientBalance                      ]]>
          */
-        PERMISSION_DENIED,
+        PERMISSION_DENIED = 7,
         /**
          * <![CDATA[           The CallState changed from             Initialised             Ended because the receiver is busy             (e.g. is already engaged in another call, and has not placed the             initiator in a call-waiting queue).           Corresponds to Busy         ]]>
          */
-        BUSY,
+        BUSY = 8,
         /**
          * <![CDATA[           There has been an unexpected error in either the CM or some other             local component.           Corresponds to Confused or           Media.StreamingError                    ]]>
          */
-        INTERNAL_ERROR,
+        INTERNAL_ERROR = 9,
         /**
          * <![CDATA[           There has been an unexpected error in the server or some other             remote component.           Corresponds to             ServiceConfused                    ]]>
          */
-        SERVICE_ERROR,
+        SERVICE_ERROR = 10,
         /**
          * <![CDATA[           There has been a network error related to the CM or the             signalling part of the call (compare and contrast:             Streaming_Error).           Corresponds to             NetworkError         ]]>
          */
-        NETWORK_ERROR,
+        NETWORK_ERROR = 11,
         /**
          * <![CDATA[           Some aspect of the content is unsupported so has to be             removed from the call.           Corresponds to Media.UnsupportedType             or Media.CodecsIncompatible                    ]]>
          */
-        MEDIA_ERROR,
+        MEDIA_ERROR = 12,
         /**
          * <![CDATA[           It was not possible for the streaming implementation to connect             to any of the users participating in this call or content.           Corresponds to ConnectionFailed or             ConnectionLost         ]]>
          */
-        CONNECTIVITY_ERROR,
+        CONNECTIVITY_ERROR = 13,
     }
 
 
@@ -240,27 +240,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           This is not an IP candidate. This is a reserved value, and should           not be seen on the bus.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           This candidate represents a direct connection to the host, as its           address is taken directly the host's IP stack.         ]]>
          */
-        HOST,
+        HOST = 1,
         /**
          * <![CDATA[           This candidate probably represents a connection to the host through           a NAT device, as its address was discovered by sending a binding           request to a STUN server or similar.         ]]>
          */
-        SERVER_REFLEXIVE,
+        SERVER_REFLEXIVE = 2,
         /**
          * <![CDATA[           This candidate probably represents a good route between the host and           its peer, as its address was discovered by sending a STUN binding           request to one of the candidates advertised by the peer.         ]]>
          */
-        PEER_REFLEXIVE,
+        PEER_REFLEXIVE = 3,
         /**
          * <![CDATA[           This candidate represents the address of a relay server (usually           somewhere on the public internet). This candidate is the most likely           to work, but all media will go via a relay server, so latency is           likely to be higher than other types of candidate.         ]]>
          */
-        RELAY,
+        RELAY = 4,
         /**
          * <![CDATA[           This candidate represents a Multicast group. This value should only           appear if the Stream's Transport is           set to Multicast.         ]]>
          */
-        MULTICAST,
+        MULTICAST = 5,
     }
 
 
@@ -274,15 +274,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The user aborted the authentication. If this is used, the           CaptchaError SHOULD be set to           Cancelled         ]]>
          */
-        USER_CANCELLED,
+        USER_CANCELLED = 0,
         /**
          * <![CDATA[           The Handler doesn't support the given/required captcha types.           If this is used, the CaptchaError           SHOULD be set to CaptchaNotSupported.           This SHOULD also be used if           Close is called           before CancelCaptcha.                        If no Handler supports captcha channels,             the ChannelDispatcher will just call             Close,             because it has no knowledge of specific channel types.                    ]]>
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 1,
         /**
          * <![CDATA[           The Handler doesn't understand the captcha data received. The           challenger may be sending gibberish.           If this is used, the CaptchaError           SHOULD be set to ServiceConfused.         ]]>
          */
-        SERVICE_CONFUSED,
+        SERVICE_CONFUSED = 2,
     }
 
 
@@ -294,23 +294,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The challenge/response exchange is in progress and waiting for           a local action. Call AnswerCaptchas           to go to the Remote_Pending state, or call           CancelCaptcha followed by            Close           to give up.         ]]>
          */
-        LOCAL_PENDING,
+        LOCAL_PENDING = 0,
         /**
          * <![CDATA[           The challenge/response exchange is in progress and waiting for           a response from the server. Wait for a reply from the server,           which will result in the Succeeded, Try_Again, or Failed state,           or call CancelCaptcha followed by           Close           to give up.         ]]>
          */
-        REMOTE_PENDING,
+        REMOTE_PENDING = 1,
         /**
          * <![CDATA[           Everyone is happy. Connection to the server will proceed as soon as           this state is reached. There is nothing useful to do in this state           except to call Close           to close the channel.         ]]>
          */
-        SUCCEEDED,
+        SUCCEEDED = 2,
         /**
          * <![CDATA[           The server has indicated an authentication failure.           Call GetCaptchas again to get           a new captcha, or           CancelCaptcha followed by           Close           to give up.         ]]>
          */
-        TRY_AGAIN,
+        TRY_AGAIN = 3,
         /**
          * <![CDATA[           Authentication has failed in some way. There is nothing           useful to do in this state except to close the channel with           Close.         ]]>
          */
-        FAILED,
+        FAILED = 4,
     }
 
 
@@ -322,23 +322,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[         The contact has effectively ceased participating in the chat.         ]]>
          */
-        GONE,
+        GONE = 0,
         /**
          * <![CDATA[         The contact has not been active for some time.         ]]>
          */
-        INACTIVE,
+        INACTIVE = 1,
         /**
          * <![CDATA[         The contact is actively participating in the chat.         ]]>
          */
-        ACTIVE,
+        ACTIVE = 2,
         /**
          * <![CDATA[         The contact has paused composing a message.         ]]>
          */
-        PAUSED,
+        PAUSED = 3,
         /**
          * <![CDATA[         The contact is composing a message to be sent to the chat.         ]]>
          */
-        COMPOSING,
+        COMPOSING = 4,
     }
 
 
@@ -350,23 +350,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[The search has not started]]>
          */
-        NOT_STARTED,
+        NOT_STARTED = 0,
         /**
          * <![CDATA[The search is in progress]]>
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 1,
         /**
          * <![CDATA[The search has paused, but more results can be retrieved           by calling More.]]>
          */
-        MORE_AVAILABLE,
+        MORE_AVAILABLE = 2,
         /**
          * <![CDATA[The search has been completed]]>
          */
-        COMPLETED,
+        COMPLETED = 3,
         /**
          * <![CDATA[The search has failed]]>
          */
-        FAILED,
+        FAILED = 4,
     }
 
 
@@ -380,51 +380,51 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           No reason was provided for this change.            In particular, this reason SHOULD be used when representing             users joining a named chatroom in the usual way, users leaving             a chatroom by their own request, and normal termination of a             StreamedMedia call by the remote user.            If the SelfHandle is removed from             a group for this reason and the actor is not the SelfHandle, the             equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Terminated.            If the SelfHandle is removed from a group for this reason and             the actor is also the SelfHandle, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cancelled.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The change is due to a user going offline. Also used when             user is already offline, but this wasn't known previously.            If a one-to-one StreamedMedia             call fails because the contact being called is offline, the             connection manager SHOULD indicate this by removing both the             SelfHandle and the other contact's             handle from the Group interface with reason Offline.                         For 1-1 calls, the call terminates as a result of removing the             remote contact, so the SelfHandle should be removed at the same             time as the remote contact and for the same reason.                       If a handle is removed from a group for this reason, the             equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Offline.         ]]>
          */
-        OFFLINE,
+        OFFLINE = 1,
         /**
          * <![CDATA[           The change is due to a kick operation.            If the SelfHandle is removed             from a group for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Channel.Kicked.                    ]]>
          */
-        KICKED,
+        KICKED = 2,
         /**
          * <![CDATA[           The change is due to a busy indication.            If a one-to-one StreamedMedia             call fails because the contact being called is busy, the             connection manager SHOULD indicate this by removing both the             SelfHandle and the other contact's             handle from the Group interface with reason Busy.                         For 1-1 calls, the call terminates as a result of removing the             remote contact, so the SelfHandle should be removed at the same             time as the remote contact and for the same reason.                       If the SelfHandle is removed             from a group for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Busy.                    ]]>
          */
-        BUSY,
+        BUSY = 3,
         /**
          * <![CDATA[           The change is due to an invitation. This reason SHOULD only be used           when contacts are added to the remote-pending set (to indicate that           the contact has been invited) or to the members (to indicate that           the contact has accepted the invitation).                         Otherwise, what would it mean?                    ]]>
          */
-        INVITED,
+        INVITED = 4,
         /**
          * <![CDATA[           The change is due to a kick+ban operation.            If the SelfHandle is removed             from a group for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Channel.Banned.                    ]]>
          */
-        BANNED,
+        BANNED = 5,
         /**
          * <![CDATA[             The change is due to an error occurring.         ]]>
          */
-        ERROR,
+        ERROR = 6,
         /**
          * <![CDATA[           The change is because the requested contact does not exist.            For instance, if the user invites a nonexistent contact to a             chatroom or attempts to call a nonexistent contact, this could             be indicated by the CM adding that contact's handle to             remote-pending for reason None or Invited, then removing it for             reason Invalid_Contact. In the case of a 1-1 StreamedMedia             call, the CM SHOULD remove the self handle from the Group             in the same signal.                         For 1-1 calls, the call terminates as a result of removing the             remote contact, so the SelfHandle should be removed at the same             time as the remote contact and for the same reason.                       If a contact is removed from a group for this reason, the             equivalent D-Bus error is             org.freedesktop.Telepathy.Error.DoesNotExist.                    ]]>
          */
-        INVALID_CONTACT,
+        INVALID_CONTACT = 7,
         /**
          * <![CDATA[           The change is because the requested contact did not respond.            If a one-to-one StreamedMedia             call fails because the contact being called did not respond, or the             local user did not respond to an incoming call, the             connection manager SHOULD indicate this by removing both the             SelfHandle and the other contact's             handle from the Group interface with reason No_Answer.                         Documenting existing practice.                       If a contact is removed from a group for this reason, the             equivalent D-Bus error is             org.freedesktop.Telepathy.Error.NoAnswer.                    ]]>
          */
-        NO_ANSWER,
+        NO_ANSWER = 8,
         /**
          * <![CDATA[           The change is because a contact's unique identifier changed.           There must be exactly one handle in the removed set and exactly           one handle in one of the added sets. The Renamed           signal on the           Renaming           interface will have been emitted for the same handles,           shortly before this MembersChanged signal is emitted.         ]]>
          */
-        RENAMED,
+        RENAMED = 9,
         /**
          * <![CDATA[           The change is because there was no permission to contact the             requested handle.            If a contact is removed from a group for this reason, the             equivalent D-Bus error is             org.freedesktop.Telepathy.Error.PermissionDenied.                    ]]>
          */
-        PERMISSION_DENIED,
+        PERMISSION_DENIED = 10,
         /**
          * <![CDATA[           If members are removed with this reason code, the change is             because the group has split into unconnected parts which can only             communicate within themselves (e.g. netsplits on IRC use this             reason code).                                   If members are added with this reason code, the change is because             unconnected parts of the group have rejoined. If this channel             carries messages (e.g. Text             or Tubes             channels) applications must             assume that the contacts being added are likely to have missed some             messages as a result of the separation, and that the contacts             in the group are likely to have missed some messages from the             contacts being added.                      Note that from the added contacts' perspective, they have been             in the group all along, and the contacts we indicate to be in             the group (including the local user) have just rejoined             the group with reason Separated. Application protocols in Tubes             should be prepared to cope with this situation.                       The SelfHandle SHOULD NOT be             removed from channels with this reason.         ]]>
          */
-        SEPARATED,
+        SEPARATED = 11,
     }
 
 
@@ -438,23 +438,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[         An ordinary chat message. Unknown types SHOULD be treated like this.         ]]>
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * <![CDATA[         An action which might be presented to the user as         "* <sender> <action>", such as an IRC CTCP         ACTION (typically selected by the "/me" command). For example, the         text of the message might be "drinks more coffee".         ]]>
          */
-        ACTION,
+        ACTION = 1,
         /**
          * <![CDATA[         A one-off or automated message not necessarily expecting a reply         ]]>
          */
-        NOTICE,
+        NOTICE = 2,
         /**
          * <![CDATA[         An automatically-generated reply message.         ]]>
          */
-        AUTO_REPLY,
+        AUTO_REPLY = 3,
         /**
          * <![CDATA[           A delivery report. This message type MUST NOT appear unless the           channel supports the Messages           interface; see Message_Part for the format that           delivery reports must take.         ]]>
          */
-        DELIVERY_REPORT,
+        DELIVERY_REPORT = 4,
     }
 
 
@@ -466,27 +466,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[         An unknown error occurred         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[         The requested contact was offline         ]]>
          */
-        OFFLINE,
+        OFFLINE = 1,
         /**
          * <![CDATA[         The requested contact is not valid         ]]>
          */
-        INVALID_CONTACT,
+        INVALID_CONTACT = 2,
         /**
          * <![CDATA[         The user does not have permission to speak on this channel         ]]>
          */
-        PERMISSION_DENIED,
+        PERMISSION_DENIED = 3,
         /**
          * <![CDATA[         The outgoing message was too long and was rejected by the server         ]]>
          */
-        TOO_LONG,
+        TOO_LONG = 4,
         /**
          * <![CDATA[         The channel doesn't support sending text messages to the requested         contact         ]]>
          */
-        NOT_IMPLEMENTED,
+        NOT_IMPLEMENTED = 5,
     }
 
 
@@ -498,39 +498,39 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           An invalid presence type used as a null value. This value MUST NOT           appear in the Statuses property,           or in the result of GetStatuses           on the deprecated Presence           interface.         ]]>
          */
-        UNSET,
+        UNSET = 0,
         /**
          * <![CDATA[           Offline         ]]>
          */
-        OFFLINE,
+        OFFLINE = 1,
         /**
          * <![CDATA[           Available         ]]>
          */
-        AVAILABLE,
+        AVAILABLE = 2,
         /**
          * <![CDATA[           Away         ]]>
          */
-        AWAY,
+        AWAY = 3,
         /**
          * <![CDATA[           Away for an extended time         ]]>
          */
-        EXTENDED_AWAY,
+        EXTENDED_AWAY = 4,
         /**
          * <![CDATA[           Hidden (invisible)         ]]>
          */
-        HIDDEN,
+        HIDDEN = 5,
         /**
          * <![CDATA[           Busy, Do Not Disturb.         ]]>
          */
-        BUSY,
+        BUSY = 6,
         /**
          * <![CDATA[           Unknown, unable to determine presence for this contact, for example           if the protocol only allows presence of subscribed contacts.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 7,
         /**
          * <![CDATA[           Error, an error occurred while trying to determine presence.  The           message, if set, is an error from the server.         ]]>
          */
-        ERROR,
+        ERROR = 8,
     }
 
 
@@ -542,15 +542,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The connection is fully connected and all methods are available.         ]]>
          */
-        CONNECTED,
+        CONNECTED = 0,
         /**
          * <![CDATA[           Connect has been called but the           connection has not yet been established. Some methods may fail           until the connection has been established.         ]]>
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * <![CDATA[           If this is retrieved from GetStatus or           Status, it indicates that connection           has not yet been attempted. If seen in a           StatusChanged signal, it indicates           that the connection has failed; the Connection object SHOULD be           removed from D-Bus immediately, and all subsequent method calls           SHOULD fail.         ]]>
          */
-        DISCONNECTED,
+        DISCONNECTED = 2,
     }
 
 
@@ -564,71 +564,71 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           There is no reason set for this state change. Unknown status             reasons SHOULD be treated like this reason.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Disconnected.         ]]>
          */
-        NONE_SPECIFIED,
+        NONE_SPECIFIED = 0,
         /**
          * <![CDATA[           The change is in response to a user request. Changes to the             Connecting or Connected status SHOULD always indicate this reason;             changes to the Disconnected status SHOULD indicate this reason             if and only if the disconnection was requested by the user.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cancelled.         ]]>
          */
-        REQUESTED,
+        REQUESTED = 1,
         /**
          * <![CDATA[           There was an error sending or receiving on the network socket.            When the status changes from Connecting to Disconnected for this             reason, the equivalent D-Bus error is either             org.freedesktop.Telepathy.Error.NetworkError,             org.freedesktop.Telepathy.Error.ConnectionRefused,             org.freedesktop.Telepathy.Error.ConnectionFailed             or some more specific error.            When the status changes from Connected to Disconnected for this             reason, the equivalent D-Bus error is either             org.freedesktop.Telepathy.Error.NetworkError,             org.freedesktop.Telepathy.Error.ConnectionLost             or some more specific error.         ]]>
          */
-        NETWORK_ERROR,
+        NETWORK_ERROR = 2,
         /**
          * <![CDATA[           The username or password was invalid.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.AuthenticationFailed.                    ]]>
          */
-        AUTHENTICATION_FAILED,
+        AUTHENTICATION_FAILED = 3,
         /**
          * <![CDATA[           There was an error negotiating SSL on this connection, or             encryption was unavailable and require-encryption was set when the             connection was created.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.EncryptionNotAvailable             if encryption was not available at all, or             org.freedesktop.Telepathy.Error.EncryptionError             if encryption failed.         ]]>
          */
-        ENCRYPTION_ERROR,
+        ENCRYPTION_ERROR = 4,
         /**
          * <![CDATA[           In general, this reason indicates that the requested account             name or other identification could not be used due to conflict             with another connection. It can be divided into three cases:                         If the status change is from Connecting to Disconnected               and the 'register' parameter to RequestConnection was present               and true, the requested account could not be created on the               server because it already exists.               The equivalent D-Bus error is               org.freedesktop.Telepathy.Error.RegistrationExists.                           If the status change is from Connecting to Disconnected               but the 'register' parameter is absent or false, the connection               manager could not connect to the specified account because               a connection to that account already exists.               The equivalent D-Bus error is               org.freedesktop.Telepathy.Error.AlreadyConnected.                                 In some protocols, like XMPP (when connecting with the same                 JID and resource as an existing connection), the existing                 connection "wins" and the new one fails to connect.                                          If the status change is from Connected to Disconnected,               the existing connection was automatically disconnected because               a new connection to the same account (perhaps from a different               client or location) was established.               The equivalent D-Bus error is               org.freedesktop.Telepathy.Error.ConnectionReplaced.                                 In some protocols, like MSNP (when connecting twice with the                 same Passport), the new connection "wins" and the                 existing one is automatically disconnected.                                                ]]>
          */
-        NAME_IN_USE,
+        NAME_IN_USE = 5,
         /**
          * <![CDATA[           The server did not provide a SSL certificate.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.NotProvided.                    ]]>
          */
-        CERT_NOT_PROVIDED,
+        CERT_NOT_PROVIDED = 6,
         /**
          * <![CDATA[           The server's SSL certificate is signed by an untrusted certifying             authority. This error SHOULD NOT be used to represent a self-signed             certificate: use the more specific Cert_Self_Signed reason for             that.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.Untrusted.                    ]]>
          */
-        CERT_UNTRUSTED,
+        CERT_UNTRUSTED = 7,
         /**
          * <![CDATA[           The server's SSL certificate has expired.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.Expired.                    ]]>
          */
-        CERT_EXPIRED,
+        CERT_EXPIRED = 8,
         /**
          * <![CDATA[           The server's SSL certificate is not yet valid.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.NotActivated.                    ]]>
          */
-        CERT_NOT_ACTIVATED,
+        CERT_NOT_ACTIVATED = 9,
         /**
          * <![CDATA[           The server's SSL certificate did not match its hostname.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.HostnameMismatch.                    ]]>
          */
-        CERT_HOSTNAME_MISMATCH,
+        CERT_HOSTNAME_MISMATCH = 10,
         /**
          * <![CDATA[           The server's SSL certificate does not have the expected             fingerprint.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.FingerprintMismatch.                    ]]>
          */
-        CERT_FINGERPRINT_MISMATCH,
+        CERT_FINGERPRINT_MISMATCH = 11,
         /**
          * <![CDATA[           The server's SSL certificate is self-signed.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.SelfSigned.                    ]]>
          */
-        CERT_SELF_SIGNED,
+        CERT_SELF_SIGNED = 12,
         /**
          * <![CDATA[           There was some other error validating the server's SSL             certificate.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.Invalid.                    ]]>
          */
-        CERT_OTHER_ERROR,
+        CERT_OTHER_ERROR = 13,
         /**
          * <![CDATA[           The server's SSL certificate has been revoked.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.Revoked.                    ]]>
          */
-        CERT_REVOKED,
+        CERT_REVOKED = 14,
         /**
          * <![CDATA[           The server's SSL certificate uses an insecure algorithm, 	  or is cryptographically weak.            When disconnected for this reason, the equivalent D-Bus error is             org.freedesktop.Telepathy.Error.Cert.Insecure.                    ]]>
          */
-        CERT_INSECURE,
+        CERT_INSECURE = 15,
         /**
          * <![CDATA[ 	  The length in bytes of the server certificate, or the depth of the 	  sever certificate chain exceed the limits imposed by the crypto 	  library.  	  When disconnected for this reason, the equivalent D-Bus error is 	    org.freedesktop.Telepathy.Error.Cert.LimitExceeded 	   	]]>
          */
-        CERT_LIMIT_EXCEEDED,
+        CERT_LIMIT_EXCEEDED = 16,
     }
 
 
@@ -647,60 +647,60 @@ export namespace TelepathyGLib {
         /**
          * {@link TelepathyGLib.Contact.alias}
          */
-        ALIAS,
+        ALIAS = 0,
         /**
          * {@link TelepathyGLib.Contact.avatar_token}
          */
-        AVATAR_TOKEN,
+        AVATAR_TOKEN = 1,
         /**
          * {@link TelepathyGLib.Contact.presence_type},
          *  {@link TelepathyGLib.Contact.presence_status} and {@link TelepathyGLib.Contact.presence_message}
          */
-        PRESENCE,
+        PRESENCE = 2,
         /**
          * {@link TelepathyGLib.Contact.location} (available since 0.11.1)
          *  and {@link TelepathyGLib.Contact.location_vardict} (since 0.19.10)
          */
-        LOCATION,
+        LOCATION = 3,
         /**
          * {@link TelepathyGLib.Contact.capabilities}
          *  (available since 0.11.3)
          */
-        CAPABILITIES,
+        CAPABILITIES = 4,
         /**
          * {@link TelepathyGLib.Contact.avatar_file} and
          *  {@link TelepathyGLib.Contact.avatar_mime_type}. Implies {@link TelepathyGLib.ContactFeature.AVATAR_TOKEN}
          *  (available since 0.11.6)
          */
-        AVATAR_DATA,
+        AVATAR_DATA = 5,
         /**
          * {@link TelepathyGLib.Contact.contact_info}
          *  (available since 0.11.7)
          */
-        CONTACT_INFO,
+        CONTACT_INFO = 6,
         /**
          * {@link TelepathyGLib.Contact.client_types}
          *  (available since 0.13.1)
          */
-        CLIENT_TYPES,
+        CLIENT_TYPES = 7,
         /**
          * {@link TelepathyGLib.Contact.subscribe_state},
          *  {@link TelepathyGLib.Contact.publish_state} and {@link TelepathyGLib.Contact.publish_request}. Require a
          *  Connection implementing the `TP_IFACE_CONNECTION_INTERFACE_CONTACT_LIST`
          *  interface. (available since 0.13.12)
          */
-        SUBSCRIPTION_STATES,
+        SUBSCRIPTION_STATES = 8,
         /**
          * {@link TelepathyGLib.Contact.contact_groups}
          *  (available since 0.13.14)
          */
-        CONTACT_GROUPS,
+        CONTACT_GROUPS = 9,
         /**
          * {@link TelepathyGLib.Contact.is_blocked}. Require
          *  Connection implementing the `TP_IFACE_CONNECTION_INTERFACE_CONTACT_BLOCKING`
          *  interface. (available since 0.17.0)
          */
-        CONTACT_BLOCKING,
+        CONTACT_BLOCKING = 10,
     }
 
 
@@ -714,19 +714,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[The connection has not started to retrieve the contact           list. If GetContactListAttributes is           called in this state, it will raise NotYet.]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[The connection has started to retrieve the contact           list, but has not yet succeeded or failed.           If GetContactListAttributes is called           in this state, it will raise NotYet.]]>
          */
-        WAITING,
+        WAITING = 1,
         /**
          * <![CDATA[           The connection has tried and failed to retrieve the contact             list. If GetContactListAttributes             is called in this state, it will immediately raise an error             indicating the reason for failure.            The connection manager SHOULD try again to obtain the contact             list, if appropriate for the protocol. If it succeeds later,             the ContactListState MUST advance             to Success.         ]]>
          */
-        FAILURE,
+        FAILURE = 2,
         /**
          * <![CDATA[The connection has successfully retrieved the contact           list. If GetContactListAttributes           is called in this state, it will return successfully.]]>
          */
-        SUCCESS,
+        SUCCESS = 3,
     }
 
 
@@ -740,19 +740,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           This connection cannot store this type of metadata at all, and             attempting to do so will fail with NotImplemented.                         Link-local XMPP can't store aliases or group memberships at               all, and subscription and presence states are implicit (all               contacts on the local network have subscribe = publish = Yes               and no other contacts exist).              As of April 2010, the XMPP server for Facebook Chat provides a               read-only view of the user's Facebook contacts, so it could also               usefully have this storage type.                    ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           This type of metadata can only be stored permanently for contacts             whose subscribe attribute is Ask or Yes.                         Contact aliases and groups on MSN have this behaviour.                    ]]>
          */
-        SUBSCRIBED_OR_PENDING,
+        SUBSCRIBED_OR_PENDING = 1,
         /**
          * <![CDATA[           This type of metadata can only be stored permanently for contacts             whose subscribe attribute is Yes.                         No service with this behaviour is currently known, but it's a               stricter form of Subscribed_Or_Pending.                    ]]>
          */
-        SUBSCRIBED,
+        SUBSCRIBED = 2,
         /**
          * <![CDATA[           The user can set this metadata for any valid contact identifier,             whether or not they have any presence subscription relationship             to it, and it will be stored on their contact list.                         Contact aliases and groups on XMPP have this behaviour; it               is possible to put a contact in a group, or assign an alias               to them, without requesting that presence be shared.                    ]]>
          */
-        ANYONE,
+        ANYONE = 3,
     }
 
 
@@ -769,62 +769,62 @@ export namespace TelepathyGLib {
          * Raised if the error raised by
          *  a remote D-Bus object is not recognised
          */
-        UNKNOWN_REMOTE_ERROR,
+        UNKNOWN_REMOTE_ERROR = 0,
         /**
          * Emitted in {@link TelepathyGLib.Proxy.SignalSignatures.invalidated | TelepathyGLib.Proxy::invalidated}
          *  when the {@link TelepathyGLib.Proxy} has lost its last reference
          */
-        PROXY_UNREFERENCED,
+        PROXY_UNREFERENCED = 1,
         /**
          * Raised by {@link TelepathyGLib.Proxy} methods if the remote
          *  object does not appear to have the required interface
          */
-        NO_INTERFACE,
+        NO_INTERFACE = 2,
         /**
          * Emitted in {@link TelepathyGLib.Proxy.SignalSignatures.invalidated | TelepathyGLib.Proxy::invalidated} if the
          *  remote process loses ownership of its bus name, and raised by
          *  any {@link TelepathyGLib.Proxy} methods that have not had a reply at that time or are called
          *  after the proxy becomes invalid in this way (usually meaning it crashed)
          */
-        NAME_OWNER_LOST,
+        NAME_OWNER_LOST = 3,
         /**
          * Raised if a D-Bus bus name given is not
          *  valid, or is of an unacceptable type (e.g. well-known vs. unique)
          */
-        INVALID_BUS_NAME,
+        INVALID_BUS_NAME = 4,
         /**
          * Raised if a D-Bus interface or
          *  error name given is not valid
          */
-        INVALID_INTERFACE_NAME,
+        INVALID_INTERFACE_NAME = 5,
         /**
          * Raised if a D-Bus object path
          *  given is not valid
          */
-        INVALID_OBJECT_PATH,
+        INVALID_OBJECT_PATH = 6,
         /**
          * Raised if a D-Bus method or signal
          *  name given is not valid
          */
-        INVALID_MEMBER_NAME,
+        INVALID_MEMBER_NAME = 7,
         /**
          * A generic error which can be used with
          *  {@link TelepathyGLib.Proxy.SignalSignatures.invalidated | TelepathyGLib.Proxy::invalidated} to indicate an application-specific indication
          *  that the remote object no longer exists, if no more specific error
          *  is available.
          */
-        OBJECT_REMOVED,
+        OBJECT_REMOVED = 8,
         /**
          * Raised from calls that re-enter the main
          *  loop (*_run_*) if they are cancelled
          */
-        CANCELLED,
+        CANCELLED = 9,
         /**
          * Raised if information received from a remote
          *  object is inconsistent or otherwise obviously wrong (added in 0.7.17).
          *  See also {@link TelepathyGLib.Error.CONFUSED}.
          */
-        INCONSISTENT,
+        INCONSISTENT = 10,
     }
 
 
@@ -836,67 +836,67 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[0]]>
          */
-        DIGIT_0,
+        DIGIT_0 = 0,
         /**
          * <![CDATA[1]]>
          */
-        DIGIT_1,
+        DIGIT_1 = 1,
         /**
          * <![CDATA[2]]>
          */
-        DIGIT_2,
+        DIGIT_2 = 2,
         /**
          * <![CDATA[3]]>
          */
-        DIGIT_3,
+        DIGIT_3 = 3,
         /**
          * <![CDATA[4]]>
          */
-        DIGIT_4,
+        DIGIT_4 = 4,
         /**
          * <![CDATA[5]]>
          */
-        DIGIT_5,
+        DIGIT_5 = 5,
         /**
          * <![CDATA[6]]>
          */
-        DIGIT_6,
+        DIGIT_6 = 6,
         /**
          * <![CDATA[7]]>
          */
-        DIGIT_7,
+        DIGIT_7 = 7,
         /**
          * <![CDATA[8]]>
          */
-        DIGIT_8,
+        DIGIT_8 = 8,
         /**
          * <![CDATA[9]]>
          */
-        DIGIT_9,
+        DIGIT_9 = 9,
         /**
          * <![CDATA[*]]>
          */
-        ASTERISK,
+        ASTERISK = 10,
         /**
          * <![CDATA[#]]>
          */
-        HASH,
+        HASH = 11,
         /**
          * <![CDATA[A]]>
          */
-        LETTER_A,
+        LETTER_A = 12,
         /**
          * <![CDATA[B]]>
          */
-        LETTER_B,
+        LETTER_B = 13,
         /**
          * <![CDATA[C]]>
          */
-        LETTER_C,
+        LETTER_C = 14,
         /**
          * <![CDATA[D]]>
          */
-        LETTER_D,
+        LETTER_D = 15,
     }
 
 
@@ -908,27 +908,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Log level for errors. Error messages are always fatal, resulting           in the service terminating after something completely           unexpected occurred.         ]]>
          */
-        ERROR,
+        ERROR = 0,
         /**
          * <![CDATA[           Log level for critical messages. Critical messages are messages           that the service might predict and it is up to the service itself           to decide whether to terminate following a critical message.         ]]>
          */
-        CRITICAL,
+        CRITICAL = 1,
         /**
          * <![CDATA[           Log level for warnings.         ]]>
          */
-        WARNING,
+        WARNING = 2,
         /**
          * <![CDATA[           Log level for messages.         ]]>
          */
-        MESSAGE,
+        MESSAGE = 3,
         /**
          * <![CDATA[           Log level for information messages.         ]]>
          */
-        INFO,
+        INFO = 4,
         /**
          * <![CDATA[           Log level for debug messages.         ]]>
          */
-        DEBUG,
+        DEBUG = 5,
     }
 
 
@@ -942,31 +942,31 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The message's disposition is unknown.           Clients SHOULD consider all messages to have status           Delivery_Status_Unknown unless otherwise specified; connection           managers SHOULD NOT signal this delivery status explicitly.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           The message has been delivered to the intended recipient.         ]]>
          */
-        DELIVERED,
+        DELIVERED = 1,
         /**
          * <![CDATA[           Delivery of the message has failed. Clients SHOULD notify the user,           but MAY automatically try sending another copy of the message.                         Similar to errors with type="wait" in XMPP; analogous to             4xx errors in SMTP.                    ]]>
          */
-        TEMPORARILY_FAILED,
+        TEMPORARILY_FAILED = 2,
         /**
          * <![CDATA[           Delivery of the message has failed. Clients SHOULD NOT try again           unless by specific user action. If the user does not modify the           message or alter configuration before re-sending, this error is           likely to happen again.                         Similar to errors with type="cancel", type="modify"             or type="auth" in XMPP; analogous to 5xx errors in SMTP.                    ]]>
          */
-        PERMANENTLY_FAILED,
+        PERMANENTLY_FAILED = 3,
         /**
          * <![CDATA[           An intermediate server has accepted the message but the message           has not been yet delivered to the ultimate recipient. The           connection manager might send a Failed report or Delivered report           later.                         Similar to "202 Accepted" success code in SIP; analogous to             251 and 252 responses in SMTP.                    ]]>
          */
-        ACCEPTED,
+        ACCEPTED = 4,
         /**
          * <![CDATA[           The message has been read by the intended recipient.         ]]>
          */
-        READ,
+        READ = 5,
         /**
          * <![CDATA[           The message has been deleted by the intended recipient. This MAY be           signalled on its own if the message is deleted without being read, or           after Read if the message was read before being deleted.         ]]>
          */
-        DELETED,
+        DELETED = 6,
     }
 
 
@@ -1389,19 +1389,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           No hash.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           MD5 digest as a string of 32 ASCII hex digits.         ]]>
          */
-        MD5,
+        MD5 = 1,
         /**
          * <![CDATA[           SHA1 digest as a string of ASCII hex digits.         ]]>
          */
-        SHA1,
+        SHA1 = 2,
         /**
          * <![CDATA[           SHA256 digest as a string of ASCII hex digits.         ]]>
          */
-        SHA256,
+        SHA256 = 3,
     }
 
 
@@ -1413,27 +1413,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           An invalid state type used as a null value. This value MUST NOT           appear in the State property.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The file transfer is waiting to be accepted/closed by the receiver.           The receiver has to call AcceptFile,           then wait for the state to change to Open and check the offset value.         ]]>
          */
-        PENDING,
+        PENDING = 1,
         /**
          * <![CDATA[           The receiver has accepted the transfer. The sender now has to           call ProvideFile to actually start the transfer.           The receiver should now wait for the state to change to Open           and check the offset value.         ]]>
          */
-        ACCEPTED,
+        ACCEPTED = 2,
         /**
          * <![CDATA[           The file transfer is open for traffic.         ]]>
          */
-        OPEN,
+        OPEN = 3,
         /**
          * <![CDATA[           The file transfer has been completed successfully.         ]]>
          */
-        COMPLETED,
+        COMPLETED = 4,
         /**
          * <![CDATA[           The file transfer has been cancelled.         ]]>
          */
-        CANCELLED,
+        CANCELLED = 5,
     }
 
 
@@ -1445,27 +1445,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           No reason was specified.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The change in state was requested.         ]]>
          */
-        REQUESTED,
+        REQUESTED = 1,
         /**
          * <![CDATA[           The file transfer was cancelled by the local user.         ]]>
          */
-        LOCAL_STOPPED,
+        LOCAL_STOPPED = 2,
         /**
          * <![CDATA[           The file transfer was cancelled by the remote user.         ]]>
          */
-        REMOTE_STOPPED,
+        REMOTE_STOPPED = 3,
         /**
          * <![CDATA[           The file transfer was cancelled because of a local error.         ]]>
          */
-        LOCAL_ERROR,
+        LOCAL_ERROR = 4,
         /**
          * <![CDATA[           The file transfer was cancelled because of a remote error.         ]]>
          */
-        REMOTE_ERROR,
+        REMOTE_ERROR = 5,
     }
 
 
@@ -1479,11 +1479,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Use the GET method when opening the URL.         ]]>
          */
-        GET,
+        GET = 0,
         /**
          * <![CDATA[           Use the POST method when opening the URL. Refer to           HTTP_Post_Data for more details.         ]]>
          */
-        POST,
+        POST = 1,
     }
 
 
@@ -1495,23 +1495,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           A "null" handle type used to indicate the absence of a handle.           When a handle type and a handle appear as a pair, if the handle           type is zero, the handle must also be zero.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           A contact         ]]>
          */
-        CONTACT,
+        CONTACT = 1,
         /**
          * <![CDATA[           A chat room         ]]>
          */
-        ROOM,
+        ROOM = 2,
         /**
          * <![CDATA[           A server-generated contact list (see Channel.Interface.Group)         ]]>
          */
-        LIST,
+        LIST = 3,
         /**
          * <![CDATA[           A user-defined contact list (see Channel.Interface.Group)         ]]>
          */
-        GROUP,
+        GROUP = 4,
     }
 
 
@@ -1525,19 +1525,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           All streams are unheld (the call is active). New channels SHOULD           have this hold state.         ]]>
          */
-        UNHELD,
+        UNHELD = 0,
         /**
          * <![CDATA[           All streams are held (the call is on hold)         ]]>
          */
-        HELD,
+        HELD = 1,
         /**
          * <![CDATA[           The connection manager is attempting to move to state Held, but           has not yet completed that operation. It is unspecified whether           any, all or none of the streams making up the channel are on hold.           Examining the Hold state of Call Contents (if applicable) may           provide more useful information.         ]]>
          */
-        PENDING_HOLD,
+        PENDING_HOLD = 2,
         /**
          * <![CDATA[           The connection manager is attempting to move to state Unheld, but           has not yet completed that operation. It is unspecified whether           any, all or none of the streams making up the channel are on hold.           Examining the Hold state of Call Contents (if applicable) may           provide more useful information.         ]]>
          */
-        PENDING_UNHOLD,
+        PENDING_UNHOLD = 3,
     }
 
 
@@ -1551,15 +1551,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The reason cannot be described by any of the predefined values           (connection managers SHOULD avoid this reason, but clients MUST           handle it gracefully)         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The change is in response to a user request         ]]>
          */
-        REQUESTED,
+        REQUESTED = 1,
         /**
          * <![CDATA[           The change is because some resource was not available         ]]>
          */
-        RESOURCE_NOT_AVAILABLE,
+        RESOURCE_NOT_AVAILABLE = 2,
     }
 
 
@@ -1571,11 +1571,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[UDP (User Datagram Protocol)]]>
          */
-        UDP,
+        UDP = 0,
         /**
          * <![CDATA[TCP (Transmission Control Protocol)]]>
          */
-        TCP,
+        TCP = 1,
     }
 
 
@@ -1587,19 +1587,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[Media are not being sent or received]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[Media are being sent, but not received]]>
          */
-        SEND,
+        SEND = 1,
         /**
          * <![CDATA[Media are being received, but not sent]]>
          */
-        RECEIVE,
+        RECEIVE = 2,
         /**
          * <![CDATA[Media are being sent and received]]>
          */
-        BIDIRECTIONAL,
+        BIDIRECTIONAL = 3,
     }
 
 
@@ -1611,35 +1611,35 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           An unknown error occured.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           The end of the stream was reached.         ]]>
          */
-        EOS,
+        EOS = 1,
         /**
          * <![CDATA[           There are no common codecs between the local side           and the other particpants in the call. The possible codecs are not           signalled here: the streaming implementation is assumed to report           them in an implementation-dependent way, e.g. Farsight should use           GstMissingElement.         ]]>
          */
-        CODEC_NEGOTIATION_FAILED,
+        CODEC_NEGOTIATION_FAILED = 2,
         /**
          * <![CDATA[           A network connection for the Media could not be established or was           lost.         ]]>
          */
-        CONNECTION_FAILED,
+        CONNECTION_FAILED = 3,
         /**
          * <![CDATA[           There was an error in the networking stack           (other than the connection failure).         ]]>
          */
-        NETWORK_ERROR,
+        NETWORK_ERROR = 4,
         /**
          * <![CDATA[           There are no installed codecs for this media type.         ]]>
          */
-        NO_CODECS,
+        NO_CODECS = 5,
         /**
          * <![CDATA[           The CM is doing something wrong.         ]]>
          */
-        INVALID_CM_BEHAVIOR,
+        INVALID_CM_BEHAVIOR = 6,
         /**
          * <![CDATA[           There was an error in the media processing stack.         ]]>
          */
-        MEDIA_ERROR,
+        MEDIA_ERROR = 7,
     }
 
 
@@ -1651,15 +1651,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[The stream is disconnected.]]>
          */
-        DISCONNECTED,
+        DISCONNECTED = 0,
         /**
          * <![CDATA[The stream is trying to connect.]]>
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * <![CDATA[The stream is connected.]]>
          */
-        CONNECTED,
+        CONNECTED = 2,
     }
 
 
@@ -1671,15 +1671,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           A local address         ]]>
          */
-        LOCAL,
+        LOCAL = 0,
         /**
          * <![CDATA[           An external address derived by a method such as STUN         ]]>
          */
-        DERIVED,
+        DERIVED = 1,
         /**
          * <![CDATA[           An external stream relay         ]]>
          */
-        RELAY,
+        RELAY = 2,
     }
 
 
@@ -1691,11 +1691,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[An audio stream]]>
          */
-        AUDIO,
+        AUDIO = 0,
         /**
          * <![CDATA[A video stream]]>
          */
-        VIDEO,
+        VIDEO = 1,
     }
 
 
@@ -1707,11 +1707,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Both RTP data senders and data receivers MAY send DLRR           blocks.         ]]>
          */
-        ALL,
+        ALL = 0,
         /**
          * <![CDATA[           Only active RTP senders MAY send DLRR blocks, i.e., non RTP           senders SHALL NOT send DLRR blocks.         ]]>
          */
-        SENDER,
+        SENDER = 1,
     }
 
 
@@ -1725,19 +1725,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The associated variant is a list of contacts (signature 'au',           Contact_Handle[]) who can see the extended presence information.         ]]>
          */
-        WHITELIST,
+        WHITELIST = 0,
         /**
          * <![CDATA[           All contacts in the user's 'publish' contact list can see the           extended presence information. The associated variant is ignored.         ]]>
          */
-        PUBLISH_LIST,
+        PUBLISH_LIST = 1,
         /**
          * <![CDATA[           The associated variant is a handle of type Group (signature 'u',           Group_Handle) representing a group of contacts who can see the           extended presence information.         ]]>
          */
-        GROUP,
+        GROUP = 2,
         /**
          * <![CDATA[           Anyone with access to the service can see the extended presence           information.         ]]>
          */
-        OPEN,
+        OPEN = 3,
     }
 
 
@@ -1751,11 +1751,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The server sent an invalid challenge or data.         ]]>
          */
-        INVALID_CHALLENGE,
+        INVALID_CHALLENGE = 0,
         /**
          * <![CDATA[           The user aborted the authentication.         ]]>
          */
-        USER_ABORT,
+        USER_ABORT = 1,
     }
 
 
@@ -1767,31 +1767,31 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The initial state. The Handler SHOULD either           call AbortSASL, or connect to the           NewChallenge signal then call           StartMechanism or           StartMechanismWithData.         ]]>
          */
-        NOT_STARTED,
+        NOT_STARTED = 0,
         /**
          * <![CDATA[           The challenge/response exchange is in progress. The Handler SHOULD           call either Respond or           AcceptSASL exactly once per emission           of NewChallenge, or call           AbortSASL at any time.         ]]>
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 1,
         /**
          * <![CDATA[           The server has indicated successful authentication, and the           connection manager is waiting for confirmation from the Handler.           The Handler must call either AcceptSASL or           AbortSASL to indicate whether it           considers authentication to have been successful.         ]]>
          */
-        SERVER_SUCCEEDED,
+        SERVER_SUCCEEDED = 2,
         /**
          * <![CDATA[           The Handler has indicated successful authentication, and the           connection manager is waiting for confirmation from the server.           The state will progress to either Succeeded or Server_Failed when           confirmation is received.         ]]>
          */
-        CLIENT_ACCEPTED,
+        CLIENT_ACCEPTED = 3,
         /**
          * <![CDATA[           Everyone is happy (the server sent success, and the client has called           AcceptSASL). Connection to the server           will proceed as soon as this state is reached. The Handler SHOULD           call Close           to close the channel.         ]]>
          */
-        SUCCEEDED,
+        SUCCEEDED = 4,
         /**
          * <![CDATA[           The server has indicated an authentication failure.           If CanTryAgain is true,           the client may try to authenticate again, by calling           StartMechanism or           StartMechanismWithData again.           Otherwise, it should give up completely, by calling Close           on the channel.         ]]>
          */
-        SERVER_FAILED,
+        SERVER_FAILED = 5,
         /**
          * <![CDATA[           The client has indicated an authentication failure. The           possible actions are the same as for Server_Failed.         ]]>
          */
-        CLIENT_FAILED,
+        CLIENT_FAILED = 6,
     }
 
 
@@ -1805,19 +1805,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The contact is not sending media and has not been asked to           do so.         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The contact has been asked to start sending media.         ]]>
          */
-        PENDING_SEND,
+        PENDING_SEND = 1,
         /**
          * <![CDATA[           The contact is sending media.         ]]>
          */
-        SENDING,
+        SENDING = 2,
         /**
          * <![CDATA[           The contact has been asked to stop sending media.         ]]>
          */
-        PENDING_STOP_SENDING,
+        PENDING_STOP_SENDING = 3,
     }
 
 
@@ -1831,15 +1831,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The channel is not communicating with a service point, or it is not           known whether it is communicating with a service point (e.g. an           ordinary call).         ]]>
          */
-        NONE,
+        NONE = 0,
         /**
          * <![CDATA[           The service point is a generic emergency point.         ]]>
          */
-        EMERGENCY,
+        EMERGENCY = 1,
         /**
          * <![CDATA[           The service point is some kind of counseling service (ie, mental health           or child-services counseling).         ]]>
          */
-        COUNSELING,
+        COUNSELING = 2,
     }
 
 
@@ -1851,19 +1851,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The IP or Unix socket can be accessed by any local user (e.g.             a Unix socket that accepts all local connections, or an IP socket             listening on 127.0.0.1 (or ::1) or rejecting connections not from             that address). The associated variant must be ignored.            For a D-Bus tube, this means that the "same user" access             control typically provided by default in D-Bus implementations             SHOULD be disabled. If the socket is only available to local users             (e.g. a Unix socket, an IPv4 socket bound to 127.0.0.1, or an             IPv6 socket bound to ::1), the ANONYMOUS             authentication mechanism MAY be enabled.         ]]>
          */
-        LOCALHOST,
+        LOCALHOST = 0,
         /**
          * <![CDATA[           May only be used on IP sockets, and only for Stream tubes.                      The associated variant must contain           a struct Socket_Address_IPv4 (or Socket_Address_IPv6)           containing the string form of an IP address of the appropriate           version, and a port number. The socket can only be accessed if the           connecting process has that address and port number; all other           connections will be rejected.         ]]>
          */
-        PORT,
+        PORT = 1,
         /**
          * <![CDATA[           May only be used on IP sockets. The associated variant must contain           a struct Socket_Netmask_IPv4 (or Socket_Netmask_IPv6) with           signature (sy), containing the string form of an           IP address of the appropriate version, and a prefix length "n".           The socket can only be accessed if the first n bits of the           connecting address match the first n bits of the given address.         ]]>
          */
-        NETMASK,
+        NETMASK = 2,
         /**
          * <![CDATA[           The high-level meaning of this access control type is that             only the same user (e.g. same numeric Unix uid) is allowed to             interact with the tube. Exactly how this is achieved varies by             channel type.            For StreamTube channels, this access control type             may only be used on UNIX sockets.             The connecting process must send a byte when             it first connects, which is not considered to be part of the data             stream. If the operating system uses `sendmsg()` with SCM_CREDS or             SCM_CREDENTIALS to pass credentials over sockets, the connecting             process must do so if possible; if not, it must still send the             byte, without any attached credentials. (This mechanism is             very similar to the first byte of a D-Bus connection, except that             in D-Bus the byte is always zero, whereas in Tubes it can be             nonzero.)            For DBusTube channels, this access control type             may be used on any type of socket, and there is no extra byte             added by Telepathy at the beginning of the stream: all bytes in             the stream are part of the D-Bus tube connection. The connecting             process should prove its identity via any of the SASL             authentication mechanisms usually used for D-Bus (in typical             D-Bus implementations this involves either sending and receiving             credentials as above, or demonstrating the ability to write to a             file in the user's home directory).            In either case, the listening process will disconnect the             connection unless it can determine by OS-specific means that             the connecting process has the same user ID as the listening             process.            In either tube type, the associated variant must be ignored.         ]]>
          */
-        CREDENTIALS,
+        CREDENTIALS = 3,
     }
 
 
@@ -1875,19 +1875,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           A Unix socket. The address variant contains a byte-array, signature 'ay',           containing the path of the socket.         ]]>
          */
-        UNIX,
+        UNIX = 0,
         /**
          * <![CDATA[           An abstract Unix socket. The address variant contains a byte-array,           signature 'ay', containing the path of the socket including the           leading null byte.         ]]>
          */
-        ABSTRACT_UNIX,
+        ABSTRACT_UNIX = 1,
         /**
          * <![CDATA[           An IPv4 socket. The address variant contains a Socket_Address_IPv4,           i.e. a structure with signature (sq)           in which the string is an IPv4 dotted-quad address literal           (and must not be a DNS name), while the 16-bit unsigned integer is           the port number.         ]]>
          */
-        IPV4,
+        IPV4 = 2,
         /**
          * <![CDATA[           An IPv6 socket. The address variant contains a Socket_Address_IPv6,           i.e. a structure with signature (sq)           in which the string is an IPv6 address literal as specified in           RFC2373 (and must not be a DNS name), while the 16-bit unsigned           integer is the port number.         ]]>
          */
-        IPV6,
+        IPV6 = 3,
     }
 
 
@@ -1901,15 +1901,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The stream transport type is unknown or not applicable           (should not appear over dbus).         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           This is the high-traffic data socket, containing the audio/video           data for the stream.         ]]>
          */
-        DATA,
+        DATA = 1,
         /**
          * <![CDATA[           This is the low-traffic control socket, usually containing feedback           about packet loss etc.         ]]>
          */
-        CONTROL,
+        CONTROL = 2,
     }
 
 
@@ -1923,23 +1923,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Candidate gathering and connectivity checks are in progress.         ]]>
          */
-        CONNECTING,
+        CONNECTING = 0,
         /**
          * <![CDATA[           The streaming implementation has found at least one working           candidate pair. It is possible to send media at this point, but the           controlling side has yet to negotiate the final candidates for use           in this call.         ]]>
          */
-        PROVISIONALLY_CONNECTED,
+        PROVISIONALLY_CONNECTED = 1,
         /**
          * <![CDATA[           This component of the stream is connected, and an updated offer has           been sent and accepted (finalising the candidates to be used for the           call). This should be set by the CM in response to           AcceptSelectedCandidatePair.         ]]>
          */
-        FULLY_CONNECTED,
+        FULLY_CONNECTED = 2,
         /**
          * <![CDATA[           The streaming implementation has tried connecting to all of the           available candidates and none of them have connected. This is           distinct from Failed, because the CM might be able to provide more           candidates later (more likely in XMPP than SIP).         ]]>
          */
-        EXHAUSTED_CANDIDATES,
+        EXHAUSTED_CANDIDATES = 3,
         /**
          * <![CDATA[           The CM and streaming implementation are in agreement that it is           impossible to connect to this endpoint. This value should only be           set by the CM.         ]]>
          */
-        FAILED,
+        FAILED = 4,
     }
 
 
@@ -1953,19 +1953,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           No data is flowing (or expected to be flowing) at this time.         ]]>
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * <![CDATA[           The streaming implementation has been told to start or receiving,           but has not yet indicated that it is doing so.         ]]>
          */
-        PENDING_START,
+        PENDING_START = 1,
         /**
          * <![CDATA[           The streaming implementation has been told to stop sending or           receiving data, but it has not yet indicated that it has done so.         ]]>
          */
-        PENDING_STOP,
+        PENDING_STOP = 2,
         /**
          * <![CDATA[           The streaming implementation is successfully sending or receiving           data, and everything is going swimmingly.         ]]>
          */
-        STARTED,
+        STARTED = 3,
     }
 
 
@@ -1979,31 +1979,31 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The stream transport type is unknown or not applicable           (for streams that do not have a configurable transport).         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           Raw UDP, with or without STUN. All streaming clients are assumed to           support this transport, so there is no handler capability token for           it in the Call1 interface.           [This corresponds to "none" or "stun" in the old Media.StreamHandler           interface.]         ]]>
          */
-        RAW_UDP,
+        RAW_UDP = 1,
         /**
          * <![CDATA[           Interactive Connectivity Establishment, as defined by RFC           5245. Note that this value covers ICE-UDP only.           [This corresponds to "ice-udp" in the old           Media.StreamHandler interface.]         ]]>
          */
-        ICE,
+        ICE = 2,
         /**
          * <![CDATA[           Google Talk peer-to-peer connectivity establishment, as implemented           by libjingle 0.3.           [This corresponds to "gtalk-p2p" in the old Media.StreamHandler           interface.]         ]]>
          */
-        GTALK_P2P,
+        GTALK_P2P = 3,
         /**
          * <![CDATA[           The transport used by Windows Live Messenger 2009 or later, which           resembles ICE draft 19.           [This corresponds to "wlm-2009" in the old Media.StreamHandler           interface.]         ]]>
          */
-        WLM_2009,
+        WLM_2009 = 4,
         /**
          * <![CDATA[           Shared memory transport, as implemented by the GStreamer           shmsrc and shmsink plugins.         ]]>
          */
-        SHM,
+        SHM = 5,
         /**
          * <![CDATA[           Multicast transport.         ]]>
          */
-        MULTICAST,
+        MULTICAST = 6,
     }
 
 
@@ -2017,23 +2017,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[The presence subscription state is           unknown.]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[Presence information cannot be seen, and either the           subscription state Removed_Remotely does not apply, or it is           not known whether that state applies.         ]]>
          */
-        NO,
+        NO = 1,
         /**
          * <![CDATA[Presence information cannot be seen because the           remote contact took action: either the local user's request to           see the remote contact's presence was denied, or the remote           contact requested to see the local user's presence but then           cancelled their request.]]>
          */
-        REMOVED_REMOTELY,
+        REMOVED_REMOTELY = 2,
         /**
          * <![CDATA[Presence information cannot be seen. Permission           to see presence information has been requested, and the request           has not yet been declined or accepted.]]>
          */
-        ASK,
+        ASK = 3,
         /**
          * <![CDATA[Presence information can be seen.]]>
          */
-        YES,
+        YES = 4,
     }
 
 
@@ -2047,43 +2047,43 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The certificate has been rejected for another reason           not listed in this enumeration.         ]]>
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * <![CDATA[           The certificate is not trusted.         ]]>
          */
-        UNTRUSTED,
+        UNTRUSTED = 1,
         /**
          * <![CDATA[           The certificate is expired.         ]]>
          */
-        EXPIRED,
+        EXPIRED = 2,
         /**
          * <![CDATA[           The certificate is not active yet.         ]]>
          */
-        NOT_ACTIVATED,
+        NOT_ACTIVATED = 3,
         /**
          * <![CDATA[           The certificate provided does not have the expected           fingerprint.         ]]>
          */
-        FINGERPRINT_MISMATCH,
+        FINGERPRINT_MISMATCH = 4,
         /**
          * <![CDATA[           The hostname certified does not match the provided one.         ]]>
          */
-        HOSTNAME_MISMATCH,
+        HOSTNAME_MISMATCH = 5,
         /**
          * <![CDATA[           The certificate is self-signed.         ]]>
          */
-        SELF_SIGNED,
+        SELF_SIGNED = 6,
         /**
          * <![CDATA[           The certificate has been revoked.         ]]>
          */
-        REVOKED,
+        REVOKED = 7,
         /**
          * <![CDATA[           The certificate uses an insecure cipher algorithm, or is           cryptographically weak.         ]]>
          */
-        INSECURE,
+        INSECURE = 8,
         /**
          * <![CDATA[           The length in bytes of the certificate, or the depth of the           certificate chain exceed the limits imposed by the crypto           library.         ]]>
          */
-        LIMIT_EXCEEDED,
+        LIMIT_EXCEEDED = 9,
     }
 
 
@@ -2097,15 +2097,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The certificate is currently waiting to be accepted or rejected.         ]]>
          */
-        PENDING,
+        PENDING = 0,
         /**
          * <![CDATA[           The certificate has been verified.         ]]>
          */
-        ACCEPTED,
+        ACCEPTED = 1,
         /**
          * <![CDATA[           The certificate has been rejected.         ]]>
          */
-        REJECTED,
+        REJECTED = 2,
     }
 
 
@@ -2117,19 +2117,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The initiator offered the tube. The tube is waiting to be           accepted/closed locally. If the client accepts the tube, the tube's           state will be Open.         ]]>
          */
-        LOCAL_PENDING,
+        LOCAL_PENDING = 0,
         /**
          * <![CDATA[           The tube is waiting to be accepted/closed remotely. If the           recipient accepts the tube, the tube's state will be Open.         ]]>
          */
-        REMOTE_PENDING,
+        REMOTE_PENDING = 1,
         /**
          * <![CDATA[           The initiator offered the tube and the recipient accepted it. The           tube is open for traffic. The tube's state stays in this state until           it is closed.         ]]>
          */
-        OPEN,
+        OPEN = 2,
         /**
          * <![CDATA[           The tube channel has been requested but the tube is not yet offered.           The client should offer the tube to the recipient and the tube's           state will be Remote_Pending. The method used to offer the tube           depends on the tube type.         ]]>
          */
-        NOT_OFFERED,
+        NOT_OFFERED = 3,
     }
 
 
@@ -2141,15 +2141,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The tube is waiting to be accepted/closed locally.         ]]>
          */
-        LOCAL_PENDING,
+        LOCAL_PENDING = 0,
         /**
          * <![CDATA[           The tube is waiting to be accepted/closed remotely.         ]]>
          */
-        REMOTE_PENDING,
+        REMOTE_PENDING = 1,
         /**
          * <![CDATA[           The tube is open for traffic.         ]]>
          */
-        OPEN,
+        OPEN = 2,
     }
 
 
@@ -2161,58 +2161,67 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The tube is D-Bus tube as described by the             org.freedesktop.Telepathy.Channel.Type.DBusTube interface.         ]]>
          */
-        DBUS,
+        DBUS = 0,
         /**
          * <![CDATA[           The tube is stream tube as described by the             org.freedesktop.Telepathy.Channel.Type.StreamTube interface.         ]]>
          */
-        STREAM,
+        STREAM = 1,
     }
 
 
     /**
      * The account manager's well-known bus name
+     * @default org.freedesktop.Telepathy.AccountManager
      */
     const ACCOUNT_MANAGER_BUS_NAME: string;
 
     /**
      * The account manager's standard object path
+     * @default /org/freedesktop/Telepathy/AccountManager
      */
     const ACCOUNT_MANAGER_OBJECT_PATH: string;
 
     /**
      * The common prefix of the object path for all Account objects.
+     * @default /org/freedesktop/Telepathy/Account/
      */
     const ACCOUNT_OBJECT_PATH_BASE: string;
 
     /**
      * The channel dispatcher's well-known bus name
+     * @default org.freedesktop.Telepathy.ChannelDispatcher
      */
     const CHANNEL_DISPATCHER_BUS_NAME: string;
 
     /**
      * The channel dispatcher's standard object path
+     * @default /org/freedesktop/Telepathy/ChannelDispatcher
      */
     const CHANNEL_DISPATCHER_OBJECT_PATH: string;
 
     /**
      * The common prefix of the well-known bus name for any Telepathy Client.
+     * @default org.freedesktop.Telepathy.Client.
      */
     const CLIENT_BUS_NAME_BASE: string;
 
     /**
      * The common prefix of the well-known object path for any Telepathy Client.
+     * @default /org/freedesktop/Telepathy/Client/
      */
     const CLIENT_OBJECT_PATH_BASE: string;
 
     /**
      * The prefix for a connection manager's bus name, to which the CM's name
      * (e.g. "gabble") should be appended.
+     * @default org.freedesktop.Telepathy.ConnectionManager.
      */
     const CM_BUS_NAME_BASE: string;
 
     /**
      * The prefix for a connection manager's object path, to which the CM's name
      * (e.g. "gabble") should be appended.
+     * @default /org/freedesktop/Telepathy/ConnectionManager/
      */
     const CM_OBJECT_PATH_BASE: string;
 
@@ -2220,6 +2229,7 @@ export namespace TelepathyGLib {
      * The prefix for a connection's bus name, to which the CM's name
      * (e.g. "gabble"), the protocol (e.g. "jabber") and an element or sequence
      * of elements representing the account should be appended.
+     * @default org.freedesktop.Telepathy.Connection.
      */
     const CONN_BUS_NAME_BASE: string;
 
@@ -2227,12 +2237,14 @@ export namespace TelepathyGLib {
      * The prefix for a connection's object path, to which the CM's name
      * (e.g. "gabble"), the protocol (e.g. "jabber") and an element or sequence
      * of elements representing the account should be appended.
+     * @default /org/freedesktop/Telepathy/Connection/
      */
     const CONN_OBJECT_PATH_BASE: string;
 
     /**
      * The standard path for objects implementing the Telepathy Debug interface
      * (`TpSvcDebug`).
+     * @default /org/freedesktop/Telepathy/debug
      */
     const DEBUG_OBJECT_PATH: string;
 
@@ -2240,284 +2252,598 @@ export namespace TelepathyGLib {
      * The common prefix of Telepathy errors, as a string constant, without
      * the trailing '.' character.
      * @since 0.7.1
+     * @default org.freedesktop.Telepathy.Error
      */
     const ERROR_PREFIX: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account
+     */
     const IFACE_ACCOUNT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Addressing
+     */
     const IFACE_ACCOUNT_INTERFACE_ADDRESSING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Avatar
+     */
     const IFACE_ACCOUNT_INTERFACE_AVATAR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Storage
+     */
     const IFACE_ACCOUNT_INTERFACE_STORAGE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.AccountManager
+     */
     const IFACE_ACCOUNT_MANAGER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Authentication.TLSCertificate
+     */
     const IFACE_AUTHENTICATION_TLS_CERTIFICATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content
+     */
     const IFACE_CALL_CONTENT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.AudioControl
+     */
     const IFACE_CALL_CONTENT_INTERFACE_AUDIO_CONTROL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.DTMF
+     */
     const IFACE_CALL_CONTENT_INTERFACE_DTMF: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media
+     */
     const IFACE_CALL_CONTENT_INTERFACE_MEDIA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl
+     */
     const IFACE_CALL_CONTENT_INTERFACE_VIDEO_CONTROL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription
+     */
     const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports
+     */
     const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPFeedback
+     */
     const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTPHeaderExtensions
+     */
     const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream
+     */
     const IFACE_CALL_STREAM: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint
+     */
     const IFACE_CALL_STREAM_ENDPOINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media
+     */
     const IFACE_CALL_STREAM_INTERFACE_MEDIA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel
+     */
     const IFACE_CHANNEL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher
+     */
     const IFACE_CHANNEL_DISPATCHER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher.Interface.Messages1
+     */
     const IFACE_CHANNEL_DISPATCHER_INTERFACE_MESSAGES1: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher.Interface.OperationList
+     */
     const IFACE_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation
+     */
     const IFACE_CHANNEL_DISPATCH_OPERATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Anonymity
+     */
     const IFACE_CHANNEL_INTERFACE_ANONYMITY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CallState
+     */
     const IFACE_CHANNEL_INTERFACE_CALL_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CaptchaAuthentication1
+     */
     const IFACE_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.ChatState
+     */
     const IFACE_CHANNEL_INTERFACE_CHAT_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference
+     */
     const IFACE_CHANNEL_INTERFACE_CONFERENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Destroyable
+     */
     const IFACE_CHANNEL_INTERFACE_DESTROYABLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.DTMF
+     */
     const IFACE_CHANNEL_INTERFACE_DTMF: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.FileTransfer.Metadata
+     */
     const IFACE_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group
+     */
     const IFACE_CHANNEL_INTERFACE_GROUP: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Hold
+     */
     const IFACE_CHANNEL_INTERFACE_HOLD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.MediaSignalling
+     */
     const IFACE_CHANNEL_INTERFACE_MEDIA_SIGNALLING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages
+     */
     const IFACE_CHANNEL_INTERFACE_MESSAGES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Password
+     */
     const IFACE_CHANNEL_INTERFACE_PASSWORD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2
+     */
     const IFACE_CHANNEL_INTERFACE_ROOM: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1
+     */
     const IFACE_CHANNEL_INTERFACE_ROOM_CONFIG: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication
+     */
     const IFACE_CHANNEL_INTERFACE_SASL_AUTHENTICATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Securable
+     */
     const IFACE_CHANNEL_INTERFACE_SECURABLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.ServicePoint
+     */
     const IFACE_CHANNEL_INTERFACE_SERVICE_POINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SMS
+     */
     const IFACE_CHANNEL_INTERFACE_SMS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2
+     */
     const IFACE_CHANNEL_INTERFACE_SUBJECT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Tube
+     */
     const IFACE_CHANNEL_INTERFACE_TUBE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest
+     */
     const IFACE_CHANNEL_REQUEST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1
+     */
     const IFACE_CHANNEL_TYPE_CALL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactList
+     */
     const IFACE_CHANNEL_TYPE_CONTACT_LIST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactSearch
+     */
     const IFACE_CHANNEL_TYPE_CONTACT_SEARCH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.DBusTube
+     */
     const IFACE_CHANNEL_TYPE_DBUS_TUBE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer
+     */
     const IFACE_CHANNEL_TYPE_FILE_TRANSFER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.RoomList
+     */
     const IFACE_CHANNEL_TYPE_ROOM_LIST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerAuthentication
+     */
     const IFACE_CHANNEL_TYPE_SERVER_AUTHENTICATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerTLSConnection
+     */
     const IFACE_CHANNEL_TYPE_SERVER_TLS_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamedMedia
+     */
     const IFACE_CHANNEL_TYPE_STREAMED_MEDIA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamTube
+     */
     const IFACE_CHANNEL_TYPE_STREAM_TUBE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Text
+     */
     const IFACE_CHANNEL_TYPE_TEXT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Tubes
+     */
     const IFACE_CHANNEL_TYPE_TUBES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client
+     */
     const IFACE_CLIENT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Approver
+     */
     const IFACE_CLIENT_APPROVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Handler
+     */
     const IFACE_CLIENT_HANDLER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Interface.Requests
+     */
     const IFACE_CLIENT_INTERFACE_REQUESTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Observer
+     */
     const IFACE_CLIENT_OBSERVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection
+     */
     const IFACE_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Addressing1
+     */
     const IFACE_CONNECTION_INTERFACE_ADDRESSING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Aliasing
+     */
     const IFACE_CONNECTION_INTERFACE_ALIASING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Anonymity
+     */
     const IFACE_CONNECTION_INTERFACE_ANONYMITY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars
+     */
     const IFACE_CONNECTION_INTERFACE_AVATARS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Balance
+     */
     const IFACE_CONNECTION_INTERFACE_BALANCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Capabilities
+     */
     const IFACE_CONNECTION_INTERFACE_CAPABILITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular
+     */
     const IFACE_CONNECTION_INTERFACE_CELLULAR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ClientTypes
+     */
     const IFACE_CONNECTION_INTERFACE_CLIENT_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Contacts
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactBlocking
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACT_BLOCKING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactCapabilities
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactGroups
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactInfo
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACT_INFO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList
+     */
     const IFACE_CONNECTION_INTERFACE_CONTACT_LIST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Location
+     */
     const IFACE_CONNECTION_INTERFACE_LOCATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.MailNotification
+     */
     const IFACE_CONNECTION_INTERFACE_MAIL_NOTIFICATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.PowerSaving
+     */
     const IFACE_CONNECTION_INTERFACE_POWER_SAVING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Presence
+     */
     const IFACE_CONNECTION_INTERFACE_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Renaming
+     */
     const IFACE_CONNECTION_INTERFACE_RENAMING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Requests
+     */
     const IFACE_CONNECTION_INTERFACE_REQUESTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ServicePoint
+     */
     const IFACE_CONNECTION_INTERFACE_SERVICE_POINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Sidecars1
+     */
     const IFACE_CONNECTION_INTERFACE_SIDECARS1: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.SimplePresence
+     */
     const IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ConnectionManager
+     */
     const IFACE_CONNECTION_MANAGER: string;
 
+    /**
+     * @default org.freedesktop.DBus
+     */
     const IFACE_DBUS_DAEMON: string;
 
+    /**
+     * @default org.freedesktop.DBus.Introspectable
+     */
     const IFACE_DBUS_INTROSPECTABLE: string;
 
+    /**
+     * @default org.freedesktop.DBus.Peer
+     */
     const IFACE_DBUS_PEER: string;
 
+    /**
+     * @default org.freedesktop.DBus.Properties
+     */
     const IFACE_DBUS_PROPERTIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Debug
+     */
     const IFACE_DEBUG: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.SessionHandler
+     */
     const IFACE_MEDIA_SESSION_HANDLER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.StreamHandler
+     */
     const IFACE_MEDIA_STREAM_HANDLER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Properties
+     */
     const IFACE_PROPERTIES_INTERFACE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol
+     */
     const IFACE_PROTOCOL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Addressing
+     */
     const IFACE_PROTOCOL_INTERFACE_ADDRESSING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars
+     */
     const IFACE_PROTOCOL_INTERFACE_AVATARS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Presence
+     */
     const IFACE_PROTOCOL_INTERFACE_PRESENCE: string;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.AccessControlType}.
+     * @default 7
      */
     const NUM_ACCESS_CONTROL_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CallContentDisposition}.
+     * @default 2
      */
     const NUM_CALL_CONTENT_DISPOSITIONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CallContentPacketizationType}.
+     * @default 3
      */
     const NUM_CALL_CONTENT_PACKETIZATION_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CallState}.
+     * @default 7
      */
     const NUM_CALL_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CallStateChangeReason}.
+     * @default 14
      */
     const NUM_CALL_STATE_CHANGE_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CallStreamCandidateType}.
+     * @default 6
      */
     const NUM_CALL_STREAM_CANDIDATE_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CaptchaCancelReason}.
+     * @default 3
      */
     const NUM_CAPTCHA_CANCEL_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.CaptchaStatus}.
+     * @default 5
      */
     const NUM_CAPTCHA_STATUSES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ChannelChatState}.
+     * @default 5
      */
     const NUM_CHANNEL_CHAT_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ChannelContactSearchState}.
+     * @default 5
      */
     const NUM_CHANNEL_CONTACT_SEARCH_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ChannelGroupChangeReason}.
+     * @default 12
      */
     const NUM_CHANNEL_GROUP_CHANGE_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ChannelTextMessageType}.
+     * @default 5
      */
     const NUM_CHANNEL_TEXT_MESSAGE_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ChannelTextSendError}.
+     * @default 6
      */
     const NUM_CHANNEL_TEXT_SEND_ERRORS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ConnectionPresenceType}.
+     * @default 9
      */
     const NUM_CONNECTION_PRESENCE_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ConnectionStatus}.
+     * @default 3
      */
     const NUM_CONNECTION_STATUSES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ConnectionStatusReason}.
+     * @default 17
      */
     const NUM_CONNECTION_STATUS_REASONS: number;
 
@@ -2525,883 +2851,1948 @@ export namespace TelepathyGLib {
      * 1 higher than the highest {@link TelepathyGLib.ContactFeature} supported by this version of
      * telepathy-glib.
      * @since 0.19.0
+     * @default 11
      */
     const NUM_CONTACT_FEATURES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ContactListState}.
+     * @default 4
      */
     const NUM_CONTACT_LIST_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ContactMetadataStorageType}.
+     * @default 4
      */
     const NUM_CONTACT_METADATA_STORAGE_TYPES: number;
 
     /**
      * 1 more than the highest valid {@link TelepathyGLib.DBusError} at the time of compilation
      * @since 0.19.0
+     * @default 11
      */
     const NUM_DBUS_ERRORS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.DebugLevel}.
+     * @default 6
      */
     const NUM_DEBUG_LEVELS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.DeliveryStatus}.
+     * @default 7
      */
     const NUM_DELIVERY_STATUSES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.DTMFEvent}.
+     * @default 16
      */
     const NUM_DTMF_EVENTS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.FileHashType}.
+     * @default 4
      */
     const NUM_FILE_HASH_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.FileTransferState}.
+     * @default 6
      */
     const NUM_FILE_TRANSFER_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.FileTransferStateChangeReason}.
+     * @default 6
      */
     const NUM_FILE_TRANSFER_STATE_CHANGE_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.HandleType}.
+     * @default 5
      */
     const NUM_HANDLE_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.HTTPMethod}.
+     * @default 2
      */
     const NUM_HTTP_METHODS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.LocalHoldState}.
+     * @default 4
      */
     const NUM_LOCAL_HOLD_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.LocalHoldStateReason}.
+     * @default 3
      */
     const NUM_LOCAL_HOLD_STATE_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamBaseProto}.
+     * @default 2
      */
     const NUM_MEDIA_STREAM_BASE_PROTOS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamDirection}.
+     * @default 4
      */
     const NUM_MEDIA_STREAM_DIRECTIONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamError}.
+     * @default 8
      */
     const NUM_MEDIA_STREAM_ERRORS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamState}.
+     * @default 3
      */
     const NUM_MEDIA_STREAM_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamTransportType}.
+     * @default 3
      */
     const NUM_MEDIA_STREAM_TRANSPORT_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.MediaStreamType}.
+     * @default 2
      */
     const NUM_MEDIA_STREAM_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.RCPTXRRTTMode}.
+     * @default 2
      */
     const NUM_RCPT_XR_RTT_MODES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.RichPresenceAccessControlType}.
+     * @default 4
      */
     const NUM_RICH_PRESENCE_ACCESS_CONTROL_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SASLAbortReason}.
+     * @default 2
      */
     const NUM_SASL_ABORT_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SASLStatus}.
+     * @default 7
      */
     const NUM_SASL_STATUSES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SendingState}.
+     * @default 4
      */
     const NUM_SENDING_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.ServicePointType}.
+     * @default 3
      */
     const NUM_SERVICE_POINT_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SocketAccessControl}.
+     * @default 4
      */
     const NUM_SOCKET_ACCESS_CONTROLS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SocketAddressType}.
+     * @default 4
      */
     const NUM_SOCKET_ADDRESS_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.StreamComponent}.
+     * @default 3
      */
     const NUM_STREAM_COMPONENTS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.StreamEndpointState}.
+     * @default 5
      */
     const NUM_STREAM_ENDPOINT_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.StreamFlowState}.
+     * @default 4
      */
     const NUM_STREAM_FLOW_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.StreamTransportType}.
+     * @default 7
      */
     const NUM_STREAM_TRANSPORT_TYPES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.SubscriptionState}.
+     * @default 5
      */
     const NUM_SUBSCRIPTION_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.TLSCertificateRejectReason}.
+     * @default 10
      */
     const NUM_TLS_CERTIFICATE_REJECT_REASONS: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.TLSCertificateState}.
+     * @default 3
      */
     const NUM_TLS_CERTIFICATE_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.TubeChannelState}.
+     * @default 4
      */
     const NUM_TUBE_CHANNEL_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.TubeState}.
+     * @default 3
      */
     const NUM_TUBE_STATES: number;
 
     /**
      * 1 higher than the highest valid value of {@link TelepathyGLib.TubeType}.
+     * @default 2
      */
     const NUM_TUBE_TYPES: number;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.AutomaticPresence
+     */
     const PROP_ACCOUNT_AUTOMATIC_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ChangingPresence
+     */
     const PROP_ACCOUNT_CHANGING_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Connection
+     */
     const PROP_ACCOUNT_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ConnectionError
+     */
     const PROP_ACCOUNT_CONNECTION_ERROR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ConnectionErrorDetails
+     */
     const PROP_ACCOUNT_CONNECTION_ERROR_DETAILS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ConnectionStatus
+     */
     const PROP_ACCOUNT_CONNECTION_STATUS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ConnectionStatusReason
+     */
     const PROP_ACCOUNT_CONNECTION_STATUS_REASON: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.ConnectAutomatically
+     */
     const PROP_ACCOUNT_CONNECT_AUTOMATICALLY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.CurrentPresence
+     */
     const PROP_ACCOUNT_CURRENT_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.DisplayName
+     */
     const PROP_ACCOUNT_DISPLAY_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Enabled
+     */
     const PROP_ACCOUNT_ENABLED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.HasBeenOnline
+     */
     const PROP_ACCOUNT_HAS_BEEN_ONLINE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Icon
+     */
     const PROP_ACCOUNT_ICON: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interfaces
+     */
     const PROP_ACCOUNT_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Addressing.URISchemes
+     */
     const PROP_ACCOUNT_INTERFACE_ADDRESSING_URI_SCHEMES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Avatar.Avatar
+     */
     const PROP_ACCOUNT_INTERFACE_AVATAR_AVATAR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Storage.StorageIdentifier
+     */
     const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_IDENTIFIER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Storage.StorageProvider
+     */
     const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_PROVIDER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Storage.StorageRestrictions
+     */
     const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_RESTRICTIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Interface.Storage.StorageSpecificInformation
+     */
     const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_SPECIFIC_INFORMATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.AccountManager.Interfaces
+     */
     const PROP_ACCOUNT_MANAGER_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.AccountManager.InvalidAccounts
+     */
     const PROP_ACCOUNT_MANAGER_INVALID_ACCOUNTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.AccountManager.SupportedAccountProperties
+     */
     const PROP_ACCOUNT_MANAGER_SUPPORTED_ACCOUNT_PROPERTIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.AccountManager.ValidAccounts
+     */
     const PROP_ACCOUNT_MANAGER_VALID_ACCOUNTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Nickname
+     */
     const PROP_ACCOUNT_NICKNAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.NormalizedName
+     */
     const PROP_ACCOUNT_NORMALIZED_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Parameters
+     */
     const PROP_ACCOUNT_PARAMETERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.RequestedPresence
+     */
     const PROP_ACCOUNT_REQUESTED_PRESENCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Service
+     */
     const PROP_ACCOUNT_SERVICE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Supersedes
+     */
     const PROP_ACCOUNT_SUPERSEDES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Account.Valid
+     */
     const PROP_ACCOUNT_VALID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Authentication.TLSCertificate.CertificateChainData
+     */
     const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_CHAIN_DATA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Authentication.TLSCertificate.CertificateType
+     */
     const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Authentication.TLSCertificate.Rejections
+     */
     const PROP_AUTHENTICATION_TLS_CERTIFICATE_REJECTIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Authentication.TLSCertificate.State
+     */
     const PROP_AUTHENTICATION_TLS_CERTIFICATE_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Disposition
+     */
     const PROP_CALL_CONTENT_DISPOSITION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interfaces
+     */
     const PROP_CALL_CONTENT_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.AudioControl.RequestedInputVolume
+     */
     const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_INPUT_VOLUME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.AudioControl.RequestedOutputVolume
+     */
     const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_OUTPUT_VOLUME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.DTMF.CurrentlySendingTones
+     */
     const PROP_CALL_CONTENT_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.DTMF.DeferredTones
+     */
     const PROP_CALL_CONTENT_INTERFACE_DTMF_DEFERRED_TONES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.CurrentDTMFEvent
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_EVENT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.CurrentDTMFState
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.LocalMediaDescriptions
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_LOCAL_MEDIA_DESCRIPTIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.MediaDescriptionOffer
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_MEDIA_DESCRIPTION_OFFER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.Packetization
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_PACKETIZATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.Media.RemoteMediaDescriptions
+     */
     const PROP_CALL_CONTENT_INTERFACE_MEDIA_REMOTE_MEDIA_DESCRIPTIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl.Bitrate
+     */
     const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_BITRATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl.Framerate
+     */
     const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_FRAMERATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl.ManualKeyFrames
+     */
     const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MANUAL_KEY_FRAMES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl.MTU
+     */
     const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MTU: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Interface.VideoControl.VideoResolution
+     */
     const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_VIDEO_RESOLUTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Codecs
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_CODECS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.FurtherNegotiationRequired
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_FURTHER_NEGOTIATION_REQUIRED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.HasRemoteInformation
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_HAS_REMOTE_INFORMATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interfaces
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.DLRRMaxSize
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DLRR_MAX_SIZE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.DuplicateRLEMaxSize
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DUPLICATE_RLE_MAX_SIZE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.EnableMetrics
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_ENABLE_METRICS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.LossRLEMaxSize
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_LOSS_RLE_MAX_SIZE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.PacketReceiptTimesMaxSize
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_PACKET_RECEIPT_TIMES_MAX_SIZE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.RTTMode
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_RTT_MODE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPExtendedReports.StatisticsFlags
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_STATISTICS_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPFeedback.DoesAVPF
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_DOES_AVPF: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTCPFeedback.FeedbackMessages
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_FEEDBACK_MESSAGES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.Interface.RTPHeaderExtensions.HeaderExtensions
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS_HEADER_EXTENSIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.RemoteContact
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_REMOTE_CONTACT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.MediaDescription.SSRCs
+     */
     const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_SSRCS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Name
+     */
     const PROP_CALL_CONTENT_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Streams
+     */
     const PROP_CALL_CONTENT_STREAMS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Content.Type
+     */
     const PROP_CALL_CONTENT_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.CanRequestReceiving
+     */
     const PROP_CALL_STREAM_CAN_REQUEST_RECEIVING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.Controlling
+     */
     const PROP_CALL_STREAM_ENDPOINT_CONTROLLING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.EndpointState
+     */
     const PROP_CALL_STREAM_ENDPOINT_ENDPOINT_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.IsICELite
+     */
     const PROP_CALL_STREAM_ENDPOINT_IS_ICE_LITE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.RemoteCandidates
+     */
     const PROP_CALL_STREAM_ENDPOINT_REMOTE_CANDIDATES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.RemoteCredentials
+     */
     const PROP_CALL_STREAM_ENDPOINT_REMOTE_CREDENTIALS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.SelectedCandidatePairs
+     */
     const PROP_CALL_STREAM_ENDPOINT_SELECTED_CANDIDATE_PAIRS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Endpoint.Transport
+     */
     const PROP_CALL_STREAM_ENDPOINT_TRANSPORT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interfaces
+     */
     const PROP_CALL_STREAM_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.Endpoints
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_ENDPOINTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.HasServerInfo
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_HAS_SERVER_INFO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.ICERestartPending
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_ICE_RESTART_PENDING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.LocalCandidates
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CANDIDATES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.LocalCredentials
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CREDENTIALS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.ReceivingState
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_RECEIVING_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.RelayInfo
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_RELAY_INFO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.SendingState
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_SENDING_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.STUNServers
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_STUN_SERVERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.Interface.Media.Transport
+     */
     const PROP_CALL_STREAM_INTERFACE_MEDIA_TRANSPORT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.LocalSendingState
+     */
     const PROP_CALL_STREAM_LOCAL_SENDING_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.RemoteMembers
+     */
     const PROP_CALL_STREAM_REMOTE_MEMBERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Call1.Stream.RemoteMemberIdentifiers
+     */
     const PROP_CALL_STREAM_REMOTE_MEMBER_IDENTIFIERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.ChannelType
+     */
     const PROP_CHANNEL_CHANNEL_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher.Interfaces
+     */
     const PROP_CHANNEL_DISPATCHER_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher.Interface.OperationList.DispatchOperations
+     */
     const PROP_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST_DISPATCH_OPERATIONS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatcher.SupportsRequestHints
+     */
     const PROP_CHANNEL_DISPATCHER_SUPPORTS_REQUEST_HINTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation.Account
+     */
     const PROP_CHANNEL_DISPATCH_OPERATION_ACCOUNT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation.Channels
+     */
     const PROP_CHANNEL_DISPATCH_OPERATION_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation.Connection
+     */
     const PROP_CHANNEL_DISPATCH_OPERATION_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation.Interfaces
+     */
     const PROP_CHANNEL_DISPATCH_OPERATION_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelDispatchOperation.PossibleHandlers
+     */
     const PROP_CHANNEL_DISPATCH_OPERATION_POSSIBLE_HANDLERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.InitiatorHandle
+     */
     const PROP_CHANNEL_INITIATOR_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.InitiatorID
+     */
     const PROP_CHANNEL_INITIATOR_ID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interfaces
+     */
     const PROP_CHANNEL_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Anonymity.AnonymityMandatory
+     */
     const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Anonymity.AnonymityModes
+     */
     const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MODES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Anonymity.AnonymousID
+     */
     const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMOUS_ID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CaptchaAuthentication1.CanRetryCaptcha
+     */
     const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAN_RETRY_CAPTCHA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CaptchaAuthentication1.CaptchaError
+     */
     const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CaptchaAuthentication1.CaptchaErrorDetails
+     */
     const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR_DETAILS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.CaptchaAuthentication1.CaptchaStatus
+     */
     const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_STATUS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.ChatState.ChatStates
+     */
     const PROP_CHANNEL_INTERFACE_CHAT_STATE_CHAT_STATES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.Channels
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.InitialChannels
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.InitialInviteeHandles
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_HANDLES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.InitialInviteeIDs
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_IDS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.InvitationMessage
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_INVITATION_MESSAGE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Conference.OriginalChannels
+     */
     const PROP_CHANNEL_INTERFACE_CONFERENCE_ORIGINAL_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.DTMF.CurrentlySendingTones
+     */
     const PROP_CHANNEL_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.DTMF.DeferredTones
+     */
     const PROP_CHANNEL_INTERFACE_DTMF_DEFERRED_TONES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.DTMF.InitialTones
+     */
     const PROP_CHANNEL_INTERFACE_DTMF_INITIAL_TONES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.FileTransfer.Metadata.Metadata
+     */
     const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_METADATA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.FileTransfer.Metadata.ServiceName
+     */
     const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_SERVICE_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.GroupFlags
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_GROUP_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.HandleOwners
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_HANDLE_OWNERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.LocalPendingMembers
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_LOCAL_PENDING_MEMBERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.Members
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_MEMBERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.MemberIdentifiers
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_MEMBER_IDENTIFIERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.RemotePendingMembers
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_REMOTE_PENDING_MEMBERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Group.SelfHandle
+     */
     const PROP_CHANNEL_INTERFACE_GROUP_SELF_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages.DeliveryReportingSupport
+     */
     const PROP_CHANNEL_INTERFACE_MESSAGES_DELIVERY_REPORTING_SUPPORT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages.MessagePartSupportFlags
+     */
     const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_PART_SUPPORT_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages.MessageTypes
+     */
     const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages.PendingMessages
+     */
     const PROP_CHANNEL_INTERFACE_MESSAGES_PENDING_MESSAGES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Messages.SupportedContentTypes
+     */
     const PROP_CHANNEL_INTERFACE_MESSAGES_SUPPORTED_CONTENT_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Anonymous
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_ANONYMOUS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.CanUpdateConfiguration
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CAN_UPDATE_CONFIGURATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.ConfigurationRetrieved
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CONFIGURATION_RETRIEVED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Description
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_DESCRIPTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.InviteOnly
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_INVITEONLY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Limit
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_LIMIT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Moderated
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MODERATED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.MutableProperties
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MUTABLE_PROPERTIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Password
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.PasswordHint
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_HINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.PasswordProtected
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_PROTECTED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Persistent
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PERSISTENT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Private
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PRIVATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.RoomConfig1.Title
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_TITLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2.CreationTimestamp
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CREATION_TIMESTAMP: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2.Creator
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CREATOR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2.CreatorHandle
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_CREATOR_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2.RoomName
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_ROOM_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Room2.Server
+     */
     const PROP_CHANNEL_INTERFACE_ROOM_SERVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.AuthorizationIdentity
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AUTHORIZATION_IDENTITY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.AvailableMechanisms
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AVAILABLE_MECHANISMS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.CanTryAgain
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_CAN_TRY_AGAIN: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.DefaultRealm
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_REALM: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.DefaultUsername
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_USERNAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.HasInitialData
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_HAS_INITIAL_DATA: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.MaySaveResponse
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_MAY_SAVE_RESPONSE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.SASLError
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.SASLErrorDetails
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR_DETAILS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SASLAuthentication.SASLStatus
+     */
     const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_STATUS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Securable.Encrypted
+     */
     const PROP_CHANNEL_INTERFACE_SECURABLE_ENCRYPTED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Securable.Verified
+     */
     const PROP_CHANNEL_INTERFACE_SECURABLE_VERIFIED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.ServicePoint.CurrentServicePoint
+     */
     const PROP_CHANNEL_INTERFACE_SERVICE_POINT_CURRENT_SERVICE_POINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.ServicePoint.InitialServicePoint
+     */
     const PROP_CHANNEL_INTERFACE_SERVICE_POINT_INITIAL_SERVICE_POINT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SMS.Flash
+     */
     const PROP_CHANNEL_INTERFACE_SMS_FLASH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.SMS.SMSChannel
+     */
     const PROP_CHANNEL_INTERFACE_SMS_SMS_CHANNEL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2.Actor
+     */
     const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2.ActorHandle
+     */
     const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2.CanSet
+     */
     const PROP_CHANNEL_INTERFACE_SUBJECT_CAN_SET: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2.Subject
+     */
     const PROP_CHANNEL_INTERFACE_SUBJECT_SUBJECT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Subject2.Timestamp
+     */
     const PROP_CHANNEL_INTERFACE_SUBJECT_TIMESTAMP: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Tube.Parameters
+     */
     const PROP_CHANNEL_INTERFACE_TUBE_PARAMETERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.Tube.State
+     */
     const PROP_CHANNEL_INTERFACE_TUBE_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Requested
+     */
     const PROP_CHANNEL_REQUESTED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.Account
+     */
     const PROP_CHANNEL_REQUEST_ACCOUNT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.Hints
+     */
     const PROP_CHANNEL_REQUEST_HINTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.Interfaces
+     */
     const PROP_CHANNEL_REQUEST_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.PreferredHandler
+     */
     const PROP_CHANNEL_REQUEST_PREFERRED_HANDLER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.Requests
+     */
     const PROP_CHANNEL_REQUEST_REQUESTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ChannelRequest.UserActionTime
+     */
     const PROP_CHANNEL_REQUEST_USER_ACTION_TIME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.TargetHandle
+     */
     const PROP_CHANNEL_TARGET_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.TargetHandleType
+     */
     const PROP_CHANNEL_TARGET_HANDLE_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.TargetID
+     */
     const PROP_CHANNEL_TARGET_ID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.CallFlags
+     */
     const PROP_CHANNEL_TYPE_CALL_CALL_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.CallMembers
+     */
     const PROP_CHANNEL_TYPE_CALL_CALL_MEMBERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.CallState
+     */
     const PROP_CHANNEL_TYPE_CALL_CALL_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.CallStateDetails
+     */
     const PROP_CHANNEL_TYPE_CALL_CALL_STATE_DETAILS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.CallStateReason
+     */
     const PROP_CHANNEL_TYPE_CALL_CALL_STATE_REASON: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.Contents
+     */
     const PROP_CHANNEL_TYPE_CALL_CONTENTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.HardwareStreaming
+     */
     const PROP_CHANNEL_TYPE_CALL_HARDWARE_STREAMING: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.InitialAudio
+     */
     const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.InitialAudioName
+     */
     const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.InitialTransport
+     */
     const PROP_CHANNEL_TYPE_CALL_INITIAL_TRANSPORT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.InitialVideo
+     */
     const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.InitialVideoName
+     */
     const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.MemberIdentifiers
+     */
     const PROP_CHANNEL_TYPE_CALL_MEMBER_IDENTIFIERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1.MutableContents
+     */
     const PROP_CHANNEL_TYPE_CALL_MUTABLE_CONTENTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactSearch.AvailableSearchKeys
+     */
     const PROP_CHANNEL_TYPE_CONTACT_SEARCH_AVAILABLE_SEARCH_KEYS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactSearch.Limit
+     */
     const PROP_CHANNEL_TYPE_CONTACT_SEARCH_LIMIT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactSearch.SearchState
+     */
     const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SEARCH_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ContactSearch.Server
+     */
     const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SERVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.DBusTube.DBusNames
+     */
     const PROP_CHANNEL_TYPE_DBUS_TUBE_DBUS_NAMES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.DBusTube.ServiceName
+     */
     const PROP_CHANNEL_TYPE_DBUS_TUBE_SERVICE_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.DBusTube.SupportedAccessControls
+     */
     const PROP_CHANNEL_TYPE_DBUS_TUBE_SUPPORTED_ACCESS_CONTROLS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.AvailableSocketTypes
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_AVAILABLE_SOCKET_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.ContentHash
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.ContentHashType
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.ContentType
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_TYPE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.Date
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_DATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.Description
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_DESCRIPTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.Filename
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILENAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.FileCollection
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILE_COLLECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.InitialOffset
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_INITIAL_OFFSET: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.Size
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_SIZE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.State
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.TransferredBytes
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_TRANSFERRED_BYTES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.FileTransfer.URI
+     */
     const PROP_CHANNEL_TYPE_FILE_TRANSFER_URI: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.RoomList.Server
+     */
     const PROP_CHANNEL_TYPE_ROOM_LIST_SERVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerAuthentication.AuthenticationMethod
+     */
     const PROP_CHANNEL_TYPE_SERVER_AUTHENTICATION_AUTHENTICATION_METHOD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerTLSConnection.Hostname
+     */
     const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_HOSTNAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerTLSConnection.ReferenceIdentities
+     */
     const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_REFERENCE_IDENTITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.ServerTLSConnection.ServerCertificate
+     */
     const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_SERVER_CERTIFICATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamedMedia.ImmutableStreams
+     */
     const PROP_CHANNEL_TYPE_STREAMED_MEDIA_IMMUTABLE_STREAMS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamedMedia.InitialAudio
+     */
     const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_AUDIO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamedMedia.InitialVideo
+     */
     const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_VIDEO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamTube.Service
+     */
     const PROP_CHANNEL_TYPE_STREAM_TUBE_SERVICE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.StreamTube.SupportedSocketTypes
+     */
     const PROP_CHANNEL_TYPE_STREAM_TUBE_SUPPORTED_SOCKET_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Approver.ApproverChannelFilter
+     */
     const PROP_CLIENT_APPROVER_APPROVER_CHANNEL_FILTER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Handler.BypassApproval
+     */
     const PROP_CLIENT_HANDLER_BYPASS_APPROVAL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Handler.Capabilities
+     */
     const PROP_CLIENT_HANDLER_CAPABILITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Handler.HandledChannels
+     */
     const PROP_CLIENT_HANDLER_HANDLED_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Handler.HandlerChannelFilter
+     */
     const PROP_CLIENT_HANDLER_HANDLER_CHANNEL_FILTER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Interfaces
+     */
     const PROP_CLIENT_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Observer.DelayApprovers
+     */
     const PROP_CLIENT_OBSERVER_DELAY_APPROVERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Observer.ObserverChannelFilter
+     */
     const PROP_CLIENT_OBSERVER_OBSERVER_CHANNEL_FILTER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Client.Observer.Recover
+     */
     const PROP_CLIENT_OBSERVER_RECOVER: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.HasImmortalHandles
+     */
     const PROP_CONNECTION_HAS_IMMORTAL_HANDLES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interfaces
+     */
     const PROP_CONNECTION_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Anonymity.AnonymityMandatory
+     */
     const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Anonymity.AnonymityModes
+     */
     const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MODES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Anonymity.SupportedAnonymityModes
+     */
     const PROP_CONNECTION_INTERFACE_ANONYMITY_SUPPORTED_ANONYMITY_MODES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.MaximumAvatarBytes
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.MaximumAvatarHeight
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.MaximumAvatarWidth
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.MinimumAvatarHeight
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.MinimumAvatarWidth
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.RecommendedAvatarHeight
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.RecommendedAvatarWidth
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars.SupportedAvatarMIMETypes
+     */
     const PROP_CONNECTION_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Balance.AccountBalance
+     */
     const PROP_CONNECTION_INTERFACE_BALANCE_ACCOUNT_BALANCE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Balance.ManageCreditURI
+     */
     const PROP_CONNECTION_INTERFACE_BALANCE_MANAGE_CREDIT_URI: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.IMSI
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_IMSI: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.MessageNationalCharacterSet
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_NATIONAL_CHARACTER_SET: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.MessageReducedCharacterSet
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_REDUCED_CHARACTER_SET: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.MessageServiceCentre
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_SERVICE_CENTRE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.MessageValidityPeriod
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_VALIDITY_PERIOD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Cellular.OverrideMessageServiceCentre
+     */
     const PROP_CONNECTION_INTERFACE_CELLULAR_OVERRIDE_MESSAGE_SERVICE_CENTRE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Contacts.ContactAttributeInterfaces
+     */
     const PROP_CONNECTION_INTERFACE_CONTACTS_CONTACT_ATTRIBUTE_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactBlocking.ContactBlockingCapabilities
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_BLOCKING_CONTACT_BLOCKING_CAPABILITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactGroups.DisjointGroups
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_DISJOINT_GROUPS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactGroups.Groups
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactGroups.GroupStorage
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUP_STORAGE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactInfo.ContactInfoFlags
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_INFO_CONTACT_INFO_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactInfo.SupportedFields
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_INFO_SUPPORTED_FIELDS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList.CanChangeContactList
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CAN_CHANGE_CONTACT_LIST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList.ContactListPersists
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_PERSISTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList.ContactListState
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_STATE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList.DownloadAtConnection
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_LIST_DOWNLOAD_AT_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList.RequestUsesMessage
+     */
     const PROP_CONNECTION_INTERFACE_CONTACT_LIST_REQUEST_USES_MESSAGE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Location.LocationAccessControl
+     */
     const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Location.LocationAccessControlTypes
+     */
     const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Location.SupportedLocationFeatures
+     */
     const PROP_CONNECTION_INTERFACE_LOCATION_SUPPORTED_LOCATION_FEATURES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.MailNotification.MailAddress
+     */
     const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_ADDRESS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.MailNotification.MailNotificationFlags
+     */
     const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_NOTIFICATION_FLAGS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.MailNotification.UnreadMails
+     */
     const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAILS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.MailNotification.UnreadMailCount
+     */
     const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAIL_COUNT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.PowerSaving.PowerSavingActive
+     */
     const PROP_CONNECTION_INTERFACE_POWER_SAVING_POWER_SAVING_ACTIVE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Requests.Channels
+     */
     const PROP_CONNECTION_INTERFACE_REQUESTS_CHANNELS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Requests.RequestableChannelClasses
+     */
     const PROP_CONNECTION_INTERFACE_REQUESTS_REQUESTABLE_CHANNEL_CLASSES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ServicePoint.KnownServicePoints
+     */
     const PROP_CONNECTION_INTERFACE_SERVICE_POINT_KNOWN_SERVICE_POINTS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.SimplePresence.MaximumStatusMessageLength
+     */
     const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_MAXIMUM_STATUS_MESSAGE_LENGTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.SimplePresence.Statuses
+     */
     const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_STATUSES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ConnectionManager.Interfaces
+     */
     const PROP_CONNECTION_MANAGER_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.ConnectionManager.Protocols
+     */
     const PROP_CONNECTION_MANAGER_PROTOCOLS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.SelfHandle
+     */
     const PROP_CONNECTION_SELF_HANDLE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.SelfID
+     */
     const PROP_CONNECTION_SELF_ID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Status
+     */
     const PROP_CONNECTION_STATUS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Debug.Enabled
+     */
     const PROP_DEBUG_ENABLED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.StreamHandler.CreatedLocally
+     */
     const PROP_MEDIA_STREAM_HANDLER_CREATED_LOCALLY: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.StreamHandler.NATTraversal
+     */
     const PROP_MEDIA_STREAM_HANDLER_NAT_TRAVERSAL: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.StreamHandler.RelayInfo
+     */
     const PROP_MEDIA_STREAM_HANDLER_RELAY_INFO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Media.StreamHandler.STUNServers
+     */
     const PROP_MEDIA_STREAM_HANDLER_STUN_SERVERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.AuthenticationTypes
+     */
     const PROP_PROTOCOL_AUTHENTICATION_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.ConnectionInterfaces
+     */
     const PROP_PROTOCOL_CONNECTION_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.EnglishName
+     */
     const PROP_PROTOCOL_ENGLISH_NAME: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Icon
+     */
     const PROP_PROTOCOL_ICON: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interfaces
+     */
     const PROP_PROTOCOL_INTERFACES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Addressing.AddressableURISchemes
+     */
     const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_URI_SCHEMES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Addressing.AddressableVCardFields
+     */
     const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_VCARD_FIELDS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.MaximumAvatarBytes
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.MaximumAvatarHeight
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.MaximumAvatarWidth
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.MinimumAvatarHeight
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.MinimumAvatarWidth
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.RecommendedAvatarHeight
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.RecommendedAvatarWidth
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Avatars.SupportedAvatarMIMETypes
+     */
     const PROP_PROTOCOL_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Interface.Presence.Statuses
+     */
     const PROP_PROTOCOL_INTERFACE_PRESENCE_STATUSES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.Parameters
+     */
     const PROP_PROTOCOL_PARAMETERS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.RequestableChannelClasses
+     */
     const PROP_PROTOCOL_REQUESTABLE_CHANNEL_CLASSES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Protocol.VCardField
+     */
     const PROP_PROTOCOL_VCARD_FIELD: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.MediaSignalling/gtalk-p2p
+     */
     const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_GTALK_P2P: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.MediaSignalling/ice-udp
+     */
     const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_ICE_UDP: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.MediaSignalling/wlm-2009
+     */
     const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_2009: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Interface.MediaSignalling/wlm-8.5
+     */
     const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_8_5: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/audio
+     */
     const TOKEN_CHANNEL_TYPE_CALL_AUDIO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/gtalk-p2p
+     */
     const TOKEN_CHANNEL_TYPE_CALL_GTALK_P2P: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/ice
+     */
     const TOKEN_CHANNEL_TYPE_CALL_ICE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/shm
+     */
     const TOKEN_CHANNEL_TYPE_CALL_SHM: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/video
+     */
     const TOKEN_CHANNEL_TYPE_CALL_VIDEO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Channel.Type.Call1/wlm-2009
+     */
     const TOKEN_CHANNEL_TYPE_CALL_WLM_2009: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection/contact-id
+     */
     const TOKEN_CONNECTION_CONTACT_ID: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Addressing1/addresses
+     */
     const TOKEN_CONNECTION_INTERFACE_ADDRESSING_ADDRESSES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Addressing1/uris
+     */
     const TOKEN_CONNECTION_INTERFACE_ADDRESSING_URIS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Aliasing/alias
+     */
     const TOKEN_CONNECTION_INTERFACE_ALIASING_ALIAS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Avatars/token
+     */
     const TOKEN_CONNECTION_INTERFACE_AVATARS_TOKEN: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Capabilities/caps
+     */
     const TOKEN_CONNECTION_INTERFACE_CAPABILITIES_CAPS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ClientTypes/client-types
+     */
     const TOKEN_CONNECTION_INTERFACE_CLIENT_TYPES_CLIENT_TYPES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactBlocking/blocked
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_BLOCKING_BLOCKED: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactCapabilities/capabilities
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_CAPABILITIES_CAPABILITIES: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactGroups/groups
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactInfo/info
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_INFO_INFO: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList/publish
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList/publish-request
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH_REQUEST: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.ContactList/subscribe
+     */
     const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_SUBSCRIBE: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.Location/location
+     */
     const TOKEN_CONNECTION_INTERFACE_LOCATION_LOCATION: string;
 
+    /**
+     * @default org.freedesktop.Telepathy.Connection.Interface.SimplePresence/presence
+     */
     const TOKEN_CONNECTION_INTERFACE_SIMPLE_PRESENCE_PRESENCE: string;
 
     /**
      * An invalid connection status used in {@link TelepathyGLib.Connection} to indicate that the
      * status has not yet been discovered.
      * @since 0.7.1
+     * @default -1
      */
     const UNKNOWN_CONNECTION_STATUS: ConnectionStatus;
 
@@ -3409,6 +4800,7 @@ export namespace TelepathyGLib {
      * An invalid handle type (-1 cast to TpHandleType) used to represent an
      * unknown handle type.
      * @since 0.7.0
+     * @default -1
      */
     const UNKNOWN_HANDLE_TYPE: HandleType;
 
@@ -3421,6 +4813,7 @@ export namespace TelepathyGLib {
      * `tp_user_action_time_from_x11()`, `tp_user_action_time_should_present()` and
      * `TP_USER_ACTION_TIME_CURRENT_TIME`.
      * @since 0.11.13
+     * @default 0
      */
     const USER_ACTION_TIME_NOT_USER_ACTION: number;
 
@@ -3591,6 +4984,7 @@ export namespace TelepathyGLib {
      * @param allow_types some combination of {@link TelepathyGLib.DBusNameType.UNIQUE},  {@link TelepathyGLib.DBusNameType.WELL_KNOWN} or {@link TelepathyGLib.DBusNameType.BUS_DAEMON}  (often this will be {@link TelepathyGLib.DBusNameType.NOT_BUS_DAEMON} or  {@link TelepathyGLib.DBusNameType.ANY})
      * @returns `true` if `name` is valid
      * @since 0.7.1
+     * @throws GLib.Error
      */
     function dbus_check_valid_bus_name(name: string, allow_types: DBusNameType): boolean;
 
@@ -3604,6 +4998,7 @@ export namespace TelepathyGLib {
      * @param name a possible interface name
      * @returns `true` if `name` is valid
      * @since 0.7.1
+     * @throws GLib.Error
      */
     function dbus_check_valid_interface_name(name: string): boolean;
 
@@ -3616,6 +5011,7 @@ export namespace TelepathyGLib {
      * @param name a possible member name
      * @returns `true` if `name` is valid
      * @since 0.7.1
+     * @throws GLib.Error
      */
     function dbus_check_valid_member_name(name: string): boolean;
 
@@ -3627,6 +5023,7 @@ export namespace TelepathyGLib {
      * @param path a possible object path
      * @returns `true` if `path` is valid
      * @since 0.7.1
+     * @throws GLib.Error
      */
     function dbus_check_valid_object_path(path: string): boolean;
 
@@ -3718,6 +5115,7 @@ export namespace TelepathyGLib {
      * @param value an unset GValue (initialized to all zeroes)
      * @returns `true` (filling `value`) on success, `false` (setting `error`)  on failure
      * @since 0.7.13
+     * @throws GLib.Error
      */
     function dbus_properties_mixin_get(self: GObject.Object, interface_name: string, property_name: string, value: GObject.Value | any): boolean;
 
@@ -3752,6 +5150,7 @@ export namespace TelepathyGLib {
      * @param value a GValue containing the new value for this property.
      * @returns `true` on success; `false` (setting `error`) on failure
      * @since 0.15.8
+     * @throws GLib.Error
      */
     function dbus_properties_mixin_set(self: GObject.Object, interface_name: string, property_name: string, value: GObject.Value | any): boolean;
 
@@ -3765,6 +5164,7 @@ export namespace TelepathyGLib {
      * @param value The new value for the property
      * @param setter_data The setter_data from the {@link TelepathyGLib.DBusPropertiesMixinPropImpl},  which must be a string containing the GObject property's name
      * @returns `true`
+     * @throws GLib.Error
      */
     function dbus_properties_mixin_setter_gobject_properties(object: GObject.Object, iface: GLib.Quark, name: GLib.Quark, value: GObject.Value | any, setter_data: null): boolean;
 
@@ -3884,6 +5284,7 @@ export namespace TelepathyGLib {
      * @param id A string whose handle is required
      * @param context User data to be passed to the normalization callback
      * @returns the handle corresponding to the given string, or 0 if it is invalid.
+     * @throws GLib.Error
      */
     function handle_ensure(self: HandleRepoIface, id: string, context: null): Handle;
 
@@ -4150,6 +5551,7 @@ export namespace TelepathyGLib {
      * @param result the result of `tp_list_connection_managers_async()`
      * @returns a  newly allocated list of references to {@link TelepathyGLib.ConnectionManager} objects
      * @since 0.17.6
+     * @throws GLib.Error
      */
     function list_connection_managers_finish(result: Gio.AsyncResult): ConnectionManager[];
 
@@ -4496,15 +5898,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Obscure any information that provides user identification,           user-agent identification or personal details. Examples of this           information might be GSM CallerID, SIP from address, various           informational email headers, etc.            The CM should scrub/replace any of this information before           passing messages or data onto the network. Note that a CM which           has the option of obscuring the information at the CM or privacy           service level would choose both (anonymity services are opaque           to clients of this interface).            Clients SHOULD NOT set both Client_Info and Show_Client_Info modes.           If they are set, the CM MUST respect Client_Info and ignore           Show_Client_Info.         ]]>
          */
-        CLIENT_INFO,
+        CLIENT_INFO = 1,
         /**
          * <![CDATA[           Explicitly request showing of client information. In connection           context, this can be used to override service default. In channel           context, this overrides connection anonymity modes.                         In GSM, it's possible to have CLIR enabled by default, and               explicitly suppress CLIR for a single phone call.                       Clients SHOULD NOT set both Client_Info and Show_Client_Info modes.           If they are set, the CM MUST respect Client_Info and ignore           Show_Client_Info. The CM MAY set both Client_Info and Show_Client_Info           in SupportedAnonymityModes to indicate           its support for explicitly hiding and publicising client information.                    ]]>
          */
-        SHOW_CLIENT_INFO,
+        SHOW_CLIENT_INFO = 2,
         /**
          * <![CDATA[           Obscure any originating IP address information, contact URIs,           and anonymize all traffic involved with sending/receiving any           media streams or call content.           Examples of this include the "headers" portions of           RFC 3323 as           well as the History-Info (described in           RFC 4244)           for a SIP CM.            This SHOULD have the effect of hiding address information from           the remote contact (ie, the contact cannot know what IP address           the session is originated from). Obviously the network still needs           to be able to route information between contacts, so this provides           no guarantees of what can be seen by intermediaries.         ]]>
          */
-        NETWORK_INFO,
+        NETWORK_INFO = 4,
     }
 
 
@@ -4518,23 +5920,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The call has been put on hold by the local user, e.g. using           the Hold interface. This flag SHOULD only be set           if there is at least one Content, and all Contents are           locally held.                         Otherwise, in transient situations where some but not all contents             are on hold, UIs would falsely indicate that the call as a whole             is on hold, which could lead to the user saying something they'll             regret, while under the impression that the other contacts can't             hear them!              This flag exists as a simplified proxy for HoldStateChanged,             to reduce the number of signals that need to be             listened to by a simple UI.                    ]]>
          */
-        LOCALLY_HELD,
+        LOCALLY_HELD = 1,
         /**
          * <![CDATA[           This flag exists for observability of the           SetRinging method (e.g. so that           loggers can tell whether the call got as far as alerting the user,           or whether something went wrong before then). It should be set when           the SetRinging is called, and unset when the call leaves           Initialised.         ]]>
          */
-        LOCALLY_RINGING,
+        LOCALLY_RINGING = 2,
         /**
          * <![CDATA[           This flag exists for observability of the           SetQueued method. It should be set           when the SetQueued is called, and unset when the call leaves           Initialising or           Initialised.         ]]>
          */
-        LOCALLY_QUEUED,
+        LOCALLY_QUEUED = 4,
         /**
          * <![CDATA[           The initiator of the call originally called a contact other than the           current recipient of the call, but the call was then forwarded or           diverted. This flag only makes sense on outgoing calls. It SHOULD be           set or unset according to informational messages from other           contacts.         ]]>
          */
-        FORWARDED,
+        FORWARDED = 8,
         /**
          * <![CDATA[           This flag only occurs when the CallState is Ended. The call with           this flag set has ended, but not all resources corresponding to the           call have been freed yet.            Depending on the protocol there might be some audible feedback while           the clearing flag is set.                         In calls following the ITU-T Q.931 standard there is a period of             time between the call ending and the underlying channel being             completely free for re-use.                    ]]>
          */
-        CLEARING,
+        CLEARING = 16,
     }
 
 
@@ -4548,15 +5950,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The remote contact's client has told us that the contact has been             alerted about the call but has not responded.                         This is a flag per member, not a flag for the call as a whole,               because in Muji conference calls, you could invite someone and               have their state be "ringing" for a while.                    ]]>
          */
-        RINGING,
+        RINGING = 1,
         /**
          * <![CDATA[           The call member has put this call on hold.                         This is a flag per member, not a flag for the call as a whole,               because in conference calls, any member could put the conference               on hold.                    ]]>
          */
-        HELD,
+        HELD = 2,
         /**
          * <![CDATA[           This contact has merged this call into a conference. Note that GSM           provides a notification when the remote party merges a call into a           conference, but not when it is split out again; thus, this flag can           only indicate that the call has been part of a conference at some           point. If a GSM connection manager receives a notification that a           call has been merged into a conference a second time, it SHOULD           represent this by clearing and immediately re-setting this flag on           the remote contact.         ]]>
          */
-        CONFERENCE_HOST,
+        CONFERENCE_HOST = 4,
     }
 
 
@@ -4570,7 +5972,7 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           This captcha mechanism is required to be successfully           answered in order to pass this captcha challenge.         ]]>
          */
-        CAPTCHA_FLAGS_REQUIRED,
+        CAPTCHA_FLAGS_REQUIRED = 1,
     }
 
 
@@ -4584,27 +5986,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The contact has been alerted about the call but has not responded           (e.g. 180 Ringing in SIP).         ]]>
          */
-        RINGING,
+        RINGING = 1,
         /**
          * <![CDATA[           The contact is temporarily unavailable, and the call has been placed           in a queue (e.g. 182 Queued in SIP, or call-waiting in telephony).         ]]>
          */
-        QUEUED,
+        QUEUED = 2,
         /**
          * <![CDATA[           The contact has placed the call on hold, and will not receive           media from the local user or any other participants until they           unhold the call again.         ]]>
          */
-        HELD,
+        HELD = 4,
         /**
          * <![CDATA[           The initiator of the call originally called a contact other than the           current recipient of the call, but the call was then forwarded or           diverted.         ]]>
          */
-        FORWARDED,
+        FORWARDED = 8,
         /**
          * <![CDATA[           Progress has been made in placing the outgoing call, but the           destination contact may not have been made aware of the call yet           (so the Ringing state is not appropriate). This corresponds to SIP's           status code 183 Session Progress, and could be used when the           outgoing call has reached a gateway, for instance.         ]]>
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 16,
         /**
          * <![CDATA[           This contact has merged this call into a conference. Note that GSM           provides a notification when the remote party merges a call into a           conference, but not when it is split out again; thus, this flag can           only indicate that the call has been part of a conference at some           point. If a GSM connection manager receives a notification that a           call has been merged into a conference a second time, it SHOULD           represent this by clearing and immediately re-setting this flag on           the remote contact.         ]]>
          */
-        CONFERENCE_HOST,
+        CONFERENCE_HOST = 32,
     }
 
 
@@ -4616,59 +6018,59 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[             The AddMembers method can be used to             add or invite members who are             not already in the local pending list (which is always valid).         ]]>
          */
-        CAN_ADD,
+        CAN_ADD = 1,
         /**
          * <![CDATA[             The RemoveMembers method can be used             to remove channel members             (removing those on the pending local list is always valid).         ]]>
          */
-        CAN_REMOVE,
+        CAN_REMOVE = 2,
         /**
          * <![CDATA[             The RemoveMembers method can be used             on people on the remote             pending list.         ]]>
          */
-        CAN_RESCIND,
+        CAN_RESCIND = 4,
         /**
          * <![CDATA[             A message may be sent to the server when calling             AddMembers on             contacts who are not currently pending members.         ]]>
          */
-        MESSAGE_ADD,
+        MESSAGE_ADD = 8,
         /**
          * <![CDATA[             A message may be sent to the server when calling             RemoveMembers on             contacts who are currently channel members.         ]]>
          */
-        MESSAGE_REMOVE,
+        MESSAGE_REMOVE = 16,
         /**
          * <![CDATA[             A message may be sent to the server when calling             AddMembers on             contacts who are locally pending.         ]]>
          */
-        MESSAGE_ACCEPT,
+        MESSAGE_ACCEPT = 32,
         /**
          * <![CDATA[             A message may be sent to the server when calling             RemoveMembers on             contacts who are locally pending.         ]]>
          */
-        MESSAGE_REJECT,
+        MESSAGE_REJECT = 64,
         /**
          * <![CDATA[             A message may be sent to the server when calling             RemoveMembers on             contacts who are remote pending.         ]]>
          */
-        MESSAGE_RESCIND,
+        MESSAGE_RESCIND = 128,
         /**
          * <![CDATA[                        The members of this group have handles which are specific to             this channel, and are not valid as general-purpose handles on             the connection. Depending on the channel, it may be possible to             check the HandleOwners property or             call GetHandleOwners to find the             owners of these handles, which should be done if you wish to (e.g.)             subscribe to the contact's presence.                                    Connection managers must ensure that any given handle is not             simultaneously a general-purpose handle and a channel-specific             handle.                    ]]>
          */
-        CHANNEL_SPECIFIC_HANDLES,
+        CHANNEL_SPECIFIC_HANDLES = 256,
         /**
          * <![CDATA[             Placing a contact in multiple groups of this type is not allowed             and will raise NotAvailable (on services where contacts may only             be in one user-defined group, user-defined groups will have             this flag).         ]]>
          */
-        ONLY_ONE_GROUP,
+        ONLY_ONE_GROUP = 512,
         /**
          * <![CDATA[           In rooms with channel specific handles (ie Channel_Specific_Handles           flag is set), this flag indicates that no handle owners are           available, apart from the owner of the           SelfHandle.                         This used to be an important optimization to avoid repeated             GetHandleOwners calls, before we introduced the             HandleOwners property and             HandleOwnersChanged signal.                    ]]>
          */
-        HANDLE_OWNERS_NOT_AVAILABLE,
+        HANDLE_OWNERS_NOT_AVAILABLE = 1024,
         /**
          * <![CDATA[           This flag indicates that all the properties introduced in           specification 0.17.6 are fully supported.         ]]>
          */
-        PROPERTIES,
+        PROPERTIES = 2048,
         /**
          * <![CDATA[           Indicates that MembersChangedDetailed           will be emitted for changes to this group's members in addition to           MembersChanged.           Clients can then connect to the former and ignore emission of the           latter. This flag's state MUST NOT change over the lifetime of a           channel.                         If it were allowed to change, client bindings would have to always             connect to MembersChanged just in case the flag ever went away (and             generally be unnecessarily complicated), which would mostly negate             the point of having this flag in the first place.                    ]]>
          */
-        MEMBERS_CHANGED_DETAILED,
+        MEMBERS_CHANGED_DETAILED = 4096,
         /**
          * <![CDATA[           A message may be sent to the server when calling           RemoveMembers on           the SelfHandle.                         This would be set for XMPP Multi-User Chat or IRC channels,             but not for a typical implementation of streamed media calls.                    ]]>
          */
-        MESSAGE_DEPART,
+        MESSAGE_DEPART = 8192,
     }
 
 
@@ -4682,27 +6084,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The handle is capable of using audio streams within a media channel.         ]]>
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * <![CDATA[           The handle is capable of using video streams within a media channel.         ]]>
          */
-        VIDEO,
+        VIDEO = 2,
         /**
          * <![CDATA[           The handle is capable of performing STUN to traverse NATs.         ]]>
          */
-        NAT_TRAVERSAL_STUN,
+        NAT_TRAVERSAL_STUN = 4,
         /**
          * <![CDATA[           The handle is capable of establishing Google Talk peer-to-peer           connections (as implemented in libjingle 0.3) to traverse NATs.         ]]>
          */
-        NAT_TRAVERSAL_GTALK_P2P,
+        NAT_TRAVERSAL_GTALK_P2P = 8,
         /**
          * <![CDATA[           The handle is capable of establishing ICE UDP peer-to-peer           connections (as defined by the IETF MMUSIC working group) to traverse           NATs.         ]]>
          */
-        NAT_TRAVERSAL_ICE_UDP,
+        NAT_TRAVERSAL_ICE_UDP = 16,
         /**
          * <![CDATA[           Channels whose target handle is this contact will have           ImmutableStreams = True.         ]]>
          */
-        IMMUTABLE_STREAMS,
+        IMMUTABLE_STREAMS = 32,
     }
 
 
@@ -4714,11 +6116,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The ProvidePassword method must be           called now for the user to join the channel         ]]>
          */
-        PROVIDE,
+        PROVIDE = 8,
         /**
          * <![CDATA[           The RoomConfig1.PasswordHint           contains a hint for the password.         ]]>
          */
-        HINT,
+        HINT = 4,
     }
 
 
@@ -4730,19 +6132,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[         The incoming message was truncated to a shorter length by the         server or the connection manager.         ]]>
          */
-        TRUNCATED,
+        TRUNCATED = 1,
         /**
          * <![CDATA[           The incoming message contained non-text content which cannot be             represented by this interface, but has been signalled             in the Messages             interface.            Connection managers SHOULD only set this flag if the non-text             content appears to be relatively significant (exactly how             significant is up to the implementor). The intention is that             if this flag is set, clients using this interface SHOULD inform             the user that part of the message was not understood.         ]]>
          */
-        NON_TEXT_CONTENT,
+        NON_TEXT_CONTENT = 2,
         /**
          * <![CDATA[           The incoming message was part of a replay of message history.                         In XMPP multi-user chat, a few past messages are replayed               when you join a chatroom. A sufficiently capable IRC connection               manager could also set this flag on historical messages when               connected to a proxy like bip or irssi-proxy. The existence               of this flag allows loggers and UIs to use better heuristics               when eliminating duplicates (a simple implementation made               possible by this flag would be to avoid logging scrollback               at all).                    ]]>
          */
-        SCROLLBACK,
+        SCROLLBACK = 4,
         /**
          * <![CDATA[           The incoming message has been seen in a previous channel during             the lifetime of the Connection, but             had not been acknowledged             when that channel closed, causing an identical channel (the             channel in which the message now appears) to open.                         This means that a logger (which should already have seen the               message in the previous channel) is able to recognise and ignore               these replayed messages.                    ]]>
          */
-        RESCUED,
+        RESCUED = 8,
     }
 
 
@@ -4754,23 +6156,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           This parameter is required for connecting to the server.         ]]>
          */
-        REQUIRED,
+        REQUIRED = 1,
         /**
          * <![CDATA[           This parameter is required for registering an account on the           server.         ]]>
          */
-        REGISTER,
+        REGISTER = 2,
         /**
          * <![CDATA[           This parameter has a default value, which is returned in           GetParameters; not providing this parameter is equivalent to           providing the default.         ]]>
          */
-        HAS_DEFAULT,
+        HAS_DEFAULT = 4,
         /**
          * <![CDATA[           This parameter should be considered private or secret; for             instance, clients should store it in a "password safe" like             gnome-keyring or kwallet, omit it from debug logs, and use a             text input widget that hides the value of the parameter.            (Clients that support older connection managers may also treat             any parameter whose name contains "password" as though it had this             flag.)         ]]>
          */
-        SECRET,
+        SECRET = 8,
         /**
          * <![CDATA[           This parameter is also a D-Bus property on the resulting             Connection; a             parameter named com.example.Duck.Macaroni with this             flag corresponds to the Macaroni property on the             com.example.Duck interface.  Its value can be queried             and possibly changed on an existing Connection using methods on the             org.freedesktop.DBus.Properties interface.            When a new value for a parameter with this flag is passed to             Account.UpdateParameters,             the account manager will attempt to update its value on any running             connections. Similarly, if the parameter also has the             Has_Default flag, and is passed in the second argument             to UpdateParameters, the default value will be applied             to any running             connections. Thus, clients generally do not need to directly access             or update the connection property; instead, they SHOULD manipulate             Account.Parameters.                         This allows runtime-configurable options to be stored and               maintained by the AccountManager, without needing to               invent a separate account preference for “properties that should               be set on the connection as soon as it is created”. It was               originally invented to manage Cellular               preferences.                    ]]>
          */
-        DBUS_PROPERTY,
+        DBUS_PROPERTY = 16,
     }
 
 
@@ -4782,7 +6184,7 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The aliases of contacts on this connection may be changed by the             user of the service, not just by the contacts themselves. This is             the case on Jabber, for instance.           It is possible that aliases can be changed by the contacts too -             which alias takes precedence is not defined by this             specification, and depends on the server and/or connection manager             implementation.           This flag only applies to the aliases of "globally valid" contact             handles. At this time, clients should not expect to be able to             change the aliases corresponding to any channel-specific             handles. If this becomes possible in future, a new flag will             be defined.         ]]>
          */
-        CONNECTION_ALIAS_FLAG_USER_SET,
+        CONNECTION_ALIAS_FLAG_USER_SET = 1,
     }
 
 
@@ -4794,11 +6196,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The given channel type and handle can be given to RequestChannel           to create a new channel of this type.         ]]>
          */
-        CREATE,
+        CREATE = 1,
         /**
          * <![CDATA[           The given contact can be invited to an existing channel of this type.         ]]>
          */
-        INVITE,
+        INVITE = 2,
     }
 
 
@@ -4810,7 +6212,7 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           When calling BlockContacts, the           contacts may be reporting as abusive to the server administrators by           setting Report_Abusive to True.         ]]>
          */
-        CONTACT_BLOCKING_CAPABILITY_CAN_REPORT_ABUSIVE,
+        CONTACT_BLOCKING_CAPABILITY_CAN_REPORT_ABUSIVE = 1,
     }
 
 
@@ -4824,11 +6226,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           If present, exactly the parameters indicated must be set on this             field; in the case of an empty list of parameters, this implies that             parameters may not be used.            If absent, and the list of allowed parameters is non-empty,             any (possibly empty) subset of that list may be             used.            If absent, and the list of allowed parameters is empty,             any parameters may be used.         ]]>
          */
-        PARAMETERS_EXACT,
+        PARAMETERS_EXACT = 1,
         /**
          * <![CDATA[           Indicates that this field will be overwritten when the user's alias             is changed with SetAliases             or when the Account's Nickname             is updated.  Clients that allow the editing of the Alias and the             ContactInfo in the same location should hide fields with this flag.                        If a client allowed the user to edit both the nickname and the               ContactInfo field at the same time, the user could set them to two               different values even though they map to the same property.  This               would result in surprising behavior where the second value would               win over the first.                      In addition to hiding this field when editing ContactInfo together             with the user's nickname, it is recommended that clients call             SetContactInfo before setting the             user's nickname.                        This ensures that if the user changes the nickname, the correct               value will get set even if the stale nickname is mistakenly sent               along with SetContactInfo.                      If used, this flag typically appears on either the 'nickname' or             'fn' field.         ]]>
          */
-        OVERWRITTEN_BY_NICKNAME,
+        OVERWRITTEN_BY_NICKNAME = 2,
     }
 
 
@@ -4842,11 +6244,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Indicates that SetContactInfo is           supported on this connection.         ]]>
          */
-        CAN_SET,
+        CAN_SET = 1,
         /**
          * <![CDATA[           Indicates that the protocol pushes all contacts' information to the           connection manager without prompting. If set,           ContactInfoChanged will be emitted           whenever contacts' information changes.         ]]>
          */
-        PUSH,
+        PUSH = 2,
     }
 
 
@@ -4866,27 +6268,27 @@ export namespace TelepathyGLib {
          * accept unique names like :1.123
          *  (not including the name of the bus daemon itself)
          */
-        UNIQUE,
+        UNIQUE = 1,
         /**
          * accept well-known names like
          *  com.example.Service (not including the name of the bus daemon itself)
          */
-        WELL_KNOWN,
+        WELL_KNOWN = 2,
         /**
          * accept the name of the bus daemon
          *  itself, which has the syntax of a well-known name, but behaves like a
          *  unique name
          */
-        BUS_DAEMON,
+        BUS_DAEMON = 4,
         /**
          * accept either unique or well-known
          *  names, but not the bus daemon
          */
-        NOT_BUS_DAEMON,
+        NOT_BUS_DAEMON = 3,
         /**
          * accept any of the above
          */
-        ANY,
+        ANY = 7,
     }
 
 
@@ -4906,21 +6308,21 @@ export namespace TelepathyGLib {
          * The property can be read using Get and
          *  GetAll
          */
-        READ,
+        READ = 1,
         /**
          * The property can be written using Set
          */
-        WRITE,
+        WRITE = 2,
         /**
          * The property's new value is
          *  included in emissions of PropertiesChanged
          */
-        EMITS_CHANGED,
+        EMITS_CHANGED = 4,
         /**
          * The property is announced
          *  as invalidated, without its value, in emissions of PropertiesChanged
          */
-        EMITS_INVALIDATED,
+        EMITS_INVALIDATED = 8,
     }
 
 
@@ -4934,19 +6336,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Clients MAY expect to receive negative delivery reports if           Message_Sending_Flag_Report_Delivery is specified when sending.         ]]>
          */
-        FAILURES,
+        FAILURES = 1,
         /**
          * <![CDATA[           Clients MAY expect to receive positive delivery reports if           Message_Sending_Flag_Report_Delivery is specified when sending.         ]]>
          */
-        SUCCESSES,
+        SUCCESSES = 2,
         /**
          * <![CDATA[           Clients MAY expect to receive Delivery_Status           Read reports if Message_Sending_Flag_Report_Read           is specified when sending.         ]]>
          */
-        READ,
+        READ = 4,
         /**
          * <![CDATA[           Clients MAY expect to receive Delivery_Status           Deleted reports if Message_Sending_Flag_Report_Deleted           is specified when sending.         ]]>
          */
-        DELETED,
+        DELETED = 8,
     }
 
 
@@ -4960,7 +6362,7 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Indicates that setting your own location with           SetLocation is supported on this           connection.         ]]>
          */
-        LOCATION_FEATURE_CAN_SET,
+        LOCATION_FEATURE_CAN_SET = 1,
     }
 
 
@@ -4974,27 +6376,27 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           This Connection provides the number of unread e-mails (or e-mail           threads) in the main folder of your e-mail account, as the           UnreadMailCount property. The           connection manager will update this value by emitting the           UnreadMailsChanged signal.         ]]>
          */
-        SUPPORTS_UNREAD_MAIL_COUNT,
+        SUPPORTS_UNREAD_MAIL_COUNT = 1,
         /**
          * <![CDATA[           This Connection provides a detailed list of unread e-mails, as the           UnreadMails property. If this flag           is set, Supports_Unread_Mail_Count MUST be set, and           Emits_Mails_Received MUST NOT be set.           The Connection will update the list by emitting the           UnreadMailsChanged signals.         ]]>
          */
-        SUPPORTS_UNREAD_MAILS,
+        SUPPORTS_UNREAD_MAILS = 2,
         /**
          * <![CDATA[           This Connection emits the MailsReceived           signal, which provides details about newly arrived e-mails but does           not maintain their read/unread status afterwards. This flag MUST NOT           be combined with Supports_Unread_Mails.         ]]>
          */
-        EMITS_MAILS_RECEIVED,
+        EMITS_MAILS_RECEIVED = 4,
         /**
          * <![CDATA[           This Connection can provide a URL (with optional POST data) to           open the the inbox of the e-mail account in a web-based client, via           the RequestInboxURL method.         ]]>
          */
-        SUPPORTS_REQUEST_INBOX_URL,
+        SUPPORTS_REQUEST_INBOX_URL = 8,
         /**
          * <![CDATA[           This Connection can provide a URL (with optional POST data) to open             a specific mail in a web-based client, via the             RequestMailURL method. This feature             is not useful unless either Emits_Mails_Received or             Supports_Unread_Mails is set.            If this flag is not set, clients SHOULD fall back to using             RequestInboxURL if available.         ]]>
          */
-        SUPPORTS_REQUEST_MAIL_URL,
+        SUPPORTS_REQUEST_MAIL_URL = 16,
         /**
          * <![CDATA[           Each Mail represents a thread of e-mails, which             MAY have more than one sender.                         Google Talk notifies users about new mail in terms of unread               threads, rather than unread e-mails.                    ]]>
          */
-        THREAD_BASED,
+        THREAD_BASED = 32,
     }
 
 
@@ -5006,11 +6408,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[             The local user has been asked to send media by the remote user.             Call RequestStreamDirection to             indicate whether or not this is acceptable.         ]]>
          */
-        LOCAL_SEND,
+        LOCAL_SEND = 1,
         /**
          * <![CDATA[             The remote user has been asked to send media by the local user.             The StreamDirectionChanged signal             will be emitted when the remote user accepts or rejects this             change.         ]]>
          */
-        REMOTE_SEND,
+        REMOTE_SEND = 2,
     }
 
 
@@ -5024,11 +6426,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           SendMessage will accept messages           containing a textual message body,           plus a single attachment of any type listed in the           SupportedContentTypes property. It does not make sense for this           flag to be set if Message_Part_Support_Flag_Data_Only is not also set           (because the connection manager can trivially provide an empty text           part if necessary).         ]]>
          */
-        ONE_ATTACHMENT,
+        ONE_ATTACHMENT = 1,
         /**
          * <![CDATA[           SendMessage will accept messages containing a textual message body,           plus an arbitrary number of attachments of any type listed in the           SupportedContentTypes property. It does not make sense for this           flag to be set if Message_Part_Support_Flag_One_Attachment is not           also set.         ]]>
          */
-        MULTIPLE_ATTACHMENTS,
+        MULTIPLE_ATTACHMENTS = 2,
     }
 
 
@@ -5042,15 +6444,15 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Provide a successful delivery report if possible, even if this is             not the default for this protocol. Ignored if delivery reports are             not possible on this protocol.                         In some protocols, like XMPP, it is not conventional to request               or send positive delivery notifications.                       Delivery failure reports SHOULD always be sent, but if this flag             is present, the connection manager MAY also try harder to obtain             failed delivery reports or allow them to be matched to outgoing             messages.         ]]>
          */
-        DELIVERY,
+        DELIVERY = 1,
         /**
          * <![CDATA[           Provide a delivery report when the message is read by the             recipient, even if this is not the default for this protocol.             Ignored if read reports are not possible on this protocol.         ]]>
          */
-        READ,
+        READ = 2,
         /**
          * <![CDATA[           Provide a delivery report when the message is deleted by the             recipient, even if this is not the default for this protocol.             Ignored if such reports are not possible on this protocol.         ]]>
          */
-        DELETED,
+        DELETED = 4,
     }
 
 
@@ -5062,11 +6464,11 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[The property can be read]]>
          */
-        READ,
+        READ = 1,
         /**
          * <![CDATA[The property can be written]]>
          */
-        WRITE,
+        WRITE = 2,
     }
 
 
@@ -5078,23 +6480,23 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           Loss report flag, as defined in RFC3611 section 4.6.         ]]>
          */
-        LOSS,
+        LOSS = 1,
         /**
          * <![CDATA[           Duplicate report flag, as defined in RFC3611 section 4.6.         ]]>
          */
-        DUPLICATE,
+        DUPLICATE = 2,
         /**
          * <![CDATA[           Jitter flag, as defined in RFC3611 section 4.6.         ]]>
          */
-        JITTER,
+        JITTER = 4,
         /**
          * <![CDATA[           First bit of TTL or Hop Limit flag, as defined in RFC3611 section           4.6.         ]]>
          */
-        TTL,
+        TTL = 8,
         /**
          * <![CDATA[           Second bit of TTL or Hop Limit flag, as defined in RFC3611 section           4.6.         ]]>
          */
-        HL,
+        HL = 16,
     }
 
 
@@ -5108,19 +6510,19 @@ export namespace TelepathyGLib {
         /**
          * <![CDATA[           The account's Parameters property can't be changed by calling           UpdateParameters.         ]]>
          */
-        PARAMETERS,
+        PARAMETERS = 1,
         /**
          * <![CDATA[           The account can't be enabled/disabled by setting the Enabled property.         ]]>
          */
-        ENABLED,
+        ENABLED = 2,
         /**
          * <![CDATA[           The account's presence can't be changed by setting the RequestedPresence and AutomaticPresence properties.         ]]>
          */
-        PRESENCE,
+        PRESENCE = 4,
         /**
          * <![CDATA[           The account's Service           property cannot be changed.         ]]>
          */
-        SERVICE,
+        SERVICE = 8,
     }
 
 
@@ -5141,7 +6543,7 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "presence-changed": (arg0: number, arg1: string, arg2: string) => void;
+            "presence-changed": (presence: number, status: string, status_message: string) => void;
             /**
              * Emitted when the connection status on the account changes.
              * 
@@ -5152,7 +6554,7 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "status-changed": (arg0: number, arg1: number, arg2: number, arg3: string | null, arg4: { [key: string]: GObject.Value }) => void;
+            "status-changed": (old_status: number, new_status: number, reason: number, dbus_error_name: string | null, details: { [key: string]: GObject.Value }) => void;
             "notify::automatic-presence-type": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-status-message": (pspec: GObject.ParamSpec) => void;
@@ -6534,6 +7936,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a map from strings to variants,  of type `G_VARIANT_TYPE_VARDICT`
          * @since 0.17.6
+         * @throws GLib.Error
          */
         dup_storage_specific_information_vardict_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -6597,6 +8000,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Array} of `guchar`  containing the bytes of the account's avatar, or `null` on failure
          * @since 0.9.0
+         * @throws GLib.Error
          */
         get_avatar_finish(result: Gio.AsyncResult): Uint8Array;
 
@@ -6820,6 +8224,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable}  of strings to GValues representing the D-Bus type a{sv}.
          * @since 0.13.2
+         * @throws GLib.Error
          */
         get_storage_specific_information_finish(result: Gio.AsyncResult): { [key: string]: GObject.Value };
 
@@ -6886,6 +8291,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the reconnect call was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         reconnect_finish(result: Gio.AsyncResult): boolean;
 
@@ -6920,6 +8326,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -6963,6 +8370,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         request_presence_finish(result: Gio.AsyncResult): boolean;
 
@@ -7010,6 +8418,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.13.8
+         * @throws GLib.Error
          */
         set_automatic_presence_finish(result: Gio.AsyncResult): boolean;
 
@@ -7056,6 +8465,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.11.1
+         * @throws GLib.Error
          */
         set_avatar_finish(result: Gio.AsyncResult): boolean;
 
@@ -7096,6 +8506,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the call was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_connect_automatically_finish(result: Gio.AsyncResult): boolean;
 
@@ -7133,6 +8544,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the call was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_display_name_finish(result: Gio.AsyncResult): boolean;
 
@@ -7170,6 +8582,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the set was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_enabled_finish(result: Gio.AsyncResult): boolean;
 
@@ -7207,6 +8620,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_icon_name_finish(result: Gio.AsyncResult): boolean;
 
@@ -7244,6 +8658,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_nickname_finish(result: Gio.AsyncResult): boolean;
 
@@ -7281,6 +8696,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`
          * @since 0.11.9
+         * @throws GLib.Error
          */
         set_service_finish(result: Gio.AsyncResult): boolean;
 
@@ -7348,6 +8764,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the call was successful, otherwise `false`
          * @since 0.13.8
+         * @throws GLib.Error
          */
         set_uri_scheme_association_finish(result: Gio.AsyncResult): boolean;
 
@@ -7388,6 +8805,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the request succeeded, otherwise `false`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         update_parameters_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -7443,6 +8861,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the request succeeded, otherwise `false`
          * @since 0.17.6
+         * @throws GLib.Error
          */
         update_parameters_vardict_finish(result: Gio.AsyncResult): [boolean, string[]];
     }
@@ -7473,7 +8892,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "re-handled": (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            "re-handled": (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::channel-request": (pspec: GObject.ParamSpec) => void;
             "notify::request-vardict": (pspec: GObject.ParamSpec) => void;
@@ -7500,7 +8919,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "re-handled::account": (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            "re-handled::account": (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              * 
@@ -7523,7 +8942,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "re-handled::channel-request": (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            "re-handled::channel-request": (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              * 
@@ -7546,7 +8965,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "re-handled::request-vardict": (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            "re-handled::request-vardict": (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
             /**
              * Emitted when the channel created using `self` has been "re-handled".
              * 
@@ -7569,8 +8988,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "re-handled::user-action-time": (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
-            [key: `re-handled::${string}`]: (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            "re-handled::user-action-time": (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
+            [key: `re-handled::${string}`]: (channel: Channel, user_action_time: number, context: HandleChannelsContext) => void;
         }
 
         // Constructor properties interface
@@ -7839,6 +9258,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new reference on a {@link TelepathyGLib.Channel} if the channel was successfully created and you are handling it, otherwise `null`.
          * @since 0.11.12
+         * @throws GLib.Error
          */
         create_and_handle_channel_finish(result: Gio.AsyncResult): [Channel | null, HandleChannelsContext | null];
 
@@ -7907,6 +9327,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a newly created {@link TelepathyGLib.Channel} if the channel was successfully created and dispatched, otherwise `null`.
          * @since 0.13.14
+         * @throws GLib.Error
          */
         create_and_observe_channel_finish(result: Gio.AsyncResult): Channel;
 
@@ -7960,6 +9381,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the channel was successfully created and dispatched, otherwise `false`.
          * @since 0.11.12
+         * @throws GLib.Error
          */
         create_channel_finish(result: Gio.AsyncResult): boolean;
 
@@ -8061,6 +9483,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new reference on a {@link TelepathyGLib.Channel} if the channel was successfully created and you are handling it, otherwise `null`.
          * @since 0.11.12
+         * @throws GLib.Error
          */
         ensure_and_handle_channel_finish(result: Gio.AsyncResult): [Channel | null, HandleChannelsContext | null];
 
@@ -8150,6 +9573,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a newly created {@link TelepathyGLib.Channel} if the channel was successfully ensure and (re-)dispatched, otherwise `null`.
          * @since 0.13.14
+         * @throws GLib.Error
          */
         ensure_and_observe_channel_finish(result: Gio.AsyncResult): Channel;
 
@@ -8230,6 +9654,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the channel was successfully ensured and (re-)dispatched, otherwise `false`.
          * @since 0.11.12
+         * @throws GLib.Error
          */
         ensure_channel_finish(result: Gio.AsyncResult): boolean;
 
@@ -8549,7 +9974,7 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "account-disabled": (arg0: Account) => void;
+            "account-disabled": (account: Account) => void;
             /**
              * Emitted when an account from `manager` is enabled.
              * 
@@ -8560,14 +9985,14 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "account-enabled": (arg0: Account) => void;
+            "account-enabled": (account: Account) => void;
             /**
              * Emitted when an account is removed from `manager`.
              * @signal
              * @since 0.9.0
              * @run-last
              */
-            "account-removed": (arg0: Account) => void;
+            "account-removed": (account: Account) => void;
             /**
              * Emitted when the validity on `account` changes.
              * 
@@ -8582,14 +10007,14 @@ export namespace TelepathyGLib {
              * @since 0.9.0
              * @run-last
              */
-            "account-validity-changed": (arg0: Account, arg1: boolean) => void;
+            "account-validity-changed": (account: Account, valid: boolean) => void;
             /**
              * Emitted when the most available presence on `manager` changes.
              * @signal
              * @since 0.9.0
              * @run-last
              */
-            "most-available-presence-changed": (arg0: number, arg1: string, arg2: string) => void;
+            "most-available-presence-changed": (presence: number, status: string, message: string) => void;
             "notify::bus-name": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-daemon": (pspec: GObject.ParamSpec) => void;
             "notify::factory": (pspec: GObject.ParamSpec) => void;
@@ -8780,6 +10205,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new {@link TelepathyGLib.Account} which was just created on  success, otherwise `null`
          * @since 0.9.0
+         * @throws GLib.Error
          */
         create_account_finish(result: Gio.AsyncResult): Account;
 
@@ -9410,6 +10836,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a new ref to a {@link TelepathyGLib.Account}, or `null`
          * @since 0.19.1
+         * @throws GLib.Error
          */
         create_account_finish(result: Gio.AsyncResult): Account;
 
@@ -9790,6 +11217,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          * @since 0.13.2
+         * @throws GLib.Error
          */
         create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 
@@ -9823,7 +11251,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9835,7 +11263,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed": (request: ChannelRequest, error: string, message: string) => void;
             "notify::account-manager": (pspec: GObject.ParamSpec) => void;
             "notify::channel-factory": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-daemon": (pspec: GObject.ParamSpec) => void;
@@ -9854,7 +11282,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::account-manager": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::account-manager": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a channels have been requested, and that if the
              * request is successful, they will probably be handled by this Handler.
@@ -9867,7 +11295,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::channel-factory": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::channel-factory": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a channels have been requested, and that if the
              * request is successful, they will probably be handled by this Handler.
@@ -9880,7 +11308,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::dbus-daemon": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::dbus-daemon": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a channels have been requested, and that if the
              * request is successful, they will probably be handled by this Handler.
@@ -9893,7 +11321,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::factory": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::factory": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a channels have been requested, and that if the
              * request is successful, they will probably be handled by this Handler.
@@ -9906,7 +11334,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::name": (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::name": (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a channels have been requested, and that if the
              * request is successful, they will probably be handled by this Handler.
@@ -9919,8 +11347,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-added::uniquify-name": (arg0: Account, arg1: ChannelRequest) => void;
-            [key: `request-added::${string}`]: (arg0: Account, arg1: ChannelRequest) => void;
+            "request-added::uniquify-name": (account: Account, request: ChannelRequest) => void;
+            [key: `request-added::${string}`]: (account: Account, request: ChannelRequest) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9932,7 +11360,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::account-manager": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::account-manager": (request: ChannelRequest, error: string, message: string) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9944,7 +11372,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::channel-factory": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::channel-factory": (request: ChannelRequest, error: string, message: string) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9956,7 +11384,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::dbus-daemon": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::dbus-daemon": (request: ChannelRequest, error: string, message: string) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9968,7 +11396,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::factory": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::factory": (request: ChannelRequest, error: string, message: string) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9980,7 +11408,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::name": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::name": (request: ChannelRequest, error: string, message: string) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              * 
@@ -9992,8 +11420,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "request-removed::uniquify-name": (arg0: ChannelRequest, arg1: string, arg2: string) => void;
-            [key: `request-removed::${string}`]: (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            "request-removed::uniquify-name": (request: ChannelRequest, error: string, message: string) => void;
+            [key: `request-removed::${string}`]: (request: ChannelRequest, error: string, message: string) => void;
         }
 
         // Constructor properties interface
@@ -10461,6 +11889,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation succeed, `delegated` and `not_delegated` can be used to know the channels that `self` is not handling any more, otherwise `false`.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         delegate_channels_finish(result: Gio.AsyncResult): [boolean, Channel[], never];
 
@@ -10563,6 +11992,7 @@ export namespace TelepathyGLib {
          * `tp_base_client_add_observer_filter()`, cannot be called after this one.
          * @returns `true` if the client was registered successfully
          * @since 0.11.5
+         * @throws GLib.Error
          */
         register(): boolean;
 
@@ -10691,7 +12121,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-interested": (arg0: string) => void;
+            "clients-interested": (token: string) => void;
             /**
              * Emitted when no more clients are interested in an interface added with
              * `tp_base_connection_add_possible_client_interest()`, for which
@@ -10706,7 +12136,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-uninterested": (arg0: string) => void;
+            "clients-uninterested": (token: string) => void;
             /**
              * Emitted by `tp_base_connection_finish_shutdown()` when the underlying
              * network connection has been closed; `TpBaseConnectionManager` listens
@@ -10732,7 +12162,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-interested::account-path-suffix": (arg0: string) => void;
+            "clients-interested::account-path-suffix": (token: string) => void;
             /**
              * Emitted when a client becomes interested in any token that was added with
              * `tp_base_connection_add_possible_client_interest()`.
@@ -10746,8 +12176,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-interested::has-immortal-handles": (arg0: string) => void;
-            [key: `clients-interested::${string}`]: (arg0: string) => void;
+            "clients-interested::has-immortal-handles": (token: string) => void;
+            [key: `clients-interested::${string}`]: (token: string) => void;
             /**
              * Emitted when no more clients are interested in an interface added with
              * `tp_base_connection_add_possible_client_interest()`, for which
@@ -10762,7 +12192,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-uninterested::account-path-suffix": (arg0: string) => void;
+            "clients-uninterested::account-path-suffix": (token: string) => void;
             /**
              * Emitted when no more clients are interested in an interface added with
              * `tp_base_connection_add_possible_client_interest()`, for which
@@ -10777,8 +12207,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "clients-uninterested::has-immortal-handles": (arg0: string) => void;
-            [key: `clients-uninterested::${string}`]: (arg0: string) => void;
+            "clients-uninterested::has-immortal-handles": (token: string) => void;
+            [key: `clients-uninterested::${string}`]: (token: string) => void;
             /**
              * Emitted by `tp_base_connection_finish_shutdown()` when the underlying
              * network connection has been closed; `TpBaseConnectionManager` listens
@@ -11034,6 +12464,7 @@ export namespace TelepathyGLib {
          * {@link GLib.Error} if it fails.
          * @returns `true` if this connection is connected
          * @since 0.19.1
+         * @throws GLib.Error
          */
         check_connected(): boolean;
 
@@ -11122,6 +12553,7 @@ export namespace TelepathyGLib {
          * strings are not needed.
          * @param cm_name The name of the connection manager in the Telepathy protocol
          * @returns `true` on success, `false` on error.
+         * @throws GLib.Error
          */
         register(cm_name: string): [boolean, string, string];
 
@@ -11202,6 +12634,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          * @since 0.13.2
+         * @throws GLib.Error
          */
         create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 
@@ -11233,7 +12666,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "content-added": (arg0: GObject.Object) => void;
+            "content-added": (content: GObject.Object) => void;
             /**
              * The ::content-removed signal is emitted whenever a
              * {@link TelepathyGLib.CallContent} is removed from `self`.
@@ -11244,7 +12677,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "content-removed": (arg0: GObject.Object, arg1: CallStateReason) => void;
+            "content-removed": (content: GObject.Object, reason: CallStateReason) => void;
             /**
              * The ::members-changed signal is emitted whenever the call's members
              * changes.
@@ -11256,7 +12689,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "members-changed": (arg0: never, arg1: Contact[], arg2: CallStateReason) => void;
+            "members-changed": (updates: never, removed: Contact[], reason: CallStateReason) => void;
             /**
              * The ::state-changed signal is emitted whenever the
              * call state changes.
@@ -11264,7 +12697,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "state-changed": (arg0: number, arg1: number, arg2: CallStateReason, arg3: { [key: string]: GObject.Value }) => void;
+            "state-changed": (state: number, flags: number, reason: CallStateReason, details: { [key: string]: GObject.Value }) => void;
             "notify::contents": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::hardware-streaming": (pspec: GObject.ParamSpec) => void;
@@ -11599,6 +13032,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_channel_accept_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         accept_finish(result: Gio.AsyncResult): boolean;
 
@@ -11645,6 +13079,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns reference to the new {@link TelepathyGLib.CallContent}.
          * @since 0.17.5
+         * @throws GLib.Error
          */
         add_content_finish(result: Gio.AsyncResult): CallContent;
 
@@ -11709,6 +13144,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_channel_hangup_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         hangup_finish(result: Gio.AsyncResult): boolean;
 
@@ -11794,6 +13230,7 @@ export namespace TelepathyGLib {
          * Finishes tp_call_channel_request_hold_async
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.6
+         * @throws GLib.Error
          */
         request_hold_finish(result: Gio.AsyncResult): boolean;
 
@@ -11837,6 +13274,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
          * @since 0.17.5
+         * @throws GLib.Error
          */
         send_tones_finish(result: Gio.AsyncResult): boolean;
 
@@ -11867,6 +13305,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_channel_set_queued_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         set_queued_finish(result: Gio.AsyncResult): boolean;
 
@@ -11894,6 +13333,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_channel_set_ringing_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         set_ringing_finish(result: Gio.AsyncResult): boolean;
     }
@@ -11920,7 +13360,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "streams-added": (arg0: CallStream[]) => void;
+            "streams-added": (streams: CallStream[]) => void;
             /**
              * The ::streams-removed signal is emitted whenever
              * `TpCallStreams` are removed from `self`.
@@ -11931,7 +13371,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "streams-removed": (arg0: CallStream[], arg1: CallStateReason) => void;
+            "streams-removed": (streams: CallStream[], reason: CallStateReason) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::disposition": (pspec: GObject.ParamSpec) => void;
@@ -12119,6 +13559,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_content_remove_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -12162,6 +13603,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
          * @since 0.17.5
+         * @throws GLib.Error
          */
         send_tones_finish(result: Gio.AsyncResult): boolean;
     }
@@ -12177,7 +13619,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "local-sending-state-changed": (arg0: number, arg1: CallStateReason) => void;
+            "local-sending-state-changed": (state: number, reason: CallStateReason) => void;
             /**
              * The ::remote-members-changed signal is emitted whenever the
              * stream's remote members changes.
@@ -12187,7 +13629,7 @@ export namespace TelepathyGLib {
              * @since 0.17.5
              * @run-last
              */
-            "remote-members-changed": (arg0: never, arg1: Contact[], arg2: CallStateReason) => void;
+            "remote-members-changed": (updates: never, removed: Contact[], reason: CallStateReason) => void;
             "notify::can-request-receiving": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
@@ -12374,6 +13816,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_stream_request_receiving_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         request_receiving_finish(result: Gio.AsyncResult): boolean;
 
@@ -12422,6 +13865,7 @@ export namespace TelepathyGLib {
          * Finishes `tp_call_stream_set_sending_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @since 0.17.5
+         * @throws GLib.Error
          */
         set_sending_finish(result: Gio.AsyncResult): boolean;
     }
@@ -12769,7 +14213,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed": (arg0: number, arg1: number) => void;
+            "chat-state-changed": (contact: number, state: number) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -12781,7 +14225,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -12790,7 +14234,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed": (arg0: number, arg1: number) => void;
+            "group-flags-changed": (added: number, removed: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -12799,7 +14243,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -12811,7 +14255,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             "notify::channel-ready": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::group-flags": (pspec: GObject.ParamSpec) => void;
@@ -12838,7 +14282,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::channel-ready": (arg0: number, arg1: number) => void;
+            "chat-state-changed::channel-ready": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12848,7 +14292,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::connection": (arg0: number, arg1: number) => void;
+            "chat-state-changed::connection": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12858,7 +14302,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::group-flags": (arg0: number, arg1: number) => void;
+            "chat-state-changed::group-flags": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12868,7 +14312,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::group-self-contact": (arg0: number, arg1: number) => void;
+            "chat-state-changed::group-self-contact": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12878,7 +14322,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::group-self-handle": (arg0: number, arg1: number) => void;
+            "chat-state-changed::group-self-handle": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12888,7 +14332,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::identifier": (arg0: number, arg1: number) => void;
+            "chat-state-changed::identifier": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12898,7 +14342,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::initiator-contact": (arg0: number, arg1: number) => void;
+            "chat-state-changed::initiator-contact": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12908,7 +14352,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::initiator-handle": (arg0: number, arg1: number) => void;
+            "chat-state-changed::initiator-handle": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12918,7 +14362,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::initiator-identifier": (arg0: number, arg1: number) => void;
+            "chat-state-changed::initiator-identifier": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12928,7 +14372,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::password-needed": (arg0: number, arg1: number) => void;
+            "chat-state-changed::password-needed": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12938,7 +14382,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::requested": (arg0: number, arg1: number) => void;
+            "chat-state-changed::requested": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12948,7 +14392,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::target-contact": (arg0: number, arg1: number) => void;
+            "chat-state-changed::target-contact": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12958,7 +14402,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::bus-name": (arg0: number, arg1: number) => void;
+            "chat-state-changed::bus-name": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12968,7 +14412,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::dbus-daemon": (arg0: number, arg1: number) => void;
+            "chat-state-changed::dbus-daemon": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12978,7 +14422,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::factory": (arg0: number, arg1: number) => void;
+            "chat-state-changed::factory": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12988,7 +14432,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::interfaces": (arg0: number, arg1: number) => void;
+            "chat-state-changed::interfaces": (contact: number, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing the feature `TP_CHANNEL_FEATURE_CHAT_STATES`.
@@ -12998,8 +14442,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "chat-state-changed::object-path": (arg0: number, arg1: number) => void;
-            [key: `chat-state-changed::${string}`]: (arg0: number, arg1: number) => void;
+            "chat-state-changed::object-path": (contact: number, state: number) => void;
+            [key: `chat-state-changed::${string}`]: (contact: number, state: number) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13011,7 +14455,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::channel-ready": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::channel-ready": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13023,7 +14467,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::connection": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::connection": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13035,7 +14479,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-flags": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::group-flags": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13047,7 +14491,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-self-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::group-self-contact": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13059,7 +14503,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::group-self-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::group-self-handle": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13071,7 +14515,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::identifier": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13083,7 +14527,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::initiator-contact": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13095,7 +14539,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-handle": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::initiator-handle": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13107,7 +14551,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::initiator-identifier": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::initiator-identifier": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13119,7 +14563,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::password-needed": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::password-needed": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13131,7 +14575,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::requested": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::requested": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13143,7 +14587,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::target-contact": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::target-contact": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13155,7 +14599,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::bus-name": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::bus-name": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13167,7 +14611,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::dbus-daemon": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::dbus-daemon": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13179,7 +14623,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::factory": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::factory": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13191,7 +14635,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::interfaces": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::interfaces": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel.
              * 
@@ -13203,8 +14647,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-contacts-changed::object-path": (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
-            [key: `group-contacts-changed::${string}`]: (arg0: Contact[], arg1: Contact[], arg2: Contact[], arg3: Contact[], arg4: Contact, arg5: { [key: string]: GObject.Value }) => void;
+            "group-contacts-changed::object-path": (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
+            [key: `group-contacts-changed::${string}`]: (added: Contact[], removed: Contact[], local_pending: Contact[], remote_pending: Contact[], actor: Contact, details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13213,7 +14657,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::channel-ready": (arg0: number, arg1: number) => void;
+            "group-flags-changed::channel-ready": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13222,7 +14666,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::connection": (arg0: number, arg1: number) => void;
+            "group-flags-changed::connection": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13231,7 +14675,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::group-flags": (arg0: number, arg1: number) => void;
+            "group-flags-changed::group-flags": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13240,7 +14684,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::group-self-contact": (arg0: number, arg1: number) => void;
+            "group-flags-changed::group-self-contact": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13249,7 +14693,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::group-self-handle": (arg0: number, arg1: number) => void;
+            "group-flags-changed::group-self-handle": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13258,7 +14702,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::identifier": (arg0: number, arg1: number) => void;
+            "group-flags-changed::identifier": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13267,7 +14711,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::initiator-contact": (arg0: number, arg1: number) => void;
+            "group-flags-changed::initiator-contact": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13276,7 +14720,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::initiator-handle": (arg0: number, arg1: number) => void;
+            "group-flags-changed::initiator-handle": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13285,7 +14729,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::initiator-identifier": (arg0: number, arg1: number) => void;
+            "group-flags-changed::initiator-identifier": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13294,7 +14738,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::password-needed": (arg0: number, arg1: number) => void;
+            "group-flags-changed::password-needed": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13303,7 +14747,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::requested": (arg0: number, arg1: number) => void;
+            "group-flags-changed::requested": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13312,7 +14756,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::target-contact": (arg0: number, arg1: number) => void;
+            "group-flags-changed::target-contact": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13321,7 +14765,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::bus-name": (arg0: number, arg1: number) => void;
+            "group-flags-changed::bus-name": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13330,7 +14774,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::dbus-daemon": (arg0: number, arg1: number) => void;
+            "group-flags-changed::dbus-daemon": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13339,7 +14783,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::factory": (arg0: number, arg1: number) => void;
+            "group-flags-changed::factory": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13348,7 +14792,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::interfaces": (arg0: number, arg1: number) => void;
+            "group-flags-changed::interfaces": (added: number, removed: number) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13357,8 +14801,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-flags-changed::object-path": (arg0: number, arg1: number) => void;
-            [key: `group-flags-changed::${string}`]: (arg0: number, arg1: number) => void;
+            "group-flags-changed::object-path": (added: number, removed: number) => void;
+            [key: `group-flags-changed::${string}`]: (added: number, removed: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13367,7 +14811,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::channel-ready": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::channel-ready": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13376,7 +14820,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::connection": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::connection": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13385,7 +14829,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::group-flags": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::group-flags": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13394,7 +14838,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::group-self-contact": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::group-self-contact": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13403,7 +14847,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::group-self-handle": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::group-self-handle": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13412,7 +14856,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::identifier": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::identifier": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13421,7 +14865,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::initiator-contact": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::initiator-contact": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13430,7 +14874,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::initiator-handle": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::initiator-handle": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13439,7 +14883,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::initiator-identifier": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::initiator-identifier": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13448,7 +14892,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::password-needed": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::password-needed": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13457,7 +14901,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::requested": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::requested": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13466,7 +14910,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::target-contact": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::target-contact": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13475,7 +14919,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::bus-name": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::bus-name": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13484,7 +14928,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::dbus-daemon": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::dbus-daemon": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13493,7 +14937,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::factory": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::factory": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13502,7 +14946,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::interfaces": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::interfaces": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13511,8 +14955,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed::object-path": (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
-            [key: `group-members-changed::${string}`]: (arg0: string, arg1: unknown, arg2: unknown, arg3: unknown, arg4: unknown, arg5: number, arg6: number) => void;
+            "group-members-changed::object-path": (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
+            [key: `group-members-changed::${string}`]: (message: string, added: unknown, removed: unknown, local_pending: unknown, remote_pending: unknown, actor: number, reason: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13524,7 +14968,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::channel-ready": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::channel-ready": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13536,7 +14980,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::connection": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::connection": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13548,7 +14992,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-flags": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::group-flags": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13560,7 +15004,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-self-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::group-self-contact": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13572,7 +15016,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::group-self-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::group-self-handle": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13584,7 +15028,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::identifier": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13596,7 +15040,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::initiator-contact": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13608,7 +15052,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-handle": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::initiator-handle": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13620,7 +15064,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::initiator-identifier": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::initiator-identifier": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13632,7 +15076,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::password-needed": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::password-needed": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13644,7 +15088,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::requested": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::requested": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13656,7 +15100,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::target-contact": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::target-contact": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13668,7 +15112,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::bus-name": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::bus-name": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13680,7 +15124,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::dbus-daemon": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::dbus-daemon": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13692,7 +15136,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::factory": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::factory": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13704,7 +15148,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::interfaces": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::interfaces": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * Contains a superset of the information in the
@@ -13716,8 +15160,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "group-members-changed-detailed::object-path": (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
-            [key: `group-members-changed-detailed::${string}`]: (arg0: number[], arg1: number[], arg2: number[], arg3: number[], arg4: { [key: string]: GObject.Value }) => void;
+            "group-members-changed-detailed::object-path": (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
+            [key: `group-members-changed-detailed::${string}`]: (added: number[], removed: number[], local_pending: number[], remote_pending: number[], details: { [key: string]: GObject.Value }) => void;
         }
 
         // Constructor properties interface
@@ -14241,6 +15685,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_channel_close_async()`.
          * @returns `true` if the channel has been closed; `false` otherwise
          * @since 0.13.10
+         * @throws GLib.Error
          */
         close_finish(result: Gio.AsyncResult): boolean;
 
@@ -14287,6 +15732,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_channel_destroy_async()`.
          * @returns `true` if the channel has been destroyed or closed; `false` otherwise
          * @since 0.15.2
+         * @throws GLib.Error
          */
         destroy_finish(result: Gio.AsyncResult): boolean;
 
@@ -14678,6 +16124,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_channel_join_async()`.
          * @returns `true` if the channel was successfully joined; `false` otherwise
          * @since 0.15.5
+         * @throws GLib.Error
          */
         join_finish(result: Gio.AsyncResult): boolean;
 
@@ -14742,6 +16189,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_channel_leave_async()`.
          * @returns `true` if the channel has been left; `false` otherwise
          * @since 0.13.10
+         * @throws GLib.Error
          */
         leave_finish(result: Gio.AsyncResult): boolean;
 
@@ -14796,6 +16244,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for  `tp_channel_provide_password_async()`.
          * @returns `true` if the password has been provided and accepted, `false` otherwise.
          * @since 0.15.2
+         * @throws GLib.Error
          */
         provide_password_finish(result: Gio.AsyncResult): boolean;
     }
@@ -14811,7 +16260,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost": (channel: Channel, domain: number, code: number, message: string) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::channels": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
@@ -14828,7 +16277,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::account": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::account": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14836,7 +16285,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::channels": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::channels": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14844,7 +16293,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::connection": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::connection": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14852,7 +16301,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::possible-handlers": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::possible-handlers": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14860,7 +16309,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::bus-name": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::bus-name": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14868,7 +16317,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::dbus-daemon": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::dbus-daemon": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14876,7 +16325,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::factory": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::factory": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14884,7 +16333,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::interfaces": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::interfaces": (channel: Channel, domain: number, code: number, message: string) => void;
             /**
              * Emitted when a channel has closed before it could be claimed or handled.
              * @signal
@@ -14892,8 +16341,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "channel-lost::object-path": (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
-            [key: `channel-lost::${string}`]: (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            "channel-lost::object-path": (channel: Channel, domain: number, code: number, message: string) => void;
+            [key: `channel-lost::${string}`]: (channel: Channel, domain: number, code: number, message: string) => void;
         }
 
         // Constructor properties interface
@@ -15132,6 +16581,7 @@ export namespace TelepathyGLib {
          * @returns `true` if the Claim() call was successful, otherwise `false`
          * @since 0.11.5
          * @deprecated since 0.15.0. Use `tp_channel_dispatch_operation_claim_with_finish()`
+         * @throws GLib.Error
          */
         claim_finish(result: Gio.AsyncResult): boolean;
 
@@ -15215,6 +16665,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the Claim() call was successful, otherwise `false`
          * @since 0.15.0
+         * @throws GLib.Error
          */
         claim_with_finish(result: Gio.AsyncResult): boolean;
 
@@ -15283,6 +16734,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the Claim() call was successful and Close() has at least been attempted on all the channels, otherwise `false`
          * @since 0.15.1
+         * @throws GLib.Error
          */
         close_channels_finish(result: Gio.AsyncResult): boolean;
 
@@ -15351,6 +16803,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the Claim() call was successful and `tp_channel_destroy_async()` has at least been attempted on all the channels, otherwise `false`
          * @since 0.15.2
+         * @throws GLib.Error
          */
         destroy_channels_finish(result: Gio.AsyncResult): boolean;
 
@@ -15440,6 +16893,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the HandleWith() call was successful, otherwise `false`
          * @since 0.11.5
+         * @throws GLib.Error
          */
         handle_with_finish(result: Gio.AsyncResult): boolean;
 
@@ -15513,6 +16967,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the HandleWithTime() call was successful, otherwise `false`
          * @since 0.11.7
+         * @throws GLib.Error
          */
         handle_with_time_finish(result: Gio.AsyncResult): boolean;
 
@@ -15587,6 +17042,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the Claim() call was successful and `tp_channel_leave_async()` has at least been attempted on all the channels, otherwise `false`
          * @since 0.15.2
+         * @throws GLib.Error
          */
         leave_channels_finish(result: Gio.AsyncResult): boolean;
     }
@@ -15711,6 +17167,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the call succeeded, otherwise `false`.
          * @since 0.15.0
+         * @throws GLib.Error
          */
         present_channel_finish(result: Gio.AsyncResult): boolean;
     }
@@ -15743,7 +17200,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel": (connection: Connection, channel: Channel) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::channel-factory": (pspec: GObject.ParamSpec) => void;
             "notify::hints-vardict": (pspec: GObject.ParamSpec) => void;
@@ -15860,7 +17317,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::account": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::account": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15877,7 +17334,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::channel-factory": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::channel-factory": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15894,7 +17351,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::hints-vardict": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::hints-vardict": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15911,7 +17368,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::immutable-properties-vardict": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::immutable-properties-vardict": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15928,7 +17385,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::preferred-handler": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::preferred-handler": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15945,7 +17402,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::user-action-time": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::user-action-time": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15962,7 +17419,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::bus-name": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::bus-name": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15979,7 +17436,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::dbus-daemon": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::dbus-daemon": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -15996,7 +17453,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::factory": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::factory": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -16013,7 +17470,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::interfaces": (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::interfaces": (connection: Connection, channel: Channel) => void;
             /**
              * Emitted when the channel request succeeds.
              * 
@@ -16030,8 +17487,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "succeeded-with-channel::object-path": (arg0: Connection, arg1: Channel) => void;
-            [key: `succeeded-with-channel::${string}`]: (arg0: Connection, arg1: Channel) => void;
+            "succeeded-with-channel::object-path": (connection: Connection, channel: Channel) => void;
+            [key: `succeeded-with-channel::${string}`]: (connection: Connection, channel: Channel) => void;
         }
 
         // Constructor properties interface
@@ -16387,7 +17844,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Notify of changes in {@link TelepathyGLib.Connection.blocked_contacts}.
              *  It is guaranteed that all contacts have desired features prepared. See
@@ -16404,7 +17861,7 @@ export namespace TelepathyGLib {
              * @since 0.17.0
              * @run-last
              */
-            "blocked-contacts-changed": (arg0: Contact[], arg1: Contact[]) => void;
+            "blocked-contacts-changed": (added: Contact[], removed: Contact[]) => void;
             /**
              * Notify of changes in the list of contacts as returned by
              * `tp_connection_dup_contact_list()`. It is guaranteed that all contacts have
@@ -16421,7 +17878,7 @@ export namespace TelepathyGLib {
              * @since 0.15.5
              * @run-last
              */
-            "contact-list-changed": (arg0: Contact[], arg1: Contact[]) => void;
+            "contact-list-changed": (added: Contact[], removed: Contact[]) => void;
             /**
              * Emitted when a group is renamed, in protocols where this can be
              * distinguished from group creation, removal and membership changes.
@@ -16444,7 +17901,7 @@ export namespace TelepathyGLib {
              * @since 0.15.5
              * @run-last
              */
-            "group-renamed": (arg0: string, arg1: string) => void;
+            "group-renamed": (old_name: string, new_name: string) => void;
             /**
              * Emitted when new, empty groups are created. This will often be followed by
              * {@link TelepathyGLib.Contact.SignalSignatures.contact_groups_changed | TelepathyGLib.Contact::contact-groups-changed} signals that add some members. When this
@@ -16458,7 +17915,7 @@ export namespace TelepathyGLib {
              * @since 0.15.5
              * @run-last
              */
-            "groups-created": (arg0: string[]) => void;
+            "groups-created": (added: string[]) => void;
             /**
              * Emitted when one or more groups are removed. If they had members at the
              * time that they were removed, then immediately after this signal is emitted,
@@ -16473,7 +17930,7 @@ export namespace TelepathyGLib {
              * @since 0.15.5
              * @run-last
              */
-            "groups-removed": (arg0: string[]) => void;
+            "groups-removed": (added: string[]) => void;
             "notify::balance": (pspec: GObject.ParamSpec) => void;
             "notify::balance-currency": (pspec: GObject.ParamSpec) => void;
             "notify::balance-scale": (pspec: GObject.ParamSpec) => void;
@@ -16513,7 +17970,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::balance": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::balance": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16526,7 +17983,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::balance-currency": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::balance-currency": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16539,7 +17996,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::balance-scale": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::balance-scale": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16552,7 +18009,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::balance-uri": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::balance-uri": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16565,7 +18022,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::blocked-contacts": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::blocked-contacts": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16578,7 +18035,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::can-change-contact-list": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::can-change-contact-list": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16591,7 +18048,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::can-report-abusive": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::can-report-abusive": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16604,7 +18061,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::capabilities": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::capabilities": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16617,7 +18074,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::cm-name": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::cm-name": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16630,7 +18087,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::connection-manager-name": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::connection-manager-name": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16643,7 +18100,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::connection-ready": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::connection-ready": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16656,7 +18113,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::contact-groups": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::contact-groups": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16669,7 +18126,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::contact-list-persists": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::contact-list-persists": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16682,7 +18139,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::contact-list-state": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::contact-list-state": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16695,7 +18152,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::disjoint-groups": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::disjoint-groups": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16708,7 +18165,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::group-storage": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::group-storage": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16721,7 +18178,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::protocol-name": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::protocol-name": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16734,7 +18191,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::request-uses-message": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::request-uses-message": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16747,7 +18204,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::self-contact": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::self-contact": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16760,7 +18217,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::self-handle": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::self-handle": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16773,7 +18230,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::status": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::status": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16786,7 +18243,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::status-reason": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::status-reason": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16799,7 +18256,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::bus-name": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::bus-name": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16812,7 +18269,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::dbus-daemon": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::dbus-daemon": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16825,7 +18282,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::factory": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::factory": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16838,7 +18295,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::interfaces": (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::interfaces": (balance: number, balance_scale: number, balance_currency: string) => void;
             /**
              * Emitted when at least one of the {@link TelepathyGLib.Connection.balance},
              * {@link TelepathyGLib.Connection.balance_scale} or {@link TelepathyGLib.Connection.balance_currency}
@@ -16851,8 +18308,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "balance-changed::object-path": (arg0: number, arg1: number, arg2: string) => void;
-            [key: `balance-changed::${string}`]: (arg0: number, arg1: number, arg2: string) => void;
+            "balance-changed::object-path": (balance: number, balance_scale: number, balance_currency: string) => void;
+            [key: `balance-changed::${string}`]: (balance: number, balance_scale: number, balance_currency: string) => void;
         }
 
         // Constructor properties interface
@@ -17615,6 +19072,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         add_to_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -17661,6 +19119,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         authorize_publication_finish(result: Gio.AsyncResult): boolean;
 
@@ -17715,6 +19174,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         block_contacts_finish(result: Gio.AsyncResult): boolean;
 
@@ -17763,6 +19223,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the call was successful, otherwise `false`
          * @since 0.17.5
+         * @throws GLib.Error
          */
         disconnect_finish(result: Gio.AsyncResult): boolean;
 
@@ -17818,6 +19279,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link TelepathyGLib.Contact} or `null` on error.
          * @since 0.19.0
+         * @throws GLib.Error
          */
         dup_contact_by_id_finish(result: Gio.AsyncResult): Contact;
 
@@ -18284,6 +19746,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         remove_contacts_finish(result: Gio.AsyncResult): boolean;
 
@@ -18330,6 +19793,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         remove_from_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -18370,6 +19834,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         remove_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -18425,6 +19890,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         rename_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -18490,6 +19956,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         request_subscription_finish(result: Gio.AsyncResult): boolean;
 
@@ -18539,6 +20006,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the request call was successful, otherwise `false`
          * @since 0.11.7
+         * @throws GLib.Error
          */
         set_contact_info_finish(result: Gio.AsyncResult): boolean;
 
@@ -18585,6 +20053,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         set_group_members_finish(result: Gio.AsyncResult): boolean;
 
@@ -18616,6 +20085,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         unblock_contacts_finish(result: Gio.AsyncResult): boolean;
 
@@ -18659,6 +20129,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         unpublish_finish(result: Gio.AsyncResult): boolean;
 
@@ -18711,6 +20182,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         unsubscribe_finish(result: Gio.AsyncResult): boolean;
 
@@ -18784,6 +20256,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
          * @since 0.19.0
+         * @throws GLib.Error
          */
         upgrade_contacts_finish(result: Gio.AsyncResult): [boolean, Contact[] | null];
     }
@@ -18816,7 +20289,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info": (arg0: number) => void;
+            "got-info": (source: number) => void;
             "notify::always-introspect": (pspec: GObject.ParamSpec) => void;
             "notify::cm-name": (pspec: GObject.ParamSpec) => void;
             "notify::connection-manager": (pspec: GObject.ParamSpec) => void;
@@ -18988,7 +20461,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::always-introspect": (arg0: number) => void;
+            "got-info::always-introspect": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -18998,7 +20471,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::cm-name": (arg0: number) => void;
+            "got-info::cm-name": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19008,7 +20481,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::connection-manager": (arg0: number) => void;
+            "got-info::connection-manager": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19018,7 +20491,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::info-source": (arg0: number) => void;
+            "got-info::info-source": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19028,7 +20501,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::manager-file": (arg0: number) => void;
+            "got-info::manager-file": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19038,7 +20511,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::bus-name": (arg0: number) => void;
+            "got-info::bus-name": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19048,7 +20521,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::dbus-daemon": (arg0: number) => void;
+            "got-info::dbus-daemon": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19058,7 +20531,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::factory": (arg0: number) => void;
+            "got-info::factory": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19068,7 +20541,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::interfaces": (arg0: number) => void;
+            "got-info::interfaces": (source: number) => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              * 
@@ -19078,8 +20551,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "got-info::object-path": (arg0: number) => void;
-            [key: `got-info::${string}`]: (arg0: number) => void;
+            "got-info::object-path": (source: number) => void;
+            [key: `got-info::${string}`]: (source: number) => void;
         }
 
         // Constructor properties interface
@@ -19412,21 +20885,21 @@ export namespace TelepathyGLib {
              * @since 0.13.14
              * @run-last
              */
-            "contact-groups-changed": (arg0: string[], arg1: string[]) => void;
+            "contact-groups-changed": (added: string[], removed: string[]) => void;
             /**
              * Emitted when this contact's presence changes.
              * @signal
              * @since 0.11.7
              * @run-last
              */
-            "presence-changed": (arg0: number, arg1: string, arg2: string) => void;
+            "presence-changed": (type: number, status: string, message: string) => void;
             /**
              * Emitted when this contact's subscription states changes.
              * @signal
              * @since 0.13.12
              * @run-last
              */
-            "subscription-states-changed": (arg0: number, arg1: number, arg2: string) => void;
+            "subscription-states-changed": (subscribe: number, publish: number, publish_request: string) => void;
             "notify::alias": (pspec: GObject.ParamSpec) => void;
             "notify::avatar-file": (pspec: GObject.ParamSpec) => void;
             "notify::avatar-mime-type": (pspec: GObject.ParamSpec) => void;
@@ -19995,6 +21468,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         add_to_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -20026,6 +21500,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         authorize_publication_finish(result: Gio.AsyncResult): boolean;
 
@@ -20063,6 +21538,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         block_finish(result: Gio.AsyncResult): boolean;
 
@@ -20317,6 +21793,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -20351,6 +21828,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         remove_from_group_finish(result: Gio.AsyncResult): boolean;
 
@@ -20428,6 +21906,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the request call was successful, otherwise `false`
          * @since 0.11.7
+         * @throws GLib.Error
          */
         request_contact_info_finish(result: Gio.AsyncResult): boolean;
 
@@ -20462,6 +21941,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         request_subscription_finish(result: Gio.AsyncResult): boolean;
 
@@ -20526,6 +22006,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the request call was successful, otherwise `false`
          * @since 0.13.14
+         * @throws GLib.Error
          */
         set_contact_groups_finish(result: Gio.AsyncResult): boolean;
 
@@ -20557,6 +22038,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.17.0
+         * @throws GLib.Error
          */
         unblock_finish(result: Gio.AsyncResult): boolean;
 
@@ -20588,6 +22070,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         unpublish_finish(result: Gio.AsyncResult): boolean;
 
@@ -20619,6 +22102,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation was successful, otherwise `false`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         unsubscribe_finish(result: Gio.AsyncResult): boolean;
     }
@@ -20634,7 +22118,7 @@ export namespace TelepathyGLib {
              * @since 0.13.11
              * @run-last
              */
-            "search-results-received": (arg0: ContactSearchResult[]) => void;
+            "search-results-received": (results: ContactSearchResult[]) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::limit": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
@@ -20820,6 +22304,7 @@ export namespace TelepathyGLib {
          * @param result the {@link Gio.AsyncResult} from the callback
          * @returns the new search keys, or `null` in case of error.
          * @since 0.13.11
+         * @throws GLib.Error
          */
         reset_finish(result: Gio.AsyncResult): string[];
 
@@ -20972,6 +22457,7 @@ export namespace TelepathyGLib {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -20981,6 +22467,7 @@ export namespace TelepathyGLib {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ContactSearch;
 
@@ -21258,6 +22745,7 @@ export namespace TelepathyGLib {
          * @param well_known_name a well-known name owned by this process to release
          * @returns `true` if `well_known_name` was released, or `false` and sets `error`          if an error occurred.
          * @since 0.7.30
+         * @throws GLib.Error
          */
         release_name(well_known_name: string): boolean;
 
@@ -21269,6 +22757,7 @@ export namespace TelepathyGLib {
          * @param idempotent whether to consider it to be a success if this process              already owns the name
          * @returns `true` if `well_known_name` was claimed, or `false` and sets `error` if          an error occurred.
          * @since 0.7.30
+         * @throws GLib.Error
          */
         request_name(well_known_name: string, idempotent: boolean): boolean;
 
@@ -21437,6 +22926,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a reference on a {@link Gio.DBusConnection} if the tube has been successfully accepted and opened; `null` otherwise.
          * @since 0.18.0
+         * @throws GLib.Error
          */
         accept_finish(result: Gio.AsyncResult): Gio.DBusConnection;
 
@@ -21501,6 +22991,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a reference on a {@link Gio.DBusConnection} if the tube has been successfully offered and opened; `null` otherwise.
          * @since 0.18.0
+         * @throws GLib.Error
          */
         offer_finish(result: Gio.AsyncResult): Gio.DBusConnection;
     }
@@ -21516,7 +23007,7 @@ export namespace TelepathyGLib {
              * @since 0.19.0
              * @run-last
              */
-            "new-debug-message": (arg0: DebugMessage) => void;
+            "new-debug-message": (message: DebugMessage) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::bus-name": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-daemon": (pspec: GObject.ParamSpec) => void;
@@ -21626,6 +23117,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of {@link TelepathyGLib.DebugMessage}, free with `g_ptr_array_unref()`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         get_messages_finish(result: Gio.AsyncResult): DebugMessage[];
 
@@ -21667,6 +23159,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true`, if the operation suceeded, `false` otherwise
          * @since 0.19.0
+         * @throws GLib.Error
          */
         set_enabled_finish(result: Gio.AsyncResult): boolean;
     }
@@ -22140,6 +23633,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the accept operation was a success, or `false`
          * @since 0.17.1
+         * @throws GLib.Error
          */
         accept_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -22272,6 +23766,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the file has been successfully provided, or `false`.
          * @since 0.17.1
+         * @throws GLib.Error
          */
         provide_file_finish(result: Gio.AsyncResult): boolean;
     }
@@ -23598,6 +25093,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a string identifying the account,  or `null` on error
          * @since 0.23.1
+         * @throws GLib.Error
          */
         identify_account_finish(result: Gio.AsyncResult): string;
 
@@ -23638,6 +25134,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns the normalized form of `contact`,  or `null` on error
          * @since 0.23.1
+         * @throws GLib.Error
          */
         normalize_contact_finish(result: Gio.AsyncResult): string;
 
@@ -23678,6 +25175,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns the normalized form of `uri`,  or `null` on error
          * @since 0.23.1
+         * @throws GLib.Error
          */
         normalize_contact_uri_finish(result: Gio.AsyncResult): string;
 
@@ -23721,6 +25219,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns the normalized form of `value`,  or `null` on error
          * @since 0.23.1
+         * @throws GLib.Error
          */
         normalize_vcard_address_finish(result: Gio.AsyncResult): string;
     }
@@ -23742,7 +25241,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added": (arg0: number, arg1: unknown) => void;
+            "interface-added": (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23758,7 +25257,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            invalidated: (arg0: number, arg1: number, arg2: string) => void;
+            invalidated: (domain: number, code: number, message: string) => void;
             "notify::bus-name": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-daemon": (pspec: GObject.ParamSpec) => void;
             "notify::factory": (pspec: GObject.ParamSpec) => void;
@@ -23777,7 +25276,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added::bus-name": (arg0: number, arg1: unknown) => void;
+            "interface-added::bus-name": (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has gained an interface. It is not guaranteed
              * to be emitted immediately, but will be emitted before the interface is
@@ -23791,7 +25290,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added::dbus-daemon": (arg0: number, arg1: unknown) => void;
+            "interface-added::dbus-daemon": (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has gained an interface. It is not guaranteed
              * to be emitted immediately, but will be emitted before the interface is
@@ -23805,7 +25304,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added::factory": (arg0: number, arg1: unknown) => void;
+            "interface-added::factory": (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has gained an interface. It is not guaranteed
              * to be emitted immediately, but will be emitted before the interface is
@@ -23819,7 +25318,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added::interfaces": (arg0: number, arg1: unknown) => void;
+            "interface-added::interfaces": (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has gained an interface. It is not guaranteed
              * to be emitted immediately, but will be emitted before the interface is
@@ -23833,8 +25332,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "interface-added::object-path": (arg0: number, arg1: unknown) => void;
-            [key: `interface-added::${string}`]: (arg0: number, arg1: unknown) => void;
+            "interface-added::object-path": (id: number, proxy: unknown) => void;
+            [key: `interface-added::${string}`]: (id: number, proxy: unknown) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23850,7 +25349,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "invalidated::bus-name": (arg0: number, arg1: number, arg2: string) => void;
+            "invalidated::bus-name": (domain: number, code: number, message: string) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23866,7 +25365,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "invalidated::dbus-daemon": (arg0: number, arg1: number, arg2: string) => void;
+            "invalidated::dbus-daemon": (domain: number, code: number, message: string) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23882,7 +25381,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "invalidated::factory": (arg0: number, arg1: number, arg2: string) => void;
+            "invalidated::factory": (domain: number, code: number, message: string) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23898,7 +25397,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "invalidated::interfaces": (arg0: number, arg1: number, arg2: string) => void;
+            "invalidated::interfaces": (domain: number, code: number, message: string) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23914,8 +25413,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "invalidated::object-path": (arg0: number, arg1: number, arg2: string) => void;
-            [key: `invalidated::${string}`]: (arg0: number, arg1: number, arg2: string) => void;
+            "invalidated::object-path": (domain: number, code: number, message: string) => void;
+            [key: `invalidated::${string}`]: (domain: number, code: number, message: string) => void;
         }
 
         // Constructor properties interface
@@ -24033,6 +25532,7 @@ export namespace TelepathyGLib {
          * @param dbus_error a D-Bus error name, for instance from the callback for              `tp_cli_connection_connect_to_connection_error()`
          * @param debug_message a debug message that accompanied the error name, or `null`
          * @since 0.7.24
+         * @throws GLib.Error
          */
         dbus_error_to_gerror(dbus_error: string, debug_message: string): void;
 
@@ -24288,6 +25788,7 @@ export namespace TelepathyGLib {
          * @param result the result passed to the callback of `tp_proxy_prepare_async()`
          * @returns `false` (setting `error`) if `tp_proxy_prepare_async()` failed  or was cancelled
          * @since 0.11.3
+         * @throws GLib.Error
          */
         prepare_finish(result: Gio.AsyncResult): boolean;
     }
@@ -24429,7 +25930,7 @@ export namespace TelepathyGLib {
              * @since 0.19.0
              * @run-last
              */
-            failed: (arg0: GLib.Error) => void;
+            failed: (error: GLib.Error) => void;
             /**
              * Fired each time a room is found during the listing process.
              * User should take his own reference on `room` if he plans to
@@ -24438,7 +25939,7 @@ export namespace TelepathyGLib {
              * @since 0.19.0
              * @run-last
              */
-            "got-room": (arg0: RoomInfo) => void;
+            "got-room": (room: RoomInfo) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::listing": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
@@ -24697,6 +26198,7 @@ export namespace TelepathyGLib {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -24706,6 +26208,7 @@ export namespace TelepathyGLib {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): RoomList;
 
@@ -25142,6 +26645,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the account, or `null`.
          * @returns a reference to a {@link TelepathyGLib.Account};  see `tp_account_new()`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         ensure_account(object_path: string, immutable_properties: { [key: string]: GObject.Value }): Account;
 
@@ -25163,6 +26667,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the channel
          * @returns a reference to a {@link TelepathyGLib.Channel};  see `tp_channel_new_from_properties()`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         ensure_channel(connection: Connection, object_path: string, immutable_properties: { [key: string]: GObject.Value }): Channel;
 
@@ -25182,6 +26687,7 @@ export namespace TelepathyGLib {
          * @param immutable_properties the immutable properties of the connection.
          * @returns a reference to a {@link TelepathyGLib.Connection};  see `tp_connection_new()`.
          * @since 0.15.5
+         * @throws GLib.Error
          */
         ensure_connection(object_path: string, immutable_properties: { [key: string]: GObject.Value }): Connection;
 
@@ -25242,6 +26748,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link TelepathyGLib.Contact} or `null` on error.
          * @since 0.19.1
+         * @throws GLib.Error
          */
         ensure_contact_by_id_finish(result: Gio.AsyncResult): Contact;
 
@@ -25289,6 +26796,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
          * @since 0.19.1
+         * @throws GLib.Error
          */
         upgrade_contacts_finish(result: Gio.AsyncResult): [boolean, Contact[] | null];
     }
@@ -25545,7 +27053,7 @@ export namespace TelepathyGLib {
              * @signal
              * @run-last
              */
-            incoming: (arg0: StreamTubeConnection) => void;
+            incoming: (tube_connection: StreamTubeConnection) => void;
             "notify::parameters-vardict": (pspec: GObject.ParamSpec) => void;
             "notify::service": (pspec: GObject.ParamSpec) => void;
             "notify::channel-ready": (pspec: GObject.ParamSpec) => void;
@@ -25675,6 +27183,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a newly created {@link TelepathyGLib.StreamTubeConnection}
          * @since 0.13.2
+         * @throws GLib.Error
          */
         accept_finish(result: Gio.AsyncResult): StreamTubeConnection;
 
@@ -25747,6 +27256,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` when a Tube has been successfully offered; `false` otherwise
          * @since 0.13.2
+         * @throws GLib.Error
          */
         offer_finish(result: Gio.AsyncResult): boolean;
     }
@@ -25762,7 +27272,7 @@ export namespace TelepathyGLib {
              * @since 0.13.2
              * @run-last
              */
-            closed: (arg0: GLib.Error) => void;
+            closed: (error: GLib.Error) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::contact": (pspec: GObject.ParamSpec) => void;
             "notify::socket-connection": (pspec: GObject.ParamSpec) => void;
@@ -26064,6 +27574,7 @@ export namespace TelepathyGLib {
          * @param result the result passed to the callback by  `tp_tls_certificate_accept_async()`
          * @returns `true` if acceptance was successful
          * @since 0.19.0
+         * @throws GLib.Error
          */
         accept_finish(result: Gio.AsyncResult): boolean;
 
@@ -26189,6 +27700,7 @@ export namespace TelepathyGLib {
          * @param result the result passed to the callback by  `tp_tls_certificate_reject_async()`
          * @returns `true` if rejection was successful
          * @since 0.19.0
+         * @throws GLib.Error
          */
         reject_finish(result: Gio.AsyncResult): boolean;
     }
@@ -26322,6 +27834,7 @@ export namespace TelepathyGLib {
          * property in language binding supporting this feature.
          * @returns `false`
          * @since 0.19.0
+         * @throws GLib.Error
          */
         raise_error(): boolean;
     }
@@ -26339,7 +27852,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed": (contact: Contact, state: number) => void;
             /**
              * The ::message-received signal is emitted when a new message has been
              * received on `self`.
@@ -26358,7 +27871,7 @@ export namespace TelepathyGLib {
              * @since 0.13.10
              * @run-last
              */
-            "message-received": (arg0: SignalledMessage) => void;
+            "message-received": (message: SignalledMessage) => void;
             /**
              * The ::message-sent signal is emitted when `message`
              * has been submitted for sending.
@@ -26370,7 +27883,7 @@ export namespace TelepathyGLib {
              * @since 0.13.10
              * @run-last
              */
-            "message-sent": (arg0: SignalledMessage, arg1: number, arg2: string) => void;
+            "message-sent": (message: SignalledMessage, flags: number, token: string) => void;
             /**
              * The ::pending-message-removed signal is emitted when `message`
              * has been acked and so removed from the pending messages list.
@@ -26385,7 +27898,7 @@ export namespace TelepathyGLib {
              * @since 0.13.10
              * @run-last
              */
-            "pending-message-removed": (arg0: SignalledMessage) => void;
+            "pending-message-removed": (message: SignalledMessage) => void;
             "notify::delivery-reporting-support": (pspec: GObject.ParamSpec) => void;
             "notify::is-sms-channel": (pspec: GObject.ParamSpec) => void;
             "notify::message-part-support-flags": (pspec: GObject.ParamSpec) => void;
@@ -26417,7 +27930,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::delivery-reporting-support": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::delivery-reporting-support": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26427,7 +27940,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::is-sms-channel": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::is-sms-channel": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26437,7 +27950,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::message-part-support-flags": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::message-part-support-flags": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26447,7 +27960,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::sms-flash": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::sms-flash": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26457,7 +27970,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::supported-content-types": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::supported-content-types": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26467,7 +27980,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::channel-ready": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::channel-ready": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26477,7 +27990,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::connection": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::connection": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26487,7 +28000,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::group-flags": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::group-flags": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26497,7 +28010,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::group-self-contact": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::group-self-contact": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26507,7 +28020,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::group-self-handle": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::group-self-handle": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26517,7 +28030,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::identifier": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::identifier": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26527,7 +28040,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::initiator-contact": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::initiator-contact": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26537,7 +28050,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::initiator-handle": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::initiator-handle": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26547,7 +28060,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::initiator-identifier": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::initiator-identifier": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26557,7 +28070,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::password-needed": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::password-needed": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26567,7 +28080,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::requested": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::requested": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26577,7 +28090,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::target-contact": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::target-contact": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26587,7 +28100,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::bus-name": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::bus-name": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26597,7 +28110,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::dbus-daemon": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::dbus-daemon": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26607,7 +28120,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::factory": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::factory": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26617,7 +28130,7 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::interfaces": (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::interfaces": (contact: Contact, state: number) => void;
             /**
              * Emitted when a contact's chat state changes after `tp_proxy_prepare_async()`
              * has finished preparing features `TP_TEXT_CHANNEL_FEATURE_CHAT_STATES`,
@@ -26627,8 +28140,8 @@ export namespace TelepathyGLib {
              * @detailed
              * @run-last
              */
-            "contact-chat-state-changed::object-path": (arg0: Contact, arg1: number) => void;
-            [key: `contact-chat-state-changed::${string}`]: (arg0: Contact, arg1: number) => void;
+            "contact-chat-state-changed::object-path": (contact: Contact, state: number) => void;
+            [key: `contact-chat-state-changed::${string}`]: (contact: Contact, state: number) => void;
         }
 
         // Constructor properties interface
@@ -26842,6 +28355,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the messages have been acked, `false` otherwise.
          * @since 0.15.3
+         * @throws GLib.Error
          */
         ack_all_pending_messages_finish(result: Gio.AsyncResult): boolean;
 
@@ -26912,6 +28426,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_text_channel_ack_message_async()`
          * @returns `true` if the message has been acked, `false` otherwise.
          * @since 0.13.10
+         * @throws GLib.Error
          */
         ack_message_finish(result: Gio.AsyncResult): boolean;
 
@@ -26970,6 +28485,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_text_channel_ack_messages_async()`
          * @returns `true` if the messages have been acked, `false` otherwise.
          * @since 0.13.10
+         * @throws GLib.Error
          */
         ack_messages_finish(result: Gio.AsyncResult): boolean;
 
@@ -27091,6 +28607,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the number of 140 octet chunks required to send the message has been retrieved, `false` otherwise.
          * @since 0.15.1
+         * @throws GLib.Error
          */
         get_sms_length_finish(result: Gio.AsyncResult): [boolean, number, number, number];
 
@@ -27143,6 +28660,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_text_channel_send_message_async()`
          * @returns `true` if the message has been submitted to the server, `false` otherwise.
          * @since 0.13.10
+         * @throws GLib.Error
          */
         send_message_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -27183,6 +28701,7 @@ export namespace TelepathyGLib {
          * @param result a {@link Gio.AsyncResult} passed to the callback for `tp_text_channel_set_chat_state_async()`
          * @returns `true` if the chat state has been changed, `false` otherwise.
          * @since 0.13.10
+         * @throws GLib.Error
          */
         set_chat_state_finish(result: Gio.AsyncResult): boolean;
 
@@ -28992,6 +30511,7 @@ export namespace TelepathyGLib {
          * @param properties the immutable properties of the channel
          * @returns a new channel proxy, or `null` on invalid arguments
          * @since 0.13.2
+         * @throws GLib.Error
          */
         create_channel(conn: Connection, path: string, properties: { [key: string]: GObject.Value }): Channel;
 

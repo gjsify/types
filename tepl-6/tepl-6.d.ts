@@ -61,11 +61,11 @@ export namespace Tepl {
         /**
          * on the right side of the icon.
          */
-        ALONGSIDE_ICON,
+        ALONGSIDE_ICON = 0,
         /**
          * below the icon.
          */
-        BELOW_ICON,
+        BELOW_ICON = 1,
     }
 
 
@@ -84,16 +84,16 @@ export namespace Tepl {
         /**
          * line feed, used on UNIX.
          */
-        LF,
+        LF = 0,
         /**
          * carriage return, used on Mac.
          */
-        CR,
+        CR = 1,
         /**
          * carriage return followed by a line feed, used
          *   on Windows.
          */
-        CR_LF,
+        CR_LF = 2,
     }
 
 
@@ -112,16 +112,16 @@ export namespace Tepl {
         /**
          * No selection.
          */
-        NO_SELECTION,
+        NO_SELECTION = 0,
         /**
          * The start and end selection bounds are on
          *   the same line.
          */
-        ON_SAME_LINE,
+        ON_SAME_LINE = 1,
         /**
          * The selection spans multiple lines.
          */
-        MULTIPLE_LINES,
+        MULTIPLE_LINES = 2,
     }
 
 
@@ -141,15 +141,15 @@ export namespace Tepl {
         /**
          * Follow the system's preference.
          */
-        SYSTEM,
+        SYSTEM = 0,
         /**
          * Force a light theme.
          */
-        LIGHT,
+        LIGHT = 1,
         /**
          * Force a dark theme.
          */
-        DARK,
+        DARK = 2,
     }
 
 
@@ -162,6 +162,7 @@ export namespace Tepl {
      * 
      * The Tepl library uses this priority for its {@link Gtk.StyleProvider}'s.
      * @since 6.0
+     * @default -1
      */
     const UTILS_STYLE_PROVIDER_PRIORITY_LIBRARY: number;
 
@@ -464,6 +465,7 @@ export namespace Tepl {
      * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
      * @returns whether the directories are correctly created. `false` is returned on error.
      * @since 5.0
+     * @throws GLib.Error
      */
     function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -783,11 +785,11 @@ export namespace Tepl {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Create a backup before saving the file.
          */
-        CREATE_BACKUP,
+        CREATE_BACKUP = 1,
     }
 
 
@@ -811,25 +813,25 @@ export namespace Tepl {
         /**
          * No code folding here.
          */
-        NONE,
+        NONE = 0,
         /**
          * Start of currently folded
          *   fold region.
          */
-        START_FOLDED,
+        START_FOLDED = 1,
         /**
          * Start of currently opened
          *   fold region.
          */
-        START_OPENED,
+        START_OPENED = 2,
         /**
          * Fold region continues.
          */
-        CONTINUE,
+        CONTINUE = 4,
         /**
          * End of fold region.
          */
-        END,
+        END = 8,
     }
 
 
@@ -2158,6 +2160,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the content has been loaded successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2344,6 +2347,7 @@ export namespace Tepl {
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
          * @since 1.0
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -3502,6 +3506,7 @@ export namespace Tepl {
          * @param from_file the {@link Gio.File} to load metadata from.
          * @returns whether the operation was successful.
          * @since 5.0
+         * @throws GLib.Error
          */
         load_from_disk(from_file: Gio.File): boolean;
 
@@ -3531,6 +3536,7 @@ export namespace Tepl {
          * @param trim if `true`, `tepl_metadata_manager_trim()` is called with -1.
          * @returns whether the operation was successful.
          * @since 5.0
+         * @throws GLib.Error
          */
         save_to_disk(to_file: Gio.File, trim: boolean): boolean;
 
@@ -4321,7 +4327,7 @@ export namespace Tepl {
              * @since 6.11
              * @run-last
              */
-            "add-item": (arg0: PanelItem) => void;
+            "add-item": (item: PanelItem) => void;
             /**
              * The ::changed signal is for convenience: it is emitted when the
              * {@link Tepl.PanelSimple.SignalSignatures.add_item | Tepl.PanelSimple::add-item} and {@link Tepl.PanelSimple.SignalSignatures.remove_item | Tepl.PanelSimple::remove-item} signals
@@ -4347,7 +4353,7 @@ export namespace Tepl {
              * @since 6.11
              * @run-last
              */
-            "remove-item": (arg0: PanelItem) => void;
+            "remove-item": (item: PanelItem) => void;
             "notify::active-item": (pspec: GObject.ParamSpec) => void;
             "notify::active-item-name": (pspec: GObject.ParamSpec) => void;
         }

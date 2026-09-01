@@ -45,31 +45,31 @@ export namespace CambalachePrivate {
          *   (either because it is not part of SVG, or because it is
          *   in the wrong place, or because it not implemented in GTK)
          */
-        INVALID_ELEMENT,
+        INVALID_ELEMENT = 0,
         /**
          * An XML attribute is invalid
          *   (either because it is not part of SVG, or because it is
          *   not implemented in GTK, or its value is problematic)
          */
-        INVALID_ATTRIBUTE,
+        INVALID_ATTRIBUTE = 1,
         /**
          * A required attribute is missing
          */
-        MISSING_ATTRIBUTE,
+        MISSING_ATTRIBUTE = 2,
         /**
          * A reference does not point to
          *   a suitable element
          */
-        INVALID_REFERENCE,
+        INVALID_REFERENCE = 3,
         /**
          * An animation could not be updated
          */
-        FAILED_UPDATE,
+        FAILED_UPDATE = 4,
         /**
          * Rendering is not according to
          *   expecations
          */
-        FAILED_RENDERING,
+        FAILED_RENDERING = 5,
     }
 
 
@@ -114,7 +114,7 @@ export namespace CambalachePrivate {
              * @since 4.22
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             "notify::playing": (pspec: GObject.ParamSpec) => void;
             "notify::resource": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -479,6 +479,7 @@ export namespace CambalachePrivate {
          * @param filename the file to save to
          * @returns true, unless an error occurred
          * @since 4.22
+         * @throws GLib.Error
          */
         write_to_file(filename: string): boolean;
 

@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./nma4-1.0.d.ts","./nma4-1.0-surface.d.ts"]
+  "include": ["./nma4-1.0.d.ts","./nma4-1.0-vocabulary.d.ts"]
 }
 
 

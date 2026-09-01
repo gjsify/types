@@ -243,65 +243,74 @@ export namespace gSignon {
         /**
          * The plugin can decide when to show UI.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Force the user to enter the password.
          */
-        REQUEST_PASSWORD,
+        REQUEST_PASSWORD = 1,
         /**
          * No UI elements will be shown to the user.
          */
-        NO_USER_INTERACTION,
+        NO_USER_INTERACTION = 2,
         /**
          * UI elements can be shown to the user only when
          * CAPTCHA-like security measures are required.
          */
-        VALIDATION,
+        VALIDATION = 3,
     }
 
 
     /**
      * Caption for the UI dialog.
+     * @default Caption
      */
     const SESSION_DATA_CAPTION: string;
 
     /**
      * Proxy.
+     * @default NetworkProxy
      */
     const SESSION_DATA_PROXY: string;
 
     /**
      * Realm.
+     * @default Realm
      */
     const SESSION_DATA_REALM: string;
 
     /**
      * Requests the signon plugin to obtain a new token (boolean).
+     * @default RenewToken
      */
     const SESSION_DATA_RENEW_TOKEN: string;
 
     /**
      * Secret.
+     * @default Secret
      */
     const SESSION_DATA_SECRET: string;
 
     /**
      * Network timeout, in milliseconds (uint32).
+     * @default NetworkTimeout
      */
     const SESSION_DATA_TIMEOUT: string;
 
     /**
      * Policy for the signon process.
+     * @default UiPolicy
      */
     const SESSION_DATA_UI_POLICY: string;
 
     /**
      * Username.
+     * @default UserName
      */
     const SESSION_DATA_USERNAME: string;
 
     /**
      * Platform-specific window id (for dialog transiency) - uint32.
+     * @default WindowId
      */
     const SESSION_DATA_WINDOW_ID: string;
 
@@ -425,19 +434,19 @@ export namespace gSignon {
         /**
          * an identity that is not an app, web or network
          */
-        OTHER,
+        OTHER = 0,
         /**
          * an application identity
          */
-        APP,
+        APP = 1,
         /**
          * a web identity
          */
-        WEB,
+        WEB = 2,
         /**
          * a network server identity
          */
-        NETWORK,
+        NETWORK = 4,
     }
 
 
@@ -544,7 +553,7 @@ export namespace gSignon {
              * @action
              * @run-last
              */
-            "state-changed": (arg0: number, arg1: string) => void;
+            "state-changed": (state: number, message: string) => void;
             "notify::identity": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -694,6 +703,7 @@ export namespace gSignon {
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_auth_session_process_async()`.
          * @returns a {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing the authentication reply. As with `signon_auth_session_process_async()`, specific parameters contained in the {@link GLib.Variant} can be found from plugins' documentation: `GSignondPlugin::response-final` for the final response, and `GSignondPlugin::response` for the intermediate responses. See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
          * @since 1.8
+         * @throws GLib.Error
          */
         process_finish(res: Gio.AsyncResult): GLib.Variant;
 
@@ -802,6 +812,7 @@ export namespace gSignon {
          * supported by gSSO.
          * @param method authentication method.
          * @returns a new {@link gSignon.AuthSession}.
+         * @throws GLib.Error
          */
         create_session(method: string): AuthSession;
 

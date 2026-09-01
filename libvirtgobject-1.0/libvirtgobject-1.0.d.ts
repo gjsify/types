@@ -40,18 +40,18 @@ export namespace LibvirtGObject {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Also remove associated saved state (if present).
          */
-        SAVED_STATE,
+        SAVED_STATE = 1,
         /**
          * If last use of domain, then also
          *                                         remove any snapshot metadata.
          */
-        SNAPSHOTS_METADATA,
-        REMOVE_NVRAM,
-        KEEP_NVRAM,
+        SNAPSHOTS_METADATA = 2,
+        REMOVE_NVRAM = 4,
+        KEEP_NVRAM = 8,
     }
 
 
@@ -69,15 +69,15 @@ export namespace LibvirtGObject {
         /**
          * No flags, hypervisor choice
          */
-        NONE,
+        NONE = 0,
         /**
          * Send ACPI event
          */
-        ACPI_POWER_BTN,
+        ACPI_POWER_BTN = 1,
         /**
          * Use guest agent
          */
-        GUEST_AGENT,
+        GUEST_AGENT = 2,
     }
 
 
@@ -95,15 +95,15 @@ export namespace LibvirtGObject {
         /**
          * No flags, hypervisor choice
          */
-        NONE,
+        NONE = 0,
         /**
          * Send ACPI event
          */
-        ACPI_POWER_BTN,
+        ACPI_POWER_BTN = 1,
         /**
          * Use guest agent
          */
-        GUEST_AGENT,
+        GUEST_AGENT = 2,
     }
 
 
@@ -121,40 +121,40 @@ export namespace LibvirtGObject {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Restore or alter metadata
          */
-        REDEFINE,
+        REDEFINE = 1,
         /**
          * With redefine, make snapshot current
          */
-        CURRENT,
+        CURRENT = 2,
         /**
          * Make snapshot without remembering it
          */
-        NO_METADATA,
+        NO_METADATA = 4,
         /**
          * Stop running guest after snapshot
          */
-        HALT,
+        HALT = 8,
         /**
          * Disk snapshot, not system checkpoint
          */
-        DISK_ONLY,
+        DISK_ONLY = 16,
         /**
          * Reuse any existing external files
          */
-        REUSE_EXT,
+        REUSE_EXT = 32,
         /**
          * Use guest agent to quiesce all mounter
          *                                file systems within the domain
          */
-        QUIESCE,
+        QUIESCE = 64,
         /**
          * Atomically avoid partial changes
          */
-        ATOMIC,
+        ATOMIC = 128,
     }
 
 
@@ -172,15 +172,15 @@ export namespace LibvirtGObject {
         /**
          * Also delete children
          */
-        CHILDREN,
+        CHILDREN = 1,
         /**
          * Delete just metadata
          */
-        METADATA_ONLY,
+        METADATA_ONLY = 2,
         /**
          * Delete just children
          */
-        CHILDREN_ONLY,
+        CHILDREN_ONLY = 4,
     }
 
 
@@ -198,53 +198,53 @@ export namespace LibvirtGObject {
         /**
          * List all snapshots
          */
-        ALL,
+        ALL = 0,
         /**
          * List all descendants, not just
          *                                         children, when listing a snapshot.
          *                                         For historical reasons, groups do not use contiguous bits.
          */
-        DESCENDANTS,
+        DESCENDANTS = 1,
         /**
          * Filter by snapshots with no parents, when listing a domain
          */
-        ROOTS,
+        ROOTS = 1,
         /**
          * Filter by snapshots which have metadata
          */
-        METADATA,
+        METADATA = 2,
         /**
          * Filter by snapshots with no children
          */
-        LEAVES,
+        LEAVES = 4,
         /**
          * Filter by snapshots that have children
          */
-        NO_LEAVES,
+        NO_LEAVES = 8,
         /**
          * Filter by snapshots with no metadata
          */
-        NO_METADATA,
+        NO_METADATA = 16,
         /**
          * Filter by snapshots taken while guest was shut off
          */
-        INACTIVE,
+        INACTIVE = 32,
         /**
          * Filter by snapshots taken while guest was active, and with memory state
          */
-        ACTIVE,
+        ACTIVE = 64,
         /**
          * Filter by snapshots taken while guest was active, but without memory state
          */
-        DISK_ONLY,
+        DISK_ONLY = 128,
         /**
          * Filter by snapshots stored internal to disk images
          */
-        INTERNAL,
+        INTERNAL = 256,
         /**
          * Filter by snapshots that use files external to disk images
          */
-        EXTERNAL,
+        EXTERNAL = 512,
     }
 
 
@@ -262,15 +262,15 @@ export namespace LibvirtGObject {
         /**
          * Run after revert
          */
-        RUNNING,
+        RUNNING = 1,
         /**
          * Pause after revert
          */
-        PAUSED,
+        PAUSED = 2,
         /**
          * Allow risky reverts
          */
-        FORCE,
+        FORCE = 4,
     }
 
 
@@ -285,14 +285,14 @@ export namespace LibvirtGObject {
      * @gir-type Enum
      */
     enum DomainState {
-        NONE,
-        RUNNING,
-        BLOCKED,
-        PAUSED,
-        SHUTDOWN,
-        SHUTOFF,
-        CRASHED,
-        PMSUSPENDED,
+        NONE = 0,
+        RUNNING = 1,
+        BLOCKED = 2,
+        PAUSED = 3,
+        SHUTDOWN = 4,
+        SHUTOFF = 5,
+        CRASHED = 6,
+        PMSUSPENDED = 7,
     }
 
 
@@ -310,15 +310,15 @@ export namespace LibvirtGObject {
         /**
          * Update current domain state
          */
-        CURRENT,
+        CURRENT = 0,
         /**
          * Update state for only active domains
          */
-        LIVE,
+        LIVE = 1,
         /**
          * Update state for persistent state only
          */
-        CONFIG,
+        CONFIG = 2,
     }
 
 
@@ -336,19 +336,19 @@ export namespace LibvirtGObject {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Dump security sensitive information too
          */
-        SECURE,
+        SECURE = 1,
         /**
          * Dump inactive domain information
          */
-        INACTIVE,
+        INACTIVE = 2,
         /**
          * Update guest CPU requirements according to host CPU
          */
-        UPDATE_CPU,
+        UPDATE_CPU = 4,
     }
 
 
@@ -366,11 +366,11 @@ export namespace LibvirtGObject {
         /**
          * IPv4 Address.
          */
-        IPV4,
+        IPV4 = 0,
         /**
          * IPv6 Address.
          */
-        IPV6,
+        IPV6 = 1,
     }
 
 
@@ -385,11 +385,11 @@ export namespace LibvirtGObject {
      * @gir-type Enum
      */
     enum StoragePoolState {
-        INACTIVE,
-        BUILDING,
-        RUNNING,
-        DEGRADED,
-        INACCESSIBLE,
+        INACTIVE = 0,
+        BUILDING = 1,
+        RUNNING = 2,
+        DEGRADED = 3,
+        INACCESSIBLE = 4,
     }
 
 
@@ -407,20 +407,20 @@ export namespace LibvirtGObject {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * force allocation of new size
          */
-        ALLOCATE,
+        ALLOCATE = 1,
         /**
          * size is relative to current
          */
-        DELTA,
+        DELTA = 2,
         /**
          * allow decrease in capacity. This combined
          * with #GVIR_STORAGE_VOL_RESIZE_DELTA, implies a negative delta.
          */
-        SHRINK,
+        SHRINK = 4,
     }
 
 
@@ -435,9 +435,9 @@ export namespace LibvirtGObject {
      * @gir-type Enum
      */
     enum StorageVolType {
-        FILE,
-        BLOCK,
-        DIR,
+        FILE = 0,
+        BLOCK = 1,
+        DIR = 2,
     }
 
 
@@ -448,6 +448,7 @@ export namespace LibvirtGObject {
 
     /**
      * @param argv pointer to application's argv
+     * @throws GLib.Error
      */
     function init_object_check(argv: string[] | null): [boolean, string[] | null];
 
@@ -538,11 +539,11 @@ export namespace LibvirtGObject {
      * @gir-type Flags
      */
     enum DomainStartFlags {
-        NONE,
-        PAUSED,
-        AUTODESTROY,
-        BYPASS_CACHE,
-        FORCE_BOOT,
+        NONE = 0,
+        PAUSED = 1,
+        AUTODESTROY = 2,
+        BYPASS_CACHE = 4,
+        FORCE_BOOT = 8,
     }
 
 
@@ -557,10 +558,10 @@ export namespace LibvirtGObject {
      * @gir-type Flags
      */
     enum StreamIOCondition {
-        READABLE,
-        WRITABLE,
-        HANGUP,
-        ERROR,
+        READABLE = 1,
+        WRITABLE = 2,
+        HANGUP = 4,
+        ERROR = 8,
     }
 
 
@@ -581,12 +582,12 @@ export namespace LibvirtGObject {
              * @signal
              * @run-first
              */
-            "domain-added": (arg0: Domain) => void;
+            "domain-added": (object: Domain) => void;
             /**
              * @signal
              * @run-first
              */
-            "domain-removed": (arg0: Domain) => void;
+            "domain-removed": (object: Domain) => void;
             "notify::handle": (pspec: GObject.ParamSpec) => void;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
@@ -676,6 +677,7 @@ export namespace LibvirtGObject {
          * The returned domain will initially be in the shutoff state.
          * @param conf the configuration for the new domain
          * @returns the newly created domain, or NULL if an error occurred. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_domain(conf: LibvirtGConfig.Domain): Domain;
 
@@ -683,6 +685,7 @@ export namespace LibvirtGObject {
          * @param conf the configuration for the new storage pool
          * @param flags the flags
          * @returns the newly created storage pool, or NULL if an error occurred. The returned list should be freed with `g_list_free()`, after its elements have been unreffed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         create_storage_pool(conf: LibvirtGConfig.StoragePool, flags: number): StoragePool;
 
@@ -692,6 +695,7 @@ export namespace LibvirtGObject {
          * `gvir_connection_get_domain` afterwards to query the fetched
          * domains.
          * @param cancellable cancellation object
+         * @throws GLib.Error
          */
         fetch_domains(cancellable: Gio.Cancellable | null): boolean;
 
@@ -714,6 +718,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         fetch_domains_finish(result: Gio.AsyncResult): boolean;
 
@@ -724,6 +729,7 @@ export namespace LibvirtGObject {
          * to query the fetched interfaces.
          * @param cancellable cancellation object
          * @returns `true` on success, `false` otherwise and `err` is set.
+         * @throws GLib.Error
          */
         fetch_interfaces(cancellable: Gio.Cancellable | null): boolean;
 
@@ -746,6 +752,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         fetch_interfaces_finish(result: Gio.AsyncResult): boolean;
 
@@ -755,6 +762,7 @@ export namespace LibvirtGObject {
          * `gvir_connection_get_networks` afterwards to query the fetched
          * domains.
          * @param cancellable cancellation object
+         * @throws GLib.Error
          */
         fetch_networks(cancellable: Gio.Cancellable | null): boolean;
 
@@ -777,6 +785,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         fetch_networks_finish(result: Gio.AsyncResult): boolean;
 
@@ -786,6 +795,7 @@ export namespace LibvirtGObject {
          * `gvir_connection_get_storage_pools` afterwards to query the fetched
          * pools.
          * @param cancellable cancellation object
+         * @throws GLib.Error
          */
         fetch_storage_pools(cancellable: Gio.Cancellable | null): boolean;
 
@@ -808,6 +818,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         fetch_storage_pools_finish(result: Gio.AsyncResult): boolean;
 
@@ -845,6 +856,7 @@ export namespace LibvirtGObject {
 
         /**
          * @returns a {@link LibvirtGConfig.Capabilities} or NULL.  The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_capabilities(): LibvirtGConfig.Capabilities;
 
@@ -868,6 +880,7 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns a {@link LibvirtGConfig.Capabilities} or NULL. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_capabilities_finish(result: Gio.AsyncResult): LibvirtGConfig.Capabilities;
 
@@ -884,6 +897,7 @@ export namespace LibvirtGObject {
          * @param virttype virtualization type
          * @param flags extra flags; not used yet, so callers should always pass 0
          * @returns a {@link LibvirtGConfig.DomainCapabilities} or NULL. The return object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_domain_capabilities(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number): LibvirtGConfig.DomainCapabilities;
 
@@ -922,6 +936,7 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns a {@link LibvirtGConfig.DomainCapabilities} or NULL. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_domain_capabilities_finish(result: Gio.AsyncResult): LibvirtGConfig.DomainCapabilities;
 
@@ -934,6 +949,7 @@ export namespace LibvirtGObject {
         /**
          * Get name of current hypervisor used.
          * @returns new string that should be freed when no longer needed, or NULL upon error.
+         * @throws GLib.Error
          */
         get_hypervisor_name(): string;
 
@@ -966,6 +982,7 @@ export namespace LibvirtGObject {
 
         /**
          * @returns the info, or NULL if an error occurred. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_node_info(): NodeInfo;
 
@@ -992,6 +1009,7 @@ export namespace LibvirtGObject {
         /**
          * Get version of current hypervisor used.
          * @returns version on success, 0 otherwise and `err` set.
+         * @throws GLib.Error
          */
         get_version(): number;
 
@@ -1001,6 +1019,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param cancellable cancellation object
+         * @throws GLib.Error
          */
         open(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1023,11 +1042,13 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         open_read_only(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1050,6 +1071,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         open_read_only_finish(result: Gio.AsyncResult): boolean;
 
@@ -1059,6 +1081,7 @@ export namespace LibvirtGObject {
          * @param custom_conf configuration for domain or NULL
          * @param flags the flags
          * @returns TRUE on success, FALSE otherwise
+         * @throws GLib.Error
          */
         restore_domain_from_file(filename: string, custom_conf: LibvirtGConfig.Domain | null, flags: number): boolean;
 
@@ -1095,6 +1118,7 @@ export namespace LibvirtGObject {
          * Finishes the operation started by `gvir_restore_domain_from_file_async`.
          * @param result async method result
          * @returns TRUE if domain was restored successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         restore_domain_from_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -1104,6 +1128,7 @@ export namespace LibvirtGObject {
          * @param conf the configuration for the new domain
          * @param flags 
          * @returns the newly created domain, or NULL if an error occurred. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         start_domain(conf: LibvirtGConfig.Domain, flags: number): Domain;
     }
@@ -1304,6 +1329,7 @@ export namespace LibvirtGObject {
          * @param custom_conf configuration of snapshot or NULL
          * @param flags bitwise-OR of {@link LibvirtGObject.DomainSnapshotCreateFlags}
          * @returns snapshot of domain. The returned object should be unreffed when no longer needed
+         * @throws GLib.Error
          */
         create_snapshot(custom_conf: LibvirtGConfig.DomainSnapshot | null, flags: number): DomainSnapshot;
 
@@ -1333,11 +1359,13 @@ export namespace LibvirtGObject {
         /**
          * @param result Async method result
          * @returns The created snapshot
+         * @throws GLib.Error
          */
         create_snapshot_finish(result: Gio.AsyncResult): DomainSnapshot;
 
         /**
          * @param flags the flags
+         * @throws GLib.Error
          */
         ["delete"](flags: number): boolean;
 
@@ -1345,6 +1373,7 @@ export namespace LibvirtGObject {
          * @param list_flags bitwise-OR of {@link LibvirtGObject.DomainSnapshotListFlags}
          * @param cancellable cancellation object
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         fetch_snapshots(list_flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1371,12 +1400,14 @@ export namespace LibvirtGObject {
         /**
          * @param res async method result
          * @returns TRUE on success, FALSE otherwise.
+         * @throws GLib.Error
          */
         fetch_snapshots_finish(res: Gio.AsyncResult): boolean;
 
         /**
          * @param flags the %GVirDomainXMLFlags flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.Domain;
 
@@ -1385,19 +1416,25 @@ export namespace LibvirtGObject {
          * be freed with `g_list_free()`, after its elements have been unreffed with
          * `g_object_unref()`.
          * @returns a newly allocated {@link GLib.List} of {@link LibvirtGObject.DomainDevice}.
+         * @throws GLib.Error
          */
         get_devices(): DomainDevice[];
 
         /**
          * @param flags Unused, pass 0
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         get_has_current_snapshot(flags: number): [boolean, boolean];
 
+        /**
+         * @throws GLib.Error
+         */
         get_id(): number;
 
         /**
          * @returns the info. The returned structure should be freed using `g_boxed_free`() with GVIR_TYPE_DOMAIN_INFO as the first argument when no longer needed.
+         * @throws GLib.Error
          */
         get_info(): DomainInfo;
 
@@ -1425,6 +1462,7 @@ export namespace LibvirtGObject {
          * Finishes the operation started by `gvir_domain_get_info_async`.
          * @param result async method result
          * @returns the info. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_info_finish(result: Gio.AsyncResult): DomainInfo;
 
@@ -1456,6 +1494,7 @@ export namespace LibvirtGObject {
          * @param devname the device name
          * @param flags extra flags, currently unused
          * @returns TRUE if the console was opened, FALSE otherwise.
+         * @throws GLib.Error
          */
         open_console(stream: Stream, devname: string | null, flags: number): boolean;
 
@@ -1466,6 +1505,7 @@ export namespace LibvirtGObject {
          * @param fd pre-opened socket pair
          * @param flags extra flags, currently unused
          * @returns TRUE if the graphics connection was opened, FALSE otherwise.
+         * @throws GLib.Error
          */
         open_graphics(idx: number, fd: number, flags: number): boolean;
 
@@ -1478,16 +1518,19 @@ export namespace LibvirtGObject {
          * @param flags extra flags, currently unused
          * @returns An fd on success, -1 on failure.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         open_graphics_fd(idx: number, flags: number): number;
 
         /**
          * @param flags the %GVirDomainRebootFlags flags
+         * @throws GLib.Error
          */
         reboot(flags: number): boolean;
 
         /**
          * @returns TRUE on success
+         * @throws GLib.Error
          */
         resume(): boolean;
 
@@ -1513,6 +1556,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         resume_finish(result: Gio.AsyncResult): boolean;
 
@@ -1522,6 +1566,7 @@ export namespace LibvirtGObject {
          * even after shutdown/reboot of host machine.
          * @param flags extra flags, currently unused
          * @returns TRUE if domain was saved successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         save(flags: number): boolean;
 
@@ -1552,6 +1597,7 @@ export namespace LibvirtGObject {
          * Finishes the operation started by `gvir_domain_save_async`.
          * @param result async method result
          * @returns TRUE if domain was saved successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -1560,6 +1606,7 @@ export namespace LibvirtGObject {
          * @param custom_conf configuration for domain or NULL
          * @param flags the flags
          * @returns TRUE on success, FALSE otherwise
+         * @throws GLib.Error
          */
         save_to_file(filename: string, custom_conf: LibvirtGConfig.Domain | null, flags: number): boolean;
 
@@ -1596,6 +1643,7 @@ export namespace LibvirtGObject {
          * Finishes the operation started by `gvir_domain_save_to_file_async`.
          * @param result async method result
          * @returns TRUE if domain was saved successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         save_to_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -1604,6 +1652,7 @@ export namespace LibvirtGObject {
          * @param monitor_id monitor ID to take screenshot from
          * @param flags extra flags, currently unused
          * @returns a newly allocated string containing the mime-type of the image format, or NULL upon error.
+         * @throws GLib.Error
          */
         screenshot(stream: Stream, monitor_id: number, flags: number): string;
 
@@ -1614,6 +1663,7 @@ export namespace LibvirtGObject {
          * affect until domain reboots.
          * @param conf the new configuration for the domain
          * @returns TRUE on success, FALSE if an error occurred.
+         * @throws GLib.Error
          */
         set_config(conf: LibvirtGConfig.Domain): boolean;
 
@@ -1628,6 +1678,7 @@ export namespace LibvirtGObject {
          * @param date_time the time to set as {@link GLib.DateTime}.
          * @param flags Unused, pass 0.
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         set_time(date_time: GLib.DateTime | null, flags: number): boolean;
 
@@ -1661,16 +1712,19 @@ export namespace LibvirtGObject {
          * Finishes the operation started by `gvir_domain_set_time_async`.
          * @param result async method result
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         set_time_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param flags the %GVirDomainShutdownFlags flags
+         * @throws GLib.Error
          */
         shutdown(flags: number): boolean;
 
         /**
          * @param flags the flags
+         * @throws GLib.Error
          */
         start(flags: number): boolean;
 
@@ -1699,11 +1753,13 @@ export namespace LibvirtGObject {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param flags the flags
+         * @throws GLib.Error
          */
         stop(flags: number): boolean;
 
@@ -1712,6 +1768,7 @@ export namespace LibvirtGObject {
          * CPU resources and I/O but the memory used by the domain at the hypervisor
          * level will stay allocated. Use `gvir_domain_resume()` to reactivate the domain.
          * @returns TRUE if domain was suspended successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         suspend(): boolean;
 
@@ -1720,12 +1777,14 @@ export namespace LibvirtGObject {
          * @param device A modified device config
          * @param flags bitwise-OR of {@link LibvirtGObject.DomainUpdateDeviceFlags}
          * @returns TRUE if device was updated successfully, FALSE otherwise.
+         * @throws GLib.Error
          */
         update_device(device: LibvirtGConfig.DomainDevice, flags: number): boolean;
 
         /**
          * @param flags placeholder for flags, pass 0
          * @returns TRUE on success
+         * @throws GLib.Error
          */
         wakeup(flags: number): boolean;
 
@@ -1754,6 +1813,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         wakeup_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1880,6 +1940,7 @@ export namespace LibvirtGObject {
          * within the stats structure may be returned as -1, which indicates
          * that the hypervisor does not support that particular statistic.
          * @returns the stats or `null` in case of error.The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_stats(): DomainDiskStats;
 
@@ -1888,6 +1949,7 @@ export namespace LibvirtGObject {
          * @param size new size of the block image in kilobytes
          * @param flags flags, currently unused. Pass '0'.
          * @returns TRUE if size was successfully changed, FALSE otherwise.
+         * @throws GLib.Error
          */
         resize(size: bigint | number, flags: number): boolean;
     }
@@ -1943,6 +2005,7 @@ export namespace LibvirtGObject {
          * within the stats structure may be returned as -1, which indicates
          * that the hypervisor does not support that particular statistic.
          * @returns the stats or `null` in case of error. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_stats(): DomainInterfaceStats;
     }
@@ -2003,6 +2066,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags Bitwise or of {@link LibvirtGObject.DomainSnapshotDeleteFlags}
          * @returns TRUE on success, FALSE otherwise
+         * @throws GLib.Error
          */
         ["delete"](flags: number): boolean;
 
@@ -2029,18 +2093,21 @@ export namespace LibvirtGObject {
         /**
          * @param res async method result
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.DomainSnapshot;
 
         /**
          * @param flags Currently unused, pass 0
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         get_is_current(flags: number): [boolean, boolean];
 
@@ -2049,6 +2116,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags Bitwise OR of GVirDomainSnapshotRevertFlags
          * @returns TRUE if the snapshot's domain has successfully been reverted to the given snapshot, FALSE otherwise, in which case `error` will be set.
+         * @throws GLib.Error
          */
         revert_to(flags: number): boolean;
 
@@ -2075,6 +2143,7 @@ export namespace LibvirtGObject {
         /**
          * @param result The result
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         revert_to_finish(result: Gio.AsyncResult): boolean;
 
@@ -2083,6 +2152,7 @@ export namespace LibvirtGObject {
          * given GVirConfigDomainSnapshot.
          * @param conf The new config object
          * @returns `true` if no error was reported, `false` otherwise.
+         * @throws GLib.Error
          */
         set_config(conf: LibvirtGConfig.DomainSnapshot): boolean;
     }
@@ -2143,6 +2213,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.Interface;
 
@@ -2159,12 +2230,12 @@ export namespace LibvirtGObject {
              * @signal
              * @run-first
              */
-            "connection-added": (arg0: Connection) => void;
+            "connection-added": (object: Connection) => void;
             /**
              * @signal
              * @run-first
              */
-            "connection-removed": (arg0: Connection) => void;
+            "connection-removed": (object: Connection) => void;
         }
 
         // Constructor properties interface
@@ -2309,6 +2380,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.Network;
 
@@ -2320,6 +2392,7 @@ export namespace LibvirtGObject {
          * @param mac The optional ASCII formatted MAC address of an interface
          * @param flags placeholder for flags, must be 0
          * @returns the list of network leases. Each object in the returned list should be unreffed with `g_object_unref()` and the list itself using g_list_free, when no longer needed.
+         * @throws GLib.Error
          */
         get_dhcp_leases(mac: string | null, flags: number): NetworkDHCPLease[];
 
@@ -2483,6 +2556,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.NetworkFilter;
 
@@ -2547,6 +2621,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.NodeDevice;
 
@@ -2609,6 +2684,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.Secret;
 
@@ -2673,6 +2749,7 @@ export namespace LibvirtGObject {
         /**
          * @param flags the flags
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         build(flags: number): boolean;
 
@@ -2699,18 +2776,21 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         build_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param conf the configuration for the new volume
          * @returns the newly created volume. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         create_volume(conf: LibvirtGConfig.StorageVol): StorageVol;
 
         /**
          * @param flags the flags
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         ["delete"](flags: number): boolean;
 
@@ -2737,6 +2817,7 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -2744,17 +2825,20 @@ export namespace LibvirtGObject {
 
         /**
          * @returns `True` if autostart is enabled, `False` otherwise.
+         * @throws GLib.Error
          */
         get_autostart(): boolean;
 
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.StoragePool;
 
         /**
          * @returns the info. The returned pointer should be freed using `g_boxed_free`() when no longer needed.
+         * @throws GLib.Error
          */
         get_info(): StoragePoolInfo;
 
@@ -2777,6 +2861,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param cancellable cancellation object
+         * @throws GLib.Error
          */
         refresh(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2799,6 +2884,7 @@ export namespace LibvirtGObject {
 
         /**
          * @param result async method result
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
@@ -2806,12 +2892,14 @@ export namespace LibvirtGObject {
          * Sets whether or not storage pool `pool` is started automatically on boot.
          * @param autostart Whether or not to autostart
          * @returns `TRUE` on success, `FALSE` otherwise.
+         * @throws GLib.Error
          */
         set_autostart(autostart: boolean): boolean;
 
         /**
          * @param flags the flags
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         start(flags: number): boolean;
 
@@ -2838,11 +2926,13 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         stop(): boolean;
 
@@ -2866,11 +2956,13 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         stop_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         undefine(): boolean;
 
@@ -2894,6 +2986,7 @@ export namespace LibvirtGObject {
         /**
          * @param result async method result
          * @returns `True` on success, `False` otherwise.
+         * @throws GLib.Error
          */
         undefine_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2962,6 +3055,7 @@ export namespace LibvirtGObject {
          * Deletes the storage volume `vol`.
          * @param flags the flags
          * @returns `true` on success, `false` otherwise
+         * @throws GLib.Error
          */
         ["delete"](flags: number): boolean;
 
@@ -2971,22 +3065,28 @@ export namespace LibvirtGObject {
          * @param length limit on amount of data to download, or 0 for downloading all data
          * @param flags extra flags, not used yet, pass 0
          * @returns `TRUE` of success, `FALSE` otherwise
+         * @throws GLib.Error
          */
         download(stream: Stream, offset: bigint | number, length: bigint | number, flags: number): boolean;
 
         /**
          * @param flags the flags
          * @returns the config. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_config(flags: number): LibvirtGConfig.StorageVol;
 
         /**
          * @returns the info. The returned object should be unreffed with `g_object_unref()` when no longer needed.
+         * @throws GLib.Error
          */
         get_info(): StorageVolInfo;
 
         get_name(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_path(): string;
 
         /**
@@ -2994,6 +3094,7 @@ export namespace LibvirtGObject {
          * @param capacity the new capacity of the volume
          * @param flags the flags
          * @returns `TRUE` success, `FALSE` otherwise
+         * @throws GLib.Error
          */
         resize(capacity: bigint | number, flags: StorageVolResizeFlags): boolean;
 
@@ -3003,6 +3104,7 @@ export namespace LibvirtGObject {
          * @param length limit on amount of data to upload, or 0 for uploading all data
          * @param flags the flags, not set yet, pass 0
          * @returns `TRUE` of success, `FALSE` otherwise
+         * @throws GLib.Error
          */
         upload(stream: Stream, offset: bigint | number, length: bigint | number, flags: number): boolean;
     }
@@ -3085,6 +3187,7 @@ export namespace LibvirtGObject {
          * @param buffer a buffer     to read data into (which should be at least `size` bytes long).
          * @param cancellable a %GCancellable or `null`
          * @returns Number of bytes read, or 0 if the end of stream reached, or -1 on error.
+         * @throws GLib.Error
          */
         receive(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): number;
 
@@ -3095,6 +3198,7 @@ export namespace LibvirtGObject {
          * @param cancellable cancellation notifier
          * @param func the callback for writing data to application
          * @returns the number of bytes consumed or -1 upon error
+         * @throws GLib.Error
          */
         receive_all(cancellable: Gio.Cancellable | null, func: StreamSinkFunc): number;
 
@@ -3112,6 +3216,7 @@ export namespace LibvirtGObject {
          * @param size the number of bytes you want to write to the stream
          * @param cancellable a %GCancellable or `null`
          * @returns Number of bytes written.
+         * @throws GLib.Error
          */
         send(buffer: string, size: bigint | number, cancellable: Gio.Cancellable | null): number;
 
@@ -3122,6 +3227,7 @@ export namespace LibvirtGObject {
          * @param cancellable cancellation notifier
          * @param func the callback for writing data to application
          * @returns the number of bytes consumed or -1 upon error
+         * @throws GLib.Error
          */
         send_all(cancellable: Gio.Cancellable | null, func: StreamSourceFunc): number;
     }

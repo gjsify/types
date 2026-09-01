@@ -394,6 +394,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -421,6 +422,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -443,6 +445,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -460,6 +463,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_global_anti_link_finish(_res_: Gio.AsyncResult): void;
 
@@ -477,6 +481,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_global_anti_link_finish(_res_: Gio.AsyncResult): void;
 
@@ -532,6 +537,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -585,6 +591,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
 
@@ -607,6 +614,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
@@ -691,6 +699,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -744,6 +753,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
 
@@ -797,6 +807,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
 
@@ -853,6 +864,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
 
@@ -875,6 +887,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
 
@@ -942,6 +955,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -995,6 +1009,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
 
@@ -1048,6 +1063,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -1070,6 +1086,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -1092,6 +1109,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
@@ -1207,6 +1225,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_notes_finish(_res_: Gio.AsyncResult): void;
 
@@ -1260,6 +1279,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
 
@@ -1313,6 +1333,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_roles_finish(_res_: Gio.AsyncResult): void;
 
@@ -1366,6 +1387,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
 
@@ -1419,6 +1441,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -1472,6 +1495,7 @@ export namespace FolksDummy {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
 

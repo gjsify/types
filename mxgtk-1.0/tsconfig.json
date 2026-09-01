@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./mxgtk-1.0.d.ts","./mxgtk-1.0-surface.d.ts"]
+  "include": ["./mxgtk-1.0.d.ts","./mxgtk-1.0-vocabulary.d.ts"]
 }
 
 

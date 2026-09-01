@@ -33,6 +33,9 @@ export namespace GnomeCmd {
      */
 
 
+    /**
+     * @default 1
+     */
     const PLUGIN_SYSTEM_CURRENT_VERSION: number;
 
     /**

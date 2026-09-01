@@ -43,25 +43,25 @@ export namespace Malcontent {
          * Unknown value for the given
          *    section.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No rating for the given section.
          */
-        NONE,
+        NONE = 1,
         /**
          * Mild rating for the given section.
          */
-        MILD,
+        MILD = 2,
         /**
          * Moderate rating for the given
          *    section.
          */
-        MODERATE,
+        MODERATE = 3,
         /**
          * Intense rating for the given
          *    section.
          */
-        INTENSE,
+        INTENSE = 4,
     }
 
 
@@ -124,19 +124,19 @@ export namespace Malcontent {
         /**
          * Unknown user account
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * System user (such as for running a daemon)
          */
-        SYSTEM,
+        SYSTEM = 1,
         /**
          * Child user (i.e. a non-administrator)
          */
-        CHILD,
+        CHILD = 2,
         /**
          * Parent user (i.e. an administrator)
          */
-        PARENT,
+        PARENT = 3,
     }
 
 
@@ -158,19 +158,19 @@ export namespace Malcontent {
         /**
          * The user’s web access is not filtered.
          */
-        NONE,
+        NONE = 0,
         /**
          * Websites are allowed by default unless
          *   they’re listed in one of the block lists or the custom block list. The
          *   allow lists and custom allow list override the block lists.
          */
-        BLOCKLIST,
+        BLOCKLIST = 1,
         /**
          * Websites are blocked by default unless
          *   they’re listed in one of the allow lists or the custom allow list. The
          *   block lists are ignored.
          */
-        ALLOWLIST,
+        ALLOWLIST = 2,
     }
 
 
@@ -187,6 +187,7 @@ export namespace Malcontent {
      * @param user_id the ID of the user the app filter relates to
      * @returns deserialized app filter
      * @since 0.7.0
+     * @throws GLib.Error
      */
     function app_filter_deserialize(variant: GLib.Variant, user_id: never): AppFilter;
 
@@ -217,6 +218,7 @@ export namespace Malcontent {
      * @param user_id the ID of the user the session limits relate to
      * @returns deserialized session limits
      * @since 0.7.0
+     * @throws GLib.Error
      */
     function session_limits_deserialize(variant: GLib.Variant, user_id: never): SessionLimits;
 
@@ -233,6 +235,7 @@ export namespace Malcontent {
      * @param user_id the ID of the user the web filter relates to
      * @returns deserialized web filter
      * @since 0.14.0
+     * @throws GLib.Error
      */
     function web_filter_deserialize(variant: GLib.Variant, user_id: never): WebFilter;
 
@@ -322,12 +325,12 @@ export namespace Malcontent {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow interactive polkit dialogs
          *   when requesting authorization.
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
     }
 
 
@@ -349,12 +352,12 @@ export namespace Malcontent {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow interactive polkit dialogs
          *   when requesting authorization.
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
     }
 
 
@@ -370,7 +373,7 @@ export namespace Malcontent {
              * @since 0.3.0
              * @run-last
              */
-            "app-filter-changed": (arg0: number) => void;
+            "app-filter-changed": (user_id: number) => void;
             /**
              * Emitted when the session limits stored for a user change.
              * 
@@ -380,7 +383,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            "session-limits-changed": (arg0: number) => void;
+            "session-limits-changed": (user_id: number) => void;
             /**
              * Emitted when the web filter stored for a user changes.
              * 
@@ -390,7 +393,7 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            "web-filter-changed": (arg0: number) => void;
+            "web-filter-changed": (user_id: number) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -457,6 +460,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns app filter for the queried user
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_app_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): AppFilter;
 
@@ -507,6 +511,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns app filter for the queried user
          * @since 0.3.0
+         * @throws GLib.Error
          */
         get_app_filter_finish(result: Gio.AsyncResult): AppFilter;
 
@@ -517,6 +522,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns session limits for the queried user
          * @since 0.5.0
+         * @throws GLib.Error
          */
         get_session_limits(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): SessionLimits;
 
@@ -570,6 +576,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns session limits for the queried user
          * @since 0.5.0
+         * @throws GLib.Error
          */
         get_session_limits_finish(result: Gio.AsyncResult): SessionLimits;
 
@@ -580,6 +587,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns web filter for the queried user
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_web_filter(user_id: never, flags: ManagerGetValueFlags, cancellable: Gio.Cancellable | null): WebFilter;
 
@@ -633,6 +641,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns web filter for the queried user
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_web_filter_finish(result: Gio.AsyncResult): WebFilter;
 
@@ -644,6 +653,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
          * @since 0.3.0
+         * @throws GLib.Error
          */
         set_app_filter(user_id: never, app_filter: AppFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -706,6 +716,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
          * @since 0.3.0
+         * @throws GLib.Error
          */
         set_app_filter_finish(result: Gio.AsyncResult): boolean;
 
@@ -717,6 +728,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
          * @since 0.5.0
+         * @throws GLib.Error
          */
         set_session_limits(user_id: never, session_limits: SessionLimits, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -776,6 +788,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
          * @since 0.5.0
+         * @throws GLib.Error
          */
         set_session_limits_finish(result: Gio.AsyncResult): boolean;
 
@@ -787,6 +800,7 @@ export namespace Malcontent {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns true on success, false otherwise
          * @since 0.14.0
+         * @throws GLib.Error
          */
         set_web_filter(user_id: never, web_filter: WebFilter, flags: ManagerSetValueFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -846,6 +860,7 @@ export namespace Malcontent {
          * @param result the asynchronous operation result
          * @returns true on success, false otherwise
          * @since 0.14.0
+         * @throws GLib.Error
          */
         set_web_filter_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1167,14 +1182,14 @@ export namespace Malcontent {
              * @since 0.14.0
              * @run-last
              */
-            "user-added": (arg0: User) => void;
+            "user-added": (user: User) => void;
             /**
              * Emitted when a user is removed from the system.
              * @signal
              * @since 0.14.0
              * @run-last
              */
-            "user-removed": (arg0: User) => void;
+            "user-removed": (user: User) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::is-loaded": (pspec: GObject.ParamSpec) => void;
         }
@@ -1296,6 +1311,7 @@ export namespace Malcontent {
          * @param result result of the asynchronous operation
          * @returns array of   users in an undefined order, may be empty
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_all_users_finish(result: Gio.AsyncResult): User[];
 
@@ -1337,6 +1353,7 @@ export namespace Malcontent {
          * @param result result of the asynchronous operation
          * @returns array of   family members in an undefined order, may be empty
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_family_members_for_user_finish(result: Gio.AsyncResult): User[];
 
@@ -1391,6 +1408,7 @@ export namespace Malcontent {
          * @param result result of the asynchronous operation
          * @returns the user, or `NULL` if not found
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_user_by_uid_finish(result: Gio.AsyncResult): User | null;
 
@@ -1435,6 +1453,7 @@ export namespace Malcontent {
          * @param result result of the asynchronous operation
          * @returns the user, or `NULL` if not found
          * @since 0.14.0
+         * @throws GLib.Error
          */
         get_user_by_username_finish(result: Gio.AsyncResult): User | null;
 
@@ -1479,6 +1498,7 @@ export namespace Malcontent {
          * @param result result of the asynchronous operation
          * @returns true on success, false otherwise
          * @since 0.14.0
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
     }

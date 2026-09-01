@@ -27,10 +27,10 @@ export namespace Gm {
      * @gir-type Enum
      */
     enum CornerPosition {
-        TOP_LEFT,
-        TOP_RIGHT,
-        BOTTOM_RIGHT,
-        BOTTOM_LEFT,
+        TOP_LEFT = 0,
+        TOP_RIGHT = 1,
+        BOTTOM_RIGHT = 2,
+        BOTTOM_LEFT = 3,
     }
 
 
@@ -62,6 +62,7 @@ export namespace Gm {
      * @param sysfs_root Path where /sys is mounted. Defaults to `/sys` if `null` is passed.
      * @returns compatible machine types or `null`
      * @since 0.0.1
+     * @throws GLib.Error
      */
     function device_tree_get_compatibles(sysfs_root: string): string[];
 
@@ -95,6 +96,7 @@ export namespace Gm {
      * @param mcc The mcc
      * @returns The country code or NULL.
      * @since 0.4.0
+     * @throws GLib.Error
      */
     function mcc_to_iso(mcc: string): string;
 
@@ -110,6 +112,7 @@ export namespace Gm {
      * @param y2 The upper y coordinate
      * @returns `TRUE` when parsing was successful, `FALSE` otherwise. See https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths for path syntax introduction.
      * @since 0.0.1
+     * @throws GLib.Error
      */
     function svg_path_get_bounding_box(path: string, x1: number, x2: number, y1: number, y2: number): boolean;
 
@@ -154,6 +157,7 @@ export namespace Gm {
      * @param _function function to call
      * @returns the ID (greater than 0) of the event source or 0 in case of error.
      * @since 0.3.0
+     * @throws GLib.Error
      */
     function wakeup_timeout_add_seconds_once(priority: number, seconds: bigint | number, _function: GLib.SourceOnceFunc): number;
 

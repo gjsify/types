@@ -36,15 +36,15 @@ export namespace Msg {
         /**
          * Personal OneDrive drive
          */
-        PERSONAL,
+        PERSONAL = 0,
         /**
          * OneDrive for Business drive
          */
-        BUSINESS,
+        BUSINESS = 1,
         /**
          * SharePoint document library
          */
-        DOCUMENT_LIBRARY,
+        DOCUMENT_LIBRARY = 2,
     }
 
 
@@ -72,16 +72,19 @@ export namespace Msg {
      * @gir-type Enum
      */
     enum MessageMailFolderType {
-        INBOX,
-        DRAFTS,
-        SENT_ITEMS,
-        JUNK_EMAIL,
-        DELETED_ITEMS,
-        OUTBOX,
-        ARCHIVE,
+        INBOX = 0,
+        DRAFTS = 1,
+        SENT_ITEMS = 2,
+        JUNK_EMAIL = 3,
+        DELETED_ITEMS = 4,
+        OUTBOX = 5,
+        ARCHIVE = 6,
     }
 
 
+    /**
+     * @default https://graph.microsoft.com/v1.0
+     */
     const API_ENDPOINT: string;
 
     function error_quark(): GLib.Quark;
@@ -229,6 +232,7 @@ export namespace Msg {
          * @param contact a {@link Msg.Contact}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.Contact}
+         * @throws GLib.Error
          */
         create(contact: Contact, cancellable: Gio.Cancellable | null): Contact;
 
@@ -237,6 +241,7 @@ export namespace Msg {
          * @param contact a {@link Msg.Contact}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else `false`
+         * @throws GLib.Error
          */
         ["delete"](contact: Contact, cancellable: Gio.Cancellable | null): boolean;
 
@@ -244,6 +249,7 @@ export namespace Msg {
          * Get all contacts accessed by contact service.
          * @param cancellable a cancellable
          * @returns all contacts
+         * @throws GLib.Error
          */
         get_contacts(cancellable: Gio.Cancellable | null): Contact[];
     }
@@ -631,6 +637,7 @@ export namespace Msg {
          * @param item drive item to add
          * @param cancellable a cancellable
          * @returns a new drive item
+         * @throws GLib.Error
          */
         add_item_to_folder(parent: DriveItem, item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
 
@@ -640,6 +647,7 @@ export namespace Msg {
          * @param destination destination directory {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if accepted, `false` on error
+         * @throws GLib.Error
          */
         copy_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): boolean;
 
@@ -649,6 +657,7 @@ export namespace Msg {
          * @param name name of new folder
          * @param cancellable a cancellable
          * @returns a newly created {@link Msg.DriveItem}
+         * @throws GLib.Error
          */
         create_folder(parent: DriveItem, name: string, cancellable: Gio.Cancellable | null): DriveItem;
 
@@ -657,6 +666,7 @@ export namespace Msg {
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a cancellable
          * @returns `true` when item has been deleted, otherwise `false`
+         * @throws GLib.Error
          */
         ["delete"](item: DriveItem, cancellable: Gio.Cancellable | null): boolean;
 
@@ -665,6 +675,7 @@ export namespace Msg {
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns input stream of drive item
+         * @throws GLib.Error
          */
         download_item(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -673,6 +684,7 @@ export namespace Msg {
          * @param url url to download
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream} for url
+         * @throws GLib.Error
          */
         download_url(url: string, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -680,6 +692,7 @@ export namespace Msg {
          * Queries the Microsoft Graph API for all the drives of the currently logged in user
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all drives the user can access
+         * @throws GLib.Error
          */
         get_drives(cancellable: Gio.Cancellable | null): Drive[];
 
@@ -688,6 +701,7 @@ export namespace Msg {
          * @param drive a {@link Msg.Drive}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns root 'MsgDriveItem'
+         * @throws GLib.Error
          */
         get_root(drive: Drive, cancellable: Gio.Cancellable | null): DriveItem;
 
@@ -695,6 +709,7 @@ export namespace Msg {
          * Requests all shared with me items
          * @param cancellable a {@link Gio.Cancellable}
          * @returns shared with me list
+         * @throws GLib.Error
          */
         get_shared_with_me(cancellable: Gio.Cancellable | null): DriveItem[];
 
@@ -703,6 +718,7 @@ export namespace Msg {
          * @param item a {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all items in folder
+         * @throws GLib.Error
          */
         list_children(item: DriveItem, cancellable: Gio.Cancellable | null): DriveItem[];
 
@@ -712,6 +728,7 @@ export namespace Msg {
          * @param destination destination directory {@link Msg.DriveItem}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns moved {@link Msg.DriveItem}
+         * @throws GLib.Error
          */
         move_file(file: DriveItem, destination: DriveItem, cancellable: Gio.Cancellable | null): DriveItem;
 
@@ -721,6 +738,7 @@ export namespace Msg {
          * @param new_name new name of item
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the renamed {@link Msg.DriveItem}
+         * @throws GLib.Error
          */
         rename(item: DriveItem, new_name: string, cancellable: Gio.Cancellable | null): DriveItem;
 
@@ -729,6 +747,7 @@ export namespace Msg {
          * @param item a drive item
          * @param cancellable a cancellable
          * @returns an output stream
+         * @throws GLib.Error
          */
         update(item: DriveItem, cancellable: Gio.Cancellable | null): Gio.OutputStream;
 
@@ -738,6 +757,7 @@ export namespace Msg {
          * @param stream stream where data is store and needs to be transfered
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.DriveItem} or `null` on error.
+         * @throws GLib.Error
          */
         update_finish(item: DriveItem, stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): DriveItem;
     }
@@ -828,6 +848,7 @@ export namespace Msg {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -950,6 +971,7 @@ export namespace Msg {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -972,6 +994,7 @@ export namespace Msg {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1222,6 +1245,7 @@ export namespace Msg {
          * @param message a {@link Msg.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Msg.Message}
+         * @throws GLib.Error
          */
         create_draft(message: Message, cancellable: Gio.Cancellable | null): Message;
 
@@ -1230,6 +1254,7 @@ export namespace Msg {
          * @param message a {@link Msg.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` for succes, else &FALSE
+         * @throws GLib.Error
          */
         ["delete"](message: Message, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1238,6 +1263,7 @@ export namespace Msg {
          * @param type a {@link Msg.MessageMailFolderType}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Msg.MailFolder}
+         * @throws GLib.Error
          */
         get_mail_folder(type: MessageMailFolderType, cancellable: Gio.Cancellable | null): MailFolder;
 
@@ -1245,6 +1271,7 @@ export namespace Msg {
          * Get all folders for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all mail folders the user can access
+         * @throws GLib.Error
          */
         get_mail_folders(cancellable: Gio.Cancellable | null): MailFolder[];
 
@@ -1252,6 +1279,7 @@ export namespace Msg {
          * Get all messages for given service
          * @param cancellable a {@link Gio.Cancellable}
          * @returns all messages the user can access
+         * @throws GLib.Error
          */
         get_messages(cancellable: Gio.Cancellable | null): Message[];
     }
@@ -1365,6 +1393,7 @@ export namespace Msg {
         /**
          * @param authorization_code 
          * @param cancellable 
+         * @throws GLib.Error
          */
         request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1385,6 +1414,7 @@ export namespace Msg {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1512,6 +1542,7 @@ export namespace Msg {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1520,6 +1551,7 @@ export namespace Msg {
          * @param message a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream}
+         * @throws GLib.Error
          */
         send(message: Soup.Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -1529,6 +1561,7 @@ export namespace Msg {
          * @param object 
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Json.Parser} or `null` on error
+         * @throws GLib.Error
          */
         send_and_parse_response(message: Soup.Message, object: Json.Object, cancellable: Gio.Cancellable | null): Json.Parser;
 
@@ -1537,6 +1570,7 @@ export namespace Msg {
          * @param message a {@link Soup.Message}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} or `null` on error.
+         * @throws GLib.Error
          */
         send_and_read(message: Soup.Message, cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
@@ -1647,6 +1681,7 @@ export namespace Msg {
          * @param name user name (`null` for me)
          * @param cancellable a {@link Gio.Cancellable}
          * @returns request user
+         * @throws GLib.Error
          */
         get_user(name: string, cancellable: Gio.Cancellable | null): User;
     }
@@ -1845,6 +1880,7 @@ export namespace Msg {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }

@@ -44,10 +44,10 @@ export namespace GtkVnc {
      * @gir-type Enum
      */
     enum DisplayCredential {
-        PASSWORD,
-        USERNAME,
-        CLIENTNAME,
-        CA_CERT_DATA,
+        PASSWORD = 0,
+        USERNAME = 1,
+        CLIENTNAME = 2,
+        CA_CERT_DATA = 3,
     }
 
 
@@ -62,11 +62,11 @@ export namespace GtkVnc {
      * @gir-type Enum
      */
     enum DisplayDepthColor {
-        DEFAULT,
-        FULL,
-        MEDIUM,
-        LOW,
-        ULTRA_LOW,
+        DEFAULT = 0,
+        FULL = 1,
+        MEDIUM = 2,
+        LOW = 3,
+        ULTRA_LOW = 4,
     }
 
 
@@ -81,9 +81,9 @@ export namespace GtkVnc {
      * @gir-type Enum
      */
     enum DisplayKeyEvent {
-        PRESS,
-        RELEASE,
-        CLICK,
+        PRESS = 1,
+        RELEASE = 2,
+        CLICK = 3,
     }
 
 
@@ -383,17 +383,17 @@ export namespace GtkVnc {
              * @signal
              * @run-first
              */
-            "vnc-auth-credential": (arg0: GObject.ValueArray) => void;
+            "vnc-auth-credential": (object: GObject.ValueArray) => void;
             /**
              * @signal
              * @run-last
              */
-            "vnc-auth-failure": (arg0: string) => void;
+            "vnc-auth-failure": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "vnc-auth-unsupported": (arg0: number) => void;
+            "vnc-auth-unsupported": (object: number) => void;
             /**
              * @signal
              * @run-last
@@ -408,12 +408,12 @@ export namespace GtkVnc {
              * @signal
              * @run-last
              */
-            "vnc-desktop-rename": (arg0: string) => void;
+            "vnc-desktop-rename": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "vnc-desktop-resize": (arg0: number, arg1: number) => void;
+            "vnc-desktop-resize": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-first
@@ -423,7 +423,7 @@ export namespace GtkVnc {
              * @signal
              * @run-first
              */
-            "vnc-error": (arg0: string) => void;
+            "vnc-error": (object: string) => void;
             /**
              * @signal
              * @run-first
@@ -463,7 +463,7 @@ export namespace GtkVnc {
              * @signal
              * @run-last
              */
-            "vnc-server-cut-text": (arg0: string) => void;
+            "vnc-server-cut-text": (object: string) => void;
             "notify::allow-resize": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::depth": (pspec: GObject.ParamSpec) => void;

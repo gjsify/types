@@ -36,23 +36,23 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum CssSelectorType {
-        CLASS,
-        ID,
-        ALL,
-        ELEMENT,
-        ATTRIBUTE,
-        ATTRIBUTE_EQUAL,
-        ATTRIBUTE_CONTAINS,
-        ATTRIBUTE_SUBSTRING,
-        ATTRIBUTE_START_WITH,
-        ATTRIBUTE_START_WITH_HYPHEN,
-        ATTRIBUTE_END_WITH,
-        PSEUDO,
-        AND,
-        INSIDE,
-        PARENT,
-        AFTER,
-        BEFORE,
+        CLASS = 0,
+        ID = 1,
+        ALL = 2,
+        ELEMENT = 3,
+        ATTRIBUTE = 4,
+        ATTRIBUTE_EQUAL = 5,
+        ATTRIBUTE_CONTAINS = 6,
+        ATTRIBUTE_SUBSTRING = 7,
+        ATTRIBUTE_START_WITH = 8,
+        ATTRIBUTE_START_WITH_HYPHEN = 9,
+        ATTRIBUTE_END_WITH = 10,
+        PSEUDO = 11,
+        AND = 12,
+        INSIDE = 13,
+        PARENT = 14,
+        AFTER = 15,
+        BEFORE = 16,
     }
 
 
@@ -67,19 +67,19 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum NodeType {
-        INVALID,
-        ELEMENT,
-        ATTRIBUTE,
-        TEXT,
-        CDATA_SECTION,
-        ENTITY_REFERENCE,
-        ENTITY,
-        PROCESSING_INSTRUCTION,
-        COMMENT,
-        DOCUMENT,
-        DOCUMENT_TYPE,
-        DOCUMENT_FRAGMENT,
-        NOTATION,
+        INVALID = 0,
+        ELEMENT = 1,
+        ATTRIBUTE = 0,
+        TEXT = 1,
+        CDATA_SECTION = 2,
+        ENTITY_REFERENCE = 3,
+        ENTITY = 4,
+        PROCESSING_INSTRUCTION = 5,
+        COMMENT = 6,
+        DOCUMENT = 7,
+        DOCUMENT_TYPE = 8,
+        DOCUMENT_FRAGMENT = 9,
+        NOTATION = 10,
     }
 
 
@@ -94,16 +94,16 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum XPathObjectType {
-        UNDEFINED,
-        NODESET,
-        BOOLEAN,
-        NUMBER,
-        STRING,
-        POINT,
-        RANGE,
-        LOCATIONSET,
-        USERS,
-        XSLT_TREE,
+        UNDEFINED = 0,
+        NODESET = 1,
+        BOOLEAN = 2,
+        NUMBER = 3,
+        STRING = 4,
+        POINT = 5,
+        RANGE = 6,
+        LOCATIONSET = 7,
+        USERS = 8,
+        XSLT_TREE = 9,
     }
 
 
@@ -376,9 +376,9 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum TDocumentReadType {
-        NEXT,
-        CONTINUE,
-        STOP,
+        NEXT = 0,
+        CONTINUE = 1,
+        STOP = 2,
     }
 
 
@@ -393,10 +393,10 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum DomEventPhase {
-        NONE,
-        CAPTURING_PHASE,
-        AT_TARGET,
-        BUBBLING_PHASE,
+        NONE = 0,
+        CAPTURING_PHASE = 0,
+        AT_TARGET = 1,
+        BUBBLING_PHASE = 2,
     }
 
 
@@ -411,19 +411,19 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum DomNodeNodeType {
-        INVALID,
-        ELEMENT_NODE,
-        ATTRIBUTE_NODE,
-        TEXT_NODE,
-        CDATA_SECTION_NODE,
-        ENTITY_REFERENCE_NODE,
-        ENTITY_NODE,
-        PROCESSING_INSTRUCTION_NODE,
-        COMMENT_NODE,
-        DOCUMENT_NODE,
-        DOCUMENT_TYPE_NODE,
-        DOCUMENT_FRAGMENT_NODE,
-        NOTATION_NODE,
+        INVALID = 0,
+        ELEMENT_NODE = 1,
+        ATTRIBUTE_NODE = 0,
+        TEXT_NODE = 1,
+        CDATA_SECTION_NODE = 2,
+        ENTITY_REFERENCE_NODE = 3,
+        ENTITY_NODE = 4,
+        PROCESSING_INSTRUCTION_NODE = 5,
+        COMMENT_NODE = 6,
+        DOCUMENT_NODE = 7,
+        DOCUMENT_TYPE_NODE = 8,
+        DOCUMENT_FRAGMENT_NODE = 9,
+        NOTATION_NODE = 10,
     }
 
 
@@ -438,10 +438,10 @@ export namespace GXml {
      * @gir-type Enum
      */
     enum DomRangeBoundaryPoints {
-        START_TO_START,
-        START_TO_END,
-        END_TO_END,
-        END_TO_START,
+        START_TO_START = 0,
+        START_TO_END = 0,
+        END_TO_END = 1,
+        END_TO_START = 2,
     }
 
 
@@ -463,11 +463,11 @@ export namespace GXml {
      * @gir-type Flags
      */
     enum DomEventFlags {
-        STOP_PROPAGATION_FLAG,
-        STOP_IMMEDIATE_PROPAGATION_FLAG,
-        CANCELED_FLAG,
-        INITIALIZED_FLAG,
-        DISPATCH_FLAG,
+        STOP_PROPAGATION_FLAG = 1,
+        STOP_IMMEDIATE_PROPAGATION_FLAG = 2,
+        CANCELED_FLAG = 4,
+        INITIALIZED_FLAG = 8,
+        DISPATCH_FLAG = 16,
     }
 
 
@@ -482,13 +482,13 @@ export namespace GXml {
      * @gir-type Flags
      */
     enum DomNodeDocumentPosition {
-        NONE,
-        DISCONNECTED,
-        PRECEDING,
-        FOLLOWING,
-        CONTAINS,
-        CONTAINED_BY,
-        IMPLEMENTATION_SPECIFIC,
+        NONE = 1,
+        DISCONNECTED = 2,
+        PRECEDING = 4,
+        FOLLOWING = 8,
+        CONTAINS = 16,
+        CONTAINED_BY = 32,
+        IMPLEMENTATION_SPECIFIC = 64,
     }
 
 
@@ -645,11 +645,13 @@ export namespace GXml {
         // Methods
         /**
          * @param query 
+         * @throws GLib.Error
          */
         parse(query: string): void;
 
         /**
          * @param element 
+         * @throws GLib.Error
          */
         match(element: DomElement): boolean;
 
@@ -1459,14 +1461,19 @@ export namespace GXml {
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string(str: string): void;
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string_tolerant(str: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         to_html(): string;
 
         /**
@@ -1744,27 +1751,37 @@ export namespace GXml {
         // Methods
         /**
          * @param items_type 
+         * @throws GLib.Error
          */
         initialize(items_type: GObject.GType): void;
 
         /**
          * @param e 
+         * @throws GLib.Error
          */
         initialize_element(e: GomElement): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_items_name(): string;
@@ -1878,20 +1895,26 @@ export namespace GXml {
          */
         get length(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
+         * @throws GLib.Error
          */
         get_item(index: number): DomElement;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         initialize(t: GObject.GType): void;
 
@@ -1900,9 +1923,13 @@ export namespace GXml {
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_nodes_index(): GLib.Queue;
@@ -2069,12 +2096,14 @@ export namespace GXml {
          * @param element 
          * @param items_type 
          * @param attribute_key 
+         * @throws GLib.Error
          */
         initialize_element_with_key(element: GomElement, items_type: GObject.GType, attribute_key: string): void;
 
         /**
          * @param items_type 
          * @param attribute_key 
+         * @throws GLib.Error
          */
         initialize_with_key(items_type: GObject.GType, attribute_key: string): void;
 
@@ -2139,20 +2168,26 @@ export namespace GXml {
          */
         get length(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
+         * @throws GLib.Error
          */
         get_item(index: number): DomElement;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         initialize(t: GObject.GType): void;
 
@@ -2161,9 +2196,13 @@ export namespace GXml {
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_nodes_index(): GLib.Queue;
@@ -2340,6 +2379,7 @@ export namespace GXml {
          * @param items_type 
          * @param attribute_primary_key 
          * @param attribute_secondary_key 
+         * @throws GLib.Error
          */
         initialize_element_with_keys(element: GomElement, items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string): void;
 
@@ -2347,6 +2387,7 @@ export namespace GXml {
          * @param items_type 
          * @param attribute_primary_key 
          * @param attribute_secondary_key 
+         * @throws GLib.Error
          */
         initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string): void;
 
@@ -2430,20 +2471,26 @@ export namespace GXml {
          */
         get length(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
+         * @throws GLib.Error
          */
         get_item(index: number): DomElement;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         initialize(t: GObject.GType): void;
 
@@ -2452,9 +2499,13 @@ export namespace GXml {
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_nodes_index(): GLib.Queue;
@@ -2641,6 +2692,7 @@ export namespace GXml {
          * @param attribute_primary_key 
          * @param attribute_secondary_key 
          * @param attribute_third_key 
+         * @throws GLib.Error
          */
         initialize_element_with_keys(element: GomElement, items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string, attribute_third_key: string): void;
 
@@ -2649,6 +2701,7 @@ export namespace GXml {
          * @param attribute_primary_key 
          * @param attribute_secondary_key 
          * @param attribute_third_key 
+         * @throws GLib.Error
          */
         initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string, attribute_third_key: string): void;
 
@@ -2753,20 +2806,26 @@ export namespace GXml {
          */
         get length(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
+         * @throws GLib.Error
          */
         get_item(index: number): DomElement;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         initialize(t: GObject.GType): void;
 
@@ -2775,9 +2834,13 @@ export namespace GXml {
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_nodes_index(): GLib.Queue;
@@ -2949,6 +3012,7 @@ export namespace GXml {
         // Methods
         /**
          * @param file 
+         * @throws GLib.Error
          */
         write_file(file: Gio.File): void;
 
@@ -2971,11 +3035,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param stream 
+         * @throws GLib.Error
          */
         write_stream(stream: Gio.OutputStream): void;
 
@@ -2998,9 +3064,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_stream_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         create_stream(): Gio.InputStream;
 
         create_stream_async(): globalThis.Promise<Gio.InputStream>;
@@ -3017,9 +3087,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
+        /**
+         * @throws GLib.Error
+         */
         write_string(): string;
 
         write_string_async(): globalThis.Promise<string>;
@@ -3036,11 +3110,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_string_finish(_res_: Gio.AsyncResult): string;
 
         /**
          * @param file 
+         * @throws GLib.Error
          */
         read_from_file(file: Gio.File): void;
 
@@ -3063,11 +3139,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string(str: string): void;
 
@@ -3090,6 +3168,7 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_string_finish(_res_: Gio.AsyncResult): void;
 
@@ -3221,11 +3300,13 @@ export namespace GXml {
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -3284,6 +3365,7 @@ export namespace GXml {
 
         /**
          * @param element_id 
+         * @throws GLib.Error
          */
         get_element_by_id(element_id: string): DomElement;
 
@@ -3311,12 +3393,14 @@ export namespace GXml {
 
         /**
          * @param local_name 
+         * @throws GLib.Error
          */
         create_element(local_name: string): DomElement;
 
         /**
          * @param namespace 
          * @param qualified_name 
+         * @throws GLib.Error
          */
         create_element_ns(namespace: string, qualified_name: string): DomElement;
 
@@ -3324,33 +3408,39 @@ export namespace GXml {
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         create_text_node(data: string): DomText;
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         create_comment(data: string): DomComment;
 
         /**
          * @param target 
          * @param data 
+         * @throws GLib.Error
          */
         create_processing_instruction(target: string, data: string): DomProcessingInstruction;
 
         /**
          * @param node 
          * @param deep 
+         * @throws GLib.Error
          */
         import_node(node: DomNode, deep: boolean): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         adopt_node(node: DomNode): DomNode;
 
         /**
          * @param _interface 
+         * @throws GLib.Error
          */
         create_event(_interface: string): DomEvent;
 
@@ -3578,6 +3668,7 @@ export namespace GXml {
          * @param qualified_name 
          * @param public_id 
          * @param system_id 
+         * @throws GLib.Error
          */
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
 
@@ -3585,6 +3676,7 @@ export namespace GXml {
          * @param nspace 
          * @param qualified_name 
          * @param doctype 
+         * @throws GLib.Error
          */
         create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
 
@@ -3833,11 +3925,13 @@ export namespace GXml {
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -3896,6 +3990,7 @@ export namespace GXml {
 
         /**
          * @param element_id 
+         * @throws GLib.Error
          */
         get_element_by_id(element_id: string): DomElement;
 
@@ -3984,6 +4079,7 @@ export namespace GXml {
         // Methods
         /**
          * @param uri 
+         * @throws GLib.Error
          */
         read_from_uri(uri: string): void;
 
@@ -4006,12 +4102,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_uri_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param f 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_from_file(f: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -4037,12 +4135,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param istream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable): void;
 
@@ -4068,11 +4168,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_stream_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string(str: string): void;
 
@@ -4095,9 +4197,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_from_string_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         write_string(): string;
 
         write_string_async(): globalThis.Promise<string>;
@@ -4114,11 +4220,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_string_finish(_res_: Gio.AsyncResult): string;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         write_file(f: Gio.File): void;
 
@@ -4141,11 +4249,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param stream 
+         * @throws GLib.Error
          */
         write_stream(stream: Gio.OutputStream): void;
 
@@ -4168,9 +4278,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_stream_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         create_stream(): Gio.InputStream;
 
         create_stream_async(): globalThis.Promise<Gio.InputStream>;
@@ -4187,6 +4301,7 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
@@ -4226,6 +4341,9 @@ export namespace GXml {
          */
         initialize_document_with_namespace(doc: DomDocument, namespace_uri: string, prefix: string, local_name: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         read_unparsed(): void;
 
         get_parse_children(): boolean;
@@ -4403,11 +4521,13 @@ export namespace GXml {
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -4478,6 +4598,7 @@ export namespace GXml {
         /**
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute(name: string, value: string): void;
 
@@ -4491,6 +4612,7 @@ export namespace GXml {
          * @param namespace 
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute_ns(namespace: string, name: string, value: string): void;
 
@@ -4739,6 +4861,7 @@ export namespace GXml {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         clean_property_elements(name: string): void;
 
@@ -4874,28 +4997,33 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item(node: DomNode): DomNode;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         remove_named_item(name: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param localName 
+         * @throws GLib.Error
          */
         remove_named_item_ns(namespace_uri: string, localName: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param local_name 
+         * @throws GLib.Error
          */
         get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item_ns(node: DomNode): DomNode;
 
@@ -5181,6 +5309,7 @@ export namespace GXml {
 
         /**
          * @param event 
+         * @throws GLib.Error
          */
         dispatch_event(event: DomEvent): boolean;
 
@@ -5243,27 +5372,32 @@ export namespace GXml {
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         insert_before(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append_child(node: DomNode): DomNode;
 
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         replace_child(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param child 
+         * @throws GLib.Error
          */
         remove_child(child: DomNode): DomNode;
 
         /**
          * @param deep 
+         * @throws GLib.Error
          */
         clone_node(deep: boolean): DomNode;
 
@@ -5818,6 +5952,9 @@ export namespace GXml {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         load(): void;
 
         get_simple_type(): string;
@@ -9037,6 +9174,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -9048,12 +9186,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -9061,6 +9201,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -9206,6 +9347,7 @@ export namespace GXml {
 
         /**
          * @param offset 
+         * @throws GLib.Error
          */
         split_text(offset: number): DomText;
 
@@ -9225,6 +9367,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -9236,12 +9379,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -9249,6 +9394,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -9396,6 +9542,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -9407,12 +9554,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -9420,6 +9569,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -9553,6 +9703,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -9564,12 +9715,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -9577,6 +9730,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -9999,6 +10153,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -10010,12 +10165,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -10023,6 +10180,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -10342,6 +10500,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -10353,12 +10512,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -10366,6 +10527,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -10542,12 +10704,14 @@ export namespace GXml {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         save(cancellable: Gio.Cancellable): boolean;
 
         /**
          * @param f 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_as(f: Gio.File, cancellable: Gio.Cancellable): boolean;
 
@@ -10713,6 +10877,7 @@ export namespace GXml {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         create_element(name: string): Node;
 
@@ -10893,11 +11058,13 @@ export namespace GXml {
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -10969,6 +11136,7 @@ export namespace GXml {
 
         /**
          * @param element_id 
+         * @throws GLib.Error
          */
         get_element_by_id(element_id: string): DomElement;
 
@@ -10997,6 +11165,7 @@ export namespace GXml {
         /**
          * @param namespace 
          * @param qualified_name 
+         * @throws GLib.Error
          */
         create_element_ns(namespace: string, qualified_name: string): DomElement;
 
@@ -11004,28 +11173,33 @@ export namespace GXml {
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         create_text_node(data: string): DomText;
 
         /**
          * @param target 
          * @param data 
+         * @throws GLib.Error
          */
         create_processing_instruction(target: string, data: string): DomProcessingInstruction;
 
         /**
          * @param node 
          * @param deep 
+         * @throws GLib.Error
          */
         import_node(node: DomNode, deep: boolean): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         adopt_node(node: DomNode): DomNode;
 
         /**
          * @param _interface 
+         * @throws GLib.Error
          */
         create_event(_interface: string): DomEvent;
 
@@ -11195,6 +11369,7 @@ export namespace GXml {
         /**
          * @param expression 
          * @param resolver 
+         * @throws GLib.Error
          */
         evaluate(expression: string, resolver: Gee.List): XPathObject;
 
@@ -11254,6 +11429,7 @@ export namespace GXml {
          * @param qualified_name 
          * @param public_id 
          * @param system_id 
+         * @throws GLib.Error
          */
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
 
@@ -11261,6 +11437,7 @@ export namespace GXml {
          * @param nspace 
          * @param qualified_name 
          * @param doctype 
+         * @throws GLib.Error
          */
         create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
 
@@ -11863,6 +12040,7 @@ export namespace GXml {
 
         /**
          * @param token 
+         * @throws GLib.Error
          */
         contains(token: string): boolean;
 
@@ -11874,6 +12052,7 @@ export namespace GXml {
 
         /**
          * @param tokens 
+         * @throws GLib.Error
          */
         add(tokens: string[]): void;
 
@@ -11898,6 +12077,7 @@ export namespace GXml {
          * @param token 
          * @param force 
          * @param auto 
+         * @throws GLib.Error
          */
         toggle(token: string, force: boolean, auto: boolean): boolean;
 
@@ -12072,6 +12252,7 @@ export namespace GXml {
 
         /**
          * @param token 
+         * @throws GLib.Error
          */
         contains(token: string): boolean;
 
@@ -12083,6 +12264,7 @@ export namespace GXml {
 
         /**
          * @param tokens 
+         * @throws GLib.Error
          */
         add(tokens: string[]): void;
 
@@ -12107,6 +12289,7 @@ export namespace GXml {
          * @param token 
          * @param force 
          * @param auto 
+         * @throws GLib.Error
          */
         toggle(token: string, force: boolean, auto: boolean): boolean;
 
@@ -12739,60 +12922,79 @@ export namespace GXml {
         /**
          * @param node 
          * @param offset 
+         * @throws GLib.Error
          */
         set_start(node: DomNode, offset: number): void;
 
         /**
          * @param node 
          * @param offset 
+         * @throws GLib.Error
          */
         set_end(node: DomNode, offset: number): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_start_before(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_start_after(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_end_before(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_end_after(node: DomNode): void;
 
         /**
          * @param to_start 
+         * @throws GLib.Error
          */
         collapse(to_start: boolean): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         select_node(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         select_node_contents(node: DomNode): void;
 
         /**
          * @param how 
          * @param sourceRange 
+         * @throws GLib.Error
          */
         compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
 
+        /**
+         * @throws GLib.Error
+         */
         delete_contents(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         extract_contents(): DomDocumentFragment;
 
+        /**
+         * @throws GLib.Error
+         */
         clone_contents(): DomDocumentFragment;
 
         /**
@@ -13185,11 +13387,13 @@ export namespace GXml {
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -13273,6 +13477,7 @@ export namespace GXml {
         /**
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute(name: string, value: string): void;
 
@@ -13280,6 +13485,7 @@ export namespace GXml {
          * @param namespace 
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute_ns(namespace: string, name: string, value: string): void;
 
@@ -13576,6 +13782,7 @@ export namespace GXml {
         /**
          * @param expression 
          * @param resolver 
+         * @throws GLib.Error
          */
         evaluate(expression: string, resolver: Gee.List): XPathObject;
 
@@ -13663,28 +13870,33 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item(node: DomNode): DomNode;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         remove_named_item(name: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param localName 
+         * @throws GLib.Error
          */
         remove_named_item_ns(namespace_uri: string, localName: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param local_name 
+         * @throws GLib.Error
          */
         get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item_ns(node: DomNode): DomNode;
 
@@ -15351,6 +15563,7 @@ export namespace GXml {
 
         /**
          * @param event 
+         * @throws GLib.Error
          */
         dispatch_event(event: DomEvent): boolean;
 
@@ -15413,27 +15626,32 @@ export namespace GXml {
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         insert_before(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append_child(node: DomNode): DomNode;
 
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         replace_child(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param child 
+         * @throws GLib.Error
          */
         remove_child(child: DomNode): DomNode;
 
         /**
          * @param deep 
+         * @throws GLib.Error
          */
         clone_node(deep: boolean): DomNode;
 
@@ -15811,6 +16029,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -15822,12 +16041,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -15835,6 +16056,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -15987,6 +16209,7 @@ export namespace GXml {
 
         /**
          * @param offset 
+         * @throws GLib.Error
          */
         split_text(offset: number): DomText;
 
@@ -16006,6 +16229,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -16017,12 +16241,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -16030,6 +16256,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -16377,6 +16604,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16384,6 +16612,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16391,6 +16620,7 @@ export namespace GXml {
          * @param element 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_serialize_property(element: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16398,6 +16628,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16560,6 +16791,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16567,6 +16799,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16574,6 +16807,7 @@ export namespace GXml {
          * @param element 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_serialize_property(element: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16581,6 +16815,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16668,14 +16903,19 @@ export namespace GXml {
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         parse(str: string): void;
 
         /**
          * @param v 
+         * @throws GLib.Error
          */
         parse_integer(v: number): void;
 
+        /**
+         * @throws GLib.Error
+         */
         to_integer(): number;
 
         to_string(): string;
@@ -16691,6 +16931,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16698,6 +16939,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16705,6 +16947,7 @@ export namespace GXml {
          * @param element 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_serialize_property(element: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -16712,6 +16955,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -16947,9 +17191,13 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize_node(node: Node): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         deserialize_children(): boolean;
 
         /**
@@ -16972,43 +17220,51 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         default_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         default_deserialize_property(property_node: Node): boolean;
 
@@ -17340,9 +17596,13 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize_node(node: Node): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         deserialize_children(): boolean;
 
         /**
@@ -17398,43 +17658,51 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         default_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         default_deserialize_property(property_node: Node): boolean;
 
@@ -17905,9 +18173,13 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize_node(node: Node): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         deserialize_children(): boolean;
 
         /**
@@ -17932,43 +18204,51 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         default_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         default_deserialize_property(property_node: Node): boolean;
 
@@ -18240,9 +18520,13 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize_node(node: Node): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         deserialize_children(): boolean;
 
         /**
@@ -18265,43 +18549,51 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         default_serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         default_deserialize_property(property_node: Node): boolean;
 
@@ -18624,43 +18916,51 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         default_serialize_property(element: Element, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         default_deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         default_deserialize_property(property_node: Node): boolean;
 
@@ -18872,6 +19172,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -18879,6 +19180,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -18886,6 +19188,7 @@ export namespace GXml {
          * @param element 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_serialize_property(element: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -18893,6 +19196,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -19304,6 +19608,7 @@ export namespace GXml {
          * @param f 
          * @param cancellable 
          * @deprecated since 0.8.1
+         * @throws GLib.Error
          */
         save_to(f: Gio.File, cancellable: Gio.Cancellable): boolean;
 
@@ -19343,6 +19648,7 @@ export namespace GXml {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         create_element(name: string): Node;
 
@@ -19369,12 +19675,14 @@ export namespace GXml {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         save(cancellable: Gio.Cancellable): boolean;
 
         /**
          * @param f 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_as(f: Gio.File, cancellable: Gio.Cancellable): boolean;
 
@@ -20333,6 +20641,7 @@ export namespace GXml {
         // Methods
         /**
          * @param node 
+         * @throws GLib.Error
          */
         read_node(node: DomNode): void;
 
@@ -20358,6 +20667,7 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_child_nodes_stream_finish(_res_: Gio.AsyncResult): void;
 
@@ -20378,6 +20688,7 @@ export namespace GXml {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write_file(file: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -20403,9 +20714,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_file_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         write_string(): string;
 
         write_string_async(): globalThis.Promise<string>;
@@ -20422,12 +20737,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_string_finish(_res_: Gio.AsyncResult): string;
 
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable): void;
 
@@ -20453,12 +20770,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_stream_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_file(file: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -20484,12 +20803,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable): void;
 
@@ -20515,12 +20836,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_stream_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param str 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_string(str: string, cancellable: Gio.Cancellable): void;
 
@@ -20546,11 +20869,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_string_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         create_stream(cancellable: Gio.Cancellable): Gio.InputStream;
 
@@ -20573,11 +20898,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_nodes(parent: DomNode): void;
 
@@ -20600,43 +20927,56 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_child_nodes_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_node(parent: DomNode): boolean;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_element(parent: DomNode): boolean;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_element_property(parent: DomNode): [boolean, DomNode];
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         add_element_collection(parent: DomNode): [boolean, DomNode];
 
         /**
          * @param istream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_child_nodes_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable): void;
 
         /**
          * @param str 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_child_nodes_string(str: string, cancellable: Gio.Cancellable): void;
 
+        /**
+         * @throws GLib.Error
+         */
         read_unparsed(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         move_next_node(): boolean;
 
         current_is_empty_element(): boolean;
@@ -20649,11 +20989,13 @@ export namespace GXml {
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         create_element(parent: DomNode): DomElement;
 
         /**
          * @param element 
+         * @throws GLib.Error
          */
         read_element(element: DomElement): void;
 
@@ -23643,6 +23985,7 @@ export namespace GXml {
         // Methods
         /**
          * @param name 
+         * @throws GLib.Error
          */
         create_element(name: string): Node;
 
@@ -23669,12 +24012,14 @@ export namespace GXml {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         save(cancellable: Gio.Cancellable): boolean;
 
         /**
          * @param f 
          * @param cancellable 
+         * @throws GLib.Error
          */
         save_as(f: Gio.File, cancellable: Gio.Cancellable): boolean;
 
@@ -23963,6 +24308,7 @@ export namespace GXml {
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         substring_data(offset: number, count: number): string;
 
@@ -23974,12 +24320,14 @@ export namespace GXml {
         /**
          * @param offset 
          * @param data 
+         * @throws GLib.Error
          */
         insert_data(offset: number, data: string): void;
 
         /**
          * @param offset 
          * @param count 
+         * @throws GLib.Error
          */
         delete_data(offset: number, count: number): void;
 
@@ -23987,6 +24335,7 @@ export namespace GXml {
          * @param offset 
          * @param count 
          * @param data 
+         * @throws GLib.Error
          */
         replace_data(offset: number, count: number, data: string): void;
 
@@ -24062,6 +24411,7 @@ export namespace GXml {
         // Methods
         /**
          * @param offset 
+         * @throws GLib.Error
          */
         split_text(offset: number): DomText;
 
@@ -24171,6 +24521,7 @@ export namespace GXml {
         // Methods
         /**
          * @param element_id 
+         * @throws GLib.Error
          */
         get_element_by_id(element_id: string): DomElement;
     }
@@ -24289,11 +24640,13 @@ export namespace GXml {
         // Methods
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector(selectors: string): DomElement;
 
         /**
          * @param selectors 
+         * @throws GLib.Error
          */
         query_selector_all(selectors: string): DomNodeList;
 
@@ -24939,28 +25292,33 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item(node: DomNode): DomNode;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         remove_named_item(name: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param localName 
+         * @throws GLib.Error
          */
         remove_named_item_ns(namespace_uri: string, localName: string): DomNode;
 
         /**
          * @param namespace_uri 
          * @param local_name 
+         * @throws GLib.Error
          */
         get_named_item_ns(namespace_uri: string, local_name: string): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_named_item_ns(node: DomNode): DomNode;
 
@@ -25053,11 +25411,13 @@ export namespace GXml {
 
         /**
          * @param token 
+         * @throws GLib.Error
          */
         contains(token: string): boolean;
 
         /**
          * @param tokens 
+         * @throws GLib.Error
          */
         add(tokens: string[]): void;
 
@@ -25070,6 +25430,7 @@ export namespace GXml {
          * @param token 
          * @param force 
          * @param auto 
+         * @throws GLib.Error
          */
         toggle(token: string, force: boolean, auto: boolean): boolean;
 
@@ -25406,12 +25767,14 @@ export namespace GXml {
 
         /**
          * @param local_name 
+         * @throws GLib.Error
          */
         create_element(local_name: string): DomElement;
 
         /**
          * @param namespace 
          * @param qualified_name 
+         * @throws GLib.Error
          */
         create_element_ns(namespace: string, qualified_name: string): DomElement;
 
@@ -25419,33 +25782,39 @@ export namespace GXml {
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         create_text_node(data: string): DomText;
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         create_comment(data: string): DomComment;
 
         /**
          * @param target 
          * @param data 
+         * @throws GLib.Error
          */
         create_processing_instruction(target: string, data: string): DomProcessingInstruction;
 
         /**
          * @param node 
          * @param deep 
+         * @throws GLib.Error
          */
         import_node(node: DomNode, deep: boolean): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         adopt_node(node: DomNode): DomNode;
 
         /**
          * @param _interface 
+         * @throws GLib.Error
          */
         create_event(_interface: string): DomEvent;
 
@@ -25565,6 +25934,7 @@ export namespace GXml {
          * @param qualified_name 
          * @param public_id 
          * @param system_id 
+         * @throws GLib.Error
          */
         create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType;
 
@@ -25572,6 +25942,7 @@ export namespace GXml {
          * @param nspace 
          * @param qualified_name 
          * @param doctype 
+         * @throws GLib.Error
          */
         create_document(nspace: string, qualified_name: string, doctype: DomDocumentType): DomXMLDocument;
 
@@ -25735,14 +26106,19 @@ export namespace GXml {
         // Methods
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string(str: string): void;
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         read_from_string_tolerant(str: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         to_html(): string;
     }
 
@@ -25988,6 +26364,7 @@ export namespace GXml {
         /**
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute(name: string, value: string): void;
 
@@ -25995,6 +26372,7 @@ export namespace GXml {
          * @param namespace 
          * @param name 
          * @param value 
+         * @throws GLib.Error
          */
         set_attribute_ns(namespace: string, name: string, value: string): void;
 
@@ -26130,6 +26508,7 @@ export namespace GXml {
 
         /**
          * @param event 
+         * @throws GLib.Error
          */
         dispatch_event(event: DomEvent): boolean;
     }
@@ -27100,27 +27479,32 @@ export namespace GXml {
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         insert_before(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append_child(node: DomNode): DomNode;
 
         /**
          * @param node 
          * @param child 
+         * @throws GLib.Error
          */
         replace_child(node: DomNode, child: DomNode): DomNode;
 
         /**
          * @param child 
+         * @throws GLib.Error
          */
         remove_child(child: DomNode): DomNode;
 
         /**
          * @param deep 
+         * @throws GLib.Error
          */
         clone_node(deep: boolean): DomNode;
 
@@ -27421,60 +27805,79 @@ export namespace GXml {
         /**
          * @param node 
          * @param offset 
+         * @throws GLib.Error
          */
         set_start(node: DomNode, offset: number): void;
 
         /**
          * @param node 
          * @param offset 
+         * @throws GLib.Error
          */
         set_end(node: DomNode, offset: number): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_start_before(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_start_after(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_end_before(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         set_end_after(node: DomNode): void;
 
         /**
          * @param to_start 
+         * @throws GLib.Error
          */
         collapse(to_start: boolean): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         select_node(node: DomNode): void;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         select_node_contents(node: DomNode): void;
 
         /**
          * @param how 
          * @param sourceRange 
+         * @throws GLib.Error
          */
         compare_boundary_points(how: DomRangeBoundaryPoints, sourceRange: DomRange): number;
 
+        /**
+         * @throws GLib.Error
+         */
         delete_contents(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         extract_contents(): DomDocumentFragment;
 
+        /**
+         * @throws GLib.Error
+         */
         clone_contents(): DomDocumentFragment;
 
         /**
@@ -27829,20 +28232,26 @@ export namespace GXml {
         get length(): number;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         search(): void;
 
         /**
          * @param index 
+         * @throws GLib.Error
          */
         get_item(index: number): DomElement;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         append(node: DomElement): void;
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         initialize(t: GObject.GType): void;
 
@@ -27851,9 +28260,13 @@ export namespace GXml {
         /**
          * @param index 
          * @param element 
+         * @throws GLib.Error
          */
         validate_append(index: number, element: DomElement): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         clear(): void;
 
         get_nodes_index(): GLib.Queue;
@@ -28161,6 +28574,7 @@ export namespace GXml {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         clean_property_elements(name: string): void;
     }
@@ -28940,6 +29354,7 @@ export namespace GXml {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write_file(file: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -28965,9 +29380,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_file_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         write_string(): string;
 
         write_string_async(): globalThis.Promise<string>;
@@ -28984,12 +29403,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_string_finish(_res_: Gio.AsyncResult): string;
 
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable): void;
 
@@ -29015,12 +29436,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         write_stream_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_file(file: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -29046,12 +29469,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_file_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable): void;
 
@@ -29077,12 +29502,14 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_stream_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param str 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_string(str: string, cancellable: Gio.Cancellable): void;
 
@@ -29108,11 +29535,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_string_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         create_stream(cancellable: Gio.Cancellable): Gio.InputStream;
 
@@ -29135,11 +29564,13 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         create_stream_finish(_res_: Gio.AsyncResult): Gio.InputStream;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_nodes(parent: DomNode): void;
 
@@ -29162,43 +29593,56 @@ export namespace GXml {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         read_child_nodes_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_node(parent: DomNode): boolean;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_child_element(parent: DomNode): boolean;
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         read_element_property(parent: DomNode): [boolean, DomNode];
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         add_element_collection(parent: DomNode): [boolean, DomNode];
 
         /**
          * @param istream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_child_nodes_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable): void;
 
         /**
          * @param str 
          * @param cancellable 
+         * @throws GLib.Error
          */
         read_child_nodes_string(str: string, cancellable: Gio.Cancellable): void;
 
+        /**
+         * @throws GLib.Error
+         */
         read_unparsed(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         move_next_node(): boolean;
 
         current_is_empty_element(): boolean;
@@ -29211,11 +29655,13 @@ export namespace GXml {
 
         /**
          * @param parent 
+         * @throws GLib.Error
          */
         create_element(parent: DomNode): DomElement;
 
         /**
          * @param element 
+         * @throws GLib.Error
          */
         read_element(element: DomElement): void;
 
@@ -31811,22 +32257,26 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         serialize(node: Node): Node;
 
         /**
          * @param element 
          * @param prop 
+         * @throws GLib.Error
          */
         serialize_property(element: Node, prop: GObject.ParamSpec): Node;
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize(node: Node): boolean;
 
         /**
          * @param property_node 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node): boolean;
 
@@ -31917,9 +32367,13 @@ export namespace GXml {
 
         /**
          * @param node 
+         * @throws GLib.Error
          */
         deserialize_node(node: Node): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         deserialize_children(): boolean;
 
         is_collection(): boolean;
@@ -32073,6 +32527,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
 
@@ -32080,6 +32535,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         serialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -32087,6 +32543,7 @@ export namespace GXml {
          * @param element 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_serialize_property(element: Node, prop: GObject.ParamSpec, nick: boolean): Node;
 
@@ -32094,6 +32551,7 @@ export namespace GXml {
          * @param property_node 
          * @param prop 
          * @param nick 
+         * @throws GLib.Error
          */
         default_serializable_property_deserialize_property(property_node: Node, prop: GObject.ParamSpec, nick: boolean): boolean;
     }
@@ -32191,6 +32649,7 @@ export namespace GXml {
         /**
          * @param expression 
          * @param resolver 
+         * @throws GLib.Error
          */
         evaluate(expression: string, resolver: Gee.List): XPathObject;
     }

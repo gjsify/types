@@ -33,15 +33,15 @@ export namespace AppStreamBuilder {
         /**
          * Nothing to do
          */
-        NONE,
+        NONE = 0,
         /**
          * Save icons to disk
          */
-        ICONS,
+        ICONS = 1,
         /**
          * Save screenshots to disk
          */
-        SCREENSHOTS,
+        SCREENSHOTS = 2,
     }
 
 
@@ -49,10 +49,10 @@ export namespace AppStreamBuilder {
      * @gir-type Enum
      */
     enum PackageKind {
-        DEFAULT,
-        BUNDLE,
-        FIRMWARE,
-        LAST,
+        DEFAULT = 0,
+        BUNDLE = 1,
+        FIRMWARE = 2,
+        LAST = 3,
     }
 
 
@@ -60,30 +60,57 @@ export namespace AppStreamBuilder {
      * @gir-type Enum
      */
     enum PackageLogLevel {
-        NONE,
-        DEBUG,
-        INFO,
-        WARNING,
-        LAST,
+        NONE = 0,
+        DEBUG = 1,
+        INFO = 2,
+        WARNING = 3,
+        LAST = 4,
     }
 
 
+    /**
+     * @default 8
+     */
     const PACKAGE_ENSURE_DEPS: number;
 
+    /**
+     * @default 2
+     */
     const PACKAGE_ENSURE_FILES: number;
 
+    /**
+     * @default 16
+     */
     const PACKAGE_ENSURE_LICENSE: number;
 
+    /**
+     * @default 1
+     */
     const PACKAGE_ENSURE_NEVRA: number;
 
+    /**
+     * @default 0
+     */
     const PACKAGE_ENSURE_NONE: number;
 
+    /**
+     * @default 4
+     */
     const PACKAGE_ENSURE_RELEASES: number;
 
+    /**
+     * @default 64
+     */
     const PACKAGE_ENSURE_SOURCE: number;
 
+    /**
+     * @default 32
+     */
     const PACKAGE_ENSURE_URL: number;
 
+    /**
+     * @default 128
+     */
     const PACKAGE_ENSURE_VCS: number;
 
     /**
@@ -94,63 +121,63 @@ export namespace AppStreamBuilder {
         /**
          * No special actions to use
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore missing information
          */
-        IGNORE_MISSING_INFO,
+        IGNORE_MISSING_INFO = 0,
         /**
          * Ignore missing parents
          */
-        IGNORE_MISSING_PARENTS,
+        IGNORE_MISSING_PARENTS = 1,
         /**
          * Unused
          */
-        ADD_CACHE_ID,
+        ADD_CACHE_ID = 2,
         /**
          * Include HiDPI icons
          */
-        HIDPI_ICONS,
+        HIDPI_ICONS = 4,
         /**
          * Embed the icons in the XML
          */
-        EMBEDDED_ICONS,
+        EMBEDDED_ICONS = 8,
         /**
          * Do not download files
          */
-        NO_NETWORK,
+        NO_NETWORK = 16,
         /**
          * Write the origin-ignore.xml file
          */
-        INCLUDE_FAILED,
+        INCLUDE_FAILED = 32,
         /**
          * Do not pack icons into a tarball
          */
-        UNCOMPRESSED_ICONS,
+        UNCOMPRESSED_ICONS = 64,
         /**
          * Include apps that are dead upstream
          */
-        IGNORE_DEAD_UPSTREAM,
+        IGNORE_DEAD_UPSTREAM = 128,
         /**
          * Include apps that use obsolete toolkits
          */
-        IGNORE_OBSOLETE_DEPS,
+        IGNORE_OBSOLETE_DEPS = 256,
         /**
          * Include apps that use legacy icon formats
          */
-        IGNORE_LEGACY_ICONS,
+        IGNORE_LEGACY_ICONS = 512,
         /**
          * Include apps that are marked as settings
          */
-        IGNORE_SETTINGS,
+        IGNORE_SETTINGS = 1024,
         /**
          * Fall back to suboptimal data where required
          */
-        USE_FALLBACKS,
+        USE_FALLBACKS = 2048,
         /**
          * Add artificial icons and categories where required
          */
-        ADD_DEFAULT_ICONS,
+        ADD_DEFAULT_ICONS = 4096,
     }
 
 
@@ -213,6 +240,7 @@ export namespace AppStreamBuilder {
          * @param save_flags {@link AppStreamBuilder.AppSaveFlags}, e.g. {@link AppStreamBuilder.AppSaveFlags.SCREENSHOTS}
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         save_resources(save_flags: AppSaveFlags): boolean;
 
@@ -293,6 +321,7 @@ export namespace AppStreamBuilder {
          * @param filename package filename
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         add_filename(filename: string): boolean;
 
@@ -373,6 +402,7 @@ export namespace AppStreamBuilder {
          * Processes all the packages that have been added to the context.
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         process(): boolean;
 
@@ -471,6 +501,7 @@ export namespace AppStreamBuilder {
          * Sets up the context ready for use.
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         setup(): boolean;
     }
@@ -589,6 +620,7 @@ export namespace AppStreamBuilder {
          * Closes a package, which can be re-opened if required.
          * @returns `true` for success, `false` otherwise
          * @since 0.3.5
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -605,6 +637,7 @@ export namespace AppStreamBuilder {
          * @param flags {@link AppStreamBuilder.PackageEnsureFlags}
          * @returns `true` for success, `false` otherwise
          * @since 0.3.0
+         * @throws GLib.Error
          */
         ensure(flags: PackageEnsureFlags): boolean;
 
@@ -614,6 +647,7 @@ export namespace AppStreamBuilder {
          * @param glob the glob list, or `null`
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         explode(dir: string, glob: string[]): boolean;
 
@@ -777,6 +811,7 @@ export namespace AppStreamBuilder {
          * Flushes the log queue.
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         log_flush(): boolean;
 
@@ -793,6 +828,7 @@ export namespace AppStreamBuilder {
          * @param filename package filename
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         open(filename: string): boolean;
 
@@ -954,6 +990,7 @@ export namespace AppStreamBuilder {
          * Processes the task.
          * @returns `true` for success, `false` otherwise
          * @since 0.1.0
+         * @throws GLib.Error
          */
         process(): boolean;
 

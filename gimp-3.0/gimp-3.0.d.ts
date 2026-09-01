@@ -72,31 +72,31 @@ export namespace ParamArray {
         /**
          * White (full opacity)
          */
-        WHITE,
+        WHITE = 0,
         /**
          * Black (full transparency)
          */
-        BLACK,
+        BLACK = 1,
         /**
          * Layer's alpha channel
          */
-        ALPHA,
+        ALPHA = 2,
         /**
          * Transfer layer's alpha channel
          */
-        ALPHA_TRANSFER,
+        ALPHA_TRANSFER = 3,
         /**
          * Selection
          */
-        SELECTION,
+        SELECTION = 4,
         /**
          * Grayscale copy of layer
          */
-        COPY,
+        COPY = 5,
         /**
          * Channel
          */
-        CHANNEL,
+        CHANNEL = 6,
     }
 
 
@@ -109,11 +109,11 @@ export namespace ParamArray {
         /**
          * Don't sync this argument
          */
-        NONE,
+        NONE = 0,
         /**
          * Sync this argument with an image parasite
          */
-        PARASITE,
+        PARASITE = 1,
     }
 
 
@@ -132,11 +132,11 @@ export namespace ParamArray {
         /**
          * GIMP_BRUSH_HARD
          */
-        HARD,
+        HARD = 0,
         /**
          * GIMP_BRUSH_SOFT
          */
-        SOFT,
+        SOFT = 1,
     }
 
 
@@ -155,15 +155,15 @@ export namespace ParamArray {
         /**
          * Circle
          */
-        CIRCLE,
+        CIRCLE = 0,
         /**
          * Square
          */
-        SQUARE,
+        SQUARE = 1,
         /**
          * Diamond
          */
-        DIAMOND,
+        DIAMOND = 2,
     }
 
 
@@ -182,15 +182,15 @@ export namespace ParamArray {
         /**
          * Butt
          */
-        BUTT,
+        BUTT = 0,
         /**
          * Round
          */
-        ROUND,
+        ROUND = 1,
         /**
          * Square
          */
-        SQUARE,
+        SQUARE = 2,
     }
 
 
@@ -209,19 +209,19 @@ export namespace ParamArray {
         /**
          * Add to the current selection
          */
-        ADD,
+        ADD = 0,
         /**
          * Subtract from the current selection
          */
-        SUBTRACT,
+        SUBTRACT = 1,
         /**
          * Replace the current selection
          */
-        REPLACE,
+        REPLACE = 2,
         /**
          * Intersect with the current selection
          */
-        INTERSECT,
+        INTERSECT = 3,
     }
 
 
@@ -240,27 +240,27 @@ export namespace ParamArray {
         /**
          * Red
          */
-        RED,
+        RED = 0,
         /**
          * Green
          */
-        GREEN,
+        GREEN = 1,
         /**
          * Blue
          */
-        BLUE,
+        BLUE = 2,
         /**
          * Gray
          */
-        GRAY,
+        GRAY = 3,
         /**
          * Indexed
          */
-        INDEXED,
+        INDEXED = 4,
         /**
          * Alpha
          */
-        ALPHA,
+        ALPHA = 5,
     }
 
 
@@ -279,15 +279,15 @@ export namespace ParamArray {
         /**
          * Small
          */
-        SMALL_CHECKS,
+        SMALL_CHECKS = 0,
         /**
          * Medium
          */
-        MEDIUM_CHECKS,
+        MEDIUM_CHECKS = 1,
         /**
          * Large
          */
-        LARGE_CHECKS,
+        LARGE_CHECKS = 2,
     }
 
 
@@ -306,31 +306,31 @@ export namespace ParamArray {
         /**
          * Light checks
          */
-        LIGHT_CHECKS,
+        LIGHT_CHECKS = 0,
         /**
          * Mid-tone checks
          */
-        GRAY_CHECKS,
+        GRAY_CHECKS = 1,
         /**
          * Dark checks
          */
-        DARK_CHECKS,
+        DARK_CHECKS = 2,
         /**
          * White only
          */
-        WHITE_ONLY,
+        WHITE_ONLY = 3,
         /**
          * Gray only
          */
-        GRAY_ONLY,
+        GRAY_ONLY = 4,
         /**
          * Black only
          */
-        BLACK_ONLY,
+        BLACK_ONLY = 5,
         /**
          * Custom checks
          */
-        CUSTOM_CHECKS,
+        CUSTOM_CHECKS = 6,
     }
 
 
@@ -349,11 +349,11 @@ export namespace ParamArray {
         /**
          * Clone from an image/drawable source
          */
-        IMAGE,
+        IMAGE = 0,
         /**
          * Clone from a pattern source
          */
-        PATTERN,
+        PATTERN = 1,
     }
 
 
@@ -372,15 +372,15 @@ export namespace ParamArray {
         /**
          * Color management is off
          */
-        OFF,
+        OFF = 0,
         /**
          * Color managed display
          */
-        DISPLAY,
+        DISPLAY = 1,
         /**
          * Soft-proofing
          */
-        SOFTPROOF,
+        SOFTPROOF = 2,
     }
 
 
@@ -399,19 +399,19 @@ export namespace ParamArray {
         /**
          * Perceptual
          */
-        PERCEPTUAL,
+        PERCEPTUAL = 0,
         /**
          * Relative colorimetric
          */
-        RELATIVE_COLORIMETRIC,
+        RELATIVE_COLORIMETRIC = 1,
         /**
          * Saturation
          */
-        SATURATION,
+        SATURATION = 2,
         /**
          * Absolute colorimetric
          */
-        ABSOLUTE_COLORIMETRIC,
+        ABSOLUTE_COLORIMETRIC = 3,
     }
 
 
@@ -431,39 +431,39 @@ export namespace ParamArray {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Blue
          */
-        BLUE,
+        BLUE = 1,
         /**
          * Green
          */
-        GREEN,
+        GREEN = 2,
         /**
          * Yellow
          */
-        YELLOW,
+        YELLOW = 3,
         /**
          * Orange
          */
-        ORANGE,
+        ORANGE = 4,
         /**
          * Brown
          */
-        BROWN,
+        BROWN = 5,
         /**
          * Red
          */
-        RED,
+        RED = 6,
         /**
          * Violet
          */
-        VIOLET,
+        VIOLET = 7,
         /**
          * Gray
          */
-        GRAY,
+        GRAY = 8,
     }
 
 
@@ -476,17 +476,17 @@ export namespace ParamArray {
          * optimize for accuracy rather
          *   than for speed
          */
-        NOOPTIMIZE,
+        NOOPTIMIZE = 256,
         /**
          * mark out of gamut colors in the
          *   transform result
          */
-        GAMUT_CHECK,
+        GAMUT_CHECK = 4096,
         /**
          * do black point
          *   compensation
          */
-        BLACK_POINT_COMPENSATION,
+        BLACK_POINT_COMPENSATION = 8192,
     }
 
 
@@ -506,27 +506,27 @@ export namespace ParamArray {
         /**
          * 8-bit integer
          */
-        U8,
+        U8 = 100,
         /**
          * 16-bit integer
          */
-        U16,
+        U16 = 200,
         /**
          * 32-bit integer
          */
-        U32,
+        U32 = 300,
         /**
          * 16-bit floating point
          */
-        HALF,
+        HALF = 500,
         /**
          * 32-bit floating point
          */
-        FLOAT,
+        FLOAT = 600,
         /**
          * 64-bit floating point
          */
-        DOUBLE,
+        DOUBLE = 700,
     }
 
 
@@ -576,19 +576,19 @@ export namespace ParamArray {
         /**
          * A single file
          */
-        FILE,
+        FILE = 0,
         /**
          * A list of files
          */
-        FILE_LIST,
+        FILE_LIST = 1,
         /**
          * A single folder
          */
-        DIR,
+        DIR = 2,
         /**
          * A list of folders
          */
-        DIR_LIST,
+        DIR_LIST = 3,
     }
 
 
@@ -607,19 +607,19 @@ export namespace ParamArray {
         /**
          * GIMP_CONVERT_DITHER_NONE
          */
-        NONE,
+        NONE = 0,
         /**
          * GIMP_CONVERT_DITHER_FS
          */
-        FS,
+        FS = 1,
         /**
          * GIMP_CONVERT_DITHER_FS_LOWBLEED
          */
-        FS_LOWBLEED,
+        FS_LOWBLEED = 2,
         /**
          * GIMP_CONVERT_DITHER_FIXED
          */
-        FIXED,
+        FIXED = 3,
     }
 
 
@@ -638,19 +638,19 @@ export namespace ParamArray {
         /**
          * Generate optimum palette
          */
-        GENERATE,
+        GENERATE = 0,
         /**
          * Use web-optimized palette
          */
-        WEB,
+        WEB = 1,
         /**
          * Use black and white (1-bit) palette
          */
-        MONO,
+        MONO = 2,
         /**
          * Use custom palette
          */
-        CUSTOM,
+        CUSTOM = 3,
     }
 
 
@@ -669,11 +669,11 @@ export namespace ParamArray {
         /**
          * Blur
          */
-        BLUR,
+        BLUR = 0,
         /**
          * Sharpen
          */
-        SHARPEN,
+        SHARPEN = 1,
     }
 
 
@@ -685,51 +685,51 @@ export namespace ParamArray {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * MMX
          */
-        X86_MMX,
+        X86_MMX = 2147483648,
         /**
          * 3dNow
          */
-        X86_3DNOW,
+        X86_3DNOW = 1073741824,
         /**
          * MMXEXT
          */
-        X86_MMXEXT,
+        X86_MMXEXT = 536870912,
         /**
          * SSE
          */
-        X86_SSE,
+        X86_SSE = 268435456,
         /**
          * SSE2
          */
-        X86_SSE2,
+        X86_SSE2 = 134217728,
         /**
          * SSE3
          */
-        X86_SSE3,
+        X86_SSE3 = 33554432,
         /**
          * SSSE3
          */
-        X86_SSSE3,
+        X86_SSSE3 = 16777216,
         /**
          * SSE4_1
          */
-        X86_SSE4_1,
+        X86_SSE4_1 = 8388608,
         /**
          * SSE4_2
          */
-        X86_SSE4_2,
+        X86_SSE4_2 = 4194304,
         /**
          * AVX
          */
-        X86_AVX,
+        X86_AVX = 2097152,
         /**
          * Altivec
          */
-        PPC_ALTIVEC,
+        PPC_ALTIVEC = 67108864,
     }
 
 
@@ -748,11 +748,11 @@ export namespace ParamArray {
         /**
          * GIMP_CURVE_POINT_SMOOTH
          */
-        SMOOTH,
+        SMOOTH = 0,
         /**
          * GIMP_CURVE_POINT_CORNER
          */
-        CORNER,
+        CORNER = 1,
     }
 
 
@@ -771,11 +771,11 @@ export namespace ParamArray {
         /**
          * GIMP_CURVE_SMOOTH
          */
-        SMOOTH,
+        SMOOTH = 0,
         /**
          * GIMP_CURVE_FREE
          */
-        FREE,
+        FREE = 1,
     }
 
 
@@ -794,23 +794,23 @@ export namespace ParamArray {
         /**
          * Lightness (HSL)
          */
-        LIGHTNESS,
+        LIGHTNESS = 0,
         /**
          * Luma
          */
-        LUMA,
+        LUMA = 1,
         /**
          * Average (HSI Intensity)
          */
-        AVERAGE,
+        AVERAGE = 2,
         /**
          * Luminance
          */
-        LUMINANCE,
+        LUMINANCE = 3,
         /**
          * Value (HSV)
          */
-        VALUE,
+        VALUE = 4,
     }
 
 
@@ -829,11 +829,11 @@ export namespace ParamArray {
         /**
          * Dodge
          */
-        DODGE,
+        DODGE = 0,
         /**
          * Burn
          */
-        BURN,
+        BURN = 1,
     }
 
 
@@ -845,11 +845,11 @@ export namespace ParamArray {
         /**
          * The image is unmodified but export shall continue anyway
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * The chosen transforms were applied to a new image
          */
-        EXPORT,
+        EXPORT = 1,
     }
 
 
@@ -871,23 +871,23 @@ export namespace ParamArray {
         /**
          * No restriction.
          */
-        ANY,
+        ANY = -1,
         /**
          * Opens an existing file.
          */
-        OPEN,
+        OPEN = 0,
         /**
          * Saves a file (over a new file or an existing one.
          */
-        SAVE,
+        SAVE = 1,
         /**
          * Picks an existing folder.
          */
-        SELECT_FOLDER,
+        SELECT_FOLDER = 2,
         /**
          * Picks an existing or new folder.
          */
-        CREATE_FOLDER,
+        CREATE_FOLDER = 3,
     }
 
 
@@ -906,27 +906,27 @@ export namespace ParamArray {
         /**
          * Foreground color
          */
-        FOREGROUND,
+        FOREGROUND = 0,
         /**
          * Background color
          */
-        BACKGROUND,
+        BACKGROUND = 1,
         /**
          * Middle Gray (CIELAB)
          */
-        CIELAB_MIDDLE_GRAY,
+        CIELAB_MIDDLE_GRAY = 2,
         /**
          * White
          */
-        WHITE,
+        WHITE = 3,
         /**
          * Transparency
          */
-        TRANSPARENT,
+        TRANSPARENT = 4,
         /**
          * Pattern
          */
-        PATTERN,
+        PATTERN = 5,
     }
 
 
@@ -945,7 +945,7 @@ export namespace ParamArray {
         /**
          * Matting (Since 2.10)
          */
-        MATTING,
+        MATTING = 0,
     }
 
 
@@ -965,15 +965,15 @@ export namespace ParamArray {
         /**
          * Perceptual RGB
          */
-        RGB_PERCEPTUAL,
+        RGB_PERCEPTUAL = 0,
         /**
          * Linear RGB
          */
-        RGB_LINEAR,
+        RGB_LINEAR = 1,
         /**
          * CIE Lab
          */
-        CIE_LAB,
+        CIE_LAB = 2,
     }
 
 
@@ -992,15 +992,15 @@ export namespace ParamArray {
         /**
          * RGB
          */
-        RGB,
+        RGB = 0,
         /**
          * HSV (counter-clockwise hue)
          */
-        HSV_CCW,
+        HSV_CCW = 1,
         /**
          * HSV (clockwise hue)
          */
-        HSV_CW,
+        HSV_CW = 2,
     }
 
 
@@ -1019,27 +1019,27 @@ export namespace ParamArray {
         /**
          * Linear
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Curved
          */
-        CURVED,
+        CURVED = 1,
         /**
          * Sinusoidal
          */
-        SINE,
+        SINE = 2,
         /**
          * Spherical (increasing)
          */
-        SPHERE_INCREASING,
+        SPHERE_INCREASING = 3,
         /**
          * Spherical (decreasing)
          */
-        SPHERE_DECREASING,
+        SPHERE_DECREASING = 4,
         /**
          * Step
          */
-        STEP,
+        STEP = 5,
     }
 
 
@@ -1058,47 +1058,47 @@ export namespace ParamArray {
         /**
          * Linear
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Bi-linear
          */
-        BILINEAR,
+        BILINEAR = 1,
         /**
          * Radial
          */
-        RADIAL,
+        RADIAL = 2,
         /**
          * Square
          */
-        SQUARE,
+        SQUARE = 3,
         /**
          * Conical (symmetric)
          */
-        CONICAL_SYMMETRIC,
+        CONICAL_SYMMETRIC = 4,
         /**
          * Conical (asymmetric)
          */
-        CONICAL_ASYMMETRIC,
+        CONICAL_ASYMMETRIC = 5,
         /**
          * Shaped (angular)
          */
-        SHAPEBURST_ANGULAR,
+        SHAPEBURST_ANGULAR = 6,
         /**
          * Shaped (spherical)
          */
-        SHAPEBURST_SPHERICAL,
+        SHAPEBURST_SPHERICAL = 7,
         /**
          * Shaped (dimpled)
          */
-        SHAPEBURST_DIMPLED,
+        SHAPEBURST_DIMPLED = 8,
         /**
          * Spiral (clockwise)
          */
-        SPIRAL_CLOCKWISE,
+        SPIRAL_CLOCKWISE = 9,
         /**
          * Spiral (counter-clockwise)
          */
-        SPIRAL_ANTICLOCKWISE,
+        SPIRAL_ANTICLOCKWISE = 10,
     }
 
 
@@ -1117,23 +1117,23 @@ export namespace ParamArray {
         /**
          * Intersections (dots)
          */
-        DOTS,
+        DOTS = 0,
         /**
          * Intersections (crosshairs)
          */
-        INTERSECTIONS,
+        INTERSECTIONS = 1,
         /**
          * Dashed
          */
-        ON_OFF_DASH,
+        ON_OFF_DASH = 2,
         /**
          * Double dashed
          */
-        DOUBLE_DASH,
+        DOUBLE_DASH = 3,
         /**
          * Solid
          */
-        SOLID,
+        SOLID = 4,
     }
 
 
@@ -1152,27 +1152,27 @@ export namespace ParamArray {
         /**
          * GIMP_HISTOGRAM_VALUE
          */
-        VALUE,
+        VALUE = 0,
         /**
          * GIMP_HISTOGRAM_RED
          */
-        RED,
+        RED = 1,
         /**
          * GIMP_HISTOGRAM_GREEN
          */
-        GREEN,
+        GREEN = 2,
         /**
          * GIMP_HISTOGRAM_BLUE
          */
-        BLUE,
+        BLUE = 3,
         /**
          * GIMP_HISTOGRAM_ALPHA
          */
-        ALPHA,
+        ALPHA = 4,
         /**
          * GIMP_HISTOGRAM_LUMINANCE
          */
-        LUMINANCE,
+        LUMINANCE = 5,
     }
 
 
@@ -1191,31 +1191,31 @@ export namespace ParamArray {
         /**
          * All hues
          */
-        ALL,
+        ALL = 0,
         /**
          * Red hues
          */
-        RED,
+        RED = 1,
         /**
          * Yellow hues
          */
-        YELLOW,
+        YELLOW = 2,
         /**
          * Green hues
          */
-        GREEN,
+        GREEN = 3,
         /**
          * Cyan hues
          */
-        CYAN,
+        CYAN = 4,
         /**
          * Blue hues
          */
-        BLUE,
+        BLUE = 5,
         /**
          * Magenta hues
          */
-        MAGENTA,
+        MAGENTA = 6,
     }
 
 
@@ -1234,15 +1234,15 @@ export namespace ParamArray {
         /**
          * Icon name
          */
-        ICON_NAME,
+        ICON_NAME = 0,
         /**
          * Inline pixbuf
          */
-        PIXBUF,
+        PIXBUF = 1,
         /**
          * Image file
          */
-        IMAGE_FILE,
+        IMAGE_FILE = 2,
     }
 
 
@@ -1261,15 +1261,15 @@ export namespace ParamArray {
         /**
          * RGB color
          */
-        RGB,
+        RGB = 0,
         /**
          * Grayscale
          */
-        GRAY,
+        GRAY = 1,
         /**
          * Indexed color
          */
-        INDEXED,
+        INDEXED = 2,
     }
 
 
@@ -1288,27 +1288,27 @@ export namespace ParamArray {
         /**
          * RGB
          */
-        RGB_IMAGE,
+        RGB_IMAGE = 0,
         /**
          * RGB-alpha
          */
-        RGBA_IMAGE,
+        RGBA_IMAGE = 1,
         /**
          * Grayscale
          */
-        GRAY_IMAGE,
+        GRAY_IMAGE = 2,
         /**
          * Grayscale-alpha
          */
-        GRAYA_IMAGE,
+        GRAYA_IMAGE = 3,
         /**
          * Indexed
          */
-        INDEXED_IMAGE,
+        INDEXED_IMAGE = 4,
         /**
          * Indexed-alpha
          */
-        INDEXEDA_IMAGE,
+        INDEXEDA_IMAGE = 5,
     }
 
 
@@ -1327,15 +1327,15 @@ export namespace ParamArray {
         /**
          * Circle
          */
-        CIRCLE,
+        CIRCLE = 0,
         /**
          * Square
          */
-        SQUARE,
+        SQUARE = 1,
         /**
          * Diamond
          */
-        DIAMOND,
+        DIAMOND = 2,
     }
 
 
@@ -1354,23 +1354,23 @@ export namespace ParamArray {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Linear
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * Cubic
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * NoHalo
          */
-        NOHALO,
+        NOHALO = 3,
         /**
          * LoHalo
          */
-        LOHALO,
+        LOHALO = 4,
     }
 
 
@@ -1389,15 +1389,15 @@ export namespace ParamArray {
         /**
          * Miter
          */
-        MITER,
+        MITER = 0,
         /**
          * Round
          */
-        ROUND,
+        ROUND = 1,
         /**
          * Bevel
          */
-        BEVEL,
+        BEVEL = 2,
     }
 
 
@@ -1416,23 +1416,23 @@ export namespace ParamArray {
         /**
          * GIMP_LAYER_COLOR_SPACE_AUTO
          */
-        AUTO,
+        AUTO = 0,
         /**
          * GIMP_LAYER_COLOR_SPACE_RGB_LINEAR
          */
-        RGB_LINEAR,
+        RGB_LINEAR = 1,
         /**
          * GIMP_LAYER_COLOR_SPACE_RGB_NON_LINEAR
          */
-        RGB_NON_LINEAR,
+        RGB_NON_LINEAR = 2,
         /**
          * GIMP_LAYER_COLOR_SPACE_LAB
          */
-        LAB,
+        LAB = 3,
         /**
          * GIMP_LAYER_COLOR_SPACE_RGB_PERCEPTUAL
          */
-        RGB_PERCEPTUAL,
+        RGB_PERCEPTUAL = 4,
     }
 
 
@@ -1451,23 +1451,23 @@ export namespace ParamArray {
         /**
          * GIMP_LAYER_COMPOSITE_AUTO
          */
-        AUTO,
+        AUTO = 0,
         /**
          * GIMP_LAYER_COMPOSITE_UNION
          */
-        UNION,
+        UNION = 1,
         /**
          * GIMP_LAYER_COMPOSITE_CLIP_TO_BACKDROP
          */
-        CLIP_TO_BACKDROP,
+        CLIP_TO_BACKDROP = 2,
         /**
          * GIMP_LAYER_COMPOSITE_CLIP_TO_LAYER
          */
-        CLIP_TO_LAYER,
+        CLIP_TO_LAYER = 3,
         /**
          * GIMP_LAYER_COMPOSITE_INTERSECTION
          */
-        INTERSECTION,
+        INTERSECTION = 4,
     }
 
 
@@ -1486,259 +1486,259 @@ export namespace ParamArray {
         /**
          * GIMP_LAYER_MODE_NORMAL_LEGACY
          */
-        NORMAL_LEGACY,
+        NORMAL_LEGACY = 0,
         /**
          * GIMP_LAYER_MODE_DISSOLVE
          */
-        DISSOLVE,
+        DISSOLVE = 1,
         /**
          * GIMP_LAYER_MODE_BEHIND_LEGACY
          */
-        BEHIND_LEGACY,
+        BEHIND_LEGACY = 2,
         /**
          * GIMP_LAYER_MODE_MULTIPLY_LEGACY
          */
-        MULTIPLY_LEGACY,
+        MULTIPLY_LEGACY = 3,
         /**
          * GIMP_LAYER_MODE_SCREEN_LEGACY
          */
-        SCREEN_LEGACY,
+        SCREEN_LEGACY = 4,
         /**
          * GIMP_LAYER_MODE_OVERLAY_LEGACY
          */
-        OVERLAY_LEGACY,
+        OVERLAY_LEGACY = 5,
         /**
          * GIMP_LAYER_MODE_DIFFERENCE_LEGACY
          */
-        DIFFERENCE_LEGACY,
+        DIFFERENCE_LEGACY = 6,
         /**
          * GIMP_LAYER_MODE_ADDITION_LEGACY
          */
-        ADDITION_LEGACY,
+        ADDITION_LEGACY = 7,
         /**
          * GIMP_LAYER_MODE_SUBTRACT_LEGACY
          */
-        SUBTRACT_LEGACY,
+        SUBTRACT_LEGACY = 8,
         /**
          * GIMP_LAYER_MODE_DARKEN_ONLY_LEGACY
          */
-        DARKEN_ONLY_LEGACY,
+        DARKEN_ONLY_LEGACY = 9,
         /**
          * GIMP_LAYER_MODE_LIGHTEN_ONLY_LEGACY
          */
-        LIGHTEN_ONLY_LEGACY,
+        LIGHTEN_ONLY_LEGACY = 10,
         /**
          * GIMP_LAYER_MODE_HSV_HUE_LEGACY
          */
-        HSV_HUE_LEGACY,
+        HSV_HUE_LEGACY = 11,
         /**
          * GIMP_LAYER_MODE_HSV_SATURATION_LEGACY
          */
-        HSV_SATURATION_LEGACY,
+        HSV_SATURATION_LEGACY = 12,
         /**
          * GIMP_LAYER_MODE_HSL_COLOR_LEGACY
          */
-        HSL_COLOR_LEGACY,
+        HSL_COLOR_LEGACY = 13,
         /**
          * GIMP_LAYER_MODE_HSV_VALUE_LEGACY
          */
-        HSV_VALUE_LEGACY,
+        HSV_VALUE_LEGACY = 14,
         /**
          * GIMP_LAYER_MODE_DIVIDE_LEGACY
          */
-        DIVIDE_LEGACY,
+        DIVIDE_LEGACY = 15,
         /**
          * GIMP_LAYER_MODE_DODGE_LEGACY
          */
-        DODGE_LEGACY,
+        DODGE_LEGACY = 16,
         /**
          * GIMP_LAYER_MODE_BURN_LEGACY
          */
-        BURN_LEGACY,
+        BURN_LEGACY = 17,
         /**
          * GIMP_LAYER_MODE_HARDLIGHT_LEGACY
          */
-        HARDLIGHT_LEGACY,
+        HARDLIGHT_LEGACY = 18,
         /**
          * GIMP_LAYER_MODE_SOFTLIGHT_LEGACY
          */
-        SOFTLIGHT_LEGACY,
+        SOFTLIGHT_LEGACY = 19,
         /**
          * GIMP_LAYER_MODE_GRAIN_EXTRACT_LEGACY
          */
-        GRAIN_EXTRACT_LEGACY,
+        GRAIN_EXTRACT_LEGACY = 20,
         /**
          * GIMP_LAYER_MODE_GRAIN_MERGE_LEGACY
          */
-        GRAIN_MERGE_LEGACY,
+        GRAIN_MERGE_LEGACY = 21,
         /**
          * GIMP_LAYER_MODE_COLOR_ERASE_LEGACY
          */
-        COLOR_ERASE_LEGACY,
+        COLOR_ERASE_LEGACY = 22,
         /**
          * GIMP_LAYER_MODE_OVERLAY
          */
-        OVERLAY,
+        OVERLAY = 23,
         /**
          * GIMP_LAYER_MODE_LCH_HUE
          */
-        LCH_HUE,
+        LCH_HUE = 24,
         /**
          * GIMP_LAYER_MODE_LCH_CHROMA
          */
-        LCH_CHROMA,
+        LCH_CHROMA = 25,
         /**
          * GIMP_LAYER_MODE_LCH_COLOR
          */
-        LCH_COLOR,
+        LCH_COLOR = 26,
         /**
          * GIMP_LAYER_MODE_LCH_LIGHTNESS
          */
-        LCH_LIGHTNESS,
+        LCH_LIGHTNESS = 27,
         /**
          * GIMP_LAYER_MODE_NORMAL
          */
-        NORMAL,
+        NORMAL = 28,
         /**
          * GIMP_LAYER_MODE_BEHIND
          */
-        BEHIND,
+        BEHIND = 29,
         /**
          * GIMP_LAYER_MODE_MULTIPLY
          */
-        MULTIPLY,
+        MULTIPLY = 30,
         /**
          * GIMP_LAYER_MODE_SCREEN
          */
-        SCREEN,
+        SCREEN = 31,
         /**
          * GIMP_LAYER_MODE_DIFFERENCE
          */
-        DIFFERENCE,
+        DIFFERENCE = 32,
         /**
          * GIMP_LAYER_MODE_ADDITION
          */
-        ADDITION,
+        ADDITION = 33,
         /**
          * GIMP_LAYER_MODE_SUBTRACT
          */
-        SUBTRACT,
+        SUBTRACT = 34,
         /**
          * GIMP_LAYER_MODE_DARKEN_ONLY
          */
-        DARKEN_ONLY,
+        DARKEN_ONLY = 35,
         /**
          * GIMP_LAYER_MODE_LIGHTEN_ONLY
          */
-        LIGHTEN_ONLY,
+        LIGHTEN_ONLY = 36,
         /**
          * GIMP_LAYER_MODE_HSV_HUE
          */
-        HSV_HUE,
+        HSV_HUE = 37,
         /**
          * GIMP_LAYER_MODE_HSV_SATURATION
          */
-        HSV_SATURATION,
+        HSV_SATURATION = 38,
         /**
          * GIMP_LAYER_MODE_HSL_COLOR
          */
-        HSL_COLOR,
+        HSL_COLOR = 39,
         /**
          * GIMP_LAYER_MODE_HSV_VALUE
          */
-        HSV_VALUE,
+        HSV_VALUE = 40,
         /**
          * GIMP_LAYER_MODE_DIVIDE
          */
-        DIVIDE,
+        DIVIDE = 41,
         /**
          * GIMP_LAYER_MODE_DODGE
          */
-        DODGE,
+        DODGE = 42,
         /**
          * GIMP_LAYER_MODE_BURN
          */
-        BURN,
+        BURN = 43,
         /**
          * GIMP_LAYER_MODE_HARDLIGHT
          */
-        HARDLIGHT,
+        HARDLIGHT = 44,
         /**
          * GIMP_LAYER_MODE_SOFTLIGHT
          */
-        SOFTLIGHT,
+        SOFTLIGHT = 45,
         /**
          * GIMP_LAYER_MODE_GRAIN_EXTRACT
          */
-        GRAIN_EXTRACT,
+        GRAIN_EXTRACT = 46,
         /**
          * GIMP_LAYER_MODE_GRAIN_MERGE
          */
-        GRAIN_MERGE,
+        GRAIN_MERGE = 47,
         /**
          * GIMP_LAYER_MODE_VIVID_LIGHT
          */
-        VIVID_LIGHT,
+        VIVID_LIGHT = 48,
         /**
          * GIMP_LAYER_MODE_PIN_LIGHT
          */
-        PIN_LIGHT,
+        PIN_LIGHT = 49,
         /**
          * GIMP_LAYER_MODE_LINEAR_LIGHT
          */
-        LINEAR_LIGHT,
+        LINEAR_LIGHT = 50,
         /**
          * GIMP_LAYER_MODE_HARD_MIX
          */
-        HARD_MIX,
+        HARD_MIX = 51,
         /**
          * GIMP_LAYER_MODE_EXCLUSION
          */
-        EXCLUSION,
+        EXCLUSION = 52,
         /**
          * GIMP_LAYER_MODE_LINEAR_BURN
          */
-        LINEAR_BURN,
+        LINEAR_BURN = 53,
         /**
          * GIMP_LAYER_MODE_LUMA_DARKEN_ONLY
          */
-        LUMA_DARKEN_ONLY,
+        LUMA_DARKEN_ONLY = 54,
         /**
          * GIMP_LAYER_MODE_LUMA_LIGHTEN_ONLY
          */
-        LUMA_LIGHTEN_ONLY,
+        LUMA_LIGHTEN_ONLY = 55,
         /**
          * GIMP_LAYER_MODE_LUMINANCE
          */
-        LUMINANCE,
+        LUMINANCE = 56,
         /**
          * GIMP_LAYER_MODE_COLOR_ERASE
          */
-        COLOR_ERASE,
+        COLOR_ERASE = 57,
         /**
          * GIMP_LAYER_MODE_ERASE
          */
-        ERASE,
+        ERASE = 58,
         /**
          * GIMP_LAYER_MODE_MERGE
          */
-        MERGE,
+        MERGE = 59,
         /**
          * GIMP_LAYER_MODE_SPLIT
          */
-        SPLIT,
+        SPLIT = 60,
         /**
          * GIMP_LAYER_MODE_PASS_THROUGH
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 61,
         /**
          * GIMP_LAYER_MODE_REPLACE
          */
-        REPLACE,
+        REPLACE = 62,
         /**
          * GIMP_LAYER_MODE_OVERWRITE
          */
-        OVERWRITE,
+        OVERWRITE = 63,
     }
 
 
@@ -1757,11 +1757,11 @@ export namespace ParamArray {
         /**
          * Apply the mask
          */
-        APPLY,
+        APPLY = 0,
         /**
          * Discard the mask
          */
-        DISCARD,
+        DISCARD = 1,
     }
 
 
@@ -1780,19 +1780,19 @@ export namespace ParamArray {
         /**
          * Expanded as necessary
          */
-        EXPAND_AS_NECESSARY,
+        EXPAND_AS_NECESSARY = 0,
         /**
          * Clipped to image
          */
-        CLIP_TO_IMAGE,
+        CLIP_TO_IMAGE = 1,
         /**
          * Clipped to bottom layer
          */
-        CLIP_TO_BOTTOM_LAYER,
+        CLIP_TO_BOTTOM_LAYER = 2,
         /**
          * Flatten
          */
-        FLATTEN_IMAGE,
+        FLATTEN_IMAGE = 3,
     }
 
 
@@ -1811,15 +1811,15 @@ export namespace ParamArray {
         /**
          * A popup dialog
          */
-        MESSAGE_BOX,
+        MESSAGE_BOX = 0,
         /**
          * The terminal
          */
-        CONSOLE,
+        CONSOLE = 1,
         /**
          * The error console dockable
          */
-        ERROR_CONSOLE,
+        ERROR_CONSOLE = 2,
     }
 
 
@@ -1831,19 +1831,19 @@ export namespace ParamArray {
         /**
          * Unspecified
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 0,
         /**
          * Uncalibrated
          */
-        UNCALIBRATED,
+        UNCALIBRATED = 1,
         /**
          * sRGB
          */
-        SRGB,
+        SRGB = 2,
         /**
          * Adobe RGB
          */
-        ADOBERGB,
+        ADOBERGB = 3,
     }
 
 
@@ -1855,7 +1855,7 @@ export namespace ParamArray {
         /**
          * Generic error condition
          */
-        MODULE_FAILED,
+        MODULE_FAILED = 0,
     }
 
 
@@ -1868,21 +1868,21 @@ export namespace ParamArray {
          * Missing `gimp_module_register()` function
          *                                 or other error.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * An instance of a type implemented by
          *                                 this module is allocated.
          */
-        LOADED,
+        LOADED = 1,
         /**
          * `gimp_module_register()` returned `false`.
          */
-        LOAD_FAILED,
+        LOAD_FAILED = 2,
         /**
          * There are no instances allocated of
          *                                 types implemented by this module.
          */
-        NOT_LOADED,
+        NOT_LOADED = 3,
     }
 
 
@@ -1901,15 +1901,15 @@ export namespace ParamArray {
         /**
          * Color
          */
-        COLOR,
+        COLOR = 0,
         /**
          * Transparent
          */
-        TRANSPARENT,
+        TRANSPARENT = 1,
         /**
          * Wrap image around
          */
-        WRAP_AROUND,
+        WRAP_AROUND = 2,
     }
 
 
@@ -1928,15 +1928,15 @@ export namespace ParamArray {
         /**
          * Horizontal
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * Vertical
          */
-        VERTICAL,
+        VERTICAL = 1,
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 2,
     }
 
 
@@ -1955,11 +1955,11 @@ export namespace ParamArray {
         /**
          * Internal
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * Plug-In
          */
-        PLUGIN,
+        PLUGIN = 1,
     }
 
 
@@ -1978,19 +1978,19 @@ export namespace ParamArray {
         /**
          * Internal GIMP procedure
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * GIMP Plug-In
          */
-        PLUGIN,
+        PLUGIN = 1,
         /**
          * GIMP Persistent Plug-in
          */
-        PERSISTENT,
+        PERSISTENT = 2,
         /**
          * Temporary Procedure
          */
-        TEMPORARY,
+        TEMPORARY = 3,
     }
 
 
@@ -2009,23 +2009,23 @@ export namespace ParamArray {
         /**
          * Execution error
          */
-        EXECUTION_ERROR,
+        EXECUTION_ERROR = 0,
         /**
          * Calling error
          */
-        CALLING_ERROR,
+        CALLING_ERROR = 1,
         /**
          * Pass through
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 2,
         /**
          * Success
          */
-        SUCCESS,
+        SUCCESS = 3,
         /**
          * User cancel
          */
-        CANCEL,
+        CANCEL = 4,
     }
 
 
@@ -2044,11 +2044,11 @@ export namespace ParamArray {
         /**
          * Constant
          */
-        CONSTANT,
+        CONSTANT = 0,
         /**
          * Incremental
          */
-        INCREMENTAL,
+        INCREMENTAL = 1,
     }
 
 
@@ -2067,7 +2067,7 @@ export namespace ParamArray {
         /**
          * A bezier stroke
          */
-        BEZIER,
+        BEZIER = 0,
     }
 
 
@@ -2080,15 +2080,15 @@ export namespace ParamArray {
         /**
          * Create a pixbuf with alpha
          */
-        KEEP_ALPHA,
+        KEEP_ALPHA = 0,
         /**
          * Show transparency as small checks
          */
-        SMALL_CHECKS,
+        SMALL_CHECKS = 1,
         /**
          * Show transparency as large checks
          */
-        LARGE_CHECKS,
+        LARGE_CHECKS = 2,
     }
 
 
@@ -2108,75 +2108,75 @@ export namespace ParamArray {
         /**
          * 8-bit linear integer
          */
-        U8_LINEAR,
+        U8_LINEAR = 100,
         /**
          * 8-bit non-linear integer
          */
-        U8_NON_LINEAR,
+        U8_NON_LINEAR = 150,
         /**
          * 8-bit perceptual integer
          */
-        U8_PERCEPTUAL,
+        U8_PERCEPTUAL = 175,
         /**
          * 16-bit linear integer
          */
-        U16_LINEAR,
+        U16_LINEAR = 200,
         /**
          * 16-bit non-linear integer
          */
-        U16_NON_LINEAR,
+        U16_NON_LINEAR = 250,
         /**
          * 16-bit perceptual integer
          */
-        U16_PERCEPTUAL,
+        U16_PERCEPTUAL = 275,
         /**
          * 32-bit linear integer
          */
-        U32_LINEAR,
+        U32_LINEAR = 300,
         /**
          * 32-bit non-linear integer
          */
-        U32_NON_LINEAR,
+        U32_NON_LINEAR = 350,
         /**
          * 32-bit perceptual integer
          */
-        U32_PERCEPTUAL,
+        U32_PERCEPTUAL = 375,
         /**
          * 16-bit linear floating point
          */
-        HALF_LINEAR,
+        HALF_LINEAR = 500,
         /**
          * 16-bit non-linear floating point
          */
-        HALF_NON_LINEAR,
+        HALF_NON_LINEAR = 550,
         /**
          * 16-bit perceptual floating point
          */
-        HALF_PERCEPTUAL,
+        HALF_PERCEPTUAL = 575,
         /**
          * 32-bit linear floating point
          */
-        FLOAT_LINEAR,
+        FLOAT_LINEAR = 600,
         /**
          * 32-bit non-linear floating point
          */
-        FLOAT_NON_LINEAR,
+        FLOAT_NON_LINEAR = 650,
         /**
          * 32-bit perceptual floating point
          */
-        FLOAT_PERCEPTUAL,
+        FLOAT_PERCEPTUAL = 675,
         /**
          * 64-bit linear floating point
          */
-        DOUBLE_LINEAR,
+        DOUBLE_LINEAR = 700,
         /**
          * 64-bit non-linear floating point
          */
-        DOUBLE_NON_LINEAR,
+        DOUBLE_NON_LINEAR = 750,
         /**
          * 64-bit perceptual floating point
          */
-        DOUBLE_PERCEPTUAL,
+        DOUBLE_PERCEPTUAL = 775,
     }
 
 
@@ -2195,27 +2195,27 @@ export namespace ParamArray {
         /**
          * Start a progress
          */
-        START,
+        START = 0,
         /**
          * End the progress
          */
-        END,
+        END = 1,
         /**
          * Set the text
          */
-        SET_TEXT,
+        SET_TEXT = 2,
         /**
          * Set the percentage
          */
-        SET_VALUE,
+        SET_VALUE = 3,
         /**
          * Pulse the progress
          */
-        PULSE,
+        PULSE = 4,
         /**
          * Get the window where the progress is shown
          */
-        GET_WINDOW,
+        GET_WINDOW = 5,
     }
 
 
@@ -2234,19 +2234,19 @@ export namespace ParamArray {
         /**
          * None (extend)
          */
-        NONE,
+        NONE = 0,
         /**
          * None (truncate)
          */
-        TRUNCATE,
+        TRUNCATE = 1,
         /**
          * Sawtooth wave
          */
-        SAWTOOTH,
+        SAWTOOTH = 2,
         /**
          * Triangular wave
          */
-        TRIANGULAR,
+        TRIANGULAR = 3,
     }
 
 
@@ -2265,15 +2265,15 @@ export namespace ParamArray {
         /**
          * 90 degrees
          */
-        DEGREES90,
+        DEGREES90 = 0,
         /**
          * 180 degrees
          */
-        DEGREES180,
+        DEGREES180 = 1,
         /**
          * 270 degrees
          */
-        DEGREES270,
+        DEGREES270 = 2,
     }
 
 
@@ -2292,15 +2292,15 @@ export namespace ParamArray {
         /**
          * Run interactively
          */
-        INTERACTIVE,
+        INTERACTIVE = 0,
         /**
          * Run non-interactively
          */
-        NONINTERACTIVE,
+        NONINTERACTIVE = 1,
         /**
          * Run with last used values
          */
-        WITH_LAST_VALS,
+        WITH_LAST_VALS = 2,
     }
 
 
@@ -2319,47 +2319,47 @@ export namespace ParamArray {
         /**
          * Composite
          */
-        COMPOSITE,
+        COMPOSITE = 0,
         /**
          * Red
          */
-        RGB_RED,
+        RGB_RED = 1,
         /**
          * Green
          */
-        RGB_GREEN,
+        RGB_GREEN = 2,
         /**
          * Blue
          */
-        RGB_BLUE,
+        RGB_BLUE = 3,
         /**
          * HSV Hue
          */
-        HSV_HUE,
+        HSV_HUE = 4,
         /**
          * HSV Saturation
          */
-        HSV_SATURATION,
+        HSV_SATURATION = 5,
         /**
          * HSV Value
          */
-        HSV_VALUE,
+        HSV_VALUE = 6,
         /**
          * LCh Lightness
          */
-        LCH_LIGHTNESS,
+        LCH_LIGHTNESS = 7,
         /**
          * LCh Chroma
          */
-        LCH_CHROMA,
+        LCH_CHROMA = 8,
         /**
          * LCh Hue
          */
-        LCH_HUE,
+        LCH_HUE = 9,
         /**
          * Alpha
          */
-        ALPHA,
+        ALPHA = 10,
     }
 
 
@@ -2378,11 +2378,11 @@ export namespace ParamArray {
         /**
          * Pixels
          */
-        PIXELS,
+        PIXELS = 0,
         /**
          * Points
          */
-        POINTS,
+        POINTS = 1,
     }
 
 
@@ -2401,15 +2401,15 @@ export namespace ParamArray {
         /**
          * Never
          */
-        NEVER,
+        NEVER = 0,
         /**
          * Ask each time
          */
-        QUERY,
+        QUERY = 1,
         /**
          * Always
          */
-        ALWAYS,
+        ALWAYS = 2,
     }
 
 
@@ -2428,11 +2428,11 @@ export namespace ParamArray {
         /**
          * Stroke line
          */
-        LINE,
+        LINE = 0,
         /**
          * Stroke with a paint tool
          */
-        PAINT_METHOD,
+        PAINT_METHOD = 1,
     }
 
 
@@ -2451,15 +2451,15 @@ export namespace ParamArray {
         /**
          * GIMP_TRC_LINEAR
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * GIMP_TRC_NON_LINEAR
          */
-        NON_LINEAR,
+        NON_LINEAR = 1,
         /**
          * GIMP_TRC_PERCEPTUAL
          */
-        PERCEPTUAL,
+        PERCEPTUAL = 2,
     }
 
 
@@ -2478,27 +2478,27 @@ export namespace ParamArray {
         /**
          * From left to right
          */
-        LTR,
+        LTR = 0,
         /**
          * From right to left
          */
-        RTL,
+        RTL = 1,
         /**
          * Characters are from top to bottom, Lines are from right to left
          */
-        TTB_RTL,
+        TTB_RTL = 2,
         /**
          * Upright characters are from top to bottom, Lines are from right to left
          */
-        TTB_RTL_UPRIGHT,
+        TTB_RTL_UPRIGHT = 3,
         /**
          * Characters are from top to bottom, Lines are from left to right
          */
-        TTB_LTR,
+        TTB_LTR = 4,
         /**
          * Upright characters are from top to bottom, Lines are from left to right
          */
-        TTB_LTR_UPRIGHT,
+        TTB_LTR_UPRIGHT = 5,
     }
 
 
@@ -2517,19 +2517,19 @@ export namespace ParamArray {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Slight
          */
-        SLIGHT,
+        SLIGHT = 1,
         /**
          * Medium
          */
-        MEDIUM,
+        MEDIUM = 2,
         /**
          * Full
          */
-        FULL,
+        FULL = 3,
     }
 
 
@@ -2548,19 +2548,19 @@ export namespace ParamArray {
         /**
          * Left justified
          */
-        LEFT,
+        LEFT = 0,
         /**
          * Right justified
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * Centered
          */
-        CENTER,
+        CENTER = 2,
         /**
          * Filled
          */
-        FILL,
+        FILL = 3,
     }
 
 
@@ -2579,15 +2579,15 @@ export namespace ParamArray {
         /**
          * Filled
          */
-        NONE,
+        NONE = 0,
         /**
          * Outlined
          */
-        STROKE_ONLY,
+        STROKE_ONLY = 1,
         /**
          * Outlined and filled
          */
-        STROKE_FILL,
+        STROKE_FILL = 2,
     }
 
 
@@ -2606,15 +2606,15 @@ export namespace ParamArray {
         /**
          * Outer
          */
-        OUTER,
+        OUTER = 0,
         /**
          * Inner
          */
-        INNER,
+        INNER = 1,
         /**
          * Centered
          */
-        CENTERED,
+        CENTERED = 2,
     }
 
 
@@ -2633,15 +2633,15 @@ export namespace ParamArray {
         /**
          * Shadows
          */
-        SHADOWS,
+        SHADOWS = 0,
         /**
          * Midtones
          */
-        MIDTONES,
+        MIDTONES = 1,
         /**
          * Highlights
          */
-        HIGHLIGHTS,
+        HIGHLIGHTS = 2,
     }
 
 
@@ -2660,11 +2660,11 @@ export namespace ParamArray {
         /**
          * Normal (Forward)
          */
-        FORWARD,
+        FORWARD = 0,
         /**
          * Corrective (Backward)
          */
-        BACKWARD,
+        BACKWARD = 1,
     }
 
 
@@ -2683,19 +2683,19 @@ export namespace ParamArray {
         /**
          * Adjust
          */
-        ADJUST,
+        ADJUST = 0,
         /**
          * Clip
          */
-        CLIP,
+        CLIP = 1,
         /**
          * Crop to result
          */
-        CROP,
+        CROP = 2,
         /**
          * Crop with aspect
          */
-        CROP_WITH_ASPECT,
+        CROP_WITH_ASPECT = 3,
     }
 
 
@@ -2709,46 +2709,49 @@ export namespace ParamArray {
         /**
          * Pixels
          */
-        PIXEL,
+        PIXEL = 0,
         /**
          * Inches
          */
-        INCH,
+        INCH = 1,
         /**
          * Millimeters
          */
-        MM,
+        MM = 2,
         /**
          * Points
          */
-        POINT,
+        POINT = 3,
         /**
          * Picas
          */
-        PICA,
+        PICA = 4,
         /**
          * Marker for end-of-builtin-units
          */
-        END,
+        END = 5,
         /**
          * Pseudo-unit percent
          */
-        PERCENT,
+        PERCENT = 65536,
     }
 
 
     /**
      * @since 2.2
+     * @default 3.0
      */
     const API_VERSION: string;
 
     /**
      * The dark gray value for the default checkerboard pattern.
+     * @default 0.400000
      */
     const CHECK_DARK: number;
 
     /**
      * The dark light value for the default checkerboard pattern.
+     * @default 0.600000
      */
     const CHECK_LIGHT: number;
 
@@ -2756,65 +2759,77 @@ export namespace ParamArray {
      * The default checkerboard size in pixels. This is configurable in
      * the core but GIMP plug-ins can't access the user preference and
      * should use this constant instead.
+     * @default 8
      */
     const CHECK_SIZE: number;
 
     /**
      * The default small checkerboard size in pixels.
+     * @default 4
      */
     const CHECK_SIZE_SM: number;
 
     /**
      * The object property is to be treated as part of the parent object.
+     * @default 2
      */
     const CONFIG_PARAM_AGGREGATE: number;
 
     /**
      * Changes to this property should be confirmed by the user before
      * being applied.
+     * @default 8
      */
     const CONFIG_PARAM_CONFIRM: number;
 
     /**
      * Don't serialize this property if it has the default value.
+     * @default 16
      */
     const CONFIG_PARAM_DEFAULTS: number;
 
     /**
      * Ignore this property when comparing objects.
+     * @default 64
      */
     const CONFIG_PARAM_DONT_COMPARE: number;
 
     /**
      * The default flags that should be used for serializable {@link Gimp.Config}
      * properties.
+     * @default 7
      */
     const CONFIG_PARAM_FLAGS: number;
 
     /**
      * Minimum shift count to be used for core application defined
      * {@link GObject.ParamFlags}.
+     * @default 7
      */
     const CONFIG_PARAM_FLAG_SHIFT: number;
 
     /**
      * This property exists for obscure reasons or is needed for backward
      * compatibility. Ignore the value read and don't serialize it.
+     * @default 32
      */
     const CONFIG_PARAM_IGNORE: number;
 
     /**
      * Changes to this property take effect only after a restart.
+     * @default 4
      */
     const CONFIG_PARAM_RESTART: number;
 
     /**
      * A property that can and should be serialized and deserialized.
+     * @default 1
      */
     const CONFIG_PARAM_SERIALIZE: number;
 
     /**
      * The major GIMP version number.
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
@@ -2823,6 +2838,7 @@ export namespace ParamArray {
      * somewhat arbitrary value that can be used when an upper value for
      * pixel sizes is needed; for example to give a spin button an upper
      * limit.
+     * @default 524288
      */
     const MAX_IMAGE_SIZE: number;
 
@@ -2831,6 +2847,7 @@ export namespace ParamArray {
      * for a memory size (in bytes) is needed. It is smaller than
      * `G_MAXDOUBLE` since the `GimpMemsizeEntry` doesn't handle larger
      * values.
+     * @default 4398046511104
      */
     const MAX_MEMSIZE: number;
 
@@ -2839,21 +2856,25 @@ export namespace ParamArray {
      * a somewhat arbitrary value that can be used to when an upper value
      * for a resolution is needed. GIMP will not accept resolutions larger
      * than this value.
+     * @default 1048576.000000
      */
     const MAX_RESOLUTION: number;
 
     /**
      * The micro GIMP version number.
+     * @default 4
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor GIMP version number.
+     * @default 2
      */
     const MINOR_VERSION: number;
 
     /**
      * The minimum width and height of a GIMP image in pixels.
+     * @default 1
      */
     const MIN_IMAGE_SIZE: number;
 
@@ -2862,6 +2883,7 @@ export namespace ParamArray {
      * a somewhat arbitrary value that can be used when a lower value for a
      * resolution is needed. GIMP will not accept resolutions smaller than
      * this value.
+     * @default 0.005000
      */
     const MIN_RESOLUTION: number;
 
@@ -2878,6 +2900,7 @@ export namespace ParamArray {
      * 
      *  - one of the classes implemented by modules (currently `GimpColorDisplay`,
      *    `GimpColorSelector` and `GimpController`).
+     * @default 5
      */
     const MODULE_ABI_VERSION: number;
 
@@ -2887,50 +2910,75 @@ export namespace ParamArray {
      * the last run values to be restored.
      * 
      * Since 3.0
+     * @default 2
      */
     const PARAM_DONT_SERIALIZE: number;
 
     /**
      * Minimum shift count to be used for libgimpconfig defined
      * {@link GObject.ParamFlags} (see libgimpconfig/gimpconfig-params.h).
+     * @default 2
      */
     const PARAM_FLAG_SHIFT: number;
 
     /**
      * Since 3.0
+     * @default 1
      */
     const PARAM_NO_VALIDATE: number;
 
     /**
      * @since 2.4
+     * @default 1
      */
     const PARAM_READABLE: number;
 
     /**
      * @since 2.4
+     * @default 3
      */
     const PARAM_READWRITE: number;
 
     /**
      * @since 2.4
+     * @default 224
      */
     const PARAM_STATIC_STRINGS: number;
 
     /**
      * @since 2.4
+     * @default 2
      */
     const PARAM_WRITABLE: number;
 
+    /**
+     * @default 8388608
+     */
     const PARASITE_ATTACH_GRANDPARENT: number;
 
+    /**
+     * @default 32768
+     */
     const PARASITE_ATTACH_PARENT: number;
 
+    /**
+     * @default 0
+     */
     const PARASITE_GRANDPARENT_PERSISTENT: number;
 
+    /**
+     * @default 0
+     */
     const PARASITE_GRANDPARENT_UNDOABLE: number;
 
+    /**
+     * @default 0
+     */
     const PARASITE_PARENT_PERSISTENT: number;
 
+    /**
+     * @default 0
+     */
     const PARASITE_PARENT_UNDOABLE: number;
 
     /**
@@ -2938,6 +2986,7 @@ export namespace ParamArray {
      * reloading. A non persistent parasite will only be available during the
      * current session.
      * See {@link Gimp.Parasite}.
+     * @default 1
      */
     const PARASITE_PERSISTENT: number;
 
@@ -2945,13 +2994,18 @@ export namespace ParamArray {
      * An undoable parasite that was added, can be removed using the Undo action.
      * If this flag is not set, undoing will not change the parasite.
      * See {@link Gimp.Parasite}.
+     * @default 2
      */
     const PARASITE_UNDOABLE: number;
 
+    /**
+     * @default 4
+     */
     const PIXPIPE_MAXDIM: number;
 
     /**
      * The GIMP version as a string.
+     * @default 3.2.4
      */
     const VERSION: string;
 
@@ -5661,6 +5715,7 @@ export namespace ParamArray {
      * @param file a {@link Gio.File}
      * @returns a newly allocated NUL-terminated UTF-8 string, or `null` if               unexpanding failed.
      * @since 2.10
+     * @throws GLib.Error
      */
     function file_get_config_path(file: Gio.File): string;
 
@@ -5744,6 +5799,7 @@ export namespace ParamArray {
      * @param path a NUL-terminated string in UTF-8 encoding
      * @returns a newly allocated {@link Gio.File},          or `null` if the expansion failed.
      * @since 2.10
+     * @throws GLib.Error
      */
     function file_new_for_config_path(path: string): Gio.File | null;
 
@@ -5768,6 +5824,7 @@ export namespace ParamArray {
      * @param file a {@link Gio.File}
      * @returns `true` on success, `false` otherwise. On `false`, `error`               is set.
      * @since 2.10
+     * @throws GLib.Error
      */
     function file_show_in_file_manager(file: Gio.File): boolean;
 
@@ -8177,47 +8234,47 @@ export namespace ParamArray {
         /**
          * Handles RGB images
          */
-        CAN_HANDLE_RGB,
+        CAN_HANDLE_RGB = 1,
         /**
          * Handles grayscale images
          */
-        CAN_HANDLE_GRAY,
+        CAN_HANDLE_GRAY = 2,
         /**
          * Handles indexed images
          */
-        CAN_HANDLE_INDEXED,
+        CAN_HANDLE_INDEXED = 4,
         /**
          * Handles two-color indexed images
          */
-        CAN_HANDLE_BITMAP,
+        CAN_HANDLE_BITMAP = 8,
         /**
          * Handles alpha channels
          */
-        CAN_HANDLE_ALPHA,
+        CAN_HANDLE_ALPHA = 16,
         /**
          * Handles layers
          */
-        CAN_HANDLE_LAYERS,
+        CAN_HANDLE_LAYERS = 32,
         /**
          * Handles animation of layers
          */
-        CAN_HANDLE_LAYERS_AS_ANIMATION,
+        CAN_HANDLE_LAYERS_AS_ANIMATION = 64,
         /**
          * Handles layer masks
          */
-        CAN_HANDLE_LAYER_MASKS,
+        CAN_HANDLE_LAYER_MASKS = 128,
         /**
          * Handles layer effects
          */
-        CAN_HANDLE_LAYER_EFFECTS,
+        CAN_HANDLE_LAYER_EFFECTS = 256,
         /**
          * Needs alpha channels
          */
-        NEEDS_ALPHA,
+        NEEDS_ALPHA = 512,
         /**
          * Needs to crop content to image bounds
          */
-        NEEDS_CROP,
+        NEEDS_CROP = 1024,
     }
 
 
@@ -8229,27 +8286,27 @@ export namespace ParamArray {
         /**
          * Do not load the metadata
          */
-        NONE,
+        NONE = 0,
         /**
          * Load the comment
          */
-        COMMENT,
+        COMMENT = 1,
         /**
          * Load the resolution
          */
-        RESOLUTION,
+        RESOLUTION = 2,
         /**
          * Load the orientation (rotation)
          */
-        ORIENTATION,
+        ORIENTATION = 4,
         /**
          * Load the colorspace
          */
-        COLORSPACE,
+        COLORSPACE = 8,
         /**
          * Load all of the above
          */
-        ALL,
+        ALL = 4294967295,
     }
 
 
@@ -8261,38 +8318,38 @@ export namespace ParamArray {
         /**
          * Save EXIF
          */
-        EXIF,
+        EXIF = 1,
         /**
          * Save XMP
          */
-        XMP,
+        XMP = 2,
         /**
          * Save IPTC
          */
-        IPTC,
+        IPTC = 4,
         /**
          * Save a thumbnail of the image
          */
-        THUMBNAIL,
+        THUMBNAIL = 8,
         /**
          * Save the image's color profile
          *                                    Since: 2.10.10
          */
-        COLOR_PROFILE,
+        COLOR_PROFILE = 16,
         /**
          * Save the image's comment
          *                                    Since: 3.0
          */
-        COMMENT,
+        COMMENT = 32,
         /**
          * Update metadata automatically
          *                                    Since: 3.2
          */
-        UPDATE,
+        UPDATE = 64,
         /**
          * Save all of the above
          */
-        ALL,
+        ALL = 4294967295,
     }
 
 
@@ -8311,20 +8368,20 @@ export namespace ParamArray {
         /**
          * Handles image with one selected drawable.
          */
-        DRAWABLE,
+        DRAWABLE = 1,
         /**
          * Handles image with several selected drawables.
          */
-        DRAWABLES,
+        DRAWABLES = 4,
         /**
          * Handles image with no selected drawables.
          */
-        NO_DRAWABLES,
+        NO_DRAWABLES = 8,
         /**
          * Handles no image.
          */
-        NO_IMAGE,
-        ALWAYS,
+        NO_IMAGE = 16,
+        ALWAYS = 2147483647,
     }
 
 
@@ -8859,7 +8916,7 @@ export namespace ParamArray {
              * @signal
              * @run-first
              */
-            "sensitivity-changed": (arg0: string) => void;
+            "sensitivity-changed": (object: string) => void;
         }
 
         // Constructor properties interface
@@ -9266,6 +9323,7 @@ export namespace ParamArray {
         /**
          * @returns the default CMYK color profile.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_cmyk_color_profile(): ColorProfile;
 
@@ -9277,6 +9335,7 @@ export namespace ParamArray {
         /**
          * @returns the default display color profile.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_display_color_profile(): ColorProfile;
 
@@ -9298,6 +9357,7 @@ export namespace ParamArray {
         /**
          * @returns the default grayscale color profile.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_gray_color_profile(): ColorProfile;
 
@@ -9315,6 +9375,7 @@ export namespace ParamArray {
         /**
          * @returns the default RGB color profile.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_rgb_color_profile(): ColorProfile;
 
@@ -9326,6 +9387,7 @@ export namespace ParamArray {
         /**
          * @returns the default soft-proofing color                                profile.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_simulation_color_profile(): ColorProfile;
 
@@ -9441,6 +9503,7 @@ export namespace ParamArray {
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} format.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_format(format: Babl.Object, intent: ColorRenderingIntent): Babl.Object;
 
@@ -9489,6 +9552,7 @@ export namespace ParamArray {
          * @param intent a {@link Gimp.ColorRenderingIntent}
          * @returns the new {@link Babl.Object} space.
          * @since 2.10.6
+         * @throws GLib.Error
          */
         get_space(intent: ColorRenderingIntent): Babl.Object;
 
@@ -9558,6 +9622,7 @@ export namespace ParamArray {
          * @param file a {@link Gio.File}
          * @returns `true` on success, `false` if an error occurred.
          * @since 2.10
+         * @throws GLib.Error
          */
         save_to_file(file: Gio.File): boolean;
     }
@@ -9570,7 +9635,7 @@ export namespace ParamArray {
              * @signal
              * @run-first
              */
-            progress: (arg0: number) => void;
+            progress: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -13841,6 +13906,7 @@ export namespace ParamArray {
          * @param file The file `image` was saved to or NULL if file was not saved yet
          * @returns Filtered metadata or `null` in case of failure.          Use [GObject.Object.unref] when returned metadata are no          longer needed
          * @since 3.0
+         * @throws GLib.Error
          */
         metadata_save_filter(mime_type: string, metadata: Metadata, flags: MetadataSaveFlags, file: Gio.File): Metadata;
 
@@ -16502,6 +16568,7 @@ export namespace ParamArray {
          * @param file The file to save the metadata to
          * @returns `true` on success, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         save_to_file(file: Gio.File): boolean;
 
@@ -16546,6 +16613,7 @@ export namespace ParamArray {
          * @param exif_data The blob of Exif data to set
          * @returns `true` on success, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_from_exif(exif_data: Uint8Array | string): boolean;
 
@@ -16554,6 +16622,7 @@ export namespace ParamArray {
          * @param iptc_data The blob of Iptc data to set
          * @returns `true` on success, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_from_iptc(iptc_data: Uint8Array | string): boolean;
 
@@ -16562,6 +16631,7 @@ export namespace ParamArray {
          * @param xmp_data The blob of XMP data to set
          * @returns `true` on success, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_from_xmp(xmp_data: Uint8Array | string): boolean;
 
@@ -22637,6 +22707,7 @@ export namespace ParamArray {
          * programming error to pass a file of invalid format.
          * @param file a {@link Gio.File} which can be processed by `procedure`.
          * @returns `true` if dimensions could be extracted.
+         * @throws GLib.Error
          */
         extract_dimensions(file: Gio.File): [boolean, VectorLoadData];
     }
@@ -22746,6 +22817,7 @@ export namespace ParamArray {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          * @since 2.10
+         * @throws GLib.Error
          */
         deserialize_file(file: Gio.File, data: null): boolean;
 
@@ -22757,6 +22829,7 @@ export namespace ParamArray {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          * @since 3.0
+         * @throws GLib.Error
          */
         deserialize_parasite(parasite: Parasite, data: null): boolean;
 
@@ -22789,6 +22862,7 @@ export namespace ParamArray {
          * @param data user data passed to the deserialize implementation.
          * @returns Whether deserialization succeeded.
          * @since 2.10
+         * @throws GLib.Error
          */
         deserialize_stream(input: Gio.InputStream, data: null): boolean;
 
@@ -22800,6 +22874,7 @@ export namespace ParamArray {
          * @param data client data
          * @returns `true` if deserialization succeeded, `false` otherwise.
          * @since 2.4
+         * @throws GLib.Error
          */
         deserialize_string(text: string[], data: null): boolean;
 
@@ -22904,6 +22979,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns `true` if serialization succeeded, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         serialize_to_file(file: Gio.File, header: string | null, footer: string | null, data: null): boolean;
 
@@ -22926,6 +23002,7 @@ export namespace ParamArray {
          * @param data user data passed to the serialize implementation.
          * @returns Whether serialization succeeded.
          * @since 2.10
+         * @throws GLib.Error
          */
         serialize_to_stream(output: Gio.OutputStream, header: string | null, footer: string | null, data: null): boolean;
 
@@ -23012,6 +23089,7 @@ export namespace ParamArray {
          * @param footer text to include as comment at the bottom of the file
          * @returns `true` if everything could be successfully written,          `false` otherwise
          * @since 2.4
+         * @throws GLib.Error
          */
         finish(footer: string): boolean;
 

@@ -27,25 +27,25 @@ export namespace Grl {
      * @gir-type Enum
      */
     enum CoreError {
-        BROWSE_FAILED,
-        SEARCH_FAILED,
-        SEARCH_NULL_UNSUPPORTED,
-        QUERY_FAILED,
-        METADATA_FAILED,
-        RESOLVE_FAILED,
-        MEDIA_NOT_FOUND,
-        STORE_FAILED,
-        REMOVE_FAILED,
-        SET_METADATA_FAILED,
-        MEDIA_FROM_URI_FAILED,
-        CONFIG_LOAD_FAILED,
-        CONFIG_FAILED,
-        UNREGISTER_SOURCE_FAILED,
-        LOAD_PLUGIN_FAILED,
-        UNLOAD_PLUGIN_FAILED,
-        REGISTER_METADATA_KEY_FAILED,
-        NOTIFY_CHANGED_FAILED,
-        OPERATION_CANCELLED,
+        BROWSE_FAILED = 1,
+        SEARCH_FAILED = 2,
+        SEARCH_NULL_UNSUPPORTED = 3,
+        QUERY_FAILED = 4,
+        METADATA_FAILED = 5,
+        RESOLVE_FAILED = 6,
+        MEDIA_NOT_FOUND = 7,
+        STORE_FAILED = 8,
+        REMOVE_FAILED = 9,
+        SET_METADATA_FAILED = 10,
+        MEDIA_FROM_URI_FAILED = 11,
+        CONFIG_LOAD_FAILED = 12,
+        CONFIG_FAILED = 13,
+        UNREGISTER_SOURCE_FAILED = 14,
+        LOAD_PLUGIN_FAILED = 15,
+        UNLOAD_PLUGIN_FAILED = 16,
+        REGISTER_METADATA_KEY_FAILED = 17,
+        NOTIFY_CHANGED_FAILED = 18,
+        OPERATION_CANCELLED = 19,
     }
 
 
@@ -54,13 +54,13 @@ export namespace Grl {
      * @gir-type Enum
      */
     enum LogLevel {
-        NONE,
-        ERROR,
-        WARNING,
-        MESSAGE,
-        INFO,
-        DEBUG,
-        LAST,
+        NONE = 0,
+        ERROR = 1,
+        WARNING = 2,
+        MESSAGE = 3,
+        INFO = 4,
+        DEBUG = 5,
+        LAST = 6,
     }
 
 
@@ -69,9 +69,9 @@ export namespace Grl {
      * @gir-type Enum
      */
     enum MediaSerializeType {
-        BASIC,
-        PARTIAL,
-        FULL,
+        BASIC = 0,
+        PARTIAL = 1,
+        FULL = 2,
     }
 
 
@@ -87,9 +87,9 @@ export namespace Grl {
      * @gir-type Enum
      */
     enum MediaSourceChangeType {
-        CHANGED,
-        ADDED,
-        REMOVED,
+        CHANGED = 0,
+        ADDED = 1,
+        REMOVED = 2,
     }
 
 
@@ -104,56 +104,122 @@ export namespace Grl {
      * @gir-type Enum
      */
     enum PluginRank {
-        LOWEST,
-        LOW,
-        DEFAULT,
-        HIGH,
-        HIGHEST,
+        LOWEST = -64,
+        LOW = -32,
+        DEFAULT = 0,
+        HIGH = 32,
+        HIGHEST = 64,
     }
 
 
+    /**
+     * @default api-key
+     */
     const CONFIG_KEY_APIKEY: string;
 
+    /**
+     * @default api-key-blob
+     */
     const CONFIG_KEY_APIKEY_BLOB: string;
 
+    /**
+     * @default api-secret
+     */
     const CONFIG_KEY_APISECRET: string;
 
+    /**
+     * @default api-token
+     */
     const CONFIG_KEY_APITOKEN: string;
 
+    /**
+     * @default password
+     */
     const CONFIG_KEY_PASSWORD: string;
 
+    /**
+     * @default target-plugin
+     */
     const CONFIG_KEY_PLUGIN: string;
 
+    /**
+     * @default target-source
+     */
     const CONFIG_KEY_SOURCE: string;
 
+    /**
+     * @default username
+     */
     const CONFIG_KEY_USERNAME: string;
 
+    /**
+     * @default p
+     */
     const KEYID_FORMAT: string;
 
+    /**
+     * @default author
+     */
     const MEDIA_PLUGIN_AUTHOR: string;
 
+    /**
+     * @default description
+     */
     const MEDIA_PLUGIN_DESCRIPTION: string;
 
+    /**
+     * @default license
+     */
     const MEDIA_PLUGIN_LICENSE: string;
 
+    /**
+     * @default name
+     */
     const MEDIA_PLUGIN_NAME: string;
 
+    /**
+     * @default site
+     */
     const MEDIA_PLUGIN_SITE: string;
 
+    /**
+     * @default version
+     */
     const MEDIA_PLUGIN_VERSION: string;
 
+    /**
+     * @default -1
+     */
     const METADATA_KEY_CHILDCOUNT_UNKNOWN: number;
 
+    /**
+     * @default 16
+     */
     const PADDING: number;
 
+    /**
+     * @default 8
+     */
     const PADDING_SMALL: number;
 
+    /**
+     * @default GRL_PLUGIN_LIST
+     */
     const PLUGIN_LIST_VAR: string;
 
+    /**
+     * @default GRL_PLUGIN_PATH
+     */
     const PLUGIN_PATH_VAR: string;
 
+    /**
+     * @default GRL_PLUGIN_RANKS
+     */
     const PLUGIN_RANKS_VAR: string;
 
+    /**
+     * @default -1
+     */
     const SOURCE_REMAINING_UNKNOWN: number;
 
     /**
@@ -280,6 +346,7 @@ export namespace Grl {
      * @param flags the operation flags
      * @returns a list with {@link Grl.Media} elements
      * @since 0.1.6
+     * @throws GLib.Error
      */
     function multiple_search_sync(sources: MediaSource[], text: string, keys: GObject.ParamSpec[], count: number, flags: MetadataResolutionFlags): Media[];
 
@@ -378,10 +445,10 @@ export namespace Grl {
      * @gir-type Flags
      */
     enum MetadataResolutionFlags {
-        NORMAL,
-        FULL,
-        IDLE_RELAY,
-        FAST_ONLY,
+        NORMAL = 0,
+        FULL = 1,
+        IDLE_RELAY = 2,
+        FAST_ONLY = 4,
     }
 
 
@@ -390,8 +457,8 @@ export namespace Grl {
      * @gir-type Flags
      */
     enum MetadataWritingFlags {
-        NORMAL,
-        FULL,
+        NORMAL = 0,
+        FULL = 1,
     }
 
 
@@ -401,18 +468,18 @@ export namespace Grl {
      * @gir-type Flags
      */
     enum SupportedOps {
-        NONE,
-        METADATA,
-        RESOLVE,
-        BROWSE,
-        SEARCH,
-        QUERY,
-        STORE,
-        STORE_PARENT,
-        REMOVE,
-        SET_METADATA,
-        MEDIA_FROM_URI,
-        NOTIFY_CHANGE,
+        NONE = 0,
+        METADATA = 1,
+        RESOLVE = 2,
+        BROWSE = 4,
+        SEARCH = 8,
+        QUERY = 16,
+        STORE = 32,
+        STORE_PARENT = 64,
+        REMOVE = 128,
+        SET_METADATA = 256,
+        MEDIA_FROM_URI = 512,
+        NOTIFY_CHANGE = 1024,
     }
 
 
@@ -2108,7 +2175,7 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "content-changed": (arg0: null[], arg1: MediaSourceChangeType, arg2: boolean) => void;
+            "content-changed": (changed_medias: null[], change_type: MediaSourceChangeType, location_unknown: boolean) => void;
             "notify::auto-split-threshold": (pspec: GObject.ParamSpec) => void;
             "notify::source-desc": (pspec: GObject.ParamSpec) => void;
             "notify::source-id": (pspec: GObject.ParamSpec) => void;
@@ -2290,6 +2357,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          * @since 0.1.6
+         * @throws GLib.Error
          */
         browse_sync(container: Media, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
 
@@ -2347,6 +2415,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a filled {@link Grl.Media}
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_media_from_uri_sync(uri: string, keys: KeyID[], flags: MetadataResolutionFlags): Media;
 
@@ -2382,6 +2451,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a filled {@link Grl.Media}
          * @since 0.1.6
+         * @throws GLib.Error
          */
         metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataResolutionFlags): Media;
 
@@ -2431,6 +2501,7 @@ export namespace Grl {
          * of changes in the content.
          * @returns `TRUE` if initialization has succeed.
          * @since 0.1.9
+         * @throws GLib.Error
          */
         notify_change_start(): boolean;
 
@@ -2440,6 +2511,7 @@ export namespace Grl {
          * the content.
          * @returns `TRUE` if stop has succeed.
          * @since 0.1.9
+         * @throws GLib.Error
          */
         notify_change_stop(): boolean;
 
@@ -2478,6 +2550,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          * @since 0.1.6
+         * @throws GLib.Error
          */
         query_sync(query: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
 
@@ -2497,6 +2570,7 @@ export namespace Grl {
          * This method is synchronous.
          * @param media a data transfer object
          * @since 0.1.6
+         * @throws GLib.Error
          */
         remove_sync(media: Media): void;
 
@@ -2541,6 +2615,7 @@ export namespace Grl {
          * @param flags the resolution mode
          * @returns a {@link GLib.List} with {@link Grl.Media}
          * @since 0.1.6
+         * @throws GLib.Error
          */
         search_sync(text: string, keys: GObject.ParamSpec[], skip: number, count: number, flags: MetadataResolutionFlags): Media[];
 
@@ -2577,6 +2652,7 @@ export namespace Grl {
          * @param parent a {@link Grl.MediaBox} to store the data transfer objects
          * @param media a {@link Grl.Media} data transfer object
          * @since 0.1.6
+         * @throws GLib.Error
          */
         store_sync(parent: MediaBox, media: Media): void;
 
@@ -3135,6 +3211,7 @@ export namespace Grl {
          * @param flags bitwise mask of {@link Grl.MetadataResolutionFlags} with the resolution strategy
          * @returns the updated {@link Grl.Media}
          * @since 0.1.6
+         * @throws GLib.Error
          */
         resolve_sync(keys: GObject.ParamSpec[], media: Media, flags: MetadataResolutionFlags): Media;
 
@@ -3166,6 +3243,7 @@ export namespace Grl {
          * @param keys a list of {@link Grl.KeyID} whose values we want to change
          * @param flags Flags to configure specific behaviors of the operation.
          * @since 0.1.6
+         * @throws GLib.Error
          */
         set_metadata_sync(media: Media, keys: GObject.ParamSpec[], flags: MetadataWritingFlags): GObject.ParamSpec[];
 
@@ -3244,14 +3322,14 @@ export namespace Grl {
              * @action
              * @run-first
              */
-            "source-added": (arg0: MediaPlugin) => void;
+            "source-added": (plugin: MediaPlugin) => void;
             /**
              * Signals that a plugin has been removed from the registry.
              * @signal
              * @action
              * @run-first
              */
-            "source-removed": (arg0: MediaPlugin) => void;
+            "source-removed": (plugin: MediaPlugin) => void;
         }
 
         // Constructor properties interface
@@ -3308,6 +3386,7 @@ export namespace Grl {
          * Add a configuration for a plugin/source.
          * @param config a configuration set
          * @since 0.1.7
+         * @throws GLib.Error
          */
         add_config(config: Config): boolean;
 
@@ -3316,6 +3395,7 @@ export namespace Grl {
          * @param config_file a key-value file containing the configuration
          * @returns `true` on success
          * @since 0.1.7
+         * @throws GLib.Error
          */
         add_config_from_file(config_file: string): boolean;
 
@@ -3369,6 +3449,7 @@ export namespace Grl {
          * @param library_filename the path to the so file
          * @returns `true` if the module is loaded correctly
          * @since 0.1.7
+         * @throws GLib.Error
          */
         load(library_filename: string): boolean;
 
@@ -3382,6 +3463,7 @@ export namespace Grl {
          * `true`% otherwise.
          * @returns `false`% is all the configured plugin paths are invalid,
          * @since 0.1.1
+         * @throws GLib.Error
          */
         load_all(): boolean;
 
@@ -3394,6 +3476,7 @@ export namespace Grl {
          * @param plugin_id plugin identifier
          * @returns `true` if the plugin is loaded correctly
          * @since 0.1.14
+         * @throws GLib.Error
          */
         load_by_id(plugin_id: string): boolean;
 
@@ -3403,6 +3486,7 @@ export namespace Grl {
          * @param path the path to the directory
          * @returns `true` if the directory is valid.
          * @since 0.1.7
+         * @throws GLib.Error
          */
         load_directory(path: string): boolean;
 
@@ -3441,6 +3525,7 @@ export namespace Grl {
          * @param key The key to register
          * @returns The {@link Grl.KeyID} registered
          * @since 0.1.7
+         * @throws GLib.Error
          */
         register_metadata_key(key: GObject.ParamSpec): GObject.ParamSpec;
 
@@ -3466,6 +3551,7 @@ export namespace Grl {
          * @param source the source to register
          * @returns `true` if success, `false`% otherwise.
          * @since 0.1.7
+         * @throws GLib.Error
          */
         register_source(plugin: PluginInfo, source: MediaPlugin): boolean;
 
@@ -3484,6 +3570,7 @@ export namespace Grl {
          * @param plugin_id the identifier of the plugin
          * @returns `true`% on success.
          * @since 0.1.7
+         * @throws GLib.Error
          */
         unload(plugin_id: string): boolean;
 
@@ -3492,6 +3579,7 @@ export namespace Grl {
          * @param source the source to unregister
          * @returns `true` if success, `false`% otherwise.
          * @since 0.1.7
+         * @throws GLib.Error
          */
         unregister_source(source: MediaPlugin): boolean;
     }

@@ -71,27 +71,27 @@ export namespace GstTranscoder {
         /**
          * Sink position changed
          */
-        POSITION_UPDATED,
+        POSITION_UPDATED = 0,
         /**
          * Duration of stream changed
          */
-        DURATION_CHANGED,
+        DURATION_CHANGED = 1,
         /**
          * Pipeline state changed
          */
-        STATE_CHANGED,
+        STATE_CHANGED = 2,
         /**
          * Transcoding is done
          */
-        DONE,
+        DONE = 3,
         /**
          * Message contains an error
          */
-        ERROR,
+        ERROR = 4,
         /**
          * Message contains an error
          */
-        WARNING,
+        WARNING = 5,
     }
 
 
@@ -111,16 +111,16 @@ export namespace GstTranscoder {
         /**
          * the transcoder is stopped.
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * the transcoder is paused.
          */
-        PAUSED,
+        PAUSED = 1,
         /**
          * the transcoder is currently transcoding a
          * stream.
          */
-        PLAYING,
+        PLAYING = 2,
     }
 
 
@@ -413,6 +413,7 @@ export namespace GstTranscoder {
          * Run the transcoder task synchonously. You can connect
          * to the 'position' signal to get information about the
          * progress of the transcoding.
+         * @throws GLib.Error
          */
         run(): boolean;
 
@@ -458,27 +459,27 @@ export namespace GstTranscoder {
              * @signal
              * @run-last
              */
-            "duration-changed": (arg0: number) => void;
+            "duration-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error, arg1: Gst.Structure) => void;
+            error: (object: GLib.Error, p0: Gst.Structure) => void;
             /**
              * @signal
              * @run-last
              */
-            "position-updated": (arg0: number) => void;
+            "position-updated": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: TranscoderState) => void;
+            "state-changed": (object: TranscoderState) => void;
             /**
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error, arg1: Gst.Structure) => void;
+            warning: (object: GLib.Error, p0: Gst.Structure) => void;
             "notify::transcoder": (pspec: GObject.ParamSpec) => void;
         }
 

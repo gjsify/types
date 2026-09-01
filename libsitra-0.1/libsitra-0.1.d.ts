@@ -247,19 +247,19 @@ export namespace Libsitra {
             /**
              * @signal
              */
-            "installation-started": (arg0: string) => void;
+            "installation-started": (font_family: string) => void;
             /**
              * @signal
              */
-            "installation-progress": (arg0: string, arg1: number) => void;
+            "installation-progress": (font_family: string, progress: number) => void;
             /**
              * @signal
              */
-            "installation-completed": (arg0: string, arg1: boolean, arg2: string | null) => void;
+            "installation-completed": (font_family: string, success: boolean, error_message: string | null) => void;
             /**
              * @signal
              */
-            "uninstallation-completed": (arg0: string, arg1: boolean, arg2: string | null) => void;
+            "uninstallation-completed": (font_family: string, success: boolean, error_message: string | null) => void;
         }
 
         // Constructor properties interface
@@ -328,6 +328,7 @@ export namespace Libsitra {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         install_finish(_res_: Gio.AsyncResult): void;
 
@@ -352,6 +353,7 @@ export namespace Libsitra {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         uninstall_finish(_res_: Gio.AsyncResult): void;
     }

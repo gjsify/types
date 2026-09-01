@@ -27,50 +27,65 @@ export namespace Passim {
      * @gir-type Enum
      */
     enum Status {
-        UNKNOWN,
-        STARTING,
-        LOADING,
-        RUNNING,
-        DISABLED_METERED,
+        UNKNOWN = 0,
+        STARTING = 1,
+        LOADING = 2,
+        RUNNING = 3,
+        DISABLED_METERED = 4,
     }
 
 
+    /**
+     * @default org.freedesktop.Passim
+     */
     const DBUS_INTERFACE: string;
 
+    /**
+     * @default /
+     */
     const DBUS_PATH: string;
 
+    /**
+     * @default org.freedesktop.Passim
+     */
     const DBUS_SERVICE: string;
 
     /**
      * The item is not active for some reason.
      * @since 0.1.0
+     * @default 1
      */
     const ITEM_FLAG_DISABLED: number;
 
     /**
      * Only register the item when the machine has been rebooted.
      * @since 0.1.0
+     * @default 2
      */
     const ITEM_FLAG_NEXT_REBOOT: number;
 
     /**
      * No item flags are set.
      * @since 0.1.0
+     * @default 0
      */
     const ITEM_FLAG_NONE: number;
 
     /**
      * The compile-time major version
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The compile-time micro version
+     * @default 12
      */
     const MICRO_VERSION: number;
 
     /**
      * The compile-time minor version
+     * @default 1
      */
     const MINOR_VERSION: number;
 
@@ -147,6 +162,7 @@ export namespace Passim {
          * Get items currently published by the daemon.
          * @returns items, or `null` for error
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_items(): Item[];
 
@@ -182,6 +198,7 @@ export namespace Passim {
          * Loads properties from the passim daemon.
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -190,6 +207,7 @@ export namespace Passim {
          * @param item a {@link Passim.Item}
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         publish(item: Item): boolean;
 
@@ -198,6 +216,7 @@ export namespace Passim {
          * @param hash an item hash value
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         unpublish(hash: string): boolean;
     }
@@ -387,6 +406,7 @@ export namespace Passim {
          * Loads the item from a file on disk.
          * @param filename a filename with full path
          * @since 0.1.0
+         * @throws GLib.Error
          */
         load_filename(filename: string): boolean;
 

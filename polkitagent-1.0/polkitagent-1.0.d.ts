@@ -29,6 +29,7 @@ export namespace PolkitAgent {
      * @param listener A {@link PolkitAgent.Listener}.
      * @param subject The subject to become an authentication agent for, typically a {@link Polkit.UnixSession} object.
      * @param object_path The D-Bus object path to use for the authentication agent or `null` for the default object path.
+     * @throws GLib.Error
      */
     function register_listener(listener: Listener, subject: Polkit.Subject, object_path: string): boolean;
 
@@ -47,11 +48,11 @@ export namespace PolkitAgent {
         /**
          * No flags are set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Run the listener in a dedicated thread.
          */
-        RUN_IN_THREAD,
+        RUN_IN_THREAD = 1,
     }
 
 
@@ -245,6 +246,7 @@ export namespace PolkitAgent {
          * `polkit_agent_listener_initiate_authentication()` for details.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} function passed to `polkit_agent_listener_initiate_authentication()`.
          * @returns `true` if `error` is set.
+         * @throws GLib.Error
          */
         initiate_authentication_finish(res: Gio.AsyncResult): boolean;
 
@@ -270,6 +272,7 @@ export namespace PolkitAgent {
          * @param object_path The D-Bus object path to use for the authentication agent or `null` for the default object path.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
+         * @throws GLib.Error
          */
         register(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: Gio.Cancellable | null): null;
 
@@ -282,6 +285,7 @@ export namespace PolkitAgent {
          * @param options A {@link GLib.Variant} with options or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `null` if `error` is set, otherwise a registration handle that can be used with `polkit_agent_listener_unregister()`.
+         * @throws GLib.Error
          */
         register_with_options(flags: RegisterFlags, subject: Polkit.Subject, object_path: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): null;
     }
@@ -299,7 +303,7 @@ export namespace PolkitAgent {
              * @signal
              * @run-last
              */
-            completed: (arg0: boolean) => void;
+            completed: (gained_authorization: boolean) => void;
             /**
              * Emitted when the user is requested to answer a question.
              * 
@@ -307,19 +311,19 @@ export namespace PolkitAgent {
              * @signal
              * @run-last
              */
-            request: (arg0: string, arg1: boolean) => void;
+            request: (request: string, echo_on: boolean) => void;
             /**
              * Emitted when there is information related to an error condition to be displayed to the user.
              * @signal
              * @run-last
              */
-            "show-error": (arg0: string) => void;
+            "show-error": (text: string) => void;
             /**
              * Emitted when there is information to be displayed to the user.
              * @signal
              * @run-last
              */
-            "show-info": (arg0: string) => void;
+            "show-info": (text: string) => void;
             "notify::cookie": (pspec: GObject.ParamSpec) => void;
             "notify::identity": (pspec: GObject.ParamSpec) => void;
         }
@@ -436,7 +440,7 @@ export namespace PolkitAgent {
              * @signal
              * @run-last
              */
-            "tty-attrs-changed": (arg0: boolean) => void;
+            "tty-attrs-changed": (object: boolean) => void;
             "notify::delay": (pspec: GObject.ParamSpec) => void;
             "notify::use-alternate-buffer": (pspec: GObject.ParamSpec) => void;
             "notify::use-color": (pspec: GObject.ParamSpec) => void;
@@ -562,6 +566,7 @@ export namespace PolkitAgent {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

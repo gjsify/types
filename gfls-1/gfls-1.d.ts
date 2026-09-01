@@ -48,34 +48,34 @@ export namespace Gfls {
         /**
          * Everything OK.
          */
-        OK,
+        OK = 0,
         /**
          * An error occurred.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Stopped at an invalid character in
          *   the `inbuf`; or the character could not be represented in the target
          *   character set. `*inbuf` is left pointing to the beginning of the invalid or
          *   unconvertible sequence.
          */
-        ILLEGAL_SEQUENCE,
+        ILLEGAL_SEQUENCE = 2,
         /**
          * The input byte sequence ends with
          *   an incomplete multi-byte character. `*inbuf` is left pointing to the
          *   beginning of the incomplete multi-byte character.
          */
-        INCOMPLETE_INPUT,
+        INCOMPLETE_INPUT = 3,
         /**
          * The output buffer has no more
          *   room for the next converted character.
          */
-        OUTPUT_BUFFER_FULL,
+        OUTPUT_BUFFER_FULL = 4,
         /**
          * A number of nonreversible
          *   conversions have been performed.
          */
-        LOSSY_CONVERSION,
+        LOSSY_CONVERSION = 5,
     }
 
 
@@ -139,6 +139,7 @@ export namespace Gfls {
      * @param allow_invalid_characters whether invalid characters are allowed.
      * @returns `true` on success, `false` otherwise.
      * @since 0.4
+     * @throws GLib.Error
      */
     function encoding_convert(input_bytes: GLib.Bytes | Uint8Array, to_codeset: string, from_codeset: string, allow_invalid_characters: boolean): [boolean, GLib.Bytes, BytesRegion];
 
@@ -246,6 +247,7 @@ export namespace Gfls {
      * @param result a {@link Gio.AsyncResult}.
      * @returns a {@link GLib.Bytes}, or `null` on error.
      * @since 0.1
+     * @throws GLib.Error
      */
     function loader_basic_load_finish(file: Gio.File, result: Gio.AsyncResult): GLib.Bytes;
 

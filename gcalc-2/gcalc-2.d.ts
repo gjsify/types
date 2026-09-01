@@ -35,9 +35,9 @@ export namespace GCalc {
      * @gir-type Enum
      */
     enum AngleUnit {
-        RADIANS,
-        DEGREES,
-        GRADIANS,
+        RADIANS = 0,
+        DEGREES = 1,
+        GRADIANS = 2,
     }
 
 
@@ -162,48 +162,48 @@ export namespace GCalc {
      * @gir-type Enum
      */
     enum ParserTokenType {
-        NONE,
-        EOF,
-        IDENTIFIER,
-        INTEGER_LITERAL,
-        REAL_LITERAL,
-        STAR,
-        PLUS,
-        DIV,
-        MINUS,
-        ASSIGN,
-        OPEN_PARENS,
-        CLOSE_PARENS,
-        CARRET,
-        CLOSE_BRACE,
-        CLOSE_BRACKET,
-        OPEN_BRACE,
-        OPEN_BRACKET,
-        STRING_LITERAL,
-        OP_AND,
-        OP_COALESCING,
-        OP_DEC,
-        OP_EQ,
-        OP_GE,
-        OP_GT,
-        OP_INC,
-        OP_LE,
-        OP_LT,
-        OP_NE,
-        OP_NEG,
-        OP_OR,
-        OP_PTR,
-        OP_SHIFT_LEFT,
-        SEMICOLON,
-        TILDE,
-        COLON,
-        COMMA,
-        DOUBLE_COLON,
-        DOT,
-        ELLIPSIS,
-        INTERR,
-        HASH,
-        CURRENCY_SYMBOL,
+        NONE = 0,
+        EOF = 1,
+        IDENTIFIER = 2,
+        INTEGER_LITERAL = 3,
+        REAL_LITERAL = 4,
+        STAR = 5,
+        PLUS = 6,
+        DIV = 7,
+        MINUS = 8,
+        ASSIGN = 9,
+        OPEN_PARENS = 10,
+        CLOSE_PARENS = 11,
+        CARRET = 12,
+        CLOSE_BRACE = 13,
+        CLOSE_BRACKET = 14,
+        OPEN_BRACE = 15,
+        OPEN_BRACKET = 16,
+        STRING_LITERAL = 17,
+        OP_AND = 18,
+        OP_COALESCING = 19,
+        OP_DEC = 20,
+        OP_EQ = 21,
+        OP_GE = 22,
+        OP_GT = 23,
+        OP_INC = 24,
+        OP_LE = 25,
+        OP_LT = 26,
+        OP_NE = 27,
+        OP_NEG = 28,
+        OP_OR = 29,
+        OP_PTR = 30,
+        OP_SHIFT_LEFT = 31,
+        SEMICOLON = 32,
+        TILDE = 33,
+        COLON = 34,
+        COMMA = 35,
+        DOUBLE_COLON = 36,
+        DOT = 37,
+        ELLIPSIS = 38,
+        INTERR = 39,
+        HASH = 40,
+        CURRENCY_SYMBOL = 41,
     }
 
 
@@ -218,9 +218,9 @@ export namespace GCalc {
      * @gir-type Enum
      */
     enum MathGroupLevel {
-        ONE,
-        TWO,
-        THREE,
+        ONE = 0,
+        TWO = 1,
+        THREE = 2,
     }
 
 
@@ -267,6 +267,9 @@ export namespace GCalc {
         emit<K extends keyof Assign.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Assign.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
     }
 
@@ -1373,6 +1376,9 @@ export namespace GCalc {
         vfunc_evaluate(): MathExpression;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         /**
@@ -1403,6 +1409,9 @@ export namespace GCalc {
         get closed(): boolean;
         set closed(val: boolean);
 
+        /**
+         * @throws GLib.Error
+         */
         verify_params(): boolean;
 
         get_param_types(): ExpressionContainer;
@@ -2209,6 +2218,9 @@ export namespace GCalc {
         get closed(): boolean;
         set closed(val: boolean);
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         get_level(): MathGroupLevel;
@@ -2392,6 +2404,7 @@ export namespace GCalc {
 
         /**
          * @param val 
+         * @throws GLib.Error
          */
         set_value(val: GObject.Value | any | null): void;
 
@@ -2483,6 +2496,7 @@ export namespace GCalc {
         /**
          * @param str 
          * @param eqman 
+         * @throws GLib.Error
          */
         parse(str: string, eqman: MathEquationManager): void;
 
@@ -2580,6 +2594,9 @@ export namespace GCalc {
         emit<K extends keyof Polynomial.SignalSignatures>(signal: K, ...args: GObject.GjsParameters<Polynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never): void;
         emit(signal: string, ...args: any[]): void;
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         /**
@@ -2759,11 +2776,13 @@ export namespace GCalc {
         // Methods
         /**
          * @param exp 
+         * @throws GLib.Error
          */
         add_expression(exp: string): void;
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         solve(str: string): MathResult;
 
@@ -2821,9 +2840,13 @@ export namespace GCalc {
 
         /**
          * @param t 
+         * @throws GLib.Error
          */
         add(t: MathTerm): MathExpression;
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         /**
@@ -2949,6 +2972,9 @@ export namespace GCalc {
         get bind(): MathVariable;
         set bind(val: MathVariable);
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         get_name(): string;
@@ -3719,6 +3745,9 @@ export namespace GCalc {
     interface MathAssign extends GObject.Object {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
     }
 
@@ -4349,8 +4378,14 @@ export namespace GCalc {
         set closed(val: boolean);
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
+        /**
+         * @throws GLib.Error
+         */
         verify_params(): boolean;
 
         get_param_types(): ExpressionContainer;
@@ -4443,6 +4478,9 @@ export namespace GCalc {
         set closed(val: boolean);
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         get_level(): MathGroupLevel;
@@ -4565,6 +4603,7 @@ export namespace GCalc {
         // Methods
         /**
          * @param val 
+         * @throws GLib.Error
          */
         set_value(val: GObject.Value | any | null): void;
 
@@ -4626,6 +4665,9 @@ export namespace GCalc {
     interface MathPolynomial extends GObject.Object, MathPolynomial.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
     }
 
@@ -4750,9 +4792,13 @@ export namespace GCalc {
         // Methods
         /**
          * @param t 
+         * @throws GLib.Error
          */
         add(t: MathTerm): MathExpression;
 
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
     }
 
@@ -4842,6 +4888,9 @@ export namespace GCalc {
         set bind(val: MathVariable);
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         evaluate(): MathExpression;
 
         get_name(): string;

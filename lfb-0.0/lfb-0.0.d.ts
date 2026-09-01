@@ -39,19 +39,19 @@ export namespace Lfb {
          * There was no feedback in the current theme for this event
          *                                  so no feedback was provided to the user.
          */
-        NOT_FOUND,
+        NOT_FOUND = -1,
         /**
          * All feedbacks finished playing their natural length
          */
-        NATURAL,
+        NATURAL = 0,
         /**
          * Feedbacks ran until the set timeout expired
          */
-        EXPIRED,
+        EXPIRED = 1,
         /**
          * The feedbacks were ended explicitly
          */
-        EXPLICIT,
+        EXPLICIT = 2,
     }
 
 
@@ -71,19 +71,19 @@ export namespace Lfb {
         /**
          * An error occurred triggering feedbacks
          */
-        ERRORED,
+        ERRORED = -1,
         /**
          * No state information yet
          */
-        NONE,
+        NONE = 0,
         /**
          * The feedbacks for this event are currently running
          */
-        RUNNING,
+        RUNNING = 1,
         /**
          * All feedbacks for this event ended
          */
-        ENDED,
+        ENDED = 2,
     }
 
 
@@ -141,6 +141,7 @@ export namespace Lfb {
      * Initialize libfeedback. This must be called before any other of libfeedback's functions.
      * @param app_id The application id
      * @returns `true` if successful, or `false` on error.
+     * @throws GLib.Error
      */
     function init(app_id: string): boolean;
 
@@ -396,6 +397,7 @@ export namespace Lfb {
          * Tells the feedback server to end all feedback for the given event as
          * soon as possible.
          * @returns `true` if successful. On error, this will return `false` and set          `error`.
+         * @throws GLib.Error
          */
         end_feedback(): boolean;
 
@@ -431,6 +433,7 @@ export namespace Lfb {
          * [`signal`@LfbEvent::feedback-ended] signal for this.
          * @param res Result object passed to the callback of {@link LfbEvent.end_feedback_async}
          * @returns `true` if ending the feedbacks was successful
+         * @throws GLib.Error
          */
         end_feedback_finish(res: Gio.AsyncResult): boolean;
 
@@ -546,6 +549,7 @@ export namespace Lfb {
          * Tells the feedback server to provide proper feedback for the give
          * event to the user.
          * @returns `true` if successful. On error, this will return `false` and set          `error`.
+         * @throws GLib.Error
          */
         trigger_feedback(): boolean;
 
@@ -581,6 +585,7 @@ export namespace Lfb {
          * errors which occurred.
          * @param res Result object passed to the callback of {@link LfbEvent.trigger_feedback_async}
          * @returns `true` if triggering the feedbacks was successful
+         * @throws GLib.Error
          */
         trigger_feedback_finish(res: Gio.AsyncResult): boolean;
     }
@@ -837,6 +842,7 @@ export namespace Lfb {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -846,6 +852,7 @@ export namespace Lfb {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusFeedbackHapticProxy;
 
@@ -1010,6 +1017,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1100,6 +1108,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -1111,6 +1120,7 @@ export namespace Lfb {
          * @param arg_pattern Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_sync(arg_app_id: string, arg_pattern: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -1294,6 +1304,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -1305,6 +1316,7 @@ export namespace Lfb {
          * @param arg_pattern Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_sync(arg_app_id: string, arg_pattern: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -1590,6 +1602,7 @@ export namespace Lfb {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1599,6 +1612,7 @@ export namespace Lfb {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusFeedbackProxy;
 
@@ -1763,6 +1777,7 @@ export namespace Lfb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1850,6 +1865,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
 
@@ -1860,6 +1876,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1911,6 +1928,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -1924,6 +1942,7 @@ export namespace Lfb {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_sync(arg_app_id: string, arg_event: string, arg_hints: GLib.Variant, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -2148,6 +2167,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
 
@@ -2158,6 +2178,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2209,6 +2230,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -2222,6 +2244,7 @@ export namespace Lfb {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_sync(arg_app_id: string, arg_event: string, arg_hints: GLib.Variant, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -2459,6 +2482,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_end_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_end_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_finish(res: Gio.AsyncResult): boolean;
 
@@ -2469,6 +2493,7 @@ export namespace Lfb {
          * @param arg_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_end_feedback_sync(arg_id: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2520,6 +2545,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_call_trigger_feedback()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_finish(res: Gio.AsyncResult): [boolean, number];
 
@@ -2533,6 +2559,7 @@ export namespace Lfb {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_trigger_feedback_sync(arg_app_id: string, arg_event: string, arg_hints: GLib.Variant, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -2653,6 +2680,7 @@ export namespace Lfb {
          * Finishes an operation started with `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `lfb_gdbus_feedback_haptic_call_vibrate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -2664,6 +2692,7 @@ export namespace Lfb {
          * @param arg_pattern Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_vibrate_sync(arg_app_id: string, arg_pattern: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, boolean];
 

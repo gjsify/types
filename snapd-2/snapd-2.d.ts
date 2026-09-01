@@ -39,27 +39,27 @@ export namespace Snapd {
         /**
          * the alias status is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * deprecated, do not use.
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * deprecated, do not use.
          */
-        ENABLED,
+        ENABLED = 2,
         /**
          * the alias is disabled.
          */
-        DISABLED,
+        DISABLED = 3,
         /**
          * the alias is automatically enabled.
          */
-        AUTO,
+        AUTO = 4,
         /**
          * the alias is manually enabled.
          */
-        MANUAL,
+        MANUAL = 5,
     }
 
 
@@ -79,15 +79,15 @@ export namespace Snapd {
         /**
          * Return all changes.
          */
-        ALL,
+        ALL = 0,
         /**
          * Return only changes that are in-progress.
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 1,
         /**
          * Return only changes that are ready.
          */
-        READY,
+        READY = 2,
     }
 
 
@@ -107,19 +107,19 @@ export namespace Snapd {
         /**
          * the confinement of the snap is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the snap is using confinement.
          */
-        STRICT,
+        STRICT = 1,
         /**
          * the snap is in dev mode (i.e. unconfined).
          */
-        DEVMODE,
+        DEVMODE = 2,
         /**
          * the snap is using classic confinement.
          */
-        CLASSIC,
+        CLASSIC = 3,
     }
 
 
@@ -139,31 +139,31 @@ export namespace Snapd {
         /**
          * Not a daemon
          */
-        NONE,
+        NONE = 0,
         /**
          * Unknown daemon type
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * Simple daemon
          */
-        SIMPLE,
+        SIMPLE = 2,
         /**
          * Forking daemon
          */
-        FORKING,
+        FORKING = 3,
         /**
          * One-shot daemon
          */
-        ONESHOT,
+        ONESHOT = 4,
         /**
          * D-Bus daemon
          */
-        DBUS,
+        DBUS = 5,
         /**
          * Notify daemon
          */
-        NOTIFY,
+        NOTIFY = 6,
     }
 
 
@@ -412,15 +412,15 @@ export namespace Snapd {
         /**
          * an unknown maintenance kind is occurring.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the daemon is restarting.
          */
-        DAEMON_RESTART,
+        DAEMON_RESTART = 1,
         /**
          * the system is restarting.
          */
-        SYSTEM_RESTART,
+        SYSTEM_RESTART = 2,
     }
 
 
@@ -440,39 +440,39 @@ export namespace Snapd {
         /**
          * a piece of text.
          */
-        TEXT,
+        TEXT = 0,
         /**
          * a paragraph.
          */
-        PARAGRAPH,
+        PARAGRAPH = 1,
         /**
          * an unordered list.
          */
-        UNORDERED_LIST,
+        UNORDERED_LIST = 2,
         /**
          * a list item.
          */
-        LIST_ITEM,
+        LIST_ITEM = 3,
         /**
          * a code block.
          */
-        CODE_BLOCK,
+        CODE_BLOCK = 4,
         /**
          * a code span.
          */
-        CODE_SPAN,
+        CODE_SPAN = 5,
         /**
          * emphasised text.
          */
-        EMPHASIS,
+        EMPHASIS = 6,
         /**
          * strongly emphasised text.
          */
-        STRONG_EMPHASIS,
+        STRONG_EMPHASIS = 7,
         /**
          * a URL.
          */
-        URL,
+        URL = 8,
     }
 
 
@@ -486,7 +486,7 @@ export namespace Snapd {
         /**
          * the initial version of Snap markdown.
          */
-        MARKDOWN_VERSION_0,
+        MARKDOWN_VERSION_0 = 0,
     }
 
 
@@ -501,10 +501,10 @@ export namespace Snapd {
      * @gir-type Enum
      */
     enum NoticeType {
-        UNKNOWN,
-        CHANGE_UPDATE,
-        REFRESH_INHIBIT,
-        SNAP_RUN_INHIBIT,
+        UNKNOWN = 0,
+        CHANGE_UPDATE = 1,
+        REFRESH_INHIBIT = 2,
+        SNAP_RUN_INHIBIT = 3,
     }
 
 
@@ -525,21 +525,21 @@ export namespace Snapd {
          * the validation state of the publisher is
          * unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the publisher has not proven their
          * identity.
          */
-        UNPROVEN,
+        UNPROVEN = 1,
         /**
          * the publisher is a star developer.
          */
-        VERIFIED,
+        VERIFIED = 2,
         /**
          * the publisher has had their identity
          * verified.
          */
-        STARRED,
+        STARRED = 3,
     }
 
 
@@ -559,23 +559,23 @@ export namespace Snapd {
         /**
          * the snap state is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the snap is available for installation.
          */
-        AVAILABLE,
+        AVAILABLE = 1,
         /**
          * the snap is available for purchase.
          */
-        PRICED,
+        PRICED = 2,
         /**
          * the snap is installed but not active.
          */
-        INSTALLED,
+        INSTALLED = 3,
         /**
          * the snap is installed and active.
          */
-        ACTIVE,
+        ACTIVE = 4,
     }
 
 
@@ -595,35 +595,35 @@ export namespace Snapd {
         /**
          * the type of snap is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the snap is an application.
          */
-        APP,
+        APP = 1,
         /**
          * the snap is a kernel.
          */
-        KERNEL,
+        KERNEL = 2,
         /**
          * the snapd is a gadget.
          */
-        GADGET,
+        GADGET = 3,
         /**
          * the snap is an operating system.
          */
-        OS,
+        OS = 4,
         /**
          * the snap is a core snap.
          */
-        CORE,
+        CORE = 5,
         /**
          * the snap is a base snap.
          */
-        BASE,
+        BASE = 6,
         /**
          * the snap is the snap daemon.
          */
-        SNAPD,
+        SNAPD = 7,
     }
 
 
@@ -643,15 +643,15 @@ export namespace Snapd {
         /**
          * the confinement of the system is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the system supports strict confinement.
          */
-        STRICT,
+        STRICT = 1,
         /**
          * the system supports partial confinement.
          */
-        PARTIAL,
+        PARTIAL = 2,
     }
 
 
@@ -671,16 +671,16 @@ export namespace Snapd {
         /**
          * the theme is installed.
          */
-        INSTALLED,
+        INSTALLED = 1,
         /**
          * the theme is not installed but a package is
          * available.
          */
-        AVAILABLE,
+        AVAILABLE = 2,
         /**
          * the theme is not available.
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 3,
     }
 
 
@@ -734,6 +734,7 @@ export namespace Snapd {
      * @returns a {@link Snapd.AuthData} or `null` on error.
      * @since 1.0
      * @deprecated since 1.34: Use `snapd_client_login2_finish()`
+     * @throws GLib.Error
      */
     function login_finish(result: Gio.AsyncResult): AuthData;
 
@@ -748,6 +749,7 @@ export namespace Snapd {
      * @returns a {@link Snapd.AuthData} or `null` on error.
      * @since 1.0
      * @deprecated since 1.34: Use `snapd_client_login2_sync()`
+     * @throws GLib.Error
      */
     function login_sync(username: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): AuthData;
 
@@ -781,16 +783,16 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Gives sudo access to created user.
          */
-        SUDO,
+        SUDO = 1,
         /**
          * Use the local system-user assertions to
          * create the user.
          */
-        KNOWN,
+        KNOWN = 2,
     }
 
 
@@ -810,30 +812,30 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Search for snaps whose name matches the given
          *     string. The match is exact unless the string ends in *.
          */
-        MATCH_NAME,
+        MATCH_NAME = 1,
         /**
          * Search private snaps.
          */
-        SELECT_PRIVATE,
+        SELECT_PRIVATE = 2,
         /**
          * Deprecated, do not use.
          */
-        SELECT_REFRESH,
+        SELECT_REFRESH = 4,
         /**
          * Search for snaps from any architecture or
          * branch.
          */
-        SCOPE_WIDE,
+        SCOPE_WIDE = 8,
         /**
          * Search for snaps whose common ID matches
          *     the given string.
          */
-        MATCH_COMMON_ID,
+        MATCH_COMMON_ID = 16,
     }
 
 
@@ -853,11 +855,11 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Select services only.
          */
-        SELECT_SERVICES,
+        SELECT_SERVICES = 1,
     }
 
 
@@ -877,12 +879,12 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Select all connections, not just
          * connected ones.
          */
-        SELECT_ALL,
+        SELECT_ALL = 1,
     }
 
 
@@ -902,23 +904,23 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Include interface documentation.
          */
-        INCLUDE_DOCS,
+        INCLUDE_DOCS = 1,
         /**
          * Include associated plugs.
          */
-        INCLUDE_PLUGS,
+        INCLUDE_PLUGS = 2,
         /**
          * Include associated slots.
          */
-        INCLUDE_SLOTS,
+        INCLUDE_SLOTS = 4,
         /**
          * Only return connected interfaces.
          */
-        ONLY_CONNECTED,
+        ONLY_CONNECTED = 8,
     }
 
 
@@ -938,17 +940,17 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Return snaps that are installed but
          * not active.
          */
-        INCLUDE_INACTIVE,
+        INCLUDE_INACTIVE = 1,
         /**
          * Return snaps that are
          * refresh-inhibited.
          */
-        REFRESH_INHIBITED,
+        REFRESH_INHIBITED = 2,
     }
 
 
@@ -968,27 +970,27 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Put snap in classic mode and disable security
          * confinement.
          */
-        CLASSIC,
+        CLASSIC = 1,
         /**
          * Install the given snap file even if there are
          *    no pre-acknowledged signatures for it, meaning it was not verified and
          *    could be dangerous (implied by #SNAPD_INSTALL_FLAGS_DEVMODE).
          */
-        DANGEROUS,
+        DANGEROUS = 2,
         /**
          * Put snap in development mode and disable
          * security confinement.
          */
-        DEVMODE,
+        DEVMODE = 4,
         /**
          * Put snap in enforced confinement mode.
          */
-        JAILMODE,
+        JAILMODE = 8,
     }
 
 
@@ -1008,12 +1010,12 @@ export namespace Snapd {
         /**
          * No flags, default behaviour.
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't save a snapshot the snap's data when
          * removing.
          */
-        PURGE,
+        PURGE = 1,
     }
 
 
@@ -2335,6 +2337,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.Change} or `null` on error.
          * @since 1.30
+         * @throws GLib.Error
          */
         abort_change_finish(result: Gio.AsyncResult): Change;
 
@@ -2344,6 +2347,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Change} or `null` on error.
          * @since 1.30
+         * @throws GLib.Error
          */
         abort_change_sync(id: string, cancellable: Gio.Cancellable | null): Change;
 
@@ -2382,6 +2386,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         add_assertions_finish(result: Gio.AsyncResult): boolean;
 
@@ -2391,6 +2396,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         add_assertions_sync(assertions: string[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -2438,6 +2444,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.25
+         * @throws GLib.Error
          */
         alias_finish(result: Gio.AsyncResult): boolean;
 
@@ -2449,6 +2456,7 @@ export namespace Snapd {
          * @param progress_callback function to callback with progress.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @since 1.25
+         * @throws GLib.Error
          */
         alias_sync(snap: string, app: string, alias: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2487,6 +2495,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` if the snap should be granted access, `false` otherwise.
          * @since 1.72
+         * @throws GLib.Error
          */
         ask_interface_request_finish(result: Gio.AsyncResult): boolean;
 
@@ -2498,6 +2507,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if the snap should be granted access, `false` otherwise.
          * @since 1.72
+         * @throws GLib.Error
          */
         ask_interface_request_sync(_interface: string, pid: GLib.Pid, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2542,6 +2552,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         buy_finish(result: Gio.AsyncResult): boolean;
 
@@ -2554,6 +2565,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         buy_sync(id: string, amount: number, currency: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2589,6 +2601,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         check_buy_finish(result: Gio.AsyncResult): boolean;
 
@@ -2597,6 +2610,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if able to buy snaps or `false` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         check_buy_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2641,6 +2655,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success.
          * @since 1.60
+         * @throws GLib.Error
          */
         check_themes_finish(result: Gio.AsyncResult): [boolean, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }];
 
@@ -2653,6 +2668,7 @@ export namespace Snapd {
          * @param sound_theme_names a list of sound theme names.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @since 1.60
+         * @throws GLib.Error
          */
         check_themes_sync(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }, { [key: string]: ThemeStatus }];
 
@@ -2691,6 +2707,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` if successfully connected to snapd.
          * @since 1.3
+         * @throws GLib.Error
          */
         connect_finish(result: Gio.AsyncResult): boolean;
 
@@ -2741,6 +2758,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_interface_finish(result: Gio.AsyncResult): boolean;
 
@@ -2756,6 +2774,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_interface_sync(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2765,6 +2784,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if successfully connected to snapd.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2806,6 +2826,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         create_user_finish(result: Gio.AsyncResult): UserInformation;
 
@@ -2816,6 +2837,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         create_user_sync(email: string, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): UserInformation;
 
@@ -2854,6 +2876,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         create_users_finish(result: Gio.AsyncResult): UserInformation[];
 
@@ -2863,6 +2886,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          * @since 1.3
+         * @throws GLib.Error
          */
         create_users_sync(cancellable: Gio.Cancellable | null): UserInformation[];
 
@@ -2911,6 +2935,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_unalias_finish()`
+         * @throws GLib.Error
          */
         disable_aliases_finish(result: Gio.AsyncResult): boolean;
 
@@ -2923,6 +2948,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_unalias_sync()`
+         * @throws GLib.Error
          */
         disable_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2964,6 +2990,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_finish(result: Gio.AsyncResult): boolean;
 
@@ -2974,6 +3001,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3024,6 +3052,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_interface_finish(result: Gio.AsyncResult): boolean;
 
@@ -3037,6 +3066,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_interface_sync(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3081,6 +3111,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns the snap contents or `null` on error.
          * @since 1.54
+         * @throws GLib.Error
          */
         download_finish(result: Gio.AsyncResult): GLib.Bytes;
 
@@ -3092,6 +3123,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns the snap contents or `null` on error.
          * @since 1.54
+         * @throws GLib.Error
          */
         download_sync(name: string, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -3140,6 +3172,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_unalias_finish()`
+         * @throws GLib.Error
          */
         enable_aliases_finish(result: Gio.AsyncResult): boolean;
 
@@ -3152,6 +3185,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_alias_sync()`
+         * @throws GLib.Error
          */
         enable_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3193,6 +3227,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_finish(result: Gio.AsyncResult): boolean;
 
@@ -3203,6 +3238,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3279,6 +3315,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         find_category_finish(result: Gio.AsyncResult): [Snap[], string];
 
@@ -3290,6 +3327,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         find_category_sync(flags: FindFlags, category: string | null, query: string | null, cancellable: Gio.Cancellable | null): [Snap[], string];
 
@@ -3299,6 +3337,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         find_finish(result: Gio.AsyncResult): [Snap[], string];
 
@@ -3337,6 +3376,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.5
+         * @throws GLib.Error
          */
         find_refreshable_finish(result: Gio.AsyncResult): Snap[];
 
@@ -3345,6 +3385,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         find_refreshable_sync(cancellable: Gio.Cancellable | null): Snap[];
 
@@ -3393,6 +3434,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.7
          * @deprecated since 1.64: Use `snapd_client_find_category_finish()`
+         * @throws GLib.Error
          */
         find_section_finish(result: Gio.AsyncResult): [Snap[], string];
 
@@ -3405,6 +3447,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.7
          * @deprecated since 1.64: Use `snapd_client_find_category_sync()`
+         * @throws GLib.Error
          */
         find_section_sync(flags: FindFlags, section: string | null, query: string | null, cancellable: Gio.Cancellable | null): [Snap[], string];
 
@@ -3415,6 +3458,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         find_sync(flags: FindFlags, query: string | null, cancellable: Gio.Cancellable | null): [Snap[], string];
 
@@ -3459,6 +3503,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success.
          * @since 1.64
+         * @throws GLib.Error
          */
         follow_logs_finish(result: Gio.AsyncResult): boolean;
 
@@ -3471,6 +3516,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success.
          * @since 1.64
+         * @throws GLib.Error
          */
         follow_logs_sync(names: string[] | null, log_callback: LogCallback, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3506,6 +3552,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Alias} or `null` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         get_aliases_finish(result: Gio.AsyncResult): Alias[];
 
@@ -3514,6 +3561,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Alias} or `null` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         get_aliases_sync(cancellable: Gio.Cancellable | null): Alias[];
 
@@ -3562,6 +3610,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.App} or `null` on error.
          * @since 1.45
+         * @throws GLib.Error
          */
         get_apps2_finish(result: Gio.AsyncResult): App[];
 
@@ -3572,6 +3621,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.App} or `null` on error.
          * @since 1.45
+         * @throws GLib.Error
          */
         get_apps2_sync(flags: GetAppsFlags, snaps: string[] | null, cancellable: Gio.Cancellable | null): App[];
 
@@ -3614,6 +3664,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.App} or `null` on error.
          * @since 1.25
          * @deprecated since 1.45: Use `snapd_client_get_apps2_finish()`
+         * @throws GLib.Error
          */
         get_apps_finish(result: Gio.AsyncResult): App[];
 
@@ -3624,6 +3675,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.App} or `null` on error.
          * @since 1.25
          * @deprecated since 1.45: Use `snapd_client_get_apps2_sync()`
+         * @throws GLib.Error
          */
         get_apps_sync(flags: GetAppsFlags, cancellable: Gio.Cancellable | null): App[];
 
@@ -3662,6 +3714,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of assertions or `null` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         get_assertions_finish(result: Gio.AsyncResult): string[];
 
@@ -3671,6 +3724,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of assertions or `null` on error.
          * @since 1.8
+         * @throws GLib.Error
          */
         get_assertions_sync(type: string, cancellable: Gio.Cancellable | null): string[];
 
@@ -3713,6 +3767,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.CategoryDetails} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         get_categories_finish(result: Gio.AsyncResult): CategoryDetails[];
 
@@ -3721,6 +3776,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.CategoryDetails} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         get_categories_sync(cancellable: Gio.Cancellable | null): CategoryDetails[];
 
@@ -3759,6 +3815,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.Change} or `null` on error.
          * @since 1.29
+         * @throws GLib.Error
          */
         get_change_finish(result: Gio.AsyncResult): Change;
 
@@ -3768,6 +3825,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Change} or `null` on error.
          * @since 1.29
+         * @throws GLib.Error
          */
         get_change_sync(id: string, cancellable: Gio.Cancellable | null): Change;
 
@@ -3809,6 +3867,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Change} or `null` on error.
          * @since 1.29
+         * @throws GLib.Error
          */
         get_changes_finish(result: Gio.AsyncResult): Change[];
 
@@ -3819,6 +3878,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Change} or `null` on error.
          * @since 1.29
+         * @throws GLib.Error
          */
         get_changes_sync(filter: ChangeFilter, snap_name: string | null, cancellable: Gio.Cancellable | null): Change[];
 
@@ -3863,6 +3923,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.49
+         * @throws GLib.Error
          */
         get_connections2_finish(result: Gio.AsyncResult): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
 
@@ -3874,6 +3935,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.49
+         * @throws GLib.Error
          */
         get_connections2_sync(flags: GetConnectionsFlags, snap: string | null, _interface: string | null, cancellable: Gio.Cancellable | null): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
 
@@ -3913,6 +3975,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.48
          * @deprecated since 1.49: Use `snapd_client_get_connections2_finish()`
+         * @throws GLib.Error
          */
         get_connections_finish(result: Gio.AsyncResult): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
 
@@ -3922,6 +3985,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.48
          * @deprecated since 1.49: Use `snapd_client_get_connections2_sync()`
+         * @throws GLib.Error
          */
         get_connections_sync(cancellable: Gio.Cancellable | null): [boolean, Connection[] | null, Connection[] | null, Plug[] | null, Slot[] | null];
 
@@ -3960,6 +4024,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.Icon} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_icon_finish(result: Gio.AsyncResult): Icon;
 
@@ -3969,6 +4034,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Icon} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_icon_sync(name: string, cancellable: Gio.Cancellable | null): Icon;
 
@@ -4010,6 +4076,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Interface} or `null` on error.
          * @since 1.48
+         * @throws GLib.Error
          */
         get_interfaces2_finish(result: Gio.AsyncResult): Interface[];
 
@@ -4020,6 +4087,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns the available interfaces.
          * @since 1.48
+         * @throws GLib.Error
          */
         get_interfaces2_sync(flags: GetInterfacesFlags, names: string[] | null, cancellable: Gio.Cancellable | null): Interface[];
 
@@ -4059,6 +4127,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.0
          * @deprecated since 1.48: Use `snapd_client_get_connections2_finish()`
+         * @throws GLib.Error
          */
         get_interfaces_finish(result: Gio.AsyncResult): [boolean, Plug[] | null, Slot[] | null];
 
@@ -4068,6 +4137,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.0
          * @deprecated since 1.48: Use `snapd_client_get_connections_sync()`
+         * @throws GLib.Error
          */
         get_interfaces_sync(cancellable: Gio.Cancellable | null): [boolean, Plug[] | null, Slot[] | null];
 
@@ -4109,6 +4179,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Log} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         get_logs_finish(result: Gio.AsyncResult): Log[];
 
@@ -4119,6 +4190,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Log} or `null` on error.
          * @since 1.64
+         * @throws GLib.Error
          */
         get_logs_sync(names: string[] | null, n: bigint | number, cancellable: Gio.Cancellable | null): Log[];
 
@@ -4159,6 +4231,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an assertion or `null` on error.
          * @since 1.67
+         * @throws GLib.Error
          */
         get_model_assertion_finish(result: Gio.AsyncResult): string;
 
@@ -4167,6 +4240,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an assertion or `null` on error.
          * @since 1.67
+         * @throws GLib.Error
          */
         get_model_assertion_sync(cancellable: Gio.Cancellable | null): string;
 
@@ -4219,6 +4293,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
          * @since 1.65
+         * @throws GLib.Error
          */
         get_notices_finish(result: Gio.AsyncResult): Notice[];
 
@@ -4234,6 +4309,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
          * @since 1.65
+         * @throws GLib.Error
          */
         get_notices_sync(since_date_time: GLib.DateTime, timeout: GLib.TimeSpan, cancellable: Gio.Cancellable | null): Notice[];
 
@@ -4298,6 +4374,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
          * @since 1.65
+         * @throws GLib.Error
          */
         get_notices_with_filters_finish(result: Gio.AsyncResult): Notice[];
 
@@ -4317,6 +4394,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.PtrArray} object containing the requested notices, or NULL in case of error.
          * @since 1.65
+         * @throws GLib.Error
          */
         get_notices_with_filters_sync(user_id: string, users: string, types: string, keys: string, since_date_time: GLib.DateTime, timeout: GLib.TimeSpan, cancellable: Gio.Cancellable | null): Notice[];
 
@@ -4356,6 +4434,7 @@ export namespace Snapd {
          * @returns an array of section names or `null` on error.
          * @since 1.7
          * @deprecated since 1.64: Use `snapd_client_get_categories_finish()`
+         * @throws GLib.Error
          */
         get_sections_finish(result: Gio.AsyncResult): string[];
 
@@ -4365,6 +4444,7 @@ export namespace Snapd {
          * @returns an array of section names or `null` on error.
          * @since 1.7
          * @deprecated since 1.64: Use `snapd_client_get_categories_sync()`
+         * @throws GLib.Error
          */
         get_sections_sync(cancellable: Gio.Cancellable | null): string[];
 
@@ -4397,6 +4477,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an assertion or `null` on error.
          * @since 1.67
+         * @throws GLib.Error
          */
         get_serial_assertion_finish(result: Gio.AsyncResult): string;
 
@@ -4405,6 +4486,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an assertion or `null` on error.
          * @since 1.67
+         * @throws GLib.Error
          */
         get_serial_assertion_sync(cancellable: Gio.Cancellable | null): string;
 
@@ -4475,6 +4557,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a table of configuration values or `null` on error.
          * @since 1.48
+         * @throws GLib.Error
          */
         get_snap_conf_finish(result: Gio.AsyncResult): { [key: string]: GLib.Variant };
 
@@ -4486,6 +4569,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a table of configuration values or `null` on error.
          * @since 1.48
+         * @throws GLib.Error
          */
         get_snap_conf_sync(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): { [key: string]: GLib.Variant };
 
@@ -4495,6 +4579,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.Snap} or `null` on error.
          * @since 1.42
+         * @throws GLib.Error
          */
         get_snap_finish(result: Gio.AsyncResult): Snap;
 
@@ -4505,6 +4590,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.Snap} or `null` on error.
          * @since 1.42
+         * @throws GLib.Error
          */
         get_snap_sync(name: string, cancellable: Gio.Cancellable | null): Snap;
 
@@ -4561,6 +4647,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.42
+         * @throws GLib.Error
          */
         get_snaps_finish(result: Gio.AsyncResult): Snap[];
 
@@ -4582,6 +4669,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.42
+         * @throws GLib.Error
          */
         get_snaps_sync(flags: GetSnapsFlags, names: string[] | null, cancellable: Gio.Cancellable | null): Snap[];
 
@@ -4624,6 +4712,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.SystemInformation} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_system_information_finish(result: Gio.AsyncResult): SystemInformation;
 
@@ -4633,6 +4722,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.SystemInformation} or `null` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_system_information_sync(cancellable: Gio.Cancellable | null): SystemInformation;
 
@@ -4675,6 +4765,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         get_users_finish(result: Gio.AsyncResult): UserInformation[];
 
@@ -4683,6 +4774,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an array of {@link Snapd.UserInformation} or `null` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         get_users_sync(cancellable: Gio.Cancellable | null): UserInformation[];
 
@@ -4733,6 +4825,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.12
+         * @throws GLib.Error
          */
         install2_finish(result: Gio.AsyncResult): boolean;
 
@@ -4746,6 +4839,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.12
+         * @throws GLib.Error
          */
         install2_sync(flags: InstallFlags, name: string, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4794,6 +4888,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.0
          * @deprecated since 1.12: Use `snapd_client_install2_finish()`
+         * @throws GLib.Error
          */
         install_finish(result: Gio.AsyncResult): boolean;
 
@@ -4838,6 +4933,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.9
+         * @throws GLib.Error
          */
         install_stream_finish(result: Gio.AsyncResult): boolean;
 
@@ -4867,6 +4963,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.9
+         * @throws GLib.Error
          */
         install_stream_sync(flags: InstallFlags, stream: Gio.InputStream, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4879,6 +4976,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.0
          * @deprecated since 1.12: Use `snapd_client_install2_sync()`
+         * @throws GLib.Error
          */
         install_sync(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4926,6 +5024,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success.
          * @since 1.60
+         * @throws GLib.Error
          */
         install_themes_finish(result: Gio.AsyncResult): boolean;
 
@@ -4939,6 +5038,7 @@ export namespace Snapd {
          * @param progress_callback function to callback with progress.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @since 1.60
+         * @throws GLib.Error
          */
         install_themes_sync(gtk_theme_names: string[] | null, icon_theme_names: string[] | null, sound_theme_names: string[] | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4978,6 +5078,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.0
          * @deprecated since 1.42: Use `snapd_client_get_snaps_finish()`
+         * @throws GLib.Error
          */
         list_finish(result: Gio.AsyncResult): Snap[];
 
@@ -5020,6 +5121,7 @@ export namespace Snapd {
          * @returns a {@link Snapd.Snap} or `null` on error.
          * @since 1.0
          * @deprecated since 1.42: Use `snapd_client_get_snap_finish()`
+         * @throws GLib.Error
          */
         list_one_finish(result: Gio.AsyncResult): Snap;
 
@@ -5030,6 +5132,7 @@ export namespace Snapd {
          * @returns a {@link Snapd.Snap} or `null` on error.
          * @since 1.0
          * @deprecated since 1.42: Use `snapd_client_get_snap_sync()`
+         * @throws GLib.Error
          */
         list_one_sync(name: string, cancellable: Gio.Cancellable | null): Snap;
 
@@ -5039,6 +5142,7 @@ export namespace Snapd {
          * @returns an array of {@link Snapd.Snap} or `null` on error.
          * @since 1.0
          * @deprecated since 1.42: Use `snapd_client_get_snaps_sync()`
+         * @throws GLib.Error
          */
         list_sync(cancellable: Gio.Cancellable | null): Snap[];
 
@@ -5083,6 +5187,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         login2_finish(result: Gio.AsyncResult): UserInformation;
 
@@ -5094,6 +5199,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link Snapd.UserInformation} or `null` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         login2_sync(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): UserInformation;
 
@@ -5142,6 +5248,7 @@ export namespace Snapd {
          * @returns a {@link Snapd.AuthData} or `null` on error.
          * @since 1.0
          * @deprecated since 1.26: Use `snapd_client_login2_finish()`
+         * @throws GLib.Error
          */
         login_finish(result: Gio.AsyncResult): AuthData;
 
@@ -5154,6 +5261,7 @@ export namespace Snapd {
          * @returns a {@link Snapd.AuthData} or `null` on error.
          * @since 1.0
          * @deprecated since 1.26: Use `snapd_client_login2_sync()`
+         * @throws GLib.Error
          */
         login_sync(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): AuthData;
 
@@ -5192,6 +5300,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.55
+         * @throws GLib.Error
          */
         logout_finish(result: Gio.AsyncResult): boolean;
 
@@ -5201,6 +5310,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.55
+         * @throws GLib.Error
          */
         logout_sync(id: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5276,6 +5386,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.25
+         * @throws GLib.Error
          */
         prefer_finish(result: Gio.AsyncResult): boolean;
 
@@ -5285,6 +5396,7 @@ export namespace Snapd {
          * @param progress_callback function to callback with progress.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @since 1.25
+         * @throws GLib.Error
          */
         prefer_sync(snap: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5323,6 +5435,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a `null`-terminated array of the snap names refreshed or `null` on error.
          * @since 1.5
+         * @throws GLib.Error
          */
         refresh_all_finish(result: Gio.AsyncResult): string[];
 
@@ -5332,6 +5445,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a `null`-terminated array of the snap names refreshed or `null` on error.
          * @since 1.5
+         * @throws GLib.Error
          */
         refresh_all_sync(progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): string[];
 
@@ -5376,6 +5490,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
@@ -5387,6 +5502,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         refresh_sync(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5431,6 +5547,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.50
+         * @throws GLib.Error
          */
         remove2_finish(result: Gio.AsyncResult): boolean;
 
@@ -5442,6 +5559,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.50
+         * @throws GLib.Error
          */
         remove2_sync(flags: RemoveFlags, name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5483,6 +5601,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.0
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -5494,6 +5613,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.0
          * @deprecated since 1.50: Use `snapd_client_remove2_sync()`
+         * @throws GLib.Error
          */
         remove_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5542,6 +5662,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_disable_aliases_finish()`
+         * @throws GLib.Error
          */
         reset_aliases_finish(result: Gio.AsyncResult): boolean;
 
@@ -5554,6 +5675,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.25: Use `snapd_client_disable_aliases_sync()`
+         * @throws GLib.Error
          */
         reset_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5595,6 +5717,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.59
+         * @throws GLib.Error
          */
         run_snapctl2_finish(result: Gio.AsyncResult): [boolean, string, string, number];
 
@@ -5605,6 +5728,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.59
+         * @throws GLib.Error
          */
         run_snapctl2_sync(context_id: string, args: string[], cancellable: Gio.Cancellable | null): [boolean, string, string, number];
 
@@ -5650,6 +5774,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.59: Use `snapd_client_run_snapctl2_finish()`
+         * @throws GLib.Error
          */
         run_snapctl_finish(result: Gio.AsyncResult): [boolean, string, string];
 
@@ -5661,6 +5786,7 @@ export namespace Snapd {
          * @returns `true` on success or `false` on error.
          * @since 1.8
          * @deprecated since 1.59: Use `snapd_client_run_snapctl2_async()`
+         * @throws GLib.Error
          */
         run_snapctl_sync(context_id: string, args: string[], cancellable: Gio.Cancellable | null): [boolean, string, string];
 
@@ -5723,6 +5849,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` if configuration successfully applied.
          * @since 1.48
+         * @throws GLib.Error
          */
         set_snap_conf_finish(result: Gio.AsyncResult): boolean;
 
@@ -5734,6 +5861,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if configuration successfully applied.
          * @since 1.48
+         * @throws GLib.Error
          */
         set_snap_conf_sync(name: string, key_values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5795,6 +5923,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         switch_finish(result: Gio.AsyncResult): boolean;
 
@@ -5806,6 +5935,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.26
+         * @throws GLib.Error
          */
         switch_sync(name: string, channel: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5847,6 +5977,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.9
+         * @throws GLib.Error
          */
         try_finish(result: Gio.AsyncResult): boolean;
 
@@ -5857,6 +5988,7 @@ export namespace Snapd {
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` on success or `false` on error.
          * @since 1.9
+         * @throws GLib.Error
          */
         try_sync(path: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5901,6 +6033,7 @@ export namespace Snapd {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` on success or `false` on error.
          * @since 1.25
+         * @throws GLib.Error
          */
         unalias_finish(result: Gio.AsyncResult): boolean;
 
@@ -5911,6 +6044,7 @@ export namespace Snapd {
          * @param progress_callback function to callback with progress.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @since 1.25
+         * @throws GLib.Error
          */
         unalias_sync(snap: string | null, alias: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -7219,12 +7353,12 @@ export namespace Snapd {
              * @signal
              * @run-last
              */
-            "error-event": (arg0: GLib.Error) => void;
+            "error-event": (object: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "notice-event": (arg0: Notice, arg1: boolean) => void;
+            "notice-event": (object: Notice, p0: boolean) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -7289,6 +7423,7 @@ export namespace Snapd {
          * parameter.
          * @returns FALSE if there was an error, TRUE if everything worked fine and the object is listening for events.
          * @since 1.66
+         * @throws GLib.Error
          */
         start(): boolean;
 
@@ -7297,6 +7432,7 @@ export namespace Snapd {
          * `snapd_notices_monitor_start`.
          * @returns FALSE if there was an error, TRUE if everything worked fine.
          * @since 1.66
+         * @throws GLib.Error
          */
         stop(): boolean;
     }

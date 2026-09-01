@@ -238,11 +238,11 @@ export namespace Flatpak {
         /**
          * An application
          */
-        APP,
+        APP = 0,
         /**
          * A runtime that applications can use.
          */
-        RUNTIME,
+        RUNTIME = 1,
     }
 
 
@@ -261,15 +261,15 @@ export namespace Flatpak {
         /**
          * Statically configured remote
          */
-        STATIC,
+        STATIC = 0,
         /**
          * Dynamically detected local pathname remote
          */
-        USB,
+        USB = 1,
         /**
          * Dynamically detected network remote
          */
-        LAN,
+        LAN = 2,
     }
 
 
@@ -289,23 +289,23 @@ export namespace Flatpak {
         /**
          * default
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * installation is on a hard disk
          */
-        HARD_DISK,
+        HARD_DISK = 1,
         /**
          * installation is on a SD card
          */
-        SDCARD,
+        SDCARD = 2,
         /**
          * installation is on an MMC
          */
-        MMC,
+        MMC = 3,
         /**
          * installation is on the network
          */
-        NETWORK,
+        NETWORK = 4,
     }
 
 
@@ -324,23 +324,23 @@ export namespace Flatpak {
         /**
          * Install a ref from a remote
          */
-        INSTALL,
+        INSTALL = 0,
         /**
          * Update an installed ref
          */
-        UPDATE,
+        UPDATE = 1,
         /**
          * Install a bundle from a file
          */
-        INSTALL_BUNDLE,
+        INSTALL_BUNDLE = 2,
         /**
          * Uninstall a ref
          */
-        UNINSTALL,
+        UNINSTALL = 3,
         /**
          * The (currently) last operation type
          */
-        LAST_TYPE,
+        LAST_TYPE = 4,
     }
 
 
@@ -359,26 +359,29 @@ export namespace Flatpak {
         /**
          * The remote specified in the flatpakref has other apps too
          */
-        GENERIC_REPO,
+        GENERIC_REPO = 0,
         /**
          * The remote has runtimes needed for the app
          */
-        RUNTIME_DEPS,
+        RUNTIME_DEPS = 1,
     }
 
 
     /**
      * The major version.
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version.
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version.
+     * @default 19
      */
     const MINOR_VERSION: number;
 
@@ -403,6 +406,7 @@ export namespace Flatpak {
      * @param cancellable a {@link Gio.Cancellable}
      * @returns a GPtrArray of   {@link Flatpak.Installation} instances
      * @since 0.8
+     * @throws GLib.Error
      */
     function get_system_installations(cancellable: Gio.Cancellable | null): Installation[];
 
@@ -437,25 +441,25 @@ export namespace Flatpak {
         /**
          * Default
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't use static deltas when pulling
          */
-        NO_STATIC_DELTAS,
+        NO_STATIC_DELTAS = 1,
         /**
          * Don't install any new builds that might be fetched
          */
-        NO_DEPLOY,
+        NO_DEPLOY = 4,
         /**
          * Don't try to fetch new builds from the remote repo
          */
-        NO_PULL,
+        NO_PULL = 8,
         /**
          * Don't call triggers after installing. If used,
          * the caller must later call `flatpak_installation_run_triggers()` to update
          * the exported files. (Since: 1.0.3)
          */
-        NO_TRIGGERS,
+        NO_TRIGGERS = 16,
     }
 
 
@@ -474,12 +478,12 @@ export namespace Flatpak {
         /**
          * Default
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not reap the child. Use this if you want to wait
          * for the child with `g_child_watch_add()`. (Since: 1.1)
          */
-        DO_NOT_REAP,
+        DO_NOT_REAP = 1,
     }
 
 
@@ -499,22 +503,22 @@ export namespace Flatpak {
         /**
          * Default
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't do any network i/o, but only return cached data.
          * This can return stale data, or a #FLATPAK_ERROR_NOT_CACHED error, however it is a
          * lot more efficient if you're doing many requests.
          */
-        ONLY_CACHED,
+        ONLY_CACHED = 1,
         /**
          * Only list refs available from sideload
          * repos; see flatpak(1). (Since: 1.7)
          */
-        ONLY_SIDELOADED,
+        ONLY_SIDELOADED = 2,
         /**
          * Include refs from all arches, not just the primary ones. (Since: 1.11.2)
          */
-        ALL_ARCHES,
+        ALL_ARCHES = 4,
     }
 
 
@@ -533,7 +537,7 @@ export namespace Flatpak {
         /**
          * The operation failure was not fatal
          */
-        NON_FATAL,
+        NON_FATAL = 1,
     }
 
 
@@ -552,7 +556,7 @@ export namespace Flatpak {
         /**
          * The update caused no changes
          */
-        NO_CHANGE,
+        NO_CHANGE = 1,
     }
 
 
@@ -572,17 +576,17 @@ export namespace Flatpak {
         /**
          * Default
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't prune the local OSTree repository after uninstalling
          */
-        NO_PRUNE,
+        NO_PRUNE = 1,
         /**
          * Don't call triggers after uninstalling. If used,
          * the caller must later call `flatpak_installation_run_triggers()` to update
          * the exported file. (Since: 1.0.3)
          */
-        NO_TRIGGERS,
+        NO_TRIGGERS = 2,
     }
 
 
@@ -601,29 +605,29 @@ export namespace Flatpak {
         /**
          * Fetch remote builds and install the latest one (default)
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't install any new builds that might be fetched
          */
-        NO_DEPLOY,
+        NO_DEPLOY = 1,
         /**
          * Don't try to fetch new builds from the remote repo
          */
-        NO_PULL,
+        NO_PULL = 2,
         /**
          * Don't use static deltas when pulling
          */
-        NO_STATIC_DELTAS,
+        NO_STATIC_DELTAS = 4,
         /**
          * Don't prune the local OSTree repository after updating (Since: 0.11.8)
          */
-        NO_PRUNE,
+        NO_PRUNE = 8,
         /**
          * Don't call triggers after updating. If used,
          * the caller must later call `flatpak_installation_run_triggers()` to update
          * the exported files. (Since: 1.0.3)
          */
-        NO_TRIGGERS,
+        NO_TRIGGERS = 16,
     }
 
 
@@ -802,6 +806,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the modifications have been committed successfully
          * @since 1.3.4
+         * @throws GLib.Error
          */
         add_remote(remote: Remote, if_needed: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -818,6 +823,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          * @since 0.10.0
+         * @throws GLib.Error
          */
         cleanup_local_refs_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -827,6 +833,7 @@ export namespace Flatpak {
          * was installed, uninstalled or updated.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.FileMonitor} instance, or `null` on error
+         * @throws GLib.Error
          */
         create_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -835,6 +842,7 @@ export namespace Flatpak {
          * remotes configured outside this installation instance.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on error
+         * @throws GLib.Error
          */
         drop_caches(cancellable: Gio.Cancellable | null): boolean;
 
@@ -847,6 +855,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the flatpak metadata file,   or `null` if an error occurred
+         * @throws GLib.Error
          */
         fetch_remote_metadata_sync(remote_name: string, ref: Ref, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -859,6 +868,7 @@ export namespace Flatpak {
          * @param branch which branch to fetch (default: 'master')
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} instance, or `null`
+         * @throws GLib.Error
          */
         fetch_remote_ref_sync(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): RemoteRef;
 
@@ -873,6 +883,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.RemoteRef} instance, or `null`
          * @since 1.3.3
+         * @throws GLib.Error
          */
         fetch_remote_ref_sync_full(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef;
 
@@ -891,6 +902,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
+         * @throws GLib.Error
          */
         fetch_remote_size_sync(remote_name: string, ref: Ref, cancellable: Gio.Cancellable | null): [boolean, number, number];
 
@@ -900,6 +912,7 @@ export namespace Flatpak {
          * @param key the name of the key to get
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The (newly allocated) value, or `null` on error ({@link GLib.KeyFileError.KEY_NOT_FOUND} error if key is not set)
+         * @throws GLib.Error
          */
         get_config(key: string, cancellable: Gio.Cancellable | null): string;
 
@@ -910,6 +923,7 @@ export namespace Flatpak {
          * @param name the name of the app
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an {@link Flatpak.InstalledRef}
+         * @throws GLib.Error
          */
         get_current_installed_app(name: string, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -920,6 +934,7 @@ export namespace Flatpak {
          * to display. An empty array means that all languages should be installed.
          * @returns A possibly empty array of strings, or `null` on error.
          * @since 1.5.0
+         * @throws GLib.Error
          */
         get_default_languages(): string[];
 
@@ -932,6 +947,7 @@ export namespace Flatpak {
          * [`setlocale()`](man:setlocale): `language[_territory][.codeset][`modifier`]`.
          * @returns A possibly empty array of locale strings, or `null` on error.
          * @since 1.5.1
+         * @throws GLib.Error
          */
         get_default_locales(): string[];
 
@@ -964,6 +980,7 @@ export namespace Flatpak {
          * @param branch which branch to fetch (default: "master")
          * @param cancellable a {@link Gio.Cancellable}
          * @returns an {@link Flatpak.InstalledRef}, or `null` if an error occurred
+         * @throws GLib.Error
          */
         get_installed_ref(kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -981,6 +998,7 @@ export namespace Flatpak {
          * pull operation will fail due to running out of disk space.
          * @returns `true` on success, or `false` on error.
          * @since 1.1
+         * @throws GLib.Error
          */
         get_min_free_space_bytes(): [boolean, number];
 
@@ -1009,6 +1027,7 @@ export namespace Flatpak {
          * @param name a remote name
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Flatpak.Remote} instance, or `null` with `error`   set
+         * @throws GLib.Error
          */
         get_remote_by_name(name: string, cancellable: Gio.Cancellable | null): Remote;
 
@@ -1052,6 +1071,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_install()` instead.
+         * @throws GLib.Error
          */
         install(remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1067,6 +1087,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_install_bundle()` instead.
+         * @throws GLib.Error
          */
         install_bundle(file: Gio.File, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1095,6 +1116,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly installed app or `null` on failure
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_install()` instead.
+         * @throws GLib.Error
          */
         install_full(flags: InstallFlags, remote_name: string, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1115,6 +1137,7 @@ export namespace Flatpak {
          * @returns a {@link Flatpak.RemoteRef} if the remote has been added successfully, `null` on error.
          * @since 0.6.10
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_install_flatpakref()` instead.
+         * @throws GLib.Error
          */
         install_ref_file(ref_file_data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): RemoteRef;
 
@@ -1130,6 +1153,7 @@ export namespace Flatpak {
          * @param commit the commit of `branch` to launch
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
+         * @throws GLib.Error
          */
         launch(name: string, arch: string | null, branch: string | null, commit: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1153,6 +1177,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true`, unless an error occurred
          * @since 1.1
+         * @throws GLib.Error
          */
         launch_full(flags: LaunchFlags, name: string, arch: string | null, branch: string | null, commit: string | null, instance_out: Instance | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1160,6 +1185,7 @@ export namespace Flatpak {
          * Lists the installed references.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
+         * @throws GLib.Error
          */
         list_installed_refs(cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1168,6 +1194,7 @@ export namespace Flatpak {
          * @param kind the kind of installation
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
+         * @throws GLib.Error
          */
         list_installed_refs_by_kind(kind: RefKind, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1185,6 +1212,7 @@ export namespace Flatpak {
          * this function will return all of those apps.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances, or `null` on error
+         * @throws GLib.Error
          */
         list_installed_refs_for_update(cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1207,6 +1235,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          * @since 0.6.7
+         * @throws GLib.Error
          */
         list_installed_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1221,6 +1250,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          * @since 1.9.1
+         * @throws GLib.Error
          */
         list_pinned_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1229,6 +1259,7 @@ export namespace Flatpak {
          * @param remote_or_uri the name or URI of the remote
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RemoteRef} instances
+         * @throws GLib.Error
          */
         list_remote_refs_sync(remote_or_uri: string, cancellable: Gio.Cancellable | null): RemoteRef[];
 
@@ -1239,6 +1270,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RemoteRef} instances
          * @since 1.3.3
+         * @throws GLib.Error
          */
         list_remote_refs_sync_full(remote_or_uri: string, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef[];
 
@@ -1268,6 +1300,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          * @since 1.11.1
+         * @throws GLib.Error
          */
         list_remote_related_refs_for_installed_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1291,6 +1324,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.RelatedRef} instances
          * @since 0.6.7
+         * @throws GLib.Error
          */
         list_remote_related_refs_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[];
 
@@ -1299,6 +1333,7 @@ export namespace Flatpak {
          * priority, an earlier added remote comes before a later added one.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.Remote} instances
+         * @throws GLib.Error
          */
         list_remotes(cancellable: Gio.Cancellable | null): Remote[];
 
@@ -1311,6 +1346,7 @@ export namespace Flatpak {
          * @param types an array of {@link Flatpak.RemoteType}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.Remote} instances
+         * @throws GLib.Error
          */
         list_remotes_by_type(types: RemoteType[], cancellable: Gio.Cancellable | null): Remote[];
 
@@ -1325,6 +1361,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          * @since 1.1.2
+         * @throws GLib.Error
          */
         list_unused_refs(arch: string | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1345,6 +1382,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a GPtrArray of   {@link Flatpak.InstalledRef} instances
          * @since 1.9.1
+         * @throws GLib.Error
          */
         list_unused_refs_with_options(arch: string | null, metadata_injection: never | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): InstalledRef[];
 
@@ -1353,6 +1391,7 @@ export namespace Flatpak {
          * @param app_id an application id
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the contents of the overrides files,    or `null` if an error occurred
+         * @throws GLib.Error
          */
         load_app_overrides(app_id: string, cancellable: Gio.Cancellable | null): string;
 
@@ -1361,6 +1400,7 @@ export namespace Flatpak {
          * @param remote the modified {@link Flatpak.Remote}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the modifications have been committed successfully
+         * @throws GLib.Error
          */
         modify_remote(remote: Remote, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1370,6 +1410,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          * @since 0.10.0
+         * @throws GLib.Error
          */
         prune_local_repo(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1390,6 +1431,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          * @since 0.10.0
+         * @throws GLib.Error
          */
         remove_local_ref_sync(remote_name: string, ref: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1398,6 +1440,7 @@ export namespace Flatpak {
          * @param name the name of the remote to remove
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the remote has been removed successfully
+         * @throws GLib.Error
          */
         remove_remote(name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1410,6 +1453,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          * @since 1.0.3
+         * @throws GLib.Error
          */
         run_triggers(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1423,6 +1467,7 @@ export namespace Flatpak {
          * @param value the new value, or `null` to unset
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the option was set correctly
+         * @throws GLib.Error
          */
         set_config_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1451,6 +1496,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_uninstall()` instead.
+         * @throws GLib.Error
          */
         uninstall(kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1470,6 +1516,7 @@ export namespace Flatpak {
          * @returns `true` on success
          * @since 0.11.8
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_uninstall()` instead.
+         * @throws GLib.Error
          */
         uninstall_full(flags: UninstallFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1494,6 +1541,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_update()` instead.
+         * @throws GLib.Error
          */
         update(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1505,6 +1553,7 @@ export namespace Flatpak {
          * @param out_changed Set to `true` if the contents of the appstream changed, `false` if nothing changed
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, or `false` on error
+         * @throws GLib.Error
          */
         update_appstream_full_sync(remote_name: string, arch: string | null, progress: ProgressCallback | null, out_changed: boolean | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1516,6 +1565,7 @@ export namespace Flatpak {
          * @param out_changed Set to `true` if the contents of the appstream changed, `false` if nothing changed
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, or `false` on error
+         * @throws GLib.Error
          */
         update_appstream_sync(remote_name: string, arch: string | null, out_changed: boolean | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1541,6 +1591,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns The ref for the newly updated app or `null` on failure
          * @deprecated since 1.7.0: Use `flatpak_transaction_add_update()` instead.
+         * @throws GLib.Error
          */
         update_full(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, progress: ProgressCallback | null, cancellable: Gio.Cancellable | null): InstalledRef;
 
@@ -1552,6 +1603,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the remote has been updated successfully
          * @since 0.6.13
+         * @throws GLib.Error
          */
         update_remote_sync(name: string, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1904,6 +1956,7 @@ export namespace Flatpak {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the compressed appdata file,     or `null` if an error occurred
          * @since 1.1.2
+         * @throws GLib.Error
          */
         load_appdata(cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -1911,6 +1964,7 @@ export namespace Flatpak {
          * Loads the metadata file for this ref.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link GLib.Bytes} containing the metadata file,     or `null` if an error occurred
+         * @throws GLib.Error
          */
         load_metadata(cancellable: Gio.Cancellable | null): GLib.Bytes;
     }
@@ -2888,7 +2942,7 @@ export namespace Flatpak {
              * @signal
              * @run-last
              */
-            "add-new-remote": (arg0: TransactionRemoteReason, arg1: string, arg2: string, arg3: string) => boolean | void;
+            "add-new-remote": (reason: TransactionRemoteReason, from_id: string, suggested_remote_name: string, url: string) => boolean | void;
             /**
              * The ::basic-auth-start signal gets emitted when a basic user/password
              * authentication is needed during the operation. If the caller handles this
@@ -2904,21 +2958,21 @@ export namespace Flatpak {
              * @since 1.5.2
              * @run-last
              */
-            "basic-auth-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
+            "basic-auth-start": (remote: string, realm: string, options: GLib.Variant, id: number) => boolean | void;
             /**
              * The ::choose-remote-for-ref signal gets emitted when a
              * remote needs to be selected during the execution of the transaction.
              * @signal
              * @run-last
              */
-            "choose-remote-for-ref": (arg0: string, arg1: string, arg2: string[]) => number;
+            "choose-remote-for-ref": (for_ref: string, runtime_ref: string, remotes: string[]) => number;
             /**
              * The ::end-of-lifed signal gets emitted when a ref is found to
              * be marked as end-of-life during the execution of the transaction.
              * @signal
              * @run-last
              */
-            "end-of-lifed": (arg0: string, arg1: string, arg2: string) => void;
+            "end-of-lifed": (ref: string, reason: string, rebase: string) => void;
             /**
              * The ::end-of-lifed-with-rebase signal gets emitted when a ref is found
              * to be marked as end-of-life before the transaction begins. Unlike
@@ -2933,7 +2987,7 @@ export namespace Flatpak {
              * @since 1.3.2
              * @run-last
              */
-            "end-of-lifed-with-rebase": (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => boolean | void;
+            "end-of-lifed-with-rebase": (remote: string, ref: string, reason: string, rebased_to_ref: string, previous_ids: string[]) => boolean | void;
             /**
              * The ::install-authenticator signal gets emitted if, as part of
              * resolving the transaction, we need to use an authenticator, but the authentication
@@ -2948,28 +3002,28 @@ export namespace Flatpak {
              * @since 1.8.0
              * @run-last
              */
-            "install-authenticator": (arg0: string, arg1: string) => void;
+            "install-authenticator": (remote: string, authenticator_ref: string) => void;
             /**
              * The ::new-operation signal gets emitted during the execution of
              * the transaction when a new operation is beginning.
              * @signal
              * @run-last
              */
-            "new-operation": (arg0: TransactionOperation, arg1: TransactionProgress) => void;
+            "new-operation": (operation: TransactionOperation, progress: TransactionProgress) => void;
             /**
              * The ::operation-done signal gets emitted during the execution of
              * the transaction when an operation is finished.
              * @signal
              * @run-last
              */
-            "operation-done": (arg0: TransactionOperation, arg1: string | null, arg2: TransactionResult) => void;
+            "operation-done": (operation: TransactionOperation, commit: string | null, result: TransactionResult) => void;
             /**
              * The ::operation-error signal gets emitted when an error occurs during the
              * execution of the transaction.
              * @signal
              * @run-last
              */
-            "operation-error": (arg0: TransactionOperation, arg1: GLib.Error, arg2: TransactionErrorDetails) => boolean | void;
+            "operation-error": (operation: TransactionOperation, error: GLib.Error, details: TransactionErrorDetails) => boolean | void;
             /**
              * The ::ready signal is emitted when all the refs involved in the operation
              * have been resolved to commits, and the required authentication for all ops is gotten.
@@ -3004,7 +3058,7 @@ export namespace Flatpak {
              * @since 1.5.1
              * @run-last
              */
-            "webflow-done": (arg0: GLib.Variant, arg1: number) => void;
+            "webflow-done": (options: GLib.Variant, id: number) => void;
             /**
              * The ::webflow-start signal gets emitted when some kind of user
              * authentication is needed during the operation. If the caller handles this
@@ -3025,7 +3079,7 @@ export namespace Flatpak {
              * @since 1.5.1
              * @run-last
              */
-            "webflow-start": (arg0: string, arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
+            "webflow-start": (remote: string, url: string, options: GLib.Variant, id: number) => boolean | void;
             "notify::installation": (pspec: GObject.ParamSpec) => void;
             "notify::no-interaction": (pspec: GObject.ParamSpec) => void;
         }
@@ -3262,6 +3316,7 @@ export namespace Flatpak {
          * @param ref the ref
          * @param subpaths subpaths to install, or the  empty list or `null` to pull all subpaths
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_install(remote: string, ref: string, subpaths: string[] | null): boolean;
 
@@ -3270,6 +3325,7 @@ export namespace Flatpak {
          * @param file a {@link Gio.File} that is an flatpak bundle
          * @param gpg_data GPG key with which to check bundle signatures, or  `null` to use the key embedded in the bundle (if any)
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_install_bundle(file: Gio.File, gpg_data: GLib.Bytes | Uint8Array | null): boolean;
 
@@ -3277,6 +3333,7 @@ export namespace Flatpak {
          * Adds installing the given flatpakref to this transaction.
          * @param flatpakref_data data from a flatpakref file
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_install_flatpakref(flatpakref_data: GLib.Bytes | Uint8Array): boolean;
 
@@ -3292,6 +3349,7 @@ export namespace Flatpak {
          * of transports are supported: oci:, oci-archive:, and docker:.
          * @param image_location location string to install from.
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_install_image(image_location: string | null): boolean;
 
@@ -3312,6 +3370,7 @@ export namespace Flatpak {
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
          * @since 1.3.3.
+         * @throws GLib.Error
          */
         add_rebase(remote: string, ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
@@ -3338,6 +3397,7 @@ export namespace Flatpak {
          * @param previous_ids Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
          * @returns `true` on success; `false` with `error` set on failure.
          * @since 1.15.4
+         * @throws GLib.Error
          */
         add_rebase_and_uninstall(remote: string, new_ref: string, old_ref: string, subpaths: string | null, previous_ids: string[] | null): boolean;
 
@@ -3352,6 +3412,7 @@ export namespace Flatpak {
          * @param location source of images for installation
          * @param cancellable 
          * @since 1.7.1
+         * @throws GLib.Error
          */
         add_sideload_image_collection(location: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3370,6 +3431,7 @@ export namespace Flatpak {
          * installing and removing refs, based on /etc/preinstall.d contents and what
          * the system had preinstalled before.
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_sync_preinstalled(): boolean;
 
@@ -3378,6 +3440,7 @@ export namespace Flatpak {
          * set to not deploy updates, the request is ignored.
          * @param ref the ref
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_uninstall(ref: string): boolean;
 
@@ -3387,6 +3450,7 @@ export namespace Flatpak {
          * @param subpaths subpaths to install; `null`  to use the current set plus the set of configured languages, or  `{ NULL }` or `{ "", NULL }` to pull all subpaths.
          * @param commit the commit to update to, or `null` to use the latest
          * @returns `true` on success; `false` with `error` set on failure.
+         * @throws GLib.Error
          */
         add_update(ref: string, subpaths: string[] | null, commit: string | null): boolean;
 
@@ -3469,6 +3533,7 @@ export namespace Flatpak {
          * @param ref a ref
          * @returns the {@link Flatpak.TransactionOperation} for `ref`, or   `null` with `error` set
          * @since 1.13.3
+         * @throws GLib.Error
          */
         get_operation_for_ref(remote: string | null, ref: string): TransactionOperation;
 
@@ -3508,6 +3573,7 @@ export namespace Flatpak {
          * Note that this call blocks until the transaction is done.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         run(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3686,6 +3752,7 @@ export namespace Flatpak {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

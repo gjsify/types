@@ -33,6 +33,9 @@ export namespace AnacondaWidgets {
      */
 
 
+    /**
+     * @default /org/fedoraproject/anaconda/widgets/
+     */
     const RESOURCE_PATH: string;
 
     /**

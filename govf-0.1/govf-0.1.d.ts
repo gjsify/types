@@ -27,10 +27,10 @@ export namespace Govf {
      * @gir-type Enum
      */
     enum PackageError {
-        FAILED,
-        NOT_FOUND,
-        XML,
-        LAST,
+        FAILED = 0,
+        NOT_FOUND = 1,
+        XML = 2,
+        LAST = 3,
     }
 
 
@@ -203,6 +203,7 @@ export namespace Govf {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         extract_disk_finish(result: Gio.AsyncResult): boolean;
 
@@ -217,6 +218,7 @@ export namespace Govf {
          * @param data OVF data
          * @param length size of the OVF data
          * @returns `true` if the operation succeeded
+         * @throws GLib.Error
          */
         load_from_data(data: string, length: bigint | number): boolean;
 
@@ -224,6 +226,7 @@ export namespace Govf {
          * Loads an OVF package from an uncompressed .ovf file.
          * @param filename an .ovf file name
          * @returns `true` if the operation succeeded
+         * @throws GLib.Error
          */
         load_from_file(filename: string): boolean;
 
@@ -261,6 +264,7 @@ export namespace Govf {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         load_from_ova_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -268,6 +272,7 @@ export namespace Govf {
          * Saves the OVF package to an uncompressed .ovf file.
          * @param filename an .ovf file name
          * @returns `true` if the operation succeeded
+         * @throws GLib.Error
          */
         save_file(filename: string): boolean;
     }

@@ -38,20 +38,36 @@ export namespace LangTag {
     }
 
 
+    /**
+     * @default 92
+     */
     const DIR_SEPARATOR: number;
 
+    /**
+     * @default \
+     */
     const DIR_SEPARATOR_S: string;
 
     /**
      * Static variable for the module version. this is used to ensure if the built
      * module is compatible with the runtime library.
+     * @default 1
      */
     const EXT_MODULE_VERSION: number;
 
+    /**
+     * @default 512
+     */
     const PATH_MAX: number;
 
+    /**
+     * @default 59
+     */
     const SEARCHPATH_SEPARATOR: number;
 
+    /**
+     * @default ;
+     */
     const SEARCHPATH_SEPARATOR_S: string;
 
     function db_finalize(): void;

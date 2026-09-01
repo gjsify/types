@@ -42,20 +42,20 @@ export namespace GstClapper {
         /**
          * hue or color balance.
          */
-        HUE,
+        HUE = 3,
         /**
          * brightness or black level.
          */
-        BRIGHTNESS,
+        BRIGHTNESS = 0,
         /**
          * color saturation or chroma
          * gain.
          */
-        SATURATION,
+        SATURATION = 2,
         /**
          * contrast or luma gain.
          */
-        CONTRAST,
+        CONTRAST = 1,
     }
 
 
@@ -99,15 +99,15 @@ export namespace GstClapper {
         /**
          * default seek method (flush only).
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * accurate seek method.
          */
-        ACCURATE,
+        ACCURATE = 1,
         /**
          * fast seek method (next keyframe).
          */
-        FAST,
+        FAST = 2,
     }
 
 
@@ -118,23 +118,23 @@ export namespace GstClapper {
         /**
          * RAW Native.
          */
-        RAW_NATIVE,
+        RAW_NATIVE = 0,
         /**
          * RAW xRGB.
          */
-        RAW_XRGB,
+        RAW_XRGB = 1,
         /**
          * RAW BGRx.
          */
-        RAW_BGRX,
+        RAW_BGRX = 2,
         /**
          * JPG.
          */
-        JPG,
+        JPG = 3,
         /**
          * PNG.
          */
-        PNG,
+        PNG = 4,
     }
 
 
@@ -152,19 +152,19 @@ export namespace GstClapper {
         /**
          * clapper is stopped.
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * clapper is buffering.
          */
-        BUFFERING,
+        BUFFERING = 1,
         /**
          * clapper is paused.
          */
-        PAUSED,
+        PAUSED = 2,
         /**
          * clapper is currently playing a stream.
          */
-        PLAYING,
+        PLAYING = 3,
     }
 
 
@@ -205,17 +205,17 @@ export namespace GstClapper {
              * @signal
              * @run-last
              */
-            "audio-decoder-changed": (arg0: string) => void;
+            "audio-decoder-changed": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            buffering: (arg0: number) => void;
+            buffering: (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "duration-changed": (arg0: number) => void;
+            "duration-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
@@ -225,42 +225,42 @@ export namespace GstClapper {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (object: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "media-info-updated": (arg0: ClapperMediaInfo) => void;
+            "media-info-updated": (object: ClapperMediaInfo) => void;
             /**
              * @signal
              * @run-last
              */
-            "position-updated": (arg0: number) => void;
+            "position-updated": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: ClapperState) => void;
+            "state-changed": (object: ClapperState) => void;
             /**
              * @signal
              * @run-last
              */
-            "uri-loaded": (arg0: string) => void;
+            "uri-loaded": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "video-decoder-changed": (arg0: string) => void;
+            "video-decoder-changed": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "video-dimensions-changed": (arg0: number, arg1: number) => void;
+            "video-dimensions-changed": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error) => void;
+            warning: (object: GLib.Error) => void;
             "notify::audio-video-offset": (pspec: GObject.ParamSpec) => void;
             "notify::current-audio-track": (pspec: GObject.ParamSpec) => void;
             "notify::current-subtitle-track": (pspec: GObject.ParamSpec) => void;

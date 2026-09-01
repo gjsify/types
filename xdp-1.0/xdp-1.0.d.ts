@@ -39,11 +39,11 @@ export namespace Xdp {
         /**
          * the button is down
          */
-        RELEASED,
+        RELEASED = 0,
         /**
          * the button is up
          */
-        PRESSED,
+        PRESSED = 1,
     }
 
 
@@ -58,7 +58,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum CameraFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -78,11 +78,11 @@ export namespace Xdp {
         /**
          * the horizontal scroll axis
          */
-        HORIZONTAL_SCROLL,
+        HORIZONTAL_SCROLL = 0,
         /**
          * the horizontal scroll axis
          */
-        VERTICAL_SCROLL,
+        VERTICAL_SCROLL = 1,
     }
 
 
@@ -97,7 +97,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum EmailFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -112,9 +112,9 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum InputCaptureSessionPersistence {
-        NONE,
-        TRANSIENT,
-        PERSISTENT,
+        NONE = 0,
+        TRANSIENT = 1,
+        PERSISTENT = 2,
     }
 
 
@@ -134,11 +134,11 @@ export namespace Xdp {
         /**
          * the key is down
          */
-        RELEASED,
+        RELEASED = 0,
         /**
          * the key is up
          */
-        PRESSED,
+        PRESSED = 1,
     }
 
 
@@ -158,27 +158,27 @@ export namespace Xdp {
         /**
          * No particular accuracy
          */
-        NONE,
+        NONE = 0,
         /**
          * Country-level accuracy
          */
-        COUNTRY,
+        COUNTRY = 1,
         /**
          * City-level accuracy
          */
-        CITY,
+        CITY = 2,
         /**
          * Neighborhood-level accuracy
          */
-        NEIGHBORHOOD,
+        NEIGHBORHOOD = 3,
         /**
          * Street-level accuracy
          */
-        STREET,
+        STREET = 4,
         /**
          * Maximum accuracy
          */
-        EXACT,
+        EXACT = 5,
     }
 
 
@@ -193,7 +193,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum LocationMonitorFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -213,17 +213,17 @@ export namespace Xdp {
         /**
          * the session is running
          */
-        RUNNING,
+        RUNNING = 1,
         /**
          * the session is in the query end phase,
          *     during which applications can save their state or inhibit the
          *     session from ending
          */
-        QUERY_END,
+        QUERY_END = 2,
         /**
          * the session is about to end
          */
-        ENDING,
+        ENDING = 3,
     }
 
 
@@ -238,7 +238,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum NotificationFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -257,15 +257,15 @@ export namespace Xdp {
         /**
          * do not persist
          */
-        NONE,
+        NONE = 0,
         /**
          * persist as long as the application is alive
          */
-        TRANSIENT,
+        TRANSIENT = 1,
         /**
          * persist until the user revokes this permission
          */
-        PERSISTENT,
+        PERSISTENT = 2,
     }
 
 
@@ -280,7 +280,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum PrintFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -295,7 +295,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum SaveFileFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -310,7 +310,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum SessionMonitorFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -329,15 +329,15 @@ export namespace Xdp {
         /**
          * the session has not been started.
          */
-        INITIAL,
+        INITIAL = 0,
         /**
          * the session is active.
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * the session is no longer active.
          */
-        CLOSED,
+        CLOSED = 2,
     }
 
 
@@ -356,15 +356,15 @@ export namespace Xdp {
         /**
          * a screencast session.
          */
-        SCREENCAST,
+        SCREENCAST = 0,
         /**
          * a remote desktop session.
          */
-        REMOTE_DESKTOP,
+        REMOTE_DESKTOP = 1,
         /**
          * an input capture session.
          */
-        INPUT_CAPTURE,
+        INPUT_CAPTURE = 2,
     }
 
 
@@ -379,7 +379,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum UpdateInstallFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -394,7 +394,7 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum UpdateMonitorFlags {
-        NONE,
+        NONE = 0,
     }
 
 
@@ -415,19 +415,19 @@ export namespace Xdp {
         /**
          * Installation in progress
          */
-        RUNNING,
+        RUNNING = 0,
         /**
          * Nothing to install
          */
-        EMPTY,
+        EMPTY = 1,
         /**
          * Installation finished successfully
          */
-        DONE,
+        DONE = 2,
         /**
          * Installation failed
          */
-        FAILED,
+        FAILED = 3,
     }
 
 
@@ -442,10 +442,13 @@ export namespace Xdp {
      * @gir-type Enum
      */
     enum UserInformationFlags {
-        NONE,
+        NONE = 0,
     }
 
 
+    /**
+     * @default 0
+     */
     const WALLPAPER_TARGET_BOTH: number;
 
     /**
@@ -463,15 +466,15 @@ export namespace Xdp {
         /**
          * No options
          */
-        NONE,
+        NONE = 0,
         /**
          * Request autostart as well
          */
-        AUTOSTART,
+        AUTOSTART = 1,
         /**
          * Whether the application is D-Bus-activatable
          */
-        ACTIVATABLE,
+        ACTIVATABLE = 2,
     }
 
 
@@ -490,15 +493,15 @@ export namespace Xdp {
         /**
          * no cursor
          */
-        HIDDEN,
+        HIDDEN = 1,
         /**
          * cursor is embedded on the stream
          */
-        EMBEDDED,
+        EMBEDDED = 2,
         /**
          * cursor is sent as metadata of the stream
          */
-        METADATA,
+        METADATA = 4,
     }
 
 
@@ -517,19 +520,19 @@ export namespace Xdp {
         /**
          * no device
          */
-        NONE,
+        NONE = 0,
         /**
          * control the keyboard.
          */
-        KEYBOARD,
+        KEYBOARD = 1,
         /**
          * control the pointer.
          */
-        POINTER,
+        POINTER = 2,
         /**
          * control the touchscreen.
          */
-        TOUCHSCREEN,
+        TOUCHSCREEN = 4,
     }
 
 
@@ -548,19 +551,19 @@ export namespace Xdp {
         /**
          * Inhibit logout
          */
-        LOGOUT,
+        LOGOUT = 1,
         /**
          * Inhibit user switching
          */
-        USER_SWITCH,
+        USER_SWITCH = 2,
         /**
          * Inhibit suspend
          */
-        SUSPEND,
+        SUSPEND = 4,
         /**
          * Inhibit the session going idle
          */
-        IDLE,
+        IDLE = 8,
     }
 
 
@@ -579,19 +582,19 @@ export namespace Xdp {
         /**
          * no device
          */
-        NONE,
+        NONE = 0,
         /**
          * capture the keyboard
          */
-        KEYBOARD,
+        KEYBOARD = 1,
         /**
          * capture pointer events
          */
-        POINTER,
+        POINTER = 2,
         /**
          * capture touchscreen events
          */
-        TOUCHSCREEN,
+        TOUCHSCREEN = 4,
     }
 
 
@@ -610,11 +613,11 @@ export namespace Xdp {
         /**
          * a launcher for a regular application
          */
-        APPLICATION,
+        APPLICATION = 1,
         /**
          * a launcher for a web app
          */
-        WEBAPP,
+        WEBAPP = 2,
     }
 
 
@@ -633,15 +636,15 @@ export namespace Xdp {
         /**
          * No options
          */
-        NONE,
+        NONE = 0,
         /**
          * Allow selecting multiple files
          */
-        MULTIPLE,
+        MULTIPLE = 1,
         /**
          * Select folders instead of files (Since: 0.10)
          */
-        DIRECTORY,
+        DIRECTORY = 2,
     }
 
 
@@ -660,15 +663,15 @@ export namespace Xdp {
         /**
          * No options
          */
-        NONE,
+        NONE = 0,
         /**
          * Use an application chooser for the given uri
          */
-        ASK,
+        ASK = 1,
         /**
          * Allow writing to file (if uri points to a local file that is exported in the document portal and app is sandboxed itself)
          */
-        WRITABLE,
+        WRITABLE = 2,
     }
 
 
@@ -687,19 +690,19 @@ export namespace Xdp {
         /**
          * do not select any output
          */
-        NONE,
+        NONE = 0,
         /**
          * allow selecting monitors
          */
-        MONITOR,
+        MONITOR = 1,
         /**
          * allow selecting individual application windows
          */
-        WINDOW,
+        WINDOW = 2,
         /**
          * allow creating new virtual displays
          */
-        VIRTUAL,
+        VIRTUAL = 4,
     }
 
 
@@ -718,11 +721,11 @@ export namespace Xdp {
         /**
          * No options
          */
-        NONE,
+        NONE = 0,
         /**
          * allow opening multiple streams
          */
-        MULTIPLE,
+        MULTIPLE = 1,
     }
 
 
@@ -741,11 +744,11 @@ export namespace Xdp {
         /**
          * No options
          */
-        NONE,
+        NONE = 0,
         /**
          * allow opening multiple streams
          */
-        MULTIPLE,
+        MULTIPLE = 1,
     }
 
 
@@ -760,8 +763,8 @@ export namespace Xdp {
      * @gir-type Flags
      */
     enum ScreenshotFlags {
-        NONE,
-        INTERACTIVE,
+        NONE = 0,
+        INTERACTIVE = 1,
     }
 
 
@@ -781,27 +784,27 @@ export namespace Xdp {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Clear the environment
          */
-        CLEARENV,
+        CLEARENV = 1,
         /**
          * Spawn the latest version of the app
          */
-        LATEST,
+        LATEST = 2,
         /**
          * Spawn in a sandbox (equivalent to the --sandbox option of flatpak run)
          */
-        SANDBOX,
+        SANDBOX = 4,
         /**
          * Spawn without network (equivalent to the --unshare=network option of flatpak run)
          */
-        NO_NETWORK,
+        NO_NETWORK = 8,
         /**
          * Kill the sandbox when the caller disappears from the session bus
          */
-        WATCH,
+        WATCH = 16,
     }
 
 
@@ -820,19 +823,19 @@ export namespace Xdp {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Set wallpaper on the desktop background
          */
-        BACKGROUND,
+        BACKGROUND = 1,
         /**
          * Set wallpaper on the lockscreen
          */
-        LOCKSCREEN,
+        LOCKSCREEN = 2,
         /**
          * Request the preview to be shown
          */
-        PREVIEW,
+        PREVIEW = 4,
     }
 
 
@@ -964,21 +967,21 @@ export namespace Xdp {
              * @signal
              * @run-cleanup
              */
-            activated: (arg0: number, arg1: GLib.Variant) => void;
+            activated: (activation_id: number, options: GLib.Variant) => void;
             /**
              * Emitted when an InputCapture session deactivates and no longer sends
              * events.
              * @signal
              * @run-cleanup
              */
-            deactivated: (arg0: number, arg1: GLib.Variant) => void;
+            deactivated: (activation_id: number, options: GLib.Variant) => void;
             /**
              * Emitted when an InputCapture session is disabled. This signal
              * is emitted when capturing was disabled by the server.
              * @signal
              * @run-cleanup
              */
-            disabled: (arg0: GLib.Variant) => void;
+            disabled: (options: GLib.Variant) => void;
             /**
              * Emitted when an InputCapture session's zones have changed. When this
              * signal is emitted, all current zones will have their
@@ -989,7 +992,7 @@ export namespace Xdp {
              * @signal
              * @run-cleanup
              */
-            "zones-changed": (arg0: GLib.Variant) => void;
+            "zones-changed": (options: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -1051,6 +1054,7 @@ export namespace Xdp {
          * 
          * This is a sync DBus invocation.
          * @returns a socket to the EIS implementation for this input capture session or a negative errno on failure.
+         * @throws GLib.Error
          */
         connect_to_eis(): number;
 
@@ -1167,6 +1171,7 @@ export namespace Xdp {
          * barriers that failed to apply and should be cleaned up by the caller.
          * @param result a {@link Gio.AsyncResult}
          * @returns a list of failed pointer barriers
+         * @throws GLib.Error
          */
         set_pointer_barriers_finish(result: Gio.AsyncResult): InputCapturePointerBarrier[];
 
@@ -1240,6 +1245,7 @@ export namespace Xdp {
          * successful.
          * @param result a {@link Gio.AsyncResult}
          * @returns TRUE on success.
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1384,13 +1390,13 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            "location-updated": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: string, arg7: number, arg8: number) => void;
+            "location-updated": (latitude: number, longitude: number, altitude: number, accuracy: number, speed: number, heading: number, description: string, timestamp_s: number, timestamp_ms: number) => void;
             /**
              * Emitted when a non-exported action is activated on a notification.
              * @signal
              * @run-first
              */
-            "notification-action-invoked": (arg0: string, arg1: string, arg2: GLib.Variant | null) => void;
+            "notification-action-invoked": (id: string, action: string, parameter: GLib.Variant | null) => void;
             /**
              * Emitted when session state monitoring is
              * enabled and the state of the login session changes or
@@ -1398,13 +1404,13 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            "session-state-changed": (arg0: boolean, arg1: LoginSessionState) => void;
+            "session-state-changed": (screensaver_active: boolean, session_state: LoginSessionState) => void;
             /**
              * Emitted when a process that was spawned with {@link Portal.spawn} exits.
              * @signal
              * @run-first
              */
-            "spawn-exited": (arg0: number, arg1: number) => void;
+            "spawn-exited": (pid: number, exit_status: number) => void;
             /**
              * Emitted when updates monitoring is enabled
              * and a new update is available.
@@ -1414,7 +1420,7 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            "update-available": (arg0: string, arg1: string, arg2: string) => void;
+            "update-available": (running_commit: string, local_commit: string, remote_commit: string) => void;
             /**
              * Emitted to indicate progress of an update installation.
              * 
@@ -1425,7 +1431,7 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            "update-progress": (arg0: number, arg1: number, arg2: number, arg3: UpdateStatus, arg4: string, arg5: string) => void;
+            "update-progress": (n_ops: number, op: number, progress: number, status: UpdateStatus, error: string, error_message: string) => void;
         }
 
         // Constructor properties interface
@@ -1550,6 +1556,7 @@ export namespace Xdp {
          * to obtain a pipewire remote.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if access to a camera was granted
+         * @throws GLib.Error
          */
         access_camera_finish(result: Gio.AsyncResult): boolean;
 
@@ -1720,6 +1727,7 @@ export namespace Xdp {
          * Returns the result as a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the notification was added
+         * @throws GLib.Error
          */
         add_notification_finish(result: Gio.AsyncResult): boolean;
 
@@ -1783,6 +1791,7 @@ export namespace Xdp {
          * Finishes the compose-email request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request was handled successfully
+         * @throws GLib.Error
          */
         compose_email_finish(result: Gio.AsyncResult): boolean;
 
@@ -1859,6 +1868,7 @@ export namespace Xdp {
          * [method.InputCaptureSession.start].
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link InputCaptureSession}
+         * @throws GLib.Error
          */
         create_input_capture_session2_finish(result: Gio.AsyncResult): InputCaptureSession;
 
@@ -1866,6 +1876,7 @@ export namespace Xdp {
          * Creates an inactive session for input capture.
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns a {@link InputCaptureSession}
+         * @throws GLib.Error
          */
         create_input_capture_session2_sync(cancellable: Gio.Cancellable | null): InputCaptureSession;
 
@@ -1875,6 +1886,7 @@ export namespace Xdp {
          * `xdp_input_capture_session_get_session()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link InputCaptureSession}
+         * @throws GLib.Error
          */
         create_input_capture_session_finish(result: Gio.AsyncResult): InputCaptureSession;
 
@@ -1923,6 +1935,7 @@ export namespace Xdp {
          * Finishes the create-remote-desktop request, and returns a {@link Session}.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Session}
+         * @throws GLib.Error
          */
         create_remote_desktop_session_finish(result: Gio.AsyncResult): Session;
 
@@ -1990,6 +2003,7 @@ export namespace Xdp {
          * Finishes the create-screencast request, and returns a {@link Session}.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Session}
+         * @throws GLib.Error
          */
         create_screencast_session_finish(result: Gio.AsyncResult): Session;
 
@@ -2001,6 +2015,7 @@ export namespace Xdp {
          * "." and suffixed with ".desktop".
          * @param desktop_file_id the .desktop file name
          * @returns the contents of the desktop file, or `null` with   `error` set
+         * @throws GLib.Error
          */
         dynamic_launcher_get_desktop_entry(desktop_file_id: string): string;
 
@@ -2014,6 +2029,7 @@ export namespace Xdp {
          * @param out_icon_format return location for icon format string, one of "png", "jpeg", "svg"
          * @param out_icon_size return location for icon size
          * @returns the icon in a format recognized by `g_icon_deserialize()`,   or `null` with `error` set
+         * @throws GLib.Error
          */
         dynamic_launcher_get_icon(desktop_file_id: string, out_icon_format: string | null, out_icon_size: number | null): GLib.Variant;
 
@@ -2032,12 +2048,14 @@ export namespace Xdp {
          * @param desktop_file_id the .desktop file name to be used
          * @param desktop_entry the key-file to be used for the contents of the .desktop file
          * @returns `true` if the installation was successful, `false` with `error` set   otherwise
+         * @throws GLib.Error
          */
         dynamic_launcher_install(token: string, desktop_file_id: string, desktop_entry: string): boolean;
 
         /**
          * @param desktop_file_id 
          * @param activation_token 
+         * @throws GLib.Error
          */
         dynamic_launcher_launch(desktop_file_id: string, activation_token: string): boolean;
 
@@ -2104,6 +2122,7 @@ export namespace Xdp {
          *     call to complete the installation
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with launcher   information
+         * @throws GLib.Error
          */
         dynamic_launcher_prepare_install_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2117,6 +2136,7 @@ export namespace Xdp {
          * @param name the name for the launcher
          * @param icon_v a {@link Gio.BytesIcon} as returned by `g_icon_serialize()`. Must be a png or jpeg no larger than 512x512, or an svg
          * @returns a token that can be passed to   {@link Portal.dynamic_launcher_install}, or `null` with `error` set
+         * @throws GLib.Error
          */
         dynamic_launcher_request_install_token(name: string, icon_v: GLib.Variant): string;
 
@@ -2128,6 +2148,7 @@ export namespace Xdp {
          * "." and suffixed with ".desktop".
          * @param desktop_file_id the .desktop file name
          * @returns `true` if the uninstallation was successful, `false` with `error` set   otherwise
+         * @throws GLib.Error
          */
         dynamic_launcher_uninstall(desktop_file_id: string): boolean;
 
@@ -2164,6 +2185,7 @@ export namespace Xdp {
          * Finishes retrieving the input portal API version.
          * @param result a {@link Gio.AsyncResult}
          * @returns the API version of the input capture portal, or -1 on error
+         * @throws GLib.Error
          */
         get_input_capture_version_finish(result: Gio.AsyncResult): number;
 
@@ -2171,6 +2193,7 @@ export namespace Xdp {
          * Retrieving the input portal API version.
          * @param cancellable optional {@link Gio.Cancellable}
          * @returns the API version of the input capture portal, or -1 on error
+         * @throws GLib.Error
          */
         get_input_capture_version_sync(cancellable: Gio.Cancellable | null): number;
 
@@ -2184,6 +2207,7 @@ export namespace Xdp {
         /**
          * @returns a vardict of supported options for properties that have options.
          * @since 0.9.0
+         * @throws GLib.Error
          */
         get_supported_notification_options(): GLib.Variant;
 
@@ -2236,6 +2260,7 @@ export namespace Xdp {
          * - image `s`: the uri of an image file for the users avatar picture
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with user information
+         * @throws GLib.Error
          */
         get_user_information_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2319,6 +2344,7 @@ export namespace Xdp {
          * Returns result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
+         * @throws GLib.Error
          */
         location_monitor_start_finish(result: Gio.AsyncResult): boolean;
 
@@ -2372,6 +2398,7 @@ export namespace Xdp {
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
+         * @throws GLib.Error
          */
         open_directory_finish(result: Gio.AsyncResult): boolean;
 
@@ -2500,6 +2527,7 @@ export namespace Xdp {
          *     being the selected option.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with the results
+         * @throws GLib.Error
          */
         open_file_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2549,6 +2577,7 @@ export namespace Xdp {
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
+         * @throws GLib.Error
          */
         open_uri_finish(result: Gio.AsyncResult): boolean;
 
@@ -2591,6 +2620,7 @@ export namespace Xdp {
          * red, green and blue components in the range [0,1].
          * @param result a {@link Gio.AsyncResult}
          * @returns GVariant containing the color
+         * @throws GLib.Error
          */
         pick_color_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2649,6 +2679,7 @@ export namespace Xdp {
          *     avoid the print dialog
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with print information
+         * @throws GLib.Error
          */
         prepare_print_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2712,6 +2743,7 @@ export namespace Xdp {
          * Finishes the print request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request was successful
+         * @throws GLib.Error
          */
         print_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -2768,6 +2800,7 @@ export namespace Xdp {
          * Returns `TRUE` if successful.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if successful.
+         * @throws GLib.Error
          */
         request_background_finish(result: Gio.AsyncResult): boolean;
 
@@ -2851,6 +2884,7 @@ export namespace Xdp {
          *   being the selected option.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with the results
+         * @throws GLib.Error
          */
         save_file_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2940,6 +2974,7 @@ export namespace Xdp {
          *   being the selected option.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Variant} dictionary with the results
+         * @throws GLib.Error
          */
         save_files_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -2997,6 +3032,7 @@ export namespace Xdp {
          * to {@link Portal.session_uninhibit} to undo the inhibition.
          * @param result a {@link Gio.AsyncResult}
          * @returns the ID of the inhibition, or -1 if there was an error
+         * @throws GLib.Error
          */
         session_inhibit_finish(result: Gio.AsyncResult): number;
 
@@ -3060,6 +3096,7 @@ export namespace Xdp {
          * Returns the result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
+         * @throws GLib.Error
          */
         session_monitor_start_finish(result: Gio.AsyncResult): boolean;
 
@@ -3106,6 +3143,7 @@ export namespace Xdp {
          * Finishes setting the background status of the application.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successfully set status, `false` otherwise
+         * @throws GLib.Error
          */
         set_background_status_finish(result: Gio.AsyncResult): boolean;
 
@@ -3144,6 +3182,7 @@ export namespace Xdp {
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
+         * @throws GLib.Error
          */
         set_wallpaper_finish(result: Gio.AsyncResult): boolean;
 
@@ -3209,6 +3248,7 @@ export namespace Xdp {
          * Returns the pid of the newly spawned process.
          * @param result a {@link Gio.AsyncResult}
          * @returns the pid of the spawned process.
+         * @throws GLib.Error
          */
         spawn_finish(result: Gio.AsyncResult): never;
 
@@ -3262,6 +3302,7 @@ export namespace Xdp {
          * Returns the result in the form of a URI pointing to an image file.
          * @param result a {@link Gio.AsyncResult}
          * @returns URI pointing to an image file
+         * @throws GLib.Error
          */
         take_screenshot_finish(result: Gio.AsyncResult): string | null;
 
@@ -3294,6 +3335,7 @@ export namespace Xdp {
          * Returns the result in the form of a boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the call succeeded
+         * @throws GLib.Error
          */
         trash_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -3352,6 +3394,7 @@ export namespace Xdp {
          * to learn when the installation is complete.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the update is being installed
+         * @throws GLib.Error
          */
         update_install_finish(result: Gio.AsyncResult): boolean;
 
@@ -3399,6 +3442,7 @@ export namespace Xdp {
          * Returns the result in the form of boolean.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the request succeeded
+         * @throws GLib.Error
          */
         update_monitor_start_finish(result: Gio.AsyncResult): boolean;
 
@@ -3450,6 +3494,7 @@ export namespace Xdp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3513,12 +3558,12 @@ export namespace Xdp {
              * @signal
              * @run-cleanup
              */
-            "selection-owner-changed": (arg0: string[], arg1: boolean) => void;
+            "selection-owner-changed": (object: string[], p0: boolean) => void;
             /**
              * @signal
              * @run-cleanup
              */
-            "selection-transfer": (arg0: string, arg1: number) => void;
+            "selection-transfer": (object: string, p0: number) => void;
         }
 
         // Constructor properties interface
@@ -3584,6 +3629,7 @@ export namespace Xdp {
          * event emulation must be handled via the EIS connection and calls to
          * `xdp_session_pointer_motion()` etc. are silently ignored.
          * @returns the file descriptor to the EIS implementation
+         * @throws GLib.Error
          */
         connect_to_eis(): number;
 
@@ -3830,6 +3876,7 @@ export namespace Xdp {
          * Finishes the session-start request.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the session was started successfully.
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
 
@@ -3882,7 +3929,7 @@ export namespace Xdp {
              * @signal
              * @run-first
              */
-            changed: (arg0: string, arg1: string, arg2: GLib.Variant) => void;
+            changed: (namespace_: string, key: string, value: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -3936,6 +3983,7 @@ export namespace Xdp {
          * @param namespaces List of namespaces to filter results by, supports simple globbing explained below.
          * @param cancellable a GCancellable or NULL.
          * @returns a value containing all the values, or `null` if not found. If `error` is not NULL, then the error is returned.
+         * @throws GLib.Error
          */
         read_all_values(namespaces: string, cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -3945,6 +3993,7 @@ export namespace Xdp {
          * @param key the key of the value.
          * @param cancellable a GCancellable or NULL.
          * @returns the stringint value, or NULL if not found or not the right type. If `error` is not NULL, then the error is returned.
+         * @throws GLib.Error
          */
         read_string(namespace_: string, key: string, cancellable: Gio.Cancellable | null): string;
 
@@ -3954,6 +4003,7 @@ export namespace Xdp {
          * @param key the key of the value.
          * @param cancellable a GCancellable or NULL.
          * @returns the uint value, or 0 if not found or not the right type. If `error` is not NULL, then the error is returned.
+         * @throws GLib.Error
          */
         read_uint(namespace_: string, key: string, cancellable: Gio.Cancellable | null): number;
 
@@ -3963,6 +4013,7 @@ export namespace Xdp {
          * @param key the key of the value.
          * @param cancellable a GCancellable or NULL.
          * @returns the value, or `null` if not found. If `error` is not NULL, then the error is returned.
+         * @throws GLib.Error
          */
         read_value(namespace_: string, key: string, cancellable: Gio.Cancellable | null): GLib.Variant;
     }

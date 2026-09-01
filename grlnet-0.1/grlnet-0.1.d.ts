@@ -29,15 +29,15 @@ export namespace GrlNet {
      * @gir-type Enum
      */
     enum WcError {
-        UNAVAILABLE,
-        PROTOCOL_ERROR,
-        AUTHENTICATION_REQUIRED,
-        NOT_FOUND,
-        CONFLICT,
-        FORBIDDEN,
-        NETWORK_ERROR,
-        PROXY_ERROR,
-        CANCELLED,
+        UNAVAILABLE = 1,
+        PROTOCOL_ERROR = 2,
+        AUTHENTICATION_REQUIRED = 3,
+        NOT_FOUND = 4,
+        CONFLICT = 5,
+        FORBIDDEN = 6,
+        NETWORK_ERROR = 7,
+        PROXY_ERROR = 8,
+        CANCELLED = 9,
     }
 
 
@@ -157,6 +157,7 @@ export namespace GrlNet {
          * @param content The contents of the resource
          * @param length The length of the contents or `null` if it is not needed
          * @returns `true` if the request was successfull. If `false` an error occurred.
+         * @throws GLib.Error
          */
         request_finish(result: Gio.AsyncResult, content: string, length: bigint | number): boolean;
 

@@ -30,51 +30,51 @@ export namespace Easyfc {
         /**
          * unknown error happened.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * an operation is succeeded.
          */
-        SUCCESS,
+        SUCCESS = 0,
         /**
          * Out of memory occurred.
          */
-        OOM,
+        OOM = 1,
         /**
          * an error happened in fontconfig.
          */
-        FAIL_ON_FC,
+        FAIL_ON_FC = 2,
         /**
          * no valid font is available on the system.
          */
-        NO_VALID_FONT,
+        NO_VALID_FONT = 3,
         /**
          * no font family name found in a class.
          */
-        NO_FAMILY,
+        NO_FAMILY = 4,
         /**
          * no valid configuration directory found.
          */
-        NO_CONFIG_DIR,
+        NO_CONFIG_DIR = 5,
         /**
          * no elements found to write.
          */
-        NO_ELEMENTS,
+        NO_ELEMENTS = 6,
         /**
          * no configuration file was available on the filesystem.
          */
-        NO_CONFIG_FILE,
+        NO_CONFIG_FILE = 7,
         /**
          * an error happened in libxml2.
          */
-        FAIL_ON_XML,
+        FAIL_ON_XML = 8,
         /**
          * an error happened in libc.
          */
-        FAIL_ON_LIBC,
+        FAIL_ON_LIBC = 9,
         /**
          * No real error, but just a terminator.
          */
-        END,
+        END = 10,
     }
 
 
@@ -86,27 +86,27 @@ export namespace Easyfc {
         /**
          * unknown state in the hintstyle.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No use of autohinting
          */
-        NONE,
+        NONE = 1,
         /**
          * Use slight autohinting
          */
-        SLIGHT,
+        SLIGHT = 2,
         /**
          * Use medium autohinting
          */
-        MEDIUM,
+        MEDIUM = 3,
         /**
          * Use full autohinting
          */
-        FULL,
+        FULL = 4,
         /**
          * No real value, but just a terminator.
          */
-        END,
+        END = 5,
     }
 
 
@@ -118,35 +118,35 @@ export namespace Easyfc {
         /**
          * unknown state on using the sub-pixel rendering.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * no use of the sub-pixel rendering
          */
-        NONE,
+        NONE = 1,
         /**
          * Use the gray-scaled sub-pixel rendering
          */
-        GRAY,
+        GRAY = 2,
         /**
          * Use the sub-pixel rendering with the sub-pixel geometry RGB.
          */
-        RGB,
+        RGB = 3,
         /**
          * Use the sub-pixel rendering with the sub-pixel geometry BGR.
          */
-        BGR,
+        BGR = 4,
         /**
          * Use the sub-pixel rendering with the sub-pixel geometry VRGB.
          */
-        VRGB,
+        VRGB = 5,
         /**
          * Use the sub-pixel rendering with the sub-pixel geometry VBGR.
          */
-        VBGR,
+        VBGR = 6,
         /**
          * No real value, but just a terminator.
          */
-        END,
+        END = 7,
     }
 
 
@@ -307,6 +307,7 @@ export namespace Easyfc {
          * Set `font_name` as the font family name used for the alias font.
          * @param font_name a font name.
          * @returns `true` if it successfully is set. otherwise `false`.
+         * @throws GLib.Error
          */
         set_font(font_name: string): boolean;
 
@@ -315,6 +316,7 @@ export namespace Easyfc {
          * `pattern`.
          * @param pattern a {@link fontconfig.Pattern}.
          * @returns `true` if it successfully is set. otherwise `false`.
+         * @throws GLib.Error
          */
         set_font_pattern(pattern: fontconfig.Pattern): boolean;
 
@@ -422,6 +424,7 @@ export namespace Easyfc {
          * You have to invoke `ezfc_config_set_priority()` and `ezfc_config_set_name()`
          * first to read the appropriate configuration file.
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -481,12 +484,14 @@ export namespace Easyfc {
          * `ezfc_config_set_priority()` and `ezfc_config_set_name()` first to
          * write it to the appropriate configuration file.
          * @returns `true` if it's successfully completed, otherwise `false`.
+         * @throws GLib.Error
          */
         save(): boolean;
 
         /**
          * Write the data to the buffer.
          * @returns a {@link GLib.String} containing a xml data. `null` if fails.
+         * @throws GLib.Error
          */
         save_to_buffer(): GLib.String;
 
@@ -575,6 +580,7 @@ export namespace Easyfc {
          * @param font_name a font name.
          * @returns `true` if it successfully is set. otherwise `false`.
          * @since 0.11
+         * @throws GLib.Error
          */
         add_family(font_name: string): boolean;
 
@@ -590,6 +596,7 @@ export namespace Easyfc {
          * Split up `font` to {@link Easyfc.Font} that has one family name only.
          * @returns a {@link GLib.List} contains          {@link Easyfc.Font}, otherwise `null`.
          * @since 0.11
+         * @throws GLib.Error
          */
         canonicalize(): Font[];
 
@@ -611,6 +618,7 @@ export namespace Easyfc {
         /**
          * Analize `font` and returns a alias name string according to the result.
          * @returns a {@link GLib.List} containing          a static string for the alias name.
+         * @throws GLib.Error
          */
         get_alias_name(): string[];
 
@@ -699,6 +707,7 @@ export namespace Easyfc {
          * Removes all of families in `font`.
          * @returns `true` if it's successfully completed, otherwise `false`.
          * @since 0.11
+         * @throws GLib.Error
          */
         remove(): boolean;
 
@@ -707,6 +716,7 @@ export namespace Easyfc {
          * @param font_name a font name to be removed.
          * @returns `true` if it's successfully completed, otherwise `false`.
          * @since 0.11
+         * @throws GLib.Error
          */
         remove_family(font_name: string): boolean;
 
@@ -742,6 +752,7 @@ export namespace Easyfc {
          * @param font_name a font name.
          * @returns `true` if it successfully is set. otherwise `false`.
          * @deprecated since 0.11.: Use `ezfc_font_add_family()`.
+         * @throws GLib.Error
          */
         set_family(font_name: string): boolean;
 
@@ -762,6 +773,7 @@ export namespace Easyfc {
          * `pattern`.
          * @param pattern a {@link fontconfig.Pattern}.
          * @returns `true` if it successfully is set. otherwise `false`.
+         * @throws GLib.Error
          */
         set_pattern(pattern: fontconfig.Pattern): boolean;
 
@@ -869,6 +881,7 @@ export namespace Easyfc {
          * Enable/Disable a configuration.
          * @param flag a boolean value
          * @returns `true` if successfully enabled or disabled, otherwise `false`.
+         * @throws GLib.Error
          */
         set_enable(flag: boolean): boolean;
 

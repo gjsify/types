@@ -51,10 +51,10 @@ export namespace St {
      * @gir-type Enum
      */
     enum BackgroundSize {
-        AUTO,
-        CONTAIN,
-        COVER,
-        FIXED,
+        AUTO = 0,
+        CONTAIN = 1,
+        COVER = 2,
+        FIXED = 3,
     }
 
 
@@ -69,8 +69,8 @@ export namespace St {
      * @gir-type Enum
      */
     enum ClipboardType {
-        PRIMARY,
-        CLIPBOARD,
+        PRIMARY = 0,
+        CLIPBOARD = 1,
     }
 
 
@@ -89,19 +89,19 @@ export namespace St {
         /**
          * The top-right corner.
          */
-        TOPLEFT,
+        TOPLEFT = 0,
         /**
          * The top-right corner.
          */
-        TOPRIGHT,
+        TOPRIGHT = 1,
         /**
          * The bottom-right corner.
          */
-        BOTTOMRIGHT,
+        BOTTOMRIGHT = 2,
         /**
          * The bottom-left corner.
          */
-        BOTTOMLEFT,
+        BOTTOMLEFT = 3,
     }
 
 
@@ -120,27 +120,27 @@ export namespace St {
         /**
          * Move forward.
          */
-        TAB_FORWARD,
+        TAB_FORWARD = 0,
         /**
          * Move backward.
          */
-        TAB_BACKWARD,
+        TAB_BACKWARD = 1,
         /**
          * Move up.
          */
-        UP,
+        UP = 2,
         /**
          * Move down.
          */
-        DOWN,
+        DOWN = 3,
         /**
          * Move left.
          */
-        LEFT,
+        LEFT = 4,
         /**
          * Move right.
          */
-        RIGHT,
+        RIGHT = 5,
     }
 
 
@@ -159,19 +159,19 @@ export namespace St {
         /**
          * No gradient.
          */
-        NONE,
+        NONE = 0,
         /**
          * A vertical gradient.
          */
-        VERTICAL,
+        VERTICAL = 1,
         /**
          * A horizontal gradient.
          */
-        HORIZONTAL,
+        HORIZONTAL = 2,
         /**
          * Lookup the style requested in the icon name.
          */
-        RADIAL,
+        RADIAL = 3,
     }
 
 
@@ -190,17 +190,17 @@ export namespace St {
         /**
          * Lookup the style requested in the icon name.
          */
-        REQUESTED,
+        REQUESTED = 0,
         /**
          * Try to always load regular icons, even when symbolic
          *   icon names are given.
          */
-        REGULAR,
+        REGULAR = 1,
         /**
          * Try to always load symbolic icons, even when regular
          *   icon names are given.
          */
-        SYMBOLIC,
+        SYMBOLIC = 2,
     }
 
 
@@ -241,10 +241,10 @@ export namespace St {
      * @gir-type Enum
      */
     enum PolicyType {
-        ALWAYS,
-        AUTOMATIC,
-        NEVER,
-        EXTERNAL,
+        ALWAYS = 0,
+        AUTOMATIC = 1,
+        NEVER = 2,
+        EXTERNAL = 3,
     }
 
 
@@ -263,19 +263,19 @@ export namespace St {
         /**
          * The top side.
          */
-        TOP,
+        TOP = 0,
         /**
          * The right side.
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The bottom side.
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * The left side.
          */
-        LEFT,
+        LEFT = 3,
     }
 
 
@@ -290,15 +290,15 @@ export namespace St {
      * @gir-type Enum
      */
     enum SystemAccentColor {
-        BLUE,
-        TEAL,
-        GREEN,
-        YELLOW,
-        ORANGE,
-        RED,
-        PINK,
-        PURPLE,
-        SLATE,
+        BLUE = 0,
+        TEAL = 1,
+        GREEN = 2,
+        YELLOW = 3,
+        ORANGE = 4,
+        RED = 5,
+        PINK = 6,
+        PURPLE = 7,
+        SLATE = 8,
     }
 
 
@@ -313,9 +313,9 @@ export namespace St {
      * @gir-type Enum
      */
     enum SystemColorScheme {
-        DEFAULT,
-        PREFER_DARK,
-        PREFER_LIGHT,
+        DEFAULT = 0,
+        PREFER_DARK = 1,
+        PREFER_LIGHT = 2,
     }
 
 
@@ -334,16 +334,16 @@ export namespace St {
         /**
          * Text is aligned at the beginning of the label.
          */
-        LEFT,
+        LEFT = 0,
         /**
          * Text is aligned in the middle of the label.
          */
-        CENTER,
+        CENTER = 1,
         /**
          * Text is aligned at the end of the label.
          */
-        RIGHT,
-        JUSTIFY,
+        RIGHT = 2,
+        JUSTIFY = 3,
     }
 
 
@@ -358,8 +358,8 @@ export namespace St {
      * @gir-type Enum
      */
     enum TextureCachePolicy {
-        NONE,
-        FOREVER,
+        NONE = 0,
+        FOREVER = 1,
     }
 
 
@@ -410,15 +410,15 @@ export namespace St {
         /**
          * button 1 (left)
          */
-        ONE,
+        ONE = 1,
         /**
          * button 2 (middle)
          */
-        TWO,
+        TWO = 2,
         /**
          * button 3 (right)
          */
-        THREE,
+        THREE = 4,
     }
 
 
@@ -438,45 +438,45 @@ export namespace St {
          * Never get SVG icons, even if gdk-pixbuf
          *   supports them. Cannot be used together with {@link St.IconLookupFlags.FORCE_SVG}.
          */
-        NO_SVG,
+        NO_SVG = 1,
         /**
          * Get SVG icons, even if gdk-pixbuf
          *   doesn’t support them.
          *   Cannot be used together with {@link St.IconLookupFlags.NO_SVG}.
          */
-        FORCE_SVG,
+        FORCE_SVG = 2,
         /**
          * Try to shorten icon name at '-'
          *   characters before looking at inherited themes. This flag is only
          *   supported in functions that take a single icon name. For more general
          *   fallback, see `st_icon_theme_choose_icon()`.
          */
-        GENERIC_FALLBACK,
+        GENERIC_FALLBACK = 4,
         /**
          * Always get the icon scaled to the
          *   requested size.
          */
-        FORCE_SIZE,
+        FORCE_SIZE = 8,
         /**
          * Try to always load regular icons, even
          *   when symbolic icon names are given.
          */
-        FORCE_REGULAR,
+        FORCE_REGULAR = 16,
         /**
          * Try to always load symbolic icons, even
          *   when regular icon names are given.
          */
-        FORCE_SYMBOLIC,
+        FORCE_SYMBOLIC = 32,
         /**
          * Try to load a variant of the icon for left-to-right
          *   text direction.
          */
-        DIR_LTR,
+        DIR_LTR = 64,
         /**
          * Try to load a variant of the icon for right-to-left
          *   text direction.
          */
-        DIR_RTL,
+        DIR_RTL = 128,
     }
 
 
@@ -495,19 +495,19 @@ export namespace St {
      * @gir-type Flags
      */
     enum TextDecoration {
-        UNDERLINE,
+        UNDERLINE = 1,
         /**
          * Text is overlined
          */
-        OVERLINE,
+        OVERLINE = 2,
         /**
          * Text is striked out
          */
-        LINE_THROUGH,
+        LINE_THROUGH = 4,
         /**
          * Text blinks
          */
-        BLINK,
+        BLINK = 8,
     }
 
 
@@ -1344,7 +1344,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            clicked: (arg0: number) => void;
+            clicked: (clicked_button: number) => void;
             "notify::button-mask": (pspec: GObject.ParamSpec) => void;
             "notify::checked": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -2468,7 +2468,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            "set-current-value": (arg0: number) => void;
+            "set-current-value": (new_value: number) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -3124,6 +3124,7 @@ export namespace St {
          * the {@link St.IconInfo}. If this flag has been specified, the pixbuf
          * returned by this function will be scaled to the exact size.
          * @returns the rendered icon; this may be a newly     created icon or a new reference to an internal icon, so you must     not modify the icon. Use `g_object_unref()` to release your reference     to the icon.
+         * @throws GLib.Error
          */
         load_icon(): GdkPixbuf.Pixbuf;
 
@@ -3163,6 +3164,7 @@ export namespace St {
          * Finishes an async icon load, see `st_icon_info_load_icon_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns the rendered icon; this may be a newly     created icon or a new reference to an internal icon, so you must     not modify the icon. Use `g_object_unref()` to release your reference     to the icon.
+         * @throws GLib.Error
          */
         load_icon_finish(res: Gio.AsyncResult): GdkPixbuf.Pixbuf;
 
@@ -3185,6 +3187,7 @@ export namespace St {
          * for more information about symbolic icons.
          * @param colors a {@link St.IconColors} representing the foreground, warning and error colors
          * @returns a {@link GdkPixbuf.Pixbuf} representing the loaded icon
+         * @throws GLib.Error
          */
         load_symbolic(colors: IconColors): [GdkPixbuf.Pixbuf, boolean];
 
@@ -3227,6 +3230,7 @@ export namespace St {
          * Finishes an async icon load, see `st_icon_info_load_symbolic_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns the rendered icon; this may be a newly     created icon or a new reference to an internal icon, so you must     not modify the icon. Use `g_object_unref()` to release your reference     to the icon.
+         * @throws GLib.Error
          */
         load_symbolic_finish(res: Gio.AsyncResult): [GdkPixbuf.Pixbuf, boolean];
     }
@@ -3422,6 +3426,7 @@ export namespace St {
          * @param size the desired icon size. The resulting icon may not be     exactly this size.
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
+         * @throws GLib.Error
          */
         load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null;
 
@@ -3444,6 +3449,7 @@ export namespace St {
          * @param scale desired scale
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon.
+         * @throws GLib.Error
          */
         load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null;
 
@@ -3798,6 +3804,7 @@ export namespace St {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
@@ -3834,6 +3841,7 @@ export namespace St {
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
 
@@ -5192,7 +5200,7 @@ export namespace St {
              * @signal
              * @run-last
              */
-            "texture-file-changed": (arg0: Gio.File) => void;
+            "texture-file-changed": (file: Gio.File) => void;
         }
 
         // Constructor properties interface
@@ -5421,6 +5429,7 @@ export namespace St {
          * Load the stylesheet associated with `file`.
          * @param file a {@link Gio.File}
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         load_stylesheet(file: Gio.File): boolean;
 

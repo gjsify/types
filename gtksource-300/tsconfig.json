@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gtksource-300.d.ts","./gtksource-300-surface.d.ts"]
+  "include": ["./gtksource-300.d.ts","./gtksource-300-vocabulary.d.ts"]
 }
 
 

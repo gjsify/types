@@ -35,22 +35,26 @@ export namespace Casilda {
 
     /**
      * casilda major version component (e.g. 1 if `CASILDA_VERSION` is 1.2.3)
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * casilda micro version component (e.g. 3 if `CASILDA_VERSION` is 1.2.3)
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * casilda minor version component (e.g. 2 if `CASILDA_VERSION` is 1.2.3)
+     * @default 2
      */
     const MINOR_VERSION: number;
 
     /**
      * casilda version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 0.2.0
      */
     const VERSION_S: string;
 

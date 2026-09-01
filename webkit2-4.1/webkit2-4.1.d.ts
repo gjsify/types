@@ -50,43 +50,43 @@ export namespace WebKit2 {
         /**
          * The default authentication scheme of WebKit.
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Basic authentication scheme as defined in RFC 2617.
          */
-        HTTP_BASIC,
+        HTTP_BASIC = 2,
         /**
          * Digest authentication scheme as defined in RFC 2617.
          */
-        HTTP_DIGEST,
+        HTTP_DIGEST = 3,
         /**
          * HTML Form authentication.
          */
-        HTML_FORM,
+        HTML_FORM = 4,
         /**
          * NTLM Microsoft proprietary authentication scheme.
          */
-        NTLM,
+        NTLM = 5,
         /**
          * Negotiate (or SPNEGO) authentication scheme as defined in RFC 4559.
          */
-        NEGOTIATE,
+        NEGOTIATE = 6,
         /**
          * Client Certificate Authentication (see RFC 2246).
          */
-        CLIENT_CERTIFICATE_REQUESTED,
+        CLIENT_CERTIFICATE_REQUESTED = 7,
         /**
          * Server Trust Authentication.
          */
-        SERVER_TRUST_EVALUATION_REQUESTED,
+        SERVER_TRUST_EVALUATION_REQUESTED = 8,
         /**
          * Client certificate PIN required for use. Since: 2.34
          */
-        CLIENT_CERTIFICATE_PIN_REQUESTED,
+        CLIENT_CERTIFICATE_PIN_REQUESTED = 9,
         /**
          * Authentication scheme unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 100,
     }
 
 
@@ -106,11 +106,11 @@ export namespace WebKit2 {
         /**
          * a window
          */
-        WINDOW,
+        WINDOW = 0,
         /**
          * a tab
          */
-        TAB,
+        TAB = 1,
     }
 
 
@@ -130,16 +130,16 @@ export namespace WebKit2 {
         /**
          * Do not restrict autoplay.
          */
-        ALLOW,
+        ALLOW = 0,
         /**
          * Allow videos to autoplay if
          *     they have no audio track, or if their audio track is muted.
          */
-        ALLOW_WITHOUT_SOUND,
+        ALLOW_WITHOUT_SOUND = 1,
         /**
          * Never allow autoplay.
          */
-        DENY,
+        DENY = 2,
     }
 
 
@@ -161,18 +161,18 @@ export namespace WebKit2 {
          *   access a single local file, with no navigation to other pages. No remote
          *   resources will be cached.
          */
-        DOCUMENT_VIEWER,
+        DOCUMENT_VIEWER = 0,
         /**
          * Improve document load speed substantially
          *   by caching a very large number of resources and previously viewed content.
          */
-        WEB_BROWSER,
+        WEB_BROWSER = 1,
         /**
          * A cache model optimized for viewing
          *   a series of local files -- for example, a documentation viewer or a website
          *   designer. WebKit will cache a moderate number of resources.
          */
-        DOCUMENT_BROWSER,
+        DOCUMENT_BROWSER = 2,
     }
 
 
@@ -192,191 +192,191 @@ export namespace WebKit2 {
         /**
          * No action, used by separator menu items.
          */
-        NO_ACTION,
+        NO_ACTION = 0,
         /**
          * Open current link.
          */
-        OPEN_LINK,
+        OPEN_LINK = 1,
         /**
          * Open current link in a new window.
          */
-        OPEN_LINK_IN_NEW_WINDOW,
+        OPEN_LINK_IN_NEW_WINDOW = 2,
         /**
          * Download link destination.
          */
-        DOWNLOAD_LINK_TO_DISK,
+        DOWNLOAD_LINK_TO_DISK = 3,
         /**
          * Copy link location to the clipboard.
          */
-        COPY_LINK_TO_CLIPBOARD,
+        COPY_LINK_TO_CLIPBOARD = 4,
         /**
          * Open current image in a new window.
          */
-        OPEN_IMAGE_IN_NEW_WINDOW,
+        OPEN_IMAGE_IN_NEW_WINDOW = 5,
         /**
          * Download current image.
          */
-        DOWNLOAD_IMAGE_TO_DISK,
+        DOWNLOAD_IMAGE_TO_DISK = 6,
         /**
          * Copy current image to the clipboard.
          */
-        COPY_IMAGE_TO_CLIPBOARD,
+        COPY_IMAGE_TO_CLIPBOARD = 7,
         /**
          * Copy current image location to the clipboard.
          */
-        COPY_IMAGE_URL_TO_CLIPBOARD,
+        COPY_IMAGE_URL_TO_CLIPBOARD = 8,
         /**
          * Open current frame in a new window.
          */
-        OPEN_FRAME_IN_NEW_WINDOW,
+        OPEN_FRAME_IN_NEW_WINDOW = 9,
         /**
          * Load the previous history item.
          */
-        GO_BACK,
+        GO_BACK = 10,
         /**
          * Load the next history item.
          */
-        GO_FORWARD,
+        GO_FORWARD = 11,
         /**
          * Stop any ongoing loading operation.
          */
-        STOP,
+        STOP = 12,
         /**
          * Reload the contents of current view.
          */
-        RELOAD,
+        RELOAD = 13,
         /**
          * Copy current selection the clipboard.
          */
-        COPY,
+        COPY = 14,
         /**
          * Cut current selection to the clipboard.
          */
-        CUT,
+        CUT = 15,
         /**
          * Paste clipboard contents.
          */
-        PASTE,
+        PASTE = 16,
         /**
          * Delete current selection.
          */
-        DELETE,
+        DELETE = 17,
         /**
          * Select all text.
          */
-        SELECT_ALL,
+        SELECT_ALL = 18,
         /**
          * Input methods menu.
          */
-        INPUT_METHODS,
+        INPUT_METHODS = 19,
         /**
          * Unicode menu.
          */
-        UNICODE,
+        UNICODE = 20,
         /**
          * A proposed replacement for a misspelled word.
          */
-        SPELLING_GUESS,
+        SPELLING_GUESS = 21,
         /**
          * An indicator that spellchecking found no proposed replacements.
          */
-        NO_GUESSES_FOUND,
+        NO_GUESSES_FOUND = 22,
         /**
          * Causes the spellchecker to ignore the word for this session.
          */
-        IGNORE_SPELLING,
+        IGNORE_SPELLING = 23,
         /**
          * Causes the spellchecker to add the word to the dictionary.
          */
-        LEARN_SPELLING,
+        LEARN_SPELLING = 24,
         /**
          * Ignore grammar.
          */
-        IGNORE_GRAMMAR,
+        IGNORE_GRAMMAR = 25,
         /**
          * Font options menu.
          */
-        FONT_MENU,
+        FONT_MENU = 26,
         /**
          * Bold.
          */
-        BOLD,
+        BOLD = 27,
         /**
          * Italic.
          */
-        ITALIC,
+        ITALIC = 28,
         /**
          * Underline.
          */
-        UNDERLINE,
+        UNDERLINE = 29,
         /**
          * Outline.
          */
-        OUTLINE,
+        OUTLINE = 30,
         /**
          * Open current element in the inspector.
          */
-        INSPECT_ELEMENT,
+        INSPECT_ELEMENT = 31,
         /**
          * Open current video element in a new window.
          */
-        OPEN_VIDEO_IN_NEW_WINDOW,
+        OPEN_VIDEO_IN_NEW_WINDOW = 32,
         /**
          * Open current audio element in a new window.
          */
-        OPEN_AUDIO_IN_NEW_WINDOW,
+        OPEN_AUDIO_IN_NEW_WINDOW = 33,
         /**
          * Copy video link location in to the clipboard.
          */
-        COPY_VIDEO_LINK_TO_CLIPBOARD,
+        COPY_VIDEO_LINK_TO_CLIPBOARD = 34,
         /**
          * Copy audio link location in to the clipboard.
          */
-        COPY_AUDIO_LINK_TO_CLIPBOARD,
+        COPY_AUDIO_LINK_TO_CLIPBOARD = 35,
         /**
          * Enable or disable media controls.
          */
-        TOGGLE_MEDIA_CONTROLS,
+        TOGGLE_MEDIA_CONTROLS = 36,
         /**
          * Enable or disable media loop.
          */
-        TOGGLE_MEDIA_LOOP,
+        TOGGLE_MEDIA_LOOP = 37,
         /**
          * Show current video element in fullscreen mode.
          */
-        ENTER_VIDEO_FULLSCREEN,
+        ENTER_VIDEO_FULLSCREEN = 38,
         /**
          * Play current media element.
          */
-        MEDIA_PLAY,
+        MEDIA_PLAY = 39,
         /**
          * Pause current media element.
          */
-        MEDIA_PAUSE,
+        MEDIA_PAUSE = 40,
         /**
          * Mute current media element.
          */
-        MEDIA_MUTE,
+        MEDIA_MUTE = 41,
         /**
          * Download video to disk. Since 2.2
          */
-        DOWNLOAD_VIDEO_TO_DISK,
+        DOWNLOAD_VIDEO_TO_DISK = 42,
         /**
          * Download audio to disk. Since 2.2
          */
-        DOWNLOAD_AUDIO_TO_DISK,
+        DOWNLOAD_AUDIO_TO_DISK = 43,
         /**
          * Insert an emoji. Since 2.26
          */
-        INSERT_EMOJI,
+        INSERT_EMOJI = 44,
         /**
          * Paste clipboard contents as plain text. Since 2.30
          */
-        PASTE_AS_PLAIN_TEXT,
+        PASTE_AS_PLAIN_TEXT = 45,
         /**
          * Custom action defined by applications.
          */
-        CUSTOM,
+        CUSTOM = 10000,
     }
 
 
@@ -395,15 +395,15 @@ export namespace WebKit2 {
         /**
          * Accept all cookies unconditionally.
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * Reject all cookies unconditionally.
          */
-        NEVER,
+        NEVER = 1,
         /**
          * Accept only cookies set by the main document loaded.
          */
-        NO_THIRD_PARTY,
+        NO_THIRD_PARTY = 2,
     }
 
 
@@ -423,12 +423,12 @@ export namespace WebKit2 {
          * Cookies are stored in a text
          *  file in the Mozilla "cookies.txt" format.
          */
-        TEXT,
+        TEXT = 0,
         /**
          * Cookies are stored in a SQLite
          *  file in the current Mozilla format.
          */
-        SQLITE,
+        SQLITE = 1,
     }
 
 
@@ -448,15 +448,15 @@ export namespace WebKit2 {
         /**
          * Credential does not persist
          */
-        NONE,
+        NONE = 0,
         /**
          * Credential persists for session only
          */
-        FOR_SESSION,
+        FOR_SESSION = 1,
         /**
          * Credential persists permanently
          */
-        PERMANENT,
+        PERMANENT = 2,
     }
 
 
@@ -549,48 +549,48 @@ export namespace WebKit2 {
          *   specific application needs. The feature is not part of a Web platform
          *   feature, not a mature feature intended to be always on.
          */
-        EMBEDDER,
+        EMBEDDER = 0,
         /**
          * Feature in development. The feature
          *   may be unfinished, and there are no guarantees about its safety and
          *   stability.
          */
-        UNSTABLE,
+        UNSTABLE = 1,
         /**
          * Feature for debugging the WebKit engine.
          *   The feature is not generally useful for user or web developers, and
          *   always disabled by default.
          */
-        INTERNAL,
+        INTERNAL = 2,
         /**
          * Feature for web developers. The feature
          *   is not generally useful for end users, and always disabled by default.
          */
-        DEVELOPER,
+        DEVELOPER = 3,
         /**
          * Feature in active development and
          *   complete enough for testing. The feature may not be yet ready to
          *   ship and is disabled by default.
          */
-        TESTABLE,
+        TESTABLE = 4,
         /**
          * Feature ready to be tested by users.
          *   The feature is disabled by default, but may be enabled by applications
          *   automatically e.g. in their “technology preview” or “beta” versions.
          */
-        PREVIEW,
+        PREVIEW = 5,
         /**
          * Feature ready for general use. The
          *   feature is enabled by default, but it may still be toggled to support
          *   debugging and testing.
          */
-        STABLE,
+        STABLE = 6,
         /**
          * Feature in general use. The feature is
          *   always enabled and in general there should be no user-facing interface
          *   to toggle it.
          */
-        MATURE,
+        MATURE = 7,
     }
 
 
@@ -610,15 +610,15 @@ export namespace WebKit2 {
         /**
          * Hardware acceleration is enabled/disabled as request by web contents. Deprecated 2.54.
          */
-        ON_DEMAND,
+        ON_DEMAND = 0,
         /**
          * Hardware acceleration is always enabled, even for websites not requesting it.
          */
-        ALWAYS,
+        ALWAYS = 1,
         /**
          * Hardware acceleration is always disabled, even for websites requesting it.
          */
-        NEVER,
+        NEVER = 2,
     }
 
 
@@ -638,35 +638,36 @@ export namespace WebKit2 {
         /**
          * Editable element expects any characters
          */
-        FREE_FORM,
+        FREE_FORM = 0,
         /**
          * Editable element expects digits
          */
-        DIGITS,
+        DIGITS = 1,
         /**
          * Editable element expects a number
          */
-        NUMBER,
+        NUMBER = 2,
         /**
          * Editable element expects a telephone
          */
-        PHONE,
+        PHONE = 3,
         /**
          * Editable element expects a URL
          */
-        URL,
+        URL = 4,
         /**
          * Editable element expects an email
          */
-        EMAIL,
+        EMAIL = 5,
         /**
          * Editable element expects a password
          */
-        PASSWORD,
+        PASSWORD = 6,
         /**
          * Edited field contents will be used for searching data.
+         * @since 2.54
          */
-        SEARCH,
+        SEARCH = 7,
     }
 
 
@@ -690,13 +691,13 @@ export namespace WebKit2 {
          * trying to execute any kind of logic (e.g. a script) from an
          * untrusted source.
          */
-        RUN,
+        RUN = 0,
         /**
          * Insecure content has been
          * detected by trying to display any kind of resource (e.g. an image)
          * from an untrusted source.
          */
-        DISPLAYED,
+        DISPLAYED = 1,
     }
 
 
@@ -754,23 +755,23 @@ export namespace WebKit2 {
          * fail due to transport issues such as not being able to
          * resolve a name, or connect to a port.
          */
-        STARTED,
+        STARTED = 0,
         /**
          * A provisional data source received
          * a server redirect.
          */
-        REDIRECTED,
+        REDIRECTED = 1,
         /**
          * The content started arriving for a page load.
          * The necessary transport requirements are established, and the
          * load is being performed.
          */
-        COMMITTED,
+        COMMITTED = 2,
         /**
          * Load completed. All resources are done loading
          * or there was an error during the load operation.
          */
-        FINISHED,
+        FINISHED = 3,
     }
 
 
@@ -790,15 +791,15 @@ export namespace WebKit2 {
         /**
          * Media capture is disabled.
          */
-        NONE,
+        NONE = 0,
         /**
          * Media capture is active.
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * Media capture is muted.
          */
-        MUTED,
+        MUTED = 2,
     }
 
 
@@ -817,27 +818,27 @@ export namespace WebKit2 {
         /**
          * The navigation was triggered by clicking a link.
          */
-        LINK_CLICKED,
+        LINK_CLICKED = 0,
         /**
          * The navigation was triggered by submitting a form.
          */
-        FORM_SUBMITTED,
+        FORM_SUBMITTED = 1,
         /**
          * The navigation was triggered by navigating forward or backward.
          */
-        BACK_FORWARD,
+        BACK_FORWARD = 2,
         /**
          * The navigation was triggered by reloading.
          */
-        RELOAD,
+        RELOAD = 3,
         /**
          * The navigation was triggered by resubmitting a form.
          */
-        FORM_RESUBMITTED,
+        FORM_RESUBMITTED = 4,
         /**
          * The navigation was triggered by some other action.
          */
-        OTHER,
+        OTHER = 5,
     }
 
 
@@ -901,15 +902,15 @@ export namespace WebKit2 {
         /**
          * Use the default proxy of the system.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Do not use any proxy.
          */
-        NO_PROXY,
+        NO_PROXY = 1,
         /**
          * Use custom proxy settings.
          */
-        CUSTOM,
+        CUSTOM = 2,
     }
 
 
@@ -929,15 +930,15 @@ export namespace WebKit2 {
         /**
          * Access to the feature is granted.
          */
-        GRANTED,
+        GRANTED = 0,
         /**
          * Access to the feature is denied.
          */
-        DENIED,
+        DENIED = 1,
         /**
          * Access to the feature has to be requested via user prompt.
          */
-        PROMPT,
+        PROMPT = 2,
     }
 
 
@@ -1010,7 +1011,7 @@ export namespace WebKit2 {
          *   `webkit_policy_decision_use()` or `webkit_policy_decision_ignore()`. This
          *   type of policy decision is always a {@link WebKit2.NavigationPolicyDecision}.
          */
-        NAVIGATION_ACTION,
+        NAVIGATION_ACTION = 0,
         /**
          * This type of policy decision
          *   is requested when WebKit is about to create a new window. Acceptable policy
@@ -1021,7 +1022,7 @@ export namespace WebKit2 {
          *   in a tab when a keyboard modifier is active or handling a special
          *   target attribute on <a> elements.
          */
-        NEW_WINDOW_ACTION,
+        NEW_WINDOW_ACTION = 1,
         /**
          * This type of decision is used when WebKit has
          *   received a response for a network resource and is about to start the load.
@@ -1033,7 +1034,7 @@ export namespace WebKit2 {
          *   some types of resources to be downloaded rather than rendered in the WebView
          *   or to block the transfer of resources entirely.
          */
-        RESPONSE,
+        RESPONSE = 2,
     }
 
 
@@ -1131,11 +1132,11 @@ export namespace WebKit2 {
         /**
          * Print button was clicked in print dialog
          */
-        PRINT,
+        PRINT = 0,
         /**
          * Print dialog was cancelled
          */
-        CANCEL,
+        CANCEL = 1,
     }
 
 
@@ -1156,7 +1157,7 @@ export namespace WebKit2 {
         /**
          * Deprecated 2.26.
          */
-        SHARED_SECONDARY_PROCESS,
+        SHARED_SECONDARY_PROCESS = 0,
         /**
          * Use one process
          *   for each {@link WebKit2.WebView}, while still allowing for some of them to
@@ -1168,7 +1169,7 @@ export namespace WebKit2 {
          *   rest — for example a full-fledged web browser with support for
          *   multiple tabs.
          */
-        MULTIPLE_SECONDARY_PROCESSES,
+        MULTIPLE_SECONDARY_PROCESSES = 1,
     }
 
 
@@ -1188,7 +1189,7 @@ export namespace WebKit2 {
         /**
          * Save the current page using the MHTML format.
          */
-        MHTML,
+        MHTML = 0,
     }
 
 
@@ -1208,22 +1209,22 @@ export namespace WebKit2 {
          * Alert script dialog, used to show a
          * message to the user.
          */
-        ALERT,
+        ALERT = 0,
         /**
          * Confirm script dialog, used to ask
          * confirmation to the user.
          */
-        CONFIRM,
+        CONFIRM = 1,
         /**
          * Prompt script dialog, used to ask
          * information to the user.
          */
-        PROMPT,
+        PROMPT = 2,
         /**
          * Before unload confirm dialog,
          * used to ask confirmation to leave the current page to the user. Since 2.12
          */
-        BEFORE_UNLOAD_CONFIRM,
+        BEFORE_UNLOAD_CONFIRM = 3,
     }
 
 
@@ -1268,11 +1269,11 @@ export namespace WebKit2 {
          * Specifies a snapshot only for the area that is
          * visible in the webview
          */
-        VISIBLE,
+        VISIBLE = 0,
         /**
          * A snapshot of the entire document.
          */
-        FULL_DOCUMENT,
+        FULL_DOCUMENT = 1,
     }
 
 
@@ -1291,14 +1292,14 @@ export namespace WebKit2 {
         /**
          * Ignore TLS errors.
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * TLS errors will emit
          *   {@link WebKit2.WebView.SignalSignatures.load_failed_with_tls_errors | WebKit2.WebView::load-failed-with-tls-errors} and, if the signal is handled,
          *   finish the load. In case the signal is not handled,
          *   {@link WebKit2.WebView.SignalSignatures.load_failed | WebKit2.WebView::load-failed} is emitted before the load finishes.
          */
-        FAIL,
+        FAIL = 1,
     }
 
 
@@ -1349,13 +1350,13 @@ export namespace WebKit2 {
          *   sheet in all the frames loaded by the web view, including
          *   nested frames. This is the default.
          */
-        ALL_FRAMES,
+        ALL_FRAMES = 0,
         /**
          * Insert the user style
          *   sheet *only* in the top-level frame loaded by the web view,
          *   and *not* in the nested frames.
          */
-        TOP_FRAME,
+        TOP_FRAME = 1,
     }
 
 
@@ -1400,12 +1401,12 @@ export namespace WebKit2 {
          * Insert the code of the user
          *   script at the beginning of loaded documents. This is the default.
          */
-        START,
+        START = 0,
         /**
          * Insert the code of the user
          *   script at the end of the loaded documents.
          */
-        END,
+        END = 1,
     }
 
 
@@ -1426,13 +1427,13 @@ export namespace WebKit2 {
          * The style sheet is an user style sheet,
          *   its contents always override other style sheets. This is the default.
          */
-        USER,
+        USER = 0,
         /**
          * The style sheet will be treated as if
          *   it was provided by the loaded documents. That means other user style
          *   sheets may still override it.
          */
-        AUTHOR,
+        AUTHOR = 1,
     }
 
 
@@ -1493,15 +1494,15 @@ export namespace WebKit2 {
         /**
          * Not for an extension.
          */
-        NONE,
+        NONE = 0,
         /**
          * For a ManifestV2 extension.
          */
-        MANIFESTV2,
+        MANIFESTV2 = 1,
         /**
          * For a ManifestV3 extension.
          */
-        MANIFESTV3,
+        MANIFESTV3 = 2,
     }
 
 
@@ -1521,15 +1522,15 @@ export namespace WebKit2 {
         /**
          * the web process crashed.
          */
-        CRASHED,
+        CRASHED = 0,
         /**
          * the web process exceeded the memory limit.
          */
-        EXCEEDED_MEMORY_LIMIT,
+        EXCEEDED_MEMORY_LIMIT = 1,
         /**
          * the web process termination was requested by an API call. Since: 2.34
          */
-        TERMINATED_BY_API,
+        TERMINATED_BY_API = 2,
     }
 
 
@@ -1551,15 +1552,15 @@ export namespace WebKit2 {
         /**
          * inline session mode.
          */
-        INLINE,
+        INLINE = 0,
         /**
          * immersive-vr session mode.
          */
-        IMMERSIVE_VR,
+        IMMERSIVE_VR = 1,
         /**
          * immersive-ar session mode.
          */
-        IMMERSIVE_AR,
+        IMMERSIVE_AR = 2,
     }
 
 
@@ -1570,6 +1571,7 @@ export namespace WebKit2 {
      * `webkit_web_view_can_execute_editing_command()`. In general it's
      * possible to copy to the clipboard when there is an active selection
      * inside the {@link WebKit2.WebView}.
+     * @default Copy
      */
     const EDITING_COMMAND_COPY: string;
 
@@ -1580,6 +1582,7 @@ export namespace WebKit2 {
      * It receives the link URL as argument. This command should be executed
      * with `webkit_web_view_execute_editing_command_with_argument()`
      * @since 2.10
+     * @default CreateLink
      */
     const EDITING_COMMAND_CREATE_LINK: string;
 
@@ -1590,6 +1593,7 @@ export namespace WebKit2 {
      * `webkit_web_view_can_execute_editing_command()`. In general it's
      * possible to cut to the clipboard when the {@link WebKit2.WebView} content is
      * editable and there is an active selection.
+     * @default Cut
      */
     const EDITING_COMMAND_CUT: string;
 
@@ -1599,6 +1603,7 @@ export namespace WebKit2 {
      * that is used as the image source. This command should be executed with
      * `webkit_web_view_execute_editing_command_with_argument()`.
      * @since 2.10
+     * @default InsertImage
      */
     const EDITING_COMMAND_INSERT_IMAGE: string;
 
@@ -1609,6 +1614,7 @@ export namespace WebKit2 {
      * `webkit_web_view_can_execute_editing_command()`. In general it's possible
      * to paste from the clipboard when the {@link WebKit2.WebView} content is editable
      * and clipboard is not empty.
+     * @default Paste
      */
     const EDITING_COMMAND_PASTE: string;
 
@@ -1620,6 +1626,7 @@ export namespace WebKit2 {
      * to paste from the clipboard when the {@link WebKit2.WebView} content is editable
      * and clipboard is not empty.
      * @since 2.30
+     * @default PasteAsPlainText
      */
     const EDITING_COMMAND_PASTE_AS_PLAIN_TEXT: string;
 
@@ -1629,6 +1636,7 @@ export namespace WebKit2 {
      * You can check whether it's possible to execute the command with
      * `webkit_web_view_can_execute_editing_command()`. It's only possible
      * to redo a command when it has been previously undone.
+     * @default Redo
      */
     const EDITING_COMMAND_REDO: string;
 
@@ -1638,6 +1646,7 @@ export namespace WebKit2 {
      * It is always possible to select all text, no matter whether the
      * {@link WebKit2.WebView} content is editable or not. You can still check it
      * with `webkit_web_view_can_execute_editing_command()`.
+     * @default SelectAll
      */
     const EDITING_COMMAND_SELECT_ALL: string;
 
@@ -1646,6 +1655,7 @@ export namespace WebKit2 {
      * You can check whether it's possible to execute the command with
      * `webkit_web_view_can_execute_editing_command()`. It's only possible
      * to undo a command after a previously executed editing operation.
+     * @default Undo
      */
     const EDITING_COMMAND_UNDO: string;
 
@@ -1653,6 +1663,7 @@ export namespace WebKit2 {
      * Like `webkit_get_major_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
@@ -1660,6 +1671,7 @@ export namespace WebKit2 {
      * Like `webkit_get_micro_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 91
      */
     const MICRO_VERSION: number;
 
@@ -1667,6 +1679,7 @@ export namespace WebKit2 {
      * Like `webkit_get_minor_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 53
      */
     const MINOR_VERSION: number;
 
@@ -1845,23 +1858,23 @@ export namespace WebKit2 {
         /**
          * No typing attributes.
          */
-        NONE,
+        NONE = 2,
         /**
          * Bold typing attribute.
          */
-        BOLD,
+        BOLD = 4,
         /**
          * Italic typing attribute.
          */
-        ITALIC,
+        ITALIC = 8,
         /**
          * Underline typing attribute.
          */
-        UNDERLINE,
+        UNDERLINE = 16,
         /**
          * Strikethrough typing attribute.
          */
-        STRIKETHROUGH,
+        STRIKETHROUGH = 32,
     }
 
 
@@ -1881,30 +1894,30 @@ export namespace WebKit2 {
          * no search flags, this means a case
          *   sensitive, no wrap, forward only search.
          */
-        NONE,
+        NONE = 0,
         /**
          * case insensitive search.
          */
-        CASE_INSENSITIVE,
+        CASE_INSENSITIVE = 1,
         /**
          * search text only at the
          *   begining of the words.
          */
-        AT_WORD_STARTS,
+        AT_WORD_STARTS = 2,
         /**
          * treat
          *   capital letters in the middle of words as word start.
          */
-        TREAT_MEDIAL_CAPITAL_AS_WORD_START,
+        TREAT_MEDIAL_CAPITAL_AS_WORD_START = 4,
         /**
          * search backwards.
          */
-        BACKWARDS,
+        BACKWARDS = 8,
         /**
          * if not present search will stop
          *   at the end of the document.
          */
-        WRAP_AROUND,
+        WRAP_AROUND = 16,
     }
 
 
@@ -1923,31 +1936,31 @@ export namespace WebKit2 {
         /**
          * anywhere in the document.
          */
-        DOCUMENT,
+        DOCUMENT = 2,
         /**
          * a hyperlink element.
          */
-        LINK,
+        LINK = 4,
         /**
          * an image element.
          */
-        IMAGE,
+        IMAGE = 8,
         /**
          * a video or audio element.
          */
-        MEDIA,
+        MEDIA = 16,
         /**
          * an editable element
          */
-        EDITABLE,
+        EDITABLE = 32,
         /**
          * a scrollbar element.
          */
-        SCROLLBAR,
+        SCROLLBAR = 64,
         /**
          * a selected element. Since 2.8
          */
-        SELECTION,
+        SELECTION = 128,
     }
 
 
@@ -1967,31 +1980,31 @@ export namespace WebKit2 {
         /**
          * No special behavior suggested
          */
-        NONE,
+        NONE = 0,
         /**
          * Suggest spell checking
          */
-        SPELLCHECK,
+        SPELLCHECK = 1,
         /**
          * Suggest to not autocapitlize
          */
-        LOWERCASE,
+        LOWERCASE = 2,
         /**
          * Suggest to capitalize all text
          */
-        UPPERCASE_CHARS,
+        UPPERCASE_CHARS = 4,
         /**
          * Suggest to capitalize the first character of each word
          */
-        UPPERCASE_WORDS,
+        UPPERCASE_WORDS = 8,
         /**
          * Suggest to capitalize the first word of each sentence
          */
-        UPPERCASE_SENTENCES,
+        UPPERCASE_SENTENCES = 16,
         /**
          * Suggest to not show an onscreen keyboard
          */
-        INHIBIT_OSK,
+        INHIBIT_OSK = 32,
     }
 
 
@@ -2011,17 +2024,17 @@ export namespace WebKit2 {
         /**
          * Do not include any special options.
          */
-        NONE,
+        NONE = 0,
         /**
          * Whether to include in the
          * snapshot the highlight of the selected content.
          */
-        INCLUDE_SELECTION_HIGHLIGHTING,
+        INCLUDE_SELECTION_HIGHLIGHTING = 1,
         /**
          * Do not fill the background with white before
          * rendering the snapshot. Since 2.8
          */
-        TRANSPARENT_BACKGROUND,
+        TRANSPARENT_BACKGROUND = 2,
     }
 
 
@@ -2041,63 +2054,63 @@ export namespace WebKit2 {
         /**
          * Memory cache.
          */
-        MEMORY_CACHE,
+        MEMORY_CACHE = 1,
         /**
          * HTTP disk cache.
          */
-        DISK_CACHE,
+        DISK_CACHE = 2,
         /**
          * Offline web application cache.
          */
-        OFFLINE_APPLICATION_CACHE,
+        OFFLINE_APPLICATION_CACHE = 4,
         /**
          * Session storage data.
          */
-        SESSION_STORAGE,
+        SESSION_STORAGE = 8,
         /**
          * Local storage data.
          */
-        LOCAL_STORAGE,
+        LOCAL_STORAGE = 16,
         /**
          * WebSQL databases. Deprecated 2.24
          */
-        WEBSQL_DATABASES,
+        WEBSQL_DATABASES = 32,
         /**
          * IndexedDB databases.
          */
-        INDEXEDDB_DATABASES,
+        INDEXEDDB_DATABASES = 64,
         /**
          * Plugins data. Deprecated 2.32
          */
-        PLUGIN_DATA,
+        PLUGIN_DATA = 128,
         /**
          * Cookies.
          */
-        COOKIES,
+        COOKIES = 256,
         /**
          * Hash salt used to generate the device ids used by webpages. Since 2.24
          */
-        DEVICE_ID_HASH_SALT,
+        DEVICE_ID_HASH_SALT = 512,
         /**
          * HSTS cache. Since 2.26
          */
-        HSTS_CACHE,
+        HSTS_CACHE = 1024,
         /**
          * Intelligent Tracking Prevention data. Since 2.30.
          */
-        ITP,
+        ITP = 2048,
         /**
          * Service worker registrations. Since 2.30
          */
-        SERVICE_WORKER_REGISTRATIONS,
+        SERVICE_WORKER_REGISTRATIONS = 4096,
         /**
          * DOM (CacheStorage) cache. Since 2.30
          */
-        DOM_CACHE,
+        DOM_CACHE = 8192,
         /**
          * All types.
          */
-        ALL,
+        ALL = 16383,
     }
 
 
@@ -2120,35 +2133,35 @@ export namespace WebKit2 {
         /**
          * viewer feature.
          */
-        VIEWER,
+        VIEWER = 1,
         /**
          * local feature.
          */
-        LOCAL,
+        LOCAL = 2,
         /**
          * local-floor feature.
          */
-        LOCAL_FLOOR,
+        LOCAL_FLOOR = 4,
         /**
          * bounded-floor feature.
          */
-        BOUNDED_FLOOR,
+        BOUNDED_FLOOR = 8,
         /**
          * unbounded feature.
          */
-        UNBOUNDED,
+        UNBOUNDED = 16,
         /**
          * hand tracking feature.
          */
-        HAND_TRACKING,
+        HAND_TRACKING = 32,
         /**
          * hit test feature.
          */
-        HIT_TEST,
+        HIT_TEST = 64,
         /**
          * WebXR Layers feature.
          */
-        LAYERS,
+        LAYERS = 128,
     }
 
 
@@ -2163,7 +2176,7 @@ export namespace WebKit2 {
              * @since 2.30
              * @run-last
              */
-            authenticated: (arg0: Credential) => void;
+            authenticated: (credential: Credential) => void;
             /**
              * This signal is emitted when the user authentication request is
              * cancelled. It allows the application to dismiss its authentication
@@ -2516,7 +2529,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            changed: (arg0: BackForwardListItem | null, arg1: null) => void;
+            changed: (item_added: BackForwardListItem | null, items_removed: null) => void;
         }
 
         // Constructor properties interface
@@ -3312,6 +3325,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookie was added or `false` in case of error.
          * @since 2.20
+         * @throws GLib.Error
          */
         add_cookie_finish(result: Gio.AsyncResult): boolean;
 
@@ -3361,6 +3375,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookie was deleted or `false` in case of error.
          * @since 2.20
+         * @throws GLib.Error
          */
         delete_cookie_finish(result: Gio.AsyncResult): boolean;
 
@@ -3416,6 +3431,7 @@ export namespace WebKit2 {
          * Finish an asynchronous operation started with `webkit_cookie_manager_get_accept_policy()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns the cookie acceptance policy of `cookie_manager` as a {@link WebKit2.CookieAcceptPolicy}.
+         * @throws GLib.Error
          */
         get_accept_policy_finish(result: Gio.AsyncResult): CookieAcceptPolicy;
 
@@ -3459,6 +3475,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns A {@link GLib.List} of {@link Soup.Cookie} instances.
          * @since 2.42
+         * @throws GLib.Error
          */
         get_all_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[];
 
@@ -3514,6 +3531,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns A {@link GLib.List} of {@link Soup.Cookie} instances.
          * @since 2.20
+         * @throws GLib.Error
          */
         get_cookies_finish(result: Gio.AsyncResult): Soup.Cookie[];
 
@@ -3557,6 +3575,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns A `null` terminated array of domain names    or `null` in case of error.
          * @deprecated since 2.16: Use `webkit_website_data_manager_fetch_finish()` instead.
+         * @throws GLib.Error
          */
         get_domains_with_cookies_finish(result: Gio.AsyncResult): string[];
 
@@ -3600,6 +3619,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the cookies were added or `false` in case of error.
          * @since 2.42
+         * @throws GLib.Error
          */
         replace_cookies_finish(result: Gio.AsyncResult): boolean;
 
@@ -3718,7 +3738,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "created-destination": (arg0: string) => void;
+            "created-destination": (destination: string) => void;
             /**
              * This signal is emitted after response is received to
              * decide a destination for the download using
@@ -3734,7 +3754,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "decide-destination": (arg0: string) => boolean | void;
+            "decide-destination": (suggested_filename: string) => boolean | void;
             /**
              * This signal is emitted when an error occurs during the download
              * operation. The given `error`, of the domain `WEBKIT_DOWNLOAD_ERROR`,
@@ -3745,7 +3765,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            failed: (arg0: GLib.Error) => void;
+            failed: (error: GLib.Error) => void;
             /**
              * This signal is emitted when download finishes successfully or due to an error.
              * In case of errors {@link WebKit2.Download.SignalSignatures.failed | WebKit2.Download::failed} signal is emitted before this one.
@@ -3760,7 +3780,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "received-data": (arg0: number) => void;
+            "received-data": (data_length: number) => void;
             "notify::allow-overwrite": (pspec: GObject.ParamSpec) => void;
             "notify::destination": (pspec: GObject.ParamSpec) => void;
             "notify::estimated-progress": (pspec: GObject.ParamSpec) => void;
@@ -4139,7 +4159,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "favicon-changed": (arg0: string, arg1: string) => void;
+            "favicon-changed": (page_uri: string, favicon_uri: string) => void;
         }
 
         // Constructor properties interface
@@ -4247,6 +4267,7 @@ export namespace WebKit2 {
          * Finishes an operation started with `webkit_favicon_database_get_favicon()`.
          * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `webkit_favicon_database_get_favicon()`
          * @returns a new favicon image, or `null` in case of error.
+         * @throws GLib.Error
          */
         get_favicon_finish(result: Gio.AsyncResult): cairo.Surface;
 
@@ -4477,7 +4498,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "counted-matches": (arg0: number) => void;
+            "counted-matches": (match_count: number) => void;
             /**
              * This signal is emitted when a search operation does not find
              * any result for the given text. It will be issued if the text
@@ -4497,7 +4518,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "found-text": (arg0: number) => void;
+            "found-text": (match_count: number) => void;
             "notify::max-match-count": (pspec: GObject.ParamSpec) => void;
             "notify::options": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -5269,7 +5290,7 @@ export namespace WebKit2 {
              * @since 2.28
              * @run-last
              */
-            committed: (arg0: string) => void;
+            committed: (text: string) => void;
             /**
              * Emitted when the input method wants to delete the context surrounding the cursor.
              * If `offset` is a negative value, it means a position before the cursor.
@@ -5277,7 +5298,7 @@ export namespace WebKit2 {
              * @since 2.28
              * @run-last
              */
-            "delete-surrounding": (arg0: number, arg1: number) => void;
+            "delete-surrounding": (offset: number, n_chars: number) => void;
             /**
              * Emitted whenever the preedit sequence currently being entered has changed.
              * It is also emitted at the end of a preedit sequence, in which case
@@ -6573,7 +6594,7 @@ export namespace WebKit2 {
              * @deprecated since 2.40
              * @run-last
              */
-            update: (arg0: Gtk.PageSetup, arg1: Gtk.PrintSettings) => void;
+            update: (page_setup: Gtk.PageSetup, print_settings: Gtk.PrintSettings) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
@@ -6718,7 +6739,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            failed: (arg0: GLib.Error) => void;
+            failed: (error: GLib.Error) => void;
             /**
              * Emitted when the print operation has finished doing everything
              * required for printing.
@@ -8725,6 +8746,7 @@ export namespace WebKit2 {
          * @param group_name Name of the group to read from `key_file`
          * @returns `true` if the settings were correctly applied or `false` on error.
          * @since 2.46
+         * @throws GLib.Error
          */
         apply_from_key_file(key_file: GLib.KeyFile, group_name: string): boolean;
 
@@ -10291,6 +10313,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.UserContentFilter}, or `null` if the load failed
          * @since 2.24
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): UserContentFilter;
 
@@ -10338,6 +10361,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns whether the removal was successful
          * @since 2.24
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 
@@ -10409,6 +10433,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.UserContentFilter}, or `null` if saving failed
          * @since 2.24
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): UserContentFilter;
 
@@ -10468,6 +10493,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.UserContentFilter}, or `null` if saving failed.
          * @since 2.24
+         * @throws GLib.Error
          */
         save_from_file_finish(result: Gio.AsyncResult): UserContentFilter;
     }
@@ -10486,7 +10512,7 @@ export namespace WebKit2 {
              * @detailed
              * @run-last
              */
-            "script-message-received": (arg0: JavascriptResult) => void;
+            "script-message-received": (value: JavascriptResult) => void;
             /**
              * This signal is emitted when JavaScript in a web view calls
              * <code>window.webkit.messageHandlers.<name>.postMessage()</code>, after registering
@@ -10505,9 +10531,9 @@ export namespace WebKit2 {
              * @detailed
              * @run-last
              */
-            "script-message-with-reply-received": (arg0: JavaScriptCore.Value, arg1: ScriptMessageReply) => boolean | void;
-            [key: `script-message-received::${string}`]: (arg0: JavascriptResult) => void;
-            [key: `script-message-with-reply-received::${string}`]: (arg0: JavaScriptCore.Value, arg1: ScriptMessageReply) => boolean | void;
+            "script-message-with-reply-received": (value: JavaScriptCore.Value, reply: ScriptMessageReply) => boolean | void;
+            [key: `script-message-received::${string}`]: (value: JavascriptResult) => void;
+            [key: `script-message-with-reply-received::${string}`]: (value: JavaScriptCore.Value, reply: ScriptMessageReply) => boolean | void;
         }
 
         // Constructor properties interface
@@ -11006,13 +11032,13 @@ export namespace WebKit2 {
              * @since 2.18
              * @run-last
              */
-            "automation-started": (arg0: AutomationSession) => void;
+            "automation-started": (session: AutomationSession) => void;
             /**
              * This signal is emitted when a new download request is made.
              * @signal
              * @run-last
              */
-            "download-started": (arg0: Download) => void;
+            "download-started": (download: Download) => void;
             /**
              * This signal is emitted when a {@link WebKit2.WebContext} needs to set
              * initial notification permissions for a web process. It is emitted
@@ -11048,7 +11074,7 @@ export namespace WebKit2 {
              * @since 2.28
              * @run-last
              */
-            "user-message-received": (arg0: UserMessage) => boolean | void;
+            "user-message-received": (message: UserMessage) => boolean | void;
             "notify::local-storage-directory": (pspec: GObject.ParamSpec) => void;
             "notify::memory-pressure-settings": (pspec: GObject.ParamSpec) => void;
             "notify::process-swap-on-cross-site-navigation-enabled": (pspec: GObject.ParamSpec) => void;
@@ -11435,6 +11461,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit2.Plugin}. You must free the {@link GLib.List} with    `g_list_free()` and unref the {@link WebKit2.Plugin}<!-- -->s with `g_object_unref()` when you're done with them.
          * @deprecated since 2.32
+         * @throws GLib.Error
          */
         get_plugins_finish(result: Gio.AsyncResult): Plugin[];
 
@@ -12101,14 +12128,14 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            failed: (arg0: GLib.Error) => void;
+            failed: (error: GLib.Error) => void;
             /**
              * This signal is emitted when a TLS error occurs during the resource load operation.
              * @signal
              * @since 2.8
              * @run-last
              */
-            "failed-with-tls-errors": (arg0: Gio.TlsCertificate, arg1: Gio.TlsCertificateFlags) => void;
+            "failed-with-tls-errors": (certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => void;
             /**
              * This signal is emitted when the resource load finishes successfully
              * or due to an error. In case of errors {@link WebKit2.WebResource.SignalSignatures.failed | WebKit2.WebResource::failed} signal
@@ -12127,7 +12154,7 @@ export namespace WebKit2 {
              * @deprecated since 2.40
              * @run-last
              */
-            "received-data": (arg0: number) => void;
+            "received-data": (data_length: number) => void;
             /**
              * This signal is emitted when `request` has been sent to the
              * server. In case of a server redirection this signal is
@@ -12138,7 +12165,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "sent-request": (arg0: URIRequest, arg1: URIResponse) => void;
+            "sent-request": (request: URIRequest, redirected_response: URIResponse) => void;
             "notify::response": (pspec: GObject.ParamSpec) => void;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
@@ -12249,6 +12276,7 @@ export namespace WebKit2 {
          * Finish an asynchronous operation started with `webkit_web_resource_get_data()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a    string with the data of `resource`, or `null` in case of error. if `length`    is not `null`, the size of the data will be assigned to it.
+         * @throws GLib.Error
          */
         get_data_finish(result: Gio.AsyncResult): Uint8Array;
 
@@ -12316,7 +12344,7 @@ export namespace WebKit2 {
              * @since 2.2
              * @run-last
              */
-            authenticate: (arg0: AuthenticationRequest) => boolean | void;
+            authenticate: (request: AuthenticationRequest) => boolean | void;
             /**
              * Emitted when closing a {@link WebKit2.WebView} is requested. This occurs when a
              * call is made from JavaScript's <function>window.close</function> function or
@@ -12367,7 +12395,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "context-menu": (arg0: ContextMenu, arg1: Gdk.Event, arg2: HitTestResult) => boolean | void;
+            "context-menu": (context_menu: ContextMenu, event: Gdk.Event, hit_test_result: HitTestResult) => boolean | void;
             /**
              * Emitted after {@link WebKit2.WebView.SignalSignatures.context_menu | WebKit2.WebView::context-menu} signal, if the context menu is shown,
              * to notify that the context menu is dismissed.
@@ -12394,7 +12422,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            create: (arg0: NavigationAction) => Gtk.Widget;
+            create: (navigation_action: NavigationAction) => Gtk.Widget;
             /**
              * This signal is emitted when WebKit is requesting the client to decide a policy
              * decision, such as whether to navigate to a page, open a new window or whether or
@@ -12440,7 +12468,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "decide-policy": (arg0: PolicyDecision, arg1: PolicyDecisionType) => boolean | void;
+            "decide-policy": (decision: PolicyDecision, decision_type: PolicyDecisionType) => boolean | void;
             /**
              * Emitted when JavaScript code calls
              * <function>element.webkitRequestFullScreen</function>. If the
@@ -12462,7 +12490,7 @@ export namespace WebKit2 {
              * @deprecated since 2.46
              * @run-last
              */
-            "insecure-content-detected": (arg0: InsecureContentEvent) => void;
+            "insecure-content-detected": (event: InsecureContentEvent) => void;
             /**
              * Emitted when the {@link WebKit2.WebView} is about to restore its top level
              * window out of its full screen state. This signal can be used by
@@ -12520,7 +12548,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "load-changed": (arg0: LoadEvent) => void;
+            "load-changed": (load_event: LoadEvent) => void;
             /**
              * Emitted when an error occurs during a load operation.
              * If the error happened when starting to load data for a page
@@ -12535,7 +12563,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "load-failed": (arg0: LoadEvent, arg1: string, arg2: GLib.Error) => boolean | void;
+            "load-failed": (load_event: LoadEvent, failing_uri: string, error: GLib.Error) => boolean | void;
             /**
              * Emitted when a TLS error occurs during a load operation.
              * To allow an exception for this `certificate`
@@ -12550,7 +12578,7 @@ export namespace WebKit2 {
              * @since 2.6
              * @run-last
              */
-            "load-failed-with-tls-errors": (arg0: string, arg1: Gio.TlsCertificate, arg2: Gio.TlsCertificateFlags) => boolean | void;
+            "load-failed-with-tls-errors": (failing_uri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean | void;
             /**
              * This signal is emitted when the mouse cursor moves over an
              * element such as a link, image or a media element. To determine
@@ -12563,7 +12591,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "mouse-target-changed": (arg0: HitTestResult, arg1: number) => void;
+            "mouse-target-changed": (hit_test_result: HitTestResult, modifiers: number) => void;
             /**
              * This signal is emitted when WebKit is requesting the client to
              * decide about a permission request, such as allowing the browser
@@ -12614,7 +12642,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "permission-request": (arg0: PermissionRequest) => boolean | void;
+            "permission-request": (request: PermissionRequest) => boolean | void;
             /**
              * Emitted when printing is requested on `web_view`, usually by a JavaScript call,
              * before the print dialog is shown. This signal can be used to set the initial
@@ -12628,7 +12656,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            print: (arg0: PrintOperation) => boolean | void;
+            print: (print_operation: PrintOperation) => boolean | void;
             /**
              * This signal allows the User-Agent to respond to permission requests for powerful features, as
              * specified by the [Permissions W3C Specification](https://w3c.github.io/permissions/).
@@ -12641,7 +12669,7 @@ export namespace WebKit2 {
              * @since 2.40
              * @run-last
              */
-            "query-permission-state": (arg0: PermissionStateQuery) => boolean | void;
+            "query-permission-state": (query: PermissionStateQuery) => boolean | void;
             /**
              * Emitted after {@link WebKit2.WebView.SignalSignatures.create | WebKit2.WebView::create} on the newly created {@link WebKit2.WebView}
              * when it should be displayed to the user. When this signal is emitted
@@ -12661,7 +12689,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "resource-load-started": (arg0: WebResource, arg1: URIRequest) => void;
+            "resource-load-started": (resource: WebResource, request: URIRequest) => void;
             /**
              * Emitted after {@link WebKit2.WebView.SignalSignatures.ready_to_show | WebKit2.WebView::ready-to-show} on the newly
              * created {@link WebKit2.WebView} when JavaScript code calls
@@ -12692,7 +12720,7 @@ export namespace WebKit2 {
              * @since 2.8
              * @run-last
              */
-            "run-color-chooser": (arg0: ColorChooserRequest) => boolean | void;
+            "run-color-chooser": (request: ColorChooserRequest) => boolean | void;
             /**
              * This signal is emitted when the user interacts with a <input
              * type='file' /> HTML element, requesting from WebKit to show
@@ -12708,7 +12736,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "run-file-chooser": (arg0: FileChooserRequest) => boolean | void;
+            "run-file-chooser": (request: FileChooserRequest) => boolean | void;
             /**
              * Emitted when JavaScript code calls <function>window.alert</function>,
              * <function>window.confirm</function> or <function>window.prompt</function>,
@@ -12740,7 +12768,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "script-dialog": (arg0: ScriptDialog) => boolean | void;
+            "script-dialog": (dialog: ScriptDialog) => boolean | void;
             /**
              * This signal is emitted when a notification should be presented to the
              * user. The `notification` is kept alive until either: 1) the web page cancels it
@@ -12752,7 +12780,7 @@ export namespace WebKit2 {
              * @since 2.8
              * @run-last
              */
-            "show-notification": (arg0: Notification) => boolean | void;
+            "show-notification": (notification: Notification) => boolean | void;
             /**
              * This signal is emitted when a select element in `web_view` needs to display a
              * dropdown menu. This signal can be used to show a custom menu, using `menu` to get
@@ -12770,7 +12798,7 @@ export namespace WebKit2 {
              * @since 2.18
              * @run-last
              */
-            "show-option-menu": (arg0: OptionMenu, arg1: Gdk.Event, arg2: Gdk.Rectangle) => boolean | void;
+            "show-option-menu": (menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean | void;
             /**
              * This signal is emitted when a form is about to be submitted. The `request`
              * argument passed contains information about the text fields of the form. This
@@ -12786,7 +12814,7 @@ export namespace WebKit2 {
              * @signal
              * @run-last
              */
-            "submit-form": (arg0: FormSubmissionRequest) => void;
+            "submit-form": (request: FormSubmissionRequest) => void;
             /**
              * This signal is emitted when a {@link WebKit2.UserMessage} is received from the
              * `WebKitWebPage` corresponding to `web_view`. You can reply to the message
@@ -12800,7 +12828,7 @@ export namespace WebKit2 {
              * @since 2.28
              * @run-last
              */
-            "user-message-received": (arg0: UserMessage) => boolean | void;
+            "user-message-received": (message: UserMessage) => boolean | void;
             /**
              * This signal is emitted when the web process crashes.
              * @signal
@@ -12815,7 +12843,7 @@ export namespace WebKit2 {
              * @since 2.20
              * @run-last
              */
-            "web-process-terminated": (arg0: WebProcessTerminationReason) => void;
+            "web-process-terminated": (reason: WebProcessTerminationReason) => void;
             "notify::automation-presentation-type": (pspec: GObject.ParamSpec) => void;
             "notify::camera-capture-state": (pspec: GObject.ParamSpec) => void;
             "notify::default-content-security-policy": (pspec: GObject.ParamSpec) => void;
@@ -13918,6 +13946,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link JavaScriptCore.Value} with the return value of the async function    or `null` in case of error
          * @since 2.40
+         * @throws GLib.Error
          */
         call_async_javascript_function_finish(result: Gio.AsyncResult): JavaScriptCore.Value;
 
@@ -13957,6 +13986,7 @@ export namespace WebKit2 {
          * Finish an asynchronous operation started with `webkit_web_view_can_execute_editing_command()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the editing command can be executed or `false` otherwise
+         * @throws GLib.Error
          */
         can_execute_editing_command_finish(result: Gio.AsyncResult): boolean;
 
@@ -14185,6 +14215,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link JavaScriptCore.Value} with the result of the last executed statement in script    or `null` in case of error
          * @since 2.40
+         * @throws GLib.Error
          */
         evaluate_javascript_finish(result: Gio.AsyncResult): JavaScriptCore.Value;
 
@@ -14443,6 +14474,7 @@ export namespace WebKit2 {
          * an image of the snapshot using the BGRA8888 pixel format.
          * @param result a {@link Gio.AsyncResult}
          * @returns an image with the retrieved snapshot, or `null` in case of error.
+         * @throws GLib.Error
          */
         get_snapshot_finish(result: Gio.AsyncResult): cairo.Surface;
 
@@ -14894,6 +14926,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.JavascriptResult} with the result of the last executed statement in `script`    or `null` in case of error
          * @deprecated since 2.40: Use `webkit_web_view_evaluate_javascript_finish()` instead.
+         * @throws GLib.Error
          */
         run_javascript_finish(result: Gio.AsyncResult): JavascriptResult;
 
@@ -14951,6 +14984,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.JavascriptResult} with the result of the last executed statement in `script`    or `null` in case of error
          * @deprecated since 2.40: Use `webkit_web_view_evaluate_javascript_finish()` instead.
+         * @throws GLib.Error
          */
         run_javascript_from_gresource_finish(result: Gio.AsyncResult): JavascriptResult;
 
@@ -15010,6 +15044,7 @@ export namespace WebKit2 {
          * @returns a {@link WebKit2.JavascriptResult} with the result of the last executed statement in `script`    or `null` in case of error
          * @since 2.22
          * @deprecated since 2.40: Use `webkit_web_view_call_async_javascript_function_finish()` instead.
+         * @throws GLib.Error
          */
         run_javascript_in_world_finish(result: Gio.AsyncResult): JavascriptResult;
 
@@ -15064,6 +15099,7 @@ export namespace WebKit2 {
          * Finish an asynchronous operation started with `webkit_web_view_save()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.InputStream} with the result of saving    the current web page or `null` in case of error.
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -15121,6 +15157,7 @@ export namespace WebKit2 {
          * Finish an asynchronous operation started with `webkit_web_view_save_to_file()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the web page was successfully saved to a file or `false` otherwise.
+         * @throws GLib.Error
          */
         save_to_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -15170,6 +15207,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link WebKit2.UserMessage} with the reply or `null` in case of error.
          * @since 2.28
+         * @throws GLib.Error
          */
         send_message_to_page_finish(result: Gio.AsyncResult): UserMessage;
 
@@ -15991,6 +16029,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if website data was successfully cleared, or `false` otherwise.
          * @since 2.16
+         * @throws GLib.Error
          */
         clear_finish(result: Gio.AsyncResult): boolean;
 
@@ -16034,6 +16073,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit2.WebsiteData}. You must free the {@link GLib.List} with    `g_list_free()` and unref the {@link WebKit2.WebsiteData}<!-- -->s with `webkit_website_data_unref()` when you're done with them.
          * @since 2.16
+         * @throws GLib.Error
          */
         fetch_finish(result: Gio.AsyncResult): WebsiteData[];
 
@@ -16165,6 +16205,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.List} of {@link WebKit2.ITPThirdParty}.    You must free the {@link GLib.List} with `g_list_free()` and unref the {@link WebKit2.ITPThirdParty}<!-- -->s with    `webkit_itp_third_party_unref()` when you're done with them.
          * @since 2.30
+         * @throws GLib.Error
          */
         get_itp_summary_finish(result: Gio.AsyncResult): ITPThirdParty[];
 
@@ -16268,6 +16309,7 @@ export namespace WebKit2 {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if website data resources were successfully removed, or `false` otherwise.
          * @since 2.16
+         * @throws GLib.Error
          */
         remove_finish(result: Gio.AsyncResult): boolean;
 

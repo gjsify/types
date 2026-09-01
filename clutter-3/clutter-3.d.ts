@@ -54,23 +54,23 @@ export namespace Clutter {
         /**
          * Stretch to cover the whole allocated space
          */
-        FILL,
+        FILL = 0,
         /**
          * Snap to left or top side, leaving space
          *   to the right or bottom. For horizontal layouts, in right-to-left
          *   locales this should be reversed.
          */
-        START,
+        START = 1,
         /**
          * Center the actor inside the allocation
          */
-        CENTER,
+        CENTER = 2,
         /**
          * Snap to right or bottom side, leaving space
          *   to the left or top. For horizontal layouts, in right-to-left locales
          *   this should be reversed.
          */
-        END,
+        END = 3,
     }
 
 
@@ -91,15 +91,15 @@ export namespace Clutter {
         /**
          * Maintain the alignment on the X axis
          */
-        X_AXIS,
+        X_AXIS = 0,
         /**
          * Maintain the alignment on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 1,
         /**
          * Maintain the alignment on both the X and Y axis
          */
-        BOTH,
+        BOTH = 2,
     }
 
 
@@ -129,196 +129,196 @@ export namespace Clutter {
         /**
          * custom progress function
          */
-        CUSTOM_MODE,
+        CUSTOM_MODE = 0,
         /**
          * linear tweening
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * quadratic tweening
          */
-        EASE_IN_QUAD,
+        EASE_IN_QUAD = 2,
         /**
          * quadratic tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_QUAD}
          */
-        EASE_OUT_QUAD,
+        EASE_OUT_QUAD = 3,
         /**
          * quadratic tweening, combininig
          *    {@link Clutter.AnimationMode.EASE_IN_QUAD} and {@link Clutter.AnimationMode.EASE_OUT_QUAD}
          */
-        EASE_IN_OUT_QUAD,
+        EASE_IN_OUT_QUAD = 4,
         /**
          * cubic tweening
          */
-        EASE_IN_CUBIC,
+        EASE_IN_CUBIC = 5,
         /**
          * cubic tweening, invers of
          *    {@link Clutter.AnimationMode.EASE_IN_CUBIC}
          */
-        EASE_OUT_CUBIC,
+        EASE_OUT_CUBIC = 6,
         /**
          * cubic tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_CUBIC} and {@link Clutter.AnimationMode.EASE_OUT_CUBIC}
          */
-        EASE_IN_OUT_CUBIC,
+        EASE_IN_OUT_CUBIC = 7,
         /**
          * quartic tweening
          */
-        EASE_IN_QUART,
+        EASE_IN_QUART = 8,
         /**
          * quartic tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_QUART}
          */
-        EASE_OUT_QUART,
+        EASE_OUT_QUART = 9,
         /**
          * quartic tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_QUART} and {@link Clutter.AnimationMode.EASE_OUT_QUART}
          */
-        EASE_IN_OUT_QUART,
+        EASE_IN_OUT_QUART = 10,
         /**
          * quintic tweening
          */
-        EASE_IN_QUINT,
+        EASE_IN_QUINT = 11,
         /**
          * quintic tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_QUINT}
          */
-        EASE_OUT_QUINT,
+        EASE_OUT_QUINT = 12,
         /**
          * fifth power tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_QUINT} and {@link Clutter.AnimationMode.EASE_OUT_QUINT}
          */
-        EASE_IN_OUT_QUINT,
+        EASE_IN_OUT_QUINT = 13,
         /**
          * sinusoidal tweening
          */
-        EASE_IN_SINE,
+        EASE_IN_SINE = 14,
         /**
          * sinusoidal tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_SINE}
          */
-        EASE_OUT_SINE,
+        EASE_OUT_SINE = 15,
         /**
          * sine wave tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_SINE} and {@link Clutter.AnimationMode.EASE_OUT_SINE}
          */
-        EASE_IN_OUT_SINE,
+        EASE_IN_OUT_SINE = 16,
         /**
          * exponential tweening
          */
-        EASE_IN_EXPO,
+        EASE_IN_EXPO = 17,
         /**
          * exponential tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_EXPO}
          */
-        EASE_OUT_EXPO,
+        EASE_OUT_EXPO = 18,
         /**
          * exponential tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_EXPO} and {@link Clutter.AnimationMode.EASE_OUT_EXPO}
          */
-        EASE_IN_OUT_EXPO,
+        EASE_IN_OUT_EXPO = 19,
         /**
          * circular tweening
          */
-        EASE_IN_CIRC,
+        EASE_IN_CIRC = 20,
         /**
          * circular tweening, inverse of
          *    {@link Clutter.AnimationMode.EASE_IN_CIRC}
          */
-        EASE_OUT_CIRC,
+        EASE_OUT_CIRC = 21,
         /**
          * circular tweening, combining
          *    {@link Clutter.AnimationMode.EASE_IN_CIRC} and {@link Clutter.AnimationMode.EASE_OUT_CIRC}
          */
-        EASE_IN_OUT_CIRC,
+        EASE_IN_OUT_CIRC = 22,
         /**
          * elastic tweening, with offshoot on start
          */
-        EASE_IN_ELASTIC,
+        EASE_IN_ELASTIC = 23,
         /**
          * elastic tweening, with offshoot on end
          */
-        EASE_OUT_ELASTIC,
+        EASE_OUT_ELASTIC = 24,
         /**
          * elastic tweening with offshoot on both ends
          */
-        EASE_IN_OUT_ELASTIC,
+        EASE_IN_OUT_ELASTIC = 25,
         /**
          * overshooting cubic tweening, with
          *   backtracking on start
          */
-        EASE_IN_BACK,
+        EASE_IN_BACK = 26,
         /**
          * overshooting cubic tweening, with
          *   backtracking on end
          */
-        EASE_OUT_BACK,
+        EASE_OUT_BACK = 27,
         /**
          * overshooting cubic tweening, with
          *   backtracking on both ends
          */
-        EASE_IN_OUT_BACK,
+        EASE_IN_OUT_BACK = 28,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on start
          */
-        EASE_IN_BOUNCE,
+        EASE_IN_BOUNCE = 29,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on end
          */
-        EASE_OUT_BOUNCE,
+        EASE_OUT_BOUNCE = 30,
         /**
          * exponentially decaying parabolic (bounce)
          *   tweening, with bounce on both ends
          */
-        EASE_IN_OUT_BOUNCE,
+        EASE_IN_OUT_BOUNCE = 31,
         /**
          * parametrized step function; see `clutter_timeline_set_step_progress()`
          *   for further details. (Since 1.12)
          */
-        STEPS,
+        STEPS = 32,
         /**
          * equivalent to {@link Clutter.AnimationMode.STEPS} with a number of steps
          *   equal to 1, and a step mode of {@link Clutter.StepMode.START}. (Since 1.12)
          */
-        STEP_START,
+        STEP_START = 33,
         /**
          * equivalent to {@link Clutter.AnimationMode.STEPS} with a number of steps
          *   equal to 1, and a step mode of {@link Clutter.StepMode.END}. (Since 1.12)
          */
-        STEP_END,
+        STEP_END = 34,
         /**
          * cubic bezier between (0, 0) and (1, 1) with two
          *   control points; see `clutter_timeline_set_cubic_bezier_progress()`. (Since 1.12)
          */
-        CUBIC_BEZIER,
+        CUBIC_BEZIER = 35,
         /**
          * equivalent to {@link Clutter.AnimationMode.CUBIC_BEZIER} with control points
          *   in (0.25, 0.1) and (0.25, 1.0). (Since 1.12)
          */
-        EASE,
+        EASE = 36,
         /**
          * equivalent to {@link Clutter.AnimationMode.CUBIC_BEZIER} with control points
          *   in (0.42, 0) and (1.0, 1.0). (Since 1.12)
          */
-        EASE_IN,
+        EASE_IN = 37,
         /**
          * equivalent to {@link Clutter.AnimationMode.CUBIC_BEZIER} with control points
          *   in (0, 0) and (0.58, 1.0). (Since 1.12)
          */
-        EASE_OUT,
+        EASE_OUT = 38,
         /**
          * equivalent to {@link Clutter.AnimationMode.CUBIC_BEZIER} with control points
          *   in (0.42, 0) and (0.58, 1.0). (Since 1.12)
          */
-        EASE_IN_OUT,
+        EASE_IN_OUT = 39,
         /**
          * last animation mode, used as a guard for
          *   registered global alpha functions
          */
-        ANIMATION_LAST,
+        ANIMATION_LAST = 40,
     }
 
 
@@ -341,26 +341,26 @@ export namespace Clutter {
          *   {@link Clutter.BinLayout} will honour the fixed position provided
          *   by the actors themselves when allocating them
          */
-        FIXED,
+        FIXED = 0,
         /**
          * Fill the allocation size
          */
-        FILL,
+        FILL = 1,
         /**
          * Position the actors at the top
          *   or left side of the container, depending on the axis
          */
-        START,
+        START = 2,
         /**
          * Position the actors at the bottom
          *   or right side of the container, depending on the axis
          */
-        END,
+        END = 3,
         /**
          * Position the actors at the
          *   center of the container, depending on the axis
          */
-        CENTER,
+        CENTER = 4,
     }
 
 
@@ -380,34 +380,34 @@ export namespace Clutter {
         /**
          * Bind the X coordinate
          */
-        X,
+        X = 0,
         /**
          * Bind the Y coordinate
          */
-        Y,
+        Y = 1,
         /**
          * Bind the width
          */
-        WIDTH,
+        WIDTH = 2,
         /**
          * Bind the height
          */
-        HEIGHT,
+        HEIGHT = 3,
         /**
          * Equivalent to to {@link Clutter.BindCoordinate.X} and
          *   {@link Clutter.BindCoordinate.Y} (added in Clutter 1.6)
          */
-        POSITION,
+        POSITION = 4,
         /**
          * Equivalent to {@link Clutter.BindCoordinate.WIDTH} and
          *   {@link Clutter.BindCoordinate.HEIGHT} (added in Clutter 1.6)
          */
-        SIZE,
+        SIZE = 5,
         /**
          * Equivalent to {@link Clutter.BindCoordinate.POSITION} and
          *   {@link Clutter.BindCoordinate.SIZE} (added in Clutter 1.10)
          */
-        ALL,
+        ALL = 6,
     }
 
 
@@ -428,16 +428,16 @@ export namespace Clutter {
          * Align the child to the top or to
          *   to the left, depending on the used axis
          */
-        START,
+        START = 0,
         /**
          * Align the child to the bottom or to
          *   the right, depending on the used axis
          */
-        END,
+        END = 1,
         /**
          * Align the child to the center
          */
-        CENTER,
+        CENTER = 2,
     }
 
 
@@ -452,8 +452,8 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum ButtonState {
-        RELEASED,
-        PRESSED,
+        RELEASED = 0,
+        PRESSED = 1,
     }
 
 
@@ -473,48 +473,48 @@ export namespace Clutter {
         /**
          * Align the content to the top left corner
          */
-        TOP_LEFT,
+        TOP_LEFT = 0,
         /**
          * Align the content to the top edge
          */
-        TOP,
+        TOP = 1,
         /**
          * Align the content to the top right corner
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 2,
         /**
          * Align the content to the left edge
          */
-        LEFT,
+        LEFT = 3,
         /**
          * Align the content to the center
          */
-        CENTER,
+        CENTER = 4,
         /**
          * Align the content to the right edge
          */
-        RIGHT,
+        RIGHT = 5,
         /**
          * Align the content to the bottom left corner
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 6,
         /**
          * Align the content to the bottom edge
          */
-        BOTTOM,
+        BOTTOM = 7,
         /**
          * Align the content to the bottom right corner
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 8,
         /**
          * Resize the content to fill the allocation
          */
-        RESIZE_FILL,
+        RESIZE_FILL = 9,
         /**
          * Resize the content to remain within the
          *   allocation, while maintaining the aspect ratio
          */
-        RESIZE_ASPECT,
+        RESIZE_ASPECT = 10,
     }
 
 
@@ -535,15 +535,15 @@ export namespace Clutter {
         /**
          * No constraint
          */
-        AXIS_NONE,
+        AXIS_NONE = 0,
         /**
          * Set a constraint on the X axis
          */
-        X_AXIS,
+        X_AXIS = 1,
         /**
          * Set a constraint on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 2,
     }
 
 
@@ -563,104 +563,104 @@ export namespace Clutter {
         /**
          * Empty event
          */
-        NOTHING,
+        NOTHING = 0,
         /**
          * Key press event
          */
-        KEY_PRESS,
+        KEY_PRESS = 1,
         /**
          * Key release event
          */
-        KEY_RELEASE,
+        KEY_RELEASE = 2,
         /**
          * Pointer motion event
          */
-        MOTION,
+        MOTION = 3,
         /**
          * Actor enter event
          */
-        ENTER,
+        ENTER = 4,
         /**
          * Actor leave event
          */
-        LEAVE,
+        LEAVE = 5,
         /**
          * Pointer button press event
          */
-        BUTTON_PRESS,
+        BUTTON_PRESS = 6,
         /**
          * Pointer button release event
          */
-        BUTTON_RELEASE,
+        BUTTON_RELEASE = 7,
         /**
          * Pointer scroll event
          */
-        SCROLL,
+        SCROLL = 8,
         /**
          * Stage state change event
          */
-        STAGE_STATE,
+        STAGE_STATE = 9,
         /**
          * Destroy notification event
          */
-        DESTROY_NOTIFY,
+        DESTROY_NOTIFY = 10,
         /**
          * Client message event
          */
-        CLIENT_MESSAGE,
+        CLIENT_MESSAGE = 11,
         /**
          * Stage delete event
          */
-        DELETE,
+        DELETE = 12,
         /**
          * A new touch event sequence has started;
          *   event added in 1.10
          */
-        TOUCH_BEGIN,
+        TOUCH_BEGIN = 13,
         /**
          * A touch event sequence has been updated;
          *   event added in 1.10
          */
-        TOUCH_UPDATE,
+        TOUCH_UPDATE = 14,
         /**
          * A touch event sequence has finished;
          *   event added in 1.10
          */
-        TOUCH_END,
+        TOUCH_END = 15,
         /**
          * A touch event sequence has been canceled;
          *   event added in 1.10
          */
-        TOUCH_CANCEL,
+        TOUCH_CANCEL = 16,
         /**
          * A pinch gesture event, the current state is
          *   determined by its phase field; event added in 1.24
          */
-        TOUCHPAD_PINCH,
+        TOUCHPAD_PINCH = 17,
         /**
          * A swipe gesture event, the current state is
          *   determined by its phase field; event added in 1.24
          */
-        TOUCHPAD_SWIPE,
+        TOUCHPAD_SWIPE = 18,
         /**
          * A tool entered in proximity to a tablet;
          *   event added in 1.28
          */
-        PROXIMITY_IN,
+        PROXIMITY_IN = 19,
         /**
          * A tool left from the proximity area of a tablet;
          *   event added in 1.28
          */
-        PROXIMITY_OUT,
-        PAD_BUTTON_PRESS,
-        PAD_BUTTON_RELEASE,
-        PAD_STRIP,
-        PAD_RING,
+        PROXIMITY_OUT = 20,
+        PAD_BUTTON_PRESS = 21,
+        PAD_BUTTON_RELEASE = 22,
+        PAD_STRIP = 23,
+        PAD_RING = 24,
         /**
          * Marks the end of the {@link Clutter.EventType} enumeration;
          *   added in 1.10
          */
-        EVENT_LAST,
+        EVENT_LAST = 25,
     }
 
 
@@ -682,12 +682,12 @@ export namespace Clutter {
          * Arrange the children of the flow layout
          *   horizontally first
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * Arrange the children of the flow layout
          *   vertically first
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -710,19 +710,19 @@ export namespace Clutter {
          * the gesture must begin immediately and there's no drag limit that
          * will cause its cancellation;
          */
-        NONE,
+        NONE = 0,
         /**
          * Tell {@link Clutter.GestureAction} that
          * it needs to wait until the drag threshold has been exceeded before
          * considering that the gesture has begun;
          */
-        AFTER,
+        AFTER = 1,
         /**
          * Tell {@link Clutter.GestureAction} that
          * the gesture must begin immediately and that it must be cancelled
          * once the drag exceed the configured threshold.
          */
-        BEFORE,
+        BEFORE = 2,
     }
 
 
@@ -745,43 +745,43 @@ export namespace Clutter {
         /**
          * Do not apply any gravity
          */
-        NONE,
+        NONE = 0,
         /**
          * Scale from topmost downwards
          */
-        NORTH,
+        NORTH = 1,
         /**
          * Scale from the top right corner
          */
-        NORTH_EAST,
+        NORTH_EAST = 2,
         /**
          * Scale from the right side
          */
-        EAST,
+        EAST = 3,
         /**
          * Scale from the bottom right corner
          */
-        SOUTH_EAST,
+        SOUTH_EAST = 4,
         /**
          * Scale from the bottom upwards
          */
-        SOUTH,
+        SOUTH = 5,
         /**
          * Scale from the bottom left corner
          */
-        SOUTH_WEST,
+        SOUTH_WEST = 6,
         /**
          * Scale from the left side
          */
-        WEST,
+        WEST = 7,
         /**
          * Scale from the top left corner
          */
-        NORTH_WEST,
+        NORTH_WEST = 8,
         /**
          * Scale from the center.
          */
-        CENTER,
+        CENTER = 9,
     }
 
 
@@ -801,19 +801,19 @@ export namespace Clutter {
         /**
          * left position
          */
-        LEFT,
+        LEFT = 0,
         /**
          * right position
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * top position
          */
-        TOP,
+        TOP = 2,
         /**
          * bottom position
          */
-        BOTTOM,
+        BOTTOM = 3,
     }
 
 
@@ -896,48 +896,48 @@ export namespace Clutter {
         /**
          * Unused axis
          */
-        IGNORE,
+        IGNORE = 0,
         /**
          * The position on the X axis
          */
-        X,
+        X = 1,
         /**
          * The position of the Y axis
          */
-        Y,
+        Y = 2,
         /**
          * The pressure information
          */
-        PRESSURE,
+        PRESSURE = 3,
         /**
          * The tilt on the X axis
          */
-        XTILT,
+        XTILT = 4,
         /**
          * The tile on the Y axis
          */
-        YTILT,
+        YTILT = 5,
         /**
          * A wheel
          */
-        WHEEL,
+        WHEEL = 6,
         /**
          * Distance (Since 1.12)
          */
-        DISTANCE,
+        DISTANCE = 7,
         /**
          * Rotation along the z-axis (Since 1.28)
          */
-        ROTATION,
+        ROTATION = 8,
         /**
          * A slider (Since 1.28)
          */
-        SLIDER,
+        SLIDER = 9,
         /**
          * Last value of the enumeration; this value is
          *   useful when iterating over the enumeration values (Since 1.12)
          */
-        LAST,
+        LAST = 10,
     }
 
 
@@ -952,19 +952,19 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum InputContentPurpose {
-        NORMAL,
-        ALPHA,
-        DIGITS,
-        NUMBER,
-        PHONE,
-        URL,
-        EMAIL,
-        NAME,
-        PASSWORD,
-        DATE,
-        TIME,
-        DATETIME,
-        TERMINAL,
+        NORMAL = 0,
+        ALPHA = 1,
+        DIGITS = 2,
+        NUMBER = 3,
+        PHONE = 4,
+        URL = 5,
+        EMAIL = 6,
+        NAME = 7,
+        PASSWORD = 8,
+        DATE = 9,
+        TIME = 10,
+        DATETIME = 11,
+        TERMINAL = 12,
     }
 
 
@@ -979,8 +979,8 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum InputDeviceMapping {
-        ABSOLUTE,
-        RELATIVE,
+        ABSOLUTE = 0,
+        RELATIVE = 1,
     }
 
 
@@ -995,8 +995,8 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum InputDevicePadSource {
-        UNKNOWN,
-        FINGER,
+        UNKNOWN = 0,
+        FINGER = 1,
     }
 
 
@@ -1016,35 +1016,35 @@ export namespace Clutter {
         /**
          * No tool
          */
-        NONE,
+        NONE = 0,
         /**
          * The tool is a pen
          */
-        PEN,
+        PEN = 1,
         /**
          * The tool is an eraser
          */
-        ERASER,
+        ERASER = 2,
         /**
          * The tool is a brush
          */
-        BRUSH,
+        BRUSH = 3,
         /**
          * The tool is a pencil
          */
-        PENCIL,
+        PENCIL = 4,
         /**
          * The tool is an airbrush
          */
-        AIRBRUSH,
+        AIRBRUSH = 5,
         /**
          * The tool is a mouse
          */
-        MOUSE,
+        MOUSE = 6,
         /**
          * The tool is a lens
          */
-        LENS,
+        LENS = 7,
     }
 
 
@@ -1067,51 +1067,51 @@ export namespace Clutter {
         /**
          * A pointer device
          */
-        POINTER_DEVICE,
+        POINTER_DEVICE = 0,
         /**
          * A keyboard device
          */
-        KEYBOARD_DEVICE,
+        KEYBOARD_DEVICE = 1,
         /**
          * A generic extension device
          */
-        EXTENSION_DEVICE,
+        EXTENSION_DEVICE = 2,
         /**
          * A joystick device
          */
-        JOYSTICK_DEVICE,
+        JOYSTICK_DEVICE = 3,
         /**
          * A tablet device
          */
-        TABLET_DEVICE,
+        TABLET_DEVICE = 4,
         /**
          * A touchpad device
          */
-        TOUCHPAD_DEVICE,
+        TOUCHPAD_DEVICE = 5,
         /**
          * A touch screen device
          */
-        TOUCHSCREEN_DEVICE,
+        TOUCHSCREEN_DEVICE = 6,
         /**
          * A pen device
          */
-        PEN_DEVICE,
+        PEN_DEVICE = 7,
         /**
          * An eraser device
          */
-        ERASER_DEVICE,
+        ERASER_DEVICE = 8,
         /**
          * A cursor device
          */
-        CURSOR_DEVICE,
+        CURSOR_DEVICE = 9,
         /**
          * A tablet pad
          */
-        PAD_DEVICE,
+        PAD_DEVICE = 10,
         /**
          * The number of device types
          */
-        N_DEVICE_TYPES,
+        N_DEVICE_TYPES = 11,
     }
 
 
@@ -1131,17 +1131,17 @@ export namespace Clutter {
         /**
          * A master, virtual device
          */
-        MASTER,
+        MASTER = 0,
         /**
          * A slave, physical device, attached to
          *   a master device
          */
-        SLAVE,
+        SLAVE = 1,
         /**
          * A slave, physical device, not attached
          *   to a master device
          */
-        FLOATING,
+        FLOATING = 2,
     }
 
 
@@ -1156,9 +1156,9 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum InputPanelState {
-        OFF,
-        ON,
-        TOGGLE,
+        OFF = 0,
+        ON = 1,
+        TOGGLE = 2,
     }
 
 
@@ -1179,11 +1179,11 @@ export namespace Clutter {
         /**
          * linear interpolation
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * cubic interpolation
          */
-        CUBIC,
+        CUBIC = 1,
     }
 
 
@@ -1198,8 +1198,8 @@ export namespace Clutter {
      * @gir-type Enum
      */
     enum KeyState {
-        RELEASED,
-        PRESSED,
+        RELEASED = 0,
+        PRESSED = 1,
     }
 
 
@@ -1220,15 +1220,15 @@ export namespace Clutter {
          * Queries the action whether it supports
          *   long presses
          */
-        QUERY,
+        QUERY = 0,
         /**
          * Activates the action on a long press
          */
-        ACTIVATE,
+        ACTIVATE = 1,
         /**
          * The long press was cancelled
          */
-        CANCEL,
+        CANCEL = 2,
     }
 
 
@@ -1248,11 +1248,11 @@ export namespace Clutter {
         /**
          * An horizontal orientation
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * A vertical orientation
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -1273,20 +1273,20 @@ export namespace Clutter {
         /**
          * No constraint
          */
-        AXIS_NONE,
+        AXIS_NONE = 0,
         /**
          * Set a constraint on the X axis
          */
-        X_AXIS,
+        X_AXIS = 1,
         /**
          * Set a constraint on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 2,
         /**
          * Constrain panning automatically based on initial
          *   movement (available since 1.24)
          */
-        AXIS_AUTO,
+        AXIS_AUTO = 3,
     }
 
 
@@ -1306,37 +1306,37 @@ export namespace Clutter {
         /**
          * jump to the given position
          */
-        MOVE_TO,
+        MOVE_TO = 0,
         /**
          * create a line from the last node to the
          *   given position
          */
-        LINE_TO,
+        LINE_TO = 1,
         /**
          * bezier curve using the last position and
          *   three control points.
          */
-        CURVE_TO,
+        CURVE_TO = 2,
         /**
          * create a line from the last node to the last
          *   {@link Clutter.PathNodeType.MOVE_TO} node.
          */
-        CLOSE,
+        CLOSE = 3,
         /**
          * same as {@link Clutter.PathNodeType.MOVE_TO} but with
          *   coordinates relative to the last node.
          */
-        REL_MOVE_TO,
+        REL_MOVE_TO = 32,
         /**
          * same as {@link Clutter.PathNodeType.LINE_TO} but with
          *   coordinates relative to the last node.
          */
-        REL_LINE_TO,
+        REL_LINE_TO = 33,
         /**
          * same as {@link Clutter.PathNodeType.CURVE_TO} but with
          *   coordinates relative to the last node.
          */
-        REL_CURVE_TO,
+        REL_CURVE_TO = 34,
     }
 
 
@@ -1356,15 +1356,15 @@ export namespace Clutter {
         /**
          * Do not paint any actor
          */
-        NONE,
+        NONE = 0,
         /**
          * Paint only the reactive actors
          */
-        REACTIVE,
+        REACTIVE = 1,
         /**
          * Paint all actors
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -1384,16 +1384,16 @@ export namespace Clutter {
         /**
          * Height for width requests
          */
-        HEIGHT_FOR_WIDTH,
+        HEIGHT_FOR_WIDTH = 0,
         /**
          * Width for height requests
          */
-        WIDTH_FOR_HEIGHT,
+        WIDTH_FOR_HEIGHT = 1,
         /**
          * Use the preferred size of the
          *   {@link Clutter.Content}, if it has any (available since 1.22)
          */
-        CONTENT_SIZE,
+        CONTENT_SIZE = 2,
     }
 
 
@@ -1413,15 +1413,15 @@ export namespace Clutter {
         /**
          * Rotate around the X axis
          */
-        X_AXIS,
+        X_AXIS = 0,
         /**
          * Rotate around the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 1,
         /**
          * Rotate around the Z axis
          */
-        Z_AXIS,
+        Z_AXIS = 2,
     }
 
 
@@ -1442,11 +1442,11 @@ export namespace Clutter {
         /**
          * Clockwise rotation
          */
-        CW,
+        CW = 0,
         /**
          * Counter-clockwise rotation
          */
-        CCW,
+        CCW = 1,
     }
 
 
@@ -1467,17 +1467,17 @@ export namespace Clutter {
         /**
          * Linear interpolation filter
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Nearest neighbor interpolation filter
          */
-        NEAREST,
+        NEAREST = 1,
         /**
          * Trilinear minification filter, with
          *   mipmap generation; this filter linearly interpolates on every axis,
          *   as well as between mipmap levels.
          */
-        TRILINEAR,
+        TRILINEAR = 2,
     }
 
 
@@ -1532,23 +1532,23 @@ export namespace Clutter {
         /**
          * Scroll up
          */
-        UP,
+        UP = 0,
         /**
          * Scroll down
          */
-        DOWN,
+        DOWN = 1,
         /**
          * Scroll left
          */
-        LEFT,
+        LEFT = 2,
         /**
          * Scroll right
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * Precise scrolling delta (available in 1.10)
          */
-        SMOOTH,
+        SMOOTH = 4,
     }
 
 
@@ -1570,21 +1570,21 @@ export namespace Clutter {
         /**
          * Source of scroll events is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The scroll event is originated by a mouse wheel.
          */
-        WHEEL,
+        WHEEL = 1,
         /**
          * The scroll event is originated by one or more
          *   fingers on the device (eg. touchpads).
          */
-        FINGER,
+        FINGER = 2,
         /**
          * The scroll event is originated by the
          *   motion of some device (eg. a scroll button is set).
          */
-        CONTINUOUS,
+        CONTINUOUS = 3,
     }
 
 
@@ -1635,11 +1635,11 @@ export namespace Clutter {
         /**
          * a vertex shader
          */
-        VERTEX_SHADER,
+        VERTEX_SHADER = 0,
         /**
          * a fragment shader
          */
-        FRAGMENT_SHADER,
+        FRAGMENT_SHADER = 1,
     }
 
 
@@ -1659,19 +1659,19 @@ export namespace Clutter {
         /**
          * the top edge
          */
-        TOP,
+        TOP = 0,
         /**
          * the right edge
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * the bottom edge
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * the left edge
          */
-        LEFT,
+        LEFT = 3,
     }
 
 
@@ -1691,183 +1691,183 @@ export namespace Clutter {
         /**
          * White color (ffffffff)
          */
-        WHITE,
+        WHITE = 0,
         /**
          * Black color (000000ff)
          */
-        BLACK,
+        BLACK = 1,
         /**
          * Red color (ff0000ff)
          */
-        RED,
+        RED = 2,
         /**
          * Dark red color (800000ff)
          */
-        DARK_RED,
+        DARK_RED = 3,
         /**
          * Green color (00ff00ff)
          */
-        GREEN,
+        GREEN = 4,
         /**
          * Dark green color (008000ff)
          */
-        DARK_GREEN,
+        DARK_GREEN = 5,
         /**
          * Blue color (0000ffff)
          */
-        BLUE,
+        BLUE = 6,
         /**
          * Dark blue color (000080ff)
          */
-        DARK_BLUE,
+        DARK_BLUE = 7,
         /**
          * Cyan color (00ffffff)
          */
-        CYAN,
+        CYAN = 8,
         /**
          * Dark cyan color (008080ff)
          */
-        DARK_CYAN,
+        DARK_CYAN = 9,
         /**
          * Magenta color (ff00ffff)
          */
-        MAGENTA,
+        MAGENTA = 10,
         /**
          * Dark magenta color (800080ff)
          */
-        DARK_MAGENTA,
+        DARK_MAGENTA = 11,
         /**
          * Yellow color (ffff00ff)
          */
-        YELLOW,
+        YELLOW = 12,
         /**
          * Dark yellow color (808000ff)
          */
-        DARK_YELLOW,
+        DARK_YELLOW = 13,
         /**
          * Gray color (a0a0a4ff)
          */
-        GRAY,
+        GRAY = 14,
         /**
          * Dark Gray color (808080ff)
          */
-        DARK_GRAY,
+        DARK_GRAY = 15,
         /**
          * Light gray color (c0c0c0ff)
          */
-        LIGHT_GRAY,
+        LIGHT_GRAY = 16,
         /**
          * Butter color (edd400ff)
          */
-        BUTTER,
+        BUTTER = 17,
         /**
          * Light butter color (fce94fff)
          */
-        BUTTER_LIGHT,
+        BUTTER_LIGHT = 18,
         /**
          * Dark butter color (c4a000ff)
          */
-        BUTTER_DARK,
+        BUTTER_DARK = 19,
         /**
          * Orange color (f57900ff)
          */
-        ORANGE,
+        ORANGE = 20,
         /**
          * Light orange color (fcaf3fff)
          */
-        ORANGE_LIGHT,
+        ORANGE_LIGHT = 21,
         /**
          * Dark orange color (ce5c00ff)
          */
-        ORANGE_DARK,
+        ORANGE_DARK = 22,
         /**
          * Chocolate color (c17d11ff)
          */
-        CHOCOLATE,
+        CHOCOLATE = 23,
         /**
          * Light chocolate color (e9b96eff)
          */
-        CHOCOLATE_LIGHT,
+        CHOCOLATE_LIGHT = 24,
         /**
          * Dark chocolate color (8f5902ff)
          */
-        CHOCOLATE_DARK,
+        CHOCOLATE_DARK = 25,
         /**
          * Chameleon color (73d216ff)
          */
-        CHAMELEON,
+        CHAMELEON = 26,
         /**
          * Light chameleon color (8ae234ff)
          */
-        CHAMELEON_LIGHT,
+        CHAMELEON_LIGHT = 27,
         /**
          * Dark chameleon color (4e9a06ff)
          */
-        CHAMELEON_DARK,
+        CHAMELEON_DARK = 28,
         /**
          * Sky color (3465a4ff)
          */
-        SKY_BLUE,
+        SKY_BLUE = 29,
         /**
          * Light sky color (729fcfff)
          */
-        SKY_BLUE_LIGHT,
+        SKY_BLUE_LIGHT = 30,
         /**
          * Dark sky color (204a87ff)
          */
-        SKY_BLUE_DARK,
+        SKY_BLUE_DARK = 31,
         /**
          * Plum color (75507bff)
          */
-        PLUM,
+        PLUM = 32,
         /**
          * Light plum color (ad7fa8ff)
          */
-        PLUM_LIGHT,
+        PLUM_LIGHT = 33,
         /**
          * Dark plum color (5c3566ff)
          */
-        PLUM_DARK,
+        PLUM_DARK = 34,
         /**
          * Scarlet red color (cc0000ff)
          */
-        SCARLET_RED,
+        SCARLET_RED = 35,
         /**
          * Light scarlet red color (ef2929ff)
          */
-        SCARLET_RED_LIGHT,
+        SCARLET_RED_LIGHT = 36,
         /**
          * Dark scarlet red color (a40000ff)
          */
-        SCARLET_RED_DARK,
+        SCARLET_RED_DARK = 37,
         /**
          * Aluminium, first variant (eeeeecff)
          */
-        ALUMINIUM_1,
+        ALUMINIUM_1 = 38,
         /**
          * Aluminium, second variant (d3d7cfff)
          */
-        ALUMINIUM_2,
+        ALUMINIUM_2 = 39,
         /**
          * Aluminium, third variant (babdb6ff)
          */
-        ALUMINIUM_3,
+        ALUMINIUM_3 = 40,
         /**
          * Aluminium, fourth variant (888a85ff)
          */
-        ALUMINIUM_4,
+        ALUMINIUM_4 = 41,
         /**
          * Aluminium, fifth variant (555753ff)
          */
-        ALUMINIUM_5,
+        ALUMINIUM_5 = 42,
         /**
          * Aluminium, sixth variant (2e3436ff)
          */
-        ALUMINIUM_6,
+        ALUMINIUM_6 = 43,
         /**
          * Transparent color (00000000)
          */
-        TRANSPARENT,
+        TRANSPARENT = 44,
     }
 
 
@@ -1891,13 +1891,13 @@ export namespace Clutter {
          *   `CLUTTER_STEP` progress mode should occur at the start of
          *   the transition
          */
-        START,
+        START = 0,
         /**
          * The change in the value of a
          *   `CLUTTER_STEP` progress mode should occur at the end of
          *   the transition
          */
-        END,
+        END = 1,
     }
 
 
@@ -1919,17 +1919,17 @@ export namespace Clutter {
          * Align the child to the top or to the
          *   left of a cell in the table, depending on the axis
          */
-        START,
+        START = 0,
         /**
          * Align the child to the center of
          *   a cell in the table
          */
-        CENTER,
+        CENTER = 1,
         /**
          * Align the child to the bottom or to the
          *   right of a cell in the table, depending on the axis
          */
-        END,
+        END = 2,
     }
 
 
@@ -1950,15 +1950,15 @@ export namespace Clutter {
          * Use the default setting, as returned
          *   by `clutter_get_default_text_direction()`
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Use left-to-right text direction
          */
-        LTR,
+        LTR = 1,
         /**
          * Use right-to-left text direction
          */
-        RTL,
+        RTL = 2,
     }
 
 
@@ -2014,17 +2014,17 @@ export namespace Clutter {
          * fastest rendering will use nearest neighbour
          *   interpolation when rendering. good setting.
          */
-        LOW,
+        LOW = 0,
         /**
          * higher quality rendering without using
          *   extra resources.
          */
-        MEDIUM,
+        MEDIUM = 1,
         /**
          * render the texture with the best quality
          *   available using extra memory.
          */
-        HIGH,
+        HIGH = 2,
     }
 
 
@@ -2044,11 +2044,11 @@ export namespace Clutter {
         /**
          * forward direction for a timeline
          */
-        FORWARD,
+        FORWARD = 0,
         /**
          * backward direction for a timeline
          */
-        BACKWARD,
+        BACKWARD = 1,
     }
 
 
@@ -2085,21 +2085,21 @@ export namespace Clutter {
         /**
          * The gesture has begun.
          */
-        BEGIN,
+        BEGIN = 0,
         /**
          * The gesture has been updated.
          */
-        UPDATE,
+        UPDATE = 1,
         /**
          * The gesture was finished, changes
          *   should be permanently applied.
          */
-        END,
+        END = 2,
         /**
          * The gesture was cancelled, all
          *   changes should be undone.
          */
-        CANCEL,
+        CANCEL = 3,
     }
 
 
@@ -2121,23 +2121,23 @@ export namespace Clutter {
         /**
          * Unit expressed in pixels (with subpixel precision)
          */
-        PIXEL,
+        PIXEL = 0,
         /**
          * Unit expressed in em
          */
-        EM,
+        EM = 1,
         /**
          * Unit expressed in millimeters
          */
-        MM,
+        MM = 2,
         /**
          * Unit expressed in points
          */
-        POINT,
+        POINT = 3,
         /**
          * Unit expressed in centimeters
          */
-        CM,
+        CM = 4,
     }
 
 
@@ -2158,539 +2158,1317 @@ export namespace Clutter {
         /**
          * Scale only on the X axis
          */
-        X_AXIS,
+        X_AXIS = 0,
         /**
          * Scale only on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 1,
         /**
          * Scale on both axis
          */
-        BOTH,
+        BOTH = 2,
     }
 
 
+    /**
+     * @default 48
+     */
     const __0: number;
 
+    /**
+     * @default 49
+     */
     const __1: number;
 
+    /**
+     * @default 50
+     */
     const __2: number;
 
+    /**
+     * @default 51
+     */
     const __3: number;
 
+    /**
+     * @default 64784
+     */
     const __3270_AltCursor: number;
 
+    /**
+     * @default 64782
+     */
     const __3270_Attn: number;
 
+    /**
+     * @default 64773
+     */
     const __3270_BackTab: number;
 
+    /**
+     * @default 64793
+     */
     const __3270_ChangeScreen: number;
 
+    /**
+     * @default 64789
+     */
     const __3270_Copy: number;
 
+    /**
+     * @default 64783
+     */
     const __3270_CursorBlink: number;
 
+    /**
+     * @default 64796
+     */
     const __3270_CursorSelect: number;
 
+    /**
+     * @default 64794
+     */
     const __3270_DeleteWord: number;
 
+    /**
+     * @default 64769
+     */
     const __3270_Duplicate: number;
 
+    /**
+     * @default 64798
+     */
     const __3270_Enter: number;
 
+    /**
+     * @default 64774
+     */
     const __3270_EraseEOF: number;
 
+    /**
+     * @default 64775
+     */
     const __3270_EraseInput: number;
 
+    /**
+     * @default 64795
+     */
     const __3270_ExSelect: number;
 
+    /**
+     * @default 64770
+     */
     const __3270_FieldMark: number;
 
+    /**
+     * @default 64787
+     */
     const __3270_Ident: number;
 
+    /**
+     * @default 64786
+     */
     const __3270_Jump: number;
 
+    /**
+     * @default 64785
+     */
     const __3270_KeyClick: number;
 
+    /**
+     * @default 64772
+     */
     const __3270_Left2: number;
 
+    /**
+     * @default 64778
+     */
     const __3270_PA1: number;
 
+    /**
+     * @default 64779
+     */
     const __3270_PA2: number;
 
+    /**
+     * @default 64780
+     */
     const __3270_PA3: number;
 
+    /**
+     * @default 64790
+     */
     const __3270_Play: number;
 
+    /**
+     * @default 64797
+     */
     const __3270_PrintScreen: number;
 
+    /**
+     * @default 64777
+     */
     const __3270_Quit: number;
 
+    /**
+     * @default 64792
+     */
     const __3270_Record: number;
 
+    /**
+     * @default 64776
+     */
     const __3270_Reset: number;
 
+    /**
+     * @default 64771
+     */
     const __3270_Right2: number;
 
+    /**
+     * @default 64788
+     */
     const __3270_Rule: number;
 
+    /**
+     * @default 64791
+     */
     const __3270_Setup: number;
 
+    /**
+     * @default 64781
+     */
     const __3270_Test: number;
 
+    /**
+     * @default 52
+     */
     const __4: number;
 
+    /**
+     * @default 53
+     */
     const __5: number;
 
+    /**
+     * @default 54
+     */
     const __6: number;
 
+    /**
+     * @default 55
+     */
     const __7: number;
 
+    /**
+     * @default 56
+     */
     const __8: number;
 
+    /**
+     * @default 57
+     */
     const __9: number;
 
+    /**
+     * @default 65
+     */
     const A: number;
 
+    /**
+     * @default 198
+     */
     const AE: number;
 
+    /**
+     * @default 193
+     */
     const Aacute: number;
 
+    /**
+     * @default 16785056
+     */
     const Abelowdot: number;
 
+    /**
+     * @default 451
+     */
     const Abreve: number;
 
+    /**
+     * @default 16785070
+     */
     const Abreveacute: number;
 
+    /**
+     * @default 16785078
+     */
     const Abrevebelowdot: number;
 
+    /**
+     * @default 16785072
+     */
     const Abrevegrave: number;
 
+    /**
+     * @default 16785074
+     */
     const Abrevehook: number;
 
+    /**
+     * @default 16785076
+     */
     const Abrevetilde: number;
 
+    /**
+     * @default 65136
+     */
     const AccessX_Enable: number;
 
+    /**
+     * @default 65137
+     */
     const AccessX_Feedback_Enable: number;
 
+    /**
+     * @default 194
+     */
     const Acircumflex: number;
 
+    /**
+     * @default 16785060
+     */
     const Acircumflexacute: number;
 
+    /**
+     * @default 16785068
+     */
     const Acircumflexbelowdot: number;
 
+    /**
+     * @default 16785062
+     */
     const Acircumflexgrave: number;
 
+    /**
+     * @default 16785064
+     */
     const Acircumflexhook: number;
 
+    /**
+     * @default 16785066
+     */
     const Acircumflextilde: number;
 
+    /**
+     * @default 269025081
+     */
     const AddFavorite: number;
 
+    /**
+     * @default 196
+     */
     const Adiaeresis: number;
 
+    /**
+     * @default 192
+     */
     const Agrave: number;
 
+    /**
+     * @default 16785058
+     */
     const Ahook: number;
 
+    /**
+     * @default 65513
+     */
     const Alt_L: number;
 
+    /**
+     * @default 65514
+     */
     const Alt_R: number;
 
+    /**
+     * @default 960
+     */
     const Amacron: number;
 
+    /**
+     * @default 417
+     */
     const Aogonek: number;
 
+    /**
+     * @default 269025104
+     */
     const ApplicationLeft: number;
 
+    /**
+     * @default 269025105
+     */
     const ApplicationRight: number;
 
+    /**
+     * @default 16778848
+     */
     const Arabic_0: number;
 
+    /**
+     * @default 16778849
+     */
     const Arabic_1: number;
 
+    /**
+     * @default 16778850
+     */
     const Arabic_2: number;
 
+    /**
+     * @default 16778851
+     */
     const Arabic_3: number;
 
+    /**
+     * @default 16778852
+     */
     const Arabic_4: number;
 
+    /**
+     * @default 16778853
+     */
     const Arabic_5: number;
 
+    /**
+     * @default 16778854
+     */
     const Arabic_6: number;
 
+    /**
+     * @default 16778855
+     */
     const Arabic_7: number;
 
+    /**
+     * @default 16778856
+     */
     const Arabic_8: number;
 
+    /**
+     * @default 16778857
+     */
     const Arabic_9: number;
 
+    /**
+     * @default 1497
+     */
     const Arabic_ain: number;
 
+    /**
+     * @default 1479
+     */
     const Arabic_alef: number;
 
+    /**
+     * @default 1513
+     */
     const Arabic_alefmaksura: number;
 
+    /**
+     * @default 1480
+     */
     const Arabic_beh: number;
 
+    /**
+     * @default 1452
+     */
     const Arabic_comma: number;
 
+    /**
+     * @default 1494
+     */
     const Arabic_dad: number;
 
+    /**
+     * @default 1487
+     */
     const Arabic_dal: number;
 
+    /**
+     * @default 1519
+     */
     const Arabic_damma: number;
 
+    /**
+     * @default 1516
+     */
     const Arabic_dammatan: number;
 
+    /**
+     * @default 16778888
+     */
     const Arabic_ddal: number;
 
+    /**
+     * @default 16778956
+     */
     const Arabic_farsi_yeh: number;
 
+    /**
+     * @default 1518
+     */
     const Arabic_fatha: number;
 
+    /**
+     * @default 1515
+     */
     const Arabic_fathatan: number;
 
+    /**
+     * @default 1505
+     */
     const Arabic_feh: number;
 
+    /**
+     * @default 16778964
+     */
     const Arabic_fullstop: number;
 
+    /**
+     * @default 16778927
+     */
     const Arabic_gaf: number;
 
+    /**
+     * @default 1498
+     */
     const Arabic_ghain: number;
 
+    /**
+     * @default 1511
+     */
     const Arabic_ha: number;
 
+    /**
+     * @default 1485
+     */
     const Arabic_hah: number;
 
+    /**
+     * @default 1473
+     */
     const Arabic_hamza: number;
 
+    /**
+     * @default 16778836
+     */
     const Arabic_hamza_above: number;
 
+    /**
+     * @default 16778837
+     */
     const Arabic_hamza_below: number;
 
+    /**
+     * @default 1475
+     */
     const Arabic_hamzaonalef: number;
 
+    /**
+     * @default 1476
+     */
     const Arabic_hamzaonwaw: number;
 
+    /**
+     * @default 1478
+     */
     const Arabic_hamzaonyeh: number;
 
+    /**
+     * @default 1477
+     */
     const Arabic_hamzaunderalef: number;
 
+    /**
+     * @default 1511
+     */
     const Arabic_heh: number;
 
+    /**
+     * @default 16778942
+     */
     const Arabic_heh_doachashmee: number;
 
+    /**
+     * @default 16778945
+     */
     const Arabic_heh_goal: number;
 
+    /**
+     * @default 1484
+     */
     const Arabic_jeem: number;
 
+    /**
+     * @default 16778904
+     */
     const Arabic_jeh: number;
 
+    /**
+     * @default 1507
+     */
     const Arabic_kaf: number;
 
+    /**
+     * @default 1520
+     */
     const Arabic_kasra: number;
 
+    /**
+     * @default 1517
+     */
     const Arabic_kasratan: number;
 
+    /**
+     * @default 16778921
+     */
     const Arabic_keheh: number;
 
+    /**
+     * @default 1486
+     */
     const Arabic_khah: number;
 
+    /**
+     * @default 1508
+     */
     const Arabic_lam: number;
 
+    /**
+     * @default 16778835
+     */
     const Arabic_madda_above: number;
 
+    /**
+     * @default 1474
+     */
     const Arabic_maddaonalef: number;
 
+    /**
+     * @default 1509
+     */
     const Arabic_meem: number;
 
+    /**
+     * @default 1510
+     */
     const Arabic_noon: number;
 
+    /**
+     * @default 16778938
+     */
     const Arabic_noon_ghunna: number;
 
+    /**
+     * @default 16778878
+     */
     const Arabic_peh: number;
 
+    /**
+     * @default 16778858
+     */
     const Arabic_percent: number;
 
+    /**
+     * @default 1506
+     */
     const Arabic_qaf: number;
 
+    /**
+     * @default 1471
+     */
     const Arabic_question_mark: number;
 
+    /**
+     * @default 1489
+     */
     const Arabic_ra: number;
 
+    /**
+     * @default 16778897
+     */
     const Arabic_rreh: number;
 
+    /**
+     * @default 1493
+     */
     const Arabic_sad: number;
 
+    /**
+     * @default 1491
+     */
     const Arabic_seen: number;
 
+    /**
+     * @default 1467
+     */
     const Arabic_semicolon: number;
 
+    /**
+     * @default 1521
+     */
     const Arabic_shadda: number;
 
+    /**
+     * @default 1492
+     */
     const Arabic_sheen: number;
 
+    /**
+     * @default 1522
+     */
     const Arabic_sukun: number;
 
+    /**
+     * @default 16778864
+     */
     const Arabic_superscript_alef: number;
 
+    /**
+     * @default 65406
+     */
     const Arabic_switch: number;
 
+    /**
+     * @default 1495
+     */
     const Arabic_tah: number;
 
+    /**
+     * @default 1504
+     */
     const Arabic_tatweel: number;
 
+    /**
+     * @default 16778886
+     */
     const Arabic_tcheh: number;
 
+    /**
+     * @default 1482
+     */
     const Arabic_teh: number;
 
+    /**
+     * @default 1481
+     */
     const Arabic_tehmarbuta: number;
 
+    /**
+     * @default 1488
+     */
     const Arabic_thal: number;
 
+    /**
+     * @default 1483
+     */
     const Arabic_theh: number;
 
+    /**
+     * @default 16778873
+     */
     const Arabic_tteh: number;
 
+    /**
+     * @default 16778916
+     */
     const Arabic_veh: number;
 
+    /**
+     * @default 1512
+     */
     const Arabic_waw: number;
 
+    /**
+     * @default 1514
+     */
     const Arabic_yeh: number;
 
+    /**
+     * @default 16778962
+     */
     const Arabic_yeh_baree: number;
 
+    /**
+     * @default 1496
+     */
     const Arabic_zah: number;
 
+    /**
+     * @default 1490
+     */
     const Arabic_zain: number;
 
+    /**
+     * @default 197
+     */
     const Aring: number;
 
+    /**
+     * @default 16778552
+     */
     const Armenian_AT: number;
 
+    /**
+     * @default 16778545
+     */
     const Armenian_AYB: number;
 
+    /**
+     * @default 16778546
+     */
     const Armenian_BEN: number;
 
+    /**
+     * @default 16778569
+     */
     const Armenian_CHA: number;
 
+    /**
+     * @default 16778548
+     */
     const Armenian_DA: number;
 
+    /**
+     * @default 16778561
+     */
     const Armenian_DZA: number;
 
+    /**
+     * @default 16778551
+     */
     const Armenian_E: number;
 
+    /**
+     * @default 16778582
+     */
     const Armenian_FE: number;
 
+    /**
+     * @default 16778562
+     */
     const Armenian_GHAT: number;
 
+    /**
+     * @default 16778547
+     */
     const Armenian_GIM: number;
 
+    /**
+     * @default 16778565
+     */
     const Armenian_HI: number;
 
+    /**
+     * @default 16778560
+     */
     const Armenian_HO: number;
 
+    /**
+     * @default 16778555
+     */
     const Armenian_INI: number;
 
+    /**
+     * @default 16778571
+     */
     const Armenian_JE: number;
 
+    /**
+     * @default 16778580
+     */
     const Armenian_KE: number;
 
+    /**
+     * @default 16778559
+     */
     const Armenian_KEN: number;
 
+    /**
+     * @default 16778557
+     */
     const Armenian_KHE: number;
 
+    /**
+     * @default 16778556
+     */
     const Armenian_LYUN: number;
 
+    /**
+     * @default 16778564
+     */
     const Armenian_MEN: number;
 
+    /**
+     * @default 16778566
+     */
     const Armenian_NU: number;
 
+    /**
+     * @default 16778581
+     */
     const Armenian_O: number;
 
+    /**
+     * @default 16778570
+     */
     const Armenian_PE: number;
 
+    /**
+     * @default 16778579
+     */
     const Armenian_PYUR: number;
 
+    /**
+     * @default 16778572
+     */
     const Armenian_RA: number;
 
+    /**
+     * @default 16778576
+     */
     const Armenian_RE: number;
 
+    /**
+     * @default 16778573
+     */
     const Armenian_SE: number;
 
+    /**
+     * @default 16778567
+     */
     const Armenian_SHA: number;
 
+    /**
+     * @default 16778563
+     */
     const Armenian_TCHE: number;
 
+    /**
+     * @default 16778553
+     */
     const Armenian_TO: number;
 
+    /**
+     * @default 16778558
+     */
     const Armenian_TSA: number;
 
+    /**
+     * @default 16778577
+     */
     const Armenian_TSO: number;
 
+    /**
+     * @default 16778575
+     */
     const Armenian_TYUN: number;
 
+    /**
+     * @default 16778574
+     */
     const Armenian_VEV: number;
 
+    /**
+     * @default 16778568
+     */
     const Armenian_VO: number;
 
+    /**
+     * @default 16778578
+     */
     const Armenian_VYUN: number;
 
+    /**
+     * @default 16778549
+     */
     const Armenian_YECH: number;
 
+    /**
+     * @default 16778550
+     */
     const Armenian_ZA: number;
 
+    /**
+     * @default 16778554
+     */
     const Armenian_ZHE: number;
 
+    /**
+     * @default 16778587
+     */
     const Armenian_accent: number;
 
+    /**
+     * @default 16778588
+     */
     const Armenian_amanak: number;
 
+    /**
+     * @default 16778586
+     */
     const Armenian_apostrophe: number;
 
+    /**
+     * @default 16778600
+     */
     const Armenian_at: number;
 
+    /**
+     * @default 16778593
+     */
     const Armenian_ayb: number;
 
+    /**
+     * @default 16778594
+     */
     const Armenian_ben: number;
 
+    /**
+     * @default 16778589
+     */
     const Armenian_but: number;
 
+    /**
+     * @default 16778617
+     */
     const Armenian_cha: number;
 
+    /**
+     * @default 16778596
+     */
     const Armenian_da: number;
 
+    /**
+     * @default 16778609
+     */
     const Armenian_dza: number;
 
+    /**
+     * @default 16778599
+     */
     const Armenian_e: number;
 
+    /**
+     * @default 16778588
+     */
     const Armenian_exclam: number;
 
+    /**
+     * @default 16778630
+     */
     const Armenian_fe: number;
 
+    /**
+     * @default 16778633
+     */
     const Armenian_full_stop: number;
 
+    /**
+     * @default 16778610
+     */
     const Armenian_ghat: number;
 
+    /**
+     * @default 16778595
+     */
     const Armenian_gim: number;
 
+    /**
+     * @default 16778613
+     */
     const Armenian_hi: number;
 
+    /**
+     * @default 16778608
+     */
     const Armenian_ho: number;
 
+    /**
+     * @default 16778634
+     */
     const Armenian_hyphen: number;
 
+    /**
+     * @default 16778603
+     */
     const Armenian_ini: number;
 
+    /**
+     * @default 16778619
+     */
     const Armenian_je: number;
 
+    /**
+     * @default 16778628
+     */
     const Armenian_ke: number;
 
+    /**
+     * @default 16778607
+     */
     const Armenian_ken: number;
 
+    /**
+     * @default 16778605
+     */
     const Armenian_khe: number;
 
+    /**
+     * @default 16778631
+     */
     const Armenian_ligature_ew: number;
 
+    /**
+     * @default 16778604
+     */
     const Armenian_lyun: number;
 
+    /**
+     * @default 16778612
+     */
     const Armenian_men: number;
 
+    /**
+     * @default 16778614
+     */
     const Armenian_nu: number;
 
+    /**
+     * @default 16778629
+     */
     const Armenian_o: number;
 
+    /**
+     * @default 16778590
+     */
     const Armenian_paruyk: number;
 
+    /**
+     * @default 16778618
+     */
     const Armenian_pe: number;
 
+    /**
+     * @default 16778627
+     */
     const Armenian_pyur: number;
 
+    /**
+     * @default 16778590
+     */
     const Armenian_question: number;
 
+    /**
+     * @default 16778620
+     */
     const Armenian_ra: number;
 
+    /**
+     * @default 16778624
+     */
     const Armenian_re: number;
 
+    /**
+     * @default 16778621
+     */
     const Armenian_se: number;
 
+    /**
+     * @default 16778589
+     */
     const Armenian_separation_mark: number;
 
+    /**
+     * @default 16778615
+     */
     const Armenian_sha: number;
 
+    /**
+     * @default 16778587
+     */
     const Armenian_shesht: number;
 
+    /**
+     * @default 16778611
+     */
     const Armenian_tche: number;
 
+    /**
+     * @default 16778601
+     */
     const Armenian_to: number;
 
+    /**
+     * @default 16778606
+     */
     const Armenian_tsa: number;
 
+    /**
+     * @default 16778625
+     */
     const Armenian_tso: number;
 
+    /**
+     * @default 16778623
+     */
     const Armenian_tyun: number;
 
+    /**
+     * @default 16778633
+     */
     const Armenian_verjaket: number;
 
+    /**
+     * @default 16778622
+     */
     const Armenian_vev: number;
 
+    /**
+     * @default 16778616
+     */
     const Armenian_vo: number;
 
+    /**
+     * @default 16778626
+     */
     const Armenian_vyun: number;
 
+    /**
+     * @default 16778597
+     */
     const Armenian_yech: number;
 
+    /**
+     * @default 16778634
+     */
     const Armenian_yentamna: number;
 
+    /**
+     * @default 16778598
+     */
     const Armenian_za: number;
 
+    /**
+     * @default 16778602
+     */
     const Armenian_zhe: number;
 
+    /**
+     * @default 195
+     */
     const Atilde: number;
 
+    /**
+     * @default 65146
+     */
     const AudibleBell_Enable: number;
 
+    /**
+     * @default 269025179
+     */
     const AudioCycleTrack: number;
 
+    /**
+     * @default 269025175
+     */
     const AudioForward: number;
 
+    /**
+     * @default 269025041
+     */
     const AudioLowerVolume: number;
 
+    /**
+     * @default 269025074
+     */
     const AudioMedia: number;
 
+    /**
+     * @default 269025202
+     */
     const AudioMicMute: number;
 
+    /**
+     * @default 269025042
+     */
     const AudioMute: number;
 
+    /**
+     * @default 269025047
+     */
     const AudioNext: number;
 
+    /**
+     * @default 269025073
+     */
     const AudioPause: number;
 
+    /**
+     * @default 269025044
+     */
     const AudioPlay: number;
 
+    /**
+     * @default 269025046
+     */
     const AudioPrev: number;
 
+    /**
+     * @default 269025043
+     */
     const AudioRaiseVolume: number;
 
+    /**
+     * @default 269025177
+     */
     const AudioRandomPlay: number;
 
+    /**
+     * @default 269025052
+     */
     const AudioRecord: number;
 
+    /**
+     * @default 269025176
+     */
     const AudioRepeat: number;
 
+    /**
+     * @default 269025086
+     */
     const AudioRewind: number;
 
+    /**
+     * @default 269025045
+     */
     const AudioStop: number;
 
+    /**
+     * @default 269025165
+     */
     const Away: number;
 
+    /**
+     * @default 66
+     */
     const B: number;
 
     /**
      * The middle button of a pointer device.
      * @since 1.10
+     * @default 2
      */
     const BUTTON_MIDDLE: number;
 
@@ -2700,6 +3478,7 @@ export namespace Clutter {
      * This is typically the left mouse button in a right-handed
      * mouse configuration.
      * @since 1.10
+     * @default 1
      */
     const BUTTON_PRIMARY: number;
 
@@ -2709,41 +3488,93 @@ export namespace Clutter {
      * This is typically the right mouse button in a right-handed
      * mouse configuration.
      * @since 1.10
+     * @default 3
      */
     const BUTTON_SECONDARY: number;
 
+    /**
+     * @default 16784898
+     */
     const Babovedot: number;
 
+    /**
+     * @default 269025062
+     */
     const Back: number;
 
+    /**
+     * @default 269025087
+     */
     const BackForward: number;
 
+    /**
+     * @default 65288
+     */
     const BackSpace: number;
 
+    /**
+     * @default 269025171
+     */
     const Battery: number;
 
+    /**
+     * @default 65368
+     */
     const Begin: number;
 
+    /**
+     * @default 269025190
+     */
     const Blue: number;
 
+    /**
+     * @default 269025172
+     */
     const Bluetooth: number;
 
+    /**
+     * @default 269025106
+     */
     const Book: number;
 
+    /**
+     * @default 65140
+     */
     const BounceKeys_Enable: number;
 
+    /**
+     * @default 65387
+     */
     const Break: number;
 
+    /**
+     * @default 269025083
+     */
     const BrightnessAdjust: number;
 
+    /**
+     * @default 1726
+     */
     const Byelorussian_SHORTU: number;
 
+    /**
+     * @default 1710
+     */
     const Byelorussian_shortu: number;
 
+    /**
+     * @default 67
+     */
     const C: number;
 
+    /**
+     * @default 269025107
+     */
     const CD: number;
 
+    /**
+     * @default 65186
+     */
     const CH: number;
 
     /**
@@ -2751,303 +3582,732 @@ export namespace Clutter {
      * "gles" currently
      * @since 0.4
      * @deprecated since 1.10: The macro evaluates to "deprecated" as Cogl can be   compiled against multiple GL implementations.
+     * @default deprecated
      */
     const COGL: string;
 
     /**
      * Default value for "now".
      * @since 0.4
+     * @default 0
      */
     const CURRENT_TIME: number;
 
+    /**
+     * @default 65189
+     */
     const C_H: number;
 
+    /**
+     * @default 65188
+     */
     const C_h: number;
 
+    /**
+     * @default 709
+     */
     const Cabovedot: number;
 
+    /**
+     * @default 454
+     */
     const Cacute: number;
 
+    /**
+     * @default 269025053
+     */
     const Calculator: number;
 
+    /**
+     * @default 269025056
+     */
     const Calendar: number;
 
+    /**
+     * @default 65385
+     */
     const Cancel: number;
 
+    /**
+     * @default 65509
+     */
     const Caps_Lock: number;
 
+    /**
+     * @default 456
+     */
     const Ccaron: number;
 
+    /**
+     * @default 199
+     */
     const Ccedilla: number;
 
+    /**
+     * @default 710
+     */
     const Ccircumflex: number;
 
+    /**
+     * @default 65185
+     */
     const Ch: number;
 
+    /**
+     * @default 65291
+     */
     const Clear: number;
 
+    /**
+     * @default 269024801
+     */
     const ClearGrab: number;
 
+    /**
+     * @default 269025110
+     */
     const Close: number;
 
+    /**
+     * @default 65335
+     */
     const Codeinput: number;
 
+    /**
+     * @default 16785569
+     */
     const ColonSign: number;
 
+    /**
+     * @default 269025085
+     */
     const Community: number;
 
+    /**
+     * @default 269025058
+     */
     const ContrastAdjust: number;
 
+    /**
+     * @default 65507
+     */
     const Control_L: number;
 
+    /**
+     * @default 65508
+     */
     const Control_R: number;
 
+    /**
+     * @default 269025111
+     */
     const Copy: number;
 
+    /**
+     * @default 16785570
+     */
     const CruzeiroSign: number;
 
+    /**
+     * @default 269025112
+     */
     const Cut: number;
 
+    /**
+     * @default 269025180
+     */
     const CycleAngle: number;
 
+    /**
+     * @default 1761
+     */
     const Cyrillic_A: number;
 
+    /**
+     * @default 1762
+     */
     const Cyrillic_BE: number;
 
+    /**
+     * @default 1790
+     */
     const Cyrillic_CHE: number;
 
+    /**
+     * @default 16778422
+     */
     const Cyrillic_CHE_descender: number;
 
+    /**
+     * @default 16778424
+     */
     const Cyrillic_CHE_vertstroke: number;
 
+    /**
+     * @default 1764
+     */
     const Cyrillic_DE: number;
 
+    /**
+     * @default 1727
+     */
     const Cyrillic_DZHE: number;
 
+    /**
+     * @default 1788
+     */
     const Cyrillic_E: number;
 
+    /**
+     * @default 1766
+     */
     const Cyrillic_EF: number;
 
+    /**
+     * @default 1772
+     */
     const Cyrillic_EL: number;
 
+    /**
+     * @default 1773
+     */
     const Cyrillic_EM: number;
 
+    /**
+     * @default 1774
+     */
     const Cyrillic_EN: number;
 
+    /**
+     * @default 16778402
+     */
     const Cyrillic_EN_descender: number;
 
+    /**
+     * @default 1778
+     */
     const Cyrillic_ER: number;
 
+    /**
+     * @default 1779
+     */
     const Cyrillic_ES: number;
 
+    /**
+     * @default 1767
+     */
     const Cyrillic_GHE: number;
 
+    /**
+     * @default 16778386
+     */
     const Cyrillic_GHE_bar: number;
 
+    /**
+     * @default 1768
+     */
     const Cyrillic_HA: number;
 
+    /**
+     * @default 1791
+     */
     const Cyrillic_HARDSIGN: number;
 
+    /**
+     * @default 16778418
+     */
     const Cyrillic_HA_descender: number;
 
+    /**
+     * @default 1769
+     */
     const Cyrillic_I: number;
 
+    /**
+     * @default 1765
+     */
     const Cyrillic_IE: number;
 
+    /**
+     * @default 1715
+     */
     const Cyrillic_IO: number;
 
+    /**
+     * @default 16778466
+     */
     const Cyrillic_I_macron: number;
 
+    /**
+     * @default 1720
+     */
     const Cyrillic_JE: number;
 
+    /**
+     * @default 1771
+     */
     const Cyrillic_KA: number;
 
+    /**
+     * @default 16778394
+     */
     const Cyrillic_KA_descender: number;
 
+    /**
+     * @default 16778396
+     */
     const Cyrillic_KA_vertstroke: number;
 
+    /**
+     * @default 1721
+     */
     const Cyrillic_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const Cyrillic_NJE: number;
 
+    /**
+     * @default 1775
+     */
     const Cyrillic_O: number;
 
+    /**
+     * @default 16778472
+     */
     const Cyrillic_O_bar: number;
 
+    /**
+     * @default 1776
+     */
     const Cyrillic_PE: number;
 
+    /**
+     * @default 16778456
+     */
     const Cyrillic_SCHWA: number;
 
+    /**
+     * @default 1787
+     */
     const Cyrillic_SHA: number;
 
+    /**
+     * @default 1789
+     */
     const Cyrillic_SHCHA: number;
 
+    /**
+     * @default 16778426
+     */
     const Cyrillic_SHHA: number;
 
+    /**
+     * @default 1770
+     */
     const Cyrillic_SHORTI: number;
 
+    /**
+     * @default 1784
+     */
     const Cyrillic_SOFTSIGN: number;
 
+    /**
+     * @default 1780
+     */
     const Cyrillic_TE: number;
 
+    /**
+     * @default 1763
+     */
     const Cyrillic_TSE: number;
 
+    /**
+     * @default 1781
+     */
     const Cyrillic_U: number;
 
+    /**
+     * @default 16778478
+     */
     const Cyrillic_U_macron: number;
 
+    /**
+     * @default 16778414
+     */
     const Cyrillic_U_straight: number;
 
+    /**
+     * @default 16778416
+     */
     const Cyrillic_U_straight_bar: number;
 
+    /**
+     * @default 1783
+     */
     const Cyrillic_VE: number;
 
+    /**
+     * @default 1777
+     */
     const Cyrillic_YA: number;
 
+    /**
+     * @default 1785
+     */
     const Cyrillic_YERU: number;
 
+    /**
+     * @default 1760
+     */
     const Cyrillic_YU: number;
 
+    /**
+     * @default 1786
+     */
     const Cyrillic_ZE: number;
 
+    /**
+     * @default 1782
+     */
     const Cyrillic_ZHE: number;
 
+    /**
+     * @default 16778390
+     */
     const Cyrillic_ZHE_descender: number;
 
+    /**
+     * @default 1729
+     */
     const Cyrillic_a: number;
 
+    /**
+     * @default 1730
+     */
     const Cyrillic_be: number;
 
+    /**
+     * @default 1758
+     */
     const Cyrillic_che: number;
 
+    /**
+     * @default 16778423
+     */
     const Cyrillic_che_descender: number;
 
+    /**
+     * @default 16778425
+     */
     const Cyrillic_che_vertstroke: number;
 
+    /**
+     * @default 1732
+     */
     const Cyrillic_de: number;
 
+    /**
+     * @default 1711
+     */
     const Cyrillic_dzhe: number;
 
+    /**
+     * @default 1756
+     */
     const Cyrillic_e: number;
 
+    /**
+     * @default 1734
+     */
     const Cyrillic_ef: number;
 
+    /**
+     * @default 1740
+     */
     const Cyrillic_el: number;
 
+    /**
+     * @default 1741
+     */
     const Cyrillic_em: number;
 
+    /**
+     * @default 1742
+     */
     const Cyrillic_en: number;
 
+    /**
+     * @default 16778403
+     */
     const Cyrillic_en_descender: number;
 
+    /**
+     * @default 1746
+     */
     const Cyrillic_er: number;
 
+    /**
+     * @default 1747
+     */
     const Cyrillic_es: number;
 
+    /**
+     * @default 1735
+     */
     const Cyrillic_ghe: number;
 
+    /**
+     * @default 16778387
+     */
     const Cyrillic_ghe_bar: number;
 
+    /**
+     * @default 1736
+     */
     const Cyrillic_ha: number;
 
+    /**
+     * @default 16778419
+     */
     const Cyrillic_ha_descender: number;
 
+    /**
+     * @default 1759
+     */
     const Cyrillic_hardsign: number;
 
+    /**
+     * @default 1737
+     */
     const Cyrillic_i: number;
 
+    /**
+     * @default 16778467
+     */
     const Cyrillic_i_macron: number;
 
+    /**
+     * @default 1733
+     */
     const Cyrillic_ie: number;
 
+    /**
+     * @default 1699
+     */
     const Cyrillic_io: number;
 
+    /**
+     * @default 1704
+     */
     const Cyrillic_je: number;
 
+    /**
+     * @default 1739
+     */
     const Cyrillic_ka: number;
 
+    /**
+     * @default 16778395
+     */
     const Cyrillic_ka_descender: number;
 
+    /**
+     * @default 16778397
+     */
     const Cyrillic_ka_vertstroke: number;
 
+    /**
+     * @default 1705
+     */
     const Cyrillic_lje: number;
 
+    /**
+     * @default 1706
+     */
     const Cyrillic_nje: number;
 
+    /**
+     * @default 1743
+     */
     const Cyrillic_o: number;
 
+    /**
+     * @default 16778473
+     */
     const Cyrillic_o_bar: number;
 
+    /**
+     * @default 1744
+     */
     const Cyrillic_pe: number;
 
+    /**
+     * @default 16778457
+     */
     const Cyrillic_schwa: number;
 
+    /**
+     * @default 1755
+     */
     const Cyrillic_sha: number;
 
+    /**
+     * @default 1757
+     */
     const Cyrillic_shcha: number;
 
+    /**
+     * @default 16778427
+     */
     const Cyrillic_shha: number;
 
+    /**
+     * @default 1738
+     */
     const Cyrillic_shorti: number;
 
+    /**
+     * @default 1752
+     */
     const Cyrillic_softsign: number;
 
+    /**
+     * @default 1748
+     */
     const Cyrillic_te: number;
 
+    /**
+     * @default 1731
+     */
     const Cyrillic_tse: number;
 
+    /**
+     * @default 1749
+     */
     const Cyrillic_u: number;
 
+    /**
+     * @default 16778479
+     */
     const Cyrillic_u_macron: number;
 
+    /**
+     * @default 16778415
+     */
     const Cyrillic_u_straight: number;
 
+    /**
+     * @default 16778417
+     */
     const Cyrillic_u_straight_bar: number;
 
+    /**
+     * @default 1751
+     */
     const Cyrillic_ve: number;
 
+    /**
+     * @default 1745
+     */
     const Cyrillic_ya: number;
 
+    /**
+     * @default 1753
+     */
     const Cyrillic_yeru: number;
 
+    /**
+     * @default 1728
+     */
     const Cyrillic_yu: number;
 
+    /**
+     * @default 1754
+     */
     const Cyrillic_ze: number;
 
+    /**
+     * @default 1750
+     */
     const Cyrillic_zhe: number;
 
+    /**
+     * @default 16778391
+     */
     const Cyrillic_zhe_descender: number;
 
+    /**
+     * @default 68
+     */
     const D: number;
 
+    /**
+     * @default 269025114
+     */
     const DOS: number;
 
+    /**
+     * @default 16784906
+     */
     const Dabovedot: number;
 
+    /**
+     * @default 463
+     */
     const Dcaron: number;
 
+    /**
+     * @default 65535
+     */
     const Delete: number;
 
+    /**
+     * @default 269025113
+     */
     const Display: number;
 
+    /**
+     * @default 269025115
+     */
     const Documents: number;
 
+    /**
+     * @default 16785579
+     */
     const DongSign: number;
 
+    /**
+     * @default 65364
+     */
     const Down: number;
 
+    /**
+     * @default 464
+     */
     const Dstroke: number;
 
+    /**
+     * @default 69
+     */
     const E: number;
 
+    /**
+     * @default 957
+     */
     const ENG: number;
 
+    /**
+     * @default 208
+     */
     const ETH: number;
 
     /**
      * Continues the propagation of an event; this macro should be
      * used in event-related signals.
      * @since 1.10
+     * @default false
      */
     const EVENT_PROPAGATE: boolean;
 
@@ -3055,5699 +4315,14201 @@ export namespace Clutter {
      * Stops the propagation of an event; this macro should be used
      * in event-related signals.
      * @since 1.10
+     * @default true
      */
     const EVENT_STOP: boolean;
 
+    /**
+     * @default 16777655
+     */
     const EZH: number;
 
+    /**
+     * @default 972
+     */
     const Eabovedot: number;
 
+    /**
+     * @default 201
+     */
     const Eacute: number;
 
+    /**
+     * @default 16785080
+     */
     const Ebelowdot: number;
 
+    /**
+     * @default 460
+     */
     const Ecaron: number;
 
+    /**
+     * @default 202
+     */
     const Ecircumflex: number;
 
+    /**
+     * @default 16785086
+     */
     const Ecircumflexacute: number;
 
+    /**
+     * @default 16785094
+     */
     const Ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785088
+     */
     const Ecircumflexgrave: number;
 
+    /**
+     * @default 16785090
+     */
     const Ecircumflexhook: number;
 
+    /**
+     * @default 16785092
+     */
     const Ecircumflextilde: number;
 
+    /**
+     * @default 16785568
+     */
     const EcuSign: number;
 
+    /**
+     * @default 203
+     */
     const Ediaeresis: number;
 
+    /**
+     * @default 200
+     */
     const Egrave: number;
 
+    /**
+     * @default 16785082
+     */
     const Ehook: number;
 
+    /**
+     * @default 65327
+     */
     const Eisu_Shift: number;
 
+    /**
+     * @default 65328
+     */
     const Eisu_toggle: number;
 
+    /**
+     * @default 269025068
+     */
     const Eject: number;
 
+    /**
+     * @default 938
+     */
     const Emacron: number;
 
+    /**
+     * @default 65367
+     */
     const End: number;
 
+    /**
+     * @default 458
+     */
     const Eogonek: number;
 
+    /**
+     * @default 65307
+     */
     const Escape: number;
 
+    /**
+     * @default 208
+     */
     const Eth: number;
 
+    /**
+     * @default 16785084
+     */
     const Etilde: number;
 
+    /**
+     * @default 8364
+     */
     const EuroSign: number;
 
+    /**
+     * @default 269025116
+     */
     const Excel: number;
 
+    /**
+     * @default 65378
+     */
     const Execute: number;
 
+    /**
+     * @default 269025117
+     */
     const Explorer: number;
 
+    /**
+     * @default 70
+     */
     const F: number;
 
+    /**
+     * @default 65470
+     */
     const F1: number;
 
+    /**
+     * @default 65479
+     */
     const F10: number;
 
+    /**
+     * @default 65480
+     */
     const F11: number;
 
+    /**
+     * @default 65481
+     */
     const F12: number;
 
+    /**
+     * @default 65482
+     */
     const F13: number;
 
+    /**
+     * @default 65483
+     */
     const F14: number;
 
+    /**
+     * @default 65484
+     */
     const F15: number;
 
+    /**
+     * @default 65485
+     */
     const F16: number;
 
+    /**
+     * @default 65486
+     */
     const F17: number;
 
+    /**
+     * @default 65487
+     */
     const F18: number;
 
+    /**
+     * @default 65488
+     */
     const F19: number;
 
+    /**
+     * @default 65471
+     */
     const F2: number;
 
+    /**
+     * @default 65489
+     */
     const F20: number;
 
+    /**
+     * @default 65490
+     */
     const F21: number;
 
+    /**
+     * @default 65491
+     */
     const F22: number;
 
+    /**
+     * @default 65492
+     */
     const F23: number;
 
+    /**
+     * @default 65493
+     */
     const F24: number;
 
+    /**
+     * @default 65494
+     */
     const F25: number;
 
+    /**
+     * @default 65495
+     */
     const F26: number;
 
+    /**
+     * @default 65496
+     */
     const F27: number;
 
+    /**
+     * @default 65497
+     */
     const F28: number;
 
+    /**
+     * @default 65498
+     */
     const F29: number;
 
+    /**
+     * @default 65472
+     */
     const F3: number;
 
+    /**
+     * @default 65499
+     */
     const F30: number;
 
+    /**
+     * @default 65500
+     */
     const F31: number;
 
+    /**
+     * @default 65501
+     */
     const F32: number;
 
+    /**
+     * @default 65502
+     */
     const F33: number;
 
+    /**
+     * @default 65503
+     */
     const F34: number;
 
+    /**
+     * @default 65504
+     */
     const F35: number;
 
+    /**
+     * @default 65473
+     */
     const F4: number;
 
+    /**
+     * @default 65474
+     */
     const F5: number;
 
+    /**
+     * @default 65475
+     */
     const F6: number;
 
+    /**
+     * @default 65476
+     */
     const F7: number;
 
+    /**
+     * @default 65477
+     */
     const F8: number;
 
+    /**
+     * @default 65478
+     */
     const F9: number;
 
+    /**
+     * @default 16785571
+     */
     const FFrancSign: number;
 
     /**
      * GL Windowing system used
      * @since 0.4
      * @deprecated since 1.10: The macro evaluates to "deprecated" as Clutter can be   compiled with multiple windowing system backends. Use the various   CLUTTER_WINDOWING_* macros to detect the windowing system that Clutter   is being compiled against, and the type check macros for the   {@link Clutter.Backend} for a run-time check.
+     * @default deprecated
      */
     const FLAVOUR: string;
 
+    /**
+     * @default 16784926
+     */
     const Fabovedot: number;
 
+    /**
+     * @default 16778992
+     */
     const Farsi_0: number;
 
+    /**
+     * @default 16778993
+     */
     const Farsi_1: number;
 
+    /**
+     * @default 16778994
+     */
     const Farsi_2: number;
 
+    /**
+     * @default 16778995
+     */
     const Farsi_3: number;
 
+    /**
+     * @default 16778996
+     */
     const Farsi_4: number;
 
+    /**
+     * @default 16778997
+     */
     const Farsi_5: number;
 
+    /**
+     * @default 16778998
+     */
     const Farsi_6: number;
 
+    /**
+     * @default 16778999
+     */
     const Farsi_7: number;
 
+    /**
+     * @default 16779000
+     */
     const Farsi_8: number;
 
+    /**
+     * @default 16779001
+     */
     const Farsi_9: number;
 
+    /**
+     * @default 16778956
+     */
     const Farsi_yeh: number;
 
+    /**
+     * @default 269025072
+     */
     const Favorites: number;
 
+    /**
+     * @default 269025084
+     */
     const Finance: number;
 
+    /**
+     * @default 65384
+     */
     const Find: number;
 
+    /**
+     * @default 65232
+     */
     const First_Virtual_Screen: number;
 
+    /**
+     * @default 269025063
+     */
     const Forward: number;
 
+    /**
+     * @default 269025181
+     */
     const FrameBack: number;
 
+    /**
+     * @default 269025182
+     */
     const FrameForward: number;
 
+    /**
+     * @default 71
+     */
     const G: number;
 
+    /**
+     * @default 725
+     */
     const Gabovedot: number;
 
+    /**
+     * @default 269025118
+     */
     const Game: number;
 
+    /**
+     * @default 683
+     */
     const Gbreve: number;
 
+    /**
+     * @default 16777702
+     */
     const Gcaron: number;
 
+    /**
+     * @default 939
+     */
     const Gcedilla: number;
 
+    /**
+     * @default 728
+     */
     const Gcircumflex: number;
 
+    /**
+     * @default 16781520
+     */
     const Georgian_an: number;
 
+    /**
+     * @default 16781521
+     */
     const Georgian_ban: number;
 
+    /**
+     * @default 16781546
+     */
     const Georgian_can: number;
 
+    /**
+     * @default 16781549
+     */
     const Georgian_char: number;
 
+    /**
+     * @default 16781545
+     */
     const Georgian_chin: number;
 
+    /**
+     * @default 16781548
+     */
     const Georgian_cil: number;
 
+    /**
+     * @default 16781523
+     */
     const Georgian_don: number;
 
+    /**
+     * @default 16781524
+     */
     const Georgian_en: number;
 
+    /**
+     * @default 16781558
+     */
     const Georgian_fi: number;
 
+    /**
+     * @default 16781522
+     */
     const Georgian_gan: number;
 
+    /**
+     * @default 16781542
+     */
     const Georgian_ghan: number;
 
+    /**
+     * @default 16781552
+     */
     const Georgian_hae: number;
 
+    /**
+     * @default 16781556
+     */
     const Georgian_har: number;
 
+    /**
+     * @default 16781553
+     */
     const Georgian_he: number;
 
+    /**
+     * @default 16781554
+     */
     const Georgian_hie: number;
 
+    /**
+     * @default 16781557
+     */
     const Georgian_hoe: number;
 
+    /**
+     * @default 16781528
+     */
     const Georgian_in: number;
 
+    /**
+     * @default 16781551
+     */
     const Georgian_jhan: number;
 
+    /**
+     * @default 16781547
+     */
     const Georgian_jil: number;
 
+    /**
+     * @default 16781529
+     */
     const Georgian_kan: number;
 
+    /**
+     * @default 16781541
+     */
     const Georgian_khar: number;
 
+    /**
+     * @default 16781530
+     */
     const Georgian_las: number;
 
+    /**
+     * @default 16781531
+     */
     const Georgian_man: number;
 
+    /**
+     * @default 16781532
+     */
     const Georgian_nar: number;
 
+    /**
+     * @default 16781533
+     */
     const Georgian_on: number;
 
+    /**
+     * @default 16781534
+     */
     const Georgian_par: number;
 
+    /**
+     * @default 16781540
+     */
     const Georgian_phar: number;
 
+    /**
+     * @default 16781543
+     */
     const Georgian_qar: number;
 
+    /**
+     * @default 16781536
+     */
     const Georgian_rae: number;
 
+    /**
+     * @default 16781537
+     */
     const Georgian_san: number;
 
+    /**
+     * @default 16781544
+     */
     const Georgian_shin: number;
 
+    /**
+     * @default 16781527
+     */
     const Georgian_tan: number;
 
+    /**
+     * @default 16781538
+     */
     const Georgian_tar: number;
 
+    /**
+     * @default 16781539
+     */
     const Georgian_un: number;
 
+    /**
+     * @default 16781525
+     */
     const Georgian_vin: number;
 
+    /**
+     * @default 16781555
+     */
     const Georgian_we: number;
 
+    /**
+     * @default 16781550
+     */
     const Georgian_xan: number;
 
+    /**
+     * @default 16781526
+     */
     const Georgian_zen: number;
 
+    /**
+     * @default 16781535
+     */
     const Georgian_zhar: number;
 
+    /**
+     * @default 269025119
+     */
     const Go: number;
 
+    /**
+     * @default 1985
+     */
     const Greek_ALPHA: number;
 
+    /**
+     * @default 1953
+     */
     const Greek_ALPHAaccent: number;
 
+    /**
+     * @default 1986
+     */
     const Greek_BETA: number;
 
+    /**
+     * @default 2007
+     */
     const Greek_CHI: number;
 
+    /**
+     * @default 1988
+     */
     const Greek_DELTA: number;
 
+    /**
+     * @default 1989
+     */
     const Greek_EPSILON: number;
 
+    /**
+     * @default 1954
+     */
     const Greek_EPSILONaccent: number;
 
+    /**
+     * @default 1991
+     */
     const Greek_ETA: number;
 
+    /**
+     * @default 1955
+     */
     const Greek_ETAaccent: number;
 
+    /**
+     * @default 1987
+     */
     const Greek_GAMMA: number;
 
+    /**
+     * @default 1993
+     */
     const Greek_IOTA: number;
 
+    /**
+     * @default 1956
+     */
     const Greek_IOTAaccent: number;
 
+    /**
+     * @default 1957
+     */
     const Greek_IOTAdiaeresis: number;
 
+    /**
+     * @default 1957
+     */
     const Greek_IOTAdieresis: number;
 
+    /**
+     * @default 1994
+     */
     const Greek_KAPPA: number;
 
+    /**
+     * @default 1995
+     */
     const Greek_LAMBDA: number;
 
+    /**
+     * @default 1995
+     */
     const Greek_LAMDA: number;
 
+    /**
+     * @default 1996
+     */
     const Greek_MU: number;
 
+    /**
+     * @default 1997
+     */
     const Greek_NU: number;
 
+    /**
+     * @default 2009
+     */
     const Greek_OMEGA: number;
 
+    /**
+     * @default 1963
+     */
     const Greek_OMEGAaccent: number;
 
+    /**
+     * @default 1999
+     */
     const Greek_OMICRON: number;
 
+    /**
+     * @default 1959
+     */
     const Greek_OMICRONaccent: number;
 
+    /**
+     * @default 2006
+     */
     const Greek_PHI: number;
 
+    /**
+     * @default 2000
+     */
     const Greek_PI: number;
 
+    /**
+     * @default 2008
+     */
     const Greek_PSI: number;
 
+    /**
+     * @default 2001
+     */
     const Greek_RHO: number;
 
+    /**
+     * @default 2002
+     */
     const Greek_SIGMA: number;
 
+    /**
+     * @default 2004
+     */
     const Greek_TAU: number;
 
+    /**
+     * @default 1992
+     */
     const Greek_THETA: number;
 
+    /**
+     * @default 2005
+     */
     const Greek_UPSILON: number;
 
+    /**
+     * @default 1960
+     */
     const Greek_UPSILONaccent: number;
 
+    /**
+     * @default 1961
+     */
     const Greek_UPSILONdieresis: number;
 
+    /**
+     * @default 1998
+     */
     const Greek_XI: number;
 
+    /**
+     * @default 1990
+     */
     const Greek_ZETA: number;
 
+    /**
+     * @default 1966
+     */
     const Greek_accentdieresis: number;
 
+    /**
+     * @default 2017
+     */
     const Greek_alpha: number;
 
+    /**
+     * @default 1969
+     */
     const Greek_alphaaccent: number;
 
+    /**
+     * @default 2018
+     */
     const Greek_beta: number;
 
+    /**
+     * @default 2039
+     */
     const Greek_chi: number;
 
+    /**
+     * @default 2020
+     */
     const Greek_delta: number;
 
+    /**
+     * @default 2021
+     */
     const Greek_epsilon: number;
 
+    /**
+     * @default 1970
+     */
     const Greek_epsilonaccent: number;
 
+    /**
+     * @default 2023
+     */
     const Greek_eta: number;
 
+    /**
+     * @default 1971
+     */
     const Greek_etaaccent: number;
 
+    /**
+     * @default 2035
+     */
     const Greek_finalsmallsigma: number;
 
+    /**
+     * @default 2019
+     */
     const Greek_gamma: number;
 
+    /**
+     * @default 1967
+     */
     const Greek_horizbar: number;
 
+    /**
+     * @default 2025
+     */
     const Greek_iota: number;
 
+    /**
+     * @default 1972
+     */
     const Greek_iotaaccent: number;
 
+    /**
+     * @default 1974
+     */
     const Greek_iotaaccentdieresis: number;
 
+    /**
+     * @default 1973
+     */
     const Greek_iotadieresis: number;
 
+    /**
+     * @default 2026
+     */
     const Greek_kappa: number;
 
+    /**
+     * @default 2027
+     */
     const Greek_lambda: number;
 
+    /**
+     * @default 2027
+     */
     const Greek_lamda: number;
 
+    /**
+     * @default 2028
+     */
     const Greek_mu: number;
 
+    /**
+     * @default 2029
+     */
     const Greek_nu: number;
 
+    /**
+     * @default 2041
+     */
     const Greek_omega: number;
 
+    /**
+     * @default 1979
+     */
     const Greek_omegaaccent: number;
 
+    /**
+     * @default 2031
+     */
     const Greek_omicron: number;
 
+    /**
+     * @default 1975
+     */
     const Greek_omicronaccent: number;
 
+    /**
+     * @default 2038
+     */
     const Greek_phi: number;
 
+    /**
+     * @default 2032
+     */
     const Greek_pi: number;
 
+    /**
+     * @default 2040
+     */
     const Greek_psi: number;
 
+    /**
+     * @default 2033
+     */
     const Greek_rho: number;
 
+    /**
+     * @default 2034
+     */
     const Greek_sigma: number;
 
+    /**
+     * @default 65406
+     */
     const Greek_switch: number;
 
+    /**
+     * @default 2036
+     */
     const Greek_tau: number;
 
+    /**
+     * @default 2024
+     */
     const Greek_theta: number;
 
+    /**
+     * @default 2037
+     */
     const Greek_upsilon: number;
 
+    /**
+     * @default 1976
+     */
     const Greek_upsilonaccent: number;
 
+    /**
+     * @default 1978
+     */
     const Greek_upsilonaccentdieresis: number;
 
+    /**
+     * @default 1977
+     */
     const Greek_upsilondieresis: number;
 
+    /**
+     * @default 2030
+     */
     const Greek_xi: number;
 
+    /**
+     * @default 2022
+     */
     const Greek_zeta: number;
 
+    /**
+     * @default 269025188
+     */
     const Green: number;
 
+    /**
+     * @default 72
+     */
     const H: number;
 
+    /**
+     * @default 1
+     */
     const HAS_WAYLAND_COMPOSITOR_SUPPORT: number;
 
+    /**
+     * @default 65329
+     */
     const Hangul: number;
 
+    /**
+     * @default 3775
+     */
     const Hangul_A: number;
 
+    /**
+     * @default 3776
+     */
     const Hangul_AE: number;
 
+    /**
+     * @default 3830
+     */
     const Hangul_AraeA: number;
 
+    /**
+     * @default 3831
+     */
     const Hangul_AraeAE: number;
 
+    /**
+     * @default 65337
+     */
     const Hangul_Banja: number;
 
+    /**
+     * @default 3770
+     */
     const Hangul_Cieuc: number;
 
+    /**
+     * @default 65335
+     */
     const Hangul_Codeinput: number;
 
+    /**
+     * @default 3751
+     */
     const Hangul_Dikeud: number;
 
+    /**
+     * @default 3780
+     */
     const Hangul_E: number;
 
+    /**
+     * @default 3779
+     */
     const Hangul_EO: number;
 
+    /**
+     * @default 3793
+     */
     const Hangul_EU: number;
 
+    /**
+     * @default 65331
+     */
     const Hangul_End: number;
 
+    /**
+     * @default 65332
+     */
     const Hangul_Hanja: number;
 
+    /**
+     * @default 3774
+     */
     const Hangul_Hieuh: number;
 
+    /**
+     * @default 3795
+     */
     const Hangul_I: number;
 
+    /**
+     * @default 3767
+     */
     const Hangul_Ieung: number;
 
+    /**
+     * @default 3818
+     */
     const Hangul_J_Cieuc: number;
 
+    /**
+     * @default 3802
+     */
     const Hangul_J_Dikeud: number;
 
+    /**
+     * @default 3822
+     */
     const Hangul_J_Hieuh: number;
 
+    /**
+     * @default 3816
+     */
     const Hangul_J_Ieung: number;
 
+    /**
+     * @default 3817
+     */
     const Hangul_J_Jieuj: number;
 
+    /**
+     * @default 3819
+     */
     const Hangul_J_Khieuq: number;
 
+    /**
+     * @default 3796
+     */
     const Hangul_J_Kiyeog: number;
 
+    /**
+     * @default 3798
+     */
     const Hangul_J_KiyeogSios: number;
 
+    /**
+     * @default 3833
+     */
     const Hangul_J_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3811
+     */
     const Hangul_J_Mieum: number;
 
+    /**
+     * @default 3799
+     */
     const Hangul_J_Nieun: number;
 
+    /**
+     * @default 3801
+     */
     const Hangul_J_NieunHieuh: number;
 
+    /**
+     * @default 3800
+     */
     const Hangul_J_NieunJieuj: number;
 
+    /**
+     * @default 3832
+     */
     const Hangul_J_PanSios: number;
 
+    /**
+     * @default 3821
+     */
     const Hangul_J_Phieuf: number;
 
+    /**
+     * @default 3812
+     */
     const Hangul_J_Pieub: number;
 
+    /**
+     * @default 3813
+     */
     const Hangul_J_PieubSios: number;
 
+    /**
+     * @default 3803
+     */
     const Hangul_J_Rieul: number;
 
+    /**
+     * @default 3810
+     */
     const Hangul_J_RieulHieuh: number;
 
+    /**
+     * @default 3804
+     */
     const Hangul_J_RieulKiyeog: number;
 
+    /**
+     * @default 3805
+     */
     const Hangul_J_RieulMieum: number;
 
+    /**
+     * @default 3809
+     */
     const Hangul_J_RieulPhieuf: number;
 
+    /**
+     * @default 3806
+     */
     const Hangul_J_RieulPieub: number;
 
+    /**
+     * @default 3807
+     */
     const Hangul_J_RieulSios: number;
 
+    /**
+     * @default 3808
+     */
     const Hangul_J_RieulTieut: number;
 
+    /**
+     * @default 3814
+     */
     const Hangul_J_Sios: number;
 
+    /**
+     * @default 3797
+     */
     const Hangul_J_SsangKiyeog: number;
 
+    /**
+     * @default 3815
+     */
     const Hangul_J_SsangSios: number;
 
+    /**
+     * @default 3820
+     */
     const Hangul_J_Tieut: number;
 
+    /**
+     * @default 3834
+     */
     const Hangul_J_YeorinHieuh: number;
 
+    /**
+     * @default 65333
+     */
     const Hangul_Jamo: number;
 
+    /**
+     * @default 65336
+     */
     const Hangul_Jeonja: number;
 
+    /**
+     * @default 3768
+     */
     const Hangul_Jieuj: number;
 
+    /**
+     * @default 3771
+     */
     const Hangul_Khieuq: number;
 
+    /**
+     * @default 3745
+     */
     const Hangul_Kiyeog: number;
 
+    /**
+     * @default 3747
+     */
     const Hangul_KiyeogSios: number;
 
+    /**
+     * @default 3827
+     */
     const Hangul_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3761
+     */
     const Hangul_Mieum: number;
 
+    /**
+     * @default 65341
+     */
     const Hangul_MultipleCandidate: number;
 
+    /**
+     * @default 3748
+     */
     const Hangul_Nieun: number;
 
+    /**
+     * @default 3750
+     */
     const Hangul_NieunHieuh: number;
 
+    /**
+     * @default 3749
+     */
     const Hangul_NieunJieuj: number;
 
+    /**
+     * @default 3783
+     */
     const Hangul_O: number;
 
+    /**
+     * @default 3786
+     */
     const Hangul_OE: number;
 
+    /**
+     * @default 3826
+     */
     const Hangul_PanSios: number;
 
+    /**
+     * @default 3773
+     */
     const Hangul_Phieuf: number;
 
+    /**
+     * @default 3762
+     */
     const Hangul_Pieub: number;
 
+    /**
+     * @default 3764
+     */
     const Hangul_PieubSios: number;
 
+    /**
+     * @default 65339
+     */
     const Hangul_PostHanja: number;
 
+    /**
+     * @default 65338
+     */
     const Hangul_PreHanja: number;
 
+    /**
+     * @default 65342
+     */
     const Hangul_PreviousCandidate: number;
 
+    /**
+     * @default 3753
+     */
     const Hangul_Rieul: number;
 
+    /**
+     * @default 3760
+     */
     const Hangul_RieulHieuh: number;
 
+    /**
+     * @default 3754
+     */
     const Hangul_RieulKiyeog: number;
 
+    /**
+     * @default 3755
+     */
     const Hangul_RieulMieum: number;
 
+    /**
+     * @default 3759
+     */
     const Hangul_RieulPhieuf: number;
 
+    /**
+     * @default 3756
+     */
     const Hangul_RieulPieub: number;
 
+    /**
+     * @default 3757
+     */
     const Hangul_RieulSios: number;
 
+    /**
+     * @default 3758
+     */
     const Hangul_RieulTieut: number;
 
+    /**
+     * @default 3823
+     */
     const Hangul_RieulYeorinHieuh: number;
 
+    /**
+     * @default 65334
+     */
     const Hangul_Romaja: number;
 
+    /**
+     * @default 65340
+     */
     const Hangul_SingleCandidate: number;
 
+    /**
+     * @default 3765
+     */
     const Hangul_Sios: number;
 
+    /**
+     * @default 65343
+     */
     const Hangul_Special: number;
 
+    /**
+     * @default 3752
+     */
     const Hangul_SsangDikeud: number;
 
+    /**
+     * @default 3769
+     */
     const Hangul_SsangJieuj: number;
 
+    /**
+     * @default 3746
+     */
     const Hangul_SsangKiyeog: number;
 
+    /**
+     * @default 3763
+     */
     const Hangul_SsangPieub: number;
 
+    /**
+     * @default 3766
+     */
     const Hangul_SsangSios: number;
 
+    /**
+     * @default 65330
+     */
     const Hangul_Start: number;
 
+    /**
+     * @default 3824
+     */
     const Hangul_SunkyeongeumMieum: number;
 
+    /**
+     * @default 3828
+     */
     const Hangul_SunkyeongeumPhieuf: number;
 
+    /**
+     * @default 3825
+     */
     const Hangul_SunkyeongeumPieub: number;
 
+    /**
+     * @default 3772
+     */
     const Hangul_Tieut: number;
 
+    /**
+     * @default 3788
+     */
     const Hangul_U: number;
 
+    /**
+     * @default 3784
+     */
     const Hangul_WA: number;
 
+    /**
+     * @default 3785
+     */
     const Hangul_WAE: number;
 
+    /**
+     * @default 3790
+     */
     const Hangul_WE: number;
 
+    /**
+     * @default 3789
+     */
     const Hangul_WEO: number;
 
+    /**
+     * @default 3791
+     */
     const Hangul_WI: number;
 
+    /**
+     * @default 3777
+     */
     const Hangul_YA: number;
 
+    /**
+     * @default 3778
+     */
     const Hangul_YAE: number;
 
+    /**
+     * @default 3782
+     */
     const Hangul_YE: number;
 
+    /**
+     * @default 3781
+     */
     const Hangul_YEO: number;
 
+    /**
+     * @default 3794
+     */
     const Hangul_YI: number;
 
+    /**
+     * @default 3787
+     */
     const Hangul_YO: number;
 
+    /**
+     * @default 3792
+     */
     const Hangul_YU: number;
 
+    /**
+     * @default 3829
+     */
     const Hangul_YeorinHieuh: number;
 
+    /**
+     * @default 65406
+     */
     const Hangul_switch: number;
 
+    /**
+     * @default 65321
+     */
     const Hankaku: number;
 
+    /**
+     * @default 678
+     */
     const Hcircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const Hebrew_switch: number;
 
+    /**
+     * @default 65386
+     */
     const Help: number;
 
+    /**
+     * @default 65315
+     */
     const Henkan: number;
 
+    /**
+     * @default 65315
+     */
     const Henkan_Mode: number;
 
+    /**
+     * @default 269025192
+     */
     const Hibernate: number;
 
+    /**
+     * @default 65317
+     */
     const Hiragana: number;
 
+    /**
+     * @default 65319
+     */
     const Hiragana_Katakana: number;
 
+    /**
+     * @default 269025079
+     */
     const History: number;
 
+    /**
+     * @default 65360
+     */
     const Home: number;
 
+    /**
+     * @default 269025048
+     */
     const HomePage: number;
 
+    /**
+     * @default 269025082
+     */
     const HotLinks: number;
 
+    /**
+     * @default 673
+     */
     const Hstroke: number;
 
+    /**
+     * @default 65517
+     */
     const Hyper_L: number;
 
+    /**
+     * @default 65518
+     */
     const Hyper_R: number;
 
+    /**
+     * @default 73
+     */
     const I: number;
 
+    /**
+     * @default evdev
+     */
     const INPUT_EVDEV: string;
 
+    /**
+     * @default null
+     */
     const INPUT_NULL: string;
 
+    /**
+     * @default x11
+     */
     const INPUT_X11: string;
 
+    /**
+     * @default 65075
+     */
     const ISO_Center_Object: number;
 
+    /**
+     * @default 65072
+     */
     const ISO_Continuous_Underline: number;
 
+    /**
+     * @default 65073
+     */
     const ISO_Discontinuous_Underline: number;
 
+    /**
+     * @default 65074
+     */
     const ISO_Emphasize: number;
 
+    /**
+     * @default 65076
+     */
     const ISO_Enter: number;
 
+    /**
+     * @default 65071
+     */
     const ISO_Fast_Cursor_Down: number;
 
+    /**
+     * @default 65068
+     */
     const ISO_Fast_Cursor_Left: number;
 
+    /**
+     * @default 65069
+     */
     const ISO_Fast_Cursor_Right: number;
 
+    /**
+     * @default 65070
+     */
     const ISO_Fast_Cursor_Up: number;
 
+    /**
+     * @default 65036
+     */
     const ISO_First_Group: number;
 
+    /**
+     * @default 65037
+     */
     const ISO_First_Group_Lock: number;
 
+    /**
+     * @default 65030
+     */
     const ISO_Group_Latch: number;
 
+    /**
+     * @default 65031
+     */
     const ISO_Group_Lock: number;
 
+    /**
+     * @default 65406
+     */
     const ISO_Group_Shift: number;
 
+    /**
+     * @default 65038
+     */
     const ISO_Last_Group: number;
 
+    /**
+     * @default 65039
+     */
     const ISO_Last_Group_Lock: number;
 
+    /**
+     * @default 65056
+     */
     const ISO_Left_Tab: number;
 
+    /**
+     * @default 65026
+     */
     const ISO_Level2_Latch: number;
 
+    /**
+     * @default 65028
+     */
     const ISO_Level3_Latch: number;
 
+    /**
+     * @default 65029
+     */
     const ISO_Level3_Lock: number;
 
+    /**
+     * @default 65027
+     */
     const ISO_Level3_Shift: number;
 
+    /**
+     * @default 65042
+     */
     const ISO_Level5_Latch: number;
 
+    /**
+     * @default 65043
+     */
     const ISO_Level5_Lock: number;
 
+    /**
+     * @default 65041
+     */
     const ISO_Level5_Shift: number;
 
+    /**
+     * @default 65025
+     */
     const ISO_Lock: number;
 
+    /**
+     * @default 65058
+     */
     const ISO_Move_Line_Down: number;
 
+    /**
+     * @default 65057
+     */
     const ISO_Move_Line_Up: number;
 
+    /**
+     * @default 65032
+     */
     const ISO_Next_Group: number;
 
+    /**
+     * @default 65033
+     */
     const ISO_Next_Group_Lock: number;
 
+    /**
+     * @default 65060
+     */
     const ISO_Partial_Line_Down: number;
 
+    /**
+     * @default 65059
+     */
     const ISO_Partial_Line_Up: number;
 
+    /**
+     * @default 65061
+     */
     const ISO_Partial_Space_Left: number;
 
+    /**
+     * @default 65062
+     */
     const ISO_Partial_Space_Right: number;
 
+    /**
+     * @default 65034
+     */
     const ISO_Prev_Group: number;
 
+    /**
+     * @default 65035
+     */
     const ISO_Prev_Group_Lock: number;
 
+    /**
+     * @default 65067
+     */
     const ISO_Release_Both_Margins: number;
 
+    /**
+     * @default 65065
+     */
     const ISO_Release_Margin_Left: number;
 
+    /**
+     * @default 65066
+     */
     const ISO_Release_Margin_Right: number;
 
+    /**
+     * @default 65063
+     */
     const ISO_Set_Margin_Left: number;
 
+    /**
+     * @default 65064
+     */
     const ISO_Set_Margin_Right: number;
 
+    /**
+     * @default 681
+     */
     const Iabovedot: number;
 
+    /**
+     * @default 205
+     */
     const Iacute: number;
 
+    /**
+     * @default 16785098
+     */
     const Ibelowdot: number;
 
+    /**
+     * @default 16777516
+     */
     const Ibreve: number;
 
+    /**
+     * @default 206
+     */
     const Icircumflex: number;
 
+    /**
+     * @default 207
+     */
     const Idiaeresis: number;
 
+    /**
+     * @default 204
+     */
     const Igrave: number;
 
+    /**
+     * @default 16785096
+     */
     const Ihook: number;
 
+    /**
+     * @default 975
+     */
     const Imacron: number;
 
+    /**
+     * @default 65379
+     */
     const Insert: number;
 
+    /**
+     * @default 967
+     */
     const Iogonek: number;
 
+    /**
+     * @default 933
+     */
     const Itilde: number;
 
+    /**
+     * @default 74
+     */
     const J: number;
 
+    /**
+     * @default 684
+     */
     const Jcircumflex: number;
 
+    /**
+     * @default 75
+     */
     const K: number;
 
+    /**
+     * @default 48
+     */
     const KEY_0: number;
 
+    /**
+     * @default 49
+     */
     const KEY_1: number;
 
+    /**
+     * @default 50
+     */
     const KEY_2: number;
 
+    /**
+     * @default 51
+     */
     const KEY_3: number;
 
+    /**
+     * @default 64784
+     */
     const KEY_3270_AltCursor: number;
 
+    /**
+     * @default 64782
+     */
     const KEY_3270_Attn: number;
 
+    /**
+     * @default 64773
+     */
     const KEY_3270_BackTab: number;
 
+    /**
+     * @default 64793
+     */
     const KEY_3270_ChangeScreen: number;
 
+    /**
+     * @default 64789
+     */
     const KEY_3270_Copy: number;
 
+    /**
+     * @default 64783
+     */
     const KEY_3270_CursorBlink: number;
 
+    /**
+     * @default 64796
+     */
     const KEY_3270_CursorSelect: number;
 
+    /**
+     * @default 64794
+     */
     const KEY_3270_DeleteWord: number;
 
+    /**
+     * @default 64769
+     */
     const KEY_3270_Duplicate: number;
 
+    /**
+     * @default 64798
+     */
     const KEY_3270_Enter: number;
 
+    /**
+     * @default 64774
+     */
     const KEY_3270_EraseEOF: number;
 
+    /**
+     * @default 64775
+     */
     const KEY_3270_EraseInput: number;
 
+    /**
+     * @default 64795
+     */
     const KEY_3270_ExSelect: number;
 
+    /**
+     * @default 64770
+     */
     const KEY_3270_FieldMark: number;
 
+    /**
+     * @default 64787
+     */
     const KEY_3270_Ident: number;
 
+    /**
+     * @default 64786
+     */
     const KEY_3270_Jump: number;
 
+    /**
+     * @default 64785
+     */
     const KEY_3270_KeyClick: number;
 
+    /**
+     * @default 64772
+     */
     const KEY_3270_Left2: number;
 
+    /**
+     * @default 64778
+     */
     const KEY_3270_PA1: number;
 
+    /**
+     * @default 64779
+     */
     const KEY_3270_PA2: number;
 
+    /**
+     * @default 64780
+     */
     const KEY_3270_PA3: number;
 
+    /**
+     * @default 64790
+     */
     const KEY_3270_Play: number;
 
+    /**
+     * @default 64797
+     */
     const KEY_3270_PrintScreen: number;
 
+    /**
+     * @default 64777
+     */
     const KEY_3270_Quit: number;
 
+    /**
+     * @default 64792
+     */
     const KEY_3270_Record: number;
 
+    /**
+     * @default 64776
+     */
     const KEY_3270_Reset: number;
 
+    /**
+     * @default 64771
+     */
     const KEY_3270_Right2: number;
 
+    /**
+     * @default 64788
+     */
     const KEY_3270_Rule: number;
 
+    /**
+     * @default 64791
+     */
     const KEY_3270_Setup: number;
 
+    /**
+     * @default 64781
+     */
     const KEY_3270_Test: number;
 
+    /**
+     * @default 52
+     */
     const KEY_4: number;
 
+    /**
+     * @default 53
+     */
     const KEY_5: number;
 
+    /**
+     * @default 54
+     */
     const KEY_6: number;
 
+    /**
+     * @default 55
+     */
     const KEY_7: number;
 
+    /**
+     * @default 56
+     */
     const KEY_8: number;
 
+    /**
+     * @default 57
+     */
     const KEY_9: number;
 
+    /**
+     * @default 65
+     */
     const KEY_A: number;
 
+    /**
+     * @default 198
+     */
     const KEY_AE: number;
 
+    /**
+     * @default 193
+     */
     const KEY_Aacute: number;
 
+    /**
+     * @default 16785056
+     */
     const KEY_Abelowdot: number;
 
+    /**
+     * @default 451
+     */
     const KEY_Abreve: number;
 
+    /**
+     * @default 16785070
+     */
     const KEY_Abreveacute: number;
 
+    /**
+     * @default 16785078
+     */
     const KEY_Abrevebelowdot: number;
 
+    /**
+     * @default 16785072
+     */
     const KEY_Abrevegrave: number;
 
+    /**
+     * @default 16785074
+     */
     const KEY_Abrevehook: number;
 
+    /**
+     * @default 16785076
+     */
     const KEY_Abrevetilde: number;
 
+    /**
+     * @default 65136
+     */
     const KEY_AccessX_Enable: number;
 
+    /**
+     * @default 65137
+     */
     const KEY_AccessX_Feedback_Enable: number;
 
+    /**
+     * @default 194
+     */
     const KEY_Acircumflex: number;
 
+    /**
+     * @default 16785060
+     */
     const KEY_Acircumflexacute: number;
 
+    /**
+     * @default 16785068
+     */
     const KEY_Acircumflexbelowdot: number;
 
+    /**
+     * @default 16785062
+     */
     const KEY_Acircumflexgrave: number;
 
+    /**
+     * @default 16785064
+     */
     const KEY_Acircumflexhook: number;
 
+    /**
+     * @default 16785066
+     */
     const KEY_Acircumflextilde: number;
 
+    /**
+     * @default 269025081
+     */
     const KEY_AddFavorite: number;
 
+    /**
+     * @default 196
+     */
     const KEY_Adiaeresis: number;
 
+    /**
+     * @default 192
+     */
     const KEY_Agrave: number;
 
+    /**
+     * @default 16785058
+     */
     const KEY_Ahook: number;
 
+    /**
+     * @default 65513
+     */
     const KEY_Alt_L: number;
 
+    /**
+     * @default 65514
+     */
     const KEY_Alt_R: number;
 
+    /**
+     * @default 960
+     */
     const KEY_Amacron: number;
 
+    /**
+     * @default 417
+     */
     const KEY_Aogonek: number;
 
+    /**
+     * @default 269025104
+     */
     const KEY_ApplicationLeft: number;
 
+    /**
+     * @default 269025105
+     */
     const KEY_ApplicationRight: number;
 
+    /**
+     * @default 16778848
+     */
     const KEY_Arabic_0: number;
 
+    /**
+     * @default 16778849
+     */
     const KEY_Arabic_1: number;
 
+    /**
+     * @default 16778850
+     */
     const KEY_Arabic_2: number;
 
+    /**
+     * @default 16778851
+     */
     const KEY_Arabic_3: number;
 
+    /**
+     * @default 16778852
+     */
     const KEY_Arabic_4: number;
 
+    /**
+     * @default 16778853
+     */
     const KEY_Arabic_5: number;
 
+    /**
+     * @default 16778854
+     */
     const KEY_Arabic_6: number;
 
+    /**
+     * @default 16778855
+     */
     const KEY_Arabic_7: number;
 
+    /**
+     * @default 16778856
+     */
     const KEY_Arabic_8: number;
 
+    /**
+     * @default 16778857
+     */
     const KEY_Arabic_9: number;
 
+    /**
+     * @default 1497
+     */
     const KEY_Arabic_ain: number;
 
+    /**
+     * @default 1479
+     */
     const KEY_Arabic_alef: number;
 
+    /**
+     * @default 1513
+     */
     const KEY_Arabic_alefmaksura: number;
 
+    /**
+     * @default 1480
+     */
     const KEY_Arabic_beh: number;
 
+    /**
+     * @default 1452
+     */
     const KEY_Arabic_comma: number;
 
+    /**
+     * @default 1494
+     */
     const KEY_Arabic_dad: number;
 
+    /**
+     * @default 1487
+     */
     const KEY_Arabic_dal: number;
 
+    /**
+     * @default 1519
+     */
     const KEY_Arabic_damma: number;
 
+    /**
+     * @default 1516
+     */
     const KEY_Arabic_dammatan: number;
 
+    /**
+     * @default 16778888
+     */
     const KEY_Arabic_ddal: number;
 
+    /**
+     * @default 16778956
+     */
     const KEY_Arabic_farsi_yeh: number;
 
+    /**
+     * @default 1518
+     */
     const KEY_Arabic_fatha: number;
 
+    /**
+     * @default 1515
+     */
     const KEY_Arabic_fathatan: number;
 
+    /**
+     * @default 1505
+     */
     const KEY_Arabic_feh: number;
 
+    /**
+     * @default 16778964
+     */
     const KEY_Arabic_fullstop: number;
 
+    /**
+     * @default 16778927
+     */
     const KEY_Arabic_gaf: number;
 
+    /**
+     * @default 1498
+     */
     const KEY_Arabic_ghain: number;
 
+    /**
+     * @default 1511
+     */
     const KEY_Arabic_ha: number;
 
+    /**
+     * @default 1485
+     */
     const KEY_Arabic_hah: number;
 
+    /**
+     * @default 1473
+     */
     const KEY_Arabic_hamza: number;
 
+    /**
+     * @default 16778836
+     */
     const KEY_Arabic_hamza_above: number;
 
+    /**
+     * @default 16778837
+     */
     const KEY_Arabic_hamza_below: number;
 
+    /**
+     * @default 1475
+     */
     const KEY_Arabic_hamzaonalef: number;
 
+    /**
+     * @default 1476
+     */
     const KEY_Arabic_hamzaonwaw: number;
 
+    /**
+     * @default 1478
+     */
     const KEY_Arabic_hamzaonyeh: number;
 
+    /**
+     * @default 1477
+     */
     const KEY_Arabic_hamzaunderalef: number;
 
+    /**
+     * @default 1511
+     */
     const KEY_Arabic_heh: number;
 
+    /**
+     * @default 16778942
+     */
     const KEY_Arabic_heh_doachashmee: number;
 
+    /**
+     * @default 16778945
+     */
     const KEY_Arabic_heh_goal: number;
 
+    /**
+     * @default 1484
+     */
     const KEY_Arabic_jeem: number;
 
+    /**
+     * @default 16778904
+     */
     const KEY_Arabic_jeh: number;
 
+    /**
+     * @default 1507
+     */
     const KEY_Arabic_kaf: number;
 
+    /**
+     * @default 1520
+     */
     const KEY_Arabic_kasra: number;
 
+    /**
+     * @default 1517
+     */
     const KEY_Arabic_kasratan: number;
 
+    /**
+     * @default 16778921
+     */
     const KEY_Arabic_keheh: number;
 
+    /**
+     * @default 1486
+     */
     const KEY_Arabic_khah: number;
 
+    /**
+     * @default 1508
+     */
     const KEY_Arabic_lam: number;
 
+    /**
+     * @default 16778835
+     */
     const KEY_Arabic_madda_above: number;
 
+    /**
+     * @default 1474
+     */
     const KEY_Arabic_maddaonalef: number;
 
+    /**
+     * @default 1509
+     */
     const KEY_Arabic_meem: number;
 
+    /**
+     * @default 1510
+     */
     const KEY_Arabic_noon: number;
 
+    /**
+     * @default 16778938
+     */
     const KEY_Arabic_noon_ghunna: number;
 
+    /**
+     * @default 16778878
+     */
     const KEY_Arabic_peh: number;
 
+    /**
+     * @default 16778858
+     */
     const KEY_Arabic_percent: number;
 
+    /**
+     * @default 1506
+     */
     const KEY_Arabic_qaf: number;
 
+    /**
+     * @default 1471
+     */
     const KEY_Arabic_question_mark: number;
 
+    /**
+     * @default 1489
+     */
     const KEY_Arabic_ra: number;
 
+    /**
+     * @default 16778897
+     */
     const KEY_Arabic_rreh: number;
 
+    /**
+     * @default 1493
+     */
     const KEY_Arabic_sad: number;
 
+    /**
+     * @default 1491
+     */
     const KEY_Arabic_seen: number;
 
+    /**
+     * @default 1467
+     */
     const KEY_Arabic_semicolon: number;
 
+    /**
+     * @default 1521
+     */
     const KEY_Arabic_shadda: number;
 
+    /**
+     * @default 1492
+     */
     const KEY_Arabic_sheen: number;
 
+    /**
+     * @default 1522
+     */
     const KEY_Arabic_sukun: number;
 
+    /**
+     * @default 16778864
+     */
     const KEY_Arabic_superscript_alef: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Arabic_switch: number;
 
+    /**
+     * @default 1495
+     */
     const KEY_Arabic_tah: number;
 
+    /**
+     * @default 1504
+     */
     const KEY_Arabic_tatweel: number;
 
+    /**
+     * @default 16778886
+     */
     const KEY_Arabic_tcheh: number;
 
+    /**
+     * @default 1482
+     */
     const KEY_Arabic_teh: number;
 
+    /**
+     * @default 1481
+     */
     const KEY_Arabic_tehmarbuta: number;
 
+    /**
+     * @default 1488
+     */
     const KEY_Arabic_thal: number;
 
+    /**
+     * @default 1483
+     */
     const KEY_Arabic_theh: number;
 
+    /**
+     * @default 16778873
+     */
     const KEY_Arabic_tteh: number;
 
+    /**
+     * @default 16778916
+     */
     const KEY_Arabic_veh: number;
 
+    /**
+     * @default 1512
+     */
     const KEY_Arabic_waw: number;
 
+    /**
+     * @default 1514
+     */
     const KEY_Arabic_yeh: number;
 
+    /**
+     * @default 16778962
+     */
     const KEY_Arabic_yeh_baree: number;
 
+    /**
+     * @default 1496
+     */
     const KEY_Arabic_zah: number;
 
+    /**
+     * @default 1490
+     */
     const KEY_Arabic_zain: number;
 
+    /**
+     * @default 197
+     */
     const KEY_Aring: number;
 
+    /**
+     * @default 16778552
+     */
     const KEY_Armenian_AT: number;
 
+    /**
+     * @default 16778545
+     */
     const KEY_Armenian_AYB: number;
 
+    /**
+     * @default 16778546
+     */
     const KEY_Armenian_BEN: number;
 
+    /**
+     * @default 16778569
+     */
     const KEY_Armenian_CHA: number;
 
+    /**
+     * @default 16778548
+     */
     const KEY_Armenian_DA: number;
 
+    /**
+     * @default 16778561
+     */
     const KEY_Armenian_DZA: number;
 
+    /**
+     * @default 16778551
+     */
     const KEY_Armenian_E: number;
 
+    /**
+     * @default 16778582
+     */
     const KEY_Armenian_FE: number;
 
+    /**
+     * @default 16778562
+     */
     const KEY_Armenian_GHAT: number;
 
+    /**
+     * @default 16778547
+     */
     const KEY_Armenian_GIM: number;
 
+    /**
+     * @default 16778565
+     */
     const KEY_Armenian_HI: number;
 
+    /**
+     * @default 16778560
+     */
     const KEY_Armenian_HO: number;
 
+    /**
+     * @default 16778555
+     */
     const KEY_Armenian_INI: number;
 
+    /**
+     * @default 16778571
+     */
     const KEY_Armenian_JE: number;
 
+    /**
+     * @default 16778580
+     */
     const KEY_Armenian_KE: number;
 
+    /**
+     * @default 16778559
+     */
     const KEY_Armenian_KEN: number;
 
+    /**
+     * @default 16778557
+     */
     const KEY_Armenian_KHE: number;
 
+    /**
+     * @default 16778556
+     */
     const KEY_Armenian_LYUN: number;
 
+    /**
+     * @default 16778564
+     */
     const KEY_Armenian_MEN: number;
 
+    /**
+     * @default 16778566
+     */
     const KEY_Armenian_NU: number;
 
+    /**
+     * @default 16778581
+     */
     const KEY_Armenian_O: number;
 
+    /**
+     * @default 16778570
+     */
     const KEY_Armenian_PE: number;
 
+    /**
+     * @default 16778579
+     */
     const KEY_Armenian_PYUR: number;
 
+    /**
+     * @default 16778572
+     */
     const KEY_Armenian_RA: number;
 
+    /**
+     * @default 16778576
+     */
     const KEY_Armenian_RE: number;
 
+    /**
+     * @default 16778573
+     */
     const KEY_Armenian_SE: number;
 
+    /**
+     * @default 16778567
+     */
     const KEY_Armenian_SHA: number;
 
+    /**
+     * @default 16778563
+     */
     const KEY_Armenian_TCHE: number;
 
+    /**
+     * @default 16778553
+     */
     const KEY_Armenian_TO: number;
 
+    /**
+     * @default 16778558
+     */
     const KEY_Armenian_TSA: number;
 
+    /**
+     * @default 16778577
+     */
     const KEY_Armenian_TSO: number;
 
+    /**
+     * @default 16778575
+     */
     const KEY_Armenian_TYUN: number;
 
+    /**
+     * @default 16778574
+     */
     const KEY_Armenian_VEV: number;
 
+    /**
+     * @default 16778568
+     */
     const KEY_Armenian_VO: number;
 
+    /**
+     * @default 16778578
+     */
     const KEY_Armenian_VYUN: number;
 
+    /**
+     * @default 16778549
+     */
     const KEY_Armenian_YECH: number;
 
+    /**
+     * @default 16778550
+     */
     const KEY_Armenian_ZA: number;
 
+    /**
+     * @default 16778554
+     */
     const KEY_Armenian_ZHE: number;
 
+    /**
+     * @default 16778587
+     */
     const KEY_Armenian_accent: number;
 
+    /**
+     * @default 16778588
+     */
     const KEY_Armenian_amanak: number;
 
+    /**
+     * @default 16778586
+     */
     const KEY_Armenian_apostrophe: number;
 
+    /**
+     * @default 16778600
+     */
     const KEY_Armenian_at: number;
 
+    /**
+     * @default 16778593
+     */
     const KEY_Armenian_ayb: number;
 
+    /**
+     * @default 16778594
+     */
     const KEY_Armenian_ben: number;
 
+    /**
+     * @default 16778589
+     */
     const KEY_Armenian_but: number;
 
+    /**
+     * @default 16778617
+     */
     const KEY_Armenian_cha: number;
 
+    /**
+     * @default 16778596
+     */
     const KEY_Armenian_da: number;
 
+    /**
+     * @default 16778609
+     */
     const KEY_Armenian_dza: number;
 
+    /**
+     * @default 16778599
+     */
     const KEY_Armenian_e: number;
 
+    /**
+     * @default 16778588
+     */
     const KEY_Armenian_exclam: number;
 
+    /**
+     * @default 16778630
+     */
     const KEY_Armenian_fe: number;
 
+    /**
+     * @default 16778633
+     */
     const KEY_Armenian_full_stop: number;
 
+    /**
+     * @default 16778610
+     */
     const KEY_Armenian_ghat: number;
 
+    /**
+     * @default 16778595
+     */
     const KEY_Armenian_gim: number;
 
+    /**
+     * @default 16778613
+     */
     const KEY_Armenian_hi: number;
 
+    /**
+     * @default 16778608
+     */
     const KEY_Armenian_ho: number;
 
+    /**
+     * @default 16778634
+     */
     const KEY_Armenian_hyphen: number;
 
+    /**
+     * @default 16778603
+     */
     const KEY_Armenian_ini: number;
 
+    /**
+     * @default 16778619
+     */
     const KEY_Armenian_je: number;
 
+    /**
+     * @default 16778628
+     */
     const KEY_Armenian_ke: number;
 
+    /**
+     * @default 16778607
+     */
     const KEY_Armenian_ken: number;
 
+    /**
+     * @default 16778605
+     */
     const KEY_Armenian_khe: number;
 
+    /**
+     * @default 16778631
+     */
     const KEY_Armenian_ligature_ew: number;
 
+    /**
+     * @default 16778604
+     */
     const KEY_Armenian_lyun: number;
 
+    /**
+     * @default 16778612
+     */
     const KEY_Armenian_men: number;
 
+    /**
+     * @default 16778614
+     */
     const KEY_Armenian_nu: number;
 
+    /**
+     * @default 16778629
+     */
     const KEY_Armenian_o: number;
 
+    /**
+     * @default 16778590
+     */
     const KEY_Armenian_paruyk: number;
 
+    /**
+     * @default 16778618
+     */
     const KEY_Armenian_pe: number;
 
+    /**
+     * @default 16778627
+     */
     const KEY_Armenian_pyur: number;
 
+    /**
+     * @default 16778590
+     */
     const KEY_Armenian_question: number;
 
+    /**
+     * @default 16778620
+     */
     const KEY_Armenian_ra: number;
 
+    /**
+     * @default 16778624
+     */
     const KEY_Armenian_re: number;
 
+    /**
+     * @default 16778621
+     */
     const KEY_Armenian_se: number;
 
+    /**
+     * @default 16778589
+     */
     const KEY_Armenian_separation_mark: number;
 
+    /**
+     * @default 16778615
+     */
     const KEY_Armenian_sha: number;
 
+    /**
+     * @default 16778587
+     */
     const KEY_Armenian_shesht: number;
 
+    /**
+     * @default 16778611
+     */
     const KEY_Armenian_tche: number;
 
+    /**
+     * @default 16778601
+     */
     const KEY_Armenian_to: number;
 
+    /**
+     * @default 16778606
+     */
     const KEY_Armenian_tsa: number;
 
+    /**
+     * @default 16778625
+     */
     const KEY_Armenian_tso: number;
 
+    /**
+     * @default 16778623
+     */
     const KEY_Armenian_tyun: number;
 
+    /**
+     * @default 16778633
+     */
     const KEY_Armenian_verjaket: number;
 
+    /**
+     * @default 16778622
+     */
     const KEY_Armenian_vev: number;
 
+    /**
+     * @default 16778616
+     */
     const KEY_Armenian_vo: number;
 
+    /**
+     * @default 16778626
+     */
     const KEY_Armenian_vyun: number;
 
+    /**
+     * @default 16778597
+     */
     const KEY_Armenian_yech: number;
 
+    /**
+     * @default 16778634
+     */
     const KEY_Armenian_yentamna: number;
 
+    /**
+     * @default 16778598
+     */
     const KEY_Armenian_za: number;
 
+    /**
+     * @default 16778602
+     */
     const KEY_Armenian_zhe: number;
 
+    /**
+     * @default 195
+     */
     const KEY_Atilde: number;
 
+    /**
+     * @default 65146
+     */
     const KEY_AudibleBell_Enable: number;
 
+    /**
+     * @default 269025179
+     */
     const KEY_AudioCycleTrack: number;
 
+    /**
+     * @default 269025175
+     */
     const KEY_AudioForward: number;
 
+    /**
+     * @default 269025041
+     */
     const KEY_AudioLowerVolume: number;
 
+    /**
+     * @default 269025074
+     */
     const KEY_AudioMedia: number;
 
+    /**
+     * @default 269025202
+     */
     const KEY_AudioMicMute: number;
 
+    /**
+     * @default 269025042
+     */
     const KEY_AudioMute: number;
 
+    /**
+     * @default 269025047
+     */
     const KEY_AudioNext: number;
 
+    /**
+     * @default 269025073
+     */
     const KEY_AudioPause: number;
 
+    /**
+     * @default 269025044
+     */
     const KEY_AudioPlay: number;
 
+    /**
+     * @default 269025046
+     */
     const KEY_AudioPrev: number;
 
+    /**
+     * @default 269025043
+     */
     const KEY_AudioRaiseVolume: number;
 
+    /**
+     * @default 269025177
+     */
     const KEY_AudioRandomPlay: number;
 
+    /**
+     * @default 269025052
+     */
     const KEY_AudioRecord: number;
 
+    /**
+     * @default 269025176
+     */
     const KEY_AudioRepeat: number;
 
+    /**
+     * @default 269025086
+     */
     const KEY_AudioRewind: number;
 
+    /**
+     * @default 269025045
+     */
     const KEY_AudioStop: number;
 
+    /**
+     * @default 269025165
+     */
     const KEY_Away: number;
 
+    /**
+     * @default 66
+     */
     const KEY_B: number;
 
+    /**
+     * @default 16784898
+     */
     const KEY_Babovedot: number;
 
+    /**
+     * @default 269025062
+     */
     const KEY_Back: number;
 
+    /**
+     * @default 269025087
+     */
     const KEY_BackForward: number;
 
+    /**
+     * @default 65288
+     */
     const KEY_BackSpace: number;
 
+    /**
+     * @default 269025171
+     */
     const KEY_Battery: number;
 
+    /**
+     * @default 65368
+     */
     const KEY_Begin: number;
 
+    /**
+     * @default 269025190
+     */
     const KEY_Blue: number;
 
+    /**
+     * @default 269025172
+     */
     const KEY_Bluetooth: number;
 
+    /**
+     * @default 269025106
+     */
     const KEY_Book: number;
 
+    /**
+     * @default 65140
+     */
     const KEY_BounceKeys_Enable: number;
 
+    /**
+     * @default 65387
+     */
     const KEY_Break: number;
 
+    /**
+     * @default 269025083
+     */
     const KEY_BrightnessAdjust: number;
 
+    /**
+     * @default 1726
+     */
     const KEY_Byelorussian_SHORTU: number;
 
+    /**
+     * @default 1710
+     */
     const KEY_Byelorussian_shortu: number;
 
+    /**
+     * @default 67
+     */
     const KEY_C: number;
 
+    /**
+     * @default 269025107
+     */
     const KEY_CD: number;
 
+    /**
+     * @default 65186
+     */
     const KEY_CH: number;
 
+    /**
+     * @default 65189
+     */
     const KEY_C_H: number;
 
+    /**
+     * @default 65188
+     */
     const KEY_C_h: number;
 
+    /**
+     * @default 709
+     */
     const KEY_Cabovedot: number;
 
+    /**
+     * @default 454
+     */
     const KEY_Cacute: number;
 
+    /**
+     * @default 269025053
+     */
     const KEY_Calculator: number;
 
+    /**
+     * @default 269025056
+     */
     const KEY_Calendar: number;
 
+    /**
+     * @default 65385
+     */
     const KEY_Cancel: number;
 
+    /**
+     * @default 65509
+     */
     const KEY_Caps_Lock: number;
 
+    /**
+     * @default 456
+     */
     const KEY_Ccaron: number;
 
+    /**
+     * @default 199
+     */
     const KEY_Ccedilla: number;
 
+    /**
+     * @default 710
+     */
     const KEY_Ccircumflex: number;
 
+    /**
+     * @default 65185
+     */
     const KEY_Ch: number;
 
+    /**
+     * @default 65291
+     */
     const KEY_Clear: number;
 
+    /**
+     * @default 269024801
+     */
     const KEY_ClearGrab: number;
 
+    /**
+     * @default 269025110
+     */
     const KEY_Close: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Codeinput: number;
 
+    /**
+     * @default 16785569
+     */
     const KEY_ColonSign: number;
 
+    /**
+     * @default 269025085
+     */
     const KEY_Community: number;
 
+    /**
+     * @default 269025058
+     */
     const KEY_ContrastAdjust: number;
 
+    /**
+     * @default 65507
+     */
     const KEY_Control_L: number;
 
+    /**
+     * @default 65508
+     */
     const KEY_Control_R: number;
 
+    /**
+     * @default 269025111
+     */
     const KEY_Copy: number;
 
+    /**
+     * @default 16785570
+     */
     const KEY_CruzeiroSign: number;
 
+    /**
+     * @default 269025112
+     */
     const KEY_Cut: number;
 
+    /**
+     * @default 269025180
+     */
     const KEY_CycleAngle: number;
 
+    /**
+     * @default 1761
+     */
     const KEY_Cyrillic_A: number;
 
+    /**
+     * @default 1762
+     */
     const KEY_Cyrillic_BE: number;
 
+    /**
+     * @default 1790
+     */
     const KEY_Cyrillic_CHE: number;
 
+    /**
+     * @default 16778422
+     */
     const KEY_Cyrillic_CHE_descender: number;
 
+    /**
+     * @default 16778424
+     */
     const KEY_Cyrillic_CHE_vertstroke: number;
 
+    /**
+     * @default 1764
+     */
     const KEY_Cyrillic_DE: number;
 
+    /**
+     * @default 1727
+     */
     const KEY_Cyrillic_DZHE: number;
 
+    /**
+     * @default 1788
+     */
     const KEY_Cyrillic_E: number;
 
+    /**
+     * @default 1766
+     */
     const KEY_Cyrillic_EF: number;
 
+    /**
+     * @default 1772
+     */
     const KEY_Cyrillic_EL: number;
 
+    /**
+     * @default 1773
+     */
     const KEY_Cyrillic_EM: number;
 
+    /**
+     * @default 1774
+     */
     const KEY_Cyrillic_EN: number;
 
+    /**
+     * @default 16778402
+     */
     const KEY_Cyrillic_EN_descender: number;
 
+    /**
+     * @default 1778
+     */
     const KEY_Cyrillic_ER: number;
 
+    /**
+     * @default 1779
+     */
     const KEY_Cyrillic_ES: number;
 
+    /**
+     * @default 1767
+     */
     const KEY_Cyrillic_GHE: number;
 
+    /**
+     * @default 16778386
+     */
     const KEY_Cyrillic_GHE_bar: number;
 
+    /**
+     * @default 1768
+     */
     const KEY_Cyrillic_HA: number;
 
+    /**
+     * @default 1791
+     */
     const KEY_Cyrillic_HARDSIGN: number;
 
+    /**
+     * @default 16778418
+     */
     const KEY_Cyrillic_HA_descender: number;
 
+    /**
+     * @default 1769
+     */
     const KEY_Cyrillic_I: number;
 
+    /**
+     * @default 1765
+     */
     const KEY_Cyrillic_IE: number;
 
+    /**
+     * @default 1715
+     */
     const KEY_Cyrillic_IO: number;
 
+    /**
+     * @default 16778466
+     */
     const KEY_Cyrillic_I_macron: number;
 
+    /**
+     * @default 1720
+     */
     const KEY_Cyrillic_JE: number;
 
+    /**
+     * @default 1771
+     */
     const KEY_Cyrillic_KA: number;
 
+    /**
+     * @default 16778394
+     */
     const KEY_Cyrillic_KA_descender: number;
 
+    /**
+     * @default 16778396
+     */
     const KEY_Cyrillic_KA_vertstroke: number;
 
+    /**
+     * @default 1721
+     */
     const KEY_Cyrillic_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const KEY_Cyrillic_NJE: number;
 
+    /**
+     * @default 1775
+     */
     const KEY_Cyrillic_O: number;
 
+    /**
+     * @default 16778472
+     */
     const KEY_Cyrillic_O_bar: number;
 
+    /**
+     * @default 1776
+     */
     const KEY_Cyrillic_PE: number;
 
+    /**
+     * @default 16778456
+     */
     const KEY_Cyrillic_SCHWA: number;
 
+    /**
+     * @default 1787
+     */
     const KEY_Cyrillic_SHA: number;
 
+    /**
+     * @default 1789
+     */
     const KEY_Cyrillic_SHCHA: number;
 
+    /**
+     * @default 16778426
+     */
     const KEY_Cyrillic_SHHA: number;
 
+    /**
+     * @default 1770
+     */
     const KEY_Cyrillic_SHORTI: number;
 
+    /**
+     * @default 1784
+     */
     const KEY_Cyrillic_SOFTSIGN: number;
 
+    /**
+     * @default 1780
+     */
     const KEY_Cyrillic_TE: number;
 
+    /**
+     * @default 1763
+     */
     const KEY_Cyrillic_TSE: number;
 
+    /**
+     * @default 1781
+     */
     const KEY_Cyrillic_U: number;
 
+    /**
+     * @default 16778478
+     */
     const KEY_Cyrillic_U_macron: number;
 
+    /**
+     * @default 16778414
+     */
     const KEY_Cyrillic_U_straight: number;
 
+    /**
+     * @default 16778416
+     */
     const KEY_Cyrillic_U_straight_bar: number;
 
+    /**
+     * @default 1783
+     */
     const KEY_Cyrillic_VE: number;
 
+    /**
+     * @default 1777
+     */
     const KEY_Cyrillic_YA: number;
 
+    /**
+     * @default 1785
+     */
     const KEY_Cyrillic_YERU: number;
 
+    /**
+     * @default 1760
+     */
     const KEY_Cyrillic_YU: number;
 
+    /**
+     * @default 1786
+     */
     const KEY_Cyrillic_ZE: number;
 
+    /**
+     * @default 1782
+     */
     const KEY_Cyrillic_ZHE: number;
 
+    /**
+     * @default 16778390
+     */
     const KEY_Cyrillic_ZHE_descender: number;
 
+    /**
+     * @default 1729
+     */
     const KEY_Cyrillic_a: number;
 
+    /**
+     * @default 1730
+     */
     const KEY_Cyrillic_be: number;
 
+    /**
+     * @default 1758
+     */
     const KEY_Cyrillic_che: number;
 
+    /**
+     * @default 16778423
+     */
     const KEY_Cyrillic_che_descender: number;
 
+    /**
+     * @default 16778425
+     */
     const KEY_Cyrillic_che_vertstroke: number;
 
+    /**
+     * @default 1732
+     */
     const KEY_Cyrillic_de: number;
 
+    /**
+     * @default 1711
+     */
     const KEY_Cyrillic_dzhe: number;
 
+    /**
+     * @default 1756
+     */
     const KEY_Cyrillic_e: number;
 
+    /**
+     * @default 1734
+     */
     const KEY_Cyrillic_ef: number;
 
+    /**
+     * @default 1740
+     */
     const KEY_Cyrillic_el: number;
 
+    /**
+     * @default 1741
+     */
     const KEY_Cyrillic_em: number;
 
+    /**
+     * @default 1742
+     */
     const KEY_Cyrillic_en: number;
 
+    /**
+     * @default 16778403
+     */
     const KEY_Cyrillic_en_descender: number;
 
+    /**
+     * @default 1746
+     */
     const KEY_Cyrillic_er: number;
 
+    /**
+     * @default 1747
+     */
     const KEY_Cyrillic_es: number;
 
+    /**
+     * @default 1735
+     */
     const KEY_Cyrillic_ghe: number;
 
+    /**
+     * @default 16778387
+     */
     const KEY_Cyrillic_ghe_bar: number;
 
+    /**
+     * @default 1736
+     */
     const KEY_Cyrillic_ha: number;
 
+    /**
+     * @default 16778419
+     */
     const KEY_Cyrillic_ha_descender: number;
 
+    /**
+     * @default 1759
+     */
     const KEY_Cyrillic_hardsign: number;
 
+    /**
+     * @default 1737
+     */
     const KEY_Cyrillic_i: number;
 
+    /**
+     * @default 16778467
+     */
     const KEY_Cyrillic_i_macron: number;
 
+    /**
+     * @default 1733
+     */
     const KEY_Cyrillic_ie: number;
 
+    /**
+     * @default 1699
+     */
     const KEY_Cyrillic_io: number;
 
+    /**
+     * @default 1704
+     */
     const KEY_Cyrillic_je: number;
 
+    /**
+     * @default 1739
+     */
     const KEY_Cyrillic_ka: number;
 
+    /**
+     * @default 16778395
+     */
     const KEY_Cyrillic_ka_descender: number;
 
+    /**
+     * @default 16778397
+     */
     const KEY_Cyrillic_ka_vertstroke: number;
 
+    /**
+     * @default 1705
+     */
     const KEY_Cyrillic_lje: number;
 
+    /**
+     * @default 1706
+     */
     const KEY_Cyrillic_nje: number;
 
+    /**
+     * @default 1743
+     */
     const KEY_Cyrillic_o: number;
 
+    /**
+     * @default 16778473
+     */
     const KEY_Cyrillic_o_bar: number;
 
+    /**
+     * @default 1744
+     */
     const KEY_Cyrillic_pe: number;
 
+    /**
+     * @default 16778457
+     */
     const KEY_Cyrillic_schwa: number;
 
+    /**
+     * @default 1755
+     */
     const KEY_Cyrillic_sha: number;
 
+    /**
+     * @default 1757
+     */
     const KEY_Cyrillic_shcha: number;
 
+    /**
+     * @default 16778427
+     */
     const KEY_Cyrillic_shha: number;
 
+    /**
+     * @default 1738
+     */
     const KEY_Cyrillic_shorti: number;
 
+    /**
+     * @default 1752
+     */
     const KEY_Cyrillic_softsign: number;
 
+    /**
+     * @default 1748
+     */
     const KEY_Cyrillic_te: number;
 
+    /**
+     * @default 1731
+     */
     const KEY_Cyrillic_tse: number;
 
+    /**
+     * @default 1749
+     */
     const KEY_Cyrillic_u: number;
 
+    /**
+     * @default 16778479
+     */
     const KEY_Cyrillic_u_macron: number;
 
+    /**
+     * @default 16778415
+     */
     const KEY_Cyrillic_u_straight: number;
 
+    /**
+     * @default 16778417
+     */
     const KEY_Cyrillic_u_straight_bar: number;
 
+    /**
+     * @default 1751
+     */
     const KEY_Cyrillic_ve: number;
 
+    /**
+     * @default 1745
+     */
     const KEY_Cyrillic_ya: number;
 
+    /**
+     * @default 1753
+     */
     const KEY_Cyrillic_yeru: number;
 
+    /**
+     * @default 1728
+     */
     const KEY_Cyrillic_yu: number;
 
+    /**
+     * @default 1754
+     */
     const KEY_Cyrillic_ze: number;
 
+    /**
+     * @default 1750
+     */
     const KEY_Cyrillic_zhe: number;
 
+    /**
+     * @default 16778391
+     */
     const KEY_Cyrillic_zhe_descender: number;
 
+    /**
+     * @default 68
+     */
     const KEY_D: number;
 
+    /**
+     * @default 269025114
+     */
     const KEY_DOS: number;
 
+    /**
+     * @default 16784906
+     */
     const KEY_Dabovedot: number;
 
+    /**
+     * @default 463
+     */
     const KEY_Dcaron: number;
 
+    /**
+     * @default 65535
+     */
     const KEY_Delete: number;
 
+    /**
+     * @default 269025113
+     */
     const KEY_Display: number;
 
+    /**
+     * @default 269025115
+     */
     const KEY_Documents: number;
 
+    /**
+     * @default 16785579
+     */
     const KEY_DongSign: number;
 
+    /**
+     * @default 65364
+     */
     const KEY_Down: number;
 
+    /**
+     * @default 464
+     */
     const KEY_Dstroke: number;
 
+    /**
+     * @default 69
+     */
     const KEY_E: number;
 
+    /**
+     * @default 957
+     */
     const KEY_ENG: number;
 
+    /**
+     * @default 208
+     */
     const KEY_ETH: number;
 
+    /**
+     * @default 16777655
+     */
     const KEY_EZH: number;
 
+    /**
+     * @default 972
+     */
     const KEY_Eabovedot: number;
 
+    /**
+     * @default 201
+     */
     const KEY_Eacute: number;
 
+    /**
+     * @default 16785080
+     */
     const KEY_Ebelowdot: number;
 
+    /**
+     * @default 460
+     */
     const KEY_Ecaron: number;
 
+    /**
+     * @default 202
+     */
     const KEY_Ecircumflex: number;
 
+    /**
+     * @default 16785086
+     */
     const KEY_Ecircumflexacute: number;
 
+    /**
+     * @default 16785094
+     */
     const KEY_Ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785088
+     */
     const KEY_Ecircumflexgrave: number;
 
+    /**
+     * @default 16785090
+     */
     const KEY_Ecircumflexhook: number;
 
+    /**
+     * @default 16785092
+     */
     const KEY_Ecircumflextilde: number;
 
+    /**
+     * @default 16785568
+     */
     const KEY_EcuSign: number;
 
+    /**
+     * @default 203
+     */
     const KEY_Ediaeresis: number;
 
+    /**
+     * @default 200
+     */
     const KEY_Egrave: number;
 
+    /**
+     * @default 16785082
+     */
     const KEY_Ehook: number;
 
+    /**
+     * @default 65327
+     */
     const KEY_Eisu_Shift: number;
 
+    /**
+     * @default 65328
+     */
     const KEY_Eisu_toggle: number;
 
+    /**
+     * @default 269025068
+     */
     const KEY_Eject: number;
 
+    /**
+     * @default 938
+     */
     const KEY_Emacron: number;
 
+    /**
+     * @default 65367
+     */
     const KEY_End: number;
 
+    /**
+     * @default 458
+     */
     const KEY_Eogonek: number;
 
+    /**
+     * @default 65307
+     */
     const KEY_Escape: number;
 
+    /**
+     * @default 208
+     */
     const KEY_Eth: number;
 
+    /**
+     * @default 16785084
+     */
     const KEY_Etilde: number;
 
+    /**
+     * @default 8364
+     */
     const KEY_EuroSign: number;
 
+    /**
+     * @default 269025116
+     */
     const KEY_Excel: number;
 
+    /**
+     * @default 65378
+     */
     const KEY_Execute: number;
 
+    /**
+     * @default 269025117
+     */
     const KEY_Explorer: number;
 
+    /**
+     * @default 70
+     */
     const KEY_F: number;
 
+    /**
+     * @default 65470
+     */
     const KEY_F1: number;
 
+    /**
+     * @default 65479
+     */
     const KEY_F10: number;
 
+    /**
+     * @default 65480
+     */
     const KEY_F11: number;
 
+    /**
+     * @default 65481
+     */
     const KEY_F12: number;
 
+    /**
+     * @default 65482
+     */
     const KEY_F13: number;
 
+    /**
+     * @default 65483
+     */
     const KEY_F14: number;
 
+    /**
+     * @default 65484
+     */
     const KEY_F15: number;
 
+    /**
+     * @default 65485
+     */
     const KEY_F16: number;
 
+    /**
+     * @default 65486
+     */
     const KEY_F17: number;
 
+    /**
+     * @default 65487
+     */
     const KEY_F18: number;
 
+    /**
+     * @default 65488
+     */
     const KEY_F19: number;
 
+    /**
+     * @default 65471
+     */
     const KEY_F2: number;
 
+    /**
+     * @default 65489
+     */
     const KEY_F20: number;
 
+    /**
+     * @default 65490
+     */
     const KEY_F21: number;
 
+    /**
+     * @default 65491
+     */
     const KEY_F22: number;
 
+    /**
+     * @default 65492
+     */
     const KEY_F23: number;
 
+    /**
+     * @default 65493
+     */
     const KEY_F24: number;
 
+    /**
+     * @default 65494
+     */
     const KEY_F25: number;
 
+    /**
+     * @default 65495
+     */
     const KEY_F26: number;
 
+    /**
+     * @default 65496
+     */
     const KEY_F27: number;
 
+    /**
+     * @default 65497
+     */
     const KEY_F28: number;
 
+    /**
+     * @default 65498
+     */
     const KEY_F29: number;
 
+    /**
+     * @default 65472
+     */
     const KEY_F3: number;
 
+    /**
+     * @default 65499
+     */
     const KEY_F30: number;
 
+    /**
+     * @default 65500
+     */
     const KEY_F31: number;
 
+    /**
+     * @default 65501
+     */
     const KEY_F32: number;
 
+    /**
+     * @default 65502
+     */
     const KEY_F33: number;
 
+    /**
+     * @default 65503
+     */
     const KEY_F34: number;
 
+    /**
+     * @default 65504
+     */
     const KEY_F35: number;
 
+    /**
+     * @default 65473
+     */
     const KEY_F4: number;
 
+    /**
+     * @default 65474
+     */
     const KEY_F5: number;
 
+    /**
+     * @default 65475
+     */
     const KEY_F6: number;
 
+    /**
+     * @default 65476
+     */
     const KEY_F7: number;
 
+    /**
+     * @default 65477
+     */
     const KEY_F8: number;
 
+    /**
+     * @default 65478
+     */
     const KEY_F9: number;
 
+    /**
+     * @default 16785571
+     */
     const KEY_FFrancSign: number;
 
+    /**
+     * @default 16784926
+     */
     const KEY_Fabovedot: number;
 
+    /**
+     * @default 16778992
+     */
     const KEY_Farsi_0: number;
 
+    /**
+     * @default 16778993
+     */
     const KEY_Farsi_1: number;
 
+    /**
+     * @default 16778994
+     */
     const KEY_Farsi_2: number;
 
+    /**
+     * @default 16778995
+     */
     const KEY_Farsi_3: number;
 
+    /**
+     * @default 16778996
+     */
     const KEY_Farsi_4: number;
 
+    /**
+     * @default 16778997
+     */
     const KEY_Farsi_5: number;
 
+    /**
+     * @default 16778998
+     */
     const KEY_Farsi_6: number;
 
+    /**
+     * @default 16778999
+     */
     const KEY_Farsi_7: number;
 
+    /**
+     * @default 16779000
+     */
     const KEY_Farsi_8: number;
 
+    /**
+     * @default 16779001
+     */
     const KEY_Farsi_9: number;
 
+    /**
+     * @default 16778956
+     */
     const KEY_Farsi_yeh: number;
 
+    /**
+     * @default 269025072
+     */
     const KEY_Favorites: number;
 
+    /**
+     * @default 269025084
+     */
     const KEY_Finance: number;
 
+    /**
+     * @default 65384
+     */
     const KEY_Find: number;
 
+    /**
+     * @default 65232
+     */
     const KEY_First_Virtual_Screen: number;
 
+    /**
+     * @default 269025063
+     */
     const KEY_Forward: number;
 
+    /**
+     * @default 269025181
+     */
     const KEY_FrameBack: number;
 
+    /**
+     * @default 269025182
+     */
     const KEY_FrameForward: number;
 
+    /**
+     * @default 71
+     */
     const KEY_G: number;
 
+    /**
+     * @default 725
+     */
     const KEY_Gabovedot: number;
 
+    /**
+     * @default 269025118
+     */
     const KEY_Game: number;
 
+    /**
+     * @default 683
+     */
     const KEY_Gbreve: number;
 
+    /**
+     * @default 16777702
+     */
     const KEY_Gcaron: number;
 
+    /**
+     * @default 939
+     */
     const KEY_Gcedilla: number;
 
+    /**
+     * @default 728
+     */
     const KEY_Gcircumflex: number;
 
+    /**
+     * @default 16781520
+     */
     const KEY_Georgian_an: number;
 
+    /**
+     * @default 16781521
+     */
     const KEY_Georgian_ban: number;
 
+    /**
+     * @default 16781546
+     */
     const KEY_Georgian_can: number;
 
+    /**
+     * @default 16781549
+     */
     const KEY_Georgian_char: number;
 
+    /**
+     * @default 16781545
+     */
     const KEY_Georgian_chin: number;
 
+    /**
+     * @default 16781548
+     */
     const KEY_Georgian_cil: number;
 
+    /**
+     * @default 16781523
+     */
     const KEY_Georgian_don: number;
 
+    /**
+     * @default 16781524
+     */
     const KEY_Georgian_en: number;
 
+    /**
+     * @default 16781558
+     */
     const KEY_Georgian_fi: number;
 
+    /**
+     * @default 16781522
+     */
     const KEY_Georgian_gan: number;
 
+    /**
+     * @default 16781542
+     */
     const KEY_Georgian_ghan: number;
 
+    /**
+     * @default 16781552
+     */
     const KEY_Georgian_hae: number;
 
+    /**
+     * @default 16781556
+     */
     const KEY_Georgian_har: number;
 
+    /**
+     * @default 16781553
+     */
     const KEY_Georgian_he: number;
 
+    /**
+     * @default 16781554
+     */
     const KEY_Georgian_hie: number;
 
+    /**
+     * @default 16781557
+     */
     const KEY_Georgian_hoe: number;
 
+    /**
+     * @default 16781528
+     */
     const KEY_Georgian_in: number;
 
+    /**
+     * @default 16781551
+     */
     const KEY_Georgian_jhan: number;
 
+    /**
+     * @default 16781547
+     */
     const KEY_Georgian_jil: number;
 
+    /**
+     * @default 16781529
+     */
     const KEY_Georgian_kan: number;
 
+    /**
+     * @default 16781541
+     */
     const KEY_Georgian_khar: number;
 
+    /**
+     * @default 16781530
+     */
     const KEY_Georgian_las: number;
 
+    /**
+     * @default 16781531
+     */
     const KEY_Georgian_man: number;
 
+    /**
+     * @default 16781532
+     */
     const KEY_Georgian_nar: number;
 
+    /**
+     * @default 16781533
+     */
     const KEY_Georgian_on: number;
 
+    /**
+     * @default 16781534
+     */
     const KEY_Georgian_par: number;
 
+    /**
+     * @default 16781540
+     */
     const KEY_Georgian_phar: number;
 
+    /**
+     * @default 16781543
+     */
     const KEY_Georgian_qar: number;
 
+    /**
+     * @default 16781536
+     */
     const KEY_Georgian_rae: number;
 
+    /**
+     * @default 16781537
+     */
     const KEY_Georgian_san: number;
 
+    /**
+     * @default 16781544
+     */
     const KEY_Georgian_shin: number;
 
+    /**
+     * @default 16781527
+     */
     const KEY_Georgian_tan: number;
 
+    /**
+     * @default 16781538
+     */
     const KEY_Georgian_tar: number;
 
+    /**
+     * @default 16781539
+     */
     const KEY_Georgian_un: number;
 
+    /**
+     * @default 16781525
+     */
     const KEY_Georgian_vin: number;
 
+    /**
+     * @default 16781555
+     */
     const KEY_Georgian_we: number;
 
+    /**
+     * @default 16781550
+     */
     const KEY_Georgian_xan: number;
 
+    /**
+     * @default 16781526
+     */
     const KEY_Georgian_zen: number;
 
+    /**
+     * @default 16781535
+     */
     const KEY_Georgian_zhar: number;
 
+    /**
+     * @default 269025119
+     */
     const KEY_Go: number;
 
+    /**
+     * @default 1985
+     */
     const KEY_Greek_ALPHA: number;
 
+    /**
+     * @default 1953
+     */
     const KEY_Greek_ALPHAaccent: number;
 
+    /**
+     * @default 1986
+     */
     const KEY_Greek_BETA: number;
 
+    /**
+     * @default 2007
+     */
     const KEY_Greek_CHI: number;
 
+    /**
+     * @default 1988
+     */
     const KEY_Greek_DELTA: number;
 
+    /**
+     * @default 1989
+     */
     const KEY_Greek_EPSILON: number;
 
+    /**
+     * @default 1954
+     */
     const KEY_Greek_EPSILONaccent: number;
 
+    /**
+     * @default 1991
+     */
     const KEY_Greek_ETA: number;
 
+    /**
+     * @default 1955
+     */
     const KEY_Greek_ETAaccent: number;
 
+    /**
+     * @default 1987
+     */
     const KEY_Greek_GAMMA: number;
 
+    /**
+     * @default 1993
+     */
     const KEY_Greek_IOTA: number;
 
+    /**
+     * @default 1956
+     */
     const KEY_Greek_IOTAaccent: number;
 
+    /**
+     * @default 1957
+     */
     const KEY_Greek_IOTAdiaeresis: number;
 
+    /**
+     * @default 1957
+     */
     const KEY_Greek_IOTAdieresis: number;
 
+    /**
+     * @default 1994
+     */
     const KEY_Greek_KAPPA: number;
 
+    /**
+     * @default 1995
+     */
     const KEY_Greek_LAMBDA: number;
 
+    /**
+     * @default 1995
+     */
     const KEY_Greek_LAMDA: number;
 
+    /**
+     * @default 1996
+     */
     const KEY_Greek_MU: number;
 
+    /**
+     * @default 1997
+     */
     const KEY_Greek_NU: number;
 
+    /**
+     * @default 2009
+     */
     const KEY_Greek_OMEGA: number;
 
+    /**
+     * @default 1963
+     */
     const KEY_Greek_OMEGAaccent: number;
 
+    /**
+     * @default 1999
+     */
     const KEY_Greek_OMICRON: number;
 
+    /**
+     * @default 1959
+     */
     const KEY_Greek_OMICRONaccent: number;
 
+    /**
+     * @default 2006
+     */
     const KEY_Greek_PHI: number;
 
+    /**
+     * @default 2000
+     */
     const KEY_Greek_PI: number;
 
+    /**
+     * @default 2008
+     */
     const KEY_Greek_PSI: number;
 
+    /**
+     * @default 2001
+     */
     const KEY_Greek_RHO: number;
 
+    /**
+     * @default 2002
+     */
     const KEY_Greek_SIGMA: number;
 
+    /**
+     * @default 2004
+     */
     const KEY_Greek_TAU: number;
 
+    /**
+     * @default 1992
+     */
     const KEY_Greek_THETA: number;
 
+    /**
+     * @default 2005
+     */
     const KEY_Greek_UPSILON: number;
 
+    /**
+     * @default 1960
+     */
     const KEY_Greek_UPSILONaccent: number;
 
+    /**
+     * @default 1961
+     */
     const KEY_Greek_UPSILONdieresis: number;
 
+    /**
+     * @default 1998
+     */
     const KEY_Greek_XI: number;
 
+    /**
+     * @default 1990
+     */
     const KEY_Greek_ZETA: number;
 
+    /**
+     * @default 1966
+     */
     const KEY_Greek_accentdieresis: number;
 
+    /**
+     * @default 2017
+     */
     const KEY_Greek_alpha: number;
 
+    /**
+     * @default 1969
+     */
     const KEY_Greek_alphaaccent: number;
 
+    /**
+     * @default 2018
+     */
     const KEY_Greek_beta: number;
 
+    /**
+     * @default 2039
+     */
     const KEY_Greek_chi: number;
 
+    /**
+     * @default 2020
+     */
     const KEY_Greek_delta: number;
 
+    /**
+     * @default 2021
+     */
     const KEY_Greek_epsilon: number;
 
+    /**
+     * @default 1970
+     */
     const KEY_Greek_epsilonaccent: number;
 
+    /**
+     * @default 2023
+     */
     const KEY_Greek_eta: number;
 
+    /**
+     * @default 1971
+     */
     const KEY_Greek_etaaccent: number;
 
+    /**
+     * @default 2035
+     */
     const KEY_Greek_finalsmallsigma: number;
 
+    /**
+     * @default 2019
+     */
     const KEY_Greek_gamma: number;
 
+    /**
+     * @default 1967
+     */
     const KEY_Greek_horizbar: number;
 
+    /**
+     * @default 2025
+     */
     const KEY_Greek_iota: number;
 
+    /**
+     * @default 1972
+     */
     const KEY_Greek_iotaaccent: number;
 
+    /**
+     * @default 1974
+     */
     const KEY_Greek_iotaaccentdieresis: number;
 
+    /**
+     * @default 1973
+     */
     const KEY_Greek_iotadieresis: number;
 
+    /**
+     * @default 2026
+     */
     const KEY_Greek_kappa: number;
 
+    /**
+     * @default 2027
+     */
     const KEY_Greek_lambda: number;
 
+    /**
+     * @default 2027
+     */
     const KEY_Greek_lamda: number;
 
+    /**
+     * @default 2028
+     */
     const KEY_Greek_mu: number;
 
+    /**
+     * @default 2029
+     */
     const KEY_Greek_nu: number;
 
+    /**
+     * @default 2041
+     */
     const KEY_Greek_omega: number;
 
+    /**
+     * @default 1979
+     */
     const KEY_Greek_omegaaccent: number;
 
+    /**
+     * @default 2031
+     */
     const KEY_Greek_omicron: number;
 
+    /**
+     * @default 1975
+     */
     const KEY_Greek_omicronaccent: number;
 
+    /**
+     * @default 2038
+     */
     const KEY_Greek_phi: number;
 
+    /**
+     * @default 2032
+     */
     const KEY_Greek_pi: number;
 
+    /**
+     * @default 2040
+     */
     const KEY_Greek_psi: number;
 
+    /**
+     * @default 2033
+     */
     const KEY_Greek_rho: number;
 
+    /**
+     * @default 2034
+     */
     const KEY_Greek_sigma: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Greek_switch: number;
 
+    /**
+     * @default 2036
+     */
     const KEY_Greek_tau: number;
 
+    /**
+     * @default 2024
+     */
     const KEY_Greek_theta: number;
 
+    /**
+     * @default 2037
+     */
     const KEY_Greek_upsilon: number;
 
+    /**
+     * @default 1976
+     */
     const KEY_Greek_upsilonaccent: number;
 
+    /**
+     * @default 1978
+     */
     const KEY_Greek_upsilonaccentdieresis: number;
 
+    /**
+     * @default 1977
+     */
     const KEY_Greek_upsilondieresis: number;
 
+    /**
+     * @default 2030
+     */
     const KEY_Greek_xi: number;
 
+    /**
+     * @default 2022
+     */
     const KEY_Greek_zeta: number;
 
+    /**
+     * @default 269025188
+     */
     const KEY_Green: number;
 
+    /**
+     * @default 72
+     */
     const KEY_H: number;
 
+    /**
+     * @default 65329
+     */
     const KEY_Hangul: number;
 
+    /**
+     * @default 3775
+     */
     const KEY_Hangul_A: number;
 
+    /**
+     * @default 3776
+     */
     const KEY_Hangul_AE: number;
 
+    /**
+     * @default 3830
+     */
     const KEY_Hangul_AraeA: number;
 
+    /**
+     * @default 3831
+     */
     const KEY_Hangul_AraeAE: number;
 
+    /**
+     * @default 65337
+     */
     const KEY_Hangul_Banja: number;
 
+    /**
+     * @default 3770
+     */
     const KEY_Hangul_Cieuc: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Hangul_Codeinput: number;
 
+    /**
+     * @default 3751
+     */
     const KEY_Hangul_Dikeud: number;
 
+    /**
+     * @default 3780
+     */
     const KEY_Hangul_E: number;
 
+    /**
+     * @default 3779
+     */
     const KEY_Hangul_EO: number;
 
+    /**
+     * @default 3793
+     */
     const KEY_Hangul_EU: number;
 
+    /**
+     * @default 65331
+     */
     const KEY_Hangul_End: number;
 
+    /**
+     * @default 65332
+     */
     const KEY_Hangul_Hanja: number;
 
+    /**
+     * @default 3774
+     */
     const KEY_Hangul_Hieuh: number;
 
+    /**
+     * @default 3795
+     */
     const KEY_Hangul_I: number;
 
+    /**
+     * @default 3767
+     */
     const KEY_Hangul_Ieung: number;
 
+    /**
+     * @default 3818
+     */
     const KEY_Hangul_J_Cieuc: number;
 
+    /**
+     * @default 3802
+     */
     const KEY_Hangul_J_Dikeud: number;
 
+    /**
+     * @default 3822
+     */
     const KEY_Hangul_J_Hieuh: number;
 
+    /**
+     * @default 3816
+     */
     const KEY_Hangul_J_Ieung: number;
 
+    /**
+     * @default 3817
+     */
     const KEY_Hangul_J_Jieuj: number;
 
+    /**
+     * @default 3819
+     */
     const KEY_Hangul_J_Khieuq: number;
 
+    /**
+     * @default 3796
+     */
     const KEY_Hangul_J_Kiyeog: number;
 
+    /**
+     * @default 3798
+     */
     const KEY_Hangul_J_KiyeogSios: number;
 
+    /**
+     * @default 3833
+     */
     const KEY_Hangul_J_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3811
+     */
     const KEY_Hangul_J_Mieum: number;
 
+    /**
+     * @default 3799
+     */
     const KEY_Hangul_J_Nieun: number;
 
+    /**
+     * @default 3801
+     */
     const KEY_Hangul_J_NieunHieuh: number;
 
+    /**
+     * @default 3800
+     */
     const KEY_Hangul_J_NieunJieuj: number;
 
+    /**
+     * @default 3832
+     */
     const KEY_Hangul_J_PanSios: number;
 
+    /**
+     * @default 3821
+     */
     const KEY_Hangul_J_Phieuf: number;
 
+    /**
+     * @default 3812
+     */
     const KEY_Hangul_J_Pieub: number;
 
+    /**
+     * @default 3813
+     */
     const KEY_Hangul_J_PieubSios: number;
 
+    /**
+     * @default 3803
+     */
     const KEY_Hangul_J_Rieul: number;
 
+    /**
+     * @default 3810
+     */
     const KEY_Hangul_J_RieulHieuh: number;
 
+    /**
+     * @default 3804
+     */
     const KEY_Hangul_J_RieulKiyeog: number;
 
+    /**
+     * @default 3805
+     */
     const KEY_Hangul_J_RieulMieum: number;
 
+    /**
+     * @default 3809
+     */
     const KEY_Hangul_J_RieulPhieuf: number;
 
+    /**
+     * @default 3806
+     */
     const KEY_Hangul_J_RieulPieub: number;
 
+    /**
+     * @default 3807
+     */
     const KEY_Hangul_J_RieulSios: number;
 
+    /**
+     * @default 3808
+     */
     const KEY_Hangul_J_RieulTieut: number;
 
+    /**
+     * @default 3814
+     */
     const KEY_Hangul_J_Sios: number;
 
+    /**
+     * @default 3797
+     */
     const KEY_Hangul_J_SsangKiyeog: number;
 
+    /**
+     * @default 3815
+     */
     const KEY_Hangul_J_SsangSios: number;
 
+    /**
+     * @default 3820
+     */
     const KEY_Hangul_J_Tieut: number;
 
+    /**
+     * @default 3834
+     */
     const KEY_Hangul_J_YeorinHieuh: number;
 
+    /**
+     * @default 65333
+     */
     const KEY_Hangul_Jamo: number;
 
+    /**
+     * @default 65336
+     */
     const KEY_Hangul_Jeonja: number;
 
+    /**
+     * @default 3768
+     */
     const KEY_Hangul_Jieuj: number;
 
+    /**
+     * @default 3771
+     */
     const KEY_Hangul_Khieuq: number;
 
+    /**
+     * @default 3745
+     */
     const KEY_Hangul_Kiyeog: number;
 
+    /**
+     * @default 3747
+     */
     const KEY_Hangul_KiyeogSios: number;
 
+    /**
+     * @default 3827
+     */
     const KEY_Hangul_KkogjiDalrinIeung: number;
 
+    /**
+     * @default 3761
+     */
     const KEY_Hangul_Mieum: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_Hangul_MultipleCandidate: number;
 
+    /**
+     * @default 3748
+     */
     const KEY_Hangul_Nieun: number;
 
+    /**
+     * @default 3750
+     */
     const KEY_Hangul_NieunHieuh: number;
 
+    /**
+     * @default 3749
+     */
     const KEY_Hangul_NieunJieuj: number;
 
+    /**
+     * @default 3783
+     */
     const KEY_Hangul_O: number;
 
+    /**
+     * @default 3786
+     */
     const KEY_Hangul_OE: number;
 
+    /**
+     * @default 3826
+     */
     const KEY_Hangul_PanSios: number;
 
+    /**
+     * @default 3773
+     */
     const KEY_Hangul_Phieuf: number;
 
+    /**
+     * @default 3762
+     */
     const KEY_Hangul_Pieub: number;
 
+    /**
+     * @default 3764
+     */
     const KEY_Hangul_PieubSios: number;
 
+    /**
+     * @default 65339
+     */
     const KEY_Hangul_PostHanja: number;
 
+    /**
+     * @default 65338
+     */
     const KEY_Hangul_PreHanja: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_Hangul_PreviousCandidate: number;
 
+    /**
+     * @default 3753
+     */
     const KEY_Hangul_Rieul: number;
 
+    /**
+     * @default 3760
+     */
     const KEY_Hangul_RieulHieuh: number;
 
+    /**
+     * @default 3754
+     */
     const KEY_Hangul_RieulKiyeog: number;
 
+    /**
+     * @default 3755
+     */
     const KEY_Hangul_RieulMieum: number;
 
+    /**
+     * @default 3759
+     */
     const KEY_Hangul_RieulPhieuf: number;
 
+    /**
+     * @default 3756
+     */
     const KEY_Hangul_RieulPieub: number;
 
+    /**
+     * @default 3757
+     */
     const KEY_Hangul_RieulSios: number;
 
+    /**
+     * @default 3758
+     */
     const KEY_Hangul_RieulTieut: number;
 
+    /**
+     * @default 3823
+     */
     const KEY_Hangul_RieulYeorinHieuh: number;
 
+    /**
+     * @default 65334
+     */
     const KEY_Hangul_Romaja: number;
 
+    /**
+     * @default 65340
+     */
     const KEY_Hangul_SingleCandidate: number;
 
+    /**
+     * @default 3765
+     */
     const KEY_Hangul_Sios: number;
 
+    /**
+     * @default 65343
+     */
     const KEY_Hangul_Special: number;
 
+    /**
+     * @default 3752
+     */
     const KEY_Hangul_SsangDikeud: number;
 
+    /**
+     * @default 3769
+     */
     const KEY_Hangul_SsangJieuj: number;
 
+    /**
+     * @default 3746
+     */
     const KEY_Hangul_SsangKiyeog: number;
 
+    /**
+     * @default 3763
+     */
     const KEY_Hangul_SsangPieub: number;
 
+    /**
+     * @default 3766
+     */
     const KEY_Hangul_SsangSios: number;
 
+    /**
+     * @default 65330
+     */
     const KEY_Hangul_Start: number;
 
+    /**
+     * @default 3824
+     */
     const KEY_Hangul_SunkyeongeumMieum: number;
 
+    /**
+     * @default 3828
+     */
     const KEY_Hangul_SunkyeongeumPhieuf: number;
 
+    /**
+     * @default 3825
+     */
     const KEY_Hangul_SunkyeongeumPieub: number;
 
+    /**
+     * @default 3772
+     */
     const KEY_Hangul_Tieut: number;
 
+    /**
+     * @default 3788
+     */
     const KEY_Hangul_U: number;
 
+    /**
+     * @default 3784
+     */
     const KEY_Hangul_WA: number;
 
+    /**
+     * @default 3785
+     */
     const KEY_Hangul_WAE: number;
 
+    /**
+     * @default 3790
+     */
     const KEY_Hangul_WE: number;
 
+    /**
+     * @default 3789
+     */
     const KEY_Hangul_WEO: number;
 
+    /**
+     * @default 3791
+     */
     const KEY_Hangul_WI: number;
 
+    /**
+     * @default 3777
+     */
     const KEY_Hangul_YA: number;
 
+    /**
+     * @default 3778
+     */
     const KEY_Hangul_YAE: number;
 
+    /**
+     * @default 3782
+     */
     const KEY_Hangul_YE: number;
 
+    /**
+     * @default 3781
+     */
     const KEY_Hangul_YEO: number;
 
+    /**
+     * @default 3794
+     */
     const KEY_Hangul_YI: number;
 
+    /**
+     * @default 3787
+     */
     const KEY_Hangul_YO: number;
 
+    /**
+     * @default 3792
+     */
     const KEY_Hangul_YU: number;
 
+    /**
+     * @default 3829
+     */
     const KEY_Hangul_YeorinHieuh: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Hangul_switch: number;
 
+    /**
+     * @default 65321
+     */
     const KEY_Hankaku: number;
 
+    /**
+     * @default 678
+     */
     const KEY_Hcircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Hebrew_switch: number;
 
+    /**
+     * @default 65386
+     */
     const KEY_Help: number;
 
+    /**
+     * @default 65315
+     */
     const KEY_Henkan: number;
 
+    /**
+     * @default 65315
+     */
     const KEY_Henkan_Mode: number;
 
+    /**
+     * @default 269025192
+     */
     const KEY_Hibernate: number;
 
+    /**
+     * @default 65317
+     */
     const KEY_Hiragana: number;
 
+    /**
+     * @default 65319
+     */
     const KEY_Hiragana_Katakana: number;
 
+    /**
+     * @default 269025079
+     */
     const KEY_History: number;
 
+    /**
+     * @default 65360
+     */
     const KEY_Home: number;
 
+    /**
+     * @default 269025048
+     */
     const KEY_HomePage: number;
 
+    /**
+     * @default 269025082
+     */
     const KEY_HotLinks: number;
 
+    /**
+     * @default 673
+     */
     const KEY_Hstroke: number;
 
+    /**
+     * @default 65517
+     */
     const KEY_Hyper_L: number;
 
+    /**
+     * @default 65518
+     */
     const KEY_Hyper_R: number;
 
+    /**
+     * @default 73
+     */
     const KEY_I: number;
 
+    /**
+     * @default 65075
+     */
     const KEY_ISO_Center_Object: number;
 
+    /**
+     * @default 65072
+     */
     const KEY_ISO_Continuous_Underline: number;
 
+    /**
+     * @default 65073
+     */
     const KEY_ISO_Discontinuous_Underline: number;
 
+    /**
+     * @default 65074
+     */
     const KEY_ISO_Emphasize: number;
 
+    /**
+     * @default 65076
+     */
     const KEY_ISO_Enter: number;
 
+    /**
+     * @default 65071
+     */
     const KEY_ISO_Fast_Cursor_Down: number;
 
+    /**
+     * @default 65068
+     */
     const KEY_ISO_Fast_Cursor_Left: number;
 
+    /**
+     * @default 65069
+     */
     const KEY_ISO_Fast_Cursor_Right: number;
 
+    /**
+     * @default 65070
+     */
     const KEY_ISO_Fast_Cursor_Up: number;
 
+    /**
+     * @default 65036
+     */
     const KEY_ISO_First_Group: number;
 
+    /**
+     * @default 65037
+     */
     const KEY_ISO_First_Group_Lock: number;
 
+    /**
+     * @default 65030
+     */
     const KEY_ISO_Group_Latch: number;
 
+    /**
+     * @default 65031
+     */
     const KEY_ISO_Group_Lock: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_ISO_Group_Shift: number;
 
+    /**
+     * @default 65038
+     */
     const KEY_ISO_Last_Group: number;
 
+    /**
+     * @default 65039
+     */
     const KEY_ISO_Last_Group_Lock: number;
 
+    /**
+     * @default 65056
+     */
     const KEY_ISO_Left_Tab: number;
 
+    /**
+     * @default 65026
+     */
     const KEY_ISO_Level2_Latch: number;
 
+    /**
+     * @default 65028
+     */
     const KEY_ISO_Level3_Latch: number;
 
+    /**
+     * @default 65029
+     */
     const KEY_ISO_Level3_Lock: number;
 
+    /**
+     * @default 65027
+     */
     const KEY_ISO_Level3_Shift: number;
 
+    /**
+     * @default 65042
+     */
     const KEY_ISO_Level5_Latch: number;
 
+    /**
+     * @default 65043
+     */
     const KEY_ISO_Level5_Lock: number;
 
+    /**
+     * @default 65041
+     */
     const KEY_ISO_Level5_Shift: number;
 
+    /**
+     * @default 65025
+     */
     const KEY_ISO_Lock: number;
 
+    /**
+     * @default 65058
+     */
     const KEY_ISO_Move_Line_Down: number;
 
+    /**
+     * @default 65057
+     */
     const KEY_ISO_Move_Line_Up: number;
 
+    /**
+     * @default 65032
+     */
     const KEY_ISO_Next_Group: number;
 
+    /**
+     * @default 65033
+     */
     const KEY_ISO_Next_Group_Lock: number;
 
+    /**
+     * @default 65060
+     */
     const KEY_ISO_Partial_Line_Down: number;
 
+    /**
+     * @default 65059
+     */
     const KEY_ISO_Partial_Line_Up: number;
 
+    /**
+     * @default 65061
+     */
     const KEY_ISO_Partial_Space_Left: number;
 
+    /**
+     * @default 65062
+     */
     const KEY_ISO_Partial_Space_Right: number;
 
+    /**
+     * @default 65034
+     */
     const KEY_ISO_Prev_Group: number;
 
+    /**
+     * @default 65035
+     */
     const KEY_ISO_Prev_Group_Lock: number;
 
+    /**
+     * @default 65067
+     */
     const KEY_ISO_Release_Both_Margins: number;
 
+    /**
+     * @default 65065
+     */
     const KEY_ISO_Release_Margin_Left: number;
 
+    /**
+     * @default 65066
+     */
     const KEY_ISO_Release_Margin_Right: number;
 
+    /**
+     * @default 65063
+     */
     const KEY_ISO_Set_Margin_Left: number;
 
+    /**
+     * @default 65064
+     */
     const KEY_ISO_Set_Margin_Right: number;
 
+    /**
+     * @default 681
+     */
     const KEY_Iabovedot: number;
 
+    /**
+     * @default 205
+     */
     const KEY_Iacute: number;
 
+    /**
+     * @default 16785098
+     */
     const KEY_Ibelowdot: number;
 
+    /**
+     * @default 16777516
+     */
     const KEY_Ibreve: number;
 
+    /**
+     * @default 206
+     */
     const KEY_Icircumflex: number;
 
+    /**
+     * @default 207
+     */
     const KEY_Idiaeresis: number;
 
+    /**
+     * @default 204
+     */
     const KEY_Igrave: number;
 
+    /**
+     * @default 16785096
+     */
     const KEY_Ihook: number;
 
+    /**
+     * @default 975
+     */
     const KEY_Imacron: number;
 
+    /**
+     * @default 65379
+     */
     const KEY_Insert: number;
 
+    /**
+     * @default 967
+     */
     const KEY_Iogonek: number;
 
+    /**
+     * @default 933
+     */
     const KEY_Itilde: number;
 
+    /**
+     * @default 74
+     */
     const KEY_J: number;
 
+    /**
+     * @default 684
+     */
     const KEY_Jcircumflex: number;
 
+    /**
+     * @default 75
+     */
     const KEY_K: number;
 
+    /**
+     * @default 65456
+     */
     const KEY_KP_0: number;
 
+    /**
+     * @default 65457
+     */
     const KEY_KP_1: number;
 
+    /**
+     * @default 65458
+     */
     const KEY_KP_2: number;
 
+    /**
+     * @default 65459
+     */
     const KEY_KP_3: number;
 
+    /**
+     * @default 65460
+     */
     const KEY_KP_4: number;
 
+    /**
+     * @default 65461
+     */
     const KEY_KP_5: number;
 
+    /**
+     * @default 65462
+     */
     const KEY_KP_6: number;
 
+    /**
+     * @default 65463
+     */
     const KEY_KP_7: number;
 
+    /**
+     * @default 65464
+     */
     const KEY_KP_8: number;
 
+    /**
+     * @default 65465
+     */
     const KEY_KP_9: number;
 
+    /**
+     * @default 65451
+     */
     const KEY_KP_Add: number;
 
+    /**
+     * @default 65437
+     */
     const KEY_KP_Begin: number;
 
+    /**
+     * @default 65454
+     */
     const KEY_KP_Decimal: number;
 
+    /**
+     * @default 65439
+     */
     const KEY_KP_Delete: number;
 
+    /**
+     * @default 65455
+     */
     const KEY_KP_Divide: number;
 
+    /**
+     * @default 65433
+     */
     const KEY_KP_Down: number;
 
+    /**
+     * @default 65436
+     */
     const KEY_KP_End: number;
 
+    /**
+     * @default 65421
+     */
     const KEY_KP_Enter: number;
 
+    /**
+     * @default 65469
+     */
     const KEY_KP_Equal: number;
 
+    /**
+     * @default 65425
+     */
     const KEY_KP_F1: number;
 
+    /**
+     * @default 65426
+     */
     const KEY_KP_F2: number;
 
+    /**
+     * @default 65427
+     */
     const KEY_KP_F3: number;
 
+    /**
+     * @default 65428
+     */
     const KEY_KP_F4: number;
 
+    /**
+     * @default 65429
+     */
     const KEY_KP_Home: number;
 
+    /**
+     * @default 65438
+     */
     const KEY_KP_Insert: number;
 
+    /**
+     * @default 65430
+     */
     const KEY_KP_Left: number;
 
+    /**
+     * @default 65450
+     */
     const KEY_KP_Multiply: number;
 
+    /**
+     * @default 65435
+     */
     const KEY_KP_Next: number;
 
+    /**
+     * @default 65435
+     */
     const KEY_KP_Page_Down: number;
 
+    /**
+     * @default 65434
+     */
     const KEY_KP_Page_Up: number;
 
+    /**
+     * @default 65434
+     */
     const KEY_KP_Prior: number;
 
+    /**
+     * @default 65432
+     */
     const KEY_KP_Right: number;
 
+    /**
+     * @default 65452
+     */
     const KEY_KP_Separator: number;
 
+    /**
+     * @default 65408
+     */
     const KEY_KP_Space: number;
 
+    /**
+     * @default 65453
+     */
     const KEY_KP_Subtract: number;
 
+    /**
+     * @default 65417
+     */
     const KEY_KP_Tab: number;
 
+    /**
+     * @default 65431
+     */
     const KEY_KP_Up: number;
 
+    /**
+     * @default 65325
+     */
     const KEY_Kana_Lock: number;
 
+    /**
+     * @default 65326
+     */
     const KEY_Kana_Shift: number;
 
+    /**
+     * @default 65313
+     */
     const KEY_Kanji: number;
 
+    /**
+     * @default 65335
+     */
     const KEY_Kanji_Bangou: number;
 
+    /**
+     * @default 65318
+     */
     const KEY_Katakana: number;
 
+    /**
+     * @default 269025030
+     */
     const KEY_KbdBrightnessDown: number;
 
+    /**
+     * @default 269025029
+     */
     const KEY_KbdBrightnessUp: number;
 
+    /**
+     * @default 269025028
+     */
     const KEY_KbdLightOnOff: number;
 
+    /**
+     * @default 979
+     */
     const KEY_Kcedilla: number;
 
+    /**
+     * @default 3839
+     */
     const KEY_Korean_Won: number;
 
+    /**
+     * @default 76
+     */
     const KEY_L: number;
 
+    /**
+     * @default 65480
+     */
     const KEY_L1: number;
 
+    /**
+     * @default 65489
+     */
     const KEY_L10: number;
 
+    /**
+     * @default 65481
+     */
     const KEY_L2: number;
 
+    /**
+     * @default 65482
+     */
     const KEY_L3: number;
 
+    /**
+     * @default 65483
+     */
     const KEY_L4: number;
 
+    /**
+     * @default 65484
+     */
     const KEY_L5: number;
 
+    /**
+     * @default 65485
+     */
     const KEY_L6: number;
 
+    /**
+     * @default 65486
+     */
     const KEY_L7: number;
 
+    /**
+     * @default 65487
+     */
     const KEY_L8: number;
 
+    /**
+     * @default 65488
+     */
     const KEY_L9: number;
 
+    /**
+     * @default 453
+     */
     const KEY_Lacute: number;
 
+    /**
+     * @default 65236
+     */
     const KEY_Last_Virtual_Screen: number;
 
+    /**
+     * @default 269025088
+     */
     const KEY_Launch0: number;
 
+    /**
+     * @default 269025089
+     */
     const KEY_Launch1: number;
 
+    /**
+     * @default 269025090
+     */
     const KEY_Launch2: number;
 
+    /**
+     * @default 269025091
+     */
     const KEY_Launch3: number;
 
+    /**
+     * @default 269025092
+     */
     const KEY_Launch4: number;
 
+    /**
+     * @default 269025093
+     */
     const KEY_Launch5: number;
 
+    /**
+     * @default 269025094
+     */
     const KEY_Launch6: number;
 
+    /**
+     * @default 269025095
+     */
     const KEY_Launch7: number;
 
+    /**
+     * @default 269025096
+     */
     const KEY_Launch8: number;
 
+    /**
+     * @default 269025097
+     */
     const KEY_Launch9: number;
 
+    /**
+     * @default 269025098
+     */
     const KEY_LaunchA: number;
 
+    /**
+     * @default 269025099
+     */
     const KEY_LaunchB: number;
 
+    /**
+     * @default 269025100
+     */
     const KEY_LaunchC: number;
 
+    /**
+     * @default 269025101
+     */
     const KEY_LaunchD: number;
 
+    /**
+     * @default 269025102
+     */
     const KEY_LaunchE: number;
 
+    /**
+     * @default 269025103
+     */
     const KEY_LaunchF: number;
 
+    /**
+     * @default 16784950
+     */
     const KEY_Lbelowdot: number;
 
+    /**
+     * @default 421
+     */
     const KEY_Lcaron: number;
 
+    /**
+     * @default 934
+     */
     const KEY_Lcedilla: number;
 
+    /**
+     * @default 65361
+     */
     const KEY_Left: number;
 
+    /**
+     * @default 269025077
+     */
     const KEY_LightBulb: number;
 
+    /**
+     * @default 65290
+     */
     const KEY_Linefeed: number;
 
+    /**
+     * @default 16785572
+     */
     const KEY_LiraSign: number;
 
+    /**
+     * @default 269024805
+     */
     const KEY_LogGrabInfo: number;
 
+    /**
+     * @default 269025121
+     */
     const KEY_LogOff: number;
 
+    /**
+     * @default 269024804
+     */
     const KEY_LogWindowTree: number;
 
+    /**
+     * @default 419
+     */
     const KEY_Lstroke: number;
 
+    /**
+     * @default 77
+     */
     const KEY_M: number;
 
+    /**
+     * @default 16784960
+     */
     const KEY_Mabovedot: number;
 
+    /**
+     * @default 1717
+     */
     const KEY_Macedonia_DSE: number;
 
+    /**
+     * @default 1714
+     */
     const KEY_Macedonia_GJE: number;
 
+    /**
+     * @default 1724
+     */
     const KEY_Macedonia_KJE: number;
 
+    /**
+     * @default 1701
+     */
     const KEY_Macedonia_dse: number;
 
+    /**
+     * @default 1698
+     */
     const KEY_Macedonia_gje: number;
 
+    /**
+     * @default 1708
+     */
     const KEY_Macedonia_kje: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_Mae_Koho: number;
 
+    /**
+     * @default 269025049
+     */
     const KEY_Mail: number;
 
+    /**
+     * @default 269025168
+     */
     const KEY_MailForward: number;
 
+    /**
+     * @default 269025122
+     */
     const KEY_Market: number;
 
+    /**
+     * @default 65324
+     */
     const KEY_Massyo: number;
 
+    /**
+     * @default 269025123
+     */
     const KEY_Meeting: number;
 
+    /**
+     * @default 269025054
+     */
     const KEY_Memo: number;
 
+    /**
+     * @default 65383
+     */
     const KEY_Menu: number;
 
+    /**
+     * @default 269025125
+     */
     const KEY_MenuKB: number;
 
+    /**
+     * @default 269025126
+     */
     const KEY_MenuPB: number;
 
+    /**
+     * @default 269025166
+     */
     const KEY_Messenger: number;
 
+    /**
+     * @default 65511
+     */
     const KEY_Meta_L: number;
 
+    /**
+     * @default 65512
+     */
     const KEY_Meta_R: number;
 
+    /**
+     * @default 16785573
+     */
     const KEY_MillSign: number;
 
+    /**
+     * @default 269025025
+     */
     const KEY_ModeLock: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_Mode_switch: number;
 
+    /**
+     * @default 269025027
+     */
     const KEY_MonBrightnessDown: number;
 
+    /**
+     * @default 269025026
+     */
     const KEY_MonBrightnessUp: number;
 
+    /**
+     * @default 65143
+     */
     const KEY_MouseKeys_Accel_Enable: number;
 
+    /**
+     * @default 65142
+     */
     const KEY_MouseKeys_Enable: number;
 
+    /**
+     * @default 65314
+     */
     const KEY_Muhenkan: number;
 
+    /**
+     * @default 65312
+     */
     const KEY_Multi_key: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_MultipleCandidate: number;
 
+    /**
+     * @default 269025170
+     */
     const KEY_Music: number;
 
+    /**
+     * @default 269025075
+     */
     const KEY_MyComputer: number;
 
+    /**
+     * @default 269025127
+     */
     const KEY_MySites: number;
 
+    /**
+     * @default 78
+     */
     const KEY_N: number;
 
+    /**
+     * @default 465
+     */
     const KEY_Nacute: number;
 
+    /**
+     * @default 16785574
+     */
     const KEY_NairaSign: number;
 
+    /**
+     * @default 466
+     */
     const KEY_Ncaron: number;
 
+    /**
+     * @default 977
+     */
     const KEY_Ncedilla: number;
 
+    /**
+     * @default 269025128
+     */
     const KEY_New: number;
 
+    /**
+     * @default 16785578
+     */
     const KEY_NewSheqelSign: number;
 
+    /**
+     * @default 269025129
+     */
     const KEY_News: number;
 
+    /**
+     * @default 65366
+     */
     const KEY_Next: number;
 
+    /**
+     * @default 269024802
+     */
     const KEY_Next_VMode: number;
 
+    /**
+     * @default 65234
+     */
     const KEY_Next_Virtual_Screen: number;
 
+    /**
+     * @default 209
+     */
     const KEY_Ntilde: number;
 
+    /**
+     * @default 65407
+     */
     const KEY_Num_Lock: number;
 
+    /**
+     * @default 79
+     */
     const KEY_O: number;
 
+    /**
+     * @default 5052
+     */
     const KEY_OE: number;
 
+    /**
+     * @default 211
+     */
     const KEY_Oacute: number;
 
+    /**
+     * @default 16777631
+     */
     const KEY_Obarred: number;
 
+    /**
+     * @default 16785100
+     */
     const KEY_Obelowdot: number;
 
+    /**
+     * @default 16777681
+     */
     const KEY_Ocaron: number;
 
+    /**
+     * @default 212
+     */
     const KEY_Ocircumflex: number;
 
+    /**
+     * @default 16785104
+     */
     const KEY_Ocircumflexacute: number;
 
+    /**
+     * @default 16785112
+     */
     const KEY_Ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785106
+     */
     const KEY_Ocircumflexgrave: number;
 
+    /**
+     * @default 16785108
+     */
     const KEY_Ocircumflexhook: number;
 
+    /**
+     * @default 16785110
+     */
     const KEY_Ocircumflextilde: number;
 
+    /**
+     * @default 214
+     */
     const KEY_Odiaeresis: number;
 
+    /**
+     * @default 469
+     */
     const KEY_Odoubleacute: number;
 
+    /**
+     * @default 269025130
+     */
     const KEY_OfficeHome: number;
 
+    /**
+     * @default 210
+     */
     const KEY_Ograve: number;
 
+    /**
+     * @default 16785102
+     */
     const KEY_Ohook: number;
 
+    /**
+     * @default 16777632
+     */
     const KEY_Ohorn: number;
 
+    /**
+     * @default 16785114
+     */
     const KEY_Ohornacute: number;
 
+    /**
+     * @default 16785122
+     */
     const KEY_Ohornbelowdot: number;
 
+    /**
+     * @default 16785116
+     */
     const KEY_Ohorngrave: number;
 
+    /**
+     * @default 16785118
+     */
     const KEY_Ohornhook: number;
 
+    /**
+     * @default 16785120
+     */
     const KEY_Ohorntilde: number;
 
+    /**
+     * @default 978
+     */
     const KEY_Omacron: number;
 
+    /**
+     * @default 216
+     */
     const KEY_Ooblique: number;
 
+    /**
+     * @default 269025131
+     */
     const KEY_Open: number;
 
+    /**
+     * @default 269025080
+     */
     const KEY_OpenURL: number;
 
+    /**
+     * @default 269025132
+     */
     const KEY_Option: number;
 
+    /**
+     * @default 216
+     */
     const KEY_Oslash: number;
 
+    /**
+     * @default 213
+     */
     const KEY_Otilde: number;
 
+    /**
+     * @default 65144
+     */
     const KEY_Overlay1_Enable: number;
 
+    /**
+     * @default 65145
+     */
     const KEY_Overlay2_Enable: number;
 
+    /**
+     * @default 80
+     */
     const KEY_P: number;
 
+    /**
+     * @default 16784982
+     */
     const KEY_Pabovedot: number;
 
+    /**
+     * @default 65366
+     */
     const KEY_Page_Down: number;
 
+    /**
+     * @default 65365
+     */
     const KEY_Page_Up: number;
 
+    /**
+     * @default 269025133
+     */
     const KEY_Paste: number;
 
+    /**
+     * @default 65299
+     */
     const KEY_Pause: number;
 
+    /**
+     * @default 16785575
+     */
     const KEY_PesetaSign: number;
 
+    /**
+     * @default 269025134
+     */
     const KEY_Phone: number;
 
+    /**
+     * @default 269025169
+     */
     const KEY_Pictures: number;
 
+    /**
+     * @default 65274
+     */
     const KEY_Pointer_Accelerate: number;
 
+    /**
+     * @default 65257
+     */
     const KEY_Pointer_Button1: number;
 
+    /**
+     * @default 65258
+     */
     const KEY_Pointer_Button2: number;
 
+    /**
+     * @default 65259
+     */
     const KEY_Pointer_Button3: number;
 
+    /**
+     * @default 65260
+     */
     const KEY_Pointer_Button4: number;
 
+    /**
+     * @default 65261
+     */
     const KEY_Pointer_Button5: number;
 
+    /**
+     * @default 65256
+     */
     const KEY_Pointer_Button_Dflt: number;
 
+    /**
+     * @default 65263
+     */
     const KEY_Pointer_DblClick1: number;
 
+    /**
+     * @default 65264
+     */
     const KEY_Pointer_DblClick2: number;
 
+    /**
+     * @default 65265
+     */
     const KEY_Pointer_DblClick3: number;
 
+    /**
+     * @default 65266
+     */
     const KEY_Pointer_DblClick4: number;
 
+    /**
+     * @default 65267
+     */
     const KEY_Pointer_DblClick5: number;
 
+    /**
+     * @default 65262
+     */
     const KEY_Pointer_DblClick_Dflt: number;
 
+    /**
+     * @default 65275
+     */
     const KEY_Pointer_DfltBtnNext: number;
 
+    /**
+     * @default 65276
+     */
     const KEY_Pointer_DfltBtnPrev: number;
 
+    /**
+     * @default 65251
+     */
     const KEY_Pointer_Down: number;
 
+    /**
+     * @default 65254
+     */
     const KEY_Pointer_DownLeft: number;
 
+    /**
+     * @default 65255
+     */
     const KEY_Pointer_DownRight: number;
 
+    /**
+     * @default 65269
+     */
     const KEY_Pointer_Drag1: number;
 
+    /**
+     * @default 65270
+     */
     const KEY_Pointer_Drag2: number;
 
+    /**
+     * @default 65271
+     */
     const KEY_Pointer_Drag3: number;
 
+    /**
+     * @default 65272
+     */
     const KEY_Pointer_Drag4: number;
 
+    /**
+     * @default 65277
+     */
     const KEY_Pointer_Drag5: number;
 
+    /**
+     * @default 65268
+     */
     const KEY_Pointer_Drag_Dflt: number;
 
+    /**
+     * @default 65273
+     */
     const KEY_Pointer_EnableKeys: number;
 
+    /**
+     * @default 65248
+     */
     const KEY_Pointer_Left: number;
 
+    /**
+     * @default 65249
+     */
     const KEY_Pointer_Right: number;
 
+    /**
+     * @default 65250
+     */
     const KEY_Pointer_Up: number;
 
+    /**
+     * @default 65252
+     */
     const KEY_Pointer_UpLeft: number;
 
+    /**
+     * @default 65253
+     */
     const KEY_Pointer_UpRight: number;
 
+    /**
+     * @default 269025057
+     */
     const KEY_PowerDown: number;
 
+    /**
+     * @default 269025066
+     */
     const KEY_PowerOff: number;
 
+    /**
+     * @default 269024803
+     */
     const KEY_Prev_VMode: number;
 
+    /**
+     * @default 65233
+     */
     const KEY_Prev_Virtual_Screen: number;
 
+    /**
+     * @default 65342
+     */
     const KEY_PreviousCandidate: number;
 
+    /**
+     * @default 65377
+     */
     const KEY_Print: number;
 
+    /**
+     * @default 65365
+     */
     const KEY_Prior: number;
 
+    /**
+     * @default 81
+     */
     const KEY_Q: number;
 
+    /**
+     * @default 82
+     */
     const KEY_R: number;
 
+    /**
+     * @default 65490
+     */
     const KEY_R1: number;
 
+    /**
+     * @default 65499
+     */
     const KEY_R10: number;
 
+    /**
+     * @default 65500
+     */
     const KEY_R11: number;
 
+    /**
+     * @default 65501
+     */
     const KEY_R12: number;
 
+    /**
+     * @default 65502
+     */
     const KEY_R13: number;
 
+    /**
+     * @default 65503
+     */
     const KEY_R14: number;
 
+    /**
+     * @default 65504
+     */
     const KEY_R15: number;
 
+    /**
+     * @default 65491
+     */
     const KEY_R2: number;
 
+    /**
+     * @default 65492
+     */
     const KEY_R3: number;
 
+    /**
+     * @default 65493
+     */
     const KEY_R4: number;
 
+    /**
+     * @default 65494
+     */
     const KEY_R5: number;
 
+    /**
+     * @default 65495
+     */
     const KEY_R6: number;
 
+    /**
+     * @default 65496
+     */
     const KEY_R7: number;
 
+    /**
+     * @default 65497
+     */
     const KEY_R8: number;
 
+    /**
+     * @default 65498
+     */
     const KEY_R9: number;
 
+    /**
+     * @default 448
+     */
     const KEY_Racute: number;
 
+    /**
+     * @default 472
+     */
     const KEY_Rcaron: number;
 
+    /**
+     * @default 931
+     */
     const KEY_Rcedilla: number;
 
+    /**
+     * @default 269025187
+     */
     const KEY_Red: number;
 
+    /**
+     * @default 65382
+     */
     const KEY_Redo: number;
 
+    /**
+     * @default 269025065
+     */
     const KEY_Refresh: number;
 
+    /**
+     * @default 269025139
+     */
     const KEY_Reload: number;
 
+    /**
+     * @default 65138
+     */
     const KEY_RepeatKeys_Enable: number;
 
+    /**
+     * @default 269025138
+     */
     const KEY_Reply: number;
 
+    /**
+     * @default 65293
+     */
     const KEY_Return: number;
 
+    /**
+     * @default 65363
+     */
     const KEY_Right: number;
 
+    /**
+     * @default 269025060
+     */
     const KEY_RockerDown: number;
 
+    /**
+     * @default 269025061
+     */
     const KEY_RockerEnter: number;
 
+    /**
+     * @default 269025059
+     */
     const KEY_RockerUp: number;
 
+    /**
+     * @default 65316
+     */
     const KEY_Romaji: number;
 
+    /**
+     * @default 269025140
+     */
     const KEY_RotateWindows: number;
 
+    /**
+     * @default 269025142
+     */
     const KEY_RotationKB: number;
 
+    /**
+     * @default 269025141
+     */
     const KEY_RotationPB: number;
 
+    /**
+     * @default 16785576
+     */
     const KEY_RupeeSign: number;
 
+    /**
+     * @default 83
+     */
     const KEY_S: number;
 
+    /**
+     * @default 16777615
+     */
     const KEY_SCHWA: number;
 
+    /**
+     * @default 16784992
+     */
     const KEY_Sabovedot: number;
 
+    /**
+     * @default 422
+     */
     const KEY_Sacute: number;
 
+    /**
+     * @default 269025143
+     */
     const KEY_Save: number;
 
+    /**
+     * @default 425
+     */
     const KEY_Scaron: number;
 
+    /**
+     * @default 426
+     */
     const KEY_Scedilla: number;
 
+    /**
+     * @default 734
+     */
     const KEY_Scircumflex: number;
 
+    /**
+     * @default 269025069
+     */
     const KEY_ScreenSaver: number;
 
+    /**
+     * @default 269025146
+     */
     const KEY_ScrollClick: number;
 
+    /**
+     * @default 269025145
+     */
     const KEY_ScrollDown: number;
 
+    /**
+     * @default 269025144
+     */
     const KEY_ScrollUp: number;
 
+    /**
+     * @default 65300
+     */
     const KEY_Scroll_Lock: number;
 
+    /**
+     * @default 269025051
+     */
     const KEY_Search: number;
 
+    /**
+     * @default 65376
+     */
     const KEY_Select: number;
 
+    /**
+     * @default 269025184
+     */
     const KEY_SelectButton: number;
 
+    /**
+     * @default 269025147
+     */
     const KEY_Send: number;
 
+    /**
+     * @default 1713
+     */
     const KEY_Serbian_DJE: number;
 
+    /**
+     * @default 1727
+     */
     const KEY_Serbian_DZE: number;
 
+    /**
+     * @default 1720
+     */
     const KEY_Serbian_JE: number;
 
+    /**
+     * @default 1721
+     */
     const KEY_Serbian_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const KEY_Serbian_NJE: number;
 
+    /**
+     * @default 1723
+     */
     const KEY_Serbian_TSHE: number;
 
+    /**
+     * @default 1697
+     */
     const KEY_Serbian_dje: number;
 
+    /**
+     * @default 1711
+     */
     const KEY_Serbian_dze: number;
 
+    /**
+     * @default 1704
+     */
     const KEY_Serbian_je: number;
 
+    /**
+     * @default 1705
+     */
     const KEY_Serbian_lje: number;
 
+    /**
+     * @default 1706
+     */
     const KEY_Serbian_nje: number;
 
+    /**
+     * @default 1707
+     */
     const KEY_Serbian_tshe: number;
 
+    /**
+     * @default 65505
+     */
     const KEY_Shift_L: number;
 
+    /**
+     * @default 65510
+     */
     const KEY_Shift_Lock: number;
 
+    /**
+     * @default 65506
+     */
     const KEY_Shift_R: number;
 
+    /**
+     * @default 269025078
+     */
     const KEY_Shop: number;
 
+    /**
+     * @default 65340
+     */
     const KEY_SingleCandidate: number;
 
+    /**
+     * @default 16780677
+     */
     const KEY_Sinh_a: number;
 
+    /**
+     * @default 16780678
+     */
     const KEY_Sinh_aa: number;
 
+    /**
+     * @default 16780751
+     */
     const KEY_Sinh_aa2: number;
 
+    /**
+     * @default 16780679
+     */
     const KEY_Sinh_ae: number;
 
+    /**
+     * @default 16780752
+     */
     const KEY_Sinh_ae2: number;
 
+    /**
+     * @default 16780680
+     */
     const KEY_Sinh_aee: number;
 
+    /**
+     * @default 16780753
+     */
     const KEY_Sinh_aee2: number;
 
+    /**
+     * @default 16780691
+     */
     const KEY_Sinh_ai: number;
 
+    /**
+     * @default 16780763
+     */
     const KEY_Sinh_ai2: number;
 
+    /**
+     * @default 16780746
+     */
     const KEY_Sinh_al: number;
 
+    /**
+     * @default 16780694
+     */
     const KEY_Sinh_au: number;
 
+    /**
+     * @default 16780766
+     */
     const KEY_Sinh_au2: number;
 
+    /**
+     * @default 16780726
+     */
     const KEY_Sinh_ba: number;
 
+    /**
+     * @default 16780727
+     */
     const KEY_Sinh_bha: number;
 
+    /**
+     * @default 16780704
+     */
     const KEY_Sinh_ca: number;
 
+    /**
+     * @default 16780705
+     */
     const KEY_Sinh_cha: number;
 
+    /**
+     * @default 16780713
+     */
     const KEY_Sinh_dda: number;
 
+    /**
+     * @default 16780714
+     */
     const KEY_Sinh_ddha: number;
 
+    /**
+     * @default 16780719
+     */
     const KEY_Sinh_dha: number;
 
+    /**
+     * @default 16780720
+     */
     const KEY_Sinh_dhha: number;
 
+    /**
+     * @default 16780689
+     */
     const KEY_Sinh_e: number;
 
+    /**
+     * @default 16780761
+     */
     const KEY_Sinh_e2: number;
 
+    /**
+     * @default 16780690
+     */
     const KEY_Sinh_ee: number;
 
+    /**
+     * @default 16780762
+     */
     const KEY_Sinh_ee2: number;
 
+    /**
+     * @default 16780742
+     */
     const KEY_Sinh_fa: number;
 
+    /**
+     * @default 16780700
+     */
     const KEY_Sinh_ga: number;
 
+    /**
+     * @default 16780701
+     */
     const KEY_Sinh_gha: number;
 
+    /**
+     * @default 16780675
+     */
     const KEY_Sinh_h2: number;
 
+    /**
+     * @default 16780740
+     */
     const KEY_Sinh_ha: number;
 
+    /**
+     * @default 16780681
+     */
     const KEY_Sinh_i: number;
 
+    /**
+     * @default 16780754
+     */
     const KEY_Sinh_i2: number;
 
+    /**
+     * @default 16780682
+     */
     const KEY_Sinh_ii: number;
 
+    /**
+     * @default 16780755
+     */
     const KEY_Sinh_ii2: number;
 
+    /**
+     * @default 16780706
+     */
     const KEY_Sinh_ja: number;
 
+    /**
+     * @default 16780707
+     */
     const KEY_Sinh_jha: number;
 
+    /**
+     * @default 16780709
+     */
     const KEY_Sinh_jnya: number;
 
+    /**
+     * @default 16780698
+     */
     const KEY_Sinh_ka: number;
 
+    /**
+     * @default 16780699
+     */
     const KEY_Sinh_kha: number;
 
+    /**
+     * @default 16780788
+     */
     const KEY_Sinh_kunddaliya: number;
 
+    /**
+     * @default 16780733
+     */
     const KEY_Sinh_la: number;
 
+    /**
+     * @default 16780741
+     */
     const KEY_Sinh_lla: number;
 
+    /**
+     * @default 16780687
+     */
     const KEY_Sinh_lu: number;
 
+    /**
+     * @default 16780767
+     */
     const KEY_Sinh_lu2: number;
 
+    /**
+     * @default 16780688
+     */
     const KEY_Sinh_luu: number;
 
+    /**
+     * @default 16780787
+     */
     const KEY_Sinh_luu2: number;
 
+    /**
+     * @default 16780728
+     */
     const KEY_Sinh_ma: number;
 
+    /**
+     * @default 16780729
+     */
     const KEY_Sinh_mba: number;
 
+    /**
+     * @default 16780721
+     */
     const KEY_Sinh_na: number;
 
+    /**
+     * @default 16780716
+     */
     const KEY_Sinh_ndda: number;
 
+    /**
+     * @default 16780723
+     */
     const KEY_Sinh_ndha: number;
 
+    /**
+     * @default 16780674
+     */
     const KEY_Sinh_ng: number;
 
+    /**
+     * @default 16780702
+     */
     const KEY_Sinh_ng2: number;
 
+    /**
+     * @default 16780703
+     */
     const KEY_Sinh_nga: number;
 
+    /**
+     * @default 16780710
+     */
     const KEY_Sinh_nja: number;
 
+    /**
+     * @default 16780715
+     */
     const KEY_Sinh_nna: number;
 
+    /**
+     * @default 16780708
+     */
     const KEY_Sinh_nya: number;
 
+    /**
+     * @default 16780692
+     */
     const KEY_Sinh_o: number;
 
+    /**
+     * @default 16780764
+     */
     const KEY_Sinh_o2: number;
 
+    /**
+     * @default 16780693
+     */
     const KEY_Sinh_oo: number;
 
+    /**
+     * @default 16780765
+     */
     const KEY_Sinh_oo2: number;
 
+    /**
+     * @default 16780724
+     */
     const KEY_Sinh_pa: number;
 
+    /**
+     * @default 16780725
+     */
     const KEY_Sinh_pha: number;
 
+    /**
+     * @default 16780731
+     */
     const KEY_Sinh_ra: number;
 
+    /**
+     * @default 16780685
+     */
     const KEY_Sinh_ri: number;
 
+    /**
+     * @default 16780686
+     */
     const KEY_Sinh_rii: number;
 
+    /**
+     * @default 16780760
+     */
     const KEY_Sinh_ru2: number;
 
+    /**
+     * @default 16780786
+     */
     const KEY_Sinh_ruu2: number;
 
+    /**
+     * @default 16780739
+     */
     const KEY_Sinh_sa: number;
 
+    /**
+     * @default 16780737
+     */
     const KEY_Sinh_sha: number;
 
+    /**
+     * @default 16780738
+     */
     const KEY_Sinh_ssha: number;
 
+    /**
+     * @default 16780717
+     */
     const KEY_Sinh_tha: number;
 
+    /**
+     * @default 16780718
+     */
     const KEY_Sinh_thha: number;
 
+    /**
+     * @default 16780711
+     */
     const KEY_Sinh_tta: number;
 
+    /**
+     * @default 16780712
+     */
     const KEY_Sinh_ttha: number;
 
+    /**
+     * @default 16780683
+     */
     const KEY_Sinh_u: number;
 
+    /**
+     * @default 16780756
+     */
     const KEY_Sinh_u2: number;
 
+    /**
+     * @default 16780684
+     */
     const KEY_Sinh_uu: number;
 
+    /**
+     * @default 16780758
+     */
     const KEY_Sinh_uu2: number;
 
+    /**
+     * @default 16780736
+     */
     const KEY_Sinh_va: number;
 
+    /**
+     * @default 16780730
+     */
     const KEY_Sinh_ya: number;
 
+    /**
+     * @default 269025071
+     */
     const KEY_Sleep: number;
 
+    /**
+     * @default 65139
+     */
     const KEY_SlowKeys_Enable: number;
 
+    /**
+     * @default 269025148
+     */
     const KEY_Spell: number;
 
+    /**
+     * @default 269025149
+     */
     const KEY_SplitScreen: number;
 
+    /**
+     * @default 269025040
+     */
     const KEY_Standby: number;
 
+    /**
+     * @default 269025050
+     */
     const KEY_Start: number;
 
+    /**
+     * @default 65141
+     */
     const KEY_StickyKeys_Enable: number;
 
+    /**
+     * @default 269025064
+     */
     const KEY_Stop: number;
 
+    /**
+     * @default 269025178
+     */
     const KEY_Subtitle: number;
 
+    /**
+     * @default 65515
+     */
     const KEY_Super_L: number;
 
+    /**
+     * @default 65516
+     */
     const KEY_Super_R: number;
 
+    /**
+     * @default 269025150
+     */
     const KEY_Support: number;
 
+    /**
+     * @default 269025191
+     */
     const KEY_Suspend: number;
 
+    /**
+     * @default 269024769
+     */
     const KEY_Switch_VT_1: number;
 
+    /**
+     * @default 269024778
+     */
     const KEY_Switch_VT_10: number;
 
+    /**
+     * @default 269024779
+     */
     const KEY_Switch_VT_11: number;
 
+    /**
+     * @default 269024780
+     */
     const KEY_Switch_VT_12: number;
 
+    /**
+     * @default 269024770
+     */
     const KEY_Switch_VT_2: number;
 
+    /**
+     * @default 269024771
+     */
     const KEY_Switch_VT_3: number;
 
+    /**
+     * @default 269024772
+     */
     const KEY_Switch_VT_4: number;
 
+    /**
+     * @default 269024773
+     */
     const KEY_Switch_VT_5: number;
 
+    /**
+     * @default 269024774
+     */
     const KEY_Switch_VT_6: number;
 
+    /**
+     * @default 269024775
+     */
     const KEY_Switch_VT_7: number;
 
+    /**
+     * @default 269024776
+     */
     const KEY_Switch_VT_8: number;
 
+    /**
+     * @default 269024777
+     */
     const KEY_Switch_VT_9: number;
 
+    /**
+     * @default 65301
+     */
     const KEY_Sys_Req: number;
 
+    /**
+     * @default 84
+     */
     const KEY_T: number;
 
+    /**
+     * @default 222
+     */
     const KEY_THORN: number;
 
+    /**
+     * @default 65289
+     */
     const KEY_Tab: number;
 
+    /**
+     * @default 16785002
+     */
     const KEY_Tabovedot: number;
 
+    /**
+     * @default 269025151
+     */
     const KEY_TaskPane: number;
 
+    /**
+     * @default 427
+     */
     const KEY_Tcaron: number;
 
+    /**
+     * @default 478
+     */
     const KEY_Tcedilla: number;
 
+    /**
+     * @default 269025152
+     */
     const KEY_Terminal: number;
 
+    /**
+     * @default 65237
+     */
     const KEY_Terminate_Server: number;
 
+    /**
+     * @default 3551
+     */
     const KEY_Thai_baht: number;
 
+    /**
+     * @default 3514
+     */
     const KEY_Thai_bobaimai: number;
 
+    /**
+     * @default 3496
+     */
     const KEY_Thai_chochan: number;
 
+    /**
+     * @default 3498
+     */
     const KEY_Thai_chochang: number;
 
+    /**
+     * @default 3497
+     */
     const KEY_Thai_choching: number;
 
+    /**
+     * @default 3500
+     */
     const KEY_Thai_chochoe: number;
 
+    /**
+     * @default 3502
+     */
     const KEY_Thai_dochada: number;
 
+    /**
+     * @default 3508
+     */
     const KEY_Thai_dodek: number;
 
+    /**
+     * @default 3517
+     */
     const KEY_Thai_fofa: number;
 
+    /**
+     * @default 3519
+     */
     const KEY_Thai_fofan: number;
 
+    /**
+     * @default 3531
+     */
     const KEY_Thai_hohip: number;
 
+    /**
+     * @default 3534
+     */
     const KEY_Thai_honokhuk: number;
 
+    /**
+     * @default 3490
+     */
     const KEY_Thai_khokhai: number;
 
+    /**
+     * @default 3493
+     */
     const KEY_Thai_khokhon: number;
 
+    /**
+     * @default 3491
+     */
     const KEY_Thai_khokhuat: number;
 
+    /**
+     * @default 3492
+     */
     const KEY_Thai_khokhwai: number;
 
+    /**
+     * @default 3494
+     */
     const KEY_Thai_khorakhang: number;
 
+    /**
+     * @default 3489
+     */
     const KEY_Thai_kokai: number;
 
+    /**
+     * @default 3557
+     */
     const KEY_Thai_lakkhangyao: number;
 
+    /**
+     * @default 3575
+     */
     const KEY_Thai_lekchet: number;
 
+    /**
+     * @default 3573
+     */
     const KEY_Thai_lekha: number;
 
+    /**
+     * @default 3574
+     */
     const KEY_Thai_lekhok: number;
 
+    /**
+     * @default 3577
+     */
     const KEY_Thai_lekkao: number;
 
+    /**
+     * @default 3569
+     */
     const KEY_Thai_leknung: number;
 
+    /**
+     * @default 3576
+     */
     const KEY_Thai_lekpaet: number;
 
+    /**
+     * @default 3571
+     */
     const KEY_Thai_leksam: number;
 
+    /**
+     * @default 3572
+     */
     const KEY_Thai_leksi: number;
 
+    /**
+     * @default 3570
+     */
     const KEY_Thai_leksong: number;
 
+    /**
+     * @default 3568
+     */
     const KEY_Thai_leksun: number;
 
+    /**
+     * @default 3532
+     */
     const KEY_Thai_lochula: number;
 
+    /**
+     * @default 3525
+     */
     const KEY_Thai_loling: number;
 
+    /**
+     * @default 3526
+     */
     const KEY_Thai_lu: number;
 
+    /**
+     * @default 3563
+     */
     const KEY_Thai_maichattawa: number;
 
+    /**
+     * @default 3560
+     */
     const KEY_Thai_maiek: number;
 
+    /**
+     * @default 3537
+     */
     const KEY_Thai_maihanakat: number;
 
+    /**
+     * @default 3550
+     */
     const KEY_Thai_maihanakat_maitho: number;
 
+    /**
+     * @default 3559
+     */
     const KEY_Thai_maitaikhu: number;
 
+    /**
+     * @default 3561
+     */
     const KEY_Thai_maitho: number;
 
+    /**
+     * @default 3562
+     */
     const KEY_Thai_maitri: number;
 
+    /**
+     * @default 3558
+     */
     const KEY_Thai_maiyamok: number;
 
+    /**
+     * @default 3521
+     */
     const KEY_Thai_moma: number;
 
+    /**
+     * @default 3495
+     */
     const KEY_Thai_ngongu: number;
 
+    /**
+     * @default 3565
+     */
     const KEY_Thai_nikhahit: number;
 
+    /**
+     * @default 3507
+     */
     const KEY_Thai_nonen: number;
 
+    /**
+     * @default 3513
+     */
     const KEY_Thai_nonu: number;
 
+    /**
+     * @default 3533
+     */
     const KEY_Thai_oang: number;
 
+    /**
+     * @default 3535
+     */
     const KEY_Thai_paiyannoi: number;
 
+    /**
+     * @default 3546
+     */
     const KEY_Thai_phinthu: number;
 
+    /**
+     * @default 3518
+     */
     const KEY_Thai_phophan: number;
 
+    /**
+     * @default 3516
+     */
     const KEY_Thai_phophung: number;
 
+    /**
+     * @default 3520
+     */
     const KEY_Thai_phosamphao: number;
 
+    /**
+     * @default 3515
+     */
     const KEY_Thai_popla: number;
 
+    /**
+     * @default 3523
+     */
     const KEY_Thai_rorua: number;
 
+    /**
+     * @default 3524
+     */
     const KEY_Thai_ru: number;
 
+    /**
+     * @default 3536
+     */
     const KEY_Thai_saraa: number;
 
+    /**
+     * @default 3538
+     */
     const KEY_Thai_saraaa: number;
 
+    /**
+     * @default 3553
+     */
     const KEY_Thai_saraae: number;
 
+    /**
+     * @default 3556
+     */
     const KEY_Thai_saraaimaimalai: number;
 
+    /**
+     * @default 3555
+     */
     const KEY_Thai_saraaimaimuan: number;
 
+    /**
+     * @default 3539
+     */
     const KEY_Thai_saraam: number;
 
+    /**
+     * @default 3552
+     */
     const KEY_Thai_sarae: number;
 
+    /**
+     * @default 3540
+     */
     const KEY_Thai_sarai: number;
 
+    /**
+     * @default 3541
+     */
     const KEY_Thai_saraii: number;
 
+    /**
+     * @default 3554
+     */
     const KEY_Thai_sarao: number;
 
+    /**
+     * @default 3544
+     */
     const KEY_Thai_sarau: number;
 
+    /**
+     * @default 3542
+     */
     const KEY_Thai_saraue: number;
 
+    /**
+     * @default 3543
+     */
     const KEY_Thai_sarauee: number;
 
+    /**
+     * @default 3545
+     */
     const KEY_Thai_sarauu: number;
 
+    /**
+     * @default 3529
+     */
     const KEY_Thai_sorusi: number;
 
+    /**
+     * @default 3528
+     */
     const KEY_Thai_sosala: number;
 
+    /**
+     * @default 3499
+     */
     const KEY_Thai_soso: number;
 
+    /**
+     * @default 3530
+     */
     const KEY_Thai_sosua: number;
 
+    /**
+     * @default 3564
+     */
     const KEY_Thai_thanthakhat: number;
 
+    /**
+     * @default 3505
+     */
     const KEY_Thai_thonangmontho: number;
 
+    /**
+     * @default 3506
+     */
     const KEY_Thai_thophuthao: number;
 
+    /**
+     * @default 3511
+     */
     const KEY_Thai_thothahan: number;
 
+    /**
+     * @default 3504
+     */
     const KEY_Thai_thothan: number;
 
+    /**
+     * @default 3512
+     */
     const KEY_Thai_thothong: number;
 
+    /**
+     * @default 3510
+     */
     const KEY_Thai_thothung: number;
 
+    /**
+     * @default 3503
+     */
     const KEY_Thai_topatak: number;
 
+    /**
+     * @default 3509
+     */
     const KEY_Thai_totao: number;
 
+    /**
+     * @default 3527
+     */
     const KEY_Thai_wowaen: number;
 
+    /**
+     * @default 3522
+     */
     const KEY_Thai_yoyak: number;
 
+    /**
+     * @default 3501
+     */
     const KEY_Thai_yoying: number;
 
+    /**
+     * @default 222
+     */
     const KEY_Thorn: number;
 
+    /**
+     * @default 269025183
+     */
     const KEY_Time: number;
 
+    /**
+     * @default 269025055
+     */
     const KEY_ToDoList: number;
 
+    /**
+     * @default 269025153
+     */
     const KEY_Tools: number;
 
+    /**
+     * @default 269025186
+     */
     const KEY_TopMenu: number;
 
+    /**
+     * @default 269025201
+     */
     const KEY_TouchpadOff: number;
 
+    /**
+     * @default 269025200
+     */
     const KEY_TouchpadOn: number;
 
+    /**
+     * @default 269025193
+     */
     const KEY_TouchpadToggle: number;
 
+    /**
+     * @default 65323
+     */
     const KEY_Touroku: number;
 
+    /**
+     * @default 269025154
+     */
     const KEY_Travel: number;
 
+    /**
+     * @default 940
+     */
     const KEY_Tslash: number;
 
+    /**
+     * @default 85
+     */
     const KEY_U: number;
 
+    /**
+     * @default 269025174
+     */
     const KEY_UWB: number;
 
+    /**
+     * @default 218
+     */
     const KEY_Uacute: number;
 
+    /**
+     * @default 16785124
+     */
     const KEY_Ubelowdot: number;
 
+    /**
+     * @default 733
+     */
     const KEY_Ubreve: number;
 
+    /**
+     * @default 219
+     */
     const KEY_Ucircumflex: number;
 
+    /**
+     * @default 220
+     */
     const KEY_Udiaeresis: number;
 
+    /**
+     * @default 475
+     */
     const KEY_Udoubleacute: number;
 
+    /**
+     * @default 217
+     */
     const KEY_Ugrave: number;
 
+    /**
+     * @default 16785126
+     */
     const KEY_Uhook: number;
 
+    /**
+     * @default 16777647
+     */
     const KEY_Uhorn: number;
 
+    /**
+     * @default 16785128
+     */
     const KEY_Uhornacute: number;
 
+    /**
+     * @default 16785136
+     */
     const KEY_Uhornbelowdot: number;
 
+    /**
+     * @default 16785130
+     */
     const KEY_Uhorngrave: number;
 
+    /**
+     * @default 16785132
+     */
     const KEY_Uhornhook: number;
 
+    /**
+     * @default 16785134
+     */
     const KEY_Uhorntilde: number;
 
+    /**
+     * @default 1725
+     */
     const KEY_Ukrainian_GHE_WITH_UPTURN: number;
 
+    /**
+     * @default 1718
+     */
     const KEY_Ukrainian_I: number;
 
+    /**
+     * @default 1716
+     */
     const KEY_Ukrainian_IE: number;
 
+    /**
+     * @default 1719
+     */
     const KEY_Ukrainian_YI: number;
 
+    /**
+     * @default 1709
+     */
     const KEY_Ukrainian_ghe_with_upturn: number;
 
+    /**
+     * @default 1702
+     */
     const KEY_Ukrainian_i: number;
 
+    /**
+     * @default 1700
+     */
     const KEY_Ukrainian_ie: number;
 
+    /**
+     * @default 1703
+     */
     const KEY_Ukrainian_yi: number;
 
+    /**
+     * @default 1718
+     */
     const KEY_Ukranian_I: number;
 
+    /**
+     * @default 1716
+     */
     const KEY_Ukranian_JE: number;
 
+    /**
+     * @default 1719
+     */
     const KEY_Ukranian_YI: number;
 
+    /**
+     * @default 1702
+     */
     const KEY_Ukranian_i: number;
 
+    /**
+     * @default 1700
+     */
     const KEY_Ukranian_je: number;
 
+    /**
+     * @default 1703
+     */
     const KEY_Ukranian_yi: number;
 
+    /**
+     * @default 990
+     */
     const KEY_Umacron: number;
 
+    /**
+     * @default 65381
+     */
     const KEY_Undo: number;
 
+    /**
+     * @default 269024800
+     */
     const KEY_Ungrab: number;
 
+    /**
+     * @default 985
+     */
     const KEY_Uogonek: number;
 
+    /**
+     * @default 65362
+     */
     const KEY_Up: number;
 
+    /**
+     * @default 473
+     */
     const KEY_Uring: number;
 
+    /**
+     * @default 269025157
+     */
     const KEY_User1KB: number;
 
+    /**
+     * @default 269025158
+     */
     const KEY_User2KB: number;
 
+    /**
+     * @default 269025156
+     */
     const KEY_UserPB: number;
 
+    /**
+     * @default 989
+     */
     const KEY_Utilde: number;
 
+    /**
+     * @default 86
+     */
     const KEY_V: number;
 
+    /**
+     * @default 269025076
+     */
     const KEY_VendorHome: number;
 
+    /**
+     * @default 269025159
+     */
     const KEY_Video: number;
 
+    /**
+     * @default 269025185
+     */
     const KEY_View: number;
 
+    /**
+     * @default 16777215
+     */
     const KEY_VoidSymbol: number;
 
+    /**
+     * @default 87
+     */
     const KEY_W: number;
 
+    /**
+     * @default 269025173
+     */
     const KEY_WLAN: number;
 
+    /**
+     * @default 269025070
+     */
     const KEY_WWW: number;
 
+    /**
+     * @default 16785026
+     */
     const KEY_Wacute: number;
 
+    /**
+     * @default 269025067
+     */
     const KEY_WakeUp: number;
 
+    /**
+     * @default 16777588
+     */
     const KEY_Wcircumflex: number;
 
+    /**
+     * @default 16785028
+     */
     const KEY_Wdiaeresis: number;
 
+    /**
+     * @default 269025167
+     */
     const KEY_WebCam: number;
 
+    /**
+     * @default 16785024
+     */
     const KEY_Wgrave: number;
 
+    /**
+     * @default 269025160
+     */
     const KEY_WheelButton: number;
 
+    /**
+     * @default 269025109
+     */
     const KEY_WindowClear: number;
 
+    /**
+     * @default 16785577
+     */
     const KEY_WonSign: number;
 
+    /**
+     * @default 269025161
+     */
     const KEY_Word: number;
 
+    /**
+     * @default 88
+     */
     const KEY_X: number;
 
+    /**
+     * @default 16785034
+     */
     const KEY_Xabovedot: number;
 
+    /**
+     * @default 269025162
+     */
     const KEY_Xfer: number;
 
+    /**
+     * @default 89
+     */
     const KEY_Y: number;
 
+    /**
+     * @default 221
+     */
     const KEY_Yacute: number;
 
+    /**
+     * @default 16785140
+     */
     const KEY_Ybelowdot: number;
 
+    /**
+     * @default 16777590
+     */
     const KEY_Ycircumflex: number;
 
+    /**
+     * @default 5054
+     */
     const KEY_Ydiaeresis: number;
 
+    /**
+     * @default 269025189
+     */
     const KEY_Yellow: number;
 
+    /**
+     * @default 16785138
+     */
     const KEY_Ygrave: number;
 
+    /**
+     * @default 16785142
+     */
     const KEY_Yhook: number;
 
+    /**
+     * @default 16785144
+     */
     const KEY_Ytilde: number;
 
+    /**
+     * @default 90
+     */
     const KEY_Z: number;
 
+    /**
+     * @default 431
+     */
     const KEY_Zabovedot: number;
 
+    /**
+     * @default 428
+     */
     const KEY_Zacute: number;
 
+    /**
+     * @default 430
+     */
     const KEY_Zcaron: number;
 
+    /**
+     * @default 65341
+     */
     const KEY_Zen_Koho: number;
 
+    /**
+     * @default 65320
+     */
     const KEY_Zenkaku: number;
 
+    /**
+     * @default 65322
+     */
     const KEY_Zenkaku_Hankaku: number;
 
+    /**
+     * @default 269025163
+     */
     const KEY_ZoomIn: number;
 
+    /**
+     * @default 269025164
+     */
     const KEY_ZoomOut: number;
 
+    /**
+     * @default 16777653
+     */
     const KEY_Zstroke: number;
 
+    /**
+     * @default 97
+     */
     const KEY_a: number;
 
+    /**
+     * @default 225
+     */
     const KEY_aacute: number;
 
+    /**
+     * @default 16785057
+     */
     const KEY_abelowdot: number;
 
+    /**
+     * @default 511
+     */
     const KEY_abovedot: number;
 
+    /**
+     * @default 483
+     */
     const KEY_abreve: number;
 
+    /**
+     * @default 16785071
+     */
     const KEY_abreveacute: number;
 
+    /**
+     * @default 16785079
+     */
     const KEY_abrevebelowdot: number;
 
+    /**
+     * @default 16785073
+     */
     const KEY_abrevegrave: number;
 
+    /**
+     * @default 16785075
+     */
     const KEY_abrevehook: number;
 
+    /**
+     * @default 16785077
+     */
     const KEY_abrevetilde: number;
 
+    /**
+     * @default 226
+     */
     const KEY_acircumflex: number;
 
+    /**
+     * @default 16785061
+     */
     const KEY_acircumflexacute: number;
 
+    /**
+     * @default 16785069
+     */
     const KEY_acircumflexbelowdot: number;
 
+    /**
+     * @default 16785063
+     */
     const KEY_acircumflexgrave: number;
 
+    /**
+     * @default 16785065
+     */
     const KEY_acircumflexhook: number;
 
+    /**
+     * @default 16785067
+     */
     const KEY_acircumflextilde: number;
 
+    /**
+     * @default 180
+     */
     const KEY_acute: number;
 
+    /**
+     * @default 228
+     */
     const KEY_adiaeresis: number;
 
+    /**
+     * @default 230
+     */
     const KEY_ae: number;
 
+    /**
+     * @default 224
+     */
     const KEY_agrave: number;
 
+    /**
+     * @default 16785059
+     */
     const KEY_ahook: number;
 
+    /**
+     * @default 992
+     */
     const KEY_amacron: number;
 
+    /**
+     * @default 38
+     */
     const KEY_ampersand: number;
 
+    /**
+     * @default 433
+     */
     const KEY_aogonek: number;
 
+    /**
+     * @default 39
+     */
     const KEY_apostrophe: number;
 
+    /**
+     * @default 16785992
+     */
     const KEY_approxeq: number;
 
+    /**
+     * @default 2248
+     */
     const KEY_approximate: number;
 
+    /**
+     * @default 229
+     */
     const KEY_aring: number;
 
+    /**
+     * @default 94
+     */
     const KEY_asciicircum: number;
 
+    /**
+     * @default 126
+     */
     const KEY_asciitilde: number;
 
+    /**
+     * @default 42
+     */
     const KEY_asterisk: number;
 
+    /**
+     * @default 64
+     */
     const KEY_at: number;
 
+    /**
+     * @default 227
+     */
     const KEY_atilde: number;
 
+    /**
+     * @default 98
+     */
     const KEY_b: number;
 
+    /**
+     * @default 16784899
+     */
     const KEY_babovedot: number;
 
+    /**
+     * @default 92
+     */
     const KEY_backslash: number;
 
+    /**
+     * @default 2804
+     */
     const KEY_ballotcross: number;
 
+    /**
+     * @default 124
+     */
     const KEY_bar: number;
 
+    /**
+     * @default 16785973
+     */
     const KEY_because: number;
 
+    /**
+     * @default 2527
+     */
     const KEY_blank: number;
 
+    /**
+     * @default 2213
+     */
     const KEY_botintegral: number;
 
+    /**
+     * @default 2220
+     */
     const KEY_botleftparens: number;
 
+    /**
+     * @default 2216
+     */
     const KEY_botleftsqbracket: number;
 
+    /**
+     * @default 2226
+     */
     const KEY_botleftsummation: number;
 
+    /**
+     * @default 2222
+     */
     const KEY_botrightparens: number;
 
+    /**
+     * @default 2218
+     */
     const KEY_botrightsqbracket: number;
 
+    /**
+     * @default 2230
+     */
     const KEY_botrightsummation: number;
 
+    /**
+     * @default 2550
+     */
     const KEY_bott: number;
 
+    /**
+     * @default 2228
+     */
     const KEY_botvertsummationconnector: number;
 
+    /**
+     * @default 123
+     */
     const KEY_braceleft: number;
 
+    /**
+     * @default 125
+     */
     const KEY_braceright: number;
 
+    /**
+     * @default 91
+     */
     const KEY_bracketleft: number;
 
+    /**
+     * @default 93
+     */
     const KEY_bracketright: number;
 
+    /**
+     * @default 16787456
+     */
     const KEY_braille_blank: number;
 
+    /**
+     * @default 65521
+     */
     const KEY_braille_dot_1: number;
 
+    /**
+     * @default 65530
+     */
     const KEY_braille_dot_10: number;
 
+    /**
+     * @default 65522
+     */
     const KEY_braille_dot_2: number;
 
+    /**
+     * @default 65523
+     */
     const KEY_braille_dot_3: number;
 
+    /**
+     * @default 65524
+     */
     const KEY_braille_dot_4: number;
 
+    /**
+     * @default 65525
+     */
     const KEY_braille_dot_5: number;
 
+    /**
+     * @default 65526
+     */
     const KEY_braille_dot_6: number;
 
+    /**
+     * @default 65527
+     */
     const KEY_braille_dot_7: number;
 
+    /**
+     * @default 65528
+     */
     const KEY_braille_dot_8: number;
 
+    /**
+     * @default 65529
+     */
     const KEY_braille_dot_9: number;
 
+    /**
+     * @default 16787457
+     */
     const KEY_braille_dots_1: number;
 
+    /**
+     * @default 16787459
+     */
     const KEY_braille_dots_12: number;
 
+    /**
+     * @default 16787463
+     */
     const KEY_braille_dots_123: number;
 
+    /**
+     * @default 16787471
+     */
     const KEY_braille_dots_1234: number;
 
+    /**
+     * @default 16787487
+     */
     const KEY_braille_dots_12345: number;
 
+    /**
+     * @default 16787519
+     */
     const KEY_braille_dots_123456: number;
 
+    /**
+     * @default 16787583
+     */
     const KEY_braille_dots_1234567: number;
 
+    /**
+     * @default 16787711
+     */
     const KEY_braille_dots_12345678: number;
 
+    /**
+     * @default 16787647
+     */
     const KEY_braille_dots_1234568: number;
 
+    /**
+     * @default 16787551
+     */
     const KEY_braille_dots_123457: number;
 
+    /**
+     * @default 16787679
+     */
     const KEY_braille_dots_1234578: number;
 
+    /**
+     * @default 16787615
+     */
     const KEY_braille_dots_123458: number;
 
+    /**
+     * @default 16787503
+     */
     const KEY_braille_dots_12346: number;
 
+    /**
+     * @default 16787567
+     */
     const KEY_braille_dots_123467: number;
 
+    /**
+     * @default 16787695
+     */
     const KEY_braille_dots_1234678: number;
 
+    /**
+     * @default 16787631
+     */
     const KEY_braille_dots_123468: number;
 
+    /**
+     * @default 16787535
+     */
     const KEY_braille_dots_12347: number;
 
+    /**
+     * @default 16787663
+     */
     const KEY_braille_dots_123478: number;
 
+    /**
+     * @default 16787599
+     */
     const KEY_braille_dots_12348: number;
 
+    /**
+     * @default 16787479
+     */
     const KEY_braille_dots_1235: number;
 
+    /**
+     * @default 16787511
+     */
     const KEY_braille_dots_12356: number;
 
+    /**
+     * @default 16787575
+     */
     const KEY_braille_dots_123567: number;
 
+    /**
+     * @default 16787703
+     */
     const KEY_braille_dots_1235678: number;
 
+    /**
+     * @default 16787639
+     */
     const KEY_braille_dots_123568: number;
 
+    /**
+     * @default 16787543
+     */
     const KEY_braille_dots_12357: number;
 
+    /**
+     * @default 16787671
+     */
     const KEY_braille_dots_123578: number;
 
+    /**
+     * @default 16787607
+     */
     const KEY_braille_dots_12358: number;
 
+    /**
+     * @default 16787495
+     */
     const KEY_braille_dots_1236: number;
 
+    /**
+     * @default 16787559
+     */
     const KEY_braille_dots_12367: number;
 
+    /**
+     * @default 16787687
+     */
     const KEY_braille_dots_123678: number;
 
+    /**
+     * @default 16787623
+     */
     const KEY_braille_dots_12368: number;
 
+    /**
+     * @default 16787527
+     */
     const KEY_braille_dots_1237: number;
 
+    /**
+     * @default 16787655
+     */
     const KEY_braille_dots_12378: number;
 
+    /**
+     * @default 16787591
+     */
     const KEY_braille_dots_1238: number;
 
+    /**
+     * @default 16787467
+     */
     const KEY_braille_dots_124: number;
 
+    /**
+     * @default 16787483
+     */
     const KEY_braille_dots_1245: number;
 
+    /**
+     * @default 16787515
+     */
     const KEY_braille_dots_12456: number;
 
+    /**
+     * @default 16787579
+     */
     const KEY_braille_dots_124567: number;
 
+    /**
+     * @default 16787707
+     */
     const KEY_braille_dots_1245678: number;
 
+    /**
+     * @default 16787643
+     */
     const KEY_braille_dots_124568: number;
 
+    /**
+     * @default 16787547
+     */
     const KEY_braille_dots_12457: number;
 
+    /**
+     * @default 16787675
+     */
     const KEY_braille_dots_124578: number;
 
+    /**
+     * @default 16787611
+     */
     const KEY_braille_dots_12458: number;
 
+    /**
+     * @default 16787499
+     */
     const KEY_braille_dots_1246: number;
 
+    /**
+     * @default 16787563
+     */
     const KEY_braille_dots_12467: number;
 
+    /**
+     * @default 16787691
+     */
     const KEY_braille_dots_124678: number;
 
+    /**
+     * @default 16787627
+     */
     const KEY_braille_dots_12468: number;
 
+    /**
+     * @default 16787531
+     */
     const KEY_braille_dots_1247: number;
 
+    /**
+     * @default 16787659
+     */
     const KEY_braille_dots_12478: number;
 
+    /**
+     * @default 16787595
+     */
     const KEY_braille_dots_1248: number;
 
+    /**
+     * @default 16787475
+     */
     const KEY_braille_dots_125: number;
 
+    /**
+     * @default 16787507
+     */
     const KEY_braille_dots_1256: number;
 
+    /**
+     * @default 16787571
+     */
     const KEY_braille_dots_12567: number;
 
+    /**
+     * @default 16787699
+     */
     const KEY_braille_dots_125678: number;
 
+    /**
+     * @default 16787635
+     */
     const KEY_braille_dots_12568: number;
 
+    /**
+     * @default 16787539
+     */
     const KEY_braille_dots_1257: number;
 
+    /**
+     * @default 16787667
+     */
     const KEY_braille_dots_12578: number;
 
+    /**
+     * @default 16787603
+     */
     const KEY_braille_dots_1258: number;
 
+    /**
+     * @default 16787491
+     */
     const KEY_braille_dots_126: number;
 
+    /**
+     * @default 16787555
+     */
     const KEY_braille_dots_1267: number;
 
+    /**
+     * @default 16787683
+     */
     const KEY_braille_dots_12678: number;
 
+    /**
+     * @default 16787619
+     */
     const KEY_braille_dots_1268: number;
 
+    /**
+     * @default 16787523
+     */
     const KEY_braille_dots_127: number;
 
+    /**
+     * @default 16787651
+     */
     const KEY_braille_dots_1278: number;
 
+    /**
+     * @default 16787587
+     */
     const KEY_braille_dots_128: number;
 
+    /**
+     * @default 16787461
+     */
     const KEY_braille_dots_13: number;
 
+    /**
+     * @default 16787469
+     */
     const KEY_braille_dots_134: number;
 
+    /**
+     * @default 16787485
+     */
     const KEY_braille_dots_1345: number;
 
+    /**
+     * @default 16787517
+     */
     const KEY_braille_dots_13456: number;
 
+    /**
+     * @default 16787581
+     */
     const KEY_braille_dots_134567: number;
 
+    /**
+     * @default 16787709
+     */
     const KEY_braille_dots_1345678: number;
 
+    /**
+     * @default 16787645
+     */
     const KEY_braille_dots_134568: number;
 
+    /**
+     * @default 16787549
+     */
     const KEY_braille_dots_13457: number;
 
+    /**
+     * @default 16787677
+     */
     const KEY_braille_dots_134578: number;
 
+    /**
+     * @default 16787613
+     */
     const KEY_braille_dots_13458: number;
 
+    /**
+     * @default 16787501
+     */
     const KEY_braille_dots_1346: number;
 
+    /**
+     * @default 16787565
+     */
     const KEY_braille_dots_13467: number;
 
+    /**
+     * @default 16787693
+     */
     const KEY_braille_dots_134678: number;
 
+    /**
+     * @default 16787629
+     */
     const KEY_braille_dots_13468: number;
 
+    /**
+     * @default 16787533
+     */
     const KEY_braille_dots_1347: number;
 
+    /**
+     * @default 16787661
+     */
     const KEY_braille_dots_13478: number;
 
+    /**
+     * @default 16787597
+     */
     const KEY_braille_dots_1348: number;
 
+    /**
+     * @default 16787477
+     */
     const KEY_braille_dots_135: number;
 
+    /**
+     * @default 16787509
+     */
     const KEY_braille_dots_1356: number;
 
+    /**
+     * @default 16787573
+     */
     const KEY_braille_dots_13567: number;
 
+    /**
+     * @default 16787701
+     */
     const KEY_braille_dots_135678: number;
 
+    /**
+     * @default 16787637
+     */
     const KEY_braille_dots_13568: number;
 
+    /**
+     * @default 16787541
+     */
     const KEY_braille_dots_1357: number;
 
+    /**
+     * @default 16787669
+     */
     const KEY_braille_dots_13578: number;
 
+    /**
+     * @default 16787605
+     */
     const KEY_braille_dots_1358: number;
 
+    /**
+     * @default 16787493
+     */
     const KEY_braille_dots_136: number;
 
+    /**
+     * @default 16787557
+     */
     const KEY_braille_dots_1367: number;
 
+    /**
+     * @default 16787685
+     */
     const KEY_braille_dots_13678: number;
 
+    /**
+     * @default 16787621
+     */
     const KEY_braille_dots_1368: number;
 
+    /**
+     * @default 16787525
+     */
     const KEY_braille_dots_137: number;
 
+    /**
+     * @default 16787653
+     */
     const KEY_braille_dots_1378: number;
 
+    /**
+     * @default 16787589
+     */
     const KEY_braille_dots_138: number;
 
+    /**
+     * @default 16787465
+     */
     const KEY_braille_dots_14: number;
 
+    /**
+     * @default 16787481
+     */
     const KEY_braille_dots_145: number;
 
+    /**
+     * @default 16787513
+     */
     const KEY_braille_dots_1456: number;
 
+    /**
+     * @default 16787577
+     */
     const KEY_braille_dots_14567: number;
 
+    /**
+     * @default 16787705
+     */
     const KEY_braille_dots_145678: number;
 
+    /**
+     * @default 16787641
+     */
     const KEY_braille_dots_14568: number;
 
+    /**
+     * @default 16787545
+     */
     const KEY_braille_dots_1457: number;
 
+    /**
+     * @default 16787673
+     */
     const KEY_braille_dots_14578: number;
 
+    /**
+     * @default 16787609
+     */
     const KEY_braille_dots_1458: number;
 
+    /**
+     * @default 16787497
+     */
     const KEY_braille_dots_146: number;
 
+    /**
+     * @default 16787561
+     */
     const KEY_braille_dots_1467: number;
 
+    /**
+     * @default 16787689
+     */
     const KEY_braille_dots_14678: number;
 
+    /**
+     * @default 16787625
+     */
     const KEY_braille_dots_1468: number;
 
+    /**
+     * @default 16787529
+     */
     const KEY_braille_dots_147: number;
 
+    /**
+     * @default 16787657
+     */
     const KEY_braille_dots_1478: number;
 
+    /**
+     * @default 16787593
+     */
     const KEY_braille_dots_148: number;
 
+    /**
+     * @default 16787473
+     */
     const KEY_braille_dots_15: number;
 
+    /**
+     * @default 16787505
+     */
     const KEY_braille_dots_156: number;
 
+    /**
+     * @default 16787569
+     */
     const KEY_braille_dots_1567: number;
 
+    /**
+     * @default 16787697
+     */
     const KEY_braille_dots_15678: number;
 
+    /**
+     * @default 16787633
+     */
     const KEY_braille_dots_1568: number;
 
+    /**
+     * @default 16787537
+     */
     const KEY_braille_dots_157: number;
 
+    /**
+     * @default 16787665
+     */
     const KEY_braille_dots_1578: number;
 
+    /**
+     * @default 16787601
+     */
     const KEY_braille_dots_158: number;
 
+    /**
+     * @default 16787489
+     */
     const KEY_braille_dots_16: number;
 
+    /**
+     * @default 16787553
+     */
     const KEY_braille_dots_167: number;
 
+    /**
+     * @default 16787681
+     */
     const KEY_braille_dots_1678: number;
 
+    /**
+     * @default 16787617
+     */
     const KEY_braille_dots_168: number;
 
+    /**
+     * @default 16787521
+     */
     const KEY_braille_dots_17: number;
 
+    /**
+     * @default 16787649
+     */
     const KEY_braille_dots_178: number;
 
+    /**
+     * @default 16787585
+     */
     const KEY_braille_dots_18: number;
 
+    /**
+     * @default 16787458
+     */
     const KEY_braille_dots_2: number;
 
+    /**
+     * @default 16787462
+     */
     const KEY_braille_dots_23: number;
 
+    /**
+     * @default 16787470
+     */
     const KEY_braille_dots_234: number;
 
+    /**
+     * @default 16787486
+     */
     const KEY_braille_dots_2345: number;
 
+    /**
+     * @default 16787518
+     */
     const KEY_braille_dots_23456: number;
 
+    /**
+     * @default 16787582
+     */
     const KEY_braille_dots_234567: number;
 
+    /**
+     * @default 16787710
+     */
     const KEY_braille_dots_2345678: number;
 
+    /**
+     * @default 16787646
+     */
     const KEY_braille_dots_234568: number;
 
+    /**
+     * @default 16787550
+     */
     const KEY_braille_dots_23457: number;
 
+    /**
+     * @default 16787678
+     */
     const KEY_braille_dots_234578: number;
 
+    /**
+     * @default 16787614
+     */
     const KEY_braille_dots_23458: number;
 
+    /**
+     * @default 16787502
+     */
     const KEY_braille_dots_2346: number;
 
+    /**
+     * @default 16787566
+     */
     const KEY_braille_dots_23467: number;
 
+    /**
+     * @default 16787694
+     */
     const KEY_braille_dots_234678: number;
 
+    /**
+     * @default 16787630
+     */
     const KEY_braille_dots_23468: number;
 
+    /**
+     * @default 16787534
+     */
     const KEY_braille_dots_2347: number;
 
+    /**
+     * @default 16787662
+     */
     const KEY_braille_dots_23478: number;
 
+    /**
+     * @default 16787598
+     */
     const KEY_braille_dots_2348: number;
 
+    /**
+     * @default 16787478
+     */
     const KEY_braille_dots_235: number;
 
+    /**
+     * @default 16787510
+     */
     const KEY_braille_dots_2356: number;
 
+    /**
+     * @default 16787574
+     */
     const KEY_braille_dots_23567: number;
 
+    /**
+     * @default 16787702
+     */
     const KEY_braille_dots_235678: number;
 
+    /**
+     * @default 16787638
+     */
     const KEY_braille_dots_23568: number;
 
+    /**
+     * @default 16787542
+     */
     const KEY_braille_dots_2357: number;
 
+    /**
+     * @default 16787670
+     */
     const KEY_braille_dots_23578: number;
 
+    /**
+     * @default 16787606
+     */
     const KEY_braille_dots_2358: number;
 
+    /**
+     * @default 16787494
+     */
     const KEY_braille_dots_236: number;
 
+    /**
+     * @default 16787558
+     */
     const KEY_braille_dots_2367: number;
 
+    /**
+     * @default 16787686
+     */
     const KEY_braille_dots_23678: number;
 
+    /**
+     * @default 16787622
+     */
     const KEY_braille_dots_2368: number;
 
+    /**
+     * @default 16787526
+     */
     const KEY_braille_dots_237: number;
 
+    /**
+     * @default 16787654
+     */
     const KEY_braille_dots_2378: number;
 
+    /**
+     * @default 16787590
+     */
     const KEY_braille_dots_238: number;
 
+    /**
+     * @default 16787466
+     */
     const KEY_braille_dots_24: number;
 
+    /**
+     * @default 16787482
+     */
     const KEY_braille_dots_245: number;
 
+    /**
+     * @default 16787514
+     */
     const KEY_braille_dots_2456: number;
 
+    /**
+     * @default 16787578
+     */
     const KEY_braille_dots_24567: number;
 
+    /**
+     * @default 16787706
+     */
     const KEY_braille_dots_245678: number;
 
+    /**
+     * @default 16787642
+     */
     const KEY_braille_dots_24568: number;
 
+    /**
+     * @default 16787546
+     */
     const KEY_braille_dots_2457: number;
 
+    /**
+     * @default 16787674
+     */
     const KEY_braille_dots_24578: number;
 
+    /**
+     * @default 16787610
+     */
     const KEY_braille_dots_2458: number;
 
+    /**
+     * @default 16787498
+     */
     const KEY_braille_dots_246: number;
 
+    /**
+     * @default 16787562
+     */
     const KEY_braille_dots_2467: number;
 
+    /**
+     * @default 16787690
+     */
     const KEY_braille_dots_24678: number;
 
+    /**
+     * @default 16787626
+     */
     const KEY_braille_dots_2468: number;
 
+    /**
+     * @default 16787530
+     */
     const KEY_braille_dots_247: number;
 
+    /**
+     * @default 16787658
+     */
     const KEY_braille_dots_2478: number;
 
+    /**
+     * @default 16787594
+     */
     const KEY_braille_dots_248: number;
 
+    /**
+     * @default 16787474
+     */
     const KEY_braille_dots_25: number;
 
+    /**
+     * @default 16787506
+     */
     const KEY_braille_dots_256: number;
 
+    /**
+     * @default 16787570
+     */
     const KEY_braille_dots_2567: number;
 
+    /**
+     * @default 16787698
+     */
     const KEY_braille_dots_25678: number;
 
+    /**
+     * @default 16787634
+     */
     const KEY_braille_dots_2568: number;
 
+    /**
+     * @default 16787538
+     */
     const KEY_braille_dots_257: number;
 
+    /**
+     * @default 16787666
+     */
     const KEY_braille_dots_2578: number;
 
+    /**
+     * @default 16787602
+     */
     const KEY_braille_dots_258: number;
 
+    /**
+     * @default 16787490
+     */
     const KEY_braille_dots_26: number;
 
+    /**
+     * @default 16787554
+     */
     const KEY_braille_dots_267: number;
 
+    /**
+     * @default 16787682
+     */
     const KEY_braille_dots_2678: number;
 
+    /**
+     * @default 16787618
+     */
     const KEY_braille_dots_268: number;
 
+    /**
+     * @default 16787522
+     */
     const KEY_braille_dots_27: number;
 
+    /**
+     * @default 16787650
+     */
     const KEY_braille_dots_278: number;
 
+    /**
+     * @default 16787586
+     */
     const KEY_braille_dots_28: number;
 
+    /**
+     * @default 16787460
+     */
     const KEY_braille_dots_3: number;
 
+    /**
+     * @default 16787468
+     */
     const KEY_braille_dots_34: number;
 
+    /**
+     * @default 16787484
+     */
     const KEY_braille_dots_345: number;
 
+    /**
+     * @default 16787516
+     */
     const KEY_braille_dots_3456: number;
 
+    /**
+     * @default 16787580
+     */
     const KEY_braille_dots_34567: number;
 
+    /**
+     * @default 16787708
+     */
     const KEY_braille_dots_345678: number;
 
+    /**
+     * @default 16787644
+     */
     const KEY_braille_dots_34568: number;
 
+    /**
+     * @default 16787548
+     */
     const KEY_braille_dots_3457: number;
 
+    /**
+     * @default 16787676
+     */
     const KEY_braille_dots_34578: number;
 
+    /**
+     * @default 16787612
+     */
     const KEY_braille_dots_3458: number;
 
+    /**
+     * @default 16787500
+     */
     const KEY_braille_dots_346: number;
 
+    /**
+     * @default 16787564
+     */
     const KEY_braille_dots_3467: number;
 
+    /**
+     * @default 16787692
+     */
     const KEY_braille_dots_34678: number;
 
+    /**
+     * @default 16787628
+     */
     const KEY_braille_dots_3468: number;
 
+    /**
+     * @default 16787532
+     */
     const KEY_braille_dots_347: number;
 
+    /**
+     * @default 16787660
+     */
     const KEY_braille_dots_3478: number;
 
+    /**
+     * @default 16787596
+     */
     const KEY_braille_dots_348: number;
 
+    /**
+     * @default 16787476
+     */
     const KEY_braille_dots_35: number;
 
+    /**
+     * @default 16787508
+     */
     const KEY_braille_dots_356: number;
 
+    /**
+     * @default 16787572
+     */
     const KEY_braille_dots_3567: number;
 
+    /**
+     * @default 16787700
+     */
     const KEY_braille_dots_35678: number;
 
+    /**
+     * @default 16787636
+     */
     const KEY_braille_dots_3568: number;
 
+    /**
+     * @default 16787540
+     */
     const KEY_braille_dots_357: number;
 
+    /**
+     * @default 16787668
+     */
     const KEY_braille_dots_3578: number;
 
+    /**
+     * @default 16787604
+     */
     const KEY_braille_dots_358: number;
 
+    /**
+     * @default 16787492
+     */
     const KEY_braille_dots_36: number;
 
+    /**
+     * @default 16787556
+     */
     const KEY_braille_dots_367: number;
 
+    /**
+     * @default 16787684
+     */
     const KEY_braille_dots_3678: number;
 
+    /**
+     * @default 16787620
+     */
     const KEY_braille_dots_368: number;
 
+    /**
+     * @default 16787524
+     */
     const KEY_braille_dots_37: number;
 
+    /**
+     * @default 16787652
+     */
     const KEY_braille_dots_378: number;
 
+    /**
+     * @default 16787588
+     */
     const KEY_braille_dots_38: number;
 
+    /**
+     * @default 16787464
+     */
     const KEY_braille_dots_4: number;
 
+    /**
+     * @default 16787480
+     */
     const KEY_braille_dots_45: number;
 
+    /**
+     * @default 16787512
+     */
     const KEY_braille_dots_456: number;
 
+    /**
+     * @default 16787576
+     */
     const KEY_braille_dots_4567: number;
 
+    /**
+     * @default 16787704
+     */
     const KEY_braille_dots_45678: number;
 
+    /**
+     * @default 16787640
+     */
     const KEY_braille_dots_4568: number;
 
+    /**
+     * @default 16787544
+     */
     const KEY_braille_dots_457: number;
 
+    /**
+     * @default 16787672
+     */
     const KEY_braille_dots_4578: number;
 
+    /**
+     * @default 16787608
+     */
     const KEY_braille_dots_458: number;
 
+    /**
+     * @default 16787496
+     */
     const KEY_braille_dots_46: number;
 
+    /**
+     * @default 16787560
+     */
     const KEY_braille_dots_467: number;
 
+    /**
+     * @default 16787688
+     */
     const KEY_braille_dots_4678: number;
 
+    /**
+     * @default 16787624
+     */
     const KEY_braille_dots_468: number;
 
+    /**
+     * @default 16787528
+     */
     const KEY_braille_dots_47: number;
 
+    /**
+     * @default 16787656
+     */
     const KEY_braille_dots_478: number;
 
+    /**
+     * @default 16787592
+     */
     const KEY_braille_dots_48: number;
 
+    /**
+     * @default 16787472
+     */
     const KEY_braille_dots_5: number;
 
+    /**
+     * @default 16787504
+     */
     const KEY_braille_dots_56: number;
 
+    /**
+     * @default 16787568
+     */
     const KEY_braille_dots_567: number;
 
+    /**
+     * @default 16787696
+     */
     const KEY_braille_dots_5678: number;
 
+    /**
+     * @default 16787632
+     */
     const KEY_braille_dots_568: number;
 
+    /**
+     * @default 16787536
+     */
     const KEY_braille_dots_57: number;
 
+    /**
+     * @default 16787664
+     */
     const KEY_braille_dots_578: number;
 
+    /**
+     * @default 16787600
+     */
     const KEY_braille_dots_58: number;
 
+    /**
+     * @default 16787488
+     */
     const KEY_braille_dots_6: number;
 
+    /**
+     * @default 16787552
+     */
     const KEY_braille_dots_67: number;
 
+    /**
+     * @default 16787680
+     */
     const KEY_braille_dots_678: number;
 
+    /**
+     * @default 16787616
+     */
     const KEY_braille_dots_68: number;
 
+    /**
+     * @default 16787520
+     */
     const KEY_braille_dots_7: number;
 
+    /**
+     * @default 16787648
+     */
     const KEY_braille_dots_78: number;
 
+    /**
+     * @default 16787584
+     */
     const KEY_braille_dots_8: number;
 
+    /**
+     * @default 418
+     */
     const KEY_breve: number;
 
+    /**
+     * @default 166
+     */
     const KEY_brokenbar: number;
 
+    /**
+     * @default 99
+     */
     const KEY_c: number;
 
+    /**
+     * @default 65187
+     */
     const KEY_c_h: number;
 
+    /**
+     * @default 741
+     */
     const KEY_cabovedot: number;
 
+    /**
+     * @default 486
+     */
     const KEY_cacute: number;
 
+    /**
+     * @default 2744
+     */
     const KEY_careof: number;
 
+    /**
+     * @default 2812
+     */
     const KEY_caret: number;
 
+    /**
+     * @default 439
+     */
     const KEY_caron: number;
 
+    /**
+     * @default 488
+     */
     const KEY_ccaron: number;
 
+    /**
+     * @default 231
+     */
     const KEY_ccedilla: number;
 
+    /**
+     * @default 742
+     */
     const KEY_ccircumflex: number;
 
+    /**
+     * @default 184
+     */
     const KEY_cedilla: number;
 
+    /**
+     * @default 162
+     */
     const KEY_cent: number;
 
+    /**
+     * @default 65184
+     */
     const KEY_ch: number;
 
+    /**
+     * @default 2529
+     */
     const KEY_checkerboard: number;
 
+    /**
+     * @default 2803
+     */
     const KEY_checkmark: number;
 
+    /**
+     * @default 3023
+     */
     const KEY_circle: number;
 
+    /**
+     * @default 2796
+     */
     const KEY_club: number;
 
+    /**
+     * @default 58
+     */
     const KEY_colon: number;
 
+    /**
+     * @default 44
+     */
     const KEY_comma: number;
 
+    /**
+     * @default 16785931
+     */
     const KEY_containsas: number;
 
+    /**
+     * @default 169
+     */
     const KEY_copyright: number;
 
+    /**
+     * @default 2532
+     */
     const KEY_cr: number;
 
+    /**
+     * @default 2542
+     */
     const KEY_crossinglines: number;
 
+    /**
+     * @default 16785947
+     */
     const KEY_cuberoot: number;
 
+    /**
+     * @default 164
+     */
     const KEY_currency: number;
 
+    /**
+     * @default 2815
+     */
     const KEY_cursor: number;
 
+    /**
+     * @default 100
+     */
     const KEY_d: number;
 
+    /**
+     * @default 16784907
+     */
     const KEY_dabovedot: number;
 
+    /**
+     * @default 2801
+     */
     const KEY_dagger: number;
 
+    /**
+     * @default 495
+     */
     const KEY_dcaron: number;
 
+    /**
+     * @default 65153
+     */
     const KEY_dead_A: number;
 
+    /**
+     * @default 65155
+     */
     const KEY_dead_E: number;
 
+    /**
+     * @default 65157
+     */
     const KEY_dead_I: number;
 
+    /**
+     * @default 65159
+     */
     const KEY_dead_O: number;
 
+    /**
+     * @default 65161
+     */
     const KEY_dead_U: number;
 
+    /**
+     * @default 65152
+     */
     const KEY_dead_a: number;
 
+    /**
+     * @default 65124
+     */
     const KEY_dead_abovecomma: number;
 
+    /**
+     * @default 65110
+     */
     const KEY_dead_abovedot: number;
 
+    /**
+     * @default 65125
+     */
     const KEY_dead_abovereversedcomma: number;
 
+    /**
+     * @default 65112
+     */
     const KEY_dead_abovering: number;
 
+    /**
+     * @default 65169
+     */
     const KEY_dead_aboveverticalline: number;
 
+    /**
+     * @default 65105
+     */
     const KEY_dead_acute: number;
 
+    /**
+     * @default 65131
+     */
     const KEY_dead_belowbreve: number;
 
+    /**
+     * @default 65129
+     */
     const KEY_dead_belowcircumflex: number;
 
+    /**
+     * @default 65134
+     */
     const KEY_dead_belowcomma: number;
 
+    /**
+     * @default 65132
+     */
     const KEY_dead_belowdiaeresis: number;
 
+    /**
+     * @default 65120
+     */
     const KEY_dead_belowdot: number;
 
+    /**
+     * @default 65128
+     */
     const KEY_dead_belowmacron: number;
 
+    /**
+     * @default 65127
+     */
     const KEY_dead_belowring: number;
 
+    /**
+     * @default 65130
+     */
     const KEY_dead_belowtilde: number;
 
+    /**
+     * @default 65170
+     */
     const KEY_dead_belowverticalline: number;
 
+    /**
+     * @default 65109
+     */
     const KEY_dead_breve: number;
 
+    /**
+     * @default 65163
+     */
     const KEY_dead_capital_schwa: number;
 
+    /**
+     * @default 65114
+     */
     const KEY_dead_caron: number;
 
+    /**
+     * @default 65115
+     */
     const KEY_dead_cedilla: number;
 
+    /**
+     * @default 65106
+     */
     const KEY_dead_circumflex: number;
 
+    /**
+     * @default 65135
+     */
     const KEY_dead_currency: number;
 
+    /**
+     * @default 65125
+     */
     const KEY_dead_dasia: number;
 
+    /**
+     * @default 65111
+     */
     const KEY_dead_diaeresis: number;
 
+    /**
+     * @default 65113
+     */
     const KEY_dead_doubleacute: number;
 
+    /**
+     * @default 65126
+     */
     const KEY_dead_doublegrave: number;
 
+    /**
+     * @default 65154
+     */
     const KEY_dead_e: number;
 
+    /**
+     * @default 65104
+     */
     const KEY_dead_grave: number;
 
+    /**
+     * @default 65164
+     */
     const KEY_dead_greek: number;
 
+    /**
+     * @default 65121
+     */
     const KEY_dead_hook: number;
 
+    /**
+     * @default 65122
+     */
     const KEY_dead_horn: number;
 
+    /**
+     * @default 65156
+     */
     const KEY_dead_i: number;
 
+    /**
+     * @default 65133
+     */
     const KEY_dead_invertedbreve: number;
 
+    /**
+     * @default 65117
+     */
     const KEY_dead_iota: number;
 
+    /**
+     * @default 65171
+     */
     const KEY_dead_longsolidusoverlay: number;
 
+    /**
+     * @default 65168
+     */
     const KEY_dead_lowline: number;
 
+    /**
+     * @default 65108
+     */
     const KEY_dead_macron: number;
 
+    /**
+     * @default 65158
+     */
     const KEY_dead_o: number;
 
+    /**
+     * @default 65116
+     */
     const KEY_dead_ogonek: number;
 
+    /**
+     * @default 65107
+     */
     const KEY_dead_perispomeni: number;
 
+    /**
+     * @default 65124
+     */
     const KEY_dead_psili: number;
 
+    /**
+     * @default 65119
+     */
     const KEY_dead_semivoiced_sound: number;
 
+    /**
+     * @default 65162
+     */
     const KEY_dead_small_schwa: number;
 
+    /**
+     * @default 65123
+     */
     const KEY_dead_stroke: number;
 
+    /**
+     * @default 65107
+     */
     const KEY_dead_tilde: number;
 
+    /**
+     * @default 65160
+     */
     const KEY_dead_u: number;
 
+    /**
+     * @default 65118
+     */
     const KEY_dead_voiced_sound: number;
 
+    /**
+     * @default 2749
+     */
     const KEY_decimalpoint: number;
 
+    /**
+     * @default 176
+     */
     const KEY_degree: number;
 
+    /**
+     * @default 168
+     */
     const KEY_diaeresis: number;
 
+    /**
+     * @default 2797
+     */
     const KEY_diamond: number;
 
+    /**
+     * @default 2725
+     */
     const KEY_digitspace: number;
 
+    /**
+     * @default 16785964
+     */
     const KEY_dintegral: number;
 
+    /**
+     * @default 247
+     */
     const KEY_division: number;
 
+    /**
+     * @default 36
+     */
     const KEY_dollar: number;
 
+    /**
+     * @default 2735
+     */
     const KEY_doubbaselinedot: number;
 
+    /**
+     * @default 445
+     */
     const KEY_doubleacute: number;
 
+    /**
+     * @default 2802
+     */
     const KEY_doubledagger: number;
 
+    /**
+     * @default 2814
+     */
     const KEY_doublelowquotemark: number;
 
+    /**
+     * @default 2302
+     */
     const KEY_downarrow: number;
 
+    /**
+     * @default 2984
+     */
     const KEY_downcaret: number;
 
+    /**
+     * @default 3030
+     */
     const KEY_downshoe: number;
 
+    /**
+     * @default 3012
+     */
     const KEY_downstile: number;
 
+    /**
+     * @default 3010
+     */
     const KEY_downtack: number;
 
+    /**
+     * @default 496
+     */
     const KEY_dstroke: number;
 
+    /**
+     * @default 101
+     */
     const KEY_e: number;
 
+    /**
+     * @default 1004
+     */
     const KEY_eabovedot: number;
 
+    /**
+     * @default 233
+     */
     const KEY_eacute: number;
 
+    /**
+     * @default 16785081
+     */
     const KEY_ebelowdot: number;
 
+    /**
+     * @default 492
+     */
     const KEY_ecaron: number;
 
+    /**
+     * @default 234
+     */
     const KEY_ecircumflex: number;
 
+    /**
+     * @default 16785087
+     */
     const KEY_ecircumflexacute: number;
 
+    /**
+     * @default 16785095
+     */
     const KEY_ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785089
+     */
     const KEY_ecircumflexgrave: number;
 
+    /**
+     * @default 16785091
+     */
     const KEY_ecircumflexhook: number;
 
+    /**
+     * @default 16785093
+     */
     const KEY_ecircumflextilde: number;
 
+    /**
+     * @default 235
+     */
     const KEY_ediaeresis: number;
 
+    /**
+     * @default 232
+     */
     const KEY_egrave: number;
 
+    /**
+     * @default 16785083
+     */
     const KEY_ehook: number;
 
+    /**
+     * @default 16785544
+     */
     const KEY_eightsubscript: number;
 
+    /**
+     * @default 16785528
+     */
     const KEY_eightsuperior: number;
 
+    /**
+     * @default 16785928
+     */
     const KEY_elementof: number;
 
+    /**
+     * @default 2734
+     */
     const KEY_ellipsis: number;
 
+    /**
+     * @default 2723
+     */
     const KEY_em3space: number;
 
+    /**
+     * @default 2724
+     */
     const KEY_em4space: number;
 
+    /**
+     * @default 954
+     */
     const KEY_emacron: number;
 
+    /**
+     * @default 2729
+     */
     const KEY_emdash: number;
 
+    /**
+     * @default 2782
+     */
     const KEY_emfilledcircle: number;
 
+    /**
+     * @default 2783
+     */
     const KEY_emfilledrect: number;
 
+    /**
+     * @default 2766
+     */
     const KEY_emopencircle: number;
 
+    /**
+     * @default 2767
+     */
     const KEY_emopenrectangle: number;
 
+    /**
+     * @default 16785925
+     */
     const KEY_emptyset: number;
 
+    /**
+     * @default 2721
+     */
     const KEY_emspace: number;
 
+    /**
+     * @default 2730
+     */
     const KEY_endash: number;
 
+    /**
+     * @default 2790
+     */
     const KEY_enfilledcircbullet: number;
 
+    /**
+     * @default 2791
+     */
     const KEY_enfilledsqbullet: number;
 
+    /**
+     * @default 959
+     */
     const KEY_eng: number;
 
+    /**
+     * @default 2784
+     */
     const KEY_enopencircbullet: number;
 
+    /**
+     * @default 2785
+     */
     const KEY_enopensquarebullet: number;
 
+    /**
+     * @default 2722
+     */
     const KEY_enspace: number;
 
+    /**
+     * @default 490
+     */
     const KEY_eogonek: number;
 
+    /**
+     * @default 61
+     */
     const KEY_equal: number;
 
+    /**
+     * @default 240
+     */
     const KEY_eth: number;
 
+    /**
+     * @default 16785085
+     */
     const KEY_etilde: number;
 
+    /**
+     * @default 33
+     */
     const KEY_exclam: number;
 
+    /**
+     * @default 161
+     */
     const KEY_exclamdown: number;
 
+    /**
+     * @default 16777874
+     */
     const KEY_ezh: number;
 
+    /**
+     * @default 102
+     */
     const KEY_f: number;
 
+    /**
+     * @default 16784927
+     */
     const KEY_fabovedot: number;
 
+    /**
+     * @default 2808
+     */
     const KEY_femalesymbol: number;
 
+    /**
+     * @default 2531
+     */
     const KEY_ff: number;
 
+    /**
+     * @default 2747
+     */
     const KEY_figdash: number;
 
+    /**
+     * @default 2780
+     */
     const KEY_filledlefttribullet: number;
 
+    /**
+     * @default 2779
+     */
     const KEY_filledrectbullet: number;
 
+    /**
+     * @default 2781
+     */
     const KEY_filledrighttribullet: number;
 
+    /**
+     * @default 2793
+     */
     const KEY_filledtribulletdown: number;
 
+    /**
+     * @default 2792
+     */
     const KEY_filledtribulletup: number;
 
+    /**
+     * @default 2757
+     */
     const KEY_fiveeighths: number;
 
+    /**
+     * @default 2743
+     */
     const KEY_fivesixths: number;
 
+    /**
+     * @default 16785541
+     */
     const KEY_fivesubscript: number;
 
+    /**
+     * @default 16785525
+     */
     const KEY_fivesuperior: number;
 
+    /**
+     * @default 2741
+     */
     const KEY_fourfifths: number;
 
+    /**
+     * @default 16785540
+     */
     const KEY_foursubscript: number;
 
+    /**
+     * @default 16785524
+     */
     const KEY_foursuperior: number;
 
+    /**
+     * @default 16785948
+     */
     const KEY_fourthroot: number;
 
+    /**
+     * @default 2294
+     */
     const KEY_function: number;
 
+    /**
+     * @default 103
+     */
     const KEY_g: number;
 
+    /**
+     * @default 757
+     */
     const KEY_gabovedot: number;
 
+    /**
+     * @default 699
+     */
     const KEY_gbreve: number;
 
+    /**
+     * @default 16777703
+     */
     const KEY_gcaron: number;
 
+    /**
+     * @default 955
+     */
     const KEY_gcedilla: number;
 
+    /**
+     * @default 760
+     */
     const KEY_gcircumflex: number;
 
+    /**
+     * @default 96
+     */
     const KEY_grave: number;
 
+    /**
+     * @default 62
+     */
     const KEY_greater: number;
 
+    /**
+     * @default 2238
+     */
     const KEY_greaterthanequal: number;
 
+    /**
+     * @default 171
+     */
     const KEY_guillemotleft: number;
 
+    /**
+     * @default 187
+     */
     const KEY_guillemotright: number;
 
+    /**
+     * @default 104
+     */
     const KEY_h: number;
 
+    /**
+     * @default 2728
+     */
     const KEY_hairspace: number;
 
+    /**
+     * @default 694
+     */
     const KEY_hcircumflex: number;
 
+    /**
+     * @default 2798
+     */
     const KEY_heart: number;
 
+    /**
+     * @default 3296
+     */
     const KEY_hebrew_aleph: number;
 
+    /**
+     * @default 3314
+     */
     const KEY_hebrew_ayin: number;
 
+    /**
+     * @default 3297
+     */
     const KEY_hebrew_bet: number;
 
+    /**
+     * @default 3297
+     */
     const KEY_hebrew_beth: number;
 
+    /**
+     * @default 3303
+     */
     const KEY_hebrew_chet: number;
 
+    /**
+     * @default 3299
+     */
     const KEY_hebrew_dalet: number;
 
+    /**
+     * @default 3299
+     */
     const KEY_hebrew_daleth: number;
 
+    /**
+     * @default 3295
+     */
     const KEY_hebrew_doublelowline: number;
 
+    /**
+     * @default 3306
+     */
     const KEY_hebrew_finalkaph: number;
 
+    /**
+     * @default 3309
+     */
     const KEY_hebrew_finalmem: number;
 
+    /**
+     * @default 3311
+     */
     const KEY_hebrew_finalnun: number;
 
+    /**
+     * @default 3315
+     */
     const KEY_hebrew_finalpe: number;
 
+    /**
+     * @default 3317
+     */
     const KEY_hebrew_finalzade: number;
 
+    /**
+     * @default 3317
+     */
     const KEY_hebrew_finalzadi: number;
 
+    /**
+     * @default 3298
+     */
     const KEY_hebrew_gimel: number;
 
+    /**
+     * @default 3298
+     */
     const KEY_hebrew_gimmel: number;
 
+    /**
+     * @default 3300
+     */
     const KEY_hebrew_he: number;
 
+    /**
+     * @default 3303
+     */
     const KEY_hebrew_het: number;
 
+    /**
+     * @default 3307
+     */
     const KEY_hebrew_kaph: number;
 
+    /**
+     * @default 3319
+     */
     const KEY_hebrew_kuf: number;
 
+    /**
+     * @default 3308
+     */
     const KEY_hebrew_lamed: number;
 
+    /**
+     * @default 3310
+     */
     const KEY_hebrew_mem: number;
 
+    /**
+     * @default 3312
+     */
     const KEY_hebrew_nun: number;
 
+    /**
+     * @default 3316
+     */
     const KEY_hebrew_pe: number;
 
+    /**
+     * @default 3319
+     */
     const KEY_hebrew_qoph: number;
 
+    /**
+     * @default 3320
+     */
     const KEY_hebrew_resh: number;
 
+    /**
+     * @default 3313
+     */
     const KEY_hebrew_samech: number;
 
+    /**
+     * @default 3313
+     */
     const KEY_hebrew_samekh: number;
 
+    /**
+     * @default 3321
+     */
     const KEY_hebrew_shin: number;
 
+    /**
+     * @default 3322
+     */
     const KEY_hebrew_taf: number;
 
+    /**
+     * @default 3322
+     */
     const KEY_hebrew_taw: number;
 
+    /**
+     * @default 3304
+     */
     const KEY_hebrew_tet: number;
 
+    /**
+     * @default 3304
+     */
     const KEY_hebrew_teth: number;
 
+    /**
+     * @default 3301
+     */
     const KEY_hebrew_waw: number;
 
+    /**
+     * @default 3305
+     */
     const KEY_hebrew_yod: number;
 
+    /**
+     * @default 3318
+     */
     const KEY_hebrew_zade: number;
 
+    /**
+     * @default 3318
+     */
     const KEY_hebrew_zadi: number;
 
+    /**
+     * @default 3302
+     */
     const KEY_hebrew_zain: number;
 
+    /**
+     * @default 3302
+     */
     const KEY_hebrew_zayin: number;
 
+    /**
+     * @default 2778
+     */
     const KEY_hexagram: number;
 
+    /**
+     * @default 2211
+     */
     const KEY_horizconnector: number;
 
+    /**
+     * @default 2543
+     */
     const KEY_horizlinescan1: number;
 
+    /**
+     * @default 2544
+     */
     const KEY_horizlinescan3: number;
 
+    /**
+     * @default 2545
+     */
     const KEY_horizlinescan5: number;
 
+    /**
+     * @default 2546
+     */
     const KEY_horizlinescan7: number;
 
+    /**
+     * @default 2547
+     */
     const KEY_horizlinescan9: number;
 
+    /**
+     * @default 689
+     */
     const KEY_hstroke: number;
 
+    /**
+     * @default 2530
+     */
     const KEY_ht: number;
 
+    /**
+     * @default 173
+     */
     const KEY_hyphen: number;
 
+    /**
+     * @default 105
+     */
     const KEY_i: number;
 
+    /**
+     * @default 269025120
+     */
     const KEY_iTouch: number;
 
+    /**
+     * @default 237
+     */
     const KEY_iacute: number;
 
+    /**
+     * @default 16785099
+     */
     const KEY_ibelowdot: number;
 
+    /**
+     * @default 16777517
+     */
     const KEY_ibreve: number;
 
+    /**
+     * @default 238
+     */
     const KEY_icircumflex: number;
 
+    /**
+     * @default 2255
+     */
     const KEY_identical: number;
 
+    /**
+     * @default 239
+     */
     const KEY_idiaeresis: number;
 
+    /**
+     * @default 697
+     */
     const KEY_idotless: number;
 
+    /**
+     * @default 2253
+     */
     const KEY_ifonlyif: number;
 
+    /**
+     * @default 236
+     */
     const KEY_igrave: number;
 
+    /**
+     * @default 16785097
+     */
     const KEY_ihook: number;
 
+    /**
+     * @default 1007
+     */
     const KEY_imacron: number;
 
+    /**
+     * @default 2254
+     */
     const KEY_implies: number;
 
+    /**
+     * @default 2266
+     */
     const KEY_includedin: number;
 
+    /**
+     * @default 2267
+     */
     const KEY_includes: number;
 
+    /**
+     * @default 2242
+     */
     const KEY_infinity: number;
 
+    /**
+     * @default 2239
+     */
     const KEY_integral: number;
 
+    /**
+     * @default 2268
+     */
     const KEY_intersection: number;
 
+    /**
+     * @default 999
+     */
     const KEY_iogonek: number;
 
+    /**
+     * @default 949
+     */
     const KEY_itilde: number;
 
+    /**
+     * @default 106
+     */
     const KEY_j: number;
 
+    /**
+     * @default 700
+     */
     const KEY_jcircumflex: number;
 
+    /**
+     * @default 3018
+     */
     const KEY_jot: number;
 
+    /**
+     * @default 107
+     */
     const KEY_k: number;
 
+    /**
+     * @default 1201
+     */
     const KEY_kana_A: number;
 
+    /**
+     * @default 1217
+     */
     const KEY_kana_CHI: number;
 
+    /**
+     * @default 1204
+     */
     const KEY_kana_E: number;
 
+    /**
+     * @default 1228
+     */
     const KEY_kana_FU: number;
 
+    /**
+     * @default 1226
+     */
     const KEY_kana_HA: number;
 
+    /**
+     * @default 1229
+     */
     const KEY_kana_HE: number;
 
+    /**
+     * @default 1227
+     */
     const KEY_kana_HI: number;
 
+    /**
+     * @default 1230
+     */
     const KEY_kana_HO: number;
 
+    /**
+     * @default 1228
+     */
     const KEY_kana_HU: number;
 
+    /**
+     * @default 1202
+     */
     const KEY_kana_I: number;
 
+    /**
+     * @default 1206
+     */
     const KEY_kana_KA: number;
 
+    /**
+     * @default 1209
+     */
     const KEY_kana_KE: number;
 
+    /**
+     * @default 1207
+     */
     const KEY_kana_KI: number;
 
+    /**
+     * @default 1210
+     */
     const KEY_kana_KO: number;
 
+    /**
+     * @default 1208
+     */
     const KEY_kana_KU: number;
 
+    /**
+     * @default 1231
+     */
     const KEY_kana_MA: number;
 
+    /**
+     * @default 1234
+     */
     const KEY_kana_ME: number;
 
+    /**
+     * @default 1232
+     */
     const KEY_kana_MI: number;
 
+    /**
+     * @default 1235
+     */
     const KEY_kana_MO: number;
 
+    /**
+     * @default 1233
+     */
     const KEY_kana_MU: number;
 
+    /**
+     * @default 1245
+     */
     const KEY_kana_N: number;
 
+    /**
+     * @default 1221
+     */
     const KEY_kana_NA: number;
 
+    /**
+     * @default 1224
+     */
     const KEY_kana_NE: number;
 
+    /**
+     * @default 1222
+     */
     const KEY_kana_NI: number;
 
+    /**
+     * @default 1225
+     */
     const KEY_kana_NO: number;
 
+    /**
+     * @default 1223
+     */
     const KEY_kana_NU: number;
 
+    /**
+     * @default 1205
+     */
     const KEY_kana_O: number;
 
+    /**
+     * @default 1239
+     */
     const KEY_kana_RA: number;
 
+    /**
+     * @default 1242
+     */
     const KEY_kana_RE: number;
 
+    /**
+     * @default 1240
+     */
     const KEY_kana_RI: number;
 
+    /**
+     * @default 1243
+     */
     const KEY_kana_RO: number;
 
+    /**
+     * @default 1241
+     */
     const KEY_kana_RU: number;
 
+    /**
+     * @default 1211
+     */
     const KEY_kana_SA: number;
 
+    /**
+     * @default 1214
+     */
     const KEY_kana_SE: number;
 
+    /**
+     * @default 1212
+     */
     const KEY_kana_SHI: number;
 
+    /**
+     * @default 1215
+     */
     const KEY_kana_SO: number;
 
+    /**
+     * @default 1213
+     */
     const KEY_kana_SU: number;
 
+    /**
+     * @default 1216
+     */
     const KEY_kana_TA: number;
 
+    /**
+     * @default 1219
+     */
     const KEY_kana_TE: number;
 
+    /**
+     * @default 1217
+     */
     const KEY_kana_TI: number;
 
+    /**
+     * @default 1220
+     */
     const KEY_kana_TO: number;
 
+    /**
+     * @default 1218
+     */
     const KEY_kana_TSU: number;
 
+    /**
+     * @default 1218
+     */
     const KEY_kana_TU: number;
 
+    /**
+     * @default 1203
+     */
     const KEY_kana_U: number;
 
+    /**
+     * @default 1244
+     */
     const KEY_kana_WA: number;
 
+    /**
+     * @default 1190
+     */
     const KEY_kana_WO: number;
 
+    /**
+     * @default 1236
+     */
     const KEY_kana_YA: number;
 
+    /**
+     * @default 1238
+     */
     const KEY_kana_YO: number;
 
+    /**
+     * @default 1237
+     */
     const KEY_kana_YU: number;
 
+    /**
+     * @default 1191
+     */
     const KEY_kana_a: number;
 
+    /**
+     * @default 1187
+     */
     const KEY_kana_closingbracket: number;
 
+    /**
+     * @default 1188
+     */
     const KEY_kana_comma: number;
 
+    /**
+     * @default 1189
+     */
     const KEY_kana_conjunctive: number;
 
+    /**
+     * @default 1194
+     */
     const KEY_kana_e: number;
 
+    /**
+     * @default 1185
+     */
     const KEY_kana_fullstop: number;
 
+    /**
+     * @default 1192
+     */
     const KEY_kana_i: number;
 
+    /**
+     * @default 1189
+     */
     const KEY_kana_middledot: number;
 
+    /**
+     * @default 1195
+     */
     const KEY_kana_o: number;
 
+    /**
+     * @default 1186
+     */
     const KEY_kana_openingbracket: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_kana_switch: number;
 
+    /**
+     * @default 1199
+     */
     const KEY_kana_tsu: number;
 
+    /**
+     * @default 1199
+     */
     const KEY_kana_tu: number;
 
+    /**
+     * @default 1193
+     */
     const KEY_kana_u: number;
 
+    /**
+     * @default 1196
+     */
     const KEY_kana_ya: number;
 
+    /**
+     * @default 1198
+     */
     const KEY_kana_yo: number;
 
+    /**
+     * @default 1197
+     */
     const KEY_kana_yu: number;
 
+    /**
+     * @default 930
+     */
     const KEY_kappa: number;
 
+    /**
+     * @default 1011
+     */
     const KEY_kcedilla: number;
 
+    /**
+     * @default 930
+     */
     const KEY_kra: number;
 
+    /**
+     * @default 108
+     */
     const KEY_l: number;
 
+    /**
+     * @default 485
+     */
     const KEY_lacute: number;
 
+    /**
+     * @default 2777
+     */
     const KEY_latincross: number;
 
+    /**
+     * @default 16784951
+     */
     const KEY_lbelowdot: number;
 
+    /**
+     * @default 437
+     */
     const KEY_lcaron: number;
 
+    /**
+     * @default 950
+     */
     const KEY_lcedilla: number;
 
+    /**
+     * @default 2748
+     */
     const KEY_leftanglebracket: number;
 
+    /**
+     * @default 2299
+     */
     const KEY_leftarrow: number;
 
+    /**
+     * @default 2979
+     */
     const KEY_leftcaret: number;
 
+    /**
+     * @default 2770
+     */
     const KEY_leftdoublequotemark: number;
 
+    /**
+     * @default 2223
+     */
     const KEY_leftmiddlecurlybrace: number;
 
+    /**
+     * @default 2764
+     */
     const KEY_leftopentriangle: number;
 
+    /**
+     * @default 2794
+     */
     const KEY_leftpointer: number;
 
+    /**
+     * @default 2209
+     */
     const KEY_leftradical: number;
 
+    /**
+     * @default 3034
+     */
     const KEY_leftshoe: number;
 
+    /**
+     * @default 2768
+     */
     const KEY_leftsinglequotemark: number;
 
+    /**
+     * @default 2548
+     */
     const KEY_leftt: number;
 
+    /**
+     * @default 3036
+     */
     const KEY_lefttack: number;
 
+    /**
+     * @default 60
+     */
     const KEY_less: number;
 
+    /**
+     * @default 2236
+     */
     const KEY_lessthanequal: number;
 
+    /**
+     * @default 2533
+     */
     const KEY_lf: number;
 
+    /**
+     * @default 2270
+     */
     const KEY_logicaland: number;
 
+    /**
+     * @default 2271
+     */
     const KEY_logicalor: number;
 
+    /**
+     * @default 2541
+     */
     const KEY_lowleftcorner: number;
 
+    /**
+     * @default 2538
+     */
     const KEY_lowrightcorner: number;
 
+    /**
+     * @default 435
+     */
     const KEY_lstroke: number;
 
+    /**
+     * @default 109
+     */
     const KEY_m: number;
 
+    /**
+     * @default 16784961
+     */
     const KEY_mabovedot: number;
 
+    /**
+     * @default 175
+     */
     const KEY_macron: number;
 
+    /**
+     * @default 2807
+     */
     const KEY_malesymbol: number;
 
+    /**
+     * @default 2800
+     */
     const KEY_maltesecross: number;
 
+    /**
+     * @default 2751
+     */
     const KEY_marker: number;
 
+    /**
+     * @default 186
+     */
     const KEY_masculine: number;
 
+    /**
+     * @default 45
+     */
     const KEY_minus: number;
 
+    /**
+     * @default 2774
+     */
     const KEY_minutes: number;
 
+    /**
+     * @default 181
+     */
     const KEY_mu: number;
 
+    /**
+     * @default 215
+     */
     const KEY_multiply: number;
 
+    /**
+     * @default 2806
+     */
     const KEY_musicalflat: number;
 
+    /**
+     * @default 2805
+     */
     const KEY_musicalsharp: number;
 
+    /**
+     * @default 110
+     */
     const KEY_n: number;
 
+    /**
+     * @default 2245
+     */
     const KEY_nabla: number;
 
+    /**
+     * @default 497
+     */
     const KEY_nacute: number;
 
+    /**
+     * @default 498
+     */
     const KEY_ncaron: number;
 
+    /**
+     * @default 1009
+     */
     const KEY_ncedilla: number;
 
+    /**
+     * @default 16785545
+     */
     const KEY_ninesubscript: number;
 
+    /**
+     * @default 16785529
+     */
     const KEY_ninesuperior: number;
 
+    /**
+     * @default 2536
+     */
     const KEY_nl: number;
 
+    /**
+     * @default 160
+     */
     const KEY_nobreakspace: number;
 
+    /**
+     * @default 16785991
+     */
     const KEY_notapproxeq: number;
 
+    /**
+     * @default 16785929
+     */
     const KEY_notelementof: number;
 
+    /**
+     * @default 2237
+     */
     const KEY_notequal: number;
 
+    /**
+     * @default 16786018
+     */
     const KEY_notidentical: number;
 
+    /**
+     * @default 172
+     */
     const KEY_notsign: number;
 
+    /**
+     * @default 241
+     */
     const KEY_ntilde: number;
 
+    /**
+     * @default 35
+     */
     const KEY_numbersign: number;
 
+    /**
+     * @default 1712
+     */
     const KEY_numerosign: number;
 
+    /**
+     * @default 111
+     */
     const KEY_o: number;
 
+    /**
+     * @default 243
+     */
     const KEY_oacute: number;
 
+    /**
+     * @default 16777845
+     */
     const KEY_obarred: number;
 
+    /**
+     * @default 16785101
+     */
     const KEY_obelowdot: number;
 
+    /**
+     * @default 16777682
+     */
     const KEY_ocaron: number;
 
+    /**
+     * @default 244
+     */
     const KEY_ocircumflex: number;
 
+    /**
+     * @default 16785105
+     */
     const KEY_ocircumflexacute: number;
 
+    /**
+     * @default 16785113
+     */
     const KEY_ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785107
+     */
     const KEY_ocircumflexgrave: number;
 
+    /**
+     * @default 16785109
+     */
     const KEY_ocircumflexhook: number;
 
+    /**
+     * @default 16785111
+     */
     const KEY_ocircumflextilde: number;
 
+    /**
+     * @default 246
+     */
     const KEY_odiaeresis: number;
 
+    /**
+     * @default 501
+     */
     const KEY_odoubleacute: number;
 
+    /**
+     * @default 5053
+     */
     const KEY_oe: number;
 
+    /**
+     * @default 434
+     */
     const KEY_ogonek: number;
 
+    /**
+     * @default 242
+     */
     const KEY_ograve: number;
 
+    /**
+     * @default 16785103
+     */
     const KEY_ohook: number;
 
+    /**
+     * @default 16777633
+     */
     const KEY_ohorn: number;
 
+    /**
+     * @default 16785115
+     */
     const KEY_ohornacute: number;
 
+    /**
+     * @default 16785123
+     */
     const KEY_ohornbelowdot: number;
 
+    /**
+     * @default 16785117
+     */
     const KEY_ohorngrave: number;
 
+    /**
+     * @default 16785119
+     */
     const KEY_ohornhook: number;
 
+    /**
+     * @default 16785121
+     */
     const KEY_ohorntilde: number;
 
+    /**
+     * @default 1010
+     */
     const KEY_omacron: number;
 
+    /**
+     * @default 2755
+     */
     const KEY_oneeighth: number;
 
+    /**
+     * @default 2738
+     */
     const KEY_onefifth: number;
 
+    /**
+     * @default 189
+     */
     const KEY_onehalf: number;
 
+    /**
+     * @default 188
+     */
     const KEY_onequarter: number;
 
+    /**
+     * @default 2742
+     */
     const KEY_onesixth: number;
 
+    /**
+     * @default 16785537
+     */
     const KEY_onesubscript: number;
 
+    /**
+     * @default 185
+     */
     const KEY_onesuperior: number;
 
+    /**
+     * @default 2736
+     */
     const KEY_onethird: number;
 
+    /**
+     * @default 248
+     */
     const KEY_ooblique: number;
 
+    /**
+     * @default 2786
+     */
     const KEY_openrectbullet: number;
 
+    /**
+     * @default 2789
+     */
     const KEY_openstar: number;
 
+    /**
+     * @default 2788
+     */
     const KEY_opentribulletdown: number;
 
+    /**
+     * @default 2787
+     */
     const KEY_opentribulletup: number;
 
+    /**
+     * @default 170
+     */
     const KEY_ordfeminine: number;
 
+    /**
+     * @default 248
+     */
     const KEY_oslash: number;
 
+    /**
+     * @default 245
+     */
     const KEY_otilde: number;
 
+    /**
+     * @default 3008
+     */
     const KEY_overbar: number;
 
+    /**
+     * @default 1150
+     */
     const KEY_overline: number;
 
+    /**
+     * @default 112
+     */
     const KEY_p: number;
 
+    /**
+     * @default 16784983
+     */
     const KEY_pabovedot: number;
 
+    /**
+     * @default 182
+     */
     const KEY_paragraph: number;
 
+    /**
+     * @default 40
+     */
     const KEY_parenleft: number;
 
+    /**
+     * @default 41
+     */
     const KEY_parenright: number;
 
+    /**
+     * @default 16785922
+     */
     const KEY_partdifferential: number;
 
+    /**
+     * @default 2287
+     */
     const KEY_partialderivative: number;
 
+    /**
+     * @default 37
+     */
     const KEY_percent: number;
 
+    /**
+     * @default 46
+     */
     const KEY_period: number;
 
+    /**
+     * @default 183
+     */
     const KEY_periodcentered: number;
 
+    /**
+     * @default 2773
+     */
     const KEY_permille: number;
 
+    /**
+     * @default 2811
+     */
     const KEY_phonographcopyright: number;
 
+    /**
+     * @default 43
+     */
     const KEY_plus: number;
 
+    /**
+     * @default 177
+     */
     const KEY_plusminus: number;
 
+    /**
+     * @default 2772
+     */
     const KEY_prescription: number;
 
+    /**
+     * @default 1200
+     */
     const KEY_prolongedsound: number;
 
+    /**
+     * @default 2726
+     */
     const KEY_punctspace: number;
 
+    /**
+     * @default 113
+     */
     const KEY_q: number;
 
+    /**
+     * @default 3020
+     */
     const KEY_quad: number;
 
+    /**
+     * @default 63
+     */
     const KEY_question: number;
 
+    /**
+     * @default 191
+     */
     const KEY_questiondown: number;
 
+    /**
+     * @default 34
+     */
     const KEY_quotedbl: number;
 
+    /**
+     * @default 96
+     */
     const KEY_quoteleft: number;
 
+    /**
+     * @default 39
+     */
     const KEY_quoteright: number;
 
+    /**
+     * @default 114
+     */
     const KEY_r: number;
 
+    /**
+     * @default 480
+     */
     const KEY_racute: number;
 
+    /**
+     * @default 2262
+     */
     const KEY_radical: number;
 
+    /**
+     * @default 504
+     */
     const KEY_rcaron: number;
 
+    /**
+     * @default 947
+     */
     const KEY_rcedilla: number;
 
+    /**
+     * @default 174
+     */
     const KEY_registered: number;
 
+    /**
+     * @default 2750
+     */
     const KEY_rightanglebracket: number;
 
+    /**
+     * @default 2301
+     */
     const KEY_rightarrow: number;
 
+    /**
+     * @default 2982
+     */
     const KEY_rightcaret: number;
 
+    /**
+     * @default 2771
+     */
     const KEY_rightdoublequotemark: number;
 
+    /**
+     * @default 2224
+     */
     const KEY_rightmiddlecurlybrace: number;
 
+    /**
+     * @default 2231
+     */
     const KEY_rightmiddlesummation: number;
 
+    /**
+     * @default 2765
+     */
     const KEY_rightopentriangle: number;
 
+    /**
+     * @default 2795
+     */
     const KEY_rightpointer: number;
 
+    /**
+     * @default 3032
+     */
     const KEY_rightshoe: number;
 
+    /**
+     * @default 2769
+     */
     const KEY_rightsinglequotemark: number;
 
+    /**
+     * @default 2549
+     */
     const KEY_rightt: number;
 
+    /**
+     * @default 3068
+     */
     const KEY_righttack: number;
 
+    /**
+     * @default 115
+     */
     const KEY_s: number;
 
+    /**
+     * @default 16784993
+     */
     const KEY_sabovedot: number;
 
+    /**
+     * @default 438
+     */
     const KEY_sacute: number;
 
+    /**
+     * @default 441
+     */
     const KEY_scaron: number;
 
+    /**
+     * @default 442
+     */
     const KEY_scedilla: number;
 
+    /**
+     * @default 16777817
+     */
     const KEY_schwa: number;
 
+    /**
+     * @default 766
+     */
     const KEY_scircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const KEY_script_switch: number;
 
+    /**
+     * @default 2775
+     */
     const KEY_seconds: number;
 
+    /**
+     * @default 167
+     */
     const KEY_section: number;
 
+    /**
+     * @default 59
+     */
     const KEY_semicolon: number;
 
+    /**
+     * @default 1247
+     */
     const KEY_semivoicedsound: number;
 
+    /**
+     * @default 2758
+     */
     const KEY_seveneighths: number;
 
+    /**
+     * @default 16785543
+     */
     const KEY_sevensubscript: number;
 
+    /**
+     * @default 16785527
+     */
     const KEY_sevensuperior: number;
 
+    /**
+     * @default 2762
+     */
     const KEY_signaturemark: number;
 
+    /**
+     * @default 2732
+     */
     const KEY_signifblank: number;
 
+    /**
+     * @default 2249
+     */
     const KEY_similarequal: number;
 
+    /**
+     * @default 2813
+     */
     const KEY_singlelowquotemark: number;
 
+    /**
+     * @default 16785542
+     */
     const KEY_sixsubscript: number;
 
+    /**
+     * @default 16785526
+     */
     const KEY_sixsuperior: number;
 
+    /**
+     * @default 47
+     */
     const KEY_slash: number;
 
+    /**
+     * @default 2528
+     */
     const KEY_soliddiamond: number;
 
+    /**
+     * @default 32
+     */
     const KEY_space: number;
 
+    /**
+     * @default 16785946
+     */
     const KEY_squareroot: number;
 
+    /**
+     * @default 223
+     */
     const KEY_ssharp: number;
 
+    /**
+     * @default 163
+     */
     const KEY_sterling: number;
 
+    /**
+     * @default 16786019
+     */
     const KEY_stricteq: number;
 
+    /**
+     * @default 116
+     */
     const KEY_t: number;
 
+    /**
+     * @default 16785003
+     */
     const KEY_tabovedot: number;
 
+    /**
+     * @default 443
+     */
     const KEY_tcaron: number;
 
+    /**
+     * @default 510
+     */
     const KEY_tcedilla: number;
 
+    /**
+     * @default 2809
+     */
     const KEY_telephone: number;
 
+    /**
+     * @default 2810
+     */
     const KEY_telephonerecorder: number;
 
+    /**
+     * @default 2240
+     */
     const KEY_therefore: number;
 
+    /**
+     * @default 2727
+     */
     const KEY_thinspace: number;
 
+    /**
+     * @default 254
+     */
     const KEY_thorn: number;
 
+    /**
+     * @default 2756
+     */
     const KEY_threeeighths: number;
 
+    /**
+     * @default 2740
+     */
     const KEY_threefifths: number;
 
+    /**
+     * @default 190
+     */
     const KEY_threequarters: number;
 
+    /**
+     * @default 16785539
+     */
     const KEY_threesubscript: number;
 
+    /**
+     * @default 179
+     */
     const KEY_threesuperior: number;
 
+    /**
+     * @default 16785965
+     */
     const KEY_tintegral: number;
 
+    /**
+     * @default 2212
+     */
     const KEY_topintegral: number;
 
+    /**
+     * @default 2219
+     */
     const KEY_topleftparens: number;
 
+    /**
+     * @default 2210
+     */
     const KEY_topleftradical: number;
 
+    /**
+     * @default 2215
+     */
     const KEY_topleftsqbracket: number;
 
+    /**
+     * @default 2225
+     */
     const KEY_topleftsummation: number;
 
+    /**
+     * @default 2221
+     */
     const KEY_toprightparens: number;
 
+    /**
+     * @default 2217
+     */
     const KEY_toprightsqbracket: number;
 
+    /**
+     * @default 2229
+     */
     const KEY_toprightsummation: number;
 
+    /**
+     * @default 2551
+     */
     const KEY_topt: number;
 
+    /**
+     * @default 2227
+     */
     const KEY_topvertsummationconnector: number;
 
+    /**
+     * @default 2761
+     */
     const KEY_trademark: number;
 
+    /**
+     * @default 2763
+     */
     const KEY_trademarkincircle: number;
 
+    /**
+     * @default 956
+     */
     const KEY_tslash: number;
 
+    /**
+     * @default 2739
+     */
     const KEY_twofifths: number;
 
+    /**
+     * @default 16785538
+     */
     const KEY_twosubscript: number;
 
+    /**
+     * @default 178
+     */
     const KEY_twosuperior: number;
 
+    /**
+     * @default 2737
+     */
     const KEY_twothirds: number;
 
+    /**
+     * @default 117
+     */
     const KEY_u: number;
 
+    /**
+     * @default 250
+     */
     const KEY_uacute: number;
 
+    /**
+     * @default 16785125
+     */
     const KEY_ubelowdot: number;
 
+    /**
+     * @default 765
+     */
     const KEY_ubreve: number;
 
+    /**
+     * @default 251
+     */
     const KEY_ucircumflex: number;
 
+    /**
+     * @default 252
+     */
     const KEY_udiaeresis: number;
 
+    /**
+     * @default 507
+     */
     const KEY_udoubleacute: number;
 
+    /**
+     * @default 249
+     */
     const KEY_ugrave: number;
 
+    /**
+     * @default 16785127
+     */
     const KEY_uhook: number;
 
+    /**
+     * @default 16777648
+     */
     const KEY_uhorn: number;
 
+    /**
+     * @default 16785129
+     */
     const KEY_uhornacute: number;
 
+    /**
+     * @default 16785137
+     */
     const KEY_uhornbelowdot: number;
 
+    /**
+     * @default 16785131
+     */
     const KEY_uhorngrave: number;
 
+    /**
+     * @default 16785133
+     */
     const KEY_uhornhook: number;
 
+    /**
+     * @default 16785135
+     */
     const KEY_uhorntilde: number;
 
+    /**
+     * @default 1022
+     */
     const KEY_umacron: number;
 
+    /**
+     * @default 3014
+     */
     const KEY_underbar: number;
 
+    /**
+     * @default 95
+     */
     const KEY_underscore: number;
 
+    /**
+     * @default 2269
+     */
     const KEY_union: number;
 
+    /**
+     * @default 1017
+     */
     const KEY_uogonek: number;
 
+    /**
+     * @default 2300
+     */
     const KEY_uparrow: number;
 
+    /**
+     * @default 2985
+     */
     const KEY_upcaret: number;
 
+    /**
+     * @default 2540
+     */
     const KEY_upleftcorner: number;
 
+    /**
+     * @default 2539
+     */
     const KEY_uprightcorner: number;
 
+    /**
+     * @default 3011
+     */
     const KEY_upshoe: number;
 
+    /**
+     * @default 3027
+     */
     const KEY_upstile: number;
 
+    /**
+     * @default 3022
+     */
     const KEY_uptack: number;
 
+    /**
+     * @default 505
+     */
     const KEY_uring: number;
 
+    /**
+     * @default 1021
+     */
     const KEY_utilde: number;
 
+    /**
+     * @default 118
+     */
     const KEY_v: number;
 
+    /**
+     * @default 2241
+     */
     const KEY_variation: number;
 
+    /**
+     * @default 2552
+     */
     const KEY_vertbar: number;
 
+    /**
+     * @default 2214
+     */
     const KEY_vertconnector: number;
 
+    /**
+     * @default 1246
+     */
     const KEY_voicedsound: number;
 
+    /**
+     * @default 2537
+     */
     const KEY_vt: number;
 
+    /**
+     * @default 119
+     */
     const KEY_w: number;
 
+    /**
+     * @default 16785027
+     */
     const KEY_wacute: number;
 
+    /**
+     * @default 16777589
+     */
     const KEY_wcircumflex: number;
 
+    /**
+     * @default 16785029
+     */
     const KEY_wdiaeresis: number;
 
+    /**
+     * @default 16785025
+     */
     const KEY_wgrave: number;
 
+    /**
+     * @default 120
+     */
     const KEY_x: number;
 
+    /**
+     * @default 16785035
+     */
     const KEY_xabovedot: number;
 
+    /**
+     * @default 121
+     */
     const KEY_y: number;
 
+    /**
+     * @default 253
+     */
     const KEY_yacute: number;
 
+    /**
+     * @default 16785141
+     */
     const KEY_ybelowdot: number;
 
+    /**
+     * @default 16777591
+     */
     const KEY_ycircumflex: number;
 
+    /**
+     * @default 255
+     */
     const KEY_ydiaeresis: number;
 
+    /**
+     * @default 165
+     */
     const KEY_yen: number;
 
+    /**
+     * @default 16785139
+     */
     const KEY_ygrave: number;
 
+    /**
+     * @default 16785143
+     */
     const KEY_yhook: number;
 
+    /**
+     * @default 16785145
+     */
     const KEY_ytilde: number;
 
+    /**
+     * @default 122
+     */
     const KEY_z: number;
 
+    /**
+     * @default 447
+     */
     const KEY_zabovedot: number;
 
+    /**
+     * @default 444
+     */
     const KEY_zacute: number;
 
+    /**
+     * @default 446
+     */
     const KEY_zcaron: number;
 
+    /**
+     * @default 16785536
+     */
     const KEY_zerosubscript: number;
 
+    /**
+     * @default 16785520
+     */
     const KEY_zerosuperior: number;
 
+    /**
+     * @default 16777654
+     */
     const KEY_zstroke: number;
 
+    /**
+     * @default 65456
+     */
     const KP_0: number;
 
+    /**
+     * @default 65457
+     */
     const KP_1: number;
 
+    /**
+     * @default 65458
+     */
     const KP_2: number;
 
+    /**
+     * @default 65459
+     */
     const KP_3: number;
 
+    /**
+     * @default 65460
+     */
     const KP_4: number;
 
+    /**
+     * @default 65461
+     */
     const KP_5: number;
 
+    /**
+     * @default 65462
+     */
     const KP_6: number;
 
+    /**
+     * @default 65463
+     */
     const KP_7: number;
 
+    /**
+     * @default 65464
+     */
     const KP_8: number;
 
+    /**
+     * @default 65465
+     */
     const KP_9: number;
 
+    /**
+     * @default 65451
+     */
     const KP_Add: number;
 
+    /**
+     * @default 65437
+     */
     const KP_Begin: number;
 
+    /**
+     * @default 65454
+     */
     const KP_Decimal: number;
 
+    /**
+     * @default 65439
+     */
     const KP_Delete: number;
 
+    /**
+     * @default 65455
+     */
     const KP_Divide: number;
 
+    /**
+     * @default 65433
+     */
     const KP_Down: number;
 
+    /**
+     * @default 65436
+     */
     const KP_End: number;
 
+    /**
+     * @default 65421
+     */
     const KP_Enter: number;
 
+    /**
+     * @default 65469
+     */
     const KP_Equal: number;
 
+    /**
+     * @default 65425
+     */
     const KP_F1: number;
 
+    /**
+     * @default 65426
+     */
     const KP_F2: number;
 
+    /**
+     * @default 65427
+     */
     const KP_F3: number;
 
+    /**
+     * @default 65428
+     */
     const KP_F4: number;
 
+    /**
+     * @default 65429
+     */
     const KP_Home: number;
 
+    /**
+     * @default 65438
+     */
     const KP_Insert: number;
 
+    /**
+     * @default 65430
+     */
     const KP_Left: number;
 
+    /**
+     * @default 65450
+     */
     const KP_Multiply: number;
 
+    /**
+     * @default 65435
+     */
     const KP_Next: number;
 
+    /**
+     * @default 65435
+     */
     const KP_Page_Down: number;
 
+    /**
+     * @default 65434
+     */
     const KP_Page_Up: number;
 
+    /**
+     * @default 65434
+     */
     const KP_Prior: number;
 
+    /**
+     * @default 65432
+     */
     const KP_Right: number;
 
+    /**
+     * @default 65452
+     */
     const KP_Separator: number;
 
+    /**
+     * @default 65408
+     */
     const KP_Space: number;
 
+    /**
+     * @default 65453
+     */
     const KP_Subtract: number;
 
+    /**
+     * @default 65417
+     */
     const KP_Tab: number;
 
+    /**
+     * @default 65431
+     */
     const KP_Up: number;
 
+    /**
+     * @default 65325
+     */
     const Kana_Lock: number;
 
+    /**
+     * @default 65326
+     */
     const Kana_Shift: number;
 
+    /**
+     * @default 65313
+     */
     const Kanji: number;
 
+    /**
+     * @default 65335
+     */
     const Kanji_Bangou: number;
 
+    /**
+     * @default 65318
+     */
     const Katakana: number;
 
+    /**
+     * @default 269025030
+     */
     const KbdBrightnessDown: number;
 
+    /**
+     * @default 269025029
+     */
     const KbdBrightnessUp: number;
 
+    /**
+     * @default 269025028
+     */
     const KbdLightOnOff: number;
 
+    /**
+     * @default 979
+     */
     const Kcedilla: number;
 
+    /**
+     * @default 3839
+     */
     const Korean_Won: number;
 
+    /**
+     * @default 76
+     */
     const L: number;
 
+    /**
+     * @default 65480
+     */
     const L1: number;
 
+    /**
+     * @default 65489
+     */
     const L10: number;
 
+    /**
+     * @default 65481
+     */
     const L2: number;
 
+    /**
+     * @default 65482
+     */
     const L3: number;
 
+    /**
+     * @default 65483
+     */
     const L4: number;
 
+    /**
+     * @default 65484
+     */
     const L5: number;
 
+    /**
+     * @default 65485
+     */
     const L6: number;
 
+    /**
+     * @default 65486
+     */
     const L7: number;
 
+    /**
+     * @default 65487
+     */
     const L8: number;
 
+    /**
+     * @default 65488
+     */
     const L9: number;
 
+    /**
+     * @default 453
+     */
     const Lacute: number;
 
+    /**
+     * @default 65236
+     */
     const Last_Virtual_Screen: number;
 
+    /**
+     * @default 269025088
+     */
     const Launch0: number;
 
+    /**
+     * @default 269025089
+     */
     const Launch1: number;
 
+    /**
+     * @default 269025090
+     */
     const Launch2: number;
 
+    /**
+     * @default 269025091
+     */
     const Launch3: number;
 
+    /**
+     * @default 269025092
+     */
     const Launch4: number;
 
+    /**
+     * @default 269025093
+     */
     const Launch5: number;
 
+    /**
+     * @default 269025094
+     */
     const Launch6: number;
 
+    /**
+     * @default 269025095
+     */
     const Launch7: number;
 
+    /**
+     * @default 269025096
+     */
     const Launch8: number;
 
+    /**
+     * @default 269025097
+     */
     const Launch9: number;
 
+    /**
+     * @default 269025098
+     */
     const LaunchA: number;
 
+    /**
+     * @default 269025099
+     */
     const LaunchB: number;
 
+    /**
+     * @default 269025100
+     */
     const LaunchC: number;
 
+    /**
+     * @default 269025101
+     */
     const LaunchD: number;
 
+    /**
+     * @default 269025102
+     */
     const LaunchE: number;
 
+    /**
+     * @default 269025103
+     */
     const LaunchF: number;
 
+    /**
+     * @default 16784950
+     */
     const Lbelowdot: number;
 
+    /**
+     * @default 421
+     */
     const Lcaron: number;
 
+    /**
+     * @default 934
+     */
     const Lcedilla: number;
 
+    /**
+     * @default 65361
+     */
     const Left: number;
 
+    /**
+     * @default 269025077
+     */
     const LightBulb: number;
 
+    /**
+     * @default 65290
+     */
     const Linefeed: number;
 
+    /**
+     * @default 16785572
+     */
     const LiraSign: number;
 
+    /**
+     * @default 269024805
+     */
     const LogGrabInfo: number;
 
+    /**
+     * @default 269025121
+     */
     const LogOff: number;
 
+    /**
+     * @default 269024804
+     */
     const LogWindowTree: number;
 
+    /**
+     * @default 419
+     */
     const Lstroke: number;
 
+    /**
+     * @default 77
+     */
     const M: number;
 
     /**
      * The major version of the Clutter library (1, if `CLUTTER_VERSION` is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version of the Clutter library (3, if `CLUTTER_VERSION` is 1.2.3)
+     * @default 1
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version of the Clutter library (2, if `CLUTTER_VERSION` is 1.2.3)
+     * @default 26
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 16784960
+     */
     const Mabovedot: number;
 
+    /**
+     * @default 1717
+     */
     const Macedonia_DSE: number;
 
+    /**
+     * @default 1714
+     */
     const Macedonia_GJE: number;
 
+    /**
+     * @default 1724
+     */
     const Macedonia_KJE: number;
 
+    /**
+     * @default 1701
+     */
     const Macedonia_dse: number;
 
+    /**
+     * @default 1698
+     */
     const Macedonia_gje: number;
 
+    /**
+     * @default 1708
+     */
     const Macedonia_kje: number;
 
+    /**
+     * @default 65342
+     */
     const Mae_Koho: number;
 
+    /**
+     * @default 269025049
+     */
     const Mail: number;
 
+    /**
+     * @default 269025168
+     */
     const MailForward: number;
 
+    /**
+     * @default 269025122
+     */
     const Market: number;
 
+    /**
+     * @default 65324
+     */
     const Massyo: number;
 
+    /**
+     * @default 269025123
+     */
     const Meeting: number;
 
+    /**
+     * @default 269025054
+     */
     const Memo: number;
 
+    /**
+     * @default 65383
+     */
     const Menu: number;
 
+    /**
+     * @default 269025125
+     */
     const MenuKB: number;
 
+    /**
+     * @default 269025126
+     */
     const MenuPB: number;
 
+    /**
+     * @default 269025166
+     */
     const Messenger: number;
 
+    /**
+     * @default 65511
+     */
     const Meta_L: number;
 
+    /**
+     * @default 65512
+     */
     const Meta_R: number;
 
+    /**
+     * @default 16785573
+     */
     const MillSign: number;
 
+    /**
+     * @default 269025025
+     */
     const ModeLock: number;
 
+    /**
+     * @default 65406
+     */
     const Mode_switch: number;
 
+    /**
+     * @default 269025027
+     */
     const MonBrightnessDown: number;
 
+    /**
+     * @default 269025026
+     */
     const MonBrightnessUp: number;
 
+    /**
+     * @default 65143
+     */
     const MouseKeys_Accel_Enable: number;
 
+    /**
+     * @default 65142
+     */
     const MouseKeys_Enable: number;
 
+    /**
+     * @default 65314
+     */
     const Muhenkan: number;
 
+    /**
+     * @default 65312
+     */
     const Multi_key: number;
 
+    /**
+     * @default 65341
+     */
     const MultipleCandidate: number;
 
+    /**
+     * @default 269025170
+     */
     const Music: number;
 
+    /**
+     * @default 269025075
+     */
     const MyComputer: number;
 
+    /**
+     * @default 269025127
+     */
     const MySites: number;
 
+    /**
+     * @default 78
+     */
     const N: number;
 
     /**
      * Set to 1 if Clutter was built without FPU (i.e fixed math), 0 otherwise
      * @deprecated since 0.6: This macro is no longer defined (identical code is used  regardless the presence of FPU).
+     * @default 0
      */
     const NO_FPU: number;
 
+    /**
+     * @default 465
+     */
     const Nacute: number;
 
+    /**
+     * @default 16785574
+     */
     const NairaSign: number;
 
+    /**
+     * @default 466
+     */
     const Ncaron: number;
 
+    /**
+     * @default 977
+     */
     const Ncedilla: number;
 
+    /**
+     * @default 269025128
+     */
     const New: number;
 
+    /**
+     * @default 16785578
+     */
     const NewSheqelSign: number;
 
+    /**
+     * @default 269025129
+     */
     const News: number;
 
+    /**
+     * @default 65366
+     */
     const Next: number;
 
+    /**
+     * @default 269024802
+     */
     const Next_VMode: number;
 
+    /**
+     * @default 65234
+     */
     const Next_Virtual_Screen: number;
 
+    /**
+     * @default 209
+     */
     const Ntilde: number;
 
+    /**
+     * @default 65407
+     */
     const Num_Lock: number;
 
+    /**
+     * @default 79
+     */
     const O: number;
 
+    /**
+     * @default 5052
+     */
     const OE: number;
 
+    /**
+     * @default 211
+     */
     const Oacute: number;
 
+    /**
+     * @default 16777631
+     */
     const Obarred: number;
 
+    /**
+     * @default 16785100
+     */
     const Obelowdot: number;
 
+    /**
+     * @default 16777681
+     */
     const Ocaron: number;
 
+    /**
+     * @default 212
+     */
     const Ocircumflex: number;
 
+    /**
+     * @default 16785104
+     */
     const Ocircumflexacute: number;
 
+    /**
+     * @default 16785112
+     */
     const Ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785106
+     */
     const Ocircumflexgrave: number;
 
+    /**
+     * @default 16785108
+     */
     const Ocircumflexhook: number;
 
+    /**
+     * @default 16785110
+     */
     const Ocircumflextilde: number;
 
+    /**
+     * @default 214
+     */
     const Odiaeresis: number;
 
+    /**
+     * @default 469
+     */
     const Odoubleacute: number;
 
+    /**
+     * @default 269025130
+     */
     const OfficeHome: number;
 
+    /**
+     * @default 210
+     */
     const Ograve: number;
 
+    /**
+     * @default 16785102
+     */
     const Ohook: number;
 
+    /**
+     * @default 16777632
+     */
     const Ohorn: number;
 
+    /**
+     * @default 16785114
+     */
     const Ohornacute: number;
 
+    /**
+     * @default 16785122
+     */
     const Ohornbelowdot: number;
 
+    /**
+     * @default 16785116
+     */
     const Ohorngrave: number;
 
+    /**
+     * @default 16785118
+     */
     const Ohornhook: number;
 
+    /**
+     * @default 16785120
+     */
     const Ohorntilde: number;
 
+    /**
+     * @default 978
+     */
     const Omacron: number;
 
+    /**
+     * @default 216
+     */
     const Ooblique: number;
 
+    /**
+     * @default 269025131
+     */
     const Open: number;
 
+    /**
+     * @default 269025080
+     */
     const OpenURL: number;
 
+    /**
+     * @default 269025132
+     */
     const Option: number;
 
+    /**
+     * @default 216
+     */
     const Oslash: number;
 
+    /**
+     * @default 213
+     */
     const Otilde: number;
 
+    /**
+     * @default 65144
+     */
     const Overlay1_Enable: number;
 
+    /**
+     * @default 65145
+     */
     const Overlay2_Enable: number;
 
+    /**
+     * @default 80
+     */
     const P: number;
 
+    /**
+     * @default 32
+     */
     const PATH_RELATIVE: number;
 
     /**
@@ -8757,2642 +18519,6565 @@ export namespace Clutter {
      * continually animating (and thus able to starve GTK+) than
      * vice-versa.
      * @since 0.8
+     * @default 50
      */
     const PRIORITY_REDRAW: number;
 
+    /**
+     * @default 16784982
+     */
     const Pabovedot: number;
 
+    /**
+     * @default 65366
+     */
     const Page_Down: number;
 
+    /**
+     * @default 65365
+     */
     const Page_Up: number;
 
+    /**
+     * @default 269025133
+     */
     const Paste: number;
 
+    /**
+     * @default 65299
+     */
     const Pause: number;
 
+    /**
+     * @default 16785575
+     */
     const PesetaSign: number;
 
+    /**
+     * @default 269025134
+     */
     const Phone: number;
 
+    /**
+     * @default 269025169
+     */
     const Pictures: number;
 
+    /**
+     * @default 65274
+     */
     const Pointer_Accelerate: number;
 
+    /**
+     * @default 65257
+     */
     const Pointer_Button1: number;
 
+    /**
+     * @default 65258
+     */
     const Pointer_Button2: number;
 
+    /**
+     * @default 65259
+     */
     const Pointer_Button3: number;
 
+    /**
+     * @default 65260
+     */
     const Pointer_Button4: number;
 
+    /**
+     * @default 65261
+     */
     const Pointer_Button5: number;
 
+    /**
+     * @default 65256
+     */
     const Pointer_Button_Dflt: number;
 
+    /**
+     * @default 65263
+     */
     const Pointer_DblClick1: number;
 
+    /**
+     * @default 65264
+     */
     const Pointer_DblClick2: number;
 
+    /**
+     * @default 65265
+     */
     const Pointer_DblClick3: number;
 
+    /**
+     * @default 65266
+     */
     const Pointer_DblClick4: number;
 
+    /**
+     * @default 65267
+     */
     const Pointer_DblClick5: number;
 
+    /**
+     * @default 65262
+     */
     const Pointer_DblClick_Dflt: number;
 
+    /**
+     * @default 65275
+     */
     const Pointer_DfltBtnNext: number;
 
+    /**
+     * @default 65276
+     */
     const Pointer_DfltBtnPrev: number;
 
+    /**
+     * @default 65251
+     */
     const Pointer_Down: number;
 
+    /**
+     * @default 65254
+     */
     const Pointer_DownLeft: number;
 
+    /**
+     * @default 65255
+     */
     const Pointer_DownRight: number;
 
+    /**
+     * @default 65269
+     */
     const Pointer_Drag1: number;
 
+    /**
+     * @default 65270
+     */
     const Pointer_Drag2: number;
 
+    /**
+     * @default 65271
+     */
     const Pointer_Drag3: number;
 
+    /**
+     * @default 65272
+     */
     const Pointer_Drag4: number;
 
+    /**
+     * @default 65277
+     */
     const Pointer_Drag5: number;
 
+    /**
+     * @default 65268
+     */
     const Pointer_Drag_Dflt: number;
 
+    /**
+     * @default 65273
+     */
     const Pointer_EnableKeys: number;
 
+    /**
+     * @default 65248
+     */
     const Pointer_Left: number;
 
+    /**
+     * @default 65249
+     */
     const Pointer_Right: number;
 
+    /**
+     * @default 65250
+     */
     const Pointer_Up: number;
 
+    /**
+     * @default 65252
+     */
     const Pointer_UpLeft: number;
 
+    /**
+     * @default 65253
+     */
     const Pointer_UpRight: number;
 
+    /**
+     * @default 269025057
+     */
     const PowerDown: number;
 
+    /**
+     * @default 269025066
+     */
     const PowerOff: number;
 
+    /**
+     * @default 269024803
+     */
     const Prev_VMode: number;
 
+    /**
+     * @default 65233
+     */
     const Prev_Virtual_Screen: number;
 
+    /**
+     * @default 65342
+     */
     const PreviousCandidate: number;
 
+    /**
+     * @default 65377
+     */
     const Print: number;
 
+    /**
+     * @default 65365
+     */
     const Prior: number;
 
+    /**
+     * @default 81
+     */
     const Q: number;
 
+    /**
+     * @default 82
+     */
     const R: number;
 
+    /**
+     * @default 65490
+     */
     const R1: number;
 
+    /**
+     * @default 65499
+     */
     const R10: number;
 
+    /**
+     * @default 65500
+     */
     const R11: number;
 
+    /**
+     * @default 65501
+     */
     const R12: number;
 
+    /**
+     * @default 65502
+     */
     const R13: number;
 
+    /**
+     * @default 65503
+     */
     const R14: number;
 
+    /**
+     * @default 65504
+     */
     const R15: number;
 
+    /**
+     * @default 65491
+     */
     const R2: number;
 
+    /**
+     * @default 65492
+     */
     const R3: number;
 
+    /**
+     * @default 65493
+     */
     const R4: number;
 
+    /**
+     * @default 65494
+     */
     const R5: number;
 
+    /**
+     * @default 65495
+     */
     const R6: number;
 
+    /**
+     * @default 65496
+     */
     const R7: number;
 
+    /**
+     * @default 65497
+     */
     const R8: number;
 
+    /**
+     * @default 65498
+     */
     const R9: number;
 
+    /**
+     * @default 448
+     */
     const Racute: number;
 
+    /**
+     * @default 472
+     */
     const Rcaron: number;
 
+    /**
+     * @default 931
+     */
     const Rcedilla: number;
 
+    /**
+     * @default 269025187
+     */
     const Red: number;
 
+    /**
+     * @default 65382
+     */
     const Redo: number;
 
+    /**
+     * @default 269025065
+     */
     const Refresh: number;
 
+    /**
+     * @default 269025139
+     */
     const Reload: number;
 
+    /**
+     * @default 65138
+     */
     const RepeatKeys_Enable: number;
 
+    /**
+     * @default 269025138
+     */
     const Reply: number;
 
+    /**
+     * @default 65293
+     */
     const Return: number;
 
+    /**
+     * @default 65363
+     */
     const Right: number;
 
+    /**
+     * @default 269025060
+     */
     const RockerDown: number;
 
+    /**
+     * @default 269025061
+     */
     const RockerEnter: number;
 
+    /**
+     * @default 269025059
+     */
     const RockerUp: number;
 
+    /**
+     * @default 65316
+     */
     const Romaji: number;
 
+    /**
+     * @default 269025140
+     */
     const RotateWindows: number;
 
+    /**
+     * @default 269025142
+     */
     const RotationKB: number;
 
+    /**
+     * @default 269025141
+     */
     const RotationPB: number;
 
+    /**
+     * @default 16785576
+     */
     const RupeeSign: number;
 
+    /**
+     * @default 83
+     */
     const S: number;
 
+    /**
+     * @default 16777615
+     */
     const SCHWA: number;
 
     /**
      * The default GObject type for the Clutter stage.
      * @since 0.8
      * @deprecated since 1.10: The macro evaluates to "deprecated" as Clutter can   be compiled against multiple windowing systems. You can use the   CLUTTER_WINDOWING_* macros for compile-time checks, and the type   check macros for run-time checks.
+     * @default deprecated
      */
     const STAGE_TYPE: string;
 
+    /**
+     * @default 16784992
+     */
     const Sabovedot: number;
 
+    /**
+     * @default 422
+     */
     const Sacute: number;
 
+    /**
+     * @default 269025143
+     */
     const Save: number;
 
+    /**
+     * @default 425
+     */
     const Scaron: number;
 
+    /**
+     * @default 426
+     */
     const Scedilla: number;
 
+    /**
+     * @default 734
+     */
     const Scircumflex: number;
 
+    /**
+     * @default 269025069
+     */
     const ScreenSaver: number;
 
+    /**
+     * @default 269025146
+     */
     const ScrollClick: number;
 
+    /**
+     * @default 269025145
+     */
     const ScrollDown: number;
 
+    /**
+     * @default 269025144
+     */
     const ScrollUp: number;
 
+    /**
+     * @default 65300
+     */
     const Scroll_Lock: number;
 
+    /**
+     * @default 269025051
+     */
     const Search: number;
 
+    /**
+     * @default 65376
+     */
     const Select: number;
 
+    /**
+     * @default 269025184
+     */
     const SelectButton: number;
 
+    /**
+     * @default 269025147
+     */
     const Send: number;
 
+    /**
+     * @default 1713
+     */
     const Serbian_DJE: number;
 
+    /**
+     * @default 1727
+     */
     const Serbian_DZE: number;
 
+    /**
+     * @default 1720
+     */
     const Serbian_JE: number;
 
+    /**
+     * @default 1721
+     */
     const Serbian_LJE: number;
 
+    /**
+     * @default 1722
+     */
     const Serbian_NJE: number;
 
+    /**
+     * @default 1723
+     */
     const Serbian_TSHE: number;
 
+    /**
+     * @default 1697
+     */
     const Serbian_dje: number;
 
+    /**
+     * @default 1711
+     */
     const Serbian_dze: number;
 
+    /**
+     * @default 1704
+     */
     const Serbian_je: number;
 
+    /**
+     * @default 1705
+     */
     const Serbian_lje: number;
 
+    /**
+     * @default 1706
+     */
     const Serbian_nje: number;
 
+    /**
+     * @default 1707
+     */
     const Serbian_tshe: number;
 
+    /**
+     * @default 65505
+     */
     const Shift_L: number;
 
+    /**
+     * @default 65510
+     */
     const Shift_Lock: number;
 
+    /**
+     * @default 65506
+     */
     const Shift_R: number;
 
+    /**
+     * @default 269025078
+     */
     const Shop: number;
 
+    /**
+     * @default 65340
+     */
     const SingleCandidate: number;
 
+    /**
+     * @default 16780677
+     */
     const Sinh_a: number;
 
+    /**
+     * @default 16780678
+     */
     const Sinh_aa: number;
 
+    /**
+     * @default 16780751
+     */
     const Sinh_aa2: number;
 
+    /**
+     * @default 16780679
+     */
     const Sinh_ae: number;
 
+    /**
+     * @default 16780752
+     */
     const Sinh_ae2: number;
 
+    /**
+     * @default 16780680
+     */
     const Sinh_aee: number;
 
+    /**
+     * @default 16780753
+     */
     const Sinh_aee2: number;
 
+    /**
+     * @default 16780691
+     */
     const Sinh_ai: number;
 
+    /**
+     * @default 16780763
+     */
     const Sinh_ai2: number;
 
+    /**
+     * @default 16780746
+     */
     const Sinh_al: number;
 
+    /**
+     * @default 16780694
+     */
     const Sinh_au: number;
 
+    /**
+     * @default 16780766
+     */
     const Sinh_au2: number;
 
+    /**
+     * @default 16780726
+     */
     const Sinh_ba: number;
 
+    /**
+     * @default 16780727
+     */
     const Sinh_bha: number;
 
+    /**
+     * @default 16780704
+     */
     const Sinh_ca: number;
 
+    /**
+     * @default 16780705
+     */
     const Sinh_cha: number;
 
+    /**
+     * @default 16780713
+     */
     const Sinh_dda: number;
 
+    /**
+     * @default 16780714
+     */
     const Sinh_ddha: number;
 
+    /**
+     * @default 16780719
+     */
     const Sinh_dha: number;
 
+    /**
+     * @default 16780720
+     */
     const Sinh_dhha: number;
 
+    /**
+     * @default 16780689
+     */
     const Sinh_e: number;
 
+    /**
+     * @default 16780761
+     */
     const Sinh_e2: number;
 
+    /**
+     * @default 16780690
+     */
     const Sinh_ee: number;
 
+    /**
+     * @default 16780762
+     */
     const Sinh_ee2: number;
 
+    /**
+     * @default 16780742
+     */
     const Sinh_fa: number;
 
+    /**
+     * @default 16780700
+     */
     const Sinh_ga: number;
 
+    /**
+     * @default 16780701
+     */
     const Sinh_gha: number;
 
+    /**
+     * @default 16780675
+     */
     const Sinh_h2: number;
 
+    /**
+     * @default 16780740
+     */
     const Sinh_ha: number;
 
+    /**
+     * @default 16780681
+     */
     const Sinh_i: number;
 
+    /**
+     * @default 16780754
+     */
     const Sinh_i2: number;
 
+    /**
+     * @default 16780682
+     */
     const Sinh_ii: number;
 
+    /**
+     * @default 16780755
+     */
     const Sinh_ii2: number;
 
+    /**
+     * @default 16780706
+     */
     const Sinh_ja: number;
 
+    /**
+     * @default 16780707
+     */
     const Sinh_jha: number;
 
+    /**
+     * @default 16780709
+     */
     const Sinh_jnya: number;
 
+    /**
+     * @default 16780698
+     */
     const Sinh_ka: number;
 
+    /**
+     * @default 16780699
+     */
     const Sinh_kha: number;
 
+    /**
+     * @default 16780788
+     */
     const Sinh_kunddaliya: number;
 
+    /**
+     * @default 16780733
+     */
     const Sinh_la: number;
 
+    /**
+     * @default 16780741
+     */
     const Sinh_lla: number;
 
+    /**
+     * @default 16780687
+     */
     const Sinh_lu: number;
 
+    /**
+     * @default 16780767
+     */
     const Sinh_lu2: number;
 
+    /**
+     * @default 16780688
+     */
     const Sinh_luu: number;
 
+    /**
+     * @default 16780787
+     */
     const Sinh_luu2: number;
 
+    /**
+     * @default 16780728
+     */
     const Sinh_ma: number;
 
+    /**
+     * @default 16780729
+     */
     const Sinh_mba: number;
 
+    /**
+     * @default 16780721
+     */
     const Sinh_na: number;
 
+    /**
+     * @default 16780716
+     */
     const Sinh_ndda: number;
 
+    /**
+     * @default 16780723
+     */
     const Sinh_ndha: number;
 
+    /**
+     * @default 16780674
+     */
     const Sinh_ng: number;
 
+    /**
+     * @default 16780702
+     */
     const Sinh_ng2: number;
 
+    /**
+     * @default 16780703
+     */
     const Sinh_nga: number;
 
+    /**
+     * @default 16780710
+     */
     const Sinh_nja: number;
 
+    /**
+     * @default 16780715
+     */
     const Sinh_nna: number;
 
+    /**
+     * @default 16780708
+     */
     const Sinh_nya: number;
 
+    /**
+     * @default 16780692
+     */
     const Sinh_o: number;
 
+    /**
+     * @default 16780764
+     */
     const Sinh_o2: number;
 
+    /**
+     * @default 16780693
+     */
     const Sinh_oo: number;
 
+    /**
+     * @default 16780765
+     */
     const Sinh_oo2: number;
 
+    /**
+     * @default 16780724
+     */
     const Sinh_pa: number;
 
+    /**
+     * @default 16780725
+     */
     const Sinh_pha: number;
 
+    /**
+     * @default 16780731
+     */
     const Sinh_ra: number;
 
+    /**
+     * @default 16780685
+     */
     const Sinh_ri: number;
 
+    /**
+     * @default 16780686
+     */
     const Sinh_rii: number;
 
+    /**
+     * @default 16780760
+     */
     const Sinh_ru2: number;
 
+    /**
+     * @default 16780786
+     */
     const Sinh_ruu2: number;
 
+    /**
+     * @default 16780739
+     */
     const Sinh_sa: number;
 
+    /**
+     * @default 16780737
+     */
     const Sinh_sha: number;
 
+    /**
+     * @default 16780738
+     */
     const Sinh_ssha: number;
 
+    /**
+     * @default 16780717
+     */
     const Sinh_tha: number;
 
+    /**
+     * @default 16780718
+     */
     const Sinh_thha: number;
 
+    /**
+     * @default 16780711
+     */
     const Sinh_tta: number;
 
+    /**
+     * @default 16780712
+     */
     const Sinh_ttha: number;
 
+    /**
+     * @default 16780683
+     */
     const Sinh_u: number;
 
+    /**
+     * @default 16780756
+     */
     const Sinh_u2: number;
 
+    /**
+     * @default 16780684
+     */
     const Sinh_uu: number;
 
+    /**
+     * @default 16780758
+     */
     const Sinh_uu2: number;
 
+    /**
+     * @default 16780736
+     */
     const Sinh_va: number;
 
+    /**
+     * @default 16780730
+     */
     const Sinh_ya: number;
 
+    /**
+     * @default 269025071
+     */
     const Sleep: number;
 
+    /**
+     * @default 65139
+     */
     const SlowKeys_Enable: number;
 
+    /**
+     * @default 269025148
+     */
     const Spell: number;
 
+    /**
+     * @default 269025149
+     */
     const SplitScreen: number;
 
+    /**
+     * @default 269025040
+     */
     const Standby: number;
 
+    /**
+     * @default 269025050
+     */
     const Start: number;
 
+    /**
+     * @default 65141
+     */
     const StickyKeys_Enable: number;
 
+    /**
+     * @default 269025064
+     */
     const Stop: number;
 
+    /**
+     * @default 269025178
+     */
     const Subtitle: number;
 
+    /**
+     * @default 65515
+     */
     const Super_L: number;
 
+    /**
+     * @default 65516
+     */
     const Super_R: number;
 
+    /**
+     * @default 269025150
+     */
     const Support: number;
 
+    /**
+     * @default 269025191
+     */
     const Suspend: number;
 
+    /**
+     * @default 269024769
+     */
     const Switch_VT_1: number;
 
+    /**
+     * @default 269024778
+     */
     const Switch_VT_10: number;
 
+    /**
+     * @default 269024779
+     */
     const Switch_VT_11: number;
 
+    /**
+     * @default 269024780
+     */
     const Switch_VT_12: number;
 
+    /**
+     * @default 269024770
+     */
     const Switch_VT_2: number;
 
+    /**
+     * @default 269024771
+     */
     const Switch_VT_3: number;
 
+    /**
+     * @default 269024772
+     */
     const Switch_VT_4: number;
 
+    /**
+     * @default 269024773
+     */
     const Switch_VT_5: number;
 
+    /**
+     * @default 269024774
+     */
     const Switch_VT_6: number;
 
+    /**
+     * @default 269024775
+     */
     const Switch_VT_7: number;
 
+    /**
+     * @default 269024776
+     */
     const Switch_VT_8: number;
 
+    /**
+     * @default 269024777
+     */
     const Switch_VT_9: number;
 
+    /**
+     * @default 65301
+     */
     const Sys_Req: number;
 
+    /**
+     * @default 84
+     */
     const T: number;
 
+    /**
+     * @default 222
+     */
     const THORN: number;
 
+    /**
+     * @default 65289
+     */
     const Tab: number;
 
+    /**
+     * @default 16785002
+     */
     const Tabovedot: number;
 
+    /**
+     * @default 269025151
+     */
     const TaskPane: number;
 
+    /**
+     * @default 427
+     */
     const Tcaron: number;
 
+    /**
+     * @default 478
+     */
     const Tcedilla: number;
 
+    /**
+     * @default 269025152
+     */
     const Terminal: number;
 
+    /**
+     * @default 65237
+     */
     const Terminate_Server: number;
 
+    /**
+     * @default 3551
+     */
     const Thai_baht: number;
 
+    /**
+     * @default 3514
+     */
     const Thai_bobaimai: number;
 
+    /**
+     * @default 3496
+     */
     const Thai_chochan: number;
 
+    /**
+     * @default 3498
+     */
     const Thai_chochang: number;
 
+    /**
+     * @default 3497
+     */
     const Thai_choching: number;
 
+    /**
+     * @default 3500
+     */
     const Thai_chochoe: number;
 
+    /**
+     * @default 3502
+     */
     const Thai_dochada: number;
 
+    /**
+     * @default 3508
+     */
     const Thai_dodek: number;
 
+    /**
+     * @default 3517
+     */
     const Thai_fofa: number;
 
+    /**
+     * @default 3519
+     */
     const Thai_fofan: number;
 
+    /**
+     * @default 3531
+     */
     const Thai_hohip: number;
 
+    /**
+     * @default 3534
+     */
     const Thai_honokhuk: number;
 
+    /**
+     * @default 3490
+     */
     const Thai_khokhai: number;
 
+    /**
+     * @default 3493
+     */
     const Thai_khokhon: number;
 
+    /**
+     * @default 3491
+     */
     const Thai_khokhuat: number;
 
+    /**
+     * @default 3492
+     */
     const Thai_khokhwai: number;
 
+    /**
+     * @default 3494
+     */
     const Thai_khorakhang: number;
 
+    /**
+     * @default 3489
+     */
     const Thai_kokai: number;
 
+    /**
+     * @default 3557
+     */
     const Thai_lakkhangyao: number;
 
+    /**
+     * @default 3575
+     */
     const Thai_lekchet: number;
 
+    /**
+     * @default 3573
+     */
     const Thai_lekha: number;
 
+    /**
+     * @default 3574
+     */
     const Thai_lekhok: number;
 
+    /**
+     * @default 3577
+     */
     const Thai_lekkao: number;
 
+    /**
+     * @default 3569
+     */
     const Thai_leknung: number;
 
+    /**
+     * @default 3576
+     */
     const Thai_lekpaet: number;
 
+    /**
+     * @default 3571
+     */
     const Thai_leksam: number;
 
+    /**
+     * @default 3572
+     */
     const Thai_leksi: number;
 
+    /**
+     * @default 3570
+     */
     const Thai_leksong: number;
 
+    /**
+     * @default 3568
+     */
     const Thai_leksun: number;
 
+    /**
+     * @default 3532
+     */
     const Thai_lochula: number;
 
+    /**
+     * @default 3525
+     */
     const Thai_loling: number;
 
+    /**
+     * @default 3526
+     */
     const Thai_lu: number;
 
+    /**
+     * @default 3563
+     */
     const Thai_maichattawa: number;
 
+    /**
+     * @default 3560
+     */
     const Thai_maiek: number;
 
+    /**
+     * @default 3537
+     */
     const Thai_maihanakat: number;
 
+    /**
+     * @default 3550
+     */
     const Thai_maihanakat_maitho: number;
 
+    /**
+     * @default 3559
+     */
     const Thai_maitaikhu: number;
 
+    /**
+     * @default 3561
+     */
     const Thai_maitho: number;
 
+    /**
+     * @default 3562
+     */
     const Thai_maitri: number;
 
+    /**
+     * @default 3558
+     */
     const Thai_maiyamok: number;
 
+    /**
+     * @default 3521
+     */
     const Thai_moma: number;
 
+    /**
+     * @default 3495
+     */
     const Thai_ngongu: number;
 
+    /**
+     * @default 3565
+     */
     const Thai_nikhahit: number;
 
+    /**
+     * @default 3507
+     */
     const Thai_nonen: number;
 
+    /**
+     * @default 3513
+     */
     const Thai_nonu: number;
 
+    /**
+     * @default 3533
+     */
     const Thai_oang: number;
 
+    /**
+     * @default 3535
+     */
     const Thai_paiyannoi: number;
 
+    /**
+     * @default 3546
+     */
     const Thai_phinthu: number;
 
+    /**
+     * @default 3518
+     */
     const Thai_phophan: number;
 
+    /**
+     * @default 3516
+     */
     const Thai_phophung: number;
 
+    /**
+     * @default 3520
+     */
     const Thai_phosamphao: number;
 
+    /**
+     * @default 3515
+     */
     const Thai_popla: number;
 
+    /**
+     * @default 3523
+     */
     const Thai_rorua: number;
 
+    /**
+     * @default 3524
+     */
     const Thai_ru: number;
 
+    /**
+     * @default 3536
+     */
     const Thai_saraa: number;
 
+    /**
+     * @default 3538
+     */
     const Thai_saraaa: number;
 
+    /**
+     * @default 3553
+     */
     const Thai_saraae: number;
 
+    /**
+     * @default 3556
+     */
     const Thai_saraaimaimalai: number;
 
+    /**
+     * @default 3555
+     */
     const Thai_saraaimaimuan: number;
 
+    /**
+     * @default 3539
+     */
     const Thai_saraam: number;
 
+    /**
+     * @default 3552
+     */
     const Thai_sarae: number;
 
+    /**
+     * @default 3540
+     */
     const Thai_sarai: number;
 
+    /**
+     * @default 3541
+     */
     const Thai_saraii: number;
 
+    /**
+     * @default 3554
+     */
     const Thai_sarao: number;
 
+    /**
+     * @default 3544
+     */
     const Thai_sarau: number;
 
+    /**
+     * @default 3542
+     */
     const Thai_saraue: number;
 
+    /**
+     * @default 3543
+     */
     const Thai_sarauee: number;
 
+    /**
+     * @default 3545
+     */
     const Thai_sarauu: number;
 
+    /**
+     * @default 3529
+     */
     const Thai_sorusi: number;
 
+    /**
+     * @default 3528
+     */
     const Thai_sosala: number;
 
+    /**
+     * @default 3499
+     */
     const Thai_soso: number;
 
+    /**
+     * @default 3530
+     */
     const Thai_sosua: number;
 
+    /**
+     * @default 3564
+     */
     const Thai_thanthakhat: number;
 
+    /**
+     * @default 3505
+     */
     const Thai_thonangmontho: number;
 
+    /**
+     * @default 3506
+     */
     const Thai_thophuthao: number;
 
+    /**
+     * @default 3511
+     */
     const Thai_thothahan: number;
 
+    /**
+     * @default 3504
+     */
     const Thai_thothan: number;
 
+    /**
+     * @default 3512
+     */
     const Thai_thothong: number;
 
+    /**
+     * @default 3510
+     */
     const Thai_thothung: number;
 
+    /**
+     * @default 3503
+     */
     const Thai_topatak: number;
 
+    /**
+     * @default 3509
+     */
     const Thai_totao: number;
 
+    /**
+     * @default 3527
+     */
     const Thai_wowaen: number;
 
+    /**
+     * @default 3522
+     */
     const Thai_yoyak: number;
 
+    /**
+     * @default 3501
+     */
     const Thai_yoying: number;
 
+    /**
+     * @default 222
+     */
     const Thorn: number;
 
+    /**
+     * @default 269025183
+     */
     const Time: number;
 
+    /**
+     * @default 269025055
+     */
     const ToDoList: number;
 
+    /**
+     * @default 269025153
+     */
     const Tools: number;
 
+    /**
+     * @default 269025186
+     */
     const TopMenu: number;
 
+    /**
+     * @default 269025201
+     */
     const TouchpadOff: number;
 
+    /**
+     * @default 269025200
+     */
     const TouchpadOn: number;
 
+    /**
+     * @default 269025193
+     */
     const TouchpadToggle: number;
 
+    /**
+     * @default 65323
+     */
     const Touroku: number;
 
+    /**
+     * @default 269025154
+     */
     const Travel: number;
 
+    /**
+     * @default 940
+     */
     const Tslash: number;
 
+    /**
+     * @default 85
+     */
     const U: number;
 
+    /**
+     * @default 269025174
+     */
     const UWB: number;
 
+    /**
+     * @default 218
+     */
     const Uacute: number;
 
+    /**
+     * @default 16785124
+     */
     const Ubelowdot: number;
 
+    /**
+     * @default 733
+     */
     const Ubreve: number;
 
+    /**
+     * @default 219
+     */
     const Ucircumflex: number;
 
+    /**
+     * @default 220
+     */
     const Udiaeresis: number;
 
+    /**
+     * @default 475
+     */
     const Udoubleacute: number;
 
+    /**
+     * @default 217
+     */
     const Ugrave: number;
 
+    /**
+     * @default 16785126
+     */
     const Uhook: number;
 
+    /**
+     * @default 16777647
+     */
     const Uhorn: number;
 
+    /**
+     * @default 16785128
+     */
     const Uhornacute: number;
 
+    /**
+     * @default 16785136
+     */
     const Uhornbelowdot: number;
 
+    /**
+     * @default 16785130
+     */
     const Uhorngrave: number;
 
+    /**
+     * @default 16785132
+     */
     const Uhornhook: number;
 
+    /**
+     * @default 16785134
+     */
     const Uhorntilde: number;
 
+    /**
+     * @default 1725
+     */
     const Ukrainian_GHE_WITH_UPTURN: number;
 
+    /**
+     * @default 1718
+     */
     const Ukrainian_I: number;
 
+    /**
+     * @default 1716
+     */
     const Ukrainian_IE: number;
 
+    /**
+     * @default 1719
+     */
     const Ukrainian_YI: number;
 
+    /**
+     * @default 1709
+     */
     const Ukrainian_ghe_with_upturn: number;
 
+    /**
+     * @default 1702
+     */
     const Ukrainian_i: number;
 
+    /**
+     * @default 1700
+     */
     const Ukrainian_ie: number;
 
+    /**
+     * @default 1703
+     */
     const Ukrainian_yi: number;
 
+    /**
+     * @default 1718
+     */
     const Ukranian_I: number;
 
+    /**
+     * @default 1716
+     */
     const Ukranian_JE: number;
 
+    /**
+     * @default 1719
+     */
     const Ukranian_YI: number;
 
+    /**
+     * @default 1702
+     */
     const Ukranian_i: number;
 
+    /**
+     * @default 1700
+     */
     const Ukranian_je: number;
 
+    /**
+     * @default 1703
+     */
     const Ukranian_yi: number;
 
+    /**
+     * @default 990
+     */
     const Umacron: number;
 
+    /**
+     * @default 65381
+     */
     const Undo: number;
 
+    /**
+     * @default 269024800
+     */
     const Ungrab: number;
 
+    /**
+     * @default 985
+     */
     const Uogonek: number;
 
+    /**
+     * @default 65362
+     */
     const Up: number;
 
+    /**
+     * @default 473
+     */
     const Uring: number;
 
+    /**
+     * @default 269025157
+     */
     const User1KB: number;
 
+    /**
+     * @default 269025158
+     */
     const User2KB: number;
 
+    /**
+     * @default 269025156
+     */
     const UserPB: number;
 
+    /**
+     * @default 989
+     */
     const Utilde: number;
 
+    /**
+     * @default 86
+     */
     const V: number;
 
     /**
      * The full version of the Clutter library, like 1.2.3
+     * @default 1.260000
      */
     const VERSION: number;
 
     /**
      * Numerically encoded version of the Clutter library, like 0x010203
+     * @default 0
      */
     const VERSION_HEX: number;
 
     /**
      * The full version of the Clutter library, in string form (suited for
      * string concatenation)
+     * @default 1.26.1
      */
     const VERSION_S: string;
 
+    /**
+     * @default 269025076
+     */
     const VendorHome: number;
 
+    /**
+     * @default 269025159
+     */
     const Video: number;
 
+    /**
+     * @default 269025185
+     */
     const View: number;
 
+    /**
+     * @default 16777215
+     */
     const VoidSymbol: number;
 
+    /**
+     * @default 87
+     */
     const W: number;
 
+    /**
+     * @default eglnative
+     */
     const WINDOWING_EGL: string;
 
+    /**
+     * @default glx
+     */
     const WINDOWING_GLX: string;
 
+    /**
+     * @default x11
+     */
     const WINDOWING_X11: string;
 
+    /**
+     * @default 269025173
+     */
     const WLAN: number;
 
+    /**
+     * @default 269025070
+     */
     const WWW: number;
 
+    /**
+     * @default 16785026
+     */
     const Wacute: number;
 
+    /**
+     * @default 269025067
+     */
     const WakeUp: number;
 
+    /**
+     * @default 16777588
+     */
     const Wcircumflex: number;
 
+    /**
+     * @default 16785028
+     */
     const Wdiaeresis: number;
 
+    /**
+     * @default 269025167
+     */
     const WebCam: number;
 
+    /**
+     * @default 16785024
+     */
     const Wgrave: number;
 
+    /**
+     * @default 269025160
+     */
     const WheelButton: number;
 
+    /**
+     * @default 269025109
+     */
     const WindowClear: number;
 
+    /**
+     * @default 16785577
+     */
     const WonSign: number;
 
+    /**
+     * @default 269025161
+     */
     const Word: number;
 
+    /**
+     * @default 88
+     */
     const X: number;
 
+    /**
+     * @default 16785034
+     */
     const Xabovedot: number;
 
+    /**
+     * @default 269025162
+     */
     const Xfer: number;
 
+    /**
+     * @default 89
+     */
     const Y: number;
 
+    /**
+     * @default 221
+     */
     const Yacute: number;
 
+    /**
+     * @default 16785140
+     */
     const Ybelowdot: number;
 
+    /**
+     * @default 16777590
+     */
     const Ycircumflex: number;
 
+    /**
+     * @default 5054
+     */
     const Ydiaeresis: number;
 
+    /**
+     * @default 269025189
+     */
     const Yellow: number;
 
+    /**
+     * @default 16785138
+     */
     const Ygrave: number;
 
+    /**
+     * @default 16785142
+     */
     const Yhook: number;
 
+    /**
+     * @default 16785144
+     */
     const Ytilde: number;
 
+    /**
+     * @default 90
+     */
     const Z: number;
 
+    /**
+     * @default 431
+     */
     const Zabovedot: number;
 
+    /**
+     * @default 428
+     */
     const Zacute: number;
 
+    /**
+     * @default 430
+     */
     const Zcaron: number;
 
+    /**
+     * @default 65341
+     */
     const Zen_Koho: number;
 
+    /**
+     * @default 65320
+     */
     const Zenkaku: number;
 
+    /**
+     * @default 65322
+     */
     const Zenkaku_Hankaku: number;
 
+    /**
+     * @default 269025163
+     */
     const ZoomIn: number;
 
+    /**
+     * @default 269025164
+     */
     const ZoomOut: number;
 
+    /**
+     * @default 16777653
+     */
     const Zstroke: number;
 
+    /**
+     * @default 97
+     */
     const a: number;
 
+    /**
+     * @default 225
+     */
     const aacute: number;
 
+    /**
+     * @default 16785057
+     */
     const abelowdot: number;
 
+    /**
+     * @default 511
+     */
     const abovedot: number;
 
+    /**
+     * @default 483
+     */
     const abreve: number;
 
+    /**
+     * @default 16785071
+     */
     const abreveacute: number;
 
+    /**
+     * @default 16785079
+     */
     const abrevebelowdot: number;
 
+    /**
+     * @default 16785073
+     */
     const abrevegrave: number;
 
+    /**
+     * @default 16785075
+     */
     const abrevehook: number;
 
+    /**
+     * @default 16785077
+     */
     const abrevetilde: number;
 
+    /**
+     * @default 226
+     */
     const acircumflex: number;
 
+    /**
+     * @default 16785061
+     */
     const acircumflexacute: number;
 
+    /**
+     * @default 16785069
+     */
     const acircumflexbelowdot: number;
 
+    /**
+     * @default 16785063
+     */
     const acircumflexgrave: number;
 
+    /**
+     * @default 16785065
+     */
     const acircumflexhook: number;
 
+    /**
+     * @default 16785067
+     */
     const acircumflextilde: number;
 
+    /**
+     * @default 180
+     */
     const acute: number;
 
+    /**
+     * @default 228
+     */
     const adiaeresis: number;
 
+    /**
+     * @default 230
+     */
     const ae: number;
 
+    /**
+     * @default 224
+     */
     const agrave: number;
 
+    /**
+     * @default 16785059
+     */
     const ahook: number;
 
+    /**
+     * @default 992
+     */
     const amacron: number;
 
+    /**
+     * @default 38
+     */
     const ampersand: number;
 
+    /**
+     * @default 433
+     */
     const aogonek: number;
 
+    /**
+     * @default 39
+     */
     const apostrophe: number;
 
+    /**
+     * @default 16785992
+     */
     const approxeq: number;
 
+    /**
+     * @default 2248
+     */
     const approximate: number;
 
+    /**
+     * @default 229
+     */
     const aring: number;
 
+    /**
+     * @default 94
+     */
     const asciicircum: number;
 
+    /**
+     * @default 126
+     */
     const asciitilde: number;
 
+    /**
+     * @default 42
+     */
     const asterisk: number;
 
+    /**
+     * @default 64
+     */
     const at: number;
 
+    /**
+     * @default 227
+     */
     const atilde: number;
 
+    /**
+     * @default 98
+     */
     const b: number;
 
+    /**
+     * @default 16784899
+     */
     const babovedot: number;
 
+    /**
+     * @default 92
+     */
     const backslash: number;
 
+    /**
+     * @default 2804
+     */
     const ballotcross: number;
 
+    /**
+     * @default 124
+     */
     const bar: number;
 
+    /**
+     * @default 16785973
+     */
     const because: number;
 
+    /**
+     * @default 2527
+     */
     const blank: number;
 
+    /**
+     * @default 2213
+     */
     const botintegral: number;
 
+    /**
+     * @default 2220
+     */
     const botleftparens: number;
 
+    /**
+     * @default 2216
+     */
     const botleftsqbracket: number;
 
+    /**
+     * @default 2226
+     */
     const botleftsummation: number;
 
+    /**
+     * @default 2222
+     */
     const botrightparens: number;
 
+    /**
+     * @default 2218
+     */
     const botrightsqbracket: number;
 
+    /**
+     * @default 2230
+     */
     const botrightsummation: number;
 
+    /**
+     * @default 2550
+     */
     const bott: number;
 
+    /**
+     * @default 2228
+     */
     const botvertsummationconnector: number;
 
+    /**
+     * @default 123
+     */
     const braceleft: number;
 
+    /**
+     * @default 125
+     */
     const braceright: number;
 
+    /**
+     * @default 91
+     */
     const bracketleft: number;
 
+    /**
+     * @default 93
+     */
     const bracketright: number;
 
+    /**
+     * @default 16787456
+     */
     const braille_blank: number;
 
+    /**
+     * @default 65521
+     */
     const braille_dot_1: number;
 
+    /**
+     * @default 65530
+     */
     const braille_dot_10: number;
 
+    /**
+     * @default 65522
+     */
     const braille_dot_2: number;
 
+    /**
+     * @default 65523
+     */
     const braille_dot_3: number;
 
+    /**
+     * @default 65524
+     */
     const braille_dot_4: number;
 
+    /**
+     * @default 65525
+     */
     const braille_dot_5: number;
 
+    /**
+     * @default 65526
+     */
     const braille_dot_6: number;
 
+    /**
+     * @default 65527
+     */
     const braille_dot_7: number;
 
+    /**
+     * @default 65528
+     */
     const braille_dot_8: number;
 
+    /**
+     * @default 65529
+     */
     const braille_dot_9: number;
 
+    /**
+     * @default 16787457
+     */
     const braille_dots_1: number;
 
+    /**
+     * @default 16787459
+     */
     const braille_dots_12: number;
 
+    /**
+     * @default 16787463
+     */
     const braille_dots_123: number;
 
+    /**
+     * @default 16787471
+     */
     const braille_dots_1234: number;
 
+    /**
+     * @default 16787487
+     */
     const braille_dots_12345: number;
 
+    /**
+     * @default 16787519
+     */
     const braille_dots_123456: number;
 
+    /**
+     * @default 16787583
+     */
     const braille_dots_1234567: number;
 
+    /**
+     * @default 16787711
+     */
     const braille_dots_12345678: number;
 
+    /**
+     * @default 16787647
+     */
     const braille_dots_1234568: number;
 
+    /**
+     * @default 16787551
+     */
     const braille_dots_123457: number;
 
+    /**
+     * @default 16787679
+     */
     const braille_dots_1234578: number;
 
+    /**
+     * @default 16787615
+     */
     const braille_dots_123458: number;
 
+    /**
+     * @default 16787503
+     */
     const braille_dots_12346: number;
 
+    /**
+     * @default 16787567
+     */
     const braille_dots_123467: number;
 
+    /**
+     * @default 16787695
+     */
     const braille_dots_1234678: number;
 
+    /**
+     * @default 16787631
+     */
     const braille_dots_123468: number;
 
+    /**
+     * @default 16787535
+     */
     const braille_dots_12347: number;
 
+    /**
+     * @default 16787663
+     */
     const braille_dots_123478: number;
 
+    /**
+     * @default 16787599
+     */
     const braille_dots_12348: number;
 
+    /**
+     * @default 16787479
+     */
     const braille_dots_1235: number;
 
+    /**
+     * @default 16787511
+     */
     const braille_dots_12356: number;
 
+    /**
+     * @default 16787575
+     */
     const braille_dots_123567: number;
 
+    /**
+     * @default 16787703
+     */
     const braille_dots_1235678: number;
 
+    /**
+     * @default 16787639
+     */
     const braille_dots_123568: number;
 
+    /**
+     * @default 16787543
+     */
     const braille_dots_12357: number;
 
+    /**
+     * @default 16787671
+     */
     const braille_dots_123578: number;
 
+    /**
+     * @default 16787607
+     */
     const braille_dots_12358: number;
 
+    /**
+     * @default 16787495
+     */
     const braille_dots_1236: number;
 
+    /**
+     * @default 16787559
+     */
     const braille_dots_12367: number;
 
+    /**
+     * @default 16787687
+     */
     const braille_dots_123678: number;
 
+    /**
+     * @default 16787623
+     */
     const braille_dots_12368: number;
 
+    /**
+     * @default 16787527
+     */
     const braille_dots_1237: number;
 
+    /**
+     * @default 16787655
+     */
     const braille_dots_12378: number;
 
+    /**
+     * @default 16787591
+     */
     const braille_dots_1238: number;
 
+    /**
+     * @default 16787467
+     */
     const braille_dots_124: number;
 
+    /**
+     * @default 16787483
+     */
     const braille_dots_1245: number;
 
+    /**
+     * @default 16787515
+     */
     const braille_dots_12456: number;
 
+    /**
+     * @default 16787579
+     */
     const braille_dots_124567: number;
 
+    /**
+     * @default 16787707
+     */
     const braille_dots_1245678: number;
 
+    /**
+     * @default 16787643
+     */
     const braille_dots_124568: number;
 
+    /**
+     * @default 16787547
+     */
     const braille_dots_12457: number;
 
+    /**
+     * @default 16787675
+     */
     const braille_dots_124578: number;
 
+    /**
+     * @default 16787611
+     */
     const braille_dots_12458: number;
 
+    /**
+     * @default 16787499
+     */
     const braille_dots_1246: number;
 
+    /**
+     * @default 16787563
+     */
     const braille_dots_12467: number;
 
+    /**
+     * @default 16787691
+     */
     const braille_dots_124678: number;
 
+    /**
+     * @default 16787627
+     */
     const braille_dots_12468: number;
 
+    /**
+     * @default 16787531
+     */
     const braille_dots_1247: number;
 
+    /**
+     * @default 16787659
+     */
     const braille_dots_12478: number;
 
+    /**
+     * @default 16787595
+     */
     const braille_dots_1248: number;
 
+    /**
+     * @default 16787475
+     */
     const braille_dots_125: number;
 
+    /**
+     * @default 16787507
+     */
     const braille_dots_1256: number;
 
+    /**
+     * @default 16787571
+     */
     const braille_dots_12567: number;
 
+    /**
+     * @default 16787699
+     */
     const braille_dots_125678: number;
 
+    /**
+     * @default 16787635
+     */
     const braille_dots_12568: number;
 
+    /**
+     * @default 16787539
+     */
     const braille_dots_1257: number;
 
+    /**
+     * @default 16787667
+     */
     const braille_dots_12578: number;
 
+    /**
+     * @default 16787603
+     */
     const braille_dots_1258: number;
 
+    /**
+     * @default 16787491
+     */
     const braille_dots_126: number;
 
+    /**
+     * @default 16787555
+     */
     const braille_dots_1267: number;
 
+    /**
+     * @default 16787683
+     */
     const braille_dots_12678: number;
 
+    /**
+     * @default 16787619
+     */
     const braille_dots_1268: number;
 
+    /**
+     * @default 16787523
+     */
     const braille_dots_127: number;
 
+    /**
+     * @default 16787651
+     */
     const braille_dots_1278: number;
 
+    /**
+     * @default 16787587
+     */
     const braille_dots_128: number;
 
+    /**
+     * @default 16787461
+     */
     const braille_dots_13: number;
 
+    /**
+     * @default 16787469
+     */
     const braille_dots_134: number;
 
+    /**
+     * @default 16787485
+     */
     const braille_dots_1345: number;
 
+    /**
+     * @default 16787517
+     */
     const braille_dots_13456: number;
 
+    /**
+     * @default 16787581
+     */
     const braille_dots_134567: number;
 
+    /**
+     * @default 16787709
+     */
     const braille_dots_1345678: number;
 
+    /**
+     * @default 16787645
+     */
     const braille_dots_134568: number;
 
+    /**
+     * @default 16787549
+     */
     const braille_dots_13457: number;
 
+    /**
+     * @default 16787677
+     */
     const braille_dots_134578: number;
 
+    /**
+     * @default 16787613
+     */
     const braille_dots_13458: number;
 
+    /**
+     * @default 16787501
+     */
     const braille_dots_1346: number;
 
+    /**
+     * @default 16787565
+     */
     const braille_dots_13467: number;
 
+    /**
+     * @default 16787693
+     */
     const braille_dots_134678: number;
 
+    /**
+     * @default 16787629
+     */
     const braille_dots_13468: number;
 
+    /**
+     * @default 16787533
+     */
     const braille_dots_1347: number;
 
+    /**
+     * @default 16787661
+     */
     const braille_dots_13478: number;
 
+    /**
+     * @default 16787597
+     */
     const braille_dots_1348: number;
 
+    /**
+     * @default 16787477
+     */
     const braille_dots_135: number;
 
+    /**
+     * @default 16787509
+     */
     const braille_dots_1356: number;
 
+    /**
+     * @default 16787573
+     */
     const braille_dots_13567: number;
 
+    /**
+     * @default 16787701
+     */
     const braille_dots_135678: number;
 
+    /**
+     * @default 16787637
+     */
     const braille_dots_13568: number;
 
+    /**
+     * @default 16787541
+     */
     const braille_dots_1357: number;
 
+    /**
+     * @default 16787669
+     */
     const braille_dots_13578: number;
 
+    /**
+     * @default 16787605
+     */
     const braille_dots_1358: number;
 
+    /**
+     * @default 16787493
+     */
     const braille_dots_136: number;
 
+    /**
+     * @default 16787557
+     */
     const braille_dots_1367: number;
 
+    /**
+     * @default 16787685
+     */
     const braille_dots_13678: number;
 
+    /**
+     * @default 16787621
+     */
     const braille_dots_1368: number;
 
+    /**
+     * @default 16787525
+     */
     const braille_dots_137: number;
 
+    /**
+     * @default 16787653
+     */
     const braille_dots_1378: number;
 
+    /**
+     * @default 16787589
+     */
     const braille_dots_138: number;
 
+    /**
+     * @default 16787465
+     */
     const braille_dots_14: number;
 
+    /**
+     * @default 16787481
+     */
     const braille_dots_145: number;
 
+    /**
+     * @default 16787513
+     */
     const braille_dots_1456: number;
 
+    /**
+     * @default 16787577
+     */
     const braille_dots_14567: number;
 
+    /**
+     * @default 16787705
+     */
     const braille_dots_145678: number;
 
+    /**
+     * @default 16787641
+     */
     const braille_dots_14568: number;
 
+    /**
+     * @default 16787545
+     */
     const braille_dots_1457: number;
 
+    /**
+     * @default 16787673
+     */
     const braille_dots_14578: number;
 
+    /**
+     * @default 16787609
+     */
     const braille_dots_1458: number;
 
+    /**
+     * @default 16787497
+     */
     const braille_dots_146: number;
 
+    /**
+     * @default 16787561
+     */
     const braille_dots_1467: number;
 
+    /**
+     * @default 16787689
+     */
     const braille_dots_14678: number;
 
+    /**
+     * @default 16787625
+     */
     const braille_dots_1468: number;
 
+    /**
+     * @default 16787529
+     */
     const braille_dots_147: number;
 
+    /**
+     * @default 16787657
+     */
     const braille_dots_1478: number;
 
+    /**
+     * @default 16787593
+     */
     const braille_dots_148: number;
 
+    /**
+     * @default 16787473
+     */
     const braille_dots_15: number;
 
+    /**
+     * @default 16787505
+     */
     const braille_dots_156: number;
 
+    /**
+     * @default 16787569
+     */
     const braille_dots_1567: number;
 
+    /**
+     * @default 16787697
+     */
     const braille_dots_15678: number;
 
+    /**
+     * @default 16787633
+     */
     const braille_dots_1568: number;
 
+    /**
+     * @default 16787537
+     */
     const braille_dots_157: number;
 
+    /**
+     * @default 16787665
+     */
     const braille_dots_1578: number;
 
+    /**
+     * @default 16787601
+     */
     const braille_dots_158: number;
 
+    /**
+     * @default 16787489
+     */
     const braille_dots_16: number;
 
+    /**
+     * @default 16787553
+     */
     const braille_dots_167: number;
 
+    /**
+     * @default 16787681
+     */
     const braille_dots_1678: number;
 
+    /**
+     * @default 16787617
+     */
     const braille_dots_168: number;
 
+    /**
+     * @default 16787521
+     */
     const braille_dots_17: number;
 
+    /**
+     * @default 16787649
+     */
     const braille_dots_178: number;
 
+    /**
+     * @default 16787585
+     */
     const braille_dots_18: number;
 
+    /**
+     * @default 16787458
+     */
     const braille_dots_2: number;
 
+    /**
+     * @default 16787462
+     */
     const braille_dots_23: number;
 
+    /**
+     * @default 16787470
+     */
     const braille_dots_234: number;
 
+    /**
+     * @default 16787486
+     */
     const braille_dots_2345: number;
 
+    /**
+     * @default 16787518
+     */
     const braille_dots_23456: number;
 
+    /**
+     * @default 16787582
+     */
     const braille_dots_234567: number;
 
+    /**
+     * @default 16787710
+     */
     const braille_dots_2345678: number;
 
+    /**
+     * @default 16787646
+     */
     const braille_dots_234568: number;
 
+    /**
+     * @default 16787550
+     */
     const braille_dots_23457: number;
 
+    /**
+     * @default 16787678
+     */
     const braille_dots_234578: number;
 
+    /**
+     * @default 16787614
+     */
     const braille_dots_23458: number;
 
+    /**
+     * @default 16787502
+     */
     const braille_dots_2346: number;
 
+    /**
+     * @default 16787566
+     */
     const braille_dots_23467: number;
 
+    /**
+     * @default 16787694
+     */
     const braille_dots_234678: number;
 
+    /**
+     * @default 16787630
+     */
     const braille_dots_23468: number;
 
+    /**
+     * @default 16787534
+     */
     const braille_dots_2347: number;
 
+    /**
+     * @default 16787662
+     */
     const braille_dots_23478: number;
 
+    /**
+     * @default 16787598
+     */
     const braille_dots_2348: number;
 
+    /**
+     * @default 16787478
+     */
     const braille_dots_235: number;
 
+    /**
+     * @default 16787510
+     */
     const braille_dots_2356: number;
 
+    /**
+     * @default 16787574
+     */
     const braille_dots_23567: number;
 
+    /**
+     * @default 16787702
+     */
     const braille_dots_235678: number;
 
+    /**
+     * @default 16787638
+     */
     const braille_dots_23568: number;
 
+    /**
+     * @default 16787542
+     */
     const braille_dots_2357: number;
 
+    /**
+     * @default 16787670
+     */
     const braille_dots_23578: number;
 
+    /**
+     * @default 16787606
+     */
     const braille_dots_2358: number;
 
+    /**
+     * @default 16787494
+     */
     const braille_dots_236: number;
 
+    /**
+     * @default 16787558
+     */
     const braille_dots_2367: number;
 
+    /**
+     * @default 16787686
+     */
     const braille_dots_23678: number;
 
+    /**
+     * @default 16787622
+     */
     const braille_dots_2368: number;
 
+    /**
+     * @default 16787526
+     */
     const braille_dots_237: number;
 
+    /**
+     * @default 16787654
+     */
     const braille_dots_2378: number;
 
+    /**
+     * @default 16787590
+     */
     const braille_dots_238: number;
 
+    /**
+     * @default 16787466
+     */
     const braille_dots_24: number;
 
+    /**
+     * @default 16787482
+     */
     const braille_dots_245: number;
 
+    /**
+     * @default 16787514
+     */
     const braille_dots_2456: number;
 
+    /**
+     * @default 16787578
+     */
     const braille_dots_24567: number;
 
+    /**
+     * @default 16787706
+     */
     const braille_dots_245678: number;
 
+    /**
+     * @default 16787642
+     */
     const braille_dots_24568: number;
 
+    /**
+     * @default 16787546
+     */
     const braille_dots_2457: number;
 
+    /**
+     * @default 16787674
+     */
     const braille_dots_24578: number;
 
+    /**
+     * @default 16787610
+     */
     const braille_dots_2458: number;
 
+    /**
+     * @default 16787498
+     */
     const braille_dots_246: number;
 
+    /**
+     * @default 16787562
+     */
     const braille_dots_2467: number;
 
+    /**
+     * @default 16787690
+     */
     const braille_dots_24678: number;
 
+    /**
+     * @default 16787626
+     */
     const braille_dots_2468: number;
 
+    /**
+     * @default 16787530
+     */
     const braille_dots_247: number;
 
+    /**
+     * @default 16787658
+     */
     const braille_dots_2478: number;
 
+    /**
+     * @default 16787594
+     */
     const braille_dots_248: number;
 
+    /**
+     * @default 16787474
+     */
     const braille_dots_25: number;
 
+    /**
+     * @default 16787506
+     */
     const braille_dots_256: number;
 
+    /**
+     * @default 16787570
+     */
     const braille_dots_2567: number;
 
+    /**
+     * @default 16787698
+     */
     const braille_dots_25678: number;
 
+    /**
+     * @default 16787634
+     */
     const braille_dots_2568: number;
 
+    /**
+     * @default 16787538
+     */
     const braille_dots_257: number;
 
+    /**
+     * @default 16787666
+     */
     const braille_dots_2578: number;
 
+    /**
+     * @default 16787602
+     */
     const braille_dots_258: number;
 
+    /**
+     * @default 16787490
+     */
     const braille_dots_26: number;
 
+    /**
+     * @default 16787554
+     */
     const braille_dots_267: number;
 
+    /**
+     * @default 16787682
+     */
     const braille_dots_2678: number;
 
+    /**
+     * @default 16787618
+     */
     const braille_dots_268: number;
 
+    /**
+     * @default 16787522
+     */
     const braille_dots_27: number;
 
+    /**
+     * @default 16787650
+     */
     const braille_dots_278: number;
 
+    /**
+     * @default 16787586
+     */
     const braille_dots_28: number;
 
+    /**
+     * @default 16787460
+     */
     const braille_dots_3: number;
 
+    /**
+     * @default 16787468
+     */
     const braille_dots_34: number;
 
+    /**
+     * @default 16787484
+     */
     const braille_dots_345: number;
 
+    /**
+     * @default 16787516
+     */
     const braille_dots_3456: number;
 
+    /**
+     * @default 16787580
+     */
     const braille_dots_34567: number;
 
+    /**
+     * @default 16787708
+     */
     const braille_dots_345678: number;
 
+    /**
+     * @default 16787644
+     */
     const braille_dots_34568: number;
 
+    /**
+     * @default 16787548
+     */
     const braille_dots_3457: number;
 
+    /**
+     * @default 16787676
+     */
     const braille_dots_34578: number;
 
+    /**
+     * @default 16787612
+     */
     const braille_dots_3458: number;
 
+    /**
+     * @default 16787500
+     */
     const braille_dots_346: number;
 
+    /**
+     * @default 16787564
+     */
     const braille_dots_3467: number;
 
+    /**
+     * @default 16787692
+     */
     const braille_dots_34678: number;
 
+    /**
+     * @default 16787628
+     */
     const braille_dots_3468: number;
 
+    /**
+     * @default 16787532
+     */
     const braille_dots_347: number;
 
+    /**
+     * @default 16787660
+     */
     const braille_dots_3478: number;
 
+    /**
+     * @default 16787596
+     */
     const braille_dots_348: number;
 
+    /**
+     * @default 16787476
+     */
     const braille_dots_35: number;
 
+    /**
+     * @default 16787508
+     */
     const braille_dots_356: number;
 
+    /**
+     * @default 16787572
+     */
     const braille_dots_3567: number;
 
+    /**
+     * @default 16787700
+     */
     const braille_dots_35678: number;
 
+    /**
+     * @default 16787636
+     */
     const braille_dots_3568: number;
 
+    /**
+     * @default 16787540
+     */
     const braille_dots_357: number;
 
+    /**
+     * @default 16787668
+     */
     const braille_dots_3578: number;
 
+    /**
+     * @default 16787604
+     */
     const braille_dots_358: number;
 
+    /**
+     * @default 16787492
+     */
     const braille_dots_36: number;
 
+    /**
+     * @default 16787556
+     */
     const braille_dots_367: number;
 
+    /**
+     * @default 16787684
+     */
     const braille_dots_3678: number;
 
+    /**
+     * @default 16787620
+     */
     const braille_dots_368: number;
 
+    /**
+     * @default 16787524
+     */
     const braille_dots_37: number;
 
+    /**
+     * @default 16787652
+     */
     const braille_dots_378: number;
 
+    /**
+     * @default 16787588
+     */
     const braille_dots_38: number;
 
+    /**
+     * @default 16787464
+     */
     const braille_dots_4: number;
 
+    /**
+     * @default 16787480
+     */
     const braille_dots_45: number;
 
+    /**
+     * @default 16787512
+     */
     const braille_dots_456: number;
 
+    /**
+     * @default 16787576
+     */
     const braille_dots_4567: number;
 
+    /**
+     * @default 16787704
+     */
     const braille_dots_45678: number;
 
+    /**
+     * @default 16787640
+     */
     const braille_dots_4568: number;
 
+    /**
+     * @default 16787544
+     */
     const braille_dots_457: number;
 
+    /**
+     * @default 16787672
+     */
     const braille_dots_4578: number;
 
+    /**
+     * @default 16787608
+     */
     const braille_dots_458: number;
 
+    /**
+     * @default 16787496
+     */
     const braille_dots_46: number;
 
+    /**
+     * @default 16787560
+     */
     const braille_dots_467: number;
 
+    /**
+     * @default 16787688
+     */
     const braille_dots_4678: number;
 
+    /**
+     * @default 16787624
+     */
     const braille_dots_468: number;
 
+    /**
+     * @default 16787528
+     */
     const braille_dots_47: number;
 
+    /**
+     * @default 16787656
+     */
     const braille_dots_478: number;
 
+    /**
+     * @default 16787592
+     */
     const braille_dots_48: number;
 
+    /**
+     * @default 16787472
+     */
     const braille_dots_5: number;
 
+    /**
+     * @default 16787504
+     */
     const braille_dots_56: number;
 
+    /**
+     * @default 16787568
+     */
     const braille_dots_567: number;
 
+    /**
+     * @default 16787696
+     */
     const braille_dots_5678: number;
 
+    /**
+     * @default 16787632
+     */
     const braille_dots_568: number;
 
+    /**
+     * @default 16787536
+     */
     const braille_dots_57: number;
 
+    /**
+     * @default 16787664
+     */
     const braille_dots_578: number;
 
+    /**
+     * @default 16787600
+     */
     const braille_dots_58: number;
 
+    /**
+     * @default 16787488
+     */
     const braille_dots_6: number;
 
+    /**
+     * @default 16787552
+     */
     const braille_dots_67: number;
 
+    /**
+     * @default 16787680
+     */
     const braille_dots_678: number;
 
+    /**
+     * @default 16787616
+     */
     const braille_dots_68: number;
 
+    /**
+     * @default 16787520
+     */
     const braille_dots_7: number;
 
+    /**
+     * @default 16787648
+     */
     const braille_dots_78: number;
 
+    /**
+     * @default 16787584
+     */
     const braille_dots_8: number;
 
+    /**
+     * @default 418
+     */
     const breve: number;
 
+    /**
+     * @default 166
+     */
     const brokenbar: number;
 
+    /**
+     * @default 99
+     */
     const c: number;
 
+    /**
+     * @default 65187
+     */
     const c_h: number;
 
+    /**
+     * @default 741
+     */
     const cabovedot: number;
 
+    /**
+     * @default 486
+     */
     const cacute: number;
 
+    /**
+     * @default 2744
+     */
     const careof: number;
 
+    /**
+     * @default 2812
+     */
     const caret: number;
 
+    /**
+     * @default 439
+     */
     const caron: number;
 
+    /**
+     * @default 488
+     */
     const ccaron: number;
 
+    /**
+     * @default 231
+     */
     const ccedilla: number;
 
+    /**
+     * @default 742
+     */
     const ccircumflex: number;
 
+    /**
+     * @default 184
+     */
     const cedilla: number;
 
+    /**
+     * @default 162
+     */
     const cent: number;
 
+    /**
+     * @default 65184
+     */
     const ch: number;
 
+    /**
+     * @default 2529
+     */
     const checkerboard: number;
 
+    /**
+     * @default 2803
+     */
     const checkmark: number;
 
+    /**
+     * @default 3023
+     */
     const circle: number;
 
+    /**
+     * @default 2796
+     */
     const club: number;
 
+    /**
+     * @default 58
+     */
     const colon: number;
 
+    /**
+     * @default 44
+     */
     const comma: number;
 
+    /**
+     * @default 16785931
+     */
     const containsas: number;
 
+    /**
+     * @default 169
+     */
     const copyright: number;
 
+    /**
+     * @default 2532
+     */
     const cr: number;
 
+    /**
+     * @default 2542
+     */
     const crossinglines: number;
 
+    /**
+     * @default 16785947
+     */
     const cuberoot: number;
 
+    /**
+     * @default 164
+     */
     const currency: number;
 
+    /**
+     * @default 2815
+     */
     const cursor: number;
 
+    /**
+     * @default 100
+     */
     const d: number;
 
+    /**
+     * @default 16784907
+     */
     const dabovedot: number;
 
+    /**
+     * @default 2801
+     */
     const dagger: number;
 
+    /**
+     * @default 495
+     */
     const dcaron: number;
 
+    /**
+     * @default 65153
+     */
     const dead_A: number;
 
+    /**
+     * @default 65155
+     */
     const dead_E: number;
 
+    /**
+     * @default 65157
+     */
     const dead_I: number;
 
+    /**
+     * @default 65159
+     */
     const dead_O: number;
 
+    /**
+     * @default 65161
+     */
     const dead_U: number;
 
+    /**
+     * @default 65152
+     */
     const dead_a: number;
 
+    /**
+     * @default 65124
+     */
     const dead_abovecomma: number;
 
+    /**
+     * @default 65110
+     */
     const dead_abovedot: number;
 
+    /**
+     * @default 65125
+     */
     const dead_abovereversedcomma: number;
 
+    /**
+     * @default 65112
+     */
     const dead_abovering: number;
 
+    /**
+     * @default 65169
+     */
     const dead_aboveverticalline: number;
 
+    /**
+     * @default 65105
+     */
     const dead_acute: number;
 
+    /**
+     * @default 65131
+     */
     const dead_belowbreve: number;
 
+    /**
+     * @default 65129
+     */
     const dead_belowcircumflex: number;
 
+    /**
+     * @default 65134
+     */
     const dead_belowcomma: number;
 
+    /**
+     * @default 65132
+     */
     const dead_belowdiaeresis: number;
 
+    /**
+     * @default 65120
+     */
     const dead_belowdot: number;
 
+    /**
+     * @default 65128
+     */
     const dead_belowmacron: number;
 
+    /**
+     * @default 65127
+     */
     const dead_belowring: number;
 
+    /**
+     * @default 65130
+     */
     const dead_belowtilde: number;
 
+    /**
+     * @default 65170
+     */
     const dead_belowverticalline: number;
 
+    /**
+     * @default 65109
+     */
     const dead_breve: number;
 
+    /**
+     * @default 65163
+     */
     const dead_capital_schwa: number;
 
+    /**
+     * @default 65114
+     */
     const dead_caron: number;
 
+    /**
+     * @default 65115
+     */
     const dead_cedilla: number;
 
+    /**
+     * @default 65106
+     */
     const dead_circumflex: number;
 
+    /**
+     * @default 65135
+     */
     const dead_currency: number;
 
+    /**
+     * @default 65125
+     */
     const dead_dasia: number;
 
+    /**
+     * @default 65111
+     */
     const dead_diaeresis: number;
 
+    /**
+     * @default 65113
+     */
     const dead_doubleacute: number;
 
+    /**
+     * @default 65126
+     */
     const dead_doublegrave: number;
 
+    /**
+     * @default 65154
+     */
     const dead_e: number;
 
+    /**
+     * @default 65104
+     */
     const dead_grave: number;
 
+    /**
+     * @default 65164
+     */
     const dead_greek: number;
 
+    /**
+     * @default 65121
+     */
     const dead_hook: number;
 
+    /**
+     * @default 65122
+     */
     const dead_horn: number;
 
+    /**
+     * @default 65156
+     */
     const dead_i: number;
 
+    /**
+     * @default 65133
+     */
     const dead_invertedbreve: number;
 
+    /**
+     * @default 65117
+     */
     const dead_iota: number;
 
+    /**
+     * @default 65171
+     */
     const dead_longsolidusoverlay: number;
 
+    /**
+     * @default 65168
+     */
     const dead_lowline: number;
 
+    /**
+     * @default 65108
+     */
     const dead_macron: number;
 
+    /**
+     * @default 65158
+     */
     const dead_o: number;
 
+    /**
+     * @default 65116
+     */
     const dead_ogonek: number;
 
+    /**
+     * @default 65107
+     */
     const dead_perispomeni: number;
 
+    /**
+     * @default 65124
+     */
     const dead_psili: number;
 
+    /**
+     * @default 65119
+     */
     const dead_semivoiced_sound: number;
 
+    /**
+     * @default 65162
+     */
     const dead_small_schwa: number;
 
+    /**
+     * @default 65123
+     */
     const dead_stroke: number;
 
+    /**
+     * @default 65107
+     */
     const dead_tilde: number;
 
+    /**
+     * @default 65160
+     */
     const dead_u: number;
 
+    /**
+     * @default 65118
+     */
     const dead_voiced_sound: number;
 
+    /**
+     * @default 2749
+     */
     const decimalpoint: number;
 
+    /**
+     * @default 176
+     */
     const degree: number;
 
+    /**
+     * @default 168
+     */
     const diaeresis: number;
 
+    /**
+     * @default 2797
+     */
     const diamond: number;
 
+    /**
+     * @default 2725
+     */
     const digitspace: number;
 
+    /**
+     * @default 16785964
+     */
     const dintegral: number;
 
+    /**
+     * @default 247
+     */
     const division: number;
 
+    /**
+     * @default 36
+     */
     const dollar: number;
 
+    /**
+     * @default 2735
+     */
     const doubbaselinedot: number;
 
+    /**
+     * @default 445
+     */
     const doubleacute: number;
 
+    /**
+     * @default 2802
+     */
     const doubledagger: number;
 
+    /**
+     * @default 2814
+     */
     const doublelowquotemark: number;
 
+    /**
+     * @default 2302
+     */
     const downarrow: number;
 
+    /**
+     * @default 2984
+     */
     const downcaret: number;
 
+    /**
+     * @default 3030
+     */
     const downshoe: number;
 
+    /**
+     * @default 3012
+     */
     const downstile: number;
 
+    /**
+     * @default 3010
+     */
     const downtack: number;
 
+    /**
+     * @default 496
+     */
     const dstroke: number;
 
+    /**
+     * @default 101
+     */
     const e: number;
 
+    /**
+     * @default 1004
+     */
     const eabovedot: number;
 
+    /**
+     * @default 233
+     */
     const eacute: number;
 
+    /**
+     * @default 16785081
+     */
     const ebelowdot: number;
 
+    /**
+     * @default 492
+     */
     const ecaron: number;
 
+    /**
+     * @default 234
+     */
     const ecircumflex: number;
 
+    /**
+     * @default 16785087
+     */
     const ecircumflexacute: number;
 
+    /**
+     * @default 16785095
+     */
     const ecircumflexbelowdot: number;
 
+    /**
+     * @default 16785089
+     */
     const ecircumflexgrave: number;
 
+    /**
+     * @default 16785091
+     */
     const ecircumflexhook: number;
 
+    /**
+     * @default 16785093
+     */
     const ecircumflextilde: number;
 
+    /**
+     * @default 235
+     */
     const ediaeresis: number;
 
+    /**
+     * @default 232
+     */
     const egrave: number;
 
+    /**
+     * @default 16785083
+     */
     const ehook: number;
 
+    /**
+     * @default 16785544
+     */
     const eightsubscript: number;
 
+    /**
+     * @default 16785528
+     */
     const eightsuperior: number;
 
+    /**
+     * @default 16785928
+     */
     const elementof: number;
 
+    /**
+     * @default 2734
+     */
     const ellipsis: number;
 
+    /**
+     * @default 2723
+     */
     const em3space: number;
 
+    /**
+     * @default 2724
+     */
     const em4space: number;
 
+    /**
+     * @default 954
+     */
     const emacron: number;
 
+    /**
+     * @default 2729
+     */
     const emdash: number;
 
+    /**
+     * @default 2782
+     */
     const emfilledcircle: number;
 
+    /**
+     * @default 2783
+     */
     const emfilledrect: number;
 
+    /**
+     * @default 2766
+     */
     const emopencircle: number;
 
+    /**
+     * @default 2767
+     */
     const emopenrectangle: number;
 
+    /**
+     * @default 16785925
+     */
     const emptyset: number;
 
+    /**
+     * @default 2721
+     */
     const emspace: number;
 
+    /**
+     * @default 2730
+     */
     const endash: number;
 
+    /**
+     * @default 2790
+     */
     const enfilledcircbullet: number;
 
+    /**
+     * @default 2791
+     */
     const enfilledsqbullet: number;
 
+    /**
+     * @default 959
+     */
     const eng: number;
 
+    /**
+     * @default 2784
+     */
     const enopencircbullet: number;
 
+    /**
+     * @default 2785
+     */
     const enopensquarebullet: number;
 
+    /**
+     * @default 2722
+     */
     const enspace: number;
 
+    /**
+     * @default 490
+     */
     const eogonek: number;
 
+    /**
+     * @default 61
+     */
     const equal: number;
 
+    /**
+     * @default 240
+     */
     const eth: number;
 
+    /**
+     * @default 16785085
+     */
     const etilde: number;
 
+    /**
+     * @default 33
+     */
     const exclam: number;
 
+    /**
+     * @default 161
+     */
     const exclamdown: number;
 
+    /**
+     * @default 16777874
+     */
     const ezh: number;
 
+    /**
+     * @default 102
+     */
     const f: number;
 
+    /**
+     * @default 16784927
+     */
     const fabovedot: number;
 
+    /**
+     * @default 2808
+     */
     const femalesymbol: number;
 
+    /**
+     * @default 2531
+     */
     const ff: number;
 
+    /**
+     * @default 2747
+     */
     const figdash: number;
 
+    /**
+     * @default 2780
+     */
     const filledlefttribullet: number;
 
+    /**
+     * @default 2779
+     */
     const filledrectbullet: number;
 
+    /**
+     * @default 2781
+     */
     const filledrighttribullet: number;
 
+    /**
+     * @default 2793
+     */
     const filledtribulletdown: number;
 
+    /**
+     * @default 2792
+     */
     const filledtribulletup: number;
 
+    /**
+     * @default 2757
+     */
     const fiveeighths: number;
 
+    /**
+     * @default 2743
+     */
     const fivesixths: number;
 
+    /**
+     * @default 16785541
+     */
     const fivesubscript: number;
 
+    /**
+     * @default 16785525
+     */
     const fivesuperior: number;
 
+    /**
+     * @default 2741
+     */
     const fourfifths: number;
 
+    /**
+     * @default 16785540
+     */
     const foursubscript: number;
 
+    /**
+     * @default 16785524
+     */
     const foursuperior: number;
 
+    /**
+     * @default 16785948
+     */
     const fourthroot: number;
 
+    /**
+     * @default 2294
+     */
     const __function: number;
 
+    /**
+     * @default 103
+     */
     const g: number;
 
+    /**
+     * @default 757
+     */
     const gabovedot: number;
 
+    /**
+     * @default 699
+     */
     const gbreve: number;
 
+    /**
+     * @default 16777703
+     */
     const gcaron: number;
 
+    /**
+     * @default 955
+     */
     const gcedilla: number;
 
+    /**
+     * @default 760
+     */
     const gcircumflex: number;
 
+    /**
+     * @default 96
+     */
     const grave: number;
 
+    /**
+     * @default 62
+     */
     const greater: number;
 
+    /**
+     * @default 2238
+     */
     const greaterthanequal: number;
 
+    /**
+     * @default 171
+     */
     const guillemotleft: number;
 
+    /**
+     * @default 187
+     */
     const guillemotright: number;
 
+    /**
+     * @default 104
+     */
     const h: number;
 
+    /**
+     * @default 2728
+     */
     const hairspace: number;
 
+    /**
+     * @default 694
+     */
     const hcircumflex: number;
 
+    /**
+     * @default 2798
+     */
     const heart: number;
 
+    /**
+     * @default 3296
+     */
     const hebrew_aleph: number;
 
+    /**
+     * @default 3314
+     */
     const hebrew_ayin: number;
 
+    /**
+     * @default 3297
+     */
     const hebrew_bet: number;
 
+    /**
+     * @default 3297
+     */
     const hebrew_beth: number;
 
+    /**
+     * @default 3303
+     */
     const hebrew_chet: number;
 
+    /**
+     * @default 3299
+     */
     const hebrew_dalet: number;
 
+    /**
+     * @default 3299
+     */
     const hebrew_daleth: number;
 
+    /**
+     * @default 3295
+     */
     const hebrew_doublelowline: number;
 
+    /**
+     * @default 3306
+     */
     const hebrew_finalkaph: number;
 
+    /**
+     * @default 3309
+     */
     const hebrew_finalmem: number;
 
+    /**
+     * @default 3311
+     */
     const hebrew_finalnun: number;
 
+    /**
+     * @default 3315
+     */
     const hebrew_finalpe: number;
 
+    /**
+     * @default 3317
+     */
     const hebrew_finalzade: number;
 
+    /**
+     * @default 3317
+     */
     const hebrew_finalzadi: number;
 
+    /**
+     * @default 3298
+     */
     const hebrew_gimel: number;
 
+    /**
+     * @default 3298
+     */
     const hebrew_gimmel: number;
 
+    /**
+     * @default 3300
+     */
     const hebrew_he: number;
 
+    /**
+     * @default 3303
+     */
     const hebrew_het: number;
 
+    /**
+     * @default 3307
+     */
     const hebrew_kaph: number;
 
+    /**
+     * @default 3319
+     */
     const hebrew_kuf: number;
 
+    /**
+     * @default 3308
+     */
     const hebrew_lamed: number;
 
+    /**
+     * @default 3310
+     */
     const hebrew_mem: number;
 
+    /**
+     * @default 3312
+     */
     const hebrew_nun: number;
 
+    /**
+     * @default 3316
+     */
     const hebrew_pe: number;
 
+    /**
+     * @default 3319
+     */
     const hebrew_qoph: number;
 
+    /**
+     * @default 3320
+     */
     const hebrew_resh: number;
 
+    /**
+     * @default 3313
+     */
     const hebrew_samech: number;
 
+    /**
+     * @default 3313
+     */
     const hebrew_samekh: number;
 
+    /**
+     * @default 3321
+     */
     const hebrew_shin: number;
 
+    /**
+     * @default 3322
+     */
     const hebrew_taf: number;
 
+    /**
+     * @default 3322
+     */
     const hebrew_taw: number;
 
+    /**
+     * @default 3304
+     */
     const hebrew_tet: number;
 
+    /**
+     * @default 3304
+     */
     const hebrew_teth: number;
 
+    /**
+     * @default 3301
+     */
     const hebrew_waw: number;
 
+    /**
+     * @default 3305
+     */
     const hebrew_yod: number;
 
+    /**
+     * @default 3318
+     */
     const hebrew_zade: number;
 
+    /**
+     * @default 3318
+     */
     const hebrew_zadi: number;
 
+    /**
+     * @default 3302
+     */
     const hebrew_zain: number;
 
+    /**
+     * @default 3302
+     */
     const hebrew_zayin: number;
 
+    /**
+     * @default 2778
+     */
     const hexagram: number;
 
+    /**
+     * @default 2211
+     */
     const horizconnector: number;
 
+    /**
+     * @default 2543
+     */
     const horizlinescan1: number;
 
+    /**
+     * @default 2544
+     */
     const horizlinescan3: number;
 
+    /**
+     * @default 2545
+     */
     const horizlinescan5: number;
 
+    /**
+     * @default 2546
+     */
     const horizlinescan7: number;
 
+    /**
+     * @default 2547
+     */
     const horizlinescan9: number;
 
+    /**
+     * @default 689
+     */
     const hstroke: number;
 
+    /**
+     * @default 2530
+     */
     const ht: number;
 
+    /**
+     * @default 173
+     */
     const hyphen: number;
 
+    /**
+     * @default 105
+     */
     const i: number;
 
+    /**
+     * @default 269025120
+     */
     const iTouch: number;
 
+    /**
+     * @default 237
+     */
     const iacute: number;
 
+    /**
+     * @default 16785099
+     */
     const ibelowdot: number;
 
+    /**
+     * @default 16777517
+     */
     const ibreve: number;
 
+    /**
+     * @default 238
+     */
     const icircumflex: number;
 
+    /**
+     * @default 2255
+     */
     const identical: number;
 
+    /**
+     * @default 239
+     */
     const idiaeresis: number;
 
+    /**
+     * @default 697
+     */
     const idotless: number;
 
+    /**
+     * @default 2253
+     */
     const ifonlyif: number;
 
+    /**
+     * @default 236
+     */
     const igrave: number;
 
+    /**
+     * @default 16785097
+     */
     const ihook: number;
 
+    /**
+     * @default 1007
+     */
     const imacron: number;
 
+    /**
+     * @default 2254
+     */
     const implies: number;
 
+    /**
+     * @default 2266
+     */
     const includedin: number;
 
+    /**
+     * @default 2267
+     */
     const includes: number;
 
+    /**
+     * @default 2242
+     */
     const infinity: number;
 
+    /**
+     * @default 2239
+     */
     const integral: number;
 
+    /**
+     * @default 2268
+     */
     const intersection: number;
 
+    /**
+     * @default 999
+     */
     const iogonek: number;
 
+    /**
+     * @default 949
+     */
     const itilde: number;
 
+    /**
+     * @default 106
+     */
     const j: number;
 
+    /**
+     * @default 700
+     */
     const jcircumflex: number;
 
+    /**
+     * @default 3018
+     */
     const jot: number;
 
+    /**
+     * @default 107
+     */
     const k: number;
 
+    /**
+     * @default 1201
+     */
     const kana_A: number;
 
+    /**
+     * @default 1217
+     */
     const kana_CHI: number;
 
+    /**
+     * @default 1204
+     */
     const kana_E: number;
 
+    /**
+     * @default 1228
+     */
     const kana_FU: number;
 
+    /**
+     * @default 1226
+     */
     const kana_HA: number;
 
+    /**
+     * @default 1229
+     */
     const kana_HE: number;
 
+    /**
+     * @default 1227
+     */
     const kana_HI: number;
 
+    /**
+     * @default 1230
+     */
     const kana_HO: number;
 
+    /**
+     * @default 1228
+     */
     const kana_HU: number;
 
+    /**
+     * @default 1202
+     */
     const kana_I: number;
 
+    /**
+     * @default 1206
+     */
     const kana_KA: number;
 
+    /**
+     * @default 1209
+     */
     const kana_KE: number;
 
+    /**
+     * @default 1207
+     */
     const kana_KI: number;
 
+    /**
+     * @default 1210
+     */
     const kana_KO: number;
 
+    /**
+     * @default 1208
+     */
     const kana_KU: number;
 
+    /**
+     * @default 1231
+     */
     const kana_MA: number;
 
+    /**
+     * @default 1234
+     */
     const kana_ME: number;
 
+    /**
+     * @default 1232
+     */
     const kana_MI: number;
 
+    /**
+     * @default 1235
+     */
     const kana_MO: number;
 
+    /**
+     * @default 1233
+     */
     const kana_MU: number;
 
+    /**
+     * @default 1245
+     */
     const kana_N: number;
 
+    /**
+     * @default 1221
+     */
     const kana_NA: number;
 
+    /**
+     * @default 1224
+     */
     const kana_NE: number;
 
+    /**
+     * @default 1222
+     */
     const kana_NI: number;
 
+    /**
+     * @default 1225
+     */
     const kana_NO: number;
 
+    /**
+     * @default 1223
+     */
     const kana_NU: number;
 
+    /**
+     * @default 1205
+     */
     const kana_O: number;
 
+    /**
+     * @default 1239
+     */
     const kana_RA: number;
 
+    /**
+     * @default 1242
+     */
     const kana_RE: number;
 
+    /**
+     * @default 1240
+     */
     const kana_RI: number;
 
+    /**
+     * @default 1243
+     */
     const kana_RO: number;
 
+    /**
+     * @default 1241
+     */
     const kana_RU: number;
 
+    /**
+     * @default 1211
+     */
     const kana_SA: number;
 
+    /**
+     * @default 1214
+     */
     const kana_SE: number;
 
+    /**
+     * @default 1212
+     */
     const kana_SHI: number;
 
+    /**
+     * @default 1215
+     */
     const kana_SO: number;
 
+    /**
+     * @default 1213
+     */
     const kana_SU: number;
 
+    /**
+     * @default 1216
+     */
     const kana_TA: number;
 
+    /**
+     * @default 1219
+     */
     const kana_TE: number;
 
+    /**
+     * @default 1217
+     */
     const kana_TI: number;
 
+    /**
+     * @default 1220
+     */
     const kana_TO: number;
 
+    /**
+     * @default 1218
+     */
     const kana_TSU: number;
 
+    /**
+     * @default 1218
+     */
     const kana_TU: number;
 
+    /**
+     * @default 1203
+     */
     const kana_U: number;
 
+    /**
+     * @default 1244
+     */
     const kana_WA: number;
 
+    /**
+     * @default 1190
+     */
     const kana_WO: number;
 
+    /**
+     * @default 1236
+     */
     const kana_YA: number;
 
+    /**
+     * @default 1238
+     */
     const kana_YO: number;
 
+    /**
+     * @default 1237
+     */
     const kana_YU: number;
 
+    /**
+     * @default 1191
+     */
     const kana_a: number;
 
+    /**
+     * @default 1187
+     */
     const kana_closingbracket: number;
 
+    /**
+     * @default 1188
+     */
     const kana_comma: number;
 
+    /**
+     * @default 1189
+     */
     const kana_conjunctive: number;
 
+    /**
+     * @default 1194
+     */
     const kana_e: number;
 
+    /**
+     * @default 1185
+     */
     const kana_fullstop: number;
 
+    /**
+     * @default 1192
+     */
     const kana_i: number;
 
+    /**
+     * @default 1189
+     */
     const kana_middledot: number;
 
+    /**
+     * @default 1195
+     */
     const kana_o: number;
 
+    /**
+     * @default 1186
+     */
     const kana_openingbracket: number;
 
+    /**
+     * @default 65406
+     */
     const kana_switch: number;
 
+    /**
+     * @default 1199
+     */
     const kana_tsu: number;
 
+    /**
+     * @default 1199
+     */
     const kana_tu: number;
 
+    /**
+     * @default 1193
+     */
     const kana_u: number;
 
+    /**
+     * @default 1196
+     */
     const kana_ya: number;
 
+    /**
+     * @default 1198
+     */
     const kana_yo: number;
 
+    /**
+     * @default 1197
+     */
     const kana_yu: number;
 
+    /**
+     * @default 930
+     */
     const kappa: number;
 
+    /**
+     * @default 1011
+     */
     const kcedilla: number;
 
+    /**
+     * @default 930
+     */
     const kra: number;
 
+    /**
+     * @default 108
+     */
     const l: number;
 
+    /**
+     * @default 485
+     */
     const lacute: number;
 
+    /**
+     * @default 2777
+     */
     const latincross: number;
 
+    /**
+     * @default 16784951
+     */
     const lbelowdot: number;
 
+    /**
+     * @default 437
+     */
     const lcaron: number;
 
+    /**
+     * @default 950
+     */
     const lcedilla: number;
 
+    /**
+     * @default 2748
+     */
     const leftanglebracket: number;
 
+    /**
+     * @default 2299
+     */
     const leftarrow: number;
 
+    /**
+     * @default 2979
+     */
     const leftcaret: number;
 
+    /**
+     * @default 2770
+     */
     const leftdoublequotemark: number;
 
+    /**
+     * @default 2223
+     */
     const leftmiddlecurlybrace: number;
 
+    /**
+     * @default 2764
+     */
     const leftopentriangle: number;
 
+    /**
+     * @default 2794
+     */
     const leftpointer: number;
 
+    /**
+     * @default 2209
+     */
     const leftradical: number;
 
+    /**
+     * @default 3034
+     */
     const leftshoe: number;
 
+    /**
+     * @default 2768
+     */
     const leftsinglequotemark: number;
 
+    /**
+     * @default 2548
+     */
     const leftt: number;
 
+    /**
+     * @default 3036
+     */
     const lefttack: number;
 
+    /**
+     * @default 60
+     */
     const less: number;
 
+    /**
+     * @default 2236
+     */
     const lessthanequal: number;
 
+    /**
+     * @default 2533
+     */
     const lf: number;
 
+    /**
+     * @default 2270
+     */
     const logicaland: number;
 
+    /**
+     * @default 2271
+     */
     const logicalor: number;
 
+    /**
+     * @default 2541
+     */
     const lowleftcorner: number;
 
+    /**
+     * @default 2538
+     */
     const lowrightcorner: number;
 
+    /**
+     * @default 435
+     */
     const lstroke: number;
 
+    /**
+     * @default 109
+     */
     const m: number;
 
+    /**
+     * @default 16784961
+     */
     const mabovedot: number;
 
+    /**
+     * @default 175
+     */
     const macron: number;
 
+    /**
+     * @default 2807
+     */
     const malesymbol: number;
 
+    /**
+     * @default 2800
+     */
     const maltesecross: number;
 
+    /**
+     * @default 2751
+     */
     const marker: number;
 
+    /**
+     * @default 186
+     */
     const masculine: number;
 
+    /**
+     * @default 45
+     */
     const minus: number;
 
+    /**
+     * @default 2774
+     */
     const minutes: number;
 
+    /**
+     * @default 181
+     */
     const mu: number;
 
+    /**
+     * @default 215
+     */
     const multiply: number;
 
+    /**
+     * @default 2806
+     */
     const musicalflat: number;
 
+    /**
+     * @default 2805
+     */
     const musicalsharp: number;
 
+    /**
+     * @default 110
+     */
     const n: number;
 
+    /**
+     * @default 2245
+     */
     const nabla: number;
 
+    /**
+     * @default 497
+     */
     const nacute: number;
 
+    /**
+     * @default 498
+     */
     const ncaron: number;
 
+    /**
+     * @default 1009
+     */
     const ncedilla: number;
 
+    /**
+     * @default 16785545
+     */
     const ninesubscript: number;
 
+    /**
+     * @default 16785529
+     */
     const ninesuperior: number;
 
+    /**
+     * @default 2536
+     */
     const nl: number;
 
+    /**
+     * @default 160
+     */
     const nobreakspace: number;
 
+    /**
+     * @default 16785991
+     */
     const notapproxeq: number;
 
+    /**
+     * @default 16785929
+     */
     const notelementof: number;
 
+    /**
+     * @default 2237
+     */
     const notequal: number;
 
+    /**
+     * @default 16786018
+     */
     const notidentical: number;
 
+    /**
+     * @default 172
+     */
     const notsign: number;
 
+    /**
+     * @default 241
+     */
     const ntilde: number;
 
+    /**
+     * @default 35
+     */
     const numbersign: number;
 
+    /**
+     * @default 1712
+     */
     const numerosign: number;
 
+    /**
+     * @default 111
+     */
     const o: number;
 
+    /**
+     * @default 243
+     */
     const oacute: number;
 
+    /**
+     * @default 16777845
+     */
     const obarred: number;
 
+    /**
+     * @default 16785101
+     */
     const obelowdot: number;
 
+    /**
+     * @default 16777682
+     */
     const ocaron: number;
 
+    /**
+     * @default 244
+     */
     const ocircumflex: number;
 
+    /**
+     * @default 16785105
+     */
     const ocircumflexacute: number;
 
+    /**
+     * @default 16785113
+     */
     const ocircumflexbelowdot: number;
 
+    /**
+     * @default 16785107
+     */
     const ocircumflexgrave: number;
 
+    /**
+     * @default 16785109
+     */
     const ocircumflexhook: number;
 
+    /**
+     * @default 16785111
+     */
     const ocircumflextilde: number;
 
+    /**
+     * @default 246
+     */
     const odiaeresis: number;
 
+    /**
+     * @default 501
+     */
     const odoubleacute: number;
 
+    /**
+     * @default 5053
+     */
     const oe: number;
 
+    /**
+     * @default 434
+     */
     const ogonek: number;
 
+    /**
+     * @default 242
+     */
     const ograve: number;
 
+    /**
+     * @default 16785103
+     */
     const ohook: number;
 
+    /**
+     * @default 16777633
+     */
     const ohorn: number;
 
+    /**
+     * @default 16785115
+     */
     const ohornacute: number;
 
+    /**
+     * @default 16785123
+     */
     const ohornbelowdot: number;
 
+    /**
+     * @default 16785117
+     */
     const ohorngrave: number;
 
+    /**
+     * @default 16785119
+     */
     const ohornhook: number;
 
+    /**
+     * @default 16785121
+     */
     const ohorntilde: number;
 
+    /**
+     * @default 1010
+     */
     const omacron: number;
 
+    /**
+     * @default 2755
+     */
     const oneeighth: number;
 
+    /**
+     * @default 2738
+     */
     const onefifth: number;
 
+    /**
+     * @default 189
+     */
     const onehalf: number;
 
+    /**
+     * @default 188
+     */
     const onequarter: number;
 
+    /**
+     * @default 2742
+     */
     const onesixth: number;
 
+    /**
+     * @default 16785537
+     */
     const onesubscript: number;
 
+    /**
+     * @default 185
+     */
     const onesuperior: number;
 
+    /**
+     * @default 2736
+     */
     const onethird: number;
 
+    /**
+     * @default 248
+     */
     const ooblique: number;
 
+    /**
+     * @default 2786
+     */
     const openrectbullet: number;
 
+    /**
+     * @default 2789
+     */
     const openstar: number;
 
+    /**
+     * @default 2788
+     */
     const opentribulletdown: number;
 
+    /**
+     * @default 2787
+     */
     const opentribulletup: number;
 
+    /**
+     * @default 170
+     */
     const ordfeminine: number;
 
+    /**
+     * @default 248
+     */
     const oslash: number;
 
+    /**
+     * @default 245
+     */
     const otilde: number;
 
+    /**
+     * @default 3008
+     */
     const overbar: number;
 
+    /**
+     * @default 1150
+     */
     const overline: number;
 
+    /**
+     * @default 112
+     */
     const p: number;
 
+    /**
+     * @default 16784983
+     */
     const pabovedot: number;
 
+    /**
+     * @default 182
+     */
     const paragraph: number;
 
+    /**
+     * @default 40
+     */
     const parenleft: number;
 
+    /**
+     * @default 41
+     */
     const parenright: number;
 
+    /**
+     * @default 16785922
+     */
     const partdifferential: number;
 
+    /**
+     * @default 2287
+     */
     const partialderivative: number;
 
+    /**
+     * @default 37
+     */
     const percent: number;
 
+    /**
+     * @default 46
+     */
     const period: number;
 
+    /**
+     * @default 183
+     */
     const periodcentered: number;
 
+    /**
+     * @default 2773
+     */
     const permille: number;
 
+    /**
+     * @default 2811
+     */
     const phonographcopyright: number;
 
+    /**
+     * @default 43
+     */
     const plus: number;
 
+    /**
+     * @default 177
+     */
     const plusminus: number;
 
+    /**
+     * @default 2772
+     */
     const prescription: number;
 
+    /**
+     * @default 1200
+     */
     const prolongedsound: number;
 
+    /**
+     * @default 2726
+     */
     const punctspace: number;
 
+    /**
+     * @default 113
+     */
     const q: number;
 
+    /**
+     * @default 3020
+     */
     const quad: number;
 
+    /**
+     * @default 63
+     */
     const question: number;
 
+    /**
+     * @default 191
+     */
     const questiondown: number;
 
+    /**
+     * @default 34
+     */
     const quotedbl: number;
 
+    /**
+     * @default 96
+     */
     const quoteleft: number;
 
+    /**
+     * @default 39
+     */
     const quoteright: number;
 
+    /**
+     * @default 114
+     */
     const r: number;
 
+    /**
+     * @default 480
+     */
     const racute: number;
 
+    /**
+     * @default 2262
+     */
     const radical: number;
 
+    /**
+     * @default 504
+     */
     const rcaron: number;
 
+    /**
+     * @default 947
+     */
     const rcedilla: number;
 
+    /**
+     * @default 174
+     */
     const registered: number;
 
+    /**
+     * @default 2750
+     */
     const rightanglebracket: number;
 
+    /**
+     * @default 2301
+     */
     const rightarrow: number;
 
+    /**
+     * @default 2982
+     */
     const rightcaret: number;
 
+    /**
+     * @default 2771
+     */
     const rightdoublequotemark: number;
 
+    /**
+     * @default 2224
+     */
     const rightmiddlecurlybrace: number;
 
+    /**
+     * @default 2231
+     */
     const rightmiddlesummation: number;
 
+    /**
+     * @default 2765
+     */
     const rightopentriangle: number;
 
+    /**
+     * @default 2795
+     */
     const rightpointer: number;
 
+    /**
+     * @default 3032
+     */
     const rightshoe: number;
 
+    /**
+     * @default 2769
+     */
     const rightsinglequotemark: number;
 
+    /**
+     * @default 2549
+     */
     const rightt: number;
 
+    /**
+     * @default 3068
+     */
     const righttack: number;
 
+    /**
+     * @default 115
+     */
     const s: number;
 
+    /**
+     * @default 16784993
+     */
     const sabovedot: number;
 
+    /**
+     * @default 438
+     */
     const sacute: number;
 
+    /**
+     * @default 441
+     */
     const scaron: number;
 
+    /**
+     * @default 442
+     */
     const scedilla: number;
 
+    /**
+     * @default 16777817
+     */
     const schwa: number;
 
+    /**
+     * @default 766
+     */
     const scircumflex: number;
 
+    /**
+     * @default 65406
+     */
     const script_switch: number;
 
+    /**
+     * @default 2775
+     */
     const seconds: number;
 
+    /**
+     * @default 167
+     */
     const section: number;
 
+    /**
+     * @default 59
+     */
     const semicolon: number;
 
+    /**
+     * @default 1247
+     */
     const semivoicedsound: number;
 
+    /**
+     * @default 2758
+     */
     const seveneighths: number;
 
+    /**
+     * @default 16785543
+     */
     const sevensubscript: number;
 
+    /**
+     * @default 16785527
+     */
     const sevensuperior: number;
 
+    /**
+     * @default 2762
+     */
     const signaturemark: number;
 
+    /**
+     * @default 2732
+     */
     const signifblank: number;
 
+    /**
+     * @default 2249
+     */
     const similarequal: number;
 
+    /**
+     * @default 2813
+     */
     const singlelowquotemark: number;
 
+    /**
+     * @default 16785542
+     */
     const sixsubscript: number;
 
+    /**
+     * @default 16785526
+     */
     const sixsuperior: number;
 
+    /**
+     * @default 47
+     */
     const slash: number;
 
+    /**
+     * @default 2528
+     */
     const soliddiamond: number;
 
+    /**
+     * @default 32
+     */
     const space: number;
 
+    /**
+     * @default 16785946
+     */
     const squareroot: number;
 
+    /**
+     * @default 223
+     */
     const ssharp: number;
 
+    /**
+     * @default 163
+     */
     const sterling: number;
 
+    /**
+     * @default 16786019
+     */
     const stricteq: number;
 
+    /**
+     * @default 116
+     */
     const t: number;
 
+    /**
+     * @default 16785003
+     */
     const tabovedot: number;
 
+    /**
+     * @default 443
+     */
     const tcaron: number;
 
+    /**
+     * @default 510
+     */
     const tcedilla: number;
 
+    /**
+     * @default 2809
+     */
     const telephone: number;
 
+    /**
+     * @default 2810
+     */
     const telephonerecorder: number;
 
+    /**
+     * @default 2240
+     */
     const therefore: number;
 
+    /**
+     * @default 2727
+     */
     const thinspace: number;
 
+    /**
+     * @default 254
+     */
     const thorn: number;
 
+    /**
+     * @default 2756
+     */
     const threeeighths: number;
 
+    /**
+     * @default 2740
+     */
     const threefifths: number;
 
+    /**
+     * @default 190
+     */
     const threequarters: number;
 
+    /**
+     * @default 16785539
+     */
     const threesubscript: number;
 
+    /**
+     * @default 179
+     */
     const threesuperior: number;
 
+    /**
+     * @default 16785965
+     */
     const tintegral: number;
 
+    /**
+     * @default 2212
+     */
     const topintegral: number;
 
+    /**
+     * @default 2219
+     */
     const topleftparens: number;
 
+    /**
+     * @default 2210
+     */
     const topleftradical: number;
 
+    /**
+     * @default 2215
+     */
     const topleftsqbracket: number;
 
+    /**
+     * @default 2225
+     */
     const topleftsummation: number;
 
+    /**
+     * @default 2221
+     */
     const toprightparens: number;
 
+    /**
+     * @default 2217
+     */
     const toprightsqbracket: number;
 
+    /**
+     * @default 2229
+     */
     const toprightsummation: number;
 
+    /**
+     * @default 2551
+     */
     const topt: number;
 
+    /**
+     * @default 2227
+     */
     const topvertsummationconnector: number;
 
+    /**
+     * @default 2761
+     */
     const trademark: number;
 
+    /**
+     * @default 2763
+     */
     const trademarkincircle: number;
 
+    /**
+     * @default 956
+     */
     const tslash: number;
 
+    /**
+     * @default 2739
+     */
     const twofifths: number;
 
+    /**
+     * @default 16785538
+     */
     const twosubscript: number;
 
+    /**
+     * @default 178
+     */
     const twosuperior: number;
 
+    /**
+     * @default 2737
+     */
     const twothirds: number;
 
+    /**
+     * @default 117
+     */
     const u: number;
 
+    /**
+     * @default 250
+     */
     const uacute: number;
 
+    /**
+     * @default 16785125
+     */
     const ubelowdot: number;
 
+    /**
+     * @default 765
+     */
     const ubreve: number;
 
+    /**
+     * @default 251
+     */
     const ucircumflex: number;
 
+    /**
+     * @default 252
+     */
     const udiaeresis: number;
 
+    /**
+     * @default 507
+     */
     const udoubleacute: number;
 
+    /**
+     * @default 249
+     */
     const ugrave: number;
 
+    /**
+     * @default 16785127
+     */
     const uhook: number;
 
+    /**
+     * @default 16777648
+     */
     const uhorn: number;
 
+    /**
+     * @default 16785129
+     */
     const uhornacute: number;
 
+    /**
+     * @default 16785137
+     */
     const uhornbelowdot: number;
 
+    /**
+     * @default 16785131
+     */
     const uhorngrave: number;
 
+    /**
+     * @default 16785133
+     */
     const uhornhook: number;
 
+    /**
+     * @default 16785135
+     */
     const uhorntilde: number;
 
+    /**
+     * @default 1022
+     */
     const umacron: number;
 
+    /**
+     * @default 3014
+     */
     const underbar: number;
 
+    /**
+     * @default 95
+     */
     const underscore: number;
 
+    /**
+     * @default 2269
+     */
     const union: number;
 
+    /**
+     * @default 1017
+     */
     const uogonek: number;
 
+    /**
+     * @default 2300
+     */
     const uparrow: number;
 
+    /**
+     * @default 2985
+     */
     const upcaret: number;
 
+    /**
+     * @default 2540
+     */
     const upleftcorner: number;
 
+    /**
+     * @default 2539
+     */
     const uprightcorner: number;
 
+    /**
+     * @default 3011
+     */
     const upshoe: number;
 
+    /**
+     * @default 3027
+     */
     const upstile: number;
 
+    /**
+     * @default 3022
+     */
     const uptack: number;
 
+    /**
+     * @default 505
+     */
     const uring: number;
 
+    /**
+     * @default 1021
+     */
     const utilde: number;
 
+    /**
+     * @default 118
+     */
     const v: number;
 
+    /**
+     * @default 2241
+     */
     const variation: number;
 
+    /**
+     * @default 2552
+     */
     const vertbar: number;
 
+    /**
+     * @default 2214
+     */
     const vertconnector: number;
 
+    /**
+     * @default 1246
+     */
     const voicedsound: number;
 
+    /**
+     * @default 2537
+     */
     const vt: number;
 
+    /**
+     * @default 119
+     */
     const w: number;
 
+    /**
+     * @default 16785027
+     */
     const wacute: number;
 
+    /**
+     * @default 16777589
+     */
     const wcircumflex: number;
 
+    /**
+     * @default 16785029
+     */
     const wdiaeresis: number;
 
+    /**
+     * @default 16785025
+     */
     const wgrave: number;
 
+    /**
+     * @default 120
+     */
     const x: number;
 
+    /**
+     * @default 16785035
+     */
     const xabovedot: number;
 
+    /**
+     * @default 121
+     */
     const y: number;
 
+    /**
+     * @default 253
+     */
     const yacute: number;
 
+    /**
+     * @default 16785141
+     */
     const ybelowdot: number;
 
+    /**
+     * @default 16777591
+     */
     const ycircumflex: number;
 
+    /**
+     * @default 255
+     */
     const ydiaeresis: number;
 
+    /**
+     * @default 165
+     */
     const yen: number;
 
+    /**
+     * @default 16785139
+     */
     const ygrave: number;
 
+    /**
+     * @default 16785143
+     */
     const yhook: number;
 
+    /**
+     * @default 16785145
+     */
     const ytilde: number;
 
+    /**
+     * @default 122
+     */
     const z: number;
 
+    /**
+     * @default 447
+     */
     const zabovedot: number;
 
+    /**
+     * @default 444
+     */
     const zacute: number;
 
+    /**
+     * @default 446
+     */
     const zcaron: number;
 
+    /**
+     * @default 16785536
+     */
     const zerosubscript: number;
 
+    /**
+     * @default 16785520
+     */
     const zerosuperior: number;
 
+    /**
+     * @default 16777654
+     */
     const zstroke: number;
 
     /**
@@ -11933,6 +25618,7 @@ export namespace Clutter {
      * @param translation_domain a translation domain to use for   translating the <option>--help</option> output for the options in   `entries` with `gettext()`, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} if Clutter has been successfully   initialised, or other values or {@link Clutter.InitError} in case of   error.
      * @since 0.2
+     * @throws GLib.Error
      */
     function init_with_args(argv: string[] | null, parameter_string: string | null, entries: GLib.OptionEntry[] | null, translation_domain: string | null): [InitError, string[] | null];
 
@@ -12824,27 +26510,27 @@ export namespace Clutter {
          * the actor will be painted (is visible, and inside
          *   a toplevel, and all parents visible)
          */
-        MAPPED,
+        MAPPED = 2,
         /**
          * the resources associated to the actor have been
          *   allocated
          */
-        REALIZED,
+        REALIZED = 4,
         /**
          * the actor 'reacts' to mouse events emmitting event
          *   signals
          */
-        REACTIVE,
+        REACTIVE = 8,
         /**
          * the actor has been shown by the application program
          */
-        VISIBLE,
+        VISIBLE = 16,
         /**
          * the actor provides an explicit layout management
          *   policy for its children; this flag will prevent Clutter from automatic
          *   queueing of relayout and will defer all layouting to the actor itself
          */
-        NO_LAYOUT,
+        NO_LAYOUT = 32,
     }
 
 
@@ -12865,13 +26551,13 @@ export namespace Clutter {
         /**
          * No flag set
          */
-        ALLOCATION_NONE,
+        ALLOCATION_NONE = 0,
         /**
          * Whether the absolute origin of the
          *   actor has changed; this implies that any ancestor of the actor has
          *   been moved.
          */
-        ABSOLUTE_ORIGIN_CHANGED,
+        ABSOLUTE_ORIGIN_CHANGED = 2,
         /**
          * Whether the allocation should be delegated
          *   to the {@link Clutter.LayoutManager} instance stored inside the
@@ -12881,7 +26567,7 @@ export namespace Clutter {
          *   you wish to use the default implementation of the virtual function
          *   inside {@link Clutter.Actor}. Added in Clutter 1.10.
          */
-        DELEGATE_LAYOUT,
+        DELEGATE_LAYOUT = 4,
     }
 
 
@@ -12901,19 +26587,19 @@ export namespace Clutter {
         /**
          * No repeat
          */
-        NONE,
+        NONE = 0,
         /**
          * Repeat the content on the X axis
          */
-        X_AXIS,
+        X_AXIS = 1,
         /**
          * Repeat the content on the Y axis
          */
-        Y_AXIS,
+        Y_AXIS = 2,
         /**
          * Repeat the content on both axis
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -12935,7 +26621,7 @@ export namespace Clutter {
          *   should call `clutter_actor_continue_paint()` to chain to the next
          *   effect and can not cache any results from a previous paint.
          */
-        ACTOR_DIRTY,
+        ACTOR_DIRTY = 1,
     }
 
 
@@ -12955,16 +26641,16 @@ export namespace Clutter {
         /**
          * No flag set
          */
-        NONE,
+        NONE = 0,
         /**
          * Synthetic event
          */
-        FLAG_SYNTHETIC,
-        FLAG_INPUT_METHOD,
+        FLAG_SYNTHETIC = 1,
+        FLAG_INPUT_METHOD = 2,
         /**
          * Auto-repeated event
          */
-        FLAG_REPEATED,
+        FLAG_REPEATED = 4,
     }
 
 
@@ -12985,47 +26671,47 @@ export namespace Clutter {
         /**
          * Set if NPOTS textures supported.
          */
-        TEXTURE_NPOT,
+        TEXTURE_NPOT = 4,
         /**
          * Set if vblank syncing supported.
          */
-        SYNC_TO_VBLANK,
+        SYNC_TO_VBLANK = 8,
         /**
          * Set if YUV based textures supported.
          */
-        TEXTURE_YUV,
+        TEXTURE_YUV = 16,
         /**
          * Set if texture pixels can be read.
          */
-        TEXTURE_READ_PIXELS,
+        TEXTURE_READ_PIXELS = 32,
         /**
          * Set if stage size if fixed (i.e framebuffer)
          */
-        STAGE_STATIC,
+        STAGE_STATIC = 64,
         /**
          * Set if stage is able to be user resized.
          */
-        STAGE_USER_RESIZE,
+        STAGE_USER_RESIZE = 128,
         /**
          * Set if stage has a graphical cursor.
          */
-        STAGE_CURSOR,
+        STAGE_CURSOR = 256,
         /**
          * Set if the backend supports GLSL shaders.
          */
-        SHADERS_GLSL,
+        SHADERS_GLSL = 512,
         /**
          * Set if the backend supports offscreen rendering.
          */
-        OFFSCREEN,
+        OFFSCREEN = 1024,
         /**
          * Set if multiple stages are supported.
          */
-        STAGE_MULTIPLE,
+        STAGE_MULTIPLE = 2048,
         /**
          * Set if the GLX_INTEL_swap_event is supported.
          */
-        SWAP_EVENTS,
+        SWAP_EVENTS = 4096,
     }
 
 
@@ -13047,11 +26733,11 @@ export namespace Clutter {
         /**
          * Set to use mipmaps for the glyph cache textures.
          */
-        MIPMAPPING,
+        MIPMAPPING = 1,
         /**
          * Set to enable hinting on the glyphs.
          */
-        HINTING,
+        HINTING = 2,
     }
 
 
@@ -13066,16 +26752,16 @@ export namespace Clutter {
      * @gir-type Flags
      */
     enum InputContentHintFlags {
-        COMPLETION,
-        SPELLCHECK,
-        AUTO_CAPITALIZATION,
-        LOWERCASE,
-        UPPERCASE,
-        TITLECASE,
-        HIDDEN_TEXT,
-        SENSITIVE_DATA,
-        LATIN,
-        MULTILINE,
+        COMPLETION = 1,
+        SPELLCHECK = 2,
+        AUTO_CAPITALIZATION = 4,
+        LOWERCASE = 8,
+        UPPERCASE = 16,
+        TITLECASE = 32,
+        HIDDEN_TEXT = 64,
+        SENSITIVE_DATA = 128,
+        LATIN = 256,
+        MULTILINE = 512,
     }
 
 
@@ -13091,20 +26777,20 @@ export namespace Clutter {
      * @gir-type Flags
      */
     enum KeyboardA11yFlags {
-        KEYBOARD_ENABLED,
-        TIMEOUT_ENABLED,
-        MOUSE_KEYS_ENABLED,
-        SLOW_KEYS_ENABLED,
-        SLOW_KEYS_BEEP_PRESS,
-        SLOW_KEYS_BEEP_ACCEPT,
-        SLOW_KEYS_BEEP_REJECT,
-        BOUNCE_KEYS_ENABLED,
-        BOUNCE_KEYS_BEEP_REJECT,
-        TOGGLE_KEYS_ENABLED,
-        STICKY_KEYS_ENABLED,
-        STICKY_KEYS_TWO_KEY_OFF,
-        STICKY_KEYS_BEEP,
-        FEATURE_STATE_CHANGE_BEEP,
+        KEYBOARD_ENABLED = 1,
+        TIMEOUT_ENABLED = 2,
+        MOUSE_KEYS_ENABLED = 4,
+        SLOW_KEYS_ENABLED = 8,
+        SLOW_KEYS_BEEP_PRESS = 16,
+        SLOW_KEYS_BEEP_ACCEPT = 32,
+        SLOW_KEYS_BEEP_REJECT = 64,
+        BOUNCE_KEYS_ENABLED = 128,
+        BOUNCE_KEYS_BEEP_REJECT = 256,
+        TOGGLE_KEYS_ENABLED = 512,
+        STICKY_KEYS_ENABLED = 1024,
+        STICKY_KEYS_TWO_KEY_OFF = 2048,
+        STICKY_KEYS_BEEP = 4096,
+        FEATURE_STATE_CHANGE_BEEP = 8192,
     }
 
 
@@ -13129,89 +26815,89 @@ export namespace Clutter {
         /**
          * Mask applied by the Shift key
          */
-        SHIFT_MASK,
+        SHIFT_MASK = 1,
         /**
          * Mask applied by the Caps Lock key
          */
-        LOCK_MASK,
+        LOCK_MASK = 2,
         /**
          * Mask applied by the Control key
          */
-        CONTROL_MASK,
+        CONTROL_MASK = 4,
         /**
          * Mask applied by the first Mod key
          */
-        MOD1_MASK,
+        MOD1_MASK = 8,
         /**
          * Mask applied by the second Mod key
          */
-        MOD2_MASK,
+        MOD2_MASK = 16,
         /**
          * Mask applied by the third Mod key
          */
-        MOD3_MASK,
+        MOD3_MASK = 32,
         /**
          * Mask applied by the fourth Mod key
          */
-        MOD4_MASK,
+        MOD4_MASK = 64,
         /**
          * Mask applied by the fifth Mod key
          */
-        MOD5_MASK,
+        MOD5_MASK = 128,
         /**
          * Mask applied by the first pointer button
          */
-        BUTTON1_MASK,
+        BUTTON1_MASK = 256,
         /**
          * Mask applied by the second pointer button
          */
-        BUTTON2_MASK,
+        BUTTON2_MASK = 512,
         /**
          * Mask applied by the third pointer button
          */
-        BUTTON3_MASK,
+        BUTTON3_MASK = 1024,
         /**
          * Mask applied by the fourth pointer button
          */
-        BUTTON4_MASK,
+        BUTTON4_MASK = 2048,
         /**
          * Mask applied by the fifth pointer button
          */
-        BUTTON5_MASK,
-        MODIFIER_RESERVED_13_MASK,
-        MODIFIER_RESERVED_14_MASK,
-        MODIFIER_RESERVED_15_MASK,
-        MODIFIER_RESERVED_16_MASK,
-        MODIFIER_RESERVED_17_MASK,
-        MODIFIER_RESERVED_18_MASK,
-        MODIFIER_RESERVED_19_MASK,
-        MODIFIER_RESERVED_20_MASK,
-        MODIFIER_RESERVED_21_MASK,
-        MODIFIER_RESERVED_22_MASK,
-        MODIFIER_RESERVED_23_MASK,
-        MODIFIER_RESERVED_24_MASK,
-        MODIFIER_RESERVED_25_MASK,
+        BUTTON5_MASK = 4096,
+        MODIFIER_RESERVED_13_MASK = 8192,
+        MODIFIER_RESERVED_14_MASK = 16384,
+        MODIFIER_RESERVED_15_MASK = 32768,
+        MODIFIER_RESERVED_16_MASK = 65536,
+        MODIFIER_RESERVED_17_MASK = 131072,
+        MODIFIER_RESERVED_18_MASK = 262144,
+        MODIFIER_RESERVED_19_MASK = 524288,
+        MODIFIER_RESERVED_20_MASK = 1048576,
+        MODIFIER_RESERVED_21_MASK = 2097152,
+        MODIFIER_RESERVED_22_MASK = 4194304,
+        MODIFIER_RESERVED_23_MASK = 8388608,
+        MODIFIER_RESERVED_24_MASK = 16777216,
+        MODIFIER_RESERVED_25_MASK = 33554432,
         /**
          * Mask applied by the Super key
          */
-        SUPER_MASK,
+        SUPER_MASK = 67108864,
         /**
          * Mask applied by the Hyper key
          */
-        HYPER_MASK,
+        HYPER_MASK = 134217728,
         /**
          * Mask applied by the Meta key
          */
-        META_MASK,
-        MODIFIER_RESERVED_29_MASK,
+        META_MASK = 268435456,
+        MODIFIER_RESERVED_29_MASK = 536870912,
         /**
          * Mask applied during release
          */
-        RELEASE_MASK,
+        RELEASE_MASK = 1073741824,
         /**
          * A mask covering all modifier types
          */
-        MODIFIER_MASK,
+        MODIFIER_MASK = 1543512063,
     }
 
 
@@ -13233,12 +26919,12 @@ export namespace Clutter {
          *   the actor if it is semi-transparent and its `has_overlaps()`
          *   virtual returns `true`. This is the default.
          */
-        AUTOMATIC_FOR_OPACITY,
+        AUTOMATIC_FOR_OPACITY = 1,
         /**
          * Always redirect the actor to an
          *   offscreen buffer even if it is fully opaque.
          */
-        ALWAYS,
+        ALWAYS = 2,
     }
 
 
@@ -13259,17 +26945,17 @@ export namespace Clutter {
          * Run the repaint function prior to
          *   painting the stages
          */
-        PRE_PAINT,
+        PRE_PAINT = 1,
         /**
          * Run the repaint function after
          *   painting the stages
          */
-        POST_PAINT,
+        POST_PAINT = 2,
         /**
          * Ensure that a new frame
          *   is queued after adding the repaint function
          */
-        QUEUE_REDRAW_ON_ADD,
+        QUEUE_REDRAW_ON_ADD = 4,
     }
 
 
@@ -13290,15 +26976,15 @@ export namespace Clutter {
         /**
          * no axis was stopped.
          */
-        NONE,
+        NONE = 0,
         /**
          * The horizontal axis stopped.
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * The vertical axis stopped.
          */
-        VERTICAL,
+        VERTICAL = 2,
     }
 
 
@@ -13318,19 +27004,19 @@ export namespace Clutter {
         /**
          * Ignore scrolling
          */
-        NONE,
+        NONE = 0,
         /**
          * Scroll only horizontally
          */
-        HORIZONTALLY,
+        HORIZONTALLY = 1,
         /**
          * Scroll only vertically
          */
-        VERTICALLY,
+        VERTICALLY = 2,
         /**
          * Scroll in both directions
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -13350,15 +27036,15 @@ export namespace Clutter {
         /**
          * Fullscreen mask
          */
-        FULLSCREEN,
+        FULLSCREEN = 2,
         /**
          * Offscreen mask (deprecated)
          */
-        OFFSCREEN,
+        OFFSCREEN = 4,
         /**
          * Activated mask
          */
-        ACTIVATED,
+        ACTIVATED = 8,
     }
 
 
@@ -13378,19 +27064,19 @@ export namespace Clutter {
         /**
          * Upwards swipe gesture
          */
-        UP,
+        UP = 1,
         /**
          * Downwards swipe gesture
          */
-        DOWN,
+        DOWN = 2,
         /**
          * Leftwards swipe gesture
          */
-        LEFT,
+        LEFT = 4,
         /**
          * Rightwards swipe gesture
          */
-        RIGHT,
+        RIGHT = 8,
     }
 
 
@@ -13412,19 +27098,19 @@ export namespace Clutter {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Unused flag
          */
-        RGB_FLAG_BGR,
+        RGB_FLAG_BGR = 2,
         /**
          * Unused flag
          */
-        RGB_FLAG_PREMULT,
+        RGB_FLAG_PREMULT = 4,
         /**
          * Unused flag
          */
-        YUV_FLAG_YUV2,
+        YUV_FLAG_YUV2 = 8,
     }
 
 
@@ -13439,10 +27125,10 @@ export namespace Clutter {
      * @gir-type Flags
      */
     enum VirtualDeviceType {
-        NONE,
-        KEYBOARD,
-        POINTER,
-        TOUCHSCREEN,
+        NONE = 0,
+        KEYBOARD = 1,
+        POINTER = 2,
+        TOUCHSCREEN = 4,
     }
 
 
@@ -13510,7 +27196,7 @@ export namespace Clutter {
              * @since 1.0
              * @run-last
              */
-            "allocation-changed": (arg0: ActorBox, arg1: AllocationFlags) => void;
+            "allocation-changed": (box: ActorBox, flags: AllocationFlags) => void;
             /**
              * The ::button-press-event signal is emitted each time a mouse button
              * is pressed on `actor`.
@@ -13518,7 +27204,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "button-press-event": (arg0: ButtonEvent) => boolean | void;
+            "button-press-event": (event: ButtonEvent) => boolean | void;
             /**
              * The ::button-release-event signal is emitted each time a mouse button
              * is released on `actor`.
@@ -13526,7 +27212,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "button-release-event": (arg0: ButtonEvent) => boolean | void;
+            "button-release-event": (event: ButtonEvent) => boolean | void;
             /**
              * The ::captured-event signal is emitted when an event is captured
              * by Clutter. This signal will be emitted starting from the top-level
@@ -13539,7 +27225,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "captured-event": (arg0: Event) => boolean | void;
+            "captured-event": (event: Event) => boolean | void;
             /**
              * The ::destroy signal notifies that all references held on the
              * actor which emitted it should be released.
@@ -13566,7 +27252,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "enter-event": (arg0: CrossingEvent) => boolean | void;
+            "enter-event": (event: CrossingEvent) => boolean | void;
             /**
              * The ::event signal is emitted each time an event is received
              * by the `actor`. This signal will be emitted on every actor,
@@ -13576,7 +27262,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            event: (arg0: Event) => boolean | void;
+            event: (event: Event) => boolean | void;
             /**
              * The ::hide signal is emitted when an actor is no longer rendered
              * on the stage.
@@ -13606,7 +27292,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "key-press-event": (arg0: KeyEvent) => boolean | void;
+            "key-press-event": (event: KeyEvent) => boolean | void;
             /**
              * The ::key-release-event signal is emitted each time a keyboard button
              * is released while `actor` has key focus (see
@@ -13615,14 +27301,14 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "key-release-event": (arg0: KeyEvent) => boolean | void;
+            "key-release-event": (event: KeyEvent) => boolean | void;
             /**
              * The ::leave-event signal is emitted when the pointer leaves the `actor`.
              * @signal
              * @since 0.6
              * @run-last
              */
-            "leave-event": (arg0: CrossingEvent) => boolean | void;
+            "leave-event": (event: CrossingEvent) => boolean | void;
             /**
              * The ::motion-event signal is emitted each time the mouse pointer is
              * moved over `actor`.
@@ -13630,7 +27316,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "motion-event": (arg0: MotionEvent) => boolean | void;
+            "motion-event": (event: MotionEvent) => boolean | void;
             /**
              * The ::paint signal is emitted each time an actor is being painted.
              * 
@@ -13655,7 +27341,7 @@ export namespace Clutter {
              * @since 0.2
              * @run-last
              */
-            "parent-set": (arg0: Actor | null) => void;
+            "parent-set": (old_parent: Actor | null) => void;
             /**
              * The ::pick signal is emitted each time an actor is being painted
              * in "pick mode". The pick mode is used to identify the actor during
@@ -13672,7 +27358,7 @@ export namespace Clutter {
              * @deprecated since 1.12: Override the {@link Clutter.ActorClass}.pick virtual function   instead.
              * @run-last
              */
-            pick: (arg0: Color) => void;
+            pick: (color: Color) => void;
             /**
              * The ::queue_redraw signal is emitted when `clutter_actor_queue_redraw()`
              * is called on `origin`.
@@ -13723,7 +27409,7 @@ export namespace Clutter {
              * @since 1.0
              * @run-last
              */
-            "queue-redraw": (arg0: Actor) => void;
+            "queue-redraw": (origin: Actor) => void;
             /**
              * The ::queue_layout signal is emitted when `clutter_actor_queue_relayout()`
              * is called on an actor.
@@ -13756,7 +27442,7 @@ export namespace Clutter {
              * @since 0.6
              * @run-last
              */
-            "scroll-event": (arg0: ScrollEvent) => boolean | void;
+            "scroll-event": (event: ScrollEvent) => boolean | void;
             /**
              * The ::show signal is emitted when an actor is visible and
              * rendered on the stage.
@@ -13772,7 +27458,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            "touch-event": (arg0: Event) => boolean | void;
+            "touch-event": (event: Event) => boolean | void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13784,7 +27470,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped": (arg0: string, arg1: boolean) => void;
+            "transition-stopped": (name: string, is_finished: boolean) => void;
             /**
              * The ::transitions-completed signal is emitted once all transitions
              * involving `actor` are complete.
@@ -13894,7 +27580,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::actions": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::actions": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13906,7 +27592,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::allocation": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::allocation": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13918,7 +27604,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::anchor-gravity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::anchor-gravity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13930,7 +27616,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::anchor-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::anchor-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13942,7 +27628,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::anchor-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::anchor-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13954,7 +27640,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::background-color": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::background-color": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13966,7 +27652,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::background-color-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::background-color-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13978,7 +27664,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::child-transform-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::child-transform-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -13990,7 +27676,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::clip": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::clip": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14002,7 +27688,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::clip-rect": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::clip-rect": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14014,7 +27700,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::clip-to-allocation": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::clip-to-allocation": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14026,7 +27712,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::constraints": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::constraints": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14038,7 +27724,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::content": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::content": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14050,7 +27736,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::content-box": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::content-box": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14062,7 +27748,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::content-gravity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::content-gravity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14074,7 +27760,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::content-repeat": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::content-repeat": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14086,7 +27772,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::depth": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::depth": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14098,7 +27784,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::effect": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::effect": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14110,7 +27796,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::first-child": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::first-child": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14122,7 +27808,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::fixed-position-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::fixed-position-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14134,7 +27820,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::fixed-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::fixed-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14146,7 +27832,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::fixed-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::fixed-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14158,7 +27844,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::has-clip": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::has-clip": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14170,7 +27856,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::has-pointer": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::has-pointer": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14182,7 +27868,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::height": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::height": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14194,7 +27880,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::last-child": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::last-child": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14206,7 +27892,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::layout-manager": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::layout-manager": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14218,7 +27904,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::magnification-filter": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::magnification-filter": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14230,7 +27916,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::mapped": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::mapped": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14242,7 +27928,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-bottom": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-bottom": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14254,7 +27940,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-left": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-left": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14266,7 +27952,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-right": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-right": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14278,7 +27964,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-top": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-top": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14290,7 +27976,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::min-height": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::min-height": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14302,7 +27988,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::min-height-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::min-height-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14314,7 +28000,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::min-width": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::min-width": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14326,7 +28012,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::min-width-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::min-width-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14338,7 +28024,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::minification-filter": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::minification-filter": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14350,7 +28036,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::name": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::name": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14362,7 +28048,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::natural-height": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::natural-height": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14374,7 +28060,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::natural-height-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::natural-height-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14386,7 +28072,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::natural-width": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::natural-width": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14398,7 +28084,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::natural-width-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::natural-width-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14410,7 +28096,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::offscreen-redirect": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::offscreen-redirect": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14422,7 +28108,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::opacity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::opacity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14434,7 +28120,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::pivot-point": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::pivot-point": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14446,7 +28132,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::pivot-point-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::pivot-point-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14458,7 +28144,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::position": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::position": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14470,7 +28156,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::reactive": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::reactive": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14482,7 +28168,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::realized": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::realized": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14494,7 +28180,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::request-mode": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::request-mode": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14506,7 +28192,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-angle-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-angle-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14518,7 +28204,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-angle-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-angle-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14530,7 +28216,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-angle-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-angle-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14542,7 +28228,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-center-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-center-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14554,7 +28240,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-center-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-center-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14566,7 +28252,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-center-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-center-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14578,7 +28264,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-center-z-gravity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-center-z-gravity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14590,7 +28276,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-center-zgravity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-center-zgravity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14602,7 +28288,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-center-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-center-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14614,7 +28300,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-center-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-center-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14626,7 +28312,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-gravity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-gravity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14638,7 +28324,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14650,7 +28336,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14662,7 +28348,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14674,7 +28360,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::show-on-set-parent": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::show-on-set-parent": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14686,7 +28372,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::size": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::size": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14698,7 +28384,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::text-direction": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::text-direction": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14710,7 +28396,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::transform-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::transform-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14722,7 +28408,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14734,7 +28420,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14746,7 +28432,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14758,7 +28444,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::visible": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::visible": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14770,7 +28456,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::width": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::width": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14782,7 +28468,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14794,7 +28480,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::x-align": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::x-align": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14806,7 +28492,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::x-expand": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::x-expand": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14818,7 +28504,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14830,7 +28516,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::y-align": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::y-align": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14842,7 +28528,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::y-expand": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::y-expand": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -14854,8 +28540,8 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "transition-stopped::z-position": (arg0: string, arg1: boolean) => void;
-            [key: `transition-stopped::${string}`]: (arg0: string, arg1: boolean) => void;
+            "transition-stopped::z-position": (name: string, is_finished: boolean) => void;
+            [key: `transition-stopped::${string}`]: (name: string, is_finished: boolean) => void;
         }
 
         // Constructor properties interface
@@ -21895,7 +35581,7 @@ export namespace Clutter {
              * @deprecated since 1.6
              * @run-first
              */
-            applied: (arg0: Actor) => void;
+            applied: (actor: Actor) => void;
             /**
              * The ::removed signal is emitted each time a behaviour is not applied
              * to an actor anymore.
@@ -21904,7 +35590,7 @@ export namespace Clutter {
              * @deprecated since 1.6
              * @run-first
              */
-            removed: (arg0: Actor) => void;
+            removed: (actor: Actor) => void;
             "notify::alpha": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -22935,7 +36621,7 @@ export namespace Clutter {
              * @deprecated since 1.6
              * @run-last
              */
-            "knot-reached": (arg0: number) => void;
+            "knot-reached": (knot_num: number) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::alpha": (pspec: GObject.ParamSpec) => void;
         }
@@ -25524,7 +39210,7 @@ export namespace Clutter {
              * @deprecated since 1.12
              * @run-last
              */
-            "create-surface": (arg0: number, arg1: number) => cairo.Surface;
+            "create-surface": (width: number, height: number) => cairo.Surface;
             /**
              * The ::draw signal is emitted each time a {@link Clutter.CairoTexture} has
              * been invalidated.
@@ -25541,7 +39227,7 @@ export namespace Clutter {
              * @deprecated since 1.12
              * @run-last
              */
-            draw: (arg0: cairo.Context) => boolean | void;
+            draw: (cr: cairo.Context) => boolean | void;
             "notify::auto-resize": (pspec: GObject.ParamSpec) => void;
             "notify::surface-height": (pspec: GObject.ParamSpec) => void;
             "notify::surface-width": (pspec: GObject.ParamSpec) => void;
@@ -25890,7 +39576,7 @@ export namespace Clutter {
              * @since 1.10
              * @run-last
              */
-            draw: (arg0: cairo.Context, arg1: number, arg2: number) => boolean | void;
+            draw: (cr: cairo.Context, width: number, height: number) => boolean | void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
         }
@@ -26195,7 +39881,7 @@ export namespace Clutter {
              * @since 1.4
              * @run-last
              */
-            clicked: (arg0: Actor) => void;
+            clicked: (actor: Actor) => void;
             /**
              * The ::long-press signal is emitted during the long press gesture
              * handling.
@@ -26216,7 +39902,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "long-press": (arg0: Actor, arg1: LongPressState) => boolean | void;
+            "long-press": (actor: Actor, state: LongPressState) => boolean | void;
             "notify::held": (pspec: GObject.ParamSpec) => void;
             "notify::long-press-duration": (pspec: GObject.ParamSpec) => void;
             "notify::long-press-threshold": (pspec: GObject.ParamSpec) => void;
@@ -27543,7 +41229,7 @@ export namespace Clutter {
              * @since 1.2
              * @run-last
              */
-            "device-added": (arg0: InputDevice) => void;
+            "device-added": (device: InputDevice) => void;
             /**
              * The ::device-removed signal is emitted each time a device has been
              * removed from the {@link Clutter.DeviceManager}
@@ -27551,7 +41237,7 @@ export namespace Clutter {
              * @since 1.2
              * @run-last
              */
-            "device-removed": (arg0: InputDevice) => void;
+            "device-removed": (device: InputDevice) => void;
             /**
              * The ::kbd-a11y-flags-changed signal is emitted each time the
              * ClutterKeyboardA11yFlags configuration is changed as the result of
@@ -27559,7 +41245,7 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            "kbd-a11y-flags-changed": (arg0: number, arg1: number) => void;
+            "kbd-a11y-flags-changed": (settings_flags: number, changed_mask: number) => void;
             /**
              * The ::kbd-a11y-mods-state-changed signal is emitted each time either the
              * latched modifiers mask or locked modifiers mask are changed as the
@@ -27567,12 +41253,12 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            "kbd-a11y-mods-state-changed": (arg0: number, arg1: number) => void;
+            "kbd-a11y-mods-state-changed": (latched_mask: number, locked_mask: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "tool-changed": (arg0: InputDevice, arg1: InputDeviceTool) => void;
+            "tool-changed": (object: InputDevice, p0: InputDeviceTool) => void;
             "notify::backend": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -27762,7 +41448,7 @@ export namespace Clutter {
              * @since 1.4
              * @run-last
              */
-            "drag-begin": (arg0: Actor, arg1: number, arg2: number, arg3: ModifierType) => void;
+            "drag-begin": (actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void;
             /**
              * The ::drag-end signal is emitted at the end of the dragging,
              * when the pointer button's is released
@@ -27773,7 +41459,7 @@ export namespace Clutter {
              * @since 1.4
              * @run-last
              */
-            "drag-end": (arg0: Actor, arg1: number, arg2: number, arg3: ModifierType) => void;
+            "drag-end": (actor: Actor, event_x: number, event_y: number, modifiers: ModifierType) => void;
             /**
              * The ::drag-motion signal is emitted for each motion event after
              * the {@link Clutter.DragAction.SignalSignatures.drag_begin | Clutter.DragAction::drag-begin} signal has been emitted.
@@ -27794,7 +41480,7 @@ export namespace Clutter {
              * @since 1.4
              * @run-last
              */
-            "drag-motion": (arg0: Actor, arg1: number, arg2: number) => void;
+            "drag-motion": (actor: Actor, delta_x: number, delta_y: number) => void;
             /**
              * The ::drag-progress signal is emitted for each motion event after
              * the {@link Clutter.DragAction.SignalSignatures.drag_begin | Clutter.DragAction::drag-begin} signal has been emitted.
@@ -27811,7 +41497,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            "drag-progress": (arg0: Actor, arg1: number, arg2: number) => boolean | void;
+            "drag-progress": (actor: Actor, delta_x: number, delta_y: number) => boolean | void;
             "notify::drag-area": (pspec: GObject.ParamSpec) => void;
             "notify::drag-area-set": (pspec: GObject.ParamSpec) => void;
             "notify::drag-axis": (pspec: GObject.ParamSpec) => void;
@@ -28169,7 +41855,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "can-drop": (arg0: Actor, arg1: number, arg2: number) => boolean | void;
+            "can-drop": (actor: Actor, event_x: number, event_y: number) => boolean | void;
             /**
              * The ::drop signal is emitted when the dragged actor is dropped
              * on `actor`. This signal is only emitted if at least an handler of
@@ -28178,7 +41864,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            drop: (arg0: Actor, arg1: number, arg2: number) => void;
+            drop: (actor: Actor, event_x: number, event_y: number) => void;
             /**
              * The ::drop-cancel signal is emitted when the drop is refused
              * by an emission of the {@link Clutter.DropAction.SignalSignatures.can_drop | Clutter.DropAction::can-drop} signal.
@@ -28189,7 +41875,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            "drop-cancel": (arg0: Actor, arg1: number, arg2: number) => void;
+            "drop-cancel": (actor: Actor, event_x: number, event_y: number) => void;
             /**
              * The ::over-in signal is emitted when the dragged actor crosses
              * into `actor`.
@@ -28197,7 +41883,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "over-in": (arg0: Actor) => void;
+            "over-in": (actor: Actor) => void;
             /**
              * The ::over-out signal is emitted when the dragged actor crosses
              * outside `actor`.
@@ -28205,7 +41891,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "over-out": (arg0: Actor) => void;
+            "over-out": (actor: Actor) => void;
             "notify::actor": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -28772,7 +42458,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "gesture-begin": (arg0: Actor) => boolean | void;
+            "gesture-begin": (actor: Actor) => boolean | void;
             /**
              * The ::gesture-cancel signal is emitted when the ongoing gesture gets
              * cancelled from the {@link Clutter.GestureAction.SignalSignatures.gesture_progress | Clutter.GestureAction::gesture-progress} signal handler.
@@ -28783,7 +42469,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "gesture-cancel": (arg0: Actor) => void;
+            "gesture-cancel": (actor: Actor) => void;
             /**
              * The ::gesture-end signal is emitted at the end of the gesture gesture,
              * when the pointer's button is released
@@ -28794,7 +42480,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "gesture-end": (arg0: Actor) => void;
+            "gesture-end": (actor: Actor) => void;
             /**
              * The ::gesture-progress signal is emitted for each motion event after
              * the {@link Clutter.GestureAction.SignalSignatures.gesture_begin | Clutter.GestureAction::gesture-begin} signal has been emitted.
@@ -28802,7 +42488,7 @@ export namespace Clutter {
              * @since 1.8
              * @run-last
              */
-            "gesture-progress": (arg0: Actor) => boolean | void;
+            "gesture-progress": (actor: Actor) => boolean | void;
             "notify::n-touch-points": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-x": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-y": (pspec: GObject.ParamSpec) => void;
@@ -30187,6 +43873,7 @@ export namespace Clutter {
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
          * @since 1.10
+         * @throws GLib.Error
          */
         set_area(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, rect: cairo.RectangleInt, row_stride: number): boolean;
 
@@ -30207,6 +43894,7 @@ export namespace Clutter {
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
          * @since 1.12
+         * @throws GLib.Error
          */
         set_bytes(data: GLib.Bytes | Uint8Array, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
@@ -30250,6 +43938,7 @@ export namespace Clutter {
          * @param row_stride the length of each row inside `data`
          * @returns `true` if the image data was successfully loaded,   and `false` otherwise.
          * @since 1.10
+         * @throws GLib.Error
          */
         set_data(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, row_stride: number): boolean;
 
@@ -31172,22 +44861,22 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            commit: (arg0: string) => void;
+            commit: (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "cursor-location-changed": (arg0: Rect) => void;
+            "cursor-location-changed": (object: Rect) => void;
             /**
              * @signal
              * @run-last
              */
-            "delete-surrounding": (arg0: number, arg1: number) => void;
+            "delete-surrounding": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "input-panel-state": (arg0: InputPanelState) => void;
+            "input-panel-state": (object: InputPanelState) => void;
             /**
              * @signal
              * @run-last
@@ -32339,7 +46028,7 @@ export namespace Clutter {
              * @deprecated since 1.24: Use {@link Gio.ListModel} instead
              * @run-last
              */
-            "row-added": (arg0: ModelIter) => void;
+            "row-added": (iter: ModelIter) => void;
             /**
              * The ::row-removed signal is emitted when a row has been changed.
              * The data on the row has already been updated when the ::row-changed
@@ -32349,7 +46038,7 @@ export namespace Clutter {
              * @deprecated since 1.24: Use {@link Gio.ListModel} instead
              * @run-last
              */
-            "row-changed": (arg0: ModelIter) => void;
+            "row-changed": (iter: ModelIter) => void;
             /**
              * The ::row-removed signal is emitted when a row has been removed.
              * The data on the row pointed by the passed iterator is still valid
@@ -32359,7 +46048,7 @@ export namespace Clutter {
              * @deprecated since 1.24: Use {@link Gio.ListModel} instead
              * @run-last
              */
-            "row-removed": (arg0: ModelIter) => void;
+            "row-removed": (iter: ModelIter) => void;
             /**
              * The ::sort-changed signal is emitted after the model has been sorted
              * @signal
@@ -33418,7 +47107,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            pan: (arg0: Actor, arg1: boolean) => boolean | void;
+            pan: (actor: Actor, is_interpolated: boolean) => boolean | void;
             /**
              * The ::pan-stopped signal is emitted at the end of the interpolation
              * phase of the pan action, only when :interpolate is set to `true`.
@@ -33426,7 +47115,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            "pan-stopped": (arg0: Actor) => void;
+            "pan-stopped": (actor: Actor) => void;
             "notify::acceleration-factor": (pspec: GObject.ParamSpec) => void;
             "notify::deceleration": (pspec: GObject.ParamSpec) => void;
             "notify::interpolate": (pspec: GObject.ParamSpec) => void;
@@ -33976,7 +47665,7 @@ export namespace Clutter {
              * @since 1.6
              * @run-last
              */
-            "node-reached": (arg0: Actor, arg1: number) => void;
+            "node-reached": (actor: Actor, index: number) => void;
             "notify::offset": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::actor": (pspec: GObject.ParamSpec) => void;
@@ -35010,7 +48699,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            rotate: (arg0: Actor, arg1: number) => boolean | void;
+            rotate: (actor: Actor, angle: number) => boolean | void;
             "notify::n-touch-points": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-x": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-y": (pspec: GObject.ParamSpec) => void;
@@ -35108,7 +48797,7 @@ export namespace Clutter {
              * @deprecated since 1.8
              * @run-last
              */
-            "timeline-completed": (arg0: Timeline) => void;
+            "timeline-completed": (timeline: Timeline) => void;
             /**
              * The ::timeline-started signal is emitted each time a new timeline
              * inside a {@link Clutter.Score} starts playing.
@@ -35117,7 +48806,7 @@ export namespace Clutter {
              * @deprecated since 1.8
              * @run-last
              */
-            "timeline-started": (arg0: Timeline) => void;
+            "timeline-started": (timeline: Timeline) => void;
             "notify::loop": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -35563,6 +49252,7 @@ export namespace Clutter {
          * @param length the length of the buffer, or -1 if `data` is a NUL-terminated   buffer
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
          * @since 0.6
+         * @throws GLib.Error
          */
         load_from_data(data: string, length: bigint | number): number;
 
@@ -35572,6 +49262,7 @@ export namespace Clutter {
          * @param filename the full path to the definition file
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
          * @since 0.6
+         * @throws GLib.Error
          */
         load_from_file(filename: string): number;
 
@@ -35581,6 +49272,7 @@ export namespace Clutter {
          * @param resource_path the resource path of the file to parse
          * @returns on error, zero is returned and `error` is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with `clutter_script_unmerge_objects()`.
          * @since 1.10
+         * @throws GLib.Error
          */
         load_from_resource(resource_path: string): number;
 
@@ -36788,6 +50480,7 @@ export namespace Clutter {
          * @returns returns TRUE if the shader was succesfully compiled.
          * @since 0.8
          * @deprecated since 1.8: Use {@link Clutter.ShaderEffect} instead.
+         * @throws GLib.Error
          */
         compile(): boolean;
 
@@ -37312,7 +51005,7 @@ export namespace Clutter {
              * @since 1.2
              * @run-last
              */
-            "delete-event": (arg0: Event) => boolean | void;
+            "delete-event": (event: Event) => boolean | void;
             /**
              * The ::fullscreen signal is emitted when the stage is made fullscreen.
              * @signal
@@ -37324,7 +51017,7 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            presented: (arg0: number, arg1: null) => void;
+            presented: (frame_event: number, frame_info: null) => void;
             /**
              * The ::unfullscreen signal is emitted when the stage leaves a fullscreen
              * state.
@@ -38181,7 +51874,7 @@ export namespace Clutter {
              * @since 0.8
              * @run-last
              */
-            "stage-added": (arg0: Stage) => void;
+            "stage-added": (stage: Stage) => void;
             /**
              * The ::stage-removed signal is emitted each time a {@link Clutter.Stage}
              * has been removed from the stage manager.
@@ -38189,7 +51882,7 @@ export namespace Clutter {
              * @since 0.8
              * @run-last
              */
-            "stage-removed": (arg0: Stage) => void;
+            "stage-removed": (stage: Stage) => void;
             "notify::default-stage": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -38647,7 +52340,7 @@ export namespace Clutter {
              * @deprecated since 1.14: Use the ::swipe signal instead.
              * @run-last
              */
-            swept: (arg0: Actor, arg1: SwipeDirection) => void;
+            swept: (actor: Actor, direction: SwipeDirection) => void;
             /**
              * The ::swipe signal is emitted when a swipe gesture is recognized on the
              * attached actor.
@@ -38655,7 +52348,7 @@ export namespace Clutter {
              * @since 1.14
              * @run-last
              */
-            swipe: (arg0: Actor, arg1: SwipeDirection) => boolean | void;
+            swipe: (actor: Actor, direction: SwipeDirection) => boolean | void;
             "notify::n-touch-points": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-x": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-y": (pspec: GObject.ParamSpec) => void;
@@ -39119,7 +52812,7 @@ export namespace Clutter {
              * @since 1.14
              * @run-last
              */
-            tap: (arg0: Actor) => void;
+            tap: (actor: Actor) => void;
             "notify::n-touch-points": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-x": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-y": (pspec: GObject.ParamSpec) => void;
@@ -39210,7 +52903,7 @@ export namespace Clutter {
              * @deprecated since 1.16: Use the {@link Clutter.Text.SignalSignatures.cursor_changed | Clutter.Text::cursor-changed} signal instead
              * @run-last
              */
-            "cursor-event": (arg0: Geometry) => void;
+            "cursor-event": (geometry: Geometry) => void;
             /**
              * This signal is emitted when text is deleted from the actor by
              * the user. It is emitted before `self` text changes.
@@ -39219,7 +52912,7 @@ export namespace Clutter {
              * @action
              * @run-last
              */
-            "delete-text": (arg0: number, arg1: number) => void;
+            "delete-text": (start_pos: number, end_pos: number) => void;
             /**
              * This signal is emitted when text is inserted into the actor by
              * the user. It is emitted before `self` text changes.
@@ -39228,7 +52921,7 @@ export namespace Clutter {
              * @action
              * @run-last
              */
-            "insert-text": (arg0: string, arg1: number, arg2: null) => void;
+            "insert-text": (new_text: string, new_text_length: number, position: null) => void;
             /**
              * The ::text-changed signal is emitted after `actor`'s text changes
              * @signal
@@ -41134,14 +54827,14 @@ export namespace Clutter {
              * @since 1.10
              * @run-first
              */
-            "deleted-text": (arg0: number, arg1: number) => void;
+            "deleted-text": (position: number, n_chars: number) => void;
             /**
              * This signal is emitted after text is inserted into the buffer.
              * @signal
              * @since 1.10
              * @run-first
              */
-            "inserted-text": (arg0: number, arg1: string, arg2: number) => void;
+            "inserted-text": (position: number, chars: string, n_chars: number) => void;
             "notify::length": (pspec: GObject.ParamSpec) => void;
             "notify::max-length": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -41447,7 +55140,7 @@ export namespace Clutter {
              * @deprecated since 1.12: No replacement is available
              * @run-last
              */
-            "load-finished": (arg0: GLib.Error) => void;
+            "load-finished": (error: GLib.Error) => void;
             /**
              * The ::pixbuf-change signal is emitted each time the pixbuf
              * used by `texture` changes.
@@ -41464,7 +55157,7 @@ export namespace Clutter {
              * @deprecated since 1.12: No replacement is available
              * @run-last
              */
-            "size-change": (arg0: number, arg1: number) => void;
+            "size-change": (width: number, height: number) => void;
             "notify::disable-slicing": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
             "notify::filter-quality": (pspec: GObject.ParamSpec) => void;
@@ -41882,6 +55575,7 @@ export namespace Clutter {
          * @returns `true` on success, `false` on failure.
          * @since 0.6
          * @deprecated since 1.12: Use {@link Clutter.Image} and `clutter_image_set_area()` instead
+         * @throws GLib.Error
          */
         set_area_from_rgb_data(data: Uint8Array | string, has_alpha: boolean, x: number, y: number, width: number, height: number, rowstride: number, bpp: number, flags: TextureFlags): boolean;
 
@@ -41939,6 +55633,7 @@ export namespace Clutter {
          * @returns `true` if the image was successfully loaded and set
          * @since 0.8
          * @deprecated since 1.12: Use {@link Clutter.Image} and platform-specific image   loading API, like GdkPixbuf, instead
+         * @throws GLib.Error
          */
         set_from_file(filename: string): boolean;
 
@@ -41954,6 +55649,7 @@ export namespace Clutter {
          * @returns `true` on success, `false` on failure.
          * @since 0.4
          * @deprecated since 1.12: Use {@link Clutter.Image} and `clutter_image_set_data()` instead
+         * @throws GLib.Error
          */
         set_from_rgb_data(data: Uint8Array | string, has_alpha: boolean, width: number, height: number, rowstride: number, bpp: number, flags: TextureFlags): boolean;
 
@@ -41974,6 +55670,7 @@ export namespace Clutter {
          * @returns `true` if the texture was successfully updated
          * @since 0.4
          * @deprecated since 1.10: Use a custom {@link Clutter.Content} implementation and   set up the Cogl pipeline using a {@link Clutter.PipelineNode} with a   fragment shader instead.
+         * @throws GLib.Error
          */
         set_from_yuv_data(data: Uint8Array | string, width: number, height: number, flags: TextureFlags): boolean;
 
@@ -42685,7 +56382,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached": (arg0: string, arg1: number) => void;
+            "marker-reached": (marker_name: string, msecs: number) => void;
             /**
              * The ::new-frame signal is emitted for each timeline running
              * timeline before a new frame is drawn to give animations a chance
@@ -42693,7 +56390,7 @@ export namespace Clutter {
              * @signal
              * @run-last
              */
-            "new-frame": (arg0: number) => void;
+            "new-frame": (msecs: number) => void;
             /**
              * The ::paused signal is emitted when `clutter_timeline_pause()` is invoked.
              * @signal
@@ -42723,7 +56420,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            stopped: (arg0: boolean) => void;
+            stopped: (is_finished: boolean) => void;
             "notify::auto-reverse": (pspec: GObject.ParamSpec) => void;
             "notify::delay": (pspec: GObject.ParamSpec) => void;
             "notify::direction": (pspec: GObject.ParamSpec) => void;
@@ -42759,7 +56456,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::auto-reverse": (arg0: string, arg1: number) => void;
+            "marker-reached::auto-reverse": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42788,7 +56485,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::delay": (arg0: string, arg1: number) => void;
+            "marker-reached::delay": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42817,7 +56514,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::direction": (arg0: string, arg1: number) => void;
+            "marker-reached::direction": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42846,7 +56543,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::duration": (arg0: string, arg1: number) => void;
+            "marker-reached::duration": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42875,7 +56572,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::loop": (arg0: string, arg1: number) => void;
+            "marker-reached::loop": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42904,7 +56601,7 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::progress-mode": (arg0: string, arg1: number) => void;
+            "marker-reached::progress-mode": (marker_name: string, msecs: number) => void;
             /**
              * The ::marker-reached signal is emitted each time a timeline
              * reaches a marker set with
@@ -42933,8 +56630,8 @@ export namespace Clutter {
              * @detailed
              * @run-last
              */
-            "marker-reached::repeat-count": (arg0: string, arg1: number) => void;
-            [key: `marker-reached::${string}`]: (arg0: string, arg1: number) => void;
+            "marker-reached::repeat-count": (marker_name: string, msecs: number) => void;
+            [key: `marker-reached::${string}`]: (marker_name: string, msecs: number) => void;
         }
 
         // Constructor properties interface
@@ -44249,7 +57946,7 @@ export namespace Clutter {
              * @since 1.12
              * @run-last
              */
-            zoom: (arg0: Actor, arg1: Point, arg2: number) => boolean | void;
+            zoom: (actor: Actor, focal_point: Point, factor: number) => boolean | void;
             "notify::zoom-axis": (pspec: GObject.ParamSpec) => void;
             "notify::n-touch-points": (pspec: GObject.ParamSpec) => void;
             "notify::threshold-trigger-distance-x": (pspec: GObject.ParamSpec) => void;

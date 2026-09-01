@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./budgieraven-1.0.d.ts","./budgieraven-1.0-surface.d.ts"]
+  "include": ["./budgieraven-1.0.d.ts","./budgieraven-1.0-vocabulary.d.ts"]
 }
 
 

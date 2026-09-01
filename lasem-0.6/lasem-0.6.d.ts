@@ -36,11 +36,11 @@ export namespace Lasem {
      * @gir-type Enum
      */
     enum DebugLevel {
-        NONE,
-        WARNING,
-        DEBUG,
-        LOG,
-        COUNT,
+        NONE = 0,
+        WARNING = 1,
+        DEBUG = 2,
+        LOG = 3,
+        COUNT = 4,
     }
 
 
@@ -55,25 +55,34 @@ export namespace Lasem {
      * @gir-type Enum
      */
     enum DomNodeType {
-        ELEMENT_NODE,
-        ATTRIBUTE_NODE,
-        TEXT_NODE,
-        CDATA_SECTION_NODE,
-        ENTITY_REFERENCE_NODE,
-        ENTITY_NODE,
-        PROCESSING_INSTRUCTION_NODE,
-        COMMENT_NODE,
-        DOCUMENT_NODE,
-        DOCUMENT_TYPE_NODE,
-        DOCUMENT_FRAGMENT_NODE,
-        NOTATION_NODE,
+        ELEMENT_NODE = 1,
+        ATTRIBUTE_NODE = 2,
+        TEXT_NODE = 3,
+        CDATA_SECTION_NODE = 4,
+        ENTITY_REFERENCE_NODE = 5,
+        ENTITY_NODE = 6,
+        PROCESSING_INSTRUCTION_NODE = 7,
+        COMMENT_NODE = 8,
+        DOCUMENT_NODE = 9,
+        DOCUMENT_TYPE_NODE = 10,
+        DOCUMENT_FRAGMENT_NODE = 11,
+        NOTATION_NODE = 12,
     }
 
 
+    /**
+     * @default 72.000000
+     */
     const DOM_VIEW_DEFAULT_RESOLUTION: number;
 
+    /**
+     * @default 200.000000
+     */
     const DOM_VIEW_DEFAULT_VIEWBOX_HEIGHT: number;
 
+    /**
+     * @default 320.000000
+     */
     const DOM_VIEW_DEFAULT_VIEWBOX_WIDTH: number;
 
     /**
@@ -412,6 +421,7 @@ export namespace Lasem {
          * @param node a {@link Lasem.DomNode}
          * @param buffer a memory buffer holding xml data
          * @param size size of the xml data, in bytes, -1 if NULL terminated
+         * @throws GLib.Error
          */
         append_from_memory(node: DomNode, buffer: string, size: bigint | number): void;
 
@@ -456,24 +466,28 @@ export namespace Lasem {
 
         /**
          * Save `document` as an xml representation into `buffer`.
+         * @throws GLib.Error
          */
         save_to_memory(): [string, number];
 
         /**
          * Save `document` as an xml representation to a file, replacing the already existing file if needed.
          * @param path a file path
+         * @throws GLib.Error
          */
         save_to_path(path: string): void;
 
         /**
          * Save `document` as an xml representation into `stream`.
          * @param stream stream to save to
+         * @throws GLib.Error
          */
         save_to_stream(stream: Gio.OutputStream): void;
 
         /**
          * Save `document` as an xml representation to `url`, replacing the already existing file if needed.
          * @param url an url
+         * @throws GLib.Error
          */
         save_to_url(url: string): void;
 
@@ -918,6 +932,7 @@ export namespace Lasem {
 
         /**
          * @param stream 
+         * @throws GLib.Error
          */
         write_to_stream(stream: Gio.OutputStream): void;
     }

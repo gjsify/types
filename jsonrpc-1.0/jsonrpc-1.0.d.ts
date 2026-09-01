@@ -27,32 +27,36 @@ export namespace Jsonrpc {
      * @gir-type Enum
      */
     enum ClientError {
-        PARSE_ERROR,
-        INVALID_REQUEST,
-        METHOD_NOT_FOUND,
-        INVALID_PARAMS,
-        INTERNAL_ERROR,
+        PARSE_ERROR = -32700,
+        INVALID_REQUEST = -32600,
+        METHOD_NOT_FOUND = -32601,
+        INVALID_PARAMS = -32602,
+        INTERNAL_ERROR = -32603,
     }
 
 
     /**
      * jsonrpc-glib major version component (e.g. 1 if `JSONRPC_VERSION` is 1.2.3)
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * jsonrpc-glib micro version component (e.g. 3 if `JSONRPC_VERSION` is 1.2.3)
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * jsonrpc-glib minor version component (e.g. 2 if `JSONRPC_VERSION` is 1.2.3)
+     * @default 44
      */
     const MINOR_VERSION: number;
 
     /**
      * jsonrpc-glib version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 3.44.2
      */
     const VERSION_S: string;
 
@@ -91,7 +95,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            "handle-call": (method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -102,7 +106,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            notification: (arg0: string, arg1: GLib.Variant | null) => void;
+            notification: (method: string, params: GLib.Variant | null) => void;
             "notify::io-stream": (pspec: GObject.ParamSpec) => void;
             "notify::use-gvariant": (pspec: GObject.ParamSpec) => void;
             /**
@@ -122,7 +126,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call::io-stream": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            "handle-call::io-stream": (method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when an RPC has been received from the peer we
              * are connected to. Return `true` if you have handled this message, even
@@ -140,8 +144,8 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "handle-call::use-gvariant": (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
-            [key: `handle-call::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: GLib.Variant | null) => boolean | void;
+            "handle-call::use-gvariant": (method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean | void;
+            [key: `handle-call::${string}`]: (method: string, id: GLib.Variant, params: GLib.Variant | null) => boolean | void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -152,7 +156,7 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "notification::io-stream": (arg0: string, arg1: GLib.Variant | null) => void;
+            "notification::io-stream": (method: string, params: GLib.Variant | null) => void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -163,8 +167,8 @@ export namespace Jsonrpc {
              * @detailed
              * @run-last
              */
-            "notification::use-gvariant": (arg0: string, arg1: GLib.Variant | null) => void;
-            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant | null) => void;
+            "notification::use-gvariant": (method: string, params: GLib.Variant | null) => void;
+            [key: `notification::${string}`]: (method: string, params: GLib.Variant | null) => void;
         }
 
         // Constructor properties interface
@@ -323,6 +327,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         call(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -378,6 +383,7 @@ export namespace Jsonrpc {
          * @param result A {@link Gio.AsyncResult} provided to the callback in {@link Client.call_async}
          * @returns `true` if successful and `return_value` is set, otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         call_finish(result: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -414,6 +420,7 @@ export namespace Jsonrpc {
          * @param cancellable 
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         close(cancellable: Gio.Cancellable | null): boolean;
 
@@ -454,6 +461,7 @@ export namespace Jsonrpc {
          * @param result 
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         close_finish(result: Gio.AsyncResult): boolean;
 
@@ -474,6 +482,7 @@ export namespace Jsonrpc {
          * @param result The return value or `null`
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @since 3.26
+         * @throws GLib.Error
          */
         reply(id: GLib.Variant, result: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -546,6 +555,7 @@ export namespace Jsonrpc {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         reply_error_finish(result: Gio.AsyncResult): boolean;
 
@@ -554,6 +564,7 @@ export namespace Jsonrpc {
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         reply_finish(result: Gio.AsyncResult): boolean;
 
@@ -568,6 +579,7 @@ export namespace Jsonrpc {
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @returns `true` on success; otherwise `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         send_notification(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -633,6 +645,7 @@ export namespace Jsonrpc {
          * @param result 
          * @returns `true` if the bytes have been flushed to the {@link Gio.IOStream}; otherwise   `false` and `error` is set.
          * @since 3.26
+         * @throws GLib.Error
          */
         send_notification_finish(result: Gio.AsyncResult): boolean;
 
@@ -710,6 +723,7 @@ export namespace Jsonrpc {
         /**
          * @param cancellable 
          * @param message 
+         * @throws GLib.Error
          */
         read_message(cancellable: Gio.Cancellable | null, message: GLib.Variant): boolean;
 
@@ -733,6 +747,7 @@ export namespace Jsonrpc {
         /**
          * @param result 
          * @param message 
+         * @throws GLib.Error
          */
         read_message_finish(result: Gio.AsyncResult, message: GLib.Variant): boolean;
     }
@@ -818,6 +833,7 @@ export namespace Jsonrpc {
          * @param message a {@link GLib.Variant}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @since 3.26
+         * @throws GLib.Error
          */
         write_message(message: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -858,6 +874,7 @@ export namespace Jsonrpc {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         write_message_finish(result: Gio.AsyncResult): boolean;
 
@@ -893,6 +910,7 @@ export namespace Jsonrpc {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -915,6 +933,7 @@ export namespace Jsonrpc {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -986,14 +1005,14 @@ export namespace Jsonrpc {
              * @since 3.28
              * @run-last
              */
-            "client-accepted": (arg0: Client) => void;
+            "client-accepted": (client: Client) => void;
             /**
              * This signal is emitted when a new client has been lost.
              * @signal
              * @since 3.30
              * @run-last
              */
-            "client-closed": (arg0: Client) => void;
+            "client-closed": (client: Client) => void;
             /**
              * This method is emitted when the client requests a method call.
              * 
@@ -1003,14 +1022,14 @@ export namespace Jsonrpc {
              * @since 3.26
              * @run-last
              */
-            "handle-call": (arg0: Client, arg1: string, arg2: GLib.Variant, arg3: GLib.Variant) => boolean | void;
+            "handle-call": (client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean | void;
             /**
              * This signal is emitted when the client has sent a notification to us.
              * @signal
              * @since 3.26
              * @run-last
              */
-            notification: (arg0: Client, arg1: string, arg2: GLib.Variant) => void;
+            notification: (client: Client, method: string, id: GLib.Variant) => void;
         }
 
         // Constructor properties interface

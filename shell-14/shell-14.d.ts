@@ -59,9 +59,9 @@ export namespace Shell {
      * @gir-type Enum
      */
     enum AppLaunchGpu {
-        APP_PREF,
-        DISCRETE,
-        DEFAULT,
+        APP_PREF = 0,
+        DISCRETE = 1,
+        DEFAULT = 2,
     }
 
 
@@ -76,9 +76,9 @@ export namespace Shell {
      * @gir-type Enum
      */
     enum AppState {
-        STOPPED,
-        STARTING,
-        RUNNING,
+        STOPPED = 0,
+        STARTING = 1,
+        RUNNING = 2,
     }
 
 
@@ -97,11 +97,11 @@ export namespace Shell {
         /**
          * blur the actor contents, and its children
          */
-        ACTOR,
+        ACTOR = 0,
         /**
          * blur what's beneath the actor
          */
-        BACKGROUND,
+        BACKGROUND = 1,
     }
 
 
@@ -116,9 +116,9 @@ export namespace Shell {
      * @gir-type Enum
      */
     enum NetworkAgentResponse {
-        CONFIRMED,
-        USER_CANCELED,
-        INTERNAL_ERROR,
+        CONFIRMED = 0,
+        USER_CANCELED = 1,
+        INTERNAL_ERROR = 2,
     }
 
 
@@ -135,19 +135,28 @@ export namespace Shell {
      * @gir-type Enum
      */
     enum SnippetHook {
-        VERTEX,
-        VERTEX_TRANSFORM,
-        FRAGMENT,
-        TEXTURE_COORD_TRANSFORM,
-        LAYER_FRAGMENT,
-        TEXTURE_LOOKUP,
+        VERTEX = 0,
+        VERTEX_TRANSFORM = 1,
+        FRAGMENT = 2048,
+        TEXTURE_COORD_TRANSFORM = 4096,
+        LAYER_FRAGMENT = 6144,
+        TEXTURE_LOOKUP = 6145,
     }
 
 
+    /**
+     * @default setting-key
+     */
     const KEYRING_SK_TAG: string;
 
+    /**
+     * @default setting-name
+     */
     const KEYRING_SN_TAG: string;
 
+    /**
+     * @default connection-uuid
+     */
     const KEYRING_UUID_TAG: string;
 
     /**
@@ -156,6 +165,7 @@ export namespace Shell {
      * invalid content.
      * @param path UTF-8 encoded filename path
      * @returns File contents
+     * @throws GLib.Error
      */
     function get_file_contents_utf8_sync(path: string): string;
 
@@ -239,6 +249,7 @@ export namespace Shell {
      * @param envp child's environment, or `null` to inherit parent's
      * @param flags flags from {@link GLib.SpawnFlags}
      * @returns the PID of the child on success, 0 if error is set
+     * @throws GLib.Error
      */
     function util_spawn_async(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags): GLib.Pid;
 
@@ -254,6 +265,7 @@ export namespace Shell {
      * @param stdout_fd file descriptor to use for child's stdout, or `-1`
      * @param stderr_fd file descriptor to use for child's stderr, or `-1`
      * @returns the PID of the child on success, 0 if error is set
+     * @throws GLib.Error
      */
     function util_spawn_async_with_fds(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number): GLib.Pid;
 
@@ -266,6 +278,7 @@ export namespace Shell {
      * @param envp child's environment, or `null` to inherit parent's
      * @param flags flags from {@link GLib.SpawnFlags}
      * @returns the PID of the child on success, 0 if error is set
+     * @throws GLib.Error
      */
     function util_spawn_async_with_pipes(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags): [GLib.Pid, number, number, number];
 
@@ -283,6 +296,7 @@ export namespace Shell {
      * @param source_fds array of FDs from the parent    process to make available in the child process
      * @param target_fds array of FDs to remap    `source_fds` to in the child process
      * @returns the PID of the child on success, 0 if error is set
+     * @throws GLib.Error
      */
     function util_spawn_async_with_pipes_and_fds(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags, stdin_fd: number, stdout_fd: number, stderr_fd: number, source_fds: number[] | null, target_fds: number[] | null): [GLib.Pid, number, number, number];
 
@@ -309,6 +323,7 @@ export namespace Shell {
 
     /**
      * @param res 
+     * @throws GLib.Error
      */
     function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
 
@@ -335,6 +350,7 @@ export namespace Shell {
 
     /**
      * @param res 
+     * @throws GLib.Error
      */
     function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
 
@@ -358,6 +374,7 @@ export namespace Shell {
 
     /**
      * @param res 
+     * @throws GLib.Error
      */
     function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
 
@@ -379,6 +396,7 @@ export namespace Shell {
     /**
      * @param file 
      * @param res 
+     * @throws GLib.Error
      */
     function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
 
@@ -405,6 +423,7 @@ export namespace Shell {
      * @param stream a {@link Gio.OutputStream}
      * @param str a UTF-8 string to write to `stream`
      * @returns `true` if write succeeded
+     * @throws GLib.Error
      */
     function write_string_to_stream(stream: Gio.OutputStream, str: string): boolean;
 
@@ -445,48 +464,48 @@ export namespace Shell {
         /**
          * block action
          */
-        NONE,
+        NONE = 0,
         /**
          * allow action when in window mode,
          *     e.g. when the focus is in an application window
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * allow action while the overview
          *     is active
          */
-        OVERVIEW,
+        OVERVIEW = 2,
         /**
          * allow action when the screen
          *     is locked, e.g. when the screen shield is shown
          */
-        LOCK_SCREEN,
+        LOCK_SCREEN = 4,
         /**
          * allow action in the unlock
          *     dialog
          */
-        UNLOCK_SCREEN,
+        UNLOCK_SCREEN = 8,
         /**
          * allow action in the login screen
          */
-        LOGIN_SCREEN,
+        LOGIN_SCREEN = 16,
         /**
          * allow action when a system modal
          *     dialog (e.g. authentication or session dialogs) is open
          */
-        SYSTEM_MODAL,
+        SYSTEM_MODAL = 32,
         /**
          * allow action in looking glass
          */
-        LOOKING_GLASS,
+        LOOKING_GLASS = 64,
         /**
          * allow action while a shell menu is open
          */
-        POPUP,
+        POPUP = 128,
         /**
          * always allow action
          */
-        ALL,
+        ALL = -1,
     }
 
 
@@ -661,6 +680,7 @@ export namespace Shell {
          * and obtain its result.
          * @param result 
          * @returns whether the operation was successful
+         * @throws GLib.Error
          */
         activate_action_finish(result: Gio.AsyncResult): boolean;
 
@@ -777,6 +797,7 @@ export namespace Shell {
          * @param timestamp Event timestamp, or 0 for current event timestamp
          * @param workspace Start on this workspace, or -1 for default
          * @param gpu_pref the GPU to prefer launching on
+         * @throws GLib.Error
          */
         launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu): boolean;
 
@@ -822,7 +843,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "app-state-changed": (arg0: App) => void;
+            "app-state-changed": (object: App) => void;
             /**
              * @signal
              * @run-last
@@ -1243,7 +1264,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "notify-error": (arg0: string, arg1: string) => void;
+            "notify-error": (object: string, p0: string) => void;
             /**
              * @signal
              * @run-last
@@ -2189,6 +2210,7 @@ export namespace Shell {
          * an error occurs. Check the `error` argument to tell the difference.
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
+         * @throws GLib.Error
          */
         confirm(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
@@ -2232,6 +2254,7 @@ export namespace Shell {
          * an error occurs. Check the `error` argument to tell the difference.
          * @param result asynchronous result passed to callback
          * @returns the reply from the prompt
+         * @throws GLib.Error
          */
         confirm_finish(result: Gio.AsyncResult): Gcr.PromptReply;
 
@@ -2249,6 +2272,7 @@ export namespace Shell {
          * an error occurs. Check the `error` argument to tell the difference.
          * @param cancellable optional cancellation object
          * @returns the reply from the prompt
+         * @throws GLib.Error
          */
         confirm_run(cancellable: Gio.Cancellable | null): Gcr.PromptReply;
 
@@ -2369,6 +2393,7 @@ export namespace Shell {
          * `error` argument to tell the difference.
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
+         * @throws GLib.Error
          */
         password(cancellable: Gio.Cancellable | null): string;
 
@@ -2412,6 +2437,7 @@ export namespace Shell {
          * `error` argument to tell the difference.
          * @param result asynchronous result passed to callback
          * @returns the password owned by the prompt, or `null`
+         * @throws GLib.Error
          */
         password_finish(result: Gio.AsyncResult): string;
 
@@ -2431,6 +2457,7 @@ export namespace Shell {
          * `error` argument to tell the difference.
          * @param cancellable optional cancellation object
          * @returns the password owned by the prompt, or `null`
+         * @throws GLib.Error
          */
         password_run(cancellable: Gio.Cancellable | null): string;
 
@@ -2669,11 +2696,11 @@ export namespace Shell {
             /**
              * @signal
              */
-            "cancel-request": (arg0: string) => void;
+            "cancel-request": (object: string) => void;
             /**
              * @signal
              */
-            "new-request": (arg0: string, arg1: NM.Connection, arg2: string, arg3: string[], arg4: number) => void;
+            "new-request": (object: string, p0: NM.Connection, p1: string, p2: string[], p3: number) => void;
             "notify::auto-register": (pspec: GObject.ParamSpec) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-connection": (pspec: GObject.ParamSpec) => void;
@@ -2752,6 +2779,7 @@ export namespace Shell {
         /**
          * @param result 
          * @returns The found plugin or `null`
+         * @throws GLib.Error
          */
         search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
 
@@ -2899,6 +2927,7 @@ export namespace Shell {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2908,6 +2937,7 @@ export namespace Shell {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): NetworkAgent;
 
@@ -3007,6 +3037,7 @@ export namespace Shell {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3157,6 +3188,7 @@ export namespace Shell {
          *   statistic: true } (only for statistics)
          * @param out output stream into which to write the event definitions
          * @returns `true` if the dump succeeded. `false` if an IO error occurred
+         * @throws GLib.Error
          */
         dump_events(out: Gio.OutputStream): boolean;
 
@@ -3169,6 +3201,7 @@ export namespace Shell {
          * '[' <time>, <event name> [, <event_arg>... ] ']'.
          * @param out output stream into which to write the event log
          * @returns `true` if the dump succeeded. `false` if an IO error occurred
+         * @throws GLib.Error
          */
         dump_log(out: Gio.OutputStream): boolean;
 
@@ -3240,7 +3273,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            initiate: (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => void;
+            initiate: (object: string, p0: string, p1: string, p2: string, p3: string[]) => void;
         }
 
         // Constructor properties interface
@@ -3288,6 +3321,9 @@ export namespace Shell {
          */
         complete(dismissed: boolean): void;
 
+        /**
+         * @throws GLib.Error
+         */
         register(): void;
 
         /**
@@ -3307,7 +3343,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "screenshot-taken": (arg0: Mtk.Rectangle) => void;
+            "screenshot-taken": (object: Mtk.Rectangle) => void;
         }
 
         // Constructor properties interface
@@ -3404,6 +3440,7 @@ export namespace Shell {
          * and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          * @returns whether the operation was successful
+         * @throws GLib.Error
          */
         pick_color_finish(result: Gio.AsyncResult): [boolean, Clutter.Color];
 
@@ -3473,6 +3510,7 @@ export namespace Shell {
          * and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          * @returns whether the operation was successful
+         * @throws GLib.Error
          */
         screenshot_area_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
 
@@ -3481,6 +3519,7 @@ export namespace Shell {
          * and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          * @returns whether the operation was successful
+         * @throws GLib.Error
          */
         screenshot_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
 
@@ -3506,6 +3545,7 @@ export namespace Shell {
          * `shell_screenshot_screenshot_stage_to_content()` and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          * @returns the {@link Clutter.Content}, or NULL
+         * @throws GLib.Error
          */
         screenshot_stage_to_content_finish(result: Gio.AsyncResult): [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number];
 
@@ -3543,6 +3583,7 @@ export namespace Shell {
          * and obtain its result.
          * @param result the {@link Gio.AsyncResult} that was provided to the callback
          * @returns whether the operation was successful
+         * @throws GLib.Error
          */
         screenshot_window_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
     }
@@ -4013,12 +4054,12 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "tray-icon-added": (arg0: Clutter.Actor) => void;
+            "tray-icon-added": (object: Clutter.Actor) => void;
             /**
              * @signal
              * @run-last
              */
-            "tray-icon-removed": (arg0: Clutter.Actor) => void;
+            "tray-icon-removed": (object: Clutter.Actor) => void;
             "notify::bg-color": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -4098,23 +4139,23 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "create-close-dialog": (arg0: Meta.Window) => Meta.CloseDialog;
+            "create-close-dialog": (window: Meta.Window) => Meta.CloseDialog;
             /**
              * Creates an inhibit shortcuts dialog for the given window.
              * @signal
              * @run-last
              */
-            "create-inhibit-shortcuts-dialog": (arg0: Meta.Window) => Meta.InhibitShortcutsDialog;
+            "create-inhibit-shortcuts-dialog": (window: Meta.Window) => Meta.InhibitShortcutsDialog;
             /**
              * @signal
              * @run-last
              */
-            destroy: (arg0: Meta.WindowActor) => void;
+            destroy: (object: Meta.WindowActor) => void;
             /**
              * @signal
              * @run-last
              */
-            "filter-keybinding": (arg0: Meta.KeyBinding) => boolean | void;
+            "filter-keybinding": (object: Meta.KeyBinding) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -4129,47 +4170,47 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "kill-window-effects": (arg0: Meta.WindowActor) => void;
+            "kill-window-effects": (object: Meta.WindowActor) => void;
             /**
              * @signal
              * @run-last
              */
-            map: (arg0: Meta.WindowActor) => void;
+            map: (object: Meta.WindowActor) => void;
             /**
              * @signal
              * @run-last
              */
-            minimize: (arg0: Meta.WindowActor) => void;
+            minimize: (object: Meta.WindowActor) => void;
             /**
              * @signal
              * @run-last
              */
-            "show-tile-preview": (arg0: Meta.Window, arg1: Mtk.Rectangle, arg2: number) => void;
+            "show-tile-preview": (object: Meta.Window, p0: Mtk.Rectangle, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "show-window-menu": (arg0: Meta.Window, arg1: number, arg2: Mtk.Rectangle) => void;
+            "show-window-menu": (object: Meta.Window, p0: number, p1: Mtk.Rectangle) => void;
             /**
              * @signal
              * @run-last
              */
-            "size-change": (arg0: Meta.WindowActor, arg1: Meta.SizeChange, arg2: Mtk.Rectangle, arg3: Mtk.Rectangle) => void;
+            "size-change": (object: Meta.WindowActor, p0: Meta.SizeChange, p1: Mtk.Rectangle, p2: Mtk.Rectangle) => void;
             /**
              * @signal
              * @run-last
              */
-            "size-changed": (arg0: Meta.WindowActor) => void;
+            "size-changed": (object: Meta.WindowActor) => void;
             /**
              * @signal
              * @run-last
              */
-            "switch-workspace": (arg0: number, arg1: number, arg2: number) => void;
+            "switch-workspace": (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            unminimize: (arg0: Meta.WindowActor) => void;
+            unminimize: (object: Meta.WindowActor) => void;
         }
 
         // Constructor properties interface
@@ -4482,7 +4523,7 @@ export namespace Shell {
              * @signal
              * @run-last
              */
-            "startup-sequence-changed": (arg0: Meta.StartupSequence) => void;
+            "startup-sequence-changed": (object: Meta.StartupSequence) => void;
             /**
              * @signal
              * @run-last

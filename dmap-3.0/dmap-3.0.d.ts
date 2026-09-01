@@ -35,15 +35,15 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum ConnectionState {
-        GET_INFO,
-        LOGIN,
-        GET_REVISION_NUMBER,
-        GET_DB_INFO,
-        GET_SONGS,
-        GET_PLAYLISTS,
-        GET_PLAYLIST_ENTRIES,
-        LOGOUT,
-        DONE,
+        GET_INFO = 0,
+        LOGIN = 1,
+        GET_REVISION_NUMBER = 2,
+        GET_DB_INFO = 3,
+        GET_SONGS = 4,
+        GET_PLAYLISTS = 5,
+        GET_PLAYLIST_ENTRIES = 6,
+        LOGOUT = 7,
+        DONE = 8,
     }
 
 
@@ -51,160 +51,160 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum ContentCode {
-        CC_INVALID,
-        RAW,
-        CC_MDCL,
-        CC_MSTT,
-        CC_MIID,
-        CC_MINM,
-        CC_MIKD,
-        CC_MPER,
-        CC_MCON,
-        CC_MCTI,
-        CC_MPCO,
-        CC_MSTS,
-        CC_MIMC,
-        CC_MCTC,
-        CC_MRCO,
-        CC_MTCO,
-        CC_MLCL,
-        CC_MLIT,
-        CC_MBCL,
-        CC_MSRV,
-        CC_MSAU,
-        CC_MSLR,
-        CC_MPRO,
-        CC_MSAL,
-        CC_MSUP,
-        CC_MSPI,
-        CC_MSEX,
-        CC_MSBR,
-        CC_MSQY,
-        CC_MSIX,
-        CC_MSRS,
-        CC_MSTM,
-        CC_MSDC,
-        CC_MCCR,
-        CC_MCNM,
-        CC_MCNA,
-        CC_MCTY,
-        CC_MLOG,
-        CC_MLID,
-        CC_MUPD,
-        CC_MUSR,
-        CC_MUTY,
-        CC_MUDL,
-        CC_MSMA,
-        CC_FQUESCH,
-        CC_APRO,
-        CC_AVDB,
-        CC_ABRO,
-        CC_ABAL,
-        CC_ABAR,
-        CC_ABCP,
-        CC_ABGN,
-        CC_ADBS,
-        CC_ASAL,
-        CC_ASAI,
-        CC_ASAA,
-        CC_ASAR,
-        CC_ASBT,
-        CC_ASBR,
-        CC_ASCM,
-        CC_ASCO,
-        CC_ASDA,
-        CC_ASDM,
-        CC_ASDC,
-        CC_ASDN,
-        CC_ASDB,
-        CC_ASEQ,
-        CC_ASFM,
-        CC_ASGN,
-        CC_ASDT,
-        CC_ASRV,
-        CC_ASSR,
-        CC_ASSZ,
-        CC_ASST,
-        CC_ASSP,
-        CC_ASTM,
-        CC_ASTC,
-        CC_ASTN,
-        CC_ASUR,
-        CC_ASYR,
-        CC_ASDK,
-        CC_ASUL,
-        CC_ASSU,
-        CC_ASSA,
-        CC_APLY,
-        CC_ABPL,
-        CC_APSO,
-        CC_PRSV,
-        CC_ARIF,
-        CC_MSAS,
-        CC_AGRP,
-        CC_AGAL,
-        CC_ASCP,
-        CC_PPRO,
-        CC_PASP,
-        CC_PFDT,
-        CC_PICD,
-        CC_PIMF,
-        CC_PFMT,
-        CC_PIFS,
-        CC_PLSZ,
-        CC_PHGT,
-        CC_PWTH,
-        CC_PRAT,
-        CC_PCMT,
-        CC_PRET,
-        CC_AESV,
-        CC_AEHV,
-        CC_AESP,
-        CC_AEPP,
-        CC_AEPS,
-        CC_AESG,
-        CC_AEMK,
-        CC_AEFP,
-        CC_CMPA,
-        CC_CMNM,
-        CC_CMTY,
-        CC_CMPG,
-        CC_CACI,
-        CC_CAPS,
-        CC_CASH,
-        CC_CARP,
-        CC_CAAS,
-        CC_CAAR,
-        CC_CAIA,
-        CC_CANP,
-        CC_CANN,
-        CC_CANA,
-        CC_CANL,
-        CC_CANG,
-        CC_CANT,
-        CC_CASP,
-        CC_CASS,
-        CC_CAST,
-        CC_CASU,
-        CC_CASG,
-        CC_CACR,
-        CC_CMCP,
-        CC_CMGT,
-        CC_CMIK,
-        CC_CMSP,
-        CC_CMST,
-        CC_CMSV,
-        CC_CMSR,
-        CC_CMMK,
-        CC_CMVO,
-        CC_CMPR,
-        CC_CAPR,
-        CC_AEFR,
-        CC_CAOV,
-        CC_CMRL,
-        CC_CAHP,
-        CC_CAIV,
-        CC_CAVC,
+        CC_INVALID = 0,
+        RAW = 1,
+        CC_MDCL = 2,
+        CC_MSTT = 3,
+        CC_MIID = 4,
+        CC_MINM = 5,
+        CC_MIKD = 6,
+        CC_MPER = 7,
+        CC_MCON = 8,
+        CC_MCTI = 9,
+        CC_MPCO = 10,
+        CC_MSTS = 11,
+        CC_MIMC = 12,
+        CC_MCTC = 13,
+        CC_MRCO = 14,
+        CC_MTCO = 15,
+        CC_MLCL = 16,
+        CC_MLIT = 17,
+        CC_MBCL = 18,
+        CC_MSRV = 19,
+        CC_MSAU = 20,
+        CC_MSLR = 21,
+        CC_MPRO = 22,
+        CC_MSAL = 23,
+        CC_MSUP = 24,
+        CC_MSPI = 25,
+        CC_MSEX = 26,
+        CC_MSBR = 27,
+        CC_MSQY = 28,
+        CC_MSIX = 29,
+        CC_MSRS = 30,
+        CC_MSTM = 31,
+        CC_MSDC = 32,
+        CC_MCCR = 33,
+        CC_MCNM = 34,
+        CC_MCNA = 35,
+        CC_MCTY = 36,
+        CC_MLOG = 37,
+        CC_MLID = 38,
+        CC_MUPD = 39,
+        CC_MUSR = 40,
+        CC_MUTY = 41,
+        CC_MUDL = 42,
+        CC_MSMA = 43,
+        CC_FQUESCH = 44,
+        CC_APRO = 45,
+        CC_AVDB = 46,
+        CC_ABRO = 47,
+        CC_ABAL = 48,
+        CC_ABAR = 49,
+        CC_ABCP = 50,
+        CC_ABGN = 51,
+        CC_ADBS = 52,
+        CC_ASAL = 53,
+        CC_ASAI = 54,
+        CC_ASAA = 55,
+        CC_ASAR = 56,
+        CC_ASBT = 57,
+        CC_ASBR = 58,
+        CC_ASCM = 59,
+        CC_ASCO = 60,
+        CC_ASDA = 61,
+        CC_ASDM = 62,
+        CC_ASDC = 63,
+        CC_ASDN = 64,
+        CC_ASDB = 65,
+        CC_ASEQ = 66,
+        CC_ASFM = 67,
+        CC_ASGN = 68,
+        CC_ASDT = 69,
+        CC_ASRV = 70,
+        CC_ASSR = 71,
+        CC_ASSZ = 72,
+        CC_ASST = 73,
+        CC_ASSP = 74,
+        CC_ASTM = 75,
+        CC_ASTC = 76,
+        CC_ASTN = 77,
+        CC_ASUR = 78,
+        CC_ASYR = 79,
+        CC_ASDK = 80,
+        CC_ASUL = 81,
+        CC_ASSU = 82,
+        CC_ASSA = 83,
+        CC_APLY = 84,
+        CC_ABPL = 85,
+        CC_APSO = 86,
+        CC_PRSV = 87,
+        CC_ARIF = 88,
+        CC_MSAS = 89,
+        CC_AGRP = 90,
+        CC_AGAL = 91,
+        CC_ASCP = 92,
+        CC_PPRO = 93,
+        CC_PASP = 94,
+        CC_PFDT = 95,
+        CC_PICD = 96,
+        CC_PIMF = 97,
+        CC_PFMT = 98,
+        CC_PIFS = 99,
+        CC_PLSZ = 100,
+        CC_PHGT = 101,
+        CC_PWTH = 102,
+        CC_PRAT = 103,
+        CC_PCMT = 104,
+        CC_PRET = 105,
+        CC_AESV = 106,
+        CC_AEHV = 107,
+        CC_AESP = 108,
+        CC_AEPP = 109,
+        CC_AEPS = 110,
+        CC_AESG = 111,
+        CC_AEMK = 112,
+        CC_AEFP = 113,
+        CC_CMPA = 114,
+        CC_CMNM = 115,
+        CC_CMTY = 116,
+        CC_CMPG = 117,
+        CC_CACI = 118,
+        CC_CAPS = 119,
+        CC_CASH = 120,
+        CC_CARP = 121,
+        CC_CAAS = 122,
+        CC_CAAR = 123,
+        CC_CAIA = 124,
+        CC_CANP = 125,
+        CC_CANN = 126,
+        CC_CANA = 127,
+        CC_CANL = 128,
+        CC_CANG = 129,
+        CC_CANT = 130,
+        CC_CASP = 131,
+        CC_CASS = 132,
+        CC_CAST = 133,
+        CC_CASU = 134,
+        CC_CASG = 135,
+        CC_CACR = 136,
+        CC_CMCP = 137,
+        CC_CMGT = 138,
+        CC_CMIK = 139,
+        CC_CMSP = 140,
+        CC_CMST = 141,
+        CC_CMSV = 142,
+        CC_CMSR = 143,
+        CC_CMMK = 144,
+        CC_CMVO = 145,
+        CC_CMPR = 146,
+        CC_CAPR = 147,
+        CC_AEFR = 148,
+        CC_CAOV = 149,
+        CC_CMRL = 150,
+        CC_CAHP = 151,
+        CC_CAIV = 152,
+        CC_CAVC = 153,
     }
 
 
@@ -238,12 +238,12 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum MdnsBrowserServiceType {
-        INVALID,
-        DAAP,
-        DPAP,
-        DACP,
-        RAOP,
-        LAST,
+        INVALID = 0,
+        DAAP = 1,
+        DPAP = 2,
+        DACP = 3,
+        RAOP = 4,
+        LAST = 4,
     }
 
 
@@ -258,9 +258,9 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum MdnsBrowserTransportProtocol {
-        TCP,
-        UDP,
-        LAST,
+        TCP = 0,
+        UDP = 1,
+        LAST = 1,
     }
 
 
@@ -294,10 +294,10 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum MediaKind {
-        MUSIC,
-        MOVIE,
-        PODCAST,
-        TV_SHOW,
+        MUSIC = 1,
+        MOVIE = 2,
+        PODCAST = 32,
+        TV_SHOW = 64,
     }
 
 
@@ -312,21 +312,27 @@ export namespace DMAP {
      * @gir-type Enum
      */
     enum Type {
-        BYTE,
-        SIGNED_INT,
-        SHORT,
-        INT,
-        INT64,
-        STRING,
-        DATE,
-        VERSION,
-        CONTAINER,
-        POINTER,
+        BYTE = 1,
+        SIGNED_INT = 2,
+        SHORT = 3,
+        INT = 5,
+        INT64 = 7,
+        STRING = 9,
+        DATE = 10,
+        VERSION = 11,
+        CONTAINER = 12,
+        POINTER = 42,
     }
 
 
+    /**
+     * @default 16
+     */
     const HASH_SIZE: number;
 
+    /**
+     * @default 200
+     */
     const STATUS_OK: number;
 
     /**
@@ -449,7 +455,7 @@ export namespace DMAP {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: string, arg1: Soup.Session, arg2: Soup.Message, arg3: Soup.Auth, arg4: boolean) => void;
+            authenticate: (object: string, p0: Soup.Session, p1: Soup.Message, p2: Soup.Auth, p3: boolean) => void;
             /**
              * @signal
              * @run-last
@@ -459,7 +465,7 @@ export namespace DMAP {
              * @signal
              * @run-last
              */
-            connecting: (arg0: number, arg1: number) => void;
+            connecting: (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
@@ -750,6 +756,7 @@ export namespace DMAP {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -772,6 +779,7 @@ export namespace DMAP {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -842,12 +850,12 @@ export namespace DMAP {
              * @signal
              * @run-last
              */
-            "service-added": (arg0: null) => void;
+            "service-added": (service: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "service-removed": (arg0: string) => void;
+            "service-removed": (object: string) => void;
         }
 
         // Constructor properties interface
@@ -911,12 +919,14 @@ export namespace DMAP {
         /**
          * Starts a DMAPMdnsBrowser.
          * @returns TRUE on success, else FALSE.
+         * @throws GLib.Error
          */
         start(): boolean;
 
         /**
          * Stops a DMAPMdnsBrowser.
          * @returns TRUE on success, else FALSE.
+         * @throws GLib.Error
          */
         stop(): boolean;
     }
@@ -929,12 +939,12 @@ export namespace DMAP {
              * @signal
              * @run-last
              */
-            "name-collision": (arg0: string) => void;
+            "name-collision": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            published: (arg0: string) => void;
+            published: (object: string) => void;
         }
 
         // Constructor properties interface
@@ -999,17 +1009,20 @@ export namespace DMAP {
          * @param type_of_service 
          * @param password_required 
          * @param txt_records 
+         * @throws GLib.Error
          */
         publish(name: string, port: number, type_of_service: string, password_required: boolean, txt_records: string): boolean;
 
         /**
          * @param port 
          * @param name 
+         * @throws GLib.Error
          */
         rename_at_port(port: number, name: string): boolean;
 
         /**
          * @param port 
+         * @throws GLib.Error
          */
         withdraw(port: number): boolean;
     }

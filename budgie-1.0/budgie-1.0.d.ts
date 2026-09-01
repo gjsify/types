@@ -56,18 +56,27 @@ export namespace Budgie {
         /**
          * Determine location based on the screen estate
          */
-        AUTOMATIC,
+        AUTOMATIC = 0,
         /**
          * Use hints on widgets parent window
          */
-        TOPLEVEL_HINT,
+        TOPLEVEL_HINT = 1,
     }
 
 
+    /**
+     * @default alignment
+     */
     const APPLET_KEY_ALIGN: string;
 
+    /**
+     * @default name
+     */
     const APPLET_KEY_NAME: string;
 
+    /**
+     * @default position
+     */
     const APPLET_KEY_POS: string;
 
     /**
@@ -84,12 +93,12 @@ export namespace Budgie {
      * @gir-type Flags
      */
     enum PanelAction {
-        NONE,
+        NONE = 1,
         /**
          * Invoke the menu action
          */
-        MENU,
-        MAX,
+        MENU = 2,
+        MAX = 4,
     }
 
 
@@ -110,23 +119,23 @@ export namespace Budgie {
         /**
          * No position is yet assigned
          */
-        NONE,
+        NONE = 1,
         /**
          * The bottom edge has been assigned
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * The top edge has been assigned
          */
-        TOP,
+        TOP = 4,
         /**
          * The left edge has been assigned
          */
-        LEFT,
+        LEFT = 8,
         /**
          * The right edge has been assigned
          */
-        RIGHT,
+        RIGHT = 16,
     }
 
 
@@ -141,14 +150,14 @@ export namespace Budgie {
              * @action
              * @run-last
              */
-            "panel-position-changed": (arg0: PanelPosition) => void;
+            "panel-position-changed": (position: PanelPosition) => void;
             /**
              * Used to notify this applet of a change in the panel size
              * @signal
              * @action
              * @run-last
              */
-            "panel-size-changed": (arg0: number, arg1: number, arg2: number) => void;
+            "panel-size-changed": (panel_size: number, icon_size: number, small_icon_size: number) => void;
             "notify::settings-prefix": (pspec: GObject.ParamSpec) => void;
             "notify::settings-schema": (pspec: GObject.ParamSpec) => void;
             "notify::supported-actions": (pspec: GObject.ParamSpec) => void;

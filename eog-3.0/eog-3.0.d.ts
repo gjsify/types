@@ -74,9 +74,9 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum ImageMetadataStatus {
-        NOT_READ,
-        NOT_AVAILABLE,
-        READY,
+        NOT_READ = 0,
+        NOT_AVAILABLE = 1,
+        READY = 2,
     }
 
 
@@ -91,11 +91,11 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum ImageStatus {
-        UNKNOWN,
-        LOADING,
-        LOADED,
-        SAVING,
-        FAILED,
+        UNKNOWN = 0,
+        LOADING = 1,
+        LOADED = 2,
+        SAVING = 3,
+        FAILED = 4,
     }
 
 
@@ -110,10 +110,10 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum JobPriority {
-        PRIORITY_HIGH,
-        PRIORITY_MEDIUM,
-        PRIORITY_LOW,
-        N_PRIORITIES,
+        PRIORITY_HIGH = 0,
+        PRIORITY_MEDIUM = 1,
+        PRIORITY_LOW = 2,
+        N_PRIORITIES = 3,
     }
 
 
@@ -128,11 +128,11 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum ListStoreColumn {
-        THUMBNAIL,
-        THUMB_SET,
-        EOG_IMAGE,
-        EOG_JOB,
-        NUM_COLUMNS,
+        THUMBNAIL = 0,
+        THUMB_SET = 1,
+        EOG_IMAGE = 2,
+        EOG_JOB = 3,
+        NUM_COLUMNS = 4,
     }
 
 
@@ -147,10 +147,10 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum ThumbNavMode {
-        ONE_ROW,
-        ONE_COLUMN,
-        MULTIPLE_ROWS,
-        MULTIPLE_COLUMNS,
+        ONE_ROW = 0,
+        ONE_COLUMN = 1,
+        MULTIPLE_ROWS = 2,
+        MULTIPLE_COLUMNS = 3,
     }
 
 
@@ -165,12 +165,12 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum ThumbViewSelectionChange {
-        CURRENT,
-        LEFT,
-        RIGHT,
-        FIRST,
-        LAST,
-        RANDOM,
+        CURRENT = 0,
+        LEFT = 1,
+        RIGHT = 2,
+        FIRST = 3,
+        LAST = 4,
+        RANDOM = 5,
     }
 
 
@@ -185,14 +185,14 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum TransformType {
-        NONE,
-        ROT_90,
-        ROT_180,
-        ROT_270,
-        FLIP_HORIZONTAL,
-        FLIP_VERTICAL,
-        TRANSPOSE,
-        TRANSVERSE,
+        NONE = 0,
+        ROT_90 = 1,
+        ROT_180 = 2,
+        ROT_270 = 3,
+        FLIP_HORIZONTAL = 4,
+        FLIP_VERTICAL = 5,
+        TRANSPOSE = 6,
+        TRANSVERSE = 7,
     }
 
 
@@ -211,16 +211,16 @@ export namespace Eog {
         /**
          * Use the background color of the current UI theme
          */
-        BACKGROUND,
+        BACKGROUND = 0,
         /**
          * Show transparent parts as a checkerboard pattern
          */
-        CHECKED,
+        CHECKED = 1,
         /**
          * Show transparent parts in a user defined color
          *                    (see {@link Eog.ScrollView.transparency_color} )
          */
-        COLOR,
+        COLOR = 2,
     }
 
 
@@ -258,19 +258,19 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum UCType {
-        STRING,
-        FILENAME,
-        COUNTER,
-        COMMENT,
-        DATE,
-        TIME,
-        DAY,
-        MONTH,
-        YEAR,
-        HOUR,
-        MINUTE,
-        SECOND,
-        END,
+        STRING = 0,
+        FILENAME = 1,
+        COUNTER = 2,
+        COMMENT = 3,
+        DATE = 4,
+        TIME = 5,
+        DAY = 6,
+        MONTH = 7,
+        YEAR = 8,
+        HOUR = 9,
+        MINUTE = 10,
+        SECOND = 11,
+        END = 12,
     }
 
 
@@ -285,13 +285,13 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum WindowError {
-        CONTROL_NOT_FOUND,
-        UI_NOT_FOUND,
-        NO_PERSIST_FILE_INTERFACE,
-        IO,
-        TRASH_NOT_FOUND,
-        GENERIC,
-        UNKNOWN,
+        CONTROL_NOT_FOUND = 0,
+        UI_NOT_FOUND = 1,
+        NO_PERSIST_FILE_INTERFACE = 2,
+        IO = 3,
+        TRASH_NOT_FOUND = 4,
+        GENERIC = 5,
+        UNKNOWN = 6,
     }
 
 
@@ -306,10 +306,10 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum WindowGalleryPos {
-        BOTTOM,
-        LEFT,
-        TOP,
-        RIGHT,
+        BOTTOM = 0,
+        LEFT = 1,
+        TOP = 2,
+        RIGHT = 3,
     }
 
 
@@ -324,10 +324,10 @@ export namespace Eog {
      * @gir-type Enum
      */
     enum WindowMode {
-        UNKNOWN,
-        NORMAL,
-        FULLSCREEN,
-        SLIDESHOW,
+        UNKNOWN = 0,
+        NORMAL = 1,
+        FULLSCREEN = 2,
+        SLIDESHOW = 3,
     }
 
 
@@ -347,28 +347,49 @@ export namespace Eog {
          * Use the currently set zoom factor to display the image
          *                      (see `eog_scroll_view_set_zoom()`).
          */
-        FREE,
+        FREE = 0,
         /**
          * If an image is to large for the window,
          *                               zoom out until the image is fully visible.
          *                               This will never zoom in on smaller images.
          */
-        SHRINK_TO_FIT,
+        SHRINK_TO_FIT = 1,
     }
 
 
+    /**
+     * @default jpeg
+     */
     const FILE_FORMAT_JPEG: string;
 
+    /**
+     * @default 15
+     */
     const IMAGE_DATA_ALL: number;
 
+    /**
+     * @default 90
+     */
     const LIST_STORE_THUMB_SIZE: number;
 
+    /**
+     * @default 20
+     */
     const SCROLL_VIEW_MAX_ZOOM_FACTOR: number;
 
+    /**
+     * @default 0.020000
+     */
     const SCROLL_VIEW_MIN_ZOOM_FACTOR: number;
 
+    /**
+     * @default eog-thumbnail-orig-height
+     */
     const THUMBNAIL_ORIGINAL_HEIGHT: string;
 
+    /**
+     * @default eog-thumbnail-orig-width
+     */
     const THUMBNAIL_ORIGINAL_WIDTH: string;
 
     /**
@@ -423,6 +444,7 @@ export namespace Eog {
      * and `error` is set.
      * @param image a {@link Eog.Image}
      * @returns a new {@link GdkPixbuf.Pixbuf} with the thumbnail for `image` or `null` in case of error.
+     * @throws GLib.Error
      */
     function thumbnail_load(image: Image): GdkPixbuf.Pixbuf;
 
@@ -444,19 +466,19 @@ export namespace Eog {
      * @gir-type Flags
      */
     enum Debug {
-        NO_DEBUG,
-        WINDOW,
-        VIEW,
-        JOBS,
-        THUMBNAIL,
-        IMAGE_DATA,
-        IMAGE_LOAD,
-        IMAGE_SAVE,
-        LIST_STORE,
-        PREFERENCES,
-        PRINTING,
-        LCMS,
-        PLUGINS,
+        NO_DEBUG = 0,
+        WINDOW = 1,
+        VIEW = 2,
+        JOBS = 4,
+        THUMBNAIL = 8,
+        IMAGE_DATA = 16,
+        IMAGE_LOAD = 32,
+        IMAGE_SAVE = 64,
+        LIST_STORE = 128,
+        PREFERENCES = 256,
+        PRINTING = 512,
+        LCMS = 1024,
+        PLUGINS = 2048,
     }
 
 
@@ -471,10 +493,10 @@ export namespace Eog {
      * @gir-type Flags
      */
     enum ImageData {
-        IMAGE,
-        DIMENSION,
-        EXIF,
-        XMP,
+        IMAGE = 1,
+        DIMENSION = 2,
+        EXIF = 4,
+        XMP = 8,
     }
 
 
@@ -489,10 +511,10 @@ export namespace Eog {
      * @gir-type Flags
      */
     enum StartupFlags {
-        FULLSCREEN,
-        SLIDE_SHOW,
-        DISABLE_GALLERY,
-        SINGLE_WINDOW,
+        FULLSCREEN = 1,
+        SLIDE_SHOW = 2,
+        DISABLE_GALLERY = 4,
+        SINGLE_WINDOW = 8,
     }
 
 
@@ -575,6 +597,7 @@ export namespace Eog {
          * @param timestamp The timestamp of the user interaction which triggered this call (see `gtk_window_present_with_time()`).
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
+         * @throws GLib.Error
          */
         open_file_list(file_list: Gio.File[], timestamp: number, flags: StartupFlags): boolean;
 
@@ -585,6 +608,7 @@ export namespace Eog {
          * @param timestamp The timestamp of the user interaction which triggered this call (see `gtk_window_present_with_time()`).
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
+         * @throws GLib.Error
          */
         open_uri_list(uri_list: string[], timestamp: number, flags: StartupFlags): boolean;
 
@@ -595,6 +619,7 @@ export namespace Eog {
          * @param timestamp The timestamp of the user interaction which triggered this call (see `gtk_window_present_with_time()`).
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns Currently always `true`.
+         * @throws GLib.Error
          */
         open_uris(uris: string, timestamp: number, flags: StartupFlags): boolean;
 
@@ -605,6 +630,7 @@ export namespace Eog {
          * @param timestamp The timestamp of the user interaction which triggered this call (see `gtk_window_present_with_time()`).
          * @param flags A set of {@link Eog.StartupFlags} influencing a new windows' state.
          * @returns `false` if `application` is invalid, `true` otherwise
+         * @throws GLib.Error
          */
         open_window(timestamp: number, flags: StartupFlags): boolean;
     }
@@ -1126,6 +1152,7 @@ export namespace Eog {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -1137,6 +1164,7 @@ export namespace Eog {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -1419,6 +1447,7 @@ export namespace Eog {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -1427,6 +1456,7 @@ export namespace Eog {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -1442,6 +1472,7 @@ export namespace Eog {
          * @param file the file to select
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -1515,6 +1546,7 @@ export namespace Eog {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -1611,6 +1643,7 @@ export namespace Eog {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -1838,17 +1871,17 @@ export namespace Eog {
              * @signal
              * @run-last
              */
-            "next-frame": (arg0: number) => void;
+            "next-frame": (delay: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "save-progress": (arg0: number) => void;
+            "save-progress": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "size-prepared": (arg0: number, arg1: number) => void;
+            "size-prepared": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
@@ -2047,6 +2080,7 @@ export namespace Eog {
         /**
          * @param data2read 
          * @param job 
+         * @throws GLib.Error
          */
         load(data2read: ImageData, job: Job): boolean;
 
@@ -2055,11 +2089,13 @@ export namespace Eog {
         /**
          * @param source 
          * @param target 
+         * @throws GLib.Error
          */
         save_as_by_info(source: ImageSaveInfo, target: ImageSaveInfo): boolean;
 
         /**
          * @param source 
+         * @throws GLib.Error
          */
         save_by_info(source: ImageSaveInfo): boolean;
 
@@ -2167,7 +2203,7 @@ export namespace Eog {
              * @signal
              * @run-last
              */
-            progress: (arg0: number) => void;
+            progress: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -3881,12 +3917,12 @@ export namespace Eog {
              * @signal
              * @run-last
              */
-            "rotation-changed": (arg0: number) => void;
+            "rotation-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "zoom-changed": (arg0: number) => void;
+            "zoom-changed": (object: number) => void;
             "notify::antialiasing-in": (pspec: GObject.ParamSpec) => void;
             "notify::antialiasing-out": (pspec: GObject.ParamSpec) => void;
             "notify::background-color": (pspec: GObject.ParamSpec) => void;
@@ -4430,12 +4466,12 @@ export namespace Eog {
              * @signal
              * @run-first
              */
-            "page-added": (arg0: Gtk.Widget) => void;
+            "page-added": (object: Gtk.Widget) => void;
             /**
              * @signal
              * @run-first
              */
-            "page-removed": (arg0: Gtk.Widget) => void;
+            "page-removed": (object: Gtk.Widget) => void;
             "notify::current-page": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -5635,6 +5671,7 @@ export namespace Eog {
         // Methods
         /**
          * @param img_list a `Gfile` list
+         * @throws GLib.Error
          */
         check(img_list: Gio.File[]): boolean;
 
@@ -5642,6 +5679,7 @@ export namespace Eog {
          * @param image 
          * @param file 
          * @param format 
+         * @throws GLib.Error
          */
         ["do"](image: Image, file: Gio.File, format: GdkPixbuf.PixbufFormat): boolean;
 

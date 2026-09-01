@@ -34,10 +34,10 @@ export namespace Cvc {
      * @gir-type Enum
      */
     enum MixerControlState {
-        CLOSED,
-        READY,
-        CONNECTING,
-        FAILED,
+        CLOSED = 0,
+        READY = 1,
+        CONNECTING = 2,
+        FAILED = 3,
     }
 
 
@@ -52,10 +52,10 @@ export namespace Cvc {
      * @gir-type Enum
      */
     enum MixerStreamState {
-        INVALID,
-        RUNNING,
-        IDLE,
-        SUSPENDED,
+        INVALID = 0,
+        RUNNING = 1,
+        IDLE = 2,
+        SUSPENDED = 3,
     }
 
 
@@ -70,11 +70,14 @@ export namespace Cvc {
      * @gir-type Enum
      */
     enum MixerUIDeviceDirection {
-        INPUT,
-        OUTPUT,
+        INPUT = 0,
+        OUTPUT = 1,
     }
 
 
+    /**
+     * @default 0
+     */
     const MIXER_UI_DEVICE_INVALID: number;
 
     /**
@@ -88,10 +91,10 @@ export namespace Cvc {
      * @gir-type Flags
      */
     enum HeadsetPortChoice {
-        NONE,
-        HEADPHONES,
-        HEADSET,
-        MIC,
+        NONE = 0,
+        HEADPHONES = 1,
+        HEADSET = 2,
+        MIC = 4,
     }
 
 
@@ -102,7 +105,7 @@ export namespace Cvc {
              * @signal
              * @run-last
              */
-            "volume-changed": (arg0: boolean) => void;
+            "volume-changed": (object: boolean) => void;
         }
 
         // Constructor properties interface
@@ -367,77 +370,77 @@ export namespace Cvc {
              * @signal
              * @run-last
              */
-            "active-input-update": (arg0: number) => void;
+            "active-input-update": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "active-output-update": (arg0: number) => void;
+            "active-output-update": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "audio-device-selection-needed": (arg0: number, arg1: boolean, arg2: number) => void;
+            "audio-device-selection-needed": (object: number, p0: boolean, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "card-added": (arg0: number) => void;
+            "card-added": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "card-removed": (arg0: number) => void;
+            "card-removed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "default-sink-changed": (arg0: number) => void;
+            "default-sink-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "default-source-changed": (arg0: number) => void;
+            "default-source-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "input-added": (arg0: number) => void;
+            "input-added": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "input-removed": (arg0: number) => void;
+            "input-removed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "output-added": (arg0: number) => void;
+            "output-added": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "output-removed": (arg0: number) => void;
+            "output-removed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: number) => void;
+            "state-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "stream-added": (arg0: number) => void;
+            "stream-added": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "stream-changed": (arg0: number) => void;
+            "stream-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "stream-removed": (arg0: number) => void;
+            "stream-removed": (object: number) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1014,7 +1017,7 @@ export namespace Cvc {
              * @signal
              * @run-last
              */
-            "monitor-update": (arg0: number) => void;
+            "monitor-update": (object: number) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::can-decibel": (pspec: GObject.ParamSpec) => void;
             "notify::card-index": (pspec: GObject.ParamSpec) => void;

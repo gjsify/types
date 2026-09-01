@@ -23,14 +23,21 @@ export namespace GstAllocators {
      */
 
 
+    /**
+     * @default dmabuf
+     */
     const ALLOCATOR_DMABUF: string;
 
+    /**
+     * @default fd
+     */
     const ALLOCATOR_FD: string;
 
     /**
      * Name of this allocator, to be used for example with `gst_allocator_find()` and
      * `gst_memory_is_type()`.
      * @since 1.24
+     * @default shm
      */
     const ALLOCATOR_SHM: string;
 
@@ -38,6 +45,7 @@ export namespace GstAllocators {
      * Name of this allocator, to be used for example with `gst_allocator_find()` and
      * `gst_memory_is_type()`.
      * @since 1.28
+     * @default udmabuf
      */
     const ALLOCATOR_UDMABUF: string;
 
@@ -67,6 +75,7 @@ export namespace GstAllocators {
      * In this case the importer element should check all incoming memory using
      * `gst_is_dmabuf_memory()`.
      * @since 1.12
+     * @default memory:DMABuf
      */
     const CAPS_FEATURE_MEMORY_DMABUF: string;
 
@@ -150,22 +159,22 @@ export namespace GstAllocators {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * once the memory is mapped,
          *        keep it mapped until the memory is destroyed.
          */
-        KEEP_MAPPED,
+        KEEP_MAPPED = 1,
         /**
          * do a private mapping instead of
          *        the default shared mapping.
          */
-        MAP_PRIVATE,
+        MAP_PRIVATE = 2,
         /**
          * don't close the file descriptor when
          *        the memory is freed. Since: 1.10
          */
-        DONT_CLOSE,
+        DONT_CLOSE = 4,
     }
 
 

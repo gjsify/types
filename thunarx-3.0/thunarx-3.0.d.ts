@@ -32,14 +32,29 @@ export namespace Thunarx {
      */
 
 
+    /**
+     * @default filesystem::*
+     */
     const FILESYSTEM_INFO_NAMESPACE: string;
 
+    /**
+     * @default access::*,id::filesystem,mountable::can-mount,standard::target-uri,preview::*,standard::type,standard::is-hidden,standard::is-backup,standard::is-symlink,standard::name,standard::display-name,standard::size,standard::allocated-size,standard::symlink-target,time::*,trash::*,recent::*,unix::gid,unix::uid,unix::mode,unix::is-mountpoint,metadata::emblems,metadata::thunar-view-type,metadata::thunar-sort-column,metadata::thunar-sort-order,metadata::thunar-zoom-level,metadata::thunar-zoom-level-ThunarDetailsView,metadata::thunar-zoom-level-ThunarIconView,metadata::thunar-zoom-level-ThunarCompactView,metadata::thunar-highlight-color-background,metadata::thunar-highlight-color-foreground
+     */
     const FILE_INFO_NAMESPACE: string;
 
+    /**
+     * @default 4
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 9
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 20
+     */
     const MINOR_VERSION: number;
 
     /**

@@ -115,14 +115,14 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum AlsaDevinError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
-        ACCESS_TYPE_NOT_AVAILABLE,
-        SAMPLE_FORMAT_NOT_AVAILABLE,
-        CHANNELS_NOT_AVAILABLE,
-        SAMPLERATE_NOT_AVAILABLE,
-        BUFFER_SIZE_NOT_AVAILABLE,
-        HW_PARAMETERS_NOT_AVAILABLE,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
+        ACCESS_TYPE_NOT_AVAILABLE = 2,
+        SAMPLE_FORMAT_NOT_AVAILABLE = 3,
+        CHANNELS_NOT_AVAILABLE = 4,
+        SAMPLERATE_NOT_AVAILABLE = 5,
+        BUFFER_SIZE_NOT_AVAILABLE = 6,
+        HW_PARAMETERS_NOT_AVAILABLE = 7,
     }
 
 
@@ -212,14 +212,14 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum AlsaDevoutError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
-        ACCESS_TYPE_NOT_AVAILABLE,
-        SAMPLE_FORMAT_NOT_AVAILABLE,
-        CHANNELS_NOT_AVAILABLE,
-        SAMPLERATE_NOT_AVAILABLE,
-        BUFFER_SIZE_NOT_AVAILABLE,
-        HW_PARAMETERS_NOT_AVAILABLE,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
+        ACCESS_TYPE_NOT_AVAILABLE = 2,
+        SAMPLE_FORMAT_NOT_AVAILABLE = 3,
+        CHANNELS_NOT_AVAILABLE = 4,
+        SAMPLERATE_NOT_AVAILABLE = 5,
+        BUFFER_SIZE_NOT_AVAILABLE = 6,
+        HW_PARAMETERS_NOT_AVAILABLE = 7,
     }
 
 
@@ -309,7 +309,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum AlsaMidiinError {
-        ALSA_MIDIIN_ERROR_LOCKED_SEQUENCER,
+        ALSA_MIDIIN_ERROR_LOCKED_SEQUENCER = 0,
     }
 
 
@@ -321,327 +321,327 @@ export namespace AgsAudio {
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        S8_TO_S8,
+        S8_TO_S8 = 0,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        S8_TO_S16,
+        S8_TO_S16 = 1,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        S8_TO_S24,
+        S8_TO_S24 = 2,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        S8_TO_S32,
+        S8_TO_S32 = 3,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        S8_TO_S64,
+        S8_TO_S64 = 4,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        S8_TO_FLOAT,
+        S8_TO_FLOAT = 5,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        S8_TO_DOUBLE,
+        S8_TO_DOUBLE = 6,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        S16_TO_S8,
+        S16_TO_S8 = 7,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        S16_TO_S16,
+        S16_TO_S16 = 8,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        S16_TO_S24,
+        S16_TO_S24 = 9,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        S16_TO_S32,
+        S16_TO_S32 = 10,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        S16_TO_S64,
+        S16_TO_S64 = 11,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        S16_TO_FLOAT,
+        S16_TO_FLOAT = 12,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        S16_TO_DOUBLE,
+        S16_TO_DOUBLE = 13,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        S24_TO_S8,
+        S24_TO_S8 = 14,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        S24_TO_S16,
+        S24_TO_S16 = 15,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        S24_TO_S24,
+        S24_TO_S24 = 16,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        S24_TO_S32,
+        S24_TO_S32 = 17,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        S24_TO_S64,
+        S24_TO_S64 = 18,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        S24_TO_FLOAT,
+        S24_TO_FLOAT = 19,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        S24_TO_DOUBLE,
+        S24_TO_DOUBLE = 20,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        S32_TO_S8,
+        S32_TO_S8 = 21,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        S32_TO_S16,
+        S32_TO_S16 = 22,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        S32_TO_S24,
+        S32_TO_S24 = 23,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        S32_TO_S32,
+        S32_TO_S32 = 24,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        S32_TO_S64,
+        S32_TO_S64 = 25,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        S32_TO_FLOAT,
+        S32_TO_FLOAT = 26,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        S32_TO_DOUBLE,
+        S32_TO_DOUBLE = 27,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        S64_TO_S8,
+        S64_TO_S8 = 28,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        S64_TO_S16,
+        S64_TO_S16 = 29,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        S64_TO_S24,
+        S64_TO_S24 = 30,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        S64_TO_S32,
+        S64_TO_S32 = 31,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        S64_TO_S64,
+        S64_TO_S64 = 32,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        S64_TO_FLOAT,
+        S64_TO_FLOAT = 33,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        S64_TO_DOUBLE,
+        S64_TO_DOUBLE = 34,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        FLOAT_TO_S8,
+        FLOAT_TO_S8 = 35,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        FLOAT_TO_S16,
+        FLOAT_TO_S16 = 36,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        FLOAT_TO_S24,
+        FLOAT_TO_S24 = 37,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        FLOAT_TO_S32,
+        FLOAT_TO_S32 = 38,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        FLOAT_TO_S64,
+        FLOAT_TO_S64 = 39,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        FLOAT_TO_FLOAT,
+        FLOAT_TO_FLOAT = 40,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        FLOAT_TO_DOUBLE,
+        FLOAT_TO_DOUBLE = 41,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        DOUBLE_TO_S8,
+        DOUBLE_TO_S8 = 42,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        DOUBLE_TO_S16,
+        DOUBLE_TO_S16 = 43,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        DOUBLE_TO_S24,
+        DOUBLE_TO_S24 = 44,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        DOUBLE_TO_S32,
+        DOUBLE_TO_S32 = 45,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        DOUBLE_TO_S64,
+        DOUBLE_TO_S64 = 46,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        DOUBLE_TO_FLOAT,
+        DOUBLE_TO_FLOAT = 47,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        DOUBLE_TO_DOUBLE,
+        DOUBLE_TO_DOUBLE = 48,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        S8_TO_FLOAT32,
+        S8_TO_FLOAT32 = 49,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        S16_TO_FLOAT32,
+        S16_TO_FLOAT32 = 50,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        S24_TO_FLOAT32,
+        S24_TO_FLOAT32 = 51,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        S32_TO_FLOAT32,
+        S32_TO_FLOAT32 = 52,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        S64_TO_FLOAT32,
+        S64_TO_FLOAT32 = 53,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        FLOAT_TO_FLOAT32,
+        FLOAT_TO_FLOAT32 = 54,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        DOUBLE_TO_FLOAT32,
+        DOUBLE_TO_FLOAT32 = 55,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        FLOAT32_TO_FLOAT32,
+        FLOAT32_TO_FLOAT32 = 56,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        FLOAT32_TO_S8,
+        FLOAT32_TO_S8 = 57,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        FLOAT32_TO_S16,
+        FLOAT32_TO_S16 = 58,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        FLOAT32_TO_S24,
+        FLOAT32_TO_S24 = 59,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        FLOAT32_TO_S32,
+        FLOAT32_TO_S32 = 60,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        FLOAT32_TO_S64,
+        FLOAT32_TO_S64 = 61,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        FLOAT32_TO_FLOAT,
+        FLOAT32_TO_FLOAT = 62,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        FLOAT32_TO_DOUBLE,
+        FLOAT32_TO_DOUBLE = 63,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S8 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        S8_TO_COMPLEX,
+        S8_TO_COMPLEX = 64,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S16 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        S16_TO_COMPLEX,
+        S16_TO_COMPLEX = 65,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S24 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        S24_TO_COMPLEX,
+        S24_TO_COMPLEX = 66,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S32 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        S32_TO_COMPLEX,
+        S32_TO_COMPLEX = 67,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_S64 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        S64_TO_COMPLEX,
+        S64_TO_COMPLEX = 68,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        FLOAT_TO_COMPLEX,
+        FLOAT_TO_COMPLEX = 69,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_DOUBLE to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        DOUBLE_TO_COMPLEX,
+        DOUBLE_TO_COMPLEX = 70,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_FLOAT32 to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        FLOAT32_TO_COMPLEX,
+        FLOAT32_TO_COMPLEX = 71,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_COMPLEX
          */
-        COMPLEX_TO_COMPLEX,
+        COMPLEX_TO_COMPLEX = 72,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_S8
          */
-        COMPLEX_TO_S8,
+        COMPLEX_TO_S8 = 73,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_S16
          */
-        COMPLEX_TO_S16,
+        COMPLEX_TO_S16 = 74,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_S24
          */
-        COMPLEX_TO_S24,
+        COMPLEX_TO_S24 = 75,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_S32
          */
-        COMPLEX_TO_S32,
+        COMPLEX_TO_S32 = 76,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_S64
          */
-        COMPLEX_TO_S64,
+        COMPLEX_TO_S64 = 77,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_FLOAT
          */
-        COMPLEX_TO_FLOAT,
+        COMPLEX_TO_FLOAT = 78,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_DOUBLE
          */
-        COMPLEX_TO_DOUBLE,
+        COMPLEX_TO_DOUBLE = 79,
         /**
          * copy AGS_AUDIO_BUFFER_UTIL_COMPLEX to AGS_AUDIO_BUFFER_UTIL_FLOAT32
          */
-        COMPLEX_TO_FLOAT32,
+        COMPLEX_TO_FLOAT32 = 80,
     }
 
 
@@ -653,39 +653,39 @@ export namespace AgsAudio {
         /**
          * signed 8 bit raw pcm
          */
-        S8,
+        S8 = 0,
         /**
          * signed 16 bit raw pcm
          */
-        S16,
+        S16 = 1,
         /**
          * signed 24 bit raw pcm
          */
-        S24,
+        S24 = 2,
         /**
          * signed 32 bit raw pcm
          */
-        S32,
+        S32 = 3,
         /**
          * signed 64 bit raw pcm
          */
-        S64,
+        S64 = 4,
         /**
          * signed float raw pcm
          */
-        FLOAT,
+        FLOAT = 5,
         /**
          * signed double raw pcm
          */
-        DOUBLE,
+        DOUBLE = 6,
         /**
          * signed float32 raw pcm
          */
-        FLOAT32,
+        FLOAT32 = 7,
         /**
          * complex data type
          */
-        COMPLEX,
+        COMPLEX = 8,
     }
 
 
@@ -697,39 +697,39 @@ export namespace AgsAudio {
         /**
          * 8000 Hz
          */
-        "8000HZ",
+        "8000HZ" = 0,
         /**
          * 44100 Hz
          */
-        "44100HZ",
+        "44100HZ" = 1,
         /**
          * 48000 Hz
          */
-        "48000HZ",
+        "48000HZ" = 2,
         /**
          * 96000 Hz
          */
-        "96000HZ",
+        "96000HZ" = 3,
         /**
          * 176400 Hz
          */
-        "176400HZ",
+        "176400HZ" = 4,
         /**
          * 192000 Hz
          */
-        "192000HZ",
+        "192000HZ" = 5,
         /**
          * 352800 Hz
          */
-        "352800HZ",
+        "352800HZ" = 6,
         /**
          * 2822400 Hz
          */
-        "2822400HZ",
+        "2822400HZ" = 7,
         /**
          * 5644800 Hz
          */
-        "5644800HZ",
+        "5644800HZ" = 8,
     }
 
 
@@ -742,7 +742,7 @@ export namespace AgsAudio {
         /**
          * read all audio sample data at once
          */
-        AUDIO_FILE_READ_SAMPLE_AT_ONCE,
+        AUDIO_FILE_READ_SAMPLE_AT_ONCE = 1,
     }
 
 
@@ -801,7 +801,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum AudioUnitDevinError {
-        AUDIO_UNIT_DEVIN_ERROR_LOCKED_SOUNDCARD,
+        AUDIO_UNIT_DEVIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -860,7 +860,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum AudioUnitDevoutError {
-        AUDIO_UNIT_DEVOUT_ERROR_LOCKED_SOUNDCARD,
+        AUDIO_UNIT_DEVOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -868,7 +868,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum ChannelError {
-        CHANNEL_ERROR_LOOP_IN_LINK,
+        CHANNEL_ERROR_LOOP_IN_LINK = 0,
     }
 
 
@@ -880,59 +880,59 @@ export namespace AgsAudio {
         /**
          * copy signed 8 bit to char buffer
          */
-        S8_TO_CBUFFER,
+        S8_TO_CBUFFER = 0,
         /**
          * copy signed 16 bit to char buffer
          */
-        S16_TO_CBUFFER,
+        S16_TO_CBUFFER = 1,
         /**
          * copy signed 24 bit to char buffer
          */
-        S24_TO_CBUFFER,
+        S24_TO_CBUFFER = 2,
         /**
          * copy signed 32 bit to char buffer
          */
-        S32_TO_CBUFFER,
+        S32_TO_CBUFFER = 3,
         /**
          * copy signed 64 bit to char buffer
          */
-        S64_TO_CBUFFER,
+        S64_TO_CBUFFER = 4,
         /**
          * copy float to char buffer
          */
-        FLOAT_TO_CBUFFER,
+        FLOAT_TO_CBUFFER = 5,
         /**
          * copy double to char buffer
          */
-        DOUBLE_TO_CBUFFER,
+        DOUBLE_TO_CBUFFER = 6,
         /**
          * copy char buffer to signed 8 bit
          */
-        CBUFFER_TO_S8,
+        CBUFFER_TO_S8 = 7,
         /**
          * copy char buffer to signed 16 bit
          */
-        CBUFFER_TO_S16,
+        CBUFFER_TO_S16 = 8,
         /**
          * copy char buffer to signed 24 bit
          */
-        CBUFFER_TO_S24,
+        CBUFFER_TO_S24 = 9,
         /**
          * copy char buffer to signed 32 bit
          */
-        CBUFFER_TO_S32,
+        CBUFFER_TO_S32 = 10,
         /**
          * copy char buffer to signed 64 bit
          */
-        CBUFFER_TO_S64,
+        CBUFFER_TO_S64 = 11,
         /**
          * copy char buffer to float
          */
-        CBUFFER_TO_FLOAT,
+        CBUFFER_TO_FLOAT = 12,
         /**
          * copy char buffer to double
          */
-        CBUFFER_TO_DOUBLE,
+        CBUFFER_TO_DOUBLE = 13,
     }
 
 
@@ -991,7 +991,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum CoreAudioDevinError {
-        CORE_AUDIO_DEVIN_ERROR_LOCKED_SOUNDCARD,
+        CORE_AUDIO_DEVIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1050,7 +1050,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum CoreAudioDevoutError {
-        CORE_AUDIO_DEVOUT_ERROR_LOCKED_SOUNDCARD,
+        CORE_AUDIO_DEVOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1089,7 +1089,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum CoreAudioMidiinError {
-        CORE_AUDIO_MIDIIN_ERROR_LOCKED_SOUNDCARD,
+        CORE_AUDIO_MIDIIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1101,15 +1101,15 @@ export namespace AgsAudio {
         /**
          * filename
          */
-        FILENAME,
+        FILENAME = 0,
         /**
          * instrument header
          */
-        IHDR,
+        IHDR = 1,
         /**
          * sample header
          */
-        SHDR,
+        SHDR = 2,
     }
 
 
@@ -1148,7 +1148,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FifooutError {
-        FIFOOUT_ERROR_LOCKED_SOUNDCARD,
+        FIFOOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1159,7 +1159,7 @@ export namespace AgsAudio {
         /**
          * the frequency map was processed
          */
-        FREQUENCY_MAP_PROCESSED,
+        FREQUENCY_MAP_PROCESSED = 1,
     }
 
 
@@ -1172,7 +1172,7 @@ export namespace AgsAudio {
         /**
          * if set preserve frequency maps, otherwise destroy
          */
-        FREQUENCY_MAP_MANAGER_PRESERVE_FREQUENCY_MAP,
+        FREQUENCY_MAP_MANAGER_PRESERVE_FREQUENCY_MAP = 1,
     }
 
 
@@ -1180,7 +1180,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxDssiAudioFlags {
-        FX_DSSI_AUDIO_LIVE_INSTRUMENT,
+        FX_DSSI_AUDIO_LIVE_INSTRUMENT = 1,
     }
 
 
@@ -1188,9 +1188,9 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxEnvelopeChannelMode {
-        STREAM_LENGTH,
-        NOTE_LENGTH,
-        FIXED_LENGTH,
+        STREAM_LENGTH = 0,
+        NOTE_LENGTH = 1,
+        FIXED_LENGTH = 2,
     }
 
 
@@ -1198,7 +1198,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxLv2AudioFlags {
-        FX_LV2_AUDIO_LIVE_INSTRUMENT,
+        FX_LV2_AUDIO_LIVE_INSTRUMENT = 1,
     }
 
 
@@ -1206,9 +1206,9 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxNotationAudioProcessorKeyMode {
-        PLAY,
-        RECORD,
-        FEED,
+        PLAY = 0,
+        RECORD = 1,
+        FEED = 2,
     }
 
 
@@ -1220,19 +1220,19 @@ export namespace AgsAudio {
         /**
          * discard capture
          */
-        DISCARD,
+        DISCARD = 0,
         /**
          * capture none and preserve data
          */
-        NONE,
+        NONE = 1,
         /**
          * capture replace any sound
          */
-        REPLACE,
+        REPLACE = 2,
         /**
          * capture mix with existing sound
          */
-        MIX,
+        MIX = 3,
     }
 
 
@@ -1244,19 +1244,19 @@ export namespace AgsAudio {
         /**
          * data mode play sound
          */
-        PLAY,
+        PLAY = 0,
         /**
          * data mode record sound
          */
-        RECORD,
+        RECORD = 1,
         /**
          * data mode feed audio signal
          */
-        FEED,
+        FEED = 2,
         /**
          * data mode master audio signal
          */
-        MASTER,
+        MASTER = 3,
     }
 
 
@@ -1264,9 +1264,9 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxWahWahChannelMode {
-        STREAM_LENGTH,
-        NOTE_LENGTH,
-        FIXED_LENGTH,
+        STREAM_LENGTH = 0,
+        NOTE_LENGTH = 1,
+        FIXED_LENGTH = 2,
     }
 
 
@@ -1274,11 +1274,11 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum FxWahWahLengthMode {
-        "1_1_TH",
-        "2_2_TH",
-        "4_4_TH",
-        "8_8_TH",
-        "16_16_TH",
+        "1_1_TH" = 0,
+        "2_2_TH" = 1,
+        "4_4_TH" = 2,
+        "8_8_TH" = 3,
+        "16_16_TH" = 4,
     }
 
 
@@ -1290,15 +1290,15 @@ export namespace AgsAudio {
         /**
          * filename
          */
-        FILENAME,
+        FILENAME = 0,
         /**
          * instrument header
          */
-        IHDR,
+        IHDR = 1,
         /**
          * sample header
          */
-        SHDR,
+        SHDR = 2,
     }
 
 
@@ -1357,7 +1357,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum GstreamerDevinError {
-        GSTREAMER_DEVIN_ERROR_LOCKED_SOUNDCARD,
+        GSTREAMER_DEVIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1416,7 +1416,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum GstreamerDevoutError {
-        GSTREAMER_DEVOUT_ERROR_LOCKED_SOUNDCARD,
+        GSTREAMER_DEVOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1455,7 +1455,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum JackDevinError {
-        JACK_DEVIN_ERROR_LOCKED_SOUNDCARD,
+        JACK_DEVIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1494,7 +1494,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum JackDevoutError {
-        JACK_DEVOUT_ERROR_LOCKED_SOUNDCARD,
+        JACK_DEVOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1533,7 +1533,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum JackMidiinError {
-        JACK_MIDIIN_ERROR_LOCKED_SOUNDCARD,
+        JACK_MIDIIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -1541,9 +1541,9 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum Midi1PortMode {
-        NOT_MIDI_1_0,
-        YES_DONT_RESTRICT_BANDWIDTH,
-        YES_RESTRICT_BANDWIDTH,
+        NOT_MIDI_1_0 = 0,
+        YES_DONT_RESTRICT_BANDWIDTH = 1,
+        YES_RESTRICT_BANDWIDTH = 2,
     }
 
 
@@ -1551,8 +1551,8 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum Midi2CCIndex {
-        "84_PORTAMENTO",
-        "126_OMNI_OFF",
+        "84_PORTAMENTO" = 84,
+        "126_OMNI_OFF" = 126,
     }
 
 
@@ -1560,8 +1560,8 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum Midi2PerNoteManagementOptionsFlags {
-        DETACH_PER_NOTE_CONTROLLERS,
-        RESET_PER_NOTE_CONTROLLERS,
+        DETACH_PER_NOTE_CONTROLLERS = 1,
+        RESET_PER_NOTE_CONTROLLERS = 2,
     }
 
 
@@ -1569,10 +1569,10 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiAttributeType {
-        NO_ATTRIBUTE_DATA,
-        MANUFACTURER_SPECIFIC,
-        PROFILE_SPECIFIC,
-        PITCH_7_9,
+        NO_ATTRIBUTE_DATA = 0,
+        MANUFACTURER_SPECIFIC = 1,
+        PROFILE_SPECIFIC = 2,
+        PITCH_7_9 = 3,
     }
 
 
@@ -1580,12 +1580,12 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiCIAuthorityLevel {
-        TRANSPORT,
-        EVENT_PROCESSOR,
-        ENDPOINT,
-        TRANSLATOR,
-        GATEWAY,
-        NODE_SERVER,
+        TRANSPORT = 16,
+        EVENT_PROCESSOR = 32,
+        ENDPOINT = 48,
+        TRANSLATOR = 64,
+        GATEWAY = 80,
+        NODE_SERVER = 96,
     }
 
 
@@ -1593,10 +1593,10 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiCICategory {
-        PROTOCOL_NEGOTIATION,
-        PROFILE_CONFIGURATION,
-        PROPERTY_EXCHANGE,
-        PROPERTY_MANAGEMENT,
+        PROTOCOL_NEGOTIATION = 16,
+        PROFILE_CONFIGURATION = 32,
+        PROPERTY_EXCHANGE = 48,
+        PROPERTY_MANAGEMENT = 112,
     }
 
 
@@ -1604,7 +1604,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiCIUtilProcessSupportedFeatures {
-        MIDI_CI_PROCESS_MESSAGE_REPORT,
+        MIDI_CI_PROCESS_MESSAGE_REPORT = 1,
     }
 
 
@@ -1612,19 +1612,19 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiCIUtilStatusCode {
-        SUCCESS,
-        ACCEPTED,
-        RESOURCE_UNAVAILABLE,
-        BAD_DATA,
-        TOO_MANY_REQUESTS,
-        BAD_REQUEST,
-        REPLY_NOT_AVAILABLE,
-        RESOURCE_NOT_FOUND,
-        RESOURCE_NOT_ALLOWED,
-        PAYLOAD_TOO_LARGE,
-        UNSUPPORTED_ENCODING,
-        INVALID_VERSION,
-        INTERNAL_ERROR,
+        SUCCESS = 200,
+        ACCEPTED = 202,
+        RESOURCE_UNAVAILABLE = 341,
+        BAD_DATA = 342,
+        TOO_MANY_REQUESTS = 343,
+        BAD_REQUEST = 400,
+        REPLY_NOT_AVAILABLE = 403,
+        RESOURCE_NOT_FOUND = 404,
+        RESOURCE_NOT_ALLOWED = 405,
+        PAYLOAD_TOO_LARGE = 413,
+        UNSUPPORTED_ENCODING = 415,
+        INVALID_VERSION = 445,
+        INTERNAL_ERROR = 500,
     }
 
 
@@ -1632,9 +1632,9 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiDirection {
-        INPUT_RX_ONLY,
-        OUTPUT_TX_ONLY,
-        BIDIRECTIONAL_MATCHING_GROUPS,
+        INPUT_RX_ONLY = 1,
+        OUTPUT_TX_ONLY = 2,
+        BIDIRECTIONAL_MATCHING_GROUPS = 3,
     }
 
 
@@ -1642,7 +1642,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiFileError {
-        MIDI_FILE_ERROR_PREMATURE_EOF,
+        MIDI_FILE_ERROR_PREMATURE_EOF = 0,
     }
 
 
@@ -1650,22 +1650,22 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiFileStatus {
-        KEY_OFF,
-        KEY_ON,
-        KEY_PRESSURE,
-        CHANGE_PARAMETER,
-        CHANGE_PROGRAM,
-        CHANNEL_PRESSURE,
-        CHANGE_PITCH_BEND,
-        SYSEX,
-        QUARTER_FRAME,
-        SONG_POSITION,
-        SONG_SELECT,
-        UNDEFINED_0,
-        UNDEFINED_1,
-        TUNE_REQUEST,
-        SYSEX_END,
-        META_EVENT,
+        KEY_OFF = 128,
+        KEY_ON = 144,
+        KEY_PRESSURE = 160,
+        CHANGE_PARAMETER = 176,
+        CHANGE_PROGRAM = 192,
+        CHANNEL_PRESSURE = 208,
+        CHANGE_PITCH_BEND = 224,
+        SYSEX = 240,
+        QUARTER_FRAME = 241,
+        SONG_POSITION = 242,
+        SONG_SELECT = 243,
+        UNDEFINED_0 = 244,
+        UNDEFINED_1 = 245,
+        TUNE_REQUEST = 246,
+        SYSEX_END = 247,
+        META_EVENT = 255,
     }
 
 
@@ -1678,7 +1678,7 @@ export namespace AgsAudio {
         /**
          * ignore any midi data
          */
-        MIDI_BYPASS,
+        MIDI_BYPASS = 1,
     }
 
 
@@ -1686,8 +1686,8 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiProtocol {
-        V1_0,
-        V2_0,
+        V1_0 = 1,
+        V2_0 = 2,
     }
 
 
@@ -1695,14 +1695,14 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiSmfUtilMtcQuarterFrameMessageType {
-        FRAME_NUMBER_LSB,
-        FRAME_NUMBER_MSB,
-        SECONDS_LSB,
-        SECONDS_MSB,
-        MINUTES_LSB,
-        MINUTES_MSB,
-        HOURS_LSB,
-        HOURS_MSB,
+        FRAME_NUMBER_LSB = 0,
+        FRAME_NUMBER_MSB = 16,
+        SECONDS_LSB = 32,
+        SECONDS_MSB = 48,
+        MINUTES_LSB = 64,
+        MINUTES_MSB = 80,
+        HOURS_LSB = 96,
+        HOURS_MSB = 112,
     }
 
 
@@ -1710,10 +1710,10 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiSmfUtilSmtpeFrameRate {
-        "24_FPS",
-        "25_FPS",
-        "30_FPS",
-        "30_FPS_DROP_FRAME",
+        "24_FPS" = 0,
+        "25_FPS" = 64,
+        "30_FPS" = 128,
+        "30_FPS_DROP_FRAME" = 192,
     }
 
 
@@ -1721,10 +1721,10 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum MidiUmpStreamMessageFormat {
-        COMPLETE,
-        START,
-        CONTINUE,
-        END,
+        COMPLETE = 0,
+        START = 1,
+        CONTINUE = 2,
+        END = 3,
     }
 
 
@@ -1736,11 +1736,11 @@ export namespace AgsAudio {
         /**
          * white noise
          */
-        WHITE_NOISE,
+        WHITE_NOISE = 0,
         /**
          * pink noise
          */
-        PINK_NOISE,
+        PINK_NOISE = 1,
     }
 
 
@@ -1748,7 +1748,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum OscBuilderFlags {
-        OSC_BUILDER_ADD_VALUE,
+        OSC_BUILDER_ADD_VALUE = 1,
     }
 
 
@@ -1761,7 +1761,7 @@ export namespace AgsAudio {
         /**
          * the parser reached EOF
          */
-        OSC_PARSER_EOF,
+        OSC_PARSER_EOF = 1,
     }
 
 
@@ -1851,14 +1851,14 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum OssDevinError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
-        ACCESS_TYPE_NOT_AVAILABLE,
-        SAMPLE_FORMAT_NOT_AVAILABLE,
-        CHANNELS_NOT_AVAILABLE,
-        SAMPLERATE_NOT_AVAILABLE,
-        BUFFER_SIZE_NOT_AVAILABLE,
-        HW_PARAMETERS_NOT_AVAILABLE,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
+        ACCESS_TYPE_NOT_AVAILABLE = 2,
+        SAMPLE_FORMAT_NOT_AVAILABLE = 3,
+        CHANNELS_NOT_AVAILABLE = 4,
+        SAMPLERATE_NOT_AVAILABLE = 5,
+        BUFFER_SIZE_NOT_AVAILABLE = 6,
+        HW_PARAMETERS_NOT_AVAILABLE = 7,
     }
 
 
@@ -1948,14 +1948,14 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum OssDevoutError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
-        ACCESS_TYPE_NOT_AVAILABLE,
-        SAMPLE_FORMAT_NOT_AVAILABLE,
-        CHANNELS_NOT_AVAILABLE,
-        SAMPLERATE_NOT_AVAILABLE,
-        BUFFER_SIZE_NOT_AVAILABLE,
-        HW_PARAMETERS_NOT_AVAILABLE,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
+        ACCESS_TYPE_NOT_AVAILABLE = 2,
+        SAMPLE_FORMAT_NOT_AVAILABLE = 3,
+        CHANNELS_NOT_AVAILABLE = 4,
+        SAMPLERATE_NOT_AVAILABLE = 5,
+        BUFFER_SIZE_NOT_AVAILABLE = 6,
+        HW_PARAMETERS_NOT_AVAILABLE = 7,
     }
 
 
@@ -2045,7 +2045,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum OssMidiinError {
-        OSS_MIDIIN_ERROR_LOCKED_SEQUENCER,
+        OSS_MIDIIN_ERROR_LOCKED_SEQUENCER = 0,
     }
 
 
@@ -2053,7 +2053,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum PresetError {
-        PRESET_ERROR_NO_SUCH_PARAMETER,
+        PRESET_ERROR_NO_SUCH_PARAMETER = 0,
     }
 
 
@@ -2112,7 +2112,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum PulseDevinError {
-        PULSE_DEVIN_ERROR_LOCKED_SOUNDCARD,
+        PULSE_DEVIN_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -2171,7 +2171,7 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum PulseDevoutError {
-        PULSE_DEVOUT_ERROR_LOCKED_SOUNDCARD,
+        PULSE_DEVOUT_ERROR_LOCKED_SOUNDCARD = 0,
     }
 
 
@@ -2183,19 +2183,19 @@ export namespace AgsAudio {
         /**
          * filename
          */
-        FILENAME,
+        FILENAME = 0,
         /**
          * preset header
          */
-        PHDR,
+        PHDR = 1,
         /**
          * instrument header
          */
-        IHDR,
+        IHDR = 2,
         /**
          * sample header
          */
-        SHDR,
+        SHDR = 3,
     }
 
 
@@ -2214,19 +2214,19 @@ export namespace AgsAudio {
         /**
          * loop none
          */
-        LOOP_NONE,
+        LOOP_NONE = 0,
         /**
          * loop standard
          */
-        LOOP_STANDARD,
+        LOOP_STANDARD = 1,
         /**
          * loop release
          */
-        LOOP_RELEASE,
+        LOOP_RELEASE = 2,
         /**
          * loop pingpong
          */
-        LOOP_PINGPONG,
+        LOOP_PINGPONG = 3,
     }
 
 
@@ -2238,11 +2238,11 @@ export namespace AgsAudio {
         /**
          * filename
          */
-        FILENAME,
+        FILENAME = 0,
         /**
          * sample
          */
-        SAMPLE,
+        SAMPLE = 1,
     }
 
 
@@ -2255,15 +2255,15 @@ export namespace AgsAudio {
         /**
          * one shot
          */
-        ONE_SHOT,
+        ONE_SHOT = 0,
         /**
          * loop continuous
          */
-        CONTINUOUS,
+        CONTINUOUS = 1,
         /**
          * loop sustain
          */
-        SUSTAIN,
+        SUSTAIN = 2,
     }
 
 
@@ -2282,19 +2282,19 @@ export namespace AgsAudio {
         /**
          * loop none
          */
-        LOOP_NONE,
+        LOOP_NONE = 0,
         /**
          * loop standard
          */
-        LOOP_STANDARD,
+        LOOP_STANDARD = 1,
         /**
          * loop release
          */
-        LOOP_RELEASE,
+        LOOP_RELEASE = 2,
         /**
          * loop pingpong
          */
-        LOOP_PINGPONG,
+        LOOP_PINGPONG = 3,
     }
 
 
@@ -2313,11 +2313,11 @@ export namespace AgsAudio {
         /**
          * key format 16th
          */
-        SOUND_KEY_FORMAT_16TH,
+        SOUND_KEY_FORMAT_16TH = 0,
         /**
          * key format 256th
          */
-        SOUND_KEY_FORMAT_256TH,
+        SOUND_KEY_FORMAT_256TH = 1,
     }
 
 
@@ -2336,27 +2336,27 @@ export namespace AgsAudio {
         /**
          * playback scope
          */
-        SOUND_SCOPE_PLAYBACK,
+        SOUND_SCOPE_PLAYBACK = 0,
         /**
          * sequencer scope
          */
-        SOUND_SCOPE_SEQUENCER,
+        SOUND_SCOPE_SEQUENCER = 1,
         /**
          * notation ability
          */
-        SOUND_SCOPE_NOTATION,
+        SOUND_SCOPE_NOTATION = 2,
         /**
          * wave ability
          */
-        SOUND_SCOPE_WAVE,
+        SOUND_SCOPE_WAVE = 3,
         /**
          * MIDI scope
          */
-        SOUND_SCOPE_MIDI,
+        SOUND_SCOPE_MIDI = 4,
         /**
          * the last scope
          */
-        SOUND_SCOPE_LAST,
+        SOUND_SCOPE_LAST = 5,
     }
 
 
@@ -2372,23 +2372,23 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum SynthKeyMode {
-        SYNTH_KEY_1_1,
+        SYNTH_KEY_1_1 = 0,
         /**
          * 2/2 key
          */
-        SYNTH_KEY_2_2,
+        SYNTH_KEY_2_2 = 1,
         /**
          * 4/4 key
          */
-        SYNTH_KEY_4_4,
+        SYNTH_KEY_4_4 = 2,
         /**
          * 8/8 key
          */
-        SYNTH_KEY_8_8,
+        SYNTH_KEY_8_8 = 3,
         /**
          * 16/16 key
          */
-        SYNTH_KEY_16_16,
+        SYNTH_KEY_16_16 = 4,
     }
 
 
@@ -2407,27 +2407,27 @@ export namespace AgsAudio {
         /**
          * sine oscillator
          */
-        SYNTH_OSCILLATOR_SIN,
+        SYNTH_OSCILLATOR_SIN = 0,
         /**
          * sawtooth oscillator
          */
-        SYNTH_OSCILLATOR_SAWTOOTH,
+        SYNTH_OSCILLATOR_SAWTOOTH = 1,
         /**
          * triangle oscillator
          */
-        SYNTH_OSCILLATOR_TRIANGLE,
+        SYNTH_OSCILLATOR_TRIANGLE = 2,
         /**
          * square oscillator
          */
-        SYNTH_OSCILLATOR_SQUARE,
+        SYNTH_OSCILLATOR_SQUARE = 3,
         /**
          * impulse oscillator
          */
-        SYNTH_OSCILLATOR_IMPULSE,
+        SYNTH_OSCILLATOR_IMPULSE = 4,
         /**
          * last mode
          */
-        SYNTH_OSCILLATOR_LAST,
+        SYNTH_OSCILLATOR_LAST = 5,
     }
 
 
@@ -2486,8 +2486,8 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum WasapiDevinError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
     }
 
 
@@ -2546,615 +2546,1524 @@ export namespace AgsAudio {
      * @gir-type Enum
      */
     enum WasapiDevoutError {
-        LOCKED_SOUNDCARD,
-        BROKEN_CONFIGURATION,
+        LOCKED_SOUNDCARD = 0,
+        BROKEN_CONFIGURATION = 1,
     }
 
 
+    /**
+     * @default hw:0,0
+     */
     const ALSA_DEVIN_DEFAULT_ALSA_DEVICE: string;
 
+    /**
+     * @default 4
+     */
     const ALSA_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const ALSA_DEVIN_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default hw:0,0
+     */
     const ALSA_DEVOUT_DEFAULT_ALSA_DEVICE: string;
 
+    /**
+     * @default 4
+     */
     const ALSA_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const ALSA_DEVOUT_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default hw:0,0
+     */
     const ALSA_MIDIIN_DEFAULT_ALSA_DEVICE: string;
 
+    /**
+     * @default 4
+     */
     const ALSA_MIDIIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const ALSA_MIDIIN_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const ALSA_MIDIIN_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 40
+     */
     const AUDIO_APPLICATION_CONTEXT_DEFAULT_LOADER_INTERVAL: number;
 
+    /**
+     * @default Fri Nov  8 21:47:01 UTC 2019
+     */
     const AUDIO_BUILD_ID: string;
 
+    /**
+     * @default 3.0.0
+     */
     const AUDIO_DEFAULT_VERSION: string;
 
+    /**
+     * @default 0
+     */
     const AUDIO_LOOP_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const AUDIO_THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 8
+     */
     const AUDIO_UNIT_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const AUDIO_UNIT_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const AUDIO_UNIT_PORT_DEFAULT_CACHE_BUFFER_SIZE: number;
 
+    /**
+     * @default AgsAutomationNativeScale
+     */
     const AUTOMATION_CLIPBOARD_FORMAT: string;
 
+    /**
+     * @default AgsAutomationNativePiano
+     */
     const AUTOMATION_CLIPBOARD_LEGACY_FORMAT: string;
 
+    /**
+     * @default AgsAutomationClipboardXml
+     */
     const AUTOMATION_CLIPBOARD_TYPE: string;
 
+    /**
+     * @default 1.3.0
+     */
     const AUTOMATION_CLIPBOARD_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const AUTOMATION_DEFAULT_BPM: number;
 
+    /**
+     * @default 0
+     */
     const AUTOMATION_DEFAULT_DURATION: number;
 
+    /**
+     * @default 0
+     */
     const AUTOMATION_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const AUTOMATION_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const AUTOMATION_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 8
+     */
     const AUTOMATION_DEFAULT_PRECISION: number;
 
+    /**
+     * @default 16.000000
+     */
     const AUTOMATION_MAXIMUM_ACCELERATION_LENGTH: number;
 
+    /**
+     * @default 128
+     */
     const AUTOMATION_MAXIMUM_STEPS: number;
 
+    /**
+     * @default 0
+     */
     const AUTOMATION_MINIMUM_ACCELERATION_LENGTH: number;
 
+    /**
+     * @default 1.000000
+     */
     const AUTOMATION_TICS_PER_BEAT: number;
 
+    /**
+     * @default 16.000000
+     */
     const BUFFER_DEFAULT_TICKS_PER_QUARTER_BUFFER: number;
 
+    /**
+     * @default 127
+     */
     const CHANNEL_MAXIMUM_MIDI_NOTE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MAXIMUM_NOTE_FREQUENCY: number;
 
+    /**
+     * @default 10
+     */
     const CHANNEL_MAXIMUM_OCTAVE: number;
 
+    /**
+     * @default 12
+     */
     const CHANNEL_MAXIMUM_OCTAVE_SEMITONE: number;
 
+    /**
+     * @default 128
+     */
     const CHANNEL_MAXIMUM_SEMITONE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MINIMUM_MIDI_NOTE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MINIMUM_NOTE_FREQUENCY: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MINIMUM_OCTAVE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MINIMUM_OCTAVE_SEMITONE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_MINIMUM_SEMITONE: number;
 
+    /**
+     * @default 0
+     */
     const CHANNEL_THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0.000000
+     */
     const CHORUS_UTIL_DEFAULT_DELAY: number;
 
+    /**
+     * @default 0.000000
+     */
     const CHORUS_UTIL_DEFAULT_DEPTH: number;
 
+    /**
+     * @default 256
+     */
     const CHORUS_UTIL_DEFAULT_HISTORY_BUFFER_LENGTH: number;
 
+    /**
+     * @default 10.000000
+     */
     const CHORUS_UTIL_DEFAULT_LFO_FREQUENCY: number;
 
+    /**
+     * @default 1.000000
+     */
     const CHORUS_UTIL_DEFAULT_MIX: number;
 
+    /**
+     * @default 65536
+     */
     const CHORUS_UTIL_DEFAULT_PITCH_MIX_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const CORE_AUDIO_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const CORE_AUDIO_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 256
+     */
     const CORE_AUDIO_MIDIIN_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const CORE_AUDIO_PORT_DEFAULT_CACHE_BUFFER_SIZE: number;
 
+    /**
+     * @default 307200
+     */
     const CROP_NOTE_DEFAULT_X_LENGTH: number;
 
+    /**
+     * @default 0.7.13
+     */
     const EFFECTS_DEFAULT_VERSION: string;
 
+    /**
+     * @default 0
+     */
     const EXPORT_THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 65536
+     */
     const FAST_PITCH_UTIL_DEFAULT_MAX_BUFFER_SIZE: number;
 
+    /**
+     * @default 4
+     */
     const FIFOOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default /dev/null
+     */
     const FIFOOUT_DEFAULT_DEVICE: string;
 
+    /**
+     * @default 8
+     */
     const FIFOOUT_DEFAULT_RING_BUFFER_SIZE: number;
 
+    /**
+     * @default 1200
+     */
     const FLUID_CENTS_HZ_SIZE: number;
 
+    /**
+     * @default 4294967296.000000
+     */
     const FLUID_FRACT_MAX: number;
 
+    /**
+     * @default 8
+     */
     const FLUID_INTERP_BITS: number;
 
+    /**
+     * @default 4278190080
+     */
     const FLUID_INTERP_BITS_MASK: number;
 
+    /**
+     * @default 24
+     */
     const FLUID_INTERP_BITS_SHIFT: number;
 
+    /**
+     * @default 2048
+     */
     const FLUID_INTERP_MAX: number;
 
+    /**
+     * @default 7
+     */
     const FLUID_SINC_INTERP_ORDER: number;
 
+    /**
+     * @default 440.000000
+     */
     const FM_SYNTH_UTIL_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default 0.000000
+     */
     const FM_SYNTH_UTIL_DEFAULT_LFO_DEPTH: number;
 
+    /**
+     * @default 12.000000
+     */
     const FM_SYNTH_UTIL_DEFAULT_LFO_FREQUENCY: number;
 
+    /**
+     * @default 0.000000
+     */
     const FM_SYNTH_UTIL_DEFAULT_TUNING: number;
 
+    /**
+     * @default 440.000000
+     */
     const FREQUENCY_MAP_DEFAULT_FREQ: number;
 
+    /**
+     * @default 22000
+     */
     const FREQUENCY_MAP_MANAGER_EQUINOX: number;
 
+    /**
+     * @default 8
+     */
     const FX_EQ10_CHANNEL_INPUT_DATA_CACHE_SIZE: number;
 
+    /**
+     * @default 65536
+     */
     const FX_FM_SYNTH_AUDIO_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 2048
+     */
     const FX_LV2_AUDIO_DEFAULT_MIDI_LENGHT: number;
 
+    /**
+     * @default 64
+     */
     const FX_NOTATION_AUDIO_DEFAULT_LOOP_END: number;
 
+    /**
+     * @default 0
+     */
     const FX_NOTATION_AUDIO_DEFAULT_LOOP_START: number;
 
+    /**
+     * @default 127
+     */
     const FX_NOTATION_AUDIO_PROCESSOR_DEFAULT_KEY_ON_VELOCITY: number;
 
+    /**
+     * @default 16
+     */
     const FX_PATTERN_AUDIO_DEFAULT_LOOP_END: number;
 
+    /**
+     * @default 0
+     */
     const FX_PATTERN_AUDIO_DEFAULT_LOOP_START: number;
 
+    /**
+     * @default 127
+     */
     const FX_PATTERN_AUDIO_PROCESSOR_DEFAULT_KEY_ON_VELOCITY: number;
 
+    /**
+     * @default 64
+     */
     const FX_PLAYBACK_AUDIO_DEFAULT_LOOP_END: number;
 
+    /**
+     * @default 0
+     */
     const FX_PLAYBACK_AUDIO_DEFAULT_LOOP_START: number;
 
+    /**
+     * @default 65536
+     */
     const FX_SF2_SYNTH_AUDIO_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 65536
+     */
     const FX_SYNTH_AUDIO_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const GSTREAMER_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const GSTREAMER_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const GSTREAMER_FILE_DEFAULT_AUDIO_CHANNELS: number;
 
+    /**
+     * @default 0
+     */
     const GSTREAMER_FILE_DEFAULT_DISCOVERER_TIMEOUT: number;
 
+    /**
+     * @default 4
+     */
     const GSTREAMER_FILE_DEFAULT_FLUSH_IDLE: number;
 
+    /**
+     * @default 4096
+     */
     const GSTREAMER_PORT_DEFAULT_CACHE_BUFFER_SIZE: number;
 
+    /**
+     * @default 65536
+     */
     const HQ_PITCH_UTIL_DEFAULT_MAX_BUFFER_SIZE: number;
 
+    /**
+     * @default 48.000000
+     */
     const INPUT_SYNTH_BASE_NOTE: number;
 
+    /**
+     * @default 2
+     */
     const IPATCH_DEFAULT_CHANNELS: number;
 
+    /**
+     * @default r
+     */
     const IPATCH_READ: string;
 
+    /**
+     * @default w
+     */
     const IPATCH_WRITE: string;
 
+    /**
+     * @default 4
+     */
     const JACK_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 256
+     */
     const JACK_MIDIIN_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default localhost
+     */
     const JACK_SERVER_DEFAULT_HOST: string;
 
+    /**
+     * @default 3000
+     */
     const JACK_SERVER_DEFAULT_PORT: number;
 
+    /**
+     * @default udp
+     */
     const JACK_SERVER_DEFAULT_PROTOCOL: string;
 
+    /**
+     * @default 0.000010
+     */
     const LADSPA_CONVERSION_DEFAULT_LOWER: number;
 
+    /**
+     * @default 1025.000000
+     */
     const LADSPA_CONVERSION_DEFAULT_STEP_COUNT: number;
 
+    /**
+     * @default 1.000000
+     */
     const LADSPA_CONVERSION_DEFAULT_UPPER: number;
 
+    /**
+     * @default 12.000000
+     */
     const LFO_SYNTH_UTIL_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default 0.000000
+     */
     const LFO_SYNTH_UTIL_DEFAULT_LFO_DEPTH: number;
 
+    /**
+     * @default 0.000000
+     */
     const LFO_SYNTH_UTIL_DEFAULT_TUNING: number;
 
+    /**
+     * @default 0.000010
+     */
     const LV2_CONVERSION_DEFAULT_LOWER: number;
 
+    /**
+     * @default 1025.000000
+     */
     const LV2_CONVERSION_DEFAULT_STEP_COUNT: number;
 
+    /**
+     * @default 1.000000
+     */
     const LV2_CONVERSION_DEFAULT_UPPER: number;
 
+    /**
+     * @default en-gb
+     */
     const LV2_MANAGER_DEFAULT_LOCALE: string;
 
+    /**
+     * @default 268435455
+     */
     const MIDI_CI_UTIL_BROADCAST_MUID: number;
 
+    /**
+     * @default 
+     */
     const MIDI_CI_UTIL_BROADCAST_MUID_ENCODED: string;
 
+    /**
+     * @default 0
+     */
     const MIDI_CI_UTIL_DISCOVERY_TIMEOUT_USEC: number;
 
+    /**
+     * @default 512
+     */
     const MIDI_CI_UTIL_MAX_BROADCAST_MESSAGE_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const MIDI_CI_UTIL_PROTOCOL_TYPE_MIDI_1_0: number;
 
+    /**
+     * @default 2
+     */
     const MIDI_CI_UTIL_PROTOCOL_TYPE_MIDI_2_0: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_CI_UTIL_VERSION_MIDI_1_0: number;
 
+    /**
+     * @default AgsMidiNativeLevel
+     */
     const MIDI_CLIPBOARD_FORMAT: string;
 
+    /**
+     * @default AgsMidiClipboardXml
+     */
     const MIDI_CLIPBOARD_TYPE: string;
 
+    /**
+     * @default 1.4.0
+     */
     const MIDI_CLIPBOARD_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const MIDI_DEFAULT_BPM: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_DEFAULT_DURATION: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_DEFAULT_OFFSET: number;
 
+    /**
+     * @default event
+     */
     const MIDI_EVENT: string;
 
+    /**
+     * @default 120
+     */
     const MIDI_FILE_DEFAULT_BEATS: number;
 
+    /**
+     * @default 1
+     */
     const MIDI_FILE_DEFAULT_FORMAT: number;
 
+    /**
+     * @default 30
+     */
     const MIDI_FILE_DEFAULT_FPS: number;
 
+    /**
+     * @default 0
+     */
     const MIDI_FILE_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 384
+     */
     const MIDI_FILE_DEFAULT_TICKS: number;
 
+    /**
+     * @default 4096
+     */
     const MIDI_FILE_MAX_TEXT_LENGTH: number;
 
+    /**
+     * @default MThd
+     */
     const MIDI_FILE_MTHD: string;
 
+    /**
+     * @default MTrk
+     */
     const MIDI_FILE_MTRK: string;
 
+    /**
+     * @default 0
+     */
     const MIDI_MINIMUM_TRACK_LENGTH: number;
 
+    /**
+     * @default 4096
+     */
     const MIDI_PARSER_MAX_TEXT_LENGTH: number;
 
+    /**
+     * @default MTrk
+     */
     const MIDI_PARSER_MTCK: string;
 
+    /**
+     * @default MThd
+     */
     const MIDI_PARSER_MTHD: string;
 
+    /**
+     * @default 1.000000
+     */
     const MIDI_TICS_PER_BEAT: number;
 
+    /**
+     * @default 307200
+     */
     const MOVE_NOTE_DEFAULT_X_LENGTH: number;
 
+    /**
+     * @default 1024
+     */
     const MOVE_NOTE_DEFAULT_Y_LENGTH: number;
 
+    /**
+     * @default 440.000000
+     */
     const NOISE_UTIL_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default AgsNotationNativePiano
+     */
     const NOTATION_CLIPBOARD_FORMAT: string;
 
+    /**
+     * @default AgsNotationClipboardXml
+     */
     const NOTATION_CLIPBOARD_TYPE: string;
 
+    /**
+     * @default 6.1.0
+     */
     const NOTATION_CLIPBOARD_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const NOTATION_DEFAULT_BPM: number;
 
+    /**
+     * @default 96
+     */
     const NOTATION_DEFAULT_DIVISION: number;
 
+    /**
+     * @default 0
+     */
     const NOTATION_DEFAULT_DURATION: number;
 
+    /**
+     * @default 4915200
+     */
     const NOTATION_DEFAULT_END: number;
 
+    /**
+     * @default 0
+     */
     const NOTATION_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const NOTATION_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const NOTATION_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 16.000000
+     */
     const NOTATION_MAXIMUM_NOTE_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const NOTATION_MINIMUM_NOTE_LENGTH: number;
 
+    /**
+     * @default 1.000000
+     */
     const NOTATION_TICS_PER_BEAT: number;
 
+    /**
+     * @default 16.000000
+     */
     const NOTE_DEFAULT_TICKS_PER_QUARTER_NOTE: number;
 
+    /**
+     * @default 8192
+     */
     const OSC_BUILDER_DEFAULT_CHUNK_SIZE: number;
 
+    /**
+     * @default 8192
+     */
     const OSC_BUILDER_MESSAGE_DEFAULT_CHUNK_SIZE: number;
 
+    /**
+     * @default 131072
+     */
     const OSC_CLIENT_CHUNK_SIZE: number;
 
+    /**
+     * @default 256
+     */
     const OSC_CLIENT_DEFAULT_CACHE_DATA_LENGTH: number;
 
+    /**
+     * @default localhost
+     */
     const OSC_CLIENT_DEFAULT_DOMAIN: string;
 
+    /**
+     * @default 127.0.0.1
+     */
     const OSC_CLIENT_DEFAULT_INET4_ADDRESS: string;
 
+    /**
+     * @default ::1
+     */
     const OSC_CLIENT_DEFAULT_INET6_ADDRESS: string;
 
+    /**
+     * @default 2048
+     */
     const OSC_CLIENT_DEFAULT_MAX_ADDRESS_LENGTH: number;
 
+    /**
+     * @default 16
+     */
     const OSC_CLIENT_DEFAULT_MAX_RETRY: number;
 
+    /**
+     * @default 9000
+     */
     const OSC_CLIENT_DEFAULT_SERVER_PORT: number;
 
+    /**
+     * @default 131072
+     */
     const OSC_CONNECTION_CHUNK_SIZE: number;
 
+    /**
+     * @default 60000000
+     */
     const OSC_CONNECTION_DEAD_LINE_USEC: number;
 
+    /**
+     * @default 256
+     */
     const OSC_CONNECTION_DEFAULT_CACHE_DATA_LENGTH: number;
 
+    /**
+     * @default 250
+     */
     const OSC_CONNECTION_TIMEOUT_USEC: number;
 
+    /**
+     * @default 0
+     */
     const OSC_METER_CONTROLLER_DEFAULT_MONITOR_TIMEOUT: number;
 
+    /**
+     * @default 8
+     */
     const OSC_NODE_CONTROLLER_CONTEXT_PATH_LENGTH: number;
 
+    /**
+     * @default 4096
+     */
     const OSC_PARSER_MAX_TEXT_LENGTH: number;
 
+    /**
+     * @default 8
+     */
     const OSC_RENEW_CONTROLLER_CONTEXT_PATH_LENGTH: number;
 
+    /**
+     * @default 131072
+     */
     const OSC_RESPONSE_DEFAULT_CHUNK_SIZE: number;
 
+    /**
+     * @default chunk size exceeded
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_CHUNK_SIZE_EXCEEDED: string;
 
+    /**
+     * @default malformed request
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_MALFORMED_REQUEST: string;
 
+    /**
+     * @default missing index
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_MISSING_INDEX: string;
 
+    /**
+     * @default server failure
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_SERVER_FAILURE: string;
 
+    /**
+     * @default unknown argument
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_UNKNOWN_ARGUMENT: string;
 
+    /**
+     * @default unknown path
+     */
     const OSC_RESPONSE_ERROR_MESSAGE_UNKNOWN_PATH: string;
 
+    /**
+     * @default 512
+     */
     const OSC_SERVER_DEFAULT_BACKLOG: number;
 
+    /**
+     * @default localhost
+     */
     const OSC_SERVER_DEFAULT_DOMAIN: string;
 
+    /**
+     * @default 127.0.0.1
+     */
     const OSC_SERVER_DEFAULT_INET4_ADDRESS: string;
 
+    /**
+     * @default ::1
+     */
     const OSC_SERVER_DEFAULT_INET6_ADDRESS: string;
 
+    /**
+     * @default 2048
+     */
     const OSC_SERVER_DEFAULT_MAX_ADDRESS_LENGTH: number;
 
+    /**
+     * @default 8192
+     */
     const OSC_SERVER_DEFAULT_MAX_CONNECTIONS: number;
 
+    /**
+     * @default 9000
+     */
     const OSC_SERVER_DEFAULT_SERVER_PORT: number;
 
+    /**
+     * @default ([a-zA-Z \#\*\,\/\?\[\]\{\}]+)
+     */
     const OSC_UTIL_ADDRESS_PATTERN_VALID_CHARS_PATTERN: string;
 
+    /**
+     * @default 8192
+     */
     const OSC_UTIL_SLIP_CHUNK_LENGTH: number;
 
+    /**
+     * @default 192
+     */
     const OSC_UTIL_SLIP_END: number;
 
+    /**
+     * @default 219
+     */
     const OSC_UTIL_SLIP_ESC: number;
 
+    /**
+     * @default 220
+     */
     const OSC_UTIL_SLIP_ESC_END: number;
 
+    /**
+     * @default 221
+     */
     const OSC_UTIL_SLIP_ESC_ESC: number;
 
+    /**
+     * @default ifshtdScrmTFNI
+     */
     const OSC_UTIL_TYPE_TAG_STRING_ALL: string;
 
+    /**
+     * @default 93
+     */
     const OSC_UTIL_TYPE_TAG_STRING_ARRAY_END: number;
 
+    /**
+     * @default 91
+     */
     const OSC_UTIL_TYPE_TAG_STRING_ARRAY_START: number;
 
+    /**
+     * @default 98
+     */
     const OSC_UTIL_TYPE_TAG_STRING_BLOB: number;
 
+    /**
+     * @default 99
+     */
     const OSC_UTIL_TYPE_TAG_STRING_CHAR: number;
 
+    /**
+     * @default 100
+     */
     const OSC_UTIL_TYPE_TAG_STRING_DOUBLE: number;
 
+    /**
+     * @default 70
+     */
     const OSC_UTIL_TYPE_TAG_STRING_FALSE: number;
 
+    /**
+     * @default 102
+     */
     const OSC_UTIL_TYPE_TAG_STRING_FLOAT: number;
 
+    /**
+     * @default 73
+     */
     const OSC_UTIL_TYPE_TAG_STRING_INFINITE: number;
 
+    /**
+     * @default 105
+     */
     const OSC_UTIL_TYPE_TAG_STRING_INT32: number;
 
+    /**
+     * @default 104
+     */
     const OSC_UTIL_TYPE_TAG_STRING_INT64: number;
 
+    /**
+     * @default 109
+     */
     const OSC_UTIL_TYPE_TAG_STRING_MIDI: number;
 
+    /**
+     * @default 78
+     */
     const OSC_UTIL_TYPE_TAG_STRING_NIL: number;
 
+    /**
+     * @default 114
+     */
     const OSC_UTIL_TYPE_TAG_STRING_RGBA: number;
 
+    /**
+     * @default 115
+     */
     const OSC_UTIL_TYPE_TAG_STRING_STRING: number;
 
+    /**
+     * @default 83
+     */
     const OSC_UTIL_TYPE_TAG_STRING_SYMBOL: number;
 
+    /**
+     * @default 116
+     */
     const OSC_UTIL_TYPE_TAG_STRING_TIMETAG: number;
 
+    /**
+     * @default 84
+     */
     const OSC_UTIL_TYPE_TAG_STRING_TRUE: number;
 
+    /**
+     * @default 0
+     */
     const OSC_XMLRPC_CONTROLLER_DEFAULT_DELEGATE_TIMEOUT: number;
 
+    /**
+     * @default 16384
+     */
     const OSC_XMLRPC_SERVER_DEFAULT_CHUNK_SIZE: number;
 
+    /**
+     * @default 4
+     */
     const OSS_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const OSS_DEVIN_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default /dev/dsp
+     */
     const OSS_DEVIN_DEFAULT_OSS_DEVICE: string;
 
+    /**
+     * @default /dev/mixer
+     */
     const OSS_DEVIN_DEFAULT_OSS_MIXER_DEVICE: string;
 
+    /**
+     * @default 4
+     */
     const OSS_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const OSS_DEVOUT_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default /dev/dsp
+     */
     const OSS_DEVOUT_DEFAULT_OSS_DEVICE: string;
 
+    /**
+     * @default /dev/mixer
+     */
     const OSS_DEVOUT_DEFAULT_OSS_MIXER_DEVICE: string;
 
+    /**
+     * @default 4
+     */
     const OSS_MIDIIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const OSS_MIDIIN_DEFAULT_BACKEND_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const OSS_MIDIIN_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default /dev/midi00
+     */
     const OSS_MIDIIN_DEFAULT_OSS_DEVICE: string;
 
+    /**
+     * @default /dev/mixer
+     */
     const OSS_MIDIIN_DEFAULT_OSS_MIXER_DEVICE: string;
 
+    /**
+     * @default 120.000000
+     */
     const PATTERN_DEFAULT_BPM: number;
 
+    /**
+     * @default 0
+     */
     const PATTERN_DEFAULT_DURATION: number;
 
+    /**
+     * @default 0
+     */
     const PATTERN_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const PATTERN_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 64
+     */
     const PATTERN_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 16.000000
+     */
     const PATTERN_MAXIMUM_NOTE_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const PATTERN_MINIMUM_NOTE_LENGTH: number;
 
+    /**
+     * @default 1.000000
+     */
     const PATTERN_TICS_PER_BEAT: number;
 
+    /**
+     * @default 440.000000
+     */
     const PEAK_UTIL_DEFAULT_HARMONIC_RATE: number;
 
+    /**
+     * @default 1.000000
+     */
     const PEAK_UTIL_DEFAULT_PRESSURE_FACTOR: number;
 
+    /**
+     * @default ags-volume
+     */
     const PLUGIN_NAME_VOLUME: string;
 
+    /**
+     * @default AgsProgramNativeScale
+     */
     const PROGRAM_CLIPBOARD_FORMAT: string;
 
+    /**
+     * @default AgsProgramNativePiano
+     */
     const PROGRAM_CLIPBOARD_LEGACY_FORMAT: string;
 
+    /**
+     * @default AgsProgramClipboardXml
+     */
     const PROGRAM_CLIPBOARD_TYPE: string;
 
+    /**
+     * @default 5.1.0
+     */
     const PROGRAM_CLIPBOARD_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const PROGRAM_DEFAULT_BPM: number;
 
+    /**
+     * @default 0
+     */
     const PROGRAM_DEFAULT_DURATION: number;
 
+    /**
+     * @default 0
+     */
     const PROGRAM_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const PROGRAM_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const PROGRAM_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 8
+     */
     const PROGRAM_DEFAULT_PRECISION: number;
 
+    /**
+     * @default 16.000000
+     */
     const PROGRAM_MAXIMUM_MARKER_LENGTH: number;
 
+    /**
+     * @default 128
+     */
     const PROGRAM_MAXIMUM_STEPS: number;
 
+    /**
+     * @default 0
+     */
     const PROGRAM_MINIMUM_MARKER_LENGTH: number;
 
+    /**
+     * @default 1.000000
+     */
     const PROGRAM_TICS_PER_BEAT: number;
 
+    /**
+     * @default 8
+     */
     const PULSE_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const PULSE_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const PULSE_PORT_DEFAULT_CACHE_BUFFER_SIZE: number;
 
+    /**
+     * @default 4
+     */
     const PULSE_PORT_DEFAULT_CACHE_COUNT: number;
 
+    /**
+     * @default Fri Apr 26 12:33:34 UTC 2024
+     */
     const RECALL_DEFAULT_BUILD_ID: string;
 
+    /**
+     * @default 7.0.0
+     */
     const RECALL_DEFAULT_VERSION: string;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_BANK: number;
 
+    /**
+     * @default 48.000000
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_BASE_KEY: number;
 
+    /**
+     * @default ags-fluid-4th-order
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_PITCH_TYPE: string;
 
+    /**
+     * @default 0
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_PROGRAM: number;
 
+    /**
+     * @default 0.000000
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_TUNING: number;
 
+    /**
+     * @default 1.000000
+     */
     const SF2_SYNTH_GENERATOR_DEFAULT_VOLUME: number;
 
+    /**
+     * @default 2
+     */
     const SFZ_FILE_DEFAULT_CHANNELS: number;
 
+    /**
+     * @default 4294967296
+     */
     const SFZ_FILE_LOOP_MAX: number;
 
+    /**
+     * @default r
+     */
     const SFZ_FILE_READ: string;
 
+    /**
+     * @default w
+     */
     const SFZ_FILE_WRITE: string;
 
+    /**
+     * @default 48.000000
+     */
     const SFZ_SYNTH_GENERATOR_DEFAULT_BASE_KEY: number;
 
+    /**
+     * @default ags-fluid-4th-order
+     */
     const SFZ_SYNTH_GENERATOR_DEFAULT_PITCH_TYPE: string;
 
+    /**
+     * @default 0.000000
+     */
     const SFZ_SYNTH_GENERATOR_DEFAULT_TUNING: number;
 
+    /**
+     * @default 1.000000
+     */
     const SFZ_SYNTH_GENERATOR_DEFAULT_VOLUME: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 1.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_FM_LFO_DEPTH: number;
 
+    /**
+     * @default 6.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_FM_LFO_FREQUENCY: number;
 
+    /**
+     * @default 0.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_FM_TUNING: number;
 
+    /**
+     * @default 440.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default 1.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_LFO_DEPTH: number;
 
+    /**
+     * @default 0.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_PHASE: number;
 
+    /**
+     * @default 0.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_TUNING: number;
 
+    /**
+     * @default 1.000000
+     */
     const SYNTH_GENERATOR_DEFAULT_VOLUME: number;
 
+    /**
+     * @default 440.000000
+     */
     const SYNTH_UTIL_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default 440.000000
+     */
     const TIME_STRETCH_UTIL_DEFAULT_FREQUENCY: number;
 
+    /**
+     * @default 16.000000
+     */
     const TRACK_DEFAULT_TICKS_PER_QUARTER_TRACK: number;
 
+    /**
+     * @default 8
+     */
     const WASAPI_DEVIN_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8192
+     */
     const WASAPI_DEVIN_DEFAULT_WASAPI_BUFFER_SIZE: number;
 
+    /**
+     * @default 8
+     */
     const WASAPI_DEVOUT_DEFAULT_APP_BUFFER_SIZE: number;
 
+    /**
+     * @default 8192
+     */
     const WASAPI_DEVOUT_DEFAULT_WASAPI_BUFFER_SIZE: number;
 
+    /**
+     * @default AgsWaveNativeLevel
+     */
     const WAVE_CLIPBOARD_FORMAT: string;
 
+    /**
+     * @default AgsWaveClipboardXml
+     */
     const WAVE_CLIPBOARD_TYPE: string;
 
+    /**
+     * @default 1.4.0
+     */
     const WAVE_CLIPBOARD_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const WAVE_DEFAULT_BPM: number;
 
+    /**
+     * @default 64.000000
+     */
     const WAVE_DEFAULT_BUFFER_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const WAVE_DEFAULT_DURATION: number;
 
+    /**
+     * @default 0
+     */
     const WAVE_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 0
+     */
     const WAVE_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 0
+     */
     const WAVE_DEFAULT_OFFSET: number;
 
+    /**
+     * @default 0
+     */
     const WAVE_MINIMUM_BUFFER_LENGTH: number;
 
+    /**
+     * @default 1.000000
+     */
     const WAVE_TICS_PER_BEAT: number;
 
     /**
@@ -5458,31 +6367,31 @@ export namespace AgsAudio {
         /**
          * if start is default start point
          */
-        ACCELERATION_DEFAULT_START,
+        ACCELERATION_DEFAULT_START = 1,
         /**
          * if end is default end point
          */
-        ACCELERATION_DEFAULT_END,
+        ACCELERATION_DEFAULT_END = 2,
         /**
          * interpret x and y as GUI format
          */
-        ACCELERATION_GUI,
+        ACCELERATION_GUI = 4,
         /**
          * interpret x and y as runtime formant
          */
-        ACCELERATION_RUNTIME,
+        ACCELERATION_RUNTIME = 8,
         /**
          * interpret x and y as human readable
          */
-        ACCELERATION_HUMAN_READABLE,
+        ACCELERATION_HUMAN_READABLE = 16,
         /**
          * if default length applies
          */
-        ACCELERATION_DEFAULT_LENGTH,
+        ACCELERATION_DEFAULT_LENGTH = 32,
         /**
          * if the acceleration is selected
          */
-        ACCELERATION_IS_SELECTED,
+        ACCELERATION_IS_SELECTED = 64,
     }
 
 
@@ -5502,27 +6411,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        ALSA_DEVIN_INITIALIZED,
+        ALSA_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        ALSA_DEVIN_START_RECORD,
+        ALSA_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        ALSA_DEVIN_RECORD,
+        ALSA_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        ALSA_DEVIN_SHUTDOWN,
+        ALSA_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        ALSA_DEVIN_NONBLOCKING,
+        ALSA_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        ALSA_DEVIN_ATTACK_FIRST,
+        ALSA_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -5542,27 +6451,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        ALSA_DEVOUT_INITIALIZED,
+        ALSA_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        ALSA_DEVOUT_START_PLAY,
+        ALSA_DEVOUT_START_PLAY = 2,
         /**
          * devout is running
          */
-        ALSA_DEVOUT_PLAY,
+        ALSA_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        ALSA_DEVOUT_SHUTDOWN,
+        ALSA_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        ALSA_DEVOUT_NONBLOCKING,
+        ALSA_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        ALSA_DEVOUT_ATTACK_FIRST,
+        ALSA_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -5575,35 +6484,35 @@ export namespace AgsAudio {
         /**
          * the alsa_midiin was added to registry, see {@link Ags.Connectable.SignalSignatures.add_to_registry | Ags.Connectable::add_to_registry}()
          */
-        ADDED_TO_REGISTRY,
+        ADDED_TO_REGISTRY = 1,
         /**
          * indicates the alsa_midiin was connected by calling {@link Ags.Connectable.SignalSignatures.connect | Ags.Connectable::connect}()
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * recording is initialized
          */
-        INITIALIZED,
+        INITIALIZED = 4,
         /**
          * is recording
          */
-        RECORD,
+        RECORD = 8,
         /**
          * stop recording
          */
-        SHUTDOWN,
+        SHUTDOWN = 16,
         /**
          * just started recording
          */
-        START_RECORD,
+        START_RECORD = 32,
         /**
          * do non-blocking calls
          */
-        NONBLOCKING,
+        NONBLOCKING = 64,
         /**
          * use first attack, instead of second one
          */
-        ATTACK_FIRST,
+        ATTACK_FIRST = 128,
     }
 
 
@@ -5615,31 +6524,31 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial poll
          */
-        INITIAL_POLL,
+        INITIAL_POLL = 2,
         /**
          * sync wait, sequencer conditional lock
          */
-        POLL_WAIT,
+        POLL_WAIT = 4,
         /**
          * sync done, sequencer conditional lock
          */
-        POLL_DONE,
+        POLL_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        POLL_FINISH_WAIT,
+        POLL_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        POLL_FINISH_DONE,
+        POLL_FINISH_DONE = 32,
         /**
          * switch buffer
          */
-        POLL_SWITCH_BUFFER,
+        POLL_SWITCH_BUFFER = 64,
     }
 
 
@@ -5659,55 +6568,55 @@ export namespace AgsAudio {
         /**
          * no output provided
          */
-        AUDIO_NO_OUTPUT,
+        AUDIO_NO_OUTPUT = 1,
         /**
          * no input provided
          */
-        AUDIO_NO_INPUT,
+        AUDIO_NO_INPUT = 2,
         /**
          * input/output is mapped synchronously
          */
-        AUDIO_SYNC,
+        AUDIO_SYNC = 4,
         /**
          * input/output is mapped asynchronously
          */
-        AUDIO_ASYNC,
+        AUDIO_ASYNC = 8,
         /**
          * output has recycling
          */
-        AUDIO_OUTPUT_HAS_RECYCLING,
+        AUDIO_OUTPUT_HAS_RECYCLING = 16,
         /**
          * output has synth
          */
-        AUDIO_OUTPUT_HAS_SYNTH,
+        AUDIO_OUTPUT_HAS_SYNTH = 32,
         /**
          * input has recycling
          */
-        AUDIO_INPUT_HAS_RECYCLING,
+        AUDIO_INPUT_HAS_RECYCLING = 64,
         /**
          * input has synth
          */
-        AUDIO_INPUT_HAS_SYNTH,
+        AUDIO_INPUT_HAS_SYNTH = 128,
         /**
          * input takes file
          */
-        AUDIO_INPUT_HAS_FILE,
+        AUDIO_INPUT_HAS_FILE = 256,
         /**
          * dispatch can next active
          */
-        AUDIO_CAN_NEXT_ACTIVE,
+        AUDIO_CAN_NEXT_ACTIVE = 512,
         /**
          * skip output as processing audio data
          */
-        AUDIO_SKIP_OUTPUT,
+        AUDIO_SKIP_OUTPUT = 1024,
         /**
          * skip input as processing audio data
          */
-        AUDIO_SKIP_INPUT,
+        AUDIO_SKIP_INPUT = 2048,
         /**
          * don't apply any data
          */
-        AUDIO_BYPASS,
+        AUDIO_BYPASS = 4096,
     }
 
 
@@ -5720,27 +6629,27 @@ export namespace AgsAudio {
         /**
          * play channel
          */
-        PLAY_CHANNEL,
+        PLAY_CHANNEL = 1,
         /**
          * playing channnel
          */
-        PLAYING_CHANNEL,
+        PLAYING_CHANNEL = 2,
         /**
          * play channe terminating
          */
-        PLAY_CHANNEL_TERMINATING,
+        PLAY_CHANNEL_TERMINATING = 4,
         /**
          * play audio
          */
-        PLAY_AUDIO,
+        PLAY_AUDIO = 8,
         /**
          * playing audio
          */
-        PLAYING_AUDIO,
+        PLAYING_AUDIO = 16,
         /**
          * play audio terminating
          */
-        PLAY_AUDIO_TERMINATING,
+        PLAY_AUDIO_TERMINATING = 32,
     }
 
 
@@ -5760,31 +6669,31 @@ export namespace AgsAudio {
         /**
          * the audio signal acts as template
          */
-        AUDIO_SIGNAL_DEFAULT_TEMPLATE,
+        AUDIO_SIGNAL_DEFAULT_TEMPLATE = 1,
         /**
          * the audio signal acts as a realtime template
          */
-        AUDIO_SIGNAL_RT_TEMPLATE,
+        AUDIO_SIGNAL_RT_TEMPLATE = 2,
         /**
          * the audio signal needs master
          */
-        AUDIO_SIGNAL_MASTER,
+        AUDIO_SIGNAL_MASTER = 4,
         /**
          * the audio signal needs feed
          */
-        AUDIO_SIGNAL_FEED,
+        AUDIO_SIGNAL_FEED = 8,
         /**
          * the audio signal is recycled
          */
-        AUDIO_SIGNAL_RECYCLED,
+        AUDIO_SIGNAL_RECYCLED = 16,
         /**
          * the audio signal needs stream
          */
-        AUDIO_SIGNAL_STREAM,
+        AUDIO_SIGNAL_STREAM = 32,
         /**
          * the audio signal allocates from slice
          */
-        AUDIO_SIGNAL_SLICE_ALLOC,
+        AUDIO_SIGNAL_SLICE_ALLOC = 64,
     }
 
 
@@ -5801,8 +6710,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum AudioSignalStreamMode {
-        AUDIO_SIGNAL_STREAM_CONTINUES_FEED,
-        AUDIO_SIGNAL_STREAM_DUAL_BUFFERED,
+        AUDIO_SIGNAL_STREAM_CONTINUES_FEED = 0,
+        AUDIO_SIGNAL_STREAM_DUAL_BUFFERED = 1,
     }
 
 
@@ -5810,10 +6719,10 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum AudioThreadNestedSyncFlags {
-        DONE,
-        WAIT,
-        DONE_SYNC,
-        WAIT_SYNC,
+        DONE = 1,
+        WAIT = 2,
+        DONE_SYNC = 4,
+        WAIT_SYNC = 8,
     }
 
 
@@ -5833,11 +6742,11 @@ export namespace AgsAudio {
         /**
          * the client was activated
          */
-        AUDIO_UNIT_CLIENT_ACTIVATED,
+        AUDIO_UNIT_CLIENT_ACTIVATED = 1,
         /**
          * the client is ready
          */
-        AUDIO_UNIT_CLIENT_READY,
+        AUDIO_UNIT_CLIENT_READY = 2,
     }
 
 
@@ -5857,27 +6766,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        AUDIO_UNIT_DEVIN_INITIALIZED,
+        AUDIO_UNIT_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        AUDIO_UNIT_DEVIN_START_RECORD,
+        AUDIO_UNIT_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        AUDIO_UNIT_DEVIN_RECORD,
+        AUDIO_UNIT_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        AUDIO_UNIT_DEVIN_SHUTDOWN,
+        AUDIO_UNIT_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        AUDIO_UNIT_DEVIN_NONBLOCKING,
+        AUDIO_UNIT_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        AUDIO_UNIT_DEVIN_ATTACK_FIRST,
+        AUDIO_UNIT_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -5889,27 +6798,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -5929,27 +6838,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        AUDIO_UNIT_DEVOUT_INITIALIZED,
+        AUDIO_UNIT_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        AUDIO_UNIT_DEVOUT_START_PLAY,
+        AUDIO_UNIT_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        AUDIO_UNIT_DEVOUT_PLAY,
+        AUDIO_UNIT_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        AUDIO_UNIT_DEVOUT_SHUTDOWN,
+        AUDIO_UNIT_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        AUDIO_UNIT_DEVOUT_NONBLOCKING,
+        AUDIO_UNIT_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        AUDIO_UNIT_DEVOUT_ATTACK_FIRST,
+        AUDIO_UNIT_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -5961,27 +6870,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6001,23 +6910,23 @@ export namespace AgsAudio {
         /**
          * the port was registered
          */
-        AUDIO_UNIT_PORT_REGISTERED,
+        AUDIO_UNIT_PORT_REGISTERED = 4,
         /**
          * the port provides audio data
          */
-        AUDIO_UNIT_PORT_IS_AUDIO,
+        AUDIO_UNIT_PORT_IS_AUDIO = 8,
         /**
          * the port provides midi data
          */
-        AUDIO_UNIT_PORT_IS_MIDI,
+        AUDIO_UNIT_PORT_IS_MIDI = 16,
         /**
          * the port does output
          */
-        AUDIO_UNIT_PORT_IS_OUTPUT,
+        AUDIO_UNIT_PORT_IS_OUTPUT = 32,
         /**
          * the port does input
          */
-        AUDIO_UNIT_PORT_IS_INPUT,
+        AUDIO_UNIT_PORT_IS_INPUT = 64,
     }
 
 
@@ -6037,7 +6946,7 @@ export namespace AgsAudio {
         /**
          * ignore any automation data
          */
-        AUTOMATION_BYPASS,
+        AUTOMATION_BYPASS = 1,
     }
 
 
@@ -6057,7 +6966,7 @@ export namespace AgsAudio {
         /**
          * plugin is instrument
          */
-        BASE_PLUGIN_IS_INSTRUMENT,
+        BASE_PLUGIN_IS_INSTRUMENT = 1,
     }
 
 
@@ -6077,7 +6986,7 @@ export namespace AgsAudio {
         /**
          * is selected
          */
-        BUFFER_IS_SELECTED,
+        BUFFER_IS_SELECTED = 1,
     }
 
 
@@ -6097,7 +7006,7 @@ export namespace AgsAudio {
         /**
          * don't apply any data
          */
-        CHANNEL_BYPASS,
+        CHANNEL_BYPASS = 1,
     }
 
 
@@ -6105,10 +7014,10 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum ChannelThreadNestedSyncFlags {
-        DONE,
-        WAIT,
-        DONE_SYNC,
-        WAIT_SYNC,
+        DONE = 1,
+        WAIT = 2,
+        DONE_SYNC = 4,
+        WAIT_SYNC = 8,
     }
 
 
@@ -6128,11 +7037,11 @@ export namespace AgsAudio {
         /**
          * the client was activated
          */
-        CORE_AUDIO_CLIENT_ACTIVATED,
+        CORE_AUDIO_CLIENT_ACTIVATED = 1,
         /**
          * the client is ready
          */
-        CORE_AUDIO_CLIENT_READY,
+        CORE_AUDIO_CLIENT_READY = 2,
     }
 
 
@@ -6152,27 +7061,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        CORE_AUDIO_DEVIN_INITIALIZED,
+        CORE_AUDIO_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        CORE_AUDIO_DEVIN_START_RECORD,
+        CORE_AUDIO_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        CORE_AUDIO_DEVIN_RECORD,
+        CORE_AUDIO_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        CORE_AUDIO_DEVIN_SHUTDOWN,
+        CORE_AUDIO_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        CORE_AUDIO_DEVIN_NONBLOCKING,
+        CORE_AUDIO_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        CORE_AUDIO_DEVIN_ATTACK_FIRST,
+        CORE_AUDIO_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -6184,27 +7093,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6224,27 +7133,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        CORE_AUDIO_DEVOUT_INITIALIZED,
+        CORE_AUDIO_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        CORE_AUDIO_DEVOUT_START_PLAY,
+        CORE_AUDIO_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        CORE_AUDIO_DEVOUT_PLAY,
+        CORE_AUDIO_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        CORE_AUDIO_DEVOUT_SHUTDOWN,
+        CORE_AUDIO_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        CORE_AUDIO_DEVOUT_NONBLOCKING,
+        CORE_AUDIO_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        CORE_AUDIO_DEVOUT_ATTACK_FIRST,
+        CORE_AUDIO_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -6256,27 +7165,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6296,27 +7205,27 @@ export namespace AgsAudio {
         /**
          * recording is initialized
          */
-        CORE_AUDIO_MIDIIN_INITIALIZED,
+        CORE_AUDIO_MIDIIN_INITIALIZED = 1,
         /**
          * just started recording
          */
-        CORE_AUDIO_MIDIIN_START_RECORD,
+        CORE_AUDIO_MIDIIN_START_RECORD = 2,
         /**
          * is recording
          */
-        CORE_AUDIO_MIDIIN_RECORD,
+        CORE_AUDIO_MIDIIN_RECORD = 4,
         /**
          * stop recording
          */
-        CORE_AUDIO_MIDIIN_SHUTDOWN,
+        CORE_AUDIO_MIDIIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        CORE_AUDIO_MIDIIN_NONBLOCKING,
+        CORE_AUDIO_MIDIIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        CORE_AUDIO_MIDIIN_ATTACK_FIRST,
+        CORE_AUDIO_MIDIIN_ATTACK_FIRST = 32,
     }
 
 
@@ -6328,31 +7237,31 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
         /**
          * do synchronize
          */
-        DO_SYNC,
+        DO_SYNC = 64,
     }
 
 
@@ -6372,23 +7281,23 @@ export namespace AgsAudio {
         /**
          * the port was registered
          */
-        CORE_AUDIO_PORT_REGISTERED,
+        CORE_AUDIO_PORT_REGISTERED = 1,
         /**
          * the port provides audio data
          */
-        CORE_AUDIO_PORT_IS_AUDIO,
+        CORE_AUDIO_PORT_IS_AUDIO = 2,
         /**
          * the port provides midi data
          */
-        CORE_AUDIO_PORT_IS_MIDI,
+        CORE_AUDIO_PORT_IS_MIDI = 4,
         /**
          * the port does output
          */
-        CORE_AUDIO_PORT_IS_OUTPUT,
+        CORE_AUDIO_PORT_IS_OUTPUT = 8,
         /**
          * the port does input
          */
-        CORE_AUDIO_PORT_IS_INPUT,
+        CORE_AUDIO_PORT_IS_INPUT = 16,
     }
 
 
@@ -6400,19 +7309,19 @@ export namespace AgsAudio {
         /**
          * use WAV format
          */
-        WAV,
+        WAV = 1,
         /**
          * use OGG format
          */
-        OGG,
+        OGG = 2,
         /**
          * use FLAC format
          */
-        FLAC,
+        FLAC = 4,
         /**
          * use AIFF format
          */
-        AIFF,
+        AIFF = 8,
     }
 
 
@@ -6425,11 +7334,11 @@ export namespace AgsAudio {
         /**
          * do live export
          */
-        LIVE_PERFORMANCE,
+        LIVE_PERFORMANCE = 1,
         /**
          * is exporting
          */
-        IS_EXPORTING,
+        IS_EXPORTING = 2,
     }
 
 
@@ -6449,27 +7358,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        FIFOOUT_INITIALIZED,
+        FIFOOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        FIFOOUT_START_PLAY,
+        FIFOOUT_START_PLAY = 2,
         /**
          * use first attack, instead of second one
          */
-        FIFOOUT_PLAY,
+        FIFOOUT_PLAY = 4,
         /**
          * stop playback
          */
-        FIFOOUT_SHUTDOWN,
+        FIFOOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        FIFOOUT_NONBLOCKING,
+        FIFOOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        FIFOOUT_ATTACK_FIRST,
+        FIFOOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -6488,19 +7397,19 @@ export namespace AgsAudio {
         /**
          * disabled
          */
-        FLUID_IIR_DISABLED,
+        FLUID_IIR_DISABLED = 0,
         /**
          * low-pass
          */
-        FLUID_IIR_LOWPASS,
+        FLUID_IIR_LOWPASS = 1,
         /**
          * high-pass
          */
-        FLUID_IIR_HIGHPASS,
+        FLUID_IIR_HIGHPASS = 2,
         /**
          * last entry
          */
-        FLUID_IIR_LAST,
+        FLUID_IIR_LAST = 3,
     }
 
 
@@ -6519,35 +7428,35 @@ export namespace AgsAudio {
         /**
          * output related
          */
-        FX_FACTORY_OUTPUT,
+        FX_FACTORY_OUTPUT = 1,
         /**
          * input related
          */
-        FX_FACTORY_INPUT,
+        FX_FACTORY_INPUT = 2,
         /**
          * remap
          */
-        FX_FACTORY_REMAP,
+        FX_FACTORY_REMAP = 4,
         /**
          * do add
          */
-        FX_FACTORY_ADD,
+        FX_FACTORY_ADD = 8,
         /**
          * bounded to play
          */
-        FX_FACTORY_PLAY,
+        FX_FACTORY_PLAY = 16,
         /**
          * bounded to recall
          */
-        FX_FACTORY_RECALL,
+        FX_FACTORY_RECALL = 32,
         /**
          * operates on bulk mode
          */
-        FX_FACTORY_BULK,
+        FX_FACTORY_BULK = 64,
         /**
          * is live version
          */
-        FX_FACTORY_LIVE,
+        FX_FACTORY_LIVE = 128,
     }
 
 
@@ -6559,15 +7468,15 @@ export namespace AgsAudio {
         /**
          * do play notation
          */
-        PLAY,
+        PLAY = 1,
         /**
          * do record notation
          */
-        RECORD,
+        RECORD = 2,
         /**
          * do feed note
          */
-        FEED,
+        FEED = 4,
     }
 
 
@@ -6579,19 +7488,19 @@ export namespace AgsAudio {
         /**
          * do play sound
          */
-        PLAY,
+        PLAY = 1,
         /**
          * do record sound
          */
-        RECORD,
+        RECORD = 2,
         /**
          * do feed audio signal
          */
-        FEED,
+        FEED = 4,
         /**
          * do master audio signal
          */
-        MASTER,
+        MASTER = 8,
     }
 
 
@@ -6611,11 +7520,11 @@ export namespace AgsAudio {
         /**
          * the client was activated
          */
-        GSTREAMER_CLIENT_ACTIVATED,
+        GSTREAMER_CLIENT_ACTIVATED = 4,
         /**
          * the client is ready
          */
-        GSTREAMER_CLIENT_READY,
+        GSTREAMER_CLIENT_READY = 8,
     }
 
 
@@ -6635,27 +7544,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        GSTREAMER_DEVIN_INITIALIZED,
+        GSTREAMER_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        GSTREAMER_DEVIN_START_RECORD,
+        GSTREAMER_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        GSTREAMER_DEVIN_RECORD,
+        GSTREAMER_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        GSTREAMER_DEVIN_SHUTDOWN,
+        GSTREAMER_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        GSTREAMER_DEVIN_NONBLOCKING,
+        GSTREAMER_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        GSTREAMER_DEVIN_ATTACK_FIRST,
+        GSTREAMER_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -6667,27 +7576,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6707,27 +7616,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        GSTREAMER_DEVOUT_INITIALIZED,
+        GSTREAMER_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        GSTREAMER_DEVOUT_START_PLAY,
+        GSTREAMER_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        GSTREAMER_DEVOUT_PLAY,
+        GSTREAMER_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        GSTREAMER_DEVOUT_SHUTDOWN,
+        GSTREAMER_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        GSTREAMER_DEVOUT_NONBLOCKING,
+        GSTREAMER_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        GSTREAMER_DEVOUT_ATTACK_FIRST,
+        GSTREAMER_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -6739,27 +7648,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6779,23 +7688,23 @@ export namespace AgsAudio {
         /**
          * the port was registered
          */
-        GSTREAMER_PORT_REGISTERED,
+        GSTREAMER_PORT_REGISTERED = 1,
         /**
          * the port provides audio data
          */
-        GSTREAMER_PORT_IS_AUDIO,
+        GSTREAMER_PORT_IS_AUDIO = 2,
         /**
          * the port provides midi data
          */
-        GSTREAMER_PORT_IS_MIDI,
+        GSTREAMER_PORT_IS_MIDI = 4,
         /**
          * the port does output
          */
-        GSTREAMER_PORT_IS_OUTPUT,
+        GSTREAMER_PORT_IS_OUTPUT = 8,
         /**
          * the port does input
          */
-        GSTREAMER_PORT_IS_INPUT,
+        GSTREAMER_PORT_IS_INPUT = 16,
     }
 
 
@@ -6815,15 +7724,15 @@ export namespace AgsAudio {
         /**
          * DLS2 format
          */
-        IPATCH_DLS2,
+        IPATCH_DLS2 = 1,
         /**
          * Soundfont2 format
          */
-        IPATCH_SF2,
+        IPATCH_SF2 = 2,
         /**
          * Gigasampler format
          */
-        IPATCH_GIG,
+        IPATCH_GIG = 4,
     }
 
 
@@ -6843,7 +7752,7 @@ export namespace AgsAudio {
         /**
          * the client was activated
          */
-        JACK_CLIENT_ACTIVATED,
+        JACK_CLIENT_ACTIVATED = 1,
     }
 
 
@@ -6863,27 +7772,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        JACK_DEVIN_INITIALIZED,
+        JACK_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        JACK_DEVIN_START_RECORD,
+        JACK_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        JACK_DEVIN_RECORD,
+        JACK_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        JACK_DEVIN_SHUTDOWN,
+        JACK_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        JACK_DEVIN_NONBLOCKING,
+        JACK_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        JACK_DEVIN_ATTACK_FIRST,
+        JACK_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -6895,27 +7804,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -6935,27 +7844,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        JACK_DEVOUT_INITIALIZED,
+        JACK_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        JACK_DEVOUT_START_PLAY,
+        JACK_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        JACK_DEVOUT_PLAY,
+        JACK_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        JACK_DEVOUT_SHUTDOWN,
+        JACK_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        JACK_DEVOUT_NONBLOCKING,
+        JACK_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        JACK_DEVOUT_ATTACK_FIRST,
+        JACK_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -6967,27 +7876,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -7007,27 +7916,27 @@ export namespace AgsAudio {
         /**
          * recording is initialized
          */
-        JACK_MIDIIN_INITIALIZED,
+        JACK_MIDIIN_INITIALIZED = 1,
         /**
          * just started recording
          */
-        JACK_MIDIIN_START_RECORD,
+        JACK_MIDIIN_START_RECORD = 2,
         /**
          * is recording
          */
-        JACK_MIDIIN_RECORD,
+        JACK_MIDIIN_RECORD = 4,
         /**
          * stop recording
          */
-        JACK_MIDIIN_SHUTDOWN,
+        JACK_MIDIIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        JACK_MIDIIN_NONBLOCKING,
+        JACK_MIDIIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        JACK_MIDIIN_ATTACK_FIRST,
+        JACK_MIDIIN_ATTACK_FIRST = 32,
     }
 
 
@@ -7039,27 +7948,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, sequencer conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, sequencer conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -7079,23 +7988,23 @@ export namespace AgsAudio {
         /**
          * the port was registered
          */
-        JACK_PORT_REGISTERED,
+        JACK_PORT_REGISTERED = 1,
         /**
          * the port provides audio data
          */
-        JACK_PORT_IS_AUDIO,
+        JACK_PORT_IS_AUDIO = 2,
         /**
          * the port provides midi data
          */
-        JACK_PORT_IS_MIDI,
+        JACK_PORT_IS_MIDI = 4,
         /**
          * the port does output
          */
-        JACK_PORT_IS_OUTPUT,
+        JACK_PORT_IS_OUTPUT = 8,
         /**
          * the port does input
          */
-        JACK_PORT_IS_INPUT,
+        JACK_PORT_IS_INPUT = 16,
     }
 
 
@@ -7115,19 +8024,19 @@ export namespace AgsAudio {
         /**
          * samplerate
          */
-        LADSPA_CONVERSION_SAMPLERATE,
+        LADSPA_CONVERSION_SAMPLERATE = 1,
         /**
          * bounded below
          */
-        LADSPA_CONVERSION_BOUNDED_BELOW,
+        LADSPA_CONVERSION_BOUNDED_BELOW = 2,
         /**
          * bounded above
          */
-        LADSPA_CONVERSION_BOUNDED_ABOVE,
+        LADSPA_CONVERSION_BOUNDED_ABOVE = 4,
         /**
          * logarithmic
          */
-        LADSPA_CONVERSION_LOGARITHMIC,
+        LADSPA_CONVERSION_LOGARITHMIC = 8,
     }
 
 
@@ -7147,7 +8056,7 @@ export namespace AgsAudio {
         /**
          * logarithmic
          */
-        LV2_CONVERSION_LOGARITHMIC,
+        LV2_CONVERSION_LOGARITHMIC = 1,
     }
 
 
@@ -7167,15 +8076,15 @@ export namespace AgsAudio {
         /**
          * plugin is synthesizer
          */
-        LV2_PLUGIN_IS_SYNTHESIZER,
+        LV2_PLUGIN_IS_SYNTHESIZER = 1,
         /**
          * plugin needs worker
          */
-        LV2_PLUGIN_NEEDS_WORKER,
+        LV2_PLUGIN_NEEDS_WORKER = 2,
         /**
          * plugin has program interface
          */
-        LV2_PLUGIN_HAS_PROGRAM_INTERFACE,
+        LV2_PLUGIN_HAS_PROGRAM_INTERFACE = 4,
     }
 
 
@@ -7192,13 +8101,13 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum Lv2TurtleScannerStatusFlags {
-        LV2_TURTLE_SCANNER_A,
-        LV2_TURTLE_SCANNER_SEEALSO,
-        LV2_TURTLE_SCANNER_BINARY,
+        LV2_TURTLE_SCANNER_A = 1,
+        LV2_TURTLE_SCANNER_SEEALSO = 4,
+        LV2_TURTLE_SCANNER_BINARY = 8,
         /**
          * scanner name
          */
-        LV2_TURTLE_SCANNER_NAME,
+        LV2_TURTLE_SCANNER_NAME = 16,
     }
 
 
@@ -7218,7 +8127,7 @@ export namespace AgsAudio {
         /**
          * the worker is running
          */
-        LV2_WORKER_RUN,
+        LV2_WORKER_RUN = 1,
     }
 
 
@@ -7238,23 +8147,23 @@ export namespace AgsAudio {
         /**
          * is synthesizer
          */
-        LV2UI_PLUGIN_IS_SYNTHESIZER,
+        LV2UI_PLUGIN_IS_SYNTHESIZER = 1,
         /**
          * has Gtk+-2.0 UI
          */
-        LV2UI_PLUGIN_GTK2,
+        LV2UI_PLUGIN_GTK2 = 2,
         /**
          * has Gtk3 UI
          */
-        LV2UI_PLUGIN_GTK3,
+        LV2UI_PLUGIN_GTK3 = 4,
         /**
          * has Qt4 UI
          */
-        LV2UI_PLUGIN_QT4,
+        LV2UI_PLUGIN_QT4 = 8,
         /**
          * has Qt5 UI
          */
-        LV2UI_PLUGIN_QT5,
+        LV2UI_PLUGIN_QT5 = 16,
     }
 
 
@@ -7272,31 +8181,31 @@ export namespace AgsAudio {
         /**
          * if start is default start point
          */
-        MARKER_DEFAULT_START,
+        MARKER_DEFAULT_START = 1,
         /**
          * if end is default end point
          */
-        MARKER_DEFAULT_END,
+        MARKER_DEFAULT_END = 2,
         /**
          * interpret x and y as GUI format
          */
-        MARKER_GUI,
+        MARKER_GUI = 4,
         /**
          * interpret x and y as runtime formant
          */
-        MARKER_RUNTIME,
+        MARKER_RUNTIME = 8,
         /**
          * interpret x and y as human readable
          */
-        MARKER_HUMAN_READABLE,
+        MARKER_HUMAN_READABLE = 16,
         /**
          * if default length applies
          */
-        MARKER_DEFAULT_LENGTH,
+        MARKER_DEFAULT_LENGTH = 32,
         /**
          * if the marker is selected
          */
-        MARKER_IS_SELECTED,
+        MARKER_IS_SELECTED = 64,
     }
 
 
@@ -7304,8 +8213,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiBuilderFlags {
-        EOF,
-        EOT,
+        EOF = 1,
+        EOT = 2,
     }
 
 
@@ -7313,9 +8222,9 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiCICategorySupport {
-        PROTOCOL_NEGOTIATION_SUPPORTED,
-        PROFILE_CONFIGURATION_SUPPORTED,
-        PROPERTY_EXCHANGE_SUPPORTED,
+        PROTOCOL_NEGOTIATION_SUPPORTED = 2,
+        PROFILE_CONFIGURATION_SUPPORTED = 4,
+        PROPERTY_EXCHANGE_SUPPORTED = 8,
     }
 
 
@@ -7323,9 +8232,9 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiChunkFlags {
-        HEADER,
-        TRACK,
-        UNKNOWN,
+        HEADER = 1,
+        TRACK = 2,
+        UNKNOWN = 4,
     }
 
 
@@ -7333,9 +8242,9 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiFileFlags {
-        EOF,
-        SMTPE,
-        DROP_FRAME,
+        EOF = 1,
+        SMTPE = 2,
+        DROP_FRAME = 4,
     }
 
 
@@ -7343,8 +8252,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiParserFlags {
-        EOF,
-        EOT,
+        EOF = 1,
+        EOT = 2,
     }
 
 
@@ -7352,11 +8261,11 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiUmpEndpointDiscoveryFilterBitmap {
-        ENDPOINT_INFO,
-        DEVICE_IDENTITY,
-        ENDPOINT_NAME,
-        PRODUCT_INSTANCE_ID,
-        STREAM_CONFIGURATION,
+        ENDPOINT_INFO = 1,
+        DEVICE_IDENTITY = 2,
+        ENDPOINT_NAME = 4,
+        PRODUCT_INSTANCE_ID = 8,
+        STREAM_CONFIGURATION = 16,
     }
 
 
@@ -7364,8 +8273,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum MidiUmpFunctionBlockDiscoveryFilterBitmap {
-        INFO_NOTIFICATION,
-        NAME_NOTIFICATION,
+        INFO_NOTIFICATION = 1,
+        NAME_NOTIFICATION = 2,
     }
 
 
@@ -7385,11 +8294,11 @@ export namespace AgsAudio {
         /**
          * pattern mode
          */
-        NOTATION_PATTERN_MODE,
+        NOTATION_PATTERN_MODE = 1,
         /**
          * ignore any notation data
          */
-        NOTATION_BYPASS,
+        NOTATION_BYPASS = 2,
     }
 
 
@@ -7402,31 +8311,31 @@ export namespace AgsAudio {
         /**
          * gui format
          */
-        GUI,
+        GUI = 1,
         /**
          * runtime format
          */
-        RUNTIME,
+        RUNTIME = 2,
         /**
          * human readable format
          */
-        HUMAN_READABLE,
+        HUMAN_READABLE = 4,
         /**
          * default length
          */
-        DEFAULT_LENGTH,
+        DEFAULT_LENGTH = 8,
         /**
          * is selected
          */
-        IS_SELECTED,
+        IS_SELECTED = 16,
         /**
          * feed note
          */
-        FEED,
+        FEED = 32,
         /**
          * do envelope
          */
-        ENVELOPE,
+        ENVELOPE = 64,
     }
 
 
@@ -7445,19 +8354,19 @@ export namespace AgsAudio {
         /**
          * use IPv4 socket
          */
-        OSC_CLIENT_INET4,
+        OSC_CLIENT_INET4 = 1,
         /**
          * use IPv6 socket
          */
-        OSC_CLIENT_INET6,
+        OSC_CLIENT_INET6 = 2,
         /**
          * use UDP transport protocol
          */
-        OSC_CLIENT_UDP,
+        OSC_CLIENT_UDP = 4,
         /**
          * used TCP transport protocol
          */
-        OSC_CLIENT_TCP,
+        OSC_CLIENT_TCP = 8,
     }
 
 
@@ -7469,15 +8378,15 @@ export namespace AgsAudio {
         /**
          * is active
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * IPv4 connection
          */
-        INET4,
+        INET4 = 2,
         /**
          * IPv6 connection
          */
-        INET6,
+        INET6 = 4,
     }
 
 
@@ -7497,15 +8406,15 @@ export namespace AgsAudio {
         /**
          * delegate started
          */
-        OSC_FRONT_CONTROLLER_DELEGATE_STARTED,
+        OSC_FRONT_CONTROLLER_DELEGATE_STARTED = 1,
         /**
          * delegate running
          */
-        OSC_FRONT_CONTROLLER_DELEGATE_RUNNING,
+        OSC_FRONT_CONTROLLER_DELEGATE_RUNNING = 2,
         /**
          * delegate terminating
          */
-        OSC_FRONT_CONTROLLER_DELEGATE_TERMINATING,
+        OSC_FRONT_CONTROLLER_DELEGATE_TERMINATING = 4,
     }
 
 
@@ -7518,15 +8427,15 @@ export namespace AgsAudio {
         /**
          * monitor started
          */
-        STARTED,
+        STARTED = 1,
         /**
          * monitor running
          */
-        RUNNING,
+        RUNNING = 2,
         /**
          * monitor terminating
          */
-        TERMINATING,
+        TERMINATING = 4,
     }
 
 
@@ -7538,15 +8447,15 @@ export namespace AgsAudio {
         /**
          * is empty
          */
-        EMPTY,
+        EMPTY = 1,
         /**
          * is OK
          */
-        OK,
+        OK = 2,
         /**
          * has error
          */
-        ERROR,
+        ERROR = 4,
     }
 
 
@@ -7566,39 +8475,39 @@ export namespace AgsAudio {
         /**
          * run on UNIX socket
          */
-        OSC_SERVER_STARTED,
+        OSC_SERVER_STARTED = 128,
         /**
          * the server is up and running
          */
-        OSC_SERVER_RUNNING,
+        OSC_SERVER_RUNNING = 2,
         /**
          * the server is closing connections and terminating
          */
-        OSC_SERVER_TERMINATING,
+        OSC_SERVER_TERMINATING = 4,
         /**
          * use IPv4
          */
-        OSC_SERVER_INET4,
+        OSC_SERVER_INET4 = 8,
         /**
          * use IPv6
          */
-        OSC_SERVER_INET6,
+        OSC_SERVER_INET6 = 16,
         /**
          * run using UDP transport
          */
-        OSC_SERVER_UDP,
+        OSC_SERVER_UDP = 32,
         /**
          * run using TCP transport
          */
-        OSC_SERVER_TCP,
+        OSC_SERVER_TCP = 64,
         /**
          * listen on any address
          */
-        OSC_SERVER_ANY_ADDRESS,
+        OSC_SERVER_ANY_ADDRESS = 256,
         /**
          * start the server
          */
-        OSC_SERVER_AUTO_START,
+        OSC_SERVER_AUTO_START = 512,
     }
 
 
@@ -7618,9 +8527,9 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum OscXmlrpcControllerFlags {
-        OSC_XMLRPC_CONTROLLER_DELEGATE_STARTED,
-        OSC_XMLRPC_CONTROLLER_DELEGATE_RUNNING,
-        OSC_XMLRPC_CONTROLLER_DELEGATE_TERMINATING,
+        OSC_XMLRPC_CONTROLLER_DELEGATE_STARTED = 1,
+        OSC_XMLRPC_CONTROLLER_DELEGATE_RUNNING = 2,
+        OSC_XMLRPC_CONTROLLER_DELEGATE_TERMINATING = 4,
     }
 
 
@@ -7640,27 +8549,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        OSS_DEVIN_INITIALIZED,
+        OSS_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        OSS_DEVIN_START_RECORD,
+        OSS_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        OSS_DEVIN_RECORD,
+        OSS_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        OSS_DEVIN_SHUTDOWN,
+        OSS_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        OSS_DEVIN_NONBLOCKING,
+        OSS_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        OSS_DEVIN_ATTACK_FIRST,
+        OSS_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -7680,27 +8589,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        OSS_DEVOUT_INITIALIZED,
+        OSS_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        OSS_DEVOUT_START_PLAY,
+        OSS_DEVOUT_START_PLAY = 4,
         /**
          * devout is running
          */
-        OSS_DEVOUT_PLAY,
+        OSS_DEVOUT_PLAY = 2,
         /**
          * stop playback
          */
-        OSS_DEVOUT_SHUTDOWN,
+        OSS_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        OSS_DEVOUT_NONBLOCKING,
+        OSS_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        OSS_DEVOUT_ATTACK_FIRST,
+        OSS_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -7720,27 +8629,27 @@ export namespace AgsAudio {
         /**
          * recording is initialized
          */
-        OSS_MIDIIN_INITIALIZED,
+        OSS_MIDIIN_INITIALIZED = 1,
         /**
          * just started recording
          */
-        OSS_MIDIIN_START_RECORD,
+        OSS_MIDIIN_START_RECORD = 2,
         /**
          * is recording
          */
-        OSS_MIDIIN_RECORD,
+        OSS_MIDIIN_RECORD = 4,
         /**
          * stop recording
          */
-        OSS_MIDIIN_SHUTDOWN,
+        OSS_MIDIIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        OSS_MIDIIN_NONBLOCKING,
+        OSS_MIDIIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        OSS_MIDIIN_ATTACK_FIRST,
+        OSS_MIDIIN_ATTACK_FIRST = 32,
     }
 
 
@@ -7752,31 +8661,31 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial poll
          */
-        INITIAL_POLL,
+        INITIAL_POLL = 2,
         /**
          * sync wait, sequencer conditional lock
          */
-        POLL_WAIT,
+        POLL_WAIT = 4,
         /**
          * sync done, sequencer conditional lock
          */
-        POLL_DONE,
+        POLL_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        POLL_FINISH_WAIT,
+        POLL_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        POLL_FINISH_DONE,
+        POLL_FINISH_DONE = 32,
         /**
          * switch buffer
          */
-        POLL_SWITCH_BUFFER,
+        POLL_SWITCH_BUFFER = 64,
     }
 
 
@@ -7789,11 +8698,11 @@ export namespace AgsAudio {
         /**
          * single threaded
          */
-        SINGLE_THREADED,
+        SINGLE_THREADED = 1,
         /**
          * super threaded audio
          */
-        SUPER_THREADED_AUDIO,
+        SUPER_THREADED_AUDIO = 2,
     }
 
 
@@ -7813,11 +8722,11 @@ export namespace AgsAudio {
         /**
          * single threaded
          */
-        PLAYBACK_SINGLE_THREADED,
+        PLAYBACK_SINGLE_THREADED = 1,
         /**
          * super threaded channel
          */
-        PLAYBACK_SUPER_THREADED_CHANNEL,
+        PLAYBACK_SUPER_THREADED_CHANNEL = 2,
     }
 
 
@@ -7836,67 +8745,67 @@ export namespace AgsAudio {
         /**
          * atom port
          */
-        PLUGIN_PORT_ATOM,
+        PLUGIN_PORT_ATOM = 1,
         /**
          * audio port
          */
-        PLUGIN_PORT_AUDIO,
+        PLUGIN_PORT_AUDIO = 2,
         /**
          * control port
          */
-        PLUGIN_PORT_CONTROL,
+        PLUGIN_PORT_CONTROL = 4,
         /**
          * MIDI port
          */
-        PLUGIN_PORT_MIDI,
+        PLUGIN_PORT_MIDI = 8,
         /**
          * event port
          */
-        PLUGIN_PORT_EVENT,
+        PLUGIN_PORT_EVENT = 16,
         /**
          * is output
          */
-        PLUGIN_PORT_OUTPUT,
+        PLUGIN_PORT_OUTPUT = 32,
         /**
          * is input
          */
-        PLUGIN_PORT_INPUT,
+        PLUGIN_PORT_INPUT = 64,
         /**
          * toggle control
          */
-        PLUGIN_PORT_TOGGLED,
+        PLUGIN_PORT_TOGGLED = 128,
         /**
          * enumerated
          */
-        PLUGIN_PORT_ENUMERATION,
+        PLUGIN_PORT_ENUMERATION = 256,
         /**
          * logarithmic
          */
-        PLUGIN_PORT_LOGARITHMIC,
+        PLUGIN_PORT_LOGARITHMIC = 512,
         /**
          * integer
          */
-        PLUGIN_PORT_INTEGER,
+        PLUGIN_PORT_INTEGER = 1024,
         /**
          * samplerate
          */
-        PLUGIN_PORT_SAMPLERATE,
+        PLUGIN_PORT_SAMPLERATE = 2048,
         /**
          * bounded below
          */
-        PLUGIN_PORT_BOUNDED_BELOW,
+        PLUGIN_PORT_BOUNDED_BELOW = 4096,
         /**
          * bounded above
          */
-        PLUGIN_PORT_BOUNDED_ABOVE,
+        PLUGIN_PORT_BOUNDED_ABOVE = 8192,
         /**
          * ui notification
          */
-        PLUGIN_PORT_UI_NOTIFICATION,
+        PLUGIN_PORT_UI_NOTIFICATION = 16384,
         /**
          * hidden port
          */
-        PLUGIN_PORT_HIDDEN,
+        PLUGIN_PORT_HIDDEN = 32768,
     }
 
 
@@ -7916,19 +8825,19 @@ export namespace AgsAudio {
         /**
          * convert always
          */
-        PORT_CONVERT_ALWAYS,
+        PORT_CONVERT_ALWAYS = 1,
         /**
          * use ladspa float
          */
-        PORT_USE_LADSPA_FLOAT,
+        PORT_USE_LADSPA_FLOAT = 2,
         /**
          * is output
          */
-        PORT_IS_OUTPUT,
+        PORT_IS_OUTPUT = 4,
         /**
          * infinite range
          */
-        PORT_INFINITE_RANGE,
+        PORT_INFINITE_RANGE = 8,
     }
 
 
@@ -7948,7 +8857,7 @@ export namespace AgsAudio {
         /**
          * ignore any program data
          */
-        PROGRAM_BYPASS,
+        PROGRAM_BYPASS = 1,
     }
 
 
@@ -7968,11 +8877,11 @@ export namespace AgsAudio {
         /**
          * the client was activated
          */
-        PULSE_CLIENT_ACTIVATED,
+        PULSE_CLIENT_ACTIVATED = 1,
         /**
          * the client is ready
          */
-        PULSE_CLIENT_READY,
+        PULSE_CLIENT_READY = 2,
     }
 
 
@@ -7992,27 +8901,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        PULSE_DEVIN_INITIALIZED,
+        PULSE_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        PULSE_DEVIN_START_RECORD,
+        PULSE_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        PULSE_DEVIN_RECORD,
+        PULSE_DEVIN_RECORD = 4,
         /**
          * stop capture
          */
-        PULSE_DEVIN_SHUTDOWN,
+        PULSE_DEVIN_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        PULSE_DEVIN_NONBLOCKING,
+        PULSE_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        PULSE_DEVIN_ATTACK_FIRST,
+        PULSE_DEVIN_ATTACK_FIRST = 32,
     }
 
 
@@ -8024,27 +8933,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -8064,27 +8973,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        PULSE_DEVOUT_INITIALIZED,
+        PULSE_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        PULSE_DEVOUT_START_PLAY,
+        PULSE_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        PULSE_DEVOUT_PLAY,
+        PULSE_DEVOUT_PLAY = 4,
         /**
          * stop playback
          */
-        PULSE_DEVOUT_SHUTDOWN,
+        PULSE_DEVOUT_SHUTDOWN = 8,
         /**
          * do non-blocking calls
          */
-        PULSE_DEVOUT_NONBLOCKING,
+        PULSE_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        PULSE_DEVOUT_ATTACK_FIRST,
+        PULSE_DEVOUT_ATTACK_FIRST = 32,
     }
 
 
@@ -8096,27 +9005,27 @@ export namespace AgsAudio {
         /**
          * do not sync
          */
-        PASS_THROUGH,
+        PASS_THROUGH = 1,
         /**
          * initial callback
          */
-        INITIAL_CALLBACK,
+        INITIAL_CALLBACK = 2,
         /**
          * sync wait, soundcard conditional lock
          */
-        CALLBACK_WAIT,
+        CALLBACK_WAIT = 4,
         /**
          * sync done, soundcard conditional lock
          */
-        CALLBACK_DONE,
+        CALLBACK_DONE = 8,
         /**
          * sync wait, client conditional lock
          */
-        CALLBACK_FINISH_WAIT,
+        CALLBACK_FINISH_WAIT = 16,
         /**
          * sync done, client conditional lock
          */
-        CALLBACK_FINISH_DONE,
+        CALLBACK_FINISH_DONE = 32,
     }
 
 
@@ -8136,23 +9045,23 @@ export namespace AgsAudio {
         /**
          * the port was registered
          */
-        PULSE_PORT_REGISTERED,
+        PULSE_PORT_REGISTERED = 1,
         /**
          * the port provides audio data
          */
-        PULSE_PORT_IS_AUDIO,
+        PULSE_PORT_IS_AUDIO = 2,
         /**
          * the port provides midi data
          */
-        PULSE_PORT_IS_MIDI,
+        PULSE_PORT_IS_MIDI = 4,
         /**
          * the port does output
          */
-        PULSE_PORT_IS_OUTPUT,
+        PULSE_PORT_IS_OUTPUT = 8,
         /**
          * the port does input
          */
-        PULSE_PORT_IS_INPUT,
+        PULSE_PORT_IS_INPUT = 16,
     }
 
 
@@ -8164,15 +9073,15 @@ export namespace AgsAudio {
         /**
          * find type
          */
-        TYPE,
+        TYPE = 1,
         /**
          * find template
          */
-        TEMPLATE,
+        TEMPLATE = 2,
         /**
          * find recall id
          */
-        RECALL_ID,
+        RECALL_ID = 4,
     }
 
 
@@ -8192,7 +9101,7 @@ export namespace AgsAudio {
         /**
          * bound to play context
          */
-        RECALL_CONTAINER_PLAY,
+        RECALL_CONTAINER_PLAY = 1,
     }
 
 
@@ -8212,23 +9121,23 @@ export namespace AgsAudio {
         /**
          * is template
          */
-        RECALL_TEMPLATE,
+        RECALL_TEMPLATE = 1,
         /**
          * is default template
          */
-        RECALL_DEFAULT_TEMPLATE,
+        RECALL_DEFAULT_TEMPLATE = 2,
         /**
          * has output port
          */
-        RECALL_HAS_OUTPUT_PORT,
+        RECALL_HAS_OUTPUT_PORT = 4,
         /**
          * don't apply effect processing
          */
-        RECALL_BYPASS,
+        RECALL_BYPASS = 8,
         /**
          * initial run, first attack to audio data
          */
-        RECALL_INITIAL_RUN,
+        RECALL_INITIAL_RUN = 16,
     }
 
 
@@ -8247,27 +9156,27 @@ export namespace AgsAudio {
         /**
          * notify dependency as calling run
          */
-        RECALL_NOTIFY_RUN,
+        RECALL_NOTIFY_RUN = 0,
         /**
          * notify dependency audio
          */
-        RECALL_NOTIFY_AUDIO,
+        RECALL_NOTIFY_AUDIO = 1,
         /**
          * notifiy dependency audio run
          */
-        RECALL_NOTIFY_AUDIO_RUN,
+        RECALL_NOTIFY_AUDIO_RUN = 2,
         /**
          * notifiy dependency channel
          */
-        RECALL_NOTIFY_CHANNEL,
+        RECALL_NOTIFY_CHANNEL = 3,
         /**
          * notifiy dependency channel run
          */
-        RECALL_NOTIFY_CHANNEL_RUN,
+        RECALL_NOTIFY_CHANNEL_RUN = 4,
         /**
          * notifiy dependency recall
          */
-        RECALL_NOTIFY_RECALL,
+        RECALL_NOTIFY_RECALL = 5,
     }
 
 
@@ -8280,19 +9189,19 @@ export namespace AgsAudio {
         /**
          * not used
          */
-        GARBAGE_COLLECTOR,
+        GARBAGE_COLLECTOR = 1,
         /**
          * not used
          */
-        MAP_CHILD_DESTINATION,
+        MAP_CHILD_DESTINATION = 2,
         /**
          * not used
          */
-        MAP_CHILD_SOURCE,
+        MAP_CHILD_SOURCE = 4,
         /**
          * not used
          */
-        CREATE_DESTINATION_ON_MAP_SOURCE,
+        CREATE_DESTINATION_ON_MAP_SOURCE = 8,
     }
 
 
@@ -8312,11 +9221,11 @@ export namespace AgsAudio {
         /**
          * chained to output
          */
-        RECYCLING_CONTEXT_CHAINED_TO_OUTPUT,
+        RECYCLING_CONTEXT_CHAINED_TO_OUTPUT = 1,
         /**
          * chained to input
          */
-        RECYCLING_CONTEXT_CHAINED_TO_INPUT,
+        RECYCLING_CONTEXT_CHAINED_TO_INPUT = 2,
     }
 
 
@@ -8336,7 +9245,7 @@ export namespace AgsAudio {
         /**
          * recycling is muted
          */
-        RECYCLING_MUTED,
+        RECYCLING_MUTED = 4,
     }
 
 
@@ -8348,11 +9257,11 @@ export namespace AgsAudio {
         /**
          * has completed
          */
-        HAS_COMPLETED,
+        HAS_COMPLETED = 1,
         /**
          * run apply synth
          */
-        RUN_APPLY_SYNTH,
+        RUN_APPLY_SYNTH = 2,
     }
 
 
@@ -8364,11 +9273,11 @@ export namespace AgsAudio {
         /**
          * has completed
          */
-        HAS_COMPLETED,
+        HAS_COMPLETED = 1,
         /**
          * run apply midi locale
          */
-        RUN_APPLY_MIDI_LOCALE,
+        RUN_APPLY_MIDI_LOCALE = 2,
     }
 
 
@@ -8376,8 +9285,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum SF2SynthGeneratorFlags {
-        INSTRUMENT,
-        MIDI_LOCALE,
+        INSTRUMENT = 1,
+        MIDI_LOCALE = 2,
     }
 
 
@@ -8385,8 +9294,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum SF2SynthUtilFlags {
-        INSTRUMENT,
-        MIDI_LOCALE,
+        INSTRUMENT = 1,
+        MIDI_LOCALE = 2,
     }
 
 
@@ -8398,11 +9307,11 @@ export namespace AgsAudio {
         /**
          * has completed
          */
-        HAS_COMPLETED,
+        HAS_COMPLETED = 1,
         /**
          * run apply instrument
          */
-        RUN_APPLY_INSTRUMENT,
+        RUN_APPLY_INSTRUMENT = 2,
     }
 
 
@@ -8414,15 +9323,15 @@ export namespace AgsAudio {
         /**
          * do replace audio signal
          */
-        DO_REPLACE,
+        DO_REPLACE = 1,
         /**
          * has completed
          */
-        HAS_COMPLETED,
+        HAS_COMPLETED = 2,
         /**
          * run apply synth
          */
-        RUN_APPLY_SYNTH,
+        RUN_APPLY_SYNTH = 4,
     }
 
 
@@ -8435,11 +9344,11 @@ export namespace AgsAudio {
         /**
          * the sfz sample was added to registry, see {@link Ags.Connectable.SignalSignatures.add_to_registry | Ags.Connectable::add_to_registry}()
          */
-        ADDED_TO_REGISTRY,
+        ADDED_TO_REGISTRY = 1,
         /**
          * indicates the sfz sample was connected by calling {@link Ags.Connectable.SignalSignatures.connect | Ags.Connectable::connect}()
          */
-        CONNECTED,
+        CONNECTED = 2,
     }
 
 
@@ -8459,11 +9368,11 @@ export namespace AgsAudio {
         /**
          * virtual IO
          */
-        SNDFILE_VIRTUAL,
+        SNDFILE_VIRTUAL = 1,
         /**
          * fill cache
          */
-        SNDFILE_FILL_CACHE,
+        SNDFILE_FILL_CACHE = 2,
     }
 
 
@@ -8483,23 +9392,23 @@ export namespace AgsAudio {
         /**
          * playback ability
          */
-        SOUND_ABILITY_PLAYBACK,
+        SOUND_ABILITY_PLAYBACK = 1,
         /**
          * sequenecer ability
          */
-        SOUND_ABILITY_SEQUENCER,
+        SOUND_ABILITY_SEQUENCER = 2,
         /**
          * notation abilitiy
          */
-        SOUND_ABILITY_NOTATION,
+        SOUND_ABILITY_NOTATION = 4,
         /**
          * wave abilitiy
          */
-        SOUND_ABILITY_WAVE,
+        SOUND_ABILITY_WAVE = 8,
         /**
          * MIDI ability
          */
-        SOUND_ABILITY_MIDI,
+        SOUND_ABILITY_MIDI = 16,
     }
 
 
@@ -8518,59 +9427,59 @@ export namespace AgsAudio {
         /**
          * pattern mode
          */
-        SOUND_BEHAVIOUR_PATTERN_MODE,
+        SOUND_BEHAVIOUR_PATTERN_MODE = 1,
         /**
          * bulk mode
          */
-        SOUND_BEHAVIOUR_BULK_MODE,
+        SOUND_BEHAVIOUR_BULK_MODE = 2,
         /**
          * reverse mapping
          */
-        SOUND_BEHAVIOUR_REVERSE_MAPPING,
+        SOUND_BEHAVIOUR_REVERSE_MAPPING = 4,
         /**
          * defaults to output
          */
-        SOUND_BEHAVIOUR_DEFAULTS_TO_OUTPUT,
+        SOUND_BEHAVIOUR_DEFAULTS_TO_OUTPUT = 8,
         /**
          * defaults to input
          */
-        SOUND_BEHAVIOUR_DEFAULTS_TO_INPUT,
+        SOUND_BEHAVIOUR_DEFAULTS_TO_INPUT = 16,
         /**
          * chained to output
          */
-        SOUND_BEHAVIOUR_CHAINED_TO_OUTPUT,
+        SOUND_BEHAVIOUR_CHAINED_TO_OUTPUT = 32,
         /**
          * chained to input
          */
-        SOUND_BEHAVIOUR_CHAINED_TO_INPUT,
+        SOUND_BEHAVIOUR_CHAINED_TO_INPUT = 64,
         /**
          * persistent
          */
-        SOUND_BEHAVIOUR_PERSISTENT,
+        SOUND_BEHAVIOUR_PERSISTENT = 128,
         /**
          * persistent playback
          */
-        SOUND_BEHAVIOUR_PERSISTENT_PLAYBACK,
+        SOUND_BEHAVIOUR_PERSISTENT_PLAYBACK = 256,
         /**
          * persistent notation
          */
-        SOUND_BEHAVIOUR_PERSISTENT_NOTATION,
+        SOUND_BEHAVIOUR_PERSISTENT_NOTATION = 512,
         /**
          * persistent sequencer
          */
-        SOUND_BEHAVIOUR_PERSISTENT_SEQUENCER,
+        SOUND_BEHAVIOUR_PERSISTENT_SEQUENCER = 1024,
         /**
          * persistent wave
          */
-        SOUND_BEHAVIOUR_PERSISTENT_WAVE,
+        SOUND_BEHAVIOUR_PERSISTENT_WAVE = 2048,
         /**
          * persistent MIDI
          */
-        SOUND_BEHAVIOUR_PERSISTENT_MIDI,
+        SOUND_BEHAVIOUR_PERSISTENT_MIDI = 4096,
         /**
          * propagate done
          */
-        SOUND_BEHAVIOUR_PROPAGATE_DONE,
+        SOUND_BEHAVIOUR_PROPAGATE_DONE = 8192,
     }
 
 
@@ -8589,71 +9498,71 @@ export namespace AgsAudio {
         /**
          * check rt-data
          */
-        SOUND_STAGING_CHECK_RT_DATA,
+        SOUND_STAGING_CHECK_RT_DATA = 1,
         /**
          * run init pre
          */
-        SOUND_STAGING_RUN_INIT_PRE,
+        SOUND_STAGING_RUN_INIT_PRE = 2,
         /**
          * run init inter
          */
-        SOUND_STAGING_RUN_INIT_INTER,
+        SOUND_STAGING_RUN_INIT_INTER = 4,
         /**
          * run init post
          */
-        SOUND_STAGING_RUN_INIT_POST,
+        SOUND_STAGING_RUN_INIT_POST = 8,
         /**
          * feed input queue
          */
-        SOUND_STAGING_FEED_INPUT_QUEUE,
+        SOUND_STAGING_FEED_INPUT_QUEUE = 16,
         /**
          * automate
          */
-        SOUND_STAGING_AUTOMATE,
+        SOUND_STAGING_AUTOMATE = 32,
         /**
          * run pre
          */
-        SOUND_STAGING_RUN_PRE,
+        SOUND_STAGING_RUN_PRE = 64,
         /**
          * run inter
          */
-        SOUND_STAGING_RUN_INTER,
+        SOUND_STAGING_RUN_INTER = 128,
         /**
          * run post
          */
-        SOUND_STAGING_RUN_POST,
+        SOUND_STAGING_RUN_POST = 256,
         /**
          * do feedback
          */
-        SOUND_STAGING_DO_FEEDBACK,
+        SOUND_STAGING_DO_FEEDBACK = 512,
         /**
          * feed output queue
          */
-        SOUND_STAGING_FEED_OUTPUT_QUEUE,
+        SOUND_STAGING_FEED_OUTPUT_QUEUE = 1024,
         /**
          * fini
          */
-        SOUND_STAGING_FINI,
+        SOUND_STAGING_FINI = 2048,
         /**
          * cancel
          */
-        SOUND_STAGING_CANCEL,
+        SOUND_STAGING_CANCEL = 4096,
         /**
          * done
          */
-        SOUND_STAGING_DONE,
+        SOUND_STAGING_DONE = 8192,
         /**
          * remove
          */
-        SOUND_STAGING_REMOVE,
+        SOUND_STAGING_REMOVE = 16384,
         /**
          * reset
          */
-        SOUND_STAGING_RESET,
+        SOUND_STAGING_RESET = 32768,
         /**
          * fx staging
          */
-        SOUND_STAGING_FX,
+        SOUND_STAGING_FX = 65536,
     }
 
 
@@ -8669,19 +9578,19 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum SoundStateFlags {
-        SOUND_STATE_IS_WAITING,
+        SOUND_STATE_IS_WAITING = 1,
         /**
          * is active
          */
-        SOUND_STATE_IS_ACTIVE,
+        SOUND_STATE_IS_ACTIVE = 2,
         /**
          * is processing
          */
-        SOUND_STATE_IS_PROCESSING,
+        SOUND_STATE_IS_PROCESSING = 4,
         /**
          * is terminating
          */
-        SOUND_STATE_IS_TERMINATING,
+        SOUND_STATE_IS_TERMINATING = 8,
     }
 
 
@@ -8701,7 +9610,7 @@ export namespace AgsAudio {
         /**
          * is selected
          */
-        TRACK_IS_SELECTED,
+        TRACK_IS_SELECTED = 1,
     }
 
 
@@ -8721,27 +9630,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        WASAPI_DEVIN_INITIALIZED,
+        WASAPI_DEVIN_INITIALIZED = 1,
         /**
          * capture starting
          */
-        WASAPI_DEVIN_START_RECORD,
+        WASAPI_DEVIN_START_RECORD = 2,
         /**
          * do capture
          */
-        WASAPI_DEVIN_RECORD,
+        WASAPI_DEVIN_RECORD = 4,
         /**
          * do non-blocking calls
          */
-        WASAPI_DEVIN_NONBLOCKING,
+        WASAPI_DEVIN_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        WASAPI_DEVIN_ATTACK_FIRST,
+        WASAPI_DEVIN_ATTACK_FIRST = 32,
         /**
          * share mode exclusive
          */
-        WASAPI_DEVIN_SHARE_MODE_EXCLUSIVE,
+        WASAPI_DEVIN_SHARE_MODE_EXCLUSIVE = 64,
     }
 
 
@@ -8761,27 +9670,27 @@ export namespace AgsAudio {
         /**
          * the soundcard was initialized
          */
-        WASAPI_DEVOUT_INITIALIZED,
+        WASAPI_DEVOUT_INITIALIZED = 1,
         /**
          * playback starting
          */
-        WASAPI_DEVOUT_START_PLAY,
+        WASAPI_DEVOUT_START_PLAY = 2,
         /**
          * do playback
          */
-        WASAPI_DEVOUT_PLAY,
+        WASAPI_DEVOUT_PLAY = 4,
         /**
          * do non-blocking calls
          */
-        WASAPI_DEVOUT_NONBLOCKING,
+        WASAPI_DEVOUT_NONBLOCKING = 16,
         /**
          * use first attack, instead of second one
          */
-        WASAPI_DEVOUT_ATTACK_FIRST,
+        WASAPI_DEVOUT_ATTACK_FIRST = 32,
         /**
          * share mode exclusive
          */
-        WASAPI_DEVOUT_SHARE_MODE_EXCLUSIVE,
+        WASAPI_DEVOUT_SHARE_MODE_EXCLUSIVE = 64,
     }
 
 
@@ -8801,7 +9710,7 @@ export namespace AgsAudio {
         /**
          * ignore any wave data
          */
-        WAVE_BYPASS,
+        WAVE_BYPASS = 1,
     }
 
 
@@ -8809,8 +9718,8 @@ export namespace AgsAudio {
      * @gir-type Flags
      */
     enum WaveLoaderFlags {
-        DO_REPLACE,
-        HAS_COMPLETED,
+        DO_REPLACE = 1,
+        HAS_COMPLETED = 2,
     }
 
 
@@ -10211,30 +11120,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -11412,30 +12326,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -12367,24 +13286,28 @@ export namespace AgsAudio {
         /**
          * Plays the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -13630,49 +14553,49 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "cancel-recall": (arg0: GObject.Object) => void;
+            "cancel-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::check-scope method returns the appropriate recall id of `sound_scope`.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "check-scope": (arg0: number) => null;
+            "check-scope": (sound_scope: number) => null;
             /**
              * The ::cleanup-recall signal notifies about cleanup recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "cleanup-recall": (arg0: GObject.Object) => void;
+            "cleanup-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::done-recall signal notifies about doned recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "done-recall": (arg0: GObject.Object) => void;
+            "done-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::duplicate-recall signal notifies about duplicated recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "duplicate-recall": (arg0: GObject.Object, arg1: number, arg2: number, arg3: number) => void;
+            "duplicate-recall": (recall_id: GObject.Object, pad: number, audio_channel: number, line: number) => void;
             /**
              * The ::init-recall signal notifies about initd recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "init-recall": (arg0: GObject.Object, arg1: number) => void;
+            "init-recall": (recall_id: GObject.Object, staging_flags: number) => void;
             /**
              * The ::play-recall signal notifies about playd recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "play-recall": (arg0: GObject.Object, arg1: number) => void;
+            "play-recall": (recall_id: GObject.Object, staging_flags: number) => void;
             /**
              * The ::recursive-run-stage signal is invoked while run staging
              * of `audio` for `sound_scope`.
@@ -13680,14 +14603,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "recursive-run-stage": (arg0: number, arg1: number) => void;
+            "recursive-run-stage": (sound_scope: number, staging_flags: number) => void;
             /**
              * The ::resolve-recall signal notifies about resolved recalls.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "resolve-recall": (arg0: GObject.Object) => void;
+            "resolve-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::set-audio-channels signal notifies about changes in channel
              * alignment.
@@ -13695,7 +14618,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "set-audio-channels": (arg0: number, arg1: number) => void;
+            "set-audio-channels": (audio_channels_new: number, audio_channels_old: number) => void;
             /**
              * The ::set-pads signal notifies about changes in channel
              * alignment.
@@ -13703,7 +14626,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "set-pads": (arg0: null, arg1: number, arg2: number) => void;
+            "set-pads": (channel_type: null, pads_new: number, pads_old: number) => void;
             /**
              * The ::start signal is invoked while starting playback
              * of `audio`.
@@ -13711,7 +14634,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            start: (arg0: number) => null;
+            start: (sound_scope: number) => null;
             /**
              * The ::stop signal is invoked while stoping playback
              * of `audio`.
@@ -13719,7 +14642,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            stop: (arg0: null, arg1: number) => void;
+            stop: (recall_id: null, sound_scope: number) => void;
             "notify::absolute-key": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channels": (pspec: GObject.ParamSpec) => void;
             "notify::audio-end-mapping": (pspec: GObject.ParamSpec) => void;
@@ -17134,6 +18057,7 @@ export namespace AgsAudio {
          * @param audio_channel nth channel
          * @param format the format
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read(audio_channel: number, format: Ags.SoundcardFormat): null;
 
@@ -17821,6 +18745,7 @@ export namespace AgsAudio {
          * @param audio_channel nth channel
          * @param format the format
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read(audio_channel: number, format: number): null;
 
@@ -19061,7 +19986,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "add-note": (arg0: GObject.Object) => void;
+            "add-note": (note: GObject.Object) => void;
             /**
              * The ::refresh-data signal notifies about requesting to refresh data.
              * @signal
@@ -19075,7 +20000,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "remove-note": (arg0: GObject.Object) => void;
+            "remove-note": (note: GObject.Object) => void;
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
             "notify::damping": (pspec: GObject.ParamSpec) => void;
@@ -21629,30 +22554,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -22852,30 +23782,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -25061,35 +25996,35 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            activate: (arg0: null) => void;
+            activate: (plugin_handle: null) => void;
             /**
              * The ::connect-port signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "connect-port": (arg0: null, arg1: number, arg2: null) => void;
+            "connect-port": (plugin_handle: null, port_index: number, data_location: null) => void;
             /**
              * The ::deactivate signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            deactivate: (arg0: null) => void;
+            deactivate: (plugin_handle: null) => void;
             /**
              * The ::instantiate signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            instantiate: (arg0: number, arg1: number) => null;
+            instantiate: (samplerate: number, buffer_size: number) => null;
             /**
              * The ::instantiate-with-params signal creates a new instance of plugin.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "instantiate-with-params": (arg0: null, arg1: null, arg2: null) => null;
+            "instantiate-with-params": (n_params: null, parameter_name: null, value: null) => null;
             /**
              * The ::load-plugin signal creates a new instance of plugin.
              * @signal
@@ -25103,7 +26038,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            run: (arg0: null, arg1: null, arg2: number) => void;
+            run: (plugin_handle: null, seq_event: null, frame_count: number) => void;
             "notify::effect": (pspec: GObject.ParamSpec) => void;
             "notify::effect-index": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -26088,84 +27023,84 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "cancel-recall": (arg0: GObject.Object) => void;
+            "cancel-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::check-scope signal gives you control of checking scope.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "check-scope": (arg0: number) => null;
+            "check-scope": (sound_scope: number) => null;
             /**
              * The ::cleanup-recall signal is invoked during termination of playback.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "cleanup-recall": (arg0: GObject.Object) => void;
+            "cleanup-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::done-recall signal is invoked during termination of playback.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "done-recall": (arg0: GObject.Object) => void;
+            "done-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::duplicate-recall signal is invoked during playback initialization.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "duplicate-recall": (arg0: GObject.Object) => void;
+            "duplicate-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::init-recall signal is invoked during playback initialization.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "init-recall": (arg0: GObject.Object, arg1: number) => void;
+            "init-recall": (recall_id: GObject.Object, staging_flags: number) => void;
             /**
              * The ::play-recall signal is invoked during playback run.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "play-recall": (arg0: GObject.Object, arg1: number) => void;
+            "play-recall": (recall_id: GObject.Object, staging_flags: number) => void;
             /**
              * The ::recursive-run-stage signal gives you control of checking scope.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "recursive-run-stage": (arg0: number, arg1: number) => void;
+            "recursive-run-stage": (sound_scope: number, staging_flags: number) => void;
             /**
              * The ::recycling-changed signal is invoked to notify modified recycling tree.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "recycling-changed": (arg0: GObject.Object, arg1: GObject.Object, arg2: GObject.Object, arg3: GObject.Object, arg4: GObject.Object, arg5: GObject.Object, arg6: GObject.Object, arg7: GObject.Object) => void;
+            "recycling-changed": (old_start_region: GObject.Object, old_end_region: GObject.Object, new_start_region: GObject.Object, new_end_region: GObject.Object, old_start_changed_region: GObject.Object, old_end_changed_region: GObject.Object, new_start_changed_region: GObject.Object, new_end_changed_region: GObject.Object) => void;
             /**
              * The ::resolve-recall signal is invoked during playback initialization.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "resolve-recall": (arg0: GObject.Object) => void;
+            "resolve-recall": (recall_id: GObject.Object) => void;
             /**
              * The ::start signal is invoked as playback starts.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            start: (arg0: number) => RecallID[];
+            start: (sound_scope: number) => RecallID[];
             /**
              * The ::stop signal is invoked as playback stops.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            stop: (arg0: null, arg1: number) => void;
+            stop: (recall_id: null, sound_scope: number) => void;
             "notify::absolute-key": (pspec: GObject.ParamSpec) => void;
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -27265,6 +28200,7 @@ export namespace AgsAudio {
          * Further it does loop detection and makes your machine running.
          * @param link an other {@link AgsAudio.Channel} to link with
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_link(link: Channel): void;
 
@@ -29266,30 +30202,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -30493,30 +31434,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -31480,24 +32426,28 @@ export namespace AgsAudio {
         /**
          * Plays the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -33024,7 +33974,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: null, arg1: number, arg2: number) => void;
+            "change-program": (ladspa_handle: null, bank: number, program: number) => void;
             "notify::program": (pspec: GObject.ParamSpec) => void;
             "notify::unique-id": (pspec: GObject.ParamSpec) => void;
             "notify::effect": (pspec: GObject.ParamSpec) => void;
@@ -34264,30 +35214,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -34841,14 +35796,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "compute-max-likelihood": (arg0: null, arg1: null) => void;
+            "compute-max-likelihood": (source: null, retval: null) => void;
             /**
              * The ::factorize signal notifies about factorizing map.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            factorize: (arg0: GObject.Object) => void;
+            factorize: (factorized_frequency_map: GObject.Object) => void;
             /**
              * The ::process signal notifies about processed buffer.
              * @signal
@@ -52891,30 +53846,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -54120,30 +55080,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -59674,30 +60639,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -60901,30 +61871,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -61888,24 +62863,28 @@ export namespace AgsAudio {
         /**
          * Plays the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -63858,14 +64837,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-option": (arg0: null, arg1: null, arg2: null) => void;
+            "get-option": (intstance: null, option: null, retval: null) => void;
             /**
              * The ::set-option signal sets options for the manager.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "set-option": (arg0: null, arg1: null, arg2: null) => void;
+            "set-option": (intstance: null, option: null, retval: null) => void;
         }
 
         // Constructor properties interface
@@ -64005,7 +64984,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: null, arg1: number, arg2: number) => void;
+            "change-program": (lv2_handle: null, bank: number, program: number) => void;
             "notify::doap-name": (pspec: GObject.ParamSpec) => void;
             "notify::foaf-homepage": (pspec: GObject.ParamSpec) => void;
             "notify::foaf-mbox": (pspec: GObject.ParamSpec) => void;
@@ -66084,123 +67063,123 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "append-header": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number, arg6: number) => void;
+            "append-header": (offset: number, format: number, track_count: number, division: number, times: number, bpm: number, clicks: number) => void;
             /**
              * The ::append-track signal is emited during building of track.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "append-track": (arg0: string) => void;
+            "append-track": (track_name: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-channel-pressure": (arg0: number, arg1: number, arg2: number) => void;
+            "change-channel-pressure": (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-parameter": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "change-parameter": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-pitch-bend": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "change-pitch-bend": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-program": (arg0: number, arg1: number, arg2: number) => void;
+            "change-program": (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "key-off": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "key-off": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "key-on": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "key-on": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "key-pressure": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "key-pressure": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "key-signature": (arg0: number, arg1: number, arg2: boolean) => void;
+            "key-signature": (object: number, p0: number, p1: boolean) => void;
             /**
              * The ::midi-putc signal is emited during putting char to file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "midi-putc": (arg0: number) => void;
+            "midi-putc": (error: number) => void;
             /**
              * The ::on-error signal is emited during building of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: null) => void;
+            "on-error": (error: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "quarter-frame": (arg0: number, arg1: number, arg2: number) => void;
+            "quarter-frame": (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "sequence-number": (arg0: number, arg1: number) => void;
+            "sequence-number": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "sequencer-meta-event": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "sequencer-meta-event": (object: number, p0: number, p1: number, p2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            smtpe: (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: number) => void;
+            smtpe: (object: number, p0: number, p1: number, p2: number, p3: number, p4: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "song-position": (arg0: number, arg1: number) => void;
+            "song-position": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "song-select": (arg0: number, arg1: number) => void;
+            "song-select": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            sysex: (arg0: number, arg1: null, arg2: number) => void;
+            sysex: (object: number, p0: null, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            tempo: (arg0: number, arg1: number) => void;
+            tempo: (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "text-event": (arg0: number, arg1: string, arg2: number) => void;
+            "text-event": (object: number, p0: string, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "time-signature": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
+            "time-signature": (object: number, p0: number, p1: number, p2: number, p3: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "tune-request": (arg0: number) => void;
+            "tune-request": (object: number) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -66748,6 +67727,7 @@ export namespace AgsAudio {
         /**
          * Triggered as an error occurs.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         on_error(): void;
 
@@ -66899,6 +67879,7 @@ export namespace AgsAudio {
          * Reads a unsigned char quantity.
          * @returns the current value at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_byte(): number;
 
@@ -66906,6 +67887,7 @@ export namespace AgsAudio {
          * Reads a gint16 quantity.
          * @returns the current value at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_gint16(): number;
 
@@ -66913,6 +67895,7 @@ export namespace AgsAudio {
          * Reads a 24-bit quantity.
          * @returns the current value at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_gint24(): number;
 
@@ -66920,6 +67903,7 @@ export namespace AgsAudio {
          * Reads a gint32 quantity.
          * @returns the current value at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_gint32(): number;
 
@@ -66928,6 +67912,7 @@ export namespace AgsAudio {
          * @param buffer_length pointer to return buffer length or `null`
          * @returns the header's bytes
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_header(buffer_length: number): number;
 
@@ -66938,6 +67923,7 @@ export namespace AgsAudio {
          * @param length the number of bytes to be read, or as long valid string for -1
          * @returns the string at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_text(length: number): number;
 
@@ -66946,6 +67932,7 @@ export namespace AgsAudio {
          * @param buffer_length pointer to return buffer length or `null`
          * @returns the track's bytes
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_track_data(buffer_length: number): number;
 
@@ -66953,6 +67940,7 @@ export namespace AgsAudio {
          * Reads a variable length quantity.
          * @returns the current value at file's iteration pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         read_varlength(): number;
 
@@ -67047,70 +68035,70 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "change-channel-pressure": (arg0: number) => null;
+            "change-channel-pressure": (status: number) => null;
             /**
              * The ::change-parameter signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-parameter": (arg0: number) => null;
+            "change-parameter": (status: number) => null;
             /**
              * The ::change-pitch-bend signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-pitch-bend": (arg0: number) => null;
+            "change-pitch-bend": (status: number) => null;
             /**
              * The ::change-program signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "change-program": (arg0: number) => null;
+            "change-program": (status: number) => null;
             /**
              * The ::end-of-track signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "end-of-track": (arg0: number) => null;
+            "end-of-track": (status: number) => null;
             /**
              * The ::key-off signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-off": (arg0: number) => null;
+            "key-off": (status: number) => null;
             /**
              * The ::key-on signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-on": (arg0: number) => null;
+            "key-on": (status: number) => null;
             /**
              * The ::key-pressure signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-pressure": (arg0: number) => null;
+            "key-pressure": (status: number) => null;
             /**
              * The ::key-signature signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-signature": (arg0: number) => null;
+            "key-signature": (status: number) => null;
             /**
              * The ::meta-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "meta-event": (arg0: number) => null;
+            "meta-event": (status: number) => null;
             /**
              * The ::midi-getc signal is emited during parsing of event.
              * @signal
@@ -67124,21 +68112,21 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "not-defined": (arg0: number) => null;
+            "not-defined": (status: number) => null;
             /**
              * The ::on-error signal is emited as error occurs.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: null) => void;
+            "on-error": (error: null) => void;
             /**
              * The ::parse-bytes signal is emited during parsing of bytes.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "parse-bytes": (arg0: null, arg1: number) => null;
+            "parse-bytes": (buffer: null, buffer_length: number) => null;
             /**
              * The ::parse-full signal is emited during parsing of midi file.
              * @signal
@@ -67166,56 +68154,56 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "sequence-number": (arg0: number) => null;
+            "sequence-number": (status: number) => null;
             /**
              * The ::sequencer-meta-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "sequencer-meta-event": (arg0: number) => null;
+            "sequencer-meta-event": (status: number) => null;
             /**
              * The ::smtpe signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            smtpe: (arg0: number) => null;
+            smtpe: (status: number) => null;
             /**
              * The ::sysex signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            sysex: (arg0: number) => null;
+            sysex: (status: number) => null;
             /**
              * The ::system-common signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "system-common": (arg0: number) => null;
+            "system-common": (status: number) => null;
             /**
              * The ::tempo signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            tempo: (arg0: number) => null;
+            tempo: (status: number) => null;
             /**
              * The ::text-event signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "text-event": (arg0: number) => null;
+            "text-event": (status: number) => null;
             /**
              * The ::time-signature signal is emited during parsing of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "time-signature": (arg0: number) => null;
+            "time-signature": (status: number) => null;
             "notify::file": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -67574,6 +68562,7 @@ export namespace AgsAudio {
         /**
          * Error reporting.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         on_error(): void;
 
@@ -69786,7 +70775,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "run-action": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "run-action": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -69866,14 +70855,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "append-bundle": (arg0: null, arg1: number, arg2: number, arg3: boolean) => void;
+            "append-bundle": (parent_bundle: null, tv_secs: number, tv_fraction: number, immediately: boolean) => void;
             /**
              * The ::append-message signal is emited during building message.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "append-message": (arg0: null, arg1: null, arg2: null) => void;
+            "append-message": (parent_bundle: null, address_pattern: null, type_tag: null) => void;
             /**
              * The ::append-packet signal is emited during building packet.
              * @signal
@@ -69887,21 +70876,21 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "append-value": (arg0: number, arg1: null) => void;
+            "append-value": (message: number, v_type: null) => void;
             /**
              * The ::on-error signal is emited during building of event.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: null) => void;
+            "on-error": (error: null) => void;
             /**
              * The ::osc-putc signal is emited during putting char to file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "osc-putc": (arg0: number) => void;
+            "osc-putc": (error: number) => void;
         }
 
         // Constructor properties interface
@@ -70076,6 +71065,7 @@ export namespace AgsAudio {
         /**
          * Report error.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         on_error(): void;
 
@@ -70104,7 +71094,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "read-bytes": (arg0: null) => null;
+            "read-bytes": (data_length: null) => null;
             /**
              * The ::resolve signal is emited during resolve of domain.
              * @signal
@@ -70118,7 +71108,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "write-bytes": (arg0: null, arg1: number) => boolean | void;
+            "write-bytes": (data: null, data_length: number) => boolean | void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::ip4": (pspec: GObject.ParamSpec) => void;
             "notify::ip6": (pspec: GObject.ParamSpec) => void;
@@ -70350,7 +71340,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "apply-config": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "apply-config": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -70437,14 +71427,14 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "read-bytes": (arg0: null) => null;
+            "read-bytes": (data_length: null) => null;
             /**
              * The ::write-response signal is emited while write response.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "write-response": (arg0: GObject.Object) => bigint | number;
+            "write-response": (osc_response: GObject.Object) => bigint | number;
             "notify::ip4": (pspec: GObject.ParamSpec) => void;
             "notify::ip6": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
@@ -70730,7 +71720,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "do-export": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "do-export": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -70810,7 +71800,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "do-request": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "do-request": (osc_connection: GObject.Object, packet: null, packet_size: number) => null;
             /**
              * The ::start-delegate signal is emited during start of delegating messages.
              * @signal
@@ -70969,7 +71959,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-info": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "get-info": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -71204,7 +72194,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "monitor-meter": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "monitor-meter": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             /**
              * The ::start-monitor signal is emited during start of monitoring meter.
              * @signal
@@ -71366,7 +72356,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-data": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "get-data": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -71466,7 +72456,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "on-error": (arg0: null) => void;
+            "on-error": (error: null) => void;
             /**
              * The ::osc-getc signal is emited during parsing of event.
              * @signal
@@ -71487,7 +72477,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "parse-bytes": (arg0: null, arg1: number) => null;
+            "parse-bytes": (buffer: null, buffer_length: number) => null;
             /**
              * The ::parse-full signal is emited during parsing of osc file.
              * @signal
@@ -71501,7 +72491,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            value: (arg0: number) => null;
+            value: (v_type: number) => null;
         }
 
         // Constructor properties interface
@@ -71636,6 +72626,7 @@ export namespace AgsAudio {
         /**
          * On error event.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         on_error(): void;
 
@@ -71724,7 +72715,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "set-data": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "set-data": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -72248,7 +73239,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "get-status": (arg0: GObject.Object, arg1: null, arg2: number) => null;
+            "get-status": (osc_connection: GObject.Object, message: null, message_size: number) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::osc-server": (pspec: GObject.ParamSpec) => void;
         }
@@ -73525,30 +74516,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -74726,30 +75722,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -75683,24 +76684,28 @@ export namespace AgsAudio {
         /**
          * Plays the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -77590,28 +78595,28 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "safe-get-property": (arg0: string, arg1: null) => void;
+            "safe-get-property": (property_name: string, value: null) => void;
             /**
              * The ::safe-read signal is emited while doing safe read operation.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-read": (arg0: null) => void;
+            "safe-read": (value: null) => void;
             /**
              * The ::safe-set-property signal is emited while safe set property.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-set-property": (arg0: string, arg1: null) => void;
+            "safe-set-property": (property_name: string, value: null) => void;
             /**
              * The ::safe-write signal is emited while doing safe write operation.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "safe-write": (arg0: null) => void;
+            "safe-write": (value: null) => void;
             "notify::automation": (pspec: GObject.ParamSpec) => void;
             "notify::channel-type": (pspec: GObject.ParamSpec) => void;
             "notify::control-port": (pspec: GObject.ParamSpec) => void;
@@ -78499,6 +79504,7 @@ export namespace AgsAudio {
          * @param param_name the parameter name
          * @param value the return location of value
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_parameter(param_name: string, value: GObject.Value | any): void;
 
@@ -80235,30 +81241,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -81464,30 +82475,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -82978,7 +83994,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "child-added": (arg0: GObject.Object) => void;
+            "child-added": (child: GObject.Object) => void;
             /**
              * The ::do-feedback signal notifies about running
              * stage 2.
@@ -83000,7 +84016,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            duplicate: (arg0: GObject.Object, arg1: null, arg2: null, arg3: null) => GObject.Object;
+            duplicate: (recall_id: GObject.Object, n_params: null, parameter_name: null, value: null) => GObject.Object;
             /**
              * The ::feed-input-queue signal notifies about running
              * feed input queue.
@@ -83045,7 +84061,7 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "notify-dependency": (arg0: number, arg1: boolean) => void;
+            "notify-dependency": (dependency: number, increase: boolean) => void;
             /**
              * The ::resolve-dependency signal notifies about resolving
              * dependency.
@@ -87176,21 +88192,21 @@ export namespace AgsAudio {
              * @since 3.0.0
              * @run-last
              */
-            "add-audio-signal": (arg0: GObject.Object) => void;
+            "add-audio-signal": (audio_signal: GObject.Object) => void;
             /**
              * The ::data-request signal is emited as requesting data for `audio_signal`.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "data-request": (arg0: GObject.Object) => void;
+            "data-request": (audio_signal: GObject.Object) => void;
             /**
              * The ::remove-audio-signal signal is emited as removing {@link AgsAudio.AudioSignal}.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "remove-audio-signal": (arg0: GObject.Object) => void;
+            "remove-audio-signal": (audio_signal: GObject.Object) => void;
             "notify::audio-signal": (pspec: GObject.ParamSpec) => void;
             "notify::buffer-size": (pspec: GObject.ParamSpec) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
@@ -96662,30 +97678,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -97867,30 +98888,35 @@ export namespace AgsAudio {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 

@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./vte-2.91.d.ts","./vte-2.91-surface.d.ts"]
+  "include": ["./vte-2.91.d.ts","./vte-2.91-vocabulary.d.ts"]
 }
 
 

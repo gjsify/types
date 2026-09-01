@@ -26,21 +26,35 @@ export namespace GstNet {
 
     /**
      * The size of the packets sent between network clocks.
+     * @default 16
      */
     const NET_TIME_PACKET_SIZE: number;
 
     /**
      * PTP clock identification that can be passed to `gst_ptp_init()` to
      * automatically select one based on the MAC address of interfaces
+     * @default 18446744073709551615
      */
     const PTP_CLOCK_ID_NONE: number;
 
+    /**
+     * @default GstPtpStatisticsBestMasterClockSelected
+     */
     const PTP_STATISTICS_BEST_MASTER_CLOCK_SELECTED: string;
 
+    /**
+     * @default GstPtpStatisticsNewDomainFound
+     */
     const PTP_STATISTICS_NEW_DOMAIN_FOUND: string;
 
+    /**
+     * @default GstPtpStatisticsPathDelayMeasured
+     */
     const PTP_STATISTICS_PATH_DELAY_MEASURED: string;
 
+    /**
+     * @default GstPtpStatisticsTimeUpdated
+     */
     const PTP_STATISTICS_TIME_UPDATED: string;
 
     /**
@@ -79,6 +93,7 @@ export namespace GstNet {
      * calls, but otherwise returns NULL on error.
      * @param socket socket to receive the time packet on
      * @returns a new {@link GstNet.NetTimePacket}, or NULL on error. Free    with `gst_net_time_packet_free()` when done.
+     * @throws GLib.Error
      */
     function net_time_packet_receive(socket: Gio.Socket): [NetTimePacket, Gio.SocketAddress | null];
 
@@ -504,6 +519,7 @@ export namespace GstNet {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -869,6 +885,7 @@ export namespace GstNet {
          * @param socket socket to send the time packet on
          * @param dest_address address to send the time packet to
          * @returns TRUE if successful, FALSE in case an error occurred.
+         * @throws GLib.Error
          */
         send(socket: Gio.Socket, dest_address: Gio.SocketAddress): boolean;
 

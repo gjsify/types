@@ -30,11 +30,11 @@ export namespace GLibUnix {
         /**
          * The readable file descriptor 0
          */
-        READ,
+        READ = 0,
         /**
          * The writable file descriptor 1
          */
-        WRITE,
+        WRITE = 1,
     }
 
 
@@ -83,6 +83,7 @@ export namespace GLibUnix {
      * @param fd The file descriptor to query.
      * @returns The file path, or `NULL` on error
      * @since 2.88
+     * @throws GLib.Error
      */
     function fd_query_path(fd: number): string;
 
@@ -137,6 +138,7 @@ export namespace GLibUnix {
      * @param user_name the username to get the passwd file entry for
      * @returns passwd entry, or `null` on error; free the returned    value with `g_free()`
      * @since 2.64
+     * @throws GLib.Error
      */
     function get_passwd_entry(user_name: string): null;
 
@@ -164,6 +166,7 @@ export namespace GLibUnix {
      * @param flags Bitfield of file descriptor flags, as for `fcntl()`
      * @returns `true` on success, `false` if not (and errno will be set).
      * @since 2.30
+     * @throws GLib.Error
      */
     function open_pipe(fds: number[], flags: number): boolean;
 
@@ -175,6 +178,7 @@ export namespace GLibUnix {
      * @param nonblock If `true`, set the descriptor to be non-blocking
      * @returns `true` if successful
      * @since 2.30
+     * @throws GLib.Error
      */
     function set_fd_nonblocking(fd: number, nonblock: boolean): boolean;
 

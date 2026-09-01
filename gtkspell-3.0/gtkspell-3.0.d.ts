@@ -64,7 +64,7 @@ export namespace GtkSpell {
              * @signal
              * @run-last
              */
-            "language-changed": (arg0: string) => void;
+            "language-changed": (lang: string) => void;
             "notify::decode-language-codes": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -231,6 +231,7 @@ export namespace GtkSpell {
          * `error`.
          * @param lang The language to use, as a locale specifier (i.e. "en_US"). If `NULL`, attempt to use the default system locale (LANG).
          * @returns FALSE if there was an error.
+         * @throws GLib.Error
          */
         set_language(lang: string | null): boolean;
     }

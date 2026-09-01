@@ -59,19 +59,19 @@ export namespace Gom {
      * @gir-type Enum
      */
     enum FilterMode {
-        SQL,
-        OR,
-        AND,
-        EQ,
-        NEQ,
-        GT,
-        GTE,
-        LT,
-        LTE,
-        LIKE,
-        GLOB,
-        IS_NULL,
-        IS_NOT_NULL,
+        SQL = 1,
+        OR = 2,
+        AND = 3,
+        EQ = 4,
+        NEQ = 5,
+        GT = 6,
+        GTE = 7,
+        LT = 8,
+        LTE = 9,
+        LIKE = 10,
+        GLOB = 11,
+        IS_NULL = 12,
+        IS_NOT_NULL = 13,
     }
 
 
@@ -86,8 +86,8 @@ export namespace Gom {
      * @gir-type Enum
      */
     enum SortingMode {
-        ASCENDING,
-        DESCENDING,
+        ASCENDING = 1,
+        DESCENDING = 2,
     }
 
 
@@ -179,9 +179,13 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         close_finish(result: Gio.AsyncResult): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         close_sync(): boolean;
 
         /**
@@ -192,6 +196,7 @@ export namespace Gom {
          * `gom_adapter_queue_write()`.
          * @param sql SQL to execute.
          * @returns `true` if successful;
+         * @throws GLib.Error
          */
         execute_sql(sql: string): boolean;
 
@@ -229,11 +234,13 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param uri 
+         * @throws GLib.Error
          */
         open_sync(uri: string): boolean;
 
@@ -315,6 +322,7 @@ export namespace Gom {
         // Methods
         /**
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         execute(): [boolean, Cursor | null];
 
@@ -853,6 +861,7 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         automatic_migrate_finish(result: Gio.AsyncResult): boolean;
 
@@ -864,6 +873,7 @@ export namespace Gom {
          * @param version The version to migrate to.
          * @param object_types a {@link GLib.List} of {@link GObject.GType}
          * @returns `TRUE` in case of success.
+         * @throws GLib.Error
          */
         automatic_migrate_sync(version: number, object_types: GObject.GType[]): boolean;
 
@@ -891,6 +901,7 @@ export namespace Gom {
          * Completes an asynchronous request to fetch a group of resources.
          * @param result A {@link Gio.AsyncResult}.
          * @returns A {@link Gom.ResourceGroup}.
+         * @throws GLib.Error
          */
         find_finish(result: Gio.AsyncResult): ResourceGroup;
 
@@ -919,6 +930,7 @@ export namespace Gom {
          * repository. See `gom_repository_find_one_async()` for more info.
          * @param result A {@link Gio.AsyncResult}.
          * @returns A {@link Gom.Resource} if successful, otherwise `null`.
+         * @throws GLib.Error
          */
         find_one_finish(result: Gio.AsyncResult): Resource;
 
@@ -927,6 +939,7 @@ export namespace Gom {
          * @param resource_type A {@link GObject.GType} of the resource to lookup.
          * @param filter A {@link Gom.Filter} to apply to your search.
          * @returns A {@link Gom.Resource} or `null`.
+         * @throws GLib.Error
          */
         find_one_sync(resource_type: GObject.GType, filter: Filter | null): Resource;
 
@@ -946,6 +959,7 @@ export namespace Gom {
          * @param filter An optional filter for the query.
          * @param sorting An optional {@link Gom.Sorting} to order the query                              results.
          * @returns A {@link Gom.ResourceGroup} or `null`.
+         * @throws GLib.Error
          */
         find_sorted_sync(resource_type: GObject.GType, filter: Filter | null, sorting: Sorting | null): ResourceGroup;
 
@@ -956,6 +970,7 @@ export namespace Gom {
          * @param resource_type The {@link GObject.GType} of the resources to query.
          * @param filter An optional filter for the query.
          * @returns A {@link Gom.ResourceGroup} or `null`.
+         * @throws GLib.Error
          */
         find_sync(resource_type: GObject.GType, filter: Filter | null): ResourceGroup;
 
@@ -1002,6 +1017,7 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         migrate_finish(result: Gio.AsyncResult): boolean;
 
@@ -1011,6 +1027,7 @@ export namespace Gom {
          * @param version The version to migrate to.
          * @param migrator A function to perform the migrations.
          * @returns `TRUE` in case of success.
+         * @throws GLib.Error
          */
         migrate_sync(version: number, migrator: RepositoryMigrator): boolean;
     }
@@ -1148,6 +1165,7 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -1155,6 +1173,7 @@ export namespace Gom {
          * Synchronously deletes a resource. This may only be called from inside a
          * callback to `gom_adapter_queue_write()`.
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         delete_sync(): boolean;
 
@@ -1186,6 +1205,7 @@ export namespace Gom {
          * are related to the resource through a many-to-many table.
          * @param result A {@link Gio.AsyncResult}.
          * @returns A {@link Gom.ResourceGroup}.
+         * @throws GLib.Error
          */
         fetch_m2m_finish(result: Gio.AsyncResult): ResourceGroup;
 
@@ -1203,11 +1223,13 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @returns `true` if successful; otherwise `false`.
+         * @throws GLib.Error
          */
         save_sync(): boolean;
     }
@@ -1364,9 +1386,13 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         delete_sync(): boolean;
 
         /**
@@ -1391,6 +1417,7 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         fetch_finish(result: Gio.AsyncResult): boolean;
 
@@ -1400,6 +1427,7 @@ export namespace Gom {
          * @param index_ The first index to fetch.
          * @param count The number of indexes to fetch.
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         fetch_sync(index_: number, count: number): boolean;
 
@@ -1430,9 +1458,13 @@ export namespace Gom {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         write_sync(): boolean;
     }
 

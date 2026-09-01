@@ -171,6 +171,7 @@ export namespace Shew {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         export_finish(result: Gio.AsyncResult): string;
 

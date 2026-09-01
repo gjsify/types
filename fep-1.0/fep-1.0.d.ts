@@ -37,31 +37,31 @@ export namespace Fep {
         /**
          * Decorate with underline
          */
-        UNDERLINE,
+        UNDERLINE = 0,
         /**
          * Foreground color
          */
-        FOREGROUND,
+        FOREGROUND = 1,
         /**
          * Background color
          */
-        BACKGROUND,
+        BACKGROUND = 2,
         /**
          * No attribute
          */
-        NONE,
+        NONE = 3,
         /**
          * Reverse video
          */
-        STANDOUT,
+        STANDOUT = 4,
         /**
          * Bold
          */
-        BOLD,
+        BOLD = 5,
         /**
          * Blink
          */
-        BLINK,
+        BLINK = 6,
     }
 
 
@@ -79,23 +79,23 @@ export namespace Fep {
         /**
          * No underline
          */
-        NONE,
+        NONE = 0,
         /**
          * Single underline
          */
-        SINGLE,
+        SINGLE = 1,
         /**
          * Double underline
          */
-        DOUBLE,
+        DOUBLE = 2,
         /**
          * Low underline? FIXME
          */
-        LOW,
+        LOW = 3,
         /**
          * Error underline
          */
-        ERROR,
+        ERROR = 4,
     }
 
 
@@ -113,15 +113,15 @@ export namespace Fep {
         /**
          * Nothing happend; used to indicate error
          */
-        NOTHING,
+        NOTHING = -1,
         /**
          * Key is pressed
          */
-        KEY_PRESS,
+        KEY_PRESS = 0,
         /**
          * Window is resized
          */
-        RESIZED,
+        RESIZED = 1,
     }
 
 
@@ -133,19 +133,19 @@ export namespace Fep {
              * @signal
              * @run-last
              */
-            "filter-event": (arg0: null) => boolean | void;
+            "filter-event": (event: null) => boolean | void;
             /**
              * The ::filter-key-event signal is emitted when key event is dispatched.
              * @signal
              * @run-last
              */
-            "filter-key-event": (arg0: number, arg1: number) => boolean | void;
+            "filter-key-event": (keyval: number, modifiers: number) => boolean | void;
             /**
              * The ::resized signal is emitted when terminal is resized.
              * @signal
              * @run-last
              */
-            resized: (arg0: number, arg1: number) => void;
+            resized: (cols: number, rows: number) => void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -311,6 +311,7 @@ export namespace Fep {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

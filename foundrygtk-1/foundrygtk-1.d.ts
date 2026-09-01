@@ -1273,6 +1273,7 @@ export namespace FoundryGtk {
         // Methods
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         add_filename(filename: string): number;
 
@@ -1280,6 +1281,7 @@ export namespace FoundryGtk {
          * @param resource 
          * @returns the merge id
          * @since 1.4
+         * @throws GLib.Error
          */
         add_resource(resource: string): number;
 
@@ -1463,6 +1465,7 @@ export namespace FoundryGtk {
         /**
          * @param shortcut_id 
          * @param accelerator 
+         * @throws GLib.Error
          */
         override(shortcut_id: string, accelerator: string): boolean;
 
@@ -1473,6 +1476,7 @@ export namespace FoundryGtk {
 
         /**
          * @param file 
+         * @throws GLib.Error
          */
         parse(file: Gio.File): boolean;
 
@@ -1782,7 +1786,7 @@ export namespace FoundryGtk {
              * @detailed
              * @run-last
              */
-            "accel-changed": (arg0: string, arg1: string | null) => void;
+            "accel-changed": (action: string, accel: string | null) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             /**
              * This signal is emitted when an action is determined to have been changed
@@ -1791,8 +1795,8 @@ export namespace FoundryGtk {
              * @detailed
              * @run-last
              */
-            "accel-changed::model": (arg0: string, arg1: string | null) => void;
-            [key: `accel-changed::${string}`]: (arg0: string, arg1: string | null) => void;
+            "accel-changed::model": (action: string, accel: string | null) => void;
+            [key: `accel-changed::${string}`]: (action: string, accel: string | null) => void;
         }
 
         // Constructor properties interface

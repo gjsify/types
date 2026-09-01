@@ -36,25 +36,25 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum BurnAction {
-        NONE,
-        GETTING_SIZE,
-        CREATING_IMAGE,
-        RECORDING,
-        BLANKING,
-        CHECKSUM,
-        DRIVE_COPY,
-        FILE_COPY,
-        ANALYSING,
-        TRANSCODING,
-        PREPARING,
-        LEADIN,
-        RECORDING_CD_TEXT,
-        FIXATING,
-        LEADOUT,
-        START_RECORDING,
-        FINISHED,
-        EJECTING,
-        LAST,
+        NONE = 0,
+        GETTING_SIZE = 1,
+        CREATING_IMAGE = 2,
+        RECORDING = 3,
+        BLANKING = 4,
+        CHECKSUM = 5,
+        DRIVE_COPY = 6,
+        FILE_COPY = 7,
+        ANALYSING = 8,
+        TRANSCODING = 9,
+        PREPARING = 10,
+        LEADIN = 11,
+        RECORDING_CD_TEXT = 12,
+        FIXATING = 13,
+        LEADOUT = 14,
+        START_RECORDING = 15,
+        FINISHED = 16,
+        EJECTING = 17,
+        LAST = 18,
     }
 
 
@@ -62,39 +62,39 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum BurnError {
-        ERROR_NONE,
-        ERROR_GENERAL,
-        ERROR_PLUGIN_MISBEHAVIOR,
-        ERROR_SLOW_DMA,
-        ERROR_PERMISSION,
-        ERROR_DRIVE_BUSY,
-        ERROR_DISK_SPACE,
-        ERROR_EMPTY,
-        ERROR_INPUT_INVALID,
-        ERROR_OUTPUT_NONE,
-        ERROR_FILE_INVALID,
-        ERROR_FILE_FOLDER,
-        ERROR_FILE_PLAYLIST,
-        ERROR_FILE_NOT_FOUND,
-        ERROR_FILE_NOT_LOCAL,
-        ERROR_WRITE_MEDIUM,
-        ERROR_WRITE_IMAGE,
-        ERROR_IMAGE_INVALID,
-        ERROR_IMAGE_JOLIET,
-        ERROR_IMAGE_LAST_SESSION,
-        ERROR_MEDIUM_NONE,
-        ERROR_MEDIUM_INVALID,
-        ERROR_MEDIUM_SPACE,
-        ERROR_MEDIUM_NO_DATA,
-        ERROR_MEDIUM_NOT_WRITABLE,
-        ERROR_MEDIUM_NOT_REWRITABLE,
-        ERROR_MEDIUM_NEED_RELOADING,
-        ERROR_BAD_CHECKSUM,
-        ERROR_MISSING_APP_AND_PLUGIN,
-        WARNING_CHECKSUM,
-        WARNING_INSERT_AFTER_COPY,
-        ERROR_TMP_DIRECTORY,
-        ERROR_ENCRYPTION_KEY,
+        ERROR_NONE = 0,
+        ERROR_GENERAL = 1,
+        ERROR_PLUGIN_MISBEHAVIOR = 2,
+        ERROR_SLOW_DMA = 3,
+        ERROR_PERMISSION = 4,
+        ERROR_DRIVE_BUSY = 5,
+        ERROR_DISK_SPACE = 6,
+        ERROR_EMPTY = 7,
+        ERROR_INPUT_INVALID = 8,
+        ERROR_OUTPUT_NONE = 9,
+        ERROR_FILE_INVALID = 10,
+        ERROR_FILE_FOLDER = 11,
+        ERROR_FILE_PLAYLIST = 12,
+        ERROR_FILE_NOT_FOUND = 13,
+        ERROR_FILE_NOT_LOCAL = 14,
+        ERROR_WRITE_MEDIUM = 15,
+        ERROR_WRITE_IMAGE = 16,
+        ERROR_IMAGE_INVALID = 17,
+        ERROR_IMAGE_JOLIET = 18,
+        ERROR_IMAGE_LAST_SESSION = 19,
+        ERROR_MEDIUM_NONE = 20,
+        ERROR_MEDIUM_INVALID = 21,
+        ERROR_MEDIUM_SPACE = 22,
+        ERROR_MEDIUM_NO_DATA = 23,
+        ERROR_MEDIUM_NOT_WRITABLE = 24,
+        ERROR_MEDIUM_NOT_REWRITABLE = 25,
+        ERROR_MEDIUM_NEED_RELOADING = 26,
+        ERROR_BAD_CHECKSUM = 27,
+        ERROR_MISSING_APP_AND_PLUGIN = 28,
+        WARNING_CHECKSUM = 29,
+        WARNING_INSERT_AFTER_COPY = 30,
+        ERROR_TMP_DIRECTORY = 31,
+        ERROR_ENCRYPTION_KEY = 32,
     }
 
 
@@ -102,16 +102,16 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum BurnResult {
-        OK,
-        ERR,
-        RETRY,
-        CANCEL,
-        RUNNING,
-        DANGEROUS,
-        NOT_READY,
-        NOT_RUNNING,
-        NEED_RELOAD,
-        NOT_SUPPORTED,
+        OK = 0,
+        ERR = 1,
+        RETRY = 2,
+        CANCEL = 3,
+        RUNNING = 4,
+        DANGEROUS = 5,
+        NOT_READY = 6,
+        NOT_RUNNING = 7,
+        NEED_RELOAD = 8,
+        NOT_SUPPORTED = 9,
     }
 
 
@@ -119,14 +119,14 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum PluginErrorType {
-        NONE,
-        MODULE,
-        MISSING_APP,
-        WRONG_APP_VERSION,
-        SYMBOLIC_LINK_APP,
-        MISSING_LIBRARY,
-        LIBRARY_VERSION,
-        MISSING_GSTREAMER_PLUGIN,
+        NONE = 0,
+        MODULE = 1,
+        MISSING_APP = 2,
+        WRONG_APP_VERSION = 3,
+        SYMBOLIC_LINK_APP = 4,
+        MISSING_LIBRARY = 5,
+        LIBRARY_VERSION = 6,
+        MISSING_GSTREAMER_PLUGIN = 7,
     }
 
 
@@ -134,18 +134,18 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum SessionError {
-        VALID,
-        NO_CD_TEXT,
-        NOT_READY,
-        EMPTY,
-        NO_INPUT_IMAGE,
-        UNKNOWN_IMAGE,
-        NO_INPUT_MEDIUM,
-        NO_OUTPUT,
-        INSUFFICIENT_SPACE,
-        OVERBURN_NECESSARY,
-        NOT_SUPPORTED,
-        DISC_PROTECTED,
+        VALID = 0,
+        NO_CD_TEXT = 1,
+        NOT_READY = 2,
+        EMPTY = 3,
+        NO_INPUT_IMAGE = 4,
+        UNKNOWN_IMAGE = 5,
+        NO_INPUT_MEDIUM = 6,
+        NO_OUTPUT = 7,
+        INSUFFICIENT_SPACE = 8,
+        OVERBURN_NECESSARY = 9,
+        NOT_SUPPORTED = 10,
+        DISC_PROTECTED = 11,
     }
 
 
@@ -153,10 +153,10 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum StatusType {
-        OK,
-        ERROR,
-        QUESTION,
-        INFORMATION,
+        OK = 0,
+        ERROR = 1,
+        QUESTION = 2,
+        INFORMATION = 3,
     }
 
 
@@ -164,61 +164,121 @@ export namespace BraseroBurn {
      * @gir-type Enum
      */
     enum TrackDataCfgColumn {
-        NAME,
-        URI,
-        MIME_DESC,
-        MIME_ICON,
-        SIZE,
-        SHOW_PERCENT,
-        PERCENT,
-        STYLE,
-        COLOR,
-        EDITABLE,
-        IS_FILE,
-        IS_LOADING,
-        IS_IMPORTED,
-        COL_NUM,
+        NAME = 0,
+        URI = 1,
+        MIME_DESC = 2,
+        MIME_ICON = 3,
+        SIZE = 4,
+        SHOW_PERCENT = 5,
+        PERCENT = 6,
+        STYLE = 7,
+        COLOR = 8,
+        EDITABLE = 9,
+        IS_FILE = 10,
+        IS_LOADING = 11,
+        IS_IMPORTED = 12,
+        COL_NUM = 13,
     }
 
 
+    /**
+     * @default session::art::cover
+     */
     const COVER_URI: string;
 
+    /**
+     * @default track::data::estimated_size
+     */
     const DATA_TRACK_SIZE_TAG: string;
 
+    /**
+     * @default GTK_TREE_MODEL_ROW
+     */
     const DND_TARGET_DATA_TRACK_REFERENCE_LIST: string;
 
+    /**
+     * @default session::DVD::stream::format
+     */
     const DVD_STREAM_FORMAT: string;
 
+    /**
+     * @default 6000000000
+     */
     const MIN_STREAM_LENGTH: number;
 
+    /**
+     * @default session::stream::audio::format
+     */
     const SESSION_STREAM_AUDIO_FORMAT: string;
 
+    /**
+     * @default track::stream::estimated_size
+     */
     const STREAM_TRACK_SIZE_TAG: string;
 
+    /**
+     * @default track::medium::address::end
+     */
     const TRACK_MEDIUM_ADDRESS_END_TAG: string;
 
+    /**
+     * @default track::medium::address::start
+     */
     const TRACK_MEDIUM_ADDRESS_START_TAG: string;
 
+    /**
+     * @default track::medium::error::checksum::list
+     */
     const TRACK_MEDIUM_WRONG_CHECKSUM_TAG: string;
 
+    /**
+     * @default track::stream::info::album
+     */
     const TRACK_STREAM_ALBUM_TAG: string;
 
+    /**
+     * @default track::stream::info::artist
+     */
     const TRACK_STREAM_ARTIST_TAG: string;
 
+    /**
+     * @default track::stream::info::composer
+     */
     const TRACK_STREAM_COMPOSER_TAG: string;
 
+    /**
+     * @default track::stream::info::isrc
+     */
     const TRACK_STREAM_ISRC_TAG: string;
 
+    /**
+     * @default track::stream::mime
+     */
     const TRACK_STREAM_MIME_TAG: string;
 
+    /**
+     * @default track::stream::snapshot
+     */
     const TRACK_STREAM_THUMBNAIL_TAG: string;
 
+    /**
+     * @default track::stream::info::title
+     */
     const TRACK_STREAM_TITLE_TAG: string;
 
+    /**
+     * @default session::VCD::format
+     */
     const VCD_TYPE: string;
 
+    /**
+     * @default session::video::aspect
+     */
     const VIDEO_OUTPUT_ASPECT: string;
 
+    /**
+     * @default session::video::framerate
+     */
     const VIDEO_OUTPUT_FRAMERATE: string;
 
     /**
@@ -238,22 +298,22 @@ export namespace BraseroBurn {
      * @gir-type Flags
      */
     enum BurnFlag {
-        NONE,
-        CHECK_SIZE,
-        NOGRACE,
-        EJECT,
-        MERGE,
-        MULTI,
-        APPEND,
-        BURNPROOF,
-        NO_TMP_FILES,
-        DUMMY,
-        OVERBURN,
-        BLANK_BEFORE_WRITE,
-        FAST_BLANK,
-        DAO,
-        RAW,
-        LAST,
+        NONE = 0,
+        CHECK_SIZE = 1,
+        NOGRACE = 2,
+        EJECT = 4,
+        MERGE = 8,
+        MULTI = 16,
+        APPEND = 32,
+        BURNPROOF = 64,
+        NO_TMP_FILES = 128,
+        DUMMY = 256,
+        OVERBURN = 512,
+        BLANK_BEFORE_WRITE = 1024,
+        FAST_BLANK = 2048,
+        DAO = 8192,
+        RAW = 16384,
+        LAST = 16385,
     }
 
 
@@ -261,14 +321,14 @@ export namespace BraseroBurn {
      * @gir-type Flags
      */
     enum ChecksumType {
-        NONE,
-        DETECT,
-        MD5,
-        MD5_FILE,
-        SHA1,
-        SHA1_FILE,
-        SHA256,
-        SHA256_FILE,
+        NONE = 0,
+        DETECT = 1,
+        MD5 = 2,
+        MD5_FILE = 4,
+        SHA1 = 8,
+        SHA1_FILE = 16,
+        SHA256 = 32,
+        SHA256_FILE = 64,
     }
 
 
@@ -276,15 +336,15 @@ export namespace BraseroBurn {
      * @gir-type Flags
      */
     enum ImageFS {
-        FS_NONE,
-        FS_ISO,
-        FS_UDF,
-        FS_JOLIET,
-        FS_VIDEO,
-        FS_SYMLINK,
-        ISO_FS_LEVEL_3,
-        ISO_FS_DEEP_DIRECTORY,
-        FS_ANY,
+        FS_NONE = 0,
+        FS_ISO = 1,
+        FS_UDF = 2,
+        FS_JOLIET = 4,
+        FS_VIDEO = 8,
+        FS_SYMLINK = 16,
+        ISO_FS_LEVEL_3 = 32,
+        ISO_FS_DEEP_DIRECTORY = 64,
+        FS_ANY = 127,
     }
 
 
@@ -292,12 +352,12 @@ export namespace BraseroBurn {
      * @gir-type Flags
      */
     enum ImageFormat {
-        NONE,
-        BIN,
-        CUE,
-        CLONE,
-        CDRDAO,
-        ANY,
+        NONE = 0,
+        BIN = 1,
+        CUE = 2,
+        CLONE = 4,
+        CDRDAO = 8,
+        ANY = 15,
     }
 
 
@@ -305,19 +365,19 @@ export namespace BraseroBurn {
      * @gir-type Flags
      */
     enum StreamFormat {
-        AUDIO_FORMAT_NONE,
-        AUDIO_FORMAT_UNDEFINED,
-        AUDIO_FORMAT_DTS,
-        AUDIO_FORMAT_RAW,
-        AUDIO_FORMAT_AC3,
-        AUDIO_FORMAT_MP2,
-        AUDIO_FORMAT_44100,
-        AUDIO_FORMAT_48000,
-        VIDEO_FORMAT_UNDEFINED,
-        VIDEO_FORMAT_VCD,
-        VIDEO_FORMAT_VIDEO_DVD,
-        METADATA_INFO,
-        AUDIO_FORMAT_RAW_LITTLE_ENDIAN,
+        AUDIO_FORMAT_NONE = 0,
+        AUDIO_FORMAT_UNDEFINED = 1,
+        AUDIO_FORMAT_DTS = 2,
+        AUDIO_FORMAT_RAW = 4,
+        AUDIO_FORMAT_AC3 = 8,
+        AUDIO_FORMAT_MP2 = 16,
+        AUDIO_FORMAT_44100 = 32,
+        AUDIO_FORMAT_48000 = 64,
+        VIDEO_FORMAT_UNDEFINED = 128,
+        VIDEO_FORMAT_VCD = 256,
+        VIDEO_FORMAT_VIDEO_DVD = 512,
+        METADATA_INFO = 1024,
+        AUDIO_FORMAT_RAW_LITTLE_ENDIAN = 2048,
     }
 
 
@@ -328,7 +388,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "action-changed": (arg0: number) => void;
+            "action-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
@@ -348,27 +408,27 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "eject-failure": (arg0: unknown) => number;
+            "eject-failure": (object: unknown) => number;
             /**
              * @signal
              * @run-last
              */
-            "insert-media": (arg0: unknown, arg1: number, arg2: number) => number;
+            "insert-media": (object: unknown, p0: number, p1: number) => number;
             /**
              * @signal
              * @run-last
              */
-            "install-missing": (arg0: number, arg1: string) => number;
+            "install-missing": (object: number, p0: string) => number;
             /**
              * @signal
              * @run-last
              */
-            "location-request": (arg0: null, arg1: number) => number;
+            "location-request": (object: null, p0: number) => number;
             /**
              * @signal
              * @run-last
              */
-            "progress-changed": (arg0: number, arg1: number, arg2: number) => void;
+            "progress-changed": (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
@@ -521,6 +581,7 @@ export namespace BraseroBurn {
          * set with brasero_burn_session_set_burner ().
          * @param session a {@link BraseroBurn.BurnSession}
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
+         * @throws GLib.Error
          */
         blank(session: BurnSession): BurnResult;
 
@@ -539,6 +600,7 @@ export namespace BraseroBurn {
          * set as the source of a {@link BraseroBurn.TrackDisc} track inserted in `session`.
          * @param session a {@link BraseroBurn.BurnSession}
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
+         * @throws GLib.Error
          */
         check(session: BurnSession): BurnResult;
 
@@ -558,6 +620,7 @@ export namespace BraseroBurn {
          * set in `session`.
          * @param session a {@link BraseroBurn.BurnSession}
          * @returns a {@link BraseroBurn.BurnResult}. The result of the operation. BRASERO_BURN_OK if it was successful.
+         * @throws GLib.Error
          */
         record(session: BurnSession): BurnResult;
     }
@@ -865,32 +928,32 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "output-changed": (arg0: unknown) => void;
+            "output-changed": (former_medium: unknown) => void;
             /**
              * This signal gets emitted when a tag changed for `session` (whether it
              * was removed, added, or it changed).
              * @signal
              * @run-first
              */
-            "tag-changed": (arg0: string) => void;
+            "tag-changed": (object: string) => void;
             /**
              * This signal gets emitted when a track is added to `session`.
              * @signal
              * @run-last
              */
-            "track-added": (arg0: Track) => void;
+            "track-added": (track: Track) => void;
             /**
              * This signal gets emitted when the contents of a track changed.
              * @signal
              * @run-last
              */
-            "track-changed": (arg0: Track) => void;
+            "track-changed": (track: Track) => void;
             /**
              * This signal gets emitted when a track is removed from `session`.
              * @signal
              * @run-last
              */
-            "track-removed": (arg0: Track, arg1: number) => void;
+            "track-removed": (track: Track, former_position: number) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::speed": (pspec: GObject.ParamSpec) => void;
             "notify::tmpdir": (pspec: GObject.ParamSpec) => void;
@@ -2248,6 +2311,7 @@ export namespace BraseroBurn {
          * @param emptydir a `gchar`.
          * @param videodir a `gchar` or `null`.
          * @returns a {@link BraseroBurn.BurnResult}.
+         * @throws GLib.Error
          */
         write_to_paths(grafts_path: string, excluded_path: string, emptydir: string, videodir: string | null): BurnResult;
     }
@@ -2260,7 +2324,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "deep-directory": (arg0: string) => boolean | void;
+            "deep-directory": (object: string) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -2270,7 +2334,7 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "image-uri": (arg0: string) => number;
+            "image-uri": (object: string) => number;
             /**
              * @signal
              * @run-last
@@ -2280,42 +2344,42 @@ export namespace BraseroBurn {
              * @signal
              * @run-last
              */
-            "name-collision": (arg0: string) => boolean | void;
+            "name-collision": (object: string) => boolean | void;
             /**
              * @signal
              * @run-first
              */
-            "recursive-sym": (arg0: string) => void;
+            "recursive-sym": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "session-available": (arg0: GObject.Object, arg1: boolean) => void;
+            "session-available": (object: GObject.Object, p0: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "session-loaded": (arg0: GObject.Object, arg1: boolean) => void;
+            "session-loaded": (object: GObject.Object, p0: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "source-loaded": (arg0: null) => void;
+            "source-loaded": (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "source-loading": (arg0: number) => void;
+            "source-loading": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "unknown-uri": (arg0: string) => void;
+            "unknown-uri": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "unreadable-uri": (arg0: null, arg1: string) => void;
+            "unreadable-uri": (object: null, p0: string) => void;
         }
 
         // Constructor properties interface
@@ -2426,6 +2490,7 @@ export namespace BraseroBurn {
          * Sets the current icon.
          * @param icon_path a `gchar`
          * @returns a `gboolean`. TRUE if the operation was successful, FALSE otherwise
+         * @throws GLib.Error
          */
         set_icon(icon_path: string): boolean;
 

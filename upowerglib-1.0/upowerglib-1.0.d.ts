@@ -28,36 +28,36 @@ export namespace UPowerGlib {
      * @gir-type Enum
      */
     enum DeviceKind {
-        UNKNOWN,
-        LINE_POWER,
-        BATTERY,
-        UPS,
-        MONITOR,
-        MOUSE,
-        KEYBOARD,
-        PDA,
-        PHONE,
-        MEDIA_PLAYER,
-        TABLET,
-        COMPUTER,
-        GAMING_INPUT,
-        PEN,
-        TOUCHPAD,
-        MODEM,
-        NETWORK,
-        HEADSET,
-        SPEAKERS,
-        HEADPHONES,
-        VIDEO,
-        OTHER_AUDIO,
-        REMOTE_CONTROL,
-        PRINTER,
-        SCANNER,
-        CAMERA,
-        WEARABLE,
-        TOY,
-        BLUETOOTH_GENERIC,
-        LAST,
+        UNKNOWN = 0,
+        LINE_POWER = 1,
+        BATTERY = 2,
+        UPS = 3,
+        MONITOR = 4,
+        MOUSE = 5,
+        KEYBOARD = 6,
+        PDA = 7,
+        PHONE = 8,
+        MEDIA_PLAYER = 9,
+        TABLET = 10,
+        COMPUTER = 11,
+        GAMING_INPUT = 12,
+        PEN = 13,
+        TOUCHPAD = 14,
+        MODEM = 15,
+        NETWORK = 16,
+        HEADSET = 17,
+        SPEAKERS = 18,
+        HEADPHONES = 19,
+        VIDEO = 20,
+        OTHER_AUDIO = 21,
+        REMOTE_CONTROL = 22,
+        PRINTER = 23,
+        SCANNER = 24,
+        CAMERA = 25,
+        WEARABLE = 26,
+        TOY = 27,
+        BLUETOOTH_GENERIC = 28,
+        LAST = 29,
     }
 
 
@@ -75,16 +75,16 @@ export namespace UPowerGlib {
      * @gir-type Enum
      */
     enum DeviceLevel {
-        UNKNOWN,
-        NONE,
-        DISCHARGING,
-        LOW,
-        CRITICAL,
-        ACTION,
-        NORMAL,
-        HIGH,
-        FULL,
-        LAST,
+        UNKNOWN = 0,
+        NONE = 1,
+        DISCHARGING = 2,
+        LOW = 3,
+        CRITICAL = 4,
+        ACTION = 5,
+        NORMAL = 6,
+        HIGH = 7,
+        FULL = 8,
+        LAST = 9,
     }
 
 
@@ -93,14 +93,14 @@ export namespace UPowerGlib {
      * @gir-type Enum
      */
     enum DeviceState {
-        UNKNOWN,
-        CHARGING,
-        DISCHARGING,
-        EMPTY,
-        FULLY_CHARGED,
-        PENDING_CHARGE,
-        PENDING_DISCHARGE,
-        LAST,
+        UNKNOWN = 0,
+        CHARGING = 1,
+        DISCHARGING = 2,
+        EMPTY = 3,
+        FULLY_CHARGED = 4,
+        PENDING_CHARGE = 5,
+        PENDING_DISCHARGE = 6,
+        LAST = 7,
     }
 
 
@@ -109,24 +109,31 @@ export namespace UPowerGlib {
      * @gir-type Enum
      */
     enum DeviceTechnology {
-        UNKNOWN,
-        LITHIUM_ION,
-        LITHIUM_POLYMER,
-        LITHIUM_IRON_PHOSPHATE,
-        LEAD_ACID,
-        NICKEL_CADMIUM,
-        NICKEL_METAL_HYDRIDE,
-        LAST,
+        UNKNOWN = 0,
+        LITHIUM_ION = 1,
+        LITHIUM_POLYMER = 2,
+        LITHIUM_IRON_PHOSPHATE = 3,
+        LEAD_ACID = 4,
+        NICKEL_CADMIUM = 5,
+        NICKEL_METAL_HYDRIDE = 6,
+        LAST = 7,
     }
 
 
+    /**
+     * @default 1
+     */
     const MAJOR_VERSION: number;
 
     /**
      * The compile-time micro version
+     * @default 3
      */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 91
+     */
     const MINOR_VERSION: number;
 
     namespace Client {
@@ -138,14 +145,14 @@ export namespace UPowerGlib {
              * @since 0.9.0
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * The ::device-removed signal is emitted when a power device is removed.
              * @signal
              * @since 1.0
              * @run-last
              */
-            "device-removed": (arg0: string) => void;
+            "device-removed": (object_path: string) => void;
             "notify::daemon-version": (pspec: GObject.ParamSpec) => void;
             "notify::lid-is-closed": (pspec: GObject.ParamSpec) => void;
             "notify::lid-is-present": (pspec: GObject.ParamSpec) => void;
@@ -356,6 +363,7 @@ export namespace UPowerGlib {
          * Finishes an operation started with `up_client_get_devices_async()`.
          * @param res a {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed     to `up_client_get_devices_async()`
          * @returns an array of     {@link UPowerGlib.Device} objects or `null` on error.
+         * @throws GLib.Error
          */
         get_devices_finish(res: Gio.AsyncResult): Device[];
 
@@ -524,6 +532,7 @@ export namespace UPowerGlib {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -533,6 +542,7 @@ export namespace UPowerGlib {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -632,6 +642,7 @@ export namespace UPowerGlib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1396,6 +1407,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.HistoryItem}'s, with the most               recent one being first; `null` if `error` is set or `device` is               invalid
          * @since 0.9.0
+         * @throws GLib.Error
          */
         get_history_sync(type: string, timespec: number, resolution: number, cancellable: Gio.Cancellable | null): HistoryItem[];
 
@@ -1412,6 +1424,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of {@link UPowerGlib.StatsItem}'s, else `NULL` and `error` is used
          * @since 0.9.0
+         * @throws GLib.Error
          */
         get_statistics_sync(type: string, cancellable: Gio.Cancellable | null): StatsItem[];
 
@@ -1422,6 +1435,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.9.0
+         * @throws GLib.Error
          */
         refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1431,6 +1445,7 @@ export namespace UPowerGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.9.0
+         * @throws GLib.Error
          */
         set_object_path_sync(object_path: string, cancellable: Gio.Cancellable | null): boolean;
 

@@ -47,35 +47,35 @@ export namespace GWeather {
         /**
          * value not available
          */
-        INVALID,
+        INVALID = -1,
         /**
          * no significant phenomenon
          */
-        NONE,
-        DRIZZLE,
-        RAIN,
-        SNOW,
-        SNOW_GRAINS,
-        ICE_CRYSTALS,
-        ICE_PELLETS,
-        HAIL,
-        SMALL_HAIL,
-        UNKNOWN_PRECIPITATION,
-        MIST,
-        FOG,
-        SMOKE,
-        VOLCANIC_ASH,
-        SAND,
-        HAZE,
-        SPRAY,
-        DUST,
-        SQUALL,
-        SANDSTORM,
-        DUSTSTORM,
-        FUNNEL_CLOUD,
-        TORNADO,
-        DUST_WHIRLS,
-        LAST,
+        NONE = 0,
+        DRIZZLE = 1,
+        RAIN = 2,
+        SNOW = 3,
+        SNOW_GRAINS = 4,
+        ICE_CRYSTALS = 5,
+        ICE_PELLETS = 6,
+        HAIL = 7,
+        SMALL_HAIL = 8,
+        UNKNOWN_PRECIPITATION = 9,
+        MIST = 10,
+        FOG = 11,
+        SMOKE = 12,
+        VOLCANIC_ASH = 13,
+        SAND = 14,
+        HAZE = 15,
+        SPRAY = 16,
+        DUST = 17,
+        SQUALL = 18,
+        SANDSTORM = 19,
+        DUSTSTORM = 20,
+        FUNNEL_CLOUD = 21,
+        TORNADO = 22,
+        DUST_WHIRLS = 23,
+        LAST = 24,
     }
 
 
@@ -98,73 +98,73 @@ export namespace GWeather {
         /**
          * value not available
          */
-        INVALID,
+        INVALID = -1,
         /**
          * no qualifier for the phenomenon
          */
-        NONE,
+        NONE = 0,
         /**
          * phenomenon happening in the proximity
          *                               of the location, not in the actual location
          */
-        VICINITY,
+        VICINITY = 1,
         /**
          * phenomenon is light or predicted to be light
          */
-        LIGHT,
+        LIGHT = 2,
         /**
          * phenomenon is moderate or predicted to be
          *                               moderate
          */
-        MODERATE,
+        MODERATE = 3,
         /**
          * phenomenon is heavy or predicted to be heavy
          */
-        HEAVY,
+        HEAVY = 4,
         /**
          * shallow fog (only valid with
          *                              {@link GWeather.ConditionPhenomenon.FOG})
          */
-        SHALLOW,
+        SHALLOW = 5,
         /**
          * patches of fog (only valid with
          *                              {@link GWeather.ConditionPhenomenon.FOG})
          */
-        PATCHES,
+        PATCHES = 6,
         /**
          * partial fog (only valid with
          *                             {@link GWeather.ConditionPhenomenon.FOG})
          */
-        PARTIAL,
+        PARTIAL = 7,
         /**
          * phenomenon will be a thunderstorm
          *                                   and/or will include lightning
          */
-        THUNDERSTORM,
+        THUNDERSTORM = 8,
         /**
          * phenomenon is blowing (valid with
          *                              {@link GWeather.ConditionPhenomenon.SNOW}, {@link GWeather.ConditionPhenomenon.SAND},
          *                              {@link GWeather.ConditionPhenomenon.SPRAY}, {@link GWeather.ConditionPhenomenon.DUST})
          */
-        BLOWING,
+        BLOWING = 9,
         /**
          * phenomenon is heavy and involves showers
          */
-        SHOWERS,
+        SHOWERS = 10,
         /**
          * phenomenon is moving across (valid
          *                               with {@link GWeather.ConditionPhenomenon.SAND} and
          *                               {@link GWeather.ConditionPhenomenon.DUST})
          */
-        DRIFTING,
+        DRIFTING = 11,
         /**
          * phenomenon is freezing and involves ice
          */
-        FREEZING,
+        FREEZING = 12,
         /**
          * maximum value of the enumeration.
          */
-        LAST,
+        LAST = 13,
     }
 
 
@@ -184,23 +184,23 @@ export namespace GWeather {
         /**
          * invalid unit
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the user preferred distance unit
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * meters
          */
-        METERS,
+        METERS = 2,
         /**
          * kilometers (= 1000 meters)
          */
-        KM,
+        KM = 3,
         /**
          * miles
          */
-        MILES,
+        MILES = 4,
     }
 
 
@@ -229,44 +229,44 @@ export namespace GWeather {
         /**
          * A location representing the entire world.
          */
-        WORLD,
+        WORLD = 0,
         /**
          * A location representing a continent or
          * other top-level region.
          */
-        REGION,
+        REGION = 1,
         /**
          * A location representing a "country" (or
          * other geographic unit that has an ISO-3166 country code)
          */
-        COUNTRY,
+        COUNTRY = 2,
         /**
          * A location representing a "first-level
          * administrative division"; ie, a state, province, or similar
          * division.
          */
-        ADM1,
+        ADM1 = 3,
         /**
          * A location representing a city
          */
-        CITY,
+        CITY = 4,
         /**
          * A location representing a
          * weather station.
          */
-        WEATHER_STATION,
+        WEATHER_STATION = 5,
         /**
          * A location that is detached from the
          * database, for example because it was loaded from external storage
          * and could not be fully recovered. The parent of this location is
          * the nearest weather station.
          */
-        DETACHED,
+        DETACHED = 6,
         /**
          * A location representing a named
          * or special timezone in the world, such as UTC
          */
-        NAMED_TIMEZONE,
+        NAMED_TIMEZONE = 7,
     }
 
 
@@ -286,36 +286,36 @@ export namespace GWeather {
         /**
          * invalid unit
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the user preferred pressure unit
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * kiloPascal (* 10^3 Pa)
          */
-        KPA,
+        KPA = 2,
         /**
          * hectoPascal (* 10^2 Pa); also known
          *                              as millibars, but formatted differently
          */
-        HPA,
+        HPA = 3,
         /**
          * millibars; same as {@link GWeather.PressureUnit.HPA}
          */
-        MB,
+        MB = 4,
         /**
          * millimeters of mercury
          */
-        MM_HG,
+        MM_HG = 5,
         /**
          * inches of mercury
          */
-        INCH_HG,
+        INCH_HG = 6,
         /**
          * atmospheres
          */
-        ATM,
+        ATM = 7,
     }
 
 
@@ -337,31 +337,31 @@ export namespace GWeather {
         /**
          * value not available
          */
-        INVALID,
+        INVALID = -1,
         /**
          * sky completely clear, no clouds visible
          */
-        CLEAR,
+        CLEAR = 0,
         /**
          * sky mostly clear, few clouds
          */
-        BROKEN,
+        BROKEN = 1,
         /**
          * sky mostly clear, patches of clouds
          */
-        SCATTERED,
+        SCATTERED = 2,
         /**
          * few clouds, sky cloudy but patches of sky visible
          */
-        FEW,
+        FEW = 3,
         /**
          * sky completely clouded, sun not visible
          */
-        OVERCAST,
+        OVERCAST = 4,
         /**
          * the maximum value for the enumeration
          */
-        LAST,
+        LAST = 5,
     }
 
 
@@ -381,31 +381,31 @@ export namespace GWeather {
         /**
          * invalid unit
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the user preferred speed unit
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * meters per second
          */
-        MS,
+        MS = 2,
         /**
          * kilometers per hour
          */
-        KPH,
+        KPH = 3,
         /**
          * miles per hour
          */
-        MPH,
+        MPH = 4,
         /**
          * knots
          */
-        KNOTS,
+        KNOTS = 5,
         /**
          * Beaufort scale
          */
-        BFT,
+        BFT = 6,
     }
 
 
@@ -425,23 +425,23 @@ export namespace GWeather {
         /**
          * invalid unit
          */
-        INVALID,
+        INVALID = 0,
         /**
          * the user preferred temperature unit
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * Kelvin (absolute) temperature scale
          */
-        KELVIN,
+        KELVIN = 2,
         /**
          * Celsius temperature scale
          */
-        CENTIGRADE,
+        CENTIGRADE = 3,
         /**
          * Fahrenheit temperature scale
          */
-        FAHRENHEIT,
+        FAHRENHEIT = 4,
     }
 
 
@@ -462,88 +462,95 @@ export namespace GWeather {
         /**
          * value not available
          */
-        INVALID,
+        INVALID = -1,
         /**
          * variable throughout the day
          */
-        VARIABLE,
+        VARIABLE = 0,
         /**
          * north
          */
-        N,
+        N = 1,
         /**
          * north-north-east
          */
-        NNE,
+        NNE = 2,
         /**
          * north-east
          */
-        NE,
+        NE = 3,
         /**
          * east-north-east
          */
-        ENE,
+        ENE = 4,
         /**
          * east
          */
-        E,
+        E = 5,
         /**
          * east-south-east
          */
-        ESE,
+        ESE = 6,
         /**
          * south-east
          */
-        SE,
+        SE = 7,
         /**
          * south-south-east
          */
-        SSE,
+        SSE = 8,
         /**
          * south
          */
-        S,
+        S = 9,
         /**
          * south-south-west
          */
-        SSW,
+        SSW = 10,
         /**
          * south-west
          */
-        SW,
+        SW = 11,
         /**
          * west-south-west
          */
-        WSW,
+        WSW = 12,
         /**
          * west
          */
-        W,
+        W = 13,
         /**
          * west-north-west
          */
-        WNW,
+        WNW = 14,
         /**
          * north-west
          */
-        NW,
+        NW = 15,
         /**
          * north-north-west
          */
-        NNW,
+        NNW = 16,
         /**
          * maximum value for the enumeration
          */
-        LAST,
+        LAST = 17,
     }
 
 
+    /**
+     * @default 1
+     */
     const LOCATION_ENTRY_H: number;
 
+    /**
+     * @default 1
+     */
     const TIMEZONE_MENU_H: number;
 
     /**
      * @param result 
+     * @throws GLib.Error
      */
     function location_detect_nearest_city_finish(result: Gio.AsyncResult): Location;
 
@@ -639,17 +646,17 @@ export namespace GWeather {
         /**
          * The default string format
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Capitalize as if the string
          *                                                  was starting a sentence
          */
-        SENTENCE_CAPITALIZATION,
+        SENTENCE_CAPITALIZATION = 1,
         /**
          * Capitalize as if the string was
          *                                            appearing within a sentence
          */
-        NO_CAPITALIZATION,
+        NO_CAPITALIZATION = 2,
     }
 
 
@@ -667,31 +674,31 @@ export namespace GWeather {
         /**
          * no provider, no weather information available
          */
-        NONE,
+        NONE = 0,
         /**
          * METAR office, providing current conditions worldwide
          */
-        METAR,
+        METAR = 1,
         /**
          * US weather office, providing 7 days of forecast
          */
-        IWIN,
+        IWIN = 4,
         /**
          * Yahoo Weather Service, removed in 3.27.1
          */
-        YAHOO,
+        YAHOO = 8,
         /**
          * MET.no service, worldwide but requires attribution and a subscription to the [API users mailing-list](https://lists.met.no/mailman/listinfo/api-users).
          */
-        MET_NO,
+        MET_NO = 16,
         /**
          * OpenWeatherMap, worldwide and possibly more reliable, but requires attribution and is limited in the number of queries
          */
-        OWM,
+        OWM = 32,
         /**
          * enable all available providers
          */
-        ALL,
+        ALL = 61,
     }
 
 

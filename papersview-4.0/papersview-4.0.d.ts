@@ -45,11 +45,11 @@ export namespace PapersView {
      * @gir-type Enum
      */
     enum AnnotationTool {
-        PENCIL,
-        HIGHLIGHT,
-        ERASER,
-        TEXT,
-        MAX,
+        PENCIL = 0,
+        HIGHLIGHT = 1,
+        ERASER = 2,
+        TEXT = 3,
+        MAX = 4,
     }
 
 
@@ -83,11 +83,11 @@ export namespace PapersView {
      * @gir-type Enum
      */
     enum JobPriority {
-        PRIORITY_URGENT,
-        PRIORITY_HIGH,
-        PRIORITY_LOW,
-        PRIORITY_NONE,
-        N_PRIORITIES,
+        PRIORITY_URGENT = 0,
+        PRIORITY_HIGH = 1,
+        PRIORITY_LOW = 2,
+        PRIORITY_NONE = 3,
+        N_PRIORITIES = 4,
     }
 
 
@@ -102,9 +102,9 @@ export namespace PapersView {
      * @gir-type Enum
      */
     enum PageLayout {
-        SINGLE,
-        DUAL,
-        AUTOMATIC,
+        SINGLE = 0,
+        DUAL = 1,
+        AUTOMATIC = 2,
     }
 
 
@@ -119,10 +119,10 @@ export namespace PapersView {
      * @gir-type Enum
      */
     enum SizingMode {
-        FIT_PAGE,
-        FIT_WIDTH,
-        FREE,
-        AUTOMATIC,
+        FIT_PAGE = 0,
+        FIT_WIDTH = 1,
+        FREE = 2,
+        AUTOMATIC = 3,
     }
 
 
@@ -158,11 +158,11 @@ export namespace PapersView {
      * @gir-type Flags
      */
     enum AnnotationEditingState {
-        NONE,
-        INK,
-        TEXT,
-        STAMP,
-        INSERT_TEXT,
+        NONE = 0,
+        INK = 1,
+        TEXT = 2,
+        STAMP = 4,
+        INSERT_TEXT = 8,
     }
 
 
@@ -177,17 +177,17 @@ export namespace PapersView {
      * @gir-type Flags
      */
     enum JobPageDataFlags {
-        NONE,
-        LINKS,
-        TEXT,
-        TEXT_MAPPING,
-        TEXT_LAYOUT,
-        TEXT_ATTRS,
-        TEXT_LOG_ATTRS,
-        IMAGES,
-        FORMS,
-        MEDIA,
-        ALL,
+        NONE = 0,
+        LINKS = 1,
+        TEXT = 2,
+        TEXT_MAPPING = 4,
+        TEXT_LAYOUT = 8,
+        TEXT_ATTRS = 16,
+        TEXT_LOG_ATTRS = 32,
+        IMAGES = 64,
+        FORMS = 128,
+        MEDIA = 256,
+        ALL = 511,
     }
 
 
@@ -451,12 +451,12 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            "annot-added": (arg0: PapersDocument.Annotation) => void;
+            "annot-added": (object: PapersDocument.Annotation) => void;
             /**
              * @signal
              * @run-last
              */
-            "annot-removed": (arg0: PapersDocument.Annotation) => void;
+            "annot-removed": (object: PapersDocument.Annotation) => void;
             /**
              * @signal
              * @run-last
@@ -701,6 +701,7 @@ export namespace PapersView {
          * Finishes the {@link Pps.AttachmentContext.save_attachments_async} call
          * @param result a {@link Gio.AsyncResult}
          * @returns whether a files were stored
+         * @throws GLib.Error
          */
         save_attachments_finish(result: Gio.AsyncResult): boolean;
     }
@@ -713,7 +714,7 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            "page-changed": (arg0: number, arg1: number) => void;
+            "page-changed": (object: number, p0: number) => void;
             "notify::annotation-editing-state": (pspec: GObject.ParamSpec) => void;
             "notify::annotation-model": (pspec: GObject.ParamSpec) => void;
             "notify::continuous": (pspec: GObject.ParamSpec) => void;
@@ -1052,7 +1053,7 @@ export namespace PapersView {
              * @action
              * @run-last
              */
-            "activate-link": (arg0: GObject.Object) => void;
+            "activate-link": (object: GObject.Object) => void;
             /**
              * @signal
              * @action
@@ -1296,6 +1297,7 @@ export namespace PapersView {
         /**
          * Determines the finish status of the specified job.
          * @returns TRUE if the job succeeded, FALSE otherwise.
+         * @throws GLib.Error
          */
         is_succeeded(): boolean;
 
@@ -1494,7 +1496,7 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            updated: (arg0: number) => void;
+            updated: (object: number) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1796,6 +1798,7 @@ export namespace PapersView {
          * @param mime_type the mime type of the file descriptor
          * @returns `true` if the file descriptor could be set
          * @since 46.0
+         * @throws GLib.Error
          */
         set_fd(fd: number, mime_type: string): boolean;
 
@@ -2315,7 +2318,7 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            done: (arg0: Gtk.PrintOperationResult) => void;
+            done: (object: Gtk.PrintOperationResult) => void;
             /**
              * @signal
              * @run-last
@@ -2387,6 +2390,9 @@ export namespace PapersView {
 
         get_embed_page_setup(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_error(): void;
 
         get_job_name(): string;
@@ -2444,12 +2450,12 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            finished: (arg0: number) => void;
+            finished: (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "result-activated": (arg0: SearchResult) => void;
+            "result-activated": (object: SearchResult) => void;
             /**
              * @signal
              * @run-last
@@ -2666,7 +2672,7 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            "stacks-changed": (arg0: UndoHandler) => void;
+            "stacks-changed": (handler: UndoHandler) => void;
             "notify::document-model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2779,19 +2785,19 @@ export namespace PapersView {
              * @signal
              * @run-last
              */
-            "cursor-moved": (arg0: number, arg1: number) => void;
+            "cursor-moved": (object: number, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "external-link": (arg0: PapersDocument.LinkAction) => void;
+            "external-link": (object: PapersDocument.LinkAction) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "handle-link": (arg0: GObject.Object, arg1: GObject.Object) => void;
+            "handle-link": (object: GObject.Object, p0: GObject.Object) => void;
             /**
              * @signal
              * @action
@@ -2803,19 +2809,19 @@ export namespace PapersView {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => boolean | void;
+            "move-cursor": (object: Gtk.MovementStep, p0: number, p1: boolean) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            popup: (arg0: null, arg1: number, arg2: number) => void;
+            popup: (object: null, p0: number, p1: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            scroll: (arg0: Gtk.ScrollType, arg1: Gtk.Orientation) => boolean | void;
+            scroll: (object: Gtk.ScrollType, p0: Gtk.Orientation) => boolean | void;
             /**
              * @signal
              * @action
@@ -2827,7 +2833,7 @@ export namespace PapersView {
              * @action
              * @run-first
              */
-            "signature-rect": (arg0: number, arg1: PapersDocument.Rectangle) => void;
+            "signature-rect": (object: number, p0: PapersDocument.Rectangle) => void;
             "notify::annotations-context": (pspec: GObject.ParamSpec) => void;
             "notify::can-zoom-in": (pspec: GObject.ParamSpec) => void;
             "notify::can-zoom-out": (pspec: GObject.ParamSpec) => void;
@@ -3595,13 +3601,13 @@ export namespace PapersView {
              * @action
              * @run-last
              */
-            "change-page": (arg0: Gtk.ScrollType) => void;
+            "change-page": (object: Gtk.ScrollType) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "external-link": (arg0: PapersDocument.LinkAction) => void;
+            "external-link": (object: PapersDocument.LinkAction) => void;
             /**
              * @signal
              * @action

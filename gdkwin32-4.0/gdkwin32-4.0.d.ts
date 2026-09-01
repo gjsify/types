@@ -42,16 +42,16 @@ export namespace GdkWin32 {
          *   is not Windows, the Windows version is not recent enough, or it was explicitly
          *   disabled at compile- or runtime
          */
-        NOT_AVAILABLE,
+        NOT_AVAILABLE = 0,
         /**
          * The requested format is not supported
          */
-        UNSUPPORTED_FORMAT,
+        UNSUPPORTED_FORMAT = 1,
         /**
          * GTK failed to create the resource for other
          *   reasons
          */
-        CREATION_FAILED,
+        CREATION_FAILED = 2,
     }
 
 
@@ -63,11 +63,11 @@ export namespace GdkWin32 {
         /**
          * event not handled, continue processing.
          */
-        CONTINUE,
+        CONTINUE = 0,
         /**
          * event handled, terminate processing.
          */
-        REMOVE,
+        REMOVE = 1,
     }
 
 
@@ -442,6 +442,7 @@ export namespace GdkWin32 {
          * @param size an integer.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load(size: number, cancellable: Gio.Cancellable | null): [Gio.InputStream, string];
 
@@ -478,6 +479,7 @@ export namespace GdkWin32 {
          * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Gio.InputStream} to read the icon from.
+         * @throws GLib.Error
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
 
@@ -690,6 +692,7 @@ export namespace GdkWin32 {
          * @param data user data to pass to the destroy function
          * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          * @since 4.20
+         * @throws GLib.Error
          */
         build(data: null): Gdk.Texture | null;
 

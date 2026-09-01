@@ -25,9 +25,9 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum ConstraintType {
-        NONE,
-        RANGE,
-        LIST,
+        NONE = 0,
+        RANGE = 1,
+        LIST = 2,
     }
 
 
@@ -35,8 +35,8 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum DeviceLocations {
-        ANY,
-        LOCAL_ONLY,
+        ANY = 0,
+        LOCAL_ONLY = 1,
     }
 
 
@@ -86,23 +86,23 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum ImgFormat {
-        RAW_RGB_24,
-        GRAYSCALE_8,
-        BW_1,
-        BMP,
-        GIF,
-        JPEG,
-        PNG,
-        CIFF,
-        EXIF,
-        FLASHPIX,
-        ICO,
-        JPEG2K,
-        JPEG2KX,
-        MEMORYBMP,
-        PHOTOCD,
-        PICT,
-        TIFF,
+        RAW_RGB_24 = 0,
+        GRAYSCALE_8 = 1,
+        BW_1 = 2,
+        BMP = 3,
+        GIF = 4,
+        JPEG = 5,
+        PNG = 6,
+        CIFF = 7,
+        EXIF = 8,
+        FLASHPIX = 9,
+        ICO = 10,
+        JPEG2K = 11,
+        JPEG2KX = 12,
+        MEMORYBMP = 13,
+        PHOTOCD = 14,
+        PICT = 15,
+        TIFF = 16,
     }
 
 
@@ -110,10 +110,10 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum ItemType {
-        DEVICE,
-        FLATBED,
-        ADF,
-        UNIDENTIFIED,
+        DEVICE = 0,
+        FLATBED = 1,
+        ADF = 2,
+        UNIDENTIFIED = -1,
     }
 
 
@@ -121,10 +121,10 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum LogLevel {
-        DEBUG,
-        INFO,
-        WARNING,
-        ERROR,
+        DEBUG = 0,
+        INFO = 1,
+        WARNING = 2,
+        ERROR = 3,
     }
 
 
@@ -132,13 +132,13 @@ export namespace Libinsane {
      * @gir-type Enum
      */
     enum Unit {
-        NONE,
-        PIXEL,
-        BIT,
-        MM,
-        DPI,
-        PERCENT,
-        MICROSECOND,
+        NONE = 0,
+        PIXEL = 1,
+        BIT = 2,
+        MM = 3,
+        DPI = 4,
+        PERCENT = 5,
+        MICROSECOND = 6,
     }
 
 
@@ -156,12 +156,12 @@ export namespace Libinsane {
      * @gir-type Flags
      */
     enum Capability {
-        NONE,
-        EMULATED,
-        AUTOMATIC,
-        HW_SELECT,
-        SW_SELECT,
-        INACTIVE,
+        NONE = 0,
+        EMULATED = 1,
+        AUTOMATIC = 2,
+        HW_SELECT = 4,
+        SW_SELECT = 8,
+        INACTIVE = 16,
     }
 
 
@@ -169,10 +169,10 @@ export namespace Libinsane {
      * @gir-type Flags
      */
     enum SetFlag {
-        NONE,
-        INEXACT,
-        MUST_RELOAD_OPTIONS,
-        MUST_RELOAD_PARAMS,
+        NONE = 0,
+        INEXACT = 1,
+        MUST_RELOAD_OPTIONS = 2,
+        MUST_RELOAD_PARAMS = 4,
     }
 
 
@@ -230,12 +230,14 @@ export namespace Libinsane {
         /**
          * @param dev_id 
          * @returns LibinsaneItem object
+         * @throws GLib.Error
          */
         get_device(dev_id: string): Item;
 
         /**
          * @param locations 
          * @returns list of available devices (LibinsaneDeviceDescriptors objects)
+         * @throws GLib.Error
          */
         list_devices(locations: DeviceLocations): DeviceDescriptor[];
     }
@@ -341,11 +343,15 @@ export namespace Libinsane {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         close(): void;
 
         /**
          * See [C-API](../doxygen/html/structlis__item.html#ae4039acefa6acf85a110dec491340411)
          * @returns list of children items (usually scan sources)
+         * @throws GLib.Error
          */
         get_children(): Item[];
 
@@ -359,11 +365,13 @@ export namespace Libinsane {
         /**
          * See [C-API](../doxygen/html/structlis__item.html#aa2e301604accfe64461b36e28365bf9e)
          * @returns item scan options.
+         * @throws GLib.Error
          */
         get_options(): OptionDescriptor[];
 
         /**
          * @returns item scan parameters.
+         * @throws GLib.Error
          */
         scan_start(): ScanSession;
     }
@@ -427,6 +435,9 @@ export namespace Libinsane {
 
         get_title(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         get_value(): unknown;
 
         get_value_type(): GObject.GType;
@@ -439,6 +450,7 @@ export namespace Libinsane {
 
         /**
          * @param value 
+         * @throws GLib.Error
          */
         set_value(value: GObject.Value | any): SetFlag;
     }
@@ -546,6 +558,7 @@ export namespace Libinsane {
 
         /**
          * @returns item scan parameters.
+         * @throws GLib.Error
          */
         get_scan_parameters(): ScanParameters;
 
@@ -554,12 +567,14 @@ export namespace Libinsane {
          * after each call to this function before calling it again.
          * @param buffer buffer to read data
          * @returns Number of bytes read, or -1 on error
+         * @throws GLib.Error
          */
         read(buffer: Uint8Array | string): number;
 
         /**
          * @param lng number of bytes wanted
          * @returns a new {@link GLib.Bytes}, or `null` if an error occured
+         * @throws GLib.Error
          */
         read_bytes(lng: bigint | number): GLib.Bytes;
     }

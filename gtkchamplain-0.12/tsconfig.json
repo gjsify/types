@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./gtkchamplain-0.12.d.ts","./gtkchamplain-0.12-surface.d.ts"]
+  "include": ["./gtkchamplain-0.12.d.ts","./gtkchamplain-0.12-vocabulary.d.ts"]
 }
 
 

@@ -73,9 +73,9 @@ export namespace Vte {
      * @gir-type Enum
      */
     enum TerminalAntiAlias {
-        USE_DEFAULT,
-        FORCE_ENABLE,
-        FORCE_DISABLE,
+        USE_DEFAULT = 0,
+        FORCE_ENABLE = 1,
+        FORCE_DISABLE = 2,
     }
 
 
@@ -95,15 +95,15 @@ export namespace Vte {
         /**
          * Follow GTK+ settings for cursor blinking.
          */
-        SYSTEM,
+        SYSTEM = 0,
         /**
          * Cursor blinks.
          */
-        ON,
+        ON = 1,
         /**
          * Cursor does not blink.
          */
-        OFF,
+        OFF = 2,
     }
 
 
@@ -123,16 +123,16 @@ export namespace Vte {
         /**
          * Draw a block cursor.  This is the default.
          */
-        BLOCK,
+        BLOCK = 0,
         /**
          * Draw a vertical bar on the left side of character.
          * This is similar to the default cursor for other GTK+ widgets.
          */
-        IBEAM,
+        IBEAM = 1,
         /**
          * Draw a horizontal bar below the character.
          */
-        UNDERLINE,
+        UNDERLINE = 2,
     }
 
 
@@ -153,23 +153,23 @@ export namespace Vte {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Send an ASCII backspace character (0x08).
          */
-        ASCII_BACKSPACE,
+        ASCII_BACKSPACE = 1,
         /**
          * Send an ASCII delete character (0x7F).
          */
-        ASCII_DELETE,
+        ASCII_DELETE = 2,
         /**
          * Send the "@@7" control sequence.
          */
-        DELETE_SEQUENCE,
+        DELETE_SEQUENCE = 3,
         /**
          * Send terminal's "erase" setting.
          */
-        TTY,
+        TTY = 4,
     }
 
 
@@ -189,7 +189,7 @@ export namespace Vte {
         /**
          * Write contents as UTF-8 text.  This is the default.
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -231,28 +231,28 @@ export namespace Vte {
         /**
          * don't record the session in lastlog
          */
-        NO_LASTLOG,
+        NO_LASTLOG = 1,
         /**
          * don't record the session in utmp
          */
-        NO_UTMP,
+        NO_UTMP = 2,
         /**
          * don't record the session in wtmp
          */
-        NO_WTMP,
+        NO_WTMP = 4,
         /**
          * don't use the GNOME PTY helper to allocate the PTY
          */
-        NO_HELPER,
+        NO_HELPER = 8,
         /**
          * when allocating the PTY with the PTY helper fails,
          *   don't fall back to try using PTY98
          */
-        NO_FALLBACK,
+        NO_FALLBACK = 16,
         /**
          * the default flags
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -362,6 +362,7 @@ export namespace Vte {
          * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @returns `true` on success, `false` on failure with `error` filled in
          * @since 0.26
+         * @throws GLib.Error
          */
         get_size(): [boolean, number, number];
 
@@ -374,6 +375,7 @@ export namespace Vte {
          * @param columns the desired number of columns
          * @returns `true` on success, `false` on failure with `error` filled in
          * @since 0.26
+         * @throws GLib.Error
          */
         set_size(rows: number, columns: number): boolean;
 
@@ -391,6 +393,7 @@ export namespace Vte {
          * @param utf8 whether or not the pty is in UTF-8 mode
          * @returns `true` on success, `false` on failure with `error` filled in
          * @since 0.26
+         * @throws GLib.Error
          */
         set_utf8(utf8: boolean): boolean;
 
@@ -436,6 +439,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -502,7 +506,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "char-size-changed": (arg0: number, arg1: number) => void;
+            "char-size-changed": (width: number, height: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child started
              * using `vte_terminal_fork_command()` has exited.
@@ -517,7 +521,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            commit: (arg0: string, arg1: number) => void;
+            commit: (text: string, size: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
@@ -609,7 +613,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "move-window": (arg0: number, arg1: number) => void;
+            "move-window": (x: number, y: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
@@ -634,7 +638,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "resize-window": (arg0: number, arg1: number) => void;
+            "resize-window": (width: number, height: number) => void;
             /**
              * Emitted at the child application's request.
              * @signal
@@ -655,7 +659,7 @@ export namespace Vte {
              * @since 0.17.1
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Gtk.Adjustment | null, arg1: Gtk.Adjustment | null) => void;
+            "set-scroll-adjustments": (horizontal: Gtk.Adjustment | null, vertical: Gtk.Adjustment | null) => void;
             /**
              * Emitted whenever the contents of the status line are modified or
              * cleared.
@@ -694,7 +698,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "text-scrolled": (arg0: number) => void;
+            "text-scrolled": (delta: number) => void;
             /**
              * Emitted when the terminal's %window_title field is modified.
              * @signal
@@ -1570,6 +1574,7 @@ export namespace Vte {
          * @param child_setup function to run in the child just before `exec()`, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
          * @since 0.26
+         * @throws GLib.Error
          */
         fork_command_full(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null): [boolean, GLib.Pid | null];
 
@@ -1875,6 +1880,7 @@ export namespace Vte {
          * @param flags flags from {@link Vte.PtyFlags}
          * @returns a new {@link Vte.Pty}
          * @since 0.26
+         * @throws GLib.Error
          */
         pty_new(flags: PtyFlags): Pty;
 
@@ -2272,6 +2278,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
          * @since 0.24
+         * @throws GLib.Error
          */
         write_contents(stream: Gio.OutputStream, flags: TerminalWriteFlags, cancellable: Gio.Cancellable | null): boolean;
 

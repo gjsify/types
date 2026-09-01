@@ -40,15 +40,15 @@ export namespace GstVideo {
         /**
          * Progressive or no field specified (default)
          */
-        PROGRESSIVE,
+        PROGRESSIVE = 0,
         /**
          * Interlaced first field
          */
-        INTERLACED_FIRST,
+        INTERLACED_FIRST = 16,
         /**
          * Interlaced second field
          */
-        INTERLACED_SECOND,
+        INTERLACED_SECOND = 17,
     }
 
 
@@ -71,12 +71,12 @@ export namespace GstVideo {
          * Color balance is implemented with dedicated
          *         hardware.
          */
-        HARDWARE,
+        HARDWARE = 0,
         /**
          * Color balance is implemented via software
          *         processing.
          */
-        SOFTWARE,
+        SOFTWARE = 1,
     }
 
 
@@ -106,77 +106,77 @@ export namespace GstVideo {
         /**
          * An invalid command entry
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Execute navigation menu command 1. For DVD,
          * this enters the DVD root menu, or exits back to the title from the menu.
          */
-        MENU1,
+        MENU1 = 1,
         /**
          * Execute navigation menu command 2. For DVD,
          * this jumps to the DVD title menu.
          */
-        MENU2,
+        MENU2 = 2,
         /**
          * Execute navigation menu command 3. For DVD,
          * this jumps into the DVD root menu.
          */
-        MENU3,
+        MENU3 = 3,
         /**
          * Execute navigation menu command 4. For DVD,
          * this jumps to the Subpicture menu.
          */
-        MENU4,
+        MENU4 = 4,
         /**
          * Execute navigation menu command 5. For DVD,
          * the jumps to the audio menu.
          */
-        MENU5,
+        MENU5 = 5,
         /**
          * Execute navigation menu command 6. For DVD,
          * this jumps to the angles menu.
          */
-        MENU6,
+        MENU6 = 6,
         /**
          * Execute navigation menu command 7. For DVD,
          * this jumps to the chapter menu.
          */
-        MENU7,
+        MENU7 = 7,
         /**
          * Select the next button to the left in a menu,
          * if such a button exists.
          */
-        LEFT,
+        LEFT = 20,
         /**
          * Select the next button to the right in a menu,
          * if such a button exists.
          */
-        RIGHT,
+        RIGHT = 21,
         /**
          * Select the button above the current one in a
          * menu, if such a button exists.
          */
-        UP,
+        UP = 22,
         /**
          * Select the button below the current one in a
          * menu, if such a button exists.
          */
-        DOWN,
+        DOWN = 23,
         /**
          * Activate (click) the currently selected
          * button in a menu, if such a button exists.
          */
-        ACTIVATE,
+        ACTIVATE = 24,
         /**
          * Switch to the previous angle in a
          * multiangle feature.
          */
-        PREV_ANGLE,
+        PREV_ANGLE = 30,
         /**
          * Switch to the next angle in a multiangle
          * feature.
          */
-        NEXT_ANGLE,
+        NEXT_ANGLE = 31,
     }
 
 
@@ -198,79 +198,86 @@ export namespace GstVideo {
          * Returned from
          * `gst_navigation_event_get_type()` when the passed event is not a navigation event.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * A key press event. Use
          * `gst_navigation_event_parse_key_event()` to extract the details from the event.
          */
-        KEY_PRESS,
+        KEY_PRESS = 1,
         /**
          * A key release event. Use
          * `gst_navigation_event_parse_key_event()` to extract the details from the event.
          */
-        KEY_RELEASE,
+        KEY_RELEASE = 2,
         /**
          * A mouse button press event. Use
          * `gst_navigation_event_parse_mouse_button_event()` to extract the details from the
          * event.
          */
-        MOUSE_BUTTON_PRESS,
+        MOUSE_BUTTON_PRESS = 3,
         /**
          * A mouse button release event. Use
          * `gst_navigation_event_parse_mouse_button_event()` to extract the details from the
          * event.
          */
-        MOUSE_BUTTON_RELEASE,
+        MOUSE_BUTTON_RELEASE = 4,
         /**
          * A mouse movement event. Use
          * `gst_navigation_event_parse_mouse_move_event()` to extract the details from the
          * event.
          */
-        MOUSE_MOVE,
+        MOUSE_MOVE = 5,
         /**
          * A navigation command event. Use
          * `gst_navigation_event_parse_command()` to extract the details from the event.
          */
-        COMMAND,
+        COMMAND = 6,
         /**
          * A mouse scroll event. Use `gst_navigation_event_parse_mouse_scroll_event()`
          * to extract the details from the event.
+         * @since 1.18
          */
-        MOUSE_SCROLL,
+        MOUSE_SCROLL = 7,
         /**
          * An event describing a new touch point, which will be assigned an identifier
          * that is unique to it for the duration of its movement on the screen.
          * Use `gst_navigation_event_parse_touch_event()` to extract the details
          * from the event.
+         * @since 1.22
          */
-        TOUCH_DOWN,
+        TOUCH_DOWN = 8,
         /**
          * An event describing the movement of an active touch point across
          * the screen. Use `gst_navigation_event_parse_touch_event()` to extract
          * the details from the event.
+         * @since 1.22
          */
-        TOUCH_MOTION,
+        TOUCH_MOTION = 9,
         /**
          * An event describing a removed touch point. After this event,
          * its identifier may be reused for any new touch points.
          * Use `gst_navigation_event_parse_touch_up_event()` to extract the details
          * from the event.
+         * @since 1.22
          */
-        TOUCH_UP,
+        TOUCH_UP = 10,
         /**
          * An event signaling the end of a sequence of simultaneous touch events.
+         * @since 1.22
          */
-        TOUCH_FRAME,
+        TOUCH_FRAME = 11,
         /**
          * An event cancelling all currently active touch points.
+         * @since 1.22
          */
-        TOUCH_CANCEL,
+        TOUCH_CANCEL = 12,
         /**
          * A mouse button double click event.
          * Use `gst_navigation_event_parse_mouse_button_event()` to extract the details
          * from the event.
+         * @since 1.26
          */
-        MOUSE_DOUBLE_CLICK,
+        MOUSE_DOUBLE_CLICK = 13,
     }
 
 
@@ -292,28 +299,28 @@ export namespace GstVideo {
          * `gst_navigation_message_get_type()` when the passed message is not a
          * navigation message.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Sent when the mouse moves over or leaves a
          * clickable region of the output, such as a DVD menu button.
          */
-        MOUSE_OVER,
+        MOUSE_OVER = 1,
         /**
          * Sent when the set of available commands
          * changes and should re-queried by interested applications.
          */
-        COMMANDS_CHANGED,
+        COMMANDS_CHANGED = 2,
         /**
          * Sent when display angles in a multi-angle
          * feature (such as a multiangle DVD) change - either angles have appeared or
          * disappeared.
          */
-        ANGLES_CHANGED,
+        ANGLES_CHANGED = 3,
         /**
          * Sent when a navigation event was not handled
          * by any element in the pipeline (Since: 1.6)
          */
-        EVENT,
+        EVENT = 4,
     }
 
 
@@ -332,15 +339,15 @@ export namespace GstVideo {
         /**
          * invalid query
          */
-        INVALID,
+        INVALID = 0,
         /**
          * command query
          */
-        COMMANDS,
+        COMMANDS = 1,
         /**
          * viewing angle query
          */
-        ANGLES,
+        ANGLES = 2,
     }
 
 
@@ -368,12 +375,12 @@ export namespace GstVideo {
         /**
          * AFD value is from DVB/ETSI standard
          */
-        DVB_ETSI,
+        DVB_ETSI = 0,
         /**
          * AFD value is from ATSC A/53 standard
          */
-        ATSC_A53,
-        SMPTE_ST2016_1,
+        ATSC_A53 = 1,
+        SMPTE_ST2016_1 = 2,
     }
 
 
@@ -424,64 +431,64 @@ export namespace GstVideo {
         /**
          * Unavailable (see note 0 below).
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 0,
         /**
          * For 4:3 coded frame, letterbox 16:9 image,
          *      at top of the coded frame. For 16:9 coded frame, full frame 16:9 image,
          *      the same as the coded frame.
          */
-        "16_9_TOP_ALIGNED",
+        "16_9_TOP_ALIGNED" = 2,
         /**
          * For 4:3 coded frame, letterbox 14:9 image,
          *      at top of the coded frame. For 16:9 coded frame, pillarbox 14:9 image,
          *      horizontally centered in the coded frame.
          */
-        "14_9_TOP_ALIGNED",
+        "14_9_TOP_ALIGNED" = 3,
         /**
          * For 4:3 coded frame, letterbox image with an aspect ratio
          *      greater than 16:9, vertically centered in the coded frame. For 16:9 coded frame,
          *      letterbox image with an aspect ratio greater than 16:9.
          */
-        GREATER_THAN_16_9,
+        GREATER_THAN_16_9 = 4,
         /**
          * For 4:3 coded frame, full frame 4:3 image,
          *      the same as the coded frame. For 16:9 coded frame, full frame 16:9 image, the same as
          *      the coded frame.
          */
-        "4_3_FULL_16_9_FULL",
+        "4_3_FULL_16_9_FULL" = 8,
         /**
          * For 4:3 coded frame, full frame 4:3 image, the same as
          *      the coded frame. For 16:9 coded frame, pillarbox 4:3 image, horizontally centered in the
          *      coded frame.
          */
-        "4_3_FULL_4_3_PILLAR",
+        "4_3_FULL_4_3_PILLAR" = 9,
         /**
          * For 4:3 coded frame, letterbox 16:9 image, vertically centered in
          *      the coded frame with all image areas protected. For 16:9 coded frame, full frame 16:9 image,
          *      with all image areas protected.
          */
-        "16_9_LETTER_16_9_FULL",
+        "16_9_LETTER_16_9_FULL" = 10,
         /**
          * For 4:3 coded frame, letterbox 14:9 image, vertically centered in
          *      the coded frame. For 16:9 coded frame, pillarbox 14:9 image, horizontally centered in the
          *      coded frame.
          */
-        "14_9_LETTER_14_9_PILLAR",
+        "14_9_LETTER_14_9_PILLAR" = 11,
         /**
          * For 4:3 coded frame, full frame 4:3 image, with alternative 14:9
          *      center. For 16:9 coded frame, pillarbox 4:3 image, with alternative 14:9 center.
          */
-        "4_3_FULL_14_9_CENTER",
+        "4_3_FULL_14_9_CENTER" = 13,
         /**
          * For 4:3 coded frame, letterbox 16:9 image, with alternative 14:9
          *      center. For 16:9 coded frame, full frame 16:9 image, with alternative 14:9 center.
          */
-        "16_9_LETTER_14_9_CENTER",
+        "16_9_LETTER_14_9_CENTER" = 14,
         /**
          * For 4:3 coded frame, letterbox 16:9 image, with alternative 4:3
          *      center. For 16:9 coded frame, full frame 16:9 image, with alternative 4:3 center.
          */
-        "16_9_LETTER_4_3_CENTER",
+        "16_9_LETTER_4_3_CENTER" = 15,
     }
 
 
@@ -503,19 +510,19 @@ export namespace GstVideo {
          *         When the input has no alpha, alpha will be set to
          *         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
          */
-        COPY,
+        COPY = 0,
         /**
          * set all alpha to
          *    #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
          */
-        SET,
+        SET = 1,
         /**
          * multiply all alpha with
          *         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE.
          *         When the input format has no alpha but the output format has, the
          *         alpha value will be set to #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
          */
-        MULT,
+        MULT = 2,
     }
 
 
@@ -531,18 +538,18 @@ export namespace GstVideo {
      * @since 1.16
      */
     enum VideoAncillaryDID {
-        UNDEFINED,
-        DELETION,
-        HANC_3G_AUDIO_DATA_FIRST,
-        HANC_3G_AUDIO_DATA_LAST,
-        HANC_HDTV_AUDIO_DATA_FIRST,
-        HANC_HDTV_AUDIO_DATA_LAST,
-        HANC_SDTV_AUDIO_DATA_1_FIRST,
-        HANC_SDTV_AUDIO_DATA_1_LAST,
-        CAMERA_POSITION,
-        HANC_ERROR_DETECTION,
-        HANC_SDTV_AUDIO_DATA_2_FIRST,
-        HANC_SDTV_AUDIO_DATA_2_LAST,
+        UNDEFINED = 0,
+        DELETION = 128,
+        HANC_3G_AUDIO_DATA_FIRST = 160,
+        HANC_3G_AUDIO_DATA_LAST = 167,
+        HANC_HDTV_AUDIO_DATA_FIRST = 224,
+        HANC_HDTV_AUDIO_DATA_LAST = 231,
+        HANC_SDTV_AUDIO_DATA_1_FIRST = 236,
+        HANC_SDTV_AUDIO_DATA_1_LAST = 239,
+        CAMERA_POSITION = 240,
+        HANC_ERROR_DETECTION = 244,
+        HANC_SDTV_AUDIO_DATA_2_FIRST = 248,
+        HANC_SDTV_AUDIO_DATA_2_LAST = 255,
     }
 
 
@@ -562,15 +569,15 @@ export namespace GstVideo {
         /**
          * CEA 708 Ancillary data according to SMPTE 334
          */
-        S334_EIA_708,
+        S334_EIA_708 = 24833,
         /**
          * CEA 608 Ancillary data according to SMPTE 334
          */
-        S334_EIA_608,
+        S334_EIA_608 = 24834,
         /**
          * AFD/Bar Ancillary data according to SMPTE 2016-3 (Since: 1.18)
          */
-        S2016_3_AFD_BAR,
+        S2016_3_AFD_BAR = 16645,
     }
 
 
@@ -590,7 +597,7 @@ export namespace GstVideo {
         /**
          * Unknown type of CC
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * CEA-608 as byte pairs. Note that
          *      this format is not recommended since is does not specify to
@@ -600,7 +607,7 @@ export namespace GstVideo {
          *      if you wish to store CEA-608 from two fields and prefix each byte pair
          *      with 0xFC for the first field and 0xFD for the second field.
          */
-        CEA608_RAW,
+        CEA608_RAW = 1,
         /**
          * CEA-608 as byte triplets as defined
          *      in SMPTE S334-1 Annex A. The second and third byte of the byte triplet
@@ -611,19 +618,19 @@ export namespace GstVideo {
          *      for 525-line field 1, line 272 for 525-line field 2, line 5 for
          *      625-line field 1 and line 318 for 625-line field 2).
          */
-        CEA608_S334_1A,
+        CEA608_S334_1A = 2,
         /**
          * CEA-708 as cc_data byte triplets. They
          *      can also contain 608-in-708 and the first byte of each triplet has to
          *      be inspected for detecting the type.
          */
-        CEA708_RAW,
+        CEA708_RAW = 3,
         /**
          * CEA-708 (and optionally CEA-608) in
          *      a CDP (Caption Distribution Packet) defined by SMPTE S-334-2.
          *      Contains the whole CDP (starting with 0x9669).
          */
-        CEA708_CDP,
+        CEA708_CDP = 4,
     }
 
 
@@ -643,12 +650,12 @@ export namespace GstVideo {
          * Duplicates the chroma samples when
          *    upsampling and drops when subsampling
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * Uses linear interpolation to reconstruct
          *    missing chroma and averaging to subsample
          */
-        LINEAR,
+        LINEAR = 1,
     }
 
 
@@ -668,19 +675,19 @@ export namespace GstVideo {
         /**
          * do full chroma up and down sampling
          */
-        FULL,
+        FULL = 0,
         /**
          * only perform chroma upsampling
          */
-        UPSAMPLE_ONLY,
+        UPSAMPLE_ONLY = 1,
         /**
          * only perform chroma downsampling
          */
-        DOWNSAMPLE_ONLY,
+        DOWNSAMPLE_ONLY = 2,
         /**
          * disable chroma resampling
          */
-        NONE,
+        NONE = 3,
     }
 
 
@@ -700,33 +707,33 @@ export namespace GstVideo {
         /**
          * unknown matrix
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * identity matrix. Order of coefficients is
          * actually GBR, also IEC 61966-2-1 (sRGB)
          */
-        RGB,
+        RGB = 1,
         /**
          * FCC Title 47 Code of Federal Regulations 73.682 (a)(20)
          */
-        FCC,
+        FCC = 2,
         /**
          * ITU-R BT.709 color matrix, also ITU-R BT1361
          * / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B
          */
-        BT709,
+        BT709 = 3,
         /**
          * ITU-R BT.601 color matrix, also SMPTE170M / ITU-R BT1358 525 / ITU-R BT1700 NTSC
          */
-        BT601,
+        BT601 = 4,
         /**
          * SMPTE 240M color matrix
          */
-        SMPTE240M,
+        SMPTE240M = 5,
         /**
          * ITU-R BT.2020 color matrix. Since: 1.6
          */
-        BT2020,
+        BT2020 = 6,
     }
 
 
@@ -746,64 +753,64 @@ export namespace GstVideo {
         /**
          * unknown color primaries
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * BT709 primaries, also ITU-R BT1361 / IEC
          * 61966-2-4 / SMPTE RP177 Annex B
          */
-        BT709,
+        BT709 = 1,
         /**
          * BT470M primaries, also FCC Title 47 Code
          * of Federal Regulations 73.682 (a)(20)
          */
-        BT470M,
+        BT470M = 2,
         /**
          * BT470BG primaries, also ITU-R BT601-6
          * 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM
          */
-        BT470BG,
+        BT470BG = 3,
         /**
          * SMPTE170M primaries, also ITU-R
          * BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC
          */
-        SMPTE170M,
+        SMPTE170M = 4,
         /**
          * SMPTE240M primaries
          */
-        SMPTE240M,
+        SMPTE240M = 5,
         /**
          * Generic film (colour filters using
          * Illuminant C)
          */
-        FILM,
+        FILM = 6,
         /**
          * ITU-R BT2020 primaries. Since: 1.6
          */
-        BT2020,
+        BT2020 = 7,
         /**
          * Adobe RGB primaries. Since: 1.8
          */
-        ADOBERGB,
+        ADOBERGB = 8,
         /**
          * SMPTE ST 428 primaries (CIE 1931
          * XYZ). Since: 1.16
          */
-        SMPTEST428,
+        SMPTEST428 = 9,
         /**
          * SMPTE RP 431 primaries (ST 431-2
          * (2011) / DCI P3). Since: 1.16
          */
-        SMPTERP431,
+        SMPTERP431 = 10,
         /**
          * SMPTE EG 432 primaries (ST 432-1
          * (2010) / P3 D65). Since: 1.16
          */
-        SMPTEEG432,
+        SMPTEEG432 = 11,
         /**
          * EBU 3213 primaries (JEDEC P22
          * phosphors). Since: 1.16
          */
-        EBU3213,
+        EBU3213 = 12,
     }
 
 
@@ -823,16 +830,16 @@ export namespace GstVideo {
         /**
          * unknown range
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * [0..255] for 8 bit components
          */
-        "0_255",
+        "0_255" = 1,
         /**
          * [16..235] for 8 bit components. Chroma has
          *                 [16..240] range.
          */
-        "16_235",
+        "16_235" = 2,
     }
 
 
@@ -851,23 +858,23 @@ export namespace GstVideo {
         /**
          * no dithering
          */
-        NONE,
+        NONE = 0,
         /**
          * propagate rounding errors downwards
          */
-        VERTERR,
+        VERTERR = 1,
         /**
          * Dither with floyd-steinberg error diffusion
          */
-        FLOYD_STEINBERG,
+        FLOYD_STEINBERG = 2,
         /**
          * Dither with Sierra Lite error diffusion
          */
-        SIERRA_LITE,
+        SIERRA_LITE = 3,
         /**
          * ordered dither using a bayer pattern
          */
-        BAYER,
+        BAYER = 4,
     }
 
 
@@ -891,15 +898,15 @@ export namespace GstVideo {
          * unknown field order for interlaced content.
          *     The actual field order is signalled via buffer flags.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * top field is first
          */
-        TOP_FIELD_FIRST,
+        TOP_FIELD_FIRST = 1,
         /**
          * bottom field is first
          */
-        BOTTOM_FIELD_FIRST,
+        BOTTOM_FIELD_FIRST = 2,
     }
 
 
@@ -921,589 +928,634 @@ export namespace GstVideo {
         /**
          * Unknown or unset video format id
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Encoded video format. Only ever use that in caps for
          *                            special video formats in combination with non-system
          *                            memory GstCapsFeatures where it does not make sense
          *                            to specify a real video format.
          */
-        ENCODED,
+        ENCODED = 1,
         /**
          * planar 4:2:0 YUV
          */
-        I420,
+        I420 = 2,
         /**
          * planar 4:2:0 YVU (like I420 but UV planes swapped)
          */
-        YV12,
+        YV12 = 3,
         /**
          * packed 4:2:2 YUV (Y0-U0-Y1-V0 Y2-U2-Y3-V2 Y4 ...)
          */
-        YUY2,
+        YUY2 = 4,
         /**
          * packed 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
          */
-        UYVY,
+        UYVY = 5,
         /**
          * packed 4:4:4 YUV with alpha channel (A0-Y0-U0-V0 ...)
          */
-        AYUV,
+        AYUV = 6,
         /**
          * sparse rgb packed into 32 bit, space last
          */
-        RGBX,
+        RGBX = 7,
         /**
          * sparse reverse rgb packed into 32 bit, space last
          */
-        BGRX,
+        BGRX = 8,
         /**
          * sparse rgb packed into 32 bit, space first
          */
-        XRGB,
+        XRGB = 9,
         /**
          * sparse reverse rgb packed into 32 bit, space first
          */
-        XBGR,
+        XBGR = 10,
         /**
          * rgb with alpha channel last
          */
-        RGBA,
+        RGBA = 11,
         /**
          * reverse rgb with alpha channel last
          */
-        BGRA,
+        BGRA = 12,
         /**
          * rgb with alpha channel first
          */
-        ARGB,
+        ARGB = 13,
         /**
          * reverse rgb with alpha channel first
          */
-        ABGR,
+        ABGR = 14,
         /**
          * RGB packed into 24 bits without padding (`R-G-B-R-G-B`)
          */
-        RGB,
+        RGB = 15,
         /**
          * reverse RGB packed into 24 bits without padding (`B-G-R-B-G-R`)
          */
-        BGR,
+        BGR = 16,
         /**
          * planar 4:1:1 YUV
          */
-        Y41B,
+        Y41B = 17,
         /**
          * planar 4:2:2 YUV
          */
-        Y42B,
+        Y42B = 18,
         /**
          * packed 4:2:2 YUV (Y0-V0-Y1-U0 Y2-V2-Y3-U2 Y4 ...)
          */
-        YVYU,
+        YVYU = 19,
         /**
          * planar 4:4:4 YUV
          */
-        Y444,
+        Y444 = 20,
         /**
          * packed 4:2:2 10-bit YUV, complex format
          */
-        V210,
+        V210 = 21,
         /**
          * packed 4:2:2 16-bit YUV, Y0-U0-Y1-V1 order
          */
-        V216,
+        V216 = 22,
         /**
          * planar 4:2:0 YUV with interleaved UV plane
          */
-        NV12,
+        NV12 = 23,
         /**
          * planar 4:2:0 YUV with interleaved VU plane
          */
-        NV21,
+        NV21 = 24,
         /**
          * 8-bit grayscale
          */
-        GRAY8,
+        GRAY8 = 25,
         /**
          * 16-bit grayscale, most significant byte first
          */
-        GRAY16_BE,
+        GRAY16_BE = 26,
         /**
          * 16-bit grayscale, least significant byte first
          */
-        GRAY16_LE,
+        GRAY16_LE = 27,
         /**
          * packed 4:4:4 YUV (Y-U-V ...)
          */
-        V308,
+        V308 = 28,
         /**
          * rgb 5-6-5 bits per component
          */
-        RGB16,
+        RGB16 = 29,
         /**
          * reverse rgb 5-6-5 bits per component
          */
-        BGR16,
+        BGR16 = 30,
         /**
          * rgb 5-5-5 bits per component
          */
-        RGB15,
+        RGB15 = 31,
         /**
          * reverse rgb 5-5-5 bits per component
          */
-        BGR15,
+        BGR15 = 32,
         /**
          * packed 10-bit 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
          */
-        UYVP,
+        UYVP = 33,
         /**
          * planar 4:4:2:0 AYUV
          */
-        A420,
+        A420 = 34,
         /**
          * 8-bit paletted RGB
          */
-        RGB8P,
+        RGB8P = 35,
         /**
          * planar 4:1:0 YUV
          */
-        YUV9,
+        YUV9 = 36,
         /**
          * planar 4:1:0 YUV (like YUV9 but UV planes swapped)
          */
-        YVU9,
+        YVU9 = 37,
         /**
          * packed 4:1:1 YUV (Cb-Y0-Y1-Cr-Y2-Y3 ...)
          */
-        IYU1,
+        IYU1 = 38,
         /**
          * rgb with alpha channel first, 16 bits (native endianness) per channel
          */
-        ARGB64,
+        ARGB64 = 39,
         /**
          * packed 4:4:4 YUV with alpha channel, 16 bits (native endianness) per channel (A0-Y0-U0-V0 ...)
          */
-        AYUV64,
+        AYUV64 = 40,
         /**
          * packed 4:4:4 RGB, 10 bits per channel
          */
-        R210,
+        R210 = 41,
         /**
          * planar 4:2:0 YUV, 10 bits per channel
          */
-        I420_10BE,
+        I420_10BE = 42,
         /**
          * planar 4:2:0 YUV, 10 bits per channel
          */
-        I420_10LE,
+        I420_10LE = 43,
         /**
          * planar 4:2:2 YUV, 10 bits per channel
          */
-        I422_10BE,
+        I422_10BE = 44,
         /**
          * planar 4:2:2 YUV, 10 bits per channel
          */
-        I422_10LE,
+        I422_10LE = 45,
         /**
          * planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
          */
-        Y444_10BE,
+        Y444_10BE = 46,
         /**
          * planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
          */
-        Y444_10LE,
+        Y444_10LE = 47,
         /**
          * planar 4:4:4 RGB, 8 bits per channel (Since: 1.2)
          */
-        GBR,
+        GBR = 48,
         /**
          * planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
          */
-        GBR_10BE,
+        GBR_10BE = 49,
         /**
          * planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
          */
-        GBR_10LE,
+        GBR_10LE = 50,
         /**
          * planar 4:2:2 YUV with interleaved UV plane (Since: 1.2)
          */
-        NV16,
+        NV16 = 51,
         /**
          * planar 4:4:4 YUV with interleaved UV plane (Since: 1.2)
          */
-        NV24,
+        NV24 = 52,
         /**
          * NV12 with 64x32 tiling in zigzag pattern (Since: 1.4)
          */
-        NV12_64Z32,
+        NV12_64Z32 = 53,
         /**
          * planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
          */
-        A420_10BE,
+        A420_10BE = 54,
         /**
          * planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
          */
-        A420_10LE,
+        A420_10LE = 55,
         /**
          * planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
          */
-        A422_10BE,
+        A422_10BE = 56,
         /**
          * planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
          */
-        A422_10LE,
+        A422_10LE = 57,
         /**
          * planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
          */
-        A444_10BE,
+        A444_10BE = 58,
         /**
          * planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
          */
-        A444_10LE,
+        A444_10LE = 59,
         /**
          * planar 4:2:2 YUV with interleaved VU plane (Since: 1.6)
          */
-        NV61,
+        NV61 = 60,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
          */
-        P010_10BE,
+        P010_10BE = 61,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
          */
-        P010_10LE,
+        P010_10LE = 62,
         /**
          * packed 4:4:4 YUV (U-Y-V ...) (Since: 1.10)
          */
-        IYU2,
+        IYU2 = 63,
         /**
          * packed 4:2:2 YUV (V0-Y0-U0-Y1 V2-Y2-U2-Y3 V4 ...)
          */
-        VYUY,
+        VYUY = 64,
         /**
          * planar 4:4:4:4 ARGB, 8 bits per channel (Since: 1.12)
          */
-        GBRA,
+        GBRA = 65,
         /**
          * planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
          */
-        GBRA_10BE,
+        GBRA_10BE = 66,
         /**
          * planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
          */
-        GBRA_10LE,
+        GBRA_10LE = 67,
         /**
          * planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
          */
-        GBR_12BE,
+        GBR_12BE = 68,
         /**
          * planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
          */
-        GBR_12LE,
+        GBR_12LE = 69,
         /**
          * planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
          */
-        GBRA_12BE,
+        GBRA_12BE = 70,
         /**
          * planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
          */
-        GBRA_12LE,
+        GBRA_12LE = 71,
         /**
          * planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
          */
-        I420_12BE,
+        I420_12BE = 72,
         /**
          * planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
          */
-        I420_12LE,
+        I420_12LE = 73,
         /**
          * planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
          */
-        I422_12BE,
+        I422_12BE = 74,
         /**
          * planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
          */
-        I422_12LE,
+        I422_12LE = 75,
         /**
          * planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
          */
-        Y444_12BE,
+        Y444_12BE = 76,
         /**
          * planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
          */
-        Y444_12LE,
+        Y444_12LE = 77,
         /**
          * 10-bit grayscale, packed into 32bit words (2 bits padding) (Since: 1.14)
          */
-        GRAY10_LE32,
+        GRAY10_LE32 = 78,
         /**
          * 10-bit variant of `GST_VIDEO_FORMAT_NV12`, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
          */
-        NV12_10LE32,
+        NV12_10LE32 = 79,
         /**
          * 10-bit variant of `GST_VIDEO_FORMAT_NV16`, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
          */
-        NV16_10LE32,
+        NV16_10LE32 = 80,
         /**
          * Fully packed variant of NV12_10LE32 (Since: 1.16)
          */
-        NV12_10LE40,
+        NV12_10LE40 = 81,
         /**
          * packed 4:2:2 YUV, 10 bits per channel (Since: 1.16)
          */
-        Y210,
+        Y210 = 82,
         /**
          * packed 4:4:4 YUV, 10 bits per channel(A-V-Y-U...) (Since: 1.16)
          */
-        Y410,
+        Y410 = 83,
         /**
          * packed 4:4:4 YUV with alpha channel (V0-U0-Y0-A0...) (Since: 1.16)
          */
-        VUYA,
+        VUYA = 84,
         /**
          * packed 4:4:4 RGB with alpha channel(B-G-R-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.16)
          */
-        BGR10A2_LE,
+        BGR10A2_LE = 85,
         /**
          * packed 4:4:4 RGB with alpha channel(R-G-B-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.18)
          */
-        RGB10A2_LE,
+        RGB10A2_LE = 86,
         /**
          * planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
          */
-        Y444_16BE,
+        Y444_16BE = 87,
         /**
          * planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
          */
-        Y444_16LE,
+        Y444_16LE = 88,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
          */
-        P016_BE,
+        P016_BE = 89,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
          */
-        P016_LE,
+        P016_LE = 90,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
          */
-        P012_BE,
+        P012_BE = 91,
         /**
          * planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
          */
-        P012_LE,
+        P012_LE = 92,
         /**
          * packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
          */
-        Y212_BE,
+        Y212_BE = 93,
         /**
          * packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
          */
-        Y212_LE,
+        Y212_LE = 94,
         /**
          * packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
          */
-        Y412_BE,
+        Y412_BE = 95,
         /**
          * packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
          */
-        Y412_LE,
+        Y412_LE = 96,
         /**
          * NV12 with 4x4 tiles in linear order.
+         * @since 1.18
          */
-        NV12_4L4,
+        NV12_4L4 = 97,
         /**
          * NV12 with 32x32 tiles in linear order.
+         * @since 1.18
          */
-        NV12_32L32,
+        NV12_32L32 = 98,
         /**
          * Planar 4:4:4 RGB, R-G-B order
+         * @since 1.20
          */
-        RGBP,
+        RGBP = 99,
         /**
          * Planar 4:4:4 RGB, B-G-R order
+         * @since 1.20
          */
-        BGRP,
+        BGRP = 100,
         /**
          * Planar 4:2:0 YUV with interleaved UV plane with alpha as
          * 3rd plane.
+         * @since 1.20
          */
-        AV12,
+        AV12 = 101,
         /**
          * RGB with alpha channel first, 16 bits (little endian)
          * per channel.
+         * @since 1.20
          */
-        ARGB64_LE,
+        ARGB64_LE = 102,
         /**
          * RGB with alpha channel first, 16 bits (big endian)
          * per channel.
+         * @since 1.20
          */
-        ARGB64_BE,
+        ARGB64_BE = 103,
         /**
          * RGB with alpha channel last, 16 bits (little endian)
          * per channel.
+         * @since 1.20
          */
-        RGBA64_LE,
+        RGBA64_LE = 104,
         /**
          * RGB with alpha channel last, 16 bits (big endian)
          * per channel.
+         * @since 1.20
          */
-        RGBA64_BE,
+        RGBA64_BE = 105,
         /**
          * Reverse RGB with alpha channel last, 16 bits (little endian)
          * per channel.
+         * @since 1.20
          */
-        BGRA64_LE,
+        BGRA64_LE = 106,
         /**
          * Reverse RGB with alpha channel last, 16 bits (big endian)
          * per channel.
+         * @since 1.20
          */
-        BGRA64_BE,
+        BGRA64_BE = 107,
         /**
          * Reverse RGB with alpha channel first, 16 bits (little endian)
          * per channel.
+         * @since 1.20
          */
-        ABGR64_LE,
+        ABGR64_LE = 108,
         /**
          * Reverse RGB with alpha channel first, 16 bits (big endian)
          * per channel.
+         * @since 1.20
          */
-        ABGR64_BE,
+        ABGR64_BE = 109,
         /**
          * NV12 with 16x32 Y tiles and 16x16 UV tiles.
+         * @since 1.22
          */
-        NV12_16L32S,
+        NV12_16L32S = 110,
         /**
          * NV12 with 8x128 tiles in linear order.
+         * @since 1.22
          */
-        NV12_8L128,
+        NV12_8L128 = 111,
         /**
          * NV12 10bit big endian with 8x128 tiles in linear order.
+         * @since 1.22
          */
-        NV12_10BE_8L128,
+        NV12_10BE_8L128 = 112,
         /**
          * `GST_VIDEO_FORMAT_NV12_10LE40` with 4x4 pixels tiles (5 bytes
          *  per tile row). This format is produced by Verisilicon/Hantro decoders.
+         * @since 1.24
          */
-        NV12_10LE40_4L4,
+        NV12_10LE40_4L4 = 113,
         /**
          * `GST_VIDEO_FORMAT_DMA_DRM` represent the DMA DRM special format. It's
          * only used with memory:DMABuf {@link Gst.CapsFeatures}, where an extra
          * parameter (drm-format) is required to define the image format and
          * its memory layout.
+         * @since 1.24
          */
-        DMA_DRM,
+        DMA_DRM = 114,
         /**
          * Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, tile 2
          * bits.
+         * @since 1.24
          */
-        MT2110T,
+        MT2110T = 115,
         /**
          * Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, raster
          * 2 bits.
+         * @since 1.24
          */
-        MT2110R,
+        MT2110R = 116,
         /**
          * planar 4:4:2:2 YUV, 8 bits per channel
+         * @since 1.24
          */
-        A422,
+        A422 = 117,
         /**
          * planar 4:4:4:4 YUV, 8 bits per channel
+         * @since 1.24
          */
-        A444,
+        A444 = 118,
         /**
          * planar 4:4:4:4 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A444_12LE,
+        A444_12LE = 119,
         /**
          * planar 4:4:4:4 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A444_12BE,
+        A444_12BE = 120,
         /**
          * planar 4:4:2:2 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A422_12LE,
+        A422_12LE = 121,
         /**
          * planar 4:4:2:2 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A422_12BE,
+        A422_12BE = 122,
         /**
          * planar 4:4:2:0 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A420_12LE,
+        A420_12LE = 123,
         /**
          * planar 4:4:2:0 YUV, 12 bits per channel
+         * @since 1.24
          */
-        A420_12BE,
+        A420_12BE = 124,
         /**
          * planar 4:4:4:4 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A444_16LE,
+        A444_16LE = 125,
         /**
          * planar 4:4:4:4 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A444_16BE,
+        A444_16BE = 126,
         /**
          * planar 4:4:2:2 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A422_16LE,
+        A422_16LE = 127,
         /**
          * planar 4:4:2:2 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A422_16BE,
+        A422_16BE = 128,
         /**
          * planar 4:4:2:0 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A420_16LE,
+        A420_16LE = 129,
         /**
          * planar 4:4:2:0 YUV, 16 bits per channel
+         * @since 1.24
          */
-        A420_16BE,
+        A420_16BE = 130,
         /**
          * planar 4:4:4 RGB, 16 bits per channel
+         * @since 1.24
          */
-        GBR_16LE,
+        GBR_16LE = 131,
         /**
          * planar 4:4:4 RGB, 16 bits per channel
+         * @since 1.24
          */
-        GBR_16BE,
+        GBR_16BE = 132,
         /**
          * packed RGB with alpha, 8 bits per channel
+         * @since 1.24
          */
-        RBGA,
+        RBGA = 133,
         /**
          * packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
+         * @since 1.26
          */
-        Y216_LE,
+        Y216_LE = 134,
         /**
          * packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
+         * @since 1.26
          */
-        Y216_BE,
+        Y216_BE = 135,
         /**
          * packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
+         * @since 1.26
          */
-        Y416_LE,
+        Y416_LE = 136,
         /**
          * packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
+         * @since 1.26
          */
-        Y416_BE,
+        Y416_BE = 137,
         /**
          * 10-bit grayscale, packed into 16bit words (6 bits left padding)
+         * @since 1.26
          */
-        GRAY10_LE16,
+        GRAY10_LE16 = 138,
         /**
          * Fully packed variant of NV16_10LE32
+         * @since 1.28
          */
-        NV16_10LE40,
+        NV16_10LE40 = 139,
         /**
          * packed 4:4:4 RGB (B-G-R-x), 10 bits for R/G/B channel and MSB 2 bits for padding.
+         * @since 1.28
          */
-        BGR10X2_LE,
+        BGR10X2_LE = 140,
         /**
          * packed 4:4:4 RGB (R-G-B-x), 10 bits for R/G/B channel and MSB 2 bits for padding.
+         * @since 1.28
          */
-        RGB10X2_LE,
+        RGB10X2_LE = 141,
     }
 
 
@@ -1522,19 +1574,19 @@ export namespace GstVideo {
         /**
          * Top line first in memory, left row first
          */
-        NORMAL_Y_NORMAL,
+        NORMAL_Y_NORMAL = 0,
         /**
          * Bottom line first in memory, left row first
          */
-        NORMAL_Y_FLIP,
+        NORMAL_Y_FLIP = 1,
         /**
          * Top line first in memory, right row first
          */
-        FLIP_Y_NORMAL,
+        FLIP_Y_NORMAL = 2,
         /**
          * Bottom line first in memory, right row first
          */
-        FLIP_Y_FLIP,
+        FLIP_Y_FLIP = 3,
     }
 
 
@@ -1553,31 +1605,31 @@ export namespace GstVideo {
         /**
          * Luminance texture, GL_LUMINANCE
          */
-        LUMINANCE,
+        LUMINANCE = 0,
         /**
          * Luminance-alpha texture, GL_LUMINANCE_ALPHA
          */
-        LUMINANCE_ALPHA,
+        LUMINANCE_ALPHA = 1,
         /**
          * RGB 565 texture, GL_RGB
          */
-        RGB16,
+        RGB16 = 2,
         /**
          * RGB texture, GL_RGB
          */
-        RGB,
+        RGB = 3,
         /**
          * RGBA texture, GL_RGBA
          */
-        RGBA,
+        RGBA = 4,
         /**
          * R texture, GL_RED_EXT
          */
-        R,
+        R = 5,
         /**
          * RG texture, GL_RG_EXT
          */
-        RG,
+        RG = 6,
     }
 
 
@@ -1596,12 +1648,12 @@ export namespace GstVideo {
         /**
          * disable gamma handling
          */
-        NONE,
+        NONE = 0,
         /**
          * convert between input and output gamma
          * Different gamma conversion modes
          */
-        REMAP,
+        REMAP = 1,
     }
 
 
@@ -1621,17 +1673,17 @@ export namespace GstVideo {
         /**
          * all frames are progressive
          */
-        PROGRESSIVE,
+        PROGRESSIVE = 0,
         /**
          * 2 fields are interleaved in one video
          *     frame. Extra buffer flags describe the field order.
          */
-        INTERLEAVED,
+        INTERLEAVED = 1,
         /**
          * frames contains both interlaced and
          *     progressive video, the buffer flags describe the frame and fields.
          */
-        MIXED,
+        MIXED = 2,
         /**
          * 2 fields are stored in one buffer, use the
          *     frame ID to get access to the required field. For multiview (the
@@ -1641,7 +1693,7 @@ export namespace GstVideo {
          *     height property. This mode requires multiple GstVideoMeta metadata
          *     to describe the fields.
          */
-        FIELDS,
+        FIELDS = 3,
         /**
          * 1 field is stored in one buffer,
          *     `GST_VIDEO_BUFFER_FLAG_TF` or `GST_VIDEO_BUFFER_FLAG_BF` indicates if
@@ -1649,7 +1701,7 @@ export namespace GstVideo {
          *     bottom buffers must alternate in the pipeline, with this mode
          *     (Since: 1.16).
          */
-        ALTERNATE,
+        ALTERNATE = 4,
     }
 
 
@@ -1669,21 +1721,21 @@ export namespace GstVideo {
         /**
          * do conversion between color matrices
          */
-        FULL,
+        FULL = 0,
         /**
          * use the input color matrix to convert
          *   to and from R'G'B
          */
-        INPUT_ONLY,
+        INPUT_ONLY = 1,
         /**
          * use the output color matrix to convert
          *   to and from R'G'B
          */
-        OUTPUT_ONLY,
+        OUTPUT_ONLY = 2,
         /**
          * disable color matrix conversion.
          */
-        NONE,
+        NONE = 3,
     }
 
 
@@ -1711,52 +1763,52 @@ export namespace GstVideo {
          * A special value indicating
          * no frame packing info.
          */
-        NONE,
+        NONE = -1,
         /**
          * All frames are monoscopic.
          */
-        MONO,
+        MONO = 0,
         /**
          * All frames represent a left-eye view.
          */
-        LEFT,
+        LEFT = 1,
         /**
          * All frames represent a right-eye view.
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Left and right eye views are
          * provided in the left and right half of the frame respectively.
          */
-        SIDE_BY_SIDE,
+        SIDE_BY_SIDE = 3,
         /**
          * Left and right eye
          * views are provided in the left and right half of the frame, but
          * have been sampled using quincunx method, with half-pixel offset
          * between the 2 views.
          */
-        SIDE_BY_SIDE_QUINCUNX,
+        SIDE_BY_SIDE_QUINCUNX = 4,
         /**
          * Alternating vertical
          * columns of pixels represent the left and right eye view respectively.
          */
-        COLUMN_INTERLEAVED,
+        COLUMN_INTERLEAVED = 5,
         /**
          * Alternating horizontal
          * rows of pixels represent the left and right eye view respectively.
          */
-        ROW_INTERLEAVED,
+        ROW_INTERLEAVED = 6,
         /**
          * The top half of the frame
          * contains the left eye, and the bottom half the right eye.
          */
-        TOP_BOTTOM,
+        TOP_BOTTOM = 7,
         /**
          * Pixels are arranged with
          * alternating pixels representing left and right eye views in a
          * checkerboard fashion.
          */
-        CHECKERBOARD,
+        CHECKERBOARD = 8,
     }
 
 
@@ -1780,57 +1832,57 @@ export namespace GstVideo {
          * indicate that no specific multiview handling has been requested or
          * provided. This value is never carried on caps.
          */
-        NONE,
+        NONE = -1,
         /**
          * All frames are monoscopic.
          */
-        MONO,
+        MONO = 0,
         /**
          * All frames represent a left-eye view.
          */
-        LEFT,
+        LEFT = 1,
         /**
          * All frames represent a right-eye view.
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Left and right eye views are
          * provided in the left and right half of the frame respectively.
          */
-        SIDE_BY_SIDE,
+        SIDE_BY_SIDE = 3,
         /**
          * Left and right eye
          * views are provided in the left and right half of the frame, but
          * have been sampled using quincunx method, with half-pixel offset
          * between the 2 views.
          */
-        SIDE_BY_SIDE_QUINCUNX,
+        SIDE_BY_SIDE_QUINCUNX = 4,
         /**
          * Alternating vertical
          * columns of pixels represent the left and right eye view respectively.
          */
-        COLUMN_INTERLEAVED,
+        COLUMN_INTERLEAVED = 5,
         /**
          * Alternating horizontal
          * rows of pixels represent the left and right eye view respectively.
          */
-        ROW_INTERLEAVED,
+        ROW_INTERLEAVED = 6,
         /**
          * The top half of the frame
          * contains the left eye, and the bottom half the right eye.
          */
-        TOP_BOTTOM,
+        TOP_BOTTOM = 7,
         /**
          * Pixels are arranged with
          * alternating pixels representing left and right eye views in a
          * checkerboard fashion.
          */
-        CHECKERBOARD,
+        CHECKERBOARD = 8,
         /**
          * Left and right eye views
          * are provided in separate frames alternately.
          */
-        FRAME_BY_FRAME,
+        FRAME_BY_FRAME = 32,
         /**
          * Multiple
          * independent views are provided in separate frames in sequence.
@@ -1838,14 +1890,14 @@ export namespace GstVideo {
          * Specific view identification is via the `GstVideoMultiviewMeta`
          * and {@link GstVideo.VideoMeta}(s) on raw video buffers.
          */
-        MULTIVIEW_FRAME_BY_FRAME,
+        MULTIVIEW_FRAME_BY_FRAME = 33,
         /**
          * Multiple views are
          * provided as separate {@link Gst.Memory} framebuffers attached to each
          * {@link Gst.Buffer}, described by the `GstVideoMultiviewMeta`
          * and {@link GstVideo.VideoMeta}(s)
          */
-        SEPARATED,
+        SEPARATED = 34,
     }
 
 
@@ -1925,16 +1977,16 @@ export namespace GstVideo {
         /**
          * disable conversion between primaries
          */
-        NONE,
+        NONE = 0,
         /**
          * do conversion between primaries only
          *   when it can be merged with color matrix conversion.
          */
-        MERGE_ONLY,
+        MERGE_ONLY = 1,
         /**
          * fast conversion between primaries
          */
-        FAST,
+        FAST = 2,
     }
 
 
@@ -1955,24 +2007,24 @@ export namespace GstVideo {
          * Duplicates the samples when
          *    upsampling and drops when downsampling
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * Uses linear interpolation to reconstruct
          *    missing samples and averaging to downsample
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * Uses cubic interpolation
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * Uses sinc interpolation
          */
-        SINC,
+        SINC = 3,
         /**
          * Uses lanczos interpolation
          */
-        LANCZOS,
+        LANCZOS = 4,
     }
 
 
@@ -1991,18 +2043,19 @@ export namespace GstVideo {
         /**
          * Unknown or unset tile mode
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Every four adjacent blocks - two
          *    horizontally and two vertically are grouped together and are located
          *    in memory in Z or flipped Z order. In case of odd rows, the last row
          *    of blocks is arranged in linear order.
          */
-        ZFLIPZ_2X2,
+        ZFLIPZ_2X2 = 65536,
         /**
          * Tiles are in row order.
+         * @since 1.18
          */
-        LINEAR,
+        LINEAR = 131072,
     }
 
 
@@ -2023,7 +2076,7 @@ export namespace GstVideo {
          *   gst_video_tile_get_index () to retrieve the tile at the requested
          *   coordinates.
          */
-        INDEXED,
+        INDEXED = 0,
     }
 
 
@@ -2043,86 +2096,87 @@ export namespace GstVideo {
         /**
          * unknown transfer function
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * linear RGB, gamma 1.0 curve
          */
-        GAMMA10,
+        GAMMA10 = 1,
         /**
          * Gamma 1.8 curve
          */
-        GAMMA18,
+        GAMMA18 = 2,
         /**
          * Gamma 2.0 curve
          */
-        GAMMA20,
+        GAMMA20 = 3,
         /**
          * Gamma 2.2 curve
          */
-        GAMMA22,
+        GAMMA22 = 4,
         /**
          * Gamma 2.2 curve with a linear segment in the lower
          *                           range, also ITU-R BT470M / ITU-R BT1700 625 PAL &
          *                           SECAM / ITU-R BT1361
          */
-        BT709,
+        BT709 = 5,
         /**
          * Gamma 2.2 curve with a linear segment in the
          *                               lower range
          */
-        SMPTE240M,
+        SMPTE240M = 6,
         /**
          * Gamma 2.4 curve with a linear segment in the lower
          *                          range. IEC 61966-2-1 (sRGB or sYCC)
          */
-        SRGB,
+        SRGB = 7,
         /**
          * Gamma 2.8 curve, also ITU-R BT470BG
          */
-        GAMMA28,
+        GAMMA28 = 8,
         /**
          * Logarithmic transfer characteristic
          *                             100:1 range
          */
-        LOG100,
+        LOG100 = 9,
         /**
          * Logarithmic transfer characteristic
          *                             316.22777:1 range (100 * sqrt(10) : 1)
          */
-        LOG316,
+        LOG316 = 10,
         /**
          * Gamma 2.2 curve with a linear segment in the lower
          *                                range. Used for BT.2020 with 12 bits per
          *                                component. Since: 1.6
          */
-        BT2020_12,
+        BT2020_12 = 11,
         /**
          * Gamma 2.19921875. Since: 1.8
          */
-        ADOBERGB,
+        ADOBERGB = 12,
         /**
          * Rec. ITU-R BT.2020-2 with 10 bits per component.
          *                                (functionally the same as the values
          *                                GST_VIDEO_TRANSFER_BT709 and GST_VIDEO_TRANSFER_BT601).
          *                                Since: 1.18
          */
-        BT2020_10,
+        BT2020_10 = 13,
         /**
          * SMPTE ST 2084 for 10, 12, 14, and 16-bit systems.
          *                                Known as perceptual quantization (PQ)
          *                                Since: 1.18
          */
-        SMPTE2084,
+        SMPTE2084 = 14,
         /**
          * Association of Radio Industries and Businesses (ARIB)
          *                                   STD-B67 and Rec. ITU-R BT.2100-1 hybrid loggamma (HLG) system
          *                                   Since: 1.18
          */
-        ARIB_STD_B67,
+        ARIB_STD_B67 = 15,
         /**
          * also known as SMPTE170M / ITU-R BT1358 525 or 625 / ITU-R BT1700 NTSC
+         * @since 1.18
          */
-        BT601,
+        BT601 = 16,
     }
 
 
@@ -2142,18 +2196,21 @@ export namespace GstVideo {
         /**
          * No line were provided, or no more Ancillary data was found.
          */
-        DONE,
+        DONE = 0,
         /**
          * A {@link GstVideo.VideoAncillary} was found.
          */
-        OK,
+        OK = 1,
         /**
          * An error occurred
          */
-        ERROR,
+        ERROR = 2,
     }
 
 
+    /**
+     * @default GstBufferPoolOptionVideoAffineTransformation
+     */
     const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string;
 
     /**
@@ -2162,6 +2219,7 @@ export namespace GstVideo {
      * 
      * When this option is enabled on the bufferpool,
      * #GST_BUFFER_POOL_OPTION_VIDEO_META should also be enabled.
+     * @default GstBufferPoolOptionVideoAlignment
      */
     const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string;
 
@@ -2172,12 +2230,14 @@ export namespace GstVideo {
      * When this option is enabled on the bufferpool,
      * `GST_BUFFER_POOL_OPTION_VIDEO_META` should also be enabled.
      * @since 1.2.2
+     * @default GstBufferPoolOptionVideoGLTextureUploadMeta
      */
     const BUFFER_POOL_OPTION_VIDEO_GL_TEXTURE_UPLOAD_META: string;
 
     /**
      * An option that can be activated on bufferpool to request video metadata
      * on buffers from the pool.
+     * @default GstBufferPoolOptionVideoMeta
      */
     const BUFFER_POOL_OPTION_VIDEO_META: string;
 
@@ -2196,84 +2256,154 @@ export namespace GstVideo {
      * rate will be twice the frame rate from the caps
      * (see `GST_VIDEO_INFO_FIELD_RATE_N`).
      * @since 1.16.
+     * @default format:Interlaced
      */
     const CAPS_FEATURE_FORMAT_INTERLACED: string;
 
+    /**
+     * @default meta:GstVideoAffineTransformation
+     */
     const CAPS_FEATURE_META_GST_VIDEO_AFFINE_TRANSFORMATION_META: string;
 
+    /**
+     * @default meta:GstVideoGLTextureUploadMeta
+     */
     const CAPS_FEATURE_META_GST_VIDEO_GL_TEXTURE_UPLOAD_META: string;
 
+    /**
+     * @default meta:GstVideoMeta
+     */
     const CAPS_FEATURE_META_GST_VIDEO_META: string;
 
+    /**
+     * @default meta:GstVideoOverlayComposition
+     */
     const CAPS_FEATURE_META_GST_VIDEO_OVERLAY_COMPOSITION: string;
 
     /**
      * This metadata stays relevant as long as video colorspace is unchanged.
      * @since 1.2
+     * @default colorspace
      */
     const META_TAG_VIDEO_COLORSPACE_STR: string;
 
     /**
      * This metadata stays relevant as long as video orientation is unchanged.
      * @since 1.2
+     * @default orientation
      */
     const META_TAG_VIDEO_ORIENTATION_STR: string;
 
     /**
      * This metadata stays relevant as long as video size is unchanged.
      * @since 1.2
+     * @default size
      */
     const META_TAG_VIDEO_SIZE_STR: string;
 
     /**
      * This metadata is relevant for video streams.
      * @since 1.2
+     * @default video
      */
     const META_TAG_VIDEO_STR: string;
 
+    /**
+     * @default bt2020
+     */
     const VIDEO_COLORIMETRY_BT2020: string;
 
+    /**
+     * @default bt2020-10
+     */
     const VIDEO_COLORIMETRY_BT2020_10: string;
 
+    /**
+     * @default bt2100-hlg
+     */
     const VIDEO_COLORIMETRY_BT2100_HLG: string;
 
+    /**
+     * @default bt2100-pq
+     */
     const VIDEO_COLORIMETRY_BT2100_PQ: string;
 
+    /**
+     * @default bt601
+     */
     const VIDEO_COLORIMETRY_BT601: string;
 
+    /**
+     * @default bt709
+     */
     const VIDEO_COLORIMETRY_BT709: string;
 
+    /**
+     * @default smpte240m
+     */
     const VIDEO_COLORIMETRY_SMPTE240M: string;
 
+    /**
+     * @default sRGB
+     */
     const VIDEO_COLORIMETRY_SRGB: string;
 
+    /**
+     * @default 3
+     */
     const VIDEO_COMP_A: number;
 
+    /**
+     * @default 2
+     */
     const VIDEO_COMP_B: number;
 
+    /**
+     * @default 1
+     */
     const VIDEO_COMP_G: number;
 
+    /**
+     * @default 0
+     */
     const VIDEO_COMP_INDEX: number;
 
+    /**
+     * @default 1
+     */
     const VIDEO_COMP_PALETTE: number;
 
+    /**
+     * @default 0
+     */
     const VIDEO_COMP_R: number;
 
+    /**
+     * @default 1
+     */
     const VIDEO_COMP_U: number;
 
+    /**
+     * @default 2
+     */
     const VIDEO_COMP_V: number;
 
+    /**
+     * @default 0
+     */
     const VIDEO_COMP_Y: number;
 
     /**
      * {@link GstVideo.VideoAlphaMode}, the alpha mode to use.
      * Default is #GST_VIDEO_ALPHA_MODE_COPY.
+     * @default GstVideoConverter.alpha-mode
      */
     const VIDEO_CONVERTER_OPT_ALPHA_MODE: string;
 
     /**
      * #G_TYPE_DOUBLE, the alpha color value to use.
      * Default to 1.0
+     * @default GstVideoConverter.alpha-value
      */
     const VIDEO_CONVERTER_OPT_ALPHA_VALUE: string;
 
@@ -2283,6 +2413,7 @@ export namespace GstVideo {
      * `gst_video_converter_frame_finish()` must be performed to ensure completion of the
      * conversion before subsequent use.  Default `false`
      * @since 1.20
+     * @default GstVideoConverter.async-tasks
      */
     const VIDEO_CONVERTER_OPT_ASYNC_TASKS: string;
 
@@ -2290,12 +2421,14 @@ export namespace GstVideo {
      * #G_TYPE_UINT, the border color to use if #GST_VIDEO_CONVERTER_OPT_FILL_BORDER
      * is set to `true`. The color is in ARGB format.
      * Default 0xff000000
+     * @default GstVideoConverter.border-argb
      */
     const VIDEO_CONVERTER_OPT_BORDER_ARGB: string;
 
     /**
      * {@link GstVideo.VideoChromaMode}, set the chroma resample mode subsampled
      * formats. Default is #GST_VIDEO_CHROMA_MODE_FULL.
+     * @default GstVideoConverter.chroma-mode
      */
     const VIDEO_CONVERTER_OPT_CHROMA_MODE: string;
 
@@ -2303,26 +2436,31 @@ export namespace GstVideo {
      * {@link GstVideo.VideoChromaMethod}, The resampler method to use for
      * chroma resampling. Other options for the resampler can be used, see
      * the {@link GstVideo.VideoResampler}. Default is #GST_VIDEO_RESAMPLER_METHOD_LINEAR
+     * @default GstVideoConverter.chroma-resampler-method
      */
     const VIDEO_CONVERTER_OPT_CHROMA_RESAMPLER_METHOD: string;
 
     /**
      * #G_TYPE_INT, height in the destination frame, default destination height
+     * @default GstVideoConverter.dest-height
      */
     const VIDEO_CONVERTER_OPT_DEST_HEIGHT: string;
 
     /**
      * #G_TYPE_INT, width in the destination frame, default destination width
+     * @default GstVideoConverter.dest-width
      */
     const VIDEO_CONVERTER_OPT_DEST_WIDTH: string;
 
     /**
      * #G_TYPE_INT, x position in the destination frame, default 0
+     * @default GstVideoConverter.dest-x
      */
     const VIDEO_CONVERTER_OPT_DEST_X: string;
 
     /**
      * #G_TYPE_INT, y position in the destination frame, default 0
+     * @default GstVideoConverter.dest-y
      */
     const VIDEO_CONVERTER_OPT_DEST_Y: string;
 
@@ -2330,6 +2468,7 @@ export namespace GstVideo {
      * {@link GstVideo.VideoDitherMethod}, The dither method to use when
      * changing bit depth.
      * Default is #GST_VIDEO_DITHER_BAYER.
+     * @default GstVideoConverter.dither-method
      */
     const VIDEO_CONVERTER_OPT_DITHER_METHOD: string;
 
@@ -2337,6 +2476,7 @@ export namespace GstVideo {
      * #G_TYPE_UINT, The quantization amount to dither to. Components will be
      * quantized to multiples of this value.
      * Default is 1
+     * @default GstVideoConverter.dither-quantization
      */
     const VIDEO_CONVERTER_OPT_DITHER_QUANTIZATION: string;
 
@@ -2345,12 +2485,14 @@ export namespace GstVideo {
      * destination image, render a border with
      * #GST_VIDEO_CONVERTER_OPT_BORDER_ARGB. Otherwise the unusded pixels in the
      * destination are untouched. Default `true`.
+     * @default GstVideoConverter.fill-border
      */
     const VIDEO_CONVERTER_OPT_FILL_BORDER: string;
 
     /**
      * {@link GstVideo.VideoGammaMode}, set the gamma mode.
      * Default is #GST_VIDEO_GAMMA_MODE_NONE.
+     * @default GstVideoConverter.gamma-mode
      */
     const VIDEO_CONVERTER_OPT_GAMMA_MODE: string;
 
@@ -2358,12 +2500,14 @@ export namespace GstVideo {
      * {@link GstVideo.VideoMatrixMode}, set the color matrix conversion mode for
      * converting between Y'PbPr and non-linear RGB (R'G'B').
      * Default is #GST_VIDEO_MATRIX_MODE_FULL.
+     * @default GstVideoConverter.matrix-mode
      */
     const VIDEO_CONVERTER_OPT_MATRIX_MODE: string;
 
     /**
      * {@link GstVideo.VideoPrimariesMode}, set the primaries conversion mode.
      * Default is #GST_VIDEO_PRIMARIES_MODE_NONE.
+     * @default GstVideoConverter.primaries-mode
      */
     const VIDEO_CONVERTER_OPT_PRIMARIES_MODE: string;
 
@@ -2371,53 +2515,63 @@ export namespace GstVideo {
      * {@link GstVideo.VideoResamplerMethod}, The resampler method to use for
      * resampling. Other options for the resampler can be used, see
      * the {@link GstVideo.VideoResampler}. Default is #GST_VIDEO_RESAMPLER_METHOD_CUBIC
+     * @default GstVideoConverter.resampler-method
      */
     const VIDEO_CONVERTER_OPT_RESAMPLER_METHOD: string;
 
     /**
      * #G_TYPE_UINT, The number of taps for the resampler.
      * Default is 0: let the resampler choose a good value.
+     * @default GstVideoConverter.resampler-taps
      */
     const VIDEO_CONVERTER_OPT_RESAMPLER_TAPS: string;
 
     /**
      * #G_TYPE_INT, source height to convert, default source height
+     * @default GstVideoConverter.src-height
      */
     const VIDEO_CONVERTER_OPT_SRC_HEIGHT: string;
 
     /**
      * #G_TYPE_INT, source width to convert, default source width
+     * @default GstVideoConverter.src-width
      */
     const VIDEO_CONVERTER_OPT_SRC_WIDTH: string;
 
     /**
      * #G_TYPE_INT, source x position to start conversion, default 0
+     * @default GstVideoConverter.src-x
      */
     const VIDEO_CONVERTER_OPT_SRC_X: string;
 
     /**
      * #G_TYPE_INT, source y position to start conversion, default 0
+     * @default GstVideoConverter.src-y
      */
     const VIDEO_CONVERTER_OPT_SRC_Y: string;
 
     /**
      * #G_TYPE_UINT, maximum number of threads to use. Default 1, 0 for the number
      * of cores.
+     * @default GstVideoConverter.threads
      */
     const VIDEO_CONVERTER_OPT_THREADS: string;
 
     /**
      * Default maximum number of errors tolerated before signaling error.
+     * @default -1
      */
     const VIDEO_DECODER_MAX_ERRORS: number;
 
     /**
      * The name of the templates for the sink pad.
+     * @default sink
      */
     const VIDEO_DECODER_SINK_NAME: string;
 
     /**
      * The name of the templates for the source pad.
+     * @default src
      */
     const VIDEO_DECODER_SRC_NAME: string;
 
@@ -2426,16 +2580,19 @@ export namespace GstVideo {
      * feature, for use in pad templates. As drm-format is supposed to be defined
      * at run-time it's not predefined here.
      * @since 1.24
+     * @default video/x-raw(memory:DMABuf), format = (string) DMA_DRM, width =
      */
     const VIDEO_DMA_DRM_CAPS_MAKE: string;
 
     /**
      * The name of the templates for the sink pad.
+     * @default sink
      */
     const VIDEO_ENCODER_SINK_NAME: string;
 
     /**
      * The name of the templates for the source pad.
+     * @default src
      */
     const VIDEO_ENCODER_SRC_NAME: string;
 
@@ -2455,6 +2612,7 @@ export namespace GstVideo {
      *   - prefer YUV formats over RGB ones
      *   - prefer I420 over YV12
      *   - format name
+     * @default {
      */
     const VIDEO_FORMATS_ALL: string;
 
@@ -2475,6 +2633,7 @@ export namespace GstVideo {
      *   - prefer I420 over YV12
      *   - format name
      * @since 1.24
+     * @default A444_16BE, A444_16LE, AYUV64, ARGB64, Y416_BE, RGBA64_BE, ARGB64_BE, BGRA64_BE, ABGR64_BE, Y416_LE, RGBA64_LE, ARGB64_LE, BGRA64_LE, ABGR64_LE, A422_16BE, A422_16LE, A420_16BE, A420_16LE, A444_12BE, GBRA_12BE, A444_12LE, GBRA_12LE, Y412_BE, Y412_LE, A422_12BE, A422_12LE, A420_12BE, A420_12LE, A444_10BE, GBRA_10BE, A444_10LE, GBRA_10LE, A422_10BE, A422_10LE, A420_10BE, A420_10LE, Y410, BGR10A2_LE, RGB10A2_LE, A444, GBRA, AYUV, VUYA, RGBA, RBGA, ARGB, BGRA, ABGR, A422, A420, AV12, Y444_16BE, GBR_16BE, Y444_16LE, GBR_16LE, Y216_BE, v216, Y216_LE, P016_BE, P016_LE, Y444_12BE, GBR_12BE, Y444_12LE, GBR_12LE, I422_12BE, I422_12LE, Y212_BE, Y212_LE, I420_12BE, I420_12LE, P012_BE, P012_LE, Y444_10BE, GBR_10BE, Y444_10LE, GBR_10LE, r210, BGR10x2_LE, RGB10x2_LE, I422_10BE, I422_10LE, NV16_10LE40, NV16_10LE32, Y210, UYVP, v210, I420_10BE, I420_10LE, P010_10BE, MT2110R, MT2110T, NV12_10BE_8L128, NV12_10LE40_4L4, P010_10LE, NV12_10LE40, NV12_10LE32, Y444, BGRP, GBR, RGBP, NV24, v308, IYU2, RGBx, xRGB, BGRx, xBGR, RGB, BGR, Y42B, NV16, NV61, YUY2, YVYU, UYVY, VYUY, I420, YV12, NV12, NV21, NV12_16L32S, NV12_32L32, NV12_4L4, NV12_64Z32, NV12_8L128, Y41B, IYU1, YUV9, YVU9, BGR16, RGB16, BGR15, RGB15, RGB8P, GRAY16_BE, GRAY16_LE, GRAY10_LE16, GRAY10_LE32, GRAY8
      */
     const VIDEO_FORMATS_ALL_STR: string;
 
@@ -2483,6 +2642,7 @@ export namespace GstVideo {
      * that do not have a software converter. This should be used for passthrough
      * template caps.
      * @since 1.24
+     * @default {
      */
     const VIDEO_FORMATS_ANY: string;
 
@@ -2491,19 +2651,30 @@ export namespace GstVideo {
      * DMA_DRM for which no software converter exists. This should be used for
      * passthrough template caps.
      * @since 1.24
+     * @default DMA_DRM,
      */
     const VIDEO_FORMATS_ANY_STR: string;
 
     /**
      * Number of video formats in {@link GstVideo.VideoFormat}.
      * @since 1.26
+     * @default 142
      */
     const VIDEO_FORMAT_LAST: number;
 
+    /**
+     * @default (fraction) [ 0, max ]
+     */
     const VIDEO_FPS_RANGE: string;
 
+    /**
+     * @default 4
+     */
     const VIDEO_MAX_COMPONENTS: number;
 
+    /**
+     * @default 4
+     */
     const VIDEO_MAX_PLANES: number;
 
     /**
@@ -2522,6 +2693,7 @@ export namespace GstVideo {
      *  Sharp            0.2620  0.3690
      * Robidoux
      *  Soft             0.6796  0.1602
+     * @default GstVideoResampler.cubic-b
      */
     const VIDEO_RESAMPLER_OPT_CUBIC_B: string;
 
@@ -2531,6 +2703,7 @@ export namespace GstVideo {
      * 2.0 are accepted. 1/3 is the default.
      * 
      * See #GST_VIDEO_RESAMPLER_OPT_CUBIC_B for some more common values
+     * @default GstVideoResampler.cubic-c
      */
     const VIDEO_RESAMPLER_OPT_CUBIC_C: string;
 
@@ -2538,12 +2711,14 @@ export namespace GstVideo {
      * G_TYPE_DOUBLE, specifies the size of filter envelope for
      * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
      * 1.0 and 5.0. 2.0 is the default.
+     * @default GstVideoResampler.envelope
      */
     const VIDEO_RESAMPLER_OPT_ENVELOPE: string;
 
     /**
      * G_TYPE_INT, limits the maximum number of taps to use.
      * 16 is the default.
+     * @default GstVideoResampler.max-taps
      */
     const VIDEO_RESAMPLER_OPT_MAX_TAPS: string;
 
@@ -2551,6 +2726,7 @@ export namespace GstVideo {
      * G_TYPE_DOUBLE, specifies sharpening of the filter for
      * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
      * 0.0 and 1.0. 0.0 is the default.
+     * @default GstVideoResampler.sharpen
      */
     const VIDEO_RESAMPLER_OPT_SHARPEN: string;
 
@@ -2558,23 +2734,40 @@ export namespace GstVideo {
      * G_TYPE_DOUBLE, specifies sharpness of the filter for
      * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
      * 0.5 and 1.5. 1.0 is the default.
+     * @default GstVideoResampler.sharpness
      */
     const VIDEO_RESAMPLER_OPT_SHARPNESS: string;
 
     /**
      * {@link GstVideo.VideoDitherMethod}, The dither method to use for propagating
      * quatization errors.
+     * @default GstVideoScaler.dither-method
      */
     const VIDEO_SCALER_OPT_DITHER_METHOD: string;
 
+    /**
+     * @default (int) [ 1, max ]
+     */
     const VIDEO_SIZE_RANGE: string;
 
+    /**
+     * @default 65535
+     */
     const VIDEO_TILE_TYPE_MASK: number;
 
+    /**
+     * @default 16
+     */
     const VIDEO_TILE_TYPE_SHIFT: number;
 
+    /**
+     * @default 65535
+     */
     const VIDEO_TILE_X_TILES_MASK: number;
 
+    /**
+     * @default 16
+     */
     const VIDEO_TILE_Y_TILES_SHIFT: number;
 
     function ancillary_meta_api_get_type(): GObject.GType;
@@ -3460,6 +3653,7 @@ export namespace GstVideo {
      * @param to_caps the {@link Gst.Caps} to convert to
      * @param timeout the maximum amount of time allowed for the processing.
      * @returns The converted {@link Gst.Sample}, or `null` if an error happened (in which case `err` will point to the {@link GLib.Error}).
+     * @throws GLib.Error
      */
     function video_convert_sample(sample: Gst.Sample, to_caps: Gst.Caps, timeout: Gst.ClockTime): Gst.Sample | null;
 
@@ -4230,72 +4424,72 @@ export namespace GstVideo {
      * @since 1.22
      */
     enum NavigationModifierType {
-        NONE,
+        NONE = 0,
         /**
          * the Shift key.
          */
-        SHIFT_MASK,
-        LOCK_MASK,
+        SHIFT_MASK = 1,
+        LOCK_MASK = 2,
         /**
          * the Control key.
          */
-        CONTROL_MASK,
+        CONTROL_MASK = 4,
         /**
          * the third modifier key
          */
-        MOD1_MASK,
+        MOD1_MASK = 8,
         /**
          * the fourth modifier key
          */
-        MOD2_MASK,
+        MOD2_MASK = 16,
         /**
          * the fifth modifier key
          */
-        MOD3_MASK,
+        MOD3_MASK = 32,
         /**
          * the sixth modifier key
          */
-        MOD4_MASK,
+        MOD4_MASK = 64,
         /**
          * the seventh modifier key
          */
-        MOD5_MASK,
+        MOD5_MASK = 128,
         /**
          * the first mouse button (usually the left button).
          */
-        BUTTON1_MASK,
+        BUTTON1_MASK = 256,
         /**
          * the second mouse button (usually the right button).
          */
-        BUTTON2_MASK,
+        BUTTON2_MASK = 512,
         /**
          * the third mouse button (usually the mouse wheel button or middle button).
          */
-        BUTTON3_MASK,
+        BUTTON3_MASK = 1024,
         /**
          * the fourth mouse button (typically the "Back" button).
          */
-        BUTTON4_MASK,
+        BUTTON4_MASK = 2048,
         /**
          * the fifth mouse button (typically the "forward" button).
          */
-        BUTTON5_MASK,
+        BUTTON5_MASK = 4096,
         /**
          * the Super modifier
          */
-        SUPER_MASK,
+        SUPER_MASK = 67108864,
         /**
          * the Hyper modifier
          */
-        HYPER_MASK,
+        HYPER_MASK = 134217728,
         /**
          * the Meta modifier
          */
-        META_MASK,
+        META_MASK = 268435456,
         /**
          * A mask covering all entries in `GdkModifierType`.
          */
-        MASK,
+        MASK = 469770239,
     }
 
 
@@ -4320,25 +4514,25 @@ export namespace GstVideo {
          *                                     interlace-mode, this flags specifies if the frame is
          *                                     interlaced or progressive.
          */
-        INTERLACED,
+        INTERLACED = 1048576,
         /**
          * If the {@link Gst.Buffer} is interlaced, then the first field
          *                                     in the video frame is the top field.  If unset, the
          *                                     bottom field is first.
          */
-        TFF,
+        TFF = 2097152,
         /**
          * If the {@link Gst.Buffer} is interlaced, then the first field
          *                                     (as defined by the {@link GstVideo.VideoBufferFlags.TFF} flag setting)
          *                                     is repeated.
          */
-        RFF,
+        RFF = 4194304,
         /**
          * If the {@link Gst.Buffer} is interlaced, then only the
          *                                     first field (as defined by the {@link GstVideo.VideoBufferFlags.TFF}
          *                                     flag setting) is to be displayed (Since: 1.16).
          */
-        ONEFIELD,
+        ONEFIELD = 8388608,
         /**
          * The {@link Gst.Buffer} contains one or more specific views,
          *                                     such as left or right eye view. This flags is set on
@@ -4347,36 +4541,36 @@ export namespace GstVideo {
          *                                     mono / non-mono streams, the absence of the flag marks
          *                                     mono buffers.
          */
-        MULTIPLE_VIEW,
+        MULTIPLE_VIEW = 16777216,
         /**
          * When conveying stereo/multiview content with
          *                                     frame-by-frame methods, this flag marks the first buffer
          *                                      in a bundle of frames that belong together.
          */
-        FIRST_IN_BUNDLE,
+        FIRST_IN_BUNDLE = 33554432,
         /**
          * The video frame has the top field only. This is the
          *                                     same as GST_VIDEO_BUFFER_FLAG_TFF |
          *                                     GST_VIDEO_BUFFER_FLAG_ONEFIELD (Since: 1.16).
          *                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
          */
-        TOP_FIELD,
+        TOP_FIELD = 10485760,
         /**
          * The video frame has the bottom field only. This is
          *                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
          *                                     (GST_VIDEO_BUFFER_FLAG_TFF flag unset) (Since: 1.16).
          *                                     Use GST_VIDEO_BUFFER_IS_BOTTOM_FIELD() to check for this flag.
          */
-        BOTTOM_FIELD,
+        BOTTOM_FIELD = 8388608,
         /**
          * The {@link Gst.Buffer} contains the end of a video field or frame
          *                                     boundary such as the last subframe or packet (Since: 1.18).
          */
-        MARKER,
+        MARKER = 512,
         /**
          * Offset to define more flags
          */
-        LAST,
+        LAST = 268435456,
     }
 
 
@@ -4395,11 +4589,11 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * the input is interlaced
          */
-        INTERLACED,
+        INTERLACED = 1,
     }
 
 
@@ -4418,39 +4612,39 @@ export namespace GstVideo {
         /**
          * unknown cositing
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * no cositing
          */
-        NONE,
+        NONE = 1,
         /**
          * chroma is horizontally cosited
          */
-        H_COSITED,
+        H_COSITED = 2,
         /**
          * chroma is vertically cosited
          */
-        V_COSITED,
+        V_COSITED = 4,
         /**
          * chroma samples are sited on alternate lines
          */
-        ALT_LINE,
+        ALT_LINE = 8,
         /**
          * chroma samples cosited with luma samples
          */
-        COSITED,
+        COSITED = 6,
         /**
          * jpeg style cositing, also for mpeg1 and mjpeg
          */
-        JPEG,
+        JPEG = 1,
         /**
          * mpeg2 style cositing
          */
-        MPEG2,
+        MPEG2 = 2,
         /**
          * DV style cositing
          */
-        DV,
+        DV = 14,
     }
 
 
@@ -4469,23 +4663,24 @@ export namespace GstVideo {
         /**
          * is the frame only meant to be decoded
          */
-        DECODE_ONLY,
+        DECODE_ONLY = 1,
         /**
          * is the frame a synchronization point (keyframe)
          */
-        SYNC_POINT,
+        SYNC_POINT = 2,
         /**
          * should the output frame be made a keyframe
          */
-        FORCE_KEYFRAME,
+        FORCE_KEYFRAME = 4,
         /**
          * should the encoder output stream headers
          */
-        FORCE_KEYFRAME_HEADERS,
+        FORCE_KEYFRAME_HEADERS = 8,
         /**
          * The buffer data is corrupted.
+         * @since 1.20
          */
-        CORRUPTED,
+        CORRUPTED = 16,
     }
 
 
@@ -4507,12 +4702,12 @@ export namespace GstVideo {
          * discard all following
          *     input until the next sync point.
          */
-        DISCARD_INPUT,
+        DISCARD_INPUT = 1,
         /**
          * discard all following
          *     output until the next sync point.
          */
-        CORRUPT_OUTPUT,
+        CORRUPT_OUTPUT = 2,
     }
 
 
@@ -4531,15 +4726,15 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * the input is interlaced
          */
-        INTERLACED,
+        INTERLACED = 1,
         /**
          * quantize values in addition to adding dither.
          */
-        QUANTIZE,
+        QUANTIZE = 2,
     }
 
 
@@ -4558,17 +4753,17 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * a variable fps is selected, fps_n and fps_d
          *     denote the maximum fps of the video
          */
-        VARIABLE_FPS,
+        VARIABLE_FPS = 1,
         /**
          * Each color has been scaled by the alpha
          *     value.
          */
-        PREMULTIPLIED_ALPHA,
+        PREMULTIPLIED_ALPHA = 2,
     }
 
 
@@ -4588,51 +4783,52 @@ export namespace GstVideo {
          * The video format is YUV, components are numbered
          *   0=Y, 1=U, 2=V.
          */
-        YUV,
+        YUV = 1,
         /**
          * The video format is RGB, components are numbered
          *   0=R, 1=G, 2=B.
          */
-        RGB,
+        RGB = 2,
         /**
          * The video is gray, there is one gray component
          *   with index 0.
          */
-        GRAY,
+        GRAY = 4,
         /**
          * The video format has an alpha components with
          *   the number 3.
          */
-        ALPHA,
+        ALPHA = 8,
         /**
          * The video format has data stored in little
          *   endianness.
          */
-        LE,
+        LE = 16,
         /**
          * The video format has a palette. The palette
          *   is stored in the second plane and indexes are stored in the first plane.
          */
-        PALETTE,
+        PALETTE = 32,
         /**
          * The video format has a complex layout that
          *   can't be described with the usual information in the {@link GstVideo.VideoFormatInfo}.
          */
-        COMPLEX,
+        COMPLEX = 64,
         /**
          * This format can be used in a
          *   {@link GstVideo.VideoFormatUnpack} and {@link GstVideo.VideoFormatPack} function.
          */
-        UNPACK,
+        UNPACK = 128,
         /**
          * The format is tiled, there is tiling information
          *   in the last plane.
          */
-        TILED,
+        TILED = 256,
         /**
          * The tile size varies per plane according to the subsampling.
+         * @since 1.22
          */
-        SUBTILES,
+        SUBTILES = 512,
     }
 
 
@@ -4651,47 +4847,47 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * The video frame is interlaced. In mixed
          *           interlace-mode, this flag specifies if the frame is interlaced or
          *           progressive.
          */
-        INTERLACED,
+        INTERLACED = 1,
         /**
          * The video frame has the top field first
          */
-        TFF,
+        TFF = 2,
         /**
          * The video frame has the repeat flag
          */
-        RFF,
+        RFF = 4,
         /**
          * The video frame has one field
          */
-        ONEFIELD,
+        ONEFIELD = 8,
         /**
          * The video contains one or
          *     more non-mono views
          */
-        MULTIPLE_VIEW,
+        MULTIPLE_VIEW = 16,
         /**
          * The video frame is the first
          *     in a set of corresponding views provided as sequential frames.
          */
-        FIRST_IN_BUNDLE,
+        FIRST_IN_BUNDLE = 32,
         /**
          * The video frame has the top field only. This
          *     is the same as GST_VIDEO_FRAME_FLAG_TFF | GST_VIDEO_FRAME_FLAG_ONEFIELD
          *     (Since: 1.16).
          */
-        TOP_FIELD,
+        TOP_FIELD = 10,
         /**
          * The video frame has the bottom field
          *     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
          *     (GST_VIDEO_FRAME_FLAG_TFF flag unset) (Since: 1.16).
          */
-        BOTTOM_FIELD,
+        BOTTOM_FIELD = 8,
     }
 
 
@@ -4714,11 +4910,11 @@ export namespace GstVideo {
          *                                    writable while the frame is mapped, but requires that the
          *                                    buffer reference stays valid until the frame is unmapped again.
          */
-        NO_REF,
+        NO_REF = 65536,
         /**
          * Offset to define more flags
          */
-        LAST,
+        LAST = 16777216,
     }
 
 
@@ -4739,32 +4935,32 @@ export namespace GstVideo {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * For stereo streams, the
          *     normal arrangement of left and right views is reversed.
          */
-        RIGHT_VIEW_FIRST,
+        RIGHT_VIEW_FIRST = 1,
         /**
          * The left view is vertically
          *     mirrored.
          */
-        LEFT_FLIPPED,
+        LEFT_FLIPPED = 2,
         /**
          * The left view is horizontally
          *     mirrored.
          */
-        LEFT_FLOPPED,
+        LEFT_FLOPPED = 4,
         /**
          * The right view is
          *     vertically mirrored.
          */
-        RIGHT_FLIPPED,
+        RIGHT_FLIPPED = 8,
         /**
          * The right view is
          *     horizontally mirrored.
          */
-        RIGHT_FLOPPED,
+        RIGHT_FLOPPED = 16,
         /**
          * For frame-packed
          *     multiview modes, indicates that the individual
@@ -4776,14 +4972,14 @@ export namespace GstVideo {
          *     pixel width will be doubled. For row interleaved and top-bottom
          *     encodings, pixel height will be doubled.
          */
-        HALF_ASPECT,
+        HALF_ASPECT = 16384,
         /**
          * The video stream contains both
          *     mono and multiview portions, signalled on each buffer by the
          *     absence or presence of the `GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW`
          *     buffer flag.
          */
-        MIXED_MONO,
+        MIXED_MONO = 32768,
     }
 
 
@@ -4802,15 +4998,15 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * RGB are premultiplied by A/255.
          */
-        PREMULTIPLIED_ALPHA,
+        PREMULTIPLIED_ALPHA = 1,
         /**
          * a global-alpha value != 1 is set.
          */
-        GLOBAL_ALPHA,
+        GLOBAL_ALPHA = 2,
     }
 
 
@@ -4829,7 +5025,7 @@ export namespace GstVideo {
         /**
          * No flag
          */
-        NONE,
+        NONE = 0,
         /**
          * When the source has a smaller depth
          *   than the target format, set the least significant bits of the target
@@ -4837,13 +5033,13 @@ export namespace GstVideo {
          *   is not specified, the most significant bits of the source are duplicated
          *   in the least significant bits of the destination.
          */
-        TRUNCATE_RANGE,
+        TRUNCATE_RANGE = 1,
         /**
          * The source is interlaced. The unpacked
          *   format will be interlaced as well with each line containing
          *   information from alternating fields. (Since: 1.2)
          */
-        INTERLACED,
+        INTERLACED = 2,
     }
 
 
@@ -4863,13 +5059,13 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * when no taps are given, half the
          *              number of calculated taps. This can be used when making scalers
          *              for the different fields of an interlaced picture. Since: 1.10
          */
-        HALF_TAPS,
+        HALF_TAPS = 1,
     }
 
 
@@ -4888,11 +5084,11 @@ export namespace GstVideo {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Set up a scaler for interlaced content
          */
-        INTERLACED,
+        INTERLACED = 1,
     }
 
 
@@ -4913,15 +5109,15 @@ export namespace GstVideo {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Whether we have drop frame rate
          */
-        DROP_FRAME,
+        DROP_FRAME = 1,
         /**
          * Whether we have interlaced video
          */
-        INTERLACED,
+        INTERLACED = 2,
     }
 
 
@@ -4933,7 +5129,7 @@ export namespace GstVideo {
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (value: number) => void;
         }
 
         // Constructor properties interface

@@ -37,15 +37,15 @@ export namespace EBookContacts {
         /**
          * A vCard was added
          */
-        ADDED,
+        ADDED = 0,
         /**
          * A vCard was deleted
          */
-        DELETED,
+        DELETED = 1,
         /**
          * A vCard was modified
          */
-        MODIFIED,
+        MODIFIED = 2,
     }
 
 
@@ -107,15 +107,15 @@ export namespace EBookContacts {
         /**
          * The current cursor position
          */
-        CURRENT,
+        CURRENT = 0,
         /**
          * The beginning of the cursor results.
          */
-        BEGIN,
+        BEGIN = 1,
         /**
          * The ending of the cursor results.
          */
-        END,
+        END = 2,
     }
 
 
@@ -135,11 +135,11 @@ export namespace EBookContacts {
         /**
          * Sort results in ascending order
          */
-        ASCENDING,
+        ASCENDING = 0,
         /**
          * Sort results in descending order
          */
-        DESCENDING,
+        DESCENDING = 1,
     }
 
 
@@ -158,22 +158,22 @@ export namespace EBookContacts {
         /**
          * An index suitable for searching contacts with a prefix pattern
          */
-        PREFIX,
+        PREFIX = 0,
         /**
          * An index suitable for searching contacts with a suffix pattern
          */
-        SUFFIX,
+        SUFFIX = 1,
         /**
          * An index suitable for searching contacts for phone numbers.
          * <note><para>Phone numbers must be convertible into FQTN according to E.164 to be
          * stored in this index. The number "+9999999" for instance won't be stored because
          * the country calling code "+999" currently is not assigned.</para></note>
          */
-        PHONE,
+        PHONE = 2,
         /**
          * Indicates that a given {@link EBookContacts.ContactField} should be usable as a sort key.
          */
-        SORT_KEY,
+        SORT_KEY = 3,
     }
 
 
@@ -187,52 +187,52 @@ export namespace EBookContacts {
         /**
          * look for exact match of the supplied test value
          */
-        IS,
+        IS = 0,
         /**
          * check if a field contains the test value
          */
-        CONTAINS,
+        CONTAINS = 1,
         /**
          * check if a field starts with the test value
          */
-        BEGINS_WITH,
+        BEGINS_WITH = 2,
         /**
          * check if a field ends with the test value
          */
-        ENDS_WITH,
+        ENDS_WITH = 3,
         /**
          * check if a field matches with a value tested
          * using `e_phone_number_compare_strings()`, the match must be of strenth {@link EBookContacts.PhoneNumberMatch.EXACT}
          * for this query to return any matches.
          */
-        EQUALS_PHONE_NUMBER,
+        EQUALS_PHONE_NUMBER = 4,
         /**
          * check if a field matches with a value tested
          * using `e_phone_number_compare_strings()`, the match must be at least of strength {@link EBookContacts.PhoneNumberMatch.NATIONAL}
          * for this query to return any matches.
          */
-        EQUALS_NATIONAL_PHONE_NUMBER,
+        EQUALS_NATIONAL_PHONE_NUMBER = 5,
         /**
          * check if a field matches with a value tested
          * using `e_phone_number_compare_strings()`, the match must be at least of strength {@link EBookContacts.PhoneNumberMatch.SHORT}
          * for this query to return any matches.
          */
-        EQUALS_SHORT_PHONE_NUMBER,
+        EQUALS_SHORT_PHONE_NUMBER = 6,
         /**
          * A regular expression query against contact data normalized with `e_util_utf8_normalize()`,
          * the normalized data is lower case with any accents removed.
          */
-        REGEX_NORMAL,
+        REGEX_NORMAL = 7,
         /**
          * A regular expression query against raw contact data, this is usually slower than
          * a {@link EBookContacts.BookQueryTest.REGEX_NORMAL} as it implies that {@link EBookContacts.VCard}(s) must be parsed in order to get the raw data
          * for comparison.
          */
-        REGEX_RAW,
+        REGEX_RAW = 8,
         /**
          * End marker for the {@link EBookContacts.BookQueryTest} enumeration, not a valid query test.
          */
-        LAST,
+        LAST = 9,
     }
 
 
@@ -245,27 +245,27 @@ export namespace EBookContacts {
         /**
          * Ok
          */
-        STATUS_OK,
+        STATUS_OK = 0,
         /**
          * Time limit exceeded
          */
-        STATUS_TIME_LIMIT_EXCEEDED,
+        STATUS_TIME_LIMIT_EXCEEDED = 1,
         /**
          * Size limit exceeded
          */
-        STATUS_SIZE_LIMIT_EXCEEDED,
+        STATUS_SIZE_LIMIT_EXCEEDED = 2,
         /**
          * Invalid search expression
          */
-        ERROR_INVALID_QUERY,
+        ERROR_INVALID_QUERY = 3,
         /**
          * Search expression refused
          */
-        ERROR_QUERY_REFUSED,
+        ERROR_QUERY_REFUSED = 4,
         /**
          * Another error occurred
          */
-        ERROR_OTHER_ERROR,
+        ERROR_OTHER_ERROR = 5,
     }
 
 
@@ -273,178 +273,178 @@ export namespace EBookContacts {
      * @gir-type Enum
      */
     enum ContactField {
-        UID,
-        FILE_AS,
-        BOOK_UID,
-        FULL_NAME,
-        GIVEN_NAME,
-        FAMILY_NAME,
-        NICKNAME,
-        EMAIL_1,
-        EMAIL_2,
-        EMAIL_3,
-        EMAIL_4,
-        MAILER,
-        ADDRESS_LABEL_HOME,
-        ADDRESS_LABEL_WORK,
-        ADDRESS_LABEL_OTHER,
-        PHONE_ASSISTANT,
-        PHONE_BUSINESS,
-        PHONE_BUSINESS_2,
-        PHONE_BUSINESS_FAX,
-        PHONE_CALLBACK,
-        PHONE_CAR,
-        PHONE_COMPANY,
-        PHONE_HOME,
-        PHONE_HOME_2,
-        PHONE_HOME_FAX,
-        PHONE_ISDN,
-        PHONE_MOBILE,
-        PHONE_OTHER,
-        PHONE_OTHER_FAX,
-        PHONE_PAGER,
-        PHONE_PRIMARY,
-        PHONE_RADIO,
-        PHONE_TELEX,
-        PHONE_TTYTDD,
-        ORG,
-        ORG_UNIT,
-        OFFICE,
-        TITLE,
-        ROLE,
-        MANAGER,
-        ASSISTANT,
-        HOMEPAGE_URL,
-        BLOG_URL,
-        CATEGORIES,
-        CALENDAR_URI,
-        FREEBUSY_URL,
-        ICS_CALENDAR,
-        VIDEO_URL,
-        SPOUSE,
-        NOTE,
-        IM_AIM_HOME_1,
-        IM_AIM_HOME_2,
-        IM_AIM_HOME_3,
-        IM_AIM_WORK_1,
-        IM_AIM_WORK_2,
-        IM_AIM_WORK_3,
-        IM_GROUPWISE_HOME_1,
-        IM_GROUPWISE_HOME_2,
-        IM_GROUPWISE_HOME_3,
-        IM_GROUPWISE_WORK_1,
-        IM_GROUPWISE_WORK_2,
-        IM_GROUPWISE_WORK_3,
-        IM_JABBER_HOME_1,
-        IM_JABBER_HOME_2,
-        IM_JABBER_HOME_3,
-        IM_JABBER_WORK_1,
-        IM_JABBER_WORK_2,
-        IM_JABBER_WORK_3,
-        IM_YAHOO_HOME_1,
-        IM_YAHOO_HOME_2,
-        IM_YAHOO_HOME_3,
-        IM_YAHOO_WORK_1,
-        IM_YAHOO_WORK_2,
-        IM_YAHOO_WORK_3,
-        IM_MSN_HOME_1,
-        IM_MSN_HOME_2,
-        IM_MSN_HOME_3,
-        IM_MSN_WORK_1,
-        IM_MSN_WORK_2,
-        IM_MSN_WORK_3,
-        IM_ICQ_HOME_1,
-        IM_ICQ_HOME_2,
-        IM_ICQ_HOME_3,
-        IM_ICQ_WORK_1,
-        IM_ICQ_WORK_2,
-        IM_ICQ_WORK_3,
-        REV,
-        NAME_OR_ORG,
-        ADDRESS,
-        ADDRESS_HOME,
-        ADDRESS_WORK,
-        ADDRESS_OTHER,
-        CATEGORY_LIST,
-        PHOTO,
-        LOGO,
-        NAME,
-        EMAIL,
-        IM_AIM,
-        IM_GROUPWISE,
-        IM_JABBER,
-        IM_YAHOO,
-        IM_MSN,
-        IM_ICQ,
-        WANTS_HTML,
-        IS_LIST,
-        LIST_SHOW_ADDRESSES,
-        BIRTH_DATE,
-        ANNIVERSARY,
-        X509_CERT,
-        PGP_CERT,
-        IM_GADUGADU_HOME_1,
-        IM_GADUGADU_HOME_2,
-        IM_GADUGADU_HOME_3,
-        IM_GADUGADU_WORK_1,
-        IM_GADUGADU_WORK_2,
-        IM_GADUGADU_WORK_3,
-        IM_GADUGADU,
-        GEO,
-        TEL,
-        IM_SKYPE_HOME_1,
-        IM_SKYPE_HOME_2,
-        IM_SKYPE_HOME_3,
-        IM_SKYPE_WORK_1,
-        IM_SKYPE_WORK_2,
-        IM_SKYPE_WORK_3,
-        IM_SKYPE,
-        SIP,
-        IM_GOOGLE_TALK_HOME_1,
-        IM_GOOGLE_TALK_HOME_2,
-        IM_GOOGLE_TALK_HOME_3,
-        IM_GOOGLE_TALK_WORK_1,
-        IM_GOOGLE_TALK_WORK_2,
-        IM_GOOGLE_TALK_WORK_3,
-        IM_GOOGLE_TALK,
-        IM_TWITTER,
-        IM_MATRIX_HOME_1,
-        IM_MATRIX_HOME_2,
-        IM_MATRIX_HOME_3,
-        IM_MATRIX_WORK_1,
-        IM_MATRIX_WORK_2,
-        IM_MATRIX_WORK_3,
-        IM_MATRIX,
-        TZ,
-        KIND,
-        SOURCE,
-        XML,
-        GENDER,
-        IMPP,
-        LANG,
-        MEMBER,
-        RELATED,
-        BIRTHPLACE,
-        DEATHPLACE,
-        DEATHDATE,
-        EXPERTISE,
-        HOBBY,
-        INTEREST,
-        ORG_DIRECTORY,
-        CONTACT_URI,
-        CREATED,
-        SOCIALPROFILE,
-        FIELD_LAST,
-        FIELD_FIRST,
-        LAST_SIMPLE_STRING,
-        FIRST_PHONE_ID,
-        LAST_PHONE_ID,
-        FIRST_EMAIL_ID,
-        LAST_EMAIL_ID,
-        FIRST_ADDRESS_ID,
-        LAST_ADDRESS_ID,
-        FIRST_LABEL_ID,
-        LAST_LABEL_ID,
+        UID = 1,
+        FILE_AS = 2,
+        BOOK_UID = 3,
+        FULL_NAME = 4,
+        GIVEN_NAME = 5,
+        FAMILY_NAME = 6,
+        NICKNAME = 7,
+        EMAIL_1 = 8,
+        EMAIL_2 = 9,
+        EMAIL_3 = 10,
+        EMAIL_4 = 11,
+        MAILER = 12,
+        ADDRESS_LABEL_HOME = 13,
+        ADDRESS_LABEL_WORK = 14,
+        ADDRESS_LABEL_OTHER = 15,
+        PHONE_ASSISTANT = 16,
+        PHONE_BUSINESS = 17,
+        PHONE_BUSINESS_2 = 18,
+        PHONE_BUSINESS_FAX = 19,
+        PHONE_CALLBACK = 20,
+        PHONE_CAR = 21,
+        PHONE_COMPANY = 22,
+        PHONE_HOME = 23,
+        PHONE_HOME_2 = 24,
+        PHONE_HOME_FAX = 25,
+        PHONE_ISDN = 26,
+        PHONE_MOBILE = 27,
+        PHONE_OTHER = 28,
+        PHONE_OTHER_FAX = 29,
+        PHONE_PAGER = 30,
+        PHONE_PRIMARY = 31,
+        PHONE_RADIO = 32,
+        PHONE_TELEX = 33,
+        PHONE_TTYTDD = 34,
+        ORG = 35,
+        ORG_UNIT = 36,
+        OFFICE = 37,
+        TITLE = 38,
+        ROLE = 39,
+        MANAGER = 40,
+        ASSISTANT = 41,
+        HOMEPAGE_URL = 42,
+        BLOG_URL = 43,
+        CATEGORIES = 44,
+        CALENDAR_URI = 45,
+        FREEBUSY_URL = 46,
+        ICS_CALENDAR = 47,
+        VIDEO_URL = 48,
+        SPOUSE = 49,
+        NOTE = 50,
+        IM_AIM_HOME_1 = 51,
+        IM_AIM_HOME_2 = 52,
+        IM_AIM_HOME_3 = 53,
+        IM_AIM_WORK_1 = 54,
+        IM_AIM_WORK_2 = 55,
+        IM_AIM_WORK_3 = 56,
+        IM_GROUPWISE_HOME_1 = 57,
+        IM_GROUPWISE_HOME_2 = 58,
+        IM_GROUPWISE_HOME_3 = 59,
+        IM_GROUPWISE_WORK_1 = 60,
+        IM_GROUPWISE_WORK_2 = 61,
+        IM_GROUPWISE_WORK_3 = 62,
+        IM_JABBER_HOME_1 = 63,
+        IM_JABBER_HOME_2 = 64,
+        IM_JABBER_HOME_3 = 65,
+        IM_JABBER_WORK_1 = 66,
+        IM_JABBER_WORK_2 = 67,
+        IM_JABBER_WORK_3 = 68,
+        IM_YAHOO_HOME_1 = 69,
+        IM_YAHOO_HOME_2 = 70,
+        IM_YAHOO_HOME_3 = 71,
+        IM_YAHOO_WORK_1 = 72,
+        IM_YAHOO_WORK_2 = 73,
+        IM_YAHOO_WORK_3 = 74,
+        IM_MSN_HOME_1 = 75,
+        IM_MSN_HOME_2 = 76,
+        IM_MSN_HOME_3 = 77,
+        IM_MSN_WORK_1 = 78,
+        IM_MSN_WORK_2 = 79,
+        IM_MSN_WORK_3 = 80,
+        IM_ICQ_HOME_1 = 81,
+        IM_ICQ_HOME_2 = 82,
+        IM_ICQ_HOME_3 = 83,
+        IM_ICQ_WORK_1 = 84,
+        IM_ICQ_WORK_2 = 85,
+        IM_ICQ_WORK_3 = 86,
+        REV = 87,
+        NAME_OR_ORG = 88,
+        ADDRESS = 89,
+        ADDRESS_HOME = 90,
+        ADDRESS_WORK = 91,
+        ADDRESS_OTHER = 92,
+        CATEGORY_LIST = 93,
+        PHOTO = 94,
+        LOGO = 95,
+        NAME = 96,
+        EMAIL = 97,
+        IM_AIM = 98,
+        IM_GROUPWISE = 99,
+        IM_JABBER = 100,
+        IM_YAHOO = 101,
+        IM_MSN = 102,
+        IM_ICQ = 103,
+        WANTS_HTML = 104,
+        IS_LIST = 105,
+        LIST_SHOW_ADDRESSES = 106,
+        BIRTH_DATE = 107,
+        ANNIVERSARY = 108,
+        X509_CERT = 109,
+        PGP_CERT = 110,
+        IM_GADUGADU_HOME_1 = 111,
+        IM_GADUGADU_HOME_2 = 112,
+        IM_GADUGADU_HOME_3 = 113,
+        IM_GADUGADU_WORK_1 = 114,
+        IM_GADUGADU_WORK_2 = 115,
+        IM_GADUGADU_WORK_3 = 116,
+        IM_GADUGADU = 117,
+        GEO = 118,
+        TEL = 119,
+        IM_SKYPE_HOME_1 = 120,
+        IM_SKYPE_HOME_2 = 121,
+        IM_SKYPE_HOME_3 = 122,
+        IM_SKYPE_WORK_1 = 123,
+        IM_SKYPE_WORK_2 = 124,
+        IM_SKYPE_WORK_3 = 125,
+        IM_SKYPE = 126,
+        SIP = 127,
+        IM_GOOGLE_TALK_HOME_1 = 128,
+        IM_GOOGLE_TALK_HOME_2 = 129,
+        IM_GOOGLE_TALK_HOME_3 = 130,
+        IM_GOOGLE_TALK_WORK_1 = 131,
+        IM_GOOGLE_TALK_WORK_2 = 132,
+        IM_GOOGLE_TALK_WORK_3 = 133,
+        IM_GOOGLE_TALK = 134,
+        IM_TWITTER = 135,
+        IM_MATRIX_HOME_1 = 136,
+        IM_MATRIX_HOME_2 = 137,
+        IM_MATRIX_HOME_3 = 138,
+        IM_MATRIX_WORK_1 = 139,
+        IM_MATRIX_WORK_2 = 140,
+        IM_MATRIX_WORK_3 = 141,
+        IM_MATRIX = 142,
+        TZ = 143,
+        KIND = 144,
+        SOURCE = 145,
+        XML = 146,
+        GENDER = 147,
+        IMPP = 148,
+        LANG = 149,
+        MEMBER = 150,
+        RELATED = 151,
+        BIRTHPLACE = 152,
+        DEATHPLACE = 153,
+        DEATHDATE = 154,
+        EXPERTISE = 155,
+        HOBBY = 156,
+        INTEREST = 157,
+        ORG_DIRECTORY = 158,
+        CONTACT_URI = 159,
+        CREATED = 160,
+        SOCIALPROFILE = 161,
+        FIELD_LAST = 162,
+        FIELD_FIRST = 1,
+        LAST_SIMPLE_STRING = 88,
+        FIRST_PHONE_ID = 16,
+        LAST_PHONE_ID = 34,
+        FIRST_EMAIL_ID = 8,
+        LAST_EMAIL_ID = 11,
+        FIRST_ADDRESS_ID = 90,
+        LAST_ADDRESS_ID = 92,
+        FIRST_LABEL_ID = 13,
+        LAST_LABEL_ID = 15,
     }
 
 
@@ -452,12 +452,12 @@ export namespace EBookContacts {
      * @gir-type Enum
      */
     enum ContactGenderSex {
-        UNKNOWN,
-        NOT_SET,
-        MALE,
-        FEMALE,
-        OTHER,
-        NOT_APPLICABLE,
+        UNKNOWN = 0,
+        NOT_SET = 1,
+        MALE = 2,
+        FEMALE = 3,
+        OTHER = 4,
+        NOT_APPLICABLE = 5,
     }
 
 
@@ -465,8 +465,8 @@ export namespace EBookContacts {
      * @gir-type Enum
      */
     enum ContactPhotoType {
-        INLINED,
-        URI,
+        INLINED = 0,
+        URI = 1,
     }
 
 
@@ -480,17 +480,17 @@ export namespace EBookContacts {
          * the EPhoneNumber was build from a fully qualified telephone number
          *   that contained a valid country calling code
          */
-        FQTN,
+        FQTN = 1,
         /**
          * the parsed phone number started with the current locale's international
          *   call prefix, followed by a valid country calling code
          */
-        IDD,
+        IDD = 5,
         /**
          * the parsed phone didn't start with a (recognizable) country calling code,
          *   the code was chosen by checking the current locale settings
          */
-        DEFAULT,
+        DEFAULT = 20,
     }
 
 
@@ -555,22 +555,22 @@ export namespace EBookContacts {
         /**
          * format according E.164: "+493055667788".
          */
-        E164,
+        E164 = 0,
         /**
          * a formatted phone number always
          * starting with the country calling code: "+49 30 55667788".
          */
-        INTERNATIONAL,
+        INTERNATIONAL = 1,
         /**
          * a formatted phone number in national
          * scope, that is without country calling code: "(030) 55667788".
          */
-        NATIONAL,
+        NATIONAL = 2,
         /**
          * a tel: URL according to RFC 3966:
          * "tel:+49-30-55667788".
          */
-        RFC3966,
+        RFC3966 = 3,
     }
 
 
@@ -639,26 +639,26 @@ export namespace EBookContacts {
         /**
          * The phone numbers did not match.
          */
-        NONE,
+        NONE = 0,
         /**
          * The phone numbers matched exactly. Two phone number strings are an exact match
          * if the country code, national phone number, presence of a leading zero for Italian numbers and any
          * extension present are the same.
          */
-        EXACT,
+        EXACT = 1,
         /**
          * The national phone number matched. Two phone number strings match at
          * this strength if either or both has no region specified, and the national phone number
          * and extensions are the same.
          */
-        NATIONAL,
+        NATIONAL = 1024,
         /**
          * The weakest sort of match. Two phone numbers match at
          * this strength if either or both has no region specified, or the region specified is the same, and one national
          * phone number could be a shorter version of the other number. This includes the case where one has an extension specified,
          * and the other does not.
          */
-        SHORT,
+        SHORT = 2048,
     }
 
 
@@ -696,6 +696,7 @@ export namespace EBookContacts {
      * Provides comma-separated list of all known categories used by
      * the contacts stored in the book backend.
      * @since 3.48
+     * @default "categories"
      */
     const BOOK_BACKEND_PROPERTY_CATEGORIES: string;
 
@@ -707,6 +708,7 @@ export namespace EBookContacts {
      * in a different version (like when the server has stored vCards
      * in multiple versions, then they are not converted by the backend.
      * @since 3.60
+     * @default prefer-vcard-version
      */
     const BOOK_BACKEND_PROPERTY_PREFER_VCARD_VERSION: string;
 
@@ -718,6 +720,7 @@ export namespace EBookContacts {
      * The `e_contact_field_id()` can be used to transform the field name
      * into an {@link EBookContacts.ContactField}.
      * @since 3.2
+     * @default "required-fields"
      */
     const BOOK_BACKEND_PROPERTY_REQUIRED_FIELDS: string;
 
@@ -726,6 +729,7 @@ export namespace EBookContacts {
      * a quick check to see if data has changed at all since the
      * last time the addressbook revision was observed.
      * @since 3.4
+     * @default "revision"
      */
     const BOOK_BACKEND_PROPERTY_REVISION: string;
 
@@ -737,252 +741,546 @@ export namespace EBookContacts {
      * The `e_contact_field_id()` can be used to transform the field name
      * into an {@link EBookContacts.ContactField}.
      * @since 3.2
+     * @default "supported-fields"
      */
     const BOOK_BACKEND_PROPERTY_SUPPORTED_FIELDS: string;
 
+    /**
+     * @default ADR
+     */
     const EVC_ADR: string;
 
+    /**
+     * @default ALTID
+     */
     const EVC_ALTID: string;
 
+    /**
+     * @default ANNIVERSARY
+     */
     const EVC_ANNIVERSARY: string;
 
+    /**
+     * @default BDAY
+     */
     const EVC_BDAY: string;
 
+    /**
+     * @default BIRTHPLACE
+     */
     const EVC_BIRTHPLACE: string;
 
+    /**
+     * @default CALADRURI
+     */
     const EVC_CALADRURI: string;
 
+    /**
+     * @default CALSCALE
+     */
     const EVC_CALSCALE: string;
 
+    /**
+     * @default CALURI
+     */
     const EVC_CALURI: string;
 
+    /**
+     * @default CATEGORIES
+     */
     const EVC_CATEGORIES: string;
 
+    /**
+     * @default CLIENTPIDMAP
+     */
     const EVC_CLIENTPIDMAP: string;
 
     /**
      * @since 3.2
+     * @default X-EVOLUTION-CONTACT-LIST-UID
      */
     const EVC_CL_UID: string;
 
     /**
      * @since 3.2
+     * @default X-EVOLUTION-CONTACT-LIST-INFO
      */
     const EVC_CONTACT_LIST: string;
 
+    /**
+     * @default CONTACT-URI
+     */
     const EVC_CONTACT_URI: string;
 
+    /**
+     * @default CREATED
+     */
     const EVC_CREATED: string;
 
+    /**
+     * @default DEATHDATE
+     */
     const EVC_DEATHDATE: string;
 
+    /**
+     * @default DEATHPLACE
+     */
     const EVC_DEATHPLACE: string;
 
+    /**
+     * @default EMAIL
+     */
     const EVC_EMAIL: string;
 
+    /**
+     * @default ENCODING
+     */
     const EVC_ENCODING: string;
 
+    /**
+     * @default EXPERTISE
+     */
     const EVC_EXPERTISE: string;
 
+    /**
+     * @default FBURL
+     */
     const EVC_FBURL: string;
 
+    /**
+     * @default FN
+     */
     const EVC_FN: string;
 
+    /**
+     * @default GENDER
+     */
     const EVC_GENDER: string;
 
     /**
      * @since 1.12
+     * @default GEO
      */
     const EVC_GEO: string;
 
+    /**
+     * @default GRAMGENDER
+     */
     const EVC_GRAMGENDER: string;
 
+    /**
+     * @default HOBBY
+     */
     const EVC_HOBBY: string;
 
+    /**
+     * @default ICSCALENDAR
+     */
     const EVC_ICSCALENDAR: string;
 
+    /**
+     * @default IMPP
+     */
     const EVC_IMPP: string;
 
+    /**
+     * @default INTEREST
+     */
     const EVC_INTEREST: string;
 
+    /**
+     * @default JSPROP
+     */
     const EVC_JSPROP: string;
 
+    /**
+     * @default KEY
+     */
     const EVC_KEY: string;
 
+    /**
+     * @default KIND
+     */
     const EVC_KIND: string;
 
+    /**
+     * @default LABEL
+     */
     const EVC_LABEL: string;
 
+    /**
+     * @default LANG
+     */
     const EVC_LANG: string;
 
+    /**
+     * @default LANGUAGE
+     */
     const EVC_LANGUAGE: string;
 
+    /**
+     * @default LOGO
+     */
     const EVC_LOGO: string;
 
+    /**
+     * @default MAILER
+     */
     const EVC_MAILER: string;
 
+    /**
+     * @default MEDIATYPE
+     */
     const EVC_MEDIATYPE: string;
 
+    /**
+     * @default MEMBER
+     */
     const EVC_MEMBER: string;
 
+    /**
+     * @default N
+     */
     const EVC_N: string;
 
+    /**
+     * @default NICKNAME
+     */
     const EVC_NICKNAME: string;
 
+    /**
+     * @default NOTE
+     */
     const EVC_NOTE: string;
 
+    /**
+     * @default ORG
+     */
     const EVC_ORG: string;
 
+    /**
+     * @default ORG-DIRECTORY
+     */
     const EVC_ORG_DIRECTORY: string;
 
     /**
      * @since 3.2
+     * @default X-EVOLUTION-PARENT-UID
      */
     const EVC_PARENT_CL: string;
 
+    /**
+     * @default PHOTO
+     */
     const EVC_PHOTO: string;
 
+    /**
+     * @default PID
+     */
     const EVC_PID: string;
 
+    /**
+     * @default PREF
+     */
     const EVC_PREF: string;
 
+    /**
+     * @default PRODID
+     */
     const EVC_PRODID: string;
 
+    /**
+     * @default PRONOUNS
+     */
     const EVC_PRONOUNS: string;
 
+    /**
+     * @default QUOTED-PRINTABLE
+     */
     const EVC_QUOTEDPRINTABLE: string;
 
+    /**
+     * @default RELATED
+     */
     const EVC_RELATED: string;
 
+    /**
+     * @default REV
+     */
     const EVC_REV: string;
 
+    /**
+     * @default ROLE
+     */
     const EVC_ROLE: string;
 
+    /**
+     * @default SOCIALPROFILE
+     */
     const EVC_SOCIALPROFILE: string;
 
+    /**
+     * @default SORT-AS
+     */
     const EVC_SORT_AS: string;
 
+    /**
+     * @default SOUND
+     */
     const EVC_SOUND: string;
 
+    /**
+     * @default SOURCE
+     */
     const EVC_SOURCE: string;
 
+    /**
+     * @default TEL
+     */
     const EVC_TEL: string;
 
+    /**
+     * @default TITLE
+     */
     const EVC_TITLE: string;
 
+    /**
+     * @default TYPE
+     */
     const EVC_TYPE: string;
 
+    /**
+     * @default TZ
+     */
     const EVC_TZ: string;
 
+    /**
+     * @default UID
+     */
     const EVC_UID: string;
 
+    /**
+     * @default URL
+     */
     const EVC_URL: string;
 
+    /**
+     * @default VALUE
+     */
     const EVC_VALUE: string;
 
+    /**
+     * @default VERSION
+     */
     const EVC_VERSION: string;
 
+    /**
+     * @default XML
+     */
     const EVC_XML: string;
 
+    /**
+     * @default X-AIM
+     */
     const EVC_X_AIM: string;
 
+    /**
+     * @default X-EVOLUTION-ANNIVERSARY
+     */
     const EVC_X_ANNIVERSARY: string;
 
+    /**
+     * @default X-EVOLUTION-ASSISTANT
+     */
     const EVC_X_ASSISTANT: string;
 
+    /**
+     * @default X-EVOLUTION-BIRTHDAY
+     */
     const EVC_X_BIRTHDAY: string;
 
+    /**
+     * @default X-EVOLUTION-BLOG-URL
+     */
     const EVC_X_BLOG_URL: string;
 
     /**
      * @since 3.6
+     * @default X-EVOLUTION-BOOK-UID
      */
     const EVC_X_BOOK_UID: string;
 
+    /**
+     * @default X-EVOLUTION-CALLBACK
+     */
     const EVC_X_CALLBACK: string;
 
+    /**
+     * @default X-EVOLUTION-COMPANY
+     */
     const EVC_X_COMPANY: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-CONTACT-UID
+     */
     const EVC_X_DEST_CONTACT_UID: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-EMAIL
+     */
     const EVC_X_DEST_EMAIL: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-EMAIL-NUM
+     */
     const EVC_X_DEST_EMAIL_NUM: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-HTML-MAIL
+     */
     const EVC_X_DEST_HTML_MAIL: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-NAME
+     */
     const EVC_X_DEST_NAME: string;
 
+    /**
+     * @default X-EVOLUTION-DEST-SOURCE-UID
+     */
     const EVC_X_DEST_SOURCE_UID: string;
 
+    /**
+     * @default X-EVOLUTION-E164
+     */
     const EVC_X_E164: string;
 
+    /**
+     * @default X-EVOLUTION-FILE-AS
+     */
     const EVC_X_FILE_AS: string;
 
+    /**
+     * @default X-GADUGADU
+     */
     const EVC_X_GADUGADU: string;
 
     /**
      * @since 3.2
+     * @default X-GOOGLE-TALK
      */
     const EVC_X_GOOGLE_TALK: string;
 
+    /**
+     * @default X-GROUPWISE
+     */
     const EVC_X_GROUPWISE: string;
 
+    /**
+     * @default X-ICQ
+     */
     const EVC_X_ICQ: string;
 
+    /**
+     * @default X-JABBER
+     */
     const EVC_X_JABBER: string;
 
+    /**
+     * @default X-EVOLUTION-LIST
+     */
     const EVC_X_LIST: string;
 
     /**
      * @since 3.2
+     * @default X-EVOLUTION-LIST-NAME
      */
     const EVC_X_LIST_NAME: string;
 
+    /**
+     * @default X-EVOLUTION-LIST-SHOW-ADDRESSES
+     */
     const EVC_X_LIST_SHOW_ADDRESSES: string;
 
+    /**
+     * @default X-EVOLUTION-MANAGER
+     */
     const EVC_X_MANAGER: string;
 
+    /**
+     * @default X-MATRIX
+     */
     const EVC_X_MATRIX: string;
 
+    /**
+     * @default X-MSN
+     */
     const EVC_X_MSN: string;
 
+    /**
+     * @default X-EVOLUTION-RADIO
+     */
     const EVC_X_RADIO: string;
 
     /**
      * @since 2.26
+     * @default X-SIP
      */
     const EVC_X_SIP: string;
 
     /**
      * @since 2.26
+     * @default X-SKYPE
      */
     const EVC_X_SKYPE: string;
 
+    /**
+     * @default X-SOCIALPROFILE
+     */
     const EVC_X_SOCIALPROFILE: string;
 
+    /**
+     * @default X-EVOLUTION-SPOUSE
+     */
     const EVC_X_SPOUSE: string;
 
+    /**
+     * @default X-EVOLUTION-TELEX
+     */
     const EVC_X_TELEX: string;
 
+    /**
+     * @default X-EVOLUTION-TTYTDD
+     */
     const EVC_X_TTYTDD: string;
 
     /**
      * Twitter name(s).
      * @since 3.6
+     * @default X-TWITTER
      */
     const EVC_X_TWITTER: string;
 
+    /**
+     * @default X-EVOLUTION-VIDEO-URL
+     */
     const EVC_X_VIDEO_URL: string;
 
+    /**
+     * @default X-MOZILLA-HTML
+     */
     const EVC_X_WANTS_HTML: string;
 
+    /**
+     * @default X-YAHOO
+     */
     const EVC_X_YAHOO: string;
 
     /**
      * Pass this extension name to `e_source_get_extension()` to access
      * {@link EBookContacts.SourceBackendSummarySetup}.  This is also used as a group name in key files.
      * @since 3.8
+     * @default Backend Summary Setup
      */
     const SOURCE_EXTENSION_BACKEND_SUMMARY_SETUP: string;
 
@@ -1238,6 +1536,7 @@ export namespace EBookContacts {
      * @param second_number the second EPhoneNumber to compare
      * @returns The quality of matching for the two phone numbers.
      * @since 3.8
+     * @throws GLib.Error
      */
     function phone_number_compare_strings(first_number: string, second_number: string): PhoneNumberMatch;
 
@@ -1248,6 +1547,7 @@ export namespace EBookContacts {
      * @param region_code a two-letter country code, or `null`
      * @returns The quality of matching for the two phone numbers.
      * @since 3.8
+     * @throws GLib.Error
      */
     function phone_number_compare_strings_with_region(first_number: string, second_number: string, region_code: string | null): PhoneNumberMatch;
 
@@ -1269,6 +1569,7 @@ export namespace EBookContacts {
      * @param region_code a two-letter country code, or `null`
      * @returns a new {@link EBookContacts.PhoneNumber} instance on success, or `null` on error. Call `e_phone_number_free()` to release this instance.
      * @since 3.8
+     * @throws GLib.Error
      */
     function phone_number_from_string(phone_number: string, region_code: string | null): PhoneNumber;
 
@@ -1281,6 +1582,7 @@ export namespace EBookContacts {
      * @param region_code a two-letter country code, a locale name, or `null`
      * @returns a valid country calling code, or zero if an unknown region code was passed.
      * @since 3.8
+     * @throws GLib.Error
      */
     function phone_number_get_country_code_for_region(region_code: string | null): number;
 
@@ -1295,6 +1597,7 @@ export namespace EBookContacts {
      * locale name configured for `LC_ADDRESS` is parsed.
      * @returns a newly allocated string containing the current locale's two-letter code for phone number parsing.
      * @since 3.8
+     * @throws GLib.Error
      */
     function phone_number_get_default_region(): string;
 
@@ -1357,20 +1660,20 @@ export namespace EBookContacts {
         /**
          * Symbolic value for no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * If this flag is set then all contacts matching the view's query will
          *   be sent as notifications when starting the view, otherwise only future
          *   changes will be reported.  The default for an `EBookClientView` is `true`.
          */
-        NOTIFY_INITIAL,
+        NOTIFY_INITIAL = 1,
         /**
          * Rather than receiving contact changes one-by-one, be notified only
          *   by "content-changed" signal and query contacts by ranges. See
          *   `e_book_client_view_set_sort_fields_sync()` for more information.
          *   The default is `false`. Since: 3.50
          */
-        MANUAL_QUERY,
+        MANUAL_QUERY = 2,
     }
 
 
@@ -1390,11 +1693,11 @@ export namespace EBookContacts {
         /**
          * The cursor position should be modified while stepping
          */
-        MOVE,
+        MOVE = 1,
         /**
          * Traversed contacts should be listed and returned while stepping.
          */
-        FETCH,
+        FETCH = 2,
     }
 
 
@@ -1417,32 +1720,32 @@ export namespace EBookContacts {
         /**
          * no operation flags defined
          */
-        NONE,
+        NONE = 0,
         /**
          * conflict resolution mode, to fail and do not
          *    do any changes, when a conflict is detected
          */
-        CONFLICT_FAIL,
+        CONFLICT_FAIL = 1,
         /**
          * conflict resolution mode, to use newer
          *    of the local and the server side data, when a conflict is detected
          */
-        CONFLICT_USE_NEWER,
+        CONFLICT_USE_NEWER = 2,
         /**
          * conflict resolution mode, to use
          *    the server data (and local changed), when a conflict is detected
          */
-        CONFLICT_KEEP_SERVER,
+        CONFLICT_KEEP_SERVER = 4,
         /**
          * conflict resolution mode, to use
          *    local data (and always overwrite server data), when a conflict is detected
          */
-        CONFLICT_KEEP_LOCAL,
+        CONFLICT_KEEP_LOCAL = 0,
         /**
          * conflict resolution mode, to create
          *    a copy of the data, when a conflict is detected
          */
-        CONFLICT_WRITE_COPY,
+        CONFLICT_WRITE_COPY = 8,
     }
 
 
@@ -1467,15 +1770,15 @@ export namespace EBookContacts {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * date-time value
          */
-        DATE_TIME,
+        DATE_TIME = 1,
         /**
          * time value
          */
-        TIME,
+        TIME = 2,
     }
 
 
@@ -1503,11 +1806,11 @@ export namespace EBookContacts {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * whether the callback will modify the {@link EBookContacts.VCard}
          */
-        WILL_MODIFY,
+        WILL_MODIFY = 1,
     }
 
 
@@ -3773,6 +4076,7 @@ export namespace EBookContacts {
          * to be inlined and stored as {@link EBookContacts.ContactPhotoType.INLINED} instead.
          * @returns `true` if there were no errors, upon error `false` is returned    and `error` is set.
          * @since 3.4
+         * @throws GLib.Error
          */
         inline_local_photos(): boolean;
 

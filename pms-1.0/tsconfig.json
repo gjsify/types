@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./pms-1.0.d.ts","./pms-1.0-surface.d.ts"]
+  "include": ["./pms-1.0.d.ts","./pms-1.0-vocabulary.d.ts"]
 }
 
 

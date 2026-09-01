@@ -48,10 +48,10 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum ActorManagerError {
-        CONTAINER_DESTROYED,
-        ACTOR_DESTROYED,
-        CREATION_FAILED,
-        UNKNOWN_OPERATION,
+        CONTAINER_DESTROYED = 0,
+        ACTOR_DESTROYED = 1,
+        CREATION_FAILED = 2,
+        UNKNOWN_OPERATION = 3,
     }
 
 
@@ -70,15 +70,15 @@ export namespace Mx {
         /**
          * Align at the beginning of the axis
          */
-        START,
+        START = 0,
         /**
          * Align in the middle of the axis
          */
-        MIDDLE,
+        MIDDLE = 1,
         /**
          * Align at the end of the axis
          */
-        END,
+        END = 2,
     }
 
 
@@ -94,8 +94,8 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum DisplayStyle {
-        NONE,
-        INLINE,
+        NONE = 0,
+        INLINE = 1,
     }
 
 
@@ -110,9 +110,9 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum DragAxis {
-        NONE,
-        X,
-        Y,
+        NONE = 0,
+        X = 1,
+        Y = 2,
     }
 
 
@@ -127,13 +127,13 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum FocusDirection {
-        OUT,
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        NEXT,
-        PREVIOUS,
+        OUT = 0,
+        UP = 1,
+        DOWN = 2,
+        LEFT = 3,
+        RIGHT = 4,
+        NEXT = 5,
+        PREVIOUS = 6,
     }
 
 
@@ -148,13 +148,13 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum FocusHint {
-        FIRST,
-        LAST,
-        PRIOR,
-        FROM_ABOVE,
-        FROM_BELOW,
-        FROM_LEFT,
-        FROM_RIGHT,
+        FIRST = 0,
+        LAST = 1,
+        PRIOR = 2,
+        FROM_ABOVE = 3,
+        FROM_BELOW = 4,
+        FROM_LEFT = 5,
+        FROM_RIGHT = 6,
     }
 
 
@@ -173,19 +173,19 @@ export namespace Mx {
         /**
          * Normal font weight
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Bold font weight
          */
-        BOLD,
+        BOLD = 1,
         /**
          * Bolder font weight
          */
-        BOLDER,
+        BOLDER = 2,
         /**
          * Lighter font weight
          */
-        LIGHTER,
+        LIGHTER = 3,
     }
 
 
@@ -227,15 +227,15 @@ export namespace Mx {
         /**
          * Do not apply any scaling and center the image within the allocation
          */
-        NONE,
+        NONE = 0,
         /**
          * Scale the image, but maintain the aspect ratio so that it fits exactly within the allocation
          */
-        FIT,
+        FIT = 1,
         /**
          * Scale and crop the image so that it covers the entire allocation while retaining the correct aspect ratio
          */
-        CROP,
+        CROP = 2,
     }
 
 
@@ -250,10 +250,10 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum KineticScrollViewState {
-        IDLE,
-        PANNING,
-        SCROLLING,
-        CLAMPING,
+        IDLE = 0,
+        PANNING = 1,
+        SCROLLING = 2,
+        CLAMPING = 3,
     }
 
 
@@ -268,9 +268,9 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum LongPressAction {
-        QUERY,
-        ACTION,
-        CANCEL,
+        QUERY = 0,
+        ACTION = 1,
+        CANCEL = 2,
     }
 
 
@@ -289,11 +289,11 @@ export namespace Mx {
         /**
          * horizontal orientation
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * vertical orientation
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -313,19 +313,19 @@ export namespace Mx {
         /**
          * The top position
          */
-        TOP,
+        TOP = 0,
         /**
          * The right position
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The bottom position
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * The left position
          */
-        LEFT,
+        LEFT = 3,
     }
 
 
@@ -344,23 +344,23 @@ export namespace Mx {
         /**
          * Never scroll
          */
-        NONE,
+        NONE = 0,
         /**
          * Only allow horizontal scrolling
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * Only allow vertical scrolling
          */
-        VERTICAL,
+        VERTICAL = 2,
         /**
          * Allow scrolling both horizontally and vertically
          */
-        BOTH,
+        BOTH = 3,
         /**
          * Automatically align scroll to horizontal or vertical direction or both depending on the drag angle.
          */
-        AUTOMATIC,
+        AUTOMATIC = 4,
     }
 
 
@@ -375,8 +375,8 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum StyleError {
-        INVALID_FILE,
-        PARSE_ERROR,
+        INVALID_FILE = 0,
+        PARSE_ERROR = 1,
     }
 
 
@@ -392,10 +392,10 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum TextAlign {
-        LEFT,
-        RIGHT,
-        CENTER,
-        JUSTIFY,
+        LEFT = 0,
+        RIGHT = 1,
+        CENTER = 2,
+        JUSTIFY = 3,
     }
 
 
@@ -415,11 +415,11 @@ export namespace Mx {
         /**
          * Bounce the tooltips when they appear
          */
-        BOUNCE,
+        BOUNCE = 0,
         /**
          * Fade the tooltips on show and hide
          */
-        FADE,
+        FADE = 1,
     }
 
 
@@ -435,8 +435,8 @@ export namespace Mx {
      * @gir-type Enum
      */
     enum VisibilityStyle {
-        VISIBLE,
-        HIDDEN,
+        VISIBLE = 0,
+        HIDDEN = 1,
     }
 
 
@@ -472,31 +472,42 @@ export namespace Mx {
 
     /**
      * The major version of the Mx clibrary (1 if version is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version of the Mx library (3, if version is 1.2.3)
+     * @default 4
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version of the Mx library (2, if version is 1.2.3)
+     * @default 99
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 512
+     */
     const PARAM_STYLE_INHERIT: number;
 
+    /**
+     * @default 256
+     */
     const PARAM_TRANSLATEABLE: number;
 
     /**
      * Numerically encoded version of the Mx library, like 0x010203
+     * @default 0
      */
     const VERSION_HEX: number;
 
     /**
      * The full version of the Mx library, in string form (suited for
      * string concatenation)
+     * @default 1.99.4
      */
     const VERSION_S: string;
 
@@ -593,15 +604,15 @@ export namespace Mx {
         /**
          * No flag set
          */
-        NONE,
+        NONE = 0,
         /**
          * Whether to force propogation of the style-changed signal, regardless of the state of the stylable object.
          */
-        FORCE,
+        FORCE = 1,
         /**
          * Internal flag used to track style caching state.
          */
-        INVALIDATE_CACHE,
+        INVALIDATE_CACHE = 2,
     }
 
 
@@ -617,7 +628,7 @@ export namespace Mx {
              * @since 1.4
              * @run-last
              */
-            activate: (arg0: GLib.Variant) => void;
+            activate: (parameter: GLib.Variant) => void;
             /**
              * Emitted when the MxAction is activated.
              * @signal
@@ -1062,49 +1073,49 @@ export namespace Mx {
              * @since 1.2
              * @run-last
              */
-            "actor-added": (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
+            "actor-added": (id: number, container: Clutter.Actor, actor: Clutter.Actor) => void;
             /**
              * Emitted when an actor creation operation has completed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "actor-created": (arg0: number, arg1: Clutter.Actor) => void;
+            "actor-created": (id: number, actor: Clutter.Actor) => void;
             /**
              * Emitted when all queued operations involving `actor` have completed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "actor-finished": (arg0: Clutter.Actor) => void;
+            "actor-finished": (actor: Clutter.Actor) => void;
             /**
              * Emitted when an actor remove operation has completed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "actor-removed": (arg0: number, arg1: Clutter.Actor, arg2: Clutter.Actor) => void;
+            "actor-removed": (id: number, container: Clutter.Actor, actor: Clutter.Actor) => void;
             /**
              * Emitted when an operation has been cancelled.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "operation-cancelled": (arg0: number) => void;
+            "operation-cancelled": (id: number) => void;
             /**
              * Emitted when an operation has completed successfully.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "operation-completed": (arg0: number) => void;
+            "operation-completed": (id: number) => void;
             /**
              * Emitted when an operation has failed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "operation-failed": (arg0: number, arg1: GLib.Error) => void;
+            "operation-failed": (id: number, error: GLib.Error) => void;
             "notify::n-operations": (pspec: GObject.ParamSpec) => void;
             "notify::stage": (pspec: GObject.ParamSpec) => void;
             "notify::time-slice": (pspec: GObject.ParamSpec) => void;
@@ -8032,7 +8043,7 @@ export namespace Mx {
              * @since 1.2
              * @run-last
              */
-            "image-load-error": (arg0: GLib.Error) => void;
+            "image-load-error": (object: GLib.Error) => void;
             /**
              * Emitted when an asynchronous image load has completed successfully
              * @signal
@@ -8344,6 +8355,7 @@ export namespace Mx {
          * @param buffer A buffer pointing to encoded image data
          * @returns `TRUE` if the image was successfully updated
          * @since 1.2
+         * @throws GLib.Error
          */
         set_from_buffer(buffer: Uint8Array | string): boolean;
 
@@ -8358,6 +8370,7 @@ export namespace Mx {
          * @param height Height to scale the image to, or -1
          * @returns `TRUE` if the image was successfully updated
          * @since 1.2
+         * @throws GLib.Error
          */
         set_from_buffer_at_size(buffer: Uint8Array | string, width: number, height: number): boolean;
 
@@ -8379,6 +8392,7 @@ export namespace Mx {
          * @param rowstride Distance in bytes between row starts.
          * @returns `TRUE` if the image was successfully updated
          * @since 1.2
+         * @throws GLib.Error
          */
         set_from_data(data: Uint8Array | string, pixel_format: Cogl.PixelFormat, width: number, height: number, rowstride: number): boolean;
 
@@ -8388,6 +8402,7 @@ export namespace Mx {
          * @param filename Filename to read the file from
          * @returns `TRUE` if the image was successfully updated
          * @since 1.2
+         * @throws GLib.Error
          */
         set_from_file(filename: string): boolean;
 
@@ -8400,6 +8415,7 @@ export namespace Mx {
          * @param height Height to scale the image to, or -1
          * @returns `TRUE` if the image was successfully updated
          * @since 1.2
+         * @throws GLib.Error
          */
         set_from_file_at_size(filename: string, width: number, height: number): boolean;
 
@@ -10522,7 +10538,7 @@ export namespace Mx {
              * @signal
              * @run-last
              */
-            "action-activated": (arg0: Action) => void;
+            "action-activated": (object: Action) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -14521,6 +14537,7 @@ export namespace Mx {
          * @param id identifier of the style sheet to load
          * @param data CSS data to parse
          * @returns TRUE if the style information was loaded successfully. Returns FALSE on error.
+         * @throws GLib.Error
          */
         load_from_data(id: string, data: string): boolean;
 
@@ -14528,11 +14545,13 @@ export namespace Mx {
          * Load style information from the specified file.
          * @param filename filename of the style sheet to load
          * @returns TRUE if the style information was loaded successfully. Returns FALSE on error.
+         * @throws GLib.Error
          */
         load_from_file(filename: string): boolean;
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         load_from_resource(path: string): boolean;
     }
@@ -17499,7 +17518,7 @@ export namespace Mx {
              * @signal
              * @run-last
              */
-            "long-press": (arg0: number, arg1: number, arg2: LongPressAction) => boolean | void;
+            "long-press": (object: number, p0: number, p1: LongPressAction) => boolean | void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;

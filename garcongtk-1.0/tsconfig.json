@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./garcongtk-1.0.d.ts","./garcongtk-1.0-surface.d.ts"]
+  "include": ["./garcongtk-1.0.d.ts","./garcongtk-1.0-vocabulary.d.ts"]
 }
 
 

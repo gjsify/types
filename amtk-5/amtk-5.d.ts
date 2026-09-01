@@ -266,40 +266,40 @@ export namespace Amtk {
         /**
          * No flags.
          */
-        FLAGS_NONE,
+        FLAGS_NONE = 0,
         /**
          * Do not associate the created object with the
          *   {@link Gio.Action}. For example if the object to create is a {@link Gtk.Actionable}, do not
          *   call `gtk_actionable_set_detailed_action_name()`.
          */
-        IGNORE_GACTION,
+        IGNORE_GACTION = 1,
         /**
          * Do not set an icon.
          */
-        IGNORE_ICON,
+        IGNORE_ICON = 2,
         /**
          * Do not set a label/short description.
          */
-        IGNORE_LABEL,
+        IGNORE_LABEL = 4,
         /**
          * Do not set a tooltip/long description.
          */
-        IGNORE_TOOLTIP,
+        IGNORE_TOOLTIP = 8,
         /**
          * Ignore completely the accelerators.
          */
-        IGNORE_ACCELS,
+        IGNORE_ACCELS = 16,
         /**
          * Ignore the accelerators for
          *   documentation purposes only. For example do not add/configure a
          *   {@link Gtk.AccelLabel}.
          */
-        IGNORE_ACCELS_FOR_DOC,
+        IGNORE_ACCELS_FOR_DOC = 32,
         /**
          * Do not call
          *   `gtk_application_set_accels_for_action()`.
          */
-        IGNORE_ACCELS_FOR_APP,
+        IGNORE_ACCELS_FOR_APP = 64,
     }
 
 
@@ -929,7 +929,7 @@ export namespace Amtk {
              * @since 2.0
              * @run-first
              */
-            "menu-item-deselected": (arg0: Gtk.MenuItem) => void;
+            "menu-item-deselected": (menu_item: Gtk.MenuItem) => void;
             /**
              * The ::menu-item-selected signal is emitted when the
              * {@link Gtk.MenuItem.SignalSignatures.select | Gtk.MenuItem::select} signal is emitted on a {@link Gtk.MenuItem} belonging
@@ -938,7 +938,7 @@ export namespace Amtk {
              * @since 2.0
              * @run-first
              */
-            "menu-item-selected": (arg0: Gtk.MenuItem) => void;
+            "menu-item-selected": (menu_item: Gtk.MenuItem) => void;
             "notify::menu-shell": (pspec: GObject.ParamSpec) => void;
         }
 

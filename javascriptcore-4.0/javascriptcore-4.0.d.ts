@@ -29,11 +29,11 @@ export namespace JavaScriptCore {
         /**
          * mode to check syntax of a script
          */
-        SCRIPT,
+        SCRIPT = 0,
         /**
          * mode to check syntax of a module
          */
-        MODULE,
+        MODULE = 1,
     }
 
 
@@ -45,27 +45,27 @@ export namespace JavaScriptCore {
         /**
          * no errors
          */
-        SUCCESS,
+        SUCCESS = 0,
         /**
          * recoverable syntax error
          */
-        RECOVERABLE_ERROR,
+        RECOVERABLE_ERROR = 1,
         /**
          * irrecoverable syntax error
          */
-        IRRECOVERABLE_ERROR,
+        IRRECOVERABLE_ERROR = 2,
         /**
          * unterminated literal error
          */
-        UNTERMINATED_LITERAL_ERROR,
+        UNTERMINATED_LITERAL_ERROR = 3,
         /**
          * out of memory error
          */
-        OUT_OF_MEMORY_ERROR,
+        OUT_OF_MEMORY_ERROR = 4,
         /**
          * stack overflow error
          */
-        STACK_OVERFLOW_ERROR,
+        STACK_OVERFLOW_ERROR = 5,
     }
 
 
@@ -78,31 +78,31 @@ export namespace JavaScriptCore {
         /**
          * A `gboolean` option type.
          */
-        BOOLEAN,
+        BOOLEAN = 0,
         /**
          * A `gint` option type.
          */
-        INT,
+        INT = 1,
         /**
          * A `guint` option type.
          */
-        UINT,
+        UINT = 2,
         /**
          * A `gsize` options type.
          */
-        SIZE,
+        SIZE = 3,
         /**
          * A `gdouble` options type.
          */
-        DOUBLE,
+        DOUBLE = 4,
         /**
          * A string option type.
          */
-        STRING,
+        STRING = 5,
         /**
          * A range string option type.
          */
-        RANGE_STRING,
+        RANGE_STRING = 6,
     }
 
 
@@ -115,51 +115,51 @@ export namespace JavaScriptCore {
         /**
          * Not a typed array, or type unsupported.
          */
-        NONE,
+        NONE = 0,
         /**
          * Array elements are 8-bit signed integers (int8_t).
          */
-        INT8,
+        INT8 = 1,
         /**
          * Array elements are 16-bit signed integers (int16_t).
          */
-        INT16,
+        INT16 = 2,
         /**
          * Array elements are 32-bit signed integers (int32_t).
          */
-        INT32,
+        INT32 = 3,
         /**
          * Array elements are 64-bit signed integers (int64_t).
          */
-        INT64,
+        INT64 = 4,
         /**
          * Array elements are 8-bit unsigned integers (uint8_t).
          */
-        UINT8,
+        UINT8 = 5,
         /**
          * Array elements are 8-bit unsigned integers (uint8_t).
          */
-        UINT8_CLAMPED,
+        UINT8_CLAMPED = 6,
         /**
          * Array elements are 16-bit unsigned integers (uint16_t).
          */
-        UINT16,
+        UINT16 = 7,
         /**
          * Array elements are 32-bit unsigned integers (uint32_t).
          */
-        UINT32,
+        UINT32 = 8,
         /**
          * Array elements are 64-bit unsigned integers (uint64_t).
          */
-        UINT64,
+        UINT64 = 9,
         /**
          * Array elements are 32-bit floating point numbers (float).
          */
-        FLOAT32,
+        FLOAT32 = 10,
         /**
          * Array elements are 64-bit floating point numbers (double).
          */
-        FLOAT64,
+        FLOAT64 = 11,
     }
 
 
@@ -167,6 +167,7 @@ export namespace JavaScriptCore {
      * Like `jsc_get_major_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
@@ -174,6 +175,7 @@ export namespace JavaScriptCore {
      * Like `jsc_get_micro_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 2
      */
     const MICRO_VERSION: number;
 
@@ -181,6 +183,7 @@ export namespace JavaScriptCore {
      * Like `jsc_get_minor_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 47
      */
     const MINOR_VERSION: number;
 
@@ -189,6 +192,7 @@ export namespace JavaScriptCore {
      * Option type: {@link JavaScriptCore.OptionType.BOOLEAN}
      * Default value: `true`.
      * @since 2.24
+     * @default useDFGJIT
      */
     const OPTIONS_USE_DFG: string;
 
@@ -197,6 +201,7 @@ export namespace JavaScriptCore {
      * Option type: {@link JavaScriptCore.OptionType.BOOLEAN}
      * Default value: `true`.
      * @since 2.24
+     * @default useFTLJIT
      */
     const OPTIONS_USE_FTL: string;
 
@@ -205,6 +210,7 @@ export namespace JavaScriptCore {
      * Option type: {@link JavaScriptCore.OptionType.BOOLEAN}
      * Default value: `true`.
      * @since 2.24
+     * @default useJIT
      */
     const OPTIONS_USE_JIT: string;
 
@@ -213,6 +219,7 @@ export namespace JavaScriptCore {
      * Option type: {@link JavaScriptCore.OptionType.BOOLEAN}
      * Default value: `true`.
      * @since 2.24
+     * @default useLLInt
      */
     const OPTIONS_USE_LLINT: string;
 
@@ -457,17 +464,17 @@ export namespace JavaScriptCore {
          * the type of the property descriptor may be changed and the
          *  property may be deleted from the corresponding object.
          */
-        CONFIGURABLE,
+        CONFIGURABLE = 1,
         /**
          * the property shows up during enumeration of the properties on
          *  the corresponding object.
          */
-        ENUMERABLE,
+        ENUMERABLE = 2,
         /**
          * the value associated with the property may be changed with an
          *  assignment operator. This doesn't have any effect when passed to `jsc_value_object_define_property_accessor()`.
          */
-        WRITABLE,
+        WRITABLE = 4,
     }
 
 

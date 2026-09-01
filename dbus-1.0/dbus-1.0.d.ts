@@ -24,9 +24,9 @@ export namespace DBus {
      * @gir-type Enum
      */
     enum BusType {
-        SESSION,
-        SYSTEM,
-        STARTER,
+        SESSION = 0,
+        SYSTEM = 1,
+        STARTER = 2,
     }
 
 

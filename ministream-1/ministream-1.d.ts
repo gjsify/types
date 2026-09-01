@@ -42,11 +42,13 @@ export namespace Ministream {
 
     /**
      * Ministream major version component.
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * Ministream minor version component.
+     * @default 99
      */
     const MINOR_VERSION: number;
 

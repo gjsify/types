@@ -35,11 +35,11 @@ export namespace GstBadAudio {
         /**
          * Playback position is moved back to the beginning of the loop
          */
-        LOOPING,
+        LOOPING = 0,
         /**
          * Playback position increases steadily, even when looping
          */
-        STEADY,
+        STEADY = 1,
     }
 
 
@@ -51,25 +51,27 @@ export namespace GstBadAudio {
         /**
          * Only the current subsong is played
          */
-        SINGLE,
+        SINGLE = 0,
         /**
          * All subsongs are played (current subsong index is ignored)
          */
-        ALL,
+        ALL = 1,
         /**
          * Use decoder specific default behavior
          */
-        DECODER_DEFAULT,
+        DECODER_DEFAULT = 2,
     }
 
 
     /**
      * The name of the template for the sink pad.
+     * @default sink
      */
     const NONSTREAM_AUDIO_DECODER_SINK_NAME: string;
 
     /**
      * The name of the template for the source pad.
+     * @default src
      */
     const NONSTREAM_AUDIO_DECODER_SRC_NAME: string;
 

@@ -33,11 +33,11 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum AbyssPolicy {
-        NONE,
-        CLAMP,
-        LOOP,
-        BLACK,
-        WHITE,
+        NONE = 0,
+        CLAMP = 1,
+        LOOP = 2,
+        BLACK = 3,
+        WHITE = 4,
     }
 
 
@@ -52,15 +52,15 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum BablVariant {
-        FLOAT,
-        LINEAR,
-        NON_LINEAR,
-        PERCEPTUAL,
-        LINEAR_PREMULTIPLIED,
-        PERCEPTUAL_PREMULTIPLIED,
-        LINEAR_PREMULTIPLIED_IF_ALPHA,
-        PERCEPTUAL_PREMULTIPLIED_IF_ALPHA,
-        ADD_ALPHA,
+        FLOAT = 0,
+        LINEAR = 1,
+        NON_LINEAR = 2,
+        PERCEPTUAL = 3,
+        LINEAR_PREMULTIPLIED = 4,
+        PERCEPTUAL_PREMULTIPLIED = 5,
+        LINEAR_PREMULTIPLIED_IF_ALPHA = 6,
+        PERCEPTUAL_PREMULTIPLIED_IF_ALPHA = 7,
+        ADD_ALPHA = 8,
     }
 
 
@@ -75,9 +75,9 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum CachePolicy {
-        AUTO,
-        NEVER,
-        ALWAYS,
+        AUTO = 0,
+        NEVER = 1,
+        ALWAYS = 2,
     }
 
 
@@ -92,9 +92,9 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum DistanceMetric {
-        EUCLIDEAN,
-        MANHATTAN,
-        CHEBYSHEV,
+        EUCLIDEAN = 0,
+        MANHATTAN = 1,
+        CHEBYSHEV = 2,
     }
 
 
@@ -109,17 +109,17 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum DitherMethod {
-        NONE,
-        FLOYD_STEINBERG,
-        BAYER,
-        RANDOM,
-        RANDOM_COVARIANT,
-        ADD,
-        ADD_COVARIANT,
-        XOR,
-        XOR_COVARIANT,
-        BLUE_NOISE,
-        BLUE_NOISE_COVARIANT,
+        NONE = 0,
+        FLOYD_STEINBERG = 1,
+        BAYER = 2,
+        RANDOM = 3,
+        RANDOM_COVARIANT = 4,
+        ADD = 5,
+        ADD_COVARIANT = 6,
+        XOR = 7,
+        XOR_COVARIANT = 8,
+        BLUE_NOISE = 9,
+        BLUE_NOISE_COVARIANT = 10,
     }
 
 
@@ -131,7 +131,7 @@ export namespace Gegl {
         /**
          * Prevent further mapping from being registered.
          */
-        MAP_EXCLUDE_UNMAPPED,
+        MAP_EXCLUDE_UNMAPPED = 1,
     }
 
 
@@ -146,8 +146,8 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum Orientation {
-        HORIZONTAL,
-        VERTICAL,
+        HORIZONTAL = 0,
+        VERTICAL = 1,
     }
 
 
@@ -162,9 +162,9 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum RectangleAlignment {
-        SUBSET,
-        SUPERSET,
-        NEAREST,
+        SUBSET = 0,
+        SUPERSET = 1,
+        NEAREST = 2,
     }
 
 
@@ -184,15 +184,15 @@ export namespace Gegl {
         /**
          * Unknown or resolution not applicable.
          */
-        NONE,
+        NONE = 0,
         /**
          * Dots or pixels per inch.
          */
-        DPI,
+        DPI = 1,
         /**
          * Dots or pixels per metre.
          */
-        DPM,
+        DPM = 2,
     }
 
 
@@ -207,11 +207,11 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum SamplerType {
-        NEAREST,
-        LINEAR,
-        CUBIC,
-        NOHALO,
-        LOHALO,
+        NEAREST = 0,
+        LINEAR = 1,
+        CUBIC = 2,
+        NOHALO = 3,
+        LOHALO = 4,
     }
 
 
@@ -219,9 +219,9 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum SplitStrategy {
-        AUTO,
-        HORIZONTAL,
-        VERTICAL,
+        AUTO = 0,
+        HORIZONTAL = 1,
+        VERTICAL = 2,
     }
 
 
@@ -229,141 +229,324 @@ export namespace Gegl {
      * @gir-type Enum
      */
     enum TileCommand {
-        EGL_TILE_IDLE,
-        EGL_TILE_SET,
-        EGL_TILE_GET,
-        EGL_TILE_IS_CACHED,
-        EGL_TILE_EXIST,
-        EGL_TILE_VOID,
-        EGL_TILE_FLUSH,
-        EGL_TILE_REFETCH,
-        EGL_TILE_REINIT,
-        GEGL_TILE_LAST_0_4_8_COMMAND,
-        EGL_TILE_COPY,
-        EGL_TILE_LAST_COMMAND,
+        EGL_TILE_IDLE = 0,
+        EGL_TILE_SET = 1,
+        EGL_TILE_GET = 2,
+        EGL_TILE_IS_CACHED = 3,
+        EGL_TILE_EXIST = 4,
+        EGL_TILE_VOID = 5,
+        EGL_TILE_FLUSH = 6,
+        EGL_TILE_REFETCH = 7,
+        EGL_TILE_REINIT = 8,
+        GEGL_TILE_LAST_0_4_8_COMMAND = 9,
+        EGL_TILE_COPY = 9,
+        EGL_TILE_LAST_COMMAND = 10,
     }
 
 
+    /**
+     * @default 0
+     */
     const AUTO_ROWSTRIDE: number;
 
+    /**
+     * @default 256
+     */
     const CH_BACK_CENTER: number;
 
+    /**
+     * @default 16
+     */
     const CH_BACK_LEFT: number;
 
+    /**
+     * @default 32
+     */
     const CH_BACK_RIGHT: number;
 
+    /**
+     * @default 4
+     */
     const CH_FRONT_CENTER: number;
 
+    /**
+     * @default 1
+     */
     const CH_FRONT_LEFT: number;
 
+    /**
+     * @default 64
+     */
     const CH_FRONT_LEFT_OF_CENTER: number;
 
+    /**
+     * @default 2
+     */
     const CH_FRONT_RIGHT: number;
 
+    /**
+     * @default 128
+     */
     const CH_FRONT_RIGHT_OF_CENTER: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_2POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_2_1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_2_2: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_3POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_4POINT0: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_4POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_5POINT0: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_5POINT0_BACK: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_5POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_5POINT1_BACK: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_6POINT0: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_6POINT0_FRONT: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_6POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_6POINT1_BACK: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_6POINT1_FRONT: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_7POINT0: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_7POINT0_FRONT: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_7POINT1: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_7POINT1_WIDE: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_7POINT1_WIDE_BACK: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_HEXADECAGONAL: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_HEXAGONAL: number;
 
+    /**
+     * @default 9223372036854775808
+     */
     const CH_LAYOUT_NATIVE: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_OCTAGONAL: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_QUAD: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_STEREO: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_STEREO_DOWNMIX: number;
 
+    /**
+     * @default 0
+     */
     const CH_LAYOUT_SURROUND: number;
 
+    /**
+     * @default 8
+     */
     const CH_LOW_FREQUENCY: number;
 
+    /**
+     * @default 34359738368
+     */
     const CH_LOW_FREQUENCY_2: number;
 
+    /**
+     * @default 512
+     */
     const CH_SIDE_LEFT: number;
 
+    /**
+     * @default 1024
+     */
     const CH_SIDE_RIGHT: number;
 
+    /**
+     * @default 536870912
+     */
     const CH_STEREO_LEFT: number;
 
+    /**
+     * @default 1073741824
+     */
     const CH_STEREO_RIGHT: number;
 
+    /**
+     * @default 8589934592
+     */
     const CH_SURROUND_DIRECT_LEFT: number;
 
+    /**
+     * @default 17179869184
+     */
     const CH_SURROUND_DIRECT_RIGHT: number;
 
+    /**
+     * @default 65536
+     */
     const CH_TOP_BACK_CENTER: number;
 
+    /**
+     * @default 32768
+     */
     const CH_TOP_BACK_LEFT: number;
 
+    /**
+     * @default 131072
+     */
     const CH_TOP_BACK_RIGHT: number;
 
+    /**
+     * @default 2048
+     */
     const CH_TOP_CENTER: number;
 
+    /**
+     * @default 8192
+     */
     const CH_TOP_FRONT_CENTER: number;
 
+    /**
+     * @default 4096
+     */
     const CH_TOP_FRONT_LEFT: number;
 
+    /**
+     * @default 16384
+     */
     const CH_TOP_FRONT_RIGHT: number;
 
+    /**
+     * @default 2147483648
+     */
     const CH_WIDE_LEFT: number;
 
+    /**
+     * @default 4294967296
+     */
     const CH_WIDE_RIGHT: number;
 
+    /**
+     * @default 0.000010
+     */
     const FLOAT_EPSILON: number;
 
+    /**
+     * @default 819200
+     */
     const LOOKUP_MAX_ENTRIES: number;
 
+    /**
+     * @default 0
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 8
+     */
     const MAX_AUDIO_CHANNELS: number;
 
+    /**
+     * @default 70
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 4
+     */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 64
+     */
     const PARAM_NO_VALIDATE: number;
 
     /**
@@ -381,6 +564,7 @@ export namespace Gegl {
      * Initialize and enable OpenCL, calling this function again
      * will re-enable OpenCL if it has been disabled.
      * @returns True if OpenCL was initialized
+     * @throws GLib.Error
      */
     function cl_init(): boolean;
 
@@ -405,6 +589,7 @@ export namespace Gegl {
      * @param time the time to use for interpolatino of keyframed values
      * @param rel_dim relative dimension to scale rel suffixed values by
      * @param path_root path in filesystem to use as relative root
+     * @throws GLib.Error
      */
     function create_chain(ops: string, op_start: Node, op_end: Node, time: number, rel_dim: number, path_root: string): void;
 
@@ -416,6 +601,7 @@ export namespace Gegl {
      * @param time the time to use for interpolatino of keyframed values
      * @param rel_dim relative dimension to scale rel suffixed values by
      * @param path_root path in filesystem to use as relative root
+     * @throws GLib.Error
      */
     function create_chain_argv(ops: string, op_start: Node, op_end: Node, time: number, rel_dim: number, path_root: string): void;
 
@@ -792,9 +978,9 @@ export namespace Gegl {
      * @gir-type Flags
      */
     enum AccessMode {
-        READ,
-        WRITE,
-        READWRITE,
+        READ = 1,
+        WRITE = 2,
+        READWRITE = 3,
     }
 
 
@@ -802,9 +988,9 @@ export namespace Gegl {
      * @gir-type Flags
      */
     enum BlitFlags {
-        DEFAULT,
-        CACHE,
-        DIRTY,
+        DEFAULT = 0,
+        CACHE = 1,
+        DIRTY = 2,
     }
 
 
@@ -812,8 +998,8 @@ export namespace Gegl {
      * @gir-type Flags
      */
     enum PadType {
-        OUTPUT,
-        INPUT,
+        OUTPUT = 256,
+        INPUT = 512,
     }
 
 
@@ -821,10 +1007,10 @@ export namespace Gegl {
      * @gir-type Flags
      */
     enum SerializeFlag {
-        TRIM_DEFAULTS,
-        VERSION,
-        INDENT,
-        BAKE_ANIM,
+        TRIM_DEFAULTS = 1,
+        VERSION = 2,
+        INDENT = 4,
+        BAKE_ANIM = 8,
     }
 
 
@@ -934,7 +1120,7 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            changed: (arg0: Rectangle) => void;
+            changed: (object: Rectangle) => void;
             "notify::abyss-height": (pspec: GObject.ParamSpec) => void;
             "notify::abyss-width": (pspec: GObject.ParamSpec) => void;
             "notify::abyss-x": (pspec: GObject.ParamSpec) => void;
@@ -2164,7 +2350,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            changed: (arg0: GObject.ParamSpec) => void;
+            changed: (pspec: GObject.ParamSpec) => void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2177,7 +2363,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * `::mapped` is emitted after a file module registers a mapping and before
              * other processing takes place.  An application may respond to the signal by
@@ -2187,7 +2373,7 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            mapped: (arg0: string, arg1: boolean) => void;
+            mapped: (file_module: string, exclude_unmapped: boolean) => void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2199,7 +2385,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * `::unmapped` is emitted when a file module tries to look up an unmapped
              * metadata name. When the handler returns a second attempt is made to look
@@ -2207,7 +2393,7 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            unmapped: (arg0: string, arg1: string) => void;
+            unmapped: (file_module: string, local_name: string) => void;
             "notify::artist": (pspec: GObject.ParamSpec) => void;
             "notify::comment": (pspec: GObject.ParamSpec) => void;
             "notify::copyright": (pspec: GObject.ParamSpec) => void;
@@ -2229,7 +2415,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::artist": (arg0: GObject.ParamSpec) => void;
+            "changed::artist": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2237,7 +2423,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::comment": (arg0: GObject.ParamSpec) => void;
+            "changed::comment": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2245,7 +2431,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::copyright": (arg0: GObject.ParamSpec) => void;
+            "changed::copyright": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2253,7 +2439,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::description": (arg0: GObject.ParamSpec) => void;
+            "changed::description": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2261,7 +2447,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::disclaimer": (arg0: GObject.ParamSpec) => void;
+            "changed::disclaimer": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2269,7 +2455,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::file-module-name": (arg0: GObject.ParamSpec) => void;
+            "changed::file-module-name": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2277,7 +2463,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::resolution-unit": (arg0: GObject.ParamSpec) => void;
+            "changed::resolution-unit": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2285,7 +2471,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::resolution-x": (arg0: GObject.ParamSpec) => void;
+            "changed::resolution-x": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2293,7 +2479,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::resolution-y": (arg0: GObject.ParamSpec) => void;
+            "changed::resolution-y": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2301,7 +2487,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::software": (arg0: GObject.ParamSpec) => void;
+            "changed::software": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2309,7 +2495,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::source": (arg0: GObject.ParamSpec) => void;
+            "changed::source": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2317,7 +2503,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::timestamp": (arg0: GObject.ParamSpec) => void;
+            "changed::timestamp": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2325,7 +2511,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::title": (arg0: GObject.ParamSpec) => void;
+            "changed::title": (pspec: GObject.ParamSpec) => void;
             /**
              * `::changed` is emitted when a metadata value is changed. This is analogous
              * to the `GObject.Object::notify` signal.
@@ -2333,8 +2519,8 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "changed::warning": (arg0: GObject.ParamSpec) => void;
-            [key: `changed::${string}`]: (arg0: GObject.ParamSpec) => void;
+            "changed::warning": (pspec: GObject.ParamSpec) => void;
+            [key: `changed::${string}`]: (pspec: GObject.ParamSpec) => void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2347,7 +2533,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::artist": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::artist": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2360,7 +2546,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::comment": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::comment": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2373,7 +2559,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::copyright": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::copyright": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2386,7 +2572,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::description": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::description": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2399,7 +2585,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::disclaimer": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::disclaimer": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2412,7 +2598,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::file-module-name": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::file-module-name": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2425,7 +2611,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::resolution-unit": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::resolution-unit": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2438,7 +2624,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::resolution-x": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::resolution-x": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2451,7 +2637,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::resolution-y": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::resolution-y": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2464,7 +2650,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::software": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::software": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2477,7 +2663,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::source": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::source": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2490,7 +2676,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::timestamp": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::timestamp": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2503,7 +2689,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::title": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::title": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2516,8 +2702,8 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "generate-value::warning": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
-            [key: `generate-value::${string}`]: (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "generate-value::warning": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
+            [key: `generate-value::${string}`]: (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2529,7 +2715,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::artist": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::artist": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2541,7 +2727,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::comment": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::comment": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2553,7 +2739,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::copyright": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::copyright": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2565,7 +2751,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::description": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::description": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2577,7 +2763,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::disclaimer": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::disclaimer": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2589,7 +2775,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::file-module-name": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::file-module-name": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2601,7 +2787,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::resolution-unit": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::resolution-unit": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2613,7 +2799,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::resolution-x": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::resolution-x": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2625,7 +2811,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::resolution-y": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::resolution-y": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2637,7 +2823,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::software": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::software": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2649,7 +2835,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::source": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::source": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2661,7 +2847,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::timestamp": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::timestamp": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2673,7 +2859,7 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::title": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::title": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2685,8 +2871,8 @@ export namespace Gegl {
              * @detailed
              * @run-last
              */
-            "parse-value::warning": (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
-            [key: `parse-value::${string}`]: (arg0: GObject.ParamSpec, arg1: unknown) => boolean | void;
+            "parse-value::warning": (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
+            [key: `parse-value::${string}`]: (pspec: GObject.ParamSpec, value: unknown) => boolean | void;
         }
 
         // Constructor properties interface
@@ -3350,17 +3536,17 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            computed: (arg0: Rectangle) => void;
+            computed: (object: Rectangle) => void;
             /**
              * @signal
              * @run-last
              */
-            invalidated: (arg0: Rectangle) => void;
+            invalidated: (object: Rectangle) => void;
             /**
              * @signal
              * @run-last
              */
-            progress: (arg0: number) => void;
+            progress: (object: number) => void;
             "notify::cache-policy": (pspec: GObject.ParamSpec) => void;
             "notify::dont-cache": (pspec: GObject.ParamSpec) => void;
             "notify::gegl-operation": (pspec: GObject.ParamSpec) => void;
@@ -3902,7 +4088,7 @@ export namespace Gegl {
              * @signal
              * @run-last
              */
-            changed: (arg0: null) => void;
+            changed: (object: null) => void;
         }
 
         // Constructor properties interface

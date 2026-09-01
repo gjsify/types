@@ -50,15 +50,15 @@ export namespace Vte {
         /**
          * align to left/top
          */
-        START,
+        START = 0,
         /**
          * align to centre
          */
-        CENTER,
+        CENTER = 1,
         /**
          * align to right/bottom
          */
-        END,
+        END = 3,
     }
 
 
@@ -78,15 +78,15 @@ export namespace Vte {
         /**
          * Follow GTK+ settings for cursor blinking.
          */
-        SYSTEM,
+        SYSTEM = 0,
         /**
          * Cursor blinks.
          */
-        ON,
+        ON = 1,
         /**
          * Cursor does not blink.
          */
-        OFF,
+        OFF = 2,
     }
 
 
@@ -106,16 +106,16 @@ export namespace Vte {
         /**
          * Draw a block cursor.  This is the default.
          */
-        BLOCK,
+        BLOCK = 0,
         /**
          * Draw a vertical bar on the left side of character.
          * This is similar to the default cursor for other GTK+ widgets.
          */
-        IBEAM,
+        IBEAM = 1,
         /**
          * Draw a horizontal bar below the character.
          */
-        UNDERLINE,
+        UNDERLINE = 2,
     }
 
 
@@ -136,23 +136,23 @@ export namespace Vte {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Send an ASCII backspace character (0x08).
          */
-        ASCII_BACKSPACE,
+        ASCII_BACKSPACE = 1,
         /**
          * Send an ASCII delete character (0x7F).
          */
-        ASCII_DELETE,
+        ASCII_DELETE = 2,
         /**
          * Send the "@@7" control sequence.
          */
-        DELETE_SEQUENCE,
+        DELETE_SEQUENCE = 3,
         /**
          * Send terminal's "erase" setting.
          */
-        TTY,
+        TTY = 4,
     }
 
 
@@ -173,11 +173,11 @@ export namespace Vte {
         /**
          * Export as plain text
          */
-        TEXT,
+        TEXT = 1,
         /**
          * Export as HTML formatted text
          */
-        HTML,
+        HTML = 2,
     }
 
 
@@ -256,19 +256,19 @@ export namespace Vte {
         /**
          * Do not blink the text.
          */
-        NEVER,
+        NEVER = 0,
         /**
          * Allow blinking text only if the terminal is focused.
          */
-        FOCUSED,
+        FOCUSED = 1,
         /**
          * Allow blinking text only if the terminal is unfocused.
          */
-        UNFOCUSED,
+        UNFOCUSED = 2,
         /**
          * Allow blinking text. This is the default.
          */
-        ALWAYS,
+        ALWAYS = 3,
     }
 
 
@@ -288,28 +288,34 @@ export namespace Vte {
         /**
          * Write contents as UTF-8 text.  This is the default.
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
     /**
      * The major version number of the VTE library
      * (e.g. in version 3.1.4 this is 3).
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version number of the VTE library
      * (e.g. in version 3.1.4 this is 4).
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version number of the VTE library
      * (e.g. in version 3.1.4 this is 1).
+     * @default 69
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 1075314688
+     */
     const REGEX_FLAGS_DEFAULT: number;
 
     /**
@@ -319,6 +325,7 @@ export namespace Vte {
      * Normally, the spawned process inherits the environment from the parent
      * process; when this flag is used, only the environment variables passed
      * to `vte_pty_spawn_async()` etc. are passed to the child process.
+     * @default 33554432
      */
     const SPAWN_NO_PARENT_ENVV: number;
 
@@ -329,6 +336,7 @@ export namespace Vte {
      * Prevents `vte_pty_spawn_async()` etc. from moving the newly created child
      * process to a systemd user scope.
      * @since 0.60
+     * @default 67108864
      */
     const SPAWN_NO_SYSTEMD_SCOPE: number;
 
@@ -341,11 +349,18 @@ export namespace Vte {
      * 
      * This is supported on Linux only.
      * @since 0.60
+     * @default 134217728
      */
     const SPAWN_REQUIRE_SYSTEMD_SCOPE: number;
 
+    /**
+     * @default 18446744073709551615
+     */
     const TEST_FLAGS_ALL: number;
 
+    /**
+     * @default 0
+     */
     const TEST_FLAGS_NONE: number;
 
     /**
@@ -458,23 +473,23 @@ export namespace Vte {
         /**
          * whether VTE was built with bidirectional text support
          */
-        FLAG_BIDI,
+        FLAG_BIDI = 1,
         /**
          * whether VTE was built with ICU support
          */
-        FLAG_ICU,
+        FLAG_ICU = 2,
         /**
          * whether VTE was built with systemd support
          */
-        FLAG_SYSTEMD,
+        FLAG_SYSTEMD = 4,
         /**
          * whether VTE was built with SIXEL support
          */
-        FLAG_SIXEL,
+        FLAG_SIXEL = 8,
         /**
          * mask of all feature flags
          */
-        FLAGS_MASK,
+        FLAGS_MASK = -1,
     }
 
 
@@ -492,37 +507,37 @@ export namespace Vte {
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_LASTLOG,
+        NO_LASTLOG = 1,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_UTMP,
+        NO_UTMP = 2,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_WTMP,
+        NO_WTMP = 4,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_HELPER,
+        NO_HELPER = 8,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_FALLBACK,
+        NO_FALLBACK = 16,
         /**
          * Do not start a new session for the child in
          *   `vte_pty_child_setup()`. See man:setsid(2) for more information. Since: 0.58
          */
-        NO_SESSION,
+        NO_SESSION = 32,
         /**
          * Do not set the PTY as the controlling TTY for the child
          *   in `vte_pty_child_setup()`. See man:tty_ioctl(4) for more information. Since: 0.58
          */
-        NO_CTTY,
+        NO_CTTY = 64,
         /**
          * the default flags
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -611,6 +626,7 @@ export namespace Vte {
          * 
          * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         get_size(): [boolean, number, number];
 
@@ -622,6 +638,7 @@ export namespace Vte {
          * @param rows the desired number of rows
          * @param columns the desired number of columns
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         set_size(rows: number, columns: number): boolean;
 
@@ -631,6 +648,7 @@ export namespace Vte {
          * discipline do multibyte backspace correctly.
          * @param utf8 whether or not the pty is in UTF-8 mode
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         set_utf8(utf8: boolean): boolean;
 
@@ -652,6 +670,7 @@ export namespace Vte {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, or `false` on error with `error` filled in
          * @since 0.48
+         * @throws GLib.Error
          */
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
 
@@ -741,6 +760,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -809,21 +829,21 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "char-size-changed": (arg0: number, arg1: number) => void;
+            "char-size-changed": (width: number, height: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child
              * watched using `vte_terminal_watch_child()` has exited.
              * @signal
              * @run-last
              */
-            "child-exited": (arg0: number) => void;
+            "child-exited": (status: number) => void;
             /**
              * Emitted whenever the terminal receives input from the user and
              * prepares to send it to the child process.
              * @signal
              * @run-last
              */
-            commit: (arg0: string, arg1: number) => void;
+            commit: (text: string, size: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
@@ -898,7 +918,7 @@ export namespace Vte {
              * @since 0.50
              * @run-last
              */
-            "hyperlink-hover-uri-changed": (arg0: string, arg1: Gdk.Rectangle) => void;
+            "hyperlink-hover-uri-changed": (uri: string, bbox: Gdk.Rectangle) => void;
             /**
              * @signal
              * @deprecated since 0.54: This signal is never emitted.
@@ -938,7 +958,7 @@ export namespace Vte {
              * @deprecated since 0.60
              * @run-last
              */
-            "move-window": (arg0: number, arg1: number) => void;
+            "move-window": (x: number, y: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
@@ -965,7 +985,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "resize-window": (arg0: number, arg1: number) => void;
+            "resize-window": (width: number, height: number) => void;
             /**
              * Never emitted.
              * @signal
@@ -2352,6 +2372,7 @@ export namespace Vte {
          * @param flags flags from {@link Vte.PtyFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link Vte.Pty}
+         * @throws GLib.Error
          */
         pty_new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
 
@@ -2623,6 +2644,7 @@ export namespace Vte {
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
          * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
+         * @throws GLib.Error
          */
         set_encoding(codeset: string | null): boolean;
 
@@ -2828,6 +2850,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
          * @deprecated since 0.48: Use `vte_terminal_spawn_async()` instead.
+         * @throws GLib.Error
          */
         spawn_sync(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Pid | null];
 
@@ -2927,6 +2950,7 @@ export namespace Vte {
          * @param flags a set of {@link Vte.WriteFlags}
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
+         * @throws GLib.Error
          */
         write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3453,6 +3477,7 @@ export namespace Vte {
          * If the platform supports JITing, JIT compiles `regex`.
          * @param flags PCRE2 JIT flags, or 0
          * @returns `true` if JITing succeeded (or PCRE2 was built without   JIT support), or `false` with `error` filled in
+         * @throws GLib.Error
          */
         jit(flags: number): boolean;
 
@@ -3469,6 +3494,7 @@ export namespace Vte {
          * @param flags PCRE2 match flags
          * @returns the substituted string, or `null`   if an error occurred
          * @since 0.56
+         * @throws GLib.Error
          */
         substitute(subject: string, replacement: string, flags: number): string;
 

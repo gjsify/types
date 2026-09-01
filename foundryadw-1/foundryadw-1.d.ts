@@ -3462,7 +3462,7 @@ export namespace FoundryAdw {
              * @signal
              * @run-last
              */
-            "context-menu": (arg0: Gtk.Popover) => void;
+            "context-menu": (popover: Gtk.Popover) => void;
             "notify::activate-on-click": (pspec: GObject.ParamSpec) => void;
             "notify::expanded": (pspec: GObject.ParamSpec) => void;
             "notify::expanded-icon": (pspec: GObject.ParamSpec) => void;

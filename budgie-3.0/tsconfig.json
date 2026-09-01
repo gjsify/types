@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./budgie-3.0.d.ts","./budgie-3.0-surface.d.ts"]
+  "include": ["./budgie-3.0.d.ts","./budgie-3.0-vocabulary.d.ts"]
 }
 
 

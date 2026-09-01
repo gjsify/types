@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./webkit2-5.0.d.ts","./webkit2-5.0-surface.d.ts"]
+  "include": ["./webkit2-5.0.d.ts","./webkit2-5.0-vocabulary.d.ts"]
 }
 
 

@@ -30,8 +30,14 @@ export namespace BaseSink {
      */
 
 
+    /**
+     * @default sink
+     */
     const TRANSFORM_SINK_NAME: string;
 
+    /**
+     * @default src
+     */
     const TRANSFORM_SRC_NAME: string;
 
     /**
@@ -124,8 +130,8 @@ export namespace BaseSink {
      * @gir-type Flags
      */
     enum SrcFlags {
-        STARTED,
-        FLAG_LAST,
+        STARTED = 1048576,
+        FLAG_LAST = 4194304,
     }
 
 

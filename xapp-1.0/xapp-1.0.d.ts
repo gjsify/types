@@ -68,19 +68,19 @@ export namespace XApp {
         /**
          * Scroll theoretical content up.
          */
-        UP,
+        UP = 0,
         /**
          * Scroll theoretical content down.
          */
-        DOWN,
+        DOWN = 1,
         /**
          * Scroll theoretical content left.
          */
-        LEFT,
+        LEFT = 2,
         /**
          * Scroll theoretical content right.
          */
-        RIGHT,
+        RIGHT = 3,
     }
 
 
@@ -99,17 +99,17 @@ export namespace XApp {
          * The {@link XApp.StatusIcon} is currently being handled
          * by an {@link XApp.StatusIconMonitor} (usually in an applet).
          */
-        NATIVE,
+        NATIVE = 0,
         /**
          * The {@link XApp.StatusIcon} is currently being handled
          * by a legacy system tray implementation (using GtkStatusIcon).
          */
-        FALLBACK,
+        FALLBACK = 1,
         /**
          * The {@link XApp.StatusIcon} is not currently being handled by any
          * kind of status icon implementation.
          */
-        NO_SUPPORT,
+        NO_SUPPORT = 2,
     }
 
 
@@ -137,6 +137,7 @@ export namespace XApp {
      * for convenience and compatibility.  Set to `null` to unset.
      * @param window The {@link XApp.GtkWindow} to set the icon name for
      * @param file_name The icon path to set, or `null` to unset.
+     * @throws GLib.Error
      */
     function set_window_icon_from_file(window: Gtk.Window, file_name: string | null): void;
 
@@ -491,7 +492,7 @@ export namespace XApp {
              * @action
              * @run-last
              */
-            ready: (arg0: boolean) => void;
+            ready: (success: boolean) => void;
         }
 
         // Constructor properties interface
@@ -723,6 +724,7 @@ export namespace XApp {
          * sets on the client side.  This also chains up and calls GtkWindow.set_icon_from_file
          * for convenience and compatibility.  Set to `null` to unset.
          * @param file_name The icon path to set, or `null` to unset.
+         * @throws GLib.Error
          */
         set_icon_from_file(file_name: string | null): void;
 
@@ -1589,7 +1591,7 @@ export namespace XApp {
              * @signal
              * @run-last
              */
-            "layout-changed": (arg0: number) => void;
+            "layout-changed": (object: number) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2074,6 +2076,7 @@ export namespace XApp {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2083,6 +2086,7 @@ export namespace XApp {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ObjectManagerClient;
 
@@ -2282,6 +2286,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2883,21 +2888,21 @@ export namespace XApp {
              * @action
              * @run-first
              */
-            activate: (arg0: number, arg1: number) => void;
+            activate: (button: number, time: number) => void;
             /**
              * Gets emitted when there is a button press received from an applet
              * @signal
              * @action
              * @run-last
              */
-            "button-press-event": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
+            "button-press-event": (x: number, y: number, button: number, time: number, panel_position: number) => void;
             /**
              * Gets emitted when there is a button release received from an applet
              * @signal
              * @action
              * @run-last
              */
-            "button-release-event": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number) => void;
+            "button-release-event": (x: number, y: number, button: number, time: number, panel_position: number) => void;
             /**
              * Gets emitted when the user uses the mouse scroll wheel over the status icon.
              * For the most part, amounts will always be 1, unless an applet supports smooth
@@ -2906,7 +2911,7 @@ export namespace XApp {
              * @action
              * @run-first
              */
-            "scroll-event": (arg0: number, arg1: ScrollDirection, arg2: number) => void;
+            "scroll-event": (amount: number, direction: ScrollDirection, time: number) => void;
             /**
              * Gets emitted when the state of the icon changes. If you wish
              * to react to changes in how the status icon is being handled
@@ -2916,7 +2921,7 @@ export namespace XApp {
              * @action
              * @run-first
              */
-            "state-changed": (arg0: StatusIconState) => void;
+            "state-changed": (new_state: StatusIconState) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::primary-menu": (pspec: GObject.ParamSpec) => void;
@@ -3618,6 +3623,7 @@ export namespace XApp {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3627,6 +3633,7 @@ export namespace XApp {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): StatusIconInterfaceProxy;
 
@@ -3791,6 +3798,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3890,6 +3898,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_press()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_finish(res: Gio.AsyncResult): boolean;
 
@@ -3904,6 +3913,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3958,6 +3968,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_release()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_finish(res: Gio.AsyncResult): boolean;
 
@@ -3972,6 +3983,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4020,6 +4032,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_scroll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_finish(res: Gio.AsyncResult): boolean;
 
@@ -4032,6 +4045,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4413,6 +4427,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_press()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_finish(res: Gio.AsyncResult): boolean;
 
@@ -4427,6 +4442,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4481,6 +4497,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_release()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_finish(res: Gio.AsyncResult): boolean;
 
@@ -4495,6 +4512,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4543,6 +4561,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_scroll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_finish(res: Gio.AsyncResult): boolean;
 
@@ -4555,6 +4574,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4628,7 +4648,7 @@ export namespace XApp {
              * @action
              * @run-last
              */
-            "icon-added": (arg0: StatusIconInterfaceProxy) => void;
+            "icon-added": (proxy: StatusIconInterfaceProxy) => void;
             /**
              * This signal is emitted by the monitor when an {@link XApp.StatusIcon} has disappeared
              * from the bus.
@@ -4636,7 +4656,7 @@ export namespace XApp {
              * @action
              * @run-last
              */
-            "icon-removed": (arg0: StatusIconInterfaceProxy) => void;
+            "icon-removed": (proxy: StatusIconInterfaceProxy) => void;
         }
 
         // Constructor properties interface
@@ -5084,6 +5104,7 @@ export namespace XApp {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5093,6 +5114,7 @@ export namespace XApp {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): SwitcherooControlProxy;
 
@@ -5257,6 +5279,7 @@ export namespace XApp {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6149,6 +6172,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_press()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_press()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_finish(res: Gio.AsyncResult): boolean;
 
@@ -6163,6 +6187,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_press_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6217,6 +6242,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_button_release()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_button_release()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_finish(res: Gio.AsyncResult): boolean;
 
@@ -6231,6 +6257,7 @@ export namespace XApp {
          * @param arg_panel_position Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_button_release_sync(arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6279,6 +6306,7 @@ export namespace XApp {
          * Finishes an operation started with `xapp_status_icon_interface_call_scroll()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `xapp_status_icon_interface_call_scroll()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_finish(res: Gio.AsyncResult): boolean;
 
@@ -6291,6 +6319,7 @@ export namespace XApp {
          * @param arg_time Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scroll_sync(arg_delta: number, arg_orientation: number, arg_time: number, cancellable: Gio.Cancellable | null): boolean;
 

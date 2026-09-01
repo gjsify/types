@@ -24,7 +24,7 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum GLDeviceList {
-        GL_DEVICE_LIST_ALL,
+        GL_DEVICE_LIST_ALL = 1,
     }
 
 
@@ -32,10 +32,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum address_mode {
-        WRAP,
-        CLAMP,
-        MIRROR,
-        BORDER,
+        WRAP = 0,
+        CLAMP = 1,
+        MIRROR = 2,
+        BORDER = 3,
     }
 
 
@@ -43,8 +43,8 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum array_format {
-        INT8,
-        INT16,
+        INT8 = 1,
+        INT16 = 2,
     }
 
 
@@ -52,15 +52,15 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum device_attribute {
-        TEXTURE_ALIGNMENT,
-        UNIFIED_ADDRESSING,
-        COMPUTE_CAPABILITY_MAJOR,
-        COMPUTE_CAPABILITY_MINOR,
-        VIRTUAL_MEMORY_MANAGEMENT_SUPPORTED,
-        HANDLE_TYPE_POSIX_FILE_DESCRIPTOR_SUPPORTED,
-        HANDLE_TYPE_WIN32_HANDLE_SUPPORTED,
-        HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED,
-        MEMORY_POOLS_SUPPORTED,
+        TEXTURE_ALIGNMENT = 14,
+        UNIFIED_ADDRESSING = 41,
+        COMPUTE_CAPABILITY_MAJOR = 75,
+        COMPUTE_CAPABILITY_MINOR = 76,
+        VIRTUAL_MEMORY_MANAGEMENT_SUPPORTED = 102,
+        HANDLE_TYPE_POSIX_FILE_DESCRIPTOR_SUPPORTED = 103,
+        HANDLE_TYPE_WIN32_HANDLE_SUPPORTED = 104,
+        HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED = 105,
+        MEMORY_POOLS_SUPPORTED = 115,
     }
 
 
@@ -68,10 +68,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum event_flags {
-        DEFAULT,
-        BLOCKING_SYNC,
-        DISABLE_TIMING,
-        INTERPROCESS,
+        DEFAULT = 0,
+        BLOCKING_SYNC = 1,
+        DISABLE_TIMING = 2,
+        INTERPROCESS = 4,
     }
 
 
@@ -79,14 +79,14 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum externalMemoryHandleType {
-        OPAQUE_FD,
-        OPAQUE_WIN32,
-        OPAQUE_WIN32_KMT,
-        D3D12_HEAP,
-        D3D12_RESOURCE,
-        D3D11_RESOURCE,
-        D3D11_RESOURCE_KMT,
-        NVSCIBUF,
+        OPAQUE_FD = 1,
+        OPAQUE_WIN32 = 2,
+        OPAQUE_WIN32_KMT = 3,
+        D3D12_HEAP = 4,
+        D3D12_RESOURCE = 5,
+        D3D11_RESOURCE = 6,
+        D3D11_RESOURCE_KMT = 7,
+        NVSCIBUF = 8,
     }
 
 
@@ -94,16 +94,16 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum externalSemaphoreHandleType {
-        OPAQUE_FD,
-        OPAQUE_WIN32,
-        OPAQUE_WIN32_KMT,
-        D3D12_FENCE,
-        D3D11_FENCE,
-        NVSCISYNC,
-        D3D11_KEYED_MUTEX,
-        D3D11_KEYED_MUTEX_KMT,
-        TIMELINE_SEMAPHORE_FD,
-        TIMELINE_SEMAPHORE_WIN32,
+        OPAQUE_FD = 1,
+        OPAQUE_WIN32 = 2,
+        OPAQUE_WIN32_KMT = 3,
+        D3D12_FENCE = 4,
+        D3D11_FENCE = 5,
+        NVSCISYNC = 6,
+        D3D11_KEYED_MUTEX = 7,
+        D3D11_KEYED_MUTEX_KMT = 8,
+        TIMELINE_SEMAPHORE_FD = 9,
+        TIMELINE_SEMAPHORE_WIN32 = 10,
     }
 
 
@@ -111,8 +111,8 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum filter_mode {
-        POINT,
-        LINEAR,
+        POINT = 0,
+        LINEAR = 1,
     }
 
 
@@ -120,9 +120,9 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum graphicsMapResourceFlags {
-        NONE,
-        READ_ONLY,
-        WRITE_DISCARD,
+        NONE = 0,
+        READ_ONLY = 1,
+        WRITE_DISCARD = 2,
     }
 
 
@@ -130,11 +130,11 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum graphicsRegisterFlags {
-        NONE,
-        READ_ONLY,
-        WRITE_DISCARD,
-        SURFACE_LOAD_STORE,
-        TEXTURE_GATHER,
+        NONE = 0,
+        READ_ONLY = 1,
+        WRITE_DISCARD = 2,
+        SURFACE_LOAD_STORE = 4,
+        TEXTURE_GATHER = 8,
     }
 
 
@@ -142,7 +142,7 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum ipcMem_flags {
-        IPC_MEM_LAZY_ENABLE_PEER_ACCESS,
+        IPC_MEM_LAZY_ENABLE_PEER_ACCESS = 1,
     }
 
 
@@ -150,16 +150,16 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum limit {
-        STACK_SIZE,
-        PRINTF_FIFO_SIZE,
-        MALLOC_HEAP_SIZE,
-        DEV_RUNTIME_SYNC_DEPTH,
-        DEV_RUNTIME_PENDING_LAUNCH_COUNT,
-        MAX_L2_FETCH_GRANULARITY,
-        PERSISTING_L2_CACHE_SIZE,
-        SHMEM_SIZE,
-        CIG_ENABLED,
-        CIG_SHMEM_FALLBACK_ENABLED,
+        STACK_SIZE = 0,
+        PRINTF_FIFO_SIZE = 1,
+        MALLOC_HEAP_SIZE = 2,
+        DEV_RUNTIME_SYNC_DEPTH = 3,
+        DEV_RUNTIME_PENDING_LAUNCH_COUNT = 4,
+        MAX_L2_FETCH_GRANULARITY = 5,
+        PERSISTING_L2_CACHE_SIZE = 6,
+        SHMEM_SIZE = 7,
+        CIG_ENABLED = 8,
+        CIG_SHMEM_FALLBACK_ENABLED = 9,
     }
 
 
@@ -167,10 +167,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memAccess_flags {
-        NONE,
-        READ,
-        READWRITE,
-        MAX,
+        NONE = 0,
+        READ = 1,
+        READWRITE = 3,
+        MAX = 2147483647,
     }
 
 
@@ -178,8 +178,8 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memAllocationGranularity_flags {
-        MINIMUM,
-        RECOMMENDED,
+        MINIMUM = 0,
+        RECOMMENDED = 1,
     }
 
 
@@ -187,11 +187,11 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memAllocationHandleType {
-        NONE,
-        POSIX_FILE_DESCRIPTOR,
-        WIN32,
-        WIN32_KMT,
-        MAX,
+        NONE = 0,
+        POSIX_FILE_DESCRIPTOR = 1,
+        WIN32 = 2,
+        WIN32_KMT = 4,
+        MAX = 2147483647,
     }
 
 
@@ -199,9 +199,9 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memAllocationType {
-        INVALID,
-        PINNED,
-        MAX,
+        INVALID = 0,
+        PINNED = 1,
+        MAX = 2147483647,
     }
 
 
@@ -209,9 +209,9 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memLocationType {
-        INVALID,
-        DEVICE,
-        MAX,
+        INVALID = 0,
+        DEVICE = 1,
+        MAX = 2147483647,
     }
 
 
@@ -219,14 +219,14 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memPool_attribute {
-        REUSE_FOLLOW_EVENT_DEPENDENCIES,
-        REUSE_ALLOW_OPPORTUNISTIC,
-        REUSE_ALLOW_INTERNAL_DEPENDENCIES,
-        RELEASE_THRESHOLD,
-        RESERVED_MEM_CURRENT,
-        RESERVED_MEM_HIGH,
-        USED_MEM_CURRENT,
-        USED_MEM_HIGH,
+        REUSE_FOLLOW_EVENT_DEPENDENCIES = 1,
+        REUSE_ALLOW_OPPORTUNISTIC = 2,
+        REUSE_ALLOW_INTERNAL_DEPENDENCIES = 3,
+        RELEASE_THRESHOLD = 4,
+        RESERVED_MEM_CURRENT = 5,
+        RESERVED_MEM_HIGH = 6,
+        USED_MEM_CURRENT = 7,
+        USED_MEM_HIGH = 8,
     }
 
 
@@ -234,10 +234,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum memorytype {
-        HOST,
-        DEVICE,
-        ARRAY,
-        UNIFIED,
+        HOST = 1,
+        DEVICE = 2,
+        ARRAY = 3,
+        UNIFIED = 4,
     }
 
 
@@ -245,7 +245,7 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum resourceViewFormat {
-        RES_VIEW_FORMAT_NONE,
+        RES_VIEW_FORMAT_NONE = 0,
     }
 
 
@@ -253,10 +253,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum resourcetype {
-        ARRAY,
-        MIPMAPPED_ARRAY,
-        LINEAR,
-        PITCH2D,
+        ARRAY = 0,
+        MIPMAPPED_ARRAY = 1,
+        LINEAR = 2,
+        PITCH2D = 3,
     }
 
 
@@ -264,10 +264,10 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum result {
-        SUCCESS,
-        ERROR_NO_DEVICE,
-        ERROR_ALREADY_MAPPED,
-        ERROR_NOT_SUPPORTED,
+        SUCCESS = 0,
+        ERROR_NO_DEVICE = 100,
+        ERROR_ALREADY_MAPPED = 208,
+        ERROR_NOT_SUPPORTED = 801,
     }
 
 
@@ -275,15 +275,24 @@ export namespace CudaGst {
      * @gir-type Enum
      */
     enum stream_flags {
-        DEFAULT,
-        NON_BLOCKING,
+        DEFAULT = 0,
+        NON_BLOCKING = 1,
     }
 
 
+    /**
+     * @default 64
+     */
     const IPC_HANDLE_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const TRSF_READ_AS_INTEGER: number;
 
+    /**
+     * @default 10000
+     */
     const VERSION: number;
 
     /**

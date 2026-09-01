@@ -93,13 +93,13 @@ export interface Builder {
          * The announcement is low priority,
          *   and might be read only on the user's request.
          */
-        LOW,
+        LOW = 0,
         /**
          * The announcement is of medium
          *   priority, and is usually spoken at the next opportunity, such as at the
          *   end of speaking the current sentence or when the user pauses typing.
          */
-        MEDIUM,
+        MEDIUM = 1,
         /**
          * The announcement is of high
          *   priority, and is usually spoken immediately. Because an interruption
@@ -108,7 +108,7 @@ export interface Builder {
          *   interruption is imperative. An example would be a notification about a
          *   critical battery power level.
          */
-        HIGH,
+        HIGH = 2,
     }
 
 
@@ -128,19 +128,19 @@ export interface Builder {
         /**
          * Automatic suggestions are not displayed.
          */
-        NONE,
+        NONE = 0,
         /**
          * When a user is providing input, text
          *    suggesting one way to complete the provided input may be dynamically
          *    inserted after the caret.
          */
-        INLINE,
+        INLINE = 1,
         /**
          * When a user is providing input, an element
          *    containing a collection of values that could complete the provided input
          *    may be displayed.
          */
-        LIST,
+        LIST = 2,
         /**
          * When a user is providing input, an element
          *    containing a collection of values that could complete the provided input
@@ -148,7 +148,7 @@ export interface Builder {
          *    selected, and the text needed to complete the automatically selected value
          *    appears after the caret in the input.
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -172,19 +172,19 @@ export interface Builder {
         /**
          * There are no detected errors in the value
          */
-        FALSE,
+        FALSE = 0,
         /**
          * The value entered by the user has failed validation
          */
-        TRUE,
+        TRUE = 1,
         /**
          * A grammatical error was detected
          */
-        GRAMMAR,
+        GRAMMAR = 2,
         /**
          * A spelling error was detected
          */
-        SPELLING,
+        SPELLING = 3,
     }
 
 
@@ -205,15 +205,15 @@ export interface Builder {
         /**
          * whether the accessible can be focused
          */
-        FOCUSABLE,
+        FOCUSABLE = 0,
         /**
          * whether the accessible has focus
          */
-        FOCUSED,
+        FOCUSED = 1,
         /**
          * whether the accessible is active
          */
-        ACTIVE,
+        ACTIVE = 2,
     }
 
 
@@ -235,12 +235,12 @@ export interface Builder {
          *    value for a combobox, searchbox, or textbox and specifies how predictions
          *    would be presented if they were made. Value type: {@link AccessibleAutocomplete}
          */
-        AUTOCOMPLETE,
+        AUTOCOMPLETE = 0,
         /**
          * Defines a string value that describes
          *    or annotates the current element. Value type: string
          */
-        DESCRIPTION,
+        DESCRIPTION = 1,
         /**
          * Indicates the availability of interactive
          *    popup element, such as menu or popover, that can be triggered by an
@@ -248,7 +248,7 @@ export interface Builder {
          *    element, as such it cannot be used to indicate the availability of more
          *    complex elements such as dialog. Value type: boolean
          */
-        HAS_POPUP,
+        HAS_POPUP = 2,
         /**
          * Indicates keyboard shortcuts that an
          *    author has implemented to activate or give focus to an element. Value type:
@@ -263,91 +263,92 @@ export interface Builder {
          *    {@link Gtk.accelerator_get_accessible_label}.
          *    Examples: `F2`, `Alt+F`, `Control+Shift+N`
          */
-        KEY_SHORTCUTS,
+        KEY_SHORTCUTS = 3,
         /**
          * Defines a string value that labels the current
          *    element. Value type: string
          */
-        LABEL,
+        LABEL = 4,
         /**
          * Defines the hierarchical level of an element
          *    within a structure. Value type: integer
          */
-        LEVEL,
+        LEVEL = 5,
         /**
          * Indicates whether an element is modal when
          *    displayed. Value type: boolean
          */
-        MODAL,
+        MODAL = 6,
         /**
          * Indicates whether a text box accepts
          *    multiple lines of input or only a single line. Value type: boolean
          */
-        MULTI_LINE,
+        MULTI_LINE = 7,
         /**
          * Indicates that the user may select
          *    more than one item from the current selectable descendants. Value type:
          *    boolean
          */
-        MULTI_SELECTABLE,
+        MULTI_SELECTABLE = 8,
         /**
          * Indicates whether the element's
          *    orientation is horizontal, vertical, or unknown/ambiguous. Value type:
          *    {@link Orientation}
          */
-        ORIENTATION,
+        ORIENTATION = 9,
         /**
          * Defines a short hint (a word or short
          *    phrase) intended to aid the user with data entry when the control has no
          *    value. A hint could be a sample value or a brief description of the expected
          *    format. Value type: string
          */
-        PLACEHOLDER,
+        PLACEHOLDER = 10,
         /**
          * Indicates that the element is not editable,
          *    but is otherwise operable. Value type: boolean
          */
-        READ_ONLY,
+        READ_ONLY = 11,
         /**
          * Indicates that user input is required on
          *    the element before a form may be submitted. Value type: boolean
          */
-        REQUIRED,
+        REQUIRED = 12,
         /**
          * Defines a human-readable,
          *    author-localized description for the role of an element. Value type: string
          */
-        ROLE_DESCRIPTION,
+        ROLE_DESCRIPTION = 13,
         /**
          * Indicates if items in a table or grid are
          *    sorted in ascending or descending order. Value type: {@link AccessibleSort}
          */
-        SORT,
+        SORT = 14,
         /**
          * Defines the maximum allowed value for a
          *    range widget. Value type: double
          */
-        VALUE_MAX,
+        VALUE_MAX = 15,
         /**
          * Defines the minimum allowed value for a
          *    range widget. Value type: double
          */
-        VALUE_MIN,
+        VALUE_MIN = 16,
         /**
          * Defines the current value for a range widget.
          *    Value type: double
          */
-        VALUE_NOW,
+        VALUE_NOW = 17,
         /**
          * Defines the human readable text alternative
          *    of {@link Gtk.AccessibleProperty.VALUE_NOW} for a range widget. Value type: string
          */
-        VALUE_TEXT,
+        VALUE_TEXT = 18,
         /**
          * Defines a string value that provides a description of non-standard keyboard
          * interactions of the current element. Value type: string
+         * @since 4.16
          */
-        HELP_TEXT,
+        HELP_TEXT = 19,
     }
 
 
@@ -371,133 +372,138 @@ export interface Builder {
          *    element when focus is on a composite widget, combobox, textbox, group,
          *    or application. Value type: reference
          */
-        ACTIVE_DESCENDANT,
+        ACTIVE_DESCENDANT = 0,
         /**
          * Defines the total number of columns
          *    in a table, grid, or treegrid. Value type: integer
          */
-        COL_COUNT,
+        COL_COUNT = 1,
         /**
          * Defines an element's column index or
          *    position with respect to the total number of columns within a table,
          *    grid, or treegrid. Value type: integer
          */
-        COL_INDEX,
+        COL_INDEX = 2,
         /**
          * Defines a human readable text
          *   alternative of {@link Gtk.AccessibleRelation.COL_INDEX}. Value type: string
          */
-        COL_INDEX_TEXT,
+        COL_INDEX_TEXT = 3,
         /**
          * Defines the number of columns spanned
          *   by a cell or gridcell within a table, grid, or treegrid. Value type: integer
          */
-        COL_SPAN,
+        COL_SPAN = 4,
         /**
          * Identifies the element (or elements) whose
          *    contents or presence are controlled by the current element. Value type: reference
          */
-        CONTROLS,
+        CONTROLS = 5,
         /**
          * Identifies the element (or elements)
          *    that describes the object. Value type: reference
          */
-        DESCRIBED_BY,
+        DESCRIBED_BY = 6,
         /**
          * Identifies the element (or elements) that
          *    provide additional information related to the object. Value type: reference
          */
-        DETAILS,
+        DETAILS = 7,
         /**
          * Identifies the element (or elements) that
          *    provide an error message for an object. Value type: reference
          */
-        ERROR_MESSAGE,
+        ERROR_MESSAGE = 8,
         /**
          * Identifies the next element (or elements)
          *    in an alternate reading order of content which, at the user's discretion,
          *    allows assistive technology to override the general default of reading in
          *    document source order. Value type: reference
          */
-        FLOW_TO,
+        FLOW_TO = 9,
         /**
          * Identifies the element (or elements)
          *    that labels the current element. Value type: reference
          */
-        LABELLED_BY,
+        LABELLED_BY = 10,
         /**
          * Identifies an element (or elements) in order
          *    to define a visual, functional, or contextual parent/child relationship
          *    between elements where the widget hierarchy cannot be used to represent
          *    the relationship. Value type: reference
          */
-        OWNS,
+        OWNS = 11,
         /**
          * Defines an element's number or position
          *    in the current set of listitems or treeitems. Value type: integer
          */
-        POS_IN_SET,
+        POS_IN_SET = 12,
         /**
          * Defines the total number of rows in a table,
          *    grid, or treegrid. Value type: integer
          */
-        ROW_COUNT,
+        ROW_COUNT = 13,
         /**
          * Defines an element's row index or position
          *    with respect to the total number of rows within a table, grid, or treegrid.
          *    Value type: integer
          */
-        ROW_INDEX,
+        ROW_INDEX = 14,
         /**
          * Defines a human readable text
          *    alternative of {@link Gtk.AccessibleRelation.ROW_INDEX}. Value type: string
          */
-        ROW_INDEX_TEXT,
+        ROW_INDEX_TEXT = 15,
         /**
          * Defines the number of rows spanned by a
          *    cell or gridcell within a table, grid, or treegrid. Value type: integer
          */
-        ROW_SPAN,
+        ROW_SPAN = 16,
         /**
          * Defines the number of items in the current
          *    set of listitems or treeitems. Value type: integer
          */
-        SET_SIZE,
+        SET_SIZE = 17,
         /**
          * Identifies the element (or elements) that are labeled by the
          * current element. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        LABEL_FOR,
+        LABEL_FOR = 18,
         /**
          * Identifies the element (or elements) that are described by
          * the current element. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        DESCRIPTION_FOR,
+        DESCRIPTION_FOR = 19,
         /**
          * Identifies the element (or elements) that the current
          * element is controlled by. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        CONTROLLED_BY,
+        CONTROLLED_BY = 20,
         /**
          * Identifies the element (or elements) for which the current
          * element provides additional information. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        DETAILS_FOR,
+        DETAILS_FOR = 21,
         /**
          * Identifies the element (or elements) for which the current
          * element provides an error message. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        ERROR_MESSAGE_FOR,
+        ERROR_MESSAGE_FOR = 22,
         /**
          * Identifies the previous element (or elements) in an alternate
          * reading order of content which, at the user's discretion, allows
@@ -505,8 +511,9 @@ export interface Builder {
          * document source order. Value type: reference
          * 
          * This relation is managed by GTK and should not be set from application code.
+         * @since 4.18
          */
-        FLOW_FROM,
+        FLOW_FROM = 23,
     }
 
 
@@ -529,370 +536,377 @@ export interface Builder {
          * An element with important, and usually
          *   time-sensitive, information
          */
-        ALERT,
+        ALERT = 0,
         /**
          * A type of dialog that contains an
          *   alert message
          */
-        ALERT_DIALOG,
+        ALERT_DIALOG = 1,
         /**
          * Unused
          */
-        BANNER,
+        BANNER = 2,
         /**
          * An input element that allows for
          *   user-triggered actions when clicked or pressed
          */
-        BUTTON,
+        BUTTON = 3,
         /**
          * Unused
          */
-        CAPTION,
+        CAPTION = 4,
         /**
          * Unused
          */
-        CELL,
+        CELL = 5,
         /**
          * A checkable input element that has
          *   three possible values: `true`, `false`, or `mixed`
          */
-        CHECKBOX,
+        CHECKBOX = 6,
         /**
          * A header in a columned list.
          */
-        COLUMN_HEADER,
+        COLUMN_HEADER = 7,
         /**
          * An input that controls another element,
          *   such as a list or a grid, that can dynamically pop up to help the user
          *   set the value of the input
          */
-        COMBO_BOX,
+        COMBO_BOX = 8,
         /**
          * Abstract role.
          */
-        COMMAND,
+        COMMAND = 9,
         /**
          * Abstract role.
          */
-        COMPOSITE,
+        COMPOSITE = 10,
         /**
          * A dialog is a window that is designed to interrupt
          *   the current processing of an application in order to prompt the user to enter
          *   information or require a response.
          */
-        DIALOG,
+        DIALOG = 11,
         /**
          * Content that assistive technology users may want to
          *   browse in a reading mode.
          */
-        DOCUMENT,
+        DOCUMENT = 12,
         /**
          * Unused
          */
-        FEED,
+        FEED = 13,
         /**
          * Unused
          */
-        FORM,
+        FORM = 14,
         /**
          * A nameless container that has no semantic meaning
          *   of its own. This is the role that GTK uses by default for widgets.
          */
-        GENERIC,
+        GENERIC = 15,
         /**
          * A grid of items.
          */
-        GRID,
+        GRID = 16,
         /**
          * An item in a grid or tree grid.
          */
-        GRID_CELL,
+        GRID_CELL = 17,
         /**
          * An element that groups multiple related widgets. GTK uses
          *   this role for various containers, like {@link Gtk.HeaderBar} or {@link Gtk.Notebook}.
          */
-        GROUP,
+        GROUP = 18,
         /**
          * Unused
          */
-        HEADING,
+        HEADING = 19,
         /**
          * An image.
          */
-        IMG,
+        IMG = 20,
         /**
          * Abstract role.
          */
-        INPUT,
+        INPUT = 21,
         /**
          * A visible name or caption for a user interface component.
          */
-        LABEL,
+        LABEL = 22,
         /**
          * Abstract role.
          */
-        LANDMARK,
+        LANDMARK = 23,
         /**
          * Unused
          */
-        LEGEND,
+        LEGEND = 24,
         /**
          * A clickable link.
          */
-        LINK,
+        LINK = 25,
         /**
          * A list of items.
          */
-        LIST,
+        LIST = 26,
         /**
          * Unused.
          */
-        LIST_BOX,
+        LIST_BOX = 27,
         /**
          * An item in a list.
          */
-        LIST_ITEM,
+        LIST_ITEM = 28,
         /**
          * Unused
          */
-        LOG,
+        LOG = 29,
         /**
          * Unused
          */
-        MAIN,
+        MAIN = 30,
         /**
          * Unused
          */
-        MARQUEE,
+        MARQUEE = 31,
         /**
          * Unused
          */
-        MATH,
+        MATH = 32,
         /**
          * An element that represents a value within a known range.
          */
-        METER,
+        METER = 33,
         /**
          * A menu.
          */
-        MENU,
+        MENU = 34,
         /**
          * A menubar.
          */
-        MENU_BAR,
+        MENU_BAR = 35,
         /**
          * An item in a menu.
          */
-        MENU_ITEM,
+        MENU_ITEM = 36,
         /**
          * A check item in a menu.
          */
-        MENU_ITEM_CHECKBOX,
+        MENU_ITEM_CHECKBOX = 37,
         /**
          * A radio item in a menu.
          */
-        MENU_ITEM_RADIO,
+        MENU_ITEM_RADIO = 38,
         /**
          * Unused
          */
-        NAVIGATION,
+        NAVIGATION = 39,
         /**
          * An element that is not represented to accessibility technologies.
          *   This role is synonymous to `GTK_ACCESSIBLE_ROLE_PRESENTATION`.
          */
-        NONE,
+        NONE = 40,
         /**
          * Unused
          */
-        NOTE,
+        NOTE = 41,
         /**
          * Unused
          */
-        OPTION,
+        OPTION = 42,
         /**
          * An element that is not represented to accessibility technologies.
          *   This role is synonymous to `GTK_ACCESSIBLE_ROLE_NONE`.
          */
-        PRESENTATION,
+        PRESENTATION = 43,
         /**
          * An element that displays the progress
          *   status for tasks that take a long time.
          */
-        PROGRESS_BAR,
+        PROGRESS_BAR = 44,
         /**
          * A checkable input in a group of radio roles,
          *   only one of which can be checked at a time.
          */
-        RADIO,
+        RADIO = 45,
         /**
          * Unused
          */
-        RADIO_GROUP,
+        RADIO_GROUP = 46,
         /**
          * Abstract role.
          */
-        RANGE,
+        RANGE = 47,
         /**
          * Unused
          */
-        REGION,
+        REGION = 48,
         /**
          * A row in a columned list.
          */
-        ROW,
+        ROW = 49,
         /**
          * Unused
          */
-        ROW_GROUP,
+        ROW_GROUP = 50,
         /**
          * Unused
          */
-        ROW_HEADER,
+        ROW_HEADER = 51,
         /**
          * A graphical object that controls the scrolling
          *   of content within a viewing area, regardless of whether the content is fully
          *   displayed within the viewing area.
          */
-        SCROLLBAR,
+        SCROLLBAR = 52,
         /**
          * Unused
          */
-        SEARCH,
+        SEARCH = 53,
         /**
          * A type of textbox intended for specifying
          *   search criteria.
          */
-        SEARCH_BOX,
+        SEARCH_BOX = 54,
         /**
          * Abstract role.
          */
-        SECTION,
+        SECTION = 55,
         /**
          * Abstract role.
          */
-        SECTION_HEAD,
+        SECTION_HEAD = 56,
         /**
          * Abstract role.
          */
-        SELECT,
+        SELECT = 57,
         /**
          * A divider that separates and distinguishes
          *   sections of content or groups of menuitems.
          */
-        SEPARATOR,
+        SEPARATOR = 58,
         /**
          * A user input where the user selects a value
          *   from within a given range.
          */
-        SLIDER,
+        SLIDER = 59,
         /**
          * A form of range that expects the user to
          *   select from among discrete choices.
          */
-        SPIN_BUTTON,
+        SPIN_BUTTON = 60,
         /**
          * Unused
          */
-        STATUS,
+        STATUS = 61,
         /**
          * Abstract role.
          */
-        STRUCTURE,
+        STRUCTURE = 62,
         /**
          * A type of checkbox that represents on/off values,
          *   as opposed to checked/unchecked values.
          */
-        SWITCH,
+        SWITCH = 63,
         /**
          * An item in a list of tab used for switching pages.
          */
-        TAB,
+        TAB = 64,
         /**
          * Unused
          */
-        TABLE,
+        TABLE = 65,
         /**
          * A list of tabs for switching pages.
          */
-        TAB_LIST,
+        TAB_LIST = 66,
         /**
          * A page in a notebook or stack.
          */
-        TAB_PANEL,
+        TAB_PANEL = 67,
         /**
          * A type of input that allows free-form text
          *   as its value.
          */
-        TEXT_BOX,
+        TEXT_BOX = 68,
         /**
          * Unused
          */
-        TIME,
+        TIME = 69,
         /**
          * Unused
          */
-        TIMER,
+        TIMER = 70,
         /**
          * Unused
          */
-        TOOLBAR,
+        TOOLBAR = 71,
         /**
          * Unused
          */
-        TOOLTIP,
+        TOOLTIP = 72,
         /**
          * Unused
          */
-        TREE,
+        TREE = 73,
         /**
          * A treeview-like, columned list.
          */
-        TREE_GRID,
+        TREE_GRID = 74,
         /**
          * Unused
          */
-        TREE_ITEM,
+        TREE_ITEM = 75,
         /**
          * Abstract role for interactive components of a
          *   graphical user interface
          */
-        WIDGET,
+        WIDGET = 76,
         /**
          * Abstract role for windows.
          */
-        WINDOW,
+        WINDOW = 77,
         /**
          * A type of push button which stays pressed until depressed by a second
          * activation.
+         * @since 4.10
          */
-        TOGGLE_BUTTON,
+        TOGGLE_BUTTON = 78,
         /**
          * A toplevel element of a graphical user interface.
          * 
          * This is the role that GTK uses by default for windows.
+         * @since 4.12
          */
-        APPLICATION,
+        APPLICATION = 79,
         /**
          * A paragraph of content.
+         * @since 4.14
          */
-        PARAGRAPH,
+        PARAGRAPH = 80,
         /**
          * A section of content that is quoted from another source.
+         * @since 4.14
          */
-        BLOCK_QUOTE,
+        BLOCK_QUOTE = 81,
         /**
          * A section of a page that consists of a composition that forms an independent
          * part of a document, page, or site.
+         * @since 4.14
          */
-        ARTICLE,
+        ARTICLE = 82,
         /**
          * A comment contains content expressing reaction to other content.
+         * @since 4.14
          */
-        COMMENT,
+        COMMENT = 83,
         /**
          * A virtual terminal.
+         * @since 4.14
          */
-        TERMINAL,
+        TERMINAL = 84,
     }
 
 
@@ -912,20 +926,20 @@ export interface Builder {
         /**
          * There is no defined sort applied to the column.
          */
-        NONE,
+        NONE = 0,
         /**
          * Items are sorted in ascending order by this column.
          */
-        ASCENDING,
+        ASCENDING = 1,
         /**
          * Items are sorted in descending order by this column.
          */
-        DESCENDING,
+        DESCENDING = 2,
         /**
          * A sort algorithm other than ascending or
          *    descending has been applied.
          */
-        OTHER,
+        OTHER = 3,
     }
 
 
@@ -944,24 +958,24 @@ export interface Builder {
         /**
          * A “busy” state. This state has boolean values
          */
-        BUSY,
+        BUSY = 0,
         /**
          * A “checked” state; indicates the current
          *   state of a {@link CheckButton}. Value type: {@link AccessibleTristate}
          */
-        CHECKED,
+        CHECKED = 1,
         /**
          * A “disabled” state; corresponds to the
          *   {@link Widget.sensitive} property. It indicates a UI element
          *   that is perceivable, but not editable or operable. Value type: boolean
          */
-        DISABLED,
+        DISABLED = 2,
         /**
          * An “expanded” state; corresponds to the
          *   {@link Expander.expanded} property. Value type: boolean
          *   or undefined
          */
-        EXPANDED,
+        EXPANDED = 3,
         /**
          * A “hidden” state; corresponds to the
          *   {@link Widget.visible} property. You can use this state
@@ -969,28 +983,29 @@ export interface Builder {
          *   technology. Value type: boolean
          *   See also: {@link Gtk.AccessibleState.DISABLED}
          */
-        HIDDEN,
+        HIDDEN = 4,
         /**
          * An “invalid” state; set when a widget
          *   is showing an error. Value type: {@link AccessibleInvalidState}
          */
-        INVALID,
+        INVALID = 5,
         /**
          * A “pressed” state; indicates the current
          *   state of a {@link ToggleButton}. Value type: {@link AccessibleTristate}
          *   enumeration
          */
-        PRESSED,
+        PRESSED = 6,
         /**
          * A “selected” state; set when a widget
          *   is selected. Value type: boolean or undefined
          */
-        SELECTED,
+        SELECTED = 7,
         /**
          * Indicates that a widget with the GTK_ACCESSIBLE_ROLE_LINK has been visited.
          * Value type: boolean.
+         * @since 4.12
          */
-        VISITED,
+        VISITED = 8,
     }
 
 
@@ -1011,12 +1026,12 @@ export interface Builder {
          * contents change as the result of
          *   an insert operation
          */
-        INSERT,
+        INSERT = 0,
         /**
          * contents change as the result of
          *   a remove operation
          */
-        REMOVE,
+        REMOVE = 1,
     }
 
 
@@ -1038,31 +1053,31 @@ export interface Builder {
          * Use the boundary between
          *   characters (including non-printing characters)
          */
-        CHARACTER,
+        CHARACTER = 0,
         /**
          * Use the boundary between words,
          *   starting from the beginning of the current word and ending at the
          *   beginning of the next word
          */
-        WORD,
+        WORD = 1,
         /**
          * Use the boundary between
          *   sentences, starting from the beginning of the current sentence and
          *   ending at the beginning of the next sentence
          */
-        SENTENCE,
+        SENTENCE = 2,
         /**
          * Use the boundary between lines,
          *   starting from the beginning of the current line and ending at the
          *   beginning of the next line
          */
-        LINE,
+        LINE = 3,
         /**
          * Use the boundary between
          *   paragraphs, starting from the beginning of the current paragraph and
          *   ending at the beginning of the next paragraph
          */
-        PARAGRAPH,
+        PARAGRAPH = 4,
     }
 
 
@@ -1086,15 +1101,15 @@ export interface Builder {
         /**
          * The state is `false`
          */
-        FALSE,
+        FALSE = 0,
         /**
          * The state is `true`
          */
-        TRUE,
+        TRUE = 1,
         /**
          * The state is `mixed`
          */
-        MIXED,
+        MIXED = 2,
     }
 
 
@@ -1129,31 +1144,34 @@ export interface Builder {
          * stretch to fill all space if possible, center if
          *   no meaningful way to stretch
          */
-        FILL,
+        FILL = 0,
         /**
          * snap to left or top side, leaving space on right or bottom
          */
-        START,
+        START = 1,
         /**
          * snap to right or bottom side, leaving space on left or top
          */
-        END,
+        END = 2,
         /**
          * center natural width of widget inside the allocation
          */
-        CENTER,
+        CENTER = 3,
         /**
          * stretch to fill all space, but align the baseline.
+         * @since 4.12
          */
-        BASELINE_FILL,
+        BASELINE_FILL = 4,
         /**
          * align the widget according to the baseline.
+         * @deprecated since 4.12: Use `GTK_ALIGN_BASELINE_FILL` instead
          */
-        BASELINE,
+        BASELINE = 4,
         /**
          * align the baseline.
+         * @since 4.12
          */
-        BASELINE_CENTER,
+        BASELINE_CENTER = 5,
     }
 
 
@@ -1172,23 +1190,23 @@ export interface Builder {
         /**
          * Represents an upward pointing arrow.
          */
-        UP,
+        UP = 0,
         /**
          * Represents a downward pointing arrow.
          */
-        DOWN,
+        DOWN = 1,
         /**
          * Represents a left pointing arrow.
          */
-        LEFT,
+        LEFT = 2,
         /**
          * Represents a right pointing arrow.
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * No arrow.
          */
-        NONE,
+        NONE = 4,
     }
 
 
@@ -1218,35 +1236,35 @@ export interface Builder {
          * The page has regular contents. Both the
          *  Back and forward buttons will be shown.
          */
-        CONTENT,
+        CONTENT = 0,
         /**
          * The page contains an introduction to the
          *  assistant task. Only the Forward button will be shown if there is a
          *   next page.
          */
-        INTRO,
+        INTRO = 1,
         /**
          * The page lets the user confirm or deny the
          *  changes. The Back and Apply buttons will be shown.
          */
-        CONFIRM,
+        CONFIRM = 2,
         /**
          * The page informs the user of the changes
          *  done. Only the Close button will be shown.
          */
-        SUMMARY,
+        SUMMARY = 3,
         /**
          * Used for tasks that take a long time to
          *  complete, blocks the assistant until the page is marked as complete.
          *   Only the back button will be shown.
          */
-        PROGRESS,
+        PROGRESS = 4,
         /**
          * Used for when other page types are not
          *  appropriate. No buttons will be shown, and the application must
          *  add its own buttons through `gtk_assistant_add_action_widget()`.
          */
-        CUSTOM,
+        CUSTOM = 5,
     }
 
 
@@ -1272,15 +1290,15 @@ export interface Builder {
         /**
          * Align the baseline at the top
          */
-        TOP,
+        TOP = 0,
         /**
          * Center the baseline
          */
-        CENTER,
+        CENTER = 1,
         /**
          * Align the baseline at the bottom
          */
-        BOTTOM,
+        BOTTOM = 2,
     }
 
 
@@ -1299,43 +1317,43 @@ export interface Builder {
         /**
          * No visible border
          */
-        NONE,
+        NONE = 0,
         /**
          * Same as {@link Gtk.BorderStyle.NONE}
          */
-        HIDDEN,
+        HIDDEN = 1,
         /**
          * A single line segment
          */
-        SOLID,
+        SOLID = 2,
         /**
          * Looks as if the content is sunken into the canvas
          */
-        INSET,
+        INSET = 3,
         /**
          * Looks as if the content is coming out of the canvas
          */
-        OUTSET,
+        OUTSET = 4,
         /**
          * A series of round dots
          */
-        DOTTED,
+        DOTTED = 5,
         /**
          * A series of square-ended dashes
          */
-        DASHED,
+        DASHED = 6,
         /**
          * Two parallel lines with some space between them
          */
-        DOUBLE,
+        DOUBLE = 7,
         /**
          * Looks as if it were carved in the canvas
          */
-        GROOVE,
+        GROOVE = 8,
         /**
          * Looks as if it were coming out of the canvas
          */
-        RIDGE,
+        RIDGE = 9,
     }
 
 
@@ -1467,27 +1485,27 @@ export interface Builder {
         /**
          * no buttons at all
          */
-        NONE,
+        NONE = 0,
         /**
          * an OK button
          */
-        OK,
+        OK = 1,
         /**
          * a Close button
          */
-        CLOSE,
+        CLOSE = 2,
         /**
          * a Cancel button
          */
-        CANCEL,
+        CANCEL = 3,
         /**
          * Yes and No buttons
          */
-        YES_NO,
+        YES_NO = 4,
         /**
          * OK and Cancel buttons
          */
-        OK_CANCEL,
+        OK_CANCEL = 5,
     }
 
 
@@ -1507,11 +1525,11 @@ export interface Builder {
         /**
          * GTK accelerators mode
          */
-        GTK,
+        GTK = 0,
         /**
          * Other accelerator mode
          */
-        OTHER,
+        OTHER = 1,
     }
 
 
@@ -1534,15 +1552,15 @@ export interface Builder {
          *  row being drawn can’t be selected -- just that a particular element of
          *  it cannot be individually modified.
          */
-        INERT,
+        INERT = 0,
         /**
          * The cell can be clicked.
          */
-        ACTIVATABLE,
+        ACTIVATABLE = 1,
         /**
          * The cell can be edited or otherwise modified.
          */
-        EDITABLE,
+        EDITABLE = 2,
     }
 
 
@@ -1566,15 +1584,15 @@ export interface Builder {
         /**
          * Don't do any collation
          */
-        NONE,
+        NONE = 0,
         /**
          * Use {@link GLib.utf8_collate_key}
          */
-        UNICODE,
+        UNICODE = 1,
         /**
          * Use {@link GLib.utf8_collate_key_for_filename}
          */
-        FILENAME,
+        FILENAME = 2,
     }
 
 
@@ -1594,59 +1612,59 @@ export interface Builder {
          * No attribute, used for constant
          *   relations
          */
-        NONE,
+        NONE = 0,
         /**
          * The left edge of a widget, regardless of
          *   text direction
          */
-        LEFT,
+        LEFT = 1,
         /**
          * The right edge of a widget, regardless
          *   of text direction
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * The top edge of a widget
          */
-        TOP,
+        TOP = 3,
         /**
          * The bottom edge of a widget
          */
-        BOTTOM,
+        BOTTOM = 4,
         /**
          * The leading edge of a widget, depending
          *   on text direction; equivalent to {@link Gtk.ConstraintAttribute.LEFT} for LTR
          *   languages, and {@link Gtk.ConstraintAttribute.RIGHT} for RTL ones
          */
-        START,
+        START = 5,
         /**
          * The trailing edge of a widget, depending
          *   on text direction; equivalent to {@link Gtk.ConstraintAttribute.RIGHT} for LTR
          *   languages, and {@link Gtk.ConstraintAttribute.LEFT} for RTL ones
          */
-        END,
+        END = 6,
         /**
          * The width of a widget
          */
-        WIDTH,
+        WIDTH = 7,
         /**
          * The height of a widget
          */
-        HEIGHT,
+        HEIGHT = 8,
         /**
          * The center of a widget, on the
          *   horizontal axis
          */
-        CENTER_X,
+        CENTER_X = 9,
         /**
          * The center of a widget, on the
          *   vertical axis
          */
-        CENTER_Y,
+        CENTER_Y = 10,
         /**
          * The baseline of a widget
          */
-        BASELINE,
+        BASELINE = 11,
     }
 
 
@@ -1665,15 +1683,15 @@ export interface Builder {
         /**
          * Less than, or equal
          */
-        LE,
+        LE = -1,
         /**
          * Equal
          */
-        EQ,
+        EQ = 0,
         /**
          * Greater than, or equal
          */
-        GE,
+        GE = 1,
     }
 
 
@@ -1695,19 +1713,19 @@ export interface Builder {
         /**
          * The constraint is required towards solving the layout
          */
-        REQUIRED,
+        REQUIRED = 1001001000,
         /**
          * A strong constraint
          */
-        STRONG,
+        STRONG = 1000000000,
         /**
          * A medium constraint
          */
-        MEDIUM,
+        MEDIUM = 1000,
         /**
          * A weak constraint
          */
-        WEAK,
+        WEAK = 1,
     }
 
 
@@ -1779,26 +1797,26 @@ export interface Builder {
          *   content will appear as stretched if its aspect ratio is different
          *   from the allocation aspect ratio.
          */
-        FILL,
+        FILL = 0,
         /**
          * Scale the content to fit the allocation,
          *   while taking its aspect ratio in consideration. The resulting
          *   content will appear as letterboxed if its aspect ratio is different
          *   from the allocation aspect ratio.
          */
-        CONTAIN,
+        CONTAIN = 1,
         /**
          * Cover the entire allocation, while taking
          *   the content aspect ratio in consideration. The resulting content
          *   will appear as clipped if its aspect ratio is different from the
          *   allocation aspect ratio.
          */
-        COVER,
+        COVER = 2,
         /**
          * The content is scaled down to fit the
          *   allocation, if needed, otherwise its original size is used.
          */
-        SCALE_DOWN,
+        SCALE_DOWN = 3,
     }
 
 
@@ -1821,22 +1839,22 @@ export interface Builder {
          * Place the scrollbars on the right and bottom of the
          *   widget (default behaviour).
          */
-        TOP_LEFT,
+        TOP_LEFT = 0,
         /**
          * Place the scrollbars on the top and right of the
          *   widget.
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 1,
         /**
          * Place the scrollbars on the left and bottom of the
          *   widget.
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 2,
         /**
          * Place the scrollbars on the top and left of the
          *   widget.
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 3,
     }
 
 
@@ -1893,16 +1911,16 @@ export interface Builder {
          * The given construct is
          *   deprecated and will be removed in a future version
          */
-        DEPRECATED,
+        DEPRECATED = 0,
         /**
          * A syntax construct was used
          *   that should be avoided
          */
-        SYNTAX,
+        SYNTAX = 1,
         /**
          * A feature is not implemented
          */
-        UNIMPLEMENTED,
+        UNIMPLEMENTED = 2,
     }
 
 
@@ -1921,41 +1939,41 @@ export interface Builder {
         /**
          * Delete characters.
          */
-        CHARS,
+        CHARS = 0,
         /**
          * Delete only the portion of the word to the
          *   left/right of cursor if we’re in the middle of a word.
          */
-        WORD_ENDS,
+        WORD_ENDS = 1,
         /**
          * Delete words.
          */
-        WORDS,
+        WORDS = 2,
         /**
          * Delete display-lines. Display-lines
          *   refers to the visible lines, with respect to the current line
          *   breaks. As opposed to paragraphs, which are defined by line
          *   breaks in the input.
          */
-        DISPLAY_LINES,
+        DISPLAY_LINES = 3,
         /**
          * Delete only the portion of the
          *   display-line to the left/right of cursor.
          */
-        DISPLAY_LINE_ENDS,
+        DISPLAY_LINE_ENDS = 4,
         /**
          * Delete to the end of the
          *   paragraph. Like C-k in Emacs (or its reverse).
          */
-        PARAGRAPH_ENDS,
+        PARAGRAPH_ENDS = 5,
         /**
          * Delete entire line. Like C-k in pico.
          */
-        PARAGRAPHS,
+        PARAGRAPHS = 6,
         /**
          * Delete only whitespace. Like M-\ in Emacs.
          */
-        WHITESPACE,
+        WHITESPACE = 7,
     }
 
 
@@ -2013,27 +2031,27 @@ export interface Builder {
         /**
          * Move forward.
          */
-        TAB_FORWARD,
+        TAB_FORWARD = 0,
         /**
          * Move backward.
          */
-        TAB_BACKWARD,
+        TAB_BACKWARD = 1,
         /**
          * Move up.
          */
-        UP,
+        UP = 2,
         /**
          * Move down.
          */
-        DOWN,
+        DOWN = 3,
         /**
          * Move left.
          */
-        LEFT,
+        LEFT = 4,
         /**
          * Move right.
          */
-        RIGHT,
+        RIGHT = 5,
     }
 
 
@@ -2055,47 +2073,47 @@ export interface Builder {
         /**
          * the property id for {@link Gtk.Editable.text}
          */
-        PROP_TEXT,
+        PROP_TEXT = 0,
         /**
          * the property id for {@link Gtk.Editable.cursor_position}
          */
-        PROP_CURSOR_POSITION,
+        PROP_CURSOR_POSITION = 1,
         /**
          * the property id for {@link Gtk.Editable.selection_bound}
          */
-        PROP_SELECTION_BOUND,
+        PROP_SELECTION_BOUND = 2,
         /**
          * the property id for {@link Gtk.Editable.editable}
          */
-        PROP_EDITABLE,
+        PROP_EDITABLE = 3,
         /**
          * the property id for {@link Gtk.Editable.width_chars}
          */
-        PROP_WIDTH_CHARS,
+        PROP_WIDTH_CHARS = 4,
         /**
          * the property id for {@link Gtk.Editable.max_width_chars}
          */
-        PROP_MAX_WIDTH_CHARS,
+        PROP_MAX_WIDTH_CHARS = 5,
         /**
          * the property id for {@link Gtk.Editable.xalign}
          */
-        PROP_XALIGN,
+        PROP_XALIGN = 6,
         /**
          * the property id for {@link Gtk.Editable.enable_undo}
          */
-        PROP_ENABLE_UNDO,
+        PROP_ENABLE_UNDO = 7,
         /**
          * the property id for {@link Gtk.Editable.complete_text}
          */
-        PROP_COMPLETE_TEXT,
+        PROP_COMPLETE_TEXT = 8,
         /**
          * the property id for {@link Gtk.Editable.input_interceptor}
          */
-        PROP_INPUT_INTERCEPTOR,
+        PROP_INPUT_INTERCEPTOR = 9,
         /**
          * the number of properties
          */
-        NUM_PROPERTIES,
+        NUM_PROPERTIES = 10,
     }
 
 
@@ -2114,11 +2132,11 @@ export interface Builder {
         /**
          * At the beginning of the entry (depending on the text direction).
          */
-        PRIMARY,
+        PRIMARY = 0,
         /**
          * At the end of the entry (depending on the text direction).
          */
-        SECONDARY,
+        SECONDARY = 1,
     }
 
 
@@ -2137,15 +2155,15 @@ export interface Builder {
         /**
          * The sequence is handled, but not grabbed.
          */
-        NONE,
+        NONE = 0,
         /**
          * The sequence is handled and grabbed.
          */
-        CLAIMED,
+        CLAIMED = 1,
         /**
          * The sequence is denied.
          */
-        DENIED,
+        DENIED = 2,
     }
 
 
@@ -2166,19 +2184,19 @@ export interface Builder {
          * Indicates open mode.  The file chooser
          *  will only let the user pick an existing file.
          */
-        OPEN,
+        OPEN = 0,
         /**
          * Indicates save mode.  The file chooser
          *  will let the user pick an existing file, or type in a new
          *  filename.
          */
-        SAVE,
+        SAVE = 1,
         /**
          * Indicates an Open mode for
          *  selecting folders.  The file chooser will let the user pick an
          *  existing folder.
          */
-        SELECT_FOLDER,
+        SELECT_FOLDER = 2,
     }
 
 
@@ -2247,40 +2265,43 @@ export interface Builder {
          * The filter change cannot be
          *   described with any of the other enumeration values
          */
-        DIFFERENT,
+        DIFFERENT = 0,
         /**
          * The filter is less strict than
          *   it was before: All items that it used to return true
          *   still return true, others now may, too.
          */
-        LESS_STRICT,
+        LESS_STRICT = 1,
         /**
          * The filter is more strict than
          *   it was before: All items that it used to return false
          *   still return false, others now may, too.
          */
-        MORE_STRICT,
+        MORE_STRICT = 2,
         /**
          * Similar to {@link Gtk.FilterChange.DIFFERENT},
          * but signs that item watches should be recreated. This is used by
          * {@link Gtk.FilterListModel} to keep the list up-to-date when items
          * change.
+         * @since 4.20
          */
-        DIFFERENT_REWATCH,
+        DIFFERENT_REWATCH = 3,
         /**
          * Similar to {@link Gtk.FilterChange.LESS_STRICT},
          * but signs that item watches should be recreated. This is used by
          * {@link Gtk.FilterListModel} to keep the list up-to-date when items
          * change.
+         * @since 4.20
          */
-        LESS_STRICT_REWATCH,
+        LESS_STRICT_REWATCH = 4,
         /**
          * Similar to {@link Gtk.FilterChange.MORE_STRICT},
          * but signs that item watches should be recreated. This is used by
          * {@link Gtk.FilterListModel} to keep the list up-to-date when items
          * change.
+         * @since 4.20
          */
-        MORE_STRICT_REWATCH,
+        MORE_STRICT_REWATCH = 5,
     }
 
 
@@ -2304,17 +2325,17 @@ export interface Builder {
          * The filter matches some items,
          *   {@link Gtk.Filter.match} may return true or false
          */
-        SOME,
+        SOME = 0,
         /**
          * The filter does not match any item,
          *   {@link Gtk.Filter.match} will always return false
          */
-        NONE,
+        NONE = 1,
         /**
          * The filter matches all items,
          *   {@link Gtk.Filter.match} will alays return true
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -2338,19 +2359,19 @@ export interface Builder {
         /**
          * Select a font family
          */
-        FAMILY,
+        FAMILY = 0,
         /**
          * Select a font face (i.e. a family and a style)
          */
-        FACE,
+        FACE = 1,
         /**
          * Select a font (i.e. a face with a size, and possibly font variations)
          */
-        FONT,
+        FONT = 2,
         /**
          * Select a font and font features
          */
-        FEATURES,
+        FEATURES = 3,
     }
 
 
@@ -2372,12 +2393,12 @@ export interface Builder {
          * Set up font rendering automatically,
          *   taking factors like screen resolution and scale into account
          */
-        AUTOMATIC,
+        AUTOMATIC = 0,
         /**
          * Follow low-level font-related settings
          *   when configuring font rendering
          */
-        MANUAL,
+        MANUAL = 1,
     }
 
 
@@ -2397,11 +2418,11 @@ export interface Builder {
         /**
          * Graphics offloading is enabled.
          */
-        ENABLED,
+        ENABLED = 0,
         /**
          * Graphics offloading is disabled.
          */
-        DISABLED,
+        DISABLED = 1,
     }
 
 
@@ -2428,15 +2449,15 @@ export interface Builder {
         /**
          * Keep the size of the parent element
          */
-        INHERIT,
+        INHERIT = 0,
         /**
          * Size similar to text size
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * Large size, for example in an icon view
          */
-        LARGE,
+        LARGE = 2,
     }
 
 
@@ -2485,27 +2506,27 @@ export interface Builder {
         /**
          * no drop possible
          */
-        NO_DROP,
+        NO_DROP = 0,
         /**
          * dropped item replaces the item
          */
-        DROP_INTO,
+        DROP_INTO = 1,
         /**
          * dropped item is inserted to the left
          */
-        DROP_LEFT,
+        DROP_LEFT = 2,
         /**
          * dropped item is inserted to the right
          */
-        DROP_RIGHT,
+        DROP_RIGHT = 3,
         /**
          * dropped item is inserted above
          */
-        DROP_ABOVE,
+        DROP_ABOVE = 4,
         /**
          * dropped item is inserted below
          */
-        DROP_BELOW,
+        DROP_BELOW = 5,
     }
 
 
@@ -2531,19 +2552,19 @@ export interface Builder {
         /**
          * there is no image displayed by the widget
          */
-        EMPTY,
+        EMPTY = 0,
         /**
          * the widget contains a named icon
          */
-        ICON_NAME,
+        ICON_NAME = 1,
         /**
          * the widget contains a {@link Gio.Icon}
          */
-        GICON,
+        GICON = 2,
         /**
          * the widget contains a {@link Gdk.Paintable}
          */
-        PAINTABLE,
+        PAINTABLE = 3,
     }
 
 
@@ -2580,47 +2601,47 @@ export interface Builder {
         /**
          * Allow any character
          */
-        FREE_FORM,
+        FREE_FORM = 0,
         /**
          * Allow only alphabetic characters
          */
-        ALPHA,
+        ALPHA = 1,
         /**
          * Allow only digits
          */
-        DIGITS,
+        DIGITS = 2,
         /**
          * Edited field expects numbers
          */
-        NUMBER,
+        NUMBER = 3,
         /**
          * Edited field expects phone number
          */
-        PHONE,
+        PHONE = 4,
         /**
          * Edited field expects URL
          */
-        URL,
+        URL = 5,
         /**
          * Edited field expects email address
          */
-        EMAIL,
+        EMAIL = 6,
         /**
          * Edited field expects the name of a person
          */
-        NAME,
+        NAME = 7,
         /**
          * Like {@link Gtk.InputPurpose.FREE_FORM}, but characters are hidden
          */
-        PASSWORD,
+        PASSWORD = 8,
         /**
          * Like {@link Gtk.InputPurpose.DIGITS}, but characters are hidden
          */
-        PIN,
+        PIN = 9,
         /**
          * Allow any character, in addition to control codes
          */
-        TERMINAL,
+        TERMINAL = 10,
     }
 
 
@@ -2641,19 +2662,19 @@ export interface Builder {
         /**
          * Clip the remaining text
          */
-        CLIP,
+        CLIP = 0,
         /**
          * Omit characters at the start of the text
          */
-        ELLIPSIZE_START,
+        ELLIPSIZE_START = 1,
         /**
          * Omit characters at the middle of the text
          */
-        ELLIPSIZE_MIDDLE,
+        ELLIPSIZE_MIDDLE = 2,
         /**
          * Omit characters at the end of the text
          */
-        ELLIPSIZE_END,
+        ELLIPSIZE_END = 3,
     }
 
 
@@ -2680,19 +2701,19 @@ export interface Builder {
         /**
          * The system doesn't support color schemes
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 0,
         /**
          * The default color scheme is used
          */
-        DEFAULT,
+        DEFAULT = 1,
         /**
          * A dark color scheme is used
          */
-        DARK,
+        DARK = 2,
         /**
          * A light color scheme is used
          */
-        LIGHT,
+        LIGHT = 3,
     }
 
 
@@ -2719,19 +2740,19 @@ export interface Builder {
         /**
          * The system doesn't support contrast levels
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 0,
         /**
          * No particular preference for contrast
          */
-        NO_PREFERENCE,
+        NO_PREFERENCE = 1,
         /**
          * More contrast is preferred
          */
-        MORE,
+        MORE = 2,
         /**
          * Less contrast is preferred
          */
-        LESS,
+        LESS = 3,
     }
 
 
@@ -2750,19 +2771,19 @@ export interface Builder {
         /**
          * The text is placed at the left edge of the label.
          */
-        LEFT,
+        LEFT = 0,
         /**
          * The text is placed at the right edge of the label.
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The text is placed in the center of the label.
          */
-        CENTER,
+        CENTER = 2,
         /**
          * The text is placed is distributed across the label.
          */
-        FILL,
+        FILL = 3,
     }
 
 
@@ -2784,11 +2805,11 @@ export interface Builder {
         /**
          * the bar has a continuous mode
          */
-        CONTINUOUS,
+        CONTINUOUS = 0,
         /**
          * the bar has a discrete mode
          */
-        DISCRETE,
+        DISCRETE = 1,
     }
 
 
@@ -2809,80 +2830,80 @@ export interface Builder {
         /**
          * No license specified
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A license text is going to be specified by the
          *   developer
          */
-        CUSTOM,
+        CUSTOM = 1,
         /**
          * The GNU General Public License, version 2.0 or later
          */
-        GPL_2_0,
+        GPL_2_0 = 2,
         /**
          * The GNU General Public License, version 3.0 or later
          */
-        GPL_3_0,
+        GPL_3_0 = 3,
         /**
          * The GNU Lesser General Public License, version 2.1 or later
          */
-        LGPL_2_1,
+        LGPL_2_1 = 4,
         /**
          * The GNU Lesser General Public License, version 3.0 or later
          */
-        LGPL_3_0,
+        LGPL_3_0 = 5,
         /**
          * The BSD standard license
          */
-        BSD,
+        BSD = 6,
         /**
          * The MIT/X11 standard license
          */
-        MIT_X11,
+        MIT_X11 = 7,
         /**
          * The Artistic License, version 2.0
          */
-        ARTISTIC,
+        ARTISTIC = 8,
         /**
          * The GNU General Public License, version 2.0 only
          */
-        GPL_2_0_ONLY,
+        GPL_2_0_ONLY = 9,
         /**
          * The GNU General Public License, version 3.0 only
          */
-        GPL_3_0_ONLY,
+        GPL_3_0_ONLY = 10,
         /**
          * The GNU Lesser General Public License, version 2.1 only
          */
-        LGPL_2_1_ONLY,
+        LGPL_2_1_ONLY = 11,
         /**
          * The GNU Lesser General Public License, version 3.0 only
          */
-        LGPL_3_0_ONLY,
+        LGPL_3_0_ONLY = 12,
         /**
          * The GNU Affero General Public License, version 3.0 or later
          */
-        AGPL_3_0,
+        AGPL_3_0 = 13,
         /**
          * The GNU Affero General Public License, version 3.0 only
          */
-        AGPL_3_0_ONLY,
+        AGPL_3_0_ONLY = 14,
         /**
          * The 3-clause BSD licence
          */
-        BSD_3,
+        BSD_3 = 15,
         /**
          * The Apache License, version 2.0
          */
-        APACHE_2_0,
+        APACHE_2_0 = 16,
         /**
          * The Mozilla Public License, version 2.0
          */
-        MPL_2_0,
+        MPL_2_0 = 17,
         /**
          * Zero-Clause BSD license
          */
-        "0BSD",
+        "0BSD" = 18,
     }
 
 
@@ -2904,13 +2925,13 @@ export interface Builder {
         /**
          * Cycle through all focusable items of the list
          */
-        ALL,
+        ALL = 0,
         /**
          * Cycle through a single list element, then move
          *   focus out of the list. Moving focus between items needs to be
          *   done with the arrow keys.
          */
-        ITEM,
+        ITEM = 1,
         /**
          * Cycle only through a single cell, then
          *   move focus out of the list. Moving focus between cells needs to
@@ -2918,7 +2939,7 @@ export interface Builder {
          *   cell-based widgets like {@link Gtk.ColumnView}, otherwise it behaves
          *   like `GTK_LIST_TAB_ITEM`.
          */
-        CELL,
+        CELL = 2,
     }
 
 
@@ -2937,23 +2958,23 @@ export interface Builder {
         /**
          * Informational message
          */
-        INFO,
+        INFO = 0,
         /**
          * Non-fatal warning message
          */
-        WARNING,
+        WARNING = 1,
         /**
          * Question requiring a choice
          */
-        QUESTION,
+        QUESTION = 2,
         /**
          * Fatal error message
          */
-        ERROR,
+        ERROR = 3,
         /**
          * None of the above
          */
-        OTHER,
+        OTHER = 4,
     }
 
 
@@ -2973,43 +2994,43 @@ export interface Builder {
         /**
          * Move forward or back by graphemes
          */
-        LOGICAL_POSITIONS,
+        LOGICAL_POSITIONS = 0,
         /**
          * Move left or right by graphemes
          */
-        VISUAL_POSITIONS,
+        VISUAL_POSITIONS = 1,
         /**
          * Move forward or back by words
          */
-        WORDS,
+        WORDS = 2,
         /**
          * Move up or down lines (wrapped lines)
          */
-        DISPLAY_LINES,
+        DISPLAY_LINES = 3,
         /**
          * Move to either end of a line
          */
-        DISPLAY_LINE_ENDS,
+        DISPLAY_LINE_ENDS = 4,
         /**
          * Move up or down paragraphs (newline-ended lines)
          */
-        PARAGRAPHS,
+        PARAGRAPHS = 5,
         /**
          * Move to either end of a paragraph
          */
-        PARAGRAPH_ENDS,
+        PARAGRAPH_ENDS = 6,
         /**
          * Move by pages
          */
-        PAGES,
+        PAGES = 7,
         /**
          * Move to ends of the buffer
          */
-        BUFFER_ENDS,
+        BUFFER_ENDS = 8,
         /**
          * Move horizontally by pages
          */
-        HORIZONTAL_PAGES,
+        HORIZONTAL_PAGES = 9,
     }
 
 
@@ -3033,19 +3054,19 @@ export interface Builder {
          * Inherit the minimum size request.
          *   In particular, this should be used with {@link Pango.WrapMode.CHAR}.
          */
-        INHERIT,
+        INHERIT = 0,
         /**
          * Try not to wrap the text. This mode is the
          *   closest to GTK3's behavior but can lead to a wide label leaving
          *   lots of empty space below the text.
          */
-        NONE,
+        NONE = 1,
         /**
          * Attempt to wrap at word boundaries. This
          *   is useful in particular when using {@link Pango.WrapMode.WORD_CHAR} as the
          *   wrap mode.
          */
-        WORD,
+        WORD = 2,
     }
 
 
@@ -3064,11 +3085,11 @@ export interface Builder {
         /**
          * the first tab in the notebook
          */
-        FIRST,
+        FIRST = 0,
         /**
          * the last tab in the notebook
          */
-        LAST,
+        LAST = 1,
     }
 
 
@@ -3088,35 +3109,35 @@ export interface Builder {
         /**
          * ![](layout-lrtb.png)
          */
-        LRTB,
+        LRTB = 0,
         /**
          * ![](layout-lrbt.png)
          */
-        LRBT,
+        LRBT = 1,
         /**
          * ![](layout-rltb.png)
          */
-        RLTB,
+        RLTB = 2,
         /**
          * ![](layout-rlbt.png)
          */
-        RLBT,
+        RLBT = 3,
         /**
          * ![](layout-tblr.png)
          */
-        TBLR,
+        TBLR = 4,
         /**
          * ![](layout-tbrl.png)
          */
-        TBRL,
+        TBRL = 5,
         /**
          * ![](layout-btlr.png)
          */
-        BTLR,
+        BTLR = 6,
         /**
          * ![](layout-btrl.png)
          */
-        BTRL,
+        BTRL = 7,
     }
 
 
@@ -3140,15 +3161,15 @@ export interface Builder {
         /**
          * the first value is smaller than the second
          */
-        SMALLER,
+        SMALLER = -1,
         /**
          * the two values are equal
          */
-        EQUAL,
+        EQUAL = 0,
         /**
          * the first value is larger than the second
          */
-        LARGER,
+        LARGER = 1,
     }
 
 
@@ -3169,11 +3190,11 @@ export interface Builder {
         /**
          * The element is in horizontal orientation.
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * The element is in vertical orientation.
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -3197,12 +3218,12 @@ export interface Builder {
          * No change is applied. Content is drawn at the specified
          *   position.
          */
-        VISIBLE,
+        VISIBLE = 0,
         /**
          * Content is clipped to the bounds of the area. Content
          *   outside the area is not drawn and cannot be interacted with.
          */
-        HIDDEN,
+        HIDDEN = 1,
     }
 
 
@@ -3223,11 +3244,11 @@ export interface Builder {
         /**
          * The child is packed into the start of the widget
          */
-        START,
+        START = 0,
         /**
          * The child is packed into the end of the widget
          */
-        END,
+        END = 1,
     }
 
 
@@ -3246,19 +3267,19 @@ export interface Builder {
         /**
          * Action is triggered by a pad button
          */
-        BUTTON,
+        BUTTON = 0,
         /**
          * Action is triggered by a pad ring
          */
-        RING,
+        RING = 1,
         /**
          * Action is triggered by a pad strip
          */
-        STRIP,
+        STRIP = 2,
         /**
          * Action is triggered by a pad dial
          */
-        DIAL,
+        DIAL = 3,
     }
 
 
@@ -3277,19 +3298,19 @@ export interface Builder {
         /**
          * Portrait mode.
          */
-        PORTRAIT,
+        PORTRAIT = 0,
         /**
          * Landscape mode.
          */
-        LANDSCAPE,
+        LANDSCAPE = 1,
         /**
          * Reverse portrait mode.
          */
-        REVERSE_PORTRAIT,
+        REVERSE_PORTRAIT = 2,
         /**
          * Reverse landscape mode.
          */
-        REVERSE_LANDSCAPE,
+        REVERSE_LANDSCAPE = 3,
     }
 
 
@@ -3308,15 +3329,15 @@ export interface Builder {
         /**
          * All pages.
          */
-        ALL,
+        ALL = 0,
         /**
          * Even pages.
          */
-        EVEN,
+        EVEN = 1,
         /**
          * Odd pages.
          */
-        ODD,
+        ODD = 2,
     }
 
 
@@ -3335,19 +3356,19 @@ export interface Builder {
         /**
          * panned towards the left
          */
-        LEFT,
+        LEFT = 0,
         /**
          * panned towards the right
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * panned upwards
          */
-        UP,
+        UP = 2,
         /**
          * panned downwards
          */
-        DOWN,
+        DOWN = 3,
     }
 
 
@@ -3368,23 +3389,23 @@ export interface Builder {
          * The scrollbar is always visible. The view size is
          *   independent of the content.
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * The scrollbar will appear and disappear as necessary.
          *   For example, when all of a {@link Gtk.TreeView} can not be seen.
          */
-        AUTOMATIC,
+        AUTOMATIC = 1,
         /**
          * The scrollbar should never appear. In this mode the
          *   content determines the size.
          */
-        NEVER,
+        NEVER = 2,
         /**
          * Don't show a scrollbar, but don't force the
          *   size to follow the content. This can be used e.g. to make multiple
          *   scrolled windows share a scrollbar.
          */
-        EXTERNAL,
+        EXTERNAL = 3,
     }
 
 
@@ -3406,19 +3427,19 @@ export interface Builder {
         /**
          * The feature is at the left edge.
          */
-        LEFT,
+        LEFT = 0,
         /**
          * The feature is at the right edge.
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The feature is at the top edge.
          */
-        TOP,
+        TOP = 2,
         /**
          * The feature is at the bottom edge.
          */
-        BOTTOM,
+        BOTTOM = 3,
     }
 
 
@@ -3437,15 +3458,15 @@ export interface Builder {
         /**
          * No duplex.
          */
-        SIMPLEX,
+        SIMPLEX = 0,
         /**
          * Horizontal duplex.
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * Vertical duplex.
          */
-        VERTICAL,
+        VERTICAL = 2,
     }
 
 
@@ -3507,22 +3528,22 @@ export interface Builder {
         /**
          * Show the print dialog.
          */
-        PRINT_DIALOG,
+        PRINT_DIALOG = 0,
         /**
          * Start to print without showing
          *   the print dialog, based on the current print settings, if possible.
          *   Depending on the platform, a print dialog might appear anyway.
          */
-        PRINT,
+        PRINT = 1,
         /**
          * Show the print preview.
          */
-        PREVIEW,
+        PREVIEW = 2,
         /**
          * Export to a file. This requires
          *   the export-filename property to be set.
          */
-        EXPORT,
+        EXPORT = 3,
     }
 
 
@@ -3543,21 +3564,21 @@ export interface Builder {
         /**
          * An error has occurred.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * The print settings should be stored.
          */
-        APPLY,
+        APPLY = 1,
         /**
          * The print operation has been canceled,
          *   the print settings should not be stored.
          */
-        CANCEL,
+        CANCEL = 2,
         /**
          * The print operation is not complete
          *   yet. This value will only be returned when running asynchronously.
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 3,
     }
 
 
@@ -3576,19 +3597,19 @@ export interface Builder {
         /**
          * All pages.
          */
-        ALL,
+        ALL = 0,
         /**
          * Current page.
          */
-        CURRENT,
+        CURRENT = 1,
         /**
          * Range of pages.
          */
-        RANGES,
+        RANGES = 2,
         /**
          * Selected pages.
          */
-        SELECTION,
+        SELECTION = 3,
     }
 
 
@@ -3607,19 +3628,19 @@ export interface Builder {
         /**
          * Low quality.
          */
-        LOW,
+        LOW = 0,
         /**
          * Normal quality.
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * High quality.
          */
-        HIGH,
+        HIGH = 2,
         /**
          * Draft quality.
          */
-        DRAFT,
+        DRAFT = 3,
     }
 
 
@@ -3640,44 +3661,44 @@ export interface Builder {
          * The printing has not started yet; this
          *   status is set initially, and while the print dialog is shown.
          */
-        INITIAL,
+        INITIAL = 0,
         /**
          * This status is set while the begin-print
          *   signal is emitted and during pagination.
          */
-        PREPARING,
+        PREPARING = 1,
         /**
          * This status is set while the
          *   pages are being rendered.
          */
-        GENERATING_DATA,
+        GENERATING_DATA = 2,
         /**
          * The print job is being sent off to the
          *   printer.
          */
-        SENDING_DATA,
+        SENDING_DATA = 3,
         /**
          * The print job has been sent to the printer,
          *   but is not printed for some reason, e.g. the printer may be stopped.
          */
-        PENDING,
+        PENDING = 4,
         /**
          * Some problem has occurred during
          *   printing, e.g. a paper jam.
          */
-        PENDING_ISSUE,
+        PENDING_ISSUE = 5,
         /**
          * The printer is processing the print job.
          */
-        PRINTING,
+        PRINTING = 6,
         /**
          * The printing has been completed successfully.
          */
-        FINISHED,
+        FINISHED = 7,
         /**
          * The printing has been aborted.
          */
-        FINISHED_ABORTED,
+        FINISHED_ABORTED = 8,
     }
 
 
@@ -3698,14 +3719,14 @@ export interface Builder {
          * Events are handled regardless of what their
          *   target is.
          */
-        NONE,
+        NONE = 0,
         /**
          * Events are only handled if their target is in
          *   the same {@link Native} (or widget with {@link Gtk.Widget.limit_events}
          *   set) as the event controllers widget.
          *   Note that some event types have two targets (origin and destination).
          */
-        SAME_NATIVE,
+        SAME_NATIVE = 1,
     }
 
 
@@ -3724,26 +3745,26 @@ export interface Builder {
         /**
          * Events are not delivered.
          */
-        NONE,
+        NONE = 0,
         /**
          * Events are delivered in the capture phase. The
          *   capture phase happens before the bubble phase, runs from the toplevel down
          *   to the event widget. This option should only be used on containers that
          *   might possibly handle events before their children do.
          */
-        CAPTURE,
+        CAPTURE = 1,
         /**
          * Events are delivered in the bubble phase. The bubble
          *   phase happens after the capture phase, and before the default handlers
          *   are run. This phase runs from the event widget, up to the toplevel.
          */
-        BUBBLE,
+        BUBBLE = 2,
         /**
          * Events are delivered in the default widget event handlers,
          *   note that widget implementations must chain up on button, motion, touch and
          *   grab broken handlers for controllers in this phase to be run.
          */
-        TARGET,
+        TARGET = 3,
     }
 
 
@@ -3826,14 +3847,14 @@ export interface Builder {
         /**
          * The user has made no preference known to the system
          */
-        NO_PREFERENCE,
+        NO_PREFERENCE = 0,
         /**
          * The user has notified the system that they
          *   prefer an interface that removes or replaces the types of motion-based
          *   animation that either trigger discomfort for those with vestibular
          *   motion sensitivity, or distraction for those with attention deficits
          */
-        REDUCE,
+        REDUCE = 1,
     }
 
 
@@ -3857,47 +3878,47 @@ export interface Builder {
          * Returned if an action widget has no response id,
          *   or if the dialog gets programmatically hidden or destroyed
          */
-        NONE,
+        NONE = -1,
         /**
          * Generic response id, not used by GTK dialogs
          */
-        REJECT,
+        REJECT = -2,
         /**
          * Generic response id, not used by GTK dialogs
          */
-        ACCEPT,
+        ACCEPT = -3,
         /**
          * Returned if the dialog is deleted
          */
-        DELETE_EVENT,
+        DELETE_EVENT = -4,
         /**
          * Returned by OK buttons in GTK dialogs
          */
-        OK,
+        OK = -5,
         /**
          * Returned by Cancel buttons in GTK dialogs
          */
-        CANCEL,
+        CANCEL = -6,
         /**
          * Returned by Close buttons in GTK dialogs
          */
-        CLOSE,
+        CLOSE = -7,
         /**
          * Returned by Yes buttons in GTK dialogs
          */
-        YES,
+        YES = -8,
         /**
          * Returned by No buttons in GTK dialogs
          */
-        NO,
+        NO = -9,
         /**
          * Returned by Apply buttons in GTK dialogs
          */
-        APPLY,
+        APPLY = -10,
         /**
          * Returned by Help buttons in GTK dialogs
          */
-        HELP,
+        HELP = -11,
     }
 
 
@@ -3917,63 +3938,67 @@ export interface Builder {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * Fade in
          */
-        CROSSFADE,
+        CROSSFADE = 1,
         /**
          * Slide in from the left
          */
-        SLIDE_RIGHT,
+        SLIDE_RIGHT = 2,
         /**
          * Slide in from the right
          */
-        SLIDE_LEFT,
+        SLIDE_LEFT = 3,
         /**
          * Slide in from the bottom
          */
-        SLIDE_UP,
+        SLIDE_UP = 4,
         /**
          * Slide in from the top
          */
-        SLIDE_DOWN,
+        SLIDE_DOWN = 5,
         /**
          * Floop in from the left
          */
-        SWING_RIGHT,
+        SWING_RIGHT = 6,
         /**
          * Floop in from the right
          */
-        SWING_LEFT,
+        SWING_LEFT = 7,
         /**
          * Floop in from the bottom
          */
-        SWING_UP,
+        SWING_UP = 8,
         /**
          * Floop in from the top
          */
-        SWING_DOWN,
+        SWING_DOWN = 9,
         /**
          * Combination of {@link Gtk.RevealerTransitionType.CROSSFADE}
          * and {@link Gtk.RevealerTransitionType.SLIDE_RIGHT}.
+         * @since 4.22
          */
-        FADE_SLIDE_RIGHT,
+        FADE_SLIDE_RIGHT = 10,
         /**
          * Combination of {@link Gtk.RevealerTransitionType.CROSSFADE}
          * and {@link Gtk.RevealerTransitionType.SLIDE_LEFT}.
+         * @since 4.22
          */
-        FADE_SLIDE_LEFT,
+        FADE_SLIDE_LEFT = 11,
         /**
          * Combination of {@link Gtk.RevealerTransitionType.CROSSFADE}
          * and {@link Gtk.RevealerTransitionType.SLIDE_UP}.
+         * @since 4.22
          */
-        FADE_SLIDE_UP,
+        FADE_SLIDE_UP = 12,
         /**
          * Combination of {@link Gtk.RevealerTransitionType.CROSSFADE}
          * and {@link Gtk.RevealerTransitionType.SLIDE_DOWN}.
+         * @since 4.22
          */
-        FADE_SLIDE_DOWN,
+        FADE_SLIDE_DOWN = 13,
     }
 
 
@@ -3992,27 +4017,27 @@ export interface Builder {
         /**
          * Scroll in steps.
          */
-        STEPS,
+        STEPS = 0,
         /**
          * Scroll by pages.
          */
-        PAGES,
+        PAGES = 1,
         /**
          * Scroll to ends.
          */
-        ENDS,
+        ENDS = 2,
         /**
          * Scroll in horizontal steps.
          */
-        HORIZONTAL_STEPS,
+        HORIZONTAL_STEPS = 3,
         /**
          * Scroll by horizontal pages.
          */
-        HORIZONTAL_PAGES,
+        HORIZONTAL_PAGES = 4,
         /**
          * Scroll to the horizontal ends.
          */
-        HORIZONTAL_ENDS,
+        HORIZONTAL_ENDS = 5,
     }
 
 
@@ -4031,67 +4056,67 @@ export interface Builder {
         /**
          * No scrolling.
          */
-        NONE,
+        NONE = 0,
         /**
          * Jump to new location.
          */
-        JUMP,
+        JUMP = 1,
         /**
          * Step backward.
          */
-        STEP_BACKWARD,
+        STEP_BACKWARD = 2,
         /**
          * Step forward.
          */
-        STEP_FORWARD,
+        STEP_FORWARD = 3,
         /**
          * Page backward.
          */
-        PAGE_BACKWARD,
+        PAGE_BACKWARD = 4,
         /**
          * Page forward.
          */
-        PAGE_FORWARD,
+        PAGE_FORWARD = 5,
         /**
          * Step up.
          */
-        STEP_UP,
+        STEP_UP = 6,
         /**
          * Step down.
          */
-        STEP_DOWN,
+        STEP_DOWN = 7,
         /**
          * Page up.
          */
-        PAGE_UP,
+        PAGE_UP = 8,
         /**
          * Page down.
          */
-        PAGE_DOWN,
+        PAGE_DOWN = 9,
         /**
          * Step to the left.
          */
-        STEP_LEFT,
+        STEP_LEFT = 10,
         /**
          * Step to the right.
          */
-        STEP_RIGHT,
+        STEP_RIGHT = 11,
         /**
          * Page to the left.
          */
-        PAGE_LEFT,
+        PAGE_LEFT = 12,
         /**
          * Page to the right.
          */
-        PAGE_RIGHT,
+        PAGE_RIGHT = 13,
         /**
          * Scroll to start.
          */
-        START,
+        START = 14,
         /**
          * Scroll to end.
          */
-        END,
+        END = 15,
     }
 
 
@@ -4111,11 +4136,11 @@ export interface Builder {
         /**
          * Scrollable adjustments are based on the minimum size
          */
-        MINIMUM,
+        MINIMUM = 0,
         /**
          * Scrollable adjustments are based on the natural size
          */
-        NATURAL,
+        NATURAL = 1,
     }
 
 
@@ -4134,11 +4159,11 @@ export interface Builder {
         /**
          * No selection is possible.
          */
-        NONE,
+        NONE = 0,
         /**
          * Zero or one element may be selected.
          */
-        SINGLE,
+        SINGLE = 1,
         /**
          * Exactly one element is selected.
          *   In some circumstances, such as initially or during a search
@@ -4147,14 +4172,14 @@ export interface Builder {
          *   can’t deselect a currently selected element except by selecting
          *   another element.
          */
-        BROWSE,
+        BROWSE = 2,
         /**
          * Any number of elements may be selected.
          *   The Ctrl key may be used to enlarge the selection, and Shift
          *   key to select between the focus and the child pointed to.
          *   Some widgets may also allow Click-drag to select a range of elements.
          */
-        MULTIPLE,
+        MULTIPLE = 3,
     }
 
 
@@ -4175,15 +4200,15 @@ export interface Builder {
          * The control is made insensitive if no
          *   action can be triggered
          */
-        AUTO,
+        AUTO = 0,
         /**
          * The control is always sensitive
          */
-        ON,
+        ON = 1,
         /**
          * The control is always insensitive
          */
-        OFF,
+        OFF = 2,
     }
 
 
@@ -4204,17 +4229,17 @@ export interface Builder {
          * Shortcuts are handled inside
          *   the widget the controller belongs to.
          */
-        LOCAL,
+        LOCAL = 0,
         /**
          * Shortcuts are handled by
          *   the first ancestor that is a {@link ShortcutManager}
          */
-        MANAGED,
+        MANAGED = 1,
         /**
          * Shortcuts are handled by
          *   the root widget.
          */
-        GLOBAL,
+        GLOBAL = 2,
     }
 
 
@@ -4236,44 +4261,44 @@ export interface Builder {
          * The shortcut is a keyboard accelerator. The GtkShortcutsShortcut:accelerator
          *   property will be used.
          */
-        ACCELERATOR,
+        ACCELERATOR = 0,
         /**
          * The shortcut is a pinch gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_PINCH,
+        GESTURE_PINCH = 1,
         /**
          * The shortcut is a stretch gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_STRETCH,
+        GESTURE_STRETCH = 2,
         /**
          * The shortcut is a clockwise rotation gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_ROTATE_CLOCKWISE,
+        GESTURE_ROTATE_CLOCKWISE = 3,
         /**
          * The shortcut is a counterclockwise rotation gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_ROTATE_COUNTERCLOCKWISE,
+        GESTURE_ROTATE_COUNTERCLOCKWISE = 4,
         /**
          * The shortcut is a two-finger swipe gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_TWO_FINGER_SWIPE_LEFT,
+        GESTURE_TWO_FINGER_SWIPE_LEFT = 5,
         /**
          * The shortcut is a two-finger swipe gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_TWO_FINGER_SWIPE_RIGHT,
+        GESTURE_TWO_FINGER_SWIPE_RIGHT = 6,
         /**
          * The shortcut is a gesture. The GtkShortcutsShortcut:icon property will be
          *   used.
          */
-        GESTURE,
+        GESTURE = 7,
         /**
          * The shortcut is a swipe gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_SWIPE_LEFT,
+        GESTURE_SWIPE_LEFT = 8,
         /**
          * The shortcut is a swipe gesture. GTK provides an icon and subtitle.
          */
-        GESTURE_SWIPE_RIGHT,
+        GESTURE_SWIPE_RIGHT = 9,
     }
 
 
@@ -4293,19 +4318,19 @@ export interface Builder {
         /**
          * group has no effect
          */
-        NONE,
+        NONE = 0,
         /**
          * group affects horizontal requisition
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * group affects vertical requisition
          */
-        VERTICAL,
+        VERTICAL = 2,
         /**
          * group affects both horizontal and vertical requisition
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -4325,15 +4350,15 @@ export interface Builder {
         /**
          * Prefer height-for-width geometry management
          */
-        HEIGHT_FOR_WIDTH,
+        HEIGHT_FOR_WIDTH = 0,
         /**
          * Prefer width-for-height geometry management
          */
-        WIDTH_FOR_HEIGHT,
+        WIDTH_FOR_HEIGHT = 1,
         /**
          * Don’t trade height-for-width or width-for-height
          */
-        CONSTANT_SIZE,
+        CONSTANT_SIZE = 2,
     }
 
 
@@ -4352,11 +4377,11 @@ export interface Builder {
         /**
          * Sorting is in ascending order.
          */
-        ASCENDING,
+        ASCENDING = 0,
         /**
          * Sorting is in descending order.
          */
-        DESCENDING,
+        DESCENDING = 1,
     }
 
 
@@ -4377,23 +4402,23 @@ export interface Builder {
          * The sorter change cannot be described
          *   by any of the other enumeration values
          */
-        DIFFERENT,
+        DIFFERENT = 0,
         /**
          * The sort order was inverted. Comparisons
          *   that returned {@link Gtk.Ordering.SMALLER} now return {@link Gtk.Ordering.LARGER}
          *   and vice versa. Other comparisons return the same values as before.
          */
-        INVERTED,
+        INVERTED = 1,
         /**
          * The sorter is less strict: Comparisons
          *   may now return {@link Gtk.Ordering.EQUAL} that did not do so before.
          */
-        LESS_STRICT,
+        LESS_STRICT = 2,
         /**
          * The sorter is more strict: Comparisons
          *   that did return {@link Gtk.Ordering.EQUAL} may not do so anymore.
          */
-        MORE_STRICT,
+        MORE_STRICT = 3,
     }
 
 
@@ -4412,18 +4437,18 @@ export interface Builder {
         /**
          * A partial order. Any {@link Gtk.Ordering} is possible.
          */
-        PARTIAL,
+        PARTIAL = 0,
         /**
          * No order, all elements are considered equal.
          *   `gtk_sorter_compare()` will only return {@link Gtk.Ordering.EQUAL}.
          */
-        NONE,
+        NONE = 1,
         /**
          * A total order. `gtk_sorter_compare()` will only
          *   return {@link Gtk.Ordering.EQUAL} if an item is compared with itself. Two
          *   different items will never cause this value to be returned.
          */
-        TOTAL,
+        TOTAL = 2,
     }
 
 
@@ -4446,13 +4471,13 @@ export interface Builder {
          * When refreshing your {@link Gtk.SpinButton}, the value is
          *   always displayed
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * When refreshing your {@link Gtk.SpinButton}, the value is
          *   only displayed if it is valid within the bounds of the spin button's
          *   adjustment
          */
-        IF_VALID,
+        IF_VALID = 1,
     }
 
 
@@ -4472,31 +4497,31 @@ export interface Builder {
         /**
          * Increment by the adjustments step increment.
          */
-        STEP_FORWARD,
+        STEP_FORWARD = 0,
         /**
          * Decrement by the adjustments step increment.
          */
-        STEP_BACKWARD,
+        STEP_BACKWARD = 1,
         /**
          * Increment by the adjustments page increment.
          */
-        PAGE_FORWARD,
+        PAGE_FORWARD = 2,
         /**
          * Decrement by the adjustments page increment.
          */
-        PAGE_BACKWARD,
+        PAGE_BACKWARD = 3,
         /**
          * Go to the adjustments lower bound.
          */
-        HOME,
+        HOME = 4,
         /**
          * Go to the adjustments upper bound.
          */
-        END,
+        END = 5,
         /**
          * Change by a specified amount.
          */
-        USER_DEFINED,
+        USER_DEFINED = 6,
     }
 
 
@@ -4517,95 +4542,95 @@ export interface Builder {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * A cross-fade
          */
-        CROSSFADE,
+        CROSSFADE = 1,
         /**
          * Slide from left to right
          */
-        SLIDE_RIGHT,
+        SLIDE_RIGHT = 2,
         /**
          * Slide from right to left
          */
-        SLIDE_LEFT,
+        SLIDE_LEFT = 3,
         /**
          * Slide from bottom up
          */
-        SLIDE_UP,
+        SLIDE_UP = 4,
         /**
          * Slide from top down
          */
-        SLIDE_DOWN,
+        SLIDE_DOWN = 5,
         /**
          * Slide from left or right according to the children order
          */
-        SLIDE_LEFT_RIGHT,
+        SLIDE_LEFT_RIGHT = 6,
         /**
          * Slide from top down or bottom up according to the order
          */
-        SLIDE_UP_DOWN,
+        SLIDE_UP_DOWN = 7,
         /**
          * Cover the old page by sliding up
          */
-        OVER_UP,
+        OVER_UP = 8,
         /**
          * Cover the old page by sliding down
          */
-        OVER_DOWN,
+        OVER_DOWN = 9,
         /**
          * Cover the old page by sliding to the left
          */
-        OVER_LEFT,
+        OVER_LEFT = 10,
         /**
          * Cover the old page by sliding to the right
          */
-        OVER_RIGHT,
+        OVER_RIGHT = 11,
         /**
          * Uncover the new page by sliding up
          */
-        UNDER_UP,
+        UNDER_UP = 12,
         /**
          * Uncover the new page by sliding down
          */
-        UNDER_DOWN,
+        UNDER_DOWN = 13,
         /**
          * Uncover the new page by sliding to the left
          */
-        UNDER_LEFT,
+        UNDER_LEFT = 14,
         /**
          * Uncover the new page by sliding to the right
          */
-        UNDER_RIGHT,
+        UNDER_RIGHT = 15,
         /**
          * Cover the old page sliding up or uncover the new page sliding down, according to order
          */
-        OVER_UP_DOWN,
+        OVER_UP_DOWN = 16,
         /**
          * Cover the old page sliding down or uncover the new page sliding up, according to order
          */
-        OVER_DOWN_UP,
+        OVER_DOWN_UP = 17,
         /**
          * Cover the old page sliding left or uncover the new page sliding right, according to order
          */
-        OVER_LEFT_RIGHT,
+        OVER_LEFT_RIGHT = 18,
         /**
          * Cover the old page sliding right or uncover the new page sliding left, according to order
          */
-        OVER_RIGHT_LEFT,
+        OVER_RIGHT_LEFT = 19,
         /**
          * Pretend the pages are sides of a cube and rotate that cube to the left
          */
-        ROTATE_LEFT,
+        ROTATE_LEFT = 20,
         /**
          * Pretend the pages are sides of a cube and rotate that cube to the right
          */
-        ROTATE_RIGHT,
+        ROTATE_RIGHT = 21,
         /**
          * Pretend the pages are sides of a cube and rotate that cube to the left or right according to the children order
          */
-        ROTATE_LEFT_RIGHT,
+        ROTATE_LEFT_RIGHT = 22,
     }
 
 
@@ -4625,17 +4650,17 @@ export interface Builder {
          * The search string and
          *   text must match exactly
          */
-        EXACT,
+        EXACT = 0,
         /**
          * The search string
          *   must be contained as a substring inside the text
          */
-        SUBSTRING,
+        SUBSTRING = 1,
         /**
          * The text must begin
          *   with the search string
          */
-        PREFIX,
+        PREFIX = 2,
     }
 
 
@@ -4779,23 +4804,24 @@ export interface Builder {
         /**
          * The default foreground color
          */
-        FOREGROUND,
+        FOREGROUND = 0,
         /**
          * Indication color for errors
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Indication color for warnings
          */
-        WARNING,
+        WARNING = 2,
         /**
          * Indication color for success
          */
-        SUCCESS,
+        SUCCESS = 3,
         /**
          * The system accent color.
+         * @since 4.22
          */
-        ACCENT,
+        ACCENT = 4,
     }
 
 
@@ -4822,11 +4848,11 @@ export interface Builder {
         /**
          * the {@link Gtk.Settings.gtk_xft_dpi} setting has changed
          */
-        DPI,
+        DPI = 0,
         /**
          * The {@link Gtk.Settings.gtk_font_name} setting has changed
          */
-        FONT_NAME,
+        FONT_NAME = 1,
         /**
          * The font configuration has changed in a way that
          *   requires text to be redrawn. This can be any of the
@@ -4836,16 +4862,16 @@ export interface Builder {
          *   {@link Gtk.Settings.gtk_xft_rgba} or
          *   {@link Gtk.Settings.gtk_fontconfig_timestamp} settings
          */
-        FONT_CONFIG,
+        FONT_CONFIG = 2,
         /**
          * The display has changed
          */
-        DISPLAY,
+        DISPLAY = 3,
         /**
          * The icon theme has changed in a way that requires
          *   icons to be looked up again
          */
-        ICON_THEME,
+        ICON_THEME = 4,
     }
 
 
@@ -4864,15 +4890,15 @@ export interface Builder {
         /**
          * No direction.
          */
-        NONE,
+        NONE = 0,
         /**
          * Left to right text direction.
          */
-        LTR,
+        LTR = 1,
         /**
          * Right to left text direction.
          */
-        RTL,
+        RTL = 2,
     }
 
 
@@ -4893,12 +4919,12 @@ export interface Builder {
          * Selects the current word. It is triggered by
          *   a double-click for example.
          */
-        WORD,
+        WORD = 0,
         /**
          * Selects the current line. It is triggered by
          *   a triple-click for example.
          */
-        LINE,
+        LINE = 1,
     }
 
 
@@ -4918,11 +4944,11 @@ export interface Builder {
         /**
          * The layer rendered below the text (but above the background).
          */
-        BELOW_TEXT,
+        BELOW_TEXT = 0,
         /**
          * The layer rendered above the text.
          */
-        ABOVE_TEXT,
+        ABOVE_TEXT = 1,
     }
 
 
@@ -4941,27 +4967,27 @@ export interface Builder {
         /**
          * Window that floats over scrolling areas.
          */
-        WIDGET,
+        WIDGET = 1,
         /**
          * Scrollable text window.
          */
-        TEXT,
+        TEXT = 2,
         /**
          * Left side border window.
          */
-        LEFT,
+        LEFT = 3,
         /**
          * Right side border window.
          */
-        RIGHT,
+        RIGHT = 4,
         /**
          * Top border window.
          */
-        TOP,
+        TOP = 5,
         /**
          * Bottom border window.
          */
-        BOTTOM,
+        BOTTOM = 6,
     }
 
 
@@ -4983,15 +5009,15 @@ export interface Builder {
         /**
          * Columns only get bigger in reaction to changes in the model
          */
-        GROW_ONLY,
+        GROW_ONLY = 0,
         /**
          * Columns resize to be the optimal size every time the model changes.
          */
-        AUTOSIZE,
+        AUTOSIZE = 1,
         /**
          * Columns are a fixed numbers of pixels wide.
          */
-        FIXED,
+        FIXED = 2,
     }
 
 
@@ -5011,19 +5037,19 @@ export interface Builder {
         /**
          * dropped row is inserted before
          */
-        BEFORE,
+        BEFORE = 0,
         /**
          * dropped row is inserted after
          */
-        AFTER,
+        AFTER = 1,
         /**
          * dropped row becomes a child or is inserted before
          */
-        INTO_OR_BEFORE,
+        INTO_OR_BEFORE = 2,
         /**
          * dropped row becomes a child or is inserted after
          */
-        INTO_OR_AFTER,
+        INTO_OR_AFTER = 3,
     }
 
 
@@ -5043,19 +5069,19 @@ export interface Builder {
         /**
          * No grid lines.
          */
-        NONE,
+        NONE = 0,
         /**
          * Horizontal grid lines.
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * Vertical grid lines.
          */
-        VERTICAL,
+        VERTICAL = 2,
         /**
          * Horizontal and vertical grid lines.
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -5074,19 +5100,19 @@ export interface Builder {
         /**
          * No units.
          */
-        NONE,
+        NONE = 0,
         /**
          * Dimensions in points.
          */
-        POINTS,
+        POINTS = 1,
         /**
          * Dimensions in inches.
          */
-        INCH,
+        INCH = 2,
         /**
          * Dimensions in millimeters
          */
-        MM,
+        MM = 3,
     }
 
 
@@ -5107,69 +5133,69 @@ export interface Builder {
         /**
          * The top left corner
          */
-        TOP_LEFT,
+        TOP_LEFT = 0,
         /**
          * The top edge
          */
-        TOP,
+        TOP = 1,
         /**
          * The top right corner
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 2,
         /**
          * The left edge
          */
-        LEFT,
+        LEFT = 3,
         /**
          * The center pointer
          */
-        CENTER,
+        CENTER = 4,
         /**
          * The right edge
          */
-        RIGHT,
+        RIGHT = 5,
         /**
          * The bottom left corner
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 6,
         /**
          * the bottom edge
          */
-        BOTTOM,
+        BOTTOM = 7,
         /**
          * The bottom right corner
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 8,
         /**
          * The top left or top right corner,
          *   depending on the text direction
          */
-        TOP_START,
+        TOP_START = 9,
         /**
          * The top right or top left corner,
          *   depending on the text direction
          */
-        TOP_END,
+        TOP_END = 10,
         /**
          * The left or right edge,
          *   depending on the text direction
          */
-        START,
+        START = 11,
         /**
          * The right or left edge,
          *   depending on the text direction
          */
-        END,
+        END = 12,
         /**
          * The bottom left or top right corner,
          *   depending on the text direction
          */
-        BOTTOM_START,
+        BOTTOM_START = 13,
         /**
          * The bottom right or top left corner,
          *   depending on the text direction
          */
-        BOTTOM_END,
+        BOTTOM_END = 14,
     }
 
 
@@ -5188,22 +5214,22 @@ export interface Builder {
         /**
          * do not wrap lines; just make the text area wider
          */
-        NONE,
+        NONE = 0,
         /**
          * wrap text, breaking lines anywhere the cursor can
          *   appear (between characters, usually - if you want to be technical,
          *   between graphemes, see `pango_get_log_attrs()`)
          */
-        CHAR,
+        CHAR = 1,
         /**
          * wrap text, breaking lines in between words
          */
-        WORD,
+        WORD = 2,
         /**
          * wrap text, breaking lines in between words, or if
          *   that is not enough, also between graphemes
          */
-        WORD_CHAR,
+        WORD_CHAR = 3,
     }
 
 
@@ -5211,12 +5237,14 @@ export interface Builder {
      * An attribute for the background color, expressed as an RGB value
      * encoded in a string using the format: `{r8},{g8},{b8}`.
      * @since 4.14
+     * @default bg-color
      */
     const ACCESSIBLE_ATTRIBUTE_BACKGROUND: string;
 
     /**
      * An attribute for the font family name.
      * @since 4.14
+     * @default family-name
      */
     const ACCESSIBLE_ATTRIBUTE_FAMILY: string;
 
@@ -5224,6 +5252,7 @@ export interface Builder {
      * An attribute for the foreground color, expressed as an RGB value
      * encoded in a string using the format: `{r8},{g8},{b8}`.
      * @since 4.14
+     * @default fg-color
      */
     const ACCESSIBLE_ATTRIBUTE_FOREGROUND: string;
 
@@ -5235,24 +5264,28 @@ export interface Builder {
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_OVERLINE_NONE}
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_OVERLINE_SINGLE}
      * @since 4.14
+     * @default overline
      */
     const ACCESSIBLE_ATTRIBUTE_OVERLINE: string;
 
     /**
      * The "none" overline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_OVERLINE}.
      * @since 4.14
+     * @default none
      */
     const ACCESSIBLE_ATTRIBUTE_OVERLINE_NONE: string;
 
     /**
      * The "single" overline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_OVERLINE}.
      * @since 4.14
+     * @default single
      */
     const ACCESSIBLE_ATTRIBUTE_OVERLINE_SINGLE: string;
 
     /**
      * An attribute for the font size, expressed in points.
      * @since 4.14
+     * @default size
      */
     const ACCESSIBLE_ATTRIBUTE_SIZE: string;
 
@@ -5266,60 +5299,70 @@ export interface Builder {
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH_CONDENSED}
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH_SEMI_CONDENSED}
      * @since 4.14
+     * @default stretch
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH: string;
 
     /**
      * The "condensed" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default condensed
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_CONDENSED: string;
 
     /**
      * The "expanded" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default expanded
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_EXPANDED: string;
 
     /**
      * The "extra condensed" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default extra_condensed
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_EXTRA_CONDENSED: string;
 
     /**
      * The "extra expanded" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default extra_expanded
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_EXTRA_EXPANDED: string;
 
     /**
      * The "normal" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default normal
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_NORMAL: string;
 
     /**
      * The "semi condensed" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default semi_condensed
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_SEMI_CONDENSED: string;
 
     /**
      * The "semi expanded" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default semi_expanded
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_SEMI_EXPANDED: string;
 
     /**
      * The "ultra condensed" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default ultra_condensed
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_ULTRA_CONDENSED: string;
 
     /**
      * The "ultra expanded" stretch value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STRETCH}.
      * @since 4.14
+     * @default ultra_expanded
      */
     const ACCESSIBLE_ATTRIBUTE_STRETCH_ULTRA_EXPANDED: string;
 
@@ -5328,6 +5371,7 @@ export interface Builder {
      * 
      * Possible values are `true` or `false`.
      * @since 4.14
+     * @default strikethrough
      */
     const ACCESSIBLE_ATTRIBUTE_STRIKETHROUGH: string;
 
@@ -5340,24 +5384,28 @@ export interface Builder {
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_STYLE_OBLIQUE}
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_STYLE_ITALIC}
      * @since 4.14
+     * @default style
      */
     const ACCESSIBLE_ATTRIBUTE_STYLE: string;
 
     /**
      * The "italic" style value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STYLE}.
      * @since 4.14
+     * @default italic
      */
     const ACCESSIBLE_ATTRIBUTE_STYLE_ITALIC: string;
 
     /**
      * The "normal" style value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STYLE}.
      * @since 4.14
+     * @default normal
      */
     const ACCESSIBLE_ATTRIBUTE_STYLE_NORMAL: string;
 
     /**
      * The "oblique" style value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_STYLE}.
      * @since 4.14
+     * @default oblique
      */
     const ACCESSIBLE_ATTRIBUTE_STYLE_OBLIQUE: string;
 
@@ -5371,30 +5419,35 @@ export interface Builder {
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE_DOUBLE}
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE_ERROR}
      * @since 4.14
+     * @default underline
      */
     const ACCESSIBLE_ATTRIBUTE_UNDERLINE: string;
 
     /**
      * The "double" underline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE}.
      * @since 4.14
+     * @default double
      */
     const ACCESSIBLE_ATTRIBUTE_UNDERLINE_DOUBLE: string;
 
     /**
      * The "error" underline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE}.
      * @since 4.14
+     * @default error
      */
     const ACCESSIBLE_ATTRIBUTE_UNDERLINE_ERROR: string;
 
     /**
      * The "none" underline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE}.
      * @since 4.14
+     * @default none
      */
     const ACCESSIBLE_ATTRIBUTE_UNDERLINE_NONE: string;
 
     /**
      * The "single" underline value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_UNDERLINE}.
      * @since 4.14
+     * @default single
      */
     const ACCESSIBLE_ATTRIBUTE_UNDERLINE_SINGLE: string;
 
@@ -5410,54 +5463,63 @@ export interface Builder {
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT_UNICASE}
      * - {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT_TITLE_CAPS}
      * @since 4.14
+     * @default variant
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT: string;
 
     /**
      * The "all petite caps" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default all-petite-caps
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_ALL_PETITE_CAPS: string;
 
     /**
      * The "all small caps" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default all-small-caps
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_ALL_SMALL_CAPS: string;
 
     /**
      * The "petite caps" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default petite-caps
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_PETITE_CAPS: string;
 
     /**
      * The "small caps" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default small-caps
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_SMALL_CAPS: string;
 
     /**
      * The "title caps" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default title-caps
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_TITLE_CAPS: string;
 
     /**
      * The "unicase" variant value for {@link Gtk.ACCESSIBLE_ATTRIBUTE_VARIANT}.
      * @since 4.14
+     * @default unicase
      */
     const ACCESSIBLE_ATTRIBUTE_VARIANT_UNICASE: string;
 
     /**
      * An attribute for the font weight.
      * @since 4.14
+     * @default weight
      */
     const ACCESSIBLE_ATTRIBUTE_WEIGHT: string;
 
     /**
      * An undefined value. The accessible attribute is either unset, or its
      * value is undefined.
+     * @default -1
      */
     const ACCESSIBLE_VALUE_UNDEFINED: number;
 
@@ -5465,11 +5527,13 @@ export interface Builder {
      * Like {@link get_binary_age}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 2303
      */
     const BINARY_AGE: number;
 
     /**
      * The default name of the extension point.
+     * @default gtk-im-module
      */
     const IM_MODULE_EXTENSION_POINT_NAME: string;
 
@@ -5478,6 +5542,7 @@ export interface Builder {
      * signal in case of conversion failure.
      * 
      * See `Gtk.SpinButton::input`.
+     * @default -1
      */
     const INPUT_ERROR: number;
 
@@ -5485,6 +5550,7 @@ export interface Builder {
      * Like {@link get_interface_age}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 0
      */
     const INTERFACE_AGE: number;
 
@@ -5498,21 +5564,25 @@ export interface Builder {
      * 
      * Refer to each function's documentation for if this value is
      * allowed and what it does.
+     * @default 4294967295
      */
     const INVALID_LIST_POSITION: number;
 
     /**
      * The name used for the stock full offset included by {@link Gtk.LevelBar}.
+     * @default full
      */
     const LEVEL_BAR_OFFSET_FULL: string;
 
     /**
      * The name used for the stock high offset included by {@link Gtk.LevelBar}.
+     * @default high
      */
     const LEVEL_BAR_OFFSET_HIGH: string;
 
     /**
      * The name used for the stock low offset included by {@link Gtk.LevelBar}.
+     * @default low
      */
     const LEVEL_BAR_OFFSET_LOW: string;
 
@@ -5520,6 +5590,7 @@ export interface Builder {
      * Like {@link get_major_version}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 4
      */
     const MAJOR_VERSION: number;
 
@@ -5527,11 +5598,13 @@ export interface Builder {
      * Evaluates to the maximum length of a compose sequence.
      * 
      * This macro is longer used by GTK.
+     * @default 7
      */
     const MAX_COMPOSE_LEN: number;
 
     /**
      * The default extension point name for media file.
+     * @default gtk-media-file
      */
     const MEDIA_FILE_EXTENSION_POINT_NAME: string;
 
@@ -5539,6 +5612,7 @@ export interface Builder {
      * Like {@link get_micro_version}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 3
      */
     const MICRO_VERSION: number;
 
@@ -5546,68 +5620,81 @@ export interface Builder {
      * Like {@link get_minor_version}, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 23
      */
     const MINOR_VERSION: number;
 
     /**
      * Name for the A3 paper size.
+     * @default iso_a3
      */
     const PAPER_NAME_A3: string;
 
     /**
      * Name for the A4 paper size.
+     * @default iso_a4
      */
     const PAPER_NAME_A4: string;
 
     /**
      * Name for the A5 paper size.
+     * @default iso_a5
      */
     const PAPER_NAME_A5: string;
 
     /**
      * Name for the B5 paper size.
+     * @default iso_b5
      */
     const PAPER_NAME_B5: string;
 
     /**
      * Name for the Executive paper size.
+     * @default na_executive
      */
     const PAPER_NAME_EXECUTIVE: string;
 
     /**
      * Name for the Legal paper size.
+     * @default na_legal
      */
     const PAPER_NAME_LEGAL: string;
 
     /**
      * Name for the Letter paper size.
+     * @default na_letter
      */
     const PAPER_NAME_LETTER: string;
 
     /**
      * The key used by the “Print to file” printer to store whether to collate the
      * printed pages.
+     * @default collate
      */
     const PRINT_SETTINGS_COLLATE: string;
 
     /**
      * The key used by the “Print to file” printer to store the default source.
+     * @default default-source
      */
     const PRINT_SETTINGS_DEFAULT_SOURCE: string;
 
     /**
      * The key used by the “Print to file” printer to store the dither used.
+     * @default dither
      */
     const PRINT_SETTINGS_DITHER: string;
 
     /**
      * The key used by the “Print to file” printer to store whether to print the
      * output in duplex.
+     * @default duplex
      */
     const PRINT_SETTINGS_DUPLEX: string;
 
     /**
      * The key used by the “Print to file” printer to store the finishings.
+     * @default finishings
      */
     const PRINT_SETTINGS_FINISHINGS: string;
 
@@ -5615,28 +5702,33 @@ export interface Builder {
      * The key used by the “Print to file” printer to store the media type.
      * 
      * The set of media types is defined in PWG 5101.1-2002 PWG.
+     * @default media-type
      */
     const PRINT_SETTINGS_MEDIA_TYPE: string;
 
     /**
      * The key used by the “Print to file” printer to store the number of pages per
      * sheet.
+     * @default number-up
      */
     const PRINT_SETTINGS_NUMBER_UP: string;
 
     /**
      * The key used by the “Print to file” printer to store the number of pages per
      * sheet in number-up mode.
+     * @default number-up-layout
      */
     const PRINT_SETTINGS_NUMBER_UP_LAYOUT: string;
 
     /**
      * The key used by the “Print to file” printer to store the number of copies.
+     * @default n-copies
      */
     const PRINT_SETTINGS_N_COPIES: string;
 
     /**
      * The key used by the “Print to file” printer to store the orientation.
+     * @default orientation
      */
     const PRINT_SETTINGS_ORIENTATION: string;
 
@@ -5644,23 +5736,27 @@ export interface Builder {
      * The key used by the “Print to file” printer to store the file
      * name of the output without the path to the directory and the
      * file extension.
+     * @default output-basename
      */
     const PRINT_SETTINGS_OUTPUT_BASENAME: string;
 
     /**
      * The key used by the “Print to file” printer to store the output bin.
+     * @default output-bin
      */
     const PRINT_SETTINGS_OUTPUT_BIN: string;
 
     /**
      * The key used by the “Print to file” printer to store the
      * directory to which the output should be written.
+     * @default output-dir
      */
     const PRINT_SETTINGS_OUTPUT_DIR: string;
 
     /**
      * The key used by the “Print to file” printer to store the format
      * of the output. The supported values are “PS” and “PDF”.
+     * @default output-file-format
      */
     const PRINT_SETTINGS_OUTPUT_FILE_FORMAT: string;
 
@@ -5668,99 +5764,117 @@ export interface Builder {
      * The key used by the “Print to file” printer to store the URI
      * to which the output should be written. GTK itself supports
      * only “file://” URIs.
+     * @default output-uri
      */
     const PRINT_SETTINGS_OUTPUT_URI: string;
 
     /**
      * The key used by the “Print to file” printer to store the array of page ranges
      * to print.
+     * @default page-ranges
      */
     const PRINT_SETTINGS_PAGE_RANGES: string;
 
     /**
      * The key used by the “Print to file” printer to store the set of pages to print.
+     * @default page-set
      */
     const PRINT_SETTINGS_PAGE_SET: string;
 
     /**
      * The key used by the “Print to file” printer to store the page format.
+     * @default paper-format
      */
     const PRINT_SETTINGS_PAPER_FORMAT: string;
 
     /**
      * The key used by the “Print to file” printer to store the page height.
+     * @default paper-height
      */
     const PRINT_SETTINGS_PAPER_HEIGHT: string;
 
     /**
      * The key used by the “Print to file” printer to store the paper width.
+     * @default paper-width
      */
     const PRINT_SETTINGS_PAPER_WIDTH: string;
 
     /**
      * The key used by the “Print to file” printer to store the printer name.
+     * @default printer
      */
     const PRINT_SETTINGS_PRINTER: string;
 
     /**
      * The key used by the “Print to file” printer to store the resolution in lines
      * per inch.
+     * @default printer-lpi
      */
     const PRINT_SETTINGS_PRINTER_LPI: string;
 
     /**
      * The key used by the “Print to file” printer to store which pages to print.
+     * @default print-pages
      */
     const PRINT_SETTINGS_PRINT_PAGES: string;
 
     /**
      * The key used by the “Print to file” printer to store the printing quality.
+     * @default quality
      */
     const PRINT_SETTINGS_QUALITY: string;
 
     /**
      * The key used by the “Print to file” printer to store the resolution in DPI.
+     * @default resolution
      */
     const PRINT_SETTINGS_RESOLUTION: string;
 
     /**
      * The key used by the “Print to file” printer to store the horizontal
      * resolution in DPI.
+     * @default resolution-x
      */
     const PRINT_SETTINGS_RESOLUTION_X: string;
 
     /**
      * The key used by the “Print to file” printer to store the vertical resolution
      * in DPI.
+     * @default resolution-y
      */
     const PRINT_SETTINGS_RESOLUTION_Y: string;
 
     /**
      * The key used by the “Print to file” printer to store whether to reverse the
      * order of the printed pages.
+     * @default reverse
      */
     const PRINT_SETTINGS_REVERSE: string;
 
     /**
      * The key used by the “Print to file” printer to store the scale.
+     * @default scale
      */
     const PRINT_SETTINGS_SCALE: string;
 
     /**
      * The key used by the “Print to file” printer to store whether to print with
      * colors.
+     * @default use-color
      */
     const PRINT_SETTINGS_USE_COLOR: string;
 
     /**
      * The key used by the “Print to file” printer to store 32-bit Windows extra
      * driver.
+     * @default win32-driver-extra
      */
     const PRINT_SETTINGS_WIN32_DRIVER_EXTRA: string;
 
     /**
      * The key used by the “Print to file” printer to store the 32-bit Windows
      * driver version.
+     * @default win32-driver-version
      */
     const PRINT_SETTINGS_WIN32_DRIVER_VERSION: string;
 
@@ -5770,12 +5884,14 @@ export interface Builder {
      * It is used internally by GTK+ to compute the sizes of widgets.
      * This priority is higher than `GDK_PRIORITY_REDRAW` to avoid
      * resizing a widget which was just redrawn.
+     * @default 110
      */
     const PRIORITY_RESIZE: number;
 
     /**
      * A priority that can be used when adding a {@link Gtk.StyleProvider}
      * for application-specific style information.
+     * @default 600
      */
     const STYLE_PROVIDER_PRIORITY_APPLICATION: number;
 
@@ -5787,6 +5903,7 @@ export interface Builder {
      * styling for custom style classes - themes are likely to
      * override styling provided at this priority with
      * catch-all `* {...}` rules.
+     * @default 1
      */
     const STYLE_PROVIDER_PRIORITY_FALLBACK: number;
 
@@ -5796,12 +5913,14 @@ export interface Builder {
      * 
      * This priority is higher than `GTK_STYLE_PROVIDER_PRIORITY_THEME`
      * to let settings override themes.
+     * @default 400
      */
     const STYLE_PROVIDER_PRIORITY_SETTINGS: number;
 
     /**
      * The priority used for style information provided
      * by themes.
+     * @default 200
      */
     const STYLE_PROVIDER_PRIORITY_THEME: number;
 
@@ -5811,18 +5930,21 @@ export interface Builder {
      * 
      * You should not use priorities higher than this, to
      * give the user the last word.
+     * @default 800
      */
     const STYLE_PROVIDER_PRIORITY_USER: number;
 
     /**
      * The {@link Gtk.SvgFeatures} that are enabled by default.
      * @since 4.22
+     * @default 15
      */
     const SVG_DEFAULT_FEATURES: number;
 
     /**
      * The priority at which the text view validates onscreen lines
      * in an idle job in the background.
+     * @default 125
      */
     const TEXT_VIEW_PRIORITY_VALIDATE: number;
 
@@ -5831,6 +5953,7 @@ export interface Builder {
      * 
      * See also: {@link Gtk.TreeSortable.set_sort_column_id}
      * @deprecated since 4.20: There is no replacement
+     * @default -1
      */
     const TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: number;
 
@@ -5839,6 +5962,7 @@ export interface Builder {
      * 
      * See also: {@link Gtk.TreeSortable.set_sort_column_id}
      * @deprecated since 4.20: There is no replacement
+     * @default -2
      */
     const TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: number;
 
@@ -6744,6 +6868,7 @@ export interface Builder {
      * @param result {@link Gio.AsyncResult} that was passed to `callback`
      * @returns `true` if the URI was shown successfully.   Otherwise, `false` is returned and `error` is set
      * @deprecated since 4.10: Use {@link Gtk.FileLauncher.launch} or   {@link Gtk.UriLauncher.launch} instead
+     * @throws GLib.Error
      */
     function show_uri_full_finish(parent: Window, result: Gio.AsyncResult): boolean;
 
@@ -7293,21 +7418,21 @@ export interface Builder {
          * Inhibit ending the user session
          *   by logging out or by shutting down the computer
          */
-        LOGOUT,
+        LOGOUT = 1,
         /**
          * Inhibit user switching
          */
-        SWITCH,
+        SWITCH = 2,
         /**
          * Inhibit suspending the
          *   session or computer
          */
-        SUSPEND,
+        SUSPEND = 4,
         /**
          * Inhibit the session being
          *   marked as idle (and possibly locked)
          */
-        IDLE,
+        IDLE = 8,
     }
 
 
@@ -7332,7 +7457,7 @@ export interface Builder {
          * The closure should be created swapped. See
          *   `g_cclosure_new_swap()` for details.
          */
-        SWAPPED,
+        SWAPPED = 1,
     }
 
 
@@ -7353,31 +7478,31 @@ export interface Builder {
          * The cell is currently selected, and
          *  probably has a selection colored background to render to.
          */
-        SELECTED,
+        SELECTED = 1,
         /**
          * The mouse is hovering over the cell.
          */
-        PRELIT,
+        PRELIT = 2,
         /**
          * The cell is drawn in an insensitive manner
          */
-        INSENSITIVE,
+        INSENSITIVE = 4,
         /**
          * The cell is in a sorted row
          */
-        SORTED,
+        SORTED = 8,
         /**
          * The cell is in the focus row.
          */
-        FOCUSED,
+        FOCUSED = 16,
         /**
          * The cell is in a row that can be expanded
          */
-        EXPANDABLE,
+        EXPANDABLE = 32,
         /**
          * The cell is in a row that is expanded
          */
-        EXPANDED,
+        EXPANDED = 64,
     }
 
 
@@ -7400,100 +7525,107 @@ export interface Builder {
         /**
          * Information about GtkTextView
          */
-        TEXT,
+        TEXT = 1,
         /**
          * Information about GtkTreeView
          */
-        TREE,
+        TREE = 2,
         /**
          * Information about keyboard shortcuts
          */
-        KEYBINDINGS,
+        KEYBINDINGS = 4,
         /**
          * Information about modules and extensions
          */
-        MODULES,
+        MODULES = 8,
         /**
          * Information about size allocation
          */
-        GEOMETRY,
+        GEOMETRY = 16,
         /**
          * Information about icon themes
          */
-        ICONTHEME,
+        ICONTHEME = 32,
         /**
          * Information about printing
          */
-        PRINTING,
+        PRINTING = 64,
         /**
          * Trace GtkBuilder operation
          */
-        BUILDER_TRACE,
+        BUILDER_TRACE = 128,
         /**
          * Information about size requests
          */
-        SIZE_REQUEST,
+        SIZE_REQUEST = 256,
         /**
          * Disable the style property cache
          */
-        NO_CSS_CACHE,
+        NO_CSS_CACHE = 512,
         /**
          * Open the GTK inspector
          */
-        INTERACTIVE,
+        INTERACTIVE = 1024,
         /**
          * Show touch UI elements for pointer events.
+         * @since 4.20
          */
-        TOUCHSCREEN,
+        TOUCHSCREEN = 2048,
         /**
          * Information about actions and menu models
          */
-        ACTIONS,
+        ACTIONS = 4096,
         /**
          * Information from layout managers
          */
-        LAYOUT,
+        LAYOUT = 8192,
         /**
          * Include debug render nodes in the generated snapshots
          */
-        SNAPSHOT,
+        SNAPSHOT = 16384,
         /**
          * Information from the constraints solver
          */
-        CONSTRAINTS,
+        CONSTRAINTS = 32768,
         /**
          * Log unused GtkBuilder objects
          */
-        BUILDER_OBJECTS,
+        BUILDER_OBJECTS = 65536,
         /**
          * Information about accessibility state changes
          */
-        A11Y,
+        A11Y = 131072,
         /**
          * Information about icon fallback.
+         * @since 4.2
          */
-        ICONFALLBACK,
+        ICONFALLBACK = 262144,
         /**
          * Inverts the default text-direction.
+         * @since 4.8
          */
-        INVERT_TEXT_DIR,
+        INVERT_TEXT_DIR = 524288,
         /**
          * Information about deprecated CSS features.
+         * @since 4.16
          */
-        CSS,
+        CSS = 1048576,
         /**
          * Information about deprecated GtkBuilder features.
+         * @since 4.18
          */
-        BUILDER,
+        BUILDER = 2097152,
         /**
          * Information about session saving.
+         * @since 4.22
          */
-        SESSION,
+        SESSION = 4194304,
         /**
          * Print information from the GTK inspector 'general' page,
          * in markdown format.
+         * @since 4.24
          */
-        GENERAL_INFO,
+        GENERAL_INFO = 8388608,
     }
 
 
@@ -7513,16 +7645,16 @@ export interface Builder {
         /**
          * Make the constructed dialog modal
          */
-        MODAL,
+        MODAL = 1,
         /**
          * Destroy the dialog when its parent is destroyed
          */
-        DESTROY_WITH_PARENT,
+        DESTROY_WITH_PARENT = 2,
         /**
          * Create dialog with actions in header
          *   bar instead of action area
          */
-        USE_HEADER_BAR,
+        USE_HEADER_BAR = 4,
     }
 
 
@@ -7541,32 +7673,33 @@ export interface Builder {
         /**
          * Don't emit scroll.
          */
-        NONE,
+        NONE = 0,
         /**
          * Emit scroll with vertical deltas.
          */
-        VERTICAL,
+        VERTICAL = 1,
         /**
          * Emit scroll with horizontal deltas.
          */
-        HORIZONTAL,
+        HORIZONTAL = 2,
         /**
          * Only emit deltas that are multiples of 1.
          */
-        DISCRETE,
+        DISCRETE = 4,
         /**
          * Emit ::decelerate after continuous scroll finishes.
          */
-        KINETIC,
+        KINETIC = 8,
         /**
          * A {@link Gtk.EventControllerScrollFlags} value to prefer physical direction over
          * logical direction (i.e. oblivious to natural scroll).
+         * @since 4.20
          */
-        PHYSICAL_DIRECTION,
+        PHYSICAL_DIRECTION = 16,
         /**
          * Emit scroll on both axes.
          */
-        BOTH_AXES,
+        BOTH_AXES = 3,
     }
 
 
@@ -7590,23 +7723,23 @@ export interface Builder {
         /**
          * Allow selecting a font family
          */
-        FAMILY,
+        FAMILY = 0,
         /**
          * Allow selecting a specific font face
          */
-        STYLE,
+        STYLE = 1,
         /**
          * Allow selecting a specific font size
          */
-        SIZE,
+        SIZE = 2,
         /**
          * Allow changing OpenType font variation axes
          */
-        VARIATIONS,
+        VARIATIONS = 4,
         /**
          * Allow selecting specific OpenType font features
          */
-        FEATURES,
+        FEATURES = 8,
     }
 
 
@@ -7624,23 +7757,24 @@ export interface Builder {
     enum IconLookupFlags {
         /**
          * Perform a regular lookup.
+         * @since 4.18
          */
-        NONE,
+        NONE = 0,
         /**
          * Try to always load regular icons, even
          *   when symbolic icon names are given
          */
-        FORCE_REGULAR,
+        FORCE_REGULAR = 1,
         /**
          * Try to always load symbolic icons, even
          *   when regular icon names are given
          */
-        FORCE_SYMBOLIC,
+        FORCE_SYMBOLIC = 2,
         /**
          * Starts loading the texture in the background
          *   so it is ready when later needed.
          */
-        PRELOAD,
+        PRELOAD = 4,
     }
 
 
@@ -7669,59 +7803,59 @@ export interface Builder {
         /**
          * No special behaviour suggested
          */
-        NONE,
+        NONE = 0,
         /**
          * Suggest checking for typos
          */
-        SPELLCHECK,
+        SPELLCHECK = 1,
         /**
          * Suggest not checking for typos
          */
-        NO_SPELLCHECK,
+        NO_SPELLCHECK = 2,
         /**
          * Suggest word completion
          */
-        WORD_COMPLETION,
+        WORD_COMPLETION = 4,
         /**
          * Suggest to convert all text to lowercase
          */
-        LOWERCASE,
+        LOWERCASE = 8,
         /**
          * Suggest to capitalize all text
          */
-        UPPERCASE_CHARS,
+        UPPERCASE_CHARS = 16,
         /**
          * Suggest to capitalize the first
          *   character of each word
          */
-        UPPERCASE_WORDS,
+        UPPERCASE_WORDS = 32,
         /**
          * Suggest to capitalize the
          *   first word of each sentence
          */
-        UPPERCASE_SENTENCES,
+        UPPERCASE_SENTENCES = 64,
         /**
          * Suggest to not show an onscreen keyboard
          *   (e.g for a calculator that already has all the keys).
          */
-        INHIBIT_OSK,
+        INHIBIT_OSK = 128,
         /**
          * The text is vertical
          */
-        VERTICAL_WRITING,
+        VERTICAL_WRITING = 256,
         /**
          * Suggest offering Emoji support
          */
-        EMOJI,
+        EMOJI = 512,
         /**
          * Suggest not offering Emoji support
          */
-        NO_EMOJI,
+        NO_EMOJI = 1024,
         /**
          * Request that the input method should not
          *    update personalized data (like typing history)
          */
-        PRIVATE,
+        PRIVATE = 2048,
     }
 
 
@@ -7742,16 +7876,16 @@ export interface Builder {
         /**
          * Don't do anything extra
          */
-        NONE,
+        NONE = 0,
         /**
          * Focus the target item
          */
-        FOCUS,
+        FOCUS = 1,
         /**
          * Select the target item and
          *   unselect all other items.
          */
-        SELECT,
+        SELECT = 2,
     }
 
 
@@ -7770,15 +7904,15 @@ export interface Builder {
         /**
          * The default behavior, include widgets that are receiving events
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Include widgets that are insensitive
          */
-        INSENSITIVE,
+        INSENSITIVE = 1,
         /**
          * Include widgets that are marked as non-targetable. See {@link Widget.can_target}
          */
-        NON_TARGETABLE,
+        NON_TARGETABLE = 2,
     }
 
 
@@ -7797,13 +7931,14 @@ export interface Builder {
     enum PopoverMenuFlags {
         /**
          * Submenus are presented as sliding submenus that replace the main menu.
+         * @since 4.14
          */
-        SLIDING,
+        SLIDING = 0,
         /**
          * Submenus are presented as traditional, nested
          *   popovers.
          */
-        NESTED,
+        NESTED = 1,
     }
 
 
@@ -7826,47 +7961,47 @@ export interface Builder {
         /**
          * Print dialog will offer printing even/odd pages.
          */
-        PAGE_SET,
+        PAGE_SET = 1,
         /**
          * Print dialog will allow to print multiple copies.
          */
-        COPIES,
+        COPIES = 2,
         /**
          * Print dialog will allow to collate multiple copies.
          */
-        COLLATE,
+        COLLATE = 4,
         /**
          * Print dialog will allow to print pages in reverse order.
          */
-        REVERSE,
+        REVERSE = 8,
         /**
          * Print dialog will allow to scale the output.
          */
-        SCALE,
+        SCALE = 16,
         /**
          * The program will send the document to
          *   the printer in PDF format
          */
-        GENERATE_PDF,
+        GENERATE_PDF = 32,
         /**
          * The program will send the document to
          *   the printer in Postscript format
          */
-        GENERATE_PS,
+        GENERATE_PS = 64,
         /**
          * Print dialog will offer a preview
          */
-        PREVIEW,
+        PREVIEW = 128,
         /**
          * Print dialog will offer printing multiple
          *   pages per sheet
          */
-        NUMBER_UP,
+        NUMBER_UP = 256,
         /**
          * Print dialog will allow to rearrange
          *   pages when printing multiple pages per sheet
          */
-        NUMBER_UP_LAYOUT,
+        NUMBER_UP_LAYOUT = 512,
     }
 
 
@@ -7889,7 +8024,7 @@ export interface Builder {
          *   action that can be activated. If this flag is not set,
          *   a future activation may select a different action.
          */
-        EXCLUSIVE,
+        EXCLUSIVE = 1,
     }
 
 
@@ -7912,67 +8047,67 @@ export interface Builder {
         /**
          * State during normal operation
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Widget is active
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * Widget has a mouse pointer over it
          */
-        PRELIGHT,
+        PRELIGHT = 2,
         /**
          * Widget is selected
          */
-        SELECTED,
+        SELECTED = 4,
         /**
          * Widget is insensitive
          */
-        INSENSITIVE,
+        INSENSITIVE = 8,
         /**
          * Widget is inconsistent
          */
-        INCONSISTENT,
+        INCONSISTENT = 16,
         /**
          * Widget has the keyboard focus
          */
-        FOCUSED,
+        FOCUSED = 32,
         /**
          * Widget is in a background toplevel window
          */
-        BACKDROP,
+        BACKDROP = 64,
         /**
          * Widget is in left-to-right text direction
          */
-        DIR_LTR,
+        DIR_LTR = 128,
         /**
          * Widget is in right-to-left text direction
          */
-        DIR_RTL,
+        DIR_RTL = 256,
         /**
          * Widget is a link
          */
-        LINK,
+        LINK = 512,
         /**
          * The location the widget points to has already been visited
          */
-        VISITED,
+        VISITED = 1024,
         /**
          * Widget is checked
          */
-        CHECKED,
+        CHECKED = 2048,
         /**
          * Widget is highlighted as a drop target for DND
          */
-        DROP_ACTIVE,
+        DROP_ACTIVE = 4096,
         /**
          * Widget has the visible focus
          */
-        FOCUS_VISIBLE,
+        FOCUS_VISIBLE = 8192,
         /**
          * Widget contains the keyboard focus
          */
-        FOCUS_WITHIN,
+        FOCUS_WITHIN = 16384,
     }
 
 
@@ -7993,22 +8128,22 @@ export interface Builder {
         /**
          * Default value.
          */
-        NONE,
+        NONE = 0,
         /**
          * Print the entire tree of
          *   CSS nodes starting at the style context's node
          */
-        RECURSE,
+        RECURSE = 1,
         /**
          * Show the values of the
          *   CSS properties for each node
          */
-        SHOW_STYLE,
+        SHOW_STYLE = 2,
         /**
          * Show information about
          *   what changes affect the styles
          */
-        SHOW_CHANGE,
+        SHOW_CHANGE = 4,
     }
 
 
@@ -8034,23 +8169,23 @@ export interface Builder {
          * Whether to run animations. If disabled,
          *   state changes are applied without transitions
          */
-        ANIMATIONS,
+        ANIMATIONS = 1,
         /**
          * Whether to use system resources,
          *   such as fonts. If disabled, only embedded fonts are used
          */
-        SYSTEM_RESOURCES,
+        SYSTEM_RESOURCES = 2,
         /**
          * Whether to load external
          *   resources, such as images. If disabled, only embedded
          *   images are loaded
          */
-        EXTERNAL_RESOURCES,
+        EXTERNAL_RESOURCES = 4,
         /**
          * Whether to allow gpa extensions, such
          *   as states and transitions
          */
-        EXTENSIONS,
+        EXTENSIONS = 8,
         /**
          * This feature is meant for
          *   compatibility with old symbolic icons. If this is enabled,
@@ -8058,7 +8193,7 @@ export interface Builder {
          *   are derived from symbolic style classes if present, and
          *   the default fill color is the symbolic foreground color.
          */
-        TRADITIONAL_SYMBOLIC,
+        TRADITIONAL_SYMBOLIC = 16,
     }
 
 
@@ -8080,22 +8215,22 @@ export interface Builder {
          * Be notified before text
          *   is inserted into the underlying buffer.
          */
-        BEFORE_INSERT,
+        BEFORE_INSERT = 1,
         /**
          * Be notified after text
          *   has been inserted into the underlying buffer.
          */
-        AFTER_INSERT,
+        AFTER_INSERT = 2,
         /**
          * Be notified before text
          *   is deleted from the underlying buffer.
          */
-        BEFORE_DELETE,
+        BEFORE_DELETE = 4,
         /**
          * Be notified after text
          *   has been deleted from the underlying buffer.
          */
-        AFTER_DELETE,
+        AFTER_DELETE = 8,
     }
 
 
@@ -8119,17 +8254,17 @@ export interface Builder {
          * Search only visible data. A search match may
          * have invisible text interspersed.
          */
-        VISIBLE_ONLY,
+        VISIBLE_ONLY = 1,
         /**
          * Search only text. A match may have paintables or
          * child widgets mixed inside the matched range.
          */
-        TEXT_ONLY,
+        TEXT_ONLY = 2,
         /**
          * The text will be matched regardless of
          * what case it is in.
          */
-        CASE_INSENSITIVE,
+        CASE_INSENSITIVE = 4,
     }
 
 
@@ -8155,12 +8290,12 @@ export interface Builder {
          * iterators survive all signals
          *   emitted by the tree
          */
-        ITERS_PERSIST,
+        ITERS_PERSIST = 1,
         /**
          * the model is a list only, and never
          *   has children
          */
-        LIST_ONLY,
+        LIST_ONLY = 2,
     }
 
 
@@ -8297,7 +8432,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "activate-link": (arg0: string) => boolean | void;
+            "activate-link": (uri: string) => boolean | void;
             "notify::artists": (pspec: GObject.ParamSpec) => void;
             "notify::authors": (pspec: GObject.ParamSpec) => void;
             "notify::comments": (pspec: GObject.ParamSpec) => void;
@@ -10539,6 +10674,7 @@ export interface Builder {
          * @param result the result
          * @returns the index of the button that was clicked, or -1 if   the dialog was cancelled and {@link Gtk.AlertDialog.cancel_button}   is not set
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_finish(result: Gio.AsyncResult): number;
 
@@ -11145,7 +11281,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated": (arg0: string) => void;
+            "custom-item-activated": (item_name: string) => void;
             "notify::heading": (pspec: GObject.ParamSpec) => void;
             "notify::modal": (pspec: GObject.ParamSpec) => void;
             "notify::show-default-item": (pspec: GObject.ParamSpec) => void;
@@ -11196,7 +11332,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::heading": (arg0: string) => void;
+            "custom-item-activated::heading": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11206,7 +11342,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::modal": (arg0: string) => void;
+            "custom-item-activated::modal": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11216,7 +11352,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::show-default-item": (arg0: string) => void;
+            "custom-item-activated::show-default-item": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11226,7 +11362,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::show-dialog-item": (arg0: string) => void;
+            "custom-item-activated::show-dialog-item": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11236,7 +11372,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::can-focus": (arg0: string) => void;
+            "custom-item-activated::can-focus": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11246,7 +11382,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::can-target": (arg0: string) => void;
+            "custom-item-activated::can-target": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11256,7 +11392,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::css-classes": (arg0: string) => void;
+            "custom-item-activated::css-classes": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11266,7 +11402,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::css-name": (arg0: string) => void;
+            "custom-item-activated::css-name": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11276,7 +11412,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::cursor": (arg0: string) => void;
+            "custom-item-activated::cursor": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11286,7 +11422,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::focus-on-click": (arg0: string) => void;
+            "custom-item-activated::focus-on-click": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11296,7 +11432,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::focusable": (arg0: string) => void;
+            "custom-item-activated::focusable": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11306,7 +11442,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::halign": (arg0: string) => void;
+            "custom-item-activated::halign": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11316,7 +11452,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::has-default": (arg0: string) => void;
+            "custom-item-activated::has-default": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11326,7 +11462,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::has-focus": (arg0: string) => void;
+            "custom-item-activated::has-focus": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11336,7 +11472,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::has-tooltip": (arg0: string) => void;
+            "custom-item-activated::has-tooltip": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11346,7 +11482,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::height-request": (arg0: string) => void;
+            "custom-item-activated::height-request": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11356,7 +11492,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::hexpand": (arg0: string) => void;
+            "custom-item-activated::hexpand": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11366,7 +11502,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::hexpand-set": (arg0: string) => void;
+            "custom-item-activated::hexpand-set": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11376,7 +11512,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::layout-manager": (arg0: string) => void;
+            "custom-item-activated::layout-manager": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11386,7 +11522,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::limit-events": (arg0: string) => void;
+            "custom-item-activated::limit-events": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11396,7 +11532,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::margin-bottom": (arg0: string) => void;
+            "custom-item-activated::margin-bottom": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11406,7 +11542,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::margin-end": (arg0: string) => void;
+            "custom-item-activated::margin-end": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11416,7 +11552,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::margin-start": (arg0: string) => void;
+            "custom-item-activated::margin-start": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11426,7 +11562,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::margin-top": (arg0: string) => void;
+            "custom-item-activated::margin-top": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11436,7 +11572,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::name": (arg0: string) => void;
+            "custom-item-activated::name": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11446,7 +11582,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::opacity": (arg0: string) => void;
+            "custom-item-activated::opacity": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11456,7 +11592,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::overflow": (arg0: string) => void;
+            "custom-item-activated::overflow": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11466,7 +11602,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::parent": (arg0: string) => void;
+            "custom-item-activated::parent": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11476,7 +11612,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::receives-default": (arg0: string) => void;
+            "custom-item-activated::receives-default": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11486,7 +11622,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::root": (arg0: string) => void;
+            "custom-item-activated::root": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11496,7 +11632,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::scale-factor": (arg0: string) => void;
+            "custom-item-activated::scale-factor": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11506,7 +11642,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::sensitive": (arg0: string) => void;
+            "custom-item-activated::sensitive": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11516,7 +11652,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::tooltip-markup": (arg0: string) => void;
+            "custom-item-activated::tooltip-markup": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11526,7 +11662,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::tooltip-text": (arg0: string) => void;
+            "custom-item-activated::tooltip-text": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11536,7 +11672,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::valign": (arg0: string) => void;
+            "custom-item-activated::valign": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11546,7 +11682,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::vexpand": (arg0: string) => void;
+            "custom-item-activated::vexpand": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11556,7 +11692,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::vexpand-set": (arg0: string) => void;
+            "custom-item-activated::vexpand-set": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11566,7 +11702,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::visible": (arg0: string) => void;
+            "custom-item-activated::visible": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11576,7 +11712,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::width-request": (arg0: string) => void;
+            "custom-item-activated::width-request": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11586,7 +11722,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::accessible-role": (arg0: string) => void;
+            "custom-item-activated::accessible-role": (item_name: string) => void;
             /**
              * Emitted when a custom item is activated.
              * 
@@ -11596,8 +11732,8 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "custom-item-activated::content-type": (arg0: string) => void;
-            [key: `custom-item-activated::${string}`]: (arg0: string) => void;
+            "custom-item-activated::content-type": (item_name: string) => void;
+            [key: `custom-item-activated::${string}`]: (item_name: string) => void;
         }
 
         // Constructor properties interface
@@ -12468,13 +12604,13 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "application-activated": (arg0: Gio.AppInfo) => void;
+            "application-activated": (application: Gio.AppInfo) => void;
             /**
              * Emitted when an application item is selected from the widget's list.
              * @signal
              * @run-first
              */
-            "application-selected": (arg0: Gio.AppInfo) => void;
+            "application-selected": (application: Gio.AppInfo) => void;
             "notify::default-text": (pspec: GObject.ParamSpec) => void;
             "notify::show-all": (pspec: GObject.ParamSpec) => void;
             "notify::show-default": (pspec: GObject.ParamSpec) => void;
@@ -13236,7 +13372,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "window-added": (arg0: Window) => void;
+            "window-added": (window: Window) => void;
             /**
              * Emitted when a window is removed from an application.
              * 
@@ -13245,7 +13381,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "window-removed": (arg0: Window) => void;
+            "window-removed": (window: Window) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;
@@ -15846,7 +15982,7 @@ export interface Builder {
              * @deprecated since 4.10: This widget will be removed in GTK 5
              * @run-last
              */
-            prepare: (arg0: Widget) => void;
+            prepare: (page: Widget) => void;
             "notify::pages": (pspec: GObject.ParamSpec) => void;
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -18234,6 +18370,7 @@ export interface Builder {
          * thing to do when an error is detected is to call `g_error()`.
          * @param filename the name of the file to parse
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_from_file(filename: string): boolean;
 
@@ -18255,6 +18392,7 @@ export interface Builder {
          * to call `g_error()`.
          * @param resource_path the path of the resource file to parse
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_from_resource(resource_path: string): boolean;
 
@@ -18277,6 +18415,7 @@ export interface Builder {
          * @param buffer the string to parse
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_from_string(buffer: string, length: bigint | number): boolean;
 
@@ -18295,6 +18434,7 @@ export interface Builder {
          * @param filename the name of the file to parse
          * @param object_ids nul-terminated array of objects to build
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_objects_from_file(filename: string, object_ids: string[]): boolean;
 
@@ -18313,6 +18453,7 @@ export interface Builder {
          * @param resource_path the path of the resource file to parse
          * @param object_ids nul-terminated array of objects to build
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_objects_from_resource(resource_path: string, object_ids: string[]): boolean;
 
@@ -18331,6 +18472,7 @@ export interface Builder {
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @param object_ids nul-terminated array of objects to build
          * @returns `true` on success, `false` if an error occurred
+         * @throws GLib.Error
          */
         add_objects_from_string(buffer: string, length: bigint | number, object_ids: string[]): boolean;
 
@@ -18346,6 +18488,7 @@ export interface Builder {
          * @param flags closure creation flags
          * @param object Object to create the closure with
          * @returns A new closure for invoking `function_name`
+         * @throws GLib.Error
          */
         create_closure(function_name: string, flags: BuilderClosureFlags, object: GObject.Object | null): GObject.Closure | null;
 
@@ -18373,6 +18516,7 @@ export interface Builder {
          * @param buffer the string to parse
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns A positive value on success, 0 if an error occurred
+         * @throws GLib.Error
          */
         extend_with_template(object: GObject.Object, template_type: GObject.GType, buffer: string, length: bigint | number): boolean;
 
@@ -18467,6 +18611,7 @@ export interface Builder {
          * @param pspec the {@link GObject.ParamSpec} for the property
          * @param string the string representation of the value
          * @returns `true` on success
+         * @throws GLib.Error
          */
         value_from_string(pspec: GObject.ParamSpec, string: string): [boolean, unknown];
 
@@ -18484,6 +18629,7 @@ export interface Builder {
          * @param type the {@link GObject.GType} of the value
          * @param string the string representation of the value
          * @returns `true` on success
+         * @throws GLib.Error
          */
         value_from_string_type(type: GObject.GType, string: string): [boolean, unknown];
     }
@@ -20477,13 +20623,13 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "add-editable": (arg0: CellRenderer, arg1: CellEditable, arg2: Gdk.Rectangle, arg3: string) => void;
+            "add-editable": (renderer: CellRenderer, editable: CellEditable, cell_area: Gdk.Rectangle, path: string) => void;
             /**
              * This signal is emitted whenever applying attributes to `area` from `model`
              * @signal
              * @run-first
              */
-            "apply-attributes": (arg0: TreeModel, arg1: TreeIter, arg2: boolean, arg3: boolean) => void;
+            "apply-attributes": (model: TreeModel, iter: TreeIter, is_expander: boolean, is_expanded: boolean) => void;
             /**
              * Indicates that focus changed on this `area`. This signal
              * is emitted either as a result of focus handling or event
@@ -20496,14 +20642,14 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "focus-changed": (arg0: CellRenderer, arg1: string) => void;
+            "focus-changed": (renderer: CellRenderer, path: string) => void;
             /**
              * Indicates that editing finished on `renderer` and that `editable`
              * should be removed from the owning cell-layouting widget.
              * @signal
              * @run-first
              */
-            "remove-editable": (arg0: CellRenderer, arg1: CellEditable) => void;
+            "remove-editable": (renderer: CellRenderer, editable: CellEditable) => void;
             "notify::edit-widget": (pspec: GObject.ParamSpec) => void;
             "notify::edited-cell": (pspec: GObject.ParamSpec) => void;
             "notify::focus-cell": (pspec: GObject.ParamSpec) => void;
@@ -22771,7 +22917,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "editing-started": (arg0: CellEditable, arg1: string) => void;
+            "editing-started": (editable: CellEditable, path: string) => void;
             "notify::cell-background": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background-rgba": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background-set": (pspec: GObject.ParamSpec) => void;
@@ -23367,13 +23513,13 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "accel-cleared": (arg0: string) => void;
+            "accel-cleared": (path_string: string) => void;
             /**
              * Gets emitted when the user has selected a new accelerator.
              * @signal
              * @run-last
              */
-            "accel-edited": (arg0: string, arg1: number, arg2: Gdk.ModifierType, arg3: number) => void;
+            "accel-edited": (path_string: string, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number) => void;
             "notify::accel-key": (pspec: GObject.ParamSpec) => void;
             "notify::accel-mode": (pspec: GObject.ParamSpec) => void;
             "notify::accel-mods": (pspec: GObject.ParamSpec) => void;
@@ -23572,7 +23718,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            changed: (arg0: string, arg1: TreeIter) => void;
+            changed: (path_string: string, new_iter: TreeIter) => void;
             "notify::has-entry": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::text-column": (pspec: GObject.ParamSpec) => void;
@@ -24363,7 +24509,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            edited: (arg0: string, arg1: string) => void;
+            edited: (path: string, new_text: string) => void;
             "notify::align-set": (pspec: GObject.ParamSpec) => void;
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
@@ -25055,7 +25201,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            toggled: (arg0: string) => void;
+            toggled: (path: string) => void;
             "notify::activatable": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::inconsistent": (pspec: GObject.ParamSpec) => void;
@@ -29687,6 +29833,7 @@ export interface Builder {
          * @param result the result
          * @returns the selected color
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_rgba_finish(result: Gio.AsyncResult): Gdk.RGBA;
 
@@ -30293,7 +30440,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            activate: (arg0: number) => void;
+            activate: (position: number) => void;
             "notify::columns": (pspec: GObject.ParamSpec) => void;
             "notify::enable-rubberband": (pspec: GObject.ParamSpec) => void;
             "notify::header-factory": (pspec: GObject.ParamSpec) => void;
@@ -32346,7 +32493,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "format-entry-text": (arg0: string) => string;
+            "format-entry-text": (path: string) => string;
             /**
              * Emitted to move the active selection.
              * 
@@ -32355,7 +32502,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-active": (arg0: ScrollType) => void;
+            "move-active": (scroll_type: ScrollType) => void;
             /**
              * Emitted to popdown the combo box list.
              * 
@@ -34974,6 +35121,7 @@ export interface Builder {
          * @param vspacing default vertical spacing value, or -1 for the fallback value
          * @param views a dictionary of `[ name, target ]`   pairs; the `name` keys map to the view names in the VFL lines, while   the `target` values map to children of the widget using a {@link Gtk.ConstraintLayout},   or guides
          * @returns the list of   {@link Gtk.Constraint} instances that were added to the layout
+         * @throws GLib.Error
          */
         add_constraints_from_description(lines: string[], hspacing: number, vspacing: number, views: { [key: string]: ConstraintTarget }): Constraint[];
 
@@ -35209,7 +35357,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "parsing-error": (arg0: CssSection, arg1: GLib.Error) => void;
+            "parsing-error": (section: CssSection, error: GLib.Error) => void;
             "notify::prefers-color-scheme": (pspec: GObject.ParamSpec) => void;
             "notify::prefers-contrast": (pspec: GObject.ParamSpec) => void;
             "notify::prefers-reduced-motion": (pspec: GObject.ParamSpec) => void;
@@ -35711,7 +35859,7 @@ export interface Builder {
              * @deprecated since 4.10: Use {@link Gtk.Window} instead
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response_id: number) => void;
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -37144,7 +37292,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-begin": (arg0: Gdk.Drag) => void;
+            "drag-begin": (drag: Gdk.Drag) => void;
             /**
              * Emitted on the drag source when a drag has failed.
              * 
@@ -37154,7 +37302,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-cancel": (arg0: Gdk.Drag, arg1: Gdk.DragCancelReason) => boolean | void;
+            "drag-cancel": (drag: Gdk.Drag, reason: Gdk.DragCancelReason) => boolean | void;
             /**
              * Emitted on the drag source when a drag is finished.
              * 
@@ -37164,7 +37312,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-end": (arg0: Gdk.Drag, arg1: boolean) => void;
+            "drag-end": (drag: Gdk.Drag, delete_data: boolean) => void;
             /**
              * Emitted when a drag is about to be initiated.
              * 
@@ -37175,7 +37323,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            prepare: (arg0: number, arg1: number) => Gdk.ContentProvider | null;
+            prepare: (x: number, y: number) => Gdk.ContentProvider | null;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
@@ -37407,7 +37555,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            resize: (arg0: number, arg1: number) => void;
+            resize: (width: number, height: number) => void;
             "notify::content-height": (pspec: GObject.ParamSpec) => void;
             "notify::content-width": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -38044,7 +38192,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            enter: (arg0: number, arg1: number) => void;
+            enter: (x: number, y: number) => void;
             /**
              * Signals that the pointer has left the widget.
              * @signal
@@ -38056,7 +38204,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            motion: (arg0: number, arg1: number) => void;
+            motion: (x: number, y: number) => void;
             "notify::contains-pointer": (pspec: GObject.ParamSpec) => void;
             "notify::drop": (pspec: GObject.ParamSpec) => void;
             "notify::is-pointer": (pspec: GObject.ParamSpec) => void;
@@ -39029,7 +39177,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            accept: (arg0: Gdk.Drop) => boolean | void;
+            accept: (drop: Gdk.Drop) => boolean | void;
             /**
              * Emitted on the drop site when the user drops the data onto the widget.
              * 
@@ -39043,7 +39191,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            drop: (arg0: unknown, arg1: number, arg2: number) => boolean | void;
+            drop: (value: unknown, x: number, y: number) => boolean | void;
             /**
              * Emitted on the drop site when the pointer enters the widget.
              * 
@@ -39051,7 +39199,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            enter: (arg0: number, arg1: number) => Gdk.DragAction;
+            enter: (x: number, y: number) => Gdk.DragAction;
             /**
              * Emitted on the drop site when the pointer leaves the widget.
              * 
@@ -39066,7 +39214,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            motion: (arg0: number, arg1: number) => Gdk.DragAction;
+            motion: (x: number, y: number) => Gdk.DragAction;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::current-drop": (pspec: GObject.ParamSpec) => void;
             "notify::drop": (pspec: GObject.ParamSpec) => void;
@@ -39377,7 +39525,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            accept: (arg0: Gdk.Drop) => boolean | void;
+            accept: (drop: Gdk.Drop) => boolean | void;
             /**
              * Emitted on the drop site when the pointer enters the widget.
              * 
@@ -39385,7 +39533,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-enter": (arg0: Gdk.Drop, arg1: number, arg2: number) => Gdk.DragAction;
+            "drag-enter": (drop: Gdk.Drop, x: number, y: number) => Gdk.DragAction;
             /**
              * Emitted on the drop site when the pointer leaves the widget.
              * 
@@ -39394,13 +39542,13 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-leave": (arg0: Gdk.Drop) => void;
+            "drag-leave": (drop: Gdk.Drop) => void;
             /**
              * Emitted while the pointer is moving over the drop target.
              * @signal
              * @run-last
              */
-            "drag-motion": (arg0: Gdk.Drop, arg1: number, arg2: number) => Gdk.DragAction;
+            "drag-motion": (drop: Gdk.Drop, x: number, y: number) => Gdk.DragAction;
             /**
              * Emitted on the drop site when the user drops the data onto the widget.
              * 
@@ -39419,7 +39567,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            drop: (arg0: Gdk.Drop, arg1: number, arg2: number) => boolean | void;
+            drop: (drop: Gdk.Drop, x: number, y: number) => boolean | void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::formats": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -40636,7 +40784,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "emoji-picked": (arg0: string) => void;
+            "emoji-picked": (text: string) => void;
             "notify::autohide": (pspec: GObject.ParamSpec) => void;
             "notify::cascade-popdown": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -40833,14 +40981,14 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "icon-press": (arg0: EntryIconPosition) => void;
+            "icon-press": (icon_pos: EntryIconPosition) => void;
             /**
              * Emitted on the button release from a mouse click
              * over an activatable icon.
              * @signal
              * @run-last
              */
-            "icon-release": (arg0: EntryIconPosition) => void;
+            "icon-release": (icon_pos: EntryIconPosition) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -43382,13 +43530,13 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "deleted-text": (arg0: number, arg1: number) => void;
+            "deleted-text": (position: number, n_chars: number) => void;
             /**
              * This signal is emitted after text is inserted into the buffer.
              * @signal
              * @run-first
              */
-            "inserted-text": (arg0: number, arg1: string, arg2: number) => void;
+            "inserted-text": (position: number, chars: string, n_chars: number) => void;
             "notify::length": (pspec: GObject.ParamSpec) => void;
             "notify::max-length": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -43658,7 +43806,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "cursor-on-match": (arg0: TreeModel, arg1: TreeIter) => boolean | void;
+            "cursor-on-match": (model: TreeModel, iter: TreeIter) => boolean | void;
             /**
              * Emitted when the inline autocompletion is triggered.
              * 
@@ -43672,7 +43820,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "insert-prefix": (arg0: string) => boolean | void;
+            "insert-prefix": (prefix: string) => boolean | void;
             /**
              * Emitted when a match from the list is selected.
              * 
@@ -43685,7 +43833,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "match-selected": (arg0: TreeModel, arg1: TreeIter) => boolean | void;
+            "match-selected": (model: TreeModel, iter: TreeIter) => boolean | void;
             /**
              * Emitted when the filter model has zero
              * number of rows in completion_complete method.
@@ -45166,19 +45314,19 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "key-pressed": (arg0: number, arg1: number, arg2: Gdk.ModifierType) => boolean | void;
+            "key-pressed": (keyval: number, keycode: number, state: Gdk.ModifierType) => boolean | void;
             /**
              * Emitted whenever a key is released.
              * @signal
              * @run-last
              */
-            "key-released": (arg0: number, arg1: number, arg2: Gdk.ModifierType) => void;
+            "key-released": (keyval: number, keycode: number, state: Gdk.ModifierType) => void;
             /**
              * Emitted whenever the state of modifier keys and pointer buttons change.
              * @signal
              * @run-last
              */
-            modifiers: (arg0: Gdk.ModifierType) => boolean | void;
+            modifiers: (state: Gdk.ModifierType) => boolean | void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-limit": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-phase": (pspec: GObject.ParamSpec) => void;
@@ -45269,7 +45417,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            event: (arg0: Gdk.Event) => boolean | void;
+            event: (event: Gdk.Event) => boolean | void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-limit": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-phase": (pspec: GObject.ParamSpec) => void;
@@ -45329,7 +45477,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            enter: (arg0: number, arg1: number) => void;
+            enter: (x: number, y: number) => void;
             /**
              * Signals that the pointer has left the widget.
              * @signal
@@ -45341,7 +45489,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            motion: (arg0: number, arg1: number) => void;
+            motion: (x: number, y: number) => void;
             "notify::contains-pointer": (pspec: GObject.ParamSpec) => void;
             "notify::is-pointer": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -45472,7 +45620,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            decelerate: (arg0: number, arg1: number) => void;
+            decelerate: (vel_x: number, vel_y: number) => void;
             /**
              * Signals that the widget should scroll by the
              * amount specified by `dx` and `dy`.
@@ -45482,7 +45630,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            scroll: (arg0: number, arg1: number) => boolean | void;
+            scroll: (dx: number, dy: number) => boolean | void;
             /**
              * Signals that a new scrolling operation has begun.
              * 
@@ -47325,6 +47473,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to add
          * @returns `true` if the folder could be added successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: Gio.File): boolean;
 
@@ -47446,6 +47595,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to remove
          * @returns `true` if the folder could be removed successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: Gio.File): boolean;
 
@@ -47488,6 +47638,7 @@ export interface Builder {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false`   otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_current_folder(file: Gio.File | null): boolean;
 
@@ -47556,6 +47707,7 @@ export interface Builder {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -47998,6 +48150,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to add
          * @returns `true` if the folder could be added successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: Gio.File): boolean;
 
@@ -48119,6 +48272,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to remove
          * @returns `true` if the folder could be removed successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: Gio.File): boolean;
 
@@ -48161,6 +48315,7 @@ export interface Builder {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false`   otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_current_folder(file: Gio.File | null): boolean;
 
@@ -48229,6 +48384,7 @@ export interface Builder {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -48327,7 +48483,7 @@ export interface Builder {
              * @action
              * @run-first
              */
-            "location-popup": (arg0: string) => void;
+            "location-popup": (path: string) => void;
             /**
              * Emitted when the user asks for it.
              * 
@@ -48389,7 +48545,7 @@ export interface Builder {
              * @action
              * @run-first
              */
-            "quick-bookmark": (arg0: number) => void;
+            "quick-bookmark": (bookmark_index: number) => void;
             /**
              * Emitted when the user asks for it.
              * 
@@ -49093,6 +49249,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to add
          * @returns `true` if the folder could be added successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: Gio.File): boolean;
 
@@ -49214,6 +49371,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to remove
          * @returns `true` if the folder could be removed successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: Gio.File): boolean;
 
@@ -49256,6 +49414,7 @@ export interface Builder {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false`   otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_current_folder(file: Gio.File | null): boolean;
 
@@ -49324,6 +49483,7 @@ export interface Builder {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -49675,6 +49835,7 @@ export interface Builder {
          * @param result the result
          * @returns the file that was selected
          * @since 4.10
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -49733,6 +49894,7 @@ export interface Builder {
          * @param result the result
          * @returns the files that were selected,   as a list model of {@link Gio.File}
          * @since 4.10
+         * @throws GLib.Error
          */
         open_multiple_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -49800,6 +49962,7 @@ export interface Builder {
          * @param result the result
          * @returns the files that were selected,   as a list model of {@link Gio.File}
          * @since 4.18
+         * @throws GLib.Error
          */
         open_multiple_text_files_finish(result: Gio.AsyncResult): [Gio.ListModel, string];
 
@@ -49861,6 +50024,7 @@ export interface Builder {
          * @param result a {@link Gio.AsyncResult}
          * @returns the file that was selected
          * @since 4.18
+         * @throws GLib.Error
          */
         open_text_file_finish(result: Gio.AsyncResult): [Gio.File, string];
 
@@ -49910,6 +50074,7 @@ export interface Builder {
          * @param result the result
          * @returns the file that was selected
          * @since 4.10
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -49977,6 +50142,7 @@ export interface Builder {
          * @param result a {@link Gio.AsyncResult}
          * @returns the file that was selected.
          * @since 4.18
+         * @throws GLib.Error
          */
         save_text_file_finish(result: Gio.AsyncResult): [Gio.File, string, string];
 
@@ -50038,6 +50204,7 @@ export interface Builder {
          * @param result the result
          * @returns the folder that was selected
          * @since 4.10
+         * @throws GLib.Error
          */
         select_folder_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -50099,6 +50266,7 @@ export interface Builder {
          * @param result the result
          * @returns the folders that were selected,   as a list model of {@link Gio.File}
          * @since 4.10
+         * @throws GLib.Error
          */
         select_multiple_folders_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -50674,6 +50842,7 @@ export interface Builder {
          * @param result the result
          * @returns true if an application was launched
          * @since 4.10
+         * @throws GLib.Error
          */
         launch_finish(result: Gio.AsyncResult): boolean;
 
@@ -50718,6 +50887,7 @@ export interface Builder {
          * @param result the result
          * @returns true if an application was launched
          * @since 4.10
+         * @throws GLib.Error
          */
         open_containing_folder_finish(result: Gio.AsyncResult): boolean;
 
@@ -50764,7 +50934,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            changed: (arg0: FilterChange) => void;
+            changed: (change: FilterChange) => void;
         }
 
         // Constructor properties interface
@@ -52257,7 +52427,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "child-activated": (arg0: FlowBoxChild) => void;
+            "child-activated": (child: FlowBoxChild) => void;
             /**
              * Emitted when the user initiates a cursor movement.
              * 
@@ -52279,7 +52449,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean, arg3: boolean) => boolean | void;
+            "move-cursor": (step: MovementStep, count: number, extend: boolean, modify: boolean) => boolean | void;
             /**
              * Emitted to select all children of the box,
              * if the selection mode permits it.
@@ -56369,6 +56539,7 @@ export interface Builder {
          * @param result the result
          * @returns the selected {@link Pango.FontFace}
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_face_finish(result: Gio.AsyncResult): Pango.FontFace;
 
@@ -56415,6 +56586,7 @@ export interface Builder {
          * @param result the result
          * @returns the selected {@link Pango.FontFamily}
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_family_finish(result: Gio.AsyncResult): Pango.FontFamily;
 
@@ -56520,6 +56692,7 @@ export interface Builder {
          * @param result the result
          * @returns true if a font was selected
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_font_and_features_finish(result: Gio.AsyncResult): [boolean, Pango.FontDescription, string, Pango.Language];
 
@@ -56531,6 +56704,7 @@ export interface Builder {
          * @param result the result
          * @returns a {@link Pango.FontDescription} describing   the selected font
          * @since 4.10
+         * @throws GLib.Error
          */
         choose_font_finish(result: Gio.AsyncResult): Pango.FontDescription;
 
@@ -57971,7 +58145,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            render: (arg0: Gdk.GLContext) => boolean | void;
+            render: (context: Gdk.GLContext) => boolean | void;
             /**
              * Emitted once when the widget is realized, and then each time the widget
              * is changed while realized.
@@ -57987,7 +58161,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            resize: (arg0: number, arg1: number) => void;
+            resize: (width: number, height: number) => void;
             "notify::allowed-apis": (pspec: GObject.ParamSpec) => void;
             "notify::api": (pspec: GObject.ParamSpec) => void;
             "notify::auto-render": (pspec: GObject.ParamSpec) => void;
@@ -58902,7 +59076,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            begin: (arg0: Gdk.EventSequence | null) => void;
+            begin: (sequence: Gdk.EventSequence | null) => void;
             /**
              * Emitted whenever a sequence is cancelled.
              * 
@@ -58917,7 +59091,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            cancel: (arg0: Gdk.EventSequence | null) => void;
+            cancel: (sequence: Gdk.EventSequence | null) => void;
             /**
              * Emitted when `gesture` either stopped recognizing the event
              * sequences as something to be handled, or the number of touch
@@ -58931,7 +59105,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            end: (arg0: Gdk.EventSequence | null) => void;
+            end: (sequence: Gdk.EventSequence | null) => void;
             /**
              * Emitted whenever a sequence state changes.
              * 
@@ -58940,7 +59114,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "sequence-state-changed": (arg0: Gdk.EventSequence | null, arg1: EventSequenceState) => void;
+            "sequence-state-changed": (sequence: Gdk.EventSequence | null, state: EventSequenceState) => void;
             /**
              * Emitted whenever an event is handled while the gesture is recognized.
              * 
@@ -58948,7 +59122,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            update: (arg0: Gdk.EventSequence | null) => void;
+            update: (sequence: Gdk.EventSequence | null) => void;
             "notify::n-points": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-limit": (pspec: GObject.ParamSpec) => void;
@@ -59355,7 +59529,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            pressed: (arg0: number, arg1: number, arg2: number) => void;
+            pressed: (n_press: number, x: number, y: number) => void;
             /**
              * Emitted when a button or touch is released.
              * 
@@ -59366,7 +59540,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            released: (arg0: number, arg1: number, arg2: number) => void;
+            released: (n_press: number, x: number, y: number) => void;
             /**
              * Emitted whenever any time/distance threshold has been exceeded.
              * @signal
@@ -59383,7 +59557,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "unpaired-release": (arg0: number, arg1: number, arg2: number, arg3: Gdk.EventSequence | null) => void;
+            "unpaired-release": (x: number, y: number, button: number, sequence: Gdk.EventSequence | null) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
             "notify::touch-only": (pspec: GObject.ParamSpec) => void;
@@ -59450,19 +59624,19 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "drag-begin": (arg0: number, arg1: number) => void;
+            "drag-begin": (start_x: number, start_y: number) => void;
             /**
              * Emitted whenever the dragging is finished.
              * @signal
              * @run-last
              */
-            "drag-end": (arg0: number, arg1: number) => void;
+            "drag-end": (offset_x: number, offset_y: number) => void;
             /**
              * Emitted whenever the dragging point moves.
              * @signal
              * @run-last
              */
-            "drag-update": (arg0: number, arg1: number) => void;
+            "drag-update": (offset_x: number, offset_y: number) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
             "notify::touch-only": (pspec: GObject.ParamSpec) => void;
@@ -59560,7 +59734,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            pressed: (arg0: number, arg1: number) => void;
+            pressed: (x: number, y: number) => void;
             "notify::delay-factor": (pspec: GObject.ParamSpec) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
@@ -59670,7 +59844,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            pan: (arg0: PanDirection, arg1: number) => void;
+            pan: (direction: PanDirection, offset: number) => void;
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
@@ -59771,7 +59945,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "angle-changed": (arg0: number, arg1: number) => void;
+            "angle-changed": (angle: number, angle_delta: number) => void;
             "notify::n-points": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-limit": (pspec: GObject.ParamSpec) => void;
@@ -60013,25 +60187,25 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            down: (arg0: number, arg1: number) => void;
+            down: (x: number, y: number) => void;
             /**
              * Emitted when the stylus moves while touching the device.
              * @signal
              * @run-last
              */
-            motion: (arg0: number, arg1: number) => void;
+            motion: (x: number, y: number) => void;
             /**
              * Emitted when the stylus is in proximity of the device.
              * @signal
              * @run-last
              */
-            proximity: (arg0: number, arg1: number) => void;
+            proximity: (x: number, y: number) => void;
             /**
              * Emitted when the stylus no longer touches the device.
              * @signal
              * @run-last
              */
-            up: (arg0: number, arg1: number) => void;
+            up: (x: number, y: number) => void;
             "notify::stylus-only": (pspec: GObject.ParamSpec) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
@@ -60192,7 +60366,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            swipe: (arg0: number, arg1: number) => void;
+            swipe: (velocity_x: number, velocity_y: number) => void;
             "notify::button": (pspec: GObject.ParamSpec) => void;
             "notify::exclusive": (pspec: GObject.ParamSpec) => void;
             "notify::touch-only": (pspec: GObject.ParamSpec) => void;
@@ -60275,7 +60449,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "scale-changed": (arg0: number) => void;
+            "scale-changed": (scale: number) => void;
             "notify::n-points": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::propagation-limit": (pspec: GObject.ParamSpec) => void;
@@ -62150,7 +62324,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            activate: (arg0: number) => void;
+            activate: (position: number) => void;
             "notify::enable-rubberband": (pspec: GObject.ParamSpec) => void;
             "notify::factory": (pspec: GObject.ParamSpec) => void;
             "notify::max-columns": (pspec: GObject.ParamSpec) => void;
@@ -63393,21 +63567,21 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            commit: (arg0: string) => void;
+            commit: (str: string) => void;
             /**
              * The ::delete-surrounding signal is emitted when the input method
              * needs to delete all or part of the context surrounding the cursor.
              * @signal
              * @run-last
              */
-            "delete-surrounding": (arg0: number, arg1: number) => boolean | void;
+            "delete-surrounding": (offset: number, n_chars: number) => boolean | void;
             /**
              * Emitted when the filtered keys do not compose to a single valid character.
              * @signal
              * @since 4.22
              * @run-last
              */
-            "invalid-composition": (arg0: string) => boolean | void;
+            "invalid-composition": (str: string) => boolean | void;
             /**
              * The ::preedit-changed signal is emitted whenever the preedit sequence
              * currently being entered has changed.
@@ -64980,7 +65154,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "item-activated": (arg0: TreePath) => void;
+            "item-activated": (path: TreePath) => void;
             /**
              * The ::move-cursor signal is a
              * [keybinding signal]{@link Gtk.SignalAction}
@@ -65000,7 +65174,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean, arg3: boolean) => boolean | void;
+            "move-cursor": (step: MovementStep, count: number, extend: boolean, modify: boolean) => boolean | void;
             /**
              * A [keybinding signal]{@link Gtk.SignalAction}
              * which gets emitted when the user selects all items.
@@ -67541,7 +67715,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response_id: number) => void;
             "notify::message-type": (pspec: GObject.ParamSpec) => void;
             "notify::revealed": (pspec: GObject.ParamSpec) => void;
             "notify::show-close-button": (pspec: GObject.ParamSpec) => void;
@@ -69398,7 +69572,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "activate-link": (arg0: string) => boolean | void;
+            "activate-link": (uri: string) => boolean | void;
             /**
              * Gets emitted to copy the selection to the clipboard.
              * 
@@ -69434,7 +69608,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend_selection: boolean) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::extra-menu": (pspec: GObject.ParamSpec) => void;
@@ -71452,7 +71626,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed": (arg0: string) => void;
+            "offset-changed": (name: string) => void;
             "notify::inverted": (pspec: GObject.ParamSpec) => void;
             "notify::max-value": (pspec: GObject.ParamSpec) => void;
             "notify::min-value": (pspec: GObject.ParamSpec) => void;
@@ -71508,7 +71682,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::inverted": (arg0: string) => void;
+            "offset-changed::inverted": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71522,7 +71696,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::max-value": (arg0: string) => void;
+            "offset-changed::max-value": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71536,7 +71710,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::min-value": (arg0: string) => void;
+            "offset-changed::min-value": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71550,7 +71724,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::mode": (arg0: string) => void;
+            "offset-changed::mode": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71564,7 +71738,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::value": (arg0: string) => void;
+            "offset-changed::value": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71578,7 +71752,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::can-focus": (arg0: string) => void;
+            "offset-changed::can-focus": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71592,7 +71766,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::can-target": (arg0: string) => void;
+            "offset-changed::can-target": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71606,7 +71780,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::css-classes": (arg0: string) => void;
+            "offset-changed::css-classes": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71620,7 +71794,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::css-name": (arg0: string) => void;
+            "offset-changed::css-name": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71634,7 +71808,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::cursor": (arg0: string) => void;
+            "offset-changed::cursor": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71648,7 +71822,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::focus-on-click": (arg0: string) => void;
+            "offset-changed::focus-on-click": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71662,7 +71836,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::focusable": (arg0: string) => void;
+            "offset-changed::focusable": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71676,7 +71850,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::halign": (arg0: string) => void;
+            "offset-changed::halign": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71690,7 +71864,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::has-default": (arg0: string) => void;
+            "offset-changed::has-default": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71704,7 +71878,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::has-focus": (arg0: string) => void;
+            "offset-changed::has-focus": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71718,7 +71892,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::has-tooltip": (arg0: string) => void;
+            "offset-changed::has-tooltip": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71732,7 +71906,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::height-request": (arg0: string) => void;
+            "offset-changed::height-request": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71746,7 +71920,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::hexpand": (arg0: string) => void;
+            "offset-changed::hexpand": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71760,7 +71934,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::hexpand-set": (arg0: string) => void;
+            "offset-changed::hexpand-set": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71774,7 +71948,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::layout-manager": (arg0: string) => void;
+            "offset-changed::layout-manager": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71788,7 +71962,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::limit-events": (arg0: string) => void;
+            "offset-changed::limit-events": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71802,7 +71976,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::margin-bottom": (arg0: string) => void;
+            "offset-changed::margin-bottom": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71816,7 +71990,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::margin-end": (arg0: string) => void;
+            "offset-changed::margin-end": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71830,7 +72004,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::margin-start": (arg0: string) => void;
+            "offset-changed::margin-start": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71844,7 +72018,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::margin-top": (arg0: string) => void;
+            "offset-changed::margin-top": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71858,7 +72032,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::name": (arg0: string) => void;
+            "offset-changed::name": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71872,7 +72046,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::opacity": (arg0: string) => void;
+            "offset-changed::opacity": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71886,7 +72060,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::overflow": (arg0: string) => void;
+            "offset-changed::overflow": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71900,7 +72074,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::parent": (arg0: string) => void;
+            "offset-changed::parent": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71914,7 +72088,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::receives-default": (arg0: string) => void;
+            "offset-changed::receives-default": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71928,7 +72102,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::root": (arg0: string) => void;
+            "offset-changed::root": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71942,7 +72116,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::scale-factor": (arg0: string) => void;
+            "offset-changed::scale-factor": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71956,7 +72130,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::sensitive": (arg0: string) => void;
+            "offset-changed::sensitive": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71970,7 +72144,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::tooltip-markup": (arg0: string) => void;
+            "offset-changed::tooltip-markup": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71984,7 +72158,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::tooltip-text": (arg0: string) => void;
+            "offset-changed::tooltip-text": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -71998,7 +72172,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::valign": (arg0: string) => void;
+            "offset-changed::valign": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72012,7 +72186,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::vexpand": (arg0: string) => void;
+            "offset-changed::vexpand": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72026,7 +72200,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::vexpand-set": (arg0: string) => void;
+            "offset-changed::vexpand-set": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72040,7 +72214,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::visible": (arg0: string) => void;
+            "offset-changed::visible": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72054,7 +72228,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::width-request": (arg0: string) => void;
+            "offset-changed::width-request": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72068,7 +72242,7 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::accessible-role": (arg0: string) => void;
+            "offset-changed::accessible-role": (name: string) => void;
             /**
              * Emitted when an offset specified on the bar changes value.
              * 
@@ -72082,8 +72256,8 @@ export interface Builder {
              * @detailed
              * @run-first
              */
-            "offset-changed::orientation": (arg0: string) => void;
-            [key: `offset-changed::${string}`]: (arg0: string) => void;
+            "offset-changed::orientation": (name: string) => void;
+            [key: `offset-changed::${string}`]: (name: string) => void;
         }
 
         // Constructor properties interface
@@ -73814,13 +73988,13 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean, arg3: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend: boolean, modify: boolean) => void;
             /**
              * Emitted when a row has been activated by the user.
              * @signal
              * @run-last
              */
-            "row-activated": (arg0: ListBoxRow) => void;
+            "row-activated": (row: ListBoxRow) => void;
             /**
              * Emitted when a new row is selected, or (with a `null` `row`)
              * when the selection is cleared.
@@ -73831,7 +74005,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "row-selected": (arg0: ListBoxRow | null) => void;
+            "row-selected": (row: ListBoxRow | null) => void;
             /**
              * Emitted to select all children of the box, if the selection
              * mode permits it.
@@ -77361,7 +77535,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            activate: (arg0: number) => void;
+            activate: (position: number) => void;
             "notify::enable-rubberband": (pspec: GObject.ParamSpec) => void;
             "notify::factory": (pspec: GObject.ParamSpec) => void;
             "notify::header-factory": (pspec: GObject.ParamSpec) => void;
@@ -83037,7 +83211,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response_id: number) => void;
             "notify::modal": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::transient-for": (pspec: GObject.ParamSpec) => void;
@@ -83831,7 +84005,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "change-current-page": (arg0: number) => boolean | void;
+            "change-current-page": (page: number) => boolean | void;
             /**
              * The ::create-window signal is emitted when a detachable
              * tab is dropped on the root window.
@@ -83844,14 +84018,14 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "create-window": (arg0: Widget) => Notebook | null;
+            "create-window": (page: Widget) => Notebook | null;
             /**
              * Emitted when a tab should be focused.
              * @signal
              * @action
              * @run-last
              */
-            "focus-tab": (arg0: NotebookTab) => boolean | void;
+            "focus-tab": (tab: NotebookTab) => boolean | void;
             /**
              * Emitted when focus was moved out.
              * 
@@ -83864,28 +84038,28 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-focus-out": (arg0: DirectionType) => void;
+            "move-focus-out": (direction: DirectionType) => void;
             /**
              * the ::page-added signal is emitted in the notebook
              * right after a page is added to the notebook.
              * @signal
              * @run-last
              */
-            "page-added": (arg0: Widget, arg1: number) => void;
+            "page-added": (child: Widget, page_num: number) => void;
             /**
              * the ::page-removed signal is emitted in the notebook
              * right after a page is removed from the notebook.
              * @signal
              * @run-last
              */
-            "page-removed": (arg0: Widget, arg1: number) => void;
+            "page-removed": (child: Widget, page_num: number) => void;
             /**
              * the ::page-reordered signal is emitted in the notebook
              * right after a page has been reordered.
              * @signal
              * @run-last
              */
-            "page-reordered": (arg0: Widget, arg1: number) => void;
+            "page-reordered": (child: Widget, page_num: number) => void;
             /**
              * Emitted when the tab should be reordered.
              * 
@@ -83898,7 +84072,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "reorder-tab": (arg0: DirectionType, arg1: boolean) => boolean | void;
+            "reorder-tab": (direction: DirectionType, move_to_last: boolean) => boolean | void;
             /**
              * Emitted when a page should be selected.
              * 
@@ -83907,13 +84081,13 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "select-page": (arg0: boolean) => boolean | void;
+            "select-page": (move_focus: boolean) => boolean | void;
             /**
              * Emitted when the user or a function changes the current page.
              * @signal
              * @run-last
              */
-            "switch-page": (arg0: Widget, arg1: number) => void;
+            "switch-page": (page: Widget, page_num: number) => void;
             "notify::enable-popup": (pspec: GObject.ParamSpec) => void;
             "notify::group-name": (pspec: GObject.ParamSpec) => void;
             "notify::page": (pspec: GObject.ParamSpec) => void;
@@ -85375,7 +85549,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "get-child-position": (arg0: Widget, arg1: Gdk.Rectangle) => boolean | void;
+            "get-child-position": (widget: Widget, allocation: Gdk.Rectangle) => boolean | void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
@@ -86424,6 +86598,7 @@ export interface Builder {
          * See {@link Gtk.PageSetup.to_file}.
          * @param file_name the filename to read the page setup from
          * @returns `true` on success
+         * @throws GLib.Error
          */
         load_file(file_name: string): boolean;
 
@@ -86433,6 +86608,7 @@ export interface Builder {
          * @param key_file the {@link GLib.KeyFile} to retrieve the page_setup from
          * @param group_name the name of the group in the key_file to read   to use the default name “Page Setup”
          * @returns `true` on success
+         * @throws GLib.Error
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -86490,6 +86666,7 @@ export interface Builder {
          * This function saves the information from `setup` to `file_name`.
          * @param file_name the file to save to
          * @returns `true` on success
+         * @throws GLib.Error
          */
         to_file(file_name: string): boolean;
 
@@ -86703,7 +86880,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "cycle-child-focus": (arg0: boolean) => boolean | void;
+            "cycle-child-focus": (reversed: boolean) => boolean | void;
             /**
              * Emitted to cycle whether the paned should grab focus to allow
              * the user to change position of the handle by using key bindings.
@@ -86715,7 +86892,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "cycle-handle-focus": (arg0: boolean) => boolean | void;
+            "cycle-handle-focus": (reversed: boolean) => boolean | void;
             /**
              * Emitted to move the handle with key bindings.
              * 
@@ -86731,7 +86908,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-handle": (arg0: ScrollType) => boolean | void;
+            "move-handle": (scroll_type: ScrollType) => boolean | void;
             /**
              * Emitted to accept the current position of the handle and then
              * move focus to the next widget in the focus chain.
@@ -92463,6 +92640,7 @@ export interface Builder {
          * @param result a {@link Gio.AsyncResult}
          * @returns Whether the call was successful
          * @since 4.14
+         * @throws GLib.Error
          */
         print_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -92485,6 +92663,7 @@ export interface Builder {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.OutputStream}
          * @since 4.14
+         * @throws GLib.Error
          */
         print_finish(result: Gio.AsyncResult): Gio.OutputStream;
 
@@ -92595,6 +92774,7 @@ export interface Builder {
          * @param result a {@link Gio.AsyncResult}
          * @returns the resulting `{@link Gtk.PrintSetup}`
          * @since 4.14
+         * @throws GLib.Error
          */
         setup_finish(result: Gio.AsyncResult): PrintSetup;
     }
@@ -92807,6 +92987,7 @@ export interface Builder {
          * Gets a cairo surface onto which the pages of
          * the print job should be rendered.
          * @returns the cairo surface of `job`
+         * @throws GLib.Error
          */
         get_surface(): cairo.Surface;
 
@@ -92906,6 +93087,7 @@ export interface Builder {
          * instead of a filename.
          * @param fd a file descriptor
          * @returns `false` if an error occurred
+         * @throws GLib.Error
          */
         set_source_fd(fd: number): boolean;
 
@@ -92919,6 +93101,7 @@ export interface Builder {
          * {@link Gtk.Printer.accepts_ps}.
          * @param filename the file to be printed
          * @returns `false` if an error occurred
+         * @throws GLib.Error
          */
         set_source_file(filename: string): boolean;
 
@@ -92951,7 +93134,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "begin-print": (arg0: PrintContext) => void;
+            "begin-print": (context: PrintContext) => void;
             /**
              * Emitted when displaying the print dialog.
              * 
@@ -92978,7 +93161,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "custom-widget-apply": (arg0: Widget) => void;
+            "custom-widget-apply": (widget: Widget) => void;
             /**
              * Emitted when the print operation run has finished doing
              * everything required for printing.
@@ -92993,7 +93176,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            done: (arg0: PrintOperationResult) => void;
+            done: (result: PrintOperationResult) => void;
             /**
              * Emitted for every page that is printed.
              * 
@@ -93049,7 +93232,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "draw-page": (arg0: PrintContext, arg1: number) => void;
+            "draw-page": (context: PrintContext, page_nr: number) => void;
             /**
              * Emitted after all pages have been rendered.
              * 
@@ -93058,7 +93241,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "end-print": (arg0: PrintContext) => void;
+            "end-print": (context: PrintContext) => void;
             /**
              * Emitted after the ::begin-print signal, but before the actual rendering
              * starts.
@@ -93077,7 +93260,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            paginate: (arg0: PrintContext) => boolean | void;
+            paginate: (context: PrintContext) => boolean | void;
             /**
              * Gets emitted when a preview is requested from the native dialog.
              * 
@@ -93099,7 +93282,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            preview: (arg0: PrintOperationPreview, arg1: PrintContext, arg2: Window | null) => boolean | void;
+            preview: (preview: PrintOperationPreview, context: PrintContext, parent: Window | null) => boolean | void;
             /**
              * Emitted once for every page that is printed.
              * 
@@ -93109,7 +93292,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "request-page-setup": (arg0: PrintContext, arg1: number, arg2: PageSetup) => void;
+            "request-page-setup": (context: PrintContext, page_nr: number, setup: PageSetup) => void;
             /**
              * Emitted at between the various phases of the print operation.
              * 
@@ -93128,7 +93311,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "update-custom-widget": (arg0: Widget, arg1: PageSetup, arg2: PrintSettings) => void;
+            "update-custom-widget": (widget: Widget, setup: PageSetup, settings: PrintSettings) => void;
             "notify::allow-async": (pspec: GObject.ParamSpec) => void;
             "notify::current-page": (pspec: GObject.ParamSpec) => void;
             "notify::custom-tab-label": (pspec: GObject.ParamSpec) => void;
@@ -93811,6 +93994,7 @@ export interface Builder {
          * handler.
          * 
          * The returned {@link GLib.Error} will contain more details on what went wrong.
+         * @throws GLib.Error
          */
         get_error(): void;
 
@@ -93945,6 +94129,7 @@ export interface Builder {
          * @param action the action to start
          * @param parent Transient parent of the dialog
          * @returns the result of the print operation. A return value of   {@link Gtk.PrintOperationResult.APPLY} indicates that the printing was   completed successfully. In this case, it is a good idea to obtain   the used print settings with   {@link Gtk.PrintOperation.get_print_settings}   and store them for reuse with the next print operation. A value of   {@link Gtk.PrintOperationResult.IN_PROGRESS} means the operation is running   asynchronously, and will emit the `Gtk.PrintOperation::done`   signal when done.
+         * @throws GLib.Error
          */
         run(action: PrintOperationAction, parent: Window | null): PrintOperationResult;
 
@@ -94509,6 +94694,7 @@ export interface Builder {
          * See {@link Gtk.PrintSettings.to_file}.
          * @param file_name the filename to read the settings from
          * @returns `true` on success
+         * @throws GLib.Error
          */
         load_file(file_name: string): boolean;
 
@@ -94520,6 +94706,7 @@ export interface Builder {
          * @param key_file the {@link GLib.KeyFile} to retrieve the settings from
          * @param group_name the name of the group to use, or `null`   to use the default “Print Settings”
          * @returns `true` on success
+         * @throws GLib.Error
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -94734,6 +94921,7 @@ export interface Builder {
          * {@link GLib.FileError} or {@link GLib.KeyFileError}.
          * @param file_name the file to save to
          * @returns `true` on success
+         * @throws GLib.Error
          */
         to_file(file_name: string): boolean;
 
@@ -95201,7 +95389,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "details-acquired": (arg0: boolean) => void;
+            "details-acquired": (success: boolean) => void;
             "notify::accepting-jobs": (pspec: GObject.ParamSpec) => void;
             "notify::accepts-pdf": (pspec: GObject.ParamSpec) => void;
             "notify::accepts-ps": (pspec: GObject.ParamSpec) => void;
@@ -96358,7 +96546,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "adjust-bounds": (arg0: number) => void;
+            "adjust-bounds": (value: number) => void;
             /**
              * Emitted when a scroll action is performed on a range.
              * 
@@ -96375,7 +96563,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "change-value": (arg0: ScrollType, arg1: number) => boolean | void;
+            "change-value": (scroll: ScrollType, value: number) => boolean | void;
             /**
              * Virtual function that moves the slider.
              * 
@@ -96384,7 +96572,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-slider": (arg0: ScrollType) => void;
+            "move-slider": (step: ScrollType) => void;
             /**
              * Emitted when the range value changes.
              * @signal
@@ -97417,6 +97605,7 @@ export interface Builder {
          * like its MIME type, or its display name.
          * @param uri a URI
          * @returns a {@link Gtk.RecentInfo} containing information   about the resource pointed by `uri`, or `null` if the URI was   not registered in the recently used resources list. Free with   {@link Gtk.RecentInfo.unref}.
+         * @throws GLib.Error
          */
         lookup_item(uri: string): RecentInfo | null;
 
@@ -97428,12 +97617,14 @@ export interface Builder {
          * @param uri the URI of a recently used resource
          * @param new_uri the new URI of the recently used resource, or    `null` to remove the item pointed by `uri` in the list
          * @returns `true` on success
+         * @throws GLib.Error
          */
         move_item(uri: string, new_uri: string | null): boolean;
 
         /**
          * Purges every item from the recently used resources list.
          * @returns the number of items that have been removed from the   recently used resources list
+         * @throws GLib.Error
          */
         purge_items(): number;
 
@@ -97442,6 +97633,7 @@ export interface Builder {
          * list handled by a recent manager.
          * @param uri the URI of the item you wish to remove
          * @returns `true` if the item pointed by `uri` has been successfully   removed by the recently used resources list, and `false` otherwise
+         * @throws GLib.Error
          */
         remove_item(uri: string): boolean;
     }
@@ -98503,7 +98695,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (value: number) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::adjustment": (pspec: GObject.ParamSpec) => void;
             "notify::has-frame": (pspec: GObject.ParamSpec) => void;
@@ -99723,7 +99915,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "edge-overshot": (arg0: PositionType) => void;
+            "edge-overshot": (pos: PositionType) => void;
             /**
              * Emitted whenever user-initiated scrolling makes the scrolled
              * window exactly reach the lower or upper limits defined by the
@@ -99737,7 +99929,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "edge-reached": (arg0: PositionType) => void;
+            "edge-reached": (pos: PositionType) => void;
             /**
              * Emitted when focus is moved away from the scrolled window by a
              * keybinding.
@@ -99751,7 +99943,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-focus-out": (arg0: DirectionType) => void;
+            "move-focus-out": (direction_type: DirectionType) => void;
             /**
              * Emitted when a keybinding that scrolls is pressed.
              * 
@@ -99763,7 +99955,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "scroll-child": (arg0: ScrollType, arg1: boolean) => boolean | void;
+            "scroll-child": (scroll: ScrollType, horizontal: boolean) => boolean | void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
             "notify::has-frame": (pspec: GObject.ParamSpec) => void;
@@ -106534,7 +106726,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "change-current-page": (arg0: number) => boolean | void;
+            "change-current-page": (offset: number) => boolean | void;
             "notify::max-height": (pspec: GObject.ParamSpec) => void;
             "notify::section-name": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -107892,7 +108084,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            bind: (arg0: GObject.Object) => void;
+            bind: (object: GObject.Object) => void;
             /**
              * Emitted when a newly created listitem needs to be prepared for use.
              * 
@@ -107906,7 +108098,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            setup: (arg0: GObject.Object) => void;
+            setup: (object: GObject.Object) => void;
             /**
              * Emitted when an object is about to be destroyed.
              * 
@@ -107917,7 +108109,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            teardown: (arg0: GObject.Object) => void;
+            teardown: (object: GObject.Object) => void;
             /**
              * Emitted when an object has been unbound from its item.
              * 
@@ -107930,7 +108122,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            unbind: (arg0: GObject.Object) => void;
+            unbind: (object: GObject.Object) => void;
         }
 
         // Constructor properties interface
@@ -110378,7 +110570,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            changed: (arg0: SorterChange) => void;
+            changed: (change: SorterChange) => void;
         }
 
         // Constructor properties interface
@@ -110550,7 +110742,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "change-value": (arg0: ScrollType) => void;
+            "change-value": (scroll: ScrollType) => void;
             /**
              * Emitted to convert the users input into a double value.
              * 
@@ -110562,7 +110754,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            input: (arg0: number) => number;
+            input: (new_value: number) => number;
             /**
              * Emitted to tweak the formatting of the value for display.
              * 
@@ -114990,14 +115182,14 @@ export interface Builder {
              * @deprecated since 4.10: This widget will be removed in GTK 5
              * @run-last
              */
-            "text-popped": (arg0: number, arg1: string) => void;
+            "text-popped": (context_id: number, text: string) => void;
             /**
              * Emitted whenever a new message gets pushed onto a statusbar's stack.
              * @signal
              * @deprecated since 4.10: This widget will be removed in GTK 5
              * @run-last
              */
-            "text-pushed": (arg0: number, arg1: string) => void;
+            "text-pushed": (context_id: number, text: string) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
             "notify::css-classes": (pspec: GObject.ParamSpec) => void;
@@ -116647,7 +116839,7 @@ export interface Builder {
              * @since 4.22
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             "notify::features": (pspec: GObject.ParamSpec) => void;
             "notify::overflow": (pspec: GObject.ParamSpec) => void;
             "notify::playing": (pspec: GObject.ParamSpec) => void;
@@ -117094,6 +117286,7 @@ export interface Builder {
          * @param filename the file to save to
          * @returns true, unless an error occurred
          * @since 4.22
+         * @throws GLib.Error
          */
         write_to_file(filename: string): boolean;
 
@@ -117385,7 +117578,7 @@ export interface Builder {
              * @since 4.24
              * @run-last
              */
-            activate: (arg0: string | null, arg1: string | null) => void;
+            activate: (id: string | null, href: string | null) => void;
             /**
              * Signals that an error occurred.
              * 
@@ -117411,7 +117604,7 @@ export interface Builder {
              * @since 4.24
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             "notify::resource": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::stylesheet": (pspec: GObject.ParamSpec) => void;
@@ -118005,7 +118198,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "state-set": (arg0: boolean) => boolean | void;
+            "state-set": (state: boolean) => boolean | void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -118764,7 +118957,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "delete-from-cursor": (arg0: DeleteType, arg1: number) => void;
+            "delete-from-cursor": (type: DeleteType, count: number) => void;
             /**
              * Emitted when the user initiates the insertion of a
              * fixed string at the cursor.
@@ -118776,7 +118969,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "insert-at-cursor": (arg0: string) => void;
+            "insert-at-cursor": (string: string) => void;
             /**
              * Emitted to present the Emoji chooser.
              * 
@@ -118815,7 +119008,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend: boolean) => void;
             /**
              * Emitted to paste the contents of the clipboard.
              * 
@@ -118838,7 +119031,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "preedit-changed": (arg0: string) => void;
+            "preedit-changed": (preedit: string) => void;
             /**
              * Emitted to toggle the overwrite mode.
              * 
@@ -120743,7 +120936,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "apply-tag": (arg0: TextTag, arg1: TextIter, arg2: TextIter) => void;
+            "apply-tag": (tag: TextTag, start: TextIter, end: TextIter) => void;
             /**
              * Emitted at the beginning of a single user-visible
              * operation on a {@link Gtk.TextBuffer}.
@@ -120780,7 +120973,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "delete-range": (arg0: TextIter, arg1: TextIter) => void;
+            "delete-range": (start: TextIter, end: TextIter) => void;
             /**
              * Emitted at the end of a single user-visible
              * operation on the {@link Gtk.TextBuffer}.
@@ -120811,7 +121004,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "insert-child-anchor": (arg0: TextIter, arg1: TextChildAnchor) => void;
+            "insert-child-anchor": (location: TextIter, anchor: TextChildAnchor) => void;
             /**
              * Emitted to insert a {@link Gdk.Paintable} in a {@link Gtk.TextBuffer}.
              * 
@@ -120826,7 +121019,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "insert-paintable": (arg0: TextIter, arg1: Gdk.Paintable) => void;
+            "insert-paintable": (location: TextIter, paintable: Gdk.Paintable) => void;
             /**
              * Emitted to insert text in a {@link Gtk.TextBuffer}.
              * 
@@ -120842,7 +121035,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: TextIter, arg1: string, arg2: number) => void;
+            "insert-text": (location: TextIter, text: string, len: number) => void;
             /**
              * Emitted as notification after a {@link Gtk.TextMark} is deleted.
              * 
@@ -120850,7 +121043,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "mark-deleted": (arg0: TextMark) => void;
+            "mark-deleted": (mark: TextMark) => void;
             /**
              * Emitted as notification after a {@link Gtk.TextMark} is set.
              * 
@@ -120860,7 +121053,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "mark-set": (arg0: TextIter, arg1: TextMark) => void;
+            "mark-set": (location: TextIter, mark: TextMark) => void;
             /**
              * Emitted when the modified bit of a {@link Gtk.TextBuffer} flips.
              * 
@@ -120878,7 +121071,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "paste-done": (arg0: Gdk.Clipboard) => void;
+            "paste-done": (clipboard: Gdk.Clipboard) => void;
             /**
              * Emitted when a request has been made to redo the
              * previously undone operation.
@@ -120900,7 +121093,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "remove-tag": (arg0: TextTag, arg1: TextIter, arg2: TextIter) => void;
+            "remove-tag": (tag: TextTag, start: TextIter, end: TextIter) => void;
             /**
              * Emitted when a request has been made to undo the
              * previous operation or set of operations that have
@@ -123803,13 +123996,13 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "tag-added": (arg0: TextTag) => void;
+            "tag-added": (tag: TextTag) => void;
             /**
              * Emitted every time a tag in the {@link Gtk.TextTagTable} changes.
              * @signal
              * @run-last
              */
-            "tag-changed": (arg0: TextTag, arg1: boolean) => void;
+            "tag-changed": (tag: TextTag, size_changed: boolean) => void;
             /**
              * Emitted every time a tag is removed from the {@link Gtk.TextTagTable}.
              * 
@@ -123818,7 +124011,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "tag-removed": (arg0: TextTag) => void;
+            "tag-removed": (tag: TextTag) => void;
         }
 
         // Constructor properties interface
@@ -124085,13 +124278,13 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "delete-from-cursor": (arg0: DeleteType, arg1: number) => void;
+            "delete-from-cursor": (type: DeleteType, count: number) => void;
             /**
              * Emitted when the selection needs to be extended at `location`.
              * @signal
              * @run-last
              */
-            "extend-selection": (arg0: TextExtendSelection, arg1: TextIter, arg2: TextIter, arg3: TextIter) => boolean | void;
+            "extend-selection": (granularity: TextExtendSelection, location: TextIter, start: TextIter, end: TextIter) => boolean | void;
             /**
              * Gets emitted when the user initiates the insertion of a
              * fixed string at the cursor.
@@ -124103,7 +124296,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "insert-at-cursor": (arg0: string) => void;
+            "insert-at-cursor": (string: string) => void;
             /**
              * Gets emitted to present the Emoji chooser for the `text_view`.
              * 
@@ -124145,7 +124338,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend_selection: boolean) => void;
             /**
              * Gets emitted to move the viewport.
              * 
@@ -124159,7 +124352,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-viewport": (arg0: ScrollStep, arg1: number) => void;
+            "move-viewport": (step: ScrollStep, count: number) => void;
             /**
              * Gets emitted to paste the contents of the clipboard
              * into the text view.
@@ -124187,7 +124380,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "preedit-changed": (arg0: string) => void;
+            "preedit-changed": (preedit: string) => void;
             /**
              * Gets emitted to select or unselect the complete contents of the text view.
              * 
@@ -124202,7 +124395,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "select-all": (arg0: boolean) => void;
+            "select-all": (select: boolean) => void;
             /**
              * Gets emitted when the user initiates settings the "anchor" mark.
              * 
@@ -131418,7 +131611,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "expand-collapse-cursor-row": (arg0: boolean, arg1: boolean, arg2: boolean) => boolean | void;
+            "expand-collapse-cursor-row": (object: boolean, p0: boolean, p1: boolean) => boolean | void;
             /**
              * The {@link Gtk.TreeView}::move-cursor signal is a [keybinding
              * signal]{@link Gtk.SignalAction} which gets emitted when the user
@@ -131433,7 +131626,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean, arg3: boolean) => boolean | void;
+            "move-cursor": (step: MovementStep, direction: number, extend: boolean, modify: boolean) => boolean | void;
             /**
              * The "row-activated" signal is emitted when the method
              * {@link Gtk.TreeView.row_activated} is called.
@@ -131453,19 +131646,19 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "row-activated": (arg0: TreePath, arg1: TreeViewColumn | null) => void;
+            "row-activated": (path: TreePath, column: TreeViewColumn | null) => void;
             /**
              * The given row has been collapsed (child nodes are hidden).
              * @signal
              * @run-last
              */
-            "row-collapsed": (arg0: TreeIter, arg1: TreePath) => void;
+            "row-collapsed": (iter: TreeIter, path: TreePath) => void;
             /**
              * The given row has been expanded (child nodes are shown).
              * @signal
              * @run-last
              */
-            "row-expanded": (arg0: TreeIter, arg1: TreePath) => void;
+            "row-expanded": (iter: TreeIter, path: TreePath) => void;
             /**
              * @signal
              * @action
@@ -131483,7 +131676,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "select-cursor-row": (arg0: boolean) => boolean | void;
+            "select-cursor-row": (object: boolean) => boolean | void;
             /**
              * @signal
              * @action
@@ -131496,14 +131689,14 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "test-collapse-row": (arg0: TreeIter, arg1: TreePath) => boolean | void;
+            "test-collapse-row": (iter: TreeIter, path: TreePath) => boolean | void;
             /**
              * The given row is about to be expanded (show its children nodes). Use this
              * signal if you need to control the expandability of individual rows.
              * @signal
              * @run-last
              */
-            "test-expand-row": (arg0: TreeIter, arg1: TreePath) => boolean | void;
+            "test-expand-row": (iter: TreeIter, path: TreePath) => boolean | void;
             /**
              * @signal
              * @action
@@ -134569,6 +134762,7 @@ export interface Builder {
          * @param result the result
          * @returns true if an application was launched
          * @since 4.10
+         * @throws GLib.Error
          */
         launch_finish(result: Gio.AsyncResult): boolean;
 
@@ -136043,7 +136237,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "direction-changed": (arg0: TextDirection) => void;
+            "direction-changed": (previous_direction: TextDirection) => void;
             /**
              * Emitted when `widget` is hidden.
              * @signal
@@ -136057,7 +136251,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "keynav-failed": (arg0: DirectionType) => boolean | void;
+            "keynav-failed": (direction: DirectionType) => boolean | void;
             /**
              * Emitted when `widget` is going to be mapped.
              * 
@@ -136080,7 +136274,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "mnemonic-activate": (arg0: boolean) => boolean | void;
+            "mnemonic-activate": (group_cycling: boolean) => boolean | void;
             /**
              * Emitted when the focus is moved.
              * 
@@ -136092,7 +136286,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "move-focus": (arg0: DirectionType) => void;
+            "move-focus": (direction: DirectionType) => void;
             /**
              * Emitted when the widget’s tooltip is about to be shown.
              * 
@@ -136110,7 +136304,7 @@ export interface Builder {
              * @signal
              * @run-last
              */
-            "query-tooltip": (arg0: number, arg1: number, arg2: boolean, arg3: Tooltip) => boolean | void;
+            "query-tooltip": (x: number, y: number, keyboard_mode: boolean, tooltip: Tooltip) => boolean | void;
             /**
              * Emitted when `widget` is associated with a {@link Gdk.Surface}.
              * 
@@ -136133,7 +136327,7 @@ export interface Builder {
              * @signal
              * @run-first
              */
-            "state-flags-changed": (arg0: StateFlags) => void;
+            "state-flags-changed": (flags: StateFlags) => void;
             /**
              * Emitted when `widget` is going to be unmapped.
              * 
@@ -140356,7 +140550,7 @@ export interface Builder {
              * @action
              * @run-last
              */
-            "enable-debugging": (arg0: boolean) => boolean | void;
+            "enable-debugging": (toggle: boolean) => boolean | void;
             /**
              * Emitted when the compositor has decided to eliminate a window.
              * 
@@ -145151,6 +145345,7 @@ export interface Builder {
          * `GTK_RECENT_MANAGER_ERROR` or a `G_IO_ERROR`
          * @param app_name the name of the application that should   be mapped to a {@link Gio.AppInfo}; if `null` is used then the default   application for the MIME type is used
          * @returns the newly created {@link Gio.AppInfo}
+         * @throws GLib.Error
          */
         create_app_info(app_name: string | null): Gio.AppInfo | null;
 
@@ -149886,6 +150081,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to add
          * @returns `true` if the folder could be added successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: Gio.File): boolean;
 
@@ -150007,6 +150203,7 @@ export interface Builder {
          * @param folder a {@link Gio.File} for the folder to remove
          * @returns `true` if the folder could be removed successfully,   `false` otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: Gio.File): boolean;
 
@@ -150049,6 +150246,7 @@ export interface Builder {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false`   otherwise.
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_current_folder(file: Gio.File | null): boolean;
 
@@ -150117,6 +150315,7 @@ export interface Builder {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful
          * @deprecated since 4.10: Use {@link Gtk.FileDialog} instead
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 

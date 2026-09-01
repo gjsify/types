@@ -39,8 +39,8 @@ export namespace GstInterfaces {
      * @gir-type Enum
      */
     enum ColorBalanceType {
-        HARDWARE,
-        SOFTWARE,
+        HARDWARE = 0,
+        SOFTWARE = 1,
     }
 
 
@@ -57,13 +57,13 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     enum MixerMessageType {
-        INVALID,
-        MUTE_TOGGLED,
-        RECORD_TOGGLED,
-        VOLUME_CHANGED,
-        OPTION_CHANGED,
-        OPTIONS_LIST_CHANGED,
-        MIXER_CHANGED,
+        INVALID = 0,
+        MUTE_TOGGLED = 1,
+        RECORD_TOGGLED = 2,
+        VOLUME_CHANGED = 3,
+        OPTION_CHANGED = 4,
+        OPTIONS_LIST_CHANGED = 5,
+        MIXER_CHANGED = 6,
     }
 
 
@@ -78,8 +78,8 @@ export namespace GstInterfaces {
      * @gir-type Enum
      */
     enum MixerType {
-        HARDWARE,
-        SOFTWARE,
+        HARDWARE = 0,
+        SOFTWARE = 1,
     }
 
 
@@ -106,21 +106,21 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     enum NavigationCommand {
-        INVALID,
-        MENU1,
-        MENU2,
-        MENU3,
-        MENU4,
-        MENU5,
-        MENU6,
-        MENU7,
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
-        ACTIVATE,
-        PREV_ANGLE,
-        NEXT_ANGLE,
+        INVALID = 0,
+        MENU1 = 1,
+        MENU2 = 2,
+        MENU3 = 3,
+        MENU4 = 4,
+        MENU5 = 5,
+        MENU6 = 6,
+        MENU7 = 7,
+        LEFT = 20,
+        RIGHT = 21,
+        UP = 22,
+        DOWN = 23,
+        ACTIVATE = 24,
+        PREV_ANGLE = 30,
+        NEXT_ANGLE = 31,
     }
 
 
@@ -138,13 +138,13 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     enum NavigationEventType {
-        INVALID,
-        KEY_PRESS,
-        KEY_RELEASE,
-        MOUSE_BUTTON_PRESS,
-        MOUSE_BUTTON_RELEASE,
-        MOUSE_MOVE,
-        COMMAND,
+        INVALID = 0,
+        KEY_PRESS = 1,
+        KEY_RELEASE = 2,
+        MOUSE_BUTTON_PRESS = 3,
+        MOUSE_BUTTON_RELEASE = 4,
+        MOUSE_MOVE = 5,
+        COMMAND = 6,
     }
 
 
@@ -162,10 +162,10 @@ export namespace GstInterfaces {
      * @since 0.10.23
      */
     enum NavigationMessageType {
-        INVALID,
-        MOUSE_OVER,
-        COMMANDS_CHANGED,
-        ANGLES_CHANGED,
+        INVALID = 0,
+        MOUSE_OVER = 1,
+        COMMANDS_CHANGED = 2,
+        ANGLES_CHANGED = 3,
     }
 
 
@@ -180,9 +180,9 @@ export namespace GstInterfaces {
      * @gir-type Enum
      */
     enum NavigationQueryType {
-        INVALID,
-        COMMANDS,
-        ANGLES,
+        INVALID = 0,
+        COMMANDS = 1,
+        ANGLES = 2,
     }
 
 
@@ -202,9 +202,9 @@ export namespace GstInterfaces {
      * @since 0.10.25
      */
     enum StreamVolumeFormat {
-        LINEAR,
-        CUBIC,
-        DB,
+        LINEAR = 0,
+        CUBIC = 1,
+        DB = 2,
     }
 
 
@@ -497,10 +497,10 @@ export namespace GstInterfaces {
      * @since 0.10.14
      */
     enum MixerFlags {
-        NONE,
-        AUTO_NOTIFICATIONS,
-        HAS_WHITELIST,
-        GROUPING,
+        NONE = 0,
+        AUTO_NOTIFICATIONS = 1,
+        HAS_WHITELIST = 2,
+        GROUPING = 4,
     }
 
 
@@ -516,17 +516,17 @@ export namespace GstInterfaces {
      * @gir-type Flags
      */
     enum MixerTrackFlags {
-        INPUT,
-        OUTPUT,
-        MUTE,
-        RECORD,
-        MASTER,
-        SOFTWARE,
-        NO_RECORD,
-        NO_MUTE,
-        WHITELIST,
-        READONLY,
-        WRITEONLY,
+        INPUT = 1,
+        OUTPUT = 2,
+        MUTE = 4,
+        RECORD = 8,
+        MASTER = 16,
+        SOFTWARE = 32,
+        NO_RECORD = 64,
+        NO_MUTE = 128,
+        WHITELIST = 256,
+        READONLY = 512,
+        WRITEONLY = 1024,
     }
 
 
@@ -543,10 +543,10 @@ export namespace GstInterfaces {
      * @gir-type Flags
      */
     enum TunerChannelFlags {
-        INPUT,
-        OUTPUT,
-        FREQUENCY,
-        AUDIO,
+        INPUT = 1,
+        OUTPUT = 2,
+        FREQUENCY = 4,
+        AUDIO = 8,
     }
 
 
@@ -557,7 +557,7 @@ export namespace GstInterfaces {
              * Fired when the value of the indicated channel has changed.
              * @signal
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (object: number) => void;
         }
 
         // Constructor properties interface
@@ -786,12 +786,12 @@ export namespace GstInterfaces {
              * Reports that the current frequency has changed.
              * @signal
              */
-            "frequency-changed": (arg0: number) => void;
+            "frequency-changed": (object: number) => void;
             /**
              * Reports that the signal strength has changed.
              * @signal
              */
-            "signal-changed": (arg0: number) => void;
+            "signal-changed": (object: number) => void;
         }
 
         // Constructor properties interface

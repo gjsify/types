@@ -39,9 +39,9 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum feedListFindType {
-        ODE_BY_URL,
-        ODE_BY_ID,
-        OLDER_BY_TITLE,
+        ODE_BY_URL = 0,
+        ODE_BY_ID = 1,
+        OLDER_BY_TITLE = 2,
     }
 
 
@@ -49,14 +49,14 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum lifereaIcon {
-        CON_UNREAD,
-        CON_FLAG,
-        CON_UNAVAILABLE,
-        CON_DEFAULT,
-        CON_FOLDER,
-        CON_VFOLDER,
-        CON_NEWSBIN,
-        AX_ICONS,
+        CON_UNREAD = 0,
+        CON_FLAG = 1,
+        CON_UNAVAILABLE = 2,
+        CON_DEFAULT = 3,
+        CON_FOLDER = 4,
+        CON_VFOLDER = 5,
+        CON_NEWSBIN = 6,
+        AX_ICONS = 7,
     }
 
 
@@ -64,12 +64,12 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum nodeSourceState {
-        NONE,
-        IN_PROGRESS,
-        ACTIVE,
-        AUTH_FAILED,
-        AUTH_CHALLENGE,
-        MIGRATE,
+        NONE = 0,
+        IN_PROGRESS = 1,
+        ACTIVE = 2,
+        AUTH_FAILED = 3,
+        AUTH_CHALLENGE = 4,
+        MIGRATE = 5,
     }
 
 
@@ -77,10 +77,10 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum nodeViewSortType {
-        TIME,
-        TITLE,
-        PARENT,
-        STATE,
+        TIME = 0,
+        TITLE = 1,
+        PARENT = 2,
+        STATE = 3,
     }
 
 
@@ -88,9 +88,9 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum nodeViewType {
-        NORMAL,
-        WIDE,
-        AUTO,
+        NORMAL = 0,
+        WIDE = 1,
+        AUTO = 2,
     }
 
 
@@ -98,16 +98,22 @@ export namespace Liferea {
      * @gir-type Enum
      */
     enum request_state {
-        PENDING,
-        PROCESSING,
-        FILTERING,
-        FAILED,
-        FINISHED,
+        PENDING = 0,
+        PROCESSING = 1,
+        FILTERING = 2,
+        FAILED = 3,
+        FINISHED = 4,
     }
 
 
+    /**
+     * @default 3
+     */
     const NODE_SOURCE_MAX_AUTH_FAILURES: number;
 
+    /**
+     * @default fl_dummy
+     */
     const NODE_SOURCE_TYPE_DUMMY_ID: string;
 
     /**
@@ -312,17 +318,17 @@ export namespace Liferea {
      * @gir-type Flags
      */
     enum nodeSourceCapability {
-        IS_ROOT,
-        DYNAMIC_CREATION,
-        WRITABLE_FEEDLIST,
-        ADD_FEED,
-        ADD_FOLDER,
-        HIERARCHIC_FEEDLIST,
-        ITEM_STATE_SYNC,
-        CONVERT_TO_LOCAL,
-        GOOGLE_READER_API,
-        CAN_LOGIN,
-        REPARENT_NODE,
+        IS_ROOT = 1,
+        DYNAMIC_CREATION = 2,
+        WRITABLE_FEEDLIST = 4,
+        ADD_FEED = 8,
+        ADD_FOLDER = 16,
+        HIERARCHIC_FEEDLIST = 32,
+        ITEM_STATE_SYNC = 64,
+        CONVERT_TO_LOCAL = 128,
+        GOOGLE_READER_API = 256,
+        CAN_LOGIN = 512,
+        REPARENT_NODE = 1024,
     }
 
 
@@ -330,7 +336,7 @@ export namespace Liferea {
      * @gir-type Flags
      */
     enum nodeSourceUpdate {
-        NODE_SOURCE_UPDATE_ONLY_LIST,
+        NODE_SOURCE_UPDATE_ONLY_LIST = 65536,
     }
 
 
@@ -338,10 +344,10 @@ export namespace Liferea {
      * @gir-type Flags
      */
     enum nodeSyncState {
-        IN_SYNC,
-        DIRTY_FEED,
-        DIRTY_ITEMS,
-        INITIAL_IMPORT,
+        IN_SYNC = 0,
+        DIRTY_FEED = 1,
+        DIRTY_ITEMS = 2,
+        INITIAL_IMPORT = 4,
     }
 
 
@@ -349,9 +355,9 @@ export namespace Liferea {
      * @gir-type Flags
      */
     enum updateFlags {
-        RESET_TITLE,
-        PRIORITY_HIGH,
-        NO_FEED,
+        RESET_TITLE = 1,
+        PRIORITY_HIGH = 2,
+        NO_FEED = 4,
     }
 
 
@@ -431,19 +437,19 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "location-changed": (arg0: string) => void;
+            "location-changed": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "statusbar-changed": (arg0: string) => void;
+            "statusbar-changed": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "title-changed": (arg0: string) => void;
+            "title-changed": (object: string) => void;
             "notify::hidden-urlbar": (pspec: GObject.ParamSpec) => void;
             "notify::renderwidget": (pspec: GObject.ParamSpec) => void;
         }
@@ -743,43 +749,43 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "items-updated": (arg0: string) => void;
+            "items-updated": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "new-items": (arg0: null) => void;
+            "new-items": (object: null) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "node-added": (arg0: string) => void;
+            "node-added": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "node-moved": (arg0: string) => void;
+            "node-moved": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "node-removed": (arg0: string) => void;
+            "node-removed": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "node-selected": (arg0: string) => void;
+            "node-selected": (object: string) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "node-updated": (arg0: string) => void;
+            "node-updated": (object: string) => void;
         }
 
         // Constructor properties interface
@@ -1178,13 +1184,13 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "item-added": (arg0: number) => void;
+            "item-added": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "item-batch-end": (arg0: null) => void;
+            "item-batch-end": (object: null) => void;
             /**
              * @signal
              * @action
@@ -1196,19 +1202,19 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "item-removed": (arg0: number) => void;
+            "item-removed": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "item-selected": (arg0: number) => void;
+            "item-selected": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "item-updated": (arg0: number) => void;
+            "item-updated": (object: number) => void;
         }
 
         // Constructor properties interface
@@ -1291,7 +1297,7 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "selection-changed": (arg0: number) => void;
+            "selection-changed": (object: number) => void;
             "notify::wide-view": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1391,7 +1397,7 @@ export namespace Liferea {
              * @action
              * @run-last
              */
-            "online-status-changed": (arg0: boolean) => void;
+            "online-status-changed": (object: boolean) => void;
             /**
              * @signal
              * @action
@@ -1648,6 +1654,7 @@ export namespace Liferea {
         /**
          * Exports all items in this node as a RSS2 feed.
          * @param filename the destination file name
+         * @throws GLib.Error
          */
         save_items_to_file(filename: string): void;
 

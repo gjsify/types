@@ -182,6 +182,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -235,6 +236,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
 
@@ -288,6 +290,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -341,6 +344,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -363,6 +367,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -385,6 +390,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
@@ -500,6 +506,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
 
@@ -553,6 +560,7 @@ export namespace FolksLibsocialweb {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
 

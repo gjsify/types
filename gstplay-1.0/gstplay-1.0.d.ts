@@ -43,20 +43,20 @@ export namespace GstPlay {
         /**
          * hue or color balance.
          */
-        HUE,
+        HUE = 3,
         /**
          * brightness or black level.
          */
-        BRIGHTNESS,
+        BRIGHTNESS = 0,
         /**
          * color saturation or chroma
          * gain.
          */
-        SATURATION,
+        SATURATION = 2,
         /**
          * contrast or luma gain.
          */
-        CONTRAST,
+        CONTRAST = 1,
     }
 
 
@@ -105,11 +105,11 @@ export namespace GstPlay {
         /**
          * Don't loop.
          */
-        NONE,
+        NONE = 0,
         /**
          * Loop over the current track.
          */
-        TRACK,
+        TRACK = 1,
     }
 
 
@@ -128,55 +128,55 @@ export namespace GstPlay {
         /**
          * Source element was initalized for set URI
          */
-        URI_LOADED,
+        URI_LOADED = 0,
         /**
          * Sink position changed
          */
-        POSITION_UPDATED,
+        POSITION_UPDATED = 1,
         /**
          * Duration of stream changed
          */
-        DURATION_CHANGED,
+        DURATION_CHANGED = 2,
         /**
          * State changed, see {@link GstPlay.PlayState}
          */
-        STATE_CHANGED,
+        STATE_CHANGED = 3,
         /**
          * Pipeline is in buffering state, message contains the percentage value of the decoding buffer
          */
-        BUFFERING,
+        BUFFERING = 4,
         /**
          * Sink has received EOS
          */
-        END_OF_STREAM,
+        END_OF_STREAM = 5,
         /**
          * Message contains an error
          */
-        ERROR,
+        ERROR = 6,
         /**
          * Message contains an error
          */
-        WARNING,
+        WARNING = 7,
         /**
          * Video sink received format in different dimensions than before
          */
-        VIDEO_DIMENSIONS_CHANGED,
+        VIDEO_DIMENSIONS_CHANGED = 8,
         /**
          * A media-info property has changed, message contains current {@link GstPlay.PlayMediaInfo}
          */
-        MEDIA_INFO_UPDATED,
+        MEDIA_INFO_UPDATED = 9,
         /**
          * The volume of the audio ouput has changed
          */
-        VOLUME_CHANGED,
+        VOLUME_CHANGED = 10,
         /**
          * Audio muting flag has been toggled
          */
-        MUTE_CHANGED,
+        MUTE_CHANGED = 11,
         /**
          * Any pending seeking operation has been completed
          */
-        SEEK_DONE,
+        SEEK_DONE = 12,
     }
 
 
@@ -188,23 +188,23 @@ export namespace GstPlay {
         /**
          * raw native format.
          */
-        RAW_NATIVE,
+        RAW_NATIVE = 0,
         /**
          * raw xRGB format.
          */
-        RAW_XRGB,
+        RAW_XRGB = 1,
         /**
          * raw BGRx format.
          */
-        RAW_BGRX,
+        RAW_BGRX = 2,
         /**
          * jpeg format.
          */
-        JPG,
+        JPG = 3,
         /**
          * png format.
          */
-        PNG,
+        PNG = 4,
     }
 
 
@@ -223,20 +223,20 @@ export namespace GstPlay {
         /**
          * the play is stopped.
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * the play is buffering.
          */
-        BUFFERING,
+        BUFFERING = 1,
         /**
          * the play is paused.
          */
-        PAUSED,
+        PAUSED = 2,
         /**
          * the play is currently playing a
          * stream.
          */
-        PLAYING,
+        PLAYING = 3,
     }
 
 
@@ -1444,12 +1444,12 @@ export namespace GstPlay {
              * @signal
              * @run-last
              */
-            buffering: (arg0: number) => void;
+            buffering: (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "duration-changed": (arg0: number) => void;
+            "duration-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
@@ -1460,53 +1460,53 @@ export namespace GstPlay {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
+            error: (error: GLib.Error, details: Gst.Structure | null) => void;
             /**
              * @signal
              * @run-last
              */
-            "media-info-updated": (arg0: PlayMediaInfo) => void;
+            "media-info-updated": (object: PlayMediaInfo) => void;
             /**
              * @signal
              * @run-last
              */
-            "mute-changed": (arg0: boolean) => void;
+            "mute-changed": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "position-updated": (arg0: number) => void;
+            "position-updated": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "seek-done": (arg0: number) => void;
+            "seek-done": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: PlayState) => void;
+            "state-changed": (object: PlayState) => void;
             /**
              * @signal
              * @run-last
              */
-            "uri-loaded": (arg0: string) => void;
+            "uri-loaded": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "video-dimensions-changed": (arg0: number, arg1: number) => void;
+            "video-dimensions-changed": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "volume-changed": (arg0: number) => void;
+            "volume-changed": (object: number) => void;
             /**
              * Emitted on warnings.
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error, arg1: Gst.Structure | null) => void;
+            warning: (error: GLib.Error, details: Gst.Structure | null) => void;
             "notify::play": (pspec: GObject.ParamSpec) => void;
         }
 

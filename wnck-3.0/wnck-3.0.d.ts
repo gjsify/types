@@ -48,12 +48,12 @@ export namespace Wnck {
         /**
          * the libwnck user is a normal application.
          */
-        APPLICATION,
+        APPLICATION = 1,
         /**
          * the libwnck user is an utility application dealing
          * with window management, like pagers and taskbars.
          */
-        PAGER,
+        PAGER = 2,
     }
 
 
@@ -74,22 +74,22 @@ export namespace Wnck {
          * search a neighbor {@link Wnck.Workspace} above another
          * {@link Wnck.Workspace}.
          */
-        UP,
+        UP = -1,
         /**
          * search a neighbor {@link Wnck.Workspace} below another
          * {@link Wnck.Workspace}.
          */
-        DOWN,
+        DOWN = -2,
         /**
          * search a neighbor {@link Wnck.Workspace} at the left of another
          * {@link Wnck.Workspace}.
          */
-        LEFT,
+        LEFT = -3,
         /**
          * search a neighbor {@link Wnck.Workspace} at the right of another
          * {@link Wnck.Workspace}.
          */
-        RIGHT,
+        RIGHT = -4,
     }
 
 
@@ -109,12 +109,12 @@ export namespace Wnck {
          * the {@link Wnck.Pager} will only display the names of the
          * workspaces.
          */
-        NAME,
+        NAME = 0,
         /**
          * the {@link Wnck.Pager} will display a representation
          * for each window in the workspaces.
          */
-        CONTENT,
+        CONTENT = 1,
     }
 
 
@@ -136,17 +136,17 @@ export namespace Wnck {
          * scrolling on the {@link Wnck.Pager} will cycle through the workspaces as if on a
          * 2-dimensional map. Example cycling order with 2 rows and 4 workspaces: 1 3 2 4.
          */
-        "2D",
+        "2D" = 0,
         /**
          * the {@link Wnck.Pager} will always cycle workspaces in a linear
          * manner, irrespective of how many rows are configured. (Hint: Better for mice)
          * Example cycling order with 2 rows and 4 workspaces: 1 2 3 4.
          */
-        "1D",
+        "1D" = 1,
         /**
          * the {@link Wnck.Pager} will not cycle workspaces. Since 3.40.
          */
-        NONE,
+        NONE = 2,
     }
 
 
@@ -167,18 +167,18 @@ export namespace Wnck {
          * never group multiple {@link Wnck.Window} of the same
          * {@link Wnck.Application}.
          */
-        NEVER_GROUP,
+        NEVER_GROUP = 0,
         /**
          * group multiple {@link Wnck.Window} of the same
          * {@link Wnck.Application} for some {@link Wnck.Application}, when there is not enough place
          * to have a good-looking list of all {@link Wnck.Window}.
          */
-        AUTO_GROUP,
+        AUTO_GROUP = 1,
         /**
          * always group multiple {@link Wnck.Window} of the same
          * {@link Wnck.Application}, for all {@link Wnck.Application}.
          */
-        ALWAYS_GROUP,
+        ALWAYS_GROUP = 2,
     }
 
 
@@ -199,57 +199,57 @@ export namespace Wnck {
         /**
          * keep the current gravity point.
          */
-        CURRENT,
+        CURRENT = 0,
         /**
          * use the left top corner of the frame window
          * as gravity point.
          */
-        NORTHWEST,
+        NORTHWEST = 1,
         /**
          * use the center of the frame window's top side as
          * gravity point.
          */
-        NORTH,
+        NORTH = 2,
         /**
          * use the right top corner of the frame window
          * as gravity point.
          */
-        NORTHEAST,
+        NORTHEAST = 3,
         /**
          * use the center of the frame window's left side as
          * gravity point.
          */
-        WEST,
+        WEST = 4,
         /**
          * use the center of the frame window as gravity
          * point.
          */
-        CENTER,
+        CENTER = 5,
         /**
          * use the center of the frame window's right side
          * as gravity point.
          */
-        EAST,
+        EAST = 6,
         /**
          * use the left bottom corner of the frame
          * window as gravity point.
          */
-        SOUTHWEST,
+        SOUTHWEST = 7,
         /**
          * use the center of the frame window's bottom side
          * as gravity point.
          */
-        SOUTH,
+        SOUTH = 8,
         /**
          * use the right bottom corner of the frame
          * window as gravity point.
          */
-        SOUTHEAST,
+        SOUTHEAST = 9,
         /**
          * use the left top corner of the client window as
          * gravity point.
          */
-        STATIC,
+        STATIC = 10,
     }
 
 
@@ -268,37 +268,37 @@ export namespace Wnck {
         /**
          * the window is a normal window.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * the window is a desktop.
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * the window is a dock or a panel.
          */
-        DOCK,
+        DOCK = 2,
         /**
          * the window is a dialog window.
          */
-        DIALOG,
+        DIALOG = 3,
         /**
          * the window is a tearoff toolbar.
          */
-        TOOLBAR,
+        TOOLBAR = 4,
         /**
          * the window is a tearoff menu.
          */
-        MENU,
+        MENU = 5,
         /**
          * the window is a small persistent utility window, such
          * as a palette or toolbox.
          */
-        UTILITY,
+        UTILITY = 6,
         /**
          * the window is a splash screen displayed as an
          * application is starting up.
          */
-        SPLASHSCREEN,
+        SPLASHSCREEN = 7,
     }
 
 
@@ -306,10 +306,10 @@ export namespace Wnck {
      * @gir-type Enum
      */
     enum _LayoutCorner {
-        TOPLEFT,
-        TOPRIGHT,
-        BOTTOMRIGHT,
-        BOTTOMLEFT,
+        TOPLEFT = 0,
+        TOPRIGHT = 1,
+        BOTTOMRIGHT = 2,
+        BOTTOMLEFT = 3,
     }
 
 
@@ -317,27 +317,36 @@ export namespace Wnck {
      * @gir-type Enum
      */
     enum _LayoutOrientation {
-        HORIZONTAL,
-        VERTICAL,
+        HORIZONTAL = 0,
+        VERTICAL = 1,
     }
 
 
+    /**
+     * @default 32
+     */
     const DEFAULT_ICON_SIZE: number;
 
+    /**
+     * @default 16
+     */
     const DEFAULT_MINI_ICON_SIZE: number;
 
     /**
      * @since 3.0
+     * @default 43
      */
     const MAJOR_VERSION: number;
 
     /**
      * @since 3.0
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * @since 3.0
+     * @default 3
      */
     const MINOR_VERSION: number;
 
@@ -442,84 +451,84 @@ export namespace Wnck {
         /**
          * the window may be moved around the screen.
          */
-        MOVE,
+        MOVE = 1,
         /**
          * the window may be resized.
          */
-        RESIZE,
+        RESIZE = 2,
         /**
          * the window may be shaded.
          */
-        SHADE,
+        SHADE = 4,
         /**
          * the window may be sticked.
          */
-        STICK,
+        STICK = 8,
         /**
          * the window may be maximized
          * horizontally.
          */
-        MAXIMIZE_HORIZONTALLY,
+        MAXIMIZE_HORIZONTALLY = 16,
         /**
          * the window may be maximized
          * vertically.
          */
-        MAXIMIZE_VERTICALLY,
+        MAXIMIZE_VERTICALLY = 32,
         /**
          * the window may be moved between
          * workspaces, or (un)pinned.
          */
-        CHANGE_WORKSPACE,
+        CHANGE_WORKSPACE = 64,
         /**
          * the window may be closed.
          */
-        CLOSE,
+        CLOSE = 128,
         /**
          * the window may be unmaximized
          * horizontally.
          */
-        UNMAXIMIZE_HORIZONTALLY,
+        UNMAXIMIZE_HORIZONTALLY = 256,
         /**
          * the window may be maximized
          * vertically.
          */
-        UNMAXIMIZE_VERTICALLY,
+        UNMAXIMIZE_VERTICALLY = 512,
         /**
          * the window may be unshaded.
          */
-        UNSHADE,
+        UNSHADE = 1024,
         /**
          * the window may be unsticked.
          */
-        UNSTICK,
+        UNSTICK = 2048,
         /**
          * the window may be minimized.
          */
-        MINIMIZE,
+        MINIMIZE = 4096,
         /**
          * the window may be unminimized.
          */
-        UNMINIMIZE,
+        UNMINIMIZE = 8192,
         /**
          * the window may be maximized.
          */
-        MAXIMIZE,
+        MAXIMIZE = 16384,
         /**
          * the window may be unmaximized.
          */
-        UNMAXIMIZE,
+        UNMAXIMIZE = 32768,
         /**
          * the window may be brought to fullscreen.
          */
-        FULLSCREEN,
+        FULLSCREEN = 65536,
         /**
          * the window may be made above other windows.
          */
-        ABOVE,
+        ABOVE = 131072,
         /**
          * the window may be made below other windows.
          */
-        BELOW,
+        BELOW = 262144,
     }
 
 
@@ -540,19 +549,19 @@ export namespace Wnck {
         /**
          * X coordinate of the window should be changed.
          */
-        X,
+        X = 1,
         /**
          * Y coordinate of the window should be changed.
          */
-        Y,
+        Y = 2,
         /**
          * width of the window should be changed.
          */
-        WIDTH,
+        WIDTH = 4,
         /**
          * height of the window should be changed.
          */
-        HEIGHT,
+        HEIGHT = 8,
     }
 
 
@@ -571,63 +580,63 @@ export namespace Wnck {
         /**
          * the window is minimized.
          */
-        MINIMIZED,
+        MINIMIZED = 1,
         /**
          * the window is horizontically
          * maximized.
          */
-        MAXIMIZED_HORIZONTALLY,
+        MAXIMIZED_HORIZONTALLY = 2,
         /**
          * the window is vertically maximized.
          */
-        MAXIMIZED_VERTICALLY,
+        MAXIMIZED_VERTICALLY = 4,
         /**
          * the window is shaded.
          */
-        SHADED,
+        SHADED = 8,
         /**
          * the window should not be included on pagers.
          */
-        SKIP_PAGER,
+        SKIP_PAGER = 16,
         /**
          * the window should not be included on
          * tasklists.
          */
-        SKIP_TASKLIST,
+        SKIP_TASKLIST = 32,
         /**
          * the window is sticky (see
          * `wnck_window_is_sticky()`).
          */
-        STICKY,
+        STICKY = 64,
         /**
          * the window is not visible on its {@link Wnck.Workspace}
          * and viewport (when minimized, for example).
          */
-        HIDDEN,
+        HIDDEN = 128,
         /**
          * the window is fullscreen.
          */
-        FULLSCREEN,
+        FULLSCREEN = 256,
         /**
          * the window needs attention (because
          * the window requested activation but the window manager refused it, for
          * example).
          */
-        DEMANDS_ATTENTION,
+        DEMANDS_ATTENTION = 512,
         /**
          * the window requires a response from the user.
          */
-        URGENT,
+        URGENT = 1024,
         /**
          * the window is above other windows (see
          * `wnck_window_make_above()`).
          */
-        ABOVE,
+        ABOVE = 2048,
         /**
          * the window is below other windows (see
          * `wnck_window_make_below()`).
          */
-        BELOW,
+        BELOW = 4096,
     }
 
 
@@ -2063,25 +2072,25 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "active-window-changed": (arg0: Window) => void;
+            "active-window-changed": (previously_active_window: Window) => void;
             /**
              * Emitted when the active workspace on `screen` has changed.
              * @signal
              * @run-last
              */
-            "active-workspace-changed": (arg0: Workspace) => void;
+            "active-workspace-changed": (previously_active_space: Workspace) => void;
             /**
              * Emitted when a {@link Wnck.Application} is closed on `screen`.
              * @signal
              * @run-last
              */
-            "application-closed": (arg0: Application) => void;
+            "application-closed": (app: Application) => void;
             /**
              * Emitted when a new {@link Wnck.Application} is opened on `screen`.
              * @signal
              * @run-last
              */
-            "application-opened": (arg0: Application) => void;
+            "application-opened": (app: Application) => void;
             /**
              * Emitted when the background on the root window of `screen` has changed.
              * @signal
@@ -2094,14 +2103,14 @@ export namespace Wnck {
              * @since 2.20
              * @run-last
              */
-            "class-group-closed": (arg0: ClassGroup) => void;
+            "class-group-closed": (class_group: ClassGroup) => void;
             /**
              * Emitted when a new {@link Wnck.ClassGroup} is opened on `screen`.
              * @signal
              * @since 2.20
              * @run-last
              */
-            "class-group-opened": (arg0: ClassGroup) => void;
+            "class-group-opened": (class_group: ClassGroup) => void;
             /**
              * Emitted when "showing the desktop" mode of `screen` is toggled.
              * @signal
@@ -2122,7 +2131,7 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "window-closed": (arg0: Window) => void;
+            "window-closed": (window: Window) => void;
             /**
              * Emitted when the window manager on `screen` has changed.
              * @signal
@@ -2135,7 +2144,7 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "window-opened": (arg0: Window) => void;
+            "window-opened": (window: Window) => void;
             /**
              * Emitted when the stacking order of {@link Wnck.Window} on `screen` has changed.
              * @signal
@@ -2147,13 +2156,13 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "workspace-created": (arg0: Workspace) => void;
+            "workspace-created": (space: Workspace) => void;
             /**
              * Emitted when a {@link Wnck.Workspace} is destroyed on `screen`.
              * @signal
              * @run-last
              */
-            "workspace-destroyed": (arg0: Workspace) => void;
+            "workspace-destroyed": (space: Workspace) => void;
         }
 
         // Constructor properties interface
@@ -2630,13 +2639,13 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "task-enter-notify": (arg0: null) => void;
+            "task-enter-notify": (windows: null) => void;
             /**
              * Emitted when the task is entered.
              * @signal
              * @run-last
              */
-            "task-leave-notify": (arg0: null) => void;
+            "task-leave-notify": (windows: null) => void;
             "notify::handle": (pspec: GObject.ParamSpec) => void;
             "notify::tooltips-enabled": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
@@ -2863,7 +2872,7 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "actions-changed": (arg0: WindowActions, arg1: WindowActions) => void;
+            "actions-changed": (changed_mask: WindowActions, new_state: WindowActions) => void;
             /**
              * Emitted when the class name or instance name of `window` changes.
              * @signal
@@ -2902,7 +2911,7 @@ export namespace Wnck {
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: WindowState, arg1: WindowState) => void;
+            "state-changed": (changed_mask: WindowState, new_state: WindowState) => void;
             /**
              * Emitted when the EWMH type hint of the window changes.
              * @signal

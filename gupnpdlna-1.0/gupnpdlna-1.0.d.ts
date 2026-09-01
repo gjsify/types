@@ -38,7 +38,7 @@ export namespace GUPnPDLNA {
              * @signal
              * @run-last
              */
-            done: (arg0: Information, arg1: GLib.Error) => void;
+            done: (dlna: Information, err: GLib.Error) => void;
             "notify::extended-mode": (pspec: GObject.ParamSpec) => void;
             "notify::relaxed-mode": (pspec: GObject.ParamSpec) => void;
             "notify::timeout": (pspec: GObject.ParamSpec) => void;
@@ -141,6 +141,7 @@ export namespace GUPnPDLNA {
          * Synchronously gathers metadata for `uri`.
          * @param uri URI to gather metadata for
          * @returns a {@link GUPnPDLNA.Information} with the metadata for `uri` on success, NULL otherwise
+         * @throws GLib.Error
          */
         discover_uri_sync(uri: string): Information;
 

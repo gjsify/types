@@ -28,7 +28,7 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum ContextError {
-        CONTEXT_ERROR_INTERNAL,
+        CONTEXT_ERROR_INTERNAL = 0,
     }
 
 
@@ -37,27 +37,27 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum DeviceClassCode {
-        INTERFACE_DESC,
-        AUDIO,
-        COMMUNICATIONS,
-        HID,
-        PHYSICAL,
-        IMAGE,
-        PRINTER,
-        MASS_STORAGE,
-        HUB,
-        CDC_DATA,
-        SMART_CARD,
-        CONTENT_SECURITY,
-        VIDEO,
-        PERSONAL_HEALTHCARE,
-        AUDIO_VIDEO,
-        BILLBOARD,
-        DIAGNOSTIC,
-        WIRELESS_CONTROLLER,
-        MISCELLANEOUS,
-        APPLICATION_SPECIFIC,
-        VENDOR_SPECIFIC,
+        INTERFACE_DESC = 0,
+        AUDIO = 1,
+        COMMUNICATIONS = 2,
+        HID = 3,
+        PHYSICAL = 5,
+        IMAGE = 6,
+        PRINTER = 7,
+        MASS_STORAGE = 8,
+        HUB = 9,
+        CDC_DATA = 10,
+        SMART_CARD = 11,
+        CONTENT_SECURITY = 13,
+        VIDEO = 14,
+        PERSONAL_HEALTHCARE = 15,
+        AUDIO_VIDEO = 16,
+        BILLBOARD = 17,
+        DIAGNOSTIC = 220,
+        WIRELESS_CONTROLLER = 224,
+        MISCELLANEOUS = 239,
+        APPLICATION_SPECIFIC = 254,
+        VENDOR_SPECIFIC = 255,
     }
 
 
@@ -66,8 +66,8 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum DeviceDirection {
-        DEVICE_TO_HOST,
-        HOST_TO_DEVICE,
+        DEVICE_TO_HOST = 0,
+        HOST_TO_DEVICE = 1,
     }
 
 
@@ -79,47 +79,47 @@ export namespace GUsb {
         /**
          * Internal error
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * IO error
          */
-        IO,
+        IO = 1,
         /**
          * Operation timed out
          */
-        TIMED_OUT,
+        TIMED_OUT = 2,
         /**
          * Operation not supported
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 3,
         /**
          * No device found
          */
-        NO_DEVICE,
+        NO_DEVICE = 4,
         /**
          * Device is not open
          */
-        NOT_OPEN,
+        NOT_OPEN = 5,
         /**
          * Device is already open
          */
-        ALREADY_OPEN,
+        ALREADY_OPEN = 6,
         /**
          * Operation was cancelled
          */
-        CANCELLED,
+        CANCELLED = 7,
         /**
          * Operation failed
          */
-        FAILED,
+        FAILED = 8,
         /**
          * Permission denied
          */
-        PERMISSION_DENIED,
+        PERMISSION_DENIED = 9,
         /**
          * Device was busy
          */
-        BUSY,
+        BUSY = 10,
     }
 
 
@@ -128,8 +128,8 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum DeviceLangid {
-        INVALID,
-        ENGLISH_UNITED_STATES,
+        INVALID = 0,
+        ENGLISH_UNITED_STATES = 1033,
     }
 
 
@@ -138,10 +138,10 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum DeviceRecipient {
-        DEVICE,
-        INTERFACE,
-        ENDPOINT,
-        OTHER,
+        DEVICE = 0,
+        INTERFACE = 1,
+        ENDPOINT = 2,
+        OTHER = 3,
     }
 
 
@@ -150,10 +150,10 @@ export namespace GUsb {
      * @gir-type Enum
      */
     enum DeviceRequestType {
-        STANDARD,
-        CLASS,
-        VENDOR,
-        RESERVED,
+        STANDARD = 0,
+        CLASS = 1,
+        VENDOR = 2,
+        RESERVED = 3,
     }
 
 
@@ -174,16 +174,19 @@ export namespace GUsb {
 
     /**
      * The compile-time major version
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The compile-time micro version
+     * @default 9
      */
     const MICRO_VERSION: number;
 
     /**
      * The compile-time minor version
+     * @default 4
      */
     const MINOR_VERSION: number;
 
@@ -213,11 +216,11 @@ export namespace GUsb {
      * @gir-type Flags
      */
     enum ContextFlags {
-        NONE,
-        AUTO_OPEN_DEVICES,
-        SAVE_EVENTS,
-        SAVE_REMOVED_DEVICES,
-        DEBUG,
+        NONE = 0,
+        AUTO_OPEN_DEVICES = 1,
+        SAVE_EVENTS = 2,
+        SAVE_REMOVED_DEVICES = 4,
+        DEBUG = 8,
     }
 
 
@@ -227,8 +230,8 @@ export namespace GUsb {
      * @gir-type Flags
      */
     enum DeviceClaimInterfaceFlags {
-        NONE,
-        BIND_KERNEL_DRIVER,
+        NONE = 0,
+        BIND_KERNEL_DRIVER = 1,
     }
 
 
@@ -298,19 +301,19 @@ export namespace GUsb {
              * @signal
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * This signal is emitted when a USB device is changed.
              * @signal
              * @run-last
              */
-            "device-changed": (arg0: Device) => void;
+            "device-changed": (device: Device) => void;
             /**
              * This signal is emitted when a USB device is removed.
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             "notify::debug-level": (pspec: GObject.ParamSpec) => void;
             "notify::libusb-context": (pspec: GObject.ParamSpec) => void;
         }
@@ -423,6 +426,7 @@ export namespace GUsb {
          * @param address a bus address
          * @returns a new {@link GUsb.Device}, or `null` if not found.
          * @since 0.2.2
+         * @throws GLib.Error
          */
         find_by_bus_address(bus: number, address: number): Device;
 
@@ -431,6 +435,7 @@ export namespace GUsb {
          * @param platform_id a platform id, e.g. "usb:00:03:03:02"
          * @returns a new {@link GUsb.Device}, or `null` if not found.
          * @since 0.2.4
+         * @throws GLib.Error
          */
         find_by_platform_id(platform_id: string): Device;
 
@@ -440,6 +445,7 @@ export namespace GUsb {
          * @param pid a product ID
          * @returns a new {@link GUsb.Device}, or `null` if not found.
          * @since 0.2.2
+         * @throws GLib.Error
          */
         find_by_vid_pid(vid: number, pid: number): Device;
 
@@ -484,6 +490,7 @@ export namespace GUsb {
          * @param json_object a {@link Json.Object}
          * @returns `true` on success
          * @since 0.4.0
+         * @throws GLib.Error
          */
         load(json_object: Json.Object): boolean;
 
@@ -493,6 +500,7 @@ export namespace GUsb {
          * @param tag a string tag, e.g. `runtime-reload`, or `null`
          * @returns `true` on success
          * @since 0.4.1
+         * @throws GLib.Error
          */
         load_with_tag(json_object: Json.Object, tag: string): boolean;
 
@@ -501,6 +509,7 @@ export namespace GUsb {
          * @param json_builder a {@link Json.Builder}
          * @returns `true` on success
          * @since 0.4.0
+         * @throws GLib.Error
          */
         save(json_builder: Json.Builder): boolean;
 
@@ -510,6 +519,7 @@ export namespace GUsb {
          * @param tag a string tag, e.g. `runtime-reload`, or `null`
          * @returns `true` on success
          * @since 0.4.1
+         * @throws GLib.Error
          */
         save_with_tag(json_builder: Json.Builder, tag: string): boolean;
 
@@ -557,6 +567,7 @@ export namespace GUsb {
          * @param timeout_ms timeout to wait
          * @returns a new {@link GUsb.Device}, or `null` for invalid
          * @since 0.2.9
+         * @throws GLib.Error
          */
         wait_for_replug(device: Device, timeout_ms: number): Device;
 
@@ -602,6 +613,7 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -759,6 +771,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         bulk_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -799,6 +812,7 @@ export namespace GUsb {
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         bulk_transfer_finish(res: Gio.AsyncResult): number;
 
@@ -808,6 +822,7 @@ export namespace GUsb {
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         claim_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
 
@@ -821,6 +836,7 @@ export namespace GUsb {
          * Closes the device when it is no longer required.
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -839,6 +855,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         control_transfer(direction: DeviceDirection, request_type: DeviceRequestType, recipient: DeviceRecipient, request: number, value: number, idx: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -894,6 +911,7 @@ export namespace GUsb {
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         control_transfer_finish(res: Gio.AsyncResult): number;
 
@@ -911,6 +929,7 @@ export namespace GUsb {
          * @param capability a BOS capability type
          * @returns a {@link GUsb.BosDescriptor} or `null` for not found
          * @since 0.4.0
+         * @throws GLib.Error
          */
         get_bos_descriptor(capability: number): BosDescriptor;
 
@@ -921,6 +940,7 @@ export namespace GUsb {
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of BOS descriptors
          * @since 0.4.0
+         * @throws GLib.Error
          */
         get_bos_descriptors(): BosDescriptor[];
 
@@ -944,6 +964,7 @@ export namespace GUsb {
          * Warning: this function is synchronous.
          * @returns The bConfigurationValue of the active config, or -1 on error
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_configuration(): number;
 
@@ -972,6 +993,7 @@ export namespace GUsb {
          * @param protocol_id a protocol number
          * @returns a non-zero index, or 0x00 for failure
          * @since 0.2.5
+         * @throws GLib.Error
          */
         get_custom_index(class_id: number, subclass_id: number, protocol_id: number): number;
 
@@ -1015,6 +1037,7 @@ export namespace GUsb {
          * instead.
          * @returns a HID descriptor, or `null`
          * @since 0.4.7
+         * @throws GLib.Error
          */
         get_hid_descriptor_default(): GLib.Bytes;
 
@@ -1025,6 +1048,7 @@ export namespace GUsb {
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of HID descriptors
          * @since 0.4.7
+         * @throws GLib.Error
          */
         get_hid_descriptors(): GLib.Bytes[];
 
@@ -1038,6 +1062,7 @@ export namespace GUsb {
          * @param protocol_id a protocol number
          * @returns a {@link GUsb.Interface} or `null` for not found
          * @since 0.2.8
+         * @throws GLib.Error
          */
         get_interface(class_id: number, subclass_id: number, protocol_id: number): Interface;
 
@@ -1048,6 +1073,7 @@ export namespace GUsb {
          * are returned. To invalidate the caches use `g_usb_device_invalidate()`.
          * @returns an array of interfaces or `null` for error
          * @since 0.2.8
+         * @throws GLib.Error
          */
         get_interfaces(): Interface[];
 
@@ -1131,6 +1157,7 @@ export namespace GUsb {
          * @param desc_index the index for the string descriptor to retrieve
          * @returns a newly-allocated string holding the descriptor, or NULL on error.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_string_descriptor(desc_index: number): string;
 
@@ -1144,6 +1171,7 @@ export namespace GUsb {
          * @param langid the language ID
          * @returns a possibly UTF-16 string, or NULL on error.
          * @since 0.3.6
+         * @throws GLib.Error
          */
         get_string_descriptor_bytes(desc_index: number, langid: number): GLib.Bytes;
 
@@ -1155,6 +1183,7 @@ export namespace GUsb {
          * @param length size of the request data buffer
          * @returns a possibly UTF-16 string, or NULL on error.
          * @since 0.3.8
+         * @throws GLib.Error
          */
         get_string_descriptor_bytes_full(desc_index: number, langid: number, length: bigint | number): GLib.Bytes;
 
@@ -1197,6 +1226,7 @@ export namespace GUsb {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         interrupt_transfer(endpoint: number, data: Uint8Array | string, timeout: number, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1237,6 +1267,7 @@ export namespace GUsb {
          * @param res the {@link Gio.AsyncResult}
          * @returns the actual number of bytes sent, or -1 on error.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         interrupt_transfer_finish(res: Gio.AsyncResult): number;
 
@@ -1259,6 +1290,7 @@ export namespace GUsb {
          * Warning: this function is synchronous.
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         open(): boolean;
 
@@ -1268,6 +1300,7 @@ export namespace GUsb {
          * @param flags {@link GUsb.DeviceClaimInterfaceFlags}
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         release_interface(iface: number, flags: DeviceClaimInterfaceFlags): boolean;
 
@@ -1288,6 +1321,7 @@ export namespace GUsb {
          * This is a blocking function which usually incurs a noticeable delay.
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         reset(): boolean;
 
@@ -1298,6 +1332,7 @@ export namespace GUsb {
          * @param configuration the configuration value to set
          * @returns `true` on success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         set_configuration(configuration: number): boolean;
 
@@ -1307,6 +1342,7 @@ export namespace GUsb {
          * @param alt alternative setting number
          * @returns `true` on success
          * @since 0.2.8
+         * @throws GLib.Error
          */
         set_interface_alt(iface: number, alt: number): boolean;
 
@@ -1352,6 +1388,7 @@ export namespace GUsb {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1489,13 +1526,13 @@ export namespace GUsb {
              * @signal
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * This signal is emitted when a USB device is removed.
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1572,6 +1609,7 @@ export namespace GUsb {
          * @param address a bus address
          * @returns a new {@link GUsb.Device}, or `null` if not found.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         find_by_bus_address(bus: number, address: number): Device;
 
@@ -1581,6 +1619,7 @@ export namespace GUsb {
          * @param pid a product ID
          * @returns a new {@link GUsb.Device}, or `null` if not found.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         find_by_vid_pid(vid: number, pid: number): Device;
 

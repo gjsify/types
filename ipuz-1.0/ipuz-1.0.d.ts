@@ -39,11 +39,11 @@ export namespace Ipuz {
         /**
          * Sets a number for each cell
          */
-        NUMBERS,
+        NUMBERS = 0,
         /**
          * Sets a number and the clue letter for every cell
          */
-        NUMBERS_CLUES,
+        NUMBERS_CLUES = 1,
     }
 
 
@@ -68,11 +68,11 @@ export namespace Ipuz {
         /**
          * syncs from the string property to the puzzle
          */
-        STRING_TO_PUZZLE,
+        STRING_TO_PUZZLE = 0,
         /**
          * syncs from the puzzle to the string property
          */
-        PUZZLE_TO_STRING,
+        PUZZLE_TO_STRING = 1,
     }
 
 
@@ -87,13 +87,13 @@ export namespace Ipuz {
      * @gir-type Enum
      */
     enum ArrowwordArrow {
-        NONE,
-        RIGHT,
-        RIGHT_DOWN,
-        DOWN,
-        DOWN_RIGHT,
-        LEFT_DOWN,
-        UP_RIGHT,
+        NONE = 0,
+        RIGHT = 1,
+        RIGHT_DOWN = 2,
+        DOWN = 3,
+        DOWN_RIGHT = 4,
+        LEFT_DOWN = 5,
+        UP_RIGHT = 6,
     }
 
 
@@ -108,9 +108,9 @@ export namespace Ipuz {
      * @gir-type Enum
      */
     enum ArrowwordPlacement {
-        FILL,
-        TOP,
-        BOTTOM,
+        FILL = 0,
+        TOP = 1,
+        BOTTOM = 2,
     }
 
 
@@ -129,15 +129,15 @@ export namespace Ipuz {
         /**
          * A regular light cell
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * A block
          */
-        BLOCK,
+        BLOCK = 1,
         /**
          * An omitted cell
          */
-        NULL,
+        NULL = 2,
     }
 
 
@@ -161,47 +161,47 @@ export namespace Ipuz {
         /**
          * No direction. Used for errors, and to indicate unset {@link Ipuz.ClueId}
          */
-        NONE,
+        NONE = 0,
         /**
          * Across clues
          */
-        ACROSS,
+        ACROSS = 1,
         /**
          * Down clues
          */
-        DOWN,
+        DOWN = 2,
         /**
          * Diagonal clues which go down and to the right
          */
-        DIAGONAL,
+        DIAGONAL = 3,
         /**
          * Diagonal clues which go up and to the right
          */
-        DIAGONAL_UP,
+        DIAGONAL_UP = 4,
         /**
          * Diagonal clues which go down and to the left
          */
-        DIAGONAL_DOWN_LEFT,
+        DIAGONAL_DOWN_LEFT = 5,
         /**
          * Diagonal clues which go up and to the left
          */
-        DIAGONAL_UP_LEFT,
+        DIAGONAL_UP_LEFT = 6,
         /**
          * Clues for explicitly-specified zones
          */
-        ZONES,
+        ZONES = 7,
         /**
          * Pre-ordered clues (usually alphabetical)
          */
-        CLUES,
+        CLUES = 8,
         /**
          * Clues that aren't shown to the user
          */
-        HIDDEN,
+        HIDDEN = 9,
         /**
          * Start of the range of custom directions
          */
-        CUSTOM,
+        CUSTOM = 10,
     }
 
 
@@ -221,19 +221,19 @@ export namespace Ipuz {
         /**
          * Auto place clues
          */
-        NULL,
+        NULL = 0,
         /**
          * Put clues before the puzzle
          */
-        BEFORE,
+        BEFORE = 1,
         /**
          * Put clues after the puzzle
          */
-        AFTER,
+        AFTER = 2,
         /**
          * Put clues in blocks adjacent to entry
          */
-        BLOCKS,
+        BLOCKS = 3,
     }
 
 
@@ -254,31 +254,31 @@ export namespace Ipuz {
         /**
          * A word break. Represented by the space character
          */
-        WORD_BREAK,
+        WORD_BREAK = 0,
         /**
          * A period. Represented by `.`
          */
-        PERIOD,
+        PERIOD = 1,
         /**
          * A dash. Represented by `-`
          */
-        DASH,
+        DASH = 2,
         /**
          * An apostrophe. Represented by `'`
          */
-        APOSTROPHE,
+        APOSTROPHE = 3,
         /**
          * The following word is capitalized. Represented by `*`
          */
-        ALLCAPS,
+        ALLCAPS = 4,
         /**
          * The letter is capitalized. Represented by `^`
          */
-        CAPITALIZED,
+        CAPITALIZED = 5,
         /**
          * The following word is foreign, slang, dialect, obsolete, archaic. Represented by `+`
          */
-        FOREIGN,
+        FOREIGN = 6,
     }
 
 
@@ -297,23 +297,23 @@ export namespace Ipuz {
         /**
          * Changes guesses at coord to be a good blank initial value based on cell
          */
-        INITIALIZE_GUESS,
+        INITIALIZE_GUESS = 0,
         /**
          * The cell at coord can take a user guess
          */
-        GUESSABLE,
+        GUESSABLE = 1,
         /**
          * Indicates that the cell in guesses is appropriate to the puzzle type. For example, in crosswords it indicates they have the same cell_type
          */
-        GUESSES_VALID,
+        GUESSES_VALID = 2,
         /**
          * The player attempted a guess at coord
          */
-        GUESS_MADE,
+        GUESS_MADE = 3,
         /**
          * Guesses is in a winning state at coord
          */
-        GUESS_CORRECT,
+        GUESS_CORRECT = 4,
     }
 
 
@@ -366,39 +366,39 @@ export namespace Ipuz {
         /**
          * An acrostic puzzle
          */
-        ACROSTIC,
+        ACROSTIC = 0,
         /**
          * An arrowword puzzle
          */
-        ARROWWORD,
+        ARROWWORD = 1,
         /**
          * A barred puzzle
          */
-        BARRED,
+        BARRED = 2,
         /**
          * A crossword puzzle
          */
-        CROSSWORD,
+        CROSSWORD = 3,
         /**
          * A cryptic crossword puzzle
          */
-        CRYPTIC,
+        CRYPTIC = 4,
         /**
          * A filippine puzzle
          */
-        FILIPPINE,
+        FILIPPINE = 5,
         /**
          * A nonogram puzzle
          */
-        NONOGRAM,
+        NONOGRAM = 6,
         /**
          * A color nonogram puzzle
          */
-        NONOGRAM_COLOR,
+        NONOGRAM_COLOR = 7,
         /**
          * Puzzle type not supported by libipuz
          */
-        UNKNOWN,
+        UNKNOWN = 8,
     }
 
 
@@ -417,31 +417,31 @@ export namespace Ipuz {
         /**
          * No division
          */
-        NONE,
+        NONE = 0,
         /**
          * A horizontal line "-"
          */
-        HORIZ,
+        HORIZ = 1,
         /**
          * A vertical line "|"
          */
-        VERT,
+        VERT = 2,
         /**
          * A slash from lower left to upper right "/"
          */
-        UP_RIGHT,
+        UP_RIGHT = 3,
         /**
          * A slash from upper left to lower right "\"
          */
-        UP_LEFT,
+        UP_LEFT = 4,
         /**
          * Horizontal and vertical lines dividing the cell into quarters "+"
          */
-        PLUS,
+        PLUS = 5,
         /**
          * Two diagonal slashes dividing the cell into four triangles "x"
          */
-        CROSS,
+        CROSS = 6,
     }
 
 
@@ -462,83 +462,83 @@ export namespace Ipuz {
         /**
          * No shape specified
          */
-        NONE,
+        NONE = 0,
         /**
          * A circle
          */
-        CIRCLE,
+        CIRCLE = 1,
         /**
          * A left arrow
          */
-        ARROW_LEFT,
+        ARROW_LEFT = 2,
         /**
          * A right arrow
          */
-        ARROW_RIGHT,
+        ARROW_RIGHT = 3,
         /**
          * An up arrow
          */
-        ARROW_UP,
+        ARROW_UP = 4,
         /**
          * A down arrow
          */
-        ARROW_DOWN,
+        ARROW_DOWN = 5,
         /**
          * A triangle facing left
          */
-        TRIANGLE_LEFT,
+        TRIANGLE_LEFT = 6,
         /**
          * A triangle facing right
          */
-        TRIANGLE_RIGHT,
+        TRIANGLE_RIGHT = 7,
         /**
          * A triangle facing up
          */
-        TRIANGLE_UP,
+        TRIANGLE_UP = 8,
         /**
          * A triangle facing down
          */
-        TRIANGLE_DOWN,
+        TRIANGLE_DOWN = 9,
         /**
          * A diamond
          */
-        DIAMOND,
+        DIAMOND = 10,
         /**
          * A club
          */
-        CLUB,
+        CLUB = 11,
         /**
          * A heart
          */
-        HEART,
+        HEART = 12,
         /**
          * A spade
          */
-        SPADE,
+        SPADE = 13,
         /**
          * A star
          */
-        STAR,
+        STAR = 14,
         /**
          * A square
          */
-        SQUARE,
+        SQUARE = 15,
         /**
          * A rhombus
          */
-        RHOMBUS,
+        RHOMBUS = 16,
         /**
          * A slash
          */
-        SLASH,
+        SLASH = 17,
         /**
          * A backslash
          */
-        BACKSLASH,
+        BACKSLASH = 18,
         /**
          * An "X" through the cell
          */
-        X,
+        X = 19,
     }
 
 
@@ -557,35 +557,35 @@ export namespace Ipuz {
         /**
          * Freeform grid
          */
-        NONE,
+        NONE = 0,
         /**
          * 180° Rotational Symmetry around the center
          */
-        ROTATIONAL_HALF,
+        ROTATIONAL_HALF = 1,
         /**
          * 90° Rotational Symmetry around the center
          */
-        ROTATIONAL_QUARTER,
+        ROTATIONAL_QUARTER = 2,
         /**
          * Symmetry across the horizontal center line
          */
-        HORIZONTAL,
+        HORIZONTAL = 3,
         /**
          * Symmetry across the vertical center line
          */
-        VERTICAL,
+        VERTICAL = 4,
         /**
          * Symmetry across the horizontal and vertical center lines
          */
-        MIRRORED,
+        MIRRORED = 5,
         /**
          * Symmetry across the diagonal from upper left to lower right. Only works on square boards.
          */
-        MIRRORED_DIAGONAL,
+        MIRRORED_DIAGONAL = 6,
         /**
          * Symmetry across the diagonal from lower left to upper right. Only works on square boards.
          */
-        MIRRORED_DIAGONAL_UP_RIGHT,
+        MIRRORED_DIAGONAL_UP_RIGHT = 7,
     }
 
 
@@ -612,15 +612,15 @@ export namespace Ipuz {
         /**
          * Opposite cell across the mode of symmetry
          */
-        OPPOSITE,
+        OPPOSITE = 0,
         /**
          * Clockwise adjacent point
          */
-        CW_ADJACENT,
+        CW_ADJACENT = 1,
         /**
          * Counter-clockwise adjacent point
          */
-        CCW_ADJACENT,
+        CCW_ADJACENT = 2,
     }
 
 
@@ -635,68 +635,78 @@ export namespace Ipuz {
      * @gir-type Enum
      */
     enum Verbosity {
-        STANDARD,
-        SPARSE,
+        STANDARD = 0,
+        SPARSE = 1,
     }
 
 
     /**
      * Maximum normalized character count that a quote can be set to in an
      * acrostic puzzle.
+     * @default 1000
      */
     const ACROSTIC_MAX_QUOTE_STR_LENGTH: number;
 
     /**
      * String to pass to {@link Ipuz.Puzzle.get_style} to acquire the
      * left style of an {@link Ipuz.Barred} instance.
+     * @default L
      */
     const BARRED_STYLE_L: string;
 
     /**
      * String to pass to {@link Ipuz.Puzzle.get_style} to acquire the top
      * style of an {@link Ipuz.Barred} instance.
+     * @default T
      */
     const BARRED_STYLE_T: string;
 
     /**
      * String to pass to {@link Ipuz.Puzzle.get_style} to acquire the
      * top-left style of an {@link Ipuz.Barred} instance.
+     * @default TL
      */
     const BARRED_STYLE_TL: string;
 
     /**
      * Style mark representing the bottom of the cell. Used for comparison
      * within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 448
      */
     const STYLE_MARK_BOTTOM: number;
 
     /**
      * Style mark representing the center column of the cell. Used for
      * comparison within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 146
      */
     const STYLE_MARK_CENTER_COL: number;
 
     /**
      * Style mark representing the center row of the cell. Used for
      * comparison within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 56
      */
     const STYLE_MARK_CENTER_ROW: number;
 
     /**
      * Style mark representing the left of the cell. Used for comparison
      * within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 73
      */
     const STYLE_MARK_LEFT: number;
 
     /**
      * Style mark representing the right of the cell. Used for comparison
      * within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 292
      */
     const STYLE_MARK_RIGHT: number;
 
     /**
      * Style mark representing the top of the cell. Used for comparison
      * within a {@link Ipuz.StyleForeachMarkFunc} callback.
+     * @default 7
      */
     const STYLE_MARK_TOP: number;
 
@@ -879,31 +889,31 @@ export namespace Ipuz {
         /**
          * Uses custom extensions to the ipuz spec
          */
-        USES_EXTENSIONS,
+        USES_EXTENSIONS = 1,
         /**
          * Includes the solution
          */
-        HAS_SOLUTION,
+        HAS_SOLUTION = 2,
         /**
          * Has a checksum
          */
-        HAS_CHECKSUM,
+        HAS_CHECKSUM = 4,
         /**
          * Has clues
          */
-        HAS_CLUES,
+        HAS_CLUES = 8,
         /**
          * Has guesses already within the ipuz file
          */
-        HAS_SAVED,
+        HAS_SAVED = 16,
         /**
          * Solution contains characters not present in the charset
          */
-        INVALID_CHARS,
+        INVALID_CHARS = 32,
         /**
          * Puzzle exhibits spec bug where origin is interpreted as 1,1
          */
-        HAS_ORIGIN_BUG,
+        HAS_ORIGIN_BUG = 64,
     }
 
 
@@ -923,39 +933,39 @@ export namespace Ipuz {
         /**
          * Top Left
          */
-        TL,
+        TL = 1,
         /**
          * Top
          */
-        T,
+        T = 2,
         /**
          * Top Right
          */
-        TR,
+        TR = 4,
         /**
          * Left
          */
-        L,
+        L = 8,
         /**
          * Center
          */
-        C,
+        C = 16,
         /**
          * Right
          */
-        R,
+        R = 32,
         /**
          * Bottom Left
          */
-        BL,
+        BL = 64,
         /**
          * Bottom
          */
-        B,
+        B = 128,
         /**
          * Bottom Right
          */
-        BR,
+        BR = 256,
     }
 
 
@@ -976,27 +986,27 @@ export namespace Ipuz {
         /**
          * Top
          */
-        TOP,
+        TOP = 1,
         /**
          * Right
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Bottom
          */
-        BOTTOM,
+        BOTTOM = 4,
         /**
          * Left
          */
-        LEFT,
+        LEFT = 8,
         /**
          * Top Left
          */
-        TOP_LEFT,
+        TOP_LEFT = 9,
         /**
          * Bottom Right
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 6,
     }
 
 
@@ -6493,6 +6503,7 @@ export namespace Ipuz {
          * Errors will be in the {@link Gio.IOErrorEnum} domain.
          * @param filename The filename to save `self` to
          * @returns `true` if saving was successful
+         * @throws GLib.Error
          */
         save_to_file(filename: string): boolean;
 
@@ -6507,6 +6518,7 @@ export namespace Ipuz {
          * @param stream The {@link Gio.InputStream} to save `self` to
          * @param cancellable An optional {@link Gio.Cancellable}
          * @returns `true` if saving was successful.
+         * @throws GLib.Error
          */
         save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8301,6 +8313,7 @@ export namespace Ipuz {
          * Errors will be in the {@link Gio.IOErrorEnum} domain.
          * @param filename The filename to save `guesses` to
          * @returns `true` if saving was successful
+         * @throws GLib.Error
          */
         save_to_file(filename: string): boolean;
 

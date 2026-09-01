@@ -33,40 +33,40 @@ export namespace GrlNet {
         /**
          * TBD
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 1,
         /**
          * Invalid URI or header
          */
-        PROTOCOL_ERROR,
+        PROTOCOL_ERROR = 2,
         /**
          * Required authentication
          */
-        AUTHENTICATION_REQUIRED,
+        AUTHENTICATION_REQUIRED = 3,
         /**
          * Request resource not found
          */
-        NOT_FOUND,
+        NOT_FOUND = 4,
         /**
          * The entry has been modified since is was
          * downloaded
          */
-        CONFLICT,
+        CONFLICT = 5,
         /**
          * TBD
          */
-        FORBIDDEN,
+        FORBIDDEN = 6,
         /**
          * Cannot connect to the server
          */
-        NETWORK_ERROR,
+        NETWORK_ERROR = 7,
         /**
          * Cannot connect to the proxy server
          */
-        PROXY_ERROR,
+        PROXY_ERROR = 8,
         /**
          * The operation has been cancelled (see {@link Gio.Cancellable})
          */
-        CANCELLED,
+        CANCELLED = 9,
     }
 
 
@@ -193,6 +193,7 @@ export namespace GrlNet {
          * want to keep it, please copy it into another address.
          * @param result The result of the request
          * @returns `true` if the request was successfull. If `false` an error occurred.
+         * @throws GLib.Error
          */
         request_finish(result: Gio.AsyncResult): [boolean, string, number];
 

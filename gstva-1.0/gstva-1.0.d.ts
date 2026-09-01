@@ -40,15 +40,15 @@ export namespace GstVa {
         /**
          * The feature is disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * The feature is enabled.
          */
-        ENABLED,
+        ENABLED = 1,
         /**
          * The feature is enabled automatically.
          */
-        AUTO,
+        AUTO = 2,
     }
 
 
@@ -62,33 +62,35 @@ export namespace GstVa {
         /**
          * The mesa gallium implementation.
          */
-        MESA_GALLIUM,
+        MESA_GALLIUM = 0,
         /**
          * The legacy i965 intel implementation.
          */
-        INTEL_I965,
+        INTEL_I965 = 1,
         /**
          * The iHD intel implementation.
          */
-        INTEL_IHD,
+        INTEL_IHD = 2,
         /**
          * Other implementation.
          */
-        OTHER,
+        OTHER = 3,
         /**
          * Invalid implementation.
          */
-        INVALID,
+        INVALID = 4,
     }
 
 
     /**
      * @since 1.22
+     * @default VAMemory
      */
     const ALLOCATOR_VASURFACE: string;
 
     /**
      * @since 1.20
+     * @default memory:VAMemory
      */
     const CAPS_FEATURE_MEMORY_VA: string;
 
@@ -97,11 +99,13 @@ export namespace GstVa {
      * system memory, so users can use libva primitives to operate with
      * that surface.
      * @since 1.22
+     * @default 131072
      */
     const MAP_VA: number;
 
     /**
      * @since 1.20
+     * @default gst.va.display.handle
      */
     const VA_DISPLAY_HANDLE_CONTEXT_TYPE_STR: string;
 

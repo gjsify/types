@@ -37,13 +37,13 @@ export namespace Matekbd {
      * @gir-type Enum
      */
     enum KeyboardDrawingGroupLevelPosition {
-        TOPLEFT,
-        TOPRIGHT,
-        BOTTOMLEFT,
-        BOTTOMRIGHT,
-        TOTAL,
-        FIRST,
-        LAST,
+        TOPLEFT = 0,
+        TOPRIGHT = 1,
+        BOTTOMLEFT = 2,
+        BOTTOMRIGHT = 3,
+        TOTAL = 4,
+        FIRST = 0,
+        LAST = 3,
     }
 
 
@@ -51,13 +51,16 @@ export namespace Matekbd {
      * @gir-type Enum
      */
     enum KeyboardDrawingItemType {
-        INVALID,
-        KEY,
-        KEY_EXTRA,
-        DOODAD,
+        INVALID = 0,
+        KEY = 1,
+        KEY_EXTRA = 2,
+        DOODAD = 3,
     }
 
 
+    /**
+     * @default 1
+     */
     const KEYBOARD_DRAWING_H: number;
 
     function install_glib_log_appender(): void;
@@ -259,7 +262,7 @@ export namespace Matekbd {
              * @signal
              * @run-first
              */
-            "bad-keycode": (arg0: number) => void;
+            "bad-keycode": (object: number) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;

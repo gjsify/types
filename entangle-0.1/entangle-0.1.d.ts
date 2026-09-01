@@ -41,8 +41,8 @@ export namespace Entangle {
      * @gir-type Enum
      */
     enum CameraCaptureTarget {
-        RAM,
-        CARD,
+        RAM = 0,
+        CARD = 1,
     }
 
 
@@ -50,12 +50,12 @@ export namespace Entangle {
      * @gir-type Enum
      */
     enum CameraManualFocusStep {
-        IN_COARSE,
-        IN_MEDIUM,
-        IN_FINE,
-        OUT_COARSE,
-        OUT_MEDIUM,
-        OUT_FINE,
+        IN_COARSE = 0,
+        IN_MEDIUM = 1,
+        IN_FINE = 2,
+        OUT_COARSE = 3,
+        OUT_MEDIUM = 4,
+        OUT_FINE = 5,
     }
 
 
@@ -63,10 +63,10 @@ export namespace Entangle {
      * @gir-type Enum
      */
     enum ColourProfileIntent {
-        PERCEPTUAL,
-        REL_COLOURIMETRIC,
-        SATURATION,
-        ABS_COLOURIMETRIC,
+        PERCEPTUAL = 0,
+        REL_COLOURIMETRIC = 1,
+        SATURATION = 2,
+        ABS_COLOURIMETRIC = 3,
     }
 
 
@@ -74,12 +74,12 @@ export namespace Entangle {
      * @gir-type Enum
      */
     enum ImageDisplayGrid {
-        NONE,
-        CENTER_LINES,
-        RULE_OF_3RDS,
-        QUARTERS,
-        RULE_OF_5THS,
-        GOLDEN_SECTIONS,
+        NONE = 0,
+        CENTER_LINES = 1,
+        RULE_OF_3RDS = 2,
+        QUARTERS = 3,
+        RULE_OF_5THS = 4,
+        GOLDEN_SECTIONS = 5,
     }
 
 
@@ -87,9 +87,9 @@ export namespace Entangle {
      * @gir-type Enum
      */
     enum PixbufImageSlot {
-        MASTER,
-        PREVIEW,
-        THUMBNAIL,
+        MASTER = 0,
+        PREVIEW = 1,
+        THUMBNAIL = 2,
     }
 
 
@@ -101,6 +101,7 @@ export namespace Entangle {
 
     /**
      * @param enabled 
+     * @throws GLib.Error
      */
     function dpms_set_blanking(enabled: boolean): boolean;
 
@@ -273,27 +274,27 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "camera-file-added": (arg0: CameraFile) => void;
+            "camera-file-added": (object: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            "camera-file-captured": (arg0: CameraFile) => void;
+            "camera-file-captured": (object: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            "camera-file-deleted": (arg0: CameraFile) => void;
+            "camera-file-deleted": (object: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            "camera-file-downloaded": (arg0: CameraFile) => void;
+            "camera-file-downloaded": (object: CameraFile) => void;
             /**
              * @signal
              * @run-first
              */
-            "camera-file-previewed": (arg0: CameraFile) => void;
+            "camera-file-previewed": (object: CameraFile) => void;
             /**
              * @signal
              * @run-first
@@ -464,6 +465,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns TRUE if autofocus was achieved, FALSE on error
+         * @throws GLib.Error
          */
         autofocus(): boolean;
 
@@ -513,6 +515,7 @@ export namespace Entangle {
          * entangle_camera_autofocus_async.
          * @param result a GAsyncResult
          * @returns TRUE if autofocus was performed, FALSE on error
+         * @throws GLib.Error
          */
         autofocus_finish(result: Gio.AsyncResult): boolean;
 
@@ -527,6 +530,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns the captured image or NULL
+         * @throws GLib.Error
          */
         capture_image(): CameraFile;
 
@@ -585,6 +589,7 @@ export namespace Entangle {
          * entangle_camera_capture_image_async.
          * @param result a GAsyncResult
          * @returns the captured image or NULL
+         * @throws GLib.Error
          */
         capture_image_finish(result: Gio.AsyncResult): CameraFile;
 
@@ -594,6 +599,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns TRUE if the camera is closed, FALSE on error
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -637,6 +643,7 @@ export namespace Entangle {
          * entangle_camera_close_async
          * @param result a GAsyncResult
          * @returns TRUE if the camera is closed, FALSE on error
+         * @throws GLib.Error
          */
         close_finish(result: Gio.AsyncResult): boolean;
 
@@ -648,6 +655,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param file the file to delete
          * @returns TRUE if the file was deleted, FALSE on error
+         * @throws GLib.Error
          */
         delete_file(file: CameraFile): boolean;
 
@@ -697,6 +705,7 @@ export namespace Entangle {
          * entangle_camera_delete_file_async.
          * @param result a GAsyncResult
          * @returns TRUE if the file was deleted, FALSE on error
+         * @throws GLib.Error
          */
         delete_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -709,6 +718,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param file the file whose contents to download
          * @returns TRUE if the file was downloaded, FALSE on error
+         * @throws GLib.Error
          */
         download_file(file: CameraFile): boolean;
 
@@ -761,6 +771,7 @@ export namespace Entangle {
          * entangle_camera_download_file_async.
          * @param result a GAsyncResult
          * @returns TRUE if the file was downloaded, FALSE on error
+         * @throws GLib.Error
          */
         download_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -769,6 +780,7 @@ export namespace Entangle {
          * 
          * This can only be invoked when the camera is opened.
          * @returns the controls, or NULL
+         * @throws GLib.Error
          */
         get_controls(): ControlGroup;
 
@@ -856,6 +868,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns TRUE if the controls were loaded, FALSE on error
+         * @throws GLib.Error
          */
         load_controls(): boolean;
 
@@ -902,6 +915,7 @@ export namespace Entangle {
          * entangle_camera_load_controls_async.
          * @param result a GAsyncResult
          * @returns TRUE if the controls were loaded, FALSE on error
+         * @throws GLib.Error
          */
         load_controls_finish(result: Gio.AsyncResult): boolean;
 
@@ -914,6 +928,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param step how much to change focus by
          * @returns TRUE if autofocus was achieved, FALSE on error
+         * @throws GLib.Error
          */
         manualfocus(step: CameraManualFocusStep): boolean;
 
@@ -966,6 +981,7 @@ export namespace Entangle {
          * entangle_camera_manualfocus_async.
          * @param result a GAsyncResult
          * @returns TRUE if manual focus was performed, FALSE on error
+         * @throws GLib.Error
          */
         manualfocus_finish(result: Gio.AsyncResult): boolean;
 
@@ -988,6 +1004,7 @@ export namespace Entangle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         mount_finish(result: Gio.AsyncResult): boolean;
 
@@ -998,6 +1015,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns TRUE if the camera is connected, FALSE on error
+         * @throws GLib.Error
          */
         open(): boolean;
 
@@ -1044,6 +1062,7 @@ export namespace Entangle {
          * entangle_camera_open_async
          * @param result a GAsyncResult
          * @returns TRUE if the camera is opened, FALSE on error
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
@@ -1056,6 +1075,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns the captured image or NULL
+         * @throws GLib.Error
          */
         preview_image(): CameraFile;
 
@@ -1108,6 +1128,7 @@ export namespace Entangle {
          * entangle_camera_preview_image_async.
          * @param result a GAsyncResult
          * @returns the captured image or NULL
+         * @throws GLib.Error
          */
         preview_image_finish(result: Gio.AsyncResult): CameraFile;
 
@@ -1122,6 +1143,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param waitms the number of milliseconds to wait
          * @returns TRUE if the file was deleted, FALSE on error
+         * @throws GLib.Error
          */
         process_events(waitms: bigint | number): boolean;
 
@@ -1180,6 +1202,7 @@ export namespace Entangle {
          * entangle_camera_process_events_async.
          * @param result a GAsyncResult
          * @returns TRUE if events were processed, FALSE on error
+         * @throws GLib.Error
          */
         process_events_finish(result: Gio.AsyncResult): boolean;
 
@@ -1190,6 +1213,7 @@ export namespace Entangle {
          * 
          * This block execution of the caller until completion.
          * @returns TRUE if the controls were saved, FALSE on error
+         * @throws GLib.Error
          */
         save_controls(): boolean;
 
@@ -1236,6 +1260,7 @@ export namespace Entangle {
          * entangle_camera_save_controls_async.
          * @param result a GAsyncResult
          * @returns TRUE if the controls were saved, FALSE on error
+         * @throws GLib.Error
          */
         save_controls_finish(result: Gio.AsyncResult): boolean;
 
@@ -1248,6 +1273,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param target the capture target
          * @returns TRUE if the capture target was changed, FALSE on error
+         * @throws GLib.Error
          */
         set_capture_target(target: CameraCaptureTarget): boolean;
 
@@ -1297,6 +1323,7 @@ export namespace Entangle {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         set_capture_target_finish(result: Gio.AsyncResult): boolean;
 
@@ -1309,6 +1336,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param epochsecs new time in seconds since the epoch
          * @returns TRUE if the clock was changed, FALSE on error
+         * @throws GLib.Error
          */
         set_clock(epochsecs: bigint | number): boolean;
 
@@ -1361,6 +1389,7 @@ export namespace Entangle {
          * entangle_camera_set_clock_async.
          * @param result a GAsyncResult
          * @returns TRUE if the clock was changed, FALSE on error
+         * @throws GLib.Error
          */
         set_clock_finish(result: Gio.AsyncResult): boolean;
 
@@ -1381,6 +1410,7 @@ export namespace Entangle {
          * This block execution of the caller until completion.
          * @param enabled TRUE to turn on the view finder
          * @returns TRUE if the viewer finder state was changed, FALSE on error
+         * @throws GLib.Error
          */
         set_viewfinder(enabled: boolean): boolean;
 
@@ -1436,6 +1466,7 @@ export namespace Entangle {
          * entangle_camera_set_viewfinder_async.
          * @param result a GAsyncResult
          * @returns TRUE if the viewfinder state was changed, FALSE on error
+         * @throws GLib.Error
          */
         set_viewfinder_finish(result: Gio.AsyncResult): boolean;
 
@@ -1479,6 +1510,7 @@ export namespace Entangle {
          * entangle_camera_unmount_async.
          * @param result a GAsyncResult
          * @returns TRUE if the camera was unmounted, FALSE on error
+         * @throws GLib.Error
          */
         unmount_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1585,6 +1617,7 @@ export namespace Entangle {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         capture_finish(res: Gio.AsyncResult): boolean;
 
@@ -1624,6 +1657,7 @@ export namespace Entangle {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         preview_finish(res: Gio.AsyncResult): boolean;
 
@@ -1755,6 +1789,7 @@ export namespace Entangle {
          * filesystem path identified by `localpath`
          * @param localpath path on the local filesystem
          * @returns TRUE if the file was saved, FALSE on error
+         * @throws GLib.Error
          */
         save_path(localpath: string): boolean;
 
@@ -1764,6 +1799,7 @@ export namespace Entangle {
          * any scheme for which a GVFS handler is present.
          * @param uri virtual filesystem URI
          * @returns TRUE if the file was saved, FALSE on error
+         * @throws GLib.Error
          */
         save_uri(uri: string): boolean;
 
@@ -1800,12 +1836,12 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "camera-added": (arg0: Camera) => void;
+            "camera-added": (object: Camera) => void;
             /**
              * @signal
              * @run-first
              */
-            "camera-removed": (arg0: Camera) => void;
+            "camera-removed": (object: Camera) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::device-manager": (pspec: GObject.ParamSpec) => void;
         }
@@ -1908,6 +1944,7 @@ export namespace Entangle {
         /**
          * De-intialization the list of cameras
          * @returns TRUE if the refresh was successful, FALSE on error
+         * @throws GLib.Error
          */
         refresh(): boolean;
 
@@ -2718,7 +2755,7 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "picker-connect": (arg0: GObject.Object) => void;
+            "picker-connect": (object: GObject.Object) => void;
             /**
              * @signal
              * @run-first
@@ -4035,12 +4072,12 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "device-added": (arg0: string) => void;
+            "device-added": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "device-removed": (arg0: string) => void;
+            "device-removed": (object: string) => void;
         }
 
         // Constructor properties interface
@@ -4879,6 +4916,9 @@ export namespace Entangle {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         ["delete"](): boolean;
 
         /**
@@ -5233,22 +5273,22 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "metadata-loaded": (arg0: Image) => void;
+            "metadata-loaded": (object: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            "metadata-unloaded": (arg0: Image) => void;
+            "metadata-unloaded": (object: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            "pixbuf-loaded": (arg0: Image) => void;
+            "pixbuf-loaded": (object: Image) => void;
             /**
              * @signal
              * @run-first
              */
-            "pixbuf-unloaded": (arg0: Image) => void;
+            "pixbuf-unloaded": (object: Image) => void;
             "notify::colour-transform": (pspec: GObject.ParamSpec) => void;
             "notify::with-metadata": (pspec: GObject.ParamSpec) => void;
             "notify::workers": (pspec: GObject.ParamSpec) => void;
@@ -6439,6 +6479,7 @@ export namespace Entangle {
         /**
          * @param result a GAsyncResult
          * @returns TRUE on success, false otherwise
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -6681,12 +6722,12 @@ export namespace Entangle {
              * @signal
              * @run-first
              */
-            "session-media-added": (arg0: Media) => void;
+            "session-media-added": (object: Media) => void;
             /**
              * @signal
              * @run-first
              */
-            "session-media-removed": (arg0: Media) => void;
+            "session-media-removed": (object: Media) => void;
             "notify::directory": (pspec: GObject.ParamSpec) => void;
             "notify::filename-pattern": (pspec: GObject.ParamSpec) => void;
         }

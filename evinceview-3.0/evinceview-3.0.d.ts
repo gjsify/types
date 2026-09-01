@@ -44,11 +44,11 @@ export namespace EvinceView {
      * @gir-type Enum
      */
     enum JobPriority {
-        PRIORITY_URGENT,
-        PRIORITY_HIGH,
-        PRIORITY_LOW,
-        PRIORITY_NONE,
-        N_PRIORITIES,
+        PRIORITY_URGENT = 0,
+        PRIORITY_HIGH = 1,
+        PRIORITY_LOW = 2,
+        PRIORITY_NONE = 3,
+        N_PRIORITIES = 4,
     }
 
 
@@ -63,8 +63,8 @@ export namespace EvinceView {
      * @gir-type Enum
      */
     enum JobRunMode {
-        THREAD,
-        MAIN_LOOP,
+        THREAD = 0,
+        MAIN_LOOP = 1,
     }
 
 
@@ -79,8 +79,8 @@ export namespace EvinceView {
      * @gir-type Enum
      */
     enum JobThumbnailFormat {
-        PIXBUF,
-        SURFACE,
+        PIXBUF = 0,
+        SURFACE = 1,
     }
 
 
@@ -95,9 +95,9 @@ export namespace EvinceView {
      * @gir-type Enum
      */
     enum PageLayout {
-        SINGLE,
-        DUAL,
-        AUTOMATIC,
+        SINGLE = 0,
+        DUAL = 1,
+        AUTOMATIC = 2,
     }
 
 
@@ -115,58 +115,118 @@ export namespace EvinceView {
         /**
          * Since: 3.8
          */
-        FIT_PAGE,
+        FIT_PAGE = 0,
         /**
          * Same as {@link EvinceView.SizingMode.FIT_PAGE}. Deprecated:
          */
-        BEST_FIT,
-        FIT_WIDTH,
-        FREE,
+        BEST_FIT = 0,
+        FIT_WIDTH = 1,
+        FREE = 2,
         /**
          * Since: 3.8
          */
-        AUTOMATIC,
+        AUTOMATIC = 3,
     }
 
 
+    /**
+     * @default annotations-squiggly-symbolic
+     */
     const STOCK_ANNOT_SQUIGGLY: string;
 
+    /**
+     * @default annotations-text-symbolic
+     */
     const STOCK_ANNOT_TEXT: string;
 
+    /**
+     * @default mail-attachment
+     */
     const STOCK_ATTACHMENT: string;
 
+    /**
+     * @default close
+     */
     const STOCK_CLOSE: string;
 
+    /**
+     * @default find-unsupported-symbolic
+     */
     const STOCK_FIND_UNSUPPORTED: string;
 
+    /**
+     * @default inverted
+     */
     const STOCK_INVERTED_COLORS: string;
 
+    /**
+     * @default outline-symbolic
+     */
     const STOCK_OUTLINE: string;
 
+    /**
+     * @default resize-se
+     */
     const STOCK_RESIZE_SE: string;
 
+    /**
+     * @default resize-sw
+     */
     const STOCK_RESIZE_SW: string;
 
+    /**
+     * @default object-rotate-left
+     */
     const STOCK_ROTATE_LEFT: string;
 
+    /**
+     * @default object-rotate-right
+     */
     const STOCK_ROTATE_RIGHT: string;
 
+    /**
+     * @default x-office-presentation
+     */
     const STOCK_RUN_PRESENTATION: string;
 
+    /**
+     * @default document-send
+     */
     const STOCK_SEND_TO: string;
 
+    /**
+     * @default view-page-continuous
+     */
     const STOCK_VIEW_CONTINUOUS: string;
 
+    /**
+     * @default view-page-facing
+     */
     const STOCK_VIEW_DUAL: string;
 
+    /**
+     * @default view-sidebar-symbolic
+     */
     const STOCK_VIEW_SIDEBAR: string;
 
+    /**
+     * @default visible-symbolic
+     */
     const STOCK_VISIBLE: string;
 
+    /**
+     * @default zoom
+     */
     const STOCK_ZOOM: string;
 
+    /**
+     * @default zoom-fit-height
+     */
     const STOCK_ZOOM_PAGE: string;
 
+    /**
+     * @default zoom-fit-width
+     */
     const STOCK_ZOOM_WIDTH: string;
 
     /**
@@ -192,18 +252,18 @@ export namespace EvinceView {
      * @gir-type Flags
      */
     enum JobPageDataFlags {
-        NONE,
-        LINKS,
-        TEXT,
-        TEXT_MAPPING,
-        TEXT_LAYOUT,
-        TEXT_ATTRS,
-        TEXT_LOG_ATTRS,
-        IMAGES,
-        FORMS,
-        ANNOTS,
-        MEDIA,
-        ALL,
+        NONE = 0,
+        LINKS = 1,
+        TEXT = 2,
+        TEXT_MAPPING = 4,
+        TEXT_LAYOUT = 8,
+        TEXT_ATTRS = 16,
+        TEXT_LOG_ATTRS = 32,
+        IMAGES = 64,
+        FORMS = 128,
+        ANNOTS = 256,
+        MEDIA = 512,
+        ALL = 1023,
     }
 
 
@@ -214,7 +274,7 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            "page-changed": (arg0: number, arg1: number) => void;
+            "page-changed": (object: number, p0: number) => void;
             "notify::continuous": (pspec: GObject.ParamSpec) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
             "notify::dual-odd-left": (pspec: GObject.ParamSpec) => void;
@@ -829,7 +889,7 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            updated: (arg0: number) => void;
+            updated: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -932,7 +992,7 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            updated: (arg0: number) => void;
+            updated: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -1215,6 +1275,7 @@ export namespace EvinceView {
          * @param fd a file descriptor
          * @returns `true` if the file descriptor could be set
          * @since 42.0
+         * @throws GLib.Error
          */
         set_fd(fd: number): boolean;
 
@@ -1725,7 +1786,7 @@ export namespace EvinceView {
              * @signal
              * @run-last
              */
-            done: (arg0: Gtk.PrintOperationResult) => void;
+            done: (object: Gtk.PrintOperationResult) => void;
             /**
              * @signal
              * @run-last
@@ -1797,6 +1858,9 @@ export namespace EvinceView {
 
         get_embed_page_setup(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_error(): void;
 
         get_job_name(): string;
@@ -1856,7 +1920,7 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            "annot-added": (arg0: EvinceDocument.Annotation) => void;
+            "annot-added": (object: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @action
@@ -1868,30 +1932,30 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            "annot-changed": (arg0: EvinceDocument.Annotation) => void;
+            "annot-changed": (object: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "annot-removed": (arg0: EvinceDocument.Annotation) => void;
+            "annot-removed": (object: EvinceDocument.Annotation) => void;
             /**
              * @signal
              * @run-last
              */
-            "cursor-moved": (arg0: number, arg1: number) => void;
-            /**
-             * @signal
-             * @action
-             * @run-last
-             */
-            "external-link": (arg0: GObject.Object) => void;
+            "cursor-moved": (object: number, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "handle-link": (arg0: number, arg1: GObject.Object) => void;
+            "external-link": (object: GObject.Object) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "handle-link": (object: number, p0: GObject.Object) => void;
             /**
              * @signal
              * @action
@@ -1903,19 +1967,19 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.MovementStep, arg1: number, arg2: boolean) => boolean | void;
+            "move-cursor": (object: Gtk.MovementStep, p0: number, p1: boolean) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            popup: (arg0: null) => void;
+            popup: (object: null) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            scroll: (arg0: Gtk.ScrollType, arg1: Gtk.Orientation) => void;
+            scroll: (object: Gtk.ScrollType, p0: Gtk.Orientation) => void;
             /**
              * @signal
              * @action
@@ -1927,7 +1991,7 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            "sync-source": (arg0: EvinceDocument.SourceLink) => void;
+            "sync-source": (object: EvinceDocument.SourceLink) => void;
             "notify::can-zoom-in": (pspec: GObject.ParamSpec) => void;
             "notify::can-zoom-out": (pspec: GObject.ParamSpec) => void;
             "notify::is-loading": (pspec: GObject.ParamSpec) => void;
@@ -2416,13 +2480,13 @@ export namespace EvinceView {
              * @action
              * @run-last
              */
-            "change-page": (arg0: Gtk.ScrollType) => void;
+            "change-page": (object: Gtk.ScrollType) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "external-link": (arg0: GObject.Object) => void;
+            "external-link": (object: GObject.Object) => void;
             /**
              * @signal
              * @action

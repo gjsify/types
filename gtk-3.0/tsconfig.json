@@ -59,7 +59,7 @@
       ]
 }
   },
-  "include": ["./gtk-3.0.d.ts","./gtk-3.0-surface.d.ts"]
+  "include": ["./gtk-3.0.d.ts","./gtk-3.0-vocabulary.d.ts"]
 }
 
 

@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./gnomeqrgtk-4.0.d.ts","./gnomeqrgtk-4.0-surface.d.ts"]
+  "include": ["./gnomeqrgtk-4.0.d.ts","./gnomeqrgtk-4.0-vocabulary.d.ts"]
 }
 
 

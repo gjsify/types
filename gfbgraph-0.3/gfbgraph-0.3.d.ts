@@ -30,8 +30,8 @@ export namespace GFBGraph {
      * @gir-type Enum
      */
     enum NodeError {
-        CONNECTIONABLE,
-        CONNECTABLE,
+        CONNECTIONABLE = 1,
+        CONNECTABLE = 2,
     }
 
 
@@ -168,6 +168,7 @@ export namespace GFBGraph {
          * with a root object called "data".
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
+         * @throws GLib.Error
          */
         default_parse_connected_data(payload: string): Node[];
 
@@ -200,6 +201,7 @@ export namespace GFBGraph {
          * executed.
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
+         * @throws GLib.Error
          */
         parse_connected_data(payload: string): Node[];
 
@@ -286,6 +288,7 @@ export namespace GFBGraph {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -412,6 +415,7 @@ export namespace GFBGraph {
          * @param connect_node A {@link GFBGraph.Node}.
          * @param authorizer A {@link GFBGraph.Authorizer}.
          * @returns TRUE on sucess, FALSE if an error ocurred.
+         * @throws GLib.Error
          */
         append_connection(connect_node: Node, authorizer: Authorizer): boolean;
 
@@ -422,6 +426,7 @@ export namespace GFBGraph {
          * @param node_type a {@link GFBGraph.Node} type {@link GObject.GType} that determines the kind of nodes to retrieve.
          * @param authorizer a {@link GFBGraph.Authorizer}.
          * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
+         * @throws GLib.Error
          */
         get_connection_nodes(node_type: GObject.GType, authorizer: Authorizer): Node[];
 
@@ -468,6 +473,7 @@ export namespace GFBGraph {
          * `gfbgraph_node_get_connection_nodes_async()`.
          * @param result A {@link Gio.AsyncResult}.
          * @returns a newly-allocated {@link GLib.List} of type `node_type` objects with the found nodes.
+         * @throws GLib.Error
          */
         get_connection_nodes_async_finish(result: Gio.AsyncResult): Node[];
 
@@ -600,6 +606,7 @@ export namespace GFBGraph {
          * The photo always is a JPEG.
          * @param authorizer a {@link GFBGraph.Authorizer}.
          * @returns a {@link Gio.InputStream} with the photo content or `null` in case of error.
+         * @throws GLib.Error
          */
         download_default_size(authorizer: Authorizer): Gio.InputStream;
 
@@ -643,6 +650,7 @@ export namespace GFBGraph {
          * with a root object called "data".
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
+         * @throws GLib.Error
          */
         default_parse_connected_data(payload: string): Node[];
 
@@ -675,6 +683,7 @@ export namespace GFBGraph {
          * executed.
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
+         * @throws GLib.Error
          */
         parse_connected_data(payload: string): Node[];
 
@@ -987,6 +996,7 @@ export namespace GFBGraph {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1123,6 +1133,7 @@ export namespace GFBGraph {
          * Retrieve the albums nodes owned by the `user`. This functions call the function ID/albums.
          * @param authorizer a {@link GFBGraph.Authorizer}.
          * @returns a newly-allocated {@link GLib.List} with the albums nodes owned by the given user.
+         * @throws GLib.Error
          */
         get_albums(authorizer: Authorizer): Album[];
 
@@ -1166,6 +1177,7 @@ export namespace GFBGraph {
          * `gfbgraph_user_get_albums_async()`.
          * @param result A {@link Gio.AsyncResult}.
          * @returns a newly-allocated {@link GLib.List} of albums owned by the `user`.
+         * @throws GLib.Error
          */
         get_albums_async_finish(result: Gio.AsyncResult): Album[];
 
@@ -1373,6 +1385,7 @@ export namespace GFBGraph {
          * This method is thread safe.
          * @param cancellable An optional {@link Gio.Cancellable} object, or `null`.
          * @returns `true` if the authorizer now has a valid token.
+         * @throws GLib.Error
          */
         refresh_authorization(cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1431,6 +1444,7 @@ export namespace GFBGraph {
          * with a root object called "data".
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} with the same {@link GObject.GType} as `self`.
+         * @throws GLib.Error
          */
         default_parse_connected_data(payload: string): Node[];
 
@@ -1463,6 +1477,7 @@ export namespace GFBGraph {
          * executed.
          * @param payload a const `gchar` with the response string from the Facebook Graph API.
          * @returns a newly-allocated {@link GLib.List} of {@link GFBGraph.Node} created from the `payload` or `null`.
+         * @throws GLib.Error
          */
         parse_connected_data(payload: string): Node[];
     }

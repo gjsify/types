@@ -38,23 +38,23 @@ export namespace GnomeBluetooth {
         /**
          * Bluetooth adapter is missing.
          */
-        ABSENT,
+        ABSENT = 0,
         /**
          * Bluetooth adapter is on.
          */
-        ON,
+        ON = 1,
         /**
          * Bluetooth adapter is being turned on.
          */
-        TURNING_ON,
+        TURNING_ON = 2,
         /**
          * Bluetooth adapter is being turned off.
          */
-        TURNING_OFF,
+        TURNING_OFF = 3,
         /**
          * Bluetooth adapter is off.
          */
-        OFF,
+        OFF = 4,
     }
 
 
@@ -73,25 +73,27 @@ export namespace GnomeBluetooth {
         /**
          * no battery reporting
          */
-        NONE,
+        NONE = 0,
         /**
          * battery reported in percentage
          */
-        PERCENTAGE,
+        PERCENTAGE = 1,
         /**
          * battery reported coarsely
          */
-        COARSE,
+        COARSE = 2,
     }
 
 
     /**
      * Use this value to select any Bluetooth audio device where a {@link GnomeBluetooth.Type} enum is required.
+     * @default 1048800
      */
     const TYPE_AUDIO: number;
 
     /**
      * Use this value to select any Bluetooth input device where a {@link GnomeBluetooth.Type} enum is required.
+     * @default 13056
      */
     const TYPE_INPUT: number;
 
@@ -115,6 +117,7 @@ export namespace GnomeBluetooth {
      * @param address Remote device to use
      * @param alias Remote device's name
      * @returns `true` on success, `false` on error.
+     * @throws GLib.Error
      */
     function send_to_address(address: string, alias: string): boolean;
 
@@ -155,87 +158,87 @@ export namespace GnomeBluetooth {
         /**
          * any device, or a device of an unknown type
          */
-        ANY,
+        ANY = 1,
         /**
          * a telephone (usually a cell/mobile phone)
          */
-        PHONE,
+        PHONE = 2,
         /**
          * a modem
          */
-        MODEM,
+        MODEM = 4,
         /**
          * a computer, can be a laptop, a wearable computer, etc.
          */
-        COMPUTER,
+        COMPUTER = 8,
         /**
          * a network device, such as a router
          */
-        NETWORK,
+        NETWORK = 16,
         /**
          * a headset (usually a hands-free device)
          */
-        HEADSET,
+        HEADSET = 32,
         /**
          * headphones (covers two ears)
          */
-        HEADPHONES,
+        HEADPHONES = 64,
         /**
          * another type of audio device
          */
-        OTHER_AUDIO,
+        OTHER_AUDIO = 128,
         /**
          * a keyboard
          */
-        KEYBOARD,
+        KEYBOARD = 256,
         /**
          * a mouse
          */
-        MOUSE,
+        MOUSE = 512,
         /**
          * a camera (still or moving)
          */
-        CAMERA,
+        CAMERA = 1024,
         /**
          * a printer
          */
-        PRINTER,
+        PRINTER = 2048,
         /**
          * a joypad, joystick, or other game controller
          */
-        JOYPAD,
+        JOYPAD = 4096,
         /**
          * a drawing tablet
          */
-        TABLET,
+        TABLET = 8192,
         /**
          * a video device, such as a webcam
          */
-        VIDEO,
+        VIDEO = 16384,
         /**
          * a remote control
          */
-        REMOTE_CONTROL,
+        REMOTE_CONTROL = 32768,
         /**
          * a scanner
          */
-        SCANNER,
+        SCANNER = 65536,
         /**
          * a display
          */
-        DISPLAY,
+        DISPLAY = 131072,
         /**
          * a wearable computer
          */
-        WEARABLE,
+        WEARABLE = 262144,
         /**
          * a toy or game
          */
-        TOY,
+        TOY = 524288,
         /**
          * audio speaker or speakers
          */
-        SPEAKERS,
+        SPEAKERS = 1048576,
     }
 
 
@@ -248,7 +251,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "device-added": (arg0: GObject.Object) => void;
+            "device-added": (device: GObject.Object) => void;
             /**
              * The {@link GnomeBluetooth.Client.SignalSignatures.device_removed | GnomeBluetooth.Client::device-removed} signal is launched when a
              * device gets removed from the model.
@@ -259,7 +262,7 @@ export namespace GnomeBluetooth {
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: string) => void;
+            "device-removed": (device: string) => void;
             "notify::default-adapter": (pspec: GObject.ParamSpec) => void;
             "notify::default-adapter-address": (pspec: GObject.ParamSpec) => void;
             "notify::default-adapter-name": (pspec: GObject.ParamSpec) => void;
@@ -485,6 +488,7 @@ export namespace GnomeBluetooth {
          * Finishes the connection operation. See `bluetooth_client_connect_service()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if the connection operation succeeded, `false` otherwise.
+         * @throws GLib.Error
          */
         connect_service_finish(res: Gio.AsyncResult): boolean;
 

@@ -28,9 +28,9 @@ export namespace Garcon {
      * @gir-type Enum
      */
     enum MenuLayoutMergeType {
-        MENUS,
-        FILES,
-        ALL,
+        MENUS = 0,
+        FILES = 1,
+        ALL = 2,
     }
 
 
@@ -38,8 +38,8 @@ export namespace Garcon {
      * @gir-type Enum
      */
     enum MenuMergeFileType {
-        PATH,
-        PARENT,
+        PATH = 0,
+        PARENT = 1,
     }
 
 
@@ -54,37 +54,37 @@ export namespace Garcon {
      * @gir-type Enum
      */
     enum MenuNodeType {
-        INVALID,
-        MENU,
-        NAME,
-        DIRECTORY,
-        DIRECTORYDIR,
-        DEFAULTDIRECTORYDIRS,
-        APPDIR,
-        DEFAULTAPPDIRS,
-        ONLYUNALLOCATED,
-        NOTONLYUNALLOCATED,
-        DELETED,
-        NOTDELETED,
-        INCLUDE,
-        EXCLUDE,
-        ALL,
-        FILENAME,
-        CATEGORY,
-        OR,
-        AND,
-        NOT,
-        MOVE,
-        OLD,
-        NEW,
-        DEFAULTLAYOUT,
-        LAYOUT,
-        MENUNAME,
-        SEPARATOR,
-        MERGE,
-        MERGEFILE,
-        MERGEDIR,
-        MERGEDIRS,
+        INVALID = 0,
+        MENU = 1,
+        NAME = 2,
+        DIRECTORY = 3,
+        DIRECTORYDIR = 4,
+        DEFAULTDIRECTORYDIRS = 5,
+        APPDIR = 6,
+        DEFAULTAPPDIRS = 7,
+        ONLYUNALLOCATED = 8,
+        NOTONLYUNALLOCATED = 9,
+        DELETED = 10,
+        NOTDELETED = 11,
+        INCLUDE = 12,
+        EXCLUDE = 13,
+        ALL = 14,
+        FILENAME = 15,
+        CATEGORY = 16,
+        OR = 17,
+        AND = 18,
+        NOT = 19,
+        MOVE = 20,
+        OLD = 21,
+        NEW = 22,
+        DEFAULTLAYOUT = 23,
+        LAYOUT = 24,
+        MENUNAME = 25,
+        SEPARATOR = 26,
+        MERGE = 27,
+        MERGEFILE = 28,
+        MERGEDIR = 29,
+        MERGEDIRS = 30,
     }
 
 
@@ -92,6 +92,7 @@ export namespace Garcon {
      * Macro for garcon_set_environment or garcon_set_environment_xdg
      * to set the Xfce Desktop Environment.
      * @since 0.3.0
+     * @default XFCE
      */
     const ENVIRONMENT_XFCE: string;
 
@@ -100,6 +101,7 @@ export namespace Garcon {
      * Like garcon_major_version, but from the headers used at
      * application compile time, rather than from the library
      * linked against at application run time.
+     * @default 4
      */
     const MAJOR_VERSION: number;
 
@@ -108,6 +110,7 @@ export namespace Garcon {
      * Like garcon_micro_version, but from the headers used at
      * application compile time, rather than from the library
      * linked against at application run time.
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -116,6 +119,7 @@ export namespace Garcon {
      * Like garcon_minor_version, but from the headers used at
      * application compile time, rather than from the library
      * linked against at application run time.
+     * @default 20
      */
     const MINOR_VERSION: number;
 
@@ -201,7 +205,7 @@ export namespace Garcon {
              * @signal
              * @run-last
              */
-            "directory-changed": (arg0: MenuDirectory, arg1: MenuDirectory) => void;
+            "directory-changed": (object: MenuDirectory, p0: MenuDirectory) => void;
             /**
              * @signal
              * @run-last
@@ -358,6 +362,7 @@ export namespace Garcon {
          * where errors should be stored in.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the menu was loaded successfully or          `false` if there was an error or the process was          cancelled.
+         * @throws GLib.Error
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
@@ -958,12 +963,14 @@ export namespace Garcon {
 
         /**
          * @param affects_the_outside 
+         * @throws GLib.Error
          */
         reload(affects_the_outside: boolean): boolean;
 
         /**
          * @param file 
          * @param affects_the_outside 
+         * @throws GLib.Error
          */
         reload_from_file(file: Gio.File, affects_the_outside: boolean): boolean;
 
@@ -1422,6 +1429,7 @@ export namespace Garcon {
          * @param merge_files list of files to merge
          * @param merge_dirs list of menu directories to merge
          * @param cancellable 
+         * @throws GLib.Error
          */
         run(merge_files: string[], merge_dirs: string[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -1669,6 +1677,7 @@ export namespace Garcon {
         // Methods
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         run(cancellable: Gio.Cancellable | null): boolean;
 

@@ -40,15 +40,15 @@ export namespace Poppler {
         /**
          * set layer visibility on
          */
-        ON,
+        ON = 0,
         /**
          * set layer visibility off
          */
-        OFF,
+        OFF = 1,
         /**
          * reverse the layer visibility state
          */
-        TOGGLE,
+        TOGGLE = 2,
     }
 
 
@@ -68,19 +68,19 @@ export namespace Poppler {
         /**
          * play movie
          */
-        PLAY,
+        PLAY = 0,
         /**
          * pause playing movie
          */
-        PAUSE,
+        PAUSE = 1,
         /**
          * resume paused movie
          */
-        RESUME,
+        RESUME = 2,
         /**
          * stop playing movie
          */
-        STOP,
+        STOP = 3,
     }
 
 
@@ -99,51 +99,51 @@ export namespace Poppler {
         /**
          * unknown action
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * no action specified
          */
-        NONE,
+        NONE = 1,
         /**
          * go to destination
          */
-        GOTO_DEST,
+        GOTO_DEST = 2,
         /**
          * go to destination in another document
          */
-        GOTO_REMOTE,
+        GOTO_REMOTE = 3,
         /**
          * launch app (or open document)
          */
-        LAUNCH,
+        LAUNCH = 4,
         /**
          * URI
          */
-        URI,
+        URI = 5,
         /**
          * predefined action
          */
-        NAMED,
+        NAMED = 6,
         /**
          * play movies. Since 0.14
          */
-        MOVIE,
+        MOVIE = 7,
         /**
          * play multimedia content. Since 0.14
          */
-        RENDITION,
+        RENDITION = 8,
         /**
          * state of layer. Since 0.14
          */
-        OCG_STATE,
+        OCG_STATE = 9,
         /**
          * Javascript. Since 0.18
          */
-        JAVASCRIPT,
+        JAVASCRIPT = 10,
         /**
          * resets form. Since 0.90
          */
-        RESET_FORM,
+        RESET_FORM = 11,
     }
 
 
@@ -163,21 +163,21 @@ export namespace Poppler {
         /**
          * The action to be performed when the user modifies the field.
          */
-        FIELD_MODIFIED,
+        FIELD_MODIFIED = 0,
         /**
          * The action to be performed before the field is formatted to
          * display its value.
          */
-        FORMAT_FIELD,
+        FORMAT_FIELD = 1,
         /**
          * The action to be performed when the field value changes.
          */
-        VALIDATE_FIELD,
+        VALIDATE_FIELD = 2,
         /**
          * The action to be performed when the field needs to be
          * recalculated.
          */
-        CALCULATE_FIELD,
+        CALCULATE_FIELD = 3,
     }
 
 
@@ -192,8 +192,8 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotExternalDataType {
-        "3D",
-        UNKNOWN,
+        "3D" = 0,
+        UNKNOWN = 1,
     }
 
 
@@ -208,9 +208,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotFreeTextQuadding {
-        LEFT_JUSTIFIED,
-        CENTERED,
-        RIGHT_JUSTIFIED,
+        LEFT_JUSTIFIED = 0,
+        CENTERED = 1,
+        RIGHT_JUSTIFIED = 2,
     }
 
 
@@ -225,8 +225,8 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotMarkupReplyType {
-        R,
-        GROUP,
+        R = 0,
+        GROUP = 1,
     }
 
 
@@ -241,21 +241,21 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotStampIcon {
-        UNKNOWN,
-        APPROVED,
-        AS_IS,
-        CONFIDENTIAL,
-        FINAL,
-        EXPERIMENTAL,
-        EXPIRED,
-        NOT_APPROVED,
-        NOT_FOR_PUBLIC_RELEASE,
-        SOLD,
-        DEPARTMENTAL,
-        FOR_COMMENT,
-        FOR_PUBLIC_RELEASE,
-        TOP_SECRET,
-        NONE,
+        UNKNOWN = 0,
+        APPROVED = 1,
+        AS_IS = 2,
+        CONFIDENTIAL = 3,
+        FINAL = 4,
+        EXPERIMENTAL = 5,
+        EXPIRED = 6,
+        NOT_APPROVED = 7,
+        NOT_FOR_PUBLIC_RELEASE = 8,
+        SOLD = 9,
+        DEPARTMENTAL = 10,
+        FOR_COMMENT = 11,
+        FOR_PUBLIC_RELEASE = 12,
+        TOP_SECRET = 13,
+        NONE = 14,
     }
 
 
@@ -270,14 +270,14 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotTextState {
-        MARKED,
-        UNMARKED,
-        ACCEPTED,
-        REJECTED,
-        CANCELLED,
-        COMPLETED,
-        NONE,
-        UNKNOWN,
+        MARKED = 0,
+        UNMARKED = 1,
+        ACCEPTED = 2,
+        REJECTED = 3,
+        CANCELLED = 4,
+        COMPLETED = 5,
+        NONE = 6,
+        UNKNOWN = 7,
     }
 
 
@@ -292,32 +292,32 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum AnnotType {
-        UNKNOWN,
-        TEXT,
-        LINK,
-        FREE_TEXT,
-        LINE,
-        SQUARE,
-        CIRCLE,
-        POLYGON,
-        POLY_LINE,
-        HIGHLIGHT,
-        UNDERLINE,
-        SQUIGGLY,
-        STRIKE_OUT,
-        STAMP,
-        CARET,
-        INK,
-        POPUP,
-        FILE_ATTACHMENT,
-        SOUND,
-        MOVIE,
-        WIDGET,
-        SCREEN,
-        PRINTER_MARK,
-        TRAP_NET,
-        WATERMARK,
-        "3D",
+        UNKNOWN = 0,
+        TEXT = 1,
+        LINK = 2,
+        FREE_TEXT = 3,
+        LINE = 4,
+        SQUARE = 5,
+        CIRCLE = 6,
+        POLYGON = 7,
+        POLY_LINE = 8,
+        HIGHLIGHT = 9,
+        UNDERLINE = 10,
+        SQUIGGLY = 11,
+        STRIKE_OUT = 12,
+        STAMP = 13,
+        CARET = 14,
+        INK = 15,
+        POPUP = 16,
+        FILE_ATTACHMENT = 17,
+        SOUND = 18,
+        MOVIE = 19,
+        WIDGET = 20,
+        SCREEN = 21,
+        PRINTER_MARK = 22,
+        TRAP_NET = 23,
+        WATERMARK = 24,
+        "3D" = 25,
     }
 
 
@@ -336,15 +336,15 @@ export namespace Poppler {
         /**
          * Unknown backend
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Splash backend
          */
-        SPLASH,
+        SPLASH = 1,
         /**
          * Cairo backend
          */
-        CAIRO,
+        CAIRO = 2,
     }
 
 
@@ -364,31 +364,31 @@ export namespace Poppler {
         /**
          * certificate is considered trusted
          */
-        TRUSTED,
+        TRUSTED = 0,
         /**
          * the issuer of this certificate has been marked as untrusted by the user
          */
-        UNTRUSTED_ISSUER,
+        UNTRUSTED_ISSUER = 1,
         /**
          * this certificate trust chain has not finished in a trusted root certificate
          */
-        UNKNOWN_ISSUER,
+        UNKNOWN_ISSUER = 2,
         /**
          * certificate was revoked by the issuing certificate authority
          */
-        REVOKED,
+        REVOKED = 3,
         /**
          * signing time is outside the validity bounds of this certificate
          */
-        EXPIRED,
+        EXPIRED = 4,
         /**
          * failed to verify certificate
          */
-        GENERIC_ERROR,
+        GENERIC_ERROR = 5,
         /**
          * certificate not yet verified
          */
-        NOT_VERIFIED,
+        NOT_VERIFIED = 6,
     }
 
 
@@ -407,60 +407,60 @@ export namespace Poppler {
         /**
          * unknown destination
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * go to page with coordinates (left, top)
          * positioned at the upper-left corner of the window and the contents of
          * the page magnified by the factor zoom
          */
-        XYZ,
+        XYZ = 1,
         /**
          * go to page with its contents magnified just
          * enough to fit the entire page within the window both horizontally and
          * vertically
          */
-        FIT,
+        FIT = 2,
         /**
          * go to page with the vertical coordinate top
          * positioned at the top edge of the window and the contents of the page
          * magnified just enough to fit the entire width of the page within the window
          */
-        FITH,
+        FITH = 3,
         /**
          * go to page with the horizontal coordinate
          * left positioned at the left edge of the window and the contents of the
          * page magnified just enough to fit the entire height of the page within the window
          */
-        FITV,
+        FITV = 4,
         /**
          * go to page with its contents magnified just
          * enough to fit the rectangle specified by the coordinates left, bottom,
          * right, and top entirely within the window both horizontally and vertically
          */
-        FITR,
+        FITR = 5,
         /**
          * go to page with its contents magnified just enough to fit
          * its bounding box entirely within the window both horizontally and vertically
          */
-        FITB,
+        FITB = 6,
         /**
          * go to page with the vertical
          * coordinate top positioned at the top edge of the window and the
          * contents of the page magnified just enough to fit the entire width of its
          * bounding box within the window
          */
-        FITBH,
+        FITBH = 7,
         /**
          * go to page with the horizontal
          * coordinate left positioned at the left edge of the window and the
          * contents of the page magnified just enough to fit the entire height of its
          * bounding box within the window
          */
-        FITBV,
+        FITBV = 8,
         /**
          * got to page specified by a name. See `poppler_document_find_dest()`
          */
-        NAMED,
+        NAMED = 9,
     }
 
 
@@ -522,51 +522,51 @@ export namespace Poppler {
         /**
          * unknown font type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Type 1 font type
          */
-        TYPE1,
+        TYPE1 = 1,
         /**
          * Type 1 font type embedded in Compact Font Format (CFF) font program
          */
-        TYPE1C,
+        TYPE1C = 2,
         /**
          * Type 1 font type embedded in OpenType font program
          */
-        TYPE1COT,
+        TYPE1COT = 3,
         /**
          * A font type that is defined with PDF graphics operators
          */
-        TYPE3,
+        TYPE3 = 4,
         /**
          * TrueType font type
          */
-        TRUETYPE,
+        TRUETYPE = 5,
         /**
          * TrueType font type embedded in OpenType font program
          */
-        TRUETYPEOT,
+        TRUETYPEOT = 6,
         /**
          * CIDFont type based on Type 1 font technology
          */
-        CID_TYPE0,
+        CID_TYPE0 = 7,
         /**
          * CIDFont type based on Type 1 font technology embedded in CFF font program
          */
-        CID_TYPE0C,
+        CID_TYPE0C = 8,
         /**
          * CIDFont type based on Type 1 font technology embedded in OpenType font program
          */
-        CID_TYPE0COT,
+        CID_TYPE0COT = 9,
         /**
          * CIDFont type based on TrueType font technology
          */
-        CID_TYPE2,
+        CID_TYPE2 = 10,
         /**
          * CIDFont type based on TrueType font technology embedded in OpenType font program
          */
-        CID_TYPE2OT,
+        CID_TYPE2OT = 11,
     }
 
 
@@ -581,9 +581,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum FormButtonType {
-        PUSH,
-        CHECK,
-        RADIO,
+        PUSH = 0,
+        CHECK = 1,
+        RADIO = 2,
     }
 
 
@@ -598,8 +598,8 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum FormChoiceType {
-        COMBO,
-        LIST,
+        COMBO = 0,
+        LIST = 1,
     }
 
 
@@ -614,11 +614,11 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum FormFieldType {
-        UNKNOWN,
-        BUTTON,
-        TEXT,
-        CHOICE,
-        SIGNATURE,
+        UNKNOWN = 0,
+        BUTTON = 1,
+        TEXT = 2,
+        CHOICE = 3,
+        SIGNATURE = 4,
     }
 
 
@@ -633,9 +633,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum FormTextType {
-        NORMAL,
-        MULTILINE,
-        FILE_SELECT,
+        NORMAL = 0,
+        MULTILINE = 1,
+        FILE_SELECT = 2,
     }
 
 
@@ -655,20 +655,20 @@ export namespace Poppler {
         /**
          * the movie should be played once and controls should be closed at the end.
          */
-        ONCE,
+        ONCE = 0,
         /**
          * the movie should be played once, but controls should be left open.
          */
-        OPEN,
+        OPEN = 1,
         /**
          * the movie should be played in loop, until manually stopped.
          */
-        REPEAT,
+        REPEAT = 2,
         /**
          * the movie should be played forward and backward, forward and backward,
          *   and so forth, until manually stopped.
          */
-        PALINDROME,
+        PALINDROME = 3,
     }
 
 
@@ -688,39 +688,39 @@ export namespace Poppler {
         /**
          * Null
          */
-        UNSET,
+        UNSET = 0,
         /**
          * Level A (accessible) conformance (PDF/A)
          */
-        A,
+        A = 1,
         /**
          * Level B (basic) conformance (PDF/A)
          */
-        B,
+        B = 2,
         /**
          * Level G (external graphical content) (PDF/X)
          */
-        G,
+        G = 3,
         /**
          * Level N (external ICC Profile) (PDF/X)
          */
-        N,
+        N = 4,
         /**
          * Level P (ICC Profile) (PDF/X)
          */
-        P,
+        P = 5,
         /**
          * Level PG (conjunction of P and G) (PDF/X)
          */
-        PG,
+        PG = 6,
         /**
          * Level U (Unicode) conformance (PDF/A)
          */
-        U,
+        U = 7,
         /**
          * No conformance level available
          */
-        NONE,
+        NONE = 8,
     }
 
 
@@ -800,31 +800,31 @@ export namespace Poppler {
         /**
          * Null
          */
-        UNSET,
+        UNSET = 0,
         /**
          * ISO 19005 - Document management -- Electronic document file format for long-term preservation (PDF/A)
          */
-        PDF_A,
+        PDF_A = 1,
         /**
          * ISO 24517 - Document management -- Engineering document format using PDF (PDF/E)
          */
-        PDF_E,
+        PDF_E = 2,
         /**
          * ISO 14289 - Document management applications -- Electronic document file format enhancement for accessibility (PDF/UA)
          */
-        PDF_UA,
+        PDF_UA = 3,
         /**
          * ISO 16612 - Graphic technology -- Variable data exchange (PDF/VT)
          */
-        PDF_VT,
+        PDF_VT = 4,
         /**
          * ISO 15930 - Graphic technology -- Prepress digital data exchange (PDF/X)
          */
-        PDF_X,
+        PDF_X = 5,
         /**
          * Not compliant with the above standards
          */
-        NONE,
+        NONE = 6,
     }
 
 
@@ -843,31 +843,31 @@ export namespace Poppler {
         /**
          * no specific layout set
          */
-        UNSET,
+        UNSET = 0,
         /**
          * one page at a time
          */
-        SINGLE_PAGE,
+        SINGLE_PAGE = 1,
         /**
          * pages in one column
          */
-        ONE_COLUMN,
+        ONE_COLUMN = 2,
         /**
          * pages in two columns with odd numbered pages on the left
          */
-        TWO_COLUMN_LEFT,
+        TWO_COLUMN_LEFT = 3,
         /**
          * pages in two columns with odd numbered pages on the right
          */
-        TWO_COLUMN_RIGHT,
+        TWO_COLUMN_RIGHT = 4,
         /**
          * two pages at a time with odd numbered pages on the left
          */
-        TWO_PAGE_LEFT,
+        TWO_PAGE_LEFT = 5,
         /**
          * two pages at a time with odd numbered pages on the right
          */
-        TWO_PAGE_RIGHT,
+        TWO_PAGE_RIGHT = 6,
     }
 
 
@@ -886,31 +886,31 @@ export namespace Poppler {
         /**
          * no specific mode set
          */
-        UNSET,
+        UNSET = 0,
         /**
          * neither document outline nor thumbnails visible
          */
-        NONE,
+        NONE = 1,
         /**
          * document outline visible
          */
-        USE_OUTLINES,
+        USE_OUTLINES = 2,
         /**
          * thumbnails visible
          */
-        USE_THUMBS,
+        USE_THUMBS = 3,
         /**
          * full-screen mode
          */
-        FULL_SCREEN,
+        FULL_SCREEN = 4,
         /**
          * layers panel visible
          */
-        USE_OC,
+        USE_OC = 5,
         /**
          * attachments panel visible
          */
-        USE_ATTACHMENTS,
+        USE_ATTACHMENTS = 6,
     }
 
 
@@ -930,11 +930,11 @@ export namespace Poppler {
         /**
          * horizontal dimension
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * vertical dimension
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -954,11 +954,11 @@ export namespace Poppler {
         /**
          * inward from the edges of the page
          */
-        INWARD,
+        INWARD = 0,
         /**
          * outward from the center of the page
          */
-        OUTWARD,
+        OUTWARD = 1,
     }
 
 
@@ -977,55 +977,55 @@ export namespace Poppler {
         /**
          * the new page replace the old one
          */
-        REPLACE,
+        REPLACE = 0,
         /**
          * two lines sweep across the screen, revealing the new page
          */
-        SPLIT,
+        SPLIT = 1,
         /**
          * multiple lines, evenly spaced across the screen, synchronously
          * sweep in the same direction to reveal the new page
          */
-        BLINDS,
+        BLINDS = 2,
         /**
          * a rectangular box sweeps inward from the edges of the page or
          * outward from the center revealing the new page
          */
-        BOX,
+        BOX = 3,
         /**
          * a single line sweeps across the screen from one edge to the other
          * revealing the new page
          */
-        WIPE,
+        WIPE = 4,
         /**
          * the old page dissolves gradually to reveal the new one
          */
-        DISSOLVE,
+        DISSOLVE = 5,
         /**
          * similar to #POPPLER_PAGE_TRANSITION_DISSOLVE, except that the effect
          * sweeps across the page in a wide band moving from one side of the screen to the other
          */
-        GLITTER,
+        GLITTER = 6,
         /**
          * changes are flown out or in to or from a location that is offscreen
          */
-        FLY,
+        FLY = 7,
         /**
          * the old page slides off the screen while the new page slides in
          */
-        PUSH,
+        PUSH = 8,
         /**
          * the new page slides on to the screen covering the old page
          */
-        COVER,
+        COVER = 9,
         /**
          * the old page slides off the screen uncovering the new page
          */
-        UNCOVER,
+        UNCOVER = 10,
         /**
          * the new page gradually becomes visible through the old one
          */
-        FADE,
+        FADE = 11,
     }
 
 
@@ -1045,19 +1045,19 @@ export namespace Poppler {
         /**
          * No preference on duplex printing
          */
-        NONE,
+        NONE = 0,
         /**
          * Print single-sided
          */
-        SIMPLEX,
+        SIMPLEX = 1,
         /**
          * Duplex and flip on the short edge of the sheet
          */
-        DUPLEX_FLIP_SHORT_EDGE,
+        DUPLEX_FLIP_SHORT_EDGE = 2,
         /**
          * Duplex and flip on the long edge of the sheet
          */
-        DUPLEX_FLIP_LONG_EDGE,
+        DUPLEX_FLIP_LONG_EDGE = 3,
     }
 
 
@@ -1077,11 +1077,11 @@ export namespace Poppler {
         /**
          * application's default page scaling
          */
-        APP_DEFAULT,
+        APP_DEFAULT = 0,
         /**
          * no page scaling
          */
-        NONE,
+        NONE = 1,
     }
 
 
@@ -1100,15 +1100,15 @@ export namespace Poppler {
         /**
          * glyph is the minimum unit for selection
          */
-        GLYPH,
+        GLYPH = 0,
         /**
          * word is the minimum unit for selection
          */
-        WORD,
+        WORD = 1,
         /**
          * line is the minimum unit for selection
          */
-        LINE,
+        LINE = 2,
     }
 
 
@@ -1128,31 +1128,31 @@ export namespace Poppler {
         /**
          * signature is cryptographically valid
          */
-        VALID,
+        VALID = 0,
         /**
          * signature is cryptographically invalid
          */
-        INVALID,
+        INVALID = 1,
         /**
          * document content was changed after the signature was applied
          */
-        DIGEST_MISMATCH,
+        DIGEST_MISMATCH = 2,
         /**
          * signature CMS/PKCS7 structure is malformed
          */
-        DECODING_ERROR,
+        DECODING_ERROR = 3,
         /**
          * failed to verify signature
          */
-        GENERIC_ERROR,
+        GENERIC_ERROR = 4,
         /**
          * requested signature is not present in the document
          */
-        NOT_FOUND,
+        NOT_FOUND = 5,
         /**
          * signature not yet verified
          */
-        NOT_VERIFIED,
+        NOT_VERIFIED = 6,
     }
 
 
@@ -1168,15 +1168,15 @@ export namespace Poppler {
      * @since 24.12
      */
     enum Stretch {
-        ULTRA_CONDENSED,
-        EXTRA_CONDENSED,
-        CONDENSED,
-        SEMI_CONDENSED,
-        NORMAL,
-        SEMI_EXPANDED,
-        EXPANDED,
-        EXTRA_EXPANDED,
-        ULTRA_EXPANDED,
+        ULTRA_CONDENSED = 0,
+        EXTRA_CONDENSED = 1,
+        CONDENSED = 2,
+        SEMI_CONDENSED = 3,
+        NORMAL = 4,
+        SEMI_EXPANDED = 5,
+        EXPANDED = 6,
+        EXTRA_EXPANDED = 7,
+        ULTRA_EXPANDED = 8,
     }
 
 
@@ -1191,10 +1191,10 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureBlockAlign {
-        BEFORE,
-        MIDDLE,
-        AFTER,
-        JUSTIFY,
+        BEFORE = 0,
+        MIDDLE = 1,
+        AFTER = 2,
+        JUSTIFY = 3,
     }
 
 
@@ -1209,15 +1209,15 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureBorderStyle {
-        NONE,
-        HIDDEN,
-        DOTTED,
-        DASHED,
-        SOLID,
-        DOUBLE,
-        GROOVE,
-        INSET,
-        OUTSET,
+        NONE = 0,
+        HIDDEN = 1,
+        DOTTED = 2,
+        DASHED = 3,
+        SOLID = 4,
+        DOUBLE = 5,
+        GROOVE = 6,
+        INSET = 7,
+        OUTSET = 8,
     }
 
 
@@ -1232,57 +1232,57 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureElementKind {
-        CONTENT,
-        OBJECT_REFERENCE,
-        DOCUMENT,
-        PART,
-        ARTICLE,
-        SECTION,
-        DIV,
-        SPAN,
-        QUOTE,
-        NOTE,
-        REFERENCE,
-        BIBENTRY,
-        CODE,
-        LINK,
-        ANNOT,
-        BLOCKQUOTE,
-        CAPTION,
-        NONSTRUCT,
-        TOC,
-        TOC_ITEM,
-        INDEX,
-        PRIVATE,
-        PARAGRAPH,
-        HEADING,
-        HEADING_1,
-        HEADING_2,
-        HEADING_3,
-        HEADING_4,
-        HEADING_5,
-        HEADING_6,
-        LIST,
-        LIST_ITEM,
-        LIST_LABEL,
-        LIST_BODY,
-        TABLE,
-        TABLE_ROW,
-        TABLE_HEADING,
-        TABLE_DATA,
-        TABLE_HEADER,
-        TABLE_FOOTER,
-        TABLE_BODY,
-        RUBY,
-        RUBY_BASE_TEXT,
-        RUBY_ANNOT_TEXT,
-        RUBY_PUNCTUATION,
-        WARICHU,
-        WARICHU_TEXT,
-        WARICHU_PUNCTUATION,
-        FIGURE,
-        FORMULA,
-        FORM,
+        CONTENT = 0,
+        OBJECT_REFERENCE = 1,
+        DOCUMENT = 2,
+        PART = 3,
+        ARTICLE = 4,
+        SECTION = 5,
+        DIV = 6,
+        SPAN = 7,
+        QUOTE = 8,
+        NOTE = 9,
+        REFERENCE = 10,
+        BIBENTRY = 11,
+        CODE = 12,
+        LINK = 13,
+        ANNOT = 14,
+        BLOCKQUOTE = 15,
+        CAPTION = 16,
+        NONSTRUCT = 17,
+        TOC = 18,
+        TOC_ITEM = 19,
+        INDEX = 20,
+        PRIVATE = 21,
+        PARAGRAPH = 22,
+        HEADING = 23,
+        HEADING_1 = 24,
+        HEADING_2 = 25,
+        HEADING_3 = 26,
+        HEADING_4 = 27,
+        HEADING_5 = 28,
+        HEADING_6 = 29,
+        LIST = 30,
+        LIST_ITEM = 31,
+        LIST_LABEL = 32,
+        LIST_BODY = 33,
+        TABLE = 34,
+        TABLE_ROW = 35,
+        TABLE_HEADING = 36,
+        TABLE_DATA = 37,
+        TABLE_HEADER = 38,
+        TABLE_FOOTER = 39,
+        TABLE_BODY = 40,
+        RUBY = 41,
+        RUBY_BASE_TEXT = 42,
+        RUBY_ANNOT_TEXT = 43,
+        RUBY_PUNCTUATION = 44,
+        WARICHU = 45,
+        WARICHU_TEXT = 46,
+        WARICHU_PUNCTUATION = 47,
+        FIGURE = 48,
+        FORMULA = 49,
+        FORM = 50,
     }
 
 
@@ -1297,11 +1297,11 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureFormRole {
-        UNDEFINED,
-        RADIO_BUTTON,
-        PUSH_BUTTON,
-        TEXT_VALUE,
-        CHECKBOX,
+        UNDEFINED = 0,
+        RADIO_BUTTON = 1,
+        PUSH_BUTTON = 2,
+        TEXT_VALUE = 3,
+        CHECKBOX = 4,
     }
 
 
@@ -1316,9 +1316,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureFormState {
-        ON,
-        OFF,
-        NEUTRAL,
+        ON = 0,
+        OFF = 1,
+        NEUTRAL = 2,
     }
 
 
@@ -1352,9 +1352,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureInlineAlign {
-        START,
-        CENTER,
-        END,
+        START = 0,
+        CENTER = 1,
+        END = 2,
     }
 
 
@@ -1369,15 +1369,15 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureListNumbering {
-        NONE,
-        DISC,
-        CIRCLE,
-        SQUARE,
-        DECIMAL,
-        UPPER_ROMAN,
-        LOWER_ROMAN,
-        UPPER_ALPHA,
-        LOWER_ALPHA,
+        NONE = 0,
+        DISC = 1,
+        CIRCLE = 2,
+        SQUARE = 3,
+        DECIMAL = 4,
+        UPPER_ROMAN = 5,
+        LOWER_ROMAN = 6,
+        UPPER_ALPHA = 7,
+        LOWER_ALPHA = 8,
     }
 
 
@@ -1392,11 +1392,11 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructurePlacement {
-        BLOCK,
-        INLINE,
-        BEFORE,
-        START,
-        END,
+        BLOCK = 0,
+        INLINE = 1,
+        BEFORE = 2,
+        START = 3,
+        END = 4,
     }
 
 
@@ -1411,11 +1411,11 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureRubyAlign {
-        START,
-        CENTER,
-        END,
-        JUSTIFY,
-        DISTRIBUTE,
+        START = 0,
+        CENTER = 1,
+        END = 2,
+        JUSTIFY = 3,
+        DISTRIBUTE = 4,
     }
 
 
@@ -1430,10 +1430,10 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureRubyPosition {
-        BEFORE,
-        AFTER,
-        WARICHU,
-        INLINE,
+        BEFORE = 0,
+        AFTER = 1,
+        WARICHU = 2,
+        INLINE = 3,
     }
 
 
@@ -1448,9 +1448,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureTableScope {
-        ROW,
-        COLUMN,
-        BOTH,
+        ROW = 0,
+        COLUMN = 1,
+        BOTH = 2,
     }
 
 
@@ -1465,10 +1465,10 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureTextAlign {
-        START,
-        CENTER,
-        END,
-        JUSTIFY,
+        START = 0,
+        CENTER = 1,
+        END = 2,
+        JUSTIFY = 3,
     }
 
 
@@ -1483,10 +1483,10 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureTextDecoration {
-        NONE,
-        UNDERLINE,
-        OVERLINE,
-        LINETHROUGH,
+        NONE = 0,
+        UNDERLINE = 1,
+        OVERLINE = 2,
+        LINETHROUGH = 3,
     }
 
 
@@ -1501,9 +1501,9 @@ export namespace Poppler {
      * @gir-type Enum
      */
     enum StructureWritingMode {
-        LR_TB,
-        RL_TB,
-        TB_RL,
+        LR_TB = 0,
+        RL_TB = 1,
+        TB_RL = 2,
     }
 
 
@@ -1519,9 +1519,9 @@ export namespace Poppler {
      * @since 24.12
      */
     enum Style {
-        NORMAL,
-        OBLIQUE,
-        ITALIC,
+        NORMAL = 0,
+        OBLIQUE = 1,
+        ITALIC = 2,
     }
 
 
@@ -1537,73 +1537,108 @@ export namespace Poppler {
      * @since 24.12
      */
     enum Weight {
-        THIN,
-        ULTRALIGHT,
-        LIGHT,
-        NORMAL,
-        MEDIUM,
-        SEMIBOLD,
-        BOLD,
-        ULTRABOLD,
-        HEAVY,
+        THIN = 100,
+        ULTRALIGHT = 200,
+        LIGHT = 300,
+        NORMAL = 400,
+        MEDIUM = 500,
+        SEMIBOLD = 600,
+        BOLD = 700,
+        ULTRABOLD = 800,
+        HEAVY = 900,
     }
 
 
     /**
      * @since 26.01
+     * @default Check
      */
     const ANNOT_TEXT_ICON_CHECK: string;
 
+    /**
+     * @default Circle
+     */
     const ANNOT_TEXT_ICON_CIRCLE: string;
 
+    /**
+     * @default Comment
+     */
     const ANNOT_TEXT_ICON_COMMENT: string;
 
+    /**
+     * @default Cross
+     */
     const ANNOT_TEXT_ICON_CROSS: string;
 
     /**
      * @since 26.01
+     * @default CrossHairs
      */
     const ANNOT_TEXT_ICON_CROSS_HAIRS: string;
 
+    /**
+     * @default Help
+     */
     const ANNOT_TEXT_ICON_HELP: string;
 
+    /**
+     * @default Insert
+     */
     const ANNOT_TEXT_ICON_INSERT: string;
 
+    /**
+     * @default Key
+     */
     const ANNOT_TEXT_ICON_KEY: string;
 
+    /**
+     * @default NewParagraph
+     */
     const ANNOT_TEXT_ICON_NEW_PARAGRAPH: string;
 
+    /**
+     * @default Note
+     */
     const ANNOT_TEXT_ICON_NOTE: string;
 
+    /**
+     * @default Paragraph
+     */
     const ANNOT_TEXT_ICON_PARAGRAPH: string;
 
     /**
      * @since 26.01
+     * @default RightArrow
      */
     const ANNOT_TEXT_ICON_RIGHT_ARROW: string;
 
     /**
      * @since 26.01
+     * @default RightPointer
      */
     const ANNOT_TEXT_ICON_RIGHT_POINTER: string;
 
     /**
      * @since 26.01
+     * @default Star
      */
     const ANNOT_TEXT_ICON_STAR: string;
 
     /**
      * @since 26.01
+     * @default UpArrow
      */
     const ANNOT_TEXT_ICON_UP_ARROW: string;
 
     /**
      * @since 26.01
+     * @default UpLeftArrow
      */
     const ANNOT_TEXT_ICON_UP_LEFT_ARROW: string;
 
     /**
      * Defined if poppler was compiled with cairo support.
+     * @default 1
      */
     const HAS_CAIRO: number;
 
@@ -1611,6 +1646,7 @@ export namespace Poppler {
      * The major version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 0.)
      * @since 0.12
+     * @default 26
      */
     const MAJOR_VERSION: number;
 
@@ -1618,6 +1654,7 @@ export namespace Poppler {
      * The micro version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 2.)
      * @since 0.12
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -1625,6 +1662,7 @@ export namespace Poppler {
      * The major version number of the poppler header files (e.g. in poppler version
      * 0.1.2 this is 1.)
      * @since 0.12
+     * @default 8
      */
     const MINOR_VERSION: number;
 
@@ -1749,17 +1787,17 @@ export namespace Poppler {
      * @gir-type Flags
      */
     enum AnnotFlag {
-        UNKNOWN,
-        INVISIBLE,
-        HIDDEN,
-        PRINT,
-        NO_ZOOM,
-        NO_ROTATE,
-        NO_VIEW,
-        READ_ONLY,
-        LOCKED,
-        TOGGLE_NO_VIEW,
-        LOCKED_CONTENTS,
+        UNKNOWN = 0,
+        INVISIBLE = 1,
+        HIDDEN = 2,
+        PRINT = 4,
+        NO_ZOOM = 8,
+        NO_ROTATE = 16,
+        NO_VIEW = 32,
+        READ_ONLY = 64,
+        LOCKED = 128,
+        TOGGLE_NO_VIEW = 256,
+        LOCKED_CONTENTS = 512,
     }
 
 
@@ -1779,32 +1817,32 @@ export namespace Poppler {
         /**
          * use default search settings
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * do case sensitive search
          */
-        CASE_SENSITIVE,
+        CASE_SENSITIVE = 1,
         /**
          * search backwards
          */
-        BACKWARDS,
+        BACKWARDS = 2,
         /**
          * search only whole words
          */
-        WHOLE_WORDS_ONLY,
+        WHOLE_WORDS_ONLY = 4,
         /**
          * do diacritics insensitive search,
          * i.e. ignore accents, umlauts, diaeresis,etc. while matching. This
          * option will be ignored if the search term is not pure ascii. Since 0.73.
          */
-        IGNORE_DIACRITICS,
+        IGNORE_DIACRITICS = 8,
         /**
          * allows to match on text spanning from
          * end of a line to the next line. (Currently it won't match on text spanning
          * more than two lines.) Automatically ignores hyphen at end of line, and
          * allows whitespace in search term to match on newline char. Since: 21.05.0.
          */
-        MULTILINE,
+        MULTILINE = 16,
     }
 
 
@@ -1823,41 +1861,41 @@ export namespace Poppler {
         /**
          * document can be printer
          */
-        OK_TO_PRINT,
+        OK_TO_PRINT = 1,
         /**
          * document contents can be modified
          */
-        OK_TO_MODIFY,
+        OK_TO_MODIFY = 2,
         /**
          * document can be copied
          */
-        OK_TO_COPY,
+        OK_TO_COPY = 4,
         /**
          * annotations can added to the document
          */
-        OK_TO_ADD_NOTES,
+        OK_TO_ADD_NOTES = 8,
         /**
          * interactive form fields can be filled in
          */
-        OK_TO_FILL_FORM,
+        OK_TO_FILL_FORM = 16,
         /**
          * extract text and graphics
          * (in support of accessibility to users with disabilities or for other purposes). Since 0.18
          */
-        OK_TO_EXTRACT_CONTENTS,
+        OK_TO_EXTRACT_CONTENTS = 32,
         /**
          * assemble the document (insert, rotate, or delete pages and create
          * bookmarks or thumbnail images). Since 0.18
          */
-        OK_TO_ASSEMBLE,
+        OK_TO_ASSEMBLE = 64,
         /**
          * document can be printer at high resolution. Since 0.18
          */
-        OK_TO_PRINT_HIGH_RESOLUTION,
+        OK_TO_PRINT_HIGH_RESOLUTION = 128,
         /**
          * document permits all operations
          */
-        FULL,
+        FULL = 255,
     }
 
 
@@ -1878,19 +1916,19 @@ export namespace Poppler {
         /**
          * print main document contents
          */
-        DOCUMENT,
+        DOCUMENT = 0,
         /**
          * print document and markup annotations
          */
-        MARKUP_ANNOTS,
+        MARKUP_ANNOTS = 1,
         /**
          * print document and only stamp annotations
          */
-        STAMP_ANNOTS_ONLY,
+        STAMP_ANNOTS_ONLY = 2,
         /**
          * print main document contents and all markup annotations
          */
-        ALL,
+        ALL = 1,
     }
 
 
@@ -1916,131 +1954,131 @@ export namespace Poppler {
         /**
          * do not render annotations
          */
-        NONE,
+        NONE = 0,
         /**
          * render text annotations
          */
-        TEXT,
+        TEXT = 1,
         /**
          * render link annotations
          */
-        LINK,
+        LINK = 2,
         /**
          * render freetext annotations,
          */
-        FREETEXT,
+        FREETEXT = 4,
         /**
          * render line annotations,
          */
-        LINE,
+        LINE = 8,
         /**
          * render square annotations,
          */
-        SQUARE,
+        SQUARE = 16,
         /**
          * render circle annotations,
          */
-        CIRCLE,
+        CIRCLE = 32,
         /**
          * render polygon annotations,
          */
-        POLYGON,
+        POLYGON = 64,
         /**
          * render polyline annotations,
          */
-        POLYLINE,
+        POLYLINE = 128,
         /**
          * render highlight annotations,
          */
-        HIGHLIGHT,
+        HIGHLIGHT = 256,
         /**
          * render underline annotations,
          */
-        UNDERLINE,
+        UNDERLINE = 512,
         /**
          * render squiggly annotations,
          */
-        SQUIGGLY,
+        SQUIGGLY = 1024,
         /**
          * render strikeout annotations,
          */
-        STRIKEOUT,
+        STRIKEOUT = 2048,
         /**
          * render stamp annotations,
          */
-        STAMP,
+        STAMP = 4096,
         /**
          * render caret annotations,
          */
-        CARET,
+        CARET = 8192,
         /**
          * render ink annotations,
          */
-        INK,
+        INK = 16384,
         /**
          * render popup annotations,
          */
-        POPUP,
+        POPUP = 32768,
         /**
          * render fileattachment annotations,
          */
-        FILEATTACHMENT,
+        FILEATTACHMENT = 65536,
         /**
          * render sound annotations,
          */
-        SOUND,
+        SOUND = 131072,
         /**
          * render movie annotations,
          */
-        MOVIE,
+        MOVIE = 262144,
         /**
          * render widget annotations,
          */
-        WIDGET,
+        WIDGET = 524288,
         /**
          * render screen annotations,
          */
-        SCREEN,
+        SCREEN = 1048576,
         /**
          * render printermark annotations,
          */
-        PRINTERMARK,
+        PRINTERMARK = 2097152,
         /**
          * render trapnet annotations,
          */
-        TRAPNET,
+        TRAPNET = 4194304,
         /**
          * render watermark annotations,
          */
-        WATERMARK,
+        WATERMARK = 8388608,
         /**
          * render 3D annotations,
          */
-        "3D",
+        "3D" = 16777216,
         /**
          * render richmedia annotations,
          */
-        RICHMEDIA,
+        RICHMEDIA = 33554432,
         /**
          * render the default annotations used for printing
          */
-        PRINT_DOCUMENT,
+        PRINT_DOCUMENT = 524288,
         /**
          * render markup annotations and default annotations used for printing
          */
-        PRINT_MARKUP,
+        PRINT_MARKUP = -32800771,
         /**
          * render stamp annotations and default annotations used for printing
          */
-        PRINT_STAMP,
+        PRINT_STAMP = 528384,
         /**
          * render all possible annotations used for printing
          */
-        PRINT_ALL,
+        PRINT_ALL = -32800771,
         /**
          * render all annotations
          */
-        ALL,
+        ALL = 67108863,
     }
 
 
@@ -2060,15 +2098,15 @@ export namespace Poppler {
         /**
          * Whether to validate also the certificate of the signature
          */
-        VALIDATE_CERTIFICATE,
+        VALIDATE_CERTIFICATE = 1,
         /**
          * Whether to not do OCSP (Online Certificate Status Protocol) revocation check
          */
-        WITHOUT_OCSP_REVOCATION_CHECK,
+        WITHOUT_OCSP_REVOCATION_CHECK = 2,
         /**
          * Whether to use AIA (Authority Information Access) extension for certificate fetching
          */
-        USE_AIA_CERTIFICATE_FETCH,
+        USE_AIA_CERTIFICATE_FETCH = 4,
     }
 
 
@@ -2086,13 +2124,13 @@ export namespace Poppler {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * For non-leaf, non-content
          *    elements, recursively obtain the text from all the elements
          *    enclosed in the subtree.
          */
-        RECURSIVE,
+        RECURSIVE = 1,
     }
 
 
@@ -2111,35 +2149,35 @@ export namespace Poppler {
         /**
          * no preferences set
          */
-        UNSET,
+        UNSET = 0,
         /**
          * hider toolbars when document is active
          */
-        HIDE_TOOLBAR,
+        HIDE_TOOLBAR = 1,
         /**
          * hide menu bar when document is active
          */
-        HIDE_MENUBAR,
+        HIDE_MENUBAR = 2,
         /**
          * hide UI elements in document's window
          */
-        HIDE_WINDOWUI,
+        HIDE_WINDOWUI = 4,
         /**
          * resize document's window to fit the size of the first displayed page
          */
-        FIT_WINDOW,
+        FIT_WINDOW = 8,
         /**
          * position the document's window in the center of the screen
          */
-        CENTER_WINDOW,
+        CENTER_WINDOW = 16,
         /**
          * display document title in window's title bar
          */
-        DISPLAY_DOC_TITLE,
+        DISPLAY_DOC_TITLE = 32,
         /**
          * the predominant reading order for text is right to left
          */
-        DIRECTION_RTL,
+        DIRECTION_RTL = 64,
     }
 
 
@@ -3024,6 +3062,7 @@ export namespace Poppler {
          * @param image an image cairo surface
          * @returns `true` on success, `false` otherwise.
          * @since 22.07.0
+         * @throws GLib.Error
          */
         set_custom_image(image: cairo.Surface): boolean;
 
@@ -3340,6 +3379,7 @@ export namespace Poppler {
          * and whatever the save function generates.
          * @param filename name of file to save
          * @returns `true`, if the file successfully saved
+         * @throws GLib.Error
          */
         save(filename: string): boolean;
 
@@ -3351,6 +3391,7 @@ export namespace Poppler {
          * whatever the save function generates.
          * @param save_func a function that is called to save each block of data that the save routine generates.
          * @returns `true`, if the save successfully completed
+         * @throws GLib.Error
          */
         save_to_callback(save_func: AttachmentSaveFunc): boolean;
 
@@ -3363,6 +3404,7 @@ export namespace Poppler {
          * @param fd a valid file descriptor open for writing
          * @returns `true`, if the file successfully saved
          * @since 21.12.0
+         * @throws GLib.Error
          */
         save_to_fd(fd: number): boolean;
     }
@@ -4114,6 +4156,7 @@ export namespace Poppler {
          * include those in the #G_FILE_ERROR domain.
          * @param uri uri of file to save
          * @returns `true`, if the document was successfully saved
+         * @throws GLib.Error
          */
         save(uri: string): boolean;
 
@@ -4125,6 +4168,7 @@ export namespace Poppler {
          * include those in the #G_FILE_ERROR domain.
          * @param uri uri of file to save
          * @returns `true`, if the document was successfully saved
+         * @throws GLib.Error
          */
         save_a_copy(uri: string): boolean;
 
@@ -4143,6 +4187,7 @@ export namespace Poppler {
          * @param include_changes whether to include user changes (e.g. form fills)
          * @returns `true`, if the document was successfully saved
          * @since 21.12.0
+         * @throws GLib.Error
          */
         save_to_fd(fd: number, include_changes: boolean): boolean;
 
@@ -4257,6 +4302,7 @@ export namespace Poppler {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful signing a document, otherwise `false` and error is set.
          * @since 23.07.0
+         * @throws GLib.Error
          */
         sign_finish(result: Gio.AsyncResult): boolean;
     }
@@ -4588,6 +4634,7 @@ export namespace Poppler {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          * @since 21.12.0
+         * @throws GLib.Error
          */
         signature_validate_finish(result: Gio.AsyncResult): SignatureInfo;
 
@@ -4597,6 +4644,7 @@ export namespace Poppler {
          * @param cancellable optional {@link Gio.Cancellable} object
          * @returns a {@link Poppler.SignatureInfo} structure containing signature metadata and validation status                                Free the returned structure with `poppler_signature_info_free()`.
          * @since 21.12.0
+         * @throws GLib.Error
          */
         signature_validate_sync(flags: SignatureValidationFlags, cancellable: Gio.Cancellable | null): SignatureInfo;
 
@@ -4832,6 +4880,7 @@ export namespace Poppler {
          * @param filename name of file to save
          * @returns `true`, if the file successfully saved
          * @since 0.14
+         * @throws GLib.Error
          */
         save(filename: string): boolean;
 
@@ -4844,6 +4893,7 @@ export namespace Poppler {
          * @param save_func a function that is called to save each block of data that the save routine generates.
          * @returns `true`, if the save successfully completed
          * @since 0.14
+         * @throws GLib.Error
          */
         save_to_callback(save_func: MediaSaveFunc): boolean;
 
@@ -4857,6 +4907,7 @@ export namespace Poppler {
          * @param fd a valid file descriptor open for writing
          * @returns `true`, if the file successfully saved
          * @since 21.12.0
+         * @throws GLib.Error
          */
         save_to_fd(fd: number): boolean;
     }

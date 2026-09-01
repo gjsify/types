@@ -30,14 +30,14 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum AttributeType {
-        DOUBLE,
-        FLOAT,
-        UINT32,
-        INT32,
-        UINT16,
-        INT16,
-        UINT8,
-        INT8,
+        DOUBLE = 0,
+        FLOAT = 1,
+        UINT32 = 2,
+        INT32 = 3,
+        UINT16 = 4,
+        INT16 = 5,
+        UINT8 = 6,
+        INT8 = 7,
     }
 
 
@@ -45,8 +45,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum BindMode {
-        ATTACHED,
-        DETACHED,
+        ATTACHED = 0,
+        DETACHED = 1,
     }
 
 
@@ -54,12 +54,12 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum BlendMode {
-        NO,
-        NORMAL,
-        ADDITIVE,
-        SUBTRACTIVE,
-        MULTIPLY,
-        CUSTOM,
+        NO = 0,
+        NORMAL = 1,
+        ADDITIVE = 2,
+        SUBTRACTIVE = 3,
+        MULTIPLY = 4,
+        CUSTOM = 5,
     }
 
 
@@ -67,10 +67,10 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum CullFace {
-        NONE,
-        FRONT,
-        BACK,
-        FRONT_BACK,
+        NONE = 0,
+        FRONT = 1,
+        BACK = 2,
+        FRONT_BACK = 3,
     }
 
 
@@ -78,8 +78,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum DataType {
-        UNSIGNED_BYTE,
-        BYTE,
+        UNSIGNED_BYTE = 0,
+        BYTE = 1,
     }
 
 
@@ -87,8 +87,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum DepthPackingFormat {
-        BASIC,
-        RGBA,
+        BASIC = 0,
+        RGBA = 1,
     }
 
 
@@ -96,9 +96,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum DrawMode {
-        TRIANGLES,
-        TRIANGLE_STRIP,
-        TRIANGLE_FAN,
+        TRIANGLES = 0,
+        TRIANGLE_STRIP = 1,
+        TRIANGLE_FAN = 2,
     }
 
 
@@ -106,14 +106,14 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum EncodingFormat {
-        LINEAR,
-        SRGB,
-        GAMMA,
-        RGBE,
-        LOGLUV,
-        RGBM7,
-        RGBM16,
-        RGBD,
+        LINEAR = 0,
+        SRGB = 1,
+        GAMMA = 2,
+        RGBE = 3,
+        LOGLUV = 4,
+        RGBM7 = 5,
+        RGBM16 = 6,
+        RGBD = 7,
     }
 
 
@@ -121,9 +121,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum EndingMode {
-        ZERO_CURVATURE,
-        ZERO_SLOPE,
-        WRAP_AROUND,
+        ZERO_CURVATURE = 0,
+        ZERO_SLOPE = 1,
+        WRAP_AROUND = 2,
     }
 
 
@@ -131,12 +131,12 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Filter {
-        NEAREST,
-        NEAREST_MIPMAP_NEAREST,
-        NEAREST_MIPMAP_LINEAR,
-        LINEAR,
-        LINEAR_MIPMAP_NEAREST,
-        LINEAR_MIPMAP_LINEAR,
+        NEAREST = 0,
+        NEAREST_MIPMAP_NEAREST = 1,
+        NEAREST_MIPMAP_LINEAR = 2,
+        LINEAR = 3,
+        LINEAR_MIPMAP_NEAREST = 4,
+        LINEAR_MIPMAP_LINEAR = 5,
     }
 
 
@@ -144,8 +144,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum FogStyle {
-        LINEAR,
-        EXP2,
+        LINEAR = 0,
+        EXP2 = 1,
     }
 
 
@@ -153,8 +153,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum FrontFaceDirection {
-        CW,
-        CCW,
+        CW = 0,
+        CCW = 1,
     }
 
 
@@ -162,9 +162,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum InterpolationMode {
-        DISCRETE,
-        LINEAR,
-        SMOOTH,
+        DISCRETE = 0,
+        LINEAR = 1,
+        SMOOTH = 2,
     }
 
 
@@ -172,7 +172,7 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum LoaderError {
-        LOADER_ERROR_FAIL,
+        LOADER_ERROR_FAIL = 0,
     }
 
 
@@ -180,9 +180,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum LoopMode {
-        ONCE,
-        REPEAT,
-        PINGPONG,
+        ONCE = 0,
+        REPEAT = 1,
+        PINGPONG = 2,
     }
 
 
@@ -190,11 +190,11 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Mapping {
-        UV,
-        CUBE_REFLECTION,
-        CUBE_REFRACTION,
-        SPHERICAL_REFLECTION,
-        SPHERICAL_REFRACTION,
+        UV = 0,
+        CUBE_REFLECTION = 1,
+        CUBE_REFRACTION = 2,
+        SPHERICAL_REFLECTION = 3,
+        SPHERICAL_REFRACTION = 4,
     }
 
 
@@ -202,8 +202,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum NormalMapType {
-        TANGENT_SPACE,
-        OBJECT_SPACE,
+        TANGENT_SPACE = 0,
+        OBJECT_SPACE = 1,
     }
 
 
@@ -211,9 +211,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Operation {
-        MULTIPLY,
-        MIX,
-        ADD,
+        MULTIPLY = 0,
+        MIX = 1,
+        ADD = 2,
     }
 
 
@@ -221,9 +221,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Precision {
-        LOW,
-        MEDIUM,
-        HIGH,
+        LOW = 0,
+        MEDIUM = 1,
+        HIGH = 2,
     }
 
 
@@ -231,9 +231,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum ShadingType {
-        NONE,
-        FLAT,
-        SMOOTH,
+        NONE = 0,
+        FLAT = 1,
+        SMOOTH = 2,
     }
 
 
@@ -241,9 +241,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum ShadowMapType {
-        BASIC,
-        PCF,
-        PCF_SOFT,
+        BASIC = 0,
+        PCF = 1,
+        PCF_SOFT = 2,
     }
 
 
@@ -251,9 +251,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Side {
-        FRONT,
-        BACK,
-        DOUBLE,
+        FRONT = 0,
+        BACK = 1,
+        DOUBLE = 2,
     }
 
 
@@ -261,8 +261,8 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum TextureFormat {
-        RGBA,
-        RGB,
+        RGBA = 0,
+        RGB = 1,
     }
 
 
@@ -270,30 +270,30 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum UniformType {
-        INT,
-        FLOAT,
-        FLOAT2,
-        FLOAT3,
-        FLOAT4,
-        INT_ARRAY,
-        INT3_ARRAY,
-        FLOAT_ARRAY,
-        FLOAT2_ARRAY,
-        FLOAT3_ARRAY,
-        FLOAT4_ARRAY,
-        MATRIX3,
-        MATRIX4,
-        VECTOR2,
-        VECTOR3,
-        VECTOR4,
-        VEC2_ARRAY,
-        VEC3_ARRAY,
-        VEC4_ARRAY,
-        MATRIX3_ARRAY,
-        MATRIX4_ARRAY,
-        TEXTURE,
-        TEXTURE_ARRAY,
-        UNIFORMS_ARRAY,
+        INT = 0,
+        FLOAT = 1,
+        FLOAT2 = 2,
+        FLOAT3 = 3,
+        FLOAT4 = 4,
+        INT_ARRAY = 5,
+        INT3_ARRAY = 6,
+        FLOAT_ARRAY = 7,
+        FLOAT2_ARRAY = 8,
+        FLOAT3_ARRAY = 9,
+        FLOAT4_ARRAY = 10,
+        MATRIX3 = 11,
+        MATRIX4 = 12,
+        VECTOR2 = 13,
+        VECTOR3 = 14,
+        VECTOR4 = 15,
+        VEC2_ARRAY = 16,
+        VEC3_ARRAY = 17,
+        VEC4_ARRAY = 18,
+        MATRIX3_ARRAY = 19,
+        MATRIX4_ARRAY = 20,
+        TEXTURE = 21,
+        TEXTURE_ARRAY = 22,
+        UNIFORMS_ARRAY = 23,
     }
 
 
@@ -301,10 +301,10 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum ValueType {
-        COLOR,
-        NUMBER,
-        QUATERNION,
-        VECTOR,
+        COLOR = 0,
+        NUMBER = 1,
+        QUATERNION = 2,
+        VECTOR = 3,
     }
 
 
@@ -312,9 +312,9 @@ export namespace Gthree {
      * @gir-type Enum
      */
     enum Wrapping {
-        REPEAT,
-        CLAMP,
-        MIRRORED,
+        REPEAT = 0,
+        CLAMP = 1,
+        MIRRORED = 2,
     }
 
 
@@ -615,12 +615,12 @@ export namespace Gthree {
              * @signal
              * @run-last
              */
-            finished: (arg0: AnimationAction, arg1: number) => void;
+            finished: (object: AnimationAction, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            loop: (arg0: AnimationAction, arg1: number) => void;
+            loop: (object: AnimationAction, p0: number) => void;
         }
 
         // Constructor properties interface
@@ -5420,7 +5420,7 @@ export namespace Gthree {
              * @signal
              * @run-last
              */
-            "parent-set": (arg0: Object) => void;
+            "parent-set": (object: Object) => void;
             "notify::first-child": (pspec: GObject.ParamSpec) => void;
             "notify::last-child": (pspec: GObject.ParamSpec) => void;
             "notify::next-sibling": (pspec: GObject.ParamSpec) => void;

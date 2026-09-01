@@ -33,15 +33,15 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainAudioBackend {
-        NONE,
-        ALSA,
-        COREAUDIO,
-        JACK,
-        OSS,
-        PULSEAUDIO,
-        SDL,
-        SPICE,
-        FILE,
+        NONE = 0,
+        ALSA = 1,
+        COREAUDIO = 2,
+        JACK = 3,
+        OSS = 4,
+        PULSEAUDIO = 5,
+        SDL = 6,
+        SPICE = 7,
+        FILE = 8,
     }
 
 
@@ -56,9 +56,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainChannelTargetType {
-        GUESTFWD,
-        VIRTIO,
-        SPICEPORT,
+        GUESTFWD = 0,
+        VIRTIO = 1,
+        SPICEPORT = 2,
     }
 
 
@@ -73,10 +73,10 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainClockOffset {
-        UTC,
-        LOCALTIME,
-        TIMEZONE,
-        VARIABLE,
+        UTC = 0,
+        LOCALTIME = 1,
+        TIMEZONE = 2,
+        VARIABLE = 3,
     }
 
 
@@ -91,12 +91,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainConsoleTargetType {
-        XEN,
-        SERIAL,
-        UML,
-        VIRTIO,
-        LXC,
-        OPENVZ,
+        XEN = 0,
+        SERIAL = 1,
+        UML = 2,
+        VIRTIO = 3,
+        LXC = 4,
+        OPENVZ = 5,
     }
 
 
@@ -111,16 +111,16 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainControllerUsbModel {
-        PIIX3_UHCI,
-        PIIX4_UHCI,
-        EHCI,
-        ICH9_EHCI1,
-        ICH9_UHCI1,
-        ICH9_UHCI2,
-        ICH9_UHCI3,
-        VT82C686B_UHCI,
-        PCI_OHCI,
-        QEMU_XHCI,
+        PIIX3_UHCI = 0,
+        PIIX4_UHCI = 1,
+        EHCI = 2,
+        ICH9_EHCI1 = 3,
+        ICH9_UHCI1 = 4,
+        ICH9_UHCI2 = 5,
+        ICH9_UHCI3 = 6,
+        VT82C686B_UHCI = 7,
+        PCI_OHCI = 8,
+        QEMU_XHCI = 9,
     }
 
 
@@ -135,11 +135,11 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainCpuFeaturePolicy {
-        FORCE,
-        REQUIRE,
-        OPTIONAL,
-        DISABLE,
-        FORBID,
+        FORCE = 0,
+        REQUIRE = 1,
+        OPTIONAL = 2,
+        DISABLE = 3,
+        FORBID = 4,
     }
 
 
@@ -154,9 +154,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainCpuMatchPolicy {
-        MINIMUM,
-        EXACT,
-        STRICT,
+        MINIMUM = 0,
+        EXACT = 1,
+        STRICT = 2,
     }
 
 
@@ -171,9 +171,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainCpuMode {
-        CUSTOM,
-        HOST_MODEL,
-        HOST_PASSTHROUGH,
+        CUSTOM = 0,
+        HOST_MODEL = 1,
+        HOST_PASSTHROUGH = 2,
     }
 
 
@@ -188,14 +188,14 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskBus {
-        IDE,
-        FDC,
-        SCSI,
-        VIRTIO,
-        XEN,
-        USB,
-        UML,
-        SATA,
+        IDE = 0,
+        FDC = 1,
+        SCSI = 2,
+        VIRTIO = 3,
+        XEN = 4,
+        USB = 5,
+        UML = 6,
+        SATA = 7,
     }
 
 
@@ -210,12 +210,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskCacheType {
-        DEFAULT,
-        NONE,
-        WRITETHROUGH,
-        WRITEBACK,
-        DIRECTSYNC,
-        UNSAFE,
+        DEFAULT = 0,
+        NONE = 1,
+        WRITETHROUGH = 2,
+        WRITEBACK = 3,
+        DIRECTSYNC = 4,
+        UNSAFE = 5,
     }
 
 
@@ -230,8 +230,8 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskDriverDiscard {
-        UNMAP,
-        IGNORE,
+        UNMAP = 0,
+        IGNORE = 1,
     }
 
 
@@ -246,10 +246,10 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskDriverErrorPolicy {
-        STOP,
-        REPORT,
-        IGNORE,
-        ENOSPACE,
+        STOP = 0,
+        REPORT = 1,
+        IGNORE = 2,
+        ENOSPACE = 3,
     }
 
 
@@ -264,8 +264,8 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskDriverIoPolicy {
-        THREADS,
-        NATIVE,
+        THREADS = 0,
+        NATIVE = 1,
     }
 
 
@@ -280,20 +280,20 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskFormat {
-        RAW,
-        DIR,
-        BOCHS,
-        CLOOP,
-        COW,
-        DMG,
-        ISO,
-        QCOW,
-        QCOW2,
-        QED,
-        VMDK,
-        VPC,
-        FAT,
-        VHD,
+        RAW = 0,
+        DIR = 1,
+        BOCHS = 2,
+        CLOOP = 3,
+        COW = 4,
+        DMG = 5,
+        ISO = 6,
+        QCOW = 7,
+        QCOW2 = 8,
+        QED = 9,
+        VMDK = 10,
+        VPC = 11,
+        FAT = 12,
+        VHD = 13,
     }
 
 
@@ -308,9 +308,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskGuestDeviceType {
-        DISK,
-        FLOPPY,
-        CDROM,
+        DISK = 0,
+        FLOPPY = 1,
+        CDROM = 2,
     }
 
 
@@ -325,9 +325,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskSnapshotType {
-        NO,
-        INTERNAL,
-        EXTERNAL,
+        NO = 0,
+        INTERNAL = 1,
+        EXTERNAL = 2,
     }
 
 
@@ -342,9 +342,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskStartupPolicy {
-        MANDATORY,
-        REQUISITE,
-        OPTIONAL,
+        MANDATORY = 0,
+        REQUISITE = 1,
+        OPTIONAL = 2,
     }
 
 
@@ -359,10 +359,10 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainDiskType {
-        FILE,
-        BLOCK,
-        DIR,
-        NETWORK,
+        FILE = 0,
+        BLOCK = 1,
+        DIR = 2,
+        NETWORK = 3,
     }
 
 
@@ -377,9 +377,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainFilesysAccessType {
-        PASSTHROUGH,
-        MAPPED,
-        SQUASH,
+        PASSTHROUGH = 0,
+        MAPPED = 1,
+        SQUASH = 2,
     }
 
 
@@ -394,12 +394,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainFilesysDriverType {
-        DEFAULT,
-        PATH,
-        HANDLE,
-        LOOP,
-        NBD,
-        PLOOP,
+        DEFAULT = 0,
+        PATH = 1,
+        HANDLE = 2,
+        LOOP = 3,
+        NBD = 4,
+        PLOOP = 5,
     }
 
 
@@ -414,12 +414,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainFilesysType {
-        MOUNT,
-        BLOCK,
-        FILE,
-        TEMPLATE,
-        RAM,
-        BIND,
+        MOUNT = 0,
+        BLOCK = 1,
+        FILE = 2,
+        TEMPLATE = 3,
+        RAM = 4,
+        BIND = 5,
     }
 
 
@@ -434,12 +434,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainGraphicsSpiceImageCompression {
-        AUTO_GLZ,
-        AUTO_LZ,
-        QUIC,
-        GLZ,
-        LZ,
-        OFF,
+        AUTO_GLZ = 0,
+        AUTO_LZ = 1,
+        QUIC = 2,
+        GLZ = 3,
+        LZ = 4,
+        OFF = 5,
     }
 
 
@@ -454,9 +454,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainInputBus {
-        PS2,
-        USB,
-        XEN,
+        PS2 = 0,
+        USB = 1,
+        XEN = 2,
     }
 
 
@@ -471,9 +471,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainInputDeviceType {
-        MOUSE,
-        TABLET,
-        KEYBOARD,
+        MOUSE = 0,
+        TABLET = 1,
+        KEYBOARD = 2,
     }
 
 
@@ -488,9 +488,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainInterfaceLinkState {
-        DEFAULT,
-        UP,
-        DOWN,
+        DEFAULT = 0,
+        UP = 1,
+        DOWN = 2,
     }
 
 
@@ -505,12 +505,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainLifecycleAction {
-        DESTROY,
-        RESTART,
-        PRESERVE,
-        RENAME_RESTART,
-        COREDUMP_DESTROY,
-        COREDUMP_RESTART,
+        DESTROY = 0,
+        RESTART = 1,
+        PRESERVE = 2,
+        RENAME_RESTART = 3,
+        COREDUMP_DESTROY = 4,
+        COREDUMP_RESTART = 5,
     }
 
 
@@ -525,9 +525,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainLifecycleEvent {
-        ON_POWEROFF,
-        ON_REBOOT,
-        ON_CRASH,
+        ON_POWEROFF = 0,
+        ON_REBOOT = 1,
+        ON_CRASH = 2,
     }
 
 
@@ -542,8 +542,8 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainMemballoonModel {
-        NONE,
-        VIRTIO,
+        NONE = 0,
+        VIRTIO = 1,
     }
 
 
@@ -558,10 +558,10 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainOsBootDevice {
-        FD,
-        HD,
-        CDROM,
-        NETWORK,
+        FD = 0,
+        HD = 1,
+        CDROM = 2,
+        NETWORK = 3,
     }
 
 
@@ -576,8 +576,8 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainOsFirmware {
-        BIOS,
-        EFI,
+        BIOS = 0,
+        EFI = 1,
     }
 
 
@@ -592,9 +592,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainOsSmBiosMode {
-        EMULATE,
-        HOST,
-        SYSINFO,
+        EMULATE = 0,
+        HOST = 1,
+        SYSINFO = 2,
     }
 
 
@@ -609,11 +609,11 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainOsType {
-        HVM,
-        LINUX,
-        EXE,
-        XEN,
-        UML,
+        HVM = 0,
+        LINUX = 1,
+        EXE = 2,
+        XEN = 3,
+        UML = 4,
     }
 
 
@@ -628,7 +628,7 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainRedirdevBus {
-        USB,
+        USB = 0,
     }
 
 
@@ -643,8 +643,8 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainSeclabelType {
-        DYNAMIC,
-        STATIC,
+        DYNAMIC = 0,
+        STATIC = 1,
     }
 
 
@@ -659,15 +659,15 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainSnapshotDomainState {
-        NOSTATE,
-        RUNNING,
-        BLOCKED,
-        PAUSED,
-        SHUTDOWN,
-        SHUTOFF,
-        CRASHED,
-        PMSUSPENDED,
-        DISK_SNAPSHOT,
+        NOSTATE = 0,
+        RUNNING = 1,
+        BLOCKED = 2,
+        PAUSED = 3,
+        SHUTDOWN = 4,
+        SHUTOFF = 5,
+        CRASHED = 6,
+        PMSUSPENDED = 7,
+        DISK_SNAPSHOT = 100,
     }
 
 
@@ -682,9 +682,9 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainSnapshotMemoryState {
-        NONE,
-        INTERNAL,
-        EXTERNAL,
+        NONE = 0,
+        INTERNAL = 1,
+        EXTERNAL = 2,
     }
 
 
@@ -699,12 +699,12 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainSoundModel {
-        SB16,
-        ES1370,
-        PCSPK,
-        AC97,
-        ICH6,
-        ICH9,
+        SB16 = 0,
+        ES1370 = 1,
+        PCSPK = 2,
+        AC97 = 3,
+        ICH6 = 4,
+        ICH9 = 5,
     }
 
 
@@ -719,10 +719,10 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainTimerTickPolicy {
-        DELAY,
-        CATCHUP,
-        MERGE,
-        DISCARD,
+        DELAY = 0,
+        CATCHUP = 1,
+        MERGE = 2,
+        DISCARD = 3,
     }
 
 
@@ -737,14 +737,14 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainVideoModel {
-        VGA,
-        CIRRUS,
-        VMVGA,
-        XEN,
-        VBOX,
-        QXL,
-        VIRTIO,
-        BOCHS,
+        VGA = 0,
+        CIRRUS = 1,
+        VMVGA = 2,
+        XEN = 3,
+        VBOX = 4,
+        QXL = 5,
+        VIRTIO = 6,
+        BOCHS = 7,
     }
 
 
@@ -759,21 +759,21 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum DomainVirtType {
-        QEMU,
-        KQEMU,
-        KVM,
-        XEN,
-        LXC,
-        UML,
-        OPENVZ,
-        VSERVER,
-        LDOM,
-        TEST,
-        VMWARE,
-        HYPERV,
-        VBOX,
-        ONE,
-        PHYP,
+        QEMU = 0,
+        KQEMU = 1,
+        KVM = 2,
+        XEN = 3,
+        LXC = 4,
+        UML = 5,
+        OPENVZ = 6,
+        VSERVER = 7,
+        LDOM = 8,
+        TEST = 9,
+        VMWARE = 10,
+        HYPERV = 11,
+        VBOX = 12,
+        ONE = 13,
+        PHYP = 14,
     }
 
 
@@ -788,14 +788,14 @@ export namespace LibvirtGConfig {
      * @gir-type Enum
      */
     enum StoragePoolType {
-        DIR,
-        FS,
-        NETFS,
-        LOGICAL,
-        DISK,
-        ISCSI,
-        SCSI,
-        MPATH,
+        DIR = 0,
+        FS = 1,
+        NETFS = 2,
+        LOGICAL = 3,
+        DISK = 4,
+        ISCSI = 5,
+        SCSI = 6,
+        MPATH = 7,
     }
 
 
@@ -806,6 +806,7 @@ export namespace LibvirtGConfig {
 
     /**
      * @param argv pointer to application's argv
+     * @throws GLib.Error
      */
     function init_check(argv: string[] | null): [boolean, string[] | null];
 
@@ -820,7 +821,7 @@ export namespace LibvirtGConfig {
      * @gir-type Flags
      */
     enum StorageVolTargetFeatures {
-        REFCOUNT,
+        REFCOUNT = 1,
     }
 
 
@@ -1706,6 +1707,7 @@ export namespace LibvirtGConfig {
          * @param xml 
          * @param ns 
          * @param ns_uri 
+         * @throws GLib.Error
          */
         set_custom_xml(xml: string, ns: string, ns_uri: string): boolean;
 
@@ -1713,6 +1715,7 @@ export namespace LibvirtGConfig {
          * @param xml 
          * @param ns 
          * @param ns_uri 
+         * @throws GLib.Error
          */
         set_custom_xml_ns_children(xml: string, ns: string, ns_uri: string): boolean;
 
@@ -6147,6 +6150,9 @@ export namespace LibvirtGConfig {
 
         to_xml(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         validate(): void;
     }
 

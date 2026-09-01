@@ -4,82 +4,96 @@
 ![version](https://img.shields.io/npm/v/@girs/shell-9)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/shell-9)
 
+GJS TypeScript type definitions for Shell-9 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for Shell-9 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/shell-9
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/shell-9` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/shell-9/ambient` | only the `gi://` module declarations |
+| `@girs/shell-9/import` | only the `imports.gi` declarations |
+| `@girs/shell-9/shell-9` | the namespace, without the side-effecting declarations |
+| `@girs/shell-9/vocabulary` | GIR-derived widget data: settable properties, enum nicks, slot candidates |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import Shell from '@girs/shell-9';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/shell-9` or `@girs/shell-9/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/shell-9'
+import '@girs/shell-9';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/shell-9"],
-  ...
-}
+{ "include": ["@girs/shell-9"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import Shell from 'gi://Shell?version=9';
 ```
 
-### Global import
+Referencing `@girs/shell-9/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/shell-9` or `@girs/shell-9/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/shell-9'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/shell-9"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/shell-9/import`:
 
 ```ts
 const Shell = imports.gi.Shell;
 ```
 
-### Bundle
+## Widget vocabulary
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+`shell-9` declares widgets, so it also carries what the GIR says about them, as
+types and as values a test can read:
+
+```ts
+import type { Widgets, PropsOf } from '@girs/shell-9/vocabulary';
+import { OWN_PROPS, ENUM_NICKS, PROVENANCE } from '@girs/shell-9/vocabulary';
+```
+
+Properties are keyed the way GObject registered them, writable-only and optional, so they
+match `g_object_set`, GtkBuilder XML and Blueprint. `PROVENANCE.libraryVersion` names the
+library release this was generated from, which lets a check tell "newer than what is
+installed" from "wrong".
+
+This subpath answers what the GIR says, not what the installed library has. For the
+second question, ask the library.
+
+## Building
+
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

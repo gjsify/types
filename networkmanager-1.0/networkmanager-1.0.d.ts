@@ -30,25 +30,25 @@ export namespace NetworkManager {
         /**
          * the device or access point mode is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * for both devices and access point objects, indicates
          *   the object is part of an Ad-Hoc 802.11 network without a central
          *   coordinating access point.
          */
-        ADHOC,
+        ADHOC = 1,
         /**
          * the device or access point is in infrastructure mode.
          *   For devices, this indicates the device is an 802.11 client/station.  For
          *   access point objects, this indicates the object is an access point that
          *   provides connectivity to clients.
          */
-        INFRA,
+        INFRA = 2,
         /**
          * the device is an access point/hotspot.  Not valid for
          *   access point objects; used only for hotspot mode on the local machine.
          */
-        AP,
+        AP = 3,
     }
 
 
@@ -62,25 +62,25 @@ export namespace NetworkManager {
         /**
          * the state of the connection is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a network connection is being prepared
          */
-        ACTIVATING,
+        ACTIVATING = 1,
         /**
          * there is a connection to the network
          */
-        ACTIVATED,
+        ACTIVATED = 2,
         /**
          * the network connection is being
          *   torn down and cleaned up
          */
-        DEACTIVATING,
+        DEACTIVATING = 3,
         /**
          * the network connection is disconnected
          *   and will be removed
          */
-        DEACTIVATED,
+        DEACTIVATED = 4,
     }
 
 
@@ -143,26 +143,26 @@ export namespace NetworkManager {
         /**
          * Network connectivity is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The host is not connected to any network.
          */
-        NONE,
+        NONE = 1,
         /**
          * The host is behind a captive portal and
          *   cannot reach the full Internet.
          */
-        PORTAL,
+        PORTAL = 2,
         /**
          * The host is connected to a network, but
          *   does not appear to be able to reach the full Internet.
          */
-        LIMITED,
+        LIMITED = 3,
         /**
          * The host is connected to a network, and
          *   appears to be able to reach the full Internet.
          */
-        FULL,
+        FULL = 4,
     }
 
 
@@ -173,77 +173,77 @@ export namespace NetworkManager {
         /**
          * the device's state is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the device is recognized, but not managed by
          *   NetworkManager
          */
-        UNMANAGED,
+        UNMANAGED = 10,
         /**
          * the device is managed by NetworkManager, but
          *   is not available for use.  Reasons may include the wireless switched off,
          *   missing firmware, no ethernet carrier, missing supplicant or modem manager,
          *   etc.
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 20,
         /**
          * the device can be activated, but is currently
          *   idle and not connected to a network.
          */
-        DISCONNECTED,
+        DISCONNECTED = 30,
         /**
          * the device is preparing the connection to the
          *   network.  This may include operations like changing the MAC address,
          *   setting physical link properties, and anything else required to connect
          *   to the requested network.
          */
-        PREPARE,
+        PREPARE = 40,
         /**
          * the device is connecting to the requested network.
          *   This may include operations like associating with the Wi-Fi AP, dialing
          *   the modem, connecting to the remote Bluetooth device, etc.
          */
-        CONFIG,
+        CONFIG = 50,
         /**
          * the device requires more information to continue
          *   connecting to the requested network.  This includes secrets like WiFi
          *   passphrases, login passwords, PIN codes, etc.
          */
-        NEED_AUTH,
+        NEED_AUTH = 60,
         /**
          * the device is requesting IPv4 and/or IPv6
          *   addresses and routing information from the network.
          */
-        IP_CONFIG,
+        IP_CONFIG = 70,
         /**
          * the device is checking whether further action is
          *   required for the requested network connection.  This may include checking
          *   whether only local network access is available, whether a captive portal
          *   is blocking access to the Internet, etc.
          */
-        IP_CHECK,
+        IP_CHECK = 80,
         /**
          * the device is waiting for a secondary
          *   connection (like a VPN) which must activated before the device can be
          *   activated
          */
-        SECONDARIES,
+        SECONDARIES = 90,
         /**
          * the device has a network connection, either local
          *   or global.
          */
-        ACTIVATED,
+        ACTIVATED = 100,
         /**
          * a disconnection from the current network
          *   connection was requested, and the device is cleaning up resources used for
          *   that connection.  The network connection may still be valid.
          */
-        DEACTIVATING,
+        DEACTIVATING = 110,
         /**
          * the device failed to connect to the requested
          *   network and is cleaning up the connection request
          */
-        FAILED,
+        FAILED = 120,
     }
 
 
@@ -255,256 +255,256 @@ export namespace NetworkManager {
         /**
          * No reason given
          */
-        NONE,
+        NONE = 0,
         /**
          * Unknown error
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * Device is now managed
          */
-        NOW_MANAGED,
+        NOW_MANAGED = 2,
         /**
          * Device is now unmanaged
          */
-        NOW_UNMANAGED,
+        NOW_UNMANAGED = 3,
         /**
          * The device could not be readied for configuration
          */
-        CONFIG_FAILED,
+        CONFIG_FAILED = 4,
         /**
          * IP configuration could not be reserved (no available address, timeout, etc)
          */
-        IP_CONFIG_UNAVAILABLE,
+        IP_CONFIG_UNAVAILABLE = 5,
         /**
          * The IP config is no longer valid
          */
-        IP_CONFIG_EXPIRED,
+        IP_CONFIG_EXPIRED = 6,
         /**
          * Secrets were required, but not provided
          */
-        NO_SECRETS,
+        NO_SECRETS = 7,
         /**
          * 802.1x supplicant disconnected
          */
-        SUPPLICANT_DISCONNECT,
+        SUPPLICANT_DISCONNECT = 8,
         /**
          * 802.1x supplicant configuration failed
          */
-        SUPPLICANT_CONFIG_FAILED,
+        SUPPLICANT_CONFIG_FAILED = 9,
         /**
          * 802.1x supplicant failed
          */
-        SUPPLICANT_FAILED,
+        SUPPLICANT_FAILED = 10,
         /**
          * 802.1x supplicant took too long to authenticate
          */
-        SUPPLICANT_TIMEOUT,
+        SUPPLICANT_TIMEOUT = 11,
         /**
          * PPP service failed to start
          */
-        PPP_START_FAILED,
+        PPP_START_FAILED = 12,
         /**
          * PPP service disconnected
          */
-        PPP_DISCONNECT,
+        PPP_DISCONNECT = 13,
         /**
          * PPP failed
          */
-        PPP_FAILED,
+        PPP_FAILED = 14,
         /**
          * DHCP client failed to start
          */
-        DHCP_START_FAILED,
+        DHCP_START_FAILED = 15,
         /**
          * DHCP client error
          */
-        DHCP_ERROR,
+        DHCP_ERROR = 16,
         /**
          * DHCP client failed
          */
-        DHCP_FAILED,
+        DHCP_FAILED = 17,
         /**
          * Shared connection service failed to start
          */
-        SHARED_START_FAILED,
+        SHARED_START_FAILED = 18,
         /**
          * Shared connection service failed
          */
-        SHARED_FAILED,
+        SHARED_FAILED = 19,
         /**
          * AutoIP service failed to start
          */
-        AUTOIP_START_FAILED,
+        AUTOIP_START_FAILED = 20,
         /**
          * AutoIP service error
          */
-        AUTOIP_ERROR,
+        AUTOIP_ERROR = 21,
         /**
          * AutoIP service failed
          */
-        AUTOIP_FAILED,
+        AUTOIP_FAILED = 22,
         /**
          * The line is busy
          */
-        MODEM_BUSY,
+        MODEM_BUSY = 23,
         /**
          * No dial tone
          */
-        MODEM_NO_DIAL_TONE,
+        MODEM_NO_DIAL_TONE = 24,
         /**
          * No carrier could be established
          */
-        MODEM_NO_CARRIER,
+        MODEM_NO_CARRIER = 25,
         /**
          * The dialing request timed out
          */
-        MODEM_DIAL_TIMEOUT,
+        MODEM_DIAL_TIMEOUT = 26,
         /**
          * The dialing attempt failed
          */
-        MODEM_DIAL_FAILED,
+        MODEM_DIAL_FAILED = 27,
         /**
          * Modem initialization failed
          */
-        MODEM_INIT_FAILED,
+        MODEM_INIT_FAILED = 28,
         /**
          * Failed to select the specified APN
          */
-        GSM_APN_FAILED,
+        GSM_APN_FAILED = 29,
         /**
          * Not searching for networks
          */
-        GSM_REGISTRATION_NOT_SEARCHING,
+        GSM_REGISTRATION_NOT_SEARCHING = 30,
         /**
          * Network registration denied
          */
-        GSM_REGISTRATION_DENIED,
+        GSM_REGISTRATION_DENIED = 31,
         /**
          * Network registration timed out
          */
-        GSM_REGISTRATION_TIMEOUT,
+        GSM_REGISTRATION_TIMEOUT = 32,
         /**
          * Failed to register with the requested network
          */
-        GSM_REGISTRATION_FAILED,
+        GSM_REGISTRATION_FAILED = 33,
         /**
          * PIN check failed
          */
-        GSM_PIN_CHECK_FAILED,
+        GSM_PIN_CHECK_FAILED = 34,
         /**
          * Necessary firmware for the device may be missing
          */
-        FIRMWARE_MISSING,
+        FIRMWARE_MISSING = 35,
         /**
          * The device was removed
          */
-        REMOVED,
+        REMOVED = 36,
         /**
          * NetworkManager went to sleep
          */
-        SLEEPING,
+        SLEEPING = 37,
         /**
          * The device's active connection disappeared
          */
-        CONNECTION_REMOVED,
+        CONNECTION_REMOVED = 38,
         /**
          * Device disconnected by user or client
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 39,
         /**
          * Carrier/link changed
          */
-        CARRIER,
+        CARRIER = 40,
         /**
          * The device's existing connection was assumed
          */
-        CONNECTION_ASSUMED,
+        CONNECTION_ASSUMED = 41,
         /**
          * The supplicant is now available
          */
-        SUPPLICANT_AVAILABLE,
+        SUPPLICANT_AVAILABLE = 42,
         /**
          * The modem could not be found
          */
-        MODEM_NOT_FOUND,
+        MODEM_NOT_FOUND = 43,
         /**
          * The Bluetooth connection failed or timed out
          */
-        BT_FAILED,
+        BT_FAILED = 44,
         /**
          * GSM Modem's SIM Card not inserted
          */
-        GSM_SIM_NOT_INSERTED,
+        GSM_SIM_NOT_INSERTED = 45,
         /**
          * GSM Modem's SIM Pin required
          */
-        GSM_SIM_PIN_REQUIRED,
+        GSM_SIM_PIN_REQUIRED = 46,
         /**
          * GSM Modem's SIM Puk required
          */
-        GSM_SIM_PUK_REQUIRED,
+        GSM_SIM_PUK_REQUIRED = 47,
         /**
          * GSM Modem's SIM wrong
          */
-        GSM_SIM_WRONG,
+        GSM_SIM_WRONG = 48,
         /**
          * InfiniBand device does not support connected mode
          */
-        INFINIBAND_MODE,
+        INFINIBAND_MODE = 49,
         /**
          * A dependency of the connection failed
          */
-        DEPENDENCY_FAILED,
+        DEPENDENCY_FAILED = 50,
         /**
          * Problem with the RFC 2684 Ethernet over ADSL bridge
          */
-        BR2684_FAILED,
+        BR2684_FAILED = 51,
         /**
          * ModemManager not running
          */
-        MODEM_MANAGER_UNAVAILABLE,
+        MODEM_MANAGER_UNAVAILABLE = 52,
         /**
          * The Wi-Fi network could not be found
          */
-        SSID_NOT_FOUND,
+        SSID_NOT_FOUND = 53,
         /**
          * A secondary connection of the base connection failed
          */
-        SECONDARY_CONNECTION_FAILED,
+        SECONDARY_CONNECTION_FAILED = 54,
         /**
          * DCB or FCoE setup failed
          */
-        DCB_FCOE_FAILED,
+        DCB_FCOE_FAILED = 55,
         /**
          * teamd control failed
          */
-        TEAMD_CONTROL_FAILED,
+        TEAMD_CONTROL_FAILED = 56,
         /**
          * Modem failed or no longer available
          */
-        MODEM_FAILED,
+        MODEM_FAILED = 57,
         /**
          * Modem now ready and available
          */
-        MODEM_AVAILABLE,
+        MODEM_AVAILABLE = 58,
         /**
          * SIM PIN was incorrect
          */
-        SIM_PIN_INCORRECT,
+        SIM_PIN_INCORRECT = 59,
         /**
          * New connection activation was enqueued
          */
-        NEW_ACTIVATION,
+        NEW_ACTIVATION = 60,
         /**
          * the device's parent changed
          */
-        PARENT_CHANGED,
+        PARENT_CHANGED = 61,
         /**
          * the device parent's management changed
          */
-        PARENT_MANAGED_CHANGED,
-        LAST,
+        PARENT_MANAGED_CHANGED = 62,
+        LAST = 65535,
     }
 
 
@@ -517,88 +517,88 @@ export namespace NetworkManager {
         /**
          * unknown device
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a wired ethernet device
          */
-        ETHERNET,
+        ETHERNET = 1,
         /**
          * an 802.11 Wi-Fi device
          */
-        WIFI,
+        WIFI = 2,
         /**
          * not used
          */
-        UNUSED1,
+        UNUSED1 = 3,
         /**
          * not used
          */
-        UNUSED2,
+        UNUSED2 = 4,
         /**
          * a Bluetooth device supporting PAN or DUN access protocols
          */
-        BT,
+        BT = 5,
         /**
          * an OLPC XO mesh networking device
          */
-        OLPC_MESH,
+        OLPC_MESH = 6,
         /**
          * an 802.16e Mobile WiMAX broadband device
          */
-        WIMAX,
+        WIMAX = 7,
         /**
          * a modem supporting analog telephone, CDMA/EVDO,
          * GSM/UMTS, or LTE network access protocols
          */
-        MODEM,
+        MODEM = 8,
         /**
          * an IP-over-InfiniBand device
          */
-        INFINIBAND,
+        INFINIBAND = 9,
         /**
          * a bond master interface
          */
-        BOND,
+        BOND = 10,
         /**
          * an 802.1Q VLAN interface
          */
-        VLAN,
+        VLAN = 11,
         /**
          * ADSL modem
          */
-        ADSL,
+        ADSL = 12,
         /**
          * a bridge master interface
          */
-        BRIDGE,
+        BRIDGE = 13,
         /**
          * generic support for unrecognized device types
          */
-        GENERIC,
+        GENERIC = 14,
         /**
          * a team master interface
          */
-        TEAM,
+        TEAM = 15,
         /**
          * a TUN/TAP interface
          */
-        TUN,
+        TUN = 16,
         /**
          * an IP tunnel interface
          */
-        IP_TUNNEL,
+        IP_TUNNEL = 17,
         /**
          * a MACVLAN interface
          */
-        MACVLAN,
+        MACVLAN = 18,
         /**
          * a VXLAN interface
          */
-        VXLAN,
+        VXLAN = 19,
         /**
          * a VETH interface
          */
-        VETH,
+        VETH = 20,
     }
 
 
@@ -618,21 +618,21 @@ export namespace NetworkManager {
         /**
          * unknown file format
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * file contains an X.509 format certificate
          */
-        X509,
+        X509 = 1,
         /**
          * file contains an old-style OpenSSL PEM
          * or DER private key
          */
-        RAW_KEY,
+        RAW_KEY = 2,
         /**
          * file contains a PKCS#<!-- -->12 certificate
          * and private key
          */
-        PKCS12,
+        PKCS12 = 3,
     }
 
 
@@ -654,17 +654,17 @@ export namespace NetworkManager {
          * unknown certificate or private key
          * scheme
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * certificate or key is stored as the raw
          * item data
          */
-        BLOB,
+        BLOB = 1,
         /**
          * certificate or key is stored as a path
          * to a file containing the certificate or key data
          */
-        PATH,
+        PATH = 2,
     }
 
 
@@ -947,39 +947,39 @@ export namespace NetworkManager {
         /**
          * match all properties exactly
          */
-        EXACT,
+        EXACT = 0,
         /**
          * match only important attributes, like SSID,
          *   type, security settings, etc.  Does not match, for example, connection ID
          *   or UUID.
          */
-        FUZZY,
+        FUZZY = 1,
         /**
          * ignore the connection's ID
          */
-        IGNORE_ID,
+        IGNORE_ID = 2,
         /**
          * ignore all secrets
          */
-        IGNORE_SECRETS,
+        IGNORE_SECRETS = 4,
         /**
          * ignore secrets for which
          * the secret's flags indicate the secret is owned by a user secret agent
          * (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_AGENT_OWNED`)
          */
-        IGNORE_AGENT_OWNED_SECRETS,
+        IGNORE_AGENT_OWNED_SECRETS = 8,
         /**
          * ignore secrets for which
          * the secret's flags indicate the secret should not be saved to persistent
          * storage (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_NOT_SAVED`)
          */
-        IGNORE_NOT_SAVED_SECRETS,
+        IGNORE_NOT_SAVED_SECRETS = 16,
         /**
          * if this flag is set,
          * `nm_setting_diff()` and `nm_connection_diff()` will also include properties that
          * are set to their default value. See also `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_NO_DEFAULT`.
          */
-        DIFF_RESULT_WITH_DEFAULT,
+        DIFF_RESULT_WITH_DEFAULT = 32,
         /**
          * if this flag is set,
          * `nm_setting_diff()` and `nm_connection_diff()` will not include properties that
@@ -993,7 +993,7 @@ export namespace NetworkManager {
          * is set, `nm_setting_diff()` will also set the flags `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`
          * and `NM_SETTING_DIFF_RESULT_IN_B_DEFAULT`, if the values are default values.
          */
-        DIFF_RESULT_NO_DEFAULT,
+        DIFF_RESULT_NO_DEFAULT = 64,
     }
 
 
@@ -1098,20 +1098,20 @@ export namespace NetworkManager {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * the feature is enabled
          */
-        ENABLE,
+        ENABLE = 1,
         /**
          * the feature is advertised
          */
-        ADVERTISE,
+        ADVERTISE = 2,
         /**
          * the feature is willing to change based on
          * peer configuration advertisements
          */
-        WILLING,
+        WILLING = 4,
     }
 
 
@@ -1130,25 +1130,25 @@ export namespace NetworkManager {
         /**
          * unknown result
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the property is present in setting A
          */
-        IN_A,
+        IN_A = 1,
         /**
          * the property is present in setting B
          */
-        IN_B,
+        IN_B = 2,
         /**
          * the property is present in
          * setting A but is set to the default value. This flag is only set,
          * if you specify `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_WITH_DEFAULT`.
          */
-        IN_A_DEFAULT,
+        IN_A_DEFAULT = 4,
         /**
          * analog to `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`.
          */
-        IN_B_DEFAULT,
+        IN_B_DEFAULT = 4,
     }
 
 
@@ -1287,63 +1287,63 @@ export namespace NetworkManager {
         /**
          * unknown or no band specified
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * any band is allowed
          */
-        ANY,
+        ANY = 1,
         /**
          * 900 MHz original GSM band
          */
-        EGSM,
+        EGSM = 2,
         /**
          * 1800 MHz DCS band
          */
-        DCS,
+        DCS = 4,
         /**
          * US 1900 MHz PCS band
          */
-        PCS,
+        PCS = 8,
         /**
          * US 850 MHz Cellular band
          */
-        G850,
+        G850 = 16,
         /**
          * WCDMA 3GPP UMTS 2100 MHz (Class I)
          */
-        U2100,
+        U2100 = 32,
         /**
          * WCDMA 3GPP UMTS 1800 MHz (Class III)
          */
-        U1800,
+        U1800 = 64,
         /**
          * WCDMA 3GPP AWS 1700/2100 MHz (Class IV)
          */
-        U17IV,
+        U17IV = 128,
         /**
          * WCDMA 3GPP UMTS 800 MHz (Class VI)
          */
-        U800,
+        U800 = 256,
         /**
          * WCDMA 3GPP UMTS 850 MHz (Class V)
          */
-        U850,
+        U850 = 512,
         /**
          * WCDMA 3GPP UMTS 900 MHz (Class VIII)
          */
-        U900,
+        U900 = 1024,
         /**
          * WCDMA 3GPP UMTS 1700 MHz (Class IX)
          */
-        U17IX,
+        U17IX = 2048,
         /**
          * WCDMA 3GPP UMTS 1900 MHz (Class II)
          */
-        U1900,
+        U1900 = 4096,
         /**
          * WCDMA 3GPP UMTS 2600 MHz (Class VII, internal)
          */
-        U2600,
+        U2600 = 8192,
     }
 
 
@@ -1364,37 +1364,37 @@ export namespace NetworkManager {
         /**
          * any access technology may be used
          */
-        ANY,
+        ANY = -1,
         /**
          * only 3G-type (UMTS and HSPA)
          * technologies may be used
          */
-        UMTS_HSPA,
+        UMTS_HSPA = 0,
         /**
          * only 2G-type (GPRS and EDGE)
          * technologies may be used
          */
-        GPRS_EDGE,
+        GPRS_EDGE = 1,
         /**
          * 3G-type technologies are
          * preferred but 2G-type technologies may be used as a fallback
          */
-        PREFER_UMTS_HSPA,
+        PREFER_UMTS_HSPA = 2,
         /**
          * 2G-type technologies are
          * preferred but 3G-type technologies may be used as a fallback
          */
-        PREFER_GPRS_EDGE,
+        PREFER_GPRS_EDGE = 3,
         /**
          * 4G/LTE-type technologies are
          * preferred but 3G/2/-type technologies may be used as a fallback
          */
-        PREFER_4G,
+        PREFER_4G = 4,
         /**
          * only 4G/LTE type
          * technologies may be used
          */
-        "4G",
+        "4G" = 5,
     }
 
 
@@ -1414,15 +1414,15 @@ export namespace NetworkManager {
         /**
          * hash all properties (including secrets)
          */
-        ALL,
+        ALL = 0,
         /**
          * do not include secrets
          */
-        NO_SECRETS,
+        NO_SECRETS = 1,
         /**
          * only hash secrets
          */
-        ONLY_SECRETS,
+        ONLY_SECRETS = 2,
     }
 
 
@@ -1522,21 +1522,21 @@ export namespace NetworkManager {
         /**
          * unknown or no value specified
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * IPv6 Privacy Extensions are disabled
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * IPv6 Privacy Extensions
          * are enabled, but public addresses are preferred over temporary addresses
          */
-        PREFER_PUBLIC_ADDR,
+        PREFER_PUBLIC_ADDR = 1,
         /**
          * IPv6 Privacy Extensions
          * are enabled and temporary addresses are preferred over public addresses
          */
-        PREFER_TEMP_ADDR,
+        PREFER_TEMP_ADDR = 2,
     }
 
 
@@ -1703,25 +1703,25 @@ export namespace NetworkManager {
          * the system is responsible for providing and
          * storing this secret (default)
          */
-        NONE,
+        NONE = 0,
         /**
          * a user secret agent is responsible
          * for providing and storing this secret; when it is required agents will be
          * asked to retrieve it
          */
-        AGENT_OWNED,
+        AGENT_OWNED = 1,
         /**
          * this secret should not be saved, but
          * should be requested from the user each time it is needed
          */
-        NOT_SAVED,
+        NOT_SAVED = 2,
         /**
          * in situations where it cannot be
          * automatically determined that the secret is required (some VPNs and PPP
          * providers don't require all secrets) this flag indicates that the specific
          * secret is not required
          */
-        NOT_REQUIRED,
+        NOT_REQUIRED = 4,
     }
 
 
@@ -2091,35 +2091,35 @@ export namespace NetworkManager {
         /**
          * networking state is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * networking is not enabled
          */
-        ASLEEP,
+        ASLEEP = 10,
         /**
          * there is no active network connection
          */
-        DISCONNECTED,
+        DISCONNECTED = 20,
         /**
          * network connections are being cleaned up
          */
-        DISCONNECTING,
+        DISCONNECTING = 30,
         /**
          * a network connection is being started
          */
-        CONNECTING,
+        CONNECTING = 40,
         /**
          * there is only local IPv4 and/or IPv6 connectivity
          */
-        CONNECTED_LOCAL,
+        CONNECTED_LOCAL = 50,
         /**
          * there is only site-wide IPv4 and/or IPv6 connectivity
          */
-        CONNECTED_SITE,
+        CONNECTED_SITE = 60,
         /**
          * there is global IPv4 and/or IPv6 Internet connectivity
          */
-        CONNECTED_GLOBAL,
+        CONNECTED_GLOBAL = 70,
     }
 
 
@@ -2140,41 +2140,41 @@ export namespace NetworkManager {
         /**
          * unknown or invalid security, placeholder and not used
          */
-        INVALID,
+        INVALID = 0,
         /**
          * unencrypted and open
          */
-        NONE,
+        NONE = 1,
         /**
          * static WEP keys are used for encryption
          */
-        STATIC_WEP,
+        STATIC_WEP = 2,
         /**
          * Cisco LEAP is used for authentication and for generating the
          * dynamic WEP keys automatically
          */
-        LEAP,
+        LEAP = 3,
         /**
          * standard 802.1x is used for authentication and
          * generating the dynamic WEP keys automatically
          */
-        DYNAMIC_WEP,
+        DYNAMIC_WEP = 4,
         /**
          * WPA1 is used with Pre-Shared Keys (PSK)
          */
-        WPA_PSK,
+        WPA_PSK = 5,
         /**
          * WPA1 is used with 802.1x authentication
          */
-        WPA_ENTERPRISE,
+        WPA_ENTERPRISE = 6,
         /**
          * WPA2/RSN is used with Pre-Shared Keys (PSK)
          */
-        WPA2_PSK,
+        WPA2_PSK = 7,
         /**
          * WPA2 is used with 802.1x authentication
          */
-        WPA2_ENTERPRISE,
+        WPA2_ENTERPRISE = 8,
     }
 
 
@@ -2187,38 +2187,38 @@ export namespace NetworkManager {
          * The state of the VPN connection is
          *   unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The VPN connection is preparing to
          *   connect.
          */
-        PREPARE,
+        PREPARE = 1,
         /**
          * The VPN connection needs authorization
          *   credentials.
          */
-        NEED_AUTH,
+        NEED_AUTH = 2,
         /**
          * The VPN connection is being established.
          */
-        CONNECT,
+        CONNECT = 3,
         /**
          * The VPN connection is getting an IP
          *   address.
          */
-        IP_CONFIG_GET,
+        IP_CONFIG_GET = 4,
         /**
          * The VPN connection is active.
          */
-        ACTIVATED,
+        ACTIVATED = 5,
         /**
          * The VPN connection failed.
          */
-        FAILED,
+        FAILED = 6,
         /**
          * The VPN connection is disconnected.
          */
-        DISCONNECTED,
+        DISCONNECTED = 7,
     }
 
 
@@ -2231,62 +2231,62 @@ export namespace NetworkManager {
          * The reason for the VPN connection
          *   state change is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No reason was given for the VPN
          *   connection state change.
          */
-        NONE,
+        NONE = 1,
         /**
          * The VPN connection changed
          *   state because the user disconnected it.
          */
-        USER_DISCONNECTED,
+        USER_DISCONNECTED = 2,
         /**
          * The VPN connection
          *   changed state because the device it was using was disconnected.
          */
-        DEVICE_DISCONNECTED,
+        DEVICE_DISCONNECTED = 3,
         /**
          * The service providing the
          *   VPN connection was stopped.
          */
-        SERVICE_STOPPED,
+        SERVICE_STOPPED = 4,
         /**
          * The IP config of the VPN
          *   connection was invalid.
          */
-        IP_CONFIG_INVALID,
+        IP_CONFIG_INVALID = 5,
         /**
          * The connection attempt to
          *   the VPN service timed out.
          */
-        CONNECT_TIMEOUT,
+        CONNECT_TIMEOUT = 6,
         /**
          * A timeout occurred
          *   while starting the service providing the VPN connection.
          */
-        SERVICE_START_TIMEOUT,
+        SERVICE_START_TIMEOUT = 7,
         /**
          * Starting the service
          *   starting the service providing the VPN connection failed.
          */
-        SERVICE_START_FAILED,
+        SERVICE_START_FAILED = 8,
         /**
          * Necessary secrets for the VPN
          *   connection were not provided.
          */
-        NO_SECRETS,
+        NO_SECRETS = 9,
         /**
          * Authentication to the VPN
          *   server failed.
          */
-        LOGIN_FAILED,
+        LOGIN_FAILED = 10,
         /**
          * The connection was
          *   deleted from settings.
          */
-        CONNECTION_REMOVED,
+        CONNECTION_REMOVED = 11,
     }
 
 
@@ -2298,16 +2298,16 @@ export namespace NetworkManager {
         /**
          * Login failed.
          */
-        LOGIN_FAILED,
+        LOGIN_FAILED = 0,
         /**
          * Connect failed.
          */
-        CONNECT_FAILED,
+        CONNECT_FAILED = 1,
         /**
          * Invalid IP configuration returned from
          *   the VPN plugin.
          */
-        BAD_IP_CONFIG,
+        BAD_IP_CONFIG = 2,
     }
 
 
@@ -2319,31 +2319,31 @@ export namespace NetworkManager {
         /**
          * The state of the VPN plugin is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The VPN plugin is initialized.
          */
-        INIT,
+        INIT = 1,
         /**
          * Not used.
          */
-        SHUTDOWN,
+        SHUTDOWN = 2,
         /**
          * The plugin is attempting to connect to a VPN server.
          */
-        STARTING,
+        STARTING = 3,
         /**
          * The plugin has connected to a VPN server.
          */
-        STARTED,
+        STARTED = 4,
         /**
          * The plugin is disconnecting from the VPN server.
          */
-        STOPPING,
+        STOPPING = 5,
         /**
          * The plugin has disconnected from the VPN server.
          */
-        STOPPED,
+        STOPPED = 6,
     }
 
 
@@ -2363,23 +2363,23 @@ export namespace NetworkManager {
          * indicates that this interface should reorder
          *  outgoing packet headers to look more like a non-VLAN Ethernet interface
          */
-        REORDER_HEADERS,
+        REORDER_HEADERS = 1,
         /**
          * indicates that this interface should use GVRP to register
          *  itself with it's switch
          */
-        GVRP,
+        GVRP = 2,
         /**
          * indicates that this interface's operating
          *  state is tied to the underlying network interface but other details
          *  (like routing) are not.
          */
-        LOOSE_BINDING,
+        LOOSE_BINDING = 4,
         /**
          * indicates that this interface should use MVRP to register
          *  itself with it's switch
          */
-        MVRP,
+        MVRP = 8,
     }
 
 
@@ -2399,11 +2399,11 @@ export namespace NetworkManager {
         /**
          * map for incoming data
          */
-        INGRESS_MAP,
+        INGRESS_MAP = 0,
         /**
          * map for outgoing data
          */
-        EGRESS_MAP,
+        EGRESS_MAP = 1,
     }
 
 
@@ -2430,464 +2430,1025 @@ export namespace NetworkManager {
         /**
          * unknown WEP key type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * indicates a hexadecimal or ASCII formatted WEP key.
          * Hex keys are either 10 or 26 hexadecimal characters (ie "5f782f2f5f" or
          * "732f2d712e4a394a375d366931"), while ASCII keys are either 5 or 13 ASCII
          * characters (ie "abcde" or "blahblah99$*1").
          */
-        KEY,
+        KEY = 1,
         /**
          * indicates a WEP passphrase (ex "I bought a duck
          * on my way back from the market 235Q&^%^*%") instead of a hexadecimal or ASCII
          * key.  Passphrases are between 8 and 64 characters inclusive and are hashed
          * the actual WEP key using the MD5 hash algorithm.
          */
-        PASSPHRASE,
+        PASSPHRASE = 2,
         /**
          * placeholder value for bounds-checking
          */
-        LAST,
+        LAST = 2,
     }
 
 
+    /**
+     * @default changed
+     */
     const CONNECTION_CHANGED: string;
 
+    /**
+     * @default ip6-config-method
+     */
     const CONNECTION_NORMALIZE_PARAM_IP6_CONFIG_METHOD: string;
 
+    /**
+     * @default path
+     */
     const CONNECTION_PATH: string;
 
+    /**
+     * @default secrets-cleared
+     */
     const CONNECTION_SECRETS_CLEARED: string;
 
+    /**
+     * @default secrets-updated
+     */
     const CONNECTION_SECRETS_UPDATED: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.Settings
+     */
     const DBUS_IFACE_SETTINGS: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.Settings.Connection
+     */
     const DBUS_IFACE_SETTINGS_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.Settings.Connection.Secrets
+     */
     const DBUS_IFACE_SETTINGS_CONNECTION_SECRETS: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager
+     */
     const DBUS_INTERFACE: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPN.Manager
+     */
     const DBUS_INTERFACE_VPN: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPN.Connection
+     */
     const DBUS_INTERFACE_VPN_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPNConnections.InvalidVPNConnection
+     */
     const DBUS_INVALID_VPN_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPNConnections.NoActiveVPNConnection
+     */
     const DBUS_NO_ACTIVE_VPN_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPNConnections.NoVPNConnections
+     */
     const DBUS_NO_VPN_CONNECTIONS: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager
+     */
     const DBUS_PATH: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/AgentManager
+     */
     const DBUS_PATH_AGENT_MANAGER: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/SecretAgent
+     */
     const DBUS_PATH_SECRET_AGENT: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/Settings
+     */
     const DBUS_PATH_SETTINGS: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/Settings/Connection
+     */
     const DBUS_PATH_SETTINGS_CONNECTION: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/VPN/Manager
+     */
     const DBUS_PATH_VPN: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/VPN/Connection
+     */
     const DBUS_PATH_VPN_CONNECTION: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager
+     */
     const DBUS_SERVICE: string;
 
+    /**
+     * @default AlreadyStarted
+     */
     const DBUS_VPN_ALREADY_STARTED: string;
 
+    /**
+     * @default AlreadyStopped
+     */
     const DBUS_VPN_ALREADY_STOPPED: string;
 
+    /**
+     * @default BadArguments
+     */
     const DBUS_VPN_BAD_ARGUMENTS: string;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPN.Error
+     */
     const DBUS_VPN_ERROR_PREFIX: string;
 
+    /**
+     * @default InteractiveNotSupported
+     */
     const DBUS_VPN_INTERACTIVE_NOT_SUPPORTED: string;
 
+    /**
+     * @default ConnectFailed
+     */
     const DBUS_VPN_SIGNAL_CONNECT_FAILED: string;
 
+    /**
+     * @default IP4Config
+     */
     const DBUS_VPN_SIGNAL_IP4_CONFIG: string;
 
+    /**
+     * @default IPConfigBad
+     */
     const DBUS_VPN_SIGNAL_IP_CONFIG_BAD: string;
 
+    /**
+     * @default LaunchFailed
+     */
     const DBUS_VPN_SIGNAL_LAUNCH_FAILED: string;
 
+    /**
+     * @default LoginBanner
+     */
     const DBUS_VPN_SIGNAL_LOGIN_BANNER: string;
 
+    /**
+     * @default LoginFailed
+     */
     const DBUS_VPN_SIGNAL_LOGIN_FAILED: string;
 
+    /**
+     * @default StateChange
+     */
     const DBUS_VPN_SIGNAL_STATE_CHANGE: string;
 
+    /**
+     * @default VPNConfigBad
+     */
     const DBUS_VPN_SIGNAL_VPN_CONFIG_BAD: string;
 
+    /**
+     * @default StartingInProgress
+     */
     const DBUS_VPN_STARTING_IN_PROGRESS: string;
 
+    /**
+     * @default StoppingInProgress
+     */
     const DBUS_VPN_STOPPING_IN_PROGRESS: string;
 
+    /**
+     * @default WrongState
+     */
     const DBUS_VPN_WRONG_STATE: string;
 
     /**
      * Evaluates to the major version number of NetworkManager which this source
      * is compiled against.
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * Evaluates to the micro version number of NetworkManager which this source
      * compiled against.
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * Evaluates to the minor version number of NetworkManager which this source
      * is compiled against.
+     * @default 17
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default altsubject-matches
+     */
     const SETTING_802_1X_ALTSUBJECT_MATCHES: string;
 
+    /**
+     * @default anonymous-identity
+     */
     const SETTING_802_1X_ANONYMOUS_IDENTITY: string;
 
+    /**
+     * @default ca-cert
+     */
     const SETTING_802_1X_CA_CERT: string;
 
+    /**
+     * @default ca-path
+     */
     const SETTING_802_1X_CA_PATH: string;
 
+    /**
+     * @default client-cert
+     */
     const SETTING_802_1X_CLIENT_CERT: string;
 
+    /**
+     * @default eap
+     */
     const SETTING_802_1X_EAP: string;
 
+    /**
+     * @default identity
+     */
     const SETTING_802_1X_IDENTITY: string;
 
+    /**
+     * @default pac-file
+     */
     const SETTING_802_1X_PAC_FILE: string;
 
+    /**
+     * @default password
+     */
     const SETTING_802_1X_PASSWORD: string;
 
+    /**
+     * @default password-flags
+     */
     const SETTING_802_1X_PASSWORD_FLAGS: string;
 
+    /**
+     * @default password-raw
+     */
     const SETTING_802_1X_PASSWORD_RAW: string;
 
+    /**
+     * @default password-raw-flags
+     */
     const SETTING_802_1X_PASSWORD_RAW_FLAGS: string;
 
+    /**
+     * @default phase1-fast-provisioning
+     */
     const SETTING_802_1X_PHASE1_FAST_PROVISIONING: string;
 
+    /**
+     * @default phase1-peaplabel
+     */
     const SETTING_802_1X_PHASE1_PEAPLABEL: string;
 
+    /**
+     * @default phase1-peapver
+     */
     const SETTING_802_1X_PHASE1_PEAPVER: string;
 
+    /**
+     * @default phase2-altsubject-matches
+     */
     const SETTING_802_1X_PHASE2_ALTSUBJECT_MATCHES: string;
 
+    /**
+     * @default phase2-auth
+     */
     const SETTING_802_1X_PHASE2_AUTH: string;
 
+    /**
+     * @default phase2-autheap
+     */
     const SETTING_802_1X_PHASE2_AUTHEAP: string;
 
+    /**
+     * @default phase2-ca-cert
+     */
     const SETTING_802_1X_PHASE2_CA_CERT: string;
 
+    /**
+     * @default phase2-ca-path
+     */
     const SETTING_802_1X_PHASE2_CA_PATH: string;
 
+    /**
+     * @default phase2-client-cert
+     */
     const SETTING_802_1X_PHASE2_CLIENT_CERT: string;
 
+    /**
+     * @default phase2-private-key
+     */
     const SETTING_802_1X_PHASE2_PRIVATE_KEY: string;
 
+    /**
+     * @default phase2-private-key-password
+     */
     const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD: string;
 
+    /**
+     * @default phase2-private-key-password-flags
+     */
     const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD_FLAGS: string;
 
+    /**
+     * @default phase2-subject-match
+     */
     const SETTING_802_1X_PHASE2_SUBJECT_MATCH: string;
 
+    /**
+     * @default pin
+     */
     const SETTING_802_1X_PIN: string;
 
+    /**
+     * @default pin-flags
+     */
     const SETTING_802_1X_PIN_FLAGS: string;
 
+    /**
+     * @default private-key
+     */
     const SETTING_802_1X_PRIVATE_KEY: string;
 
+    /**
+     * @default private-key-password
+     */
     const SETTING_802_1X_PRIVATE_KEY_PASSWORD: string;
 
+    /**
+     * @default private-key-password-flags
+     */
     const SETTING_802_1X_PRIVATE_KEY_PASSWORD_FLAGS: string;
 
+    /**
+     * @default 802-1x
+     */
     const SETTING_802_1X_SETTING_NAME: string;
 
+    /**
+     * @default subject-match
+     */
     const SETTING_802_1X_SUBJECT_MATCH: string;
 
+    /**
+     * @default system-ca-certs
+     */
     const SETTING_802_1X_SYSTEM_CA_CERTS: string;
 
+    /**
+     * @default encapsulation
+     */
     const SETTING_ADSL_ENCAPSULATION: string;
 
+    /**
+     * @default llc
+     */
     const SETTING_ADSL_ENCAPSULATION_LLC: string;
 
+    /**
+     * @default vcmux
+     */
     const SETTING_ADSL_ENCAPSULATION_VCMUX: string;
 
+    /**
+     * @default password
+     */
     const SETTING_ADSL_PASSWORD: string;
 
+    /**
+     * @default password-flags
+     */
     const SETTING_ADSL_PASSWORD_FLAGS: string;
 
+    /**
+     * @default protocol
+     */
     const SETTING_ADSL_PROTOCOL: string;
 
+    /**
+     * @default ipoatm
+     */
     const SETTING_ADSL_PROTOCOL_IPOATM: string;
 
+    /**
+     * @default pppoa
+     */
     const SETTING_ADSL_PROTOCOL_PPPOA: string;
 
+    /**
+     * @default pppoe
+     */
     const SETTING_ADSL_PROTOCOL_PPPOE: string;
 
+    /**
+     * @default adsl
+     */
     const SETTING_ADSL_SETTING_NAME: string;
 
+    /**
+     * @default username
+     */
     const SETTING_ADSL_USERNAME: string;
 
+    /**
+     * @default vci
+     */
     const SETTING_ADSL_VCI: string;
 
+    /**
+     * @default vpi
+     */
     const SETTING_ADSL_VPI: string;
 
+    /**
+     * @default bdaddr
+     */
     const SETTING_BLUETOOTH_BDADDR: string;
 
+    /**
+     * @default bluetooth
+     */
     const SETTING_BLUETOOTH_SETTING_NAME: string;
 
+    /**
+     * @default type
+     */
     const SETTING_BLUETOOTH_TYPE: string;
 
     /**
      * Connection type describing a connection to devices that support the Bluetooth
      * DUN profile.
+     * @default dun
      */
     const SETTING_BLUETOOTH_TYPE_DUN: string;
 
     /**
      * Connection type describing a connection to devices that support the Bluetooth
      * NAP (Network Access Point) protocol, which accepts connections via PANU.
+     * @default panu
      */
     const SETTING_BLUETOOTH_TYPE_PANU: string;
 
+    /**
+     * @default interface-name
+     */
     const SETTING_BOND_INTERFACE_NAME: string;
 
+    /**
+     * @default options
+     */
     const SETTING_BOND_OPTIONS: string;
 
+    /**
+     * @default ad_select
+     */
     const SETTING_BOND_OPTION_AD_SELECT: string;
 
+    /**
+     * @default arp_interval
+     */
     const SETTING_BOND_OPTION_ARP_INTERVAL: string;
 
+    /**
+     * @default arp_ip_target
+     */
     const SETTING_BOND_OPTION_ARP_IP_TARGET: string;
 
+    /**
+     * @default arp_validate
+     */
     const SETTING_BOND_OPTION_ARP_VALIDATE: string;
 
+    /**
+     * @default downdelay
+     */
     const SETTING_BOND_OPTION_DOWNDELAY: string;
 
+    /**
+     * @default fail_over_mac
+     */
     const SETTING_BOND_OPTION_FAIL_OVER_MAC: string;
 
+    /**
+     * @default lacp_rate
+     */
     const SETTING_BOND_OPTION_LACP_RATE: string;
 
+    /**
+     * @default miimon
+     */
     const SETTING_BOND_OPTION_MIIMON: string;
 
+    /**
+     * @default mode
+     */
     const SETTING_BOND_OPTION_MODE: string;
 
+    /**
+     * @default primary
+     */
     const SETTING_BOND_OPTION_PRIMARY: string;
 
+    /**
+     * @default primary_reselect
+     */
     const SETTING_BOND_OPTION_PRIMARY_RESELECT: string;
 
+    /**
+     * @default resend_igmp
+     */
     const SETTING_BOND_OPTION_RESEND_IGMP: string;
 
+    /**
+     * @default updelay
+     */
     const SETTING_BOND_OPTION_UPDELAY: string;
 
+    /**
+     * @default use_carrier
+     */
     const SETTING_BOND_OPTION_USE_CARRIER: string;
 
+    /**
+     * @default xmit_hash_policy
+     */
     const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string;
 
+    /**
+     * @default bond
+     */
     const SETTING_BOND_SETTING_NAME: string;
 
+    /**
+     * @default ageing-time
+     */
     const SETTING_BRIDGE_AGEING_TIME: string;
 
+    /**
+     * @default forward-delay
+     */
     const SETTING_BRIDGE_FORWARD_DELAY: string;
 
+    /**
+     * @default hello-time
+     */
     const SETTING_BRIDGE_HELLO_TIME: string;
 
+    /**
+     * @default interface-name
+     */
     const SETTING_BRIDGE_INTERFACE_NAME: string;
 
+    /**
+     * @default mac-address
+     */
     const SETTING_BRIDGE_MAC_ADDRESS: string;
 
+    /**
+     * @default max-age
+     */
     const SETTING_BRIDGE_MAX_AGE: string;
 
+    /**
+     * @default hairpin-mode
+     */
     const SETTING_BRIDGE_PORT_HAIRPIN_MODE: string;
 
+    /**
+     * @default path-cost
+     */
     const SETTING_BRIDGE_PORT_PATH_COST: string;
 
+    /**
+     * @default priority
+     */
     const SETTING_BRIDGE_PORT_PRIORITY: string;
 
+    /**
+     * @default bridge-port
+     */
     const SETTING_BRIDGE_PORT_SETTING_NAME: string;
 
+    /**
+     * @default priority
+     */
     const SETTING_BRIDGE_PRIORITY: string;
 
+    /**
+     * @default bridge
+     */
     const SETTING_BRIDGE_SETTING_NAME: string;
 
+    /**
+     * @default stp
+     */
     const SETTING_BRIDGE_STP: string;
 
+    /**
+     * @default number
+     */
     const SETTING_CDMA_NUMBER: string;
 
+    /**
+     * @default password
+     */
     const SETTING_CDMA_PASSWORD: string;
 
+    /**
+     * @default password-flags
+     */
     const SETTING_CDMA_PASSWORD_FLAGS: string;
 
+    /**
+     * @default cdma
+     */
     const SETTING_CDMA_SETTING_NAME: string;
 
+    /**
+     * @default username
+     */
     const SETTING_CDMA_USERNAME: string;
 
+    /**
+     * @default autoconnect
+     */
     const SETTING_CONNECTION_AUTOCONNECT: string;
 
+    /**
+     * @default gateway-ping-timeout
+     */
     const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string;
 
+    /**
+     * @default id
+     */
     const SETTING_CONNECTION_ID: string;
 
+    /**
+     * @default interface-name
+     */
     const SETTING_CONNECTION_INTERFACE_NAME: string;
 
+    /**
+     * @default master
+     */
     const SETTING_CONNECTION_MASTER: string;
 
+    /**
+     * @default permissions
+     */
     const SETTING_CONNECTION_PERMISSIONS: string;
 
+    /**
+     * @default read-only
+     */
     const SETTING_CONNECTION_READ_ONLY: string;
 
+    /**
+     * @default secondaries
+     */
     const SETTING_CONNECTION_SECONDARIES: string;
 
+    /**
+     * @default connection
+     */
     const SETTING_CONNECTION_SETTING_NAME: string;
 
+    /**
+     * @default slave-type
+     */
     const SETTING_CONNECTION_SLAVE_TYPE: string;
 
+    /**
+     * @default timestamp
+     */
     const SETTING_CONNECTION_TIMESTAMP: string;
 
+    /**
+     * @default type
+     */
     const SETTING_CONNECTION_TYPE: string;
 
+    /**
+     * @default uuid
+     */
     const SETTING_CONNECTION_UUID: string;
 
+    /**
+     * @default zone
+     */
     const SETTING_CONNECTION_ZONE: string;
 
+    /**
+     * @default app-fcoe-flags
+     */
     const SETTING_DCB_APP_FCOE_FLAGS: string;
 
+    /**
+     * @default app-fcoe-mode
+     */
     const SETTING_DCB_APP_FCOE_MODE: string;
 
+    /**
+     * @default app-fcoe-priority
+     */
     const SETTING_DCB_APP_FCOE_PRIORITY: string;
 
+    /**
+     * @default app-fip-flags
+     */
     const SETTING_DCB_APP_FIP_FLAGS: string;
 
+    /**
+     * @default app-fip-priority
+     */
     const SETTING_DCB_APP_FIP_PRIORITY: string;
 
+    /**
+     * @default app-iscsi-flags
+     */
     const SETTING_DCB_APP_ISCSI_FLAGS: string;
 
+    /**
+     * @default app-iscsi-priority
+     */
     const SETTING_DCB_APP_ISCSI_PRIORITY: string;
 
     /**
      * Indicates that the FCoE controller should use "fabric" mode (default)
      * @since 0.9.10
+     * @default fabric
      */
     const SETTING_DCB_FCOE_MODE_FABRIC: string;
 
     /**
      * Indicates that the FCoE controller should use "VN2VN" mode.
      * @since 0.9.10
+     * @default vn2vn
      */
     const SETTING_DCB_FCOE_MODE_VN2VN: string;
 
+    /**
+     * @default priority-bandwidth
+     */
     const SETTING_DCB_PRIORITY_BANDWIDTH: string;
 
+    /**
+     * @default priority-flow-control
+     */
     const SETTING_DCB_PRIORITY_FLOW_CONTROL: string;
 
+    /**
+     * @default priority-flow-control-flags
+     */
     const SETTING_DCB_PRIORITY_FLOW_CONTROL_FLAGS: string;
 
+    /**
+     * @default priority-group-bandwidth
+     */
     const SETTING_DCB_PRIORITY_GROUP_BANDWIDTH: string;
 
+    /**
+     * @default priority-group-flags
+     */
     const SETTING_DCB_PRIORITY_GROUP_FLAGS: string;
 
+    /**
+     * @default priority-group-id
+     */
     const SETTING_DCB_PRIORITY_GROUP_ID: string;
 
+    /**
+     * @default priority-strict-bandwidth
+     */
     const SETTING_DCB_PRIORITY_STRICT_BANDWIDTH: string;
 
+    /**
+     * @default priority-traffic-class
+     */
     const SETTING_DCB_PRIORITY_TRAFFIC_CLASS: string;
 
+    /**
+     * @default dcb
+     */
     const SETTING_DCB_SETTING_NAME: string;
 
+    /**
+     * @default generic
+     */
     const SETTING_GENERIC_SETTING_NAME: string;
 
+    /**
+     * @default allowed-bands
+     */
     const SETTING_GSM_ALLOWED_BANDS: string;
 
+    /**
+     * @default apn
+     */
     const SETTING_GSM_APN: string;
 
     /**
      * #NM_SETTING_GSM_BANDS_MAX macro indicate the maximal value that can be used
      * as the allowed frequency bands ({@link NetworkManager.SettingGsm.allowed_bands} property).
      * @deprecated since 0.9.10: No longer used.
+     * @default 16383
      */
     const SETTING_GSM_BANDS_MAX: number;
 
+    /**
+     * @default home-only
+     */
     const SETTING_GSM_HOME_ONLY: string;
 
+    /**
+     * @default network-id
+     */
     const SETTING_GSM_NETWORK_ID: string;
 
+    /**
+     * @default network-type
+     */
     const SETTING_GSM_NETWORK_TYPE: string;
 
+    /**
+     * @default number
+     */
     const SETTING_GSM_NUMBER: string;
 
+    /**
+     * @default password
+     */
     const SETTING_GSM_PASSWORD: string;
 
+    /**
+     * @default password-flags
+     */
     const SETTING_GSM_PASSWORD_FLAGS: string;
 
+    /**
+     * @default pin
+     */
     const SETTING_GSM_PIN: string;
 
+    /**
+     * @default pin-flags
+     */
     const SETTING_GSM_PIN_FLAGS: string;
 
+    /**
+     * @default gsm
+     */
     const SETTING_GSM_SETTING_NAME: string;
 
+    /**
+     * @default username
+     */
     const SETTING_GSM_USERNAME: string;
 
+    /**
+     * @default mac-address
+     */
     const SETTING_INFINIBAND_MAC_ADDRESS: string;
 
+    /**
+     * @default mtu
+     */
     const SETTING_INFINIBAND_MTU: string;
 
+    /**
+     * @default parent
+     */
     const SETTING_INFINIBAND_PARENT: string;
 
+    /**
+     * @default p-key
+     */
     const SETTING_INFINIBAND_P_KEY: string;
 
+    /**
+     * @default infiniband
+     */
     const SETTING_INFINIBAND_SETTING_NAME: string;
 
+    /**
+     * @default transport-mode
+     */
     const SETTING_INFINIBAND_TRANSPORT_MODE: string;
 
+    /**
+     * @default addresses
+     */
     const SETTING_IP4_CONFIG_ADDRESSES: string;
 
+    /**
+     * @default dhcp-client-id
+     */
     const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string;
 
+    /**
+     * @default dhcp-hostname
+     */
     const SETTING_IP4_CONFIG_DHCP_HOSTNAME: string;
 
+    /**
+     * @default dhcp-send-hostname
+     */
     const SETTING_IP4_CONFIG_DHCP_SEND_HOSTNAME: string;
 
+    /**
+     * @default dhcp-timeout
+     */
     const SETTING_IP4_CONFIG_DHCP_TIMEOUT: string;
 
+    /**
+     * @default dns
+     */
     const SETTING_IP4_CONFIG_DNS: string;
 
+    /**
+     * @default dns-search
+     */
     const SETTING_IP4_CONFIG_DNS_SEARCH: string;
 
+    /**
+     * @default ignore-auto-dns
+     */
     const SETTING_IP4_CONFIG_IGNORE_AUTO_DNS: string;
 
+    /**
+     * @default ignore-auto-routes
+     */
     const SETTING_IP4_CONFIG_IGNORE_AUTO_ROUTES: string;
 
+    /**
+     * @default may-fail
+     */
     const SETTING_IP4_CONFIG_MAY_FAIL: string;
 
+    /**
+     * @default method
+     */
     const SETTING_IP4_CONFIG_METHOD: string;
 
     /**
      * IPv4 configuration should be automatically determined via a method appropriate
      * for the hardware interface, ie DHCP or PPP or some other device-specific
      * manner.
+     * @default auto
      */
     const SETTING_IP4_CONFIG_METHOD_AUTO: string;
 
     /**
      * This connection does not use or require IPv4 address and it should be disabled.
+     * @default disabled
      */
     const SETTING_IP4_CONFIG_METHOD_DISABLED: string;
 
     /**
      * IPv4 configuration should be automatically configured for link-local-only
      * operation.
+     * @default link-local
      */
     const SETTING_IP4_CONFIG_METHOD_LINK_LOCAL: string;
 
     /**
      * All necessary IPv4 configuration (addresses, prefix, DNS, etc) is specified
      * in the setting's properties.
+     * @default manual
      */
     const SETTING_IP4_CONFIG_METHOD_MANUAL: string;
 
@@ -2898,63 +3459,108 @@ export namespace NetworkManager {
      * caching DNS server, and Network Address Translation (NAT) functionality will
      * be started on this connection's interface to allow other devices to connect
      * through that interface to the default network.
+     * @default shared
      */
     const SETTING_IP4_CONFIG_METHOD_SHARED: string;
 
+    /**
+     * @default never-default
+     */
     const SETTING_IP4_CONFIG_NEVER_DEFAULT: string;
 
+    /**
+     * @default routes
+     */
     const SETTING_IP4_CONFIG_ROUTES: string;
 
+    /**
+     * @default route-metric
+     */
     const SETTING_IP4_CONFIG_ROUTE_METRIC: string;
 
+    /**
+     * @default ipv4
+     */
     const SETTING_IP4_CONFIG_SETTING_NAME: string;
 
+    /**
+     * @default addresses
+     */
     const SETTING_IP6_CONFIG_ADDRESSES: string;
 
+    /**
+     * @default dhcp-hostname
+     */
     const SETTING_IP6_CONFIG_DHCP_HOSTNAME: string;
 
+    /**
+     * @default dns
+     */
     const SETTING_IP6_CONFIG_DNS: string;
 
+    /**
+     * @default dns-search
+     */
     const SETTING_IP6_CONFIG_DNS_SEARCH: string;
 
+    /**
+     * @default ignore-auto-dns
+     */
     const SETTING_IP6_CONFIG_IGNORE_AUTO_DNS: string;
 
+    /**
+     * @default ignore-auto-routes
+     */
     const SETTING_IP6_CONFIG_IGNORE_AUTO_ROUTES: string;
 
+    /**
+     * @default ip6-privacy
+     */
     const SETTING_IP6_CONFIG_IP6_PRIVACY: string;
 
+    /**
+     * @default may-fail
+     */
     const SETTING_IP6_CONFIG_MAY_FAIL: string;
 
+    /**
+     * @default method
+     */
     const SETTING_IP6_CONFIG_METHOD: string;
 
     /**
      * IPv6 configuration should be automatically determined via a method appropriate
      * for the hardware interface, ie router advertisements, DHCP, or PPP or some
      * other device-specific manner.
+     * @default auto
      */
     const SETTING_IP6_CONFIG_METHOD_AUTO: string;
 
     /**
      * IPv6 configuration should be automatically determined via DHCPv6 only and
      * router advertisements should be ignored.
+     * @default dhcp
      */
     const SETTING_IP6_CONFIG_METHOD_DHCP: string;
 
     /**
      * IPv6 is not required or is handled by some other mechanism, and NetworkManager
      * should not configure IPv6 for this connection.
+     * @default ignore
      */
     const SETTING_IP6_CONFIG_METHOD_IGNORE: string;
 
     /**
      * IPv6 configuration should be automatically configured for link-local-only
      * operation.
+     * @default link-local
      */
     const SETTING_IP6_CONFIG_METHOD_LINK_LOCAL: string;
 
     /**
      * All necessary IPv6 configuration (addresses, prefix, DNS, etc) is specified
      * in the setting's properties.
+     * @default manual
      */
     const SETTING_IP6_CONFIG_METHOD_MANUAL: string;
 
@@ -2966,179 +3572,433 @@ export namespace NetworkManager {
      * functionality will be started on this connection's interface to allow other
      * devices to connect through that interface to the default network. (not yet
      * supported for IPv6)
+     * @default shared
      */
     const SETTING_IP6_CONFIG_METHOD_SHARED: string;
 
+    /**
+     * @default never-default
+     */
     const SETTING_IP6_CONFIG_NEVER_DEFAULT: string;
 
+    /**
+     * @default routes
+     */
     const SETTING_IP6_CONFIG_ROUTES: string;
 
+    /**
+     * @default route-metric
+     */
     const SETTING_IP6_CONFIG_ROUTE_METRIC: string;
 
+    /**
+     * @default ipv6
+     */
     const SETTING_IP6_CONFIG_SETTING_NAME: string;
 
+    /**
+     * @default name
+     */
     const SETTING_NAME: string;
 
+    /**
+     * @default channel
+     */
     const SETTING_OLPC_MESH_CHANNEL: string;
 
+    /**
+     * @default dhcp-anycast-address
+     */
     const SETTING_OLPC_MESH_DHCP_ANYCAST_ADDRESS: string;
 
+    /**
+     * @default 802-11-olpc-mesh
+     */
     const SETTING_OLPC_MESH_SETTING_NAME: string;
 
+    /**
+     * @default ssid
+     */
     const SETTING_OLPC_MESH_SSID: string;
 
+    /**
+     * @default 8
+     */
     const SETTING_PARAM_FUZZY_IGNORE: number;
 
+    /**
+     * @default 2
+     */
     const SETTING_PARAM_REQUIRED: number;
 
+    /**
+     * @default 4
+     */
     const SETTING_PARAM_SECRET: number;
 
+    /**
+     * @default 1
+     */
     const SETTING_PARAM_SERIALIZE: number;
 
+    /**
+     * @default password
+     */
     const SETTING_PPPOE_PASSWORD: string;
 
+    /**
+     * @default password-flags
+     */
     const SETTING_PPPOE_PASSWORD_FLAGS: string;
 
+    /**
+     * @default service
+     */
     const SETTING_PPPOE_SERVICE: string;
 
+    /**
+     * @default pppoe
+     */
     const SETTING_PPPOE_SETTING_NAME: string;
 
+    /**
+     * @default username
+     */
     const SETTING_PPPOE_USERNAME: string;
 
+    /**
+     * @default baud
+     */
     const SETTING_PPP_BAUD: string;
 
+    /**
+     * @default crtscts
+     */
     const SETTING_PPP_CRTSCTS: string;
 
+    /**
+     * @default lcp-echo-failure
+     */
     const SETTING_PPP_LCP_ECHO_FAILURE: string;
 
+    /**
+     * @default lcp-echo-interval
+     */
     const SETTING_PPP_LCP_ECHO_INTERVAL: string;
 
+    /**
+     * @default mppe-stateful
+     */
     const SETTING_PPP_MPPE_STATEFUL: string;
 
+    /**
+     * @default mru
+     */
     const SETTING_PPP_MRU: string;
 
+    /**
+     * @default mtu
+     */
     const SETTING_PPP_MTU: string;
 
+    /**
+     * @default noauth
+     */
     const SETTING_PPP_NOAUTH: string;
 
+    /**
+     * @default nobsdcomp
+     */
     const SETTING_PPP_NOBSDCOMP: string;
 
+    /**
+     * @default nodeflate
+     */
     const SETTING_PPP_NODEFLATE: string;
 
+    /**
+     * @default no-vj-comp
+     */
     const SETTING_PPP_NO_VJ_COMP: string;
 
+    /**
+     * @default refuse-chap
+     */
     const SETTING_PPP_REFUSE_CHAP: string;
 
+    /**
+     * @default refuse-eap
+     */
     const SETTING_PPP_REFUSE_EAP: string;
 
+    /**
+     * @default refuse-mschap
+     */
     const SETTING_PPP_REFUSE_MSCHAP: string;
 
+    /**
+     * @default refuse-mschapv2
+     */
     const SETTING_PPP_REFUSE_MSCHAPV2: string;
 
+    /**
+     * @default refuse-pap
+     */
     const SETTING_PPP_REFUSE_PAP: string;
 
+    /**
+     * @default require-mppe
+     */
     const SETTING_PPP_REQUIRE_MPPE: string;
 
+    /**
+     * @default require-mppe-128
+     */
     const SETTING_PPP_REQUIRE_MPPE_128: string;
 
+    /**
+     * @default ppp
+     */
     const SETTING_PPP_SETTING_NAME: string;
 
+    /**
+     * @default baud
+     */
     const SETTING_SERIAL_BAUD: string;
 
+    /**
+     * @default bits
+     */
     const SETTING_SERIAL_BITS: string;
 
+    /**
+     * @default parity
+     */
     const SETTING_SERIAL_PARITY: string;
 
+    /**
+     * @default send-delay
+     */
     const SETTING_SERIAL_SEND_DELAY: string;
 
+    /**
+     * @default serial
+     */
     const SETTING_SERIAL_SETTING_NAME: string;
 
+    /**
+     * @default stopbits
+     */
     const SETTING_SERIAL_STOPBITS: string;
 
+    /**
+     * @default config
+     */
     const SETTING_TEAM_CONFIG: string;
 
+    /**
+     * @default interface-name
+     */
     const SETTING_TEAM_INTERFACE_NAME: string;
 
+    /**
+     * @default config
+     */
     const SETTING_TEAM_PORT_CONFIG: string;
 
+    /**
+     * @default team-port
+     */
     const SETTING_TEAM_PORT_SETTING_NAME: string;
 
+    /**
+     * @default team
+     */
     const SETTING_TEAM_SETTING_NAME: string;
 
+    /**
+     * @default egress-priority-map
+     */
     const SETTING_VLAN_EGRESS_PRIORITY_MAP: string;
 
+    /**
+     * @default flags
+     */
     const SETTING_VLAN_FLAGS: string;
 
+    /**
+     * @default id
+     */
     const SETTING_VLAN_ID: string;
 
+    /**
+     * @default ingress-priority-map
+     */
     const SETTING_VLAN_INGRESS_PRIORITY_MAP: string;
 
+    /**
+     * @default interface-name
+     */
     const SETTING_VLAN_INTERFACE_NAME: string;
 
+    /**
+     * @default parent
+     */
     const SETTING_VLAN_PARENT: string;
 
+    /**
+     * @default vlan
+     */
     const SETTING_VLAN_SETTING_NAME: string;
 
+    /**
+     * @default data
+     */
     const SETTING_VPN_DATA: string;
 
+    /**
+     * @default persistent
+     */
     const SETTING_VPN_PERSISTENT: string;
 
+    /**
+     * @default secrets
+     */
     const SETTING_VPN_SECRETS: string;
 
+    /**
+     * @default service-type
+     */
     const SETTING_VPN_SERVICE_TYPE: string;
 
+    /**
+     * @default vpn
+     */
     const SETTING_VPN_SETTING_NAME: string;
 
+    /**
+     * @default user-name
+     */
     const SETTING_VPN_USER_NAME: string;
 
+    /**
+     * @default mac-address
+     */
     const SETTING_WIMAX_MAC_ADDRESS: string;
 
+    /**
+     * @default network-name
+     */
     const SETTING_WIMAX_NETWORK_NAME: string;
 
+    /**
+     * @default wimax
+     */
     const SETTING_WIMAX_SETTING_NAME: string;
 
+    /**
+     * @default auto-negotiate
+     */
     const SETTING_WIRED_AUTO_NEGOTIATE: string;
 
+    /**
+     * @default cloned-mac-address
+     */
     const SETTING_WIRED_CLONED_MAC_ADDRESS: string;
 
+    /**
+     * @default duplex
+     */
     const SETTING_WIRED_DUPLEX: string;
 
+    /**
+     * @default mac-address
+     */
     const SETTING_WIRED_MAC_ADDRESS: string;
 
+    /**
+     * @default mac-address-blacklist
+     */
     const SETTING_WIRED_MAC_ADDRESS_BLACKLIST: string;
 
+    /**
+     * @default mtu
+     */
     const SETTING_WIRED_MTU: string;
 
+    /**
+     * @default port
+     */
     const SETTING_WIRED_PORT: string;
 
+    /**
+     * @default s390-nettype
+     */
     const SETTING_WIRED_S390_NETTYPE: string;
 
+    /**
+     * @default s390-options
+     */
     const SETTING_WIRED_S390_OPTIONS: string;
 
+    /**
+     * @default s390-subchannels
+     */
     const SETTING_WIRED_S390_SUBCHANNELS: string;
 
+    /**
+     * @default 802-3-ethernet
+     */
     const SETTING_WIRED_SETTING_NAME: string;
 
+    /**
+     * @default speed
+     */
     const SETTING_WIRED_SPEED: string;
 
+    /**
+     * @default band
+     */
     const SETTING_WIRELESS_BAND: string;
 
+    /**
+     * @default bssid
+     */
     const SETTING_WIRELESS_BSSID: string;
 
+    /**
+     * @default channel
+     */
     const SETTING_WIRELESS_CHANNEL: string;
 
+    /**
+     * @default cloned-mac-address
+     */
     const SETTING_WIRELESS_CLONED_MAC_ADDRESS: string;
 
+    /**
+     * @default hidden
+     */
     const SETTING_WIRELESS_HIDDEN: string;
 
+    /**
+     * @default mac-address
+     */
     const SETTING_WIRELESS_MAC_ADDRESS: string;
 
+    /**
+     * @default mac-address-blacklist
+     */
     const SETTING_WIRELESS_MAC_ADDRESS_BLACKLIST: string;
 
+    /**
+     * @default mode
+     */
     const SETTING_WIRELESS_MODE: string;
 
     /**
      * Indicates Ad-Hoc mode where no access point is expected to be present.
+     * @default adhoc
      */
     const SETTING_WIRELESS_MODE_ADHOC: string;
 
@@ -3146,133 +4006,307 @@ export namespace NetworkManager {
      * Indicates AP/master mode where the wireless device is started as an access
      * point/hotspot.
      * @since 0.9.8
+     * @default ap
      */
     const SETTING_WIRELESS_MODE_AP: string;
 
     /**
      * Indicates infrastructure mode where an access point is expected to be present
      * for this connection.
+     * @default infrastructure
      */
     const SETTING_WIRELESS_MODE_INFRA: string;
 
+    /**
+     * @default mtu
+     */
     const SETTING_WIRELESS_MTU: string;
 
+    /**
+     * @default powersave
+     */
     const SETTING_WIRELESS_POWERSAVE: string;
 
+    /**
+     * @default rate
+     */
     const SETTING_WIRELESS_RATE: string;
 
+    /**
+     * @default security
+     */
     const SETTING_WIRELESS_SEC: string;
 
+    /**
+     * @default auth-alg
+     */
     const SETTING_WIRELESS_SECURITY_AUTH_ALG: string;
 
+    /**
+     * @default group
+     */
     const SETTING_WIRELESS_SECURITY_GROUP: string;
 
+    /**
+     * @default key-mgmt
+     */
     const SETTING_WIRELESS_SECURITY_KEY_MGMT: string;
 
+    /**
+     * @default leap-password
+     */
     const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD: string;
 
+    /**
+     * @default leap-password-flags
+     */
     const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD_FLAGS: string;
 
+    /**
+     * @default leap-username
+     */
     const SETTING_WIRELESS_SECURITY_LEAP_USERNAME: string;
 
+    /**
+     * @default pairwise
+     */
     const SETTING_WIRELESS_SECURITY_PAIRWISE: string;
 
+    /**
+     * @default proto
+     */
     const SETTING_WIRELESS_SECURITY_PROTO: string;
 
+    /**
+     * @default psk
+     */
     const SETTING_WIRELESS_SECURITY_PSK: string;
 
+    /**
+     * @default psk-flags
+     */
     const SETTING_WIRELESS_SECURITY_PSK_FLAGS: string;
 
+    /**
+     * @default 802-11-wireless-security
+     */
     const SETTING_WIRELESS_SECURITY_SETTING_NAME: string;
 
+    /**
+     * @default wep-key0
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY0: string;
 
+    /**
+     * @default wep-key1
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY1: string;
 
+    /**
+     * @default wep-key2
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY2: string;
 
+    /**
+     * @default wep-key3
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY3: string;
 
+    /**
+     * @default wep-key-flags
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY_FLAGS: string;
 
+    /**
+     * @default wep-key-type
+     */
     const SETTING_WIRELESS_SECURITY_WEP_KEY_TYPE: string;
 
+    /**
+     * @default wep-tx-keyidx
+     */
     const SETTING_WIRELESS_SECURITY_WEP_TX_KEYIDX: string;
 
+    /**
+     * @default seen-bssids
+     */
     const SETTING_WIRELESS_SEEN_BSSIDS: string;
 
+    /**
+     * @default 802-11-wireless
+     */
     const SETTING_WIRELESS_SETTING_NAME: string;
 
+    /**
+     * @default ssid
+     */
     const SETTING_WIRELESS_SSID: string;
 
+    /**
+     * @default tx-power
+     */
     const SETTING_WIRELESS_TX_POWER: string;
 
     /**
      * The maximum length of hardware addresses handled by NetworkManager itself,
      * `nm_utils_hwaddr_len()`, and `nm_utils_hwaddr_aton()`.
+     * @default 20
      */
     const UTILS_HWADDR_LEN_MAX: number;
 
+    /**
+     * @default 15
+     */
     const VLAN_FLAGS_ALL: number;
 
+    /**
+     * @default org.freedesktop.NetworkManager.VPN.Plugin
+     */
     const VPN_DBUS_PLUGIN_INTERFACE: string;
 
+    /**
+     * @default /org/freedesktop/NetworkManager/VPN/Plugin
+     */
     const VPN_DBUS_PLUGIN_PATH: string;
 
+    /**
+     * @default can-persist
+     */
     const VPN_PLUGIN_CAN_PERSIST: string;
 
+    /**
+     * @default banner
+     */
     const VPN_PLUGIN_CONFIG_BANNER: string;
 
+    /**
+     * @default gateway
+     */
     const VPN_PLUGIN_CONFIG_EXT_GATEWAY: string;
 
+    /**
+     * @default has-ip4
+     */
     const VPN_PLUGIN_CONFIG_HAS_IP4: string;
 
+    /**
+     * @default has-ip6
+     */
     const VPN_PLUGIN_CONFIG_HAS_IP6: string;
 
+    /**
+     * @default mtu
+     */
     const VPN_PLUGIN_CONFIG_MTU: string;
 
+    /**
+     * @default tundev
+     */
     const VPN_PLUGIN_CONFIG_TUNDEV: string;
 
+    /**
+     * @default address
+     */
     const VPN_PLUGIN_IP4_CONFIG_ADDRESS: string;
 
+    /**
+     * @default dns
+     */
     const VPN_PLUGIN_IP4_CONFIG_DNS: string;
 
+    /**
+     * @default domain
+     */
     const VPN_PLUGIN_IP4_CONFIG_DOMAIN: string;
 
+    /**
+     * @default domains
+     */
     const VPN_PLUGIN_IP4_CONFIG_DOMAINS: string;
 
+    /**
+     * @default internal-gateway
+     */
     const VPN_PLUGIN_IP4_CONFIG_INT_GATEWAY: string;
 
+    /**
+     * @default mss
+     */
     const VPN_PLUGIN_IP4_CONFIG_MSS: string;
 
+    /**
+     * @default nbns
+     */
     const VPN_PLUGIN_IP4_CONFIG_NBNS: string;
 
+    /**
+     * @default never-default
+     */
     const VPN_PLUGIN_IP4_CONFIG_NEVER_DEFAULT: string;
 
+    /**
+     * @default prefix
+     */
     const VPN_PLUGIN_IP4_CONFIG_PREFIX: string;
 
+    /**
+     * @default ptp
+     */
     const VPN_PLUGIN_IP4_CONFIG_PTP: string;
 
+    /**
+     * @default routes
+     */
     const VPN_PLUGIN_IP4_CONFIG_ROUTES: string;
 
+    /**
+     * @default address
+     */
     const VPN_PLUGIN_IP6_CONFIG_ADDRESS: string;
 
+    /**
+     * @default dns
+     */
     const VPN_PLUGIN_IP6_CONFIG_DNS: string;
 
+    /**
+     * @default domain
+     */
     const VPN_PLUGIN_IP6_CONFIG_DOMAIN: string;
 
+    /**
+     * @default domains
+     */
     const VPN_PLUGIN_IP6_CONFIG_DOMAINS: string;
 
+    /**
+     * @default internal-gateway
+     */
     const VPN_PLUGIN_IP6_CONFIG_INT_GATEWAY: string;
 
+    /**
+     * @default mss
+     */
     const VPN_PLUGIN_IP6_CONFIG_MSS: string;
 
+    /**
+     * @default never-default
+     */
     const VPN_PLUGIN_IP6_CONFIG_NEVER_DEFAULT: string;
 
+    /**
+     * @default prefix
+     */
     const VPN_PLUGIN_IP6_CONFIG_PREFIX: string;
 
+    /**
+     * @default ptp
+     */
     const VPN_PLUGIN_IP6_CONFIG_PTP: string;
 
+    /**
+     * @default routes
+     */
     const VPN_PLUGIN_IP6_CONFIG_ROUTES: string;
 
     /**
@@ -3524,6 +4558,7 @@ export namespace NetworkManager {
      * @param file_test_flags the flags passed to `g_file_test()` when searching   for `progname`. Set it to 0 to skip the `g_file_test()`.
      * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
      * @returns the full path to the helper, if found, or `null` if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
+     * @throws GLib.Error
      */
     function utils_file_search_in_paths(progname: string, try_first: string | null, paths: string | null, file_test_flags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string;
 
@@ -3643,6 +4678,7 @@ export namespace NetworkManager {
      * Initializes libnm-util; should be called when starting any program that
      * uses libnm-util.  This function can be called more than once.
      * @returns `true` if the initialization was successful, `false` on failure.
+     * @throws GLib.Error
      */
     function utils_init(): boolean;
 
@@ -3781,6 +4817,7 @@ export namespace NetworkManager {
      * @param data RSA private key data to be encrypted
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
+     * @throws GLib.Error
      */
     function utils_rsa_key_encrypt(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
 
@@ -3791,6 +4828,7 @@ export namespace NetworkManager {
      * @param data RSA private key data to be encrypted
      * @param in_password existing password to use, if any
      * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
+     * @throws GLib.Error
      */
     function utils_rsa_key_encrypt_aes(data: Uint8Array | string, in_password: string | null): [Uint8Array, string];
 
@@ -3951,12 +4989,12 @@ export namespace NetworkManager {
         /**
          * access point has no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * access point requires authentication and
          * encryption (usually means WEP)
          */
-        PRIVACY,
+        PRIVACY = 1,
     }
 
 
@@ -3970,54 +5008,54 @@ export namespace NetworkManager {
         /**
          * the access point has no special security requirements
          */
-        NONE,
+        NONE = 0,
         /**
          * 40/64-bit WEP is supported for
          * pairwise/unicast encryption
          */
-        PAIR_WEP40,
+        PAIR_WEP40 = 1,
         /**
          * 104/128-bit WEP is supported for
          * pairwise/unicast encryption
          */
-        PAIR_WEP104,
+        PAIR_WEP104 = 2,
         /**
          * TKIP is supported for pairwise/unicast encryption
          */
-        PAIR_TKIP,
+        PAIR_TKIP = 4,
         /**
          * AES/CCMP is supported for pairwise/unicast encryption
          */
-        PAIR_CCMP,
+        PAIR_CCMP = 8,
         /**
          * 40/64-bit WEP is supported for group/broadcast
          * encryption
          */
-        GROUP_WEP40,
+        GROUP_WEP40 = 16,
         /**
          * 104/128-bit WEP is supported for
          * group/broadcast encryption
          */
-        GROUP_WEP104,
+        GROUP_WEP104 = 32,
         /**
          * TKIP is supported for group/broadcast encryption
          */
-        GROUP_TKIP,
+        GROUP_TKIP = 64,
         /**
          * AES/CCMP is supported for group/broadcast
          * encryption
          */
-        GROUP_CCMP,
+        GROUP_CCMP = 128,
         /**
          * WPA/RSN Pre-Shared Key encryption is
          * supported
          */
-        KEY_MGMT_PSK,
+        KEY_MGMT_PSK = 256,
         /**
          * 802.1x authentication and key management
          * is supported
          */
-        KEY_MGMT_802_1X,
+        KEY_MGMT_802_1X = 512,
     }
 
 
@@ -4030,15 +5068,15 @@ export namespace NetworkManager {
         /**
          * device has no usable capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * device provides Dial-Up Networking capability
          */
-        DUN,
+        DUN = 1,
         /**
          * device provides Network Access Point capability
          */
-        NAP,
+        NAP = 2,
     }
 
 
@@ -4050,19 +5088,19 @@ export namespace NetworkManager {
         /**
          * device has no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * NetworkManager supports this device
          */
-        NM_SUPPORTED,
+        NM_SUPPORTED = 1,
         /**
          * this device can indicate carrier status
          */
-        CARRIER_DETECT,
+        CARRIER_DETECT = 2,
         /**
          * this device is a software device
          */
-        IS_SOFTWARE,
+        IS_SOFTWARE = 4,
     }
 
 
@@ -4077,26 +5115,26 @@ export namespace NetworkManager {
         /**
          * modem has no usable capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * modem uses the analog wired telephone
          * network and is not a wireless/cellular device
          */
-        POTS,
+        POTS = 1,
         /**
          * modem supports at least one of CDMA
          * 1xRTT, EVDO revision 0, EVDO revision A, or EVDO revision B
          */
-        CDMA_EVDO,
+        CDMA_EVDO = 2,
         /**
          * modem supports at least one of GSM,
          * GPRS, EDGE, UMTS, HSDPA, HSUPA, or HSPA+ packet switched data capability
          */
-        GSM_UMTS,
+        GSM_UMTS = 4,
         /**
          * modem has LTE data capability
          */
-        LTE,
+        LTE = 8,
     }
 
 
@@ -4108,51 +5146,51 @@ export namespace NetworkManager {
         /**
          * device has no encryption/authentication capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * device supports 40/64-bit WEP encryption
          */
-        CIPHER_WEP40,
+        CIPHER_WEP40 = 1,
         /**
          * device supports 104/128-bit WEP encryption
          */
-        CIPHER_WEP104,
+        CIPHER_WEP104 = 2,
         /**
          * device supports TKIP encryption
          */
-        CIPHER_TKIP,
+        CIPHER_TKIP = 4,
         /**
          * device supports AES/CCMP encryption
          */
-        CIPHER_CCMP,
+        CIPHER_CCMP = 8,
         /**
          * device supports WPA1 authentication
          */
-        WPA,
+        WPA = 16,
         /**
          * device supports WPA2/RSN authentication
          */
-        RSN,
+        RSN = 32,
         /**
          * device supports Access Point mode
          */
-        AP,
+        AP = 64,
         /**
          * device supports Ad-Hoc mode
          */
-        ADHOC,
+        ADHOC = 128,
         /**
          * device reports frequency capabilities
          */
-        FREQ_VALID,
+        FREQ_VALID = 256,
         /**
          * device supports 2.4GHz frequencies
          */
-        FREQ_2GHZ,
+        FREQ_2GHZ = 512,
         /**
          * device supports 5GHz frequencies
          */
-        FREQ_5GHZ,
+        FREQ_5GHZ = 1024,
     }
 
 
@@ -4181,7 +5219,7 @@ export namespace NetworkManager {
              * @signal
              * @run-first
              */
-            "secrets-updated": (arg0: string) => void;
+            "secrets-updated": (setting_name: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -4592,6 +5630,7 @@ export namespace NetworkManager {
          * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
          * @returns `true` if the connection is valid, `false` if it is not
          * @since 1.0
+         * @throws GLib.Error
          */
         normalize(parameters: { [key: string]: never } | null): [boolean, boolean];
 
@@ -4605,6 +5644,7 @@ export namespace NetworkManager {
         /**
          * @param new_settings a {@link GLib.HashTable} of settings
          * @returns `true` if the settings were valid and added to the connection, `false` if they were not
+         * @throws GLib.Error
          */
         replace_settings(new_settings: { [key: string]: GLib.HashTable }): boolean;
 
@@ -4614,6 +5654,7 @@ export namespace NetworkManager {
          * @param new_connection a {@link NetworkManager.Connection} to replace the settings of `connection` with
          * @returns `true` if the settings were valid after replacing the connection, `false` if they were not. Regardless of whether `true` or `false` is returned, the connection is successfully replaced. `false` only means, that the connection does not verify at the end of the operation.
          * @since 0.9.10
+         * @throws GLib.Error
          */
         replace_settings_from_connection(new_connection: Connection): boolean;
 
@@ -4647,6 +5688,7 @@ export namespace NetworkManager {
          * @param setting_name the setting object name to which the secrets apply
          * @param secrets a {@link GLib.HashTable} mapping string:{@link GObject.Value} of setting property names and secrets of the given `setting_name`
          * @returns `true` if the secrets were successfully updated, `false` if the update failed (tried to update secrets for a setting that doesn't exist, etc)
+         * @throws GLib.Error
          */
         update_secrets(setting_name: string, secrets: { [key: string]: GObject.Value }): boolean;
 
@@ -4661,6 +5703,7 @@ export namespace NetworkManager {
          * MAC address.  The returned {@link GLib.Error} contains information about which
          * setting and which property failed validation, and how it failed validation.
          * @returns `true` if the connection is valid, `false` if it is not
+         * @throws GLib.Error
          */
         verify(): boolean;
     }
@@ -4835,6 +5878,7 @@ export namespace NetworkManager {
          * @param secret_name the secret key name to get flags for
          * @param out_flags on success, the {@link NetworkManager.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
+         * @throws GLib.Error
          */
         get_secret_flags(secret_name: string, out_flags: SettingSecretFlags): boolean;
 
@@ -4860,6 +5904,7 @@ export namespace NetworkManager {
          * @param secret_name the secret key name to set flags for
          * @param flags the {@link NetworkManager.SettingSecretFlags} for the secret
          * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
+         * @throws GLib.Error
          */
         set_secret_flags(secret_name: string, flags: SettingSecretFlags): boolean;
 
@@ -4885,6 +5930,7 @@ export namespace NetworkManager {
          * setting (deserialized from D-Bus for example).
          * @param secrets a {@link GLib.HashTable} mapping string to {@link GObject.Value} of setting property names and secrets
          * @returns `true` if the secrets were successfully updated, `false` on failure to update one or more of the secrets.
+         * @throws GLib.Error
          */
         update_secrets(secrets: { [key: string]: GObject.Value }): boolean;
 
@@ -4895,6 +5941,7 @@ export namespace NetworkManager {
          * failed validation, and in what way that property failed validation.
          * @param all_settings a {@link GLib.SList} of all settings     in the connection from which `setting` came
          * @returns `true` if the setting is valid, `false` if it is not
+         * @throws GLib.Error
          */
         verify(all_settings: Setting[]): boolean;
     }
@@ -5819,6 +6866,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
 
@@ -5835,6 +6883,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
 
@@ -5847,6 +6896,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_phase2_ca_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
 
@@ -5863,6 +6913,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_phase2_client_cert(cert_path: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
 
@@ -5893,6 +6944,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the private key
          * @param out_format on successful return, the type of the private key added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_phase2_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
 
@@ -5923,6 +6975,7 @@ export namespace NetworkManager {
          * @param scheme desired storage scheme for the private key
          * @param out_format on successful return, the type of the private key added
          * @returns `true` if the operation succeeded, `false` if it was unsuccessful
+         * @throws GLib.Error
          */
         set_private_key(key_path: string, password: string, scheme: Setting8021xCKScheme, out_format: Setting8021xCKFormat): boolean;
     }

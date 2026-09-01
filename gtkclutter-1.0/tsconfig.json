@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./gtkclutter-1.0.d.ts","./gtkclutter-1.0-surface.d.ts"]
+  "include": ["./gtkclutter-1.0.d.ts","./gtkclutter-1.0-vocabulary.d.ts"]
 }
 
 

@@ -47,7 +47,7 @@ export namespace GtkClutter {
         /**
          * Invalid stock id
          */
-        TEXTURE_ERROR_INVALID_STOCK_ID,
+        TEXTURE_ERROR_INVALID_STOCK_ID = 0,
     }
 
 
@@ -67,6 +67,7 @@ export namespace GtkClutter {
      * @param entries a    `null`-terminated array of {@link GLib.OptionEntry}<!-- -->s describing the    options of your program
      * @param translation_domain a translation domain to use for    translating the <option>--help</option> output for the options    in `entries` with `gettext()`, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
+     * @throws GLib.Error
      */
     function init_with_args(argv: string[] | null, parameter_string: string | null, entries: GLib.OptionEntry[] | null, translation_domain: string | null): [Clutter.InitError, string[] | null];
 
@@ -1090,6 +1091,7 @@ export namespace GtkClutter {
          * @param icon_size the icon size or -1
          * @returns `true` on success, `false` on failure
          * @since 1.0
+         * @throws GLib.Error
          */
         set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize): boolean;
 
@@ -1097,6 +1099,7 @@ export namespace GtkClutter {
          * Sets the contents of `texture` with a copy of `pixbuf`.
          * @param pixbuf a {@link GdkPixbuf.Pixbuf}
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         set_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): boolean;
 
@@ -1107,6 +1110,7 @@ export namespace GtkClutter {
          * @param stock_id the stock id of the icon
          * @param icon_size the size of the icon, or -1
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize): boolean;
     }

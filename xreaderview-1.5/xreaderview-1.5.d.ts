@@ -44,11 +44,11 @@ export namespace XreaderView {
      * @gir-type Enum
      */
     enum JobPriority {
-        PRIORITY_URGENT,
-        PRIORITY_HIGH,
-        PRIORITY_LOW,
-        PRIORITY_NONE,
-        N_PRIORITIES,
+        PRIORITY_URGENT = 0,
+        PRIORITY_HIGH = 1,
+        PRIORITY_LOW = 2,
+        PRIORITY_NONE = 3,
+        N_PRIORITIES = 4,
     }
 
 
@@ -63,8 +63,8 @@ export namespace XreaderView {
      * @gir-type Enum
      */
     enum JobRunMode {
-        THREAD,
-        MAIN_LOOP,
+        THREAD = 0,
+        MAIN_LOOP = 1,
     }
 
 
@@ -79,9 +79,9 @@ export namespace XreaderView {
      * @gir-type Enum
      */
     enum SizingMode {
-        BEST_FIT,
-        FIT_WIDTH,
-        FREE,
+        BEST_FIT = 0,
+        FIT_WIDTH = 1,
+        FREE = 2,
     }
 
 
@@ -96,37 +96,79 @@ export namespace XreaderView {
      * @gir-type Enum
      */
     enum ViewSelectionMode {
-        TEXT,
-        RECTANGLE,
+        TEXT = 0,
+        RECTANGLE = 1,
     }
 
 
+    /**
+     * @default mail-attachment
+     */
     const STOCK_ATTACHMENT: string;
 
+    /**
+     * @default close
+     */
     const STOCK_CLOSE: string;
 
+    /**
+     * @default inverted
+     */
     const STOCK_INVERTED_COLORS: string;
 
+    /**
+     * @default resize-se
+     */
     const STOCK_RESIZE_SE: string;
 
+    /**
+     * @default resize-sw
+     */
     const STOCK_RESIZE_SW: string;
 
+    /**
+     * @default object-rotate-left
+     */
     const STOCK_ROTATE_LEFT: string;
 
+    /**
+     * @default object-rotate-right
+     */
     const STOCK_ROTATE_RIGHT: string;
 
+    /**
+     * @default x-office-presentation
+     */
     const STOCK_RUN_PRESENTATION: string;
 
+    /**
+     * @default view-page-continuous
+     */
     const STOCK_VIEW_CONTINUOUS: string;
 
+    /**
+     * @default view-page-facing
+     */
     const STOCK_VIEW_DUAL: string;
 
+    /**
+     * @default eye
+     */
     const STOCK_VISIBLE: string;
 
+    /**
+     * @default zoom
+     */
     const STOCK_ZOOM: string;
 
+    /**
+     * @default zoom-fit-height
+     */
     const STOCK_ZOOM_PAGE: string;
 
+    /**
+     * @default zoom-fit-width
+     */
     const STOCK_ZOOM_WIDTH: string;
 
     /**
@@ -152,15 +194,15 @@ export namespace XreaderView {
      * @gir-type Flags
      */
     enum JobPageDataFlags {
-        NONE,
-        LINKS,
-        TEXT,
-        TEXT_MAPPING,
-        TEXT_LAYOUT,
-        IMAGES,
-        FORMS,
-        ANNOTS,
-        ALL,
+        NONE = 0,
+        LINKS = 1,
+        TEXT = 2,
+        TEXT_MAPPING = 4,
+        TEXT_LAYOUT = 8,
+        IMAGES = 16,
+        FORMS = 32,
+        ANNOTS = 64,
+        ALL = 127,
     }
 
 
@@ -171,7 +213,7 @@ export namespace XreaderView {
              * @signal
              * @run-last
              */
-            "page-changed": (arg0: number, arg1: number) => void;
+            "page-changed": (object: number, p0: number) => void;
             "notify::continuous": (pspec: GObject.ParamSpec) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
             "notify::dual-odd-left": (pspec: GObject.ParamSpec) => void;
@@ -712,7 +754,7 @@ export namespace XreaderView {
              * @signal
              * @run-last
              */
-            updated: (arg0: number) => void;
+            updated: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -799,7 +841,7 @@ export namespace XreaderView {
              * @signal
              * @run-last
              */
-            updated: (arg0: number) => void;
+            updated: (object: number) => void;
         }
 
         // Constructor properties interface
@@ -1318,7 +1360,7 @@ export namespace XreaderView {
              * @signal
              * @run-last
              */
-            done: (arg0: Gtk.PrintOperationResult) => void;
+            done: (object: Gtk.PrintOperationResult) => void;
             /**
              * @signal
              * @run-last
@@ -1385,6 +1427,9 @@ export namespace XreaderView {
 
         get_embed_page_setup(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         get_error(): void;
 
         get_job_name(): string;
@@ -1439,31 +1484,31 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            "annot-added": (arg0: XreaderDocument.Annotation) => void;
+            "annot-added": (object: XreaderDocument.Annotation) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "annot-removed": (arg0: XreaderDocument.Annotation) => void;
+            "annot-removed": (object: XreaderDocument.Annotation) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "binding-activated": (arg0: Gtk.ScrollType, arg1: boolean) => void;
+            "binding-activated": (object: Gtk.ScrollType, p0: boolean) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "external-link": (arg0: GObject.Object) => void;
+            "external-link": (object: GObject.Object) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "handle-link": (arg0: GObject.Object) => void;
+            "handle-link": (object: GObject.Object) => void;
             /**
              * @signal
              * @action
@@ -1475,7 +1520,7 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            popup: (arg0: null) => void;
+            popup: (object: null) => void;
             /**
              * @signal
              * @action
@@ -1487,7 +1532,7 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            "sync-source": (arg0: null) => void;
+            "sync-source": (object: null) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
@@ -1839,13 +1884,13 @@ export namespace XreaderView {
              * @action
              * @run-last
              */
-            "change-page": (arg0: Gtk.ScrollType) => void;
+            "change-page": (object: Gtk.ScrollType) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "external-link": (arg0: GObject.Object) => void;
+            "external-link": (object: GObject.Object) => void;
             /**
              * @signal
              * @action

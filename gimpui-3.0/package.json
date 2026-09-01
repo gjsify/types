@@ -1,6 +1,6 @@
 {
     "name": "@girs/gimpui-3.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for GimpUi-3.0",
     "type": "module",
     "module": "gimpui-3.0.js",
@@ -16,10 +16,10 @@
         "import": "./gimpui-3.0-import.js",
         "default": "./gimpui-3.0-import.js"
       },
-      "./surface": {
-        "types": "./gimpui-3.0-surface.d.ts",
-        "import": "./gimpui-3.0-surface.js",
-        "default": "./gimpui-3.0-surface.js"
+      "./vocabulary": {
+        "types": "./gimpui-3.0-vocabulary.d.ts",
+        "import": "./gimpui-3.0-vocabulary.js",
+        "default": "./gimpui-3.0-vocabulary.js"
       },
       "./gimpui-3.0": {
         "types": "./gimpui-3.0.d.ts",
@@ -36,26 +36,26 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/cairo-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/pango-1.0": "^4.4.0",
-      "@girs/harfbuzz-0.0": "^4.4.0",
-      "@girs/freetype2-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gtk-3.0": "^4.4.0",
-      "@girs/xlib-2.0": "^4.4.0",
-      "@girs/gdk-3.0": "^4.4.0",
-      "@girs/gdkpixbuf-2.0": "^4.4.0",
-      "@girs/atk-1.0": "^4.4.0",
-      "@girs/giounix-2.0": "^4.4.0",
-      "@girs/gimp-3.0": "^4.4.0",
-      "@girs/gegl-0.4": "^4.4.0",
-      "@girs/babl-0.1": "^4.4.0",
-      "@girs/glibunix-2.0": "^4.4.0",
-      "@girs/gexiv2-0.10": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/cairo-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/pango-1.0": "^4.5.0",
+      "@girs/harfbuzz-0.0": "^4.5.0",
+      "@girs/freetype2-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gtk-3.0": "^4.5.0",
+      "@girs/xlib-2.0": "^4.5.0",
+      "@girs/gdk-3.0": "^4.5.0",
+      "@girs/gdkpixbuf-2.0": "^4.5.0",
+      "@girs/atk-1.0": "^4.5.0",
+      "@girs/giounix-2.0": "^4.5.0",
+      "@girs/gimp-3.0": "^4.5.0",
+      "@girs/gegl-0.4": "^4.5.0",
+      "@girs/babl-0.1": "^4.5.0",
+      "@girs/glibunix-2.0": "^4.5.0",
+      "@girs/gexiv2-0.10": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

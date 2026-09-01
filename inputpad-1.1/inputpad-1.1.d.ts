@@ -36,11 +36,11 @@ export namespace InputPad {
      * @gir-type Enum
      */
     enum TableType {
-        NONE,
-        CHARS,
-        KEYSYMS,
-        STRINGS,
-        COMMANDS,
+        NONE = 0,
+        CHARS = 1,
+        KEYSYMS = 2,
+        STRINGS = 3,
+        COMMANDS = 4,
     }
 
 
@@ -48,8 +48,8 @@ export namespace InputPad {
      * @gir-type Enum
      */
     enum WindowShowLayoutType {
-        NOTHING,
-        DEFAULT,
+        NOTHING = 0,
+        DEFAULT = 1,
     }
 
 
@@ -57,9 +57,9 @@ export namespace InputPad {
      * @gir-type Enum
      */
     enum WindowShowTableType {
-        NOTHING,
-        CUSTOM,
-        ALL,
+        NOTHING = 0,
+        CUSTOM = 1,
+        ALL = 2,
     }
 
 
@@ -67,14 +67,23 @@ export namespace InputPad {
      * @gir-type Enum
      */
     enum WindowType {
-        WINDOW_TYPE_GTK,
+        WINDOW_TYPE_GTK = 0,
     }
 
 
+    /**
+     * @default 15
+     */
     const MAX_COLUMN: number;
 
+    /**
+     * @default 66
+     */
     const MAX_ROW: number;
 
+    /**
+     * @default 8
+     */
     const MAX_WINDOW_ROW: number;
 
     /**
@@ -1307,12 +1316,12 @@ export namespace InputPad {
              * @signal
              * @run-last
              */
-            "create-keyboard-layout": (arg0: Gtk.Widget, arg1: GtkWindow) => void;
+            "create-keyboard-layout": (object: Gtk.Widget, p0: GtkWindow) => void;
             /**
              * @signal
              * @run-last
              */
-            "destroy-keyboard-layout": (arg0: Gtk.Widget, arg1: GtkWindow) => void;
+            "destroy-keyboard-layout": (object: Gtk.Widget, p0: GtkWindow) => void;
         }
 
         // Constructor properties interface
@@ -1619,27 +1628,27 @@ export namespace InputPad {
              * @signal
              * @run-last
              */
-            "button-pressed": (arg0: string, arg1: number, arg2: number, arg3: number, arg4: number) => boolean | void;
+            "button-pressed": (object: string, p0: number, p1: number, p2: number, p3: number) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "char-button-sensitive": (arg0: boolean) => void;
+            "char-button-sensitive": (object: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "group-appended": (arg0: string, arg1: string) => void;
+            "group-appended": (object: string, p0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "group-changed": (arg0: string, arg1: string) => void;
+            "group-changed": (object: string, p0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "keyboard-changed": (arg0: number) => void;
+            "keyboard-changed": (object: number) => void;
             /**
              * @signal
              * @run-last

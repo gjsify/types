@@ -81,6 +81,7 @@ export namespace LibvirtGLib {
      * operation.
      * @param argv Address of the     <parameter>argv</parameter> parameter of `main()`, or `null`. Any options     understood by GTK+ are stripped before return.
      * @returns `true` if the library was successfully initialized,     `false` otherwise
+     * @throws GLib.Error
      */
     function init_check(argv: string[] | null): [boolean, string[] | null];
 

@@ -177,11 +177,13 @@ export namespace UMockdev {
 
         /**
          * @param data 
+         * @throws GLib.Error
          */
         add_from_string(data: string): boolean;
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         add_from_file(path: string): boolean;
 
@@ -194,40 +196,47 @@ export namespace UMockdev {
         /**
          * @param dev 
          * @param handler 
+         * @throws GLib.Error
          */
         attach_ioctl(dev: string, handler: IoctlBase): boolean;
 
         /**
          * @param dev 
+         * @throws GLib.Error
          */
         detach_ioctl(dev: string): boolean;
 
         /**
          * @param dev 
          * @param recordfile 
+         * @throws GLib.Error
          */
         load_ioctl(dev: string | null, recordfile: string): boolean;
 
         /**
          * @param sysfs 
          * @param recordfile 
+         * @throws GLib.Error
          */
         load_pcap(sysfs: string, recordfile: string): boolean;
 
         /**
          * @param dev 
          * @param recordfile 
+         * @throws GLib.Error
          */
         load_script(dev: string | null, recordfile: string): boolean;
 
         /**
          * @param dev 
          * @param script 
+         * @throws GLib.Error
          */
         load_script_from_string(dev: string | null, script: string): boolean;
 
         /**
          * @param dev 
+         * @throws GLib.Error
          */
         wait_script(dev: string): boolean;
 
@@ -235,18 +244,21 @@ export namespace UMockdev {
          * @param path 
          * @param type 
          * @param recordfile 
+         * @throws GLib.Error
          */
         load_socket_script(path: string, type: number, recordfile: string): boolean;
 
         /**
          * @param dev 
          * @param eventsfile 
+         * @throws GLib.Error
          */
         load_evemu_events(dev: string | null, eventsfile: string): boolean;
 
         /**
          * @param dev 
          * @param events 
+         * @throws GLib.Error
          */
         load_evemu_events_from_string(dev: string | null, events: string): boolean;
 
@@ -319,6 +331,7 @@ export namespace UMockdev {
         /**
          * @param offset 
          * @param len 
+         * @throws GLib.Error
          */
         resolve(offset: bigint | number, len: bigint | number): IoctlData | null;
 
@@ -328,6 +341,9 @@ export namespace UMockdev {
          */
         set_ptr(offset: bigint | number, child: IoctlData): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         reload(): boolean;
 
         /**
@@ -421,6 +437,9 @@ export namespace UMockdev {
 
         get_connected(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         execute(): [number, number];
 
         /**
@@ -439,11 +458,11 @@ export namespace UMockdev {
             /**
              * @signal
              */
-            "client-connected": (arg0: IoctlClient) => void;
+            "client-connected": (client: IoctlClient) => void;
             /**
              * @signal
              */
-            "client-vanished": (arg0: IoctlClient) => void;
+            "client-vanished": (client: IoctlClient) => void;
         }
 
         // Constructor properties interface

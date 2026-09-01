@@ -21,24 +21,54 @@ export namespace Anthy {
      */
 
 
+    /**
+     * @default 0
+     */
     const COMPILED_ENCODING: number;
 
+    /**
+     * @default 1
+     */
     const EUC_JP_ENCODING: number;
 
+    /**
+     * @default -4
+     */
     const NTH_HALFKANA_CANDIDATE: number;
 
+    /**
+     * @default -3
+     */
     const NTH_HIRAGANA_CANDIDATE: number;
 
+    /**
+     * @default -2
+     */
     const NTH_KATAKANA_CANDIDATE: number;
 
+    /**
+     * @default -1
+     */
     const NTH_UNCONVERTED_CANDIDATE: number;
 
+    /**
+     * @default 2
+     */
     const RECONVERT_ALWAYS: number;
 
+    /**
+     * @default 0
+     */
     const RECONVERT_AUTO: number;
 
+    /**
+     * @default 1
+     */
     const RECONVERT_DISABLE: number;
 
+    /**
+     * @default 2
+     */
     const UTF8_ENCODING: number;
 
     /**

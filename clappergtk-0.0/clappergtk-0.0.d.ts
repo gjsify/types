@@ -42,21 +42,25 @@ export namespace ClapperGtk {
 
     /**
      * ClapperGtk major version component
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * ClapperGtk micro version component
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * ClapperGtk minor version component
+     * @default 10
      */
     const MINOR_VERSION: number;
 
     /**
      * ClapperGtk version, encoded as a string
+     * @default 0.10.0
      */
     const VERSION_S: string;
 
@@ -138,27 +142,27 @@ export namespace ClapperGtk {
         /**
          * No action
          */
-        NONE,
+        NONE = 0,
         /**
          * Reveal fading overlays
          */
-        REVEAL_OVERLAYS,
+        REVEAL_OVERLAYS = 1,
         /**
          * Toggle playback (triggered by single click/tap)
          */
-        TOGGLE_PLAY,
+        TOGGLE_PLAY = 2,
         /**
          * Toggle fullscreen (triggered by double click/tap)
          */
-        TOGGLE_FULLSCREEN,
+        TOGGLE_FULLSCREEN = 4,
         /**
          * Seek request (triggered by double tap on screen side)
          */
-        SEEK_REQUEST,
+        SEEK_REQUEST = 8,
         /**
          * All of the above
          */
-        ANY,
+        ANY = 67108863,
     }
 
 
@@ -1005,7 +1009,7 @@ export namespace ClapperGtk {
              * @signal
              * @run-last
              */
-            adapt: (arg0: boolean) => void;
+            adapt: (adapt: boolean) => void;
             "notify::adaptive-height": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-width": (pspec: GObject.ParamSpec) => void;
             "notify::height-target": (pspec: GObject.ParamSpec) => void;
@@ -1623,7 +1627,7 @@ export namespace ClapperGtk {
              * @signal
              * @run-last
              */
-            "open-subtitles": (arg0: Clapper.MediaItem) => void;
+            "open-subtitles": (item: Clapper.MediaItem) => void;
             "notify::can-open-subtitles": (pspec: GObject.ParamSpec) => void;
             "notify::speed-visible": (pspec: GObject.ParamSpec) => void;
             "notify::volume-visible": (pspec: GObject.ParamSpec) => void;
@@ -4650,7 +4654,7 @@ export namespace ClapperGtk {
              * @signal
              * @run-last
              */
-            "seek-request": (arg0: boolean) => void;
+            "seek-request": (forward: boolean) => void;
             /**
              * A signal that user requested a change in fullscreen state of the video.
              * 

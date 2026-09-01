@@ -24,6 +24,9 @@ export namespace SoupGNOME {
      */
 
 
+    /**
+     * @default filename
+     */
     const COOKIE_JAR_SQLITE_FILENAME: string;
 
     function gnome_features_2_26_get_type(): GObject.GType;

@@ -55,14 +55,14 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum AnimationMode {
-        LINEAR,
-        EASE_IN_QUAD,
-        EASE_OUT_QUAD,
-        EASE_IN_OUT_QUAD,
-        EASE_IN_CUBIC,
-        EASE_OUT_CUBIC,
-        EASE_IN_OUT_CUBIC,
-        LAST,
+        LINEAR = 0,
+        EASE_IN_QUAD = 1,
+        EASE_OUT_QUAD = 2,
+        EASE_IN_OUT_QUAD = 3,
+        EASE_IN_CUBIC = 4,
+        EASE_OUT_CUBIC = 5,
+        EASE_IN_OUT_CUBIC = 6,
+        LAST = 7,
     }
 
 
@@ -70,11 +70,11 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum ArtifactKind {
-        NONE,
-        EXECUTABLE,
-        SHARED_LIBRARY,
-        STATIC_LIBRARY,
-        FILE,
+        NONE = 0,
+        EXECUTABLE = 1,
+        SHARED_LIBRARY = 2,
+        STATIC_LIBRARY = 3,
+        FILE = 4,
     }
 
 
@@ -89,10 +89,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum BufferState {
-        READY,
-        LOADING,
-        SAVING,
-        FAILED,
+        READY = 0,
+        LOADING = 1,
+        SAVING = 2,
+        FAILED = 3,
     }
 
 
@@ -127,8 +127,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum BuildLogStream {
-        STDOUT,
-        STDERR,
+        STDOUT = 0,
+        STDERR = 1,
     }
 
 
@@ -147,22 +147,22 @@ export namespace Ide {
         /**
          * No breakpoint is set
          */
-        NONE,
+        NONE = 0,
         /**
          * A simple breakpoint that stops the debugger
          *   when reaching a given location.
          */
-        BREAKPOINT,
+        BREAKPOINT = 1,
         /**
          * A counter that is incremented when the
          *   debugger reaches a breakpoint.
          */
-        COUNTPOINT,
+        COUNTPOINT = 2,
         /**
          * A breakpoint that is conditional on the
          *   specification matching.
          */
-        WATCHPOINT,
+        WATCHPOINT = 3,
     }
 
 
@@ -181,7 +181,7 @@ export namespace Ide {
         /**
          * change the enabled state
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -203,21 +203,21 @@ export namespace Ide {
          *   the next stop. This generally means the breakpoint is persistent until
          *   removed by the user.
          */
-        KEEP,
+        KEEP = 0,
         /**
          * The breakpoint is currently disabled.
          */
-        DISABLE,
+        DISABLE = 1,
         /**
          * The breakpoint will be removed
          *   after the next time it is hit.
          */
-        DELETE_NEXT_HIT,
+        DELETE_NEXT_HIT = 2,
         /**
          * The breakpoint will be removed
          *   the next time the debugger stops, even if not hit.
          */
-        DELETE_NEXT_STOP,
+        DELETE_NEXT_STOP = 3,
     }
 
 
@@ -236,21 +236,21 @@ export namespace Ide {
         /**
          * Start or restart the application
          */
-        START,
+        START = 0,
         /**
          * Continue until a breakpoint is reached
          */
-        CONTINUE,
+        CONTINUE = 1,
         /**
          * Execute the next line of code, stepping into
          *   any function.
          */
-        STEP_IN,
-        STEP_OUT,
+        STEP_IN = 2,
+        STEP_OUT = 3,
         /**
          * Run until the function returns.
          */
-        FINISH,
+        FINISH = 4,
     }
 
 
@@ -266,19 +266,19 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum DebuggerStopReason {
-        BREAKPOINT_HIT,
-        CATCH,
-        STOP_EXITED,
+        BREAKPOINT_HIT = 0,
+        CATCH = 7,
+        STOP_EXITED = 1,
         /**
          * The debugger stopped because the process exited
          *    in a graceful fashion.
          */
-        EXITED_NORMALLY,
-        EXITED_SIGNALED,
-        FUNCTION_FINISHED,
-        LOCATION_REACHED,
-        SIGNAL_RECEIVED,
-        UNKNOWN,
+        EXITED_NORMALLY = 2,
+        EXITED_SIGNALED = 3,
+        FUNCTION_FINISHED = 4,
+        LOCATION_REACHED = 5,
+        SIGNAL_RECEIVED = 6,
+        UNKNOWN = 8,
     }
 
 
@@ -297,16 +297,16 @@ export namespace Ide {
         /**
          * Logging from the debugger console
          */
-        CONSOLE,
+        CONSOLE = 1,
         /**
          * Internal event log from the debugger that can be
          *   used to troubleshoot the debugger.
          */
-        LOG,
+        LOG = 2,
         /**
          * Logging from the inferior process
          */
-        TARGET,
+        TARGET = 0,
     }
 
 
@@ -338,10 +338,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum DeviceKind {
-        COMPUTER,
-        PHONE,
-        TABLET,
-        MICRO_CONTROLLER,
+        COMPUTER = 0,
+        PHONE = 1,
+        TABLET = 2,
+        MICRO_CONTROLLER = 3,
     }
 
 
@@ -356,13 +356,13 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum DiagnosticSeverity {
-        IGNORED,
-        NOTE,
-        UNUSED,
-        DEPRECATED,
-        WARNING,
-        ERROR,
-        FATAL,
+        IGNORED = 0,
+        NOTE = 1,
+        UNUSED = 2,
+        DEPRECATED = 3,
+        WARNING = 4,
+        ERROR = 5,
+        FATAL = 6,
     }
 
 
@@ -370,7 +370,7 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum DoapError {
-        DOAP_ERROR_INVALID_FORMAT,
+        DOAP_ERROR_INVALID_FORMAT = 1,
     }
 
 
@@ -378,11 +378,11 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum HeaderBarPosition {
-        LEFT,
-        RIGHT,
-        LEFT_OF_CENTER,
-        RIGHT_OF_CENTER,
-        LAST,
+        LEFT = 0,
+        RIGHT = 1,
+        LEFT_OF_CENTER = 2,
+        RIGHT_OF_CENTER = 3,
+        LAST = 4,
     }
 
 
@@ -390,8 +390,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum HighlightResult {
-        STOP,
-        CONTINUE,
+        STOP = 0,
+        CONTINUE = 1,
     }
 
 
@@ -406,8 +406,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum IndentStyle {
-        SPACES,
-        TABS,
+        SPACES = 1,
+        TABS = 2,
     }
 
 
@@ -415,31 +415,31 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum LspCompletionKind {
-        TEXT,
-        METHOD,
-        FUNCTION,
-        CONSTRUCTOR,
-        FIELD,
-        VARIABLE,
-        CLASS,
-        INTERFACE,
-        MODULE,
-        PROPERTY,
-        UNIT,
-        VALUE,
-        ENUM,
-        KEYWORD,
-        SNIPPET,
-        COLOR,
-        FILE,
-        REFERENCE,
-        FOLDER,
-        ENUM_MEMBER,
-        CONSTANT,
-        STRUCT,
-        EVENT,
-        OPERATOR,
-        TYPE_PARAMETER,
+        TEXT = 1,
+        METHOD = 2,
+        FUNCTION = 3,
+        CONSTRUCTOR = 4,
+        FIELD = 5,
+        VARIABLE = 6,
+        CLASS = 7,
+        INTERFACE = 8,
+        MODULE = 9,
+        PROPERTY = 10,
+        UNIT = 11,
+        VALUE = 12,
+        ENUM = 13,
+        KEYWORD = 14,
+        SNIPPET = 15,
+        COLOR = 16,
+        FILE = 17,
+        REFERENCE = 18,
+        FOLDER = 19,
+        ENUM_MEMBER = 20,
+        CONSTANT = 21,
+        STRUCT = 22,
+        EVENT = 23,
+        OPERATOR = 24,
+        TYPE_PARAMETER = 25,
     }
 
 
@@ -447,9 +447,9 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum LspTrace {
-        OFF,
-        MESSAGES,
-        VERBOSE,
+        OFF = 0,
+        MESSAGES = 1,
+        VERBOSE = 2,
     }
 
 
@@ -457,10 +457,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum MarkedKind {
-        PLAINTEXT,
-        MARKDOWN,
-        HTML,
-        PANGO,
+        PLAINTEXT = 0,
+        MARKDOWN = 1,
+        HTML = 2,
+        PANGO = 3,
     }
 
 
@@ -468,10 +468,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum ObjectLocation {
-        START,
-        END,
-        BEFORE_SIBLING,
-        AFTER_SIBLING,
+        START = 0,
+        END = 1,
+        BEFORE_SIBLING = 2,
+        AFTER_SIBLING = 3,
     }
 
 
@@ -479,8 +479,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum ProcessKind {
-        HOST,
-        FLATPAK,
+        HOST = 0,
+        FLATPAK = 1,
     }
 
 
@@ -495,12 +495,12 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum RunCommandKind {
-        UNKNOWN,
-        APPLICATION,
-        UTILITY,
-        TEST,
-        BENCHMARK,
-        USER_DEFINED,
+        UNKNOWN = 0,
+        APPLICATION = 1,
+        UTILITY = 2,
+        TEST = 3,
+        BENCHMARK = 4,
+        USER_DEFINED = 5,
     }
 
 
@@ -519,15 +519,15 @@ export namespace Ide {
         /**
          * A basic shell with no user scripts
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * A user login shell similar to `bash -l`
          */
-        LOGIN,
+        LOGIN = 1,
         /**
          * A user interactive shell similar to `bash -i`
          */
-        INTERACTIVE,
+        INTERACTIVE = 2,
     }
 
 
@@ -567,9 +567,9 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum ScrubberRevealPolicy {
-        NEVER,
-        AUTO,
-        ALWAYS,
+        NEVER = 0,
+        AUTO = 1,
+        ALWAYS = 2,
     }
 
 
@@ -584,12 +584,12 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum SearchCategory {
-        EVERYTHING,
-        ACTIONS,
-        COMMANDS,
-        FILES,
-        SYMBOLS,
-        OTHER,
+        EVERYTHING = 0,
+        ACTIONS = 1,
+        COMMANDS = 2,
+        FILES = 3,
+        SYMBOLS = 4,
+        OTHER = 5,
     }
 
 
@@ -604,58 +604,58 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum SymbolKind {
-        NONE,
-        ALIAS,
-        ARRAY,
-        BOOLEAN,
-        CLASS,
-        CONSTANT,
-        CONSTRUCTOR,
-        ENUM,
-        ENUM_VALUE,
-        FIELD,
-        FILE,
-        FUNCTION,
-        HEADER,
-        INTERFACE,
-        MACRO,
-        METHOD,
-        MODULE,
-        NAMESPACE,
-        NUMBER,
-        PACKAGE,
-        PROPERTY,
-        SCALAR,
-        STRING,
-        STRUCT,
-        TEMPLATE,
-        UNION,
-        VARIABLE,
-        KEYWORD,
-        UI_ATTRIBUTES,
-        UI_CHILD,
-        UI_ITEM,
-        UI_MENU,
-        UI_MENU_ATTRIBUTE,
-        UI_OBJECT,
-        UI_PACKING,
-        UI_PROPERTY,
-        UI_SECTION,
-        UI_SIGNAL,
-        UI_STYLE,
-        UI_STYLE_CLASS,
-        UI_SUBMENU,
-        UI_TEMPLATE,
-        XML_ATTRIBUTE,
-        XML_DECLARATION,
-        XML_ELEMENT,
-        XML_COMMENT,
-        XML_CDATA,
-        OBJECT,
-        EVENT,
-        OPERATOR,
-        TYPE_PARAM,
-        LAST,
+        NONE = 0,
+        ALIAS = 1,
+        ARRAY = 2,
+        BOOLEAN = 3,
+        CLASS = 4,
+        CONSTANT = 5,
+        CONSTRUCTOR = 6,
+        ENUM = 7,
+        ENUM_VALUE = 8,
+        FIELD = 9,
+        FILE = 10,
+        FUNCTION = 11,
+        HEADER = 12,
+        INTERFACE = 13,
+        MACRO = 14,
+        METHOD = 15,
+        MODULE = 16,
+        NAMESPACE = 17,
+        NUMBER = 18,
+        PACKAGE = 19,
+        PROPERTY = 20,
+        SCALAR = 21,
+        STRING = 22,
+        STRUCT = 23,
+        TEMPLATE = 24,
+        UNION = 25,
+        VARIABLE = 26,
+        KEYWORD = 27,
+        UI_ATTRIBUTES = 28,
+        UI_CHILD = 29,
+        UI_ITEM = 30,
+        UI_MENU = 31,
+        UI_MENU_ATTRIBUTE = 32,
+        UI_OBJECT = 33,
+        UI_PACKING = 34,
+        UI_PROPERTY = 35,
+        UI_SECTION = 36,
+        UI_SIGNAL = 37,
+        UI_STYLE = 38,
+        UI_STYLE_CLASS = 39,
+        UI_SUBMENU = 40,
+        UI_TEMPLATE = 41,
+        XML_ATTRIBUTE = 42,
+        XML_DECLARATION = 43,
+        XML_ELEMENT = 44,
+        XML_COMMENT = 45,
+        XML_CDATA = 46,
+        OBJECT = 47,
+        EVENT = 48,
+        OPERATOR = 49,
+        TYPE_PARAM = 50,
+        LAST = 51,
     }
 
 
@@ -663,11 +663,11 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum TaskKind {
-        DEFAULT,
-        COMPILER,
-        INDEXER,
-        IO,
-        LAST,
+        DEFAULT = 0,
+        COMPILER = 1,
+        INDEXER = 2,
+        IO = 3,
+        LAST = 4,
     }
 
 
@@ -682,10 +682,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum TestStatus {
-        NONE,
-        RUNNING,
-        SUCCESS,
-        FAILED,
+        NONE = 0,
+        RUNNING = 1,
+        SUCCESS = 2,
+        FAILED = 3,
     }
 
 
@@ -693,11 +693,11 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum ThreadPoolKind {
-        DEFAULT,
-        COMPILER,
-        INDEXER,
-        IO,
-        LAST,
+        DEFAULT = 0,
+        COMPILER = 1,
+        INDEXER = 2,
+        IO = 3,
+        LAST = 4,
     }
 
 
@@ -705,8 +705,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum TransferError {
-        UNKNOWN,
-        CONNECTION_IS_METERED,
+        UNKNOWN = 0,
+        CONNECTION_IS_METERED = 1,
     }
 
 
@@ -721,9 +721,9 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum TreeNodeVisit {
-        BREAK,
-        CONTINUE,
-        CHILDREN,
+        BREAK = 0,
+        CONTINUE = 1,
+        CHILDREN = 3,
     }
 
 
@@ -731,10 +731,10 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum TweaksItemVisitResult {
-        STOP,
-        CONTINUE,
-        RECURSE,
-        ACCEPT_AND_CONTINUE,
+        STOP = 1,
+        CONTINUE = 2,
+        RECURSE = 3,
+        ACCEPT_AND_CONTINUE = 4,
     }
 
 
@@ -749,8 +749,8 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum VcsConfigType {
-        FULL_NAME,
-        EMAIL,
+        FULL_NAME = 0,
+        EMAIL = 1,
     }
 
 
@@ -765,19 +765,20 @@ export namespace Ide {
      * @gir-type Enum
      */
     enum VcsFileStatus {
-        IGNORED,
-        UNCHANGED,
-        UNTRACKED,
-        ADDED,
-        RENAMED,
-        DELETED,
-        CHANGED,
+        IGNORED = 1,
+        UNCHANGED = 2,
+        UNTRACKED = 3,
+        ADDED = 4,
+        RENAMED = 5,
+        DELETED = 6,
+        CHANGED = 7,
     }
 
 
     /**
      * The release channel of Builder. This should be a string such as
      * "other", "flatpak-stable", or "flatpak-nightly".
+     * @default other
      */
     const BUILD_CHANNEL: string;
 
@@ -785,96 +786,198 @@ export namespace Ide {
      * A string containing a tag that defines the version of Builder that
      * was built. Generally, this will be a small version tag plus some
      * information to identify the git commit hash when applicable.
+     * @default 46.0
      */
     const BUILD_IDENTIFIER: string;
 
     /**
      * The build type of the installed build.
+     * @default plain
      */
     const BUILD_TYPE: string;
 
+    /**
+     * @default 0
+     */
     const DEBUGGER_ADDRESS_INVALID: number;
 
+    /**
+     * @default 0
+     */
     const ENABLE_TRACE: number;
 
+    /**
+     * @default org.gnome.libide.extensions.file-settings
+     */
     const FILE_SETTINGS_EXTENSION_POINT: string;
 
+    /**
+     * @default #26a269
+     */
     const LINE_CHANGES_FALLBACK_ADDED: string;
 
+    /**
+     * @default #e5a50a
+     */
     const LINE_CHANGES_FALLBACK_CHANGED: string;
 
+    /**
+     * @default #c01c28
+     */
     const LINE_CHANGES_FALLBACK_REMOVED: string;
 
+    /**
+     * @default 1000
+     */
     const LSP_COMPLETION_PROVIDER_PRIORITY: number;
 
     /**
      * libide major version component (e.g. 43 if `IDE_VERSION` is 43.1)
+     * @default 46
      */
     const MAJOR_VERSION: number;
 
     /**
      * libide minor version component (e.g. 1 if `IDE_VERSION` is 43.1)
+     * @default 0
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 16777215
+     */
     const PIPELINE_PHASE_MASK: number;
 
+    /**
+     * @default 805306368
+     */
     const PIPELINE_PHASE_WHENCE_MASK: number;
 
+    /**
+     * @default -1
+     */
     const PTY_FD_INVALID: number;
 
+    /**
+     * @default 2171745863
+     */
     const PTY_INTERCEPT_MAGIC: number;
 
+    /**
+     * @default recent-projects.xbel
+     */
     const RECENT_PROJECTS_BOOKMARK_FILENAME: string;
 
+    /**
+     * @default X-GNOME-Builder-Build-System:
+     */
     const RECENT_PROJECTS_BUILD_SYSTEM_GROUP_PREFIX: string;
 
+    /**
+     * @default X-GNOME-Builder-Build-System-Hint:
+     */
     const RECENT_PROJECTS_BUILD_SYSTEM_HINT_GROUP_PREFIX: string;
 
+    /**
+     * @default X-GNOME-Builder-Directory:
+     */
     const RECENT_PROJECTS_DIRECTORY: string;
 
+    /**
+     * @default X-GNOME-Builder-Project
+     */
     const RECENT_PROJECTS_GROUP: string;
 
+    /**
+     * @default X-GNOME-Builder-Language:
+     */
     const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string;
 
+    /**
+     * @default *
+     */
     const TOOLCHAIN_LANGUAGE_ANY: string;
 
+    /**
+     * @default c
+     */
     const TOOLCHAIN_LANGUAGE_C: string;
 
+    /**
+     * @default c++
+     */
     const TOOLCHAIN_LANGUAGE_CPLUSPLUS: string;
 
+    /**
+     * @default d
+     */
     const TOOLCHAIN_LANGUAGE_D: string;
 
+    /**
+     * @default fortran
+     */
     const TOOLCHAIN_LANGUAGE_FORTRAN: string;
 
+    /**
+     * @default python
+     */
     const TOOLCHAIN_LANGUAGE_PYTHON: string;
 
+    /**
+     * @default vala
+     */
     const TOOLCHAIN_LANGUAGE_VALA: string;
 
+    /**
+     * @default ar
+     */
     const TOOLCHAIN_TOOL_AR: string;
 
+    /**
+     * @default cc
+     */
     const TOOLCHAIN_TOOL_CC: string;
 
+    /**
+     * @default cpp
+     */
     const TOOLCHAIN_TOOL_CPP: string;
 
+    /**
+     * @default exec
+     */
     const TOOLCHAIN_TOOL_EXEC: string;
 
+    /**
+     * @default ld
+     */
     const TOOLCHAIN_TOOL_LD: string;
 
+    /**
+     * @default pkg-config
+     */
     const TOOLCHAIN_TOOL_PKG_CONFIG: string;
 
+    /**
+     * @default strip
+     */
     const TOOLCHAIN_TOOL_STRIP: string;
 
+    /**
+     * @default 15
+     */
     const TREE_NODE_FLAGS_VCS_MASK: number;
 
     /**
      * libide version.
+     * @default 46.000000
      */
     const VERSION: number;
 
     /**
      * libide version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 46.0
      */
     const VERSION_S: string;
 
@@ -1021,6 +1124,7 @@ export namespace Ide {
      * `file` within that directory.
      * @param file a {@link Gio.File} to load within the desktop file manager
      * @returns `true` if successful; otherwise `false` and `error` is set.
+     * @throws GLib.Error
      */
     function file_manager_show(file: Gio.File): boolean;
 
@@ -1068,6 +1172,7 @@ export namespace Ide {
      * @param program_name the basename of the program
      * @param bundled_program_path the path to a bundled version of the program
      * @returns a {@link Ide.SubprocessLauncher} or `null` and   `error` is set.
+     * @throws GLib.Error
      */
     function foundry_get_launcher_for_context(context: Context, program_name: string, bundled_program_path: string | null): SubprocessLauncher;
 
@@ -1143,6 +1248,7 @@ export namespace Ide {
      * @param file a {@link Gio.File}
      * @param result a result provided to callback
      * @returns A {@link GLib.PtrArray} of {@link Gio.File}
+     * @throws GLib.Error
      */
     function g_file_find_finish(file: Gio.File, result: Gio.AsyncResult): Gio.File[];
 
@@ -1170,6 +1276,7 @@ export namespace Ide {
     /**
      * @param result 
      * @returns a {@link Gio.File} if successful; otherwise `null`   and `error` is et.
+     * @throws GLib.Error
      */
     function g_file_find_in_ancestors_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -1244,6 +1351,7 @@ export namespace Ide {
      * @param file a {@link Gio.File}
      * @param result a {@link Gio.AsyncResult} provided to callback
      * @returns A {@link GLib.PtrArray}   of {@link Gio.FileInfo} if successful, otherwise `null`.
+     * @throws GLib.Error
      */
     function g_file_get_children_finish(file: Gio.File, result: Gio.AsyncResult): Gio.FileInfo[];
 
@@ -1303,6 +1411,7 @@ export namespace Ide {
      * the file from the host, rather than our mount namespace.
      * @param path the path on the host
      * @returns `true` if successful; otherwise `false` and `error` is set.
+     * @throws GLib.Error
      */
     function g_host_file_get_contents(path: string): [boolean, string, number];
 
@@ -1422,6 +1531,7 @@ export namespace Ide {
      * @param window 
      * @param uri 
      * @param timestamp 
+     * @throws GLib.Error
      */
     function gtk_show_uri_on_window(window: Gtk.Window, uri: string, timestamp: bigint | number): boolean;
 
@@ -1574,6 +1684,7 @@ export namespace Ide {
      * 
      * Use this instead of `vte_pty_new_sync()` or similar.
      * @returns a {@link Vte.Pty} if successful, otherwise `null`   and `error` is set.
+     * @throws GLib.Error
      */
     function pty_new_sync(): Vte.Pty;
 
@@ -1854,6 +1965,7 @@ export namespace Ide {
      * @param destination 
      * @param notif 
      * @param cancellable 
+     * @throws GLib.Error
      */
     function vcs_cloner_clone_simple(context: Context, module_name: string, url: string, branch: string, destination: string, notif: Notification, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2081,11 +2193,11 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum BufferLineChange {
-        NONE,
-        ADDED,
-        CHANGED,
-        DELETED,
-        PREVIOUS_DELETED,
+        NONE = 0,
+        ADDED = 1,
+        CHANGED = 2,
+        DELETED = 4,
+        PREVIOUS_DELETED = 8,
     }
 
 
@@ -2106,16 +2218,16 @@ export namespace Ide {
         /**
          * No special processing will be performed.
          */
-        NONE,
+        NONE = 0,
         /**
          * Reload the buffer if already loaded.
          */
-        FORCE_RELOAD,
+        FORCE_RELOAD = 2,
         /**
          * Disables any buffer addin for this
          *   buffer.
          */
-        DISABLE_ADDINS,
+        DISABLE_ADDINS = 4,
     }
 
 
@@ -2130,9 +2242,9 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum BuildLocality {
-        IN_TREE,
-        OUT_OF_TREE,
-        DEFAULT,
+        IN_TREE = 1,
+        OUT_OF_TREE = 2,
+        DEFAULT = 3,
     }
 
 
@@ -2140,8 +2252,8 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum FileTransferFlags {
-        NONE,
-        MOVE,
+        NONE = 0,
+        MOVE = 1,
     }
 
 
@@ -2156,21 +2268,21 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum PipelinePhase {
-        NONE,
-        PREPARE,
-        DOWNLOADS,
-        DEPENDENCIES,
-        AUTOGEN,
-        CONFIGURE,
-        BUILD,
-        INSTALL,
-        COMMIT,
-        EXPORT,
-        FINAL,
-        BEFORE,
-        AFTER,
-        FINISHED,
-        FAILED,
+        NONE = 0,
+        PREPARE = 1,
+        DOWNLOADS = 2,
+        DEPENDENCIES = 4,
+        AUTOGEN = 8,
+        CONFIGURE = 16,
+        BUILD = 64,
+        INSTALL = 128,
+        COMMIT = 256,
+        EXPORT = 512,
+        FINAL = 1024,
+        BEFORE = 268435456,
+        AFTER = 536870912,
+        FINISHED = 1073741824,
+        FAILED = 2147483648,
     }
 
 
@@ -2185,14 +2297,14 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum SpacesStyle {
-        IGNORE,
-        BEFORE_LEFT_PAREN,
-        BEFORE_LEFT_BRACKET,
-        BEFORE_LEFT_BRACE,
-        BEFORE_LEFT_ANGLE,
-        BEFORE_COLON,
-        BEFORE_COMMA,
-        BEFORE_SEMICOLON,
+        IGNORE = 0,
+        BEFORE_LEFT_PAREN = 1,
+        BEFORE_LEFT_BRACKET = 2,
+        BEFORE_LEFT_BRACE = 4,
+        BEFORE_LEFT_ANGLE = 8,
+        BEFORE_COLON = 16,
+        BEFORE_COMMA = 32,
+        BEFORE_SEMICOLON = 64,
     }
 
 
@@ -2207,11 +2319,11 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum SymbolFlags {
-        NONE,
-        IS_STATIC,
-        IS_MEMBER,
-        IS_DEPRECATED,
-        IS_DEFINITION,
+        NONE = 0,
+        IS_STATIC = 1,
+        IS_MEMBER = 2,
+        IS_DEPRECATED = 4,
+        IS_DEFINITION = 8,
     }
 
 
@@ -2219,12 +2331,12 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum TemplateInputValidation {
-        VALID,
-        INVAL_NAME,
-        INVAL_APP_ID,
-        INVAL_LOCATION,
-        INVAL_LANGUAGE,
-        INVAL_TEMPLATE,
+        VALID = 0,
+        INVAL_NAME = 1,
+        INVAL_APP_ID = 2,
+        INVAL_LOCATION = 4,
+        INVAL_LANGUAGE = 8,
+        INVAL_TEMPLATE = 16,
     }
 
 
@@ -2239,11 +2351,11 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum TreeNodeFlags {
-        NONE,
-        DESCENDANT,
-        ADDED,
-        CHANGED,
-        REMOVED,
+        NONE = 0,
+        DESCENDANT = 1,
+        ADDED = 2,
+        CHANGED = 4,
+        REMOVED = 8,
     }
 
 
@@ -2251,10 +2363,10 @@ export namespace Ide {
      * @gir-type Flags
      */
     enum VcsCloneRequestValidation {
-        VALID,
-        INVAL_URI,
-        INVAL_DIRECTORY,
-        INVAL_EMAIL,
+        VALID = 0,
+        INVAL_URI = 1,
+        INVAL_DIRECTORY = 2,
+        INVAL_EMAIL = 4,
     }
 
 
@@ -3188,6 +3300,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         install_schemes_finish(result: Gio.AsyncResult): boolean;
 
@@ -3221,6 +3334,7 @@ export namespace Ide {
          * workbench if the project was already opened.
          * @param result a {@link Gio.AsyncResult}
          * @returns an {@link Ide.Workbench} or `null` on failure and `error`   is set.
+         * @throws GLib.Error
          */
         open_project_finish(result: Gio.AsyncResult): Workbench;
 
@@ -3769,6 +3883,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_buffer_query_code_action_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of {@link Ide.CodeAction}.
+         * @throws GLib.Error
          */
         code_action_query_finish(result: Gio.AsyncResult): CodeAction[];
 
@@ -3825,6 +3940,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_buffer_format_selection_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         format_selection_finish(result: Gio.AsyncResult): boolean;
 
@@ -4031,6 +4147,7 @@ export namespace Ide {
          * Completes an asynchronous request to locate a symbol at a location.
          * @param result a {@link Gio.AsyncResult}
          * @returns An {@link Ide.Symbol} or `null`.
+         * @throws GLib.Error
          */
         get_symbol_at_location_finish(result: Gio.AsyncResult): Symbol;
 
@@ -4147,6 +4264,7 @@ export namespace Ide {
          * `ide_buffer_save_file_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         save_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -4318,26 +4436,26 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "buffer-loaded": (arg0: Buffer) => void;
+            "buffer-loaded": (buffer: Buffer) => void;
             /**
              * The "buffer-saved" signal is emitted when an {@link Ide.Buffer} has been saved
              * to storage.
              * @signal
              * @run-last
              */
-            "buffer-saved": (arg0: Buffer) => void;
+            "buffer-saved": (buffer: Buffer) => void;
             /**
              * The "buffer-unloaded" signal is emitted when an {@link Ide.Buffer} has been
              * unloaded from the buffer manager.
              * @signal
              * @run-last
              */
-            "buffer-unloaded": (arg0: Buffer) => void;
+            "buffer-unloaded": (buffer: Buffer) => void;
             /**
              * @signal
              * @run-last
              */
-            "load-buffer": (arg0: Buffer) => void;
+            "load-buffer": (object: Buffer) => void;
             "notify::max-file-size": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -4452,6 +4570,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         apply_edits_finish(result: Gio.AsyncResult): boolean;
 
@@ -4571,6 +4690,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_buffer_manager_laod_file_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns an {@link Ide.Buffer}
+         * @throws GLib.Error
          */
         load_file_finish(result: Gio.AsyncResult): Buffer;
 
@@ -4593,6 +4713,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         reload_all_finish(result: Gio.AsyncResult): boolean;
 
@@ -4629,6 +4750,7 @@ export namespace Ide {
          * Completes an asynchronous request to save all buffers.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if all the buffers were saved successfully
+         * @throws GLib.Error
          */
         save_all_finish(result: Gio.AsyncResult): boolean;
 
@@ -4810,14 +4932,14 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "build-failed": (arg0: Pipeline) => void;
+            "build-failed": (pipeline: Pipeline) => void;
             /**
              * The "build-finished" signal is emitted when a build completed
              * successfully.
              * @signal
              * @run-last
              */
-            "build-finished": (arg0: Pipeline) => void;
+            "build-finished": (pipeline: Pipeline) => void;
             /**
              * The "build-started" signal is emitted when a new build has started.
              * The build may be an incremental build. The `pipeline` instance is
@@ -4825,7 +4947,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "build-started": (arg0: Pipeline) => void;
+            "build-started": (pipeline: Pipeline) => void;
             "notify::busy": (pspec: GObject.ParamSpec) => void;
             "notify::can-build": (pspec: GObject.ParamSpec) => void;
             "notify::error-count": (pspec: GObject.ParamSpec) => void;
@@ -5078,6 +5200,7 @@ export namespace Ide {
          * Completes a request to `ide_build_manager_build_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         build_finish(result: Gio.AsyncResult): boolean;
 
@@ -5122,6 +5245,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_build_manager_clean_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         clean_finish(result: Gio.AsyncResult): boolean;
 
@@ -5207,6 +5331,7 @@ export namespace Ide {
          * Otherwise, a non-empty {@link Gio.ListModel} of {@link Ide.BuildTarget} will be returned.
          * @param result 
          * @returns a {@link Gio.ListModel} of {@link Ide.BuildTarget} if successful;   otherwise `null` and `error` is set.
+         * @throws GLib.Error
          */
         list_targets_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -5252,6 +5377,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_build_manager_rebuild_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         rebuild_finish(result: Gio.AsyncResult): boolean;
 
@@ -5793,6 +5919,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6122,6 +6249,7 @@ export namespace Ide {
          * @param file a {@link Gio.File}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         load(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6175,6 +6303,7 @@ export namespace Ide {
          * See also: `ide_compile_commands_load_async()`
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns `true` if the file was loaded successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -6186,6 +6315,7 @@ export namespace Ide {
          * @param file a {@link Gio.File} representing the file to lookup
          * @param system_includes system include dirs if any
          * @returns A string array or `null` if   there was a failure to locate or parse the command.
+         * @throws GLib.Error
          */
         lookup(file: Gio.File, system_includes: string): [string[] | null, Gio.File | null];
     }
@@ -7047,6 +7177,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -7682,6 +7813,7 @@ export namespace Ide {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7691,6 +7823,7 @@ export namespace Ide {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ConfigManager;
 
@@ -8154,7 +8287,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "breakpoint-added": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-added": (breakpoint: DebuggerBreakpoint) => void;
             /**
              * The "breakpoint-reached" signal is emitted when the debugger has reached
              * a breakpoint and execution has stopped.
@@ -8166,14 +8299,14 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "breakpoint-reached": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-reached": (breakpoint: DebuggerBreakpoint) => void;
             /**
              * The "breakpoint-removed" signal is emitted when a new breakpoint has been
              * removed by the debugger.
              * @signal
              * @run-last
              */
-            "breakpoint-removed": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-removed": (breakpoint: DebuggerBreakpoint) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::debugger": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
@@ -8290,27 +8423,27 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "breakpoint-added": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-added": (breakpoint: DebuggerBreakpoint) => void;
             /**
              * The "breakpoint-modified" signal is emitted when a breakpoint has been
              * modified by the debugger.
              * @signal
              * @run-last
              */
-            "breakpoint-modified": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-modified": (breakpoint: DebuggerBreakpoint) => void;
             /**
              * The "breakpoint-removed" signal is emitted when a breakpoint has been
              * removed from the debugger.
              * @signal
              * @run-last
              */
-            "breakpoint-removed": (arg0: DebuggerBreakpoint) => void;
+            "breakpoint-removed": (breakpoint: DebuggerBreakpoint) => void;
             /**
              * This signal is emitted when a library has been loaded by the debugger.
              * @signal
              * @run-last
              */
-            "library-loaded": (arg0: DebuggerLibrary) => void;
+            "library-loaded": (library: DebuggerLibrary) => void;
             /**
              * This signal is emitted when a library has been unloaded by the debugger.
              * Generally, this means that the library was a module and loaded in such a
@@ -8318,14 +8451,14 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "library-unloaded": (arg0: DebuggerLibrary) => void;
+            "library-unloaded": (library: DebuggerLibrary) => void;
             /**
              * The "log" signal is emitted when there is new content to be
              * appended to one of the streams.
              * @signal
              * @run-last
              */
-            log: (arg0: DebuggerStream, arg1: GLib.Bytes) => void;
+            log: (stream: DebuggerStream, content: GLib.Bytes) => void;
             /**
              * This signal is emitted when the debugger starts or resumes executing
              * the inferior.
@@ -8344,49 +8477,49 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            stopped: (arg0: DebuggerStopReason, arg1: DebuggerBreakpoint | null) => void;
+            stopped: (stop_reason: DebuggerStopReason, breakpoint: DebuggerBreakpoint | null) => void;
             /**
              * The signal is emitted when a thread is added to the inferior.
              * @signal
              * @run-last
              */
-            "thread-added": (arg0: DebuggerThread) => void;
+            "thread-added": (thread: DebuggerThread) => void;
             /**
              * This signal is emitted when a thread-group has been added.
              * @signal
              * @run-last
              */
-            "thread-group-added": (arg0: DebuggerThreadGroup) => void;
+            "thread-group-added": (thread_group: DebuggerThreadGroup) => void;
             /**
              * This signal is emitted when a thread-group has exited.
              * @signal
              * @run-last
              */
-            "thread-group-exited": (arg0: DebuggerThreadGroup) => void;
+            "thread-group-exited": (thread_group: DebuggerThreadGroup) => void;
             /**
              * This signal is emitted when a thread-group has been removed.
              * @signal
              * @run-last
              */
-            "thread-group-removed": (arg0: DebuggerThreadGroup) => void;
+            "thread-group-removed": (thread_group: DebuggerThreadGroup) => void;
             /**
              * This signal is emitted when a thread-group has been started.
              * @signal
              * @run-last
              */
-            "thread-group-started": (arg0: DebuggerThreadGroup) => void;
+            "thread-group-started": (thread_group: DebuggerThreadGroup) => void;
             /**
              * The signal is emitted when a thread is removed from the inferior.
              * @signal
              * @run-last
              */
-            "thread-removed": (arg0: DebuggerThread) => void;
+            "thread-removed": (thread: DebuggerThread) => void;
             /**
              * The signal is emitted when a thread is selected in the debugger.
              * @signal
              * @run-last
              */
-            "thread-selected": (arg0: DebuggerThread) => void;
+            "thread-selected": (thread: DebuggerThread) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::selected-thread": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
@@ -8863,6 +8996,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_debugger_disassemble_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray}   of {@link Ide.DebuggerInstruction} if successful; otherwise `null` and error is set.
+         * @throws GLib.Error
          */
         disassemble_finish(result: Gio.AsyncResult): DebuggerInstruction[];
 
@@ -9083,6 +9217,7 @@ export namespace Ide {
          * See also: `ide_debugger_insert_breakpoint_async()`
          * @param result a {@link Gio.AsyncResult} or `null`
          * @returns `true` if the command was submitted successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         insert_breakpoint_finish(result: Gio.AsyncResult): boolean;
 
@@ -9141,6 +9276,7 @@ export namespace Ide {
          * command.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the command was interpreted, otherwise `false` and    `error` is set.
+         * @throws GLib.Error
          */
         interpret_finish(result: Gio.AsyncResult): boolean;
 
@@ -9178,6 +9314,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         interrupt_finish(result: Gio.AsyncResult): boolean;
 
@@ -9214,6 +9351,7 @@ export namespace Ide {
          * Gets the list of breakpoints from the debugger.
          * @param result a {@link Gio.AsyncResult} provided to the async callback
          * @returns a {@link GLib.PtrArray}   of breakpoints that are registered with the debugger.
+         * @throws GLib.Error
          */
         list_breakpoints_finish(result: Gio.AsyncResult): DebuggerBreakpoint[];
 
@@ -9240,6 +9378,7 @@ export namespace Ide {
         /**
          * @param result 
          * @returns An   array of debugger frames or `null` and `error` is set.
+         * @throws GLib.Error
          */
         list_frames_finish(result: Gio.AsyncResult): DebuggerFrame[] | null;
 
@@ -9276,6 +9415,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_debugger_list_locals_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of   {@link Ide.DebuggerVariable} if successful; otherwise `null` and error is set.
+         * @throws GLib.Error
          */
         list_locals_finish(result: Gio.AsyncResult): DebuggerVariable[];
 
@@ -9312,6 +9452,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_debugger_list_params_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of   {@link Ide.DebuggerVariable} if successful; otherwise `null` and error is set.
+         * @throws GLib.Error
          */
         list_params_finish(result: Gio.AsyncResult): DebuggerVariable[];
 
@@ -9339,6 +9480,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_debugger_list_registers_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of   {@link Ide.DebuggerRegister} if successful; otherwise `null` and error is set.
+         * @throws GLib.Error
          */
         list_registers_finish(result: Gio.AsyncResult): DebuggerRegister[];
 
@@ -9409,6 +9551,7 @@ export namespace Ide {
          * {@link Ide.Debugger.SignalSignatures.breakpoint_modified | Ide.Debugger::breakpoint-modified} signal.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         modify_breakpoint_finish(result: Gio.AsyncResult): boolean;
 
@@ -9445,6 +9588,7 @@ export namespace Ide {
          * only that the command has be submitted.
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns `true` if successful, otherwise `false`
+         * @throws GLib.Error
          */
         move_finish(result: Gio.AsyncResult): boolean;
 
@@ -9496,6 +9640,7 @@ export namespace Ide {
          * See also: `ide_debugger_remove_breakpoint_async()`
          * @param result a {@link Gio.AsyncResult} or `null`
          * @returns `true` if the command was submitted successfully; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         remove_breakpoint_finish(result: Gio.AsyncResult): boolean;
 
@@ -9521,6 +9666,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         send_signal_finish(result: Gio.AsyncResult): boolean;
 
@@ -11417,6 +11563,7 @@ export namespace Ide {
          * build pipeline's device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set
+         * @throws GLib.Error
          */
         deploy_finish(result: Gio.AsyncResult): boolean;
 
@@ -11475,6 +11622,7 @@ export namespace Ide {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @param priority 
          * @returns `true` if successful and the pipeline was supported; otherwise   `false` and `error` is set.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult, priority: number): boolean;
 
@@ -11668,6 +11816,7 @@ export namespace Ide {
          * Completes an asynchronous request to load the information about a device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns an {@link Ide.DeviceInfo} or `null` and `error` is set
+         * @throws GLib.Error
          */
         get_info_finish(result: Gio.AsyncResult): DeviceInfo;
 
@@ -11903,6 +12052,7 @@ export namespace Ide {
          * Completes a request to deploy the application to the device.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set
+         * @throws GLib.Error
          */
         deploy_finish(result: Gio.AsyncResult): boolean;
 
@@ -12559,6 +12709,7 @@ export namespace Ide {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12568,6 +12719,7 @@ export namespace Ide {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceManager;
 
@@ -12797,7 +12949,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * The "device-removed" signal is emitted when a provider has discovered
              * a device is no longer available.
@@ -12807,7 +12959,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -12965,6 +13117,7 @@ export namespace Ide {
          * `ide_device_provider_load_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
     }
@@ -13388,6 +13541,7 @@ export namespace Ide {
          * Completes an asynchronous request to diagnose a file.
          * @param result 
          * @returns an {@link Ide.Diagnostics} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         diagnose_finish(result: Gio.AsyncResult): Diagnostics;
 
@@ -13873,7 +14027,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "remove-file": (arg0: Gio.File) => void;
+            "remove-file": (file: Gio.File) => void;
         }
 
         // Constructor properties interface
@@ -13937,6 +14091,7 @@ export namespace Ide {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13959,6 +14114,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
     }
@@ -14077,6 +14233,7 @@ export namespace Ide {
          * will be performed (such as .git, .flatpak-builder, etc).
          * @param file a {@link Gio.File}
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
+         * @throws GLib.Error
          */
         is_ignored(file: Gio.File | null): boolean;
 
@@ -14100,6 +14257,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns an array of   {@link Ide.VcsBranch}.
+         * @throws GLib.Error
          */
         list_branches_finish(result: Gio.AsyncResult): VcsBranch[];
 
@@ -14157,6 +14315,7 @@ export namespace Ide {
          * {@link Ide.VcsFileInfo}.
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns A {@link Gio.ListModel} containing an {@link Ide.VcsFileInfo} for each of the files scanned   by the {@link Ide.Vcs}. Upon failure, `null` is returned and `error` is set.
+         * @throws GLib.Error
          */
         list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
@@ -14180,6 +14339,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns an array of   {@link Ide.VcsBranch}.
+         * @throws GLib.Error
          */
         list_tags_finish(result: Gio.AsyncResult): VcsBranch[];
 
@@ -14195,6 +14355,7 @@ export namespace Ide {
          * If `self` is `null`, only registered ignore patterns will be checked.
          * @param path The path to check
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
+         * @throws GLib.Error
          */
         path_is_ignored(path: string | null): boolean;
 
@@ -14220,6 +14381,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         push_branch_finish(result: Gio.AsyncResult): boolean;
 
@@ -14245,6 +14407,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         switch_branch_finish(result: Gio.AsyncResult): boolean;
 
@@ -14537,12 +14700,14 @@ export namespace Ide {
         /**
          * @param data 
          * @param length 
+         * @throws GLib.Error
          */
         load_from_data(data: string, length: bigint | number): boolean;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -14786,6 +14951,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         discard_changes_finish(result: Gio.AsyncResult): boolean;
 
@@ -14834,6 +15000,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -14992,7 +15159,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            activate: (arg0: string) => void;
+            activate: (text: string) => void;
             /**
              * This signal is emitted when the entry text changes.
              * @signal
@@ -15006,7 +15173,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
+            "insert-text": (position: number, chars: string, n_chars: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -16210,12 +16377,12 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "extension-added": (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
+            "extension-added": (object: Peas.PluginInfo, p0: GObject.Object) => void;
             /**
              * @signal
              * @run-last
              */
-            "extension-removed": (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
+            "extension-removed": (object: Peas.PluginInfo, p0: GObject.Object) => void;
             /**
              * @signal
              * @run-last
@@ -16612,6 +16779,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         get_build_flags_finish(result: Gio.AsyncResult): string[];
 
@@ -16638,6 +16806,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} of {@link Gio.File} to {@link GObject.Strv}
+         * @throws GLib.Error
          */
         get_build_flags_for_dir_finish(result: Gio.AsyncResult): { [key: string]: any };
 
@@ -16670,6 +16839,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} or {@link Gio.File} to {@link GObject.Strv}
+         * @throws GLib.Error
          */
         get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
@@ -18029,6 +18199,7 @@ export namespace Ide {
         /**
          * @param io_priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute(io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18054,6 +18225,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -18384,6 +18556,7 @@ export namespace Ide {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18409,6 +18582,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         load_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -18439,6 +18613,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_fuzzy_index_query_async()`.
          * @param result 
          * @returns A {@link Gio.ListModel} of results.
+         * @throws GLib.Error
          */
         query_finish(result: Gio.AsyncResult): Gio.ListModel;
     }
@@ -18566,6 +18741,7 @@ export namespace Ide {
          * @param file 
          * @param io_priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18603,6 +18779,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): boolean;
     }
@@ -18848,6 +19025,7 @@ export namespace Ide {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18857,6 +19035,7 @@ export namespace Ide {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): FuzzyIndexCursor;
 
@@ -19959,7 +20138,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "open-project": (arg0: ProjectInfo) => boolean | void;
+            "open-project": (object: ProjectInfo) => boolean | void;
             "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -21098,6 +21277,7 @@ export namespace Ide {
          * the end which is not part of the bytes length.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.Bytes} if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         generate_finish(result: Gio.AsyncResult): GLib.Bytes;
 
@@ -21125,12 +21305,12 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            cancel: (arg0: Notification, arg1: Gio.Cancellable | null) => void;
+            cancel: (object: Notification, p0: Gio.Cancellable | null) => void;
             /**
              * @signal
              * @run-last
              */
-            install: (arg0: Notification, arg1: Gio.Cancellable | null) => void;
+            install: (object: Notification, p0: Gio.Cancellable | null) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
@@ -22095,17 +22275,17 @@ export namespace Ide {
              * @detailed
              * @run-last
              */
-            notification: (arg0: string, arg1: GLib.Variant) => void;
+            notification: (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @run-last
              */
-            "published-diagnostics": (arg0: Gio.File, arg1: Diagnostics) => void;
+            "published-diagnostics": (object: Gio.File, p0: Diagnostics) => void;
             /**
              * @signal
              * @run-last
              */
-            "supports-language": (arg0: string) => boolean | void;
+            "supports-language": (object: string) => boolean | void;
             "notify::initialization-options": (pspec: GObject.ParamSpec) => void;
             "notify::io-stream": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -22119,50 +22299,50 @@ export namespace Ide {
              * @detailed
              * @run-last
              */
-            "notification::initialization-options": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::initialization-options": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::io-stream": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::io-stream": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::name": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::name": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::root-uri": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::root-uri": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::server-capabilities": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::server-capabilities": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::use-markdown-in-diagnostics": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::use-markdown-in-diagnostics": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::cancellable": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::cancellable": (object: string, p0: GLib.Variant) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::parent": (arg0: string, arg1: GLib.Variant) => void;
-            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
+            "notification::parent": (object: string, p0: GLib.Variant) => void;
+            [key: `notification::${string}`]: (object: string, p0: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -22342,6 +22522,7 @@ export namespace Ide {
         /**
          * @param result 
          * @param return_value 
+         * @throws GLib.Error
          */
         call_finish(result: Gio.AsyncResult, return_value: GLib.Variant): boolean;
 
@@ -22375,6 +22556,7 @@ export namespace Ide {
          * Completes a request to `ide_lsp_client_get_diagnostics_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful and `diagnostics` is set, otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         get_diagnostics_finish(result: Gio.AsyncResult): [boolean, Diagnostics | null];
 
@@ -22429,6 +22611,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         send_notification_finish(result: Gio.AsyncResult): boolean;
 
@@ -22559,6 +22742,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -22684,6 +22868,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of {@link Ide.CodeAction}.
+         * @throws GLib.Error
          */
         query_finish(result: Gio.AsyncResult): CodeAction[];
 
@@ -23064,6 +23249,7 @@ export namespace Ide {
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link Gio.ListModel} of {@link GtkSource.CompletionProposal}
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -23601,6 +23787,7 @@ export namespace Ide {
          * Completes an asynchronous request to diagnose a file.
          * @param result 
          * @returns an {@link Ide.Diagnostics} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         diagnose_finish(result: Gio.AsyncResult): Diagnostics;
 
@@ -23740,6 +23927,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         format_finish(result: Gio.AsyncResult): boolean;
 
@@ -23774,6 +23962,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         format_range_finish(result: Gio.AsyncResult): boolean;
 
@@ -24094,6 +24283,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): boolean;
 
@@ -24281,6 +24471,7 @@ export namespace Ide {
          * project to complete the symbol rename.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful and `edits` is set. Otherwise `false` and `error`   is set.
+         * @throws GLib.Error
          */
         rename_finish(result: Gio.AsyncResult): [boolean, TextEdit[] | null];
 
@@ -24426,6 +24617,7 @@ export namespace Ide {
          * `truncated` is set to `true`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Ide.SearchResult}
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): [Gio.ListModel, boolean];
 
@@ -24814,6 +25006,7 @@ export namespace Ide {
          * See `ide_symbol_resolver_find_nearest_scope_async()` for more information.
          * @param result a {@link Gio.AsyncResult}
          * @returns An {@link Ide.Symbol} or `null`
+         * @throws GLib.Error
          */
         find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
@@ -24844,6 +25037,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray}   of {@link Ide.Range} if successful; otherwise `null` and `error` is set.
+         * @throws GLib.Error
          */
         find_references_finish(result: Gio.AsyncResult): Range[];
 
@@ -24878,6 +25072,7 @@ export namespace Ide {
          * requested file.
          * @param result 
          * @returns An {@link Ide.SymbolTree}; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
@@ -24917,6 +25112,7 @@ export namespace Ide {
          * `ide_symbol_resolver_lookup_symbol_async()`.
          * @param result a {@link Gio.AsyncResult} provided to the callback.
          * @returns An {@link Ide.Symbol} if successful; otherwise `null`.
+         * @throws GLib.Error
          */
         lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
@@ -25646,11 +25842,13 @@ export namespace Ide {
         // Methods
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         add_filename(filename: string): number;
 
         /**
          * @param resource 
+         * @throws GLib.Error
          */
         add_resource(resource: string): number;
 
@@ -26998,6 +27196,9 @@ export namespace Ide {
          */
         append(child: Object): void;
 
+        /**
+         * @throws GLib.Error
+         */
         check_ready(): boolean;
 
         destroy(): void;
@@ -27165,6 +27366,9 @@ export namespace Ide {
          */
         set_context(context: Context): void;
 
+        /**
+         * @throws GLib.Error
+         */
         set_error_if_destroyed(): boolean;
 
         /**
@@ -28256,6 +28460,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         agree_to_close_finish(result: Gio.AsyncResult): boolean;
 
@@ -28574,6 +28779,7 @@ export namespace Ide {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28600,6 +28806,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns Whether file is loaded or not.
+         * @throws GLib.Error
          */
         load_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -28672,6 +28879,7 @@ export namespace Ide {
          * @param destination 
          * @param io_priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write(destination: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28701,6 +28909,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the while was written successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): boolean;
     }
@@ -28715,7 +28924,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            diagnostic: (arg0: Diagnostic) => void;
+            diagnostic: (diagnostic: Diagnostic) => void;
             /**
              * This signal is emitted when the build process has finished executing.
              * If the build failed to complete all requested stages, then `failed` will
@@ -28723,7 +28932,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            finished: (arg0: boolean) => void;
+            finished: (failed: boolean) => void;
             /**
              * The "launcher-created" signal is emitted when a new
              * {@link Ide.SubprocessLauncher} is created by the pipeline. This may be useful
@@ -28732,7 +28941,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "launcher-created": (arg0: SubprocessLauncher) => void;
+            "launcher-created": (launcher: SubprocessLauncher) => void;
             /**
              * The "loaded" signal is emitted after the pipeline has finished
              * loading addins.
@@ -28746,7 +28955,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            started: (arg0: PipelinePhase) => void;
+            started: (phase: PipelinePhase) => void;
             "notify::busy": (pspec: GObject.ParamSpec) => void;
             "notify::config": (pspec: GObject.ParamSpec) => void;
             "notify::device": (pspec: GObject.ParamSpec) => void;
@@ -29038,6 +29247,7 @@ export namespace Ide {
          * up to a particular phase of the build pipeline.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the build stages were built successfully   up to the requested build phase provided to   `ide_pipeline_build_async()`.
+         * @throws GLib.Error
          */
         build_finish(result: Gio.AsyncResult): boolean;
 
@@ -29114,6 +29324,7 @@ export namespace Ide {
          * up to a particular phase and targets of the build pipeline.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the build stages were built successfully   up to the requested build phase provided to   `ide_pipeline_build_targets_async()`.
+         * @throws GLib.Error
          */
         build_targets_finish(result: Gio.AsyncResult): boolean;
 
@@ -29139,6 +29350,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         clean_finish(result: Gio.AsyncResult): boolean;
 
@@ -29155,6 +29367,7 @@ export namespace Ide {
          * This is a convenience function to create a new {@link Ide.SubprocessLauncher}
          * using the configuration and runtime associated with the pipeline.
          * @returns An {@link Ide.SubprocessLauncher}.
+         * @throws GLib.Error
          */
         create_launcher(): SubprocessLauncher;
 
@@ -29389,6 +29602,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         rebuild_finish(result: Gio.AsyncResult): boolean;
 
@@ -29461,6 +29675,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -29676,7 +29891,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            chain: (arg0: PipelineStage) => boolean | void;
+            chain: (object: PipelineStage) => boolean | void;
             /**
              * The {@link Ide.PipelineStage.SignalSignatures.query | Ide.PipelineStage::query} signal is emitted to request that the
              * build stage update its completed stage from any external resources.
@@ -29696,7 +29911,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            query: (arg0: Pipeline, arg1: BuildTarget[] | null, arg2: Gio.Cancellable | null) => void;
+            query: (pipeline: Pipeline, targets: BuildTarget[] | null, cancellable: Gio.Cancellable | null) => void;
             /**
              * This signal is emitted when a request to rebuild the project has
              * occurred. This allows build stages to ensure that certain files are
@@ -29706,7 +29921,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            reap: (arg0: DirectoryReaper) => void;
+            reap: (reaper: DirectoryReaper) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::check-stdout": (pspec: GObject.ParamSpec) => void;
             "notify::completed": (pspec: GObject.ParamSpec) => void;
@@ -29937,6 +30152,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         build_finish(result: Gio.AsyncResult): boolean;
 
@@ -29967,6 +30183,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         clean_finish(result: Gio.AsyncResult): boolean;
 
@@ -30073,7 +30290,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "create-run-context": (arg0: RunCommand) => RunContext;
+            "create-run-context": (command: RunCommand) => RunContext;
             "notify::build-command": (pspec: GObject.ParamSpec) => void;
             "notify::clean-command": (pspec: GObject.ParamSpec) => void;
             "notify::ignore-exit-status": (pspec: GObject.ParamSpec) => void;
@@ -31031,12 +31248,12 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "file-renamed": (arg0: Gio.File, arg1: Gio.File) => void;
+            "file-renamed": (object: Gio.File, p0: Gio.File) => void;
             /**
              * @signal
              * @run-last
              */
-            "file-trashed": (arg0: Gio.File) => void;
+            "file-trashed": (object: Gio.File) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -31110,6 +31327,7 @@ export namespace Ide {
          * Completes asynchronous request to locate similar files.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Gio.File} or `null`
+         * @throws GLib.Error
          */
         list_similar_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -31138,6 +31356,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         rename_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -31163,6 +31382,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         trash_file_finish(result: Gio.AsyncResult): boolean;
     }
@@ -31337,6 +31557,7 @@ export namespace Ide {
          * `ide_project_file_list_children_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray}   of {@link Ide.ProjectFile}
+         * @throws GLib.Error
          */
         list_children_finish(result: Gio.AsyncResult): ProjectFile[];
 
@@ -31365,6 +31586,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         trash_finish(result: Gio.AsyncResult): boolean;
     }
@@ -31880,6 +32102,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         expand_finish(result: Gio.AsyncResult): boolean;
 
@@ -33278,7 +33501,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
+            changed: (file: Gio.File, other_file: Gio.File | null, event: Gio.FileMonitorEvent) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -33372,6 +33595,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
     }
@@ -34041,6 +34265,7 @@ export namespace Ide {
 
         /**
          * @param args 
+         * @throws GLib.Error
          */
         append_parsed(args: string): boolean;
 
@@ -34433,6 +34658,7 @@ export namespace Ide {
 
         /**
          * @param args 
+         * @throws GLib.Error
          */
         append_args_parsed(args: string): boolean;
 
@@ -34447,11 +34673,13 @@ export namespace Ide {
          * The stream is created using UNIX pipes which are attached to the
          * stdin/stdout of the child process.
          * @returns a {@link Gio.IOStream} if successful; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         create_stdio_stream(): Gio.IOStream;
 
         /**
          * @returns an {@link Ide.SubprocessLauncher} if successful; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         end(): SubprocessLauncher;
 
@@ -34479,6 +34707,7 @@ export namespace Ide {
          * file-descriptors after calling this function.
          * @param unix_fd_map a {@link Ide.UnixFDMap}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         merge_unix_fd_map(unix_fd_map: UnixFDMap): boolean;
 
@@ -34587,6 +34816,7 @@ export namespace Ide {
          * 
          * If the subprocess fails to launch, then `null` is returned and `error` is set.
          * @returns an {@link Ide.Subprocess} if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         spawn(): Subprocess;
 
@@ -34616,7 +34846,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            run: (arg0: RunContext) => void;
+            run: (run_context: RunContext) => void;
             /**
              * This signal is emitted when the run manager has spawned a new subprocess.
              * @signal
@@ -34739,6 +34969,7 @@ export namespace Ide {
          * Complete request to discover the default run command.
          * @param result 
          * @returns an {@link Ide.RunCommand} if successful; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         discover_run_command_finish(result: Gio.AsyncResult): RunCommand;
 
@@ -34766,6 +34997,7 @@ export namespace Ide {
         /**
          * @param result 
          * @returns a {@link Gio.ListModel} of {@link Ide.RunCommand}
+         * @throws GLib.Error
          */
         list_commands_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -34788,6 +35020,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         run_finish(result: Gio.AsyncResult): boolean;
 
@@ -35328,6 +35561,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35432,7 +35666,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            started: (arg0: Subprocess) => void;
+            started: (object: Subprocess) => void;
             /**
              * @signal
              * @run-last
@@ -35974,6 +36208,7 @@ export namespace Ide {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -37245,12 +37480,12 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "sdk-added": (arg0: Sdk) => void;
+            "sdk-added": (object: Sdk) => void;
             /**
              * @signal
              * @run-last
              */
-            "sdk-removed": (arg0: Sdk) => void;
+            "sdk-removed": (object: Sdk) => void;
         }
 
         // Constructor properties interface
@@ -37361,6 +37596,7 @@ export namespace Ide {
          * Gets result of `ide_sdk_provider_update_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         update_finish(result: Gio.AsyncResult): boolean;
 
@@ -37594,6 +37830,7 @@ export namespace Ide {
          * result set instead of querying providers again.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Ide.SearchResult} items.
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): SearchResults;
     }
@@ -40008,7 +40245,7 @@ export namespace Ide {
              * @detailed
              * @run-last
              */
-            changed: (arg0: string) => void;
+            changed: (object: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::path-suffix": (pspec: GObject.ParamSpec) => void;
             "notify::project-id": (pspec: GObject.ParamSpec) => void;
@@ -40018,26 +40255,26 @@ export namespace Ide {
              * @detailed
              * @run-last
              */
-            "changed::path": (arg0: string) => void;
+            "changed::path": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::path-suffix": (arg0: string) => void;
+            "changed::path-suffix": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::project-id": (arg0: string) => void;
+            "changed::project-id": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::schema-id": (arg0: string) => void;
-            [key: `changed::${string}`]: (arg0: string) => void;
+            "changed::schema-id": (object: string) => void;
+            [key: `changed::${string}`]: (object: string) => void;
         }
 
         // Constructor properties interface
@@ -41157,7 +41394,7 @@ export namespace Ide {
              * @signal
              * @run-first
              */
-            "shortcut-set": (arg0: string) => void;
+            "shortcut-set": (object: string) => void;
             "notify::accelerator": (pspec: GObject.ParamSpec) => void;
             "notify::shortcut-title": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-preview": (pspec: GObject.ParamSpec) => void;
@@ -41413,6 +41650,7 @@ export namespace Ide {
          * @param project_file a {@link Gio.File} containing the project file (a directory)
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The hint for the build system, which should match what   the build system returns from `ide_build_system_get_id()`.
+         * @throws GLib.Error
          */
         discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
 
@@ -42346,6 +42584,7 @@ export namespace Ide {
          * Synchronously spawn a process using the internal state.
          * @param cancellable 
          * @returns an {@link Ide.Subprocess} or `null` upon error.
+         * @throws GLib.Error
          */
         spawn(cancellable: Gio.Cancellable | null): Subprocess;
 
@@ -42379,22 +42618,22 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            exited: (arg0: Subprocess) => void;
+            exited: (object: Subprocess) => void;
             /**
              * @signal
              * @run-last
              */
-            spawned: (arg0: Subprocess) => void;
+            spawned: (object: Subprocess) => void;
             /**
              * @signal
              * @run-last
              */
-            supervise: (arg0: SubprocessLauncher) => boolean | void;
+            supervise: (object: SubprocessLauncher) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            unsupervise: (arg0: SubprocessLauncher) => boolean | void;
+            unsupervise: (object: SubprocessLauncher) => boolean | void;
         }
 
         // Constructor properties interface
@@ -42757,6 +42996,7 @@ export namespace Ide {
          * Completes the request to gets the location for the symbol node.
          * @param result 
          * @returns An {@link Ide.Location} or `null`.
+         * @throws GLib.Error
          */
         get_location_finish(result: Gio.AsyncResult): Location | null;
 
@@ -42884,10 +43124,19 @@ export namespace Ide {
          */
         is_valid(source_object: null): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         propagate_boolean(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         propagate_boxed(): null;
 
+        /**
+         * @throws GLib.Error
+         */
         propagate_int(): number;
 
         /**
@@ -42896,9 +43145,13 @@ export namespace Ide {
          * 
          * `error` is set if the task completed with an error.
          * @returns a {@link GObject.Object} or `null`   and `error` may be set.
+         * @throws GLib.Error
          */
         propagate_object<T = GObject.Object>(): T;
 
+        /**
+         * @throws GLib.Error
+         */
         propagate_pointer(): null;
 
         /**
@@ -43055,6 +43308,7 @@ export namespace Ide {
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          * @since 2.34
+         * @throws GLib.Error
          */
         legacy_propagate_error(): boolean;
 
@@ -43300,6 +43554,7 @@ export namespace Ide {
          * Finish a call to `ide_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
+         * @throws GLib.Error
          */
         get_finish(result: Gio.AsyncResult): null;
 
@@ -43413,6 +43668,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         expand_all_finish(result: Gio.AsyncResult): boolean;
 
@@ -43643,6 +43899,7 @@ export namespace Ide {
         /**
          * @param result 
          * @returns a {@link Gio.File} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         expand_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -43816,7 +44073,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "match-clicked": (arg0: number, arg1: number, arg2: number, arg3: Gdk.ModifierType, arg4: string) => boolean | void;
+            "match-clicked": (object: number, p0: number, p1: number, p2: Gdk.ModifierType, p3: string) => boolean | void;
             "notify::palette": (pspec: GObject.ParamSpec) => void;
             "notify::allow-bold": (pspec: GObject.ParamSpec) => void;
             "notify::allow-hyperlink": (pspec: GObject.ParamSpec) => void;
@@ -44334,6 +44591,7 @@ export namespace Ide {
          * Completes a request to `ide_terminal_launcher_spawn_async()`
          * @param result 
          * @returns `true` if the process executed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         spawn_finish(result: Gio.AsyncResult): boolean;
     }
@@ -44743,7 +45001,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            search: (arg0: boolean) => void;
+            search: (object: boolean) => void;
             "notify::case-sensitive": (pspec: GObject.ParamSpec) => void;
             "notify::regex": (pspec: GObject.ParamSpec) => void;
             "notify::use-regex": (pspec: GObject.ParamSpec) => void;
@@ -45520,6 +45778,7 @@ export namespace Ide {
          * attached to the {@link Ide.Test} instances.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         run_all_finish(result: Gio.AsyncResult): boolean;
 
@@ -45563,6 +45822,7 @@ export namespace Ide {
          * itself will contain information about the success of the test.
          * @param result The {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the test was executed; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         run_finish(result: Gio.AsyncResult): boolean;
 
@@ -46557,6 +46817,7 @@ export namespace Ide {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -46566,6 +46827,7 @@ export namespace Ide {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ToolchainManager;
 
@@ -46938,6 +47200,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -46989,14 +47252,14 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "transfer-completed": (arg0: Transfer) => void;
+            "transfer-completed": (transfer: Transfer) => void;
             /**
              * This signal is emitted when a transfer has failed to complete
              * successfully.
              * @signal
              * @run-last
              */
-            "transfer-failed": (arg0: Transfer, arg1: GLib.Error) => void;
+            "transfer-failed": (transfer: Transfer, reason: GLib.Error) => void;
             "notify::has-active": (pspec: GObject.ParamSpec) => void;
             "notify::progress": (pspec: GObject.ParamSpec) => void;
         }
@@ -47113,6 +47376,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -47387,6 +47651,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         expand_node_finish(result: Gio.AsyncResult): boolean;
 
@@ -48480,7 +48745,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "show-popover": (arg0: Gtk.Popover) => boolean | void;
+            "show-popover": (object: Gtk.Popover) => boolean | void;
             "notify::children-possible": (pspec: GObject.ParamSpec) => void;
             "notify::destroy-item": (pspec: GObject.ParamSpec) => void;
             "notify::expanded-icon": (pspec: GObject.ParamSpec) => void;
@@ -49347,6 +49612,7 @@ export namespace Ide {
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52223,7 +52489,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            "create-for-item": (arg0: TweaksItem) => Gtk.Widget | null;
+            "create-for-item": (item: TweaksItem) => Gtk.Widget | null;
             "notify::binding": (pspec: GObject.ParamSpec) => void;
             "notify::hidden-when": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -52842,12 +53108,14 @@ export namespace Ide {
          * @param dest_read_fd the FD number in the destination process for the read side (stdin)
          * @param dest_write_fd the FD number in the destinatino process for the write side (stdout)
          * @returns a {@link Gio.IOStream} if successful; otherwise `null` and   `error` is set.
+         * @throws GLib.Error
          */
         create_stream(dest_read_fd: number, dest_write_fd: number): Gio.IOStream;
 
         /**
          * @param index 
          * @param dest_fd 
+         * @throws GLib.Error
          */
         get(index: number, dest_fd: number): number;
 
@@ -52859,6 +53127,7 @@ export namespace Ide {
          * @param filename 
          * @param mode 
          * @param dest_fd 
+         * @throws GLib.Error
          */
         open_file(filename: string, mode: number, dest_fd: number): boolean;
 
@@ -52876,6 +53145,7 @@ export namespace Ide {
 
         /**
          * @param dest_fd 
+         * @throws GLib.Error
          */
         silence_fd(dest_fd: number): boolean;
 
@@ -52893,6 +53163,7 @@ export namespace Ide {
 
         /**
          * @param other 
+         * @throws GLib.Error
          */
         steal_from(other: UnixFDMap): boolean;
 
@@ -53015,6 +53286,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         reap_finish(result: Gio.AsyncResult): boolean;
 
@@ -53048,6 +53320,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         restore_finish(result: Gio.AsyncResult): boolean;
 
@@ -53070,6 +53343,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -53312,6 +53586,7 @@ export namespace Ide {
          * {@link Ide.VcsCloneRequest.directory}.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.File} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         clone_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -53460,7 +53735,7 @@ export namespace Ide {
              * @signal
              * @run-last
              */
-            changed: (arg0: Gio.File, arg1: Gio.File | null, arg2: Gio.FileMonitorEvent) => void;
+            changed: (file: Gio.File, other_file: Gio.File | null, event: Gio.FileMonitorEvent) => void;
             /**
              * The "reloaded" signal is emitted when the monitor has been reloaded.
              * @signal
@@ -54000,6 +54275,7 @@ export namespace Ide {
          * `ide_workbench_load_project_async()`.
          * @param result 
          * @returns `true` if the project was successfully opened; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         load_project_finish(result: Gio.AsyncResult): boolean;
 
@@ -54097,6 +54373,7 @@ export namespace Ide {
          * `ide_workbench_open_async()` or `ide_workbench_open_at_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the file was successfully opened; otherwise   `false` and `error` is set.
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
@@ -54145,6 +54422,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_workbench_resolve_file_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.File}, or `null` and `error` is set
+         * @throws GLib.Error
          */
         resolve_file_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -54197,6 +54475,7 @@ export namespace Ide {
          * Completes a request to unload the workbench.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the workbench was unloaded successfully,   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         unload_finish(result: Gio.AsyncResult): boolean;
     }
@@ -56697,6 +56976,7 @@ export namespace Ide {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         persist(cancellable: Gio.Cancellable | null): boolean;
 
@@ -57211,6 +57491,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         settle_finish(result: Gio.AsyncResult): boolean;
 
@@ -57388,6 +57669,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         get_build_flags_finish(result: Gio.AsyncResult): string[];
 
@@ -57414,6 +57696,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} of {@link Gio.File} to {@link GObject.Strv}
+         * @throws GLib.Error
          */
         get_build_flags_for_dir_finish(result: Gio.AsyncResult): { [key: string]: any };
 
@@ -57446,6 +57729,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.HashTable} or {@link Gio.File} to {@link GObject.Strv}
+         * @throws GLib.Error
          */
         get_build_flags_for_files_finish(result: Gio.AsyncResult): { [key: string]: any };
 
@@ -57539,6 +57823,7 @@ export namespace Ide {
          * @param project_file a {@link Gio.File} containing the project file (a directory)
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The hint for the build system, which should match what   the build system returns from `ide_build_system_get_id()`.
+         * @throws GLib.Error
          */
         discover(project_file: Gio.File, cancellable: Gio.Cancellable | null): [string, number];
     }
@@ -57810,6 +58095,7 @@ export namespace Ide {
          * See also: `ide_build_target_provider_get_targets_async()`
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns The array of   build targets or `null` upon failure and `error` is set.
+         * @throws GLib.Error
          */
         get_targets_finish(result: Gio.AsyncResult): BuildTarget[];
     }
@@ -57889,6 +58175,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
@@ -57976,6 +58263,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_code_action_provider_query_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray} of {@link Ide.CodeAction}.
+         * @throws GLib.Error
          */
         query_finish(result: Gio.AsyncResult): CodeAction[];
 
@@ -58071,6 +58359,7 @@ export namespace Ide {
         /**
          * @param result 
          * @returns an array of {@link Ide.CodeIndexEntry}   or `null` and `error` is set
+         * @throws GLib.Error
          */
         collect_finish(result: Gio.AsyncResult): CodeIndexEntry[];
 
@@ -58118,6 +58407,7 @@ export namespace Ide {
          * Completes an asynchronous request for the next set of entries from the index.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link GLib.PtrArray}   of {@link Ide.CodeIndexEntry}.
+         * @throws GLib.Error
          */
         next_entries_finish(result: Gio.AsyncResult): CodeIndexEntry[];
     }
@@ -58225,6 +58515,7 @@ export namespace Ide {
          * Returns key for declaration of reference at a location.
          * @param result a {@link Gio.AsyncResult}
          * @returns A string which contains key.
+         * @throws GLib.Error
          */
         generate_key_finish(result: Gio.AsyncResult): string;
 
@@ -58264,6 +58555,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_code_indexer_index_file_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns an {@link Ide.CodeIndexEntries} if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         index_file_finish(result: Gio.AsyncResult): CodeIndexEntries;
     }
@@ -58464,6 +58756,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_config_provider_load_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -58503,6 +58796,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_config_provider_save_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -58578,6 +58872,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         update_finish(result: Gio.AsyncResult): boolean;
     }
@@ -58690,6 +58985,7 @@ export namespace Ide {
          * Completes an asynchronous request to diagnose a file.
          * @param result 
          * @returns an {@link Ide.Diagnostics} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         diagnose_finish(result: Gio.AsyncResult): Diagnostics;
 
@@ -58881,6 +59177,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         format_finish(result: Gio.AsyncResult): boolean;
 
@@ -58915,6 +59212,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         format_range_finish(result: Gio.AsyncResult): boolean;
 
@@ -59666,6 +59964,7 @@ export namespace Ide {
          * project to complete the symbol rename.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful and `edits` is set. Otherwise `false` and `error`   is set.
+         * @throws GLib.Error
          */
         rename_finish(result: Gio.AsyncResult): [boolean, TextEdit[] | null];
 
@@ -59761,6 +60060,7 @@ export namespace Ide {
          * Completes request to list run commands.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Ide.RunCommand}
+         * @throws GLib.Error
          */
         list_commands_finish(result: Gio.AsyncResult): Gio.ListModel;
     }
@@ -59881,6 +60181,7 @@ export namespace Ide {
          * `truncated` is set to `true`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Ide.SearchResult}
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): [Gio.ListModel, boolean];
 
@@ -60023,6 +60324,7 @@ export namespace Ide {
          * Completes asynchronous request to list similar files.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.ListModel} of {@link Gio.File} or `null`
+         * @throws GLib.Error
          */
         list_finish(result: Gio.AsyncResult): Gio.ListModel;
     }
@@ -60190,6 +60492,9 @@ export namespace Ide {
     interface Subprocess extends GObject.Object, Subprocess.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         check_exit_status(): boolean;
 
         /**
@@ -60197,6 +60502,7 @@ export namespace Ide {
          * @param cancellable 
          * @param stdout_buf 
          * @param stderr_buf 
+         * @throws GLib.Error
          */
         communicate(stdin_buf: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null, stdout_buf: GLib.Bytes | Uint8Array, stderr_buf: GLib.Bytes | Uint8Array): boolean;
 
@@ -60248,6 +60554,7 @@ export namespace Ide {
          * Finishes a request to `ide_subprocess_communicate_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         communicate_finish(result: Gio.AsyncResult): [boolean, GLib.Bytes | null, GLib.Bytes | null];
 
@@ -60256,6 +60563,7 @@ export namespace Ide {
          * @param stdin_buf input to deliver to the subprocesses stdin stream
          * @param cancellable an optional {@link Gio.Cancellable}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         communicate_utf8(stdin_buf: string | null, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
@@ -60282,6 +60590,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         communicate_utf8_finish(result: Gio.AsyncResult): [boolean, string, string];
 
@@ -60329,6 +60638,7 @@ export namespace Ide {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         wait(cancellable: Gio.Cancellable | null): boolean;
 
@@ -60351,6 +60661,7 @@ export namespace Ide {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         wait_check(cancellable: Gio.Cancellable | null): boolean;
 
@@ -60373,11 +60684,13 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         wait_check_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         wait_finish(result: Gio.AsyncResult): boolean;
     }
@@ -60539,6 +60852,7 @@ export namespace Ide {
          * See `ide_symbol_resolver_find_nearest_scope_async()` for more information.
          * @param result a {@link Gio.AsyncResult}
          * @returns An {@link Ide.Symbol} or `null`
+         * @throws GLib.Error
          */
         find_nearest_scope_finish(result: Gio.AsyncResult): Symbol | null;
 
@@ -60569,6 +60883,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_symbol_resolver_find_references_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link GLib.PtrArray}   of {@link Ide.Range} if successful; otherwise `null` and `error` is set.
+         * @throws GLib.Error
          */
         find_references_finish(result: Gio.AsyncResult): Range[];
 
@@ -60603,6 +60918,7 @@ export namespace Ide {
          * requested file.
          * @param result 
          * @returns An {@link Ide.SymbolTree}; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         get_symbol_tree_finish(result: Gio.AsyncResult): SymbolTree | null;
 
@@ -60642,6 +60958,7 @@ export namespace Ide {
          * `ide_symbol_resolver_lookup_symbol_async()`.
          * @param result a {@link Gio.AsyncResult} provided to the callback.
          * @returns An {@link Ide.Symbol} if successful; otherwise `null`.
+         * @throws GLib.Error
          */
         lookup_symbol_finish(result: Gio.AsyncResult): Symbol | null;
 
@@ -60874,6 +61191,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_toolchain_provider_load_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -61078,6 +61396,7 @@ export namespace Ide {
          * Completes an asynchronous request to `ide_tree_addin_build_children_async()`.
          * @param result result given to callback in `ide_tree_addin_build_children_async()`
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         build_children_finish(result: Gio.AsyncResult): boolean;
 
@@ -61154,6 +61473,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         node_dropped_finish(result: Gio.AsyncResult): boolean;
 
@@ -61408,6 +61728,7 @@ export namespace Ide {
          * will be performed (such as .git, .flatpak-builder, etc).
          * @param file a {@link Gio.File}
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
+         * @throws GLib.Error
          */
         is_ignored(file: Gio.File | null): boolean;
 
@@ -61431,6 +61752,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns an array of   {@link Ide.VcsBranch}.
+         * @throws GLib.Error
          */
         list_branches_finish(result: Gio.AsyncResult): VcsBranch[];
 
@@ -61488,6 +61810,7 @@ export namespace Ide {
          * {@link Ide.VcsFileInfo}.
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns A {@link Gio.ListModel} containing an {@link Ide.VcsFileInfo} for each of the files scanned   by the {@link Ide.Vcs}. Upon failure, `null` is returned and `error` is set.
+         * @throws GLib.Error
          */
         list_status_finish(result: Gio.AsyncResult): Gio.ListModel | null;
 
@@ -61511,6 +61834,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns an array of   {@link Ide.VcsBranch}.
+         * @throws GLib.Error
          */
         list_tags_finish(result: Gio.AsyncResult): VcsBranch[];
 
@@ -61526,6 +61850,7 @@ export namespace Ide {
          * If `self` is `null`, only registered ignore patterns will be checked.
          * @param path The path to check
          * @returns `true` if the path should be ignored. Thread safety: This function is safe to call from a thread as   {@link Ide.Vcs} implementations are required to ensure this function   is thread-safe.
+         * @throws GLib.Error
          */
         path_is_ignored(path: string | null): boolean;
 
@@ -61551,6 +61876,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         push_branch_finish(result: Gio.AsyncResult): boolean;
 
@@ -61576,6 +61902,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         switch_branch_finish(result: Gio.AsyncResult): boolean;
     }
@@ -61767,6 +62094,7 @@ export namespace Ide {
         /**
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         clone_finish(result: Gio.AsyncResult): boolean;
 
@@ -61811,6 +62139,7 @@ export namespace Ide {
         /**
          * @param result 
          * @returns a {@link Gio.ListModel} of {@link Ide.VcsBranch}
+         * @throws GLib.Error
          */
         list_branches_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -61958,6 +62287,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         initialize_finish(result: Gio.AsyncResult): boolean;
     }
@@ -62214,6 +62544,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         load_project_finish(result: Gio.AsyncResult): boolean;
 
@@ -62254,6 +62585,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
@@ -62326,6 +62658,7 @@ export namespace Ide {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         unload_project_finish(result: Gio.AsyncResult): boolean;
 

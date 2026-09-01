@@ -53,16 +53,16 @@ export namespace ClutterX11 {
          * The event was not handled, continues the
          *   processing
          */
-        CONTINUE,
+        CONTINUE = 0,
         /**
          * Native event translated into a Clutter
          *   event, stops the processing
          */
-        TRANSLATE,
+        TRANSLATE = 1,
         /**
          * Remove the event, stops the processing
          */
-        REMOVE,
+        REMOVE = 2,
     }
 
 

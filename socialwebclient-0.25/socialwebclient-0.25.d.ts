@@ -72,7 +72,7 @@ export namespace SocialWebClient {
              * @signal
              * @run-first
              */
-            "online-changed": (arg0: boolean) => void;
+            "online-changed": (object: boolean) => void;
         }
 
         // Constructor properties interface
@@ -138,15 +138,15 @@ export namespace SocialWebClient {
             /**
              * @signal
              */
-            "contacts-added": (arg0: Contact[]) => void;
+            "contacts-added": (contacts: Contact[]) => void;
             /**
              * @signal
              */
-            "contacts-changed": (arg0: Contact[]) => void;
+            "contacts-changed": (contacts: Contact[]) => void;
             /**
              * @signal
              */
-            "contacts-removed": (arg0: Contact[]) => void;
+            "contacts-removed": (contacts: Contact[]) => void;
             "notify::object-path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -218,15 +218,15 @@ export namespace SocialWebClient {
             /**
              * @signal
              */
-            "items-added": (arg0: Item[]) => void;
+            "items-added": (items: Item[]) => void;
             /**
              * @signal
              */
-            "items-changed": (arg0: Item[]) => void;
+            "items-changed": (items: Item[]) => void;
             /**
              * @signal
              */
-            "items-removed": (arg0: Item[]) => void;
+            "items-removed": (items: Item[]) => void;
             "notify::object-path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -368,17 +368,17 @@ export namespace SocialWebClient {
              * @signal
              * @run-first
              */
-            "avatar-retrieved": (arg0: string) => void;
+            "avatar-retrieved": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "capabilities-changed": (arg0: string[]) => void;
+            "capabilities-changed": (object: string[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "status-updated": (arg0: boolean) => void;
+            "status-updated": (object: boolean) => void;
             /**
              * @signal
              * @run-first
@@ -507,11 +507,13 @@ export namespace SocialWebClient {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         upload_photo_finish(res: Gio.AsyncResult): boolean;
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         upload_video_finish(res: Gio.AsyncResult): boolean;
     }

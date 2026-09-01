@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./handy-0.0.d.ts","./handy-0.0-surface.d.ts"]
+  "include": ["./handy-0.0.d.ts","./handy-0.0-vocabulary.d.ts"]
 }
 
 

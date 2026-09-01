@@ -89,7 +89,7 @@
       ]
 }
   },
-  "include": ["./foundryadw-1.d.ts","./foundryadw-1-surface.d.ts"]
+  "include": ["./foundryadw-1.d.ts","./foundryadw-1-vocabulary.d.ts"]
 }
 
 

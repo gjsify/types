@@ -33,9 +33,9 @@ export namespace Epc {
      * @gir-type Enum
      */
     enum AddressFamily {
-        UNSPEC,
-        IPV4,
-        IPV6,
+        UNSPEC = 0,
+        IPV4 = 2,
+        IPV6 = 10,
     }
 
 
@@ -51,9 +51,9 @@ export namespace Epc {
      * @gir-type Enum
      */
     enum CollisionHandling {
-        IGNORE,
-        CHANGE_NAME,
-        UNIQUE_SERVICE,
+        IGNORE = 0,
+        CHANGE_NAME = 1,
+        UNIQUE_SERVICE = 2,
     }
 
 
@@ -69,20 +69,35 @@ export namespace Epc {
      * @gir-type Enum
      */
     enum Protocol {
-        UNKNOWN,
-        HTTP,
-        HTTPS,
+        UNKNOWN = 0,
+        HTTP = 1,
+        HTTPS = 2,
     }
 
 
+    /**
+     * @default _easy-publish-http._tcp
+     */
     const SERVICE_TYPE_HTTP: string;
 
+    /**
+     * @default _easy-publish-https._tcp
+     */
     const SERVICE_TYPE_HTTPS: string;
 
+    /**
+     * @default 0
+     */
     const TLS_SECONDS_PER_DAY: number;
 
+    /**
+     * @default 0
+     */
     const TLS_SECONDS_PER_HOUR: number;
 
+    /**
+     * @default 60
+     */
     const TLS_SECONDS_PER_MINUTE: number;
 
     /**
@@ -151,6 +166,9 @@ export namespace Epc {
 
     function shell_get_debug_level(): number;
 
+    /**
+     * @throws GLib.Error
+     */
     function shell_get_host_name(): string;
 
     /**
@@ -199,6 +217,7 @@ export namespace Epc {
      * @param hostname 
      * @param crtfile 
      * @param keyfile 
+     * @throws GLib.Error
      */
     function tls_get_server_credentials(hostname: string, crtfile: string, keyfile: string): boolean;
 
@@ -235,8 +254,8 @@ export namespace Epc {
      * @gir-type Flags
      */
     enum AuthFlags {
-        DEFAULT,
-        PASSWORD_TEXT_NEEDED,
+        DEFAULT = 0,
+        PASSWORD_TEXT_NEEDED = 1,
     }
 
 
@@ -247,12 +266,12 @@ export namespace Epc {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: string) => boolean | void;
+            authenticate: (object: string) => boolean | void;
             /**
              * @signal
              * @run-first
              */
-            "publisher-resolved": (arg0: Protocol, arg1: string, arg2: number) => void;
+            "publisher-resolved": (object: Protocol, p0: string, p1: number) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::hostname": (pspec: GObject.ParamSpec) => void;
@@ -485,6 +504,9 @@ export namespace Epc {
 
         reset(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         run(): boolean;
 
         /**
@@ -690,6 +712,7 @@ export namespace Epc {
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         get_uri(key: string): string;
 
@@ -705,8 +728,14 @@ export namespace Epc {
          */
         remove(key: string): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         run(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         run_async(): boolean;
 
         /**
@@ -760,17 +789,17 @@ export namespace Epc {
              * @signal
              * @run-first
              */
-            "scanning-done": (arg0: string) => void;
+            "scanning-done": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "service-found": (arg0: string, arg1: ServiceInfo) => void;
+            "service-found": (object: string, p0: ServiceInfo) => void;
             /**
              * @signal
              * @run-first
              */
-            "service-removed": (arg0: string, arg1: string) => void;
+            "service-removed": (object: string, p0: string) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::service-types": (pspec: GObject.ParamSpec) => void;

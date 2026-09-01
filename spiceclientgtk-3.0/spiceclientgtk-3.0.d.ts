@@ -50,15 +50,15 @@ export namespace SpiceClientGtk {
         /**
          * key press
          */
-        PRESS,
+        PRESS = 1,
         /**
          * key release
          */
-        RELEASE,
+        RELEASE = 2,
         /**
          * key click (press and release)
          */
-        CLICK,
+        CLICK = 3,
     }
 
 
@@ -76,13 +76,13 @@ export namespace SpiceClientGtk {
              * @signal
              * @run-first
              */
-            "keyboard-grab": (arg0: number) => void;
+            "keyboard-grab": (status: number) => void;
             /**
              * Notify when the mouse grab is active or not.
              * @signal
              * @run-first
              */
-            "mouse-grab": (arg0: number) => void;
+            "mouse-grab": (status: number) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
             "notify::disable-inputs": (pspec: GObject.ParamSpec) => void;
             "notify::grab-keyboard": (pspec: GObject.ParamSpec) => void;
@@ -592,7 +592,7 @@ export namespace SpiceClientGtk {
              * @signal
              * @run-first
              */
-            "connect-failed": (arg0: SpiceClientGLib.UsbDevice, arg1: GLib.Error) => void;
+            "connect-failed": (device: SpiceClientGLib.UsbDevice, error: GLib.Error) => void;
             "notify::device-format-string": (pspec: GObject.ParamSpec) => void;
             "notify::session": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;

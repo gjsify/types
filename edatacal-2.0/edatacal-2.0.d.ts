@@ -34,17 +34,25 @@ export namespace EDataCal {
     /**
      * This environment variable configures where the calendar
      * factory loads its backend modules from.
+     * @default EDS_CALENDAR_MODULES
      */
     const EDS_CALENDAR_MODULES: string;
 
     /**
      * This environment variable configures where the calendar
      * factory subprocess is located in.
+     * @default EDS_SUBPROCESS_CAL_PATH
      */
     const EDS_SUBPROCESS_CAL_PATH: string;
 
+    /**
+     * @default 1
+     */
     const INTERVALTREE_DEBUG: number;
 
+    /**
+     * @default 1
+     */
     const LIBICAL_GLIB_UNSTABLE_API: number;
 
     /**
@@ -106,7 +114,7 @@ export namespace EDataCal {
              * @since 3.10
              * @run-last
              */
-            closed: (arg0: string) => void;
+            closed: (sender: string) => void;
             /**
              * Emitted when the last client destroys its {@link ECal.Client} for
              * `backend`.  This signals the `backend` to begin final cleanup
@@ -436,6 +444,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         add_timezone_finish(result: Gio.AsyncResult): boolean;
 
@@ -447,6 +456,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         add_timezone_sync(tzobject: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -520,6 +530,7 @@ export namespace EDataCal {
          * @param out_uids a {@link GLib.Queue} in which to deposit results
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         create_objects_finish(result: Gio.AsyncResult, out_uids: GLib.Queue): boolean;
 
@@ -536,6 +547,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         create_objects_sync(calobjs: string, opflags: ECal.OperationFlags, out_uids: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
@@ -596,6 +608,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         discard_alarm_finish(result: Gio.AsyncResult): boolean;
 
@@ -611,6 +624,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         discard_alarm_sync(uid: string, rid: string | null, alarm_uid: string, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -699,6 +713,7 @@ export namespace EDataCal {
          * @param out_attachment_uris a {@link GLib.Queue} in which to deposit results
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         get_attachment_uris_finish(result: Gio.AsyncResult, out_attachment_uris: GLib.Queue): boolean;
 
@@ -716,6 +731,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         get_attachment_uris_sync(uid: string, rid: string | null, out_attachment_uris: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
@@ -795,6 +811,7 @@ export namespace EDataCal {
          * @param out_freebusy iCalendar strings with overall returned Free/Busy data
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         get_free_busy_finish(result: Gio.AsyncResult, out_freebusy: string[]): boolean;
 
@@ -815,6 +832,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure.
          * @since 3.10
+         * @throws GLib.Error
          */
         get_free_busy_sync(start: bigint | number, end: bigint | number, users: string[], out_freebusy: string[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -873,6 +891,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns an {@link ECal.Component}, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         get_object_finish(result: Gio.AsyncResult): string;
 
@@ -929,6 +948,7 @@ export namespace EDataCal {
          * @param out_objects a {@link GLib.Queue} in which to deposit results
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         get_object_list_finish(result: Gio.AsyncResult, out_objects: GLib.Queue): boolean;
 
@@ -945,6 +965,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         get_object_list_sync(query: string, out_objects: GLib.Queue, cancellable: Gio.Cancellable | null): boolean;
 
@@ -960,6 +981,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an {@link ECal.Component}, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         get_object_sync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): string;
 
@@ -1023,6 +1045,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns an iCalendar string, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         get_timezone_finish(result: Gio.AsyncResult): string;
 
@@ -1035,6 +1058,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns an iCalendar string, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         get_timezone_sync(tzid: string, cancellable: Gio.Cancellable | null): string;
 
@@ -1135,6 +1159,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         modify_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1148,6 +1173,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         modify_objects_sync(calobjs: string, mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1246,6 +1272,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): boolean;
 
@@ -1259,6 +1286,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         open_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1332,6 +1360,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         receive_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1345,6 +1374,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         receive_objects_sync(calobj: string, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1425,6 +1455,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
@@ -1440,6 +1471,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1497,6 +1529,7 @@ export namespace EDataCal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         remove_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1510,6 +1543,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.10
+         * @throws GLib.Error
          */
         remove_objects_sync(component_ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1590,6 +1624,7 @@ export namespace EDataCal {
          * @param out_users a {@link GLib.Queue} in which to deposit results
          * @returns a newly allocated vCalendar string, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         send_objects_finish(result: Gio.AsyncResult, out_users: GLib.Queue): string;
 
@@ -1608,6 +1643,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a vCalendar string, or `null` on error
          * @since 3.10
+         * @throws GLib.Error
          */
         send_objects_sync(calobj: string, opflags: ECal.OperationFlags, out_users: GLib.Queue, cancellable: Gio.Cancellable | null): string;
 
@@ -1944,6 +1980,7 @@ export namespace EDataCal {
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @param tzobject VTIMEZONE object to be added.
+         * @throws GLib.Error
          */
         add_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzobject: string): void;
 
@@ -1960,6 +1997,7 @@ export namespace EDataCal {
          * @param calobjs The objects to be added.
          * @param opflags bit-or of {@link ECal.OperationFlags}
          * @since 3.6
+         * @throws GLib.Error
          */
         create_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], opflags: ECal.OperationFlags): [string[], ECal.Component[]];
 
@@ -1977,6 +2015,7 @@ export namespace EDataCal {
          * @param rid Recurrence id of the calendar object.
          * @param auid Alarm ID to remove.
          * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @throws GLib.Error
          */
         discard_alarm(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, auid: string, opflags: ECal.OperationFlags): void;
 
@@ -1994,6 +2033,7 @@ export namespace EDataCal {
          * @param rid Recurrence id of the calendar object.
          * @param attachments Placeholder for list of returned attachment uris.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_attachment_uris(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string, attachments: string[]): void;
 
@@ -2010,6 +2050,7 @@ export namespace EDataCal {
          * @param users List of users to get F/B info from.
          * @param start Time range start.
          * @param end Time range end.
+         * @throws GLib.Error
          */
         get_free_busy(cal: DataCal, cancellable: Gio.Cancellable | null, users: string[], start: bigint | number, end: bigint | number): string[];
 
@@ -2025,6 +2066,7 @@ export namespace EDataCal {
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @param uid UID of the object to get.
          * @param rid Recurrence ID of the specific instance to get, or `null` if    getting the master object.
+         * @throws GLib.Error
          */
         get_object(cal: DataCal, cancellable: Gio.Cancellable | null, uid: string, rid: string | null): string;
 
@@ -2039,6 +2081,7 @@ export namespace EDataCal {
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @param sexp Search query.
+         * @throws GLib.Error
          */
         get_object_list(cal: DataCal, cancellable: Gio.Cancellable | null, sexp: string): string[];
 
@@ -2060,6 +2103,7 @@ export namespace EDataCal {
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @param tzid ID of the timezone to retrieve.
          * @param tzobject Placeholder for the returned timezone.
+         * @throws GLib.Error
          */
         get_timezone(cal: DataCal, cancellable: Gio.Cancellable | null, tzid: string, tzobject: string): void;
 
@@ -2077,6 +2121,7 @@ export namespace EDataCal {
          * @param mod Type of modification to be done.
          * @param opflags bit-or of {@link ECal.OperationFlags}
          * @since 3.6
+         * @throws GLib.Error
          */
         modify_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobjs: string[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ECal.Component[], ECal.Component[]];
 
@@ -2090,6 +2135,7 @@ export namespace EDataCal {
          * Calls the open_sync method on the given backend.
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation or just create it when it does not exist.
+         * @throws GLib.Error
          */
         open(cal: DataCal, cancellable: Gio.Cancellable | null): void;
 
@@ -2105,6 +2151,7 @@ export namespace EDataCal {
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @param calobj iCalendar object to receive.
          * @param opflags bit-or of {@link ECal.OperationFlags}
+         * @throws GLib.Error
          */
         receive_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags): void;
 
@@ -2119,6 +2166,7 @@ export namespace EDataCal {
          * @param cal An EDataCal object.
          * @param cancellable a {@link Gio.Cancellable} for the operation
          * @since 2.30
+         * @throws GLib.Error
          */
         refresh(cal: DataCal, cancellable: Gio.Cancellable | null): void;
 
@@ -2136,6 +2184,7 @@ export namespace EDataCal {
          * @param mod Type of removal.
          * @param opflags bit-or of {@link ECal.OperationFlags}
          * @since 3.6
+         * @throws GLib.Error
          */
         remove_objects(cal: DataCal, cancellable: Gio.Cancellable | null, ids: ECal.ComponentId[], mod: ECal.ObjModType, opflags: ECal.OperationFlags): [ECal.Component[], ECal.Component[]];
 
@@ -2152,6 +2201,7 @@ export namespace EDataCal {
          * @param calobj The iCalendar object to send.
          * @param opflags bit-or of {@link ECal.OperationFlags}
          * @param users List of users to send notifications to.
+         * @throws GLib.Error
          */
         send_objects(cal: DataCal, cancellable: Gio.Cancellable | null, calobj: string, opflags: ECal.OperationFlags, users: string[]): string;
 
@@ -2196,7 +2246,7 @@ export namespace EDataCal {
              * @action
              * @run-last
              */
-            "dup-component-revision": (arg0: ICalGLib.Component) => string;
+            "dup-component-revision": (object: ICalGLib.Component) => string;
             /**
              * A signal being called to get timezone when putting component
              * into the cache. It's used to make sure the cache contains
@@ -2207,7 +2257,7 @@ export namespace EDataCal {
              * @action
              * @run-last
              */
-            "get-timezone": (arg0: string) => ICalGLib.Timezone;
+            "get-timezone": (tzid: string) => ICalGLib.Timezone;
         }
 
         // Constructor properties interface
@@ -2301,6 +2351,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         delete_attachments(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2323,6 +2374,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         dup_timezone_as_string(tzid: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2335,6 +2387,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_component(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component];
 
@@ -2347,6 +2400,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_component_as_string(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2359,6 +2413,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.34
+         * @throws GLib.Error
          */
         get_component_custom_flags(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -2370,6 +2425,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_component_extra(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2382,6 +2438,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_components_by_uid(uid: string, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
 
@@ -2393,6 +2450,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_components_by_uid_as_string(uid: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -2404,6 +2462,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_components_in_range(range_start: bigint | number, range_end: bigint | number, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
 
@@ -2414,6 +2473,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_components_in_range_as_strings(range_start: bigint | number, range_end: bigint | number, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -2427,6 +2487,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_ids_with_extra(extra: string, cancellable: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
 
@@ -2436,6 +2497,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cal_cache_offline_change_free);    when no longer needed.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_offline_changes(cancellable: Gio.Cancellable | null): CalCacheOfflineChange[];
 
@@ -2453,6 +2515,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Current offline state {@link EBackend.OfflineState} for the given component.    It returns {@link EBackend.OfflineState.UNKNOWN} when the component could not be    found or other error happened.
          * @since 3.34
+         * @throws GLib.Error
          */
         get_offline_state(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): EBackend.OfflineState;
 
@@ -2471,6 +2534,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_timezone(tzid: string, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
 
@@ -2492,6 +2556,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         list_timezones(cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Timezone[]];
 
@@ -2511,6 +2576,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         put_component(component: ECal.Component, extra: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2528,6 +2594,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         put_components(components: ECal.Component[], extras: string[] | null, custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2542,6 +2609,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         put_timezone(zone: ICalGLib.Timezone, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2556,6 +2624,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove_component(uid: string, rid: string | null, custom_flags: number, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2572,6 +2641,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove_components(ids: ECal.ComponentId[], custom_flags: number[] | null, offline_flag: EBackend.CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2588,6 +2658,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.30
+         * @throws GLib.Error
          */
         remove_timezone(tzid: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2596,6 +2667,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove_timezones(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2610,6 +2682,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, CalCacheSearchData[]];
 
@@ -2623,6 +2696,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search_components(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
 
@@ -2636,6 +2710,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search_ids(sexp: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.ComponentId[]];
 
@@ -2647,6 +2722,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search_with_callback(sexp: string | null, func: CalCacheSearchFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2659,6 +2735,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.34
+         * @throws GLib.Error
          */
         set_component_custom_flags(uid: string, rid: string | null, custom_flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2671,6 +2748,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         set_component_extra(uid: string, rid: string | null, extra: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3092,6 +3170,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         connect_sync(credentials: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): [boolean, EDataServer.SourceAuthenticationResult, string, Gio.TlsCertificateFlags];
 
@@ -3105,6 +3184,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3125,6 +3205,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         empty_cache_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3133,6 +3214,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         ensure_connected_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3149,6 +3231,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         gather_timezones_sync(vcalendar: ICalGLib.Component, remove_existing: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3190,6 +3273,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         get_changes_sync(last_sync_tag: string | null, is_repeat: boolean, cancellable: Gio.Cancellable | null): [boolean, string, boolean, CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[]];
 
@@ -3227,6 +3311,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         inline_local_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3246,6 +3331,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         list_existing_sync(cancellable: Gio.Cancellable | null): [boolean, string, CalMetaBackendInfo[]];
 
@@ -3268,6 +3354,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         load_component_sync(uid: string, extra: string | null, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Component, string];
 
@@ -3296,6 +3383,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         process_changes_sync(created_objects: CalMetaBackendInfo[] | null, modified_objects: CalMetaBackendInfo[] | null, removed_objects: CalMetaBackendInfo[] | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3311,6 +3399,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         refresh_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3329,6 +3418,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         remove_component_sync(conflict_resolution: EDataServer.ConflictResolution, uid: string, extra: string | null, object: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3384,6 +3474,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         save_component_sync(overwrite_existing: boolean, conflict_resolution: EDataServer.ConflictResolution, instances: ECal.Component[], extra: string | null, opflags: ECal.OperationFlags, cancellable: Gio.Cancellable | null): [boolean, string, string];
 
@@ -3413,6 +3504,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search_components_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, ECal.Component[]];
 
@@ -3432,6 +3524,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         search_sync(expr: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -3493,6 +3586,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         split_changes_sync(objects: CalMetaBackendInfo[], cancellable: Gio.Cancellable | null): [boolean, CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[], CalMetaBackendInfo[] | null];
 
@@ -3507,6 +3601,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         store_inline_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -3812,6 +3907,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3951,6 +4047,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4292,6 +4389,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4506,6 +4604,7 @@ export namespace EDataCal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

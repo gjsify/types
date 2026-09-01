@@ -37,8 +37,8 @@ export namespace CinnamonDesktop {
      * @gir-type Enum
      */
     enum DesktopThumbnailSize {
-        NORMAL,
-        LARGE,
+        NORMAL = 0,
+        LARGE = 1,
     }
 
 
@@ -46,11 +46,11 @@ export namespace CinnamonDesktop {
      * @gir-type Enum
      */
     enum RRDpmsMode {
-        ON,
-        STANDBY,
-        SUSPEND,
-        OFF,
-        UNKNOWN,
+        ON = 0,
+        STANDBY = 1,
+        SUSPEND = 2,
+        OFF = 3,
+        UNKNOWN = 4,
     }
 
 
@@ -65,11 +65,11 @@ export namespace CinnamonDesktop {
      * @gir-type Enum
      */
     enum RRDpmsModeType {
-        ON,
-        STANDBY,
-        SUSPEND,
-        OFF,
-        UNKNOWN,
+        ON = 0,
+        STANDBY = 1,
+        SUSPEND = 2,
+        OFF = 3,
+        UNKNOWN = 4,
     }
 
 
@@ -99,6 +99,9 @@ export namespace CinnamonDesktop {
     }
 
 
+    /**
+     * @default Panel
+     */
     const RR_CONNECTOR_TYPE_PANEL: string;
 
     /**
@@ -372,6 +375,7 @@ export namespace CinnamonDesktop {
      * created. It solely means that no error condition was hit sending the request.
      * @param res A {@link Gio.AsyncResult}
      * @returns `false` on error, `true` otherwise
+     * @throws GLib.Error
      */
     function start_systemd_scope_finish(res: Gio.AsyncResult): boolean;
 
@@ -386,13 +390,13 @@ export namespace CinnamonDesktop {
      * @gir-type Flags
      */
     enum RRRotation {
-        ROTATION_NEXT,
-        ROTATION_0,
-        ROTATION_90,
-        ROTATION_180,
-        ROTATION_270,
-        REFLECT_X,
-        REFLECT_Y,
+        ROTATION_NEXT = 0,
+        ROTATION_0 = 1,
+        ROTATION_90 = 2,
+        ROTATION_180 = 4,
+        ROTATION_270 = 8,
+        REFLECT_X = 16,
+        REFLECT_Y = 32,
     }
 
 
@@ -613,7 +617,7 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-last
              */
-            finished: (arg0: GObject.Object) => void;
+            finished: (window: GObject.Object) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
         }
@@ -963,6 +967,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1122,16 +1127,19 @@ export namespace CinnamonDesktop {
         // Methods
         /**
          * @param screen 
+         * @throws GLib.Error
          */
         applicable(screen: RRScreen): boolean;
 
         /**
          * @param screen 
+         * @throws GLib.Error
          */
         apply(screen: RRScreen): boolean;
 
         /**
          * @param screen 
+         * @throws GLib.Error
          */
         apply_persistent(screen: RRScreen): boolean;
 
@@ -1152,6 +1160,9 @@ export namespace CinnamonDesktop {
          */
         get_outputs(): RROutputInfo[];
 
+        /**
+         * @throws GLib.Error
+         */
         load_current(): boolean;
 
         /**
@@ -1400,7 +1411,7 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            "output-connected": (arg0: null) => void;
+            "output-connected": (output: null) => void;
             /**
              * This signal is emitted when a display device is disconnected from
              * a port, or a port output is hot-unplugged. The latter can happen
@@ -1417,7 +1428,7 @@ export namespace CinnamonDesktop {
              * @signal
              * @run-first
              */
-            "output-disconnected": (arg0: null) => void;
+            "output-disconnected": (output: null) => void;
             "notify::dpms-mode": (pspec: GObject.ParamSpec) => void;
             "notify::gdk-screen": (pspec: GObject.ParamSpec) => void;
         }
@@ -1526,6 +1537,9 @@ export namespace CinnamonDesktop {
          */
         get_crtc_by_id(id: number): RRCrtc;
 
+        /**
+         * @throws GLib.Error
+         */
         get_dpms_mode(): [boolean, RRDpmsMode];
 
         /**
@@ -1569,12 +1583,14 @@ export namespace CinnamonDesktop {
          * Refreshes the screen configuration, and calls the screen's callback if it
          * exists and if the screen's configuration changed.
          * @returns TRUE if the screen's configuration changed; otherwise, the function returns FALSE and a NULL error if the configuration didn't change, or FALSE and a non-NULL error if there was an error while refreshing the configuration.
+         * @throws GLib.Error
          */
         refresh(): boolean;
 
         /**
          * This method also disables the DPMS timeouts.
          * @param mode 
+         * @throws GLib.Error
          */
         set_dpms_mode(mode: RRDpmsMode): boolean;
 
@@ -1715,6 +1731,7 @@ export namespace CinnamonDesktop {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1724,6 +1741,7 @@ export namespace CinnamonDesktop {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): RRScreen;
 
@@ -1823,6 +1841,7 @@ export namespace CinnamonDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2369,6 +2388,7 @@ export namespace CinnamonDesktop {
         /**
          * @param value the absolute value which is 0 >= this <= 100
          * @returns `true` for success
+         * @throws GLib.Error
          */
         set_backlight(value: number): boolean;
 

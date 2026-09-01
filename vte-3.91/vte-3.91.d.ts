@@ -50,15 +50,15 @@ export namespace Vte {
         /**
          * align to left/top
          */
-        START,
+        START = 0,
         /**
          * align to centre
          */
-        CENTER,
+        CENTER = 1,
         /**
          * align to right/bottom
          */
-        END,
+        END = 2,
     }
 
 
@@ -78,15 +78,15 @@ export namespace Vte {
         /**
          * Follow GTK+ settings for cursor blinking.
          */
-        SYSTEM,
+        SYSTEM = 0,
         /**
          * Cursor blinks.
          */
-        ON,
+        ON = 1,
         /**
          * Cursor does not blink.
          */
-        OFF,
+        OFF = 2,
     }
 
 
@@ -106,16 +106,16 @@ export namespace Vte {
         /**
          * Draw a block cursor.  This is the default.
          */
-        BLOCK,
+        BLOCK = 0,
         /**
          * Draw a vertical bar on the left side of character.
          * This is similar to the default cursor for other GTK+ widgets.
          */
-        IBEAM,
+        IBEAM = 1,
         /**
          * Draw a horizontal bar below the character.
          */
-        UNDERLINE,
+        UNDERLINE = 2,
     }
 
 
@@ -136,23 +136,23 @@ export namespace Vte {
         /**
          * For backspace, attempt to determine the right value from the terminal's IO settings.  For delete, use the control sequence.
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Send an ASCII backspace character (0x08).
          */
-        ASCII_BACKSPACE,
+        ASCII_BACKSPACE = 1,
         /**
          * Send an ASCII delete character (0x7F).
          */
-        ASCII_DELETE,
+        ASCII_DELETE = 2,
         /**
          * Send the "@@7" control sequence.
          */
-        DELETE_SEQUENCE,
+        DELETE_SEQUENCE = 3,
         /**
          * Send terminal's "erase" setting.
          */
-        TTY,
+        TTY = 4,
     }
 
 
@@ -173,11 +173,11 @@ export namespace Vte {
         /**
          * Export as plain text
          */
-        TEXT,
+        TEXT = 1,
         /**
          * Export as HTML formatted text
          */
-        HTML,
+        HTML = 2,
     }
 
 
@@ -198,23 +198,23 @@ export namespace Vte {
         /**
          * no progress current
          */
-        INACTIVE,
+        INACTIVE = 0,
         /**
          * progress is normal
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * progress is aborted by an error
          */
-        ERROR,
+        ERROR = 2,
         /**
          * progress is indeterminate
          */
-        INDETERMINATE,
+        INDETERMINATE = 3,
         /**
          * progress is paused
          */
-        PAUSED,
+        PAUSED = 4,
     }
 
 
@@ -234,55 +234,55 @@ export namespace Vte {
         /**
          * the ID of the `VTE_TERMPROP_CURRENT_DIRECTORY_URI` termprop
          */
-        CURRENT_DIRECTORY_URI,
+        CURRENT_DIRECTORY_URI = 0,
         /**
          * the ID of the `VTE_TERMPROP_CURRENT_FILE_URI` termprop
          */
-        CURRENT_FILE_URI,
+        CURRENT_FILE_URI = 1,
         /**
          * the ID of the `VTE_TERMPROP_XTERM_TITLE` termprop
          */
-        XTERM_TITLE,
+        XTERM_TITLE = 2,
         /**
          * the ID of the `VTE_TERMPROP_CONTAINER_NAME` termprop
          */
-        CONTAINER_NAME,
+        CONTAINER_NAME = 3,
         /**
          * the ID of the `VTE_TERMPROP_CONTAINER_RUNTIME` termprop
          */
-        CONTAINER_RUNTIME,
+        CONTAINER_RUNTIME = 4,
         /**
          * the ID of the `VTE_TERMPROP_CONTAINER_UID` termprop
          */
-        CONTAINER_UID,
+        CONTAINER_UID = 5,
         /**
          * the ID of the `VTE_TERMPROP_SHELL_PRECMD` termprop
          */
-        SHELL_PRECMD,
+        SHELL_PRECMD = 6,
         /**
          * the ID of the `VTE_TERMPROP_SHELL_PREEXEC` termprop
          */
-        SHELL_PREEXEC,
+        SHELL_PREEXEC = 7,
         /**
          * the ID of the `VTE_TERMPROP_SHELL_POSTEXEC` termprop
          */
-        SHELL_POSTEXEC,
+        SHELL_POSTEXEC = 8,
         /**
          * the ID of the `VTE_TERMPROP_PROGRESS_HINT` termprop. Since: 0.80
          */
-        PROGRESS_HINT,
+        PROGRESS_HINT = 9,
         /**
          * the ID of the `VTE_TERMPROP_PROGRESS_VALUE` termprop. Since: 0.80
          */
-        PROGRESS_VALUE,
+        PROGRESS_VALUE = 10,
         /**
          * the ID of the `VTE_TERMPROP_ICON_COLOR` termprop. Since: 0.80
          */
-        ICON_COLOR,
+        ICON_COLOR = 11,
         /**
          * the ID of the `VTE_TERMPROP_ICON_IMAGE` termprop. Since: 0.80
          */
-        ICON_IMAGE,
+        ICON_IMAGE = 12,
     }
 
 
@@ -302,51 +302,51 @@ export namespace Vte {
         /**
          * no value, use for signalling
          */
-        VALUELESS,
+        VALUELESS = 0,
         /**
          * a bool
          */
-        BOOL,
+        BOOL = 1,
         /**
          * a signed 64-bit integer
          */
-        INT,
+        INT = 2,
         /**
          * an unsigned 64-bit integer
          */
-        UINT,
+        UINT = 3,
         /**
          * a finite double-precision floating point number
          */
-        DOUBLE,
+        DOUBLE = 4,
         /**
          * a color
          */
-        RGB,
+        RGB = 5,
         /**
          * a color with alpha
          */
-        RGBA,
+        RGBA = 6,
         /**
          * a string
          */
-        STRING,
+        STRING = 7,
         /**
          * binary data
          */
-        DATA,
+        DATA = 8,
         /**
          * a UUID
          */
-        UUID,
+        UUID = 9,
         /**
          * a URI
          */
-        URI,
+        URI = 10,
         /**
          * an image. Since: 0.80
          */
-        IMAGE,
+        IMAGE = 11,
     }
 
 
@@ -425,19 +425,19 @@ export namespace Vte {
         /**
          * Do not blink the text.
          */
-        NEVER,
+        NEVER = 0,
         /**
          * Allow blinking text only if the terminal is focused.
          */
-        FOCUSED,
+        FOCUSED = 1,
         /**
          * Allow blinking text only if the terminal is unfocused.
          */
-        UNFOCUSED,
+        UNFOCUSED = 2,
         /**
          * Allow blinking text. This is the default.
          */
-        ALWAYS,
+        ALWAYS = 3,
     }
 
 
@@ -457,28 +457,34 @@ export namespace Vte {
         /**
          * Write contents as UTF-8 text.  This is the default.
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
     /**
      * The major version number of the VTE library
      * (e.g. in version 3.1.4 this is 3).
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version number of the VTE library
      * (e.g. in version 3.1.4 this is 4).
+     * @default 1
      */
     const MICRO_VERSION: number;
 
     /**
      * The minor version number of the VTE library
      * (e.g. in version 3.1.4 this is 1).
+     * @default 84
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 1075314688
+     */
     const REGEX_FLAGS_DEFAULT: number;
 
     /**
@@ -488,6 +494,7 @@ export namespace Vte {
      * Normally, the spawned process inherits the environment from the parent
      * process; when this flag is used, only the environment variables passed
      * to `vte_pty_spawn_async()` etc. are passed to the child process.
+     * @default 33554432
      */
     const SPAWN_NO_PARENT_ENVV: number;
 
@@ -498,6 +505,7 @@ export namespace Vte {
      * Prevents `vte_pty_spawn_async()` etc. from moving the newly created child
      * process to a systemd user scope.
      * @since 0.60
+     * @default 67108864
      */
     const SPAWN_NO_SYSTEMD_SCOPE: number;
 
@@ -510,6 +518,7 @@ export namespace Vte {
      * 
      * This is supported on Linux only.
      * @since 0.60
+     * @default 134217728
      */
     const SPAWN_REQUIRE_SYSTEMD_SCOPE: number;
 
@@ -517,6 +526,7 @@ export namespace Vte {
      * A {@link Vte.PropertyType.STRING} termprop that stores the name of the
      * container.
      * @since 0.78
+     * @default vte.container.name
      */
     const TERMPROP_CONTAINER_NAME: string;
 
@@ -524,6 +534,7 @@ export namespace Vte {
      * A {@link Vte.PropertyType.STRING} termprop that stores the runtime of the
      * container.
      * @since 0.78
+     * @default vte.container.runtime
      */
     const TERMPROP_CONTAINER_RUNTIME: string;
 
@@ -531,6 +542,7 @@ export namespace Vte {
      * A {@link Vte.PropertyType.UINT} termprop that stores the user ID of the
      * container.
      * @since 0.78
+     * @default vte.container.uid
      */
     const TERMPROP_CONTAINER_UID: string;
 
@@ -542,6 +554,7 @@ export namespace Vte {
      * 
      * Note that this termprop is not settable via the termprop OSC.
      * @since 0.78
+     * @default vte.cwd
      */
     const TERMPROP_CURRENT_DIRECTORY_URI: string;
 
@@ -553,9 +566,13 @@ export namespace Vte {
      * 
      * Note that this termprop is not settable via the termprop OSC.
      * @since 0.78
+     * @default vte.cwf
      */
     const TERMPROP_CURRENT_FILE_URI: string;
 
+    /**
+     * @default vte.icon.color
+     */
     const TERMPROP_ICON_COLOR: string;
 
     /**
@@ -567,6 +584,7 @@ export namespace Vte {
      * 
      * Note that in this vte version, this termprop is always unset.
      * @since 0.80
+     * @default vte.icon.image
      */
     const TERMPROP_ICON_IMAGE: string;
 
@@ -574,6 +592,7 @@ export namespace Vte {
      * The string prefix that any termprop's name must start with to be installed
      * by `vte_install_termprop()`.
      * @since 0.78
+     * @default vte.ext.
      */
     const TERMPROP_NAME_PREFIX: string;
 
@@ -594,6 +613,7 @@ export namespace Vte {
      * Note that before version 0.82, this termprop could not be set by
      * the termprop OSC, but instead only by OSC 9 ; 4 (ConEmu progress).
      * @since 0.80
+     * @default vte.progress.hint
      */
     const TERMPROP_PROGRESS_HINT: string;
 
@@ -604,6 +624,7 @@ export namespace Vte {
      * Note that before version 0.82, this termprop could not be set by
      * the termprop OSC, but instead only by OSC 9 ; 4 (ConEmu progress).
      * @since 0.80
+     * @default vte.progress.value
      */
     const TERMPROP_PROGRESS_VALUE: string;
 
@@ -612,6 +633,7 @@ export namespace Vte {
      * has executed the commands entered at the prompt and these commands
      * have returned. The termprop value is the exit code.
      * @since 0.78
+     * @default vte.shell.postexec
      */
     const TERMPROP_SHELL_POSTEXEC: string;
 
@@ -619,6 +641,7 @@ export namespace Vte {
      * A {@link Vte.PropertyType.VALUELESS} termprop that signals that the shell
      * is going to prompt.
      * @since 0.78
+     * @default vte.shell.precmd
      */
     const TERMPROP_SHELL_PRECMD: string;
 
@@ -626,6 +649,7 @@ export namespace Vte {
      * A {@link Vte.PropertyType.VALUELESS} termprop that signals that the shell
      * is preparing to execute the command entered at the prompt.
      * @since 0.78
+     * @default vte.shell.preexec
      */
     const TERMPROP_SHELL_PREEXEC: string;
 
@@ -637,11 +661,18 @@ export namespace Vte {
      * 
      * Note that this termprop is not settable via the termprop OSC.
      * @since 0.78
+     * @default xterm.title
      */
     const TERMPROP_XTERM_TITLE: string;
 
+    /**
+     * @default 18446744073709551615
+     */
     const TEST_FLAGS_ALL: number;
 
+    /**
+     * @default 0
+     */
     const TEST_FLAGS_NONE: number;
 
     /**
@@ -832,23 +863,23 @@ export namespace Vte {
         /**
          * whether VTE was built with bidirectional text support
          */
-        FLAG_BIDI,
+        FLAG_BIDI = 1,
         /**
          * whether VTE was built with ICU support
          */
-        FLAG_ICU,
+        FLAG_ICU = 2,
         /**
          * whether VTE was built with systemd support
          */
-        FLAG_SYSTEMD,
+        FLAG_SYSTEMD = 4,
         /**
          * whether VTE was built with SIXEL support
          */
-        FLAG_SIXEL,
+        FLAG_SIXEL = 8,
         /**
          * mask of all feature flags
          */
-        FLAGS_MASK,
+        FLAGS_MASK = -1,
     }
 
 
@@ -868,11 +899,11 @@ export namespace Vte {
         /**
          * no flags, default
          */
-        NONE,
+        NONE = 0,
         /**
          * denotes an ephemeral termprop
          */
-        EPHEMERAL,
+        EPHEMERAL = 1,
     }
 
 
@@ -890,37 +921,37 @@ export namespace Vte {
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_LASTLOG,
+        NO_LASTLOG = 1,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_UTMP,
+        NO_UTMP = 2,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_WTMP,
+        NO_WTMP = 4,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_HELPER,
+        NO_HELPER = 8,
         /**
          * Unused. Deprecated: 0.38
          */
-        NO_FALLBACK,
+        NO_FALLBACK = 16,
         /**
          * Do not start a new session for the child in
          *   `vte_pty_child_setup()`. See man:setsid(2) for more information. Since: 0.58
          */
-        NO_SESSION,
+        NO_SESSION = 32,
         /**
          * Do not set the PTY as the controlling TTY for the child
          *   in `vte_pty_child_setup()`. See man:tty_ioctl(4) for more information. Since: 0.58
          */
-        NO_CTTY,
+        NO_CTTY = 64,
         /**
          * the default flags
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -935,10 +966,10 @@ export namespace Vte {
      * @gir-type Flags
      */
     enum UuidFormat {
-        SIMPLE,
-        BRACED,
-        URN,
-        ANY,
+        SIMPLE = 1,
+        BRACED = 2,
+        URN = 4,
+        ANY = 7,
     }
 
 
@@ -1027,6 +1058,7 @@ export namespace Vte {
          * 
          * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         get_size(): [boolean, number, number];
 
@@ -1038,6 +1070,7 @@ export namespace Vte {
          * @param rows the desired number of rows
          * @param columns the desired number of columns
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         set_size(rows: number, columns: number): boolean;
 
@@ -1047,6 +1080,7 @@ export namespace Vte {
          * discipline do multibyte backspace correctly.
          * @param utf8 whether or not the pty is in UTF-8 mode
          * @returns `true` on success, `false` on failure with `error` filled in
+         * @throws GLib.Error
          */
         set_utf8(utf8: boolean): boolean;
 
@@ -1101,6 +1135,7 @@ export namespace Vte {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, or `false` on error with `error` filled in
          * @since 0.48
+         * @throws GLib.Error
          */
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
 
@@ -1192,6 +1227,7 @@ export namespace Vte {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1260,21 +1296,21 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "char-size-changed": (arg0: number, arg1: number) => void;
+            "char-size-changed": (width: number, height: number) => void;
             /**
              * This signal is emitted when the terminal detects that a child
              * watched using `vte_terminal_watch_child()` has exited.
              * @signal
              * @run-last
              */
-            "child-exited": (arg0: number) => void;
+            "child-exited": (status: number) => void;
             /**
              * Emitted whenever the terminal receives input from the user and
              * prepares to send it to the child process.
              * @signal
              * @run-last
              */
-            commit: (arg0: string, arg1: number) => void;
+            commit: (text: string, size: number) => void;
             /**
              * Emitted whenever the visible appearance of the terminal has changed.
              * Used primarily by `VteTerminalAccessible`.
@@ -1351,7 +1387,7 @@ export namespace Vte {
              * @since 0.50
              * @run-last
              */
-            "hyperlink-hover-uri-changed": (arg0: string, arg1: Gdk.Rectangle) => void;
+            "hyperlink-hover-uri-changed": (object: string, p0: Gdk.Rectangle) => void;
             /**
              * @signal
              * @deprecated since 0.54: This signal is never emitted.
@@ -1391,7 +1427,7 @@ export namespace Vte {
              * @deprecated since 0.60
              * @run-last
              */
-            "move-window": (arg0: number, arg1: number) => void;
+            "move-window": (x: number, y: number) => void;
             /**
              * Emitted whenever `vte_terminal_paste_clipboard()` is called.
              * @signal
@@ -1418,7 +1454,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "resize-window": (arg0: number, arg1: number) => void;
+            "resize-window": (width: number, height: number) => void;
             /**
              * Never emitted.
              * @signal
@@ -1449,7 +1485,7 @@ export namespace Vte {
              * @signal
              * @run-last
              */
-            "setup-context-menu": (arg0: EventContext | null) => void;
+            "setup-context-menu": (context: EventContext | null) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1467,7 +1503,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed": (arg0: string) => void;
+            "termprop-changed": (name: string) => void;
             /**
              * Emitted when termprops have changed. `props` is an array containing
              * the IDs of the terminal properties that may have changed since
@@ -1490,7 +1526,7 @@ export namespace Vte {
              * @since 0.78
              * @run-last
              */
-            "termprops-changed": (arg0: number[]) => boolean | void;
+            "termprops-changed": (props: number[]) => boolean | void;
             /**
              * Emitted when the {@link Vte.Terminal.window_title} property is modified.
              * @signal
@@ -1598,7 +1634,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::allow-bold": (arg0: string) => void;
+            "termprop-changed::allow-bold": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1616,7 +1652,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::allow-hyperlink": (arg0: string) => void;
+            "termprop-changed::allow-hyperlink": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1634,7 +1670,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::audible-bell": (arg0: string) => void;
+            "termprop-changed::audible-bell": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1652,7 +1688,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::backspace-binding": (arg0: string) => void;
+            "termprop-changed::backspace-binding": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1670,7 +1706,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::bold-is-bright": (arg0: string) => void;
+            "termprop-changed::bold-is-bright": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1688,7 +1724,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cell-height-scale": (arg0: string) => void;
+            "termprop-changed::cell-height-scale": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1706,7 +1742,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cell-width-scale": (arg0: string) => void;
+            "termprop-changed::cell-width-scale": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1724,7 +1760,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cjk-ambiguous-width": (arg0: string) => void;
+            "termprop-changed::cjk-ambiguous-width": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1742,7 +1778,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::context-menu": (arg0: string) => void;
+            "termprop-changed::context-menu": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1760,7 +1796,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::context-menu-model": (arg0: string) => void;
+            "termprop-changed::context-menu-model": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1778,7 +1814,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::current-directory-uri": (arg0: string) => void;
+            "termprop-changed::current-directory-uri": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1796,7 +1832,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::current-file-uri": (arg0: string) => void;
+            "termprop-changed::current-file-uri": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1814,7 +1850,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cursor-blink-mode": (arg0: string) => void;
+            "termprop-changed::cursor-blink-mode": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1832,7 +1868,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cursor-shape": (arg0: string) => void;
+            "termprop-changed::cursor-shape": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1850,7 +1886,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::delete-binding": (arg0: string) => void;
+            "termprop-changed::delete-binding": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1868,7 +1904,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-a11y": (arg0: string) => void;
+            "termprop-changed::enable-a11y": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1886,7 +1922,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-bidi": (arg0: string) => void;
+            "termprop-changed::enable-bidi": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1904,7 +1940,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-fallback-scrolling": (arg0: string) => void;
+            "termprop-changed::enable-fallback-scrolling": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1922,7 +1958,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-legacy-osc777": (arg0: string) => void;
+            "termprop-changed::enable-legacy-osc777": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1940,7 +1976,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-shaping": (arg0: string) => void;
+            "termprop-changed::enable-shaping": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1958,7 +1994,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::enable-sixel": (arg0: string) => void;
+            "termprop-changed::enable-sixel": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1976,7 +2012,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::encoding": (arg0: string) => void;
+            "termprop-changed::encoding": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -1994,7 +2030,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::font-desc": (arg0: string) => void;
+            "termprop-changed::font-desc": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2012,7 +2048,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::font-options": (arg0: string) => void;
+            "termprop-changed::font-options": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2030,7 +2066,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::font-scale": (arg0: string) => void;
+            "termprop-changed::font-scale": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2048,7 +2084,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::hyperlink-hover-uri": (arg0: string) => void;
+            "termprop-changed::hyperlink-hover-uri": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2066,7 +2102,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::icon-title": (arg0: string) => void;
+            "termprop-changed::icon-title": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2084,7 +2120,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::input-enabled": (arg0: string) => void;
+            "termprop-changed::input-enabled": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2102,7 +2138,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::pointer-autohide": (arg0: string) => void;
+            "termprop-changed::pointer-autohide": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2120,7 +2156,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::pty": (arg0: string) => void;
+            "termprop-changed::pty": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2138,7 +2174,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::rewrap-on-resize": (arg0: string) => void;
+            "termprop-changed::rewrap-on-resize": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2156,7 +2192,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scroll-on-insert": (arg0: string) => void;
+            "termprop-changed::scroll-on-insert": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2174,7 +2210,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scroll-on-keystroke": (arg0: string) => void;
+            "termprop-changed::scroll-on-keystroke": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2192,7 +2228,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scroll-on-output": (arg0: string) => void;
+            "termprop-changed::scroll-on-output": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2210,7 +2246,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scroll-unit-is-pixels": (arg0: string) => void;
+            "termprop-changed::scroll-unit-is-pixels": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2228,7 +2264,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scrollback-lines": (arg0: string) => void;
+            "termprop-changed::scrollback-lines": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2246,7 +2282,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::text-blink-mode": (arg0: string) => void;
+            "termprop-changed::text-blink-mode": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2264,7 +2300,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::window-title": (arg0: string) => void;
+            "termprop-changed::window-title": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2282,7 +2318,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::word-char-exceptions": (arg0: string) => void;
+            "termprop-changed::word-char-exceptions": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2300,7 +2336,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::xalign": (arg0: string) => void;
+            "termprop-changed::xalign": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2318,7 +2354,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::xfill": (arg0: string) => void;
+            "termprop-changed::xfill": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2336,7 +2372,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::yalign": (arg0: string) => void;
+            "termprop-changed::yalign": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2354,7 +2390,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::yfill": (arg0: string) => void;
+            "termprop-changed::yfill": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2372,7 +2408,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::can-focus": (arg0: string) => void;
+            "termprop-changed::can-focus": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2390,7 +2426,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::can-target": (arg0: string) => void;
+            "termprop-changed::can-target": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2408,7 +2444,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::css-classes": (arg0: string) => void;
+            "termprop-changed::css-classes": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2426,7 +2462,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::css-name": (arg0: string) => void;
+            "termprop-changed::css-name": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2444,7 +2480,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::cursor": (arg0: string) => void;
+            "termprop-changed::cursor": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2462,7 +2498,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::focus-on-click": (arg0: string) => void;
+            "termprop-changed::focus-on-click": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2480,7 +2516,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::focusable": (arg0: string) => void;
+            "termprop-changed::focusable": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2498,7 +2534,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::halign": (arg0: string) => void;
+            "termprop-changed::halign": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2516,7 +2552,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::has-default": (arg0: string) => void;
+            "termprop-changed::has-default": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2534,7 +2570,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::has-focus": (arg0: string) => void;
+            "termprop-changed::has-focus": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2552,7 +2588,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::has-tooltip": (arg0: string) => void;
+            "termprop-changed::has-tooltip": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2570,7 +2606,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::height-request": (arg0: string) => void;
+            "termprop-changed::height-request": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2588,7 +2624,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::hexpand": (arg0: string) => void;
+            "termprop-changed::hexpand": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2606,7 +2642,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::hexpand-set": (arg0: string) => void;
+            "termprop-changed::hexpand-set": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2624,7 +2660,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::layout-manager": (arg0: string) => void;
+            "termprop-changed::layout-manager": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2642,7 +2678,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::limit-events": (arg0: string) => void;
+            "termprop-changed::limit-events": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2660,7 +2696,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::margin-bottom": (arg0: string) => void;
+            "termprop-changed::margin-bottom": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2678,7 +2714,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::margin-end": (arg0: string) => void;
+            "termprop-changed::margin-end": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2696,7 +2732,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::margin-start": (arg0: string) => void;
+            "termprop-changed::margin-start": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2714,7 +2750,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::margin-top": (arg0: string) => void;
+            "termprop-changed::margin-top": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2732,7 +2768,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::name": (arg0: string) => void;
+            "termprop-changed::name": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2750,7 +2786,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::opacity": (arg0: string) => void;
+            "termprop-changed::opacity": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2768,7 +2804,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::overflow": (arg0: string) => void;
+            "termprop-changed::overflow": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2786,7 +2822,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::parent": (arg0: string) => void;
+            "termprop-changed::parent": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2804,7 +2840,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::receives-default": (arg0: string) => void;
+            "termprop-changed::receives-default": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2822,7 +2858,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::root": (arg0: string) => void;
+            "termprop-changed::root": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2840,7 +2876,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::scale-factor": (arg0: string) => void;
+            "termprop-changed::scale-factor": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2858,7 +2894,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::sensitive": (arg0: string) => void;
+            "termprop-changed::sensitive": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2876,7 +2912,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::tooltip-markup": (arg0: string) => void;
+            "termprop-changed::tooltip-markup": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2894,7 +2930,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::tooltip-text": (arg0: string) => void;
+            "termprop-changed::tooltip-text": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2912,7 +2948,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::valign": (arg0: string) => void;
+            "termprop-changed::valign": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2930,7 +2966,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::vexpand": (arg0: string) => void;
+            "termprop-changed::vexpand": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2948,7 +2984,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::vexpand-set": (arg0: string) => void;
+            "termprop-changed::vexpand-set": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2966,7 +3002,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::visible": (arg0: string) => void;
+            "termprop-changed::visible": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -2984,7 +3020,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::width-request": (arg0: string) => void;
+            "termprop-changed::width-request": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -3002,7 +3038,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::accessible-role": (arg0: string) => void;
+            "termprop-changed::accessible-role": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -3020,7 +3056,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::hadjustment": (arg0: string) => void;
+            "termprop-changed::hadjustment": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -3038,7 +3074,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::hscroll-policy": (arg0: string) => void;
+            "termprop-changed::hscroll-policy": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -3056,7 +3092,7 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::vadjustment": (arg0: string) => void;
+            "termprop-changed::vadjustment": (name: string) => void;
             /**
              * The "termprop-changed" signal is emitted when a termprop
              * has changed or been reset.
@@ -3074,8 +3110,8 @@ export namespace Vte {
              * @detailed
              * @run-last
              */
-            "termprop-changed::vscroll-policy": (arg0: string) => void;
-            [key: `termprop-changed::${string}`]: (arg0: string) => void;
+            "termprop-changed::vscroll-policy": (name: string) => void;
+            [key: `termprop-changed::${string}`]: (name: string) => void;
         }
 
         // Constructor properties interface
@@ -4913,6 +4949,7 @@ export namespace Vte {
          * @param flags flags from {@link Vte.PtyFlags}
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a new {@link Vte.Pty}
+         * @throws GLib.Error
          */
         pty_new_sync(flags: PtyFlags, cancellable: Gio.Cancellable | null): Pty;
 
@@ -5358,6 +5395,7 @@ export namespace Vte {
          * @param codeset target charset, or `null` to use UTF-8
          * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
          * @deprecated since 0.54: Support for non-UTF-8 is deprecated.
+         * @throws GLib.Error
          */
         set_encoding(codeset: string | null): boolean;
 
@@ -5599,6 +5637,7 @@ export namespace Vte {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, or `false` on error with `error` filled in
          * @deprecated since 0.48: Use `vte_terminal_spawn_async()` instead.
+         * @throws GLib.Error
          */
         spawn_sync(pty_flags: PtyFlags, working_directory: string | null, argv: string[], envv: string[] | null, spawn_flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Pid | null];
 
@@ -5700,6 +5739,7 @@ export namespace Vte {
          * @param flags a set of {@link Vte.WriteFlags}
          * @param cancellable a {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` if there was an error
+         * @throws GLib.Error
          */
         write_contents_sync(stream: Gio.OutputStream, flags: WriteFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6406,6 +6446,7 @@ export namespace Vte {
          * If the platform supports JITing, JIT compiles `regex`.
          * @param flags PCRE2 JIT flags, or 0
          * @returns `true` if JITing succeeded (or PCRE2 was built without   JIT support), or `false` with `error` filled in
+         * @throws GLib.Error
          */
         jit(flags: number): boolean;
 
@@ -6422,6 +6463,7 @@ export namespace Vte {
          * @param flags PCRE2 match flags
          * @returns the substituted string, or `null`   if an error occurred
          * @since 0.56
+         * @throws GLib.Error
          */
         substitute(subject: string, replacement: string, flags: number): string;
 

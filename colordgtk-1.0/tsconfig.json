@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./colordgtk-1.0.d.ts","./colordgtk-1.0-surface.d.ts"]
+  "include": ["./colordgtk-1.0.d.ts","./colordgtk-1.0-vocabulary.d.ts"]
 }
 
 

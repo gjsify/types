@@ -34,12 +34,12 @@ export namespace ECalendar {
      * @since 3.2
      */
     enum CalClientError {
-        NO_SUCH_CALENDAR,
-        OBJECT_NOT_FOUND,
-        INVALID_OBJECT,
-        UNKNOWN_USER,
-        OBJECT_ID_ALREADY_EXISTS,
-        INVALID_RANGE,
+        NO_SUCH_CALENDAR = 0,
+        OBJECT_NOT_FOUND = 1,
+        INVALID_OBJECT = 2,
+        UNKNOWN_USER = 3,
+        OBJECT_ID_ALREADY_EXISTS = 4,
+        INVALID_RANGE = 5,
     }
 
 
@@ -49,10 +49,10 @@ export namespace ECalendar {
      * @since 3.2
      */
     enum CalClientSourceType {
-        EVENTS,
-        TASKS,
-        MEMOS,
-        LAST,
+        EVENTS = 0,
+        TASKS = 1,
+        MEMOS = 2,
+        LAST = 3,
     }
 
 
@@ -67,10 +67,10 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalClientSourceTypeEnum {
-        EVENTS,
-        TASKS,
-        MEMOS,
-        INVALID,
+        EVENTS = 0,
+        TASKS = 1,
+        MEMOS = 2,
+        INVALID = 3,
     }
 
 
@@ -78,12 +78,12 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentAlarmAction {
-        NONE,
-        AUDIO,
-        DISPLAY,
-        EMAIL,
-        PROCEDURE,
-        UNKNOWN,
+        NONE = 0,
+        AUDIO = 1,
+        DISPLAY = 2,
+        EMAIL = 3,
+        PROCEDURE = 4,
+        UNKNOWN = 5,
     }
 
 
@@ -91,10 +91,10 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentAlarmTriggerType {
-        NONE,
-        RELATIVE_START,
-        RELATIVE_END,
-        ABSOLUTE,
+        NONE = 0,
+        RELATIVE_START = 1,
+        RELATIVE_END = 2,
+        ABSOLUTE = 3,
     }
 
 
@@ -102,11 +102,11 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentClassification {
-        NONE,
-        PUBLIC,
-        PRIVATE,
-        CONFIDENTIAL,
-        UNKNOWN,
+        NONE = 0,
+        PUBLIC = 1,
+        PRIVATE = 2,
+        CONFIDENTIAL = 3,
+        UNKNOWN = 4,
     }
 
 
@@ -114,28 +114,28 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentField {
-        CATEGORIES,
-        CLASSIFICATION,
-        COMPLETED,
-        DTEND,
-        DTSTART,
-        DUE,
-        GEO,
-        PERCENT,
-        PRIORITY,
-        SUMMARY,
-        TRANSPARENCY,
-        URL,
-        HAS_ALARMS,
-        ICON,
-        COMPLETE,
-        RECURRING,
-        OVERDUE,
-        COLOR,
-        STATUS,
-        COMPONENT,
-        LOCATION,
-        NUM_FIELDS,
+        CATEGORIES = 0,
+        CLASSIFICATION = 1,
+        COMPLETED = 2,
+        DTEND = 3,
+        DTSTART = 4,
+        DUE = 5,
+        GEO = 6,
+        PERCENT = 7,
+        PRIORITY = 8,
+        SUMMARY = 9,
+        TRANSPARENCY = 10,
+        URL = 11,
+        HAS_ALARMS = 12,
+        ICON = 13,
+        COMPLETE = 14,
+        RECURRING = 15,
+        OVERDUE = 16,
+        COLOR = 17,
+        STATUS = 18,
+        COMPONENT = 19,
+        LOCATION = 20,
+        NUM_FIELDS = 21,
     }
 
 
@@ -143,8 +143,8 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentPeriodType {
-        DATETIME,
-        DURATION,
+        DATETIME = 0,
+        DURATION = 1,
     }
 
 
@@ -152,9 +152,9 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentRangeType {
-        SINGLE,
-        THISPRIOR,
-        THISFUTURE,
+        SINGLE = 0,
+        THISPRIOR = 1,
+        THISFUTURE = 2,
     }
 
 
@@ -162,10 +162,10 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentTransparency {
-        NONE,
-        TRANSPARENT,
-        OPAQUE,
-        UNKNOWN,
+        NONE = 0,
+        TRANSPARENT = 1,
+        OPAQUE = 2,
+        UNKNOWN = 3,
     }
 
 
@@ -173,12 +173,12 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalComponentVType {
-        NO_TYPE,
-        EVENT,
-        TODO,
-        JOURNAL,
-        FREEBUSY,
-        TIMEZONE,
+        NO_TYPE = 0,
+        EVENT = 1,
+        TODO = 2,
+        JOURNAL = 3,
+        FREEBUSY = 4,
+        TIMEZONE = 5,
     }
 
 
@@ -186,9 +186,9 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalLoadState {
-        NOT_LOADED,
-        LOADING,
-        LOADED,
+        NOT_LOADED = 0,
+        LOADING = 1,
+        LOADED = 2,
     }
 
 
@@ -196,9 +196,9 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalSetModeStatus {
-        SUCCESS,
-        ERROR,
-        NOT_SUPPORTED,
+        SUCCESS = 0,
+        ERROR = 1,
+        NOT_SUPPORTED = 2,
     }
 
 
@@ -213,9 +213,9 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalSetModeStatusEnum {
-        SUCCESS,
-        ERROR,
-        UNSUPPORTED,
+        SUCCESS = 0,
+        ERROR = 1,
+        UNSUPPORTED = 2,
     }
 
 
@@ -223,10 +223,10 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalSourceType {
-        EVENT,
-        TODO,
-        JOURNAL,
-        LAST,
+        EVENT = 0,
+        TODO = 1,
+        JOURNAL = 2,
+        LAST = 3,
     }
 
 
@@ -241,10 +241,10 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalSourceTypeEnum {
-        EVENT,
-        TODO,
-        JOURNAL,
-        INVALID,
+        EVENT = 0,
+        TODO = 1,
+        JOURNAL = 2,
+        INVALID = 3,
     }
 
 
@@ -259,27 +259,27 @@ export namespace ECalendar {
      * @gir-type Enum
      */
     enum CalendarStatus {
-        OK,
-        INVALID_ARG,
-        BUSY,
-        REPOSITORY_OFFLINE,
-        NO_SUCH_CALENDAR,
-        OBJECT_NOT_FOUND,
-        INVALID_OBJECT,
-        URI_NOT_LOADED,
-        URI_ALREADY_LOADED,
-        PERMISSION_DENIED,
-        UNKNOWN_USER,
-        OBJECT_ID_ALREADY_EXISTS,
-        PROTOCOL_NOT_SUPPORTED,
-        CANCELLED,
-        COULD_NOT_CANCEL,
-        AUTHENTICATION_FAILED,
-        AUTHENTICATION_REQUIRED,
-        DBUS_EXCEPTION,
-        OTHER_ERROR,
-        INVALID_SERVER_VERSION,
-        NOT_SUPPORTED,
+        OK = 0,
+        INVALID_ARG = 1,
+        BUSY = 2,
+        REPOSITORY_OFFLINE = 3,
+        NO_SUCH_CALENDAR = 4,
+        OBJECT_NOT_FOUND = 5,
+        INVALID_OBJECT = 6,
+        URI_NOT_LOADED = 7,
+        URI_ALREADY_LOADED = 8,
+        PERMISSION_DENIED = 9,
+        UNKNOWN_USER = 10,
+        OBJECT_ID_ALREADY_EXISTS = 11,
+        PROTOCOL_NOT_SUPPORTED = 12,
+        CANCELLED = 13,
+        COULD_NOT_CANCEL = 14,
+        AUTHENTICATION_FAILED = 15,
+        AUTHENTICATION_REQUIRED = 16,
+        DBUS_EXCEPTION = 17,
+        OTHER_ERROR = 18,
+        INVALID_SERVER_VERSION = 19,
+        NOT_SUPPORTED = 20,
     }
 
 
@@ -296,33 +296,33 @@ export namespace ECalendar {
      * @since 3.6
      */
     enum DataCalCallStatus {
-        SUCCESS,
-        BUSY,
-        REPOSITORYOFFLINE,
-        PERMISSIONDENIED,
-        INVALIDRANGE,
-        OBJECTNOTFOUND,
-        INVALIDOBJECT,
-        OBJECTIDALREADYEXISTS,
-        AUTHENTICATIONFAILED,
-        AUTHENTICATIONREQUIRED,
-        UNSUPPORTEDFIELD,
-        UNSUPPORTEDMETHOD,
-        UNSUPPORTEDAUTHENTICATIONMETHOD,
-        TLSNOTAVAILABLE,
-        NOSUCHCAL,
-        UNKNOWNUSER,
-        OFFLINEUNAVAILABLE,
-        SEARCHSIZELIMITEXCEEDED,
-        SEARCHTIMELIMITEXCEEDED,
-        INVALIDQUERY,
-        QUERYREFUSED,
-        COULDNOTCANCEL,
-        OTHERERROR,
-        INVALIDSERVERVERSION,
-        INVALIDARG,
-        NOTSUPPORTED,
-        NOTOPENED,
+        SUCCESS = 0,
+        BUSY = 1,
+        REPOSITORYOFFLINE = 2,
+        PERMISSIONDENIED = 3,
+        INVALIDRANGE = 4,
+        OBJECTNOTFOUND = 5,
+        INVALIDOBJECT = 6,
+        OBJECTIDALREADYEXISTS = 7,
+        AUTHENTICATIONFAILED = 8,
+        AUTHENTICATIONREQUIRED = 9,
+        UNSUPPORTEDFIELD = 10,
+        UNSUPPORTEDMETHOD = 11,
+        UNSUPPORTEDAUTHENTICATIONMETHOD = 12,
+        TLSNOTAVAILABLE = 13,
+        NOSUCHCAL = 14,
+        UNKNOWNUSER = 15,
+        OFFLINEUNAVAILABLE = 16,
+        SEARCHSIZELIMITEXCEEDED = 17,
+        SEARCHTIMELIMITEXCEEDED = 18,
+        INVALIDQUERY = 19,
+        QUERYREFUSED = 20,
+        COULDNOTCANCEL = 21,
+        OTHERERROR = 22,
+        INVALIDSERVERVERSION = 23,
+        INVALIDARG = 24,
+        NOTSUPPORTED = 25,
+        NOTOPENED = 26,
     }
 
 
@@ -346,9 +346,9 @@ export namespace ECalendar {
      * @gir-type Flags
      */
     enum CalChangeType {
-        ADDED,
-        MODIFIED,
-        DELETED,
+        ADDED = 1,
+        MODIFIED = 2,
+        DELETED = 4,
     }
 
 
@@ -358,8 +358,8 @@ export namespace ECalendar {
      * @since 3.6
      */
     enum CalClientViewFlags {
-        NONE,
-        NOTIFY_INITIAL,
+        NONE = 0,
+        NOTIFY_INITIAL = 1,
     }
 
 
@@ -369,9 +369,9 @@ export namespace ECalendar {
      * @since 3.2
      */
     enum DataCalMode {
-        OCAL,
-        EMOTE,
-        NYMODE,
+        OCAL = 1,
+        EMOTE = 2,
+        NYMODE = 7,
     }
 
 
@@ -388,10 +388,10 @@ export namespace ECalendar {
      * @since 3.6
      */
     enum DataCalObjModType {
-        THIS,
-        THISANDPRIOR,
-        THISANDFUTURE,
-        ALL,
+        THIS = 1,
+        THISANDPRIOR = 2,
+        THISANDFUTURE = 4,
+        ALL = 7,
     }
 
 
@@ -408,10 +408,10 @@ export namespace ECalendar {
      * @since 3.6
      */
     enum DataCalObjType {
-        EVENT,
-        TODO,
-        JOURNAL,
-        ANYTYPE,
+        EVENT = 1,
+        TODO = 2,
+        JOURNAL = 4,
+        ANYTYPE = 7,
     }
 
 
@@ -427,22 +427,22 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            "backend-error": (arg0: string) => void;
+            "backend-error": (object: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "cal-opened": (arg0: number) => void;
+            "cal-opened": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "cal-opened-ex": (arg0: number) => void;
+            "cal-opened-ex": (error: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "cal-set-mode": (arg0: CalSetModeStatusEnum, arg1: unknown) => void;
+            "cal-set-mode": (object: CalSetModeStatusEnum, p0: unknown) => void;
         }
 
         // Constructor properties interface
@@ -597,6 +597,7 @@ export namespace ECalendar {
          * @param comp The component to discard the alarm from.
          * @param auid Unique identifier of the alarm to be discarded.
          * @returns TRUE if the operation was successful, FALSE otherwise.
+         * @throws GLib.Error
          */
         discard_alarm(comp: CalComponent, auid: string): boolean;
 
@@ -604,6 +605,7 @@ export namespace ECalendar {
          * Queries the address to be used for alarms in a calendar client.
          * @param alarm_address Return value for alarm address.
          * @returns TRUE if the operation was successful, FALSE if there was an error while contacting the backend.
+         * @throws GLib.Error
          */
         get_alarm_email_address(alarm_address: string): boolean;
 
@@ -622,6 +624,7 @@ export namespace ECalendar {
          * Queries the calendar address associated with a calendar client.
          * @param cal_address Return value for address information.
          * @returns TRUE if the operation was successful, FALSE if there was an error.
+         * @throws GLib.Error
          */
         get_cal_address(cal_address: string): boolean;
 
@@ -629,6 +632,7 @@ export namespace ECalendar {
          * Queries the LDAP attribute for a calendar client.
          * @param ldap_attribute Return value for the LDAP attribute.
          * @returns TRUE if the call was successful, FALSE if there was an error contacting the backend.
+         * @throws GLib.Error
          */
         get_ldap_attribute(ldap_attribute: string): boolean;
 
@@ -655,6 +659,7 @@ export namespace ECalendar {
          * should be freed by using the `e_cal_free_object_list` function.
          * @param query Query string.
          * @returns TRUE if the operation was successful, FALSE otherwise.
+         * @throws GLib.Error
          */
         get_object_list(query: string): [boolean, number[]];
 
@@ -681,6 +686,7 @@ export namespace ECalendar {
          * Creates a live query object from a loaded calendar.
          * @param sexp S-expression representing the query.
          * @returns A query object that will emit notification signals as calendar components are added and removed from the query in the server.
+         * @throws GLib.Error
          */
         get_query(sexp: string): [boolean, CalView];
 
@@ -722,6 +728,7 @@ export namespace ECalendar {
          * is specified, on exit, in the `read_only` argument.
          * @param read_only Return value for read only status.
          * @returns TRUE if the call was successful, FALSE if there was an error.
+         * @throws GLib.Error
          */
         is_read_only(read_only: boolean): boolean;
 
@@ -733,6 +740,7 @@ export namespace ECalendar {
          * New signal deprecates the old "cal_opened" signal.
          * @param only_if_exists FALSE if the calendar should be opened even if there was no storage for it, i.e. to create a new calendar or load an existing one if it already exists.  TRUE if it should only try to load calendars that already exist.
          * @returns TRUE on success, FALSE on failure to issue the open request.
+         * @throws GLib.Error
          */
         open(only_if_exists: boolean): boolean;
 
@@ -750,12 +758,14 @@ export namespace ECalendar {
          * Invokes refresh on a calendar. See `e_cal_get_refresh_supported`.
          * @returns TRUE if calendar supports refresh and it was invoked, FALSE otherwise.
          * @since 2.30
+         * @throws GLib.Error
          */
         refresh(): boolean;
 
         /**
          * Removes a calendar.
          * @returns TRUE if the calendar was removed, FALSE if there was an error.
+         * @throws GLib.Error
          */
         remove(): boolean;
 
@@ -766,6 +776,7 @@ export namespace ECalendar {
          * be notified and they will emit the "obj_removed" signal.
          * @param uid Unique identifier of the calendar component to remove.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         remove_object(uid: string): boolean;
     }
@@ -778,7 +789,7 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            "free-busy-data": (arg0: null) => void;
+            "free-busy-data": (object: null) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
             "notify::main-context": (pspec: GObject.ParamSpec) => void;
             "notify::online": (pspec: GObject.ParamSpec) => void;
@@ -872,6 +883,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         add_timezone_finish(result: Gio.AsyncResult): boolean;
 
@@ -918,6 +930,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         create_object_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -928,6 +941,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         create_objects_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -974,6 +988,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         discard_alarm_finish(result: Gio.AsyncResult): boolean;
 
@@ -985,6 +1000,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         discard_alarm_sync(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable): boolean;
 
@@ -1060,6 +1076,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_attachment_uris_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -1071,6 +1088,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_attachment_uris_sync(uid: string, rid: string, cancellable: Gio.Cancellable): [boolean, string[]];
 
@@ -1134,6 +1152,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_free_busy_finish(result: Gio.AsyncResult): boolean;
 
@@ -1146,6 +1165,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_free_busy_sync(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable): boolean;
 
@@ -1230,6 +1250,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_as_comps_finish(result: Gio.AsyncResult): [boolean, CalComponent[]];
 
@@ -1242,6 +1263,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_as_comps_sync(sexp: string, cancellable: Gio.Cancellable): [boolean, CalComponent[]];
 
@@ -1291,6 +1313,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_objects_for_uid_finish(result: Gio.AsyncResult): [boolean, CalComponent[]];
 
@@ -1303,6 +1326,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_objects_for_uid_sync(uid: string, cancellable: Gio.Cancellable): [boolean, CalComponent[]];
 
@@ -1363,6 +1387,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_finish(result: Gio.AsyncResult): [boolean, CalClientView];
 
@@ -1374,6 +1399,7 @@ export namespace ECalendar {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_sync(sexp: string, cancellable: Gio.Cancellable): [boolean, CalClientView];
 
@@ -1382,6 +1408,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         modify_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -1390,6 +1417,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         modify_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1398,6 +1426,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         receive_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -1406,6 +1435,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -1414,6 +1444,7 @@ export namespace ECalendar {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         remove_objects_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1426,27 +1457,27 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            complete: (arg0: GLib.Error) => void;
+            complete: (object: GLib.Error) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-added": (arg0: number[]) => void;
+            "objects-added": (objects: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-modified": (arg0: number[]) => void;
+            "objects-modified": (objects: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-removed": (arg0: CalComponentId[]) => void;
+            "objects-removed": (objects: CalComponentId[]) => void;
             /**
              * @signal
              * @run-first
              */
-            progress: (arg0: number, arg1: string) => void;
+            progress: (object: number, p0: string) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::view": (pspec: GObject.ParamSpec) => void;
         }
@@ -1549,6 +1580,7 @@ export namespace ECalendar {
          * objects, which will omit stored object parsing. If this cannot be done then
          * it will simply return object as is stored in the cache.
          * @param fields_of_interest List of field names in which the client is interested, or `null` to reset the fields of interest
+         * @throws GLib.Error
          */
         set_fields_of_interest(fields_of_interest: string[]): void;
 
@@ -1556,18 +1588,21 @@ export namespace ECalendar {
          * Sets the `flags` which control the behaviour of `view`.
          * @param flags the {@link ECalendar.CalClientViewFlags} for `view`.
          * @since 3.6
+         * @throws GLib.Error
          */
         set_flags(flags: CalClientViewFlags): void;
 
         /**
          * Starts a live query to the calendar/tasks backend.
          * @since 3.2
+         * @throws GLib.Error
          */
         start(): void;
 
         /**
          * Stops a live query to the calendar/tasks backend.
          * @since 3.2
+         * @throws GLib.Error
          */
         stop(): void;
     }
@@ -2292,32 +2327,32 @@ export namespace ECalendar {
              * @signal
              * @run-first
              */
-            "objects-added": (arg0: number[]) => void;
+            "objects-added": (objects: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-modified": (arg0: number[]) => void;
+            "objects-modified": (objects: number[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-removed": (arg0: CalComponentId[]) => void;
+            "objects-removed": (objects: CalComponentId[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "view-complete": (arg0: number, arg1: string) => void;
+            "view-complete": (object: number, p0: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "view-done": (arg0: number) => void;
+            "view-done": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "view-progress": (arg0: string, arg1: number) => void;
+            "view-progress": (object: string, p0: number) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::view": (pspec: GObject.ParamSpec) => void;
         }

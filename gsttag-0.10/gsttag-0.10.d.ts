@@ -37,9 +37,9 @@ export namespace GstTag {
      * @since 0.10.15
      */
     enum DemuxResult {
-        BROKEN_TAG,
-        AGAIN,
-        OK,
+        BROKEN_TAG = 0,
+        AGAIN = 1,
+        OK = 2,
     }
 
 
@@ -57,51 +57,87 @@ export namespace GstTag {
      * @since 0.10.9
      */
     enum ImageType {
-        NONE,
-        UNDEFINED,
-        FRONT_COVER,
-        BACK_COVER,
-        LEAFLET_PAGE,
-        MEDIUM,
-        LEAD_ARTIST,
-        ARTIST,
-        CONDUCTOR,
-        BAND_ORCHESTRA,
-        COMPOSER,
-        LYRICIST,
-        RECORDING_LOCATION,
-        DURING_RECORDING,
-        DURING_PERFORMANCE,
-        VIDEO_CAPTURE,
-        FISH,
-        ILLUSTRATION,
-        ARTIST_LOGO,
-        PUBLISHER_STUDIO_LOGO,
+        NONE = -1,
+        UNDEFINED = 0,
+        FRONT_COVER = 1,
+        BACK_COVER = 2,
+        LEAFLET_PAGE = 3,
+        MEDIUM = 4,
+        LEAD_ARTIST = 5,
+        ARTIST = 6,
+        CONDUCTOR = 7,
+        BAND_ORCHESTRA = 8,
+        COMPOSER = 9,
+        LYRICIST = 10,
+        RECORDING_LOCATION = 11,
+        DURING_RECORDING = 12,
+        DURING_PERFORMANCE = 13,
+        VIDEO_CAPTURE = 14,
+        FISH = 15,
+        ILLUSTRATION = 16,
+        ARTIST_LOGO = 17,
+        PUBLISHER_STUDIO_LOGO = 18,
     }
 
 
+    /**
+     * @default discid
+     */
     const CDDA_CDDB_DISCID: string;
 
+    /**
+     * @default discid-full
+     */
     const CDDA_CDDB_DISCID_FULL: string;
 
+    /**
+     * @default musicbrainz-discid
+     */
     const CDDA_MUSICBRAINZ_DISCID: string;
 
+    /**
+     * @default musicbrainz-discid-full
+     */
     const CDDA_MUSICBRAINZ_DISCID_FULL: string;
 
+    /**
+     * @default cmml-clip
+     */
     const CMML_CLIP: string;
 
+    /**
+     * @default cmml-head
+     */
     const CMML_HEAD: string;
 
+    /**
+     * @default cmml-stream
+     */
     const CMML_STREAM: string;
 
+    /**
+     * @default musicbrainz-albumartistid
+     */
     const MUSICBRAINZ_ALBUMARTISTID: string;
 
+    /**
+     * @default musicbrainz-albumid
+     */
     const MUSICBRAINZ_ALBUMID: string;
 
+    /**
+     * @default musicbrainz-artistid
+     */
     const MUSICBRAINZ_ARTISTID: string;
 
+    /**
+     * @default musicbrainz-trackid
+     */
     const MUSICBRAINZ_TRACKID: string;
 
+    /**
+     * @default musicbrainz-trmid
+     */
     const MUSICBRAINZ_TRMID: string;
 
     /**

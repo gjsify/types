@@ -46,9 +46,9 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum AuthenticationLifeTime {
-        FORGET,
-        SESSION,
-        FOREVER,
+        FORGET = 0,
+        SESSION = 1,
+        FOREVER = 2,
     }
 
 
@@ -63,19 +63,19 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum CommitModelColumns {
-        SHA1,
-        SUBJECT,
-        MESSAGE,
-        AUTHOR,
-        AUTHOR_NAME,
-        AUTHOR_EMAIL,
-        AUTHOR_DATE,
-        COMMITTER,
-        COMMITTER_NAME,
-        COMMITTER_EMAIL,
-        COMMITTER_DATE,
-        COMMIT,
-        NUM,
+        SHA1 = 0,
+        SUBJECT = 1,
+        MESSAGE = 2,
+        AUTHOR = 3,
+        AUTHOR_NAME = 4,
+        AUTHOR_EMAIL = 5,
+        AUTHOR_DATE = 6,
+        COMMITTER = 7,
+        COMMITTER_NAME = 8,
+        COMMITTER_EMAIL = 9,
+        COMMITTER_DATE = 10,
+        COMMIT = 11,
+        NUM = 12,
     }
 
 
@@ -90,11 +90,11 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum RefType {
-        NONE,
-        BRANCH,
-        REMOTE,
-        TAG,
-        STASH,
+        NONE = 0,
+        BRANCH = 1,
+        REMOTE = 2,
+        TAG = 3,
+        STASH = 4,
     }
 
 
@@ -109,9 +109,9 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum RefState {
-        NONE,
-        SELECTED,
-        PRELIGHT,
+        NONE = 0,
+        SELECTED = 1,
+        PRELIGHT = 2,
     }
 
 
@@ -126,10 +126,10 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum RemoteState {
-        DISCONNECTED,
-        CONNECTING,
-        CONNECTED,
-        TRANSFERRING,
+        DISCONNECTED = 0,
+        CONNECTING = 1,
+        CONNECTED = 2,
+        TRANSFERRING = 3,
     }
 
 
@@ -144,8 +144,8 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum SelectionMode {
-        NORMAL,
-        SELECTION,
+        NORMAL = 0,
+        SELECTION = 1,
     }
 
 
@@ -160,9 +160,9 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum DeleteSources {
-        CANCEL,
-        TRASH,
-        DELETE,
+        CANCEL = 0,
+        TRASH = 1,
+        DELETE = 2,
     }
 
 
@@ -177,10 +177,10 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum SidebarHint {
-        NONE,
-        HEADER,
-        SEPARATOR,
-        DUMMY,
+        NONE = 0,
+        HEADER = 1,
+        SEPARATOR = 2,
+        DUMMY = 3,
     }
 
 
@@ -195,9 +195,9 @@ export namespace Gitg {
      * @gir-type Enum
      */
     enum SidebarColumn {
-        HINT,
-        SECTION,
-        ITEM,
+        HINT = 0,
+        SECTION = 1,
+        ITEM = 2,
     }
 
 
@@ -322,6 +322,7 @@ export namespace Gitg {
 
     /**
      * @param test 
+     * @throws GLib.Error
      */
     function init(test: boolean): void;
 
@@ -336,7 +337,7 @@ export namespace Gitg {
      * @gir-type Flags
      */
     enum LaneTag {
-        NONE,
+        NONE = 0,
         START,
         END,
         SIGN_STASH,
@@ -357,7 +358,7 @@ export namespace Gitg {
      * @gir-type Flags
      */
     enum StageCommitOptions {
-        NONE,
+        NONE = 0,
         SIGN_OFF,
         AMEND,
         SKIP_HOOKS,
@@ -817,6 +818,9 @@ export namespace Gitg {
          */
         vfunc_set_working(value: boolean): void;
 
+        /**
+         * @throws GLib.Error
+         */
         get_upstream(): Ref;
 
         /**
@@ -831,6 +835,7 @@ export namespace Gitg {
          * 
          * The reference will be immediately removed on disk and from
          * memory. The given reference pointer will no longer be valid.
+         * @throws GLib.Error
          */
         ["delete"](): void;
 
@@ -1253,7 +1258,7 @@ export namespace Gitg {
             /**
              * @signal
              */
-            update: (arg0: number) => void;
+            update: (added: number) => void;
             /**
              * @signal
              */
@@ -2056,6 +2061,7 @@ export namespace Gitg {
          * @param url 
          * @param username 
          * @param allowed_types 
+         * @throws GLib.Error
          */
         credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }
@@ -2190,6 +2196,7 @@ export namespace Gitg {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2862,7 +2869,7 @@ export namespace Gitg {
             /**
              * @signal
              */
-            "activated-with-text": (arg0: string) => void;
+            "activated-with-text": (text: string) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -3175,6 +3182,7 @@ export namespace Gitg {
 
         /**
          * @param repository 
+         * @throws GLib.Error
          */
         run_sync(repository: Ggit.Repository): number;
 
@@ -3197,6 +3205,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         run_finish(_res_: Gio.AsyncResult): number;
 
@@ -3873,7 +3882,7 @@ export namespace Gitg {
             /**
              * @signal
              */
-            "tip-updated": (arg0: string, arg1: Ggit.OId, arg2: Ggit.OId) => void;
+            "tip-updated": (refname: string, a: Ggit.OId, b: Ggit.OId) => void;
             "notify::transfer-progress": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::fetch-specs": (pspec: GObject.ParamSpec) => void;
@@ -3988,6 +3997,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         connect_finish(_res_: Gio.AsyncResult): void;
 
@@ -4011,6 +4021,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         disconnect_finish(_res_: Gio.AsyncResult): void;
 
@@ -4039,6 +4050,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         download_finish(_res_: Gio.AsyncResult): void;
 
@@ -4076,6 +4088,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         push_finish(_res_: Gio.AsyncResult): void;
 
@@ -4104,6 +4117,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         fetch_finish(_res_: Gio.AsyncResult): void;
 
@@ -4140,11 +4154,11 @@ export namespace Gitg {
             /**
              * @signal
              */
-            "repository-activated": (arg0: Repository) => void;
+            "repository-activated": (repository: Repository) => void;
             /**
              * @signal
              */
-            "show-error": (arg0: string, arg1: string) => void;
+            "show-error": (primary_message: string, secondary_message: string) => void;
             "notify::mode": (pspec: GObject.ParamSpec) => void;
             "notify::bookmarks-from-recent-files": (pspec: GObject.ParamSpec) => void;
             "notify::location": (pspec: GObject.ParamSpec) => void;
@@ -4643,6 +4657,7 @@ export namespace Gitg {
          * @param t_type 
          * @param t_dup_func 
          * @param id 
+         * @throws GLib.Error
          */
         lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): null;
 
@@ -4654,11 +4669,13 @@ export namespace Gitg {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         lookup_reference(name: string): Ref;
 
         /**
          * @param short_name 
+         * @throws GLib.Error
          */
         lookup_reference_dwim(short_name: string): Ref;
 
@@ -4666,6 +4683,7 @@ export namespace Gitg {
          * @param name 
          * @param obj 
          * @param flags 
+         * @throws GLib.Error
          */
         create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch;
 
@@ -4673,6 +4691,7 @@ export namespace Gitg {
          * @param name 
          * @param oid 
          * @param message 
+         * @throws GLib.Error
          */
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
 
@@ -4680,14 +4699,19 @@ export namespace Gitg {
          * @param name 
          * @param target 
          * @param message 
+         * @throws GLib.Error
          */
         create_symbolic_reference(name: string, target: string, message: string): Ref;
 
+        /**
+         * @throws GLib.Error
+         */
         get_head(): Ref;
 
         /**
          * @param env 
          * @param envname 
+         * @throws GLib.Error
          */
         get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature;
 
@@ -4998,7 +5022,7 @@ export namespace Gitg {
             /**
              * @signal
              */
-            "populate-popup": (arg0: Gtk.Menu) => void;
+            "populate-popup": (menu: Gtk.Menu) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
@@ -5663,6 +5687,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         refresh_finish(_res_: Gio.AsyncResult): void;
 
@@ -5680,6 +5705,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_head_tree_finish(_res_: Gio.AsyncResult): Ggit.Tree | null;
 
@@ -5707,6 +5733,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         pre_commit_hook_finish(_res_: Gio.AsyncResult): void;
 
@@ -5747,6 +5774,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
@@ -5787,6 +5815,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
@@ -5818,6 +5847,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
 
@@ -5840,6 +5870,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         revert_finish(_res_: Gio.AsyncResult): void;
 
@@ -5862,6 +5893,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         revert_path_finish(_res_: Gio.AsyncResult): void;
 
@@ -5884,6 +5916,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         revert_patch_finish(_res_: Gio.AsyncResult): void;
 
@@ -5906,6 +5939,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_finish(_res_: Gio.AsyncResult): void;
 
@@ -5928,6 +5962,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_path_finish(_res_: Gio.AsyncResult): void;
 
@@ -5950,6 +5985,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         stage_finish(_res_: Gio.AsyncResult): void;
 
@@ -5972,6 +6008,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         stage_path_finish(_res_: Gio.AsyncResult): void;
 
@@ -5997,6 +6034,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         stage_commit_finish(_res_: Gio.AsyncResult): void;
 
@@ -6019,6 +6057,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         stage_patch_finish(_res_: Gio.AsyncResult): void;
 
@@ -6041,6 +6080,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unstage_finish(_res_: Gio.AsyncResult): void;
 
@@ -6063,6 +6103,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unstage_path_finish(_res_: Gio.AsyncResult): void;
 
@@ -6085,6 +6126,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unstage_patch_finish(_res_: Gio.AsyncResult): void;
 
@@ -6110,6 +6152,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         diff_index_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
@@ -6135,6 +6178,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         diff_index_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
@@ -6160,6 +6204,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         diff_workdir_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
 
@@ -6185,6 +6230,7 @@ export namespace Gitg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
     }
@@ -7078,6 +7124,9 @@ export namespace Gitg {
     interface Branch extends Ggit.Branch, Branch.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         get_upstream(): Ref;
     }
 
@@ -7261,6 +7310,7 @@ export namespace Gitg {
          * @param url 
          * @param username_from_url 
          * @param allowed_types 
+         * @throws GLib.Error
          */
         credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null;
     }

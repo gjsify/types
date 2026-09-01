@@ -38,20 +38,20 @@ export namespace GtkSource {
         /**
          * there is no bracket to match.
          */
-        NONE,
+        NONE = 0,
         /**
          * matching a bracket
          *  failed because the maximum range was reached.
          */
-        OUT_OF_RANGE,
+        OUT_OF_RANGE = 1,
         /**
          * a matching bracket was not found.
          */
-        NOT_FOUND,
+        NOT_FOUND = 2,
         /**
          * a matching bracket was found.
          */
-        FOUND,
+        FOUND = 3,
     }
 
 
@@ -59,8 +59,8 @@ export namespace GtkSource {
      * @gir-type Enum
      */
     enum CompletionError {
-        ALREADY_BOUND,
-        NOT_BOUND,
+        ALREADY_BOUND = 0,
+        NOT_BOUND = 1,
     }
 
 
@@ -71,24 +71,24 @@ export namespace GtkSource {
         /**
          * smart-home-end disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * move to the first/last
          * non-whitespace character on the first press of the HOME/END keys and
          * to the beginning/end of the line on the second press.
          */
-        BEFORE,
+        BEFORE = 1,
         /**
          * move to the beginning/end of the
          * line on the first press of the HOME/END keys and to the first/last
          * non-whitespace character on the second press.
          */
-        AFTER,
+        AFTER = 2,
         /**
          * always move to the first/last
          * non-whitespace character when the HOME/END keys are pressed.
          */
-        ALWAYS,
+        ALWAYS = 3,
     }
 
 
@@ -100,17 +100,23 @@ export namespace GtkSource {
          * the gutter position of the lines
          * renderer
          */
-        LINES,
+        LINES = -30,
         /**
          * the gutter position of the marks
          * renderer
          */
-        MARKS,
+        MARKS = -20,
     }
 
 
+    /**
+     * @default standard::automatic
+     */
     const COMPLETION_CAPABILITY_AUTOMATIC: string;
 
+    /**
+     * @default standard::interactive
+     */
     const COMPLETION_CAPABILITY_INTERACTIVE: string;
 
     /**
@@ -184,16 +190,16 @@ export namespace GtkSource {
         /**
          * none.
          */
-        NONE,
+        NONE = 0,
         /**
          * interactive activation
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
         /**
          * user requested activation
          * (e.g. through a keyboard accelerator from the view)
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 2,
     }
 
 
@@ -208,35 +214,35 @@ export namespace GtkSource {
         /**
          * whether the space character should be drawn.
          */
-        SPACE,
+        SPACE = 1,
         /**
          * whether the tab character should be drawn.
          */
-        TAB,
+        TAB = 2,
         /**
          * whether the line breaks should be drawn.
          */
-        NEWLINE,
+        NEWLINE = 4,
         /**
          * whether the non-breaking whitespaces should be drawn.
          */
-        NBSP,
+        NBSP = 8,
         /**
          * whether leading whitespaces should be drawn.
          */
-        LEADING,
+        LEADING = 16,
         /**
          * whether whitespaces inside text should be drawn.
          */
-        TEXT,
+        TEXT = 32,
         /**
          * whether trailing whitespaces should be drawn.
          */
-        TRAILING,
+        TRAILING = 64,
         /**
          * wheter all kind of spaces should be drawn.
          */
-        ALL,
+        ALL = 127,
     }
 
 
@@ -244,9 +250,9 @@ export namespace GtkSource {
      * @gir-type Flags
      */
     enum SearchFlags {
-        VISIBLE_ONLY,
-        TEXT_ONLY,
-        CASE_INSENSITIVE,
+        VISIBLE_ONLY = 1,
+        TEXT_ONLY = 2,
+        CASE_INSENSITIVE = 4,
     }
 
 
@@ -260,12 +266,12 @@ export namespace GtkSource {
              * @since 2.12
              * @run-last
              */
-            "bracket-matched": (arg0: Gtk.TextIter, arg1: unknown) => void;
+            "bracket-matched": (iter: Gtk.TextIter, state: unknown) => void;
             /**
              * @signal
              * @run-last
              */
-            "highlight-updated": (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
+            "highlight-updated": (object: Gtk.TextIter, p0: Gtk.TextIter) => void;
             /**
              * @signal
              * @run-last
@@ -277,7 +283,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "source-mark-updated": (arg0: Gtk.TextMark) => void;
+            "source-mark-updated": (object: Gtk.TextMark) => void;
             /**
              * @signal
              * @run-last
@@ -765,7 +771,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.ScrollStep, arg1: number) => void;
+            "move-cursor": (step: Gtk.ScrollStep, num: number) => void;
             /**
              * The ::move-page signal is a keybinding signal which gets emitted when
              * the user initiates a page movement (i.e. switches between provider
@@ -778,7 +784,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-page": (arg0: Gtk.ScrollStep, arg1: number) => void;
+            "move-page": (step: Gtk.ScrollStep, num: number) => void;
             /**
              * Emitted just before starting to populate the completion with providers.
              * You can use this signal to add additional attributes in the context.
@@ -786,7 +792,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "populate-context": (arg0: CompletionContext) => void;
+            "populate-context": (context: CompletionContext) => void;
             /**
              * Emitted when the completion window is shown. The default handler
              * will actually show the window.
@@ -1039,6 +1045,7 @@ export namespace GtkSource {
          * no longer need it.
          * @param provider a {@link GtkSource.CompletionProvider}.
          * @returns `true` if `provider` was successfully added, otherwise if `error`          is provided, it will be set with the error and `false` is returned.
+         * @throws GLib.Error
          */
         add_provider(provider: CompletionProvider): boolean;
 
@@ -1078,6 +1085,7 @@ export namespace GtkSource {
          * Remove `provider` from the completion.
          * @param provider a {@link GtkSource.CompletionProvider}.
          * @returns `true` if `provider` was successfully removed, otherwise if `error`          is provided, it will be set with the error and `false` is returned.
+         * @throws GLib.Error
          */
         remove_provider(provider: CompletionProvider): boolean;
 
@@ -1656,14 +1664,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "cell-activated": (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gdk.Event) => void;
+            "cell-activated": (renderer: Gtk.CellRenderer, iter: Gtk.TextIter, event: Gdk.Event) => void;
             /**
              * Emitted when a tooltip is requested for a specific cell. Signal
              * handlers can return `true` to notify the tooltip has been handled.
              * @signal
              * @run-last
              */
-            "query-tooltip": (arg0: Gtk.CellRenderer, arg1: Gtk.TextIter, arg2: Gtk.Tooltip) => boolean | void;
+            "query-tooltip": (renderer: Gtk.CellRenderer, iter: Gtk.TextIter, tooltip: Gtk.Tooltip) => boolean | void;
             "notify::view": (pspec: GObject.ParamSpec) => void;
             "notify::window-type": (pspec: GObject.ParamSpec) => void;
         }
@@ -3458,7 +3466,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "line-mark-activated": (arg0: Gtk.TextIter, arg1: Gdk.Event) => void;
+            "line-mark-activated": (iter: Gtk.TextIter, event: Gdk.Event) => void;
             /**
              * The ::move-lines signal is a keybinding which gets emitted
              * when the user initiates moving a line. The default binding key
@@ -3470,7 +3478,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-lines": (arg0: boolean, arg1: number) => void;
+            "move-lines": (copy: boolean, count: number) => void;
             /**
              * The ::move-words signal is a keybinding which gets emitted
              * when the user initiates moving a word. The default binding key
@@ -3481,7 +3489,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-words": (arg0: number) => void;
+            "move-words": (count: number) => void;
             /**
              * @signal
              * @action
@@ -3510,7 +3518,7 @@ export namespace GtkSource {
              * @since 3.0
              * @run-last
              */
-            "smart-home-end": (arg0: Gtk.TextIter, arg1: number) => void;
+            "smart-home-end": (iter: Gtk.TextIter, count: number) => void;
             /**
              * @signal
              * @action

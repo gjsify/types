@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./matepanelapplet-4.0.d.ts","./matepanelapplet-4.0-surface.d.ts"]
+  "include": ["./matepanelapplet-4.0.d.ts","./matepanelapplet-4.0-vocabulary.d.ts"]
 }
 
 

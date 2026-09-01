@@ -42,7 +42,7 @@ export namespace ZBar {
              * @signal
              * @run-cleanup
              */
-            decoded: (arg0: number, arg1: string) => void;
+            decoded: (symbol_type: number, data: string) => void;
             /**
              * emitted when a barcode is decoded from an image.
              * the symbol type name is prefixed to the data, separated by a
@@ -50,7 +50,7 @@ export namespace ZBar {
              * @signal
              * @run-cleanup
              */
-            "decoded-text": (arg0: string) => void;
+            "decoded-text": (text: string) => void;
             "notify::video-device": (pspec: GObject.ParamSpec) => void;
             "notify::video-enabled": (pspec: GObject.ParamSpec) => void;
             "notify::video-opened": (pspec: GObject.ParamSpec) => void;

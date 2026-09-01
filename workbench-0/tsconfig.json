@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./workbench-0.d.ts","./workbench-0-surface.d.ts"]
+  "include": ["./workbench-0.d.ts","./workbench-0-vocabulary.d.ts"]
 }
 
 

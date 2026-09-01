@@ -46,11 +46,11 @@ export namespace Unique {
      * @gir-type Enum
      */
     enum Command {
-        INVALID,
-        ACTIVATE,
-        NEW,
-        OPEN,
-        CLOSE,
+        INVALID = 0,
+        ACTIVATE = -1,
+        NEW = -2,
+        OPEN = -3,
+        CLOSE = -4,
     }
 
 
@@ -67,11 +67,11 @@ export namespace Unique {
      * @gir-type Enum
      */
     enum Response {
-        INVALID,
-        OK,
-        CANCEL,
-        FAIL,
-        PASSTHROUGH,
+        INVALID = 0,
+        OK = 1,
+        CANCEL = 2,
+        FAIL = 3,
+        PASSTHROUGH = 4,
     }
 
 
@@ -93,7 +93,7 @@ export namespace Unique {
              * @signal
              * @run-last
              */
-            "message-received": (arg0: number, arg1: MessageData, arg2: number) => Response;
+            "message-received": (command: number, message_data: MessageData, time_: number) => Response;
             "notify::is-running": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::screen": (pspec: GObject.ParamSpec) => void;

@@ -78,11 +78,11 @@ export namespace Accounts {
      * @gir-type Enum
      */
     enum Error {
-        DB,
-        DISPOSED,
-        DELETED,
-        DB_LOCKED,
-        ACCOUNT_NOT_FOUND,
+        DB = 0,
+        DISPOSED = 1,
+        DELETED = 2,
+        DB_LOCKED = 3,
+        ACCOUNT_NOT_FOUND = 4,
     }
 
 
@@ -94,23 +94,32 @@ export namespace Accounts {
         /**
          * the setting is not present
          */
-        NONE,
+        NONE = 0,
         /**
          * the setting comes from the current account
          * configuration
          */
-        ACCOUNT,
+        ACCOUNT = 1,
         /**
          * the setting comes from the predefined profile
          */
-        PROFILE,
+        PROFILE = 2,
     }
 
 
+    /**
+     * @default com.google.code.AccountsSSO.Accounts.Manager
+     */
     const MANAGER_INTERFACE: string;
 
+    /**
+     * @default /com/google/code/AccountsSSO/Accounts/Manager
+     */
     const MANAGER_OBJECT_PATH: string;
 
+    /**
+     * @default com.google.code.AccountsSSO.Accounts.Manager
+     */
     const MANAGER_SERVICE_NAME: string;
 
     /**
@@ -178,7 +187,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            enabled: (arg0: string, arg1: boolean) => void;
+            enabled: (service: string, enabled: boolean) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::foreign": (pspec: GObject.ParamSpec) => void;
@@ -472,6 +481,7 @@ export namespace Accounts {
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         store_blocking(): boolean;
 
@@ -480,6 +490,7 @@ export namespace Accounts {
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `ag_account_store_async()`.
          * @returns `true` on success, `false` otherwise.
          * @since 1.4
+         * @throws GLib.Error
          */
         store_finish(res: Gio.AsyncResult): boolean;
 
@@ -569,6 +580,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -635,7 +647,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            enabled: (arg0: boolean) => void;
+            enabled: (enabled: boolean) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::service": (pspec: GObject.ParamSpec) => void;
@@ -829,7 +841,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            "account-created": (arg0: number) => void;
+            "account-created": (account_id: number) => void;
             /**
              * Emitted when an account has been deleted.
              * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
@@ -837,7 +849,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            "account-deleted": (arg0: number) => void;
+            "account-deleted": (account_id: number) => void;
             /**
              * Emitted when particular service of an account has been updated.
              * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
@@ -845,7 +857,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            "account-updated": (arg0: number) => void;
+            "account-updated": (account_id: number) => void;
             /**
              * If the manager has been created with `ag_manager_new_for_service_type()`,
              * this signal will be emitted when an account (identified by `account_id`)
@@ -859,7 +871,7 @@ export namespace Accounts {
              * @signal
              * @run-last
              */
-            "enabled-event": (arg0: number) => void;
+            "enabled-event": (account_id: number) => void;
             "notify::abort-on-db-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::db-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::service-type": (pspec: GObject.ParamSpec) => void;
@@ -1168,6 +1180,7 @@ export namespace Accounts {
          * `account_id`.
          * @param account_id the {@link Accounts.AccountId} of the account.
          * @returns an {@link Accounts.Account}, on which the client must call `g_object_unref()` when it is no longer required, or `null` if an error occurs.
+         * @throws GLib.Error
          */
         load_account(account_id: AccountId): Account;
 
@@ -1237,6 +1250,7 @@ export namespace Accounts {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

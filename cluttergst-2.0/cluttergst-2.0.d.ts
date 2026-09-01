@@ -54,36 +54,41 @@ export namespace ClutterGst {
         /**
          * In-memory buffering
          */
-        STREAM,
+        STREAM = 0,
         /**
          * On-disk buffering
          */
-        DOWNLOAD,
+        DOWNLOAD = 1,
     }
 
 
     /**
      * ClutterGst major version (e.g. "1", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
     /**
      * ClutterGst micro version (e.g. "3", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 19
      */
     const MICRO_VERSION: number;
 
     /**
      * ClutterGst minor version (e.g. "2", if `CLUTTER_GST_VERSION` is "1.2.3")
+     * @default 0
      */
     const MINOR_VERSION: number;
 
     /**
      * ClutterGst full version, encoded as an hexadecimal value.
+     * @default 0
      */
     const VERSION_HEX: number;
 
     /**
      * ClutterGst full version, encoded as a string.
+     * @default 2.0.19
      */
     const VERSION_S: string;
 
@@ -112,6 +117,7 @@ export namespace ClutterGst {
      * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    with `gettext()`, or `null`
      * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
      * @since 1.0
+     * @throws GLib.Error
      */
     function init_with_args(argv: string[] | null, parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [Clutter.InitError, string[] | null];
 
@@ -141,11 +147,11 @@ export namespace ClutterGst {
         /**
          * Fast seeks (key frame boundaries, default)
          */
-        NONE,
+        NONE = 0,
         /**
          * Accurate seeks (potentially slower)
          */
-        ACCURATE,
+        ACCURATE = 1,
     }
 
 

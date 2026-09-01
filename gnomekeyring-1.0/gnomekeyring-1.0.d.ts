@@ -30,15 +30,15 @@ export namespace GnomeKeyring {
         /**
          * Ask permission.
          */
-        ASK,
+        ASK = 0,
         /**
          * Deny permission.
          */
-        DENY,
+        DENY = 1,
         /**
          * Give permission.
          */
-        ALLOW,
+        ALLOW = 2,
     }
 
 
@@ -46,8 +46,8 @@ export namespace GnomeKeyring {
      * @gir-type Enum
      */
     enum AttributeType {
-        STRING,
-        UINT32,
+        STRING = 0,
+        UINT32 = 1,
     }
 
 
@@ -60,31 +60,31 @@ export namespace GnomeKeyring {
         /**
          * Generic secret
          */
-        GENERIC_SECRET,
+        GENERIC_SECRET = 0,
         /**
          * Network password
          */
-        NETWORK_PASSWORD,
+        NETWORK_PASSWORD = 1,
         /**
          * Note
          */
-        NOTE,
+        NOTE = 2,
         /**
          * Keyring password
          */
-        CHAINED_KEYRING_PASSWORD,
+        CHAINED_KEYRING_PASSWORD = 3,
         /**
          * Password for encryption key
          */
-        ENCRYPTION_KEY_PASSWORD,
+        ENCRYPTION_KEY_PASSWORD = 4,
         /**
          * Key storage password
          */
-        PK_STORAGE,
+        PK_STORAGE = 256,
         /**
          * Not used
          */
-        LAST_TYPE,
+        LAST_TYPE = 257,
     }
 
 
@@ -97,56 +97,66 @@ export namespace GnomeKeyring {
         /**
          * The operation completed successfully.
          */
-        OK,
+        OK = 0,
         /**
          * Either the user or daemon denied access.
          */
-        DENIED,
+        DENIED = 1,
         /**
          * Keyring daemon is not available.
          */
-        NO_KEYRING_DAEMON,
+        NO_KEYRING_DAEMON = 2,
         /**
          * Keyring was already unlocked.
          */
-        ALREADY_UNLOCKED,
+        ALREADY_UNLOCKED = 3,
         /**
          * No such keyring exists.
          */
-        NO_SUCH_KEYRING,
+        NO_SUCH_KEYRING = 4,
         /**
          * Bad arguments to function.
          */
-        BAD_ARGUMENTS,
+        BAD_ARGUMENTS = 5,
         /**
          * Problem communicating with daemon.
          */
-        IO_ERROR,
+        IO_ERROR = 6,
         /**
          * Operation was cancelled.
          */
-        CANCELLED,
+        CANCELLED = 7,
         /**
          * The keyring already exists.
          */
-        KEYRING_ALREADY_EXISTS,
+        KEYRING_ALREADY_EXISTS = 8,
         /**
          * No such match found.
          */
-        NO_MATCH,
+        NO_MATCH = 9,
     }
 
 
+    /**
+     * @default 16777216
+     */
     const ITEM_APPLICATION_SECRET: number;
 
+    /**
+     * @default 1
+     */
     const ITEM_INFO_ALL: number;
 
+    /**
+     * @default 65535
+     */
     const ITEM_TYPE_MASK: number;
 
     /**
      * <para>
      * A keyring only stored in memory.
      * </para>
+     * @default session
      */
     const SESSION: string;
 
@@ -761,15 +771,15 @@ export namespace GnomeKeyring {
         /**
          * Read access
          */
-        READ,
+        READ = 1,
         /**
          * Write access
          */
-        WRITE,
+        WRITE = 2,
         /**
          * Delete access
          */
-        REMOVE,
+        REMOVE = 4,
     }
 
 
@@ -777,8 +787,8 @@ export namespace GnomeKeyring {
      * @gir-type Flags
      */
     enum ItemInfoFlags {
-        BASICS,
-        SECRET,
+        BASICS = 0,
+        SECRET = 1,
     }
 
 

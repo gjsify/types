@@ -51,54 +51,70 @@ export namespace Panel {
          *    start. The side is defined by the direction of the user
          *    language. In English, it is the left side.
          */
-        START,
+        START = 0,
         /**
          * the area of the panel that is at the end.
          */
-        END,
+        END = 1,
         /**
          * the area at the top of the panel.
          */
-        TOP,
+        TOP = 2,
         /**
          * the area at the bottom of the panel.
          */
-        BOTTOM,
+        BOTTOM = 3,
         /**
          * the area that would be considered as the main area, always
          *    revealed.
          */
-        CENTER,
+        CENTER = 4,
     }
 
 
     /**
      * libpanel major version component (e.g. 1 if `PANEL_VERSION` is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * libpanel micro version component (e.g. 3 if `PANEL_VERSION` is 1.2.3)
+     * @default 4
      */
     const MICRO_VERSION: number;
 
     /**
      * libpanel minor version component (e.g. 2 if `PANEL_VERSION` is 1.2.3)
+     * @default 10
      */
     const MINOR_VERSION: number;
 
     /**
      * libpanel version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 1.10.4
      */
     const VERSION_S: string;
 
+    /**
+     * @default *
+     */
     const WIDGET_KIND_ANY: string;
 
+    /**
+     * @default document
+     */
     const WIDGET_KIND_DOCUMENT: string;
 
+    /**
+     * @default unknown
+     */
     const WIDGET_KIND_UNKNOWN: string;
 
+    /**
+     * @default utility
+     */
     const WIDGET_KIND_UTILITY: string;
 
     /**
@@ -934,6 +950,7 @@ export namespace Panel {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         run_finish(result: Gio.AsyncResult): boolean;
 
@@ -958,27 +975,27 @@ export namespace Panel {
              * @since 1.2
              * @run-last
              */
-            "adopt-widget": (arg0: Widget) => boolean | void;
+            "adopt-widget": (widget: Widget) => boolean | void;
             /**
              * This signal is emitted when a new frame is needed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "create-frame": (arg0: Position) => Frame;
+            "create-frame": (position: Position) => Frame;
             /**
              * This signal is emitted when dragging of a panel begins.
              * @signal
              * @run-last
              */
-            "panel-drag-begin": (arg0: Widget) => void;
+            "panel-drag-begin": (panel: Widget) => void;
             /**
              * This signal is emitted when dragging of a panel either
              * completes or was cancelled.
              * @signal
              * @run-last
              */
-            "panel-drag-end": (arg0: Widget) => void;
+            "panel-drag-end": (panel: Widget) => void;
             "notify::bottom-height": (pspec: GObject.ParamSpec) => void;
             "notify::can-reveal-bottom": (pspec: GObject.ParamSpec) => void;
             "notify::can-reveal-end": (pspec: GObject.ParamSpec) => void;
@@ -1768,14 +1785,14 @@ export namespace Panel {
              * @since 1.4
              * @run-last
              */
-            "add-widget": (arg0: Widget, arg1: Position) => boolean | void;
+            "add-widget": (widget: Widget, position: Position) => boolean | void;
             /**
              * Creates a new {@link Panel.Frame} to be added to the document grid.
              * @signal
              * @since 1.4
              * @run-last
              */
-            "create-frame": (arg0: Position) => Frame;
+            "create-frame": (position: Position) => Frame;
             "notify::dock": (pspec: GObject.ParamSpec) => void;
             "notify::grid": (pspec: GObject.ParamSpec) => void;
             "notify::statusbar": (pspec: GObject.ParamSpec) => void;
@@ -1989,14 +2006,14 @@ export namespace Panel {
              * @since 1.2
              * @run-last
              */
-            "adopt-widget": (arg0: Widget) => boolean | void;
+            "adopt-widget": (widget: Widget) => boolean | void;
             /**
              * This signal is emitted when the page widget will be closed.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "page-closed": (arg0: Widget) => void;
+            "page-closed": (widget: Widget) => void;
             "notify::closeable": (pspec: GObject.ParamSpec) => void;
             "notify::empty": (pspec: GObject.ParamSpec) => void;
             "notify::placeholder": (pspec: GObject.ParamSpec) => void;
@@ -5019,6 +5036,7 @@ export namespace Panel {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         agree_to_close_finish(result: Gio.AsyncResult): boolean;
 
@@ -5947,7 +5965,7 @@ export namespace Panel {
              * @detailed
              * @run-last
              */
-            changed: (arg0: string) => void;
+            changed: (object: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::schema-id": (pspec: GObject.ParamSpec) => void;
             /**
@@ -5955,14 +5973,14 @@ export namespace Panel {
              * @detailed
              * @run-last
              */
-            "changed::path": (arg0: string) => void;
+            "changed::path": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::schema-id": (arg0: string) => void;
-            [key: `changed::${string}`]: (arg0: string) => void;
+            "changed::schema-id": (object: string) => void;
+            [key: `changed::${string}`]: (object: string) => void;
         }
 
         // Constructor properties interface
@@ -6218,6 +6236,7 @@ export namespace Panel {
         // Methods
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         add_filename(filename: string): number;
 
@@ -6225,6 +6244,7 @@ export namespace Panel {
          * @param resource 
          * @returns the merge id
          * @since 1.4
+         * @throws GLib.Error
          */
         add_resource(resource: string): number;
 
@@ -7812,7 +7832,7 @@ export namespace Panel {
              * @signal
              * @run-last
              */
-            save: (arg0: Gio.Task) => boolean | void;
+            save: (task: Gio.Task) => boolean | void;
             "notify::icon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::is-draft": (pspec: GObject.ParamSpec) => void;
@@ -8029,6 +8049,7 @@ export namespace Panel {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -8228,6 +8249,7 @@ export namespace Panel {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         run_finish(result: Gio.AsyncResult): boolean;
 
@@ -8558,7 +8580,7 @@ export namespace Panel {
              * @detailed
              * @run-last
              */
-            changed: (arg0: string) => void;
+            changed: (object: string) => void;
             "notify::identifier": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::path-prefix": (pspec: GObject.ParamSpec) => void;
@@ -8570,38 +8592,38 @@ export namespace Panel {
              * @detailed
              * @run-last
              */
-            "changed::identifier": (arg0: string) => void;
+            "changed::identifier": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::path": (arg0: string) => void;
+            "changed::path": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::path-prefix": (arg0: string) => void;
+            "changed::path-prefix": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::path-suffix": (arg0: string) => void;
+            "changed::path-suffix": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::schema-id": (arg0: string) => void;
+            "changed::schema-id": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::schema-id-prefix": (arg0: string) => void;
-            [key: `changed::${string}`]: (arg0: string) => void;
+            "changed::schema-id-prefix": (object: string) => void;
+            [key: `changed::${string}`]: (object: string) => void;
         }
 
         // Constructor properties interface

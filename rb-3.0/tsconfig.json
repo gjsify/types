@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./rb-3.0.d.ts","./rb-3.0-surface.d.ts"]
+  "include": ["./rb-3.0.d.ts","./rb-3.0-vocabulary.d.ts"]
 }
 
 

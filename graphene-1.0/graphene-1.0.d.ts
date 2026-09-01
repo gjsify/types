@@ -34,133 +34,133 @@ export namespace Graphene {
          * Rotate in the default order; the
          *   default order is one of the following enumeration values
          */
-        DEFAULT,
+        DEFAULT = -1,
         /**
          * Rotate in the X, Y, and Z order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SXYZ}
          */
-        XYZ,
+        XYZ = 0,
         /**
          * Rotate in the Y, Z, and X order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SYZX}
          */
-        YZX,
+        YZX = 1,
         /**
          * Rotate in the Z, X, and Y order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SZXY}
          */
-        ZXY,
+        ZXY = 2,
         /**
          * Rotate in the X, Z, and Y order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SXZY}
          */
-        XZY,
+        XZY = 3,
         /**
          * Rotate in the Y, X, and Z order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SYXZ}
          */
-        YXZ,
+        YXZ = 4,
         /**
          * Rotate in the Z, Y, and X order. Deprecated in
          *   Graphene 1.10, it's an alias for {@link Graphene.EulerOrder.SZYX}
          */
-        ZYX,
+        ZYX = 5,
         /**
          * Defines a static rotation along the X, Y, and Z axes (Since: 1.10)
          */
-        SXYZ,
+        SXYZ = 6,
         /**
          * Defines a static rotation along the X, Y, and X axes (Since: 1.10)
          */
-        SXYX,
+        SXYX = 7,
         /**
          * Defines a static rotation along the X, Z, and Y axes (Since: 1.10)
          */
-        SXZY,
+        SXZY = 8,
         /**
          * Defines a static rotation along the X, Z, and X axes (Since: 1.10)
          */
-        SXZX,
+        SXZX = 9,
         /**
          * Defines a static rotation along the Y, Z, and X axes (Since: 1.10)
          */
-        SYZX,
+        SYZX = 10,
         /**
          * Defines a static rotation along the Y, Z, and Y axes (Since: 1.10)
          */
-        SYZY,
+        SYZY = 11,
         /**
          * Defines a static rotation along the Y, X, and Z axes (Since: 1.10)
          */
-        SYXZ,
+        SYXZ = 12,
         /**
          * Defines a static rotation along the Y, X, and Y axes (Since: 1.10)
          */
-        SYXY,
+        SYXY = 13,
         /**
          * Defines a static rotation along the Z, X, and Y axes (Since: 1.10)
          */
-        SZXY,
+        SZXY = 14,
         /**
          * Defines a static rotation along the Z, X, and Z axes (Since: 1.10)
          */
-        SZXZ,
+        SZXZ = 15,
         /**
          * Defines a static rotation along the Z, Y, and X axes (Since: 1.10)
          */
-        SZYX,
+        SZYX = 16,
         /**
          * Defines a static rotation along the Z, Y, and Z axes (Since: 1.10)
          */
-        SZYZ,
+        SZYZ = 17,
         /**
          * Defines a relative rotation along the Z, Y, and X axes (Since: 1.10)
          */
-        RZYX,
+        RZYX = 18,
         /**
          * Defines a relative rotation along the X, Y, and X axes (Since: 1.10)
          */
-        RXYX,
+        RXYX = 19,
         /**
          * Defines a relative rotation along the Y, Z, and X axes (Since: 1.10)
          */
-        RYZX,
+        RYZX = 20,
         /**
          * Defines a relative rotation along the X, Z, and X axes (Since: 1.10)
          */
-        RXZX,
+        RXZX = 21,
         /**
          * Defines a relative rotation along the X, Z, and Y axes (Since: 1.10)
          */
-        RXZY,
+        RXZY = 22,
         /**
          * Defines a relative rotation along the Y, Z, and Y axes (Since: 1.10)
          */
-        RYZY,
+        RYZY = 23,
         /**
          * Defines a relative rotation along the Z, X, and Y axes (Since: 1.10)
          */
-        RZXY,
+        RZXY = 24,
         /**
          * Defines a relative rotation along the Y, X, and Y axes (Since: 1.10)
          */
-        RYXY,
+        RYXY = 25,
         /**
          * Defines a relative rotation along the Y, X, and Z axes (Since: 1.10)
          */
-        RYXZ,
+        RYXZ = 26,
         /**
          * Defines a relative rotation along the Z, X, and Z axes (Since: 1.10)
          */
-        RZXZ,
+        RZXZ = 27,
         /**
          * Defines a relative rotation along the X, Y, and Z axes (Since: 1.10)
          */
-        RXYZ,
+        RXYZ = 28,
         /**
          * Defines a relative rotation along the Z, Y, and Z axes (Since: 1.10)
          */
-        RZYZ,
+        RZYZ = 29,
     }
 
 
@@ -173,22 +173,28 @@ export namespace Graphene {
         /**
          * No intersection
          */
-        NONE,
+        NONE = 0,
         /**
          * The ray is entering the intersected
          *   object
          */
-        ENTER,
+        ENTER = 1,
         /**
          * The ray is leaving the intersected
          *   object
          */
-        LEAVE,
+        LEAVE = 2,
     }
 
 
+    /**
+     * @default 3.141593
+     */
     const PI: number;
 
+    /**
+     * @default 1.570796
+     */
     const PI_2: number;
 
     /**
@@ -210,6 +216,7 @@ export namespace Graphene {
      * ```
      * 
      * @since 1.0
+     * @default 2
      */
     const VEC2_LEN: number;
 
@@ -232,6 +239,7 @@ export namespace Graphene {
      * ```
      * 
      * @since 1.0
+     * @default 3
      */
     const VEC3_LEN: number;
 
@@ -254,6 +262,7 @@ export namespace Graphene {
      * ```
      * 
      * @since 1.0
+     * @default 4
      */
     const VEC4_LEN: number;
 

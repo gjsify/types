@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gtef-2.d.ts","./gtef-2-surface.d.ts"]
+  "include": ["./gtef-2.d.ts","./gtef-2-vocabulary.d.ts"]
 }
 
 

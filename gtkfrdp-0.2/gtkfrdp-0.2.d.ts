@@ -36,9 +36,9 @@ export namespace GtkFrdp {
      * @gir-type Enum
      */
     enum ErrConnect {
-        CONNECT_CANCELLED,
-        AUTHENTICATION_FAILED,
-        SECURITY_NEGO_CONNECT_FAILED,
+        CONNECT_CANCELLED = 131083,
+        AUTHENTICATION_FAILED = 131081,
+        SECURITY_NEGO_CONNECT_FAILED = 131084,
     }
 
 
@@ -46,8 +46,8 @@ export namespace GtkFrdp {
      * @gir-type Flags
      */
     enum KeyEvent {
-        PRESS,
-        RELEASE,
+        PRESS = 1,
+        RELEASE = 2,
     }
 
 
@@ -55,16 +55,16 @@ export namespace GtkFrdp {
      * @gir-type Flags
      */
     enum MouseEvent {
-        MOVE,
-        DOWN,
-        WHEEL,
-        WHEEL_NEGATIVE,
-        BUTTON1,
-        BUTTON2,
-        BUTTON3,
-        BUTTON4,
-        BUTTON5,
-        HWHEEL,
+        MOVE = 1,
+        DOWN = 2,
+        WHEEL = 4,
+        WHEEL_NEGATIVE = 8,
+        BUTTON1 = 16,
+        BUTTON2 = 32,
+        BUTTON3 = 64,
+        BUTTON4 = 128,
+        BUTTON5 = 256,
+        HWHEEL = 512,
     }
 
 
@@ -75,7 +75,7 @@ export namespace GtkFrdp {
              * @signal
              * @run-last
              */
-            "rdp-auth-failure": (arg0: string) => void;
+            "rdp-auth-failure": (object: string) => void;
             /**
              * @signal
              * @run-last
@@ -90,7 +90,7 @@ export namespace GtkFrdp {
              * @signal
              * @run-last
              */
-            "rdp-error": (arg0: string) => void;
+            "rdp-error": (object: string) => void;
             /**
              * @signal
              * @run-last
@@ -100,12 +100,12 @@ export namespace GtkFrdp {
              * @signal
              * @run-last
              */
-            "rdp-needs-certificate-change-verification": (arg0: string, arg1: number, arg2: string, arg3: string, arg4: string, arg5: string, arg6: string, arg7: string, arg8: string, arg9: number) => void;
+            "rdp-needs-certificate-change-verification": (object: string, p0: number, p1: string, p2: string, p3: string, p4: string, p5: string, p6: string, p7: string, p8: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "rdp-needs-certificate-verification": (arg0: string, arg1: number, arg2: string, arg3: string, arg4: string, arg5: string, arg6: number) => void;
+            "rdp-needs-certificate-verification": (object: string, p0: number, p1: string, p2: string, p3: string, p4: string, p5: number) => void;
             "notify::allow-resize": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -353,7 +353,7 @@ export namespace GtkFrdp {
              * @signal
              * @run-first
              */
-            "rdp-auth-failure": (arg0: string) => void;
+            "rdp-auth-failure": (object: string) => void;
             /**
              * @signal
              * @run-first
@@ -368,7 +368,7 @@ export namespace GtkFrdp {
              * @signal
              * @run-first
              */
-            "rdp-error": (arg0: string) => void;
+            "rdp-error": (object: string) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::hostname": (pspec: GObject.ParamSpec) => void;
@@ -513,6 +513,7 @@ export namespace GtkFrdp {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         connect_finish(result: Gio.AsyncResult): boolean;
 

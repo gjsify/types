@@ -46,11 +46,11 @@ export namespace Gucharmap {
         /**
          * Character table page
          */
-        CHARTABLE,
+        CHARTABLE = 0,
         /**
          * Character detail page
          */
-        DETAILS,
+        DETAILS = 1,
     }
 
 
@@ -68,130 +68,139 @@ export namespace Gucharmap {
         /**
          * Unassigned Unicode version
          */
-        UNASSIGNED,
+        UNASSIGNED = 0,
         /**
          * Unicode version 1.1
          */
-        "1_1",
+        "1_1" = 1,
         /**
          * Unicode version 2.0
          */
-        "2_0",
+        "2_0" = 2,
         /**
          * Unicode version 2.1
          */
-        "2_1",
+        "2_1" = 3,
         /**
          * Unicode version 3.0
          */
-        "3_0",
+        "3_0" = 4,
         /**
          * Unicode version 3.1
          */
-        "3_1",
+        "3_1" = 5,
         /**
          * Unicode version 3.2
          */
-        "3_2",
+        "3_2" = 6,
         /**
          * Unicode version 4.0
          */
-        "4_0",
+        "4_0" = 7,
         /**
          * Unicode version 4.1
          */
-        "4_1",
+        "4_1" = 8,
         /**
          * Unicode version 5.0
          */
-        "5_0",
+        "5_0" = 9,
         /**
          * Unicode version 5.1
          */
-        "5_1",
+        "5_1" = 10,
         /**
          * Unicode version 5.2
          */
-        "5_2",
+        "5_2" = 11,
         /**
          * Unicode version 6.0
          */
-        "6_0",
+        "6_0" = 12,
         /**
          * Unicode version 6.1
          */
-        "6_1",
+        "6_1" = 13,
         /**
          * Unicode version 6.2
          */
-        "6_2",
+        "6_2" = 14,
         /**
          * Unicode version 6.3
          */
-        "6_3",
+        "6_3" = 15,
         /**
          * Unicode version 7.0
          */
-        "7_0",
+        "7_0" = 16,
         /**
          * Unicode version 8.0
          */
-        "8_0",
+        "8_0" = 17,
         /**
          * Unicode version 9.0
          */
-        "9_0",
+        "9_0" = 18,
         /**
          * Unicode version 10.0
          */
-        "10_0",
+        "10_0" = 19,
         /**
          * Unicode version 11.0
          */
-        "11_0",
+        "11_0" = 20,
         /**
          * Unicode version 12.0
          */
-        "12_0",
+        "12_0" = 21,
         /**
          * Unicode version 12.1
          */
-        "12_1",
+        "12_1" = 22,
         /**
          * Unicode version 13.0
          */
-        "13_0",
+        "13_0" = 23,
         /**
          * Unicode version 14.0
          */
-        "14_0",
+        "14_0" = 24,
         /**
          * Unicode version 15.0
          */
-        "15_0",
+        "15_0" = 25,
         /**
          * Unicode version 15.1
          */
-        "15_1",
+        "15_1" = 26,
         /**
          * Unicode version 16.0
          */
-        "16_0",
+        "16_0" = 27,
         /**
          * Unicode version 17.0
          */
-        "17_0",
+        "17_0" = 28,
         /**
          * Latest Unicode version
          */
-        LATEST,
+        LATEST = 28,
     }
 
 
+    /**
+     * @default 17
+     */
     const VERSION_MAJOR: number;
 
+    /**
+     * @default 2
+     */
     const VERSION_MICRO: number;
 
+    /**
+     * @default 0
+     */
     const VERSION_MINOR: number;
 
     /**
@@ -1713,12 +1722,12 @@ export namespace Gucharmap {
              * @signal
              * @run-first
              */
-            "link-clicked": (arg0: number, arg1: number) => void;
+            "link-clicked": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "status-message": (arg0: string) => void;
+            "status-message": (object: string) => void;
             "notify::active-chapter": (pspec: GObject.ParamSpec) => void;
             "notify::active-character": (pspec: GObject.ParamSpec) => void;
             "notify::active-codepoint-list": (pspec: GObject.ParamSpec) => void;
@@ -2050,7 +2059,7 @@ export namespace Gucharmap {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: Gtk.MovementStep, arg1: number) => boolean | void;
+            "move-cursor": (object: Gtk.MovementStep, p0: number) => boolean | void;
             /**
              * @signal
              * @action
@@ -2061,7 +2070,7 @@ export namespace Gucharmap {
              * @signal
              * @run-first
              */
-            "status-message": (arg0: string) => void;
+            "status-message": (object: string) => void;
             "notify::active-character": (pspec: GObject.ParamSpec) => void;
             "notify::codepoint-list": (pspec: GObject.ParamSpec) => void;
             "notify::font-desc": (pspec: GObject.ParamSpec) => void;

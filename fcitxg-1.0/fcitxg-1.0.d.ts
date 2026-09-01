@@ -31,7 +31,7 @@ export namespace FcitxG {
              * @signal
              * @run-last
              */
-            "commit-string": (arg0: string) => void;
+            "commit-string": (string: string) => void;
             /**
              * Emit when connected to fcitx and created ic
              * @signal
@@ -43,19 +43,19 @@ export namespace FcitxG {
              * @signal
              * @run-last
              */
-            "current-im": (arg0: string, arg1: string, arg2: string) => void;
+            "current-im": (name: string, unique_name: string, lang_code: string) => void;
             /**
              * Emit when input method need to delete surrounding text
              * @signal
              * @run-last
              */
-            "delete-surrounding-text": (arg0: number, arg1: number) => void;
+            "delete-surrounding-text": (cursor: number, len: number) => void;
             /**
              * Emit when input method ask for forward a key
              * @signal
              * @run-last
              */
-            "forward-key": (arg0: number, arg1: number, arg2: number) => void;
+            "forward-key": (keyval: number, state: number, type: number) => void;
             /**
              * Emit when focus out happens on server side
              * @signal
@@ -67,13 +67,13 @@ export namespace FcitxG {
              * @signal
              * @run-last
              */
-            "update-client-side-ui": (arg0: PreeditItem[], arg1: number, arg2: PreeditItem[], arg3: PreeditItem[], arg4: CandidateItem[], arg5: number, arg6: number, arg7: boolean, arg8: boolean) => void;
+            "update-client-side-ui": (preedit: PreeditItem[], preedit_cursor: number, aux_up: PreeditItem[], aux_down: PreeditItem[], candidate_list: CandidateItem[], candidate_cursor: number, candidate_layout_hint: number, has_prev: boolean, has_next: boolean) => void;
             /**
              * Emit when input method needs to update formatted preedit
              * @signal
              * @run-last
              */
-            "update-formatted-preedit": (arg0: PreeditItem[], arg1: number) => void;
+            "update-formatted-preedit": (preedit: PreeditItem[], cursor: number) => void;
             "notify::watcher": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -280,7 +280,7 @@ export namespace FcitxG {
              * @signal
              * @run-last
              */
-            "availability-changed": (arg0: boolean) => void;
+            "availability-changed": (available: boolean) => void;
         }
 
         // Constructor properties interface

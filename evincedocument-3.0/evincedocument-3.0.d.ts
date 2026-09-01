@@ -43,16 +43,16 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum AnnotationTextIcon {
-        NOTE,
-        COMMENT,
-        KEY,
-        HELP,
-        NEW_PARAGRAPH,
-        PARAGRAPH,
-        INSERT,
-        CROSS,
-        CIRCLE,
-        UNKNOWN,
+        NOTE = 0,
+        COMMENT = 1,
+        KEY = 2,
+        HELP = 3,
+        NEW_PARAGRAPH = 4,
+        PARAGRAPH = 5,
+        INSERT = 6,
+        CROSS = 7,
+        CIRCLE = 8,
+        UNKNOWN = 9,
     }
 
 
@@ -67,10 +67,10 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum AnnotationTextMarkupType {
-        HIGHLIGHT,
-        STRIKE_OUT,
-        UNDERLINE,
-        SQUIGGLY,
+        HIGHLIGHT = 0,
+        STRIKE_OUT = 1,
+        UNDERLINE = 2,
+        SQUIGGLY = 3,
     }
 
 
@@ -85,10 +85,10 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum AnnotationType {
-        UNKNOWN,
-        TEXT,
-        ATTACHMENT,
-        TEXT_MARKUP,
+        UNKNOWN = 0,
+        TEXT = 1,
+        ATTACHMENT = 2,
+        TEXT_MARKUP = 3,
     }
 
 
@@ -103,10 +103,10 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum AnnotationsOverMarkup {
-        NOT_IMPLEMENTED,
-        UNKNOWN,
-        YES,
-        NOT,
+        NOT_IMPLEMENTED = 0,
+        UNKNOWN = 1,
+        YES = 2,
+        NOT = 3,
     }
 
 
@@ -121,10 +121,10 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum CompressionType {
-        NONE,
-        BZIP2,
-        GZIP,
-        LZMA,
+        NONE = 0,
+        BZIP2 = 1,
+        GZIP = 2,
+        LZMA = 3,
     }
 
 
@@ -139,9 +139,9 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum DocumentContainsJS {
-        UNKNOWN,
-        NO,
-        YES,
+        UNKNOWN = 0,
+        NO = 1,
+        YES = 2,
     }
 
 
@@ -177,12 +177,12 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum DocumentLayout {
-        SINGLE_PAGE,
-        ONE_COLUMN,
-        TWO_COLUMN_LEFT,
-        TWO_COLUMN_RIGHT,
-        TWO_PAGE_LEFT,
-        TWO_PAGE_RIGHT,
+        SINGLE_PAGE = 0,
+        ONE_COLUMN = 1,
+        TWO_COLUMN_LEFT = 2,
+        TWO_COLUMN_RIGHT = 3,
+        TWO_PAGE_LEFT = 4,
+        TWO_PAGE_RIGHT = 5,
     }
 
 
@@ -197,12 +197,12 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum DocumentMode {
-        NONE,
-        USE_OC,
-        USE_THUMBS,
-        FULL_SCREEN,
-        USE_ATTACHMENTS,
-        PRESENTATION,
+        NONE = 0,
+        USE_OC = 1,
+        USE_THUMBS = 2,
+        FULL_SCREEN = 3,
+        USE_ATTACHMENTS = 4,
+        PRESENTATION = 3,
     }
 
 
@@ -217,9 +217,9 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum FileExporterFormat {
-        UNKNOWN,
-        PS,
-        PDF,
+        UNKNOWN = 0,
+        PS = 1,
+        PDF = 2,
     }
 
 
@@ -234,9 +234,9 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum FormFieldButtonType {
-        PUSH,
-        CHECK,
-        RADIO,
+        PUSH = 0,
+        CHECK = 1,
+        RADIO = 2,
     }
 
 
@@ -251,8 +251,8 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum FormFieldChoiceType {
-        COMBO,
-        LIST,
+        COMBO = 0,
+        LIST = 1,
     }
 
 
@@ -267,9 +267,9 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum FormFieldTextType {
-        NORMAL,
-        MULTILINE,
-        FILE_SELECT,
+        NORMAL = 0,
+        MULTILINE = 1,
+        FILE_SELECT = 2,
     }
 
 
@@ -284,13 +284,13 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum LinkActionType {
-        GOTO_DEST,
-        GOTO_REMOTE,
-        EXTERNAL_URI,
-        LAUNCH,
-        NAMED,
-        LAYERS_STATE,
-        RESET_FORM,
+        GOTO_DEST = 0,
+        GOTO_REMOTE = 1,
+        EXTERNAL_URI = 2,
+        LAUNCH = 3,
+        NAMED = 4,
+        LAYERS_STATE = 5,
+        RESET_FORM = 6,
     }
 
 
@@ -305,15 +305,15 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum LinkDestType {
-        PAGE,
-        XYZ,
-        FIT,
-        FITH,
-        FITV,
-        FITR,
-        NAMED,
-        PAGE_LABEL,
-        UNKNOWN,
+        PAGE = 0,
+        XYZ = 1,
+        FIT = 2,
+        FITH = 3,
+        FITV = 4,
+        FITR = 5,
+        NAMED = 6,
+        PAGE_LABEL = 7,
+        UNKNOWN = 8,
     }
 
 
@@ -328,9 +328,9 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum SelectionStyle {
-        GLYPH,
-        WORD,
-        LINE,
+        GLYPH = 0,
+        WORD = 1,
+        LINE = 2,
     }
 
 
@@ -345,8 +345,8 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum TransitionEffectAlignment {
-        HORIZONTAL,
-        VERTICAL,
+        HORIZONTAL = 0,
+        VERTICAL = 1,
     }
 
 
@@ -361,8 +361,8 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum TransitionEffectDirection {
-        INWARD,
-        OUTWARD,
+        INWARD = 0,
+        OUTWARD = 1,
     }
 
 
@@ -377,30 +377,32 @@ export namespace EvinceDocument {
      * @gir-type Enum
      */
     enum TransitionEffectType {
-        REPLACE,
-        SPLIT,
-        BLINDS,
-        BOX,
-        WIPE,
-        DISSOLVE,
-        GLITTER,
-        FLY,
-        PUSH,
-        COVER,
-        UNCOVER,
-        FADE,
+        REPLACE = 0,
+        SPLIT = 1,
+        BLINDS = 2,
+        BOX = 3,
+        WIPE = 4,
+        DISSOLVE = 5,
+        GLITTER = 6,
+        FLY = 7,
+        PUSH = 8,
+        COVER = 9,
+        UNCOVER = 10,
+        FADE = 11,
     }
 
 
     /**
      * The major version number of the EV library
      * (e.g. in version 3.1.4 this is 3).
+     * @default 48
      */
     const MAJOR_VERSION: number;
 
     /**
      * The minor version number of the EV library
      * (e.g. in version 3.1.4 this is 1).
+     * @default 1
      */
     const MINOR_VERSION: number;
 
@@ -431,6 +433,7 @@ export namespace EvinceDocument {
      * @param uri a file URI
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
+     * @throws GLib.Error
      */
     function file_compress(uri: string, type: CompressionType): string;
 
@@ -441,6 +444,7 @@ export namespace EvinceDocument {
      * @param to the target URI
      * @returns `true` if the attributes were copied successfully, `false` otherwise.
      * @since 3.4
+     * @throws GLib.Error
      */
     function file_copy_metadata(from: string, to: string): boolean;
 
@@ -448,12 +452,14 @@ export namespace EvinceDocument {
      * @param uri the URI
      * @param fast whether to use fast MIME type detection
      * @returns a newly allocated string with the MIME type of the file at   `uri`, or `null` on error or if the MIME type could not be determined
+     * @throws GLib.Error
      */
     function file_get_mime_type(uri: string, fast: boolean): string;
 
     /**
      * @param fd an file descriptor (must be seekable)
      * @returns a newly allocated string with the MIME type of the file referred to   by `fd`, or `null` on error or if the MIME type could not be determined
+     * @throws GLib.Error
      */
     function file_get_mime_type_from_fd(fd: number): string;
 
@@ -475,6 +481,7 @@ export namespace EvinceDocument {
      * @param uri a file URI
      * @param type the compression type
      * @returns a newly allocated string URI, or `null` on error
+     * @throws GLib.Error
      */
     function file_uncompress(uri: string, type: CompressionType): string;
 
@@ -494,6 +501,7 @@ export namespace EvinceDocument {
      * Creates a temp directory in the evince temp directory.
      * @param tmpl a template string; must end in 'XXXXXX'
      * @returns a newly allocated string with the temp directory name, or `null`   on error with `error` filled in
+     * @throws GLib.Error
      */
     function mkdtemp(tmpl: string): string;
 
@@ -502,6 +510,7 @@ export namespace EvinceDocument {
      * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
      * @param file_name a location to store the filename of the temp file
      * @returns a file descriptor to the newly created temp file name, or %-1   on error with `error` filled in
+     * @throws GLib.Error
      */
     function mkstemp(tmpl: string, file_name: string): number;
 
@@ -509,6 +518,7 @@ export namespace EvinceDocument {
      * Creates a temp {@link Gio.File} in the evince temp directory. See `ev_mkstemp()` for more information.
      * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
      * @returns a newly allocated {@link Gio.File} for the newly created temp file name, or `null`   on error with `error` filled in
+     * @throws GLib.Error
      */
     function mkstemp_file(tmpl: string): Gio.File;
 
@@ -550,6 +560,7 @@ export namespace EvinceDocument {
      * @param from the source URI
      * @param to the target URI
      * @returns `true` on success, or `false` on error with `error` filled in
+     * @throws GLib.Error
      */
     function xfer_uri_simple(from: string, to: string): boolean;
 
@@ -571,19 +582,19 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum AnnotationsSaveMask {
-        NONE,
-        CONTENTS,
-        COLOR,
-        AREA,
-        LABEL,
-        OPACITY,
-        POPUP_RECT,
-        POPUP_IS_OPEN,
-        TEXT_IS_OPEN,
-        TEXT_ICON,
-        ATTACHMENT,
-        TEXT_MARKUP_TYPE,
-        ALL,
+        NONE = 0,
+        CONTENTS = 1,
+        COLOR = 2,
+        AREA = 4,
+        LABEL = 8,
+        OPACITY = 16,
+        POPUP_RECT = 32,
+        POPUP_IS_OPEN = 64,
+        TEXT_IS_OPEN = 128,
+        TEXT_ICON = 256,
+        ATTACHMENT = 512,
+        TEXT_MARKUP_TYPE = 1024,
+        ALL = 2047,
     }
 
 
@@ -598,25 +609,25 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum DocumentInfoFields {
-        TITLE,
-        FORMAT,
-        AUTHOR,
-        SUBJECT,
-        KEYWORDS,
-        LAYOUT,
-        CREATOR,
-        PRODUCER,
-        CREATION_DATE,
-        MOD_DATE,
-        LINEARIZED,
-        START_MODE,
-        UI_HINTS,
-        PERMISSIONS,
-        N_PAGES,
-        SECURITY,
-        PAPER_SIZE,
-        LICENSE,
-        CONTAINS_JS,
+        TITLE = 1,
+        FORMAT = 2,
+        AUTHOR = 4,
+        SUBJECT = 8,
+        KEYWORDS = 16,
+        LAYOUT = 32,
+        CREATOR = 64,
+        PRODUCER = 128,
+        CREATION_DATE = 256,
+        MOD_DATE = 512,
+        LINEARIZED = 1024,
+        START_MODE = 2048,
+        UI_HINTS = 4096,
+        PERMISSIONS = 8192,
+        N_PAGES = 16384,
+        SECURITY = 32768,
+        PAPER_SIZE = 65536,
+        LICENSE = 131072,
+        CONTAINS_JS = 262144,
     }
 
 
@@ -631,8 +642,8 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum DocumentLoadFlags {
-        NONE,
-        NO_CACHE,
+        NONE = 0,
+        NO_CACHE = 1,
     }
 
 
@@ -647,11 +658,11 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum DocumentPermissions {
-        OK_TO_PRINT,
-        OK_TO_MODIFY,
-        OK_TO_COPY,
-        OK_TO_ADD_NOTES,
-        FULL,
+        OK_TO_PRINT = 1,
+        OK_TO_MODIFY = 2,
+        OK_TO_COPY = 4,
+        OK_TO_ADD_NOTES = 8,
+        FULL = 15,
     }
 
 
@@ -666,13 +677,13 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum DocumentUIHints {
-        HIDE_TOOLBAR,
-        HIDE_MENUBAR,
-        HIDE_WINDOWUI,
-        FIT_WINDOW,
-        CENTER_WINDOW,
-        DISPLAY_DOC_TITLE,
-        DIRECTION_RTL,
+        HIDE_TOOLBAR = 1,
+        HIDE_MENUBAR = 2,
+        HIDE_WINDOWUI = 4,
+        FIT_WINDOW = 8,
+        CENTER_WINDOW = 16,
+        DISPLAY_DOC_TITLE = 32,
+        DIRECTION_RTL = 64,
     }
 
 
@@ -687,15 +698,15 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum FileExporterCapabilities {
-        PAGE_SET,
-        COPIES,
-        COLLATE,
-        REVERSE,
-        SCALE,
-        GENERATE_PDF,
-        GENERATE_PS,
-        PREVIEW,
-        NUMBER_UP,
+        PAGE_SET = 1,
+        COPIES = 2,
+        COLLATE = 4,
+        REVERSE = 8,
+        SCALE = 16,
+        GENERATE_PDF = 32,
+        GENERATE_PS = 64,
+        PREVIEW = 128,
+        NUMBER_UP = 256,
     }
 
 
@@ -710,9 +721,9 @@ export namespace EvinceDocument {
      * @gir-type Flags
      */
     enum FindOptions {
-        DEFAULT,
-        CASE_SENSITIVE,
-        WHOLE_WORDS_ONLY,
+        DEFAULT = 0,
+        CASE_SENSITIVE = 1,
+        WHOLE_WORDS_ONLY = 2,
     }
 
 
@@ -1620,11 +1631,13 @@ export namespace EvinceDocument {
         /**
          * @param screen 
          * @param timestamp 
+         * @throws GLib.Error
          */
         open(screen: Gdk.Screen, timestamp: number): boolean;
 
         /**
          * @param file 
+         * @throws GLib.Error
          */
         save(file: Gio.File): boolean;
     }
@@ -2130,6 +2143,7 @@ export namespace EvinceDocument {
          * the URI, e.g. {@link GLib.IOError}, {@link GLib.FileError}, and {@link GLib.ConvertError}.
          * @param uri the document's URI
          * @returns `true` on success, or `false` on failure.
+         * @throws GLib.Error
          */
         load(uri: string): boolean;
 
@@ -2147,6 +2161,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          * @since 42.0
+         * @throws GLib.Error
          */
         load_fd(fd: number, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2162,6 +2177,7 @@ export namespace EvinceDocument {
          * @param uri the document's URI
          * @param flags flags from {@link EvinceDocument.DocumentLoadFlags}
          * @returns `true` on success, or `false` on failure.
+         * @throws GLib.Error
          */
         load_full(uri: string, flags: DocumentLoadFlags): boolean;
 
@@ -2173,6 +2189,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          * @since 3.6
+         * @throws GLib.Error
          */
         load_gfile(file: Gio.File, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2184,6 +2201,7 @@ export namespace EvinceDocument {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if loading succeeded, or `false` on error with `error` filled in
          * @since 3.6
+         * @throws GLib.Error
          */
         load_stream(stream: Gio.InputStream, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2196,6 +2214,7 @@ export namespace EvinceDocument {
          * Saves `document` to `uri`.
          * @param uri the target URI
          * @returns `true` on success, or `false` on error with `error` filled in
+         * @throws GLib.Error
          */
         save(uri: string): boolean;
 

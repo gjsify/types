@@ -66,20 +66,21 @@ export namespace GSSDP {
         /**
          * When creating a client, use the default version
          */
-        VERSION_UNSPECIFIED,
+        VERSION_UNSPECIFIED = 0,
         /**
          * Use Version 1.0 of the UDA specification (UPnP/1.0)
          */
-        VERSION_1_0,
+        VERSION_1_0 = 1,
         /**
          * Use Version 1.1 of the UDA specification (UPnP/1.1)
          */
-        VERSION_1_1,
+        VERSION_1_1 = 2,
     }
 
 
     /**
      * SSDP search target for finding all possible resources.
+     * @default ssdp:all
      */
     const ALL_RESOURCES: string;
 
@@ -96,7 +97,7 @@ export namespace GSSDP {
              * @signal
              * @run-last
              */
-            "message-received": (arg0: string, arg1: number, arg2: number, arg3: Soup.MessageHeaders) => void;
+            "message-received": (from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
             "notify::address-family": (pspec: GObject.ParamSpec) => void;
@@ -629,6 +630,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -688,14 +690,14 @@ export namespace GSSDP {
              * @signal
              * @run-last
              */
-            "resource-available": (arg0: string, arg1: string[]) => void;
+            "resource-available": (usn: string, locations: string[]) => void;
             /**
              * The ::resource-unavailable signal is emitted whenever a resource
              * is not available any more.
              * @signal
              * @run-last
              */
-            "resource-unavailable": (arg0: string) => void;
+            "resource-unavailable": (usn: string) => void;
             /**
              * The ::resource-update signal is emitted whenever an UPnP 1.1
              * device is about to change it's BOOTID.
@@ -703,7 +705,7 @@ export namespace GSSDP {
              * @since 1.2.0
              * @run-last
              */
-            "resource-update": (arg0: string, arg1: number, arg2: number) => void;
+            "resource-update": (usn: string, boot_id: number, next_boot_id: number) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::mx": (pspec: GObject.ParamSpec) => void;

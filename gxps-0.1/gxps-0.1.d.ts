@@ -60,7 +60,7 @@ export namespace GXPS {
         /**
          * The XPS is invalid.
          */
-        FILE_ERROR_INVALID,
+        FILE_ERROR_INVALID = 0,
     }
 
 
@@ -72,39 +72,43 @@ export namespace GXPS {
         /**
          * The page is invalid.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Error rendering the page.
          */
-        RENDER,
+        RENDER = 1,
         /**
          * Anchor is invalid for the page.
          */
-        INVALID_ANCHOR,
+        INVALID_ANCHOR = 2,
     }
 
 
     /**
      * The major version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 0.)
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The micro version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 2.)
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * The major version number of the GXPS header files (e.g. in GXPS version
      * 0.1.2 this is 1.)
+     * @default 3
      */
     const MINOR_VERSION: number;
 
     /**
      * The version number of the GXPS library as a string
      * @since 0.2.1
+     * @default 0.3.2
      */
     const VERSION_STRING: string;
 
@@ -320,6 +324,7 @@ export namespace GXPS {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -436,6 +441,7 @@ export namespace GXPS {
          * index `n_doc` in `doc` document.
          * @param n_page the index of the page to get
          * @returns a new {@link GXPS.Page} or `null` on error.     Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         get_page(n_page: number): Page;
 
@@ -510,6 +516,7 @@ export namespace GXPS {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -720,6 +727,7 @@ export namespace GXPS {
          * of `xpsm`, or `null` in case of error or if the {@link GXPS.File}
          * doesn't contain core properties.
          * @returns a new {@link GXPS.CoreProperties} or `null`.    Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         get_core_properties(): CoreProperties;
 
@@ -728,6 +736,7 @@ export namespace GXPS {
          * index `n_doc` in `xps` file.
          * @param n_doc the index of the document to get
          * @returns a new {@link GXPS.Document} or `null` on error.     Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         get_document(n_doc: number): Document;
 
@@ -792,6 +801,7 @@ export namespace GXPS {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -906,6 +916,7 @@ export namespace GXPS {
          * will be returned and `error` will contain {@link GXPS.PageError.INVALID_ANCHOR}
          * @param anchor the name of an anchor in `page`
          * @returns `true` if the destination for the anchor was found in page     and `area` contains the rectangle, `false` otherwise.
+         * @throws GLib.Error
          */
         get_anchor_destination(anchor: string): [boolean, cairo.Rectangle];
 
@@ -915,6 +926,7 @@ export namespace GXPS {
          * be freed with `gxps_link_free()` and the list itself with
          * `g_list_free()` when done.
          * @returns a {@link GLib.List}     of {@link GXPS.Link} items.
+         * @throws GLib.Error
          */
         get_links(): Link[];
 
@@ -929,6 +941,7 @@ export namespace GXPS {
          * information about error.
          * @param cr a cairo context to render to
          * @returns `true` if page was successfully rendered,     `false` otherwise.
+         * @throws GLib.Error
          */
         render(cr: cairo.Context): boolean;
 
@@ -974,6 +987,7 @@ export namespace GXPS {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

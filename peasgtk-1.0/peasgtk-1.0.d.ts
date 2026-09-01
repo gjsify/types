@@ -193,7 +193,7 @@ export namespace PeasGtk {
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Gtk.Menu) => void;
+            "populate-popup": (menu: Gtk.Menu) => void;
             "notify::engine": (pspec: GObject.ParamSpec) => void;
             "notify::show-builtin": (pspec: GObject.ParamSpec) => void;
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;

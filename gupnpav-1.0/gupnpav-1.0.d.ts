@@ -30,27 +30,27 @@ export namespace GUPnPAV {
         /**
          * Invalid {@link GUPnPAV.CDSLastChangeEntry}
          */
-        INVALID,
+        INVALID = 0,
         /**
          * The {@link GUPnPAV.CDSLastChangeEntry} is
          * an object added event.
          */
-        OBJECT_ADDED,
+        OBJECT_ADDED = 1,
         /**
          * The {@link GUPnPAV.CDSLastChangeEntry}
          * is an object removal event.
          */
-        OBJECT_REMOVED,
+        OBJECT_REMOVED = 2,
         /**
          * The {@link GUPnPAV.CDSLastChangeEntry}
          * is an object modification event.
          */
-        OBJECT_MODIFIED,
+        OBJECT_MODIFIED = 3,
         /**
          * The {@link GUPnPAV.CDSLastChangeEntry} is a
          * subtree update done event.
          */
-        ST_DONE,
+        ST_DONE = 4,
     }
 
 
@@ -62,47 +62,47 @@ export namespace GUPnPAV {
         /**
          * Operation succeeded.
          */
-        OK,
+        OK = 0,
         /**
          * Current set of fragments
          * is bad XML
          */
-        CURRENT_BAD_XML,
+        CURRENT_BAD_XML = 1,
         /**
          * New set of fragments is bad
          * XML
          */
-        NEW_BAD_XML,
+        NEW_BAD_XML = 2,
         /**
          * Current set of fragments
          * is invalid
          */
-        CURRENT_INVALID,
+        CURRENT_INVALID = 3,
         /**
          * New set of fragments is
          * invalid
          */
-        NEW_INVALID,
+        NEW_INVALID = 4,
         /**
          * Trying to remove a required
          * tag
          */
-        REQUIRED_TAG,
+        REQUIRED_TAG = 5,
         /**
          * Trying to modify or remove a
          * read-only tag
          */
-        READONLY_TAG,
+        READONLY_TAG = 6,
         /**
          * Length of the two fragment sets
          * does not match
          */
-        MISMATCH,
+        MISMATCH = 7,
         /**
          * General error sink if none
          * of the others applies.
          */
-        UNKNOWN_ERROR,
+        UNKNOWN_ERROR = 8,
     }
 
 
@@ -145,43 +145,43 @@ export namespace GUPnPAV {
         /**
          * '='
          */
-        EQ,
+        EQ = 271,
         /**
          * '!='
          */
-        NEQ,
+        NEQ = 272,
         /**
          * '<'
          */
-        LESS,
+        LESS = 273,
         /**
          * '<='
          */
-        LEQ,
+        LEQ = 274,
         /**
          * '>'
          */
-        GREATER,
+        GREATER = 275,
         /**
          * '>='
          */
-        GEQ,
+        GEQ = 276,
         /**
          * 'contains'
          */
-        CONTAINS,
+        CONTAINS = 277,
         /**
          * 'doesNotContain'
          */
-        DOES_NOT_CONTAIN,
+        DOES_NOT_CONTAIN = 278,
         /**
          * 'derivedFrom'
          */
-        DERIVED_FROM,
+        DERIVED_FROM = 279,
         /**
          * 'exists'
          */
-        EXISTS,
+        EXISTS = 280,
     }
 
 
@@ -193,16 +193,28 @@ export namespace GUPnPAV {
          * Parsing the search criteria
          * failed.
          */
-        SEARCH_CRITERIA_PARSER_ERROR_FAILED,
+        SEARCH_CRITERIA_PARSER_ERROR_FAILED = 0,
     }
 
 
+    /**
+     * @default dc
+     */
     const DIDL_LITE_WRITER_NAMESPACE_DC: string;
 
+    /**
+     * @default dlna
+     */
     const DIDL_LITE_WRITER_NAMESPACE_DLNA: string;
 
+    /**
+     * @default pv
+     */
     const DIDL_LITE_WRITER_NAMESPACE_PV: string;
 
+    /**
+     * @default upnp
+     */
     const DIDL_LITE_WRITER_NAMESPACE_UPNP: string;
 
     /**
@@ -233,11 +245,11 @@ export namespace GUPnPAV {
         /**
          * Content is in original source format
          */
-        NONE,
+        NONE = 0,
         /**
          * Content is transcoded
          */
-        TRANSCODED,
+        TRANSCODED = 1,
     }
 
 
@@ -260,73 +272,73 @@ export namespace GUPnPAV {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Content source is the clock source during
          *                                 transport
          */
-        SENDER_PACED,
+        SENDER_PACED = 2147483648,
         /**
          * Limited Operation: time-seek supported
          */
-        TIME_BASED_SEEK,
+        TIME_BASED_SEEK = 1073741824,
         /**
          * Limited Operation: byte-seek supported
          */
-        BYTE_BASED_SEEK,
+        BYTE_BASED_SEEK = 536870912,
         /**
          * Resource supports 'Container Playback'
          */
-        PLAY_CONTAINER,
+        PLAY_CONTAINER = 268435456,
         /**
          * Content does not have a fixed beginning
          */
-        S0_INCREASE,
+        S0_INCREASE = 134217728,
         /**
          * Content does not have a fixed end
          */
-        SN_INCREASE,
+        SN_INCREASE = 67108864,
         /**
          * RTSP resource supports pausing of media
          *                               transfer
          */
-        RTSP_PAUSE,
+        RTSP_PAUSE = 33554432,
         /**
          * Streaming transfer mode supported
          */
-        STREAMING_TRANSFER_MODE,
+        STREAMING_TRANSFER_MODE = 16777216,
         /**
          * Interactive transfer mode
          *                                              supported
          */
-        INTERACTIVE_TRANSFER_MODE,
+        INTERACTIVE_TRANSFER_MODE = 8388608,
         /**
          * Background transfer mode
          *                                             supported
          */
-        BACKGROUND_TRANSFER_MODE,
+        BACKGROUND_TRANSFER_MODE = 4194304,
         /**
          * No content transfer when paused.
          */
-        CONNECTION_STALL,
+        CONNECTION_STALL = 2097152,
         /**
          * DLNAv1.5 version flag
          */
-        DLNA_V15,
+        DLNA_V15 = 1048576,
         /**
          * The content is protected.
          */
-        LINK_PROTECTED_CONTENT,
+        LINK_PROTECTED_CONTENT = 65536,
         /**
          * Full byte seek on cleartext
          *                                              domain is supported.
          */
-        CLEARTEXT_BYTESEEK_FULL,
+        CLEARTEXT_BYTESEEK_FULL = 32768,
         /**
          * Limited operations on
          *                                              byte seek in cleartext domain.
          */
-        LOP_CLEARTEXT_BYTESEEK,
+        LOP_CLEARTEXT_BYTESEEK = 16384,
     }
 
 
@@ -345,15 +357,15 @@ export namespace GUPnPAV {
         /**
          * Resource does not support seeking of any type
          */
-        NONE,
+        NONE = 0,
         /**
          * Resource supports byte-seek
          */
-        RANGE,
+        RANGE = 1,
         /**
          * Resource supports time-seek
          */
-        TIMESEEK,
+        TIMESEEK = 16,
     }
 
 
@@ -374,29 +386,29 @@ export namespace GUPnPAV {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Indicates support for content upload.
          */
-        UPLOAD,
+        UPLOAD = 1,
         /**
          * Indicates support for creation of child
          *                                    container.
          */
-        CREATE_CONTAINER,
+        CREATE_CONTAINER = 2,
         /**
          * This object is destroyable.
          */
-        DESTROYABLE,
+        DESTROYABLE = 4,
         /**
          * Indicates support for upload of
          *                                      destroyable content.
          */
-        UPLOAD_DESTROYABLE,
+        UPLOAD_DESTROYABLE = 8,
         /**
          * Indicates support for changing metadata.
          */
-        CHANGE_METADATA,
+        CHANGE_METADATA = 16,
     }
 
 
@@ -456,6 +468,7 @@ export namespace GUPnPAV {
          * ContentDirectory:3 specification.
          * @param last_change XML string to parse
          * @returns List of {@link GUPnPAV.CDSLastChangeEntry}
+         * @throws GLib.Error
          */
         parse(last_change: string): CDSLastChangeEntry[];
     }
@@ -2064,21 +2077,21 @@ export namespace GUPnPAV {
              * @signal
              * @run-last
              */
-            "container-available": (arg0: DIDLLiteContainer) => void;
+            "container-available": (container: DIDLLiteContainer) => void;
             /**
              * The ::item-available signal is emitted each time an item is found in
              * the DIDL-Lite XML being parsed.
              * @signal
              * @run-last
              */
-            "item-available": (arg0: DIDLLiteItem) => void;
+            "item-available": (item: DIDLLiteItem) => void;
             /**
              * The ::object-available signal is emitted each time an object is
              * found in the DIDL-Lite XML being parsed.
              * @signal
              * @run-last
              */
-            "object-available": (arg0: DIDLLiteObject) => void;
+            "object-available": (object: DIDLLiteObject) => void;
         }
 
         // Constructor properties interface
@@ -2149,6 +2162,7 @@ export namespace GUPnPAV {
          * process.
          * @param didl The DIDL-Lite XML string to be parsed
          * @returns TRUE on success.
+         * @throws GLib.Error
          */
         parse_didl(didl: string): boolean;
     }
@@ -3072,6 +3086,7 @@ export namespace GUPnPAV {
          * If an error occurred `error` will be set.
          * @param text The feature list string to be parsed
          * @returns The list of features or `null` if an error occurred.
+         * @throws GLib.Error
          */
         parse_text(text: string): Feature[] | null;
     }
@@ -3582,7 +3597,7 @@ export namespace GUPnPAV {
              * @signal
              * @run-last
              */
-            expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: null) => boolean | void;
+            expression: (property: string, op: SearchCriteriaOp, value: string, error: null) => boolean | void;
         }
 
         // Constructor properties interface
@@ -3670,6 +3685,7 @@ export namespace GUPnPAV {
          * error occured `error` will be set.
          * @param text The search criteria string to be parsed
          * @returns TRUE on success.
+         * @throws GLib.Error
          */
         parse_text(text: string): boolean;
     }

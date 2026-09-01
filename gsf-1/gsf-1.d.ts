@@ -31,27 +31,27 @@ export namespace Gsf {
         /**
          * Windows clipboard format
          */
-        WINDOWS_CLIPBOARD,
+        WINDOWS_CLIPBOARD = -1,
         /**
          * Macintosh clipboard format
          */
-        MACINTOSH_CLIPBOARD,
+        MACINTOSH_CLIPBOARD = -2,
         /**
          * GUID that contains a format identifier
          */
-        GUID,
+        GUID = -3,
         /**
          * No clipboard data
          */
-        NO_DATA,
+        NO_DATA = 0,
         /**
          * Custom clipboard format
          */
-        CLIPBOARD_FORMAT_NAME,
+        CLIPBOARD_FORMAT_NAME = 1,
         /**
          * Unknown clipboard type or invalid data
          */
-        UNKNOWN,
+        UNKNOWN = 2,
     }
 
 
@@ -62,23 +62,23 @@ export namespace Gsf {
         /**
          * error
          */
-        ERROR,
+        ERROR = -1,
         /**
          * unknown
          */
-        UNKNOWN,
+        UNKNOWN = -2,
         /**
          * CF_METAFILEPICT
          */
-        METAFILE,
+        METAFILE = 3,
         /**
          * CF_DIB
          */
-        DIB,
+        DIB = 8,
         /**
          * CF_ENHMETAFILE
          */
-        ENHANCED_METAFILE,
+        ENHANCED_METAFILE = 14,
     }
 
 
@@ -119,15 +119,15 @@ export namespace Gsf {
         /**
          * never add quotes around fields
          */
-        NEVER,
+        NEVER = 0,
         /**
          * add quotes around fields when needed
          */
-        AUTO,
+        AUTO = 1,
         /**
          * always add quotes around fields
          */
-        ALWAYS,
+        ALWAYS = 2,
     }
 
 
@@ -139,19 +139,19 @@ export namespace Gsf {
         /**
          * node has no cstr contents
          */
-        NO_CONTENT,
+        NO_CONTENT = 0,
         /**
          * node has cstr contents
          */
-        CONTENT,
+        CONTENT = 1,
         /**
          * node has contents that is shared with children
          */
-        SHARED_CONTENT,
+        SHARED_CONTENT = 2,
         /**
          * node is second or later occurrence
          */
-        "2ND",
+        "2ND" = 3,
     }
 
 
@@ -159,38 +159,42 @@ export namespace Gsf {
      * @gir-type Enum
      */
     enum ZipCompressionMethod {
-        STORED,
-        SHRUNK,
-        REDUCEDX1,
-        REDUCEDX2,
-        REDUCEDX3,
-        REDUCEDX4,
-        IMPLODED,
-        TOKENIZED,
-        DEFLATED,
-        DEFLATED_BETTER,
-        IMPLODED_BETTER,
+        STORED = 0,
+        SHRUNK = 1,
+        REDUCEDX1 = 2,
+        REDUCEDX2 = 3,
+        REDUCEDX3 = 4,
+        REDUCEDX4 = 5,
+        IMPLODED = 6,
+        TOKENIZED = 7,
+        DEFLATED = 8,
+        DEFLATED_BETTER = 9,
+        IMPLODED_BETTER = 10,
     }
 
 
     /**
      * (Integer) Count of bytes in the document.
+     * @default gsf:byte-count
      */
     const META_NAME_BYTE_COUNT: string;
 
     /**
      * (Unsigned Integer) Identifier representing the case-sensitiveness.
      * <note>of what ?? why is it an integer ??</note>
+     * @default gsf:case-sensitivity
      */
     const META_NAME_CASE_SENSITIVE: string;
 
     /**
      * (String) Category of the document. <note>example???</note>
+     * @default gsf:category
      */
     const META_NAME_CATEGORY: string;
 
     /**
      * (Integer) Count of cells in the spread-sheet document, if appropriate.
+     * @default gsf:cell-count
      */
     const META_NAME_CELL_COUNT: string;
 
@@ -198,12 +202,14 @@ export namespace Gsf {
      * (Integer) Count of characters in the document.
      * 
      * TODO See how to sync this with ODF's document-statistic
+     * @default gsf:character-count
      */
     const META_NAME_CHARACTER_COUNT: string;
 
     /**
      * (UnsignedShort) The MS codepage to encode strings for metadata
      * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
+     * @default msole:codepage
      */
     const META_NAME_CODEPAGE: string;
 
@@ -212,6 +218,7 @@ export namespace Gsf {
      * associated with.
      * 
      * 1.14.1	Moved from "gsf:company" to "dc:publisher".
+     * @default dc:publisher
      */
     const META_NAME_COMPANY: string;
 
@@ -220,6 +227,7 @@ export namespace Gsf {
      * resource typically a person, organization, or service.
      * 
      * 1.14.0	Moved from "gsf" to "dc".
+     * @default dc:creator
      */
     const META_NAME_CREATOR: string;
 
@@ -228,6 +236,7 @@ export namespace Gsf {
      * the resource (creation/publication date).
      * Moved from gsf:date-created to meta:creation-date. This way can be used correctly
      * by OpenDocument and Gnumeric.
+     * @default meta:creation-date
      */
     const META_NAME_DATE_CREATED: string;
 
@@ -235,16 +244,19 @@ export namespace Gsf {
      * (GsfTimestamp) The last time this document was saved.
      * 
      * 1.14.0	Moved from dc:date-modified to dc:date.
+     * @default dc:date
      */
     const META_NAME_DATE_MODIFIED: string;
 
     /**
      * (String) An account of the content of the resource.
+     * @default dc:description
      */
     const META_NAME_DESCRIPTION: string;
 
     /**
      * (None) Reserved name (PID) for Dictionary
+     * @default gsf:dictionary
      */
     const META_NAME_DICTIONARY: string;
 
@@ -252,6 +264,7 @@ export namespace Gsf {
      * (Vector of strings) Names of the 'interesting' parts of the document.  In
      * spreadsheets this is a list of the sheet names, and the named expressions.
      * From MSOLE
+     * @default gsf:document-parts
      */
     const META_NAME_DOCUMENT_PARTS: string;
 
@@ -259,6 +272,7 @@ export namespace Gsf {
      * (Date as ISO String) The total-time taken until the last modification.
      * Moved from "gsf" to "meta". This way can be used correctly by OpenDocument
      * and Gnumeric.
+     * @default meta:editing-duration
      */
     const META_NAME_EDITING_DURATION: string;
 
@@ -267,6 +281,7 @@ export namespace Gsf {
      * etc...
      * 
      * 1.14.0 Moved from "gsf" to "meta".
+     * @default meta:generator
      */
     const META_NAME_GENERATOR: string;
 
@@ -274,16 +289,19 @@ export namespace Gsf {
      * (Vector of string value pairs stored in alternating elements) Store the
      * counts of objects in the document as names 'worksheet' and count '4'
      * From MSOLE
+     * @default gsf:heading-pairs
      */
     const META_NAME_HEADING_PAIRS: string;
 
     /**
      * (Integer) Count of hidden-slides in the presentation document.
+     * @default gsf:hidden-slide-count
      */
     const META_NAME_HIDDEN_SLIDE_COUNT: string;
 
     /**
      * (Integer) Count of images in the document, if appropriate.
+     * @default gsf:image-count
      */
     const META_NAME_IMAGE_COUNT: string;
 
@@ -291,18 +309,21 @@ export namespace Gsf {
      * (String) Specifies the name of the person who created the document
      * initially.
      * 1.14.0 Moved from "gsf" to "meta".
+     * @default meta:initial-creator
      */
     const META_NAME_INITIAL_CREATOR: string;
 
     /**
      * (String) Searchable, indexable keywords. Similar to PDF keywords or HTML's
      * meta block.
+     * @default meta:keyword
      */
     const META_NAME_KEYWORD: string;
 
     /**
      * (GsfDocPropVector of String) Searchable, indexable keywords. Similar to PDF
      * keywords or HTML's meta block.
+     * @default dc:keywords
      */
     const META_NAME_KEYWORDS: string;
 
@@ -310,6 +331,7 @@ export namespace Gsf {
      * (String) The locale language of the intellectual content of the resource
      * 	(basically xx_YY form for us).
      * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
+     * @default dc:language
      */
     const META_NAME_LANGUAGE: string;
 
@@ -318,98 +340,117 @@ export namespace Gsf {
      * 
      * 1.14.0	Moved from "gsf" to "dc".
      * 1.14.1	Moved back to "gsf" from "dc".
+     * @default gsf:last-printed
      */
     const META_NAME_LAST_PRINTED: string;
 
     /**
      * (String) The entity that made the last change to the document, typically a
      * person, organization, or service.
+     * @default gsf:last-saved-by
      */
     const META_NAME_LAST_SAVED_BY: string;
 
     /**
      * (Integer) Count of liness in the document.
+     * @default gsf:line-count
      */
     const META_NAME_LINE_COUNT: string;
 
     /**
      * (Boolean) ???????
+     * @default gsf:links-dirty
      */
     const META_NAME_LINKS_DIRTY: string;
 
     /**
      * (Unsigned Integer) Identifier representing the default system locale.
+     * @default gsf:default-locale
      */
     const META_NAME_LOCALE_SYSTEM_DEFAULT: string;
 
     /**
      * (String) Name of the manager of "CREATOR" entity.
+     * @default gsf:manager
      */
     const META_NAME_MANAGER: string;
 
     /**
      * (Integer) Count of "multi-media" clips in the document.
+     * @default gsf:MM-clip-count
      */
     const META_NAME_MM_CLIP_COUNT: string;
 
     /**
      * (Unknown) User-defined name
+     * @default msole:unknown-doc-17
      */
     const META_NAME_MSOLE_UNKNOWN_17: string;
 
     /**
      * (Unknown) User-defined name
+     * @default msole:unknown-doc-18
      */
     const META_NAME_MSOLE_UNKNOWN_18: string;
 
     /**
      * (Boolean) User-defined name
+     * @default msole:unknown-doc-19
      */
     const META_NAME_MSOLE_UNKNOWN_19: string;
 
     /**
      * (Unknown) User-defined name
+     * @default msole:unknown-doc-20
      */
     const META_NAME_MSOLE_UNKNOWN_20: string;
 
     /**
      * (Unknown) User-defined name
+     * @default msole:unknown-doc-21
      */
     const META_NAME_MSOLE_UNKNOWN_21: string;
 
     /**
      * (Boolean) User-defined name
+     * @default msole:unknown-doc-22
      */
     const META_NAME_MSOLE_UNKNOWN_22: string;
 
     /**
      * (i4) User-defined name
+     * @default msole:unknown-doc-23
      */
     const META_NAME_MSOLE_UNKNOWN_23: string;
 
     /**
      * (Integer) Count of "notes" in the document.
+     * @default gsf:note-count
      */
     const META_NAME_NOTE_COUNT: string;
 
     /**
      * (Integer) Count of objects (OLE and other graphics) in the document, if
      * appropriate.
+     * @default gsf:object-count
      */
     const META_NAME_OBJECT_COUNT: string;
 
     /**
      * (Integer) Count of pages in the document, if appropriate.
+     * @default gsf:page-count
      */
     const META_NAME_PAGE_COUNT: string;
 
     /**
      * (Integer) Count of paragraphs in the document, if appropriate.
+     * @default gsf:paragraph-count
      */
     const META_NAME_PARAGRAPH_COUNT: string;
 
     /**
      * (String) Type of presentation, like "On-screen Show", "SlideView" etc.
+     * @default gsf:presentation-format
      */
     const META_NAME_PRESENTATION_FORMAT: string;
 
@@ -417,12 +458,14 @@ export namespace Gsf {
      * (String) Specifies the name of the last person who printed the document.
      * 
      * 1.14.0	Moved from "gsf" to "meta".
+     * @default meta:printed-by
      */
     const META_NAME_PRINTED_BY: string;
 
     /**
      * (GsfTimestamp) Specifies the date and time when the document was last
      * printed.
+     * @default meta:print-date
      */
     const META_NAME_PRINT_DATE: string;
 
@@ -430,11 +473,13 @@ export namespace Gsf {
      * (Integer) Count of revision on the document, if appropriate.
      * Moved from gsf:revision-count to meta:editing-cycles. This way can be used
      * correctly by OpenDocument and Gnumeric.
+     * @default meta:editing-cycles
      */
     const META_NAME_REVISION_COUNT: string;
 
     /**
      * (Boolean) ?????
+     * @default gsf:scale
      */
     const META_NAME_SCALE: string;
 
@@ -453,32 +498,38 @@ export namespace Gsf {
      * <row><entry>Read-only enforced</entry><entry>3</entry></row>
      * <row><entry>Locked for annotations</entry><entry>4</entry></row>
      * </tbody></tgroup></informaltable>
+     * @default gsf:security
      */
     const META_NAME_SECURITY: string;
 
     /**
      * (Integer) Count of slides in the presentation document.
+     * @default gsf:slide-count
      */
     const META_NAME_SLIDE_COUNT: string;
 
     /**
      * (Integer) Count of pages in the document, if appropriate.
+     * @default gsf:spreadsheet-count
      */
     const META_NAME_SPREADSHEET_COUNT: string;
 
     /**
      * (String) Current status of the content. Can be related to signature or user set in the document.
+     * @default gsf:content-status
      */
     const META_NAME_STATUS: string;
 
     /**
      * (String) The topic of the content of the resource,
      * <emphasis>typically</emphasis> including keywords.
+     * @default dc:subject
      */
     const META_NAME_SUBJECT: string;
 
     /**
      * (Integer) Count of tables in the document, if appropriate.
+     * @default gsf:table-count
      */
     const META_NAME_TABLE_COUNT: string;
 
@@ -486,22 +537,26 @@ export namespace Gsf {
      * (String) The template file that is been used to generate this document.
      * 
      * 1.14.0 Moved from "gsf" to "meta"
+     * @default meta:template
      */
     const META_NAME_TEMPLATE: string;
 
     /**
      * (GsfClipData) Thumbnail data of the document, typically a
      * preview image of the document.
+     * @default gsf:thumbnail
      */
     const META_NAME_THUMBNAIL: string;
 
     /**
      * (String) A formal name given to the resource.
+     * @default dc:title
      */
     const META_NAME_TITLE: string;
 
     /**
      * (Integer) Count of words in the document.
+     * @default gsf:word-count
      */
     const META_NAME_WORD_COUNT: string;
 
@@ -718,6 +773,7 @@ export namespace Gsf {
      * @param opkg {@link Gsf.Input}
      * @param rel {@link Gsf.OpenPkgRel}
      * @returns a new {@link Gsf.Input} which the called needs to unref, or `null` and sets `err`
+     * @throws GLib.Error
      */
     function open_pkg_open_rel(opkg: Input, rel: OpenPkgRel): Input;
 
@@ -728,6 +784,7 @@ export namespace Gsf {
      * @param opkg {@link Gsf.Input}
      * @param id target id
      * @returns A new GsfInput or `null`, and sets `err` if possible.
+     * @throws GLib.Error
      */
     function open_pkg_open_rel_by_id(opkg: Input, id: string): Input;
 
@@ -738,6 +795,7 @@ export namespace Gsf {
      * @param opkg {@link Gsf.Input}
      * @param type target type
      * @returns A new GsfInput or `null`, and sets `err` if possible.
+     * @throws GLib.Error
      */
     function open_pkg_open_rel_by_type(opkg: Input, type: string): Input;
 
@@ -989,6 +1047,7 @@ export namespace Gsf {
          * Queries the Windows clipboard data format for a {@link Gsf.ClipData}.  The `clip_data` must
          * have been created with #GSF_CLIP_FORMAT_WINDOWS_CLIPBOARD.
          * @returns A {@link Gsf.ClipFormatWindows} value. Possible errors: #GSF_ERROR_INVALID_DATA if the data blob in the `clip_data` is smaller than it should be; in this case GSF_CLIP_FORMAT_WINDOWS_ERROR will be returned.
+         * @throws GLib.Error
          */
         get_windows_clipboard_format(): ClipFormatWindows;
 
@@ -1001,6 +1060,7 @@ export namespace Gsf {
          * those header bytes if necessary and return a pointer to the "real" data.
          * @param ret_size Location to return the size of the returned data buffer.
          * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
+         * @throws GLib.Error
          */
         peek_real_data(ret_size: bigint | number): null;
     }
@@ -1810,12 +1870,14 @@ export namespace Gsf {
         /**
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
+         * @throws GLib.Error
          */
         dup(): Input;
 
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
          * @returns a GsfInfile
+         * @throws GLib.Error
          */
         find_vba(): InfileMSVBA | null;
 
@@ -1894,6 +1956,7 @@ export namespace Gsf {
          * managing the resulting object.
          * @param name name.
          * @returns A related {@link Gsf.Input}
+         * @throws GLib.Error
          */
         sibling(name: string): Input;
 

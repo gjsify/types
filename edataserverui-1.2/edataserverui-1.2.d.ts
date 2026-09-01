@@ -145,6 +145,7 @@ export namespace EDataServerUI {
      * @param response an output argument, user's response to the trust prompt
      * @returns `true` on success, `false` on error
      * @since 3.16
+     * @throws GLib.Error
      */
     function trust_prompt_run_for_source_finish(source: EDataServer.Source, result: Gio.AsyncResult, response: EDataServer.TrustPromptResponse): boolean;
 
@@ -189,19 +190,19 @@ export namespace EDataServerUI {
         /**
          * No flag is set.
          */
-        NONE,
+        NONE = 0,
         /**
          * If set, any source changes during the credentials prompts, like
          *   the "remember-password" or user name changes, will be automatically
          *   stored in the source (written on the disk).
          */
-        ALLOW_SOURCE_SAVE,
+        ALLOW_SOURCE_SAVE = 1,
         /**
          * If set, the stored credentials will be returned first. If there are no
          *   credentials saved, then the user will be asked. Any credentials
          *   reprompt should not have set this flag.
          */
-        ALLOW_STORED_CREDENTIALS,
+        ALLOW_STORED_CREDENTIALS = 2,
     }
 
 
@@ -434,7 +435,7 @@ export namespace EDataServerUI {
              * @since 3.42
              * @run-last
              */
-            "get-dialog-parent-full": (arg0: EDataServer.Source | null) => Gtk.Window | null;
+            "get-dialog-parent-full": (auth_source: EDataServer.Source | null) => Gtk.Window | null;
             "notify::auto-prompt": (pspec: GObject.ParamSpec) => void;
             "notify::provider": (pspec: GObject.ParamSpec) => void;
             "notify::registry": (pspec: GObject.ParamSpec) => void;
@@ -607,6 +608,7 @@ export namespace EDataServerUI {
          * @param cancellable an optional {@link Gio.Cancellable}, or `null`
          * @returns `true`, when the credentials were provided successfully and they   can be used to authenticate the `source`; `false` otherwise.
          * @since 3.16
+         * @throws GLib.Error
          */
         loop_prompt_sync(source: EDataServer.Source, flags: CredentialsPrompterPromptFlags, func: CredentialsPrompterLoopPromptFunc, cancellable: Gio.Cancellable | null): boolean;
 
@@ -681,6 +683,7 @@ export namespace EDataServerUI {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` otherwise.
          * @since 3.16
+         * @throws GLib.Error
          */
         prompt_finish(result: Gio.AsyncResult): [boolean, EDataServer.Source | null, EDataServer.NamedParameters | null];
 
@@ -777,7 +780,7 @@ export namespace EDataServerUI {
              * @since 3.16
              * @run-last
              */
-            "prompt-finished": (arg0: null, arg1: EDataServer.NamedParameters | null) => void;
+            "prompt-finished": (prompt_id: null, credentials: EDataServer.NamedParameters | null) => void;
             "notify::extensible": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1005,7 +1008,7 @@ export namespace EDataServerUI {
              * @action
              * @run-last
              */
-            activated: (arg0: ECal.ReminderData) => boolean | void;
+            activated: (object: ECal.ReminderData) => boolean | void;
             /**
              * @signal
              * @action
@@ -1435,6 +1438,7 @@ export namespace EDataServerUI {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.18
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 

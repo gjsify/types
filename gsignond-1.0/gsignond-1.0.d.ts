@@ -252,51 +252,51 @@ export namespace GSignond {
         /**
          * State unknown
          */
-        NONE,
+        NONE = 0,
         /**
          * Resolving remote server host name
          */
-        RESOLVING,
+        RESOLVING = 1,
         /**
          * Connecting to remote server
          */
-        CONNECTING,
+        CONNECTING = 2,
         /**
          * Sending data to remote server
          */
-        SENDING_DATA,
+        SENDING_DATA = 3,
         /**
          * Waiting for reply from remote server
          */
-        WAITING,
+        WAITING = 4,
         /**
          * Waiting for response from user
          */
-        USER_PENDING,
+        USER_PENDING = 5,
         /**
          * Refreshing ui request
          */
-        REFRESHING,
+        REFRESHING = 6,
         /**
          * Request has been queued
          */
-        PROCESS_PENDING,
+        PROCESS_PENDING = 7,
         /**
          * Request has been dequeued
          */
-        STARTED,
+        STARTED = 8,
         /**
          * Canceling current process
          */
-        CANCELING,
+        CANCELING = 9,
         /**
          * Process is finished
          */
-        DONE,
+        DONE = 10,
         /**
          * Holding long non-expired token
          */
-        HOLDING,
+        HOLDING = 11,
     }
 
 
@@ -308,51 +308,51 @@ export namespace GSignond {
         /**
          * No errors
          */
-        NONE,
+        NONE = 0,
         /**
          * Generic error during interaction
          */
-        GENERAL,
+        GENERAL = 1,
         /**
          * Cannot send request to signon-ui
          */
-        NO_SIGNONUI,
+        NO_SIGNONUI = 2,
         /**
          * Signon-Ui cannot create dialog based on the given UiSessionData
          */
-        BAD_PARAMETERS,
+        BAD_PARAMETERS = 3,
         /**
          * User canceled action. Plugin should not retry automatically after this
          */
-        CANCELED,
+        CANCELED = 4,
         /**
          * Requested ui is not available. For example browser cannot be started
          */
-        NOT_AVAILABLE,
+        NOT_AVAILABLE = 5,
         /**
          * Given url was not valid
          */
-        BAD_URL,
+        BAD_URL = 6,
         /**
          * Given captcha image was not valid
          */
-        BAD_CAPTCHA,
+        BAD_CAPTCHA = 7,
         /**
          * Given url for capctha loading was not valid
          */
-        BAD_CAPTCHA_URL,
+        BAD_CAPTCHA_URL = 8,
         /**
          * Refresh failed
          */
-        REFRESH_FAILED,
+        REFRESH_FAILED = 9,
         /**
          * Showing ui forbidden by ui policy
          */
-        FORBIDDEN,
+        FORBIDDEN = 10,
         /**
          * User pressed forgot password
          */
-        FORGOT_PASSWORD,
+        FORGOT_PASSWORD = 11,
     }
 
 
@@ -364,31 +364,33 @@ export namespace GSignond {
         /**
          * use a default user interaction scenario
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * force an authorization request from the user;
          * any cached access tokens should be discarded by the plugin.
          */
-        REQUEST_PASSWORD,
+        REQUEST_PASSWORD = 1,
         /**
          * force no interaction with the user
          */
-        NO_USER_INTERACTION,
+        NO_USER_INTERACTION = 2,
         /**
          * interaction with the user is only allowed
          * for validation captchas and similar security measures
          */
-        VALIDATION,
+        VALIDATION = 3,
     }
 
 
     /**
      * A prefix for dbus timeout keys. Should be used only when defining new keys.
+     * @default ObjectTimeouts
      */
     const CONFIG_DBUS_TIMEOUTS: string;
 
     /**
      * A prefix for general keys. Should be used only when defining new keys.
+     * @default General
      */
     const CONFIG_GENERAL: string;
 

@@ -40,11 +40,11 @@ export namespace Ags {
         /**
          * little endian
          */
-        BYTE_ORDER_LE,
+        BYTE_ORDER_LE = 0,
         /**
          * big endian
          */
-        BYTE_ORDER_BE,
+        BYTE_ORDER_BE = 1,
     }
 
 
@@ -56,7 +56,7 @@ export namespace Ags {
         /**
          * the parser failed
          */
-        FILE_ERROR_PARSER_FAILURE,
+        FILE_ERROR_PARSER_FAILURE = 0,
     }
 
 
@@ -117,15 +117,15 @@ export namespace Ags {
         /**
          * seek from current position
          */
-        SEEK_CUR,
+        SEEK_CUR = 0,
         /**
          * seek by setting absolute position
          */
-        SEEK_SET,
+        SEEK_SET = 1,
         /**
          * seek from end
          */
-        SEEK_END,
+        SEEK_END = 2,
     }
 
 
@@ -133,10 +133,10 @@ export namespace Ags {
      * @gir-type Enum
      */
     enum SolverPolynomialError {
-        SYMBOL_MISMATCH,
-        EXPONENT_MISMATCH,
-        DIVISION_BY_ZERO,
-        EXPONENT_NOT_CONSTANT,
+        SYMBOL_MISMATCH = 0,
+        EXPONENT_MISMATCH = 1,
+        DIVISION_BY_ZERO = 2,
+        EXPONENT_NOT_CONSTANT = 3,
     }
 
 
@@ -155,288 +155,666 @@ export namespace Ags {
         /**
          * signed 8 bit raw pcm data
          */
-        SOUNDCARD_SIGNED_8_BIT,
+        SOUNDCARD_SIGNED_8_BIT = 8,
         /**
          * signed 16 bit raw pcm data
          */
-        SOUNDCARD_SIGNED_16_BIT,
+        SOUNDCARD_SIGNED_16_BIT = 16,
         /**
          * signed 24 bit raw pcm data
          */
-        SOUNDCARD_SIGNED_24_BIT,
+        SOUNDCARD_SIGNED_24_BIT = 24,
         /**
          * signed 32 bit raw pcm data
          */
-        SOUNDCARD_SIGNED_32_BIT,
+        SOUNDCARD_SIGNED_32_BIT = 32,
         /**
          * signed 64 bit raw pcm data
          */
-        SOUNDCARD_SIGNED_64_BIT,
+        SOUNDCARD_SIGNED_64_BIT = 64,
         /**
          * float raw pcm data
          */
-        SOUNDCARD_FLOAT,
+        SOUNDCARD_FLOAT = -16,
         /**
          * double raw pcm data
          */
-        SOUNDCARD_DOUBLE,
+        SOUNDCARD_DOUBLE = -15,
         /**
          * complex audio data
          */
-        SOUNDCARD_COMPLEX,
+        SOUNDCARD_COMPLEX = -8,
     }
 
 
+    /**
+     * @default 0
+     */
     const AUTHENTICATION_MANAGER_DEFAULT_SESSION_TIMEOUT: number;
 
+    /**
+     * @default Wed Jan 10 08:49:34 UTC 2024
+     */
     const BUILD_ID: string;
 
+    /**
+     * @default 0
+     */
     const COMPLEX_M_E: number;
 
+    /**
+     * @default 0
+     */
     const COMPLEX_M_PI: number;
 
+    /**
+     * @default CEST 13-10-2015 01:19
+     */
     const CONFIG_DEFAULT_BUILD_ID: string;
 
+    /**
+     * @default 0.7.0
+     */
     const CONFIG_DEFAULT_VERSION: string;
 
+    /**
+     * @default generic
+     */
     const CONFIG_GENERIC: string;
 
+    /**
+     * @default osc-server
+     */
     const CONFIG_OSC_SERVER: string;
 
+    /**
+     * @default osc-server-0
+     */
     const CONFIG_OSC_SERVER_0: string;
 
+    /**
+     * @default recall
+     */
     const CONFIG_RECALL: string;
 
+    /**
+     * @default sequencer
+     */
     const CONFIG_SEQUENCER: string;
 
+    /**
+     * @default sequencer-0
+     */
     const CONFIG_SEQUENCER_0: string;
 
+    /**
+     * @default server
+     */
     const CONFIG_SERVER: string;
 
+    /**
+     * @default soundcard
+     */
     const CONFIG_SOUNDCARD: string;
 
+    /**
+     * @default soundcard-0
+     */
     const CONFIG_SOUNDCARD_0: string;
 
+    /**
+     * @default thread
+     */
     const CONFIG_THREAD: string;
 
+    /**
+     * @default /ags-xmlrpc
+     */
     const CONTROLLER_BASE_PATH: string;
 
+    /**
+     * @default org.nongnu.gsequencer.gsequencer
+     */
     const DEFAULT_BUNDLE_ID: string;
 
+    /**
+     * @default ags.conf
+     */
     const DEFAULT_CONFIG: string;
 
+    /**
+     * @default .gsequencer
+     */
     const DEFAULT_DIRECTORY: string;
 
+    /**
+     * @default 8388608
+     */
     const FILE_CHARSET_CONVERTER_MAX_CONTENT_LENGTH: number;
 
+    /**
+     * @default 8192
+     */
     const FILE_CHARSET_CONVERTER_MAX_STRING_LENGTH: number;
 
+    /**
+     * @default 32
+     */
     const FILE_CHECKSUM_LENGTH: number;
 
+    /**
+     * @default C.UTF-8
+     */
     const FILE_DEFAULT_APP_ENCODING: string;
 
+    /**
+     * @default base64
+     */
     const FILE_DEFAULT_AUDIO_ENCODING: string;
 
+    /**
+     * @default raw
+     */
     const FILE_DEFAULT_AUDIO_FORMAT: string;
 
+    /**
+     * @default ags_file.dtd
+     */
     const FILE_DEFAULT_DTD: string;
 
+    /**
+     * @default UTF-8
+     */
     const FILE_DEFAULT_ENCODING: string;
 
+    /**
+     * @default ags-file-id-ref-resolve-data
+     */
     const FILE_ID_REF_RESOLVE_DATA: string;
 
+    /**
+     * @default ags-file-id-ref-serizalize-data
+     */
     const FILE_ID_REF_SERIALIZE_DATA: string;
 
+    /**
+     * @default CEST 13-10-2015 15:53
+     */
     const FILE_LINK_DEFAULT_BUILD_ID: string;
 
+    /**
+     * @default 0.7.0
+     */
     const FILE_LINK_DEFAULT_VERSION: string;
 
+    /**
+     * @default 20
+     */
     const FILE_UTIL_64BIT_MAX_STRING_LENGTH: number;
 
+    /**
+     * @default 16
+     */
     const FILE_UTIL_DOUBLE_MAX_STRING_LENGTH: number;
 
+    /**
+     * @default 1000000000
+     */
     const NSEC_PER_SEC: number;
 
+    /**
+     * @default Mon Dec  2 08:15:02 UTC 2019
+     */
     const PRIORITY_DEFAULT_BUILD_ID: string;
 
+    /**
+     * @default 2.4.2
+     */
     const PRIORITY_DEFAULT_VERSION: string;
 
+    /**
+     * @default audio
+     */
     const PRIORITY_KEY_AUDIO: string;
 
+    /**
+     * @default audio-main-loop
+     */
     const PRIORITY_KEY_AUDIO_MAIN_LOOP: string;
 
+    /**
+     * @default gui-main-loop
+     */
     const PRIORITY_KEY_GUI_MAIN_LOOP: string;
 
+    /**
+     * @default libags
+     */
     const PRIORITY_KEY_LIBAGS: string;
 
+    /**
+     * @default osc-server-main-loop
+     */
     const PRIORITY_KEY_OSC_SERVER_MAIN_LOOP: string;
 
+    /**
+     * @default server-main-loop
+     */
     const PRIORITY_KEY_SERVER_MAIN_LOOP: string;
 
+    /**
+     * @default rt-thread
+     */
     const PRIORITY_RT_THREAD: string;
 
+    /**
+     * @default 120.000000
+     */
     const SEQUENCER_DEFAULT_BPM: number;
 
+    /**
+     * @default 944
+     */
     const SEQUENCER_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_DEFAULT_DELAY: number;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_DEFAULT_DELAY_FACTOR: number;
 
+    /**
+     * @default hw:0
+     */
     const SEQUENCER_DEFAULT_DEVICE: string;
 
+    /**
+     * @default 400
+     */
     const SEQUENCER_DEFAULT_LATENCY: number;
 
+    /**
+     * @default 64.000000
+     */
     const SEQUENCER_DEFAULT_PERIOD: number;
 
+    /**
+     * @default 44100.000000
+     */
     const SEQUENCER_DEFAULT_SAMPLERATE: number;
 
+    /**
+     * @default 1.000000
+     */
     const SEQUENCER_DEFAULT_SCALE: number;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_DEFAULT_TACT: number;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_DEFAULT_TACTRATE: number;
 
+    /**
+     * @default 0
+     */
     const SEQUENCER_DEFAULT_TACT_JIFFIE: number;
 
+    /**
+     * @default 16
+     */
     const SEQUENCER_MAX_MIDI_CHANNELS: number;
 
+    /**
+     * @default 128
+     */
     const SEQUENCER_MAX_MIDI_KEYS: number;
 
+    /**
+     * @default Sat Dec  7 10:02:36 UTC 2019
+     */
     const SERVER_BUILD_ID: string;
 
+    /**
+     * @default ags-xml-authentication
+     */
     const SERVER_DEFAULT_AUTH_MODULE: string;
 
+    /**
+     * @default 512
+     */
     const SERVER_DEFAULT_BACKLOG: number;
 
+    /**
+     * @default localhost
+     */
     const SERVER_DEFAULT_DOMAIN: string;
 
+    /**
+     * @default 127.0.0.1
+     */
     const SERVER_DEFAULT_INET4_ADDRESS: string;
 
+    /**
+     * @default ::1
+     */
     const SERVER_DEFAULT_INET6_ADDRESS: string;
 
+    /**
+     * @default 8080
+     */
     const SERVER_DEFAULT_SERVER_PORT: number;
 
+    /**
+     * @default 3.0.0
+     */
     const SERVER_VERSION: string;
 
+    /**
+     * @default 120.000000
+     */
     const SOUNDCARD_DEFAULT_BPM: number;
 
+    /**
+     * @default 1024
+     */
     const SOUNDCARD_DEFAULT_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const SOUNDCARD_DEFAULT_CACHE_BUFFER_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_DELAY: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_DELAY_FACTOR: number;
 
+    /**
+     * @default 2
+     */
     const SOUNDCARD_DEFAULT_DSP_CHANNELS: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_LOOP_LEFT: number;
 
+    /**
+     * @default 64
+     */
     const SOUNDCARD_DEFAULT_LOOP_RIGHT: number;
 
+    /**
+     * @default 2.000000
+     */
     const SOUNDCARD_DEFAULT_OVERCLOCK: number;
 
+    /**
+     * @default 2
+     */
     const SOUNDCARD_DEFAULT_PCM_CHANNELS: number;
 
+    /**
+     * @default 2048.000000
+     */
     const SOUNDCARD_DEFAULT_PERIOD: number;
 
+    /**
+     * @default 48000.000000
+     */
     const SOUNDCARD_DEFAULT_SAMPLERATE: number;
 
+    /**
+     * @default 1.000000
+     */
     const SOUNDCARD_DEFAULT_SCALE: number;
 
+    /**
+     * @default 8
+     */
     const SOUNDCARD_DEFAULT_SUB_BLOCK_COUNT: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_TACT: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_TACTRATE: number;
 
+    /**
+     * @default 0
+     */
     const SOUNDCARD_DEFAULT_TACT_JIFFIE: number;
 
+    /**
+     * @default false
+     */
     const SOUNDCARD_DEFAULT_USE_CACHE: boolean;
 
+    /**
+     * @default 16384
+     */
     const SOUNDCARD_MAX_BUFFER_SIZE: number;
 
+    /**
+     * @default 64
+     */
     const SOUNDCARD_MAX_DSP_CHANNELS: number;
 
+    /**
+     * @default 64
+     */
     const SOUNDCARD_MAX_PCM_CHANNELS: number;
 
+    /**
+     * @default 5644800.000000
+     */
     const SOUNDCARD_MAX_SAMPLERATE: number;
 
+    /**
+     * @default 16
+     */
     const SOUNDCARD_MIN_BUFFER_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const SOUNDCARD_MIN_DSP_CHANNELS: number;
 
+    /**
+     * @default 1
+     */
     const SOUNDCARD_MIN_PCM_CHANNELS: number;
 
+    /**
+     * @default 8000.000000
+     */
     const SOUNDCARD_MIN_SAMPLERATE: number;
 
+    /**
+     * @default ₀
+     */
     const SUBSCRIPT_0: string;
 
+    /**
+     * @default ₁
+     */
     const SUBSCRIPT_1: string;
 
+    /**
+     * @default ₂
+     */
     const SUBSCRIPT_2: string;
 
+    /**
+     * @default ₃
+     */
     const SUBSCRIPT_3: string;
 
+    /**
+     * @default ₄
+     */
     const SUBSCRIPT_4: string;
 
+    /**
+     * @default ₅
+     */
     const SUBSCRIPT_5: string;
 
+    /**
+     * @default ₆
+     */
     const SUBSCRIPT_6: string;
 
+    /**
+     * @default ₇
+     */
     const SUBSCRIPT_7: string;
 
+    /**
+     * @default ₈
+     */
     const SUBSCRIPT_8: string;
 
+    /**
+     * @default ₉
+     */
     const SUBSCRIPT_9: string;
 
+    /**
+     * @default 𝑖
+     */
     const SYMBOLIC_COMPLEX_UNIT: string;
 
+    /**
+     * @default ℯ
+     */
     const SYMBOLIC_EULER: string;
 
+    /**
+     * @default ∞
+     */
     const SYMBOLIC_INFINIT: string;
 
+    /**
+     * @default 𝜋
+     */
     const SYMBOLIC_PI: string;
 
+    /**
+     * @default Tue Mar 21 20:03:29 CET 2017
+     */
     const THREAD_BUILD_ID: string;
 
+    /**
+     * @default 1.000000
+     */
     const THREAD_DEFAULT_ATTACK: number;
 
+    /**
+     * @default 250.000000
+     */
     const THREAD_DEFAULT_JIFFIE: number;
 
+    /**
+     * @default 1000.000000
+     */
     const THREAD_DEFAULT_MAX_PRECISION: number;
 
+    /**
+     * @default 0.7.122.8
+     */
     const THREAD_DEFAULT_VERSION: string;
 
+    /**
+     * @default 1000.000000
+     */
     const THREAD_HERTZ_JIFFIE: number;
 
+    /**
+     * @default 1000.000000
+     */
     const THREAD_MAX_PRECISION: number;
 
+    /**
+     * @default 1024
+     */
     const THREAD_POOL_DEFAULT_MAX_THREADS: number;
 
+    /**
+     * @default 8
+     */
     const THREAD_POOL_DEFAULT_MAX_UNUSED_THREADS: number;
 
+    /**
+     * @default 0.000000
+     */
     const THREAD_TOLERANCE: number;
 
+    /**
+     * @default 2.000000
+     */
     const THREAD_YIELD_JIFFIE: number;
 
+    /**
+     * @default 0000:00.000
+     */
     const TIME_ZERO: string;
 
+    /**
+     * @default false
+     */
     const TURTLE_BOOLEAN_LITERAL_FALSE: string;
 
+    /**
+     * @default true
+     */
     const TURTLE_BOOLEAN_LITERAL_TRUE: string;
 
+    /**
+     * @default UTF-8
+     */
     const TURTLE_DEFAULT_ENCODING: string;
 
+    /**
+     * @default 6.3.2
+     */
     const TURTLE_DEFAULT_VERSION: string;
 
+    /**
+     * @default 1000000
+     */
     const USEC_PER_SEC: number;
 
+    /**
+     * @default 16
+     */
     const UUID_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 36
+     */
     const UUID_STRING_DEFAULT_LENGTH: number;
 
+    /**
+     * @default 6.3.0
+     */
     const VERSION: string;
 
     /**
@@ -2148,7 +2526,7 @@ export namespace Ags {
         /**
          * indicates the types have been registered
          */
-        APPLICATION_CONTEXT_TYPES_REGISTERED,
+        APPLICATION_CONTEXT_TYPES_REGISTERED = 1,
     }
 
 
@@ -2160,11 +2538,11 @@ export namespace Ags {
         /**
          * added to registry
          */
-        ADDED_TO_REGISTRY,
+        ADDED_TO_REGISTRY = 1,
         /**
          * connected
          */
-        CONNECTED,
+        CONNECTED = 2,
     }
 
 
@@ -2184,27 +2562,27 @@ export namespace Ags {
         /**
          * opened file for reading
          */
-        FILE_READ,
+        FILE_READ = 1,
         /**
          * read audio signal
          */
-        FILE_READ_AUDIO_SIGNAL,
+        FILE_READ_AUDIO_SIGNAL = 2,
         /**
          * read embedded audio data
          */
-        FILE_READ_EMBEDDED_AUDIO,
+        FILE_READ_EMBEDDED_AUDIO = 4,
         /**
          * opened file for writing
          */
-        FILE_WRITE,
+        FILE_WRITE = 8,
         /**
          * write audio signal
          */
-        FILE_WRITE_AUDIO_SIGNAL,
+        FILE_WRITE_AUDIO_SIGNAL = 16,
         /**
          * write embedded audio data
          */
-        FILE_WRITE_EMBEDDED_AUDIO,
+        FILE_WRITE_EMBEDDED_AUDIO = 32,
     }
 
 
@@ -2225,10 +2603,10 @@ export namespace Ags {
      * @gir-type Flags
      */
     enum RegexUtilCompileFlags {
-        REGEX_UTIL_POSIX_EXTENDED_SYNTAX,
-        REGEX_UTIL_CASE_INSENSITIVE,
-        REGEX_UTIL_NO_POSITION_REPORT_OF_MATCHES,
-        REGEX_UTIL_NO_NEWLINE_MATCH,
+        REGEX_UTIL_POSIX_EXTENDED_SYNTAX = 1,
+        REGEX_UTIL_CASE_INSENSITIVE = 2,
+        REGEX_UTIL_NO_POSITION_REPORT_OF_MATCHES = 8,
+        REGEX_UTIL_NO_NEWLINE_MATCH = 4,
     }
 
 
@@ -2248,9 +2626,9 @@ export namespace Ags {
      * @gir-type Flags
      */
     enum RegexUtilExecuteFlags {
-        REGEX_UTIL_NOT_BEGINNING_OF_LINE,
-        REGEX_UTIL_END_OF_LINE,
-        REGEX_UTIL_START_END,
+        REGEX_UTIL_NOT_BEGINNING_OF_LINE = 1,
+        REGEX_UTIL_END_OF_LINE = 2,
+        REGEX_UTIL_START_END = 4,
     }
 
 
@@ -2270,15 +2648,15 @@ export namespace Ags {
         /**
          * the thread is in use
          */
-        RETURNABLE_THREAD_IN_USE,
+        RETURNABLE_THREAD_IN_USE = 1,
         /**
          * not used
          */
-        RETURNABLE_THREAD_RESET,
+        RETURNABLE_THREAD_RESET = 2,
         /**
          * call {@link Ags.Thread.SignalSignatures.run | Ags.Thread::run}() only one time
          */
-        RETURNABLE_THREAD_RUN_ONCE,
+        RETURNABLE_THREAD_RUN_ONCE = 4,
     }
 
 
@@ -2297,23 +2675,23 @@ export namespace Ags {
         /**
          * allowed to read using RPC
          */
-        SECURITY_CONTEXT_RPC_READ,
+        SECURITY_CONTEXT_RPC_READ = 1,
         /**
          * allowed to write using RPC
          */
-        SECURITY_CONTEXT_RPC_WRITE,
+        SECURITY_CONTEXT_RPC_WRITE = 2,
         /**
          * allowed to execute using RPC
          */
-        SECURITY_CONTEXT_RPC_EXECUTE,
+        SECURITY_CONTEXT_RPC_EXECUTE = 4,
         /**
          * allowed to read account information
          */
-        SECURITY_CONTEXT_ACCOUNT_READ,
+        SECURITY_CONTEXT_ACCOUNT_READ = 8,
         /**
          * allowed to write account information
          */
-        SECURITY_CONTEXT_ACCOUNT_WRITE,
+        SECURITY_CONTEXT_ACCOUNT_WRITE = 16,
     }
 
 
@@ -2333,31 +2711,31 @@ export namespace Ags {
         /**
          * the server was started
          */
-        SERVER_STARTED,
+        SERVER_STARTED = 1,
         /**
          * the server is up and running
          */
-        SERVER_RUNNING,
+        SERVER_RUNNING = 2,
         /**
          * the server is closing connections and terminating
          */
-        SERVER_TERMINATING,
+        SERVER_TERMINATING = 4,
         /**
          * use IPv4
          */
-        SERVER_INET4,
+        SERVER_INET4 = 8,
         /**
          * use IPv6
          */
-        SERVER_INET6,
+        SERVER_INET6 = 16,
         /**
          * listen on any address
          */
-        SERVER_ANY_ADDRESS,
+        SERVER_ANY_ADDRESS = 32,
         /**
          * start the server
          */
-        SERVER_AUTO_START,
+        SERVER_AUTO_START = 64,
     }
 
 
@@ -2376,15 +2754,15 @@ export namespace Ags {
         /**
          * capability playback
          */
-        SOUNDCARD_CAPABILITY_PLAYBACK,
+        SOUNDCARD_CAPABILITY_PLAYBACK = 1,
         /**
          * capability capture
          */
-        SOUNDCARD_CAPABILITY_CAPTURE,
+        SOUNDCARD_CAPABILITY_CAPTURE = 2,
         /**
          * capability duplex
          */
-        SOUNDCARD_CAPABILITY_DUPLEX,
+        SOUNDCARD_CAPABILITY_DUPLEX = 4,
     }
 
 
@@ -2404,19 +2782,19 @@ export namespace Ags {
         /**
          * the assigned task has been queued
          */
-        TASK_COMPLETION_QUEUED,
+        TASK_COMPLETION_QUEUED = 1,
         /**
          * the assigned task is busy
          */
-        TASK_COMPLETION_BUSY,
+        TASK_COMPLETION_BUSY = 2,
         /**
          * the assigned task is ready
          */
-        TASK_COMPLETION_READY,
+        TASK_COMPLETION_READY = 4,
         /**
          * the assigned task has been completed
          */
-        TASK_COMPLETION_COMPLETED,
+        TASK_COMPLETION_COMPLETED = 8,
     }
 
 
@@ -2429,11 +2807,11 @@ export namespace Ags {
         /**
          * the task is locked
          */
-        LOCKED,
+        LOCKED = 1,
         /**
          * call task repeatedly
          */
-        CYCLIC,
+        CYCLIC = 2,
     }
 
 
@@ -2453,7 +2831,7 @@ export namespace Ags {
         /**
          * run all threads in one single loop
          */
-        THREAD_APPLICATION_CONTEXT_SINGLE_THREAD,
+        THREAD_APPLICATION_CONTEXT_SINGLE_THREAD = 1,
     }
 
 
@@ -2473,31 +2851,31 @@ export namespace Ags {
         /**
          * call `g_object_unref()` before `g_thread_exit()`
          */
-        THREAD_UNREF_ON_EXIT,
+        THREAD_UNREF_ON_EXIT = 1,
         /**
          * do sync immediately
          */
-        THREAD_IMMEDIATE_SYNC,
+        THREAD_IMMEDIATE_SYNC = 2,
         /**
          * intermediate pre sync to parent thread
          */
-        THREAD_INTERMEDIATE_PRE_SYNC,
+        THREAD_INTERMEDIATE_PRE_SYNC = 4,
         /**
          * intermediate post sync to parent thread
          */
-        THREAD_INTERMEDIATE_POST_SYNC,
+        THREAD_INTERMEDIATE_POST_SYNC = 8,
         /**
          * sync frequency as starting thread
          */
-        THREAD_START_SYNCED_FREQ,
+        THREAD_START_SYNCED_FREQ = 16,
         /**
          * mark thread synced
          */
-        THREAD_MARK_SYNCED,
+        THREAD_MARK_SYNCED = 32,
         /**
          * time accounting causes to track time
          */
-        THREAD_TIME_ACCOUNTING,
+        THREAD_TIME_ACCOUNTING = 64,
     }
 
 
@@ -2517,11 +2895,11 @@ export namespace Ags {
         /**
          * the thread pool is running
          */
-        THREAD_POOL_RUNNING,
+        THREAD_POOL_RUNNING = 1,
         /**
          * realtime setup has been performed
          */
-        THREAD_POOL_RT_SETUP,
+        THREAD_POOL_RT_SETUP = 2,
     }
 
 
@@ -2541,55 +2919,55 @@ export namespace Ags {
         /**
          * realtime setup was performed
          */
-        THREAD_STATUS_RT_SETUP,
+        THREAD_STATUS_RT_SETUP = 1,
         /**
          * initial sync indicates the thread wasn't synced before
          */
-        THREAD_STATUS_INITIAL_SYNC,
+        THREAD_STATUS_INITIAL_SYNC = 2,
         /**
          * the first call to {@link Ags.Thread.run}()
          */
-        THREAD_STATUS_INITIAL_RUN,
+        THREAD_STATUS_INITIAL_RUN = 4,
         /**
          * the thread is not synced
          */
-        THREAD_STATUS_IS_CHAOS_TREE,
+        THREAD_STATUS_IS_CHAOS_TREE = 8,
         /**
          * the thread start is waiting
          */
-        THREAD_STATUS_START_WAIT,
+        THREAD_STATUS_START_WAIT = 16,
         /**
          * the thread start is done
          */
-        THREAD_STATUS_START_DONE,
+        THREAD_STATUS_START_DONE = 32,
         /**
          * the thread is ready
          */
-        THREAD_STATUS_READY,
+        THREAD_STATUS_READY = 64,
         /**
          * the thread is waiting
          */
-        THREAD_STATUS_WAITING,
+        THREAD_STATUS_WAITING = 128,
         /**
          * the thread is running
          */
-        THREAD_STATUS_RUNNING,
+        THREAD_STATUS_RUNNING = 256,
         /**
          * the thread is locked
          */
-        THREAD_STATUS_LOCKED,
+        THREAD_STATUS_LOCKED = 512,
         /**
          * the thread is busy
          */
-        THREAD_STATUS_BUSY,
+        THREAD_STATUS_BUSY = 1024,
         /**
          * the thread joined the tic based system, it is synced
          */
-        THREAD_STATUS_SYNCED,
+        THREAD_STATUS_SYNCED = 2048,
         /**
          * the frequency was synced
          */
-        THREAD_STATUS_SYNCED_FREQ,
+        THREAD_STATUS_SYNCED_FREQ = 4096,
     }
 
 
@@ -2609,75 +2987,75 @@ export namespace Ags {
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_0,
+        THREAD_SYNC_TIC_WAIT_0 = 1,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_0,
+        THREAD_SYNC_TIC_DONE_0 = 2,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_1,
+        THREAD_SYNC_TIC_WAIT_1 = 4,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_1,
+        THREAD_SYNC_TIC_DONE_1 = 8,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_2,
+        THREAD_SYNC_TIC_WAIT_2 = 16,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_2,
+        THREAD_SYNC_TIC_DONE_2 = 32,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_3,
+        THREAD_SYNC_TIC_WAIT_3 = 64,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_3,
+        THREAD_SYNC_TIC_DONE_3 = 128,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_4,
+        THREAD_SYNC_TIC_WAIT_4 = 256,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_4,
+        THREAD_SYNC_TIC_DONE_4 = 512,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_5,
+        THREAD_SYNC_TIC_WAIT_5 = 1024,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_5,
+        THREAD_SYNC_TIC_DONE_5 = 2048,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_6,
+        THREAD_SYNC_TIC_WAIT_6 = 4096,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_6,
+        THREAD_SYNC_TIC_DONE_6 = 8192,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_7,
+        THREAD_SYNC_TIC_WAIT_7 = 16384,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_7,
+        THREAD_SYNC_TIC_DONE_7 = 32768,
         /**
          * wait tree to be synced
          */
-        THREAD_SYNC_TIC_WAIT_8,
+        THREAD_SYNC_TIC_WAIT_8 = 65536,
         /**
          * done tree to be synced
          */
-        THREAD_SYNC_TIC_DONE_8,
+        THREAD_SYNC_TIC_DONE_8 = 131072,
     }
 
 
@@ -2697,15 +3075,15 @@ export namespace Ags {
         /**
          * unix timestamp is used
          */
-        TIMESTAMP_UNIX,
+        TIMESTAMP_UNIX = 1,
         /**
          * internal offset is used
          */
-        TIMESTAMP_OFFSET,
+        TIMESTAMP_OFFSET = 2,
         /**
          * the timestamp is outdated
          */
-        TIMESTAMP_OUTDATED,
+        TIMESTAMP_OUTDATED = 4,
     }
 
 
@@ -2725,7 +3103,7 @@ export namespace Ags {
         /**
          * make all tags and attributes lower case
          */
-        TURTLE_TOLOWER,
+        TURTLE_TOLOWER = 1,
     }
 
 
@@ -2745,19 +3123,19 @@ export namespace Ags {
         /**
          * the worker is running
          */
-        WORKER_THREAD_STATUS_RUNNING,
+        WORKER_THREAD_STATUS_RUNNING = 1,
         /**
          * sync wait
          */
-        WORKER_THREAD_STATUS_RUN_WAIT,
+        WORKER_THREAD_STATUS_RUN_WAIT = 2,
         /**
          * sync done
          */
-        WORKER_THREAD_STATUS_RUN_DONE,
+        WORKER_THREAD_STATUS_RUN_DONE = 4,
         /**
          * do sync
          */
-        WORKER_THREAD_STATUS_RUN_SYNC,
+        WORKER_THREAD_STATUS_RUN_SYNC = 8,
     }
 
 
@@ -3584,7 +3962,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "get-value": (arg0: string, arg1: string) => string;
+            "get-value": (group: string, key: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
@@ -3598,7 +3976,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "set-value": (arg0: string, arg1: string, arg2: string) => void;
+            "set-value": (group: string, key: string, value: string) => void;
         }
 
         // Constructor properties interface
@@ -3876,7 +4254,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            convert: (arg0: number, arg1: boolean) => number;
+            convert: (x: number, reverse: boolean) => number;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
@@ -4044,14 +4422,14 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            open: (arg0: null) => void;
+            open: (error: null) => void;
             /**
              * Open `file` from a buffer containing the file.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "open-from-data": (arg0: string, arg1: number, arg2: null) => void;
+            "open-from-data": (data: string, length: number, error: null) => void;
             /**
              * Read a XML document from disk with specified filename.
              * @signal
@@ -4078,7 +4456,7 @@ export namespace Ags {
              * @signal
              * @run-last
              */
-            "rw-open": (arg0: boolean, arg1: null) => void;
+            "rw-open": (object: boolean, p0: null) => void;
             /**
              * Write XML Document to disk.
              * @signal
@@ -4418,6 +4796,7 @@ export namespace Ags {
         /**
          * Opens the file specified by :filename property.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         open(): void;
 
@@ -4433,6 +4812,7 @@ export namespace Ags {
          * @param data a buffer containing the XML document
          * @param length the buffer length
          * @since 3.0.0
+         * @throws GLib.Error
          */
         open_from_data(data: string, length: number): void;
 
@@ -4466,6 +4846,7 @@ export namespace Ags {
          * Opens the file specified by :filename property in read-write mode.
          * @param create if `true` create the file as needed
          * @since 3.0.0
+         * @throws GLib.Error
          */
         rw_open(create: boolean): void;
 
@@ -5188,7 +5569,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "do-request": (arg0: GObject.Object, arg1: null, arg2: GObject.Object, arg3: string, arg4: string, arg5: string) => null;
+            "do-request": (msg: GObject.Object, query: null, security_context: GObject.Object, context_path: string, user: string, security_token: string) => null;
             "notify::context-path": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
         }
@@ -6383,7 +6764,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "get-value": (arg0: string, arg1: string) => string;
+            "get-value": (group: string, key: string) => string;
             /**
              * The ::load-defaults signal notifies about loading defaults
              * @signal
@@ -6397,7 +6778,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            "set-value": (arg0: string, arg1: string, arg2: string) => void;
+            "set-value": (group: string, key: string, value: string) => void;
         }
 
         // Constructor properties interface
@@ -8277,6 +8658,7 @@ export namespace Ags {
          * @param polynomial_b the second summand
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         add(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8285,6 +8667,7 @@ export namespace Ags {
          * @param polynomial_b the divisor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         divide(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8293,6 +8676,7 @@ export namespace Ags {
          * @param polynomial_b the index of root
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         extract_root(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8336,6 +8720,7 @@ export namespace Ags {
          * @param polynomial_b the second factor
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         multiply(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8351,6 +8736,7 @@ export namespace Ags {
          * @param polynomial_b the exponent
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         raise_power(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8381,6 +8767,7 @@ export namespace Ags {
          * @param polynomial_b the subtrahend
          * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          * @since 3.2.0
+         * @throws GLib.Error
          */
         subtract(polynomial_b: SolverPolynomial): SolverPolynomial;
 
@@ -8533,7 +8920,7 @@ export namespace Ags {
              * @since 3.0.0
              * @run-last
              */
-            failure: (arg0: null) => void;
+            failure: (error: null) => void;
             /**
              * The ::launch signal is emited in a thread safe context
              * @signal
@@ -11090,6 +11477,7 @@ export namespace Ags {
          * Loads a RDF triple file into an XML Document.
          * @returns a #xmlDoc pointer
          * @since 3.0.0
+         * @throws GLib.Error
          */
         load(): libxml2.Doc;
 
@@ -11544,6 +11932,7 @@ export namespace Ags {
          * Generate token.
          * @returns the generated token
          * @since 3.0.0
+         * @throws GLib.Error
          */
         generate_token(): string;
 
@@ -11561,6 +11950,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the encrypted password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_digest(realm: string, login: string, security_token: string): string;
 
@@ -11571,6 +11961,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns `true` if session active, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
 
@@ -11580,6 +11971,7 @@ export namespace Ags {
          * @param password the password
          * @returns `true` on success, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         login(login: string, password: string): [boolean, string, string];
 
@@ -11590,6 +11982,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns `true` on success, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
 
@@ -11716,6 +12109,7 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
 
@@ -11726,6 +12120,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the group UUIDs as `null` terminated string array
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -11737,6 +12132,7 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
 
@@ -11748,6 +12144,7 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
 
@@ -11759,6 +12156,7 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
 
@@ -11887,6 +12285,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the cert UUIDs as `null` terminated string array
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -11898,6 +12297,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the domain
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11909,6 +12309,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the key type
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11920,6 +12321,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the private key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11931,6 +12333,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the public key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -11942,6 +12345,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param domain the domain
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
 
@@ -11953,6 +12357,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
 
@@ -11964,6 +12369,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
 
@@ -11975,6 +12381,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
 
@@ -12156,6 +12563,7 @@ export namespace Ags {
          * @param salt your salt
          * @returns the encrypted bytes
          * @since 3.0.0
+         * @throws GLib.Error
          */
         encrypt_password(password: string, salt: string): string;
 
@@ -12166,6 +12574,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the login name
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -12176,6 +12585,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -12186,6 +12596,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param login_name the login name
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
 
@@ -12196,6 +12607,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param password the password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
 
@@ -13317,6 +13729,7 @@ export namespace Ags {
          * @param compile_flags the compile flags
          * @returns `true` on success, otherwise `false`
          * @since 6.3.2
+         * @throws GLib.Error
          */
         compile(regex_str: string, compile_flags: number): boolean;
 
@@ -13335,6 +13748,7 @@ export namespace Ags {
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
          * @since 6.3.2
+         * @throws GLib.Error
          */
         execute(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
@@ -13346,6 +13760,7 @@ export namespace Ags {
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
          * @since 6.3.2
+         * @throws GLib.Error
          */
         execute_unichar(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
@@ -13357,6 +13772,7 @@ export namespace Ags {
          * @param execute_flags the execute flags
          * @returns `true` on success, otherwise `false`
          * @since 6.3.2
+         * @throws GLib.Error
          */
         execute_unichar2(str: number, match_count: number, match: RegexMatch, execute_flags: number): boolean;
 
@@ -13919,6 +14335,7 @@ export namespace Ags {
          * Generate token.
          * @returns the generated token
          * @since 3.0.0
+         * @throws GLib.Error
          */
         generate_token(): string;
 
@@ -13936,6 +14353,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the encrypted password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_digest(realm: string, login: string, security_token: string): string;
 
@@ -13946,6 +14364,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns `true` if session active, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
 
@@ -13955,6 +14374,7 @@ export namespace Ags {
          * @param password the password
          * @returns `true` on success, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         login(login: string, password: string): [boolean, string, string];
 
@@ -13965,6 +14385,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns `true` on success, otherwise `false`
          * @since 3.0.0
+         * @throws GLib.Error
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
@@ -14062,6 +14483,7 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @returns the business group's name as string
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string;
 
@@ -14072,6 +14494,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the group UUIDs as `null` terminated string array
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -14083,6 +14506,7 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @returns the business group's user names as string vector
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string): string[];
 
@@ -14094,6 +14518,7 @@ export namespace Ags {
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_group_name(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, group_name: string): void;
 
@@ -14105,6 +14530,7 @@ export namespace Ags {
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_user(security_context: GObject.Object, user_uuid: string, security_token: string, group_uuid: string, user: string[]): void;
     }
@@ -14247,6 +14673,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the cert UUIDs as `null` terminated string array
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
 
@@ -14258,6 +14685,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the domain
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -14269,6 +14697,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the key type
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -14280,6 +14709,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the private key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -14291,6 +14721,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @returns the public key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string): string;
 
@@ -14302,6 +14733,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param domain the domain
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_domain(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, domain: string): void;
 
@@ -14313,6 +14745,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_key_type(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, key_type: string): void;
 
@@ -14324,6 +14757,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_private_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, private_key_file: string): void;
 
@@ -14335,6 +14769,7 @@ export namespace Ags {
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_public_key_file(security_context: GObject.Object, user_uuid: string, security_token: string, cert_uuid: string, public_key_file: string): void;
     }
@@ -15272,6 +15707,7 @@ export namespace Ags {
          * @param salt your salt
          * @returns the encrypted bytes
          * @since 3.0.0
+         * @throws GLib.Error
          */
         encrypt_password(password: string, salt: string): string;
 
@@ -15282,6 +15718,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the login name
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -15292,6 +15729,7 @@ export namespace Ags {
          * @param security_token the security token
          * @returns the password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
 
@@ -15302,6 +15740,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param login_name the login name
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_login_name(security_context: GObject.Object, user_uuid: string, security_token: string, login_name: string): void;
 
@@ -15312,6 +15751,7 @@ export namespace Ags {
          * @param security_token the security token
          * @param password the password
          * @since 3.0.0
+         * @throws GLib.Error
          */
         set_password(security_context: GObject.Object, user_uuid: string, security_token: string, password: string): void;
     }
@@ -16024,24 +16464,28 @@ export namespace Ags {
         /**
          * Plays the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the sequencer for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of sequencer.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the sequencer for recording.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 
@@ -17074,30 +17518,35 @@ export namespace Ags {
          * Retrieve detailed information of `card_id` soundcard.
          * @param card_id the selected soundcard by its string identifier
          * @since 3.0.0
+         * @throws GLib.Error
          */
         pcm_info(card_id: string): [number, number, number, number, number, number];
 
         /**
          * Plays the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Initializes the soundcard for playback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         play_init(): void;
 
         /**
          * Records the current buffer of soundcard.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record(): void;
 
         /**
          * Initializes the soundcard for recordback.
          * @since 3.0.0
+         * @throws GLib.Error
          */
         record_init(): void;
 

@@ -41,8 +41,8 @@ export namespace RygelServer {
      * @gir-type Enum
      */
     enum LogicalOperator {
-        AND,
-        OR,
+        AND = 0,
+        OR = 1,
     }
 
 
@@ -57,9 +57,9 @@ export namespace RygelServer {
      * @gir-type Enum
      */
     enum ObjectEventType {
-        ADDED,
-        MODIFIED,
-        DELETED,
+        ADDED = 0,
+        MODIFIED = 1,
+        DELETED = 2,
     }
 
 
@@ -74,9 +74,9 @@ export namespace RygelServer {
      * @gir-type Enum
      */
     enum SerializerType {
-        GENERIC_DIDL,
-        DIDL_S,
-        M3UEXT,
+        GENERIC_DIDL = 0,
+        DIDL_S = 1,
+        M3UEXT = 2,
     }
 
 
@@ -565,6 +565,7 @@ export namespace RygelServer {
         // Methods
         /**
          * @param item 
+         * @throws GLib.Error
          */
         lookup_media_art(item: MusicItem): Thumbnail | null;
 
@@ -1008,6 +1009,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
@@ -1042,6 +1044,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
@@ -1067,6 +1070,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
@@ -1429,11 +1433,11 @@ export namespace RygelServer {
             /**
              * @signal
              */
-            "container-updated": (arg0: MediaContainer, arg1: MediaObject, arg2: ObjectEventType, arg3: boolean) => void;
+            "container-updated": (container: MediaContainer, object: MediaObject, event_type: ObjectEventType, sub_tree_update: boolean) => void;
             /**
              * @signal
              */
-            "sub-tree-updates-finished": (arg0: MediaObject) => void;
+            "sub-tree-updates-finished": (sub_tree_root: MediaObject) => void;
             "notify::child-count": (pspec: GObject.ParamSpec) => void;
             "notify::empty-child-count": (pspec: GObject.ParamSpec) => void;
             "notify::all-child-count": (pspec: GObject.ParamSpec) => void;
@@ -1611,6 +1615,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null;
 
@@ -1636,6 +1641,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
@@ -2145,6 +2151,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_writable_finish(_res_: Gio.AsyncResult): Gio.File | null;
 
@@ -2167,6 +2174,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_writables_finish(_res_: Gio.AsyncResult): Gee.ArrayList;
 
@@ -2180,18 +2188,21 @@ export namespace RygelServer {
         /**
          * @param serializer 
          * @param http_server 
+         * @throws GLib.Error
          */
         serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null;
 
         /**
          * @param didl_object 
          * @param http_server 
+         * @throws GLib.Error
          */
         serialize_resource_list(didl_object: GUPnPAV.DIDLLiteObject, http_server: HTTPServer): void;
 
         /**
          * @param request 
          * @param resource 
+         * @throws GLib.Error
          */
         create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null;
 
@@ -2961,7 +2972,7 @@ export namespace RygelServer {
             /**
              * @signal
              */
-            "resource-changed": (arg0: string) => void;
+            "resource-changed": (media_object_uri: string) => void;
         }
 
         // Constructor properties interface
@@ -3073,11 +3084,13 @@ export namespace RygelServer {
          * @param item 
          * @param resource 
          * @param replacements 
+         * @throws GLib.Error
          */
         create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: { [key: string]: string }): DataSource | null;
 
         /**
          * @param uri 
+         * @throws GLib.Error
          */
         create_data_source_for_uri(uri: string): DataSource | null;
 
@@ -3588,6 +3601,7 @@ export namespace RygelServer {
         // Methods
         /**
          * @param request 
+         * @throws GLib.Error
          */
         add_response_headers(request: HTTPGet): void;
 
@@ -3610,6 +3624,7 @@ export namespace RygelServer {
 
         /**
          * @param request 
+         * @throws GLib.Error
          */
         render_body(request: HTTPGet): HTTPResponse;
 
@@ -3918,6 +3933,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         handle_finish(_res_: Gio.AsyncResult): void;
 
@@ -3935,6 +3951,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_item_finish(_res_: Gio.AsyncResult): void;
 
@@ -4077,6 +4094,9 @@ export namespace RygelServer {
         vfunc_end(aborted: boolean, status: number): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         preroll(): Gee.List | null;
 
         /**
@@ -5904,6 +5924,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
@@ -5938,6 +5959,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         simple_search_finish(_res_: Gio.AsyncResult): [MediaObjects | null, number];
 
@@ -5963,6 +5985,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         find_object_finish(_res_: Gio.AsyncResult): MediaObject | null;
 
@@ -6455,6 +6478,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_item_finish(_res_: Gio.AsyncResult): void;
 
@@ -6480,6 +6504,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_container_finish(_res_: Gio.AsyncResult): void;
 
@@ -6505,6 +6530,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_reference_finish(_res_: Gio.AsyncResult): string;
 
@@ -6530,6 +6556,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_item_finish(_res_: Gio.AsyncResult): void;
 
@@ -6555,6 +6582,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_container_finish(_res_: Gio.AsyncResult): void;
 
@@ -6625,9 +6653,13 @@ export namespace RygelServer {
         /**
          * @param seek 
          * @param playspeed 
+         * @throws GLib.Error
          */
         preroll(seek: HTTPSeekRequest | null, playspeed: PlaySpeedRequest | null): Gee.List | null;
 
+        /**
+         * @throws GLib.Error
+         */
         start(): void;
 
         freeze(): void;
@@ -6692,6 +6724,7 @@ export namespace RygelServer {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         commit_finish(_res_: Gio.AsyncResult): void;
     }

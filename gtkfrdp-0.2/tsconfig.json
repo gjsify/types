@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gtkfrdp-0.2.d.ts","./gtkfrdp-0.2-surface.d.ts"]
+  "include": ["./gtkfrdp-0.2.d.ts","./gtkfrdp-0.2-vocabulary.d.ts"]
 }
 
 

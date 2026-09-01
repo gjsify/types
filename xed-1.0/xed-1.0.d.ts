@@ -44,8 +44,8 @@ export namespace Xed {
      * @gir-type Enum
      */
     enum SearchMode {
-        SEARCH,
-        REPLACE,
+        SEARCH = 0,
+        REPLACE = 1,
     }
 
 
@@ -60,28 +60,37 @@ export namespace Xed {
      * @gir-type Enum
      */
     enum TabState {
-        STATE_NORMAL,
-        STATE_LOADING,
-        STATE_REVERTING,
-        STATE_SAVING,
-        STATE_PRINTING,
-        STATE_PRINT_PREVIEWING,
-        STATE_SHOWING_PRINT_PREVIEW,
-        STATE_GENERIC_NOT_EDITABLE,
-        STATE_LOADING_ERROR,
-        STATE_REVERTING_ERROR,
-        STATE_SAVING_ERROR,
-        STATE_GENERIC_ERROR,
-        STATE_CLOSING,
-        STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
-        NUM_OF_STATES,
+        STATE_NORMAL = 0,
+        STATE_LOADING = 1,
+        STATE_REVERTING = 2,
+        STATE_SAVING = 3,
+        STATE_PRINTING = 4,
+        STATE_PRINT_PREVIEWING = 5,
+        STATE_SHOWING_PRINT_PREVIEW = 6,
+        STATE_GENERIC_NOT_EDITABLE = 7,
+        STATE_LOADING_ERROR = 8,
+        STATE_REVERTING_ERROR = 9,
+        STATE_SAVING_ERROR = 10,
+        STATE_GENERIC_ERROR = 11,
+        STATE_CLOSING = 12,
+        STATE_EXTERNALLY_MODIFIED_NOTIFICATION = 13,
+        NUM_OF_STATES = 14,
     }
 
 
+    /**
+     * @default metadata::xed-encoding
+     */
     const METADATA_ATTRIBUTE_ENCODING: string;
 
+    /**
+     * @default metadata::xed-language
+     */
     const METADATA_ATTRIBUTE_LANGUAGE: string;
 
+    /**
+     * @default metadata::xed-position
+     */
     const METADATA_ATTRIBUTE_POSITION: string;
 
     /**
@@ -314,22 +323,22 @@ export namespace Xed {
      * @gir-type Flags
      */
     enum DebugSection {
-        NO_DEBUG,
-        DEBUG_VIEW,
-        DEBUG_SEARCH,
-        DEBUG_PRINT,
-        DEBUG_PREFS,
-        DEBUG_PLUGINS,
-        DEBUG_TAB,
-        DEBUG_DOCUMENT,
-        DEBUG_COMMANDS,
-        DEBUG_APP,
-        DEBUG_SESSION,
-        DEBUG_UTILS,
-        DEBUG_METADATA,
-        DEBUG_WINDOW,
-        DEBUG_LOADER,
-        DEBUG_SAVER,
+        NO_DEBUG = 0,
+        DEBUG_VIEW = 1,
+        DEBUG_SEARCH = 2,
+        DEBUG_PRINT = 4,
+        DEBUG_PREFS = 8,
+        DEBUG_PLUGINS = 16,
+        DEBUG_TAB = 32,
+        DEBUG_DOCUMENT = 64,
+        DEBUG_COMMANDS = 128,
+        DEBUG_APP = 256,
+        DEBUG_SESSION = 512,
+        DEBUG_UTILS = 1024,
+        DEBUG_METADATA = 2048,
+        DEBUG_WINDOW = 4096,
+        DEBUG_LOADER = 8192,
+        DEBUG_SAVER = 16384,
     }
 
 
@@ -344,12 +353,12 @@ export namespace Xed {
      * @gir-type Flags
      */
     enum WindowState {
-        NORMAL,
-        SAVING,
-        PRINTING,
-        LOADING,
-        ERROR,
-        SAVING_SESSION,
+        NORMAL = 0,
+        SAVING = 2,
+        PRINTING = 4,
+        LOADING = 8,
+        ERROR = 16,
+        SAVING_SESSION = 32,
     }
 
 
@@ -1547,6 +1556,7 @@ export namespace Xed {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -1558,6 +1568,7 @@ export namespace Xed {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -1840,6 +1851,7 @@ export namespace Xed {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -1848,6 +1860,7 @@ export namespace Xed {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -1863,6 +1876,7 @@ export namespace Xed {
          * @param file the file to select
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -1936,6 +1950,7 @@ export namespace Xed {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -2032,6 +2047,7 @@ export namespace Xed {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -2384,21 +2400,21 @@ export namespace Xed {
              * @signal
              * @run-last
              */
-            dispatch: (arg0: Message) => void;
+            dispatch: (message: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
              * @run-last
              */
-            registered: (arg0: MessageType) => void;
+            registered: (message_type: MessageType) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
              * @run-last
              */
-            unregistered: (arg0: MessageType) => void;
+            unregistered: (message_type: MessageType) => void;
         }
 
         // Constructor properties interface
@@ -2597,22 +2613,22 @@ export namespace Xed {
              * @signal
              * @run-first
              */
-            "tab-added": (arg0: Tab) => void;
+            "tab-added": (object: Tab) => void;
             /**
              * @signal
              * @run-last
              */
-            "tab-close-request": (arg0: Tab) => void;
+            "tab-close-request": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-detached": (arg0: Tab) => void;
+            "tab-detached": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-removed": (arg0: Tab) => void;
+            "tab-removed": (object: Tab) => void;
             /**
              * @signal
              * @run-first
@@ -2845,12 +2861,12 @@ export namespace Xed {
              * @signal
              * @run-first
              */
-            "item-added": (arg0: Gtk.Widget) => void;
+            "item-added": (object: Gtk.Widget) => void;
             /**
              * @signal
              * @run-first
              */
-            "item-removed": (arg0: Gtk.Widget) => void;
+            "item-removed": (object: Gtk.Widget) => void;
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -3674,7 +3690,7 @@ export namespace Xed {
              * @action
              * @run-last
              */
-            "drop-uris": (arg0: string[]) => void;
+            "drop-uris": (object: string[]) => void;
             "notify::auto-indent": (pspec: GObject.ParamSpec) => void;
             "notify::background-pattern": (pspec: GObject.ParamSpec) => void;
             "notify::completion": (pspec: GObject.ParamSpec) => void;
@@ -3867,7 +3883,7 @@ export namespace Xed {
              * @signal
              * @run-first
              */
-            "active-tab-changed": (arg0: Tab) => void;
+            "active-tab-changed": (object: Tab) => void;
             /**
              * @signal
              * @run-first
@@ -3877,12 +3893,12 @@ export namespace Xed {
              * @signal
              * @run-first
              */
-            "tab-added": (arg0: Tab) => void;
+            "tab-added": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-removed": (arg0: Tab) => void;
+            "tab-removed": (object: Tab) => void;
             /**
              * @signal
              * @run-first

@@ -54,10 +54,10 @@ export namespace Builder {
      * @gir-type Enum
      */
     enum ViewGridSplit {
-        LEFT,
-        RIGHT,
-        MOVE_LEFT,
-        MOVE_RIGHT,
+        LEFT = 1,
+        RIGHT = 2,
+        MOVE_LEFT = 3,
+        MOVE_RIGHT = 4,
     }
 
 
@@ -196,6 +196,7 @@ export namespace Builder {
          * Completes an asynchronous request to get a proxy to a worker process.
          * @param result A {@link Gio.AsyncResult}
          * @returns A {@link Gio.DBusProxy} or `null`.
+         * @throws GLib.Error
          */
         get_worker_finish(result: Gio.AsyncResult): Gio.DBusProxy;
 
@@ -224,6 +225,7 @@ export namespace Builder {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         open_project_finish(result: Gio.AsyncResult): boolean;
 
@@ -238,7 +240,7 @@ export namespace Builder {
              * @signal
              * @run-last
              */
-            "request-documentation": (arg0: string) => void;
+            "request-documentation": (object: string) => void;
             "notify::can-split": (pspec: GObject.ParamSpec) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
             "notify::modified": (pspec: GObject.ParamSpec) => void;
@@ -408,12 +410,12 @@ export namespace Builder {
              * @action
              * @run-last
              */
-            action: (arg0: string, arg1: string, arg2: string) => void;
+            action: (object: string, p0: string, p1: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Gtk.Widget) => void;
+            "populate-popup": (object: Gtk.Widget) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
             "notify::selection": (pspec: GObject.ParamSpec) => void;
             "notify::show-icons": (pspec: GObject.ParamSpec) => void;
@@ -789,37 +791,37 @@ export namespace Builder {
              * @signal
              * @run-last
              */
-            added: (arg0: Tree) => void;
+            added: (object: Tree) => void;
             /**
              * @signal
              * @run-last
              */
-            "build-node": (arg0: TreeNode) => void;
+            "build-node": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-activated": (arg0: TreeNode) => boolean | void;
+            "node-activated": (object: TreeNode) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "node-popup": (arg0: TreeNode, arg1: Gio.Menu) => void;
+            "node-popup": (object: TreeNode, p0: Gio.Menu) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-selected": (arg0: TreeNode) => void;
+            "node-selected": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "node-unselected": (arg0: TreeNode) => void;
+            "node-unselected": (object: TreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            removed: (arg0: Tree) => void;
+            removed: (object: Tree) => void;
             "notify::tree": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1640,7 +1642,7 @@ export namespace Builder {
              * @signal
              * @run-last
              */
-            split: (arg0: View, arg1: number) => void;
+            split: (view: View, split_type: number) => void;
             "notify::active-view": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -1794,7 +1796,7 @@ export namespace Builder {
              * @signal
              * @run-last
              */
-            unload: (arg0: Ide.Context) => void;
+            unload: (object: Ide.Context) => void;
             "notify::active-view": (pspec: GObject.ParamSpec) => void;
             "notify::building": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
@@ -1968,6 +1970,7 @@ export namespace Builder {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         build_finish(result: Gio.AsyncResult): boolean;
 
@@ -2884,6 +2887,7 @@ export namespace Builder {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_as_finish(result: Gio.AsyncResult): boolean;
 
@@ -2909,6 +2913,7 @@ export namespace Builder {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
     }

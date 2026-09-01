@@ -27,10 +27,10 @@ export namespace GnomeAutoar {
      * @gir-type Enum
      */
     enum ConflictAction {
-        UNHANDLED,
-        SKIP,
-        OVERWRITE,
-        CHANGE_DESTINATION,
+        UNHANDLED = 0,
+        SKIP = 1,
+        OVERWRITE = 2,
+        CHANGE_DESTINATION = 3,
     }
 
 
@@ -44,43 +44,43 @@ export namespace GnomeAutoar {
         /**
          * `ARCHIVE_FILTER_NONE`: No filter
          */
-        NONE,
+        NONE = 1,
         /**
          * `ARCHIVE_FILTER_COMPRESS`: UNIX-compressed
          */
-        COMPRESS,
+        COMPRESS = 2,
         /**
          * `ARCHIVE_FILTER_GZIP`: Gzip
          */
-        GZIP,
+        GZIP = 3,
         /**
          * `ARCHIVE_FILTER_BZIP2`: Bzip2
          */
-        BZIP2,
+        BZIP2 = 4,
         /**
          * `ARCHIVE_FILTER_XZ`: XZ
          */
-        XZ,
+        XZ = 5,
         /**
          * `ARCHIVE_FILTER_LZMA`: LZMA
          */
-        LZMA,
+        LZMA = 6,
         /**
          * `ARCHIVE_FILTER_LZIP`: Lzip
          */
-        LZIP,
+        LZIP = 7,
         /**
          * `ARCHIVE_FILTER_LZOP`: LZO
          */
-        LZOP,
+        LZOP = 8,
         /**
          * `ARCHIVE_FILTER_GRZIP`: GRZip
          */
-        GRZIP,
+        GRZIP = 9,
         /**
          * `ARCHIVE_FILTER_LRZIP`: Long Range ZIP (lrzip)
          */
-        LRZIP,
+        LRZIP = 10,
     }
 
 
@@ -94,68 +94,77 @@ export namespace GnomeAutoar {
         /**
          * `ARCHIVE_FORMAT_ZIP`: Zip archive
          */
-        ZIP,
+        ZIP = 1,
         /**
          * `ARCHIVE_FORMAT_TAR_PAX_RESTRICTED`: Tar archive, use
          *   ustar format is possible. If there are extended headers which cannot be
          *   represented in the ustar format, libarchive will use pax interchage format
          *   instead.
          */
-        TAR,
+        TAR = 2,
         /**
          * `ARCHIVE_FORMAT_CPIO_POSIX`: CPIO archive, POSIX
          *   standard cpio interchage format.
          */
-        CPIO,
+        CPIO = 3,
         /**
          * `ARCHIVE_FORMAT_7ZIP`: 7-zip archive
          */
-        "7ZIP",
+        "7ZIP" = 4,
         /**
          * `ARCHIVE_FORMAT_AR_BSD`: BSD variant of Unix archive
          *   format. This format does not support storing directories.
          */
-        AR_BSD,
+        AR_BSD = 5,
         /**
          * `ARCHIVE_FORMAT_AR_GNU`: GNU/SVR4 variant of Unix
          *   archive format. This format does not support storing directories.
          */
-        AR_SVR4,
+        AR_SVR4 = 6,
         /**
          * `ARCHIVE_FORMAT_CPIO_SVR4_NOCRC`: CPIO archive,
          *   SVR4 non-CRC variant
          */
-        CPIO_NEWC,
+        CPIO_NEWC = 7,
         /**
          * `ARCHIVE_FORMAT_TAR_GNUTAR`: Tar archive, support
          *   most popular GNU extensions.
          */
-        GNUTAR,
+        GNUTAR = 8,
         /**
          * `ARCHIVE_FORMAT_ISO9660`: Raw CD image
          */
-        ISO9660,
+        ISO9660 = 9,
         /**
          * `ARCHIVE_FORMAT_TAR_PAX_INTERCHANGE`: Tar archive, use
          *   pax interchage format
          */
-        PAX,
+        PAX = 10,
         /**
          * `ARCHIVE_FORMAT_TAR_USTAR`: Tar archive, use old
          *   ustar format
          */
-        USTAR,
+        USTAR = 11,
         /**
          * `ARCHIVE_FORMAT_XAR`: Xar archive
          */
-        XAR,
+        XAR = 12,
     }
 
 
+    /**
+     * @default 2014
+     */
     const EMPTY_ARCHIVE_ERRNO: number;
 
+    /**
+     * @default 2013
+     */
     const NOT_AN_ARCHIVE_ERRNO: number;
 
+    /**
+     * @default 2015
+     */
     const PASSPHRASE_REQUIRED_ERRNO: number;
 
     /**
@@ -352,7 +361,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            "decide-dest": (arg0: Gio.File) => void;
+            "decide-dest": (destination: Gio.File) => void;
             /**
              * This signal is emitted when error occurs and all jobs should be terminated.
              * Possible error domains are `AUTOAR_COMPRESSOR_ERROR`, `G_IO_ERROR`, and
@@ -362,7 +371,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             /**
              * This signal is used to report progress of creating archives. The value of
              * `completed_size` and `completed_files` are the same as the
@@ -371,7 +380,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            progress: (arg0: number, arg1: number) => void;
+            progress: (completed_size: number, completed_files: number) => void;
             "notify::completed-files": (pspec: GObject.ParamSpec) => void;
             "notify::completed-size": (pspec: GObject.ParamSpec) => void;
             "notify::create-top-level-directory": (pspec: GObject.ParamSpec) => void;
@@ -681,12 +690,12 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            conflict: (arg0: Gio.File, arg1: null) => number;
+            conflict: (file: Gio.File, new_file: null) => number;
             /**
              * @signal
              * @run-last
              */
-            "decide-destination": (arg0: Gio.File, arg1: null) => GObject.Object;
+            "decide-destination": (destination: Gio.File, files: null) => GObject.Object;
             /**
              * This signal is emitted when error occurs and all jobs should be terminated.
              * Possible error domains are `AUTOAR_EXTRACTOR_ERROR`, `G_IO_ERROR`, and
@@ -696,13 +705,13 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             /**
              * This signal is used to report progress of extraction.
              * @signal
              * @run-last
              */
-            progress: (arg0: number, arg1: number) => void;
+            progress: (completed_size: number, completed_files: number) => void;
             /**
              * This signal is emitted when the archive extracting job needs a
              * passphrase.
@@ -716,7 +725,7 @@ export namespace GnomeAutoar {
              * @signal
              * @run-last
              */
-            scanned: (arg0: number) => void;
+            scanned: (files: number) => void;
             "notify::completed-files": (pspec: GObject.ParamSpec) => void;
             "notify::completed-size": (pspec: GObject.ParamSpec) => void;
             "notify::delete-after-extraction": (pspec: GObject.ParamSpec) => void;

@@ -53,15 +53,15 @@ export namespace GimpUi {
         /**
          * it's a 1:1 square
          */
-        SQUARE,
+        SQUARE = 0,
         /**
          * it's higher than it's wide
          */
-        PORTRAIT,
+        PORTRAIT = 1,
         /**
          * it's wider than it's high
          */
-        LANDSCAPE,
+        LANDSCAPE = 2,
     }
 
 
@@ -80,19 +80,19 @@ export namespace GimpUi {
         /**
          * the chain is on top
          */
-        TOP,
+        TOP = 0,
         /**
          * the chain is to the left
          */
-        LEFT,
+        LEFT = 1,
         /**
          * the chain is on bottom
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * the chain is to the right
          */
-        RIGHT,
+        RIGHT = 3,
     }
 
 
@@ -111,15 +111,15 @@ export namespace GimpUi {
         /**
          * don't display transparency
          */
-        FLAT,
+        FLAT = 0,
         /**
          * display transparency using small checks
          */
-        SMALL_CHECKS,
+        SMALL_CHECKS = 1,
         /**
          * display transparency using large checks
          */
-        LARGE_CHECKS,
+        LARGE_CHECKS = 2,
     }
 
 
@@ -139,43 +139,43 @@ export namespace GimpUi {
         /**
          * the hue channel
          */
-        HUE,
+        HUE = 0,
         /**
          * the saturation channel
          */
-        SATURATION,
+        SATURATION = 1,
         /**
          * the value channel
          */
-        VALUE,
+        VALUE = 2,
         /**
          * the red channel
          */
-        RED,
+        RED = 3,
         /**
          * the green channel
          */
-        GREEN,
+        GREEN = 4,
         /**
          * the blue channel
          */
-        BLUE,
+        BLUE = 5,
         /**
          * the alpha channel
          */
-        ALPHA,
+        ALPHA = 6,
         /**
          * the lightness channel
          */
-        LCH_LIGHTNESS,
+        LCH_LIGHTNESS = 7,
         /**
          * the chroma channel
          */
-        LCH_CHROMA,
+        LCH_CHROMA = 8,
         /**
          * the hue channel
          */
-        LCH_HUE,
+        LCH_HUE = 9,
     }
 
 
@@ -196,15 +196,15 @@ export namespace GimpUi {
         /**
          * RGB color model
          */
-        RGB,
+        RGB = 0,
         /**
          * CIE LCh color model
          */
-        LCH,
+        LCH = 1,
         /**
          * HSV color model
          */
-        HSV,
+        HSV = 2,
     }
 
 
@@ -224,16 +224,16 @@ export namespace GimpUi {
         /**
          * show icons only
          */
-        ICON_ONLY,
+        ICON_ONLY = 0,
         /**
          * show icons and abbreviated labels,
          *                                         when available
          */
-        ABBREVIATED,
+        ABBREVIATED = 1,
         /**
          * show icons and full labels
          */
-        FULL,
+        FULL = 2,
     }
 
 
@@ -245,31 +245,31 @@ export namespace GimpUi {
         /**
          * the integer value
          */
-        VALUE,
+        VALUE = 0,
         /**
          * a human-readable label
          */
-        LABEL,
+        LABEL = 1,
         /**
          * an abbreviated label
          */
-        ABBREV,
+        ABBREV = 2,
         /**
          * an icon name
          */
-        ICON_NAME,
+        ICON_NAME = 3,
         /**
          * a {@link GdkPixbuf.Pixbuf}
          */
-        PIXBUF,
+        PIXBUF = 4,
         /**
          * arbitrary user data
          */
-        USER_DATA,
+        USER_DATA = 5,
         /**
          * the number of columns
          */
-        NUM_COLUMNS,
+        NUM_COLUMNS = 6,
     }
 
 
@@ -288,11 +288,11 @@ export namespace GimpUi {
         /**
          * import as layers of one image
          */
-        LAYERS,
+        LAYERS = 0,
         /**
          * import as separate images
          */
-        IMAGES,
+        IMAGES = 1,
     }
 
 
@@ -311,15 +311,15 @@ export namespace GimpUi {
         /**
          * the size entry's meaning is up to the user
          */
-        NONE,
+        NONE = 0,
         /**
          * the size entry displays values
          */
-        SIZE,
+        SIZE = 1,
         /**
          * the size entry displays resolutions
          */
-        RESOLUTION,
+        RESOLUTION = 2,
     }
 
 
@@ -356,658 +356,1611 @@ export namespace GimpUi {
         /**
          * zoom in
          */
-        IN,
+        IN = 0,
         /**
          * zoom out
          */
-        OUT,
+        OUT = 1,
     }
 
 
     /**
      * The suggested width for a color bar in a {@link GimpUi.ColorSelector}
      * implementation.
+     * @default 15
      */
     const COLOR_SELECTOR_BAR_SIZE: number;
 
     /**
      * The suggested size for a color area in a {@link GimpUi.ColorSelector}
      * implementation.
+     * @default 150
      */
     const COLOR_SELECTOR_SIZE: number;
 
+    /**
+     * @default application-exit
+     */
     const ICON_APPLICATION_EXIT: string;
 
+    /**
+     * @default gimp-landscape
+     */
     const ICON_ASPECT_LANDSCAPE: string;
 
+    /**
+     * @default gimp-portrait
+     */
     const ICON_ASPECT_PORTRAIT: string;
 
+    /**
+     * @default gimp-attach
+     */
     const ICON_ATTACH: string;
 
+    /**
+     * @default gimp-business-card
+     */
     const ICON_BUSINESS_CARD: string;
 
+    /**
+     * @default gimp-cap-butt
+     */
     const ICON_CAP_BUTT: string;
 
+    /**
+     * @default gimp-cap-round
+     */
     const ICON_CAP_ROUND: string;
 
+    /**
+     * @default gimp-cap-square
+     */
     const ICON_CAP_SQUARE: string;
 
+    /**
+     * @default gimp-center
+     */
     const ICON_CENTER: string;
 
+    /**
+     * @default gimp-hcenter
+     */
     const ICON_CENTER_HORIZONTAL: string;
 
+    /**
+     * @default gimp-vcenter
+     */
     const ICON_CENTER_VERTICAL: string;
 
+    /**
+     * @default gimp-hchain
+     */
     const ICON_CHAIN_HORIZONTAL: string;
 
+    /**
+     * @default gimp-hchain-broken
+     */
     const ICON_CHAIN_HORIZONTAL_BROKEN: string;
 
+    /**
+     * @default gimp-vchain
+     */
     const ICON_CHAIN_VERTICAL: string;
 
+    /**
+     * @default gimp-vchain-broken
+     */
     const ICON_CHAIN_VERTICAL_BROKEN: string;
 
+    /**
+     * @default gimp-channel
+     */
     const ICON_CHANNEL: string;
 
+    /**
+     * @default gimp-channel-alpha
+     */
     const ICON_CHANNEL_ALPHA: string;
 
+    /**
+     * @default gimp-channel-blue
+     */
     const ICON_CHANNEL_BLUE: string;
 
+    /**
+     * @default gimp-channel-gray
+     */
     const ICON_CHANNEL_GRAY: string;
 
+    /**
+     * @default gimp-channel-green
+     */
     const ICON_CHANNEL_GREEN: string;
 
+    /**
+     * @default gimp-channel-indexed
+     */
     const ICON_CHANNEL_INDEXED: string;
 
+    /**
+     * @default gimp-channel-red
+     */
     const ICON_CHANNEL_RED: string;
 
+    /**
+     * @default gimp-char-picker
+     */
     const ICON_CHAR_PICKER: string;
 
+    /**
+     * @default gimp-close
+     */
     const ICON_CLOSE: string;
 
+    /**
+     * @default gimp-close-all
+     */
     const ICON_CLOSE_ALL: string;
 
+    /**
+     * @default gimp-colormap
+     */
     const ICON_COLORMAP: string;
 
+    /**
+     * @default gimp-default-colors
+     */
     const ICON_COLORS_DEFAULT: string;
 
+    /**
+     * @default gimp-swap-colors
+     */
     const ICON_COLORS_SWAP: string;
 
+    /**
+     * @default gimp-color-picker-black
+     */
     const ICON_COLOR_PICKER_BLACK: string;
 
+    /**
+     * @default gimp-color-picker-gray
+     */
     const ICON_COLOR_PICKER_GRAY: string;
 
+    /**
+     * @default gimp-color-picker-white
+     */
     const ICON_COLOR_PICKER_WHITE: string;
 
+    /**
+     * @default gimp-color-pick-from-screen
+     */
     const ICON_COLOR_PICK_FROM_SCREEN: string;
 
+    /**
+     * @default gimp-color-cmyk
+     */
     const ICON_COLOR_SELECTOR_CMYK: string;
 
+    /**
+     * @default gimp-color-triangle
+     */
     const ICON_COLOR_SELECTOR_TRIANGLE: string;
 
+    /**
+     * @default gimp-color-water
+     */
     const ICON_COLOR_SELECTOR_WATER: string;
 
+    /**
+     * @default gimp-color-space-linear
+     */
     const ICON_COLOR_SPACE_LINEAR: string;
 
+    /**
+     * @default gimp-color-space-non-linear
+     */
     const ICON_COLOR_SPACE_NON_LINEAR: string;
 
+    /**
+     * @default gimp-color-space-perceptual
+     */
     const ICON_COLOR_SPACE_PERCEPTUAL: string;
 
+    /**
+     * @default gimp-controller
+     */
     const ICON_CONTROLLER: string;
 
+    /**
+     * @default gimp-controller-keyboard
+     */
     const ICON_CONTROLLER_KEYBOARD: string;
 
+    /**
+     * @default gimp-controller-linux-input
+     */
     const ICON_CONTROLLER_LINUX_INPUT: string;
 
+    /**
+     * @default gimp-controller-midi
+     */
     const ICON_CONTROLLER_MIDI: string;
 
+    /**
+     * @default gimp-controller-wheel
+     */
     const ICON_CONTROLLER_WHEEL: string;
 
+    /**
+     * @default gimp-convert-grayscale
+     */
     const ICON_CONVERT_GRAYSCALE: string;
 
+    /**
+     * @default gimp-convert-indexed
+     */
     const ICON_CONVERT_INDEXED: string;
 
+    /**
+     * @default gimp-convert-rgb
+     */
     const ICON_CONVERT_RGB: string;
 
+    /**
+     * @default gimp-cursor
+     */
     const ICON_CURSOR: string;
 
+    /**
+     * @default gimp-curve-free
+     */
     const ICON_CURVE_FREE: string;
 
+    /**
+     * @default gimp-curve-smooth
+     */
     const ICON_CURVE_SMOOTH: string;
 
+    /**
+     * @default gimp-detach
+     */
     const ICON_DETACH: string;
 
+    /**
+     * @default gimp-channels
+     */
     const ICON_DIALOG_CHANNELS: string;
 
+    /**
+     * @default gimp-dashboard
+     */
     const ICON_DIALOG_DASHBOARD: string;
 
+    /**
+     * @default gimp-device-status
+     */
     const ICON_DIALOG_DEVICE_STATUS: string;
 
+    /**
+     * @default dialog-error
+     */
     const ICON_DIALOG_ERROR: string;
 
+    /**
+     * @default gimp-images
+     */
     const ICON_DIALOG_IMAGES: string;
 
+    /**
+     * @default dialog-information
+     */
     const ICON_DIALOG_INFORMATION: string;
 
+    /**
+     * @default gimp-layers
+     */
     const ICON_DIALOG_LAYERS: string;
 
+    /**
+     * @default gimp-navigation
+     */
     const ICON_DIALOG_NAVIGATION: string;
 
+    /**
+     * @default gimp-paths
+     */
     const ICON_DIALOG_PATHS: string;
 
+    /**
+     * @default dialog-question
+     */
     const ICON_DIALOG_QUESTION: string;
 
+    /**
+     * @default gimp-reshow-filter
+     */
     const ICON_DIALOG_RESHOW_FILTER: string;
 
+    /**
+     * @default gimp-tools
+     */
     const ICON_DIALOG_TOOLS: string;
 
+    /**
+     * @default gimp-tool-options
+     */
     const ICON_DIALOG_TOOL_OPTIONS: string;
 
+    /**
+     * @default gimp-undo-history
+     */
     const ICON_DIALOG_UNDO_HISTORY: string;
 
+    /**
+     * @default dialog-warning
+     */
     const ICON_DIALOG_WARNING: string;
 
+    /**
+     * @default gimp-display
+     */
     const ICON_DISPLAY: string;
 
+    /**
+     * @default gimp-display-filter
+     */
     const ICON_DISPLAY_FILTER: string;
 
+    /**
+     * @default gimp-display-filter-clip-warning
+     */
     const ICON_DISPLAY_FILTER_CLIP_WARNING: string;
 
+    /**
+     * @default gimp-display-filter-colorblind
+     */
     const ICON_DISPLAY_FILTER_COLORBLIND: string;
 
+    /**
+     * @default gimp-display-filter-contrast
+     */
     const ICON_DISPLAY_FILTER_CONTRAST: string;
 
+    /**
+     * @default gimp-display-filter-gamma
+     */
     const ICON_DISPLAY_FILTER_GAMMA: string;
 
+    /**
+     * @default gimp-display-filter-lcms
+     */
     const ICON_DISPLAY_FILTER_LCMS: string;
 
+    /**
+     * @default gimp-display-filter-proof
+     */
     const ICON_DISPLAY_FILTER_PROOF: string;
 
+    /**
+     * @default document-new
+     */
     const ICON_DOCUMENT_NEW: string;
 
+    /**
+     * @default document-open
+     */
     const ICON_DOCUMENT_OPEN: string;
 
+    /**
+     * @default document-open-recent
+     */
     const ICON_DOCUMENT_OPEN_RECENT: string;
 
+    /**
+     * @default document-page-setup
+     */
     const ICON_DOCUMENT_PAGE_SETUP: string;
 
+    /**
+     * @default document-print
+     */
     const ICON_DOCUMENT_PRINT: string;
 
+    /**
+     * @default document-print
+     */
     const ICON_DOCUMENT_PRINT_RESOLUTION: string;
 
+    /**
+     * @default document-properties
+     */
     const ICON_DOCUMENT_PROPERTIES: string;
 
+    /**
+     * @default document-revert
+     */
     const ICON_DOCUMENT_REVERT: string;
 
+    /**
+     * @default document-save
+     */
     const ICON_DOCUMENT_SAVE: string;
 
+    /**
+     * @default document-save-as
+     */
     const ICON_DOCUMENT_SAVE_AS: string;
 
+    /**
+     * @default gimp-dynamics
+     */
     const ICON_DYNAMICS: string;
 
+    /**
+     * @default gtk-edit
+     */
     const ICON_EDIT: string;
 
+    /**
+     * @default edit-clear
+     */
     const ICON_EDIT_CLEAR: string;
 
+    /**
+     * @default edit-copy
+     */
     const ICON_EDIT_COPY: string;
 
+    /**
+     * @default edit-cut
+     */
     const ICON_EDIT_CUT: string;
 
+    /**
+     * @default edit-delete
+     */
     const ICON_EDIT_DELETE: string;
 
+    /**
+     * @default edit-find
+     */
     const ICON_EDIT_FIND: string;
 
+    /**
+     * @default edit-paste
+     */
     const ICON_EDIT_PASTE: string;
 
+    /**
+     * @default gimp-paste-as-new
+     */
     const ICON_EDIT_PASTE_AS_NEW: string;
 
+    /**
+     * @default gimp-paste-into
+     */
     const ICON_EDIT_PASTE_INTO: string;
 
+    /**
+     * @default edit-redo
+     */
     const ICON_EDIT_REDO: string;
 
+    /**
+     * @default edit-undo
+     */
     const ICON_EDIT_UNDO: string;
 
+    /**
+     * @default gimp-effects
+     */
     const ICON_EFFECT: string;
 
+    /**
+     * @default gimp-even-horizontal-gap
+     */
     const ICON_EVEN_HORIZONTAL_GAP: string;
 
+    /**
+     * @default gimp-even-vertical-gap
+     */
     const ICON_EVEN_VERTICAL_GAP: string;
 
+    /**
+     * @default gimp-file-manager
+     */
     const ICON_FILE_MANAGER: string;
 
+    /**
+     * @default gimp-hfill
+     */
     const ICON_FILL_HORIZONTAL: string;
 
+    /**
+     * @default gimp-vfill
+     */
     const ICON_FILL_VERTICAL: string;
 
+    /**
+     * @default folder-new
+     */
     const ICON_FOLDER_NEW: string;
 
+    /**
+     * @default gtk-select-font
+     */
     const ICON_FONT: string;
 
+    /**
+     * @default format-indent-less
+     */
     const ICON_FORMAT_INDENT_LESS: string;
 
+    /**
+     * @default format-indent-more
+     */
     const ICON_FORMAT_INDENT_MORE: string;
 
+    /**
+     * @default format-justify-center
+     */
     const ICON_FORMAT_JUSTIFY_CENTER: string;
 
+    /**
+     * @default format-justify-fill
+     */
     const ICON_FORMAT_JUSTIFY_FILL: string;
 
+    /**
+     * @default format-justify-left
+     */
     const ICON_FORMAT_JUSTIFY_LEFT: string;
 
+    /**
+     * @default format-justify-right
+     */
     const ICON_FORMAT_JUSTIFY_RIGHT: string;
 
+    /**
+     * @default format-text-bold
+     */
     const ICON_FORMAT_TEXT_BOLD: string;
 
+    /**
+     * @default format-text-direction-ltr
+     */
     const ICON_FORMAT_TEXT_DIRECTION_LTR: string;
 
+    /**
+     * @default format-text-direction-rtl
+     */
     const ICON_FORMAT_TEXT_DIRECTION_RTL: string;
 
+    /**
+     * @default gimp-text-dir-ttb-ltr
+     */
     const ICON_FORMAT_TEXT_DIRECTION_TTB_LTR: string;
 
+    /**
+     * @default gimp-text-dir-ttb-ltr-upright
+     */
     const ICON_FORMAT_TEXT_DIRECTION_TTB_LTR_UPRIGHT: string;
 
+    /**
+     * @default gimp-text-dir-ttb-rtl
+     */
     const ICON_FORMAT_TEXT_DIRECTION_TTB_RTL: string;
 
+    /**
+     * @default gimp-text-dir-ttb-rtl-upright
+     */
     const ICON_FORMAT_TEXT_DIRECTION_TTB_RTL_UPRIGHT: string;
 
+    /**
+     * @default format-text-italic
+     */
     const ICON_FORMAT_TEXT_ITALIC: string;
 
+    /**
+     * @default gimp-letter-spacing
+     */
     const ICON_FORMAT_TEXT_SPACING_LETTER: string;
 
+    /**
+     * @default gimp-line-spacing
+     */
     const ICON_FORMAT_TEXT_SPACING_LINE: string;
 
+    /**
+     * @default format-text-strikethrough
+     */
     const ICON_FORMAT_TEXT_STRIKETHROUGH: string;
 
+    /**
+     * @default format-text-underline
+     */
     const ICON_FORMAT_TEXT_UNDERLINE: string;
 
+    /**
+     * @default gimp-frame
+     */
     const ICON_FRAME: string;
 
+    /**
+     * @default gimp-gegl
+     */
     const ICON_GEGL: string;
 
+    /**
+     * @default go-bottom
+     */
     const ICON_GO_BOTTOM: string;
 
+    /**
+     * @default go-down
+     */
     const ICON_GO_DOWN: string;
 
+    /**
+     * @default go-first
+     */
     const ICON_GO_FIRST: string;
 
+    /**
+     * @default go-home
+     */
     const ICON_GO_HOME: string;
 
+    /**
+     * @default go-last
+     */
     const ICON_GO_LAST: string;
 
+    /**
+     * @default go-next
+     */
     const ICON_GO_NEXT: string;
 
+    /**
+     * @default go-previous
+     */
     const ICON_GO_PREVIOUS: string;
 
+    /**
+     * @default go-top
+     */
     const ICON_GO_TOP: string;
 
+    /**
+     * @default go-up
+     */
     const ICON_GO_UP: string;
 
+    /**
+     * @default gimp-gradient-bilinear
+     */
     const ICON_GRADIENT_BILINEAR: string;
 
+    /**
+     * @default gimp-gradient-conical-asymmetric
+     */
     const ICON_GRADIENT_CONICAL_ASYMMETRIC: string;
 
+    /**
+     * @default gimp-gradient-conical-symmetric
+     */
     const ICON_GRADIENT_CONICAL_SYMMETRIC: string;
 
+    /**
+     * @default gimp-gradient-linear
+     */
     const ICON_GRADIENT_LINEAR: string;
 
+    /**
+     * @default gimp-gradient-radial
+     */
     const ICON_GRADIENT_RADIAL: string;
 
+    /**
+     * @default gimp-gradient-shapeburst-angular
+     */
     const ICON_GRADIENT_SHAPEBURST_ANGULAR: string;
 
+    /**
+     * @default gimp-gradient-shapeburst-dimpled
+     */
     const ICON_GRADIENT_SHAPEBURST_DIMPLED: string;
 
+    /**
+     * @default gimp-gradient-shapeburst-spherical
+     */
     const ICON_GRADIENT_SHAPEBURST_SPHERICAL: string;
 
+    /**
+     * @default gimp-gradient-spiral-anticlockwise
+     */
     const ICON_GRADIENT_SPIRAL_ANTICLOCKWISE: string;
 
+    /**
+     * @default gimp-gradient-spiral-clockwise
+     */
     const ICON_GRADIENT_SPIRAL_CLOCKWISE: string;
 
+    /**
+     * @default gimp-gradient-square
+     */
     const ICON_GRADIENT_SQUARE: string;
 
+    /**
+     * @default gimp-gravity-east
+     */
     const ICON_GRAVITY_EAST: string;
 
+    /**
+     * @default gimp-gravity-north
+     */
     const ICON_GRAVITY_NORTH: string;
 
+    /**
+     * @default gimp-gravity-north-east
+     */
     const ICON_GRAVITY_NORTH_EAST: string;
 
+    /**
+     * @default gimp-gravity-north-west
+     */
     const ICON_GRAVITY_NORTH_WEST: string;
 
+    /**
+     * @default gimp-gravity-south
+     */
     const ICON_GRAVITY_SOUTH: string;
 
+    /**
+     * @default gimp-gravity-south-east
+     */
     const ICON_GRAVITY_SOUTH_EAST: string;
 
+    /**
+     * @default gimp-gravity-south-west
+     */
     const ICON_GRAVITY_SOUTH_WEST: string;
 
+    /**
+     * @default gimp-gravity-west
+     */
     const ICON_GRAVITY_WEST: string;
 
+    /**
+     * @default gimp-grid
+     */
     const ICON_GRID: string;
 
+    /**
+     * @default system-help
+     */
     const ICON_HELP: string;
 
+    /**
+     * @default help-about
+     */
     const ICON_HELP_ABOUT: string;
 
+    /**
+     * @default gimp-user-manual
+     */
     const ICON_HELP_USER_MANUAL: string;
 
+    /**
+     * @default gimp-histogram
+     */
     const ICON_HISTOGRAM: string;
 
+    /**
+     * @default gimp-histogram-linear
+     */
     const ICON_HISTOGRAM_LINEAR: string;
 
+    /**
+     * @default gimp-histogram-logarithmic
+     */
     const ICON_HISTOGRAM_LOGARITHMIC: string;
 
+    /**
+     * @default gimp-image
+     */
     const ICON_IMAGE: string;
 
+    /**
+     * @default gimp-image-open
+     */
     const ICON_IMAGE_OPEN: string;
 
+    /**
+     * @default gimp-image-reload
+     */
     const ICON_IMAGE_RELOAD: string;
 
+    /**
+     * @default gimp-input-device
+     */
     const ICON_INPUT_DEVICE: string;
 
+    /**
+     * @default gimp-invert
+     */
     const ICON_INVERT: string;
 
+    /**
+     * @default gimp-join-bevel
+     */
     const ICON_JOIN_BEVEL: string;
 
+    /**
+     * @default gimp-join-miter
+     */
     const ICON_JOIN_MITER: string;
 
+    /**
+     * @default gimp-join-round
+     */
     const ICON_JOIN_ROUND: string;
 
+    /**
+     * @default gimp-layer
+     */
     const ICON_LAYER: string;
 
+    /**
+     * @default gimp-anchor
+     */
     const ICON_LAYER_ANCHOR: string;
 
+    /**
+     * @default gimp-floating-selection
+     */
     const ICON_LAYER_FLOATING_SELECTION: string;
 
+    /**
+     * @default emblem-symbolic-link
+     */
     const ICON_LAYER_LINK_LAYER: string;
 
+    /**
+     * @default gimp-layer-mask
+     */
     const ICON_LAYER_MASK: string;
 
+    /**
+     * @default gimp-merge-down
+     */
     const ICON_LAYER_MERGE_DOWN: string;
 
+    /**
+     * @default gimp-text-layer
+     */
     const ICON_LAYER_TEXT_LAYER: string;
 
+    /**
+     * @default gimp-layer-to-imagesize
+     */
     const ICON_LAYER_TO_IMAGESIZE: string;
 
+    /**
+     * @default gimp-tool-path
+     */
     const ICON_LAYER_VECTOR_LAYER: string;
 
+    /**
+     * @default gimp-linked
+     */
     const ICON_LINKED: string;
 
+    /**
+     * @default gimp-list
+     */
     const ICON_LIST: string;
 
+    /**
+     * @default list-add
+     */
     const ICON_LIST_ADD: string;
 
+    /**
+     * @default list-remove
+     */
     const ICON_LIST_REMOVE: string;
 
+    /**
+     * @default gimp-lock
+     */
     const ICON_LOCK: string;
 
+    /**
+     * @default gimp-lock-alpha
+     */
     const ICON_LOCK_ALPHA: string;
 
+    /**
+     * @default gimp-lock-content
+     */
     const ICON_LOCK_CONTENT: string;
 
+    /**
+     * @default gimp-lock-multi
+     */
     const ICON_LOCK_MULTI: string;
 
+    /**
+     * @default gimp-lock-path
+     */
     const ICON_LOCK_PATH: string;
 
+    /**
+     * @default gimp-lock-position
+     */
     const ICON_LOCK_POSITION: string;
 
+    /**
+     * @default gimp-lock-visibility
+     */
     const ICON_LOCK_VISIBILITY: string;
 
+    /**
+     * @default gimp-marker
+     */
     const ICON_MARKER: string;
 
+    /**
+     * @default gimp-menu-left
+     */
     const ICON_MENU_LEFT: string;
 
+    /**
+     * @default gimp-menu-right
+     */
     const ICON_MENU_RIGHT: string;
 
+    /**
+     * @default gimp-duplicate
+     */
     const ICON_OBJECT_DUPLICATE: string;
 
+    /**
+     * @default object-flip-horizontal
+     */
     const ICON_OBJECT_FLIP_HORIZONTAL: string;
 
+    /**
+     * @default object-flip-vertical
+     */
     const ICON_OBJECT_FLIP_VERTICAL: string;
 
+    /**
+     * @default gimp-resize
+     */
     const ICON_OBJECT_RESIZE: string;
 
+    /**
+     * @default gimp-rotate-180
+     */
     const ICON_OBJECT_ROTATE_180: string;
 
+    /**
+     * @default object-rotate-left
+     */
     const ICON_OBJECT_ROTATE_270: string;
 
+    /**
+     * @default object-rotate-right
+     */
     const ICON_OBJECT_ROTATE_90: string;
 
+    /**
+     * @default gimp-scale
+     */
     const ICON_OBJECT_SCALE: string;
 
+    /**
+     * @default gtk-select-color
+     */
     const ICON_PALETTE: string;
 
+    /**
+     * @default gimp-path
+     */
     const ICON_PATH: string;
 
+    /**
+     * @default gimp-path-stroke
+     */
     const ICON_PATH_STROKE: string;
 
+    /**
+     * @default gimp-pattern
+     */
     const ICON_PATTERN: string;
 
+    /**
+     * @default gimp-pivot-center
+     */
     const ICON_PIVOT_CENTER: string;
 
+    /**
+     * @default gimp-pivot-east
+     */
     const ICON_PIVOT_EAST: string;
 
+    /**
+     * @default gimp-pivot-north
+     */
     const ICON_PIVOT_NORTH: string;
 
+    /**
+     * @default gimp-pivot-north-east
+     */
     const ICON_PIVOT_NORTH_EAST: string;
 
+    /**
+     * @default gimp-pivot-north-west
+     */
     const ICON_PIVOT_NORTH_WEST: string;
 
+    /**
+     * @default gimp-pivot-south
+     */
     const ICON_PIVOT_SOUTH: string;
 
+    /**
+     * @default gimp-pivot-south-east
+     */
     const ICON_PIVOT_SOUTH_EAST: string;
 
+    /**
+     * @default gimp-pivot-south-west
+     */
     const ICON_PIVOT_SOUTH_WEST: string;
 
+    /**
+     * @default gimp-pivot-west
+     */
     const ICON_PIVOT_WEST: string;
 
+    /**
+     * @default gimp-plugin
+     */
     const ICON_PLUGIN: string;
 
+    /**
+     * @default preferences-system
+     */
     const ICON_PREFERENCES_SYSTEM: string;
 
+    /**
+     * @default process-stop
+     */
     const ICON_PROCESS_STOP: string;
 
+    /**
+     * @default gimp-quick-mask-off
+     */
     const ICON_QUICK_MASK_OFF: string;
 
+    /**
+     * @default gimp-quick-mask-on
+     */
     const ICON_QUICK_MASK_ON: string;
 
+    /**
+     * @default media-record
+     */
     const ICON_RECORD: string;
 
+    /**
+     * @default gimp-reset
+     */
     const ICON_RESET: string;
 
+    /**
+     * @default gimp-sample-point
+     */
     const ICON_SAMPLE_POINT: string;
 
+    /**
+     * @default gimp-selection
+     */
     const ICON_SELECTION: string;
 
+    /**
+     * @default gimp-selection-add
+     */
     const ICON_SELECTION_ADD: string;
 
+    /**
+     * @default gimp-selection-all
+     */
     const ICON_SELECTION_ALL: string;
 
+    /**
+     * @default gimp-selection-border
+     */
     const ICON_SELECTION_BORDER: string;
 
+    /**
+     * @default gimp-selection-grow
+     */
     const ICON_SELECTION_GROW: string;
 
+    /**
+     * @default gimp-selection-intersect
+     */
     const ICON_SELECTION_INTERSECT: string;
 
+    /**
+     * @default gimp-selection-none
+     */
     const ICON_SELECTION_NONE: string;
 
+    /**
+     * @default gimp-selection-replace
+     */
     const ICON_SELECTION_REPLACE: string;
 
+    /**
+     * @default gimp-selection-shrink
+     */
     const ICON_SELECTION_SHRINK: string;
 
+    /**
+     * @default gimp-selection-stroke
+     */
     const ICON_SELECTION_STROKE: string;
 
+    /**
+     * @default gimp-selection-subtract
+     */
     const ICON_SELECTION_SUBTRACT: string;
 
+    /**
+     * @default gimp-selection-to-channel
+     */
     const ICON_SELECTION_TO_CHANNEL: string;
 
+    /**
+     * @default gimp-selection-to-path
+     */
     const ICON_SELECTION_TO_PATH: string;
 
+    /**
+     * @default gimp-shape-circle
+     */
     const ICON_SHAPE_CIRCLE: string;
 
+    /**
+     * @default gimp-shape-diamond
+     */
     const ICON_SHAPE_DIAMOND: string;
 
+    /**
+     * @default gimp-shape-square
+     */
     const ICON_SHAPE_SQUARE: string;
 
+    /**
+     * @default gimp-shred
+     */
     const ICON_SHRED: string;
 
+    /**
+     * @default gimp-smartphone
+     */
     const ICON_SMARTPHONE: string;
 
+    /**
+     * @default gimp-symmetry
+     */
     const ICON_SYMMETRY: string;
 
+    /**
+     * @default system-run
+     */
     const ICON_SYSTEM_RUN: string;
 
+    /**
+     * @default gimp-template
+     */
     const ICON_TEMPLATE: string;
 
+    /**
+     * @default gimp-texture
+     */
     const ICON_TEXTURE: string;
 
+    /**
+     * @default gimp-tool-airbrush
+     */
     const ICON_TOOL_AIRBRUSH: string;
 
+    /**
+     * @default gimp-tool-align
+     */
     const ICON_TOOL_ALIGN: string;
 
+    /**
+     * @default gimp-tool-blur
+     */
     const ICON_TOOL_BLUR: string;
 
+    /**
+     * @default gimp-tool-brightness-contrast
+     */
     const ICON_TOOL_BRIGHTNESS_CONTRAST: string;
 
+    /**
+     * @default gimp-tool-bucket-fill
+     */
     const ICON_TOOL_BUCKET_FILL: string;
 
+    /**
+     * @default gimp-tool-by-color-select
+     */
     const ICON_TOOL_BY_COLOR_SELECT: string;
 
+    /**
+     * @default gimp-tool-cage
+     */
     const ICON_TOOL_CAGE: string;
 
+    /**
+     * @default gimp-tool-clone
+     */
     const ICON_TOOL_CLONE: string;
 
+    /**
+     * @default gimp-tool-colorize
+     */
     const ICON_TOOL_COLORIZE: string;
 
+    /**
+     * @default gimp-tool-color-balance
+     */
     const ICON_TOOL_COLOR_BALANCE: string;
 
+    /**
+     * @default gimp-tool-color-picker
+     */
     const ICON_TOOL_COLOR_PICKER: string;
 
+    /**
+     * @default gimp-tool-color-temperature
+     */
     const ICON_TOOL_COLOR_TEMPERATURE: string;
 
+    /**
+     * @default gimp-tool-crop
+     */
     const ICON_TOOL_CROP: string;
 
+    /**
+     * @default gimp-tool-curves
+     */
     const ICON_TOOL_CURVES: string;
 
+    /**
+     * @default gimp-tool-desaturate
+     */
     const ICON_TOOL_DESATURATE: string;
 
+    /**
+     * @default gimp-tool-dodge
+     */
     const ICON_TOOL_DODGE: string;
 
+    /**
+     * @default gimp-tool-ellipse-select
+     */
     const ICON_TOOL_ELLIPSE_SELECT: string;
 
+    /**
+     * @default gimp-tool-eraser
+     */
     const ICON_TOOL_ERASER: string;
 
+    /**
+     * @default gimp-tool-exposure
+     */
     const ICON_TOOL_EXPOSURE: string;
 
+    /**
+     * @default gimp-tool-flip
+     */
     const ICON_TOOL_FLIP: string;
 
+    /**
+     * @default gimp-tool-foreground-select
+     */
     const ICON_TOOL_FOREGROUND_SELECT: string;
 
+    /**
+     * @default gimp-tool-free-select
+     */
     const ICON_TOOL_FREE_SELECT: string;
 
+    /**
+     * @default gimp-tool-fuzzy-select
+     */
     const ICON_TOOL_FUZZY_SELECT: string;
 
+    /**
+     * @default gimp-tool-gradient
+     */
     const ICON_TOOL_GRADIENT: string;
 
+    /**
+     * @default gimp-tool-handle-transform
+     */
     const ICON_TOOL_HANDLE_TRANSFORM: string;
 
+    /**
+     * @default gimp-tool-heal
+     */
     const ICON_TOOL_HEAL: string;
 
+    /**
+     * @default gimp-tool-hue-saturation
+     */
     const ICON_TOOL_HUE_SATURATION: string;
 
+    /**
+     * @default gimp-tool-ink
+     */
     const ICON_TOOL_INK: string;
 
+    /**
+     * @default gimp-tool-iscissors
+     */
     const ICON_TOOL_ISCISSORS: string;
 
+    /**
+     * @default gimp-tool-levels
+     */
     const ICON_TOOL_LEVELS: string;
 
+    /**
+     * @default gimp-tool-measure
+     */
     const ICON_TOOL_MEASURE: string;
 
+    /**
+     * @default gimp-tool-move
+     */
     const ICON_TOOL_MOVE: string;
 
+    /**
+     * @default gimp-tool-mypaint-brush
+     */
     const ICON_TOOL_MYPAINT_BRUSH: string;
 
+    /**
+     * @default gimp-tool-n-point-deformation
+     */
     const ICON_TOOL_N_POINT_DEFORMATION: string;
 
+    /**
+     * @default gimp-tool-offset
+     */
     const ICON_TOOL_OFFSET: string;
 
+    /**
+     * @default gimp-tool-paintbrush
+     */
     const ICON_TOOL_PAINTBRUSH: string;
 
+    /**
+     * @default gimp-tool-paint-select
+     */
     const ICON_TOOL_PAINT_SELECT: string;
 
+    /**
+     * @default gimp-tool-path
+     */
     const ICON_TOOL_PATH: string;
 
+    /**
+     * @default gimp-tool-pencil
+     */
     const ICON_TOOL_PENCIL: string;
 
+    /**
+     * @default gimp-tool-perspective
+     */
     const ICON_TOOL_PERSPECTIVE: string;
 
+    /**
+     * @default gimp-tool-perspective-clone
+     */
     const ICON_TOOL_PERSPECTIVE_CLONE: string;
 
+    /**
+     * @default gimp-tool-posterize
+     */
     const ICON_TOOL_POSTERIZE: string;
 
+    /**
+     * @default gimp-tool-preset
+     */
     const ICON_TOOL_PRESET: string;
 
+    /**
+     * @default gimp-tool-rect-select
+     */
     const ICON_TOOL_RECT_SELECT: string;
 
+    /**
+     * @default gimp-tool-rotate
+     */
     const ICON_TOOL_ROTATE: string;
 
+    /**
+     * @default gimp-tool-scale
+     */
     const ICON_TOOL_SCALE: string;
 
+    /**
+     * @default gimp-tool-seamless-clone
+     */
     const ICON_TOOL_SEAMLESS_CLONE: string;
 
+    /**
+     * @default gimp-tool-shadows-highlights
+     */
     const ICON_TOOL_SHADOWS_HIGHLIGHTS: string;
 
+    /**
+     * @default gimp-tool-shear
+     */
     const ICON_TOOL_SHEAR: string;
 
+    /**
+     * @default gimp-tool-smudge
+     */
     const ICON_TOOL_SMUDGE: string;
 
+    /**
+     * @default gimp-tool-text
+     */
     const ICON_TOOL_TEXT: string;
 
+    /**
+     * @default gimp-tool-threshold
+     */
     const ICON_TOOL_THRESHOLD: string;
 
+    /**
+     * @default gimp-tool-transform-3d
+     */
     const ICON_TOOL_TRANSFORM_3D: string;
 
+    /**
+     * @default gimp-tool-unified-transform
+     */
     const ICON_TOOL_UNIFIED_TRANSFORM: string;
 
+    /**
+     * @default gimp-tool-warp
+     */
     const ICON_TOOL_WARP: string;
 
+    /**
+     * @default gimp-tool-zoom
+     */
     const ICON_TOOL_ZOOM: string;
 
+    /**
+     * @default gimp-transform-3d-camera
+     */
     const ICON_TRANSFORM_3D_CAMERA: string;
 
+    /**
+     * @default gimp-transform-3d-move
+     */
     const ICON_TRANSFORM_3D_MOVE: string;
 
+    /**
+     * @default gimp-transform-3d-rotate
+     */
     const ICON_TRANSFORM_3D_ROTATE: string;
 
+    /**
+     * @default gimp-transparency
+     */
     const ICON_TRANSPARENCY: string;
 
+    /**
+     * @default gimp-video
+     */
     const ICON_VIDEO: string;
 
+    /**
+     * @default view-fullscreen
+     */
     const ICON_VIEW_FULLSCREEN: string;
 
+    /**
+     * @default view-refresh
+     */
     const ICON_VIEW_REFRESH: string;
 
+    /**
+     * @default view-shrink-wrap
+     */
     const ICON_VIEW_SHRINK_WRAP: string;
 
+    /**
+     * @default view-zoom-fill
+     */
     const ICON_VIEW_ZOOM_FILL: string;
 
+    /**
+     * @default gimp-visible
+     */
     const ICON_VISIBLE: string;
 
+    /**
+     * @default gimp-web
+     */
     const ICON_WEB: string;
 
+    /**
+     * @default gimp-wilber
+     */
     const ICON_WILBER: string;
 
+    /**
+     * @default gimp-wilber-eek
+     */
     const ICON_WILBER_EEK: string;
 
+    /**
+     * @default window-close
+     */
     const ICON_WINDOW_CLOSE: string;
 
+    /**
+     * @default gimp-move-to-screen
+     */
     const ICON_WINDOW_MOVE_TO_SCREEN: string;
 
+    /**
+     * @default window-new
+     */
     const ICON_WINDOW_NEW: string;
 
+    /**
+     * @default zoom-fit-best
+     */
     const ICON_ZOOM_FIT_BEST: string;
 
+    /**
+     * @default gimp-zoom-follow-window
+     */
     const ICON_ZOOM_FOLLOW_WINDOW: string;
 
+    /**
+     * @default zoom-in
+     */
     const ICON_ZOOM_IN: string;
 
+    /**
+     * @default zoom-original
+     */
     const ICON_ZOOM_ORIGINAL: string;
 
+    /**
+     * @default zoom-out
+     */
     const ICON_ZOOM_OUT: string;
 
     /**
@@ -2504,7 +3457,7 @@ export namespace GimpUi {
              * @signal
              * @run-last
              */
-            search: (arg0: string, arg1: number) => void;
+            search: (object: string, p0: number) => void;
             /**
              * This signal is emitted when the search operation was stopped by user input.
              * @signal
@@ -2919,7 +3872,7 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            "extended-clicked": (arg0: Gdk.ModifierType) => void;
+            "extended-clicked": (arg1: Gdk.ModifierType) => void;
             "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
             "notify::image": (pspec: GObject.ParamSpec) => void;
             "notify::image-position": (pspec: GObject.ParamSpec) => void;
@@ -3495,7 +4448,7 @@ export namespace GimpUi {
              * @signal
              * @run-last
              */
-            clicked: (arg0: string, arg1: Gdk.ModifierType) => void;
+            clicked: (object: string, p0: Gdk.ModifierType) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::override-background": (pspec: GObject.ParamSpec) => void;
@@ -4701,7 +5654,7 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            added: (arg0: ColorDisplay, arg1: number) => void;
+            added: (object: ColorDisplay, p0: number) => void;
             /**
              * @signal
              * @run-first
@@ -4711,12 +5664,12 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            removed: (arg0: ColorDisplay) => void;
+            removed: (object: ColorDisplay) => void;
             /**
              * @signal
              * @run-first
              */
-            reordered: (arg0: ColorDisplay, arg1: number) => void;
+            reordered: (object: ColorDisplay, p0: number) => void;
         }
 
         // Constructor properties interface
@@ -5743,6 +6696,7 @@ export namespace GimpUi {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -5754,6 +6708,7 @@ export namespace GimpUi {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -6036,6 +6991,7 @@ export namespace GimpUi {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -6044,6 +7000,7 @@ export namespace GimpUi {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -6059,6 +7016,7 @@ export namespace GimpUi {
          * @param file the file to select
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -6132,6 +7090,7 @@ export namespace GimpUi {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -6228,6 +7187,7 @@ export namespace GimpUi {
          * @param file the {@link Gio.File} to set as current
          * @returns Not useful.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -8862,22 +9822,22 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            "channel-changed": (arg0: ColorSelectorChannel) => void;
+            "channel-changed": (object: ColorSelectorChannel) => void;
             /**
              * @signal
              * @run-first
              */
-            "color-changed": (arg0: Gegl.Color) => void;
+            "color-changed": (object: Gegl.Color) => void;
             /**
              * @signal
              * @run-first
              */
-            "model-visible-changed": (arg0: ColorSelectorModel, arg1: boolean) => void;
+            "model-visible-changed": (object: ColorSelectorModel, p0: boolean) => void;
             /**
              * @signal
              * @run-first
              */
-            simulation: (arg0: boolean) => void;
+            simulation: (object: boolean) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -14145,7 +15105,7 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            "mnemonic-widget-changed": (arg0: Gtk.Widget) => void;
+            "mnemonic-widget-changed": (object: Gtk.Widget) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
             "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -15323,7 +16283,7 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            "offsets-changed": (arg0: number, arg1: number) => void;
+            "offsets-changed": (object: number, p0: number) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -16251,7 +17211,7 @@ export namespace GimpUi {
              * @signal
              * @run-first
              */
-            "color-picked": (arg0: Gegl.Color) => void;
+            "color-picked": (color: Gegl.Color) => void;
             "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
             "notify::image": (pspec: GObject.ParamSpec) => void;
             "notify::image-position": (pspec: GObject.ParamSpec) => void;
@@ -18180,7 +19140,7 @@ export namespace GimpUi {
              * @since 3.0
              * @run-first
              */
-            "resource-set": (arg0: GObject.Object, arg1: boolean) => void;
+            "resource-set": (resource: GObject.Object, dialog_closing: boolean) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::resource": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -21547,7 +22507,7 @@ export namespace GimpUi {
              * @signal
              * @run-last
              */
-            zoomed: (arg0: number, arg1: number) => void;
+            zoomed: (old_factor: number, new_factor: number) => void;
             "notify::fraction": (pspec: GObject.ParamSpec) => void;
             "notify::maximum": (pspec: GObject.ParamSpec) => void;
             "notify::minimum": (pspec: GObject.ParamSpec) => void;

@@ -34,14 +34,14 @@ export namespace Tracker {
      * @gir-type Enum
      */
     enum SparqlValueType {
-        UNBOUND,
-        URI,
-        STRING,
-        INTEGER,
-        DOUBLE,
-        DATETIME,
-        BLANK_NODE,
-        BOOLEAN,
+        UNBOUND = 0,
+        URI = 1,
+        STRING = 2,
+        INTEGER = 3,
+        DOUBLE = 4,
+        DATETIME = 5,
+        BLANK_NODE = 6,
+        BOOLEAN = 7,
     }
 
 
@@ -56,35 +56,62 @@ export namespace Tracker {
      * @gir-type Enum
      */
     enum SparqlBuilderState {
-        UPDATE,
-        INSERT,
-        DELETE,
-        SUBJECT,
-        PREDICATE,
-        OBJECT,
-        BLANK,
-        WHERE,
-        EMBEDDED_INSERT,
-        GRAPH,
+        UPDATE = 0,
+        INSERT = 1,
+        DELETE = 2,
+        SUBJECT = 3,
+        PREDICATE = 4,
+        OBJECT = 5,
+        BLANK = 6,
+        WHERE = 7,
+        EMBEDDED_INSERT = 8,
+        GRAPH = 9,
     }
 
 
+    /**
+     * @default org.freedesktop.Tracker1
+     */
     const DBUS_SERVICE: string;
 
+    /**
+     * @default (null)
+     */
     const DBUS_INTERFACE_RESOURCES: string;
 
+    /**
+     * @default /org/freedesktop/Tracker1/Resources
+     */
     const DBUS_OBJECT_RESOURCES: string;
 
+    /**
+     * @default (null)
+     */
     const DBUS_INTERFACE_STATISTICS: string;
 
+    /**
+     * @default /org/freedesktop/Tracker1/Statistics
+     */
     const DBUS_OBJECT_STATISTICS: string;
 
+    /**
+     * @default (null)
+     */
     const DBUS_INTERFACE_STATUS: string;
 
+    /**
+     * @default /org/freedesktop/Tracker1/Status
+     */
     const DBUS_OBJECT_STATUS: string;
 
+    /**
+     * @default (null)
+     */
     const DBUS_INTERFACE_STEROIDS: string;
 
+    /**
+     * @default /org/freedesktop/Tracker1/Steroids
+     */
     const DBUS_OBJECT_STEROIDS: string;
 
     /**
@@ -497,6 +524,7 @@ export namespace Tracker {
         /**
          * @param sparql 
          * @param cancellable 
+         * @throws GLib.Error
          */
         query(sparql: string, cancellable: Gio.Cancellable): SparqlCursor;
 
@@ -522,6 +550,7 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         query_finish(_res_: Gio.AsyncResult): SparqlCursor;
 
@@ -529,6 +558,7 @@ export namespace Tracker {
          * @param sparql 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         update(sparql: string, priority: number, cancellable: Gio.Cancellable): void;
 
@@ -557,6 +587,7 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_finish(_res_: Gio.AsyncResult): void;
 
@@ -585,6 +616,7 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_array_finish(_res_: Gio.AsyncResult): SparqlError[];
 
@@ -592,6 +624,7 @@ export namespace Tracker {
          * @param sparql 
          * @param priority 
          * @param cancellable 
+         * @throws GLib.Error
          */
         update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable): GLib.Variant;
 
@@ -620,12 +653,14 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         load(file: Gio.File, cancellable: Gio.Cancellable): void;
 
@@ -651,11 +686,13 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         load_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         statistics(cancellable: Gio.Cancellable): SparqlCursor;
 
@@ -678,6 +715,7 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         statistics_finish(_res_: Gio.AsyncResult): SparqlCursor;
     }
@@ -840,6 +878,7 @@ export namespace Tracker {
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         next(cancellable: Gio.Cancellable): boolean;
 
@@ -862,6 +901,7 @@ export namespace Tracker {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         next_finish(_res_: Gio.AsyncResult): boolean;
 

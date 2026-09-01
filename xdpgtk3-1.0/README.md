@@ -4,82 +4,77 @@
 ![version](https://img.shields.io/npm/v/@girs/xdpgtk3-1.0)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/xdpgtk3-1.0)
 
+GJS TypeScript type definitions for XdpGtk3-1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for XdpGtk3-1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/xdpgtk3-1.0
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/xdpgtk3-1.0` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/xdpgtk3-1.0/ambient` | only the `gi://` module declarations |
+| `@girs/xdpgtk3-1.0/import` | only the `imports.gi` declarations |
+| `@girs/xdpgtk3-1.0/xdpgtk3-1.0` | the namespace, without the side-effecting declarations |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import XdpGtk3 from '@girs/xdpgtk3-1.0';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/xdpgtk3-1.0` or `@girs/xdpgtk3-1.0/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/xdpgtk3-1.0'
+import '@girs/xdpgtk3-1.0';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/xdpgtk3-1.0"],
-  ...
-}
+{ "include": ["@girs/xdpgtk3-1.0"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import XdpGtk3 from 'gi://XdpGtk3?version=1.0';
 ```
 
-### Global import
+Referencing `@girs/xdpgtk3-1.0/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/xdpgtk3-1.0` or `@girs/xdpgtk3-1.0/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/xdpgtk3-1.0'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/xdpgtk3-1.0"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/xdpgtk3-1.0/import`:
 
 ```ts
 const XdpGtk3 = imports.gi.XdpGtk3;
 ```
 
-### Bundle
+## Building
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

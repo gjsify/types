@@ -34,10 +34,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum BearerAccessTypePreference {
-        NONE,
-        "3GPP_ONLY",
-        "3GPP_PREFERRED",
-        NON_3GPP_ONLY,
+        NONE = 0,
+        "3GPP_ONLY" = 1,
+        "3GPP_PREFERRED" = 2,
+        NON_3GPP_ONLY = 3,
     }
 
 
@@ -52,10 +52,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum BearerIpMethod {
-        UNKNOWN,
-        PPP,
-        STATIC,
-        DHCP,
+        UNKNOWN = 0,
+        PPP = 1,
+        STATIC = 2,
+        DHCP = 3,
     }
 
 
@@ -70,10 +70,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum BearerMultiplexSupport {
-        UNKNOWN,
-        NONE,
-        REQUESTED,
-        REQUIRED,
+        UNKNOWN = 0,
+        NONE = 1,
+        REQUESTED = 2,
+        REQUIRED = 3,
     }
 
 
@@ -88,12 +88,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum BearerProfileSource {
-        UNKNOWN,
-        ADMIN,
-        USER,
-        OPERATOR,
-        MODEM,
-        DEVICE,
+        UNKNOWN = 0,
+        ADMIN = 1,
+        USER = 2,
+        OPERATOR = 3,
+        MODEM = 4,
+        DEVICE = 5,
     }
 
 
@@ -108,10 +108,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum BearerType {
-        UNKNOWN,
-        DEFAULT,
-        DEFAULT_ATTACH,
-        DEDICATED,
+        UNKNOWN = 0,
+        DEFAULT = 1,
+        DEFAULT_ATTACH = 2,
+        DEDICATED = 3,
     }
 
 
@@ -126,9 +126,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum CallDirection {
-        UNKNOWN,
-        INCOMING,
-        OUTGOING,
+        UNKNOWN = 0,
+        INCOMING = 1,
+        OUTGOING = 2,
     }
 
 
@@ -143,14 +143,14 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum CallState {
-        UNKNOWN,
-        DIALING,
-        RINGING_OUT,
-        RINGING_IN,
-        ACTIVE,
-        HELD,
-        WAITING,
-        TERMINATED,
+        UNKNOWN = 0,
+        DIALING = 1,
+        RINGING_OUT = 2,
+        RINGING_IN = 3,
+        ACTIVE = 4,
+        HELD = 5,
+        WAITING = 6,
+        TERMINATED = 7,
     }
 
 
@@ -165,16 +165,16 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum CallStateReason {
-        UNKNOWN,
-        OUTGOING_STARTED,
-        INCOMING_NEW,
-        ACCEPTED,
-        TERMINATED,
-        REFUSED_OR_BUSY,
-        ERROR,
-        AUDIO_SETUP_FAILED,
-        TRANSFERRED,
-        DEFLECTED,
+        UNKNOWN = 0,
+        OUTGOING_STARTED = 1,
+        INCOMING_NEW = 2,
+        ACCEPTED = 3,
+        TERMINATED = 4,
+        REFUSED_OR_BUSY = 5,
+        ERROR = 6,
+        AUDIO_SETUP_FAILED = 7,
+        TRANSFERRED = 8,
+        DEFLECTED = 9,
     }
 
 
@@ -220,9 +220,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum CbmState {
-        UNKNOWN,
-        RECEIVING,
-        RECEIVED,
+        UNKNOWN = 0,
+        RECEIVING = 1,
+        RECEIVED = 2,
     }
 
 
@@ -272,13 +272,13 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum CellType {
-        UNKNOWN,
-        CDMA,
-        GSM,
-        UMTS,
-        TDSCDMA,
-        LTE,
-        "5GNR",
+        UNKNOWN = 0,
+        CDMA = 1,
+        GSM = 2,
+        UMTS = 3,
+        TDSCDMA = 4,
+        LTE = 5,
+        "5GNR" = 6,
     }
 
 
@@ -371,9 +371,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum FirmwareImageType {
-        UNKNOWN,
-        GENERIC,
-        GOBI,
+        UNKNOWN = 0,
+        GENERIC = 1,
+        GOBI = 2,
     }
 
 
@@ -811,11 +811,11 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppEpsUeModeOperation {
-        UNKNOWN,
-        PS_1,
-        PS_2,
-        CSPS_1,
-        CSPS_2,
+        UNKNOWN = 0,
+        PS_1 = 1,
+        PS_2 = 2,
+        CSPS_1 = 3,
+        CSPS_2 = 4,
     }
 
 
@@ -830,10 +830,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppMicoMode {
-        UNKNOWN,
-        UNSUPPORTED,
-        DISABLED,
-        ENABLED,
+        UNKNOWN = 0,
+        UNSUPPORTED = 1,
+        DISABLED = 2,
+        ENABLED = 3,
     }
 
 
@@ -848,10 +848,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppNetworkAvailability {
-        UNKNOWN,
-        AVAILABLE,
-        CURRENT,
-        FORBIDDEN,
+        UNKNOWN = 0,
+        AVAILABLE = 1,
+        CURRENT = 2,
+        FORBIDDEN = 3,
     }
 
 
@@ -866,9 +866,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppPacketServiceState {
-        UNKNOWN,
-        DETACHED,
-        ATTACHED,
+        UNKNOWN = 0,
+        DETACHED = 1,
+        ATTACHED = 2,
     }
 
 
@@ -883,18 +883,18 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppRegistrationState {
-        IDLE,
-        HOME,
-        SEARCHING,
-        DENIED,
-        UNKNOWN,
-        ROAMING,
-        HOME_SMS_ONLY,
-        ROAMING_SMS_ONLY,
-        EMERGENCY_ONLY,
-        HOME_CSFB_NOT_PREFERRED,
-        ROAMING_CSFB_NOT_PREFERRED,
-        ATTACHED_RLOS,
+        IDLE = 0,
+        HOME = 1,
+        SEARCHING = 2,
+        DENIED = 3,
+        UNKNOWN = 4,
+        ROAMING = 5,
+        HOME_SMS_ONLY = 6,
+        ROAMING_SMS_ONLY = 7,
+        EMERGENCY_ONLY = 8,
+        HOME_CSFB_NOT_PREFERRED = 9,
+        ROAMING_CSFB_NOT_PREFERRED = 10,
+        ATTACHED_RLOS = 11,
     }
 
 
@@ -909,10 +909,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppSubscriptionState {
-        UNKNOWN,
-        UNPROVISIONED,
-        PROVISIONED,
-        OUT_OF_DATA,
+        UNKNOWN = 0,
+        UNPROVISIONED = 1,
+        PROVISIONED = 2,
+        OUT_OF_DATA = 3,
     }
 
 
@@ -927,10 +927,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum Modem3gppUssdSessionState {
-        UNKNOWN,
-        IDLE,
-        ACTIVE,
-        USER_RESPONSE,
+        UNKNOWN = 0,
+        IDLE = 1,
+        ACTIVE = 2,
+        USER_RESPONSE = 3,
     }
 
 
@@ -945,183 +945,183 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemBand {
-        UNKNOWN,
-        EGSM,
-        DCS,
-        PCS,
-        G850,
-        UTRAN_1,
-        UTRAN_3,
-        UTRAN_4,
-        UTRAN_6,
-        UTRAN_5,
-        UTRAN_8,
-        UTRAN_9,
-        UTRAN_2,
-        UTRAN_7,
-        G450,
-        G480,
-        G750,
-        G380,
-        G410,
-        G710,
-        G810,
-        EUTRAN_1,
-        EUTRAN_2,
-        EUTRAN_3,
-        EUTRAN_4,
-        EUTRAN_5,
-        EUTRAN_6,
-        EUTRAN_7,
-        EUTRAN_8,
-        EUTRAN_9,
-        EUTRAN_10,
-        EUTRAN_11,
-        EUTRAN_12,
-        EUTRAN_13,
-        EUTRAN_14,
-        EUTRAN_17,
-        EUTRAN_18,
-        EUTRAN_19,
-        EUTRAN_20,
-        EUTRAN_21,
-        EUTRAN_22,
-        EUTRAN_23,
-        EUTRAN_24,
-        EUTRAN_25,
-        EUTRAN_26,
-        EUTRAN_27,
-        EUTRAN_28,
-        EUTRAN_29,
-        EUTRAN_30,
-        EUTRAN_31,
-        EUTRAN_32,
-        EUTRAN_33,
-        EUTRAN_34,
-        EUTRAN_35,
-        EUTRAN_36,
-        EUTRAN_37,
-        EUTRAN_38,
-        EUTRAN_39,
-        EUTRAN_40,
-        EUTRAN_41,
-        EUTRAN_42,
-        EUTRAN_43,
-        EUTRAN_44,
-        EUTRAN_45,
-        EUTRAN_46,
-        EUTRAN_47,
-        EUTRAN_48,
-        EUTRAN_49,
-        EUTRAN_50,
-        EUTRAN_51,
-        EUTRAN_52,
-        EUTRAN_53,
-        EUTRAN_54,
-        EUTRAN_55,
-        EUTRAN_56,
-        EUTRAN_57,
-        EUTRAN_58,
-        EUTRAN_59,
-        EUTRAN_60,
-        EUTRAN_61,
-        EUTRAN_62,
-        EUTRAN_63,
-        EUTRAN_64,
-        EUTRAN_65,
-        EUTRAN_66,
-        EUTRAN_67,
-        EUTRAN_68,
-        EUTRAN_69,
-        EUTRAN_70,
-        EUTRAN_71,
-        EUTRAN_85,
-        CDMA_BC0,
-        CDMA_BC1,
-        CDMA_BC2,
-        CDMA_BC3,
-        CDMA_BC4,
-        CDMA_BC5,
-        CDMA_BC6,
-        CDMA_BC7,
-        CDMA_BC8,
-        CDMA_BC9,
-        CDMA_BC10,
-        CDMA_BC11,
-        CDMA_BC12,
-        CDMA_BC13,
-        CDMA_BC14,
-        CDMA_BC15,
-        CDMA_BC16,
-        CDMA_BC17,
-        CDMA_BC18,
-        CDMA_BC19,
-        UTRAN_10,
-        UTRAN_11,
-        UTRAN_12,
-        UTRAN_13,
-        UTRAN_14,
-        UTRAN_19,
-        UTRAN_20,
-        UTRAN_21,
-        UTRAN_22,
-        UTRAN_25,
-        UTRAN_26,
-        UTRAN_32,
-        ANY,
-        NGRAN_1,
-        NGRAN_2,
-        NGRAN_3,
-        NGRAN_5,
-        NGRAN_7,
-        NGRAN_8,
-        NGRAN_12,
-        NGRAN_13,
-        NGRAN_14,
-        NGRAN_18,
-        NGRAN_20,
-        NGRAN_25,
-        NGRAN_26,
-        NGRAN_28,
-        NGRAN_29,
-        NGRAN_30,
-        NGRAN_34,
-        NGRAN_38,
-        NGRAN_39,
-        NGRAN_40,
-        NGRAN_41,
-        NGRAN_48,
-        NGRAN_50,
-        NGRAN_51,
-        NGRAN_53,
-        NGRAN_65,
-        NGRAN_66,
-        NGRAN_67,
-        NGRAN_70,
-        NGRAN_71,
-        NGRAN_74,
-        NGRAN_75,
-        NGRAN_76,
-        NGRAN_77,
-        NGRAN_78,
-        NGRAN_79,
-        NGRAN_80,
-        NGRAN_81,
-        NGRAN_82,
-        NGRAN_83,
-        NGRAN_84,
-        NGRAN_86,
-        NGRAN_89,
-        NGRAN_90,
-        NGRAN_91,
-        NGRAN_92,
-        NGRAN_93,
-        NGRAN_94,
-        NGRAN_95,
-        NGRAN_257,
-        NGRAN_258,
-        NGRAN_260,
-        NGRAN_261,
+        UNKNOWN = 0,
+        EGSM = 1,
+        DCS = 2,
+        PCS = 3,
+        G850 = 4,
+        UTRAN_1 = 5,
+        UTRAN_3 = 6,
+        UTRAN_4 = 7,
+        UTRAN_6 = 8,
+        UTRAN_5 = 9,
+        UTRAN_8 = 10,
+        UTRAN_9 = 11,
+        UTRAN_2 = 12,
+        UTRAN_7 = 13,
+        G450 = 14,
+        G480 = 15,
+        G750 = 16,
+        G380 = 17,
+        G410 = 18,
+        G710 = 19,
+        G810 = 20,
+        EUTRAN_1 = 31,
+        EUTRAN_2 = 32,
+        EUTRAN_3 = 33,
+        EUTRAN_4 = 34,
+        EUTRAN_5 = 35,
+        EUTRAN_6 = 36,
+        EUTRAN_7 = 37,
+        EUTRAN_8 = 38,
+        EUTRAN_9 = 39,
+        EUTRAN_10 = 40,
+        EUTRAN_11 = 41,
+        EUTRAN_12 = 42,
+        EUTRAN_13 = 43,
+        EUTRAN_14 = 44,
+        EUTRAN_17 = 47,
+        EUTRAN_18 = 48,
+        EUTRAN_19 = 49,
+        EUTRAN_20 = 50,
+        EUTRAN_21 = 51,
+        EUTRAN_22 = 52,
+        EUTRAN_23 = 53,
+        EUTRAN_24 = 54,
+        EUTRAN_25 = 55,
+        EUTRAN_26 = 56,
+        EUTRAN_27 = 57,
+        EUTRAN_28 = 58,
+        EUTRAN_29 = 59,
+        EUTRAN_30 = 60,
+        EUTRAN_31 = 61,
+        EUTRAN_32 = 62,
+        EUTRAN_33 = 63,
+        EUTRAN_34 = 64,
+        EUTRAN_35 = 65,
+        EUTRAN_36 = 66,
+        EUTRAN_37 = 67,
+        EUTRAN_38 = 68,
+        EUTRAN_39 = 69,
+        EUTRAN_40 = 70,
+        EUTRAN_41 = 71,
+        EUTRAN_42 = 72,
+        EUTRAN_43 = 73,
+        EUTRAN_44 = 74,
+        EUTRAN_45 = 75,
+        EUTRAN_46 = 76,
+        EUTRAN_47 = 77,
+        EUTRAN_48 = 78,
+        EUTRAN_49 = 79,
+        EUTRAN_50 = 80,
+        EUTRAN_51 = 81,
+        EUTRAN_52 = 82,
+        EUTRAN_53 = 83,
+        EUTRAN_54 = 84,
+        EUTRAN_55 = 85,
+        EUTRAN_56 = 86,
+        EUTRAN_57 = 87,
+        EUTRAN_58 = 88,
+        EUTRAN_59 = 89,
+        EUTRAN_60 = 90,
+        EUTRAN_61 = 91,
+        EUTRAN_62 = 92,
+        EUTRAN_63 = 93,
+        EUTRAN_64 = 94,
+        EUTRAN_65 = 95,
+        EUTRAN_66 = 96,
+        EUTRAN_67 = 97,
+        EUTRAN_68 = 98,
+        EUTRAN_69 = 99,
+        EUTRAN_70 = 100,
+        EUTRAN_71 = 101,
+        EUTRAN_85 = 115,
+        CDMA_BC0 = 128,
+        CDMA_BC1 = 129,
+        CDMA_BC2 = 130,
+        CDMA_BC3 = 131,
+        CDMA_BC4 = 132,
+        CDMA_BC5 = 134,
+        CDMA_BC6 = 135,
+        CDMA_BC7 = 136,
+        CDMA_BC8 = 137,
+        CDMA_BC9 = 138,
+        CDMA_BC10 = 139,
+        CDMA_BC11 = 140,
+        CDMA_BC12 = 141,
+        CDMA_BC13 = 142,
+        CDMA_BC14 = 143,
+        CDMA_BC15 = 144,
+        CDMA_BC16 = 145,
+        CDMA_BC17 = 146,
+        CDMA_BC18 = 147,
+        CDMA_BC19 = 148,
+        UTRAN_10 = 210,
+        UTRAN_11 = 211,
+        UTRAN_12 = 212,
+        UTRAN_13 = 213,
+        UTRAN_14 = 214,
+        UTRAN_19 = 219,
+        UTRAN_20 = 220,
+        UTRAN_21 = 221,
+        UTRAN_22 = 222,
+        UTRAN_25 = 225,
+        UTRAN_26 = 226,
+        UTRAN_32 = 232,
+        ANY = 256,
+        NGRAN_1 = 301,
+        NGRAN_2 = 302,
+        NGRAN_3 = 303,
+        NGRAN_5 = 305,
+        NGRAN_7 = 307,
+        NGRAN_8 = 308,
+        NGRAN_12 = 312,
+        NGRAN_13 = 313,
+        NGRAN_14 = 314,
+        NGRAN_18 = 318,
+        NGRAN_20 = 320,
+        NGRAN_25 = 325,
+        NGRAN_26 = 326,
+        NGRAN_28 = 328,
+        NGRAN_29 = 329,
+        NGRAN_30 = 330,
+        NGRAN_34 = 334,
+        NGRAN_38 = 338,
+        NGRAN_39 = 339,
+        NGRAN_40 = 340,
+        NGRAN_41 = 341,
+        NGRAN_48 = 348,
+        NGRAN_50 = 350,
+        NGRAN_51 = 351,
+        NGRAN_53 = 353,
+        NGRAN_65 = 365,
+        NGRAN_66 = 366,
+        NGRAN_67 = 367,
+        NGRAN_70 = 370,
+        NGRAN_71 = 371,
+        NGRAN_74 = 374,
+        NGRAN_75 = 375,
+        NGRAN_76 = 376,
+        NGRAN_77 = 377,
+        NGRAN_78 = 378,
+        NGRAN_79 = 379,
+        NGRAN_80 = 380,
+        NGRAN_81 = 381,
+        NGRAN_82 = 382,
+        NGRAN_83 = 383,
+        NGRAN_84 = 384,
+        NGRAN_86 = 386,
+        NGRAN_89 = 389,
+        NGRAN_90 = 390,
+        NGRAN_91 = 391,
+        NGRAN_92 = 392,
+        NGRAN_93 = 393,
+        NGRAN_94 = 394,
+        NGRAN_95 = 395,
+        NGRAN_257 = 557,
+        NGRAN_258 = 558,
+        NGRAN_260 = 560,
+        NGRAN_261 = 561,
     }
 
 
@@ -1136,11 +1136,11 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemCdmaActivationState {
-        UNKNOWN,
-        NOT_ACTIVATED,
-        ACTIVATING,
-        PARTIALLY_ACTIVATED,
-        ACTIVATED,
+        UNKNOWN = 0,
+        NOT_ACTIVATED = 1,
+        ACTIVATING = 2,
+        PARTIALLY_ACTIVATED = 3,
+        ACTIVATED = 4,
     }
 
 
@@ -1155,10 +1155,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemCdmaRegistrationState {
-        UNKNOWN,
-        REGISTERED,
-        HOME,
-        ROAMING,
+        UNKNOWN = 0,
+        REGISTERED = 1,
+        HOME = 2,
+        ROAMING = 3,
     }
 
 
@@ -1173,12 +1173,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemCdmaRmProtocol {
-        UNKNOWN,
-        ASYNC,
-        PACKET_RELAY,
-        PACKET_NETWORK_PPP,
-        PACKET_NETWORK_SLIP,
-        STU_III,
+        UNKNOWN = 0,
+        ASYNC = 1,
+        PACKET_RELAY = 2,
+        PACKET_NETWORK_PPP = 3,
+        PACKET_NETWORK_SLIP = 4,
+        STU_III = 5,
     }
 
 
@@ -1193,10 +1193,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemContactsStorage {
-        UNKNOWN,
-        ME,
-        SM,
-        MT,
+        UNKNOWN = 0,
+        ME = 1,
+        SM = 2,
+        MT = 3,
     }
 
 
@@ -1211,23 +1211,23 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemLock {
-        UNKNOWN,
-        NONE,
-        SIM_PIN,
-        SIM_PIN2,
-        SIM_PUK,
-        SIM_PUK2,
-        PH_SP_PIN,
-        PH_SP_PUK,
-        PH_NET_PIN,
-        PH_NET_PUK,
-        PH_SIM_PIN,
-        PH_CORP_PIN,
-        PH_CORP_PUK,
-        PH_FSIM_PIN,
-        PH_FSIM_PUK,
-        PH_NETSUB_PIN,
-        PH_NETSUB_PUK,
+        UNKNOWN = 0,
+        NONE = 1,
+        SIM_PIN = 2,
+        SIM_PIN2 = 3,
+        SIM_PUK = 4,
+        SIM_PUK2 = 5,
+        PH_SP_PIN = 6,
+        PH_SP_PUK = 7,
+        PH_NET_PIN = 8,
+        PH_NET_PUK = 9,
+        PH_SIM_PIN = 10,
+        PH_CORP_PIN = 11,
+        PH_CORP_PUK = 12,
+        PH_FSIM_PIN = 13,
+        PH_FSIM_PUK = 14,
+        PH_NETSUB_PIN = 15,
+        PH_NETSUB_PUK = 16,
     }
 
 
@@ -1242,16 +1242,16 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemPortType {
-        UNKNOWN,
-        NET,
-        AT,
-        QCDM,
-        GPS,
-        QMI,
-        MBIM,
-        AUDIO,
-        IGNORED,
-        XMMRPC,
+        UNKNOWN = 1,
+        NET = 2,
+        AT = 3,
+        QCDM = 4,
+        GPS = 5,
+        QMI = 6,
+        MBIM = 7,
+        AUDIO = 8,
+        IGNORED = 9,
+        XMMRPC = 10,
     }
 
 
@@ -1266,10 +1266,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemPowerState {
-        UNKNOWN,
-        OFF,
-        LOW,
-        ON,
+        UNKNOWN = 0,
+        OFF = 1,
+        LOW = 2,
+        ON = 3,
     }
 
 
@@ -1284,19 +1284,19 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemState {
-        FAILED,
-        UNKNOWN,
-        INITIALIZING,
-        LOCKED,
-        DISABLED,
-        DISABLING,
-        ENABLING,
-        ENABLED,
-        SEARCHING,
-        REGISTERED,
-        DISCONNECTING,
-        CONNECTING,
-        CONNECTED,
+        FAILED = -1,
+        UNKNOWN = 0,
+        INITIALIZING = 1,
+        LOCKED = 2,
+        DISABLED = 3,
+        DISABLING = 4,
+        ENABLING = 5,
+        ENABLED = 6,
+        SEARCHING = 7,
+        REGISTERED = 8,
+        DISCONNECTING = 9,
+        CONNECTING = 10,
+        CONNECTED = 11,
     }
 
 
@@ -1311,10 +1311,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemStateChangeReason {
-        UNKNOWN,
-        USER_REQUESTED,
-        SUSPEND,
-        FAILURE,
+        UNKNOWN = 0,
+        USER_REQUESTED = 1,
+        SUSPEND = 2,
+        FAILURE = 3,
     }
 
 
@@ -1329,12 +1329,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ModemStateFailedReason {
-        NONE,
-        UNKNOWN,
-        SIM_MISSING,
-        SIM_ERROR,
-        UNKNOWN_CAPABILITIES,
-        ESIM_WITHOUT_PROFILES,
+        NONE = 0,
+        UNKNOWN = 1,
+        SIM_MISSING = 2,
+        SIM_ERROR = 3,
+        UNKNOWN_CAPABILITIES = 4,
+        ESIM_WITHOUT_PROFILES = 5,
     }
 
 
@@ -1349,79 +1349,79 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum NetworkError {
-        NONE,
-        IMSI_UNKNOWN_IN_HLR,
-        ILLEGAL_MS,
-        IMSI_UNKNOWN_IN_VLR,
-        IMEI_NOT_ACCEPTED,
-        ILLEGAL_ME,
-        GPRS_NOT_ALLOWED,
-        GPRS_AND_NON_GPRS_NOT_ALLOWED,
-        MS_IDENTITY_NOT_DERIVED_BY_NETWORK,
-        IMPLICITLY_DETACHED,
-        PLMN_NOT_ALLOWED,
-        LOCATION_AREA_NOT_ALLOWED,
-        ROAMING_NOT_ALLOWED_IN_LOCATION_AREA,
-        GPRS_NOT_ALLOWED_IN_PLMN,
-        NO_CELLS_IN_LOCATION_AREA,
-        MSC_TEMPORARILY_NOT_REACHABLE,
-        NETWORK_FAILURE,
-        CS_DOMAIN_NOT_AVAILABLE,
-        ESM_FAILURE,
-        MAC_FAILURE,
-        SYNCH_FAILURE,
-        CONGESTION,
-        GSM_AUTHENTICATION_UNACCEPTABLE,
-        NOT_AUTHORIZED_FOR_CSG,
-        INSUFFICIENT_RESOURCES,
-        MISSING_OR_UNKNOWN_APN,
-        UNKNOWN_PDP_ADDRESS_OR_TYPE,
-        USER_AUTHENTICATION_FAILED,
-        ACTIVATION_REJECTED_BY_GGSN_OR_GW,
-        REDIRECTION_TO_5GCN_REQUIRED,
-        SERVICE_OPTION_NOT_SUPPORTED,
-        REQUESTED_SERVICE_OPTION_NOT_SUBSCRIBED,
-        SERVICE_OPTION_TEMPORARILY_OUT_OF_ORDER,
-        REQUESTED_SERVICE_OPTION_NOT_AUTHORIZED,
-        CALL_CANNOT_BE_IDENTIFIED,
-        CS_SERVICE_TEMPORARILY_NOT_AVAILABLE,
-        NO_PDP_CONTEXT_ACTIVATED,
-        SEMANTIC_ERROR_IN_THE_TFT_OPERATION,
-        SYNTACTICAL_ERROR_IN_THE_TFT_OPERATION,
-        UNKNOWN_PDP_CONTEXT,
-        SEMANTIC_ERRORS_IN_PACKET_FILTER,
-        SYNTACTICAL_ERRORS_IN_PACKET_FILTER,
-        PDP_CONTEXT_WITHOUT_TFT_ALREADY_ACTIVATED,
-        REQUEST_REJECTED_OR_BEARER_CONTROL_MODE_VIOLATION,
-        LAST_PDN_DISCONNECTION_NOT_ALLOWED,
-        PDP_TYPE_IPV4_ONLY_ALLOWED,
-        PDP_TYPE_IPV6_ONLY_ALLOWED,
-        NO_NETWORK_SLICES_AVAILABLE,
-        MAXIMUM_NUMBER_OF_PDP_CONTEXTS_REACHED,
-        REQUESTED_APN_NOT_SUPPORTED_IN_CURRENT_RAT_AND_PLMN,
-        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE_AND_DNN,
-        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE,
-        NGKSI_ALREADY_IN_USE,
-        NON_3GPP_ACCESS_TO_5GCN_NOT_ALLOWED,
-        SERVING_NETWORK_NOT_AUTHORIZED,
-        TEMPORARILY_NOT_AUTHORIZED_FOR_THIS_SNPN,
-        PERMANENTLY_NOT_AUTHORIZED_FOR_THIS_SNPN,
-        NOT_AUTHORIZED_FOR_THIS_CAG_OR_AUTHORIZED_FOR_CAG_CELLS_ONLY,
-        WIRELINE_ACCESS_AREA_NOT_ALLOWED,
-        PAYLOAD_WAS_NOT_FORWARDED,
-        DNN_NOT_SUPPORTED_OR_NOT_SUBSCRIBED_IN_THE_SLICE,
-        INSUFFICIENT_USER_PLANE_RESOURCES_FOR_THE_PDU_SESSION,
-        SEMANTICALLY_INCORRECT_MESSAGE,
-        INVALID_MANDATORY_INFORMATION,
-        MESSAGE_TYPE_NON_EXISTENT_OR_NOT_IMPLEMENTED,
-        MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE,
-        INFORMATION_ELEMENT_NON_EXISTENT_OR_NOT_IMPLEMENTED,
-        CONDITIONAL_IE_ERROR,
-        MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE,
-        PROTOCOL_ERROR_UNSPECIFIED,
-        APN_RESTRICTION_VALUE_INCOMPATIBLE_WITH_ACTIVE_PDP_CONTEXT,
-        MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED,
-        UNKNOWN,
+        NONE = 0,
+        IMSI_UNKNOWN_IN_HLR = 2,
+        ILLEGAL_MS = 3,
+        IMSI_UNKNOWN_IN_VLR = 4,
+        IMEI_NOT_ACCEPTED = 5,
+        ILLEGAL_ME = 6,
+        GPRS_NOT_ALLOWED = 7,
+        GPRS_AND_NON_GPRS_NOT_ALLOWED = 8,
+        MS_IDENTITY_NOT_DERIVED_BY_NETWORK = 9,
+        IMPLICITLY_DETACHED = 10,
+        PLMN_NOT_ALLOWED = 11,
+        LOCATION_AREA_NOT_ALLOWED = 12,
+        ROAMING_NOT_ALLOWED_IN_LOCATION_AREA = 13,
+        GPRS_NOT_ALLOWED_IN_PLMN = 14,
+        NO_CELLS_IN_LOCATION_AREA = 15,
+        MSC_TEMPORARILY_NOT_REACHABLE = 16,
+        NETWORK_FAILURE = 17,
+        CS_DOMAIN_NOT_AVAILABLE = 18,
+        ESM_FAILURE = 19,
+        MAC_FAILURE = 20,
+        SYNCH_FAILURE = 21,
+        CONGESTION = 22,
+        GSM_AUTHENTICATION_UNACCEPTABLE = 23,
+        NOT_AUTHORIZED_FOR_CSG = 25,
+        INSUFFICIENT_RESOURCES = 26,
+        MISSING_OR_UNKNOWN_APN = 27,
+        UNKNOWN_PDP_ADDRESS_OR_TYPE = 28,
+        USER_AUTHENTICATION_FAILED = 29,
+        ACTIVATION_REJECTED_BY_GGSN_OR_GW = 30,
+        REDIRECTION_TO_5GCN_REQUIRED = 31,
+        SERVICE_OPTION_NOT_SUPPORTED = 32,
+        REQUESTED_SERVICE_OPTION_NOT_SUBSCRIBED = 33,
+        SERVICE_OPTION_TEMPORARILY_OUT_OF_ORDER = 34,
+        REQUESTED_SERVICE_OPTION_NOT_AUTHORIZED = 35,
+        CALL_CANNOT_BE_IDENTIFIED = 38,
+        CS_SERVICE_TEMPORARILY_NOT_AVAILABLE = 39,
+        NO_PDP_CONTEXT_ACTIVATED = 40,
+        SEMANTIC_ERROR_IN_THE_TFT_OPERATION = 41,
+        SYNTACTICAL_ERROR_IN_THE_TFT_OPERATION = 42,
+        UNKNOWN_PDP_CONTEXT = 43,
+        SEMANTIC_ERRORS_IN_PACKET_FILTER = 44,
+        SYNTACTICAL_ERRORS_IN_PACKET_FILTER = 45,
+        PDP_CONTEXT_WITHOUT_TFT_ALREADY_ACTIVATED = 46,
+        REQUEST_REJECTED_OR_BEARER_CONTROL_MODE_VIOLATION = 48,
+        LAST_PDN_DISCONNECTION_NOT_ALLOWED = 49,
+        PDP_TYPE_IPV4_ONLY_ALLOWED = 50,
+        PDP_TYPE_IPV6_ONLY_ALLOWED = 51,
+        NO_NETWORK_SLICES_AVAILABLE = 62,
+        MAXIMUM_NUMBER_OF_PDP_CONTEXTS_REACHED = 65,
+        REQUESTED_APN_NOT_SUPPORTED_IN_CURRENT_RAT_AND_PLMN = 66,
+        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE_AND_DNN = 67,
+        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE = 69,
+        NGKSI_ALREADY_IN_USE = 71,
+        NON_3GPP_ACCESS_TO_5GCN_NOT_ALLOWED = 72,
+        SERVING_NETWORK_NOT_AUTHORIZED = 73,
+        TEMPORARILY_NOT_AUTHORIZED_FOR_THIS_SNPN = 74,
+        PERMANENTLY_NOT_AUTHORIZED_FOR_THIS_SNPN = 75,
+        NOT_AUTHORIZED_FOR_THIS_CAG_OR_AUTHORIZED_FOR_CAG_CELLS_ONLY = 76,
+        WIRELINE_ACCESS_AREA_NOT_ALLOWED = 77,
+        PAYLOAD_WAS_NOT_FORWARDED = 90,
+        DNN_NOT_SUPPORTED_OR_NOT_SUBSCRIBED_IN_THE_SLICE = 91,
+        INSUFFICIENT_USER_PLANE_RESOURCES_FOR_THE_PDU_SESSION = 92,
+        SEMANTICALLY_INCORRECT_MESSAGE = 95,
+        INVALID_MANDATORY_INFORMATION = 96,
+        MESSAGE_TYPE_NON_EXISTENT_OR_NOT_IMPLEMENTED = 97,
+        MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE = 98,
+        INFORMATION_ELEMENT_NON_EXISTENT_OR_NOT_IMPLEMENTED = 99,
+        CONDITIONAL_IE_ERROR = 100,
+        MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE = 101,
+        PROTOCOL_ERROR_UNSPECIFIED = 111,
+        APN_RESTRICTION_VALUE_INCOMPATIBLE_WITH_ACTIVE_PDP_CONTEXT = 112,
+        MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED = 113,
+        UNKNOWN = 114,
     }
 
 
@@ -1436,18 +1436,18 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum OmaSessionState {
-        FAILED,
-        UNKNOWN,
-        STARTED,
-        RETRYING,
-        CONNECTING,
-        CONNECTED,
-        AUTHENTICATED,
-        MDN_DOWNLOADED,
-        MSID_DOWNLOADED,
-        PRL_DOWNLOADED,
-        MIP_PROFILE_DOWNLOADED,
-        COMPLETED,
+        FAILED = -1,
+        UNKNOWN = 0,
+        STARTED = 1,
+        RETRYING = 2,
+        CONNECTING = 3,
+        CONNECTED = 4,
+        AUTHENTICATED = 5,
+        MDN_DOWNLOADED = 10,
+        MSID_DOWNLOADED = 11,
+        PRL_DOWNLOADED = 12,
+        MIP_PROFILE_DOWNLOADED = 13,
+        COMPLETED = 20,
     }
 
 
@@ -1462,12 +1462,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum OmaSessionStateFailedReason {
-        UNKNOWN,
-        NETWORK_UNAVAILABLE,
-        SERVER_UNAVAILABLE,
-        AUTHENTICATION_FAILED,
-        MAX_RETRY_EXCEEDED,
-        SESSION_CANCELLED,
+        UNKNOWN = 0,
+        NETWORK_UNAVAILABLE = 1,
+        SERVER_UNAVAILABLE = 2,
+        AUTHENTICATION_FAILED = 3,
+        MAX_RETRY_EXCEEDED = 4,
+        SESSION_CANCELLED = 5,
     }
 
 
@@ -1482,14 +1482,14 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum OmaSessionType {
-        UNKNOWN,
-        CLIENT_INITIATED_DEVICE_CONFIGURE,
-        CLIENT_INITIATED_PRL_UPDATE,
-        CLIENT_INITIATED_HANDS_FREE_ACTIVATION,
-        NETWORK_INITIATED_DEVICE_CONFIGURE,
-        NETWORK_INITIATED_PRL_UPDATE,
-        DEVICE_INITIATED_PRL_UPDATE,
-        DEVICE_INITIATED_HANDS_FREE_ACTIVATION,
+        UNKNOWN = 0,
+        CLIENT_INITIATED_DEVICE_CONFIGURE = 10,
+        CLIENT_INITIATED_PRL_UPDATE = 11,
+        CLIENT_INITIATED_HANDS_FREE_ACTIVATION = 12,
+        NETWORK_INITIATED_DEVICE_CONFIGURE = 20,
+        NETWORK_INITIATED_PRL_UPDATE = 21,
+        DEVICE_INITIATED_PRL_UPDATE = 30,
+        DEVICE_INITIATED_HANDS_FREE_ACTIVATION = 31,
     }
 
 
@@ -1537,12 +1537,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum ServingCellType {
-        UNKNOWN,
-        PCELL,
-        SCELL,
-        PSCELL,
-        SSCELL,
-        INVALID,
+        UNKNOWN = 0,
+        PCELL = 1,
+        SCELL = 2,
+        PSCELL = 3,
+        SSCELL = 4,
+        INVALID = -1,
     }
 
 
@@ -1557,9 +1557,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SimEsimStatus {
-        UNKNOWN,
-        NO_PROFILES,
-        WITH_PROFILES,
+        UNKNOWN = 0,
+        NO_PROFILES = 1,
+        WITH_PROFILES = 2,
     }
 
 
@@ -1574,9 +1574,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SimRemovability {
-        UNKNOWN,
-        REMOVABLE,
-        NOT_REMOVABLE,
+        UNKNOWN = 0,
+        REMOVABLE = 1,
+        NOT_REMOVABLE = 2,
     }
 
 
@@ -1591,9 +1591,9 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SimType {
-        UNKNOWN,
-        PHYSICAL,
-        ESIM,
+        UNKNOWN = 0,
+        PHYSICAL = 1,
+        ESIM = 2,
     }
 
 
@@ -1608,43 +1608,43 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsCdmaServiceCategory {
-        UNKNOWN,
-        EMERGENCY_BROADCAST,
-        ADMINISTRATIVE,
-        MAINTENANCE,
-        GENERAL_NEWS_LOCAL,
-        GENERAL_NEWS_REGIONAL,
-        GENERAL_NEWS_NATIONAL,
-        GENERAL_NEWS_INTERNATIONAL,
-        BUSINESS_NEWS_LOCAL,
-        BUSINESS_NEWS_REGIONAL,
-        BUSINESS_NEWS_NATIONAL,
-        BUSINESS_NEWS_INTERNATIONAL,
-        SPORTS_NEWS_LOCAL,
-        SPORTS_NEWS_REGIONAL,
-        SPORTS_NEWS_NATIONAL,
-        SPORTS_NEWS_INTERNATIONAL,
-        ENTERTAINMENT_NEWS_LOCAL,
-        ENTERTAINMENT_NEWS_REGIONAL,
-        ENTERTAINMENT_NEWS_NATIONAL,
-        ENTERTAINMENT_NEWS_INTERNATIONAL,
-        LOCAL_WEATHER,
-        TRAFFIC_REPORT,
-        FLIGHT_SCHEDULES,
-        RESTAURANTS,
-        LODGINGS,
-        RETAIL_DIRECTORY,
-        ADVERTISEMENTS,
-        STOCK_QUOTES,
-        EMPLOYMENT,
-        HOSPITALS,
-        TECHNOLOGY_NEWS,
-        MULTICATEGORY,
-        CMAS_PRESIDENTIAL_ALERT,
-        CMAS_EXTREME_THREAT,
-        CMAS_SEVERE_THREAT,
-        CMAS_CHILD_ABDUCTION_EMERGENCY,
-        CMAS_TEST,
+        UNKNOWN = 0,
+        EMERGENCY_BROADCAST = 1,
+        ADMINISTRATIVE = 2,
+        MAINTENANCE = 3,
+        GENERAL_NEWS_LOCAL = 4,
+        GENERAL_NEWS_REGIONAL = 5,
+        GENERAL_NEWS_NATIONAL = 6,
+        GENERAL_NEWS_INTERNATIONAL = 7,
+        BUSINESS_NEWS_LOCAL = 8,
+        BUSINESS_NEWS_REGIONAL = 9,
+        BUSINESS_NEWS_NATIONAL = 10,
+        BUSINESS_NEWS_INTERNATIONAL = 11,
+        SPORTS_NEWS_LOCAL = 12,
+        SPORTS_NEWS_REGIONAL = 13,
+        SPORTS_NEWS_NATIONAL = 14,
+        SPORTS_NEWS_INTERNATIONAL = 15,
+        ENTERTAINMENT_NEWS_LOCAL = 16,
+        ENTERTAINMENT_NEWS_REGIONAL = 17,
+        ENTERTAINMENT_NEWS_NATIONAL = 18,
+        ENTERTAINMENT_NEWS_INTERNATIONAL = 19,
+        LOCAL_WEATHER = 20,
+        TRAFFIC_REPORT = 21,
+        FLIGHT_SCHEDULES = 22,
+        RESTAURANTS = 23,
+        LODGINGS = 24,
+        RETAIL_DIRECTORY = 25,
+        ADVERTISEMENTS = 26,
+        STOCK_QUOTES = 27,
+        EMPLOYMENT = 28,
+        HOSPITALS = 29,
+        TECHNOLOGY_NEWS = 30,
+        MULTICATEGORY = 31,
+        CMAS_PRESIDENTIAL_ALERT = 4096,
+        CMAS_EXTREME_THREAT = 4097,
+        CMAS_SEVERE_THREAT = 4098,
+        CMAS_CHILD_ABDUCTION_EMERGENCY = 4099,
+        CMAS_TEST = 4100,
     }
 
 
@@ -1659,15 +1659,15 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsCdmaTeleserviceId {
-        UNKNOWN,
-        CMT91,
-        WPT,
-        WMT,
-        VMN,
-        WAP,
-        WEMT,
-        SCPT,
-        CATPT,
+        UNKNOWN = 0,
+        CMT91 = 4096,
+        WPT = 4097,
+        WMT = 4098,
+        VMN = 4099,
+        WAP = 4100,
+        WEMT = 4101,
+        SCPT = 4102,
+        CATPT = 4103,
     }
 
 
@@ -1682,88 +1682,88 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsDeliveryState {
-        COMPLETED_RECEIVED,
-        COMPLETED_FORWARDED_UNCONFIRMED,
-        COMPLETED_REPLACED_BY_SC,
-        TEMPORARY_ERROR_CONGESTION,
-        TEMPORARY_ERROR_SME_BUSY,
-        TEMPORARY_ERROR_NO_RESPONSE_FROM_SME,
-        TEMPORARY_ERROR_SERVICE_REJECTED,
-        TEMPORARY_ERROR_QOS_NOT_AVAILABLE,
-        TEMPORARY_ERROR_IN_SME,
-        ERROR_REMOTE_PROCEDURE,
-        ERROR_INCOMPATIBLE_DESTINATION,
-        ERROR_CONNECTION_REJECTED,
-        ERROR_NOT_OBTAINABLE,
-        ERROR_QOS_NOT_AVAILABLE,
-        ERROR_NO_INTERWORKING_AVAILABLE,
-        ERROR_VALIDITY_PERIOD_EXPIRED,
-        ERROR_DELETED_BY_ORIGINATING_SME,
-        ERROR_DELETED_BY_SC_ADMINISTRATION,
-        ERROR_MESSAGE_DOES_NOT_EXIST,
-        TEMPORARY_FATAL_ERROR_CONGESTION,
-        TEMPORARY_FATAL_ERROR_SME_BUSY,
-        TEMPORARY_FATAL_ERROR_NO_RESPONSE_FROM_SME,
-        TEMPORARY_FATAL_ERROR_SERVICE_REJECTED,
-        TEMPORARY_FATAL_ERROR_QOS_NOT_AVAILABLE,
-        TEMPORARY_FATAL_ERROR_IN_SME,
-        UNKNOWN,
-        NETWORK_PROBLEM_ADDRESS_VACANT,
-        NETWORK_PROBLEM_ADDRESS_TRANSLATION_FAILURE,
-        NETWORK_PROBLEM_NETWORK_RESOURCE_OUTAGE,
-        NETWORK_PROBLEM_NETWORK_FAILURE,
-        NETWORK_PROBLEM_INVALID_TELESERVICE_ID,
-        NETWORK_PROBLEM_OTHER,
-        TERMINAL_PROBLEM_NO_PAGE_RESPONSE,
-        TERMINAL_PROBLEM_DESTINATION_BUSY,
-        TERMINAL_PROBLEM_NO_ACKNOWLEDGMENT,
-        TERMINAL_PROBLEM_DESTINATION_RESOURCE_SHORTAGE,
-        TERMINAL_PROBLEM_SMS_DELIVERY_POSTPONED,
-        TERMINAL_PROBLEM_DESTINATION_OUT_OF_SERVICE,
-        TERMINAL_PROBLEM_DESTINATION_NO_LONGER_AT_THIS_ADDRESS,
-        TERMINAL_PROBLEM_OTHER,
-        RADIO_INTERFACE_PROBLEM_RESOURCE_SHORTAGE,
-        RADIO_INTERFACE_PROBLEM_INCOMPATIBILITY,
-        RADIO_INTERFACE_PROBLEM_OTHER,
-        GENERAL_PROBLEM_ENCODING,
-        GENERAL_PROBLEM_SMS_ORIGINATION_DENIED,
-        GENERAL_PROBLEM_SMS_TERMINATION_DENIED,
-        GENERAL_PROBLEM_SUPPLEMENTARY_SERVICE_NOT_SUPPORTED,
-        GENERAL_PROBLEM_SMS_NOT_SUPPORTED,
-        GENERAL_PROBLEM_MISSING_EXPECTED_PARAMETER,
-        GENERAL_PROBLEM_MISSING_MANDATORY_PARAMETER,
-        GENERAL_PROBLEM_UNRECOGNIZED_PARAMETER_VALUE,
-        GENERAL_PROBLEM_UNEXPECTED_PARAMETER_VALUE,
-        GENERAL_PROBLEM_USER_DATA_SIZE_ERROR,
-        GENERAL_PROBLEM_OTHER,
-        TEMPORARY_NETWORK_PROBLEM_ADDRESS_VACANT,
-        TEMPORARY_NETWORK_PROBLEM_ADDRESS_TRANSLATION_FAILURE,
-        TEMPORARY_NETWORK_PROBLEM_NETWORK_RESOURCE_OUTAGE,
-        TEMPORARY_NETWORK_PROBLEM_NETWORK_FAILURE,
-        TEMPORARY_NETWORK_PROBLEM_INVALID_TELESERVICE_ID,
-        TEMPORARY_NETWORK_PROBLEM_OTHER,
-        TEMPORARY_TERMINAL_PROBLEM_NO_PAGE_RESPONSE,
-        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_BUSY,
-        TEMPORARY_TERMINAL_PROBLEM_NO_ACKNOWLEDGMENT,
-        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_RESOURCE_SHORTAGE,
-        TEMPORARY_TERMINAL_PROBLEM_SMS_DELIVERY_POSTPONED,
-        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_OUT_OF_SERVICE,
-        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_NO_LONGER_AT_THIS_ADDRESS,
-        TEMPORARY_TERMINAL_PROBLEM_OTHER,
-        TEMPORARY_RADIO_INTERFACE_PROBLEM_RESOURCE_SHORTAGE,
-        TEMPORARY_RADIO_INTERFACE_PROBLEM_INCOMPATIBILITY,
-        TEMPORARY_RADIO_INTERFACE_PROBLEM_OTHER,
-        TEMPORARY_GENERAL_PROBLEM_ENCODING,
-        TEMPORARY_GENERAL_PROBLEM_SMS_ORIGINATION_DENIED,
-        TEMPORARY_GENERAL_PROBLEM_SMS_TERMINATION_DENIED,
-        TEMPORARY_GENERAL_PROBLEM_SUPPLEMENTARY_SERVICE_NOT_SUPPORTED,
-        TEMPORARY_GENERAL_PROBLEM_SMS_NOT_SUPPORTED,
-        TEMPORARY_GENERAL_PROBLEM_MISSING_EXPECTED_PARAMETER,
-        TEMPORARY_GENERAL_PROBLEM_MISSING_MANDATORY_PARAMETER,
-        TEMPORARY_GENERAL_PROBLEM_UNRECOGNIZED_PARAMETER_VALUE,
-        TEMPORARY_GENERAL_PROBLEM_UNEXPECTED_PARAMETER_VALUE,
-        TEMPORARY_GENERAL_PROBLEM_USER_DATA_SIZE_ERROR,
-        TEMPORARY_GENERAL_PROBLEM_OTHER,
+        COMPLETED_RECEIVED = 0,
+        COMPLETED_FORWARDED_UNCONFIRMED = 1,
+        COMPLETED_REPLACED_BY_SC = 2,
+        TEMPORARY_ERROR_CONGESTION = 32,
+        TEMPORARY_ERROR_SME_BUSY = 33,
+        TEMPORARY_ERROR_NO_RESPONSE_FROM_SME = 34,
+        TEMPORARY_ERROR_SERVICE_REJECTED = 35,
+        TEMPORARY_ERROR_QOS_NOT_AVAILABLE = 36,
+        TEMPORARY_ERROR_IN_SME = 37,
+        ERROR_REMOTE_PROCEDURE = 64,
+        ERROR_INCOMPATIBLE_DESTINATION = 65,
+        ERROR_CONNECTION_REJECTED = 66,
+        ERROR_NOT_OBTAINABLE = 67,
+        ERROR_QOS_NOT_AVAILABLE = 68,
+        ERROR_NO_INTERWORKING_AVAILABLE = 69,
+        ERROR_VALIDITY_PERIOD_EXPIRED = 70,
+        ERROR_DELETED_BY_ORIGINATING_SME = 71,
+        ERROR_DELETED_BY_SC_ADMINISTRATION = 72,
+        ERROR_MESSAGE_DOES_NOT_EXIST = 73,
+        TEMPORARY_FATAL_ERROR_CONGESTION = 96,
+        TEMPORARY_FATAL_ERROR_SME_BUSY = 97,
+        TEMPORARY_FATAL_ERROR_NO_RESPONSE_FROM_SME = 98,
+        TEMPORARY_FATAL_ERROR_SERVICE_REJECTED = 99,
+        TEMPORARY_FATAL_ERROR_QOS_NOT_AVAILABLE = 100,
+        TEMPORARY_FATAL_ERROR_IN_SME = 101,
+        UNKNOWN = 256,
+        NETWORK_PROBLEM_ADDRESS_VACANT = 512,
+        NETWORK_PROBLEM_ADDRESS_TRANSLATION_FAILURE = 513,
+        NETWORK_PROBLEM_NETWORK_RESOURCE_OUTAGE = 514,
+        NETWORK_PROBLEM_NETWORK_FAILURE = 515,
+        NETWORK_PROBLEM_INVALID_TELESERVICE_ID = 516,
+        NETWORK_PROBLEM_OTHER = 517,
+        TERMINAL_PROBLEM_NO_PAGE_RESPONSE = 544,
+        TERMINAL_PROBLEM_DESTINATION_BUSY = 545,
+        TERMINAL_PROBLEM_NO_ACKNOWLEDGMENT = 546,
+        TERMINAL_PROBLEM_DESTINATION_RESOURCE_SHORTAGE = 547,
+        TERMINAL_PROBLEM_SMS_DELIVERY_POSTPONED = 548,
+        TERMINAL_PROBLEM_DESTINATION_OUT_OF_SERVICE = 549,
+        TERMINAL_PROBLEM_DESTINATION_NO_LONGER_AT_THIS_ADDRESS = 550,
+        TERMINAL_PROBLEM_OTHER = 551,
+        RADIO_INTERFACE_PROBLEM_RESOURCE_SHORTAGE = 576,
+        RADIO_INTERFACE_PROBLEM_INCOMPATIBILITY = 577,
+        RADIO_INTERFACE_PROBLEM_OTHER = 578,
+        GENERAL_PROBLEM_ENCODING = 608,
+        GENERAL_PROBLEM_SMS_ORIGINATION_DENIED = 609,
+        GENERAL_PROBLEM_SMS_TERMINATION_DENIED = 610,
+        GENERAL_PROBLEM_SUPPLEMENTARY_SERVICE_NOT_SUPPORTED = 611,
+        GENERAL_PROBLEM_SMS_NOT_SUPPORTED = 612,
+        GENERAL_PROBLEM_MISSING_EXPECTED_PARAMETER = 614,
+        GENERAL_PROBLEM_MISSING_MANDATORY_PARAMETER = 615,
+        GENERAL_PROBLEM_UNRECOGNIZED_PARAMETER_VALUE = 616,
+        GENERAL_PROBLEM_UNEXPECTED_PARAMETER_VALUE = 617,
+        GENERAL_PROBLEM_USER_DATA_SIZE_ERROR = 618,
+        GENERAL_PROBLEM_OTHER = 619,
+        TEMPORARY_NETWORK_PROBLEM_ADDRESS_VACANT = 768,
+        TEMPORARY_NETWORK_PROBLEM_ADDRESS_TRANSLATION_FAILURE = 769,
+        TEMPORARY_NETWORK_PROBLEM_NETWORK_RESOURCE_OUTAGE = 770,
+        TEMPORARY_NETWORK_PROBLEM_NETWORK_FAILURE = 771,
+        TEMPORARY_NETWORK_PROBLEM_INVALID_TELESERVICE_ID = 772,
+        TEMPORARY_NETWORK_PROBLEM_OTHER = 773,
+        TEMPORARY_TERMINAL_PROBLEM_NO_PAGE_RESPONSE = 800,
+        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_BUSY = 801,
+        TEMPORARY_TERMINAL_PROBLEM_NO_ACKNOWLEDGMENT = 802,
+        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_RESOURCE_SHORTAGE = 803,
+        TEMPORARY_TERMINAL_PROBLEM_SMS_DELIVERY_POSTPONED = 804,
+        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_OUT_OF_SERVICE = 805,
+        TEMPORARY_TERMINAL_PROBLEM_DESTINATION_NO_LONGER_AT_THIS_ADDRESS = 806,
+        TEMPORARY_TERMINAL_PROBLEM_OTHER = 807,
+        TEMPORARY_RADIO_INTERFACE_PROBLEM_RESOURCE_SHORTAGE = 832,
+        TEMPORARY_RADIO_INTERFACE_PROBLEM_INCOMPATIBILITY = 833,
+        TEMPORARY_RADIO_INTERFACE_PROBLEM_OTHER = 834,
+        TEMPORARY_GENERAL_PROBLEM_ENCODING = 864,
+        TEMPORARY_GENERAL_PROBLEM_SMS_ORIGINATION_DENIED = 865,
+        TEMPORARY_GENERAL_PROBLEM_SMS_TERMINATION_DENIED = 866,
+        TEMPORARY_GENERAL_PROBLEM_SUPPLEMENTARY_SERVICE_NOT_SUPPORTED = 867,
+        TEMPORARY_GENERAL_PROBLEM_SMS_NOT_SUPPORTED = 868,
+        TEMPORARY_GENERAL_PROBLEM_MISSING_EXPECTED_PARAMETER = 870,
+        TEMPORARY_GENERAL_PROBLEM_MISSING_MANDATORY_PARAMETER = 871,
+        TEMPORARY_GENERAL_PROBLEM_UNRECOGNIZED_PARAMETER_VALUE = 872,
+        TEMPORARY_GENERAL_PROBLEM_UNEXPECTED_PARAMETER_VALUE = 873,
+        TEMPORARY_GENERAL_PROBLEM_USER_DATA_SIZE_ERROR = 874,
+        TEMPORARY_GENERAL_PROBLEM_OTHER = 875,
     }
 
 
@@ -1778,16 +1778,16 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsPduType {
-        UNKNOWN,
-        DELIVER,
-        SUBMIT,
-        STATUS_REPORT,
-        CDMA_DELIVER,
-        CDMA_SUBMIT,
-        CDMA_CANCELLATION,
-        CDMA_DELIVERY_ACKNOWLEDGEMENT,
-        CDMA_USER_ACKNOWLEDGEMENT,
-        CDMA_READ_ACKNOWLEDGEMENT,
+        UNKNOWN = 0,
+        DELIVER = 1,
+        SUBMIT = 2,
+        STATUS_REPORT = 3,
+        CDMA_DELIVER = 32,
+        CDMA_SUBMIT = 33,
+        CDMA_CANCELLATION = 34,
+        CDMA_DELIVERY_ACKNOWLEDGEMENT = 35,
+        CDMA_USER_ACKNOWLEDGEMENT = 36,
+        CDMA_READ_ACKNOWLEDGEMENT = 37,
     }
 
 
@@ -1802,12 +1802,12 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsState {
-        UNKNOWN,
-        STORED,
-        RECEIVING,
-        RECEIVED,
-        SENDING,
-        SENT,
+        UNKNOWN = 0,
+        STORED = 1,
+        RECEIVING = 2,
+        RECEIVED = 3,
+        SENDING = 4,
+        SENT = 5,
     }
 
 
@@ -1822,13 +1822,13 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsStorage {
-        UNKNOWN,
-        SM,
-        ME,
-        MT,
-        SR,
-        BM,
-        TA,
+        UNKNOWN = 0,
+        SM = 1,
+        ME = 2,
+        MT = 3,
+        SR = 4,
+        BM = 5,
+        TA = 6,
     }
 
 
@@ -1843,10 +1843,10 @@ export namespace ModemManager {
      * @gir-type Enum
      */
     enum SmsValidityType {
-        UNKNOWN,
-        RELATIVE,
-        ABSOLUTE,
-        ENHANCED,
+        UNKNOWN = 0,
+        RELATIVE = 1,
+        ABSOLUTE = 2,
+        ENHANCED = 3,
     }
 
 
@@ -1854,150 +1854,348 @@ export namespace ModemManager {
      * This value may be specified in the 'profile-id' property When the user
      * creates a new {@link ModemManager.__3gppProfile}, to indicate that the real profile id should
      * be assigned by the device.
+     * @default -1
      */
     const __3GPP_PROFILE_ID_UNKNOWN: number;
 
+    /**
+     * @default Connect
+     */
     const BEARER_METHOD_CONNECT: string;
 
+    /**
+     * @default Disconnect
+     */
     const BEARER_METHOD_DISCONNECT: string;
 
+    /**
+     * @default BearerType
+     */
     const BEARER_PROPERTY_BEARERTYPE: string;
 
+    /**
+     * @default Connected
+     */
     const BEARER_PROPERTY_CONNECTED: string;
 
+    /**
+     * @default ConnectionError
+     */
     const BEARER_PROPERTY_CONNECTIONERROR: string;
 
+    /**
+     * @default Interface
+     */
     const BEARER_PROPERTY_INTERFACE: string;
 
+    /**
+     * @default Ip4Config
+     */
     const BEARER_PROPERTY_IP4CONFIG: string;
 
+    /**
+     * @default Ip6Config
+     */
     const BEARER_PROPERTY_IP6CONFIG: string;
 
+    /**
+     * @default IpTimeout
+     */
     const BEARER_PROPERTY_IPTIMEOUT: string;
 
+    /**
+     * @default Multiplexed
+     */
     const BEARER_PROPERTY_MULTIPLEXED: string;
 
+    /**
+     * @default ProfileId
+     */
     const BEARER_PROPERTY_PROFILEID: string;
 
+    /**
+     * @default Properties
+     */
     const BEARER_PROPERTY_PROPERTIES: string;
 
+    /**
+     * @default ReloadStatsSupported
+     */
     const BEARER_PROPERTY_RELOADSTATSSUPPORTED: string;
 
+    /**
+     * @default Stats
+     */
     const BEARER_PROPERTY_STATS: string;
 
+    /**
+     * @default Suspended
+     */
     const BEARER_PROPERTY_SUSPENDED: string;
 
+    /**
+     * @default Accept
+     */
     const CALL_METHOD_ACCEPT: string;
 
+    /**
+     * @default Deflect
+     */
     const CALL_METHOD_DEFLECT: string;
 
+    /**
+     * @default Hangup
+     */
     const CALL_METHOD_HANGUP: string;
 
+    /**
+     * @default JoinMultiparty
+     */
     const CALL_METHOD_JOINMULTIPARTY: string;
 
+    /**
+     * @default LeaveMultiparty
+     */
     const CALL_METHOD_LEAVEMULTIPARTY: string;
 
+    /**
+     * @default SendDtmf
+     */
     const CALL_METHOD_SENDDTMF: string;
 
+    /**
+     * @default Start
+     */
     const CALL_METHOD_START: string;
 
+    /**
+     * @default AudioFormat
+     */
     const CALL_PROPERTY_AUDIOFORMAT: string;
 
+    /**
+     * @default AudioPort
+     */
     const CALL_PROPERTY_AUDIOPORT: string;
 
+    /**
+     * @default Direction
+     */
     const CALL_PROPERTY_DIRECTION: string;
 
+    /**
+     * @default Multiparty
+     */
     const CALL_PROPERTY_MULTIPARTY: string;
 
+    /**
+     * @default Number
+     */
     const CALL_PROPERTY_NUMBER: string;
 
+    /**
+     * @default State
+     */
     const CALL_PROPERTY_STATE: string;
 
+    /**
+     * @default StateReason
+     */
     const CALL_PROPERTY_STATEREASON: string;
 
+    /**
+     * @default DtmfReceived
+     */
     const CALL_SIGNAL_DTMFRECEIVED: string;
 
+    /**
+     * @default StateChanged
+     */
     const CALL_SIGNAL_STATECHANGED: string;
 
+    /**
+     * @default Channel
+     */
     const CBM_PROPERTY_CHANNEL: string;
 
+    /**
+     * @default MessageCode
+     */
     const CBM_PROPERTY_MESSAGECODE: string;
 
+    /**
+     * @default State
+     */
     const CBM_PROPERTY_STATE: string;
 
+    /**
+     * @default Text
+     */
     const CBM_PROPERTY_TEXT: string;
 
+    /**
+     * @default Update
+     */
     const CBM_PROPERTY_UPDATE: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Error
+     */
     const DBUS_ERROR_PREFIX: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1
+     */
     const DBUS_INTERFACE: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Bearer
+     */
     const DBUS_INTERFACE_BEARER: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Call
+     */
     const DBUS_INTERFACE_CALL: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Cbm
+     */
     const DBUS_INTERFACE_CBM: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem
+     */
     const DBUS_INTERFACE_MODEM: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.CellBroadcast
+     */
     const DBUS_INTERFACE_MODEM_CELLBROADCAST: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Firmware
+     */
     const DBUS_INTERFACE_MODEM_FIRMWARE: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Location
+     */
     const DBUS_INTERFACE_MODEM_LOCATION: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Messaging
+     */
     const DBUS_INTERFACE_MODEM_MESSAGING: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Modem3gpp
+     */
     const DBUS_INTERFACE_MODEM_MODEM3GPP: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager
+     */
     const DBUS_INTERFACE_MODEM_MODEM3GPP_PROFILEMANAGER: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd
+     */
     const DBUS_INTERFACE_MODEM_MODEM3GPP_USSD: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.ModemCdma
+     */
     const DBUS_INTERFACE_MODEM_MODEMCDMA: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Oma
+     */
     const DBUS_INTERFACE_MODEM_OMA: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Sar
+     */
     const DBUS_INTERFACE_MODEM_SAR: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Signal
+     */
     const DBUS_INTERFACE_MODEM_SIGNAL: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Simple
+     */
     const DBUS_INTERFACE_MODEM_SIMPLE: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Time
+     */
     const DBUS_INTERFACE_MODEM_TIME: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Modem.Voice
+     */
     const DBUS_INTERFACE_MODEM_VOICE: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Sim
+     */
     const DBUS_INTERFACE_SIM: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1.Sms
+     */
     const DBUS_INTERFACE_SMS: string;
 
+    /**
+     * @default /org/freedesktop/ModemManager1
+     */
     const DBUS_PATH: string;
 
+    /**
+     * @default org.freedesktop.ModemManager1
+     */
     const DBUS_SERVICE: string;
 
     /**
      * Evaluates to the major version number of ModemManager which this source
      * is compiled against.
      * @since 1.0
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default InhibitDevice
+     */
     const MANAGER_METHOD_INHIBITDEVICE: string;
 
+    /**
+     * @default ReportKernelEvent
+     */
     const MANAGER_METHOD_REPORTKERNELEVENT: string;
 
+    /**
+     * @default ScanDevices
+     */
     const MANAGER_METHOD_SCANDEVICES: string;
 
+    /**
+     * @default SetLogging
+     */
     const MANAGER_METHOD_SETLOGGING: string;
 
+    /**
+     * @default Version
+     */
     const MANAGER_PROPERTY_VERSION: string;
 
     /**
      * Evaluates to the micro version number of ModemManager which this source
      * compiled against.
      * @since 1.0
+     * @default 2
      */
     const MICRO_VERSION: number;
 
@@ -2005,452 +2203,1101 @@ export namespace ModemManager {
      * Evaluates to the minor version number of ModemManager which this source
      * is compiled against.
      * @since 1.0
+     * @default 24
      */
     const MINOR_VERSION: number;
 
     /**
      * Identifier for an unknown NID.
+     * @default 99999
      */
     const MODEM_CDMA_NID_UNKNOWN: number;
 
     /**
      * Identifier for an unknown SID.
+     * @default 99999
      */
     const MODEM_CDMA_SID_UNKNOWN: number;
 
+    /**
+     * @default Delete
+     */
     const MODEM_CELLBROADCAST_METHOD_DELETE: string;
 
+    /**
+     * @default List
+     */
     const MODEM_CELLBROADCAST_METHOD_LIST: string;
 
+    /**
+     * @default SetChannels
+     */
     const MODEM_CELLBROADCAST_METHOD_SETCHANNELS: string;
 
+    /**
+     * @default CellBroadcasts
+     */
     const MODEM_CELLBROADCAST_PROPERTY_CELLBROADCASTS: string;
 
+    /**
+     * @default Channels
+     */
     const MODEM_CELLBROADCAST_PROPERTY_CHANNELS: string;
 
+    /**
+     * @default Added
+     */
     const MODEM_CELLBROADCAST_SIGNAL_ADDED: string;
 
+    /**
+     * @default Deleted
+     */
     const MODEM_CELLBROADCAST_SIGNAL_DELETED: string;
 
+    /**
+     * @default List
+     */
     const MODEM_FIRMWARE_METHOD_LIST: string;
 
+    /**
+     * @default Select
+     */
     const MODEM_FIRMWARE_METHOD_SELECT: string;
 
+    /**
+     * @default UpdateSettings
+     */
     const MODEM_FIRMWARE_PROPERTY_UPDATESETTINGS: string;
 
+    /**
+     * @default GetLocation
+     */
     const MODEM_LOCATION_METHOD_GETLOCATION: string;
 
+    /**
+     * @default InjectAssistanceData
+     */
     const MODEM_LOCATION_METHOD_INJECTASSISTANCEDATA: string;
 
+    /**
+     * @default SetGpsRefreshRate
+     */
     const MODEM_LOCATION_METHOD_SETGPSREFRESHRATE: string;
 
+    /**
+     * @default SetSuplServer
+     */
     const MODEM_LOCATION_METHOD_SETSUPLSERVER: string;
 
+    /**
+     * @default Setup
+     */
     const MODEM_LOCATION_METHOD_SETUP: string;
 
+    /**
+     * @default AssistanceDataServers
+     */
     const MODEM_LOCATION_PROPERTY_ASSISTANCEDATASERVERS: string;
 
+    /**
+     * @default Capabilities
+     */
     const MODEM_LOCATION_PROPERTY_CAPABILITIES: string;
 
+    /**
+     * @default Enabled
+     */
     const MODEM_LOCATION_PROPERTY_ENABLED: string;
 
+    /**
+     * @default GpsRefreshRate
+     */
     const MODEM_LOCATION_PROPERTY_GPSREFRESHRATE: string;
 
+    /**
+     * @default Location
+     */
     const MODEM_LOCATION_PROPERTY_LOCATION: string;
 
+    /**
+     * @default SignalsLocation
+     */
     const MODEM_LOCATION_PROPERTY_SIGNALSLOCATION: string;
 
+    /**
+     * @default SuplServer
+     */
     const MODEM_LOCATION_PROPERTY_SUPLSERVER: string;
 
+    /**
+     * @default SupportedAssistanceData
+     */
     const MODEM_LOCATION_PROPERTY_SUPPORTEDASSISTANCEDATA: string;
 
+    /**
+     * @default Create
+     */
     const MODEM_MESSAGING_METHOD_CREATE: string;
 
+    /**
+     * @default Delete
+     */
     const MODEM_MESSAGING_METHOD_DELETE: string;
 
+    /**
+     * @default List
+     */
     const MODEM_MESSAGING_METHOD_LIST: string;
 
+    /**
+     * @default SetDefaultStorage
+     */
     const MODEM_MESSAGING_METHOD_SETDEFAULTSTORAGE: string;
 
+    /**
+     * @default DefaultStorage
+     */
     const MODEM_MESSAGING_PROPERTY_DEFAULTSTORAGE: string;
 
+    /**
+     * @default Messages
+     */
     const MODEM_MESSAGING_PROPERTY_MESSAGES: string;
 
+    /**
+     * @default SupportedStorages
+     */
     const MODEM_MESSAGING_PROPERTY_SUPPORTEDSTORAGES: string;
 
+    /**
+     * @default Added
+     */
     const MODEM_MESSAGING_SIGNAL_ADDED: string;
 
+    /**
+     * @default Deleted
+     */
     const MODEM_MESSAGING_SIGNAL_DELETED: string;
 
+    /**
+     * @default Command
+     */
     const MODEM_METHOD_COMMAND: string;
 
+    /**
+     * @default CreateBearer
+     */
     const MODEM_METHOD_CREATEBEARER: string;
 
+    /**
+     * @default DeleteBearer
+     */
     const MODEM_METHOD_DELETEBEARER: string;
 
+    /**
+     * @default Enable
+     */
     const MODEM_METHOD_ENABLE: string;
 
+    /**
+     * @default FactoryReset
+     */
     const MODEM_METHOD_FACTORYRESET: string;
 
+    /**
+     * @default GetCellInfo
+     */
     const MODEM_METHOD_GETCELLINFO: string;
 
+    /**
+     * @default ListBearers
+     */
     const MODEM_METHOD_LISTBEARERS: string;
 
+    /**
+     * @default Reset
+     */
     const MODEM_METHOD_RESET: string;
 
+    /**
+     * @default SetCurrentBands
+     */
     const MODEM_METHOD_SETCURRENTBANDS: string;
 
+    /**
+     * @default SetCurrentCapabilities
+     */
     const MODEM_METHOD_SETCURRENTCAPABILITIES: string;
 
+    /**
+     * @default SetCurrentModes
+     */
     const MODEM_METHOD_SETCURRENTMODES: string;
 
+    /**
+     * @default SetPowerState
+     */
     const MODEM_METHOD_SETPOWERSTATE: string;
 
+    /**
+     * @default SetPrimarySimSlot
+     */
     const MODEM_METHOD_SETPRIMARYSIMSLOT: string;
 
+    /**
+     * @default DisableFacilityLock
+     */
     const MODEM_MODEM3GPP_METHOD_DISABLEFACILITYLOCK: string;
 
+    /**
+     * @default Register
+     */
     const MODEM_MODEM3GPP_METHOD_REGISTER: string;
 
+    /**
+     * @default Scan
+     */
     const MODEM_MODEM3GPP_METHOD_SCAN: string;
 
+    /**
+     * @default SetCarrierLock
+     */
     const MODEM_MODEM3GPP_METHOD_SETCARRIERLOCK: string;
 
+    /**
+     * @default SetEpsUeModeOperation
+     */
     const MODEM_MODEM3GPP_METHOD_SETEPSUEMODEOPERATION: string;
 
+    /**
+     * @default SetInitialEpsBearerSettings
+     */
     const MODEM_MODEM3GPP_METHOD_SETINITIALEPSBEARERSETTINGS: string;
 
+    /**
+     * @default SetNr5gRegistrationSettings
+     */
     const MODEM_MODEM3GPP_METHOD_SETNR5GREGISTRATIONSETTINGS: string;
 
+    /**
+     * @default SetPacketServiceState
+     */
     const MODEM_MODEM3GPP_METHOD_SETPACKETSERVICESTATE: string;
 
+    /**
+     * @default Delete
+     */
     const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_DELETE: string;
 
+    /**
+     * @default List
+     */
     const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_LIST: string;
 
+    /**
+     * @default Set
+     */
     const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_SET: string;
 
+    /**
+     * @default IndexField
+     */
     const MODEM_MODEM3GPP_PROFILEMANAGER_PROPERTY_INDEXFIELD: string;
 
+    /**
+     * @default Updated
+     */
     const MODEM_MODEM3GPP_PROFILEMANAGER_SIGNAL_UPDATED: string;
 
+    /**
+     * @default EnabledFacilityLocks
+     */
     const MODEM_MODEM3GPP_PROPERTY_ENABLEDFACILITYLOCKS: string;
 
+    /**
+     * @default EpsUeModeOperation
+     */
     const MODEM_MODEM3GPP_PROPERTY_EPSUEMODEOPERATION: string;
 
+    /**
+     * @default Imei
+     */
     const MODEM_MODEM3GPP_PROPERTY_IMEI: string;
 
+    /**
+     * @default InitialEpsBearer
+     */
     const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARER: string;
 
+    /**
+     * @default InitialEpsBearerSettings
+     */
     const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARERSETTINGS: string;
 
+    /**
+     * @default NetworkRejection
+     */
     const MODEM_MODEM3GPP_PROPERTY_NETWORKREJECTION: string;
 
+    /**
+     * @default Nr5gRegistrationSettings
+     */
     const MODEM_MODEM3GPP_PROPERTY_NR5GREGISTRATIONSETTINGS: string;
 
+    /**
+     * @default OperatorCode
+     */
     const MODEM_MODEM3GPP_PROPERTY_OPERATORCODE: string;
 
+    /**
+     * @default OperatorName
+     */
     const MODEM_MODEM3GPP_PROPERTY_OPERATORNAME: string;
 
+    /**
+     * @default PacketServiceState
+     */
     const MODEM_MODEM3GPP_PROPERTY_PACKETSERVICESTATE: string;
 
+    /**
+     * @default Pco
+     */
     const MODEM_MODEM3GPP_PROPERTY_PCO: string;
 
+    /**
+     * @default RegistrationState
+     */
     const MODEM_MODEM3GPP_PROPERTY_REGISTRATIONSTATE: string;
 
+    /**
+     * @default SubscriptionState
+     */
     const MODEM_MODEM3GPP_PROPERTY_SUBSCRIPTIONSTATE: string;
 
+    /**
+     * @default Cancel
+     */
     const MODEM_MODEM3GPP_USSD_METHOD_CANCEL: string;
 
+    /**
+     * @default Initiate
+     */
     const MODEM_MODEM3GPP_USSD_METHOD_INITIATE: string;
 
+    /**
+     * @default Respond
+     */
     const MODEM_MODEM3GPP_USSD_METHOD_RESPOND: string;
 
+    /**
+     * @default NetworkNotification
+     */
     const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKNOTIFICATION: string;
 
+    /**
+     * @default NetworkRequest
+     */
     const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKREQUEST: string;
 
+    /**
+     * @default State
+     */
     const MODEM_MODEM3GPP_USSD_PROPERTY_STATE: string;
 
+    /**
+     * @default Activate
+     */
     const MODEM_MODEMCDMA_METHOD_ACTIVATE: string;
 
+    /**
+     * @default ActivateManual
+     */
     const MODEM_MODEMCDMA_METHOD_ACTIVATEMANUAL: string;
 
+    /**
+     * @default ActivationState
+     */
     const MODEM_MODEMCDMA_PROPERTY_ACTIVATIONSTATE: string;
 
+    /**
+     * @default Cdma1xRegistrationState
+     */
     const MODEM_MODEMCDMA_PROPERTY_CDMA1XREGISTRATIONSTATE: string;
 
+    /**
+     * @default Esn
+     */
     const MODEM_MODEMCDMA_PROPERTY_ESN: string;
 
+    /**
+     * @default EvdoRegistrationState
+     */
     const MODEM_MODEMCDMA_PROPERTY_EVDOREGISTRATIONSTATE: string;
 
+    /**
+     * @default Meid
+     */
     const MODEM_MODEMCDMA_PROPERTY_MEID: string;
 
+    /**
+     * @default Nid
+     */
     const MODEM_MODEMCDMA_PROPERTY_NID: string;
 
+    /**
+     * @default Sid
+     */
     const MODEM_MODEMCDMA_PROPERTY_SID: string;
 
+    /**
+     * @default ActivationStateChanged
+     */
     const MODEM_MODEMCDMA_SIGNAL_ACTIVATIONSTATECHANGED: string;
 
+    /**
+     * @default AcceptNetworkInitiatedSession
+     */
     const MODEM_OMA_METHOD_ACCEPTNETWORKINITIATEDSESSION: string;
 
+    /**
+     * @default CancelSession
+     */
     const MODEM_OMA_METHOD_CANCELSESSION: string;
 
+    /**
+     * @default Setup
+     */
     const MODEM_OMA_METHOD_SETUP: string;
 
+    /**
+     * @default StartClientInitiatedSession
+     */
     const MODEM_OMA_METHOD_STARTCLIENTINITIATEDSESSION: string;
 
+    /**
+     * @default Features
+     */
     const MODEM_OMA_PROPERTY_FEATURES: string;
 
+    /**
+     * @default PendingNetworkInitiatedSessions
+     */
     const MODEM_OMA_PROPERTY_PENDINGNETWORKINITIATEDSESSIONS: string;
 
+    /**
+     * @default SessionState
+     */
     const MODEM_OMA_PROPERTY_SESSIONSTATE: string;
 
+    /**
+     * @default SessionType
+     */
     const MODEM_OMA_PROPERTY_SESSIONTYPE: string;
 
+    /**
+     * @default SessionStateChanged
+     */
     const MODEM_OMA_SIGNAL_SESSIONSTATECHANGED: string;
 
+    /**
+     * @default AccessTechnologies
+     */
     const MODEM_PROPERTY_ACCESSTECHNOLOGIES: string;
 
+    /**
+     * @default Bearers
+     */
     const MODEM_PROPERTY_BEARERS: string;
 
+    /**
+     * @default CarrierConfiguration
+     */
     const MODEM_PROPERTY_CARRIERCONFIGURATION: string;
 
+    /**
+     * @default CarrierConfigurationRevision
+     */
     const MODEM_PROPERTY_CARRIERCONFIGURATIONREVISION: string;
 
+    /**
+     * @default CurrentBands
+     */
     const MODEM_PROPERTY_CURRENTBANDS: string;
 
+    /**
+     * @default CurrentCapabilities
+     */
     const MODEM_PROPERTY_CURRENTCAPABILITIES: string;
 
+    /**
+     * @default CurrentModes
+     */
     const MODEM_PROPERTY_CURRENTMODES: string;
 
+    /**
+     * @default Device
+     */
     const MODEM_PROPERTY_DEVICE: string;
 
+    /**
+     * @default DeviceIdentifier
+     */
     const MODEM_PROPERTY_DEVICEIDENTIFIER: string;
 
+    /**
+     * @default Drivers
+     */
     const MODEM_PROPERTY_DRIVERS: string;
 
+    /**
+     * @default EquipmentIdentifier
+     */
     const MODEM_PROPERTY_EQUIPMENTIDENTIFIER: string;
 
+    /**
+     * @default HardwareRevision
+     */
     const MODEM_PROPERTY_HARDWAREREVISION: string;
 
+    /**
+     * @default Manufacturer
+     */
     const MODEM_PROPERTY_MANUFACTURER: string;
 
+    /**
+     * @default MaxActiveBearers
+     */
     const MODEM_PROPERTY_MAXACTIVEBEARERS: string;
 
+    /**
+     * @default MaxActiveMultiplexedBearers
+     */
     const MODEM_PROPERTY_MAXACTIVEMULTIPLEXEDBEARERS: string;
 
+    /**
+     * @default MaxBearers
+     */
     const MODEM_PROPERTY_MAXBEARERS: string;
 
+    /**
+     * @default Model
+     */
     const MODEM_PROPERTY_MODEL: string;
 
+    /**
+     * @default OwnNumbers
+     */
     const MODEM_PROPERTY_OWNNUMBERS: string;
 
+    /**
+     * @default Physdev
+     */
     const MODEM_PROPERTY_PHYSDEV: string;
 
+    /**
+     * @default Plugin
+     */
     const MODEM_PROPERTY_PLUGIN: string;
 
+    /**
+     * @default Ports
+     */
     const MODEM_PROPERTY_PORTS: string;
 
+    /**
+     * @default PowerState
+     */
     const MODEM_PROPERTY_POWERSTATE: string;
 
+    /**
+     * @default PrimaryPort
+     */
     const MODEM_PROPERTY_PRIMARYPORT: string;
 
+    /**
+     * @default PrimarySimSlot
+     */
     const MODEM_PROPERTY_PRIMARYSIMSLOT: string;
 
+    /**
+     * @default Revision
+     */
     const MODEM_PROPERTY_REVISION: string;
 
+    /**
+     * @default SignalQuality
+     */
     const MODEM_PROPERTY_SIGNALQUALITY: string;
 
+    /**
+     * @default Sim
+     */
     const MODEM_PROPERTY_SIM: string;
 
+    /**
+     * @default SimSlots
+     */
     const MODEM_PROPERTY_SIMSLOTS: string;
 
+    /**
+     * @default State
+     */
     const MODEM_PROPERTY_STATE: string;
 
+    /**
+     * @default StateFailedReason
+     */
     const MODEM_PROPERTY_STATEFAILEDREASON: string;
 
+    /**
+     * @default SupportedBands
+     */
     const MODEM_PROPERTY_SUPPORTEDBANDS: string;
 
+    /**
+     * @default SupportedCapabilities
+     */
     const MODEM_PROPERTY_SUPPORTEDCAPABILITIES: string;
 
+    /**
+     * @default SupportedIpFamilies
+     */
     const MODEM_PROPERTY_SUPPORTEDIPFAMILIES: string;
 
+    /**
+     * @default SupportedModes
+     */
     const MODEM_PROPERTY_SUPPORTEDMODES: string;
 
+    /**
+     * @default UnlockRequired
+     */
     const MODEM_PROPERTY_UNLOCKREQUIRED: string;
 
+    /**
+     * @default UnlockRetries
+     */
     const MODEM_PROPERTY_UNLOCKRETRIES: string;
 
+    /**
+     * @default Enable
+     */
     const MODEM_SAR_METHOD_ENABLE: string;
 
+    /**
+     * @default SetPowerLevel
+     */
     const MODEM_SAR_METHOD_SETPOWERLEVEL: string;
 
+    /**
+     * @default PowerLevel
+     */
     const MODEM_SAR_PROPERTY_POWERLEVEL: string;
 
+    /**
+     * @default State
+     */
     const MODEM_SAR_PROPERTY_STATE: string;
 
+    /**
+     * @default Setup
+     */
     const MODEM_SIGNAL_METHOD_SETUP: string;
 
+    /**
+     * @default SetupThresholds
+     */
     const MODEM_SIGNAL_METHOD_SETUPTHRESHOLDS: string;
 
+    /**
+     * @default Cdma
+     */
     const MODEM_SIGNAL_PROPERTY_CDMA: string;
 
+    /**
+     * @default ErrorRateThreshold
+     */
     const MODEM_SIGNAL_PROPERTY_ERRORRATETHRESHOLD: string;
 
+    /**
+     * @default Evdo
+     */
     const MODEM_SIGNAL_PROPERTY_EVDO: string;
 
+    /**
+     * @default Gsm
+     */
     const MODEM_SIGNAL_PROPERTY_GSM: string;
 
+    /**
+     * @default Lte
+     */
     const MODEM_SIGNAL_PROPERTY_LTE: string;
 
+    /**
+     * @default Nr5g
+     */
     const MODEM_SIGNAL_PROPERTY_NR5G: string;
 
+    /**
+     * @default Rate
+     */
     const MODEM_SIGNAL_PROPERTY_RATE: string;
 
+    /**
+     * @default RssiThreshold
+     */
     const MODEM_SIGNAL_PROPERTY_RSSITHRESHOLD: string;
 
+    /**
+     * @default Umts
+     */
     const MODEM_SIGNAL_PROPERTY_UMTS: string;
 
+    /**
+     * @default StateChanged
+     */
     const MODEM_SIGNAL_STATECHANGED: string;
 
+    /**
+     * @default Connect
+     */
     const MODEM_SIMPLE_METHOD_CONNECT: string;
 
+    /**
+     * @default Disconnect
+     */
     const MODEM_SIMPLE_METHOD_DISCONNECT: string;
 
+    /**
+     * @default GetStatus
+     */
     const MODEM_SIMPLE_METHOD_GETSTATUS: string;
 
+    /**
+     * @default GetNetworkTime
+     */
     const MODEM_TIME_METHOD_GETNETWORKTIME: string;
 
+    /**
+     * @default NetworkTimezone
+     */
     const MODEM_TIME_PROPERTY_NETWORKTIMEZONE: string;
 
+    /**
+     * @default NetworkTimeChanged
+     */
     const MODEM_TIME_SIGNAL_NETWORKTIMECHANGED: string;
 
+    /**
+     * @default CallWaitingQuery
+     */
     const MODEM_VOICE_METHOD_CALLWAITINGQUERY: string;
 
+    /**
+     * @default CallWaitingSetup
+     */
     const MODEM_VOICE_METHOD_CALLWAITINGSETUP: string;
 
+    /**
+     * @default CreateCall
+     */
     const MODEM_VOICE_METHOD_CREATECALL: string;
 
+    /**
+     * @default DeleteCall
+     */
     const MODEM_VOICE_METHOD_DELETECALL: string;
 
+    /**
+     * @default HangupAll
+     */
     const MODEM_VOICE_METHOD_HANGUPALL: string;
 
+    /**
+     * @default HangupAndAccept
+     */
     const MODEM_VOICE_METHOD_HANGUPANDACCEPT: string;
 
+    /**
+     * @default HoldAndAccept
+     */
     const MODEM_VOICE_METHOD_HOLDANDACCEPT: string;
 
+    /**
+     * @default ListCalls
+     */
     const MODEM_VOICE_METHOD_LISTCALLS: string;
 
+    /**
+     * @default Transfer
+     */
     const MODEM_VOICE_METHOD_TRANSFER: string;
 
+    /**
+     * @default Calls
+     */
     const MODEM_VOICE_PROPERTY_CALLS: string;
 
+    /**
+     * @default EmergencyOnly
+     */
     const MODEM_VOICE_PROPERTY_EMERGENCYONLY: string;
 
+    /**
+     * @default CallAdded
+     */
     const MODEM_VOICE_SIGNAL_CALLADDED: string;
 
+    /**
+     * @default CallDeleted
+     */
     const MODEM_VOICE_SIGNAL_CALLDELETED: string;
 
+    /**
+     * @default m3gpp-operator-code
+     */
     const SIMPLE_PROPERTY_3GPP_OPERATOR_CODE: string;
 
+    /**
+     * @default m3gpp-operator-name
+     */
     const SIMPLE_PROPERTY_3GPP_OPERATOR_NAME: string;
 
+    /**
+     * @default m3gpp-registration-state
+     */
     const SIMPLE_PROPERTY_3GPP_REGISTRATION_STATE: string;
 
+    /**
+     * @default m3gpp-subscription-state
+     */
     const SIMPLE_PROPERTY_3GPP_SUBSCRIPTION_STATE: string;
 
+    /**
+     * @default access-technologies
+     */
     const SIMPLE_PROPERTY_ACCESS_TECHNOLOGIES: string;
 
+    /**
+     * @default cdma-cdma1x-registration-state
+     */
     const SIMPLE_PROPERTY_CDMA_CDMA1X_REGISTRATION_STATE: string;
 
+    /**
+     * @default cdma-evdo-registration-state
+     */
     const SIMPLE_PROPERTY_CDMA_EVDO_REGISTRATION_STATE: string;
 
+    /**
+     * @default cdma-nid
+     */
     const SIMPLE_PROPERTY_CDMA_NID: string;
 
+    /**
+     * @default cdma-sid
+     */
     const SIMPLE_PROPERTY_CDMA_SID: string;
 
+    /**
+     * @default current-bands
+     */
     const SIMPLE_PROPERTY_CURRENT_BANDS: string;
 
+    /**
+     * @default signal-quality
+     */
     const SIMPLE_PROPERTY_SIGNAL_QUALITY: string;
 
+    /**
+     * @default state
+     */
     const SIMPLE_PROPERTY_STATE: string;
 
+    /**
+     * @default ChangePin
+     */
     const SIM_METHOD_CHANGEPIN: string;
 
+    /**
+     * @default EnablePin
+     */
     const SIM_METHOD_ENABLEPIN: string;
 
+    /**
+     * @default SendPin
+     */
     const SIM_METHOD_SENDPIN: string;
 
+    /**
+     * @default SendPuk
+     */
     const SIM_METHOD_SENDPUK: string;
 
+    /**
+     * @default SetPreferredNetworks
+     */
     const SIM_METHOD_SETPREFERREDNETWORKS: string;
 
+    /**
+     * @default Active
+     */
     const SIM_PROPERTY_ACTIVE: string;
 
+    /**
+     * @default Eid
+     */
     const SIM_PROPERTY_EID: string;
 
+    /**
+     * @default EmergencyNumbers
+     */
     const SIM_PROPERTY_EMERGENCYNUMBERS: string;
 
+    /**
+     * @default EsimStatus
+     */
     const SIM_PROPERTY_ESIMSTATUS: string;
 
+    /**
+     * @default Gid1
+     */
     const SIM_PROPERTY_GID1: string;
 
+    /**
+     * @default Gid2
+     */
     const SIM_PROPERTY_GID2: string;
 
+    /**
+     * @default Imsi
+     */
     const SIM_PROPERTY_IMSI: string;
 
+    /**
+     * @default OperatorIdentifier
+     */
     const SIM_PROPERTY_OPERATORIDENTIFIER: string;
 
+    /**
+     * @default OperatorName
+     */
     const SIM_PROPERTY_OPERATORNAME: string;
 
+    /**
+     * @default PreferredNetworks
+     */
     const SIM_PROPERTY_PREFERREDNETWORKS: string;
 
+    /**
+     * @default Removability
+     */
     const SIM_PROPERTY_REMOVABILITY: string;
 
+    /**
+     * @default SimIdentifier
+     */
     const SIM_PROPERTY_SIMIDENTIFIER: string;
 
+    /**
+     * @default SimType
+     */
     const SIM_PROPERTY_SIMTYPE: string;
 
+    /**
+     * @default Send
+     */
     const SMS_METHOD_SEND: string;
 
+    /**
+     * @default Store
+     */
     const SMS_METHOD_STORE: string;
 
+    /**
+     * @default Class
+     */
     const SMS_PROPERTY_CLASS: string;
 
+    /**
+     * @default Data
+     */
     const SMS_PROPERTY_DATA: string;
 
+    /**
+     * @default DeliveryReportRequest
+     */
     const SMS_PROPERTY_DELIVERYREPORTREQUEST: string;
 
+    /**
+     * @default DeliveryState
+     */
     const SMS_PROPERTY_DELIVERYSTATE: string;
 
+    /**
+     * @default DischargeTimestamp
+     */
     const SMS_PROPERTY_DISCHARGETIMESTAMP: string;
 
+    /**
+     * @default MessageReference
+     */
     const SMS_PROPERTY_MESSAGEREFERENCE: string;
 
+    /**
+     * @default Number
+     */
     const SMS_PROPERTY_NUMBER: string;
 
+    /**
+     * @default PduType
+     */
     const SMS_PROPERTY_PDUTYPE: string;
 
+    /**
+     * @default ServiceCategory
+     */
     const SMS_PROPERTY_SERVICECATEGORY: string;
 
+    /**
+     * @default SMSC
+     */
     const SMS_PROPERTY_SMSC: string;
 
+    /**
+     * @default State
+     */
     const SMS_PROPERTY_STATE: string;
 
+    /**
+     * @default Storage
+     */
     const SMS_PROPERTY_STORAGE: string;
 
+    /**
+     * @default TeleserviceId
+     */
     const SMS_PROPERTY_TELESERVICEID: string;
 
+    /**
+     * @default Text
+     */
     const SMS_PROPERTY_TEXT: string;
 
+    /**
+     * @default Timestamp
+     */
     const SMS_PROPERTY_TIMESTAMP: string;
 
+    /**
+     * @default Validity
+     */
     const SMS_PROPERTY_VALIDITY: string;
 
     /**
      * Identifier for reporting unknown unlock retries.
      * @since 1.0
+     * @default 999
      */
     const UNLOCK_RETRIES_UNKNOWN: number;
 
@@ -3205,16 +4052,16 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum __3gppProfileCmpFlags {
-        NONE,
-        NO_PROFILE_ID,
-        NO_PROFILE_NAME,
-        NO_AUTH,
-        NO_APN_TYPE,
-        NO_IP_TYPE,
-        NO_ACCESS_TYPE_PREFERENCE,
-        NO_ENABLED,
-        NO_ROAMING_ALLOWANCE,
-        NO_PROFILE_SOURCE,
+        NONE = 0,
+        NO_PROFILE_ID = 2,
+        NO_PROFILE_NAME = 4,
+        NO_AUTH = 8,
+        NO_APN_TYPE = 16,
+        NO_IP_TYPE = 32,
+        NO_ACCESS_TYPE_PREFERENCE = 64,
+        NO_ENABLED = 128,
+        NO_ROAMING_ALLOWANCE = 256,
+        NO_PROFILE_SOURCE = 512,
     }
 
 
@@ -3229,13 +4076,13 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum BearerAllowedAuth {
-        UNKNOWN,
-        NONE,
-        PAP,
-        CHAP,
-        MSCHAP,
-        MSCHAPV2,
-        EAP,
+        UNKNOWN = 0,
+        NONE = 1,
+        PAP = 2,
+        CHAP = 4,
+        MSCHAP = 8,
+        MSCHAPV2 = 16,
+        EAP = 32,
     }
 
 
@@ -3250,21 +4097,21 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum BearerApnType {
-        NONE,
-        INITIAL,
-        DEFAULT,
-        IMS,
-        MMS,
-        MANAGEMENT,
-        VOICE,
-        EMERGENCY,
-        PRIVATE,
-        PURCHASE,
-        VIDEO_SHARE,
-        LOCAL,
-        APP,
-        XCAP,
-        TETHERING,
+        NONE = 0,
+        INITIAL = 1,
+        DEFAULT = 2,
+        IMS = 4,
+        MMS = 8,
+        MANAGEMENT = 16,
+        VOICE = 32,
+        EMERGENCY = 64,
+        PRIVATE = 128,
+        PURCHASE = 256,
+        VIDEO_SHARE = 512,
+        LOCAL = 1024,
+        APP = 2048,
+        XCAP = 4096,
+        TETHERING = 8192,
     }
 
 
@@ -3279,12 +4126,12 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum BearerIpFamily {
-        NONE,
-        IPV4,
-        IPV6,
-        IPV4V6,
-        NON_IP,
-        ANY,
+        NONE = 0,
+        IPV4 = 1,
+        IPV6 = 2,
+        IPV4V6 = 4,
+        NON_IP = 8,
+        ANY = 4294967295,
     }
 
 
@@ -3292,16 +4139,16 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum BearerPropertiesCmpFlags {
-        NONE,
-        LOOSE,
-        NO_PASSWORD,
-        NO_ALLOW_ROAMING,
-        NO_RM_PROTOCOL,
-        NO_APN_TYPE,
-        NO_PROFILE_ID,
-        NO_PROFILE_NAME,
-        NO_ACCESS_TYPE_PREFERENCE,
-        NO_ROAMING_ALLOWANCE,
+        NONE = 0,
+        LOOSE = 1,
+        NO_PASSWORD = 2,
+        NO_ALLOW_ROAMING = 4,
+        NO_RM_PROTOCOL = 8,
+        NO_APN_TYPE = 16,
+        NO_PROFILE_ID = 32,
+        NO_PROFILE_NAME = 64,
+        NO_ACCESS_TYPE_PREFERENCE = 128,
+        NO_ROAMING_ALLOWANCE = 256,
     }
 
 
@@ -3316,10 +4163,10 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum BearerRoamingAllowance {
-        NONE,
-        HOME,
-        PARTNER,
-        NON_PARTNER,
+        NONE = 0,
+        HOME = 1,
+        PARTNER = 2,
+        NON_PARTNER = 4,
     }
 
 
@@ -3334,15 +4181,15 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum Modem3gppFacility {
-        NONE,
-        SIM,
-        FIXED_DIALING,
-        PH_SIM,
-        PH_FSIM,
-        NET_PERS,
-        NET_SUB_PERS,
-        PROVIDER_PERS,
-        CORP_PERS,
+        NONE = 0,
+        SIM = 1,
+        FIXED_DIALING = 2,
+        PH_SIM = 4,
+        PH_FSIM = 8,
+        NET_PERS = 16,
+        NET_SUB_PERS = 32,
+        PROVIDER_PERS = 64,
+        CORP_PERS = 128,
     }
 
 
@@ -3357,26 +4204,26 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemAccessTechnology {
-        UNKNOWN,
-        POTS,
-        GSM,
-        GSM_COMPACT,
-        GPRS,
-        EDGE,
-        UMTS,
-        HSDPA,
-        HSUPA,
-        HSPA,
-        HSPA_PLUS,
-        "1XRTT",
-        EVDO0,
-        EVDOA,
-        EVDOB,
-        LTE,
-        "5GNR",
-        LTE_CAT_M,
-        LTE_NB_IOT,
-        ANY,
+        UNKNOWN = 0,
+        POTS = 1,
+        GSM = 2,
+        GSM_COMPACT = 4,
+        GPRS = 8,
+        EDGE = 16,
+        UMTS = 32,
+        HSDPA = 64,
+        HSUPA = 128,
+        HSPA = 256,
+        HSPA_PLUS = 512,
+        "1XRTT" = 1024,
+        EVDO0 = 2048,
+        EVDOA = 4096,
+        EVDOB = 8192,
+        LTE = 16384,
+        "5GNR" = 32768,
+        LTE_CAT_M = 65536,
+        LTE_NB_IOT = 131072,
+        ANY = 4294967295,
     }
 
 
@@ -3391,15 +4238,15 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemCapability {
-        NONE,
-        POTS,
-        CDMA_EVDO,
-        GSM_UMTS,
-        LTE,
-        IRIDIUM,
-        "5GNR",
-        TDS,
-        ANY,
+        NONE = 0,
+        POTS = 1,
+        CDMA_EVDO = 2,
+        GSM_UMTS = 4,
+        LTE = 8,
+        IRIDIUM = 32,
+        "5GNR" = 64,
+        TDS = 128,
+        ANY = 4294967295,
     }
 
 
@@ -3414,14 +4261,14 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemFirmwareUpdateMethod {
-        NONE,
-        FASTBOOT,
-        QMI_PDC,
-        MBIM_QDU,
-        FIREHOSE,
-        SAHARA,
-        DFOTA,
-        CINTERION_FDL,
+        NONE = 0,
+        FASTBOOT = 1,
+        QMI_PDC = 2,
+        MBIM_QDU = 4,
+        FIREHOSE = 8,
+        SAHARA = 16,
+        DFOTA = 32,
+        CINTERION_FDL = 64,
     }
 
 
@@ -3436,8 +4283,8 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemLocationAssistanceDataType {
-        NONE,
-        XTRA,
+        NONE = 0,
+        XTRA = 1,
     }
 
 
@@ -3452,14 +4299,14 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemLocationSource {
-        NONE,
-        "3GPP_LAC_CI",
-        GPS_RAW,
-        GPS_NMEA,
-        CDMA_BS,
-        GPS_UNMANAGED,
-        AGPS_MSA,
-        AGPS_MSB,
+        NONE = 0,
+        "3GPP_LAC_CI" = 1,
+        GPS_RAW = 2,
+        GPS_NMEA = 4,
+        CDMA_BS = 8,
+        GPS_UNMANAGED = 16,
+        AGPS_MSA = 32,
+        AGPS_MSB = 64,
     }
 
 
@@ -3474,13 +4321,13 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum ModemMode {
-        NONE,
-        CS,
-        "2G",
-        "3G",
-        "4G",
-        "5G",
-        ANY,
+        NONE = 0,
+        CS = 1,
+        "2G" = 2,
+        "3G" = 4,
+        "4G" = 8,
+        "5G" = 16,
+        ANY = 4294967295,
     }
 
 
@@ -3495,10 +4342,10 @@ export namespace ModemManager {
      * @gir-type Flags
      */
     enum OmaFeature {
-        NONE,
-        DEVICE_PROVISIONING,
-        PRL_UPDATE,
-        HANDS_FREE_ACTIVATION,
+        NONE = 0,
+        DEVICE_PROVISIONING = 1,
+        PRL_UPDATE = 2,
+        HANDS_FREE_ACTIVATION = 4,
     }
 
 
@@ -3551,12 +4398,14 @@ export namespace ModemManager {
         /**
          * @param key 
          * @param value 
+         * @throws GLib.Error
          */
         consume_string(key: string, value: string): boolean;
 
         /**
          * @param key 
          * @param value 
+         * @throws GLib.Error
          */
         consume_variant(key: string, value: GLib.Variant): boolean;
 
@@ -3856,6 +4705,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_bearer_connect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -3868,6 +4718,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3932,6 +4783,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_bearer_disconnect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -3944,6 +4796,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4497,6 +5350,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4506,6 +5360,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Bearer;
 
@@ -4605,6 +5460,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -4614,6 +5470,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_connect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4653,6 +5510,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -4662,6 +5520,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_disconnect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5293,6 +6152,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_accept()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -5306,6 +6166,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5370,6 +6231,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_deflect()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -5384,6 +6246,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         deflect_sync(number: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5535,6 +6398,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_hangup()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -5548,6 +6412,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5603,6 +6468,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_join_multiparty()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -5614,6 +6480,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5672,6 +6539,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_leave_multiparty()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -5684,6 +6552,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5761,6 +6630,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_send_dtmf()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -5775,6 +6645,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         send_dtmf_sync(dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5833,6 +6704,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_call_start()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         start_finish(res: Gio.AsyncResult): boolean;
 
@@ -5846,6 +6718,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6084,6 +6957,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6093,6 +6967,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Call;
 
@@ -6192,6 +7067,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -6201,6 +7077,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6243,6 +7120,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_deflect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_deflect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -6253,6 +7131,7 @@ export namespace ModemManager {
          * @param arg_number Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_sync(arg_number: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6292,6 +7171,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_hangup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_hangup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -6301,6 +7181,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_hangup()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6340,6 +7221,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_join_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_join_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -6349,6 +7231,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_join_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6388,6 +7271,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_leave_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_leave_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -6397,6 +7281,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_leave_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6439,6 +7324,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_send_dtmf()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_send_dtmf()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -6449,6 +7335,7 @@ export namespace ModemManager {
          * @param arg_dtmf Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_sync(arg_dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6488,6 +7375,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -6497,6 +7385,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_start()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7141,6 +8030,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7150,6 +8040,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Cbm;
 
@@ -7329,6 +8220,7 @@ export namespace ModemManager {
          * @param mdn The MDN string, maximum 15 characters.
          * @returns `true` if the MDN was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_mdn(mdn: string): boolean;
 
@@ -7337,6 +8229,7 @@ export namespace ModemManager {
          * @param min The MIN string, maximum 15 characters.
          * @returns `true` if the MIN was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_min(min: string): boolean;
 
@@ -7345,6 +8238,7 @@ export namespace ModemManager {
          * @param mn_aaa_key The MN-AAA key string, maximum 16 characters.
          * @returns `true` if the MN-AAA key was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_mn_aaa_key(mn_aaa_key: string): boolean;
 
@@ -7353,6 +8247,7 @@ export namespace ModemManager {
          * @param mn_ha_key The MN-HA key string, maximum 16 characters.
          * @returns `true` if the MN-HA key was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_mn_ha_key(mn_ha_key: string): boolean;
 
@@ -7362,6 +8257,7 @@ export namespace ModemManager {
          * @param prl_length Length of `prl`.
          * @returns `true` if the PRL was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_prl(prl: number, prl_length: bigint | number): boolean;
 
@@ -7370,6 +8266,7 @@ export namespace ModemManager {
          * @param prl A {@link GLib.ByteArray} with the PRL to set. This method takes a new reference  of `prl`.
          * @returns `true` if the PRL was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_prl_bytearray(prl: Uint8Array | string): boolean;
 
@@ -7385,6 +8282,7 @@ export namespace ModemManager {
          * @param spc The SPC string, exactly 6 digits.
          * @returns `true` if the SPC was successfully set, or `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         set_spc(spc: string): boolean;
     }
@@ -8817,6 +9715,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8826,6 +9725,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusBearerProxy;
 
@@ -8990,6 +9890,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9074,6 +9975,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -9083,6 +9985,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_connect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9122,6 +10025,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -9131,6 +10035,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_disconnect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9525,6 +10430,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -9534,6 +10440,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_connect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9573,6 +10480,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -9582,6 +10490,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_disconnect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9973,6 +10882,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9982,6 +10892,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusCallProxy;
 
@@ -10146,6 +11057,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10230,6 +11142,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -10239,6 +11152,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10281,6 +11195,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_deflect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_deflect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -10291,6 +11206,7 @@ export namespace ModemManager {
          * @param arg_number Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_sync(arg_number: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10330,6 +11246,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_hangup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_hangup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -10339,6 +11256,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_hangup()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10378,6 +11296,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_join_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_join_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -10387,6 +11306,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_join_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10426,6 +11346,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_leave_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_leave_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -10435,6 +11356,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_leave_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10477,6 +11399,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_send_dtmf()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_send_dtmf()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -10487,6 +11410,7 @@ export namespace ModemManager {
          * @param arg_dtmf Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_sync(arg_dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10526,6 +11450,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -10535,6 +11460,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_start()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10936,6 +11862,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -10945,6 +11872,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10987,6 +11915,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_deflect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_deflect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -10997,6 +11926,7 @@ export namespace ModemManager {
          * @param arg_number Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_sync(arg_number: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11036,6 +11966,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_hangup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_hangup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -11045,6 +11976,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_hangup()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11084,6 +12016,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_join_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_join_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -11093,6 +12026,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_join_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11132,6 +12066,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_leave_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_leave_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -11141,6 +12076,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_leave_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11183,6 +12119,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_send_dtmf()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_send_dtmf()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -11193,6 +12130,7 @@ export namespace ModemManager {
          * @param arg_dtmf Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_sync(arg_dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11232,6 +12170,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -11241,6 +12180,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_start()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11699,6 +12639,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11708,6 +12649,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusCbmProxy;
 
@@ -11872,6 +12814,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12379,6 +13322,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12388,6 +13332,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppProfileManagerProxy;
 
@@ -12552,6 +13497,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12639,6 +13585,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -12649,6 +13596,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12688,6 +13636,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -12697,6 +13646,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_profile_manager_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -12739,6 +13689,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -12749,6 +13700,7 @@ export namespace ModemManager {
          * @param arg_requested_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_sync(arg_requested_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -12992,6 +13944,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -13002,6 +13955,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13041,6 +13995,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -13050,6 +14005,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_profile_manager_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -13092,6 +14048,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -13102,6 +14059,7 @@ export namespace ModemManager {
          * @param arg_requested_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_sync(arg_requested_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -13664,6 +14622,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -13673,6 +14632,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppProxy;
 
@@ -13837,6 +14797,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -13924,6 +14885,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -13934,6 +14896,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13976,6 +14939,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_register()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_register()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_finish(res: Gio.AsyncResult): boolean;
 
@@ -13986,6 +14950,7 @@ export namespace ModemManager {
          * @param arg_operator_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_sync(arg_operator_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14025,6 +14990,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_scan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_scan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -14034,6 +15000,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_call_scan()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -14076,6 +15043,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -14086,6 +15054,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14128,6 +15097,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -14138,6 +15108,7 @@ export namespace ModemManager {
          * @param arg_mode Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_sync(arg_mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14180,6 +15151,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -14190,6 +15162,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14232,6 +15205,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -14242,6 +15216,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14284,6 +15259,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -14294,6 +15270,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14830,6 +15807,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -14840,6 +15818,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14882,6 +15861,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_register()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_register()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_finish(res: Gio.AsyncResult): boolean;
 
@@ -14892,6 +15872,7 @@ export namespace ModemManager {
          * @param arg_operator_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_sync(arg_operator_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14931,6 +15912,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_scan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_scan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -14940,6 +15922,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_call_scan()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -14982,6 +15965,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -14992,6 +15976,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15034,6 +16019,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -15044,6 +16030,7 @@ export namespace ModemManager {
          * @param arg_mode Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_sync(arg_mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15086,6 +16073,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -15096,6 +16084,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15138,6 +16127,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -15148,6 +16138,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15190,6 +16181,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -15200,6 +16192,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -15637,6 +16630,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -15646,6 +16640,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModem3gppUssdProxy;
 
@@ -15810,6 +16805,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15894,6 +16890,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -15903,6 +16900,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_ussd_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -15945,6 +16943,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -15955,6 +16954,7 @@ export namespace ModemManager {
          * @param arg_command Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_sync(arg_command: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -15997,6 +16997,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -16007,6 +17008,7 @@ export namespace ModemManager {
          * @param arg_response Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_sync(arg_response: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -16268,6 +17270,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -16277,6 +17280,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_ussd_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16319,6 +17323,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -16329,6 +17334,7 @@ export namespace ModemManager {
          * @param arg_command Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_sync(arg_command: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -16371,6 +17377,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -16381,6 +17388,7 @@ export namespace ModemManager {
          * @param arg_response Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_sync(arg_response: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -16793,6 +17801,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -16802,6 +17811,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemCdmaProxy;
 
@@ -16966,6 +17976,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17053,6 +18064,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -17095,6 +18107,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -17105,6 +18118,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17115,6 +18129,7 @@ export namespace ModemManager {
          * @param arg_carrier_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_sync(arg_carrier_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17433,6 +18448,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -17475,6 +18491,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -17485,6 +18502,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17495,6 +18513,7 @@ export namespace ModemManager {
          * @param arg_carrier_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_sync(arg_carrier_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17829,6 +18848,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17838,6 +18858,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemCellBroadcastProxy;
 
@@ -18002,6 +19023,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18089,6 +19111,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -18099,6 +19122,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18138,6 +19162,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -18147,6 +19172,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_cell_broadcast_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -18189,6 +19215,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -18199,6 +19226,7 @@ export namespace ModemManager {
          * @param arg_channels Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_sync(arg_channels: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18464,6 +19492,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -18474,6 +19503,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18513,6 +19543,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -18522,6 +19553,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_cell_broadcast_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -18564,6 +19596,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -18574,6 +19607,7 @@ export namespace ModemManager {
          * @param arg_channels Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_sync(arg_channels: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18923,6 +19957,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18932,6 +19967,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemFirmwareProxy;
 
@@ -19096,6 +20132,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19180,6 +20217,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
 
@@ -19189,6 +20227,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_firmware_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
 
@@ -19231,6 +20270,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_select()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_select()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_finish(res: Gio.AsyncResult): boolean;
 
@@ -19241,6 +20281,7 @@ export namespace ModemManager {
          * @param arg_uniqueid Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_sync(arg_uniqueid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19452,6 +20493,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
 
@@ -19461,6 +20503,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_firmware_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
 
@@ -19503,6 +20546,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_select()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_select()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_finish(res: Gio.AsyncResult): boolean;
 
@@ -19513,6 +20557,7 @@ export namespace ModemManager {
          * @param arg_uniqueid Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_sync(arg_uniqueid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19937,6 +20982,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -19946,6 +20992,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemLocationProxy;
 
@@ -20110,6 +21157,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -20194,6 +21242,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_get_location()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_get_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -20203,6 +21252,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_location_call_get_location()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -20245,6 +21295,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -20255,6 +21306,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20297,6 +21349,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -20307,6 +21360,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20349,6 +21403,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_supl_server()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_supl_server()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -20359,6 +21414,7 @@ export namespace ModemManager {
          * @param arg_supl Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_sync(arg_supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20404,6 +21460,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -20415,6 +21472,7 @@ export namespace ModemManager {
          * @param arg_signal_location Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_sources: number, arg_signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20790,6 +21848,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_get_location()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_get_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -20799,6 +21858,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_location_call_get_location()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -20841,6 +21901,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -20851,6 +21912,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20893,6 +21955,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -20903,6 +21966,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20945,6 +22009,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_supl_server()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_supl_server()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -20955,6 +22020,7 @@ export namespace ModemManager {
          * @param arg_supl Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_sync(arg_supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21000,6 +22066,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -21011,6 +22078,7 @@ export namespace ModemManager {
          * @param arg_signal_location Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_sources: number, arg_signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21398,6 +22466,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -21407,6 +22476,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemMessagingProxy;
 
@@ -21571,6 +22641,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21658,6 +22729,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_create()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -21668,6 +22740,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -21710,6 +22783,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -21720,6 +22794,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21759,6 +22834,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -21768,6 +22844,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_messaging_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -21810,6 +22887,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -21820,6 +22898,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22125,6 +23204,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_create()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -22135,6 +23215,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -22177,6 +23258,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -22187,6 +23269,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22226,6 +23309,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -22235,6 +23319,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_messaging_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -22277,6 +23362,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -22287,6 +23373,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -22708,6 +23795,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -22717,6 +23805,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemOmaProxy;
 
@@ -22881,6 +23970,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -22971,6 +24061,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -22982,6 +24073,7 @@ export namespace ModemManager {
          * @param arg_accept Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_sync(arg_session_id: number, arg_accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23021,6 +24113,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_cancel_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_cancel_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -23030,6 +24123,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_oma_call_cancel_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -23072,6 +24166,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -23082,6 +24177,7 @@ export namespace ModemManager {
          * @param arg_features Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_features: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23124,6 +24220,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -23134,6 +24231,7 @@ export namespace ModemManager {
          * @param arg_session_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_sync(arg_session_type: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23452,6 +24550,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -23463,6 +24562,7 @@ export namespace ModemManager {
          * @param arg_accept Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_sync(arg_session_id: number, arg_accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23502,6 +24602,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_cancel_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_cancel_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -23511,6 +24612,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_oma_call_cancel_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -23553,6 +24655,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -23563,6 +24666,7 @@ export namespace ModemManager {
          * @param arg_features Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_features: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -23605,6 +24709,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -23615,6 +24720,7 @@ export namespace ModemManager {
          * @param arg_session_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_sync(arg_session_type: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24577,6 +25683,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -24586,6 +25693,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemProxy;
 
@@ -24750,6 +25858,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -24840,6 +25949,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_command()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_command()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -24851,6 +25961,7 @@ export namespace ModemManager {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_sync(arg_cmd: string, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -24893,6 +26004,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_create_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_create_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -24903,6 +26015,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -24945,6 +26058,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_delete_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_delete_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -24955,6 +26069,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -24997,6 +26112,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -25007,6 +26123,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25049,6 +26166,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_factory_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_factory_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -25059,6 +26177,7 @@ export namespace ModemManager {
          * @param arg_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_sync(arg_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25098,6 +26217,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_get_cell_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_get_cell_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -25107,6 +26227,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_get_cell_info()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -25146,6 +26267,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_list_bearers()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_list_bearers()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -25155,6 +26277,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_list_bearers()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -25194,6 +26317,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -25203,6 +26327,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_reset()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -25245,6 +26370,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_bands()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_bands()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -25255,6 +26381,7 @@ export namespace ModemManager {
          * @param arg_bands Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_sync(arg_bands: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25297,6 +26424,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_capabilities()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_capabilities()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -25307,6 +26435,7 @@ export namespace ModemManager {
          * @param arg_capabilities Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_sync(arg_capabilities: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25349,6 +26478,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_modes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_modes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -25359,6 +26489,7 @@ export namespace ModemManager {
          * @param arg_modes Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_sync(arg_modes: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25401,6 +26532,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_power_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_power_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -25411,6 +26543,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25453,6 +26586,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -25463,6 +26597,7 @@ export namespace ModemManager {
          * @param arg_sim_slot Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_sync(arg_sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -25978,6 +27113,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -25987,6 +27123,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSarProxy;
 
@@ -26151,6 +27288,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -26238,6 +27376,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -26248,6 +27387,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26290,6 +27430,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_set_power_level()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_set_power_level()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_finish(res: Gio.AsyncResult): boolean;
 
@@ -26300,6 +27441,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_sync(arg_level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26526,6 +27668,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -26536,6 +27679,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26578,6 +27722,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_set_power_level()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_set_power_level()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_finish(res: Gio.AsyncResult): boolean;
 
@@ -26588,6 +27733,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_sync(arg_level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26989,6 +28135,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -26998,6 +28145,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSignalProxy;
 
@@ -27162,6 +28310,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -27249,6 +28398,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -27259,6 +28409,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27301,6 +28452,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -27311,6 +28463,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27618,6 +28771,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -27628,6 +28782,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27670,6 +28825,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -27680,6 +28836,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -27968,6 +29125,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -27977,6 +29135,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemSimpleProxy;
 
@@ -28141,6 +29300,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -28228,6 +29388,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28238,6 +29399,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28280,6 +29442,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -28290,6 +29453,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28329,6 +29493,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_get_status()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_get_status()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -28338,6 +29503,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_simple_call_get_status()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -28549,6 +29715,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -28559,6 +29726,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -28601,6 +29769,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -28611,6 +29780,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -28650,6 +29820,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_get_status()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_get_status()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -28659,6 +29830,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_simple_call_get_status()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -29498,6 +30670,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_command()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_command()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -29509,6 +30682,7 @@ export namespace ModemManager {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_sync(arg_cmd: string, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -29551,6 +30725,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_create_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_create_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -29561,6 +30736,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -29603,6 +30779,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_delete_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_delete_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -29613,6 +30790,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29655,6 +30833,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -29665,6 +30844,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29707,6 +30887,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_factory_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_factory_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -29717,6 +30898,7 @@ export namespace ModemManager {
          * @param arg_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_sync(arg_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29756,6 +30938,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_get_cell_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_get_cell_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -29765,6 +30948,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_get_cell_info()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -29804,6 +30988,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_list_bearers()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_list_bearers()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -29813,6 +30998,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_list_bearers()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -29852,6 +31038,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -29861,6 +31048,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_reset()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -29903,6 +31091,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_bands()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_bands()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -29913,6 +31102,7 @@ export namespace ModemManager {
          * @param arg_bands Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_sync(arg_bands: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -29955,6 +31145,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_capabilities()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_capabilities()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -29965,6 +31156,7 @@ export namespace ModemManager {
          * @param arg_capabilities Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_sync(arg_capabilities: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -30007,6 +31199,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_modes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_modes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -30017,6 +31210,7 @@ export namespace ModemManager {
          * @param arg_modes Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_sync(arg_modes: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -30059,6 +31253,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_power_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_power_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -30069,6 +31264,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -30111,6 +31307,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -30121,6 +31318,7 @@ export namespace ModemManager {
          * @param arg_sim_slot Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_sync(arg_sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -30623,6 +31821,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -30632,6 +31831,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemTimeProxy;
 
@@ -30796,6 +31996,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -30880,6 +32081,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_time_call_get_network_time()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_time_call_get_network_time()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -30889,6 +32091,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_time_call_get_network_time()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -31096,6 +32299,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_time_call_get_network_time()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_time_call_get_network_time()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -31105,6 +32309,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_time_call_get_network_time()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -31421,6 +32626,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -31430,6 +32636,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusModemVoiceProxy;
 
@@ -31594,6 +32801,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -31678,6 +32886,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -31687,6 +32896,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_call_waiting_query()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_sync(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -31729,6 +32939,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -31739,6 +32950,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -31781,6 +32993,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_create_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_create_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -31791,6 +33004,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -31833,6 +33047,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_delete_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_delete_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -31843,6 +33058,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -31882,6 +33098,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_all()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_all()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -31891,6 +33108,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_all()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -31930,6 +33148,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -31939,6 +33158,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -31978,6 +33198,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -31987,6 +33208,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hold_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32026,6 +33248,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_list_calls()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_list_calls()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -32035,6 +33258,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_list_calls()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -32074,6 +33298,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_transfer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_transfer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -32083,6 +33308,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_transfer()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32440,6 +33666,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -32449,6 +33676,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_call_waiting_query()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_sync(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -32491,6 +33719,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -32501,6 +33730,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -32543,6 +33773,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_create_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_create_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -32553,6 +33784,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -32595,6 +33827,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_delete_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_delete_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -32605,6 +33838,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -32644,6 +33878,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_all()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_all()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -32653,6 +33888,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_all()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32692,6 +33928,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -32701,6 +33938,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32740,6 +33978,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -32749,6 +33988,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hold_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -32788,6 +34028,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_list_calls()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_list_calls()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -32797,6 +34038,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_list_calls()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -32836,6 +34078,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_transfer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_transfer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -32845,6 +34088,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_transfer()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -33277,6 +34521,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -33286,6 +34531,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusObjectManagerClient;
 
@@ -33485,6 +34731,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -34819,6 +36066,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -34828,6 +36076,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusOrgFreedesktopModemManager1Proxy;
 
@@ -34992,6 +36241,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35082,6 +36332,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -35093,6 +36344,7 @@ export namespace ModemManager {
          * @param arg_inhibit Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_sync(arg_uid: string, arg_inhibit: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35135,6 +36387,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_finish(res: Gio.AsyncResult): boolean;
 
@@ -35145,6 +36398,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35184,6 +36438,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_finish(res: Gio.AsyncResult): boolean;
 
@@ -35193,6 +36448,7 @@ export namespace ModemManager {
          * See `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35235,6 +36491,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_finish(res: Gio.AsyncResult): boolean;
 
@@ -35245,6 +36502,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_sync(arg_level: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35485,6 +36743,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -35496,6 +36755,7 @@ export namespace ModemManager {
          * @param arg_inhibit Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_sync(arg_uid: string, arg_inhibit: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35538,6 +36798,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_finish(res: Gio.AsyncResult): boolean;
 
@@ -35548,6 +36809,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -35587,6 +36849,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_finish(res: Gio.AsyncResult): boolean;
 
@@ -35596,6 +36859,7 @@ export namespace ModemManager {
          * See `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -35638,6 +36902,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_finish(res: Gio.AsyncResult): boolean;
 
@@ -35648,6 +36913,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_sync(arg_level: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36175,6 +37441,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -36184,6 +37451,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusSimProxy;
 
@@ -36348,6 +37616,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -36438,6 +37707,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_change_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_change_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -36449,6 +37719,7 @@ export namespace ModemManager {
          * @param arg_new_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_sync(arg_old_pin: string, arg_new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36494,6 +37765,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_enable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_enable_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -36505,6 +37777,7 @@ export namespace ModemManager {
          * @param arg_enabled Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_sync(arg_pin: string, arg_enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36547,6 +37820,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -36557,6 +37831,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_sync(arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36602,6 +37877,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_puk()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_puk()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -36613,6 +37889,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -36655,6 +37932,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_set_preferred_networks()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_set_preferred_networks()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -36665,6 +37943,7 @@ export namespace ModemManager {
          * @param arg_preferred_networks Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_sync(arg_preferred_networks: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37120,6 +38399,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_change_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_change_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -37131,6 +38411,7 @@ export namespace ModemManager {
          * @param arg_new_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_sync(arg_old_pin: string, arg_new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37176,6 +38457,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_enable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_enable_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -37187,6 +38469,7 @@ export namespace ModemManager {
          * @param arg_enabled Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_sync(arg_pin: string, arg_enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37229,6 +38512,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -37239,6 +38523,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_sync(arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37284,6 +38569,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_puk()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_puk()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -37295,6 +38581,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37337,6 +38624,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_set_preferred_networks()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_set_preferred_networks()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -37347,6 +38635,7 @@ export namespace ModemManager {
          * @param arg_preferred_networks Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_sync(arg_preferred_networks: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -37930,6 +39219,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -37939,6 +39229,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GdbusSmsProxy;
 
@@ -38103,6 +39394,7 @@ export namespace ModemManager {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -38187,6 +39479,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_send()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_send()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_finish(res: Gio.AsyncResult): boolean;
 
@@ -38196,6 +39489,7 @@ export namespace ModemManager {
          * See `mm_gdbus_sms_call_send()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -38238,6 +39532,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_store()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_store()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_finish(res: Gio.AsyncResult): boolean;
 
@@ -38248,6 +39543,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -38682,6 +39978,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_send()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_send()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_finish(res: Gio.AsyncResult): boolean;
 
@@ -38691,6 +39988,7 @@ export namespace ModemManager {
          * See `mm_gdbus_sms_call_send()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -38733,6 +40031,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_store()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_store()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_finish(res: Gio.AsyncResult): boolean;
 
@@ -38743,6 +40042,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39376,6 +40676,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_inhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         inhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -39396,6 +40697,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         inhibit_device_sync(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39461,6 +40763,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_report_kernel_event()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         report_kernel_event_finish(res: Gio.AsyncResult): boolean;
 
@@ -39475,6 +40778,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         report_kernel_event_sync(properties: KernelEventProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39530,6 +40834,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_scan_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         scan_devices_finish(res: Gio.AsyncResult): boolean;
 
@@ -39542,6 +40847,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         scan_devices_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -39600,6 +40906,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_set_logging()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_logging_finish(res: Gio.AsyncResult): boolean;
 
@@ -39613,6 +40920,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_logging_sync(level: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39689,6 +40997,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_manager_uninhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         uninhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -39707,6 +41016,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         uninhibit_device_sync(uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -39847,6 +41157,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -39856,6 +41167,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Manager;
 
@@ -40086,6 +41398,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_command()`.
          * @returns A newly allocated string with the reply to the command, or `NULL` if `error` is set. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         command_finish(res: Gio.AsyncResult): string;
 
@@ -40099,6 +41412,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly allocated string with the reply to the command, or `NULL` if `error` is set. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         command_sync(cmd: string, timeout: number, cancellable: Gio.Cancellable | null): string;
 
@@ -40175,6 +41489,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_create_bearer()`.
          * @returns A newly created {@link ModemManager.Bearer}, or `null` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         create_bearer_finish(res: Gio.AsyncResult): Bearer;
 
@@ -40193,6 +41508,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Bearer}, or `null` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         create_bearer_sync(properties: BearerProperties, cancellable: Gio.Cancellable | null): Bearer;
 
@@ -40251,6 +41567,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_delete_bearer()`.
          * @returns `true` if the bearer was deleted, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -40263,6 +41580,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the bearer was deleted, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         delete_bearer_sync(bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40321,6 +41639,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_disable()`.
          * @returns `true` if the modem was properly disabled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_finish(res: Gio.AsyncResult): boolean;
 
@@ -40333,6 +41652,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was properly disabled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40543,6 +41863,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_enable()`.
          * @returns `true` if the modem was properly enabled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -40556,6 +41877,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was properly enabled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -40617,6 +41939,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_factory_reset()`.
          * @returns `true` if the factory_reset was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -40630,6 +41953,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the factory reset was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         factory_reset_sync(code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -40728,6 +42052,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_get_cell_info()`.
          * @returns a list of {@link ModemManager.CellInfo} objects, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.20
+         * @throws GLib.Error
          */
         get_cell_info_finish(res: Gio.AsyncResult): CellInfo[];
 
@@ -40739,6 +42064,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a list of {@link ModemManager.CellInfo} objects, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.20
+         * @throws GLib.Error
          */
         get_cell_info_sync(cancellable: Gio.Cancellable | null): CellInfo[];
 
@@ -41025,6 +42351,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_get_sim()`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_sim_finish(res: Gio.AsyncResult): Sim;
 
@@ -41050,6 +42377,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_sim_sync(cancellable: Gio.Cancellable | null): Sim;
 
@@ -41173,6 +42501,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_list_bearers()`.
          * @returns The list of {@link ModemManager.Bearer} objects, or `null` if either none found or if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_bearers_finish(res: Gio.AsyncResult): Bearer[];
 
@@ -41184,6 +42513,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The list of {@link ModemManager.Bearer} objects, or `null` if either none found or if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_bearers_sync(cancellable: Gio.Cancellable | null): Bearer[];
 
@@ -41251,6 +42581,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_list_sim_slots()`.
          * @returns The array of {@link ModemManager.Sim} objects, or `null` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         list_sim_slots_finish(res: Gio.AsyncResult): Sim[];
 
@@ -41266,6 +42597,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The array of {@link ModemManager.Sim} objects, or `null` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         list_sim_slots_sync(cancellable: Gio.Cancellable | null): Sim[];
 
@@ -41380,6 +42712,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_reset()`.
          * @returns `true` if the reset was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -41392,6 +42725,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the reset was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -41456,6 +42790,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_bands()`.
          * @returns `true` if the bands were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -41470,6 +42805,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the bands were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_bands_sync(bands: ModemBand, n_bands: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41534,6 +42870,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_capabilities()`.
          * @returns `true` if the capabilities were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -41548,6 +42885,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the capabilities were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_capabilities_sync(capabilities: ModemCapability, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41612,6 +42950,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_current_modes()`.
          * @returns `true` if the allowed modes were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -41626,6 +42965,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the allowed modes were successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_current_modes_sync(modes: ModemMode, preferred: ModemMode, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41687,6 +43027,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_power_state()`.
          * @returns `true` if the power state was successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -41700,6 +43041,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the power state was successfully set, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_power_state_sync(state: ModemPowerState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -41758,6 +43100,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_set_primary_sim_slot()`.
          * @returns `true` if the SIM slot switch has been successfully requested, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -41770,6 +43113,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the SIM slot switch has been successfully requested, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         set_primary_sim_slot_sync(sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42499,6 +43843,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -42508,6 +43853,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Modem;
 
@@ -42613,6 +43959,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_command()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_command()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42624,6 +43971,7 @@ export namespace ModemManager {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_sync(arg_cmd: string, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -42666,6 +44014,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_create_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_create_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -42676,6 +44025,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -42718,6 +44068,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_delete_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_delete_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -42728,6 +44079,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42770,6 +44122,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -42780,6 +44133,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42822,6 +44176,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_factory_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_factory_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -42832,6 +44187,7 @@ export namespace ModemManager {
          * @param arg_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_sync(arg_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -42871,6 +44227,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_get_cell_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_get_cell_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -42880,6 +44237,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_get_cell_info()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -42919,6 +44277,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_list_bearers()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_list_bearers()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -42928,6 +44287,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_list_bearers()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -42967,6 +44327,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -42976,6 +44337,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_reset()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -43018,6 +44380,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_bands()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_bands()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -43028,6 +44391,7 @@ export namespace ModemManager {
          * @param arg_bands Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_sync(arg_bands: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43070,6 +44434,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_capabilities()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_capabilities()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -43080,6 +44445,7 @@ export namespace ModemManager {
          * @param arg_capabilities Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_sync(arg_capabilities: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43122,6 +44488,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_modes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_modes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -43132,6 +44499,7 @@ export namespace ModemManager {
          * @param arg_modes Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_sync(arg_modes: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43174,6 +44542,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_power_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_power_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -43184,6 +44553,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43226,6 +44596,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -43236,6 +44607,7 @@ export namespace ModemManager {
          * @param arg_sim_slot Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_sync(arg_sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43587,6 +44959,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_disable_facility_lock()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -43601,6 +44974,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         disable_facility_lock_sync(facility: Modem3gppFacility, control_key: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -43734,6 +45108,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_get_initial_eps_bearer()`.
          * @returns a {@link ModemManager.Sim} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.10
+         * @throws GLib.Error
          */
         get_initial_eps_bearer_finish(res: Gio.AsyncResult): Bearer;
 
@@ -43760,6 +45135,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a {@link ModemManager.Bearer} or `NULL` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.10
+         * @throws GLib.Error
          */
         get_initial_eps_bearer_sync(cancellable: Gio.Cancellable | null): Bearer;
 
@@ -43959,6 +45335,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_register()`.
          * @returns `true` if the modem was registered, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         register_finish(res: Gio.AsyncResult): boolean;
 
@@ -43971,6 +45348,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem was registered, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         register_sync(network_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44026,6 +45404,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_scan()`.
          * @returns a list of {@link ModemManager.Modem3gppNetwork} structs, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `mm_modem_3gpp_network_free()` as {@link GLib.DestroyNotify} function.
          * @since 1.0
+         * @throws GLib.Error
          */
         scan_finish(res: Gio.AsyncResult): Modem3gppNetwork[];
 
@@ -44037,6 +45416,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns a list of {@link ModemManager.Modem3gppNetwork} structs, or `NULL` if `error` is set. The returned value should be freed with `g_list_free_full()` using `mm_modem_3gpp_network_free()` as {@link GLib.DestroyNotify} function.
          * @since 1.0
+         * @throws GLib.Error
          */
         scan_sync(cancellable: Gio.Cancellable | null): Modem3gppNetwork[];
 
@@ -44098,6 +45478,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
          * @since 1.22
+         * @throws GLib.Error
          */
         set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -44110,6 +45491,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the carrier network info is successfully send, `false` if `error` is set.
          * @since 1.22
+         * @throws GLib.Error
          */
         set_carrier_lock_sync(data: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44174,6 +45556,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_eps_ue_mode_operation()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -44187,6 +45570,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         set_eps_ue_mode_operation_sync(mode: Modem3gppEpsUeModeOperation, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44240,6 +45624,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_initial_eps_bearer_settings()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -44253,6 +45638,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         set_initial_eps_bearer_settings_sync(config: BearerProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44311,6 +45697,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_nr5g_registration_settings()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -44324,6 +45711,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         set_nr5g_registration_settings_sync(settings: Nr5gRegistrationSettings, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44385,6 +45773,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_set_packet_service_state()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -44398,6 +45787,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         set_packet_service_state_sync(state: Modem3gppPacketServiceState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44771,6 +46161,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -44780,6 +46171,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Modem3gpp;
 
@@ -44882,6 +46274,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -44892,6 +46285,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44934,6 +46328,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_register()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_register()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_finish(res: Gio.AsyncResult): boolean;
 
@@ -44944,6 +46339,7 @@ export namespace ModemManager {
          * @param arg_operator_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_sync(arg_operator_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -44983,6 +46379,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_scan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_scan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -44992,6 +46389,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_call_scan()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -45034,6 +46432,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -45044,6 +46443,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45086,6 +46486,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -45096,6 +46497,7 @@ export namespace ModemManager {
          * @param arg_mode Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_sync(arg_mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45138,6 +46540,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -45148,6 +46551,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45190,6 +46594,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -45200,6 +46605,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45242,6 +46648,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -45252,6 +46659,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45507,6 +46915,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_delete()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -45523,6 +46932,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         delete_sync(profile: __3gppProfile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -45612,6 +47022,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_list()`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         list_finish(res: Gio.AsyncResult): [boolean, __3gppProfile[] | null];
 
@@ -45624,6 +47035,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         list_sync(cancellable: Gio.Cancellable | null): [boolean, __3gppProfile[] | null];
 
@@ -45703,6 +47115,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_profile_manager_set()`.
          * @returns A {@link ModemManager.__3gppProfile} with the stored settings, or `null` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_finish(res: Gio.AsyncResult): __3gppProfile;
 
@@ -45720,6 +47133,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.__3gppProfile} with the stored settings, or `null` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_sync(requested: __3gppProfile, cancellable: Gio.Cancellable | null): __3gppProfile;
 
@@ -45880,6 +47294,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -45889,6 +47304,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Modem3gppProfileManager;
 
@@ -45991,6 +47407,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -46001,6 +47418,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -46040,6 +47458,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -46049,6 +47468,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_profile_manager_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -46091,6 +47511,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -46101,6 +47522,7 @@ export namespace ModemManager {
          * @param arg_requested_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_sync(arg_requested_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -46278,6 +47700,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_cancel()`.
          * @returns `true` if the session was successfully cancelled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -46290,6 +47713,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was successfully cancelled, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -46424,6 +47848,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_initiate()`.
          * @returns The response from the network, if any. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         initiate_finish(res: Gio.AsyncResult): string;
 
@@ -46441,6 +47866,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The response from the network, if any. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         initiate_sync(command: string, cancellable: Gio.Cancellable | null): string;
 
@@ -46505,6 +47931,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_3gpp_ussd_respond()`.
          * @returns The network reply to this response to the network-initiated USSD command. The reply may require further responses. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         respond_finish(res: Gio.AsyncResult): string;
 
@@ -46519,6 +47946,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns The network reply to this response to the network-initiated USSD command. The reply may require further responses. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         respond_sync(response: string, cancellable: Gio.Cancellable | null): string;
 
@@ -46709,6 +48137,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -46718,6 +48147,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Modem3gppUssd;
 
@@ -46817,6 +48247,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -46826,6 +48257,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_ussd_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -46868,6 +48300,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -46878,6 +48311,7 @@ export namespace ModemManager {
          * @param arg_command Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_sync(arg_command: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -46920,6 +48354,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -46930,6 +48365,7 @@ export namespace ModemManager {
          * @param arg_response Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_sync(arg_response: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -47103,6 +48539,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cdma_activate()`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -47164,6 +48601,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cdma_activate_manual()`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -47176,6 +48614,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         activate_manual_sync(properties: CdmaManualActivationProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47189,6 +48628,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the activation was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         activate_sync(carrier: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47533,6 +48973,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -47542,6 +48983,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemCdma;
 
@@ -47644,6 +49086,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -47686,6 +49129,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -47696,6 +49140,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47706,6 +49151,7 @@ export namespace ModemManager {
          * @param arg_carrier_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_sync(arg_carrier_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47871,6 +49317,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_delete()`.
          * @returns `true` if the cbm was deleted, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -47883,6 +49330,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the CBM was deleted, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         delete_sync(cbm: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -47959,6 +49407,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_list()`.
          * @returns A list of {@link ModemManager.Cbm} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.24
+         * @throws GLib.Error
          */
         list_finish(res: Gio.AsyncResult): Cbm[];
 
@@ -47970,6 +49419,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Cbm} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.24
+         * @throws GLib.Error
          */
         list_sync(cancellable: Gio.Cancellable | null): Cbm[];
 
@@ -48037,6 +49487,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_cell_broadcast_set_channels()`
          * @returns `true` if set default storage is success, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -48050,6 +49501,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         set_channels_sync(channels: CellBroadcastChannels, n_channels: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48217,6 +49669,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -48226,6 +49679,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemCellBroadcast;
 
@@ -48328,6 +49782,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -48338,6 +49793,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48377,6 +49833,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -48386,6 +49843,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_cell_broadcast_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -48428,6 +49886,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -48438,6 +49897,7 @@ export namespace ModemManager {
          * @param arg_channels Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_sync(arg_channels: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48652,6 +50112,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_firmware_list()`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_finish(res: Gio.AsyncResult): [boolean, FirmwareProperties | null, FirmwareProperties[] | null];
 
@@ -48663,6 +50124,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the list was correctly retrieved, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_sync(cancellable: Gio.Cancellable | null): [boolean, FirmwareProperties | null, FirmwareProperties[] | null];
 
@@ -48743,6 +50205,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_firmware_select()`.
          * @returns `true` if the selection was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         select_finish(res: Gio.AsyncResult): boolean;
 
@@ -48758,6 +50221,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the selection was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         select_sync(unique_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -48916,6 +50380,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -48925,6 +50390,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemFirmware;
 
@@ -49024,6 +50490,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
 
@@ -49033,6 +50500,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_firmware_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
 
@@ -49075,6 +50543,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_select()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_select()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_finish(res: Gio.AsyncResult): boolean;
 
@@ -49085,6 +50554,7 @@ export namespace ModemManager {
          * @param arg_uniqueid Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_sync(arg_uniqueid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -49259,6 +50729,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_3gpp()`.
          * @returns A {@link ModemManager.Location3gpp}, or `NULL` if not available. The  returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_3gpp_finish(res: Gio.AsyncResult): Location3gpp;
 
@@ -49270,6 +50741,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.Location3gpp}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_3gpp_sync(cancellable: Gio.Cancellable | null): Location3gpp;
 
@@ -49345,6 +50817,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_cdma_bs()`.
          * @returns A {@link ModemManager.LocationCdmaBs}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_cdma_bs_finish(res: Gio.AsyncResult): LocationCdmaBs;
 
@@ -49356,6 +50829,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationCdmaBs}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_cdma_bs_sync(cancellable: Gio.Cancellable | null): LocationCdmaBs;
 
@@ -49418,6 +50892,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_full()`.
          * @returns `true` if the retrieval was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_full_finish(res: Gio.AsyncResult): [boolean, Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null];
 
@@ -49429,6 +50904,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_full_sync(cancellable: Gio.Cancellable | null): [boolean, Location3gpp | null, LocationGpsNmea | null, LocationGpsRaw | null, LocationCdmaBs | null];
 
@@ -49484,6 +50960,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_gps_nmea()`.
          * @returns A {@link ModemManager.LocationGpsNmea}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_gps_nmea_finish(res: Gio.AsyncResult): LocationGpsNmea;
 
@@ -49495,6 +50972,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationGpsNmea}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_gps_nmea_sync(cancellable: Gio.Cancellable | null): LocationGpsNmea;
 
@@ -49550,6 +51028,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_get_gps_raw()`.
          * @returns A {@link ModemManager.LocationGpsRaw}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_gps_raw_finish(res: Gio.AsyncResult): LocationGpsRaw;
 
@@ -49561,6 +51040,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.LocationGpsRaw}, or `NULL` if not available. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_gps_raw_sync(cancellable: Gio.Cancellable | null): LocationGpsRaw;
 
@@ -49733,6 +51213,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_inject_assistance_data()`.
          * @returns `true` if the injection was successful, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -49746,6 +51227,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the injection was successful, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         inject_assistance_data_sync(data: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -49894,6 +51376,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_set_gps_refresh_rate()`.
          * @returns `true` if setting the GPS refresh rate was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -49910,6 +51393,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if setting the refresh rate was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         set_gps_refresh_rate_sync(rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -49968,6 +51452,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_location_set_supl_server()`.
          * @returns `true` if setting the SUPL server was successful, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -49981,6 +51466,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if setting the SUPL server was successful, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         set_supl_server_sync(supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50045,6 +51531,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_modem_location_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -50059,6 +51546,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         setup_sync(sources: ModemLocationSource, signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50316,6 +51804,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -50325,6 +51814,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemLocation;
 
@@ -50424,6 +51914,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_get_location()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_get_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -50433,6 +51924,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_location_call_get_location()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -50475,6 +51967,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -50485,6 +51978,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50527,6 +52021,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -50537,6 +52032,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50579,6 +52075,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_supl_server()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_supl_server()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -50589,6 +52086,7 @@ export namespace ModemManager {
          * @param arg_supl Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_sync(arg_supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50634,6 +52132,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -50645,6 +52144,7 @@ export namespace ModemManager {
          * @param arg_signal_location Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_sources: number, arg_signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -50843,6 +52343,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_create()`.
          * @returns A newly created {@link ModemManager.Sms}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         create_finish(res: Gio.AsyncResult): Sms;
 
@@ -50855,6 +52356,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Sms}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         create_sync(properties: SmsProperties, cancellable: Gio.Cancellable | null): Sms;
 
@@ -50913,6 +52415,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_delete()`.
          * @returns `true` if the sms was deleted, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -50925,6 +52428,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the SMS was deleted, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         delete_sync(sms: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51009,6 +52513,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_list()`.
          * @returns A list of {@link ModemManager.Sms} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_finish(res: Gio.AsyncResult): Sms[];
 
@@ -51020,6 +52525,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Sms} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.0
+         * @throws GLib.Error
          */
         list_sync(cancellable: Gio.Cancellable | null): Sms[];
 
@@ -51085,6 +52591,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_messaging_set_default_storage()`
          * @returns `true` if set default storage is success, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -51097,6 +52604,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if set default storage is success, `false` if `error` is set.
          * @since 1.24
+         * @throws GLib.Error
          */
         set_default_storage_sync(storage: SmsStorage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51284,6 +52792,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -51293,6 +52802,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemMessaging;
 
@@ -51395,6 +52905,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_create()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -51405,6 +52916,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -51447,6 +52959,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -51457,6 +52970,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51496,6 +53010,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -51505,6 +53020,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_messaging_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -51547,6 +53063,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -51557,6 +53074,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51775,6 +53293,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_accept_network_initiated_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -51789,6 +53308,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         accept_network_initiated_session_sync(session_id: number, accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -51844,6 +53364,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_cancel_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -51855,6 +53376,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -51963,6 +53485,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -51975,6 +53498,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         setup_sync(features: OmaFeature, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52037,6 +53561,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_oma_start_client_initiated_session()`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -52050,6 +53575,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the session was started, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         start_client_initiated_session_sync(session_type: OmaSessionType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52258,6 +53784,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -52267,6 +53794,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemOma;
 
@@ -52372,6 +53900,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -52383,6 +53912,7 @@ export namespace ModemManager {
          * @param arg_accept Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_sync(arg_session_id: number, arg_accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52422,6 +53952,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_cancel_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_cancel_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -52431,6 +53962,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_oma_call_cancel_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -52473,6 +54005,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -52483,6 +54016,7 @@ export namespace ModemManager {
          * @param arg_features Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_features: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52525,6 +54059,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -52535,6 +54070,7 @@ export namespace ModemManager {
          * @param arg_session_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_sync(arg_session_type: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52740,6 +54276,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_sar_enable()`.
          * @returns `true` if the enable was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -52752,6 +54289,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the enable was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         enable_sync(enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -52828,6 +54366,7 @@ export namespace ModemManager {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         set_power_level_finish(res: Gio.AsyncResult): boolean;
 
@@ -52840,6 +54379,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if set power level was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         set_power_level_sync(level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53010,6 +54550,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -53019,6 +54560,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemSar;
 
@@ -53121,6 +54663,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -53131,6 +54674,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53173,6 +54717,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_set_power_level()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_set_power_level()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_finish(res: Gio.AsyncResult): boolean;
 
@@ -53183,6 +54728,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_sync(arg_level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53517,6 +55063,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_signal_setup()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -53530,6 +55077,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         setup_sync(rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53591,6 +55139,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_signal_setup_thresholds()`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -53604,6 +55153,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the setup was successful, `false` if `error` is set.
          * @since 1.20
+         * @throws GLib.Error
          */
         setup_thresholds_sync(properties: SignalThresholdProperties, cancellable: Gio.Cancellable | null): boolean;
 
@@ -53848,6 +55398,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -53857,6 +55408,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemSignal;
 
@@ -53959,6 +55511,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -53969,6 +55522,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54011,6 +55565,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -54021,6 +55576,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54172,6 +55728,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_connect()`.
          * @returns A {@link ModemManager.Bearer}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): Bearer;
 
@@ -54184,6 +55741,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.Bearer}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_sync(properties: SimpleConnectProperties, cancellable: Gio.Cancellable | null): Bearer;
 
@@ -54248,6 +55806,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_disconnect()`.
          * @returns `true` if the modem is successfully disconnected, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -54260,6 +55819,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the modem is successfully disconnected, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disconnect_sync(bearer: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54330,6 +55890,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_simple_connect()`.
          * @returns A {@link ModemManager.SimpleStatus}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_status_finish(res: Gio.AsyncResult): SimpleStatus;
 
@@ -54341,6 +55902,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link ModemManager.SimpleStatus}, or `false` if `error` is set. The returned value must be freed with `g_object_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_status_sync(cancellable: Gio.Cancellable | null): SimpleStatus;
 
@@ -54481,6 +56043,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -54490,6 +56053,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemSimple;
 
@@ -54592,6 +56156,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -54602,6 +56167,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -54644,6 +56210,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -54654,6 +56221,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -54693,6 +56261,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_get_status()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_get_status()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -54702,6 +56271,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_simple_call_get_status()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -54871,6 +56441,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_enable()`.
          * @returns A string containing the network time, or `null` if `error` is set. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_network_time_finish(res: Gio.AsyncResult): string;
 
@@ -54882,6 +56453,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A string containing the network time, or `null` if `error` is set. The returned value should be freed with `g_free()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_network_time_sync(cancellable: Gio.Cancellable | null): string;
 
@@ -55070,6 +56642,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -55079,6 +56652,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemTime;
 
@@ -55178,6 +56752,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_time_call_get_network_time()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_time_call_get_network_time()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -55187,6 +56762,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_time_call_get_network_time()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -55333,6 +56909,7 @@ export namespace ModemManager {
          * @param status Output location where to store the status.
          * @returns `true` if `status` is set, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         call_waiting_query_finish(res: Gio.AsyncResult, status: boolean): boolean;
 
@@ -55346,6 +56923,7 @@ export namespace ModemManager {
          * @param status Output location where to store the status.
          * @returns `true` if `status` is set, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         call_waiting_query_sync(cancellable: Gio.Cancellable | null, status: boolean): boolean;
 
@@ -55407,6 +56985,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_call_waiting_setup()`.
          * @returns `true` if  `status` is set, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -55420,6 +56999,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation is successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         call_waiting_setup_sync(enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55478,6 +57058,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_create_call()`.
          * @returns A newly created {@link ModemManager.Call}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.6
+         * @throws GLib.Error
          */
         create_call_finish(res: Gio.AsyncResult): Call;
 
@@ -55490,6 +57071,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A newly created {@link ModemManager.Call}, or `null` if `error` is set. The returned value should be freed with `g_object_unref()`.
          * @since 1.6
+         * @throws GLib.Error
          */
         create_call_sync(properties: CallProperties, cancellable: Gio.Cancellable | null): Call;
 
@@ -55548,6 +57130,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_delete_call()`.
          * @returns `true` if the call was deleted, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -55560,6 +57143,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the CALL was deleted, `false` if `error` is set.
          * @since 1.6
+         * @throws GLib.Error
          */
         delete_call_sync(call: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -55637,6 +57221,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hangup_all()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -55648,6 +57233,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -55706,6 +57292,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hangup_and_accept()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -55718,6 +57305,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -55776,6 +57364,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_hold_and_accept()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -55788,6 +57377,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -55843,6 +57433,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_list_calls()`.
          * @returns A list of {@link ModemManager.Call} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.6
+         * @throws GLib.Error
          */
         list_calls_finish(res: Gio.AsyncResult): Call[];
 
@@ -55854,6 +57445,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link ModemManager.Call} objects, or `NULL` if either not found or `error` is set. The returned value should be freed with `g_list_free_full()` using `g_object_unref()` as {@link GLib.DestroyNotify} function.
          * @since 1.6
+         * @throws GLib.Error
          */
         list_calls_sync(cancellable: Gio.Cancellable | null): Call[];
 
@@ -55909,6 +57501,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_modem_voice_transfer()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -55920,6 +57513,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -56089,6 +57683,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -56098,6 +57693,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ModemVoice;
 
@@ -56197,6 +57793,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -56206,6 +57803,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_call_waiting_query()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_sync(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -56248,6 +57846,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -56258,6 +57857,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56300,6 +57900,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_create_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_create_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -56310,6 +57911,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -56352,6 +57954,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_delete_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_delete_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -56362,6 +57965,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -56401,6 +58005,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_all()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_all()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -56410,6 +58015,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_all()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -56449,6 +58055,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -56458,6 +58065,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -56497,6 +58105,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -56506,6 +58115,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hold_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -56545,6 +58155,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_list_calls()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_list_calls()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -56554,6 +58165,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_list_calls()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -56593,6 +58205,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_transfer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_transfer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -56602,6 +58215,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_transfer()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -57861,6 +59475,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_change_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -57874,6 +59489,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         change_pin_sync(old_pin: string, new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -57932,6 +59548,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_disable_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -57944,6 +59561,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         disable_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58066,6 +59684,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_enable_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -58078,6 +59697,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         enable_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58262,6 +59882,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_send_pin()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -58274,6 +59895,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_pin_sync(pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58335,6 +59957,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_send_puk()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -58348,6 +59971,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_puk_sync(puk: string, pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58400,6 +60024,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sim_set_preferred_networks()`.
          * @returns `true` if the operation was successful, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -58418,6 +60043,7 @@ export namespace ModemManager {
          * @param preferred_networks A list of {@link ModemManager.SimPreferredNetwork} objects
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_preferred_networks_sync(preferred_networks: SimPreferredNetwork[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -58752,6 +60378,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -58761,6 +60388,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Sim;
 
@@ -58866,6 +60494,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_change_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_change_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -58877,6 +60506,7 @@ export namespace ModemManager {
          * @param arg_new_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_sync(arg_old_pin: string, arg_new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58922,6 +60552,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_enable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_enable_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -58933,6 +60564,7 @@ export namespace ModemManager {
          * @param arg_enabled Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_sync(arg_pin: string, arg_enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -58975,6 +60607,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -58985,6 +60618,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_sync(arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -59030,6 +60664,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_puk()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_puk()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -59041,6 +60676,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -59083,6 +60719,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_set_preferred_networks()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_set_preferred_networks()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -59093,6 +60730,7 @@ export namespace ModemManager {
          * @param arg_preferred_networks Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_sync(arg_preferred_networks: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60064,6 +61702,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sms_send()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_finish(res: Gio.AsyncResult): boolean;
 
@@ -60077,6 +61716,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -60138,6 +61778,7 @@ export namespace ModemManager {
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to  `mm_sms_store()`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         store_finish(res: Gio.AsyncResult): boolean;
 
@@ -60153,6 +61794,7 @@ export namespace ModemManager {
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         store_sync(storage: SmsStorage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -60521,6 +62163,7 @@ export namespace ModemManager {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -60530,6 +62173,7 @@ export namespace ModemManager {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Sms;
 
@@ -60629,6 +62273,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_send()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_send()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_finish(res: Gio.AsyncResult): boolean;
 
@@ -60638,6 +62283,7 @@ export namespace ModemManager {
          * See `mm_gdbus_sms_call_send()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -60680,6 +62326,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_store()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_store()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_finish(res: Gio.AsyncResult): boolean;
 
@@ -60690,6 +62337,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -62775,6 +64423,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -62784,6 +64433,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_connect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -62823,6 +64473,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_bearer_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_bearer_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -62832,6 +64483,7 @@ export namespace ModemManager {
          * See `mm_gdbus_bearer_call_disconnect()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -63096,6 +64748,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -63105,6 +64758,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -63147,6 +64801,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_deflect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_deflect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_finish(res: Gio.AsyncResult): boolean;
 
@@ -63157,6 +64812,7 @@ export namespace ModemManager {
          * @param arg_number Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_deflect_sync(arg_number: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63196,6 +64852,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_hangup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_hangup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_finish(res: Gio.AsyncResult): boolean;
 
@@ -63205,6 +64862,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_hangup()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -63244,6 +64902,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_join_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_join_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -63253,6 +64912,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_join_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_join_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -63292,6 +64952,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_leave_multiparty()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_leave_multiparty()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_finish(res: Gio.AsyncResult): boolean;
 
@@ -63301,6 +64962,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_leave_multiparty()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_leave_multiparty_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -63343,6 +65005,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_send_dtmf()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_send_dtmf()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_finish(res: Gio.AsyncResult): boolean;
 
@@ -63353,6 +65016,7 @@ export namespace ModemManager {
          * @param arg_dtmf Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_dtmf_sync(arg_dtmf: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -63392,6 +65056,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_call_call_start()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_call_call_start()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_finish(res: Gio.AsyncResult): boolean;
 
@@ -63401,6 +65066,7 @@ export namespace ModemManager {
          * See `mm_gdbus_call_call_start()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -64355,6 +66021,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_command()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_command()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -64366,6 +66033,7 @@ export namespace ModemManager {
          * @param arg_timeout Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_command_sync(arg_cmd: string, arg_timeout: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -64408,6 +66076,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_create_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_create_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -64418,6 +66087,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_bearer_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -64460,6 +66130,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_delete_bearer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_delete_bearer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_finish(res: Gio.AsyncResult): boolean;
 
@@ -64470,6 +66141,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_bearer_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64512,6 +66184,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -64522,6 +66195,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64564,6 +66238,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_factory_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_factory_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -64574,6 +66249,7 @@ export namespace ModemManager {
          * @param arg_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_factory_reset_sync(arg_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64613,6 +66289,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_get_cell_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_get_cell_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -64622,6 +66299,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_get_cell_info()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_cell_info_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -64661,6 +66339,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_list_bearers()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_list_bearers()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -64670,6 +66349,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_list_bearers()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_bearers_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -64709,6 +66389,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_reset()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_reset()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_finish(res: Gio.AsyncResult): boolean;
 
@@ -64718,6 +66399,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_call_reset()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reset_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -64760,6 +66442,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_bands()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_bands()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_finish(res: Gio.AsyncResult): boolean;
 
@@ -64770,6 +66453,7 @@ export namespace ModemManager {
          * @param arg_bands Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_bands_sync(arg_bands: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64812,6 +66496,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_capabilities()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_capabilities()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_finish(res: Gio.AsyncResult): boolean;
 
@@ -64822,6 +66507,7 @@ export namespace ModemManager {
          * @param arg_capabilities Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_capabilities_sync(arg_capabilities: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64864,6 +66550,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_current_modes()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_current_modes()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_finish(res: Gio.AsyncResult): boolean;
 
@@ -64874,6 +66561,7 @@ export namespace ModemManager {
          * @param arg_modes Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_current_modes_sync(arg_modes: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64916,6 +66604,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_power_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_power_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -64926,6 +66615,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -64968,6 +66658,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_call_set_primary_sim_slot()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_finish(res: Gio.AsyncResult): boolean;
 
@@ -64978,6 +66669,7 @@ export namespace ModemManager {
          * @param arg_sim_slot Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_primary_sim_slot_sync(arg_sim_slot: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65476,6 +67168,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_disable_facility_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -65486,6 +67179,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disable_facility_lock_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65528,6 +67222,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_register()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_register()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_finish(res: Gio.AsyncResult): boolean;
 
@@ -65538,6 +67233,7 @@ export namespace ModemManager {
          * @param arg_operator_id Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_sync(arg_operator_id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65577,6 +67273,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_scan()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_scan()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -65586,6 +67283,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_call_scan()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -65628,6 +67326,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_carrier_lock()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -65638,6 +67337,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_carrier_lock_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65680,6 +67380,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_eps_ue_mode_operation()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_finish(res: Gio.AsyncResult): boolean;
 
@@ -65690,6 +67391,7 @@ export namespace ModemManager {
          * @param arg_mode Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_eps_ue_mode_operation_sync(arg_mode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65732,6 +67434,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_initial_eps_bearer_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -65742,6 +67445,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_initial_eps_bearer_settings_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65784,6 +67488,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_nr5g_registration_settings()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_finish(res: Gio.AsyncResult): boolean;
 
@@ -65794,6 +67499,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_nr5g_registration_settings_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -65836,6 +67542,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_call_set_packet_service_state()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_finish(res: Gio.AsyncResult): boolean;
 
@@ -65846,6 +67553,7 @@ export namespace ModemManager {
          * @param arg_state Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_packet_service_state_sync(arg_state: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -66046,6 +67754,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -66056,6 +67765,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -66095,6 +67805,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -66104,6 +67815,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_profile_manager_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -66146,6 +67858,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_profile_manager_call_set()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -66156,6 +67869,7 @@ export namespace ModemManager {
          * @param arg_requested_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_sync(arg_requested_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -66343,6 +68057,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -66352,6 +68067,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem3gpp_ussd_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -66394,6 +68110,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_initiate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -66404,6 +68121,7 @@ export namespace ModemManager {
          * @param arg_command Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_initiate_sync(arg_command: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -66446,6 +68164,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem3gpp_ussd_call_respond()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -66456,6 +68175,7 @@ export namespace ModemManager {
          * @param arg_response Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_respond_sync(arg_response: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -66693,6 +68413,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -66735,6 +68456,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cdma_call_activate_manual()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_finish(res: Gio.AsyncResult): boolean;
 
@@ -66745,6 +68467,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_manual_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -66755,6 +68478,7 @@ export namespace ModemManager {
          * @param arg_carrier_code Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_activate_sync(arg_carrier_code: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -66929,6 +68653,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -66939,6 +68664,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -66978,6 +68704,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -66987,6 +68714,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_cell_broadcast_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -67029,6 +68757,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_cell_broadcast_call_set_channels()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_finish(res: Gio.AsyncResult): boolean;
 
@@ -67039,6 +68768,7 @@ export namespace ModemManager {
          * @param arg_channels Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_channels_sync(arg_channels: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67192,6 +68922,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string, GLib.Variant | null];
 
@@ -67201,6 +68932,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_firmware_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string, GLib.Variant | null];
 
@@ -67243,6 +68975,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_firmware_call_select()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_firmware_call_select()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_finish(res: Gio.AsyncResult): boolean;
 
@@ -67253,6 +68986,7 @@ export namespace ModemManager {
          * @param arg_uniqueid Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_sync(arg_uniqueid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67521,6 +69255,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_get_location()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_get_location()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -67530,6 +69265,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_location_call_get_location()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_location_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -67572,6 +69308,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_inject_assistance_data()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_finish(res: Gio.AsyncResult): boolean;
 
@@ -67582,6 +69319,7 @@ export namespace ModemManager {
          * @param arg_data Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inject_assistance_data_sync(arg_data: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67624,6 +69362,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_gps_refresh_rate()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_finish(res: Gio.AsyncResult): boolean;
 
@@ -67634,6 +69373,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_gps_refresh_rate_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67676,6 +69416,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_set_supl_server()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_set_supl_server()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_finish(res: Gio.AsyncResult): boolean;
 
@@ -67686,6 +69427,7 @@ export namespace ModemManager {
          * @param arg_supl Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_supl_server_sync(arg_supl: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67731,6 +69473,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_location_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_location_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -67742,6 +69485,7 @@ export namespace ModemManager {
          * @param arg_signal_location Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_sources: number, arg_signal_location: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -67962,6 +69706,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_create()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_create()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -67972,6 +69717,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -68014,6 +69760,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_delete()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_delete()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_finish(res: Gio.AsyncResult): boolean;
 
@@ -68024,6 +69771,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68063,6 +69811,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_list()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_list()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -68072,6 +69821,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_messaging_call_list()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -68114,6 +69864,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_messaging_call_set_default_storage()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_finish(res: Gio.AsyncResult): boolean;
 
@@ -68124,6 +69875,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_default_storage_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68369,6 +70121,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_accept_network_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -68380,6 +70133,7 @@ export namespace ModemManager {
          * @param arg_accept Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_accept_network_initiated_session_sync(arg_session_id: number, arg_accept: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68419,6 +70173,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_cancel_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_cancel_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -68428,6 +70183,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_oma_call_cancel_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -68470,6 +70226,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -68480,6 +70237,7 @@ export namespace ModemManager {
          * @param arg_features Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_features: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68522,6 +70280,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_oma_call_start_client_initiated_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -68532,6 +70291,7 @@ export namespace ModemManager {
          * @param arg_session_type Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_client_initiated_session_sync(arg_session_type: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68704,6 +70464,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_enable()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_enable()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_finish(res: Gio.AsyncResult): boolean;
 
@@ -68714,6 +70475,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68756,6 +70518,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_sar_call_set_power_level()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_sar_call_set_power_level()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_finish(res: Gio.AsyncResult): boolean;
 
@@ -68766,6 +70529,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_power_level_sync(arg_level: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -68988,6 +70752,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -68998,6 +70763,7 @@ export namespace ModemManager {
          * @param arg_rate Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_sync(arg_rate: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -69040,6 +70806,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_signal_call_setup_thresholds()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_finish(res: Gio.AsyncResult): boolean;
 
@@ -69050,6 +70817,7 @@ export namespace ModemManager {
          * @param arg_settings Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_setup_thresholds_sync(arg_settings: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -69173,6 +70941,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_connect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_connect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -69183,6 +70952,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_connect_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -69225,6 +70995,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_disconnect()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_disconnect()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_finish(res: Gio.AsyncResult): boolean;
 
@@ -69235,6 +71006,7 @@ export namespace ModemManager {
          * @param arg_bearer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_disconnect_sync(arg_bearer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -69274,6 +71046,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_simple_call_get_status()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_simple_call_get_status()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_finish(res: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -69283,6 +71056,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_simple_call_get_status()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_status_sync(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -69424,6 +71198,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_time_call_get_network_time()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_time_call_get_network_time()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -69433,6 +71208,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_time_call_get_network_time()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_network_time_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -69640,6 +71416,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_finish(res: Gio.AsyncResult): [boolean, boolean];
 
@@ -69649,6 +71426,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_call_waiting_query()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_query_sync(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -69691,6 +71469,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_call_waiting_setup()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_finish(res: Gio.AsyncResult): boolean;
 
@@ -69701,6 +71480,7 @@ export namespace ModemManager {
          * @param arg_enable Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_call_waiting_setup_sync(arg_enable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -69743,6 +71523,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_create_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_create_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -69753,6 +71534,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_create_call_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -69795,6 +71577,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_delete_call()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_delete_call()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_finish(res: Gio.AsyncResult): boolean;
 
@@ -69805,6 +71588,7 @@ export namespace ModemManager {
          * @param arg_path Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_delete_call_sync(arg_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -69844,6 +71628,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_all()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_all()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_finish(res: Gio.AsyncResult): boolean;
 
@@ -69853,6 +71638,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_all()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -69892,6 +71678,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hangup_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -69901,6 +71688,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hangup_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hangup_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -69940,6 +71728,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_hold_and_accept()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_finish(res: Gio.AsyncResult): boolean;
 
@@ -69949,6 +71738,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_hold_and_accept()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hold_and_accept_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -69988,6 +71778,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_list_calls()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_list_calls()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_finish(res: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -69997,6 +71788,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_list_calls()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_list_calls_sync(cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -70036,6 +71828,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_modem_voice_call_transfer()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_modem_voice_call_transfer()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_finish(res: Gio.AsyncResult): boolean;
 
@@ -70045,6 +71838,7 @@ export namespace ModemManager {
          * See `mm_gdbus_modem_voice_call_transfer()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_transfer_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -70630,6 +72424,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -70641,6 +72436,7 @@ export namespace ModemManager {
          * @param arg_inhibit Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_inhibit_device_sync(arg_uid: string, arg_inhibit: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -70683,6 +72479,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_report_kernel_event()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_finish(res: Gio.AsyncResult): boolean;
 
@@ -70693,6 +72490,7 @@ export namespace ModemManager {
          * @param arg_properties Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_kernel_event_sync(arg_properties: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -70732,6 +72530,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_finish(res: Gio.AsyncResult): boolean;
 
@@ -70741,6 +72540,7 @@ export namespace ModemManager {
          * See `mm_gdbus_org_freedesktop_modem_manager1_call_scan_devices()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_scan_devices_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -70783,6 +72583,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_org_freedesktop_modem_manager1_call_set_logging()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_finish(res: Gio.AsyncResult): boolean;
 
@@ -70793,6 +72594,7 @@ export namespace ModemManager {
          * @param arg_level Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_logging_sync(arg_level: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71151,6 +72953,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_change_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_change_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -71162,6 +72965,7 @@ export namespace ModemManager {
          * @param arg_new_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_change_pin_sync(arg_old_pin: string, arg_new_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71207,6 +73011,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_enable_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_enable_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -71218,6 +73023,7 @@ export namespace ModemManager {
          * @param arg_enabled Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_pin_sync(arg_pin: string, arg_enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71260,6 +73066,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_pin()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_pin()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_finish(res: Gio.AsyncResult): boolean;
 
@@ -71270,6 +73077,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_pin_sync(arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71315,6 +73123,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_send_puk()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_send_puk()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_finish(res: Gio.AsyncResult): boolean;
 
@@ -71326,6 +73135,7 @@ export namespace ModemManager {
          * @param arg_pin Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_puk_sync(arg_puk: string, arg_pin: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71368,6 +73178,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sim_call_set_preferred_networks()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sim_call_set_preferred_networks()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_finish(res: Gio.AsyncResult): boolean;
 
@@ -71378,6 +73189,7 @@ export namespace ModemManager {
          * @param arg_preferred_networks Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_set_preferred_networks_sync(arg_preferred_networks: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -71744,6 +73556,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_send()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_send()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_finish(res: Gio.AsyncResult): boolean;
 
@@ -71753,6 +73566,7 @@ export namespace ModemManager {
          * See `mm_gdbus_sms_call_send()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_send_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -71795,6 +73609,7 @@ export namespace ModemManager {
          * Finishes an operation started with `mm_gdbus_sms_call_store()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `mm_gdbus_sms_call_store()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_finish(res: Gio.AsyncResult): boolean;
 
@@ -71805,6 +73620,7 @@ export namespace ModemManager {
          * @param arg_storage Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_store_sync(arg_storage: number, cancellable: Gio.Cancellable | null): boolean;
 

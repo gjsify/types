@@ -38,15 +38,15 @@ export namespace Soup {
         /**
          * an invalid %SoupAddress
          */
-        INVALID,
+        INVALID = -1,
         /**
          * an IPv4 address
          */
-        IPV4,
+        IPV4 = 2,
         /**
          * an IPv6 address
          */
-        IPV6,
+        IPV6 = 10,
     }
 
 
@@ -61,9 +61,9 @@ export namespace Soup {
      * @gir-type Enum
      */
     enum CacheResponse {
-        FRESH,
-        NEEDS_VALIDATION,
-        STALE,
+        FRESH = 0,
+        NEEDS_VALIDATION = 1,
+        STALE = 2,
     }
 
 
@@ -84,11 +84,11 @@ export namespace Soup {
         /**
          * a single-user cache
          */
-        SINGLE_USER,
+        SINGLE_USER = 0,
         /**
          * a shared cache
          */
-        SHARED,
+        SHARED = 1,
     }
 
 
@@ -103,12 +103,12 @@ export namespace Soup {
      * @gir-type Enum
      */
     enum ConnectionState {
-        NEW,
-        CONNECTING,
-        IDLE,
-        IN_USE,
-        REMOTE_DISCONNECTED,
-        DISCONNECTED,
+        NEW = 0,
+        CONNECTING = 1,
+        IDLE = 2,
+        IN_USE = 3,
+        REMOTE_DISCONNECTED = 4,
+        DISCONNECTED = 5,
     }
 
 
@@ -129,11 +129,11 @@ export namespace Soup {
         /**
          * accept all cookies unconditionally.
          */
-        ALWAYS,
+        ALWAYS = 0,
         /**
          * reject all cookies unconditionally.
          */
-        NEVER,
+        NEVER = 1,
         /**
          * accept all cookies set by
          * the main document loaded in the application using libsoup. An
@@ -147,7 +147,7 @@ export namespace Soup {
          * document. If no first party is set in a message when this policy is
          * in effect, cookies will be assumed to be third party by default.
          */
-        NO_THIRD_PARTY,
+        NO_THIRD_PARTY = 2,
         /**
          * accept all cookies
          * set by the main document loaded in the application using libsoup, and
@@ -163,7 +163,7 @@ export namespace Soup {
          * party is set in a message when this policy is in effect, cookies will
          * be assumed to be third party by default. Since 2.72.
          */
-        GRANDFATHERED_THIRD_PARTY,
+        GRANDFATHERED_THIRD_PARTY = 3,
     }
 
 
@@ -191,35 +191,35 @@ export namespace Soup {
          * RFC 1123 format, used by the HTTP "Date" header. Eg
          * "Sun, 06 Nov 1994 08:49:37 GMT"
          */
-        HTTP,
+        HTTP = 1,
         /**
          * The format for the "Expires" timestamp in the
          * Netscape cookie specification. Eg, "Sun, 06-Nov-1994 08:49:37 GMT".
          */
-        COOKIE,
+        COOKIE = 2,
         /**
          * RFC 2822 format, eg "Sun, 6 Nov 1994 09:49:37 -0100"
          */
-        RFC2822,
+        RFC2822 = 3,
         /**
          * ISO 8601 date/time with no optional
          * punctuation. Eg, "19941106T094937-0100".
          */
-        ISO8601_COMPACT,
+        ISO8601_COMPACT = 4,
         /**
          * ISO 8601 date/time with all optional
          * punctuation. Eg, "1994-11-06T09:49:37-01:00".
          */
-        ISO8601_FULL,
+        ISO8601_FULL = 5,
         /**
          * An alias for `SOUP_DATE_ISO8601_FULL`.
          */
-        ISO8601,
+        ISO8601 = 5,
         /**
          * ISO 8601 date/time as used by XML-RPC.
          * Eg, "19941106T09:49:37".
          */
-        ISO8601_XMLRPC,
+        ISO8601_XMLRPC = 6,
     }
 
 
@@ -238,30 +238,30 @@ export namespace Soup {
         /**
          * unknown / error
          */
-        UNRECOGNIZED,
+        UNRECOGNIZED = 0,
         /**
          * no body is present (which is not the same as a
          * 0-length body, and only occurs in certain places)
          */
-        NONE,
+        NONE = 1,
         /**
          * Content-Length encoding
          */
-        CONTENT_LENGTH,
+        CONTENT_LENGTH = 2,
         /**
          * Response body ends when the connection is closed
          */
-        EOF,
+        EOF = 3,
         /**
          * chunked encoding (currently only supported
          * for response)
          */
-        CHUNKED,
+        CHUNKED = 4,
         /**
          * multipart/byteranges (Reserved for future
          * use: NOT CURRENTLY IMPLEMENTED)
          */
-        BYTERANGES,
+        BYTERANGES = 5,
     }
 
 
@@ -280,11 +280,11 @@ export namespace Soup {
         /**
          * HTTP 1.0 (RFC 1945)
          */
-        HTTP_1_0,
+        HTTP_1_0 = 0,
         /**
          * HTTP 1.1 (RFC 2616)
          */
-        HTTP_1_1,
+        HTTP_1_1 = 1,
     }
 
 
@@ -299,69 +299,69 @@ export namespace Soup {
      * @gir-type Enum
      */
     enum KnownStatusCode {
-        NONE,
-        CANCELLED,
-        CANT_RESOLVE,
-        CANT_RESOLVE_PROXY,
-        CANT_CONNECT,
-        CANT_CONNECT_PROXY,
-        SSL_FAILED,
-        IO_ERROR,
-        MALFORMED,
-        TRY_AGAIN,
-        TOO_MANY_REDIRECTS,
-        TLS_FAILED,
-        CONTINUE,
-        SWITCHING_PROTOCOLS,
-        PROCESSING,
-        OK,
-        CREATED,
-        ACCEPTED,
-        NON_AUTHORITATIVE,
-        NO_CONTENT,
-        RESET_CONTENT,
-        PARTIAL_CONTENT,
-        MULTI_STATUS,
-        MULTIPLE_CHOICES,
-        MOVED_PERMANENTLY,
-        FOUND,
-        MOVED_TEMPORARILY,
-        SEE_OTHER,
-        NOT_MODIFIED,
-        USE_PROXY,
-        NOT_APPEARING_IN_THIS_PROTOCOL,
-        TEMPORARY_REDIRECT,
-        BAD_REQUEST,
-        UNAUTHORIZED,
-        PAYMENT_REQUIRED,
-        FORBIDDEN,
-        NOT_FOUND,
-        METHOD_NOT_ALLOWED,
-        NOT_ACCEPTABLE,
-        PROXY_AUTHENTICATION_REQUIRED,
-        PROXY_UNAUTHORIZED,
-        REQUEST_TIMEOUT,
-        CONFLICT,
-        GONE,
-        LENGTH_REQUIRED,
-        PRECONDITION_FAILED,
-        REQUEST_ENTITY_TOO_LARGE,
-        REQUEST_URI_TOO_LONG,
-        UNSUPPORTED_MEDIA_TYPE,
-        REQUESTED_RANGE_NOT_SATISFIABLE,
-        INVALID_RANGE,
-        EXPECTATION_FAILED,
-        UNPROCESSABLE_ENTITY,
-        LOCKED,
-        FAILED_DEPENDENCY,
-        INTERNAL_SERVER_ERROR,
-        NOT_IMPLEMENTED,
-        BAD_GATEWAY,
-        SERVICE_UNAVAILABLE,
-        GATEWAY_TIMEOUT,
-        HTTP_VERSION_NOT_SUPPORTED,
-        INSUFFICIENT_STORAGE,
-        NOT_EXTENDED,
+        NONE = 0,
+        CANCELLED = 1,
+        CANT_RESOLVE = 2,
+        CANT_RESOLVE_PROXY = 3,
+        CANT_CONNECT = 4,
+        CANT_CONNECT_PROXY = 5,
+        SSL_FAILED = 6,
+        IO_ERROR = 7,
+        MALFORMED = 8,
+        TRY_AGAIN = 9,
+        TOO_MANY_REDIRECTS = 10,
+        TLS_FAILED = 11,
+        CONTINUE = 100,
+        SWITCHING_PROTOCOLS = 101,
+        PROCESSING = 102,
+        OK = 200,
+        CREATED = 201,
+        ACCEPTED = 202,
+        NON_AUTHORITATIVE = 203,
+        NO_CONTENT = 204,
+        RESET_CONTENT = 205,
+        PARTIAL_CONTENT = 206,
+        MULTI_STATUS = 207,
+        MULTIPLE_CHOICES = 300,
+        MOVED_PERMANENTLY = 301,
+        FOUND = 302,
+        MOVED_TEMPORARILY = 302,
+        SEE_OTHER = 303,
+        NOT_MODIFIED = 304,
+        USE_PROXY = 305,
+        NOT_APPEARING_IN_THIS_PROTOCOL = 306,
+        TEMPORARY_REDIRECT = 307,
+        BAD_REQUEST = 400,
+        UNAUTHORIZED = 401,
+        PAYMENT_REQUIRED = 402,
+        FORBIDDEN = 403,
+        NOT_FOUND = 404,
+        METHOD_NOT_ALLOWED = 405,
+        NOT_ACCEPTABLE = 406,
+        PROXY_AUTHENTICATION_REQUIRED = 407,
+        PROXY_UNAUTHORIZED = 407,
+        REQUEST_TIMEOUT = 408,
+        CONFLICT = 409,
+        GONE = 410,
+        LENGTH_REQUIRED = 411,
+        PRECONDITION_FAILED = 412,
+        REQUEST_ENTITY_TOO_LARGE = 413,
+        REQUEST_URI_TOO_LONG = 414,
+        UNSUPPORTED_MEDIA_TYPE = 415,
+        REQUESTED_RANGE_NOT_SATISFIABLE = 416,
+        INVALID_RANGE = 416,
+        EXPECTATION_FAILED = 417,
+        UNPROCESSABLE_ENTITY = 422,
+        LOCKED = 423,
+        FAILED_DEPENDENCY = 424,
+        INTERNAL_SERVER_ERROR = 500,
+        NOT_IMPLEMENTED = 501,
+        BAD_GATEWAY = 502,
+        SERVICE_UNAVAILABLE = 503,
+        GATEWAY_TIMEOUT = 504,
+        HTTP_VERSION_NOT_SUPPORTED = 505,
+        INSUFFICIENT_STORAGE = 507,
+        NOT_EXTENDED = 510,
     }
 
 
@@ -380,21 +380,21 @@ export namespace Soup {
         /**
          * No logging
          */
-        NONE,
+        NONE = 0,
         /**
          * Log the Request-Line or Status-Line and
          * the Soup-Debug pseudo-headers
          */
-        MINIMAL,
+        MINIMAL = 1,
         /**
          * Log the full request/response headers
          */
-        HEADERS,
+        HEADERS = 2,
         /**
          * Log the full headers and request/response
          * bodies.
          */
-        BODY,
+        BODY = 3,
     }
 
 
@@ -419,19 +419,19 @@ export namespace Soup {
          * constant; libsoup can use the passed-in buffer directly and not
          * need to worry about it being modified or freed.
          */
-        STATIC,
+        STATIC = 0,
         /**
          * The caller has allocated the memory for the
          * {@link Soup.Buffer}'s use; libsoup will assume ownership of it and free it
          * (with `g_free()`) when it is done with it.
          */
-        TAKE,
+        TAKE = 1,
         /**
          * The passed-in data belongs to the caller; the
          * {@link Soup.Buffer} will copy it into new memory, leaving the caller free
          * to reuse the original memory.
          */
-        COPY,
+        COPY = 2,
         /**
          * The passed-in data belongs to the caller,
          * but will remain valid for the lifetime of the {@link Soup.Buffer}. The
@@ -439,7 +439,7 @@ export namespace Soup {
          * a `SOUP_MEMORY_TEMPORARY` buffer, it will make a copy of the memory
          * as well, rather than reusing the original memory.
          */
-        TEMPORARY,
+        TEMPORARY = 3,
     }
 
 
@@ -459,15 +459,15 @@ export namespace Soup {
         /**
          * request headers
          */
-        REQUEST,
+        REQUEST = 0,
         /**
          * response headers
          */
-        RESPONSE,
+        RESPONSE = 1,
         /**
          * multipart body part headers
          */
-        MULTIPART,
+        MULTIPART = 2,
     }
 
 
@@ -489,29 +489,29 @@ export namespace Soup {
          * The lowest priority, the messages
          *   with this priority will be the last ones to be attended.
          */
-        VERY_LOW,
+        VERY_LOW = 0,
         /**
          * Use this for low priority messages, a
          *   {@link Soup.Message} with the default priority will be processed first.
          */
-        LOW,
+        LOW = 1,
         /**
          * The default priotity, this is the
          *   priority assigned to the {@link Soup.Message} by default.
          */
-        NORMAL,
+        NORMAL = 2,
         /**
          * High priority, a {@link Soup.Message} with
          *   this priority will be processed before the ones with the default
          *   priority.
          */
-        HIGH,
+        HIGH = 3,
         /**
          * The highest priority, use this
          *   for very urgent {@link Soup.Message} as they will be the first ones to be
          *   attended.
          */
-        VERY_HIGH,
+        VERY_HIGH = 4,
     }
 
 
@@ -588,15 +588,15 @@ export namespace Soup {
         /**
          * The cookie is exposed with both cross-site and same-site requests
          */
-        NONE,
+        NONE = 0,
         /**
          * The cookie is withheld on cross-site requests but exposed on cross-site navigations
          */
-        LAX,
+        LAX = 1,
         /**
          * The cookie is only exposed for same-site requests
          */
-        STRICT,
+        STRICT = 2,
     }
 
 
@@ -615,19 +615,19 @@ export namespace Soup {
         /**
          * Success
          */
-        OK,
+        OK = 0,
         /**
          * Cannot read/write any more at this time
          */
-        WOULD_BLOCK,
+        WOULD_BLOCK = 1,
         /**
          * End of file
          */
-        EOF,
+        EOF = 2,
         /**
          * Other error
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -656,270 +656,270 @@ export namespace Soup {
          * No status available. (Eg, the message has not
          * been sent yet)
          */
-        NONE,
+        NONE = 0,
         /**
          * Message was cancelled locally
          */
-        CANCELLED,
+        CANCELLED = 1,
         /**
          * Unable to resolve destination host name
          */
-        CANT_RESOLVE,
+        CANT_RESOLVE = 2,
         /**
          * Unable to resolve proxy host name
          */
-        CANT_RESOLVE_PROXY,
+        CANT_RESOLVE_PROXY = 3,
         /**
          * Unable to connect to remote host
          */
-        CANT_CONNECT,
+        CANT_CONNECT = 4,
         /**
          * Unable to connect to proxy
          */
-        CANT_CONNECT_PROXY,
+        CANT_CONNECT_PROXY = 5,
         /**
          * SSL/TLS negotiation failed
          */
-        SSL_FAILED,
+        SSL_FAILED = 6,
         /**
          * A network error occurred, or the other end
          * closed the connection unexpectedly
          */
-        IO_ERROR,
+        IO_ERROR = 7,
         /**
          * Malformed data (usually a programmer error)
          */
-        MALFORMED,
+        MALFORMED = 8,
         /**
          * Used internally
          */
-        TRY_AGAIN,
+        TRY_AGAIN = 9,
         /**
          * There were too many redirections
          */
-        TOO_MANY_REDIRECTS,
+        TOO_MANY_REDIRECTS = 10,
         /**
          * Used internally
          */
-        TLS_FAILED,
+        TLS_FAILED = 11,
         /**
          * 100 Continue (HTTP)
          */
-        CONTINUE,
+        CONTINUE = 100,
         /**
          * 101 Switching Protocols (HTTP)
          */
-        SWITCHING_PROTOCOLS,
+        SWITCHING_PROTOCOLS = 101,
         /**
          * 102 Processing (WebDAV)
          */
-        PROCESSING,
+        PROCESSING = 102,
         /**
          * 200 Success (HTTP). Also used by many lower-level
          * soup routines to indicate success.
          */
-        OK,
+        OK = 200,
         /**
          * 201 Created (HTTP)
          */
-        CREATED,
+        CREATED = 201,
         /**
          * 202 Accepted (HTTP)
          */
-        ACCEPTED,
+        ACCEPTED = 202,
         /**
          * 203 Non-Authoritative Information
          * (HTTP)
          */
-        NON_AUTHORITATIVE,
+        NON_AUTHORITATIVE = 203,
         /**
          * 204 No Content (HTTP)
          */
-        NO_CONTENT,
+        NO_CONTENT = 204,
         /**
          * 205 Reset Content (HTTP)
          */
-        RESET_CONTENT,
+        RESET_CONTENT = 205,
         /**
          * 206 Partial Content (HTTP)
          */
-        PARTIAL_CONTENT,
+        PARTIAL_CONTENT = 206,
         /**
          * 207 Multi-Status (WebDAV)
          */
-        MULTI_STATUS,
+        MULTI_STATUS = 207,
         /**
          * 300 Multiple Choices (HTTP)
          */
-        MULTIPLE_CHOICES,
+        MULTIPLE_CHOICES = 300,
         /**
          * 301 Moved Permanently (HTTP)
          */
-        MOVED_PERMANENTLY,
+        MOVED_PERMANENTLY = 301,
         /**
          * 302 Found (HTTP)
          */
-        FOUND,
+        FOUND = 302,
         /**
          * 302 Moved Temporarily (old name,
          * RFC 2068)
          */
-        MOVED_TEMPORARILY,
+        MOVED_TEMPORARILY = 302,
         /**
          * 303 See Other (HTTP)
          */
-        SEE_OTHER,
+        SEE_OTHER = 303,
         /**
          * 304 Not Modified (HTTP)
          */
-        NOT_MODIFIED,
+        NOT_MODIFIED = 304,
         /**
          * 305 Use Proxy (HTTP)
          */
-        USE_PROXY,
+        USE_PROXY = 305,
         /**
          * 306 [Unused] (HTTP)
          */
-        NOT_APPEARING_IN_THIS_PROTOCOL,
+        NOT_APPEARING_IN_THIS_PROTOCOL = 306,
         /**
          * 307 Temporary Redirect (HTTP)
          */
-        TEMPORARY_REDIRECT,
-        PERMANENT_REDIRECT,
+        TEMPORARY_REDIRECT = 307,
+        PERMANENT_REDIRECT = 308,
         /**
          * 400 Bad Request (HTTP)
          */
-        BAD_REQUEST,
+        BAD_REQUEST = 400,
         /**
          * 401 Unauthorized (HTTP)
          */
-        UNAUTHORIZED,
+        UNAUTHORIZED = 401,
         /**
          * 402 Payment Required (HTTP)
          */
-        PAYMENT_REQUIRED,
+        PAYMENT_REQUIRED = 402,
         /**
          * 403 Forbidden (HTTP)
          */
-        FORBIDDEN,
+        FORBIDDEN = 403,
         /**
          * 404 Not Found (HTTP)
          */
-        NOT_FOUND,
+        NOT_FOUND = 404,
         /**
          * 405 Method Not Allowed (HTTP)
          */
-        METHOD_NOT_ALLOWED,
+        METHOD_NOT_ALLOWED = 405,
         /**
          * 406 Not Acceptable (HTTP)
          */
-        NOT_ACCEPTABLE,
+        NOT_ACCEPTABLE = 406,
         /**
          * 407 Proxy Authentication
          * Required (HTTP)
          */
-        PROXY_AUTHENTICATION_REQUIRED,
+        PROXY_AUTHENTICATION_REQUIRED = 407,
         /**
          * shorter alias for
          * {@link Soup.Status.PROXY_AUTHENTICATION_REQUIRED}
          */
-        PROXY_UNAUTHORIZED,
+        PROXY_UNAUTHORIZED = 407,
         /**
          * 408 Request Timeout (HTTP)
          */
-        REQUEST_TIMEOUT,
+        REQUEST_TIMEOUT = 408,
         /**
          * 409 Conflict (HTTP)
          */
-        CONFLICT,
+        CONFLICT = 409,
         /**
          * 410 Gone (HTTP)
          */
-        GONE,
+        GONE = 410,
         /**
          * 411 Length Required (HTTP)
          */
-        LENGTH_REQUIRED,
+        LENGTH_REQUIRED = 411,
         /**
          * 412 Precondition Failed (HTTP)
          */
-        PRECONDITION_FAILED,
+        PRECONDITION_FAILED = 412,
         /**
          * 413 Request Entity Too Large
          * (HTTP)
          */
-        REQUEST_ENTITY_TOO_LARGE,
+        REQUEST_ENTITY_TOO_LARGE = 413,
         /**
          * 414 Request-URI Too Long (HTTP)
          */
-        REQUEST_URI_TOO_LONG,
+        REQUEST_URI_TOO_LONG = 414,
         /**
          * 415 Unsupported Media Type
          * (HTTP)
          */
-        UNSUPPORTED_MEDIA_TYPE,
+        UNSUPPORTED_MEDIA_TYPE = 415,
         /**
          * 416 Requested Range
          * Not Satisfiable (HTTP)
          */
-        REQUESTED_RANGE_NOT_SATISFIABLE,
+        REQUESTED_RANGE_NOT_SATISFIABLE = 416,
         /**
          * shorter alias for
          * {@link Soup.Status.REQUESTED_RANGE_NOT_SATISFIABLE}
          */
-        INVALID_RANGE,
+        INVALID_RANGE = 416,
         /**
          * 417 Expectation Failed (HTTP)
          */
-        EXPECTATION_FAILED,
+        EXPECTATION_FAILED = 417,
         /**
          * 422 Unprocessable Entity
          * (WebDAV)
          */
-        UNPROCESSABLE_ENTITY,
+        UNPROCESSABLE_ENTITY = 422,
         /**
          * 423 Locked (WebDAV)
          */
-        LOCKED,
+        LOCKED = 423,
         /**
          * 424 Failed Dependency (WebDAV)
          */
-        FAILED_DEPENDENCY,
+        FAILED_DEPENDENCY = 424,
         /**
          * 500 Internal Server Error
          * (HTTP)
          */
-        INTERNAL_SERVER_ERROR,
+        INTERNAL_SERVER_ERROR = 500,
         /**
          * 501 Not Implemented (HTTP)
          */
-        NOT_IMPLEMENTED,
+        NOT_IMPLEMENTED = 501,
         /**
          * 502 Bad Gateway (HTTP)
          */
-        BAD_GATEWAY,
+        BAD_GATEWAY = 502,
         /**
          * 503 Service Unavailable (HTTP)
          */
-        SERVICE_UNAVAILABLE,
+        SERVICE_UNAVAILABLE = 503,
         /**
          * 504 Gateway Timeout (HTTP)
          */
-        GATEWAY_TIMEOUT,
+        GATEWAY_TIMEOUT = 504,
         /**
          * 505 HTTP Version Not
          * Supported (HTTP)
          */
-        HTTP_VERSION_NOT_SUPPORTED,
+        HTTP_VERSION_NOT_SUPPORTED = 505,
         /**
          * 507 Insufficient Storage
          * (WebDAV)
          */
-        INSUFFICIENT_STORAGE,
+        INSUFFICIENT_STORAGE = 507,
         /**
          * 510 Not Extended (RFC 2774)
          */
-        NOT_EXTENDED,
+        NOT_EXTENDED = 510,
     }
 
 
@@ -986,61 +986,61 @@ export namespace Soup {
         /**
          * a normal, non-error close
          */
-        NORMAL,
+        NORMAL = 1000,
         /**
          * the client/server is going away
          */
-        GOING_AWAY,
+        GOING_AWAY = 1001,
         /**
          * a protocol error occurred
          */
-        PROTOCOL_ERROR,
+        PROTOCOL_ERROR = 1002,
         /**
          * the endpoint received data
          *   of a type that it does not support.
          */
-        UNSUPPORTED_DATA,
+        UNSUPPORTED_DATA = 1003,
         /**
          * reserved value indicating that
          *   no close code was present; must not be sent.
          */
-        NO_STATUS,
+        NO_STATUS = 1005,
         /**
          * reserved value indicating that
          *   the connection was closed abnormally; must not be sent.
          */
-        ABNORMAL,
+        ABNORMAL = 1006,
         /**
          * the endpoint received data that
          *   was invalid (eg, non-UTF-8 data in a text message).
          */
-        BAD_DATA,
+        BAD_DATA = 1007,
         /**
          * generic error code
          *   indicating some sort of policy violation.
          */
-        POLICY_VIOLATION,
+        POLICY_VIOLATION = 1008,
         /**
          * the endpoint received a message
          *   that is too big to process.
          */
-        TOO_BIG,
+        TOO_BIG = 1009,
         /**
          * the client is closing the
          *   connection because the server failed to negotiate a required
          *   extension.
          */
-        NO_EXTENSION,
+        NO_EXTENSION = 1010,
         /**
          * the server is closing the
          *   connection because it was unable to fulfill the request.
          */
-        SERVER_ERROR,
+        SERVER_ERROR = 1011,
         /**
          * reserved value indicating that
          *   the TLS handshake failed; must not be sent.
          */
-        TLS_HANDSHAKE,
+        TLS_HANDSHAKE = 1015,
     }
 
 
@@ -1060,15 +1060,15 @@ export namespace Soup {
         /**
          * unknown/invalid connection
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * a client-side connection
          */
-        CLIENT,
+        CLIENT = 1,
         /**
          * a server-side connection
          */
-        SERVER,
+        SERVER = 2,
     }
 
 
@@ -1089,11 +1089,11 @@ export namespace Soup {
         /**
          * UTF-8 text
          */
-        TEXT,
+        TEXT = 1,
         /**
          * binary data
          */
-        BINARY,
+        BINARY = 2,
     }
 
 
@@ -1113,22 +1113,22 @@ export namespace Soup {
         /**
          * a generic error
          */
-        FAILED,
+        FAILED = 0,
         /**
          * attempted to handshake with a
          *   server that does not appear to understand WebSockets.
          */
-        NOT_WEBSOCKET,
+        NOT_WEBSOCKET = 1,
         /**
          * the WebSocket handshake failed
          *   because some detail was invalid (eg, incorrect accept key).
          */
-        BAD_HANDSHAKE,
+        BAD_HANDSHAKE = 2,
         /**
          * the WebSocket handshake failed
          *   because the "Origin" header was not an allowed value.
          */
-        BAD_ORIGIN,
+        BAD_ORIGIN = 3,
     }
 
 
@@ -1148,16 +1148,16 @@ export namespace Soup {
         /**
          * the connection is ready to send messages
          */
-        OPEN,
+        OPEN = 1,
         /**
          * the connection is in the process of
          *   closing down; messages may be received, but not sent
          */
-        CLOSING,
+        CLOSING = 2,
         /**
          * the connection is completely closed down
          */
-        CLOSED,
+        CLOSED = 3,
     }
 
 
@@ -1199,229 +1199,272 @@ export namespace Soup {
          * request was not
          *   well-formed
          */
-        PARSE_ERROR_NOT_WELL_FORMED,
+        PARSE_ERROR_NOT_WELL_FORMED = -32700,
         /**
          * request was in
          *   an unsupported encoding
          */
-        PARSE_ERROR_UNSUPPORTED_ENCODING,
+        PARSE_ERROR_UNSUPPORTED_ENCODING = -32701,
         /**
          * request contained an invalid character
          */
-        PARSE_ERROR_INVALID_CHARACTER_FOR_ENCODING,
+        PARSE_ERROR_INVALID_CHARACTER_FOR_ENCODING = -32702,
         /**
          * request was not
          *   valid XML-RPC
          */
-        SERVER_ERROR_INVALID_XML_RPC,
+        SERVER_ERROR_INVALID_XML_RPC = -32600,
         /**
          * method
          *   not found
          */
-        SERVER_ERROR_REQUESTED_METHOD_NOT_FOUND,
+        SERVER_ERROR_REQUESTED_METHOD_NOT_FOUND = -32601,
         /**
          * invalid
          *   parameters
          */
-        SERVER_ERROR_INVALID_METHOD_PARAMETERS,
+        SERVER_ERROR_INVALID_METHOD_PARAMETERS = -32602,
         /**
          * internal
          *   error
          */
-        SERVER_ERROR_INTERNAL_XML_RPC_ERROR,
+        SERVER_ERROR_INTERNAL_XML_RPC_ERROR = -32603,
         /**
          * start of reserved range for
          *   application error codes
          */
-        APPLICATION_ERROR,
+        APPLICATION_ERROR = -32500,
         /**
          * start of reserved range for
          *   system error codes
          */
-        SYSTEM_ERROR,
+        SYSTEM_ERROR = -32400,
         /**
          * start of reserved range for
          *   transport error codes
          */
-        TRANSPORT_ERROR,
+        TRANSPORT_ERROR = -32300,
     }
 
 
     /**
      * This can be passed to any {@link Soup.Address} method that expects a port,
      * to indicate that you don't care what port is used.
+     * @default 0
      */
     const ADDRESS_ANY_PORT: number;
 
     /**
      * Alias for the {@link Soup.Address.family} property. (The
      * {@link Soup.AddressFamily} for this address.)
+     * @default family
      */
     const ADDRESS_FAMILY: string;
 
     /**
      * Alias for the {@link Soup.Address.name} property. (The hostname for
      * this address.)
+     * @default name
      */
     const ADDRESS_NAME: string;
 
     /**
      * An alias for the {@link Soup.Address.physical} property. (The
      * stringified IP address for this address.)
+     * @default physical
      */
     const ADDRESS_PHYSICAL: string;
 
     /**
      * An alias for the {@link Soup.Address.port} property. (The port for
      * this address.)
+     * @default port
      */
     const ADDRESS_PORT: string;
 
     /**
      * Alias for the {@link Soup.Address.protocol} property. (The URI scheme
      * used with this address.)
+     * @default protocol
      */
     const ADDRESS_PROTOCOL: string;
 
     /**
      * An alias for the {@link Soup.Address.sockaddr} property. (A pointer
      * to the struct sockaddr for this address.)
+     * @default sockaddr
      */
     const ADDRESS_SOCKADDR: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.add_path} property. (Shortcut
      * for calling `soup_auth_domain_add_path()`.)
+     * @default add-path
      */
     const AUTH_DOMAIN_ADD_PATH: string;
 
     /**
      * Alias for the {@link Soup.AuthDomainBasic.auth_callback} property.
      * (The {@link Soup.AuthDomainBasicAuthCallback}.)
+     * @default auth-callback
      */
     const AUTH_DOMAIN_BASIC_AUTH_CALLBACK: string;
 
     /**
      * Alias for the {@link Soup.AuthDomainBasic.auth_data} property.
      * (The data to pass to the {@link Soup.AuthDomainBasicAuthCallback}.)
+     * @default auth-data
      */
     const AUTH_DOMAIN_BASIC_AUTH_DATA: string;
 
     /**
      * Alias for the {@link Soup.AuthDomainDigest.auth_callback} property.
      * (The {@link Soup.AuthDomainDigestAuthCallback}.)
+     * @default auth-callback
      */
     const AUTH_DOMAIN_DIGEST_AUTH_CALLBACK: string;
 
     /**
      * Alias for the {@link Soup.AuthDomainDigest.auth_callback} property.
      * (The {@link Soup.AuthDomainDigestAuthCallback}.)
+     * @default auth-data
      */
     const AUTH_DOMAIN_DIGEST_AUTH_DATA: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.filter} property. (The
      * {@link Soup.AuthDomainFilter} for the domain.)
+     * @default filter
      */
     const AUTH_DOMAIN_FILTER: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.filter_data} property. (Data
      * to pass to the {@link Soup.AuthDomainFilter}.)
+     * @default filter-data
      */
     const AUTH_DOMAIN_FILTER_DATA: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.generic_auth_callback} property.
      * (The {@link Soup.AuthDomainGenericAuthCallback}.)
+     * @default generic-auth-callback
      */
     const AUTH_DOMAIN_GENERIC_AUTH_CALLBACK: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.generic_auth_data} property.
      * (The data to pass to the {@link Soup.AuthDomainGenericAuthCallback}.)
+     * @default generic-auth-data
      */
     const AUTH_DOMAIN_GENERIC_AUTH_DATA: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.proxy} property. (Whether or
      * not this is a proxy auth domain.)
+     * @default proxy
      */
     const AUTH_DOMAIN_PROXY: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.realm} property. (The realm of
      * this auth domain.)
+     * @default realm
      */
     const AUTH_DOMAIN_REALM: string;
 
     /**
      * Alias for the {@link Soup.AuthDomain.remove_path} property.
      * (Shortcut for calling `soup_auth_domain_remove_path()`.)
+     * @default remove-path
      */
     const AUTH_DOMAIN_REMOVE_PATH: string;
 
     /**
      * An alias for the {@link Soup.Auth.host} property. (The
      * host being authenticated to.)
+     * @default host
      */
     const AUTH_HOST: string;
 
     /**
      * An alias for the {@link Soup.Auth.is_authenticated} property.
      * (Whether or not the auth has been authenticated.)
+     * @default is-authenticated
      */
     const AUTH_IS_AUTHENTICATED: string;
 
     /**
      * An alias for the {@link Soup.Auth.is_for_proxy} property. (Whether
      * or not the auth is for a proxy server.)
+     * @default is-for-proxy
      */
     const AUTH_IS_FOR_PROXY: string;
 
     /**
      * An alias for the {@link Soup.Auth.realm} property. (The
      * authentication realm.)
+     * @default realm
      */
     const AUTH_REALM: string;
 
     /**
      * An alias for the {@link Soup.Auth.scheme_name} property. (The
      * authentication scheme name.)
+     * @default scheme-name
      */
     const AUTH_SCHEME_NAME: string;
 
+    /**
+     * @default 16
+     */
     const CHAR_HTTP_CTL: number;
 
+    /**
+     * @default 8
+     */
     const CHAR_HTTP_SEPARATOR: number;
 
+    /**
+     * @default 2
+     */
     const CHAR_URI_GEN_DELIMS: number;
 
+    /**
+     * @default 1
+     */
     const CHAR_URI_PERCENT_ENCODED: number;
 
+    /**
+     * @default 4
+     */
     const CHAR_URI_SUB_DELIMS: number;
 
     /**
      * Alias for the {@link Soup.CookieJar.accept_policy} property.
      * @since 2.30
+     * @default accept-policy
      */
     const COOKIE_JAR_ACCEPT_POLICY: string;
 
     /**
      * Alias for the {@link Soup.CookieJarDB.filename} property. (The
      * cookie-storage filename.)
+     * @default filename
      */
     const COOKIE_JAR_DB_FILENAME: string;
 
     /**
      * Alias for the {@link Soup.CookieJar.read_only} property. (Whether
      * or not the cookie jar is read-only.)
+     * @default read-only
      */
     const COOKIE_JAR_READ_ONLY: string;
 
     /**
      * Alias for the {@link Soup.CookieJarText.filename} property. (The
      * cookie-storage filename.)
+     * @default filename
      */
     const COOKIE_JAR_TEXT_FILENAME: string;
 
@@ -1429,6 +1472,7 @@ export namespace Soup {
      * A constant corresponding to 1 day, for use with `soup_cookie_new()`
      * and `soup_cookie_set_max_age()`.
      * @since 2.24
+     * @default 0
      */
     const COOKIE_MAX_AGE_ONE_DAY: number;
 
@@ -1436,6 +1480,7 @@ export namespace Soup {
      * A constant corresponding to 1 hour, for use with `soup_cookie_new()`
      * and `soup_cookie_set_max_age()`.
      * @since 2.24
+     * @default 3600
      */
     const COOKIE_MAX_AGE_ONE_HOUR: number;
 
@@ -1443,6 +1488,7 @@ export namespace Soup {
      * A constant corresponding to 1 week, for use with `soup_cookie_new()`
      * and `soup_cookie_set_max_age()`.
      * @since 2.24
+     * @default 0
      */
     const COOKIE_MAX_AGE_ONE_WEEK: number;
 
@@ -1450,6 +1496,7 @@ export namespace Soup {
      * A constant corresponding to 1 year, for use with `soup_cookie_new()`
      * and `soup_cookie_set_max_age()`.
      * @since 2.24
+     * @default 0
      */
     const COOKIE_MAX_AGE_ONE_YEAR: number;
 
@@ -1458,6 +1505,7 @@ export namespace Soup {
      * <literal>"multipart/form-data"</literal>; the MIME type used for
      * posting form data that contains files to be uploaded.
      * @since 2.26
+     * @default multipart/form-data
      */
     const FORM_MIME_TYPE_MULTIPART: string;
 
@@ -1466,22 +1514,31 @@ export namespace Soup {
      * <literal>"application/x-www-form-urlencoded"</literal>; the default
      * MIME type for POSTing HTML form data.
      * @since 2.26
+     * @default application/x-www-form-urlencoded
      */
     const FORM_MIME_TYPE_URLENCODED: string;
 
+    /**
+     * @default filename
+     */
     const HSTS_ENFORCER_DB_FILENAME: string;
 
+    /**
+     * @default 0
+     */
     const HSTS_POLICY_MAX_AGE_PAST: number;
 
     /**
      * Alias for the {@link Soup.Logger.level} property, qv.
      * @since 2.56
+     * @default level
      */
     const LOGGER_LEVEL: string;
 
     /**
      * Alias for the {@link Soup.Logger.max_body_size} property, qv.
      * @since 2.56
+     * @default max-body-size
      */
     const LOGGER_MAX_BODY_SIZE: string;
 
@@ -1490,6 +1547,7 @@ export namespace Soup {
      * application compile time, rather than from the library linked
      * against at application run time.
      * @since 2.42
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
@@ -1498,26 +1556,33 @@ export namespace Soup {
      * {@link Soup.URI} loaded in the application when the message was
      * queued.)
      * @since 2.30
+     * @default first-party
      */
     const MESSAGE_FIRST_PARTY: string;
 
     /**
      * Alias for the {@link Soup.Message.flags} property. (The message's
      * {@link Soup.MessageFlags}.)
+     * @default flags
      */
     const MESSAGE_FLAGS: string;
 
     /**
      * Alias for the {@link Soup.Message.http_version} property. (The
      * message's {@link Soup.HTTPVersion}.)
+     * @default http-version
      */
     const MESSAGE_HTTP_VERSION: string;
 
+    /**
+     * @default is-top-level-navigation
+     */
     const MESSAGE_IS_TOP_LEVEL_NAVIGATION: string;
 
     /**
      * Alias for the {@link Soup.Message.method} property. (The message's
      * HTTP method.)
+     * @default method
      */
     const MESSAGE_METHOD: string;
 
@@ -1525,18 +1590,21 @@ export namespace Soup {
      * Sets the priority of the {@link Soup.Message}. See
      * `soup_message_set_priority()` for further details.
      * @since 2.44
+     * @default priority
      */
     const MESSAGE_PRIORITY: string;
 
     /**
      * Alias for the {@link Soup.Message.reason_phrase} property. (The
      * message's HTTP response reason phrase.)
+     * @default reason-phrase
      */
     const MESSAGE_REASON_PHRASE: string;
 
     /**
      * Alias for the {@link Soup.Message.request_body} property. (The
      * message's HTTP request body.)
+     * @default request-body
      */
     const MESSAGE_REQUEST_BODY: string;
 
@@ -1544,18 +1612,21 @@ export namespace Soup {
      * Alias for the {@link Soup.Message.request_body_data} property. (The
      * message's HTTP request body, as a {@link GLib.Bytes}.)
      * @since 2.46
+     * @default request-body-data
      */
     const MESSAGE_REQUEST_BODY_DATA: string;
 
     /**
      * Alias for the {@link Soup.Message.request_headers} property. (The
      * message's HTTP request headers.)
+     * @default request-headers
      */
     const MESSAGE_REQUEST_HEADERS: string;
 
     /**
      * Alias for the {@link Soup.Message.response_body} property. (The
      * message's HTTP response body.)
+     * @default response-body
      */
     const MESSAGE_RESPONSE_BODY: string;
 
@@ -1563,26 +1634,33 @@ export namespace Soup {
      * Alias for the {@link Soup.Message.response_body_data} property. (The
      * message's HTTP response body, as a {@link GLib.Bytes}.)
      * @since 2.46
+     * @default response-body-data
      */
     const MESSAGE_RESPONSE_BODY_DATA: string;
 
     /**
      * Alias for the {@link Soup.Message.response_headers} property. (The
      * message's HTTP response headers.)
+     * @default response-headers
      */
     const MESSAGE_RESPONSE_HEADERS: string;
 
     /**
      * Alias for the {@link Soup.Message.server_side} property. (`true` if
      * the message was created by {@link Soup.Server}.)
+     * @default server-side
      */
     const MESSAGE_SERVER_SIDE: string;
 
+    /**
+     * @default site-for-cookies
+     */
     const MESSAGE_SITE_FOR_COOKIES: string;
 
     /**
      * Alias for the {@link Soup.Message.status_code} property. (The
      * message's HTTP response status code.)
+     * @default status-code
      */
     const MESSAGE_STATUS_CODE: string;
 
@@ -1590,6 +1668,7 @@ export namespace Soup {
      * Alias for the {@link Soup.Message.tls_certificate} property. (The
      * TLS certificate associated with the message, if any.)
      * @since 2.34
+     * @default tls-certificate
      */
     const MESSAGE_TLS_CERTIFICATE: string;
 
@@ -1597,12 +1676,14 @@ export namespace Soup {
      * Alias for the {@link Soup.Message.tls_errors} property. (The
      * verification errors on {@link Soup.Message.tls_certificate}.)
      * @since 2.34
+     * @default tls-errors
      */
     const MESSAGE_TLS_ERRORS: string;
 
     /**
      * Alias for the {@link Soup.Message.uri} property. (The message's
      * {@link Soup.URI}.)
+     * @default uri
      */
     const MESSAGE_URI: string;
 
@@ -1611,6 +1692,7 @@ export namespace Soup {
      * application compile time, rather than from the library linked
      * against at application run time.
      * @since 2.42
+     * @default 3
      */
     const MICRO_VERSION: number;
 
@@ -1619,18 +1701,21 @@ export namespace Soup {
      * application compile time, rather than from the library linked
      * against at application run time.
      * @since 2.42
+     * @default 74
      */
     const MINOR_VERSION: number;
 
     /**
      * Alias for the {@link Soup.Request.session} property, qv.
      * @since 2.42
+     * @default session
      */
     const REQUEST_SESSION: string;
 
     /**
      * Alias for the {@link Soup.Request.uri} property, qv.
      * @since 2.42
+     * @default uri
      */
     const REQUEST_URI: string;
 
@@ -1638,30 +1723,35 @@ export namespace Soup {
      * Alias for the deprecated {@link Soup.Server.async_context}
      * property, qv.
      * @deprecated The new API uses the thread-default {@link GLib.MainContext} rather than having an explicitly-specified one.
+     * @default async-context
      */
     const SERVER_ASYNC_CONTEXT: string;
 
     /**
      * Alias for the {@link Soup.Server.https_aliases} property, qv.
      * @since 2.44
+     * @default https-aliases
      */
     const SERVER_HTTPS_ALIASES: string;
 
     /**
      * Alias for the {@link Soup.Server.http_aliases} property, qv.
      * @since 2.44
+     * @default http-aliases
      */
     const SERVER_HTTP_ALIASES: string;
 
     /**
      * Alias for the {@link Soup.Server.interface} property, qv.
      * @deprecated `SoupServers` can listen on multiple interfaces at once now. Use `soup_server_listen()`, etc, to listen on an interface, and `soup_server_get_uris()` to see what addresses are being listened on.
+     * @default interface
      */
     const SERVER_INTERFACE: string;
 
     /**
      * Alias for the deprecated {@link Soup.Server.port} property, qv.
      * @deprecated `SoupServers` can listen on multiple interfaces at once now. Use `soup_server_listen()`, etc, to listen on a port, and `soup_server_get_uris()` to see what ports are being listened on.
+     * @default port
      */
     const SERVER_PORT: string;
 
@@ -1669,101 +1759,119 @@ export namespace Soup {
      * Alias for the {@link Soup.Server.raw_paths} property. (If `true`,
      * percent-encoding in the Request-URI path will not be
      * automatically decoded.)
+     * @default raw-paths
      */
     const SERVER_RAW_PATHS: string;
 
     /**
      * Alias for the {@link Soup.Server.server_header} property, qv.
+     * @default server-header
      */
     const SERVER_SERVER_HEADER: string;
 
     /**
      * Alias for the {@link Soup.Server.ssl_cert_file} property, qv.
      * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
+     * @default ssl-cert-file
      */
     const SERVER_SSL_CERT_FILE: string;
 
     /**
      * Alias for the {@link Soup.Server.ssl_key_file} property, qv.
      * @deprecated use {@link Soup.Server.tls_certificate} or `soup_server_set_ssl_certificate()`.
+     * @default ssl-key-file
      */
     const SERVER_SSL_KEY_FILE: string;
 
     /**
      * Alias for the {@link Soup.Server.tls_certificate} property, qv.
      * @since 2.38
+     * @default tls-certificate
      */
     const SERVER_TLS_CERTIFICATE: string;
 
     /**
      * Alias for the {@link Soup.Session.accept_language} property, qv.
      * @since 2.30
+     * @default accept-language
      */
     const SESSION_ACCEPT_LANGUAGE: string;
 
     /**
      * Alias for the {@link Soup.Session.accept_language_auto} property, qv.
      * @since 2.30
+     * @default accept-language-auto
      */
     const SESSION_ACCEPT_LANGUAGE_AUTO: string;
 
     /**
      * Alias for the {@link Soup.Session.async_context} property, qv.
+     * @default async-context
      */
     const SESSION_ASYNC_CONTEXT: string;
 
     /**
      * Alias for the {@link Soup.Session.https_aliases} property, qv.
      * @since 2.38
+     * @default https-aliases
      */
     const SESSION_HTTPS_ALIASES: string;
 
     /**
      * Alias for the {@link Soup.Session.http_aliases} property, qv.
      * @since 2.38
+     * @default http-aliases
      */
     const SESSION_HTTP_ALIASES: string;
 
     /**
      * Alias for the {@link Soup.Session.idle_timeout} property, qv.
      * @since 2.24
+     * @default idle-timeout
      */
     const SESSION_IDLE_TIMEOUT: string;
 
     /**
      * Alias for the {@link Soup.Session.local_address} property, qv.
      * @since 2.42
+     * @default local-address
      */
     const SESSION_LOCAL_ADDRESS: string;
 
     /**
      * Alias for the {@link Soup.Session.max_conns} property, qv.
+     * @default max-conns
      */
     const SESSION_MAX_CONNS: string;
 
     /**
      * Alias for the {@link Soup.Session.max_conns_per_host} property, qv.
+     * @default max-conns-per-host
      */
     const SESSION_MAX_CONNS_PER_HOST: string;
 
     /**
      * Alias for the {@link Soup.Session.proxy_resolver} property, qv.
+     * @default proxy-resolver
      */
     const SESSION_PROXY_RESOLVER: string;
 
     /**
      * Alias for the {@link Soup.Session.proxy_uri} property, qv.
+     * @default proxy-uri
      */
     const SESSION_PROXY_URI: string;
 
     /**
      * Alias for the {@link Soup.Session.ssl_ca_file} property, qv.
+     * @default ssl-ca-file
      */
     const SESSION_SSL_CA_FILE: string;
 
     /**
      * Alias for the {@link Soup.Session.ssl_strict} property, qv.
      * @since 2.30
+     * @default ssl-strict
      */
     const SESSION_SSL_STRICT: string;
 
@@ -1771,90 +1879,106 @@ export namespace Soup {
      * Alias for the {@link Soup.Session.ssl_use_system_ca_file} property,
      * qv.
      * @since 2.38
+     * @default ssl-use-system-ca-file
      */
     const SESSION_SSL_USE_SYSTEM_CA_FILE: string;
 
     /**
      * Alias for the {@link Soup.Session.timeout} property, qv.
+     * @default timeout
      */
     const SESSION_TIMEOUT: string;
 
     /**
      * Alias for the {@link Soup.Session.tls_database} property, qv.
      * @since 2.38
+     * @default tls-database
      */
     const SESSION_TLS_DATABASE: string;
 
     /**
      * Alias for the {@link Soup.Session.tls_interaction} property, qv.
      * @since 2.48
+     * @default tls-interaction
      */
     const SESSION_TLS_INTERACTION: string;
 
     /**
      * Alias for the {@link Soup.Session.user_agent} property, qv.
+     * @default user-agent
      */
     const SESSION_USER_AGENT: string;
 
     /**
      * Alias for the {@link Soup.Session.use_ntlm} property, qv.
+     * @default use-ntlm
      */
     const SESSION_USE_NTLM: string;
 
     /**
      * Alias for the {@link Soup.Session.use_thread_context} property, qv.
      * @since 2.38
+     * @default use-thread-context
      */
     const SESSION_USE_THREAD_CONTEXT: string;
 
     /**
      * Alias for the {@link Soup.Socket.async_context} property. (The
      * socket's {@link GLib.MainContext}.)
+     * @default async-context
      */
     const SOCKET_ASYNC_CONTEXT: string;
 
     /**
      * Alias for the {@link Soup.Socket.non_blocking} property. (Whether
      * or not the socket uses non-blocking I/O.)
+     * @default non-blocking
      */
     const SOCKET_FLAG_NONBLOCKING: string;
 
     /**
      * Alias for the {@link Soup.Socket.is_server} property, qv.
+     * @default is-server
      */
     const SOCKET_IS_SERVER: string;
 
     /**
      * Alias for the {@link Soup.Socket.local_address} property. (Address
      * of local end of socket.)
+     * @default local-address
      */
     const SOCKET_LOCAL_ADDRESS: string;
 
     /**
      * Alias for the {@link Soup.Socket.remote_address} property. (Address
      * of remote end of socket.)
+     * @default remote-address
      */
     const SOCKET_REMOTE_ADDRESS: string;
 
     /**
      * Alias for the {@link Soup.Socket.ssl_creds} property.
      * (SSL credential information.)
+     * @default ssl-creds
      */
     const SOCKET_SSL_CREDENTIALS: string;
 
     /**
      * Alias for the {@link Soup.Socket.ssl_fallback} property.
+     * @default ssl-fallback
      */
     const SOCKET_SSL_FALLBACK: string;
 
     /**
      * Alias for the {@link Soup.Socket.ssl_strict} property.
+     * @default ssl-strict
      */
     const SOCKET_SSL_STRICT: string;
 
     /**
      * Alias for the {@link Soup.Socket.timeout} property. (The timeout
      * in seconds for blocking socket I/O operations.)
+     * @default timeout
      */
     const SOCKET_TIMEOUT: string;
 
@@ -1864,6 +1988,7 @@ export namespace Soup {
      * if the socket is for a TLS connection, and only reliable
      * after some data has been transferred to or from it.
      * @since 2.34
+     * @default tls-certificate
      */
     const SOCKET_TLS_CERTIFICATE: string;
 
@@ -1873,12 +1998,14 @@ export namespace Soup {
      * if the socket is for a TLS connection, and only reliable
      * after some data has been transferred to or from it.
      * @since 2.34
+     * @default tls-errors
      */
     const SOCKET_TLS_ERRORS: string;
 
     /**
      * Alias for the {@link Soup.Socket.trusted_certificate}
      * property.
+     * @default trusted-certificate
      */
     const SOCKET_TRUSTED_CERTIFICATE: string;
 
@@ -1886,6 +2013,7 @@ export namespace Soup {
      * Alias for the {@link Soup.Socket.use_thread_context} property. (Use
      * `g_main_context_get_thread_default()`)
      * @since 2.38
+     * @default use-thread-context
      */
     const SOCKET_USE_THREAD_CONTEXT: string;
 
@@ -1902,6 +2030,7 @@ export namespace Soup {
      * `SOUP_VERSION_MIN_REQUIRED` or earlier will cause warnings (but
      * using functions deprecated in later releases will not).
      * @since 2.42
+     * @default 2
      */
     const VERSION_MIN_REQUIRED: number;
 
@@ -2405,6 +2534,7 @@ export namespace Soup {
      * @param hostname a hostname
      * @returns a pointer to the start of the base domain in `hostname`. If an error occurs, `null` will be returned and `error` set.
      * @since 2.40
+     * @throws GLib.Error
      */
     function tld_get_base_domain(hostname: string): string;
 
@@ -2530,6 +2660,7 @@ export namespace Soup {
      * @param msg {@link Soup.Message} containing both client and server sides of a   WebSocket handshake
      * @returns `true` if `msg` contains a completed valid WebSocket   handshake, `false` and an error if not.
      * @since 2.50
+     * @throws GLib.Error
      */
     function websocket_client_verify_handshake(msg: Message): boolean;
 
@@ -2549,6 +2680,7 @@ export namespace Soup {
      * @param supported_extensions list   of supported extension types
      * @returns `true` if `msg` contains a completed valid WebSocket   handshake, `false` and an error if not.
      * @since 2.68
+     * @throws GLib.Error
      */
     function websocket_client_verify_handshake_with_extensions(msg: Message, supported_extensions: GObject.TypeClass[] | null): [boolean, WebsocketExtension[] | null];
 
@@ -2580,6 +2712,7 @@ export namespace Soup {
      * @param protocols allowed WebSocket   protocols.
      * @returns `true` if `msg` contained a valid WebSocket handshake,   `false` and an error if not.
      * @since 2.50
+     * @throws GLib.Error
      */
     function websocket_server_check_handshake(msg: Message, origin: string | null, protocols: string[] | null): boolean;
 
@@ -2607,6 +2740,7 @@ export namespace Soup {
      * @param supported_extensions list   of supported extension types
      * @returns `true` if `msg` contained a valid WebSocket handshake,   `false` and an error if not.
      * @since 2.68
+     * @throws GLib.Error
      */
     function websocket_server_check_handshake_with_extensions(msg: Message, origin: string | null, protocols: string[] | null, supported_extensions: GObject.TypeClass[] | null): boolean;
 
@@ -2733,6 +2867,7 @@ export namespace Soup {
      * @param params a {@link GLib.Variant} tuple
      * @returns the text of the methodCall, or `null` on error.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_build_request(method_name: string, params: GLib.Variant): string;
 
@@ -2749,6 +2884,7 @@ export namespace Soup {
      * @param value the return value
      * @returns the text of the methodResponse, or `null` on error.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_build_response(value: GLib.Variant): string;
 
@@ -2768,6 +2904,7 @@ export namespace Soup {
      * @param params a {@link GLib.Variant} tuple
      * @returns a {@link Soup.Message} encoding the   indicated XML-RPC request, or `null` on error.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_message_new(uri: string, method_name: string, params: GLib.Variant): Message;
 
@@ -2783,6 +2920,7 @@ export namespace Soup {
      * @param value a {@link GLib.Variant}
      * @returns `true` on success, `false` otherwise.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_message_set_response(msg: Message, value: GLib.Variant): boolean;
 
@@ -2810,6 +2948,7 @@ export namespace Soup {
      * @param length the length of `method_response`, or -1 if it is NUL-terminated
      * @returns `true` if a return value was parsed, `false` if the response could not be parsed, or contained a fault.
      * @deprecated Use `soup_xmlrpc_parse_response()` instead.
+     * @throws GLib.Error
      */
     function xmlrpc_parse_method_response(method_response: string, length: number): [boolean, unknown];
 
@@ -2820,6 +2959,7 @@ export namespace Soup {
      * @param length the length of `method_call`, or -1 if it is NUL-terminated
      * @returns method's name, or `null` on error.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_parse_request(method_call: string, length: number): [string, XMLRPCParams];
 
@@ -2837,6 +2977,7 @@ export namespace Soup {
      * @param signature A valid {@link GLib.Variant} type string, or `null`
      * @returns a new (non-floating) {@link GLib.Variant}, or `null`
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_parse_response(method_response: string, length: number, signature: string | null): GLib.Variant;
 
@@ -2851,6 +2992,7 @@ export namespace Soup {
      * @param variant a {@link GLib.Variant}
      * @returns a new {@link Soup.Date}, or `null` on error.
      * @since 2.52
+     * @throws GLib.Error
      */
     function xmlrpc_variant_get_datetime(variant: GLib.Variant): Date;
 
@@ -3004,10 +3146,10 @@ export namespace Soup {
      * @gir-type Flags
      */
     enum Cacheability {
-        CACHEABLE,
-        UNCACHEABLE,
-        INVALIDATES,
-        VALIDATES,
+        CACHEABLE = 1,
+        UNCACHEABLE = 2,
+        INVALIDATES = 4,
+        VALIDATES = 8,
     }
 
 
@@ -3026,11 +3168,11 @@ export namespace Soup {
         /**
          * any unrecognized expectation
          */
-        UNRECOGNIZED,
+        UNRECOGNIZED = 1,
         /**
          * "100-continue"
          */
-        CONTINUE,
+        CONTINUE = 2,
     }
 
 
@@ -3051,33 +3193,33 @@ export namespace Soup {
          * The session should not follow redirect
          *   (3xx) responses received by this message.
          */
-        NO_REDIRECT,
+        NO_REDIRECT = 2,
         /**
          * The caller will rebuild the request
          *   body if the message is restarted; see
          *   `soup_message_body_set_accumulate()` for more details.
          */
-        CAN_REBUILD,
+        CAN_REBUILD = 4,
         /**
          * Deprecated: equivalent to calling
          *   `soup_message_body_set_accumulate()` on the incoming message body
          *   (ie, {@link Soup.Message.response_body} for a client-side request),
          *   passing `false`.
          */
-        OVERWRITE_CHUNKS,
+        OVERWRITE_CHUNKS = 8,
         /**
          * Set by {@link Soup.ContentDecoder} to
          *   indicate that it has removed the Content-Encoding on a message (and
          *   so headers such as Content-Length may no longer accurately describe
          *   the body).
          */
-        CONTENT_DECODED,
+        CONTENT_DECODED = 16,
         /**
          * if set after an https response
          *   has been received, indicates that the server's SSL certificate is
          *   trusted according to the session's CA.
          */
-        CERTIFICATE_TRUSTED,
+        CERTIFICATE_TRUSTED = 32,
         /**
          * Requests that the message should be
          *   sent on a newly-created connection, not reusing an existing
@@ -3085,14 +3227,14 @@ export namespace Soup {
          *   {@link Soup.Message.method}<!-- -->s behave this way by default, unless
          *   #SOUP_MESSAGE_IDEMPOTENT is set.
          */
-        NEW_CONNECTION,
+        NEW_CONNECTION = 64,
         /**
          * The message is considered idempotent,
          *   regardless its {@link Soup.Message.method}, and allows reuse of existing
          *   idle connections, instead of always requiring a new one, unless
          *   #SOUP_MESSAGE_NEW_CONNECTION is set.
          */
-        IDEMPOTENT,
+        IDEMPOTENT = 128,
         /**
          * Request that a new connection is
          *   created for the message if there aren't idle connections available
@@ -3101,7 +3243,7 @@ export namespace Soup {
          *   eventually created for this message, it will be dropped when the
          *   message finishes. Since 2.50
          */
-        IGNORE_CONNECTION_LIMITS,
+        IGNORE_CONNECTION_LIMITS = 256,
         /**
          * The {@link Soup.AuthManager} should not use
          *   the credentials cache for this message, neither to use cached credentials
@@ -3111,7 +3253,7 @@ export namespace Soup {
          *   be emitted, if you want to disable authentication for a message use
          *   `soup_message_disable_feature()` passing #SOUP_TYPE_AUTH_MANAGER instead. Since 2.58
          */
-        DO_NOT_USE_AUTH_CACHE,
+        DO_NOT_USE_AUTH_CACHE = 512,
     }
 
 
@@ -3138,15 +3280,15 @@ export namespace Soup {
          * Listen for https connections rather
          *   than plain http.
          */
-        HTTPS,
+        HTTPS = 1,
         /**
          * Only listen on IPv4 interfaces.
          */
-        IPV4_ONLY,
+        IPV4_ONLY = 2,
         /**
          * Only listen on IPv6 interfaces.
          */
-        IPV6_ONLY,
+        IPV6_ONLY = 4,
     }
 
 
@@ -4352,7 +4494,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            authenticate: (arg0: Message, arg1: Auth, arg2: boolean) => void;
+            authenticate: (msg: Message, auth: Auth, retrying: boolean) => void;
         }
 
         // Constructor properties interface
@@ -5238,7 +5380,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            changed: (arg0: Cookie, arg1: Cookie) => void;
+            changed: (old_cookie: Cookie, new_cookie: Cookie) => void;
             "notify::accept-policy": (pspec: GObject.ParamSpec) => void;
             "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
@@ -5978,7 +6120,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            changed: (arg0: HSTSPolicy, arg1: HSTSPolicy) => void;
+            changed: (old_policy: HSTSPolicy, new_policy: HSTSPolicy) => void;
             /**
              * Emitted when `hsts_enforcer` has upgraded the protocol
              * for `message` to HTTPS as a result of matching its domain with
@@ -5986,7 +6128,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "hsts-enforced": (arg0: Message) => void;
+            "hsts-enforced": (message: Message) => void;
         }
 
         // Constructor properties interface
@@ -6641,7 +6783,7 @@ export namespace Soup {
              * @since 2.28
              * @run-first
              */
-            "content-sniffed": (arg0: string, arg1: { [key: string]: string }) => void;
+            "content-sniffed": (type: string, params: { [key: string]: string }) => void;
             /**
              * Emitted when all HTTP processing is finished for a message.
              * (After {@link Soup.Message.SignalSignatures.got_body | Soup.Message::got_body} for client-side messages, or
@@ -6675,7 +6817,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "got-chunk": (arg0: Buffer) => void;
+            "got-chunk": (chunk: Buffer) => void;
             /**
              * Emitted after receiving all message headers for a message.
              * (For a client-side message, this is after receiving the
@@ -6730,7 +6872,7 @@ export namespace Soup {
              * @since 2.38
              * @run-first
              */
-            "network-event": (arg0: Gio.SocketClientEvent, arg1: Gio.IOStream) => void;
+            "network-event": (event: Gio.SocketClientEvent, connection: Gio.IOStream) => void;
             /**
              * Emitted when a request that was already sent once is now
              * being sent again (eg, because the first attempt received a
@@ -6769,7 +6911,7 @@ export namespace Soup {
              * @since 2.24
              * @run-first
              */
-            "wrote-body-data": (arg0: Buffer) => void;
+            "wrote-body-data": (chunk: Buffer) => void;
             /**
              * Emitted immediately after writing a body chunk for a message.
              * 
@@ -7587,6 +7729,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a new {@link Gio.InputStream}, or `null` if there are no more parts
          * @since 2.40
+         * @throws GLib.Error
          */
         next_part(cancellable: Gio.Cancellable | null): Gio.InputStream | null;
 
@@ -7627,6 +7770,7 @@ export namespace Soup {
          * @param result a {@link Gio.AsyncResult}.
          * @returns a newly created {@link Gio.InputStream} for reading the next part or `null` if there are no more parts.
          * @since 2.40
+         * @throws GLib.Error
          */
         next_part_finish(result: Gio.AsyncResult): Gio.InputStream | null;
 
@@ -7695,6 +7839,7 @@ export namespace Soup {
          * `g_pollable_input_stream_can_poll()` returns `false` for `stream`.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the number of bytes read, or -1 on error (including   {@link Gio.IOErrorEnum.WOULD_BLOCK}).
+         * @throws GLib.Error
          */
         read_nonblocking(cancellable: Gio.Cancellable | null): [number, Uint8Array];
 
@@ -8152,6 +8297,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Gio.InputStream} that can be used to   read from the URI pointed to by `request`.
          * @since 2.42
+         * @throws GLib.Error
          */
         send(cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -8195,6 +8341,7 @@ export namespace Soup {
          * @param result the {@link Gio.AsyncResult}
          * @returns a {@link Gio.InputStream} that can be used to   read from the URI pointed to by `request`.
          * @since 2.42
+         * @throws GLib.Error
          */
         send_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -8240,6 +8387,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8376,6 +8524,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8520,6 +8669,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8664,6 +8814,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8760,11 +8911,13 @@ export namespace Soup {
         // Methods
         /**
          * @param uri_string 
+         * @throws GLib.Error
          */
         request(uri_string: string): Request;
 
         /**
          * @param uri 
+         * @throws GLib.Error
          */
         request_uri(uri: URI): Request;
 
@@ -8895,14 +9048,14 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "request-aborted": (arg0: Message, arg1: ClientContext) => void;
+            "request-aborted": (message: Message, client: ClientContext) => void;
             /**
              * Emitted when the server has finished writing a response to
              * a request.
              * @signal
              * @run-first
              */
-            "request-finished": (arg0: Message, arg1: ClientContext) => void;
+            "request-finished": (message: Message, client: ClientContext) => void;
             /**
              * Emitted when the server has successfully read a request.
              * `message` will have all of its request-side information
@@ -8914,7 +9067,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "request-read": (arg0: Message, arg1: ClientContext) => void;
+            "request-read": (message: Message, client: ClientContext) => void;
             /**
              * Emitted when the server has started reading a new request.
              * `message` will be completely blank; not even the
@@ -8930,7 +9083,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "request-started": (arg0: Message, arg1: ClientContext) => void;
+            "request-started": (message: Message, client: ClientContext) => void;
             "notify::async-context": (pspec: GObject.ParamSpec) => void;
             "notify::http-aliases": (pspec: GObject.ParamSpec) => void;
             "notify::https-aliases": (pspec: GObject.ParamSpec) => void;
@@ -9289,6 +9442,7 @@ export namespace Soup {
          * @param remote_addr the remote {@link Gio.SocketAddress} associated with the `stream`
          * @returns `true` on success, `false` if the stream could not be accepted or any other error occurred (in which case `error` will be set).
          * @since 2.50
+         * @throws GLib.Error
          */
         accept_iostream(stream: Gio.IOStream, local_addr: Gio.SocketAddress | null, remote_addr: Gio.SocketAddress | null): boolean;
 
@@ -9523,6 +9677,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns `true` on success, `false` if `address` could not be bound or any other error occurred (in which case `error` will be set).
          * @since 2.48
+         * @throws GLib.Error
          */
         listen(address: Gio.SocketAddress, options: ServerListenOptions): boolean;
 
@@ -9541,6 +9696,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns `true` on success, `false` if `port` could not be bound or any other error occurred (in which case `error` will be set).
          * @since 2.48
+         * @throws GLib.Error
          */
         listen_all(port: number, options: ServerListenOptions): boolean;
 
@@ -9556,6 +9712,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns `true` on success, `false` if an error occurred (in which case `error` will be set).
          * @since 2.48
+         * @throws GLib.Error
          */
         listen_fd(fd: number, options: ServerListenOptions): boolean;
 
@@ -9574,6 +9731,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns `true` on success, `false` if `port` could not be bound or any other error occurred (in which case `error` will be set).
          * @since 2.48
+         * @throws GLib.Error
          */
         listen_local(port: number, options: ServerListenOptions): boolean;
 
@@ -9586,6 +9744,7 @@ export namespace Soup {
          * @param options listening options for this server
          * @returns `true` on success, `false` if an error occurred (in which case `error` will be set).
          * @since 2.48
+         * @throws GLib.Error
          */
         listen_socket(socket: Gio.Socket, options: ServerListenOptions): boolean;
 
@@ -9662,6 +9821,7 @@ export namespace Soup {
          * @param ssl_key_file path to a file containing a PEM-encoded private key.
          * @returns success or failure.
          * @since 2.48
+         * @throws GLib.Error
          */
         set_ssl_cert_file(ssl_cert_file: string, ssl_key_file: string): boolean;
 
@@ -9703,7 +9863,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            authenticate: (arg0: Message, arg1: Auth, arg2: boolean) => void;
+            authenticate: (msg: Message, auth: Auth, retrying: boolean) => void;
             /**
              * Emitted when a new connection is created. This is an
              * internal signal intended only to be used for debugging
@@ -9712,7 +9872,7 @@ export namespace Soup {
              * @since 2.30
              * @run-first
              */
-            "connection-created": (arg0: GObject.Object) => void;
+            "connection-created": (connection: GObject.Object) => void;
             /**
              * Emitted when a request is queued on `session`. (Note that
              * "queued" doesn't just mean `soup_session_queue_message()`;
@@ -9753,7 +9913,7 @@ export namespace Soup {
              * @since 2.24
              * @run-first
              */
-            "request-queued": (arg0: Message) => void;
+            "request-queued": (msg: Message) => void;
             /**
              * Emitted just before a request is sent. See
              * {@link Soup.Session.SignalSignatures.request_queued | Soup.Session::request_queued} for a detailed description of
@@ -9762,7 +9922,7 @@ export namespace Soup {
              * @deprecated since 2.50.: Use {@link Soup.Message.SignalSignatures.starting | Soup.Message::starting} instead.
              * @run-first
              */
-            "request-started": (arg0: Message, arg1: Socket) => void;
+            "request-started": (msg: Message, socket: Socket) => void;
             /**
              * Emitted when a request is removed from `session`'s queue,
              * indicating that `session` is done with it. See
@@ -9772,7 +9932,7 @@ export namespace Soup {
              * @since 2.24
              * @run-first
              */
-            "request-unqueued": (arg0: Message) => void;
+            "request-unqueued": (msg: Message) => void;
             /**
              * Emitted when an SSL tunnel is being created on a proxy
              * connection. This is an internal signal intended only to be
@@ -9781,7 +9941,7 @@ export namespace Soup {
              * @since 2.30
              * @run-first
              */
-            tunneling: (arg0: GObject.Object) => void;
+            tunneling: (connection: GObject.Object) => void;
             "notify::accept-language": (pspec: GObject.ParamSpec) => void;
             "notify::accept-language-auto": (pspec: GObject.ParamSpec) => void;
             "notify::async-context": (pspec: GObject.ParamSpec) => void;
@@ -10718,6 +10878,7 @@ export namespace Soup {
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a new {@link Gio.IOStream}, or `null` on error.
          * @since 2.62
+         * @throws GLib.Error
          */
         connect_finish(result: Gio.AsyncResult): Gio.IOStream;
 
@@ -10872,6 +11033,7 @@ export namespace Soup {
          * @param uri_string a URI, in string form
          * @returns a new {@link Soup.Request}, or   `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         request(uri_string: string): Request;
 
@@ -10883,6 +11045,7 @@ export namespace Soup {
          * @param uri_string a URI, in string form
          * @returns a new {@link Soup.RequestHTTP}, or   `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         request_http(method: string, uri_string: string): RequestHTTP;
 
@@ -10894,6 +11057,7 @@ export namespace Soup {
          * @param uri a {@link Soup.URI} representing the URI to retrieve
          * @returns a new {@link Soup.RequestHTTP}, or   `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         request_http_uri(method: string, uri: URI): RequestHTTP;
 
@@ -10902,6 +11066,7 @@ export namespace Soup {
          * @param uri a {@link Soup.URI} representing the URI to retrieve
          * @returns a new {@link Soup.Request}, or   `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         request_uri(uri: URI): Request;
 
@@ -10942,6 +11107,7 @@ export namespace Soup {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         send(msg: Message, cancellable: Gio.Cancellable | null): Gio.InputStream;
 
@@ -11023,6 +11189,7 @@ export namespace Soup {
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a {@link Gio.InputStream} for reading the   response body, or `null` on error.
          * @since 2.42
+         * @throws GLib.Error
          */
         send_finish(result: Gio.AsyncResult): Gio.InputStream;
 
@@ -11168,6 +11335,7 @@ export namespace Soup {
          * @param result the {@link Gio.AsyncResult} passed to your callback
          * @returns a new {@link Soup.WebsocketConnection}, or   `null` on error.
          * @since 2.50
+         * @throws GLib.Error
          */
         websocket_connect_finish(result: Gio.AsyncResult): WebsocketConnection;
 
@@ -11332,7 +11500,7 @@ export namespace Soup {
              * @since 2.38
              * @run-last
              */
-            event: (arg0: Gio.SocketClientEvent, arg1: Gio.IOStream) => void;
+            event: (event: Gio.SocketClientEvent, connection: Gio.IOStream) => void;
             /**
              * Emitted when a listening socket (set up with
              * `soup_socket_listen()`) receives a new connection.
@@ -11342,7 +11510,7 @@ export namespace Soup {
              * @signal
              * @run-first
              */
-            "new-connection": (arg0: Socket) => void;
+            "new-connection": (_new: Socket) => void;
             /**
              * Emitted when an async socket is readable. See
              * `soup_socket_read()`, `soup_socket_read_until()` and
@@ -11783,6 +11951,7 @@ export namespace Soup {
          * @param buffer buffer to read   into
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link Soup.SocketIOStatus}, as described above (or {@link Soup.SocketIOStatus.EOF} if the socket is no longer connected, or {@link Soup.SocketIOStatus.ERROR} on any other error, in which case `error` will also be set).
+         * @throws GLib.Error
          */
         read(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): [SocketIOStatus, number];
 
@@ -11804,6 +11973,7 @@ export namespace Soup {
          * @param boundary_len length of `boundary` in bytes
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns as for `soup_socket_read()`
+         * @throws GLib.Error
          */
         read_until(buffer: Uint8Array | string, boundary: null, boundary_len: bigint | number, cancellable: Gio.Cancellable | null): [SocketIOStatus, number, boolean];
 
@@ -11839,6 +12009,7 @@ export namespace Soup {
          * @param buffer data to write
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a {@link Soup.SocketIOStatus}, as described above (or {@link Soup.SocketIOStatus.EOF} or {@link Soup.SocketIOStatus.ERROR}. `error` will be set if the return value is {@link Soup.SocketIOStatus.ERROR}.)
+         * @throws GLib.Error
          */
         write(buffer: Uint8Array | string, cancellable: Gio.Cancellable | null): [SocketIOStatus, number];
 
@@ -11884,6 +12055,7 @@ export namespace Soup {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11964,7 +12136,7 @@ export namespace Soup {
              * @since 2.50
              * @run-first
              */
-            error: (arg0: GLib.Error) => void;
+            error: (error: GLib.Error) => void;
             /**
              * Emitted when we receive a message from the peer.
              * 
@@ -11975,7 +12147,7 @@ export namespace Soup {
              * @since 2.50
              * @run-first
              */
-            message: (arg0: number, arg1: GLib.Bytes) => void;
+            message: (type: number, message: GLib.Bytes) => void;
             /**
              * Emitted when we receive a Pong frame (solicited or
              * unsolicited) from the peer.
@@ -11987,7 +12159,7 @@ export namespace Soup {
              * @since 2.60
              * @run-first
              */
-            pong: (arg0: GLib.Bytes) => void;
+            pong: (message: GLib.Bytes) => void;
             "notify::connection-type": (pspec: GObject.ParamSpec) => void;
             "notify::extensions": (pspec: GObject.ParamSpec) => void;
             "notify::io-stream": (pspec: GObject.ParamSpec) => void;
@@ -12465,6 +12637,7 @@ export namespace Soup {
          * @param connection_type either {@link Soup.WebsocketConnectionType.CLIENT} or {@link Soup.WebsocketConnectionType.SERVER}
          * @param params the parameters, or `null`
          * @returns `true` if extension could be configured with the given parameters, or `false` otherwise
+         * @throws GLib.Error
          */
         configure(connection_type: WebsocketConnectionType, params: never | null): boolean;
 
@@ -12494,6 +12667,7 @@ export namespace Soup {
          * @param payload the payload data
          * @returns the message payload data, or `null` in case of error
          * @since 2.68
+         * @throws GLib.Error
          */
         process_incoming_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
 
@@ -12507,6 +12681,7 @@ export namespace Soup {
          * @param payload the payload data
          * @returns the message payload data, or `null` in case of error
          * @since 2.68
+         * @throws GLib.Error
          */
         process_outgoing_message(header: number, payload: GLib.Bytes | Uint8Array): [GLib.Bytes, number];
     }
@@ -14771,6 +14946,7 @@ export namespace Soup {
          * @param signature A valid {@link GLib.Variant} type string, or `null`
          * @returns a new (non-floating) {@link GLib.Variant}, or `null`
          * @since 2.52
+         * @throws GLib.Error
          */
         parse(signature: string | null): GLib.Variant;
     }

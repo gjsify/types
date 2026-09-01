@@ -40,7 +40,7 @@ export namespace BudgieRaven {
              * @signal
              * @run-last
              */
-            "raven-expanded": (arg0: boolean) => void;
+            "raven-expanded": (object: boolean) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;

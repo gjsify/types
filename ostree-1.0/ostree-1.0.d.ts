@@ -27,10 +27,10 @@ export namespace OSTree {
      * @gir-type Enum
      */
     enum DeploymentUnlockedState {
-        NONE,
-        DEVELOPMENT,
-        HOTFIX,
-        TRANSIENT,
+        NONE = 0,
+        DEVELOPMENT = 1,
+        HOTFIX = 2,
+        TRANSIENT = 3,
     }
 
 
@@ -90,74 +90,74 @@ export namespace OSTree {
         /**
          * [#G_VARIANT_TYPE_BOOLEAN] Is the signature valid?
          */
-        VALID,
+        VALID = 0,
         /**
          * [#G_VARIANT_TYPE_BOOLEAN] Has the signature expired?
          */
-        SIG_EXPIRED,
+        SIG_EXPIRED = 1,
         /**
          * [#G_VARIANT_TYPE_BOOLEAN] Has the signing key expired?
          */
-        KEY_EXPIRED,
+        KEY_EXPIRED = 2,
         /**
          * [#G_VARIANT_TYPE_BOOLEAN] Has the signing key been revoked?
          */
-        KEY_REVOKED,
+        KEY_REVOKED = 3,
         /**
          * [#G_VARIANT_TYPE_BOOLEAN] Is the signing key missing?
          */
-        KEY_MISSING,
+        KEY_MISSING = 4,
         /**
          * [#G_VARIANT_TYPE_STRING] Fingerprint of the signing key
          */
-        FINGERPRINT,
+        FINGERPRINT = 5,
         /**
          * [#G_VARIANT_TYPE_INT64] Signature creation Unix timestamp
          */
-        TIMESTAMP,
+        TIMESTAMP = 6,
         /**
          * [#G_VARIANT_TYPE_INT64] Signature expiration Unix timestamp (0 if no
          *   expiration)
          */
-        EXP_TIMESTAMP,
+        EXP_TIMESTAMP = 7,
         /**
          * [#G_VARIANT_TYPE_STRING] Name of the public key algorithm used to create
          *   the signature
          */
-        PUBKEY_ALGO_NAME,
+        PUBKEY_ALGO_NAME = 8,
         /**
          * [#G_VARIANT_TYPE_STRING] Name of the hash algorithm used to create the
          *   signature
          */
-        HASH_ALGO_NAME,
+        HASH_ALGO_NAME = 9,
         /**
          * [#G_VARIANT_TYPE_STRING] The name of the signing key's primary user
          */
-        USER_NAME,
+        USER_NAME = 10,
         /**
          * [#G_VARIANT_TYPE_STRING] The email address of the signing key's primary
          *   user
          */
-        USER_EMAIL,
+        USER_EMAIL = 11,
         /**
          * [#G_VARIANT_TYPE_STRING] Fingerprint of the signing key's primary key
          *   (will be the same as OSTREE_GPG_SIGNATURE_ATTR_FINGERPRINT if the
          *   the signature is already from the primary key rather than a subkey,
          *   and will be the empty string if the key is missing.)
          */
-        FINGERPRINT_PRIMARY,
+        FINGERPRINT_PRIMARY = 12,
         /**
          * [#G_VARIANT_TYPE_INT64] Key expiration Unix timestamp (0 if no
          *   expiration or if the key is missing)
          */
-        KEY_EXP_TIMESTAMP,
+        KEY_EXP_TIMESTAMP = 13,
         /**
          * [#G_VARIANT_TYPE_INT64] Key expiration Unix timestamp of the signing key's
          *   primary key (will be the same as OSTREE_GPG_SIGNATURE_ATTR_KEY_EXP_TIMESTAMP
          *   if the signing key is the primary key and 0 if no expiration or if the key
          *   is missing)
          */
-        KEY_EXP_TIMESTAMP_PRIMARY,
+        KEY_EXP_TIMESTAMP_PRIMARY = 14,
     }
 
 
@@ -170,40 +170,40 @@ export namespace OSTree {
         /**
          * Content; regular file, symbolic link
          */
-        FILE,
+        FILE = 1,
         /**
          * List of children (trees or files), and metadata
          */
-        DIR_TREE,
+        DIR_TREE = 2,
         /**
          * Directory metadata
          */
-        DIR_META,
+        DIR_META = 3,
         /**
          * Toplevel object, refers to tree and dirmeta for root
          */
-        COMMIT,
+        COMMIT = 4,
         /**
          * Toplevel object, refers to a deleted commit
          */
-        TOMBSTONE_COMMIT,
+        TOMBSTONE_COMMIT = 5,
         /**
          * Detached metadata for a commit
          */
-        COMMIT_META,
+        COMMIT_META = 6,
         /**
          * Symlink to a .file given its checksum on the payload only.
          */
-        PAYLOAD_LINK,
+        PAYLOAD_LINK = 7,
         /**
          * Detached xattrs content, for 'bare-split-xattrs' mode.
          */
-        FILE_XATTRS,
+        FILE_XATTRS = 8,
         /**
          * Hardlink to a .file-xattrs given the checksum of its .file
          * object.
          */
-        FILE_XATTRS_LINK,
+        FILE_XATTRS_LINK = 9,
     }
 
 
@@ -215,11 +215,11 @@ export namespace OSTree {
         /**
          * Do checkout this object
          */
-        ALLOW,
+        ALLOW = 0,
         /**
          * Ignore this object
          */
-        SKIP,
+        SKIP = 1,
     }
 
 
@@ -230,11 +230,11 @@ export namespace OSTree {
         /**
          * No special options
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore uid/gid of files
          */
-        USER,
+        USER = 1,
     }
 
 
@@ -245,22 +245,22 @@ export namespace OSTree {
         /**
          * No special options
          */
-        NONE,
+        NONE = 0,
         /**
          * When layering checkouts, `unlink()` and replace
          * existing files, but do not modify existing directories (unless whiteouts are enabled, then
          * directories are replaced)
          */
-        UNION_FILES,
+        UNION_FILES = 1,
         /**
          * Only add new files/directories
          */
-        ADD_FILES,
+        ADD_FILES = 2,
         /**
          * Like UNION_FILES, but error if files are not
          * identical (requires hardlink checkouts)
          */
-        UNION_IDENTICAL,
+        UNION_IDENTICAL = 3,
     }
 
 
@@ -271,11 +271,11 @@ export namespace OSTree {
         /**
          * Do commit this object
          */
-        ALLOW,
+        ALLOW = 0,
         /**
          * Ignore this object
          */
-        SKIP,
+        SKIP = 1,
     }
 
 
@@ -283,10 +283,10 @@ export namespace OSTree {
      * @gir-type Enum
      */
     enum RepoCommitIterResult {
-        ERROR,
-        END,
-        FILE,
-        DIR,
+        ERROR = 0,
+        END = 1,
+        FILE = 2,
+        DIR = 3,
     }
 
 
@@ -299,11 +299,11 @@ export namespace OSTree {
         /**
          * A "read only" lock; multiple readers are allowed.
          */
-        SHARED,
+        SHARED = 0,
         /**
          * A writable lock at most one writer can be active, and zero readers.
          */
-        EXCLUSIVE,
+        EXCLUSIVE = 1,
     }
 
 
@@ -317,31 +317,31 @@ export namespace OSTree {
          * Files are stored as themselves; checkouts are hardlinks; can only be
          * written as root
          */
-        BARE,
+        BARE = 0,
         /**
          * Files are compressed, should be owned by non-root.  Can be served via
          * HTTP.  Since: 2017.12
          */
-        ARCHIVE,
+        ARCHIVE = 1,
         /**
          * Legacy alias for `OSTREE_REPO_MODE_ARCHIVE`
          */
-        ARCHIVE_Z2,
+        ARCHIVE_Z2 = 1,
         /**
          * Files are stored as themselves, except ownership; can be written by
          * user. Hardlinks work only in user checkouts.
          */
-        BARE_USER,
+        BARE_USER = 2,
         /**
          * Same as BARE_USER, but all metadata is not stored, so it can
          * only be used for user checkouts. Does not need xattrs.
          */
-        BARE_USER_ONLY,
+        BARE_USER_ONLY = 3,
         /**
          * Same as BARE_USER, but xattrs are stored separately from
          * file content, with dedicated object types.
          */
-        BARE_SPLIT_XATTRS,
+        BARE_SPLIT_XATTRS = 4,
     }
 
 
@@ -353,24 +353,24 @@ export namespace OSTree {
         /**
          * Add a remote
          */
-        ADD,
+        ADD = 0,
         /**
          * Like above, but do nothing if the remote exists
          */
-        ADD_IF_NOT_EXISTS,
+        ADD_IF_NOT_EXISTS = 1,
         /**
          * Delete a remote
          */
-        DELETE,
+        DELETE = 2,
         /**
          * Delete a remote, do nothing if the remote does not
          * exist
          */
-        DELETE_IF_EXISTS,
+        DELETE_IF_EXISTS = 3,
         /**
          * Add or replace a remote (Since: 2019.2)
          */
-        REPLACE,
+        REPLACE = 4,
     }
 
 
@@ -382,11 +382,11 @@ export namespace OSTree {
         /**
          * Optimize for speed of delta creation over space
          */
-        LOWLATENCY,
+        LOWLATENCY = 0,
         /**
          * Optimize for delta size (may be very slow)
          */
-        MAJOR,
+        MAJOR = 1,
     }
 
 
@@ -398,10 +398,13 @@ export namespace OSTree {
         /**
          * No special flags
          */
-        STATIC_DELTA_INDEX_FLAGS_NONE,
+        STATIC_DELTA_INDEX_FLAGS_NONE = 0,
     }
 
 
+    /**
+     * @default (a{sv}aya(say)sstayay)
+     */
     const COMMIT_GVARIANT_STRING: string;
 
     /**
@@ -410,6 +413,7 @@ export namespace OSTree {
      * don't have a prior schema, it's recommended to use `uname -m` by default (i.e. the Linux kernel
      * schema).  In the future ostree might include a builtin function to compare architectures.
      * @since 2020.4
+     * @default ostree.architecture
      */
     const COMMIT_META_KEY_ARCHITECTURE: string;
 
@@ -420,6 +424,7 @@ export namespace OSTree {
      * This is most useful in concert with `OSTREE_COMMIT_META_KEY_REF_BINDING`,
      * as it more strongly binds the commit to the repository and branch.
      * @since 2018.6
+     * @default ostree.collection-binding
      */
     const COMMIT_META_KEY_COLLECTION_BINDING: string;
 
@@ -428,6 +433,7 @@ export namespace OSTree {
      * when an update stream for a particular branch ends. It usually provides
      * update instructions for the users.
      * @since 2017.7
+     * @default ostree.endoflife
      */
     const COMMIT_META_KEY_ENDOFLIFE: string;
 
@@ -436,6 +442,7 @@ export namespace OSTree {
      * `ostree admin upgrade` and {@link OSTree.SysrootUpgrader} will automatically initiate
      * a rebase upon encountering this metadata key.
      * @since 2017.7
+     * @default ostree.endoflife-rebase
      */
     const COMMIT_META_KEY_ENDOFLIFE_REBASE: string;
 
@@ -447,6 +454,7 @@ export namespace OSTree {
      * support a "promotion" model of taking a commit and moving it between development
      * and production branches.
      * @since 2017.9
+     * @default ostree.ref-binding
      */
     const COMMIT_META_KEY_REF_BINDING: string;
 
@@ -461,6 +469,7 @@ export namespace OSTree {
      * Try to keep this key short (e.g. < 80 characters) and human-readable; if you
      * desire machine readable data, consider injecting separate metadata keys.
      * @since 2017.13
+     * @default ostree.source-title
      */
     const COMMIT_META_KEY_SOURCE_TITLE: string;
 
@@ -471,13 +480,23 @@ export namespace OSTree {
      * 
      * This is the only ostree-defined metadata key that does not start with `ostree.`.
      * @since 2014.9
+     * @default version
      */
     const COMMIT_META_KEY_VERSION: string;
 
+    /**
+     * @default (uuua(ayay))
+     */
     const DIRMETA_GVARIANT_STRING: string;
 
+    /**
+     * @default (uuua(ayay))
+     */
     const FILEMETA_GVARIANT_STRING: string;
 
+    /**
+     * @default (aa{sv}aa{sv}a{sv})
+     */
     const GPG_KEY_GVARIANT_STRING: string;
 
     /**
@@ -485,23 +504,27 @@ export namespace OSTree {
      * over HTTP (including repo/config files, refs, and commit/dirtree/dirmeta
      * objects). This is an arbitrary number intended to mitigate disk space
      * exhaustion attacks.
+     * @default 134217728
      */
     const MAX_METADATA_SIZE: number;
 
     /**
      * This variable is no longer meaningful, it is kept only for compatibility.
+     * @default 7340032
      */
     const MAX_METADATA_WARN_SIZE: number;
 
     /**
      * GVariant type `b`: Set if this commit is intended to be bootable
      * @since 2021.1
+     * @default ostree.bootable
      */
     const METADATA_KEY_BOOTABLE: string;
 
     /**
      * GVariant type `s`: Contains the Linux kernel release (i.e. `uname -r`)
      * @since 2021.1
+     * @default ostree.linux
      */
     const METADATA_KEY_LINUX: string;
 
@@ -522,6 +545,7 @@ export namespace OSTree {
      * `xa.collection-id`, which is now deprecated as clients which supported it had
      * bugs with their P2P implementations.
      * @since 2018.9
+     * @default ostree.deploy-collection-id
      */
     const META_KEY_DEPLOY_COLLECTION_ID: string;
 
@@ -530,18 +554,21 @@ export namespace OSTree {
      * be carried across upgrades.  For more information,
      * see `ostree_deployment_origin_remove_transient_state()`.
      * @since 2018.3
+     * @default libostree-transient
      */
     const ORIGIN_TRANSIENT_GROUP: string;
 
     /**
      * Filesystem path that is created on an ostree-booted system.
      * @since 2022.2
+     * @default /run/ostree-booted
      */
     const PATH_BOOTED: string;
 
     /**
      * ostree release version component (e.g. 2 if `OSTREE_VERSION` is 2017.2)
      * @since 2017.4
+     * @default 4
      */
     const RELEASE_VERSION: number;
 
@@ -562,47 +589,63 @@ export namespace OSTree {
      * keys must be namespaced by product or developer. For example,
      * `exampleos.end-of-life`. The `ostree.` prefix is reserved.
      * @since 2018.6
+     * @default ostree-metadata
      */
     const REPO_METADATA_REF: string;
 
     /**
      * Length of a sha256 digest when expressed as raw bytes
+     * @default 32
      */
     const SHA256_DIGEST_LEN: number;
 
     /**
      * Length of a sha256 digest when expressed as a hexadecimal string
+     * @default 64
      */
     const SHA256_STRING_LEN: number;
 
     /**
      * The name of the default ed25519 signing type.
      * @since 2020.4
+     * @default ed25519
      */
     const SIGN_NAME_ED25519: string;
 
     /**
      * The name of the spki signing type.
      * @since 2024.7
+     * @default spki
      */
     const SIGN_NAME_SPKI: string;
 
+    /**
+     * @default (a(s(taya{sv}))a{sv})
+     */
     const SUMMARY_GVARIANT_STRING: string;
 
+    /**
+     * @default a{sv}
+     */
     const SUMMARY_SIG_GVARIANT_STRING: string;
 
     /**
      * The mtime used for stored files.  This was originally 0, changed to 1 for
      * a few releases, then was reverted due to regressions it introduced from
      * users who had been using zero before.
+     * @default 0
      */
     const TIMESTAMP: number;
 
+    /**
+     * @default (a(say)a(sayay))
+     */
     const TREE_GVARIANT_STRING: string;
 
     /**
      * ostree version.
      * @since 2017.4
+     * @default 2026.400000
      */
     const VERSION: number;
 
@@ -610,12 +653,14 @@ export namespace OSTree {
      * ostree version, encoded as a string, useful for printing and
      * concatenation.
      * @since 2017.4
+     * @default 2026.4
      */
     const VERSION_S: string;
 
     /**
      * ostree year version component (e.g. 2017 if `OSTREE_VERSION` is 2017.2)
      * @since 2017.4
+     * @default 2026
      */
     const YEAR_VERSION: number;
 
@@ -639,6 +684,7 @@ export namespace OSTree {
      * @param skip_xattrs Do not copy extended attributes
      * @param cancellable 
      * @since 2017.15
+     * @throws GLib.Error
      */
     function break_hardlink(dfd: number, path: string, skip_xattrs: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -674,6 +720,7 @@ export namespace OSTree {
      * Like `ostree_checksum_bytes_peek()`, but also throws `error`.
      * @param bytes {@link GLib.Variant} of type ay
      * @returns Binary checksum data
+     * @throws GLib.Error
      */
     function checksum_bytes_peek_validate(bytes: GLib.Variant): Uint8Array;
 
@@ -682,6 +729,7 @@ export namespace OSTree {
      * @param f File path
      * @param objtype Object type
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function checksum_file(f: Gio.File, objtype: ObjectType, cancellable: Gio.Cancellable | null): [boolean, Uint8Array];
 
@@ -720,6 +768,7 @@ export namespace OSTree {
      * `ostree_checksum_file_async()`.
      * @param f File path
      * @param result Async result
+     * @throws GLib.Error
      */
     function checksum_file_async_finish(f: Gio.File, result: Gio.AsyncResult): [boolean, Uint8Array];
 
@@ -735,6 +784,7 @@ export namespace OSTree {
      * @param out_checksum 
      * @param cancellable Cancellable
      * @since 2017.13
+     * @throws GLib.Error
      */
     function checksum_file_at(dfd: number, path: string, stbuf: null, objtype: ObjectType, flags: ChecksumFlags, out_checksum: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -745,6 +795,7 @@ export namespace OSTree {
      * @param _in File content, should be `null` for symbolic links
      * @param objtype Object type
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function checksum_file_from_input(file_info: Gio.FileInfo, xattrs: GLib.Variant | null, _in: Gio.InputStream | null, objtype: ObjectType, cancellable: Gio.Cancellable | null): [boolean, Uint8Array];
 
@@ -831,6 +882,7 @@ export namespace OSTree {
      * returned.
      * @param commit_variant variant of type {@link OSTree.ObjectType.COMMIT}
      * @since 2020.1
+     * @throws GLib.Error
      */
     function commit_get_object_sizes(commit_variant: GLib.Variant): [boolean, CommitSizesEntry[] | null];
 
@@ -853,6 +905,7 @@ export namespace OSTree {
      * @param dict Dictionary to update
      * @param cancellable 
      * @since 2021.1
+     * @throws GLib.Error
      */
     function commit_metadata_for_bootable(root: Gio.File, dict: GLib.VariantDict, cancellable: Gio.Cancellable | null): boolean;
 
@@ -863,6 +916,7 @@ export namespace OSTree {
      * @param content_path Path to file containing content
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function content_file_parse(compressed: boolean, content_path: Gio.File, trusted: boolean, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
 
@@ -874,6 +928,7 @@ export namespace OSTree {
      * @param path Subpath
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function content_file_parse_at(compressed: boolean, parent_dfd: number, path: string, trusted: boolean, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
 
@@ -885,6 +940,7 @@ export namespace OSTree {
      * @param input_length Length of stream
      * @param trusted If `true`, assume the content has been validated
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function content_stream_parse(compressed: boolean, input: Gio.InputStream, input_length: bigint | number, trusted: boolean, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream, Gio.FileInfo, GLib.Variant];
 
@@ -905,6 +961,7 @@ export namespace OSTree {
      * @param removed Removed files
      * @param added Added files
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function diff_dirs(flags: DiffFlags, a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -920,6 +977,7 @@ export namespace OSTree {
      * @param options Options
      * @param cancellable Cancellable
      * @since 2017.4
+     * @throws GLib.Error
      */
     function diff_dirs_with_options(flags: DiffFlags, a: Gio.File, b: Gio.File, modified: DiffItem[], removed: Gio.File[], added: Gio.File[], options: DiffDirsOptions | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -939,6 +997,7 @@ export namespace OSTree {
      * @param fd File descriptor
      * @param cancellable Cancellable
      * @returns A GVariant of type `a(ayay)`
+     * @throws GLib.Error
      */
     function fs_get_all_xattrs(fd: number, cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -953,6 +1012,7 @@ export namespace OSTree {
      * @param path Filesystem path
      * @param cancellable Cancellable
      * @returns A GVariant of type `a(ayay)`
+     * @throws GLib.Error
      */
     function fs_get_all_xattrs_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -1026,6 +1086,7 @@ export namespace OSTree {
      * will be `gnome-ostree/buildmain`. In both cases, `true` will be returned.
      * @param refspec A "refspec" string
      * @returns `true` on successful parsing, `false` otherwise
+     * @throws GLib.Error
      */
     function parse_refspec(refspec: string): [boolean, string, string];
 
@@ -1037,6 +1098,7 @@ export namespace OSTree {
      * @param xattrs Optional extended attributes
      * @param cancellable Cancellable
      * @since 2016.6
+     * @throws GLib.Error
      */
     function raw_file_to_archive_z2_stream(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream];
 
@@ -1052,6 +1114,7 @@ export namespace OSTree {
      * @param options A GVariant `a{sv}` with an extensible set of flags
      * @param cancellable Cancellable
      * @since 2017.3
+     * @throws GLib.Error
      */
     function raw_file_to_archive_z2_stream_with_options(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: GLib.Variant | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream];
 
@@ -1063,6 +1126,7 @@ export namespace OSTree {
      * @param file_info A file info
      * @param xattrs Optional extended attributes
      * @param cancellable Cancellable
+     * @throws GLib.Error
      */
     function raw_file_to_content_stream(input: Gio.InputStream, file_info: Gio.FileInfo, xattrs: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream, number];
 
@@ -1109,6 +1173,7 @@ export namespace OSTree {
      * @param result {@link Gio.AsyncResult} from the callback
      * @returns array of zero    or more results
      * @since 2018.6
+     * @throws GLib.Error
      */
     function repo_finder_resolve_all_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -1132,6 +1197,7 @@ export namespace OSTree {
      * @param name the name of desired signature engine
      * @returns New signing engine, or `null` if the engine is not known
      * @since 2020.2
+     * @throws GLib.Error
      */
     function sign_get_by_name(name: string): Sign;
 
@@ -1139,6 +1205,7 @@ export namespace OSTree {
      * Use this function to see if input strings are checksums.
      * @param sha256 SHA256 hex string
      * @returns `true` if `sha256` is a valid checksum string, `false` otherwise
+     * @throws GLib.Error
      */
     function validate_checksum_string(sha256: string): boolean;
 
@@ -1159,6 +1226,7 @@ export namespace OSTree {
      * @param collection_id A collection ID
      * @returns `true` if `collection_id` is a valid collection ID, `false` if it is invalid    or `null`
      * @since 2018.6
+     * @throws GLib.Error
      */
     function validate_collection_id(collection_id: string | null): boolean;
 
@@ -1166,18 +1234,21 @@ export namespace OSTree {
      * @param remote_name A remote name
      * @returns `true` if `remote_name` is a valid remote name
      * @since 2017.8
+     * @throws GLib.Error
      */
     function validate_remote_name(remote_name: string): boolean;
 
     /**
      * @param rev A revision string
      * @returns `true` if `rev` is a valid ref string
+     * @throws GLib.Error
      */
     function validate_rev(rev: string): boolean;
 
     /**
      * @param checksum an ASCII string
      * @returns `true` if `checksum` is a valid ASCII SHA256 checksum
+     * @throws GLib.Error
      */
     function validate_structureof_checksum_string(checksum: string): boolean;
 
@@ -1186,12 +1257,14 @@ export namespace OSTree {
      * any other objects it references.
      * @param commit A commit object, {@link OSTree.ObjectType.COMMIT}
      * @returns `true` if `commit` is structurally valid
+     * @throws GLib.Error
      */
     function validate_structureof_commit(commit: GLib.Variant): boolean;
 
     /**
      * @param checksum a {@link GLib.Variant} of type "ay"
      * @returns `true` if `checksum` is a valid binary SHA256 checksum
+     * @throws GLib.Error
      */
     function validate_structureof_csum_v(checksum: GLib.Variant): boolean;
 
@@ -1199,6 +1272,7 @@ export namespace OSTree {
      * Use this to validate the basic structure of `dirmeta`.
      * @param dirmeta A dirmeta object, {@link OSTree.ObjectType.DIR_META}
      * @returns `true` if `dirmeta` is structurally valid
+     * @throws GLib.Error
      */
     function validate_structureof_dirmeta(dirmeta: GLib.Variant): boolean;
 
@@ -1207,18 +1281,21 @@ export namespace OSTree {
      * any other objects it references.
      * @param dirtree A dirtree object, {@link OSTree.ObjectType.DIR_TREE}
      * @returns `true` if `dirtree` is structurally valid
+     * @throws GLib.Error
      */
     function validate_structureof_dirtree(dirtree: GLib.Variant): boolean;
 
     /**
      * @param mode A Unix filesystem mode
      * @returns `true` if `mode` represents a valid file type and permissions
+     * @throws GLib.Error
      */
     function validate_structureof_file_mode(mode: number): boolean;
 
     /**
      * @param objtype 
      * @returns `true` if `objtype` represents a valid object type
+     * @throws GLib.Error
      */
     function validate_structureof_objtype(objtype: number): boolean;
 
@@ -1260,17 +1337,17 @@ export namespace OSTree {
          * Default checksumming without tweaks.
          *    (Since: 2017.13.)
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore xattrs when checksumming.
          *    (Since: 2017.13.)
          */
-        IGNORE_XATTRS,
+        IGNORE_XATTRS = 1,
         /**
          * Use canonical uid/gid/mode
          *    values, for bare-user-only mode. (Since: 2021.4.)
          */
-        CANONICAL_PERMISSIONS,
+        CANONICAL_PERMISSIONS = 2,
     }
 
 
@@ -1278,8 +1355,8 @@ export namespace OSTree {
      * @gir-type Flags
      */
     enum DiffFlags {
-        NONE,
-        IGNORE_XATTRS,
+        NONE = 0,
+        IGNORE_XATTRS = 1,
     }
 
 
@@ -1293,7 +1370,7 @@ export namespace OSTree {
         /**
          * Use the default output format
          */
-        GPG_SIGNATURE_FORMAT_DEFAULT,
+        GPG_SIGNATURE_FORMAT_DEFAULT = 0,
     }
 
 
@@ -1307,39 +1384,39 @@ export namespace OSTree {
         /**
          * No special flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not process extended attributes
          */
-        SKIP_XATTRS,
+        SKIP_XATTRS = 1,
         /**
          * Generate size information.
          */
-        GENERATE_SIZES,
+        GENERATE_SIZES = 2,
         /**
          * Canonicalize permissions.
          */
-        CANONICAL_PERMISSIONS,
+        CANONICAL_PERMISSIONS = 4,
         /**
          * Emit an error if configured SELinux
          * policy does not provide a label
          */
-        ERROR_ON_UNLABELED,
+        ERROR_ON_UNLABELED = 8,
         /**
          * Delete added files/directories after commit; Since:
          * 2017.13
          */
-        CONSUME,
+        CONSUME = 16,
         /**
          * If a devino cache hit is found, skip
          * modifier filters (non-directories only); Since: 2017.14
          */
-        DEVINO_CANONICAL,
+        DEVINO_CANONICAL = 32,
         /**
          * For SELinux and other systems, label
          * /usr/etc as if it was /etc.
          */
-        SELINUX_LABEL_V1,
+        SELINUX_LABEL_V1 = 64,
     }
 
 
@@ -1354,17 +1431,17 @@ export namespace OSTree {
          * Commit is complete. This is the default.
          *    (Since: 2017.14.)
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * One or more objects are missing from the
          *    local copy of the commit, but metadata is present. (Since: 2015.7.)
          */
-        PARTIAL,
+        PARTIAL = 1,
         /**
          * One or more objects are missing from the
          *    local copy of the commit, due to an fsck --delete. (Since: 2019.4.)
          */
-        FSCK_PARTIAL,
+        FSCK_PARTIAL = 2,
     }
 
 
@@ -1375,12 +1452,12 @@ export namespace OSTree {
         /**
          * No special options for traverse
          */
-        NONE,
+        NONE = 1,
         /**
          * Traverse and retrieve only commit objects.
          * (Since: 2022.2)
          */
-        COMMIT_ONLY,
+        COMMIT_ONLY = 2,
     }
 
 
@@ -1391,19 +1468,19 @@ export namespace OSTree {
         /**
          * List only loose (plain file) objects
          */
-        LOOSE,
+        LOOSE = 1,
         /**
          * List only packed (compacted into blobs) objects
          */
-        PACKED,
+        PACKED = 2,
         /**
          * List all objects
          */
-        ALL,
+        ALL = 4,
         /**
          * Only list objects in this repo, not parents
          */
-        NO_PARENTS,
+        NO_PARENTS = 8,
     }
 
 
@@ -1414,19 +1491,19 @@ export namespace OSTree {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Only list aliases.  Since: 2017.10
          */
-        ALIASES,
+        ALIASES = 1,
         /**
          * Exclude remote refs.  Since: 2017.11
          */
-        EXCLUDE_REMOTES,
+        EXCLUDE_REMOTES = 2,
         /**
          * Exclude mirrored refs.  Since: 2019.2
          */
-        EXCLUDE_MIRRORS,
+        EXCLUDE_MIRRORS = 4,
     }
 
 
@@ -1437,20 +1514,20 @@ export namespace OSTree {
         /**
          * No special options for pruning
          */
-        NONE,
+        NONE = 0,
         /**
          * Don't actually delete objects
          */
-        NO_PRUNE,
+        NO_PRUNE = 1,
         /**
          * Do not traverse individual commit objects, only follow refs
          * for reachability calculations
          */
-        REFS_ONLY,
+        REFS_ONLY = 2,
         /**
          * Only traverse commit objects.  (Since 2022.2)
          */
-        COMMIT_ONLY,
+        COMMIT_ONLY = 4,
     }
 
 
@@ -1461,31 +1538,31 @@ export namespace OSTree {
         /**
          * No special options for pull
          */
-        NONE,
+        NONE = 0,
         /**
          * Write out refs suitable for mirrors and fetch all refs if none
          * requested
          */
-        MIRROR,
+        MIRROR = 1,
         /**
          * Fetch only the commit metadata
          */
-        COMMIT_ONLY,
+        COMMIT_ONLY = 2,
         /**
          * Do verify checksums of local (filesystem-accessible)
          * repositories (defaults on for HTTP)
          */
-        UNTRUSTED,
+        UNTRUSTED = 4,
         /**
          * Since 2017.7.  Reject writes of content objects with
          * modes outside of 0775.
          */
-        BAREUSERONLY_FILES,
+        BAREUSERONLY_FILES = 8,
         /**
          * Don't verify checksums of objects HTTP repositories
          * (Since: 2017.12)
          */
-        TRUSTED_HTTP,
+        TRUSTED_HTTP = 16,
     }
 
 
@@ -1496,11 +1573,11 @@ export namespace OSTree {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Exclude remote and mirrored refs. Since: 2019.2
          */
-        LOCAL_ONLY,
+        LOCAL_ONLY = 1,
     }
 
 
@@ -1512,15 +1589,15 @@ export namespace OSTree {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Skip GPG verification
          */
-        NO_GPG,
+        NO_GPG = 1,
         /**
          * Skip all other signature verification methods
          */
-        NO_SIGNAPI,
+        NO_SIGNAPI = 2,
     }
 
 
@@ -1528,9 +1605,9 @@ export namespace OSTree {
      * @gir-type Flags
      */
     enum SePolicyRestoreconFlags {
-        NONE,
-        ALLOW_NOLABEL,
-        KEEP_EXISTING,
+        NONE = 0,
+        ALLOW_NOLABEL = 1,
+        KEEP_EXISTING = 2,
     }
 
 
@@ -1538,12 +1615,12 @@ export namespace OSTree {
      * @gir-type Flags
      */
     enum SysrootSimpleWriteDeploymentFlags {
-        NONE,
-        RETAIN,
-        NOT_DEFAULT,
-        NO_CLEAN,
-        RETAIN_PENDING,
-        RETAIN_ROLLBACK,
+        NONE = 0,
+        RETAIN = 1,
+        NOT_DEFAULT = 2,
+        NO_CLEAN = 4,
+        RETAIN_PENDING = 8,
+        RETAIN_ROLLBACK = 16,
     }
 
 
@@ -1563,13 +1640,13 @@ export namespace OSTree {
          * Do not error if the origin has an
          * unconfigured-state key
          */
-        IGNORE_UNCONFIGURED,
+        IGNORE_UNCONFIGURED = 2,
         /**
          * Enable "staging" (finalization at shutdown); recommended
          *    (Since: 2021.4)
          */
-        STAGE,
-        KEXEC,
+        STAGE = 4,
+        KEXEC = 8,
     }
 
 
@@ -1577,9 +1654,9 @@ export namespace OSTree {
      * @gir-type Flags
      */
     enum SysrootUpgraderPullFlags {
-        NONE,
-        ALLOW_OLDER,
-        SYNTHETIC,
+        NONE = 0,
+        ALLOW_OLDER = 1,
+        SYNTHETIC = 2,
     }
 
 
@@ -1800,6 +1877,7 @@ export namespace OSTree {
         /**
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         parse(path: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1808,6 +1886,7 @@ export namespace OSTree {
          * @param dfd Directory fd
          * @param path File path
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         parse_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1835,6 +1914,7 @@ export namespace OSTree {
         /**
          * @param output 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write(output: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1842,6 +1922,7 @@ export namespace OSTree {
          * @param dfd 
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         write_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1893,6 +1974,7 @@ export namespace OSTree {
          * Complete the object write and return the checksum.
          * @param cancellable Cancellable
          * @returns Checksum, or `null` on error
+         * @throws GLib.Error
          */
         finish(cancellable: Gio.Cancellable | null): string;
     }
@@ -2224,6 +2306,7 @@ export namespace OSTree {
          * it will handle the `null` `result` and filled `error` too.
          * @returns `true` if `result` was not `null` and had at least one signature from trusted keyring, otherwise `false`
          * @since 2016.6
+         * @throws GLib.Error
          */
         require_valid_signature(): boolean;
 
@@ -2269,6 +2352,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2375,6 +2459,7 @@ export namespace OSTree {
          * cached error.  The tree remains in error state.
          * @returns `TRUE` on success
          * @since 2018.7
+         * @throws GLib.Error
          */
         check_error(): boolean;
 
@@ -2382,6 +2467,7 @@ export namespace OSTree {
          * Returns the subdirectory of self with filename `name`, creating an empty one
          * it if it doesn't exist.
          * @param name Name of subdirectory of self to retrieve/creates
+         * @throws GLib.Error
          */
         ensure_dir(name: string): [boolean, MutableTree | null];
 
@@ -2390,6 +2476,7 @@ export namespace OSTree {
          * exist.
          * @param split_path File path components
          * @param metadata_checksum SHA256 checksum for metadata
+         * @throws GLib.Error
          */
         ensure_parent_dirs(split_path: string[], metadata_checksum: string): [boolean, MutableTree | null];
 
@@ -2426,6 +2513,7 @@ export namespace OSTree {
          * file type.
          * @param name name
          * @returns `true` on success and either `out_file_checksum` or `out_subdir` are filled, `false` otherwise.
+         * @throws GLib.Error
          */
         lookup(name: string): [boolean, string, MutableTree | null];
 
@@ -2434,12 +2522,14 @@ export namespace OSTree {
          * @param name Name of file or subdirectory to remove
          * @param allow_noent If `FALSE`, an error will be thrown if `name` does not exist in the tree
          * @since 2018.9
+         * @throws GLib.Error
          */
         remove(name: string, allow_noent: boolean): boolean;
 
         /**
          * @param name 
          * @param checksum 
+         * @throws GLib.Error
          */
         replace_file(name: string, checksum: string): boolean;
 
@@ -2458,6 +2548,7 @@ export namespace OSTree {
          * child will be returned in `out_subdir`.
          * @param split_path Split pathname
          * @param start Descend from this number of elements in `split_path`
+         * @throws GLib.Error
          */
         walk(split_path: string[], start: number): [boolean, MutableTree];
     }
@@ -2477,7 +2568,7 @@ export namespace OSTree {
              * @signal
              * @run-last
              */
-            "gpg-verify-result": (arg0: string, arg1: GpgVerifyResult) => void;
+            "gpg-verify-result": (checksum: string, result: GpgVerifyResult) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::remotes-config-dir": (pspec: GObject.ParamSpec) => void;
             "notify::sysroot-path": (pspec: GObject.ParamSpec) => void;
@@ -2677,6 +2768,7 @@ export namespace OSTree {
          * `ostree_repo_commit_transaction()`. Calling this function when not in a
          * transaction will do nothing and return successfully.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         abort_transaction(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2685,6 +2777,7 @@ export namespace OSTree {
          * @param key_id NULL-terminated array of GPG keys.
          * @param homedir GPG home directory, or `null`
          * @param cancellable A {@link Gio.Cancellable}
+         * @throws GLib.Error
          */
         add_gpg_signature_summary(key_id: string[], homedir: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2693,6 +2786,7 @@ export namespace OSTree {
          * @param commit_checksum SHA256 of given commit to sign
          * @param signature_bytes Signature data
          * @param cancellable A {@link Gio.Cancellable}
+         * @throws GLib.Error
          */
         append_gpg_signature(commit_checksum: string, signature_bytes: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2714,6 +2808,7 @@ export namespace OSTree {
          * @param commit Checksum for commit
          * @param cancellable Cancellable
          * @since 2016.8
+         * @throws GLib.Error
          */
         checkout_at(options: RepoCheckoutAtOptions | null, destination_dfd: number, destination_path: string, commit: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2729,6 +2824,7 @@ export namespace OSTree {
          * @param checksum OStree commit digest
          * @param cancellable Cancellable
          * @since 2024.7
+         * @throws GLib.Error
          */
         checkout_composefs(options: GLib.Variant | null, destination_dfd: number, destination_path: string, checksum: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2737,6 +2833,7 @@ export namespace OSTree {
          * will delete any currently-unused uncompressed objects from the
          * cache.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         checkout_gc(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2751,6 +2848,7 @@ export namespace OSTree {
          * @param source Source tree
          * @param source_info Source info
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         checkout_tree(mode: RepoCheckoutMode, overwrite_mode: RepoCheckoutOverwriteMode, destination: Gio.File, source: RepoFile, source_info: Gio.FileInfo, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2763,6 +2861,7 @@ export namespace OSTree {
          * @param dict A GVariant builder of type a{sv}
          * @param repo_root the target filesystem tree
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         commit_add_composefs_metadata(format_version: number, dict: GLib.VariantDict, repo_root: RepoFile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2778,6 +2877,7 @@ export namespace OSTree {
          * Multithreading: This function is *not* MT safe; only one transaction can be
          * active at a time.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         commit_transaction(cancellable: Gio.Cancellable | null): [boolean, RepoTransactionStats | null];
 
@@ -2803,6 +2903,7 @@ export namespace OSTree {
          * this function on a repository initialized via `ostree_repo_open_at()`.
          * @param mode The mode to store the repository in
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         create(mode: RepoMode, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2813,6 +2914,7 @@ export namespace OSTree {
          * @param objtype Object type
          * @param sha256 Checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         delete_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2984,6 +3086,7 @@ export namespace OSTree {
          * @param result the asynchronous result
          * @returns a potentially empty array    of `OstreeRepoFinderResults`, followed by a `null` terminator element; or    `null` on error
          * @since 2018.6
+         * @throws GLib.Error
          */
         find_remotes_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -2995,6 +3098,7 @@ export namespace OSTree {
          * @param sha256 Checksum
          * @param cancellable Cancellable
          * @since 2017.15
+         * @throws GLib.Error
          */
         fsck_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3049,6 +3153,7 @@ export namespace OSTree {
          * core.min-free-space-percent repo config options.
          * @returns `true` on success, `false` otherwise.
          * @since 2018.9
+         * @throws GLib.Error
          */
         get_min_free_space_bytes(): [boolean, number];
 
@@ -3080,6 +3185,7 @@ export namespace OSTree {
          * @param default_value Value returned if `option_name` is not present
          * @returns `true` on success, otherwise `false` with `error` set
          * @since 2016.5
+         * @throws GLib.Error
          */
         get_remote_boolean_option(remote_name: string, option_name: string, default_value: boolean): [boolean, boolean];
 
@@ -3093,6 +3199,7 @@ export namespace OSTree {
          * @param option_name Option
          * @returns `true` on success, otherwise `false` with `error` set
          * @since 2016.5
+         * @throws GLib.Error
          */
         get_remote_list_option(remote_name: string, option_name: string): [boolean, string[]];
 
@@ -3106,6 +3213,7 @@ export namespace OSTree {
          * @param default_value Value returned if `option_name` is not present
          * @returns `true` on success, otherwise `false` with `error` set
          * @since 2016.5
+         * @throws GLib.Error
          */
         get_remote_option(remote_name: string, option_name: string, default_value: string | null): [boolean, string];
 
@@ -3122,6 +3230,7 @@ export namespace OSTree {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` if `data` has been signed successfully, `false` in case of error (`error` will contain the reason).
          * @since 2020.8
+         * @throws GLib.Error
          */
         gpg_sign_data(data: GLib.Bytes | Uint8Array, old_signatures: GLib.Bytes | Uint8Array | null, key_id: string[], homedir: string | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes];
 
@@ -3139,6 +3248,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
          * @since 2016.6
+         * @throws GLib.Error
          */
         gpg_verify_data(remote_name: string | null, data: GLib.Bytes | Uint8Array, signatures: GLib.Bytes | Uint8Array, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
@@ -3149,6 +3259,7 @@ export namespace OSTree {
          * @param checksum ASCII SHA256 checksum
          * @param cancellable Cancellable
          * @returns `false` if an unexpected error occurred, `true` otherwise
+         * @throws GLib.Error
          */
         has_object(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -3175,6 +3286,7 @@ export namespace OSTree {
          * @param objtype Object type
          * @param checksum checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         import_object_from(source: Repo, objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3191,6 +3303,7 @@ export namespace OSTree {
          * @param trusted If `true`, assume the source repo is valid and trusted
          * @param cancellable Cancellable
          * @since 2016.5
+         * @throws GLib.Error
          */
         import_object_from_with_trust(source: Repo, objtype: ObjectType, checksum: string, trusted: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3203,6 +3316,7 @@ export namespace OSTree {
          * Returns whether the repository is writable by the current user.
          * If the repository is not writable, the `error` indicates why.
          * @returns `true` if this repository is writable
+         * @throws GLib.Error
          */
         is_writable(): boolean;
 
@@ -3226,6 +3340,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns `true` on success, `false` otherwise
          * @since 2018.6
+         * @throws GLib.Error
          */
         list_collection_refs(match_collection_id: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, never];
 
@@ -3237,6 +3352,7 @@ export namespace OSTree {
          * @param start List commits starting with this checksum (empty string for all)
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
+         * @throws GLib.Error
          */
         list_commit_objects_starting_with(start: string, cancellable: Gio.Cancellable | null): [boolean, never];
 
@@ -3248,6 +3364,7 @@ export namespace OSTree {
          * @param flags Flags controlling enumeration
          * @param cancellable Cancellable
          * @returns `true` on success, `false` on error, and `error` will be set
+         * @throws GLib.Error
          */
         list_objects(flags: RepoListObjectsFlags, cancellable: Gio.Cancellable | null): [boolean, never];
 
@@ -3261,6 +3378,7 @@ export namespace OSTree {
          * removed as a prefix from the hash table keys.
          * @param refspec_prefix Only list refs which match this prefix
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         list_refs(refspec_prefix: string | null, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
@@ -3276,6 +3394,7 @@ export namespace OSTree {
          * @param flags Options controlling listing behavior
          * @param cancellable Cancellable
          * @since 2016.4
+         * @throws GLib.Error
          */
         list_refs_ext(refspec_prefix: string | null, flags: RepoListRefsExtFlags, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
@@ -3284,6 +3403,7 @@ export namespace OSTree {
          * repository, returning its result in `out_indexes`.
          * @param cancellable Cancellable
          * @since 2020.8
+         * @throws GLib.Error
          */
         list_static_delta_indexes(cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -3291,6 +3411,7 @@ export namespace OSTree {
          * This function synchronously enumerates all static deltas in the
          * repository, returning its result in `out_deltas`.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         list_static_delta_names(cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -3300,6 +3421,7 @@ export namespace OSTree {
          * the only extended state is {@link OSTree.RepoCommitState.PARTIAL}, which
          * means that only a sub-path of the commit is available.
          * @param checksum Commit checksum
+         * @throws GLib.Error
          */
         load_commit(checksum: string): [boolean, GLib.Variant | null, RepoCommitState | null];
 
@@ -3308,6 +3430,7 @@ export namespace OSTree {
          * content (for regular files), the metadata, and extended attributes.
          * @param checksum ASCII SHA256 checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         load_file(checksum: string, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream | null, Gio.FileInfo | null, GLib.Variant | null];
 
@@ -3317,6 +3440,7 @@ export namespace OSTree {
          * @param objtype Object type
          * @param checksum ASCII SHA256 checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         load_object_stream(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [boolean, Gio.InputStream, number];
 
@@ -3325,6 +3449,7 @@ export namespace OSTree {
          * result in `out_variant`.
          * @param objtype Expected object type
          * @param sha256 Checksum string
+         * @throws GLib.Error
          */
         load_variant(objtype: ObjectType, sha256: string): [boolean, GLib.Variant];
 
@@ -3335,6 +3460,7 @@ export namespace OSTree {
          * return TRUE.
          * @param objtype Object type
          * @param sha256 ASCII checksum
+         * @throws GLib.Error
          */
         load_variant_if_exists(objtype: ObjectType, sha256: string): [boolean, GLib.Variant | null];
 
@@ -3359,6 +3485,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` with `error` set
          * @since 2021.3
+         * @throws GLib.Error
          */
         lock_pop(lock_type: RepoLockType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3384,6 +3511,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, otherwise `false` with `error` set
          * @since 2021.3
+         * @throws GLib.Error
          */
         lock_push(lock_type: RepoLockType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3398,6 +3526,7 @@ export namespace OSTree {
          * @param checksum Commit SHA-256
          * @param is_partial Whether or not this commit is partial
          * @since 2017.15
+         * @throws GLib.Error
          */
         mark_commit_partial(checksum: string, is_partial: boolean): boolean;
 
@@ -3413,11 +3542,13 @@ export namespace OSTree {
          * @param is_partial Whether or not this commit is partial
          * @param in_state Reason bitmask for partial commit
          * @since 2019.4
+         * @throws GLib.Error
          */
         mark_commit_partial_reason(checksum: string, is_partial: boolean, in_state: RepoCommitState): boolean;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         open(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3440,6 +3571,7 @@ export namespace OSTree {
          * Multithreading: This function is *not* MT safe; only one transaction can be
          * active at a time.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         prepare_transaction(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -3462,6 +3594,7 @@ export namespace OSTree {
          * @param flags Options controlling prune process
          * @param depth Stop traversal after this many iterations (-1 for unlimited)
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         prune(flags: RepoPruneFlags, depth: number, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
 
@@ -3482,6 +3615,7 @@ export namespace OSTree {
          * @param options Options controlling prune process
          * @param cancellable Cancellable
          * @since 2017.1
+         * @throws GLib.Error
          */
         prune_from_reachable(options: RepoPruneOptions, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
 
@@ -3493,6 +3627,7 @@ export namespace OSTree {
          * Locking: exclusive
          * @param commit ASCII SHA256 checksum for commit, or `null` for each non existing commit
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         prune_static_deltas(commit: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3518,6 +3653,7 @@ export namespace OSTree {
          * @param flags Options controlling fetch behavior
          * @param progress Progress
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         pull(remote_name: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3682,6 +3818,7 @@ export namespace OSTree {
          * @param result the asynchronous result
          * @returns `true` on success, `false` otherwise
          * @since 2018.6
+         * @throws GLib.Error
          */
         pull_from_remotes_finish(result: Gio.AsyncResult): boolean;
 
@@ -3694,6 +3831,7 @@ export namespace OSTree {
          * @param flags Options controlling fetch behavior
          * @param progress Progress
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         pull_one_dir(remote_name: string, dir_to_pull: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3766,6 +3904,7 @@ export namespace OSTree {
          * @param options A GVariant a{sv} with an extensible set of flags.
          * @param progress Progress
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         pull_with_options(remote_name_or_baseurl: string, options: GLib.Variant, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3775,6 +3914,7 @@ export namespace OSTree {
          * @param objtype Object type
          * @param sha256 Checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         query_object_storage_size(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -3782,6 +3922,7 @@ export namespace OSTree {
          * Load the content for `rev` into `out_root`.
          * @param ref Ref or ASCII checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         read_commit(ref: string, cancellable: Gio.Cancellable | null): [boolean, Gio.File | null, string];
 
@@ -3791,6 +3932,7 @@ export namespace OSTree {
          * to `null`.
          * @param checksum ASCII SHA256 commit checksum
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         read_commit_detached_metadata(checksum: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -3819,6 +3961,7 @@ export namespace OSTree {
          * @param options A GVariant `a{sv}` with an extensible set of flags
          * @param cancellable Cancellable
          * @since 2023.1
+         * @throws GLib.Error
          */
         regenerate_metadata(additional_metadata: GLib.Variant | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3843,6 +3986,7 @@ export namespace OSTree {
          * Locking: shared (Prior to 2021.7, this was exclusive)
          * @param additional_metadata A GVariant of type a{sv}, or `null`
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         regenerate_summary(additional_metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3851,6 +3995,7 @@ export namespace OSTree {
          * own repo/config data.  This API can be used to reload it.
          * @param cancellable cancellable
          * @since 2017.2
+         * @throws GLib.Error
          */
         reload_config(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3866,6 +4011,7 @@ export namespace OSTree {
          * @param url URL for remote (if URL begins with metalink=, it will be used as such)
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         remote_add(name: string, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3879,6 +4025,7 @@ export namespace OSTree {
          * @param url URL for remote (if URL begins with metalink=, it will be used as such)
          * @param options GVariant of type a{sv}
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3887,6 +4034,7 @@ export namespace OSTree {
          * remote does not exist.
          * @param name Name of remote
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         remote_delete(name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3907,6 +4055,7 @@ export namespace OSTree {
          * @param name name of a remote
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remote_fetch_summary(name: string, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes | null, GLib.Bytes | null];
 
@@ -3925,6 +4074,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
          * @since 2016.6
+         * @throws GLib.Error
          */
         remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes | null, GLib.Bytes | null];
 
@@ -3940,6 +4090,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` if the GPG keys could be enumerated, `false` otherwise
          * @since 2021.4
+         * @throws GLib.Error
          */
         remote_get_gpg_keys(name: string | null, key_ids: string[] | null, cancellable: Gio.Cancellable | null): [boolean, GLib.Variant[] | null];
 
@@ -3949,6 +4100,7 @@ export namespace OSTree {
          * not exist.
          * @param name Name of remote
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remote_get_gpg_verify(name: string): [boolean, boolean];
 
@@ -3958,6 +4110,7 @@ export namespace OSTree {
          * remote does not exist.
          * @param name Name of remote
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remote_get_gpg_verify_summary(name: string): [boolean, boolean];
 
@@ -3966,6 +4119,7 @@ export namespace OSTree {
          * error if the provided remote does not exist.
          * @param name Name of remote
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remote_get_url(name: string): [boolean, string];
 
@@ -3982,6 +4136,7 @@ export namespace OSTree {
          * @param key_ids a `null`-terminated array of GPG key IDs, or `null`
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         remote_gpg_import(name: string, source_stream: Gio.InputStream | null, key_ids: string[] | null, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -4002,12 +4157,14 @@ export namespace OSTree {
          * @param remote_name Name of the remote.
          * @param cancellable Cancellable
          * @since 2018.6
+         * @throws GLib.Error
          */
         remote_list_collection_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, never];
 
         /**
          * @param remote_name Name of the remote.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         remote_list_refs(remote_name: string, cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
@@ -4029,6 +4186,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` on success, `false` on failure
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_collection_ref(ref: CollectionRef, allow_noent: boolean, flags: RepoResolveRevExtFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -4047,6 +4205,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns {@link OSTree.Remote} containing the GPG keyring for    `collection_id`
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_keyring_for_collection(collection_id: string, cancellable: Gio.Cancellable | null): Remote;
 
@@ -4056,6 +4215,7 @@ export namespace OSTree {
          * find the given refspec in local.
          * @param refspec A refspec
          * @param allow_noent Do not throw an error if refspec does not exist
+         * @throws GLib.Error
          */
         resolve_rev(refspec: string, allow_noent: boolean): [boolean, string];
 
@@ -4071,6 +4231,7 @@ export namespace OSTree {
          * @param allow_noent Do not throw an error if refspec does not exist
          * @param flags Options controlling behavior
          * @since 2016.7
+         * @throws GLib.Error
          */
         resolve_rev_ext(refspec: string, allow_noent: boolean, flags: RepoResolveRevExtFlags): [boolean, string];
 
@@ -4093,6 +4254,7 @@ export namespace OSTree {
          * 
          * Multithreading: This function is *not* MT safe.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         scan_hardlinks(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4103,6 +4265,7 @@ export namespace OSTree {
          * @param target The ref target to point it to, or `null` to unset
          * @param cancellable GCancellable
          * @since 2017.10
+         * @throws GLib.Error
          */
         set_alias_ref_immediate(remote: string | null, ref: string, target: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4115,6 +4278,7 @@ export namespace OSTree {
          * @param path subpath in `dfd`
          * @param cancellable a {@link Gio.Cancellable}
          * @since 2016.5
+         * @throws GLib.Error
          */
         set_cache_dir(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4125,6 +4289,7 @@ export namespace OSTree {
          * @param collection_id new collection ID, or `null` to unset it
          * @returns `true` on success, `false` otherwise
          * @since 2018.6
+         * @throws GLib.Error
          */
         set_collection_id(collection_id: string | null): boolean;
 
@@ -4137,6 +4302,7 @@ export namespace OSTree {
          * @param cancellable GCancellable
          * @returns `true` on success, `false` otherwise
          * @since 2018.6
+         * @throws GLib.Error
          */
         set_collection_ref_immediate(ref: CollectionRef, checksum: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4159,6 +4325,7 @@ export namespace OSTree {
          * @param ref The ref to write
          * @param checksum The checksum to point it to, or `null` to unset
          * @param cancellable GCancellable
+         * @throws GLib.Error
          */
         set_ref_immediate(remote: string | null, ref: string, checksum: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4168,6 +4335,7 @@ export namespace OSTree {
          * @param key_id Use this GPG key id
          * @param homedir GPG home directory, or `null`
          * @param cancellable A {@link Gio.Cancellable}
+         * @throws GLib.Error
          */
         sign_commit(commit_checksum: string, key_id: string, homedir: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4179,6 +4347,7 @@ export namespace OSTree {
          * @param key_id key id
          * @param homedir homedir
          * @param cancellable cancellable
+         * @throws GLib.Error
          */
         sign_delta(from_commit: string, to_commit: string, key_id: string, homedir: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4190,6 +4359,7 @@ export namespace OSTree {
          * @param commit_data Commit object data (GVariant)
          * @param commit_metadata Commit metadata (GVariant `a{sv}`), must contain at least one valid signature
          * @param flags Optionally disable GPG or signapi
+         * @throws GLib.Error
          */
         signature_verify_commit_data(remote_name: string, commit_data: GLib.Bytes | Uint8Array, commit_metadata: GLib.Bytes | Uint8Array, flags: RepoVerifyFlags): [boolean, string];
 
@@ -4201,6 +4371,7 @@ export namespace OSTree {
          * @param dir_or_file Path to a directory containing static delta data, or directly to the superblock
          * @param skip_validation If `true`, assume data integrity
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         static_delta_execute_offline(dir_or_file: Gio.File, skip_validation: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4218,6 +4389,7 @@ export namespace OSTree {
          * @param skip_validation If `true`, assume data integrity
          * @param cancellable Cancellable
          * @since 2020.7
+         * @throws GLib.Error
          */
         static_delta_execute_offline_with_signature(dir_or_file: Gio.File, sign: Sign, skip_validation: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4250,6 +4422,7 @@ export namespace OSTree {
          * @param metadata Optional metadata
          * @param params Parameters, see below
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         static_delta_generate(opt: StaticDeltaGenerateOpt, from: string | null, to: string, metadata: GLib.Variant | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4267,6 +4440,7 @@ export namespace OSTree {
          * @param opt_to_commit ASCII SHA256 checksum of target commit, or `null` to index all targets
          * @param cancellable Cancellable
          * @since 2020.8
+         * @throws GLib.Error
          */
         static_delta_reindex(flags: StaticDeltaIndexFlags, opt_to_commit: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4276,6 +4450,7 @@ export namespace OSTree {
          * @param sign Signature engine used to check superblock
          * @returns TRUE if the signature of static delta file is valid using the signature engine provided, FALSE otherwise.
          * @since 2020.7
+         * @throws GLib.Error
          */
         static_delta_verify_signature(delta_id: string, sign: Sign): [boolean, string];
 
@@ -4343,6 +4518,7 @@ export namespace OSTree {
          * @param commit_checksum ASCII SHA256 checksum
          * @param maxdepth Traverse this many parent commits, -1 for unlimited
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         traverse_commit(commit_checksum: string, maxdepth: number, cancellable: Gio.Cancellable | null): [boolean, never];
 
@@ -4354,6 +4530,7 @@ export namespace OSTree {
          * @param reachable Set of reachable objects (will be modified)
          * @param cancellable Cancellable
          * @since 2018.6
+         * @throws GLib.Error
          */
         traverse_reachable_refs(depth: number, reachable: never, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4365,6 +4542,7 @@ export namespace OSTree {
          * @param extra_keyring Path to additional keyring file (not a directory)
          * @param cancellable Cancellable
          * @returns `true` if there was a GPG signature from a trusted keyring, otherwise `false`
+         * @throws GLib.Error
          */
         verify_commit(commit_checksum: string, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4376,6 +4554,7 @@ export namespace OSTree {
          * @param extra_keyring Path to additional keyring file (not a directory)
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
+         * @throws GLib.Error
          */
         verify_commit_ext(commit_checksum: string, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
@@ -4388,6 +4567,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
          * @since 2016.14
+         * @throws GLib.Error
          */
         verify_commit_for_remote(commit_checksum: string, remote_name: string, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
@@ -4404,6 +4584,7 @@ export namespace OSTree {
          * @param extra_keyring Path to additional keyring file (not a directory)
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
+         * @throws GLib.Error
          */
         verify_local_summary(summary: GLib.Bytes | Uint8Array, signatures: GLib.Bytes | Uint8Array, keyfiledir: Gio.File, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
@@ -4415,6 +4596,7 @@ export namespace OSTree {
          * @param signatures Summary signatures as a {@link GLib.Bytes}
          * @param cancellable Cancellable
          * @returns an {@link OSTree.GpgVerifyResult}, or `null` on error
+         * @throws GLib.Error
          */
         verify_summary(remote_name: string, summary: GLib.Bytes | Uint8Array, signatures: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): GpgVerifyResult;
 
@@ -4426,6 +4608,7 @@ export namespace OSTree {
          * @param modifier Optional commit modifier
          * @param autocreate_parents Autocreate parent directories
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_archive_to_mtree(archive: Gio.File, mtree: MutableTree, modifier: RepoCommitModifier | null, autocreate_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4437,6 +4620,7 @@ export namespace OSTree {
          * @param modifier Optional commit modifier
          * @param autocreate_parents Autocreate parent directories
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_archive_to_mtree_from_fd(fd: number, mtree: MutableTree, modifier: RepoCommitModifier | null, autocreate_parents: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4453,6 +4637,7 @@ export namespace OSTree {
          * @param metadata GVariant of type a{sv}, or `null` for none
          * @param root The tree to point the commit to
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_commit(parent: string | null, subject: string | null, body: string | null, metadata: GLib.Variant | null, root: RepoFile, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -4463,6 +4648,7 @@ export namespace OSTree {
          * @param checksum ASCII SHA256 commit checksum
          * @param metadata Metadata to associate with commit in with format "a{sv}", or `null` to delete
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_commit_detached_metadata(checksum: string, metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4476,6 +4662,7 @@ export namespace OSTree {
          * @param root The tree to point the commit to
          * @param time The time to use to stamp the commit
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_commit_with_time(parent: string | null, subject: string | null, body: string | null, metadata: GLib.Variant | null, root: RepoFile, time: bigint | number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -4485,6 +4672,7 @@ export namespace OSTree {
          * Note: This will not validate many elements of the configuration.
          * Prefer `ostree_repo_write_config_and_reload`.
          * @param new_config Overwrite the config file with this data
+         * @throws GLib.Error
          */
         write_config(new_config: GLib.KeyFile): boolean;
 
@@ -4492,6 +4680,7 @@ export namespace OSTree {
          * Save `new_config` in place of this repository's config file and reload.
          * The config will be validated.
          * @param new_config Overwrite the config file with this data, and reload
+         * @throws GLib.Error
          */
         write_config_and_reload(new_config: GLib.KeyFile): boolean;
 
@@ -4503,6 +4692,7 @@ export namespace OSTree {
          * @param object_input Content object stream
          * @param length Length of `object_input`
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_content(expected_checksum: string | null, object_input: Gio.InputStream, length: bigint | number, cancellable: Gio.Cancellable | null): [boolean, Uint8Array | null];
 
@@ -4541,6 +4731,7 @@ export namespace OSTree {
         /**
          * Completes an invocation of `ostree_repo_write_content_async()`.
          * @param result a {@link Gio.AsyncResult}
+         * @throws GLib.Error
          */
         write_content_finish(result: Gio.AsyncResult): [boolean, number];
 
@@ -4554,6 +4745,7 @@ export namespace OSTree {
          * @param object_input Content stream
          * @param length Length of `object_input`
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_content_trusted(checksum: string, object_input: Gio.InputStream, length: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4566,6 +4758,7 @@ export namespace OSTree {
          * @param mtree Overlay directory contents into this tree
          * @param modifier Optional modifier
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_dfd_to_mtree(dfd: number, path: string, mtree: MutableTree, modifier: RepoCommitModifier | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4576,6 +4769,7 @@ export namespace OSTree {
          * @param mtree Overlay directory contents into this tree
          * @param modifier Optional modifier
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_directory_to_mtree(dir: Gio.File, mtree: MutableTree, modifier: RepoCommitModifier | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4589,6 +4783,7 @@ export namespace OSTree {
          * @param expected_checksum If provided, validate content against this checksum
          * @param object Metadata
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_metadata(objtype: ObjectType, expected_checksum: string | null, object: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, Uint8Array | null];
 
@@ -4627,6 +4822,7 @@ export namespace OSTree {
         /**
          * Complete a call to `ostree_repo_write_metadata_async()`.
          * @param result Result
+         * @throws GLib.Error
          */
         write_metadata_finish(result: Gio.AsyncResult): [boolean, Uint8Array];
 
@@ -4638,6 +4834,7 @@ export namespace OSTree {
          * @param object_input Metadata object stream
          * @param length Length, may be 0 for unknown
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_metadata_stream_trusted(objtype: ObjectType, checksum: string, object_input: Gio.InputStream, length: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4648,6 +4845,7 @@ export namespace OSTree {
          * @param checksum Store object with this ASCII SHA256 checksum
          * @param variant Metadata object
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_metadata_trusted(objtype: ObjectType, checksum: string, variant: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4657,6 +4855,7 @@ export namespace OSTree {
          * the `mtree` represented.
          * @param mtree Mutable tree
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_mtree(mtree: MutableTree, cancellable: Gio.Cancellable | null): [boolean, Gio.File];
 
@@ -4671,6 +4870,7 @@ export namespace OSTree {
          * @param xattrs Extended attributes (GVariant type `(ayay)`)
          * @returns A new writer, or `null` on error
          * @since 2021.2
+         * @throws GLib.Error
          */
         write_regfile(expected_checksum: string | null, uid: number, gid: number, mode: number, content_len: bigint | number, xattrs: GLib.Variant | null): ContentWriter;
 
@@ -4690,6 +4890,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns Checksum (as a hex string) of the committed file
          * @since 2021.2
+         * @throws GLib.Error
          */
         write_regfile_inline(expected_checksum: string | null, uid: number, gid: number, mode: number, xattrs: GLib.Variant | null, buf: Uint8Array | string, cancellable: Gio.Cancellable | null): string;
 
@@ -4706,6 +4907,7 @@ export namespace OSTree {
          * @param cancellable Cancellable
          * @returns Checksum (as a hex string) of the committed file
          * @since 2021.2
+         * @throws GLib.Error
          */
         write_symlink(expected_checksum: string | null, uid: number, gid: number, xattrs: GLib.Variant | null, symlink_target: string, cancellable: Gio.Cancellable | null): string;
     }
@@ -4756,6 +4958,7 @@ export namespace OSTree {
         /**
          * Ensure that the backing metadata is loaded.
          * @returns `false` if the operation failed, `true` otherwise
+         * @throws GLib.Error
          */
         ensure_resolved(): boolean;
 
@@ -4773,6 +4976,7 @@ export namespace OSTree {
 
         /**
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         get_xattrs(cancellable: Gio.Cancellable | null): [boolean, GLib.Variant | null];
 
@@ -4811,6 +5015,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` on success and the `out_info` is set, `false` otherwise.
+         * @throws GLib.Error
          */
         tree_query_child(n: number, attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): [boolean, Gio.FileInfo | null];
 
@@ -4842,6 +5047,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         append_to(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
 
@@ -4897,6 +5103,7 @@ export namespace OSTree {
          * `g_file_append_to_async()`.
          * @param res {@link Gio.AsyncResult}
          * @returns a valid {@link Gio.FileOutputStream}   or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         append_to_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
 
@@ -4914,6 +5121,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns an attribute query string for `g_file_query_info()`,   or `null` if an error occurs.
          * @since 2.68
+         * @throws GLib.Error
          */
         build_attribute_list_for_copy(flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): string;
 
@@ -4963,6 +5171,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param progress_callback function to callback with   progress information, or `null` if progress information is not needed
          * @returns `true` on success, `false` otherwise.
+         * @throws GLib.Error
          */
         copy(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): boolean;
 
@@ -4992,6 +5201,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCopyFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the attributes were copied successfully,   `false` otherwise.
+         * @throws GLib.Error
          */
         copy_attributes(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4999,6 +5209,7 @@ export namespace OSTree {
          * Finishes copying the file started with `g_file_copy_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a `true` on success, `false` on error.
+         * @throws GLib.Error
          */
         copy_finish(res: Gio.AsyncResult): boolean;
 
@@ -5025,6 +5236,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream} for the newly created   file, or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         create(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
 
@@ -5083,6 +5295,7 @@ export namespace OSTree {
          * `g_file_create_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileOutputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         create_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
 
@@ -5114,6 +5327,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileIOStream} for the newly created   file, or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         create_readwrite(flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileIOStream;
 
@@ -5176,6 +5390,7 @@ export namespace OSTree {
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         create_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
 
@@ -5205,6 +5420,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the file was deleted. `false` otherwise.
+         * @throws GLib.Error
          */
         ["delete"](cancellable: Gio.Cancellable | null): boolean;
 
@@ -5245,6 +5461,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the file was deleted. `false` otherwise.
          * @since 2.34
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -5316,6 +5533,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the `file` was ejected successfully.   `false` otherwise.
          * @deprecated since 2.22: Use `g_file_eject_mountable_with_operation_finish()`   instead.
+         * @throws GLib.Error
          */
         eject_mountable_finish(result: Gio.AsyncResult): boolean;
 
@@ -5375,6 +5593,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the `file` was ejected successfully.   `false` otherwise.
          * @since 2.22
+         * @throws GLib.Error
          */
         eject_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
 
@@ -5408,6 +5627,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns A {@link Gio.FileEnumerator} if successful,   `null` on error. Free the returned object with {@link GObject.Object.unref}.
+         * @throws GLib.Error
          */
         enumerate_children(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): Gio.FileEnumerator;
 
@@ -5472,6 +5692,7 @@ export namespace OSTree {
          * See `g_file_enumerate_children_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileEnumerator} or `null`   if an error occurred.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         enumerate_children_finish(res: Gio.AsyncResult): Gio.FileEnumerator;
 
@@ -5508,6 +5729,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.Mount} where the `file` is located   or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         find_enclosing_mount(cancellable: Gio.Cancellable | null): Gio.Mount;
 
@@ -5560,6 +5782,7 @@ export namespace OSTree {
          * See `g_file_find_enclosing_mount_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns {@link Gio.Mount} for given `file` or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         find_enclosing_mount_finish(res: Gio.AsyncResult): Gio.Mount;
 
@@ -5605,6 +5828,7 @@ export namespace OSTree {
          * This call does no blocking I/O.
          * @param display_name string to a possible child
          * @returns a {@link Gio.File} to the specified child, or   `null` if the display name couldn't be converted.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         get_child_for_display_name(display_name: string): Gio.File;
 
@@ -5761,6 +5985,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link GLib.Bytes} or `null` and `error` is set
          * @since 2.56
+         * @throws GLib.Error
          */
         load_bytes(cancellable: Gio.Cancellable | null): [GLib.Bytes, string];
 
@@ -5827,6 +6052,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult} provided to the callback
          * @returns a {@link GLib.Bytes} or `null` and `error` is set
          * @since 2.56
+         * @throws GLib.Error
          */
         load_bytes_finish(result: Gio.AsyncResult): [GLib.Bytes, string];
 
@@ -5841,6 +6067,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if the `file`'s contents were successfully loaded.   `false` if there were errors.
+         * @throws GLib.Error
          */
         load_contents(cancellable: Gio.Cancellable | null): [boolean, Uint8Array, string];
 
@@ -5908,6 +6135,7 @@ export namespace OSTree {
          * set to the new entity tag for the `file`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if the load was successful. If `false` and `error` is   present, it will be set appropriately.
+         * @throws GLib.Error
          */
         load_contents_finish(res: Gio.AsyncResult): [boolean, Uint8Array, string];
 
@@ -5919,6 +6147,7 @@ export namespace OSTree {
          * needed.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if the load was successful. If `false` and `error` is   present, it will be set appropriately.
+         * @throws GLib.Error
          */
         load_partial_contents_finish(res: Gio.AsyncResult): [boolean, Uint8Array, string];
 
@@ -5943,6 +6172,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on successful creation, `false` otherwise.
+         * @throws GLib.Error
          */
         make_directory(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5978,6 +6208,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful directory creation, `false` otherwise.
          * @since 2.38
+         * @throws GLib.Error
          */
         make_directory_finish(result: Gio.AsyncResult): boolean;
 
@@ -5998,6 +6229,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if all directories have been successfully created, `false` otherwise.
          * @since 2.18
+         * @throws GLib.Error
          */
         make_directory_with_parents(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6011,6 +6243,7 @@ export namespace OSTree {
          * @param symlink_value a string with the path for the target   of the new symlink
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on the creation of a new symlink, `false` otherwise.
+         * @throws GLib.Error
          */
         make_symbolic_link(symlink_value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6052,6 +6285,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful directory creation, `false` otherwise.
          * @since 2.74
+         * @throws GLib.Error
          */
         make_symbolic_link_finish(result: Gio.AsyncResult): boolean;
 
@@ -6079,6 +6313,7 @@ export namespace OSTree {
          * @param progress_callback a {@link Gio.FileMeasureProgressCallback}
          * @returns `true` if successful, with the out parameters set.   `false` otherwise, with `error` set.
          * @since 2.38
+         * @throws GLib.Error
          */
         measure_disk_usage(flags: Gio.FileMeasureFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileMeasureProgressCallback | null): [boolean, number, number, number];
 
@@ -6089,6 +6324,7 @@ export namespace OSTree {
          * @param result the {@link Gio.AsyncResult} passed to your {@link Gio.AsyncReadyCallback}
          * @returns `true` if successful, with the out parameters set.   `false` otherwise, with `error` set.
          * @since 2.38
+         * @throws GLib.Error
          */
         measure_disk_usage_finish(result: Gio.AsyncResult): [boolean, number, number, number];
 
@@ -6103,6 +6339,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.18
+         * @throws GLib.Error
          */
         monitor(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -6122,6 +6359,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileMonitorFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error. Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         monitor_directory(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -6143,6 +6381,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileMonitorFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileMonitor} for the given `file`,   or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         monitor_file(flags: Gio.FileMonitorFlags, cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -6203,6 +6442,7 @@ export namespace OSTree {
          * Finishes a mount operation started by `g_file_mount_enclosing_volume()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful. If an error has occurred,   this function will return `false` and set `error`   appropriately if present.
+         * @throws GLib.Error
          */
         mount_enclosing_volume_finish(result: Gio.AsyncResult): boolean;
 
@@ -6269,6 +6509,7 @@ export namespace OSTree {
          * with `g_file_mount_mountable()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.File} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         mount_mountable_finish(result: Gio.AsyncResult): Gio.File;
 
@@ -6311,6 +6552,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @param progress_callback {@link Gio.FileProgressCallback}   function for updates
          * @returns `true` on successful move, `false` otherwise.
+         * @throws GLib.Error
          */
         move(destination: Gio.File, flags: Gio.FileCopyFlags, cancellable: Gio.Cancellable | null, progress_callback: Gio.FileProgressCallback | null): boolean;
 
@@ -6333,6 +6575,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful file move, `false` otherwise.
          * @since 2.72
+         * @throws GLib.Error
          */
         move_finish(result: Gio.AsyncResult): boolean;
 
@@ -6356,6 +6599,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         open_readwrite(cancellable: Gio.Cancellable | null): Gio.FileIOStream;
 
@@ -6412,6 +6656,7 @@ export namespace OSTree {
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         open_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
 
@@ -6483,6 +6728,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully. `false` otherwise.
          * @since 2.22
+         * @throws GLib.Error
          */
         poll_mountable_finish(result: Gio.AsyncResult): boolean;
 
@@ -6495,6 +6741,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns a {@link Gio.AppInfo} if the handle was found,   `null` if there were errors.   When you are done with it, release it with `g_object_unref()`
+         * @throws GLib.Error
          */
         query_default_handler(cancellable: Gio.Cancellable | null): Gio.AppInfo;
 
@@ -6529,6 +6776,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.AppInfo} if the handle was found,   `null` if there were errors.   When you are done with it, release it with `g_object_unref()`
          * @since 2.60
+         * @throws GLib.Error
          */
         query_default_handler_finish(result: Gio.AsyncResult): Gio.AppInfo;
 
@@ -6605,6 +6853,7 @@ export namespace OSTree {
          * @param attributes an attribute query string
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileInfo} or `null` if there was an error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         query_filesystem_info(attributes: string, cancellable: Gio.Cancellable | null): Gio.FileInfo;
 
@@ -6669,6 +6918,7 @@ export namespace OSTree {
          * See `g_file_query_filesystem_info_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns {@link Gio.FileInfo} for given `file`   or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         query_filesystem_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
 
@@ -6720,6 +6970,7 @@ export namespace OSTree {
          * @param flags flags to affect the query operation
          * @param cancellable optional cancellable object
          * @returns a {@link Gio.FileInfo} for the given `file`
+         * @throws GLib.Error
          */
         query_info(attributes: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): Gio.FileInfo;
 
@@ -6781,6 +7032,7 @@ export namespace OSTree {
          * See `g_file_query_info_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns {@link Gio.FileInfo} for given `file`   or `null` on error. Free the returned object with   `g_object_unref()`.
+         * @throws GLib.Error
          */
         query_info_finish(res: Gio.AsyncResult): Gio.FileInfo;
 
@@ -6797,6 +7049,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileAttributeInfoList} describing the settable attributes.   When you are done with it, release it with   `g_file_attribute_info_list_unref()`
+         * @throws GLib.Error
          */
         query_settable_attributes(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
 
@@ -6810,6 +7063,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileAttributeInfoList} describing the writable namespaces.   When you are done with it, release it with   `g_file_attribute_info_list_unref()`
+         * @throws GLib.Error
          */
         query_writable_namespaces(cancellable: Gio.Cancellable | null): Gio.FileAttributeInfoList;
 
@@ -6827,6 +7081,7 @@ export namespace OSTree {
          * on what kind of filesystem the file is on.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gio.FileInputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         read(cancellable: Gio.Cancellable | null): Gio.FileInputStream;
 
@@ -6879,6 +7134,7 @@ export namespace OSTree {
          * `g_file_read_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileInputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         read_finish(res: Gio.AsyncResult): Gio.FileInputStream;
 
@@ -6929,6 +7185,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileOutputStream} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         replace(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileOutputStream;
 
@@ -7011,6 +7268,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileCreateFlags}
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          * @returns `true` if successful. If an error has occurred, this function   will return `false` and set `error` appropriately if present.
+         * @throws GLib.Error
          */
         replace_contents(contents: Uint8Array | string, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -7168,6 +7426,7 @@ export namespace OSTree {
          * tag for the document, if present.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         replace_contents_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -7176,6 +7435,7 @@ export namespace OSTree {
          * `g_file_replace_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileOutputStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         replace_finish(res: Gio.AsyncResult): Gio.FileOutputStream;
 
@@ -7196,6 +7456,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.FileIOStream} or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         replace_readwrite(etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, cancellable: Gio.Cancellable | null): Gio.FileIOStream;
 
@@ -7267,6 +7528,7 @@ export namespace OSTree {
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.FileIOStream}, or `null` on error.   Free the returned object with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         replace_readwrite_finish(res: Gio.AsyncResult): Gio.FileIOStream;
 
@@ -7297,6 +7559,7 @@ export namespace OSTree {
          * @param flags a set of {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the attribute was set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute(attribute: string, type: Gio.FileAttributeType, value_p: null, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7313,6 +7576,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_byte_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7328,6 +7592,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_int32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7343,6 +7608,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_int64(attribute: string, value: bigint | number, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7358,6 +7624,7 @@ export namespace OSTree {
          * @param flags {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_string(attribute: string, value: string, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7373,6 +7640,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_uint32(attribute: string, value: number, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7388,6 +7656,7 @@ export namespace OSTree {
          * @param flags a {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` if the `attribute` was successfully set to `value`   in the `file`, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attribute_uint64(attribute: string, value: bigint | number, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7445,6 +7714,7 @@ export namespace OSTree {
          * Finishes setting an attribute started in `g_file_set_attributes_async()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the attributes were set correctly, `false` otherwise.
+         * @throws GLib.Error
          */
         set_attributes_finish(result: Gio.AsyncResult): [boolean, Gio.FileInfo];
 
@@ -7465,6 +7735,7 @@ export namespace OSTree {
          * @param flags {@link Gio.FileQueryInfoFlags}
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `false` if there was any error, `true` otherwise.
+         * @throws GLib.Error
          */
         set_attributes_from_info(info: Gio.FileInfo, flags: Gio.FileQueryInfoFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7487,6 +7758,7 @@ export namespace OSTree {
          * @param display_name a string
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns a {@link Gio.File} specifying what `file` was renamed to,   or `null` if there was an error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         set_display_name(display_name: string, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -7542,6 +7814,7 @@ export namespace OSTree {
          * `g_file_set_display_name_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns a {@link Gio.File} or `null` on error.   Free the returned object with `g_object_unref()`.
+         * @throws GLib.Error
          */
         set_display_name_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -7612,6 +7885,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully. `false` otherwise.
          * @since 2.22
+         * @throws GLib.Error
          */
         start_mountable_finish(result: Gio.AsyncResult): boolean;
 
@@ -7676,6 +7950,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          * @since 2.22
+         * @throws GLib.Error
          */
         stop_mountable_finish(result: Gio.AsyncResult): boolean;
 
@@ -7705,6 +7980,7 @@ export namespace OSTree {
          * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          * @param cancellable optional {@link Gio.Cancellable} object,   `null` to ignore
          * @returns `true` on successful trash, `false` otherwise.
+         * @throws GLib.Error
          */
         trash(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7740,6 +8016,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on successful trash, `false` otherwise.
          * @since 2.38
+         * @throws GLib.Error
          */
         trash_finish(result: Gio.AsyncResult): boolean;
 
@@ -7801,6 +8078,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          * @deprecated since 2.22: Use `g_file_unmount_mountable_with_operation_finish()`   instead.
+         * @throws GLib.Error
          */
         unmount_mountable_finish(result: Gio.AsyncResult): boolean;
 
@@ -7866,6 +8144,7 @@ export namespace OSTree {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the operation finished successfully.   `false` otherwise.
          * @since 2.22
+         * @throws GLib.Error
          */
         unmount_mountable_with_operation_finish(result: Gio.AsyncResult): boolean;
 
@@ -9575,6 +9854,7 @@ export namespace OSTree {
          * {@link OSTree.RepoFinderAvahi} instance, or to call it after
          * `ostree_repo_finder_avahi_stop()`.
          * @since 2018.6
+         * @throws GLib.Error
          */
         start(): void;
 
@@ -9689,6 +9969,7 @@ export namespace OSTree {
          * @param result {@link Gio.AsyncResult} from the callback
          * @returns array of zero    or more results
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -9874,6 +10155,7 @@ export namespace OSTree {
          * @param result {@link Gio.AsyncResult} from the callback
          * @returns array of zero    or more results
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -10071,6 +10353,7 @@ export namespace OSTree {
          * @param result {@link Gio.AsyncResult} from the callback
          * @returns array of zero    or more results
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -10265,6 +10548,7 @@ export namespace OSTree {
          * @param result {@link Gio.AsyncResult} from the callback
          * @returns array of zero    or more results
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
 
@@ -10409,6 +10693,7 @@ export namespace OSTree {
          * @param relpath Path
          * @param unix_mode Unix mode
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         get_label(relpath: string, unix_mode: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -10432,12 +10717,14 @@ export namespace OSTree {
          * @param target Physical path to target file
          * @param flags Flags controlling behavior
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         restorecon(path: string, info: Gio.FileInfo | null, target: Gio.File, flags: SePolicyRestoreconFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
         /**
          * @param path Use this path to determine a label
          * @param mode Used along with `path`
+         * @throws GLib.Error
          */
         setfscreatecon(path: string, mode: number): boolean;
 
@@ -10483,6 +10770,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10547,7 +10835,7 @@ export namespace OSTree {
              * @since 2017.10
              * @run-last
              */
-            "journal-msg": (arg0: string) => void;
+            "journal-msg": (msg: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10613,6 +10901,7 @@ export namespace OSTree {
          * it will be unlocked (and hence queued to apply on shutdown).
          * @param deployment Deployment which must be staged
          * @since 2023.8
+         * @throws GLib.Error
          */
         change_finalization(deployment: Deployment): boolean;
 
@@ -10620,6 +10909,7 @@ export namespace OSTree {
          * Delete any state that resulted from a partially completed
          * transaction, such as incomplete deployments.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         cleanup(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10636,6 +10926,7 @@ export namespace OSTree {
          * @param options Flags controlling pruning
          * @param cancellable Cancellable
          * @since 2018.6
+         * @throws GLib.Error
          */
         cleanup_prune_repo(options: RepoPruneOptions, cancellable: Gio.Cancellable | null): [boolean, number, number, number];
 
@@ -10644,6 +10935,7 @@ export namespace OSTree {
          * is not queued, this function successfully does nothing.
          * @param cancellable Cancellable
          * @since 2025.3
+         * @throws GLib.Error
          */
         clear_soft_reboot(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10656,6 +10948,7 @@ export namespace OSTree {
          * @param override_kernel_argv Use these as kernel arguments; if `null`, inherit options from provided_merge_deployment
          * @param cancellable Cancellable
          * @since 2018.5
+         * @throws GLib.Error
          */
         deploy_tree(osname: string | null, revision: string, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
 
@@ -10672,6 +10965,7 @@ export namespace OSTree {
          * @param opts Options
          * @param cancellable Cancellable
          * @since 2020.7
+         * @throws GLib.Error
          */
         deploy_tree_with_options(osname: string | null, revision: string, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, opts: SysrootDeployTreeOpts | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
 
@@ -10691,6 +10985,7 @@ export namespace OSTree {
          * @param deployment Deployment to prepare a kexec for
          * @param cancellable Cancellable
          * @since 2025.1
+         * @throws GLib.Error
          */
         deployment_kexec_load(deployment: Deployment, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10700,6 +10995,7 @@ export namespace OSTree {
          * @param deployment A deployment
          * @param new_kargs Replace deployment's kernel arguments
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         deployment_set_kargs(deployment: Deployment, new_kargs: string[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -10708,6 +11004,7 @@ export namespace OSTree {
          * @param deployment A deployment
          * @param kargs_str Replace `deployment`'s kernel arguments
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         deployment_set_kargs_in_place(deployment: Deployment, kargs_str: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10718,6 +11015,7 @@ export namespace OSTree {
          * @param deployment A deployment
          * @param is_mutable Whether or not deployment's files can be changed
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         deployment_set_mutable(deployment: Deployment, is_mutable: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10734,6 +11032,7 @@ export namespace OSTree {
          * @param deployment A deployment
          * @param is_pinned Whether or not deployment will be automatically GC'd
          * @since 2018.3
+         * @throws GLib.Error
          */
         deployment_set_pinned(deployment: Deployment, is_pinned: boolean): boolean;
 
@@ -10744,6 +11043,7 @@ export namespace OSTree {
          * @param allow_kernel_skew Continue even if there is a kernel mismatch
          * @param cancellable Cancellable
          * @since 2025.3
+         * @throws GLib.Error
          */
         deployment_set_soft_reboot(deployment: Deployment, allow_kernel_skew: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10758,6 +11058,7 @@ export namespace OSTree {
          * @param unlocked_state Transition to this unlocked state
          * @param cancellable Cancellable
          * @since 2016.4
+         * @throws GLib.Error
          */
         deployment_unlock(deployment: Deployment, unlocked_state: DeploymentUnlockedState, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10765,6 +11066,7 @@ export namespace OSTree {
          * Ensure that `self` is set up as a valid rootfs, by creating
          * /ostree/repo, among other things.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         ensure_initialized(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10822,6 +11124,7 @@ export namespace OSTree {
          * (see `ostree_repo_open()`).
          * @param cancellable Cancellable
          * @returns `true` on success, `false` otherwise
+         * @throws GLib.Error
          */
         get_repo(cancellable: Gio.Cancellable | null): [boolean, Repo | null];
 
@@ -10840,6 +11143,7 @@ export namespace OSTree {
          * @param osname Name group of operating system checkouts
          * @param cancellable Cancellable
          * @since 2016.4
+         * @throws GLib.Error
          */
         init_osname(osname: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10850,6 +11154,7 @@ export namespace OSTree {
          * It is not necessary to call this function if `ostree_sysroot_load()` is
          * invoked.
          * @since 2020.1
+         * @throws GLib.Error
          */
         initialize(): boolean;
 
@@ -10868,6 +11173,7 @@ export namespace OSTree {
          * be invoked before or after `ostree_sysroot_initialize()`.
          * @param cancellable 
          * @since 2022.7
+         * @throws GLib.Error
          */
         initialize_with_mount_namespace(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10882,12 +11188,14 @@ export namespace OSTree {
          * Load deployment list, bootversion, and subbootversion from the
          * rootfs `self`.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         load(cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param cancellable Cancellable
          * @since 2016.4
+         * @throws GLib.Error
          */
         load_if_changed(cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -10898,6 +11206,7 @@ export namespace OSTree {
          * 
          * Release the lock with `ostree_sysroot_unlock()`.  The lock will also
          * be released if `self` is deallocated.
+         * @throws GLib.Error
          */
         lock(): boolean;
 
@@ -10924,6 +11233,7 @@ export namespace OSTree {
         /**
          * Call when `ostree_sysroot_lock_async()` is ready.
          * @param result Result
+         * @throws GLib.Error
          */
         lock_finish(result: Gio.AsyncResult): boolean;
 
@@ -10937,6 +11247,7 @@ export namespace OSTree {
          * Like `ostree_sysroot_cleanup()` in that it cleans up incomplete deployments
          * and old boot versions, but does NOT prune the repository.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         prepare_cleanup(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10964,6 +11275,7 @@ export namespace OSTree {
          * Find the booted deployment, or return an error if not booted via OSTree.
          * @returns The currently booted deployment, or an error
          * @since 2021.1
+         * @throws GLib.Error
          */
         require_booted_deployment(): Deployment;
 
@@ -11012,6 +11324,7 @@ export namespace OSTree {
          * @param merge_deployment Use this deployment for configuration merge
          * @param flags Flags controlling behavior
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         simple_write_deployment(osname: string | null, new_deployment: Deployment, merge_deployment: Deployment | null, flags: SysrootSimpleWriteDeploymentFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11022,6 +11335,7 @@ export namespace OSTree {
          * @param fd File descriptor to overlay initrd
          * @param cancellable Cancellable
          * @since 2020.7
+         * @throws GLib.Error
          */
         stage_overlay_initrd(fd: number, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -11034,6 +11348,7 @@ export namespace OSTree {
          * @param override_kernel_argv Use these as kernel arguments; if `null`, inherit options from provided_merge_deployment
          * @param cancellable Cancellable
          * @since 2018.5
+         * @throws GLib.Error
          */
         stage_tree(osname: string | null, revision: string, origin: GLib.KeyFile | null, merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [boolean, Deployment];
 
@@ -11047,6 +11362,7 @@ export namespace OSTree {
          * @param opts Options
          * @param cancellable Cancellable
          * @since 2020.7
+         * @throws GLib.Error
          */
         stage_tree_with_options(osname: string | null, revision: string, origin: GLib.KeyFile | null, merge_deployment: Deployment | null, opts: SysrootDeployTreeOpts, cancellable: Gio.Cancellable | null): [boolean, Deployment];
 
@@ -11058,6 +11374,7 @@ export namespace OSTree {
          * 
          * Release the lock with `ostree_sysroot_unlock()`.  The lock will also
          * be released if `self` is deallocated.
+         * @throws GLib.Error
          */
         try_lock(): [boolean, boolean];
 
@@ -11084,6 +11401,7 @@ export namespace OSTree {
          * have been lost during the copy.
          * @param cancellable 
          * @since 2023.11
+         * @throws GLib.Error
          */
         update_post_copy(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11092,6 +11410,7 @@ export namespace OSTree {
          * version will perform post-deployment cleanup by default.
          * @param new_deployments List of new deployments
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_deployments(new_deployments: Deployment[], cancellable: Gio.Cancellable | null): boolean;
 
@@ -11106,6 +11425,7 @@ export namespace OSTree {
          * @param opts Options
          * @param cancellable Cancellable
          * @since 2017.4
+         * @throws GLib.Error
          */
         write_deployments_with_options(new_deployments: Deployment[], opts: SysrootWriteDeploymentsOpts, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11116,6 +11436,7 @@ export namespace OSTree {
          * @param deployment Deployment
          * @param new_origin Origin content
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         write_origin_file(deployment: Deployment, new_origin: GLib.KeyFile | null, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -11210,6 +11531,7 @@ export namespace OSTree {
          * Write the new deployment to disk, perform a configuration merge
          * with /etc, and update the bootloader configuration.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         deploy(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11239,6 +11561,7 @@ export namespace OSTree {
          * @param upgrader_flags Flags controlling upgrader behavior
          * @param progress Progress
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         pull(flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -11251,6 +11574,7 @@ export namespace OSTree {
          * @param upgrader_flags Flags controlling upgrader behavior
          * @param progress Progress
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -11258,6 +11582,7 @@ export namespace OSTree {
          * Replace the origin with `origin`.
          * @param origin The new origin
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         set_origin(origin: GLib.KeyFile | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11303,6 +11628,7 @@ export namespace OSTree {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11587,6 +11913,7 @@ export namespace OSTree {
          * @param cancellable optional GCancellable object, NULL to ignore
          * @returns `true` on success, `false` on failure
          * @since 2019.3
+         * @throws GLib.Error
          */
         append_proc_cmdline(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11618,6 +11945,7 @@ export namespace OSTree {
          * 
          *  Since: 2019.3
          * @param arg key or key/value pair for deletion
+         * @throws GLib.Error
          */
         ["delete"](arg: string): boolean;
 
@@ -11626,6 +11954,7 @@ export namespace OSTree {
          * @param arg key or key/value pair to be deleted
          * @returns `true` on success, `false` on failure
          * @since 2022.7
+         * @throws GLib.Error
          */
         delete_if_present(arg: string): boolean;
 
@@ -11639,6 +11968,7 @@ export namespace OSTree {
          * @param key the key to remove
          * @returns `true` on success, `false` on failure
          * @since 2019.3
+         * @throws GLib.Error
          */
         delete_key_entry(key: string): boolean;
 
@@ -11677,6 +12007,7 @@ export namespace OSTree {
          * @param arg a string argument
          * @returns `true` on success, `false` on failure (and in some other instances such as: 1. key not found in `kargs` 2. old value not found when `arg` is in the form of key=old_val=new_val 3. multiple old values found when `arg` is in the form of key=old_val)
          * @since 2019.3
+         * @throws GLib.Error
          */
         new_replace(arg: string): boolean;
 
@@ -11911,6 +12242,7 @@ export namespace OSTree {
          * @param rev Find SELinux policy from this base commit
          * @param cancellable 
          * @since 2020.4
+         * @throws GLib.Error
          */
         set_sepolicy_from_commit(repo: Repo, rev: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -11976,6 +12308,7 @@ export namespace OSTree {
          * @param repo A repo
          * @param commit Variant of type {@link OSTree.ObjectType.COMMIT}
          * @param flags Flags
+         * @throws GLib.Error
          */
         init_commit(repo: Repo, commit: GLib.Variant, flags: RepoCommitTraverseFlags): boolean;
 
@@ -11984,6 +12317,7 @@ export namespace OSTree {
          * @param repo A repo
          * @param dirtree Variant of type {@link OSTree.ObjectType.DIR_TREE}
          * @param flags Flags
+         * @throws GLib.Error
          */
         init_dirtree(repo: Repo, dirtree: GLib.Variant, flags: RepoCommitTraverseFlags): boolean;
 
@@ -12001,6 +12335,7 @@ export namespace OSTree {
          * program error to call any further API on `iter` except for
          * `ostree_repo_commit_traverse_iter_clear()`.
          * @param cancellable Cancellable
+         * @throws GLib.Error
          */
         next(cancellable: Gio.Cancellable | null): RepoCommitIterResult;
     }
@@ -12305,6 +12640,7 @@ export namespace OSTree {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns A {@link GLib.Bytes} blob, or `null` if there are no more
          * @since 2016.5
+         * @throws GLib.Error
          */
         read_blob(cancellable: Gio.Cancellable | null): GLib.Bytes | null;
     }
@@ -12490,6 +12826,7 @@ export namespace OSTree {
          * @param result {@link Gio.AsyncResult} from the callback
          * @returns array of zero    or more results
          * @since 2018.6
+         * @throws GLib.Error
          */
         resolve_finish(result: Gio.AsyncResult): RepoFinderResult[];
     }
@@ -12646,6 +12983,7 @@ export namespace OSTree {
          * @param public_key single public key to be added
          * @returns `TRUE` in case if the key could be added successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         add_pk(public_key: GLib.Variant): boolean;
 
@@ -12653,6 +12991,7 @@ export namespace OSTree {
          * Clear all previously preloaded secret and public keys.
          * @returns `TRUE` in case if no errors, `FALSE` in case of error
          * @since 2020.2
+         * @throws GLib.Error
          */
         clear_keys(): boolean;
 
@@ -12666,6 +13005,7 @@ export namespace OSTree {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `TRUE` if commit has been signed successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         commit(repo: Repo, commit_checksum: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12680,6 +13020,7 @@ export namespace OSTree {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `TRUE` if commit has been verified successfully, `FALSE` in case of error or no valid keys are available (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         commit_verify(repo: Repo, commit_checksum: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -12692,6 +13033,7 @@ export namespace OSTree {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `TRUE` if `data` has been signed successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         data(data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): [boolean, GLib.Bytes];
 
@@ -12705,20 +13047,26 @@ export namespace OSTree {
          * @param signatures the signatures to be checked
          * @returns `TRUE` if `data` has been signed at least with any single valid key, `FALSE` in case of error or no valid keys are available (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         data_verify(data: GLib.Bytes | Uint8Array, signatures: GLib.Variant): [boolean, string];
 
         /**
          * @param public_key 
+         * @throws GLib.Error
          */
         ed25519_add_pk(public_key: GLib.Variant): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         ed25519_clear_keys(): boolean;
 
         /**
          * @param data 
          * @param signature 
          * @param cancellable 
+         * @throws GLib.Error
          */
         ed25519_data(data: GLib.Bytes | Uint8Array, signature: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12726,6 +13074,7 @@ export namespace OSTree {
          * @param data 
          * @param signatures 
          * @param out_success_message 
+         * @throws GLib.Error
          */
         ed25519_data_verify(data: GLib.Bytes | Uint8Array, signatures: GLib.Variant, out_success_message: string): boolean;
 
@@ -12733,6 +13082,7 @@ export namespace OSTree {
 
         /**
          * @param options 
+         * @throws GLib.Error
          */
         ed25519_load_pk(options: GLib.Variant): boolean;
 
@@ -12742,11 +13092,13 @@ export namespace OSTree {
 
         /**
          * @param public_key 
+         * @throws GLib.Error
          */
         ed25519_set_pk(public_key: GLib.Variant): boolean;
 
         /**
          * @param secret_key 
+         * @throws GLib.Error
          */
         ed25519_set_sk(secret_key: GLib.Variant): boolean;
 
@@ -12772,6 +13124,7 @@ export namespace OSTree {
          * @param options any options
          * @returns `TRUE` in case if at least one key could be load successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         load_pk(options: GLib.Variant): boolean;
 
@@ -12815,6 +13168,7 @@ export namespace OSTree {
          * @param public_key single public key to be added
          * @returns `TRUE` in case if the key could be set successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         set_pk(public_key: GLib.Variant): boolean;
 
@@ -12825,6 +13179,7 @@ export namespace OSTree {
          * @param secret_key secret key to be added
          * @returns `TRUE` in case if the key could be set successfully, `FALSE` in case of error (`error` will contain the reason).
          * @since 2020.2
+         * @throws GLib.Error
          */
         set_sk(secret_key: GLib.Variant): boolean;
 
@@ -12836,6 +13191,7 @@ export namespace OSTree {
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `TRUE` if summary file has been signed with all provided keys
          * @since 2020.2
+         * @throws GLib.Error
          */
         summary(repo: Repo, keys: GLib.Variant, cancellable: Gio.Cancellable | null): boolean;
     }

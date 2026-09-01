@@ -36,16 +36,16 @@ export namespace Playerctl {
         /**
          * The playback will stop when there are no more tracks to play.
          */
-        NONE,
+        NONE = 0,
         /**
          * The current track will start again from the beginning once it has
          * finished playing.
          */
-        TRACK,
+        TRACK = 1,
         /**
          * The playback loops through a list of tracks.
          */
-        PLAYLIST,
+        PLAYLIST = 2,
     }
 
 
@@ -64,15 +64,15 @@ export namespace Playerctl {
         /**
          * A track is currently playing.
          */
-        PLAYING,
+        PLAYING = 0,
         /**
          * A track is currently paused.
          */
-        PAUSED,
+        PAUSED = 1,
         /**
          * There is no track currently playing.
          */
-        STOPPED,
+        STOPPED = 2,
     }
 
 
@@ -91,21 +91,22 @@ export namespace Playerctl {
         /**
          * Only for unitialized players. Source will be chosen automatically.
          */
-        NONE,
+        NONE = 0,
         /**
          * The player is on the DBus session bus.
          */
-        DBUS_SESSION,
+        DBUS_SESSION = 1,
         /**
          * The player is on the DBus system bus.
          */
-        DBUS_SYSTEM,
+        DBUS_SYSTEM = 2,
     }
 
 
     /**
      * Lists all the players that can be controlled by Playerctl.
      * @returns A list of player names.
+     * @throws GLib.Error
      */
     function list_players(): PlayerName[];
 
@@ -125,13 +126,13 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "loop-status": (arg0: LoopStatus) => void;
+            "loop-status": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the metadata for the currently playing track changes.
              * @signal
              * @run-first
              */
-            metadata: (arg0: GLib.Variant) => void;
+            metadata: (metadata: GLib.Variant) => void;
             /**
              * Emitted when the player pauses.
              * @signal
@@ -154,7 +155,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status": (arg0: PlaybackStatus) => void;
+            "playback-status": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the track changes position unexpectedly or begins in a
              * position other than the beginning. Otherwise, position is assumed to
@@ -162,13 +163,13 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            seeked: (arg0: number) => void;
+            seeked: (position: number) => void;
             /**
              * Emitted when the shuffle status changes.
              * @signal
              * @run-first
              */
-            shuffle: (arg0: boolean) => void;
+            shuffle: (shuffle_status: boolean) => void;
             /**
              * Emitted when the player stops.
              * @signal
@@ -181,7 +182,7 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            volume: (arg0: number) => void;
+            volume: (volume: number) => void;
             "notify::can-control": (pspec: GObject.ParamSpec) => void;
             "notify::can-go-next": (pspec: GObject.ParamSpec) => void;
             "notify::can-go-previous": (pspec: GObject.ParamSpec) => void;
@@ -204,113 +205,113 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "loop-status::can-control": (arg0: LoopStatus) => void;
+            "loop-status::can-control": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::can-go-next": (arg0: LoopStatus) => void;
+            "loop-status::can-go-next": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::can-go-previous": (arg0: LoopStatus) => void;
+            "loop-status::can-go-previous": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::can-pause": (arg0: LoopStatus) => void;
+            "loop-status::can-pause": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::can-play": (arg0: LoopStatus) => void;
+            "loop-status::can-play": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::can-seek": (arg0: LoopStatus) => void;
+            "loop-status::can-seek": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::loop-status": (arg0: LoopStatus) => void;
+            "loop-status::loop-status": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::metadata": (arg0: LoopStatus) => void;
+            "loop-status::metadata": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::playback-status": (arg0: LoopStatus) => void;
+            "loop-status::playback-status": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::player-instance": (arg0: LoopStatus) => void;
+            "loop-status::player-instance": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::player-name": (arg0: LoopStatus) => void;
+            "loop-status::player-name": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::position": (arg0: LoopStatus) => void;
+            "loop-status::position": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::shuffle": (arg0: LoopStatus) => void;
+            "loop-status::shuffle": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::source": (arg0: LoopStatus) => void;
+            "loop-status::source": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::status": (arg0: LoopStatus) => void;
+            "loop-status::status": (loop_status: LoopStatus) => void;
             /**
              * Emitted when the loop status changes.
              * @signal
              * @detailed
              * @run-first
              */
-            "loop-status::volume": (arg0: LoopStatus) => void;
-            [key: `loop-status::${string}`]: (arg0: LoopStatus) => void;
+            "loop-status::volume": (loop_status: LoopStatus) => void;
+            [key: `loop-status::${string}`]: (loop_status: LoopStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -319,7 +320,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-control": (arg0: PlaybackStatus) => void;
+            "playback-status::can-control": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -328,7 +329,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-go-next": (arg0: PlaybackStatus) => void;
+            "playback-status::can-go-next": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -337,7 +338,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-go-previous": (arg0: PlaybackStatus) => void;
+            "playback-status::can-go-previous": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -346,7 +347,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-pause": (arg0: PlaybackStatus) => void;
+            "playback-status::can-pause": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -355,7 +356,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-play": (arg0: PlaybackStatus) => void;
+            "playback-status::can-play": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -364,7 +365,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::can-seek": (arg0: PlaybackStatus) => void;
+            "playback-status::can-seek": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -373,7 +374,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::loop-status": (arg0: PlaybackStatus) => void;
+            "playback-status::loop-status": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -382,7 +383,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::metadata": (arg0: PlaybackStatus) => void;
+            "playback-status::metadata": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -391,7 +392,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::playback-status": (arg0: PlaybackStatus) => void;
+            "playback-status::playback-status": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -400,7 +401,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::player-instance": (arg0: PlaybackStatus) => void;
+            "playback-status::player-instance": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -409,7 +410,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::player-name": (arg0: PlaybackStatus) => void;
+            "playback-status::player-name": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -418,7 +419,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::position": (arg0: PlaybackStatus) => void;
+            "playback-status::position": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -427,7 +428,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::shuffle": (arg0: PlaybackStatus) => void;
+            "playback-status::shuffle": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -436,7 +437,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::source": (arg0: PlaybackStatus) => void;
+            "playback-status::source": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -445,7 +446,7 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::status": (arg0: PlaybackStatus) => void;
+            "playback-status::status": (playback_status: PlaybackStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -454,8 +455,8 @@ export namespace Playerctl {
              * @detailed
              * @run-first
              */
-            "playback-status::volume": (arg0: PlaybackStatus) => void;
-            [key: `playback-status::${string}`]: (arg0: PlaybackStatus) => void;
+            "playback-status::volume": (playback_status: PlaybackStatus) => void;
+            [key: `playback-status::${string}`]: (playback_status: PlaybackStatus) => void;
         }
 
         // Constructor properties interface
@@ -691,6 +692,7 @@ export namespace Playerctl {
          * Gets the album from the metadata of the current track, or NULL if
          * no track is playing.
          * @returns The album from the metadata of the current track
+         * @throws GLib.Error
          */
         get_album(): string;
 
@@ -698,12 +700,14 @@ export namespace Playerctl {
          * Gets the artist from the metadata of the current track, or NULL if no
          * track is playing.
          * @returns The artist from the metadata of the current track
+         * @throws GLib.Error
          */
         get_artist(): string;
 
         /**
          * Gets the position of the current track in microseconds ignoring the property
          * cache.
+         * @throws GLib.Error
          */
         get_position(): number;
 
@@ -711,11 +715,13 @@ export namespace Playerctl {
          * Gets the title from the metadata of the current track, or NULL if
          * no track is playing.
          * @returns The title from the metadata of the current track
+         * @throws GLib.Error
          */
         get_title(): string;
 
         /**
          * Command the player to go to the next track
+         * @throws GLib.Error
          */
         next(): void;
 
@@ -724,32 +730,38 @@ export namespace Playerctl {
          * @param event the event to subscribe to
          * @param callback the callback to run on the event
          * @deprecated since 2.0.0: Use `g_object_connect()` to listen to events.
+         * @throws GLib.Error
          */
         on(event: string, callback: GObject.Closure): void;
 
         /**
          * Command the player to open given URI
          * @param uri the URI to open, either a file name or an external URL
+         * @throws GLib.Error
          */
         open(uri: string): void;
 
         /**
          * Command the player to pause
+         * @throws GLib.Error
          */
         pause(): void;
 
         /**
          * Command the player to play
+         * @throws GLib.Error
          */
         play(): void;
 
         /**
          * Command the player to play if it is paused or pause if it is playing
+         * @throws GLib.Error
          */
         play_pause(): void;
 
         /**
          * Command the player to go to the previous track
+         * @throws GLib.Error
          */
         previous(): void;
 
@@ -759,30 +771,35 @@ export namespace Playerctl {
          * playing.
          * @param property the property from the metadata to print
          * @returns The artist from the metadata of the current track
+         * @throws GLib.Error
          */
         print_metadata_prop(property: string | null): string;
 
         /**
          * Command the player to seek forward by offset given in microseconds.
          * @param offset the offset to seek forward to in microseconds
+         * @throws GLib.Error
          */
         seek(offset: bigint | number): void;
 
         /**
          * Set the loop status of the player. Can be set to either None, Track, or Playlist.
          * @param status the requested {@link Playerctl.LoopStatus} to set the player to
+         * @throws GLib.Error
          */
         set_loop_status(status: LoopStatus): void;
 
         /**
          * Sets the absolute position of the current track to the given position in microseconds.
          * @param position The absolute position in the track to set as the position
+         * @throws GLib.Error
          */
         set_position(position: bigint | number): void;
 
         /**
          * Request to set the shuffle state of the player, either on or off.
          * @param shuffle whether to enable shuffle
+         * @throws GLib.Error
          */
         set_shuffle(shuffle: boolean): void;
 
@@ -790,11 +807,13 @@ export namespace Playerctl {
          * Sets the volume level for the player from 0.0 for no volume to 1.0 for
          * maximum volume. Passing negative numbers should set the volume to 0.0.
          * @param volume the volume level from 0.0 to 1.0
+         * @throws GLib.Error
          */
         set_volume(volume: number): void;
 
         /**
          * Command the player to stop
+         * @throws GLib.Error
          */
         stop(): void;
     }
@@ -811,7 +830,7 @@ export namespace Playerctl {
              * @signal
              * @run-last
              */
-            "name-appeared": (arg0: PlayerName) => void;
+            "name-appeared": (name: PlayerName) => void;
             /**
              * Emitted when the name has vanished and is no longer available to be
              * controlled by playerctl. If the player is managed, it will automatically
@@ -821,14 +840,14 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            "name-vanished": (arg0: PlayerName) => void;
+            "name-vanished": (name: PlayerName) => void;
             /**
              * Emitted when a new player will be managed by this manager through a call
              * to `playerctl_player_manager_manage_player()`.
              * @signal
              * @run-first
              */
-            "player-appeared": (arg0: Player) => void;
+            "player-appeared": (player: Player) => void;
             /**
              * Emitted when a player has disconnected and will no longer be managed by
              * this manager. The player is removed from the list of players
@@ -836,7 +855,7 @@ export namespace Playerctl {
              * @signal
              * @run-first
              */
-            "player-vanished": (arg0: Player) => void;
+            "player-vanished": (player: Player) => void;
             "notify::player-names": (pspec: GObject.ParamSpec) => void;
             "notify::players": (pspec: GObject.ParamSpec) => void;
         }

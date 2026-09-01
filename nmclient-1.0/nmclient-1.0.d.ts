@@ -72,85 +72,85 @@ export namespace NMClient {
         /**
          * unknown or no permission
          */
-        NONE,
+        NONE = 0,
         /**
          * controls whether networking
          *  can be globally enabled or disabled
          */
-        ENABLE_DISABLE_NETWORK,
+        ENABLE_DISABLE_NETWORK = 1,
         /**
          * controls whether Wi-Fi can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WIFI,
+        ENABLE_DISABLE_WIFI = 2,
         /**
          * controls whether WWAN (3G) can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WWAN,
+        ENABLE_DISABLE_WWAN = 3,
         /**
          * controls whether WiMAX can be
          *  globally enabled or disabled
          */
-        ENABLE_DISABLE_WIMAX,
+        ENABLE_DISABLE_WIMAX = 4,
         /**
          * controls whether the client can ask
          *  NetworkManager to sleep and wake
          */
-        SLEEP_WAKE,
+        SLEEP_WAKE = 5,
         /**
          * controls whether networking connections
          *  can be started, stopped, and changed
          */
-        NETWORK_CONTROL,
+        NETWORK_CONTROL = 6,
         /**
          * controls whether a password
          *  protected Wi-Fi hotspot can be created
          */
-        WIFI_SHARE_PROTECTED,
+        WIFI_SHARE_PROTECTED = 7,
         /**
          * controls whether an open Wi-Fi hotspot
          *  can be created
          */
-        WIFI_SHARE_OPEN,
+        WIFI_SHARE_OPEN = 8,
         /**
          * controls whether connections
          *  that are available to all users can be modified
          */
-        SETTINGS_MODIFY_SYSTEM,
+        SETTINGS_MODIFY_SYSTEM = 9,
         /**
          * controls whether connections
          *  owned by the current user can be modified
          */
-        SETTINGS_MODIFY_OWN,
+        SETTINGS_MODIFY_OWN = 10,
         /**
          * controls whether the
          *  persistent hostname can be changed
          */
-        SETTINGS_MODIFY_HOSTNAME,
+        SETTINGS_MODIFY_HOSTNAME = 11,
         /**
          * modify persistent global
          *  DNS configuration
          */
-        SETTINGS_MODIFY_GLOBAL_DNS,
+        SETTINGS_MODIFY_GLOBAL_DNS = 12,
         /**
          * controls access to Reload.
          *  persistent hostname can be changed
          */
-        RELOAD,
+        RELOAD = 13,
         /**
          * permission to create checkpoints.
          */
-        CHECKPOINT_ROLLBACK,
+        CHECKPOINT_ROLLBACK = 14,
         /**
          * controls whether device
          *  statistics can be globally enabled or disabled
          */
-        ENABLE_DISABLE_STATISTICS,
+        ENABLE_DISABLE_STATISTICS = 15,
         /**
          * a reserved boundary value
          */
-        LAST,
+        LAST = 15,
     }
 
 
@@ -170,21 +170,21 @@ export namespace NMClient {
         /**
          * unknown or no authorization
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the permission is available
          */
-        YES,
+        YES = 1,
         /**
          * authorization is necessary before the
          *  permission is available
          */
-        AUTH,
+        AUTH = 2,
         /**
          * permission to perform the operation is
          *  denied by system policy
          */
-        NO,
+        NO = 3,
     }
 
 
@@ -919,316 +919,760 @@ export namespace NMClient {
         /**
          * unknown network type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * home network
          */
-        HOME,
+        HOME = 1,
         /**
          * partner network
          */
-        PARTNER,
+        PARTNER = 2,
         /**
          * roaming partner network
          */
-        ROAMING_PARTNER,
+        ROAMING_PARTNER = 3,
     }
 
 
+    /**
+     * @default bssid
+     */
     const ACCESS_POINT_BSSID: string;
 
+    /**
+     * @default flags
+     */
     const ACCESS_POINT_FLAGS: string;
 
+    /**
+     * @default frequency
+     */
     const ACCESS_POINT_FREQUENCY: string;
 
+    /**
+     * @default hw-address
+     */
     const ACCESS_POINT_HW_ADDRESS: string;
 
+    /**
+     * @default last-seen
+     */
     const ACCESS_POINT_LAST_SEEN: string;
 
+    /**
+     * @default max-bitrate
+     */
     const ACCESS_POINT_MAX_BITRATE: string;
 
+    /**
+     * @default mode
+     */
     const ACCESS_POINT_MODE: string;
 
+    /**
+     * @default rsn-flags
+     */
     const ACCESS_POINT_RSN_FLAGS: string;
 
+    /**
+     * @default ssid
+     */
     const ACCESS_POINT_SSID: string;
 
+    /**
+     * @default strength
+     */
     const ACCESS_POINT_STRENGTH: string;
 
+    /**
+     * @default wpa-flags
+     */
     const ACCESS_POINT_WPA_FLAGS: string;
 
+    /**
+     * @default connection
+     */
     const ACTIVE_CONNECTION_CONNECTION: string;
 
+    /**
+     * @default default
+     */
     const ACTIVE_CONNECTION_DEFAULT: string;
 
+    /**
+     * @default default6
+     */
     const ACTIVE_CONNECTION_DEFAULT6: string;
 
+    /**
+     * @default devices
+     */
     const ACTIVE_CONNECTION_DEVICES: string;
 
+    /**
+     * @default dhcp4-config
+     */
     const ACTIVE_CONNECTION_DHCP4_CONFIG: string;
 
+    /**
+     * @default dhcp6-config
+     */
     const ACTIVE_CONNECTION_DHCP6_CONFIG: string;
 
+    /**
+     * @default id
+     */
     const ACTIVE_CONNECTION_ID: string;
 
+    /**
+     * @default ip4-config
+     */
     const ACTIVE_CONNECTION_IP4_CONFIG: string;
 
+    /**
+     * @default ip6-config
+     */
     const ACTIVE_CONNECTION_IP6_CONFIG: string;
 
+    /**
+     * @default master
+     */
     const ACTIVE_CONNECTION_MASTER: string;
 
+    /**
+     * @default specific-object
+     */
     const ACTIVE_CONNECTION_SPECIFIC_OBJECT: string;
 
+    /**
+     * @default state
+     */
     const ACTIVE_CONNECTION_STATE: string;
 
+    /**
+     * @default type
+     */
     const ACTIVE_CONNECTION_TYPE: string;
 
+    /**
+     * @default uuid
+     */
     const ACTIVE_CONNECTION_UUID: string;
 
+    /**
+     * @default vpn
+     */
     const ACTIVE_CONNECTION_VPN: string;
 
+    /**
+     * @default activating-connection
+     */
     const CLIENT_ACTIVATING_CONNECTION: string;
 
+    /**
+     * @default active-connections
+     */
     const CLIENT_ACTIVE_CONNECTIONS: string;
 
+    /**
+     * @default all-devices
+     */
     const CLIENT_ALL_DEVICES: string;
 
+    /**
+     * @default connectivity
+     */
     const CLIENT_CONNECTIVITY: string;
 
+    /**
+     * @default devices
+     */
     const CLIENT_DEVICES: string;
 
+    /**
+     * @default manager-running
+     */
     const CLIENT_MANAGER_RUNNING: string;
 
+    /**
+     * @default networking-enabled
+     */
     const CLIENT_NETWORKING_ENABLED: string;
 
+    /**
+     * @default primary-connection
+     */
     const CLIENT_PRIMARY_CONNECTION: string;
 
+    /**
+     * @default startup
+     */
     const CLIENT_STARTUP: string;
 
+    /**
+     * @default state
+     */
     const CLIENT_STATE: string;
 
+    /**
+     * @default version
+     */
     const CLIENT_VERSION: string;
 
+    /**
+     * @default wimax-enabled
+     */
     const CLIENT_WIMAX_ENABLED: string;
 
+    /**
+     * @default wimax-hardware-enabled
+     */
     const CLIENT_WIMAX_HARDWARE_ENABLED: string;
 
+    /**
+     * @default wireless-enabled
+     */
     const CLIENT_WIRELESS_ENABLED: string;
 
+    /**
+     * @default wireless-hardware-enabled
+     */
     const CLIENT_WIRELESS_HARDWARE_ENABLED: string;
 
+    /**
+     * @default wwan-enabled
+     */
     const CLIENT_WWAN_ENABLED: string;
 
+    /**
+     * @default wwan-hardware-enabled
+     */
     const CLIENT_WWAN_HARDWARE_ENABLED: string;
 
+    /**
+     * @default active-connection
+     */
     const DEVICE_ACTIVE_CONNECTION: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_ADSL_CARRIER: string;
 
+    /**
+     * @default autoconnect
+     */
     const DEVICE_AUTOCONNECT: string;
 
+    /**
+     * @default available-connections
+     */
     const DEVICE_AVAILABLE_CONNECTIONS: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_BOND_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_BOND_HW_ADDRESS: string;
 
+    /**
+     * @default slaves
+     */
     const DEVICE_BOND_SLAVES: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_BRIDGE_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_BRIDGE_HW_ADDRESS: string;
 
+    /**
+     * @default slaves
+     */
     const DEVICE_BRIDGE_SLAVES: string;
 
+    /**
+     * @default bt-capabilities
+     */
     const DEVICE_BT_CAPABILITIES: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_BT_HW_ADDRESS: string;
 
+    /**
+     * @default name
+     */
     const DEVICE_BT_NAME: string;
 
+    /**
+     * @default capabilities
+     */
     const DEVICE_CAPABILITIES: string;
 
+    /**
+     * @default device-type
+     */
     const DEVICE_DEVICE_TYPE: string;
 
+    /**
+     * @default dhcp4-config
+     */
     const DEVICE_DHCP4_CONFIG: string;
 
+    /**
+     * @default dhcp6-config
+     */
     const DEVICE_DHCP6_CONFIG: string;
 
+    /**
+     * @default driver
+     */
     const DEVICE_DRIVER: string;
 
+    /**
+     * @default driver-version
+     */
     const DEVICE_DRIVER_VERSION: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_ETHERNET_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_ETHERNET_HW_ADDRESS: string;
 
+    /**
+     * @default perm-hw-address
+     */
     const DEVICE_ETHERNET_PERMANENT_HW_ADDRESS: string;
 
+    /**
+     * @default speed
+     */
     const DEVICE_ETHERNET_SPEED: string;
 
+    /**
+     * @default firmware-missing
+     */
     const DEVICE_FIRMWARE_MISSING: string;
 
+    /**
+     * @default firmware-version
+     */
     const DEVICE_FIRMWARE_VERSION: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_GENERIC_HW_ADDRESS: string;
 
+    /**
+     * @default type-description
+     */
     const DEVICE_GENERIC_TYPE_DESCRIPTION: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_INFINIBAND_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_INFINIBAND_HW_ADDRESS: string;
 
+    /**
+     * @default interface
+     */
     const DEVICE_INTERFACE: string;
 
+    /**
+     * @default ip4-config
+     */
     const DEVICE_IP4_CONFIG: string;
 
+    /**
+     * @default ip6-config
+     */
     const DEVICE_IP6_CONFIG: string;
 
+    /**
+     * @default ip-interface
+     */
     const DEVICE_IP_INTERFACE: string;
 
+    /**
+     * @default managed
+     */
     const DEVICE_MANAGED: string;
 
+    /**
+     * @default current-capabilities
+     */
     const DEVICE_MODEM_CURRENT_CAPABILITIES: string;
 
+    /**
+     * @default modem-capabilities
+     */
     const DEVICE_MODEM_MODEM_CAPABILITIES: string;
 
+    /**
+     * @default mtu
+     */
     const DEVICE_MTU: string;
 
+    /**
+     * @default active-channel
+     */
     const DEVICE_OLPC_MESH_ACTIVE_CHANNEL: string;
 
+    /**
+     * @default companion
+     */
     const DEVICE_OLPC_MESH_COMPANION: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_OLPC_MESH_HW_ADDRESS: string;
 
+    /**
+     * @default physical-port-id
+     */
     const DEVICE_PHYSICAL_PORT_ID: string;
 
+    /**
+     * @default product
+     */
     const DEVICE_PRODUCT: string;
 
+    /**
+     * @default real
+     */
     const DEVICE_REAL: string;
 
+    /**
+     * @default state
+     */
     const DEVICE_STATE: string;
 
+    /**
+     * @default state-reason
+     */
     const DEVICE_STATE_REASON: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_TEAM_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_TEAM_HW_ADDRESS: string;
 
+    /**
+     * @default slaves
+     */
     const DEVICE_TEAM_SLAVES: string;
 
+    /**
+     * @default udi
+     */
     const DEVICE_UDI: string;
 
+    /**
+     * @default vendor
+     */
     const DEVICE_VENDOR: string;
 
+    /**
+     * @default carrier
+     */
     const DEVICE_VLAN_CARRIER: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_VLAN_HW_ADDRESS: string;
 
+    /**
+     * @default parent
+     */
     const DEVICE_VLAN_PARENT: string;
 
+    /**
+     * @default vlan-id
+     */
     const DEVICE_VLAN_VLAN_ID: string;
 
+    /**
+     * @default access-points
+     */
     const DEVICE_WIFI_ACCESS_POINTS: string;
 
+    /**
+     * @default active-access-point
+     */
     const DEVICE_WIFI_ACTIVE_ACCESS_POINT: string;
 
+    /**
+     * @default bitrate
+     */
     const DEVICE_WIFI_BITRATE: string;
 
+    /**
+     * @default wireless-capabilities
+     */
     const DEVICE_WIFI_CAPABILITIES: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_WIFI_HW_ADDRESS: string;
 
+    /**
+     * @default mode
+     */
     const DEVICE_WIFI_MODE: string;
 
+    /**
+     * @default perm-hw-address
+     */
     const DEVICE_WIFI_PERMANENT_HW_ADDRESS: string;
 
+    /**
+     * @default active-nsp
+     */
     const DEVICE_WIMAX_ACTIVE_NSP: string;
 
+    /**
+     * @default bsid
+     */
     const DEVICE_WIMAX_BSID: string;
 
+    /**
+     * @default center-frequency
+     */
     const DEVICE_WIMAX_CENTER_FREQUENCY: string;
 
+    /**
+     * @default cinr
+     */
     const DEVICE_WIMAX_CINR: string;
 
+    /**
+     * @default hw-address
+     */
     const DEVICE_WIMAX_HW_ADDRESS: string;
 
+    /**
+     * @default nsps
+     */
     const DEVICE_WIMAX_NSPS: string;
 
+    /**
+     * @default rssi
+     */
     const DEVICE_WIMAX_RSSI: string;
 
+    /**
+     * @default tx-power
+     */
     const DEVICE_WIMAX_TX_POWER: string;
 
+    /**
+     * @default options
+     */
     const DHCP4_CONFIG_OPTIONS: string;
 
+    /**
+     * @default options
+     */
     const DHCP6_CONFIG_OPTIONS: string;
 
+    /**
+     * @default addresses
+     */
     const IP4_CONFIG_ADDRESSES: string;
 
+    /**
+     * @default domains
+     */
     const IP4_CONFIG_DOMAINS: string;
 
+    /**
+     * @default gateway
+     */
     const IP4_CONFIG_GATEWAY: string;
 
+    /**
+     * @default nameservers
+     */
     const IP4_CONFIG_NAMESERVERS: string;
 
+    /**
+     * @default routes
+     */
     const IP4_CONFIG_ROUTES: string;
 
+    /**
+     * @default searches
+     */
     const IP4_CONFIG_SEARCHES: string;
 
+    /**
+     * @default wins-servers
+     */
     const IP4_CONFIG_WINS_SERVERS: string;
 
+    /**
+     * @default addresses
+     */
     const IP6_CONFIG_ADDRESSES: string;
 
+    /**
+     * @default domains
+     */
     const IP6_CONFIG_DOMAINS: string;
 
+    /**
+     * @default gateway
+     */
     const IP6_CONFIG_GATEWAY: string;
 
+    /**
+     * @default nameservers
+     */
     const IP6_CONFIG_NAMESERVERS: string;
 
+    /**
+     * @default routes
+     */
     const IP6_CONFIG_ROUTES: string;
 
+    /**
+     * @default searches
+     */
     const IP6_CONFIG_SEARCHES: string;
 
+    /**
+     * @default dbus-connection
+     */
     const OBJECT_DBUS_CONNECTION: string;
 
+    /**
+     * @default dbus-path
+     */
     const OBJECT_DBUS_PATH: string;
 
+    /**
+     * @default removed
+     */
     const REMOTE_CONNECTION_REMOVED: string;
 
+    /**
+     * @default unsaved
+     */
     const REMOTE_CONNECTION_UNSAVED: string;
 
+    /**
+     * @default updated
+     */
     const REMOTE_CONNECTION_UPDATED: string;
 
+    /**
+     * @default bus
+     */
     const REMOTE_SETTINGS_BUS: string;
 
+    /**
+     * @default can-modify
+     */
     const REMOTE_SETTINGS_CAN_MODIFY: string;
 
+    /**
+     * @default connections-read
+     */
     const REMOTE_SETTINGS_CONNECTIONS_READ: string;
 
+    /**
+     * @default hostname
+     */
     const REMOTE_SETTINGS_HOSTNAME: string;
 
+    /**
+     * @default new-connection
+     */
     const REMOTE_SETTINGS_NEW_CONNECTION: string;
 
+    /**
+     * @default service-running
+     */
     const REMOTE_SETTINGS_SERVICE_RUNNING: string;
 
+    /**
+     * @default auto-register
+     */
     const SECRET_AGENT_AUTO_REGISTER: string;
 
+    /**
+     * @default capabilities
+     */
     const SECRET_AGENT_CAPABILITIES: string;
 
+    /**
+     * @default identifier
+     */
     const SECRET_AGENT_IDENTIFIER: string;
 
+    /**
+     * @default registered
+     */
     const SECRET_AGENT_REGISTERED: string;
 
+    /**
+     * @default registration-result
+     */
     const SECRET_AGENT_REGISTRATION_RESULT: string;
 
+    /**
+     * @default banner
+     */
     const VPN_CONNECTION_BANNER: string;
 
+    /**
+     * @default vpn-state
+     */
     const VPN_CONNECTION_VPN_STATE: string;
 
+    /**
+     * @default name
+     */
     const WIMAX_NSP_NAME: string;
 
+    /**
+     * @default network-type
+     */
     const WIMAX_NSP_NETWORK_TYPE: string;
 
+    /**
+     * @default signal-quality
+     */
     const WIMAX_NSP_SIGNAL_QUALITY: string;
 
     /**
@@ -1489,17 +1933,17 @@ export namespace NMClient {
         /**
          * the agent supports no special capabilities
          */
-        NONE,
+        NONE = 0,
         /**
          * the agent supports sending hints given
          * by the <literal>get_secrets</literal> class method to VPN plugin
          * authentication dialogs.
          */
-        VPN_HINTS,
+        VPN_HINTS = 1,
         /**
          * bounds checking value; should not be used.
          */
-        LAST,
+        LAST = 1,
     }
 
 
@@ -1520,27 +1964,27 @@ export namespace NMClient {
          * user interaction is allowed and requests for secrets are fulfilled from
          * persistent storage, or if no secrets are available an error is returned.
          */
-        NONE,
+        NONE = 0,
         /**
          * allows the request to
          * interact with the user, possibly prompting via UI for secrets if any are
          * required, or if none are found in persistent storage.
          */
-        ALLOW_INTERACTION,
+        ALLOW_INTERACTION = 1,
         /**
          * explicitly prompt for new
          * secrets from the user.  This flag signals that NetworkManager thinks any
          * existing secrets are invalid or wrong.  This flag implies that interaction
          * is allowed.
          */
-        REQUEST_NEW,
+        REQUEST_NEW = 2,
         /**
          * set if the request was
          * initiated by user-requested action via the D-Bus interface, as opposed to
          * automatically initiated by NetworkManager in response to (for example) scan
          * results or carrier changes.
          */
-        USER_REQUESTED,
+        USER_REQUESTED = 4,
     }
 
 
@@ -1956,6 +2400,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1965,6 +2410,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): AccessPoint;
 
@@ -2064,6 +2510,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2573,6 +3020,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2582,6 +3030,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ActiveConnection;
 
@@ -2681,6 +3130,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2740,34 +3190,34 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "any-device-added": (arg0: Device) => void;
+            "any-device-added": (device: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is removed.  This signal is emitted for both
              * regular devices and placeholder devices.
              * @signal
              * @run-first
              */
-            "any-device-removed": (arg0: Device) => void;
+            "any-device-removed": (device: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is added.  This signal is not emitted for
              * placeholder devices.
              * @signal
              * @run-first
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * Notifies that a {@link NMClient.Device} is removed.  This signal is not emitted for
              * placeholder devices.
              * @signal
              * @run-first
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             /**
              * Notifies that a permission has changed
              * @signal
              * @run-first
              */
-            "permission-changed": (arg0: number, arg1: number) => void;
+            "permission-changed": (permission: number, result: number) => void;
             "notify::activating-connection": (pspec: GObject.ParamSpec) => void;
             "notify::active-connections": (pspec: GObject.ParamSpec) => void;
             "notify::all-devices": (pspec: GObject.ParamSpec) => void;
@@ -3136,6 +3586,7 @@ export namespace NMClient {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns the (new) current connectivity state
          * @since 0.9.8.6
+         * @throws GLib.Error
          */
         check_connectivity(cancellable: Gio.Cancellable | null): NetworkManager.ConnectivityState;
 
@@ -3177,6 +3628,7 @@ export namespace NMClient {
          * @param result the {@link Gio.AsyncResult}
          * @returns the (new) current connectivity state
          * @since 0.9.8.6
+         * @throws GLib.Error
          */
         check_connectivity_finish(result: Gio.AsyncResult): NetworkManager.ConnectivityState;
 
@@ -3255,6 +3707,7 @@ export namespace NMClient {
          * @param domains return location for log domains string. The string is   a list of domains separated by ","
          * @returns `true` on success, `false` otherwise
          * @since 0.9.8
+         * @throws GLib.Error
          */
         get_logging(level: string | null, domains: string | null): boolean;
 
@@ -3329,6 +3782,7 @@ export namespace NMClient {
          * @param domains logging domains to set. The string should be a list of log   domains separated by ",". (`null` or an empty string for no change)
          * @returns `true` on success, `false` otherwise
          * @since 0.9.8
+         * @throws GLib.Error
          */
         set_logging(level: string | null, domains: string | null): boolean;
 
@@ -3529,6 +3983,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3538,6 +3993,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -3637,6 +4093,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3893,6 +4350,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3902,6 +4360,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DHCP4Config;
 
@@ -4001,6 +4460,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4257,6 +4717,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4266,6 +4727,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DHCP6Config;
 
@@ -4365,6 +4827,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4423,7 +4886,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "state-changed": (arg0: number, arg1: number, arg2: number) => void;
+            "state-changed": (new_state: number, old_state: number, reason: number) => void;
             "notify::active-connection": (pspec: GObject.ParamSpec) => void;
             "notify::autoconnect": (pspec: GObject.ParamSpec) => void;
             "notify::available-connections": (pspec: GObject.ParamSpec) => void;
@@ -4828,6 +5291,7 @@ export namespace NMClient {
          * GError when FALSE is returned.
          * @param connection an {@link NetworkManager.Connection} to validate against `device`
          * @returns `true` if the connection may be activated with this device, `false` if is incompatible with the device's capabilities and characteristics.
+         * @throws GLib.Error
          */
         connection_compatible(connection: NetworkManager.Connection): boolean;
 
@@ -5236,6 +5700,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5245,6 +5710,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Device;
 
@@ -5344,6 +5810,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5616,6 +6083,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5625,6 +6093,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceAdsl;
 
@@ -5955,6 +6424,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5964,6 +6434,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceBond;
 
@@ -6299,6 +6770,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6308,6 +6780,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceBridge;
 
@@ -6649,6 +7122,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6658,6 +7132,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceBt;
 
@@ -7007,6 +7482,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7016,6 +7492,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceEthernet;
 
@@ -7334,6 +7811,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7343,6 +7821,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceGeneric;
 
@@ -7657,6 +8136,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7666,6 +8146,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceInfiniband;
 
@@ -7997,6 +8478,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8006,6 +8488,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceModem;
 
@@ -8341,6 +8824,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8350,6 +8834,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceOlpcMesh;
 
@@ -8681,6 +9166,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -8690,6 +9176,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceTeam;
 
@@ -9039,6 +9526,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9048,6 +9536,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceVlan;
 
@@ -9127,13 +9616,13 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "access-point-added": (arg0: GObject.Object) => void;
+            "access-point-added": (ap: GObject.Object) => void;
             /**
              * Notifies that a {@link NMClient.AccessPoint} is removed from the Wi-Fi device.
              * @signal
              * @run-first
              */
-            "access-point-removed": (arg0: GObject.Object) => void;
+            "access-point-removed": (ap: GObject.Object) => void;
             "notify::access-points": (pspec: GObject.ParamSpec) => void;
             "notify::active-access-point": (pspec: GObject.ParamSpec) => void;
             "notify::bitrate": (pspec: GObject.ParamSpec) => void;
@@ -9509,6 +9998,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -9518,6 +10008,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceWifi;
 
@@ -9598,14 +10089,14 @@ export namespace NMClient {
              * @deprecated since 1.2: WiMAX is no longer supported.
              * @run-first
              */
-            "nsp-added": (arg0: GObject.Object) => void;
+            "nsp-added": (nsp: GObject.Object) => void;
             /**
              * Notifies that a {@link NMClient.WimaxNsp} is removed from the wimax device.
              * @signal
              * @deprecated since 1.2: WiMAX is no longer supported.
              * @run-first
              */
-            "nsp-removed": (arg0: GObject.Object) => void;
+            "nsp-removed": (nsp: GObject.Object) => void;
             "notify::active-nsp": (pspec: GObject.ParamSpec) => void;
             "notify::bsid": (pspec: GObject.ParamSpec) => void;
             "notify::center-frequency": (pspec: GObject.ParamSpec) => void;
@@ -10016,6 +10507,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10025,6 +10517,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): DeviceWimax;
 
@@ -10390,6 +10883,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10399,6 +10893,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): IP4Config;
 
@@ -10498,6 +10993,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10835,6 +11331,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10844,6 +11341,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): IP6Config;
 
@@ -10943,6 +11441,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11005,7 +11504,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "object-creation-failed": (arg0: null, arg1: null) => void;
+            "object-creation-failed": (error: null, failed_path: null) => void;
             "notify::dbus-path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11218,6 +11717,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11227,6 +11727,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Object;
 
@@ -11326,6 +11827,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11397,7 +11899,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            visible: (arg0: boolean) => void;
+            visible: (object: boolean) => void;
             "notify::dbus-path": (pspec: GObject.ParamSpec) => void;
             "notify::unsaved": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
@@ -11662,6 +12164,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -11671,6 +12174,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): RemoteConnection;
 
@@ -11770,6 +12274,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -11832,7 +12337,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "new-connection": (arg0: GObject.Object) => void;
+            "new-connection": (object: GObject.Object) => void;
             "notify::can-modify": (pspec: GObject.ParamSpec) => void;
             "notify::hostname": (pspec: GObject.ParamSpec) => void;
             "notify::service-running": (pspec: GObject.ParamSpec) => void;
@@ -12015,6 +12520,7 @@ export namespace NMClient {
          * @param filenames `null`-terminated array of filenames to load
          * @returns `true` if NetworkManager at least tried to load `filenames`, `false` if an error occurred (eg, permission denied).
          * @since 0.9.10
+         * @throws GLib.Error
          */
         load_connections(filenames: string): [boolean, string];
 
@@ -12024,6 +12530,7 @@ export namespace NMClient {
          * the in-memory state matches the on-disk state.
          * @returns `true` on success, `false` on failure
          * @since 0.9.10
+         * @throws GLib.Error
          */
         reload_connections(): boolean;
 
@@ -12173,6 +12680,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12182,6 +12690,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): RemoteSettings;
 
@@ -12281,6 +12790,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -12340,7 +12850,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "registration-result": (arg0: null) => void;
+            "registration-result": (error: null) => void;
             "notify::auto-register": (pspec: GObject.ParamSpec) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
             "notify::identifier": (pspec: GObject.ParamSpec) => void;
@@ -12552,7 +13062,7 @@ export namespace NMClient {
              * @signal
              * @run-first
              */
-            "vpn-state-changed": (arg0: number, arg1: number) => void;
+            "vpn-state-changed": (object: number, p0: number) => void;
             "notify::banner": (pspec: GObject.ParamSpec) => void;
             "notify::vpn-state": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
@@ -12793,6 +13303,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -12802,6 +13313,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): VPNConnection;
 
@@ -13120,6 +13632,7 @@ export namespace NMClient {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -13129,6 +13642,7 @@ export namespace NMClient {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): WimaxNsp;
 
@@ -13228,6 +13742,7 @@ export namespace NMClient {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

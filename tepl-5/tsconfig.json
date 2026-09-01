@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./tepl-5.d.ts","./tepl-5-surface.d.ts"]
+  "include": ["./tepl-5.d.ts","./tepl-5-vocabulary.d.ts"]
 }
 
 

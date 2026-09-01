@@ -38,27 +38,27 @@ export namespace Hs {
         /**
          * No controller.
          */
-        NONE,
+        NONE = 0,
         /**
          * Atari 2600 joystick.
          */
-        JOYSTICK,
+        JOYSTICK = 1,
         /**
          * Sega Genesis controller.
          */
-        GENESIS,
+        GENESIS = 2,
         /**
          * Joystick with three fire buttons.
          */
-        THREE_BUTTON,
+        THREE_BUTTON = 3,
         /**
          * Driving controller.
          */
-        DRIVING,
+        DRIVING = 4,
         /**
          * A pair of paddle controllers.
          */
-        PADDLES,
+        PADDLES = 5,
     }
 
 
@@ -77,11 +77,11 @@ export namespace Hs {
         /**
          * Advanced (A) difficulty.
          */
-        ADVANCED,
+        ADVANCED = 0,
         /**
          * Beginner (B) difficulty.
          */
-        BEGINNER,
+        BEGINNER = 1,
     }
 
 
@@ -96,13 +96,13 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum Atari2600JoystickButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        FIRE,
-        FIRE_5,
-        FIRE_9,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        FIRE = 4,
+        FIRE_5 = 5,
+        FIRE_9 = 6,
     }
 
 
@@ -121,11 +121,11 @@ export namespace Hs {
         /**
          * Color TV.
          */
-        COLOR,
+        COLOR = 0,
         /**
          * Black & white (B-W) TV.
          */
-        BLACK_WHITE,
+        BLACK_WHITE = 1,
     }
 
 
@@ -144,15 +144,15 @@ export namespace Hs {
         /**
          * No controller.
          */
-        NONE,
+        NONE = 0,
         /**
          * Atari 7800 joystick.
          */
-        JOYSTICK,
+        JOYSTICK = 1,
         /**
          * Atari 7800 light gun.
          */
-        LIGHTGUN,
+        LIGHTGUN = 2,
     }
 
 
@@ -171,11 +171,11 @@ export namespace Hs {
         /**
          * Advanced (A) difficulty.
          */
-        ADVANCED,
+        ADVANCED = 0,
         /**
          * Beginner (B) difficulty.
          */
-        BEGINNER,
+        BEGINNER = 1,
     }
 
 
@@ -190,12 +190,12 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum Atari7800JoystickButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        ONE,
-        TWO,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        ONE = 4,
+        TWO = 5,
     }
 
 
@@ -210,15 +210,15 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum AtariLynxButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        OPTION1,
-        OPTION2,
-        PAUSE,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        OPTION1 = 6,
+        OPTION2 = 7,
+        PAUSE = 8,
     }
 
 
@@ -321,15 +321,15 @@ export namespace Hs {
         /**
          * Use the core OpenGL profile
          */
-        CORE,
+        CORE = 0,
         /**
          * Use the compatibility OpenGL profile
          */
-        LEGACY,
+        LEGACY = 1,
         /**
          * Use OpenGL ES
          */
-        ES,
+        ES = 2,
     }
 
 
@@ -344,16 +344,16 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum GameBoyAdvanceButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        SELECT,
-        START,
-        L,
-        R,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        SELECT = 6,
+        START = 7,
+        L = 8,
+        R = 9,
     }
 
 
@@ -368,14 +368,14 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum GameBoyButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        SELECT,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        SELECT = 6,
+        START = 7,
     }
 
 
@@ -394,27 +394,27 @@ export namespace Hs {
         /**
          * Game Boy (DMG).
          */
-        GAME_BOY,
+        GAME_BOY = 0,
         /**
          * Game Boy Pocket.
          */
-        GAME_BOY_POCKET,
+        GAME_BOY_POCKET = 1,
         /**
          * Game Boy Color.
          */
-        GAME_BOY_COLOR,
+        GAME_BOY_COLOR = 2,
         /**
          * Game Boy Advance.
          */
-        GAME_BOY_ADVANCE,
+        GAME_BOY_ADVANCE = 3,
         /**
          * Super Game Boy.
          */
-        SUPER_GAME_BOY,
+        SUPER_GAME_BOY = 4,
         /**
          * Super Game Boy 2.
          */
-        SUPER_GAME_BOY_2,
+        SUPER_GAME_BOY_2 = 5,
     }
 
 
@@ -429,13 +429,13 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum GameGearButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        ONE,
-        TWO,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        ONE = 4,
+        TWO = 5,
+        START = 6,
     }
 
 
@@ -454,23 +454,23 @@ export namespace Hs {
         /**
          * Log level for debug messages.
          */
-        DEBUG,
+        DEBUG = 0,
         /**
          * Log level for informational messages.
          */
-        INFO,
+        INFO = 1,
         /**
          * Log level for messages.
          */
-        MESSAGE,
+        MESSAGE = 2,
         /**
          * Log level for warnings.
          */
-        WARNING,
+        WARNING = 3,
         /**
          * Log level for critical warning messages.
          */
-        CRITICAL,
+        CRITICAL = 4,
     }
 
 
@@ -485,12 +485,12 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum MasterSystemButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        ONE,
-        TWO,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        ONE = 4,
+        TWO = 5,
     }
 
 
@@ -505,18 +505,18 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum MegaDriveButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        C,
-        X,
-        Y,
-        Z,
-        START,
-        MODE,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        C = 6,
+        X = 7,
+        Y = 8,
+        Z = 9,
+        START = 10,
+        MODE = 11,
     }
 
 
@@ -531,13 +531,13 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum NeoGeoPocketButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        OPTION,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        OPTION = 6,
     }
 
 
@@ -556,15 +556,15 @@ export namespace Hs {
         /**
          * No accessory.
          */
-        NONE,
+        NONE = 0,
         /**
          * NES Zapper.
          */
-        ZAPPER,
+        ZAPPER = 1,
         /**
          * Arkanoid Vaus controller.
          */
-        PADDLE,
+        PADDLE = 2,
     }
 
 
@@ -579,14 +579,14 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum NesButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        SELECT,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        SELECT = 6,
+        START = 7,
     }
 
 
@@ -605,11 +605,11 @@ export namespace Hs {
         /**
          * Quiet.
          */
-        QUIET,
+        QUIET = 0,
         /**
          * Loud.
          */
-        LOUD,
+        LOUD = 1,
     }
 
 
@@ -624,20 +624,20 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum Nintendo64Button {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        C_UP,
-        C_DOWN,
-        C_LEFT,
-        C_RIGHT,
-        L,
-        R,
-        Z,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        C_UP = 6,
+        C_DOWN = 7,
+        C_LEFT = 8,
+        C_RIGHT = 9,
+        L = 10,
+        R = 11,
+        Z = 12,
+        START = 13,
     }
 
 
@@ -656,16 +656,16 @@ export namespace Hs {
         /**
          * No expansion.
          */
-        NONE,
+        NONE = 0,
         /**
          * Controller Pak / Memory Pak, required for
          *     saving in some games.
          */
-        MEMORY_PAK,
+        MEMORY_PAK = 1,
         /**
          * Rumble Pak, provides rumble support.
          */
-        RUMBLE_PAK,
+        RUMBLE_PAK = 2,
     }
 
 
@@ -680,18 +680,18 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum NintendoDsButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        X,
-        Y,
-        SELECT,
-        START,
-        L,
-        R,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        X = 6,
+        Y = 7,
+        SELECT = 8,
+        START = 9,
+        L = 10,
+        R = 11,
     }
 
 
@@ -706,18 +706,18 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum PcEngineButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        I,
-        II,
-        III,
-        IV,
-        V,
-        VI,
-        SELECT,
-        RUN,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        I = 4,
+        II = 5,
+        III = 6,
+        IV = 7,
+        V = 8,
+        VI = 9,
+        SELECT = 10,
+        RUN = 11,
     }
 
 
@@ -739,11 +739,11 @@ export namespace Hs {
         /**
          * Use two face buttons.
          */
-        TWO_BUTTONS,
+        TWO_BUTTONS = 0,
         /**
          * Use six face buttons.
          */
-        SIX_BUTTONS,
+        SIX_BUTTONS = 1,
     }
 
 
@@ -763,17 +763,17 @@ export namespace Hs {
          * A pixel is 24 bits long, with 8 bit for red, green
          *     and blue channels.
          */
-        R8G8B8,
+        R8G8B8 = 0,
         /**
          * A pixel is 32 bits long, with 8 unused bits, then
          *     8 bits for red, green and blue channels each.
          */
-        R8G8B8X8,
+        R8G8B8X8 = 1,
         /**
          * A pixel is 32 bits long, with 8 bits for blue,
          *     green and red channels each, followed by 8 unused bits.
          */
-        B8G8R8X8,
+        B8G8R8X8 = 2,
     }
 
 
@@ -792,93 +792,93 @@ export namespace Hs {
         /**
          * An unset value.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Atari 2600.
          */
-        ATARI_2600,
+        ATARI_2600 = 1,
         /**
          * Atari 7800.
          */
-        ATARI_7800,
+        ATARI_7800 = 2,
         /**
          * Atari Lynx.
          */
-        ATARI_LYNX,
+        ATARI_LYNX = 3,
         /**
          * Famicom Disk System, an add-on for
          *     {@link Hs.Platform.NES}.
          */
-        FAMICOM_DISK_SYSTEM,
+        FAMICOM_DISK_SYSTEM = 4,
         /**
          * Game Boy and Game Boy Color.
          */
-        GAME_BOY,
+        GAME_BOY = 5,
         /**
          * Game Boy Advance.
          */
-        GAME_BOY_ADVANCE,
+        GAME_BOY_ADVANCE = 6,
         /**
          * Game Gear.
          */
-        GAME_GEAR,
+        GAME_GEAR = 7,
         /**
          * Sega Master System.
          */
-        MASTER_SYSTEM,
+        MASTER_SYSTEM = 8,
         /**
          * Mega Drive / Sega Genesis.
          */
-        MEGA_DRIVE,
+        MEGA_DRIVE = 9,
         /**
          * Neo Geo Pocket and Neo Geo Pocket Color.
          */
-        NEO_GEO_POCKET,
+        NEO_GEO_POCKET = 10,
         /**
          * Nintendo Entertainment System / Famicom.
          */
-        NES,
+        NES = 11,
         /**
          * Nintendo 64.
          */
-        NINTENDO_64,
+        NINTENDO_64 = 12,
         /**
          * Nintendo DS.
          */
-        NINTENDO_DS,
+        NINTENDO_DS = 13,
         /**
          * PC Engine / TurboGrafx-16.
          */
-        PC_ENGINE,
+        PC_ENGINE = 14,
         /**
          * Super CD-ROM² / TurboGrafx-CD, an add-on for
          *     {@link Hs.Platform.PC_ENGINE}.
          */
-        PC_ENGINE_CD,
+        PC_ENGINE_CD = 15,
         /**
          * PlayStation.
          */
-        PLAYSTATION,
+        PLAYSTATION = 16,
         /**
          * Sega Saturn.
          */
-        SEGA_SATURN,
+        SEGA_SATURN = 17,
         /**
          * SG-1000.
          */
-        SG1000,
+        SG1000 = 18,
         /**
          * Super Nintendo Entertainment System / Super Famicom.
          */
-        SUPER_NES,
+        SUPER_NES = 19,
         /**
          * Virtual Boy.
          */
-        VIRTUAL_BOY,
+        VIRTUAL_BOY = 20,
         /**
          * WonderSwan and WonderSwan Color.
          */
-        WONDERSWAN,
+        WONDERSWAN = 21,
     }
 
 
@@ -897,16 +897,16 @@ export namespace Hs {
         /**
          * Japanese BIOS (scph5500.bin)
          */
-        JP,
+        JP = 0,
         /**
          * US BIOS (scph5501.bin)
          */
-        US,
+        US = 1,
         /**
          * European BIOS (scph5502.bin)
          */
-        EU,
-        N_BIOS,
+        EU = 2,
+        N_BIOS = 3,
     }
 
 
@@ -921,22 +921,22 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum PlayStationButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        TRIANGLE,
-        SQUARE,
-        CIRCLE,
-        CROSS,
-        L1,
-        L2,
-        L3,
-        R1,
-        R2,
-        R3,
-        SELECT,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        TRIANGLE = 4,
+        SQUARE = 5,
+        CIRCLE = 6,
+        CROSS = 7,
+        L1 = 8,
+        L2 = 9,
+        L3 = 10,
+        R1 = 11,
+        R2 = 12,
+        R3 = 13,
+        SELECT = 14,
+        START = 15,
     }
 
 
@@ -956,11 +956,11 @@ export namespace Hs {
         /**
          * Digital mode
          */
-        DIGITAL,
+        DIGITAL = 0,
         /**
          * Analog mode
          */
-        ANALOG,
+        ANALOG = 1,
     }
 
 
@@ -975,8 +975,8 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum PlayStationStick {
-        LEFT,
-        RIGHT,
+        LEFT = 0,
+        RIGHT = 1,
     }
 
 
@@ -995,15 +995,15 @@ export namespace Hs {
         /**
          * This game doesn't have a region (e.g. it's a handheld game).
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * This game runs on NTSC TVs.
          */
-        NTSC,
+        NTSC = 1,
         /**
          * This game runs on PAL TVs.
          */
-        PAL,
+        PAL = 2,
     }
 
 
@@ -1019,8 +1019,8 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum SegaSaturn3DPadMode {
-        DIGITAL,
-        ANALOG,
+        DIGITAL = 0,
+        ANALOG = 1,
     }
 
 
@@ -1039,11 +1039,11 @@ export namespace Hs {
         /**
          * Japanese BIOS (sega_101.bin)
          */
-        JP,
+        JP = 0,
         /**
          * International BIOS (mpr-17933.bin)
          */
-        US_EU,
+        US_EU = 1,
     }
 
 
@@ -1058,19 +1058,19 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum SegaSaturnButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        C,
-        X,
-        Y,
-        Z,
-        L,
-        R,
-        START,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        C = 6,
+        X = 7,
+        Y = 8,
+        Z = 9,
+        L = 10,
+        R = 11,
+        START = 12,
     }
 
 
@@ -1086,8 +1086,8 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum SegaSaturnController {
-        CONTROL_PAD,
-        "3D_CONTROL_PAD",
+        CONTROL_PAD = 0,
+        "3D_CONTROL_PAD" = 1,
     }
 
 
@@ -1102,12 +1102,12 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum Sg1000Button {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        ONE,
-        TWO,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        ONE = 4,
+        TWO = 5,
     }
 
 
@@ -1122,18 +1122,18 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum SuperNesButton {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        A,
-        B,
-        X,
-        Y,
-        SELECT,
-        START,
-        L,
-        R,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        A = 4,
+        B = 5,
+        X = 6,
+        Y = 7,
+        SELECT = 8,
+        START = 9,
+        L = 10,
+        R = 11,
     }
 
 
@@ -1148,20 +1148,20 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum VirtualBoyButton {
-        L_UP,
-        L_DOWN,
-        L_LEFT,
-        L_RIGHT,
-        R_UP,
-        R_DOWN,
-        R_LEFT,
-        R_RIGHT,
-        A,
-        B,
-        SELECT,
-        START,
-        L,
-        R,
+        L_UP = 0,
+        L_DOWN = 1,
+        L_LEFT = 2,
+        L_RIGHT = 3,
+        R_UP = 4,
+        R_DOWN = 5,
+        R_LEFT = 6,
+        R_RIGHT = 7,
+        A = 8,
+        B = 9,
+        SELECT = 10,
+        START = 11,
+        L = 12,
+        R = 13,
     }
 
 
@@ -1176,188 +1176,222 @@ export namespace Hs {
      * @gir-type Enum
      */
     enum WonderSwanButton {
-        X1,
-        X2,
-        X3,
-        X4,
-        Y1,
-        Y2,
-        Y3,
-        Y4,
-        A,
-        B,
-        START,
+        X1 = 0,
+        X2 = 1,
+        X3 = 2,
+        X4 = 3,
+        Y1 = 4,
+        Y2 = 5,
+        Y3 = 6,
+        Y4 = 7,
+        A = 8,
+        B = 9,
+        START = 10,
     }
 
 
     /**
      * The maximum number of players in Atari 2600 games.
+     * @default 2
      */
     const ATARI_2600_MAX_PLAYERS: number;
 
     /**
      * The maximum number of players in Atari 7800 games.
+     * @default 2
      */
     const ATARI_7800_MAX_PLAYERS: number;
 
     /**
      * The number of Atari Lynx buttons.
+     * @default 9
      */
     const ATARI_LYNX_N_BUTTONS: number;
 
     /**
      * The number of Game Boy Advance buttons.
+     * @default 10
      */
     const GAME_BOY_ADVANCE_N_BUTTONS: number;
 
     /**
      * The number of Game Boy buttons.
+     * @default 8
      */
     const GAME_BOY_N_BUTTONS: number;
 
     /**
      * The number of Game Gear buttons.
+     * @default 7
      */
     const GAME_GEAR_N_BUTTONS: number;
 
     /**
      * libhighscore major version component (e.g. 1 if the version is 1.2.3)
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The maximum number of players in Master System games.
+     * @default 2
      */
     const MASTER_SYSTEM_MAX_PLAYERS: number;
 
     /**
      * The number of Master System pad buttons.
+     * @default 6
      */
     const MASTER_SYSTEM_N_BUTTONS: number;
 
     /**
      * The maximum allowed duration in {@link Core.rumble}, in milliseconds.
+     * @default 32767
      */
     const MAX_RUMBLE_DURATION: number;
 
     /**
      * The maximum number of players in Mega Drive games.
+     * @default 2
      */
     const MEGA_DRIVE_MAX_PLAYERS: number;
 
     /**
      * The number of Mega Drive pad buttons.
+     * @default 12
      */
     const MEGA_DRIVE_N_BUTTONS: number;
 
     /**
      * libhighscore micro version component (e.g. 3 if the version is 1.2.3)
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * libhighscore minor version component (e.g. 2 if the version is 1.2.3)
+     * @default 1
      */
     const MINOR_VERSION: number;
 
     /**
      * The number of Neo Geo Pocket buttons.
+     * @default 7
      */
     const NEO_GEO_POCKET_N_BUTTONS: number;
 
     /**
      * The maximum number of players in NES games.
+     * @default 4
      */
     const NES_MAX_PLAYERS: number;
 
     /**
      * The number of NES pad buttons.
+     * @default 8
      */
     const NES_N_BUTTONS: number;
 
     /**
      * The maximum number of players in Nintendo 64 games.
+     * @default 4
      */
     const NINTENDO_64_MAX_PLAYERS: number;
 
     /**
      * The number of Nintendo 64 pad buttons.
+     * @default 14
      */
     const NINTENDO_64_N_BUTTONS: number;
 
     /**
      * The number of Nintendo DS buttons.
+     * @default 12
      */
     const NINTENDO_DS_N_BUTTONS: number;
 
     /**
      * The maximum number of players in TurboGrafx-16 games.
+     * @default 5
      */
     const PC_ENGINE_MAX_PLAYERS: number;
 
     /**
      * The number of TurboGrafx-16 pad buttons.
+     * @default 12
      */
     const PC_ENGINE_N_BUTTONS: number;
 
     /**
      * The maximum number of players in PlayStation games.
+     * @default 4
      */
     const PLAYSTATION_MAX_PLAYERS: number;
 
     /**
      * The number of PlayStation pad buttons.
+     * @default 16
      */
     const PLAYSTATION_N_BUTTONS: number;
 
     /**
      * The number of PlayStation pad sticks.
+     * @default 2
      */
     const PLAYSTATION_N_STICKS: number;
 
     /**
      * The maximum number of players in Sega Saturn games.
+     * @default 4
      */
     const SEGA_SATURN_MAX_PLAYERS: number;
 
     /**
      * The number of Sega Saturn pad buttons.
+     * @default 13
      */
     const SEGA_SATURN_N_BUTTONS: number;
 
     /**
      * The maximum number of players in SG-1000 games.
+     * @default 2
      */
     const SG1000_MAX_PLAYERS: number;
 
     /**
      * The number of SG-1000 pad buttons.
+     * @default 6
      */
     const SG1000_N_BUTTONS: number;
 
     /**
      * The maximum number of players in Super NES games.
+     * @default 4
      */
     const SUPER_NES_MAX_PLAYERS: number;
 
     /**
      * The number of Super NES pad buttons.
+     * @default 12
      */
     const SUPER_NES_N_BUTTONS: number;
 
     /**
      * libhighscore version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 0.1.0
      */
     const VERSION_S: string;
 
     /**
      * The number of Virtual Boy buttons.
+     * @default 14
      */
     const VIRTUAL_BOY_N_BUTTONS: number;
 
     /**
      * The number of WonderSwan buttons.
+     * @default 11
      */
     const WONDERSWAN_N_BUTTONS: number;
 
@@ -1436,20 +1470,20 @@ export namespace Hs {
         /**
          * Default flags.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Attach a depth buffer to the default framebuffer.
          */
-        DEPTH,
+        DEPTH = 1,
         /**
          * Attach a stencil buffer to the default framebuffer.
          */
-        STENCIL,
+        STENCIL = 2,
         /**
          * The output will be flipped and frontend must flip it
          *     back before displaying.
          */
-        FLIPPED,
+        FLIPPED = 4,
         /**
          * The core will download the data from GPU and
          *     needs direct access to a software buffer.
@@ -1457,7 +1491,7 @@ export namespace Hs {
          *     Direct framebuffer access prevents some optimizations in the frontend and
          *     should only be used as the last resort.
          */
-        DIRECT_FB_ACCESS,
+        DIRECT_FB_ACCESS = 8,
     }
 
 
@@ -2062,6 +2096,7 @@ export namespace Hs {
          * @param rom_paths an array of file paths
          * @param save_path path of the save location
          * @returns `TRUE` on successful load, `FALSE` on error
+         * @throws GLib.Error
          */
         load_rom(rom_paths: string[], save_path: string): boolean;
 
@@ -2093,6 +2128,7 @@ export namespace Hs {
          * {@link Core.load_state}.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` on successful load, `FALSE` on error
+         * @throws GLib.Error
          */
         load_state_finish(result: Gio.AsyncResult): boolean;
 
@@ -2151,6 +2187,7 @@ export namespace Hs {
          * time this method is called.
          * @param save_path path of the save location
          * @returns `TRUE` on success, `FALSE` if there was an error.
+         * @throws GLib.Error
          */
         reload_save(save_path: string): boolean;
 
@@ -2221,6 +2258,7 @@ export namespace Hs {
          * {@link Core.save_state}.
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` on successful load, `FALSE` on error
+         * @throws GLib.Error
          */
         save_state_finish(result: Gio.AsyncResult): boolean;
 
@@ -2266,6 +2304,7 @@ export namespace Hs {
          * Cores that don't sync it as soon as the game modifies it must do it here
          * instead.
          * @returns `TRUE` on success, `FALSE` if there was an error.
+         * @throws GLib.Error
          */
         sync_save(): boolean;
     }
@@ -3536,6 +3575,7 @@ export namespace Hs {
          * Frontend is responsible for automatically unrealizing the context if an error
          * happens here.
          * @returns `TRUE` is `self` was successfully realized, `FALSE` on error
+         * @throws GLib.Error
          */
         realize(): boolean;
 

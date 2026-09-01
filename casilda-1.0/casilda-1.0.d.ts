@@ -35,22 +35,26 @@ export namespace Casilda {
 
     /**
      * casilda major version component (e.g. 1 if `CASILDA_VERSION` is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * casilda micro version component (e.g. 3 if `CASILDA_VERSION` is 1.2.3)
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * casilda minor version component (e.g. 2 if `CASILDA_VERSION` is 1.2.3)
+     * @default 0
      */
     const MINOR_VERSION: number;
 
     /**
      * casilda version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 1.0.0
      */
     const VERSION_S: string;
 
@@ -220,6 +224,7 @@ export namespace Casilda {
          * @param flags flags from {@link GLib.SpawnFlags}
          * @param child_setup function to run in the child just before `exec()`
          * @returns TRUE on success, FALSE if error is set.
+         * @throws GLib.Error
          */
         spawn_async(working_directory: string | null, argv: string[], envp: string[] | null, flags: GLib.SpawnFlags, child_setup: GLib.SpawnChildSetupFunc | null): [boolean, GLib.Pid | null];
 

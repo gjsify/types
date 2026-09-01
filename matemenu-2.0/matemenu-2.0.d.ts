@@ -28,12 +28,12 @@ export namespace MateMenu {
      * @gir-type Enum
      */
     enum TreeItemType {
-        INVALID,
-        DIRECTORY,
-        ENTRY,
-        SEPARATOR,
-        HEADER,
-        ALIAS,
+        INVALID = 0,
+        DIRECTORY = 1,
+        ENTRY = 2,
+        SEPARATOR = 3,
+        HEADER = 4,
+        ALIAS = 5,
     }
 
 
@@ -48,13 +48,13 @@ export namespace MateMenu {
      * @gir-type Flags
      */
     enum TreeFlags {
-        NONE,
-        INCLUDE_EXCLUDED,
-        SHOW_EMPTY,
-        INCLUDE_NODISPLAY,
-        SHOW_ALL_SEPARATORS,
-        SORT_DISPLAY_NAME,
-        INCLUDE_UNALLOCATED,
+        NONE = 0,
+        INCLUDE_EXCLUDED = 1,
+        SHOW_EMPTY = 256,
+        INCLUDE_NODISPLAY = 2,
+        SHOW_ALL_SEPARATORS = 512,
+        SORT_DISPLAY_NAME = 65536,
+        INCLUDE_UNALLOCATED = 4,
     }
 
 
@@ -203,6 +203,7 @@ export namespace MateMenu {
          * performs a significant amount of blocking I/O if the
          * tree has not been loaded yet.
          * @returns `true` on success, `false` on error
+         * @throws GLib.Error
          */
         load_sync(): boolean;
     }

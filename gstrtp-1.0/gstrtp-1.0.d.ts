@@ -39,58 +39,58 @@ export namespace GstRtp {
         /**
          * Invalid type
          */
-        FB_TYPE_INVALID,
+        FB_TYPE_INVALID = 0,
         /**
          * Generic NACK
          */
-        RTPFB_TYPE_NACK,
+        RTPFB_TYPE_NACK = 1,
         /**
          * Temporary Maximum Media Stream Bit Rate Request
          */
-        RTPFB_TYPE_TMMBR,
+        RTPFB_TYPE_TMMBR = 3,
         /**
          * Temporary Maximum Media Stream Bit Rate
          *    Notification
          */
-        RTPFB_TYPE_TMMBN,
+        RTPFB_TYPE_TMMBN = 4,
         /**
          * Request an SR packet for early
          *    synchronization
          */
-        RTPFB_TYPE_RTCP_SR_REQ,
-        RTPFB_TYPE_TWCC,
+        RTPFB_TYPE_RTCP_SR_REQ = 5,
+        RTPFB_TYPE_TWCC = 15,
         /**
          * Picture Loss Indication
          */
-        PSFB_TYPE_PLI,
+        PSFB_TYPE_PLI = 1,
         /**
          * Slice Loss Indication
          */
-        PSFB_TYPE_SLI,
+        PSFB_TYPE_SLI = 2,
         /**
          * Reference Picture Selection Indication
          */
-        PSFB_TYPE_RPSI,
+        PSFB_TYPE_RPSI = 3,
         /**
          * Application layer Feedback
          */
-        PSFB_TYPE_AFB,
+        PSFB_TYPE_AFB = 15,
         /**
          * Full Intra Request Command
          */
-        PSFB_TYPE_FIR,
+        PSFB_TYPE_FIR = 4,
         /**
          * Temporal-Spatial Trade-off Request
          */
-        PSFB_TYPE_TSTR,
+        PSFB_TYPE_TSTR = 5,
         /**
          * Temporal-Spatial Trade-off Notification
          */
-        PSFB_TYPE_TSTN,
+        PSFB_TYPE_TSTN = 6,
         /**
          * Video Back Channel Message
          */
-        PSFB_TYPE_VBCN,
+        PSFB_TYPE_VBCN = 7,
     }
 
 
@@ -109,71 +109,78 @@ export namespace GstRtp {
         /**
          * Invalid SDES entry
          */
-        INVALID,
+        INVALID = -1,
         /**
          * End of SDES list
          */
-        END,
+        END = 0,
         /**
          * Canonical name
          */
-        CNAME,
+        CNAME = 1,
         /**
          * User name
          */
-        NAME,
+        NAME = 2,
         /**
          * User's electronic mail address
          */
-        EMAIL,
+        EMAIL = 3,
         /**
          * User's phone number
          */
-        PHONE,
+        PHONE = 4,
         /**
          * Geographic user location
          */
-        LOC,
+        LOC = 5,
         /**
          * Name of application or tool
          */
-        TOOL,
+        TOOL = 6,
         /**
          * Notice about the source
          */
-        NOTE,
+        NOTE = 7,
         /**
          * Private extensions
          */
-        PRIV,
+        PRIV = 8,
         /**
          * H.323 callable address
+         * @since 1.20
          */
-        H323_CADDR,
+        H323_CADDR = 9,
         /**
          * Application Specific Identifier (RFC6776)
+         * @since 1.20
          */
-        APSI,
+        APSI = 10,
         /**
          * Reporting Group Identifier (RFC8861)
+         * @since 1.20
          */
-        RGRP,
+        RGRP = 11,
         /**
          * RtpStreamId SDES item (RFC8852).
+         * @since 1.20
          */
-        RTP_STREAM_ID,
+        RTP_STREAM_ID = 12,
         /**
          * RepairedRtpStreamId SDES item (RFC8852).
+         * @since 1.20
          */
-        REPAIRED_RTP_STREAM_ID,
+        REPAIRED_RTP_STREAM_ID = 13,
         /**
          * CLUE CaptId (RFC8849)
+         * @since 1.20
          */
-        CCID,
+        CCID = 14,
         /**
          * MID SDES item (RFC8843).
+         * @since 1.20
          */
-        MID,
+        MID = 15,
     }
 
 
@@ -192,39 +199,39 @@ export namespace GstRtp {
         /**
          * Invalid type
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Sender report
          */
-        SR,
+        SR = 200,
         /**
          * Receiver report
          */
-        RR,
+        RR = 201,
         /**
          * Source description
          */
-        SDES,
+        SDES = 202,
         /**
          * Goodbye
          */
-        BYE,
+        BYE = 203,
         /**
          * Application defined
          */
-        APP,
+        APP = 204,
         /**
          * Transport layer feedback.
          */
-        RTPFB,
+        RTPFB = 205,
         /**
          * Payload-specific feedback.
          */
-        PSFB,
+        PSFB = 206,
         /**
          * Extended report.
          */
-        XR,
+        XR = 207,
     }
 
 
@@ -245,35 +252,35 @@ export namespace GstRtp {
         /**
          * Invalid XR Report Block
          */
-        INVALID,
+        INVALID = -1,
         /**
          * Loss RLE Report Block
          */
-        LRLE,
+        LRLE = 1,
         /**
          * Duplicate RLE Report Block
          */
-        DRLE,
+        DRLE = 2,
         /**
          * Packet Receipt Times Report Block
          */
-        PRT,
+        PRT = 3,
         /**
          * Receiver Reference Time Report Block
          */
-        RRT,
+        RRT = 4,
         /**
          * Delay since the last Receiver Report
          */
-        DLRR,
+        DLRR = 5,
         /**
          * Statistics Summary Report Block
          */
-        SSUMM,
+        SSUMM = 6,
         /**
          * VoIP Metrics Report Block
          */
-        VOIP_METRICS,
+        VOIP_METRICS = 7,
     }
 
 
@@ -444,164 +451,298 @@ export namespace GstRtp {
         /**
          * invalid profile
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the Audio/Visual profile (RFC 3551)
          */
-        AVP,
+        AVP = 1,
         /**
          * the secure Audio/Visual profile (RFC 3711)
          */
-        SAVP,
+        SAVP = 2,
         /**
          * the Audio/Visual profile with feedback (RFC 4585)
          */
-        AVPF,
+        AVPF = 3,
         /**
          * the secure Audio/Visual profile with feedback (RFC 5124)
          */
-        SAVPF,
+        SAVPF = 4,
     }
 
 
     /**
      * The maximum amount of SSRCs in a BYE packet.
+     * @default 31
      */
     const RTCP_MAX_BYE_SSRC_COUNT: number;
 
     /**
      * The maximum amount of Receiver report blocks in RR and SR messages.
+     * @default 31
      */
     const RTCP_MAX_RB_COUNT: number;
 
     /**
      * The maximum text length for an SDES item.
+     * @default 255
      */
     const RTCP_MAX_SDES: number;
 
     /**
      * The maximum amount of SDES items.
+     * @default 31
      */
     const RTCP_MAX_SDES_ITEM_COUNT: number;
 
     /**
      * Mask for version and packet type pair allowing reduced size
      * packets, basically it accepts other types than RR and SR
+     * @default 49400
      */
     const RTCP_REDUCED_SIZE_VALID_MASK: number;
 
     /**
      * Mask for version, padding bit and packet type pair
+     * @default 57598
      */
     const RTCP_VALID_MASK: number;
 
     /**
      * Valid value for the first two bytes of an RTCP packet after applying
      * #GST_RTCP_VALID_MASK to them.
+     * @default 32968
      */
     const RTCP_VALID_VALUE: number;
 
     /**
      * The supported RTCP version 2.
+     * @default 2
      */
     const RTCP_VERSION: number;
 
+    /**
+     * @default urn:ietf:params:rtp-hdrext:
+     */
     const RTP_HDREXT_BASE: string;
 
     /**
      * Constant string used in element classification to signal that this element
      * is a RTP header extension.
      * @since 1.20
+     * @default Network/Extension/RTPHeader
      */
     const RTP_HDREXT_ELEMENT_CLASS: string;
 
+    /**
+     * @default ntp-56
+     */
     const RTP_HDREXT_NTP_56: string;
 
+    /**
+     * @default 7
+     */
     const RTP_HDREXT_NTP_56_SIZE: number;
 
+    /**
+     * @default ntp-64
+     */
     const RTP_HDREXT_NTP_64: string;
 
+    /**
+     * @default 8
+     */
     const RTP_HDREXT_NTP_64_SIZE: number;
 
     /**
      * @since 1.20
+     * @default RTP-Header-Extension-URI
      */
     const RTP_HEADER_EXTENSION_URI_METADATA_KEY: string;
 
+    /**
+     * @default 1
+     */
     const RTP_PAYLOAD_1016_STRING: string;
 
+    /**
+     * @default 25
+     */
     const RTP_PAYLOAD_CELLB_STRING: string;
 
+    /**
+     * @default 13
+     */
     const RTP_PAYLOAD_CN_STRING: string;
 
+    /**
+     * @default 16
+     */
     const RTP_PAYLOAD_DVI4_11025_STRING: string;
 
+    /**
+     * @default 6
+     */
     const RTP_PAYLOAD_DVI4_16000_STRING: string;
 
+    /**
+     * @default 17
+     */
     const RTP_PAYLOAD_DVI4_22050_STRING: string;
 
+    /**
+     * @default 5
+     */
     const RTP_PAYLOAD_DVI4_8000_STRING: string;
 
+    /**
+     * @default [96, 127]
+     */
     const RTP_PAYLOAD_DYNAMIC_STRING: string;
 
+    /**
+     * @default 2
+     */
     const RTP_PAYLOAD_G721_STRING: string;
 
+    /**
+     * @default 9
+     */
     const RTP_PAYLOAD_G722_STRING: string;
 
+    /**
+     * @default 17
+     */
     const RTP_PAYLOAD_G723_53: number;
 
+    /**
+     * @default 17
+     */
     const RTP_PAYLOAD_G723_53_STRING: string;
 
+    /**
+     * @default 16
+     */
     const RTP_PAYLOAD_G723_63: number;
 
+    /**
+     * @default 16
+     */
     const RTP_PAYLOAD_G723_63_STRING: string;
 
+    /**
+     * @default 4
+     */
     const RTP_PAYLOAD_G723_STRING: string;
 
+    /**
+     * @default 15
+     */
     const RTP_PAYLOAD_G728_STRING: string;
 
+    /**
+     * @default 18
+     */
     const RTP_PAYLOAD_G729_STRING: string;
 
+    /**
+     * @default 3
+     */
     const RTP_PAYLOAD_GSM_STRING: string;
 
+    /**
+     * @default 31
+     */
     const RTP_PAYLOAD_H261_STRING: string;
 
+    /**
+     * @default 34
+     */
     const RTP_PAYLOAD_H263_STRING: string;
 
+    /**
+     * @default 26
+     */
     const RTP_PAYLOAD_JPEG_STRING: string;
 
+    /**
+     * @default 11
+     */
     const RTP_PAYLOAD_L16_MONO_STRING: string;
 
+    /**
+     * @default 10
+     */
     const RTP_PAYLOAD_L16_STEREO_STRING: string;
 
+    /**
+     * @default 7
+     */
     const RTP_PAYLOAD_LPC_STRING: string;
 
+    /**
+     * @default 33
+     */
     const RTP_PAYLOAD_MP2T_STRING: string;
 
+    /**
+     * @default 14
+     */
     const RTP_PAYLOAD_MPA_STRING: string;
 
+    /**
+     * @default 32
+     */
     const RTP_PAYLOAD_MPV_STRING: string;
 
+    /**
+     * @default 28
+     */
     const RTP_PAYLOAD_NV_STRING: string;
 
+    /**
+     * @default 8
+     */
     const RTP_PAYLOAD_PCMA_STRING: string;
 
+    /**
+     * @default 0
+     */
     const RTP_PAYLOAD_PCMU_STRING: string;
 
+    /**
+     * @default 12
+     */
     const RTP_PAYLOAD_QCELP_STRING: string;
 
+    /**
+     * @default 19
+     */
     const RTP_PAYLOAD_TS41: number;
 
+    /**
+     * @default 19
+     */
     const RTP_PAYLOAD_TS41_STRING: string;
 
+    /**
+     * @default 18
+     */
     const RTP_PAYLOAD_TS48: number;
 
+    /**
+     * @default 18
+     */
     const RTP_PAYLOAD_TS48_STRING: string;
 
+    /**
+     * @default 15
+     */
     const RTP_SOURCE_META_MAX_CSRC_COUNT: number;
 
     /**
      * The supported RTP version 2.
+     * @default 2
      */
     const RTP_VERSION: number;
 
@@ -962,18 +1103,18 @@ export namespace GstRtp {
          * The {@link Gst.Buffer} was once wrapped
          *           in a retransmitted packet as specified by RFC 4588.
          */
-        RETRANSMISSION,
+        RETRANSMISSION = 1048576,
         /**
          * The packet represents redundant RTP packet.
          *           The flag is used in gstrtpstorage to be able to hold the packetback
          *           and use it only for recovery from packet loss.
          *           Since: 1.14
          */
-        REDUNDANT,
+        REDUNDANT = 2097152,
         /**
          * Offset to define more flags.
          */
-        LAST,
+        LAST = 268435456,
     }
 
 
@@ -995,11 +1136,11 @@ export namespace GstRtp {
          *           padding and RTP pad count when present. Useful for buffers where
          *           the padding may be encrypted.
          */
-        SKIP_PADDING,
+        SKIP_PADDING = 65536,
         /**
          * Offset to define more flags
          */
-        LAST,
+        LAST = 16777216,
     }
 
 
@@ -1020,24 +1161,24 @@ export namespace GstRtp {
          * Neither send nor
          * receive RTP Header Extensions
          */
-        INACTIVE,
+        INACTIVE = 0,
         /**
          * Only send RTP Header
          * Extensions `GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY`: Only
          * receive RTP Header Extensions
          */
-        SENDONLY,
-        RECVONLY,
+        SENDONLY = 1,
+        RECVONLY = 2,
         /**
          * Send and receive RTP
          * Header Extensions ext
          */
-        SENDRECV,
+        SENDRECV = 3,
         /**
          * RTP header extension
          * direction is inherited from the stream
          */
-        INHERITED,
+        INHERITED = 4,
     }
 
 
@@ -1059,13 +1200,13 @@ export namespace GstRtp {
          *              1-16 data bytes per extension with a maximum of
          *              14 extension ids in total.
          */
-        ONE_BYTE,
+        ONE_BYTE = 1,
         /**
          * The two byte rtp extension header.
          *              256 data bytes per extension with a maximum of 255 (or 256
          *              including appbits) extensions in total.
          */
-        TWO_BYTE,
+        TWO_BYTE = 2,
     }
 
 
@@ -1266,7 +1407,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            "add-extension": (arg0: RTPHeaderExtension) => void;
+            "add-extension": (ext: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this depayloader.
              * @signal
@@ -1282,7 +1423,7 @@ export namespace GstRtp {
              * @since 1.20
              * @run-last
              */
-            "request-extension": (arg0: number, arg1: string | null) => RTPHeaderExtension | null;
+            "request-extension": (ext_id: number, ext_uri: string | null) => RTPHeaderExtension | null;
             "notify::auto-header-extension": (pspec: GObject.ParamSpec) => void;
             "notify::extensions": (pspec: GObject.ParamSpec) => void;
             "notify::max-reorder": (pspec: GObject.ParamSpec) => void;
@@ -1643,7 +1784,7 @@ export namespace GstRtp {
              * @action
              * @run-last
              */
-            "add-extension": (arg0: RTPHeaderExtension) => void;
+            "add-extension": (ext: RTPHeaderExtension) => void;
             /**
              * Clear all RTP header extensions used by this payloader.
              * @signal
@@ -1659,7 +1800,7 @@ export namespace GstRtp {
              * @since 1.20
              * @run-last
              */
-            "request-extension": (arg0: number, arg1: string) => RTPHeaderExtension | null;
+            "request-extension": (ext_id: number, ext_uri: string) => RTPHeaderExtension | null;
             "notify::auto-header-extension": (pspec: GObject.ParamSpec) => void;
             "notify::extensions": (pspec: GObject.ParamSpec) => void;
             "notify::max-ptime": (pspec: GObject.ParamSpec) => void;

@@ -153,7 +153,7 @@ export namespace MxGtk {
              * @signal
              * @run-first
              */
-            "switch-flipped": (arg0: boolean) => void;
+            "switch-flipped": (object: boolean) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;

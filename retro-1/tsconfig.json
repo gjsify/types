@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./retro-1.d.ts","./retro-1-surface.d.ts"]
+  "include": ["./retro-1.d.ts","./retro-1-vocabulary.d.ts"]
 }
 
 

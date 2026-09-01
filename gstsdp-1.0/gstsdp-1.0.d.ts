@@ -31,16 +31,16 @@ export namespace GstSdp {
         /**
          * The envelope key MUST NOT be cached
          */
-        NONE,
+        NONE = 0,
         /**
          * The envelope key MUST be cached
          */
-        ALWAYS,
+        ALWAYS = 1,
         /**
          * The envelope key MUST be cached, but only
          *                           to be used for the specific CSB.
          */
-        FOR_CSB,
+        FOR_CSB = 2,
     }
 
 
@@ -52,19 +52,19 @@ export namespace GstSdp {
         /**
          * no encryption
          */
-        NULL,
+        NULL = 0,
         /**
          * AES-CM using a 128-bit key
          */
-        AES_CM_128,
+        AES_CM_128 = 1,
         /**
          * AES Key Wrap using a 128-bit key
          */
-        AES_KW_128,
+        AES_KW_128 = 2,
         /**
          * AES-GCM using a 128-bit key (Since: 1.16)
          */
-        AES_GCM_128,
+        AES_GCM_128 = 6,
     }
 
 
@@ -76,15 +76,15 @@ export namespace GstSdp {
         /**
          * No specific usage rule
          */
-        NULL,
+        NULL = 0,
         /**
          * The key is associated with the SPI/MKI
          */
-        SPI,
+        SPI = 1,
         /**
          * The key has a start and expiration time
          */
-        INTERVAL,
+        INTERVAL = 2,
     }
 
 
@@ -96,11 +96,11 @@ export namespace GstSdp {
         /**
          * a TEK Generation Key
          */
-        TGK,
+        TGK = 0,
         /**
          * Traffic-Encrypting Key
          */
-        TEK,
+        TEK = 2,
     }
 
 
@@ -112,11 +112,11 @@ export namespace GstSdp {
         /**
          * no authentication
          */
-        NULL,
+        NULL = 0,
         /**
          * HMAC-SHA-1-160
          */
-        HMAC_SHA_1_160,
+        HMAC_SHA_1_160 = 1,
     }
 
 
@@ -129,7 +129,7 @@ export namespace GstSdp {
         /**
          * SRTP
          */
-        MIKEY_MAP_TYPE_SRTP,
+        MIKEY_MAP_TYPE_SRTP = 0,
     }
 
 
@@ -141,7 +141,7 @@ export namespace GstSdp {
         /**
          * MIKEY-1 PRF function
          */
-        MIKEY_PRF_MIKEY_1,
+        MIKEY_PRF_MIKEY_1 = 0,
     }
 
 
@@ -153,63 +153,63 @@ export namespace GstSdp {
         /**
          * Last payload
          */
-        LAST,
+        LAST = 0,
         /**
          * Key data transport payload
          */
-        KEMAC,
+        KEMAC = 1,
         /**
          * Envelope data payload
          */
-        PKE,
+        PKE = 2,
         /**
          * DH data payload
          */
-        DH,
+        DH = 3,
         /**
          * Signature payload
          */
-        SIGN,
+        SIGN = 4,
         /**
          * Timestamp payload
          */
-        T,
+        T = 5,
         /**
          * ID payload
          */
-        ID,
+        ID = 6,
         /**
          * Certificate Payload
          */
-        CERT,
+        CERT = 7,
         /**
          * Cert hash payload
          */
-        CHASH,
+        CHASH = 8,
         /**
          * Verification message payload
          */
-        V,
+        V = 9,
         /**
          * Security Policy payload
          */
-        SP,
+        SP = 10,
         /**
          * RAND payload
          */
-        RAND,
+        RAND = 11,
         /**
          * Error payload
          */
-        ERR,
+        ERR = 12,
         /**
          * Key data sub-payload
          */
-        KEY_DATA,
+        KEY_DATA = 20,
         /**
          * General Extension Payload
          */
-        GEN_EXT,
+        GEN_EXT = 21,
     }
 
 
@@ -221,7 +221,7 @@ export namespace GstSdp {
         /**
          * SRTP
          */
-        MIKEY_SEC_PROTO_SRTP,
+        MIKEY_SEC_PROTO_SRTP = 0,
     }
 
 
@@ -233,59 +233,59 @@ export namespace GstSdp {
         /**
          * Encryption algorithm
          */
-        ENC_ALG,
+        ENC_ALG = 0,
         /**
          * Session Encr. key length
          */
-        ENC_KEY_LEN,
+        ENC_KEY_LEN = 1,
         /**
          * Authentication algorithm
          */
-        AUTH_ALG,
+        AUTH_ALG = 2,
         /**
          * Session Auth. key length
          */
-        AUTH_KEY_LEN,
+        AUTH_KEY_LEN = 3,
         /**
          * Session Salt key length
          */
-        SALT_KEY_LEN,
+        SALT_KEY_LEN = 4,
         /**
          * SRTP Pseudo Random Function
          */
-        PRF,
+        PRF = 5,
         /**
          * Key derivation rate
          */
-        KEY_DERIV_RATE,
+        KEY_DERIV_RATE = 6,
         /**
          * SRTP encryption off/on, 0 if off, 1 if on
          */
-        SRTP_ENC,
+        SRTP_ENC = 7,
         /**
          * SRTCP encryption off/on, 0 if off, 1 if on
          */
-        SRTCP_ENC,
+        SRTCP_ENC = 8,
         /**
          * sender's FEC order
          */
-        FEC_ORDER,
+        FEC_ORDER = 9,
         /**
          * SRTP authentication off/on, 0 if off, 1 if on
          */
-        SRTP_AUTH,
+        SRTP_AUTH = 10,
         /**
          * Authentication tag length
          */
-        AUTH_TAG_LEN,
+        AUTH_TAG_LEN = 11,
         /**
          * SRTP prefix length
          */
-        SRTP_PREFIX_LEN,
+        SRTP_PREFIX_LEN = 12,
         /**
          * AEAD authentication tag length (Since: 1.16)
          */
-        AEAD_AUTH_TAG_LEN,
+        AEAD_AUTH_TAG_LEN = 20,
     }
 
 
@@ -297,15 +297,15 @@ export namespace GstSdp {
         /**
          * an NTP time in UTC timezone
          */
-        NTP_UTC,
+        NTP_UTC = 0,
         /**
          * an NTP time
          */
-        NTP,
+        NTP = 1,
         /**
          * a counter
          */
-        COUNTER,
+        COUNTER = 2,
     }
 
 
@@ -317,35 +317,35 @@ export namespace GstSdp {
         /**
          * Invalid type
          */
-        INVALID,
+        INVALID = -1,
         /**
          * Initiator's pre-shared key message
          */
-        PSK_INIT,
+        PSK_INIT = 0,
         /**
          * Verification message of a Pre-shared key message
          */
-        PSK_VERIFY,
+        PSK_VERIFY = 1,
         /**
          * Initiator's public-key transport message
          */
-        PK_INIT,
+        PK_INIT = 2,
         /**
          * Verification message of a public-key message
          */
-        PK_VERIFY,
+        PK_VERIFY = 3,
         /**
          * Initiator's DH exchange message
          */
-        DH_INIT,
+        DH_INIT = 4,
         /**
          * Responder's DH exchange message
          */
-        DH_RESP,
+        DH_RESP = 5,
         /**
          * Error message
          */
-        ERROR,
+        ERROR = 6,
     }
 
 
@@ -357,46 +357,53 @@ export namespace GstSdp {
         /**
          * A successful return value
          */
-        OK,
+        OK = 0,
         /**
          * a function was given invalid parameters
          */
-        EINVAL,
+        EINVAL = -1,
     }
 
 
     /**
      * The supported MIKEY version 1.
+     * @default 1
      */
     const MIKEY_VERSION: number;
 
     /**
      * The Application-Specific Maximum bandwidth modifier.
+     * @default AS
      */
     const SDP_BWTYPE_AS: string;
 
     /**
      * The Conference Total bandwidth modifier.
+     * @default CT
      */
     const SDP_BWTYPE_CT: string;
 
     /**
      * The extension prefix bandwidth modifier.
+     * @default X-
      */
     const SDP_BWTYPE_EXT_PREFIX: string;
 
     /**
      * RTCP bandwidth allocated to data receivers (RFC 3556).
+     * @default RR
      */
     const SDP_BWTYPE_RR: string;
 
     /**
      * RTCP bandwidth allocated to active data senders (RFC 3556).
+     * @default RS
      */
     const SDP_BWTYPE_RS: string;
 
     /**
      * Transport Independent Application Specific Maximum bandwidth (RFC 3890).
+     * @default TIAS
      */
     const SDP_BWTYPE_TIAS: string;
 
@@ -799,6 +806,7 @@ export namespace GstSdp {
          * @param info a {@link GstSdp.MIKEYEncryptInfo}
          * @returns a new {@link GLib.Bytes} for `msg`.
          * @since 1.4
+         * @throws GLib.Error
          */
         to_bytes(info: MIKEYEncryptInfo): GLib.Bytes;
 

@@ -44,9 +44,9 @@ export namespace Pluma {
      * @gir-type Enum
      */
     enum DocumentNewlineType {
-        LF,
-        CR,
-        CR_LF,
+        LF = 0,
+        CR = 1,
+        CR_LF = 2,
     }
 
 
@@ -61,28 +61,37 @@ export namespace Pluma {
      * @gir-type Enum
      */
     enum TabState {
-        STATE_NORMAL,
-        STATE_LOADING,
-        STATE_REVERTING,
-        STATE_SAVING,
-        STATE_PRINTING,
-        STATE_PRINT_PREVIEWING,
-        STATE_SHOWING_PRINT_PREVIEW,
-        STATE_GENERIC_NOT_EDITABLE,
-        STATE_LOADING_ERROR,
-        STATE_REVERTING_ERROR,
-        STATE_SAVING_ERROR,
-        STATE_GENERIC_ERROR,
-        STATE_CLOSING,
-        STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
-        NUM_OF_STATES,
+        STATE_NORMAL = 0,
+        STATE_LOADING = 1,
+        STATE_REVERTING = 2,
+        STATE_SAVING = 3,
+        STATE_PRINTING = 4,
+        STATE_PRINT_PREVIEWING = 5,
+        STATE_SHOWING_PRINT_PREVIEW = 6,
+        STATE_GENERIC_NOT_EDITABLE = 7,
+        STATE_LOADING_ERROR = 8,
+        STATE_REVERTING_ERROR = 9,
+        STATE_SAVING_ERROR = 10,
+        STATE_GENERIC_ERROR = 11,
+        STATE_CLOSING = 12,
+        STATE_EXTERNALLY_MODIFIED_NOTIFICATION = 13,
+        NUM_OF_STATES = 14,
     }
 
 
+    /**
+     * @default metadata::pluma-encoding
+     */
     const METADATA_ATTRIBUTE_ENCODING: string;
 
+    /**
+     * @default metadata::pluma-language
+     */
     const METADATA_ATTRIBUTE_LANGUAGE: string;
 
+    /**
+     * @default metadata::pluma-position
+     */
     const METADATA_ATTRIBUTE_POSITION: string;
 
     /**
@@ -412,22 +421,22 @@ export namespace Pluma {
      * @gir-type Flags
      */
     enum DebugSection {
-        NO_DEBUG,
-        DEBUG_VIEW,
-        DEBUG_SEARCH,
-        DEBUG_PRINT,
-        DEBUG_PREFS,
-        DEBUG_PLUGINS,
-        DEBUG_TAB,
-        DEBUG_DOCUMENT,
-        DEBUG_COMMANDS,
-        DEBUG_APP,
-        DEBUG_SESSION,
-        DEBUG_UTILS,
-        DEBUG_METADATA,
-        DEBUG_WINDOW,
-        DEBUG_LOADER,
-        DEBUG_SAVER,
+        NO_DEBUG = 0,
+        DEBUG_VIEW = 1,
+        DEBUG_SEARCH = 2,
+        DEBUG_PRINT = 4,
+        DEBUG_PREFS = 8,
+        DEBUG_PLUGINS = 16,
+        DEBUG_TAB = 32,
+        DEBUG_DOCUMENT = 64,
+        DEBUG_COMMANDS = 128,
+        DEBUG_APP = 256,
+        DEBUG_SESSION = 512,
+        DEBUG_UTILS = 1024,
+        DEBUG_METADATA = 2048,
+        DEBUG_WINDOW = 4096,
+        DEBUG_LOADER = 8192,
+        DEBUG_SAVER = 16384,
     }
 
 
@@ -445,15 +454,15 @@ export namespace Pluma {
         /**
          * save file despite external modifications.
          */
-        IGNORE_MTIME,
+        IGNORE_MTIME = 1,
         /**
          * write the file directly without attempting to backup.
          */
-        IGNORE_BACKUP,
+        IGNORE_BACKUP = 2,
         /**
          * preserve previous backup file, needed to support autosaving.
          */
-        PRESERVE_BACKUP,
+        PRESERVE_BACKUP = 4,
     }
 
 
@@ -468,11 +477,11 @@ export namespace Pluma {
      * @gir-type Flags
      */
     enum LockdownMask {
-        COMMAND_LINE,
-        PRINTING,
-        PRINT_SETUP,
-        SAVE_TO_DISK,
-        ALL,
+        COMMAND_LINE = 1,
+        PRINTING = 2,
+        PRINT_SETUP = 4,
+        SAVE_TO_DISK = 8,
+        ALL = 15,
     }
 
 
@@ -487,11 +496,11 @@ export namespace Pluma {
      * @gir-type Flags
      */
     enum SearchFlags {
-        DONT_SET_FLAGS,
-        ENTIRE_WORD,
-        CASE_SENSITIVE,
-        PARSE_ESCAPES,
-        MATCH_REGEX,
+        DONT_SET_FLAGS = 1,
+        ENTIRE_WORD = 2,
+        CASE_SENSITIVE = 4,
+        PARSE_ESCAPES = 8,
+        MATCH_REGEX = 16,
     }
 
 
@@ -506,12 +515,12 @@ export namespace Pluma {
      * @gir-type Flags
      */
     enum WindowState {
-        NORMAL,
-        SAVING,
-        PRINTING,
-        LOADING,
-        ERROR,
-        SAVING_SESSION,
+        NORMAL = 0,
+        SAVING = 2,
+        PRINTING = 4,
+        LOADING = 8,
+        ERROR = 16,
+        SAVING_SESSION = 32,
     }
 
 
@@ -691,38 +700,38 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            load: (arg0: string, arg1: Encoding, arg2: number, arg3: boolean) => void;
+            load: (uri: string, encoding: Encoding, line_pos: number, create: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            loaded: (arg0: null) => void;
+            loaded: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            loading: (arg0: number, arg1: number) => void;
+            loading: (object: number, p0: number) => void;
             /**
              * The "save" signal is emitted when the document is saved.
              * @signal
              * @run-last
              */
-            save: (arg0: string, arg1: Encoding, arg2: DocumentSaveFlags) => void;
+            save: (uri: string, encoding: Encoding, flags: DocumentSaveFlags) => void;
             /**
              * @signal
              * @run-last
              */
-            saved: (arg0: null) => void;
+            saved: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            saving: (arg0: number, arg1: number) => void;
+            saving: (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "search-highlight-updated": (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
+            "search-highlight-updated": (object: Gtk.TextIter, p0: Gtk.TextIter) => void;
             "notify::can-search-again": (pspec: GObject.ParamSpec) => void;
             "notify::content-type": (pspec: GObject.ParamSpec) => void;
             "notify::enable-search-highlighting": (pspec: GObject.ParamSpec) => void;
@@ -1719,21 +1728,21 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            dispatch: (arg0: Message) => void;
+            dispatch: (message: Message) => void;
             /**
              * The "registered" signal is emitted when a message has been registered
              * on the bus.
              * @signal
              * @run-last
              */
-            registered: (arg0: MessageType) => void;
+            registered: (message_type: MessageType) => void;
             /**
              * The "unregistered" signal is emitted when a message has been
              * unregistered from the bus.
              * @signal
              * @run-last
              */
-            unregistered: (arg0: MessageType) => void;
+            unregistered: (message_type: MessageType) => void;
         }
 
         // Constructor properties interface
@@ -1932,22 +1941,22 @@ export namespace Pluma {
              * @signal
              * @run-first
              */
-            "tab-added": (arg0: Tab) => void;
+            "tab-added": (object: Tab) => void;
             /**
              * @signal
              * @run-last
              */
-            "tab-close-request": (arg0: Tab) => void;
+            "tab-close-request": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-detached": (arg0: Tab) => void;
+            "tab-detached": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-removed": (arg0: Tab) => void;
+            "tab-removed": (object: Tab) => void;
             /**
              * @signal
              * @run-first
@@ -2162,12 +2171,12 @@ export namespace Pluma {
              * @signal
              * @run-first
              */
-            "item-added": (arg0: Gtk.Widget) => void;
+            "item-added": (object: Gtk.Widget) => void;
             /**
              * @signal
              * @run-first
              */
-            "item-removed": (arg0: Gtk.Widget) => void;
+            "item-removed": (object: Gtk.Widget) => void;
             "notify::panel-orientation": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -2511,7 +2520,7 @@ export namespace Pluma {
              * @signal
              * @run-last
              */
-            changed: (arg0: Gtk.MenuItem) => void;
+            changed: (object: Gtk.MenuItem) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::above-child": (pspec: GObject.ParamSpec) => void;
             "notify::visible-window": (pspec: GObject.ParamSpec) => void;
@@ -2997,7 +3006,7 @@ export namespace Pluma {
              * @action
              * @run-last
              */
-            "drop-uris": (arg0: string[]) => void;
+            "drop-uris": (object: string[]) => void;
             /**
              * @signal
              * @action
@@ -3211,7 +3220,7 @@ export namespace Pluma {
              * @signal
              * @run-first
              */
-            "active-tab-changed": (arg0: Tab) => void;
+            "active-tab-changed": (object: Tab) => void;
             /**
              * @signal
              * @run-first
@@ -3221,12 +3230,12 @@ export namespace Pluma {
              * @signal
              * @run-first
              */
-            "tab-added": (arg0: Tab) => void;
+            "tab-added": (object: Tab) => void;
             /**
              * @signal
              * @run-first
              */
-            "tab-removed": (arg0: Tab) => void;
+            "tab-removed": (object: Tab) => void;
             /**
              * @signal
              * @run-first

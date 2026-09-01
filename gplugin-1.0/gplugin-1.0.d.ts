@@ -38,32 +38,32 @@ export namespace GPlugin {
         /**
          * The state of the plugin is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * There was an error loading or unloading the
          *  plugin.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * The plugin has been queried but not loaded.
          */
-        QUERIED,
+        QUERIED = 1,
         /**
          * The plugin should be re-queried.
          */
-        REQUERY,
+        REQUERY = 2,
         /**
          * The plugin is loaded.
          */
-        LOADED,
+        LOADED = 3,
         /**
          * The plugin failed to load.
          */
-        LOAD_FAILED,
+        LOAD_FAILED = 4,
         /**
          * The plugin failed to unload.
          */
-        UNLOAD_FAILED,
+        UNLOAD_FAILED = 5,
     }
 
 
@@ -74,21 +74,25 @@ export namespace GPlugin {
 
     /**
      * This is the major version number of GPlugin that was compiled against.
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * This is the micro version number of GPlugin that was compiled against.
+     * @default 2
      */
     const MICRO_VERSION: number;
 
     /**
      * This is the minor version number of GPlugin that was compiled against.
+     * @default 44
      */
     const MINOR_VERSION: number;
 
     /**
      * This is the string version number of GPlugin that was compiled against.
+     * @default 0.44.2
      */
     const VERSION: string;
 
@@ -107,6 +111,7 @@ export namespace GPlugin {
      * `GPLUGIN_VERSION_MIN_REQUIRED` or earlier will cause warnings (but using
      * functions deprecated in later releases will not).
      * @since 0.42
+     * @default 1
      */
     const VERSION_MIN_REQUIRED: number;
 
@@ -207,16 +212,16 @@ export namespace GPlugin {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Disable the native plugin loader.
          */
-        DISABLE_NATIVE_LOADER,
+        DISABLE_NATIVE_LOADER = 1,
         /**
          * Log plugin state changes with
          *                                               g_message. Since: 0.34.
          */
-        LOG_PLUGIN_STATE_CHANGES,
+        LOG_PLUGIN_STATE_CHANGES = 2,
     }
 
 
@@ -404,6 +409,7 @@ export namespace GPlugin {
          * `plugin`.
          * @param plugin The plugin instance to load.
          * @returns `true` if `plugin` was loaded successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         load_plugin(plugin: Plugin): boolean;
 
@@ -412,6 +418,7 @@ export namespace GPlugin {
          * `filename` and determine if it's a usable plugin.
          * @param filename The filename to query.
          * @returns A plugin instance or `null` on failure.
+         * @throws GLib.Error
          */
         query_plugin(filename: string): Plugin;
 
@@ -421,6 +428,7 @@ export namespace GPlugin {
          * @param plugin The plugin instance to unload.
          * @param shutdown Whether or not GPlugin is shutting down.
          * @returns `true` if `plugin` was unloaded successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         unload_plugin(plugin: Plugin, shutdown: boolean): boolean;
     }
@@ -435,14 +443,14 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "load-plugin-failed": (arg0: GObject.Object, arg1: GLib.Error) => void;
+            "load-plugin-failed": (plugin: GObject.Object, error: GLib.Error) => void;
             /**
              * Emitted after a plugin is loaded.
              * @signal
              * @since 0.33
              * @run-last
              */
-            "loaded-plugin": (arg0: GObject.Object) => void;
+            "loaded-plugin": (plugin: GObject.Object) => void;
             /**
              * Emitted when `loader` has been registered with `manager` via
              * {@link GPlugin.Manager.register_loader}.
@@ -450,7 +458,7 @@ export namespace GPlugin {
              * @since 0.39
              * @run-last
              */
-            "loader-registered": (arg0: Loader) => void;
+            "loader-registered": (loader: Loader) => void;
             /**
              * Emitted when `loader` has been unregistered from `manager` via
              * {@link GPlugin.Manager.unregister_loader}.
@@ -458,14 +466,14 @@ export namespace GPlugin {
              * @since 0.39
              * @run-last
              */
-            "loader-unregistered": (arg0: Loader) => void;
+            "loader-unregistered": (loader: Loader) => void;
             /**
              * Emitted before `plugin` is loaded.
              * @signal
              * @since 0.33
              * @run-last
              */
-            "loading-plugin": (arg0: GObject.Object, arg1: null) => boolean | void;
+            "loading-plugin": (plugin: GObject.Object, error: null) => boolean | void;
             /**
              * Emitted when `manager` was asked to unload `plugin`, but `plugin` returned
              * `false` when its unload function was called.
@@ -473,21 +481,21 @@ export namespace GPlugin {
              * @since 0.33
              * @run-last
              */
-            "unload-plugin-failed": (arg0: GObject.Object, arg1: GLib.Error) => void;
+            "unload-plugin-failed": (plugin: GObject.Object, error: GLib.Error) => void;
             /**
              * emitted after a plugin is successfully unloaded.
              * @signal
              * @since 0.33
              * @run-last
              */
-            "unloaded-plugin": (arg0: GObject.Object) => void;
+            "unloaded-plugin": (plugin: GObject.Object) => void;
             /**
              * Emitted before a plugin is unloaded.
              * @signal
              * @since 0.33
              * @run-last
              */
-            "unloading-plugin": (arg0: GObject.Object, arg1: null) => boolean | void;
+            "unloading-plugin": (plugin: GObject.Object, error: null) => boolean | void;
         }
 
         // Constructor properties interface
@@ -649,6 +657,7 @@ export namespace GPlugin {
          * Returns a list of all the plugins that `plugin` depends on.
          * @param plugin The plugin whose dependencies to get.
          * @returns A {@link GLib.SList}          of plugins that `plugin` depends on, or `null` on error with `error`          set.
+         * @throws GLib.Error
          */
         get_plugin_dependencies(plugin: Plugin): Plugin[];
 
@@ -668,6 +677,7 @@ export namespace GPlugin {
          * this call, will not be unloaded.
          * @param plugin The plugin instance.
          * @returns `true` if `plugin` was loaded successfully or already loaded, `false`          otherwise.
+         * @throws GLib.Error
          */
         load_plugin(plugin: Plugin): boolean;
 
@@ -693,6 +703,7 @@ export namespace GPlugin {
          * Registers `loader` as an available loader.
          * @param loader The loader instance to register.
          * @returns `true` if the loader was successfully register, `false` otherwise          with `error` set.
+         * @throws GLib.Error
          */
         register_loader(loader: Loader): boolean;
 
@@ -713,6 +724,7 @@ export namespace GPlugin {
          * If `plugin` has dependencies, they are not unloaded.
          * @param plugin The plugin instance.
          * @returns `true` if `plugin` was unloaded successfully or not loaded, `false`          otherwise.
+         * @throws GLib.Error
          */
         unload_plugin(plugin: Plugin): boolean;
 
@@ -720,6 +732,7 @@ export namespace GPlugin {
          * Unregisters `loader` as an available loader.
          * @param loader The loader instance to unregister.
          * @returns `true` if the loader was successfully unregistered, `false`          otherwise with `error` set.
+         * @throws GLib.Error
          */
         unregister_loader(loader: Loader): boolean;
     }

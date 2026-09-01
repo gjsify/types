@@ -80,7 +80,7 @@
       ]
 }
   },
-  "include": ["./sushi-1.0.d.ts","./sushi-1.0-surface.d.ts"]
+  "include": ["./sushi-1.0.d.ts","./sushi-1.0-vocabulary.d.ts"]
 }
 
 

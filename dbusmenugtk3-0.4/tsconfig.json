@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./dbusmenugtk3-0.4.d.ts","./dbusmenugtk3-0.4-surface.d.ts"]
+  "include": ["./dbusmenugtk3-0.4.d.ts","./dbusmenugtk3-0.4-vocabulary.d.ts"]
 }
 
 

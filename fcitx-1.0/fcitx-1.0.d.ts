@@ -37,7 +37,7 @@ export namespace Fcitx {
              * @signal
              * @run-last
              */
-            "commit-string": (arg0: string) => void;
+            "commit-string": (string: string) => void;
             /**
              * Emit when connected to fcitx and created ic
              * @signal
@@ -49,7 +49,7 @@ export namespace Fcitx {
              * @signal
              * @run-last
              */
-            "delete-surrounding-text": (arg0: number, arg1: number) => void;
+            "delete-surrounding-text": (cursor: number, len: number) => void;
             /**
              * Emit when disconnected from fcitx
              * @signal
@@ -67,19 +67,19 @@ export namespace Fcitx {
              * @signal
              * @run-last
              */
-            "forward-key": (arg0: number, arg1: number, arg2: number) => void;
+            "forward-key": (keyval: number, state: number, type: number) => void;
             /**
              * Emit when input method need to update client side ui
              * @signal
              * @run-last
              */
-            "update-client-side-ui": (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string, arg5: number) => void;
+            "update-client-side-ui": (auxup: string, auxdown: string, preedit: string, candidateword: string, imname: string, cursor_pos: number) => void;
             /**
              * Emit when input method need to delete surrounding text
              * @signal
              * @run-last
              */
-            "update-formatted-preedit": (arg0: PreeditItem[], arg1: number) => void;
+            "update-formatted-preedit": (preedit: PreeditItem[], cursor: number) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -630,6 +630,7 @@ export namespace Fcitx {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -639,6 +640,7 @@ export namespace Fcitx {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): InputMethod;
 
@@ -803,6 +805,7 @@ export namespace Fcitx {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1075,6 +1078,7 @@ export namespace Fcitx {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1084,6 +1088,7 @@ export namespace Fcitx {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Kbd;
 
@@ -1248,6 +1253,7 @@ export namespace Fcitx {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

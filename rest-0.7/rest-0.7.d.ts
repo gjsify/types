@@ -32,16 +32,16 @@ export namespace Rest {
          * the memory block can be assumed to always exist for the
          * lifetime of the parameter, {@link Rest.Param} will use it directly.
          */
-        STATIC,
+        STATIC = 0,
         /**
          * {@link Rest.Param} will take ownership of the memory block, and
          * `g_free()` it when it isn't used.
          */
-        TAKE,
+        TAKE = 1,
         /**
          * {@link Rest.Param} will make a copy of the memory block.
          */
-        COPY,
+        COPY = 2,
     }
 
 
@@ -62,11 +62,11 @@ export namespace Rest {
         /**
          * plain text signatures (not recommended)
          */
-        PLAINTEXT,
+        PLAINTEXT = 0,
         /**
          * HMAC-SHA1 signatures (recommended)
          */
-        HMAC_SHA1,
+        HMAC_SHA1 = 1,
     }
 
 
@@ -692,6 +692,7 @@ export namespace Rest {
          * @param _function the function name to invoke
          * @param verifier the verifier
          * @returns `true` on success, or `false` on failure. On failure `error` is set.
+         * @throws GLib.Error
          */
         access_token(_function: string, verifier: string): boolean;
 
@@ -711,6 +712,7 @@ export namespace Rest {
          * @param callback a {@link Rest.OAuthProxyAuthCallback} to invoke on completion
          * @param weak_object {@link GObject.Object} to weakly reference and tie the lifecycle of the method call too
          * @returns `true` if the method was successfully queued, or `false` on failure. On failure `error` is set.
+         * @throws GLib.Error
          */
         access_token_async(_function: string, verifier: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean;
 
@@ -721,6 +723,7 @@ export namespace Rest {
          * `proxy` must not require binding, the function will be invoked using
          * `rest_proxy_call_set_function()`.
          * @param _function the function to invoke on the proxy
+         * @throws GLib.Error
          */
         auth_step(_function: string): boolean;
 
@@ -733,6 +736,7 @@ export namespace Rest {
          * @param _function the function to invoke on the proxy
          * @param callback the callback to invoke when authorisation is complete
          * @param weak_object the {@link GObject.Object} to weakly reference and tie the lifecycle too
+         * @throws GLib.Error
          */
         auth_step_async(_function: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean;
 
@@ -783,6 +787,7 @@ export namespace Rest {
          * @param _function the function name to invoke
          * @param callback_uri the callback URI
          * @returns `true` on success, or `false` on failure. On failure `error` is set.
+         * @throws GLib.Error
          */
         request_token(_function: string, callback_uri: string): boolean;
 
@@ -801,6 +806,7 @@ export namespace Rest {
          * @param callback a {@link Rest.OAuthProxyAuthCallback} to invoke on completion
          * @param weak_object {@link GObject.Object} to weakly reference and tie the lifecycle of the method call too
          * @returns `true` if the method was successfully queued, or `false` on failure. On failure `error` is set.
+         * @throws GLib.Error
          */
         request_token_async(_function: string, callback_uri: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean;
 
@@ -898,7 +904,7 @@ export namespace Rest {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: ProxyAuth, arg1: boolean) => boolean | void;
+            authenticate: (auth: ProxyAuth, retrying: boolean) => boolean | void;
             "notify::binding-required": (pspec: GObject.ParamSpec) => void;
             "notify::disable-cookies": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -1331,6 +1337,7 @@ export namespace Rest {
         /**
          * @param result the result from the {@link Gio.AsyncReadyCallback}
          * @returns `true` on success
+         * @throws GLib.Error
          */
         invoke_finish(result: Gio.AsyncResult): boolean;
 
@@ -1369,6 +1376,7 @@ export namespace Rest {
 
         /**
          * @param loop 
+         * @throws GLib.Error
          */
         run(loop: GLib.MainLoop): boolean;
 
@@ -1376,6 +1384,7 @@ export namespace Rest {
          * Invoker for a virtual method to serialize the parameters for this
          * {@link Rest.ProxyCall}.
          * @returns TRUE if the serialization was successful, FALSE otherwise.
+         * @throws GLib.Error
          */
         serialize_params(): [boolean, string, string, number];
 
@@ -1395,6 +1404,9 @@ export namespace Rest {
          */
         set_method(method: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         sync(): boolean;
 
         /**
@@ -1412,6 +1424,7 @@ export namespace Rest {
          * internal reference, or you may unref in the callback.
          * @param callback a {@link Rest.ProxyCallUploadCallback} to invoke when a chunk   of data was uploaded
          * @param weak_object The {@link GObject.Object} to weakly reference and tie the lifecycle to
+         * @throws GLib.Error
          */
         upload(callback: ProxyCallUploadCallback, weak_object: GObject.Object): boolean;
     }

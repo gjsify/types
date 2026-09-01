@@ -35,9 +35,9 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum Gender {
-        UNSPECIFIED,
-        MALE,
-        FEMALE,
+        UNSPECIFIED = 0,
+        MALE = 1,
+        FEMALE = 2,
     }
 
 
@@ -52,8 +52,8 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum TrustLevel {
-        NONE,
-        PERSONAS,
+        NONE = 0,
+        PERSONAS = 1,
     }
 
 
@@ -68,9 +68,9 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum PersonaStoreTrust {
-        NONE,
-        PARTIAL,
-        FULL,
+        NONE = 0,
+        PARTIAL = 1,
+        FULL = 2,
     }
 
 
@@ -85,32 +85,32 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum PersonaDetail {
-        INVALID,
-        ALIAS,
-        AVATAR,
-        BIRTHDAY,
-        EMAIL_ADDRESSES,
-        FULL_NAME,
-        GENDER,
-        IM_ADDRESSES,
-        IS_FAVOURITE,
-        LOCAL_IDS,
-        LOCATION,
-        NICKNAME,
-        NOTES,
-        PHONE_NUMBERS,
-        POSTAL_ADDRESSES,
-        ROLES,
-        STRUCTURED_NAME,
-        URLS,
-        WEB_SERVICE_ADDRESSES,
-        GROUPS,
-        IM_INTERACTION_COUNT,
-        LAST_IM_INTERACTION_DATETIME,
-        CALL_INTERACTION_COUNT,
-        LAST_CALL_INTERACTION_DATETIME,
-        ANTI_LINKS,
-        EXTENDED_INFO,
+        INVALID = -1,
+        ALIAS = 0,
+        AVATAR = 0,
+        BIRTHDAY = 1,
+        EMAIL_ADDRESSES = 2,
+        FULL_NAME = 3,
+        GENDER = 4,
+        IM_ADDRESSES = 5,
+        IS_FAVOURITE = 6,
+        LOCAL_IDS = 7,
+        LOCATION = 8,
+        NICKNAME = 9,
+        NOTES = 10,
+        PHONE_NUMBERS = 11,
+        POSTAL_ADDRESSES = 12,
+        ROLES = 13,
+        STRUCTURED_NAME = 14,
+        URLS = 15,
+        WEB_SERVICE_ADDRESSES = 16,
+        GROUPS = 17,
+        IM_INTERACTION_COUNT = 18,
+        LAST_IM_INTERACTION_DATETIME = 19,
+        CALL_INTERACTION_COUNT = 20,
+        LAST_CALL_INTERACTION_DATETIME = 21,
+        ANTI_LINKS = 22,
+        EXTENDED_INFO = 23,
     }
 
 
@@ -125,12 +125,12 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum MatchResult {
-        NONE,
-        VERY_LOW,
-        LOW,
-        MEDIUM,
-        HIGH,
-        VERY_HIGH,
+        NONE = -1,
+        VERY_LOW = 0,
+        LOW = 1,
+        MEDIUM = 2,
+        HIGH = 3,
+        VERY_HIGH = 4,
         MIN,
         MAX,
     }
@@ -147,15 +147,15 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum PresenceType {
-        UNSET,
-        OFFLINE,
-        AVAILABLE,
-        AWAY,
-        EXTENDED_AWAY,
-        HIDDEN,
-        BUSY,
-        UNKNOWN,
-        ERROR,
+        UNSET = 0,
+        OFFLINE = 1,
+        AVAILABLE = 2,
+        AWAY = 3,
+        EXTENDED_AWAY = 4,
+        HIDDEN = 5,
+        BUSY = 6,
+        UNKNOWN = 7,
+        ERROR = 8,
     }
 
 
@@ -170,9 +170,9 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum MaybeBool {
-        UNSET,
-        FALSE,
-        TRUE,
+        UNSET = 0,
+        FALSE = 1,
+        TRUE = 2,
     }
 
 
@@ -274,18 +274,18 @@ export namespace Folks {
      * @gir-type Enum
      */
     enum GroupDetailsChangeReason {
-        NONE,
-        OFFLINE,
-        KICKED,
-        BUSY,
-        INVITED,
-        BANNED,
-        ERROR,
-        INVALID_MEMBER,
-        NO_ANSWER,
-        RENAMED,
-        PERMISSION_DENIED,
-        SEPARATED,
+        NONE = 0,
+        OFFLINE = 1,
+        KICKED = 2,
+        BUSY = 3,
+        INVITED = 4,
+        BANNED = 5,
+        ERROR = 6,
+        INVALID_MEMBER = 7,
+        NO_ANSWER = 8,
+        RENAMED = 9,
+        PERMISSION_DENIED = 10,
+        SEPARATED = 11,
     }
 
 
@@ -603,6 +603,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon;
 
@@ -628,6 +629,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         store_avatar_finish(_res_: Gio.AsyncResult): string;
 
@@ -650,6 +652,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -666,7 +669,7 @@ export namespace Folks {
             /**
              * @signal
              */
-            "backend-available": (arg0: Backend) => void;
+            "backend-available": (backend: Backend) => void;
             "notify::enabled-backends": (pspec: GObject.ParamSpec) => void;
             "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
         }
@@ -764,6 +767,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         load_backends_finish(_res_: Gio.AsyncResult): void;
 
@@ -835,11 +839,11 @@ export namespace Folks {
             /**
              * @signal
              */
-            "persona-store-added": (arg0: PersonaStore) => void;
+            "persona-store-added": (store: PersonaStore) => void;
             /**
              * @signal
              */
-            "persona-store-removed": (arg0: PersonaStore) => void;
+            "persona-store-removed": (store: PersonaStore) => void;
             "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
             "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -1020,6 +1024,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -1037,6 +1042,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -1314,11 +1320,11 @@ export namespace Folks {
              * @signal
              * @deprecated since 0.6.2
              */
-            "individuals-changed": (arg0: Gee.Set, arg1: Gee.Set, arg2: string, arg3: Persona, arg4: GroupDetailsChangeReason) => void;
+            "individuals-changed": (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void;
             /**
              * @signal
              */
-            "individuals-changed-detailed": (arg0: Gee.MultiMap) => void;
+            "individuals-changed-detailed": (changes: Gee.MultiMap) => void;
             "notify::is-prepared": (pspec: GObject.ParamSpec) => void;
             "notify::is-quiescent": (pspec: GObject.ParamSpec) => void;
             "notify::primary-store": (pspec: GObject.ParamSpec) => void;
@@ -1449,6 +1455,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -1466,6 +1473,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -1505,6 +1513,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
 
@@ -1527,6 +1536,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_individual_finish(_res_: Gio.AsyncResult): void;
 
@@ -1549,6 +1559,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_persona_finish(_res_: Gio.AsyncResult): void;
 
@@ -1571,6 +1582,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         link_personas_finish(_res_: Gio.AsyncResult): void;
 
@@ -1593,6 +1605,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unlink_individual_finish(_res_: Gio.AsyncResult): void;
 
@@ -1618,6 +1631,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona;
 
@@ -1640,6 +1654,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         look_up_individual_finish(_res_: Gio.AsyncResult): Individual;
 
@@ -1663,11 +1678,11 @@ export namespace Folks {
             /**
              * @signal
              */
-            removed: (arg0: Individual) => void;
+            removed: (replacement_individual: Individual) => void;
             /**
              * @signal
              */
-            "personas-changed": (arg0: Gee.Set, arg1: Gee.Set) => void;
+            "personas-changed": (added: Gee.Set, removed: Gee.Set) => void;
             "notify::trust-level": (pspec: GObject.ParamSpec) => void;
             "notify::is-user": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -2025,6 +2040,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_alias_finish(_res_: Gio.AsyncResult): void;
 
@@ -2078,6 +2094,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -2131,6 +2148,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
 
@@ -2153,6 +2171,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
@@ -2237,6 +2256,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -2298,6 +2318,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
 
@@ -2320,6 +2341,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
 
@@ -2375,6 +2397,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
 
@@ -2428,6 +2451,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
 
@@ -2484,6 +2508,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
 
@@ -2506,6 +2531,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
 
@@ -2573,6 +2599,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -2654,6 +2681,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
 
@@ -2707,6 +2735,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_location_finish(_res_: Gio.AsyncResult): void;
 
@@ -2760,6 +2789,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -2782,6 +2812,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -2804,6 +2835,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
@@ -2919,6 +2951,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_notes_finish(_res_: Gio.AsyncResult): void;
 
@@ -3046,6 +3079,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
 
@@ -3099,6 +3133,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -3152,6 +3187,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_roles_finish(_res_: Gio.AsyncResult): void;
 
@@ -3205,6 +3241,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
 
@@ -3258,6 +3295,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -3787,7 +3825,7 @@ export namespace Folks {
             /**
              * @signal
              */
-            "personas-changed": (arg0: Gee.Set, arg1: Gee.Set, arg2: string, arg3: Persona, arg4: GroupDetailsChangeReason) => void;
+            "personas-changed": (added: Gee.Set, removed: Gee.Set, message: string, actor: Persona, reason: GroupDetailsChangeReason) => void;
             /**
              * @signal
              */
@@ -4136,6 +4174,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -4175,6 +4214,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona;
 
@@ -4197,6 +4237,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_persona_finish(_res_: Gio.AsyncResult): void;
 
@@ -5026,7 +5067,7 @@ export namespace Folks {
             /**
              * @signal
              */
-            "individuals-changed-detailed": (arg0: Gee.SortedSet, arg1: Gee.SortedSet) => void;
+            "individuals-changed-detailed": (added: Gee.SortedSet, removed: Gee.SortedSet) => void;
             "notify::aggregator": (pspec: GObject.ParamSpec) => void;
             "notify::query": (pspec: GObject.ParamSpec) => void;
             "notify::individuals": (pspec: GObject.ParamSpec) => void;
@@ -5130,6 +5171,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         prepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -5147,6 +5189,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         unprepare_finish(_res_: Gio.AsyncResult): void;
 
@@ -5164,6 +5207,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         refresh_finish(_res_: Gio.AsyncResult): void;
 
@@ -5984,6 +6028,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_alias_finish(_res_: Gio.AsyncResult): void;
 
@@ -6077,6 +6122,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -6104,6 +6150,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -6126,6 +6173,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_anti_links_finish(_res_: Gio.AsyncResult): void;
 
@@ -6143,6 +6191,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         add_global_anti_link_finish(_res_: Gio.AsyncResult): void;
 
@@ -6160,6 +6209,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_global_anti_link_finish(_res_: Gio.AsyncResult): void;
 
@@ -6251,6 +6301,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_avatar_finish(_res_: Gio.AsyncResult): void;
 
@@ -6372,6 +6423,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_birthday_finish(_res_: Gio.AsyncResult): void;
 
@@ -6394,6 +6446,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_calendar_event_id_finish(_res_: Gio.AsyncResult): void;
 
@@ -6494,6 +6547,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_email_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -6594,6 +6648,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_extended_field_finish(_res_: Gio.AsyncResult): void;
 
@@ -6616,6 +6671,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         remove_extended_field_finish(_res_: Gio.AsyncResult): void;
     }
@@ -6702,6 +6758,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_is_favourite_finish(_res_: Gio.AsyncResult): void;
 
@@ -6791,6 +6848,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_gender_finish(_res_: Gio.AsyncResult): void;
 
@@ -6897,6 +6955,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_group_finish(_res_: Gio.AsyncResult): void;
 
@@ -6919,6 +6978,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_groups_finish(_res_: Gio.AsyncResult): void;
 
@@ -7017,6 +7077,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_im_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -7218,6 +7279,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_local_ids_finish(_res_: Gio.AsyncResult): void;
 
@@ -7307,6 +7369,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_location_finish(_res_: Gio.AsyncResult): void;
 
@@ -7460,6 +7523,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_structured_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -7482,6 +7546,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_full_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -7504,6 +7569,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_nickname_finish(_res_: Gio.AsyncResult): void;
 
@@ -7607,6 +7673,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_notes_finish(_res_: Gio.AsyncResult): void;
 
@@ -7700,6 +7767,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_phone_numbers_finish(_res_: Gio.AsyncResult): void;
 
@@ -7793,6 +7861,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_postal_addresses_finish(_res_: Gio.AsyncResult): void;
 
@@ -8029,6 +8098,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_roles_finish(_res_: Gio.AsyncResult): void;
 
@@ -8118,6 +8188,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_urls_finish(_res_: Gio.AsyncResult): void;
 
@@ -8211,6 +8282,7 @@ export namespace Folks {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_web_service_addresses_finish(_res_: Gio.AsyncResult): void;
 

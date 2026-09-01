@@ -34,10 +34,10 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum ConstraintType {
-        NONE,
-        PW_GLOBAL_PROPERTY,
-        PW_PROPERTY,
-        G_PROPERTY,
+        NONE = 0,
+        PW_GLOBAL_PROPERTY = 1,
+        PW_PROPERTY = 2,
+        G_PROPERTY = 3,
     }
 
 
@@ -52,13 +52,13 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum ConstraintVerb {
-        EQUALS,
-        NOT_EQUALS,
-        IN_LIST,
-        IN_RANGE,
-        MATCHES,
-        IS_PRESENT,
-        IS_ABSENT,
+        EQUALS = 61,
+        NOT_EQUALS = 33,
+        IN_LIST = 99,
+        IN_RANGE = 126,
+        MATCHES = 35,
+        IS_PRESENT = 43,
+        IS_ABSENT = 45,
     }
 
 
@@ -75,9 +75,9 @@ export namespace Wp {
      * @since 0.4.11
      */
     enum DBusState {
-        CLOSED,
-        CONNECTING,
-        CONNECTED,
+        CLOSED = 0,
+        CONNECTING = 1,
+        CONNECTED = 2,
     }
 
 
@@ -92,8 +92,8 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum Direction {
-        INPUT,
-        OUTPUT,
+        INPUT = 0,
+        OUTPUT = 1,
     }
 
 
@@ -108,9 +108,9 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum LibraryErrorEnum {
-        INVARIANT,
-        INVALID_ARGUMENT,
-        OPERATION_FAILED,
+        INVARIANT = 0,
+        INVALID_ARGUMENT = 1,
+        OPERATION_FAILED = 2,
     }
 
 
@@ -125,13 +125,13 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum LinkState {
-        ERROR,
-        UNLINKED,
-        INIT,
-        NEGOTIATING,
-        ALLOCATING,
-        PAUSED,
-        ACTIVE,
+        ERROR = -2,
+        UNLINKED = -1,
+        INIT = 0,
+        NEGOTIATING = 1,
+        ALLOCATING = 2,
+        PAUSED = 3,
+        ACTIVE = 4,
     }
 
 
@@ -146,11 +146,11 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum NodeState {
-        ERROR,
-        CREATING,
-        SUSPENDED,
-        IDLE,
-        RUNNING,
+        ERROR = -1,
+        CREATING = 0,
+        SUSPENDED = 1,
+        IDLE = 2,
+        RUNNING = 3,
     }
 
 
@@ -165,9 +165,9 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum SiAdapterPortsState {
-        NONE,
-        CONFIGURING,
-        CONFIGURED,
+        NONE = 0,
+        CONFIGURING = 1,
+        CONFIGURED = 2,
     }
 
 
@@ -182,31 +182,51 @@ export namespace Wp {
      * @gir-type Enum
      */
     enum TransitionStep {
-        NONE,
-        ERROR,
-        CUSTOM_START,
+        NONE = 0,
+        ERROR = 1,
+        CUSTOM_START = 16,
     }
 
 
+    /**
+     * @default 15
+     */
     const INTEREST_MATCH_ALL: number;
 
+    /**
+     * @default 0
+     */
     const ITERATOR_METHODS_VERSION: number;
 
+    /**
+     * @default 1
+     */
     const LOG_LEVEL_TRACE: number;
 
     /**
      * Special value that can be used to activate all the supported features in any given object.
+     * @default 4294967295
      */
     const OBJECT_FEATURES_ALL: ObjectFeatures;
 
+    /**
+     * @default <%s:%p>
+     */
     const OBJECT_FORMAT: string;
 
+    /**
+     * @default 992
+     */
     const PIPEWIRE_OBJECT_FEATURES_ALL: number;
 
+    /**
+     * @default 17
+     */
     const PIPEWIRE_OBJECT_FEATURES_MINIMAL: number;
 
     /**
      * Type id representing an invalid SPA type.
+     * @default 4294967295
      */
     const SPA_TYPE_INVALID: SpaType;
 
@@ -511,7 +531,7 @@ export namespace Wp {
      * @since 0.4.11
      */
     enum DbusFeatures {
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -526,11 +546,11 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum InitFlags {
-        PIPEWIRE,
-        SPA_TYPES,
-        SET_PW_LOG,
-        SET_GLIB_LOG,
-        ALL,
+        PIPEWIRE = 1,
+        SPA_TYPES = 2,
+        SET_PW_LOG = 4,
+        SET_GLIB_LOG = 8,
+        ALL = 15,
     }
 
 
@@ -545,11 +565,11 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum InterestMatch {
-        NONE,
-        GTYPE,
-        PW_GLOBAL_PROPERTIES,
-        PW_PROPERTIES,
-        G_PROPERTIES,
+        NONE = 0,
+        GTYPE = 1,
+        PW_GLOBAL_PROPERTIES = 2,
+        PW_PROPERTIES = 4,
+        G_PROPERTIES = 8,
     }
 
 
@@ -564,8 +584,8 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum InterestMatchFlags {
-        NONE,
-        CHECK_ALL,
+        NONE = 0,
+        CHECK_ALL = 1,
     }
 
 
@@ -580,7 +600,7 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum LinkFeatures {
-        ESTABLISHED,
+        ESTABLISHED = 65536,
     }
 
 
@@ -595,11 +615,11 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum LookupDirs {
-        ENV_CONFIG,
-        ENV_DATA,
-        XDG_CONFIG_HOME,
-        ETC,
-        PREFIX_SHARE,
+        ENV_CONFIG = 1,
+        ENV_DATA = 2,
+        XDG_CONFIG_HOME = 1024,
+        ETC = 2048,
+        PREFIX_SHARE = 4096,
     }
 
 
@@ -614,7 +634,7 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum MetadataFeatures {
-        DATA,
+        DATA = 65536,
     }
 
 
@@ -629,7 +649,7 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum NodeFeatures {
-        PORTS,
+        PORTS = 65536,
     }
 
 
@@ -644,7 +664,7 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum PluginFeatures {
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -659,13 +679,13 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum ProxyFeatures {
-        PROXY_FEATURE_BOUND,
-        PIPEWIRE_OBJECT_FEATURE_INFO,
-        PIPEWIRE_OBJECT_FEATURE_PARAM_PROPS,
-        PIPEWIRE_OBJECT_FEATURE_PARAM_FORMAT,
-        PIPEWIRE_OBJECT_FEATURE_PARAM_PROFILE,
-        PIPEWIRE_OBJECT_FEATURE_PARAM_PORT_CONFIG,
-        PIPEWIRE_OBJECT_FEATURE_PARAM_ROUTE,
+        PROXY_FEATURE_BOUND = 1,
+        PIPEWIRE_OBJECT_FEATURE_INFO = 16,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PROPS = 32,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_FORMAT = 64,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PROFILE = 128,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_PORT_CONFIG = 256,
+        PIPEWIRE_OBJECT_FEATURE_PARAM_ROUTE = 512,
     }
 
 
@@ -680,8 +700,8 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum SessionItemFeatures {
-        ACTIVE,
-        EXPORTED,
+        ACTIVE = 1,
+        EXPORTED = 2,
     }
 
 
@@ -696,7 +716,7 @@ export namespace Wp {
      * @gir-type Flags
      */
     enum SpaDeviceFeatures {
-        ENABLED,
+        ENABLED = 65536,
     }
 
 
@@ -832,6 +852,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -1319,6 +1340,7 @@ export namespace Wp {
          * @param type the type of the component
          * @param args additional arguments for the component, usually a dict or a string
          * @returns TRUE if loaded, FALSE if there was an error
+         * @throws GLib.Error
          */
         load_component(component: string, type: string, args: GLib.Variant | null): boolean;
 
@@ -1374,6 +1396,7 @@ export namespace Wp {
          * This function is meant to be called from within the callback of `wp_core_sync()` in order to determine the success or failure of the operation.
          * @param res a GAsyncResult
          * @returns TRUE if the operation succeeded, FALSE otherwise
+         * @throws GLib.Error
          */
         sync_finish(res: Gio.AsyncResult): boolean;
 
@@ -1612,6 +1635,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -1957,6 +1981,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -2242,6 +2267,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -2487,6 +2513,7 @@ export namespace Wp {
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          * @since 2.34
+         * @throws GLib.Error
          */
         legacy_propagate_error(): boolean;
 
@@ -2802,6 +2829,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -3285,6 +3313,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -3452,7 +3481,7 @@ export namespace Wp {
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: LinkState, arg1: LinkState) => void;
+            "state-changed": (object: LinkState, p0: LinkState) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
@@ -3602,6 +3631,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -3769,7 +3799,7 @@ export namespace Wp {
              * @signal
              * @run-last
              */
-            changed: (arg0: number, arg1: string, arg2: string, arg3: string) => void;
+            changed: (object: number, p0: string, p1: string, p2: string) => void;
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
             "notify::permissions": (pspec: GObject.ParamSpec) => void;
@@ -3880,7 +3910,7 @@ export namespace Wp {
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: NodeState, arg1: NodeState) => void;
+            "state-changed": (object: NodeState, p0: NodeState) => void;
             "notify::max-input-ports": (pspec: GObject.ParamSpec) => void;
             "notify::max-output-ports": (pspec: GObject.ParamSpec) => void;
             "notify::n-input-ports": (pspec: GObject.ParamSpec) => void;
@@ -4147,6 +4177,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -4472,6 +4503,7 @@ export namespace Wp {
          * Finishes the async operation that was started with `wp_object_activate()`
          * @param res the async operation result
          * @returns TRUE if the requested features were activated, FALSE if there was an error
+         * @throws GLib.Error
          */
         activate_finish(res: Gio.AsyncResult): boolean;
 
@@ -4527,12 +4559,12 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            "object-added": (arg0: GObject.Object) => void;
+            "object-added": (object: GObject.Object) => void;
             /**
              * @signal
              * @run-first
              */
-            "object-removed": (arg0: GObject.Object) => void;
+            "object-removed": (object: GObject.Object) => void;
             /**
              * @signal
              * @run-first
@@ -4880,6 +4912,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -5047,17 +5080,17 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            bound: (arg0: number) => void;
+            bound: (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            error: (arg0: number, arg1: number, arg2: string) => void;
+            error: (object: number, p0: number, p1: string) => void;
             /**
              * @signal
              * @run-first
              */
-            "pw-proxy-created": (arg0: null) => void;
+            "pw-proxy-created": (object: null) => void;
             /**
              * @signal
              * @run-first
@@ -5524,12 +5557,12 @@ export namespace Wp {
              * @signal
              * @run-first
              */
-            "create-object": (arg0: number, arg1: string, arg2: string, arg3: Properties) => void;
+            "create-object": (object: number, p0: string, p1: string, p2: Properties) => void;
             /**
              * @signal
              * @run-first
              */
-            "object-removed": (arg0: number) => void;
+            "object-removed": (object: number) => void;
             "notify::properties": (pspec: GObject.ParamSpec) => void;
             "notify::spa-device-handle": (pspec: GObject.ParamSpec) => void;
             "notify::bound-id": (pspec: GObject.ParamSpec) => void;
@@ -5801,6 +5834,7 @@ export namespace Wp {
          * Saves new properties in the state, overwriting all previous data.
          * @param props the properties to save
          * @returns TRUE if the properties could be saved, FALSE otherwise
+         * @throws GLib.Error
          */
         save(props: Properties): boolean;
     }
@@ -5997,6 +6031,7 @@ export namespace Wp {
          * to enable subclasses to chain up correctly.
          * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          * @since 2.34
+         * @throws GLib.Error
          */
         legacy_propagate_error(): boolean;
 
@@ -6276,6 +6311,7 @@ export namespace Wp {
          * 
          * This is called internally when `self` is first used to find a match, so it is not necessary to call it explicitly
          * @returns TRUE if the interest is valid and can be used in a match, FALSE otherwise
+         * @throws GLib.Error
          */
         validate(): boolean;
     }
@@ -7722,6 +7758,7 @@ export namespace Wp {
          * Finishes an asynchronous parameter enumeration operation.
          * @param res the async result
          * @returns an iterator to iterate over the collected params, or NULL if the operation resulted in error; the items in the iterator are WpSpaPod
+         * @throws GLib.Error
          */
         enum_params_finish(res: Gio.AsyncResult): Iterator | null;
 
@@ -7905,6 +7942,7 @@ export namespace Wp {
          * Finishes the operation started by `wp_si_acquisition_acquire()`. This is meant to be called in the callback that was passed to that method.
          * @param res the async result
          * @returns TRUE on success, FALSE if there was an error
+         * @throws GLib.Error
          */
         acquire_finish(res: Gio.AsyncResult): boolean;
 
@@ -8027,6 +8065,7 @@ export namespace Wp {
          * Finishes the operation started by `wp_si_adapter_set_format()`. This is meant to be called in the callback that was passed to that method.
          * @param res the async result
          * @returns TRUE on success, FALSE if there was an error
+         * @throws GLib.Error
          */
         set_ports_format_finish(res: Gio.AsyncResult): boolean;
     }

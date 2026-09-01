@@ -31,25 +31,25 @@ export namespace Cogl {
         /**
          * Data is the same size of a byte
          */
-        BYTE,
+        BYTE = 5120,
         /**
          * Data is the same size of an
          *   unsigned byte
          */
-        UNSIGNED_BYTE,
+        UNSIGNED_BYTE = 5121,
         /**
          * Data is the same size of a short integer
          */
-        SHORT,
+        SHORT = 5122,
         /**
          * Data is the same size of
          *   an unsigned short integer
          */
-        UNSIGNED_SHORT,
+        UNSIGNED_SHORT = 5123,
         /**
          * Data is the same size of a float
          */
-        FLOAT,
+        FLOAT = 5126,
     }
 
 
@@ -67,15 +67,15 @@ export namespace Cogl {
          * Generic failure code, something went
          *   wrong.
          */
-        FAILED,
+        FAILED = 0,
         /**
          * Unknown image type.
          */
-        UNKNOWN_TYPE,
+        UNKNOWN_TYPE = 1,
         /**
          * An image file was broken somehow.
          */
-        CORRUPT_IMAGE,
+        CORRUPT_IMAGE = 2,
     }
 
 
@@ -88,20 +88,20 @@ export namespace Cogl {
         /**
          * Generic parse error
          */
-        PARSE_ERROR,
+        PARSE_ERROR = 0,
         /**
          * Argument parse error
          */
-        ARGUMENT_PARSE_ERROR,
+        ARGUMENT_PARSE_ERROR = 1,
         /**
          * Internal parser error
          */
-        INVALID_ERROR,
+        INVALID_ERROR = 2,
         /**
          * Blend string not
          *   supported by the GPU
          */
-        GPU_UNSUPPORTED_ERROR,
+        GPU_UNSUPPORTED_ERROR = 3,
     }
 
 
@@ -119,41 +119,41 @@ export namespace Cogl {
         /**
          * Never passes.
          */
-        NEVER,
+        NEVER = 512,
         /**
          * Passes if the fragment's depth
          * value is less than the value currently in the depth buffer.
          */
-        LESS,
+        LESS = 513,
         /**
          * Passes if the fragment's depth
          * value is equal to the value currently in the depth buffer.
          */
-        EQUAL,
+        EQUAL = 514,
         /**
          * Passes if the fragment's depth
          * value is less or equal to the value currently in the depth buffer.
          */
-        LEQUAL,
+        LEQUAL = 515,
         /**
          * Passes if the fragment's depth
          * value is greater than the value currently in the depth buffer.
          */
-        GREATER,
+        GREATER = 516,
         /**
          * Passes if the fragment's depth
          * value is not equal to the value currently in the depth buffer.
          */
-        NOTEQUAL,
+        NOTEQUAL = 517,
         /**
          * Passes if the fragment's depth
          * value greater than or equal to the value currently in the depth buffer.
          */
-        GEQUAL,
+        GEQUAL = 518,
         /**
          * Always passes.
          */
-        ALWAYS,
+        ALWAYS = 519,
     }
 
 
@@ -166,11 +166,11 @@ export namespace Cogl {
          * The event was not handled, continues the
          *                        processing
          */
-        CONTINUE,
+        CONTINUE = 0,
         /**
          * Remove the event, stops the processing
          */
-        REMOVE,
+        REMOVE = 1,
     }
 
 
@@ -199,7 +199,7 @@ export namespace Cogl {
          * ```
          * 
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Calculates the fog blend factor as:
          * 
@@ -208,7 +208,7 @@ export namespace Cogl {
          * ```
          * 
          */
-        EXPONENTIAL,
+        EXPONENTIAL = 1,
         /**
          * Calculates the fog blend factor as:
          * 
@@ -217,7 +217,7 @@ export namespace Cogl {
          * ```
          * 
          */
-        EXPONENTIAL_SQUARED,
+        EXPONENTIAL_SQUARED = 2,
     }
 
 
@@ -237,15 +237,15 @@ export namespace Cogl {
         /**
          * Your indices are unsigned bytes
          */
-        BYTE,
+        BYTE = 0,
         /**
          * Your indices are unsigned shorts
          */
-        SHORT,
+        SHORT = 1,
         /**
          * Your indices are unsigned ints
          */
-        INT,
+        INT = 2,
     }
 
 
@@ -260,41 +260,41 @@ export namespace Cogl {
         /**
          * Never let the fragment through.
          */
-        NEVER,
+        NEVER = 512,
         /**
          * Let the fragment through if the incoming
          *   alpha value is less than the reference alpha value
          */
-        LESS,
+        LESS = 513,
         /**
          * Let the fragment through if the incoming
          *   alpha value equals the reference alpha value
          */
-        EQUAL,
+        EQUAL = 514,
         /**
          * Let the fragment through if the incoming
          *   alpha value is less than or equal to the reference alpha value
          */
-        LEQUAL,
+        LEQUAL = 515,
         /**
          * Let the fragment through if the incoming
          *   alpha value is greater than the reference alpha value
          */
-        GREATER,
+        GREATER = 516,
         /**
          * Let the fragment through if the incoming
          *   alpha value does not equal the reference alpha value
          */
-        NOTEQUAL,
+        NOTEQUAL = 517,
         /**
          * Let the fragment through if the incoming
          *   alpha value is greater than or equal to the reference alpha value.
          */
-        GEQUAL,
+        GEQUAL = 518,
         /**
          * Always let the fragment through.
          */
-        ALWAYS,
+        ALWAYS = 519,
     }
 
 
@@ -311,38 +311,38 @@ export namespace Cogl {
          * Measuring in manhatten distance from the,
          *   current pixel center, use the nearest texture texel
          */
-        NEAREST,
+        NEAREST = 9728,
         /**
          * Use the weighted average of the 4 texels
          *   nearest the current pixel center
          */
-        LINEAR,
+        LINEAR = 9729,
         /**
          * Select the mimap level whose
          *   texel size most closely matches the current pixel, and use the
          *   {@link Cogl.MaterialFilter.NEAREST} criterion
          */
-        NEAREST_MIPMAP_NEAREST,
+        NEAREST_MIPMAP_NEAREST = 9984,
         /**
          * Select the mimap level whose
          *   texel size most closely matches the current pixel, and use the
          *   {@link Cogl.MaterialFilter.LINEAR} criterion
          */
-        LINEAR_MIPMAP_NEAREST,
+        LINEAR_MIPMAP_NEAREST = 9985,
         /**
          * Select the two mimap levels
          *   whose texel size most closely matches the current pixel, use
          *   the {@link Cogl.MaterialFilter.NEAREST} criterion on each one and take
          *   their weighted average
          */
-        NEAREST_MIPMAP_LINEAR,
+        NEAREST_MIPMAP_LINEAR = 9986,
         /**
          * Select the two mimap levels
          *   whose texel size most closely matches the current pixel, use
          *   the {@link Cogl.MaterialFilter.LINEAR} criterion on each one and take
          *   their weighted average
          */
-        LINEAR_MIPMAP_LINEAR,
+        LINEAR_MIPMAP_LINEAR = 9987,
     }
 
 
@@ -357,7 +357,7 @@ export namespace Cogl {
          * The layer represents a
          *   <link linkend="cogl-Textures">texture</link>
          */
-        MATERIAL_LAYER_TYPE_TEXTURE,
+        MATERIAL_LAYER_TYPE_TEXTURE = 0,
     }
 
 
@@ -378,14 +378,14 @@ export namespace Cogl {
          * The texture will be repeated. This
          *   is useful for example to draw a tiled background.
          */
-        REPEAT,
+        REPEAT = 10497,
         /**
          * The coordinates outside the
          *   range 0→1 will sample copies of the edge pixels of the
          *   texture. This is useful to avoid artifacts if only one copy of
          *   the texture is being rendered.
          */
-        CLAMP_TO_EDGE,
+        CLAMP_TO_EDGE = 33071,
         /**
          * Cogl will try to automatically
          *   decide which of the above two to use. For `cogl_rectangle()`, it
@@ -396,7 +396,7 @@ export namespace Cogl {
          *   layers that have point sprite coordinate generation enabled. This
          *   is the default value.
          */
-        AUTOMATIC,
+        AUTOMATIC = 519,
     }
 
 
@@ -404,8 +404,8 @@ export namespace Cogl {
      * @gir-type Enum
      */
     enum RendererError {
-        XLIB_DISPLAY_OPEN,
-        BAD_CONSTRAINT,
+        XLIB_DISPLAY_OPEN = 0,
+        BAD_CONSTRAINT = 1,
     }
 
 
@@ -418,11 +418,11 @@ export namespace Cogl {
         /**
          * A program for proccessing vertices
          */
-        VERTEX,
+        VERTEX = 0,
         /**
          * A program for processing fragments
          */
-        FRAGMENT,
+        FRAGMENT = 1,
     }
 
 
@@ -435,15 +435,15 @@ export namespace Cogl {
         /**
          * draw to both stereo buffers
          */
-        BOTH,
+        BOTH = 0,
         /**
          * draw only to the left stereo buffer
          */
-        LEFT,
+        LEFT = 1,
         /**
          * draw only to the left stereo buffer
          */
-        RIGHT,
+        RIGHT = 2,
     }
 
 
@@ -475,12 +475,12 @@ export namespace Cogl {
          * You tried to use a feature or
          *    configuration not currently available.
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 0,
         /**
          * You tried to allocate a resource
          *    such as a texture and there wasn't enough memory.
          */
-        NO_MEMORY,
+        NO_MEMORY = 1,
     }
 
 
@@ -493,25 +493,25 @@ export namespace Cogl {
         /**
          * Only the alpha component
          */
-        A,
+        A = 1,
         /**
          * Red and green components. Note that
          *   this can only be used if the `COGL_FEATURE_ID_TEXTURE_RG` feature
          *   is advertised.
          */
-        RG,
+        RG = 2,
         /**
          * Red, green and blue components
          */
-        RGB,
+        RGB = 3,
         /**
          * Red, green, blue and alpha components
          */
-        RGBA,
+        RGBA = 4,
         /**
          * Only a depth component
          */
-        DEPTH,
+        DEPTH = 5,
     }
 
 
@@ -524,17 +524,17 @@ export namespace Cogl {
         /**
          * Unsupported size
          */
-        SIZE,
+        SIZE = 0,
         /**
          * Unsupported format
          */
-        FORMAT,
-        BAD_PARAMETER,
+        FORMAT = 1,
+        BAD_PARAMETER = 2,
         /**
          * A primitive texture type that is
          *   unsupported by the driver was used
          */
-        TYPE,
+        TYPE = 3,
     }
 
 
@@ -548,15 +548,15 @@ export namespace Cogl {
         /**
          * A `CoglTexture2D`
          */
-        "2D",
+        "2D" = 0,
         /**
          * A `CoglTexture3D`
          */
-        "3D",
+        "3D" = 1,
         /**
          * A `CoglTextureRectangle`
          */
-        RECTANGLE,
+        RECTANGLE = 2,
     }
 
 
@@ -570,35 +570,35 @@ export namespace Cogl {
          * FIXME, equivalent to
          * <constant>GL_POINTS</constant>
          */
-        POINTS,
+        POINTS = 0,
         /**
          * FIXME, equivalent to <constant>GL_LINES</constant>
          */
-        LINES,
+        LINES = 1,
         /**
          * FIXME, equivalent to
          * <constant>GL_LINE_LOOP</constant>
          */
-        LINE_LOOP,
+        LINE_LOOP = 2,
         /**
          * FIXME, equivalent to
          * <constant>GL_LINE_STRIP</constant>
          */
-        LINE_STRIP,
+        LINE_STRIP = 3,
         /**
          * FIXME, equivalent to
          * <constant>GL_TRIANGLES</constant>
          */
-        TRIANGLES,
+        TRIANGLES = 4,
         /**
          * FIXME, equivalent to
          * <constant>GL_TRIANGLE_STRIP</constant>
          */
-        TRIANGLE_STRIP,
+        TRIANGLE_STRIP = 5,
         /**
          * FIXME, equivalent to <constant>GL_TRIANGLE_FAN</constant>
          */
-        TRIANGLE_FAN,
+        TRIANGLE_FAN = 6,
     }
 
 
@@ -612,11 +612,11 @@ export namespace Cogl {
         /**
          * Vertices are in a clockwise order
          */
-        CLOCKWISE,
+        CLOCKWISE = 0,
         /**
          * Vertices are in a counter-clockwise order
          */
-        COUNTER_CLOCKWISE,
+        COUNTER_CLOCKWISE = 1,
     }
 
 
@@ -624,33 +624,54 @@ export namespace Cogl {
      * @gir-type Enum
      */
     enum WinsysFeature {
-        MULTIPLE_ONSCREEN,
-        SWAP_THROTTLE,
-        VBLANK_COUNTER,
-        VBLANK_WAIT,
-        TEXTURE_FROM_PIXMAP,
-        SWAP_BUFFERS_EVENT,
-        SWAP_REGION,
-        SWAP_REGION_THROTTLE,
-        SWAP_REGION_SYNCHRONIZED,
-        BUFFER_AGE,
-        SYNC_AND_COMPLETE_EVENT,
-        N_FEATURES,
+        MULTIPLE_ONSCREEN = 0,
+        SWAP_THROTTLE = 1,
+        VBLANK_COUNTER = 2,
+        VBLANK_WAIT = 3,
+        TEXTURE_FROM_PIXMAP = 4,
+        SWAP_BUFFERS_EVENT = 5,
+        SWAP_REGION = 6,
+        SWAP_REGION_THROTTLE = 7,
+        SWAP_REGION_SYNCHRONIZED = 8,
+        BUFFER_AGE = 9,
+        SYNC_AND_COMPLETE_EVENT = 10,
+        N_FEATURES = 11,
     }
 
 
+    /**
+     * @default 64
+     */
     const AFIRST_BIT: number;
 
+    /**
+     * @default 16
+     */
     const A_BIT: number;
 
+    /**
+     * @default 32
+     */
     const BGR_BIT: number;
 
+    /**
+     * @default 256
+     */
     const DEPTH_BIT: number;
 
+    /**
+     * @default 128
+     */
     const PREMULT_BIT: number;
 
+    /**
+     * @default 512
+     */
     const STENCIL_BIT: number;
 
+    /**
+     * @default 127
+     */
     const TEXTURE_MAX_WASTE: number;
 
     /**
@@ -1696,6 +1717,7 @@ export namespace Cogl {
      * @returns A newly created {@link Cogl.Texture} or               `null` on failure
      * @since 0.8
      * @deprecated since 1.18: Use specific constructors such as                   `cogl_texture_2d_new_from_file()`
+     * @throws GLib.Error
      */
     function texture_new_from_file(filename: string, flags: TextureFlags, internal_format: PixelFormat): Texture;
 
@@ -1980,15 +2002,15 @@ export namespace Cogl {
         /**
          * Selects the primary color buffer
          */
-        COLOR,
+        COLOR = 1,
         /**
          * Selects the depth buffer
          */
-        DEPTH,
+        DEPTH = 2,
         /**
          * Selects the stencil buffer
          */
-        STENCIL,
+        STENCIL = 4,
     }
 
 
@@ -2001,11 +2023,11 @@ export namespace Cogl {
         /**
          * FIXME
          */
-        WINDOW_BUFFER,
+        WINDOW_BUFFER = 2,
         /**
          * FIXME
          */
-        OFFSCREEN_BUFFER,
+        OFFSCREEN_BUFFER = 4,
     }
 
 
@@ -2020,27 +2042,27 @@ export namespace Cogl {
         /**
          * None of the color channels are masked
          */
-        NONE,
+        NONE = 0,
         /**
          * Masks the red color channel
          */
-        RED,
+        RED = 1,
         /**
          * Masks the green color channel
          */
-        GREEN,
+        GREEN = 2,
         /**
          * Masks the blue color channel
          */
-        BLUE,
+        BLUE = 4,
         /**
          * Masks the alpha color channel
          */
-        ALPHA,
+        ALPHA = 8,
         /**
          * All of the color channels are masked
          */
-        ALL,
+        ALL = 15,
     }
 
 
@@ -2053,64 +2075,64 @@ export namespace Cogl {
         /**
          * ARB_texture_rectangle support
          */
-        TEXTURE_RECTANGLE,
+        TEXTURE_RECTANGLE = 2,
         /**
          * Non power of two textures are supported
          *    by the hardware. This is a equivalent to the
          *    {@link Cogl.FeatureFlags.TEXTURE_NPOT_BASIC}, {@link Cogl.FeatureFlags.TEXTURE_NPOT_MIPMAP}
          *    and {@link Cogl.FeatureFlags.TEXTURE_NPOT_REPEAT} features combined.
          */
-        TEXTURE_NPOT,
+        TEXTURE_NPOT = 4,
         /**
          * ycbcr conversion support
          */
-        TEXTURE_YUV,
+        TEXTURE_YUV = 8,
         /**
          * glReadPixels() support
          */
-        TEXTURE_READ_PIXELS,
+        TEXTURE_READ_PIXELS = 16,
         /**
          * GLSL support
          */
-        SHADERS_GLSL,
+        SHADERS_GLSL = 32,
         /**
          * FBO support
          */
-        OFFSCREEN,
+        OFFSCREEN = 64,
         /**
          * Multisample support on FBOs
          */
-        OFFSCREEN_MULTISAMPLE,
+        OFFSCREEN_MULTISAMPLE = 128,
         /**
          * Blit support on FBOs
          */
-        OFFSCREEN_BLIT,
+        OFFSCREEN_BLIT = 256,
         /**
          * At least 4 clip planes available
          */
-        FOUR_CLIP_PLANES,
+        FOUR_CLIP_PLANES = 512,
         /**
          * Stencil buffer support
          */
-        STENCIL_BUFFER,
+        STENCIL_BUFFER = 1024,
         /**
          * VBO support
          */
-        VBOS,
+        VBOS = 2048,
         /**
          * PBO support
          */
-        PBOS,
+        PBOS = 4096,
         /**
          * Set if
          *     {@link Cogl.IndicesType.INT} is supported in
          *     `cogl_vertex_buffer_indices_new()`.
          */
-        UNSIGNED_INT_INDICES,
+        UNSIGNED_INT_INDICES = 8192,
         /**
          * `cogl_material_set_depth_range()` support
          */
-        DEPTH_RANGE,
+        DEPTH_RANGE = 16384,
         /**
          * The hardware supports non power
          *     of two textures, but you also need to check the
@@ -2119,47 +2141,47 @@ export namespace Cogl {
          *     or repeat modes other than
          *     `COGL_PIPELINE_WRAP_MODE_CLAMP_TO_EDGE` respectively.
          */
-        TEXTURE_NPOT_BASIC,
+        TEXTURE_NPOT_BASIC = 32768,
         /**
          * Mipmapping is supported in
          *     conjuntion with non power of two textures.
          */
-        TEXTURE_NPOT_MIPMAP,
+        TEXTURE_NPOT_MIPMAP = 65536,
         /**
          * Repeat modes other than
          *     `COGL_PIPELINE_WRAP_MODE_CLAMP_TO_EDGE` are supported by the
          *     hardware.
          */
-        TEXTURE_NPOT_REPEAT,
+        TEXTURE_NPOT_REPEAT = 131072,
         /**
          * Whether
          *     `cogl_material_set_layer_point_sprite_coords_enabled()` is supported.
          */
-        POINT_SPRITE,
+        POINT_SPRITE = 262144,
         /**
          * 3D texture support
          */
-        TEXTURE_3D,
+        TEXTURE_3D = 524288,
         /**
          * ARBFP support
          */
-        SHADERS_ARBFP,
+        SHADERS_ARBFP = 1048576,
         /**
          * Whether `cogl_buffer_map()` is
          *     supported with CoglBufferAccess including read support.
          */
-        MAP_BUFFER_FOR_READ,
+        MAP_BUFFER_FOR_READ = 2097152,
         /**
          * Whether `cogl_buffer_map()` is
          *     supported with CoglBufferAccess including write support.
          */
-        MAP_BUFFER_FOR_WRITE,
-        ONSCREEN_MULTIPLE,
+        MAP_BUFFER_FOR_WRITE = 4194304,
+        ONSCREEN_MULTIPLE = 8388608,
         /**
          * Whether `CoglFramebuffer` support rendering the
          *     depth buffer to a texture.
          */
-        DEPTH_TEXTURE,
+        DEPTH_TEXTURE = 16777216,
     }
 
 
@@ -2189,120 +2211,120 @@ export namespace Cogl {
         /**
          * Any format
          */
-        ANY,
+        ANY = 0,
         /**
          * 8 bits alpha mask
          */
-        A_8,
+        A_8 = 17,
         /**
          * RGB, 16 bits
          */
-        RGB_565,
+        RGB_565 = 4,
         /**
          * RGBA, 16 bits
          */
-        RGBA_4444,
+        RGBA_4444 = 21,
         /**
          * RGBA, 16 bits
          */
-        RGBA_5551,
+        RGBA_5551 = 22,
         /**
          * Not currently supported
          */
-        YUV,
+        YUV = 7,
         /**
          * Single luminance component
          */
-        G_8,
+        G_8 = 8,
         /**
          * RG, 16 bits. Note that red-green textures
          *   are only available if `COGL_FEATURE_ID_TEXTURE_RG` is advertised.
          *   See `cogl_texture_set_components()` for details.
          */
-        RG_88,
+        RG_88 = 9,
         /**
          * RGB, 24 bits
          */
-        RGB_888,
+        RGB_888 = 2,
         /**
          * BGR, 24 bits
          */
-        BGR_888,
+        BGR_888 = 34,
         /**
          * RGBA, 32 bits
          */
-        RGBA_8888,
+        RGBA_8888 = 19,
         /**
          * BGRA, 32 bits
          */
-        BGRA_8888,
+        BGRA_8888 = 51,
         /**
          * ARGB, 32 bits
          */
-        ARGB_8888,
+        ARGB_8888 = 83,
         /**
          * ABGR, 32 bits
          */
-        ABGR_8888,
+        ABGR_8888 = 115,
         /**
          * RGBA, 32 bits, 10 bpc
          */
-        RGBA_1010102,
+        RGBA_1010102 = 29,
         /**
          * BGRA, 32 bits, 10 bpc
          */
-        BGRA_1010102,
+        BGRA_1010102 = 61,
         /**
          * ARGB, 32 bits, 10 bpc
          */
-        ARGB_2101010,
+        ARGB_2101010 = 93,
         /**
          * ABGR, 32 bits, 10 bpc
          */
-        ABGR_2101010,
+        ABGR_2101010 = 125,
         /**
          * Premultiplied RGBA, 32 bits
          */
-        RGBA_8888_PRE,
+        RGBA_8888_PRE = 147,
         /**
          * Premultiplied BGRA, 32 bits
          */
-        BGRA_8888_PRE,
+        BGRA_8888_PRE = 179,
         /**
          * Premultiplied ARGB, 32 bits
          */
-        ARGB_8888_PRE,
+        ARGB_8888_PRE = 211,
         /**
          * Premultiplied ABGR, 32 bits
          */
-        ABGR_8888_PRE,
+        ABGR_8888_PRE = 243,
         /**
          * Premultiplied RGBA, 16 bits
          */
-        RGBA_4444_PRE,
+        RGBA_4444_PRE = 149,
         /**
          * Premultiplied RGBA, 16 bits
          */
-        RGBA_5551_PRE,
+        RGBA_5551_PRE = 150,
         /**
          * Premultiplied RGBA, 32 bits, 10 bpc
          */
-        RGBA_1010102_PRE,
+        RGBA_1010102_PRE = 157,
         /**
          * Premultiplied BGRA, 32 bits, 10 bpc
          */
-        BGRA_1010102_PRE,
+        BGRA_1010102_PRE = 189,
         /**
          * Premultiplied ARGB, 32 bits, 10 bpc
          */
-        ARGB_2101010_PRE,
+        ARGB_2101010_PRE = 221,
         /**
          * Premultiplied ABGR, 32 bits, 10 bpc
          */
-        ABGR_2101010_PRE,
-        DEPTH_16,
-        DEPTH_32,
-        DEPTH_24_STENCIL_8,
+        ABGR_2101010_PRE = 253,
+        DEPTH_16 = 265,
+        DEPTH_32 = 259,
+        DEPTH_24_STENCIL_8 = 771,
     }
 
 
@@ -2315,7 +2337,7 @@ export namespace Cogl {
         /**
          * Read from the color buffer
          */
-        READ_PIXELS_COLOR_BUFFER,
+        READ_PIXELS_COLOR_BUFFER = 1,
     }
 
 
@@ -2328,7 +2350,7 @@ export namespace Cogl {
         /**
          * No flags specified
          */
-        NONE,
+        NONE = 0,
         /**
          * Disables the automatic generation of
          *   the mipmap pyramid from the base level image whenever it is
@@ -2336,16 +2358,16 @@ export namespace Cogl {
          *   rendered with a mipmap filter so it should be free to leave out
          *   this flag when using other filtering modes
          */
-        NO_AUTO_MIPMAP,
+        NO_AUTO_MIPMAP = 1,
         /**
          * Disables the slicing of the texture
          */
-        NO_SLICING,
+        NO_SLICING = 2,
         /**
          * Disables the insertion of the texture inside
          *   the texture atlas used by Cogl
          */
-        NO_ATLAS,
+        NO_ATLAS = 4,
     }
 
 
@@ -3084,6 +3106,7 @@ export namespace Cogl {
          * @returns `true` if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, `false` is returned and `error` is set accordingly (if   present).
          * @since 1.0
          * @deprecated since 1.16: Use `cogl_pipeline_set_blend()` instead
+         * @throws GLib.Error
          */
         set_blend(blend_string: string): Bool;
 
@@ -3260,6 +3283,7 @@ export namespace Cogl {
          * @returns `true` if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, `false` is returned and `error` is set
          * @since 1.0
          * @deprecated since 1.16: Use `cogl_pipeline_set_layer_combine()` instead
+         * @throws GLib.Error
          */
         set_layer_combine(layer_index: number, blend_string: string): Bool;
 
@@ -3308,6 +3332,7 @@ export namespace Cogl {
          * @returns `true` if the function succeeds, `false` otherwise.
          * @since 1.4
          * @deprecated since 1.16: Use `cogl_pipeline_set_layer_point_sprite_coords_enabled()`                  instead
+         * @throws GLib.Error
          */
         set_layer_point_sprite_coords_enabled(layer_index: number, enable: Bool): Bool;
 
@@ -4163,6 +4188,7 @@ export namespace Cogl {
          * the texture, or if the texture is attached to a {@link Cogl.Offscreen}
          * framebuffer and rendered too.</note>
          * @returns `true` if the texture was successfully allocated,               otherwise `false` and `error` will be updated if it               wasn't `null`.
+         * @throws GLib.Error
          */
         allocate(): Bool;
 
@@ -4339,6 +4365,7 @@ export namespace Cogl {
          * @param data the source data, pointing to the first top-left pixel to set
          * @param level The mipmap level to update (Normally 0 for the largest,         base texture)
          * @returns `true` if the data upload was successful, and               `false` otherwise
+         * @throws GLib.Error
          */
         set_data(format: PixelFormat, rowstride: number, data: number, level: number): Bool;
 

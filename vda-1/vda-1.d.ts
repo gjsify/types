@@ -39,9 +39,9 @@ export namespace Vda {
      * @gir-type Enum
      */
     enum MoveDirection {
-        FORWARD,
-        BACKWARD,
-        RELATIVE,
+        FORWARD = 0,
+        BACKWARD = 1,
+        RELATIVE = 2,
     }
 
 
@@ -238,13 +238,13 @@ export namespace Vda {
      * @gir-type Enum
      */
     enum ConnectionStatus {
-        INVALID,
-        IN_PROGRESS,
-        CANCELED,
-        MADE,
-        DISCONNECTED,
-        TIMEOUT,
-        CONNECTED,
+        INVALID = 0,
+        IN_PROGRESS = 1,
+        CANCELED = 2,
+        MADE = 3,
+        DISCONNECTED = 4,
+        TIMEOUT = 5,
+        CONNECTED = 6,
     }
 
 
@@ -259,49 +259,49 @@ export namespace Vda {
      * @gir-type Enum
      */
     enum SqlExpressionOperatorType {
-        NONE,
-        AND,
-        OR,
-        EQ,
-        IS,
-        LIKE,
-        BETWEEN,
-        NOT_BETWEEN,
-        BETWEEN_SYMMETRIC,
-        NOT_BETWEEN_SYMMETRIC,
-        IS_DISTINCT_FROM,
-        IS_NOT_DISTINCT_FROM,
-        GT,
-        LT,
-        GEQ,
-        LEQ,
-        DIFF,
-        REGEXP,
-        REGEXP_CI,
-        NOT_REGEXP,
-        NOT_REGEXP_CI,
-        SIMILAR_TO,
-        IS_NULL,
-        IS_NOT_NULL,
-        IS_TRUE,
-        IS_NOT_TRUE,
-        IS_FALSE,
-        IS_NOT_FALSE,
-        IS_UNKNOWN,
-        IS_NOT_UNKNOWN,
-        NOT,
-        IN,
-        NOT_IN,
-        CONCATENATE,
-        PLUS,
-        MINUS,
-        STAR,
-        DIV,
-        REM,
-        BITAND,
-        BITOR,
-        BITNOT,
-        ILIKE,
+        NONE = 0,
+        AND = 1,
+        OR = 2,
+        EQ = 3,
+        IS = 4,
+        LIKE = 5,
+        BETWEEN = 6,
+        NOT_BETWEEN = 7,
+        BETWEEN_SYMMETRIC = 8,
+        NOT_BETWEEN_SYMMETRIC = 9,
+        IS_DISTINCT_FROM = 10,
+        IS_NOT_DISTINCT_FROM = 11,
+        GT = 12,
+        LT = 13,
+        GEQ = 14,
+        LEQ = 15,
+        DIFF = 16,
+        REGEXP = 17,
+        REGEXP_CI = 18,
+        NOT_REGEXP = 19,
+        NOT_REGEXP_CI = 20,
+        SIMILAR_TO = 21,
+        IS_NULL = 22,
+        IS_NOT_NULL = 23,
+        IS_TRUE = 24,
+        IS_NOT_TRUE = 25,
+        IS_FALSE = 26,
+        IS_NOT_FALSE = 27,
+        IS_UNKNOWN = 28,
+        IS_NOT_UNKNOWN = 29,
+        NOT = 30,
+        IN = 31,
+        NOT_IN = 32,
+        CONCATENATE = 33,
+        PLUS = 34,
+        MINUS = 35,
+        STAR = 36,
+        DIV = 37,
+        REM = 38,
+        BITAND = 39,
+        BITOR = 40,
+        BITNOT = 41,
+        ILIKE = 42,
     }
 
 
@@ -316,17 +316,17 @@ export namespace Vda {
      * @gir-type Flags
      */
     enum RoleGrant {
-        NONE,
-        SELECT,
-        INSERT,
-        UPDATE,
-        DELETE,
-        TRUNCATE,
-        REFERENCES,
-        TRIGGER,
-        CREATE,
-        USAGE,
-        PRIVILEGES,
+        NONE = 1,
+        SELECT = 2,
+        INSERT = 4,
+        UPDATE = 8,
+        DELETE = 16,
+        TRUNCATE = 32,
+        REFERENCES = 64,
+        TRIGGER = 128,
+        CREATE = 256,
+        USAGE = 512,
+        PRIVILEGES = 1024,
     }
 
 
@@ -529,15 +529,20 @@ export namespace Vda {
          */
         vfunc_get_parameters(): SqlParameters;
 
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
 
@@ -610,15 +615,20 @@ export namespace Vda {
          */
         vfunc_to_string(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
 
@@ -774,11 +784,13 @@ export namespace Vda {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         add_field(name: string): void;
 
         /**
          * @param val 
+         * @throws GLib.Error
          */
         add_value(val: GObject.Value | any): void;
 
@@ -792,6 +804,7 @@ export namespace Vda {
         /**
          * @param par 
          * @param gtype 
+         * @throws GLib.Error
          */
         add_parameter(par: string, gtype: GObject.GType): void;
 
@@ -981,18 +994,24 @@ export namespace Vda {
         /**
          * @param exp 
          * @param allias 
+         * @throws GLib.Error
          */
         add_math_exp_field(exp: string, allias: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): PreparedQuery;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
 
@@ -1123,15 +1142,20 @@ export namespace Vda {
          */
         vfunc_to_string(): string;
 
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
 
@@ -1732,6 +1756,7 @@ export namespace Vda {
          * @param str 
          * @param cnc 
          * @param params 
+         * @throws GLib.Error
          */
         add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
 
@@ -5824,6 +5849,7 @@ export namespace Vda {
         /**
          * @param str 
          * @param params 
+         * @throws GLib.Error
          */
         set_math_expression_value(str: string, params: SqlParameters): void;
 
@@ -5951,6 +5977,7 @@ export namespace Vda {
 
         /**
          * @param str 
+         * @throws GLib.Error
          */
         parse(str: string): void;
 
@@ -6354,6 +6381,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_finish(_res_: Gio.AsyncResult): Result;
 
@@ -6374,6 +6402,9 @@ export namespace Vda {
          */
         cancel_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         render_sql(): string;
 
         get_sql(): string;
@@ -6733,6 +6764,7 @@ export namespace Vda {
         /**
          * @param str 
          * @param cnc 
+         * @throws GLib.Error
          */
         parse(str: string, cnc: Connection): SqlCommandParametrized;
 
@@ -11279,6 +11311,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         close_finish(_res_: Gio.AsyncResult): void;
 
@@ -11296,6 +11329,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         open_finish(_res_: Gio.AsyncResult): ConnectionStatus;
 
@@ -11318,17 +11352,20 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse_string(sql: string): Query;
 
         /**
          * @param name 
          * @param sql 
+         * @throws GLib.Error
          */
         parse_string_prepared(name: string, sql: string): PreparedQuery;
 
@@ -11340,6 +11377,7 @@ export namespace Vda {
         /**
          * @param cmd 
          * @param name 
+         * @throws GLib.Error
          */
         query_from_command(cmd: SqlCommand, name: string): PreparedQuery;
 
@@ -11465,6 +11503,7 @@ export namespace Vda {
         /**
          * @param name 
          * @param params 
+         * @throws GLib.Error
          */
         create_role(name: string, params: Parameters): Role;
     }
@@ -11536,31 +11575,37 @@ export namespace Vda {
         // Methods
         /**
          * @param name 
+         * @throws GLib.Error
          */
         add_savepoint(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         delete_savepoint(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         rollback_savepoint(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         begin_transaction(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         commit_transaction(name: string): boolean;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         rollback_transaction(name: string): boolean;
     }
@@ -11816,6 +11861,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_from_db_finish(_res_: Gio.AsyncResult): void;
 
@@ -11833,6 +11879,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
 
@@ -11855,6 +11902,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
 
@@ -11872,6 +11920,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         insert_data_into_db_finish(_res_: Gio.AsyncResult): void;
 
@@ -11889,6 +11938,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_data_from_db_finish(_res_: Gio.AsyncResult): void;
 
@@ -11906,6 +11956,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_data_from_db_pkey_finish(_res_: Gio.AsyncResult): void;
 
@@ -11928,6 +11979,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_data_from_db_full_finish(_res_: Gio.AsyncResult): void;
 
@@ -11945,6 +11997,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_into_db_finish(_res_: Gio.AsyncResult): void;
 
@@ -11962,6 +12015,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_into_db_pkey_finish(_res_: Gio.AsyncResult): void;
 
@@ -11984,12 +12038,14 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_data_into_db_full_finish(_res_: Gio.AsyncResult): void;
 
         /**
          * @param table 
          * @param nrow 
+         * @throws GLib.Error
          */
         update_from_row(table: TableModel, nrow: number): void;
 
@@ -12168,6 +12224,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         get_objects_finish(_res_: Gio.AsyncResult): TableModel;
 
@@ -12526,6 +12583,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         execute_finish(_res_: Gio.AsyncResult): Result;
 
@@ -12546,6 +12604,9 @@ export namespace Vda {
          */
         cancel_finish(_res_: Gio.AsyncResult): void;
 
+        /**
+         * @throws GLib.Error
+         */
         render_sql(): string;
 
         get_sql(): string;
@@ -12681,6 +12742,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         name_finish(_res_: Gio.AsyncResult): string;
 
@@ -12698,6 +12760,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         membership_finish(_res_: Gio.AsyncResult): HashModel;
 
@@ -12720,6 +12783,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         privilages_finish(_res_: Gio.AsyncResult): RoleGrant;
 
@@ -12745,6 +12809,7 @@ export namespace Vda {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         change_privilages_finish(_res_: Gio.AsyncResult): void;
 
@@ -12837,31 +12902,37 @@ export namespace Vda {
         // Methods
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_column(name: string): ColumnModel;
 
         /**
          * @param col 
+         * @throws GLib.Error
          */
         get_column_at(col: number): ColumnModel;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_value(name: string): SqlValue;
 
         /**
          * @param col 
+         * @throws GLib.Error
          */
         get_value_at(col: number): SqlValue;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_string(name: string): string;
 
         /**
          * @param col 
+         * @throws GLib.Error
          */
         get_string_at(col: number): string;
 
@@ -13049,15 +13120,20 @@ export namespace Vda {
     interface SqlCommandDelete extends GObject.Object, SqlCommandDelete.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
     }
@@ -13108,15 +13184,20 @@ export namespace Vda {
     interface SqlCommandInsert extends GObject.Object, SqlCommandInsert.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
     }
@@ -13216,11 +13297,13 @@ export namespace Vda {
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         add_field(name: string): void;
 
         /**
          * @param val 
+         * @throws GLib.Error
          */
         add_value(val: GObject.Value | any): void;
 
@@ -13234,6 +13317,7 @@ export namespace Vda {
         /**
          * @param par 
          * @param gtype 
+         * @throws GLib.Error
          */
         add_parameter(par: string, gtype: GObject.GType): void;
 
@@ -13408,18 +13492,24 @@ export namespace Vda {
         /**
          * @param exp 
          * @param allias 
+         * @throws GLib.Error
          */
         add_math_exp_field(exp: string, allias: string): void;
 
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): PreparedQuery;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
 
@@ -13550,15 +13640,20 @@ export namespace Vda {
     interface SqlCommandUpdate extends GObject.Object, SqlCommandUpdate.Interface {
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         stringify(): string;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         to_query(name: string): Query;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse(sql: string): void;
     }
@@ -13639,6 +13734,7 @@ export namespace Vda {
          * @param str 
          * @param cnc 
          * @param params 
+         * @throws GLib.Error
          */
         add_math_expression(str: string, cnc: Connection, params: SqlParameters): void;
     }
@@ -15402,6 +15498,7 @@ export namespace Vda {
         /**
          * @param str 
          * @param params 
+         * @throws GLib.Error
          */
         set_math_expression_value(str: string, params: SqlParameters): void;
 
@@ -15508,6 +15605,7 @@ export namespace Vda {
         // Methods
         /**
          * @param str 
+         * @throws GLib.Error
          */
         parse(str: string): void;
 
@@ -15661,6 +15759,7 @@ export namespace Vda {
         /**
          * @param str 
          * @param cnc 
+         * @throws GLib.Error
          */
         parse(str: string, cnc: Connection): SqlCommandParametrized;
     }
@@ -17196,13 +17295,20 @@ export namespace Vda {
         // Methods
         current(): RowModel;
 
+        /**
+         * @throws GLib.Error
+         */
         next(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         back(): boolean;
 
         /**
          * @param direction 
          * @param relative 
+         * @throws GLib.Error
          */
         move(direction: MoveDirection, relative: number): boolean;
 

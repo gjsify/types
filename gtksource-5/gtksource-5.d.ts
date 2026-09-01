@@ -48,19 +48,19 @@ export namespace GtkSource {
         /**
          * same color as drawn spaces
          */
-        NONE,
+        NONE = 0,
         /**
          * same as the diff:changed-line foreground color
          */
-        WARNING,
+        WARNING = 1,
         /**
          * same as the diff:removed-line foreground color
          */
-        ERROR,
+        ERROR = 2,
         /**
          * same as the diff:added-line foreground color
          */
-        ACCENT,
+        ACCENT = 3,
     }
 
 
@@ -78,11 +78,11 @@ export namespace GtkSource {
         /**
          * no pattern
          */
-        NONE,
+        NONE = 0,
         /**
          * grid pattern
          */
-        GRID,
+        GRID = 1,
     }
 
 
@@ -100,20 +100,20 @@ export namespace GtkSource {
         /**
          * there is no bracket to match.
          */
-        NONE,
+        NONE = 0,
         /**
          * matching a bracket
          *  failed because the maximum range was reached.
          */
-        OUT_OF_RANGE,
+        OUT_OF_RANGE = 1,
         /**
          * a matching bracket was not found.
          */
-        NOT_FOUND,
+        NOT_FOUND = 2,
         /**
          * a matching bracket was found.
          */
-        FOUND,
+        FOUND = 3,
     }
 
 
@@ -131,19 +131,19 @@ export namespace GtkSource {
         /**
          * change case to lowercase.
          */
-        LOWER,
+        LOWER = 0,
         /**
          * change case to uppercase.
          */
-        UPPER,
+        UPPER = 1,
         /**
          * toggle case of each character.
          */
-        TOGGLE,
+        TOGGLE = 2,
         /**
          * capitalize each word.
          */
-        TITLE,
+        TITLE = 3,
     }
 
 
@@ -158,9 +158,9 @@ export namespace GtkSource {
      * @gir-type Enum
      */
     enum CompletionActivation {
-        NONE,
-        INTERACTIVE,
-        USER_REQUESTED,
+        NONE = 0,
+        INTERACTIVE = 1,
+        USER_REQUESTED = 2,
     }
 
 
@@ -175,12 +175,12 @@ export namespace GtkSource {
      * @gir-type Enum
      */
     enum CompletionColumn {
-        ICON,
-        BEFORE,
-        TYPED_TEXT,
-        AFTER,
-        COMMENT,
-        DETAILS,
+        ICON = 0,
+        BEFORE = 1,
+        TYPED_TEXT = 2,
+        AFTER = 3,
+        COMMENT = 4,
+        DETAILS = 5,
     }
 
 
@@ -198,11 +198,11 @@ export namespace GtkSource {
         /**
          * plain text.
          */
-        NONE,
+        NONE = 0,
         /**
          * gzip compression.
          */
-        GZIP,
+        GZIP = 1,
     }
 
 
@@ -283,15 +283,15 @@ export namespace GtkSource {
         /**
          * The full cell.
          */
-        CELL,
+        CELL = 0,
         /**
          * The first line.
          */
-        FIRST,
+        FIRST = 1,
         /**
          * The last line.
          */
-        LAST,
+        LAST = 2,
     }
 
 
@@ -309,16 +309,16 @@ export namespace GtkSource {
         /**
          * line feed, used on UNIX.
          */
-        LF,
+        LF = 0,
         /**
          * carriage return, used on Mac.
          */
-        CR,
+        CR = 1,
         /**
          * carriage return followed by a line feed, used
          *   on Windows.
          */
-        CR_LF,
+        CR_LF = 2,
     }
 
 
@@ -336,24 +336,24 @@ export namespace GtkSource {
         /**
          * smart-home-end disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * move to the first/last
          * non-whitespace character on the first press of the HOME/END keys and
          * to the beginning/end of the line on the second press.
          */
-        BEFORE,
+        BEFORE = 1,
         /**
          * move to the beginning/end of the
          * line on the first press of the HOME/END keys and to the first/last
          * non-whitespace character on the second press.
          */
-        AFTER,
+        AFTER = 2,
         /**
          * always move to the first/last
          * non-whitespace character when the HOME/END keys are pressed.
          */
-        ALWAYS,
+        ALWAYS = 3,
     }
 
 
@@ -372,12 +372,12 @@ export namespace GtkSource {
          * the gutter position of the lines
          * renderer
          */
-        LINES,
+        LINES = -30,
         /**
          * the gutter position of the marks
          * renderer
          */
-        MARKS,
+        MARKS = -20,
     }
 
 
@@ -385,6 +385,7 @@ export namespace GtkSource {
      * Like `gtk_source_get_major_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 5
      */
     const MAJOR_VERSION: number;
 
@@ -392,6 +393,7 @@ export namespace GtkSource {
      * Like `gtk_source_get_micro_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -399,6 +401,7 @@ export namespace GtkSource {
      * Like `gtk_source_get_minor_version()`, but from the headers used at
      * application compile time, rather than from the library linked
      * against at application run time.
+     * @default 21
      */
     const MINOR_VERSION: number;
 
@@ -595,19 +598,19 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Ignore invalid characters.
          */
-        IGNORE_INVALID_CHARS,
+        IGNORE_INVALID_CHARS = 1,
         /**
          * Save file despite external modifications.
          */
-        IGNORE_MODIFICATION_TIME,
+        IGNORE_MODIFICATION_TIME = 2,
         /**
          * Create a backup before saving the file.
          */
-        CREATE_BACKUP,
+        CREATE_BACKUP = 4,
     }
 
 
@@ -625,25 +628,26 @@ export namespace GtkSource {
         /**
          * no flags specified
          */
-        NONE,
+        NONE = 0,
         /**
          * case sensitive sort
          */
-        CASE_SENSITIVE,
+        CASE_SENSITIVE = 1,
         /**
          * sort in reverse order
          */
-        REVERSE_ORDER,
+        REVERSE_ORDER = 2,
         /**
          * remove duplicates
          */
-        REMOVE_DUPLICATES,
+        REMOVE_DUPLICATES = 4,
         /**
          * improved sorting for filenames.
          * 
          * see {@link GLib.utf8_collate_key_for_filename}
+         * @since 5.16
          */
-        FILENAME,
+        FILENAME = 8,
     }
 
 
@@ -665,24 +669,24 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Leading white spaces on a line, i.e. the
          *   indentation.
          */
-        LEADING,
+        LEADING = 1,
         /**
          * White spaces inside a line of text.
          */
-        INSIDE_TEXT,
+        INSIDE_TEXT = 2,
         /**
          * Trailing white spaces on a line.
          */
-        TRAILING,
+        TRAILING = 4,
         /**
          * White spaces anywhere.
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -701,29 +705,29 @@ export namespace GtkSource {
         /**
          * No flags.
          */
-        NONE,
+        NONE = 0,
         /**
          * Space character.
          */
-        SPACE,
+        SPACE = 1,
         /**
          * Tab character.
          */
-        TAB,
+        TAB = 2,
         /**
          * Line break character. If the
          *   {@link GtkSource.Buffer.implicit_trailing_newline} property is `true`,
          *   {@link GtkSource.SpaceDrawer} also draws a line break at the end of the buffer.
          */
-        NEWLINE,
+        NEWLINE = 4,
         /**
          * Non-breaking space character.
          */
-        NBSP,
+        NBSP = 8,
         /**
          * All white spaces.
          */
-        ALL,
+        ALL = 15,
     }
 
 
@@ -967,6 +971,7 @@ export namespace GtkSource {
          * @param result 
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 5.18
+         * @throws GLib.Error
          */
         populate_hover_finish(result: Gio.AsyncResult): boolean;
 
@@ -1070,7 +1075,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "bracket-matched": (arg0: Gtk.TextIter | null, arg1: BracketMatchType) => void;
+            "bracket-matched": (iter: Gtk.TextIter | null, state: BracketMatchType) => void;
             /**
              * The "cursor-moved" signal is emitted when then insertion mark has moved.
              * @signal
@@ -1084,14 +1089,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "highlight-updated": (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
+            "highlight-updated": (start: Gtk.TextIter, end: Gtk.TextIter) => void;
             /**
              * The ::source-mark-updated signal is emitted each time
              * a mark is added to, moved or removed from the `buffer`.
              * @signal
              * @run-last
              */
-            "source-mark-updated": (arg0: Gtk.TextMark) => void;
+            "source-mark-updated": (mark: Gtk.TextMark) => void;
             "notify::highlight-matching-brackets": (pspec: GObject.ParamSpec) => void;
             "notify::highlight-syntax": (pspec: GObject.ParamSpec) => void;
             "notify::implicit-trailing-newline": (pspec: GObject.ParamSpec) => void;
@@ -1626,14 +1631,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "provider-added": (arg0: CompletionProvider) => void;
+            "provider-added": (provider: CompletionProvider) => void;
             /**
              * The "provided-removed" signal is emitted when a provider has
              * been removed from the completion.
              * @signal
              * @run-last
              */
-            "provider-removed": (arg0: CompletionProvider) => void;
+            "provider-removed": (provider: CompletionProvider) => void;
             /**
              * The "show" signal is emitted when the completion window should
              * be shown.
@@ -2436,7 +2441,7 @@ export namespace GtkSource {
              * @since 5.6
              * @run-last
              */
-            "provider-model-changed": (arg0: CompletionProvider, arg1: Gio.ListModel | null) => void;
+            "provider-model-changed": (provider: CompletionProvider, model: Gio.ListModel | null) => void;
             "notify::busy": (pspec: GObject.ParamSpec) => void;
             "notify::completion": (pspec: GObject.ParamSpec) => void;
             "notify::empty": (pspec: GObject.ParamSpec) => void;
@@ -2939,6 +2944,7 @@ export namespace GtkSource {
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link Gio.ListModel} of {@link GtkSource.CompletionProposal}
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -3348,6 +3354,7 @@ export namespace GtkSource {
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link Gio.ListModel} of {@link GtkSource.CompletionProposal}
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -3920,6 +3927,7 @@ export namespace GtkSource {
          * type.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the contents has been loaded successfully.
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -4164,6 +4172,7 @@ export namespace GtkSource {
          * if the file has been saved successfully.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
+         * @throws GLib.Error
          */
         save_finish(result: Gio.AsyncResult): boolean;
 
@@ -4922,18 +4931,18 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            activate: (arg0: Gtk.TextIter, arg1: Gdk.Rectangle, arg2: number, arg3: Gdk.ModifierType, arg4: number) => void;
+            activate: (iter: Gtk.TextIter, area: Gdk.Rectangle, button: number, state: Gdk.ModifierType, n_presses: number) => void;
             /**
              * The signal is emitted when the renderer can possibly be activated.
              * @signal
              * @run-last
              */
-            "query-activatable": (arg0: Gtk.TextIter, arg1: Gdk.Rectangle) => boolean | void;
+            "query-activatable": (iter: Gtk.TextIter, area: Gdk.Rectangle) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "query-data": (arg0: GObject.Object, arg1: number) => void;
+            "query-data": (object: GObject.Object, p0: number) => void;
             "notify::alignment-mode": (pspec: GObject.ParamSpec) => void;
             "notify::lines": (pspec: GObject.ParamSpec) => void;
             "notify::view": (pspec: GObject.ParamSpec) => void;
@@ -7312,14 +7321,14 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "query-tooltip-markup": (arg0: Mark) => string;
+            "query-tooltip-markup": (mark: Mark) => string;
             /**
              * The code should connect to this signal to provide a tooltip for given
              * `mark`. The tooltip should be just a plain text.
              * @signal
              * @run-last
              */
-            "query-tooltip-text": (arg0: Mark) => string;
+            "query-tooltip-text": (mark: Mark) => string;
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::gicon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -8838,6 +8847,7 @@ export namespace GtkSource {
          * details.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @throws GLib.Error
          */
         backward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -8906,6 +8916,7 @@ export namespace GtkSource {
          * details.
          * @param result a {@link Gio.AsyncResult}.
          * @returns whether a match was found.
+         * @throws GLib.Error
          */
         forward_finish(result: Gio.AsyncResult): [boolean, Gtk.TextIter | null, Gtk.TextIter | null, boolean];
 
@@ -8977,6 +8988,7 @@ export namespace GtkSource {
          * @param replace the replacement text.
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns whether the match has been replaced.
+         * @throws GLib.Error
          */
         replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean;
 
@@ -8991,6 +9003,7 @@ export namespace GtkSource {
          * @param replace the replacement text.
          * @param replace_length the length of `replace` in bytes, or -1.
          * @returns the number of replaced matches.
+         * @throws GLib.Error
          */
         replace_all(replace: string, replace_length: number): number;
 
@@ -12445,14 +12458,14 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "change-case": (arg0: ChangeCaseType) => void;
+            "change-case": (case_type: ChangeCaseType) => void;
             /**
              * Keybinding signal to edit a number at the current cursor position.
              * @signal
              * @action
              * @run-last
              */
-            "change-number": (arg0: number) => void;
+            "change-number": (count: number) => void;
             /**
              * Keybinding signal to join the lines currently selected.
              * @signal
@@ -12468,7 +12481,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "line-mark-activated": (arg0: Gtk.TextIter, arg1: number, arg2: Gdk.ModifierType, arg3: number) => void;
+            "line-mark-activated": (iter: Gtk.TextIter, button: number, state: Gdk.ModifierType, n_presses: number) => void;
             /**
              * The signal is a keybinding which gets emitted when the user initiates moving a line.
              * 
@@ -12478,14 +12491,14 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-lines": (arg0: boolean) => void;
+            "move-lines": (down: boolean) => void;
             /**
              * Keybinding signal to move the cursor to the matching bracket.
              * @signal
              * @action
              * @run-last
              */
-            "move-to-matching-bracket": (arg0: boolean) => void;
+            "move-to-matching-bracket": (extend_selection: boolean) => void;
             /**
              * The signal is a keybinding which gets emitted when the user initiates moving a word.
              * 
@@ -12495,7 +12508,7 @@ export namespace GtkSource {
              * @action
              * @run-last
              */
-            "move-words": (arg0: number) => void;
+            "move-words": (count: number) => void;
             /**
              * The signal is emitted to insert a new snippet into the view.
              * 
@@ -12505,7 +12518,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "push-snippet": (arg0: Snippet, arg1: Gtk.TextIter) => void;
+            "push-snippet": (snippet: Snippet, location: Gtk.TextIter) => void;
             /**
              * The signal is a key binding signal which gets
              * emitted when the user requests a completion, by pressing
@@ -12532,7 +12545,7 @@ export namespace GtkSource {
              * @signal
              * @run-last
              */
-            "smart-home-end": (arg0: Gtk.TextIter, arg1: number) => void;
+            "smart-home-end": (iter: Gtk.TextIter, count: number) => void;
             "notify::annotations": (pspec: GObject.ParamSpec) => void;
             "notify::auto-indent": (pspec: GObject.ParamSpec) => void;
             "notify::background-pattern": (pspec: GObject.ParamSpec) => void;
@@ -13660,7 +13673,7 @@ export namespace GtkSource {
              * @since 5.4
              * @run-last
              */
-            edit: (arg0: View, arg1: string | null) => void;
+            edit: (view: View, path: string | null) => void;
             /**
              * The signal is emitted when a command should be
              * executed. This might be something like `:wq` or `:e <path>`.
@@ -13671,7 +13684,7 @@ export namespace GtkSource {
              * @since 5.4
              * @run-last
              */
-            "execute-command": (arg0: string) => boolean | void;
+            "execute-command": (command: string) => boolean | void;
             /**
              * Requests that the application format the text between
              * `begin` and `end`.
@@ -13679,7 +13692,7 @@ export namespace GtkSource {
              * @since 5.4
              * @run-last
              */
-            "format-text": (arg0: Gtk.TextIter, arg1: Gtk.TextIter) => void;
+            "format-text": (begin: Gtk.TextIter, end: Gtk.TextIter) => void;
             /**
              * Requests the application save the file.
              * 
@@ -13689,7 +13702,7 @@ export namespace GtkSource {
              * @since 5.4
              * @run-last
              */
-            write: (arg0: View, arg1: string | null) => void;
+            write: (view: View, path: string | null) => void;
             "notify::command-bar-text": (pspec: GObject.ParamSpec) => void;
             "notify::command-text": (pspec: GObject.ParamSpec) => void;
             "notify::input-hints": (pspec: GObject.ParamSpec) => void;
@@ -14568,6 +14581,7 @@ export namespace GtkSource {
          * Completes an asynchronous operation to populate a completion provider.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link Gio.ListModel} of {@link GtkSource.CompletionProposal}
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): Gio.ListModel;
 
@@ -14670,6 +14684,7 @@ export namespace GtkSource {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         populate_finish(result: Gio.AsyncResult): boolean;
     }

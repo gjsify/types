@@ -47,11 +47,11 @@ export namespace Retro {
         /**
          * the X axis of an analog stick
          */
-        X,
+        X = 0,
         /**
          * the Y axis of an analog stick
          */
-        Y,
+        Y = 1,
     }
 
 
@@ -70,11 +70,11 @@ export namespace Retro {
         /**
          * the left analog stick
          */
-        LEFT,
+        LEFT = 0,
         /**
          * the right analog stick
          */
-        RIGHT,
+        RIGHT = 1,
     }
 
 
@@ -93,35 +93,35 @@ export namespace Retro {
         /**
          * no controller
          */
-        NONE,
+        NONE = 0,
         /**
          * a classic gamepad
          */
-        JOYPAD,
+        JOYPAD = 1,
         /**
          * a simple mouse
          */
-        MOUSE,
+        MOUSE = 2,
         /**
          * a keyboard
          */
-        KEYBOARD,
+        KEYBOARD = 3,
         /**
          * a lightgun
          */
-        LIGHTGUN,
+        LIGHTGUN = 4,
         /**
          * a gamepad with analog sticks
          */
-        ANALOG,
+        ANALOG = 5,
         /**
          * a screen pointer
          */
-        POINTER,
+        POINTER = 6,
         /**
          * a mask to get the super type of a derived one
          */
-        TYPE_MASK,
+        TYPE_MASK = 255,
     }
 
 
@@ -145,67 +145,67 @@ export namespace Retro {
         /**
          * the bottom action button
          */
-        B,
+        B = 0,
         /**
          * the left action button
          */
-        Y,
+        Y = 1,
         /**
          * the Select button
          */
-        SELECT,
+        SELECT = 2,
         /**
          * the Start button
          */
-        START,
+        START = 3,
         /**
          * the up directional button
          */
-        UP,
+        UP = 4,
         /**
          * the down directional button
          */
-        DOWN,
+        DOWN = 5,
         /**
          * the left directional button
          */
-        LEFT,
+        LEFT = 6,
         /**
          * the right directional button
          */
-        RIGHT,
+        RIGHT = 7,
         /**
          * the right action button
          */
-        A,
+        A = 8,
         /**
          * the top action button
          */
-        X,
+        X = 9,
         /**
          * the first left shoulder button
          */
-        L,
+        L = 10,
         /**
          * the first right shoulder button
          */
-        R,
+        R = 11,
         /**
          * the second left shoulder button
          */
-        L2,
+        L2 = 12,
         /**
          * the second right shoulder button
          */
-        R2,
+        R2 = 13,
         /**
          * the left thumb button
          */
-        L3,
+        L3 = 14,
         /**
          * the right thumb button
          */
-        R3,
+        R3 = 15,
     }
 
 
@@ -224,31 +224,31 @@ export namespace Retro {
         /**
          * the X axis of a lightgun
          */
-        X,
+        X = 0,
         /**
          * the Y axis of a lightgun
          */
-        Y,
+        Y = 1,
         /**
          * the trigger of a lightgun
          */
-        TRIGGER,
+        TRIGGER = 2,
         /**
          * the cursor of a lightgun
          */
-        CURSOR,
+        CURSOR = 3,
         /**
          * the turbo button of a lightgun
          */
-        TURBO,
+        TURBO = 4,
         /**
          * the pause button of a lightgun
          */
-        PAUSE,
+        PAUSE = 5,
         /**
          * the start button of a lightgun
          */
-        START,
+        START = 6,
     }
 
 
@@ -260,19 +260,19 @@ export namespace Retro {
         /**
          * the save RAM
          */
-        SAVE_RAM,
+        SAVE_RAM = 0,
         /**
          * the real time clock
          */
-        RTC,
+        RTC = 1,
         /**
          * the system RAM
          */
-        SYSTEM_RAM,
+        SYSTEM_RAM = 2,
         /**
          * the video RAM
          */
-        VIDEO_RAM,
+        VIDEO_RAM = 3,
     }
 
 
@@ -291,47 +291,47 @@ export namespace Retro {
         /**
          * the X axis of a mouse
          */
-        X,
+        X = 0,
         /**
          * the Y axis of a mouse
          */
-        Y,
+        Y = 1,
         /**
          * the left button of a mouse
          */
-        LEFT,
+        LEFT = 2,
         /**
          * the right button of a mouse
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * the up direction of a mouse wheel
          */
-        WHEELUP,
+        WHEELUP = 4,
         /**
          * the down direction of a mouse wheel
          */
-        WHEELDOWN,
+        WHEELDOWN = 5,
         /**
          * the middle button of a mouse
          */
-        MIDDLE,
+        MIDDLE = 6,
         /**
          * the horizontal up direction of a mouse wheel
          */
-        HORIZ_WHEELUP,
+        HORIZ_WHEELUP = 7,
         /**
          * the horizontal down direction of a mouse wheel
          */
-        HORIZ_WHEELDOWN,
+        HORIZ_WHEELDOWN = 8,
         /**
          * the fourth button of a mouse
          */
-        BUTTON_4,
+        BUTTON_4 = 9,
         /**
          * the fifth button of a mouse
          */
-        BUTTON_5,
+        BUTTON_5 = 10,
     }
 
 
@@ -350,15 +350,15 @@ export namespace Retro {
         /**
          * the X axis of a pointer
          */
-        X,
+        X = 0,
         /**
          * the Y axis of a pointer
          */
-        Y,
+        Y = 1,
         /**
          * the pression of a pointer
          */
-        PRESSED,
+        PRESSED = 2,
     }
 
 
@@ -377,11 +377,11 @@ export namespace Retro {
         /**
          * the strong rumble effect
          */
-        STRONG,
+        STRONG = 0,
         /**
          * the weak rumble effect
          */
-        WEAK,
+        WEAK = 1,
     }
 
 
@@ -400,15 +400,15 @@ export namespace Retro {
         /**
          * a smooth but blurry video filer
          */
-        SMOOTH,
+        SMOOTH = 0,
         /**
          * a sharp video filter showing every pixel
          */
-        SHARP,
+        SHARP = 1,
         /**
          * a video filter mimicking CRT screens
          */
-        CRT,
+        CRT = 2,
     }
 
 
@@ -529,20 +529,20 @@ export namespace Retro {
              * @signal
              * @run-last
              */
-            crashed: (arg0: string) => void;
+            crashed: (message: string) => void;
             /**
              * The ::log signal is emitted each time the core emits a message to log.
              * @signal
              * @run-last
              */
-            log: (arg0: string, arg1: GLib.LogLevelFlags, arg2: string) => void;
+            log: (log_domain: string, log_level: GLib.LogLevelFlags, message: string) => void;
             /**
              * The ::message signal is emitted each time the core emits a message to
              * display during a given amount of frames.
              * @signal
              * @run-last
              */
-            message: (arg0: string, arg1: number) => void;
+            message: (message: string, frames: number) => void;
             /**
              * The ::shutdown signal is emitted when the core shut down.
              * 
@@ -560,7 +560,7 @@ export namespace Retro {
              * @signal
              * @run-last
              */
-            "video-output": (arg0: Pixdata) => void;
+            "video-output": (pixdata: Pixdata) => void;
             "notify::api-version": (pspec: GObject.ParamSpec) => void;
             "notify::content-directory": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -785,6 +785,7 @@ export namespace Retro {
         /**
          * This initializes `self`, loads its available options and loads the medias. You
          * need to boot `self` before using some of its methods.
+         * @throws GLib.Error
          */
         boot(): void;
 
@@ -907,12 +908,14 @@ export namespace Retro {
          * Loads a memory region of `self`.
          * @param memory_type the type of memory
          * @param filename a file to load the data from
+         * @throws GLib.Error
          */
         load_memory(memory_type: MemoryType, filename: string): void;
 
         /**
          * Loads the state of the `self`.
          * @param filename the file to load the state from
+         * @throws GLib.Error
          */
         load_state(filename: string): void;
 
@@ -941,12 +944,14 @@ export namespace Retro {
          * Saves a memory region of `self`.
          * @param memory_type the type of memory
          * @param filename a file to save the data to
+         * @throws GLib.Error
          */
         save_memory(memory_type: MemoryType, filename: string): void;
 
         /**
          * Saves the state of `self`.
          * @param filename the file to save the state to
+         * @throws GLib.Error
          */
         save_state(filename: string): void;
 
@@ -967,6 +972,7 @@ export namespace Retro {
          * 
          * You can use this after booting the core.
          * @param media_index the media index
+         * @throws GLib.Error
          */
         set_current_media(media_index: number): void;
 
@@ -1082,6 +1088,7 @@ export namespace Retro {
          * Gets the MD5 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
+         * @throws GLib.Error
          */
         get_firmware_md5(firmware: string): string | null;
 
@@ -1089,6 +1096,7 @@ export namespace Retro {
          * Gets the demanded path to the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
+         * @throws GLib.Error
          */
         get_firmware_path(firmware: string): string | null;
 
@@ -1096,6 +1104,7 @@ export namespace Retro {
          * Gets the SHA512 fingerprint of the firmware file, or `null`.
          * @param firmware a firmware name
          * @returns a string or `null`, free it with `g_free()`
+         * @throws GLib.Error
          */
         get_firmware_sha512(firmware: string): string | null;
 
@@ -1103,12 +1112,14 @@ export namespace Retro {
          * Gets the list of firmwares used by the core for this platform.
          * @param platform a platform name
          * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
+         * @throws GLib.Error
          */
         get_firmwares(platform: string): string[];
 
         /**
          * Gets the icon, or `null` if it doesn't exist.
          * @returns a {@link Gio.Icon} or `null`
+         * @throws GLib.Error
          */
         get_icon(): Gio.Icon | null;
 
@@ -1121,6 +1132,7 @@ export namespace Retro {
         /**
          * Gets whether the core is an emulator, and hence need games to be loaded.
          * @returns whether the core is an emulator
+         * @throws GLib.Error
          */
         get_is_emulator(): boolean;
 
@@ -1128,12 +1140,14 @@ export namespace Retro {
          * Gets whether the firmware is mandatory for the core to function.
          * @param firmware a firmware name
          * @returns whether the firmware is mandatory for the core to function
+         * @throws GLib.Error
          */
         get_is_firmware_mandatory(firmware: string): boolean;
 
         /**
          * Gets whether the core is a game, and hence can't load games.
          * @returns whether the core is a game
+         * @throws GLib.Error
          */
         get_is_game(): boolean;
 
@@ -1141,24 +1155,28 @@ export namespace Retro {
          * Gets the list of MIME types accepted used by the core for this platform.
          * @param platform a platform name
          * @returns a `null`-terminated string array or `null`, the array should be freed with `g_strfreev()`
+         * @throws GLib.Error
          */
         get_mime_type(platform: string): string[];
 
         /**
          * Gets the module file name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
+         * @throws GLib.Error
          */
         get_module(): string | null;
 
         /**
          * Gets the module file, or `null` if it doesn't exist.
          * @returns a {@link Gio.File} or `null`
+         * @throws GLib.Error
          */
         get_module_file(): Gio.File | null;
 
         /**
          * Gets the name, or `null` if it doesn't exist.
          * @returns a string or `null`, free it with `g_free()`
+         * @throws GLib.Error
          */
         get_name(): string | null;
 
@@ -1167,6 +1185,7 @@ export namespace Retro {
          * @param platform a platform name
          * @param mime_types the MIME types
          * @returns whether the platform supports all of the given MIME types
+         * @throws GLib.Error
          */
         get_platform_supports_mime_types(platform: string, mime_types: string[]): boolean;
 
@@ -1180,6 +1199,7 @@ export namespace Retro {
          * Gets whether the firmware declares its MD5 fingerprint.
          * @param firmware a firmware name
          * @returns whether the firmware declares its MD5 fingerprint
+         * @throws GLib.Error
          */
         has_firmware_md5(firmware: string): boolean;
 
@@ -1187,6 +1207,7 @@ export namespace Retro {
          * Gets whether the firmware declares its SHA512 fingerprint.
          * @param firmware a firmware name
          * @returns whether the firmware declares its SHA512 fingerprint
+         * @throws GLib.Error
          */
         has_firmware_sha512(firmware: string): boolean;
 
@@ -1194,12 +1215,14 @@ export namespace Retro {
          * Gets whether the platform has associated firmwares.
          * @param platform a platform name
          * @returns whether the platform has associated firmwares
+         * @throws GLib.Error
          */
         has_firmwares(platform: string): boolean;
 
         /**
          * Gets whether the core has an icon.
          * @returns whether the core has an icon
+         * @throws GLib.Error
          */
         has_icon(): boolean;
 
@@ -1688,6 +1711,7 @@ export namespace Retro {
          * Sets the value for `self`. An error will be thrown if the value is invalid for
          * `self`.
          * @param value the value
+         * @throws GLib.Error
          */
         set_value(value: string): void;
     }

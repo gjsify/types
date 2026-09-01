@@ -430,6 +430,7 @@ export namespace Gpseq {
     /**
      * @param func 
      * @since 0.2.0-alpha
+     * @throws GLib.Error
      */
     function blocking(func: VoidTaskFunc): void;
 
@@ -438,6 +439,7 @@ export namespace Gpseq {
      * @param g_dup_func 
      * @param func 
      * @since 0.2.0-alpha
+     * @throws GLib.Error
      */
     function blocking_get(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): null;
 
@@ -446,6 +448,7 @@ export namespace Gpseq {
      * @param g_dup_func 
      * @param left 
      * @since 0.3.0-alpha
+     * @throws GLib.Error
      */
     function join(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, left: TaskFunc): [null[], number];
 
@@ -596,8 +599,8 @@ export namespace Gpseq {
      * @gir-type Flags
      */
     enum CollectorFeatures {
-        CONCURRENT,
-        UNORDERED,
+        CONCURRENT = 1,
+        UNORDERED = 2,
     }
 
 
@@ -718,6 +721,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -727,11 +731,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -974,6 +980,9 @@ export namespace Gpseq {
 
         get_promise(): Promise;
 
+        /**
+         * @throws GLib.Error
+         */
         join(): null;
 
         fork(): void;
@@ -994,6 +1003,9 @@ export namespace Gpseq {
 
         get_future(): Future;
 
+        /**
+         * @throws GLib.Error
+         */
         invoke(): void;
 
         /**
@@ -1155,6 +1167,9 @@ export namespace Gpseq {
 
         compute(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         invoke(): void;
 
         /**
@@ -1311,10 +1326,14 @@ export namespace Gpseq {
         // Methods
         get_ready(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         wait(): null;
 
         /**
          * @param end_time 
+         * @throws GLib.Error
          */
         wait_until(end_time: bigint | number): [boolean, null];
 
@@ -1365,6 +1384,9 @@ export namespace Gpseq {
 
         future(): Future;
 
+        /**
+         * @throws GLib.Error
+         */
         get(): null;
 
         /**
@@ -1580,6 +1602,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -1589,11 +1612,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -1751,6 +1776,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -1760,11 +1786,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -1920,6 +1948,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -1929,11 +1958,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -2120,6 +2151,7 @@ export namespace Gpseq {
 
         /**
          * @param error_supplier 
+         * @throws GLib.Error
          */
         or_else_throw(error_supplier: SupplyFunc): null;
 
@@ -2856,11 +2888,15 @@ export namespace Gpseq {
 
         get_empty_result(): null;
 
+        /**
+         * @throws GLib.Error
+         */
         leaf_compute(): null;
 
         /**
          * @param left 
          * @param right 
+         * @throws GLib.Error
          */
         merge_results(left: never, right: never): null;
 
@@ -3344,6 +3380,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -3353,11 +3390,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -3513,6 +3552,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -3522,11 +3562,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
 
@@ -4069,6 +4111,9 @@ export namespace Gpseq {
 
         get_is_alive(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         start(): void;
 
         join(): void;
@@ -4078,6 +4123,7 @@ export namespace Gpseq {
          * @param g_dup_func 
          * @param func 
          * @since 0.2.0-alpha
+         * @throws GLib.Error
          */
         blocking(g_type: GObject.GType, g_dup_func: GObject.BoxedCopyFunc, func: TaskFunc): null;
     }
@@ -4696,22 +4742,28 @@ export namespace Gpseq {
         // Methods
         get_features(): CollectorFeatures;
 
+        /**
+         * @throws GLib.Error
+         */
         create_accumulator(): null;
 
         /**
          * @param g 
          * @param a 
+         * @throws GLib.Error
          */
         accumulate(g: never, a: never): void;
 
         /**
          * @param a 
          * @param b 
+         * @throws GLib.Error
          */
         combine(a: never, b: never): null;
 
         /**
          * @param a 
+         * @throws GLib.Error
          */
         finish(a: never): null;
     }
@@ -4973,6 +5025,9 @@ export namespace Gpseq {
 
         future(): Future;
 
+        /**
+         * @throws GLib.Error
+         */
         get(): null;
 
         /**
@@ -5187,6 +5242,7 @@ export namespace Gpseq {
 
         /**
          * @param consumer 
+         * @throws GLib.Error
          */
         try_advance(consumer: Func): boolean;
 
@@ -5196,11 +5252,13 @@ export namespace Gpseq {
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each(f: Func): void;
 
         /**
          * @param f 
+         * @throws GLib.Error
          */
         each_chunk(f: EachChunkFunc): boolean;
     }
@@ -5299,6 +5357,9 @@ export namespace Gpseq {
 
         compute(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         invoke(): void;
     }
 

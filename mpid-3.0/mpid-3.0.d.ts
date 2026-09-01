@@ -35,24 +35,24 @@ export namespace MPID {
         /**
          * Indicates no error has occurred
          */
-        OK,
+        OK = 0,
         /**
          * Unable to find the device path
          */
-        NO_SUCH_DEVICE,
+        NO_SUCH_DEVICE = 1,
         /**
          * The device detection mechanism (e.g. udev) failed
          */
-        DEVICE_DB_FAILED,
+        DEVICE_DB_FAILED = 2,
         /**
          * The device is not a media player
          */
-        NOT_MEDIA_PLAYER,
+        NOT_MEDIA_PLAYER = 3,
         /**
          * The device detection mechanism identified the device
          *   but was unable to locate its device information
          */
-        DEVICE_INFO_MISSING,
+        DEVICE_INFO_MISSING = 4,
     }
 
 
@@ -63,15 +63,15 @@ export namespace MPID {
         /**
          * No device information is available
          */
-        NONE,
+        NONE = 0,
         /**
          * Device information provided by the operating system (e.g. udev)
          */
-        SYSTEM,
+        SYSTEM = 1,
         /**
          * Device information provided by an override file on the device itself.
          */
-        OVERRIDE,
+        OVERRIDE = 2,
     }
 
 
@@ -86,14 +86,20 @@ export namespace MPID {
      * @gir-type Enum
      */
     enum SourceType {
-        NO_DEVICE_INFO,
-        SYSTEM_DEVICE_INFO,
-        OVERRIDE_DEVICE_INFO,
+        NO_DEVICE_INFO = 0,
+        SYSTEM_DEVICE_INFO = 1,
+        OVERRIDE_DEVICE_INFO = 2,
     }
 
 
+    /**
+     * @default storage
+     */
     const PROTOCOL_GENERIC: string;
 
+    /**
+     * @default ipod
+     */
     const PROTOCOL_IPOD: string;
 
     /**

@@ -43,9 +43,9 @@ export namespace MatePanelApplet {
      * @gir-type Enum
      */
     enum AppletBackgroundType {
-        NO_BACKGROUND,
-        COLOR_BACKGROUND,
-        PIXMAP_BACKGROUND,
+        NO_BACKGROUND = 0,
+        COLOR_BACKGROUND = 1,
+        PIXMAP_BACKGROUND = 2,
     }
 
 
@@ -60,13 +60,16 @@ export namespace MatePanelApplet {
      * @gir-type Enum
      */
     enum AppletOrient {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
     }
 
 
+    /**
+     * @default 7
+     */
     const APPLET_FLAGS_ALL: number;
 
     /**
@@ -87,10 +90,10 @@ export namespace MatePanelApplet {
      * @gir-type Flags
      */
     enum AppletFlags {
-        FLAGS_NONE,
-        EXPAND_MAJOR,
-        EXPAND_MINOR,
-        HAS_HANDLE,
+        FLAGS_NONE = 0,
+        EXPAND_MAJOR = 1,
+        EXPAND_MINOR = 2,
+        HAS_HANDLE = 4,
     }
 
 
@@ -101,23 +104,23 @@ export namespace MatePanelApplet {
              * @signal
              * @run-last
              */
-            "change-background": (arg0: AppletBackgroundType, arg1: Gdk.RGBA, arg2: cairo.Pattern) => void;
+            "change-background": (object: AppletBackgroundType, p0: Gdk.RGBA, p1: cairo.Pattern) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-orient": (arg0: number) => void;
+            "change-orient": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-size": (arg0: number) => void;
+            "change-size": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-focus-out-of-applet": (arg0: Gtk.DirectionType) => void;
+            "move-focus-out-of-applet": (object: Gtk.DirectionType) => void;
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::closure": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;

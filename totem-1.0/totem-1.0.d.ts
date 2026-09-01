@@ -48,115 +48,115 @@ export namespace Totem {
         /**
          * unknown command
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * play the current stream
          */
-        PLAY,
+        PLAY = 1,
         /**
          * pause the current stream
          */
-        PAUSE,
+        PAUSE = 2,
         /**
          * stop playing the current stream
          */
-        STOP,
+        STOP = 3,
         /**
          * toggle play/pause on the current stream
          */
-        PLAY_PAUSE,
+        PLAY_PAUSE = 4,
         /**
          * play the next playlist item
          */
-        NEXT,
+        NEXT = 5,
         /**
          * play the previous playlist item
          */
-        PREVIOUS,
+        PREVIOUS = 6,
         /**
          * seek forwards in the current stream
          */
-        SEEK_FORWARD,
+        SEEK_FORWARD = 7,
         /**
          * seek backwards in the current stream
          */
-        SEEK_BACKWARD,
+        SEEK_BACKWARD = 8,
         /**
          * increase the volume
          */
-        VOLUME_UP,
+        VOLUME_UP = 9,
         /**
          * decrease the volume
          */
-        VOLUME_DOWN,
+        VOLUME_DOWN = 10,
         /**
          * toggle fullscreen mode
          */
-        FULLSCREEN,
+        FULLSCREEN = 11,
         /**
          * quit the instance of Totem
          */
-        QUIT,
+        QUIT = 12,
         /**
          * enqueue a new playlist item
          */
-        ENQUEUE,
+        ENQUEUE = 13,
         /**
          * replace an item in the playlist
          */
-        REPLACE,
+        REPLACE = 14,
         /**
          * show the Totem instance
          */
-        SHOW,
+        SHOW = 15,
         /**
          * go up (DVD controls)
          */
-        UP,
+        UP = 16,
         /**
          * go down (DVD controls)
          */
-        DOWN,
+        DOWN = 17,
         /**
          * go left (DVD controls)
          */
-        LEFT,
+        LEFT = 18,
         /**
          * go right (DVD controls)
          */
-        RIGHT,
+        RIGHT = 19,
         /**
          * select the current item (DVD controls)
          */
-        SELECT,
+        SELECT = 20,
         /**
          * go to the DVD menu
          */
-        DVD_MENU,
+        DVD_MENU = 21,
         /**
          * increase the zoom level
          */
-        ZOOM_UP,
+        ZOOM_UP = 22,
         /**
          * decrease the zoom level
          */
-        ZOOM_DOWN,
+        ZOOM_DOWN = 23,
         /**
          * eject the current disc
          */
-        EJECT,
+        EJECT = 24,
         /**
          * play a DVD in a drive
          */
-        PLAY_DVD,
+        PLAY_DVD = 25,
         /**
          * toggle mute
          */
-        MUTE,
+        MUTE = 26,
         /**
          * toggle the aspect ratio
          */
-        TOGGLE_ASPECT_RATIO,
+        TOGGLE_ASPECT_RATIO = 27,
     }
 
 
@@ -175,12 +175,13 @@ export namespace Totem {
         /**
          * whether repeat is enabled
          */
-        REPEAT,
+        REPEAT = 0,
     }
 
 
     /**
      * The GSettings schema under which all Totem settings are stored.
+     * @default org.gnome.totem
      */
     const GSETTINGS_SCHEMA: string;
 
@@ -240,34 +241,34 @@ export namespace Totem {
              * @signal
              * @run-last
              */
-            "file-has-played": (arg0: string) => void;
+            "file-has-played": (mrl: string) => void;
             /**
              * The {@link Totem.Object.SignalSignatures.file_opened | Totem.Object::file-opened} signal is emitted when a new stream is opened by Totem.
              * @signal
              * @run-last
              */
-            "file-opened": (arg0: string) => void;
+            "file-opened": (mrl: string) => void;
             /**
              * The {@link Totem.Object.SignalSignatures.get_text_subtitle | Totem.Object::get-text-subtitle} signal is emitted before opening a stream, so that plugins
              * have the opportunity to detect or download text subtitles for the stream if necessary.
              * @signal
              * @run-last
              */
-            "get-text-subtitle": (arg0: string) => string;
+            "get-text-subtitle": (mrl: string) => string;
             /**
              * The {@link Totem.Object.SignalSignatures.get_user_agent | Totem.Object::get-user-agent} signal is emitted before opening a stream, so that plugins
              * have the opportunity to return the user-agent to be set.
              * @signal
              * @run-last
              */
-            "get-user-agent": (arg0: string) => string;
+            "get-user-agent": (mrl: string) => string;
             /**
              * The {@link Totem.Object.SignalSignatures.metadata_updated | Totem.Object::metadata-updated} signal is emitted when the metadata of a stream is updated, typically
              * when it's being loaded.
              * @signal
              * @run-last
              */
-            "metadata-updated": (arg0: string, arg1: string, arg2: string, arg3: number) => void;
+            "metadata-updated": (artist: string, title: string, album: string, track_number: number) => void;
             "notify::current-content-type": (pspec: GObject.ParamSpec) => void;
             "notify::current-display-name": (pspec: GObject.ParamSpec) => void;
             "notify::current-mrl": (pspec: GObject.ParamSpec) => void;

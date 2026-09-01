@@ -31,23 +31,23 @@ export namespace GstFft {
         /**
          * Rectangular window
          */
-        RECTANGULAR,
+        RECTANGULAR = 0,
         /**
          * Hamming window
          */
-        HAMMING,
+        HAMMING = 1,
         /**
          * Hann (sometimes also called Hanning) window
          */
-        HANN,
+        HANN = 2,
         /**
          * Bartlett window
          */
-        BARTLETT,
+        BARTLETT = 3,
         /**
          * Blackman window
          */
-        BLACKMAN,
+        BLACKMAN = 4,
     }
 
 

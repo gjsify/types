@@ -39,15 +39,15 @@ export namespace Mbim {
         /**
          * None, or unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * 3GPP only.
          */
-        "3GPP",
+        "3GPP" = 1,
         /**
          * 3GPP Preferred.
          */
-        "3GPP_PREFERRED",
+        "3GPP_PREFERRED" = 2,
     }
 
 
@@ -67,11 +67,11 @@ export namespace Mbim {
         /**
          * Deactivate.
          */
-        DEACTIVATE,
+        DEACTIVATE = 0,
         /**
          * Activate.
          */
-        ACTIVATE,
+        ACTIVATE = 1,
     }
 
 
@@ -91,23 +91,23 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Activated.
          */
-        ACTIVATED,
+        ACTIVATED = 1,
         /**
          * Activating.
          */
-        ACTIVATING,
+        ACTIVATING = 2,
         /**
          * Deactivated.
          */
-        DEACTIVATED,
+        DEACTIVATED = 3,
         /**
          * Deactivating.
          */
-        DEACTIVATING,
+        DEACTIVATING = 4,
     }
 
 
@@ -127,15 +127,15 @@ export namespace Mbim {
         /**
          * GSM.
          */
-        GSM,
+        GSM = 0,
         /**
          * UTRAN (UMTS).
          */
-        UTRAN,
+        UTRAN = 6,
         /**
          * LTE.
          */
-        LTE,
+        LTE = 7,
     }
 
 
@@ -155,19 +155,19 @@ export namespace Mbim {
         /**
          * Automatic.
          */
-        AUTOMATIC,
+        AUTOMATIC = 0,
         /**
          * 2G only.
          */
-        "2G_ONLY",
+        "2G_ONLY" = 1,
         /**
          * 3G only.
          */
-        "3G_ONLY",
+        "3G_ONLY" = 2,
         /**
          * 4G only.
          */
-        "4G_ONLY",
+        "4G_ONLY" = 3,
     }
 
 
@@ -187,19 +187,19 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Pap.
          */
-        PAP,
+        PAP = 1,
         /**
          * Chap.
          */
-        CHAP,
+        CHAP = 2,
         /**
          * V2.
          */
-        MSCHAPV2,
+        MSCHAPV2 = 3,
     }
 
 
@@ -219,15 +219,15 @@ export namespace Mbim {
         /**
          * Cause not applicable.
          */
-        NOT_APPLICABLE,
+        NOT_APPLICABLE = 0,
         /**
          * Sim lock policy mismatch.
          */
-        SIM_LOCK_POLICY_MISMATCH,
+        SIM_LOCK_POLICY_MISMATCH = 1,
         /**
          * Sim lock policy matched.
          */
-        SIM_LOCK_POLICY_MATCHED,
+        SIM_LOCK_POLICY_MATCHED = 2,
     }
 
 
@@ -247,19 +247,19 @@ export namespace Mbim {
         /**
          * Modem deregistered.
          */
-        DEREGISTERED,
+        DEREGISTERED = 0,
         /**
          * Modem de-registration in progress.
          */
-        DEREGISTRATION_IN_PROGRESS,
+        DEREGISTRATION_IN_PROGRESS = 1,
         /**
          * Modem registration state in progress.
          */
-        REGISTRATION_IN_PROGRESS,
+        REGISTRATION_IN_PROGRESS = 2,
         /**
          * Modem registered.
          */
-        REGISTERED,
+        REGISTERED = 3,
     }
 
 
@@ -279,11 +279,11 @@ export namespace Mbim {
         /**
          * Carrier lock not applied.
          */
-        NOT_APPLIED,
+        NOT_APPLIED = 0,
         /**
          * Carrier lock applied.
          */
-        APPLIED,
+        APPLIED = 1,
     }
 
 
@@ -303,27 +303,27 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Radio signal information.
          */
-        SIGNAL,
+        SIGNAL = 1,
         /**
          * Cell location information.
          */
-        LOCATION,
+        LOCATION = 2,
         /**
          * Operator selection.
          */
-        OPERATORS,
+        OPERATORS = 3,
         /**
          * Radio Access Technology selection.
          */
-        RAT,
+        RAT = 4,
         /**
          * Registration state.
          */
-        REGISTER_STATE,
+        REGISTER_STATE = 9,
     }
 
 
@@ -343,19 +343,19 @@ export namespace Mbim {
         /**
          * Unknow command
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * AKA.
          */
-        AKA,
+        AKA = 1,
         /**
          * AKAP.
          */
-        AKAP,
+        AKAP = 2,
         /**
          * SIM.
          */
-        SIM,
+        SIM = 3,
     }
 
 
@@ -375,95 +375,95 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Device capabilities.
          */
-        DEVICE_CAPS,
+        DEVICE_CAPS = 1,
         /**
          * Subscriber ready status.
          */
-        SUBSCRIBER_READY_STATUS,
+        SUBSCRIBER_READY_STATUS = 2,
         /**
          * Radio state.
          */
-        RADIO_STATE,
+        RADIO_STATE = 3,
         /**
          * PIN.
          */
-        PIN,
+        PIN = 4,
         /**
          * PIN list.
          */
-        PIN_LIST,
+        PIN_LIST = 5,
         /**
          * Home provider.
          */
-        HOME_PROVIDER,
+        HOME_PROVIDER = 6,
         /**
          * Preferred providers.
          */
-        PREFERRED_PROVIDERS,
+        PREFERRED_PROVIDERS = 7,
         /**
          * Visible providers.
          */
-        VISIBLE_PROVIDERS,
+        VISIBLE_PROVIDERS = 8,
         /**
          * Register state.
          */
-        REGISTER_STATE,
+        REGISTER_STATE = 9,
         /**
          * Packet service.
          */
-        PACKET_SERVICE,
+        PACKET_SERVICE = 10,
         /**
          * Signal state.
          */
-        SIGNAL_STATE,
+        SIGNAL_STATE = 11,
         /**
          * Connect.
          */
-        CONNECT,
+        CONNECT = 12,
         /**
          * Provisioned contexts.
          */
-        PROVISIONED_CONTEXTS,
+        PROVISIONED_CONTEXTS = 13,
         /**
          * Service activation.
          */
-        SERVICE_ACTIVATION,
+        SERVICE_ACTIVATION = 14,
         /**
          * IP configuration.
          */
-        IP_CONFIGURATION,
+        IP_CONFIGURATION = 15,
         /**
          * Device services.
          */
-        DEVICE_SERVICES,
+        DEVICE_SERVICES = 16,
         /**
          * Device service subscribe list. Since 1.8.
          */
-        DEVICE_SERVICE_SUBSCRIBE_LIST,
+        DEVICE_SERVICE_SUBSCRIBE_LIST = 19,
         /**
          * Packet statistics.
          */
-        PACKET_STATISTICS,
+        PACKET_STATISTICS = 20,
         /**
          * Network idle hint.
          */
-        NETWORK_IDLE_HINT,
+        NETWORK_IDLE_HINT = 21,
         /**
          * Emergency mode.
          */
-        EMERGENCY_MODE,
+        EMERGENCY_MODE = 22,
         /**
          * IP packet filters.
          */
-        IP_PACKET_FILTERS,
+        IP_PACKET_FILTERS = 23,
         /**
          * Multicarrier providers.
          */
-        MULTICARRIER_PROVIDERS,
+        MULTICARRIER_PROVIDERS = 24,
     }
 
 
@@ -483,11 +483,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * AT over MBIM message.
          */
-        AT_COMMAND,
+        AT_COMMAND = 1,
     }
 
 
@@ -507,11 +507,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Connect.
          */
-        CONNECT,
+        CONNECT = 1,
     }
 
 
@@ -531,11 +531,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * AT over MBIM message.
          */
-        AT_COMMAND,
+        AT_COMMAND = 1,
     }
 
 
@@ -555,11 +555,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Carrier lock.
          */
-        CARRIER_LOCK,
+        CARRIER_LOCK = 1,
     }
 
 
@@ -579,11 +579,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Reboot modem for firmware update.
          */
-        MODEM_REBOOT,
+        MODEM_REBOOT = 1,
     }
 
 
@@ -603,11 +603,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * FCC lock set.
          */
-        FCC_LOCK,
+        FCC_LOCK = 1,
     }
 
 
@@ -627,11 +627,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * RFIM frequency command.
          */
-        RFIM,
+        RFIM = 9,
     }
 
 
@@ -651,11 +651,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Configure Modem traces.
          */
-        TRACE_CONFIG,
+        TRACE_CONFIG = 8,
     }
 
 
@@ -675,71 +675,71 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Provisioned contexts (v2).
          */
-        PROVISIONED_CONTEXTS,
+        PROVISIONED_CONTEXTS = 1,
         /**
          * Network denylist. Since 1.28.
          */
-        NETWORK_DENYLIST,
+        NETWORK_DENYLIST = 2,
         /**
          * LTE attach configuration.
          */
-        LTE_ATTACH_CONFIGURATION,
+        LTE_ATTACH_CONFIGURATION = 3,
         /**
          * LTE attach status information. Since 1.26.
          */
-        LTE_ATTACH_INFO,
+        LTE_ATTACH_INFO = 4,
         /**
          * System capabilities.
          */
-        SYS_CAPS,
+        SYS_CAPS = 5,
         /**
          * Device capabilities (v2).
          */
-        DEVICE_CAPS,
+        DEVICE_CAPS = 6,
         /**
          * Device slot mappings.
          */
-        DEVICE_SLOT_MAPPINGS,
+        DEVICE_SLOT_MAPPINGS = 7,
         /**
          * Slot info status.
          */
-        SLOT_INFO_STATUS,
+        SLOT_INFO_STATUS = 8,
         /**
          * Protocol configuration operations (PCO).
          */
-        PCO,
+        PCO = 9,
         /**
          * Device reset.
          */
-        DEVICE_RESET,
+        DEVICE_RESET = 10,
         /**
          * Base stations info. Since 1.28.
          */
-        BASE_STATIONS_INFO,
+        BASE_STATIONS_INFO = 11,
         /**
          * Location info status. Since 1.28.
          */
-        LOCATION_INFO_STATUS,
+        LOCATION_INFO_STATUS = 12,
         /**
          * Protocol version query and report, defined in MBIMEx v2.0. Since 1.28.
          */
-        VERSION,
+        VERSION = 15,
         /**
          * Modem configuration status, defined in MBIMEx v3.0. Since 1.28.
          */
-        MODEM_CONFIGURATION,
+        MODEM_CONFIGURATION = 16,
         /**
          * Registration parameters, defined in MBIMEx v3.0. Since 1.28.
          */
-        REGISTRATION_PARAMETERS,
+        REGISTRATION_PARAMETERS = 17,
         /**
          * Protocol wake reason query and report, defined in MBIMEx v3.0. Since 1.28
          */
-        WAKE_REASON,
+        WAKE_REASON = 19,
     }
 
 
@@ -759,11 +759,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Get Firmware ID.
          */
-        GET,
+        GET = 1,
     }
 
 
@@ -783,11 +783,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Notify that the host is shutting down.
          */
-        NOTIFY,
+        NOTIFY = 1,
     }
 
 
@@ -807,15 +807,15 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * SAR backoff mode and level configuration.
          */
-        CONFIG,
+        CONFIG = 1,
         /**
          * Transmission status indication setup.
          */
-        TRANSMISSION_STATUS,
+        TRANSMISSION_STATUS = 2,
     }
 
 
@@ -835,47 +835,47 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * ATR.
          */
-        ATR,
+        ATR = 1,
         /**
          * Open Channel.
          */
-        OPEN_CHANNEL,
+        OPEN_CHANNEL = 2,
         /**
          * Close Channel.
          */
-        CLOSE_CHANNEL,
+        CLOSE_CHANNEL = 3,
         /**
          * Apdu.
          */
-        APDU,
+        APDU = 4,
         /**
          * Terminal capabilities.
          */
-        TERMINAL_CAPABILITY,
+        TERMINAL_CAPABILITY = 5,
         /**
          * Reset.
          */
-        RESET,
+        RESET = 6,
         /**
          * Retrieve application list. Since 1.28.
          */
-        APPLICATION_LIST,
+        APPLICATION_LIST = 7,
         /**
          * Retrieve information about a specific UICC file. Since 1.28.
          */
-        FILE_STATUS,
+        FILE_STATUS = 8,
         /**
          * Read a UICC binary file. Since 1.28.
          */
-        READ_BINARY,
+        READ_BINARY = 9,
         /**
          * Read a UICC linear fixed or cyclic file. Since 1.28.
          */
-        READ_RECORD,
+        READ_RECORD = 10,
     }
 
 
@@ -895,11 +895,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Network Identity and Time Zone information command.
          */
-        NITZ,
+        NITZ = 10,
     }
 
 
@@ -919,23 +919,23 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Configuration.
          */
-        CONFIGURATION,
+        CONFIGURATION = 1,
         /**
          * Read.
          */
-        READ,
+        READ = 2,
         /**
          * Delete.
          */
-        DELETE,
+        DELETE = 3,
         /**
          * Write.
          */
-        WRITE,
+        WRITE = 4,
     }
 
 
@@ -955,15 +955,15 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Configuration.
          */
-        CONFIGURATION,
+        CONFIGURATION = 1,
         /**
          * MBIM and MBIMEx Version reporting.
          */
-        VERSION,
+        VERSION = 2,
     }
 
 
@@ -983,31 +983,31 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Update session command.
          */
-        UPDATE_SESSION,
+        UPDATE_SESSION = 1,
         /**
          * Open QDU file for firmware update.
          */
-        FILE_OPEN,
+        FILE_OPEN = 2,
         /**
          * Write QDU file for firmware update.
          */
-        FILE_WRITE,
+        FILE_WRITE = 3,
         /**
          * Reboot to Emergency Download (Quectel specific). Since 1.28.
          */
-        QUECTEL_REBOOT,
+        QUECTEL_REBOOT = 4,
         /**
          * Read firmware version (Quectel specific). Since 1.28.
          */
-        QUECTEL_READ_VERSION,
+        QUECTEL_READ_VERSION = 7,
         /**
          * Send AT or system command by mbim port. Since 1.32.
          */
-        COMMAND,
+        COMMAND = 8,
     }
 
 
@@ -1027,11 +1027,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Send QMI request and receive QMI response.
          */
-        MSG,
+        MSG = 1,
     }
 
 
@@ -1051,11 +1051,11 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Radio state.
          */
-        RADIO_STATE,
+        RADIO_STATE = 1,
     }
 
 
@@ -1075,27 +1075,27 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * SMS configuration.
          */
-        CONFIGURATION,
+        CONFIGURATION = 1,
         /**
          * Read.
          */
-        READ,
+        READ = 2,
         /**
          * Send.
          */
-        SEND,
+        SEND = 3,
         /**
          * Delete.
          */
-        DELETE,
+        DELETE = 4,
         /**
          * Store message status.
          */
-        MESSAGE_STORE_STATUS,
+        MESSAGE_STORE_STATUS = 5,
     }
 
 
@@ -1115,19 +1115,19 @@ export namespace Mbim {
         /**
          * Unknown command.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * PAC.
          */
-        PAC,
+        PAC = 1,
         /**
          * Terminal response.
          */
-        TERMINAL_RESPONSE,
+        TERMINAL_RESPONSE = 2,
         /**
          * Envelope.
          */
-        ENVELOPE,
+        ENVELOPE = 3,
     }
 
 
@@ -1147,11 +1147,11 @@ export namespace Mbim {
         /**
          * Unknown command. Since 1.4.
          */
-        USSD_UNKNOWN,
+        USSD_UNKNOWN = 0,
         /**
          * USSD operation.
          */
-        USSD,
+        USSD = 1,
     }
 
 
@@ -1171,11 +1171,11 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Enable.
          */
-        ENABLE,
+        ENABLE = 1,
     }
 
 
@@ -1195,23 +1195,23 @@ export namespace Mbim {
         /**
          * It is up to the function to decide, the host does not care.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * IPv4 context.
          */
-        IPV4,
+        IPV4 = 1,
         /**
          * IPv6 context.
          */
-        IPV6,
+        IPV6 = 2,
         /**
          * The context is IPv4, IPv6 or dualstack IPv4v6.
          */
-        IPV4V6,
+        IPV4V6 = 3,
         /**
          * Both an IPv4 and an IPv6 context.
          */
-        IPV4_AND_IPV6,
+        IPV4_AND_IPV6 = 4,
     }
 
 
@@ -1232,15 +1232,15 @@ export namespace Mbim {
         /**
          * Context allowed to be used only wen registered over cellular.
          */
-        CELLULAR_ONLY,
+        CELLULAR_ONLY = 0,
         /**
          * Context allowed to be used only when registered over Wi-Fi.
          */
-        WIFI_ONLY,
+        WIFI_ONLY = 1,
         /**
          * Context allowed to be used when registered either over cellular or Wi-Fi.
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -1260,15 +1260,15 @@ export namespace Mbim {
         /**
          * Adds or replaces an existing context.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Delete an existing context.
          */
-        DELETE,
+        DELETE = 1,
         /**
          * Restore preconfigured contexts for the provider ID of the current SIM card.
          */
-        RESTORE_FACTORY,
+        RESTORE_FACTORY = 2,
     }
 
 
@@ -1288,31 +1288,31 @@ export namespace Mbim {
         /**
          * Context allowed to be used in home network.
          */
-        HOME_ONLY,
+        HOME_ONLY = 0,
         /**
          * Context allowed to be used in partner network.
          */
-        PARTNER_ONLY,
+        PARTNER_ONLY = 1,
         /**
          * Context allowed to be used in non-partner network.
          */
-        NON_PARTNER_ONLY,
+        NON_PARTNER_ONLY = 2,
         /**
          * Context allowed to be used in home and partner networks.
          */
-        HOME_AND_PARTNER,
+        HOME_AND_PARTNER = 3,
         /**
          * Context allowed to be used in home and non-partner networks.
          */
-        HOME_AND_NON_PARTNER,
+        HOME_AND_NON_PARTNER = 4,
         /**
          * Context allowed to be used in partner and non-partner networks.
          */
-        PARTNER_AND_NON_PARTNER,
+        PARTNER_AND_NON_PARTNER = 5,
         /**
          * Context allowed to be used in any roaming condition.
          */
-        ALLOW_ALL,
+        ALLOW_ALL = 6,
     }
 
 
@@ -1332,23 +1332,23 @@ export namespace Mbim {
         /**
          * Context created by enterprise IT.
          */
-        ADMIN,
+        ADMIN = 0,
         /**
          * Context created by user.
          */
-        USER,
+        USER = 1,
         /**
          * Context created by operator.
          */
-        OPERATOR,
+        OPERATOR = 2,
         /**
          * Context created by modem manufacturer.
          */
-        MODEM,
+        MODEM = 3,
         /**
          * Context created by OS APN database.
          */
-        DEVICE,
+        DEVICE = 4,
     }
 
 
@@ -1368,11 +1368,11 @@ export namespace Mbim {
         /**
          * Disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Enabled.
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -1392,73 +1392,73 @@ export namespace Mbim {
         /**
          * Invalid context type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Context not yet provisioned.
          */
-        NONE,
+        NONE = 1,
         /**
          * Context representing a connection to the
          *  Internet.
          */
-        INTERNET,
+        INTERNET = 2,
         /**
          * Context representing a connection to a a private
          *  network (e.g. VPN to a corporate network).
          */
-        VPN,
+        VPN = 3,
         /**
          * Context representing a connection to a VoIP service.
          */
-        VOICE,
+        VOICE = 4,
         /**
          * Context representing a connection to a video
          *  sharing service.
          */
-        VIDEO_SHARE,
+        VIDEO_SHARE = 5,
         /**
          * Context representing a connection to an
          *  OTA (over-the-air) activation site.
          */
-        PURCHASE,
+        PURCHASE = 6,
         /**
          * Context representing a connection to IMS.
          */
-        IMS,
+        IMS = 7,
         /**
          * Context representing a connection to MMS.
          */
-        MMS,
+        MMS = 8,
         /**
          * Context representing a connection which is
          *  terminated at the device. No IP traffic sent over the air.
          */
-        LOCAL,
+        LOCAL = 9,
         /**
          * Context used for administrative purposes, such as
          *  device management (MS MBIMEx). Since 1.28.
          */
-        ADMIN,
+        ADMIN = 10,
         /**
          * Context used for certain applications allowed by
          *  mobile operators (MS MBIMEx). Since 1.28.
          */
-        APP,
+        APP = 11,
         /**
          * Context used for XCAP provisioning on IMS services
          *  (MS MBIMEx). Since 1.28.
          */
-        XCAP,
+        XCAP = 12,
         /**
          * Context used for mobile hotspot tethering
          *  (MS MBIMEx). Since 1.28.
          */
-        TETHERING,
+        TETHERING = 13,
         /**
          * Context used for IMS emergency calling
          *  (MS MBIMEx). Since 1.28.
          */
-        EMERGENCY_CALLING,
+        EMERGENCY_CALLING = 14,
     }
 
 
@@ -1545,11 +1545,11 @@ export namespace Mbim {
         /**
          * Default PDU session activation is unlikely to happen soon.
          */
-        UNLIKELY,
+        UNLIKELY = 0,
         /**
          * Default PDU session activation is likely to happen soon.
          */
-        LIKELY,
+        LIKELY = 1,
     }
 
 
@@ -1569,19 +1569,19 @@ export namespace Mbim {
         /**
          * Unknown type.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Device is embedded in the system.
          */
-        EMBEDDED,
+        EMBEDDED = 1,
         /**
          * Device is removable.
          */
-        REMOVABLE,
+        REMOVABLE = 2,
         /**
          * Device is remote.
          */
-        REMOTE,
+        REMOTE = 3,
     }
 
 
@@ -1641,11 +1641,11 @@ export namespace Mbim {
         /**
          * Deactivate.
          */
-        DEACTIVATE,
+        DEACTIVATE = 0,
         /**
          * Activate.
          */
-        ACTIVATE,
+        ACTIVATE = 1,
     }
 
 
@@ -1665,11 +1665,11 @@ export namespace Mbim {
         /**
          * Off.
          */
-        OFF,
+        OFF = 0,
         /**
          * On.
          */
-        ON,
+        ON = 1,
     }
 
 
@@ -1689,27 +1689,27 @@ export namespace Mbim {
         /**
          * Normal boot mode.
          */
-        NORMAL_MODE,
+        NORMAL_MODE = 0,
         /**
          * Download boot mode.
          */
-        DOWNLOAD_MODE,
+        DOWNLOAD_MODE = 1,
         /**
          * Power off device.
          */
-        POWER_OFF_DEVICE,
+        POWER_OFF_DEVICE = 2,
         /**
          * Configure non-resetable register without reboot or power off.
          */
-        NON_RESETABLE_REGISTER,
+        NON_RESETABLE_REGISTER = 3,
         /**
          * Configure without reboot power-off.
          */
-        WITHOUT_REBOOT_POWER_OFF,
+        WITHOUT_REBOOT_POWER_OFF = 4,
         /**
          * Fast boot in download mode.
          */
-        FAST_DOWNLOAD_MODE,
+        FAST_DOWNLOAD_MODE = 5,
     }
 
 
@@ -1729,23 +1729,23 @@ export namespace Mbim {
         /**
          * Primary cell.
          */
-        PCELL,
+        PCELL = 0,
         /**
          * Secondary cell.
          */
-        SCELL,
+        SCELL = 1,
         /**
          * Primary cell in SCS.
          */
-        PSCELL,
+        PSCELL = 2,
         /**
          * Secondary cell in SCS.
          */
-        SSCELL,
+        SSCELL = 3,
         /**
          * Radio state is off.
          */
-        RADIO_OFF,
+        RADIO_OFF = 4294967295,
     }
 
 
@@ -1765,11 +1765,11 @@ export namespace Mbim {
         /**
          * Information not needed.
          */
-        NOT_NEEDED,
+        NOT_NEEDED = 0,
         /**
          * Information requested.
          */
-        REQUESTED,
+        REQUESTED = 1,
     }
 
 
@@ -1789,11 +1789,11 @@ export namespace Mbim {
         /**
          * Overwrite existing contexts.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Restore factory preconfigured contexts.
          */
-        RESTORE_FACTORY,
+        RESTORE_FACTORY = 1,
     }
 
 
@@ -1813,15 +1813,15 @@ export namespace Mbim {
         /**
          * Context allowed to be used on home network.
          */
-        HOME,
+        HOME = 0,
         /**
          * Context allowed to be used on partner network.
          */
-        PARTNER,
+        PARTNER = 1,
         /**
          * Context allowed to be used on non-partner network.
          */
-        NON_PARTNER,
+        NON_PARTNER = 2,
     }
 
 
@@ -1841,11 +1841,11 @@ export namespace Mbim {
         /**
          * Detached.
          */
-        DETACHED,
+        DETACHED = 0,
         /**
          * Attached.
          */
-        ATTACHED,
+        ATTACHED = 1,
     }
 
 
@@ -1865,15 +1865,15 @@ export namespace Mbim {
         /**
          * Unknown type.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * Query command.
          */
-        QUERY,
+        QUERY = 0,
         /**
          * Set command.
          */
-        SET,
+        SET = 1,
     }
 
 
@@ -1893,43 +1893,43 @@ export namespace Mbim {
         /**
          * Invalid MBIM message.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Initialization request.
          */
-        OPEN,
+        OPEN = 1,
         /**
          * Close request.
          */
-        CLOSE,
+        CLOSE = 2,
         /**
          * Command request.
          */
-        COMMAND,
+        COMMAND = 3,
         /**
          * Host-reported error in the communication.
          */
-        HOST_ERROR,
+        HOST_ERROR = 4,
         /**
          * Response to initialization request.
          */
-        OPEN_DONE,
+        OPEN_DONE = 2147483649,
         /**
          * Response to close request.
          */
-        CLOSE_DONE,
+        CLOSE_DONE = 2147483650,
         /**
          * Response to command request.
          */
-        COMMAND_DONE,
+        COMMAND_DONE = 2147483651,
         /**
          * Function-reported error in the communication.
          */
-        FUNCTION_ERROR,
+        FUNCTION_ERROR = 2147483652,
         /**
          * Unsolicited message from the function.
          */
-        INDICATE_STATUS,
+        INDICATE_STATUS = 2147483655,
     }
 
 
@@ -1952,19 +1952,19 @@ export namespace Mbim {
         /**
          * Disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Enabled.
          */
-        ENABLED,
+        ENABLED = 1,
         /**
          * Device does not support MICO mode.
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 2,
         /**
          * Default.
          */
-        DEFAULT,
+        DEFAULT = 3,
     }
 
 
@@ -1984,15 +1984,15 @@ export namespace Mbim {
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * SIM is ready and configuration started.
          */
-        STARTED,
+        STARTED = 1,
         /**
          * SIM is ready and configuration completed.
          */
-        COMPLETED,
+        COMPLETED = 2,
     }
 
 
@@ -2012,11 +2012,11 @@ export namespace Mbim {
         /**
          * Disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Enabled.
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -2036,271 +2036,271 @@ export namespace Mbim {
         /**
          * No error. Since 1.28.
          */
-        NONE,
+        NONE = 0,
         /**
          * IMSI unknown in the HLR.
          */
-        IMSI_UNKNOWN_IN_HLR,
+        IMSI_UNKNOWN_IN_HLR = 2,
         /**
          * Illegal MS. Since 1.10.
          */
-        ILLEGAL_MS,
+        ILLEGAL_MS = 3,
         /**
          * IMSI unknown in the VLR.
          */
-        IMSI_UNKNOWN_IN_VLR,
+        IMSI_UNKNOWN_IN_VLR = 4,
         /**
          * IMEI not accepted. Since 1.10.
          */
-        IMEI_NOT_ACCEPTED,
+        IMEI_NOT_ACCEPTED = 5,
         /**
          * Illegal ME.
          */
-        ILLEGAL_ME,
+        ILLEGAL_ME = 6,
         /**
          * GPRS not allowed.
          */
-        GPRS_NOT_ALLOWED,
+        GPRS_NOT_ALLOWED = 7,
         /**
          * GPRS and non-GPRS not allowed.
          */
-        GPRS_AND_NON_GPRS_NOT_ALLOWED,
+        GPRS_AND_NON_GPRS_NOT_ALLOWED = 8,
         /**
          * MS identity cannot be derived by the network. Since 1.10.
          */
-        MS_IDENTITY_NOT_DERIVED_BY_NETWORK,
+        MS_IDENTITY_NOT_DERIVED_BY_NETWORK = 9,
         /**
          * Implicitly detached. Since 1.10.
          */
-        IMPLICITLY_DETACHED,
+        IMPLICITLY_DETACHED = 10,
         /**
          * PLMN not allowed.
          */
-        PLMN_NOT_ALLOWED,
+        PLMN_NOT_ALLOWED = 11,
         /**
          * Location area not allowed.
          */
-        LOCATION_AREA_NOT_ALLOWED,
+        LOCATION_AREA_NOT_ALLOWED = 12,
         /**
          * Roaming not allowed in the location area.
          */
-        ROAMING_NOT_ALLOWED_IN_LOCATION_AREA,
+        ROAMING_NOT_ALLOWED_IN_LOCATION_AREA = 13,
         /**
          * GPRS not allowed in PLMN.
          */
-        GPRS_NOT_ALLOWED_IN_PLMN,
+        GPRS_NOT_ALLOWED_IN_PLMN = 14,
         /**
          * No cells in location area.
          */
-        NO_CELLS_IN_LOCATION_AREA,
+        NO_CELLS_IN_LOCATION_AREA = 15,
         /**
          * MSC temporarily not reachable. Since 1.10.
          */
-        MSC_TEMPORARILY_NOT_REACHABLE,
+        MSC_TEMPORARILY_NOT_REACHABLE = 16,
         /**
          * Network failure.
          */
-        NETWORK_FAILURE,
+        NETWORK_FAILURE = 17,
         /**
          * MAC failure. Since 1.10.
          */
-        MAC_FAILURE,
+        MAC_FAILURE = 20,
         /**
          * Synch failure. Since 1.10.
          */
-        SYNCH_FAILURE,
+        SYNCH_FAILURE = 21,
         /**
          * Congestion.
          */
-        CONGESTION,
+        CONGESTION = 22,
         /**
          * GSM authentication unacceptable. Since 1.10.
          */
-        GSM_AUTHENTICATION_UNACCEPTABLE,
+        GSM_AUTHENTICATION_UNACCEPTABLE = 23,
         /**
          * Not authorized for this CSG. Since 1.10.
          */
-        NOT_AUTHORIZED_FOR_CSG,
+        NOT_AUTHORIZED_FOR_CSG = 25,
         /**
          * Insufficient resources. Since 1.18.
          */
-        INSUFFICIENT_RESOURCES,
+        INSUFFICIENT_RESOURCES = 26,
         /**
          * Missing or unknown access point name. Since 1.10.
          */
-        MISSING_OR_UNKNOWN_APN,
+        MISSING_OR_UNKNOWN_APN = 27,
         /**
          * Unknown PDP address or PDP type. Since 1.18.
          */
-        UNKNOWN_PDP_ADDRESS_OR_TYPE,
+        UNKNOWN_PDP_ADDRESS_OR_TYPE = 28,
         /**
          * User authentication failed. Since 1.18.
          */
-        USER_AUTHENTICATION_FAILED,
+        USER_AUTHENTICATION_FAILED = 29,
         /**
          * Activation rejected by GGSN, Serving GW or PDN GW. Since 1.18.
          */
-        ACTIVATION_REJECTED_BY_GGSN_OR_GW,
+        ACTIVATION_REJECTED_BY_GGSN_OR_GW = 30,
         /**
          * Activation rejected, unspecified. Since 1.18.
          */
-        ACTIVATION_REJECTED_UNSPECIFIED,
+        ACTIVATION_REJECTED_UNSPECIFIED = 31,
         /**
          * Service option not supported. Since 1.10.
          */
-        SERVICE_OPTION_NOT_SUPPORTED,
+        SERVICE_OPTION_NOT_SUPPORTED = 32,
         /**
          * Requested service option not subscribed. Since 1.10.
          */
-        REQUESTED_SERVICE_OPTION_NOT_SUBSCRIBED,
+        REQUESTED_SERVICE_OPTION_NOT_SUBSCRIBED = 33,
         /**
          * Service option temporarily out of order. Since 1.10.
          */
-        SERVICE_OPTION_TEMPORARILY_OUT_OF_ORDER,
+        SERVICE_OPTION_TEMPORARILY_OUT_OF_ORDER = 34,
         /**
          * No PDP context activated. Since 1.10.
          */
-        NO_PDP_CONTEXT_ACTIVATED,
+        NO_PDP_CONTEXT_ACTIVATED = 40,
         /**
          * Semantic error in the TFT operation. Since 1.28.
          */
-        SEMANTIC_ERROR_IN_THE_TFT_OPERATION,
+        SEMANTIC_ERROR_IN_THE_TFT_OPERATION = 41,
         /**
          * Syntactical error in the TFT operation. Since 1.28.
          */
-        SYNTACTICAL_ERROR_IN_THE_TFT_OPERATION,
+        SYNTACTICAL_ERROR_IN_THE_TFT_OPERATION = 42,
         /**
          * Unknown PDP context. Since 1.28.
          */
-        UNKNOWN_PDP_CONTEXT,
+        UNKNOWN_PDP_CONTEXT = 43,
         /**
          * Semantic errors in packet filter. Since 1.28.
          */
-        SEMANTIC_ERRORS_IN_PACKET_FILTER,
+        SEMANTIC_ERRORS_IN_PACKET_FILTER = 44,
         /**
          * Syntactical errors in packet filter. Since 1.28.
          */
-        SYNTACTICAL_ERRORS_IN_PACKET_FILTER,
+        SYNTACTICAL_ERRORS_IN_PACKET_FILTER = 45,
         /**
          * PDP context without TFT already activated. Since 1.28.
          */
-        PDP_CONTEXT_WITHOUT_TFT_ALREADY_ACTIVATED,
+        PDP_CONTEXT_WITHOUT_TFT_ALREADY_ACTIVATED = 46,
         /**
          * Request rejected, Bearer Control Mode violation. Since 1.28.
          */
-        REQUEST_REJECTED_OR_BEARER_CONTROL_MODE_VIOLATION,
+        REQUEST_REJECTED_OR_BEARER_CONTROL_MODE_VIOLATION = 48,
         /**
          * Last PDN disconnection not allowed. Since 1.28.
          */
-        LAST_PDN_DISCONNECTION_NOT_ALLOWED,
+        LAST_PDN_DISCONNECTION_NOT_ALLOWED = 49,
         /**
          * PDP type IPv4 only allowed. Since 1.18.
          */
-        PDP_TYPE_IPV4_ONLY_ALLOWED,
+        PDP_TYPE_IPV4_ONLY_ALLOWED = 50,
         /**
          * PDP type IPv6 only allowed. Since 1.18.
          */
-        PDP_TYPE_IPV6_ONLY_ALLOWED,
+        PDP_TYPE_IPV6_ONLY_ALLOWED = 51,
         /**
          * No network slices available  Since 1.28.
          */
-        NO_NETWORK_SLICES_AVAILABLE,
+        NO_NETWORK_SLICES_AVAILABLE = 62,
         /**
          * Maximum number of PDP contexts reached. Since 1.18.
          */
-        MAXIMUM_NUMBER_OF_PDP_CONTEXTS_REACHED,
+        MAXIMUM_NUMBER_OF_PDP_CONTEXTS_REACHED = 65,
         /**
          * Requested APN not supported in current RAT and PLMN combination. Since 1.18.
          */
-        REQUESTED_APN_NOT_SUPPORTED_IN_CURRENT_RAT_AND_PLMN,
+        REQUESTED_APN_NOT_SUPPORTED_IN_CURRENT_RAT_AND_PLMN = 66,
         /**
          * Insufficient resources for specific slice and DNN. Since 1.28.
          */
-        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE_AND_DNN,
+        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE_AND_DNN = 67,
         /**
          * Insufficient resources for specific slice. Since 1.28.
          */
-        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE,
+        INSUFFICIENT_RESOURCES_FOR_SPECIFIC_SLICE = 69,
         /**
          * NgKSI already in use. Since 1.28.
          */
-        NGKSI_ALREADY_IN_USE,
+        NGKSI_ALREADY_IN_USE = 71,
         /**
          * Non-3GPP access to 5GCN not allowe. Since 1.28.
          */
-        NON_3GPP_ACCESS_TO_5GCN_NOT_ALLOWED,
+        NON_3GPP_ACCESS_TO_5GCN_NOT_ALLOWED = 72,
         /**
          * Serving network not authorized. Since 1.28.
          */
-        SERVING_NETWORK_NOT_AUTHORIZED,
+        SERVING_NETWORK_NOT_AUTHORIZED = 73,
         /**
          * Temporarily not authorized for this SNPN. Since 1.28.
          */
-        TEMPORARILY_NOT_AUTHORIZED_FOR_THIS_SNPN,
+        TEMPORARILY_NOT_AUTHORIZED_FOR_THIS_SNPN = 74,
         /**
          * Permanently not authorized for this SNPN. Since 1.28.
          */
-        PERMANENTLY_NOT_AUTHORIZED_FOR_THIS_SNPN,
+        PERMANENTLY_NOT_AUTHORIZED_FOR_THIS_SNPN = 75,
         /**
          * Not authorized for this CAG or authorized for CAG cells. Since 1.28.
          */
-        NOT_AUTHORIZED_FOR_THIS_CAG_OR_AUTHORIZED_FOR_CAG_CELLS_ONLY,
+        NOT_AUTHORIZED_FOR_THIS_CAG_OR_AUTHORIZED_FOR_CAG_CELLS_ONLY = 76,
         /**
          * Wireline access area not allowed. Since 1.28.
          */
-        WIRELINE_ACCESS_AREA_NOT_ALLOWED,
+        WIRELINE_ACCESS_AREA_NOT_ALLOWED = 77,
         /**
          * Payload was not forwarded. Since 1.28.
          */
-        PAYLOAD_WAS_NOT_FORWARDED,
+        PAYLOAD_WAS_NOT_FORWARDED = 90,
         /**
          * DNN not supported or not subscribed in the slice. Since 1.28.
          */
-        DNN_NOT_SUPPORTED_OR_NOT_SUBSCRIBED_IN_THE_SLICE,
+        DNN_NOT_SUPPORTED_OR_NOT_SUBSCRIBED_IN_THE_SLICE = 91,
         /**
          * Insufficient user-plane resources for the PDU session. Since 1.28.
          */
-        INSUFFICIENT_USER_PLANE_RESOURCES_FOR_THE_PDU_SESSION,
+        INSUFFICIENT_USER_PLANE_RESOURCES_FOR_THE_PDU_SESSION = 92,
         /**
          * Semantically incorrect message. Since 1.10.
          */
-        SEMANTICALLY_INCORRECT_MESSAGE,
+        SEMANTICALLY_INCORRECT_MESSAGE = 95,
         /**
          * Invalid mandatory information. Since 1.10.
          */
-        INVALID_MANDATORY_INFORMATION,
+        INVALID_MANDATORY_INFORMATION = 96,
         /**
          * Message type non-existent or not implemented. Since 1.10.
          */
-        MESSAGE_TYPE_NON_EXISTENT_OR_NOT_IMPLEMENTED,
+        MESSAGE_TYPE_NON_EXISTENT_OR_NOT_IMPLEMENTED = 97,
         /**
          * Message type not compatible with protocol state. Since 1.10.
          */
-        MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE,
+        MESSAGE_TYPE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE = 98,
         /**
          * Information element non-existent or not implemented. Since 1.10.
          */
-        INFORMATION_ELEMENT_NON_EXISTENT_OR_NOT_IMPLEMENTED,
+        INFORMATION_ELEMENT_NON_EXISTENT_OR_NOT_IMPLEMENTED = 99,
         /**
          * Conditional IE error. Since 1.10.
          */
-        CONDITIONAL_IE_ERROR,
+        CONDITIONAL_IE_ERROR = 100,
         /**
          * Message not compatible with protocol state. Since 1.10.
          */
-        MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE,
+        MESSAGE_NOT_COMPATIBLE_WITH_PROTOCOL_STATE = 101,
         /**
          * Protocol error, unspecified. Since 1.10.
          */
-        PROTOCOL_ERROR_UNSPECIFIED,
+        PROTOCOL_ERROR_UNSPECIFIED = 111,
         /**
          * APN restriction value incompatible with active PDP context. Since 1.18.
          */
-        APN_RESTRICTION_VALUE_INCOMPATIBLE_WITH_ACTIVE_PDP_CONTEXT,
+        APN_RESTRICTION_VALUE_INCOMPATIBLE_WITH_ACTIVE_PDP_CONTEXT = 112,
         /**
          * Multiple accesses to a PDN connection not allowed. Since 1.18.
          */
-        MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED,
+        MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED = 113,
     }
 
 
@@ -2320,11 +2320,11 @@ export namespace Mbim {
         /**
          * Attach.
          */
-        ATTACH,
+        ATTACH = 0,
         /**
          * Detach.
          */
-        DETACH,
+        DETACH = 1,
     }
 
 
@@ -2344,23 +2344,23 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Attaching.
          */
-        ATTACHING,
+        ATTACHING = 1,
         /**
          * Attached.
          */
-        ATTACHED,
+        ATTACHED = 2,
         /**
          * Detaching.
          */
-        DETACHING,
+        DETACHING = 3,
         /**
          * Detached.
          */
-        DETACHED,
+        DETACHED = 4,
     }
 
 
@@ -2380,11 +2380,11 @@ export namespace Mbim {
         /**
          * The PCO structure is complete.
          */
-        COMPLETE,
+        COMPLETE = 0,
         /**
          * The PCO structure is a subset of what was received from the network.
          */
-        PARTIAL,
+        PARTIAL = 1,
     }
 
 
@@ -2404,11 +2404,11 @@ export namespace Mbim {
         /**
          * Request all.
          */
-        ALL,
+        ALL = 0,
         /**
          * Request single entry by index.
          */
-        INDEX,
+        INDEX = 1,
     }
 
 
@@ -2428,11 +2428,11 @@ export namespace Mbim {
         /**
          * Not initialized.
          */
-        NOT_INITIALIZED,
+        NOT_INITIALIZED = 0,
         /**
          * Initialized
          */
-        INITIALIZED,
+        INITIALIZED = 1,
     }
 
 
@@ -2452,11 +2452,11 @@ export namespace Mbim {
         /**
          * Store the record in an unused slot.
          */
-        UNUSED,
+        UNUSED = 0,
         /**
          * Index where to store the record.
          */
-        INDEX,
+        INDEX = 1,
     }
 
 
@@ -2476,15 +2476,15 @@ export namespace Mbim {
         /**
          * Unknown format.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Numeric-only format.
          */
-        NUMERIC,
+        NUMERIC = 1,
         /**
          * Alphanumeric format.
          */
-        ALPHANUMERIC,
+        ALPHANUMERIC = 2,
     }
 
 
@@ -2504,15 +2504,15 @@ export namespace Mbim {
         /**
          * Not supported.
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 0,
         /**
          * Enabled.
          */
-        ENABLED,
+        ENABLED = 1,
         /**
          * Disabled.
          */
-        DISABLED,
+        DISABLED = 2,
     }
 
 
@@ -2532,19 +2532,19 @@ export namespace Mbim {
         /**
          * Enter the specified PIN into the device.
          */
-        ENTER,
+        ENTER = 0,
         /**
          * Enable the specified PIN.
          */
-        ENABLE,
+        ENABLE = 1,
         /**
          * Disable the specified PIN.
          */
-        DISABLE,
+        DISABLE = 2,
         /**
          * Change the specified PIN.
          */
-        CHANGE,
+        CHANGE = 3,
     }
 
 
@@ -2564,11 +2564,11 @@ export namespace Mbim {
         /**
          * The device does not require a PIN.
          */
-        UNLOCKED,
+        UNLOCKED = 0,
         /**
          * The device requires the user to enter a PIN.
          */
-        LOCKED,
+        LOCKED = 1,
     }
 
 
@@ -2588,83 +2588,83 @@ export namespace Mbim {
         /**
          * Unknown or unset.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * The PIN type is a custom type and is none of the other PIN types listed in this enumeration.
          */
-        CUSTOM,
+        CUSTOM = 1,
         /**
          * The PIN1 key.
          */
-        PIN1,
+        PIN1 = 2,
         /**
          * The PIN2 key.
          */
-        PIN2,
+        PIN2 = 3,
         /**
          * The device to SIM key.
          */
-        DEVICE_SIM_PIN,
+        DEVICE_SIM_PIN = 4,
         /**
          * The device to very first SIM key.
          */
-        DEVICE_FIRST_SIM_PIN,
+        DEVICE_FIRST_SIM_PIN = 5,
         /**
          * The network personalization key.
          */
-        NETWORK_PIN,
+        NETWORK_PIN = 6,
         /**
          * The network subset personalization key.
          */
-        NETWORK_SUBSET_PIN,
+        NETWORK_SUBSET_PIN = 7,
         /**
          * The service provider (SP) personalization key.
          */
-        SERVICE_PROVIDER_PIN,
+        SERVICE_PROVIDER_PIN = 8,
         /**
          * The corporate personalization key.
          */
-        CORPORATE_PIN,
+        CORPORATE_PIN = 9,
         /**
          * The subsidy unlock key.
          */
-        SUBSIDY_PIN,
+        SUBSIDY_PIN = 10,
         /**
          * The Personal Identification Number1 Unlock Key (PUK1).
          */
-        PUK1,
+        PUK1 = 11,
         /**
          * The Personal Identification Number2 Unlock Key (PUK2).
          */
-        PUK2,
+        PUK2 = 12,
         /**
          * The device to very first SIM PIN unlock key.
          */
-        DEVICE_FIRST_SIM_PUK,
+        DEVICE_FIRST_SIM_PUK = 13,
         /**
          * The network personalization unlock key.
          */
-        NETWORK_PUK,
+        NETWORK_PUK = 14,
         /**
          * The network subset personalization unlock key.
          */
-        NETWORK_SUBSET_PUK,
+        NETWORK_SUBSET_PUK = 15,
         /**
          * The service provider (SP) personalization unlock key.
          */
-        SERVICE_PROVIDER_PUK,
+        SERVICE_PROVIDER_PUK = 16,
         /**
          * The corporate personalization unlock key.
          */
-        CORPORATE_PUK,
+        CORPORATE_PUK = 17,
         /**
          * The NEV key (MS UICC low-level access). Since 1.28.
          */
-        NEV,
+        NEV = 18,
         /**
          * The administrative key (MS UICC low-level access). Since 1.28.
          */
-        ADM,
+        ADM = 19,
     }
 
 
@@ -2751,7 +2751,7 @@ export namespace Mbim {
         /**
          * LE Package
          */
-        PACKAGE,
+        PACKAGE = 0,
     }
 
 
@@ -2771,7 +2771,7 @@ export namespace Mbim {
         /**
          * Reboot to Emergency Download mode
          */
-        EDL,
+        EDL = 17,
     }
 
 
@@ -2791,7 +2791,7 @@ export namespace Mbim {
         /**
          * Firmware Build ID
          */
-        ID,
+        ID = 256,
     }
 
 
@@ -2811,11 +2811,11 @@ export namespace Mbim {
         /**
          * Start.
          */
-        START,
+        START = 0,
         /**
          * Stop.
          */
-        STOP,
+        STOP = 1,
     }
 
 
@@ -2835,11 +2835,11 @@ export namespace Mbim {
         /**
          * Success
          */
-        SUCCESS,
+        SUCCESS = 0,
         /**
          * Failure
          */
-        FAILURE,
+        FAILURE = 1,
     }
 
 
@@ -2859,15 +2859,15 @@ export namespace Mbim {
         /**
          * Update session is not active.
          */
-        INACTIVE,
+        INACTIVE = 0,
         /**
          * Updated files are being transferred from host to function or function is waiting host to send updated files.
          */
-        FILE_TRANSFER,
+        FILE_TRANSFER = 1,
         /**
          * The function is applying the update package.
          */
-        APPLY_UPDATE,
+        APPLY_UPDATE = 2,
     }
 
 
@@ -2887,11 +2887,11 @@ export namespace Mbim {
         /**
          * No update session.
          */
-        NONE,
+        NONE = 0,
         /**
          * LE-based update procedure.
          */
-        LE,
+        LE = 1,
     }
 
 
@@ -2911,11 +2911,11 @@ export namespace Mbim {
         /**
          * Command return status OK.
          */
-        OK,
+        OK = 0,
         /**
          * Command return status FAIL.
          */
-        FAIL,
+        FAIL = 1,
     }
 
 
@@ -2935,11 +2935,11 @@ export namespace Mbim {
         /**
          * Command type is AT.
          */
-        AT,
+        AT = 0,
         /**
          * Command type is SYSTEM.
          */
-        SYSTEM,
+        SYSTEM = 1,
     }
 
 
@@ -2959,15 +2959,15 @@ export namespace Mbim {
         /**
          * Radio is off.
          */
-        OFF,
+        OFF = 0,
         /**
          * Radio is on.
          */
-        ON,
+        ON = 1,
         /**
          * Radio is FCC locked.
          */
-        FCC_LOCKED,
+        FCC_LOCKED = 4,
     }
 
 
@@ -2987,11 +2987,11 @@ export namespace Mbim {
         /**
          * Radio is off.
          */
-        OFF,
+        OFF = 0,
         /**
          * Radio is on.
          */
-        ON,
+        ON = 1,
     }
 
 
@@ -3011,11 +3011,11 @@ export namespace Mbim {
         /**
          * Automatic registration.
          */
-        AUTOMATIC,
+        AUTOMATIC = 0,
         /**
          * Manual registration.
          */
-        MANUAL,
+        MANUAL = 1,
     }
 
 
@@ -3035,15 +3035,15 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Automatic registration.
          */
-        AUTOMATIC,
+        AUTOMATIC = 1,
         /**
          * Manual registration.
          */
-        MANUAL,
+        MANUAL = 2,
     }
 
 
@@ -3063,31 +3063,31 @@ export namespace Mbim {
         /**
          * Unknown registration state.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Not registered.
          */
-        DEREGISTERED,
+        DEREGISTERED = 1,
         /**
          * Searching.
          */
-        SEARCHING,
+        SEARCHING = 2,
         /**
          * Registered in home network.
          */
-        HOME,
+        HOME = 3,
         /**
          * Registered in roaming network.
          */
-        ROAMING,
+        ROAMING = 4,
         /**
          * Registered in a preferred roaming network.
          */
-        PARTNER,
+        PARTNER = 5,
         /**
          * Registration denied.
          */
-        DENIED,
+        DENIED = 6,
     }
 
 
@@ -3107,11 +3107,11 @@ export namespace Mbim {
         /**
          * SAR backoff is disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * SAR backoff is enabled.
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -3131,11 +3131,11 @@ export namespace Mbim {
         /**
          * SAR backoff is controlled by the modem directly.
          */
-        DEVICE,
+        DEVICE = 0,
         /**
          * SAR backoff is controlled by the host operating system.
          */
-        OS,
+        OS = 1,
     }
 
 
@@ -3155,11 +3155,11 @@ export namespace Mbim {
         /**
          * Integrated.
          */
-        INTEGRATED,
+        INTEGRATED = 0,
         /**
          * Not integrated.
          */
-        NOT_INTEGRATED,
+        NOT_INTEGRATED = 1,
     }
 
 
@@ -3179,107 +3179,107 @@ export namespace Mbim {
         /**
          * Invalid service.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * Basic connectivity service.
          */
-        BASIC_CONNECT,
+        BASIC_CONNECT = 1,
         /**
          * SMS messaging service.
          */
-        SMS,
+        SMS = 2,
         /**
          * USSD service.
          */
-        USSD,
+        USSD = 3,
         /**
          * Phonebook service.
          */
-        PHONEBOOK,
+        PHONEBOOK = 4,
         /**
          * SIM toolkit service.
          */
-        STK,
+        STK = 5,
         /**
          * Authentication service.
          */
-        AUTH,
+        AUTH = 6,
         /**
          * Device Service Stream service.
          */
-        DSS,
+        DSS = 7,
         /**
          * Microsoft Firmware ID service. Since 1.8.
          */
-        MS_FIRMWARE_ID,
+        MS_FIRMWARE_ID = 8,
         /**
          * Microsoft Host Shutdown service. Since 1.8.
          */
-        MS_HOST_SHUTDOWN,
+        MS_HOST_SHUTDOWN = 9,
         /**
          * Proxy Control service. Since 1.10.
          */
-        PROXY_CONTROL,
+        PROXY_CONTROL = 10,
         /**
          * QMI-over-MBIM service. Since 1.14.
          */
-        QMI,
+        QMI = 11,
         /**
          * ATT Device service. Since 1.16.
          */
-        ATDS,
+        ATDS = 12,
         /**
          * Intel firmware update service. Since 1.16.
          */
-        INTEL_FIRMWARE_UPDATE,
+        INTEL_FIRMWARE_UPDATE = 13,
         /**
          * Microsoft basic connectivity extensions service. Since 1.18.
          */
-        MS_BASIC_CONNECT_EXTENSIONS,
+        MS_BASIC_CONNECT_EXTENSIONS = 14,
         /**
          * Microsoft SAR service. Since 1.26.
          */
-        MS_SAR,
+        MS_SAR = 15,
         /**
          * QDU firmware update service. Since 1.26.
          */
-        QDU,
+        QDU = 16,
         /**
          * Microsoft UICC Low Level Access service. Since 1.26.
          */
-        MS_UICC_LOW_LEVEL_ACCESS,
+        MS_UICC_LOW_LEVEL_ACCESS = 17,
         /**
          * Quectel specific operations. Since 1.26.2.
          */
-        QUECTEL,
+        QUECTEL = 18,
         /**
          * Intel thermal rf related commands. Since 1.28
          */
-        INTEL_THERMAL_RF,
+        INTEL_THERMAL_RF = 19,
         /**
          * Microsoft Voice extensions service. Since 1.28.
          */
-        MS_VOICE_EXTENSIONS,
+        MS_VOICE_EXTENSIONS = 20,
         /**
          * Intel mutual authentication commands. Since 1.30.
          */
-        INTEL_MUTUAL_AUTHENTICATION,
+        INTEL_MUTUAL_AUTHENTICATION = 21,
         /**
          * Intel tools service. Since 1.30.
          */
-        INTEL_TOOLS,
+        INTEL_TOOLS = 22,
         /**
          * Google specific service. Since 1.30
          */
-        GOOGLE,
+        GOOGLE = 23,
         /**
          * Fibocom specific service. Since 1.32.
          */
-        FIBOCOM,
+        FIBOCOM = 24,
         /**
          * Compal specific service. Since 1.32.
          */
-        COMPAL,
+        COMPAL = 25,
     }
 
 
@@ -3299,43 +3299,43 @@ export namespace Mbim {
         /**
          * Octet.
          */
-        OCTET,
+        OCTET = 0,
         /**
          * EPM.
          */
-        EPM,
+        EPM = 1,
         /**
          * 7-bit ASCII.
          */
-        "7BIT_ASCII",
+        "7BIT_ASCII" = 2,
         /**
          * LA5.
          */
-        LA5,
+        LA5 = 3,
         /**
          * Unicode.
          */
-        UNICODE,
+        UNICODE = 4,
         /**
          * Shift JIS.
          */
-        SHIFT_JIS,
+        SHIFT_JIS = 5,
         /**
          * Korean.
          */
-        KOREAN,
+        KOREAN = 6,
         /**
          * Latin hebrew.
          */
-        LATIN_HEBREW,
+        LATIN_HEBREW = 7,
         /**
          * Latin.
          */
-        LATIN,
+        LATIN = 8,
         /**
          * 7-bit GSM.
          */
-        GSM_7BIT,
+        GSM_7BIT = 9,
     }
 
 
@@ -3355,35 +3355,35 @@ export namespace Mbim {
         /**
          * Unknown language.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * English.
          */
-        ENGLISH,
+        ENGLISH = 1,
         /**
          * French.
          */
-        FRENCH,
+        FRENCH = 2,
         /**
          * Spanish.
          */
-        SPANISH,
+        SPANISH = 3,
         /**
          * Japanese.
          */
-        JAPANESE,
+        JAPANESE = 4,
         /**
          * Korean.
          */
-        KOREAN,
+        KOREAN = 5,
         /**
          * Chinese.
          */
-        CHINESE,
+        CHINESE = 6,
         /**
          * Hebrew.
          */
-        HEBREW,
+        HEBREW = 7,
     }
 
 
@@ -3404,27 +3404,27 @@ export namespace Mbim {
         /**
          * All.
          */
-        ALL,
+        ALL = 0,
         /**
          * Index.
          */
-        INDEX,
+        INDEX = 1,
         /**
          * New.
          */
-        NEW,
+        NEW = 2,
         /**
          * Old.
          */
-        OLD,
+        OLD = 3,
         /**
          * Sent.
          */
-        SENT,
+        SENT = 4,
         /**
          * Draft.
          */
-        DRAFT,
+        DRAFT = 5,
     }
 
 
@@ -3444,11 +3444,11 @@ export namespace Mbim {
         /**
          * PDU format.
          */
-        PDU,
+        PDU = 0,
         /**
          * CDMA format.
          */
-        CDMA,
+        CDMA = 1,
     }
 
 
@@ -3468,19 +3468,19 @@ export namespace Mbim {
         /**
          * New.
          */
-        NEW,
+        NEW = 0,
         /**
          * Old.
          */
-        OLD,
+        OLD = 1,
         /**
          * Draft.
          */
-        DRAFT,
+        DRAFT = 2,
         /**
          * Sent.
          */
-        SENT,
+        SENT = 3,
     }
 
 
@@ -3500,11 +3500,11 @@ export namespace Mbim {
         /**
          * Storage not initialized.
          */
-        NOT_INITIALIZED,
+        NOT_INITIALIZED = 0,
         /**
          * Storage initialized.
          */
-        INITIALIZED,
+        INITIALIZED = 1,
     }
 
 
@@ -3811,35 +3811,35 @@ export namespace Mbim {
         /**
          * Command not handled by function but handled by host.
          */
-        NOT_HANDLED_BY_FUNCTION_HANDLED_BY_HOST,
+        NOT_HANDLED_BY_FUNCTION_HANDLED_BY_HOST = 0,
         /**
          * Command not handled by function but may be handled by host.
          */
-        NOT_HANDLED_BY_FUNCTION_MAY_BE_HANDLED_BY_HOST,
+        NOT_HANDLED_BY_FUNCTION_MAY_BE_HANDLED_BY_HOST = 1,
         /**
          * Command handled by function without informing the host.
          */
-        HANDLED_BY_FUNCTION_ONLY_TRANSPARENT_TO_HOST,
+        HANDLED_BY_FUNCTION_ONLY_TRANSPARENT_TO_HOST = 2,
         /**
          * Command handled by function without informing the host, but notifications may be sent to host.
          */
-        HANDLED_BY_FUNCTION_NOTIFICATION_TO_HOST_POSSIBLE,
+        HANDLED_BY_FUNCTION_NOTIFICATION_TO_HOST_POSSIBLE = 3,
         /**
          * Command handled by function, and the function wil also send notification to the host.
          */
-        HANDLED_BY_FUNCTION_NOTIFICATIONS_TO_HOST_ENABLED,
+        HANDLED_BY_FUNCTION_NOTIFICATIONS_TO_HOST_ENABLED = 4,
         /**
          * Command handled by function, but the host may request full control of the command.
          */
-        HANDLED_BY_FUNCTION_CAN_BE_OVERRIDEN_BY_HOST,
+        HANDLED_BY_FUNCTION_CAN_BE_OVERRIDEN_BY_HOST = 5,
         /**
          * Command will be forwarded to the host. If the host decides not to receive the command, the function will not handle it.
          */
-        HANDLED_BY_HOST_FUNCTION_NOT_ABLE_TO_HANDLE,
+        HANDLED_BY_HOST_FUNCTION_NOT_ABLE_TO_HANDLE = 6,
         /**
          * Command will be forwarded to the host. If the host decides not to receive the command, the function will handle it.
          */
-        HANDLED_BY_HOST_FUNCTION_ABLE_TO_HANDLE,
+        HANDLED_BY_HOST_FUNCTION_ABLE_TO_HANDLE = 7,
     }
 
 
@@ -3859,11 +3859,11 @@ export namespace Mbim {
         /**
          * Host is requested to handle the Proactive command.
          */
-        PROACTIVE_COMMAND,
+        PROACTIVE_COMMAND = 0,
         /**
          * Proactive command is handled by the function, but the host is notified.
          */
-        NOTIFICATION,
+        NOTIFICATION = 1,
     }
 
 
@@ -3883,36 +3883,36 @@ export namespace Mbim {
         /**
          * Not initialized.
          */
-        NOT_INITIALIZED,
+        NOT_INITIALIZED = 0,
         /**
          * Initialized.
          */
-        INITIALIZED,
+        INITIALIZED = 1,
         /**
          * SIM not inserted.
          */
-        SIM_NOT_INSERTED,
+        SIM_NOT_INSERTED = 2,
         /**
          * Bad SIM.
          */
-        BAD_SIM,
+        BAD_SIM = 3,
         /**
          * Failure.
          */
-        FAILURE,
+        FAILURE = 4,
         /**
          * Not activated.
          */
-        NOT_ACTIVATED,
+        NOT_ACTIVATED = 5,
         /**
          * Device locked.
          */
-        DEVICE_LOCKED,
+        DEVICE_LOCKED = 6,
         /**
          * The card is ready but does not
          *  have any enabled profiles (MS MBIMEx). Since 1.28.
          */
-        NO_ESIM_PROFILE,
+        NO_ESIM_PROFILE = 7,
     }
 
 
@@ -3932,75 +3932,75 @@ export namespace Mbim {
         /**
          * Invalid TLV type.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * UE policies.
          */
-        UE_POLICITES,
+        UE_POLICITES = 1,
         /**
          * Single NSSAI.
          */
-        SINGLE_NSSAI,
+        SINGLE_NSSAI = 2,
         /**
          * Allowed NSSAI.
          */
-        ALLOWED_NSSAI,
+        ALLOWED_NSSAI = 3,
         /**
          * Configured NSSAI.
          */
-        CFG_NSSAI,
+        CFG_NSSAI = 4,
         /**
          * Default configured NSSAI.
          */
-        DFLT_CFG_NSSAI,
+        DFLT_CFG_NSSAI = 5,
         /**
          * Preconfigured default configured NSSAI.
          */
-        PRECFG_DFLT_CFG_NSSAI,
+        PRECFG_DFLT_CFG_NSSAI = 6,
         /**
          * Rejected NSSAI.
          */
-        REJ_NSSAI,
+        REJ_NSSAI = 7,
         /**
          * Local Area Data Network (LADN).
          */
-        LADN,
+        LADN = 8,
         /**
          * Tracking Area Identity (TAI).
          */
-        TAI,
+        TAI = 9,
         /**
          * WCHAR string.
          */
-        WCHAR_STR,
+        WCHAR_STR = 10,
         /**
          * Array of 1 or more `guint16` entries.
          */
-        UINT16_TBL,
+        UINT16_TBL = 11,
         /**
          * Extensible Authentication Protocol packet.
          */
-        EAP_PACKET,
+        EAP_PACKET = 12,
         /**
          * Protocol Configuration Option (PCO).
          */
-        PCO,
+        PCO = 13,
         /**
          * One or more route selection descriptors.
          */
-        ROUTE_SELECTION_DESCRIPTORS,
+        ROUTE_SELECTION_DESCRIPTORS = 14,
         /**
          * A traffic parameters record.
          */
-        TRAFFIC_PARAMETERS,
+        TRAFFIC_PARAMETERS = 15,
         /**
          * Wake command.
          */
-        WAKE_COMMAND,
+        WAKE_COMMAND = 16,
         /**
          * Wake packet.
          */
-        WAKE_PACKET,
+        WAKE_PACKET = 17,
     }
 
 
@@ -4020,19 +4020,19 @@ export namespace Mbim {
         /**
          * Trace command mode value.
          */
-        MODE,
+        MODE = 0,
         /**
          * Trace command level value.
          */
-        LEVEL,
+        LEVEL = 1,
         /**
          * Trace command location information.
          */
-        LOCATION,
+        LOCATION = 2,
         /**
          * Trace command flash interval information.
          */
-        FLASH_INTERVAL,
+        FLASH_INTERVAL = 3,
     }
 
 
@@ -4052,11 +4052,11 @@ export namespace Mbim {
         /**
          * Notification disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Notification enabled.
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -4076,11 +4076,11 @@ export namespace Mbim {
         /**
          * Modem was not actively transmitting data.
          */
-        INACTIVE,
+        INACTIVE = 0,
         /**
          * Modem was actively transmitting data.
          */
-        ACTIVE,
+        ACTIVE = 1,
     }
 
 
@@ -4100,31 +4100,31 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Legacy SIM directories rooted at the MF.
          */
-        MF,
+        MF = 1,
         /**
          * Legacy SIM directories rooted at the DF_GSM.
          */
-        MF_SIM,
+        MF_SIM = 2,
         /**
          * Legacy SIM directories rooted at the DF_CDMA.
          */
-        MF_RUIM,
+        MF_RUIM = 3,
         /**
          * USIM application.
          */
-        USIM,
+        USIM = 4,
         /**
          * CSIM application.
          */
-        CSIM,
+        CSIM = 5,
         /**
          * ISIM application.
          */
-        ISIM,
+        ISIM = 6,
     }
 
 
@@ -4144,11 +4144,11 @@ export namespace Mbim {
         /**
          * Defined according to first interindustry definition in ISO 7816-4.
          */
-        INTER_INDUSTRY,
+        INTER_INDUSTRY = 0,
         /**
          * Defined according to extended definition in ETSI 102 221.
          */
-        EXTENDED,
+        EXTENDED = 1,
     }
 
 
@@ -4168,15 +4168,15 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Not shareable.
          */
-        NOT_SHAREABLE,
+        NOT_SHAREABLE = 1,
         /**
          * Shareable.
          */
-        SHAREABLE,
+        SHAREABLE = 2,
     }
 
 
@@ -4196,23 +4196,23 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A single record of variable length.
          */
-        TRANSPARENT,
+        TRANSPARENT = 1,
         /**
          * A cyclic set of records, each of the same length.
          */
-        CYCLIC,
+        CYCLIC = 2,
         /**
          * A linear set of records, each of the same length.
          */
-        LINEAR,
+        LINEAR = 3,
         /**
          * A set of data values accessible by tag.
          */
-        BER_TLV,
+        BER_TLV = 4,
     }
 
 
@@ -4232,19 +4232,19 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Working EF.
          */
-        WORKING_EF,
+        WORKING_EF = 1,
         /**
          * Internal EF.
          */
-        INTERNAL_EF,
+        INTERNAL_EF = 2,
         /**
          * Dedicated file, DF or ADF.
          */
-        DF_OR_ADF,
+        DF_OR_ADF = 3,
     }
 
 
@@ -4265,11 +4265,11 @@ export namespace Mbim {
         /**
          * Disable pass through.
          */
-        DISABLE,
+        DISABLE = 0,
         /**
          * Enable pass through.
          */
-        ENABLE,
+        ENABLE = 1,
     }
 
 
@@ -4289,11 +4289,11 @@ export namespace Mbim {
         /**
          * Pass through disabled.
          */
-        DISABLED,
+        DISABLED = 0,
         /**
          * Pass through enabled.
          */
-        ENABLED,
+        ENABLED = 1,
     }
 
 
@@ -4313,11 +4313,11 @@ export namespace Mbim {
         /**
          * No secure messaging.
          */
-        NONE,
+        NONE = 0,
         /**
          * Secure, command header not authenticated.
          */
-        NO_HDR_AUTH,
+        NO_HDR_AUTH = 1,
     }
 
 
@@ -4337,39 +4337,39 @@ export namespace Mbim {
         /**
          * The modem is still in the process of initializing so the SIM slot state is not deterministic.
          */
-        STATE_UNKNOWN,
+        STATE_UNKNOWN = 0,
         /**
          * The UICC slot is powered off and no card is present.
          */
-        SATE_OFF_EMPTY,
+        SATE_OFF_EMPTY = 1,
         /**
          * The UICC slot is powered off.
          */
-        STATE_OFF,
+        STATE_OFF = 2,
         /**
          * The UICC slot is empty(there is no card in it).
          */
-        STATE_EMPTY,
+        STATE_EMPTY = 3,
         /**
          * The UICC slot is occupied and powered on but the card within it is not yet ready.
          */
-        STATE_NOT_READY,
+        STATE_NOT_READY = 4,
         /**
          * The UICC slot is occupied and the card within it is ready.
          */
-        STATE_ACTIVE,
+        STATE_ACTIVE = 5,
         /**
          * The UICC slot is occupied and powreed on but the card is in an error state and cannot be used until it is next reset.
          */
-        STATE_ERROR,
+        STATE_ERROR = 6,
         /**
          * The card in the slot is an eSIM with an active profile and is ready to accept commands.
          */
-        STATE_ACTIVE_ESIM,
+        STATE_ACTIVE_ESIM = 7,
         /**
          * The card in the slot is an eSIM with no profiles(or no active profiles) and is ready to accept commands.
          */
-        STATE_ACTIVE_ESIM_NO_PROFILES,
+        STATE_ACTIVE_ESIM_NO_PROFILES = 8,
     }
 
 
@@ -4389,15 +4389,15 @@ export namespace Mbim {
         /**
          * Initiate USSD session.
          */
-        INITIATE,
+        INITIATE = 0,
         /**
          * Continue USSD session.
          */
-        CONTINUE,
+        CONTINUE = 1,
         /**
          * Cancel USSD session.
          */
-        CANCEL,
+        CANCEL = 2,
     }
 
 
@@ -4417,27 +4417,27 @@ export namespace Mbim {
         /**
          * No action required.
          */
-        NO_ACTION_REQUIRED,
+        NO_ACTION_REQUIRED = 0,
         /**
          * An action is required.
          */
-        ACTION_REQUIRED,
+        ACTION_REQUIRED = 1,
         /**
          * Terminated by network
          */
-        TERMINATED_BY_NETWORK,
+        TERMINATED_BY_NETWORK = 2,
         /**
          * Other local client.
          */
-        OTHER_LOCAL_CLIENT,
+        OTHER_LOCAL_CLIENT = 3,
         /**
          * Operation not supported.
          */
-        OPERATION_NOT_SUPPORTED,
+        OPERATION_NOT_SUPPORTED = 4,
         /**
          * Network timeout.
          */
-        NETWORK_TIMEOUT,
+        NETWORK_TIMEOUT = 5,
     }
 
 
@@ -4457,11 +4457,11 @@ export namespace Mbim {
         /**
          * New session.
          */
-        NEW_SESSION,
+        NEW_SESSION = 0,
         /**
          * Existing session.
          */
-        EXISTING_SESSION,
+        EXISTING_SESSION = 1,
     }
 
 
@@ -4481,11 +4481,11 @@ export namespace Mbim {
         /**
          * Full scan.
          */
-        FULL_SCAN,
+        FULL_SCAN = 0,
         /**
          * Locate preferred multicarrier providers.
          */
-        RESTRICTED_SCAN,
+        RESTRICTED_SCAN = 1,
     }
 
 
@@ -4505,15 +4505,15 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Progress.
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 1,
         /**
          * Up.
          */
-        HANG_UP,
+        HANG_UP = 2,
     }
 
 
@@ -4533,19 +4533,19 @@ export namespace Mbim {
         /**
          * Unknown voice class.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Device doesn't support voice.
          */
-        NO_VOICE,
+        NO_VOICE = 1,
         /**
          * Device supports separate voice and data connections.
          */
-        SEPARATED_VOICE_DATA,
+        SEPARATED_VOICE_DATA = 2,
         /**
          * Device supports simultaneous voice and data connections.
          */
-        SIMULTANEOUS_VOICE_DATA,
+        SIMULTANEOUS_VOICE_DATA = 3,
     }
 
 
@@ -4565,71 +4565,83 @@ export namespace Mbim {
         /**
          * A CID response wakes device.
          */
-        CID_RESPONSE,
+        CID_RESPONSE = 0,
         /**
          * A CID indication wakes device.
          */
-        CID_INDICATION,
+        CID_INDICATION = 1,
         /**
          * An incoming packet wakes device.
          */
-        PACKET,
+        PACKET = 2,
     }
 
 
+    /**
+     * @default org.freedesktop.libmbim.Error
+     */
     const DBUS_ERROR_PREFIX: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.device_consecutive_timeouts} property.
      * @since 1.28
+     * @default device-consecutive-timeouts
      */
     const DEVICE_CONSECUTIVE_TIMEOUTS: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.device_file} property.
      * @since 1.0
+     * @default device-file
      */
     const DEVICE_FILE: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.device_in_session} property.
      * @since 1.4
+     * @default device-in-session
      */
     const DEVICE_IN_SESSION: string;
 
     /**
      * Symbol defining the maximum supported session id.
      * @since 1.26
+     * @default 255
      */
     const DEVICE_SESSION_ID_MAX: number;
 
     /**
      * Symbol defining the minimum supported session id..
      * @since 1.26
+     * @default 0
      */
     const DEVICE_SESSION_ID_MIN: number;
 
     /**
      * Symbol defining the {@link Mbim.Device.SignalSignatures.device_error | Mbim.Device::device-error} signal.
      * @since 1.0
+     * @default device-error
      */
     const DEVICE_SIGNAL_ERROR: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.SignalSignatures.device_indicate_status | Mbim.Device::device-indicate-status} signal.
      * @since 1.0
+     * @default device-indicate-status
      */
     const DEVICE_SIGNAL_INDICATE_STATUS: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.SignalSignatures.device_removed | Mbim.Device::device-removed} signal.
      * @since 1.10
+     * @default device-removed
      */
     const DEVICE_SIGNAL_REMOVED: string;
 
     /**
      * Symbol defining the {@link Mbim.Device.device_transaction_id} property.
      * @since 1.2
+     * @default device-transaction-id
      */
     const DEVICE_TRANSACTION_ID: string;
 
@@ -4637,6 +4649,7 @@ export namespace Mbim {
      * Evaluates to the major version number of libmbim-glib which this source
      * is compiled against.
      * @since 1.2
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
@@ -4644,6 +4657,7 @@ export namespace Mbim {
      * Evaluates to the micro version number of libmbim-glib which this source
      * compiled against.
      * @since 1.2
+     * @default 0
      */
     const MICRO_VERSION: number;
 
@@ -4651,24 +4665,28 @@ export namespace Mbim {
      * Evaluates to the minor version number of libmbim-glib which this source
      * is compiled against.
      * @since 1.2
+     * @default 32
      */
     const MINOR_VERSION: number;
 
     /**
      * Symbol defining the {@link Mbim.Proxy.mbim_proxy_n_clients} property.
      * @since 1.10
+     * @default mbim-proxy-n-clients
      */
     const PROXY_N_CLIENTS: string;
 
     /**
      * Symbol defining the {@link Mbim.Proxy.mbim_proxy_n_devices} property.
      * @since 1.10
+     * @default mbim-proxy-n-devices
      */
     const PROXY_N_DEVICES: string;
 
     /**
      * Symbol defining the default abstract socket name where the {@link Mbim.Proxy} will listen.
      * @since 1.10
+     * @default mbim-proxy
      */
     const PROXY_SOCKET_PATH: string;
 
@@ -6115,15 +6133,15 @@ export namespace Mbim {
         /**
          * None. Since 1.30.
          */
-        NONE,
+        NONE = 0,
         /**
          * Device is 3GPP.
          */
-        GSM,
+        GSM = 1,
         /**
          * Device is 3GPP2.
          */
-        CDMA,
+        CDMA = 2,
     }
 
 
@@ -6143,39 +6161,39 @@ export namespace Mbim {
         /**
          * None. Since 1.28.
          */
-        NONE,
+        NONE = 0,
         /**
          * Device allows manual network selection.
          */
-        REG_MANUAL,
+        REG_MANUAL = 1,
         /**
          * Device has a hardware radio power switch.
          */
-        HW_RADIO_SWITCH,
+        HW_RADIO_SWITCH = 2,
         /**
          * The CDMA function supports Mobile IP.
          */
-        CDMA_MOBILE_IP,
+        CDMA_MOBILE_IP = 4,
         /**
          * The CDMA function supports Simple IP.
          */
-        CDMA_SIMPLE_IP,
+        CDMA_SIMPLE_IP = 8,
         /**
          * Device can work with multiple providers.
          */
-        MULTI_CARRIER,
+        MULTI_CARRIER = 16,
         /**
          * Device supports eSIM (MS MBIMEx v3.0). Since 1.28.
          */
-        ESIM,
+        ESIM = 32,
         /**
          * Device supports including the route selection descriptors as part of the UE policies (MS MBIMEx v3.0). Since 1.28.
          */
-        UE_POLICY_ROUTE_SELECTION,
+        UE_POLICY_ROUTE_SELECTION = 64,
         /**
          * Device supports SIM hot-swap (MS MBIMEx v3.0). Since 1.28.
          */
-        SIM_HOT_SWAP_CAPABLE,
+        SIM_HOT_SWAP_CAPABLE = 128,
     }
 
 
@@ -6202,71 +6220,71 @@ export namespace Mbim {
         /**
          * None. Since 1.30.
          */
-        NONE,
+        NONE = 0,
         /**
          * GPRS.
          */
-        GPRS,
+        GPRS = 1,
         /**
          * EDGE.
          */
-        EDGE,
+        EDGE = 2,
         /**
          * UMTS.
          */
-        UMTS,
+        UMTS = 4,
         /**
          * HSDPA.
          */
-        HSDPA,
+        HSDPA = 8,
         /**
          * HSUPA.
          */
-        HSUPA,
+        HSUPA = 16,
         /**
          * LTE.
          */
-        LTE,
+        LTE = 32,
         /**
          * 5G NSA (MS MBIMEx v2.0). Since 1.28.
          */
-        "5G_NSA",
+        "5G_NSA" = 64,
         /**
          * 5G SA (MS MBIMEx v2.0). Since 1.28.
          */
-        "5G_SA",
+        "5G_SA" = 128,
         /**
          * 1xRTT.
          */
-        "1XRTT",
+        "1XRTT" = 65536,
         /**
          * 1xEV-DO.
          */
-        "1XEVDO",
+        "1XEVDO" = 131072,
         /**
          * 1xEV-DO RevA
          */
-        "1XEVDO_REVA",
+        "1XEVDO_REVA" = 262144,
         /**
          * 1xEV-DV.
          */
-        "1XEVDV",
+        "1XEVDV" = 524288,
         /**
          * 3xRTT.
          */
-        "3XRTT",
+        "3XRTT" = 1048576,
         /**
          * 1xEV-DO RevB.
          */
-        "1XEVDO_REVB",
+        "1XEVDO_REVB" = 2097152,
         /**
          * UMB.
          */
-        UMB,
+        UMB = 4194304,
         /**
          * Custom.
          */
-        CUSTOM,
+        CUSTOM = 2147483648,
     }
 
 
@@ -6291,67 +6309,67 @@ export namespace Mbim {
         /**
          * None. Since 1.30.
          */
-        NONE,
+        NONE = 0,
         /**
          * GPRS.
          */
-        GPRS,
+        GPRS = 1,
         /**
          * EDGE.
          */
-        EDGE,
+        EDGE = 2,
         /**
          * UMTS.
          */
-        UMTS,
+        UMTS = 4,
         /**
          * HSDPA.
          */
-        HSDPA,
+        HSDPA = 8,
         /**
          * HSUPA.
          */
-        HSUPA,
+        HSUPA = 16,
         /**
          * LTE.
          */
-        LTE,
+        LTE = 32,
         /**
          * 5G.
          */
-        "5G",
+        "5G" = 64,
         /**
          * 1xRTT.
          */
-        "1XRTT",
+        "1XRTT" = 65536,
         /**
          * 1xEV-DO.
          */
-        "1XEVDO",
+        "1XEVDO" = 131072,
         /**
          * 1xEV-DO RevA
          */
-        "1XEVDO_REVA",
+        "1XEVDO_REVA" = 262144,
         /**
          * 1xEV-DV.
          */
-        "1XEVDV",
+        "1XEVDV" = 524288,
         /**
          * 3xRTT.
          */
-        "3XRTT",
+        "3XRTT" = 1048576,
         /**
          * 1xEV-DO RevB.
          */
-        "1XEVDO_REVB",
+        "1XEVDO_REVB" = 2097152,
         /**
          * UMB.
          */
-        UMB,
+        UMB = 4194304,
         /**
          * Custom.
          */
-        CUSTOM,
+        CUSTOM = 2147483648,
     }
 
 
@@ -6371,27 +6389,27 @@ export namespace Mbim {
         /**
          * No data subclass.
          */
-        NONE,
+        NONE = 0,
         /**
          * EUTRAN and NR dual connectivity as in 5G option 3.
          */
-        "5G_ENDC",
+        "5G_ENDC" = 1,
         /**
          * Standalone NR as in 5G option 2.
          */
-        "5G_NR",
+        "5G_NR" = 2,
         /**
          * NR and EUTRAN dual connectivity as in 5G option 4.
          */
-        "5G_NEDC",
+        "5G_NEDC" = 4,
         /**
          * eLTE as in 5G option 5.
          */
-        "5G_ELTE",
+        "5G_ELTE" = 8,
         /**
          * Next-gen eLTE and NR dual connectivity as in 5G option 7.
          */
-        "5G_NGENDC",
+        "5G_NGENDC" = 16,
     }
 
 
@@ -6404,19 +6422,19 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Try to open the port through the 'mbim-proxy'.
          */
-        PROXY,
+        PROXY = 1,
         /**
          * Try to enable MS MBIMEx 2.0 support. Since 1.28.
          */
-        MS_MBIMEX_V2,
+        MS_MBIMEX_V2 = 2,
         /**
          * Try to enable MS MBIMEx 3.0 support. Since 1.28.
          */
-        MS_MBIMEX_V3,
+        MS_MBIMEX_V3 = 4,
     }
 
 
@@ -6461,23 +6479,23 @@ export namespace Mbim {
         /**
          * No info available.
          */
-        NONE,
+        NONE = 0,
         /**
          * Address info available.
          */
-        ADDRESS,
+        ADDRESS = 1,
         /**
          * Gateway info available.
          */
-        GATEWAY,
+        GATEWAY = 2,
         /**
          * DNS info available.
          */
-        DNS,
+        DNS = 4,
         /**
          * MTU info available.
          */
-        MTU,
+        MTU = 8,
     }
 
 
@@ -6497,31 +6515,31 @@ export namespace Mbim {
         /**
          * Unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Home operator.
          */
-        HOME,
+        HOME = 1,
         /**
          * Provider blocked.
          */
-        FORBIDDEN,
+        FORBIDDEN = 2,
         /**
          * Provider is in the preferred list.
          */
-        PREFERRED,
+        PREFERRED = 4,
         /**
          * Provider is visible.
          */
-        VISIBLE,
+        VISIBLE = 8,
         /**
          * Currently registered to the provider.
          */
-        REGISTERED,
+        REGISTERED = 16,
         /**
          * Provider is a preferred multicarrier network.
          */
-        PREFERRED_MULTICARRIER,
+        PREFERRED_MULTICARRIER = 32,
     }
 
 
@@ -6541,11 +6559,11 @@ export namespace Mbim {
         /**
          * Device in normal mode. Since 1.16.
          */
-        NONE,
+        NONE = 0,
         /**
          * Request to avoid displaying subscriber ID.
          */
-        PROTECT_UNIQUE_ID,
+        PROTECT_UNIQUE_ID = 1,
     }
 
 
@@ -6565,15 +6583,15 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Network doesn't support manual network selection.
          */
-        MANUAL_SELECTION_NOT_AVAILABLE,
+        MANUAL_SELECTION_NOT_AVAILABLE = 1,
         /**
          * Modem should auto-attach to the network after registration. Since 1.8.
          */
-        PACKET_SERVICE_AUTOMATIC_ATTACH,
+        PACKET_SERVICE_AUTOMATIC_ATTACH = 2,
     }
 
 
@@ -6593,15 +6611,15 @@ export namespace Mbim {
         /**
          * None. Since 1.30.
          */
-        NONE,
+        NONE = 0,
         /**
          * No physical SIM.
          */
-        LOGICAL,
+        LOGICAL = 1,
         /**
          * Physical removable SIM.
          */
-        REMOVABLE,
+        REMOVABLE = 2,
     }
 
 
@@ -6621,23 +6639,23 @@ export namespace Mbim {
         /**
          * None. Since 1.30.
          */
-        NONE,
+        NONE = 0,
         /**
          * Can receive in PDU mode.
          */
-        PDU_RECEIVE,
+        PDU_RECEIVE = 1,
         /**
          * Can send in PDU mode.
          */
-        PDU_SEND,
+        PDU_SEND = 2,
         /**
          * Can receive in text mode.
          */
-        TEXT_RECEIVE,
+        TEXT_RECEIVE = 4,
         /**
          * Can send in text mode.
          */
-        TEXT_SEND,
+        TEXT_SEND = 8,
     }
 
 
@@ -6657,15 +6675,15 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Message store is full.
          */
-        MESSAGE_STORE_FULL,
+        MESSAGE_STORE_FULL = 1,
         /**
          * New non-Class 0 message arrived.
          */
-        NEW_MESSAGE,
+        NEW_MESSAGE = 2,
     }
 
 
@@ -6685,19 +6703,19 @@ export namespace Mbim {
         /**
          * None.
          */
-        NONE,
+        NONE = 0,
         /**
          * Whether the SIM is an eSIM or not.
          */
-        ESIM,
+        ESIM = 1,
         /**
          * Whether the SIM removability details are know or not.
          */
-        SIM_REMOVABILITY_KNOWN,
+        SIM_REMOVABILITY_KNOWN = 2,
         /**
          * Whether the SIM is removable or not, valid only if `MBIM_SUBSCRIBER_READY_STATUS_FLAG_SIM_REMOVABLITY_KNOWN` is also given.
          */
-        SIM_REMOVABLE,
+        SIM_REMOVABLE = 4,
     }
 
 
@@ -6708,12 +6726,12 @@ export namespace Mbim {
              * @signal
              * @run-last
              */
-            "device-error": (arg0: GLib.Error) => void;
+            "device-error": (object: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "device-indicate-status": (arg0: Message) => void;
+            "device-indicate-status": (object: Message) => void;
             /**
              * @signal
              * @run-last
@@ -6922,6 +6940,7 @@ export namespace Mbim {
          * @param session_id the session ID for the link created.
          * @returns The name of the net interface created, `null` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         add_link_finish(res: Gio.AsyncResult, session_id: number): string;
 
@@ -6929,6 +6948,7 @@ export namespace Mbim {
          * Checks whether link management is supported by the kernel.
          * @returns `true` if link management is supported, or `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         check_link_supported(): boolean;
 
@@ -6982,6 +7002,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         close_finish(res: Gio.AsyncResult): boolean;
 
@@ -6989,6 +7010,7 @@ export namespace Mbim {
          * Forces the {@link Mbim.Device} to be closed.
          * @returns `true` if `self` if no error happens, otherwise `false` and `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         close_force(): boolean;
 
@@ -7038,6 +7060,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns a {@link Mbim.Message} response, or `NULL` if `error` is set. The returned value should be freed with `mbim_message_unref()`.
          * @since 1.0
+         * @throws GLib.Error
          */
         command_finish(res: Gio.AsyncResult): Message;
 
@@ -7105,6 +7128,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         delete_all_links_finish(res: Gio.AsyncResult): boolean;
 
@@ -7160,6 +7184,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         delete_link_finish(res: Gio.AsyncResult): boolean;
 
@@ -7226,6 +7251,7 @@ export namespace Mbim {
          * @param base_ifname the base interface.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         list_links(base_ifname: string): [boolean, string[]];
 
@@ -7269,6 +7295,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         open_finish(res: Gio.AsyncResult): boolean;
 
@@ -7324,6 +7351,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         open_full_finish(res: Gio.AsyncResult): boolean;
 
@@ -7343,6 +7371,7 @@ export namespace Mbim {
          * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
          * @returns `true` if successful, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         set_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean;
 
@@ -7483,6 +7512,7 @@ export namespace Mbim {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7492,6 +7522,7 @@ export namespace Mbim {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Device;
 
@@ -8782,6 +8813,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Location' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         atds_location_response_parse(): [boolean, number, number, number];
 
@@ -8789,6 +8821,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Operators' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         atds_operators_response_parse(): [boolean, number, AtdsProvider[] | null];
 
@@ -8796,6 +8829,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'RAT' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         atds_rat_response_parse(): [boolean, AtdsRatMode | null];
 
@@ -8803,6 +8837,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Register State' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         atds_register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
@@ -8810,6 +8845,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Signal' response command in the 'ATDS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.16
+         * @throws GLib.Error
          */
         atds_signal_response_parse(): [boolean, number, number, number, number, number, number, number];
 
@@ -8817,6 +8853,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Aka' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         auth_aka_response_parse(): [boolean, Uint8Array | null, number, Uint8Array | null, Uint8Array | null, Uint8Array | null];
 
@@ -8824,6 +8861,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Akap' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         auth_akap_response_parse(): [boolean, Uint8Array | null, number, Uint8Array | null, Uint8Array | null, Uint8Array | null];
 
@@ -8831,6 +8869,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Sim' response command in the 'Auth' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         auth_sim_response_parse(): [boolean, number, number, number, number, number, number, number];
 
@@ -8838,6 +8877,7 @@ export namespace Mbim {
          * Gets the result of the 'Close' operation in the {@link Mbim.MessageType.CLOSE_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         close_done_get_result(): boolean;
 
@@ -8874,6 +8914,7 @@ export namespace Mbim {
          * Gets the result of the 'Command' operation in the {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         command_done_get_result(): boolean;
 
@@ -8937,6 +8978,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'AT Command' response command in the 'Compal' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.32
+         * @throws GLib.Error
          */
         compal_at_command_response_parse(): [boolean, Uint8Array | null];
 
@@ -8944,6 +8986,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Connect' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_notification_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number];
 
@@ -8951,6 +8994,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Connect' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         connect_response_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number];
 
@@ -8958,6 +9002,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Caps' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClass | null, SmsCaps | null, CtrlCaps | null, number, string, string, string, string];
 
@@ -8965,6 +9010,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Service Subscribe List' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         device_service_subscribe_list_response_parse(): [boolean, number, EventEntry[] | null];
 
@@ -8975,6 +9021,7 @@ export namespace Mbim {
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
          * @deprecated since 1.8: Use `mbim_message_device_service_subscribe_list_response_parse()` instead.
+         * @throws GLib.Error
          */
         device_service_subscriber_list_response_parse(events_count: number, events: EventEntry): boolean;
 
@@ -8982,6 +9029,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Services' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         device_services_response_parse(): [boolean, number, number, DeviceServiceElement[] | null];
 
@@ -8989,6 +9037,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Connect' response command in the 'DSS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         dss_connect_response_parse(): boolean;
 
@@ -9003,6 +9052,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Emergency Mode' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         emergency_mode_notification_parse(): [boolean, EmergencyModeState | null];
 
@@ -9010,6 +9060,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Emergency Mode' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         emergency_mode_response_parse(): [boolean, EmergencyModeState | null];
 
@@ -9033,6 +9084,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'AT Command' response command in the 'Fibocom' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.32
+         * @throws GLib.Error
          */
         fibocom_at_command_response_parse(): [boolean, Uint8Array | null];
 
@@ -9085,6 +9137,7 @@ export namespace Mbim {
          * @param headers_only `true` if only basic headers should be printed.
          * @returns a newly allocated string which should be freed with `g_free()`, or `NULL` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         get_printable_full(mbimex_version_major: number, mbimex_version_minor: number, line_prefix: string, headers_only: boolean): string;
 
@@ -9092,6 +9145,7 @@ export namespace Mbim {
          * Gets the whole raw data buffer of the {@link Mbim.Message}.
          * @returns The raw data buffer, or `NULL` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         get_raw(): [number, number];
 
@@ -9106,6 +9160,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Carrier Lock' notification command in the 'Google' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.30
+         * @throws GLib.Error
          */
         google_carrier_lock_notification_parse(): [boolean, CarrierLockStatus | null, CarrierLockModemState | null, CarrierLockCause | null];
 
@@ -9113,6 +9168,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Carrier Lock' response command in the 'Google' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.30
+         * @throws GLib.Error
          */
         google_carrier_lock_response_parse(): [boolean, CarrierLockStatus | null, CarrierLockModemState | null, CarrierLockCause | null];
 
@@ -9120,6 +9176,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Home Provider' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         home_provider_response_parse(): [boolean, Provider | null];
 
@@ -9155,6 +9212,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'FCC Lock' response command in the 'Intel Mutual Authentication' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.30
+         * @throws GLib.Error
          */
         intel_mutual_authentication_fcc_lock_response_parse(): [boolean, boolean, number];
 
@@ -9162,6 +9220,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'RFIM' notification command in the 'Intel Thermal RF' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         intel_thermal_rf_rfim_notification_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
 
@@ -9169,6 +9228,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'RFIM' response command in the 'Intel Thermal RF' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         intel_thermal_rf_rfim_response_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
 
@@ -9176,6 +9236,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Trace Config' response command in the 'Intel Tools' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.30
+         * @throws GLib.Error
          */
         intel_tools_trace_config_response_parse(): [boolean, TraceCommand | null, number];
 
@@ -9183,6 +9244,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'IP Configuration' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         ip_configuration_notification_parse(): [boolean, number, IPConfigurationAvailableFlag | null, IPConfigurationAvailableFlag | null, number, IPv4Element[] | null, number, IPv6Element[] | null, IPv4 | null, IPv6 | null, number, IPv4[] | null, number, IPv6[] | null, number, number];
 
@@ -9190,6 +9252,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'IP Configuration' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         ip_configuration_response_parse(): [boolean, number, IPConfigurationAvailableFlag | null, IPConfigurationAvailableFlag | null, number, IPv4Element[] | null, number, IPv6Element[] | null, IPv4 | null, IPv6 | null, number, IPv4[] | null, number, IPv6[] | null, number, number];
 
@@ -9197,6 +9260,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         ip_packet_filters_response_parse(): [boolean, number, number, PacketFilter[] | null];
 
@@ -9204,6 +9268,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_base_stations_info_response_parse(): [boolean, DataClass | null, CellInfoServingGsm | null, CellInfoServingUmts | null, CellInfoServingTdscdma | null, CellInfoServingLte | null, number, CellInfoNeighboringGsm[] | null, number, CellInfoNeighboringUmts[] | null, number, CellInfoNeighboringTdscdma[] | null, number, CellInfoNeighboringLte[] | null, number, CellInfoCdma[] | null];
 
@@ -9211,6 +9276,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClass | null, SmsCaps | null, CtrlCaps | null, number, string, string, string, string, number];
 
@@ -9218,6 +9284,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Reset' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.30
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_device_reset_response_parse(): boolean;
 
@@ -9225,6 +9292,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Slot Mappings' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_device_slot_mappings_response_parse(): [boolean, number, Slot[] | null];
 
@@ -9232,6 +9300,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Location Info Status' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_location_info_status_notification_parse(): [boolean, number, number, number];
 
@@ -9239,6 +9308,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Location Info Status' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_location_info_status_response_parse(): [boolean, number, number, number];
 
@@ -9246,6 +9316,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Configuration' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_configuration_notification_parse(): [boolean, number, LteAttachConfiguration[] | null];
 
@@ -9253,6 +9324,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Configuration' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_configuration_response_parse(): [boolean, number, LteAttachConfiguration[] | null];
 
@@ -9260,6 +9332,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_info_notification_parse(): [boolean, LteAttachState | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
@@ -9267,6 +9340,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_info_response_parse(): [boolean, LteAttachState | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
@@ -9275,6 +9349,7 @@ export namespace Mbim {
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
          * @deprecated since 1.26: Use `mbim_message_ms_basic_connect_extensions_lte_attach_info_notification_parse()` instead.
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_status_notification_parse(): [boolean, DeprecatedLteAttachStatus | null];
 
@@ -9283,6 +9358,7 @@ export namespace Mbim {
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
          * @deprecated since 1.26: Use `mbim_message_ms_basic_connect_extensions_lte_attach_info_response_parse()` instead.
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_lte_attach_status_response_parse(): [boolean, DeprecatedLteAttachStatus | null];
 
@@ -9290,6 +9366,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'PCO' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_pco_notification_parse(): [boolean, PcoValue | null];
 
@@ -9297,6 +9374,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'PCO' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_pco_response_parse(): [boolean, PcoValue | null];
 
@@ -9304,6 +9382,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_provisioned_contexts_notification_parse(): [boolean, number, ProvisionedContextElementV2[] | null];
 
@@ -9311,6 +9390,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_provisioned_contexts_response_parse(): [boolean, number, ProvisionedContextElementV2[] | null];
 
@@ -9318,6 +9398,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Slot Info Status' notification command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_slot_info_status_notification_parse(): [boolean, number, UiccSlotState | null];
 
@@ -9325,6 +9406,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Slot Info Status' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_slot_info_status_response_parse(): [boolean, number, UiccSlotState | null];
 
@@ -9332,6 +9414,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Sys Caps' response command in the 'Ms Basic Connect Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_sys_caps_response_parse(): [boolean, number, number, number, number];
 
@@ -9339,6 +9422,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Version' response command in the 'Ms Basic Connect Extensions V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v2_version_response_parse(): [boolean, number, number];
 
@@ -9346,6 +9430,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_base_stations_info_response_parse(): [boolean, DataClassV3 | null, DataSubclass | null, CellInfoServingGsm | null, CellInfoServingUmts | null, CellInfoServingTdscdma | null, CellInfoServingLte | null, number, CellInfoNeighboringGsm[] | null, number, CellInfoNeighboringUmts[] | null, number, CellInfoNeighboringTdscdma[] | null, number, CellInfoNeighboringLte[] | null, number, CellInfoCdma[] | null, number, CellInfoServingNr[] | null, number, CellInfoNeighboringNr[] | null];
 
@@ -9353,6 +9438,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_device_caps_response_parse(): [boolean, DeviceType | null, CellularClass | null, VoiceClass | null, SimClass | null, DataClassV3 | null, SmsCaps | null, CtrlCaps | null, DataSubclass | null, number, number, number, number, number, number, number, string, string, string, string];
 
@@ -9360,6 +9446,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_lte_attach_info_notification_parse(): [boolean, LteAttachState | null, NwError | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
@@ -9367,6 +9454,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_lte_attach_info_response_parse(): [boolean, LteAttachState | null, NwError | null, ContextIpType | null, string, string, string, Compression | null, AuthProtocol | null];
 
@@ -9374,6 +9462,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Modem Configuration' notification command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_modem_configuration_notification_parse(): [boolean, ModemConfigurationStatus | null, string, Tlv[] | null];
 
@@ -9381,6 +9470,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Modem Configuration' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_modem_configuration_response_parse(): [boolean, ModemConfigurationStatus | null, string, Tlv[] | null];
 
@@ -9388,6 +9478,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Registration Parameters' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_registration_parameters_response_parse(): [boolean, MicoMode | null, DrxCycle | null, LadnInfo | null, DefaultPduActivationHint | null, boolean, Tlv[] | null];
 
@@ -9395,6 +9486,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Wake Reason' response command in the 'Ms Basic Connect Extensions V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_extensions_v3_wake_reason_response_parse(): [boolean, WakeType | null, number, Tlv | null];
 
@@ -9402,6 +9494,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number, FrequencyRange | null];
 
@@ -9409,6 +9502,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number, FrequencyRange | null];
 
@@ -9416,6 +9510,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Register State' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_register_state_notification_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null, DataClass | null];
 
@@ -9423,6 +9518,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Register State' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null, DataClass | null];
 
@@ -9430,6 +9526,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Signal State' notification command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_signal_state_notification_parse(): [boolean, number, number, number, number, number, number, RsrpSnrInfo[] | null];
 
@@ -9437,6 +9534,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Signal State' response command in the 'Ms Basic Connect V2' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v2_signal_state_response_parse(): [boolean, number, number, number, number, number, number, RsrpSnrInfo[] | null];
 
@@ -9444,6 +9542,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Connect' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_connect_notification_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number, AccessMediaType | null, string, Tlv[] | null];
 
@@ -9451,6 +9550,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Connect' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_connect_response_parse(): [boolean, number, ActivationState | null, VoiceCallState | null, ContextIpType | null, Uuid | null, number, AccessMediaType | null, string, Tlv[] | null];
 
@@ -9458,6 +9558,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_ip_packet_filters_response_parse(): [boolean, number, number, PacketFilterV3[] | null];
 
@@ -9465,6 +9566,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClassV3 | null, number, number, FrequencyRange | null, DataSubclass | null, Tai | null];
 
@@ -9472,6 +9574,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClassV3 | null, number, number, FrequencyRange | null, DataSubclass | null, Tai | null];
 
@@ -9479,6 +9582,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_subscriber_ready_status_notification_parse(): [boolean, SubscriberReadyState | null, SubscriberReadyStatusFlag | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
@@ -9486,6 +9590,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Ms Basic Connect V3' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_basic_connect_v3_subscriber_ready_status_response_parse(): [boolean, SubscriberReadyState | null, SubscriberReadyStatusFlag | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
@@ -9493,6 +9598,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Get' response command in the 'MS Firmware ID' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         ms_firmware_id_get_response_parse(): [boolean, Uuid | null];
 
@@ -9500,6 +9606,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Config' response command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_sar_config_response_parse(): [boolean, SarControlMode | null, SarBackoffState | null, SarWifiHardwareState | null, number, SarConfigState[] | null];
 
@@ -9507,6 +9614,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Transmission status' notification command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_sar_transmission_status_notification_parse(): [boolean, TransmissionNotificationStatus | null, TransmissionState | null, number];
 
@@ -9514,6 +9622,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Transmission status' response command in the 'MS SAR' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_sar_transmission_status_response_parse(): [boolean, TransmissionNotificationStatus | null, TransmissionState | null, number];
 
@@ -9521,6 +9630,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'APDU' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_apdu_response_parse(): [boolean, number, Uint8Array | null];
 
@@ -9528,6 +9638,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Application List' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_application_list_response_parse(): [boolean, number, number, number, number, UiccApplication[] | null];
 
@@ -9535,6 +9646,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'ATR' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_atr_response_parse(): [boolean, Uint8Array | null];
 
@@ -9542,6 +9654,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Close Channel' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_close_channel_response_parse(): [boolean, number];
 
@@ -9549,6 +9662,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'File Status' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_file_status_response_parse(): [boolean, number, number, number, UiccFileAccessibility | null, UiccFileType | null, UiccFileStructure | null, number, number, PinType | null, PinType | null, PinType | null, PinType | null];
 
@@ -9556,6 +9670,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Open Channel' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_open_channel_response_parse(): [boolean, number, number, Uint8Array | null];
 
@@ -9563,6 +9678,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Read Binary' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_read_binary_response_parse(): [boolean, number, number, number, Uint8Array | null];
 
@@ -9570,6 +9686,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Read Record' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_read_record_response_parse(): [boolean, number, number, number, Uint8Array | null];
 
@@ -9577,6 +9694,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Reset' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_reset_response_parse(): [boolean, UiccPassThroughStatus | null];
 
@@ -9584,6 +9702,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Terminal Capability' response command in the 'MS UICC Low Level Access' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         ms_uicc_low_level_access_terminal_capability_response_parse(): [boolean, number, TerminalCapabilityInfo[] | null];
 
@@ -9591,6 +9710,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'NITZ' notification command in the 'MS Voice Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_voice_extensions_nitz_notification_parse(): [boolean, number, number, number, number, number, number, number, number, DataClass | null];
 
@@ -9598,6 +9718,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'NITZ' response command in the 'MS Voice Extensions' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         ms_voice_extensions_nitz_response_parse(): [boolean, number, number, number, number, number, number, number, number, DataClass | null];
 
@@ -9605,6 +9726,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Multicarrier Providers' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         multicarrier_providers_notification_parse(): [boolean, number, Provider[] | null];
 
@@ -9612,6 +9734,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Multicarrier Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         multicarrier_providers_response_parse(): [boolean, number, Provider[] | null];
 
@@ -9619,6 +9742,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Network Idle Hint' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         network_idle_hint_response_parse(): [boolean, NetworkIdleHintState | null];
 
@@ -9626,6 +9750,7 @@ export namespace Mbim {
          * Gets the result of the 'Open' operation in the {@link Mbim.MessageType.OPEN_DONE} message.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         open_done_get_result(): boolean;
 
@@ -9648,6 +9773,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         packet_service_notification_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number];
 
@@ -9655,6 +9781,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Service' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number];
 
@@ -9662,6 +9789,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Packet Statistics' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         packet_statistics_response_parse(): [boolean, number, number, number, number, number, number, number, number];
 
@@ -9669,6 +9797,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Configuration' notification command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         phonebook_configuration_notification_parse(): [boolean, PhonebookState | null, number, number, number, number];
 
@@ -9676,6 +9805,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Configuration' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         phonebook_configuration_response_parse(): [boolean, PhonebookState | null, number, number, number, number];
 
@@ -9683,6 +9813,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Delete' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         phonebook_delete_response_parse(): boolean;
 
@@ -9690,6 +9821,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Read' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         phonebook_read_response_parse(): [boolean, number, PhonebookEntry[] | null];
 
@@ -9697,6 +9829,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Write' response command in the 'Phonebook' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         phonebook_write_response_parse(): boolean;
 
@@ -9704,6 +9837,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Pin List' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         pin_list_response_parse(): [boolean, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null, PinDesc | null];
 
@@ -9711,6 +9845,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Pin' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         pin_response_parse(): [boolean, PinType | null, PinState | null, number];
 
@@ -9718,6 +9853,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Preferred Providers' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         preferred_providers_notification_parse(): [boolean, number, Provider[] | null];
 
@@ -9725,6 +9861,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Preferred Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         preferred_providers_response_parse(): [boolean, number, Provider[] | null];
 
@@ -9732,6 +9869,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         provisioned_contexts_notification_parse(): [boolean, number, ProvisionedContextElement[] | null];
 
@@ -9739,6 +9877,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         provisioned_contexts_response_parse(): [boolean, number, ProvisionedContextElement[] | null];
 
@@ -9746,6 +9885,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Configuration' response command in the 'Proxy Control' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.10
+         * @throws GLib.Error
          */
         proxy_control_configuration_response_parse(): boolean;
 
@@ -9753,6 +9893,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Version' notification command in the 'Proxy Control' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         proxy_control_version_notification_parse(): [boolean, number, number];
 
@@ -9760,6 +9901,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Command' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.32
+         * @throws GLib.Error
          */
         qdu_command_response_parse(): [boolean, QuectelCommandResponseStatus | null, Uint8Array | null];
 
@@ -9767,6 +9909,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'File Open' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         qdu_file_open_response_parse(): [boolean, number, number];
 
@@ -9774,6 +9917,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'File Write' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         qdu_file_write_response_parse(): boolean;
 
@@ -9781,6 +9925,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Quectel Read Version' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         qdu_quectel_read_version_response_parse(): [boolean, number, string];
 
@@ -9788,6 +9933,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Quectel Reboot' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         qdu_quectel_reboot_response_parse(): boolean;
 
@@ -9795,6 +9941,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Update Session' response command in the 'QDU' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26
+         * @throws GLib.Error
          */
         qdu_update_session_response_parse(): [boolean, QduSessionType | null, QduSessionStatus | null, QduSessionType | null, QduSessionResult | null, number, number];
 
@@ -9802,6 +9949,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'msg' notification command in the 'QMI' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.18
+         * @throws GLib.Error
          */
         qmi_msg_notification_parse(): [boolean, Uint8Array | null];
 
@@ -9809,6 +9957,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'msg' response command in the 'QMI' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.14
+         * @throws GLib.Error
          */
         qmi_msg_response_parse(): [boolean, Uint8Array | null];
 
@@ -9816,6 +9965,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Radio State' response command in the 'Quectel' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.26.2
+         * @throws GLib.Error
          */
         quectel_radio_state_response_parse(): [boolean, QuectelRadioSwitchState | null];
 
@@ -9823,6 +9973,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Radio State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         radio_state_notification_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
 
@@ -9830,6 +9981,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Radio State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         radio_state_response_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
 
@@ -9844,6 +9996,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Register State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         register_state_notification_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
@@ -9851,6 +10004,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Register State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         register_state_response_parse(): [boolean, NwError | null, RegisterState | null, RegisterMode | null, DataClass | null, CellularClass | null, string, string, string, RegistrationFlag | null];
 
@@ -9861,6 +10015,7 @@ export namespace Mbim {
          * @param expected expected {@link Mbim.MessageType} if there isn't any error in the operation.
          * @returns `true` if the operation succeeded, `false` if `error` is set.
          * @since 1.12
+         * @throws GLib.Error
          */
         response_get_result(expected: MessageType): boolean;
 
@@ -9868,6 +10023,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Service Activation' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         service_activation_response_parse(): [boolean, NwError | null, Uint8Array | null];
 
@@ -9882,6 +10038,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Signal State' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         signal_state_notification_parse(): [boolean, number, number, number, number, number];
 
@@ -9889,6 +10046,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Signal State' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         signal_state_response_parse(): [boolean, number, number, number, number, number];
 
@@ -9896,6 +10054,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Configuration' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_configuration_response_parse(): [boolean, SmsStorageState | null, SmsFormat | null, number, number, string];
 
@@ -9903,6 +10062,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Delete' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_delete_response_parse(): boolean;
 
@@ -9910,6 +10070,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Message Store Status' notification command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_message_store_status_notification_parse(): [boolean, SmsStatusFlag | null, number];
 
@@ -9917,6 +10078,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Message Store Status' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_message_store_status_response_parse(): [boolean, SmsStatusFlag | null, number];
 
@@ -9924,6 +10086,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Read' notification command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_read_notification_parse(): [boolean, SmsFormat | null, number, SmsPduReadRecord[] | null, SmsCdmaReadRecord[] | null];
 
@@ -9931,6 +10094,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Read' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_read_response_parse(): [boolean, SmsFormat | null, number, SmsPduReadRecord[] | null, SmsCdmaReadRecord[] | null];
 
@@ -9938,6 +10102,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Send' response command in the 'SMS' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         sms_send_response_parse(): [boolean, number];
 
@@ -9945,6 +10110,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Envelope' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         stk_envelope_response_parse(): [boolean, Uint8Array | null];
 
@@ -9952,6 +10118,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Pac' notification command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         stk_pac_notification_parse(): [boolean, StkPacType | null, Uint8Array | null];
 
@@ -9959,6 +10126,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Pac' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         stk_pac_response_parse(): [boolean, Uint8Array | null];
 
@@ -9966,6 +10134,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Terminal Response' response command in the 'STK' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         stk_terminal_response_response_parse(): [boolean, Uint8Array | null, number];
 
@@ -9973,6 +10142,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.8
+         * @throws GLib.Error
          */
         subscriber_ready_status_notification_parse(): [boolean, SubscriberReadyState | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
@@ -9980,6 +10150,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         subscriber_ready_status_response_parse(): [boolean, SubscriberReadyState | null, string, string, ReadyInfoFlag | null, number, string[] | null];
 
@@ -9994,6 +10165,7 @@ export namespace Mbim {
          * Parses and returns parameters of the '' notification command in the 'USSD' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         ussd_notification_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
 
@@ -10001,6 +10173,7 @@ export namespace Mbim {
          * Parses and returns parameters of the '' response command in the 'USSD' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.4
+         * @throws GLib.Error
          */
         ussd_response_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
 
@@ -10018,6 +10191,7 @@ export namespace Mbim {
          * specific contents.
          * @returns `true` if the message is valid, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -10025,6 +10199,7 @@ export namespace Mbim {
          * Parses and returns parameters of the 'Visible Providers' response command in the 'Basic Connect' service.
          * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          * @since 1.2
+         * @throws GLib.Error
          */
         visible_providers_response_parse(): [boolean, number, Provider[] | null];
     }
@@ -10711,6 +10886,7 @@ export namespace Mbim {
          * Gets the whole raw data buffer of the {@link Mbim.Tlv}.
          * @returns The raw data buffer, or `NULL` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         get_raw(): [number, number];
 
@@ -10735,6 +10911,7 @@ export namespace Mbim {
          * with `array_size` set to 0 and `array` set to `null`).
          * @returns `true` if on success, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         guint16_array_get(): [boolean, number, number];
 
@@ -10749,6 +10926,7 @@ export namespace Mbim {
          * Get a string with the contents in the {@link Mbim.Tlv}.
          * @returns a newly created string, which should be freed with `g_free()`, or `null` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         string_get(): string;
 
@@ -10766,6 +10944,7 @@ export namespace Mbim {
          * with `payload_size` set to 0 and `payload` set to `null`).
          * @returns `true` if on success, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         wake_command_get(): [boolean, Uuid | null, number, number, number];
 
@@ -10773,6 +10952,7 @@ export namespace Mbim {
          * Get the contents of a wake packet TLV.
          * @returns `true` if on success, `false` if `error` is set.
          * @since 1.28
+         * @throws GLib.Error
          */
         wake_packet_get(): [boolean, number, number, number, number];
     }

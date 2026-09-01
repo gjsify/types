@@ -1,6 +1,6 @@
 {
     "name": "@girs/gdl-3",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for Gdl-3",
     "type": "module",
     "module": "gdl-3.js",
@@ -16,10 +16,10 @@
         "import": "./gdl-3-import.js",
         "default": "./gdl-3-import.js"
       },
-      "./surface": {
-        "types": "./gdl-3-surface.d.ts",
-        "import": "./gdl-3-surface.js",
-        "default": "./gdl-3-surface.js"
+      "./vocabulary": {
+        "types": "./gdl-3-vocabulary.d.ts",
+        "import": "./gdl-3-vocabulary.js",
+        "default": "./gdl-3-vocabulary.js"
       },
       "./gdl-3": {
         "types": "./gdl-3.d.ts",
@@ -36,20 +36,20 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/gtk-3.0": "^4.4.0",
-      "@girs/xlib-2.0": "^4.4.0",
-      "@girs/gdk-3.0": "^4.4.0",
-      "@girs/cairo-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/pango-1.0": "^4.4.0",
-      "@girs/harfbuzz-0.0": "^4.4.0",
-      "@girs/freetype2-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gdkpixbuf-2.0": "^4.4.0",
-      "@girs/atk-1.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/gtk-3.0": "^4.5.0",
+      "@girs/xlib-2.0": "^4.5.0",
+      "@girs/gdk-3.0": "^4.5.0",
+      "@girs/cairo-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/pango-1.0": "^4.5.0",
+      "@girs/harfbuzz-0.0": "^4.5.0",
+      "@girs/freetype2-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gdkpixbuf-2.0": "^4.5.0",
+      "@girs/atk-1.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

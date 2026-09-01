@@ -125,6 +125,7 @@ export namespace Vpg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         close_finish(_res_: Gio.AsyncResult): void;
 
@@ -142,6 +143,7 @@ export namespace Vpg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         open_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
 
@@ -164,17 +166,20 @@ export namespace Vpg {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         open_from_string_finish(_res_: Gio.AsyncResult): Vda.ConnectionStatus;
 
         /**
          * @param sql 
+         * @throws GLib.Error
          */
         parse_string(sql: string): Vda.Query;
 
         /**
          * @param name 
          * @param sql 
+         * @throws GLib.Error
          */
         parse_string_prepared(name: string, sql: string): Vda.PreparedQuery;
 
@@ -186,6 +191,7 @@ export namespace Vpg {
         /**
          * @param cmd 
          * @param name 
+         * @throws GLib.Error
          */
         query_from_command(cmd: Vda.SqlCommand, name: string): Vda.PreparedQuery;
 

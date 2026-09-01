@@ -34,16 +34,19 @@ export namespace LibvirtSandbox {
 
     /**
      * @param argv pointer to application's argv
+     * @throws GLib.Error
      */
     function init_check(argv: string[] | null): [boolean, string[] | null];
 
     /**
      * @param value 
+     * @throws GLib.Error
      */
     function util_disk_format_from_str(value: string): number;
 
     /**
      * @param path 
+     * @throws GLib.Error
      */
     function util_guess_image_format(path: string): number;
 
@@ -187,6 +190,7 @@ export namespace LibvirtSandbox {
          * @param config the sandbox configuration
          * @param statedir 
          * @returns TRUE on success, FALSE on error
+         * @throws GLib.Error
          */
         clean_post_start(config: Config, statedir: string): boolean;
 
@@ -196,6 +200,7 @@ export namespace LibvirtSandbox {
          * @param config the sandbox configuration
          * @param statedir 
          * @returns TRUE on success, FALSE on error
+         * @throws GLib.Error
          */
         clean_post_stop(config: Config, statedir: string): boolean;
 
@@ -204,6 +209,7 @@ export namespace LibvirtSandbox {
          * @param config the sandbox configuration
          * @param statedir 
          * @returns the newly built domain configuration
+         * @throws GLib.Error
          */
         construct(config: Config, statedir: string): LibvirtGConfig.Domain;
 
@@ -315,6 +321,7 @@ export namespace LibvirtSandbox {
         /**
          * @param config 
          * @param outputfile 
+         * @throws GLib.Error
          */
         construct(config: ConfigInitrd, outputfile: string): boolean;
     }
@@ -581,6 +588,7 @@ export namespace LibvirtSandbox {
          * 
          * - file:cache=/var/lib/sandbox/demo/tmp.qcow2,format=qcow2
          * @param disk the disk config
+         * @throws GLib.Error
          */
         add_disk_opts(disk: string): boolean;
 
@@ -591,6 +599,7 @@ export namespace LibvirtSandbox {
          * 
          * - file:cache=/var/lib/sandbox/demo/tmp.qcow2,format=qcow2
          * @param disks the list of disks
+         * @throws GLib.Error
          */
         add_disk_strv(disks: string[]): boolean;
 
@@ -608,6 +617,7 @@ export namespace LibvirtSandbox {
          * 
          * --env KEY=VALUE
          * @param env the env config
+         * @throws GLib.Error
          */
         add_env_opts(env: string): boolean;
 
@@ -616,11 +626,13 @@ export namespace LibvirtSandbox {
          * 
          * --env KEY=VALUE
          * @param envs the list of environment variables
+         * @throws GLib.Error
          */
         add_env_strv(envs: string[]): boolean;
 
         /**
          * @param includefile 
+         * @throws GLib.Error
          */
         add_host_include_file(includefile: string): boolean;
 
@@ -629,6 +641,7 @@ export namespace LibvirtSandbox {
          * GUEST-TARGET=ROOT-PATH. If ROOT_PATH is omitted,
          * then it is assumed to be the same as GUEST-TARGET
          * @param includes the list of includes
+         * @throws GLib.Error
          */
         add_host_include_strv(includes: string[]): boolean;
 
@@ -650,6 +663,7 @@ export namespace LibvirtSandbox {
          * - guest-bind:/home=/tmp/home
          * - ram:/tmp=500M
          * @param mount the mount config
+         * @throws GLib.Error
          */
         add_mount_opts(mount: string): boolean;
 
@@ -662,6 +676,7 @@ export namespace LibvirtSandbox {
          * - host-image:/=/var/lib/sandbox/demo.img
          * - guest-bind:/home=/tmp/home
          * @param mounts the list of mounts
+         * @throws GLib.Error
          */
         add_mount_strv(mounts: string[]): boolean;
 
@@ -683,6 +698,7 @@ export namespace LibvirtSandbox {
          *  filter=clean-traffic
          *  filter.ip=192.168.122.1
          * @param network the network config
+         * @throws GLib.Error
          */
         add_network_opts(network: string): boolean;
 
@@ -691,6 +707,7 @@ export namespace LibvirtSandbox {
          * KEY=VALUE, creating {@link LibvirtSandbox.ConfigNetwork}
          * instances for each element.
          * @param networks the list of networks
+         * @throws GLib.Error
          */
         add_network_strv(networks: string[]): boolean;
 
@@ -850,10 +867,14 @@ export namespace LibvirtSandbox {
 
         has_root_mount(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         save_to_data(): string;
 
         /**
          * @param path 
+         * @throws GLib.Error
          */
         save_to_path(path: string): boolean;
 
@@ -931,6 +952,7 @@ export namespace LibvirtSandbox {
 
         /**
          * @param optstr 
+         * @throws GLib.Error
          */
         set_security_opts(optstr: string): boolean;
 
@@ -2371,7 +2393,7 @@ export namespace LibvirtSandbox {
              * @signal
              * @run-first
              */
-            closed: (arg0: boolean) => void;
+            closed: (object: boolean) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::devname": (pspec: GObject.ParamSpec) => void;
             "notify::direct": (pspec: GObject.ParamSpec) => void;
@@ -2464,16 +2486,28 @@ export namespace LibvirtSandbox {
         vfunc_detach(): boolean;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         attach_stderr(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         attach_stdio(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         detach(): boolean;
 
         get_direct(): boolean;
 
         get_escape(): number;
 
+        /**
+         * @throws GLib.Error
+         */
         isolate(): boolean;
 
         /**
@@ -2553,7 +2587,7 @@ export namespace LibvirtSandbox {
              * @signal
              * @run-first
              */
-            exited: (arg0: number) => void;
+            exited: (object: number) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::devname": (pspec: GObject.ParamSpec) => void;
             "notify::direct": (pspec: GObject.ParamSpec) => void;
@@ -2700,8 +2734,14 @@ export namespace LibvirtSandbox {
         vfunc_stop(): boolean;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         attach(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         detach(): boolean;
 
         /**
@@ -2719,23 +2759,32 @@ export namespace LibvirtSandbox {
         /**
          * Retrieves the sandbox domain (if running)
          * @returns the current domain or NULL
+         * @throws GLib.Error
          */
         get_domain(): LibvirtGObject.Domain;
 
         /**
          * @returns the sandbox console (or NULL)
+         * @throws GLib.Error
          */
         get_log_console(): Console | null;
 
         /**
          * @returns the sandbox console (or NULL)
+         * @throws GLib.Error
          */
         get_shell_console(): Console | null;
 
         is_attached(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         start(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         stop(): boolean;
     }
 
@@ -2790,6 +2839,7 @@ export namespace LibvirtSandbox {
         // Methods
         /**
          * @returns the sandbox console (or NULL)
+         * @throws GLib.Error
          */
         get_app_console(): Console | null;
     }
@@ -2854,8 +2904,14 @@ export namespace LibvirtSandbox {
         vfunc_undefine(): boolean;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         define(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         undefine(): boolean;
     }
 

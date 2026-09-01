@@ -36,15 +36,15 @@ export namespace Gd {
      * @gir-type Enum
      */
     enum MainColumns {
-        ID,
-        URI,
-        PRIMARY_TEXT,
-        SECONDARY_TEXT,
-        ICON,
-        MTIME,
-        SELECTED,
-        PULSE,
-        LAST,
+        ID = 0,
+        URI = 1,
+        PRIMARY_TEXT = 2,
+        SECONDARY_TEXT = 3,
+        ICON = 4,
+        MTIME = 5,
+        SELECTED = 6,
+        PULSE = 7,
+        LAST = 8,
     }
 
 
@@ -52,8 +52,8 @@ export namespace Gd {
      * @gir-type Enum
      */
     enum MainViewType {
-        ICON,
-        LIST,
+        ICON = 0,
+        LIST = 1,
     }
 
 
@@ -61,10 +61,10 @@ export namespace Gd {
      * @gir-type Enum
      */
     enum StackTransitionType {
-        NONE,
-        CROSSFADE,
-        SLIDE_RIGHT,
-        SLIDE_LEFT,
+        NONE = 0,
+        CROSSFADE = 1,
+        SLIDE_RIGHT = 2,
+        SLIDE_LEFT = 3,
     }
 
 
@@ -2721,7 +2721,7 @@ export namespace Gd {
              * @signal
              * @run-last
              */
-            "item-activated": (arg0: string, arg1: Gtk.TreePath) => void;
+            "item-activated": (object: string, p0: Gtk.TreePath) => void;
             /**
              * @signal
              * @run-last
@@ -3494,13 +3494,13 @@ export namespace Gd {
              * @detailed
              * @run-first
              */
-            "tag-button-clicked": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked": (arg0: TaggedEntryTag) => void;
+            "tag-clicked": (object: TaggedEntryTag) => void;
             "notify::tag-close-visible": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
@@ -3597,1095 +3597,1095 @@ export namespace Gd {
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::tag-close-visible": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::tag-close-visible": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::activates-default": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::activates-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::attributes": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::attributes": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::buffer": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::buffer": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::caps-lock-warning": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::caps-lock-warning": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::completion": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::completion": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::cursor-position": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::cursor-position": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::editable": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::editable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::enable-emoji-completion": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::enable-emoji-completion": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::has-frame": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::has-frame": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::im-module": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::im-module": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::inner-border": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::inner-border": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::input-hints": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::input-hints": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::input-purpose": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::input-purpose": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::invisible-char": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::invisible-char": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::invisible-char-set": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::invisible-char-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::max-length": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::max-length": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::max-width-chars": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::max-width-chars": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::overwrite-mode": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::overwrite-mode": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::placeholder-text": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::placeholder-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::populate-all": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::populate-all": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-activatable": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-activatable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-gicon": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-gicon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-name": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-pixbuf": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-pixbuf": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-stock": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-stock": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-storage-type": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-storage-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::primary-icon-tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::primary-icon-tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::progress-fraction": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::progress-fraction": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::progress-pulse-step": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::progress-pulse-step": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::scroll-offset": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::scroll-offset": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-activatable": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-activatable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-gicon": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-gicon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-name": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-pixbuf": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-pixbuf": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-stock": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-stock": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-storage-type": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-storage-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::secondary-icon-tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::secondary-icon-tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::selection-bound": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::selection-bound": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::shadow-type": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::shadow-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::show-emoji-icon": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::show-emoji-icon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::tabs": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::tabs": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::text": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::text-length": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::text-length": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::truncate-multiline": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::truncate-multiline": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::visibility": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::visibility": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::width-chars": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::width-chars": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::xalign": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::xalign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::app-paintable": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::app-paintable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::can-default": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::can-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::can-focus": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::can-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::composite-child": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::composite-child": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::double-buffered": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::double-buffered": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::events": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::events": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::expand": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::expand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::focus-on-click": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::focus-on-click": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::halign": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::halign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::has-default": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::has-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::has-focus": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::has-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::has-tooltip": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::has-tooltip": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::height-request": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::height-request": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::hexpand": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::hexpand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::hexpand-set": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::hexpand-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::is-focus": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::is-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-bottom": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-bottom": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-end": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-end": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-left": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-left": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-right": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-right": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-start": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-start": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::margin-top": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::margin-top": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::name": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::no-show-all": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::no-show-all": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::opacity": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::opacity": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::parent": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::parent": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::receives-default": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::receives-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::scale-factor": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::scale-factor": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::style": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::style": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::valign": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::valign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::vexpand": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::vexpand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::vexpand-set": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::vexpand-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::visible": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::visible": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::width-request": (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::width-request": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-button-clicked::window": (arg0: TaggedEntryTag) => void;
-            [key: `tag-button-clicked::${string}`]: (arg0: TaggedEntryTag) => void;
+            "tag-button-clicked::window": (object: TaggedEntryTag) => void;
+            [key: `tag-button-clicked::${string}`]: (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::tag-close-visible": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::tag-close-visible": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::activates-default": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::activates-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::attributes": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::attributes": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::buffer": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::buffer": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::caps-lock-warning": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::caps-lock-warning": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::completion": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::completion": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::cursor-position": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::cursor-position": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::editable": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::editable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::enable-emoji-completion": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::enable-emoji-completion": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::has-frame": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::has-frame": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::im-module": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::im-module": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::inner-border": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::inner-border": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::input-hints": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::input-hints": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::input-purpose": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::input-purpose": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::invisible-char": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::invisible-char": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::invisible-char-set": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::invisible-char-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::max-length": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::max-length": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::max-width-chars": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::max-width-chars": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::overwrite-mode": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::overwrite-mode": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::placeholder-text": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::placeholder-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::populate-all": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::populate-all": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-activatable": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-activatable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-gicon": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-gicon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-name": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-pixbuf": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-pixbuf": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-stock": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-stock": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-storage-type": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-storage-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::primary-icon-tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::primary-icon-tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::progress-fraction": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::progress-fraction": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::progress-pulse-step": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::progress-pulse-step": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::scroll-offset": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::scroll-offset": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-activatable": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-activatable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-gicon": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-gicon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-name": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-pixbuf": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-pixbuf": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-stock": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-stock": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-storage-type": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-storage-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::secondary-icon-tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::secondary-icon-tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::selection-bound": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::selection-bound": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::shadow-type": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::shadow-type": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::show-emoji-icon": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::show-emoji-icon": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::tabs": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::tabs": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::text": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::text-length": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::text-length": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::truncate-multiline": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::truncate-multiline": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::visibility": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::visibility": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::width-chars": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::width-chars": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::xalign": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::xalign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::app-paintable": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::app-paintable": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::can-default": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::can-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::can-focus": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::can-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::composite-child": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::composite-child": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::double-buffered": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::double-buffered": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::events": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::events": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::expand": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::expand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::focus-on-click": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::focus-on-click": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::halign": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::halign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::has-default": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::has-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::has-focus": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::has-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::has-tooltip": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::has-tooltip": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::height-request": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::height-request": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::hexpand": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::hexpand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::hexpand-set": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::hexpand-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::is-focus": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::is-focus": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-bottom": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-bottom": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-end": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-end": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-left": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-left": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-right": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-right": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-start": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-start": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::margin-top": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::margin-top": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::name": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::name": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::no-show-all": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::no-show-all": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::opacity": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::opacity": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::parent": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::parent": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::receives-default": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::receives-default": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::scale-factor": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::scale-factor": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::sensitive": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::sensitive": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::style": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::style": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::tooltip-markup": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::tooltip-markup": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::tooltip-text": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::tooltip-text": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::valign": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::valign": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::vexpand": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::vexpand": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::vexpand-set": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::vexpand-set": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::visible": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::visible": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::width-request": (arg0: TaggedEntryTag) => void;
+            "tag-clicked::width-request": (object: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
              * @run-first
              */
-            "tag-clicked::window": (arg0: TaggedEntryTag) => void;
-            [key: `tag-clicked::${string}`]: (arg0: TaggedEntryTag) => void;
+            "tag-clicked::window": (object: TaggedEntryTag) => void;
+            [key: `tag-clicked::${string}`]: (object: TaggedEntryTag) => void;
         }
 
         // Constructor properties interface

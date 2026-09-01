@@ -38,26 +38,31 @@ export namespace Gepub {
 
     /**
      * The book author.
+     * @default creator
      */
     const META_AUTHOR: string;
 
     /**
      * The book description.
+     * @default description
      */
     const META_DESC: string;
 
     /**
      * The book id.
+     * @default identifier
      */
     const META_ID: string;
 
     /**
      * The book lang.
+     * @default language
      */
     const META_LANG: string;
 
     /**
      * The book title.
+     * @default title
      */
     const META_TITLE: string;
 
@@ -261,6 +266,7 @@ export namespace Gepub {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

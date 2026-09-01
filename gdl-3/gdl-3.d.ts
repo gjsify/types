@@ -47,19 +47,19 @@ export namespace Gdl {
         /**
          * Buttons display only icons in the dockbar.
          */
-        ICONS,
+        ICONS = 0,
         /**
          * Buttons display only text labels in the dockbar.
          */
-        TEXT,
+        TEXT = 1,
         /**
          * Buttons display text and icons in the dockbar.
          */
-        BOTH,
+        BOTH = 2,
         /**
          * identical to `GDL_DOCK_BAR_BOTH`.
          */
-        AUTO,
+        AUTO = 3,
     }
 
 
@@ -71,11 +71,11 @@ export namespace Gdl {
         /**
          * Display a small cross
          */
-        CLOSE,
+        CLOSE = 0,
         /**
          * Display a small triangle
          */
-        ICONIFY,
+        ICONIFY = 1,
     }
 
 
@@ -94,31 +94,31 @@ export namespace Gdl {
         /**
          * No position defined
          */
-        NONE,
+        NONE = 0,
         /**
          * Dock object on the top
          */
-        TOP,
+        TOP = 1,
         /**
          * Dock object on the bottom
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * Dock object on the right
          */
-        RIGHT,
+        RIGHT = 3,
         /**
          * Dock object on the left
          */
-        LEFT,
+        LEFT = 4,
         /**
          * Dock object on top of the other
          */
-        CENTER,
+        CENTER = 5,
         /**
          * Dock object in its own window
          */
-        FLOATING,
+        FLOATING = 6,
     }
 
 
@@ -137,38 +137,45 @@ export namespace Gdl {
         /**
          * Tabs display only text labels.
          */
-        TEXT,
+        TEXT = 0,
         /**
          * Tabs display only icons.
          */
-        ICON,
+        ICON = 1,
         /**
          * Tabs display text and icons.
          */
-        BOTH,
+        BOTH = 2,
         /**
          * Same as `GDL_SWITCHER_STYLE_BOTH`.
          */
-        TOOLBAR,
+        TOOLBAR = 3,
         /**
          * Tabs display like notebook tabs.
          */
-        TABS,
+        TABS = 4,
         /**
          * Do not display tabs.
          */
-        NONE,
+        NONE = 5,
     }
 
 
+    /**
+     * @default master
+     */
     const DOCK_MASTER_PROPERTY: string;
 
+    /**
+     * @default name
+     */
     const DOCK_NAME_PROPERTY: string;
 
     /**
      * Minimum shift count to be used for user defined flags, to be stored in
      * {@link Gdl.DockObject}.flags.
      * @deprecated since 3.6: Use a private flag instead
+     * @default 8
      */
     const DOCK_OBJECT_FLAGS_SHIFT: number;
 
@@ -217,55 +224,55 @@ export namespace Gdl {
         /**
          * Normal dock item
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * item cannot be undocked
          */
-        NEVER_FLOATING,
+        NEVER_FLOATING = 1,
         /**
          * item cannot be docked vertically
          */
-        NEVER_VERTICAL,
+        NEVER_VERTICAL = 2,
         /**
          * item cannot be docked horizontally
          */
-        NEVER_HORIZONTAL,
+        NEVER_HORIZONTAL = 4,
         /**
          * item is locked, it cannot be moved around
          */
-        LOCKED,
+        LOCKED = 8,
         /**
          * item cannot be docked at top
          */
-        CANT_DOCK_TOP,
+        CANT_DOCK_TOP = 16,
         /**
          * item cannot be docked at bottom
          */
-        CANT_DOCK_BOTTOM,
+        CANT_DOCK_BOTTOM = 32,
         /**
          * item cannot be docked left
          */
-        CANT_DOCK_LEFT,
+        CANT_DOCK_LEFT = 64,
         /**
          * item cannot be docked right
          */
-        CANT_DOCK_RIGHT,
+        CANT_DOCK_RIGHT = 128,
         /**
          * item cannot be docked at center
          */
-        CANT_DOCK_CENTER,
+        CANT_DOCK_CENTER = 256,
         /**
          * item cannot be closed
          */
-        CANT_CLOSE,
+        CANT_CLOSE = 512,
         /**
          * item cannot be iconified
          */
-        CANT_ICONIFY,
+        CANT_ICONIFY = 1024,
         /**
          * item doesn't have a grip
          */
-        NO_GRIP,
+        NO_GRIP = 2048,
     }
 
 
@@ -285,19 +292,19 @@ export namespace Gdl {
         /**
          * item is in a drag operation
          */
-        IN_DRAG,
+        IN_DRAG = 256,
         /**
          * item is in a predrag operation
          */
-        IN_PREDRAG,
+        IN_PREDRAG = 512,
         /**
          * item is iconified
          */
-        ICONIFIED,
+        ICONIFIED = 1024,
         /**
          * indicates the user has started an action on the dock item
          */
-        USER_ACTION,
+        USER_ACTION = 2048,
     }
 
 
@@ -319,19 +326,19 @@ export namespace Gdl {
         /**
          * Object is created and destroyed by the master, not the user
          */
-        AUTOMATIC,
+        AUTOMATIC = 1,
         /**
          * Object has a parent
          */
-        ATTACHED,
+        ATTACHED = 2,
         /**
          * Object is currently part of a rearrangement
          */
-        IN_REFLOW,
+        IN_REFLOW = 4,
         /**
          * Object will be removed
          */
-        IN_DETACH,
+        IN_DETACH = 8,
     }
 
 
@@ -351,11 +358,11 @@ export namespace Gdl {
         /**
          * The parameter is to be exported for later layout rebuilding
          */
-        EXPORT,
+        EXPORT = 256,
         /**
          * The parameter must be set after adding the children objects
          */
-        AFTER,
+        AFTER = 512,
     }
 
 
@@ -827,13 +834,13 @@ export namespace Gdl {
              * @signal
              * @run-first
              */
-            "dock-drag-end": (arg0: boolean) => void;
+            "dock-drag-end": (cancel: boolean) => void;
             /**
              * Signals that a dock item dragging motion event has occured.
              * @signal
              * @run-first
              */
-            "dock-drag-motion": (arg0: Gdk.Device, arg1: number, arg2: number) => void;
+            "dock-drag-motion": (device: Gdk.Device, x: number, y: number) => void;
             /**
              * The ::move-focus-child signal is emitted when a change of focus is
              * requested for the child widget of a dock item.  The `dir` parameter
@@ -843,7 +850,7 @@ export namespace Gdl {
              * @action
              * @run-last
              */
-            "move-focus-child": (arg0: Gtk.DirectionType) => void;
+            "move-focus-child": (dir: Gtk.DirectionType) => void;
             /**
              * Signals that this dock has been selected from a switcher.
              * @signal
@@ -2160,13 +2167,13 @@ export namespace Gdl {
              * @signal
              * @run-last
              */
-            detach: (arg0: boolean) => void;
+            detach: (recursive: boolean) => void;
             /**
              * Signals that the {@link Gdl.DockObject} has been docked.
              * @signal
              * @run-first
              */
-            dock: (arg0: DockObject, arg1: DockPlacement, arg2: unknown | null) => void;
+            dock: (requestor: DockObject, position: DockPlacement, other_data: unknown | null) => void;
             "notify::long-name": (pspec: GObject.ParamSpec) => void;
             "notify::master": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -2972,7 +2979,7 @@ export namespace Gdl {
              * @signal
              * @run-last
              */
-            "button-pressed-handle": (arg0: Gdk.Event) => void;
+            "button-pressed-handle": (event: Gdk.Event) => void;
             "notify::item": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;

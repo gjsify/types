@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./granite-7.0.d.ts","./granite-7.0-surface.d.ts"]
+  "include": ["./granite-7.0.d.ts","./granite-7.0-vocabulary.d.ts"]
 }
 
 

@@ -71,7 +71,7 @@
       ]
 }
   },
-  "include": ["./gpastegtk-4.d.ts","./gpastegtk-4-surface.d.ts"]
+  "include": ["./gpastegtk-4.d.ts","./gpastegtk-4-vocabulary.d.ts"]
 }
 
 

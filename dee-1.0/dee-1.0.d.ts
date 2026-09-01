@@ -66,8 +66,8 @@ export namespace Dee {
      * @gir-type Enum
      */
     enum SharedModelAccessMode {
-        WORLD_WRITABLE,
-        LEADER_WRITABLE,
+        WORLD_WRITABLE = 0,
+        LEADER_WRITABLE = 1,
     }
 
 
@@ -75,7 +75,7 @@ export namespace Dee {
      * @gir-type Enum
      */
     enum SharedModelError {
-        SHARED_MODEL_ERROR_LEADER_INVALIDATED,
+        SHARED_MODEL_ERROR_LEADER_INVALIDATED = 0,
     }
 
 
@@ -91,8 +91,8 @@ export namespace Dee {
      * @gir-type Enum
      */
     enum SharedModelFlushMode {
-        AUTOMATIC,
-        MANUAL,
+        AUTOMATIC = 0,
+        MANUAL = 1,
     }
 
 
@@ -106,24 +106,29 @@ export namespace Dee {
          * The target model has been
          *   modified while the transaction was open.
          */
-        CONCURRENT_MODIFICATION,
+        CONCURRENT_MODIFICATION = 1,
         /**
          * Raised when someone tries to commit a
          *   transaction that has already been committed
          */
-        COMMITTED,
+        COMMITTED = 2,
     }
 
 
+    /**
+     * @default com.canonical.Dee.Peer
+     */
     const PEER_DBUS_IFACE: string;
 
     /**
      * String constant defining the name of the DBus Model interface.
+     * @default com.canonical.Dee.Model
      */
     const SEQUENCE_MODEL_DBUS_IFACE: string;
 
     /**
      * String constant defining the name of the DBus Model interface.
+     * @default com.canonical.Dee.Model
      */
     const SHARED_MODEL_DBUS_IFACE: string;
 
@@ -334,13 +339,13 @@ export namespace Dee {
          * Match terms byte for byte as specified in the
          *                        query string
          */
-        EXACT,
+        EXACT = 1,
         /**
          * Match if the indexed term begins with the byte string
          *                         being queried by. This is also sometimes known as
          *                         truncated- or wildcard queries
          */
-        PREFIX,
+        PREFIX = 2,
     }
 
 
@@ -688,6 +693,7 @@ export namespace Dee {
          * resource to a file, but not blocking IO over a network socket.
          * @param resource_name The name of the resource to retrieve
          * @returns A newly allocated {@link GObject.Object} in case of success               and `null` otherwise. In case of a runtime error the `error`               pointer will be set.
+         * @throws GLib.Error
          */
         load<T = GObject.Object>(resource_name: string): T;
 
@@ -703,6 +709,7 @@ export namespace Dee {
          * @param resource A {@link Dee.Serializable} to store under `resource_name`
          * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
          * @returns `true` on success and `false` otherwise. In case of a runtime               error the `error` pointer will point to a {@link GLib.Error} in the               `DeeResourceError` domain.
+         * @throws GLib.Error
          */
         store(resource: Serializable, resource_name: string): boolean;
 
@@ -1267,27 +1274,27 @@ export namespace Dee {
              * @signal
              * @run-last
              */
-            "connection-acquired": (arg0: Gio.DBusConnection) => void;
+            "connection-acquired": (object: Gio.DBusConnection) => void;
             /**
              * Connect to this signal to be notified when peers close
              * their {@link Gio.DBusConnection}.
              * @signal
              * @run-last
              */
-            "connection-closed": (arg0: Gio.DBusConnection) => void;
+            "connection-closed": (connection: Gio.DBusConnection) => void;
             /**
              * Connect to this signal to be notified of existing and new peers that are
              *   in your swarm.
              * @signal
              * @run-last
              */
-            "peer-found": (arg0: string) => void;
+            "peer-found": (name: string) => void;
             /**
              * Connect to this signal to be notified when peers disconnect from the swarm
              * @signal
              * @run-last
              */
-            "peer-lost": (arg0: string) => void;
+            "peer-lost": (name: string) => void;
             "notify::swarm-leader": (pspec: GObject.ParamSpec) => void;
             "notify::swarm-name": (pspec: GObject.ParamSpec) => void;
             "notify::swarm-owner": (pspec: GObject.ParamSpec) => void;
@@ -4522,13 +4529,13 @@ export namespace Dee {
              * @signal
              * @run-last
              */
-            "begin-transaction": (arg0: number, arg1: number) => void;
+            "begin-transaction": (begin_seqnum: number, end_seqnum: number) => void;
             /**
              * Emitted right after a remote transaction has been committed to the model.
              * @signal
              * @run-last
              */
-            "end-transaction": (arg0: number, arg1: number) => void;
+            "end-transaction": (begin_seqnum: number, end_seqnum: number) => void;
             "notify::access-mode": (pspec: GObject.ParamSpec) => void;
             "notify::flush-mode": (pspec: GObject.ParamSpec) => void;
             "notify::peer": (pspec: GObject.ParamSpec) => void;
@@ -5001,6 +5008,7 @@ export namespace Dee {
          * Apply a transaction to its target model. After this call the transaction
          * is invalidated and must be freed with `g_object_unref()`.
          * @returns `true` if and only if the transaction successfully applies to :target.
+         * @throws GLib.Error
          */
         commit(): boolean;
 
@@ -7411,6 +7419,7 @@ export namespace Dee {
          * resource to a file, but not blocking IO over a network socket.
          * @param resource_name The name of the resource to retrieve
          * @returns A newly allocated {@link GObject.Object} in case of success               and `null` otherwise. In case of a runtime error the `error`               pointer will be set.
+         * @throws GLib.Error
          */
         load<T = GObject.Object>(resource_name: string): T;
 
@@ -7426,6 +7435,7 @@ export namespace Dee {
          * @param resource A {@link Dee.Serializable} to store under `resource_name`
          * @param resource_name The name to store the resource under. Will overwrite any                 existing resource with the same name
          * @returns `true` on success and `false` otherwise. In case of a runtime               error the `error` pointer will point to a {@link GLib.Error} in the               `DeeResourceError` domain.
+         * @throws GLib.Error
          */
         store(resource: Serializable, resource_name: string): boolean;
     }

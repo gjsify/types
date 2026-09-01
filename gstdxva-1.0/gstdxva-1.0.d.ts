@@ -32,14 +32,14 @@ export namespace GstDxva {
      * @since 1.24
      */
     enum DxvaCodec {
-        NONE,
-        MPEG2,
-        H264,
-        H265,
-        VP8,
-        VP9,
-        AV1,
-        LAST,
+        NONE = 0,
+        MPEG2 = 1,
+        H264 = 2,
+        H265 = 3,
+        VP8 = 4,
+        VP9 = 5,
+        AV1 = 6,
+        LAST = 7,
     }
 
 

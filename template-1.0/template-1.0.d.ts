@@ -85,29 +85,29 @@ export namespace Template {
      * @gir-type Enum
      */
     enum ExprBuiltin {
-        ABS,
-        CEIL,
-        FLOOR,
-        HEX,
-        LOG,
-        PRINT,
-        REPR,
-        SQRT,
-        TYPEOF,
-        ASSERT,
-        SIN,
-        TAN,
-        COS,
-        PRINTERR,
-        CAST_BYTE,
-        CAST_CHAR,
-        CAST_I32,
-        CAST_U32,
-        CAST_I64,
-        CAST_U64,
-        CAST_FLOAT,
-        CAST_DOUBLE,
-        CAST_BOOL,
+        ABS = 0,
+        CEIL = 1,
+        FLOOR = 2,
+        HEX = 3,
+        LOG = 4,
+        PRINT = 5,
+        REPR = 6,
+        SQRT = 7,
+        TYPEOF = 8,
+        ASSERT = 9,
+        SIN = 10,
+        TAN = 11,
+        COS = 12,
+        PRINTERR = 13,
+        CAST_BYTE = 14,
+        CAST_CHAR = 15,
+        CAST_I32 = 16,
+        CAST_U32 = 17,
+        CAST_I64 = 18,
+        CAST_U64 = 19,
+        CAST_FLOAT = 20,
+        CAST_DOUBLE = 21,
+        CAST_BOOL = 22,
     }
 
 
@@ -122,39 +122,39 @@ export namespace Template {
      * @gir-type Enum
      */
     enum ExprType {
-        ADD,
-        SUB,
-        MUL,
-        DIV,
-        BOOLEAN,
-        NUMBER,
-        STRING,
-        GT,
-        LT,
-        NE,
-        EQ,
-        GTE,
-        LTE,
-        UNARY_MINUS,
-        STMT_LIST,
-        IF,
-        WHILE,
-        SYMBOL_REF,
-        SYMBOL_ASSIGN,
-        FN_CALL,
-        ANON_FN_CALL,
-        USER_FN_CALL,
-        GETATTR,
-        SETATTR,
-        GI_CALL,
-        REQUIRE,
-        AND,
-        OR,
-        INVERT_BOOLEAN,
-        ARGS,
-        FUNC,
-        NOP,
-        NULL,
+        ADD = 1,
+        SUB = 2,
+        MUL = 3,
+        DIV = 4,
+        BOOLEAN = 5,
+        NUMBER = 6,
+        STRING = 7,
+        GT = 8,
+        LT = 9,
+        NE = 10,
+        EQ = 11,
+        GTE = 12,
+        LTE = 13,
+        UNARY_MINUS = 14,
+        STMT_LIST = 15,
+        IF = 16,
+        WHILE = 17,
+        SYMBOL_REF = 18,
+        SYMBOL_ASSIGN = 19,
+        FN_CALL = 20,
+        ANON_FN_CALL = 21,
+        USER_FN_CALL = 22,
+        GETATTR = 23,
+        SETATTR = 24,
+        GI_CALL = 25,
+        REQUIRE = 26,
+        AND = 27,
+        OR = 28,
+        INVERT_BOOLEAN = 29,
+        ARGS = 30,
+        FUNC = 31,
+        NOP = 32,
+        NULL = 33,
     }
 
 
@@ -169,33 +169,43 @@ export namespace Template {
      * @gir-type Enum
      */
     enum SymbolType {
-        EXPR,
-        VALUE,
+        EXPR = 0,
+        VALUE = 1,
     }
 
 
+    /**
+     * @default 0
+     */
     const ENABLE_TRACE: number;
 
+    /**
+     * @default 1
+     */
     const LOG_LEVEL_TRACE: number;
 
     /**
      * Template-GLibl major version component (e.g. 1 if `TMPL_VERSION` is 1.2.3)
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * Template-GLibl micro version component (e.g. 3 if `TMPL_VERSION` is 1.2.3)
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * Template-GLibl minor version component (e.g. 2 if `TMPL_VERSION` is 1.2.3)
+     * @default 40
      */
     const MINOR_VERSION: number;
 
     /**
      * Template-GLib version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 3.40.0
      */
     const VERSION_S: string;
 
@@ -203,6 +213,7 @@ export namespace Template {
 
     /**
      * @param str 
+     * @throws GLib.Error
      */
     function expr_from_string(str: string): Expr;
 
@@ -278,6 +289,7 @@ export namespace Template {
          * @param scope A {@link Template.Scope} containing state for the template, or `null`.
          * @param cancellable An optional cancellable for the operation.
          * @returns `true` if successful, otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         expand(stream: Gio.OutputStream, scope: Scope | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -285,6 +297,7 @@ export namespace Template {
          * Expands the template and returns the result as a string.
          * @param scope A {@link Template.Scope} or `null`.
          * @returns A newly allocated string, or `null` upon failure.
+         * @throws GLib.Error
          */
         expand_string(scope: Scope | null): string;
 
@@ -297,29 +310,34 @@ export namespace Template {
         /**
          * @param stream 
          * @param cancellable 
+         * @throws GLib.Error
          */
         parse(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param file 
          * @param cancellable 
+         * @throws GLib.Error
          */
         parse_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         parse_path(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param path 
          * @param cancellable 
+         * @throws GLib.Error
          */
         parse_resource(path: string, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * @param input 
+         * @throws GLib.Error
          */
         parse_string(input: string): boolean;
 
@@ -406,6 +424,7 @@ export namespace Template {
          * the template loader.
          * @param path a relative path to the file
          * @returns A {@link Gio.InputStream} or `null` and `error` is set.
+         * @throws GLib.Error
          */
         locate(path: string): Gio.InputStream;
 
@@ -694,6 +713,7 @@ export namespace Template {
         /**
          * @param scope 
          * @param return_value 
+         * @throws GLib.Error
          */
         ["eval"](scope: Scope, return_value: GObject.Value | any): boolean;
 

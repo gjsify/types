@@ -4,82 +4,77 @@
 ![version](https://img.shields.io/npm/v/@girs/xreaderdocument-1.5)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/xreaderdocument-1.5)
 
+GJS TypeScript type definitions for XreaderDocument-1.5, generated from library version 4.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for XreaderDocument-1.5, generated from library version 4.6.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/xreaderdocument-1.5
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/xreaderdocument-1.5` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/xreaderdocument-1.5/ambient` | only the `gi://` module declarations |
+| `@girs/xreaderdocument-1.5/import` | only the `imports.gi` declarations |
+| `@girs/xreaderdocument-1.5/xreaderdocument-1.5` | the namespace, without the side-effecting declarations |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import XreaderDocument from '@girs/xreaderdocument-1.5';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/xreaderdocument-1.5` or `@girs/xreaderdocument-1.5/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/xreaderdocument-1.5'
+import '@girs/xreaderdocument-1.5';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/xreaderdocument-1.5"],
-  ...
-}
+{ "include": ["@girs/xreaderdocument-1.5"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import XreaderDocument from 'gi://XreaderDocument?version=1.5';
 ```
 
-### Global import
+Referencing `@girs/xreaderdocument-1.5/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/xreaderdocument-1.5` or `@girs/xreaderdocument-1.5/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/xreaderdocument-1.5'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/xreaderdocument-1.5"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/xreaderdocument-1.5/import`:
 
 ```ts
 const XreaderDocument = imports.gi.XreaderDocument;
 ```
 
-### Bundle
+## Building
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

@@ -32,13 +32,14 @@ export namespace GstCuda {
      * @since 1.22
      */
     enum CudaGraphicsResourceType {
-        NONE,
-        GL_BUFFER,
-        D3D11_RESOURCE,
+        NONE = 0,
+        GL_BUFFER = 1,
+        D3D11_RESOURCE = 2,
         /**
          * Resource represents a EGL resource.
+         * @since 1.26
          */
-        EGL_RESOURCE,
+        EGL_RESOURCE = 3,
     }
 
 
@@ -55,15 +56,20 @@ export namespace GstCuda {
      * @since 1.24
      */
     enum CudaMemoryAllocMethod {
-        UNKNOWN,
+        /**
+         * @since 1.24
+         */
+        UNKNOWN = 0,
         /**
          * Memory allocated via cuMemAlloc or cuMemAllocPitch
+         * @since 1.24
          */
-        MALLOC,
+        MALLOC = 1,
         /**
          * Memory allocated via cuMemCreate and cuMemMap
+         * @since 1.24
          */
-        MMAP,
+        MMAP = 2,
     }
 
 
@@ -72,31 +78,35 @@ export namespace GstCuda {
      * @since 1.22
      */
     enum CudaQuarkId {
-        GRAPHICS_RESOURCE,
-        MAX,
+        GRAPHICS_RESOURCE = 0,
+        MAX = 1,
     }
 
 
     /**
      * Name of the caps feature for indicating the use of {@link GstCuda.CudaMemory}
      * @since 1.22
+     * @default memory:CUDAMemory
      */
     const CAPS_FEATURE_MEMORY_CUDA_MEMORY: string;
 
     /**
      * #G_TYPE_BOOLEAN Allows stream ordered allocation. Default is `false`
      * @since 1.26
+     * @default GstCudaAllocator.stream-ordered
      */
     const CUDA_ALLOCATOR_OPT_STREAM_ORDERED: string;
 
     /**
      * @since 1.22
+     * @default gst.cuda.context
      */
     const CUDA_CONTEXT_TYPE: string;
 
     /**
      * Name of cuda memory type
      * @since 1.22
+     * @default gst.cuda.memory
      */
     const CUDA_MEMORY_TYPE_NAME: string;
 
@@ -110,18 +120,21 @@ export namespace GstCuda {
      * #GST_MAP_READ has the same semantics as though you are reading from
      * CUDA device/host memory
      * @since 1.22
+     * @default 131072
      */
     const MAP_CUDA: number;
 
     /**
      * GstMapFlags value alias for GST_MAP_READ | GST_MAP_CUDA
      * @since 1.28
+     * @default 131073
      */
     const MAP_READ_CUDA: Gst.MapFlags;
 
     /**
      * GstMapFlags value alias for GST_MAP_WRITE | GST_MAP_CUDA
      * @since 1.28
+     * @default 131074
      */
     const MAP_WRITE_CUDA: Gst.MapFlags;
 
@@ -269,16 +282,19 @@ export namespace GstCuda {
     enum CudaMemoryTransfer {
         /**
          * the device memory needs downloading to the staging memory
+         * @since 1.22
          */
-        DOWNLOAD,
+        DOWNLOAD = 1048576,
         /**
          * the staging memory needs uploading to the device memory
+         * @since 1.22
          */
-        UPLOAD,
+        UPLOAD = 2097152,
         /**
          * the device memory needs synchronization
+         * @since 1.24
          */
-        SYNC,
+        SYNC = 4194304,
     }
 
 

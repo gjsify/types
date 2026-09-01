@@ -74,12 +74,14 @@ export namespace GSound {
     /**
      * Binary icon data in PNG format for the application this sound event
      * is triggered by.
+     * @default application.icon
      */
     const ATTR_APPLICATION_ICON: string;
 
     /**
      * An icon name for the application this sound event is triggered by,
      * as defined in the XDG icon naming specification.
+     * @default application.icon_name
      */
     const ATTR_APPLICATION_ICON_NAME: string;
 
@@ -90,12 +92,14 @@ export namespace GSound {
      * > This attribute will automatically be added to the {@link GSound.Context} with
      * > the {@link Gio.Application.application_id} if you are using {@link Gio.Application}, so you
      * > normally do not need to supply this yourself.
+     * @default application.id
      */
     const ATTR_APPLICATION_ID: string;
 
     /**
      * The locale string the application that is triggering this sound
      * event is running in. A POSIX locale string such as de_DE@euro.
+     * @default application.language
      */
     const ATTR_APPLICATION_LANGUAGE: string;
 
@@ -107,32 +111,38 @@ export namespace GSound {
      * > This attribute will automatically be added to the {@link GSound.Context} if
      * > it has previously been set with `g_set_application_name()`, so you normally
      * > do not need to supply this yourself.
+     * @default application.name
      */
     const ATTR_APPLICATION_NAME: string;
 
     /**
      * The path to the process binary of the process that is triggering this sound event.
+     * @default application.process.binary
      */
     const ATTR_APPLICATION_PROCESS_BINARY: string;
 
     /**
      * The host name of the host the process that is triggering this sound event runs on.
+     * @default application.process.host
      */
     const ATTR_APPLICATION_PROCESS_HOST: string;
 
     /**
      * The unix PID of the process that is triggering this sound event, formatted as string.
+     * @default application.process.id
      */
     const ATTR_APPLICATION_PROCESS_ID: string;
 
     /**
      * The user that owns the process that is triggering this sound event.
+     * @default application.process.user
      */
     const ATTR_APPLICATION_PROCESS_USER: string;
 
     /**
      * A version number for the program this sound event was triggered
      * by. (e.g. "22.2")
+     * @default application.version
      */
     const ATTR_APPLICATION_VERSION: string;
 
@@ -154,6 +164,7 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.cache-control
      */
     const ATTR_CANBERRA_CACHE_CONTROL: string;
 
@@ -166,6 +177,7 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.enable
      */
     const ATTR_CANBERRA_ENABLE: string;
 
@@ -181,6 +193,7 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.force_channel
      */
     const ATTR_CANBERRA_FORCE_CHANNEL: string;
 
@@ -192,6 +205,7 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.volume
      */
     const ATTR_CANBERRA_VOLUME: string;
 
@@ -201,6 +215,7 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.xdg-theme.name
      */
     const ATTR_CANBERRA_XDG_THEME_NAME: string;
 
@@ -210,16 +225,19 @@ export namespace GSound {
      * 
      * If the list of attributes is handed on to the sound server this
      * attribute is stripped from it.
+     * @default canberra.xdg-theme.output-profile
      */
     const ATTR_CANBERRA_XDG_THEME_OUTPUT_PROFILE: string;
 
     /**
      * A descriptive string for the sound event. Localized if possible and applicable.
+     * @default event.description
      */
     const ATTR_EVENT_DESCRIPTION: string;
 
     /**
      * A textual id for an event sound, as mandated by the XDG sound naming specification.
+     * @default event.id
      */
     const ATTR_EVENT_ID: string;
 
@@ -227,6 +245,7 @@ export namespace GSound {
      * If this sound event was triggered by a mouse input event, the
      * number of the mouse button that triggered it, formatted as string. 1
      * for left mouse button, 3 for right, 2 for middle.
+     * @default event.mouse.button
      */
     const ATTR_EVENT_MOUSE_BUTTON: string;
 
@@ -235,6 +254,7 @@ export namespace GSound {
      * position of the mouse cursor as fractional value between 0 and 1,
      * formatted as string, 0 reflecting the left side of the screen, 1
      * the right side.
+     * @default event.mouse.hpos
      */
     const ATTR_EVENT_MOUSE_HPOS: string;
 
@@ -243,59 +263,70 @@ export namespace GSound {
      * position of the mouse cursor as fractional value between 0 and 1,
      * formatted as string, 0 reflecting the top end of the screen, 1
      * the bottom end.
+     * @default event.mouse.vpos
      */
     const ATTR_EVENT_MOUSE_VPOS: string;
 
     /**
      * If this sound event was triggered by a mouse input event, the X
      * position of the mouse cursor on the screen, formatted as string.
+     * @default event.mouse.x
      */
     const ATTR_EVENT_MOUSE_X: string;
 
     /**
      * If this sound event was triggered by a mouse input event, the Y
      * position of the mouse cursor on the screen, formatted as string.
+     * @default event.mouse.y
      */
     const ATTR_EVENT_MOUSE_Y: string;
 
     /**
      * The artist of this media. Localized if possible and applicable.
+     * @default media.artist
      */
     const ATTR_MEDIA_ARTIST: string;
 
     /**
      * The file name this media was or can be loaded from.
+     * @default media.filename
      */
     const ATTR_MEDIA_FILENAME: string;
 
     /**
      * An icon for this media in binary PNG format.
+     * @default media.icon
      */
     const ATTR_MEDIA_ICON: string;
 
     /**
      * An icon name as defined in the XDG icon naming specifcation.
+     * @default media.icon_name
      */
     const ATTR_MEDIA_ICON_NAME: string;
 
     /**
      * The language this media is in, in some standard POSIX locale string, such as "de_DE".
+     * @default media.language
      */
     const ATTR_MEDIA_LANGUAGE: string;
 
     /**
      * A name describing the media being played. Localized if possible and applicable.
+     * @default media.name
      */
     const ATTR_MEDIA_NAME: string;
 
     /**
      * The "role" this media is played in. For event sounds the string
      * "event". For other cases strings like "music", "video", "game", ...
+     * @default media.role
      */
     const ATTR_MEDIA_ROLE: string;
 
     /**
      * A (song) title describing the media being played. Localized if possible and applicable.
+     * @default media.title
      */
     const ATTR_MEDIA_TITLE: string;
 
@@ -305,12 +336,14 @@ export namespace GSound {
      * of indexes of the desktops this window is visible on. If this
      * attribute is an empty string, it is visible on all desktops
      * (i.e. 'sticky'). The first desktop is 0. (e.g. "0,2,3")
+     * @default window.desktop
      */
     const ATTR_WINDOW_DESKTOP: string;
 
     /**
      * If this sound event was triggered by a window on the screen, the
      * pixel height of the window.
+     * @default window.height
      */
     const ATTR_WINDOW_HEIGHT: string;
 
@@ -319,12 +352,14 @@ export namespace GSound {
      * position of the center of the window as fractional value between 0
      * and 1, formatted as string, 0 reflecting the left side of the
      * screen, 1 the right side.
+     * @default window.hpos
      */
     const ATTR_WINDOW_HPOS: string;
 
     /**
      * If this sound event was triggered by a window on the screen, binary
      * icon data in PNG format for this window.
+     * @default window.icon
      */
     const ATTR_WINDOW_ICON: string;
 
@@ -332,6 +367,7 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen, an
      * icon name for this window, as defined in the XDG icon naming
      * specification.
+     * @default window.icon_name
      */
     const ATTR_WINDOW_ICON_NAME: string;
 
@@ -339,12 +375,14 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen, some
      * identification string for this window, so that the sound system can
      * recognize specific windows.
+     * @default window.id
      */
     const ATTR_WINDOW_ID: string;
 
     /**
      * If this sound event was triggered by a window on the screen, the
      * name of this window as human readable string.
+     * @default window.name
      */
     const ATTR_WINDOW_NAME: string;
 
@@ -353,12 +391,14 @@ export namespace GSound {
      * position of the center of the window as fractional value between 0
      * and 1, formatted as string, 0 reflecting the top side of the
      * screen, 1 the bottom side.
+     * @default window.vpos
      */
     const ATTR_WINDOW_VPOS: string;
 
     /**
      * If this sound event was triggered by a window on the screen, the
      * pixel width of the window.
+     * @default window.width
      */
     const ATTR_WINDOW_WIDTH: string;
 
@@ -366,12 +406,14 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen, the X
      * position of the window measured from the top left corner of the
      * screen to the top left corner of the window.
+     * @default window.x
      */
     const ATTR_WINDOW_X: string;
 
     /**
      * If this sound event was triggered by a window on the screen and the
      * windowing system is X11, the X display name of the window (e.g. ":0").
+     * @default window.x11.display
      */
     const ATTR_WINDOW_X11_DISPLAY: string;
 
@@ -379,6 +421,7 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen and the
      * windowing system is X11, the X monitor id of the window formatted as
      * string (e.g. "0").
+     * @default window.x11.monitor
      */
     const ATTR_WINDOW_X11_MONITOR: string;
 
@@ -386,12 +429,14 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen and the
      * windowing system is X11, the X screen id of the window formatted as
      * string (e.g. "0").
+     * @default window.x11.screen
      */
     const ATTR_WINDOW_X11_SCREEN: string;
 
     /**
      * If this sound event was triggered by a window on the screen and the
      * windowing system is X11, the XID of the window formatted as string.
+     * @default window.x11.xid
      */
     const ATTR_WINDOW_X11_XID: string;
 
@@ -399,6 +444,7 @@ export namespace GSound {
      * If this sound event was triggered by a window on the screen, the y
      * position of the window measured from the top left corner of the
      * screen to the top left corner of the window.
+     * @default window.y
      */
     const ATTR_WINDOW_Y: string;
 
@@ -455,6 +501,7 @@ export namespace GSound {
          * 
          * This function is intented to be used by language bindings.
          * @param attrs Hash table of attrerties
+         * @throws GLib.Error
          */
         cache(attrs: { [key: string]: string }): boolean;
 
@@ -466,6 +513,7 @@ export namespace GSound {
          * > A connection is automatically opened before playing or caching sounds,
          * > so you rarely need to call this yourself.
          * @returns `true` if the output device was opened successfully, or `false`          (populating `error`)
+         * @throws GLib.Error
          */
         open(): boolean;
 
@@ -475,6 +523,7 @@ export namespace GSound {
          * errors which occurred.
          * @param result Result object passed to the callback of   `gsound_context_play_full()`
          * @returns `true` if playing finished successfully
+         * @throws GLib.Error
          */
         play_full_finish(result: Gio.AsyncResult): boolean;
 
@@ -545,6 +594,7 @@ export namespace GSound {
          * @param attrs Attributes
          * @param cancellable A {@link Gio.Cancellable}
          * @returns `true` on success, `false` on error
+         * @throws GLib.Error
          */
         play_simple(attrs: { [key: string]: string }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -559,6 +609,7 @@ export namespace GSound {
          * This function is intented to be used by language bindings.
          * @param attrs Hash table of attributes to set
          * @returns `true` if attributes were updated successfully
+         * @throws GLib.Error
          */
         set_attributes(attrs: { [key: string]: string }): boolean;
 
@@ -570,6 +621,7 @@ export namespace GSound {
          * not available: see the libcanberra documentation for details.
          * @param driver libcanberra driver to use
          * @returns `true` if the libcanberra driver was set successfully
+         * @throws GLib.Error
          */
         set_driver(driver: string): boolean;
 
@@ -615,6 +667,7 @@ export namespace GSound {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

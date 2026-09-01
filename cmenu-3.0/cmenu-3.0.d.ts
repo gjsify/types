@@ -27,15 +27,18 @@ export namespace CMenu {
      * @gir-type Enum
      */
     enum TreeItemType {
-        INVALID,
-        DIRECTORY,
-        ENTRY,
-        SEPARATOR,
-        HEADER,
-        ALIAS,
+        INVALID = 0,
+        DIRECTORY = 1,
+        ENTRY = 2,
+        SEPARATOR = 3,
+        HEADER = 4,
+        ALIAS = 5,
     }
 
 
+    /**
+     * @default :flatpak
+     */
     const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
 
     /**
@@ -49,13 +52,13 @@ export namespace CMenu {
      * @gir-type Flags
      */
     enum TreeFlags {
-        NONE,
-        INCLUDE_EXCLUDED,
-        SHOW_EMPTY,
-        INCLUDE_NODISPLAY,
-        SHOW_ALL_SEPARATORS,
-        SORT_DISPLAY_NAME,
-        INCLUDE_UNALLOCATED,
+        NONE = 0,
+        INCLUDE_EXCLUDED = 1,
+        SHOW_EMPTY = 256,
+        INCLUDE_NODISPLAY = 2,
+        SHOW_ALL_SEPARATORS = 512,
+        SORT_DISPLAY_NAME = 65536,
+        INCLUDE_UNALLOCATED = 4,
     }
 
 
@@ -273,6 +276,7 @@ export namespace CMenu {
          * application is capable of opening files with the given content type.
          * @param content_type a string.
          * @returns `TRUE` on success, `FALSE` on error.
+         * @throws GLib.Error
          */
         add_supports_type(content_type: string): boolean;
 
@@ -417,6 +421,7 @@ export namespace CMenu {
          * @param files a list of {@link Gio.File} objects
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @throws GLib.Error
          */
         launch(files: Gio.File[] | null, context: Gio.AppLaunchContext | null): boolean;
 
@@ -436,6 +441,7 @@ export namespace CMenu {
          * @param uris a list of URIs to launch.
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
+         * @throws GLib.Error
          */
         launch_uris(uris: string[] | null, context: Gio.AppLaunchContext | null): boolean;
 
@@ -488,6 +494,7 @@ export namespace CMenu {
          * @param result the async result
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          * @since 2.60
+         * @throws GLib.Error
          */
         launch_uris_finish(result: Gio.AsyncResult): boolean;
 
@@ -495,6 +502,7 @@ export namespace CMenu {
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
          * @returns `TRUE` on success, `FALSE` on error.
+         * @throws GLib.Error
          */
         remove_supports_type(content_type: string): boolean;
 
@@ -502,6 +510,7 @@ export namespace CMenu {
          * Sets the application as the default handler for the given file extension.
          * @param extension a string containing the file extension (without   the dot).
          * @returns `TRUE` on success, `FALSE` on error.
+         * @throws GLib.Error
          */
         set_as_default_for_extension(extension: string): boolean;
 
@@ -509,6 +518,7 @@ export namespace CMenu {
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
          * @returns `TRUE` on success, `FALSE` on error.
+         * @throws GLib.Error
          */
         set_as_default_for_type(content_type: string): boolean;
 
@@ -519,6 +529,7 @@ export namespace CMenu {
          * application for that content type.
          * @param content_type the content type.
          * @returns `TRUE` on success, `FALSE` on error.
+         * @throws GLib.Error
          */
         set_as_last_used_for_type(content_type: string): boolean;
 
@@ -933,6 +944,7 @@ export namespace CMenu {
          * performs a significant amount of blocking I/O if the
          * tree has not been loaded yet.
          * @returns `true` on success, `false` on error
+         * @throws GLib.Error
          */
         load_sync(): boolean;
     }

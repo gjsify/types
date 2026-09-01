@@ -43,23 +43,23 @@ export namespace CryptUI {
         /**
          * the key is none of the below types
          */
-        NONE,
+        NONE = 0,
         /**
          * the key's type is symmetric
          */
-        SYMMETRIC,
+        SYMMETRIC = 1,
         /**
          * the key's type is public
          */
-        PUBLIC,
+        PUBLIC = 2,
         /**
          * the key's type is private
          */
-        PRIVATE,
+        PRIVATE = 3,
         /**
          * for internal use only
          */
-        MAXVALUE,
+        MAXVALUE = 4,
     }
 
 
@@ -67,10 +67,10 @@ export namespace CryptUI {
      * @gir-type Enum
      */
     enum KeyChooserMode {
-        RECIPIENTS,
-        SIGNER,
-        SUPPORT_SYMMETRIC,
-        MUSTSIGN,
+        RECIPIENTS = 1,
+        SIGNER = 2,
+        SUPPORT_SYMMETRIC = 4,
+        MUSTSIGN = 16,
     }
 
 
@@ -86,35 +86,35 @@ export namespace CryptUI {
         /**
          * whether the key is valid
          */
-        IS_VALID,
+        IS_VALID = 1,
         /**
          * whether the key can encrypt
          */
-        CAN_ENCRYPT,
+        CAN_ENCRYPT = 2,
         /**
          * whether the key can sign
          */
-        CAN_SIGN,
+        CAN_SIGN = 4,
         /**
          * whether the key is expired
          */
-        EXPIRED,
+        EXPIRED = 256,
         /**
          * whether the key is revoked
          */
-        REVOKED,
+        REVOKED = 512,
         /**
          * whether the key is disabled
          */
-        DISABLED,
+        DISABLED = 1024,
         /**
          * whether the key is trusted
          */
-        TRUSTED,
+        TRUSTED = 4096,
         /**
          * whether the key is exportable
          */
-        EXPORTABLE,
+        EXPORTABLE = 1048576,
     }
 
 
@@ -122,9 +122,9 @@ export namespace CryptUI {
      * @gir-type Enum
      */
     enum KeyStoreMode {
-        ALL,
-        SELECTED,
-        RESULTS,
+        ALL = 0,
+        SELECTED = 1,
+        RESULTS = 2,
     }
 
 
@@ -139,23 +139,23 @@ export namespace CryptUI {
         /**
          * An invalid key
          */
-        INVALID,
+        INVALID = 0,
         /**
          * A key we don't know anything about
          */
-        MISSING,
+        MISSING = 10,
         /**
          * A key we're searching for but haven't found yet
          */
-        SEARCHING,
+        SEARCHING = 20,
         /**
          * A key that we've found is present remotely
          */
-        REMOTE,
+        REMOTE = 50,
         /**
          * A key on the local machine
          */
-        LOCAL,
+        LOCAL = 100,
     }
 
 
@@ -170,31 +170,31 @@ export namespace CryptUI {
         /**
          * the key is revoked
          */
-        REVOKED,
+        REVOKED = -3,
         /**
          * the key is disabled
          */
-        DISABLED,
+        DISABLED = -2,
         /**
          * the key has never been valid
          */
-        NEVER,
+        NEVER = -1,
         /**
          * the key's validity is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the key's validity is marginal
          */
-        MARGINAL,
+        MARGINAL = 1,
         /**
          * the key's validity is full
          */
-        FULL,
+        FULL = 5,
         /**
          * the key's validity is ultimate
          */
-        ULTIMATE,
+        ULTIMATE = 10,
     }
 
 

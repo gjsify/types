@@ -41,15 +41,24 @@ export namespace ColordGtk {
         /**
          * the transaction failed for an unknown reason
          */
-        FAILED,
-        LAST,
+        FAILED = 0,
+        LAST = 1,
     }
 
 
+    /**
+     * @default 0
+     */
     const GTK_MAJOR_VERSION: number;
 
+    /**
+     * @default 1
+     */
     const GTK_MICRO_VERSION: number;
 
+    /**
+     * @default 3
+     */
     const GTK_MINOR_VERSION: number;
 
     namespace SampleWidget {
@@ -300,7 +309,7 @@ export namespace ColordGtk {
              * @since 0.1.20
              * @run-last
              */
-            changed: (arg0: Colord.Profile) => void;
+            changed: (profile: Colord.Profile) => void;
             "notify::profile": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -425,6 +434,7 @@ export namespace ColordGtk {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.20
+         * @throws GLib.Error
          */
         get_profile_finish(res: Gio.AsyncResult): Colord.Profile;
 
@@ -438,6 +448,7 @@ export namespace ColordGtk {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.20
+         * @throws GLib.Error
          */
         get_profile_sync(widget: Gtk.Widget, cancellable: Gio.Cancellable | null): Colord.Profile;
     }

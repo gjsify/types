@@ -48,31 +48,31 @@ export namespace Mks {
         /**
          * Left button.
          */
-        LEFT,
+        LEFT = 0,
         /**
          * Middle button.
          */
-        MIDDLE,
+        MIDDLE = 1,
         /**
          * Right button.
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * Wheel-up button.
          */
-        WHEEL_UP,
+        WHEEL_UP = 3,
         /**
          * Wheel-down button.
          */
-        WHEEL_DOWN,
+        WHEEL_DOWN = 4,
         /**
          * Side button.
          */
-        SIDE,
+        SIDE = 5,
         /**
          * Extra button.
          */
-        EXTRA,
+        EXTRA = 6,
     }
 
 
@@ -91,11 +91,11 @@ export namespace Mks {
         /**
          * A text only screen.
          */
-        TEXT,
+        TEXT = 0,
         /**
          * A graphical screen.
          */
-        GRAPHIC,
+        GRAPHIC = 1,
     }
 
 
@@ -114,40 +114,44 @@ export namespace Mks {
         /**
          * The touch event has just started.
          */
-        BEGIN,
+        BEGIN = 0,
         /**
          * The touch event has been updated.
          */
-        UPDATE,
+        UPDATE = 1,
         /**
          * The touch event has finished.
          */
-        END,
+        END = 2,
         /**
          * The touch event has been canceled.
          */
-        CANCEL,
+        CANCEL = 3,
     }
 
 
     /**
      * mks major version component (e.g. 1 if `MKS_VERSION` is 1.2.3)
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * mks micro version component (e.g. 3 if `MKS_VERSION` is 1.2.3)
+     * @default 5
      */
     const MICRO_VERSION: number;
 
     /**
      * mks minor version component (e.g. 2 if `MKS_VERSION` is 1.2.3)
+     * @default 1
      */
     const MINOR_VERSION: number;
 
     /**
      * mks version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 0.1.5
      */
     const VERSION_S: string;
 
@@ -188,19 +192,19 @@ export namespace Mks {
         /**
          * No modifier.
          */
-        NONE,
+        NONE = 0,
         /**
          * Scroll lock.
          */
-        SCROLL_LOCK,
+        SCROLL_LOCK = 1,
         /**
          * Numeric lock.
          */
-        NUM_LOCK,
+        NUM_LOCK = 2,
         /**
          * Caps lock.
          */
-        CAPS_LOCK,
+        CAPS_LOCK = 4,
     }
 
 
@@ -884,6 +888,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Keyboard.press}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         press_finish(result: Gio.AsyncResult): boolean;
 
@@ -892,6 +897,7 @@ export namespace Mks {
          * @param keycode the hardware keycode
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         press_sync(keycode: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -922,6 +928,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Keyboard.release}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         release_finish(result: Gio.AsyncResult): boolean;
 
@@ -930,6 +937,7 @@ export namespace Mks {
          * @param keycode the hardware keycode
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         release_sync(keycode: number, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1034,6 +1042,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Mouse.move_by}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         move_by_finish(result: Gio.AsyncResult): boolean;
 
@@ -1043,6 +1052,7 @@ export namespace Mks {
          * @param delta_y the y coordinate delta
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         move_by_sync(delta_x: number, delta_y: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1076,6 +1086,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Mouse.move_to}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         move_to_finish(result: Gio.AsyncResult): boolean;
 
@@ -1085,6 +1096,7 @@ export namespace Mks {
          * @param y the y coordinate
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         move_to_sync(x: number, y: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1115,6 +1127,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Mouse.press}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         press_finish(result: Gio.AsyncResult): boolean;
 
@@ -1123,6 +1136,7 @@ export namespace Mks {
          * @param button the {@link Mks.MouseButton} that was released
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         press_sync(button: MouseButton, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1153,6 +1167,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Mouse.release}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         release_finish(result: Gio.AsyncResult): boolean;
 
@@ -1161,6 +1176,7 @@ export namespace Mks {
          * @param button the {@link Mks.MouseButton} that was released
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         release_sync(button: MouseButton, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -1320,6 +1336,7 @@ export namespace Mks {
          * changes are propagated using a DMA-BUF and damage notifications.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a `GdkPainable` if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         attach_finish(result: Gio.AsyncResult): Gdk.Paintable;
 
@@ -1328,6 +1345,7 @@ export namespace Mks {
          * be used to update display as the QEMU instance updates.
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Gdk.Paintable} if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         attach_sync(cancellable: Gio.Cancellable | null): Gdk.Paintable;
 
@@ -1355,6 +1373,7 @@ export namespace Mks {
          * Completes a call to `mks_screen_configure()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         configure_finish(result: Gio.AsyncResult): boolean;
 
@@ -1365,6 +1384,7 @@ export namespace Mks {
          * @param attributes a {@link Mks.ScreenAttributes}
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         configure_sync(attributes: ScreenAttributes, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1708,6 +1728,7 @@ export namespace Mks {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1717,6 +1738,7 @@ export namespace Mks {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Session;
 
@@ -1816,6 +1838,7 @@ export namespace Mks {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1971,6 +1994,7 @@ export namespace Mks {
          * Completes a call to {@link Mks.Touchable.send_event}.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation completed successfully; otherwise `false`   and `error` is set.
+         * @throws GLib.Error
          */
         send_event_finish(result: Gio.AsyncResult): boolean;
 
@@ -1982,6 +2006,7 @@ export namespace Mks {
          * @param y the y absolute coordinate
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `true` if the operation was acknowledged by the QEMU instance;   otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         send_event_sync(kind: TouchEventKind, num_slot: bigint | number, x: number, y: number, cancellable: Gio.Cancellable | null): boolean;
     }

@@ -47,8 +47,8 @@ export namespace GitgExt {
      * @gir-type Enum
      */
     enum SelectionMode {
-        NORMAL,
-        SELECTION,
+        NORMAL = 0,
+        SELECTION = 1,
     }
 
 
@@ -84,7 +84,7 @@ export namespace GitgExt {
      * @gir-type Flags
      */
     enum ExternalChangeHint {
-        NONE,
+        NONE = 0,
         REFS,
         INDEX,
     }
@@ -155,15 +155,15 @@ export namespace GitgExt {
             /**
              * @signal
              */
-            registered: (arg0: MessageId) => void;
+            registered: (id: MessageId) => void;
             /**
              * @signal
              */
-            unregistered: (arg0: MessageId) => void;
+            unregistered: (id: MessageId) => void;
             /**
              * @signal
              */
-            dispatch: (arg0: Message) => void;
+            dispatch: (message: Message) => void;
         }
 
         // Constructor properties interface
@@ -548,7 +548,7 @@ export namespace GitgExt {
             /**
              * @signal
              */
-            response: (arg0: Gtk.ResponseType) => boolean | void;
+            response: (response_type: Gtk.ResponseType) => boolean | void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::message-type": (pspec: GObject.ParamSpec) => void;

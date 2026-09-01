@@ -38,11 +38,11 @@ export namespace Ggit {
         /**
          * specifies a local branch.
          */
-        LOCAL,
+        LOCAL = 1,
         /**
          * specifies a remote branch.
          */
-        REMOTE,
+        REMOTE = 2,
     }
 
 
@@ -57,10 +57,10 @@ export namespace Ggit {
      * @gir-type Enum
      */
     enum CloneLocal {
-        AUTO,
-        LOCAL,
-        NO_LOCAL,
-        NO_LINKS,
+        AUTO = 0,
+        LOCAL = 1,
+        NO_LOCAL = 2,
+        NO_LINKS = 3,
     }
 
 
@@ -81,32 +81,32 @@ export namespace Ggit {
         /**
          * System-wide on Windows, for compatibility with portable git.
          */
-        PROGRAMDATA,
+        PROGRAMDATA = 1,
         /**
          * System-wide configuration file.
          */
-        SYSTEM,
+        SYSTEM = 2,
         /**
          * XDG compatible configuration file (.config/git/config).
          */
-        XDG,
+        XDG = 3,
         /**
          * User-specific configuration file, also called Global configuration file.
          */
-        GLOBAL,
+        GLOBAL = 4,
         /**
          * Repository specific configuration file.
          */
-        LOCAL,
-        WORKTREE,
+        LOCAL = 5,
+        WORKTREE = 6,
         /**
          * Application specific configuration file; freely defined by applications.
          */
-        APP,
+        APP = 7,
         /**
          * Represents the highest level of a config file.
          */
-        HIGHEST,
+        HIGHEST = -1,
     }
 
 
@@ -125,38 +125,38 @@ export namespace Ggit {
         /**
          * unmodified.
          */
-        UNMODIFIED,
+        UNMODIFIED = 0,
         /**
          * added.
          */
-        ADDED,
+        ADDED = 1,
         /**
          * deleted.
          */
-        DELETED,
+        DELETED = 2,
         /**
          * modified.
          */
-        MODIFIED,
+        MODIFIED = 3,
         /**
          * renamed.
          */
-        RENAMED,
+        RENAMED = 4,
         /**
          * copied.
          */
-        COPIED,
+        COPIED = 5,
         /**
          * ignored.
          */
-        IGNORED,
+        IGNORED = 6,
         /**
          * untracked.
          */
-        UNTRACKED,
-        TYPECHANGE,
-        UNREADABLE,
-        CONFLICTED,
+        UNTRACKED = 7,
+        TYPECHANGE = 8,
+        UNREADABLE = 9,
+        CONFLICTED = 10,
     }
 
 
@@ -175,9 +175,9 @@ export namespace Ggit {
      * @gir-type Enum
      */
     enum DiffBinaryType {
-        NONE,
-        LITERAL,
-        DELTA,
+        NONE = 0,
+        LITERAL = 1,
+        DELTA = 2,
     }
 
 
@@ -196,23 +196,23 @@ export namespace Ggit {
         /**
          * full git diff.
          */
-        PATCH,
+        PATCH = 1,
         /**
          * just the file headers of patch.
          */
-        PATCH_HEADER,
+        PATCH_HEADER = 2,
         /**
          * like git diff --raw.
          */
-        RAW,
+        RAW = 3,
         /**
          * like git diff --name-only.
          */
-        NAME_ONLY,
+        NAME_ONLY = 4,
         /**
          * like git diff --name-status.
          */
-        NAME_STATUS,
+        NAME_STATUS = 5,
     }
 
 
@@ -235,39 +235,39 @@ export namespace Ggit {
         /**
          * line is part of the context.
          */
-        CONTEXT,
+        CONTEXT = 32,
         /**
          * line that was added.
          */
-        ADDITION,
+        ADDITION = 43,
         /**
          * line that was removed.
          */
-        DELETION,
+        DELETION = 45,
         /**
          * Both files have no LF at end.
          */
-        CONTEXT_EOFNL,
+        CONTEXT_EOFNL = 61,
         /**
          * LF was added at end of file.
          */
-        ADD_EOFNL,
+        ADD_EOFNL = 62,
         /**
          * LF was removed at end of file.
          */
-        DEL_EOFNL,
+        DEL_EOFNL = 60,
         /**
          * the file header.
          */
-        FILE_HDR,
+        FILE_HDR = 70,
         /**
          * the hunk header.
          */
-        HUNK_HDR,
+        HUNK_HDR = 72,
         /**
          * is binary.
          */
-        BINARY,
+        BINARY = 66,
     }
 
 
@@ -282,8 +282,8 @@ export namespace Ggit {
      * @gir-type Enum
      */
     enum Direction {
-        FETCH,
-        PUSH,
+        FETCH = 0,
+        PUSH = 1,
     }
 
 
@@ -354,12 +354,12 @@ export namespace Ggit {
      * @gir-type Enum
      */
     enum FileMode {
-        UNREADABLE,
-        TREE,
-        BLOB,
-        BLOB_EXECUTABLE,
-        LINK,
-        COMMIT,
+        UNREADABLE = 0,
+        TREE = 16384,
+        BLOB = 33188,
+        BLOB_EXECUTABLE = 33261,
+        LINK = 40960,
+        COMMIT = 57344,
     }
 
 
@@ -374,10 +374,10 @@ export namespace Ggit {
      * @gir-type Enum
      */
     enum MergeFileFavor {
-        NORMAL,
-        OURS,
-        THEIRS,
-        UNION,
+        NORMAL = 0,
+        OURS = 1,
+        THEIRS = 2,
+        UNION = 3,
     }
 
 
@@ -396,11 +396,11 @@ export namespace Ggit {
         /**
          * adding objects.
          */
-        ADDING_OBJECTS,
+        ADDING_OBJECTS = 0,
         /**
          * deltafication.
          */
-        DELTAFICATION,
+        DELTAFICATION = 1,
     }
 
 
@@ -419,15 +419,15 @@ export namespace Ggit {
         /**
          * Do not attempt to connect through a proxy.
          */
-        NONE,
+        NONE = 0,
         /**
          * Try to auto-detect the proxy from the git configuration.
          */
-        AUTO,
+        AUTO = 1,
         /**
          * Connect via the URL given in the options.
          */
-        SPECIFIED,
+        SPECIFIED = 2,
     }
 
 
@@ -447,33 +447,33 @@ export namespace Ggit {
          * The given commit is to be cherry-picked.
          * The client should commit the changes and continue if there are no conflicts.
          */
-        PICK,
+        PICK = 0,
         /**
          * The given commit is to be cherry-picked,
          * but the client should prompt the user to provide an updated commit message.
          */
-        REWORD,
+        REWORD = 1,
         /**
          * The given commit is to be cherry-picked,
          * but the client should stop to allow the user to edit the changes before
          * committing them.
          */
-        EDIT,
+        EDIT = 2,
         /**
          * The given commit is to be squashed into
          * the previous commit. The commit message will be merged with the previous message.
          */
-        SQUASH,
+        SQUASH = 3,
         /**
          * The given commit is to be squashed into the
          * previous commit. The commit message from this commit will be discarded.
          */
-        FIXUP,
+        FIXUP = 4,
         /**
          * No commit will be cherry-picked.
          * The client should run the given command and (if successful) continue.
          */
-        EXEC,
+        EXEC = 5,
     }
 
 
@@ -492,19 +492,19 @@ export namespace Ggit {
         /**
          * An invalid reference.
          */
-        INVALID,
+        INVALID = 0,
         /**
          * A reference which points at an object id.
          */
-        OID,
+        OID = 1,
         /**
          * A reference which points at another reference.
          */
-        SYMBOLIC,
+        SYMBOLIC = 2,
         /**
          * All reference types.
          */
-        LISTALL,
+        LISTALL = 3,
     }
 
 
@@ -523,15 +523,15 @@ export namespace Ggit {
         /**
          * download.
          */
-        DOWNLOAD,
+        DOWNLOAD = 0,
         /**
          * indexing.
          */
-        INDEXING,
+        INDEXING = 1,
         /**
          * error.
          */
-        ERROR,
+        ERROR = 2,
     }
 
 
@@ -552,20 +552,20 @@ export namespace Ggit {
         /**
          * Use the setting from the configuration.
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 0,
         /**
          * Ask the server for tags pointing to objects we're already
          * downloading.
          */
-        AUTO,
+        AUTO = 1,
         /**
          * Don't ask for any tags beyond the refspecs.
          */
-        NONE,
+        NONE = 2,
         /**
          * Ask for the all the tags.
          */
-        ALL,
+        ALL = 3,
     }
 
 
@@ -584,16 +584,16 @@ export namespace Ggit {
         /**
          * The head will be moved to the commit.
          */
-        SOFT,
+        SOFT = 1,
         /**
          * the head will be moved to the commit and the index
          *                    will be replaced with the content of the commit tree.
          */
-        MIXED,
+        MIXED = 2,
         /**
          * MIXED plus changes in working tree discarded.
          */
-        HARD,
+        HARD = 3,
     }
 
 
@@ -614,15 +614,15 @@ export namespace Ggit {
          * receive one callback for each file,
          * even if the file is in both the index and the workdir (combining {@link Ggit.StatusFlags}).
          */
-        INDEX_AND_WORKDIR,
+        INDEX_AND_WORKDIR = 0,
         /**
          * only receive callbacks for files in the index.
          */
-        INDEX_ONLY,
+        INDEX_ONLY = 1,
         /**
          * only receive callbacks for files in the workdir.
          */
-        WORKDIR_ONLY,
+        WORKDIR_ONLY = 2,
     }
 
 
@@ -641,23 +641,23 @@ export namespace Ggit {
         /**
          * reset to on-disk value.
          */
-        UNSPECIFIED,
+        UNSPECIFIED = -1,
         /**
          * don't ignore any change.
          */
-        NONE,
+        NONE = 1,
         /**
          * ignore untracked files.
          */
-        UNTRACKED,
+        UNTRACKED = 2,
         /**
          * ignore changes in the working directory.
          */
-        DIRTY,
+        DIRTY = 3,
         /**
          * never check if the submodule is dirty.
          */
-        ALL,
+        ALL = 4,
     }
 
 
@@ -677,16 +677,16 @@ export namespace Ggit {
         /**
          * do no recurse into submodules.
          */
-        NO,
+        NO = 0,
         /**
          * recurse into submodules.
          */
-        YES,
+        YES = 1,
         /**
          * recurse into submodules only when
          * commit not already in local clone.
          */
-        ONDEMAND,
+        ONDEMAND = 2,
     }
 
 
@@ -705,26 +705,26 @@ export namespace Ggit {
         /**
          * checkout the submodule.
          */
-        CHECKOUT,
+        CHECKOUT = 1,
         /**
          * rebase the current branch onto the
          *                                commit recorded in the superproject.
          */
-        REBASE,
+        REBASE = 2,
         /**
          * merge the commit recorded in the
          *                               superproject into the current branch.
          */
-        MERGE,
+        MERGE = 3,
         /**
          * do not update this submodule.
          */
-        NONE,
+        NONE = 4,
         /**
          * not used except as static initializer
          * when we don't want any particular update rule to be specified.
          */
-        DEFAULT,
+        DEFAULT = 0,
     }
 
 
@@ -743,37 +743,42 @@ export namespace Ggit {
         /**
          * walk tree in pre-order
          */
-        PRE,
+        PRE = 0,
         /**
          * walk tree in post-order
          */
-        POST,
+        POST = 1,
     }
 
 
     /**
      * The build type of the installed build.
+     * @default plain
      */
     const BUILD_TYPE: string;
 
     /**
      * libgit2-glib major version component (e.g. 1 if `GGIT_VERSION` is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * libgit2-glib micro version component (e.g. 3 if `GGIT_VERSION` is 1.2.3)
+     * @default 1
      */
     const MICRO_VERSION: number;
 
     /**
      * libgit2-glib minor version component (e.g. 2 if `GGIT_VERSION` is 1.2.3)
+     * @default 2
      */
     const MINOR_VERSION: number;
 
     /**
      * libgit2-glib version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 1.2.1
      */
     const VERSION_S: string;
 
@@ -970,19 +975,19 @@ export namespace Ggit {
         /**
          * check working directory, then index.
          */
-        FILE_THEN_INDEX,
+        FILE_THEN_INDEX = 0,
         /**
          * check index, then working directory.
          */
-        INDEX_THEN_FILE,
+        INDEX_THEN_FILE = 1,
         /**
          * check only index.
          */
-        INDEX_ONLY,
+        INDEX_ONLY = 2,
         /**
          * ignore system wide attributes.
          */
-        NO_SYSTEM,
+        NO_SYSTEM = 4,
     }
 
 
@@ -1000,12 +1005,12 @@ export namespace Ggit {
         /**
          * Normal blame, the default.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Track lines that have moved within a file
          *                                     (like git blame -M)
          */
-        TRACK_COPIES_SAME_FILE,
+        TRACK_COPIES_SAME_FILE = 1,
     }
 
 
@@ -1020,13 +1025,13 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum CheckoutNotifyFlags {
-        NONE,
-        CONFLICT,
-        DIRTY,
-        UPDATED,
-        UNTRACKED,
-        IGNORED,
-        ALL,
+        NONE = 0,
+        CONFLICT = 1,
+        DIRTY = 2,
+        UPDATED = 4,
+        UNTRACKED = 8,
+        IGNORED = 16,
+        ALL = 65535,
     }
 
 
@@ -1041,30 +1046,30 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum CheckoutStrategy {
-        SAFE,
-        FORCE,
-        RECREATE_MISSING,
-        ALLOW_CONFLICTS,
-        REMOVE_UNTRACKED,
-        REMOVE_IGNORED,
-        UPDATE_ONLY,
-        DONT_UPDATE_INDEX,
-        NO_REFRESH,
-        SKIP_UNMERGED,
-        USE_OURS,
-        USE_THEIRS,
-        DISABLE_PATHSPEC_MATCH,
-        SKIP_LOCKED_DIRECTORIES,
-        DONT_OVERWRITE_IGNORED,
-        CONFLICT_STYLE_MERGE,
-        CONFLICT_STYLE_DIFF3,
-        DONT_REMOVE_EXISTING,
-        DONT_WRITE_INDEX,
-        DRY_RUN,
-        CONFLICT_STYLE_ZDIFF3,
-        NONE,
-        UPDATE_SUBMODULES,
-        UPDATE_SUBMODULES_IF_CHANGED,
+        SAFE = 0,
+        FORCE = 2,
+        RECREATE_MISSING = 4,
+        ALLOW_CONFLICTS = 16,
+        REMOVE_UNTRACKED = 32,
+        REMOVE_IGNORED = 64,
+        UPDATE_ONLY = 128,
+        DONT_UPDATE_INDEX = 256,
+        NO_REFRESH = 512,
+        SKIP_UNMERGED = 1024,
+        USE_OURS = 2048,
+        USE_THEIRS = 4096,
+        DISABLE_PATHSPEC_MATCH = 8192,
+        SKIP_LOCKED_DIRECTORIES = 262144,
+        DONT_OVERWRITE_IGNORED = 524288,
+        CONFLICT_STYLE_MERGE = 1048576,
+        CONFLICT_STYLE_DIFF3 = 2097152,
+        DONT_REMOVE_EXISTING = 4194304,
+        DONT_WRITE_INDEX = 8388608,
+        DRY_RUN = 16777216,
+        CONFLICT_STYLE_ZDIFF3 = 33554432,
+        NONE = 1073741824,
+        UPDATE_SUBMODULES = 65536,
+        UPDATE_SUBMODULES_IF_CHANGED = 131072,
     }
 
 
@@ -1083,11 +1088,11 @@ export namespace Ggit {
         /**
          * attempt to create.
          */
-        NONE,
+        NONE = 0,
         /**
          * force creation.
          */
-        FORCE,
+        FORCE = 1,
     }
 
 
@@ -1102,11 +1107,11 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum Credtype {
-        USERPASS_PLAINTEXT,
-        SSH_KEY,
-        SSH_CUSTOM,
-        DEFAULT,
-        SSH_INTERACTIVE,
+        USERPASS_PLAINTEXT = 1,
+        SSH_KEY = 2,
+        SSH_CUSTOM = 4,
+        DEFAULT = 8,
+        SSH_INTERACTIVE = 16,
     }
 
 
@@ -1121,22 +1126,22 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum DiffFindFlags {
-        FIND_BY_CONFIG,
-        FIND_RENAMES,
-        FIND_RENAMES_FROM_REWRITES,
-        FIND_COPIES,
-        FIND_COPIES_FROM_UNMODIFIED,
-        FIND_REWRITES,
-        BREAK_REWRITES,
-        FIND_AND_BREAK_REWRITES,
-        FIND_FOR_UNTRACKED,
-        FIND_ALL,
-        FIND_IGNORE_LEADING_WHITESPACE,
-        FIND_IGNORE_WHITESPACE,
-        FIND_DONT_IGNORE_WHITESPACE,
-        FIND_EXACT_MATCH_ONLY,
-        BREAK_REWRITES_FOR_RENAMES_ONLY,
-        FIND_REMOVE_UNMODIFIED,
+        FIND_BY_CONFIG = 0,
+        FIND_RENAMES = 1,
+        FIND_RENAMES_FROM_REWRITES = 2,
+        FIND_COPIES = 4,
+        FIND_COPIES_FROM_UNMODIFIED = 8,
+        FIND_REWRITES = 16,
+        BREAK_REWRITES = 32,
+        FIND_AND_BREAK_REWRITES = 48,
+        FIND_FOR_UNTRACKED = 64,
+        FIND_ALL = 255,
+        FIND_IGNORE_LEADING_WHITESPACE = 0,
+        FIND_IGNORE_WHITESPACE = 4096,
+        FIND_DONT_IGNORE_WHITESPACE = 8192,
+        FIND_EXACT_MATCH_ONLY = 16384,
+        BREAK_REWRITES_FOR_RENAMES_ONLY = 32768,
+        FIND_REMOVE_UNMODIFIED = 65536,
     }
 
 
@@ -1155,15 +1160,15 @@ export namespace Ggit {
         /**
          * if the file is binary.
          */
-        BINARY,
+        BINARY = 1,
         /**
          * if the file is not binary.
          */
-        NOT_BINARY,
+        NOT_BINARY = 2,
         /**
          * if the ID is valid.
          */
-        VALID_ID,
+        VALID_ID = 4,
     }
 
 
@@ -1178,8 +1183,8 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum DiffFormatEmailFlags {
-        NONE,
-        EXCLUDE_SUBJECT_PATCH_MARKER,
+        NONE = 0,
+        EXCLUDE_SUBJECT_PATCH_MARKER = 1,
     }
 
 
@@ -1198,105 +1203,105 @@ export namespace Ggit {
         /**
          * normal.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * reverse the sides of the diff.
          */
-        REVERSE,
+        REVERSE = 1,
         /**
          * include ignored files.
          */
-        INCLUDE_IGNORED,
+        INCLUDE_IGNORED = 2,
         /**
          * also add all files under ignored dirs.
          */
-        RECURSE_IGNORED_DIRS,
+        RECURSE_IGNORED_DIRS = 4,
         /**
          * include untracked files.
          */
-        INCLUDE_UNTRACKED,
+        INCLUDE_UNTRACKED = 8,
         /**
          * recurse to untracked directories.
          */
-        RECURSE_UNTRACKED_DIRS,
+        RECURSE_UNTRACKED_DIRS = 16,
         /**
          * include unmodified files.
          */
-        INCLUDE_UNMODIFIED,
+        INCLUDE_UNMODIFIED = 32,
         /**
          * enable generation of typechange detal records.
          */
-        INCLUDE_TYPECHANGE,
+        INCLUDE_TYPECHANGE = 64,
         /**
          * try to label tree transitions as type changes.
          */
-        INCLUDE_TYPECHANGE_TREES,
+        INCLUDE_TYPECHANGE_TREES = 128,
         /**
          * ignore file mode changes.
          */
-        IGNORE_FILE_MODE,
+        IGNORE_FILE_MODE = 256,
         /**
          * ignore submodules.
          */
-        IGNORE_SUBMODULES,
+        IGNORE_SUBMODULES = 512,
         /**
          * use case insensitive filename comparison.
          */
-        IGNORE_CASE,
+        IGNORE_CASE = 1024,
         /**
          * use exact path matching.
          */
-        DISABLE_PATHSPEC_MATCH,
+        DISABLE_PATHSPEC_MATCH = 4096,
         /**
          * disable updating the binary flag in delta records.
          */
-        SKIP_BINARY_CHECK,
+        SKIP_BINARY_CHECK = 8192,
         /**
          * immediately label untracked directories as
          * untracked, without checking inside.
          */
-        ENABLE_FAST_UNTRACKED_DIRS,
+        ENABLE_FAST_UNTRACKED_DIRS = 16384,
         /**
          * force text.
          */
-        FORCE_TEXT,
+        FORCE_TEXT = 1048576,
         /**
          * treat all files as binary, disabling text diffs.
          */
-        FORCE_BINARY,
+        FORCE_BINARY = 2097152,
         /**
          * ignore whitespace.
          */
-        IGNORE_WHITESPACE,
+        IGNORE_WHITESPACE = 4194304,
         /**
          * ignore whitespace change.
          */
-        IGNORE_WHITESPACE_CHANGE,
+        IGNORE_WHITESPACE_CHANGE = 8388608,
         /**
          * ignore whitespace at end-of-line.
          */
-        IGNORE_WHITESPACE_EOL,
+        IGNORE_WHITESPACE_EOL = 16777216,
         /**
          * include content of untracked files.
          * this implies GGIT_DIFF_INCLUDE_UNTRACKED but not GGIT_DIFF_RECURSE_UNTRACKED_DIRS.
          */
-        SHOW_UNTRACKED_CONTENT,
+        SHOW_UNTRACKED_CONTENT = 33554432,
         /**
          * show unmodified files.
          */
-        SHOW_UNMODIFIED,
+        SHOW_UNMODIFIED = 67108864,
         /**
          * generate using the "patience diff" algorithm.
          */
-        PATIENCE,
+        PATIENCE = 268435456,
         /**
          * take extra time to find minimal diff.
          */
-        MINIMAL,
+        MINIMAL = 536870912,
         /**
          * include deflate/delta information for binary files.
          */
-        SHOW_BINARY,
+        SHOW_BINARY = 1073741824,
     }
 
 
@@ -1311,9 +1316,9 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum FeatureFlags {
-        THREADS,
-        HTTPS,
-        SSH,
+        THREADS = 1,
+        HTTPS = 2,
+        SSH = 4,
     }
 
 
@@ -1337,15 +1342,15 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum MergeFileFlags {
-        DEFAULT,
-        STYLE_MERGE,
-        STYLE_DIFF3,
-        SIMPLIFY_ALNUM,
-        IGNORE_WHITESPACE,
-        IGNORE_WHITESPACE_CHANGE,
-        IGNORE_WHITESPACE_EOL,
-        DIFF_PATIENCE,
-        DIFF_MINIMAL,
+        DEFAULT = 0,
+        STYLE_MERGE = 1,
+        STYLE_DIFF3 = 2,
+        SIMPLIFY_ALNUM = 4,
+        IGNORE_WHITESPACE = 8,
+        IGNORE_WHITESPACE_CHANGE = 16,
+        IGNORE_WHITESPACE_EOL = 32,
+        DIFF_PATIENCE = 64,
+        DIFF_MINIMAL = 128,
     }
 
 
@@ -1365,24 +1370,24 @@ export namespace Ggit {
          * ancestor and the "ours" side or the common ancestor and the "theirs" side.
          * This will enable the ability to merge between a modified and renamed file.
          */
-        FIND_RENAMES,
+        FIND_RENAMES = 1,
         /**
          * If a conflict occurs, exit immediately instead
          * of attempting to continue resolving conflicts.  The merge operation will
          * fail with `GGIT_EMERGECONFLICT` and no index will be returned.
          */
-        FAIL_ON_CONFLICT,
+        FAIL_ON_CONFLICT = 2,
         /**
          * do not write the REUC extension on the generated index.
          */
-        SKIP_REUC,
+        SKIP_REUC = 4,
         /**
          * If the commits being merged have multiple merge bases,
          * do not build a recursive merge base (by merging the multiple merge bases),
          * instead simply use the first base.  This flag provides a similar
          * merge base to `git-merge-resolve`.
          */
-        NO_RECURSIVE,
+        NO_RECURSIVE = 8,
     }
 
 
@@ -1403,25 +1408,25 @@ export namespace Ggit {
          *                  this sorting is arbitrary, implementation-specific
          *                  and subject to change at any time.
          */
-        NONE,
+        NONE = 0,
         /**
          * Sorts the repository contents in topological order
          *                         (parents before children); this sorting mode
          *                         can be combined with time sorting.
          */
-        TOPOLOGICAL,
+        TOPOLOGICAL = 1,
         /**
          * Sort the repository contents by commit time;
          *                  this sorting mode can be combined with
          *                  topological sorting.
          */
-        TIME,
+        TIME = 2,
         /**
          * Iterate through the repository contents in reverse
          *                     order; this sorting mode can be combined with
          *                     any of the above.
          */
-        REVERSE,
+        REVERSE = 4,
     }
 
 
@@ -1440,22 +1445,22 @@ export namespace Ggit {
         /**
          * default stash.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * All changes already added to the index
          * are left intact in the working directory.
          */
-        KEEP_INDEX,
+        KEEP_INDEX = 1,
         /**
          * All untracked files are also stashed and then
          * cleaned up from the working directory.
          */
-        INCLUDE_UNTRACKED,
+        INCLUDE_UNTRACKED = 2,
         /**
          * All ignored files are also stashed and then
          * cleaned up from the working directory.
          */
-        INCLUDE_IGNORED,
+        INCLUDE_IGNORED = 4,
     }
 
 
@@ -1474,41 +1479,41 @@ export namespace Ggit {
         /**
          * file is current.
          */
-        CURRENT,
+        CURRENT = 0,
         /**
          * file in index is new.
          */
-        INDEX_NEW,
+        INDEX_NEW = 1,
         /**
          * file in index is modified.
          */
-        INDEX_MODIFIED,
+        INDEX_MODIFIED = 2,
         /**
          * file in index is deleted.
          */
-        INDEX_DELETED,
-        INDEX_RENAMED,
-        INDEX_TYPECHANGE,
+        INDEX_DELETED = 4,
+        INDEX_RENAMED = 8,
+        INDEX_TYPECHANGE = 16,
         /**
          * file in working tree is new.
          */
-        WORKING_TREE_NEW,
+        WORKING_TREE_NEW = 128,
         /**
          * file in working tree is modified.
          */
-        WORKING_TREE_MODIFIED,
+        WORKING_TREE_MODIFIED = 256,
         /**
          * file in working tree is deleted.
          */
-        WORKING_TREE_DELETED,
-        WORKING_TREE_TYPECHANGE,
-        WORKING_TREE_RENAMED,
-        WORKING_TREE_UNREADABLE,
+        WORKING_TREE_DELETED = 512,
+        WORKING_TREE_TYPECHANGE = 1024,
+        WORKING_TREE_RENAMED = 2048,
+        WORKING_TREE_UNREADABLE = 4096,
         /**
          * file is ignored.
          */
-        IGNORED,
-        CONFLICTED,
+        IGNORED = 16384,
+        CONFLICTED = 32768,
     }
 
 
@@ -1540,18 +1545,18 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum StatusOption {
-        INCLUDE_UNTRACKED,
-        INCLUDE_IGNORED,
-        INCLUDE_UNMODIFIED,
-        EXCLUDE_SUBMODULES,
-        RECURSE_UNTRACKED_DIRS,
-        DISABLE_PATHSPEC_MATCH,
-        RECURSE_IGNORED_DIRS,
-        RENAMES_HEAD_TO_INDEX,
-        RENAMES_INDEX_TO_WORKDIR,
-        SORT_CASE_SENSITIVELY,
-        SORT_CASE_INSENSITIVELY,
-        DEFAULT,
+        INCLUDE_UNTRACKED = 1,
+        INCLUDE_IGNORED = 2,
+        INCLUDE_UNMODIFIED = 4,
+        EXCLUDE_SUBMODULES = 8,
+        RECURSE_UNTRACKED_DIRS = 16,
+        DISABLE_PATHSPEC_MATCH = 32,
+        RECURSE_IGNORED_DIRS = 64,
+        RENAMES_HEAD_TO_INDEX = 128,
+        RENAMES_INDEX_TO_WORKDIR = 256,
+        SORT_CASE_SENSITIVELY = 512,
+        SORT_CASE_INSENSITIVELY = 1024,
+        DEFAULT = 19,
     }
 
 
@@ -1567,20 +1572,20 @@ export namespace Ggit {
      * @gir-type Flags
      */
     enum SubmoduleStatus {
-        IN_HEAD,
-        IN_INDEX,
-        IN_CONFIG,
-        IN_WD,
-        INDEX_ADDED,
-        INDEX_DELETED,
-        INDEX_MODIFIED,
-        WD_UNINITIALIZED,
-        WD_ADDED,
-        WD_DELETED,
-        WD_MODIFIED,
-        WD_INDEX_MODIFIED,
-        WD_WD_MODIFIED,
-        WD_UNTRACKED,
+        IN_HEAD = 1,
+        IN_INDEX = 2,
+        IN_CONFIG = 4,
+        IN_WD = 8,
+        INDEX_ADDED = 16,
+        INDEX_DELETED = 32,
+        INDEX_MODIFIED = 64,
+        WD_UNINITIALIZED = 128,
+        WD_ADDED = 256,
+        WD_DELETED = 512,
+        WD_MODIFIED = 1024,
+        WD_INDEX_MODIFIED = 2048,
+        WD_WD_MODIFIED = 4096,
+        WD_UNTRACKED = 8192,
     }
 
 
@@ -1653,6 +1658,7 @@ export namespace Ggit {
          * having a zero id for their `ggit_blame_hunk_get_final_commit_id`.
          * @param buffer the contents of the file.
          * @returns a {@link Ggit.Blame} or `null`.
+         * @throws GLib.Error
          */
         from_buffer(buffer: Uint8Array | string): Blame | null;
 
@@ -1792,6 +1798,7 @@ export namespace Ggit {
          * stream has been properly closed. If an error occurred while writing the blob,
          * the `null` is returned and `error` is set accordingly.
          * @returns a {@link Ggit.OId} or `null`.
+         * @throws GLib.Error
          */
         get_id(): OId | null;
     }
@@ -1847,12 +1854,14 @@ export namespace Ggit {
          * 
          * If the branch is successfully deleted, this object is
          * not useful anymore and if should be freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         ["delete"](): void;
 
         /**
          * Gets the name of the given local or remote branch.
          * @returns the name of the given local or remote branch or `null`.
+         * @throws GLib.Error
          */
         get_name(): string | null;
 
@@ -1860,12 +1869,14 @@ export namespace Ggit {
          * Gets the reference supporting the remote tracking branch,
          * given a local branch reference.
          * @returns the reference supporting the remote tracking branch or `null`.
+         * @throws GLib.Error
          */
         get_upstream(): Ref | null;
 
         /**
          * Determines if the current local branch is pointed at by HEAD.
          * @returns `true` if the current local branch is pointed at by HEAD.
+         * @throws GLib.Error
          */
         is_head(): boolean;
 
@@ -1874,12 +1885,14 @@ export namespace Ggit {
          * @param new_branch_name target name of the branch once the move is performed; this name is validated for consistency.
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the new branch or `null`.
+         * @throws GLib.Error
          */
         move(new_branch_name: string, flags: CreateFlags): Branch | null;
 
         /**
          * Sets the upstream branch, for a given local branch reference
          * @param upstream_branch_name name of the upstream branch; if `null` unsets it.
+         * @throws GLib.Error
          */
         set_upstream(upstream_branch_name: string): void;
     }
@@ -2547,6 +2560,7 @@ export namespace Ggit {
          * @param message commit message.
          * @param tree the tree of objects to commit.
          * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
+         * @throws GLib.Error
          */
         amend(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree): OId | null;
 
@@ -2587,6 +2601,7 @@ export namespace Ggit {
          * Passing %0 to the `n` parameter returns another instance of `commit`.
          * @param n the requested ancestor.
          * @returns the `n` ancestor commit.
+         * @throws GLib.Error
          */
         get_nth_ancestor(n: number): Commit | null;
 
@@ -2789,6 +2804,7 @@ export namespace Ggit {
          * @param file a {@link Gio.File}.
          * @param level a {@link Ggit.ConfigLevel}.
          * @param force if a config file already exists for the given priority level, replace it.
+         * @throws GLib.Error
          */
         add_file(file: Gio.File, level: ConfigLevel, force: boolean): void;
 
@@ -2796,6 +2812,7 @@ export namespace Ggit {
          * Delete a config variable from the config file.
          * @param name the configuration value.
          * @returns `true` if the configuration value was deleted, `false` otherwise.
+         * @throws GLib.Error
          */
         delete_entry(name: string): boolean;
 
@@ -2803,6 +2820,7 @@ export namespace Ggit {
          * Call `callback` for each configuration value.
          * @param callback a {@link Ggit.ConfigCallback}.
          * @returns `true` if successfull, `false` otherwise
+         * @throws GLib.Error
          */
         foreach(callback: ConfigCallback): boolean;
 
@@ -2810,6 +2828,7 @@ export namespace Ggit {
          * Get a boolean configuration value.
          * @param name the name of the configuration value.
          * @returns the value.
+         * @throws GLib.Error
          */
         get_bool(name: string): boolean;
 
@@ -2817,6 +2836,7 @@ export namespace Ggit {
          * Get {@link Ggit.ConfigEntry} of a config variable.
          * @param name the configuration name.
          * @returns the entry of `name`, or `null` if such a value                           does not exist.
+         * @throws GLib.Error
          */
         get_entry(name: string): ConfigEntry;
 
@@ -2824,6 +2844,7 @@ export namespace Ggit {
          * Get a int32 configuration value.
          * @param name the name of the configuration value.
          * @returns the value.
+         * @throws GLib.Error
          */
         get_int32(name: string): number;
 
@@ -2831,6 +2852,7 @@ export namespace Ggit {
          * Get a int64 configuration value.
          * @param name the name of the configuration value.
          * @returns the value.
+         * @throws GLib.Error
          */
         get_int64(name: string): number;
 
@@ -2838,6 +2860,7 @@ export namespace Ggit {
          * Get the configuration value of `name` as string.
          * @param name the name of the configuration value.
          * @returns the string value of `name`, or `null` if such a value                        does not exist
+         * @throws GLib.Error
          */
         get_string(name: string): string | null;
 
@@ -2847,6 +2870,7 @@ export namespace Ggit {
          * `error` will be set.
          * @param regex a {@link GLib.Regex}.
          * @returns the value of that matched configuration
+         * @throws GLib.Error
          */
         match(regex: GLib.Regex): [string | null, GLib.MatchInfo | null];
 
@@ -2855,6 +2879,7 @@ export namespace Ggit {
          * @param regex a {@link GLib.Regex}.
          * @param callback a {@link Ggit.ConfigMatchCallback}.
          * @returns `true` if matches were successfull, `false` otherwise
+         * @throws GLib.Error
          */
         match_foreach(regex: GLib.Regex, callback: ConfigMatchCallback): boolean;
 
@@ -2862,6 +2887,7 @@ export namespace Ggit {
          * Open a specific level config derived from a multi-level one.
          * @param level the level to open.
          * @returns the configuration at `level`, or `null`.
+         * @throws GLib.Error
          */
         open_level(level: ConfigLevel): Config;
 
@@ -2870,6 +2896,7 @@ export namespace Ggit {
          * @param name the name of the configuration value.
          * @param value the new value.
          * @returns `true` if the value was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_bool(name: string, value: boolean): boolean;
 
@@ -2878,6 +2905,7 @@ export namespace Ggit {
          * @param name the name of the configuration value.
          * @param value the new value.
          * @returns `true` if the value was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_int32(name: string, value: number): boolean;
 
@@ -2886,6 +2914,7 @@ export namespace Ggit {
          * @param name the name of the configuration value.
          * @param value the new value.
          * @returns `true` if the value was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_int64(name: string, value: bigint | number): boolean;
 
@@ -2894,6 +2923,7 @@ export namespace Ggit {
          * @param name the name of the configuration value.
          * @param value the new value.
          * @returns `true` if the value was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_string(name: string, value: string): boolean;
 
@@ -2902,6 +2932,7 @@ export namespace Ggit {
          * which allows you to look into a consistent view of the configuration
          * for looking up complex values (e.g. a remote, submodule).
          * @returns a new {@link Ggit.Config}, or `null` if an error occurred.
+         * @throws GLib.Error
          */
         snapshot(): Config;
     }
@@ -3064,6 +3095,7 @@ export namespace Ggit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3222,6 +3254,7 @@ export namespace Ggit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3377,6 +3410,7 @@ export namespace Ggit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3531,6 +3565,7 @@ export namespace Ggit {
          * `null`, then the default options will be used.
          * @param options a {@link Ggit.DiffFindOptions} or `null`.
          * @returns `true` if there were no errors, `false` otherwise.
+         * @throws GLib.Error
          */
         find_similar(options: DiffFindOptions | null): boolean;
 
@@ -3540,6 +3575,7 @@ export namespace Ggit {
          * @param binary_cb a {@link Ggit.DiffBinaryCallback}.
          * @param hunk_cb a {@link Ggit.DiffHunkCallback}.
          * @param line_cb a {@link Ggit.DiffLineCallback}.
+         * @throws GLib.Error
          */
         foreach(file_cb: DiffFileCallback | null, binary_cb: DiffBinaryCallback | null, hunk_cb: DiffHunkCallback | null, line_cb: DiffLineCallback | null): void;
 
@@ -3547,6 +3583,7 @@ export namespace Ggit {
          * Create an e-mail ready patch from a diff.
          * @param options a {@link Ggit.DiffFormatEmailOptions}.
          * @returns the patch or `null` if an error occurred.
+         * @throws GLib.Error
          */
         format_email(options: DiffFormatEmailOptions): string | null;
 
@@ -3566,6 +3603,7 @@ export namespace Ggit {
         /**
          * Merges `from` into `onto` unless `error` is set.
          * @param from the {@link Ggit.Diff} to merge.
+         * @throws GLib.Error
          */
         merge(from: Diff): void;
 
@@ -3573,6 +3611,7 @@ export namespace Ggit {
          * Iterates over `diff` generating text output like "git diff".
          * @param type a {@link Ggit.DiffFormatType}.
          * @param print_cb a {@link Ggit.DiffLineCallback}.
+         * @throws GLib.Error
          */
         print(type: DiffFormatType, print_cb: DiffLineCallback): void;
     }
@@ -4233,6 +4272,7 @@ export namespace Ggit {
          * Add a file to the index.
          * @param entry a {@link Ggit.IndexEntry}.
          * @returns `true` if the file was successfully added, `false` otherwise.
+         * @throws GLib.Error
          */
         add(entry: IndexEntry): boolean;
 
@@ -4241,6 +4281,7 @@ export namespace Ggit {
          * and must exist and be readable.
          * @param file file to add.
          * @returns `true` if the file was added to the index or `false` if there was an error.
+         * @throws GLib.Error
          */
         add_file(file: Gio.File): boolean;
 
@@ -4251,6 +4292,7 @@ export namespace Ggit {
          * readable.
          * @param path path to the file to add.
          * @returns `true` if the file was added to the index or `false` if there was an error.
+         * @throws GLib.Error
          */
         add_path(path: string): boolean;
 
@@ -4292,6 +4334,7 @@ export namespace Ggit {
          * disk, unwritten in-memory changes are discarded.
          * @param force force read even if there are in-memory changes.
          * @returns `true` if the index could be read from the file associated with the          index, `false` otherwise.
+         * @throws GLib.Error
          */
         read(force: boolean): boolean;
 
@@ -4300,6 +4343,7 @@ export namespace Ggit {
          * @param file the file to search.
          * @param stage the stage to search.
          * @returns `true` if the file was successfully removed, `false` otherwise.
+         * @throws GLib.Error
          */
         remove(file: Gio.File, stage: number): boolean;
 
@@ -4307,6 +4351,7 @@ export namespace Ggit {
          * Write an existing index object from memory back to disk using an atomic file
          * lock.
          * @returns `true` if the index was successfully written to disk, `false` otherwise.
+         * @throws GLib.Error
          */
         write(): boolean;
 
@@ -4316,6 +4361,7 @@ export namespace Ggit {
          * and must not contain any files in conflict. You can use the resulting tree
          * to for instance create a commit.
          * @returns a {@link Ggit.OId} or `null` in case of an error.
+         * @throws GLib.Error
          */
         write_tree(): OId | null;
 
@@ -4325,6 +4371,7 @@ export namespace Ggit {
          * the resulting tree to for instance create a commit.
          * @param repository a {@link Ggit.Repository}.
          * @returns a {@link Ggit.OId} or `null` in case of an error.
+         * @throws GLib.Error
          */
         write_tree_to(repository: Repository): OId | null;
 
@@ -4370,6 +4417,7 @@ export namespace Ggit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4478,6 +4526,7 @@ export namespace Ggit {
          * @param real_email the real email of the person.
          * @param replace_name the name to replace.
          * @param replace_email the email to replace.
+         * @throws GLib.Error
          */
         add_entry(real_name: string | null, real_email: string | null, replace_name: string | null, replace_email: string): void;
 
@@ -4486,6 +4535,7 @@ export namespace Ggit {
          * If `mailmap` is `NULL`, no substitution is performed.
          * @param replace_name the name to replace.
          * @param replace_email the email to replace.
+         * @throws GLib.Error
          */
         resolve(replace_name: string, replace_email: string): [string, string];
 
@@ -4495,6 +4545,7 @@ export namespace Ggit {
          * still allocated and returned.
          * @param signature the commit signature as recorded.
          * @returns The corrected signature or `null`.
+         * @throws GLib.Error
          */
         resolve_signature(signature: Signature): Signature | null;
     }
@@ -4918,6 +4969,7 @@ export namespace Ggit {
         /**
          * Aborts a rebase that is currently in progress, resetting the repository
          * and working directory to their state before rebase began.
+         * @throws GLib.Error
          */
         abort(): void;
 
@@ -4929,6 +4981,7 @@ export namespace Ggit {
          * @param committer a {@link Ggit.Signature}.
          * @param message the message for this commit, or `null` to use the message from the original commit.
          * @returns a {@link Ggit.OId} of the newly created commit or `null`.
+         * @throws GLib.Error
          */
         commit(author: Signature | null, committer: Signature, message: string | null): OId | null;
 
@@ -4936,6 +4989,7 @@ export namespace Ggit {
          * Finishes a rebase that is currently in progress once all patches have
          * been applied.
          * @param signature the identity that is finishing the rebase or `null`.
+         * @throws GLib.Error
          */
         finish(signature: Signature | null): void;
 
@@ -4968,6 +5022,7 @@ export namespace Ggit {
          * working directory will be updated with the changes. If there are conflicts,
          * you will need to address those before committing the changes.
          * @returns the rebase operation that is to be performed next or `null`.
+         * @throws GLib.Error
          */
         next(): RebaseOperation | null;
     }
@@ -5039,11 +5094,13 @@ export namespace Ggit {
          * 
          * The reference will be immediately removed on disk and from
          * memory. The given reference pointer will no longer be valid.
+         * @throws GLib.Error
          */
         ["delete"](): void;
 
         /**
          * Deletes the log for `ref`, on error `error` is set.
+         * @throws GLib.Error
          */
         delete_log(): void;
 
@@ -5051,6 +5108,7 @@ export namespace Ggit {
          * Gets the {@link Ggit.Reflog} for `ref`. The reflog will be created if it doesn't exist
          * yet.
          * @returns the reflog or `null`.
+         * @throws GLib.Error
          */
         get_log(): Reflog | null;
 
@@ -5127,6 +5185,7 @@ export namespace Ggit {
         /**
          * Convenient method to resolve a reference to an object.
          * @returns a {@link Ggit.Object} or `null`.
+         * @throws GLib.Error
          */
         lookup(): Object | null;
 
@@ -5154,6 +5213,7 @@ export namespace Ggit {
          * @param force `true` to force the renaming.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns a newly created {@link Ggit.Ref} or `null`.
+         * @throws GLib.Error
          */
         rename(new_name: string, force: boolean, log_message: string): Ref | null;
 
@@ -5166,6 +5226,7 @@ export namespace Ggit {
          * If a direct reference is passed as an argument,
          * that reference is returned immediately.
          * @returns the resolved reference to the peeled one or `null`.
+         * @throws GLib.Error
          */
         resolve(): Ref | null;
 
@@ -5181,6 +5242,7 @@ export namespace Ggit {
          * @param target The new target for the reference.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
+         * @throws GLib.Error
          */
         set_symbolic_target(target: string, log_message: string | null): Ref | null;
 
@@ -5193,6 +5255,7 @@ export namespace Ggit {
          * @param oid a {@link Ggit.OId}.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created {@link Ggit.Ref} or `null`.
+         * @throws GLib.Error
          */
         set_target(oid: OId, log_message: string | null): Ref | null;
 
@@ -5262,6 +5325,7 @@ export namespace Ggit {
          * @param callbacks the callbacks to use for this connection.
          * @param proxy_options the proxy options.
          * @param custom_headers extra HTTP headers to use in this connection.
+         * @throws GLib.Error
          */
         connect(direction: Direction, callbacks: RemoteCallbacks, proxy_options: ProxyOptions | null, custom_headers: string | null): void;
 
@@ -5283,6 +5347,7 @@ export namespace Ggit {
          * @param specs the ref specs.
          * @param fetch_options a {@link Ggit.FetchOptions}.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         download(specs: string[] | null, fetch_options: FetchOptions): boolean;
 
@@ -5295,6 +5360,7 @@ export namespace Ggit {
         /**
          * Get the list of fetch refspecs for the given remote.
          * @returns a list of fetch refspecs or `null`.
+         * @throws GLib.Error
          */
         get_fetch_specs(): string[] | null;
 
@@ -5313,6 +5379,7 @@ export namespace Ggit {
         /**
          * Get the list of push refspecs for the given remote.
          * @returns a list of push refspecs or `null`.
+         * @throws GLib.Error
          */
         get_push_specs(): string[] | null;
 
@@ -5325,12 +5392,14 @@ export namespace Ggit {
         /**
          * Get a list of refs at the remote.
          * @returns the remote heads or `null`.
+         * @throws GLib.Error
          */
         list(): RemoteHead[] | null;
 
         /**
          * Prune tracking refs that are no longer present on remote.
          * @param callbacks the callbacks to use for this connection.
+         * @throws GLib.Error
          */
         prune(callbacks: RemoteCallbacks): void;
 
@@ -5341,6 +5410,7 @@ export namespace Ggit {
          * @param specs the ref specs.
          * @param push_options a {@link Ggit.PushOptions}.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         push(specs: string[] | null, push_options: PushOptions): boolean;
 
@@ -5351,6 +5421,7 @@ export namespace Ggit {
          * @param tags_type what the behaviour for downloading tags is for this fetch. This is             ignored for push. This must be the same value passed to             `ggit_remote_download()`.
          * @param message reflog_message The message to insert into the reflogs. If                         `null` and fetching, the default is "fetch <name>",                         where <name> is the name of the remote (or its url,                         for in-memory remotes). This parameter is ignored when pushing.
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         update_tips(callbacks: RemoteCallbacks, update_fetch_head: boolean, tags_type: RemoteDownloadTagsType, message: string | null): boolean;
 
@@ -5359,6 +5430,7 @@ export namespace Ggit {
          * @param specs the ref specs.
          * @param push_options a {@link Ggit.PushOptions}
          * @returns `true` if successful, `false` otherwise.
+         * @throws GLib.Error
          */
         upload(specs: string[] | null, push_options: PushOptions): boolean;
     }
@@ -5371,22 +5443,22 @@ export namespace Ggit {
              * @signal
              * @run-last
              */
-            completion: (arg0: RemoteCompletionType) => void;
+            completion: (object: RemoteCompletionType) => void;
             /**
              * @signal
              * @run-last
              */
-            progress: (arg0: string) => void;
+            progress: (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "transfer-progress": (arg0: TransferProgress) => void;
+            "transfer-progress": (object: TransferProgress) => void;
             /**
              * @signal
              * @run-last
              */
-            "update-tips": (arg0: string, arg1: OId, arg2: OId) => void;
+            "update-tips": (object: string, p0: OId, p1: OId) => void;
         }
 
         // Constructor properties interface
@@ -5639,6 +5711,7 @@ export namespace Ggit {
          * loaded remote instances will be affected.
          * @param remote a {@link Ggit.Remote}.
          * @param refspec the fetch refspec.
+         * @throws GLib.Error
          */
         add_remote_fetch(remote: Remote, refspec: string): void;
 
@@ -5648,6 +5721,7 @@ export namespace Ggit {
          * loaded remote instances will be affected.
          * @param remote a {@link Ggit.Remote}.
          * @param refspec the push refspec.
+         * @throws GLib.Error
          */
         add_remote_push(remote: Remote, refspec: string): void;
 
@@ -5656,6 +5730,7 @@ export namespace Ggit {
          * @param file the file to blame.
          * @param blame_options blame options.
          * @returns a {@link Ggit.Blame}.
+         * @throws GLib.Error
          */
         blame_file(file: Gio.File, blame_options: BlameOptions | null): Blame | null;
 
@@ -5666,6 +5741,7 @@ export namespace Ggit {
          * If the checkout was not successfull, then `error` will be set.
          * @param options a {@link Ggit.CheckoutOptions} or `null`.
          * @returns `true` if the checkout was successfull, `false` otherwise.
+         * @throws GLib.Error
          */
         checkout_head(options: CheckoutOptions | null): boolean;
 
@@ -5678,6 +5754,7 @@ export namespace Ggit {
          * @param index a {@link Ggit.Index} or `null`.
          * @param options a {@link Ggit.CheckoutOptions} or `null`.
          * @returns `true` if the checkout was successfull, `false` otherwise.
+         * @throws GLib.Error
          */
         checkout_index(index: Index | null, options: CheckoutOptions | null): boolean;
 
@@ -5691,6 +5768,7 @@ export namespace Ggit {
          * @param tree a {@link Ggit.Object} or `null`.
          * @param options a {@link Ggit.CheckoutOptions} or `null`.
          * @returns `true` if the checkout was successfull, `false` otherwise.
+         * @throws GLib.Error
          */
         checkout_tree(tree: Object | null, options: CheckoutOptions | null): boolean;
 
@@ -5700,6 +5778,7 @@ export namespace Ggit {
          * @param commit a {@link Ggit.Commit}.
          * @param options a {@link Ggit.CherryPickOptions}.
          * @returns `true` if the commit was cherry-picked successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         cherry_pick(commit: Commit, options: CherryPickOptions): boolean;
 
@@ -5711,6 +5790,7 @@ export namespace Ggit {
          * @param mainline the parent of the commit, in case of a merge commit.
          * @param merge_options a {@link Ggit.MergeOptions}.
          * @returns a {@link Ggit.Index}.
+         * @throws GLib.Error
          */
         cherry_pick_commit(commit: Commit, our_commit: Commit, mainline: number, merge_options: MergeOptions | null): Index | null;
 
@@ -5727,6 +5807,7 @@ export namespace Ggit {
          * Write an in-memory buffer to the object database as a blob.
          * @param buffer the data.
          * @returns the new `GgitOid` of the written blob, or `null` if writing the blob failed.
+         * @throws GLib.Error
          */
         create_blob_from_buffer(buffer: Uint8Array | string): OId | null;
 
@@ -5736,6 +5817,7 @@ export namespace Ggit {
          * Returns (transfer full) (nullable): the new `GgitOid` of the written blob,
          * or `null` if writing the blob failed.
          * @param file a {@link Gio.File}.
+         * @throws GLib.Error
          */
         create_blob_from_file(file: Gio.File): OId;
 
@@ -5744,6 +5826,7 @@ export namespace Ggit {
          * database as a blob.
          * @param path the file path.
          * @returns the new `GgitOid` of the written blob, or `null` if writing the blob failed.
+         * @throws GLib.Error
          */
         create_blob_from_path(path: string): OId | null;
 
@@ -5753,6 +5836,7 @@ export namespace Ggit {
          * @param target a {@link Ggit.Object}.
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the reference to which the branch                                        points, or `null` in case of an error.
+         * @throws GLib.Error
          */
         create_branch(branch_name: string, target: Object, flags: CreateFlags): Branch | null;
 
@@ -5772,6 +5856,7 @@ export namespace Ggit {
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
          * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
+         * @throws GLib.Error
          */
         create_commit(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree, parents: Commit[]): OId | null;
 
@@ -5785,6 +5870,7 @@ export namespace Ggit {
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
          * @returns the commit object content or `null` in case of an error.
+         * @throws GLib.Error
          */
         create_commit_buffer(author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree, parents: Commit[]): string | null;
 
@@ -5804,6 +5890,7 @@ export namespace Ggit {
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
          * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
+         * @throws GLib.Error
          */
         create_commit_from_ids(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: OId, parents: OId[]): OId | null;
 
@@ -5816,6 +5903,7 @@ export namespace Ggit {
          * @param signature the signature to add to the commit.
          * @param signature_field which header field should contain this signature. Leave `NULL` for the default of "gpgsig".
          * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
+         * @throws GLib.Error
          */
         create_commit_with_signature(commit_content: string, signature: string | null, signature_field: string | null): OId | null;
 
@@ -5832,6 +5920,7 @@ export namespace Ggit {
          * @param file a {@link Gio.File}.
          * @param id a {@link Ggit.OId}.
          * @returns a {@link Ggit.IndexEntry} or `null` when an error occurred.
+         * @throws GLib.Error
          */
         create_index_entry_for_file(file: Gio.File | null, id: OId | null): IndexEntry | null;
 
@@ -5849,6 +5938,7 @@ export namespace Ggit {
          * @param path a path.
          * @param id a {@link Ggit.OId}.
          * @returns a {@link Ggit.IndexEntry} or `null` when an error occurred.
+         * @throws GLib.Error
          */
         create_index_entry_for_path(path: string | null, id: OId | null): IndexEntry | null;
 
@@ -5861,6 +5951,7 @@ export namespace Ggit {
          * @param note content of the note to add for object oid.
          * @param force whether to overwrite existing note.
          * @returns the OID for the note or `null` in case of error.
+         * @throws GLib.Error
          */
         create_note(notes_ref: string | null, author: Signature, committer: Signature, id: OId, note: string, force: boolean): OId | null;
 
@@ -5873,6 +5964,7 @@ export namespace Ggit {
          * @param oid the {@link Ggit.OId} pointed to by the reference.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created reference.
+         * @throws GLib.Error
          */
         create_reference(name: string, oid: OId, log_message: string): Ref | null;
 
@@ -5881,6 +5973,7 @@ export namespace Ggit {
          * @param name the name of the new remote.
          * @param url the url of the remote.
          * @returns a new {@link Ggit.Remote} or `null` if there is an error.
+         * @throws GLib.Error
          */
         create_remote(name: string, url: string): Remote | null;
 
@@ -5893,6 +5986,7 @@ export namespace Ggit {
          * @param target the full name to the reference.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created reference.
+         * @throws GLib.Error
          */
         create_symbolic_reference(name: string, target: string, log_message: string): Ref | null;
 
@@ -5904,6 +5998,7 @@ export namespace Ggit {
          * @param message the tag message.
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
+         * @throws GLib.Error
          */
         create_tag(tag_name: string, target: Object, tagger: Signature, message: string, flags: CreateFlags): OId | null;
 
@@ -5914,6 +6009,7 @@ export namespace Ggit {
          * @param signature a {@link Ggit.Object}.
          * @param message the tag message.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
+         * @throws GLib.Error
          */
         create_tag_annotation(tag_name: string, target: Object, signature: Signature, message: string): OId | null;
 
@@ -5923,6 +6019,7 @@ export namespace Ggit {
          * @param tag the tag buffer.
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
+         * @throws GLib.Error
          */
         create_tag_from_buffer(tag: string, flags: CreateFlags): OId | null;
 
@@ -5932,12 +6029,14 @@ export namespace Ggit {
          * @param target a {@link Ggit.Object}.
          * @param flags a {@link Ggit.CreateFlags}.
          * @returns the id to which the tag points, or                                        `null` in case of an error.
+         * @throws GLib.Error
          */
         create_tag_lightweight(tag_name: string, target: Object, flags: CreateFlags): OId | null;
 
         /**
          * Create a new tree builder.
          * @returns a new {@link Ggit.TreeBuilder}, or `null` if there was an error.
+         * @throws GLib.Error
          */
         create_tree_builder(): TreeBuilder | null;
 
@@ -5946,6 +6045,7 @@ export namespace Ggit {
          * tree builder, use `ggit_repository_create_tree_builder` instead.
          * @param tree a {@link Ggit.Tree}.
          * @returns a new {@link Ggit.TreeBuilder} object, or `null` if there was an error.
+         * @throws GLib.Error
          */
         create_tree_builder_from_tree(tree: Tree): TreeBuilder | null;
 
@@ -5953,12 +6053,14 @@ export namespace Ggit {
          * Delete an existing tag reference by name.
          * @param name the name of the tag.
          * @returns `true` if the tag was deleted successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         delete_tag(name: string): boolean;
 
         /**
          * Removes a single stashed state from the stash list.
          * @param index the position within the stash list. 0 points to the. most recent stashed state.
+         * @throws GLib.Error
          */
         drop_stash(index: bigint | number): void;
 
@@ -5967,6 +6069,7 @@ export namespace Ggit {
          * `list_type` in `repository`.
          * @param list_type a {@link Ggit.BranchType}.
          * @returns a branch enumerator.
+         * @throws GLib.Error
          */
         enumerate_branches(list_type: BranchType): BranchEnumerator | null;
 
@@ -5974,6 +6077,7 @@ export namespace Ggit {
          * Gets the file status for a single file.
          * @param location the file to retrieve status for, rooted at the repository working dir.
          * @returns the status for a single file.
+         * @throws GLib.Error
          */
         file_status(location: Gio.File): StatusFlags;
 
@@ -5988,6 +6092,7 @@ export namespace Ggit {
          * @param options status options, or `null`.
          * @param callback a {@link Ggit.StatusCallback}.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         file_status_foreach(options: StatusOptions | null, callback: StatusCallback): boolean;
 
@@ -6000,6 +6105,7 @@ export namespace Ggit {
          * what git would report for the branches.
          * @param local the commit for local.
          * @param upstream the commit for upstream.
+         * @throws GLib.Error
          */
         get_ahead_behind(local: OId, upstream: OId): [number, number];
 
@@ -6009,12 +6115,14 @@ export namespace Ggit {
          * @param name the name of the attribute.
          * @param flags a {@link Ggit.AttributeCheckFlags}.
          * @returns the attribute value, or `null`.
+         * @throws GLib.Error
          */
         get_attribute(path: string, name: string, flags: AttributeCheckFlags): string | null;
 
         /**
          * Get the config for a specific repository.
          * @returns a {@link Ggit.Config}.
+         * @throws GLib.Error
          */
         get_config(): Config | null;
 
@@ -6022,6 +6130,7 @@ export namespace Ggit {
          * Gets the default notes reference for `repository`. It defaults to
          * "refs/notes/commits".
          * @returns the default notes reference for `repository`.
+         * @throws GLib.Error
          */
         get_default_notes_ref(): string | null;
 
@@ -6032,6 +6141,7 @@ export namespace Ggit {
          * @param commit the commit.
          * @param ancestor the ancestor.
          * @returns `true` if `commit` is a descendant of `ancestor`, or `false` otherwise.
+         * @throws GLib.Error
          */
         get_descendant_of(commit: OId, ancestor: OId): boolean;
 
@@ -6041,12 +6151,14 @@ export namespace Ggit {
          * retrieve the symbolic ref called HEAD, then use `ggit_repository_lookup_reference`
          * instead.
          * @returns a {@link Ggit.Ref}
+         * @throws GLib.Error
          */
         get_head(): Ref | null;
 
         /**
          * Get the index for a specific repository.
          * @returns a {@link Ggit.Index}.
+         * @throws GLib.Error
          */
         get_index(): Index | null;
 
@@ -6065,6 +6177,7 @@ export namespace Ggit {
          * @param name the name of the submodule.
          * @param ignore the ignore rules to follow.
          * @returns the {@link Ggit.SubmoduleStatus} for `submodule`.
+         * @throws GLib.Error
          */
         get_submodule_status(name: string, ignore: SubmoduleIgnore): SubmoduleStatus;
 
@@ -6080,6 +6193,7 @@ export namespace Ggit {
          * An empty repository has just been initialized and contains
          * no commits.
          * @returns `true` if the repository is empty.
+         * @throws GLib.Error
          */
         is_empty(): boolean;
 
@@ -6089,6 +6203,7 @@ export namespace Ggit {
          * A repository's HEAD is detached when it points directly to a commit
          * instead of a branch.
          * @returns `true` if HEAD is detached.
+         * @throws GLib.Error
          */
         is_head_detached(): boolean;
 
@@ -6098,18 +6213,21 @@ export namespace Ggit {
          * An orphan branch is one named from HEAD but doesn't exist in
          * the refs namespace, because it doesn't have any commit to point to.
          * @returns `true` if the current branch is an orphan.
+         * @throws GLib.Error
          */
         is_head_unborn(): boolean;
 
         /**
          * Fill a list with all the remotes in `repository`.
          * @returns a list with the remotes.
+         * @throws GLib.Error
          */
         list_remotes(): string[] | null;
 
         /**
          * Fill a list with all the tags in the `repository`.
          * @returns a list with the tags in `repository`.
+         * @throws GLib.Error
          */
         list_tags(): string[] | null;
 
@@ -6118,6 +6236,7 @@ export namespace Ggit {
          * pattern. The pattern can use standard fnmatch syntax.
          * @param pattern a pattern to match.
          * @returns a list with matching tags in `repository`.
+         * @throws GLib.Error
          */
         list_tags_match(pattern: string | null): string[] | null;
 
@@ -6133,6 +6252,7 @@ export namespace Ggit {
          * @param oid a {@link Ggit.OId}.
          * @param gtype a {@link GObject.GType}.
          * @returns the found {@link Ggit.Object}, or `null` on error.
+         * @throws GLib.Error
          */
         lookup(oid: OId, gtype: GObject.GType): Object | null;
 
@@ -6140,6 +6260,7 @@ export namespace Ggit {
          * Lookups a branch by its name in a repository.
          * @param oid a {@link Ggit.OId}.
          * @returns a `GgitBlog` pointer.
+         * @throws GLib.Error
          */
         lookup_blob(oid: OId): Blob | null;
 
@@ -6148,6 +6269,7 @@ export namespace Ggit {
          * @param branch_name the name of the branch.
          * @param branch_type a {@link Ggit.BranchType}.
          * @returns a branch by its name in a repository.
+         * @throws GLib.Error
          */
         lookup_branch(branch_name: string, branch_type: BranchType): Branch | null;
 
@@ -6155,6 +6277,7 @@ export namespace Ggit {
          * Lookups a branch by its name in a repository.
          * @param oid a {@link Ggit.OId}.
          * @returns a {@link Ggit.Commit} pointer.
+         * @throws GLib.Error
          */
         lookup_commit(oid: OId): Commit | null;
 
@@ -6163,6 +6286,7 @@ export namespace Ggit {
          * be freed with `g_object_unref()`.
          * @param name the long name for the reference (e.g. HEAD, ref/heads/master, refs/tags/v0.1.0, ...).
          * @returns the searched reference.
+         * @throws GLib.Error
          */
         lookup_reference(name: string): Ref | null;
 
@@ -6172,6 +6296,7 @@ export namespace Ggit {
          * The returned {@link Ggit.Ref} must be freed with `g_object_unref()`.
          * @param short_name the short name for the reference (e.g. master, v0.1.0, ...).
          * @returns the searched reference.
+         * @throws GLib.Error
          */
         lookup_reference_dwim(short_name: string): Ref | null;
 
@@ -6179,6 +6304,7 @@ export namespace Ggit {
          * Gets the remote called `name`.
          * @param name the remote's name.
          * @returns a new {@link Ggit.Remote} or `null` if there is an error.
+         * @throws GLib.Error
          */
         lookup_remote(name: string): Remote | null;
 
@@ -6187,6 +6313,7 @@ export namespace Ggit {
          * does not exist, `null` is returned and a GGIT_ERROR_NOTFOUND error set.
          * @param name the name of the submodule.
          * @returns a newly-allocated {@link Ggit.Submodule}.
+         * @throws GLib.Error
          */
         lookup_submodule(name: string): Submodule | null;
 
@@ -6194,6 +6321,7 @@ export namespace Ggit {
          * Lookups a branch by its name in a repository.
          * @param oid a {@link Ggit.OId}.
          * @returns a {@link Ggit.Tag} pointer.
+         * @throws GLib.Error
          */
         lookup_tag(oid: OId): Tag | null;
 
@@ -6201,6 +6329,7 @@ export namespace Ggit {
          * Lookups a branch by its name in a repository.
          * @param oid a {@link Ggit.OId}.
          * @returns a {@link Ggit.Tree} pointer.
+         * @throws GLib.Error
          */
         lookup_tree(oid: OId): Tree | null;
 
@@ -6212,6 +6341,7 @@ export namespace Ggit {
          * @param their_heads the heads to merge into
          * @param merge_opts merge options
          * @param checkout_opts checkout options
+         * @throws GLib.Error
          */
         merge(their_heads: AnnotatedCommit[], merge_opts: MergeOptions, checkout_opts: CheckoutOptions): void;
 
@@ -6220,6 +6350,7 @@ export namespace Ggit {
          * @param oid_one the oid of one of the commits.
          * @param oid_two the oid of the second of the commits
          * @returns a new {@link Ggit.OId} or `null` if an error occurred.
+         * @throws GLib.Error
          */
         merge_base(oid_one: OId, oid_two: OId): OId | null;
 
@@ -6229,6 +6360,7 @@ export namespace Ggit {
          * @param their_commit the commit that reflects the source tree.
          * @param merge_options the merge options.
          * @returns a new {@link Ggit.Index} or `null` if an error occurred.
+         * @throws GLib.Error
          */
         merge_commits(our_commit: Commit, their_commit: Commit, merge_options: MergeOptions): Index | null;
 
@@ -6239,6 +6371,7 @@ export namespace Ggit {
          * @param their_tree the tree that reflects the source tree.
          * @param merge_options the merge options.
          * @returns a new {@link Ggit.Index} or `null` if an error occurred.
+         * @throws GLib.Error
          */
         merge_trees(ancestor_tree: Tree, our_tree: Tree, their_tree: Tree, merge_options: MergeOptions): Index | null;
 
@@ -6249,6 +6382,7 @@ export namespace Ggit {
          * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
          * @param callback a {@link Ggit.NoteCallback}.
          * @returns `true` if there was no error, `false` otherwise.
+         * @throws GLib.Error
          */
         note_foreach(notes_ref: string | null, callback: NoteCallback): boolean;
 
@@ -6259,6 +6393,7 @@ export namespace Ggit {
          * on the command line.
          * @param path A path within the repository.
          * @returns `true` if `path` should be ignored.
+         * @throws GLib.Error
          */
         path_is_ignored(path: string): boolean;
 
@@ -6267,6 +6402,7 @@ export namespace Ggit {
          * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
          * @param id OID of the git object to decorate.
          * @returns the read note or `null` in case of an error.
+         * @throws GLib.Error
          */
         read_note(notes_ref: string | null, id: OId): Note | null;
 
@@ -6280,6 +6416,7 @@ export namespace Ggit {
          * @param onto the branch to rebase onto, or `null` to rebase onto the given upstream.
          * @param options a {@link Ggit.RebaseOptions} to specify how rebase is performed, or `null`.
          * @returns a newly allocated {@link Ggit.Rebase}.
+         * @throws GLib.Error
          */
         rebase_init(branch: AnnotatedCommit | null, upstream: AnnotatedCommit | null, onto: AnnotatedCommit | null, options: RebaseOptions): Rebase | null;
 
@@ -6288,6 +6425,7 @@ export namespace Ggit {
          * invocation of `ggit_rebase_init()` or by another client.
          * @param options a {@link Ggit.RebaseOptions} to specify how rebase is performed, or `null`.
          * @returns a newly allocated {@link Ggit.Rebase}.
+         * @throws GLib.Error
          */
         rebase_open(options: RebaseOptions): Rebase | null;
 
@@ -6299,6 +6437,7 @@ export namespace Ggit {
          * 0, the iteration will stop and `error` will be set.
          * @param callback a {@link Ggit.ReferencesCallback}.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         references_foreach(callback: ReferencesCallback): boolean;
 
@@ -6310,6 +6449,7 @@ export namespace Ggit {
          * 0, the iteration will stop and `error` will be set.
          * @param callback a {@link Ggit.ReferencesNameCallback}.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         references_foreach_name(callback: ReferencesNameCallback): boolean;
 
@@ -6320,6 +6460,7 @@ export namespace Ggit {
          * @param committer committer signature.
          * @param id OID of the git object to decorate.
          * @returns `true` if the note was removed from `id`.
+         * @throws GLib.Error
          */
         remove_note(notes_ref: string | null, author: Signature, committer: Signature, id: OId): boolean;
 
@@ -6327,6 +6468,7 @@ export namespace Ggit {
          * Removes `remote` from the `repository`.
          * @param name the remote's name.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         remove_remote(name: string): boolean;
 
@@ -6335,6 +6477,7 @@ export namespace Ggit {
          * @param name the remote name to be renamed.
          * @param new_name new name of the remote.
          * @returns non-default refspecs that cannot be renamed.
+         * @throws GLib.Error
          */
         rename_remote(name: string, new_name: string): string[] | null;
 
@@ -6344,6 +6487,7 @@ export namespace Ggit {
          * @param target the target {@link Ggit.Object} which is a commit or a tag.
          * @param reset_type the {@link Ggit.ResetType} to perform.
          * @param checkout_options the {@link Ggit.CheckoutOptions} to be used for a HARD reset.
+         * @throws GLib.Error
          */
         reset(target: Object, reset_type: ResetType, checkout_options: CheckoutOptions): void;
 
@@ -6354,6 +6498,7 @@ export namespace Ggit {
          * matching the provided pathspecs.
          * @param target the target {@link Ggit.Object} which is a commit or a tag.
          * @param pathspecs a list of file paths to reset.
+         * @throws GLib.Error
          */
         reset_default(target: Object | null, pathspecs: string[]): void;
 
@@ -6362,6 +6507,7 @@ export namespace Ggit {
          * @param commit a {@link Ggit.Commit}.
          * @param options a {@link Ggit.RevertOptions}.
          * @returns `true` if the revert was successfull, `false` otherwise.
+         * @throws GLib.Error
          */
         revert(commit: Commit, options: RevertOptions): boolean;
 
@@ -6371,6 +6517,7 @@ export namespace Ggit {
          * accepted.
          * @param spec the revision specification.
          * @returns a {@link Ggit.Object} or `null` if the revision could not be found.
+         * @throws GLib.Error
          */
         revparse(spec: string): Object | null;
 
@@ -6382,18 +6529,21 @@ export namespace Ggit {
          * @param message description along with the stashed state or `null` to be autogenerated.
          * @param flags a {@link Ggit.StashFlags} to control the stashing process.
          * @returns a new object id of the commit containing the stashed state.
+         * @throws GLib.Error
          */
         save_stash(stasher: Signature, message: string, flags: StashFlags): OId | null;
 
         /**
          * @param ref_name canonical name of the reference HEAD should point to.
          * @returns `true` if head was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_head(ref_name: string): boolean;
 
         /**
          * @param oid canonical Object id of the Commit the HEAD should point to.
          * @returns `true` if head was successfully set, `false` otherwise.
+         * @throws GLib.Error
          */
         set_head_detached(oid: OId): boolean;
 
@@ -6402,6 +6552,7 @@ export namespace Ggit {
          * @param remote the remote name who's url is to be set.
          * @param url url of the remote.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         set_remote_url(remote: string, url: string): boolean;
 
@@ -6410,6 +6561,7 @@ export namespace Ggit {
          * the submodule. This setting won't affect any existing instances..
          * @param name the name of the submodule.
          * @param fetch_recurse_submodules a {@link Ggit.SubmoduleRecurse}.
+         * @throws GLib.Error
          */
         set_submodule_fetch_recurse(name: string, fetch_recurse_submodules: SubmoduleRecurse): void;
 
@@ -6418,6 +6570,7 @@ export namespace Ggit {
          * This does not affect any currently-loaded instances..
          * @param name the name of the submodule.
          * @param ignore a {@link Ggit.SubmoduleIgnore}.
+         * @throws GLib.Error
          */
         set_submodule_ignore(name: string, ignore: SubmoduleIgnore): void;
 
@@ -6426,6 +6579,7 @@ export namespace Ggit {
          * This setting won't affect any existing instances.
          * @param name the name of the submodule.
          * @param update a {@link Ggit.SubmoduleUpdate}.
+         * @throws GLib.Error
          */
         set_submodule_update(name: string, update: SubmoduleUpdate): void;
 
@@ -6436,6 +6590,7 @@ export namespace Ggit {
          * write the changes to the checked out submodule repository.
          * @param name the name of the submodule to configure.
          * @param url URL that should be used for the submodule.
+         * @throws GLib.Error
          */
         set_submodule_url(name: string, url: string): void;
 
@@ -6453,6 +6608,7 @@ export namespace Ggit {
          * If `callback` returns a non-zero value, this will stop looping.
          * @param callback a {@link Ggit.StashCallback}.
          * @returns `true` if there was no error, `false` otherwise.
+         * @throws GLib.Error
          */
         stash_foreach(callback: StashCallback): boolean;
 
@@ -6468,6 +6624,7 @@ export namespace Ggit {
          * call has finished.
          * @param callback a {@link Ggit.StatusCallback}.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         submodule_foreach(callback: SubmoduleCallback): boolean;
 
@@ -6477,6 +6634,7 @@ export namespace Ggit {
          * `error` will be set.
          * @param callback a {@link Ggit.TagCallback}.
          * @returns `true` if there was no error, `false` otherwise
+         * @throws GLib.Error
          */
         tag_foreach(callback: TagCallback): boolean;
 
@@ -6596,6 +6754,7 @@ export namespace Ggit {
          * The resolved commit and all its parents will be hidden from the
          * output on the revision walk.
          * @param oid a {@link Ggit.OId}.
+         * @throws GLib.Error
          */
         hide(oid: OId): void;
 
@@ -6604,17 +6763,20 @@ export namespace Ggit {
          * to the revsision walker. A leading 'refs/' is implied if not present, as well
          * as a trailing '/ \ *' if the glob lacks '?', '\ *' or '['.
          * @param item the glob to hide.
+         * @throws GLib.Error
          */
         hide_glob(item: string): void;
 
         /**
          * Hide the OID of the current HEAD to the revision walker.
+         * @throws GLib.Error
          */
         hide_head(): void;
 
         /**
          * Hide the OID pointed to by the named reference to the revision walker.
          * @param item the reference to hide.
+         * @throws GLib.Error
          */
         hide_ref(item: string): void;
 
@@ -6631,6 +6793,7 @@ export namespace Ggit {
          * 
          * The revision walker is reset when the walk is over.
          * @returns the next commit from the revision walk or `null`.
+         * @throws GLib.Error
          */
         next(): OId | null;
 
@@ -6645,6 +6808,7 @@ export namespace Ggit {
          * must be pushed the repository before a walk can
          * be started.
          * @param oid a {@link Ggit.OId}.
+         * @throws GLib.Error
          */
         push(oid: OId): void;
 
@@ -6653,11 +6817,13 @@ export namespace Ggit {
          * to the revsision walker. A leading 'refs/' is implied if not present, as well
          * as a trailing '/ \ *' if the glob lacks '?', '\ *' or '['.
          * @param item the glob to push.
+         * @throws GLib.Error
          */
         push_glob(item: string): void;
 
         /**
          * Push the OID of the current HEAD to the revision walker.
+         * @throws GLib.Error
          */
         push_head(): void;
 
@@ -6667,12 +6833,14 @@ export namespace Ggit {
          * form accepted by revparse. The left-hand commit will be hidden and the
          * right-hand commit pushed.
          * @param range the range to push.
+         * @throws GLib.Error
          */
         push_range(range: string): void;
 
         /**
          * Push the OID pointed to by the named reference to the revision walker.
          * @param item the reference to push.
+         * @throws GLib.Error
          */
         push_ref(item: string): void;
 
@@ -6740,6 +6908,7 @@ export namespace Ggit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7040,6 +7209,7 @@ export namespace Ggit {
          * This method performs a repository lookup for the
          * given object and returns it.
          * @returns the target {@link Ggit.Object} of the tag or `null`.
+         * @throws GLib.Error
          */
         get_target(): Object | null;
 
@@ -7058,6 +7228,7 @@ export namespace Ggit {
         /**
          * Recursively peel a tag until a non tag object is found.
          * @returns a {@link Ggit.Object} or `null`.
+         * @throws GLib.Error
          */
         peel(): Object | null;
     }
@@ -7127,6 +7298,7 @@ export namespace Ggit {
          * given its relative path.
          * @param path a path.
          * @returns a {@link Ggit.TreeEntry} or `null`.
+         * @throws GLib.Error
          */
         get_by_path(path: string): TreeEntry | null;
 
@@ -7148,6 +7320,7 @@ export namespace Ggit {
          * by `callback` (if any).
          * @param mode the walking order.
          * @param callback the callback to call for each entry.
+         * @throws GLib.Error
          */
         walk(mode: TreeWalkMode, callback: TreeWalkCallback): void;
     }
@@ -7221,18 +7394,21 @@ export namespace Ggit {
          * @param oid the {@link Ggit.OId} of the file blob to insert.
          * @param file_mode a {@link Ggit.FileMode}.
          * @returns a {@link Ggit.TreeEntry} or `null`.
+         * @throws GLib.Error
          */
         insert(filename: string, oid: OId, file_mode: FileMode): TreeEntry | null;
 
         /**
          * Remove an entry from the builder by path.
          * @param path the path to remove.
+         * @throws GLib.Error
          */
         remove(path: string): void;
 
         /**
          * Write the contents of the tree builder as a tree object.
          * @returns the {@link Ggit.OId} of the created tree object or `null`.
+         * @throws GLib.Error
          */
         write(): OId | null;
     }
@@ -8293,6 +8469,7 @@ export namespace Ggit {
          * Fill the entry fields from statting `file`.
          * @param file the file to stat.
          * @returns `true` if the entry was filled from statting `file` successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         stat(file: Gio.File): boolean;
 
@@ -8608,12 +8785,14 @@ export namespace Ggit {
          * Get the `idx`'th hunk in the patch.
          * @param idx the hunk index.
          * @returns a new {@link Ggit.DiffHunk} or `null` on error.
+         * @throws GLib.Error
          */
         get_hunk(idx: bigint | number): DiffHunk | null;
 
         /**
          * Get the line statistics of the patch.
          * @returns `true` if successfull, `false` otherwise.
+         * @throws GLib.Error
          */
         get_line_stats(): [boolean, number, number, number];
 
@@ -8641,12 +8820,14 @@ export namespace Ggit {
          * Write the contents of a patch to the provided stream.
          * @param stream a {@link Gio.OutputStream}.
          * @returns `true` if the patch was written successfully, `false` otherwise.
+         * @throws GLib.Error
          */
         to_stream(stream: Gio.OutputStream): boolean;
 
         /**
          * Gets the content of a patch as a single diff text.
          * @returns the content of a patch as a single diff text or `null`.
+         * @throws GLib.Error
          */
         to_string(): string | null;
 
@@ -8847,6 +9028,7 @@ export namespace Ggit {
          * @param committer a {@link Ggit.Signature}.
          * @param message the message.
          * @returns `true` if the reflog was successfully created, or `false` if error is set.
+         * @throws GLib.Error
          */
         append(oid: OId, committer: Signature, message: string): boolean;
 
@@ -8873,6 +9055,7 @@ export namespace Ggit {
         /**
          * Renames the reflog for to `new_name`, on error `error` is set.
          * @param new_name the new name of the reference.
+         * @throws GLib.Error
          */
         rename(new_name: string): boolean;
 
@@ -8885,6 +9068,7 @@ export namespace Ggit {
         /**
          * Write the reflog to disk.
          * @returns `true` if the reflog was successfully written, or `false` on error.
+         * @throws GLib.Error
          */
         write(): boolean;
     }
@@ -9129,6 +9313,7 @@ export namespace Ggit {
          * above to alter the in-memory git_submodule object and control what
          * is written to the config, overriding what is in .gitmodules.
          * @param overwrite forces existing entries to be updated.
+         * @throws GLib.Error
          */
         init(overwrite: boolean): void;
 
@@ -9137,6 +9322,7 @@ export namespace Ggit {
          * will return distinct {@link Ggit.Repository} objects. Only submodules which are
          * checked out in the working directory can be opened.
          * @returns the opened {@link Ggit.Repository} or `null` in case of an                           error.
+         * @throws GLib.Error
          */
         open(): Repository | null;
 
@@ -9151,6 +9337,7 @@ export namespace Ggit {
          * Rereads submodule info from config, index, and HEAD.
          * Call this if you have reason to believe that it has changed.
          * @param force reload even if the data doesn't seem out of date.
+         * @throws GLib.Error
          */
         reload(force: boolean): void;
 
@@ -9159,6 +9346,7 @@ export namespace Ggit {
          * submodule config, acting like "git submodule sync".  This is useful if
          * you have altered the URL for the submodule (or it has been altered by a
          * fetch of upstream changes) and you need to update your local repo.
+         * @throws GLib.Error
          */
         sync(): void;
 
@@ -9176,6 +9364,7 @@ export namespace Ggit {
          * fetched using the fetch options supplied in options.
          * @param init If the submodule is not initialized, setting this flag to true        will initialize the submodule before updating. Otherwise, this        will return an error if attempting to update an uninitialzed        repository. but setting this to true forces them to be updated.
          * @param options a {@link Ggit.SubmoduleUpdateOptions} object.
+         * @throws GLib.Error
          */
         update(init: boolean, options: SubmoduleUpdateOptions): void;
     }

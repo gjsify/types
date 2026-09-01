@@ -66,7 +66,7 @@ export namespace Gtk4SessionLock {
              * @since 1.2
              * @run-first
              */
-            monitor: (arg0: Gdk.Monitor) => void;
+            monitor: (monitor: Gdk.Monitor) => void;
             /**
              * The ::unlocked signal is fired when the session is unlocked, which may have been caused by a call to
              * `gtk_session_lock_instance_unlock()` or by the compositor.

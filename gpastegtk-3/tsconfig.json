@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gpastegtk-3.d.ts","./gpastegtk-3-surface.d.ts"]
+  "include": ["./gpastegtk-3.d.ts","./gpastegtk-3-vocabulary.d.ts"]
 }
 
 

@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./gtkvnc-2.0.d.ts","./gtkvnc-2.0-surface.d.ts"]
+  "include": ["./gtkvnc-2.0.d.ts","./gtkvnc-2.0-vocabulary.d.ts"]
 }
 
 

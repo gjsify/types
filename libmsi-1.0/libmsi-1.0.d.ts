@@ -34,8 +34,8 @@ export namespace Libmsi {
      * @gir-type Enum
      */
     enum ColInfo {
-        NAMES,
-        TYPES,
+        NAMES = 0,
+        TYPES = 1,
     }
 
 
@@ -131,26 +131,26 @@ export namespace Libmsi {
      * @gir-type Enum
      */
     enum Property {
-        DICTIONARY,
-        CODEPAGE,
-        TITLE,
-        SUBJECT,
-        AUTHOR,
-        KEYWORDS,
-        COMMENTS,
-        TEMPLATE,
-        LASTAUTHOR,
-        UUID,
-        EDITTIME,
-        LASTPRINTED,
-        CREATED_TM,
-        LASTSAVED_TM,
-        VERSION,
-        SOURCE,
-        RESTRICT,
-        THUMBNAIL,
-        APPNAME,
-        SECURITY,
+        DICTIONARY = 0,
+        CODEPAGE = 1,
+        TITLE = 2,
+        SUBJECT = 3,
+        AUTHOR = 4,
+        KEYWORDS = 5,
+        COMMENTS = 6,
+        TEMPLATE = 7,
+        LASTAUTHOR = 8,
+        UUID = 9,
+        EDITTIME = 10,
+        LASTPRINTED = 11,
+        CREATED_TM = 12,
+        LASTSAVED_TM = 13,
+        VERSION = 14,
+        SOURCE = 15,
+        RESTRICT = 16,
+        THUMBNAIL = 17,
+        APPNAME = 18,
+        SECURITY = 19,
     }
 
 
@@ -165,10 +165,10 @@ export namespace Libmsi {
      * @gir-type Enum
      */
     enum PropertyType {
-        EMPTY,
-        INT,
-        STRING,
-        FILETIME,
+        EMPTY = 0,
+        INT = 1,
+        STRING = 2,
+        FILETIME = 3,
     }
 
 
@@ -225,6 +225,9 @@ export namespace Libmsi {
     }
 
 
+    /**
+     * @default 2147483648
+     */
     const NULL_INT: number;
 
     function db_error_quark(): GLib.Quark;
@@ -242,10 +245,10 @@ export namespace Libmsi {
      * @gir-type Flags
      */
     enum DbFlags {
-        READONLY,
-        CREATE,
-        TRANSACT,
-        PATCH,
+        READONLY = 1,
+        CREATE = 2,
+        TRANSACT = 4,
+        PATCH = 8,
     }
 
 
@@ -324,11 +327,13 @@ export namespace Libmsi {
          * FIXME
          * @param file an MST transform file path
          * @returns `true` on success
+         * @throws GLib.Error
          */
         apply_transform(file: string): boolean;
 
         /**
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         commit(): boolean;
 
@@ -346,12 +351,14 @@ export namespace Libmsi {
          * @param table a table name
          * @param fd a file descriptor
          * @returns `true` on success
+         * @throws GLib.Error
          */
         ["export"](table: string, fd: number): boolean;
 
         /**
          * @param table an exisiting table name
          * @returns a %LibmsiRecord containing the names of all the primary key columns.
+         * @throws GLib.Error
          */
         get_primary_keys(table: string): Record;
 
@@ -359,6 +366,7 @@ export namespace Libmsi {
          * Import a table to the database from file `path`.
          * @param path path to a table file
          * @returns `true` on success
+         * @throws GLib.Error
          */
         ["import"](path: string): boolean;
 
@@ -370,6 +378,7 @@ export namespace Libmsi {
         /**
          * @param table an exisiting table name
          * @returns `true` if the `table` is persistent, `false` if it's temporary
+         * @throws GLib.Error
          */
         is_table_persistent(table: string): boolean;
 
@@ -377,6 +386,7 @@ export namespace Libmsi {
          * @param merge a %LibmsiDatabase to merge
          * @param table an optionnal table name
          * @returns `true` on success
+         * @throws GLib.Error
          */
         merge(merge: Database, table: string | null): boolean;
 
@@ -385,6 +395,7 @@ export namespace Libmsi {
          * how all table strings are encoded in the MSI file.
          * @param codepage the codepage to set for the string table
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_codepage(codepage: number): boolean;
     }
@@ -455,6 +466,7 @@ export namespace Libmsi {
         /**
          * Release the current result set.
          * @returns `true` on success
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -462,6 +474,7 @@ export namespace Libmsi {
          * Execute the `query` with the arguments from `rec`.
          * @param rec a {@link Libmsi.Record} containing query arguments, or     `null` if no arguments needed
          * @returns `true` on success
+         * @throws GLib.Error
          */
         execute(rec: Record | null): boolean;
 
@@ -469,6 +482,7 @@ export namespace Libmsi {
          * Return the next query result. `null` is returned when there
          * is no more results.
          * @returns a newly allocated     {@link Libmsi.Record} or `null` when no results or failure.
+         * @throws GLib.Error
          */
         fetch(): Record | null;
 
@@ -476,11 +490,13 @@ export namespace Libmsi {
          * Get column informations, returned as record string fields.
          * @param info a {@link Libmsi.ColInfo} specifying the type of information to return
          * @returns a newly allocated {@link Libmsi.Record} containing informations or `null` on error.
+         * @throws GLib.Error
          */
         get_column_info(info: ColInfo): Record;
 
         /**
          * Call this to get more information on the last query error.
+         * @throws GLib.Error
          */
         get_error(): string;
     }
@@ -604,6 +620,7 @@ export namespace Libmsi {
          * @param count the number of bytes to read from `input`
          * @param cancellable optional GCancellable object, `null` to ignore
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_stream(field: number, input: Gio.InputStream, count: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -689,12 +706,14 @@ export namespace Libmsi {
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or 0 on failure
+         * @throws GLib.Error
          */
         get_filetime(prop: Property): number;
 
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or -1 on failure
+         * @throws GLib.Error
          */
         get_int(prop: Property): number;
 
@@ -706,18 +725,21 @@ export namespace Libmsi {
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property type associated for `prop`.
+         * @throws GLib.Error
          */
         get_property_type(prop: Property): PropertyType;
 
         /**
          * @param prop a {@link Libmsi.Property} to get
          * @returns the property value or `null` on failure
+         * @throws GLib.Error
          */
         get_string(prop: Property): string;
 
         /**
          * Save summary informations to the associated database.
          * @returns `true` on success
+         * @throws GLib.Error
          */
         persist(): boolean;
 
@@ -725,6 +747,7 @@ export namespace Libmsi {
          * Save summary informations to the associated database.
          * @param db a {@link Libmsi.Database} to save to
          * @returns `true` on success
+         * @throws GLib.Error
          */
         save(db: Database): boolean;
 
@@ -733,6 +756,7 @@ export namespace Libmsi {
          * @param prop a {@link Libmsi.Property} to set
          * @param value a value
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_filetime(prop: Property, value: bigint | number): boolean;
 
@@ -741,6 +765,7 @@ export namespace Libmsi {
          * @param prop a {@link Libmsi.Property} to set
          * @param value a value
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_int(prop: Property, value: number): boolean;
 
@@ -749,6 +774,7 @@ export namespace Libmsi {
          * @param prop a {@link Libmsi.Property} to set
          * @param value a string value
          * @returns `true` on success
+         * @throws GLib.Error
          */
         set_string(prop: Property, value: string): boolean;
     }

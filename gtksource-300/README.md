@@ -4,82 +4,96 @@
 ![version](https://img.shields.io/npm/v/@girs/gtksource-300)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gtksource-300)
 
+GJS TypeScript type definitions for GtkSource-300 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for GtkSource-300 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/gtksource-300
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/gtksource-300` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/gtksource-300/ambient` | only the `gi://` module declarations |
+| `@girs/gtksource-300/import` | only the `imports.gi` declarations |
+| `@girs/gtksource-300/gtksource-300` | the namespace, without the side-effecting declarations |
+| `@girs/gtksource-300/vocabulary` | GIR-derived widget data: settable properties, enum nicks, slot candidates |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import GtkSource from '@girs/gtksource-300';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/gtksource-300` or `@girs/gtksource-300/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/gtksource-300'
+import '@girs/gtksource-300';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/gtksource-300"],
-  ...
-}
+{ "include": ["@girs/gtksource-300"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import GtkSource from 'gi://GtkSource?version=300';
 ```
 
-### Global import
+Referencing `@girs/gtksource-300/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/gtksource-300` or `@girs/gtksource-300/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/gtksource-300'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/gtksource-300"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/gtksource-300/import`:
 
 ```ts
 const GtkSource = imports.gi.GtkSource;
 ```
 
-### Bundle
+## Widget vocabulary
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+`gtksource-300` declares widgets, so it also carries what the GIR says about them, as
+types and as values a test can read:
+
+```ts
+import type { Widgets, PropsOf } from '@girs/gtksource-300/vocabulary';
+import { OWN_PROPS, ENUM_NICKS, PROVENANCE } from '@girs/gtksource-300/vocabulary';
+```
+
+Properties are keyed the way GObject registered them, writable-only and optional, so they
+match `g_object_set`, GtkBuilder XML and Blueprint. `PROVENANCE.libraryVersion` names the
+library release this was generated from, which lets a check tell "newer than what is
+installed" from "wrong".
+
+This subpath answers what the GIR says, not what the installed library has. For the
+second question, ask the library.
+
+## Building
+
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

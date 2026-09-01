@@ -83,7 +83,7 @@
       ]
 }
   },
-  "include": ["./foundrygtk-1.d.ts","./foundrygtk-1-surface.d.ts"]
+  "include": ["./foundrygtk-1.d.ts","./foundrygtk-1-vocabulary.d.ts"]
 }
 
 

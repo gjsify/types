@@ -40,39 +40,39 @@ export namespace Dmap {
         /**
          * getting DMAP server information
          */
-        GET_INFO,
+        GET_INFO = 0,
         /**
          * logging in to DMAP server
          */
-        LOGIN,
+        LOGIN = 1,
         /**
          * getting server's database revision number
          */
-        GET_REVISION_NUMBER,
+        GET_REVISION_NUMBER = 2,
         /**
          * getting DMAP database information
          */
-        GET_DB_INFO,
+        GET_DB_INFO = 3,
         /**
          * getting DMAP media listing
          */
-        GET_MEDIA,
+        GET_MEDIA = 4,
         /**
          * getting DMAP playlists
          */
-        GET_PLAYLISTS,
+        GET_PLAYLISTS = 5,
         /**
          * getting entries in playlist
          */
-        GET_PLAYLIST_ENTRIES,
+        GET_PLAYLIST_ENTRIES = 6,
         /**
          * logging out of DMAP server
          */
-        LOGOUT,
+        LOGOUT = 7,
         /**
          * done
          */
-        DONE,
+        DONE = 8,
     }
 
 
@@ -87,171 +87,171 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum ContentCode {
-        CC_INVALID,
-        RAW,
-        CC_MDCL,
-        CC_MEDS,
-        CC_MSTT,
-        CC_MIID,
-        CC_MINM,
-        CC_MIKD,
-        CC_MPER,
-        CC_MCON,
-        CC_MCTI,
-        CC_MPCO,
-        CC_MSTS,
-        CC_MIMC,
-        CC_MCTC,
-        CC_MRCO,
-        CC_MTCO,
-        CC_MLCL,
-        CC_MLIT,
-        CC_MBCL,
-        CC_MSRV,
-        CC_MSAU,
-        CC_MSLR,
-        CC_MPRO,
-        CC_MSAL,
-        CC_MSUP,
-        CC_MSPI,
-        CC_MSEX,
-        CC_MSBR,
-        CC_MSQY,
-        CC_MSIX,
-        CC_MSRS,
-        CC_MSTM,
-        CC_MSDC,
-        CC_MCCR,
-        CC_MCNM,
-        CC_MCNA,
-        CC_MCTY,
-        CC_MLOG,
-        CC_MLID,
-        CC_MUPD,
-        CC_MUSR,
-        CC_MUTY,
-        CC_MUDL,
-        CC_MSMA,
-        CC_FQUESCH,
-        CC_MDBK,
-        CC_APRO,
-        CC_AVDB,
-        CC_ABRO,
-        CC_ABAL,
-        CC_ABAR,
-        CC_ABCP,
-        CC_ABGN,
-        CC_ADBS,
-        CC_ASAL,
-        CC_ASAI,
-        CC_ASAA,
-        CC_ASAR,
-        CC_ASBT,
-        CC_ASBR,
-        CC_ASCM,
-        CC_ASCO,
-        CC_ASDA,
-        CC_ASDM,
-        CC_ASDC,
-        CC_ASDN,
-        CC_ASDB,
-        CC_ASEQ,
-        CC_ASFM,
-        CC_ASGN,
-        CC_ASDT,
-        CC_ASRV,
-        CC_ASSR,
-        CC_ASSZ,
-        CC_ASST,
-        CC_ASSP,
-        CC_ASTM,
-        CC_ASTC,
-        CC_ASTN,
-        CC_ASUR,
-        CC_ASYR,
-        CC_ASDK,
-        CC_ASUL,
-        CC_ASSU,
-        CC_ASSA,
-        CC_APLY,
-        CC_ABPL,
-        CC_APSO,
-        CC_PRSV,
-        CC_ARIF,
-        CC_MSAS,
-        CC_AGRP,
-        CC_AGAL,
-        CC_ASCP,
-        CC_PPRO,
-        CC_PASP,
-        CC_PFDT,
-        CC_PICD,
-        CC_PIMF,
-        CC_PFMT,
-        CC_PIFS,
-        CC_PLSZ,
-        CC_PHGT,
-        CC_PWTH,
-        CC_PRAT,
-        CC_PCMT,
-        CC_PRET,
-        CC_AECS,
-        CC_AESV,
-        CC_AEHV,
-        CC_AESP,
-        CC_AEPP,
-        CC_AEPS,
-        CC_AESG,
-        CC_AEMK,
-        CC_AEMK2,
-        CC_AEFP,
-        CC_ATED,
-        CC_ASGR,
-        CC_AEMQ,
-        CC_AESL,
-        CC_AESR,
-        CC_AETR,
-        CC_MSED,
-        CC_CMPA,
-        CC_CMNM,
-        CC_CMTY,
-        CC_CMPG,
-        CC_CACI,
-        CC_CAPS,
-        CC_CASH,
-        CC_CARP,
-        CC_CAAS,
-        CC_CAAR,
-        CC_CAIA,
-        CC_CANP,
-        CC_CANN,
-        CC_CANA,
-        CC_CANL,
-        CC_CANG,
-        CC_CANT,
-        CC_CASP,
-        CC_CASS,
-        CC_CAST,
-        CC_CASU,
-        CC_CASG,
-        CC_CACR,
-        CC_CMCP,
-        CC_CMGT,
-        CC_CMIK,
-        CC_CMSP,
-        CC_CMST,
-        CC_CMSV,
-        CC_CMSR,
-        CC_CMMK,
-        CC_CMVO,
-        CC_CMPR,
-        CC_CAPR,
-        CC_AEFR,
-        CC_CAOV,
-        CC_CMRL,
-        CC_CAHP,
-        CC_CAIV,
-        CC_CAVC,
+        CC_INVALID = 0,
+        RAW = 1,
+        CC_MDCL = 2,
+        CC_MEDS = 3,
+        CC_MSTT = 4,
+        CC_MIID = 5,
+        CC_MINM = 6,
+        CC_MIKD = 7,
+        CC_MPER = 8,
+        CC_MCON = 9,
+        CC_MCTI = 10,
+        CC_MPCO = 11,
+        CC_MSTS = 12,
+        CC_MIMC = 13,
+        CC_MCTC = 14,
+        CC_MRCO = 15,
+        CC_MTCO = 16,
+        CC_MLCL = 17,
+        CC_MLIT = 18,
+        CC_MBCL = 19,
+        CC_MSRV = 20,
+        CC_MSAU = 21,
+        CC_MSLR = 22,
+        CC_MPRO = 23,
+        CC_MSAL = 24,
+        CC_MSUP = 25,
+        CC_MSPI = 26,
+        CC_MSEX = 27,
+        CC_MSBR = 28,
+        CC_MSQY = 29,
+        CC_MSIX = 30,
+        CC_MSRS = 31,
+        CC_MSTM = 32,
+        CC_MSDC = 33,
+        CC_MCCR = 34,
+        CC_MCNM = 35,
+        CC_MCNA = 36,
+        CC_MCTY = 37,
+        CC_MLOG = 38,
+        CC_MLID = 39,
+        CC_MUPD = 40,
+        CC_MUSR = 41,
+        CC_MUTY = 42,
+        CC_MUDL = 43,
+        CC_MSMA = 44,
+        CC_FQUESCH = 45,
+        CC_MDBK = 46,
+        CC_APRO = 47,
+        CC_AVDB = 48,
+        CC_ABRO = 49,
+        CC_ABAL = 50,
+        CC_ABAR = 51,
+        CC_ABCP = 52,
+        CC_ABGN = 53,
+        CC_ADBS = 54,
+        CC_ASAL = 55,
+        CC_ASAI = 56,
+        CC_ASAA = 57,
+        CC_ASAR = 58,
+        CC_ASBT = 59,
+        CC_ASBR = 60,
+        CC_ASCM = 61,
+        CC_ASCO = 62,
+        CC_ASDA = 63,
+        CC_ASDM = 64,
+        CC_ASDC = 65,
+        CC_ASDN = 66,
+        CC_ASDB = 67,
+        CC_ASEQ = 68,
+        CC_ASFM = 69,
+        CC_ASGN = 70,
+        CC_ASDT = 71,
+        CC_ASRV = 72,
+        CC_ASSR = 73,
+        CC_ASSZ = 74,
+        CC_ASST = 75,
+        CC_ASSP = 76,
+        CC_ASTM = 77,
+        CC_ASTC = 78,
+        CC_ASTN = 79,
+        CC_ASUR = 80,
+        CC_ASYR = 81,
+        CC_ASDK = 82,
+        CC_ASUL = 83,
+        CC_ASSU = 84,
+        CC_ASSA = 85,
+        CC_APLY = 86,
+        CC_ABPL = 87,
+        CC_APSO = 88,
+        CC_PRSV = 89,
+        CC_ARIF = 90,
+        CC_MSAS = 91,
+        CC_AGRP = 92,
+        CC_AGAL = 93,
+        CC_ASCP = 94,
+        CC_PPRO = 95,
+        CC_PASP = 96,
+        CC_PFDT = 97,
+        CC_PICD = 98,
+        CC_PIMF = 99,
+        CC_PFMT = 100,
+        CC_PIFS = 101,
+        CC_PLSZ = 102,
+        CC_PHGT = 103,
+        CC_PWTH = 104,
+        CC_PRAT = 105,
+        CC_PCMT = 106,
+        CC_PRET = 107,
+        CC_AECS = 108,
+        CC_AESV = 109,
+        CC_AEHV = 110,
+        CC_AESP = 111,
+        CC_AEPP = 112,
+        CC_AEPS = 113,
+        CC_AESG = 114,
+        CC_AEMK = 115,
+        CC_AEMK2 = 116,
+        CC_AEFP = 117,
+        CC_ATED = 118,
+        CC_ASGR = 119,
+        CC_AEMQ = 120,
+        CC_AESL = 121,
+        CC_AESR = 122,
+        CC_AETR = 123,
+        CC_MSED = 124,
+        CC_CMPA = 125,
+        CC_CMNM = 126,
+        CC_CMTY = 127,
+        CC_CMPG = 128,
+        CC_CACI = 129,
+        CC_CAPS = 130,
+        CC_CASH = 131,
+        CC_CARP = 132,
+        CC_CAAS = 133,
+        CC_CAAR = 134,
+        CC_CAIA = 135,
+        CC_CANP = 136,
+        CC_CANN = 137,
+        CC_CANA = 138,
+        CC_CANL = 139,
+        CC_CANG = 140,
+        CC_CANT = 141,
+        CC_CASP = 142,
+        CC_CASS = 143,
+        CC_CAST = 144,
+        CC_CASU = 145,
+        CC_CASG = 146,
+        CC_CACR = 147,
+        CC_CMCP = 148,
+        CC_CMGT = 149,
+        CC_CMIK = 150,
+        CC_CMSP = 151,
+        CC_CMST = 152,
+        CC_CMSV = 153,
+        CC_CMSR = 154,
+        CC_CMMK = 155,
+        CC_CMVO = 156,
+        CC_CMPR = 157,
+        CC_CAPR = 158,
+        CC_AEFR = 159,
+        CC_CAOV = 160,
+        CC_CMRL = 161,
+        CC_CAHP = 162,
+        CC_CAIV = 163,
+        CC_CAVC = 164,
     }
 
 
@@ -266,9 +266,9 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum ControlPlayState {
-        STOPPED,
-        PAUSED,
-        PLAYING,
+        STOPPED = 2,
+        PAUSED = 3,
+        PLAYING = 4,
     }
 
 
@@ -283,9 +283,9 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum ControlRepeatState {
-        NONE,
-        SINGLE,
-        ALL,
+        NONE = 0,
+        SINGLE = 1,
+        ALL = 2,
     }
 
 
@@ -304,7 +304,7 @@ export namespace Dmap {
         /**
          * the value which represents a bad DmapDb ID.
          */
-        BAD,
+        BAD = 0,
     }
 
 
@@ -399,9 +399,9 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum MdnsServiceTransportProtocol {
-        TCP,
-        UDP,
-        LAST,
+        TCP = 0,
+        UDP = 1,
+        LAST = 1,
     }
 
 
@@ -420,27 +420,27 @@ export namespace Dmap {
         /**
          * an invalid service type
          */
-        INVALID,
+        INVALID = 0,
         /**
          * a DAAP service type
          */
-        DAAP,
+        DAAP = 1,
         /**
          * a DPAP service type
          */
-        DPAP,
+        DPAP = 2,
         /**
          * a DACP service type
          */
-        DACP,
+        DACP = 3,
         /**
          * a RAOP service type
          */
-        RAOP,
+        RAOP = 4,
         /**
          * an invalid service type
          */
-        LAST,
+        LAST = 4,
     }
 
 
@@ -455,10 +455,10 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum MediaKind {
-        MUSIC,
-        MOVIE,
-        PODCAST,
-        TV_SHOW,
+        MUSIC = 1,
+        MOVIE = 2,
+        PODCAST = 32,
+        TV_SHOW = 64,
     }
 
 
@@ -473,12 +473,15 @@ export namespace Dmap {
      * @gir-type Enum
      */
     enum ShareAuthMethod {
-        NONE,
-        NAME_AND_PASSWORD,
-        PASSWORD,
+        NONE = 0,
+        NAME_AND_PASSWORD = 1,
+        PASSWORD = 2,
     }
 
 
+    /**
+     * @default 16
+     */
     const HASH_SIZE: number;
 
     /**
@@ -682,7 +685,7 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            authenticate: (arg0: string, arg1: Soup.Session, arg2: Soup.Message, arg3: Soup.Auth, arg4: boolean) => void;
+            authenticate: (object: string, p0: Soup.Session, p1: Soup.Message, p2: Soup.Auth, p3: boolean) => void;
             /**
              * @signal
              * @run-last
@@ -692,7 +695,7 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            connecting: (arg0: number, arg1: number) => void;
+            connecting: (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
@@ -702,7 +705,7 @@ export namespace Dmap {
              * @signal
              * @run-first
              */
-            error: (arg0: null) => void;
+            error: (object: null) => void;
             /**
              * @signal
              * @run-first
@@ -1023,27 +1026,27 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            "add-guid": (arg0: string) => void;
+            "add-guid": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "lookup-guid": (arg0: string) => boolean | void;
+            "lookup-guid": (object: string) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "remote-found": (arg0: string, arg1: string) => void;
+            "remote-found": (object: string, p0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "remote-lost": (arg0: string) => void;
+            "remote-lost": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "remote-paired": (arg0: string, arg1: boolean) => void;
+            "remote-paired": (object: string, p0: boolean) => void;
             "notify::library-name": (pspec: GObject.ParamSpec) => void;
             "notify::player": (pspec: GObject.ParamSpec) => void;
             "notify::auth-method": (pspec: GObject.ParamSpec) => void;
@@ -1172,11 +1175,13 @@ export namespace Dmap {
          * after calling this function is that it starts looking up for Remotes on the
          * network.
          * @returns TRUE on success, else FALSE with error set.
+         * @throws GLib.Error
          */
         start_lookup(): boolean;
 
         /**
          * Stop looking up for DACP remotes.
+         * @throws GLib.Error
          */
         stop_lookup(): boolean;
     }
@@ -1309,12 +1314,12 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            "service-added": (arg0: MdnsService) => void;
+            "service-added": (service: MdnsService) => void;
             /**
              * @signal
              * @run-last
              */
-            "service-removed": (arg0: string) => void;
+            "service-removed": (object: string) => void;
         }
 
         // Constructor properties interface
@@ -1383,12 +1388,14 @@ export namespace Dmap {
         /**
          * Starts a DmapMdnsBrowser.
          * @returns TRUE on success, else FALSE.
+         * @throws GLib.Error
          */
         start(): boolean;
 
         /**
          * Stops a DmapMdnsBrowser.
          * @returns TRUE on success, else FALSE.
+         * @throws GLib.Error
          */
         stop(): boolean;
     }
@@ -1401,12 +1408,12 @@ export namespace Dmap {
              * @signal
              * @run-last
              */
-            "name-collision": (arg0: string) => void;
+            "name-collision": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            published: (arg0: string) => void;
+            published: (object: string) => void;
         }
 
         // Constructor properties interface
@@ -1471,17 +1478,20 @@ export namespace Dmap {
          * @param type_of_service 
          * @param password_required 
          * @param txt_records 
+         * @throws GLib.Error
          */
         publish(name: string, port: number, type_of_service: string, password_required: boolean, txt_records: string): boolean;
 
         /**
          * @param port 
          * @param name 
+         * @throws GLib.Error
          */
         rename_at_port(port: number, name: string): boolean;
 
         /**
          * @param port 
+         * @throws GLib.Error
          */
         withdraw(port: number): boolean;
     }
@@ -1620,7 +1630,7 @@ export namespace Dmap {
              * @signal
              * @run-first
              */
-            error: (arg0: null) => void;
+            error: (object: null) => void;
             "notify::auth-method": (pspec: GObject.ParamSpec) => void;
             "notify::container-db": (pspec: GObject.ParamSpec) => void;
             "notify::db": (pspec: GObject.ParamSpec) => void;
@@ -1877,6 +1887,7 @@ export namespace Dmap {
         /**
          * Publish the availability of the given share using mDNS-SD.
          * @returns TRUE if publishing succeeds, else FALSE.
+         * @throws GLib.Error
          */
         publish(): boolean;
 
@@ -1884,6 +1895,7 @@ export namespace Dmap {
          * Begin serving the service defined by share. A program will normally also
          * call dmap_share_publish.
          * @returns TRUE if serving succeeds, else FALSE with error set.
+         * @throws GLib.Error
          */
         serve(): boolean;
     }
@@ -1970,6 +1982,7 @@ export namespace Dmap {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1992,6 +2005,7 @@ export namespace Dmap {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2570,6 +2584,7 @@ export namespace Dmap {
 
         /**
          * @returns A GInputStream that provides read-only access to the data stream associated with record.
+         * @throws GLib.Error
          */
         read(): Gio.InputStream;
     }
@@ -2631,6 +2646,7 @@ export namespace Dmap {
         /**
          * Add a record to the database.
          * @param record A record.
+         * @throws GLib.Error
          */
         add(record: ContainerRecord): void;
 
@@ -2719,6 +2735,7 @@ export namespace Dmap {
          * directly into the database (not copied) and not freed.
          * @param record A DmapRecord.
          * @param id The record's ID.
+         * @throws GLib.Error
          */
         add_entry(record: Record, id: number): void;
 
@@ -2985,6 +3002,7 @@ export namespace Dmap {
          * Add a record to the database.
          * @param record A database record.
          * @returns The ID for the newly added record or `DMAP_DB_ID_BAD` on failure. A reference to the record will be retained by the database (if required; an adapter-type implementation might not want to retain a reference as the record data may be placed elsewhere). In all cases, a returned record should be unrefed by the calling code.
+         * @throws GLib.Error
          */
         add(record: Record): number;
 
@@ -2992,6 +3010,7 @@ export namespace Dmap {
          * Create a record and add it to the database.
          * @param path A path to an appropriate media file.
          * @returns The ID for the newly added record or DMAP_DB_ID_BAD on failure. See also the notes for dmap_db_add regarding reference counting.
+         * @throws GLib.Error
          */
         add_path(path: string): number;
 
@@ -3001,6 +3020,7 @@ export namespace Dmap {
          * @param record A database record.
          * @param id A database record ID.
          * @returns The ID for the newly added record or DMAP_DB_ID_BAD on failure. See also the notes for dmap_db_add regarding reference counting.
+         * @throws GLib.Error
          */
         add_with_id(record: Record, id: number): number;
 
@@ -3185,6 +3205,7 @@ export namespace Dmap {
         // Methods
         /**
          * @returns a GInputStream that provides read-only access to the data stream associated with record.
+         * @throws GLib.Error
          */
         read(): Gio.InputStream;
     }
@@ -3279,6 +3300,7 @@ export namespace Dmap {
         /**
          * @param user_data Some piece of data that may be used to initialize return value.
          * @returns a new DmapRecord, else NULL with error set.
+         * @throws GLib.Error
          */
         create(user_data: null): Record;
     }

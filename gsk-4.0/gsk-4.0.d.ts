@@ -52,70 +52,70 @@ export namespace Gsk {
         /**
          * The default blend mode, which specifies no blending
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * The source color is multiplied by the destination
          *   and replaces the destination
          */
-        MULTIPLY,
+        MULTIPLY = 1,
         /**
          * Multiplies the complements of the destination and source
          *   color values, then complements the result.
          */
-        SCREEN,
+        SCREEN = 2,
         /**
          * Multiplies or screens the colors, depending on the
          *   destination color value. This is the inverse of hard-list
          */
-        OVERLAY,
+        OVERLAY = 3,
         /**
          * Selects the darker of the destination and source colors
          */
-        DARKEN,
+        DARKEN = 4,
         /**
          * Selects the lighter of the destination and source colors
          */
-        LIGHTEN,
+        LIGHTEN = 5,
         /**
          * Brightens the destination color to reflect the source color
          */
-        COLOR_DODGE,
+        COLOR_DODGE = 6,
         /**
          * Darkens the destination color to reflect the source color
          */
-        COLOR_BURN,
+        COLOR_BURN = 7,
         /**
          * Multiplies or screens the colors, depending on the source color value
          */
-        HARD_LIGHT,
+        HARD_LIGHT = 8,
         /**
          * Darkens or lightens the colors, depending on the source color value
          */
-        SOFT_LIGHT,
+        SOFT_LIGHT = 9,
         /**
          * Subtracts the darker of the two constituent colors from the lighter color
          */
-        DIFFERENCE,
+        DIFFERENCE = 10,
         /**
          * Produces an effect similar to that of the difference mode but lower in contrast
          */
-        EXCLUSION,
+        EXCLUSION = 11,
         /**
          * Creates a color with the hue and saturation of the source color and the luminosity of the destination color
          */
-        COLOR,
+        COLOR = 12,
         /**
          * Creates a color with the hue of the source color and the saturation and luminosity of the destination color
          */
-        HUE,
+        HUE = 13,
         /**
          * Creates a color with the saturation of the source color and the hue and luminosity of the destination color
          */
-        SATURATION,
+        SATURATION = 14,
         /**
          * Creates a color with the luminosity of the source color and the hue and saturation of the destination color
          */
-        LUMINOSITY,
+        LUMINOSITY = 15,
     }
 
 
@@ -134,19 +134,19 @@ export namespace Gsk {
         /**
          * The top left corner
          */
-        TOP_LEFT,
+        TOP_LEFT = 0,
         /**
          * The top right corner
          */
-        TOP_RIGHT,
+        TOP_RIGHT = 1,
         /**
          * The bottom right corner
          */
-        BOTTOM_RIGHT,
+        BOTTOM_RIGHT = 2,
         /**
          * The bottom left corner
          */
-        BOTTOM_LEFT,
+        BOTTOM_LEFT = 3,
     }
 
 
@@ -181,14 +181,14 @@ export namespace Gsk {
          *   from the perspective of looking along the ray from the starting
          *   point.) If the total count is non-zero, the point will be filled.
          */
-        WINDING,
+        WINDING = 0,
         /**
          * Counts the total number of
          *   intersections, without regard to the orientation of the contour. If
          *   the total number of intersections is odd, the point will be
          *   filled.
          */
-        EVEN_ODD,
+        EVEN_ODD = 1,
     }
 
 
@@ -211,35 +211,35 @@ export namespace Gsk {
         /**
          * No type, used for uninitialized or unspecified values.
          */
-        NONE,
+        NONE = 0,
         /**
          * A float uniform
          */
-        FLOAT,
+        FLOAT = 1,
         /**
          * A GLSL int / gint32 uniform
          */
-        INT,
+        INT = 2,
         /**
          * A GLSL uint / guint32 uniform
          */
-        UINT,
+        UINT = 3,
         /**
          * A GLSL bool / gboolean uniform
          */
-        BOOL,
+        BOOL = 4,
         /**
          * A GLSL vec2 / graphene_vec2_t uniform
          */
-        VEC2,
+        VEC2 = 5,
         /**
          * A GLSL vec3 / graphene_vec3_t uniform
          */
-        VEC3,
+        VEC3 = 6,
         /**
          * A GLSL vec4 / graphene_vec4_t uniform
          */
-        VEC4,
+        VEC4 = 7,
     }
 
 
@@ -273,17 +273,17 @@ export namespace Gsk {
          * Start and stop the line exactly at the start
          *   and end point
          */
-        BUTT,
+        BUTT = 0,
         /**
          * Use a round ending, the center of the circle
          *   is the start or end point
          */
-        ROUND,
+        ROUND = 1,
         /**
          * use squared ending, the center of the square
          *   is the start or end point
          */
-        SQUARE,
+        SQUARE = 2,
     }
 
 
@@ -315,17 +315,17 @@ export namespace Gsk {
         /**
          * Use a sharp angled corner
          */
-        MITER,
+        MITER = 0,
         /**
          * Use a round join, the center of the circle is
          *   the join point
          */
-        ROUND,
+        ROUND = 1,
         /**
          * use a cut-off join, the join is cut off at half
          *   the line width from the joint point
          */
-        BEVEL,
+        BEVEL = 2,
     }
 
 
@@ -345,21 +345,21 @@ export namespace Gsk {
         /**
          * Use the alpha channel of the mask
          */
-        ALPHA,
+        ALPHA = 0,
         /**
          * Use the inverted alpha channel of the mask
          */
-        INVERTED_ALPHA,
+        INVERTED_ALPHA = 1,
         /**
          * Use the luminance of the mask,
          *     multiplied by mask alpha
          */
-        LUMINANCE,
+        LUMINANCE = 2,
         /**
          * Use the inverted luminance of the mask,
          *     multiplied by mask alpha
          */
-        INVERTED_LUMINANCE,
+        INVERTED_LUMINANCE = 3,
     }
 
 
@@ -389,22 +389,22 @@ export namespace Gsk {
          * The tangent in path direction of the incoming side
          *   of the path
          */
-        FROM_START,
+        FROM_START = 0,
         /**
          * The tangent against path direction of the incoming side
          *   of the path
          */
-        TO_START,
+        TO_START = 1,
         /**
          * The tangent in path direction of the outgoing side
          *   of the path
          */
-        TO_END,
+        TO_END = 2,
         /**
          * The tangent against path direction of the outgoing
          *   side of the path
          */
-        FROM_END,
+        FROM_END = 3,
     }
 
 
@@ -425,20 +425,20 @@ export namespace Gsk {
         /**
          * No intersection
          */
-        NONE,
+        NONE = 0,
         /**
          * A normal intersection, where the two paths
          *   cross each other
          */
-        NORMAL,
+        NORMAL = 1,
         /**
          * The start of a segment where the two paths coincide
          */
-        START,
+        START = 2,
         /**
          * The end of a segment where the two paths coincide
          */
-        END,
+        END = 3,
     }
 
 
@@ -460,35 +460,35 @@ export namespace Gsk {
         /**
          * A move-to operation, with 1 point describing the target point.
          */
-        MOVE,
+        MOVE = 0,
         /**
          * A close operation ending the current contour with a line back
          *   to the starting point. Two points describe the start and end of the line.
          */
-        CLOSE,
+        CLOSE = 1,
         /**
          * A line-to operation, with 2 points describing the start and
          *   end point of a straight line.
          */
-        LINE,
+        LINE = 2,
         /**
          * A curve-to operation describing a quadratic Bézier curve
          *   with 3 points describing the start point, the control point and the end
          *   point of the curve.
          */
-        QUAD,
+        QUAD = 3,
         /**
          * A curve-to operation describing a cubic Bézier curve with 4
          *   points describing the start point, the two control points and the end point
          *   of the curve.
          */
-        CUBIC,
+        CUBIC = 4,
         /**
          * A rational quadratic Bézier curve with 3 points describing
          *   the start point, control point and end point of the curve. A weight for the
          *   curve will be passed, too.
          */
-        CONIC,
+        CONIC = 5,
     }
 
 
@@ -520,18 +520,18 @@ export namespace Gsk {
      * @since 4.22
      */
     enum PorterDuff {
-        SOURCE,
-        DEST,
-        SOURCE_OVER_DEST,
-        DEST_OVER_SOURCE,
-        SOURCE_IN_DEST,
-        DEST_IN_SOURCE,
-        SOURCE_OUT_DEST,
-        DEST_OUT_SOURCE,
-        SOURCE_ATOP_DEST,
-        DEST_ATOP_SOURCE,
-        XOR,
-        CLEAR,
+        SOURCE = 0,
+        DEST = 1,
+        SOURCE_OVER_DEST = 2,
+        DEST_OVER_SOURCE = 3,
+        SOURCE_IN_DEST = 4,
+        DEST_IN_SOURCE = 5,
+        SOURCE_OUT_DEST = 6,
+        DEST_OUT_SOURCE = 7,
+        SOURCE_ATOP_DEST = 8,
+        DEST_ATOP_SOURCE = 9,
+        XOR = 10,
+        CLEAR = 11,
     }
 
 
@@ -550,160 +550,173 @@ export namespace Gsk {
         /**
          * Error type. No node will ever have this type.
          */
-        NOT_A_RENDER_NODE,
+        NOT_A_RENDER_NODE = 0,
         /**
          * A node containing a stack of children
          */
-        CONTAINER_NODE,
+        CONTAINER_NODE = 1,
         /**
          * A node drawing a `cairo_surface_t`
          */
-        CAIRO_NODE,
+        CAIRO_NODE = 2,
         /**
          * A node drawing a single color rectangle
          */
-        COLOR_NODE,
+        COLOR_NODE = 3,
         /**
          * A node drawing a linear gradient
          */
-        LINEAR_GRADIENT_NODE,
+        LINEAR_GRADIENT_NODE = 4,
         /**
          * A node drawing a repeating linear gradient
          */
-        REPEATING_LINEAR_GRADIENT_NODE,
+        REPEATING_LINEAR_GRADIENT_NODE = 5,
         /**
          * A node drawing a radial gradient
          */
-        RADIAL_GRADIENT_NODE,
+        RADIAL_GRADIENT_NODE = 6,
         /**
          * A node drawing a repeating radial gradient
          */
-        REPEATING_RADIAL_GRADIENT_NODE,
+        REPEATING_RADIAL_GRADIENT_NODE = 7,
         /**
          * A node drawing a conic gradient
          */
-        CONIC_GRADIENT_NODE,
+        CONIC_GRADIENT_NODE = 8,
         /**
          * A node stroking a border around an area
          */
-        BORDER_NODE,
+        BORDER_NODE = 9,
         /**
          * A node drawing a {@link Gdk.Texture}
          */
-        TEXTURE_NODE,
+        TEXTURE_NODE = 10,
         /**
          * A node drawing an inset shadow
          */
-        INSET_SHADOW_NODE,
+        INSET_SHADOW_NODE = 11,
         /**
          * A node drawing an outset shadow
          */
-        OUTSET_SHADOW_NODE,
+        OUTSET_SHADOW_NODE = 12,
         /**
          * A node that renders its child after applying a matrix transform
          */
-        TRANSFORM_NODE,
+        TRANSFORM_NODE = 13,
         /**
          * A node that changes the opacity of its child
          */
-        OPACITY_NODE,
+        OPACITY_NODE = 14,
         /**
          * A node that applies a color matrix to every pixel
          */
-        COLOR_MATRIX_NODE,
+        COLOR_MATRIX_NODE = 15,
         /**
          * A node that repeats the child's contents
          */
-        REPEAT_NODE,
+        REPEAT_NODE = 16,
         /**
          * A node that clips its child to a rectangular area
          */
-        CLIP_NODE,
+        CLIP_NODE = 17,
         /**
          * A node that clips its child to a rounded rectangle
          */
-        ROUNDED_CLIP_NODE,
+        ROUNDED_CLIP_NODE = 18,
         /**
          * A node that draws a shadow below its child
          */
-        SHADOW_NODE,
+        SHADOW_NODE = 19,
         /**
          * A node that blends two children together
          */
-        BLEND_NODE,
+        BLEND_NODE = 20,
         /**
          * A node that cross-fades between two children
          */
-        CROSS_FADE_NODE,
+        CROSS_FADE_NODE = 21,
         /**
          * A node containing a glyph string
          */
-        TEXT_NODE,
+        TEXT_NODE = 22,
         /**
          * A node that applies a blur
          */
-        BLUR_NODE,
+        BLUR_NODE = 23,
         /**
          * Debug information that does not affect the rendering
          */
-        DEBUG_NODE,
+        DEBUG_NODE = 24,
         /**
          * A node that uses OpenGL fragment shaders to render
          */
-        GL_SHADER_NODE,
+        GL_SHADER_NODE = 25,
         /**
          * A node drawing a {@link Gdk.Texture} scaled and filtered.
+         * @since 4.10
          */
-        TEXTURE_SCALE_NODE,
+        TEXTURE_SCALE_NODE = 26,
         /**
          * A node that masks one child with another.
+         * @since 4.10
          */
-        MASK_NODE,
+        MASK_NODE = 27,
         /**
          * A node that fills a path.
+         * @since 4.14
          */
-        FILL_NODE,
+        FILL_NODE = 28,
         /**
          * A node that strokes a path.
+         * @since 4.14
          */
-        STROKE_NODE,
+        STROKE_NODE = 29,
         /**
          * A node that possibly redirects part of the scene graph to a subsurface.
+         * @since 4.14
          */
-        SUBSURFACE_NODE,
+        SUBSURFACE_NODE = 30,
         /**
          * A node that applies some function to each color component.
+         * @since 4.20
          */
-        COMPONENT_TRANSFER_NODE,
+        COMPONENT_TRANSFER_NODE = 31,
         /**
          * A node that copies the rendering canvas to be pasted later.
+         * @since 4.22
          */
-        COPY_NODE,
+        COPY_NODE = 32,
         /**
          * A node that pastes a previously copied canvas.
+         * @since 4.22
          */
-        PASTE_NODE,
+        PASTE_NODE = 33,
         /**
          * A node that combines a child with the background using Porter/Duff
          * operations.
+         * @since 4.22
          */
-        COMPOSITE_NODE,
+        COMPOSITE_NODE = 34,
         /**
          * A node that isolated content of its child from previous content.
+         * @since 4.22
          */
-        ISOLATION_NODE,
+        ISOLATION_NODE = 35,
         /**
          * A node that displaces content according to some mask.
+         * @since 4.22
          */
-        DISPLACEMENT_NODE,
+        DISPLACEMENT_NODE = 36,
         /**
          * A node that combines two child nodes in an arithmetic way.
+         * @since 4.22
          */
-        ARITHMETIC_NODE,
+        ARITHMETIC_NODE = 37,
         /**
          * A node that generates a Perlin noise or fractal Brownian motion pattern.
+         * @since 4.24
          */
-        TURBULENCE_NODE,
+        TURBULENCE_NODE = 38,
     }
 
 
@@ -725,17 +738,17 @@ export namespace Gsk {
         /**
          * linear interpolation filter
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * nearest neighbor interpolation filter
          */
-        NEAREST,
+        NEAREST = 1,
         /**
          * linear interpolation along each axis,
          *   plus mipmap generation, with linear interpolation along the mipmap
          *   levels
          */
-        TRILINEAR,
+        TRILINEAR = 2,
     }
 
 
@@ -793,19 +806,19 @@ export namespace Gsk {
         /**
          * The top side
          */
-        TOP,
+        TOP = 0,
         /**
          * The right side
          */
-        RIGHT,
+        RIGHT = 1,
         /**
          * The bottom side
          */
-        BOTTOM,
+        BOTTOM = 2,
         /**
          * The left side
          */
-        LEFT,
+        LEFT = 3,
     }
 
 
@@ -829,19 +842,19 @@ export namespace Gsk {
         /**
          * Don't snap the value
          */
-        NONE,
+        NONE = 0,
         /**
          * Use `floor()` to snap
          */
-        FLOOR,
+        FLOOR = 1,
         /**
          * Use `ceil()` to snap
          */
-        CEIL,
+        CEIL = 2,
         /**
          * Use `round()` to snap
          */
-        ROUND,
+        ROUND = 3,
     }
 
 
@@ -870,37 +883,37 @@ export namespace Gsk {
          * The category of the matrix has not been
          *   determined.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Analyzing the matrix concluded that it does
          *   not fit in any other category.
          */
-        ANY,
+        ANY = 1,
         /**
          * The matrix is a 3D matrix. This means that
          *   the w column (the last column) has the values (0, 0, 0, 1).
          */
-        "3D",
+        "3D" = 2,
         /**
          * The matrix is a 2D matrix. This is equivalent
          *   to `graphene_matrix_is_2d()` returning `true`. In particular, this
          *   means that Cairo can deal with the matrix.
          */
-        "2D",
+        "2D" = 3,
         /**
          * The matrix is a combination of 2D scale
          *   and 2D translation operations. In particular, this means that any
          *   rectangle can be transformed exactly using this matrix.
          */
-        "2D_AFFINE",
+        "2D_AFFINE" = 4,
         /**
          * The matrix is a 2D translation.
          */
-        "2D_TRANSLATE",
+        "2D_TRANSLATE" = 5,
         /**
          * The matrix is the identity matrix.
          */
-        IDENTITY,
+        IDENTITY = 6,
     }
 
 
@@ -911,6 +924,7 @@ export namespace Gsk {
      * 
      * ![Snap by growing](snap-grow.svg)
      * @since 4.24
+     * @default 16908801
      */
     const RECT_SNAP_GROW: number;
 
@@ -919,6 +933,7 @@ export namespace Gsk {
      * 
      * This is the default value for snapping.
      * @since 4.24
+     * @default 0
      */
     const RECT_SNAP_NONE: number;
 
@@ -930,6 +945,7 @@ export namespace Gsk {
      * 
      * ![Snap by rounding](snap-round.svg)
      * @since 4.24
+     * @default 50529027
      */
     const RECT_SNAP_ROUND: number;
 
@@ -941,6 +957,7 @@ export namespace Gsk {
      * 
      * ![Snap by shrinking](snap-shrink.svg)
      * @since 4.24
+     * @default 33620226
      */
     const RECT_SNAP_SHRINK: number;
 
@@ -1132,24 +1149,24 @@ export namespace Gsk {
         /**
          * No isolation is defined.
          */
-        NONE,
+        NONE = 0,
         /**
          * If the background should be made available.
          *   If the background is not available, future operations will be rendered
          *   to a transparent background and added to the existing background later.
          */
-        BACKGROUND,
+        BACKGROUND = 1,
         /**
          * If copies should be available to paste nodes.
          *   If copies are not available, paste nodes can only paste from copies that
          *   are made inside the isolated contents.
          */
-        COPY_PASTE,
+        COPY_PASTE = 2,
         /**
          * Isolate everything. This will include features that
          *   are added in the future.
          */
-        ALL,
+        ALL = -1,
     }
 
 
@@ -1175,19 +1192,19 @@ export namespace Gsk {
         /**
          * The default behavior, only allow lines.
          */
-        ONLY_LINES,
+        ONLY_LINES = 0,
         /**
          * Allow emission of `GSK_PATH_QUAD` operations
          */
-        QUAD,
+        QUAD = 1,
         /**
          * Allow emission of `GSK_PATH_CUBIC` operations.
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * Allow emission of `GSK_PATH_CONIC` operations.
          */
-        CONIC,
+        CONIC = 4,
     }
 
 
@@ -2338,6 +2355,7 @@ export namespace Gsk {
          * @param renderer a {@link Gsk.Renderer}
          * @returns `true` on success, `false` if an error occurred
          * @deprecated since 4.16: GTK's new Vulkan-focused rendering   does not support this feature. Use [GtkGLArea](../gtk4/class.GLArea.html)   for OpenGL rendering.
+         * @throws GLib.Error
          */
         compile(renderer: Renderer): boolean;
 
@@ -3245,6 +3263,7 @@ export namespace Gsk {
          * node to a file for later inspection.
          * @param filename the file to save it to
          * @returns true if saving was successful
+         * @throws GLib.Error
          */
         write_to_file(filename: string): boolean;
     }
@@ -3350,6 +3369,7 @@ export namespace Gsk {
          * before destroying the renderer.
          * @param surface the surface that renderer will be used on
          * @returns whether the renderer was successfully realized
+         * @throws GLib.Error
          */
         realize(surface: Gdk.Surface | null): boolean;
 
@@ -3361,6 +3381,7 @@ export namespace Gsk {
          * @param display the display that the renderer will be used on
          * @returns whether the renderer was successfully realized
          * @since 4.14
+         * @throws GLib.Error
          */
         realize_for_display(display: Gdk.Display): boolean;
 

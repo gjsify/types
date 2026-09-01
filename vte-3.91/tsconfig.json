@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./vte-3.91.d.ts","./vte-3.91-surface.d.ts"]
+  "include": ["./vte-3.91.d.ts","./vte-3.91-vocabulary.d.ts"]
 }
 
 

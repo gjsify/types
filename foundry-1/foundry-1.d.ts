@@ -38,11 +38,11 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpChangedFileKind {
-        UNKNOWN,
-        CREATED,
-        MODIFIED,
-        DELETED,
-        PATCHED,
+        UNKNOWN = 0,
+        CREATED = 1,
+        MODIFIED = 2,
+        DELETED = 3,
+        PATCHED = 4,
     }
 
 
@@ -57,14 +57,14 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpConnectionState {
-        NEW,
-        STARTING,
-        INITIALIZING,
-        AUTH_REQUIRED,
-        READY,
-        CLOSING,
-        CLOSED,
-        FAILED,
+        NEW = 0,
+        STARTING = 1,
+        INITIALIZING = 2,
+        AUTH_REQUIRED = 3,
+        READY = 4,
+        CLOSING = 5,
+        CLOSED = 6,
+        FAILED = 7,
     }
 
 
@@ -113,27 +113,27 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpEventKind {
-        UNKNOWN,
-        MESSAGE_CHUNK,
-        MESSAGE,
-        STEP,
-        TOOL_CALL,
-        TOOL_UPDATE,
-        TOOL_RESULT,
-        PERMISSION_REQUEST,
-        PERMISSION_RESPONSE,
-        TERMINAL_CREATED,
-        TERMINAL_OUTPUT,
-        TERMINAL_EXITED,
-        TERMINAL_RELEASED,
-        FILE_READ,
-        FILE_WRITE,
-        FILE_PATCH,
-        FILE_CREATED,
-        FILE_DELETED,
-        MODE_CHANGED,
-        CONFIG_CHANGED,
-        ERROR,
+        UNKNOWN = 0,
+        MESSAGE_CHUNK = 1,
+        MESSAGE = 2,
+        STEP = 3,
+        TOOL_CALL = 4,
+        TOOL_UPDATE = 5,
+        TOOL_RESULT = 6,
+        PERMISSION_REQUEST = 7,
+        PERMISSION_RESPONSE = 8,
+        TERMINAL_CREATED = 9,
+        TERMINAL_OUTPUT = 10,
+        TERMINAL_EXITED = 11,
+        TERMINAL_RELEASED = 12,
+        FILE_READ = 13,
+        FILE_WRITE = 14,
+        FILE_PATCH = 15,
+        FILE_CREATED = 16,
+        FILE_DELETED = 17,
+        MODE_CHANGED = 18,
+        CONFIG_CHANGED = 19,
+        ERROR = 20,
     }
 
 
@@ -148,11 +148,11 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpEventState {
-        PENDING,
-        RUNNING,
-        COMPLETED,
-        FAILED,
-        CANCELLED,
+        PENDING = 0,
+        RUNNING = 1,
+        COMPLETED = 2,
+        FAILED = 3,
+        CANCELLED = 4,
     }
 
 
@@ -167,12 +167,12 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpSessionState {
-        NEW,
-        LOADING,
-        IDLE,
-        RUNNING,
-        CANCELLING,
-        CLOSED,
+        NEW = 0,
+        LOADING = 1,
+        IDLE = 2,
+        RUNNING = 3,
+        CANCELLING = 4,
+        CLOSED = 5,
     }
 
 
@@ -187,23 +187,23 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpSessionUpdateKind {
-        UNKNOWN,
-        MESSAGE_CHUNK,
-        MESSAGE,
-        STEP,
-        TOOL_CALL,
-        TOOL_UPDATE,
-        TOOL_RESULT,
-        TERMINAL_CREATED,
-        TERMINAL_OUTPUT,
-        TERMINAL_EXITED,
-        FILE_READ,
-        FILE_WRITE,
-        FILE_PATCH,
-        FILE_CREATED,
-        FILE_DELETED,
-        PROGRESS,
-        ERROR,
+        UNKNOWN = 0,
+        MESSAGE_CHUNK = 1,
+        MESSAGE = 2,
+        STEP = 3,
+        TOOL_CALL = 4,
+        TOOL_UPDATE = 5,
+        TOOL_RESULT = 6,
+        TERMINAL_CREATED = 7,
+        TERMINAL_OUTPUT = 8,
+        TERMINAL_EXITED = 9,
+        FILE_READ = 10,
+        FILE_WRITE = 11,
+        FILE_PATCH = 12,
+        FILE_CREATED = 13,
+        FILE_DELETED = 14,
+        PROGRESS = 15,
+        ERROR = 16,
     }
 
 
@@ -218,12 +218,12 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpStopReason {
-        END_TURN,
-        MAX_TOKENS,
-        MAX_TURN_REQUESTS,
-        REFUSAL,
-        CANCELLED,
-        UNKNOWN,
+        END_TURN = 1,
+        MAX_TOKENS = 2,
+        MAX_TURN_REQUESTS = 3,
+        REFUSAL = 4,
+        CANCELLED = 5,
+        UNKNOWN = 0,
     }
 
 
@@ -238,10 +238,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum AcpTerminalState {
-        RUNNING,
-        EXITED,
-        FAILED,
-        CANCELLED,
+        RUNNING = 0,
+        EXITED = 1,
+        FAILED = 2,
+        CANCELLED = 3,
     }
 
 
@@ -281,23 +281,23 @@ export namespace Foundry {
         /**
          * a regular file
          */
-        FILE,
+        FILE = 0,
         /**
          * a directory
          */
-        DIRECTORY,
+        DIRECTORY = 1,
         /**
          * a JUnit test report
          */
-        JUNIT,
+        JUNIT = 2,
         /**
          * a coverage report
          */
-        COVERAGE,
+        COVERAGE = 3,
         /**
          * a code quality report
          */
-        CODE_QUALITY,
+        CODE_QUALITY = 4,
     }
 
 
@@ -317,23 +317,23 @@ export namespace Foundry {
         /**
          * the job is selected for execution
          */
-        SELECTED,
+        SELECTED = 0,
         /**
          * the job was skipped by pipeline rules
          */
-        SKIPPED,
+        SKIPPED = 1,
         /**
          * the job requires manual selection
          */
-        MANUAL,
+        MANUAL = 2,
         /**
          * the job cannot run locally
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 3,
         /**
          * the job is blocked by dependencies
          */
-        BLOCKED,
+        BLOCKED = 4,
     }
 
 
@@ -353,27 +353,27 @@ export namespace Foundry {
         /**
          * the run has not started
          */
-        PENDING,
+        PENDING = 0,
         /**
          * the run is preparing its environment
          */
-        PREPARING,
+        PREPARING = 1,
         /**
          * the run is executing
          */
-        RUNNING,
+        RUNNING = 2,
         /**
          * the run completed successfully
          */
-        PASSED,
+        PASSED = 3,
         /**
          * the run failed
          */
-        FAILED,
+        FAILED = 4,
         /**
          * the run was cancelled
          */
-        CANCELLED,
+        CANCELLED = 5,
     }
 
 
@@ -383,7 +383,7 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum CommandLineError {
-        COMMAND_LINE_ERROR_RUN_LOCAL,
+        COMMAND_LINE_ERROR_RUN_LOCAL = 1,
     }
 
 
@@ -402,10 +402,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum CommandLocality {
-        SUBPROCESS,
-        HOST,
-        PIPELINE,
-        APPLICATION,
+        SUBPROCESS = 0,
+        HOST = 1,
+        PIPELINE = 2,
+        APPLICATION = 3,
     }
 
 
@@ -413,9 +413,9 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum CompletionActivation {
-        NONE,
-        INTERACTIVE,
-        USER_REQUESTED,
+        NONE = 0,
+        INTERACTIVE = 1,
+        USER_REQUESTED = 2,
     }
 
 
@@ -423,7 +423,7 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum ContextError {
-        CONTEXT_ERROR_IN_SHUTDOWN,
+        CONTEXT_ERROR_IN_SHUTDOWN = 1,
     }
 
 
@@ -431,7 +431,7 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum ContextualError {
-        CONTEXTUAL_ERROR_IN_SHUTDOWN,
+        CONTEXTUAL_ERROR_IN_SHUTDOWN = 1,
     }
 
 
@@ -446,11 +446,11 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DebuggerMovement {
-        START,
-        CONTINUE,
-        STEP_IN,
-        STEP_OUT,
-        STEP_OVER,
+        START = 0,
+        CONTINUE = 1,
+        STEP_IN = 2,
+        STEP_OUT = 4,
+        STEP_OVER = 3,
     }
 
 
@@ -465,15 +465,15 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DebuggerStopReason {
-        BREAKPOINT_HIT,
-        EXITED,
-        EXITED_NORMALLY,
-        SIGNALED,
-        FUNCTION_FINISHED,
-        LOCATION_REACHED,
-        SIGNAL_RECEIVED,
-        CATCH,
-        UNKNOWN,
+        BREAKPOINT_HIT = 1,
+        EXITED = 2,
+        EXITED_NORMALLY = 3,
+        SIGNALED = 4,
+        FUNCTION_FINISHED = 5,
+        LOCATION_REACHED = 6,
+        SIGNAL_RECEIVED = 7,
+        CATCH = 8,
+        UNKNOWN = 0,
     }
 
 
@@ -488,10 +488,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DebuggerTrapDisposition {
-        KEEP,
-        DISABLE,
-        NEXT_HIT,
-        NEXT_STOP,
+        KEEP = 0,
+        DISABLE = 1,
+        NEXT_HIT = 2,
+        NEXT_STOP = 3,
     }
 
 
@@ -506,9 +506,9 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DebuggerTrapKind {
-        BREAKPOINT,
-        COUNTPOINT,
-        WATCHPOINT,
+        BREAKPOINT = 0,
+        COUNTPOINT = 2,
+        WATCHPOINT = 1,
     }
 
 
@@ -523,10 +523,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DeviceChassis {
-        WORKSTATION,
-        HANDSET,
-        TABLET,
-        OTHER,
+        WORKSTATION = 0,
+        HANDSET = 1,
+        TABLET = 2,
+        OTHER = 3,
     }
 
 
@@ -541,13 +541,13 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DiagnosticSeverity {
-        IGNORED,
-        NOTE,
-        UNUSED,
-        DEPRECATED,
-        WARNING,
-        ERROR,
-        FATAL,
+        IGNORED = 0,
+        NOTE = 1,
+        UNUSED = 2,
+        DEPRECATED = 3,
+        WARNING = 4,
+        ERROR = 5,
+        FATAL = 6,
     }
 
 
@@ -555,7 +555,7 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DiagnosticToolError {
-        DIAGNOSTIC_TOOL_ERROR_NO_COMMAND,
+        DIAGNOSTIC_TOOL_ERROR_NO_COMMAND = 1,
     }
 
 
@@ -563,7 +563,7 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum DoapFileError {
-        DOAP_FILE_ERROR_INVALID_FORMAT,
+        DOAP_FILE_ERROR_INVALID_FORMAT = 1,
     }
 
 
@@ -571,9 +571,9 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum ForgeError {
-        FAILED,
-        NOT_CONFIGURED,
-        NOT_FOUND,
+        FAILED = 0,
+        NOT_CONFIGURED = 1,
+        NOT_FOUND = 2,
     }
 
 
@@ -581,8 +581,8 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum GirError {
-        FAILED,
-        PARSE,
+        FAILED = 0,
+        PARSE = 1,
     }
 
 
@@ -590,49 +590,49 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum GirNodeType {
-        UNKNOWN,
-        REPOSITORY,
-        INCLUDE,
-        C_INCLUDE,
-        PACKAGE,
-        NAMESPACE,
-        ALIAS,
-        ARRAY,
-        BITFIELD,
-        CALLBACK,
-        CLASS,
-        CLASS_METHOD,
-        CLASS_VIRTUAL_METHOD,
-        CLASS_PROPERTY,
-        CONSTRUCTOR,
-        CONSTANT,
-        DOC,
-        DOC_PARA,
-        DOC_TEXT,
-        ENUM,
-        ENUM_MEMBER,
-        FIELD,
-        FUNCTION,
-        FUNCTION_MACRO,
-        GLIB_BOXED,
-        GLIB_ERROR_DOMAIN,
-        GLIB_SIGNAL,
-        IMPLEMENTS,
-        INSTANCE_PARAMETER,
-        INTERFACE,
-        METHOD,
-        NAMESPACE_FUNCTION,
-        PARAMETER,
-        PARAMETERS,
-        PREREQUISITE,
-        PROPERTY,
-        RECORD,
-        RETURN_VALUE,
-        SOURCE_POSITION,
-        TYPE,
-        UNION,
-        VARARGS,
-        VIRTUAL_METHOD,
+        UNKNOWN = 0,
+        REPOSITORY = 1,
+        INCLUDE = 2,
+        C_INCLUDE = 3,
+        PACKAGE = 4,
+        NAMESPACE = 5,
+        ALIAS = 6,
+        ARRAY = 7,
+        BITFIELD = 8,
+        CALLBACK = 9,
+        CLASS = 10,
+        CLASS_METHOD = 11,
+        CLASS_VIRTUAL_METHOD = 12,
+        CLASS_PROPERTY = 13,
+        CONSTRUCTOR = 14,
+        CONSTANT = 15,
+        DOC = 16,
+        DOC_PARA = 17,
+        DOC_TEXT = 18,
+        ENUM = 19,
+        ENUM_MEMBER = 20,
+        FIELD = 21,
+        FUNCTION = 22,
+        FUNCTION_MACRO = 23,
+        GLIB_BOXED = 24,
+        GLIB_ERROR_DOMAIN = 25,
+        GLIB_SIGNAL = 26,
+        IMPLEMENTS = 27,
+        INSTANCE_PARAMETER = 28,
+        INTERFACE = 29,
+        METHOD = 30,
+        NAMESPACE_FUNCTION = 31,
+        PARAMETER = 32,
+        PARAMETERS = 33,
+        PREREQUISITE = 34,
+        PROPERTY = 35,
+        RECORD = 36,
+        RETURN_VALUE = 37,
+        SOURCE_POSITION = 38,
+        TYPE = 39,
+        UNION = 40,
+        VARARGS = 41,
+        VIRTUAL_METHOD = 42,
     }
 
 
@@ -665,9 +665,9 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum Locality {
-        RUN,
-        BUILD,
-        TOOL,
+        RUN = 1,
+        BUILD = 0,
+        TOOL = 2,
     }
 
 
@@ -682,10 +682,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum MarkupKind {
-        PLAINTEXT,
-        MARKDOWN,
-        HTML,
-        PANGO,
+        PLAINTEXT = 0,
+        MARKDOWN = 1,
+        HTML = 2,
+        PANGO = 3,
     }
 
 
@@ -700,8 +700,8 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum ObjectSerializerFormat {
-        TEXT,
-        JSON,
+        TEXT = 0,
+        JSON = 1,
     }
 
 
@@ -713,15 +713,15 @@ export namespace Foundry {
         /**
          * A basic shell with no user scripts
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * A user login shell similar to `bash -l`
          */
-        LOGIN,
+        LOGIN = 1,
         /**
          * A user interactive shell similar to `bash -i`
          */
-        INTERACTIVE,
+        INTERACTIVE = 2,
     }
 
 
@@ -729,8 +729,8 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum SdkConfigOption {
-        PREFIX,
-        LIBDIR,
+        PREFIX = 1,
+        LIBDIR = 2,
     }
 
 
@@ -738,8 +738,8 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum ServiceError {
-        STARTED,
-        STOPPED,
+        STARTED = 1,
+        STOPPED = 2,
     }
 
 
@@ -758,18 +758,18 @@ export namespace Foundry {
          * Application-wide settings global to
          *   any new project opened or created with Foundry.
          */
-        APPLICATION,
+        APPLICATION = 0,
         /**
          * Project-level overrides which take
          *   priority over {@link Foundry.SettingsLayer.APPLICATION}.
          */
-        PROJECT,
+        PROJECT = 1,
         /**
          * User-level overrides which take priority
          *   over {@link Foundry.SettingsLayer.APPLICATION} and
          *   {@link Foundry.SettingsLayer.PROJECT}.
          */
-        USER,
+        USER = 2,
     }
 
 
@@ -789,22 +789,22 @@ export namespace Foundry {
          * Be notified before text
          *   is inserted into the underlying buffer.
          */
-        BEFORE_INSERT,
+        BEFORE_INSERT = 1,
         /**
          * Be notified after text
          *   has been inserted into the underlying buffer.
          */
-        AFTER_INSERT,
+        AFTER_INSERT = 2,
         /**
          * Be notified before text
          *   is deleted from the underlying buffer.
          */
-        BEFORE_DELETE,
+        BEFORE_DELETE = 4,
         /**
          * Be notified after text
          *   has been deleted from the underlying buffer.
          */
-        AFTER_DELETE,
+        AFTER_DELETE = 8,
     }
 
 
@@ -819,35 +819,35 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum TextSetting {
-        NONE,
-        AUTO_INDENT,
-        COMPLETION_AUTO_SELECT,
-        COMPLETION_PAGE_SIZE,
-        CUSTOM_FONT,
-        ENABLE_COMPLETION,
-        ENABLE_SNIPPETS,
-        ENABLE_SPELL_CHECK,
-        HIGHLIGHT_CURRENT_LINE,
-        HIGHLIGHT_MATCHING_BRACKETS,
-        IMPLICIT_TRAILING_NEWLINE,
-        INDENT_ON_TAB,
-        INDENT_WIDTH,
-        INSERT_MATCHING_BRACE,
-        INSERT_SPACES_INSTEAD_OF_TABS,
-        LINE_HEIGHT,
-        OVERRIDE_INDENT_WIDTH,
-        OVERWRITE_MATCHING_BRACE,
-        RIGHT_MARGIN_POSITION,
-        SHOW_DIAGNOSTICS,
-        SHOW_LINE_CHANGES,
-        SHOW_LINE_CHANGES_OVERVIEW,
-        SHOW_LINE_NUMBERS,
-        SHOW_RIGHT_MARGIN,
-        SMART_BACKSPACE,
-        SMART_HOME_END,
-        TAB_WIDTH,
-        USE_CUSTOM_FONT,
-        WRAP,
+        NONE = 0,
+        AUTO_INDENT = 1,
+        COMPLETION_AUTO_SELECT = 2,
+        COMPLETION_PAGE_SIZE = 3,
+        CUSTOM_FONT = 4,
+        ENABLE_COMPLETION = 5,
+        ENABLE_SNIPPETS = 6,
+        ENABLE_SPELL_CHECK = 7,
+        HIGHLIGHT_CURRENT_LINE = 8,
+        HIGHLIGHT_MATCHING_BRACKETS = 9,
+        IMPLICIT_TRAILING_NEWLINE = 10,
+        INDENT_ON_TAB = 11,
+        INDENT_WIDTH = 12,
+        INSERT_MATCHING_BRACE = 13,
+        INSERT_SPACES_INSTEAD_OF_TABS = 14,
+        LINE_HEIGHT = 15,
+        OVERRIDE_INDENT_WIDTH = 16,
+        OVERWRITE_MATCHING_BRACE = 17,
+        RIGHT_MARGIN_POSITION = 18,
+        SHOW_DIAGNOSTICS = 19,
+        SHOW_LINE_CHANGES = 20,
+        SHOW_LINE_CHANGES_OVERVIEW = 21,
+        SHOW_LINE_NUMBERS = 22,
+        SHOW_RIGHT_MARGIN = 23,
+        SMART_BACKSPACE = 24,
+        SMART_HOME_END = 25,
+        TAB_WIDTH = 26,
+        USE_CUSTOM_FONT = 27,
+        WRAP = 28,
     }
 
 
@@ -862,10 +862,10 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum TextWrap {
-        NONE,
-        CHAR,
-        WORD,
-        WORD_CHAR,
+        NONE = 0,
+        CHAR = 1,
+        WORD = 2,
+        WORD_CHAR = 3,
     }
 
 
@@ -880,17 +880,17 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum VcsDeltaStatus {
-        UNMODIFIED,
-        ADDED,
-        DELETED,
-        MODIFIED,
-        RENAMED,
-        COPIED,
-        IGNORED,
-        UNTRACKED,
-        TYPECHANGE,
-        UNREADABLE,
-        CONFLICTED,
+        UNMODIFIED = 0,
+        ADDED = 1,
+        DELETED = 2,
+        MODIFIED = 3,
+        RENAMED = 4,
+        COPIED = 5,
+        IGNORED = 6,
+        UNTRACKED = 7,
+        TYPECHANGE = 8,
+        UNREADABLE = 9,
+        CONFLICTED = 10,
     }
 
 
@@ -905,12 +905,12 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum VcsDiffLineOrigin {
-        ADDED,
-        DELETED,
-        CONTEXT,
-        CONTEXT_EOFNL,
-        ADD_EOFNL,
-        DEL_EOFNL,
+        ADDED = 43,
+        DELETED = 45,
+        CONTEXT = 32,
+        CONTEXT_EOFNL = 61,
+        ADD_EOFNL = 62,
+        DEL_EOFNL = 60,
     }
 
 
@@ -925,30 +925,60 @@ export namespace Foundry {
      * @gir-type Enum
      */
     enum VcsGraphPoint {
-        TOP,
-        CENTER,
-        BOTTOM,
+        TOP = 0,
+        CENTER = 1,
+        BOTTOM = 2,
     }
 
 
+    /**
+     * @default 1
+     */
     const ACP_PROTOCOL_VERSION: number;
 
+    /**
+     * @default deprecated
+     */
     const DOCUMENTATION_ATTRIBUTE_DEPRECATED: string;
 
+    /**
+     * @default since
+     */
     const DOCUMENTATION_ATTRIBUTE_SINCE: string;
 
+    /**
+     * @default stability
+     */
     const DOCUMENTATION_ATTRIBUTE_STABILITY: string;
 
+    /**
+     * @default 43
+     */
     const GIR_NODE_LAST: number;
 
+    /**
+     * @default actions
+     */
     const SEARCH_CATEGORY_ACTIONS: string;
 
+    /**
+     * @default documentation
+     */
     const SEARCH_CATEGORY_DOCUMENTATION: string;
 
+    /**
+     * @default files
+     */
     const SEARCH_CATEGORY_FILES: string;
 
+    /**
+     * @default symbols
+     */
     const SEARCH_CATEGORY_SYMBOLS: string;
 
+    /**
+     * @default 29
+     */
     const TEXT_SETTING_LAST: number;
 
     /**
@@ -997,6 +1027,7 @@ export namespace Foundry {
      * Canonicalize `file` as if via `realpath()`, raising an error if it
      * doesn't exist or otherwise isn't accessible.
      * @param file a {@link Gio.File}
+     * @throws GLib.Error
      */
     function file_canonicalize(file: Gio.File): Gio.File;
 
@@ -1314,12 +1345,14 @@ export namespace Foundry {
      * @param read_fd 
      * @param write_fd 
      * @param flags 
+     * @throws GLib.Error
      */
     function pipe(read_fd: number, write_fd: number, flags: number): boolean;
 
     /**
      * @param pty_consumer_fd 
      * @param blocking 
+     * @throws GLib.Error
      */
     function pty_create_producer(pty_consumer_fd: number, blocking: boolean): number;
 
@@ -1461,8 +1494,8 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum AcpAgentCapabilityFlags {
-        NONE,
-        RESUME_SESSION,
+        NONE = 0,
+        RESUME_SESSION = 1,
     }
 
 
@@ -1477,10 +1510,10 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum AcpChangedFileFlags {
-        NONE,
-        STAGED,
-        UNSTAGED,
-        UNTRACKED,
+        NONE = 0,
+        STAGED = 1,
+        UNSTAGED = 2,
+        UNTRACKED = 4,
     }
 
 
@@ -1495,10 +1528,10 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum AcpClientCapabilityFlags {
-        NONE,
-        FS_READ_TEXT_FILE,
-        FS_WRITE_TEXT_FILE,
-        TERMINAL,
+        NONE = 0,
+        FS_READ_TEXT_FILE = 1,
+        FS_WRITE_TEXT_FILE = 2,
+        TERMINAL = 4,
     }
 
 
@@ -1513,21 +1546,21 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum BuildPipelinePhase {
-        NONE,
-        PREPARE,
-        DOWNLOADS,
-        DEPENDENCIES,
-        AUTOGEN,
-        CONFIGURE,
-        BUILD,
-        INSTALL,
-        COMMIT,
-        EXPORT,
-        FINAL,
-        BEFORE,
-        AFTER,
-        FINISHED,
-        FAILED,
+        NONE = 0,
+        PREPARE = 1,
+        DOWNLOADS = 2,
+        DEPENDENCIES = 4,
+        AUTOGEN = 8,
+        CONFIGURE = 16,
+        BUILD = 64,
+        INSTALL = 128,
+        COMMIT = 256,
+        EXPORT = 512,
+        FINAL = 1024,
+        BEFORE = 268435456,
+        AFTER = 536870912,
+        FINISHED = 1073741824,
+        FAILED = 2147483648,
     }
 
 
@@ -1542,8 +1575,8 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum ContextFlags {
-        NONE,
-        CREATE,
+        NONE = 0,
+        CREATE = 1,
     }
 
 
@@ -1558,8 +1591,8 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum DapDebuggerQuirk {
-        NONE,
-        QUERY_THREADS,
+        NONE = 0,
+        QUERY_THREADS = 1,
     }
 
 
@@ -1574,10 +1607,10 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum DebuggerWatchAccess {
-        NONE,
-        READ,
-        WRITE,
-        READWRITE,
+        NONE = 0,
+        READ = 1,
+        WRITE = 2,
+        READWRITE = 3,
     }
 
 
@@ -1592,11 +1625,11 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum ModifierType {
-        CONTROL,
-        SHIFT,
-        ALT,
-        SUPER,
-        COMMAND,
+        CONTROL = 1,
+        SHIFT = 2,
+        ALT = 4,
+        SUPER = 8,
+        COMMAND = 16,
     }
 
 
@@ -1611,13 +1644,13 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum VcsFileStatus {
-        CURRENT,
-        MODIFIED_IN_STAGE,
-        MODIFIED_IN_TREE,
-        NEW_IN_STAGE,
-        NEW_IN_TREE,
-        DELETED_IN_STAGE,
-        DELETED_IN_TREE,
+        CURRENT = 0,
+        MODIFIED_IN_STAGE = 2,
+        MODIFIED_IN_TREE = 4,
+        NEW_IN_STAGE = 8,
+        NEW_IN_TREE = 16,
+        DELETED_IN_STAGE = 32,
+        DELETED_IN_TREE = 64,
     }
 
 
@@ -1632,10 +1665,10 @@ export namespace Foundry {
      * @gir-type Flags
      */
     enum VcsLineChange {
-        ADDED,
-        REMOVED,
-        CHANGED,
-        PREVIOUS_REMOVED,
+        ADDED = 1,
+        REMOVED = 2,
+        CHANGED = 4,
+        PREVIOUS_REMOVED = 8,
     }
 
 
@@ -9221,6 +9254,7 @@ export namespace Foundry {
         /**
          * @param args 
          * @param options 
+         * @throws GLib.Error
          */
         lookup(args: string, options: CliOptions): CliCommand;
 
@@ -10740,6 +10774,7 @@ export namespace Foundry {
          * @param file a {@link Gio.File} representing the file to lookup
          * @param system_includes system include dirs if any
          * @returns A string array or `null` if   there was a failure to locate or parse the command.
+         * @throws GLib.Error
          */
         lookup(file: Gio.File, system_includes: string): [string[] | null, Gio.File | null];
     }
@@ -13315,6 +13350,7 @@ export namespace Foundry {
          * appropriate error.
          * @returns a {@link Foundry.Context} or `error` is set.
          * @since 1.1
+         * @throws GLib.Error
          */
         acquire(): Context;
 
@@ -13334,6 +13370,7 @@ export namespace Foundry {
          * If the context is already in shutdown, then `null` is returned and
          * `error` is set.
          * @returns a {@link Foundry.Inhibitor} or `null` and   `error` is set.
+         * @throws GLib.Error
          */
         inhibit(): Inhibitor;
 
@@ -13742,7 +13779,7 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            event: (arg0: DebuggerEvent) => void;
+            event: (object: DebuggerEvent) => void;
             "notify::address-space": (pspec: GObject.ParamSpec) => void;
             "notify::log-messages": (pspec: GObject.ParamSpec) => void;
             "notify::modules": (pspec: GObject.ParamSpec) => void;
@@ -21028,7 +21065,7 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            "remove-file": (arg0: Gio.File) => void;
+            "remove-file": (file: Gio.File) => void;
         }
 
         // Constructor properties interface
@@ -21115,11 +21152,13 @@ export namespace Foundry {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         execute_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         execute_sync(cancellable: Gio.Cancellable | null): boolean;
     }
@@ -23408,12 +23447,12 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            "extension-added": (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
+            "extension-added": (object: Peas.PluginInfo, p0: GObject.Object) => void;
             /**
              * @signal
              * @run-last
              */
-            "extension-removed": (arg0: Peas.PluginInfo, arg1: GObject.Object) => void;
+            "extension-removed": (object: Peas.PluginInfo, p0: GObject.Object) => void;
             /**
              * @signal
              * @run-last
@@ -28660,6 +28699,7 @@ export namespace Foundry {
         /**
          * @param path 
          * @returns a {@link Gio.File} or `null` and `error` is set
+         * @throws GLib.Error
          */
         resolve_file(path: string): Gio.File;
 
@@ -42504,6 +42544,7 @@ export namespace Foundry {
 
         /**
          * @param args 
+         * @throws GLib.Error
          */
         append_args_parsed(args: string): boolean;
 
@@ -42518,6 +42559,7 @@ export namespace Foundry {
          * The stream is created using UNIX pipes which are attached to the
          * stdin/stdout of the child process.
          * @returns a {@link Gio.IOStream} if successful; otherwise   `null` and `error` is set.
+         * @throws GLib.Error
          */
         create_stdio_stream(): Gio.IOStream;
 
@@ -42545,6 +42587,7 @@ export namespace Foundry {
          * file-descriptors after calling this function.
          * @param unix_fd_map a {@link Foundry.UnixFDMap}
          * @returns `true` if successful; otherwise `false` and `error` is set.
+         * @throws GLib.Error
          */
         merge_unix_fd_map(unix_fd_map: UnixFDMap): boolean;
 
@@ -42647,6 +42690,7 @@ export namespace Foundry {
          * 
          * If the subprocess fails to launch, then `null` is returned and `error` is set.
          * @returns an {@link Gio.Subprocess} if successful; otherwise `null`   and `error` is set.
+         * @throws GLib.Error
          */
         spawn(): Gio.Subprocess;
 
@@ -42655,6 +42699,7 @@ export namespace Foundry {
          * flags for the GSubprocess which may override other settings.
          * @param flags 
          * @returns a {@link Gio.Subprocess} or `null` upon error.
+         * @throws GLib.Error
          */
         spawn_with_flags(flags: Gio.SubprocessFlags): Gio.Subprocess;
 
@@ -42785,6 +42830,9 @@ export namespace Foundry {
         static register(regex: GLib.Regex): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         create_producer(): number;
 
         get_fd(): number;
@@ -43517,7 +43565,7 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            started: (arg0: Gio.Subprocess) => void;
+            started: (object: Gio.Subprocess) => void;
             /**
              * @signal
              * @run-last
@@ -46297,7 +46345,7 @@ export namespace Foundry {
              * @detailed
              * @run-last
              */
-            changed: (arg0: string) => void;
+            changed: (object: string) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::schema-id": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
@@ -46306,20 +46354,20 @@ export namespace Foundry {
              * @detailed
              * @run-last
              */
-            "changed::path": (arg0: string) => void;
+            "changed::path": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::schema-id": (arg0: string) => void;
+            "changed::schema-id": (object: string) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "changed::context": (arg0: string) => void;
-            [key: `changed::${string}`]: (arg0: string) => void;
+            "changed::context": (object: string) => void;
+            [key: `changed::${string}`]: (object: string) => void;
         }
 
         // Constructor properties interface
@@ -49978,7 +50026,7 @@ export namespace Foundry {
              * @since 1.1
              * @run-last
              */
-            saved: (arg0: Gio.File) => void;
+            saved: (file: Gio.File) => void;
             "notify::addins": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
             "notify::draft-id": (pspec: GObject.ParamSpec) => void;
@@ -51157,12 +51205,12 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            "document-added": (arg0: Gio.File, arg1: TextDocument) => void;
+            "document-added": (object: Gio.File, p0: TextDocument) => void;
             /**
              * @signal
              * @run-last
              */
-            "document-removed": (arg0: Gio.File) => void;
+            "document-removed": (object: Gio.File) => void;
             /**
              * This signal is emitted whenever a {@link Foundry.TextDocument} managed
              * by the manager emits "saved".
@@ -51170,7 +51218,7 @@ export namespace Foundry {
              * @since 1.1
              * @run-last
              */
-            "document-saved": (arg0: TextDocument) => void;
+            "document-saved": (document: TextDocument) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -52130,7 +52178,7 @@ export namespace Foundry {
              * @signal
              * @run-last
              */
-            changed: (arg0: TextSetting) => void;
+            changed: (object: TextSetting) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
             "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
@@ -53041,12 +53089,14 @@ export namespace Foundry {
          * @param dest_read_fd the FD number in the destination process for the read side (stdin)
          * @param dest_write_fd the FD number in the destination process for the write side (stdout)
          * @returns a {@link Gio.IOStream} if successful; otherwise `null` and   `error` is set.
+         * @throws GLib.Error
          */
         create_stream(dest_read_fd: number, dest_write_fd: number): Gio.IOStream;
 
         /**
          * @param index 
          * @param dest_fd 
+         * @throws GLib.Error
          */
         get(index: number, dest_fd: number): number;
 
@@ -53058,6 +53108,7 @@ export namespace Foundry {
          * @param filename 
          * @param mode 
          * @param dest_fd 
+         * @throws GLib.Error
          */
         open_file(filename: string, mode: number, dest_fd: number): boolean;
 
@@ -53075,6 +53126,7 @@ export namespace Foundry {
 
         /**
          * @param dest_fd 
+         * @throws GLib.Error
          */
         silence_fd(dest_fd: number): boolean;
 
@@ -53092,6 +53144,7 @@ export namespace Foundry {
 
         /**
          * @param other 
+         * @throws GLib.Error
          */
         steal_from(other: UnixFDMap): boolean;
 

@@ -52,12 +52,12 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum ServicesLogLevel {
-        DEBUG,
-        INFO,
-        NOTIFY,
-        WARN,
-        ERROR,
-        FATAL,
+        DEBUG = 0,
+        INFO = 1,
+        NOTIFY = 2,
+        WARN = 3,
+        ERROR = 4,
+        FATAL = 5,
     }
 
 
@@ -86,9 +86,9 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum WidgetsDynamicNotebookTabBarBehavior {
-        ALWAYS,
-        SINGLE,
-        NEVER,
+        ALWAYS = 0,
+        SINGLE = 1,
+        NEVER = 2,
     }
 
 
@@ -103,11 +103,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum WidgetsStorageBarItemDescription {
-        OTHER,
-        AUDIO,
-        VIDEO,
-        PHOTO,
-        APP,
+        OTHER = 0,
+        AUDIO = 1,
+        VIDEO = 2,
+        PHOTO = 3,
+        APP = 4,
         FILES,
     }
 
@@ -123,13 +123,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum CollapseMode {
-        NONE,
-        LEFT,
-        TOP,
-        FIRST,
-        RIGHT,
-        BOTTOM,
-        LAST,
+        NONE = 0,
+        LEFT = 1,
+        TOP = 1,
+        FIRST = 1,
+        RIGHT = 2,
+        BOTTOM = 2,
+        LAST = 2,
     }
 
 
@@ -145,10 +145,10 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @deprecated since 0.4.2
      */
     enum TextStyle {
-        TITLE,
-        H1,
-        H2,
-        H3,
+        TITLE = 0,
+        H1 = 1,
+        H2 = 2,
+        H3 = 3,
     }
 
 
@@ -163,8 +163,8 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum CloseButtonPosition {
-        LEFT,
-        RIGHT,
+        LEFT = 0,
+        RIGHT = 1,
     }
 
 
@@ -179,11 +179,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum SettingsPageStatusType {
-        ERROR,
-        OFFLINE,
-        SUCCESS,
-        WARNING,
-        NONE,
+        ERROR = 0,
+        OFFLINE = 1,
+        SUCCESS = 2,
+        WARNING = 3,
+        NONE = 4,
     }
 
 
@@ -198,153 +198,257 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
      * @gir-type Enum
      */
     enum SettingsColorScheme {
-        NO_PREFERENCE,
-        DARK,
-        LIGHT,
+        NO_PREFERENCE = 0,
+        DARK = 1,
+        LIGHT = 2,
     }
 
 
     /**
      * @deprecated since 0.4.2
+     * @default badge
      */
     const StyleClassBADGE: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default category-expander
      */
     const StyleClassCATEGORY_EXPANDER: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default content-view
      */
     const StyleClassCONTENT_VIEW: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default content-view-window
      */
     const StyleClassCONTENT_VIEW_WINDOW: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default composited
      */
     const StyleClassCOMPOSITED: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default decorated-window
      */
     const StyleClassDECORATED_WINDOW: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default h1
      */
     const StyleClassH1_TEXT: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default h2
      */
     const StyleClassH2_TEXT: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default h3
      */
     const StyleClassH3_TEXT: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default help_button
      */
     const StyleClassHELP_BUTTON: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default overlay-bar
      */
     const StyleClassOVERLAY_BAR: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default popover
      */
     const StyleClassPOPOVER: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default popover_bg
      */
     const StyleClassPOPOVER_BG: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default source-list
      */
     const StyleClassSOURCE_LIST: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default sidebar-pane-separator
      */
     const StyleClassTHIN_PANE_SEPARATOR: string;
 
     /**
      * @deprecated since 0.4.2
+     * @default title
      */
     const StyleClassTITLE_TEXT: string;
 
+    /**
+     * @default accent
+     */
     const STYLE_CLASS_ACCENT: string;
 
     /**
      * @deprecated since 6.0.0
+     * @default avatar
      */
     const STYLE_CLASS_AVATAR: string;
 
+    /**
+     * @default back-button
+     */
     const STYLE_CLASS_BACK_BUTTON: string;
 
+    /**
+     * @default badge
+     */
     const STYLE_CLASS_BADGE: string;
 
+    /**
+     * @default card
+     */
     const STYLE_CLASS_CARD: string;
 
+    /**
+     * @default category-expander
+     */
     const STYLE_CLASS_CATEGORY_EXPANDER: string;
 
+    /**
+     * @default checkerboard
+     */
     const STYLE_CLASS_CHECKERBOARD: string;
 
+    /**
+     * @default color-button
+     */
     const STYLE_CLASS_COLOR_BUTTON: string;
 
+    /**
+     * @default default-decoration
+     */
     const STYLE_CLASS_DEFAULT_DECORATION: string;
 
+    /**
+     * @default h1
+     */
     const STYLE_CLASS_H1_LABEL: string;
 
+    /**
+     * @default h2
+     */
     const STYLE_CLASS_H2_LABEL: string;
 
+    /**
+     * @default h3
+     */
     const STYLE_CLASS_H3_LABEL: string;
 
+    /**
+     * @default h4
+     */
     const STYLE_CLASS_H4_LABEL: string;
 
+    /**
+     * @default keycap
+     */
     const STYLE_CLASS_KEYCAP: string;
 
+    /**
+     * @default mode-switch
+     */
     const STYLE_CLASS_MODE_SWITCH: string;
 
+    /**
+     * @default overlay-bar
+     */
     const STYLE_CLASS_OVERLAY_BAR: string;
 
+    /**
+     * @default primary
+     */
     const STYLE_CLASS_PRIMARY_LABEL: string;
 
+    /**
+     * @default rounded
+     */
     const STYLE_CLASS_ROUNDED: string;
 
+    /**
+     * @default seek-bar
+     */
     const STYLE_CLASS_SEEKBAR: string;
 
+    /**
+     * @default small-label
+     */
     const STYLE_CLASS_SMALL_LABEL: string;
 
+    /**
+     * @default source-list
+     */
     const STYLE_CLASS_SOURCE_LIST: string;
 
+    /**
+     * @default storage-bar
+     */
     const STYLE_CLASS_STORAGEBAR: string;
 
+    /**
+     * @default terminal
+     */
     const STYLE_CLASS_TERMINAL: string;
 
+    /**
+     * @default welcome
+     */
     const STYLE_CLASS_WELCOME: string;
 
+    /**
+     * @default warmth
+     */
     const STYLE_CLASS_WARMTH: string;
 
+    /**
+     * @default temperature
+     */
     const STYLE_CLASS_TEMPERATURE: string;
 
+    /**
+     * @default 200
+     */
     const TRANSITION_DURATION_CLOSE: number;
 
+    /**
+     * @default 100
+     */
     const TRANSITION_DURATION_IN_PLACE: number;
 
+    /**
+     * @default 250
+     */
     const TRANSITION_DURATION_OPEN: number;
 
+    /**
+     * @default <span weight="600" size="smaller" alpha="75%">%s</span>
+     */
     const TOOLTIP_SECONDARY_TEXT_MARKUP: string;
 
     /**
@@ -393,6 +497,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_badge_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -413,6 +518,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_badge_visible_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -433,6 +539,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_progress_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -453,6 +560,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -1286,19 +1394,19 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            done: (arg0: number) => void;
+            done: (exit: number) => void;
             /**
              * @signal
              */
-            "output-changed": (arg0: string) => void;
+            "output-changed": (text: string) => void;
             /**
              * @signal
              */
-            "standard-changed": (arg0: string) => void;
+            "standard-changed": (text: string) => void;
             /**
              * @signal
              */
-            "error-changed": (arg0: string) => void;
+            "error-changed": (text: string) => void;
         }
 
         // Constructor properties interface
@@ -2583,31 +2691,31 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            "tab-added": (arg0: WidgetsTab) => void;
+            "tab-added": (tab: WidgetsTab) => void;
             /**
              * @signal
              */
-            "tab-removed": (arg0: WidgetsTab) => void;
+            "tab-removed": (tab: WidgetsTab) => void;
             /**
              * @signal
              */
-            "tab-switched": (arg0: WidgetsTab | null, arg1: WidgetsTab) => void;
+            "tab-switched": (old_tab: WidgetsTab | null, new_tab: WidgetsTab) => void;
             /**
              * @signal
              */
-            "tab-reordered": (arg0: WidgetsTab, arg1: number) => void;
+            "tab-reordered": (tab: WidgetsTab, new_pos: number) => void;
             /**
              * @signal
              */
-            "tab-moved": (arg0: WidgetsTab, arg1: number, arg2: number) => void;
+            "tab-moved": (tab: WidgetsTab, x: number, y: number) => void;
             /**
              * @signal
              */
-            "tab-duplicated": (arg0: WidgetsTab) => void;
+            "tab-duplicated": (duplicated_tab: WidgetsTab) => void;
             /**
              * @signal
              */
-            "tab-restored": (arg0: string, arg1: string, arg2: Gio.Icon | null) => void;
+            "tab-restored": (label: string, data: string, icon: Gio.Icon | null) => void;
             /**
              * @signal
              */
@@ -2615,7 +2723,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            "close-tab-requested": (arg0: WidgetsTab) => boolean | void;
+            "close-tab-requested": (tab: WidgetsTab) => boolean | void;
             "notify::n-tabs": (pspec: GObject.ParamSpec) => void;
             "notify::show-tabs": (pspec: GObject.ParamSpec) => void;
             "notify::tabs-closable": (pspec: GObject.ParamSpec) => void;
@@ -3038,15 +3146,15 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            "mode-added": (arg0: number, arg1: Gtk.Widget) => void;
+            "mode-added": (index: number, widget: Gtk.Widget) => void;
             /**
              * @signal
              */
-            "mode-removed": (arg0: number, arg1: Gtk.Widget) => void;
+            "mode-removed": (index: number, widget: Gtk.Widget) => void;
             /**
              * @signal
              */
-            "mode-changed": (arg0: Gtk.Widget) => void;
+            "mode-changed": (widget: Gtk.Widget) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -3361,7 +3469,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            "item-selected": (arg0: WidgetsSourceListItem | null) => void;
+            "item-selected": (item: WidgetsSourceListItem | null) => void;
             "notify::root": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
             "notify::ellipsize-mode": (pspec: GObject.ParamSpec) => void;
@@ -3606,7 +3714,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            edited: (arg0: string) => void;
+            edited: (new_name: string) => void;
             /**
              * @signal
              */
@@ -3822,11 +3930,11 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            "child-added": (arg0: WidgetsSourceListItem) => void;
+            "child-added": (item: WidgetsSourceListItem) => void;
             /**
              * @signal
              */
-            "child-removed": (arg0: WidgetsSourceListItem) => void;
+            "child-removed": (item: WidgetsSourceListItem) => void;
             /**
              * @signal
              */
@@ -4595,7 +4703,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
             /**
              * @signal
              */
-            activated: (arg0: number) => void;
+            activated: (index: number) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::subtitle": (pspec: GObject.ParamSpec) => void;
             "notify::above-child": (pspec: GObject.ParamSpec) => void;
@@ -5621,6 +5729,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         set_from_gicon_finish(_res_: Gio.AsyncResult): void;
 
@@ -5649,6 +5758,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         set_from_icon_name_finish(_res_: Gio.AsyncResult): void;
 
@@ -5683,6 +5793,7 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         set_from_file_finish(_res_: Gio.AsyncResult): void;
     }
@@ -7854,11 +7965,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
 
         /**
          * @param file 
+         * @throws GLib.Error
          */
         execute_with_file(file: Gio.File): void;
 
         /**
          * @param files 
+         * @throws GLib.Error
          */
         execute_with_files(files: Gio.File[]): void;
     }

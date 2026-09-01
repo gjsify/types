@@ -41,17 +41,20 @@ export namespace UnityExtras {
 
     /**
      * @param _res_ 
+     * @throws GLib.Error
      */
     function show_in_folder_finish(_res_: Gio.AsyncResult): void;
 
     /**
      * @param name 
+     * @throws GLib.Error
      */
     function dbus_name_has_owner(name: string): boolean;
 
     /**
      * @param name 
      * @param scope_creation_cb 
+     * @throws GLib.Error
      */
     function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application | null;
 
@@ -68,7 +71,7 @@ export namespace UnityExtras {
             /**
              * @signal
              */
-            progress: (arg0: string, arg1: never, arg2: number) => void;
+            progress: (uri: string, state: never, progress: number) => void;
         }
 
         // Constructor properties interface
@@ -130,6 +133,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         play_finish(_res_: Gio.AsyncResult): void;
 
@@ -147,6 +151,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         pause_finish(_res_: Gio.AsyncResult): void;
 
@@ -164,6 +169,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         pause_resume_finish(_res_: Gio.AsyncResult): void;
 
@@ -181,6 +187,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         resume_finish(_res_: Gio.AsyncResult): void;
 
@@ -198,6 +205,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         stop_finish(_res_: Gio.AsyncResult): void;
 
@@ -215,6 +223,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         close_finish(_res_: Gio.AsyncResult): void;
 
@@ -237,6 +246,7 @@ export namespace UnityExtras {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         video_properties_finish(_res_: Gio.AsyncResult): { [key: string]: GLib.Variant };
     }

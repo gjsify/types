@@ -37,27 +37,27 @@ export namespace ECal {
         /**
          * No such calendar
          */
-        NO_SUCH_CALENDAR,
+        NO_SUCH_CALENDAR = 0,
         /**
          * Object not found
          */
-        OBJECT_NOT_FOUND,
+        OBJECT_NOT_FOUND = 1,
         /**
          * Invalid object
          */
-        INVALID_OBJECT,
+        INVALID_OBJECT = 2,
         /**
          * Unknown user
          */
-        UNKNOWN_USER,
+        UNKNOWN_USER = 3,
         /**
          * Object ID already exists
          */
-        OBJECT_ID_ALREADY_EXISTS,
+        OBJECT_ID_ALREADY_EXISTS = 4,
         /**
          * Invalid range
          */
-        INVALID_RANGE,
+        INVALID_RANGE = 5,
     }
 
 
@@ -77,15 +77,15 @@ export namespace ECal {
         /**
          * Events calander
          */
-        EVENTS,
+        EVENTS = 0,
         /**
          * Task list calendar
          */
-        TASKS,
+        TASKS = 1,
         /**
          * Memo list calendar
          */
-        MEMOS,
+        MEMOS = 2,
     }
 
 
@@ -104,27 +104,27 @@ export namespace ECal {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Audio
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * Display message
          */
-        DISPLAY,
+        DISPLAY = 2,
         /**
          * Email
          */
-        EMAIL,
+        EMAIL = 3,
         /**
          * Procedure
          */
-        PROCEDURE,
+        PROCEDURE = 4,
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 5,
     }
 
 
@@ -139,10 +139,10 @@ export namespace ECal {
      * @gir-type Enum
      */
     enum ComponentAlarmTriggerKind {
-        NONE,
-        RELATIVE_START,
-        RELATIVE_END,
-        ABSOLUTE,
+        NONE = 0,
+        RELATIVE_START = 1,
+        RELATIVE_END = 2,
+        ABSOLUTE = 3,
     }
 
 
@@ -161,23 +161,23 @@ export namespace ECal {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Public
          */
-        PUBLIC,
+        PUBLIC = 1,
         /**
          * Private
          */
-        PRIVATE,
+        PRIVATE = 2,
         /**
          * Confidential
          */
-        CONFIDENTIAL,
+        CONFIDENTIAL = 3,
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 4,
     }
 
 
@@ -196,11 +196,11 @@ export namespace ECal {
         /**
          * Date and time
          */
-        DATETIME,
+        DATETIME = 0,
         /**
          * Duration
          */
-        DURATION,
+        DURATION = 1,
     }
 
 
@@ -219,15 +219,15 @@ export namespace ECal {
         /**
          * Single
          */
-        SINGLE,
+        SINGLE = 0,
         /**
          * This and prior
          */
-        THISPRIOR,
+        THISPRIOR = 1,
         /**
          * This and future
          */
-        THISFUTURE,
+        THISFUTURE = 2,
     }
 
 
@@ -246,19 +246,19 @@ export namespace ECal {
         /**
          * None
          */
-        NONE,
+        NONE = 0,
         /**
          * Transparent
          */
-        TRANSPARENT,
+        TRANSPARENT = 1,
         /**
          * Opaque
          */
-        OPAQUE,
+        OPAQUE = 2,
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 3,
     }
 
 
@@ -279,27 +279,27 @@ export namespace ECal {
         /**
          * Unknown or unsupported component type
          */
-        NO_TYPE,
+        NO_TYPE = 0,
         /**
          * vEvent type
          */
-        EVENT,
+        EVENT = 1,
         /**
          * vTodo type
          */
-        TODO,
+        TODO = 2,
         /**
          * vJournal type
          */
-        JOURNAL,
+        JOURNAL = 3,
         /**
          * vFreeBusy type
          */
-        FREEBUSY,
+        FREEBUSY = 4,
         /**
          * vTimezone type
          */
-        TIMEZONE,
+        TIMEZONE = 5,
     }
 
 
@@ -319,31 +319,33 @@ export namespace ECal {
         /**
          * No unit is set
          */
-        NONE,
+        NONE = -1,
         /**
          * interval is in minutes
          */
-        MINUTES,
+        MINUTES = 0,
         /**
          * interval is in hours
          */
-        HOURS,
+        HOURS = 1,
         /**
          * interval is in days
          */
-        DAYS,
+        DAYS = 2,
     }
 
 
     /**
      * An email address preferred for e-mail reminders by the calendar.
      * @since 3.2
+     * @default alarm-email-address
      */
     const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string;
 
     /**
      * An email address associated with the calendar.
      * @since 3.2
+     * @default cal-email-address
      */
     const BACKEND_PROPERTY_CAL_EMAIL_ADDRESS: string;
 
@@ -351,6 +353,7 @@ export namespace ECal {
      * A default object for the calendar. Calendars use VEVENT, memo lists VJOURNAL
      * and task lists VTODO, which can have prefilled values by the backend.
      * @since 3.2
+     * @default default-object
      */
     const BACKEND_PROPERTY_DEFAULT_OBJECT: string;
 
@@ -359,26 +362,33 @@ export namespace ECal {
      * a quick check to see if data has changed at all since the
      * last time the calendar revision was observed.
      * @since 3.4
+     * @default revision
      */
     const BACKEND_PROPERTY_REVISION: string;
 
     /**
      * Extension property for alarm components so that we can reference them by UID.
      * @since 3.34
+     * @default X-EVOLUTION-ALARM-UID
      */
     const EVOLUTION_ALARM_UID_PROPERTY: string;
 
     /**
      * The X parameter name being used to store the enddate in RRULE and EXRULE properties.
      * @since 3.34
+     * @default X-EVOLUTION-ENDDATE
      */
     const EVOLUTION_ENDDATE_PARAMETER: string;
 
+    /**
+     * @default 1
+     */
     const LIBICAL_GLIB_UNSTABLE_API: number;
 
     /**
      * Flag indicating that the backend supports alarm description
      * @since 3.8
+     * @default alarm-description
      */
     const STATIC_CAPABILITY_ALARM_DESCRIPTION: string;
 
@@ -386,24 +396,28 @@ export namespace ECal {
      * Let the client know that it should store All Day event times as time
      * with a time zone, rather than as a date.
      * @since 3.18
+     * @default all-day-event-as-time
      */
     const STATIC_CAPABILITY_ALL_DAY_EVENT_AS_TIME: string;
 
     /**
      * Flag indicating that the backend supports bulk additions.
      * @since 3.6
+     * @default bulk-adds
      */
     const STATIC_CAPABILITY_BULK_ADDS: string;
 
     /**
      * Flag indicating that the backend supports bulk modifications.
      * @since 3.6
+     * @default bulk-modifies
      */
     const STATIC_CAPABILITY_BULK_MODIFIES: string;
 
     /**
      * Flag indicating that the backend supports bulk removals.
      * @since 3.6
+     * @default bulk-removes
      */
     const STATIC_CAPABILITY_BULK_REMOVES: string;
 
@@ -411,18 +425,29 @@ export namespace ECal {
      * When the capability is set, the client supports storing color
      * for individual components.
      * @since 3.30
+     * @default component-color
      */
     const STATIC_CAPABILITY_COMPONENT_COLOR: string;
 
     /**
      * @since 2.26
+     * @default create-messages
      */
     const STATIC_CAPABILITY_CREATE_MESSAGES: string;
 
+    /**
+     * @default delegate-support
+     */
     const STATIC_CAPABILITY_DELEGATE_SUPPORTED: string;
 
+    /**
+     * @default delegate-to-many
+     */
     const STATIC_CAPABILITY_DELEGATE_TO_MANY: string;
 
+    /**
+     * @default has-unaccepted-meeting
+     */
     const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string;
 
     /**
@@ -433,75 +458,146 @@ export namespace ECal {
      * The backend checks {@link ECal.OperationFlags.DISABLE_ITIP_MESSAGE} flag when these
      * capabilities are present and sends or does not send iTip message accordingly.
      * @since 3.50
+     * @default itip-suppress-on-remove-supported
      */
     const STATIC_CAPABILITY_ITIP_SUPPRESS_ON_REMOVE_SUPPORTED: string;
 
     /**
      * Flag indicating that the backend does not support alarm after start the event
      * @since 3.8
+     * @default no-alarm-after-start
      */
     const STATIC_CAPABILITY_NO_ALARM_AFTER_START: string;
 
+    /**
+     * @default no-alarm-repeat
+     */
     const STATIC_CAPABILITY_NO_ALARM_REPEAT: string;
 
+    /**
+     * @default no-audio-alarms
+     */
     const STATIC_CAPABILITY_NO_AUDIO_ALARMS: string;
 
+    /**
+     * @default no-conv-to-assign-task
+     */
     const STATIC_CAPABILITY_NO_CONV_TO_ASSIGN_TASK: string;
 
+    /**
+     * @default no-conv-to-recur
+     */
     const STATIC_CAPABILITY_NO_CONV_TO_RECUR: string;
 
+    /**
+     * @default no-display-alarms
+     */
     const STATIC_CAPABILITY_NO_DISPLAY_ALARMS: string;
 
+    /**
+     * @default no-email-alarms
+     */
     const STATIC_CAPABILITY_NO_EMAIL_ALARMS: string;
 
+    /**
+     * @default no-general-options
+     */
     const STATIC_CAPABILITY_NO_GEN_OPTIONS: string;
 
+    /**
+     * @default no-memo-start-date
+     */
     const STATIC_CAPABILITY_NO_MEMO_START_DATE: string;
 
+    /**
+     * @default no-organizer
+     */
     const STATIC_CAPABILITY_NO_ORGANIZER: string;
 
+    /**
+     * @default no-procedure-alarms
+     */
     const STATIC_CAPABILITY_NO_PROCEDURE_ALARMS: string;
 
+    /**
+     * @default no-task-assignment
+     */
     const STATIC_CAPABILITY_NO_TASK_ASSIGNMENT: string;
 
+    /**
+     * @default no-thisandfuture
+     */
     const STATIC_CAPABILITY_NO_THISANDFUTURE: string;
 
+    /**
+     * @default no-thisandprior
+     */
     const STATIC_CAPABILITY_NO_THISANDPRIOR: string;
 
+    /**
+     * @default no-transparency
+     */
     const STATIC_CAPABILITY_NO_TRANSPARENCY: string;
 
+    /**
+     * @default one-alarm-only
+     */
     const STATIC_CAPABILITY_ONE_ALARM_ONLY: string;
 
+    /**
+     * @default organizer-must-accept
+     */
     const STATIC_CAPABILITY_ORGANIZER_MUST_ACCEPT: string;
 
+    /**
+     * @default organizer-must-attend
+     */
     const STATIC_CAPABILITY_ORGANIZER_MUST_ATTEND: string;
 
+    /**
+     * @default organizer-not-email-address
+     */
     const STATIC_CAPABILITY_ORGANIZER_NOT_EMAIL_ADDRESS: string;
 
+    /**
+     * @default recurrences-no-master-object
+     */
     const STATIC_CAPABILITY_RECURRENCES_NO_MASTER: string;
 
     /**
      * @since 2.30
+     * @default refresh-supported
      */
     const STATIC_CAPABILITY_REFRESH_SUPPORTED: string;
 
+    /**
+     * @default remove-alarms
+     */
     const STATIC_CAPABILITY_REMOVE_ALARMS: string;
 
     /**
      * FIXME: Document me.
      * @since 3.2
+     * @default remove-only-this
      */
     const STATIC_CAPABILITY_REMOVE_ONLY_THIS: string;
 
+    /**
+     * @default require-send-options
+     */
     const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string;
 
     /**
      * Set, when the backend supports retract. That's a way to ask for a meeting
      * deletion with a comment, which is stored in a component as the COMMENT property.
      * @since 3.50
+     * @default retract-supported
      */
     const STATIC_CAPABILITY_RETRACT_SUPPORTED: string;
 
+    /**
+     * @default save-schedules
+     */
     const STATIC_CAPABILITY_SAVE_SCHEDULES: string;
 
     /**
@@ -509,6 +605,7 @@ export namespace ECal {
      * which means it stores only memo description. The summary can be changed
      * by the backend, if needed.
      * @since 3.38
+     * @default simple-memo
      */
     const STATIC_CAPABILITY_SIMPLE_MEMO: string;
 
@@ -516,6 +613,7 @@ export namespace ECal {
      * Similar to the `E_CAL_STATIC_CAPABILITY_SIMPLE_MEMO`, except the backend stores
      * the description and the summary separately.
      * @since 3.42
+     * @default simple-memo-with-summary
      */
     const STATIC_CAPABILITY_SIMPLE_MEMO_WITH_SUMMARY: string;
 
@@ -523,6 +621,7 @@ export namespace ECal {
      * When the capability is set, the client can store and provide recurring
      * tasks, otherwise it cannot.
      * @since 3.30
+     * @default task-can-recur
      */
     const STATIC_CAPABILITY_TASK_CAN_RECUR: string;
 
@@ -531,12 +630,14 @@ export namespace ECal {
      * can be entered only as dates. When the capability is not set, then these
      * can be date and time.
      * @since 3.24
+     * @default task-date-only
      */
     const STATIC_CAPABILITY_TASK_DATE_ONLY: string;
 
     /**
      * Set, when the backend supports ESTIMATED-DURATION property for tasks.
      * @since 3.44
+     * @default task-estimated-duration
      */
     const STATIC_CAPABILITY_TASK_ESTIMATED_DURATION: string;
 
@@ -544,6 +645,7 @@ export namespace ECal {
      * When the capability is set, the backend handles task recurrence
      * completion on its own. This does not imply E_CAL_STATIC_CAPABILITY_TASK_CAN_RECUR.
      * @since 3.34
+     * @default task-handle-recur
      */
     const STATIC_CAPABILITY_TASK_HANDLE_RECUR: string;
 
@@ -551,6 +653,7 @@ export namespace ECal {
      * When the capability is set, the client cannot store reminders
      * on tasks, otherwise it can.
      * @since 3.30
+     * @default task-no-alarm
      */
     const STATIC_CAPABILITY_TASK_NO_ALARM: string;
 
@@ -558,6 +661,7 @@ export namespace ECal {
      * Set, when the backend can save meetings only if the organizer is
      * the calendar user.
      * @since 3.56
+     * @default user-is-organizer-only
      */
     const STATIC_CAPABILITY_USER_IS_ORGANIZER_ONLY: string;
 
@@ -657,6 +761,7 @@ export namespace ECal {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns `true` if the component was changed, `false` otherwise
      * @since 2.32
+     * @throws GLib.Error
      */
     function recur_ensure_end_dates(comp: Component, refresh: boolean, tz_cb: RecurResolveTimezoneCb, cancellable: Gio.Cancellable | null): boolean;
 
@@ -685,6 +790,7 @@ export namespace ECal {
      * @param cancellable a {@link Gio.Cancellable}; can be `null`
      * @returns `true` if successful (when all instances had been returned), `false` otherwise.
      * @since 3.20
+     * @throws GLib.Error
      */
     function recur_generate_instances_sync(icalcomp: ICalGLib.Component, interval_start: ICalGLib.Time, interval_end: ICalGLib.Time, callback: RecurInstanceCb, get_tz_callback: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1275,6 +1381,7 @@ export namespace ECal {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns a list of all the alarms found    for the given component in the given time range.
      * @since 3.48
+     * @throws GLib.Error
      */
     function util_generate_alarms_for_uid_sync(client: null, uid: string, start: bigint | number, end: bigint | number, omit: ComponentAlarmAction, resolve_tzid: RecurResolveTimezoneCb, default_timezone: ICalGLib.Timezone, def_reminder_before_start_seconds: number, cancellable: Gio.Cancellable | null): ComponentAlarms | null;
 
@@ -1409,6 +1516,7 @@ export namespace ECal {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
      * @since 3.30
+     * @throws GLib.Error
      */
     function util_init_recur_task_sync(vtodo: ICalGLib.Component, cal_client: Client, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1420,6 +1528,7 @@ export namespace ECal {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
      * @since 3.40
+     * @throws GLib.Error
      */
     function util_inline_local_attachments_sync(component: ICalGLib.Component, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1456,6 +1565,7 @@ export namespace ECal {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns Whether succeeded.
      * @since 3.30
+     * @throws GLib.Error
      */
     function util_mark_task_complete_sync(vtodo: ICalGLib.Component, completed_time: bigint | number, cal_client: Client, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1743,13 +1853,13 @@ export namespace ECal {
         /**
          * Symbolic value for no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * If this flag is set then all objects matching the view's query will
          *   be sent as notifications when starting the view, otherwise only future
          *   changes will be reported.  The default for an {@link ECal.ClientView} is `true`.
          */
-        NOTIFY_INITIAL,
+        NOTIFY_INITIAL = 1,
     }
 
 
@@ -1769,23 +1879,23 @@ export namespace ECal {
         /**
          * Modify this component
          */
-        THIS,
+        THIS = 1,
         /**
          * Modify this component and all prior occurrances
          */
-        THIS_AND_PRIOR,
+        THIS_AND_PRIOR = 2,
         /**
          * Modify this component and all future occurrances
          */
-        THIS_AND_FUTURE,
+        THIS_AND_FUTURE = 4,
         /**
          * Modify all occurrances of this component
          */
-        ALL,
+        ALL = 7,
         /**
          * Modify only this component
          */
-        ONLY_THIS,
+        ONLY_THIS = 8,
     }
 
 
@@ -1808,37 +1918,37 @@ export namespace ECal {
         /**
          * no operation flags defined
          */
-        NONE,
+        NONE = 0,
         /**
          * conflict resolution mode, to fail and do not
          *    do any changes, when a conflict is detected
          */
-        CONFLICT_FAIL,
+        CONFLICT_FAIL = 1,
         /**
          * conflict resolution mode, to use newer
          *    of the local and the server side data, when a conflict is detected
          */
-        CONFLICT_USE_NEWER,
+        CONFLICT_USE_NEWER = 2,
         /**
          * conflict resolution mode, to use
          *    the server data (and local changed), when a conflict is detected
          */
-        CONFLICT_KEEP_SERVER,
+        CONFLICT_KEEP_SERVER = 4,
         /**
          * conflict resolution mode, to use
          *    local data (and always overwrite server data), when a conflict is detected
          */
-        CONFLICT_KEEP_LOCAL,
+        CONFLICT_KEEP_LOCAL = 0,
         /**
          * conflict resolution mode, to create
          *    a copy of the data, when a conflict is detected
          */
-        CONFLICT_WRITE_COPY,
+        CONFLICT_WRITE_COPY = 8,
         /**
          * request to disable send of an iTip
          *    message by the server; this works only for servers which support iTip handling
          */
-        DISABLE_ITIP_MESSAGE,
+        DISABLE_ITIP_MESSAGE = 16,
     }
 
 
@@ -1859,17 +1969,17 @@ export namespace ECal {
          * no extra flags, either returns `null` or the recurrence description,
          *    something like "Every 2 weeks..."
          */
-        NONE,
+        NONE = 0,
         /**
          * either returns `null` or the recurrence description prefixed
          *    with text like "The meeting recurs", forming something like "The meeting recurs every 2 weeks..."
          */
-        PREFIXED,
+        PREFIXED = 1,
         /**
          * returns `null` only if the component doesn't recur,
          *    otherwise returns either the recurrence description or at least text like "The meeting recurs"
          */
-        FALLBACK,
+        FALLBACK = 2,
     }
 
 
@@ -1882,12 +1992,12 @@ export namespace ECal {
         /**
          * None flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Returned description will contain
          *    also markup. Without it it'll be a plain text.
          */
-        MARKUP,
+        MARKUP = 2,
     }
 
 
@@ -1898,7 +2008,7 @@ export namespace ECal {
              * @signal
              * @run-first
              */
-            "free-busy-data": (arg0: Component[]) => void;
+            "free-busy-data": (free_busy_ecalcomps: Component[]) => void;
             "notify::default-timezone": (pspec: GObject.ParamSpec) => void;
             "notify::source-type": (pspec: GObject.ParamSpec) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
@@ -2188,6 +2298,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         add_timezone_finish(result: Gio.AsyncResult): boolean;
 
@@ -2197,6 +2308,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         add_timezone_sync(zone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2284,6 +2396,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         create_object_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -2298,6 +2411,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         create_object_sync(icalcomp: ICalGLib.Component, opflags: OperationFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2349,6 +2463,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         create_objects_finish(result: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -2364,6 +2479,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         create_objects_sync(icalcomps: ICalGLib.Component[], opflags: OperationFlags, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -2413,6 +2529,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         discard_alarm_finish(result: Gio.AsyncResult): boolean;
 
@@ -2425,6 +2542,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         discard_alarm_sync(uid: string, rid: string | null, auid: string, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2555,6 +2673,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_attachment_uris_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -2566,6 +2685,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_attachment_uris_sync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -2615,6 +2735,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_default_object_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component];
 
@@ -2625,6 +2746,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_default_object_sync(cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Component];
 
@@ -2689,6 +2811,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_free_busy_finish(result: Gio.AsyncResult): [boolean, Component[]];
 
@@ -2703,6 +2826,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_free_busy_sync(start: bigint | number, end: bigint | number, users: string[], cancellable: Gio.Cancellable | null): [boolean, Component[]];
 
@@ -2776,6 +2900,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component];
 
@@ -2856,6 +2981,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_as_comps_finish(result: Gio.AsyncResult): [boolean, Component[]];
 
@@ -2868,6 +2994,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_as_comps_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, Component[]];
 
@@ -2878,6 +3005,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Component[]];
 
@@ -2890,6 +3018,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_list_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Component[]];
 
@@ -2908,6 +3037,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_object_sync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Component];
 
@@ -2957,6 +3087,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_objects_for_uid_finish(result: Gio.AsyncResult): [boolean, Component[]];
 
@@ -2969,6 +3100,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_objects_for_uid_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, Component[]];
 
@@ -3024,6 +3156,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_timezone_finish(result: Gio.AsyncResult): [boolean, ICalGLib.Timezone];
 
@@ -3034,6 +3167,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_timezone_sync(tzid: string, cancellable: Gio.Cancellable | null): [boolean, ICalGLib.Timezone];
 
@@ -3076,6 +3210,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_finish(result: Gio.AsyncResult): [boolean, ClientView];
 
@@ -3087,6 +3222,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, ClientView];
 
@@ -3154,6 +3290,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         modify_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -3171,6 +3308,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         modify_object_sync(icalcomp: ICalGLib.Component, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3238,6 +3376,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         modify_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -3255,6 +3394,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         modify_objects_sync(icalcomps: ICalGLib.Component[], mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3307,6 +3447,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         receive_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -3319,6 +3460,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         receive_objects_sync(icalcomp: ICalGLib.Component, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3383,6 +3525,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_object_finish(result: Gio.AsyncResult): boolean;
 
@@ -3399,6 +3542,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_object_sync(uid: string, rid: string | null, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3457,6 +3601,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         remove_objects_finish(result: Gio.AsyncResult): boolean;
 
@@ -3471,6 +3616,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.6
+         * @throws GLib.Error
          */
         remove_objects_sync(ids: ComponentId[], mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3521,6 +3667,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         send_objects_finish(result: Gio.AsyncResult): [boolean, string[], ICalGLib.Component];
 
@@ -3536,6 +3683,7 @@ export namespace ECal {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         send_objects_sync(icalcomp: ICalGLib.Component, opflags: OperationFlags, cancellable: Gio.Cancellable | null): [boolean, string[], ICalGLib.Component];
 
@@ -3710,6 +3858,7 @@ export namespace ECal {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3719,6 +3868,7 @@ export namespace ECal {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Client;
 
@@ -3818,6 +3968,7 @@ export namespace ECal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3875,27 +4026,27 @@ export namespace ECal {
              * @signal
              * @run-first
              */
-            complete: (arg0: GLib.Error) => void;
+            complete: (object: GLib.Error) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-added": (arg0: ICalGLib.Component[]) => void;
+            "objects-added": (objects: ICalGLib.Component[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-modified": (arg0: ICalGLib.Component[]) => void;
+            "objects-modified": (objects: ICalGLib.Component[]) => void;
             /**
              * @signal
              * @run-first
              */
-            "objects-removed": (arg0: ComponentId[]) => void;
+            "objects-removed": (uids: ComponentId[]) => void;
             /**
              * @signal
              * @run-first
              */
-            progress: (arg0: number, arg1: string) => void;
+            progress: (object: number, p0: string) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::object-path": (pspec: GObject.ParamSpec) => void;
@@ -4030,6 +4181,7 @@ export namespace ECal {
          * objects, which will omit stored object parsing. If this cannot be done then
          * it will simply return object as is stored in the cache.
          * @param fields_of_interest List of field names                      in which the client is interested, or `null` to reset                      the fields of interest
+         * @throws GLib.Error
          */
         set_fields_of_interest(fields_of_interest: string[] | null): void;
 
@@ -4037,18 +4189,21 @@ export namespace ECal {
          * Sets the `flags` which control the behaviour of `client_view`.
          * @param flags the {@link ECal.ClientViewFlags} for `client_view`
          * @since 3.6
+         * @throws GLib.Error
          */
         set_flags(flags: ClientViewFlags): void;
 
         /**
          * Tells `client_view` to start processing events.
          * @since 3.2
+         * @throws GLib.Error
          */
         start(): void;
 
         /**
          * Tells `client_view` to stop processing events.
          * @since 3.2
+         * @throws GLib.Error
          */
         stop(): void;
 
@@ -4094,6 +4249,7 @@ export namespace ECal {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5054,7 +5210,7 @@ export namespace ECal {
              * @action
              * @run-last
              */
-            added: (arg0: ComponentBagItem) => void;
+            added: (item: ComponentBagItem) => void;
             /**
              * A signal emitted whenever an existing `item` in the `bag` is changed.
              * It's a complement signal for the ECalComponentBag::added signal,
@@ -5069,7 +5225,7 @@ export namespace ECal {
              * @action
              * @run-last
              */
-            "item-changed": (arg0: ComponentBagItem) => void;
+            "item-changed": (item: ComponentBagItem) => void;
             /**
              * A signal emitted when one or more items are removed from the `bag`.
              * This is not called for `e_cal_component_bag_clear()`
@@ -5078,7 +5234,7 @@ export namespace ECal {
              * @action
              * @run-last
              */
-            removed: (arg0: ComponentBagItem[]) => void;
+            removed: (items: ComponentBagItem[]) => void;
             /**
              * A signal emitted with an array of {@link ECal.ComponentBagItem} structures,
              * whose span changed.
@@ -5091,7 +5247,7 @@ export namespace ECal {
              * @action
              * @run-last
              */
-            "span-changed": (arg0: ComponentBagItem[]) => void;
+            "span-changed": (items: ComponentBagItem[]) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
             "notify::n-spans": (pspec: GObject.ParamSpec) => void;
             "notify::timezone": (pspec: GObject.ParamSpec) => void;
@@ -5405,14 +5561,14 @@ export namespace ECal {
              * @since 3.30
              * @action
              */
-            "format-time": (arg0: ReminderData, arg1: ICalGLib.Time, arg2: null, arg3: number) => void;
+            "format-time": (rd: ReminderData, itt: ICalGLib.Time, inout_buffer: null, buffer_size: number) => void;
             /**
              * Signal is emitted when any reminder is either overdue or triggered.
              * @signal
              * @since 3.30
              * @run-last
              */
-            triggered: (arg0: ReminderData[], arg1: boolean) => void;
+            triggered: (reminders: ReminderData[], snoozed: boolean) => void;
             "notify::default-zone": (pspec: GObject.ParamSpec) => void;
             "notify::registry": (pspec: GObject.ParamSpec) => void;
             "notify::timers-enabled": (pspec: GObject.ParamSpec) => void;
@@ -5632,6 +5788,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns whether succeeded
          * @since 3.30
+         * @throws GLib.Error
          */
         dismiss_all_finish(result: Gio.AsyncResult): boolean;
 
@@ -5642,6 +5799,7 @@ export namespace ECal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded.
          * @since 3.30
+         * @throws GLib.Error
          */
         dismiss_all_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5650,6 +5808,7 @@ export namespace ECal {
          * @param result a {@link Gio.AsyncResult}
          * @returns whether succeeded
          * @since 3.30
+         * @throws GLib.Error
          */
         dismiss_finish(result: Gio.AsyncResult): boolean;
 
@@ -5659,6 +5818,7 @@ export namespace ECal {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.30
+         * @throws GLib.Error
          */
         dismiss_sync(rd: ReminderData, cancellable: Gio.Cancellable | null): boolean;
 

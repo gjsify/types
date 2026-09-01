@@ -40,39 +40,39 @@ export namespace SpiceClientGLib {
         /**
          * no event, or ignored event
          */
-        NONE,
+        NONE = 0,
         /**
          * connection is authentified and ready
          */
-        OPENED,
+        OPENED = 10,
         /**
          * disconnecting from the current host and connecting to the target host.
          */
-        SWITCHING,
+        SWITCHING = 11,
         /**
          * connection is closed normally (sent if channel was ready)
          */
-        CLOSED,
+        CLOSED = 12,
         /**
          * connection error
          */
-        ERROR_CONNECT,
+        ERROR_CONNECT = 20,
         /**
          * SSL error
          */
-        ERROR_TLS,
+        ERROR_TLS = 21,
         /**
          * error during link process
          */
-        ERROR_LINK,
+        ERROR_LINK = 22,
         /**
          * authentication error
          */
-        ERROR_AUTH,
+        ERROR_AUTH = 23,
         /**
          * IO error
          */
-        ERROR_IO,
+        ERROR_IO = 24,
     }
 
 
@@ -133,27 +133,27 @@ export namespace SpiceClientGLib {
         /**
          * This command will cause the VM process to exit gracefully.
          */
-        QUIT,
+        QUIT = 0,
         /**
          * Performs a hard reset of the VM.
          */
-        RESET,
+        RESET = 1,
         /**
          * Performs a power down operation.
          */
-        POWER_DOWN,
+        POWER_DOWN = 2,
         /**
          * Stop all VCPU execution.
          */
-        PAUSE,
+        PAUSE = 3,
         /**
          * Resume all VCPU execution.
          */
-        CONTINUE,
+        CONTINUE = 4,
         /**
          * the last enum value.
          */
-        LAST,
+        LAST = 5,
     }
 
 
@@ -172,40 +172,46 @@ export namespace SpiceClientGLib {
         /**
          * no migration going on
          */
-        NONE,
+        NONE = 0,
         /**
          * the session is switching host (destroy and reconnect)
          */
-        SWITCHING,
+        SWITCHING = 1,
         /**
          * the session is migrating seamlessly (reconnect)
          */
-        MIGRATING,
+        MIGRATING = 2,
         /**
          * the migration is connecting to destination (Since: 0.27)
          */
-        CONNECTING,
+        CONNECTING = 3,
     }
 
 
     /**
      * Spice-Gtk major version component (e.g. 1 if version is 1.2.3)
      * @since 0.24
+     * @default 0
      */
     const GTK_MAJOR_VERSION: number;
 
     /**
      * Spice-Gtk micro version component (e.g. 3 if version is 1.2.3)
      * @since 0.24
+     * @default 0
      */
     const GTK_MICRO_VERSION: number;
 
     /**
      * Spice-Gtk minor version component (e.g. 2 if version is 1.2.3)
      * @since 0.24
+     * @default 43
      */
     const GTK_MINOR_VERSION: number;
 
+    /**
+     * @default /.spice-clipboard
+     */
     const WEBDAV_CLIPBOARD_FOLDER_PATH: string;
 
     /**
@@ -463,6 +469,7 @@ export namespace SpiceClientGLib {
      * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param result a {@link Gio.AsyncResult}.
      * @returns a `true` on success, `false` on error.
+     * @throws GLib.Error
      */
     function main_file_copy_finish(channel: MainChannel, result: Gio.AsyncResult): boolean;
 
@@ -607,6 +614,7 @@ export namespace SpiceClientGLib {
      * @returns a `gssize` containing the number of bytes written to the stream.
      * @since 0.15
      * @deprecated since 0.35: use `spice_port_channel_write_finish()` instead.
+     * @throws GLib.Error
      */
     function port_write_finish(port: PortChannel, result: Gio.AsyncResult): number;
 
@@ -681,15 +689,15 @@ export namespace SpiceClientGLib {
         /**
          * Scroll Lock
          */
-        SCROLL_LOCK,
+        SCROLL_LOCK = 1,
         /**
          * Num Lock
          */
-        NUM_LOCK,
+        NUM_LOCK = 2,
         /**
          * Caps Lock
          */
-        CAPS_LOCK,
+        CAPS_LOCK = 4,
     }
 
 
@@ -708,15 +716,15 @@ export namespace SpiceClientGLib {
         /**
          * verify certificate public key matching
          */
-        PUBKEY,
+        PUBKEY = 1,
         /**
          * verify certificate hostname matching
          */
-        HOSTNAME,
+        HOSTNAME = 2,
         /**
          * verify certificate subject matching
          */
-        SUBJECT,
+        SUBJECT = 4,
     }
 
 
@@ -855,7 +863,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "channel-event": (arg0: ChannelEvent) => void;
+            "channel-event": (event: ChannelEvent) => void;
             /**
              * The {@link SpiceClientGLib.Channel.SignalSignatures.open_fd | SpiceClientGLib.Channel::open-fd} signal is emitted when a new
              * connection is requested. This signal is emitted when the
@@ -863,7 +871,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "open-fd": (arg0: number) => void;
+            "open-fd": (with_tls: number) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
             "notify::channel-type": (pspec: GObject.ParamSpec) => void;
             "notify::socket": (pspec: GObject.ParamSpec) => void;
@@ -1115,6 +1123,7 @@ export namespace SpiceClientGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if flush operation succeeded, `false` otherwise.
          * @since 0.15
+         * @throws GLib.Error
          */
         flush_finish(result: Gio.AsyncResult): boolean;
 
@@ -1175,7 +1184,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "cursor-move": (arg0: number, arg1: number) => void;
+            "cursor-move": (x: number, y: number) => void;
             /**
              * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_reset | SpiceClientGLib.CursorChannel::cursor-reset} signal is emitted to
              * reset the cursor to its default context.
@@ -1190,7 +1199,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.34: Use {@link SpiceClientGLib.CursorChannel.cursor} notify instead.
              * @run-first
              */
-            "cursor-set": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: null) => void;
+            "cursor-set": (width: number, height: number, hot_x: number, hot_y: number, rgba: null) => void;
             "notify::cursor": (pspec: GObject.ParamSpec) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
             "notify::channel-type": (pspec: GObject.ParamSpec) => void;
@@ -1287,7 +1296,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "display-invalidate": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "display-invalidate": (x: number, y: number, width: number, height: number) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_mark | SpiceClientGLib.DisplayChannel::display-mark} signal is emitted when
              * the `RED_DISPLAY_MARK` command is received, and the display
@@ -1295,14 +1304,14 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "display-mark": (arg0: number) => void;
+            "display-mark": (mark: number) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_create | SpiceClientGLib.DisplayChannel::display-primary-create} signal
              * provides main display buffer data.
              * @signal
              * @run-first
              */
-            "display-primary-create": (arg0: number, arg1: number, arg2: number, arg3: number, arg4: number, arg5: null) => void;
+            "display-primary-create": (format: number, width: number, height: number, stride: number, shmid: number, imgdata: null) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_destroy | SpiceClientGLib.DisplayChannel::display-primary-destroy} signal is
              * emitted when the primary surface is freed and should not be
@@ -1320,7 +1329,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @since 0.31
              */
-            "gl-draw": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "gl-draw": (x: number, y: number, width: number, height: number) => void;
             /**
              * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} signal is emitted when
              * pipeline is ready and can be passed to widget to register GStreamer
@@ -1330,13 +1339,13 @@ export namespace SpiceClientGLib {
              * @signal
              * @since 0.36
              */
-            "gst-video-overlay": (arg0: Gst.Pipeline) => boolean | void;
+            "gst-video-overlay": (pipeline: Gst.Pipeline) => boolean | void;
             /**
              * @signal
              * @since 0.35
              * @deprecated since 0.36: use {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} instead
              */
-            "streaming-mode": (arg0: boolean) => null;
+            "streaming-mode": (streaming_mode: boolean) => null;
             "notify::gl-scanout": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::monitors": (pspec: GObject.ParamSpec) => void;
@@ -1489,6 +1498,7 @@ export namespace SpiceClientGLib {
          * @param codecs an array of `ncodecs` `SpiceVideoCodecType` types
          * @returns `true` if the preferred codec list was successfully changed, and `false` otherwise.
          * @since 0.38
+         * @throws GLib.Error
          */
         display_channel_change_preferred_video_codec_types(codecs: number[]): boolean;
 
@@ -1543,7 +1553,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            finished: (arg0: GLib.Error) => void;
+            finished: (object: GLib.Error) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
@@ -1816,7 +1826,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection instead.
              * @run-last
              */
-            "main-clipboard": (arg0: number, arg1: Uint8Array) => void;
+            "main-clipboard": (type: number, data: Uint8Array) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1824,7 +1834,7 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
              * @run-last
              */
-            "main-clipboard-grab": (arg0: number[]) => boolean | void;
+            "main-clipboard-grab": (types: number[]) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1839,14 +1849,14 @@ export namespace SpiceClientGLib {
              * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-request instead.
              * @run-last
              */
-            "main-clipboard-request": (arg0: number) => boolean | void;
+            "main-clipboard-request": (types: number) => boolean | void;
             /**
              * Informs that clipboard selection data are available.
              * @signal
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection": (arg0: number, arg1: number, arg2: Uint8Array) => void;
+            "main-clipboard-selection": (selection: number, type: number, data: Uint8Array) => void;
             /**
              * Inform when clipboard data is available from the guest, and for
              * which `types`.
@@ -1854,7 +1864,7 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-grab": (arg0: number, arg1: number[]) => boolean | void;
+            "main-clipboard-selection-grab": (selection: number, types: number[]) => boolean | void;
             /**
              * Inform when the clipboard is released from the guest, when no
              * clipboard data is available from the guest.
@@ -1862,14 +1872,14 @@ export namespace SpiceClientGLib {
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-release": (arg0: number) => void;
+            "main-clipboard-selection-release": (selection: number) => void;
             /**
              * Request clipboard data from the client.
              * @signal
              * @since 0.6
              * @run-last
              */
-            "main-clipboard-selection-request": (arg0: number, arg1: number) => boolean | void;
+            "main-clipboard-selection-request": (selection: number, types: number) => boolean | void;
             /**
              * Notify when the mouse mode has changed.
              * @signal
@@ -1884,7 +1894,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-last
              */
-            "migration-started": (arg0: GObject.Object) => void;
+            "migration-started": (session: GObject.Object) => void;
             /**
              * This signal is emitted when a new file transfer task has been initiated
              * on this channel. Client applications may take a reference on the `task`
@@ -1893,7 +1903,7 @@ export namespace SpiceClientGLib {
              * @since 0.31
              * @run-last
              */
-            "new-file-transfer": (arg0: GObject.Object) => void;
+            "new-file-transfer": (task: GObject.Object) => void;
             "notify::agent-caps-0": (pspec: GObject.ParamSpec) => void;
             "notify::agent-caps0": (pspec: GObject.ParamSpec) => void;
             "notify::agent-connected": (pspec: GObject.ParamSpec) => void;
@@ -2260,6 +2270,7 @@ export namespace SpiceClientGLib {
          * `spice_main_file_copy_async()`.
          * @param result a {@link Gio.AsyncResult}.
          * @returns a `true` on success, `false` on error.
+         * @throws GLib.Error
          */
         file_copy_finish(result: Gio.AsyncResult): boolean;
 
@@ -2338,7 +2349,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "playback-data": (arg0: null, arg1: number) => void;
+            "playback-data": (data: null, data_size: number) => void;
             /**
              * Notify when the current playback delay is requested
              * @signal
@@ -2351,7 +2362,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "playback-start": (arg0: number, arg1: number, arg2: number) => void;
+            "playback-start": (format: number, channels: number, rate: number) => void;
             /**
              * Notify when the playback should stop.
              * @signal
@@ -2480,7 +2491,7 @@ export namespace SpiceClientGLib {
              * @since 0.15
              * @run-last
              */
-            "port-data": (arg0: null, arg1: number) => void;
+            "port-data": (data: null, size: number) => void;
             /**
              * The {@link SpiceClientGLib.PortChannel.SignalSignatures.port_event | SpiceClientGLib.PortChannel::port-event} signal is emitted when new
              * port event is received.
@@ -2488,7 +2499,7 @@ export namespace SpiceClientGLib {
              * @since 0.15
              * @run-last
              */
-            "port-event": (arg0: number) => void;
+            "port-event": (event: number) => void;
             "notify::port-name": (pspec: GObject.ParamSpec) => void;
             "notify::port-opened": (pspec: GObject.ParamSpec) => void;
             "notify::channel-id": (pspec: GObject.ParamSpec) => void;
@@ -2614,6 +2625,7 @@ export namespace SpiceClientGLib {
          * @param result a {@link Gio.AsyncResult}
          * @returns a `gssize` containing the number of bytes written to the stream.
          * @since 0.35
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): number;
     }
@@ -2628,7 +2640,7 @@ export namespace SpiceClientGLib {
              * @since 0.36
              * @run-first
              */
-            event: (arg0: string, arg1: null) => void;
+            event: (name: string, node: null) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
         }
@@ -2725,6 +2737,7 @@ export namespace SpiceClientGLib {
          * @param result The async {@link Gio.AsyncResult} result
          * @returns The {@link SpiceClientGLib.QmpStatus} result or `null`, in which case `error` will be set.
          * @since 0.36
+         * @throws GLib.Error
          */
         query_status_finish(result: Gio.AsyncResult): QmpStatus;
 
@@ -2758,6 +2771,7 @@ export namespace SpiceClientGLib {
          * Finishes asynchronous VM action and returns the result.
          * @param result The async {@link Gio.AsyncResult} result
          * @since 0.36
+         * @throws GLib.Error
          */
         vm_action_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2772,7 +2786,7 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "record-start": (arg0: number, arg1: number, arg2: number) => void;
+            "record-start": (format: number, channels: number, rate: number) => void;
             /**
              * Notify when the recording should stop.
              * @signal
@@ -2887,13 +2901,13 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "channel-destroy": (arg0: Channel) => void;
+            "channel-destroy": (channel: Channel) => void;
             /**
              * The {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new} signal is emitted each time a {@link SpiceClientGLib.Channel} is created.
              * @signal
              * @run-first
              */
-            "channel-new": (arg0: Channel) => void;
+            "channel-new": (channel: Channel) => void;
             /**
              * The {@link SpiceClientGLib.Session.SignalSignatures.disconnected | SpiceClientGLib.Session::disconnected} signal is emitted when all channels have been destroyed.
              * @signal
@@ -3629,28 +3643,28 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "card-inserted": (arg0: VReader) => void;
+            "card-inserted": (vreader: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_removed | SpiceClientGLib.SmartcardManager::card-removed} signal is emitted whenever
              * a smartcard was removed from a reader.
              * @signal
              * @run-first
              */
-            "card-removed": (arg0: VReader) => void;
+            "card-removed": (vreader: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_added | SpiceClientGLib.SmartcardManager::reader-added} signal is emitted whenever
              * a new smartcard reader (software or hardware) has been plugged in.
              * @signal
              * @run-first
              */
-            "reader-added": (arg0: VReader) => void;
+            "reader-added": (vreader: VReader) => void;
             /**
              * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_removed | SpiceClientGLib.SmartcardManager::reader-removed} signal is emitted whenever
              * a smartcard reader (software or hardware) has been removed.
              * @signal
              * @run-first
              */
-            "reader-removed": (arg0: VReader) => void;
+            "reader-removed": (vreader: VReader) => void;
         }
 
         // Constructor properties interface
@@ -3894,14 +3908,14 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "auto-connect-failed": (arg0: UsbDevice, arg1: GLib.Error) => void;
+            "auto-connect-failed": (device: UsbDevice, error: GLib.Error) => void;
             /**
              * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_added | SpiceClientGLib.UsbDeviceManager::device-added} signal is emitted whenever
              * a new USB device has been plugged in.
              * @signal
              * @run-first
              */
-            "device-added": (arg0: UsbDevice) => void;
+            "device-added": (device: UsbDevice) => void;
             /**
              * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_error | SpiceClientGLib.UsbDeviceManager::device-error} signal is emitted whenever an
              * error happens which causes a device to no longer be available to the
@@ -3909,14 +3923,14 @@ export namespace SpiceClientGLib {
              * @signal
              * @run-first
              */
-            "device-error": (arg0: UsbDevice, arg1: GLib.Error) => void;
+            "device-error": (device: UsbDevice, error: GLib.Error) => void;
             /**
              * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_removed | SpiceClientGLib.UsbDeviceManager::device-removed} signal is emitted whenever
              * an USB device has been removed.
              * @signal
              * @run-first
              */
-            "device-removed": (arg0: UsbDevice) => void;
+            "device-removed": (device: UsbDevice) => void;
             "notify::auto-connect": (pspec: GObject.ParamSpec) => void;
             "notify::auto-connect-filter": (pspec: GObject.ParamSpec) => void;
             "notify::free-channels": (pspec: GObject.ParamSpec) => void;
@@ -4136,6 +4150,7 @@ export namespace SpiceClientGLib {
          * @param file_descriptor an open file descriptor for the USB device.
          * @returns an allocated SpiceUsbDevice instance or `null` in case of failure.
          * @since 0.40
+         * @throws GLib.Error
          */
         allocate_device_for_file_descriptor(file_descriptor: number): UsbDevice | null;
 
@@ -4143,6 +4158,7 @@ export namespace SpiceClientGLib {
          * Checks whether it is possible to redirect the `device`.
          * @param device a {@link SpiceClientGLib.UsbDevice} to disconnect
          * @returns `true` if `device` can be redirected
+         * @throws GLib.Error
          */
         can_redirect_device(device: UsbDevice): boolean;
 
@@ -4179,6 +4195,7 @@ export namespace SpiceClientGLib {
          * Finishes an async operation. See `spice_usb_device_manager_connect_device_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if connection is successful
+         * @throws GLib.Error
          */
         connect_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -4187,6 +4204,7 @@ export namespace SpiceClientGLib {
          * or a physical CD device.
          * @param filename image or device path
          * @returns `true` if device created successfully
+         * @throws GLib.Error
          */
         create_shared_cd_device(filename: string): boolean;
 
@@ -4232,6 +4250,7 @@ export namespace SpiceClientGLib {
          * Finishes an async operation. See `spice_usb_device_manager_disconnect_device_async()`.
          * @param res a {@link Gio.AsyncResult}
          * @returns `true` if disconnection is successful
+         * @throws GLib.Error
          */
         disconnect_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -4312,6 +4331,7 @@ export namespace SpiceClientGLib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

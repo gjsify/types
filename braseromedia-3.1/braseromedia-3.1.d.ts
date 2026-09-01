@@ -37,48 +37,105 @@ export namespace BraseroMedia {
      * @gir-type Enum
      */
     enum MediaError {
-        NONE,
-        GENERAL,
-        IMAGE_INVALID,
+        NONE = 0,
+        GENERAL = 1,
+        IMAGE_INVALID = 2,
     }
 
 
+    /**
+     * @default 16392
+     */
     const MEDIUM_BDRE: number;
 
+    /**
+     * @default 33800
+     */
     const MEDIUM_BDR_RANDOM: number;
 
+    /**
+     * @default 34824
+     */
     const MEDIUM_BDR_SRM: number;
 
+    /**
+     * @default 38920
+     */
     const MEDIUM_BDR_SRM_POW: number;
 
+    /**
+     * @default 65544
+     */
     const MEDIUM_BD_ROM: number;
 
+    /**
+     * @default 32770
+     */
     const MEDIUM_CDR: number;
 
+    /**
+     * @default 65538
+     */
     const MEDIUM_CDROM: number;
 
+    /**
+     * @default 16386
+     */
     const MEDIUM_CDRW: number;
 
+    /**
+     * @default 32900
+     */
     const MEDIUM_DVDR: number;
 
+    /**
+     * @default 16516
+     */
     const MEDIUM_DVDRW: number;
 
+    /**
+     * @default 16452
+     */
     const MEDIUM_DVDRW_PLUS: number;
 
+    /**
+     * @default 16468
+     */
     const MEDIUM_DVDRW_PLUS_DL: number;
 
+    /**
+     * @default 16644
+     */
     const MEDIUM_DVDRW_RESTRICTED: number;
 
+    /**
+     * @default 32916
+     */
     const MEDIUM_DVDR_DL: number;
 
+    /**
+     * @default 33300
+     */
     const MEDIUM_DVDR_JUMP_DL: number;
 
+    /**
+     * @default 32836
+     */
     const MEDIUM_DVDR_PLUS: number;
 
+    /**
+     * @default 32852
+     */
     const MEDIUM_DVDR_PLUS_DL: number;
 
+    /**
+     * @default 36
+     */
     const MEDIUM_DVD_RAM: number;
 
+    /**
+     * @default 65540
+     */
     const MEDIUM_DVD_ROM: number;
 
     /**
@@ -121,18 +178,18 @@ export namespace BraseroMedia {
      * @gir-type Flags
      */
     enum DriveCaps {
-        NONE,
-        CDR,
-        CDRW,
-        DVDR,
-        DVDRW,
-        DVDR_PLUS,
-        DVDRW_PLUS,
-        DVDR_PLUS_DL,
-        DVDRW_PLUS_DL,
-        DVDRAM,
-        BDR,
-        BDRW,
+        NONE = 0,
+        CDR = 1,
+        CDRW = 2,
+        DVDR = 4,
+        DVDRW = 8,
+        DVDR_PLUS = 16,
+        DVDRW_PLUS = 32,
+        DVDR_PLUS_DL = 64,
+        DVDRW_PLUS_DL = 128,
+        DVDRAM = 1024,
+        BDR = 256,
+        BDRW = 512,
     }
 
 
@@ -140,12 +197,12 @@ export namespace BraseroMedia {
      * @gir-type Flags
      */
     enum DriveType {
-        NONE,
-        FILE,
-        WRITER,
-        READER,
-        ALL_BUT_FILE,
-        ALL,
+        NONE = 0,
+        FILE = 1,
+        WRITER = 2,
+        READER = 4,
+        ALL_BUT_FILE = 254,
+        ALL = 255,
     }
 
 
@@ -155,32 +212,32 @@ export namespace BraseroMedia {
      * @gir-type Flags
      */
     enum Media {
-        UNSUPPORTED,
-        BUSY,
-        NONE,
-        FILE,
-        CD,
-        DVD,
-        BD,
-        DUAL_L,
-        RAM,
-        PLUS,
-        SEQUENTIAL,
-        RESTRICTED,
-        JUMP,
-        RANDOM,
-        SRM,
-        POW,
-        REWRITABLE,
-        WRITABLE,
-        ROM,
-        BLANK,
-        CLOSED,
-        APPENDABLE,
-        UNFORMATTED,
-        PROTECTED,
-        HAS_DATA,
-        HAS_AUDIO,
+        UNSUPPORTED = -2,
+        BUSY = -1,
+        NONE = 0,
+        FILE = 1,
+        CD = 2,
+        DVD = 4,
+        BD = 8,
+        DUAL_L = 16,
+        RAM = 32,
+        PLUS = 64,
+        SEQUENTIAL = 128,
+        RESTRICTED = 256,
+        JUMP = 512,
+        RANDOM = 1024,
+        SRM = 2048,
+        POW = 4096,
+        REWRITABLE = 16384,
+        WRITABLE = 32768,
+        ROM = 65536,
+        BLANK = 131072,
+        CLOSED = 262144,
+        APPENDABLE = 524288,
+        UNFORMATTED = 1048576,
+        PROTECTED = 2097152,
+        HAS_DATA = 4194304,
+        HAS_AUDIO = 8388608,
     }
 
 
@@ -188,16 +245,16 @@ export namespace BraseroMedia {
      * @gir-type Flags
      */
     enum MediaType {
-        NONE,
-        FILE,
-        DATA,
-        AUDIO,
-        WRITABLE,
-        REWRITABLE,
-        ANY_IN_BURNER,
-        CD,
-        ALL_BUT_FILE,
-        ALL,
+        NONE = 0,
+        FILE = 1,
+        DATA = 2,
+        AUDIO = 4,
+        WRITABLE = 8,
+        REWRITABLE = 16,
+        ANY_IN_BURNER = 32,
+        CD = 64,
+        ALL_BUT_FILE = 254,
+        ALL = 255,
     }
 
 
@@ -209,13 +266,13 @@ export namespace BraseroMedia {
              * @signal
              * @run-last
              */
-            "medium-added": (arg0: Medium) => void;
+            "medium-added": (medium: Medium) => void;
             /**
              * This signal gets emitted when a medium is not longer available
              * @signal
              * @run-last
              */
-            "medium-removed": (arg0: Medium) => void;
+            "medium-removed": (medium: Medium) => void;
             "notify::device": (pspec: GObject.ParamSpec) => void;
             "notify::gdrive": (pspec: GObject.ParamSpec) => void;
             "notify::udi": (pspec: GObject.ParamSpec) => void;
@@ -330,6 +387,7 @@ export namespace BraseroMedia {
          * Open the drive tray or ejects the media if there is any inside.
          * @param wait `gboolean` whether to wait for the completion of the operation (with a GMainLoop)
          * @returns a `gboolean`. TRUE on success, FALSE otherwise.
+         * @throws GLib.Error
          */
         eject(wait: boolean): boolean;
 
@@ -447,7 +505,7 @@ export namespace BraseroMedia {
              * @action
              * @run-first
              */
-            "drive-changed": (arg0: Drive) => void;
+            "drive-changed": (drive: Drive) => void;
             "notify::drive": (pspec: GObject.ParamSpec) => void;
             "notify::drive-type": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -1141,25 +1199,25 @@ export namespace BraseroMedia {
              * @signal
              * @run-last
              */
-            "drive-added": (arg0: Drive) => void;
+            "drive-added": (medium: Drive) => void;
             /**
              * This signal gets emitted when a drive is not longer available
              * @signal
              * @run-last
              */
-            "drive-removed": (arg0: Drive) => void;
+            "drive-removed": (medium: Drive) => void;
             /**
              * This signal gets emitted when a new medium was detected
              * @signal
              * @run-last
              */
-            "medium-added": (arg0: Medium) => void;
+            "medium-added": (medium: Medium) => void;
             /**
              * This signal gets emitted when a medium is not longer available
              * @signal
              * @run-last
              */
-            "medium-removed": (arg0: Medium) => void;
+            "medium-removed": (medium: Medium) => void;
         }
 
         // Constructor properties interface
@@ -1256,7 +1314,7 @@ export namespace BraseroMedia {
              * @action
              * @run-first
              */
-            "medium-changed": (arg0: Medium) => void;
+            "medium-changed": (medium: Medium) => void;
             "notify::media-type": (pspec: GObject.ParamSpec) => void;
             "notify::medium": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -1768,6 +1826,7 @@ export namespace BraseroMedia {
         /**
          * Returns the path for mount point for `volume`.
          * @returns a `gchar` *
+         * @throws GLib.Error
          */
         get_mount_point(): string;
 
@@ -1791,6 +1850,7 @@ export namespace BraseroMedia {
          * @param parent_window {@link Gtk.Window} *
          * @param wait `gboolean`
          * @returns a `gboolean`. TRUE if the operation succeeded.
+         * @throws GLib.Error
          */
         mount(parent_window: Gtk.Window, wait: boolean): boolean;
 
@@ -1799,6 +1859,7 @@ export namespace BraseroMedia {
          * the operation finishes.
          * @param wait `gboolean`
          * @returns a `gboolean`. TRUE if the operation succeeded.
+         * @throws GLib.Error
          */
         umount(wait: boolean): boolean;
     }

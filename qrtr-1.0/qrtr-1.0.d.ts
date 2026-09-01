@@ -26,66 +26,77 @@ export namespace Qrtr {
     /**
      * Symbol defining the {@link Qrtr.Bus.lookup_timeout} property.
      * @since 1.0
+     * @default lookup-timeout
      */
     const BUS_LOOKUP_TIMEOUT: string;
 
     /**
      * Symbol defining the {@link Qrtr.Bus.SignalSignatures.node_added | Qrtr.Bus::node-added} signal.
      * @since 1.0
+     * @default node-added
      */
     const BUS_SIGNAL_NODE_ADDED: string;
 
     /**
      * Symbol defining the {@link Qrtr.Bus.SignalSignatures.node_removed | Qrtr.Bus::node-removed} signal.
      * @since 1.0
+     * @default node-removed
      */
     const BUS_SIGNAL_NODE_REMOVED: string;
 
     /**
      * The QRTR node this client refers to.
      * @since 1.0
+     * @default client-node
      */
     const CLIENT_NODE: string;
 
     /**
      * The QRTR node port this client refers to.
      * @since 1.0
+     * @default client-port
      */
     const CLIENT_PORT: string;
 
     /**
      * Symbol defining the {@link Qrtr.Client.SignalSignatures.client_message | Qrtr.Client::client-message} signal.
      * @since 1.0
+     * @default client-message
      */
     const CLIENT_SIGNAL_MESSAGE: string;
 
     /**
      * The QRTR bus.
      * @since 1.0
+     * @default bus
      */
     const NODE_BUS: string;
 
     /**
      * The node id.
      * @since 1.0
+     * @default node-id
      */
     const NODE_ID: string;
 
     /**
      * Symbol defining the {@link Qrtr.Node.SignalSignatures.node_removed | Qrtr.Node::node-removed} signal.
      * @since 1.0
+     * @default node-removed
      */
     const NODE_SIGNAL_REMOVED: string;
 
     /**
      * Symbol defining the {@link Qrtr.Node.SignalSignatures.service_added | Qrtr.Node::service-added} signal.
      * @since 1.0
+     * @default service-added
      */
     const NODE_SIGNAL_SERVICE_ADDED: string;
 
     /**
      * Symbol defining the {@link Qrtr.Node.SignalSignatures.service_removed | Qrtr.Node::service-removed} signal.
      * @since 1.0
+     * @default service-removed
      */
     const NODE_SIGNAL_SERVICE_REMOVED: string;
 
@@ -116,7 +127,7 @@ export namespace Qrtr {
              * @since 1.0
              * @run-last
              */
-            "node-added": (arg0: number) => void;
+            "node-added": (node: number) => void;
             /**
              * The ::node-removed signal is emitted when a node deregisters all services
              * from the QRTR bus.
@@ -124,7 +135,7 @@ export namespace Qrtr {
              * @since 1.0
              * @run-last
              */
-            "node-removed": (arg0: number) => void;
+            "node-removed": (node: number) => void;
             "notify::lookup-timeout": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -295,6 +306,7 @@ export namespace Qrtr {
          * @param res a {@link Gio.AsyncResult}.
          * @returns A {@link Qrtr.Node}, or `null` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         wait_for_node_finish(res: Gio.AsyncResult): Node;
 
@@ -435,6 +447,7 @@ export namespace Qrtr {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -444,6 +457,7 @@ export namespace Qrtr {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Bus;
 
@@ -518,7 +532,7 @@ export namespace Qrtr {
              * @since 1.0
              * @run-last
              */
-            "client-message": (arg0: Uint8Array) => void;
+            "client-message": (message: Uint8Array) => void;
             "notify::client-node": (pspec: GObject.ParamSpec) => void;
             "notify::client-port": (pspec: GObject.ParamSpec) => void;
         }
@@ -626,6 +640,7 @@ export namespace Qrtr {
          * @param cancellable a {@link Gio.Cancellable}.
          * @returns `true` if the message is sent, or `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         send(message: Uint8Array | string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -671,6 +686,7 @@ export namespace Qrtr {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -739,7 +755,7 @@ export namespace Qrtr {
              * @since 1.0
              * @run-last
              */
-            "service-added": (arg0: number) => void;
+            "service-added": (service: number) => void;
             /**
              * The ::service-removed signal is emitted when a service deregisters
              * from the QRTR node.
@@ -747,7 +763,7 @@ export namespace Qrtr {
              * @since 1.0
              * @run-last
              */
-            "service-removed": (arg0: number) => void;
+            "service-removed": (service: number) => void;
             "notify::bus": (pspec: GObject.ParamSpec) => void;
             "notify::node-id": (pspec: GObject.ParamSpec) => void;
         }
@@ -949,6 +965,7 @@ export namespace Qrtr {
          * @param result a {@link Gio.AsyncResult}.
          * @returns `true` if all requested services are present on this node, or `false` if `error` is set.
          * @since 1.0
+         * @throws GLib.Error
          */
         wait_for_services_finish(result: Gio.AsyncResult): boolean;
     }

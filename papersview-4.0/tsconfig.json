@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./papersview-4.0.d.ts","./papersview-4.0-surface.d.ts"]
+  "include": ["./papersview-4.0.d.ts","./papersview-4.0-vocabulary.d.ts"]
 }
 
 

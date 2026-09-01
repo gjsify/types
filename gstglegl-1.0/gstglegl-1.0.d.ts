@@ -26,10 +26,14 @@ export namespace GstGLEGL {
      */
 
 
+    /**
+     * @default gst.gl.display.egl
+     */
     const GL_DISPLAY_EGL_NAME: string;
 
     /**
      * The name of the GL Memory EGL allocator
+     * @default GLMemoryEGL
      */
     const GL_MEMORY_EGL_ALLOCATOR_NAME: string;
 

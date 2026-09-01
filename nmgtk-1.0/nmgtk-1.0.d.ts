@@ -39,9 +39,9 @@ export namespace NMGtk {
      * @gir-type Enum
      */
     enum MobileFamily {
-        UNKNOWN,
-        "3GPP",
-        CDMA,
+        UNKNOWN = 0,
+        "3GPP" = 1,
+        CDMA = 2,
     }
 
 
@@ -399,6 +399,7 @@ export namespace NMGtk {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -408,6 +409,7 @@ export namespace NMGtk {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MobileProvidersDatabase;
 
@@ -507,6 +509,7 @@ export namespace NMGtk {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

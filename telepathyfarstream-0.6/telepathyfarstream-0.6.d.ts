@@ -46,27 +46,27 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "content-added": (arg0: Content) => void;
+            "content-added": (content: Content) => void;
             /**
              * Tells the application that a content is being removed.
              * @signal
              * @run-last
              */
-            "content-removed": (arg0: Content) => void;
+            "content-removed": (content: Content) => void;
             /**
              * When this signal is emitted, the conference should be added to the
              * application's pipeline.
              * @signal
              * @run-last
              */
-            "fs-conference-added": (arg0: Farstream.Conference) => void;
+            "fs-conference-added": (conf: Farstream.Conference) => void;
             /**
              * When this signal is emitted, the conference should be remove from the
              * application's pipeline.
              * @signal
              * @run-last
              */
-            "fs-conference-removed": (arg0: Farstream.Conference) => void;
+            "fs-conference-removed": (conf: Farstream.Conference) => void;
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::fs-conferences": (pspec: GObject.ParamSpec) => void;
             "notify::object-path": (pspec: GObject.ParamSpec) => void;
@@ -305,6 +305,7 @@ export namespace TelepathyFarstream {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -314,6 +315,7 @@ export namespace TelepathyFarstream {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Channel;
 
@@ -391,7 +393,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "src-pad-added": (arg0: number, arg1: Farstream.Stream, arg2: Gst.Pad, arg3: Farstream.Codec) => void;
+            "src-pad-added": (handle: number, stream: Farstream.Stream, pad: Gst.Pad, codec: Farstream.Codec) => void;
             /**
              * This signal is emitted when the connection managers requests that the
              * application prepares itself to start receiving data again from certain
@@ -403,7 +405,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "start-receiving": (arg0: null, arg1: number) => boolean | void;
+            "start-receiving": (handles: null, handle_count: number) => boolean | void;
             /**
              * This signal is emitted when the connection manager ask to send media.
              * For example, this can be used to open a camera, start recording from a
@@ -419,7 +421,7 @@ export namespace TelepathyFarstream {
              * @signal
              * @run-last
              */
-            "stop-receiving": (arg0: null, arg1: number) => void;
+            "stop-receiving": (handles: null, handle_count: number) => void;
             /**
              * This signal is emitted when the connection manager ask to stop
              * sending media

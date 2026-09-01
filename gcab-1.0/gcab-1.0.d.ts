@@ -38,23 +38,23 @@ export namespace GCab {
         /**
          * No compression.
          */
-        NONE,
+        NONE = 0,
         /**
          * MSZIP compression.
          */
-        MSZIP,
+        MSZIP = 1,
         /**
          * QUANTUM compression (unsupported).
          */
-        QUANTUM,
+        QUANTUM = 2,
         /**
          * LZX compression (only decompression supported).
          */
-        LZX,
+        LZX = 3,
         /**
          * compression value mask.
          */
-        MASK,
+        MASK = 15,
     }
 
 
@@ -106,27 +106,27 @@ export namespace GCab {
         /**
          * file is read-only
          */
-        RDONLY,
+        RDONLY = 1,
         /**
          * file is hidden
          */
-        HIDDEN,
+        HIDDEN = 2,
         /**
          * file is a system file
          */
-        SYSTEM,
+        SYSTEM = 4,
         /**
          * file modified since last backup
          */
-        ARCH,
+        ARCH = 32,
         /**
          * run after extraction
          */
-        EXEC,
+        EXEC = 64,
         /**
          * name contains UTF
          */
-        NAME_IS_UTF,
+        NAME_IS_UTF = 128,
     }
 
 
@@ -210,6 +210,7 @@ export namespace GCab {
          * Add `folder` to `cabinet`.
          * @param folder a {@link GCab.Folder}
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         add_folder(folder: Folder): boolean;
 
@@ -223,6 +224,7 @@ export namespace GCab {
          * @param progress_callback a progress callback
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         extract(path: Gio.File | null, file_callback: FileCallback | null, progress_callback: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -232,6 +234,7 @@ export namespace GCab {
          * @param file_callback an optional {@link GCab.File} callback,     return `false` to filter out or skip files.
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         extract_simple(path: Gio.File, file_callback: FileCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -248,6 +251,7 @@ export namespace GCab {
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns the array containing the PKCS#7 signed data or `null` on error.
          * @since 0.5
+         * @throws GLib.Error
          */
         get_signature(cancellable: Gio.Cancellable | null): Uint8Array;
 
@@ -263,6 +267,7 @@ export namespace GCab {
          * @param stream a {@link Gio.InputStream}
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on success
+         * @throws GLib.Error
          */
         load(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -273,6 +278,7 @@ export namespace GCab {
          * @param progress_callback report saving progress
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         write(stream: Gio.OutputStream, file_callback: FileCallback | null, progress_callback: Gio.FileProgressCallback | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -282,6 +288,7 @@ export namespace GCab {
          * @param file_callback report current file being saved
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         write_simple(stream: Gio.OutputStream, file_callback: FileCallback | null, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -529,6 +536,7 @@ export namespace GCab {
          * @param recurse whether to recurse through subdirectories
          * @param cancellable optional {@link Gio.Cancellable} object,     `null` to ignore
          * @returns `true` on succes
+         * @throws GLib.Error
          */
         add_file(cabfile: File, recurse: boolean, cancellable: Gio.Cancellable | null): boolean;
 

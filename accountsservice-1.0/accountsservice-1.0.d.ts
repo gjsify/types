@@ -38,11 +38,11 @@ export namespace AccountsService {
         /**
          * Normal non-administrative user
          */
-        STANDARD,
+        STANDARD = 0,
         /**
          * Administrative user
          */
-        ADMINISTRATOR,
+        ADMINISTRATOR = 1,
     }
 
 
@@ -102,15 +102,15 @@ export namespace AccountsService {
         /**
          * Password set normally
          */
-        REGULAR,
+        REGULAR = 0,
         /**
          * Password will be chosen at next login
          */
-        SET_AT_LOGIN,
+        SET_AT_LOGIN = 1,
         /**
          * No password set
          */
-        NONE,
+        NONE = 2,
     }
 
 
@@ -848,25 +848,25 @@ export namespace AccountsService {
              * @signal
              * @run-last
              */
-            "user-added": (arg0: User) => void;
+            "user-added": (user: User) => void;
             /**
              * One of the users has changed
              * @signal
              * @run-last
              */
-            "user-changed": (arg0: User) => void;
+            "user-changed": (user: User) => void;
             /**
              * One of the users has logged in or out.
              * @signal
              * @run-last
              */
-            "user-is-logged-in-changed": (arg0: User) => void;
+            "user-is-logged-in-changed": (user: User) => void;
             /**
              * Emitted when a user is removed from the user manager.
              * @signal
              * @run-last
              */
-            "user-removed": (arg0: User) => void;
+            "user-removed": (user: User) => void;
             "notify::exclude-usernames-list": (pspec: GObject.ParamSpec) => void;
             "notify::has-multiple-users": (pspec: GObject.ParamSpec) => void;
             "notify::include-usernames-list": (pspec: GObject.ParamSpec) => void;
@@ -1003,6 +1003,7 @@ export namespace AccountsService {
          * Caches a user account so it shows up via `act_user_manager_list_users()`.
          * @param username a user name
          * @returns user object
+         * @throws GLib.Error
          */
         cache_user(username: string): User;
 
@@ -1051,6 +1052,7 @@ export namespace AccountsService {
          * @param result a {@link Gio.AsyncResult}
          * @returns user object
          * @since 0.6.27
+         * @throws GLib.Error
          */
         cache_user_finish(result: Gio.AsyncResult): User;
 
@@ -1066,6 +1068,7 @@ export namespace AccountsService {
          * @param fullname a unix GECOS value
          * @param accounttype a {@link AccountsService.UserAccountType}
          * @returns user object
+         * @throws GLib.Error
          */
         create_user(username: string, fullname: string, accounttype: UserAccountType): User;
 
@@ -1117,6 +1120,7 @@ export namespace AccountsService {
          * @param result a {@link Gio.AsyncResult}
          * @returns user object
          * @since 0.6.27
+         * @throws GLib.Error
          */
         create_user_finish(result: Gio.AsyncResult): User;
 
@@ -1125,6 +1129,7 @@ export namespace AccountsService {
          * @param user an {@link AccountsService.User} object
          * @param remove_files `true` to delete the users home directory
          * @returns `true` if the user account was successfully deleted
+         * @throws GLib.Error
          */
         delete_user(user: User, remove_files: boolean): boolean;
 
@@ -1173,6 +1178,7 @@ export namespace AccountsService {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the user account was successfully deleted
          * @since 0.6.27
+         * @throws GLib.Error
          */
         delete_user_finish(result: Gio.AsyncResult): boolean;
 
@@ -1221,6 +1227,7 @@ export namespace AccountsService {
          * account will no longer show up in ListCachedUsers() output.
          * @param username a user name
          * @returns `true` if successful, otherwise `false`
+         * @throws GLib.Error
          */
         uncache_user(username: string): boolean;
 
@@ -1251,6 +1258,7 @@ export namespace AccountsService {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the user account was successfully uncached
          * @since 0.6.39
+         * @throws GLib.Error
          */
         uncache_user_finish(result: Gio.AsyncResult): boolean;
     }

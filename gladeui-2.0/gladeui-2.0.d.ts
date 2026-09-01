@@ -50,29 +50,29 @@ export namespace Gladeui {
          *                     or add children to the project; like GtkFrame's
          *                     label for example).
          */
-        USER,
+        USER = 0,
         /**
          * Was created as a result of the copy/paste
          *                     mechanism, at this point you can count on glade
          *                     to follow up with properties and children on
          *                     its own.
          */
-        COPY,
+        COPY = 1,
         /**
          * Was created during the load process.
          */
-        LOAD,
+        LOAD = 2,
         /**
          * Was created as a replacement for another project
          *                        object; this only happens when the user is
          *                        changing a property that is marked by the type
          *                        system as G_PARAM_SPEC_CONSTRUCT_ONLY.
          */
-        REBUILD,
+        REBUILD = 3,
         /**
          * Never used.
          */
-        REASONS,
+        REASONS = 4,
     }
 
 
@@ -87,17 +87,17 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum CursorType {
-        SELECTOR,
-        ADD_WIDGET,
-        RESIZE_TOP_LEFT,
-        RESIZE_TOP_RIGHT,
-        RESIZE_BOTTOM_LEFT,
-        RESIZE_BOTTOM_RIGHT,
-        RESIZE_LEFT,
-        RESIZE_RIGHT,
-        RESIZE_TOP,
-        RESIZE_BOTTOM,
-        DRAG,
+        SELECTOR = 0,
+        ADD_WIDGET = 1,
+        RESIZE_TOP_LEFT = 2,
+        RESIZE_TOP_RIGHT = 3,
+        RESIZE_BOTTOM_LEFT = 4,
+        RESIZE_BOTTOM_RIGHT = 5,
+        RESIZE_LEFT = 6,
+        RESIZE_RIGHT = 7,
+        RESIZE_TOP = 8,
+        RESIZE_BOTTOM = 9,
+        DRAG = 10,
     }
 
 
@@ -112,12 +112,12 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum EditorPageType {
-        GENERAL,
-        COMMON,
-        PACKING,
-        ATK,
-        QUERY,
-        SIGNAL,
+        GENERAL = 0,
+        COMMON = 1,
+        PACKING = 2,
+        ATK = 3,
+        QUERY = 4,
+        SIGNAL = 5,
     }
 
 
@@ -132,9 +132,9 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum ItemAppearance {
-        ICON_AND_LABEL,
-        ICON_ONLY,
-        LABEL_ONLY,
+        ICON_AND_LABEL = 0,
+        ICON_ONLY = 1,
+        LABEL_ONLY = 2,
     }
 
 
@@ -153,24 +153,24 @@ export namespace Gladeui {
         /**
          * Mouse pointer used for selecting widgets
          */
-        SELECT,
+        SELECT = 0,
         /**
          * Mouse pointer used for adding widgets
          */
-        ADD_WIDGET,
+        ADD_WIDGET = 1,
         /**
          * Mouse pointer used for dragging and
          *                             resizing widgets in containers
          */
-        DRAG_RESIZE,
+        DRAG_RESIZE = 2,
         /**
          * Mouse pointer used to edit widget margins
          */
-        MARGIN_EDIT,
+        MARGIN_EDIT = 3,
         /**
          * Mouse pointer used to edit widget alignment
          */
-        ALIGN_EDIT,
+        ALIGN_EDIT = 4,
     }
 
 
@@ -190,31 +190,31 @@ export namespace Gladeui {
         /**
          * name of the icon for the widget
          */
-        COLUMN_ICON_NAME,
+        COLUMN_ICON_NAME = 0,
         /**
          * Name of the widget
          */
-        COLUMN_NAME,
+        COLUMN_NAME = 1,
         /**
          * The type name of the widget
          */
-        COLUMN_TYPE_NAME,
+        COLUMN_TYPE_NAME = 2,
         /**
          * the GObject of the widget
          */
-        COLUMN_OBJECT,
+        COLUMN_OBJECT = 3,
         /**
          * the auxilary text describing a widget's role
          */
-        COLUMN_MISC,
+        COLUMN_MISC = 4,
         /**
          * the support warning text for this widget
          */
-        COLUMN_WARNING,
+        COLUMN_WARNING = 5,
         /**
          * Number of columns
          */
-        N_COLUMNS,
+        N_COLUMNS = 6,
     }
 
 
@@ -229,16 +229,16 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum SignalModelColumns {
-        COLUMN_NAME,
-        COLUMN_SHOW_NAME,
-        COLUMN_HANDLER,
-        COLUMN_OBJECT,
-        COLUMN_SWAP,
-        COLUMN_AFTER,
-        COLUMN_TOOLTIP,
-        COLUMN_SIGNAL,
-        COLUMN_DETAIL,
-        N_COLUMNS,
+        COLUMN_NAME = 0,
+        COLUMN_SHOW_NAME = 1,
+        COLUMN_HANDLER = 2,
+        COLUMN_OBJECT = 3,
+        COLUMN_SWAP = 4,
+        COLUMN_AFTER = 5,
+        COLUMN_TOOLTIP = 6,
+        COLUMN_SIGNAL = 7,
+        COLUMN_DETAIL = 8,
+        N_COLUMNS = 9,
     }
 
 
@@ -253,7 +253,7 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum Stock {
-        DUMMY,
+        DUMMY = 0,
     }
 
 
@@ -268,7 +268,7 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum StockImage {
-        DUMMY,
+        DUMMY = 0,
     }
 
 
@@ -283,11 +283,11 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum UIMessageType {
-        INFO,
-        WARN,
-        ERROR,
-        ARE_YOU_SURE,
-        YES_OR_NO,
+        INFO = 0,
+        WARN = 1,
+        ERROR = 2,
+        ARE_YOU_SURE = 3,
+        YES_OR_NO = 4,
     }
 
 
@@ -302,342 +302,835 @@ export namespace Gladeui {
      * @gir-type Enum
      */
     enum UtilFileDialogType {
-        OPEN,
-        SAVE,
+        OPEN = 0,
+        SAVE = 1,
     }
 
 
+    /**
+     * @default devhelp.png
+     */
     const DEVHELP_FALLBACK_ICON_FILE: string;
 
+    /**
+     * @default system-help-symbolic
+     */
     const DEVHELP_ICON_NAME: string;
 
+    /**
+     * @default GLADE_BUNDLED
+     */
     const ENV_BUNDLED: string;
 
+    /**
+     * @default GLADE_CATALOG_SEARCH_PATH
+     */
     const ENV_CATALOG_PATH: string;
 
+    /**
+     * @default GLADE_ICON_THEME_PATH
+     */
     const ENV_ICON_THEME_PATH: string;
 
+    /**
+     * @default GLADE_MODULE_SEARCH_PATH
+     */
     const ENV_MODULE_PATH: string;
 
+    /**
+     * @default GLADE_PIXMAP_DIR
+     */
     const ENV_PIXMAP_DIR: string;
 
+    /**
+     * @default GLADE_TESTING
+     */
     const ENV_TESTING: string;
 
+    /**
+     * @default 2
+     */
     const GTKBUILDER_VERSIONING_BASE_MAJOR: number;
 
+    /**
+     * @default 14
+     */
     const GTKBUILDER_VERSIONING_BASE_MINOR: number;
 
+    /**
+     * @default ,
+     */
     const PROPERTY_DEF_OBJECT_DELIMITER: string;
 
+    /**
+     * @default action
+     */
     const TAG_ACTION: string;
 
+    /**
+     * @default actions
+     */
     const TAG_ACTIONS: string;
 
+    /**
+     * @default action-activate-function
+     */
     const TAG_ACTION_ACTIVATE_FUNCTION: string;
 
+    /**
+     * @default action-submenu-function
+     */
     const TAG_ACTION_SUBMENU_FUNCTION: string;
 
+    /**
+     * @default adaptor
+     */
     const TAG_ADAPTOR: string;
 
+    /**
+     * @default add-child-function
+     */
     const TAG_ADD_CHILD_FUNCTION: string;
 
+    /**
+     * @default add-child-verify-function
+     */
     const TAG_ADD_CHILD_VERIFY_FUNCTION: string;
 
+    /**
+     * @default anarchist
+     */
     const TAG_ANARCHIST: string;
 
+    /**
+     * @default atk-property
+     */
     const TAG_ATK_PROPERTY: string;
 
+    /**
+     * @default bind-flags
+     */
     const TAG_BIND_FLAGS: string;
 
+    /**
+     * @default bind-property
+     */
     const TAG_BIND_PROPERTY: string;
 
+    /**
+     * @default bind-source
+     */
     const TAG_BIND_SOURCE: string;
 
+    /**
+     * @default book
+     */
     const TAG_BOOK: string;
 
+    /**
+     * @default gtkbuilder-since
+     */
     const TAG_BUILDER_SINCE: string;
 
+    /**
+     * @default child-action-activate-function
+     */
     const TAG_CHILD_ACTION_ACTIVATE_FUNCTION: string;
 
+    /**
+     * @default child-get-property-function
+     */
     const TAG_CHILD_GET_PROP_FUNCTION: string;
 
+    /**
+     * @default child-property
+     */
     const TAG_CHILD_PROPERTY: string;
 
+    /**
+     * @default child-set-property-function
+     */
     const TAG_CHILD_SET_PROP_FUNCTION: string;
 
+    /**
+     * @default child-verify-function
+     */
     const TAG_CHILD_VERIFY_FUNCTION: string;
 
+    /**
+     * @default comments
+     */
     const TAG_COMMENT: string;
 
+    /**
+     * @default common
+     */
     const TAG_COMMON: string;
 
+    /**
+     * @default constructor-function
+     */
     const TAG_CONSTRUCTOR_FUNCTION: string;
 
+    /**
+     * @default construct-object-function
+     */
     const TAG_CONSTRUCT_OBJECT_FUNCTION: string;
 
+    /**
+     * @default construct-only
+     */
     const TAG_CONSTRUCT_ONLY: string;
 
+    /**
+     * @default context
+     */
     const TAG_CONTEXT: string;
 
+    /**
+     * @default create-editable-function
+     */
     const TAG_CREATE_EDITABLE_FUNCTION: string;
 
+    /**
+     * @default create-editor-property-function
+     */
     const TAG_CREATE_EPROP_FUNCTION: string;
 
+    /**
+     * @default create-type
+     */
     const TAG_CREATE_TYPE: string;
 
+    /**
+     * @default create-widget-function
+     */
     const TAG_CREATE_WIDGET_FUNCTION: string;
 
+    /**
+     * @default custom-layout
+     */
     const TAG_CUSTOM_LAYOUT: string;
 
+    /**
+     * @default deep-post-create-function
+     */
     const TAG_DEEP_POST_CREATE_FUNCTION: string;
 
+    /**
+     * @default default
+     */
     const TAG_DEFAULT: string;
 
+    /**
+     * @default default-height
+     */
     const TAG_DEFAULT_HEIGHT: string;
 
+    /**
+     * @default default-palette-state
+     */
     const TAG_DEFAULT_PALETTE_STATE: string;
 
+    /**
+     * @default default-width
+     */
     const TAG_DEFAULT_WIDTH: string;
 
+    /**
+     * @default depends
+     */
     const TAG_DEPENDS: string;
 
+    /**
+     * @default depends-function
+     */
     const TAG_DEPENDS_FUNCTION: string;
 
+    /**
+     * @default deprecated
+     */
     const TAG_DEPRECATED: string;
 
+    /**
+     * @default deprecated-since
+     */
     const TAG_DEPRECATED_SINCE: string;
 
+    /**
+     * @default destroy-object-function
+     */
     const TAG_DESTROY_OBJECT_FUNCTION: string;
 
+    /**
+     * @default disabled
+     */
     const TAG_DISABLED: string;
 
+    /**
+     * @default displayable-values
+     */
     const TAG_DISPLAYABLE_VALUES: string;
 
+    /**
+     * @default domain
+     */
     const TAG_DOMAIN: string;
 
+    /**
+     * @default editable
+     */
     const TAG_EDITABLE: string;
 
+    /**
+     * @default EventHandlerConnected
+     */
     const TAG_EVENT_HANDLER_CONNECTED: string;
 
+    /**
+     * @default expanded
+     */
     const TAG_EXPANDED: string;
 
+    /**
+     * @default False
+     */
     const TAG_FALSE: string;
 
+    /**
+     * @default generic-name
+     */
     const TAG_GENERIC_NAME: string;
 
+    /**
+     * @default get-children-function
+     */
     const TAG_GET_CHILDREN_FUNCTION: string;
 
+    /**
+     * @default get-property-function
+     */
     const TAG_GET_FUNCTION: string;
 
+    /**
+     * @default get-internal-child-function
+     */
     const TAG_GET_INTERNAL_CHILD_FUNCTION: string;
 
+    /**
+     * @default get-type-function
+     */
     const TAG_GET_TYPE_FUNCTION: string;
 
+    /**
+     * @default glade-catalog
+     */
     const TAG_GLADE_CATALOG: string;
 
+    /**
+     * @default glade-widget-class
+     */
     const TAG_GLADE_WIDGET_CLASS: string;
 
+    /**
+     * @default glade-widget-classes
+     */
     const TAG_GLADE_WIDGET_CLASSES: string;
 
+    /**
+     * @default glade-widget-class-ref
+     */
     const TAG_GLADE_WIDGET_CLASS_REF: string;
 
+    /**
+     * @default glade-widget-group
+     */
     const TAG_GLADE_WIDGET_GROUP: string;
 
+    /**
+     * @default context
+     */
     const TAG_HAS_CONTEXT: string;
 
+    /**
+     * @default icon-name
+     */
     const TAG_ICON_NAME: string;
 
+    /**
+     * @default icon-prefix
+     */
     const TAG_ICON_PREFIX: string;
 
+    /**
+     * @default id
+     */
     const TAG_ID: string;
 
+    /**
+     * @default ignore
+     */
     const TAG_IGNORE: string;
 
+    /**
+     * @default important
+     */
     const TAG_IMPORTANT: string;
 
+    /**
+     * @default init-function
+     */
     const TAG_INIT_FUNCTION: string;
 
+    /**
+     * @default internal-children
+     */
     const TAG_INTERNAL_CHILDREN: string;
 
+    /**
+     * @default key
+     */
     const TAG_KEY: string;
 
+    /**
+     * @default library
+     */
     const TAG_LIBRARY: string;
 
+    /**
+     * @default max
+     */
     const TAG_MAX_VALUE: string;
 
+    /**
+     * @default min
+     */
     const TAG_MIN_VALUE: string;
 
+    /**
+     * @default multiline
+     */
     const TAG_MULTILINE: string;
 
+    /**
+     * @default name
+     */
     const TAG_NAME: string;
 
+    /**
+     * @default needs-sync
+     */
     const TAG_NEEDS_SYNC: string;
 
+    /**
+     * @default nick
+     */
     const TAG_NICK: string;
 
+    /**
+     * @default No
+     */
     const TAG_NO: string;
 
+    /**
+     * @default optional
+     */
     const TAG_OPTIONAL: string;
 
+    /**
+     * @default optional-default
+     */
     const TAG_OPTIONAL_DEFAULT: string;
 
+    /**
+     * @default packing-actions
+     */
     const TAG_PACKING_ACTIONS: string;
 
+    /**
+     * @default packing-defaults
+     */
     const TAG_PACKING_DEFAULTS: string;
 
+    /**
+     * @default packing-properties
+     */
     const TAG_PACKING_PROPERTIES: string;
 
+    /**
+     * @default parent
+     */
     const TAG_PARENT: string;
 
+    /**
+     * @default parentless-widget
+     */
     const TAG_PARENTLESS_WIDGET: string;
 
+    /**
+     * @default parent-class
+     */
     const TAG_PARENT_CLASS: string;
 
+    /**
+     * @default post-create-function
+     */
     const TAG_POST_CREATE_FUNCTION: string;
 
+    /**
+     * @default properties
+     */
     const TAG_PROPERTIES: string;
 
+    /**
+     * @default property
+     */
     const TAG_PROPERTY: string;
 
+    /**
+     * @default query
+     */
     const TAG_QUERY: string;
 
+    /**
+     * @default read-child-function
+     */
     const TAG_READ_CHILD_FUNCTION: string;
 
+    /**
+     * @default read-widget-function
+     */
     const TAG_READ_WIDGET_FUNCTION: string;
 
+    /**
+     * @default remove-child-function
+     */
     const TAG_REMOVE_CHILD_FUNCTION: string;
 
+    /**
+     * @default replace-child-function
+     */
     const TAG_REPLACE_CHILD_FUNCTION: string;
 
+    /**
+     * @default resource
+     */
     const TAG_RESOURCE: string;
 
+    /**
+     * @default save
+     */
     const TAG_SAVE: string;
 
+    /**
+     * @default save-always
+     */
     const TAG_SAVE_ALWAYS: string;
 
+    /**
+     * @default set-property-function
+     */
     const TAG_SET_FUNCTION: string;
 
+    /**
+     * @default signal
+     */
     const TAG_SIGNAL: string;
 
+    /**
+     * @default signals
+     */
     const TAG_SIGNALS: string;
 
+    /**
+     * @default spec
+     */
     const TAG_SPEC: string;
 
+    /**
+     * @default special-child-type
+     */
     const TAG_SPECIAL_CHILD_TYPE: string;
 
+    /**
+     * @default parameter-spec
+     */
     const TAG_SPECIFICATIONS: string;
 
+    /**
+     * @default stock
+     */
     const TAG_STOCK: string;
 
+    /**
+     * @default stock-icon
+     */
     const TAG_STOCK_ICON: string;
 
+    /**
+     * @default string-from-value-function
+     */
     const TAG_STRING_FROM_VALUE_FUNCTION: string;
 
+    /**
+     * @default targetable
+     */
     const TAG_TARGETABLE: string;
 
+    /**
+     * @default template-prefix
+     */
     const TAG_TEMPLATE_PREFIX: string;
 
+    /**
+     * @default themed-icon
+     */
     const TAG_THEMED_ICON: string;
 
+    /**
+     * @default title
+     */
     const TAG_TITLE: string;
 
+    /**
+     * @default tooltip
+     */
     const TAG_TOOLTIP: string;
 
+    /**
+     * @default toplevel
+     */
     const TAG_TOPLEVEL: string;
 
+    /**
+     * @default transfer-on-paste
+     */
     const TAG_TRANSFER_ON_PASTE: string;
 
+    /**
+     * @default translatable
+     */
     const TAG_TRANSLATABLE: string;
 
+    /**
+     * @default True
+     */
     const TAG_TRUE: string;
 
+    /**
+     * @default type
+     */
     const TAG_TYPE: string;
 
+    /**
+     * @default use-placeholders
+     */
     const TAG_USE_PLACEHOLDERS: string;
 
+    /**
+     * @default value
+     */
     const TAG_VALUE: string;
 
+    /**
+     * @default value-type
+     */
     const TAG_VALUE_TYPE: string;
 
+    /**
+     * @default verify-function
+     */
     const TAG_VERIFY_FUNCTION: string;
 
+    /**
+     * @default version
+     */
     const TAG_VERSION: string;
 
+    /**
+     * @default since
+     */
     const TAG_VERSION_SINCE: string;
 
+    /**
+     * @default visible
+     */
     const TAG_VISIBLE: string;
 
+    /**
+     * @default weight
+     */
     const TAG_WEIGHT: string;
 
+    /**
+     * @default write-child-function
+     */
     const TAG_WRITE_CHILD_FUNCTION: string;
 
+    /**
+     * @default write-widget-after-function
+     */
     const TAG_WRITE_WIDGET_AFTER_FUNCTION: string;
 
+    /**
+     * @default write-widget-function
+     */
     const TAG_WRITE_WIDGET_FUNCTION: string;
 
+    /**
+     * @default Yes
+     */
     const TAG_YES: string;
 
+    /**
+     * @default __glade_unnamed_
+     */
     const UNNAMED_PREFIX: string;
 
     /**
      * Class prefix used for abstract classes (ie GtkBin -> GladeInstantiableGtkBin)
+     * @default GladeInstantiable
      */
     const WIDGET_ADAPTOR_INSTANTIABLE_PREFIX: string;
 
+    /**
+     * @default after
+     */
     const XML_TAG_AFTER: string;
 
+    /**
+     * @default child
+     */
     const XML_TAG_CHILD: string;
 
+    /**
+     * @default class
+     */
     const XML_TAG_CLASS: string;
 
+    /**
+     * @default filename
+     */
     const XML_TAG_FILENAME: string;
 
+    /**
+     * @default handler
+     */
     const XML_TAG_HANDLER: string;
 
+    /**
+     * @default yes
+     */
     const XML_TAG_I18N_TRUE: string;
 
+    /**
+     * @default id
+     */
     const XML_TAG_ID: string;
 
+    /**
+     * @default internal-child
+     */
     const XML_TAG_INTERNAL_CHILD: string;
 
+    /**
+     * @default lib
+     */
     const XML_TAG_LIB: string;
 
+    /**
+     * @default name
+     */
     const XML_TAG_NAME: string;
 
+    /**
+     * @default object
+     */
     const XML_TAG_OBJECT: string;
 
+    /**
+     * @default packing
+     */
     const XML_TAG_PACKING: string;
 
+    /**
+     * @default placeholder
+     */
     const XML_TAG_PLACEHOLDER: string;
 
+    /**
+     * @default interface
+     */
     const XML_TAG_PROJECT: string;
 
+    /**
+     * @default property
+     */
     const XML_TAG_PROPERTY: string;
 
+    /**
+     * @default requires
+     */
     const XML_TAG_REQUIRES: string;
 
+    /**
+     * @default signal
+     */
     const XML_TAG_SIGNAL: string;
 
+    /**
+     * @default no
+     */
     const XML_TAG_SIGNAL_FALSE: string;
 
+    /**
+     * @default yes
+     */
     const XML_TAG_SIGNAL_TRUE: string;
 
+    /**
+     * @default source
+     */
     const XML_TAG_SOURCE: string;
 
+    /**
+     * @default sources
+     */
     const XML_TAG_SOURCES: string;
 
+    /**
+     * @default stock-id
+     */
     const XML_TAG_STOCK_ID: string;
 
+    /**
+     * @default swapped
+     */
     const XML_TAG_SWAPPED: string;
 
+    /**
+     * @default template
+     */
     const XML_TAG_TEMPLATE: string;
 
+    /**
+     * @default type
+     */
     const XML_TAG_TYPE: string;
 
+    /**
+     * @default type-func
+     */
     const XML_TAG_TYPE_FUNC: string;
 
+    /**
+     * @default version
+     */
     const XML_TAG_VERSION: string;
 
+    /**
+     * @default object
+     */
     const XML_TAG_WIDGET: string;
 
     /**
@@ -951,6 +1444,7 @@ export namespace Gladeui {
      * Gets the UTC modification time of file `filename`.
      * @param filename A filename
      * @returns The mtime of the file, or %0 if the file attributes          could not be read.
+     * @throws GLib.Error
      */
     function util_get_file_mtime(filename: string): number;
 
@@ -1489,11 +1983,11 @@ export namespace Gladeui {
      * @gir-type Flags
      */
     enum DebugFlag {
-        REF_COUNTS,
-        WIDGET_EVENTS,
-        COMMANDS,
-        PROPERTIES,
-        VERIFY,
+        REF_COUNTS = 1,
+        WIDGET_EVENTS = 2,
+        COMMANDS = 4,
+        PROPERTIES = 8,
+        VERIFY = 16,
     }
 
 
@@ -1508,10 +2002,10 @@ export namespace Gladeui {
      * @gir-type Flags
      */
     enum PropertyState {
-        NORMAL,
-        CHANGED,
-        UNSUPPORTED,
-        SUPPORT_DISABLED,
+        NORMAL = 0,
+        CHANGED = 1,
+        UNSUPPORTED = 2,
+        SUPPORT_DISABLED = 4,
     }
 
 
@@ -1526,9 +2020,9 @@ export namespace Gladeui {
      * @gir-type Flags
      */
     enum SupportMask {
-        OK,
-        DEPRECATED,
-        MISMATCH,
+        OK = 0,
+        DEPRECATED = 1,
+        MISMATCH = 2,
     }
 
 
@@ -1546,19 +2040,19 @@ export namespace Gladeui {
         /**
          * No verification
          */
-        NONE,
+        NONE = 0,
         /**
          * Verify version mismatches
          */
-        VERSIONS,
+        VERSIONS = 1,
         /**
          * Verify deprecations
          */
-        DEPRECATIONS,
+        DEPRECATIONS = 2,
         /**
          * Verify unrecognized types
          */
-        UNRECOGNIZED,
+        UNRECOGNIZED = 4,
     }
 
 
@@ -1703,7 +2197,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "doc-search": (arg0: string, arg1: string, arg2: string) => void;
+            "doc-search": (arg1: string, arg2: string, arg3: string) => void;
             /**
              * Emitted when a new signal editor created.
              * A tree view is created in the default handler.
@@ -1712,13 +2206,13 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "signal-editor-created": (arg0: GObject.Object) => void;
+            "signal-editor-created": (signal_editor: GObject.Object) => void;
             /**
              * Emitted when a new widget adaptor is registered.
              * @signal
              * @run-last
              */
-            "widget-adaptor-registered": (arg0: GObject.Object) => void;
+            "widget-adaptor-registered": (adaptor: GObject.Object) => void;
         }
 
         // Constructor properties interface
@@ -1863,12 +2357,12 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "build-child": (arg0: GObject.Object, arg1: GObject.GType) => GObject.Object | null;
+            "build-child": (gparent: GObject.Object, type: GObject.GType) => GObject.Object | null;
             /**
              * @signal
              * @run-last
              */
-            "change-type": (arg0: GObject.Object, arg1: GObject.GType) => boolean | void;
+            "change-type": (object: GObject.Object, p0: GObject.GType) => boolean | void;
             /**
              * Emitted when the user selects a child in the editor's treeview.
              * You can add the relevant child properties here using
@@ -1878,23 +2372,23 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "child-selected": (arg0: GObject.Object) => void;
+            "child-selected": (gchild: GObject.Object) => void;
             /**
              * @signal
              * @run-last
              */
-            "delete-child": (arg0: GObject.Object, arg1: GObject.Object) => boolean | void;
+            "delete-child": (gparent: GObject.Object, gchild: GObject.Object) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "get-display-name": (arg0: GObject.Object) => string;
+            "get-display-name": (gchild: GObject.Object) => string;
             /**
              * Move child here if something else must be done other than cut & paste.
              * @signal
              * @run-last
              */
-            "move-child": (arg0: GObject.Object, arg1: GObject.Object) => boolean | void;
+            "move-child": (gparent: GObject.Object, gchild: GObject.Object) => boolean | void;
             "notify::container": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -2093,7 +2587,7 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            activate: (arg0: string) => void;
+            activate: (object: string) => void;
             "notify::activatable": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::follow-state": (pspec: GObject.ParamSpec) => void;
@@ -5072,13 +5566,13 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            commit: (arg0: null) => void;
+            commit: (arg1: null) => void;
             /**
              * Emitted when a contained property changes value
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: Property) => void;
+            "value-changed": (arg1: Property) => void;
             "notify::custom-text": (pspec: GObject.ParamSpec) => void;
             "notify::disable-check": (pspec: GObject.ParamSpec) => void;
             "notify::property-def": (pspec: GObject.ParamSpec) => void;
@@ -6851,29 +7345,29 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "activate-signal-handler": (arg0: Widget, arg1: Signal) => void;
+            "activate-signal-handler": (gladewidget: Widget, signal: Signal) => void;
             /**
              * @signal
              * @run-last
              */
-            "add-signal-handler": (arg0: Widget, arg1: Signal) => void;
+            "add-signal-handler": (gladewidget: Widget, signal: Signal) => void;
             /**
              * Emitted when a widget is added to a project.
              * @signal
              * @run-last
              */
-            "add-widget": (arg0: Widget) => void;
+            "add-widget": (arg1: Widget) => void;
             /**
              * @signal
              * @run-last
              */
-            "change-signal-handler": (arg0: Widget, arg1: Signal, arg2: Signal) => void;
+            "change-signal-handler": (gladewidget: Widget, old_signal: Signal, new_signal: Signal) => void;
             /**
              * Emitted when a `gladeproject`'s state changes via a {@link Gladeui.Command}.
              * @signal
              * @run-first
              */
-            changed: (arg0: Command, arg1: boolean) => void;
+            changed: (arg1: Command, arg2: boolean) => void;
             /**
              * Emitted when a project is closing (a good time to clean up
              * any associated resources).
@@ -6886,7 +7380,7 @@ export namespace Gladeui {
              * @signal
              * @run-first
              */
-            "load-progress": (arg0: number, arg1: number) => void;
+            "load-progress": (objects_total: number, objects_loaded: number) => void;
             /**
              * Emitted when `gladeproject` parsing starts.
              * @signal
@@ -6903,13 +7397,13 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "remove-signal-handler": (arg0: Widget, arg1: Signal) => void;
+            "remove-signal-handler": (gladewidget: Widget, signal: Signal) => void;
             /**
              * Emitted when a widget is removed from a project.
              * @signal
              * @run-last
              */
-            "remove-widget": (arg0: Widget) => void;
+            "remove-widget": (arg1: Widget) => void;
             /**
              * Emitted when `gladeproject` selection list changes.
              * @signal
@@ -6927,13 +7421,13 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "widget-name-changed": (arg0: Widget) => void;
+            "widget-name-changed": (arg1: Widget) => void;
             /**
              * Emitted when the visibility of a widget changed
              * @signal
              * @run-first
              */
-            "widget-visibility-changed": (arg0: Widget, arg1: boolean) => void;
+            "widget-visibility-changed": (widget: Widget, visible: boolean) => void;
             "notify::add-item": (pspec: GObject.ParamSpec) => void;
             "notify::css-provider-path": (pspec: GObject.ParamSpec) => void;
             "notify::has-selection": (pspec: GObject.ParamSpec) => void;
@@ -7218,6 +7712,7 @@ export namespace Gladeui {
          * 
          * If the project was never saved, nothing is done and `true` is returned.
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         autosave(): boolean;
 
@@ -7241,6 +7736,7 @@ export namespace Gladeui {
          * exists, then `true` is returned and no backup is made.
          * @param path location to save glade file
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         backup(path: string): boolean;
 
@@ -7451,6 +7947,7 @@ export namespace Gladeui {
          * Saves `project` to the given path.
          * @param path location to save glade file
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         save(path: string): boolean;
 
@@ -7459,6 +7956,7 @@ export namespace Gladeui {
          * @param path location to save glade file
          * @param flags the {@link Gladeui.VerifyFlags} to warn about
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         save_verify(path: string, flags: VerifyFlags): boolean;
 
@@ -8135,12 +8633,12 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "tooltip-changed": (arg0: string, arg1: string, arg2: string) => void;
+            "tooltip-changed": (object: string, p0: string, p1: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: null, arg1: null) => void;
+            "value-changed": (object: null, p0: null) => void;
             "notify::class": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
             "notify::i18n-comment": (pspec: GObject.ParamSpec) => void;
@@ -8809,14 +9307,14 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "post-commit": (arg0: null) => void;
+            "post-commit": (arg1: null) => void;
             /**
              * Emitted before a property's value is committed, can be useful to serialize
              * commands before a property's commit command from custom editors.
              * @signal
              * @run-last
              */
-            "pre-commit": (arg0: null) => void;
+            "pre-commit": (arg1: null) => void;
             "notify::custom-text": (pspec: GObject.ParamSpec) => void;
             "notify::disable-check": (pspec: GObject.ParamSpec) => void;
             "notify::editor-type": (pspec: GObject.ParamSpec) => void;
@@ -9344,19 +9842,19 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "callback-suggestions": (arg0: Signal) => string[];
+            "callback-suggestions": (signal: Signal) => string[];
             /**
              * Emitted when the editor needs to show a list of detail suggestions to the user.
              * @signal
              * @run-last
              */
-            "detail-suggestions": (arg0: Signal) => string[];
+            "detail-suggestions": (signal: Signal) => string[];
             /**
              * Emitted when a item is activated in the GladeInspector.
              * @signal
              * @run-last
              */
-            "signal-activated": (arg0: Signal) => void;
+            "signal-activated": (signal: Signal) => void;
             "notify::glade-widget": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -10109,32 +10607,32 @@ export namespace Gladeui {
              * @signal
              * @run-last
              */
-            "add-signal-handler": (arg0: Signal) => void;
+            "add-signal-handler": (arg1: Signal) => void;
             /**
              * @signal
              * @run-last
              */
-            "button-press-event": (arg0: Gdk.Event) => boolean | void;
+            "button-press-event": (arg1: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "button-release-event": (arg0: Gdk.Event) => boolean | void;
+            "button-release-event": (arg1: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "change-signal-handler": (arg0: Signal) => void;
+            "change-signal-handler": (arg1: Signal) => void;
             /**
              * @signal
              * @run-last
              */
-            "motion-notify-event": (arg0: Gdk.Event) => boolean | void;
+            "motion-notify-event": (arg1: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "remove-signal-handler": (arg0: Signal) => void;
+            "remove-signal-handler": (arg1: Signal) => void;
             /**
              * Emitted when property and signal support metadatas and messages
              * have been updated.

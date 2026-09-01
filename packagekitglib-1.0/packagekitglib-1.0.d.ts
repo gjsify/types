@@ -38,20 +38,20 @@ export namespace PackageKitGlib {
         /**
          * Unknown authorization status
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Authorized
          */
-        YES,
+        YES = 1,
         /**
          * Not authorized
          */
-        NO,
+        NO = 2,
         /**
          * Interaction required for authorization
          */
-        INTERACTIVE,
-        LAST,
+        INTERACTIVE = 3,
+        LAST = 4,
     }
 
 
@@ -177,16 +177,16 @@ export namespace PackageKitGlib {
         /**
          * Unknown disto upgrade state
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Upgraded to stable release
          */
-        STABLE,
+        STABLE = 1,
         /**
          * Upgraded to unstable release
          */
-        UNSTABLE,
-        LAST,
+        UNSTABLE = 2,
+        LAST = 3,
     }
 
 
@@ -202,244 +202,244 @@ export namespace PackageKitGlib {
      * @gir-type Enum
      */
     enum ErrorEnum {
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Out of memory
          */
-        OOM,
+        OOM = 1,
         /**
          * No network access available
          */
-        NO_NETWORK,
+        NO_NETWORK = 2,
         /**
          * Request not supported
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 3,
         /**
          * Undefined internal error
          */
-        INTERNAL_ERROR,
+        INTERNAL_ERROR = 4,
         /**
          * GPG encryption failure
          */
-        GPG_FAILURE,
+        GPG_FAILURE = 5,
         /**
          * Invalid package ID provided
          */
-        PACKAGE_ID_INVALID,
+        PACKAGE_ID_INVALID = 6,
         /**
          * Requested package not installed
          */
-        PACKAGE_NOT_INSTALLED,
+        PACKAGE_NOT_INSTALLED = 7,
         /**
          * Requested package not found
          */
-        PACKAGE_NOT_FOUND,
+        PACKAGE_NOT_FOUND = 8,
         /**
          * Requested package already installed
          */
-        PACKAGE_ALREADY_INSTALLED,
+        PACKAGE_ALREADY_INSTALLED = 9,
         /**
          * Failed to download package
          */
-        PACKAGE_DOWNLOAD_FAILED,
+        PACKAGE_DOWNLOAD_FAILED = 10,
         /**
          * Requested group not gound
          */
-        GROUP_NOT_FOUND,
+        GROUP_NOT_FOUND = 11,
         /**
          * Invalid group list provided
          */
-        GROUP_LIST_INVALID,
+        GROUP_LIST_INVALID = 12,
         /**
          * Failed to resolve dependencies
          */
-        DEP_RESOLUTION_FAILED,
+        DEP_RESOLUTION_FAILED = 13,
         /**
          * Invalid filter provides
          */
-        FILTER_INVALID,
+        FILTER_INVALID = 14,
         /**
          * Failed to create thread
          */
-        CREATE_THREAD_FAILED,
+        CREATE_THREAD_FAILED = 15,
         /**
          * Error occurred during transaction
          */
-        TRANSACTION_ERROR,
+        TRANSACTION_ERROR = 16,
         /**
          * Transaction was cancelled
          */
-        TRANSACTION_CANCELLED,
+        TRANSACTION_CANCELLED = 17,
         /**
          * No cache available
          */
-        NO_CACHE,
+        NO_CACHE = 18,
         /**
          * Requested repository not found
          */
-        REPO_NOT_FOUND,
+        REPO_NOT_FOUND = 19,
         /**
          * Not allowed to remove system package
          */
-        CANNOT_REMOVE_SYSTEM_PACKAGE,
+        CANNOT_REMOVE_SYSTEM_PACKAGE = 20,
         /**
          * Process killed
          */
-        PROCESS_KILL,
-        FAILED_INITIALIZATION,
-        FAILED_FINALISE,
+        PROCESS_KILL = 21,
+        FAILED_INITIALIZATION = 22,
+        FAILED_FINALISE = 23,
         /**
          * Configuration is not valid
          */
-        FAILED_CONFIG_PARSING,
-        CANNOT_CANCEL,
+        FAILED_CONFIG_PARSING = 24,
+        CANNOT_CANCEL = 25,
         /**
          * Cannot get lock
          */
-        CANNOT_GET_LOCK,
+        CANNOT_GET_LOCK = 26,
         /**
          * No packages to update
          */
-        NO_PACKAGES_TO_UPDATE,
+        NO_PACKAGES_TO_UPDATE = 27,
         /**
          * Cannot write repository configuration
          */
-        CANNOT_WRITE_REPO_CONFIG,
-        LOCAL_INSTALL_FAILED,
+        CANNOT_WRITE_REPO_CONFIG = 28,
+        LOCAL_INSTALL_FAILED = 29,
         /**
          * Bad GPG signature found
          */
-        BAD_GPG_SIGNATURE,
+        BAD_GPG_SIGNATURE = 30,
         /**
          * Required GPG signature not found
          */
-        MISSING_GPG_SIGNATURE,
+        MISSING_GPG_SIGNATURE = 31,
         /**
          * Cannot install source package
          */
-        CANNOT_INSTALL_SOURCE_PACKAGE,
-        REPO_CONFIGURATION_ERROR,
-        NO_LICENSE_AGREEMENT,
+        CANNOT_INSTALL_SOURCE_PACKAGE = 32,
+        REPO_CONFIGURATION_ERROR = 33,
+        NO_LICENSE_AGREEMENT = 34,
         /**
          * File conflicts detected
          */
-        FILE_CONFLICTS,
+        FILE_CONFLICTS = 35,
         /**
          * Package conflict
          */
-        PACKAGE_CONFLICTS,
+        PACKAGE_CONFLICTS = 36,
         /**
          * Repository not available
          */
-        REPO_NOT_AVAILABLE,
-        INVALID_PACKAGE_FILE,
+        REPO_NOT_AVAILABLE = 37,
+        INVALID_PACKAGE_FILE = 38,
         /**
          * Package installation blocked
          */
-        PACKAGE_INSTALL_BLOCKED,
+        PACKAGE_INSTALL_BLOCKED = 39,
         /**
          * Package corruption occurred
          */
-        PACKAGE_CORRUPT,
+        PACKAGE_CORRUPT = 40,
         /**
          * All packages already installed
          */
-        ALL_PACKAGES_ALREADY_INSTALLED,
+        ALL_PACKAGES_ALREADY_INSTALLED = 41,
         /**
          * Required file not found
          */
-        FILE_NOT_FOUND,
+        FILE_NOT_FOUND = 42,
         /**
          * Out of repository mirrors to try
          */
-        NO_MORE_MIRRORS_TO_TRY,
+        NO_MORE_MIRRORS_TO_TRY = 43,
         /**
          * No distribution upgrade path found
          */
-        NO_DISTRO_UPGRADE_DATA,
+        NO_DISTRO_UPGRADE_DATA = 44,
         /**
          * Incompatible architecture found
          */
-        INCOMPATIBLE_ARCHITECTURE,
+        INCOMPATIBLE_ARCHITECTURE = 45,
         /**
          * Out of required disk space
          */
-        NO_SPACE_ON_DEVICE,
+        NO_SPACE_ON_DEVICE = 46,
         /**
          * Need to change media
          */
-        MEDIA_CHANGE_REQUIRED,
+        MEDIA_CHANGE_REQUIRED = 47,
         /**
          * Authorization failed
          */
-        NOT_AUTHORIZED,
+        NOT_AUTHORIZED = 48,
         /**
          * Update not found
          */
-        UPDATE_NOT_FOUND,
+        UPDATE_NOT_FOUND = 49,
         /**
          * Installation repository missing signature
          */
-        CANNOT_INSTALL_REPO_UNSIGNED,
+        CANNOT_INSTALL_REPO_UNSIGNED = 50,
         /**
          * Update repository missing signature
          */
-        CANNOT_UPDATE_REPO_UNSIGNED,
+        CANNOT_UPDATE_REPO_UNSIGNED = 51,
         /**
          * Cannot get file list
          */
-        CANNOT_GET_FILELIST,
+        CANNOT_GET_FILELIST = 52,
         /**
          * Cannot get package requirements
          */
-        CANNOT_GET_REQUIRES,
+        CANNOT_GET_REQUIRES = 53,
         /**
          * Cannot disable reposoitory
          */
-        CANNOT_DISABLE_REPOSITORY,
-        RESTRICTED_DOWNLOAD,
+        CANNOT_DISABLE_REPOSITORY = 54,
+        RESTRICTED_DOWNLOAD = 55,
         /**
          * Package failed to configure
          */
-        PACKAGE_FAILED_TO_CONFIGURE,
+        PACKAGE_FAILED_TO_CONFIGURE = 56,
         /**
          * Package failed to build
          */
-        PACKAGE_FAILED_TO_BUILD,
+        PACKAGE_FAILED_TO_BUILD = 57,
         /**
          * Package failed to install
          */
-        PACKAGE_FAILED_TO_INSTALL,
+        PACKAGE_FAILED_TO_INSTALL = 58,
         /**
          * Package failed to remove
          */
-        PACKAGE_FAILED_TO_REMOVE,
-        UPDATE_FAILED_DUE_TO_RUNNING_PROCESS,
-        PACKAGE_DATABASE_CHANGED,
-        PROVIDE_TYPE_NOT_SUPPORTED,
+        PACKAGE_FAILED_TO_REMOVE = 59,
+        UPDATE_FAILED_DUE_TO_RUNNING_PROCESS = 60,
+        PACKAGE_DATABASE_CHANGED = 61,
+        PROVIDE_TYPE_NOT_SUPPORTED = 62,
         /**
          * Installtion root not suitable
          */
-        INSTALL_ROOT_INVALID,
+        INSTALL_ROOT_INVALID = 63,
         /**
          * Cannot fetch sources
          */
-        CANNOT_FETCH_SOURCES,
+        CANNOT_FETCH_SOURCES = 64,
         /**
          * Cancelled due to higher priority task
          */
-        CANCELLED_PRIORITY,
+        CANCELLED_PRIORITY = 65,
         /**
          * Transaction unfinished
          */
-        UNFINISHED_TRANSACTION,
+        UNFINISHED_TRANSACTION = 66,
         /**
          * Required lock not available
          */
-        LOCK_REQUIRED,
-        REPO_ALREADY_SET,
-        LAST,
+        LOCK_REQUIRED = 67,
+        REPO_ALREADY_SET = 68,
+        LAST = 69,
     }
 
 
@@ -458,46 +458,46 @@ export namespace PackageKitGlib {
         /**
          * Unknown exit status
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Backend exited successfully
          */
-        SUCCESS,
+        SUCCESS = 1,
         /**
          * Backend failed
          */
-        FAILED,
+        FAILED = 2,
         /**
          * Backend was cancelled
          */
-        CANCELLED,
+        CANCELLED = 3,
         /**
          * A repository encryption key needs installing
          */
-        KEY_REQUIRED,
+        KEY_REQUIRED = 4,
         /**
          * A EULA is required to be accepted
          */
-        EULA_REQUIRED,
+        EULA_REQUIRED = 5,
         /**
          * Backend was killed
          */
-        KILLED,
+        KILLED = 6,
         /**
          * Media change required
          */
-        MEDIA_CHANGE_REQUIRED,
-        NEED_UNTRUSTED,
+        MEDIA_CHANGE_REQUIRED = 7,
+        NEED_UNTRUSTED = 8,
         /**
          * Cancelled due to higher priority task
          */
-        CANCELLED_PRIORITY,
-        SKIP_TRANSACTION,
+        CANCELLED_PRIORITY = 9,
+        SKIP_TRANSACTION = 10,
         /**
          * Package database requires repairing
          */
-        REPAIR_REQUIRED,
-        LAST,
+        REPAIR_REQUIRED = 11,
+        LAST = 12,
     }
 
 
@@ -516,116 +516,116 @@ export namespace PackageKitGlib {
         /**
          * Unknown filter
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No filter
          */
-        NONE,
+        NONE = 1,
         /**
          * Filter for installed packages
          */
-        INSTALLED,
+        INSTALLED = 2,
         /**
          * Filter for not installed packages
          */
-        NOT_INSTALLED,
+        NOT_INSTALLED = 3,
         /**
          * Filter for development packages
          */
-        DEVELOPMENT,
+        DEVELOPMENT = 4,
         /**
          * Filter for non-development packages
          */
-        NOT_DEVELOPMENT,
+        NOT_DEVELOPMENT = 5,
         /**
          * Filter for GUI packages
          */
-        GUI,
+        GUI = 6,
         /**
          * Filter for non-GUI packages
          */
-        NOT_GUI,
+        NOT_GUI = 7,
         /**
          * Filter for free packages
          */
-        FREE,
+        FREE = 8,
         /**
          * Filter for non-free packages
          */
-        NOT_FREE,
+        NOT_FREE = 9,
         /**
          * Filter for visible packages
          */
-        VISIBLE,
+        VISIBLE = 10,
         /**
          * Filter for invisible packages
          */
-        NOT_VISIBLE,
+        NOT_VISIBLE = 11,
         /**
          * Filter for supported packages
          */
-        SUPPORTED,
+        SUPPORTED = 12,
         /**
          * Filter for not supported packages
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 13,
         /**
          * Filter for packages that match basename
          */
-        BASENAME,
+        BASENAME = 14,
         /**
          * Filter for packages that don't match basename
          */
-        NOT_BASENAME,
+        NOT_BASENAME = 15,
         /**
          * Filter for newest packages
          */
-        NEWEST,
+        NEWEST = 16,
         /**
          * Filter for not newest packages
          */
-        NOT_NEWEST,
+        NOT_NEWEST = 17,
         /**
          * Filter for packages that match architecture
          */
-        ARCH,
+        ARCH = 18,
         /**
          * Filter for packages that don't match architecture
          */
-        NOT_ARCH,
+        NOT_ARCH = 19,
         /**
          * Filter for source packages
          */
-        SOURCE,
+        SOURCE = 20,
         /**
          * Filter for non-source packages
          */
-        NOT_SOURCE,
+        NOT_SOURCE = 21,
         /**
          * Filter for collections
          */
-        COLLECTIONS,
+        COLLECTIONS = 22,
         /**
          * Filter for not collections
          */
-        NOT_COLLECTIONS,
+        NOT_COLLECTIONS = 23,
         /**
          * Filter for application packages
          */
-        APPLICATION,
+        APPLICATION = 24,
         /**
          * Filter for non-application packages
          */
-        NOT_APPLICATION,
+        NOT_APPLICATION = 25,
         /**
          * Filter for downloaded packages
          */
-        DOWNLOADED,
+        DOWNLOADED = 26,
         /**
          * Filter for not downloaded packages
          */
-        NOT_DOWNLOADED,
-        LAST,
+        NOT_DOWNLOADED = 27,
+        LAST = 28,
     }
 
 
@@ -644,139 +644,139 @@ export namespace PackageKitGlib {
         /**
          * Unknown group
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Accessibility related packages
          */
-        ACCESSIBILITY,
+        ACCESSIBILITY = 1,
         /**
          * Accessory packages
          */
-        ACCESSORIES,
+        ACCESSORIES = 2,
         /**
          * Administration tools packages
          */
-        ADMIN_TOOLS,
+        ADMIN_TOOLS = 3,
         /**
          * Communication packages
          */
-        COMMUNICATION,
+        COMMUNICATION = 4,
         /**
          * GNOME packages
          */
-        DESKTOP_GNOME,
+        DESKTOP_GNOME = 5,
         /**
          * KDE packages
          */
-        DESKTOP_KDE,
+        DESKTOP_KDE = 6,
         /**
          * Other desktop packages
          */
-        DESKTOP_OTHER,
+        DESKTOP_OTHER = 7,
         /**
          * XFCE packages
          */
-        DESKTOP_XFCE,
+        DESKTOP_XFCE = 8,
         /**
          * Education packages
          */
-        EDUCATION,
+        EDUCATION = 9,
         /**
          * Fonts
          */
-        FONTS,
+        FONTS = 10,
         /**
          * Games
          */
-        GAMES,
+        GAMES = 11,
         /**
          * Graphics related packages
          */
-        GRAPHICS,
+        GRAPHICS = 12,
         /**
          * Internet related packages
          */
-        INTERNET,
+        INTERNET = 13,
         /**
          * Legacy packages
          */
-        LEGACY,
+        LEGACY = 14,
         /**
          * Localization related packages
          */
-        LOCALIZATION,
+        LOCALIZATION = 15,
         /**
          * Map related packages
          */
-        MAPS,
+        MAPS = 16,
         /**
          * Multimedia packages
          */
-        MULTIMEDIA,
+        MULTIMEDIA = 17,
         /**
          * Network related packages
          */
-        NETWORK,
+        NETWORK = 18,
         /**
          * Office packages
          */
-        OFFICE,
-        OTHER,
+        OFFICE = 19,
+        OTHER = 20,
         /**
          * Power-management related packages
          */
-        POWER_MANAGEMENT,
+        POWER_MANAGEMENT = 21,
         /**
          * Programming packages
          */
-        PROGRAMMING,
+        PROGRAMMING = 22,
         /**
          * Publishing related packages
          */
-        PUBLISHING,
-        REPOS,
+        PUBLISHING = 23,
+        REPOS = 24,
         /**
          * Security packages
          */
-        SECURITY,
+        SECURITY = 25,
         /**
          * Server related packages
          */
-        SERVERS,
+        SERVERS = 26,
         /**
          * System packages
          */
-        SYSTEM,
+        SYSTEM = 27,
         /**
          * Virtualization packages
          */
-        VIRTUALIZATION,
+        VIRTUALIZATION = 28,
         /**
          * Science related packages
          */
-        SCIENCE,
+        SCIENCE = 29,
         /**
          * Documentation
          */
-        DOCUMENTATION,
+        DOCUMENTATION = 30,
         /**
          * Electronics package
          */
-        ELECTRONICS,
-        COLLECTIONS,
+        ELECTRONICS = 31,
+        COLLECTIONS = 32,
         /**
          * Vendor defined group
          */
-        VENDOR,
+        VENDOR = 33,
         /**
          * Special group for recently updated packages
          */
-        NEWEST,
+        NEWEST = 34,
         /**
          * DDE packages
          */
-        DESKTOP_DDE,
-        LAST,
+        DESKTOP_DDE = 35,
+        LAST = 36,
     }
 
 
@@ -796,113 +796,113 @@ export namespace PackageKitGlib {
         /**
          * Package status is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Package is installed
          */
-        INSTALLED,
+        INSTALLED = 1,
         /**
          * Package is available to be installed
          */
-        AVAILABLE,
+        AVAILABLE = 2,
         /**
          * Package update has a low priority
          */
-        LOW,
+        LOW = 3,
         /**
          * Package update is an enhancement
          */
-        ENHANCEMENT,
+        ENHANCEMENT = 4,
         /**
          * Package update has normal priority
          */
-        NORMAL,
+        NORMAL = 5,
         /**
          * Package update fixes bugs
          */
-        BUGFIX,
+        BUGFIX = 6,
         /**
          * Package update is important
          */
-        IMPORTANT,
+        IMPORTANT = 7,
         /**
          * Package update contains a security fix
          */
-        SECURITY,
+        SECURITY = 8,
         /**
          * Package is blocked
          */
-        BLOCKED,
+        BLOCKED = 9,
         /**
          * Package is being downloaded
          */
-        DOWNLOADING,
+        DOWNLOADING = 10,
         /**
          * Package is updating
          */
-        UPDATING,
+        UPDATING = 11,
         /**
          * Package is being installed
          */
-        INSTALLING,
+        INSTALLING = 12,
         /**
          * Package is being removed
          */
-        REMOVING,
+        REMOVING = 13,
         /**
          * Package is running cleanup
          */
-        CLEANUP,
+        CLEANUP = 14,
         /**
          * Package is being obsoleted
          */
-        OBSOLETING,
-        COLLECTION_INSTALLED,
-        COLLECTION_AVAILABLE,
-        FINISHED,
+        OBSOLETING = 15,
+        COLLECTION_INSTALLED = 16,
+        COLLECTION_AVAILABLE = 17,
+        FINISHED = 18,
         /**
          * Package is being reinstalled
          */
-        REINSTALLING,
+        REINSTALLING = 19,
         /**
          * Package is being downgraded
          */
-        DOWNGRADING,
+        DOWNGRADING = 20,
         /**
          * Package is preparing for installation/removal
          */
-        PREPARING,
+        PREPARING = 21,
         /**
          * Package is decompressing
          */
-        DECOMPRESSING,
-        UNTRUSTED,
-        TRUSTED,
+        DECOMPRESSING = 22,
+        UNTRUSTED = 23,
+        TRUSTED = 24,
         /**
          * Package is unavailable
          */
-        UNAVAILABLE,
+        UNAVAILABLE = 25,
         /**
          * Package update severity is critical. Since: 1.2.4
          */
-        CRITICAL,
+        CRITICAL = 26,
         /**
          * Package is intended for installation. Since 1.3.0
          */
-        INSTALL,
+        INSTALL = 27,
         /**
          * Package is intended for removal. Since 1.3.0
          */
-        REMOVE,
+        REMOVE = 28,
         /**
          * Package is obsoleted. Since 1.3.0
          */
-        OBSOLETE,
+        OBSOLETE = 29,
         /**
          * Package is intended for downgrade. Since 1.3.0
          */
-        DOWNGRADE,
-        LAST,
+        DOWNGRADE = 30,
+        LAST = 31,
     }
 
 
@@ -921,20 +921,20 @@ export namespace PackageKitGlib {
         /**
          * Unknown media type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Media is a CD
          */
-        CD,
+        CD = 1,
         /**
          * Media is a DVD
          */
-        DVD,
+        DVD = 2,
         /**
          * Media is a disc (not CD or DVD)
          */
-        DISC,
-        LAST,
+        DISC = 3,
+        LAST = 4,
     }
 
 
@@ -953,28 +953,28 @@ export namespace PackageKitGlib {
         /**
          * Unknown network
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Offline (no network)
          */
-        OFFLINE,
+        OFFLINE = 1,
         /**
          * Online (network type unknown)
          */
-        ONLINE,
+        ONLINE = 2,
         /**
          * Wired network
          */
-        WIRED,
+        WIRED = 3,
         /**
          * WiFi network
          */
-        WIFI,
+        WIFI = 4,
         /**
          * Mobile network
          */
-        MOBILE,
-        LAST,
+        MOBILE = 5,
+        LAST = 6,
     }
 
 
@@ -993,19 +993,19 @@ export namespace PackageKitGlib {
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Reboot
          */
-        REBOOT,
+        REBOOT = 1,
         /**
          * Power-off
          */
-        POWER_OFF,
+        POWER_OFF = 2,
         /**
          * No action set
          */
-        UNSET,
+        UNSET = 3,
     }
 
 
@@ -1059,20 +1059,20 @@ export namespace PackageKitGlib {
         /**
          * Sort by name
          */
-        NAME,
+        NAME = 0,
         /**
          * Sort by package info
          */
-        INFO,
+        INFO = 1,
         /**
          * Sort by package ID
          */
-        PACKAGE_ID,
+        PACKAGE_ID = 2,
         /**
          * Sort by summary
          */
-        SUMMARY,
-        LAST,
+        SUMMARY = 3,
+        LAST = 4,
     }
 
 
@@ -1091,68 +1091,68 @@ export namespace PackageKitGlib {
         /**
          * package id updated
          */
-        PACKAGE_ID,
+        PACKAGE_ID = 0,
         /**
          * transaction ID updated
          */
-        TRANSACTION_ID,
+        TRANSACTION_ID = 1,
         /**
          * percentage updated
          */
-        PERCENTAGE,
+        PERCENTAGE = 2,
         /**
          * allow cancel updated
          */
-        ALLOW_CANCEL,
+        ALLOW_CANCEL = 3,
         /**
          * status updated
          */
-        STATUS,
+        STATUS = 4,
         /**
          * role updated
          */
-        ROLE,
+        ROLE = 5,
         /**
          * called active updated
          */
-        CALLER_ACTIVE,
+        CALLER_ACTIVE = 6,
         /**
          * elapsed time updated
          */
-        ELAPSED_TIME,
+        ELAPSED_TIME = 7,
         /**
          * remaining time updated
          */
-        REMAINING_TIME,
+        REMAINING_TIME = 8,
         /**
          * speed updated
          */
-        SPEED,
+        SPEED = 9,
         /**
          * download size remaining updated
          */
-        DOWNLOAD_SIZE_REMAINING,
+        DOWNLOAD_SIZE_REMAINING = 10,
         /**
          * uid updated
          */
-        UID,
+        UID = 11,
         /**
          * package updated
          */
-        PACKAGE,
+        PACKAGE = 12,
         /**
          * item progress updated
          */
-        ITEM_PROGRESS,
+        ITEM_PROGRESS = 13,
         /**
          * transaction flags updated
          */
-        TRANSACTION_FLAGS,
-        INVALID,
+        TRANSACTION_FLAGS = 14,
+        INVALID = 15,
         /**
          * D-Bus name of sender updated (Since: 1.2.6)
          */
-        SENDER,
+        SENDER = 16,
     }
 
 
@@ -1171,26 +1171,26 @@ export namespace PackageKitGlib {
         /**
          * Unknown restart state
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * No restart required
          */
-        NONE,
+        NONE = 1,
         /**
          * Need to restart the application
          */
-        APPLICATION,
+        APPLICATION = 2,
         /**
          * Need to restart the session
          */
-        SESSION,
+        SESSION = 3,
         /**
          * Need to restart the system
          */
-        SYSTEM,
-        SECURITY_SESSION,
-        SECURITY_SYSTEM,
-        LAST,
+        SYSTEM = 4,
+        SECURITY_SESSION = 5,
+        SECURITY_SYSTEM = 6,
+        LAST = 7,
     }
 
 
@@ -1212,134 +1212,134 @@ export namespace PackageKitGlib {
         /**
          * Unknow request
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Cancel transaction
          */
-        CANCEL,
+        CANCEL = 1,
         /**
          * Get package dependencies
          */
-        DEPENDS_ON,
+        DEPENDS_ON = 2,
         /**
          * Get package details
          */
-        GET_DETAILS,
-        GET_FILES,
+        GET_DETAILS = 3,
+        GET_FILES = 4,
         /**
          * Get available packages
          */
-        GET_PACKAGES,
+        GET_PACKAGES = 5,
         /**
          * Get repository list
          */
-        GET_REPO_LIST,
+        GET_REPO_LIST = 6,
         /**
          * Get packages required by given package
          */
-        REQUIRED_BY,
+        REQUIRED_BY = 7,
         /**
          * Get update details
          */
-        GET_UPDATE_DETAIL,
+        GET_UPDATE_DETAIL = 8,
         /**
          * Get available updates
          */
-        GET_UPDATES,
+        GET_UPDATES = 9,
         /**
          * Install package files
          */
-        INSTALL_FILES,
+        INSTALL_FILES = 10,
         /**
          * Install packages
          */
-        INSTALL_PACKAGES,
+        INSTALL_PACKAGES = 11,
         /**
          * Install signature
          */
-        INSTALL_SIGNATURE,
+        INSTALL_SIGNATURE = 12,
         /**
          * Refresh cache
          */
-        REFRESH_CACHE,
+        REFRESH_CACHE = 13,
         /**
          * Remove packages
          */
-        REMOVE_PACKAGES,
+        REMOVE_PACKAGES = 14,
         /**
          * Enable repository
          */
-        REPO_ENABLE,
-        REPO_SET_DATA,
+        REPO_ENABLE = 15,
+        REPO_SET_DATA = 16,
         /**
          * Resolve depdencies
          */
-        RESOLVE,
+        RESOLVE = 17,
         /**
          * Search for details
          */
-        SEARCH_DETAILS,
+        SEARCH_DETAILS = 18,
         /**
          * Search for file
          */
-        SEARCH_FILE,
+        SEARCH_FILE = 19,
         /**
          * Search for group
          */
-        SEARCH_GROUP,
+        SEARCH_GROUP = 20,
         /**
          * Search for package name
          */
-        SEARCH_NAME,
+        SEARCH_NAME = 21,
         /**
          * Update packages
          */
-        UPDATE_PACKAGES,
+        UPDATE_PACKAGES = 22,
         /**
          * Get what a package provides
          */
-        WHAT_PROVIDES,
+        WHAT_PROVIDES = 23,
         /**
          * Accept an EULA
          */
-        ACCEPT_EULA,
+        ACCEPT_EULA = 24,
         /**
          * Download packages
          */
-        DOWNLOAD_PACKAGES,
+        DOWNLOAD_PACKAGES = 25,
         /**
          * Get available distribution upgrades
          */
-        GET_DISTRO_UPGRADES,
+        GET_DISTRO_UPGRADES = 26,
         /**
          * Get available categories
          */
-        GET_CATEGORIES,
+        GET_CATEGORIES = 27,
         /**
          * Get old transation information
          */
-        GET_OLD_TRANSACTIONS,
+        GET_OLD_TRANSACTIONS = 28,
         /**
          * Repair system
          */
-        REPAIR_SYSTEM,
+        REPAIR_SYSTEM = 29,
         /**
          * Get details on local package
          */
-        GET_DETAILS_LOCAL,
+        GET_DETAILS_LOCAL = 30,
         /**
          * Get files provided by local package
          */
-        GET_FILES_LOCAL,
+        GET_FILES_LOCAL = 31,
         /**
          * Remove repository
          */
-        REPO_REMOVE,
+        REPO_REMOVE = 32,
         /**
          * Upgrade system
          */
-        UPGRADE_SYSTEM,
-        LAST,
+        UPGRADE_SYSTEM = 33,
+        LAST = 34,
     }
 
 
@@ -1358,12 +1358,12 @@ export namespace PackageKitGlib {
         /**
          * Unkwown signature type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * GPG signature
          */
-        GPG,
-        LAST,
+        GPG = 1,
+        LAST = 2,
     }
 
 
@@ -1397,140 +1397,140 @@ export namespace PackageKitGlib {
         /**
          * Unknown status
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Waiting
          */
-        WAIT,
+        WAIT = 1,
         /**
          * Setting up
          */
-        SETUP,
+        SETUP = 2,
         /**
          * Running
          */
-        RUNNING,
-        QUERY,
-        INFO,
+        RUNNING = 3,
+        QUERY = 4,
+        INFO = 5,
         /**
          * Removing
          */
-        REMOVE,
+        REMOVE = 6,
         /**
          * Refreshing cache
          */
-        REFRESH_CACHE,
+        REFRESH_CACHE = 7,
         /**
          * Downloading
          */
-        DOWNLOAD,
+        DOWNLOAD = 8,
         /**
          * Installing
          */
-        INSTALL,
+        INSTALL = 9,
         /**
          * Updating
          */
-        UPDATE,
+        UPDATE = 10,
         /**
          * Cleaning up
          */
-        CLEANUP,
-        OBSOLETE,
+        CLEANUP = 11,
+        OBSOLETE = 12,
         /**
          * Resolving dependencies
          */
-        DEP_RESOLVE,
+        DEP_RESOLVE = 13,
         /**
          * Checking signatures
          */
-        SIG_CHECK,
+        SIG_CHECK = 14,
         /**
          * Testing commit
          */
-        TEST_COMMIT,
+        TEST_COMMIT = 15,
         /**
          * Committing
          */
-        COMMIT,
-        REQUEST,
+        COMMIT = 16,
+        REQUEST = 17,
         /**
          * Finished
          */
-        FINISHED,
+        FINISHED = 18,
         /**
          * Cancelling
          */
-        CANCEL,
+        CANCEL = 19,
         /**
          * Downloading respository
          */
-        DOWNLOAD_REPOSITORY,
+        DOWNLOAD_REPOSITORY = 20,
         /**
          * Donwloading package list
          */
-        DOWNLOAD_PACKAGELIST,
+        DOWNLOAD_PACKAGELIST = 21,
         /**
          * Downloading file list
          */
-        DOWNLOAD_FILELIST,
+        DOWNLOAD_FILELIST = 22,
         /**
          * Downloading changelog information
          */
-        DOWNLOAD_CHANGELOG,
+        DOWNLOAD_CHANGELOG = 23,
         /**
          * Downloading group information
          */
-        DOWNLOAD_GROUP,
+        DOWNLOAD_GROUP = 24,
         /**
          * Downloading update information
          */
-        DOWNLOAD_UPDATEINFO,
+        DOWNLOAD_UPDATEINFO = 25,
         /**
          * Repackaging
          */
-        REPACKAGING,
+        REPACKAGING = 26,
         /**
          * Loading cache
          */
-        LOADING_CACHE,
+        LOADING_CACHE = 27,
         /**
          * Scanning for applications
          */
-        SCAN_APPLICATIONS,
+        SCAN_APPLICATIONS = 28,
         /**
          * Generating package list
          */
-        GENERATE_PACKAGE_LIST,
+        GENERATE_PACKAGE_LIST = 29,
         /**
          * Waiting for lock
          */
-        WAITING_FOR_LOCK,
+        WAITING_FOR_LOCK = 30,
         /**
          * Waiting for authentication/authorization
          */
-        WAITING_FOR_AUTH,
+        WAITING_FOR_AUTH = 31,
         /**
          * Scanning running processes
          */
-        SCAN_PROCESS_LIST,
+        SCAN_PROCESS_LIST = 32,
         /**
          * Checking executable files
          */
-        CHECK_EXECUTABLE_FILES,
+        CHECK_EXECUTABLE_FILES = 33,
         /**
          * Checking libraries
          */
-        CHECK_LIBRARIES,
+        CHECK_LIBRARIES = 34,
         /**
          * Copying files
          */
-        COPY_FILES,
+        COPY_FILES = 35,
         /**
          * Running package hook
          */
-        RUN_HOOK,
-        LAST,
+        RUN_HOOK = 36,
+        LAST = 37,
     }
 
 
@@ -1549,32 +1549,32 @@ export namespace PackageKitGlib {
         /**
          * No transaction flag
          */
-        NONE,
+        NONE = 0,
         /**
          * Only allow trusted packages
          */
-        ONLY_TRUSTED,
+        ONLY_TRUSTED = 1,
         /**
          * Simulate transaction
          */
-        SIMULATE,
+        SIMULATE = 2,
         /**
          * Only download packages
          */
-        ONLY_DOWNLOAD,
+        ONLY_DOWNLOAD = 3,
         /**
          * Allow package reinstallation
          */
-        ALLOW_REINSTALL,
+        ALLOW_REINSTALL = 4,
         /**
          * Only allow package reinstallation
          */
-        JUST_REINSTALL,
+        JUST_REINSTALL = 5,
         /**
          * Allow packages to be downgraded
          */
-        ALLOW_DOWNGRADE,
-        LAST,
+        ALLOW_DOWNGRADE = 6,
+        LAST = 7,
     }
 
 
@@ -1593,20 +1593,20 @@ export namespace PackageKitGlib {
         /**
          * Update stability unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Update is a stable release
          */
-        STABLE,
+        STABLE = 1,
         /**
          * Update is an unstable release
          */
-        UNSTABLE,
+        UNSTABLE = 2,
         /**
          * Update is a testing release
          */
-        TESTING,
-        LAST,
+        TESTING = 3,
+        LAST = 4,
     }
 
 
@@ -1622,87 +1622,118 @@ export namespace PackageKitGlib {
      * @gir-type Enum
      */
     enum UpgradeKindEnum {
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Perform minimal upgrade
          */
-        MINIMAL,
+        MINIMAL = 1,
         /**
          * Perform default upgrade
          */
-        DEFAULT,
+        DEFAULT = 2,
         /**
          * Perform complete upgrade
          */
-        COMPLETE,
-        LAST,
+        COMPLETE = 3,
+        LAST = 4,
     }
 
 
     /**
      * The D-Bus interface used by the PackageKit service.
+     * @default org.freedesktop.PackageKit
      */
     const DBUS_INTERFACE: string;
 
     /**
      * The D-Bus interface for PackageKit offline update functionality
+     * @default org.freedesktop.PackageKit.Offline
      */
     const DBUS_INTERFACE_OFFLINE: string;
 
     /**
      * The D-Bus interface for PackageKit transactions.
+     * @default org.freedesktop.PackageKit.Transaction
      */
     const DBUS_INTERFACE_TRANSACTION: string;
 
     /**
      * The path to the main PackageKit service D-Bus object.
+     * @default /org/freedesktop/PackageKit
      */
     const DBUS_PATH: string;
 
     /**
      * The well-known name for the PackageKit system D-Bus service.
+     * @default org.freedesktop.PackageKit
      */
     const DBUS_SERVICE: string;
 
     /**
      * The default location for the desktop files
+     * @default /usr/share/applications
      */
     const DESKTOP_DEFAULT_APPLICATION_DIR: string;
 
+    /**
+     * @default 1
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 6
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 3
+     */
     const MINOR_VERSION: number;
 
     const OFFLINE_DESTDIR: string;
 
+    /**
+     * @default PackageKit Offline Update Results
+     */
     const OFFLINE_RESULTS_GROUP: string;
 
+    /**
+     * @default &
+     */
     const PACKAGE_IDS_DELIM: string;
 
     /**
      * Alias to get an arch field from the result of pk_package_id_split
+     * @default 2
      */
     const PACKAGE_ID_ARCH: number;
 
     /**
      * Alias to get a data field from the result of pk_package_id_split
+     * @default 3
      */
     const PACKAGE_ID_DATA: number;
 
     /**
      * Alias to get a name field from the result of pk_package_id_split
+     * @default 0
      */
     const PACKAGE_ID_NAME: number;
 
     /**
      * Alias to get a version field from the result of pk_package_id_split
+     * @default 1
      */
     const PACKAGE_ID_VERSION: number;
 
+    /**
+     * @default /var/lib/PackageKit/package-cache.db
+     */
     const SYSTEM_PACKAGE_CACHE_FILENAME: string;
 
+    /**
+     * @default /var/lib/PackageKit/system.package-list
+     */
     const SYSTEM_PACKAGE_LIST_FILENAME: string;
 
     /**
@@ -1982,40 +2013,55 @@ export namespace PackageKitGlib {
      */
     function offline_action_to_string(action: OfflineAction): string;
 
+    /**
+     * @throws GLib.Error
+     */
     function offline_auth_cancel(): boolean;
 
+    /**
+     * @throws GLib.Error
+     */
     function offline_auth_clear_results(): boolean;
 
+    /**
+     * @throws GLib.Error
+     */
     function offline_auth_invalidate(): boolean;
 
     /**
      * @param action 
+     * @throws GLib.Error
      */
     function offline_auth_set_action(action: OfflineAction): boolean;
 
     /**
      * @param package_ids 
+     * @throws GLib.Error
      */
     function offline_auth_set_prepared_ids(package_ids: string): boolean;
 
     /**
      * @param name 
      * @param release_ver 
+     * @throws GLib.Error
      */
     function offline_auth_set_prepared_upgrade(name: string, release_ver: string): boolean;
 
     /**
      * @param results 
+     * @throws GLib.Error
      */
     function offline_auth_set_results(results: Results): boolean;
 
     /**
      * @param action 
+     * @throws GLib.Error
      */
     function offline_auth_trigger(action: OfflineAction): boolean;
 
     /**
      * @param action 
+     * @throws GLib.Error
      */
     function offline_auth_trigger_upgrade(action: OfflineAction): boolean;
 
@@ -2027,6 +2073,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_cancel(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2037,6 +2084,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
+     * @throws GLib.Error
      */
     function offline_cancel_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2048,6 +2096,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_clear_results(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2058,6 +2107,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
+     * @throws GLib.Error
      */
     function offline_clear_results_with_flags(flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2074,6 +2124,7 @@ export namespace PackageKitGlib {
      * An error is set if the the value {@link PackageKitGlib.OfflineAction.UNKNOWN} is returned.
      * @returns a {@link PackageKitGlib.OfflineAction}, e.g. {@link PackageKitGlib.OfflineAction.REBOOT}
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_action(): OfflineAction;
 
@@ -2082,6 +2133,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_action_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -2089,6 +2141,7 @@ export namespace PackageKitGlib {
      * Gets the package-ids in the prepared transaction.
      * @returns array of package-ids, or `null`
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_prepared_ids(): string[];
 
@@ -2097,6 +2150,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_prepared_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -2104,12 +2158,14 @@ export namespace PackageKitGlib {
      * Gets a package sack of the packages in the prepared transaction.
      * @returns A new {@link PackageKitGlib.PackageSack}, or `null`
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_prepared_sack(): PackageSack;
 
     /**
      * @param name 
      * @param release_ver 
+     * @throws GLib.Error
      */
     function offline_get_prepared_upgrade(name: string, release_ver: string): boolean;
 
@@ -2118,6 +2174,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns A {@link Gio.FileMonitor}, or `null`
      * @since 1.0.12
+     * @throws GLib.Error
      */
     function offline_get_prepared_upgrade_monitor(cancellable: Gio.Cancellable | null): Gio.FileMonitor;
 
@@ -2125,6 +2182,7 @@ export namespace PackageKitGlib {
      * Gets the name of the prepared system upgrade in the prepared transaction.
      * @returns the name, or `null` if unset, free with `g_free()`
      * @since 1.1.2
+     * @throws GLib.Error
      */
     function offline_get_prepared_upgrade_name(): string;
 
@@ -2132,6 +2190,7 @@ export namespace PackageKitGlib {
      * Gets the version of the prepared system upgrade in the prepared transaction.
      * @returns the version, or `null` if unset, free with `g_free()`
      * @since 1.0.12
+     * @throws GLib.Error
      */
     function offline_get_prepared_upgrade_version(): string;
 
@@ -2139,6 +2198,7 @@ export namespace PackageKitGlib {
      * Gets the last result of the offline transaction.
      * @returns A {@link PackageKitGlib.Results}, or `null`
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_results(): Results;
 
@@ -2146,6 +2206,7 @@ export namespace PackageKitGlib {
      * Gets the modification time of the prepared transaction.
      * @returns a unix time, or 0 for error.
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_get_results_mtime(): number;
 
@@ -2158,6 +2219,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 0.9.6
+     * @throws GLib.Error
      */
     function offline_trigger(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2170,6 +2232,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 1.0.12
+     * @throws GLib.Error
      */
     function offline_trigger_upgrade(action: OfflineAction, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2181,6 +2244,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
+     * @throws GLib.Error
      */
     function offline_trigger_upgrade_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2192,6 +2256,7 @@ export namespace PackageKitGlib {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` for success, else `false` and `error` set
      * @since 1.2.5
+     * @throws GLib.Error
      */
     function offline_trigger_with_flags(action: OfflineAction, flags: OfflineFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2394,11 +2459,11 @@ export namespace PackageKitGlib {
         /**
          * No specific flag
          */
-        NONE,
+        NONE = 0,
         /**
          * Run the action in an interactive mode, allowing polkit authentication dialogs
          */
-        INTERACTIVE,
+        INTERACTIVE = 1,
     }
 
 
@@ -2729,6 +2794,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         accept_eula(eula_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2752,6 +2818,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         adopt(transaction_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2777,6 +2844,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         depends_on(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2803,6 +2871,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         download_packages(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2822,6 +2891,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns the {@link PackageKitGlib.Results}, or `null`. Free with `g_object_unref()`
          * @since 0.5.2
+         * @throws GLib.Error
          */
         generic_finish(res: Gio.AsyncResult): Results;
 
@@ -2848,6 +2918,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_categories(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2871,6 +2942,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_details(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2896,6 +2968,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.17
+         * @throws GLib.Error
          */
         get_details_local(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2927,6 +3000,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_distro_upgrades(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2950,6 +3024,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_files(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -2974,6 +3049,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.9.1
+         * @throws GLib.Error
          */
         get_files_local(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3019,6 +3095,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_old_transactions(number: number, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3042,6 +3119,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_packages(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3064,6 +3142,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_progress(transaction_id: string, cancellable: Gio.Cancellable | null): Progress;
 
@@ -3098,6 +3177,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns the {@link PackageKitGlib.Progress}, or `null`. Free with `g_object_unref()`
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_progress_finish(res: Gio.AsyncResult): Progress;
 
@@ -3111,6 +3191,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_repo_list(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3135,6 +3216,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_update_detail(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3159,6 +3241,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_updates(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3184,6 +3267,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.1
+         * @throws GLib.Error
          */
         install_files(transaction_flags: Bitfield, files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3210,6 +3294,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.1
+         * @throws GLib.Error
          */
         install_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3236,6 +3321,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         install_signature(type: SigTypeEnum, key_id: string, package_id: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3264,6 +3350,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         refresh_cache(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3295,6 +3382,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.1
+         * @throws GLib.Error
          */
         remove_packages(transaction_flags: Bitfield, package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3328,6 +3416,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.1
+         * @throws GLib.Error
          */
         repair_system(transaction_flags: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3357,6 +3446,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         repo_enable(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3383,6 +3473,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.9.1
+         * @throws GLib.Error
          */
         repo_remove(transaction_flags: Bitfield, repo_id: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3411,6 +3502,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         repo_set_data(repo_id: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3439,6 +3531,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         required_by(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3467,6 +3560,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         resolve(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3496,6 +3590,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.5
+         * @throws GLib.Error
          */
         search_details(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3523,6 +3618,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.5
+         * @throws GLib.Error
          */
         search_files(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3548,6 +3644,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.5
+         * @throws GLib.Error
          */
         search_groups(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3574,6 +3671,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.5
+         * @throws GLib.Error
          */
         search_names(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3640,6 +3738,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.8.1
+         * @throws GLib.Error
          */
         update_packages(transaction_flags: Bitfield, package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3670,6 +3769,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 1.0.10
+         * @throws GLib.Error
          */
         upgrade_system(transaction_flags: Bitfield, distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3702,6 +3802,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         what_provides(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -3778,6 +3879,7 @@ export namespace PackageKitGlib {
          * @param envp the environment
          * @returns `true` for success
          * @since 0.6.10
+         * @throws GLib.Error
          */
         start(socket_filename: string, argv: string, envp: string): boolean;
 
@@ -3789,6 +3891,7 @@ export namespace PackageKitGlib {
          * @param envp the environment
          * @returns `true` for success
          * @since 1.1.13
+         * @throws GLib.Error
          */
         start_with_socket(socket: Gio.Socket, argv: string, envp: string): boolean;
 
@@ -3797,6 +3900,7 @@ export namespace PackageKitGlib {
          * the socket.
          * @returns `true` for success
          * @since 0.6.10
+         * @throws GLib.Error
          */
         stop(): boolean;
     }
@@ -3835,7 +3939,7 @@ export namespace PackageKitGlib {
              * @signal
              * @run-last
              */
-            "transaction-list-changed": (arg0: string[]) => void;
+            "transaction-list-changed": (transaction_ids: string[]) => void;
             /**
              * The ::updates-changed signal is emitted when the update list may have
              * changed and the control program may have to update some UI.
@@ -4170,6 +4274,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns the {@link PackageKitGlib.AuthorizeEnum} or {@link PackageKitGlib.AuthorizeEnum.UNKNOWN} if the method failed
          * @since 0.5.2
+         * @throws GLib.Error
          */
         can_authorize_finish(res: Gio.AsyncResult): AuthorizeEnum;
 
@@ -4201,6 +4306,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_daemon_state_finish(res: Gio.AsyncResult): string | null;
 
@@ -4211,6 +4317,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_properties(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4242,6 +4349,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if we set the proxy successfully
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_properties_finish(res: Gio.AsyncResult): boolean;
 
@@ -4273,6 +4381,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns the ID, or `null` if unset, free with `g_free()`
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_tid_finish(res: Gio.AsyncResult): string | null;
 
@@ -4310,6 +4419,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if the daemon serviced the request
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_time_since_action_finish(res: Gio.AsyncResult): number;
 
@@ -4320,6 +4430,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns The list of transaction id's, or `null`, free with `g_strfreev()`
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_transaction_list(cancellable: Gio.Cancellable | null): string[];
 
@@ -4351,6 +4462,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns A GStrv list of transaction ID's, free with `g_strfreev()`
          * @since 0.5.2
+         * @throws GLib.Error
          */
         get_transaction_list_finish(res: Gio.AsyncResult): string[];
 
@@ -4363,6 +4475,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using `pk_control_set_proxy2()`.
          * @since 0.6.3
+         * @throws GLib.Error
          */
         set_proxy(proxy_http: string, proxy_ftp: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4379,6 +4492,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the proxy was set correctly
          * @since 0.6.13
+         * @throws GLib.Error
          */
         set_proxy2(proxy_http: string, proxy_https: string, proxy_ftp: string, proxy_socks: string, no_proxy: string, pac: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4439,6 +4553,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if we set the proxy successfully
          * @since 0.5.2
+         * @throws GLib.Error
          */
         set_proxy_finish(res: Gio.AsyncResult): boolean;
 
@@ -4449,6 +4564,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the suggestion was sent
          * @since 0.6.2
+         * @throws GLib.Error
          */
         suggest_daemon_quit(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4480,6 +4596,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if the suggestion was sent
          * @since 0.6.2
+         * @throws GLib.Error
          */
         suggest_daemon_quit_finish(res: Gio.AsyncResult): boolean;
     }
@@ -4535,6 +4652,7 @@ export namespace PackageKitGlib {
          * @param _package the package name, e.g. "gnome-power-manager"
          * @returns string array of results, free with `g_ptr_array_unref()` NOTE: This method is unused and will be removed next time the library soname changes!
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_files_for_package(_package: string): string[];
 
@@ -4543,6 +4661,7 @@ export namespace PackageKitGlib {
          * @param filename a fully qualified filename
          * @returns package name, or `null` NOTE: This method is unused and will be removed next time the library soname changes!
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_package_for_file(filename: string): string;
 
@@ -4552,6 +4671,7 @@ export namespace PackageKitGlib {
          * @param _package the package name, e.g. "gnome-power-manager"
          * @returns string array of results, free with `g_ptr_array_unref()` NOTE: This method is unused and will be removed next time the library soname changes!
          * @since 0.5.3
+         * @throws GLib.Error
          */
         get_shown_for_package(_package: string): string[];
 
@@ -4560,6 +4680,7 @@ export namespace PackageKitGlib {
          * soname changes!
          * @returns `true` if opened correctly
          * @since 0.5.3
+         * @throws GLib.Error
          */
         open_database(): boolean;
     }
@@ -5934,6 +6055,7 @@ export namespace PackageKitGlib {
          * @param data the data describing the package
          * @returns `true` if the data was parsed correctly
          * @since 0.8.11
+         * @throws GLib.Error
          */
         parse(data: string): boolean;
 
@@ -5948,6 +6070,7 @@ export namespace PackageKitGlib {
          * @param package_id the valid package_id
          * @returns `true` if the package_id was set
          * @since 0.5.4
+         * @throws GLib.Error
          */
         set_id(package_id: string): boolean;
 
@@ -6041,6 +6164,7 @@ export namespace PackageKitGlib {
          * @param package_id a package_id descriptor
          * @returns `true` if the package was added to the sack
          * @since 0.5.2
+         * @throws GLib.Error
          */
         add_package_by_id(package_id: string): boolean;
 
@@ -6048,6 +6172,7 @@ export namespace PackageKitGlib {
          * Adds packages from package-list file to a {@link PackageKitGlib.PackageSack}.
          * @param file a valid package-list file
          * @returns `true` if there were no errors.
+         * @throws GLib.Error
          */
         add_packages_from_file(file: Gio.File): boolean;
 
@@ -6107,6 +6232,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          * @since 0.6.0
+         * @throws GLib.Error
          */
         get_details(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6146,6 +6272,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          * @since 0.6.0
+         * @throws GLib.Error
          */
         get_update_detail(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6163,6 +6290,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` for success
          * @since 0.5.2
+         * @throws GLib.Error
          */
         merge_generic_finish(res: Gio.AsyncResult): boolean;
 
@@ -6199,6 +6327,7 @@ export namespace PackageKitGlib {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` if the properties were set correctly
          * @since 0.6.0
+         * @throws GLib.Error
          */
         resolve(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6223,6 +6352,7 @@ export namespace PackageKitGlib {
          * @param file a valid package-list file
          * @returns `true` if there were no errors.
          * @since 0.8.6
+         * @throws GLib.Error
          */
         to_file(file: Gio.File): boolean;
     }
@@ -7743,6 +7873,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         depends_on_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7765,6 +7896,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         download_packages_sync(package_ids: string[], directory: string, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7773,6 +7905,7 @@ export namespace PackageKitGlib {
          * @param res the {@link Gio.AsyncResult}
          * @returns The {@link PackageKitGlib.Results} of the transaction.
          * @since 0.5.2
+         * @throws GLib.Error
          */
         generic_finish(res: Gio.AsyncResult): Results;
 
@@ -7805,6 +7938,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_categories_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7825,6 +7959,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_details_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7845,6 +7980,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_files_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7879,6 +8015,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_packages_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7899,6 +8036,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_repo_list_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7926,6 +8064,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_update_detail_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7946,6 +8085,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         get_updates_sync(filters: Bitfield, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -7977,6 +8117,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         install_files_sync(files: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8006,6 +8147,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         install_packages_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8026,6 +8168,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         refresh_cache_sync(force: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8063,6 +8206,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         remove_packages_sync(package_ids: string[], allow_deps: boolean, autoremove: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8091,6 +8235,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.7.2
+         * @throws GLib.Error
          */
         repair_system_sync(cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8113,6 +8258,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         repo_enable_sync(repo_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8137,6 +8283,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         required_by_sync(filters: Bitfield, package_ids: string[], recursive: boolean, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8159,6 +8306,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         resolve_sync(filters: Bitfield, packages: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8181,6 +8329,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         search_details_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8203,6 +8352,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         search_files_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8225,6 +8375,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         search_groups_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8247,6 +8398,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         search_names_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8313,6 +8465,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.5.3
+         * @throws GLib.Error
          */
         update_packages_sync(package_ids: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8349,6 +8502,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 1.0.12
+         * @throws GLib.Error
          */
         upgrade_system_sync(distro_id: string, upgrade_kind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
 
@@ -8387,6 +8541,7 @@ export namespace PackageKitGlib {
          * @param progress_callback the function to run when the progress changes
          * @returns a {@link PackageKitGlib.Results} object, or `null` for error
          * @since 0.6.5
+         * @throws GLib.Error
          */
         what_provides_sync(filters: Bitfield, values: string[], cancellable: Gio.Cancellable | null, progress_callback: ProgressCallback): Results;
     }
@@ -8400,13 +8555,13 @@ export namespace PackageKitGlib {
              * @signal
              * @run-last
              */
-            added: (arg0: string) => void;
+            added: (tid: string) => void;
             /**
              * The ::removed signal is emitted when a tid has been removed from the transaction list
              * @signal
              * @run-last
              */
-            removed: (arg0: string) => void;
+            removed: (tid: string) => void;
         }
 
         // Constructor properties interface

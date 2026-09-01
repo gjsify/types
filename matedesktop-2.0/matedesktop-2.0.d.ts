@@ -36,9 +36,9 @@ export namespace MateDesktop {
      * @gir-type Enum
      */
     enum BGColorType {
-        SOLID,
-        H_GRADIENT,
-        V_GRADIENT,
+        SOLID = 0,
+        H_GRADIENT = 1,
+        V_GRADIENT = 2,
     }
 
 
@@ -46,12 +46,12 @@ export namespace MateDesktop {
      * @gir-type Enum
      */
     enum BGPlacement {
-        TILED,
-        ZOOMED,
-        CENTERED,
-        SCALED,
-        FILL_SCREEN,
-        SPANNED,
+        TILED = 0,
+        ZOOMED = 1,
+        CENTERED = 2,
+        SCALED = 3,
+        FILL_SCREEN = 4,
+        SPANNED = 5,
     }
 
 
@@ -87,9 +87,9 @@ export namespace MateDesktop {
      * @gir-type Enum
      */
     enum DesktopItemStatus {
-        UNCHANGED,
-        CHANGED,
-        DISAPPEARED,
+        UNCHANGED = 0,
+        CHANGED = 1,
+        DISAPPEARED = 2,
     }
 
 
@@ -97,15 +97,15 @@ export namespace MateDesktop {
      * @gir-type Enum
      */
     enum DesktopItemType {
-        NULL,
-        OTHER,
-        APPLICATION,
-        LINK,
-        FSDEVICE,
-        MIME_TYPE,
-        DIRECTORY,
-        SERVICE,
-        SERVICE_TYPE,
+        NULL = 0,
+        OTHER = 1,
+        APPLICATION = 2,
+        LINK = 3,
+        FSDEVICE = 4,
+        MIME_TYPE = 5,
+        DIRECTORY = 6,
+        SERVICE = 7,
+        SERVICE_TYPE = 8,
     }
 
 
@@ -113,8 +113,8 @@ export namespace MateDesktop {
      * @gir-type Enum
      */
     enum DesktopThumbnailSize {
-        NORMAL,
-        LARGE,
+        NORMAL = 0,
+        LARGE = 1,
     }
 
 
@@ -142,98 +142,231 @@ export namespace MateDesktop {
     }
 
 
+    /**
+     * @default background-fade
+     */
     const BG_KEY_BACKGROUND_FADE: string;
 
+    /**
+     * @default color-shading-type
+     */
     const BG_KEY_COLOR_TYPE: string;
 
+    /**
+     * @default draw-background
+     */
     const BG_KEY_DRAW_BACKGROUND: string;
 
+    /**
+     * @default picture-filename
+     */
     const BG_KEY_PICTURE_FILENAME: string;
 
+    /**
+     * @default picture-opacity
+     */
     const BG_KEY_PICTURE_OPACITY: string;
 
+    /**
+     * @default picture-options
+     */
     const BG_KEY_PICTURE_PLACEMENT: string;
 
+    /**
+     * @default primary-color
+     */
     const BG_KEY_PRIMARY_COLOR: string;
 
+    /**
+     * @default secondary-color
+     */
     const BG_KEY_SECONDARY_COLOR: string;
 
+    /**
+     * @default show-desktop-icons
+     */
     const BG_KEY_SHOW_DESKTOP: string;
 
+    /**
+     * @default org.mate.background
+     */
     const BG_SCHEMA: string;
 
+    /**
+     * @default Actions
+     */
     const DESKTOP_ITEM_ACTIONS: string;
 
+    /**
+     * @default Categories
+     */
     const DESKTOP_ITEM_CATEGORIES: string;
 
+    /**
+     * @default Comment
+     */
     const DESKTOP_ITEM_COMMENT: string;
 
+    /**
+     * @default DefaultApp
+     */
     const DESKTOP_ITEM_DEFAULT_APP: string;
 
+    /**
+     * @default Dev
+     */
     const DESKTOP_ITEM_DEV: string;
 
+    /**
+     * @default X-MATE-DocPath
+     */
     const DESKTOP_ITEM_DOC_PATH: string;
 
+    /**
+     * @default Encoding
+     */
     const DESKTOP_ITEM_ENCODING: string;
 
+    /**
+     * @default Exec
+     */
     const DESKTOP_ITEM_EXEC: string;
 
+    /**
+     * @default FilePattern
+     */
     const DESKTOP_ITEM_FILE_PATTERN: string;
 
+    /**
+     * @default FSType
+     */
     const DESKTOP_ITEM_FS_TYPE: string;
 
+    /**
+     * @default GenericName
+     */
     const DESKTOP_ITEM_GENERIC_NAME: string;
 
+    /**
+     * @default Hidden
+     */
     const DESKTOP_ITEM_HIDDEN: string;
 
+    /**
+     * @default Icon
+     */
     const DESKTOP_ITEM_ICON: string;
 
+    /**
+     * @default MimeType
+     */
     const DESKTOP_ITEM_MIME_TYPE: string;
 
+    /**
+     * @default MiniIcon
+     */
     const DESKTOP_ITEM_MINI_ICON: string;
 
+    /**
+     * @default MountPoint
+     */
     const DESKTOP_ITEM_MOUNT_POINT: string;
 
+    /**
+     * @default Name
+     */
     const DESKTOP_ITEM_NAME: string;
 
+    /**
+     * @default NoDisplay
+     */
     const DESKTOP_ITEM_NO_DISPLAY: string;
 
+    /**
+     * @default OnlyShowIn
+     */
     const DESKTOP_ITEM_ONLY_SHOW_IN: string;
 
+    /**
+     * @default Path
+     */
     const DESKTOP_ITEM_PATH: string;
 
+    /**
+     * @default Patterns
+     */
     const DESKTOP_ITEM_PATTERNS: string;
 
+    /**
+     * @default ReadOnly
+     */
     const DESKTOP_ITEM_READ_ONLY: string;
 
+    /**
+     * @default SortOrder
+     */
     const DESKTOP_ITEM_SORT_ORDER: string;
 
+    /**
+     * @default SwallowExec
+     */
     const DESKTOP_ITEM_SWALLOW_EXEC: string;
 
+    /**
+     * @default SwallowTitle
+     */
     const DESKTOP_ITEM_SWALLOW_TITLE: string;
 
+    /**
+     * @default Terminal
+     */
     const DESKTOP_ITEM_TERMINAL: string;
 
+    /**
+     * @default TerminalOptions
+     */
     const DESKTOP_ITEM_TERMINAL_OPTIONS: string;
 
+    /**
+     * @default TryExec
+     */
     const DESKTOP_ITEM_TRY_EXEC: string;
 
+    /**
+     * @default Type
+     */
     const DESKTOP_ITEM_TYPE: string;
 
+    /**
+     * @default UnmountIcon
+     */
     const DESKTOP_ITEM_UNMOUNT_ICON: string;
 
+    /**
+     * @default URL
+     */
     const DESKTOP_ITEM_URL: string;
 
+    /**
+     * @default Version
+     */
     const DESKTOP_ITEM_VERSION: string;
 
+    /**
+     * @default 1.28.2
+     */
     const DESKTOP_VERSION: string;
 
+    /**
+     * @default Panel
+     */
     const RR_CONNECTOR_TYPE_PANEL: string;
 
     /**
      * Allow to reset a dconf path.
      * @param dir the dconf directory to reset.
      * @since 1.7.1
+     * @throws GLib.Error
      */
     function dconf_recursive_reset(dir: string): boolean;
 
@@ -248,6 +381,7 @@ export namespace MateDesktop {
      * @param key the key to write.
      * @param value the value to write.
      * @since 1.7.1
+     * @throws GLib.Error
      */
     function dconf_write_sync(key: string, value: GLib.Variant): boolean;
 
@@ -334,6 +468,7 @@ export namespace MateDesktop {
      * @param command a command line
      * @returns TRUE on success, FALSE if error is set.
      * @since 1.7.1
+     * @throws GLib.Error
      */
     function gdk_spawn_command_line_on_screen(screen: Gdk.Screen, command: string): boolean;
 
@@ -393,6 +528,7 @@ export namespace MateDesktop {
 
     /**
      * @param key 
+     * @throws GLib.Error
      */
     function gsettings_is_valid_keyname(key: string): boolean;
 
@@ -463,7 +599,7 @@ export namespace MateDesktop {
      * @gir-type Flags
      */
     enum DesktopItemIconFlags {
-        DESKTOP_ITEM_ICON_NO_KDE,
+        DESKTOP_ITEM_ICON_NO_KDE = 1,
     }
 
 
@@ -471,11 +607,11 @@ export namespace MateDesktop {
      * @gir-type Flags
      */
     enum DesktopItemLaunchFlags {
-        ONLY_ONE,
-        USE_CURRENT_DIR,
-        APPEND_URIS,
-        APPEND_PATHS,
-        DO_NOT_REAP_CHILD,
+        ONLY_ONE = 1,
+        USE_CURRENT_DIR = 2,
+        APPEND_URIS = 4,
+        APPEND_PATHS = 8,
+        DO_NOT_REAP_CHILD = 16,
     }
 
 
@@ -483,8 +619,8 @@ export namespace MateDesktop {
      * @gir-type Flags
      */
     enum DesktopItemLoadFlags {
-        ONLY_IF_EXISTS,
-        NO_TRANSLATIONS,
+        ONLY_IF_EXISTS = 1,
+        NO_TRANSLATIONS = 2,
     }
 
 
@@ -492,12 +628,12 @@ export namespace MateDesktop {
      * @gir-type Flags
      */
     enum RRRotation {
-        ROTATION_0,
-        ROTATION_90,
-        ROTATION_180,
-        ROTATION_270,
-        REFLECT_X,
-        REFLECT_Y,
+        ROTATION_0 = 1,
+        ROTATION_90 = 2,
+        ROTATION_180 = 4,
+        ROTATION_270 = 8,
+        REFLECT_X = 16,
+        REFLECT_Y = 32,
     }
 
 
@@ -731,7 +867,7 @@ export namespace MateDesktop {
              * @signal
              * @run-last
              */
-            finished: (arg0: GObject.Object) => void;
+            finished: (window: GObject.Object) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
         }
@@ -1491,7 +1627,7 @@ export namespace MateDesktop {
              * @action
              * @run-last
              */
-            move: (arg0: Gtk.DirectionType) => void;
+            move: (object: Gtk.DirectionType) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -2420,12 +2556,14 @@ export namespace MateDesktop {
         // Methods
         /**
          * @param screen 
+         * @throws GLib.Error
          */
         applicable(screen: RRScreen): boolean;
 
         /**
          * @param screen 
          * @param timestamp 
+         * @throws GLib.Error
          */
         apply_with_time(screen: RRScreen, timestamp: number): boolean;
 
@@ -2446,10 +2584,14 @@ export namespace MateDesktop {
          */
         get_outputs(): RROutputInfo[];
 
+        /**
+         * @throws GLib.Error
+         */
         load_current(): boolean;
 
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         load_filename(filename: string): boolean;
 
@@ -2460,6 +2602,9 @@ export namespace MateDesktop {
 
         sanitize(): void;
 
+        /**
+         * @throws GLib.Error
+         */
         save(): boolean;
 
         /**
@@ -2770,6 +2915,7 @@ export namespace MateDesktop {
          * Refreshes the screen configuration, and calls the screen's callback if it
          * exists and if the screen's configuration changed.
          * @returns TRUE if the screen's configuration changed; otherwise, the function returns FALSE and a NULL error if the configuration didn't change, or FALSE and a non-NULL error if there was an error while refreshing the configuration.
+         * @throws GLib.Error
          */
         refresh(): boolean;
 
@@ -2828,6 +2974,7 @@ export namespace MateDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2965,6 +3112,7 @@ export namespace MateDesktop {
         /**
          * @param uri_list 
          * @param flags 
+         * @throws GLib.Error
          */
         drop_uri_list(uri_list: string, flags: DesktopItemLaunchFlags): number;
 
@@ -2972,6 +3120,7 @@ export namespace MateDesktop {
          * @param uri_list 
          * @param flags 
          * @param envp 
+         * @throws GLib.Error
          */
         drop_uri_list_with_env(uri_list: string, flags: DesktopItemLaunchFlags, envp: string): number;
 
@@ -3019,6 +3168,7 @@ export namespace MateDesktop {
         /**
          * @param under 
          * @param force 
+         * @throws GLib.Error
          */
         save(under: string, force: boolean): boolean;
 
@@ -3167,6 +3317,7 @@ export namespace MateDesktop {
          * @param rotation 
          * @param outputs 
          * @param n_outputs 
+         * @throws GLib.Error
          */
         set_config(x: number, y: number, mode: RRMode, rotation: RRRotation, outputs: RROutput, n_outputs: number): boolean;
 
@@ -3178,6 +3329,7 @@ export namespace MateDesktop {
          * @param rotation 
          * @param outputs 
          * @param n_outputs 
+         * @throws GLib.Error
          */
         set_config_with_time(timestamp: number, x: number, y: number, mode: RRMode, rotation: RRRotation, outputs: RROutput, n_outputs: number): boolean;
 

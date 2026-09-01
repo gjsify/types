@@ -42,14 +42,14 @@ export namespace GstCodecs {
          * The decoder behavior is
          *     automatically choosen.
          */
-        AUTO,
+        AUTO = 0,
         /**
          * The decoder behavior strictly
          *     conforms to the SPEC. All the decoder behaviors conform to the
          *     SPEC, not including any nonstandard behavior which is not
          *     mentioned in the SPEC.
          */
-        STRICT,
+        STRICT = 1,
         /**
          * The decoder behavior normally
          *     conforms to the SPEC. Most behaviors conform to the SPEC but
@@ -64,7 +64,7 @@ export namespace GstCodecs {
          *     have problems when a real baseline stream comes with FMO or
          *     ASO.
          */
-        NORMAL,
+        NORMAL = 2,
         /**
          * The decoder behavior
          *     flexibly conforms to the SPEC. It uses the nonstandard features
@@ -74,7 +74,7 @@ export namespace GstCodecs {
          *     risks in *normal* mode, it has more risks, such as frames
          *     disorder when reference frames POC decrease in decoder order.
          */
-        FLEXIBLE,
+        FLEXIBLE = 3,
     }
 
 
@@ -86,15 +86,15 @@ export namespace GstCodecs {
         /**
          * No latency requirement for DBP bumping.
          */
-        NORMAL_LATENCY,
+        NORMAL_LATENCY = 0,
         /**
          * Low-latency requirement for DBP bumping.
          */
-        LOW_LATENCY,
+        LOW_LATENCY = 1,
         /**
          * Very low-latency requirement for DBP bumping.
          */
-        VERY_LOW_LATENCY,
+        VERY_LOW_LATENCY = 2,
     }
 
 
@@ -102,9 +102,9 @@ export namespace GstCodecs {
      * @gir-type Enum
      */
     enum H264PictureField {
-        FRAME,
-        TOP_FIELD,
-        BOTTOM_FIELD,
+        FRAME = 0,
+        TOP_FIELD = 1,
+        BOTTOM_FIELD = 2,
     }
 
 
@@ -116,15 +116,15 @@ export namespace GstCodecs {
         /**
          * Not used for reference picture
          */
-        NONE,
+        NONE = 0,
         /**
          * Used for short-term reference picture
          */
-        SHORT_TERM,
+        SHORT_TERM = 1,
         /**
          * Used for long-term reference picture
          */
-        LONG_TERM,
+        LONG_TERM = 2,
     }
 
 
@@ -137,15 +137,15 @@ export namespace GstCodecs {
         /**
          * Indicates that all the inter blocks use only a single reference frame
          */
-        SINGLE_REFERENCE,
+        SINGLE_REFERENCE = 0,
         /**
          * Requires all the inter blocks to use compound mode
          */
-        COMPOUND_REFERENCE,
+        COMPOUND_REFERENCE = 1,
         /**
          * Allows each individual inter block to select between single and compound prediction modes
          */
-        SELECT,
+        SELECT = 2,
     }
 
 
@@ -158,23 +158,23 @@ export namespace GstCodecs {
         /**
          * Only 4x4
          */
-        ONLY_4X4,
+        ONLY_4X4 = 0,
         /**
          * Allow 8x8
          */
-        ALLOW_8X8,
+        ALLOW_8X8 = 1,
         /**
          * Allow 16x16
          */
-        ALLOW_16X16,
+        ALLOW_16X16 = 2,
         /**
          * Allow 32x32
          */
-        ALLOW_32X32,
+        ALLOW_32X32 = 3,
         /**
          * The choice is specified explicitly for each block
          */
-        SELECT,
+        SELECT = 4,
     }
 
 
@@ -187,173 +187,204 @@ export namespace GstCodecs {
         /**
          * 4x4
          */
-        "4X4",
+        "4X4" = 0,
         /**
          * 8x8
          */
-        "8X8",
+        "8X8" = 1,
         /**
          * 16x16
          */
-        "16X16",
+        "16X16" = 2,
         /**
          * 32x32
          */
-        "32X32",
+        "32X32" = 3,
     }
 
 
+    /**
+     * @default 16
+     */
     const H264_DPB_MAX_SIZE: number;
 
+    /**
+     * @default 16
+     */
     const H265_DPB_MAX_SIZE: number;
 
     /**
      * Number of contexts when decoding intra_mode
      * @since 1.20
+     * @default 4
      */
     const VP9_BLOCK_SIZE_GROUPS: number;
 
     /**
      * Number of values for mv_classO_bit
      * @since 1.20
+     * @default 2
      */
     const VP9_CLASS0_SIZE: number;
 
     /**
      * Number of contexts for comp_mode
      * @since 1.20
+     * @default 5
      */
     const VP9_COMP_MODE_CONTEXTS: number;
 
     /**
      * Number of contexts for interp_filter
      * @since 1.20
+     * @default 4
      */
     const VP9_INTERP_FILTER_CONTEXTS: number;
 
     /**
      * Number of values for inter_mode
      * @since 1.20
+     * @default 4
      */
     const VP9_INTER_MODES: number;
 
     /**
      * Number of contexts for inter_mode
      * @since 1.20
+     * @default 7
      */
     const VP9_INTER_MODE_CONTEXTS: number;
 
     /**
      * Number of values for intra_mode
      * @since 1.20
+     * @default 10
      */
     const VP9_INTRA_MODES: number;
 
     /**
      * Number of contexts for interp_filter
      * @since 1.20
+     * @default 4
      */
     const VP9_IS_INTER_CONTEXTS: number;
 
     /**
      * Number of values for mv_class
      * @since 1.20
+     * @default 11
      */
     const VP9_MV_CLASSES: number;
 
     /**
      * Number of values that can be decoded for mv_fr
      * @since 1.20
+     * @default 4
      */
     const VP9_MV_FR_SIZE: number;
 
     /**
      * Number of values for partition
      * @since 1.20
+     * @default 4
      */
     const VP9_MV_JOINTS: number;
 
     /**
      * Maximum number of bits for decoding motion vectors
      * @since 1.20
+     * @default 10
      */
     const VP9_MV_OFFSET_BITS: number;
 
     /**
      * Number of contexts when decoding partition
      * @since 1.20
+     * @default 16
      */
     const VP9_PARTITION_CONTEXTS: number;
 
     /**
      * Number of values for partition
      * @since 1.20
+     * @default 4
      */
     const VP9_PARTITION_TYPES: number;
 
     /**
      * Number of contexts for single_ref and comp_ref
      * @since 1.20
+     * @default 5
      */
     const VP9_REF_CONTEXTS: number;
 
     /**
      * Index for loop filter segment feature
      * @since 1.20
+     * @default 1
      */
     const VP9_SEG_LVL_ALT_L: number;
 
     /**
      * Index for quantizer segment feature
      * @since 1.20
+     * @default 0
      */
     const VP9_SEG_LVL_ALT_Q: number;
 
     /**
      * Number of segment features
      * @since 1.20
+     * @default 4
      */
     const VP9_SEG_LVL_MAX: number;
 
     /**
      * Index for reference frame segment feature
      * @since 1.20
+     * @default 2
      */
     const VP9_SEG_LVL_REF_FRAME: number;
 
     /**
      * Index for skip segment feature
      * @since 1.20
+     * @default 3
      */
     const VP9_SEG_SEG_LVL_SKIP: number;
 
     /**
      * Number of contexts for decoding skip
      * @since 1.20
+     * @default 3
      */
     const VP9_SKIP_CONTEXTS: number;
 
     /**
      * Number of contexts for interp_filter
      * @since 1.20
+     * @default 3
      */
     const VP9_SWITCHABLE_FILTERS: number;
 
     /**
      * Number of values for tx_mode
      * @since 1.20
+     * @default 5
      */
     const VP9_TX_MODES: number;
 
     /**
      * Number of values for tx_size
      * @since 1.20
+     * @default 4
      */
     const VP9_TX_SIZES: number;
 
     /**
      * Number of contexts for transform size
      * @since 1.20
+     * @default 2
      */
     const VP9_TX_SIZE_CONTEXTS: number;
 

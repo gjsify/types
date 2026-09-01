@@ -43,13 +43,13 @@ export namespace Egg {
      * @gir-type Enum
      */
     enum AnimationMode {
-        LINEAR,
-        EASE_IN_QUAD,
-        EASE_IN_OUT_QUAD,
-        EASE_OUT_QUAD,
-        EASE_IN_CUBIC,
-        EASE_OUT_CUBIC,
-        EASE_IN_OUT_CUBIC,
+        LINEAR = 0,
+        EASE_IN_QUAD = 1,
+        EASE_IN_OUT_QUAD = 3,
+        EASE_OUT_QUAD = 2,
+        EASE_IN_CUBIC = 4,
+        EASE_OUT_CUBIC = 5,
+        EASE_IN_OUT_CUBIC = 6,
     }
 
 
@@ -64,11 +64,11 @@ export namespace Egg {
      * @gir-type Enum
      */
     enum SliderPosition {
-        NONE,
-        TOP,
-        RIGHT,
-        BOTTOM,
-        LEFT,
+        NONE = 0,
+        TOP = 1,
+        RIGHT = 2,
+        BOTTOM = 3,
+        LEFT = 4,
     }
 
 
@@ -83,12 +83,15 @@ export namespace Egg {
      * @gir-type Enum
      */
     enum ThreeGridColumn {
-        LEFT,
-        CENTER,
-        RIGHT,
+        LEFT = 0,
+        CENTER = 1,
+        RIGHT = 2,
     }
 
 
+    /**
+     * @default 1
+     */
     const COUNTER_REQUIRES_ATOMIC: number;
 
     function counter_arena_get_default(): CounterArena;
@@ -1512,11 +1515,13 @@ export namespace Egg {
         // Methods
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         add_filename(filename: string): number;
 
         /**
          * @param resource 
+         * @throws GLib.Error
          */
         add_resource(resource: string): number;
 
@@ -3215,7 +3220,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            bind: (arg0: GObject.Object) => void;
+            bind: (instance: GObject.Object) => void;
             /**
              * This signal is emitted when the target instance of `self`
              * is set to a new {@link GObject.Object}.
@@ -3721,7 +3726,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            activate: (arg0: string) => void;
+            activate: (text: string) => void;
             /**
              * This signal is emitted when the entry text changes.
              * @signal
@@ -3735,7 +3740,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: number, arg1: string, arg2: number) => boolean | void;
+            "insert-text": (position: number, chars: string, n_chars: number) => boolean | void;
             "notify::button-text": (pspec: GObject.ParamSpec) => void;
             "notify::message": (pspec: GObject.ParamSpec) => void;
             "notify::ready": (pspec: GObject.ParamSpec) => void;
@@ -4346,12 +4351,12 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            "replace-typed-text": (arg0: string) => string;
+            "replace-typed-text": (object: string) => string;
             /**
              * @signal
              * @run-last
              */
-            "suggest-suffix": (arg0: string) => string;
+            "suggest-suffix": (object: string) => string;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::subtitle": (pspec: GObject.ParamSpec) => void;
@@ -4517,7 +4522,7 @@ export namespace Egg {
              * @action
              * @run-last
              */
-            "move-suggestion": (arg0: number) => void;
+            "move-suggestion": (amount: number) => void;
             /**
              * @signal
              * @action
@@ -4528,7 +4533,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            "suggestion-activated": (arg0: Suggestion) => void;
+            "suggestion-activated": (object: Suggestion) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::typed-text": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
@@ -5124,7 +5129,7 @@ export namespace Egg {
              * @signal
              * @run-last
              */
-            "suggestion-activated": (arg0: Suggestion) => void;
+            "suggestion-activated": (object: Suggestion) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::relative-to": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
@@ -5634,6 +5639,7 @@ export namespace Egg {
          * Finish a call to `egg_task_cache_get_async()`.
          * @param result 
          * @returns The result from the cache.
+         * @throws GLib.Error
          */
         get_finish(result: Gio.AsyncResult): null;
 

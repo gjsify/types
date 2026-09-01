@@ -25,37 +25,37 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ComponentKind {
-        NO_COMPONENT,
-        ANY_COMPONENT,
-        XROOT_COMPONENT,
-        XATTACH_COMPONENT,
-        VEVENT_COMPONENT,
-        VTODO_COMPONENT,
-        VJOURNAL_COMPONENT,
-        VCALENDAR_COMPONENT,
-        VAGENDA_COMPONENT,
-        VFREEBUSY_COMPONENT,
-        VALARM_COMPONENT,
-        XAUDIOALARM_COMPONENT,
-        XDISPLAYALARM_COMPONENT,
-        XEMAILALARM_COMPONENT,
-        XPROCEDUREALARM_COMPONENT,
-        VTIMEZONE_COMPONENT,
-        XSTANDARD_COMPONENT,
-        XDAYLIGHT_COMPONENT,
-        X_COMPONENT,
-        VSCHEDULE_COMPONENT,
-        VQUERY_COMPONENT,
-        VREPLY_COMPONENT,
-        VCAR_COMPONENT,
-        VCOMMAND_COMPONENT,
-        XLICINVALID_COMPONENT,
-        XLICMIMEPART_COMPONENT,
-        VAVAILABILITY_COMPONENT,
-        XAVAILABLE_COMPONENT,
-        VPOLL_COMPONENT,
-        VVOTER_COMPONENT,
-        XVOTE_COMPONENT,
+        NO_COMPONENT = 0,
+        ANY_COMPONENT = 1,
+        XROOT_COMPONENT = 2,
+        XATTACH_COMPONENT = 3,
+        VEVENT_COMPONENT = 4,
+        VTODO_COMPONENT = 5,
+        VJOURNAL_COMPONENT = 6,
+        VCALENDAR_COMPONENT = 7,
+        VAGENDA_COMPONENT = 8,
+        VFREEBUSY_COMPONENT = 9,
+        VALARM_COMPONENT = 10,
+        XAUDIOALARM_COMPONENT = 11,
+        XDISPLAYALARM_COMPONENT = 12,
+        XEMAILALARM_COMPONENT = 13,
+        XPROCEDUREALARM_COMPONENT = 14,
+        VTIMEZONE_COMPONENT = 15,
+        XSTANDARD_COMPONENT = 16,
+        XDAYLIGHT_COMPONENT = 17,
+        X_COMPONENT = 18,
+        VSCHEDULE_COMPONENT = 19,
+        VQUERY_COMPONENT = 20,
+        VREPLY_COMPONENT = 21,
+        VCAR_COMPONENT = 22,
+        VCOMMAND_COMPONENT = 23,
+        XLICINVALID_COMPONENT = 24,
+        XLICMIMEPART_COMPONENT = 25,
+        VAVAILABILITY_COMPONENT = 26,
+        XAVAILABLE_COMPONENT = 27,
+        VPOLL_COMPONENT = 28,
+        VVOTER_COMPONENT = 29,
+        XVOTE_COMPONENT = 30,
     }
 
 
@@ -63,17 +63,17 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ErrorEnum {
-        NO_ERROR,
-        BADARG_ERROR,
-        NEWFAILED_ERROR,
-        ALLOCATION_ERROR,
-        MALFORMEDDATA_ERROR,
-        PARSE_ERROR,
-        INTERNAL_ERROR,
-        FILE_ERROR,
-        USAGE_ERROR,
-        UNIMPLEMENTED_ERROR,
-        UNKNOWN_ERROR,
+        NO_ERROR = 0,
+        BADARG_ERROR = 1,
+        NEWFAILED_ERROR = 2,
+        ALLOCATION_ERROR = 3,
+        MALFORMEDDATA_ERROR = 4,
+        PARSE_ERROR = 5,
+        INTERNAL_ERROR = 6,
+        FILE_ERROR = 7,
+        USAGE_ERROR = 8,
+        UNIMPLEMENTED_ERROR = 9,
+        UNKNOWN_ERROR = 10,
     }
 
 
@@ -81,10 +81,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ErrorState {
-        FATAL,
-        NONFATAL,
-        DEFAULT,
-        UNKNOWN,
+        FATAL = 0,
+        NONFATAL = 1,
+        DEFAULT = 2,
+        UNKNOWN = 3,
     }
 
 
@@ -92,10 +92,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterAction {
-        X,
-        ASK,
-        ABORT,
-        NONE,
+        X = 20000,
+        ASK = 20001,
+        ABORT = 20002,
+        NONE = 20099,
     }
 
 
@@ -103,13 +103,13 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterCutype {
-        X,
-        INDIVIDUAL,
-        GROUP,
-        RESOURCE,
-        ROOM,
-        UNKNOWN,
-        NONE,
+        X = 20100,
+        INDIVIDUAL = 20101,
+        GROUP = 20102,
+        RESOURCE = 20103,
+        ROOM = 20104,
+        UNKNOWN = 20105,
+        NONE = 20199,
     }
 
 
@@ -117,12 +117,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterDisplay {
-        X,
-        BADGE,
-        GRAPHIC,
-        FULLSIZE,
-        THUMBNAIL,
-        NONE,
+        X = 22000,
+        BADGE = 22001,
+        GRAPHIC = 22002,
+        FULLSIZE = 22003,
+        THUMBNAIL = 22004,
+        NONE = 22099,
     }
 
 
@@ -130,10 +130,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterEnable {
-        X,
-        TRUE,
-        FALSE,
-        NONE,
+        X = 20200,
+        TRUE = 20201,
+        FALSE = 20202,
+        NONE = 20299,
     }
 
 
@@ -141,10 +141,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterEncoding {
-        X,
-        "8BIT",
-        BASE64,
-        NONE,
+        X = 20300,
+        "8BIT" = 20301,
+        BASE64 = 20302,
+        NONE = 20399,
     }
 
 
@@ -152,12 +152,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterFbtype {
-        X,
-        FREE,
-        BUSY,
-        BUSYUNAVAILABLE,
-        BUSYTENTATIVE,
-        NONE,
+        X = 20400,
+        FREE = 20401,
+        BUSY = 20402,
+        BUSYUNAVAILABLE = 20403,
+        BUSYTENTATIVE = 20404,
+        NONE = 20499,
     }
 
 
@@ -165,15 +165,15 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterFeature {
-        X,
-        AUDIO,
-        CHAT,
-        FEED,
-        MODERATOR,
-        PHONE,
-        SCREEN,
-        VIDEO,
-        NONE,
+        X = 22100,
+        AUDIO = 22101,
+        CHAT = 22102,
+        FEED = 22103,
+        MODERATOR = 22104,
+        PHONE = 22105,
+        SCREEN = 22106,
+        VIDEO = 22107,
+        NONE = 22199,
     }
 
 
@@ -181,58 +181,58 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterKind {
-        ANY_PARAMETER,
-        ACTIONPARAM_PARAMETER,
-        ALTREP_PARAMETER,
-        CHARSET_PARAMETER,
-        CN_PARAMETER,
-        CUTYPE_PARAMETER,
-        DELEGATEDFROM_PARAMETER,
-        DELEGATEDTO_PARAMETER,
-        DIR_PARAMETER,
-        DISPLAY_PARAMETER,
-        EMAIL_PARAMETER,
-        ENABLE_PARAMETER,
-        ENCODING_PARAMETER,
-        FBTYPE_PARAMETER,
-        FEATURE_PARAMETER,
-        FILENAME_PARAMETER,
-        FMTTYPE_PARAMETER,
-        IANA_PARAMETER,
-        ID_PARAMETER,
-        LABEL_PARAMETER,
-        LANGUAGE_PARAMETER,
-        LATENCY_PARAMETER,
-        LOCAL_PARAMETER,
-        LOCALIZE_PARAMETER,
-        MANAGEDID_PARAMETER,
-        MEMBER_PARAMETER,
-        MODIFIED_PARAMETER,
-        OPTIONS_PARAMETER,
-        PARTSTAT_PARAMETER,
-        PATCHACTION_PARAMETER,
-        PUBLICCOMMENT_PARAMETER,
-        RANGE_PARAMETER,
-        REASON_PARAMETER,
-        RELATED_PARAMETER,
-        RELTYPE_PARAMETER,
-        REQUIRED_PARAMETER,
-        RESPONSE_PARAMETER,
-        ROLE_PARAMETER,
-        RSVP_PARAMETER,
-        SCHEDULEAGENT_PARAMETER,
-        SCHEDULEFORCESEND_PARAMETER,
-        SCHEDULESTATUS_PARAMETER,
-        SENTBY_PARAMETER,
-        SIZE_PARAMETER,
-        STAYINFORMED_PARAMETER,
-        SUBSTATE_PARAMETER,
-        TZID_PARAMETER,
-        VALUE_PARAMETER,
-        X_PARAMETER,
-        XLICCOMPARETYPE_PARAMETER,
-        XLICERRORTYPE_PARAMETER,
-        NO_PARAMETER,
+        ANY_PARAMETER = 0,
+        ACTIONPARAM_PARAMETER = 1,
+        ALTREP_PARAMETER = 2,
+        CHARSET_PARAMETER = 3,
+        CN_PARAMETER = 4,
+        CUTYPE_PARAMETER = 5,
+        DELEGATEDFROM_PARAMETER = 6,
+        DELEGATEDTO_PARAMETER = 7,
+        DIR_PARAMETER = 8,
+        DISPLAY_PARAMETER = 46,
+        EMAIL_PARAMETER = 50,
+        ENABLE_PARAMETER = 9,
+        ENCODING_PARAMETER = 10,
+        FBTYPE_PARAMETER = 11,
+        FEATURE_PARAMETER = 48,
+        FILENAME_PARAMETER = 42,
+        FMTTYPE_PARAMETER = 12,
+        IANA_PARAMETER = 33,
+        ID_PARAMETER = 13,
+        LABEL_PARAMETER = 49,
+        LANGUAGE_PARAMETER = 14,
+        LATENCY_PARAMETER = 15,
+        LOCAL_PARAMETER = 16,
+        LOCALIZE_PARAMETER = 17,
+        MANAGEDID_PARAMETER = 40,
+        MEMBER_PARAMETER = 18,
+        MODIFIED_PARAMETER = 44,
+        OPTIONS_PARAMETER = 19,
+        PARTSTAT_PARAMETER = 20,
+        PATCHACTION_PARAMETER = 51,
+        PUBLICCOMMENT_PARAMETER = 37,
+        RANGE_PARAMETER = 21,
+        REASON_PARAMETER = 43,
+        RELATED_PARAMETER = 22,
+        RELTYPE_PARAMETER = 23,
+        REQUIRED_PARAMETER = 43,
+        RESPONSE_PARAMETER = 38,
+        ROLE_PARAMETER = 24,
+        RSVP_PARAMETER = 25,
+        SCHEDULEAGENT_PARAMETER = 34,
+        SCHEDULEFORCESEND_PARAMETER = 35,
+        SCHEDULESTATUS_PARAMETER = 36,
+        SENTBY_PARAMETER = 26,
+        SIZE_PARAMETER = 41,
+        STAYINFORMED_PARAMETER = 39,
+        SUBSTATE_PARAMETER = 45,
+        TZID_PARAMETER = 27,
+        VALUE_PARAMETER = 28,
+        X_PARAMETER = 29,
+        XLICCOMPARETYPE_PARAMETER = 30,
+        XLICERRORTYPE_PARAMETER = 31,
+        NO_PARAMETER = 32,
     }
 
 
@@ -240,10 +240,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterLocal {
-        X,
-        TRUE,
-        FALSE,
-        NONE,
+        X = 20500,
+        TRUE = 20501,
+        FALSE = 20502,
+        NONE = 20599,
     }
 
 
@@ -251,16 +251,16 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterPartstat {
-        X,
-        NEEDSACTION,
-        ACCEPTED,
-        DECLINED,
-        TENTATIVE,
-        DELEGATED,
-        COMPLETED,
-        INPROCESS,
-        FAILED,
-        NONE,
+        X = 20600,
+        NEEDSACTION = 20601,
+        ACCEPTED = 20602,
+        DECLINED = 20603,
+        TENTATIVE = 20604,
+        DELEGATED = 20605,
+        COMPLETED = 20606,
+        INPROCESS = 20607,
+        FAILED = 20608,
+        NONE = 20699,
     }
 
 
@@ -268,12 +268,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterPatchaction {
-        X,
-        CREATE,
-        BYNAME,
-        BYVALUE,
-        BYPARAM,
-        NONE,
+        X = 22200,
+        CREATE = 22201,
+        BYNAME = 22202,
+        BYVALUE = 22203,
+        BYPARAM = 22204,
+        NONE = 22299,
     }
 
 
@@ -281,10 +281,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterRange {
-        X,
-        THISANDPRIOR,
-        THISANDFUTURE,
-        NONE,
+        X = 20700,
+        THISANDPRIOR = 20701,
+        THISANDFUTURE = 20702,
+        NONE = 20799,
     }
 
 
@@ -292,10 +292,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterRelated {
-        X,
-        START,
-        END,
-        NONE,
+        X = 20800,
+        START = 20801,
+        END = 20802,
+        NONE = 20899,
     }
 
 
@@ -303,12 +303,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterReltype {
-        X,
-        PARENT,
-        CHILD,
-        SIBLING,
-        POLL,
-        NONE,
+        X = 20900,
+        PARENT = 20901,
+        CHILD = 20902,
+        SIBLING = 20903,
+        POLL = 20904,
+        NONE = 20999,
     }
 
 
@@ -316,10 +316,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterRequired {
-        X,
-        TRUE,
-        FALSE,
-        NONE,
+        X = 21000,
+        TRUE = 21001,
+        FALSE = 21002,
+        NONE = 21099,
     }
 
 
@@ -327,12 +327,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterRole {
-        X,
-        CHAIR,
-        REQPARTICIPANT,
-        OPTPARTICIPANT,
-        NONPARTICIPANT,
-        NONE,
+        X = 21100,
+        CHAIR = 21101,
+        REQPARTICIPANT = 21102,
+        OPTPARTICIPANT = 21103,
+        NONPARTICIPANT = 21104,
+        NONE = 21199,
     }
 
 
@@ -340,10 +340,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterRsvp {
-        X,
-        TRUE,
-        FALSE,
-        NONE,
+        X = 21200,
+        TRUE = 21201,
+        FALSE = 21202,
+        NONE = 21299,
     }
 
 
@@ -351,10 +351,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterScheduleagent {
-        X,
-        SERVER,
-        CLIENT,
-        NONE,
+        X = 21300,
+        SERVER = 21301,
+        CLIENT = 21302,
+        NONE = 21399,
     }
 
 
@@ -362,10 +362,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterScheduleforcesend {
-        X,
-        REQUEST,
-        REPLY,
-        NONE,
+        X = 21400,
+        REQUEST = 21401,
+        REPLY = 21402,
+        NONE = 21499,
     }
 
 
@@ -373,10 +373,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterStayinformed {
-        X,
-        TRUE,
-        FALSE,
-        NONE,
+        X = 21500,
+        TRUE = 21501,
+        FALSE = 21502,
+        NONE = 21599,
     }
 
 
@@ -384,11 +384,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterSubstate {
-        X,
-        OK,
-        ERROR,
-        SUSPENDED,
-        NONE,
+        X = 21900,
+        OK = 21901,
+        ERROR = 21902,
+        SUSPENDED = 21903,
+        NONE = 21999,
     }
 
 
@@ -396,22 +396,22 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterValue {
-        X,
-        BINARY,
-        BOOLEAN,
-        DATE,
-        DURATION,
-        FLOAT,
-        INTEGER,
-        PERIOD,
-        RECUR,
-        TEXT,
-        URI,
-        ERROR,
-        DATETIME,
-        UTCOFFSET,
-        CALADDRESS,
-        NONE,
+        X = 21600,
+        BINARY = 21601,
+        BOOLEAN = 21602,
+        DATE = 21603,
+        DURATION = 21604,
+        FLOAT = 21605,
+        INTEGER = 21606,
+        PERIOD = 21607,
+        RECUR = 21608,
+        TEXT = 21609,
+        URI = 21610,
+        ERROR = 21611,
+        DATETIME = 21612,
+        UTCOFFSET = 21613,
+        CALADDRESS = 21614,
+        NONE = 21699,
     }
 
 
@@ -419,17 +419,17 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterXliccomparetype {
-        X,
-        EQUAL,
-        NOTEQUAL,
-        LESS,
-        GREATER,
-        LESSEQUAL,
-        GREATEREQUAL,
-        REGEX,
-        ISNULL,
-        ISNOTNULL,
-        NONE,
+        X = 21700,
+        EQUAL = 21701,
+        NOTEQUAL = 21702,
+        LESS = 21703,
+        GREATER = 21704,
+        LESSEQUAL = 21705,
+        GREATEREQUAL = 21706,
+        REGEX = 21707,
+        ISNULL = 21708,
+        ISNOTNULL = 21709,
+        NONE = 21799,
     }
 
 
@@ -437,17 +437,17 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParameterXlicerrortype {
-        X,
-        COMPONENTPARSEERROR,
-        PROPERTYPARSEERROR,
-        PARAMETERNAMEPARSEERROR,
-        PARAMETERVALUEPARSEERROR,
-        VALUEPARSEERROR,
-        INVALIDITIP,
-        UNKNOWNVCALPROPERROR,
-        MIMEPARSEERROR,
-        VCALPROPPARSEERROR,
-        NONE,
+        X = 21800,
+        COMPONENTPARSEERROR = 21801,
+        PROPERTYPARSEERROR = 21802,
+        PARAMETERNAMEPARSEERROR = 21803,
+        PARAMETERVALUEPARSEERROR = 21804,
+        VALUEPARSEERROR = 21805,
+        INVALIDITIP = 21806,
+        UNKNOWNVCALPROPERROR = 21807,
+        MIMEPARSEERROR = 21808,
+        VCALPROPPARSEERROR = 21809,
+        NONE = 21899,
     }
 
 
@@ -455,11 +455,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ParserState {
-        ERROR,
-        SUCCESS,
-        BEGIN_COMP,
-        END_COMP,
-        IN_PROGRESS,
+        ERROR = 0,
+        SUCCESS = 1,
+        BEGIN_COMP = 2,
+        END_COMP = 3,
+        IN_PROGRESS = 4,
     }
 
 
@@ -467,12 +467,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyAction {
-        X,
-        AUDIO,
-        DISPLAY,
-        EMAIL,
-        PROCEDURE,
-        NONE,
+        X = 10000,
+        AUDIO = 10001,
+        DISPLAY = 10002,
+        EMAIL = 10003,
+        PROCEDURE = 10004,
+        NONE = 10099,
     }
 
 
@@ -480,11 +480,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyBusytype {
-        X,
-        BUSY,
-        BUSYUNAVAILABLE,
-        BUSYTENTATIVE,
-        NONE,
+        X = 10100,
+        BUSY = 10101,
+        BUSYUNAVAILABLE = 10102,
+        BUSYTENTATIVE = 10103,
+        NONE = 10199,
     }
 
 
@@ -492,11 +492,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyCarlevel {
-        X,
-        CARNONE,
-        CARMIN,
-        CARFULL1,
-        NONE,
+        X = 10200,
+        CARNONE = 10201,
+        CARMIN = 10202,
+        CARFULL1 = 10203,
+        NONE = 10299,
     }
 
 
@@ -504,20 +504,20 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyCmd {
-        X,
-        ABORT,
-        CONTINUE,
-        CREATE,
-        DELETE,
-        GENERATEUID,
-        GETCAPABILITY,
-        IDENTIFY,
-        MODIFY,
-        MOVE,
-        REPLY,
-        SEARCH,
-        SETLOCALE,
-        NONE,
+        X = 10400,
+        ABORT = 10401,
+        CONTINUE = 10402,
+        CREATE = 10403,
+        DELETE = 10404,
+        GENERATEUID = 10405,
+        GETCAPABILITY = 10406,
+        IDENTIFY = 10407,
+        MODIFY = 10408,
+        MOVE = 10409,
+        REPLY = 10410,
+        SEARCH = 10411,
+        SETLOCALE = 10412,
+        NONE = 10499,
     }
 
 
@@ -525,122 +525,122 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyKind {
-        ANY_PROPERTY,
-        ACCEPTRESPONSE_PROPERTY,
-        ACKNOWLEDGED_PROPERTY,
-        ACTION_PROPERTY,
-        ALLOWCONFLICT_PROPERTY,
-        ATTACH_PROPERTY,
-        ATTENDEE_PROPERTY,
-        BUSYTYPE_PROPERTY,
-        CALID_PROPERTY,
-        CALMASTER_PROPERTY,
-        CALSCALE_PROPERTY,
-        CAPVERSION_PROPERTY,
-        CARLEVEL_PROPERTY,
-        CARID_PROPERTY,
-        CATEGORIES_PROPERTY,
-        CLASS_PROPERTY,
-        CMD_PROPERTY,
-        COLOR_PROPERTY,
-        COMMENT_PROPERTY,
-        COMPLETED_PROPERTY,
-        COMPONENTS_PROPERTY,
-        CONTACT_PROPERTY,
-        CREATED_PROPERTY,
-        CSID_PROPERTY,
-        DATEMAX_PROPERTY,
-        DATEMIN_PROPERTY,
-        DECREED_PROPERTY,
-        DEFAULTCHARSET_PROPERTY,
-        DEFAULTLOCALE_PROPERTY,
-        DEFAULTTZID_PROPERTY,
-        DEFAULTVCARS_PROPERTY,
-        DENY_PROPERTY,
-        DESCRIPTION_PROPERTY,
-        DTEND_PROPERTY,
-        DTSTAMP_PROPERTY,
-        DTSTART_PROPERTY,
-        DUE_PROPERTY,
-        DURATION_PROPERTY,
-        ESTIMATEDDURATION_PROPERTY,
-        EXDATE_PROPERTY,
-        EXPAND_PROPERTY,
-        EXRULE_PROPERTY,
-        FREEBUSY_PROPERTY,
-        GEO_PROPERTY,
-        GRANT_PROPERTY,
-        ITIPVERSION_PROPERTY,
-        LASTMODIFIED_PROPERTY,
-        LOCATION_PROPERTY,
-        MAXCOMPONENTSIZE_PROPERTY,
-        MAXDATE_PROPERTY,
-        MAXRESULTS_PROPERTY,
-        MAXRESULTSSIZE_PROPERTY,
-        METHOD_PROPERTY,
-        MINDATE_PROPERTY,
-        MULTIPART_PROPERTY,
-        NAME_PROPERTY,
-        ORGANIZER_PROPERTY,
-        OWNER_PROPERTY,
-        PERCENTCOMPLETE_PROPERTY,
-        PERMISSION_PROPERTY,
-        POLLCOMPLETION_PROPERTY,
-        POLLITEMID_PROPERTY,
-        POLLMODE_PROPERTY,
-        POLLPROPERTIES_PROPERTY,
-        POLLWINNER_PROPERTY,
-        PRIORITY_PROPERTY,
-        PRODID_PROPERTY,
-        QUERY_PROPERTY,
-        QUERYLEVEL_PROPERTY,
-        QUERYID_PROPERTY,
-        QUERYNAME_PROPERTY,
-        RDATE_PROPERTY,
-        RECURACCEPTED_PROPERTY,
-        RECUREXPAND_PROPERTY,
-        RECURLIMIT_PROPERTY,
-        RECURRENCEID_PROPERTY,
-        RELATEDTO_PROPERTY,
-        RELCALID_PROPERTY,
-        REPEAT_PROPERTY,
-        REPLYURL_PROPERTY,
-        REQUESTSTATUS_PROPERTY,
-        RESOURCES_PROPERTY,
-        RESPONSE_PROPERTY,
-        RESTRICTION_PROPERTY,
-        RRULE_PROPERTY,
-        SCOPE_PROPERTY,
-        SEQUENCE_PROPERTY,
-        STATUS_PROPERTY,
-        STORESEXPANDED_PROPERTY,
-        SUMMARY_PROPERTY,
-        TARGET_PROPERTY,
-        TASKMODE_PROPERTY,
-        TRANSP_PROPERTY,
-        TRIGGER_PROPERTY,
-        TZID_PROPERTY,
-        TZIDALIASOF_PROPERTY,
-        TZNAME_PROPERTY,
-        TZOFFSETFROM_PROPERTY,
-        TZOFFSETTO_PROPERTY,
-        TZUNTIL_PROPERTY,
-        TZURL_PROPERTY,
-        UID_PROPERTY,
-        URL_PROPERTY,
-        VERSION_PROPERTY,
-        VOTER_PROPERTY,
-        X_PROPERTY,
-        XLICCLASS_PROPERTY,
-        XLICCLUSTERCOUNT_PROPERTY,
-        XLICERROR_PROPERTY,
-        XLICMIMECHARSET_PROPERTY,
-        XLICMIMECID_PROPERTY,
-        XLICMIMECONTENTTYPE_PROPERTY,
-        XLICMIMEENCODING_PROPERTY,
-        XLICMIMEFILENAME_PROPERTY,
-        XLICMIMEOPTINFO_PROPERTY,
-        NO_PROPERTY,
+        ANY_PROPERTY = 0,
+        ACCEPTRESPONSE_PROPERTY = 102,
+        ACKNOWLEDGED_PROPERTY = 1,
+        ACTION_PROPERTY = 2,
+        ALLOWCONFLICT_PROPERTY = 3,
+        ATTACH_PROPERTY = 4,
+        ATTENDEE_PROPERTY = 5,
+        BUSYTYPE_PROPERTY = 101,
+        CALID_PROPERTY = 6,
+        CALMASTER_PROPERTY = 7,
+        CALSCALE_PROPERTY = 8,
+        CAPVERSION_PROPERTY = 9,
+        CARLEVEL_PROPERTY = 10,
+        CARID_PROPERTY = 11,
+        CATEGORIES_PROPERTY = 12,
+        CLASS_PROPERTY = 13,
+        CMD_PROPERTY = 14,
+        COLOR_PROPERTY = 118,
+        COMMENT_PROPERTY = 15,
+        COMPLETED_PROPERTY = 16,
+        COMPONENTS_PROPERTY = 17,
+        CONTACT_PROPERTY = 18,
+        CREATED_PROPERTY = 19,
+        CSID_PROPERTY = 20,
+        DATEMAX_PROPERTY = 21,
+        DATEMIN_PROPERTY = 22,
+        DECREED_PROPERTY = 23,
+        DEFAULTCHARSET_PROPERTY = 24,
+        DEFAULTLOCALE_PROPERTY = 25,
+        DEFAULTTZID_PROPERTY = 26,
+        DEFAULTVCARS_PROPERTY = 27,
+        DENY_PROPERTY = 28,
+        DESCRIPTION_PROPERTY = 29,
+        DTEND_PROPERTY = 30,
+        DTSTAMP_PROPERTY = 31,
+        DTSTART_PROPERTY = 32,
+        DUE_PROPERTY = 33,
+        DURATION_PROPERTY = 34,
+        ESTIMATEDDURATION_PROPERTY = 113,
+        EXDATE_PROPERTY = 35,
+        EXPAND_PROPERTY = 36,
+        EXRULE_PROPERTY = 37,
+        FREEBUSY_PROPERTY = 38,
+        GEO_PROPERTY = 39,
+        GRANT_PROPERTY = 40,
+        ITIPVERSION_PROPERTY = 41,
+        LASTMODIFIED_PROPERTY = 42,
+        LOCATION_PROPERTY = 43,
+        MAXCOMPONENTSIZE_PROPERTY = 44,
+        MAXDATE_PROPERTY = 45,
+        MAXRESULTS_PROPERTY = 46,
+        MAXRESULTSSIZE_PROPERTY = 47,
+        METHOD_PROPERTY = 48,
+        MINDATE_PROPERTY = 49,
+        MULTIPART_PROPERTY = 50,
+        NAME_PROPERTY = 115,
+        ORGANIZER_PROPERTY = 52,
+        OWNER_PROPERTY = 53,
+        PERCENTCOMPLETE_PROPERTY = 54,
+        PERMISSION_PROPERTY = 55,
+        POLLCOMPLETION_PROPERTY = 110,
+        POLLITEMID_PROPERTY = 103,
+        POLLMODE_PROPERTY = 104,
+        POLLPROPERTIES_PROPERTY = 105,
+        POLLWINNER_PROPERTY = 106,
+        PRIORITY_PROPERTY = 56,
+        PRODID_PROPERTY = 57,
+        QUERY_PROPERTY = 58,
+        QUERYLEVEL_PROPERTY = 59,
+        QUERYID_PROPERTY = 60,
+        QUERYNAME_PROPERTY = 61,
+        RDATE_PROPERTY = 62,
+        RECURACCEPTED_PROPERTY = 63,
+        RECUREXPAND_PROPERTY = 64,
+        RECURLIMIT_PROPERTY = 65,
+        RECURRENCEID_PROPERTY = 66,
+        RELATEDTO_PROPERTY = 67,
+        RELCALID_PROPERTY = 68,
+        REPEAT_PROPERTY = 69,
+        REPLYURL_PROPERTY = 111,
+        REQUESTSTATUS_PROPERTY = 70,
+        RESOURCES_PROPERTY = 71,
+        RESPONSE_PROPERTY = 112,
+        RESTRICTION_PROPERTY = 72,
+        RRULE_PROPERTY = 73,
+        SCOPE_PROPERTY = 74,
+        SEQUENCE_PROPERTY = 75,
+        STATUS_PROPERTY = 76,
+        STORESEXPANDED_PROPERTY = 77,
+        SUMMARY_PROPERTY = 78,
+        TARGET_PROPERTY = 79,
+        TASKMODE_PROPERTY = 114,
+        TRANSP_PROPERTY = 80,
+        TRIGGER_PROPERTY = 81,
+        TZID_PROPERTY = 82,
+        TZIDALIASOF_PROPERTY = 108,
+        TZNAME_PROPERTY = 83,
+        TZOFFSETFROM_PROPERTY = 84,
+        TZOFFSETTO_PROPERTY = 85,
+        TZUNTIL_PROPERTY = 109,
+        TZURL_PROPERTY = 86,
+        UID_PROPERTY = 87,
+        URL_PROPERTY = 88,
+        VERSION_PROPERTY = 89,
+        VOTER_PROPERTY = 107,
+        X_PROPERTY = 90,
+        XLICCLASS_PROPERTY = 91,
+        XLICCLUSTERCOUNT_PROPERTY = 92,
+        XLICERROR_PROPERTY = 93,
+        XLICMIMECHARSET_PROPERTY = 94,
+        XLICMIMECID_PROPERTY = 95,
+        XLICMIMECONTENTTYPE_PROPERTY = 96,
+        XLICMIMEENCODING_PROPERTY = 97,
+        XLICMIMEFILENAME_PROPERTY = 98,
+        XLICMIMEOPTINFO_PROPERTY = 99,
+        NO_PROPERTY = 100,
     }
 
 
@@ -648,23 +648,23 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyMethod {
-        X,
-        PUBLISH,
-        REQUEST,
-        REPLY,
-        ADD,
-        CANCEL,
-        REFRESH,
-        COUNTER,
-        DECLINECOUNTER,
-        CREATE,
-        READ,
-        RESPONSE,
-        MOVE,
-        MODIFY,
-        GENERATEUID,
-        DELETE,
-        NONE,
+        X = 10500,
+        PUBLISH = 10501,
+        REQUEST = 10502,
+        REPLY = 10503,
+        ADD = 10504,
+        CANCEL = 10505,
+        REFRESH = 10506,
+        COUNTER = 10507,
+        DECLINECOUNTER = 10508,
+        CREATE = 10509,
+        READ = 10510,
+        RESPONSE = 10511,
+        MOVE = 10512,
+        MODIFY = 10513,
+        GENERATEUID = 10514,
+        DELETE = 10515,
+        NONE = 10599,
     }
 
 
@@ -672,12 +672,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyPollcompletion {
-        X,
-        SERVER,
-        SERVERSUBMIT,
-        SERVERCHOICE,
-        CLIENT,
-        NONE,
+        X = 10600,
+        SERVER = 10601,
+        SERVERSUBMIT = 10602,
+        SERVERCHOICE = 10603,
+        CLIENT = 10604,
+        NONE = 10699,
     }
 
 
@@ -685,9 +685,9 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyPollmode {
-        X,
-        BASIC,
-        NONE,
+        X = 10700,
+        BASIC = 10701,
+        NONE = 10799,
     }
 
 
@@ -695,10 +695,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyQuerylevel {
-        X,
-        CALQL1,
-        CALQLNONE,
-        NONE,
+        X = 10800,
+        CALQL1 = 10801,
+        CALQLNONE = 10802,
+        NONE = 10899,
     }
 
 
@@ -706,20 +706,20 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyStatus {
-        X,
-        TENTATIVE,
-        CONFIRMED,
-        COMPLETED,
-        NEEDSACTION,
-        CANCELLED,
-        INPROCESS,
-        DRAFT,
-        FINAL,
-        SUBMITTED,
-        PENDING,
-        FAILED,
-        DELETED,
-        NONE,
+        X = 10900,
+        TENTATIVE = 10901,
+        CONFIRMED = 10902,
+        COMPLETED = 10903,
+        NEEDSACTION = 10904,
+        CANCELLED = 10905,
+        INPROCESS = 10906,
+        DRAFT = 10907,
+        FINAL = 10908,
+        SUBMITTED = 10909,
+        PENDING = 10910,
+        FAILED = 10911,
+        DELETED = 10912,
+        NONE = 10999,
     }
 
 
@@ -727,11 +727,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyTaskmode {
-        X,
-        AUTOMATICCOMPLETION,
-        AUTOMATICFAILURE,
-        AUTOMATICSTATUS,
-        NONE,
+        X = 11200,
+        AUTOMATICCOMPLETION = 11201,
+        AUTOMATICFAILURE = 11202,
+        AUTOMATICSTATUS = 11203,
+        NONE = 11299,
     }
 
 
@@ -739,12 +739,12 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyTransp {
-        X,
-        OPAQUE,
-        OPAQUENOCONFLICT,
-        TRANSPARENT,
-        TRANSPARENTNOCONFLICT,
-        NONE,
+        X = 11000,
+        OPAQUE = 11001,
+        OPAQUENOCONFLICT = 11002,
+        TRANSPARENT = 11003,
+        TRANSPARENTNOCONFLICT = 11004,
+        NONE = 11099,
     }
 
 
@@ -752,35 +752,35 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum PropertyXlicclass {
-        X,
-        PUBLISHNEW,
-        PUBLISHUPDATE,
-        PUBLISHFREEBUSY,
-        REQUESTNEW,
-        REQUESTUPDATE,
-        REQUESTRESCHEDULE,
-        REQUESTDELEGATE,
-        REQUESTNEWORGANIZER,
-        REQUESTFORWARD,
-        REQUESTSTATUS,
-        REQUESTFREEBUSY,
-        REPLYACCEPT,
-        REPLYDECLINE,
-        REPLYDELEGATE,
-        REPLYCRASHERACCEPT,
-        REPLYCRASHERDECLINE,
-        ADDINSTANCE,
-        CANCELEVENT,
-        CANCELINSTANCE,
-        CANCELALL,
-        REFRESH,
-        COUNTER,
-        DECLINECOUNTER,
-        MALFORMED,
-        OBSOLETE,
-        MISSEQUENCED,
-        UNKNOWN,
-        NONE,
+        X = 11100,
+        PUBLISHNEW = 11101,
+        PUBLISHUPDATE = 11102,
+        PUBLISHFREEBUSY = 11103,
+        REQUESTNEW = 11104,
+        REQUESTUPDATE = 11105,
+        REQUESTRESCHEDULE = 11106,
+        REQUESTDELEGATE = 11107,
+        REQUESTNEWORGANIZER = 11108,
+        REQUESTFORWARD = 11109,
+        REQUESTSTATUS = 11110,
+        REQUESTFREEBUSY = 11111,
+        REPLYACCEPT = 11112,
+        REPLYDECLINE = 11113,
+        REPLYDELEGATE = 11114,
+        REPLYCRASHERACCEPT = 11115,
+        REPLYCRASHERDECLINE = 11116,
+        ADDINSTANCE = 11117,
+        CANCELEVENT = 11118,
+        CANCELINSTANCE = 11119,
+        CANCELALL = 11120,
+        REFRESH = 11121,
+        COUNTER = 11122,
+        DECLINECOUNTER = 11123,
+        MALFORMED = 11124,
+        OBSOLETE = 11125,
+        MISSEQUENCED = 11126,
+        UNKNOWN = 11127,
+        NONE = 11199,
     }
 
 
@@ -788,11 +788,11 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum Property_Class {
-        X,
-        PUBLIC,
-        PRIVATE,
-        CONFIDENTIAL,
-        NONE,
+        X = 10300,
+        PUBLIC = 10301,
+        PRIVATE = 10302,
+        CONFIDENTIAL = 10303,
+        NONE = 10399,
     }
 
 
@@ -800,7 +800,7 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RecurrenceArrayMaxValues {
-        RECURRENCE_ARRAY_MAX,
+        RECURRENCE_ARRAY_MAX = 32639,
     }
 
 
@@ -808,15 +808,15 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RecurrenceArraySizes {
-        SECOND_SIZE,
-        MINUTE_SIZE,
-        HOUR_SIZE,
-        MONTH_SIZE,
-        MONTHDAY_SIZE,
-        WEEKNO_SIZE,
-        YEARDAY_SIZE,
-        SETPOS_SIZE,
-        DAY_SIZE,
+        SECOND_SIZE = 62,
+        MINUTE_SIZE = 61,
+        HOUR_SIZE = 25,
+        MONTH_SIZE = 14,
+        MONTHDAY_SIZE = 32,
+        WEEKNO_SIZE = 56,
+        YEARDAY_SIZE = 386,
+        SETPOS_SIZE = 386,
+        DAY_SIZE = 386,
     }
 
 
@@ -824,14 +824,14 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RecurrenceFrequency {
-        SECONDLY_RECURRENCE,
-        MINUTELY_RECURRENCE,
-        HOURLY_RECURRENCE,
-        DAILY_RECURRENCE,
-        WEEKLY_RECURRENCE,
-        MONTHLY_RECURRENCE,
-        YEARLY_RECURRENCE,
-        NO_RECURRENCE,
+        SECONDLY_RECURRENCE = 0,
+        MINUTELY_RECURRENCE = 1,
+        HOURLY_RECURRENCE = 2,
+        DAILY_RECURRENCE = 3,
+        WEEKLY_RECURRENCE = 4,
+        MONTHLY_RECURRENCE = 5,
+        YEARLY_RECURRENCE = 6,
+        NO_RECURRENCE = 7,
     }
 
 
@@ -839,10 +839,10 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RecurrenceSkip {
-        BACKWARD,
-        FORWARD,
-        OMIT,
-        UNDEFINED,
+        BACKWARD = 0,
+        FORWARD = 1,
+        OMIT = 2,
+        UNDEFINED = 3,
     }
 
 
@@ -850,14 +850,14 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RecurrenceWeekday {
-        NO_WEEKDAY,
-        SUNDAY_WEEKDAY,
-        MONDAY_WEEKDAY,
-        TUESDAY_WEEKDAY,
-        WEDNESDAY_WEEKDAY,
-        THURSDAY_WEEKDAY,
-        FRIDAY_WEEKDAY,
-        SATURDAY_WEEKDAY,
+        NO_WEEKDAY = 0,
+        SUNDAY_WEEKDAY = 1,
+        MONDAY_WEEKDAY = 2,
+        TUESDAY_WEEKDAY = 3,
+        WEDNESDAY_WEEKDAY = 4,
+        THURSDAY_WEEKDAY = 5,
+        FRIDAY_WEEKDAY = 6,
+        SATURDAY_WEEKDAY = 7,
     }
 
 
@@ -865,45 +865,45 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RequestStatus {
-        UNKNOWN_STATUS,
-        "2_0_SUCCESS_STATUS",
-        "2_1_FALLBACK_STATUS",
-        "2_2_IGPROP_STATUS",
-        "2_3_IGPARAM_STATUS",
-        "2_4_IGXPROP_STATUS",
-        "2_5_IGXPARAM_STATUS",
-        "2_6_IGCOMP_STATUS",
-        "2_7_FORWARD_STATUS",
-        "2_8_ONEEVENT_STATUS",
-        "2_9_TRUNC_STATUS",
-        "2_10_ONETODO_STATUS",
-        "2_11_TRUNCRRULE_STATUS",
-        "3_0_INVPROPNAME_STATUS",
-        "3_1_INVPROPVAL_STATUS",
-        "3_2_INVPARAM_STATUS",
-        "3_3_INVPARAMVAL_STATUS",
-        "3_4_INVCOMP_STATUS",
-        "3_5_INVTIME_STATUS",
-        "3_6_INVRULE_STATUS",
-        "3_7_INVCU_STATUS",
-        "3_8_NOAUTH_STATUS",
-        "3_9_BADVERSION_STATUS",
-        "3_10_TOOBIG_STATUS",
-        "3_11_MISSREQCOMP_STATUS",
-        "3_12_UNKCOMP_STATUS",
-        "3_13_BADCOMP_STATUS",
-        "3_14_NOCAP_STATUS",
-        "3_15_INVCOMMAND",
-        "4_0_BUSY_STATUS",
-        "4_1_STORE_ACCESS_DENIED",
-        "4_2_STORE_FAILED",
-        "4_3_STORE_NOT_FOUND",
-        "5_0_MAYBE_STATUS",
-        "5_1_UNAVAIL_STATUS",
-        "5_2_NOSERVICE_STATUS",
-        "5_3_NOSCHED_STATUS",
-        "6_1_CONTAINER_NOT_FOUND",
-        "9_0_UNRECOGNIZED_COMMAND",
+        UNKNOWN_STATUS = 0,
+        "2_0_SUCCESS_STATUS" = 1,
+        "2_1_FALLBACK_STATUS" = 2,
+        "2_2_IGPROP_STATUS" = 3,
+        "2_3_IGPARAM_STATUS" = 4,
+        "2_4_IGXPROP_STATUS" = 5,
+        "2_5_IGXPARAM_STATUS" = 6,
+        "2_6_IGCOMP_STATUS" = 7,
+        "2_7_FORWARD_STATUS" = 8,
+        "2_8_ONEEVENT_STATUS" = 9,
+        "2_9_TRUNC_STATUS" = 10,
+        "2_10_ONETODO_STATUS" = 11,
+        "2_11_TRUNCRRULE_STATUS" = 12,
+        "3_0_INVPROPNAME_STATUS" = 13,
+        "3_1_INVPROPVAL_STATUS" = 14,
+        "3_2_INVPARAM_STATUS" = 15,
+        "3_3_INVPARAMVAL_STATUS" = 16,
+        "3_4_INVCOMP_STATUS" = 17,
+        "3_5_INVTIME_STATUS" = 18,
+        "3_6_INVRULE_STATUS" = 19,
+        "3_7_INVCU_STATUS" = 20,
+        "3_8_NOAUTH_STATUS" = 21,
+        "3_9_BADVERSION_STATUS" = 22,
+        "3_10_TOOBIG_STATUS" = 23,
+        "3_11_MISSREQCOMP_STATUS" = 24,
+        "3_12_UNKCOMP_STATUS" = 25,
+        "3_13_BADCOMP_STATUS" = 26,
+        "3_14_NOCAP_STATUS" = 27,
+        "3_15_INVCOMMAND" = 28,
+        "4_0_BUSY_STATUS" = 29,
+        "4_1_STORE_ACCESS_DENIED" = 30,
+        "4_2_STORE_FAILED" = 31,
+        "4_3_STORE_NOT_FOUND" = 32,
+        "5_0_MAYBE_STATUS" = 33,
+        "5_1_UNAVAIL_STATUS" = 34,
+        "5_2_NOSERVICE_STATUS" = 35,
+        "5_3_NOSCHED_STATUS" = 36,
+        "6_1_CONTAINER_NOT_FOUND" = 37,
+        "9_0_UNRECOGNIZED_COMMAND" = 38,
     }
 
 
@@ -911,15 +911,15 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum RestrictionKind {
-        NONE,
-        ZERO,
-        ONE,
-        ZEROPLUS,
-        ONEPLUS,
-        ZEROORONE,
-        ONEEXCLUSIVE,
-        ONEMUTUAL,
-        UNKNOWN,
+        NONE = 0,
+        ZERO = 1,
+        ONE = 2,
+        ZEROPLUS = 3,
+        ONEPLUS = 4,
+        ZEROORONE = 5,
+        ONEEXCLUSIVE = 6,
+        ONEMUTUAL = 7,
+        UNKNOWN = 8,
     }
 
 
@@ -927,9 +927,9 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum Unknowntokenhandling {
-        ASSUME_IANA_TOKEN,
-        DISCARD_TOKEN,
-        TREAT_AS_ERROR,
+        ASSUME_IANA_TOKEN = 1,
+        DISCARD_TOKEN = 2,
+        TREAT_AS_ERROR = 3,
     }
 
 
@@ -937,43 +937,43 @@ export namespace ICalGLib {
      * @gir-type Enum
      */
     enum ValueKind {
-        ANY_VALUE,
-        ACTION_VALUE,
-        ATTACH_VALUE,
-        BINARY_VALUE,
-        BOOLEAN_VALUE,
-        BUSYTYPE_VALUE,
-        CALADDRESS_VALUE,
-        CARLEVEL_VALUE,
-        CLASS_VALUE,
-        CMD_VALUE,
-        DATE_VALUE,
-        DATETIME_VALUE,
-        DATETIMEDATE_VALUE,
-        DATETIMEPERIOD_VALUE,
-        DURATION_VALUE,
-        FLOAT_VALUE,
-        GEO_VALUE,
-        INTEGER_VALUE,
-        METHOD_VALUE,
-        PERIOD_VALUE,
-        POLLCOMPLETION_VALUE,
-        POLLMODE_VALUE,
-        QUERY_VALUE,
-        QUERYLEVEL_VALUE,
-        RECUR_VALUE,
-        REQUESTSTATUS_VALUE,
-        STATUS_VALUE,
-        STRING_VALUE,
-        TASKMODE_VALUE,
-        TEXT_VALUE,
-        TRANSP_VALUE,
-        TRIGGER_VALUE,
-        URI_VALUE,
-        UTCOFFSET_VALUE,
-        X_VALUE,
-        XLICCLASS_VALUE,
-        NO_VALUE,
+        ANY_VALUE = 5000,
+        ACTION_VALUE = 5027,
+        ATTACH_VALUE = 5003,
+        BINARY_VALUE = 5011,
+        BOOLEAN_VALUE = 5021,
+        BUSYTYPE_VALUE = 5032,
+        CALADDRESS_VALUE = 5023,
+        CARLEVEL_VALUE = 5016,
+        CLASS_VALUE = 5019,
+        CMD_VALUE = 5010,
+        DATE_VALUE = 5002,
+        DATETIME_VALUE = 5028,
+        DATETIMEDATE_VALUE = 5036,
+        DATETIMEPERIOD_VALUE = 5015,
+        DURATION_VALUE = 5020,
+        FLOAT_VALUE = 5013,
+        GEO_VALUE = 5004,
+        INTEGER_VALUE = 5017,
+        METHOD_VALUE = 5030,
+        PERIOD_VALUE = 5014,
+        POLLCOMPLETION_VALUE = 5034,
+        POLLMODE_VALUE = 5033,
+        QUERY_VALUE = 5001,
+        QUERYLEVEL_VALUE = 5012,
+        RECUR_VALUE = 5026,
+        REQUESTSTATUS_VALUE = 5009,
+        STATUS_VALUE = 5005,
+        STRING_VALUE = 5007,
+        TASKMODE_VALUE = 5035,
+        TEXT_VALUE = 5008,
+        TRANSP_VALUE = 5006,
+        TRIGGER_VALUE = 5024,
+        URI_VALUE = 5018,
+        UTCOFFSET_VALUE = 5029,
+        X_VALUE = 5022,
+        XLICCLASS_VALUE = 5025,
+        NO_VALUE = 5031,
     }
 
 

@@ -31,27 +31,27 @@ export namespace GMime {
         /**
          * No trust assigned.
          */
-        NONE,
+        NONE = 0,
         /**
          * Never trust this certificate.
          */
-        NEVER,
+        NEVER = 1,
         /**
          * Undefined trust for this certificate.
          */
-        UNDEFINED,
+        UNDEFINED = 2,
         /**
          * Trust this certificate maginally.
          */
-        MARGINAL,
+        MARGINAL = 3,
         /**
          * Trust this certificate fully.
          */
-        FULLY,
+        FULLY = 4,
         /**
          * Trust this certificate ultimately.
          */
-        ULTIMATE,
+        ULTIMATE = 5,
     }
 
 
@@ -63,51 +63,51 @@ export namespace GMime {
         /**
          * The default (or unknown) cipher.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * The IDEA cipher.
          */
-        IDEA,
+        IDEA = 1,
         /**
          * The 3DES cipher.
          */
-        "3DES",
+        "3DES" = 2,
         /**
          * The CAST5 cipher.
          */
-        CAST5,
+        CAST5 = 3,
         /**
          * The Blowfish cipher.
          */
-        BLOWFISH,
+        BLOWFISH = 4,
         /**
          * The AES (aka RIJANDALE) cipher.
          */
-        AES,
+        AES = 7,
         /**
          * The AES-192 cipher.
          */
-        AES192,
+        AES192 = 8,
         /**
          * The AES-256 cipher.
          */
-        AES256,
+        AES256 = 9,
         /**
          * The Twofish cipher.
          */
-        TWOFISH,
+        TWOFISH = 10,
         /**
          * The Camellia-128 cipher.
          */
-        CAMELLIA128,
+        CAMELLIA128 = 11,
         /**
          * The Camellia-192 cipher.
          */
-        CAMELLIA192,
+        CAMELLIA192 = 12,
         /**
          * The Camellia-256 cipher.
          */
-        CAMELLIA256,
+        CAMELLIA256 = 13,
     }
 
 
@@ -119,31 +119,31 @@ export namespace GMime {
         /**
          * Default transfer encoding.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * 7bit text transfer encoding.
          */
-        "7BIT",
+        "7BIT" = 1,
         /**
          * 8bit text transfer encoding.
          */
-        "8BIT",
+        "8BIT" = 2,
         /**
          * Binary transfer encoding.
          */
-        BINARY,
+        BINARY = 3,
         /**
          * Base64 transfer encoding.
          */
-        BASE64,
+        BASE64 = 4,
         /**
          * Quoted-printable transfer encoding.
          */
-        QUOTEDPRINTABLE,
+        QUOTEDPRINTABLE = 5,
         /**
          * Uuencode transfer encoding.
          */
-        UUENCODE,
+        UUENCODE = 6,
     }
 
 
@@ -155,51 +155,51 @@ export namespace GMime {
         /**
          * The default hash algorithm.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * The MD5 hash algorithm.
          */
-        MD5,
+        MD5 = 1,
         /**
          * The SHA-1 hash algorithm.
          */
-        SHA1,
+        SHA1 = 2,
         /**
          * The RIPEMD-160 hash algorithm.
          */
-        RIPEMD160,
+        RIPEMD160 = 3,
         /**
          * The MD2 hash algorithm.
          */
-        MD2,
+        MD2 = 5,
         /**
          * The TIGER-192 hash algorithm.
          */
-        TIGER192,
+        TIGER192 = 6,
         /**
          * The HAVAL-5-160 hash algorithm.
          */
-        HAVAL5160,
+        HAVAL5160 = 7,
         /**
          * The SHA-256 hash algorithm.
          */
-        SHA256,
+        SHA256 = 8,
         /**
          * The SHA-384 hash algorithm.
          */
-        SHA384,
+        SHA384 = 9,
         /**
          * The SHA-512 hash algorithm.
          */
-        SHA512,
+        SHA512 = 10,
         /**
          * The SHA-224 hash algorithm.
          */
-        SHA224,
+        SHA224 = 11,
         /**
          * The MD4 hash algorithm.
          */
-        MD4,
+        MD4 = 301,
     }
 
 
@@ -214,15 +214,15 @@ export namespace GMime {
         /**
          * The stream data must fit within the 7bit ASCII range.
          */
-        "7BIT",
+        "7BIT" = 0,
         /**
          * The stream data may have bytes with the high bit set, but no null bytes.
          */
-        "8BIT",
+        "8BIT" = 1,
         /**
          * The stream may contain any binary data.
          */
-        BINARY,
+        BINARY = 2,
     }
 
 
@@ -234,15 +234,15 @@ export namespace GMime {
         /**
          * Default mode.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Escape 'From ' lines with a '>'
          */
-        ESCAPE,
+        ESCAPE = 0,
         /**
          * QP-Encode 'From ' lines
          */
-        ARMOR,
+        ARMOR = 1,
     }
 
 
@@ -254,11 +254,11 @@ export namespace GMime {
         /**
          * Compress (zip) mode.
          */
-        ZIP,
+        ZIP = 0,
         /**
          * Uncompress (unzip) mode.
          */
-        UNZIP,
+        UNZIP = 1,
     }
 
 
@@ -270,31 +270,31 @@ export namespace GMime {
         /**
          * The default public-key algorithm.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * The RSA algorithm.
          */
-        RSA,
+        RSA = 1,
         /**
          * An encryption-only RSA algorithm.
          */
-        RSA_E,
+        RSA_E = 2,
         /**
          * A signature-only RSA algorithm.
          */
-        RSA_S,
+        RSA_S = 3,
         /**
          * An encryption-only ElGamal algorithm.
          */
-        ELG_E,
+        ELG_E = 16,
         /**
          * The DSA algorithm.
          */
-        DSA,
+        DSA = 17,
         /**
          * The ElGamal algorithm.
          */
-        ELG,
+        ELG = 20,
     }
 
 
@@ -306,15 +306,15 @@ export namespace GMime {
         /**
          * Represents the recipients in the To: header.
          */
-        TO,
+        TO = 0,
         /**
          * Represents the recipients in the Cc: header.
          */
-        CC,
+        CC = 1,
         /**
          * Represents the recipients in the Bcc: header.
          */
-        BCC,
+        BCC = 2,
     }
 
 
@@ -326,15 +326,15 @@ export namespace GMime {
         /**
          * Seek relative to the beginning of the stream.
          */
-        SET,
+        SET = 0,
         /**
          * Seek relative to the current position in the stream.
          */
-        CUR,
+        CUR = 1,
         /**
          * Seek relative to the end of the stream.
          */
-        END,
+        END = 2,
     }
 
 
@@ -347,15 +347,15 @@ export namespace GMime {
         /**
          * Good signature.
          */
-        GOOD,
+        GOOD = 0,
         /**
          * An error occurred.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * Bad signature.
          */
-        BAD,
+        BAD = 2,
     }
 
 
@@ -367,36 +367,40 @@ export namespace GMime {
         /**
          * Cache all reads.
          */
-        CACHE_READ,
+        CACHE_READ = 0,
         /**
          * Read in 4k blocks.
          */
-        BLOCK_READ,
+        BLOCK_READ = 1,
         /**
          * Write in 4k blocks.
          */
-        BLOCK_WRITE,
+        BLOCK_WRITE = 2,
     }
 
 
     /**
      * GMime's binary age.
+     * @default 623
      */
     const BINARY_AGE: number;
 
     /**
      * Standard attachment disposition.
+     * @default attachment
      */
     const DISPOSITION_ATTACHMENT: string;
 
     /**
      * Standard inline disposition.
+     * @default inline
      */
     const DISPOSITION_INLINE: string;
 
     /**
      * Initialization flag to enable workarounds for badly formed rfc2047
      * encoded-words.
+     * @default 1
      */
     const ENABLE_RFC2047_WORKAROUNDS: number;
 
@@ -405,97 +409,118 @@ export namespace GMime {
      * the configured user-charsets (set via `g_mime_set_user_charsets()`)
      * instead of trying to first use iso-8859-1.
      * @since 2.6.16
+     * @default 2
      */
     const ENABLE_USE_ONLY_USER_CHARSETS: number;
 
     /**
      * A bit flag for `g_mime_filter_enriched_new()` which signifies that
      * the filter should expect Rich Text (aka RTF).
+     * @default 1
      */
     const FILTER_ENRICHED_IS_RICHTEXT: number;
 
     /**
      * Cites text by prepending "&gt; " to each cited line.
+     * @default 128
      */
     const FILTER_HTML_CITE: number;
 
     /**
      * Wrap email addresses in "mailto:" href tags.
+     * @default 32
      */
     const FILTER_HTML_CONVERT_ADDRESSES: number;
 
     /**
      * Convert new-lines ('\n') into &lt;br&gt; tags.
+     * @default 2
      */
     const FILTER_HTML_CONVERT_NL: number;
 
     /**
      * Preserve whitespace by converting spaces into their appropriate
      * html entities.
+     * @default 4
      */
     const FILTER_HTML_CONVERT_SPACES: number;
 
     /**
      * Wrap detected URLs in &lt;a href=...&gt; tags.
+     * @default 8
      */
     const FILTER_HTML_CONVERT_URLS: number;
 
     /**
      * Converts 8bit characters to '?'.
+     * @default 64
      */
     const FILTER_HTML_ESCAPE_8BIT: number;
 
     /**
      * Change the colour of citation text.
+     * @default 16
      */
     const FILTER_HTML_MARK_CITATION: number;
 
     /**
      * Wrap stream in &lt;pre&gt; tags.
+     * @default 1
      */
     const FILTER_HTML_PRE: number;
 
     /**
      * GMime's interface age.
+     * @default 0
      */
     const INTERFACE_AGE: number;
 
     /**
      * GMime's major version.
+     * @default 2
      */
     const MAJOR_VERSION: number;
 
     /**
      * GMime's micro version.
+     * @default 23
      */
     const MICRO_VERSION: number;
 
     /**
      * GMime's minor version.
+     * @default 6
      */
     const MINOR_VERSION: number;
 
     /**
      * State for the `g_mime_encoding_uudecode_step()` function, denoting that
      * the 'begin' line has been found.
+     * @default 65536
      */
     const UUDECODE_STATE_BEGIN: number;
 
     /**
      * State for the `g_mime_encoding_uudecode_step()` function, denoting that
      * the end of the UU encoded block has been found.
+     * @default 131072
      */
     const UUDECODE_STATE_END: number;
 
     /**
      * Initial state for the `g_mime_encoding_uudecode_step()` function.
+     * @default 0
      */
     const UUDECODE_STATE_INIT: number;
 
+    /**
+     * @default 0
+     */
     const UUDECODE_STATE_MASK: number;
 
     /**
      * State bit that denotes the yEnc filter has found the =ybegin line.
+     * @default 4096
      */
     const YDECODE_STATE_BEGIN: number;
 
@@ -503,12 +528,14 @@ export namespace GMime {
      * State bit that denotes yEnc filter has begun decoding the actual
      * yencoded content and will continue to do so until an =yend line is
      * found (or until there is nothing left to decode).
+     * @default 16384
      */
     const YDECODE_STATE_DECODE: number;
 
     /**
      * State bit that denoates that `g_mime_ydecode_step()` has finished
      * decoding.
+     * @default 32768
      */
     const YDECODE_STATE_END: number;
 
@@ -516,6 +543,7 @@ export namespace GMime {
      * State bit that denotes the yEnc filter has reached an end-of-line.
      * 
      * This state is for internal use only.
+     * @default 256
      */
     const YDECODE_STATE_EOLN: number;
 
@@ -524,27 +552,32 @@ export namespace GMime {
      * sequence.
      * 
      * This state is for internal use only.
+     * @default 512
      */
     const YDECODE_STATE_ESCAPE: number;
 
     /**
      * Initial state for the `g_mime_ydecode_step()` function.
+     * @default 0
      */
     const YDECODE_STATE_INIT: number;
 
     /**
      * State bit that denotes the yEnc filter has found the =ypart
      * line. (Note: not all yencoded blocks have one)
+     * @default 8192
      */
     const YDECODE_STATE_PART: number;
 
     /**
      * Initial state for the crc and pcrc state variables.
+     * @default -1
      */
     const YENCODE_CRC_INIT: number;
 
     /**
      * Initial state for the `g_mime_ydecode_step()` function.
+     * @default 0
      */
     const YENCODE_STATE_INIT: number;
 
@@ -1102,11 +1135,11 @@ export namespace GMime {
         /**
          * Enable best-charset detection.
          */
-        CHARSET,
+        CHARSET = 1,
         /**
          * Enable best-encoding detection.
          */
-        ENCODING,
+        ENCODING = 2,
     }
 
 
@@ -1118,27 +1151,27 @@ export namespace GMime {
         /**
          * No error.
          */
-        NONE,
+        NONE = 0,
         /**
          * Expired signature.
          */
-        EXPSIG,
+        EXPSIG = 1,
         /**
          * No public key found.
          */
-        NO_PUBKEY,
+        NO_PUBKEY = 2,
         /**
          * Expired signature key.
          */
-        EXPKEYSIG,
+        EXPKEYSIG = 4,
         /**
          * Revoked signature key.
          */
-        REVKEYSIG,
+        REVKEYSIG = 8,
         /**
          * Unsupported algorithm.
          */
-        UNSUPP_ALGO,
+        UNSUPP_ALGO = 16,
     }
 
 
@@ -1929,6 +1962,7 @@ export namespace GMime {
          * @param istream input/ciphertext stream
          * @param ostream output/cleartext stream
          * @returns a {@link GMime.DecryptResult} on success or `null` on error.
+         * @throws GLib.Error
          */
         decrypt(istream: Stream, ostream: Stream): DecryptResult;
 
@@ -1959,6 +1993,7 @@ export namespace GMime {
          * @param istream input/ciphertext stream
          * @param ostream output/cleartext stream
          * @returns a {@link GMime.DecryptResult} on success or `null` on error.
+         * @throws GLib.Error
          */
         decrypt_session(session_key: string, istream: Stream, ostream: Stream): DecryptResult;
 
@@ -1986,6 +2021,7 @@ export namespace GMime {
          * @param istream cleartext input stream
          * @param ostream ciphertext output stream
          * @returns %0 on success or %-1 on fail.
+         * @throws GLib.Error
          */
         encrypt(sign: boolean, userid: string, digest: DigestAlgo, recipients: string[], istream: Stream, ostream: Stream): number;
 
@@ -1995,6 +2031,7 @@ export namespace GMime {
          * @param keys an array of key ids
          * @param ostream output stream
          * @returns %0 on success or %-1 on fail.
+         * @throws GLib.Error
          */
         export_keys(keys: string[], ostream: Stream): number;
 
@@ -2028,6 +2065,7 @@ export namespace GMime {
          * into the key/certificate database controlled by `ctx`.
          * @param istream input stream (containing keys)
          * @returns %0 on success or %-1 on fail.
+         * @throws GLib.Error
          */
         import_keys(istream: Stream): number;
 
@@ -2037,6 +2075,7 @@ export namespace GMime {
          * `g_mime_decrypt_result_get_session_key()`).
          * @param retrieve_session_key whether to retrieve session keys during decryption
          * @returns %0 on success or %-1 on fail.
+         * @throws GLib.Error
          */
         set_retrieve_session_key(retrieve_session_key: boolean): number;
 
@@ -2047,6 +2086,7 @@ export namespace GMime {
          * @param istream input stream
          * @param ostream output stream
          * @returns the {@link GMime.DigestAlgo} used on success (useful if `digest` is specified as #GMIME_DIGEST_ALGO_DEFAULT) or %-1 on fail.
+         * @throws GLib.Error
          */
         sign(userid: string, digest: DigestAlgo, istream: Stream, ostream: Stream): number;
 
@@ -2059,6 +2099,7 @@ export namespace GMime {
          * @param istream input stream
          * @param sigstream optional detached-signature stream
          * @returns a {@link GMime.SignatureList} object containing the status of each signature or `null` on error.
+         * @throws GLib.Error
          */
         verify(digest: DigestAlgo, istream: Stream, sigstream: Stream): SignatureList;
     }
@@ -4319,6 +4360,7 @@ export namespace GMime {
          * @param ctx decryption context
          * @param result a `GMimeDecryptionResult`
          * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occured.
+         * @throws GLib.Error
          */
         decrypt(ctx: CryptoContext, result: DecryptResult): Object;
 
@@ -4343,6 +4385,7 @@ export namespace GMime {
          * @param session_key session key to use
          * @param result a `GMimeDecryptionResult`
          * @returns the decrypted MIME part on success or `null` on fail. If the decryption fails, an exception will be set on `err` to provide information as to why the failure occured.
+         * @throws GLib.Error
          */
         decrypt_session(ctx: CryptoContext, session_key: string, result: DecryptResult): Object;
 
@@ -4358,6 +4401,7 @@ export namespace GMime {
          * @param digest digest algorithm to use when signing
          * @param recipients an array of recipients to encrypt to
          * @returns %0 on success or %-1 on fail. If the encryption fails, an exception will be set on `err` to provide information as to why the failure occured.
+         * @throws GLib.Error
          */
         encrypt(content: Object, ctx: CryptoContext, sign: boolean, userid: string, digest: DigestAlgo, recipients: string[]): number;
     }
@@ -4421,6 +4465,7 @@ export namespace GMime {
          * @param userid user id to sign with
          * @param digest preferred digest algorithm
          * @returns %0 on success or %-1 on fail. If the signing fails, an exception will be set on `err` to provide information as to why the failure occured.
+         * @throws GLib.Error
          */
         sign(content: Object, ctx: CryptoContext, userid: string, digest: DigestAlgo): number;
 
@@ -4429,6 +4474,7 @@ export namespace GMime {
          * multipart/signed object `mps` using the `ctx` crypto context.
          * @param ctx encryption crypto context
          * @returns a new {@link GMime.SignatureList} object on success or `null` on fail. If the verification fails, an exception will be set on `err` to provide information as to why the failure occured.
+         * @throws GLib.Error
          */
         verify(ctx: CryptoContext): SignatureList;
     }

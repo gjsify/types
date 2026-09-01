@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gweather-3.0.d.ts","./gweather-3.0-surface.d.ts"]
+  "include": ["./gweather-3.0.d.ts","./gweather-3.0-vocabulary.d.ts"]
 }
 
 

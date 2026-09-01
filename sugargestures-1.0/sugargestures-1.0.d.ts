@@ -43,10 +43,10 @@ export namespace SugarGestures {
      * @gir-type Enum
      */
     enum EventControllerState {
-        NONE,
-        COLLECTING,
-        RECOGNIZED,
-        NOT_RECOGNIZED,
+        NONE = 0,
+        COLLECTING = 1,
+        RECOGNIZED = 2,
+        NOT_RECOGNIZED = 3,
     }
 
 
@@ -61,10 +61,10 @@ export namespace SugarGestures {
      * @gir-type Enum
      */
     enum SwipeDirection {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
+        LEFT = 0,
+        RIGHT = 1,
+        UP = 2,
+        DOWN = 3,
     }
 
 
@@ -79,8 +79,8 @@ export namespace SugarGestures {
      * @gir-type Flags
      */
     enum EventControllerFlags {
-        NONE,
-        EXCLUSIVE,
+        NONE = 0,
+        EXCLUSIVE = 1,
     }
 
 
@@ -95,10 +95,10 @@ export namespace SugarGestures {
      * @gir-type Flags
      */
     enum SwipeDirectionFlags {
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
+        LEFT = 1,
+        RIGHT = 2,
+        UP = 4,
+        DOWN = 8,
     }
 
 
@@ -236,7 +236,7 @@ export namespace SugarGestures {
              * @signal
              * @run-last
              */
-            pressed: (arg0: number, arg1: number) => void;
+            pressed: (object: number, p0: number) => void;
             "notify::threshold": (pspec: GObject.ParamSpec) => void;
             "notify::trigger-delay": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -322,7 +322,7 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            "angle-changed": (arg0: number, arg1: number) => void;
+            "angle-changed": (angle: number, angle_delta: number) => void;
             "notify::max-touches": (pspec: GObject.ParamSpec) => void;
             "notify::min-touches": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -397,7 +397,7 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            "swipe-ended": (arg0: SwipeDirection) => void;
+            "swipe-ended": (object: SwipeDirection) => void;
             "notify::directions": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
@@ -573,7 +573,7 @@ export namespace SugarGestures {
              * @signal
              * @run-first
              */
-            "scale-changed": (arg0: number) => void;
+            "scale-changed": (scale: number) => void;
             "notify::max-touches": (pspec: GObject.ParamSpec) => void;
             "notify::min-touches": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;

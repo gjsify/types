@@ -41,19 +41,19 @@ export namespace GstWebRTC {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * balanced
          */
-        BALANCED,
+        BALANCED = 1,
         /**
          * max-compat
          */
-        MAX_COMPAT,
+        MAX_COMPAT = 2,
         /**
          * max-bundle
          */
-        MAX_BUNDLE,
+        MAX_BUNDLE = 3,
     }
 
 
@@ -72,15 +72,15 @@ export namespace GstWebRTC {
         /**
          * client
          */
-        CLIENT,
+        CLIENT = 0,
         /**
          * server
          */
-        SERVER,
+        SERVER = 1,
         /**
          * unknown
          */
-        UNKNOWN,
+        UNKNOWN = 2,
     }
 
 
@@ -98,19 +98,19 @@ export namespace GstWebRTC {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * actpass
          */
-        ACTPASS,
+        ACTPASS = 1,
         /**
          * sendonly
          */
-        ACTIVE,
+        ACTIVE = 2,
         /**
          * recvonly
          */
-        PASSIVE,
+        PASSIVE = 3,
     }
 
 
@@ -128,23 +128,23 @@ export namespace GstWebRTC {
         /**
          * new
          */
-        NEW,
+        NEW = 0,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 1,
         /**
          * failed
          */
-        FAILED,
+        FAILED = 2,
         /**
          * connecting
          */
-        CONNECTING,
+        CONNECTING = 3,
         /**
          * connected
          */
-        CONNECTED,
+        CONNECTED = 4,
     }
 
 
@@ -164,19 +164,19 @@ export namespace GstWebRTC {
         /**
          * connecting
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * open
          */
-        OPEN,
+        OPEN = 2,
         /**
          * closing
          */
-        CLOSING,
+        CLOSING = 3,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 4,
     }
 
 
@@ -271,11 +271,11 @@ export namespace GstWebRTC {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * ulpfec + red
          */
-        ULP_RED,
+        ULP_RED = 1,
     }
 
 
@@ -291,8 +291,8 @@ export namespace GstWebRTC {
      * @since 1.28
      */
     enum WebRTCICECandidateProtocolType {
-        TCP,
-        UDP,
+        TCP = 0,
+        UDP = 1,
     }
 
 
@@ -313,26 +313,26 @@ export namespace GstWebRTC {
          *   IP address as specified in the RTCIceCandidate.address property is in fact the
          *   true address of the remote peer.
          */
-        HOST,
+        HOST = 0,
         /**
          * The candidate is a server
          *   reflexive candidate; the ip and port are a binding allocated by a NAT for an
          *   agent when it sent a packet through the NAT to a server. They can be learned by
          *   the STUN server and TURN server to represent the candidate's peer anonymously.
          */
-        SERVER_REFLEXIVE,
+        SERVER_REFLEXIVE = 1,
         /**
          * The candidate is a peer
          *   reflexive candidate; the ip and port are a binding allocated by a NAT when it
          *   sent a STUN request to represent the candidate's peer anonymously.
          */
-        PEER_REFLEXIVE,
+        PEER_REFLEXIVE = 2,
         /**
          * The candidate is a relay candidate,
          *   obtained from a TURN server. The relay candidate's IP address is an address the
          *   TURN server uses to forward the media between the two peers.
          */
-        RELAYED,
+        RELAYED = 3,
     }
 
 
@@ -350,11 +350,11 @@ export namespace GstWebRTC {
         /**
          * RTP component
          */
-        RTP,
+        RTP = 0,
         /**
          * RTCP component
          */
-        RTCP,
+        RTCP = 1,
     }
 
 
@@ -373,31 +373,31 @@ export namespace GstWebRTC {
         /**
          * new
          */
-        NEW,
+        NEW = 0,
         /**
          * checking
          */
-        CHECKING,
+        CHECKING = 1,
         /**
          * connected
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * completed
          */
-        COMPLETED,
+        COMPLETED = 3,
         /**
          * failed
          */
-        FAILED,
+        FAILED = 4,
         /**
          * disconnected
          */
-        DISCONNECTED,
+        DISCONNECTED = 5,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 6,
     }
 
 
@@ -416,15 +416,15 @@ export namespace GstWebRTC {
         /**
          * new
          */
-        NEW,
+        NEW = 0,
         /**
          * gathering
          */
-        GATHERING,
+        GATHERING = 1,
         /**
          * complete
          */
-        COMPLETE,
+        COMPLETE = 2,
     }
 
 
@@ -442,11 +442,11 @@ export namespace GstWebRTC {
         /**
          * controlled
          */
-        CONTROLLED,
+        CONTROLLED = 0,
         /**
          * controlling
          */
-        CONTROLLING,
+        CONTROLLING = 1,
     }
 
 
@@ -467,22 +467,22 @@ export namespace GstWebRTC {
          *                                            will attempt to open an outbound connection but will not
          *                                            receive incoming connection requests.
          */
-        ACTIVE,
+        ACTIVE = 0,
         /**
          * A "passive" TCP candidate is one for which the transport
          *                                             will receive incoming connection attempts but not attempt
          *                                             a connection.
          */
-        PASSIVE,
+        PASSIVE = 1,
         /**
          * An "so" candidate is one for which the transport will attempt
          *                                        to open a connection simultaneously with its peer.
          */
-        SO,
+        SO = 2,
         /**
          * Value used for non-TCP candidate type.
          */
-        NONE,
+        NONE = 3,
     }
 
 
@@ -503,11 +503,11 @@ export namespace GstWebRTC {
         /**
          * all
          */
-        ALL,
+        ALL = 0,
         /**
          * relay
          */
-        RELAY,
+        RELAY = 1,
     }
 
 
@@ -527,15 +527,15 @@ export namespace GstWebRTC {
         /**
          * Kind has not yet been set
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Kind is audio
          */
-        AUDIO,
+        AUDIO = 1,
         /**
          * Kind is video
          */
-        VIDEO,
+        VIDEO = 2,
     }
 
 
@@ -554,27 +554,27 @@ export namespace GstWebRTC {
         /**
          * new
          */
-        NEW,
+        NEW = 0,
         /**
          * connecting
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * connected
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * disconnected
          */
-        DISCONNECTED,
+        DISCONNECTED = 3,
         /**
          * failed
          */
-        FAILED,
+        FAILED = 4,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 5,
     }
 
 
@@ -594,19 +594,19 @@ export namespace GstWebRTC {
         /**
          * very-low
          */
-        VERY_LOW,
+        VERY_LOW = 1,
         /**
          * low
          */
-        LOW,
+        LOW = 2,
         /**
          * medium
          */
-        MEDIUM,
+        MEDIUM = 3,
         /**
          * high
          */
-        HIGH,
+        HIGH = 4,
     }
 
 
@@ -624,23 +624,23 @@ export namespace GstWebRTC {
         /**
          * none
          */
-        NONE,
+        NONE = 0,
         /**
          * inactive
          */
-        INACTIVE,
+        INACTIVE = 1,
         /**
          * sendonly
          */
-        SENDONLY,
+        SENDONLY = 2,
         /**
          * recvonly
          */
-        RECVONLY,
+        RECVONLY = 3,
         /**
          * sendrecv
          */
-        SENDRECV,
+        SENDRECV = 4,
     }
 
 
@@ -660,19 +660,19 @@ export namespace GstWebRTC {
         /**
          * new
          */
-        NEW,
+        NEW = 0,
         /**
          * connecting
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * connected
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 3,
     }
 
 
@@ -691,19 +691,19 @@ export namespace GstWebRTC {
         /**
          * offer
          */
-        OFFER,
+        OFFER = 1,
         /**
          * pranswer
          */
-        PRANSWER,
+        PRANSWER = 2,
         /**
          * answer
          */
-        ANSWER,
+        ANSWER = 3,
         /**
          * rollback
          */
-        ROLLBACK,
+        ROLLBACK = 4,
     }
 
 
@@ -722,27 +722,27 @@ export namespace GstWebRTC {
         /**
          * stable
          */
-        STABLE,
+        STABLE = 0,
         /**
          * closed
          */
-        CLOSED,
+        CLOSED = 1,
         /**
          * have-local-offer
          */
-        HAVE_LOCAL_OFFER,
+        HAVE_LOCAL_OFFER = 2,
         /**
          * have-remote-offer
          */
-        HAVE_REMOTE_OFFER,
+        HAVE_REMOTE_OFFER = 3,
         /**
          * have-local-pranswer
          */
-        HAVE_LOCAL_PRANSWER,
+        HAVE_LOCAL_PRANSWER = 4,
         /**
          * have-remote-pranswer
          */
-        HAVE_REMOTE_PRANSWER,
+        HAVE_REMOTE_PRANSWER = 5,
     }
 
 
@@ -761,59 +761,59 @@ export namespace GstWebRTC {
         /**
          * codec
          */
-        CODEC,
+        CODEC = 1,
         /**
          * inbound-rtp
          */
-        INBOUND_RTP,
+        INBOUND_RTP = 2,
         /**
          * outbound-rtp
          */
-        OUTBOUND_RTP,
+        OUTBOUND_RTP = 3,
         /**
          * remote-inbound-rtp
          */
-        REMOTE_INBOUND_RTP,
+        REMOTE_INBOUND_RTP = 4,
         /**
          * remote-outbound-rtp
          */
-        REMOTE_OUTBOUND_RTP,
+        REMOTE_OUTBOUND_RTP = 5,
         /**
          * csrc
          */
-        CSRC,
+        CSRC = 6,
         /**
          * peer-connection
          */
-        PEER_CONNECTION,
+        PEER_CONNECTION = 7,
         /**
          * data-channel
          */
-        DATA_CHANNEL,
+        DATA_CHANNEL = 8,
         /**
          * stream
          */
-        STREAM,
+        STREAM = 9,
         /**
          * transport
          */
-        TRANSPORT,
+        TRANSPORT = 10,
         /**
          * candidate-pair
          */
-        CANDIDATE_PAIR,
+        CANDIDATE_PAIR = 11,
         /**
          * local-candidate
          */
-        LOCAL_CANDIDATE,
+        LOCAL_CANDIDATE = 12,
         /**
          * remote-candidate
          */
-        REMOTE_CANDIDATE,
+        REMOTE_CANDIDATE = 13,
         /**
          * certificate
          */
-        CERTIFICATE,
+        CERTIFICATE = 14,
     }
 
 
@@ -968,17 +968,17 @@ export namespace GstWebRTC {
              * @signal
              * @run-last
              */
-            "on-error": (arg0: GLib.Error) => void;
+            "on-error": (error: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "on-message-data": (arg0: GLib.Bytes | null) => void;
+            "on-message-data": (data: GLib.Bytes | null) => void;
             /**
              * @signal
              * @run-last
              */
-            "on-message-string": (arg0: string | null) => void;
+            "on-message-string": (data: string | null) => void;
             /**
              * @signal
              * @run-last
@@ -990,14 +990,14 @@ export namespace GstWebRTC {
              * @action
              * @run-last
              */
-            "send-data": (arg0: GLib.Bytes | null) => void;
+            "send-data": (data: GLib.Bytes | null) => void;
             /**
              * @signal
              * @deprecated since 1.22: Use `gst_webrtc_data_channel_send_string_full()` instead
              * @action
              * @run-last
              */
-            "send-string": (arg0: string | null) => void;
+            "send-string": (data: string | null) => void;
             "notify::buffered-amount": (pspec: GObject.ParamSpec) => void;
             "notify::buffered-amount-low-threshold": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -1180,6 +1180,7 @@ export namespace GstWebRTC {
          * @param data a {@link GLib.Bytes} or `null`
          * @returns TRUE if `channel` is open and data could be queued
          * @since 1.22
+         * @throws GLib.Error
          */
         send_data_full(data: GLib.Bytes | Uint8Array | null): boolean;
 
@@ -1195,6 +1196,7 @@ export namespace GstWebRTC {
          * @param str a string or `null`
          * @returns TRUE if `channel` is open and data could be queued
          * @since 1.22
+         * @throws GLib.Error
          */
         send_string_full(str: string | null): boolean;
     }
@@ -1211,7 +1213,7 @@ export namespace GstWebRTC {
              * @action
              * @run-last
              */
-            "add-local-ip-address": (arg0: string) => boolean | void;
+            "add-local-ip-address": (address: string) => boolean | void;
             "notify::max-rtp-port": (pspec: GObject.ParamSpec) => void;
             "notify::min-rtp-port": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -1720,7 +1722,7 @@ export namespace GstWebRTC {
              * @signal
              * @run-last
              */
-            "on-new-candidate": (arg0: string) => void;
+            "on-new-candidate": (object: string) => void;
             /**
              * @signal
              * @run-last

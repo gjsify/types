@@ -47,13 +47,16 @@ export namespace PanelApplet {
      * @gir-type Enum
      */
     enum AppletOrient {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
     }
 
 
+    /**
+     * @default 0
+     */
     const APPLET_FLAGS_ALL: number;
 
     /**
@@ -76,10 +79,10 @@ export namespace PanelApplet {
      * @gir-type Flags
      */
     enum AppletFlags {
-        FLAGS_NONE,
-        EXPAND_MAJOR,
-        EXPAND_MINOR,
-        HAS_HANDLE,
+        FLAGS_NONE = 0,
+        EXPAND_MAJOR = 1,
+        EXPAND_MINOR = 2,
+        HAS_HANDLE = 4,
     }
 
 
@@ -91,19 +94,19 @@ export namespace PanelApplet {
              * @signal
              * @run-last
              */
-            "change-background": (arg0: cairo.Pattern) => void;
+            "change-background": (pattern: cairo.Pattern) => void;
             /**
              * Emitted when the {@link PanelApplet.AppletOrient} of `applet` has changed.
              * @signal
              * @run-last
              */
-            "change-orient": (arg0: number) => void;
+            "change-orient": (orient: number) => void;
             /**
              * Emitted when the size of the panel `applet` is on has changed.
              * @signal
              * @run-last
              */
-            "change-size": (arg0: number) => void;
+            "change-size": (size: number) => void;
             /**
              * Emitted when the focus is moved out of `applet`. This is an
              * implementation detail.
@@ -111,7 +114,7 @@ export namespace PanelApplet {
              * @action
              * @run-last
              */
-            "move-focus-out-of-applet": (arg0: Gtk.DirectionType) => void;
+            "move-focus-out-of-applet": (direction: Gtk.DirectionType) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::locked-down": (pspec: GObject.ParamSpec) => void;
             "notify::orient": (pspec: GObject.ParamSpec) => void;
@@ -356,6 +359,7 @@ export namespace PanelApplet {
          * per-instance settings, to ensure that each key in the per-instance GConf
          * directory has a defined type, sane default and documentation.
          * @param schema_dir a GConf path of a schema directory.
+         * @throws GLib.Error
          */
         add_preferences(schema_dir: string): void;
 
@@ -364,6 +368,7 @@ export namespace PanelApplet {
          * in the per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @returns the value of `key`.
+         * @throws GLib.Error
          */
         gconf_get_bool(key: string): boolean;
 
@@ -372,6 +377,7 @@ export namespace PanelApplet {
          * in the per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @returns the value of `key`.
+         * @throws GLib.Error
          */
         gconf_get_float(key: string): number;
 
@@ -387,6 +393,7 @@ export namespace PanelApplet {
          * in the per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @returns the value of `key`.
+         * @throws GLib.Error
          */
         gconf_get_int(key: string): number;
 
@@ -395,6 +402,7 @@ export namespace PanelApplet {
          * in the per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @returns the value of `key`. The string should be freed by the caller.
+         * @throws GLib.Error
          */
         gconf_get_string(key: string): string;
 
@@ -403,6 +411,7 @@ export namespace PanelApplet {
          * in the per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @returns the value of `key`.
+         * @throws GLib.Error
          */
         gconf_get_value(key: string): GConf.Value;
 
@@ -411,6 +420,7 @@ export namespace PanelApplet {
          * per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @param the_bool new value for `key`.
+         * @throws GLib.Error
          */
         gconf_set_bool(key: string, the_bool: boolean): void;
 
@@ -419,6 +429,7 @@ export namespace PanelApplet {
          * per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @param the_float new value for `key`.
+         * @throws GLib.Error
          */
         gconf_set_float(key: string, the_float: number): void;
 
@@ -427,6 +438,7 @@ export namespace PanelApplet {
          * per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @param the_int new value for `key`.
+         * @throws GLib.Error
          */
         gconf_set_int(key: string, the_int: number): void;
 
@@ -435,6 +447,7 @@ export namespace PanelApplet {
          * per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @param the_string new value for `key`.
+         * @throws GLib.Error
          */
         gconf_set_string(key: string, the_string: string): void;
 
@@ -443,6 +456,7 @@ export namespace PanelApplet {
          * per-instance GConf directory of `applet`.
          * @param key a GConf key name.
          * @param value new value for `key`.
+         * @throws GLib.Error
          */
         gconf_set_value(key: string, value: GConf.Value): void;
 

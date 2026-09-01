@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./matekbd-1.0.d.ts","./matekbd-1.0-surface.d.ts"]
+  "include": ["./matekbd-1.0.d.ts","./matekbd-1.0-vocabulary.d.ts"]
 }
 
 

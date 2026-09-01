@@ -34,35 +34,45 @@ export namespace Deviced {
      * @gir-type Enum
      */
     enum DeviceKind {
-        COMPUTER,
-        TABLET,
-        PHONE,
-        MICRO_CONTROLLER,
+        COMPUTER = 0,
+        TABLET = 1,
+        PHONE = 2,
+        MICRO_CONTROLLER = 3,
     }
 
 
     /**
      * libdeviced major version component (e.g. 1 if `DEVD_VERSION` is 1.2.3)
+     * @default 3
      */
     const MAJOR_VERSION: number;
 
     /**
      * libdeviced micro version component (e.g. 3 if `DEVD_VERSION` is 1.2.3)
+     * @default 4
      */
     const MICRO_VERSION: number;
 
     /**
      * libdeviced minor version component (e.g. 2 if `DEVD_VERSION` is 1.2.3)
+     * @default 27
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default org.gnome.deviced.process
+     */
     const PROCESS_SERVICE_NAME: string;
 
+    /**
+     * @default org.gnome.deviced.transfers
+     */
     const TRANSFER_SERVICE_NAME: string;
 
     /**
      * libdeviced version, encoded as a string, useful for printing and
      * concatenation.
+     * @default 3.27.4
      */
     const VERSION_S: string;
 
@@ -175,7 +185,7 @@ export namespace Deviced {
              * @since 3.28
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * The "device-removed" signal is emitted when a device is no longer
              * known to be available.
@@ -183,7 +193,7 @@ export namespace Deviced {
              * @since 3.28
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             "notify::certificate": (pspec: GObject.ParamSpec) => void;
             "notify::enable-ipv4": (pspec: GObject.ParamSpec) => void;
             "notify::enable-ipv6": (pspec: GObject.ParamSpec) => void;
@@ -363,6 +373,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         load_finish(result: Gio.AsyncResult): boolean;
 
@@ -402,7 +413,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            notification: (arg0: string, arg1: GLib.Variant) => void;
+            notification: (method: string, params: GLib.Variant) => void;
             /**
              * The "service-added" signal is emitted when a new service is advertised by
              * the client. This can happen when the device has enabled a new feature
@@ -414,7 +425,7 @@ export namespace Deviced {
              * @since 3.28
              * @run-last
              */
-            "service-added": (arg0: string) => void;
+            "service-added": (service: string) => void;
             "notify::arch": (pspec: GObject.ParamSpec) => void;
             "notify::kernel": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
@@ -432,7 +443,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::arch": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::arch": (method: string, params: GLib.Variant) => void;
             /**
              * The "notification" signal is emitted when a client has received a
              * notification from the peer.
@@ -444,7 +455,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::kernel": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::kernel": (method: string, params: GLib.Variant) => void;
             /**
              * The "notification" signal is emitted when a client has received a
              * notification from the peer.
@@ -456,7 +467,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::name": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::name": (method: string, params: GLib.Variant) => void;
             /**
              * The "notification" signal is emitted when a client has received a
              * notification from the peer.
@@ -468,7 +479,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::system": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::system": (method: string, params: GLib.Variant) => void;
             /**
              * The "notification" signal is emitted when a client has received a
              * notification from the peer.
@@ -480,7 +491,7 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::timeout": (arg0: string, arg1: GLib.Variant) => void;
+            "notification::timeout": (method: string, params: GLib.Variant) => void;
             /**
              * The "notification" signal is emitted when a client has received a
              * notification from the peer.
@@ -492,8 +503,8 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            "notification::triplet": (arg0: string, arg1: GLib.Variant) => void;
-            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
+            "notification::triplet": (method: string, params: GLib.Variant) => void;
+            [key: `notification::${string}`]: (method: string, params: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -840,6 +851,7 @@ export namespace Deviced {
          * Gets the result of the RPC call.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.   `reply` is set to the reply from the peer, of provided.
+         * @throws GLib.Error
          */
         call_finish(result: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -878,6 +890,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         connect_finish(result: Gio.AsyncResult): boolean;
 
@@ -900,6 +913,7 @@ export namespace Deviced {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         disconnect_finish(result: Gio.AsyncResult): boolean;
 
@@ -1011,6 +1025,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns An array   of `DevdClientAppInfo` if successful; otherwise `null` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         list_apps_finish(result: Gio.AsyncResult): AppInfo[];
 
@@ -1057,6 +1072,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link GLib.PtrArray} of   {@link Gio.FileInfo} retrieved from the device.
          * @since 3.28
+         * @throws GLib.Error
          */
         list_files_finish(result: Gio.AsyncResult): Gio.FileInfo[];
 
@@ -1100,6 +1116,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns An array   of `DevdClientAppInfo` if successful; otherwise `null` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         list_runtimes_finish(result: Gio.AsyncResult): AppInfo[];
 
@@ -1149,6 +1166,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns the identifier for the process, or `null` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         run_app_finish(result: Gio.AsyncResult): string;
 
@@ -1198,6 +1216,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         syncfs_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1468,6 +1487,7 @@ export namespace Deviced {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         install_bundle_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1653,7 +1673,7 @@ export namespace Deviced {
              * @since 3.28
              * @run-last
              */
-            "process-exited": (arg0: string, arg1: number) => void;
+            "process-exited": (identifier: string, exit_code: number) => void;
             /**
              * This signal is emitted when the peer has notified us that a process which
              * was spawned by a client to the device has terminated by signal.
@@ -1664,7 +1684,7 @@ export namespace Deviced {
              * @since 3.28
              * @run-last
              */
-            "process-signaled": (arg0: string, arg1: number) => void;
+            "process-signaled": (identifier: string, term_sig: number) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1758,6 +1778,7 @@ export namespace Deviced {
          * to pass to other operations to reference the specific PTY instance.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns the pty identifier or `null`
+         * @throws GLib.Error
          */
         create_pty_finish(result: Gio.AsyncResult): string;
 
@@ -1798,6 +1819,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         destroy_pty_finish(result: Gio.AsyncResult): boolean;
 
@@ -1857,6 +1879,7 @@ export namespace Deviced {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         spawn_finish(result: Gio.AsyncResult): string;
 
@@ -1885,6 +1908,7 @@ export namespace Deviced {
          * @param exited 
          * @param exit_code 
          * @param term_sig 
+         * @throws GLib.Error
          */
         wait_for_process_finish(result: Gio.AsyncResult, exited: boolean, exit_code: number, term_sig: number): boolean;
     }
@@ -1898,15 +1922,15 @@ export namespace Deviced {
              * @detailed
              * @run-last
              */
-            notification: (arg0: string, arg1: GLib.Variant) => void;
+            notification: (object: string, p0: GLib.Variant) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "notification::client": (arg0: string, arg1: GLib.Variant) => void;
-            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
+            "notification::client": (object: string, p0: GLib.Variant) => void;
+            [key: `notification::${string}`]: (object: string, p0: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -2010,6 +2034,7 @@ export namespace Deviced {
          * Gets the result of the RPC call.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.   `reply` is set to the reply from the peer, of provided.
+         * @throws GLib.Error
          */
         call_finish(result: Gio.AsyncResult): [boolean, GLib.Variant | null];
 
@@ -2114,6 +2139,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         get_file_finish(result: Gio.AsyncResult): boolean;
 
@@ -2164,6 +2190,7 @@ export namespace Deviced {
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if successful; otherwise `false` and `error` is set.
          * @since 3.28
+         * @throws GLib.Error
          */
         put_file_finish(result: Gio.AsyncResult): boolean;
     }

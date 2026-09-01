@@ -29,15 +29,15 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum DiskContentType {
-        DATA,
-        HOSTED_ENGINE,
-        HOSTED_ENGINE_CONFIGURATION,
-        HOSTED_ENGINE_METADATA,
-        HOSTED_ENGINE_SANLOCK,
-        ISO,
-        MEMORY_DUMP_VOLUME,
-        METADATA_VOLUME,
-        OVF_STORE,
+        DATA = 0,
+        HOSTED_ENGINE = 1,
+        HOSTED_ENGINE_CONFIGURATION = 2,
+        HOSTED_ENGINE_METADATA = 3,
+        HOSTED_ENGINE_SANLOCK = 4,
+        ISO = 5,
+        MEMORY_DUMP_VOLUME = 6,
+        METADATA_VOLUME = 7,
+        OVF_STORE = 8,
     }
 
 
@@ -83,11 +83,11 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum StorageDomainFormatVersion {
-        V1,
-        V2,
-        V3,
-        V4,
-        V5,
+        V1 = 0,
+        V2 = 1,
+        V3 = 2,
+        V4 = 3,
+        V5 = 4,
     }
 
 
@@ -95,13 +95,13 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum StorageDomainState {
-        ACTIVE,
-        INACTIVE,
-        LOCKED,
-        MIXED,
-        UNATTACHED,
-        MAINTENANCE,
-        UNKNOWN,
+        ACTIVE = 0,
+        INACTIVE = 1,
+        LOCKED = 2,
+        MIXED = 3,
+        UNATTACHED = 4,
+        MAINTENANCE = 5,
+        UNKNOWN = 6,
     }
 
 
@@ -109,15 +109,15 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum StorageDomainStorageType {
-        CINDER,
-        FCP,
-        GLANCE,
-        GLUSTERFS,
-        ISCSI,
-        LOCALFS,
-        MANAGED_BLOCK_STORAGE,
-        NFS,
-        POSIXFS,
+        CINDER = 0,
+        FCP = 1,
+        GLANCE = 2,
+        GLUSTERFS = 3,
+        ISCSI = 4,
+        LOCALFS = 5,
+        MANAGED_BLOCK_STORAGE = 6,
+        NFS = 7,
+        POSIXFS = 8,
     }
 
 
@@ -125,10 +125,10 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum StorageDomainType {
-        DATA,
-        ISO,
-        EXPORT,
-        IMAGE,
+        DATA = 0,
+        ISO = 1,
+        EXPORT = 2,
+        IMAGE = 3,
     }
 
 
@@ -136,9 +136,9 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum VmDisplayType {
-        SPICE,
-        VNC,
-        INVALID,
+        SPICE = 0,
+        VNC = 1,
+        INVALID = 2,
     }
 
 
@@ -146,22 +146,22 @@ export namespace GoVirt {
      * @gir-type Enum
      */
     enum VmState {
-        DOWN,
-        UP,
-        REBOOTING,
-        POWERING_UP,
-        POWERED_DOWN,
-        PAUSED,
-        MIGRATING,
-        UNKNOWN,
-        NOT_RESPONDING,
-        WAIT_FOR_LAUNCH,
-        REBOOT_IN_PROGRESS,
-        SAVING_STATE,
-        RESTORING_STATE,
-        SUSPENDED,
-        IMAGE_LOCKED,
-        POWERING_DOWN,
+        DOWN = 0,
+        UP = 1,
+        REBOOTING = 2,
+        POWERING_UP = 3,
+        POWERED_DOWN = 4,
+        PAUSED = 5,
+        MIGRATING = 6,
+        UNKNOWN = 7,
+        NOT_RESPONDING = 8,
+        WAIT_FOR_LAUNCH = 9,
+        REBOOT_IN_PROGRESS = 10,
+        SAVING_STATE = 11,
+        RESTORING_STATE = 12,
+        SUSPENDED = 13,
+        IMAGE_LOCKED = 14,
+        POWERING_DOWN = 15,
     }
 
 
@@ -340,6 +340,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -451,6 +452,7 @@ export namespace GoVirt {
         /**
          * @param current 
          * @param proxy 
+         * @throws GLib.Error
          */
         update(current: boolean, proxy: Proxy): boolean;
 
@@ -491,6 +493,7 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         update_finish(result: Gio.AsyncResult): boolean;
 
@@ -536,6 +539,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -728,6 +732,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -881,6 +886,7 @@ export namespace GoVirt {
         // Methods
         /**
          * @param proxy a {@link GoVirt.Proxy}
+         * @throws GLib.Error
          */
         fetch(proxy: Proxy): boolean;
 
@@ -907,6 +913,7 @@ export namespace GoVirt {
         /**
          * @param result async method result
          * @returns TRUE if successful, FALSE otherwise, with `error` set.
+         * @throws GLib.Error
          */
         fetch_finish(result: Gio.AsyncResult): boolean;
 
@@ -1035,6 +1042,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1176,6 +1184,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1368,6 +1377,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1547,6 +1557,9 @@ export namespace GoVirt {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         fetch_api(): Api;
 
         /**
@@ -1569,9 +1582,13 @@ export namespace GoVirt {
         /**
          * @param result async method result
          * @returns an {@link GoVirt.Api} instance to interact with oVirt/RHEV REST API.
+         * @throws GLib.Error
          */
         fetch_api_finish(result: Gio.AsyncResult): Api;
 
+        /**
+         * @throws GLib.Error
+         */
         fetch_ca_certificate(): boolean;
 
         /**
@@ -1593,9 +1610,13 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         fetch_ca_certificate_finish(result: Gio.AsyncResult): Uint8Array;
 
+        /**
+         * @throws GLib.Error
+         */
         fetch_vms(): boolean;
 
         /**
@@ -1618,6 +1639,7 @@ export namespace GoVirt {
         /**
          * @param result async method result
          * @returns the list of {@link GoVirt.Vm} associated with {@link GoVirt.Proxy}. The returned list should be freed with `g_list_free()`, and can become invalid any time a {@link GoVirt.Proxy} call completes.
+         * @throws GLib.Error
          */
         fetch_vms_finish(result: Gio.AsyncResult): Vm[];
 
@@ -1756,6 +1778,7 @@ export namespace GoVirt {
         /**
          * @param proxy an {@link GoVirt.Proxy}.
          * @returns TRUE if the call was successful, FALSE otherwise. Sends an HTTP DELETE request to `resource`. The calling thread is blocked until this request is processed, see `ovirt_resource_delete_async()` for the asynchronous version of this method.
+         * @throws GLib.Error
          */
         ["delete"](proxy: Proxy): boolean;
 
@@ -1794,6 +1817,7 @@ export namespace GoVirt {
         /**
          * @param result a {@link Gio.AsyncResult}.
          * @returns TRUE if the call was successful, FALSE otherwise. Finishes an asynchronous HTTP DELETE request on `resource`.
+         * @throws GLib.Error
          */
         delete_finish(result: Gio.AsyncResult): boolean;
 
@@ -1804,6 +1828,7 @@ export namespace GoVirt {
 
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         refresh(proxy: Proxy): boolean;
 
@@ -1829,11 +1854,13 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         update(proxy: Proxy): boolean;
 
@@ -1859,6 +1886,7 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         update_finish(result: Gio.AsyncResult): boolean;
 
@@ -1904,6 +1932,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2137,6 +2166,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2333,6 +2363,7 @@ export namespace GoVirt {
 
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         get_ticket(proxy: Proxy): boolean;
 
@@ -2358,6 +2389,7 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         get_ticket_finish(result: Gio.AsyncResult): boolean;
 
@@ -2383,11 +2415,13 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         refresh_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         start(proxy: Proxy): boolean;
 
@@ -2413,11 +2447,13 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         start_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         stop(proxy: Proxy): boolean;
 
@@ -2443,6 +2479,7 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         stop_finish(result: Gio.AsyncResult): boolean;
 
@@ -2488,6 +2525,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2804,6 +2842,7 @@ export namespace GoVirt {
         // Methods
         /**
          * @param proxy 
+         * @throws GLib.Error
          */
         allocate_vm(proxy: Proxy): boolean;
 
@@ -2829,6 +2868,7 @@ export namespace GoVirt {
 
         /**
          * @param result 
+         * @throws GLib.Error
          */
         allocate_vm_finish(result: Gio.AsyncResult): boolean;
 
@@ -2874,6 +2914,7 @@ export namespace GoVirt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

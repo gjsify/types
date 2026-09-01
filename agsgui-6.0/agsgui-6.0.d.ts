@@ -38,8 +38,8 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum DialAction {
-        INCREMENT,
-        DECREMENT,
+        INCREMENT = 0,
+        DECREMENT = 1,
     }
 
 
@@ -47,7 +47,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum ExpanderFlags {
-        EXPANDER_DRAW_BORDER,
+        EXPANDER_DRAW_BORDER = 1,
     }
 
 
@@ -55,8 +55,8 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum FileWidgetFileAction {
-        OPEN,
-        SAVE_AS,
+        OPEN = 0,
+        SAVE_AS = 1,
     }
 
 
@@ -64,8 +64,8 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum FileWidgetFileFilter {
-        NONE,
-        BY_SUFFIX,
+        NONE = 0,
+        BY_SUFFIX = 1,
     }
 
 
@@ -73,10 +73,10 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum LevelAction {
-        STEP_UP,
-        STEP_DOWN,
-        PAGE_UP,
-        PAGE_DOWN,
+        STEP_UP = 0,
+        STEP_DOWN = 1,
+        PAGE_UP = 2,
+        PAGE_DOWN = 3,
     }
 
 
@@ -84,7 +84,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum LevelButtonState {
-        LEVEL_BUTTON_1_PRESSED,
+        LEVEL_BUTTON_1_PRESSED = 1,
     }
 
 
@@ -92,14 +92,14 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum LevelDataFormat {
-        S8,
-        S16,
-        S24,
-        S32,
-        S64,
-        FLOAT,
-        DOUBLE,
-        COMPLEX,
+        S8 = 0,
+        S16 = 1,
+        S24 = 2,
+        S32 = 3,
+        S64 = 4,
+        FLOAT = 5,
+        DOUBLE = 6,
+        COMPLEX = 7,
     }
 
 
@@ -107,9 +107,9 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum PianoAction {
-        MOVE_CURSOR_UP,
-        MOVE_CURSOR_DOWN,
-        HIT_KEY,
+        MOVE_CURSOR_UP = 0,
+        MOVE_CURSOR_DOWN = 1,
+        HIT_KEY = 2,
     }
 
 
@@ -117,7 +117,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum PianoButtonState {
-        PIANO_BUTTON_1_PRESSED,
+        PIANO_BUTTON_1_PRESSED = 1,
     }
 
 
@@ -125,18 +125,18 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum PianoOctave {
-        C,
-        CIS,
-        D,
-        DIS,
-        E,
-        F,
-        FIS,
-        G,
-        GIS,
-        A,
-        AIS,
-        H,
+        C = 0,
+        CIS = 1,
+        D = 2,
+        DIS = 3,
+        E = 4,
+        F = 5,
+        FIS = 6,
+        G = 7,
+        GIS = 8,
+        A = 9,
+        AIS = 10,
+        H = 11,
     }
 
 
@@ -144,7 +144,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum PlotFillFlags {
-        PLOT_FILL_REPLACE,
+        PLOT_FILL_REPLACE = 1,
     }
 
 
@@ -152,10 +152,10 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum ScaleAction {
-        STEP_UP,
-        STEP_DOWN,
-        PAGE_UP,
-        PAGE_DOWN,
+        STEP_UP = 0,
+        STEP_DOWN = 1,
+        PAGE_UP = 2,
+        PAGE_DOWN = 3,
     }
 
 
@@ -163,7 +163,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum ScaleButtonState {
-        SCALE_BUTTON_1_PRESSED,
+        SCALE_BUTTON_1_PRESSED = 1,
     }
 
 
@@ -171,7 +171,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum ScaleFlags {
-        SCALE_LOGARITHMIC,
+        SCALE_LOGARITHMIC = 1,
     }
 
 
@@ -179,8 +179,8 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum ScaleLayout {
-        VERTICAL,
-        HORIZONTAL,
+        VERTICAL = 0,
+        HORIZONTAL = 1,
     }
 
 
@@ -188,10 +188,10 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum TempoAction {
-        STEP_UP,
-        STEP_DOWN,
-        PAGE_UP,
-        PAGE_DOWN,
+        STEP_UP = 0,
+        STEP_DOWN = 1,
+        PAGE_UP = 2,
+        PAGE_DOWN = 3,
     }
 
 
@@ -199,7 +199,7 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum TempoButtonState {
-        TEMPO_BUTTON_1_PRESSED,
+        TEMPO_BUTTON_1_PRESSED = 1,
     }
 
 
@@ -207,457 +207,1129 @@ export namespace AgsGui {
      * @gir-type Enum
      */
     enum TempoLayout {
-        VERTICAL,
-        HORIZONTAL,
+        VERTICAL = 0,
+        HORIZONTAL = 1,
     }
 
 
+    /**
+     * @default 199.000000
+     */
     const CARTESIAN_DEFAULT_X_END: number;
 
+    /**
+     * @default 10.000000
+     */
     const CARTESIAN_DEFAULT_X_LABEL_START: number;
 
+    /**
+     * @default 50.000000
+     */
     const CARTESIAN_DEFAULT_X_LABEL_STEP_WIDTH: number;
 
+    /**
+     * @default 24.000000
+     */
     const CARTESIAN_DEFAULT_X_MARGIN: number;
 
+    /**
+     * @default 10.000000
+     */
     const CARTESIAN_DEFAULT_X_SCALE_STEP_WIDTH: number;
 
+    /**
+     * @default 60.000000
+     */
     const CARTESIAN_DEFAULT_X_START: number;
 
+    /**
+     * @default 1.000000
+     */
     const CARTESIAN_DEFAULT_X_STEP: number;
 
+    /**
+     * @default 10.000000
+     */
     const CARTESIAN_DEFAULT_X_STEP_WIDTH: number;
 
+    /**
+     * @default 99.000000
+     */
     const CARTESIAN_DEFAULT_Y_END: number;
 
+    /**
+     * @default 20.000000
+     */
     const CARTESIAN_DEFAULT_Y_LABEL_START: number;
 
+    /**
+     * @default 50.000000
+     */
     const CARTESIAN_DEFAULT_Y_LABEL_STEP_HEIGHT: number;
 
+    /**
+     * @default 24.000000
+     */
     const CARTESIAN_DEFAULT_Y_MARGIN: number;
 
+    /**
+     * @default 10.000000
+     */
     const CARTESIAN_DEFAULT_Y_SCALE_STEP_HEIGHT: number;
 
+    /**
+     * @default 70.000000
+     */
     const CARTESIAN_DEFAULT_Y_START: number;
 
+    /**
+     * @default 1.000000
+     */
     const CARTESIAN_DEFAULT_Y_STEP: number;
 
+    /**
+     * @default 10.000000
+     */
     const CARTESIAN_DEFAULT_Y_STEP_HEIGHT: number;
 
+    /**
+     * @default 8
+     */
     const DIAL_DEFAULT_BUTTON_HEIGHT: number;
 
+    /**
+     * @default 12
+     */
     const DIAL_DEFAULT_BUTTON_WIDTH: number;
 
+    /**
+     * @default 12
+     */
     const DIAL_DEFAULT_FONT_SIZE: number;
 
+    /**
+     * @default 2
+     */
     const DIAL_DEFAULT_HEIGHT: number;
 
+    /**
+     * @default 4.000000
+     */
     const DIAL_DEFAULT_MARGIN: number;
 
+    /**
+     * @default 4
+     */
     const DIAL_DEFAULT_OUTLINE_STRENGTH: number;
 
+    /**
+     * @default 8.000000
+     */
     const DIAL_DEFAULT_PRECISION: number;
 
+    /**
+     * @default 10
+     */
     const DIAL_DEFAULT_RADIUS: number;
 
+    /**
+     * @default 4
+     */
     const DIAL_DEFAULT_WIDTH: number;
 
+    /**
+     * @default /usr/bin/ags-file
+     */
     const FILE_WIDGET_DEFAULT_FILE_MAGIC_EXECUTABLE: string;
 
+    /**
+     * @default open-app-generic
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_APP_GENERIC: string;
 
+    /**
+     * @default open-app-home
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_APP_HOME: string;
 
+    /**
+     * @default open-folder-documents
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_DOCUMENTS: string;
 
+    /**
+     * @default open-folder-downloads
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_DOWNLOADS: string;
 
+    /**
+     * @default open-folder-music
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_MUSIC: string;
 
+    /**
+     * @default open-folder-pictures
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_PICTURES: string;
 
+    /**
+     * @default open-folder-videos
+     */
     const FILE_WIDGET_LOCATION_OPEN_FOLDER_VIDEOS: string;
 
+    /**
+     * @default document-open-recent
+     */
     const FILE_WIDGET_LOCATION_OPEN_RECENT: string;
 
+    /**
+     * @default open-start-here
+     */
     const FILE_WIDGET_LOCATION_OPEN_START_HERE: string;
 
+    /**
+     * @default open-user-desktop
+     */
     const FILE_WIDGET_LOCATION_OPEN_USER_DESKTOP: string;
 
+    /**
+     * @default open-user-home
+     */
     const FILE_WIDGET_LOCATION_OPEN_USER_HOME: string;
 
+    /**
+     * @default 24
+     */
     const FILE_WIDGET_MAX_RECENTLY_USED: number;
 
+    /**
+     * @default 10
+     */
     const ICON_LINK_DEFAULT_SEGMENT_COUNT: number;
 
+    /**
+     * @default 7
+     */
     const ICON_LINK_DEFAULT_SEGMENT_HEIGHT: number;
 
+    /**
+     * @default 3
+     */
     const ICON_LINK_DEFAULT_SEGMENT_PADDING: number;
 
+    /**
+     * @default 7
+     */
     const ICON_LINK_DEFAULT_SEGMENT_WIDTH: number;
 
+    /**
+     * @default 10
+     */
     const INDICATOR_DEFAULT_SEGMENT_COUNT: number;
 
+    /**
+     * @default 7
+     */
     const INDICATOR_DEFAULT_SEGMENT_HEIGHT: number;
 
+    /**
+     * @default 3
+     */
     const INDICATOR_DEFAULT_SEGMENT_PADDING: number;
 
+    /**
+     * @default 7
+     */
     const INDICATOR_DEFAULT_SEGMENT_WIDTH: number;
 
+    /**
+     * @default 10
+     */
     const LED_ARRAY_DEFAULT_SEGMENT_HEIGHT: number;
 
+    /**
+     * @default 10
+     */
     const LED_ARRAY_DEFAULT_SEGMENT_WIDTH: number;
 
+    /**
+     * @default 8
+     */
     const LED_DEFAULT_SEGMENT_HEIGHT: number;
 
+    /**
+     * @default 12
+     */
     const LED_DEFAULT_SEGMENT_WIDTH: number;
 
+    /**
+     * @default 8
+     */
     const LEVEL_BOX_DEFAULT_SPACING: number;
 
+    /**
+     * @default 256
+     */
     const LEVEL_DEFAULT_HEIGHT_REQUEST: number;
 
+    /**
+     * @default 0.000000
+     */
     const LEVEL_DEFAULT_LOWER: number;
 
+    /**
+     * @default 0.000000
+     */
     const LEVEL_DEFAULT_NORMALIZED_VOLUME: number;
 
+    /**
+     * @default 0.250000
+     */
     const LEVEL_DEFAULT_PAGE_SIZE: number;
 
+    /**
+     * @default 44100
+     */
     const LEVEL_DEFAULT_SAMPLERATE: number;
 
+    /**
+     * @default 0.100000
+     */
     const LEVEL_DEFAULT_STEP_COUNT: number;
 
+    /**
+     * @default 1.000000
+     */
     const LEVEL_DEFAULT_UPPER: number;
 
+    /**
+     * @default 60
+     */
     const LEVEL_DEFAULT_WIDTH_REQUEST: number;
 
+    /**
+     * @default 32
+     */
     const NOTEBOOK_TAB_DEFAULT_HEIGHT: number;
 
+    /**
+     * @default 100
+     */
     const NOTEBOOK_TAB_DEFAULT_WIDTH: number;
 
+    /**
+     * @default 0
+     */
     const PIANO_DEFAULT_BASE_KEY_CODE: number;
 
+    /**
+     * @default 12
+     */
     const PIANO_DEFAULT_FONT_SIZE: number;
 
+    /**
+     * @default 128
+     */
     const PIANO_DEFAULT_KEY_COUNT: number;
 
+    /**
+     * @default 14
+     */
     const PIANO_DEFAULT_KEY_HEIGHT: number;
 
+    /**
+     * @default 60
+     */
     const PIANO_DEFAULT_KEY_WIDTH: number;
 
+    /**
+     * @default A,,
+     */
     const PIANO_KEYS_OCTAVE_0_A: string;
 
+    /**
+     * @default A#,,
+     */
     const PIANO_KEYS_OCTAVE_0_AIS: string;
 
+    /**
+     * @default C,,
+     */
     const PIANO_KEYS_OCTAVE_0_C: string;
 
+    /**
+     * @default C#,,
+     */
     const PIANO_KEYS_OCTAVE_0_CIS: string;
 
+    /**
+     * @default D,,
+     */
     const PIANO_KEYS_OCTAVE_0_D: string;
 
+    /**
+     * @default D#,,
+     */
     const PIANO_KEYS_OCTAVE_0_DIS: string;
 
+    /**
+     * @default E,,
+     */
     const PIANO_KEYS_OCTAVE_0_E: string;
 
+    /**
+     * @default F,,
+     */
     const PIANO_KEYS_OCTAVE_0_F: string;
 
+    /**
+     * @default F#,,
+     */
     const PIANO_KEYS_OCTAVE_0_FIS: string;
 
+    /**
+     * @default G,,
+     */
     const PIANO_KEYS_OCTAVE_0_G: string;
 
+    /**
+     * @default G#,,
+     */
     const PIANO_KEYS_OCTAVE_0_GIS: string;
 
+    /**
+     * @default H,,
+     */
     const PIANO_KEYS_OCTAVE_0_H: string;
 
+    /**
+     * @default a'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_A: string;
 
+    /**
+     * @default a#'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_AIS: string;
 
+    /**
+     * @default c'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_C: string;
 
+    /**
+     * @default c#'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_CIS: string;
 
+    /**
+     * @default d'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_D: string;
 
+    /**
+     * @default d#'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_DIS: string;
 
+    /**
+     * @default e'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_E: string;
 
+    /**
+     * @default f'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_F: string;
 
+    /**
+     * @default f#'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_FIS: string;
 
+    /**
+     * @default g'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_G: string;
 
+    /**
+     * @default g#'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_GIS: string;
 
+    /**
+     * @default h'''''''
+     */
     const PIANO_KEYS_OCTAVE_10_H: string;
 
+    /**
+     * @default A,
+     */
     const PIANO_KEYS_OCTAVE_1_A: string;
 
+    /**
+     * @default A#,
+     */
     const PIANO_KEYS_OCTAVE_1_AIS: string;
 
+    /**
+     * @default C,
+     */
     const PIANO_KEYS_OCTAVE_1_C: string;
 
+    /**
+     * @default C#,
+     */
     const PIANO_KEYS_OCTAVE_1_CIS: string;
 
+    /**
+     * @default D,
+     */
     const PIANO_KEYS_OCTAVE_1_D: string;
 
+    /**
+     * @default D#,
+     */
     const PIANO_KEYS_OCTAVE_1_DIS: string;
 
+    /**
+     * @default E,
+     */
     const PIANO_KEYS_OCTAVE_1_E: string;
 
+    /**
+     * @default F,
+     */
     const PIANO_KEYS_OCTAVE_1_F: string;
 
+    /**
+     * @default F#,
+     */
     const PIANO_KEYS_OCTAVE_1_FIS: string;
 
+    /**
+     * @default G,
+     */
     const PIANO_KEYS_OCTAVE_1_G: string;
 
+    /**
+     * @default G#,
+     */
     const PIANO_KEYS_OCTAVE_1_GIS: string;
 
+    /**
+     * @default H,
+     */
     const PIANO_KEYS_OCTAVE_1_H: string;
 
+    /**
+     * @default A
+     */
     const PIANO_KEYS_OCTAVE_2_A: string;
 
+    /**
+     * @default A#
+     */
     const PIANO_KEYS_OCTAVE_2_AIS: string;
 
+    /**
+     * @default C
+     */
     const PIANO_KEYS_OCTAVE_2_C: string;
 
+    /**
+     * @default C#
+     */
     const PIANO_KEYS_OCTAVE_2_CIS: string;
 
+    /**
+     * @default D
+     */
     const PIANO_KEYS_OCTAVE_2_D: string;
 
+    /**
+     * @default D#
+     */
     const PIANO_KEYS_OCTAVE_2_DIS: string;
 
+    /**
+     * @default E
+     */
     const PIANO_KEYS_OCTAVE_2_E: string;
 
+    /**
+     * @default F
+     */
     const PIANO_KEYS_OCTAVE_2_F: string;
 
+    /**
+     * @default F#
+     */
     const PIANO_KEYS_OCTAVE_2_FIS: string;
 
+    /**
+     * @default G
+     */
     const PIANO_KEYS_OCTAVE_2_G: string;
 
+    /**
+     * @default G#
+     */
     const PIANO_KEYS_OCTAVE_2_GIS: string;
 
+    /**
+     * @default H
+     */
     const PIANO_KEYS_OCTAVE_2_H: string;
 
+    /**
+     * @default a
+     */
     const PIANO_KEYS_OCTAVE_3_A: string;
 
+    /**
+     * @default a#
+     */
     const PIANO_KEYS_OCTAVE_3_AIS: string;
 
+    /**
+     * @default c
+     */
     const PIANO_KEYS_OCTAVE_3_C: string;
 
+    /**
+     * @default c#
+     */
     const PIANO_KEYS_OCTAVE_3_CIS: string;
 
+    /**
+     * @default d
+     */
     const PIANO_KEYS_OCTAVE_3_D: string;
 
+    /**
+     * @default d#
+     */
     const PIANO_KEYS_OCTAVE_3_DIS: string;
 
+    /**
+     * @default e
+     */
     const PIANO_KEYS_OCTAVE_3_E: string;
 
+    /**
+     * @default f
+     */
     const PIANO_KEYS_OCTAVE_3_F: string;
 
+    /**
+     * @default f#
+     */
     const PIANO_KEYS_OCTAVE_3_FIS: string;
 
+    /**
+     * @default g
+     */
     const PIANO_KEYS_OCTAVE_3_G: string;
 
+    /**
+     * @default g#
+     */
     const PIANO_KEYS_OCTAVE_3_GIS: string;
 
+    /**
+     * @default h
+     */
     const PIANO_KEYS_OCTAVE_3_H: string;
 
+    /**
+     * @default a'
+     */
     const PIANO_KEYS_OCTAVE_4_A: string;
 
+    /**
+     * @default a#'
+     */
     const PIANO_KEYS_OCTAVE_4_AIS: string;
 
+    /**
+     * @default c'
+     */
     const PIANO_KEYS_OCTAVE_4_C: string;
 
+    /**
+     * @default c#'
+     */
     const PIANO_KEYS_OCTAVE_4_CIS: string;
 
+    /**
+     * @default d'
+     */
     const PIANO_KEYS_OCTAVE_4_D: string;
 
+    /**
+     * @default d#'
+     */
     const PIANO_KEYS_OCTAVE_4_DIS: string;
 
+    /**
+     * @default e'
+     */
     const PIANO_KEYS_OCTAVE_4_E: string;
 
+    /**
+     * @default f'
+     */
     const PIANO_KEYS_OCTAVE_4_F: string;
 
+    /**
+     * @default f#'
+     */
     const PIANO_KEYS_OCTAVE_4_FIS: string;
 
+    /**
+     * @default g'
+     */
     const PIANO_KEYS_OCTAVE_4_G: string;
 
+    /**
+     * @default g#'
+     */
     const PIANO_KEYS_OCTAVE_4_GIS: string;
 
+    /**
+     * @default h'
+     */
     const PIANO_KEYS_OCTAVE_4_H: string;
 
+    /**
+     * @default a''
+     */
     const PIANO_KEYS_OCTAVE_5_A: string;
 
+    /**
+     * @default a#''
+     */
     const PIANO_KEYS_OCTAVE_5_AIS: string;
 
+    /**
+     * @default c''
+     */
     const PIANO_KEYS_OCTAVE_5_C: string;
 
+    /**
+     * @default c#''
+     */
     const PIANO_KEYS_OCTAVE_5_CIS: string;
 
+    /**
+     * @default d''
+     */
     const PIANO_KEYS_OCTAVE_5_D: string;
 
+    /**
+     * @default d#''
+     */
     const PIANO_KEYS_OCTAVE_5_DIS: string;
 
+    /**
+     * @default e''
+     */
     const PIANO_KEYS_OCTAVE_5_E: string;
 
+    /**
+     * @default f''
+     */
     const PIANO_KEYS_OCTAVE_5_F: string;
 
+    /**
+     * @default f#''
+     */
     const PIANO_KEYS_OCTAVE_5_FIS: string;
 
+    /**
+     * @default g''
+     */
     const PIANO_KEYS_OCTAVE_5_G: string;
 
+    /**
+     * @default g#''
+     */
     const PIANO_KEYS_OCTAVE_5_GIS: string;
 
+    /**
+     * @default h''
+     */
     const PIANO_KEYS_OCTAVE_5_H: string;
 
+    /**
+     * @default a'''
+     */
     const PIANO_KEYS_OCTAVE_6_A: string;
 
+    /**
+     * @default a#'''
+     */
     const PIANO_KEYS_OCTAVE_6_AIS: string;
 
+    /**
+     * @default c'''
+     */
     const PIANO_KEYS_OCTAVE_6_C: string;
 
+    /**
+     * @default c#'''
+     */
     const PIANO_KEYS_OCTAVE_6_CIS: string;
 
+    /**
+     * @default d'''
+     */
     const PIANO_KEYS_OCTAVE_6_D: string;
 
+    /**
+     * @default d#'''
+     */
     const PIANO_KEYS_OCTAVE_6_DIS: string;
 
+    /**
+     * @default e'''
+     */
     const PIANO_KEYS_OCTAVE_6_E: string;
 
+    /**
+     * @default f'''
+     */
     const PIANO_KEYS_OCTAVE_6_F: string;
 
+    /**
+     * @default f#'''
+     */
     const PIANO_KEYS_OCTAVE_6_FIS: string;
 
+    /**
+     * @default g'''
+     */
     const PIANO_KEYS_OCTAVE_6_G: string;
 
+    /**
+     * @default g#'''
+     */
     const PIANO_KEYS_OCTAVE_6_GIS: string;
 
+    /**
+     * @default h'''
+     */
     const PIANO_KEYS_OCTAVE_6_H: string;
 
+    /**
+     * @default a''''
+     */
     const PIANO_KEYS_OCTAVE_7_A: string;
 
+    /**
+     * @default a#''''
+     */
     const PIANO_KEYS_OCTAVE_7_AIS: string;
 
+    /**
+     * @default c''''
+     */
     const PIANO_KEYS_OCTAVE_7_C: string;
 
+    /**
+     * @default c#''''
+     */
     const PIANO_KEYS_OCTAVE_7_CIS: string;
 
+    /**
+     * @default d''''
+     */
     const PIANO_KEYS_OCTAVE_7_D: string;
 
+    /**
+     * @default d#''''
+     */
     const PIANO_KEYS_OCTAVE_7_DIS: string;
 
+    /**
+     * @default e''''
+     */
     const PIANO_KEYS_OCTAVE_7_E: string;
 
+    /**
+     * @default f''''
+     */
     const PIANO_KEYS_OCTAVE_7_F: string;
 
+    /**
+     * @default f#''''
+     */
     const PIANO_KEYS_OCTAVE_7_FIS: string;
 
+    /**
+     * @default g''''
+     */
     const PIANO_KEYS_OCTAVE_7_G: string;
 
+    /**
+     * @default g#''''
+     */
     const PIANO_KEYS_OCTAVE_7_GIS: string;
 
+    /**
+     * @default h''''
+     */
     const PIANO_KEYS_OCTAVE_7_H: string;
 
+    /**
+     * @default a'''''
+     */
     const PIANO_KEYS_OCTAVE_8_A: string;
 
+    /**
+     * @default a#'''''
+     */
     const PIANO_KEYS_OCTAVE_8_AIS: string;
 
+    /**
+     * @default c'''''
+     */
     const PIANO_KEYS_OCTAVE_8_C: string;
 
+    /**
+     * @default c#'''''
+     */
     const PIANO_KEYS_OCTAVE_8_CIS: string;
 
+    /**
+     * @default d'''''
+     */
     const PIANO_KEYS_OCTAVE_8_D: string;
 
+    /**
+     * @default d#'''''
+     */
     const PIANO_KEYS_OCTAVE_8_DIS: string;
 
+    /**
+     * @default e'''''
+     */
     const PIANO_KEYS_OCTAVE_8_E: string;
 
+    /**
+     * @default f'''''
+     */
     const PIANO_KEYS_OCTAVE_8_F: string;
 
+    /**
+     * @default f#'''''
+     */
     const PIANO_KEYS_OCTAVE_8_FIS: string;
 
+    /**
+     * @default g'''''
+     */
     const PIANO_KEYS_OCTAVE_8_G: string;
 
+    /**
+     * @default g#'''''
+     */
     const PIANO_KEYS_OCTAVE_8_GIS: string;
 
+    /**
+     * @default h'''''
+     */
     const PIANO_KEYS_OCTAVE_8_H: string;
 
+    /**
+     * @default a''''''
+     */
     const PIANO_KEYS_OCTAVE_9_A: string;
 
+    /**
+     * @default a#''''''
+     */
     const PIANO_KEYS_OCTAVE_9_AIS: string;
 
+    /**
+     * @default c''''''
+     */
     const PIANO_KEYS_OCTAVE_9_C: string;
 
+    /**
+     * @default c#''''''
+     */
     const PIANO_KEYS_OCTAVE_9_CIS: string;
 
+    /**
+     * @default d''''''
+     */
     const PIANO_KEYS_OCTAVE_9_D: string;
 
+    /**
+     * @default d#''''''
+     */
     const PIANO_KEYS_OCTAVE_9_DIS: string;
 
+    /**
+     * @default e''''''
+     */
     const PIANO_KEYS_OCTAVE_9_E: string;
 
+    /**
+     * @default f''''''
+     */
     const PIANO_KEYS_OCTAVE_9_F: string;
 
+    /**
+     * @default f#''''''
+     */
     const PIANO_KEYS_OCTAVE_9_FIS: string;
 
+    /**
+     * @default g''''''
+     */
     const PIANO_KEYS_OCTAVE_9_G: string;
 
+    /**
+     * @default g#''''''
+     */
     const PIANO_KEYS_OCTAVE_9_GIS: string;
 
+    /**
+     * @default h''''''
+     */
     const PIANO_KEYS_OCTAVE_9_H: string;
 
+    /**
+     * @default 16.000000
+     */
     const RULER_DEFAULT_FACTOR: number;
 
+    /**
+     * @default 24
+     */
     const RULER_DEFAULT_HEIGHT: number;
 
+    /**
+     * @default 8.000000
+     */
     const RULER_DEFAULT_LARGE_STEP: number;
 
+    /**
+     * @default 1.000000
+     */
     const RULER_DEFAULT_PRECISION: number;
 
+    /**
+     * @default 1.000000
+     */
     const RULER_DEFAULT_SCALE_PRECISION: number;
 
+    /**
+     * @default 6.000000
+     */
     const RULER_DEFAULT_SMALL_STEP: number;
 
+    /**
+     * @default 16
+     */
     const RULER_DEFAULT_STEP: number;
 
+    /**
+     * @default 12
+     */
     const RULER_FONT_SIZE: number;
 
+    /**
+     * @default 4.000000
+     */
     const RULER_FREE_SPACE: number;
 
+    /**
+     * @default 8
+     */
     const SCALE_BOX_DEFAULT_SPACING: number;
 
+    /**
+     * @default no name
+     */
     const SCALE_DEFAULT_CONTROL_NAME: string;
 
+    /**
+     * @default 128
+     */
     const SCALE_DEFAULT_HEIGHT_REQUEST: number;
 
+    /**
+     * @default 0.000000
+     */
     const SCALE_DEFAULT_LOWER: number;
 
+    /**
+     * @default 8.000000
+     */
     const SCALE_DEFAULT_PAGE_SIZE: number;
 
+    /**
+     * @default 16.000000
+     */
     const SCALE_DEFAULT_STEP_COUNT: number;
 
+    /**
+     * @default 1.000000
+     */
     const SCALE_DEFAULT_UPPER: number;
 
+    /**
+     * @default 0.000000
+     */
     const SCALE_DEFAULT_VALUE: number;
 
+    /**
+     * @default 60
+     */
     const SCALE_DEFAULT_WIDTH_REQUEST: number;
 
+    /**
+     * @default tempo [BPM]
+     */
     const TEMPO_DEFAULT_CONTROL_NAME: string;
 
+    /**
+     * @default 128
+     */
     const TEMPO_DEFAULT_HEIGHT_REQUEST: number;
 
+    /**
+     * @default 0.000000
+     */
     const TEMPO_DEFAULT_LOWER: number;
 
+    /**
+     * @default 8.000000
+     */
     const TEMPO_DEFAULT_PAGE_SIZE: number;
 
+    /**
+     * @default 240.000000
+     */
     const TEMPO_DEFAULT_STEP_COUNT: number;
 
+    /**
+     * @default 240.000000
+     */
     const TEMPO_DEFAULT_UPPER: number;
 
+    /**
+     * @default 120.000000
+     */
     const TEMPO_DEFAULT_VALUE: number;
 
+    /**
+     * @default 60
+     */
     const TEMPO_DEFAULT_WIDTH_REQUEST: number;
 
     /**
@@ -935,14 +1607,14 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum CartesianFlags {
-        ABSCISSAE,
-        ORDINATE,
-        X_SCALE,
-        Y_SCALE,
-        X_UNIT,
-        Y_UNIT,
-        X_LABEL,
-        Y_LABEL,
+        ABSCISSAE = 1,
+        ORDINATE = 2,
+        X_SCALE = 4,
+        Y_SCALE = 8,
+        X_UNIT = 16,
+        Y_UNIT = 32,
+        X_LABEL = 64,
+        Y_LABEL = 128,
     }
 
 
@@ -950,14 +1622,14 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum DialFlags {
-        WITH_BUTTONS,
-        MOUSE_BUTTON_PRESSED,
-        BUTTON_DOWN_PRESSED,
-        BUTTON_UP_PRESSED,
-        MOTION_CAPTURING_INIT,
-        MOTION_CAPTURING,
-        SEEMLESS_MODE,
-        INVERSE_LIGHT,
+        WITH_BUTTONS = 1,
+        MOUSE_BUTTON_PRESSED = 2,
+        BUTTON_DOWN_PRESSED = 4,
+        BUTTON_UP_PRESSED = 8,
+        MOTION_CAPTURING_INIT = 16,
+        MOTION_CAPTURING = 32,
+        SEEMLESS_MODE = 64,
+        INVERSE_LIGHT = 128,
     }
 
 
@@ -965,11 +1637,11 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum ExpanderSetFlags {
-        GHOST,
-        LEFT_ENDING,
-        RIGHT_ENDING,
-        LEFT_CONNECTOR,
-        RIGHT_CONNECTOR,
+        GHOST = 1,
+        LEFT_ENDING = 2,
+        RIGHT_ENDING = 4,
+        LEFT_CONNECTOR = 8,
+        RIGHT_CONNECTOR = 16,
     }
 
 
@@ -977,10 +1649,10 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum FileWidgetFlags {
-        APP_SANDBOX,
-        WITH_MULTI_SELECTION,
-        WITH_PREVIEW,
-        HIDDEN_FILES_VISIBLE,
+        APP_SANDBOX = 1,
+        WITH_MULTI_SELECTION = 2,
+        WITH_PREVIEW = 4,
+        HIDDEN_FILES_VISIBLE = 8,
     }
 
 
@@ -988,8 +1660,8 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum IconLinkFlags {
-        HIGHLIGHT,
-        SHOW_CONTEXT_MENU,
+        HIGHLIGHT = 1,
+        SHOW_CONTEXT_MENU = 2,
     }
 
 
@@ -997,8 +1669,8 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum InputDialogFlags {
-        STRING_INPUT,
-        SPIN_BUTTON_INPUT,
+        STRING_INPUT = 1,
+        SPIN_BUTTON_INPUT = 2,
     }
 
 
@@ -1006,10 +1678,10 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum LevelKeyMask {
-        L_CONTROL,
-        R_CONTROL,
-        L_SHIFT,
-        R_SHIFT,
+        L_CONTROL = 1,
+        R_CONTROL = 2,
+        L_SHIFT = 4,
+        R_SHIFT = 8,
     }
 
 
@@ -1017,8 +1689,8 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum PianoFlags {
-        FULL_SCALE,
-        OCTAVE_SCALE,
+        FULL_SCALE = 1,
+        OCTAVE_SCALE = 2,
     }
 
 
@@ -1026,10 +1698,10 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum ScaleKeyMask {
-        L_CONTROL,
-        R_CONTROL,
-        L_SHIFT,
-        R_SHIFT,
+        L_CONTROL = 1,
+        R_CONTROL = 2,
+        L_SHIFT = 4,
+        R_SHIFT = 8,
     }
 
 
@@ -1037,10 +1709,10 @@ export namespace AgsGui {
      * @gir-type Flags
      */
     enum TempoKeyMask {
-        L_CONTROL,
-        R_CONTROL,
-        L_SHIFT,
-        R_SHIFT,
+        L_CONTROL = 1,
+        R_CONTROL = 2,
+        L_SHIFT = 4,
+        R_SHIFT = 8,
     }
 
 
@@ -4156,7 +4828,7 @@ export namespace AgsGui {
              * @since 6.6.0
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (object: number) => void;
             "notify::file-widget": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -4389,7 +5061,7 @@ export namespace AgsGui {
              * @since 6.6.0
              * @run-last
              */
-            "create-dir": (arg0: string) => void;
+            "create-dir": (dir_path: string) => void;
             /**
              * The ::refresh signal notifies about filesystem change.
              * @signal
@@ -5908,7 +6580,7 @@ export namespace AgsGui {
              * @since 6.6.0
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response: number) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::decorated": (pspec: GObject.ParamSpec) => void;
@@ -6963,7 +7635,7 @@ export namespace AgsGui {
              * @since 3.0.0
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (normalized_volume: number) => void;
             "notify::data-format": (pspec: GObject.ParamSpec) => void;
             "notify::lower": (pspec: GObject.ParamSpec) => void;
             "notify::normalized-volume": (pspec: GObject.ParamSpec) => void;
@@ -7591,14 +8263,14 @@ export namespace AgsGui {
              * @since 4.0.0
              * @run-last
              */
-            "child-height-request": (arg0: GObject.Object, arg1: number) => void;
+            "child-height-request": (level: GObject.Object, height_request: number) => void;
             /**
              * The ::child-width-request
              * @signal
              * @since 4.0.0
              * @run-last
              */
-            "child-width-request": (arg0: GObject.Object, arg1: number) => void;
+            "child-width-request": (level: GObject.Object, width_request: number) => void;
             "notify::baseline-child": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -7972,21 +8644,21 @@ export namespace AgsGui {
              * @since 3.0.0
              * @run-last
              */
-            "key-clicked": (arg0: string, arg1: number) => void;
+            "key-clicked": (note: string, key_code: number) => void;
             /**
              * The ::key-pressed signal notifies about key pressed.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-pressed": (arg0: string, arg1: number) => void;
+            "key-pressed": (note: string, key_code: number) => void;
             /**
              * The ::key-released signal notifies about key released.
              * @signal
              * @since 3.0.0
              * @run-last
              */
-            "key-released": (arg0: string, arg1: number) => void;
+            "key-released": (note: string, key_code: number) => void;
             "notify::base-key-code": (pspec: GObject.ParamSpec) => void;
             "notify::base-note": (pspec: GObject.ParamSpec) => void;
             "notify::key-count": (pspec: GObject.ParamSpec) => void;
@@ -9411,7 +10083,7 @@ export namespace AgsGui {
              * @since 3.0.0
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (default_value: number) => void;
             "notify::control-name": (pspec: GObject.ParamSpec) => void;
             "notify::default-value": (pspec: GObject.ParamSpec) => void;
             "notify::lower": (pspec: GObject.ParamSpec) => void;
@@ -10031,14 +10703,14 @@ export namespace AgsGui {
              * @since 4.0.0
              * @run-last
              */
-            "child-height-request": (arg0: GObject.Object, arg1: number) => void;
+            "child-height-request": (scale: GObject.Object, height_request: number) => void;
             /**
              * The ::child-width-request
              * @signal
              * @since 4.0.0
              * @run-last
              */
-            "child-width-request": (arg0: GObject.Object, arg1: number) => void;
+            "child-width-request": (scale: GObject.Object, width_request: number) => void;
             "notify::baseline-child": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -10593,7 +11265,7 @@ export namespace AgsGui {
              * @since 5.1.0
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (default_value: number) => void;
             "notify::control-name": (pspec: GObject.ParamSpec) => void;
             "notify::default-value": (pspec: GObject.ParamSpec) => void;
             "notify::lower": (pspec: GObject.ParamSpec) => void;

@@ -40,7 +40,7 @@ export namespace Libosinfo {
          * Script do not require device drivers
          * to be signed.
          */
-        NONE,
+        NONE = 0,
         /**
          * Script must only be given signed
          * device drivers. Some scripts will allow overriding this requirement through
@@ -49,7 +49,7 @@ export namespace Libosinfo {
          * #OSINFO_INSTALL_CONFIG_PROP_DRIVER_SIGNING configuration parameter is used
          * by the script in question (or other scripts in the same profile).
          */
-        STRICT,
+        STRICT = 1,
         /**
          * A warning will be issued by OS
          * installer if device drivers are not signed and most probably require user
@@ -57,7 +57,7 @@ export namespace Libosinfo {
          * #OSINFO_DEVICE_DRIVER_SIGNING_REQ_STRICT on how this warning can be disabled
          * for some scripts.
          */
-        WARN,
+        WARN = 2,
     }
 
 
@@ -102,15 +102,15 @@ export namespace Libosinfo {
         /**
          * no policy defined
          */
-        NONE,
+        NONE = 0,
         /**
          * config parameter is required
          */
-        REQUIRED,
+        REQUIRED = 1,
         /**
          * config parameter may be omitted
          */
-        OPTIONAL,
+        OPTIONAL = 2,
     }
 
 
@@ -130,12 +130,12 @@ export namespace Libosinfo {
          * A media will be used as
          * the installation source.
          */
-        MEDIA,
+        MEDIA = 0,
         /**
          * A network method will
          * be used as installation source.
          */
-        NETWORK,
+        NETWORK = 1,
     }
 
 
@@ -201,11 +201,11 @@ export namespace Libosinfo {
         /**
          * Unix/Linux path format, e.g /home/foo/bar.txt
          */
-        UNIX,
+        UNIX = 0,
         /**
          * DOS/Windows path format, e.g \My Documents\bar.txt
          */
-        DOS,
+        DOS = 1,
     }
 
 
@@ -224,15 +224,15 @@ export namespace Libosinfo {
         /**
          * a descendent (RHEL-5 derives from Fedora-6)
          */
-        DERIVES_FROM,
+        DERIVES_FROM = 0,
         /**
          * a new version release (RHEL-6 upgrades RHEL-4)
          */
-        UPGRADES,
+        UPGRADES = 1,
         /**
          * a perfect clone (CentOS-5 clones RHEL-5)
          */
-        CLONES,
+        CLONES = 2,
     }
 
 
@@ -250,24 +250,24 @@ export namespace Libosinfo {
         /**
          * A released OS. (Since: 0.2.9)
          */
-        RELEASED,
+        RELEASED = 0,
         /**
          * A continuous integration snapshot and not
          * an actual released product yet. For example, gnome-continuous images for
          * development snapshots of GNOME and nightly build ISOs of Fedora etc.
          * (Since: 0.2.9)
          */
-        SNAPSHOT,
+        SNAPSHOT = 1,
         /**
          * A pre-release. For example, alpha and
          * beta pre-releases of Fedora etc. (Since: 0.2.9)
          */
-        PRERELEASE,
+        PRERELEASE = 2,
         /**
          * A rolling version of an OS and thus with no
          * actual releases. For example, Gentoo, Arch Linux, etc. (Since: 1.4.0)
          */
-        ROLLING,
+        ROLLING = 3,
     }
 
 
@@ -302,275 +302,662 @@ export namespace Libosinfo {
     }
 
 
+    /**
+     * @default all
+     */
     const ARCHITECTURE_ALL: string;
 
+    /**
+     * @default alpha
+     */
     const AVATAR_FORMAT_PROP_ALPHA: string;
 
+    /**
+     * @default height
+     */
     const AVATAR_FORMAT_PROP_HEIGHT: string;
 
+    /**
+     * @default mime-type
+     */
     const AVATAR_FORMAT_PROP_MIME_TYPE: string;
 
+    /**
+     * @default width
+     */
     const AVATAR_FORMAT_PROP_WIDTH: string;
 
+    /**
+     * @default driver
+     */
     const DEVICELINK_PROP_DRIVER: string;
 
+    /**
+     * @default supported
+     */
     const DEVICELINK_PROP_SUPPORTED: string;
 
+    /**
+     * @default 50
+     */
     const DEVICE_DRIVER_DEFAULT_PRIORITY: number;
 
+    /**
+     * @default arch
+     */
     const DEVICE_DRIVER_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default device
+     */
     const DEVICE_DRIVER_PROP_DEVICE: string;
 
+    /**
+     * @default file
+     */
     const DEVICE_DRIVER_PROP_FILE: string;
 
+    /**
+     * @default location
+     */
     const DEVICE_DRIVER_PROP_LOCATION: string;
 
+    /**
+     * @default pre-installable
+     */
     const DEVICE_DRIVER_PROP_PRE_INSTALLABLE: string;
 
+    /**
+     * @default priority
+     */
     const DEVICE_DRIVER_PROP_PRIORITY: string;
 
+    /**
+     * @default signed
+     */
     const DEVICE_DRIVER_PROP_SIGNED: string;
 
+    /**
+     * @default bus-type
+     */
     const DEVICE_PROP_BUS_TYPE: string;
 
+    /**
+     * @default class
+     */
     const DEVICE_PROP_CLASS: string;
 
+    /**
+     * @default name
+     */
     const DEVICE_PROP_NAME: string;
 
+    /**
+     * @default product
+     */
     const DEVICE_PROP_PRODUCT: string;
 
+    /**
+     * @default product-id
+     */
     const DEVICE_PROP_PRODUCT_ID: string;
 
+    /**
+     * @default subsystem
+     */
     const DEVICE_PROP_SUBSYSTEM: string;
 
+    /**
+     * @default vendor
+     */
     const DEVICE_PROP_VENDOR: string;
 
+    /**
+     * @default vendor-id
+     */
     const DEVICE_PROP_VENDOR_ID: string;
 
+    /**
+     * @default id
+     */
     const ENTITY_PROP_ID: string;
 
+    /**
+     * @default architecture
+     */
     const FIRMWARE_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default supported
+     */
     const FIRMWARE_PROP_SUPPORTED: string;
 
+    /**
+     * @default type
+     */
     const FIRMWARE_PROP_TYPE: string;
 
+    /**
+     * @default 1073741824
+     */
     const GIBIBYTES: number;
 
+    /**
+     * @default architecture
+     */
     const IMAGE_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default cloud-init
+     */
     const IMAGE_PROP_CLOUD_INIT: string;
 
+    /**
+     * @default format
+     */
     const IMAGE_PROP_FORMAT: string;
 
+    /**
+     * @default url
+     */
     const IMAGE_PROP_URL: string;
 
+    /**
+     * @default variant
+     */
     const IMAGE_PROP_VARIANT: string;
 
+    /**
+     * @default value-map
+     */
     const INSTALL_CONFIG_PARAM_PROP_DATAMAP: string;
 
+    /**
+     * @default name
+     */
     const INSTALL_CONFIG_PARAM_PROP_NAME: string;
 
+    /**
+     * @default policy
+     */
     const INSTALL_CONFIG_PARAM_PROP_POLICY: string;
 
+    /**
+     * @default admin-password
+     */
     const INSTALL_CONFIG_PROP_ADMIN_PASSWORD: string;
 
+    /**
+     * @default avatar-disk
+     */
     const INSTALL_CONFIG_PROP_AVATAR_DISK: string;
 
+    /**
+     * @default avatar-location
+     */
     const INSTALL_CONFIG_PROP_AVATAR_LOCATION: string;
 
+    /**
+     * @default driver-signing
+     */
     const INSTALL_CONFIG_PROP_DRIVER_SIGNING: string;
 
+    /**
+     * @default hardware-arch
+     */
     const INSTALL_CONFIG_PROP_HARDWARE_ARCH: string;
 
+    /**
+     * @default hostname
+     */
     const INSTALL_CONFIG_PROP_HOSTNAME: string;
 
+    /**
+     * @default installation-url
+     */
     const INSTALL_CONFIG_PROP_INSTALLATION_URL: string;
 
+    /**
+     * @default l10n-keyboard
+     */
     const INSTALL_CONFIG_PROP_L10N_KEYBOARD: string;
 
+    /**
+     * @default l10n-language
+     */
     const INSTALL_CONFIG_PROP_L10N_LANGUAGE: string;
 
+    /**
+     * @default l10n-timezone
+     */
     const INSTALL_CONFIG_PROP_L10N_TIMEZONE: string;
 
+    /**
+     * @default post-install-drivers-disk
+     */
     const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_DISK: string;
 
+    /**
+     * @default post-install-drivers-location
+     */
     const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_LOCATION: string;
 
+    /**
+     * @default pre-install-drivers-disk
+     */
     const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_DISK: string;
 
+    /**
+     * @default pre-install-drivers-location
+     */
     const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_LOCATION: string;
 
+    /**
+     * @default reg-login
+     */
     const INSTALL_CONFIG_PROP_REG_LOGIN: string;
 
+    /**
+     * @default reg-password
+     */
     const INSTALL_CONFIG_PROP_REG_PASSWORD: string;
 
+    /**
+     * @default reg-product-key
+     */
     const INSTALL_CONFIG_PROP_REG_PRODUCTKEY: string;
 
+    /**
+     * @default script-disk
+     */
     const INSTALL_CONFIG_PROP_SCRIPT_DISK: string;
 
+    /**
+     * @default target-disk
+     */
     const INSTALL_CONFIG_PROP_TARGET_DISK: string;
 
+    /**
+     * @default user-admin
+     */
     const INSTALL_CONFIG_PROP_USER_ADMIN: string;
 
+    /**
+     * @default user-autologin
+     */
     const INSTALL_CONFIG_PROP_USER_AUTOLOGIN: string;
 
+    /**
+     * @default user-login
+     */
     const INSTALL_CONFIG_PROP_USER_LOGIN: string;
 
+    /**
+     * @default user-password
+     */
     const INSTALL_CONFIG_PROP_USER_PASSWORD: string;
 
+    /**
+     * @default user-realname
+     */
     const INSTALL_CONFIG_PROP_USER_REALNAME: string;
 
+    /**
+     * @default desktop
+     */
     const INSTALL_SCRIPT_PROFILE_DESKTOP: string;
 
+    /**
+     * @default jeos
+     */
     const INSTALL_SCRIPT_PROFILE_JEOS: string;
 
+    /**
+     * @default can-post-install-drivers
+     */
     const INSTALL_SCRIPT_PROP_CAN_POST_INSTALL_DRIVERS: string;
 
+    /**
+     * @default can-pre-install-drivers
+     */
     const INSTALL_SCRIPT_PROP_CAN_PRE_INSTALL_DRIVERS: string;
 
+    /**
+     * @default expected-filename
+     */
     const INSTALL_SCRIPT_PROP_EXPECTED_FILENAME: string;
 
+    /**
+     * @default injection-method
+     */
     const INSTALL_SCRIPT_PROP_INJECTION_METHOD: string;
 
+    /**
+     * @default installation-source
+     */
     const INSTALL_SCRIPT_PROP_INSTALLATION_SOURCE: string;
 
+    /**
+     * @default needs-internet
+     */
     const INSTALL_SCRIPT_PROP_NEEDS_INTERNET: string;
 
+    /**
+     * @default path-format
+     */
     const INSTALL_SCRIPT_PROP_PATH_FORMAT: string;
 
+    /**
+     * @default post-install-drivers-signing-req
+     */
     const INSTALL_SCRIPT_PROP_POST_INSTALL_DRIVERS_SIGNING_REQ: string;
 
+    /**
+     * @default preferred-injection-method
+     */
     const INSTALL_SCRIPT_PROP_PREFERRED_INJECTION_METHOD: string;
 
+    /**
+     * @default pre-install-drivers-signing-req
+     */
     const INSTALL_SCRIPT_PROP_PRE_INSTALL_DRIVERS_SIGNING_REQ: string;
 
+    /**
+     * @default product-key-format
+     */
     const INSTALL_SCRIPT_PROP_PRODUCT_KEY_FORMAT: string;
 
+    /**
+     * @default profile
+     */
     const INSTALL_SCRIPT_PROP_PROFILE: string;
 
+    /**
+     * @default template-data
+     */
     const INSTALL_SCRIPT_PROP_TEMPLATE_DATA: string;
 
+    /**
+     * @default template-uri
+     */
     const INSTALL_SCRIPT_PROP_TEMPLATE_URI: string;
 
+    /**
+     * @default 1024
+     */
     const KIBIBYTES: number;
 
     /**
      * libosinfo major version number.
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 1048576
+     */
     const MEBIBYTES: number;
 
+    /**
+     * @default application-id
+     */
     const MEDIA_PROP_APPLICATION_ID: string;
 
+    /**
+     * @default architecture
+     */
     const MEDIA_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default bootable
+     */
     const MEDIA_PROP_BOOTABLE: string;
 
+    /**
+     * @default eject-after-install
+     */
     const MEDIA_PROP_EJECT_AFTER_INSTALL: string;
 
+    /**
+     * @default initrd
+     */
     const MEDIA_PROP_INITRD: string;
 
+    /**
+     * @default installer
+     */
     const MEDIA_PROP_INSTALLER: string;
 
+    /**
+     * @default installer-reboots
+     */
     const MEDIA_PROP_INSTALLER_REBOOTS: string;
 
+    /**
+     * @default installer-script
+     */
     const MEDIA_PROP_INSTALLER_SCRIPT: string;
 
+    /**
+     * @default kernel
+     */
     const MEDIA_PROP_KERNEL: string;
 
+    /**
+     * @default l10n-language
+     */
     const MEDIA_PROP_LANG: string;
 
+    /**
+     * @default l10n-language-map
+     */
     const MEDIA_PROP_LANG_MAP: string;
 
+    /**
+     * @default l10n-language-regex
+     */
     const MEDIA_PROP_LANG_REGEX: string;
 
+    /**
+     * @default live
+     */
     const MEDIA_PROP_LIVE: string;
 
+    /**
+     * @default publisher-id
+     */
     const MEDIA_PROP_PUBLISHER_ID: string;
 
+    /**
+     * @default system-id
+     */
     const MEDIA_PROP_SYSTEM_ID: string;
 
+    /**
+     * @default url
+     */
     const MEDIA_PROP_URL: string;
 
+    /**
+     * @default variant
+     */
     const MEDIA_PROP_VARIANT: string;
 
+    /**
+     * @default volume-id
+     */
     const MEDIA_PROP_VOLUME_ID: string;
 
+    /**
+     * @default volume-size
+     */
     const MEDIA_PROP_VOLUME_SIZE: string;
 
+    /**
+     * @default 1000000
+     */
     const MEGAHERTZ: number;
 
     /**
      * libosinfo micro version number.
+     * @default 0
      */
     const MICRO_VERSION: number;
 
     /**
      * libosinfo minor version number.
+     * @default 12
      */
     const MINOR_VERSION: number;
 
+    /**
+     * @default cloud-image-username
+     */
     const OS_PROP_CLOUD_IMAGE_USERNAME: string;
 
+    /**
+     * @default distro
+     */
     const OS_PROP_DISTRO: string;
 
+    /**
+     * @default family
+     */
     const OS_PROP_FAMILY: string;
 
+    /**
+     * @default kernel-url-argument
+     */
     const OS_PROP_KERNEL_URL_ARGUMENT: string;
 
+    /**
+     * @default release-status
+     */
     const OS_PROP_RELEASE_STATUS: string;
 
+    /**
+     * @default name
+     */
     const OS_VARIANT_PROP_NAME: string;
 
+    /**
+     * @default codename
+     */
     const PRODUCT_PROP_CODENAME: string;
 
+    /**
+     * @default eol-date
+     */
     const PRODUCT_PROP_EOL_DATE: string;
 
+    /**
+     * @default logo
+     */
     const PRODUCT_PROP_LOGO: string;
 
+    /**
+     * @default name
+     */
     const PRODUCT_PROP_NAME: string;
 
+    /**
+     * @default release-date
+     */
     const PRODUCT_PROP_RELEASE_DATE: string;
 
+    /**
+     * @default short-id
+     */
     const PRODUCT_PROP_SHORT_ID: string;
 
+    /**
+     * @default vendor
+     */
     const PRODUCT_PROP_VENDOR: string;
 
+    /**
+     * @default version
+     */
     const PRODUCT_PROP_VERSION: string;
 
+    /**
+     * @default architecture
+     */
     const RESOURCES_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default cpu
+     */
     const RESOURCES_PROP_CPU: string;
 
+    /**
+     * @default n-cpus
+     */
     const RESOURCES_PROP_N_CPUS: string;
 
+    /**
+     * @default ram
+     */
     const RESOURCES_PROP_RAM: string;
 
+    /**
+     * @default storage
+     */
     const RESOURCES_PROP_STORAGE: string;
 
+    /**
+     * @default architecture
+     */
     const TREE_PROP_ARCHITECTURE: string;
 
+    /**
+     * @default boot-iso
+     */
     const TREE_PROP_BOOT_ISO: string;
 
+    /**
+     * @default has-treeinfo
+     */
     const TREE_PROP_HAS_TREEINFO: string;
 
+    /**
+     * @default initrd
+     */
     const TREE_PROP_INITRD: string;
 
+    /**
+     * @default kernel
+     */
     const TREE_PROP_KERNEL: string;
 
+    /**
+     * @default treeinfo-arch
+     */
     const TREE_PROP_TREEINFO_ARCH: string;
 
+    /**
+     * @default treeinfo-family
+     */
     const TREE_PROP_TREEINFO_FAMILY: string;
 
+    /**
+     * @default treeinfo-variant
+     */
     const TREE_PROP_TREEINFO_VARIANT: string;
 
+    /**
+     * @default treeinfo-version
+     */
     const TREE_PROP_TREEINFO_VERSION: string;
 
+    /**
+     * @default url
+     */
     const TREE_PROP_URL: string;
 
+    /**
+     * @default variant
+     */
     const TREE_PROP_VARIANT: string;
 
     /**
@@ -605,27 +992,27 @@ export namespace Libosinfo {
          * Support injection of the
          * installation script through a CD-ROM.
          */
-        CDROM,
+        CDROM = 1,
         /**
          * Support injection of the
          * installation script through a disk.
          */
-        DISK,
+        DISK = 2,
         /**
          * Support injection of the
          * installation script through a floppy disk.
          */
-        FLOPPY,
+        FLOPPY = 4,
         /**
          * Support injection of the
          * installation script through the initrd.
          */
-        INITRD,
+        INITRD = 8,
         /**
          * Support injection of the
          * installation script from the web.
          */
-        WEB,
+        WEB = 16,
     }
 
 
@@ -643,7 +1030,7 @@ export namespace Libosinfo {
      * @since 1.6.0
      */
     enum MediaDetectFlags {
-        BOOTABLE,
+        BOOTABLE = 1,
     }
 
 
@@ -3292,6 +3679,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string. If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_for_tree`() in instead.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         generate(os: Os, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3396,6 +3784,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
          * @since 0.2.0
+         * @throws GLib.Error
          */
         generate_finish(res: Gio.AsyncResult): string;
 
@@ -3407,6 +3796,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          * @since 0.2.12
+         * @throws GLib.Error
          */
         generate_for_media(media: Media, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3449,6 +3839,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL on error
          * @since 0.2.12
+         * @throws GLib.Error
          */
         generate_for_media_finish(res: Gio.AsyncResult): string;
 
@@ -3460,6 +3851,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns the script as string.
          * @since 1.6.0
+         * @throws GLib.Error
          */
         generate_for_tree(tree: Tree, config: InstallConfig, cancellable: Gio.Cancellable | null): string;
 
@@ -3502,6 +3894,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns the generated script, or NULL or error
          * @since 1.6.0
+         * @throws GLib.Error
          */
         generate_for_tree_finish(res: Gio.AsyncResult): string;
 
@@ -3513,6 +3906,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script If you are generating the script for a specific media, it is recommended that you use `osinfo_install_script_generate_output_for_media`() instead. If you are generating the script for a specific tree, it is recommended that you use `osinfo_install_script_generate_output_for_tree`() instead.
          * @since 0.2.0
+         * @throws GLib.Error
          */
         generate_output(os: Os, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3567,6 +3961,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error
          * @since 0.2.3
+         * @throws GLib.Error
          */
         generate_output_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -3578,6 +3973,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          * @since 0.2.12
+         * @throws GLib.Error
          */
         generate_output_for_media(media: Media, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3626,6 +4022,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
          * @since 0.2.12
+         * @throws GLib.Error
          */
         generate_output_for_media_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -3637,6 +4034,7 @@ export namespace Libosinfo {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns a file containing the script.
          * @since 1.6.0
+         * @throws GLib.Error
          */
         generate_output_for_tree(tree: Tree, config: InstallConfig, output_dir: Gio.File, cancellable: Gio.Cancellable | null): Gio.File;
 
@@ -3685,6 +4083,7 @@ export namespace Libosinfo {
          * @param res a {@link Gio.AsyncResult}
          * @returns a file containing the script, or NULL on error.
          * @since 1.6.0
+         * @throws GLib.Error
          */
         generate_output_for_tree_finish(res: Gio.AsyncResult): Gio.File;
 
@@ -4212,11 +4611,15 @@ export namespace Libosinfo {
          */
         get_db(): Db;
 
+        /**
+         * @throws GLib.Error
+         */
         process_default_path(): void;
 
         /**
          * Loads data from the local path.
          * @since 0.2.8
+         * @throws GLib.Error
          */
         process_local_path(): void;
 
@@ -4226,12 +4629,14 @@ export namespace Libosinfo {
          * Otherwise it can point to a directory which will
          * be recursively traversed, loading all files as XML.
          * @param path the fully qualified path
+         * @throws GLib.Error
          */
         process_path(path: string): void;
 
         /**
          * Loads data from the system path.
          * @since 0.2.8
+         * @throws GLib.Error
          */
         process_system_path(): void;
 
@@ -4241,12 +4646,14 @@ export namespace Libosinfo {
          * Otherwise it can point to a directory which will
          * be recursively traversed, loading all files as XML.
          * @param uri the data source URI
+         * @throws GLib.Error
          */
         process_uri(uri: string): void;
 
         /**
          * Loads data from user path.
          * @since 0.2.8
+         * @throws GLib.Error
          */
         process_user_path(): void;
     }

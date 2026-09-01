@@ -41,27 +41,27 @@ export namespace GstAudio {
         /**
          * No discontinuity occurred
          */
-        NO_DISCONT,
+        NO_DISCONT = 0,
         /**
          * New caps are set, causing renegotiotion
          */
-        NEW_CAPS,
+        NEW_CAPS = 1,
         /**
          * Samples have been flushed
          */
-        FLUSH,
+        FLUSH = 2,
         /**
          * Sink was synchronized to the estimated latency (occurs during initialization)
          */
-        SYNC_LATENCY,
+        SYNC_LATENCY = 3,
         /**
          * Aligning buffers failed because the timestamps are too discontinuous
          */
-        ALIGNMENT,
+        ALIGNMENT = 4,
         /**
          * Audio output device experienced and recovered from an error but introduced latency in the process (see also `gst_audio_base_sink_report_device_failure()`)
          */
-        DEVICE_FAILURE,
+        DEVICE_FAILURE = 5,
     }
 
 
@@ -81,20 +81,20 @@ export namespace GstAudio {
         /**
          * Resample to match the master clock
          */
-        RESAMPLE,
+        RESAMPLE = 0,
         /**
          * Adjust playout pointer when master clock
          * drifts too much.
          */
-        SKEW,
+        SKEW = 1,
         /**
          * No adjustment is done.
          */
-        NONE,
+        NONE = 2,
         /**
          * Use custom clock slaving algorithm (Since: 1.6)
          */
-        CUSTOM,
+        CUSTOM = 3,
     }
 
 
@@ -114,21 +114,21 @@ export namespace GstAudio {
         /**
          * Resample to match the master clock.
          */
-        RESAMPLE,
+        RESAMPLE = 0,
         /**
          * Retimestamp output buffers with master
          * clock time.
          */
-        RE_TIMESTAMP,
+        RE_TIMESTAMP = 1,
         /**
          * Adjust capture pointer when master clock
          * drifts too much.
          */
-        SKEW,
+        SKEW = 2,
         /**
          * No adjustment is done.
          */
-        NONE,
+        NONE = 3,
     }
 
 
@@ -148,11 +148,11 @@ export namespace GstAudio {
         /**
          * each single track is a stream
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * the entire disc is a single stream
          */
-        CONTINUOUS,
+        CONTINUOUS = 1,
     }
 
 
@@ -196,136 +196,138 @@ export namespace GstAudio {
          *     from a sound card that records 1024 channels; mutually exclusive with
          *     any other channel position
          */
-        NONE,
+        NONE = -3,
         /**
          * Mono without direction;
          *     can only be used with 1 channel
          */
-        MONO,
+        MONO = -2,
         /**
          * invalid position
          */
-        INVALID,
+        INVALID = -1,
         /**
          * Front left
          */
-        FRONT_LEFT,
+        FRONT_LEFT = 0,
         /**
          * Front right
          */
-        FRONT_RIGHT,
+        FRONT_RIGHT = 1,
         /**
          * Front center
          */
-        FRONT_CENTER,
+        FRONT_CENTER = 2,
         /**
          * Low-frequency effects 1 (subwoofer)
          */
-        LFE1,
+        LFE1 = 3,
         /**
          * Rear left
          */
-        REAR_LEFT,
+        REAR_LEFT = 4,
         /**
          * Rear right
          */
-        REAR_RIGHT,
+        REAR_RIGHT = 5,
         /**
          * Front left of center
          */
-        FRONT_LEFT_OF_CENTER,
+        FRONT_LEFT_OF_CENTER = 6,
         /**
          * Front right of center
          */
-        FRONT_RIGHT_OF_CENTER,
+        FRONT_RIGHT_OF_CENTER = 7,
         /**
          * Rear center
          */
-        REAR_CENTER,
+        REAR_CENTER = 8,
         /**
          * Low-frequency effects 2 (subwoofer)
          */
-        LFE2,
+        LFE2 = 9,
         /**
          * Side left
          */
-        SIDE_LEFT,
+        SIDE_LEFT = 10,
         /**
          * Side right
          */
-        SIDE_RIGHT,
+        SIDE_RIGHT = 11,
         /**
          * Top front left
          */
-        TOP_FRONT_LEFT,
+        TOP_FRONT_LEFT = 12,
         /**
          * Top front right
          */
-        TOP_FRONT_RIGHT,
+        TOP_FRONT_RIGHT = 13,
         /**
          * Top front center
          */
-        TOP_FRONT_CENTER,
+        TOP_FRONT_CENTER = 14,
         /**
          * Top center
          */
-        TOP_CENTER,
+        TOP_CENTER = 15,
         /**
          * Top rear left
          */
-        TOP_REAR_LEFT,
+        TOP_REAR_LEFT = 16,
         /**
          * Top rear right
          */
-        TOP_REAR_RIGHT,
+        TOP_REAR_RIGHT = 17,
         /**
          * Top side right
          */
-        TOP_SIDE_LEFT,
+        TOP_SIDE_LEFT = 18,
         /**
          * Top rear right
          */
-        TOP_SIDE_RIGHT,
+        TOP_SIDE_RIGHT = 19,
         /**
          * Top rear center
          */
-        TOP_REAR_CENTER,
+        TOP_REAR_CENTER = 20,
         /**
          * Bottom front center
          */
-        BOTTOM_FRONT_CENTER,
+        BOTTOM_FRONT_CENTER = 21,
         /**
          * Bottom front left
          */
-        BOTTOM_FRONT_LEFT,
+        BOTTOM_FRONT_LEFT = 22,
         /**
          * Bottom front right
          */
-        BOTTOM_FRONT_RIGHT,
+        BOTTOM_FRONT_RIGHT = 23,
         /**
          * Wide left (between front left and side left)
          */
-        WIDE_LEFT,
+        WIDE_LEFT = 24,
         /**
          * Wide right (between front right and side right)
          */
-        WIDE_RIGHT,
+        WIDE_RIGHT = 25,
         /**
          * Surround left (between rear left and side left)
          */
-        SURROUND_LEFT,
+        SURROUND_LEFT = 26,
         /**
          * Surround right (between rear right and side right)
          */
-        SURROUND_RIGHT,
+        SURROUND_RIGHT = 27,
         /**
          * Top surround left (between rear left and side left).
+         * @since 1.26
          */
-        TOP_SURROUND_LEFT,
+        TOP_SURROUND_LEFT = 28,
         /**
          * Top surround right (between rear right and side right).
+         * @since 1.26
          */
-        TOP_SURROUND_RIGHT,
+        TOP_SURROUND_RIGHT = 29,
     }
 
 
@@ -344,19 +346,19 @@ export namespace GstAudio {
         /**
          * No dithering
          */
-        NONE,
+        NONE = 0,
         /**
          * Rectangular dithering
          */
-        RPDF,
+        RPDF = 1,
         /**
          * Triangular dithering (default)
          */
-        TPDF,
+        TPDF = 2,
         /**
          * High frequency triangular dithering
          */
-        TPDF_HF,
+        TPDF_HF = 3,
     }
 
 
@@ -375,211 +377,217 @@ export namespace GstAudio {
         /**
          * unknown or unset audio format
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * encoded audio format
          */
-        ENCODED,
+        ENCODED = 1,
         /**
          * 8 bits in 8 bits, signed
          */
-        S8,
+        S8 = 2,
         /**
          * 8 bits in 8 bits, unsigned
          */
-        U8,
+        U8 = 3,
         /**
          * 16 bits in 16 bits, signed, little endian
          */
-        S16LE,
+        S16LE = 4,
         /**
          * 16 bits in 16 bits, signed, big endian
          */
-        S16BE,
+        S16BE = 5,
         /**
          * 16 bits in 16 bits, unsigned, little endian
          */
-        U16LE,
+        U16LE = 6,
         /**
          * 16 bits in 16 bits, unsigned, big endian
          */
-        U16BE,
+        U16BE = 7,
         /**
          * 24 bits in 32 bits, signed, little endian
          */
-        S24_32LE,
+        S24_32LE = 8,
         /**
          * 24 bits in 32 bits, signed, big endian
          */
-        S24_32BE,
+        S24_32BE = 9,
         /**
          * 24 bits in 32 bits, unsigned, little endian
          */
-        U24_32LE,
+        U24_32LE = 10,
         /**
          * 24 bits in 32 bits, unsigned, big endian
          */
-        U24_32BE,
+        U24_32BE = 11,
         /**
          * 32 bits in 32 bits, signed, little endian
          */
-        S32LE,
+        S32LE = 12,
         /**
          * 32 bits in 32 bits, signed, big endian
          */
-        S32BE,
+        S32BE = 13,
         /**
          * 32 bits in 32 bits, unsigned, little endian
          */
-        U32LE,
+        U32LE = 14,
         /**
          * 32 bits in 32 bits, unsigned, big endian
          */
-        U32BE,
+        U32BE = 15,
         /**
          * 24 bits in 24 bits, signed, little endian
          */
-        S24LE,
+        S24LE = 16,
         /**
          * 24 bits in 24 bits, signed, big endian
          */
-        S24BE,
+        S24BE = 17,
         /**
          * 24 bits in 24 bits, unsigned, little endian
          */
-        U24LE,
+        U24LE = 18,
         /**
          * 24 bits in 24 bits, unsigned, big endian
          */
-        U24BE,
+        U24BE = 19,
         /**
          * 20 bits in 24 bits, signed, little endian
          */
-        S20LE,
+        S20LE = 20,
         /**
          * 20 bits in 24 bits, signed, big endian
          */
-        S20BE,
+        S20BE = 21,
         /**
          * 20 bits in 24 bits, unsigned, little endian
          */
-        U20LE,
+        U20LE = 22,
         /**
          * 20 bits in 24 bits, unsigned, big endian
          */
-        U20BE,
+        U20BE = 23,
         /**
          * 18 bits in 24 bits, signed, little endian
          */
-        S18LE,
+        S18LE = 24,
         /**
          * 18 bits in 24 bits, signed, big endian
          */
-        S18BE,
+        S18BE = 25,
         /**
          * 18 bits in 24 bits, unsigned, little endian
          */
-        U18LE,
+        U18LE = 26,
         /**
          * 18 bits in 24 bits, unsigned, big endian
          */
-        U18BE,
+        U18BE = 27,
         /**
          * 32-bit floating point samples, little endian
          */
-        F32LE,
+        F32LE = 28,
         /**
          * 32-bit floating point samples, big endian
          */
-        F32BE,
+        F32BE = 29,
         /**
          * 64-bit floating point samples, little endian
          */
-        F64LE,
+        F64LE = 30,
         /**
          * 64-bit floating point samples, big endian
          */
-        F64BE,
+        F64BE = 31,
         /**
          * 20 bits in 32 bits, signed, little endian.
+         * @since 1.28
          */
-        S20_32LE,
+        S20_32LE = 32,
         /**
          * 20 bits in 32 bits, signed, big endian.
+         * @since 1.28
          */
-        S20_32BE,
+        S20_32BE = 33,
         /**
          * 20 bits in 32 bits, unsigned, little endian.
+         * @since 1.28
          */
-        U20_32LE,
+        U20_32LE = 34,
         /**
          * 20 bits in 32 bits, unsigned, big endian.
+         * @since 1.28
          */
-        U20_32BE,
+        U20_32BE = 35,
         /**
          * 16 bits in 16 bits, signed, native endianness
          */
-        S16,
+        S16 = 4,
         /**
          * 16 bits in 16 bits, unsigned, native endianness
          */
-        U16,
+        U16 = 6,
         /**
          * 24 bits in 32 bits, signed, native endianness
          */
-        S24_32,
+        S24_32 = 8,
         /**
          * 24 bits in 32 bits, unsigned, native endianness
          */
-        U24_32,
+        U24_32 = 10,
         /**
          * 32 bits in 32 bits, signed, native endianness
          */
-        S32,
+        S32 = 12,
         /**
          * 32 bits in 32 bits, unsigned, native endianness
          */
-        U32,
+        U32 = 14,
         /**
          * 24 bits in 24 bits, signed, native endianness
          */
-        S24,
+        S24 = 16,
         /**
          * 24 bits in 24 bits, unsigned, native endianness
          */
-        U24,
+        U24 = 18,
         /**
          * 20 bits in 24 bits, signed, native endianness
          */
-        S20,
+        S20 = 20,
         /**
          * 20 bits in 24 bits, unsigned, native endianness
          */
-        U20,
+        U20 = 22,
         /**
          * 20 bits in 32 bits, signed, native endian.
+         * @since 1.28
          */
-        S20_32,
+        S20_32 = 32,
         /**
          * 20 bits in 32 bits, unsigned, native endian.
+         * @since 1.28
          */
-        U20_32,
+        U20_32 = 34,
         /**
          * 18 bits in 24 bits, signed, native endianness
          */
-        S18,
+        S18 = 24,
         /**
          * 18 bits in 24 bits, unsigned, native endianness
          */
-        U18,
+        U18 = 26,
         /**
          * 32-bit floating point samples, native endianness
          */
-        F32,
+        F32 = 28,
         /**
          * 64-bit floating point samples, native endianness
          */
-        F64,
+        F64 = 30,
     }
 
 
@@ -598,11 +606,11 @@ export namespace GstAudio {
         /**
          * interleaved audio
          */
-        INTERLEAVED,
+        INTERLEAVED = 0,
         /**
          * non-interleaved audio
          */
-        NON_INTERLEAVED,
+        NON_INTERLEAVED = 1,
     }
 
 
@@ -621,23 +629,23 @@ export namespace GstAudio {
         /**
          * No noise shaping (default)
          */
-        NONE,
+        NONE = 0,
         /**
          * Error feedback
          */
-        ERROR_FEEDBACK,
+        ERROR_FEEDBACK = 1,
         /**
          * Simple 2-pole noise shaping
          */
-        SIMPLE,
+        SIMPLE = 2,
         /**
          * Medium 5-pole noise shaping
          */
-        MEDIUM,
+        MEDIUM = 3,
         /**
          * High 8-pole noise shaping
          */
-        HIGH,
+        HIGH = 4,
     }
 
 
@@ -657,17 +665,17 @@ export namespace GstAudio {
         /**
          * no interpolation
          */
-        NONE,
+        NONE = 0,
         /**
          * linear interpolation of the
          *   filter coefficients.
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * cubic interpolation of the
          *   filter coefficients.
          */
-        CUBIC,
+        CUBIC = 2,
     }
 
 
@@ -689,17 +697,17 @@ export namespace GstAudio {
          *     uses less memory but more CPU and is slightly less accurate but it allows for more
          *     efficient variable rate resampling with `gst_audio_resampler_update()`.
          */
-        INTERPOLATED,
+        INTERPOLATED = 0,
         /**
          * Use full filter table. This uses more memory
          *     but less CPU.
          */
-        FULL,
+        FULL = 1,
         /**
          * Automatically choose between interpolated
          *     and full filter tables.
          */
-        AUTO,
+        AUTO = 2,
     }
 
 
@@ -720,24 +728,24 @@ export namespace GstAudio {
          * Duplicates the samples when
          *    upsampling and drops when downsampling
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * Uses linear interpolation to reconstruct
          *    missing samples and averaging to downsample
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * Uses cubic interpolation
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * Uses Blackman-Nuttall windowed sinc interpolation
          */
-        BLACKMAN_NUTTALL,
+        BLACKMAN_NUTTALL = 3,
         /**
          * Uses Kaiser windowed sinc interpolation
          */
-        KAISER,
+        KAISER = 4,
     }
 
 
@@ -756,67 +764,67 @@ export namespace GstAudio {
         /**
          * samples in linear or float
          */
-        RAW,
+        RAW = 0,
         /**
          * samples in mulaw
          */
-        MU_LAW,
+        MU_LAW = 1,
         /**
          * samples in alaw
          */
-        A_LAW,
+        A_LAW = 2,
         /**
          * samples in ima adpcm
          */
-        IMA_ADPCM,
+        IMA_ADPCM = 3,
         /**
          * samples in mpeg audio (but not AAC) format
          */
-        MPEG,
+        MPEG = 4,
         /**
          * samples in gsm format
          */
-        GSM,
+        GSM = 5,
         /**
          * samples in IEC958 frames (e.g. AC3)
          */
-        IEC958,
+        IEC958 = 6,
         /**
          * samples in AC3 format
          */
-        AC3,
+        AC3 = 7,
         /**
          * samples in EAC3 format
          */
-        EAC3,
+        EAC3 = 8,
         /**
          * samples in DTS format
          */
-        DTS,
+        DTS = 9,
         /**
          * samples in MPEG-2 AAC ADTS format
          */
-        MPEG2_AAC,
+        MPEG2_AAC = 10,
         /**
          * samples in MPEG-4 AAC ADTS format
          */
-        MPEG4_AAC,
+        MPEG4_AAC = 11,
         /**
          * samples in MPEG-2 AAC raw format (Since: 1.12)
          */
-        MPEG2_AAC_RAW,
+        MPEG2_AAC_RAW = 12,
         /**
          * samples in MPEG-4 AAC raw format (Since: 1.12)
          */
-        MPEG4_AAC_RAW,
+        MPEG4_AAC_RAW = 13,
         /**
          * samples in FLAC format (Since: 1.12)
          */
-        FLAC,
+        FLAC = 14,
         /**
          * samples in DSD format (Since: 1.24)
          */
-        DSD,
+        DSD = 15,
     }
 
 
@@ -835,21 +843,21 @@ export namespace GstAudio {
         /**
          * The ringbuffer is stopped
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * The ringbuffer is paused
          */
-        PAUSED,
+        PAUSED = 1,
         /**
          * The ringbuffer is started
          */
-        STARTED,
+        STARTED = 2,
         /**
          * The ringbuffer has encountered an
          *     error after it has been started, e.g. because the device was
          *     disconnected (Since: 1.2)
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -869,39 +877,39 @@ export namespace GstAudio {
         /**
          * unknown / invalid DSD format
          */
-        DSD_FORMAT_UNKNOWN,
+        DSD_FORMAT_UNKNOWN = 0,
         /**
          * 8 DSD bits in 1 byte
          */
-        DSD_FORMAT_U8,
+        DSD_FORMAT_U8 = 1,
         /**
          * 16 DSD bits in 2 bytes, little endian order
          */
-        DSD_FORMAT_U16LE,
+        DSD_FORMAT_U16LE = 2,
         /**
          * 16 DSD bits in 2 bytes, big endian order
          */
-        DSD_FORMAT_U16BE,
+        DSD_FORMAT_U16BE = 3,
         /**
          * 32 DSD bits in 4 bytes, little endian order
          */
-        DSD_FORMAT_U32LE,
+        DSD_FORMAT_U32LE = 4,
         /**
          * 32 DSD bits in 4 bytes, big endian order
          */
-        DSD_FORMAT_U32BE,
+        DSD_FORMAT_U32BE = 5,
         /**
          * number of valid DSD formats
          */
-        NUM_DSD_FORMATS,
+        NUM_DSD_FORMATS = 6,
         /**
          * 16 DSD bits in 2 bytes, native endianness
          */
-        DSD_FORMAT_U16,
+        DSD_FORMAT_U16 = 2,
         /**
          * 32 DSD bits in 4 bytes, native endianness
          */
-        DSD_FORMAT_U32,
+        DSD_FORMAT_U32 = 4,
     }
 
 
@@ -917,20 +925,21 @@ export namespace GstAudio {
         /**
          * Linear scale factor, 1.0 = 100%
          */
-        LINEAR,
+        LINEAR = 0,
         /**
          * Cubic volume scale
          */
-        CUBIC,
+        CUBIC = 1,
         /**
          * Logarithmic volume scale (dB, amplitude not power)
          */
-        DB,
+        DB = 2,
     }
 
 
     /**
      * Maximum range of allowed channels, for use in template caps strings.
+     * @default (int) [ 1, max ]
      */
     const AUDIO_CHANNELS_RANGE: string;
 
@@ -938,6 +947,7 @@ export namespace GstAudio {
      * {@link GstAudio.AudioDitherMethod}, The dither method to use when
      * changing bit depth.
      * Default is #GST_AUDIO_DITHER_NONE.
+     * @default GstAudioConverter.dither-method
      */
     const AUDIO_CONVERTER_OPT_DITHER_METHOD: string;
 
@@ -946,6 +956,7 @@ export namespace GstAudio {
      * 
      * Default is 20 bit.
      * @since 1.22
+     * @default GstAudioConverter.dither-threshold
      */
     const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string;
 
@@ -979,6 +990,7 @@ export namespace GstAudio {
      * g_value_unset (&v);
      * ```
      * 
+     * @default GstAudioConverter.mix-matrix
      */
     const AUDIO_CONVERTER_OPT_MIX_MATRIX: string;
 
@@ -986,6 +998,7 @@ export namespace GstAudio {
      * {@link GstAudio.AudioNoiseShapingMethod}, The noise shaping method to use
      * to mask noise from quantization errors.
      * Default is #GST_AUDIO_NOISE_SHAPING_NONE.
+     * @default GstAudioConverter.noise-shaping-method
      */
     const AUDIO_CONVERTER_OPT_NOISE_SHAPING_METHOD: string;
 
@@ -993,6 +1006,7 @@ export namespace GstAudio {
      * #G_TYPE_UINT, The quantization amount. Components will be
      * quantized to multiples of this value.
      * Default is 1
+     * @default GstAudioConverter.quantization
      */
     const AUDIO_CONVERTER_OPT_QUANTIZATION: string;
 
@@ -1000,46 +1014,55 @@ export namespace GstAudio {
      * {@link GstAudio.AudioResamplerMethod}, The resampler method to use when
      * changing sample rates.
      * Default is #GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL.
+     * @default GstAudioConverter.resampler-method
      */
     const AUDIO_CONVERTER_OPT_RESAMPLER_METHOD: string;
 
     /**
      * Default maximum number of errors tolerated before signaling error.
+     * @default -1
      */
     const AUDIO_DECODER_MAX_ERRORS: number;
 
     /**
      * The name of the templates for the sink pad.
+     * @default sink
      */
     const AUDIO_DECODER_SINK_NAME: string;
 
     /**
      * The name of the templates for the source pad.
+     * @default src
      */
     const AUDIO_DECODER_SRC_NAME: string;
 
     /**
      * Standard number of channels used in consumer audio.
+     * @default 2
      */
     const AUDIO_DEF_CHANNELS: number;
 
     /**
      * Standard format used in consumer audio.
+     * @default S16LE
      */
     const AUDIO_DEF_FORMAT: string;
 
     /**
      * Standard sampling rate used in consumer audio.
+     * @default 44100
      */
     const AUDIO_DEF_RATE: number;
 
     /**
      * the name of the templates for the sink pad
+     * @default sink
      */
     const AUDIO_ENCODER_SINK_NAME: string;
 
     /**
      * the name of the templates for the source pad
+     * @default src
      */
     const AUDIO_ENCODER_SRC_NAME: string;
 
@@ -1051,17 +1074,20 @@ export namespace GstAudio {
      *   - width
      *   - Float > Signed > Unsigned
      *   - native endianness preferred
+     * @default { F64BE, F64LE, F32BE, F32LE, S32BE, S32LE, U32BE, U32LE, S24_32BE, S24_32LE, U24_32BE, U24_32LE, S24BE, S24LE, U24BE, U24LE, S20_32BE, S20_32LE, U20_32BE, U20_32LE, S20BE, S20LE, U20BE, U20LE, S18BE, S18LE, U18BE, U18LE, S16BE, S16LE, U16BE, U16LE, S8, U8 }
      */
     const AUDIO_FORMATS_ALL: string;
 
     /**
      * Number of audio formats in {@link GstAudio.AudioFormat}.
      * @since 1.26
+     * @default 36
      */
     const AUDIO_FORMAT_LAST: number;
 
     /**
      * Maximum range of allowed sample rates, for use in template caps strings.
+     * @default (int) [ 1, max ]
      */
     const AUDIO_RATE_RANGE: string;
 
@@ -1074,6 +1100,7 @@ export namespace GstAudio {
      * Hermite           0.0     0.0
      * Spline            1.0     0.0
      * Catmull-Rom       0.0     1/2
+     * @default GstAudioResampler.cubic-b
      */
     const AUDIO_RESAMPLER_OPT_CUBIC_B: string;
 
@@ -1082,11 +1109,13 @@ export namespace GstAudio {
      * Values between 0.0 and 2.0 are accepted. 0.0 is the default.
      * 
      * See #GST_AUDIO_RESAMPLER_OPT_CUBIC_B for some more common values
+     * @default GstAudioResampler.cubic-c
      */
     const AUDIO_RESAMPLER_OPT_CUBIC_C: string;
 
     /**
      * G_TYPE_DOUBLE, Cutoff parameter for the filter. 0.940 is the default.
+     * @default GstAudioResampler.cutoff
      */
     const AUDIO_RESAMPLER_OPT_CUTOFF: string;
 
@@ -1094,6 +1123,7 @@ export namespace GstAudio {
      * GST_TYPE_AUDIO_RESAMPLER_INTERPOLATION: how the filter coefficients should be
      *    interpolated.
      * GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC is default.
+     * @default GstAudioResampler.filter-interpolation
      */
     const AUDIO_RESAMPLER_OPT_FILTER_INTERPOLATION: string;
 
@@ -1101,6 +1131,7 @@ export namespace GstAudio {
      * GST_TYPE_AUDIO_RESAMPLER_FILTER_MODE: how the filter tables should be
      * constructed.
      * GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO is the default.
+     * @default GstAudioResampler.filter-mode
      */
     const AUDIO_RESAMPLER_OPT_FILTER_MODE: string;
 
@@ -1108,12 +1139,14 @@ export namespace GstAudio {
      * G_TYPE_UINT: the amount of memory to use for full filter tables before
      * switching to interpolated filter tables.
      * 1048576 is the default.
+     * @default GstAudioResampler.filter-mode-threshold
      */
     const AUDIO_RESAMPLER_OPT_FILTER_MODE_THRESHOLD: string;
 
     /**
      * G_TYPE_UINT, oversampling to use when interpolating filters
      * 8 is the default.
+     * @default GstAudioResampler.filter-oversample
      */
     const AUDIO_RESAMPLER_OPT_FILTER_OVERSAMPLE: string;
 
@@ -1121,31 +1154,44 @@ export namespace GstAudio {
      * G_TYPE_DOUBLE: The maximum allowed phase error when switching sample
      * rates.
      * 0.1 is the default.
+     * @default GstAudioResampler.max-phase-error
      */
     const AUDIO_RESAMPLER_OPT_MAX_PHASE_ERROR: string;
 
     /**
      * G_TYPE_INT: the number of taps to use for the filter.
      * 0 is the default and selects the taps automatically.
+     * @default GstAudioResampler.n-taps
      */
     const AUDIO_RESAMPLER_OPT_N_TAPS: string;
 
     /**
      * G_TYPE_DOUBLE, stopband attenuation in decibels. The attenuation
      * after the stopband for the kaiser window. 85 dB is the default.
+     * @default GstAudioResampler.stop-attenutation
      */
     const AUDIO_RESAMPLER_OPT_STOP_ATTENUATION: string;
 
     /**
      * G_TYPE_DOUBLE, transition bandwidth. The width of the
      * transition band for the kaiser window. 0.087 is the default.
+     * @default GstAudioResampler.transition-bandwidth
      */
     const AUDIO_RESAMPLER_OPT_TRANSITION_BANDWIDTH: string;
 
+    /**
+     * @default 4
+     */
     const AUDIO_RESAMPLER_QUALITY_DEFAULT: number;
 
+    /**
+     * @default 10
+     */
     const AUDIO_RESAMPLER_QUALITY_MAX: number;
 
+    /**
+     * @default 0
+     */
     const AUDIO_RESAMPLER_QUALITY_MIN: number;
 
     /**
@@ -1154,12 +1200,14 @@ export namespace GstAudio {
      * Big endian formats are preferred, since little-endian ones flip around
      * the DSD bytes, and most DSD hardware uses big endian formats.
      * @since 1.24
+     * @default { DSDU32BE, DSDU16BE, DSDU8, DSDU32LE, DSDU16LE }
      */
     const DSD_FORMATS_ALL: string;
 
     /**
      * The GStreamer media type for DSD.
      * @since 1.24
+     * @default audio/x-dsd
      */
     const DSD_MEDIA_TYPE: string;
 
@@ -1171,30 +1219,35 @@ export namespace GstAudio {
      * (this is the DSD silence pattern). This constant provides that pattern
      * in a more readable fashion.
      * @since 1.24
+     * @default 105
      */
     const DSD_SILENCE_PATTERN_BYTE: number;
 
     /**
      * This metadata stays relevant as long as channels are unchanged.
      * @since 1.2
+     * @default channels
      */
     const META_TAG_AUDIO_CHANNELS_STR: string;
 
     /**
      * This metadata stays relevant as long as sample rate is unchanged.
      * @since 1.8
+     * @default rate
      */
     const META_TAG_AUDIO_RATE_STR: string;
 
     /**
      * This metadata is relevant for audio streams.
      * @since 1.2
+     * @default audio
      */
     const META_TAG_AUDIO_STR: string;
 
     /**
      * This metadata stays relevant as long as the DSD plane offsets are unchanged.
      * @since 1.24
+     * @default dsdplaneoffsets
      */
     const META_TAG_DSD_PLANE_OFFSETS_STR: string;
 
@@ -1761,23 +1814,23 @@ export namespace GstAudio {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * input channels are not interleaved
          */
-        NON_INTERLEAVED_IN,
+        NON_INTERLEAVED_IN = 1,
         /**
          * output channels are not interleaved
          */
-        NON_INTERLEAVED_OUT,
+        NON_INTERLEAVED_OUT = 2,
         /**
          * input channels are explicitly unpositioned
          */
-        UNPOSITIONED_IN,
+        UNPOSITIONED_IN = 4,
         /**
          * output channels are explicitly unpositioned
          */
-        UNPOSITIONED_OUT,
+        UNPOSITIONED_OUT = 8,
     }
 
 
@@ -1796,17 +1849,17 @@ export namespace GstAudio {
         /**
          * no flag
          */
-        NONE,
+        NONE = 0,
         /**
          * the input sample arrays are writable and can be
          *    used as temporary storage during conversion.
          */
-        IN_WRITABLE,
+        IN_WRITABLE = 1,
         /**
          * allow arbitrary rate updates with
          *    `gst_audio_converter_update_config()`.
          */
-        VARIABLE_RATE,
+        VARIABLE_RATE = 2,
     }
 
 
@@ -1825,12 +1878,12 @@ export namespace GstAudio {
         /**
          * no valid flag
          */
-        NONE,
+        NONE = 0,
         /**
          * the position array explicitly
          *     contains unpositioned channels.
          */
-        UNPOSITIONED,
+        UNPOSITIONED = 1,
     }
 
 
@@ -1849,24 +1902,24 @@ export namespace GstAudio {
         /**
          * integer samples
          */
-        INTEGER,
+        INTEGER = 1,
         /**
          * float samples
          */
-        FLOAT,
+        FLOAT = 2,
         /**
          * signed samples
          */
-        SIGNED,
+        SIGNED = 4,
         /**
          * complex layout
          */
-        COMPLEX,
+        COMPLEX = 16,
         /**
          * the format can be used in
          * {@link GstAudio.AudioFormatUnpack} and {@link GstAudio.AudioFormatPack} functions
          */
-        UNPACK,
+        UNPACK = 32,
     }
 
 
@@ -1885,7 +1938,7 @@ export namespace GstAudio {
         /**
          * No flag
          */
-        NONE,
+        NONE = 0,
         /**
          * When the source has a smaller depth
          *   than the target format, set the least significant bits of the target
@@ -1893,7 +1946,7 @@ export namespace GstAudio {
          *   is not specified, the most significant bits of the source are duplicated
          *   in the least significant bits of the destination.
          */
-        TRUNCATE_RANGE,
+        TRUNCATE_RANGE = 1,
     }
 
 
@@ -1912,11 +1965,11 @@ export namespace GstAudio {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * samples are non-interleaved
          */
-        NON_INTERLEAVED,
+        NON_INTERLEAVED = 1,
     }
 
 
@@ -1936,25 +1989,25 @@ export namespace GstAudio {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * input samples are non-interleaved.
          *    an array of blocks of samples, one for each channel, should be passed to the
          *    resample function.
          */
-        NON_INTERLEAVED_IN,
+        NON_INTERLEAVED_IN = 1,
         /**
          * output samples are non-interleaved.
          *    an array of blocks of samples, one for each channel, should be passed to the
          *    resample function.
          */
-        NON_INTERLEAVED_OUT,
+        NON_INTERLEAVED_OUT = 2,
         /**
          * optimize for dynamic updates of the sample
          *    rates with `gst_audio_resampler_update()`. This will select an interpolating filter
          *    when #GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO is configured.
          */
-        VARIABLE_RATE,
+        VARIABLE_RATE = 4,
     }
 
 
@@ -3071,6 +3124,7 @@ export namespace GstAudio {
          * Tries to set the URI of the given handler.
          * @param uri URI to set
          * @returns `true` if the URI was set successfully, else `false`.
+         * @throws GLib.Error
          */
         set_uri(uri: string): boolean;
 

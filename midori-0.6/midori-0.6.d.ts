@@ -48,8 +48,8 @@ export namespace Midori {
      * @gir-type Enum
      */
     enum DebugFlags {
-        NONE,
-        HISTORY,
+        NONE = 0,
+        HISTORY = 1,
     }
 
 
@@ -64,10 +64,10 @@ export namespace Midori {
      * @gir-type Enum
      */
     enum StartupType {
-        SPEED_DIAL,
-        HOMEPAGE,
-        LAST_OPEN_PAGES,
-        DELAYED_PAGES,
+        SPEED_DIAL = 0,
+        HOMEPAGE = 1,
+        LAST_OPEN_PAGES = 2,
+        DELAYED_PAGES = 3,
     }
 
 
@@ -82,9 +82,9 @@ export namespace Midori {
      * @gir-type Enum
      */
     enum ProxyType {
-        AUTOMATIC,
-        HTTP,
-        NONE,
+        AUTOMATIC = 0,
+        HTTP = 1,
+        NONE = 2,
     }
 
 
@@ -112,6 +112,9 @@ export namespace Midori {
     }
 
 
+    /**
+     * @default (null)
+     */
     const keys: GLib.DebugKey[];
 
     /**
@@ -902,27 +905,40 @@ export namespace Midori {
         // Methods
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         exec(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         step(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         row_id(): number;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_string(name: string): string | null;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_int64(name: string): number;
 
         /**
          * @param name 
+         * @throws GLib.Error
          */
         get_double(name: string): number;
 
@@ -1256,6 +1272,7 @@ export namespace Midori {
         // Methods
         /**
          * @param cancellable 
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1266,16 +1283,19 @@ export namespace Midori {
 
         /**
          * @param filename 
+         * @throws GLib.Error
          */
         exec_script(filename: string): boolean;
 
         /**
          * @param callback 
+         * @throws GLib.Error
          */
         transaction(callback: DatabaseCallback): boolean;
 
         /**
          * @param query 
+         * @throws GLib.Error
          */
         exec(query: string): boolean;
 
@@ -1298,6 +1318,7 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         delete_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -1320,11 +1341,13 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         lookup_finish(_res_: Gio.AsyncResult): DatabaseItem | null;
 
         /**
          * @param item 
+         * @throws GLib.Error
          */
         contains(item: DatabaseItem): boolean;
 
@@ -1353,6 +1376,7 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         query_finish(_res_: Gio.AsyncResult): DatabaseItem[] | null;
 
@@ -1375,6 +1399,7 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         update_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -1397,6 +1422,7 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         insert_finish(_res_: Gio.AsyncResult): boolean;
 
@@ -1419,6 +1445,7 @@ export namespace Midori {
 
         /**
          * @param _res_ 
+         * @throws GLib.Error
          */
         clear_finish(_res_: Gio.AsyncResult): boolean;
 

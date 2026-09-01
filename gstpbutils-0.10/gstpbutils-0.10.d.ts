@@ -41,17 +41,17 @@ export namespace GstPbutils {
      * @since 0.10.12
      */
     enum GstInstallPluginsReturn {
-        SUCCESS,
-        NOT_FOUND,
-        ERROR,
-        PARTIAL_SUCCESS,
-        USER_ABORT,
-        CRASHED,
-        INVALID,
-        STARTED_OK,
-        INTERNAL_FAILURE,
-        HELPER_MISSING,
-        INSTALL_IN_PROGRESS,
+        SUCCESS = 0,
+        NOT_FOUND = 1,
+        ERROR = 2,
+        PARTIAL_SUCCESS = 3,
+        USER_ABORT = 4,
+        CRASHED = 100,
+        INVALID = 101,
+        STARTED_OK = 200,
+        INTERNAL_FAILURE = 201,
+        HELPER_MISSING = 202,
+        INSTALL_IN_PROGRESS = 203,
     }
 
 

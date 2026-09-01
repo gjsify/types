@@ -36,14 +36,14 @@ export namespace OsmGpsMap {
      * @gir-type Enum
      */
     enum MapKey_t {
-        FULLSCREEN,
-        ZOOMIN,
-        ZOOMOUT,
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        MAX,
+        FULLSCREEN = 0,
+        ZOOMIN = 1,
+        ZOOMOUT = 2,
+        UP = 3,
+        DOWN = 4,
+        LEFT = 5,
+        RIGHT = 6,
+        MAX = 7,
     }
 
 
@@ -51,31 +51,43 @@ export namespace OsmGpsMap {
      * @gir-type Enum
      */
     enum MapSource_t {
-        NULL,
-        OPENSTREETMAP,
-        OPENSTREETMAP_RENDERER,
-        OPENAERIALMAP,
-        MAPS_FOR_FREE,
-        OPENCYCLEMAP,
-        OPENTOPOMAP,
-        OSM_PUBLIC_TRANSPORT,
-        GOOGLE_STREET,
-        GOOGLE_SATELLITE,
-        GOOGLE_HYBRID,
-        VIRTUAL_EARTH_STREET,
-        VIRTUAL_EARTH_SATELLITE,
-        VIRTUAL_EARTH_HYBRID,
-        OSMC_TRAILS,
-        LAST,
+        NULL = 0,
+        OPENSTREETMAP = 1,
+        OPENSTREETMAP_RENDERER = 2,
+        OPENAERIALMAP = 3,
+        MAPS_FOR_FREE = 4,
+        OPENCYCLEMAP = 5,
+        OPENTOPOMAP = 6,
+        OSM_PUBLIC_TRANSPORT = 7,
+        GOOGLE_STREET = 8,
+        GOOGLE_SATELLITE = 9,
+        GOOGLE_HYBRID = 10,
+        VIRTUAL_EARTH_STREET = 11,
+        VIRTUAL_EARTH_SATELLITE = 12,
+        VIRTUAL_EARTH_HYBRID = 13,
+        OSMC_TRAILS = 14,
+        LAST = 15,
     }
 
 
+    /**
+     * @default auto://
+     */
     const MAP_CACHE_AUTO: string;
 
+    /**
+     * @default none://
+     */
     const MAP_CACHE_DISABLED: string;
 
+    /**
+     * @default friendly://
+     */
     const MAP_CACHE_FRIENDLY: string;
 
+    /**
+     * @default 0
+     */
     const MAP_INVALID: number;
 
     namespace Map {
@@ -1648,22 +1660,22 @@ export namespace OsmGpsMap {
              * @signal
              * @run-first
              */
-            "point-added": (arg0: MapPoint) => void;
+            "point-added": (arg1: MapPoint) => void;
             /**
              * @signal
              * @run-first
              */
-            "point-changed": (arg0: number) => void;
+            "point-changed": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "point-inserted": (arg0: number) => void;
+            "point-inserted": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "point-removed": (arg0: number) => void;
+            "point-removed": (object: number) => void;
             "notify::alpha": (pspec: GObject.ParamSpec) => void;
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;

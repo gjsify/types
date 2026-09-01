@@ -83,6 +83,7 @@ export namespace ArrowCUDA {
          * @param data Data on CPU host to be copied.
          * @returns `true` on success, `false` if there was an error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         copy_from_host(data: Uint8Array | string): boolean;
 
@@ -91,12 +92,14 @@ export namespace ArrowCUDA {
          * @param size The size of memory on GPU device to be copied in bytes.
          * @returns A {@link GLib.Bytes} that have copied memory on CPU   host on success, `null` on error.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         copy_to_host(position: bigint | number, size: bigint | number): GLib.Bytes;
 
         /**
          * @returns A newly created   {@link ArrowCUDA.IPCMemoryHandle} to handle the exported buffer on   success, `null` on error
          * @since 0.8.0
+         * @throws GLib.Error
          */
         ["export"](): IPCMemoryHandle;
 
@@ -111,6 +114,7 @@ export namespace ArrowCUDA {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns A newly created {@link Arrow.RecordBatch} on   success, `null` on error. The record batch data is located on GPU.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         read_record_batch(schema: Arrow.Schema, options: Arrow.ReadOptions | null): Arrow.RecordBatch;
     }
@@ -226,11 +230,13 @@ export namespace ArrowCUDA {
          * @param size A size of CPU buffer in bytes.
          * @returns `true` on success, `false` if there was an error. Sets CPU buffer size. to limit `cudaMemcpy()` calls. If CPU buffer size is `0`, buffering is disabled. The default is `0`.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         set_buffer_size(size: bigint | number): boolean;
 
         /**
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -247,18 +253,21 @@ export namespace ArrowCUDA {
 
         /**
          * @returns The current offset on success, -1 if there was an error.
+         * @throws GLib.Error
          */
         tell(): number;
 
         /**
          * It ensures writing all data on memory to storage.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         flush(): boolean;
 
         /**
          * @param data The data to be written.
          * @returns `true` on success, `false` if there was an error.
+         * @throws GLib.Error
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -373,6 +382,7 @@ export namespace ArrowCUDA {
          * @param gpu_number A GPU device number for the target context.
          * @returns A newly created {@link ArrowCUDA.Context} on   success, `null` on error. Contexts for the same GPU device number   share the same data internally.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         get_context(gpu_number: number): Context;
 
@@ -501,6 +511,7 @@ export namespace ArrowCUDA {
         /**
          * @returns A newly created {@link Arrow.Buffer} on success,   `null` on error. The buffer has serialized `handle`. The serialized   `handle` can be deserialized by `garrow_cuda_ipc_memory_handle_new()`   in other process.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         serialize(): Arrow.Buffer;
     }

@@ -35,17 +35,17 @@ export namespace GES {
         /**
          * Indicates that an error occurred
          */
-        ERROR,
+        ERROR = 0,
         /**
          * Indicates that the loading is being performed
          * asynchronously
          */
-        ASYNC,
+        ASYNC = 1,
         /**
          * Indicates that the loading is complete, without
          * error
          */
-        OK,
+        OK = 2,
     }
 
 
@@ -55,11 +55,11 @@ export namespace GES {
      * @gir-type Enum
      */
     enum ChildrenControlMode {
-        UPDATE,
-        IGNORE_NOTIFIES,
-        UPDATE_OFFSETS,
-        UPDATE_ALL_VALUES,
-        LAST,
+        UPDATE = 0,
+        IGNORE_NOTIFIES = 1,
+        UPDATE_OFFSETS = 2,
+        UPDATE_ALL_VALUES = 3,
+        LAST = 4,
     }
 
 
@@ -78,29 +78,29 @@ export namespace GES {
         /**
          * Represents the start of an object.
          */
-        EDGE_START,
+        EDGE_START = 0,
         /**
          * Represents the start of an object.
          */
-        START,
+        START = 0,
         /**
          * Represents the end of an object.
          */
-        EDGE_END,
+        EDGE_END = 1,
         /**
          * Represents the end of an object.
          */
-        END,
+        END = 1,
         /**
          * Represent the fact we are not working with any edge of an
          *   object.
          */
-        EDGE_NONE,
+        EDGE_NONE = 2,
         /**
          * Represent the fact we are not working with any edge of an
          *   object.
          */
-        NONE,
+        NONE = 2,
     }
 
 
@@ -222,7 +222,7 @@ export namespace GES {
          *  of the element (#GES_EDGE_END), this will END-TRIM the element,
          *  leaving its toplevel unchanged.
          */
-        EDIT_NORMAL,
+        EDIT_NORMAL = 0,
         /**
          * The element is edited the normal way (default).
          *  If acting on the element as a whole (#GES_EDGE_NONE), this will MOVE
@@ -234,7 +234,7 @@ export namespace GES {
          *  of the element (#GES_EDGE_END), this will END-TRIM the element,
          *  leaving its toplevel unchanged.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * The element is edited in ripple mode: moving
          *  itself as well as later elements, keeping their relative times. This
@@ -249,7 +249,7 @@ export namespace GES {
          *  edited element. These additional elements will also be shifted by
          *  the same shift in layers as the edited element.
          */
-        EDIT_RIPPLE,
+        EDIT_RIPPLE = 1,
         /**
          * The element is edited in ripple mode: moving
          *  itself as well as later elements, keeping their relative times. This
@@ -264,7 +264,7 @@ export namespace GES {
          *  edited element. These additional elements will also be shifted by
          *  the same shift in layers as the edited element.
          */
-        RIPPLE,
+        RIPPLE = 1,
         /**
          * The element is edited in roll mode: swapping its
          *  content for its neighbour's, or vis versa, in the timeline output.
@@ -283,7 +283,7 @@ export namespace GES {
          *  whole (#GES_EDGE_NONE) is not defined. The element can not shift
          *  layers under this mode.
          */
-        EDIT_ROLL,
+        EDIT_ROLL = 2,
         /**
          * The element is edited in roll mode: swapping its
          *  content for its neighbour's, or vis versa, in the timeline output.
@@ -302,21 +302,21 @@ export namespace GES {
          *  whole (#GES_EDGE_NONE) is not defined. The element can not shift
          *  layers under this mode.
          */
-        ROLL,
+        ROLL = 2,
         /**
          * The element is edited in trim mode. When acting
          *  on the start of the element, this will START-TRIM it. When acting on
          *  the end of the element, this will END-TRIM it. Acting on the element
          *  as a whole (#GES_EDGE_NONE) is not defined.
          */
-        EDIT_TRIM,
+        EDIT_TRIM = 3,
         /**
          * The element is edited in trim mode. When acting
          *  on the start of the element, this will START-TRIM it. When acting on
          *  the end of the element, this will END-TRIM it. Acting on the element
          *  as a whole (#GES_EDGE_NONE) is not defined.
          */
-        TRIM,
+        TRIM = 3,
         /**
          * The element is edited in slide mode (not yet
          *  implemented): moving the element replacing or consuming content on
@@ -330,7 +330,7 @@ export namespace GES {
          *  (#GES_EDGE_START and #GES_EDGE_END) is not defined. The element can
          *  not shift layers under this mode.
          */
-        EDIT_SLIDE,
+        EDIT_SLIDE = 4,
         /**
          * The element is edited in slide mode (not yet
          *  implemented): moving the element replacing or consuming content on
@@ -344,7 +344,7 @@ export namespace GES {
          *  (#GES_EDGE_START and #GES_EDGE_END) is not defined. The element can
          *  not shift layers under this mode.
          */
-        SLIDE,
+        SLIDE = 4,
     }
 
 
@@ -423,20 +423,20 @@ export namespace GES {
         /**
          * align text left
          */
-        LEFT,
+        LEFT = 0,
         /**
          * align text center
          */
-        CENTER,
+        CENTER = 1,
         /**
          * align text right
          */
-        RIGHT,
+        RIGHT = 2,
         /**
          * align text on xpos position
          */
-        POSITION,
-        ABSOLUTE,
+        POSITION = 4,
+        ABSOLUTE = 5,
     }
 
 
@@ -455,24 +455,24 @@ export namespace GES {
         /**
          * draw text on the baseline
          */
-        BASELINE,
+        BASELINE = 0,
         /**
          * draw text on the bottom
          */
-        BOTTOM,
+        BOTTOM = 1,
         /**
          * draw text on top
          */
-        TOP,
+        TOP = 2,
         /**
          * draw text on ypos position
          */
-        POSITION,
+        POSITION = 3,
         /**
          * draw text on the center
          */
-        CENTER,
-        ABSOLUTE,
+        CENTER = 4,
+        ABSOLUTE = 5,
     }
 
 
@@ -490,296 +490,297 @@ export namespace GES {
         /**
          * Transition type has not been set,
          */
-        NONE,
+        NONE = 0,
         /**
          * A bar moves from left to right,
          */
-        BAR_WIPE_LR,
+        BAR_WIPE_LR = 1,
         /**
          * A bar moves from top to bottom,
          */
-        BAR_WIPE_TB,
+        BAR_WIPE_TB = 2,
         /**
          * A box expands from the upper-left corner to the lower-right corner,
          */
-        BOX_WIPE_TL,
+        BOX_WIPE_TL = 3,
         /**
          * A box expands from the upper-right corner to the lower-left corner,
          */
-        BOX_WIPE_TR,
+        BOX_WIPE_TR = 4,
         /**
          * A box expands from the lower-right corner to the upper-left corner,
          */
-        BOX_WIPE_BR,
+        BOX_WIPE_BR = 5,
         /**
          * A box expands from the lower-left corner to the upper-right corner,
          */
-        BOX_WIPE_BL,
+        BOX_WIPE_BL = 6,
         /**
          * A box shape expands from each of the four corners toward the center,
          */
-        FOUR_BOX_WIPE_CI,
+        FOUR_BOX_WIPE_CI = 7,
         /**
          * A box shape expands from the center of each quadrant toward the corners of each quadrant,
          */
-        FOUR_BOX_WIPE_CO,
+        FOUR_BOX_WIPE_CO = 8,
         /**
          * A central, vertical line splits and expands toward the left and right edges,
          */
-        BARNDOOR_V,
+        BARNDOOR_V = 21,
         /**
          * A central, horizontal line splits and expands toward the top and bottom edges,
          */
-        BARNDOOR_H,
+        BARNDOOR_H = 22,
         /**
          * A box expands from the top edge's midpoint to the bottom corners,
          */
-        BOX_WIPE_TC,
+        BOX_WIPE_TC = 23,
         /**
          * A box expands from the right edge's midpoint to the left corners,
          */
-        BOX_WIPE_RC,
+        BOX_WIPE_RC = 24,
         /**
          * A box expands from the bottom edge's midpoint to the top corners,
          */
-        BOX_WIPE_BC,
+        BOX_WIPE_BC = 25,
         /**
          * A box expands from the left edge's midpoint to the right corners,
          */
-        BOX_WIPE_LC,
+        BOX_WIPE_LC = 26,
         /**
          * A diagonal line moves from the upper-left corner to the lower-right corner,
          */
-        DIAGONAL_TL,
+        DIAGONAL_TL = 41,
         /**
          * A diagonal line moves from the upper right corner to the lower-left corner,
          */
-        DIAGONAL_TR,
+        DIAGONAL_TR = 42,
         /**
          * Two wedge shapes slide in from the top and bottom edges toward the center,
          */
-        BOWTIE_V,
+        BOWTIE_V = 43,
         /**
          * Two wedge shapes slide in from the left and right edges toward the center,
          */
-        BOWTIE_H,
+        BOWTIE_H = 44,
         /**
          * A diagonal line from the lower-left to upper-right corners splits and expands toward the opposite corners,
          */
-        BARNDOOR_DBL,
+        BARNDOOR_DBL = 45,
         /**
          * A diagonal line from upper-left to lower-right corners splits and expands toward the opposite corners,
          */
-        BARNDOOR_DTL,
+        BARNDOOR_DTL = 46,
         /**
          * Four wedge shapes split from the center and retract toward the four edges,
          */
-        MISC_DIAGONAL_DBD,
+        MISC_DIAGONAL_DBD = 47,
         /**
          * A diamond connecting the four edge midpoints simultaneously contracts toward the center and expands toward the edges,
          */
-        MISC_DIAGONAL_DD,
+        MISC_DIAGONAL_DD = 48,
         /**
          * A wedge shape moves from top to bottom,
          */
-        VEE_D,
+        VEE_D = 61,
         /**
          * A wedge shape moves from right to left,
          */
-        VEE_L,
+        VEE_L = 62,
         /**
          * A wedge shape moves from bottom to top,
          */
-        VEE_U,
+        VEE_U = 63,
         /**
          * A wedge shape moves from left to right,
          */
-        VEE_R,
+        VEE_R = 64,
         /**
          * A 'V' shape extending from the bottom edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,
          */
-        BARNVEE_D,
+        BARNVEE_D = 65,
         /**
          * A 'V' shape extending from the left edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,
          */
-        BARNVEE_L,
+        BARNVEE_L = 66,
         /**
          * A 'V' shape extending from the top edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,
          */
-        BARNVEE_U,
+        BARNVEE_U = 67,
         /**
          * A 'V' shape extending from the right edge's midpoint to the opposite corners contracts toward the center and expands toward the edges,
          */
-        BARNVEE_R,
+        BARNVEE_R = 68,
         /**
          * A rectangle expands from the center.,
          */
-        IRIS_RECT,
+        IRIS_RECT = 101,
         /**
          * A radial hand sweeps clockwise from the twelve o'clock position,
          */
-        CLOCK_CW12,
+        CLOCK_CW12 = 201,
         /**
          * A radial hand sweeps clockwise from the three o'clock position,
          */
-        CLOCK_CW3,
+        CLOCK_CW3 = 202,
         /**
          * A radial hand sweeps clockwise from the six o'clock position,
          */
-        CLOCK_CW6,
+        CLOCK_CW6 = 203,
         /**
          * A radial hand sweeps clockwise from the nine o'clock position,
          */
-        CLOCK_CW9,
+        CLOCK_CW9 = 204,
         /**
          * Two radial hands sweep clockwise from the twelve and six o'clock positions,
          */
-        PINWHEEL_TBV,
+        PINWHEEL_TBV = 205,
         /**
          * Two radial hands sweep clockwise from the nine and three o'clock positions,
          */
-        PINWHEEL_TBH,
+        PINWHEEL_TBH = 206,
         /**
          * Four radial hands sweep clockwise,
          */
-        PINWHEEL_FB,
+        PINWHEEL_FB = 207,
         /**
          * A fan unfolds from the top edge, the fan axis at the center,
          */
-        FAN_CT,
+        FAN_CT = 211,
         /**
          * A fan unfolds from the right edge, the fan axis at the center,
          */
-        FAN_CR,
+        FAN_CR = 212,
         /**
          * Two fans, their axes at the center, unfold from the top and bottom,
          */
-        DOUBLEFAN_FOV,
+        DOUBLEFAN_FOV = 213,
         /**
          * Two fans, their axes at the center, unfold from the left and right,
          */
-        DOUBLEFAN_FOH,
+        DOUBLEFAN_FOH = 214,
         /**
          * A radial hand sweeps clockwise from the top edge's midpoint,
          */
-        SINGLESWEEP_CWT,
+        SINGLESWEEP_CWT = 221,
         /**
          * A radial hand sweeps clockwise from the right edge's midpoint,
          */
-        SINGLESWEEP_CWR,
+        SINGLESWEEP_CWR = 222,
         /**
          * A radial hand sweeps clockwise from the bottom edge's midpoint,
          */
-        SINGLESWEEP_CWB,
+        SINGLESWEEP_CWB = 223,
         /**
          * A radial hand sweeps clockwise from the left edge's midpoint,
          */
-        SINGLESWEEP_CWL,
+        SINGLESWEEP_CWL = 224,
         /**
          * Two radial hands sweep clockwise and counter-clockwise from the top and bottom edges' midpoints,
          */
-        DOUBLESWEEP_PV,
+        DOUBLESWEEP_PV = 225,
         /**
          * Two radial hands sweep clockwise and counter-clockwise from the left and right edges' midpoints,
          */
-        DOUBLESWEEP_PD,
+        DOUBLESWEEP_PD = 226,
         /**
          * Two radial hands attached at the top and bottom edges' midpoints sweep from right to left,
          */
-        DOUBLESWEEP_OV,
+        DOUBLESWEEP_OV = 227,
         /**
          * Two radial hands attached at the left and right edges' midpoints sweep from top to bottom,
          */
-        DOUBLESWEEP_OH,
+        DOUBLESWEEP_OH = 228,
         /**
          * A fan unfolds from the bottom, the fan axis at the top edge's midpoint,
          */
-        FAN_T,
+        FAN_T = 231,
         /**
          * A fan unfolds from the left, the fan axis at the right edge's midpoint,
          */
-        FAN_R,
+        FAN_R = 232,
         /**
          * A fan unfolds from the top, the fan axis at the bottom edge's midpoint,
          */
-        FAN_B,
+        FAN_B = 233,
         /**
          * A fan unfolds from the right, the fan axis at the left edge's midpoint,
          */
-        FAN_L,
+        FAN_L = 234,
         /**
          * Two fans, their axes at the top and bottom, unfold from the center,
          */
-        DOUBLEFAN_FIV,
+        DOUBLEFAN_FIV = 235,
         /**
          * Two fans, their axes at the left and right, unfold from the center,
          */
-        DOUBLEFAN_FIH,
+        DOUBLEFAN_FIH = 236,
         /**
          * A radial hand sweeps clockwise from the upper-left corner,
          */
-        SINGLESWEEP_CWTL,
+        SINGLESWEEP_CWTL = 241,
         /**
          * A radial hand sweeps counter-clockwise from the lower-left corner.,
          */
-        SINGLESWEEP_CWBL,
+        SINGLESWEEP_CWBL = 242,
         /**
          * A radial hand sweeps clockwise from the lower-right corner,
          */
-        SINGLESWEEP_CWBR,
+        SINGLESWEEP_CWBR = 243,
         /**
          * A radial hand sweeps counter-clockwise from the upper-right corner,
          */
-        SINGLESWEEP_CWTR,
+        SINGLESWEEP_CWTR = 244,
         /**
          * Two radial hands attached at the upper-left and lower-right corners sweep down and up,
          */
-        DOUBLESWEEP_PDTL,
+        DOUBLESWEEP_PDTL = 245,
         /**
          * Two radial hands attached at the lower-left and upper-right corners sweep down and up,
          */
-        DOUBLESWEEP_PDBL,
+        DOUBLESWEEP_PDBL = 246,
         /**
          * Two radial hands attached at the upper-left and upper-right corners sweep down,
          */
-        SALOONDOOR_T,
+        SALOONDOOR_T = 251,
         /**
          * Two radial hands attached at the upper-left and lower-left corners sweep to the right,
          */
-        SALOONDOOR_L,
+        SALOONDOOR_L = 252,
         /**
          * Two radial hands attached at the lower-left and lower-right corners sweep up,
          */
-        SALOONDOOR_B,
+        SALOONDOOR_B = 253,
         /**
          * Two radial hands attached at the upper-right and lower-right corners sweep to the left,
          */
-        SALOONDOOR_R,
+        SALOONDOOR_R = 254,
         /**
          * Two radial hands attached at the midpoints of the top and bottom halves sweep from right to left,
          */
-        WINDSHIELD_R,
+        WINDSHIELD_R = 261,
         /**
          * Two radial hands attached at the midpoints of the left and right halves sweep from top to bottom,
          */
-        WINDSHIELD_U,
+        WINDSHIELD_U = 262,
         /**
          * Two sets of radial hands attached at the midpoints of the top and bottom halves sweep from top to bottom and bottom to top,
          */
-        WINDSHIELD_V,
+        WINDSHIELD_V = 263,
         /**
          * Two sets of radial hands attached at the midpoints of the left and right halves sweep from left to right and right to left,
          */
-        WINDSHIELD_H,
+        WINDSHIELD_H = 264,
         /**
          * Crossfade
          */
-        CROSSFADE,
+        CROSSFADE = 512,
         /**
          * Similar to crossfade, but fade in the front video without fading out
          * the background one
+         * @since 1.22
          */
-        FADE_IN,
+        FADE_IN = 513,
     }
 
 
@@ -798,151 +799,184 @@ export namespace GES {
         /**
          * A standard SMPTE test pattern
          */
-        SMPTE,
+        SMPTE = 0,
         /**
          * Random noise
          */
-        SNOW,
+        SNOW = 1,
         /**
          * A black image
          */
-        BLACK,
+        BLACK = 2,
         /**
          * A white image
          */
-        WHITE,
+        WHITE = 3,
         /**
          * A red image
          */
-        RED,
+        RED = 4,
         /**
          * A green image
          */
-        GREEN,
+        GREEN = 5,
         /**
          * A blue image
          */
-        BLUE,
+        BLUE = 6,
         /**
          * Checkers pattern (1px)
          */
-        CHECKERS_1,
+        CHECKERS_1 = 7,
         /**
          * Checkers pattern (2px)
          */
-        CHECKERS_2,
+        CHECKERS_2 = 8,
         /**
          * Checkers pattern (4px)
          */
-        CHECKERS_4,
+        CHECKERS_4 = 9,
         /**
          * Checkers pattern (8px)
          */
-        CHECKERS_8,
+        CHECKERS_8 = 10,
         /**
          * Circular pattern
          */
-        CIRCULAR,
+        CIRCULAR = 11,
         /**
          * Alternate between black and white
          */
-        BLINK,
+        BLINK = 12,
         /**
          * SMPTE test pattern (75% color bars)
          */
-        SMPTE75,
+        SMPTE75 = 13,
         /**
          * Zone plate
          */
-        ZONE_PLATE,
+        ZONE_PLATE = 14,
         /**
          * Gamut checkers
          */
-        GAMUT,
+        GAMUT = 15,
         /**
          * Chroma zone plate
          */
-        CHROMA_ZONE_PLATE,
+        CHROMA_ZONE_PLATE = 16,
         /**
          * Solid color
          */
-        SOLID_COLOR,
+        SOLID_COLOR = 17,
     }
 
 
     /**
      * Constant to define an undefined frame number
+     * @default 9223372036854775807
      */
     const FRAME_NUMBER_NONE: number;
 
     /**
      * The description of the object, to be used in various contexts (string).
+     * @default description
      */
     const META_DESCRIPTION: string;
 
     /**
      * The file extension of files produced by a {@link GES.Formatter} (string).
+     * @default extension
      */
     const META_FORMATTER_EXTENSION: string;
 
     /**
      * The mimetype used for the file produced by a {@link GES.Formatter} (string).
+     * @default mimetype
      */
     const META_FORMATTER_MIMETYPE: string;
 
     /**
      * The name of a formatter, used as the {@link GES.Asset.id} for {@link GES.Formatter}
      * assets (string).
+     * @default name
      */
     const META_FORMATTER_NAME: string;
 
     /**
      * The rank of a {@link GES.Formatter} (a {@link Gst.Rank}).
+     * @default rank
      */
     const META_FORMATTER_RANK: string;
 
     /**
      * The version of a {@link GES.Formatter} (double).
+     * @default version
      */
     const META_FORMATTER_VERSION: string;
 
     /**
      * The version of the format in which a project is serialized (string).
+     * @default format-version
      */
     const META_FORMAT_VERSION: string;
 
     /**
      * The ARGB color of a {@link GES.Marker} (an AARRGGBB hex as a uint).
+     * @default marker-color
      */
     const META_MARKER_COLOR: string;
 
     /**
      * The volume for a {@link GES.Track} or a {@link GES.Layer} (float).
+     * @default volume
      */
     const META_VOLUME: string;
 
     /**
      * The default volume for a {@link GES.Track} or a {@link GES.Layer} as a float.
+     * @default 1.000000
      */
     const META_VOLUME_DEFAULT: number;
 
+    /**
+     * @default multifile://
+     */
     const MULTI_FILE_URI_PREFIX: string;
 
+    /**
+     * @default 4
+     */
     const PADDING: number;
 
+    /**
+     * @default 20
+     */
     const PADDING_LARGE: number;
 
     /**
      * Layer priority when a timeline element is not in any layer.
+     * @default 4294967295
      */
     const TIMELINE_ELEMENT_NO_LAYER_PRIORITY: number;
 
+    /**
+     * @default 1
+     */
     const VERSION_MAJOR: number;
 
+    /**
+     * @default 6
+     */
     const VERSION_MICRO: number;
 
+    /**
+     * @default 28
+     */
     const VERSION_MINOR: number;
 
+    /**
+     * @default 0
+     */
     const VERSION_NANO: number;
 
     /**
@@ -1025,6 +1059,7 @@ export namespace GES {
      * for some reason.
      * @param argv pointer to application's argv
      * @returns `true` if GES could be initialized.
+     * @throws GLib.Error
      */
     function init_check(argv: string[] | null): [boolean, string[] | null];
 
@@ -1159,11 +1194,11 @@ export namespace GES {
         /**
          * Marker does not serve any special purpose.
          */
-        NONE,
+        NONE = 0,
         /**
          * Marker can be a snapping target.
          */
-        SNAPPABLE,
+        SNAPPABLE = 1,
     }
 
 
@@ -1181,15 +1216,15 @@ export namespace GES {
         /**
          * The metadata is readable
          */
-        READABLE,
+        READABLE = 1,
         /**
          * The metadata is writable
          */
-        WRITABLE,
+        WRITABLE = 2,
         /**
          * The metadata is readable and writable
          */
-        READWRITE,
+        READWRITE = 3,
     }
 
 
@@ -1209,23 +1244,23 @@ export namespace GES {
          * Output the {@link GES.Pipeline.timeline}'s
          * audio to the soundcard
          */
-        AUDIO_PREVIEW,
+        AUDIO_PREVIEW = 1,
         /**
          * Output the {@link GES.Pipeline.timeline}'s
          * video to the screen
          */
-        VIDEO_PREVIEW,
+        VIDEO_PREVIEW = 2,
         /**
          * Output both the {@link GES.Pipeline.timeline}'s
          * audio and video to the soundcard and screen (default)
          */
-        FULL_PREVIEW,
+        FULL_PREVIEW = 3,
         /**
          * Render the {@link GES.Pipeline.timeline} with
          * forced decoding (the underlying #encodebin has its
          * #encodebin:avoid-reencoding property set to `false`)
          */
-        RENDER,
+        RENDER = 4,
         /**
          * Render the {@link GES.Pipeline.timeline},
          * avoiding decoding/reencoding (the underlying #encodebin has its
@@ -1233,7 +1268,7 @@ export namespace GES {
          * > NOTE: Smart rendering can not work in tracks where {@link GES.Track.mixing}
          * > is enabled.
          */
-        SMART_RENDER,
+        SMART_RENDER = 8,
     }
 
 
@@ -1257,23 +1292,23 @@ export namespace GES {
         /**
          * A track of unknown type (i.e. invalid)
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * An audio track
          */
-        AUDIO,
+        AUDIO = 2,
         /**
          * A video track
          */
-        VIDEO,
+        VIDEO = 4,
         /**
          * A text (subtitle) track
          */
-        TEXT,
+        TEXT = 8,
         /**
          * A custom-content track
          */
-        CUSTOM,
+        CUSTOM = 16,
     }
 
 
@@ -1661,6 +1696,7 @@ export namespace GES {
          * {@link GES.Asset.id} of the asset may determine the properties and state of the
          * newly created object.
          * @returns A newly created object, or `null` if an error occurred.
+         * @throws GLib.Error
          */
         extract(): Extractable;
 
@@ -2288,6 +2324,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2297,6 +2334,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Asset;
 
@@ -2396,6 +2434,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4013,6 +4052,7 @@ export namespace GES {
          * @param track The track to add `child` to
          * @returns The element that was added to `track`, either `child` or a copy of child, or `null` if the element could not be added.
          * @since 1.18
+         * @throws GLib.Error
          */
         add_child_to_track(child: TrackElement, track: Track): TrackElement;
 
@@ -4033,6 +4073,7 @@ export namespace GES {
          * @param index The index to add `effect` at, or -1 to add at the highest,         see `ges_clip_get_top_effect_index` for more information
          * @returns `true` if `effect` was successfully added to `clip` at `index`.
          * @since 1.18
+         * @throws GLib.Error
          */
         add_top_effect(effect: BaseEffect, index: number): boolean;
 
@@ -4127,6 +4168,7 @@ export namespace GES {
          * @param timeline_time A time in the timeline time coordinates
          * @returns The time in the internal coordinates of `child` corresponding to `timeline_time`, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
          * @since 1.18
+         * @throws GLib.Error
          */
         get_internal_time_from_timeline_time(child: TrackElement, timeline_time: Gst.ClockTime): Gst.ClockTime;
 
@@ -4190,6 +4232,7 @@ export namespace GES {
          * @param internal_time A time in the internal time coordinates of `child`
          * @returns The time in the timeline coordinates corresponding to `internal_time`, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
          * @since 1.18
+         * @throws GLib.Error
          */
         get_timeline_time_from_internal_time(child: TrackElement, internal_time: Gst.ClockTime): Gst.ClockTime;
 
@@ -4207,6 +4250,7 @@ export namespace GES {
          * @param frame_number The frame number to get the corresponding timestamp of in the timeline coordinates
          * @returns The timestamp corresponding to `frame_number` in the core children of `clip`, in the timeline coordinates, or #GST_CLOCK_TIME_NONE if the conversion could not be performed.
          * @since 1.18
+         * @throws GLib.Error
          */
         get_timeline_time_from_source_frame(frame_number: FrameNumber): Gst.ClockTime;
 
@@ -4260,6 +4304,7 @@ export namespace GES {
          * @param layer The new layer
          * @returns `true` if `clip` was successfully moved to `layer`.
          * @since 1.18
+         * @throws GLib.Error
          */
         move_to_layer_full(layer: Layer): boolean;
 
@@ -4271,6 +4316,7 @@ export namespace GES {
          * @param effect The top effect to remove
          * @returns `true` if `effect` was successfully added to `clip` at `index`.
          * @since 1.18
+         * @throws GLib.Error
          */
         remove_top_effect(effect: BaseEffect): boolean;
 
@@ -4300,6 +4346,7 @@ export namespace GES {
          * @param newindex The index for `effect` in `clip`
          * @returns `true` if `effect` was successfully moved to `newindex`.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_top_effect_index_full(effect: BaseEffect, newindex: number): boolean;
 
@@ -4347,6 +4394,7 @@ export namespace GES {
          * @param position The timeline position at which to perform the split, between the start and end of the clip
          * @returns The newly created clip resulting from the splitting `clip`, or `null` if `clip` can't be split.
          * @since 1.18
+         * @throws GLib.Error
          */
         split_full(position: bigint | number): Clip | null;
     }
@@ -5010,6 +5058,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5019,6 +5068,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ClipAsset;
 
@@ -5118,6 +5168,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5304,13 +5355,13 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "child-added": (arg0: TimelineElement) => void;
+            "child-added": (element: TimelineElement) => void;
             /**
              * Will be emitted after a child is removed from the container.
              * @signal
              * @run-last
              */
-            "child-removed": (arg0: TimelineElement) => void;
+            "child-removed": (element: TimelineElement) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::in-point": (pspec: GObject.ParamSpec) => void;
@@ -6023,7 +6074,7 @@ export namespace GES {
              * @since 1.24
              * @run-last
              */
-            discovered: (arg0: GstPbutils.DiscovererInfo, arg1: GLib.Error | null) => void;
+            discovered: (info: GstPbutils.DiscovererInfo, error: GLib.Error | null) => void;
             /**
              * Retrieves information about a URI from and external source of information,
              * like a cache file. This is used by the discoverer to speed up the
@@ -6032,14 +6083,14 @@ export namespace GES {
              * @since 1.24
              * @run-last
              */
-            "load-serialized-info": (arg0: string) => GstPbutils.DiscovererInfo | null;
+            "load-serialized-info": (uri: string) => GstPbutils.DiscovererInfo | null;
             /**
              * Allows to setup the source element before the discoverer runs.
              * @signal
              * @since 1.24
              * @run-last
              */
-            "source-setup": (arg0: Gst.Element) => void;
+            "source-setup": (source: Gst.Element) => void;
             "notify::timeout": (pspec: GObject.ParamSpec) => void;
             "notify::use-cache": (pspec: GObject.ParamSpec) => void;
         }
@@ -6441,6 +6492,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -6450,6 +6502,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): EffectAsset;
 
@@ -6731,6 +6784,7 @@ export namespace GES {
          * @param uri a `gchar` * pointing to a URI
          * @returns TRUE if the timeline data was successfully loaded from the URI, else FALSE.
          * @deprecated since 1.18: Use `ges_timeline_load_from_uri`
+         * @throws GLib.Error
          */
         load_from_uri(timeline: Timeline, uri: string): boolean;
 
@@ -6741,6 +6795,7 @@ export namespace GES {
          * @param overwrite `true` to overwrite file if it exists
          * @returns TRUE if the timeline data was successfully saved to the URI else FALSE.
          * @deprecated since 1.18: Use `ges_timeline_save_to_uri`
+         * @throws GLib.Error
          */
         save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean;
 
@@ -7056,19 +7111,19 @@ export namespace GES {
              * @since 1.18
              * @run-first
              */
-            "active-changed": (arg0: boolean, arg1: Track[]) => void;
+            "active-changed": (active: boolean, tracks: Track[]) => void;
             /**
              * Will be emitted after the clip is added to the layer.
              * @signal
              * @run-first
              */
-            "clip-added": (arg0: Clip) => void;
+            "clip-added": (clip: Clip) => void;
             /**
              * Will be emitted after the clip is removed from the layer.
              * @signal
              * @run-first
              */
-            "clip-removed": (arg0: Clip) => void;
+            "clip-removed": (clip: Clip) => void;
             "notify::auto-transition": (pspec: GObject.ParamSpec) => void;
             "notify::priority": (pspec: GObject.ParamSpec) => void;
         }
@@ -7217,6 +7272,7 @@ export namespace GES {
          * @param track_types The {@link GES.Clip.supported_formats} to set on the the new clip, or #GES_TRACK_TYPE_UNKNOWN to use the default
          * @returns The newly created clip.
          * @since 1.18
+         * @throws GLib.Error
          */
         add_asset_full(asset: Asset, start: Gst.ClockTime, inpoint: Gst.ClockTime, duration: Gst.ClockTime, track_types: TrackType): Clip;
 
@@ -7237,6 +7293,7 @@ export namespace GES {
          * @param clip The clip to add
          * @returns `true` if `clip` was properly added to `layer`, or `false` if `layer` refused to add `clip`.
          * @since 1.18
+         * @throws GLib.Error
          */
         add_clip_full(clip: Clip): boolean;
 
@@ -8309,21 +8366,21 @@ export namespace GES {
              * @since 1.18
              * @run-first
              */
-            "marker-added": (arg0: number, arg1: Marker) => void;
+            "marker-added": (position: number, marker: Marker) => void;
             /**
              * Will be emitted after the marker was moved to.
              * @signal
              * @since 1.18
              * @run-first
              */
-            "marker-moved": (arg0: number, arg1: number, arg2: Marker) => void;
+            "marker-moved": (previous_position: number, new_position: number, marker: Marker) => void;
             /**
              * Will be emitted after the marker was removed the marker-list.
              * @signal
              * @since 1.18
              * @run-first
              */
-            "marker-removed": (arg0: Marker) => void;
+            "marker-removed": (marker: Marker) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -8913,6 +8970,7 @@ export namespace GES {
          * @param format The desired mime type (for example, "image/jpeg")
          * @param location The path to save the thumbnail to
          * @returns `true` if `self`'s current image preview was successfully saved to `location` using the given `format`, `height` and `width`.
+         * @throws GLib.Error
          */
         save_thumbnail(width: number, height: number, format: string, location: string): boolean;
 
@@ -9208,24 +9266,24 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "asset-added": (arg0: Asset) => void;
+            "asset-added": (asset: Asset) => void;
             /**
              * @signal
              * @since 1.8
              * @run-last
              */
-            "asset-loading": (arg0: Asset) => void;
+            "asset-loading": (asset: Asset) => void;
             /**
              * @signal
              * @run-last
              */
-            "asset-removed": (arg0: Asset) => void;
+            "asset-removed": (asset: Asset) => void;
             /**
              * @signal
              * @since 1.18
              * @run-last
              */
-            "error-loading": (arg0: Timeline, arg1: GLib.Error) => void;
+            "error-loading": (timeline: Timeline, error: GLib.Error) => void;
             /**
              * Informs you that a {@link GES.Asset} could not be created. In case of
              * missing GStreamer plugins, the error will be set to #GST_CORE_ERROR
@@ -9233,18 +9291,18 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "error-loading-asset": (arg0: GLib.Error, arg1: string, arg2: GObject.GType) => void;
+            "error-loading-asset": (error: GLib.Error, id: string, extractable_type: GObject.GType) => void;
             /**
              * @signal
              * @run-first
              */
-            loaded: (arg0: Timeline) => void;
+            loaded: (timeline: Timeline) => void;
             /**
              * @signal
              * @since 1.18
              * @run-first
              */
-            loading: (arg0: Timeline) => void;
+            loading: (timeline: Timeline) => void;
             /**
              * ```c
              * static gchar
@@ -9266,7 +9324,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "missing-uri": (arg0: GLib.Error, arg1: Asset) => string | null;
+            "missing-uri": (error: GLib.Error, wrong_asset: Asset) => string | null;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -9450,6 +9508,7 @@ export namespace GES {
          * @param id The id of the asset to create and add to `project`
          * @param extractable_type The {@link GObject.GType} of the asset to create
          * @returns The newly created {@link GES.Asset} or `null`. MT safe.
+         * @throws GLib.Error
          */
         create_asset_sync(id: string | null, extractable_type: GObject.GType): Asset | null;
 
@@ -9492,6 +9551,7 @@ export namespace GES {
          * Loads `project` into `timeline`
          * @param timeline A blank timeline to load `project` into
          * @returns `true` if the project could be loaded `false` otherwise. MT safe.
+         * @throws GLib.Error
          */
         load(timeline: Timeline): boolean;
 
@@ -9511,6 +9571,7 @@ export namespace GES {
          * @param formatter_asset The formatter asset to use or `null`. If `null`, will try to save in the same format as the one from which the timeline as been loaded or default to the best formatter as defined in `ges_find_formatter_for_uri`
          * @param overwrite `true` to overwrite file if it exists
          * @returns `true` if the project could be save, `false` otherwise MT safe.
+         * @throws GLib.Error
          */
         save(timeline: Timeline, uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean;
 
@@ -10065,6 +10126,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10074,6 +10136,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Project;
 
@@ -10173,6 +10236,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10553,6 +10617,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -10562,6 +10627,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): SourceClipAsset;
 
@@ -11168,7 +11234,7 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "group-added": (arg0: Group) => void;
+            "group-added": (group: Group) => void;
             /**
              * Will be emitted after the group is removed from the timeline through
              * `ges_container_ungroup`. Note that `group` will no longer contain its
@@ -11179,7 +11245,7 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "group-removed": (arg0: Group, arg1: Container[]) => void;
+            "group-removed": (group: Group, children: Container[]) => void;
             /**
              * Will be emitted after the layer is added to the timeline.
              * 
@@ -11190,13 +11256,13 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "layer-added": (arg0: Layer) => void;
+            "layer-added": (layer: Layer) => void;
             /**
              * Will be emitted after the layer is removed from the timeline.
              * @signal
              * @run-first
              */
-            "layer-removed": (arg0: Layer) => void;
+            "layer-removed": (layer: Layer) => void;
             /**
              * Simplified version of {@link GES.Timeline.SignalSignatures.select_tracks_for_object | GES.Timeline::select-tracks-for-object} which only
              * allows `track_element` to be added to a single {@link GES.Track}.
@@ -11204,7 +11270,7 @@ export namespace GES {
              * @since 1.18
              * @run-last
              */
-            "select-element-track": (arg0: Clip, arg1: TrackElement) => Track | null;
+            "select-element-track": (clip: Clip, track_element: TrackElement) => Track | null;
             /**
              * This will be emitted whenever the timeline needs to determine which
              * tracks a clip's children should be added to. The track element will
@@ -11260,7 +11326,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "select-tracks-for-object": (arg0: Clip, arg1: TrackElement) => Track[];
+            "select-tracks-for-object": (clip: Clip, track_element: TrackElement) => Track[];
             /**
              * Will be emitted whenever a snapping event ends. After a snap event
              * has started (see {@link GES.Timeline.SignalSignatures.snapping_started | GES.Timeline::snapping-started}), it can later end
@@ -11270,7 +11336,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "snapping-ended": (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            "snapping-ended": (obj1: TrackElement, obj2: TrackElement, position: number) => void;
             /**
              * Will be emitted whenever an element's movement invokes a snapping
              * event during an edit (usually of one of its ancestors) because its
@@ -11284,7 +11350,7 @@ export namespace GES {
              * @signal
              * @run-last
              */
-            "snapping-started": (arg0: TrackElement, arg1: TrackElement, arg2: number) => void;
+            "snapping-started": (obj1: TrackElement, obj2: TrackElement, position: number) => void;
             /**
              * Will be emitted after the track is added to the timeline.
              * 
@@ -11295,13 +11361,13 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "track-added": (arg0: Track) => void;
+            "track-added": (track: Track) => void;
             /**
              * Will be emitted after the track is removed from the timeline.
              * @signal
              * @run-first
              */
-            "track-removed": (arg0: Track) => void;
+            "track-removed": (track: Track) => void;
             "notify::auto-transition": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::snapping-distance": (pspec: GObject.ParamSpec) => void;
@@ -11757,6 +11823,7 @@ export namespace GES {
          * Loads the contents of URI into the timeline.
          * @param uri The URI to load from
          * @returns `true` if the timeline was loaded successfully from `uri`.
+         * @throws GLib.Error
          */
         load_from_uri(uri: string): boolean;
 
@@ -11818,6 +11885,7 @@ export namespace GES {
          * @param formatter_asset The formatter asset to use, or `null`
          * @param overwrite `true` to overwrite file if it exists
          * @returns `true` if `timeline` was successfully saved to `uri`.
+         * @throws GLib.Error
          */
         save_to_uri(uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean;
 
@@ -12491,7 +12559,7 @@ export namespace GES {
              * @since 1.18
              * @run-first
              */
-            "child-property-added": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "child-property-added": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when the element has a child property unregistered. See
              * `ges_timeline_element_remove_child_property()`.
@@ -12499,7 +12567,7 @@ export namespace GES {
              * @since 1.18
              * @run-first
              */
-            "child-property-removed": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "child-property-removed": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12509,7 +12577,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::in-point": (pspec: GObject.ParamSpec) => void;
             "notify::max-duration": (pspec: GObject.ParamSpec) => void;
@@ -12528,7 +12596,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::duration": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::duration": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12538,7 +12606,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::in-point": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::in-point": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12548,7 +12616,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::max-duration": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::max-duration": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12558,7 +12626,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::name": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::name": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12568,7 +12636,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::parent": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::parent": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12578,7 +12646,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::priority": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::priority": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12588,7 +12656,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::serialize": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::serialize": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12598,7 +12666,7 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::start": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::start": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
             /**
              * Emitted when a child of the element has one of its registered
              * properties set. See `ges_timeline_element_add_child_property()`.
@@ -12608,8 +12676,8 @@ export namespace GES {
              * @detailed
              * @run-first
              */
-            "deep-notify::timeline": (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
-            [key: `deep-notify::${string}`]: (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            "deep-notify::timeline": (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
+            [key: `deep-notify::${string}`]: (prop_object: GObject.Object, prop: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -13169,6 +13237,7 @@ export namespace GES {
          * @param position The edit position: a new location for the edge of `self` (in nanoseconds) in the timeline coordinates
          * @returns `true` if the edit of `self` completed, `false` on failure.
          * @since 1.18
+         * @throws GLib.Error
          */
         edit_full(new_layer_priority: bigint | number, mode: EditMode, edge: Edge, position: bigint | number): boolean;
 
@@ -13425,6 +13494,7 @@ export namespace GES {
          * @param value The value to set the property to
          * @returns `true` if the property was found and set.
          * @since 1.18
+         * @throws GLib.Error
          */
         set_child_property_full(property_name: string, value: GObject.Value | any): boolean;
 
@@ -14481,13 +14551,13 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "track-element-added": (arg0: TrackElement) => void;
+            "track-element-added": (effect: TrackElement) => void;
             /**
              * Will be emitted after a track element is removed from the track.
              * @signal
              * @run-first
              */
-            "track-element-removed": (arg0: TrackElement) => void;
+            "track-element-removed": (effect: TrackElement) => void;
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -14695,6 +14765,7 @@ export namespace GES {
          * @param object The element to add
          * @returns `true` if `object` was successfully added to `track`.
          * @since 1.18
+         * @throws GLib.Error
          */
         add_element_full(object: TrackElement): boolean;
 
@@ -14762,6 +14833,7 @@ export namespace GES {
          * @param object The element to remove
          * @returns `true` if `object` was successfully removed from `track`.
          * @since 1.18
+         * @throws GLib.Error
          */
         remove_element_full(object: TrackElement): boolean;
 
@@ -15384,14 +15456,14 @@ export namespace GES {
              * @signal
              * @run-first
              */
-            "control-binding-added": (arg0: Gst.ControlBinding) => void;
+            "control-binding-added": (control_binding: Gst.ControlBinding) => void;
             /**
              * This is emitted when a control binding is removed from a child
              * property of the track element.
              * @signal
              * @run-first
              */
-            "control-binding-removed": (arg0: Gst.ControlBinding) => void;
+            "control-binding-removed": (control_binding: Gst.ControlBinding) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -17010,6 +17082,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17019,6 +17092,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): TrackElementAsset;
 
@@ -17118,6 +17192,7 @@ export namespace GES {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -17757,6 +17832,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -17766,6 +17842,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UriClipAsset;
 
@@ -18035,6 +18112,7 @@ export namespace GES {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -18044,6 +18122,7 @@ export namespace GES {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UriSourceAsset;
 

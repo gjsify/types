@@ -31,37 +31,39 @@ export namespace IMSettings {
         /**
          * unknown error happened.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * misconfigured.
          */
-        CONFIGURATION_ERROR,
+        CONFIGURATION_ERROR = 1,
         /**
          * the Input Method in request doesn't found.
          */
-        IM_NOT_FOUND,
+        IM_NOT_FOUND = 2,
         /**
          * the Input Method isn't managed by imsettings.
          */
-        UNABLE_TO_TRACK_IM,
+        UNABLE_TO_TRACK_IM = 3,
         /**
          * Out of memory occured.
          */
-        OOM,
+        OOM = 4,
         /**
          * current desktop isn't targeted by Input Method.
          */
-        NOT_TARGETED_DESKTOP,
+        NOT_TARGETED_DESKTOP = 5,
     }
 
 
     /**
      * The global configuration filename.
+     * @default xinputrc
      */
     const GLOBAL_XINPUT_CONF: string;
 
     /**
      * An interface name for imsettings used in DBus.
+     * @default com.redhat.imsettings
      */
     const INTERFACE_DBUS: string;
 
@@ -69,26 +71,31 @@ export namespace IMSettings {
      * The configuration filename used for "disabled".
      * The real filename would be `IMSETTINGS_NONE_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
+     * @default none
      */
     const NONE_CONF: string;
 
     /**
      * A path name for imsettings used in DBus.
+     * @default /com/redhat/imsettings
      */
     const PATH_DBUS: string;
 
     /**
      * A service name for imsettings used in DBus.
+     * @default com.redhat.imsettings
      */
     const SERVICE_DBUS: string;
 
     /**
      * A DBus API version in imsettings.
+     * @default 9
      */
     const SETTINGS_API_VERSION: number;
 
     /**
      * The user configuration filename.
+     * @default xinputrc
      */
     const USER_XINPUT_CONF: string;
 
@@ -96,21 +103,25 @@ export namespace IMSettings {
      * The configuration filename used for XIM.
      * The real filename would be `IMSETTINGS_XIM_CONF` + something specified
      * with --xinput-suffix build option that the default value is ".conf".
+     * @default xim
      */
     const XIM_CONF: string;
 
     /**
      * An interface name for imsettings-xim XIM server used in DBus.
+     * @default com.redhat.imsettings.xim
      */
     const XIM_INTERFACE_DBUS: string;
 
     /**
      * A path name for imsettings-xim XIM server used in DBus.
+     * @default /com/redhat/imsettings/xim
      */
     const XIM_PATH_DBUS: string;
 
     /**
      * A service name for imsettings-xim XIM server used in DBus.
+     * @default com.redhat.imsettings.xim
      */
     const XIM_SERVICE_DBUS: string;
 
@@ -210,6 +221,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
+         * @throws GLib.Error
          */
         can_x_display_open(cancellable: Gio.Cancellable | null): boolean;
 
@@ -218,6 +230,7 @@ export namespace IMSettings {
          * `imsettings_client_can_x_display_open_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
+         * @throws GLib.Error
          */
         can_x_display_open_finish(result: Gio.AsyncResult): boolean;
 
@@ -244,6 +257,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} for active Input Method. if not, `null` then.
+         * @throws GLib.Error
          */
         get_active_im_info(cancellable: Gio.Cancellable | null): Info;
 
@@ -259,6 +273,7 @@ export namespace IMSettings {
          * @param module an Input Method name to obtain the information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link IMSettings.Info} or `null`.
+         * @throws GLib.Error
          */
         get_info_object(module: string, cancellable: Gio.Cancellable | null): Info;
 
@@ -281,6 +296,7 @@ export namespace IMSettings {
          * @param module an Input Method name to obtain the information.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
+         * @throws GLib.Error
          */
         get_info_variant(module: string, cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -289,6 +305,7 @@ export namespace IMSettings {
          * `imsettings_client_get_info_variant_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
+         * @throws GLib.Error
          */
         get_info_variant_finish(result: Gio.AsyncResult): GLib.Variant;
 
@@ -317,6 +334,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
+         * @throws GLib.Error
          */
         get_info_variants(cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -325,6 +343,7 @@ export namespace IMSettings {
          * `imsettings_client_get_info_variants_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns a {@link GLib.Variant} contains some pairs of an Input Method name and          a {@link GLib.Variant} that can converts to {@link IMSettings.Info} through          `imsettings_info_new()`. otherwise `null`.
+         * @throws GLib.Error
          */
         get_info_variants_finish(result: Gio.AsyncResult): null;
 
@@ -358,6 +377,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a {@link GLib.Variant} that contains some pairs of the module name and          the Input Method name.
+         * @throws GLib.Error
          */
         get_module_settings(cancellable: Gio.Cancellable | null): GLib.Variant;
 
@@ -380,6 +400,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
+         * @throws GLib.Error
          */
         get_system_im(cancellable: Gio.Cancellable | null): string;
 
@@ -388,6 +409,7 @@ export namespace IMSettings {
          * `imsettings_client_get_system_im_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns an Input Method name or `null`.
+         * @throws GLib.Error
          */
         get_system_im_finish(result: Gio.AsyncResult): string;
 
@@ -420,6 +442,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns an Input Method name or `null`.
+         * @throws GLib.Error
          */
         get_user_im(cancellable: Gio.Cancellable | null): string;
 
@@ -428,6 +451,7 @@ export namespace IMSettings {
          * `imsettings_client_get_user_im_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns an Input Method name or `null`.
+         * @throws GLib.Error
          */
         get_user_im_finish(result: Gio.AsyncResult): string;
 
@@ -459,6 +483,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns a version number.
+         * @throws GLib.Error
          */
         get_version(cancellable: Gio.Cancellable | null): number;
 
@@ -481,6 +506,7 @@ export namespace IMSettings {
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
+         * @throws GLib.Error
          */
         im_is_system_default(module: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -503,6 +529,7 @@ export namespace IMSettings {
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
+         * @throws GLib.Error
          */
         im_is_user_default(module: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -525,6 +552,7 @@ export namespace IMSettings {
          * @param module an Input Method name to ask.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if it is, otherwise `false`.
+         * @throws GLib.Error
          */
         im_is_xim(module: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -548,6 +576,7 @@ export namespace IMSettings {
          * @param module 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if any actions needed, returns `true` otherwise `false`.
+         * @throws GLib.Error
          */
         is_action_needed(module: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -556,6 +585,7 @@ export namespace IMSettings {
          * `imsettings_client_is_action_needed_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
+         * @throws GLib.Error
          */
         is_action_needed_finish(result: Gio.AsyncResult): boolean;
 
@@ -584,6 +614,7 @@ export namespace IMSettings {
          * 
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if supported, returns `true` otherwise `false`.
+         * @throws GLib.Error
          */
         is_supported_desktop(cancellable: Gio.Cancellable | null): boolean;
 
@@ -592,6 +623,7 @@ export namespace IMSettings {
          * `imsettings_client_is_supported_desktop_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`
+         * @throws GLib.Error
          */
         is_supported_desktop_finish(result: Gio.AsyncResult): boolean;
 
@@ -642,6 +674,7 @@ export namespace IMSettings {
          * @param send_signal `true` to send a signal instead of invoking a method.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns `true` if the operation is successfully done, otherwise `false`.
+         * @throws GLib.Error
          */
         reload(send_signal: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -681,6 +714,7 @@ export namespace IMSettings {
          * @param update_xinputrc `true` to update the user xinputrc, otherwise `false`.
          * @param cancellable a {@link Gio.Cancellable} or `null`.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`.
+         * @throws GLib.Error
          */
         switch_im(module: string, update_xinputrc: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -689,6 +723,7 @@ export namespace IMSettings {
          * `imsettings_client_switch_im_start()`.
          * @param result a {@link Gio.AsyncResult} pushed through {@link Gio.AsyncReadyCallback}.
          * @returns if the operation is successfully done, returns `true`          otherwise `false`.
+         * @throws GLib.Error
          */
         switch_im_finish(result: Gio.AsyncResult): boolean;
 

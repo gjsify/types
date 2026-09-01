@@ -27,23 +27,27 @@ export namespace RpmOstree {
     /**
      * Release version component (e.g. 9 if `RPM_OSTREE_VERSION` is 2017.9)
      * @since 2017.8
+     * @default 2
      */
     const RELEASE_VERSION: number;
 
     /**
      * @since 2017.8
+     * @default 2026.200000
      */
     const VERSION: number;
 
     /**
      * Version encoded as a string, useful for printing and concatenation.
      * @since 2017.8
+     * @default 2026.2
      */
     const VERSION_S: string;
 
     /**
      * Year version component (e.g. 2017 if `RPM_OSTREE_VERSION` is 2017.9)
      * @since 2017.8
+     * @default 2026
      */
     const YEAR_VERSION: number;
 
@@ -72,6 +76,7 @@ export namespace RpmOstree {
      * @param orig_ref Original ref (branch or commit)
      * @param new_ref New ref (branch or commit)
      * @param cancellable 
+     * @throws GLib.Error
      */
     function db_diff(repo: OSTree.Repo, orig_ref: string, new_ref: string, cancellable: Gio.Cancellable | null): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
 
@@ -84,6 +89,7 @@ export namespace RpmOstree {
      * @param flags Flags controlling diff behaviour
      * @param cancellable 
      * @since 2017.12
+     * @throws GLib.Error
      */
     function db_diff_ext(repo: OSTree.Repo, orig_ref: string, new_ref: string, flags: DbDiffExtFlags, cancellable: Gio.Cancellable | null): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
 
@@ -94,6 +100,7 @@ export namespace RpmOstree {
      * @param ref A branch name or commit
      * @param cancellable Cancellable
      * @returns A query result, or `null` on error
+     * @throws GLib.Error
      */
     function db_query_all(repo: OSTree.Repo, ref: string, cancellable: Gio.Cancellable | null): Package[];
 
@@ -106,6 +113,7 @@ export namespace RpmOstree {
     /**
      * @param src String (commonly a URL)
      * @returns A copy of `src` with all references for `${basearch}` replaced with `rpmostree_get_basearch()`, or `null` on error Since: 2017.8
+     * @throws GLib.Error
      */
     function varsubst_basearch(src: string): string;
 
@@ -113,8 +121,8 @@ export namespace RpmOstree {
      * @gir-type Flags
      */
     enum DbDiffExtFlags {
-        NONE,
-        ALLOW_NOENT,
+        NONE = 0,
+        ALLOW_NOENT = 1,
     }
 
 

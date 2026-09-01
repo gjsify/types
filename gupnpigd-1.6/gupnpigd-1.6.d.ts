@@ -30,7 +30,7 @@ export namespace GUPnPIgd {
          * Error getting the external
          * address of the router
          */
-        SIMPLE_IGD_ERROR_EXTERNAL_ADDRESS,
+        SIMPLE_IGD_ERROR_EXTERNAL_ADDRESS = 0,
     }
 
 
@@ -45,7 +45,7 @@ export namespace GUPnPIgd {
              * @signal
              * @run-last
              */
-            "context-available": (arg0: GObject.Object) => boolean | void;
+            "context-available": (context: GObject.Object) => boolean | void;
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
              * succeed on other IGDs on the network).
@@ -53,14 +53,14 @@ export namespace GUPnPIgd {
              * @detailed
              * @run-last
              */
-            "error-mapping-port": (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
+            "error-mapping-port": (error: GLib.Error, proto: string, external_port: number, local_ip: string, local_port: number, description: string) => void;
             /**
              * This signal means that an IGD has been found that that adding a port
              * mapping has succeeded.
              * @signal
              * @run-last
              */
-            "mapped-external-port": (arg0: string, arg1: string, arg2: string, arg3: number, arg4: string, arg5: number, arg6: string) => void;
+            "mapped-external-port": (proto: string, external_ip: string, replaces_external_ip: string, external_port: number, local_ip: string, local_port: number, description: string) => void;
             "notify::main-context": (pspec: GObject.ParamSpec) => void;
             /**
              * This means that mapping a port on a specific IGD has failed (it may still
@@ -69,8 +69,8 @@ export namespace GUPnPIgd {
              * @detailed
              * @run-last
              */
-            "error-mapping-port::main-context": (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
-            [key: `error-mapping-port::${string}`]: (arg0: GLib.Error, arg1: string, arg2: number, arg3: string, arg4: number, arg5: string) => void;
+            "error-mapping-port::main-context": (error: GLib.Error, proto: string, external_port: number, local_ip: string, local_port: number, description: string) => void;
+            [key: `error-mapping-port::${string}`]: (error: GLib.Error, proto: string, external_port: number, local_ip: string, local_port: number, description: string) => void;
         }
 
         // Constructor properties interface

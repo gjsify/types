@@ -27,7 +27,7 @@ export namespace Gdm {
      * @gir-type Enum
      */
     enum ClientError {
-        CLIENT_ERROR_GENERIC,
+        CLIENT_ERROR_GENERIC = 0,
     }
 
 
@@ -47,6 +47,7 @@ export namespace Gdm {
 
     /**
      * @param cancellable 
+     * @throws GLib.Error
      */
     function goto_login_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -223,6 +224,7 @@ export namespace Gdm {
          * `gdm_client_get_greeter()`.
          * @param result The {@link Gio.AsyncResult} from the callback
          * @returns a {@link Gdm.Greeter}
+         * @throws GLib.Error
          */
         get_greeter_finish(result: Gio.AsyncResult): Greeter;
 
@@ -233,6 +235,7 @@ export namespace Gdm {
          * session.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.Greeter} or `null` if caller is not a greeter
+         * @throws GLib.Error
          */
         get_greeter_sync(cancellable: Gio.Cancellable | null): Greeter;
 
@@ -278,6 +281,7 @@ export namespace Gdm {
          * `gdm_client_get_user_verifier()`.
          * @param result The {@link Gio.AsyncResult} from the callback
          * @returns a {@link Gdm.UserVerifier}
+         * @throws GLib.Error
          */
         get_user_verifier_finish(result: Gio.AsyncResult): UserVerifier;
 
@@ -286,6 +290,7 @@ export namespace Gdm {
          * verify a user's local account.
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if not connected
+         * @throws GLib.Error
          */
         get_user_verifier_sync(cancellable: Gio.Cancellable | null): UserVerifier;
 
@@ -320,6 +325,7 @@ export namespace Gdm {
          * `gdm_client_open_reauthentication_channel()`.
          * @param result The {@link Gio.AsyncResult} from the callback
          * @returns a {@link Gdm.UserVerifier}
+         * @throws GLib.Error
          */
         open_reauthentication_channel_finish(result: Gio.AsyncResult): UserVerifier;
 
@@ -330,6 +336,7 @@ export namespace Gdm {
          * @param username user to reauthenticate
          * @param cancellable a {@link Gio.Cancellable}
          * @returns {@link Gdm.UserVerifier} or `null` if `username` is not already logged in.
+         * @throws GLib.Error
          */
         open_reauthentication_channel_sync(username: string, cancellable: Gio.Cancellable | null): UserVerifier;
 
@@ -496,6 +503,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -506,6 +514,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -545,6 +554,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
@@ -554,6 +564,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
@@ -596,6 +607,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -606,6 +618,7 @@ export namespace Gdm {
          * @param arg_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -648,6 +661,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -658,6 +672,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -703,6 +718,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
@@ -714,6 +730,7 @@ export namespace Gdm {
          * @param arg_should_start_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -753,6 +770,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -762,6 +780,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1082,6 +1101,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1091,6 +1111,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): GreeterProxy;
 
@@ -1255,6 +1276,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1390,6 +1412,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -1400,6 +1423,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1439,6 +1463,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
@@ -1448,6 +1473,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
@@ -1490,6 +1516,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -1500,6 +1527,7 @@ export namespace Gdm {
          * @param arg_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1542,6 +1570,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -1552,6 +1581,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1597,6 +1627,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
@@ -1608,6 +1639,7 @@ export namespace Gdm {
          * @param arg_should_start_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1647,6 +1679,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -1656,6 +1689,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2077,6 +2111,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -2087,6 +2122,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2126,6 +2162,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -2135,6 +2172,7 @@ export namespace Gdm {
          * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2174,6 +2212,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_display()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
@@ -2183,6 +2222,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2222,6 +2262,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -2231,6 +2272,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2434,6 +2476,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -2443,6 +2486,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ManagerProxy;
 
@@ -2607,6 +2651,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2753,6 +2798,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -2763,6 +2809,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2802,6 +2849,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -2811,6 +2859,7 @@ export namespace Gdm {
          * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -2850,6 +2899,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_display()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
@@ -2859,6 +2909,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2898,6 +2949,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -2907,6 +2959,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3203,6 +3256,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
@@ -3214,6 +3268,7 @@ export namespace Gdm {
          * @param arg_choice Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3388,6 +3443,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3397,6 +3453,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UserVerifierChoiceListProxy;
 
@@ -3561,6 +3618,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3699,6 +3757,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
@@ -3710,6 +3769,7 @@ export namespace Gdm {
          * @param arg_choice Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3977,6 +4037,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_finish(res: Gio.AsyncResult): boolean;
 
@@ -3988,6 +4049,7 @@ export namespace Gdm {
          * @param arg_reply Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4033,6 +4095,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_finish(res: Gio.AsyncResult): boolean;
 
@@ -4044,6 +4107,7 @@ export namespace Gdm {
          * @param arg_error Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4237,6 +4301,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -4246,6 +4311,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UserVerifierCustomJSONProxy;
 
@@ -4410,6 +4476,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4548,6 +4615,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_finish(res: Gio.AsyncResult): boolean;
 
@@ -4559,6 +4627,7 @@ export namespace Gdm {
          * @param arg_reply Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4604,6 +4673,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_finish(res: Gio.AsyncResult): boolean;
 
@@ -4615,6 +4685,7 @@ export namespace Gdm {
          * @param arg_error Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4901,6 +4972,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
@@ -4912,6 +4984,7 @@ export namespace Gdm {
          * @param arg_answer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4954,6 +5027,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
@@ -4999,6 +5073,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -5010,6 +5085,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5020,6 +5096,7 @@ export namespace Gdm {
          * @param arg_service_name Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5059,6 +5136,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -5068,6 +5146,7 @@ export namespace Gdm {
          * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5110,6 +5189,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
@@ -5120,6 +5200,7 @@ export namespace Gdm {
          * @param arg_extensions Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5492,6 +5573,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -5501,6 +5583,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UserVerifierProxy;
 
@@ -5665,6 +5748,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5803,6 +5887,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
@@ -5814,6 +5899,7 @@ export namespace Gdm {
          * @param arg_answer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5856,6 +5942,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
@@ -5901,6 +5988,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -5912,6 +6000,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5922,6 +6011,7 @@ export namespace Gdm {
          * @param arg_service_name Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5961,6 +6051,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -5970,6 +6061,7 @@ export namespace Gdm {
          * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6012,6 +6104,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
@@ -6022,6 +6115,7 @@ export namespace Gdm {
          * @param arg_extensions Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6490,6 +6584,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -6502,6 +6597,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -6553,6 +6649,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -6566,6 +6663,7 @@ export namespace Gdm {
          * @param arg_request Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -6605,6 +6703,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_hello()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
@@ -6614,6 +6713,7 @@ export namespace Gdm {
          * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6659,6 +6759,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
@@ -6704,6 +6805,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -6715,6 +6817,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -6726,6 +6829,7 @@ export namespace Gdm {
          * @param arg_info Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6771,6 +6875,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_problem()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
@@ -6782,6 +6887,7 @@ export namespace Gdm {
          * @param arg_problem Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -6827,6 +6933,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -6838,6 +6945,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -7102,6 +7210,7 @@ export namespace Gdm {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -7111,6 +7220,7 @@ export namespace Gdm {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): WorkerManagerProxy;
 
@@ -7275,6 +7385,7 @@ export namespace Gdm {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7416,6 +7527,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -7428,6 +7540,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -7479,6 +7592,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -7492,6 +7606,7 @@ export namespace Gdm {
          * @param arg_request Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -7531,6 +7646,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_hello()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
@@ -7540,6 +7656,7 @@ export namespace Gdm {
          * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7585,6 +7702,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
@@ -7630,6 +7748,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -7641,6 +7760,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -7652,6 +7772,7 @@ export namespace Gdm {
          * @param arg_info Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7697,6 +7818,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_problem()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
@@ -7708,6 +7830,7 @@ export namespace Gdm {
          * @param arg_problem Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7753,6 +7876,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -7764,6 +7888,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8322,6 +8447,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_begin_auto_login()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_begin_auto_login()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_finish(res: Gio.AsyncResult): boolean;
 
@@ -8332,6 +8458,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_auto_login_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8371,6 +8498,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_get_timed_login_details()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_get_timed_login_details()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_finish(res: Gio.AsyncResult): [boolean, boolean, string, number];
 
@@ -8380,6 +8508,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_get_timed_login_details()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_get_timed_login_details_sync(cancellable: Gio.Cancellable | null): [boolean, boolean, string, number];
 
@@ -8422,6 +8551,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -8432,6 +8562,7 @@ export namespace Gdm {
          * @param arg_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_session_sync(arg_session: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8474,6 +8605,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_select_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_select_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -8484,6 +8616,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_user_sync(arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8529,6 +8662,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_start_session_when_ready()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_start_session_when_ready()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_finish(res: Gio.AsyncResult): boolean;
 
@@ -8540,6 +8674,7 @@ export namespace Gdm {
          * @param arg_should_start_session Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_start_session_when_ready_sync(arg_service_name: string, arg_should_start_session: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8579,6 +8714,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_greeter_call_stop_conflicting_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_greeter_call_stop_conflicting_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -8588,6 +8724,7 @@ export namespace Gdm {
          * See `gdm_greeter_call_stop_conflicting_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_stop_conflicting_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8802,6 +8939,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_reauthentication_channel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_reauthentication_channel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -8812,6 +8950,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_reauthentication_channel_sync(arg_username: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8851,6 +8990,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_open_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_open_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -8860,6 +9000,7 @@ export namespace Gdm {
          * See `gdm_manager_call_open_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_open_session_sync(cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -8899,6 +9040,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_display()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_display()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_finish(res: Gio.AsyncResult): boolean;
 
@@ -8908,6 +9050,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_display()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_display_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8947,6 +9090,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_manager_call_register_session()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_manager_call_register_session()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_finish(res: Gio.AsyncResult): boolean;
 
@@ -8956,6 +9100,7 @@ export namespace Gdm {
          * See `gdm_manager_call_register_session()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_register_session_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9199,6 +9344,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_answer_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_answer_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_finish(res: Gio.AsyncResult): boolean;
 
@@ -9210,6 +9356,7 @@ export namespace Gdm {
          * @param arg_answer Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_answer_query_sync(arg_service_name: string, arg_answer: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9252,6 +9399,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_finish(res: Gio.AsyncResult): boolean;
 
@@ -9297,6 +9445,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_begin_verification_for_user()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_begin_verification_for_user()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_finish(res: Gio.AsyncResult): boolean;
 
@@ -9308,6 +9457,7 @@ export namespace Gdm {
          * @param arg_username Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_for_user_sync(arg_service_name: string, arg_username: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9318,6 +9468,7 @@ export namespace Gdm {
          * @param arg_service_name Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_begin_verification_sync(arg_service_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9357,6 +9508,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_cancel()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_cancel()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_finish(res: Gio.AsyncResult): boolean;
 
@@ -9366,6 +9518,7 @@ export namespace Gdm {
          * See `gdm_user_verifier_call_cancel()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_cancel_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -9408,6 +9561,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_call_enable_extensions()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_call_enable_extensions()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_finish(res: Gio.AsyncResult): boolean;
 
@@ -9418,6 +9572,7 @@ export namespace Gdm {
          * @param arg_extensions Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_enable_extensions_sync(arg_extensions: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9633,6 +9788,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_choice_list_call_select_choice()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_choice_list_call_select_choice()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_finish(res: Gio.AsyncResult): boolean;
 
@@ -9644,6 +9800,7 @@ export namespace Gdm {
          * @param arg_choice Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_select_choice_sync(arg_service_name: string, arg_choice: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9775,6 +9932,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_reply()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_reply()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_finish(res: Gio.AsyncResult): boolean;
 
@@ -9786,6 +9944,7 @@ export namespace Gdm {
          * @param arg_reply Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_reply_sync(arg_service_name: string, arg_reply: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -9831,6 +9990,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_user_verifier_custom_json_call_report_error()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_user_verifier_custom_json_call_report_error()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_finish(res: Gio.AsyncResult): boolean;
 
@@ -9842,6 +10002,7 @@ export namespace Gdm {
          * @param arg_error Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_report_error_sync(arg_service_name: string, arg_error: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10021,6 +10182,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_choice_list_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_choice_list_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -10033,6 +10195,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_choice_list_query_sync(arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -10084,6 +10247,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_custom_json_request()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_custom_json_request()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -10097,6 +10261,7 @@ export namespace Gdm {
          * @param arg_request Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_custom_json_request_sync(arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -10136,6 +10301,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_hello()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_hello()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_finish(res: Gio.AsyncResult): boolean;
 
@@ -10145,6 +10311,7 @@ export namespace Gdm {
          * See `gdm_worker_manager_call_hello()` for the asynchronous version of this method.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_hello_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -10190,6 +10357,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_finish(res: Gio.AsyncResult): boolean;
 
@@ -10235,6 +10403,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -10246,6 +10415,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -10257,6 +10427,7 @@ export namespace Gdm {
          * @param arg_info Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_info_sync(arg_service_name: string, arg_info: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10302,6 +10473,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_problem()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_problem()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_finish(res: Gio.AsyncResult): boolean;
 
@@ -10313,6 +10485,7 @@ export namespace Gdm {
          * @param arg_problem Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_problem_sync(arg_service_name: string, arg_problem: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -10358,6 +10531,7 @@ export namespace Gdm {
          * Finishes an operation started with `gdm_worker_manager_call_secret_info_query()`.
          * @param res The {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `gdm_worker_manager_call_secret_info_query()`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_finish(res: Gio.AsyncResult): [boolean, string];
 
@@ -10369,6 +10543,7 @@ export namespace Gdm {
          * @param arg_query Argument to pass with the method invocation.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the call succeeded, `false` if `error` is set.
+         * @throws GLib.Error
          */
         call_secret_info_query_sync(arg_service_name: string, arg_query: string, cancellable: Gio.Cancellable | null): [boolean, string];
 

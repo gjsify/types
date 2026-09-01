@@ -77,7 +77,7 @@
       ]
 }
   },
-  "include": ["./entangle-0.1.d.ts","./entangle-0.1-surface.d.ts"]
+  "include": ["./entangle-0.1.d.ts","./entangle-0.1-vocabulary.d.ts"]
 }
 
 

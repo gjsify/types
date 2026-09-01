@@ -42,31 +42,31 @@ export namespace EBook {
      * @deprecated since 3.2: Use {@link EBook.BookClient} and it's error codes instead
      */
     enum BookStatus {
-        OK,
-        INVALID_ARG,
-        BUSY,
-        REPOSITORY_OFFLINE,
-        NO_SUCH_BOOK,
-        NO_SELF_CONTACT,
-        SOURCE_NOT_LOADED,
-        SOURCE_ALREADY_LOADED,
-        PERMISSION_DENIED,
-        CONTACT_NOT_FOUND,
-        CONTACT_ID_ALREADY_EXISTS,
-        PROTOCOL_NOT_SUPPORTED,
-        CANCELLED,
-        COULD_NOT_CANCEL,
-        AUTHENTICATION_FAILED,
-        AUTHENTICATION_REQUIRED,
-        TLS_NOT_AVAILABLE,
-        DBUS_EXCEPTION,
-        NO_SUCH_SOURCE,
-        OFFLINE_UNAVAILABLE,
-        OTHER_ERROR,
-        INVALID_SERVER_VERSION,
-        UNSUPPORTED_AUTHENTICATION_METHOD,
-        NO_SPACE,
-        NOT_SUPPORTED,
+        OK = 0,
+        INVALID_ARG = 1,
+        BUSY = 2,
+        REPOSITORY_OFFLINE = 3,
+        NO_SUCH_BOOK = 4,
+        NO_SELF_CONTACT = 5,
+        SOURCE_NOT_LOADED = 6,
+        SOURCE_ALREADY_LOADED = 7,
+        PERMISSION_DENIED = 8,
+        CONTACT_NOT_FOUND = 9,
+        CONTACT_ID_ALREADY_EXISTS = 10,
+        PROTOCOL_NOT_SUPPORTED = 11,
+        CANCELLED = 12,
+        COULD_NOT_CANCEL = 13,
+        AUTHENTICATION_FAILED = 14,
+        AUTHENTICATION_REQUIRED = 15,
+        TLS_NOT_AVAILABLE = 16,
+        DBUS_EXCEPTION = 17,
+        NO_SUCH_SOURCE = 18,
+        OFFLINE_UNAVAILABLE = 19,
+        OTHER_ERROR = 20,
+        INVALID_SERVER_VERSION = 21,
+        UNSUPPORTED_AUTHENTICATION_METHOD = 22,
+        NO_SPACE = 23,
+        NOT_SUPPORTED = 24,
     }
 
 
@@ -86,6 +86,7 @@ export namespace EBook {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns `true` when no fatal error occurred, `false` otherwise.
      * @since 3.30
+     * @throws GLib.Error
      */
     function book_utils_get_recipient_certificates_sync(registry: EDataServer.SourceRegistry, only_clients: BookClient[] | null, flags: Camel.RecipientCertificateFlags, recipients: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -320,6 +321,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         add_contact_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -335,6 +337,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         add_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -385,6 +388,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.4
+         * @throws GLib.Error
          */
         add_contacts_finish(result: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -403,6 +407,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.4
+         * @throws GLib.Error
          */
         add_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -455,12 +460,14 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.44
+         * @throws GLib.Error
          */
         contains_email_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * @param email_address 
          * @param cancellable 
+         * @throws GLib.Error
          */
         contains_email_sync(email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -503,6 +510,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contact_finish(result: Gio.AsyncResult): [boolean, EBookContacts.Contact | null];
 
@@ -514,6 +522,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contact_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact];
 
@@ -565,6 +574,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contacts_finish(result: Gio.AsyncResult): [boolean, EBookContacts.Contact[]];
 
@@ -579,6 +589,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contacts_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, EBookContacts.Contact[]];
 
@@ -630,6 +641,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contacts_uids_finish(result: Gio.AsyncResult): [boolean, string[]];
 
@@ -644,6 +656,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_contacts_uids_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -705,6 +718,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.12
+         * @throws GLib.Error
          */
         get_cursor_finish(result: Gio.AsyncResult): [boolean, BookClientCursor];
 
@@ -722,6 +736,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.12
+         * @throws GLib.Error
          */
         get_cursor_sync(sexp: string, sort_fields: EBookContacts.ContactField, sort_types: EBookContacts.BookCursorSortType, n_fields: number, cancellable: Gio.Cancellable | null): [boolean, BookClientCursor];
 
@@ -795,6 +810,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_finish(result: Gio.AsyncResult): [boolean, BookClientView];
 
@@ -809,6 +825,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         get_view_sync(sexp: string, cancellable: Gio.Cancellable | null): [boolean, BookClientView];
 
@@ -852,6 +869,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         modify_contact_finish(result: Gio.AsyncResult): boolean;
 
@@ -862,6 +880,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         modify_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -905,6 +924,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.4
+         * @throws GLib.Error
          */
         modify_contacts_finish(result: Gio.AsyncResult): boolean;
 
@@ -915,6 +935,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.4
+         * @throws GLib.Error
          */
         modify_contacts_sync(contacts: EBookContacts.Contact[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -993,6 +1014,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contact_by_uid_finish(result: Gio.AsyncResult): boolean;
 
@@ -1003,6 +1025,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contact_by_uid_sync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1011,6 +1034,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contact_finish(result: Gio.AsyncResult): boolean;
 
@@ -1021,6 +1045,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contact_sync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1073,6 +1098,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contacts_finish(result: Gio.AsyncResult): boolean;
 
@@ -1086,6 +1112,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable}; can be `null`
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         remove_contacts_sync(uids: string[], opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1095,6 +1122,7 @@ export namespace EBook {
          * @param contact an {@link EBookContacts.Contact}
          * @returns `true` if successful, `false` otherwise.
          * @since 3.2
+         * @throws GLib.Error
          */
         set_self(contact: EBookContacts.Contact): boolean;
 
@@ -1235,6 +1263,7 @@ export namespace EBook {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1244,6 +1273,7 @@ export namespace EBook {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): BookClient;
 
@@ -1343,6 +1373,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1732,6 +1763,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         set_alphabetic_index_finish(result: Gio.AsyncResult): boolean;
 
@@ -1763,6 +1795,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         set_alphabetic_index_sync(index: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1813,6 +1846,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         set_sexp_finish(result: Gio.AsyncResult): boolean;
 
@@ -1836,6 +1870,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns `true` on success, otherwise `false` is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         set_sexp_sync(sexp: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1895,6 +1930,7 @@ export namespace EBook {
          * @param result a {@link Gio.AsyncResult}
          * @returns The number of contacts traversed if successful, otherwise -1 is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         step_finish(result: Gio.AsyncResult): [number, EBookContacts.Contact[] | null];
 
@@ -1935,6 +1971,7 @@ export namespace EBook {
          * @param cancellable a {@link Gio.Cancellable} to optionally cancel this operation while in progress
          * @returns The number of contacts traversed if successful, otherwise -1 is returned and `error` is set.
          * @since 3.12
+         * @throws GLib.Error
          */
         step_sync(flags: EBookContacts.BookCursorStepFlags, origin: EBookContacts.BookCursorOrigin, count: number, cancellable: Gio.Cancellable | null): [number, EBookContacts.Contact[] | null];
 
@@ -1980,6 +2017,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2037,7 +2075,7 @@ export namespace EBook {
              * @signal
              * @run-last
              */
-            complete: (arg0: GLib.Error) => void;
+            complete: (object: GLib.Error) => void;
             /**
              * The signal is emitted whenever content of any contact in the `client_view` changes,
              * or a contact is added or removed. It may or may not change `EBookClientView`:n-total
@@ -2053,22 +2091,22 @@ export namespace EBook {
              * @signal
              * @run-last
              */
-            "objects-added": (arg0: EBookContacts.Contact[]) => void;
+            "objects-added": (objects: EBookContacts.Contact[]) => void;
             /**
              * @signal
              * @run-last
              */
-            "objects-modified": (arg0: EBookContacts.Contact[]) => void;
+            "objects-modified": (objects: EBookContacts.Contact[]) => void;
             /**
              * @signal
              * @run-last
              */
-            "objects-removed": (arg0: string[]) => void;
+            "objects-removed": (uids: string[]) => void;
             /**
              * @signal
              * @run-last
              */
-            progress: (arg0: number, arg1: string) => void;
+            progress: (object: number, p0: string) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::indices": (pspec: GObject.ParamSpec) => void;
@@ -2259,6 +2297,7 @@ export namespace EBook {
          * @param result an asynchronous call result
          * @returns whether succeeded; if not, the `error` is set
          * @since 3.50
+         * @throws GLib.Error
          */
         dup_contacts_finish(result: Gio.AsyncResult): [boolean, number, EBookContacts.Contact[]];
 
@@ -2338,6 +2377,7 @@ export namespace EBook {
          * objects, which will omit stored object parsing. If this cannot be done then
          * it will simply return object as is stored in the cache.
          * @param fields_of_interest List of field names in which                      the client is interested
+         * @throws GLib.Error
          */
         set_fields_of_interest(fields_of_interest: string[]): void;
 
@@ -2345,6 +2385,7 @@ export namespace EBook {
          * Sets the `flags` which control the behaviour of `client_view`.
          * @param flags the {@link EBookContacts.BookClientViewFlags} for `client_view`
          * @since 3.4
+         * @throws GLib.Error
          */
         set_flags(flags: EBookContacts.BookClientViewFlags): void;
 
@@ -2364,16 +2405,19 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         set_sort_fields_sync(fields: EBookContacts.BookClientViewSortFields, cancellable: Gio.Cancellable | null): boolean;
 
         /**
          * Tells `client_view` to start processing events.
+         * @throws GLib.Error
          */
         start(): void;
 
         /**
          * Tells `client_view` to stop processing events.
+         * @throws GLib.Error
          */
         stop(): void;
 
@@ -2419,6 +2463,7 @@ export namespace EBook {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

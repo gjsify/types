@@ -33,19 +33,19 @@ export namespace GstCodecParsers {
         /**
          * The writing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The input data to write is invalid
          */
-        INVALID_DATA,
+        INVALID_DATA = 1,
         /**
          * The output does not have enough size
          */
-        NO_MORE_SPACE,
+        NO_MORE_SPACE = 2,
         /**
          * An general error occurred when writing
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -57,20 +57,20 @@ export namespace GstCodecParsers {
          * Unknown (in this case the source video transfer
          *  function must be signaled outside the AV1 bitstream).
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Horizontally co-located with (0, 0) luma sample,
          *  vertical position in the middle between two luma samples.
          */
-        VERTICAL,
+        VERTICAL = 1,
         /**
          * co-located with (0, 0) luma sample.
          */
-        COLOCATED,
+        COLOCATED = 2,
         /**
          * For future use.
          */
-        RESERVED,
+        RESERVED = 3,
     }
 
 
@@ -81,51 +81,51 @@ export namespace GstCodecParsers {
         /**
          * BT.709
          */
-        BT_709,
+        BT_709 = 1,
         /**
          * Unspecified
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 2,
         /**
          * BT.470 System M (historical)
          */
-        BT_470_M,
+        BT_470_M = 4,
         /**
          * BT.470 System B, G (historical),
          */
-        BT_470_B_G,
+        BT_470_B_G = 5,
         /**
          * BT.601
          */
-        BT_601,
+        BT_601 = 6,
         /**
          * SMPTE 240
          */
-        SMPTE_240,
+        SMPTE_240 = 7,
         /**
          * Generic film (color filters using illuminant C,
          */
-        GENERIC_FILM,
+        GENERIC_FILM = 8,
         /**
          * BT.2020, BT.2100,
          */
-        BT_2020,
+        BT_2020 = 9,
         /**
          * SMPTE 428 (CIE 1921 XYZ),
          */
-        XYZ,
+        XYZ = 10,
         /**
          * SMPTE RP 431-2
          */
-        SMPTE_431,
+        SMPTE_431 = 11,
         /**
          * SMPTE EG 432-1
          */
-        SMPTE_432,
+        SMPTE_432 = 12,
         /**
          * EBU Tech. 3213-E
          */
-        EBU_3213,
+        EBU_3213 = 22,
     }
 
 
@@ -136,19 +136,19 @@ export namespace GstCodecParsers {
         /**
          * no filtering is applied
          */
-        NONE,
+        NONE = 0,
         /**
          * Wiener filter process is invoked
          */
-        WIENER,
+        WIENER = 1,
         /**
          * self guided filter proces is invoked
          */
-        SGRPROJ,
+        SGRPROJ = 2,
         /**
          * restoration filter is swichtable
          */
-        SWITCHABLE,
+        SWITCHABLE = 3,
     }
 
 
@@ -159,19 +159,19 @@ export namespace GstCodecParsers {
         /**
          * Key Frame
          */
-        KEY_FRAME,
+        KEY_FRAME = 0,
         /**
          * InterFrame
          */
-        INTER_FRAME,
+        INTER_FRAME = 1,
         /**
          * Intra-Only Frame
          */
-        INTRA_ONLY_FRAME,
+        INTRA_ONLY_FRAME = 2,
         /**
          * Switch Frame
          */
-        SWITCH_FRAME,
+        SWITCH_FRAME = 3,
     }
 
 
@@ -182,23 +182,23 @@ export namespace GstCodecParsers {
         /**
          * Eighttap
          */
-        EIGHTTAP,
+        EIGHTTAP = 0,
         /**
          * Eighttap Smooth
          */
-        EIGHTTAP_SMOOTH,
+        EIGHTTAP_SMOOTH = 1,
         /**
          * Eighttap Sharp
          */
-        EIGHTTAP_SHARP,
+        EIGHTTAP_SHARP = 2,
         /**
          * Bilinear
          */
-        BILINEAR,
+        BILINEAR = 3,
         /**
          * Filter is swichtable
          */
-        SWITCHABLE,
+        SWITCHABLE = 4,
     }
 
 
@@ -209,63 +209,63 @@ export namespace GstCodecParsers {
         /**
          * Identity matrix
          */
-        IDENTITY,
+        IDENTITY = 0,
         /**
          * BT.709
          */
-        BT_709,
+        BT_709 = 1,
         /**
          * Unspecified
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 2,
         /**
          * For future use
          */
-        RESERVED_3,
+        RESERVED_3 = 3,
         /**
          * US FCC 73.628
          */
-        FCC,
+        FCC = 4,
         /**
          * BT.470 System B, G (historical)
          */
-        BT_470_B_G,
+        BT_470_B_G = 5,
         /**
          * BT.601
          */
-        BT_601,
+        BT_601 = 6,
         /**
          * SMPTE 240 M
          */
-        SMPTE_240,
+        SMPTE_240 = 7,
         /**
          * YCgCo
          */
-        SMPTE_YCGCO,
+        SMPTE_YCGCO = 8,
         /**
          * BT.2020 non-constant luminance, BT.2100 YCbCr
          */
-        BT_2020_NCL,
+        BT_2020_NCL = 9,
         /**
          * BT.2020 constant luminance
          */
-        BT_2020_CL,
+        BT_2020_CL = 10,
         /**
          * SMPTE ST 2085 YDzDx
          */
-        SMPTE_2085,
+        SMPTE_2085 = 11,
         /**
          * Chromaticity-derived non-constant luminance
          */
-        CHROMAT_NCL,
+        CHROMAT_NCL = 12,
         /**
          * Chromaticity-derived constant luminancw
          */
-        CHROMAT_CL,
+        CHROMAT_CL = 13,
         /**
          * BT.2100 ICtCp
          */
-        ICTCP,
+        ICTCP = 14,
     }
 
 
@@ -276,29 +276,29 @@ export namespace GstCodecParsers {
         /**
          * Reserved 0
          */
-        RESERVED_0,
+        RESERVED_0 = 0,
         /**
          * Metadata high dynamic range content
          *   light level semantics
          */
-        HDR_CLL,
+        HDR_CLL = 1,
         /**
          * Metadata high dynamic range mastering
          *   display color volume semantics
          */
-        HDR_MDCV,
+        HDR_MDCV = 2,
         /**
          * Metadata scalability semantics
          */
-        SCALABILITY,
+        SCALABILITY = 3,
         /**
          * Metadata ITUT T35 semantics
          */
-        ITUT_T35,
+        ITUT_T35 = 4,
         /**
          * Timecode semantics
          */
-        TIMECODE,
+        TIMECODE = 5,
     }
 
 
@@ -310,67 +310,67 @@ export namespace GstCodecParsers {
         /**
          * Reserved 0
          */
-        RESERVED_0,
+        RESERVED_0 = 0,
         /**
          * Sequence Header OBU
          */
-        SEQUENCE_HEADER,
+        SEQUENCE_HEADER = 1,
         /**
          * Temporal Delimiter OBU
          */
-        TEMPORAL_DELIMITER,
+        TEMPORAL_DELIMITER = 2,
         /**
          * Frame Header OBU
          */
-        FRAME_HEADER,
+        FRAME_HEADER = 3,
         /**
          * Tile Group OBU
          */
-        TILE_GROUP,
+        TILE_GROUP = 4,
         /**
          * Metadata OBU
          */
-        METADATA,
+        METADATA = 5,
         /**
          * Frame OBU (includes Frame Header and one Tile Group)
          */
-        FRAME,
+        FRAME = 6,
         /**
          * Redundant Frame Header OBU
          */
-        REDUNDANT_FRAME_HEADER,
+        REDUNDANT_FRAME_HEADER = 7,
         /**
          * Tile LIst OBU
          */
-        TILE_LIST,
+        TILE_LIST = 8,
         /**
          * Reserved 9
          */
-        RESERVED_9,
+        RESERVED_9 = 9,
         /**
          * Reserved 10
          */
-        RESERVED_10,
+        RESERVED_10 = 10,
         /**
          * Reserved 11
          */
-        RESERVED_11,
+        RESERVED_11 = 11,
         /**
          * Reserved 12
          */
-        RESERVED_12,
+        RESERVED_12 = 12,
         /**
          * Reserved 13
          */
-        RESERVED_13,
+        RESERVED_13 = 13,
         /**
          * Reserved 14
          */
-        RESERVED_14,
+        RESERVED_14 = 14,
         /**
          * Padding
          */
-        PADDING,
+        PADDING = 15,
     }
 
 
@@ -382,27 +382,27 @@ export namespace GstCodecParsers {
         /**
          * successful return
          */
-        OK,
+        OK = 0,
         /**
          * the parser needs more data for one OBU
          */
-        NO_MORE_DATA,
+        NO_MORE_DATA = 1,
         /**
          * no need to handle this OBU, skip it
          */
-        DROP,
+        DROP = 2,
         /**
          * stream error, for example, include invalid bits
          */
-        BITSTREAM_ERROR,
+        BITSTREAM_ERROR = 3,
         /**
          * no reference, for example, no sequence found
          */
-        MISSING_OBU_REFERENCE,
+        MISSING_OBU_REFERENCE = 4,
         /**
          * something like invalid parameters
          */
-        INVALID_OPERATION,
+        INVALID_OPERATION = 5,
     }
 
 
@@ -444,39 +444,39 @@ export namespace GstCodecParsers {
         /**
          * Intra Frame Reference
          */
-        REF_INTRA_FRAME,
+        REF_INTRA_FRAME = 0,
         /**
          * Last Reference Frame
          */
-        REF_LAST_FRAME,
+        REF_LAST_FRAME = 1,
         /**
          * Last2 Reference Frame
          */
-        REF_LAST2_FRAME,
+        REF_LAST2_FRAME = 2,
         /**
          * Last3 Reference Frame
          */
-        REF_LAST3_FRAME,
+        REF_LAST3_FRAME = 3,
         /**
          * Golden Reference Frame
          */
-        REF_GOLDEN_FRAME,
+        REF_GOLDEN_FRAME = 4,
         /**
          * BWD Reference Frame
          */
-        REF_BWDREF_FRAME,
+        REF_BWDREF_FRAME = 5,
         /**
          * Alternative2 Reference Frame
          */
-        REF_ALTREF2_FRAME,
+        REF_ALTREF2_FRAME = 6,
         /**
          * Alternative Reference Frame
          */
-        REF_ALTREF_FRAME,
+        REF_ALTREF_FRAME = 7,
         /**
          * Total Reference Frame Number
          */
-        NUM_REF_FRAMES,
+        NUM_REF_FRAMES = 8,
     }
 
 
@@ -487,69 +487,69 @@ export namespace GstCodecParsers {
         /**
          * 1 spatial layer, 2 temporal layers
          */
-        L1T2,
+        L1T2 = 0,
         /**
          * 1 spatial layer, 3 temporal layers
          */
-        L1T3,
+        L1T3 = 1,
         /**
          * 2 spatial layer (ratio 2:1), 1 temporal layer,
          *  inter-layer dependency
          */
-        L2T1,
+        L2T1 = 2,
         /**
          * 2 spatial layer (ratio 2:1), 2 temporal layer,
          *  inter-layer dependency
          */
-        L2T2,
+        L2T2 = 3,
         /**
          * 2 spatial layer (ratio 2:1), 3 temporal layer,
          *  inter-layer dependency
          */
-        L2T3,
+        L2T3 = 4,
         /**
          * 2 spatial layer (ratio 2:1), 1 temporal layer
          */
-        S2T1,
+        S2T1 = 5,
         /**
          * 2 spatial layer (ratio 2:1), 2 temporal layer
          */
-        S2T2,
+        S2T2 = 6,
         /**
          * 2 spatial layer (ratio 2:1), 3 temporal layer
          */
-        S2T3,
+        S2T3 = 7,
         /**
          * 2 spatial layer (ratio 1.5:1), 1 temporal layer,
          *  inter-layer dependency
          */
-        L2T1H,
+        L2T1H = 8,
         /**
          * 2 spatial layer (ratio 1.5:1), 2 temporal layer,
          *  inter-layer dependency
          */
-        L2T2H,
+        L2T2H = 9,
         /**
          * 2 spatial layer (ratio 1.5:1), 3 temporal layer,
          *  inter-layer dependency
          */
-        L2T3H,
+        L2T3H = 10,
         /**
          * 2 spatial layer (ratio 1.5:1), 1 temporal layer
          */
-        S2T1H,
+        S2T1H = 11,
         /**
          * 2 spatial layer (ratio 1.5:1), 2 temporal layer
          */
-        S2T2H,
+        S2T2H = 12,
         /**
          * 2 spatial layer (ratio 1.5:1), 3 temporal layer
          */
-        S2T3H,
+        S2T3H = 13,
         /**
          * Use scalability structure {@link GstCodecParsers.AV1MetadataScalability}
          */
-        SS,
+        SS = 14,
     }
 
 
@@ -561,107 +561,107 @@ export namespace GstCodecParsers {
         /**
          * Level 2.0
          */
-        LEVEL_2_0,
+        LEVEL_2_0 = 0,
         /**
          * Level 2.1
          */
-        LEVEL_2_1,
+        LEVEL_2_1 = 1,
         /**
          * Level 2.2
          */
-        LEVEL_2_2,
+        LEVEL_2_2 = 2,
         /**
          * Level 2.3
          */
-        LEVEL_2_3,
+        LEVEL_2_3 = 3,
         /**
          * Level 3.0
          */
-        LEVEL_3_0,
+        LEVEL_3_0 = 4,
         /**
          * Level 3.1
          */
-        LEVEL_3_1,
+        LEVEL_3_1 = 5,
         /**
          * Level 3.2
          */
-        LEVEL_3_2,
+        LEVEL_3_2 = 6,
         /**
          * Level 3.3
          */
-        LEVEL_3_3,
+        LEVEL_3_3 = 7,
         /**
          * Level 4.0
          */
-        LEVEL_4_0,
+        LEVEL_4_0 = 8,
         /**
          * Level 4.1
          */
-        LEVEL_4_1,
+        LEVEL_4_1 = 9,
         /**
          * Level 4.2
          */
-        LEVEL_4_2,
+        LEVEL_4_2 = 10,
         /**
          * Level 4.3
          */
-        LEVEL_4_3,
+        LEVEL_4_3 = 11,
         /**
          * Level 5.0
          */
-        LEVEL_5_0,
+        LEVEL_5_0 = 12,
         /**
          * Level 5.1
          */
-        LEVEL_5_1,
+        LEVEL_5_1 = 13,
         /**
          * Level 5.2
          */
-        LEVEL_5_2,
+        LEVEL_5_2 = 14,
         /**
          * Level 5.3
          */
-        LEVEL_5_3,
+        LEVEL_5_3 = 15,
         /**
          * Level 6.0
          */
-        LEVEL_6_0,
+        LEVEL_6_0 = 16,
         /**
          * Level 6.1
          */
-        LEVEL_6_1,
+        LEVEL_6_1 = 17,
         /**
          * Level 6.2
          */
-        LEVEL_6_2,
+        LEVEL_6_2 = 18,
         /**
          * Level 6.3
          */
-        LEVEL_6_3,
+        LEVEL_6_3 = 19,
         /**
          * Level 7.0
          */
-        LEVEL_7_0,
+        LEVEL_7_0 = 20,
         /**
          * Level 7.1
          */
-        LEVEL_7_1,
+        LEVEL_7_1 = 21,
         /**
          * Level 7.2
          */
-        LEVEL_7_2,
+        LEVEL_7_2 = 22,
         /**
          * Level 7.3
          */
-        LEVEL_7_3,
+        LEVEL_7_3 = 23,
         /**
          * all valid levels
          */
-        LEVELS,
+        LEVELS = 24,
         /**
          * Maximum parameters
          */
-        LEVEL_MAX,
+        LEVEL_MAX = 31,
     }
 
 
@@ -672,17 +672,17 @@ export namespace GstCodecParsers {
         /**
          * the inverse transform will use only 4x4 transforms.
          */
-        ONLY_4X4,
+        ONLY_4X4 = 0,
         /**
          * the inverse transform will use the largest transform
          *   size that fits inside the block.
          */
-        LARGEST,
+        LARGEST = 1,
         /**
          * the choice of transform size is specified explicitly
          *   for each block.
          */
-        SELECT,
+        SELECT = 2,
     }
 
 
@@ -693,79 +693,79 @@ export namespace GstCodecParsers {
         /**
          * For future use
          */
-        RESERVED_0,
+        RESERVED_0 = 0,
         /**
          * BT.709
          */
-        BT_709,
+        BT_709 = 1,
         /**
          * Unspecified
          */
-        UNSPECIFIED,
+        UNSPECIFIED = 2,
         /**
          * For future use
          */
-        RESERVED_3,
+        RESERVED_3 = 3,
         /**
          * BT.470 System M (historical)
          */
-        BT_470_M,
+        BT_470_M = 4,
         /**
          * BT.470 System B, G (historical)
          */
-        BT_470_B_G,
+        BT_470_B_G = 5,
         /**
          * BT.601
          */
-        BT_601,
+        BT_601 = 6,
         /**
          * SMPTE 240 M
          */
-        SMPTE_240,
+        SMPTE_240 = 7,
         /**
          * Linear
          */
-        LINEAR,
+        LINEAR = 8,
         /**
          * Logarithmic (100 : 1 range)
          */
-        LOG_100,
+        LOG_100 = 9,
         /**
          * Logarithmic (100 * Sqrt(10) : 1 range)
          */
-        LOG_100_SQRT10,
+        LOG_100_SQRT10 = 10,
         /**
          * IEC 61966-2-4
          */
-        IEC_61966,
+        IEC_61966 = 11,
         /**
          * BT.1361
          */
-        BT_1361,
+        BT_1361 = 12,
         /**
          * sRGB or sYCC
          */
-        SRGB,
+        SRGB = 13,
         /**
          * BT.2020 10-bit systems
          */
-        BT_2020_10_BIT,
+        BT_2020_10_BIT = 14,
         /**
          * BT.2020 12-bit systems
          */
-        BT_2020_12_BIT,
+        BT_2020_12_BIT = 15,
         /**
          * SMPTE ST 2084, ITU BT.2100 PQ
          */
-        SMPTE_2084,
+        SMPTE_2084 = 16,
         /**
          * SMPTE ST 428
          */
-        SMPTE_428,
+        SMPTE_428 = 17,
         /**
          * BT.2100 HLG, ARIB STD-B67
          */
-        HLG,
+        HLG = 18,
     }
 
 
@@ -776,20 +776,20 @@ export namespace GstCodecParsers {
         /**
          * Warp model is just an identity transform
          */
-        IDENTITY,
+        IDENTITY = 0,
         /**
          * Warp model is a pure translation
          */
-        TRANSLATION,
+        TRANSLATION = 1,
         /**
          * Warp model is a rotation + symmetric zoom
          *     + translation
          */
-        ROTZOOM,
+        ROTZOOM = 2,
         /**
          * Warp model is a general affine transform
          */
-        AFFINE,
+        AFFINE = 3,
     }
 
 
@@ -797,9 +797,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum CtType {
-        PROGRESSIVE,
-        INTERLACED,
-        UNKNOWN,
+        PROGRESSIVE = 0,
+        INTERLACED = 1,
+        UNKNOWN = 2,
     }
 
 
@@ -812,19 +812,19 @@ export namespace GstCodecParsers {
         /**
          * The writing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The input data to write is invalid
          */
-        INVALID_DATA,
+        INVALID_DATA = 1,
         /**
          * The output does not have enough size
          */
-        NO_MORE_SPACE,
+        NO_MORE_SPACE = 2,
         /**
          * An general error occurred when writing
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -837,36 +837,37 @@ export namespace GstCodecParsers {
         /**
          * A complete 2D frame without any frame packing
          */
-        FRAME_PACKING_NONE,
+        FRAME_PACKING_NONE = 6,
         /**
          * Checkerboard
          *   based interleaving
          */
-        FRAME_PACKING_CHECKERBOARD_INTERLEAVING,
+        FRAME_PACKING_CHECKERBOARD_INTERLEAVING = 0,
         /**
          * Column based interleaving
          */
-        FRAME_PACKING_COLUMN_INTERLEAVING,
+        FRAME_PACKING_COLUMN_INTERLEAVING = 1,
         /**
          * Row based interleaving
          */
-        FRAME_PACKING_ROW_INTERLEAVING,
+        FRAME_PACKING_ROW_INTERLEAVING = 2,
         /**
          * Side-by-side packing
          */
-        FRAME_PACKING_SIDE_BY_SIDE,
+        FRAME_PACKING_SIDE_BY_SIDE = 3,
         /**
          * Deprecated; use GST_H264_FRAME_PACKING_TOP_BOTTOM instead
          */
-        FRMAE_PACKING_TOP_BOTTOM,
+        FRMAE_PACKING_TOP_BOTTOM = 4,
         /**
          * Top-Bottom packing
+         * @since 1.22
          */
-        FRAME_PACKING_TOP_BOTTOM,
+        FRAME_PACKING_TOP_BOTTOM = 4,
         /**
          * Temporal interleaving
          */
-        FRAME_PACKING_TEMPORAL_INTERLEAVING,
+        FRAME_PACKING_TEMPORAL_INTERLEAVING = 5,
     }
 
 
@@ -879,83 +880,83 @@ export namespace GstCodecParsers {
         /**
          * Level 1
          */
-        L1,
+        L1 = 10,
         /**
          * Level 1b
          */
-        L1B,
+        L1B = 9,
         /**
          * Level 1.1
          */
-        L1_1,
+        L1_1 = 11,
         /**
          * Level 1.2
          */
-        L1_2,
+        L1_2 = 12,
         /**
          * Level 1.3
          */
-        L1_3,
+        L1_3 = 13,
         /**
          * Level 2
          */
-        L2,
+        L2 = 20,
         /**
          * Level 2.1
          */
-        L2_1,
+        L2_1 = 21,
         /**
          * Level 2.2
          */
-        L2_2,
+        L2_2 = 22,
         /**
          * Level 3
          */
-        L3,
+        L3 = 30,
         /**
          * Level 3.1
          */
-        L3_1,
+        L3_1 = 31,
         /**
          * Level 3.2
          */
-        L3_2,
+        L3_2 = 32,
         /**
          * Level 4
          */
-        L4,
+        L4 = 40,
         /**
          * Level 4.1
          */
-        L4_1,
+        L4_1 = 41,
         /**
          * Level 4.2
          */
-        L4_2,
+        L4_2 = 42,
         /**
          * Level 5
          */
-        L5,
+        L5 = 50,
         /**
          * Level 5.1
          */
-        L5_1,
+        L5_1 = 51,
         /**
          * Level 5.2
          */
-        L5_2,
+        L5_2 = 52,
         /**
          * Level 6
          */
-        L6,
+        L6 = 60,
         /**
          * Level 6.1
          */
-        L6_1,
+        L6_1 = 61,
         /**
          * Level 6.2
          */
-        L6_2,
+        L6_2 = 62,
     }
 
 
@@ -968,15 +969,15 @@ export namespace GstCodecParsers {
         /**
          * No NAL unit header extension is available
          */
-        NONE,
+        NONE = 0,
         /**
          * NAL unit header extension for SVC (Annex G)
          */
-        SVC,
+        SVC = 1,
         /**
          * NAL unit header extension for MVC (Annex H)
          */
-        MVC,
+        MVC = 2,
     }
 
 
@@ -988,91 +989,93 @@ export namespace GstCodecParsers {
         /**
          * Unknown nal type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Slice nal
          */
-        SLICE,
+        SLICE = 1,
         /**
          * DPA slice nal
          */
-        SLICE_DPA,
+        SLICE_DPA = 2,
         /**
          * DPB slice nal
          */
-        SLICE_DPB,
+        SLICE_DPB = 3,
         /**
          * DPC slice nal
          */
-        SLICE_DPC,
+        SLICE_DPC = 4,
         /**
          * DPR slice nal
          */
-        SLICE_IDR,
+        SLICE_IDR = 5,
         /**
          * Supplemental enhancement information (SEI) nal unit
          */
-        SEI,
+        SEI = 6,
         /**
          * Sequence parameter set (SPS) nal unit
          */
-        SPS,
+        SPS = 7,
         /**
          * Picture parameter set (PPS) nal unit
          */
-        PPS,
+        PPS = 8,
         /**
          * Access unit (AU) delimiter nal unit
          */
-        AU_DELIMITER,
+        AU_DELIMITER = 9,
         /**
          * End of sequence nal unit
          */
-        SEQ_END,
+        SEQ_END = 10,
         /**
          * End of stream nal unit
          */
-        STREAM_END,
+        STREAM_END = 11,
         /**
          * Filler data nal lunit
          */
-        FILLER_DATA,
+        FILLER_DATA = 12,
         /**
          * Sequence parameter set (SPS) extension NAL unit
          */
-        SPS_EXT,
+        SPS_EXT = 13,
         /**
          * Prefix NAL unit
          */
-        PREFIX_UNIT,
+        PREFIX_UNIT = 14,
         /**
          * Subset sequence parameter set (SSPS) NAL unit
          */
-        SUBSET_SPS,
+        SUBSET_SPS = 15,
         /**
          * Depth parameter set (DPS) NAL unit
          */
-        DEPTH_SPS,
+        DEPTH_SPS = 16,
         /**
          * First reserved parameter
+         * @since 1.24
          */
-        RSV_1,
+        RSV_1 = 17,
         /**
          * Second reserved parameter
+         * @since 1.24
          */
-        RSV_2,
+        RSV_2 = 18,
         /**
          * Auxiliary coded picture without partitioning NAL unit
          */
-        SLICE_AUX,
+        SLICE_AUX = 19,
         /**
          * Coded slice extension NAL unit
          */
-        SLICE_EXT,
+        SLICE_EXT = 20,
         /**
          * Coded slice extension for depth or 3D-AVC texture view
          */
-        SLICE_DEPTH,
+        SLICE_DEPTH = 21,
     }
 
 
@@ -1084,23 +1087,23 @@ export namespace GstCodecParsers {
         /**
          * The parsing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The data to parse is broken
          */
-        BROKEN_DATA,
+        BROKEN_DATA = 1,
         /**
          * The link to structure needed for the parsing couldn't be found
          */
-        BROKEN_LINK,
+        BROKEN_LINK = 2,
         /**
          * An error occurred when parsing
          */
-        ERROR,
+        ERROR = 3,
         /**
          * No NAL unit found during the parsing
          */
-        NO_NAL,
+        NO_NAL = 4,
         /**
          * Start of the NAL unit found, but not the end.
          *     This will be returned if no start/sync marker for the next NAL unit was
@@ -1113,7 +1116,7 @@ export namespace GstCodecParsers {
          *     then the caller probably wants to collect more data until there's another
          *     sync marker or the end of the stream has been reached.
          */
-        NO_NAL_END,
+        NO_NAL_END = 5,
     }
 
 
@@ -1126,60 +1129,61 @@ export namespace GstCodecParsers {
         /**
          * Baseline profile (A.2.1)
          */
-        BASELINE,
+        BASELINE = 66,
         /**
          * Main profile (A.2.2)
          */
-        MAIN,
+        MAIN = 77,
         /**
          * Extended profile (A.2.3)
          */
-        EXTENDED,
+        EXTENDED = 88,
         /**
          * High profile (A.2.4),
          * or Progressive High profile (A.2.4.1), or Constrained High profile (A.2.4.2)
          * depending on constraint_set4_flag and constraint_set5_flag
          */
-        HIGH,
+        HIGH = 100,
         /**
          * High 10 profile (A.2.5) or High 10 Intra
          *   profile (A.2.8), or Progressive High 10 profile (A.2.5.1) depending on
          *   constraint_set3_flag and constraint_set4_flag
          */
-        HIGH10,
+        HIGH10 = 110,
         /**
          * High 4:2:2 profile (A.2.6) or High
          *   4:2:2 Intra profile (A.2.9), depending on constraint_set3_flag
          */
-        HIGH_422,
+        HIGH_422 = 122,
         /**
          * High 4:4:4 Predictive profile (A.2.7)
          *   or High 4:4:4 Intra profile (A.2.10), depending on the value of
          *   constraint_set3_flag
          */
-        HIGH_444,
+        HIGH_444 = 244,
         /**
          * Multiview High profile (H.10.1.1)
          */
-        MULTIVIEW_HIGH,
+        MULTIVIEW_HIGH = 118,
         /**
          * Stereo High profile (H.10.1.2)
          */
-        STEREO_HIGH,
+        STEREO_HIGH = 128,
         /**
          * Scalable Baseline profile (G.10.1.1)
          */
-        SCALABLE_BASELINE,
+        SCALABLE_BASELINE = 83,
         /**
          * Scalable High profile (G.10.1.2)
          *   or Scalable High Intra profile (G.10.1.3), depending on the value
          *   of constraint_set3_flag
          */
-        SCALABLE_HIGH,
+        SCALABLE_HIGH = 86,
         /**
          * Invalid H264 profile
+         * @since 1.24
          */
-        INVALID,
+        INVALID = -1,
     }
 
 
@@ -1191,46 +1195,47 @@ export namespace GstCodecParsers {
         /**
          * Buffering Period SEI Message
          */
-        BUF_PERIOD,
+        BUF_PERIOD = 0,
         /**
          * Picture Timing SEI Message
          */
-        PIC_TIMING,
+        PIC_TIMING = 1,
         /**
          * Registered user data (D.2.5)
          */
-        REGISTERED_USER_DATA,
+        REGISTERED_USER_DATA = 4,
         /**
          * User Data Unregistered (D.2.6)
+         * @since 1.22
          */
-        USER_DATA_UNREGISTERED,
+        USER_DATA_UNREGISTERED = 5,
         /**
          * Recovery Point SEI Message (D.2.7)
          */
-        RECOVERY_POINT,
+        RECOVERY_POINT = 6,
         /**
          * stereo video info SEI message (Since: 1.6)
          */
-        STEREO_VIDEO_INFO,
+        STEREO_VIDEO_INFO = 21,
         /**
          * Frame Packing Arrangement (FPA) message that
          *     contains the 3D arrangement for stereoscopic 3D video (Since: 1.6)
          */
-        FRAME_PACKING,
+        FRAME_PACKING = 45,
         /**
          * Mastering display colour volume information SEI message (D.2.29) (Since: 1.18)
          */
-        MASTERING_DISPLAY_COLOUR_VOLUME,
+        MASTERING_DISPLAY_COLOUR_VOLUME = 137,
         /**
          * Content light level information SEI message (D.2.31) (Since: 1.18)
          */
-        CONTENT_LIGHT_LEVEL,
+        CONTENT_LIGHT_LEVEL = 144,
         /**
          * Unhandled SEI message. This may or may not
          *     be defined by spec (Since 1.18)
          * ...
          */
-        UNHANDLED_PAYLOAD,
+        UNHANDLED_PAYLOAD = -1,
     }
 
 
@@ -1242,41 +1247,41 @@ export namespace GstCodecParsers {
         /**
          * Picture is a frame
          */
-        FRAME,
+        FRAME = 0,
         /**
          * Top field of frame
          */
-        TOP_FIELD,
+        TOP_FIELD = 1,
         /**
          * Bottom field of frame
          */
-        BOTTOM_FIELD,
+        BOTTOM_FIELD = 2,
         /**
          * Top bottom field of frame
          */
-        TOP_BOTTOM,
+        TOP_BOTTOM = 3,
         /**
          * bottom top field of frame
          */
-        BOTTOM_TOP,
+        BOTTOM_TOP = 4,
         /**
          * top bottom top field of frame
          */
-        TOP_BOTTOM_TOP,
+        TOP_BOTTOM_TOP = 5,
         /**
          * bottom top bottom field of frame
          */
-        BOTTOM_TOP_BOTTOM,
+        BOTTOM_TOP_BOTTOM = 6,
         /**
          * indicates that the frame should
          *  be displayed two times consecutively
          */
-        FRAME_DOUBLING,
+        FRAME_DOUBLING = 7,
         /**
          * indicates that the frame should be
          *  displayed three times consecutively
          */
-        FRAME_TRIPLING,
+        FRAME_TRIPLING = 8,
     }
 
 
@@ -1285,16 +1290,16 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum H264SliceType {
-        P_SLICE,
-        B_SLICE,
-        I_SLICE,
-        SP_SLICE,
-        SI_SLICE,
-        S_P_SLICE,
-        S_B_SLICE,
-        S_I_SLICE,
-        S_SP_SLICE,
-        S_SI_SLICE,
+        P_SLICE = 0,
+        B_SLICE = 1,
+        I_SLICE = 2,
+        SP_SLICE = 3,
+        SI_SLICE = 4,
+        S_P_SLICE = 5,
+        S_B_SLICE = 6,
+        S_I_SLICE = 7,
+        S_SP_SLICE = 8,
+        S_SI_SLICE = 9,
     }
 
 
@@ -1307,55 +1312,55 @@ export namespace GstCodecParsers {
         /**
          * Level 1
          */
-        L1,
+        L1 = 30,
         /**
          * Level 2
          */
-        L2,
+        L2 = 60,
         /**
          * Level 2.1
          */
-        L2_1,
+        L2_1 = 63,
         /**
          * Level 3
          */
-        L3,
+        L3 = 90,
         /**
          * Level 3.1
          */
-        L3_1,
+        L3_1 = 93,
         /**
          * Level 4
          */
-        L4,
+        L4 = 120,
         /**
          * Level 4.1
          */
-        L4_1,
+        L4_1 = 123,
         /**
          * Level 5
          */
-        L5,
+        L5 = 150,
         /**
          * Level 5.1
          */
-        L5_1,
+        L5_1 = 153,
         /**
          * Level 5.2
          */
-        L5_2,
+        L5_2 = 156,
         /**
          * Level 6
          */
-        L6,
+        L6 = 180,
         /**
          * Level 6.1
          */
-        L6_1,
+        L6_1 = 183,
         /**
          * Level 6.2
          */
-        L6_2,
+        L6_2 = 186,
     }
 
 
@@ -1367,103 +1372,103 @@ export namespace GstCodecParsers {
         /**
          * Slice nal of a non-TSA, non-STSA trailing picture
          */
-        SLICE_TRAIL_N,
+        SLICE_TRAIL_N = 0,
         /**
          * Slice nal of a non-TSA, non-STSA trailing picture
          */
-        SLICE_TRAIL_R,
+        SLICE_TRAIL_R = 1,
         /**
          * Slice nal of a TSA picture
          */
-        SLICE_TSA_N,
+        SLICE_TSA_N = 2,
         /**
          * Slice nal of a TSA picture
          */
-        SLICE_TSA_R,
+        SLICE_TSA_R = 3,
         /**
          * Slice nal of a STSA picture
          */
-        SLICE_STSA_N,
+        SLICE_STSA_N = 4,
         /**
          * Slice nal of a STSA picture
          */
-        SLICE_STSA_R,
+        SLICE_STSA_R = 5,
         /**
          * Slice nal of a RADL picture
          */
-        SLICE_RADL_N,
+        SLICE_RADL_N = 6,
         /**
          * Slice nal of a RADL piicture
          */
-        SLICE_RADL_R,
+        SLICE_RADL_R = 7,
         /**
          * Slice nal of a RASL picture
          */
-        SLICE_RASL_N,
+        SLICE_RASL_N = 8,
         /**
          * Slice nal of a RASL picture
          */
-        SLICE_RASL_R,
+        SLICE_RASL_R = 9,
         /**
          * Slice nal of a BLA picture
          */
-        SLICE_BLA_W_LP,
+        SLICE_BLA_W_LP = 16,
         /**
          * Slice nal of a BLA picture
          */
-        SLICE_BLA_W_RADL,
+        SLICE_BLA_W_RADL = 17,
         /**
          * Slice nal of a BLA picture
          */
-        SLICE_BLA_N_LP,
+        SLICE_BLA_N_LP = 18,
         /**
          * Slice nal of an IDR picture
          */
-        SLICE_IDR_W_RADL,
+        SLICE_IDR_W_RADL = 19,
         /**
          * Slice nal of an IDR picture
          */
-        SLICE_IDR_N_LP,
+        SLICE_IDR_N_LP = 20,
         /**
          * Slice nal of a CRA picture
          */
-        SLICE_CRA_NUT,
+        SLICE_CRA_NUT = 21,
         /**
          * Video parameter set(VPS) nal unit
          */
-        VPS,
+        VPS = 32,
         /**
          * Sequence parameter set (SPS) nal unit
          */
-        SPS,
+        SPS = 33,
         /**
          * Picture parameter set (PPS) nal unit
          */
-        PPS,
+        PPS = 34,
         /**
          * Access unit (AU) delimiter nal unit
          */
-        AUD,
+        AUD = 35,
         /**
          * End of sequence (EOS) nal unit
          */
-        EOS,
+        EOS = 36,
         /**
          * End of bitstream (EOB) nal unit
          */
-        EOB,
+        EOB = 37,
         /**
          * Filler data (FD) nal lunit
          */
-        FD,
+        FD = 38,
         /**
          * Supplemental enhancement information prefix nal unit
          */
-        PREFIX_SEI,
+        PREFIX_SEI = 39,
         /**
          * Suppliemental enhancement information suffix nal unit
          */
-        SUFFIX_SEI,
+        SUFFIX_SEI = 40,
     }
 
 
@@ -1475,27 +1480,27 @@ export namespace GstCodecParsers {
         /**
          * The parsing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The data to parse is broken
          */
-        BROKEN_DATA,
+        BROKEN_DATA = 1,
         /**
          * The link to structure needed for the parsing couldn't be found
          */
-        BROKEN_LINK,
+        BROKEN_LINK = 2,
         /**
          * An error accured when parsing
          */
-        ERROR,
+        ERROR = 3,
         /**
          * No nal found during the parsing
          */
-        NO_NAL,
+        NO_NAL = 4,
         /**
          * Start of the nal found, but not the end.
          */
-        NO_NAL_END,
+        NO_NAL_END = 5,
     }
 
 
@@ -1504,180 +1509,180 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum H265Profile {
-        INVALID,
+        INVALID = -1,
         /**
          * Main profile (A.3.2)
          */
-        MAIN,
+        MAIN = 1,
         /**
          * Main 10 profile (A.3.3)
          */
-        MAIN_10,
+        MAIN_10 = 2,
         /**
          * Main Still Picture profile (A.3.4)
          */
-        MAIN_STILL_PICTURE,
+        MAIN_STILL_PICTURE = 3,
         /**
          * Monochrome profile (A.3.4)
          */
-        MONOCHROME,
+        MONOCHROME = 4,
         /**
          * Monochrome 12-bits profile (A.3.4)
          */
-        MONOCHROME_12,
+        MONOCHROME_12 = 5,
         /**
          * Monochrome 16-bits profile (A.3.4)
          */
-        MONOCHROME_16,
+        MONOCHROME_16 = 6,
         /**
          * Main profile 12-bits (A.3.4)
          */
-        MAIN_12,
+        MAIN_12 = 7,
         /**
          * Main 4:2:2 profile 10-bits (A.3.4)
          */
-        MAIN_422_10,
+        MAIN_422_10 = 8,
         /**
          * Main 4:2:2 profile 12-bits (A.3.4)
          */
-        MAIN_422_12,
+        MAIN_422_12 = 9,
         /**
          * Main 4:4:4 profile (A.3.4)
          */
-        MAIN_444,
+        MAIN_444 = 10,
         /**
          * Main 4:4:4 10-bits profile (A.3.4)
          */
-        MAIN_444_10,
+        MAIN_444_10 = 11,
         /**
          * Main 4:4:4 12-bits profile (A.3.4)
          */
-        MAIN_444_12,
+        MAIN_444_12 = 12,
         /**
          * Main Intra profile (A.3.4)
          */
-        MAIN_INTRA,
+        MAIN_INTRA = 13,
         /**
          * Main Intra 10-bits profile (A.3.4)
          */
-        MAIN_10_INTRA,
+        MAIN_10_INTRA = 14,
         /**
          * Main Intra 12-bits profile (A.3.4)
          */
-        MAIN_12_INTRA,
+        MAIN_12_INTRA = 15,
         /**
          * Main Intra 4:2:2 10-bits profile (A.3.4)
          */
-        MAIN_422_10_INTRA,
+        MAIN_422_10_INTRA = 16,
         /**
          * Main Intra 4:2:2 12-bits profile (A.3.4)
          */
-        MAIN_422_12_INTRA,
+        MAIN_422_12_INTRA = 17,
         /**
          * Main Intra 4:4:4 profile (A.3.4)
          */
-        MAIN_444_INTRA,
+        MAIN_444_INTRA = 18,
         /**
          * Main Intra 4:4:4 10-bits profile (A.3.4)
          */
-        MAIN_444_10_INTRA,
+        MAIN_444_10_INTRA = 19,
         /**
          * Main Intra 4:4:4 12-bits profile (A.3.4)
          */
-        MAIN_444_12_INTRA,
+        MAIN_444_12_INTRA = 20,
         /**
          * Main Intra 4:4:4 16-bits profile (A.3.4)
          */
-        MAIN_444_16_INTRA,
+        MAIN_444_16_INTRA = 21,
         /**
          * Main 4:4:4 Still Picture profile (A.3.4)
          */
-        MAIN_444_STILL_PICTURE,
+        MAIN_444_STILL_PICTURE = 22,
         /**
          * Main 4:4:4 16-bits Still Picture profile (A.3.4)
          */
-        MAIN_444_16_STILL_PICTURE,
+        MAIN_444_16_STILL_PICTURE = 23,
         /**
          * Monochrome 10-bits profile (A.3.5) (Since: 1.18)
          */
-        MONOCHROME_10,
+        MONOCHROME_10 = 24,
         /**
          * High Throughput 4:4:4 profile (A.3.6) (Since: 1.18)
          */
-        HIGH_THROUGHPUT_444,
+        HIGH_THROUGHPUT_444 = 25,
         /**
          * High Throughput 4:4:4 10-bits profile (A.3.6) (Since: 1.18)
          */
-        HIGH_THROUGHPUT_444_10,
+        HIGH_THROUGHPUT_444_10 = 26,
         /**
          * High Throughput 4:4:4 14-bits profile (A.3.6) (Since: 1.18)
          */
-        HIGH_THROUGHPUT_444_14,
+        HIGH_THROUGHPUT_444_14 = 27,
         /**
          * High Throughput 4:4:4 16-bits Intra profile (A.3.6) (Since: 1.18)
          */
-        HIGH_THROUGHPUT_444_16_INTRA,
+        HIGH_THROUGHPUT_444_16_INTRA = 28,
         /**
          * Screen-Extended Main profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_MAIN,
+        SCREEN_EXTENDED_MAIN = 29,
         /**
          * Screen-Extended Main 10-bits profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_MAIN_10,
+        SCREEN_EXTENDED_MAIN_10 = 30,
         /**
          * Screen-Extended Main 4:4:4 profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_MAIN_444,
+        SCREEN_EXTENDED_MAIN_444 = 31,
         /**
          * Screen-Extended Main 4:4:4 10-bits profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_MAIN_444_10,
+        SCREEN_EXTENDED_MAIN_444_10 = 32,
         /**
          * Screen-Extended High Throughput 4:4:4 profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_HIGH_THROUGHPUT_444,
+        SCREEN_EXTENDED_HIGH_THROUGHPUT_444 = 33,
         /**
          * Screen-Extended High Throughput 4:4:4 10-bits profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_HIGH_THROUGHPUT_444_10,
+        SCREEN_EXTENDED_HIGH_THROUGHPUT_444_10 = 34,
         /**
          * Screen-Extended High Throughput 4:4:4 14-bits profile (A.3.7) (Since: 1.18)
          */
-        SCREEN_EXTENDED_HIGH_THROUGHPUT_444_14,
+        SCREEN_EXTENDED_HIGH_THROUGHPUT_444_14 = 35,
         /**
          * Multiview Main profile (G.11.1) (Since: 1.18)
          */
-        MULTIVIEW_MAIN,
+        MULTIVIEW_MAIN = 36,
         /**
          * Scalable Main profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MAIN,
+        SCALABLE_MAIN = 37,
         /**
          * Scalable Main 10-bits profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MAIN_10,
+        SCALABLE_MAIN_10 = 38,
         /**
          * Scalable Monochrome profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MONOCHROME,
+        SCALABLE_MONOCHROME = 39,
         /**
          * Scalable Monochrome 12-bits profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MONOCHROME_12,
+        SCALABLE_MONOCHROME_12 = 40,
         /**
          * Scalable Monochrome 16-bits profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MONOCHROME_16,
+        SCALABLE_MONOCHROME_16 = 41,
         /**
          * Scalable Main 4:4:4 profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MAIN_444,
+        SCALABLE_MAIN_444 = 42,
         /**
          * 3D Main 4:4:4 profile (I.11.1) (Since: 1.18)
          */
-        "3D_MAIN",
-        MAX,
+        "3D_MAIN" = 43,
+        MAX = 44,
     }
 
 
@@ -1691,47 +1696,47 @@ export namespace GstCodecParsers {
         /**
          * Main profile (A.3.2)
          */
-        MAIN,
+        MAIN = 1,
         /**
          * Main 10 profile (A.3.3)
          */
-        MAIN_10,
+        MAIN_10 = 2,
         /**
          * Main Still Picture profile (A.3.4)
          */
-        MAIN_STILL_PICTURE,
+        MAIN_STILL_PICTURE = 3,
         /**
          * Format range extensions profile (A.3.5)
          */
-        FORMAT_RANGE_EXTENSION,
+        FORMAT_RANGE_EXTENSION = 4,
         /**
          * High throughput profiles (A.3.6)
          */
-        HIGH_THROUGHPUT,
+        HIGH_THROUGHPUT = 5,
         /**
          * Multiview Main profiles (G.11.1) (Since: 1.18)
          */
-        MULTIVIEW_MAIN,
+        MULTIVIEW_MAIN = 6,
         /**
          * Scalable Main and Scalable Main 10 profile (H.11.1) (Since: 1.18)
          */
-        SCALABLE_MAIN,
+        SCALABLE_MAIN = 7,
         /**
          * 3D Main profile (I.11.1) (Since: 1.18)
          */
-        "3D_MAIN",
+        "3D_MAIN" = 8,
         /**
          * Screen content coding extensions profiles (A.3.7)
          */
-        SCREEN_CONTENT_CODING,
+        SCREEN_CONTENT_CODING = 9,
         /**
          * Scalable Format range extensions profiles (H.11.1) (Since: 1.18)
          */
-        SCALABLE_FORMAT_RANGE_EXTENSION,
+        SCALABLE_FORMAT_RANGE_EXTENSION = 10,
         /**
          * High throughput screen content coding extensions profiles (A.3.8) (Since: 1.18)
          */
-        HIGH_THROUGHPUT_SCREEN_CONTENT_CODING_EXTENSION,
+        HIGH_THROUGHPUT_SCREEN_CONTENT_CODING_EXTENSION = 11,
     }
 
 
@@ -1739,10 +1744,10 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum H265QuantMatrixSize {
-        "4X4",
-        "8X8",
-        "16X16",
-        "32X32",
+        "4X4" = 0,
+        "8X8" = 1,
+        "16X16" = 2,
+        "32X32" = 3,
     }
 
 
@@ -1754,36 +1759,37 @@ export namespace GstCodecParsers {
         /**
          * Buffering Period SEI Message
          */
-        BUF_PERIOD,
+        BUF_PERIOD = 0,
         /**
          * Picture Timing SEI Message
          */
-        PIC_TIMING,
+        PIC_TIMING = 1,
         /**
          * Registered user data (D.2.5)
          */
-        REGISTERED_USER_DATA,
+        REGISTERED_USER_DATA = 4,
         /**
          * User data unregistered (D.2.7)
+         * @since 1.24
          */
-        USER_DATA_UNREGISTERED,
+        USER_DATA_UNREGISTERED = 5,
         /**
          * Recovery Point SEI Message (D.3.8)
          */
-        RECOVERY_POINT,
+        RECOVERY_POINT = 6,
         /**
          * Time code SEI message (D.2.27) (Since: 1.16)
          */
-        TIME_CODE,
+        TIME_CODE = 136,
         /**
          * Mastering display colour volume information SEI message (D.2.28) (Since: 1.18)
          */
-        MASTERING_DISPLAY_COLOUR_VOLUME,
+        MASTERING_DISPLAY_COLOUR_VOLUME = 137,
         /**
          * Content light level information SEI message (D.2.35) (Since: 1.18)
          * ...
          */
-        CONTENT_LIGHT_LEVEL,
+        CONTENT_LIGHT_LEVEL = 144,
     }
 
 
@@ -1795,61 +1801,61 @@ export namespace GstCodecParsers {
         /**
          * Picture is a frame
          */
-        FRAME,
+        FRAME = 0,
         /**
          * Top field of frame
          */
-        TOP_FIELD,
+        TOP_FIELD = 1,
         /**
          * Botom field of frame
          */
-        BOTTOM_FIELD,
+        BOTTOM_FIELD = 2,
         /**
          * Top bottom field of frame
          */
-        TOP_BOTTOM,
+        TOP_BOTTOM = 3,
         /**
          * bottom top field of frame
          */
-        BOTTOM_TOP,
+        BOTTOM_TOP = 4,
         /**
          * top bottom top field of frame
          */
-        TOP_BOTTOM_TOP,
+        TOP_BOTTOM_TOP = 5,
         /**
          * bottom top bottom field of frame
          */
-        BOTTOM_TOP_BOTTOM,
+        BOTTOM_TOP_BOTTOM = 6,
         /**
          * indicates that the frame should
          *  be displayed two times consecutively
          */
-        FRAME_DOUBLING,
+        FRAME_DOUBLING = 7,
         /**
          * indicates that the frame should be
          *  displayed three times consecutively
          */
-        FRAME_TRIPLING,
+        FRAME_TRIPLING = 8,
         /**
          * top field paired with
          *  previous bottom field in output order
          */
-        TOP_PAIRED_PREVIOUS_BOTTOM,
+        TOP_PAIRED_PREVIOUS_BOTTOM = 9,
         /**
          * bottom field paried with
          *  previous top field in output order
          */
-        BOTTOM_PAIRED_PREVIOUS_TOP,
+        BOTTOM_PAIRED_PREVIOUS_TOP = 10,
         /**
          * top field paired with next
          *  bottom field in output order
          */
-        TOP_PAIRED_NEXT_BOTTOM,
+        TOP_PAIRED_NEXT_BOTTOM = 11,
         /**
          * bottom field paired with
          *  next top field in output order
          */
-        BOTTOM_PAIRED_NEXT_TOP,
+        BOTTOM_PAIRED_NEXT_TOP = 12,
     }
 
 
@@ -1858,9 +1864,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum H265SliceType {
-        B_SLICE,
-        P_SLICE,
-        I_SLICE,
+        B_SLICE = 0,
+        P_SLICE = 1,
+        I_SLICE = 2,
     }
 
 
@@ -1874,16 +1880,16 @@ export namespace GstCodecParsers {
         /**
          * ALF parameters.
          */
-        ALF_APS,
+        ALF_APS = 0,
         /**
          * LMCS parameters.
          */
-        LMCS_APS,
+        LMCS_APS = 1,
         /**
          * Scaling list parameters.
          */
-        SCALING_APS,
-        APS_TYPE_MAX,
+        SCALING_APS = 2,
+        APS_TYPE_MAX = 3,
     }
 
 
@@ -1893,20 +1899,20 @@ export namespace GstCodecParsers {
      * @since 1.26
      */
     enum H266Level {
-        L1_0,
-        L2_0,
-        L2_1,
-        L3_0,
-        L3_1,
-        L4_0,
-        L4_1,
-        L5_0,
-        L5_1,
-        L5_2,
-        L6_0,
-        L6_1,
-        L6_2,
-        L6_3,
+        L1_0 = 16,
+        L2_0 = 32,
+        L2_1 = 35,
+        L3_0 = 48,
+        L3_1 = 51,
+        L4_0 = 64,
+        L4_1 = 67,
+        L5_0 = 80,
+        L5_1 = 83,
+        L5_2 = 86,
+        L6_0 = 96,
+        L6_1 = 99,
+        L6_2 = 102,
+        L6_3 = 105,
     }
 
 
@@ -1920,91 +1926,91 @@ export namespace GstCodecParsers {
         /**
          * Coded slice of a trailing picture or subpicture.
          */
-        SLICE_TRAIL,
+        SLICE_TRAIL = 0,
         /**
          * Coded slice of an STSA picture or subpicture.
          */
-        SLICE_STSA,
+        SLICE_STSA = 1,
         /**
          * Coded slice of a RADL picture or subpicture.
          */
-        SLICE_RADL,
+        SLICE_RADL = 2,
         /**
          * Coded slice of a RASL picture or subpicture.
          */
-        SLICE_RASL,
+        SLICE_RASL = 3,
         /**
          * Coded slice of an IDR picture or subpicture.
          */
-        SLICE_IDR_W_RADL,
+        SLICE_IDR_W_RADL = 7,
         /**
          * Coded slice of an IDR picture or subpicture.
          */
-        SLICE_IDR_N_LP,
+        SLICE_IDR_N_LP = 8,
         /**
          * Coded slice of a CRA picture or subpicture.
          */
-        SLICE_CRA,
+        SLICE_CRA = 9,
         /**
          * Coded slice of a GDR picture or subpicture.
          */
-        SLICE_GDR,
+        SLICE_GDR = 10,
         /**
          * Operating point information.
          */
-        OPI,
+        OPI = 12,
         /**
          * Decoding capability information.
          */
-        DCI,
+        DCI = 13,
         /**
          * Video parameter set(VPS).
          */
-        VPS,
+        VPS = 14,
         /**
          * Sequence parameter set (SPS).
          */
-        SPS,
+        SPS = 15,
         /**
          * Picture parameter set (PPS).
          */
-        PPS,
+        PPS = 16,
         /**
          * Prefix Adaptation parameter set (APS).
          */
-        PREFIX_APS,
+        PREFIX_APS = 17,
         /**
          * Suffix Adaptation parameter set (APS).
          */
-        SUFFIX_APS,
+        SUFFIX_APS = 18,
         /**
          * Picture header (PH).
          */
-        PH,
+        PH = 19,
         /**
          * AU delimiter.
          */
-        AUD,
+        AUD = 20,
         /**
          * End of sequence (EOS).
          */
-        EOS,
+        EOS = 21,
         /**
          * End of bitstream (EOB).
          */
-        EOB,
+        EOB = 22,
         /**
          * Prefix Supplemental enhancement information.
          */
-        PREFIX_SEI,
+        PREFIX_SEI = 23,
         /**
          * Suffix Suppliemental enhancement information.
          */
-        SUFFIX_SEI,
+        SUFFIX_SEI = 24,
         /**
          * Filler data (FD).
          */
-        FD,
+        FD = 25,
     }
 
 
@@ -2017,28 +2023,28 @@ export namespace GstCodecParsers {
         /**
          * The parsing succeeded.
          */
-        OK,
+        OK = 0,
         /**
          * The data to parse is broken.
          */
-        BROKEN_DATA,
+        BROKEN_DATA = 1,
         /**
          * The link to structure needed for the parsing
          *  couldn't be found.
          */
-        BROKEN_LINK,
+        BROKEN_LINK = 2,
         /**
          * An error accured when parsing.
          */
-        ERROR,
+        ERROR = 3,
         /**
          * No nal found during the parsing.
          */
-        NO_NAL,
+        NO_NAL = 4,
         /**
          * Start of the nal found, but not the end.
          */
-        NO_NAL_END,
+        NO_NAL_END = 5,
     }
 
 
@@ -2048,85 +2054,85 @@ export namespace GstCodecParsers {
      * @since 1.26
      */
     enum H266Profile {
-        INVALID,
-        NONE,
-        INTRA,
-        STILL_PICTURE,
+        INVALID = -1,
+        NONE = 0,
+        INTRA = 8,
+        STILL_PICTURE = 64,
         /**
          * Main 10 profile (A.3.1).
          */
-        MAIN_10,
+        MAIN_10 = 1,
         /**
          * Main 10 Still Picture profile (A.3.1).
          */
-        MAIN_10_STILL_PICTURE,
+        MAIN_10_STILL_PICTURE = 65,
         /**
          * MultiLayer Main 10 profile (A.3.3).
          */
-        MULTILAYER_MAIN_10,
+        MULTILAYER_MAIN_10 = 17,
         /**
          * MultiLayer Main 10 Still
          *  Picture profile (A.3.3).
          */
-        MULTILAYER_MAIN_10_STILL_PICTURE,
+        MULTILAYER_MAIN_10_STILL_PICTURE = 81,
         /**
          * Main 10 4:4:4 profile (A.3.2).
          */
-        MAIN_10_444,
+        MAIN_10_444 = 33,
         /**
          * Main 10 4:4:4 Still Picture
          *  profile (A.3.2).
          */
-        MAIN_10_444_STILL_PICTURE,
+        MAIN_10_444_STILL_PICTURE = 97,
         /**
          * MultiLayer Main 10 4:4:4
          *  profile (A.3.4).
          */
-        MULTILAYER_MAIN_10_444,
+        MULTILAYER_MAIN_10_444 = 49,
         /**
          * MultiLayer Main 10
          *  4:4:4 Still Picture profile (A.3.4).
          */
-        MULTILAYER_MAIN_10_444_STILL_PICTURE,
+        MULTILAYER_MAIN_10_444_STILL_PICTURE = 113,
         /**
          * Main 12 profile (A.3.5).
          */
-        MAIN_12,
+        MAIN_12 = 2,
         /**
          * Main 12 4:4:4 profile (A.3.5).
          */
-        MAIN_12_444,
+        MAIN_12_444 = 34,
         /**
          * Main 16 4:4:4 profile (A.3.5).
          */
-        MAIN_16_444,
+        MAIN_16_444 = 35,
         /**
          * Main 12 Intra profile (A.3.5).
          */
-        MAIN_12_INTRA,
+        MAIN_12_INTRA = 10,
         /**
          * Main 12 4:4:4 Intra profile (A.3.5).
          */
-        MAIN_12_444_INTRA,
+        MAIN_12_444_INTRA = 42,
         /**
          * Main 16 4:4:4 Intra profile (A.3.5).
          */
-        MAIN_16_444_INTRA,
+        MAIN_16_444_INTRA = 43,
         /**
          * Main 12 Still Picture profile (A.3.5).
          */
-        MAIN_12_STILL_PICTURE,
+        MAIN_12_STILL_PICTURE = 66,
         /**
          * Main 12 4:4:4 Still Picture
          *  profile (A.3.5).
          */
-        MAIN_12_444_STILL_PICTURE,
+        MAIN_12_444_STILL_PICTURE = 98,
         /**
          * Main 16 4:4:4 Still Picture
          *  profile (A.3.5).
          */
-        MAIN_16_444_STILL_PICTURE,
-        MAX,
+        MAIN_16_444_STILL_PICTURE = 99,
+        MAX = 100,
     }
 
 
@@ -2140,32 +2146,32 @@ export namespace GstCodecParsers {
         /**
          * Buffering Period SEI Message.
          */
-        BUF_PERIOD,
+        BUF_PERIOD = 0,
         /**
          * Picture Timing SEI Message.
          */
-        PIC_TIMING,
+        PIC_TIMING = 1,
         /**
          * Registered user data.
          */
-        REGISTERED_USER_DATA,
+        REGISTERED_USER_DATA = 4,
         /**
          * User data Unregistered.
          */
-        USER_DATA_UNREGISTERED,
+        USER_DATA_UNREGISTERED = 5,
         /**
          * DU Information SEI Message.
          */
-        DU_INFO,
-        SCALABLE_NESTING,
+        DU_INFO = 130,
+        SCALABLE_NESTING = 133,
         /**
          * Frame Field Info SEI Message.
          */
-        FRAME_FIELD_INFO,
+        FRAME_FIELD_INFO = 168,
         /**
          * Subpicture Level Information SEI.
          */
-        SUBPIC_LEVEL_INFO,
+        SUBPIC_LEVEL_INFO = 203,
     }
 
 
@@ -2178,15 +2184,15 @@ export namespace GstCodecParsers {
         /**
          * B slice type.
          */
-        B_SLICE,
+        B_SLICE = 0,
         /**
          * P slice type.
          */
-        P_SLICE,
+        P_SLICE = 1,
         /**
          * I slice type.
          */
-        I_SLICE,
+        I_SLICE = 2,
     }
 
 
@@ -2197,19 +2203,19 @@ export namespace GstCodecParsers {
         /**
          * no color space
          */
-        NONE,
+        NONE = 0,
         /**
          * standard RGB color space
          */
-        RGB,
+        RGB = 1,
         /**
          * standard YUV color space
          */
-        YUV,
+        YUV = 2,
         /**
          * monochrome color space
          */
-        GRAY,
+        GRAY = 3,
     }
 
 
@@ -2222,51 +2228,52 @@ export namespace GstCodecParsers {
         /**
          * no sampling
          */
-        NONE,
+        NONE = 0,
         /**
          * standard Red, Green, Blue color space.
          */
-        RGB,
+        RGB = 1,
         /**
          * standard Blue, Green, Red color space.
          */
-        BGR,
+        BGR = 2,
         /**
          * standard Red, Green, Blue, Alpha color space.
          */
-        RGBA,
+        RGBA = 3,
         /**
          * standard Blue, Green, Red, Alpha color space.
          */
-        BGRA,
+        BGRA = 4,
         /**
          * standard YCbCr color space; no subsampling.
          */
-        YBR444,
+        YBR444 = 5,
         /**
          * standard YCbCr color space; Cb and Cr are subsampled horizontally by 1/2.
          */
-        YBR422,
+        YBR422 = 6,
         /**
          * standard YCbCr color space; Cb and Cr are subsampled horizontally and vertically by 1/2.
          */
-        YBR420,
+        YBR420 = 7,
         /**
          * standard YCbCr color space; Cb and Cr are subsampled vertically by 1/4 alternating the Cb and Cr component.
          */
-        YBR410,
+        YBR410 = 8,
         /**
          * basically, a single component image of just multilevels of grey.
          */
-        GRAYSCALE,
+        GRAYSCALE = 9,
         /**
          * standard YCbCr color space, alpha channel, no subsampling,
          */
-        YBRA4444_EXT,
+        YBRA4444_EXT = 10,
         /**
          * standard YCbCr color space; Cb and Cr are subsampled vertically by 1/4
+         * @since 1.20
          */
-        YBR411,
+        YBR411 = 11,
     }
 
 
@@ -2279,19 +2286,19 @@ export namespace GstCodecParsers {
         /**
          * The writing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The input data to write is invalid
          */
-        INVALID_DATA,
+        INVALID_DATA = 1,
         /**
          * The output does not have enough size
          */
-        NO_MORE_SPACE,
+        NO_MORE_SPACE = 2,
         /**
          * An general error occurred when writing
          */
-        ERROR,
+        ERROR = 3,
     }
 
 
@@ -2304,11 +2311,11 @@ export namespace GstCodecParsers {
         /**
          * Huffman coding
          */
-        HUFFMAN,
+        HUFFMAN = 0,
         /**
          * arithmetic coding
          */
-        ARITHMETIC,
+        ARITHMETIC = 8,
     }
 
 
@@ -2321,163 +2328,163 @@ export namespace GstCodecParsers {
         /**
          * Start of frame marker code (Baseline)
          */
-        SOF0,
+        SOF0 = 192,
         /**
          * Start of frame marker code (Extended Sequential, Huffman)
          */
-        SOF1,
+        SOF1 = 193,
         /**
          * Start of frame marker code (Progressive, Huffman)
          */
-        SOF2,
+        SOF2 = 194,
         /**
          * Start of frame marker code (Lossless, Huffman)
          */
-        SOF3,
+        SOF3 = 195,
         /**
          * Start of frame marker code (Differential Sequential, Huffman)
          */
-        SOF5,
+        SOF5 = 197,
         /**
          * Start of frame marker code (Differential Progressive, Huffman)
          */
-        SOF6,
+        SOF6 = 198,
         /**
          * Start of frame marker code (Differential Lossless, Huffman)
          */
-        SOF7,
+        SOF7 = 199,
         /**
          * Start of frame marker code (Extended Sequential, Arithmetic)
          */
-        SOF9,
+        SOF9 = 201,
         /**
          * Start of frame marker code (Progressive, Arithmetic)
          */
-        SOF10,
+        SOF10 = 202,
         /**
          * Start of frame marker code (Lossless, Arithmetic)
          */
-        SOF11,
+        SOF11 = 203,
         /**
          * Start of frame marker code (Differential Sequential, Arithmetic)
          */
-        SOF13,
+        SOF13 = 205,
         /**
          * Start of frame marker code (Differential Progressive, Arithmetic)
          */
-        SOF14,
+        SOF14 = 206,
         /**
          * Start of frame marker code (Differential Lossless, Arithmetic)
          */
-        SOF15,
+        SOF15 = 207,
         /**
          * Huffman table marker code
          */
-        DHT,
+        DHT = 196,
         /**
          * Arithmetic coding marker code
          */
-        DAC,
-        RST0,
-        RST1,
-        RST2,
-        RST3,
-        RST4,
-        RST5,
-        RST6,
-        RST7,
+        DAC = 204,
+        RST0 = 208,
+        RST1 = 209,
+        RST2 = 210,
+        RST3 = 211,
+        RST4 = 212,
+        RST5 = 213,
+        RST6 = 214,
+        RST7 = 215,
         /**
          * Start of image marker code
          */
-        SOI,
+        SOI = 216,
         /**
          * End of image marker code
          */
-        EOI,
+        EOI = 217,
         /**
          * Start of scan marker code
          */
-        SOS,
+        SOS = 218,
         /**
          * Define quantization table marker code
          */
-        DQT,
+        DQT = 219,
         /**
          * Define number of lines marker code
          */
-        DNL,
+        DNL = 220,
         /**
          * Define restart interval marker code
          */
-        DRI,
+        DRI = 221,
         /**
          * Application segment 0 marker code
          */
-        APP0,
+        APP0 = 224,
         /**
          * Application segment 1 marker code
          */
-        APP1,
+        APP1 = 225,
         /**
          * Application segment 2 marker code
          */
-        APP2,
+        APP2 = 226,
         /**
          * Application segment 3 marker code
          */
-        APP3,
+        APP3 = 227,
         /**
          * Application segment 4 marker code
          */
-        APP4,
+        APP4 = 228,
         /**
          * Application segment 5 marker code
          */
-        APP5,
+        APP5 = 229,
         /**
          * Application segment 6 marker code
          */
-        APP6,
+        APP6 = 230,
         /**
          * Application segment 7 marker code
          */
-        APP7,
+        APP7 = 231,
         /**
          * Application segment 8 marker code
          */
-        APP8,
+        APP8 = 232,
         /**
          * Application segment 9 marker code
          */
-        APP9,
+        APP9 = 233,
         /**
          * Application segment 10 marker code
          */
-        APP10,
+        APP10 = 234,
         /**
          * Application segment 11 marker code
          */
-        APP11,
+        APP11 = 235,
         /**
          * Application segment 12 marker code
          */
-        APP12,
+        APP12 = 236,
         /**
          * Application segment 13 marker code
          */
-        APP13,
+        APP13 = 237,
         /**
          * Application segment 14 marker code
          */
-        APP14,
+        APP14 = 238,
         /**
          * Application segment 15 marker code
          */
-        APP15,
+        APP15 = 239,
         /**
          * Comment marker code
          */
-        COM,
+        COM = 254,
     }
 
 
@@ -2490,19 +2497,19 @@ export namespace GstCodecParsers {
         /**
          * Baseline DCT
          */
-        BASELINE,
+        BASELINE = 0,
         /**
          * Extended sequential DCT
          */
-        EXTENDED,
+        EXTENDED = 1,
         /**
          * Progressive DCT
          */
-        PROGRESSIVE,
+        PROGRESSIVE = 2,
         /**
          * Lossless (sequential)
          */
-        LOSSLESS,
+        LOSSLESS = 3,
     }
 
 
@@ -2515,27 +2522,27 @@ export namespace GstCodecParsers {
         /**
          * 1:1 square
          */
-        SQUARE,
+        SQUARE = 1,
         /**
          * 12:11 (625-type for 4:3 picture)
          */
-        "625_TYPE_4_3",
+        "625_TYPE_4_3" = 2,
         /**
          * 10:11 (525-type for 4:3 picture)
          */
-        "525_TYPE_4_3",
+        "525_TYPE_4_3" = 3,
         /**
          * 16:11 (625-type stretched for 16:9 picture)
          */
-        "625_TYPE_16_9",
+        "625_TYPE_16_9" = 4,
         /**
          * 40:33 (525-type stretched for 16:9 picture)
          */
-        "525_TYPE_16_9",
+        "525_TYPE_16_9" = 5,
         /**
          * Extended par
          */
-        EXTENDED_PAR,
+        EXTENDED_PAR = 15,
     }
 
 
@@ -2545,7 +2552,7 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4ChromaFormat {
-        MPEG4_CHROMA_4_2_0,
+        MPEG4_CHROMA_4_2_0 = 1,
     }
 
 
@@ -2558,14 +2565,14 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4Level {
-        LEVEL0,
-        LEVEL1,
-        LEVEL2,
-        LEVEL3,
-        LEVEL3B,
-        LEVEL4,
-        LEVEL5,
-        LEVEL_RESERVED,
+        LEVEL0 = 0,
+        LEVEL1 = 1,
+        LEVEL2 = 2,
+        LEVEL3 = 3,
+        LEVEL3B = 4,
+        LEVEL4 = 5,
+        LEVEL5 = 6,
+        LEVEL_RESERVED = 7,
     }
 
 
@@ -2577,20 +2584,20 @@ export namespace GstCodecParsers {
         /**
          * The parsing went well
          */
-        OK,
+        OK = 0,
         /**
          * The bitstream was broken
          */
-        BROKEN_DATA,
+        BROKEN_DATA = 1,
         /**
          * There was no packet in the buffer
          */
-        NO_PACKET,
+        NO_PACKET = 2,
         /**
          * There was no packet end in the buffer
          */
-        NO_PACKET_END,
-        ERROR,
+        NO_PACKET_END = 3,
+        ERROR = 4,
     }
 
 
@@ -2603,26 +2610,26 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4Profile {
-        CORE,
-        MAIN,
-        N_BIT,
-        SIMPLE,
-        HYBRID,
-        RESERVED,
-        SIMPLE_FBA,
-        CORE_STUDIO,
-        SIMPLE_STUDIO,
-        CORE_SCALABLE,
-        ADVANCED_CORE,
-        ADVANCED_SIMPLE,
-        SIMPLE_SCALABLE,
-        SCALABLE_TEXTURE,
-        SIMPLE_FACE_ANIMATION,
-        BASIC_ANIMATED_TEXTURE,
-        ADVANCED_REALTIME_SIMPLE,
-        ADVANCED_SCALABLE_TEXTURE,
-        FINE_GRANULARITY_SCALABLE,
-        ADVANCED_CODING_EFFICIENCY,
+        CORE = 0,
+        MAIN = 1,
+        N_BIT = 2,
+        SIMPLE = 3,
+        HYBRID = 4,
+        RESERVED = 5,
+        SIMPLE_FBA = 6,
+        CORE_STUDIO = 7,
+        SIMPLE_STUDIO = 8,
+        CORE_SCALABLE = 9,
+        ADVANCED_CORE = 10,
+        ADVANCED_SIMPLE = 11,
+        SIMPLE_SCALABLE = 12,
+        SCALABLE_TEXTURE = 13,
+        SIMPLE_FACE_ANIMATION = 14,
+        BASIC_ANIMATED_TEXTURE = 15,
+        ADVANCED_REALTIME_SIMPLE = 16,
+        ADVANCED_SCALABLE_TEXTURE = 17,
+        FINE_GRANULARITY_SCALABLE = 18,
+        ADVANCED_CODING_EFFICIENCY = 19,
     }
 
 
@@ -2633,9 +2640,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4SpriteEnable {
-        UNUSED,
-        STATIC,
-        GMG,
+        UNUSED = 0,
+        STATIC = 1,
+        GMG = 2,
     }
 
 
@@ -2645,30 +2652,30 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4StartCode {
-        VIDEO_OBJ_FIRST,
-        VIDEO_OBJ_LAST,
-        VIDEO_LAYER_FIRST,
-        VIDEO_LAYER_LAST,
-        VISUAL_OBJ_SEQ_START,
-        VISUAL_OBJ_SEQ_END,
-        USER_DATA,
-        GROUP_OF_VOP,
-        VIDEO_SESSION_ERR,
-        VISUAL_OBJ,
-        VIDEO_OBJ_PLANE,
-        FBA,
-        FBA_PLAN,
-        MESH,
-        MESH_PLAN,
-        STILL_TEXTURE_OBJ,
-        TEXTURE_SPATIAL,
-        TEXTURE_SNR_LAYER,
-        TEXTURE_TILE,
-        SHAPE_LAYER,
-        STUFFING,
-        SYSTEM_FIRST,
-        SYSTEM_LAST,
-        RESYNC,
+        VIDEO_OBJ_FIRST = 0,
+        VIDEO_OBJ_LAST = 31,
+        VIDEO_LAYER_FIRST = 32,
+        VIDEO_LAYER_LAST = 47,
+        VISUAL_OBJ_SEQ_START = 176,
+        VISUAL_OBJ_SEQ_END = 177,
+        USER_DATA = 178,
+        GROUP_OF_VOP = 179,
+        VIDEO_SESSION_ERR = 180,
+        VISUAL_OBJ = 181,
+        VIDEO_OBJ_PLANE = 182,
+        FBA = 186,
+        FBA_PLAN = 187,
+        MESH = 188,
+        MESH_PLAN = 189,
+        STILL_TEXTURE_OBJ = 190,
+        TEXTURE_SPATIAL = 191,
+        TEXTURE_SNR_LAYER = 192,
+        TEXTURE_TILE = 193,
+        SHAPE_LAYER = 194,
+        STUFFING = 195,
+        SYSTEM_FIRST = 198,
+        SYSTEM_LAST = 255,
+        RESYNC = 4095,
     }
 
 
@@ -2681,19 +2688,19 @@ export namespace GstCodecParsers {
         /**
          * intra-coded (I)
          */
-        I_VOP,
+        I_VOP = 0,
         /**
          * predictive-coded (P)
          */
-        P_VOP,
+        P_VOP = 1,
         /**
          * bidirectionally-predictive-coded (B)
          */
-        B_VOP,
+        B_VOP = 2,
         /**
          * sprite (S)
          */
-        S_VOP,
+        S_VOP = 3,
     }
 
 
@@ -2703,10 +2710,10 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4VideoObjectLayerShape {
-        RECTANGULAR,
-        BINARY,
-        BINARY_ONLY,
-        GRAYSCALE,
+        RECTANGULAR = 0,
+        BINARY = 1,
+        BINARY_ONLY = 2,
+        GRAYSCALE = 3,
     }
 
 
@@ -2716,11 +2723,11 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Mpeg4VisualObjectType {
-        VIDEO_ID,
-        STILL_TEXTURE_ID,
-        STILL_MESH_ID,
-        STILL_FBA_ID,
-        STILL_3D_MESH_ID,
+        VIDEO_ID = 1,
+        STILL_TEXTURE_ID = 2,
+        STILL_MESH_ID = 3,
+        STILL_FBA_ID = 4,
+        STILL_3D_MESH_ID = 5,
     }
 
 
@@ -2762,23 +2769,23 @@ export namespace GstCodecParsers {
         /**
          * High-P level (HL Progressive)
          */
-        HIGH_P,
+        HIGH_P = 2,
         /**
          * High level (HL)
          */
-        HIGH,
+        HIGH = 4,
         /**
          * High 1440 level (H-14)
          */
-        HIGH_1440,
+        HIGH_1440 = 6,
         /**
          * Main level (ML)
          */
-        MAIN,
+        MAIN = 8,
         /**
          * Low level (LL)
          */
-        LOW,
+        LOW = 10,
     }
 
 
@@ -2792,23 +2799,23 @@ export namespace GstCodecParsers {
         /**
          * Sequence extension code
          */
-        SEQUENCE,
+        SEQUENCE = 1,
         /**
          * Sequence Display extension code
          */
-        SEQUENCE_DISPLAY,
+        SEQUENCE_DISPLAY = 2,
         /**
          * Quantization Matrix extension code
          */
-        QUANT_MATRIX,
+        QUANT_MATRIX = 3,
         /**
          * Sequence Scalable extension code
          */
-        SEQUENCE_SCALABLE,
+        SEQUENCE_SCALABLE = 5,
         /**
          * Picture coding extension
          */
-        PICTURE,
+        PICTURE = 8,
     }
 
 
@@ -2820,39 +2827,39 @@ export namespace GstCodecParsers {
         /**
          * Picture packet starting code
          */
-        PICTURE,
+        PICTURE = 0,
         /**
          * Slice min packet starting code
          */
-        SLICE_MIN,
+        SLICE_MIN = 1,
         /**
          * Slice max packet starting code
          */
-        SLICE_MAX,
+        SLICE_MAX = 175,
         /**
          * User data packet starting code
          */
-        USER_DATA,
+        USER_DATA = 178,
         /**
          * Sequence packet starting code
          */
-        SEQUENCE,
+        SEQUENCE = 179,
         /**
          * Extension packet starting code
          */
-        EXTENSION,
+        EXTENSION = 181,
         /**
          * Sequence end packet code
          */
-        SEQUENCE_END,
+        SEQUENCE_END = 183,
         /**
          * Group of Picture packet starting code
          */
-        GOP,
+        GOP = 184,
         /**
          * None packet code
          */
-        NONE,
+        NONE = 255,
     }
 
 
@@ -2864,15 +2871,15 @@ export namespace GstCodecParsers {
         /**
          * Top field
          */
-        TOP_FIELD,
+        TOP_FIELD = 1,
         /**
          * Bottom field
          */
-        BOTTOM_FIELD,
+        BOTTOM_FIELD = 2,
         /**
          * Frame picture
          */
-        FRAME,
+        FRAME = 3,
     }
 
 
@@ -2884,19 +2891,19 @@ export namespace GstCodecParsers {
         /**
          * Intra-coded (I) frame
          */
-        I,
+        I = 1,
         /**
          * Predictive-codec (P) frame
          */
-        P,
+        P = 2,
         /**
          * Bidirectionally predictive-coded (B) frame
          */
-        B,
+        B = 3,
         /**
          * D frame
          */
-        D,
+        D = 4,
     }
 
 
@@ -2947,19 +2954,19 @@ export namespace GstCodecParsers {
         /**
          * Data partitioning
          */
-        DATA_PARTITIONING,
+        DATA_PARTITIONING = 0,
         /**
          * Spatial Scalability
          */
-        SPATIAL,
+        SPATIAL = 1,
         /**
          * SNR Scalability
          */
-        SNR,
+        SNR = 2,
         /**
          * Temporal Scalability
          */
-        TEMPORAL,
+        TEMPORAL = 3,
     }
 
 
@@ -2967,9 +2974,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1Condover {
-        NONE,
-        ALL,
-        SELECT,
+        NONE = 0,
+        ALL = 1,
+        SELECT = 2,
     }
 
 
@@ -2977,10 +2984,10 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1DQProfile {
-        FOUR_EDGES,
-        DOUBLE_EDGES,
-        SINGLE_EDGE,
-        ALL_MBS,
+        FOUR_EDGES = 0,
+        DOUBLE_EDGES = 1,
+        SINGLE_EDGE = 2,
+        ALL_MBS = 3,
     }
 
 
@@ -2988,9 +2995,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1FrameCodingMode {
-        FRAME_PROGRESSIVE,
-        FRAME_INTERLACE,
-        FIELD_INTERLACE,
+        FRAME_PROGRESSIVE = 0,
+        FRAME_INTERLACE = 16,
+        FIELD_INTERLACE = 17,
     }
 
 
@@ -2998,15 +3005,15 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1Level {
-        LOW,
-        MEDIUM,
-        HIGH,
-        L0,
-        L1,
-        L2,
-        L3,
-        L4,
-        UNKNOWN,
+        LOW = 0,
+        MEDIUM = 2,
+        HIGH = 4,
+        L0 = 0,
+        L1 = 1,
+        L2 = 2,
+        L3 = 3,
+        L4 = 4,
+        UNKNOWN = 255,
     }
 
 
@@ -3014,11 +3021,11 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1MvMode {
-        "1MV_HPEL_BILINEAR",
-        "1MV",
-        "1MV_HPEL",
-        MIXED_MV,
-        INTENSITY_COMP,
+        "1MV_HPEL_BILINEAR" = 0,
+        "1MV" = 1,
+        "1MV_HPEL" = 2,
+        MIXED_MV = 3,
+        INTENSITY_COMP = 4,
     }
 
 
@@ -3026,11 +3033,11 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1ParserResult {
-        OK,
-        BROKEN_DATA,
-        NO_BDU,
-        NO_BDU_END,
-        ERROR,
+        OK = 0,
+        BROKEN_DATA = 1,
+        NO_BDU = 2,
+        NO_BDU_END = 3,
+        ERROR = 4,
     }
 
 
@@ -3038,11 +3045,11 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1PictureType {
-        P,
-        B,
-        I,
-        BI,
-        SKIPPED,
+        P = 0,
+        B = 1,
+        I = 2,
+        BI = 3,
+        SKIPPED = 4,
     }
 
 
@@ -3050,10 +3057,10 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1Profile {
-        SIMPLE,
-        MAIN,
-        RESERVED,
-        ADVANCED,
+        SIMPLE = 0,
+        MAIN = 1,
+        RESERVED = 2,
+        ADVANCED = 3,
     }
 
 
@@ -3061,10 +3068,10 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1QuantizerSpec {
-        IMPLICITLY,
-        EXPLICITLY,
-        NON_UNIFORM,
-        UNIFORM,
+        IMPLICITLY = 0,
+        EXPLICITLY = 1,
+        NON_UNIFORM = 2,
+        UNIFORM = 3,
     }
 
 
@@ -3072,17 +3079,17 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum VC1StartCode {
-        END_OF_SEQ,
-        SLICE,
-        FIELD,
-        FRAME,
-        ENTRYPOINT,
-        SEQUENCE,
-        SLICE_USER,
-        FIELD_USER,
-        FRAME_USER,
-        ENTRY_POINT_USER,
-        SEQUENCE_USER,
+        END_OF_SEQ = 10,
+        SLICE = 11,
+        FIELD = 12,
+        FRAME = 13,
+        ENTRYPOINT = 14,
+        SEQUENCE = 15,
+        SLICE_USER = 27,
+        FIELD_USER = 28,
+        FRAME_USER = 29,
+        ENTRY_POINT_USER = 30,
+        SEQUENCE_USER = 31,
     }
 
 
@@ -3114,11 +3121,11 @@ export namespace GstCodecParsers {
         /**
          * Key frame, only have intra blocks
          */
-        KEY_FRAME,
+        KEY_FRAME = 0,
         /**
          * Inter frame, both intra and inter blocks
          */
-        INTER_FRAME,
+        INTER_FRAME = 1,
     }
 
 
@@ -3130,15 +3137,15 @@ export namespace GstCodecParsers {
         /**
          * The parsing succeeded
          */
-        OK,
+        OK = 0,
         /**
          * The data to parse is broken
          */
-        BROKEN_DATA,
+        BROKEN_DATA = 1,
         /**
          * An error accured when parsing
          */
-        ERROR,
+        ERROR = 2,
     }
 
 
@@ -3151,20 +3158,20 @@ export namespace GstCodecParsers {
         /**
          * Intra reference frame
          */
-        INTRA,
+        INTRA = 0,
         /**
          * Last Reference frame
          */
-        LAST,
+        LAST = 1,
         /**
          * Golden Reference frame
          */
-        GOLDEN,
+        GOLDEN = 2,
         /**
          * Alternate Reference frame
          */
-        ALTREF,
-        MAX,
+        ALTREF = 3,
+        MAX = 4,
     }
 
 
@@ -3200,11 +3207,11 @@ export namespace GstCodecParsers {
         /**
          * Y range is [16-235], UV range is [16-240]
          */
-        LIMITED,
+        LIMITED = 0,
         /**
          * Full range for Y,U and V [0-255]
          */
-        FULL,
+        FULL = 1,
     }
 
 
@@ -3217,32 +3224,32 @@ export namespace GstCodecParsers {
         /**
          * Unknown color space
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * BT.601
          */
-        BT_601,
+        BT_601 = 1,
         /**
          * BT.709
          */
-        BT_709,
+        BT_709 = 2,
         /**
          * SMPTE.170
          */
-        SMPTE_170,
+        SMPTE_170 = 3,
         /**
          * SMPTE.240
          */
-        SMPTE_240,
+        SMPTE_240 = 4,
         /**
          * BT.2020
          */
-        BT_2020,
-        RESERVED_2,
+        BT_2020 = 5,
+        RESERVED_2 = 6,
         /**
          * sRGB
          */
-        SRGB,
+        SRGB = 7,
     }
 
 
@@ -3255,11 +3262,11 @@ export namespace GstCodecParsers {
         /**
          * Key frame, only have intra blocks
          */
-        KEY_FRAME,
+        KEY_FRAME = 0,
         /**
          * Inter frame, both intra and inter blocks
          */
-        INTER_FRAME,
+        INTER_FRAME = 1,
     }
 
 
@@ -3272,23 +3279,23 @@ export namespace GstCodecParsers {
         /**
          * EightTap interpolation filter
          */
-        EIGHTTAP,
+        EIGHTTAP = 0,
         /**
          * Smooth interpolation filter
          */
-        EIGHTTAP_SMOOTH,
+        EIGHTTAP_SMOOTH = 1,
         /**
          * Shart interpolation filter
          */
-        EIGHTTAP_SHARP,
+        EIGHTTAP_SHARP = 2,
         /**
          * Bilinear interpolation filter
          */
-        BILINEAR,
+        BILINEAR = 3,
         /**
          * Selectable interpolation filter
          */
-        SWITCHABLE,
+        SWITCHABLE = 4,
     }
 
 
@@ -3296,9 +3303,9 @@ export namespace GstCodecParsers {
      * @gir-type Enum
      */
     enum Vp9ParserResult {
-        OK,
-        BROKEN_DATA,
-        ERROR,
+        OK = 0,
+        BROKEN_DATA = 1,
+        ERROR = 2,
     }
 
 
@@ -3311,263 +3318,594 @@ export namespace GstCodecParsers {
         /**
          * Intra reference frame
          */
-        INTRA,
+        INTRA = 0,
         /**
          * Last Reference frame
          */
-        LAST,
+        LAST = 1,
         /**
          * Golden Reference frame
          */
-        GOLDEN,
+        GOLDEN = 2,
         /**
          * Alternate Reference frame
          */
-        ALTREF,
-        MAX,
+        ALTREF = 3,
+        MAX = 4,
     }
 
 
+    /**
+     * @default 8
+     */
     const AV1_CDEF_MAX: number;
 
+    /**
+     * @default 8
+     */
     const AV1_DIV_LUT_BITS: number;
 
+    /**
+     * @default 1
+     */
     const AV1_DIV_LUT_NUM: number;
 
+    /**
+     * @default 14
+     */
     const AV1_DIV_LUT_PREC_BITS: number;
 
+    /**
+     * @default 12
+     */
     const AV1_GM_ABS_ALPHA_BITS: number;
 
+    /**
+     * @default 12
+     */
     const AV1_GM_ABS_TRANS_BITS: number;
 
+    /**
+     * @default 9
+     */
     const AV1_GM_ABS_TRANS_ONLY_BITS: number;
 
+    /**
+     * @default 15
+     */
     const AV1_GM_ALPHA_PREC_BITS: number;
 
+    /**
+     * @default 3
+     */
     const AV1_GM_TRANS_ONLY_PREC_BITS: number;
 
+    /**
+     * @default 6
+     */
     const AV1_GM_TRANS_PREC_BITS: number;
 
+    /**
+     * @default 63
+     */
     const AV1_MAX_LOOP_FILTER: number;
 
+    /**
+     * @default 16
+     */
     const AV1_MAX_NUM_CB_POINTS: number;
 
+    /**
+     * @default 16
+     */
     const AV1_MAX_NUM_CR_POINTS: number;
 
+    /**
+     * @default 3
+     */
     const AV1_MAX_NUM_PLANES: number;
 
+    /**
+     * @default 25
+     */
     const AV1_MAX_NUM_POS_LUMA: number;
 
+    /**
+     * @default 4
+     */
     const AV1_MAX_NUM_SPATIAL_LAYERS: number;
 
+    /**
+     * @default 8
+     */
     const AV1_MAX_NUM_TEMPORAL_LAYERS: number;
 
+    /**
+     * @default 16
+     */
     const AV1_MAX_NUM_Y_POINTS: number;
 
+    /**
+     * @default 0
+     */
     const AV1_MAX_OPERATING_POINTS: number;
 
+    /**
+     * @default 8
+     */
     const AV1_MAX_SEGMENTS: number;
 
+    /**
+     * @default 7
+     */
     const AV1_MAX_TEMPORAL_GROUP_REFERENCES: number;
 
+    /**
+     * @default 255
+     */
     const AV1_MAX_TEMPORAL_GROUP_SIZE: number;
 
+    /**
+     * @default 9437184
+     */
     const AV1_MAX_TILE_AREA: number;
 
+    /**
+     * @default 64
+     */
     const AV1_MAX_TILE_COLS: number;
 
+    /**
+     * @default 512
+     */
     const AV1_MAX_TILE_COUNT: number;
 
+    /**
+     * @default 64
+     */
     const AV1_MAX_TILE_ROWS: number;
 
+    /**
+     * @default 4096
+     */
     const AV1_MAX_TILE_WIDTH: number;
 
+    /**
+     * @default 7
+     */
     const AV1_PRIMARY_REF_NONE: number;
 
+    /**
+     * @default 7
+     */
     const AV1_REFS_PER_FRAME: number;
 
+    /**
+     * @default 256
+     */
     const AV1_RESTORATION_TILESIZE_MAX: number;
 
+    /**
+     * @default 0
+     */
     const AV1_SEG_LVL_ALT_Q: number;
 
+    /**
+     * @default 8
+     */
     const AV1_SEG_LVL_MAX: number;
 
+    /**
+     * @default 5
+     */
     const AV1_SEG_LVL_REF_FRAME: number;
 
+    /**
+     * @default 2
+     */
     const AV1_SELECT_INTEGER_MV: number;
 
+    /**
+     * @default 2
+     */
     const AV1_SELECT_SCREEN_CONTENT_TOOLS: number;
 
+    /**
+     * @default 3
+     */
     const AV1_SUPERRES_DENOM_BITS: number;
 
+    /**
+     * @default 9
+     */
     const AV1_SUPERRES_DENOM_MIN: number;
 
+    /**
+     * @default 8
+     */
     const AV1_SUPERRES_NUM: number;
 
+    /**
+     * @default 8
+     */
     const AV1_TOTAL_REFS_PER_FRAME: number;
 
+    /**
+     * @default 16
+     */
     const AV1_WARPEDMODEL_PREC_BITS: number;
 
+    /**
+     * @default 6
+     */
     const AV1_WARP_PARAM_REDUCE_BITS: number;
 
+    /**
+     * @default meta:GstLcevcMeta
+     */
     const CAPS_FEATURE_META_GST_LCEVC_META: string;
 
+    /**
+     * @default 256
+     */
     const H264_MAX_PPS_COUNT: number;
 
+    /**
+     * @default 32
+     */
     const H264_MAX_SPS_COUNT: number;
 
+    /**
+     * @default 1024
+     */
     const H264_MAX_VIEW_COUNT: number;
 
+    /**
+     * @default -1
+     */
     const H264_MAX_VIEW_ID: number;
 
+    /**
+     * @default 64
+     */
     const H265_MAX_PPS_COUNT: number;
 
+    /**
+     * @default 16
+     */
     const H265_MAX_SPS_COUNT: number;
 
+    /**
+     * @default 8
+     */
     const H265_MAX_SUB_LAYERS: number;
 
+    /**
+     * @default 16
+     */
     const H265_MAX_VPS_COUNT: number;
 
+    /**
+     * @default 23
+     */
     const H265_RESERVED_IRAP_NAL_TYPE_MAX: number;
 
+    /**
+     * @default 22
+     */
     const H265_RESERVED_IRAP_NAL_TYPE_MIN: number;
 
+    /**
+     * @default 31
+     */
     const H265_RESERVED_NON_IRAP_NAL_TYPE_MAX: number;
 
+    /**
+     * @default 24
+     */
     const H265_RESERVED_NON_IRAP_NAL_TYPE_MIN: number;
 
+    /**
+     * @default 15
+     */
     const H265_RESERVED_NON_IRAP_SUBLAYER_NAL_TYPE_MAX: number;
 
+    /**
+     * @default 10
+     */
     const H265_RESERVED_NON_IRAP_SUBLAYER_NAL_TYPE_MIN: number;
 
+    /**
+     * @default 47
+     */
     const H265_RESERVED_NON_VCL_NAL_TYPE_MAX: number;
 
+    /**
+     * @default 41
+     */
     const H265_RESERVED_NON_VCL_NAL_TYPE_MIN: number;
 
+    /**
+     * @default 63
+     */
     const H265_UNSPECIFIED_NON_VCL_NAL_TYPE_MAX: number;
 
+    /**
+     * @default 48
+     */
     const H265_UNSPECIFIED_NON_VCL_NAL_TYPE_MIN: number;
 
+    /**
+     * @default 8
+     */
     const H266_MAX_APS_COUNT: number;
 
+    /**
+     * @default 32
+     */
     const H266_MAX_CPB_CNT: number;
 
+    /**
+     * @default 313344
+     */
     const H266_MAX_CTUS_IN_PICTURE: number;
 
+    /**
+     * @default 600
+     */
     const H266_MAX_DECODING_UNITS_IN_PIC_TIMING: number;
 
+    /**
+     * @default 16
+     */
     const H266_MAX_DPB_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const H266_MAX_ENTRY_POINTS: number;
 
+    /**
+     * @default 16888
+     */
     const H266_MAX_HEIGHT: number;
 
+    /**
+     * @default 64
+     */
     const H266_MAX_LAYERS: number;
 
+    /**
+     * @default 35651584
+     */
     const H266_MAX_LUMA_PS: number;
 
+    /**
+     * @default 111
+     */
     const H266_MAX_POINTS_IN_QP_TABLE: number;
 
+    /**
+     * @default 64
+     */
     const H266_MAX_PPS_COUNT: number;
 
+    /**
+     * @default 13
+     */
     const H266_MAX_REF_ENTRIES: number;
 
+    /**
+     * @default 64
+     */
     const H266_MAX_REF_PIC_LISTS: number;
 
+    /**
+     * @default 3
+     */
     const H266_MAX_SAMPLE_ARRAYS: number;
 
+    /**
+     * @default 1000
+     */
     const H266_MAX_SLICES_PER_AU: number;
 
+    /**
+     * @default 8
+     */
     const H266_MAX_SLI_REF_LEVELS: number;
 
+    /**
+     * @default 16
+     */
     const H266_MAX_SPS_COUNT: number;
 
+    /**
+     * @default 7
+     */
     const H266_MAX_SUBLAYERS: number;
 
+    /**
+     * @default 256
+     */
     const H266_MAX_SUB_PROFILES: number;
 
+    /**
+     * @default 440
+     */
     const H266_MAX_TILES_PER_AU: number;
 
+    /**
+     * @default 20
+     */
     const H266_MAX_TILE_COLUMNS: number;
 
+    /**
+     * @default 257
+     */
     const H266_MAX_TOTAL_NUM_OLSS: number;
 
+    /**
+     * @default 16
+     */
     const H266_MAX_VPS_COUNT: number;
 
+    /**
+     * @default 16888
+     */
     const H266_MAX_WIDTH: number;
 
+    /**
+     * @default 25
+     */
     const H266_NUM_ALF_FILTERS: number;
 
+    /**
+     * @default colorspace = (string) { "sRGB", "sYUV", "GRAY" }
+     */
     const JPEG2000_COLORSPACE_LIST: string;
 
+    /**
+     * @default sampling = (string) {"RGB", "BGR", "RGBA", "BGRA", "YCbCr-4:4:4", "YCbCr-4:2:2", "YCbCr-4:2:0", "YCbCr-4:1:1", "YCbCr-4:1:0", "GRAYSCALE" , "YCbCrA-4:4:4:4"}
+     */
     const JPEG2000_SAMPLING_LIST: string;
 
     /**
      * Maximum number of image components in a frame (Nf).
      * @since 1.6
+     * @default 256
      */
     const JPEG_MAX_FRAME_COMPONENTS: number;
 
     /**
      * Number of elements in the quantization table.
      * @since 1.6
+     * @default 64
      */
     const JPEG_MAX_QUANT_ELEMENTS: number;
 
     /**
      * Maximum number of image components in a scan (Ns).
      * @since 1.6
+     * @default 4
      */
     const JPEG_MAX_SCAN_COMPONENTS: number;
 
     /**
      * The `bfraction` variable should be divided
      * by this constant to have the actual value.
+     * @default 840
      */
     const VC1_BFRACTION_BASIS: number;
 
+    /**
+     * @default 2
+     */
     const VC1_BFRACTION_PTYPE_BI: number;
 
+    /**
+     * @default 1
+     */
     const VC1_BFRACTION_RESERVED: number;
 
+    /**
+     * @default 31
+     */
     const VC1_MAX_HRD_NUM_LEAKY_BUCKETS: number;
 
+    /**
+     * @default 3
+     */
     const VP8_MAX_REF_FRAMES: number;
 
+    /**
+     * @default 2
+     */
     const VP9_FRAME_CONTEXTS_LOG2: number;
 
+    /**
+     * @default 2
+     */
     const VP9_FRAME_MARKER: number;
 
+    /**
+     * @default 8
+     */
     const VP9_MAX_FRAMES_IN_SUPERFRAME: number;
 
+    /**
+     * @default 63
+     */
     const VP9_MAX_LOOP_FILTER: number;
 
+    /**
+     * @default 2
+     */
     const VP9_MAX_MODE_LF_DELTAS: number;
 
+    /**
+     * @default 255
+     */
     const VP9_MAX_PROB: number;
 
+    /**
+     * @default 4
+     */
     const VP9_MAX_REF_LF_DELTAS: number;
 
+    /**
+     * @default 8
+     */
     const VP9_MAX_SEGMENTS: number;
 
+    /**
+     * @default 7
+     */
     const VP9_MAX_SHARPNESS: number;
 
+    /**
+     * @default 3
+     */
     const VP9_PREDICTION_PROBS: number;
 
+    /**
+     * @default 3
+     */
     const VP9_REFS_PER_FRAME: number;
 
+    /**
+     * @default 1
+     */
     const VP9_REF_FRAMES: number;
 
+    /**
+     * @default 3
+     */
     const VP9_REF_FRAMES_LOG2: number;
 
+    /**
+     * @default 1
+     */
     const VP9_SEGMENT_ABSDATA: number;
 
+    /**
+     * @default 0
+     */
     const VP9_SEGMENT_DELTADATA: number;
 
+    /**
+     * @default -1
+     */
     const VP9_SEG_TREE_PROBS: number;
 
+    /**
+     * @default 6
+     */
     const VP9_SUPERFRAME_MARKER: number;
 
+    /**
+     * @default 4817730
+     */
     const VP9_SYNC_CODE: number;
 
     /**

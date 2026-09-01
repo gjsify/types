@@ -29,11 +29,11 @@ export namespace Dbusmenu {
         /**
          * Everything is normal
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * The menus should be shown at a higher priority
          */
-        NOTICE,
+        NOTICE = 1,
     }
 
 
@@ -46,76 +46,88 @@ export namespace Dbusmenu {
         /**
          * Unspecified text direction
          */
-        NONE,
+        NONE = 0,
         /**
          * Left-to-right text direction
          */
-        LTR,
+        LTR = 1,
         /**
          * Right-to-left text direction
          */
-        RTL,
+        RTL = 2,
     }
 
 
     /**
      * String to access property {@link Dbusmenu.Client.dbus_name}
+     * @default dbus-name
      */
     const CLIENT_PROP_DBUS_NAME: string;
 
     /**
      * String to access property {@link Dbusmenu.Client.dbus_object}
+     * @default dbus-object
      */
     const CLIENT_PROP_DBUS_OBJECT: string;
 
     /**
      * String to access property {@link Dbusmenu.Client.group_events}
+     * @default group-events
      */
     const CLIENT_PROP_GROUP_EVENTS: string;
 
     /**
      * String to access property {@link Dbusmenu.Client.status}
+     * @default status
      */
     const CLIENT_PROP_STATUS: string;
 
     /**
      * String to access property {@link Dbusmenu.Client.text_direction}
+     * @default text-direction
      */
     const CLIENT_PROP_TEXT_DIRECTION: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.event_result | Dbusmenu.Client::event-result}
+     * @default event-result
      */
     const CLIENT_SIGNAL_EVENT_RESULT: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.icon_theme_dirs_changed | Dbusmenu.Client::icon-theme-dirs-changed}
+     * @default icon-theme-dirs-changed
      */
     const CLIENT_SIGNAL_ICON_THEME_DIRS_CHANGED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.item_activate | Dbusmenu.Client::item-activate}
+     * @default item-activate
      */
     const CLIENT_SIGNAL_ITEM_ACTIVATE: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.layout_updated | Dbusmenu.Client::layout-updated}
+     * @default layout-updated
      */
     const CLIENT_SIGNAL_LAYOUT_UPDATED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.new_menuitem | Dbusmenu.Client::new-menuitem}
+     * @default new-menuitem
      */
     const CLIENT_SIGNAL_NEW_MENUITEM: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Client.SignalSignatures.root_changed | Dbusmenu.Client::root-changed}
+     * @default root-changed
      */
     const CLIENT_SIGNAL_ROOT_CHANGED: string;
 
     /**
      * Used to set the 'type' property on a menu item to create
      * a standard menu item.
+     * @default standard
      */
     const CLIENT_TYPES_DEFAULT: string;
 
@@ -123,18 +135,21 @@ export namespace Dbusmenu {
      * Used to set the 'type' property on a menu item to create
      * an image menu item.  Deprecated as standard menu items now
      * support images as well.
+     * @default standard
      */
     const CLIENT_TYPES_IMAGE: string;
 
     /**
      * Used to set the 'type' property on a menu item to create
      * a separator menu item.
+     * @default separator
      */
     const CLIENT_TYPES_SEPARATOR: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_CHILD_DISPLAY to have the
      * subitems displayed as a submenu.
+     * @default submenu
      */
     const MENUITEM_CHILD_DISPLAY_SUBMENU: string;
 
@@ -142,6 +157,7 @@ export namespace Dbusmenu {
      * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
      * item displayed in a way that conveys it's giving an alert
      * to the user.
+     * @default alert
      */
     const MENUITEM_DISPOSITION_ALERT: string;
 
@@ -149,12 +165,14 @@ export namespace Dbusmenu {
      * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
      * item displayed in a way that conveys it's giving additional
      * information to the user.
+     * @default informative
      */
     const MENUITEM_DISPOSITION_INFORMATIVE: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
      * item displayed in the normal manner.  Default value.
+     * @default normal
      */
     const MENUITEM_DISPOSITION_NORMAL: string;
 
@@ -162,12 +180,14 @@ export namespace Dbusmenu {
      * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
      * item displayed in a way that conveys it's giving a warning
      * to the user.
+     * @default warning
      */
     const MENUITEM_DISPOSITION_WARNING: string;
 
     /**
      * String for the event identifier when a menu item is clicked
      * on by the user.
+     * @default clicked
      */
     const MENUITEM_EVENT_ACTIVATED: string;
 
@@ -175,6 +195,7 @@ export namespace Dbusmenu {
      * String for the event identifier when a menu is closed and
      * displayed to the user.  Only valid for items that contain
      * submenus.
+     * @default closed
      */
     const MENUITEM_EVENT_CLOSED: string;
 
@@ -182,12 +203,14 @@ export namespace Dbusmenu {
      * String for the event identifier when a menu is opened and
      * displayed to the user.  Only valid for items that contain
      * submenus.
+     * @default opened
      */
     const MENUITEM_EVENT_OPENED: string;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
      * toggle item is undecided.
+     * @default blank-icon
      */
     const MENUITEM_ICON_NAME_BLANK: string;
 
@@ -198,6 +221,7 @@ export namespace Dbusmenu {
      * The contents of this property will not be visible in the menu item. If
      * this property is set, Orca will use this property instead of the label
      * property.
+     * @default accessible-desc
      */
     const MENUITEM_PROP_ACCESSIBLE_DESC: string;
 
@@ -205,18 +229,21 @@ export namespace Dbusmenu {
      * {@link Dbusmenu.Menuitem} property that tells how the children of this menuitem
      * should be displayed.  Most likely this will be unset or of the value
      * #DBUSMENU_MENUITEM_CHILD_DISPLAY_SUBMENU.  Type: #G_VARIANT_TYPE_STRING
+     * @default children-display
      */
     const MENUITEM_PROP_CHILD_DISPLAY: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property to tell what type of information that the
      * menu item is displaying to the user.  Type: #G_VARIANT_TYPE_STRING
+     * @default disposition
      */
     const MENUITEM_PROP_DISPOSITION: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property used to represent whether the menuitem
      * is clickable or not.  Type: #G_VARIANT_TYPE_BOOLEAN.
+     * @default enabled
      */
     const MENUITEM_PROP_ENABLED: string;
 
@@ -226,17 +253,20 @@ export namespace Dbusmenu {
      * 
      * It is recommended that this is not set directly but instead the
      * libdbusmenu-gtk library is used with the function `dbusmenu_menuitem_property_set_image()`
+     * @default icon-data
      */
     const MENUITEM_PROP_ICON_DATA: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property that is the name of the icon under the
      * Freedesktop.org icon naming spec.  Type: #G_VARIANT_TYPE_STRING
+     * @default icon-name
      */
     const MENUITEM_PROP_ICON_NAME: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property used for the text on the menu item.
+     * @default label
      */
     const MENUITEM_PROP_LABEL: string;
 
@@ -246,6 +276,7 @@ export namespace Dbusmenu {
      * 
      * It is recommended that this is not set directly but instead the
      * libdbusmenu-gtk library is used with the function `dbusmenu_menuitem_property_set_shortcut()`
+     * @default shortcut
      */
     const MENUITEM_PROP_SHORTCUT: string;
 
@@ -253,6 +284,7 @@ export namespace Dbusmenu {
      * {@link Dbusmenu.Menuitem} property that says what state a toggle entry should
      * be shown as the menu.  Should be either #DBUSMENU_MENUITEM_TOGGLE_STATE_UNCHECKED
      * #DBUSMENU_MENUITEM_TOGGLE_STATE_CHECKED or #DBUSMENU_MENUITEM_TOGGLE_STATUE_UNKNOWN.
+     * @default toggle-state
      */
     const MENUITEM_PROP_TOGGLE_STATE: string;
 
@@ -260,162 +292,192 @@ export namespace Dbusmenu {
      * {@link Dbusmenu.Menuitem} property that says what type of toggle entry should
      * be shown in the menu.  Should be either #DBUSMENU_MENUITEM_TOGGLE_CHECK
      * or #DBUSMENU_MENUITEM_TOGGLE_RADIO.  Type: #G_VARIANT_TYPE_STRING
+     * @default toggle-type
      */
     const MENUITEM_PROP_TOGGLE_TYPE: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property used to represent what type of menuitem
      * this object represents.  Type: #G_VARIANT_TYPE_STRING.
+     * @default type
      */
     const MENUITEM_PROP_TYPE: string;
 
     /**
      * {@link Dbusmenu.Menuitem} property used to represent whether the menuitem
      * should be shown or not.  Type: #G_VARIANT_TYPE_BOOLEAN.
+     * @default visible
      */
     const MENUITEM_PROP_VISIBLE: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
      * alternate key.
+     * @default Alt
      */
     const MENUITEM_SHORTCUT_ALT: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
      * control key.
+     * @default Control
      */
     const MENUITEM_SHORTCUT_CONTROL: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
      * shift key.
+     * @default Shift
      */
     const MENUITEM_SHORTCUT_SHIFT: string;
 
     /**
      * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
      * super key.
+     * @default Super
      */
     const MENUITEM_SHORTCUT_SUPER: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.about_to_show | Dbusmenu.Server::about-to-show}
+     * @default about-to-show
      */
     const MENUITEM_SIGNAL_ABOUT_TO_SHOW: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.child_added | Dbusmenu.Server::child-added}
+     * @default child-added
      */
     const MENUITEM_SIGNAL_CHILD_ADDED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.child_moved | Dbusmenu.Server::child-moved}
+     * @default child-moved
      */
     const MENUITEM_SIGNAL_CHILD_MOVED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.child_removed | Dbusmenu.Server::child-removed}
+     * @default child-removed
      */
     const MENUITEM_SIGNAL_CHILD_REMOVED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.event | Dbusmenu.Server::event}
+     * @default event
      */
     const MENUITEM_SIGNAL_EVENT: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.item_activated | Dbusmenu.Server::item-activated}
+     * @default item-activated
      */
     const MENUITEM_SIGNAL_ITEM_ACTIVATED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.property_changed | Dbusmenu.Server::property-changed}
+     * @default property-changed
      */
     const MENUITEM_SIGNAL_PROPERTY_CHANGED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.realized | Dbusmenu.Server::realized}
+     * @default realized
      */
     const MENUITEM_SIGNAL_REALIZED: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.show_to_user | Dbusmenu.Server::show-to-user}
+     * @default show-to-user
      */
     const MENUITEM_SIGNAL_SHOW_TO_USER: string;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_TYPE to be a standard
      * check mark item.
+     * @default checkmark
      */
     const MENUITEM_TOGGLE_CHECK: string;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_TYPE to be a standard
      * radio item.
+     * @default radio
      */
     const MENUITEM_TOGGLE_RADIO: string;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
      * toggle item is filled.
+     * @default 1
      */
     const MENUITEM_TOGGLE_STATE_CHECKED: number;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
      * toggle item is empty.
+     * @default 0
      */
     const MENUITEM_TOGGLE_STATE_UNCHECKED: number;
 
     /**
      * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
      * toggle item is undecided.
+     * @default -1
      */
     const MENUITEM_TOGGLE_STATE_UNKNOWN: number;
 
     /**
      * String to access property {@link Dbusmenu.Server.dbus_object}
+     * @default dbus-object
      */
     const SERVER_PROP_DBUS_OBJECT: string;
 
     /**
      * String to access property {@link Dbusmenu.Server.root_node}
+     * @default root-node
      */
     const SERVER_PROP_ROOT_NODE: string;
 
     /**
      * String to access property {@link Dbusmenu.Server.status}
+     * @default status
      */
     const SERVER_PROP_STATUS: string;
 
     /**
      * String to access property {@link Dbusmenu.Server.text_direction}
+     * @default text-direction
      */
     const SERVER_PROP_TEXT_DIRECTION: string;
 
     /**
      * String to access property {@link Dbusmenu.Server.version}
+     * @default version
      */
     const SERVER_PROP_VERSION: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.item_property_updated | Dbusmenu.Server::item-property-updated}
+     * @default item-property-updated
      */
     const SERVER_SIGNAL_ID_PROP_UPDATE: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.item_updated | Dbusmenu.Server::item-updated}
+     * @default item-updated
      */
     const SERVER_SIGNAL_ID_UPDATE: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.item_activation_requested | Dbusmenu.Server::item-activation-requested}
+     * @default item-activation-requested
      */
     const SERVER_SIGNAL_ITEM_ACTIVATION: string;
 
     /**
      * String to attach to signal {@link Dbusmenu.Server.SignalSignatures.layout_updated | Dbusmenu.Server::layout-updated}
+     * @default layout-updated
      */
     const SERVER_SIGNAL_LAYOUT_UPDATED: string;
 
@@ -447,20 +509,20 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "event-result": (arg0: GObject.Object, arg1: string, arg2: GLib.Variant, arg3: number, arg4: null) => void;
+            "event-result": (object: GObject.Object, p0: string, p1: GLib.Variant, p2: number, p3: null) => void;
             /**
              * Signaled when the theme directories are changed by the server.
              * @signal
              * @run-last
              */
-            "icon-theme-dirs-changed": (arg0: null) => void;
+            "icon-theme-dirs-changed": (arg1: null) => void;
             /**
              * Signaled when the server wants to activate an item in
              * 		order to display the menu.
              * @signal
              * @run-last
              */
-            "item-activate": (arg0: GObject.Object, arg1: number) => void;
+            "item-activate": (arg1: GObject.Object, arg2: number) => void;
             /**
              * @signal
              * @run-last
@@ -474,7 +536,7 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "new-menuitem": (arg0: GObject.Object) => void;
+            "new-menuitem": (arg1: GObject.Object) => void;
             /**
              * The layout has changed in a way that can not be
              * 		represented by the individual items changing as the
@@ -482,7 +544,7 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "root-changed": (arg0: GObject.Object) => void;
+            "root-changed": (arg1: GObject.Object) => void;
             "notify::dbus-name": (pspec: GObject.ParamSpec) => void;
             "notify::dbus-object": (pspec: GObject.ParamSpec) => void;
             "notify::group-events": (pspec: GObject.ParamSpec) => void;
@@ -664,14 +726,14 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "child-added": (arg0: GObject.Object, arg1: number) => void;
+            "child-added": (arg1: GObject.Object, arg2: number) => void;
             /**
              * Signaled when the child menuitem has had its location
              * 		in the list change.
              * @signal
              * @run-last
              */
-            "child-moved": (arg0: GObject.Object, arg1: number, arg2: number) => void;
+            "child-moved": (arg1: GObject.Object, arg2: number, arg3: number) => void;
             /**
              * Signaled when the child menuitem has been requested to
              * 		be removed from the parent.  This signal is called when
@@ -680,7 +742,7 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "child-removed": (arg0: GObject.Object) => void;
+            "child-removed": (arg1: GObject.Object) => void;
             /**
              * Emitted when an event is passed through.  The event is signalled
              * 		after handle_event is called.
@@ -688,21 +750,21 @@ export namespace Dbusmenu {
              * @detailed
              * @run-last
              */
-            event: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
+            event: (arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
             /**
              * Emitted on the objects on the server side when
              * 		they are signaled on the client side.
              * @signal
              * @run-last
              */
-            "item-activated": (arg0: number) => void;
+            "item-activated": (arg1: number) => void;
             /**
              * Emitted everytime a property on a menuitem is either
              * 		updated or added.
              * @signal
              * @run-last
              */
-            "property-changed": (arg0: string, arg1: GLib.Variant) => void;
+            "property-changed": (arg1: string, arg2: GLib.Variant) => void;
             /**
              * Emitted when the initial request for properties
              * 		is complete on the item.  If there is a type
@@ -719,7 +781,7 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "show-to-user": (arg0: number) => void;
+            "show-to-user": (arg1: number) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             /**
              * Emitted when an event is passed through.  The event is signalled
@@ -728,8 +790,8 @@ export namespace Dbusmenu {
              * @detailed
              * @run-last
              */
-            "event::id": (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
-            [key: `event::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
+            "event::id": (arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
+            [key: `event::${string}`]: (arg1: string, arg2: GLib.Variant, arg3: number) => boolean | void;
         }
 
         // Constructor properties interface
@@ -1255,24 +1317,24 @@ export namespace Dbusmenu {
              * @signal
              * @run-last
              */
-            "item-activation-requested": (arg0: number, arg1: number) => void;
+            "item-activation-requested": (arg1: number, arg2: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "item-property-updated": (arg0: number, arg1: string, arg2: GLib.Variant) => void;
+            "item-property-updated": (object: number, p0: string, p1: GLib.Variant) => void;
             /**
              * @signal
              * @run-last
              */
-            "item-updated": (arg0: number) => void;
+            "item-updated": (object: number) => void;
             /**
              * This signal is emitted any time the layout of the
              * 		menuitems under this server is changed.
              * @signal
              * @run-last
              */
-            "layout-updated": (arg0: number, arg1: number) => void;
+            "layout-updated": (arg1: number, arg2: number) => void;
             "notify::dbus-object": (pspec: GObject.ParamSpec) => void;
             "notify::root-node": (pspec: GObject.ParamSpec) => void;
             "notify::version": (pspec: GObject.ParamSpec) => void;

@@ -38,11 +38,11 @@ export namespace Gpiodglib {
         /**
          * Rising edge event.
          */
-        RISING_EDGE,
+        RISING_EDGE = 1,
         /**
          * Falling edge event.
          */
-        FALLING_EDGE,
+        FALLING_EDGE = 2,
     }
 
 
@@ -115,16 +115,16 @@ export namespace Gpiodglib {
         /**
          * Line has been requested.
          */
-        REQUESTED,
+        REQUESTED = 1,
         /**
          * Previously requested line has been
          * released.
          */
-        RELEASED,
+        RELEASED = 2,
         /**
          * Line configuration has changed.
          */
-        CONFIG_CHANGED,
+        CONFIG_CHANGED = 3,
     }
 
 
@@ -144,23 +144,23 @@ export namespace Gpiodglib {
          * Don't change the bias setting when applying line
          * config.
          */
-        AS_IS,
+        AS_IS = 1,
         /**
          * The internal bias state is unknown.
          */
-        UNKNOWN,
+        UNKNOWN = 2,
         /**
          * The internal bias is disabled.
          */
-        DISABLED,
+        DISABLED = 3,
         /**
          * The internal pull-up bias is enabled.
          */
-        PULL_UP,
+        PULL_UP = 4,
         /**
          * The internal pull-down bias is enabled.
          */
-        PULL_DOWN,
+        PULL_DOWN = 5,
     }
 
 
@@ -180,17 +180,17 @@ export namespace Gpiodglib {
          * Line uses the monotonic clock for edge
          * event timestamps.
          */
-        MONOTONIC,
+        MONOTONIC = 1,
         /**
          * Line uses the realtime clock for edge event
          * timestamps.
          */
-        REALTIME,
+        REALTIME = 2,
         /**
          * Line uses the hardware timestamp engine for event
          * timestamps.
          */
-        HTE,
+        HTE = 3,
     }
 
 
@@ -210,17 +210,17 @@ export namespace Gpiodglib {
          * Request the line(s), but don't change
          * direction.
          */
-        AS_IS,
+        AS_IS = 1,
         /**
          * Direction is input - for reading the value
          * of an externally driven GPIO line.
          */
-        INPUT,
+        INPUT = 2,
         /**
          * Direction is output - for driving the GPIO
          * line.
          */
-        OUTPUT,
+        OUTPUT = 3,
     }
 
 
@@ -239,15 +239,15 @@ export namespace Gpiodglib {
         /**
          * Drive setting is push-pull.
          */
-        PUSH_PULL,
+        PUSH_PULL = 1,
         /**
          * Line output is open-drain.
          */
-        OPEN_DRAIN,
+        OPEN_DRAIN = 2,
         /**
          * Line output is open-source.
          */
-        OPEN_SOURCE,
+        OPEN_SOURCE = 3,
     }
 
 
@@ -266,19 +266,19 @@ export namespace Gpiodglib {
         /**
          * Line edge detection is disabled.
          */
-        NONE,
+        NONE = 1,
         /**
          * Line detects rising edge events.
          */
-        RISING,
+        RISING = 2,
         /**
          * Line detects falling edge events.
          */
-        FALLING,
+        FALLING = 3,
         /**
          * Line detects both rising and falling edge events.
          */
-        BOTH,
+        BOTH = 4,
     }
 
 
@@ -297,11 +297,11 @@ export namespace Gpiodglib {
         /**
          * Line is logically inactive.
          */
-        INACTIVE,
+        INACTIVE = 0,
         /**
          * Line is logically active.
          */
-        ACTIVE,
+        ACTIVE = 1,
     }
 
 
@@ -328,7 +328,7 @@ export namespace Gpiodglib {
              * @signal
              * @run-last
              */
-            "info-event": (arg0: InfoEvent) => void;
+            "info-event": (event: InfoEvent) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -400,6 +400,7 @@ export namespace Gpiodglib {
         /**
          * Get information about the chip.
          * @returns New {@link Gpiodglib.ChipInfo}.
+         * @throws GLib.Error
          */
         get_info(): ChipInfo;
 
@@ -407,6 +408,7 @@ export namespace Gpiodglib {
          * Retrieve the current snapshot of line information for a single line.
          * @param offset Offset of the line to get the info for.
          * @returns New {@link Gpiodglib.LineInfo}.
+         * @throws GLib.Error
          */
         get_line_info(offset: number): LineInfo;
 
@@ -415,6 +417,7 @@ export namespace Gpiodglib {
          * @param name Name of the GPIO line to map.
          * @param offset Return location for the mapped offset.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         get_line_offset_from_name(name: string, offset: number): boolean;
 
@@ -429,6 +432,7 @@ export namespace Gpiodglib {
          * @param req_cfg Request config object. Can be NULL for default settings.
          * @param line_cfg Line config object.
          * @returns New {@link Gpiodglib.LineRequest}.
+         * @throws GLib.Error
          */
         request_lines(req_cfg: RequestConfig, line_cfg: LineConfig): LineRequest;
 
@@ -436,6 +440,7 @@ export namespace Gpiodglib {
          * Stop watching the line at given offset for info events.
          * @param offset Offset of the line to get the info for.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         unwatch_line_info(offset: number): boolean;
 
@@ -444,6 +449,7 @@ export namespace Gpiodglib {
          * start watching this line for future changes.
          * @param offset Offset of the line to get the info for and to watch.
          * @returns New {@link Gpiodglib.LineInfo}.
+         * @throws GLib.Error
          */
         watch_line_info(offset: number): LineInfo;
 
@@ -489,6 +495,7 @@ export namespace Gpiodglib {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1002,6 +1009,7 @@ export namespace Gpiodglib {
          * @param offsets GArray of offsets for which to apply the settings.
          * @param settings {@link Gpiodglib.LineSettings} to apply.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         add_line_settings(offsets: never[][], settings: LineSettings): boolean;
 
@@ -1027,6 +1035,7 @@ export namespace Gpiodglib {
          * `brief` Set output values for a number of lines.
          * @param values GArray containing the output values.
          * @returns TRUE on success, FALSE on error.
+         * @throws GLib.Error
          */
         set_output_values(values: never[][]): boolean;
     }
@@ -1315,7 +1324,7 @@ export namespace Gpiodglib {
              * @signal
              * @run-last
              */
-            "edge-event": (arg0: EdgeEvent) => void;
+            "edge-event": (event: EdgeEvent) => void;
             "notify::chip-name": (pspec: GObject.ParamSpec) => void;
             "notify::requested-offsets": (pspec: GObject.ParamSpec) => void;
         }
@@ -1408,6 +1417,7 @@ export namespace Gpiodglib {
          * @param offset The offset of the line of which the value should be read.
          * @param value Return location for the value.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         get_value(offset: number, value: LineValue): boolean;
 
@@ -1415,6 +1425,7 @@ export namespace Gpiodglib {
          * Get the values of all requested lines.
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         get_values(values: never[][]): boolean;
 
@@ -1423,6 +1434,7 @@ export namespace Gpiodglib {
          * @param offsets Array of offsets identifying the subset of requested lines from which to read values.
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         get_values_subset(offsets: never[][], values: never[][]): boolean;
 
@@ -1440,6 +1452,7 @@ export namespace Gpiodglib {
          * overrides for lines that have not been requested are silently ignored.
          * @param config New line config to apply.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         reconfigure_lines(config: LineConfig): boolean;
 
@@ -1453,6 +1466,7 @@ export namespace Gpiodglib {
          * @param offset The offset of the line for which the value should be set.
          * @param value Value to set.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         set_value(offset: number, value: LineValue): boolean;
 
@@ -1460,6 +1474,7 @@ export namespace Gpiodglib {
          * Set the values of all lines associated with a request.
          * @param values Array containing the values to set. Must be sized to contain the number of values equal to the number of requested lines. Each value is associated with the line identified by the corresponding entry in the offset array filled by `gpiodglib_line_request_get_requested_offsets`.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         set_values(values: never[][]): boolean;
 
@@ -1468,6 +1483,7 @@ export namespace Gpiodglib {
          * @param offsets Array of offsets identifying the requested lines for which to set values.
          * @param values Array in which the values will be stored. Can be NULL in which case a new array will be created and its location stored here.
          * @returns TRUE on success, FALSE on failure.
+         * @throws GLib.Error
          */
         set_values_subset(offsets: never[][], values: never[][]): boolean;
     }

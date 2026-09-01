@@ -1,6 +1,6 @@
 {
     "name": "@girs/nemo-3.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for Nemo-3.0",
     "type": "module",
     "module": "nemo-3.0.js",
@@ -16,10 +16,10 @@
         "import": "./nemo-3.0-import.js",
         "default": "./nemo-3.0-import.js"
       },
-      "./surface": {
-        "types": "./nemo-3.0-surface.d.ts",
-        "import": "./nemo-3.0-surface.js",
-        "default": "./nemo-3.0-surface.js"
+      "./vocabulary": {
+        "types": "./nemo-3.0-vocabulary.d.ts",
+        "import": "./nemo-3.0-vocabulary.js",
+        "default": "./nemo-3.0-vocabulary.js"
       },
       "./nemo-3.0": {
         "types": "./nemo-3.0.d.ts",
@@ -36,20 +36,20 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/gtk-3.0": "^4.4.0",
-      "@girs/xlib-2.0": "^4.4.0",
-      "@girs/gdk-3.0": "^4.4.0",
-      "@girs/cairo-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/pango-1.0": "^4.4.0",
-      "@girs/harfbuzz-0.0": "^4.4.0",
-      "@girs/freetype2-2.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gdkpixbuf-2.0": "^4.4.0",
-      "@girs/atk-1.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/gtk-3.0": "^4.5.0",
+      "@girs/xlib-2.0": "^4.5.0",
+      "@girs/gdk-3.0": "^4.5.0",
+      "@girs/cairo-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/pango-1.0": "^4.5.0",
+      "@girs/harfbuzz-0.0": "^4.5.0",
+      "@girs/freetype2-2.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gdkpixbuf-2.0": "^4.5.0",
+      "@girs/atk-1.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },

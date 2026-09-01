@@ -45,23 +45,23 @@ export namespace NMA4 {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Only pick a certificate, not a key
          */
-        CERT,
+        CERT = 1,
         /**
          * Hide all controls but the secrets entries
          */
-        PASSWORDS,
+        PASSWORDS = 2,
         /**
          * Ensure the chooser only selects regular PEM files
          */
-        PEM,
+        PEM = 4,
         /**
          * Do not show password entries (Since: 1.8.34)
          */
-        NO_PASSWORDS,
+        NO_PASSWORDS = 8,
     }
 
 
@@ -72,39 +72,51 @@ export namespace NMA4 {
         /**
          * Unknown or invalid network access method
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * 3rd Generation Partnership Project (3GPP) network
          */
-        "3GPP",
+        "3GPP" = 1,
         /**
          * A CDMA network
          */
-        CDMA,
+        CDMA = 2,
     }
 
 
+    /**
+     * @default size
+     */
     const BAR_CODE_SIZE: string;
 
+    /**
+     * @default text
+     */
     const BAR_CODE_TEXT: string;
 
+    /**
+     * @default connection
+     */
     const BAR_CODE_WIDGET_CONNECTION: string;
 
     /**
      * Evaluates to the major version number of NetworkManager which this source
      * is compiled against.
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * Evaluates to the micro version number of NetworkManager which this source
      * compiled against.
+     * @default 6
      */
     const MICRO_VERSION: number;
 
     /**
      * Evaluates to the minor version number of NetworkManager which this source
      * is compiled against.
+     * @default 10
      */
     const MINOR_VERSION: number;
 
@@ -672,6 +684,7 @@ export namespace NMA4 {
          * error themselves.
          * @returns `true` if validation passes, `false` otherwise
          * @since 1.8.0
+         * @throws GLib.Error
          */
         validate(): boolean;
 
@@ -950,6 +963,7 @@ export namespace NMA4 {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -959,6 +973,7 @@ export namespace NMA4 {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): MobileProvidersDatabase;
 
@@ -1058,6 +1073,7 @@ export namespace NMA4 {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1643,6 +1659,9 @@ export namespace NMA4 {
 
         hotspot_compatible(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         validate(): boolean;
     }
 

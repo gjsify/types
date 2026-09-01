@@ -44,15 +44,15 @@ export namespace Vips {
         /**
          * can read anywhere
          */
-        RANDOM,
+        RANDOM = 0,
         /**
          * top-to-bottom reading only, but with a small buffer
          */
-        SEQUENTIAL,
+        SEQUENTIAL = 1,
         /**
          * deprecated, use {@link Vips.Access.SEQUENTIAL} instead
          */
-        SEQUENTIAL_UNBUFFERED,
+        SEQUENTIAL_UNBUFFERED = 2,
     }
 
 
@@ -77,15 +77,15 @@ export namespace Vips {
         /**
          * align low coordinate edge
          */
-        LOW,
+        LOW = 0,
         /**
          * align centre
          */
-        CENTRE,
+        CENTRE = 1,
         /**
          * align high coordinate edge
          */
-        HIGH,
+        HIGH = 2,
     }
 
 
@@ -109,19 +109,19 @@ export namespace Vips {
         /**
          * no rotate
          */
-        D0,
+        D0 = 0,
         /**
          * 90 degrees clockwise
          */
-        D90,
+        D90 = 1,
         /**
          * 180 degree rotate
          */
-        D180,
+        D180 = 2,
         /**
          * 90 degrees anti-clockwise
          */
-        D270,
+        D270 = 3,
     }
 
 
@@ -145,35 +145,35 @@ export namespace Vips {
         /**
          * no rotate
          */
-        D0,
+        D0 = 0,
         /**
          * 45 degrees clockwise
          */
-        D45,
+        D45 = 1,
         /**
          * 90 degrees clockwise
          */
-        D90,
+        D90 = 2,
         /**
          * 135 degrees clockwise
          */
-        D135,
+        D135 = 3,
         /**
          * 180 degrees
          */
-        D180,
+        D180 = 4,
         /**
          * 135 degrees anti-clockwise
          */
-        D225,
+        D225 = 5,
         /**
          * 90 degrees anti-clockwise
          */
-        D270,
+        D270 = 6,
         /**
          * 45 degrees anti-clockwise
          */
-        D315,
+        D315 = 7,
     }
 
 
@@ -195,47 +195,47 @@ export namespace Vips {
         /**
          * invalid setting
          */
-        NOTSET,
+        NOTSET = -1,
         /**
          * unsigned char format
          */
-        UCHAR,
+        UCHAR = 0,
         /**
          * char format
          */
-        CHAR,
+        CHAR = 1,
         /**
          * unsigned short format
          */
-        USHORT,
+        USHORT = 2,
         /**
          * short format
          */
-        SHORT,
+        SHORT = 3,
         /**
          * unsigned int format
          */
-        UINT,
+        UINT = 4,
         /**
          * int format
          */
-        INT,
+        INT = 5,
         /**
          * float format
          */
-        FLOAT,
+        FLOAT = 6,
         /**
          * complex (two floats) format
          */
-        COMPLEX,
+        COMPLEX = 7,
         /**
          * double float format
          */
-        DOUBLE,
+        DOUBLE = 8,
         /**
          * double complex (two double) format
          */
-        DPCOMPLEX,
+        DPCOMPLEX = 9,
     }
 
 
@@ -260,103 +260,103 @@ export namespace Vips {
         /**
          * where the second object is drawn, the first is removed
          */
-        CLEAR,
+        CLEAR = 0,
         /**
          * the second object is drawn as if nothing were below
          */
-        SOURCE,
+        SOURCE = 1,
         /**
          * the image shows what you would expect if you held two semi-transparent slides on top of each other
          */
-        OVER,
+        OVER = 2,
         /**
          * the first object is removed completely, the second is only drawn where the first was
          */
-        IN,
+        IN = 3,
         /**
          * the second is drawn only where the first isn't
          */
-        OUT,
+        OUT = 4,
         /**
          * this leaves the first object mostly intact, but mixes both objects in the overlapping area
          */
-        ATOP,
+        ATOP = 5,
         /**
          * leaves the first object untouched, the second is discarded completely
          */
-        DEST,
+        DEST = 6,
         /**
          * like OVER, but swaps the arguments
          */
-        DEST_OVER,
+        DEST_OVER = 7,
         /**
          * like IN, but swaps the arguments
          */
-        DEST_IN,
+        DEST_IN = 8,
         /**
          * like OUT, but swaps the arguments
          */
-        DEST_OUT,
+        DEST_OUT = 9,
         /**
          * like ATOP, but swaps the arguments
          */
-        DEST_ATOP,
+        DEST_ATOP = 10,
         /**
          * something like a difference operator
          */
-        XOR,
+        XOR = 11,
         /**
          * a bit like adding the two images
          */
-        ADD,
+        ADD = 12,
         /**
          * a bit like the darker of the two
          */
-        SATURATE,
+        SATURATE = 13,
         /**
          * at least as dark as the darker of the two inputs
          */
-        MULTIPLY,
+        MULTIPLY = 14,
         /**
          * at least as light as the lighter of the inputs
          */
-        SCREEN,
+        SCREEN = 15,
         /**
          * multiplies or screens colors, depending on the lightness
          */
-        OVERLAY,
+        OVERLAY = 16,
         /**
          * the darker of each component
          */
-        DARKEN,
+        DARKEN = 17,
         /**
          * the lighter of each component
          */
-        LIGHTEN,
+        LIGHTEN = 18,
         /**
          * brighten first by a factor second
          */
-        COLOUR_DODGE,
+        COLOUR_DODGE = 19,
         /**
          * darken first by a factor of second
          */
-        COLOUR_BURN,
+        COLOUR_BURN = 20,
         /**
          * multiply or screen, depending on lightness
          */
-        HARD_LIGHT,
+        HARD_LIGHT = 21,
         /**
          * darken or lighten, depending on lightness
          */
-        SOFT_LIGHT,
+        SOFT_LIGHT = 22,
         /**
          * difference of the two
          */
-        DIFFERENCE,
+        DIFFERENCE = 23,
         /**
          * somewhat like DIFFERENCE, but lower-contrast
          */
-        EXCLUSION,
+        EXCLUSION = 24,
     }
 
 
@@ -379,19 +379,19 @@ export namespace Vips {
      * @gir-type Enum
      */
     enum Coding {
-        ERROR,
+        ERROR = -1,
         /**
          * pixels are not coded
          */
-        NONE,
+        NONE = 0,
         /**
          * pixels encode 3 float CIELAB values as 4 uchar
          */
-        LABQ,
+        LABQ = 2,
         /**
          * pixels encode 3 float RGB as 4 uchar (Radiance coding)
          */
-        RAD,
+        RAD = 6,
     }
 
 
@@ -410,15 +410,15 @@ export namespace Vips {
         /**
          * take the maximum of the possible values
          */
-        MAX,
+        MAX = 0,
         /**
          * sum all the values
          */
-        SUM,
+        SUM = 1,
         /**
          * take the minimum value
          */
-        MIN,
+        MIN = 2,
     }
 
 
@@ -443,11 +443,11 @@ export namespace Vips {
         /**
          * set pixels to the new value
          */
-        SET,
+        SET = 0,
         /**
          * add pixels
          */
-        ADD,
+        ADD = 1,
     }
 
 
@@ -466,39 +466,39 @@ export namespace Vips {
         /**
          * centre
          */
-        CENTRE,
+        CENTRE = 0,
         /**
          * north
          */
-        NORTH,
+        NORTH = 1,
         /**
          * east
          */
-        EAST,
+        EAST = 2,
         /**
          * south
          */
-        SOUTH,
+        SOUTH = 3,
         /**
          * west
          */
-        WEST,
+        WEST = 4,
         /**
          * north-east
          */
-        NORTH_EAST,
+        NORTH_EAST = 5,
         /**
          * south-east
          */
-        SOUTH_EAST,
+        SOUTH_EAST = 6,
         /**
          * south-west
          */
-        SOUTH_WEST,
+        SOUTH_WEST = 7,
         /**
          * north-west
          */
-        NORTH_WEST,
+        NORTH_WEST = 8,
     }
 
 
@@ -542,23 +542,23 @@ export namespace Vips {
      * @gir-type Enum
      */
     enum DemandStyle {
-        ERROR,
+        ERROR = -1,
         /**
          * demand in small (typically 128x128 pixel) tiles
          */
-        SMALLTILE,
+        SMALLTILE = 0,
         /**
          * demand in fat (typically 16 pixel high) strips
          */
-        FATSTRIP,
+        FATSTRIP = 1,
         /**
          * demand in thin (typically 1 pixel high) strips
          */
-        THINSTRIP,
+        THINSTRIP = 2,
         /**
          * demand geometry does not matter
          */
-        ANY,
+        ANY = 3,
     }
 
 
@@ -583,11 +583,11 @@ export namespace Vips {
         /**
          * left-right
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * top-bottom
          */
-        VERTICAL,
+        VERTICAL = 1,
     }
 
 
@@ -629,27 +629,27 @@ export namespace Vips {
         /**
          * extend with black (all 0) pixels
          */
-        BLACK,
+        BLACK = 0,
         /**
          * copy the image edges
          */
-        COPY,
+        COPY = 1,
         /**
          * repeat the whole image
          */
-        REPEAT,
+        REPEAT = 2,
         /**
          * mirror the whole image
          */
-        MIRROR,
+        MIRROR = 3,
         /**
          * extend with white (all bits set) pixels
          */
-        WHITE,
+        WHITE = 4,
         /**
          * extend with colour from the `background` property
          */
-        BACKGROUND,
+        BACKGROUND = 5,
     }
 
 
@@ -672,19 +672,19 @@ export namespace Vips {
         /**
          * never stop
          */
-        NONE,
+        NONE = 0,
         /**
          * stop on image truncated, nothing else
          */
-        TRUNCATED,
+        TRUNCATED = 1,
         /**
          * stop on serious error or truncation
          */
-        ERROR,
+        ERROR = 2,
         /**
          * stop on anything, even warnings
          */
-        WARNING,
+        WARNING = 3,
     }
 
 
@@ -703,15 +703,15 @@ export namespace Vips {
         /**
          * write tiles to the filesystem
          */
-        FS,
+        FS = 0,
         /**
          * write tiles to a zip file
          */
-        ZIP,
+        ZIP = 1,
         /**
          * write to a szi file
          */
-        SZI,
+        SZI = 2,
     }
 
 
@@ -730,15 +730,15 @@ export namespace Vips {
         /**
          * create layers down to 1x1 pixel
          */
-        ONEPIXEL,
+        ONEPIXEL = 0,
         /**
          * create layers down to 1x1 tile
          */
-        ONETILE,
+        ONETILE = 1,
         /**
          * only create a single layer
          */
-        ONE,
+        ONE = 2,
     }
 
 
@@ -757,23 +757,23 @@ export namespace Vips {
         /**
          * use DeepZoom directory layout
          */
-        DZ,
+        DZ = 0,
         /**
          * use Zoomify directory layout
          */
-        ZOOMIFY,
+        ZOOMIFY = 1,
         /**
          * use Google maps directory layout
          */
-        GOOGLE,
+        GOOGLE = 2,
         /**
          * use IIIF v2 directory layout
          */
-        IIIF,
+        IIIF = 3,
         /**
          * use IIIF v3 directory layout
          */
-        IIIF3,
+        IIIF3 = 4,
     }
 
 
@@ -794,19 +794,19 @@ export namespace Vips {
         /**
          * x265
          */
-        HEVC,
+        HEVC = 1,
         /**
          * x264
          */
-        AVC,
+        AVC = 2,
         /**
          * jpeg
          */
-        JPEG,
+        JPEG = 3,
         /**
          * aom
          */
-        AV1,
+        AV1 = 4,
     }
 
 
@@ -827,23 +827,23 @@ export namespace Vips {
         /**
          * auto
          */
-        AUTO,
+        AUTO = 0,
         /**
          * aom
          */
-        AOM,
+        AOM = 1,
         /**
          * RAV1E
          */
-        RAV1E,
+        RAV1E = 2,
         /**
          * SVT-AV1
          */
-        SVT,
+        SVT = 3,
         /**
          * x265
          */
-        X265,
+        X265 = 4,
     }
 
 
@@ -858,9 +858,9 @@ export namespace Vips {
      * @gir-type Enum
      */
     enum ForeignJpegSubsample {
-        AUTO,
-        ON,
-        OFF,
+        AUTO = 0,
+        ON = 1,
+        OFF = 2,
     }
 
 
@@ -883,23 +883,23 @@ export namespace Vips {
         /**
          * media box
          */
-        MEDIA,
+        MEDIA = 0,
         /**
          * crop box
          */
-        CROP,
+        CROP = 1,
         /**
          * trim box
          */
-        TRIM,
+        TRIM = 2,
         /**
          * bleed box
          */
-        BLEED,
+        BLEED = 3,
         /**
          * art box
          */
-        ART,
+        ART = 4,
     }
 
 
@@ -929,23 +929,23 @@ export namespace Vips {
         /**
          * portable bitmap
          */
-        PBM,
+        PBM = 0,
         /**
          * portable greymap
          */
-        PGM,
+        PGM = 1,
         /**
          * portable pixmap
          */
-        PPM,
+        PPM = 2,
         /**
          * portable float map
          */
-        PFM,
+        PFM = 3,
         /**
          * portable anymap
          */
-        PNM,
+        PNM = 4,
     }
 
 
@@ -964,15 +964,15 @@ export namespace Vips {
         /**
          * prevent subsampling when quality >= 90
          */
-        AUTO,
+        AUTO = 0,
         /**
          * always perform subsampling
          */
-        ON,
+        ON = 1,
         /**
          * never perform subsampling
          */
-        OFF,
+        OFF = 2,
     }
 
 
@@ -999,39 +999,39 @@ export namespace Vips {
         /**
          * no compression
          */
-        NONE,
+        NONE = 0,
         /**
          * jpeg compression
          */
-        JPEG,
+        JPEG = 1,
         /**
          * deflate (zip) compression
          */
-        DEFLATE,
+        DEFLATE = 2,
         /**
          * packbits compression
          */
-        PACKBITS,
+        PACKBITS = 3,
         /**
          * fax4 compression
          */
-        CCITTFAX4,
+        CCITTFAX4 = 4,
         /**
          * LZW compression
          */
-        LZW,
+        LZW = 5,
         /**
          * WEBP compression
          */
-        WEBP,
+        WEBP = 6,
         /**
          * ZSTD compression
          */
-        ZSTD,
+        ZSTD = 7,
         /**
          * JP2K compression
          */
-        JP2K,
+        JP2K = 8,
     }
 
 
@@ -1051,15 +1051,15 @@ export namespace Vips {
         /**
          * no prediction
          */
-        NONE,
+        NONE = 1,
         /**
          * horizontal differencing
          */
-        HORIZONTAL,
+        HORIZONTAL = 2,
         /**
          * float predictor
          */
-        FLOAT,
+        FLOAT = 3,
     }
 
 
@@ -1078,11 +1078,11 @@ export namespace Vips {
         /**
          * use centimeters
          */
-        CM,
+        CM = 0,
         /**
          * use inches
          */
-        INCH,
+        INCH = 1,
     }
 
 
@@ -1101,27 +1101,27 @@ export namespace Vips {
         /**
          * default preset
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * digital picture, like portrait, inner shot
          */
-        PICTURE,
+        PICTURE = 1,
         /**
          * outdoor photograph, with natural lighting
          */
-        PHOTO,
+        PHOTO = 2,
         /**
          * hand or line drawing, with high-contrast details
          */
-        DRAWING,
+        DRAWING = 3,
         /**
          * small-sized colorful images
          */
-        ICON,
+        ICON = 4,
         /**
          * text-like
          */
-        TEXT,
+        TEXT = 5,
     }
 
 
@@ -1136,15 +1136,15 @@ export namespace Vips {
      * @gir-type Enum
      */
     enum ImageType {
-        ERROR,
-        NONE,
-        SETBUF,
-        SETBUF_FOREIGN,
-        OPENIN,
-        MMAPIN,
-        MMAPINRW,
-        OPENOUT,
-        PARTIAL,
+        ERROR = -1,
+        NONE = 0,
+        SETBUF = 1,
+        SETBUF_FOREIGN = 2,
+        OPENIN = 3,
+        MMAPIN = 4,
+        MMAPINRW = 5,
+        OPENOUT = 6,
+        PARTIAL = 7,
     }
 
 
@@ -1165,23 +1165,23 @@ export namespace Vips {
         /**
          * perceptual rendering intent
          */
-        PERCEPTUAL,
+        PERCEPTUAL = 0,
         /**
          * relative colorimetric rendering intent
          */
-        RELATIVE,
+        RELATIVE = 1,
         /**
          * saturation rendering intent
          */
-        SATURATION,
+        SATURATION = 2,
         /**
          * absolute colorimetric rendering intent
          */
-        ABSOLUTE,
+        ABSOLUTE = 3,
         /**
          * the rendering intent that the profile suggests
          */
-        AUTO,
+        AUTO = 32,
     }
 
 
@@ -1209,31 +1209,31 @@ export namespace Vips {
         /**
          * do nothing
          */
-        NONE,
+        NONE = 0,
         /**
          * just take the centre
          */
-        CENTRE,
+        CENTRE = 1,
         /**
          * use an entropy measure
          */
-        ENTROPY,
+        ENTROPY = 2,
         /**
          * look for features likely to draw human attention
          */
-        ATTENTION,
+        ATTENTION = 3,
         /**
          * position the crop towards the low coordinate
          */
-        LOW,
+        LOW = 4,
         /**
          * position the crop towards the high coordinate
          */
-        HIGH,
+        HIGH = 5,
         /**
          * everything is interesting
          */
-        ALL,
+        ALL = 6,
     }
 
 
@@ -1257,91 +1257,91 @@ export namespace Vips {
      * @gir-type Enum
      */
     enum Interpretation {
-        ERROR,
+        ERROR = -1,
         /**
          * generic many-band image
          */
-        MULTIBAND,
+        MULTIBAND = 0,
         /**
          * some kind of single-band image
          */
-        B_W,
+        B_W = 1,
         /**
          * a 1D image, eg. histogram or lookup table
          */
-        HISTOGRAM,
+        HISTOGRAM = 10,
         /**
          * the first three bands are CIE XYZ
          */
-        XYZ,
+        XYZ = 12,
         /**
          * pixels are in CIE Lab space
          */
-        LAB,
+        LAB = 13,
         /**
          * the first four bands are in CMYK space
          */
-        CMYK,
+        CMYK = 15,
         /**
          * implies {@link Vips.Coding.LABQ}
          */
-        LABQ,
+        LABQ = 16,
         /**
          * generic RGB space
          */
-        RGB,
+        RGB = 17,
         /**
          * a uniform colourspace based on CMC(1:1)
          */
-        CMC,
+        CMC = 18,
         /**
          * pixels are in CIE LCh space
          */
-        LCH,
+        LCH = 19,
         /**
          * CIE LAB coded as three signed 16-bit values
          */
-        LABS,
+        LABS = 21,
         /**
          * pixels are sRGB
          */
-        SRGB,
+        SRGB = 22,
         /**
          * pixels are CIE Yxy
          */
-        YXY,
+        YXY = 23,
         /**
          * image is in fourier space
          */
-        FOURIER,
+        FOURIER = 24,
         /**
          * generic 16-bit RGB
          */
-        RGB16,
+        RGB16 = 25,
         /**
          * generic 16-bit mono
          */
-        GREY16,
+        GREY16 = 26,
         /**
          * a matrix
          */
-        MATRIX,
+        MATRIX = 27,
         /**
          * pixels are scRGB
          */
-        SCRGB,
+        SCRGB = 28,
         /**
          * pixels are HSV
          */
-        HSV,
+        HSV = 29,
         /**
          * pixels are in Oklab colourspace
          */
-        OKLAB,
+        OKLAB = 30,
         /**
          * pixels are in Oklch colourspace
          */
-        OKLCH,
+        OKLCH = 31,
     }
 
 
@@ -1360,35 +1360,35 @@ export namespace Vips {
         /**
          * the nearest pixel to the point
          */
-        NEAREST,
+        NEAREST = 0,
         /**
          * convolve with a triangle filter
          */
-        LINEAR,
+        LINEAR = 1,
         /**
          * convolve with a cubic filter
          */
-        CUBIC,
+        CUBIC = 2,
         /**
          * convolve with a Mitchell kernel
          */
-        MITCHELL,
+        MITCHELL = 3,
         /**
          * convolve with a two-lobe Lanczos kernel
          */
-        LANCZOS2,
+        LANCZOS2 = 4,
         /**
          * convolve with a three-lobe Lanczos kernel
          */
-        LANCZOS3,
+        LANCZOS3 = 5,
         /**
          * convolve with Magic Kernel Sharp 2013
          */
-        MKS2013,
+        MKS2013 = 6,
         /**
          * convolve with Magic Kernel Sharp 2021
          */
-        MKS2021,
+        MKS2021 = 7,
     }
 
 
@@ -1407,23 +1407,23 @@ export namespace Vips {
         /**
          * `&`
          */
-        AND,
+        AND = 0,
         /**
          * `|`
          */
-        OR,
+        OR = 1,
         /**
          * `^`
          */
-        EOR,
+        EOR = 2,
         /**
          * `>>`
          */
-        LSHIFT,
+        LSHIFT = 3,
         /**
          * `<<`
          */
-        RSHIFT,
+        RSHIFT = 4,
     }
 
 
@@ -1442,15 +1442,15 @@ export namespace Vips {
         /**
          * convert to polar coordinates
          */
-        POLAR,
+        POLAR = 0,
         /**
          * convert to rectangular coordinates
          */
-        RECT,
+        RECT = 1,
         /**
          * complex conjugate
          */
-        CONJ,
+        CONJ = 2,
     }
 
 
@@ -1469,7 +1469,7 @@ export namespace Vips {
         /**
          * convert to polar coordinates
          */
-        CROSS_PHASE,
+        CROSS_PHASE = 0,
     }
 
 
@@ -1488,11 +1488,11 @@ export namespace Vips {
         /**
          * get real component
          */
-        REAL,
+        REAL = 0,
         /**
          * get imaginary component
          */
-        IMAG,
+        IMAG = 1,
     }
 
 
@@ -1511,67 +1511,67 @@ export namespace Vips {
         /**
          * `sin()`, angles in degrees
          */
-        SIN,
+        SIN = 0,
         /**
          * `cos()`, angles in degrees
          */
-        COS,
+        COS = 1,
         /**
          * `tan()`, angles in degrees
          */
-        TAN,
+        TAN = 2,
         /**
          * `asin()`, angles in degrees
          */
-        ASIN,
+        ASIN = 3,
         /**
          * `acos()`, angles in degrees
          */
-        ACOS,
+        ACOS = 4,
         /**
          * `atan()`, angles in degrees
          */
-        ATAN,
+        ATAN = 5,
         /**
          * log base e
          */
-        LOG,
+        LOG = 6,
         /**
          * log base 10
          */
-        LOG10,
+        LOG10 = 7,
         /**
          * e to the something
          */
-        EXP,
+        EXP = 8,
         /**
          * 10 to the something
          */
-        EXP10,
+        EXP10 = 9,
         /**
          * `sinh()`, angles in radians
          */
-        SINH,
+        SINH = 10,
         /**
          * `cosh()`, angles in radians
          */
-        COSH,
+        COSH = 11,
         /**
          * `tanh()`, angles in radians
          */
-        TANH,
+        TANH = 12,
         /**
          * `asinh()`, angles in radians
          */
-        ASINH,
+        ASINH = 13,
         /**
          * `acosh()`, angles in radians
          */
-        ACOSH,
+        ACOSH = 14,
         /**
          * `atanh()`, angles in radians
          */
-        ATANH,
+        ATANH = 15,
     }
 
 
@@ -1590,15 +1590,15 @@ export namespace Vips {
         /**
          * `pow(left, right)`
          */
-        POW,
+        POW = 0,
         /**
          * `pow(right, left)`
          */
-        WOP,
+        WOP = 1,
         /**
          * `atan2(left, right)`
          */
-        ATAN2,
+        ATAN2 = 2,
     }
 
 
@@ -1620,11 +1620,11 @@ export namespace Vips {
         /**
          * true if all set
          */
-        ERODE,
+        ERODE = 0,
         /**
          * true if one set
          */
-        DILATE,
+        DILATE = 1,
     }
 
 
@@ -1643,27 +1643,27 @@ export namespace Vips {
         /**
          * `==`
          */
-        EQUAL,
+        EQUAL = 0,
         /**
          * `!=`
          */
-        NOTEQ,
+        NOTEQ = 1,
         /**
          * `<`
          */
-        LESS,
+        LESS = 2,
         /**
          * `<=`
          */
-        LESSEQ,
+        LESSEQ = 3,
         /**
          * `>`
          */
-        MORE,
+        MORE = 4,
         /**
          * `>=`
          */
-        MOREEQ,
+        MOREEQ = 5,
     }
 
 
@@ -1682,15 +1682,15 @@ export namespace Vips {
         /**
          * round to nearest
          */
-        RINT,
+        RINT = 0,
         /**
          * the smallest integral value not less than
          */
-        CEIL,
+        CEIL = 1,
         /**
          * largest integral value not greater than
          */
-        FLOOR,
+        FLOOR = 2,
     }
 
 
@@ -1711,11 +1711,11 @@ export namespace Vips {
         /**
          * use CIELAB D65 as the Profile Connection Space
          */
-        LAB,
+        LAB = 0,
         /**
          * use XYZ as the Profile Connection Space
          */
-        XYZ,
+        XYZ = 1,
     }
 
 
@@ -1734,15 +1734,15 @@ export namespace Vips {
         /**
          * int everywhere
          */
-        INTEGER,
+        INTEGER = 0,
         /**
          * float everywhere
          */
-        FLOAT,
+        FLOAT = 1,
         /**
          * approximate integer output
          */
-        APPROXIMATE,
+        APPROXIMATE = 2,
     }
 
 
@@ -1767,27 +1767,27 @@ export namespace Vips {
         /**
          * use the average
          */
-        MEAN,
+        MEAN = 0,
         /**
          * use the median
          */
-        MEDIAN,
+        MEDIAN = 1,
         /**
          * use the mode
          */
-        MODE,
+        MODE = 2,
         /**
          * use the maximum
          */
-        MAX,
+        MAX = 3,
         /**
          * use the minimum
          */
-        MIN,
+        MIN = 4,
         /**
          * use the top-left pixel
          */
-        NEAREST,
+        NEAREST = 5,
     }
 
 
@@ -1809,19 +1809,19 @@ export namespace Vips {
         /**
          * a circle at `a`, radius `r`
          */
-        CIRCLE,
+        CIRCLE = 0,
         /**
          * a box from `a` to `b`
          */
-        BOX,
+        BOX = 1,
         /**
          * a box with rounded `corners` from `a` to `b`
          */
-        ROUNDED_BOX,
+        ROUNDED_BOX = 2,
         /**
          * a line from `a` to `b`
          */
-        LINE,
+        LINE = 3,
     }
 
 
@@ -1844,19 +1844,19 @@ export namespace Vips {
         /**
          * size both up and down
          */
-        BOTH,
+        BOTH = 0,
         /**
          * only upsize
          */
-        UP,
+        UP = 1,
         /**
          * only downsize
          */
-        DOWN,
+        DOWN = 2,
         /**
          * force size, that is, break aspect ratio
          */
-        FORCE,
+        FORCE = 3,
     }
 
 
@@ -1879,167 +1879,277 @@ export namespace Vips {
         /**
          * wrap at word boundaries
          */
-        WORD,
+        WORD = 0,
         /**
          * wrap at character boundaries
          */
-        CHAR,
+        CHAR = 1,
         /**
          * wrap at word boundaries, but fall back to character boundaries if there is not enough space for a full word
          */
-        WORD_CHAR,
+        WORD_CHAR = 2,
         /**
          * no wrapping
          */
-        NONE,
+        NONE = 3,
     }
 
 
+    /**
+     * @default 18
+     */
     const ARGUMENT_OPTIONAL_INPUT: number;
 
+    /**
+     * @default 34
+     */
     const ARGUMENT_OPTIONAL_OUTPUT: number;
 
+    /**
+     * @default 19
+     */
     const ARGUMENT_REQUIRED_INPUT: number;
 
+    /**
+     * @default 35
+     */
     const ARGUMENT_REQUIRED_OUTPUT: number;
 
     /**
      * Areas under curves for illuminant A (2856K), 2 degree observer.
+     * @default 109.850300
      */
     const A_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const A_Y0: number;
 
+    /**
+     * @default 35.584900
+     */
     const A_Z0: number;
 
     /**
      * Areas under curves for illuminant B (4874K), 2 degree observer.
+     * @default 99.072000
      */
     const B_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const B_Y0: number;
 
+    /**
+     * @default 85.223000
+     */
     const B_Z0: number;
 
+    /**
+     * @default enable debug: false&#10;enable deprecated: true&#10;enable modules: true&#10;enable C++ binding: true&#10;enable RAD load/save: true&#10;enable Analyze7 load: true&#10;enable PPM load/save: true&#10;enable GIF load: true&#10;FFTs with fftw3: true&#10;SIMD support with libhwy: true&#10;ICC profile support with lcms2: true&#10;deflate compression with zlib: true&#10;text rendering with pangocairo: true&#10;font file support with fontconfig: true&#10;EXIF metadata support with libexif: true&#10;JPEG load/save with libjpeg: true&#10;UHDR load/save with libuhdr: true&#10;JXL load/save with libjxl: true (dynamic module: true)&#10;JPEG2000 load/save with libopenjp2: true&#10;PNG load/save with libpng: true&#10;image quantisation with imagequant: true&#10;TIFF load/save with libtiff-4: true&#10;image pyramid save with libarchive: true&#10;HEIC/AVIF load/save with libheif: true (dynamic module: true)&#10;WebP load/save with libwebp: true&#10;PDF load with poppler-glib: true (dynamic module: true)&#10;SVG load with librsvg-2.0: true&#10;EXR load with OpenEXR: true&#10;WSI load with openslide: true (dynamic module: true)&#10;Matlab load with matio: true&#10;NIfTI load/save with libnifti: true&#10;FITS load/save with cfitsio: true&#10;GIF save with cgif: true&#10;RAW load with libraw_r: true&#10;Magick load/save with MagickCore: true (dynamic module: true)
+     */
     const CONFIG: string;
 
     /**
      * Areas under curves for illuminant C (6774K), 2 degree observer.
+     * @default 98.070000
      */
     const C_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const C_Y0: number;
 
+    /**
+     * @default 118.230000
+     */
     const C_Z0: number;
 
     /**
      * Areas under curves for black body at 3250K, 2 degree observer.
+     * @default 105.659000
      */
     const D3250_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D3250_Y0: number;
 
+    /**
+     * @default 45.850100
+     */
     const D3250_Z0: number;
 
     /**
      * Areas under curves for D50, 2 degree observer.
+     * @default 96.425000
      */
     const D50_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D50_Y0: number;
 
+    /**
+     * @default 82.468000
+     */
     const D50_Z0: number;
 
     /**
      * Areas under curves for D55, 2 degree observer.
+     * @default 95.683100
      */
     const D55_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D55_Y0: number;
 
+    /**
+     * @default 92.087100
+     */
     const D55_Z0: number;
 
     /**
      * Areas under curves for D65, 2 degree observer.
+     * @default 95.047000
      */
     const D65_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D65_Y0: number;
 
+    /**
+     * @default 108.882700
+     */
     const D65_Z0: number;
 
     /**
      * Areas under curves for D75, 2 degree observer.
+     * @default 94.968200
      */
     const D75_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D75_Y0: number;
 
+    /**
+     * @default 122.571000
+     */
     const D75_Z0: number;
 
     /**
      * Areas under curves for D93, 2 degree observer.
+     * @default 89.740000
      */
     const D93_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const D93_Y0: number;
 
+    /**
+     * @default 130.770000
+     */
     const D93_Z0: number;
 
+    /**
+     * @default 100000000
+     */
     const DEFAULT_MAX_COORD: number;
 
+    /**
+     * @default 1
+     */
     const ENABLE_DEPRECATED: number;
 
     /**
      * Areas under curves for equal energy illuminant E.
+     * @default 100.000000
      */
     const E_X0: number;
 
+    /**
+     * @default 100.000000
+     */
     const E_Y0: number;
 
+    /**
+     * @default 100.000000
+     */
     const E_Z0: number;
 
     /**
      * {@link INTERPOLATE_SHIFT} as a multiplicative constant.
+     * @default 1
      */
     const INTERPOLATE_SCALE: number;
 
     /**
      * Many of the vips interpolators use fixed-point arithmetic for value
      * calculation. This is how many bits of precision they use.
+     * @default 12
      */
     const INTERPOLATE_SHIFT: number;
 
+    /**
+     * @default 20
+     */
     const LIBRARY_AGE: number;
 
+    /**
+     * @default 62
+     */
     const LIBRARY_CURRENT: number;
 
+    /**
+     * @default 3
+     */
     const LIBRARY_REVISION: number;
 
     /**
      * The first four bytes of a VIPS file in Intel byte ordering.
+     * @default 3064394248
      */
     const MAGIC_INTEL: number;
 
     /**
      * The first four bytes of a VIPS file in SPARC byte ordering.
+     * @default 150120118
      */
     const MAGIC_SPARC: number;
 
+    /**
+     * @default 8
+     */
     const MAJOR_VERSION: number;
 
     /**
      * The bits per sample for each channel.
+     * @default bits-per-sample
      */
     const META_BITS_PER_SAMPLE: string;
 
     /**
      * If set, the suggested concurrency for this image.
+     * @default concurrency
      */
     const META_CONCURRENCY: string;
 
     /**
      * The name that read and write operations use for the image's EXIF data.
+     * @default exif-data
      */
     const META_EXIF_NAME: string;
 
@@ -2048,32 +2158,38 @@ export namespace Vips {
      * operations for TIFF, JPEG, PNG and others use this item of metadata to
      * attach and save ICC profiles. The profile is updated by the
      * {@link Image.icc_transform} operations.
+     * @default icc-profile-data
      */
     const META_ICC_NAME: string;
 
     /**
      * The IMAGEDESCRIPTION tag. Often has useful metadata.
+     * @default image-description
      */
     const META_IMAGEDESCRIPTION: string;
 
     /**
      * The name that read and write operations use for the image's IPTC data.
+     * @default iptc-data
      */
     const META_IPTC_NAME: string;
 
     /**
      * Record the name of the original loader here. Handy for hinting file formats
      * and for debugging.
+     * @default vips-loader
      */
     const META_LOADER: string;
 
     /**
      * If set, the number of pages in the original file.
+     * @default n-pages
      */
     const META_N_PAGES: string;
 
     /**
      * If set, the number of subifds in the first page of the file.
+     * @default n-subifds
      */
     const META_N_SUBIFDS: string;
 
@@ -2097,6 +2213,7 @@ export namespace Vips {
      *   0th column represents the visual bottom.
      * - 8 - The 0th row represents the visual left-hand side of the image, and the
      *   0th column represents the visual bottom.
+     * @default orientation
      */
     const META_ORIENTATION: string;
 
@@ -2104,23 +2221,27 @@ export namespace Vips {
      * If set, the height of each page when this image was loaded. If you save an
      * image with "page-height" set to a format that supports multiple pages, such
      * as tiff, the image will be saved as a series of pages.
+     * @default page-height
      */
     const META_PAGE_HEIGHT: string;
 
     /**
      * Does this image have a palette?
+     * @default palette
      */
     const META_PALETTE: string;
 
     /**
      * The name that TIFF read and write operations use for the image's
      * TIFFTAG_PHOTOSHOP data.
+     * @default photoshop-data
      */
     const META_PHOTOSHOP_NAME: string;
 
     /**
      * The JPEG and TIFF read and write operations use this to record the
      * file's preferred unit for resolution.
+     * @default resolution-unit
      */
     const META_RESOLUTION_UNIT: string;
 
@@ -2128,51 +2249,84 @@ export namespace Vips {
      * Images loaded via {@link Image.sequential} have this int field defined. Some
      * operations (eg. {@link Image.shrinkv}) add extra caches if they see it on their
      * input.
+     * @default vips-sequential
      */
     const META_SEQUENTIAL: string;
 
     /**
      * If set, the height of the tiles for this image.
+     * @default tile-height
      */
     const META_TILE_HEIGHT: string;
 
     /**
      * If set, the width of the tiles for this image.
+     * @default tile-width
      */
     const META_TILE_WIDTH: string;
 
     /**
      * The name that read and write operations use for the image's XMP data.
+     * @default xmp-data
      */
     const META_XMP_NAME: string;
 
+    /**
+     * @default 3
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 18
+     */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 4096
+     */
     const PATH_MAX: number;
 
+    /**
+     * @default 3.141593
+     */
     const PI: number;
 
+    /**
+     * @default 4096
+     */
     const SBUF_BUFFER_SIZE: number;
 
+    /**
+     * @default 8500
+     */
     const TARGET_BUFFER_SIZE: number;
 
+    /**
+     * @default 4096
+     */
     const TARGET_CUSTOM_BUFFER_SIZE: number;
 
     /**
      * {@link TRANSFORM_SHIFT} as a multiplicative constant.
+     * @default 1
      */
     const TRANSFORM_SCALE: number;
 
     /**
      * Many of the libvips interpolators use fixed-point arithmetic for coordinate
      * calculation. This is how many bits of precision they use.
+     * @default 6
      */
     const TRANSFORM_SHIFT: number;
 
+    /**
+     * @default 8.18.3
+     */
     const VERSION: string;
 
+    /**
+     * @default 8.18.3
+     */
     const VERSION_STRING: string;
 
     /**
@@ -3150,6 +3304,7 @@ export namespace Vips {
      * 
      * ::: seealso
      *     {@link GLib.set_error}, {@link g_error}.
+     * @throws GLib.Error
      */
     function error_g(): void;
 
@@ -3223,6 +3378,7 @@ export namespace Vips {
      * 
      * ::: seealso
      *     {@link error_g}.
+     * @throws GLib.Error
      */
     function g_error(): void;
 
@@ -4231,43 +4387,43 @@ export namespace Vips {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * must be set in the constructor
          */
-        REQUIRED,
+        REQUIRED = 1,
         /**
          * can only be set in the constructor
          */
-        CONSTRUCT,
+        CONSTRUCT = 2,
         /**
          * can only be set once
          */
-        SET_ONCE,
+        SET_ONCE = 4,
         /**
          * don't do use-before-set checks
          */
-        SET_ALWAYS,
+        SET_ALWAYS = 8,
         /**
          * is an input argument (one we depend on)
          */
-        INPUT,
+        INPUT = 16,
         /**
          * is an output argument (depends on us)
          */
-        OUTPUT,
+        OUTPUT = 32,
         /**
          * just there for back-compat, hide
          */
-        DEPRECATED,
+        DEPRECATED = 64,
         /**
          * the input argument will be modified
          */
-        MODIFY,
+        MODIFY = 128,
         /**
          * the argument is non-hashable
          */
-        NON_HASHABLE,
+        NON_HASHABLE = 256,
     }
 
 
@@ -4289,19 +4445,19 @@ export namespace Vips {
         /**
          * saver supports {@link Vips.Coding.NONE}
          */
-        NONE,
+        NONE = 1,
         /**
          * saver supports {@link Vips.Coding.LABQ}
          */
-        LABQ,
+        LABQ = 2,
         /**
          * saver supports {@link Vips.Coding.RAD}
          */
-        RAD,
+        RAD = 4,
         /**
          * saver supports all coding types
          */
-        ALL,
+        ALL = 7,
     }
 
 
@@ -4334,20 +4490,20 @@ export namespace Vips {
         /**
          * no flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * the image may be read lazilly
          */
-        PARTIAL,
+        PARTIAL = 1,
         /**
          * image pixels are most-significant byte first
          */
-        BIGENDIAN,
+        BIGENDIAN = 2,
         /**
          * top-to-bottom lazy reading
          */
-        SEQUENTIAL,
-        ALL,
+        SEQUENTIAL = 4,
+        ALL = 7,
     }
 
 
@@ -4366,35 +4522,35 @@ export namespace Vips {
         /**
          * don't attach metadata
          */
-        NONE,
+        NONE = 0,
         /**
          * keep Exif metadata
          */
-        EXIF,
+        EXIF = 1,
         /**
          * keep XMP metadata
          */
-        XMP,
+        XMP = 2,
         /**
          * keep IPTC metadata
          */
-        IPTC,
+        IPTC = 4,
         /**
          * keep ICC metadata
          */
-        ICC,
+        ICC = 8,
         /**
          * keep other metadata (e.g. PNG comments)
          */
-        OTHER,
+        OTHER = 16,
         /**
          * keep the gainmap metadata
          */
-        GAINMAP,
+        GAINMAP = 32,
         /**
          * keep all metadata
          */
-        ALL,
+        ALL = 63,
     }
 
 
@@ -4414,27 +4570,27 @@ export namespace Vips {
         /**
          * no filtering
          */
-        NONE,
+        NONE = 8,
         /**
          * difference to the left
          */
-        SUB,
+        SUB = 16,
         /**
          * difference up
          */
-        UP,
+        UP = 32,
         /**
          * average of left and up
          */
-        AVG,
+        AVG = 64,
         /**
          * pick best neighbor predictor automatically
          */
-        PAETH,
+        PAETH = 128,
         /**
          * adaptive
          */
-        ALL,
+        ALL = 248,
     }
 
 
@@ -4456,24 +4612,24 @@ export namespace Vips {
         /**
          * saver supports everything (eg. TIFF)
          */
-        ANY,
+        ANY = 0,
         /**
          * 1 band
          */
-        MONO,
+        MONO = 1,
         /**
          * 3 bands
          */
-        RGB,
+        RGB = 2,
         /**
          * 4 bands
          */
-        CMYK,
+        CMYK = 4,
         /**
          * an extra band
          */
-        ALPHA,
-        ALL,
+        ALPHA = 8,
+        ALL = 15,
     }
 
 
@@ -4525,35 +4681,35 @@ export namespace Vips {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * can work sequentially with a small buffer
          */
-        SEQUENTIAL,
+        SEQUENTIAL = 1,
         /**
          * deprecated, use {@link Vips.OperationFlags.SEQUENTIAL} instead
          */
-        SEQUENTIAL_UNBUFFERED,
+        SEQUENTIAL_UNBUFFERED = 2,
         /**
          * must not be cached
          */
-        NOCACHE,
+        NOCACHE = 4,
         /**
          * a compatibility thing
          */
-        DEPRECATED,
+        DEPRECATED = 8,
         /**
          * not hardened for untrusted input
          */
-        UNTRUSTED,
+        UNTRUSTED = 16,
         /**
          * prevent this operation from running
          */
-        BLOCKED,
+        BLOCKED = 32,
         /**
          * force the operation to run
          */
-        REVALIDATE,
+        REVALIDATE = 64,
     }
 
 
@@ -5409,6 +5565,7 @@ export namespace Vips {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5431,6 +5588,7 @@ export namespace Vips {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5509,7 +5667,7 @@ export namespace Vips {
              * @signal
              * @run-last
              */
-            eval: (arg0: Progress) => void;
+            eval: (progress: Progress) => void;
             /**
              * This signal is emitted when an image or one of it's
              * upstream data sources has been destructively modified. See
@@ -5537,7 +5695,7 @@ export namespace Vips {
              * @signal
              * @run-last
              */
-            posteval: (arg0: Progress) => void;
+            posteval: (progress: Progress) => void;
             /**
              * This signal is emitted once before computation of `image`
              * starts. It's a good place to set up evaluation feedback.
@@ -5547,7 +5705,7 @@ export namespace Vips {
              * @signal
              * @run-last
              */
-            preeval: (arg0: Progress) => void;
+            preeval: (progress: Progress) => void;
             /**
              * This signal is emitted just after an image has been
              * written to. It is
@@ -5557,7 +5715,7 @@ export namespace Vips {
              * @action
              * @run-last
              */
-            written: (arg0: number) => void;
+            written: (result: number) => void;
             "notify::bands": (pspec: GObject.ParamSpec) => void;
             "notify::coding": (pspec: GObject.ParamSpec) => void;
             "notify::demand": (pspec: GObject.ParamSpec) => void;
@@ -8347,7 +8505,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: null, arg1: number) => bigint | number;
+            read: (buffer: null, size: number) => bigint | number;
             /**
              * This signal is emitted to seek the source. The handler should
              * change the source position appropriately.
@@ -8356,7 +8514,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => bigint | number;
+            seek: (offset: number, whence: number) => bigint | number;
             "notify::blob": (pspec: GObject.ParamSpec) => void;
             "notify::descriptor": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -8730,7 +8888,7 @@ export namespace Vips {
              * @signal
              * @action
              */
-            read: (arg0: null, arg1: number) => bigint | number;
+            read: (buffer: null, size: number) => bigint | number;
             /**
              * This signal is emitted to seek the target. The handler should
              * change the target position appropriately.
@@ -8739,13 +8897,13 @@ export namespace Vips {
              * @signal
              * @action
              */
-            seek: (arg0: number, arg1: number) => bigint | number;
+            seek: (offset: number, whence: number) => bigint | number;
             /**
              * This signal is emitted to write bytes to the target.
              * @signal
              * @action
              */
-            write: (arg0: null, arg1: number) => bigint | number;
+            write: (data: null, length: number) => bigint | number;
             "notify::blob": (pspec: GObject.ParamSpec) => void;
             "notify::memory": (pspec: GObject.ParamSpec) => void;
             "notify::descriptor": (pspec: GObject.ParamSpec) => void;

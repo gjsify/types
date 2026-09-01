@@ -98,7 +98,7 @@
       ]
 }
   },
-  "include": ["./ide-49.d.ts","./ide-49-surface.d.ts"]
+  "include": ["./ide-49.d.ts","./ide-49-vocabulary.d.ts"]
 }
 
 

@@ -27,9 +27,9 @@ export namespace Mtk {
      * @gir-type Enum
      */
     enum RoundingStrategy {
-        SHRINK,
-        GROW,
-        ROUND,
+        SHRINK = 0,
+        GROW = 1,
+        ROUND = 2,
     }
 
 

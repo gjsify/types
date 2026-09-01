@@ -29,15 +29,15 @@ export namespace GjsDBus {
             /**
              * @signal
              */
-            "handle-method-call": (arg0: string, arg1: GLib.Variant, arg2: Gio.DBusMethodInvocation) => void;
+            "handle-method-call": (object: string, p0: GLib.Variant, p1: Gio.DBusMethodInvocation) => void;
             /**
              * @signal
              */
-            "handle-property-get": (arg0: string) => GLib.Variant;
+            "handle-property-get": (object: string) => GLib.Variant;
             /**
              * @signal
              */
-            "handle-property-set": (arg0: string, arg1: GLib.Variant) => void;
+            "handle-property-set": (object: string, p0: GLib.Variant) => void;
             "notify::g-interface-info": (pspec: GObject.ParamSpec) => void;
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }

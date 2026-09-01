@@ -31,31 +31,31 @@ export namespace Colord {
         /**
          * An internal error occurred
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * The profile already exists
          */
-        ALREADY_EXISTS,
+        ALREADY_EXISTS = 1,
         /**
          * Authentication failed
          */
-        FAILED_TO_AUTHENTICATE,
+        FAILED_TO_AUTHENTICATE = 2,
         /**
          * Feature not supported
          */
-        NOT_SUPPORTED,
+        NOT_SUPPORTED = 3,
         /**
          * Profile or device not found
          */
-        NOT_FOUND,
+        NOT_FOUND = 4,
         /**
          * One or more of the parameters is invalid
          */
-        INPUT_INVALID,
+        INPUT_INVALID = 5,
         /**
          * The file if invalid
          */
-        FILE_INVALID,
+        FILE_INVALID = 6,
     }
 
 
@@ -68,11 +68,11 @@ export namespace Colord {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Use Planckian below 5000K
          */
-        USE_PLANCKIAN,
+        USE_PLANCKIAN = 1,
     }
 
 
@@ -81,17 +81,17 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum Colorspace {
-        UNKNOWN,
-        XYZ,
-        LAB,
-        LUV,
-        YCBCR,
-        YXY,
-        RGB,
-        GRAY,
-        HSV,
-        CMYK,
-        CMY,
+        UNKNOWN = 0,
+        XYZ = 1,
+        LAB = 2,
+        LUV = 3,
+        YCBCR = 4,
+        YXY = 5,
+        RGB = 6,
+        GRAY = 7,
+        HSV = 8,
+        CMYK = 9,
+        CMY = 10,
     }
 
 
@@ -103,39 +103,39 @@ export namespace Colord {
         /**
          * An internal error occurred
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * The profile does not exist
          */
-        PROFILE_DOES_NOT_EXIST,
+        PROFILE_DOES_NOT_EXIST = 1,
         /**
          * The profile has already been added
          */
-        PROFILE_ALREADY_ADDED,
+        PROFILE_ALREADY_ADDED = 2,
         /**
          * The device is being profiled
          */
-        PROFILING,
+        PROFILING = 3,
         /**
          * Nothing matched the search term
          */
-        NOTHING_MATCHED,
+        NOTHING_MATCHED = 4,
         /**
          * Cound not inhibit device
          */
-        FAILED_TO_INHIBIT,
+        FAILED_TO_INHIBIT = 5,
         /**
          * Cound not uninhibit device
          */
-        FAILED_TO_UNINHIBIT,
+        FAILED_TO_UNINHIBIT = 6,
         /**
          * Authentication failed
          */
-        FAILED_TO_AUTHENTICATE,
+        FAILED_TO_AUTHENTICATE = 7,
         /**
          * The device has been disabled
          */
-        NOT_ENABLED,
+        NOT_ENABLED = 8,
     }
 
 
@@ -144,12 +144,12 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum DeviceKind {
-        UNKNOWN,
-        DISPLAY,
-        SCANNER,
-        PRINTER,
-        CAMERA,
-        WEBCAM,
+        UNKNOWN = 0,
+        DISPLAY = 1,
+        SCANNER = 2,
+        PRINTER = 3,
+        CAMERA = 4,
+        WEBCAM = 5,
     }
 
 
@@ -158,9 +158,9 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum DeviceMode {
-        UNKNOWN,
-        PHYSICAL,
-        VIRTUAL,
+        UNKNOWN = 0,
+        PHYSICAL = 1,
+        VIRTUAL = 2,
     }
 
 
@@ -169,9 +169,9 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum DeviceRelation {
-        UNKNOWN,
-        SOFT,
-        HARD,
+        UNKNOWN = 0,
+        SOFT = 1,
+        HARD = 2,
     }
 
 
@@ -183,39 +183,39 @@ export namespace Colord {
         /**
          * Failed to open file
          */
-        FAILED_TO_OPEN,
+        FAILED_TO_OPEN = 0,
         /**
          * Failed to parse data
          */
-        FAILED_TO_PARSE,
+        FAILED_TO_PARSE = 1,
         /**
          * Locale was invalid
          */
-        INVALID_LOCALE,
+        INVALID_LOCALE = 2,
         /**
          * No data to read
          */
-        NO_DATA,
+        NO_DATA = 3,
         /**
          * Failed to save file
          */
-        FAILED_TO_SAVE,
+        FAILED_TO_SAVE = 4,
         /**
          * Failed to create file
          */
-        FAILED_TO_CREATE,
+        FAILED_TO_CREATE = 5,
         /**
          * Invalid colorspace
          */
-        INVALID_COLORSPACE,
+        INVALID_COLORSPACE = 6,
         /**
          * Corruption has been detected
          */
-        CORRUPTION_DETECTED,
+        CORRUPTION_DETECTED = 7,
         /**
          * Something inside LCMS broke
          */
-        INTERNAL,
+        INTERNAL = 8,
     }
 
 
@@ -228,7 +228,7 @@ export namespace Colord {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
     }
 
 
@@ -240,9 +240,9 @@ export namespace Colord {
         /**
          * the transaction failed for an unknown reason
          */
-        FAILED,
-        INVALID_FORMAT,
-        UNKNOWN_KIND,
+        FAILED = 0,
+        INVALID_FORMAT = 1,
+        UNKNOWN_KIND = 2,
     }
 
 
@@ -251,14 +251,14 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum It8Kind {
-        UNKNOWN,
-        TI1,
-        TI3,
-        CCMX,
-        CAL,
-        CCSS,
-        SPECT,
-        CMF,
+        UNKNOWN = 0,
+        TI1 = 1,
+        TI3 = 2,
+        CCMX = 3,
+        CAL = 4,
+        CCSS = 5,
+        SPECT = 6,
+        CMF = 7,
     }
 
 
@@ -267,10 +267,10 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum ObjectScope {
-        UNKNOWN,
-        NORMAL,
-        TEMP,
-        DISK,
+        UNKNOWN = 0,
+        NORMAL = 1,
+        TEMP = 2,
+        DISK = 3,
     }
 
 
@@ -282,35 +282,35 @@ export namespace Colord {
         /**
          * An internal error occurred
          */
-        INTERNAL,
+        INTERNAL = 0,
         /**
          * The profile is already installed
          */
-        ALREADY_INSTALLED,
+        ALREADY_INSTALLED = 1,
         /**
          * The profile could not be written
          */
-        FAILED_TO_WRITE,
+        FAILED_TO_WRITE = 2,
         /**
          * The profile could not be parsed
          */
-        FAILED_TO_PARSE,
+        FAILED_TO_PARSE = 3,
         /**
          * The profile could not be read
          */
-        FAILED_TO_READ,
+        FAILED_TO_READ = 4,
         /**
          * Authentication failed
          */
-        FAILED_TO_AUTHENTICATE,
+        FAILED_TO_AUTHENTICATE = 5,
         /**
          * One or more of the properties was invalid
          */
-        PROPERTY_INVALID,
+        PROPERTY_INVALID = 6,
         /**
          * Failed to get UID for sender
          */
-        FAILED_TO_GET_UID,
+        FAILED_TO_GET_UID = 7,
     }
 
 
@@ -319,14 +319,14 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum ProfileKind {
-        UNKNOWN,
-        INPUT_DEVICE,
-        DISPLAY_DEVICE,
-        OUTPUT_DEVICE,
-        DEVICELINK,
-        COLORSPACE_CONVERSION,
-        ABSTRACT,
-        NAMED_COLOR,
+        UNKNOWN = 0,
+        INPUT_DEVICE = 1,
+        DISPLAY_DEVICE = 2,
+        OUTPUT_DEVICE = 3,
+        DEVICELINK = 4,
+        COLORSPACE_CONVERSION = 5,
+        ABSTRACT = 6,
+        NAMED_COLOR = 7,
     }
 
 
@@ -338,15 +338,15 @@ export namespace Colord {
         /**
          * Low quality profile, fast
          */
-        LOW,
+        LOW = 0,
         /**
          * Medium quality profile
          */
-        MEDIUM,
+        MEDIUM = 1,
         /**
          * High quality profile, slow
          */
-        HIGH,
+        HIGH = 2,
     }
 
 
@@ -359,51 +359,51 @@ export namespace Colord {
         /**
          * No error is found
          */
-        NONE,
+        NONE = 0,
         /**
          * The description is missing or of zero length
          */
-        DESCRIPTION_MISSING,
+        DESCRIPTION_MISSING = 1,
         /**
          * The copyright is missing or of zero length
          */
-        COPYRIGHT_MISSING,
+        COPYRIGHT_MISSING = 2,
         /**
          * The video card gamma table is not monotonic
          */
-        VCGT_NON_MONOTONIC,
+        VCGT_NON_MONOTONIC = 3,
         /**
          * Lab 100, 0, 0 does not map to RGB 255,255,255
          */
-        SCUM_DOT,
+        SCUM_DOT = 4,
         /**
          * There is significant a/b for gray
          */
-        GRAY_AXIS_INVALID,
+        GRAY_AXIS_INVALID = 5,
         /**
          * The gray ramp is not monotonic
          */
-        GRAY_AXIS_NON_MONOTONIC,
+        GRAY_AXIS_NON_MONOTONIC = 6,
         /**
          * One or more of the primaries are invalid
          */
-        PRIMARIES_INVALID,
+        PRIMARIES_INVALID = 7,
         /**
          * The primaries to not add to give D50 white
          */
-        PRIMARIES_NON_ADDITIVE,
+        PRIMARIES_NON_ADDITIVE = 8,
         /**
          * One or more of the primaries are outside of ROMM RGB
          */
-        PRIMARIES_UNLIKELY,
+        PRIMARIES_UNLIKELY = 9,
         /**
          * RGB 255,255,255 does not return D50
          */
-        WHITEPOINT_INVALID,
+        WHITEPOINT_INVALID = 10,
         /**
          * Whitepoint is outside of usual range
          */
-        WHITEPOINT_UNLIKELY,
+        WHITEPOINT_UNLIKELY = 11,
     }
 
 
@@ -415,23 +415,23 @@ export namespace Colord {
         /**
          * Unknown rendering intent
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Used for photos as it maintains contrast
          */
-        PERCEPTUAL,
+        PERCEPTUAL = 1,
         /**
          * Used for graphic design and named colors
          */
-        RELATIVE_COLORIMETRIC,
+        RELATIVE_COLORIMETRIC = 2,
         /**
          * Used for business charts as it maintains saturation without dithering
          */
-        SATURATION,
+        SATURATION = 3,
         /**
          * Used when a specific color is required
          */
-        ABSOLUTE_COLORIMETRIC,
+        ABSOLUTE_COLORIMETRIC = 4,
     }
 
 
@@ -440,24 +440,24 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum SensorCap {
-        UNKNOWN,
-        LCD,
-        CRT,
-        PRINTER,
-        SPOT,
-        PROJECTOR,
-        AMBIENT,
-        CALIBRATION,
-        LED,
-        PLASMA,
-        LCD_CCFL,
-        LCD_RGB_LED,
-        LCD_WHITE_LED,
-        WIDE_GAMUT_LCD_CCFL,
-        WIDE_GAMUT_LCD_RGB_LED,
-        SPECTRAL,
-        CALIBRATION_DARK,
-        CALIBRATION_IRRADIANCE,
+        UNKNOWN = 0,
+        LCD = 1,
+        CRT = 2,
+        PRINTER = 3,
+        SPOT = 4,
+        PROJECTOR = 5,
+        AMBIENT = 6,
+        CALIBRATION = 7,
+        LED = 8,
+        PLASMA = 9,
+        LCD_CCFL = 10,
+        LCD_RGB_LED = 11,
+        LCD_WHITE_LED = 12,
+        WIDE_GAMUT_LCD_CCFL = 13,
+        WIDE_GAMUT_LCD_RGB_LED = 14,
+        SPECTRAL = 15,
+        CALIBRATION_DARK = 16,
+        CALIBRATION_IRRADIANCE = 17,
     }
 
 
@@ -470,47 +470,47 @@ export namespace Colord {
         /**
          * This action is unsupported on this hardware
          */
-        NO_SUPPORT,
+        NO_SUPPORT = 0,
         /**
          * The sensor provided no data
          */
-        NO_DATA,
+        NO_DATA = 1,
         /**
          * An internal error occurred
          */
-        INTERNAL,
+        INTERNAL = 2,
         /**
          * The sensor is already locked
          */
-        ALREADY_LOCKED,
+        ALREADY_LOCKED = 3,
         /**
          * The sensor is not locked
          */
-        NOT_LOCKED,
+        NOT_LOCKED = 4,
         /**
          * The sensor is already in use
          */
-        IN_USE,
+        IN_USE = 5,
         /**
          * Authentication failed
          */
-        FAILED_TO_AUTHENTICATE,
+        FAILED_TO_AUTHENTICATE = 6,
         /**
          * The sensor needs to be in the calibrate position
          */
-        REQUIRED_POSITION_CALIBRATE,
+        REQUIRED_POSITION_CALIBRATE = 7,
         /**
          * The sensor needs to be in the surface position
          */
-        REQUIRED_POSITION_SURFACE,
+        REQUIRED_POSITION_SURFACE = 8,
         /**
          * The sensor needs dark calibration
          */
-        REQUIRED_DARK_CALIBRATION,
+        REQUIRED_DARK_CALIBRATION = 9,
         /**
          * The sensor needs irradiance calibration
          */
-        REQUIRED_IRRADIANCE_CALIBRATION,
+        REQUIRED_IRRADIANCE_CALIBRATION = 10,
     }
 
 
@@ -519,34 +519,34 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum SensorKind {
-        UNKNOWN,
-        DUMMY,
-        HUEY,
-        COLOR_MUNKI_PHOTO,
-        SPYDER,
-        DTP20,
-        DTP22,
-        DTP41,
-        DTP51,
-        DTP94,
-        SPECTRO_SCAN,
-        I1_PRO,
-        COLORIMTRE_HCFR,
-        I1_DISPLAY3,
-        COLORHUG,
-        SPYDER2,
-        SPYDER3,
-        COLORHUG_PLUS,
-        I1_DISPLAY1,
-        I1_DISPLAY2,
-        DTP92,
-        I1_MONITOR,
-        SPYDER4,
-        COLOR_MUNKI_SMILE,
-        COLORHUG2,
-        SPYDER5,
-        SPARK,
-        SPYDERX,
+        UNKNOWN = 0,
+        DUMMY = 1,
+        HUEY = 2,
+        COLOR_MUNKI_PHOTO = 3,
+        SPYDER = 4,
+        DTP20 = 5,
+        DTP22 = 6,
+        DTP41 = 7,
+        DTP51 = 8,
+        DTP94 = 9,
+        SPECTRO_SCAN = 10,
+        I1_PRO = 11,
+        COLORIMTRE_HCFR = 12,
+        I1_DISPLAY3 = 13,
+        COLORHUG = 14,
+        SPYDER2 = 15,
+        SPYDER3 = 16,
+        COLORHUG_PLUS = 17,
+        I1_DISPLAY1 = 18,
+        I1_DISPLAY2 = 19,
+        DTP92 = 20,
+        I1_MONITOR = 21,
+        SPYDER4 = 22,
+        COLOR_MUNKI_SMILE = 23,
+        COLORHUG2 = 24,
+        SPYDER5 = 25,
+        SPARK = 26,
+        SPYDERX = 27,
     }
 
 
@@ -555,11 +555,11 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum SensorState {
-        UNKNOWN,
-        STARTING,
-        IDLE,
-        MEASURING,
-        BUSY,
+        UNKNOWN = 0,
+        STARTING = 1,
+        IDLE = 2,
+        MEASURING = 3,
+        BUSY = 4,
     }
 
 
@@ -568,211 +568,511 @@ export namespace Colord {
      * @gir-type Enum
      */
     enum StandardSpace {
-        UNKNOWN,
-        SRGB,
-        ADOBE_RGB,
-        PROPHOTO_RGB,
+        UNKNOWN = 0,
+        SRGB = 1,
+        ADOBE_RGB = 2,
+        PROPHOTO_RGB = 3,
     }
 
 
+    /**
+     * @default DaemonVersion
+     */
     const CLIENT_PROPERTY_DAEMON_VERSION: string;
 
+    /**
+     * @default SystemModel
+     */
     const CLIENT_PROPERTY_SYSTEM_MODEL: string;
 
+    /**
+     * @default SystemVendor
+     */
     const CLIENT_PROPERTY_SYSTEM_VENDOR: string;
 
+    /**
+     * @default OutputEdidMd5
+     */
     const DEVICE_METADATA_OUTPUT_EDID_MD5: string;
 
+    /**
+     * @default OutputPriority
+     */
     const DEVICE_METADATA_OUTPUT_PRIORITY: string;
 
+    /**
+     * @default primary
+     */
     const DEVICE_METADATA_OUTPUT_PRIORITY_PRIMARY: string;
 
+    /**
+     * @default secondary
+     */
     const DEVICE_METADATA_OUTPUT_PRIORITY_SECONDARY: string;
 
+    /**
+     * @default OwnerCmdline
+     */
     const DEVICE_METADATA_OWNER_CMDLINE: string;
 
+    /**
+     * @default XRANDR_name
+     */
     const DEVICE_METADATA_XRANDR_NAME: string;
 
+    /**
+     * @default Colorspace
+     */
     const DEVICE_PROPERTY_COLORSPACE: string;
 
+    /**
+     * @default Created
+     */
     const DEVICE_PROPERTY_CREATED: string;
 
+    /**
+     * @default Embedded
+     */
     const DEVICE_PROPERTY_EMBEDDED: string;
 
+    /**
+     * @default Enabled
+     */
     const DEVICE_PROPERTY_ENABLED: string;
 
+    /**
+     * @default Format
+     */
     const DEVICE_PROPERTY_FORMAT: string;
 
+    /**
+     * @default DeviceId
+     */
     const DEVICE_PROPERTY_ID: string;
 
+    /**
+     * @default Kind
+     */
     const DEVICE_PROPERTY_KIND: string;
 
+    /**
+     * @default Metadata
+     */
     const DEVICE_PROPERTY_METADATA: string;
 
+    /**
+     * @default Mode
+     */
     const DEVICE_PROPERTY_MODE: string;
 
+    /**
+     * @default Model
+     */
     const DEVICE_PROPERTY_MODEL: string;
 
+    /**
+     * @default Modified
+     */
     const DEVICE_PROPERTY_MODIFIED: string;
 
+    /**
+     * @default Owner
+     */
     const DEVICE_PROPERTY_OWNER: string;
 
+    /**
+     * @default Profiles
+     */
     const DEVICE_PROPERTY_PROFILES: string;
 
+    /**
+     * @default ProfilingInhibitors
+     */
     const DEVICE_PROPERTY_PROFILING_INHIBITORS: string;
 
+    /**
+     * @default Scope
+     */
     const DEVICE_PROPERTY_SCOPE: string;
 
+    /**
+     * @default Seat
+     */
     const DEVICE_PROPERTY_SEAT: string;
 
+    /**
+     * @default Serial
+     */
     const DEVICE_PROPERTY_SERIAL: string;
 
+    /**
+     * @default Vendor
+     */
     const DEVICE_PROPERTY_VENDOR: string;
 
+    /**
+     * @default 278681
+     */
     const PIXEL_FORMAT_ARGB32: number;
 
+    /**
+     * @default 279705
+     */
     const PIXEL_FORMAT_BGRA32: number;
 
+    /**
+     * @default 393249
+     */
     const PIXEL_FORMAT_CMYK32: number;
 
+    /**
+     * @default 262169
+     */
     const PIXEL_FORMAT_RGB24: number;
 
+    /**
+     * @default 262297
+     */
     const PIXEL_FORMAT_RGBA32: number;
 
+    /**
+     * @default 0
+     */
     const PIXEL_FORMAT_UNKNOWN: number;
 
+    /**
+     * @default ACCURACY_dE76_avg
+     */
     const PROFILE_METADATA_ACCURACY_DE76_AVG: string;
 
+    /**
+     * @default ACCURACY_dE76_max
+     */
     const PROFILE_METADATA_ACCURACY_DE76_MAX: string;
 
+    /**
+     * @default ACCURACY_dE76_rms
+     */
     const PROFILE_METADATA_ACCURACY_DE76_RMS: string;
 
+    /**
+     * @default CMF_binary
+     */
     const PROFILE_METADATA_CMF_BINARY: string;
 
+    /**
+     * @default CMF_product
+     */
     const PROFILE_METADATA_CMF_PRODUCT: string;
 
+    /**
+     * @default CMF_version
+     */
     const PROFILE_METADATA_CMF_VERSION: string;
 
+    /**
+     * @default CONNECTION_type
+     */
     const PROFILE_METADATA_CONNECTION_TYPE: string;
 
+    /**
+     * @default displayport
+     */
     const PROFILE_METADATA_CONNECTION_TYPE_DISPLAYPORT: string;
 
+    /**
+     * @default dvi
+     */
     const PROFILE_METADATA_CONNECTION_TYPE_DVI: string;
 
+    /**
+     * @default hdmi
+     */
     const PROFILE_METADATA_CONNECTION_TYPE_HDMI: string;
 
+    /**
+     * @default internal
+     */
     const PROFILE_METADATA_CONNECTION_TYPE_INTERNAL: string;
 
+    /**
+     * @default vga
+     */
     const PROFILE_METADATA_CONNECTION_TYPE_VGA: string;
 
+    /**
+     * @default DATA_source
+     */
     const PROFILE_METADATA_DATA_SOURCE: string;
 
+    /**
+     * @default calib
+     */
     const PROFILE_METADATA_DATA_SOURCE_CALIB: string;
 
+    /**
+     * @default edid
+     */
     const PROFILE_METADATA_DATA_SOURCE_EDID: string;
 
+    /**
+     * @default standard
+     */
     const PROFILE_METADATA_DATA_SOURCE_STANDARD: string;
 
+    /**
+     * @default test
+     */
     const PROFILE_METADATA_DATA_SOURCE_TEST: string;
 
+    /**
+     * @default EDID_md5
+     */
     const PROFILE_METADATA_EDID_MD5: string;
 
+    /**
+     * @default EDID_mnft
+     */
     const PROFILE_METADATA_EDID_MNFT: string;
 
+    /**
+     * @default EDID_model
+     */
     const PROFILE_METADATA_EDID_MODEL: string;
 
+    /**
+     * @default EDID_serial
+     */
     const PROFILE_METADATA_EDID_SERIAL: string;
 
+    /**
+     * @default EDID_manufacturer
+     */
     const PROFILE_METADATA_EDID_VENDOR: string;
 
+    /**
+     * @default FILE_checksum
+     */
     const PROFILE_METADATA_FILE_CHECKSUM: string;
 
+    /**
+     * @default License
+     */
     const PROFILE_METADATA_LICENSE: string;
 
+    /**
+     * @default MAPPING_device_id
+     */
     const PROFILE_METADATA_MAPPING_DEVICE_ID: string;
 
+    /**
+     * @default MAPPING_format
+     */
     const PROFILE_METADATA_MAPPING_FORMAT: string;
 
+    /**
+     * @default MAPPING_qualifier
+     */
     const PROFILE_METADATA_MAPPING_QUALIFIER: string;
 
+    /**
+     * @default MEASUREMENT_device
+     */
     const PROFILE_METADATA_MEASUREMENT_DEVICE: string;
 
+    /**
+     * @default Quality
+     */
     const PROFILE_METADATA_QUALITY: string;
 
+    /**
+     * @default high
+     */
     const PROFILE_METADATA_QUALITY_HIGH: string;
 
+    /**
+     * @default low
+     */
     const PROFILE_METADATA_QUALITY_LOW: string;
 
+    /**
+     * @default medium
+     */
     const PROFILE_METADATA_QUALITY_MEDIUM: string;
 
+    /**
+     * @default SCREEN_brightness
+     */
     const PROFILE_METADATA_SCREEN_BRIGHTNESS: string;
 
+    /**
+     * @default SCREEN_surface
+     */
     const PROFILE_METADATA_SCREEN_SURFACE: string;
 
+    /**
+     * @default glossy
+     */
     const PROFILE_METADATA_SCREEN_SURFACE_GLOSSY: string;
 
+    /**
+     * @default matte
+     */
     const PROFILE_METADATA_SCREEN_SURFACE_MATTE: string;
 
+    /**
+     * @default STANDARD_space
+     */
     const PROFILE_METADATA_STANDARD_SPACE: string;
 
+    /**
+     * @default Colorspace
+     */
     const PROFILE_PROPERTY_COLORSPACE: string;
 
+    /**
+     * @default Created
+     */
     const PROFILE_PROPERTY_CREATED: string;
 
+    /**
+     * @default Filename
+     */
     const PROFILE_PROPERTY_FILENAME: string;
 
+    /**
+     * @default Format
+     */
     const PROFILE_PROPERTY_FORMAT: string;
 
+    /**
+     * @default HasVcgt
+     */
     const PROFILE_PROPERTY_HAS_VCGT: string;
 
+    /**
+     * @default ProfileId
+     */
     const PROFILE_PROPERTY_ID: string;
 
+    /**
+     * @default IsSystemWide
+     */
     const PROFILE_PROPERTY_IS_SYSTEM_WIDE: string;
 
+    /**
+     * @default Kind
+     */
     const PROFILE_PROPERTY_KIND: string;
 
+    /**
+     * @default Metadata
+     */
     const PROFILE_PROPERTY_METADATA: string;
 
+    /**
+     * @default Owner
+     */
     const PROFILE_PROPERTY_OWNER: string;
 
+    /**
+     * @default Qualifier
+     */
     const PROFILE_PROPERTY_QUALIFIER: string;
 
+    /**
+     * @default Scope
+     */
     const PROFILE_PROPERTY_SCOPE: string;
 
+    /**
+     * @default Title
+     */
     const PROFILE_PROPERTY_TITLE: string;
 
+    /**
+     * @default Warnings
+     */
     const PROFILE_PROPERTY_WARNINGS: string;
 
+    /**
+     * @default ImageAttach
+     */
     const SENSOR_METADATA_IMAGE_ATTACH: string;
 
+    /**
+     * @default ImageCalibrate
+     */
     const SENSOR_METADATA_IMAGE_CALIBRATE: string;
 
+    /**
+     * @default ImageScreen
+     */
     const SENSOR_METADATA_IMAGE_SCREEN: string;
 
+    /**
+     * @default Capabilities
+     */
     const SENSOR_PROPERTY_CAPABILITIES: string;
 
+    /**
+     * @default Embedded
+     */
     const SENSOR_PROPERTY_EMBEDDED: string;
 
+    /**
+     * @default SensorId
+     */
     const SENSOR_PROPERTY_ID: string;
 
+    /**
+     * @default Kind
+     */
     const SENSOR_PROPERTY_KIND: string;
 
+    /**
+     * @default Locked
+     */
     const SENSOR_PROPERTY_LOCKED: string;
 
+    /**
+     * @default Metadata
+     */
     const SENSOR_PROPERTY_METADATA: string;
 
+    /**
+     * @default Mode
+     */
     const SENSOR_PROPERTY_MODE: string;
 
+    /**
+     * @default Model
+     */
     const SENSOR_PROPERTY_MODEL: string;
 
+    /**
+     * @default Native
+     */
     const SENSOR_PROPERTY_NATIVE: string;
 
+    /**
+     * @default Options
+     */
     const SENSOR_PROPERTY_OPTIONS: string;
 
+    /**
+     * @default Serial
+     */
     const SENSOR_PROPERTY_SERIAL: string;
 
+    /**
+     * @default State
+     */
     const SENSOR_PROPERTY_STATE: string;
 
+    /**
+     * @default Vendor
+     */
     const SENSOR_PROPERTY_VENDOR: string;
 
     /**
@@ -887,6 +1187,7 @@ export namespace Colord {
      * NaNs.
      * @param mat the matrix to test
      * @returns `true` if `isfinite()` returns `true` for all values.
+     * @throws GLib.Error
      */
     function mat33_is_finite(mat: Mat3x3): boolean;
 
@@ -1002,33 +1303,33 @@ export namespace Colord {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * Parse any named colors in the profile.
          */
-        NAMED_COLORS,
+        NAMED_COLORS = 1,
         /**
          * Parse all translations in the profile.
          */
-        TRANSLATIONS,
+        TRANSLATIONS = 2,
         /**
          * Parse the metadata in the profile.
          */
-        METADATA,
+        METADATA = 4,
         /**
          * Calculate the profile MD5 if a profile
          * 					ID was not supplied in the profile.
          */
-        FALLBACK_MD5,
+        FALLBACK_MD5 = 8,
         /**
          * Parse the primaries in the profile.
          */
-        PRIMARIES,
+        PRIMARIES = 16,
         /**
          * Load the characterization data from the profile
          */
-        CHARACTERIZATION,
-        ALL,
+        CHARACTERIZATION = 32,
+        ALL = 255,
     }
 
 
@@ -1048,63 +1349,63 @@ export namespace Colord {
              * @since 0.1.0
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * The ::device-changed signal is emitted when a device is changed.
              * @signal
              * @since 0.1.2
              * @run-last
              */
-            "device-changed": (arg0: Device) => void;
+            "device-changed": (device: Device) => void;
             /**
              * The ::device-removed signal is emitted when a device is removed.
              * @signal
              * @since 0.1.0
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
             /**
              * The ::profile-added signal is emitted when a profile is added.
              * @signal
              * @since 0.1.2
              * @run-last
              */
-            "profile-added": (arg0: Profile) => void;
+            "profile-added": (profile: Profile) => void;
             /**
              * The ::profile-changed signal is emitted when a profile is changed.
              * @signal
              * @since 0.1.2
              * @run-last
              */
-            "profile-changed": (arg0: Profile) => void;
+            "profile-changed": (profile: Profile) => void;
             /**
              * The ::profile-added signal is emitted when a profile is removed.
              * @signal
              * @since 0.1.2
              * @run-last
              */
-            "profile-removed": (arg0: Profile) => void;
+            "profile-removed": (profile: Profile) => void;
             /**
              * The ::sensor-added signal is emitted when a sensor is added.
              * @signal
              * @since 0.1.6
              * @run-last
              */
-            "sensor-added": (arg0: Sensor) => void;
+            "sensor-added": (sensor: Sensor) => void;
             /**
              * The ::sensor-changed signal is emitted when a sensor is changed.
              * @signal
              * @since 0.1.6
              * @run-last
              */
-            "sensor-changed": (arg0: Sensor) => void;
+            "sensor-changed": (sensor: Sensor) => void;
             /**
              * The ::sensor-added signal is emitted when a sensor is removed.
              * @signal
              * @since 0.1.6
              * @run-last
              */
-            "sensor-removed": (arg0: Sensor) => void;
+            "sensor-removed": (sensor: Sensor) => void;
             "notify::connected": (pspec: GObject.ParamSpec) => void;
             "notify::daemon-version": (pspec: GObject.ParamSpec) => void;
             "notify::system-model": (pspec: GObject.ParamSpec) => void;
@@ -1329,6 +1630,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.6
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -1340,6 +1642,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1380,6 +1683,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         create_device_finish(res: Gio.AsyncResult): Device;
 
@@ -1394,6 +1698,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          * @since 0.1.2
+         * @throws GLib.Error
          */
         create_device_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Device;
 
@@ -1434,6 +1739,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         create_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -1471,6 +1777,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 1.1.1
+         * @throws GLib.Error
          */
         create_profile_for_icc_finish(res: Gio.AsyncResult): Profile;
 
@@ -1484,6 +1791,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 1.1.1
+         * @throws GLib.Error
          */
         create_profile_for_icc_sync(icc: Icc, scope: ObjectScope, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1498,6 +1806,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.2
+         * @throws GLib.Error
          */
         create_profile_sync(id: string, scope: ObjectScope, properties: { [key: string]: string } | null, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1532,6 +1841,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         delete_device_finish(res: Gio.AsyncResult): boolean;
 
@@ -1544,6 +1854,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the device was deleted
          * @since 0.1.8
+         * @throws GLib.Error
          */
         delete_device_sync(device: Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1578,6 +1889,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         delete_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -1590,6 +1902,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `true` is the profile was deleted
          * @since 0.1.8
+         * @throws GLib.Error
          */
         delete_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1653,6 +1966,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         find_device_by_property_finish(res: Gio.AsyncResult): Device;
 
@@ -1666,6 +1980,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          * @since 0.1.8
+         * @throws GLib.Error
          */
         find_device_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Device;
 
@@ -1674,6 +1989,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Device} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         find_device_finish(res: Gio.AsyncResult): Device;
 
@@ -1686,6 +2002,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Device} object, or `null` for error
          * @since 0.1.0
+         * @throws GLib.Error
          */
         find_device_sync(id: string, cancellable: Gio.Cancellable | null): Device;
 
@@ -1746,6 +2063,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         find_profile_by_filename_finish(res: Gio.AsyncResult): Profile;
 
@@ -1758,6 +2076,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.3
+         * @throws GLib.Error
          */
         find_profile_by_filename_sync(filename: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1795,6 +2114,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.24
+         * @throws GLib.Error
          */
         find_profile_by_property_finish(res: Gio.AsyncResult): Profile;
 
@@ -1808,6 +2128,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.24
+         * @throws GLib.Error
          */
         find_profile_by_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1816,6 +2137,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         find_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -1828,6 +2150,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.0
+         * @throws GLib.Error
          */
         find_profile_sync(id: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -1862,6 +2185,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Sensor} or `null`
          * @since 0.1.26
+         * @throws GLib.Error
          */
         find_sensor_finish(res: Gio.AsyncResult): Sensor;
 
@@ -1874,6 +2198,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A {@link Colord.Sensor} object, or `null` for error
          * @since 0.1.26
+         * @throws GLib.Error
          */
         find_sensor_sync(id: string, cancellable: Gio.Cancellable | null): Sensor;
 
@@ -1945,6 +2270,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the devices
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_devices_by_kind_finish(res: Gio.AsyncResult): Device[];
 
@@ -1957,6 +2283,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_devices_by_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): Device[];
 
@@ -1965,6 +2292,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the devices
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_devices_finish(res: Gio.AsyncResult): Device[];
 
@@ -1976,6 +2304,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Device} objects.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_devices_sync(cancellable: Gio.Cancellable | null): Device[];
 
@@ -2016,6 +2345,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the profiles
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_profiles_finish(res: Gio.AsyncResult): Profile[];
 
@@ -2027,6 +2357,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Profile} objects.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_profiles_sync(cancellable: Gio.Cancellable | null): Profile[];
 
@@ -2058,6 +2389,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the sensors
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_sensors_finish(res: Gio.AsyncResult): Sensor[];
 
@@ -2069,6 +2401,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns an array of 	 {@link Colord.Sensor} objects.
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_sensors_sync(cancellable: Gio.Cancellable | null): Sensor[];
 
@@ -2103,6 +2436,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_standard_space_finish(res: Gio.AsyncResult): Profile;
 
@@ -2115,6 +2449,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.2
+         * @throws GLib.Error
          */
         get_standard_space_sync(standard_space: StandardSpace, cancellable: Gio.Cancellable | null): Profile;
 
@@ -2172,6 +2507,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.12
+         * @throws GLib.Error
          */
         import_profile_finish(res: Gio.AsyncResult): Profile;
 
@@ -2184,6 +2520,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A {@link Colord.Profile} object, or `null` for error
          * @since 0.1.12
+         * @throws GLib.Error
          */
         import_profile_sync(file: Gio.File, cancellable: Gio.Cancellable | null): Profile;
     }
@@ -2538,6 +2875,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         add_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -2551,6 +2889,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.3
+         * @throws GLib.Error
          */
         add_profile_sync(relation: DeviceRelation, profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2587,6 +2926,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -2598,6 +2938,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2755,6 +3096,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_profile_for_qualifiers_finish(res: Gio.AsyncResult): Profile;
 
@@ -2767,6 +3109,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns a {@link Colord.Profile} or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_profile_for_qualifiers_sync(qualifiers: string, cancellable: Gio.Cancellable | null): Profile;
 
@@ -2801,6 +3144,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_profile_relation_finish(res: Gio.AsyncResult): DeviceRelation;
 
@@ -2813,6 +3157,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_profile_relation_sync(profile: Profile, cancellable: Gio.Cancellable | null): DeviceRelation;
 
@@ -2889,6 +3234,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         make_profile_default_finish(res: Gio.AsyncResult): boolean;
 
@@ -2901,6 +3247,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         make_profile_default_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2935,6 +3282,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         profiling_inhibit_finish(res: Gio.AsyncResult): boolean;
 
@@ -2947,6 +3295,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.1
+         * @throws GLib.Error
          */
         profiling_inhibit_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2981,6 +3330,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         profiling_uninhibit_finish(res: Gio.AsyncResult): boolean;
 
@@ -2993,6 +3343,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.1
+         * @throws GLib.Error
          */
         profiling_uninhibit_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3027,6 +3378,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         remove_profile_finish(res: Gio.AsyncResult): boolean;
 
@@ -3039,6 +3391,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.2
+         * @throws GLib.Error
          */
         remove_profile_sync(profile: Profile, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3051,6 +3404,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.1
+         * @throws GLib.Error
          */
         set_colorspace_sync(colorspace: Colorspace, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3085,6 +3439,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.26
+         * @throws GLib.Error
          */
         set_enabled_finish(res: Gio.AsyncResult): boolean;
 
@@ -3097,6 +3452,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.26
+         * @throws GLib.Error
          */
         set_enabled_sync(enabled: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3109,6 +3465,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.0
+         * @throws GLib.Error
          */
         set_kind_sync(kind: DeviceKind, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3121,6 +3478,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.2
+         * @throws GLib.Error
          */
         set_mode_sync(mode: DeviceMode, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3133,6 +3491,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.0
+         * @throws GLib.Error
          */
         set_model_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3183,6 +3542,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         set_property_finish(res: Gio.AsyncResult): boolean;
 
@@ -3196,6 +3556,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3208,6 +3569,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.1
+         * @throws GLib.Error
          */
         set_serial_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3220,6 +3582,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `TRUE` for success, else `FALSE` and `error` is used
          * @since 0.1.1
+         * @throws GLib.Error
          */
         set_vendor_sync(value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3379,6 +3742,7 @@ export namespace Colord {
          * @param edid_data data to parse
          * @returns `true` for success
          * @since 1.1.2
+         * @throws GLib.Error
          */
         parse(edid_data: GLib.Bytes | Uint8Array): boolean;
 
@@ -3555,6 +3919,7 @@ export namespace Colord {
          * Creates a default sRGB ICC profile.
          * @returns `true` for success
          * @since 1.1.2
+         * @throws GLib.Error
          */
         create_default(): boolean;
 
@@ -3563,6 +3928,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @returns `true` for success
          * @since 1.4.5
+         * @throws GLib.Error
          */
         create_default_full(flags: IccLoadFlags): boolean;
 
@@ -3575,6 +3941,7 @@ export namespace Colord {
          * @param white whitepoint value
          * @returns `true` for success
          * @since 0.1.32
+         * @throws GLib.Error
          */
         create_from_edid(gamma_value: number, red: ColorYxy, green: ColorYxy, blue: ColorYxy, white: ColorYxy): boolean;
 
@@ -3583,6 +3950,7 @@ export namespace Colord {
          * @param edid EDID data
          * @returns `true` for success
          * @since 1.1.2
+         * @throws GLib.Error
          */
         create_from_edid_data(edid: Edid): boolean;
 
@@ -3645,6 +4013,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
          * @since 0.1.32
+         * @throws GLib.Error
          */
         get_copyright(locale: string): string;
 
@@ -3662,6 +4031,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
          * @since 0.1.32
+         * @throws GLib.Error
          */
         get_description(locale: string): string;
 
@@ -3702,6 +4072,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
          * @since 0.1.32
+         * @throws GLib.Error
          */
         get_manufacturer(locale: string): string;
 
@@ -3727,6 +4098,7 @@ export namespace Colord {
          * @param locale A locale, e.g. "en_GB.UTF-8" or `null` for the profile default
          * @returns The text as a UTF-8 string, or `null` of the locale is invalid               or the tag does not exist.
          * @since 0.1.32
+         * @throws GLib.Error
          */
         get_model(locale: string): string;
 
@@ -3753,6 +4125,7 @@ export namespace Colord {
          * @param size the size of the curve to generate
          * @returns response data, or `null` for error
          * @since 0.1.34
+         * @throws GLib.Error
          */
         get_response(size: number): ColorRGB[];
 
@@ -3769,6 +4142,7 @@ export namespace Colord {
          * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
          * @returns the data for the tag
          * @since 1.1.6
+         * @throws GLib.Error
          */
         get_tag_data(tag: string): GLib.Bytes;
 
@@ -3776,6 +4150,7 @@ export namespace Colord {
          * Returns the internal tag table. Most users do not need to do this.
          * @returns the tag tables as an array of strings
          * @since 1.1.6
+         * @throws GLib.Error
          */
         get_tags(): string[];
 
@@ -3793,6 +4168,7 @@ export namespace Colord {
          * @param size the desired size of the table data
          * @returns VCGT data, or `null` for error
          * @since 0.1.34
+         * @throws GLib.Error
          */
         get_vcgt(size: number): ColorRGB[];
 
@@ -3824,6 +4200,7 @@ export namespace Colord {
          * @param data binary data
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @since 0.1.32
+         * @throws GLib.Error
          */
         load_data(data: Uint8Array | string, flags: IccLoadFlags): boolean;
 
@@ -3832,6 +4209,7 @@ export namespace Colord {
          * @param fd a file descriptor
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @since 0.1.32
+         * @throws GLib.Error
          */
         load_fd(fd: number, flags: IccLoadFlags): boolean;
 
@@ -3841,6 +4219,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @since 0.1.32
+         * @throws GLib.Error
          */
         load_file(file: Gio.File, flags: IccLoadFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3862,6 +4241,7 @@ export namespace Colord {
          * @param handle a cmsHPROFILE instance
          * @param flags a set of {@link Colord.IccLoadFlags}
          * @since 0.1.33
+         * @throws GLib.Error
          */
         load_handle(handle: null, flags: IccLoadFlags): boolean;
 
@@ -3878,6 +4258,7 @@ export namespace Colord {
          * Return vale: A {@link GLib.Bytes} structure, or `null` for error
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @since 1.0.2
+         * @throws GLib.Error
          */
         save_data(flags: IccSaveFlags): GLib.Bytes;
 
@@ -3888,6 +4269,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @since 1.1.1
+         * @throws GLib.Error
          */
         save_default(flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -3899,6 +4281,7 @@ export namespace Colord {
          * @param flags a set of {@link Colord.IccSaveFlags}
          * @param cancellable A {@link Gio.Cancellable} or `null`
          * @since 0.1.32
+         * @throws GLib.Error
          */
         save_file(file: Gio.File, flags: IccSaveFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4004,6 +4387,7 @@ export namespace Colord {
          * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
          * @param data a variable sized data entry
          * @since 1.1.6
+         * @throws GLib.Error
          */
         set_tag_data(tag: string, data: GLib.Bytes | Uint8Array): boolean;
 
@@ -4013,6 +4397,7 @@ export namespace Colord {
          * Return vale: `true` for success.
          * @param vcgt video card calibration data
          * @since 0.1.34
+         * @throws GLib.Error
          */
         set_vcgt(vcgt: ColorRGB[]): boolean;
 
@@ -4301,6 +4686,7 @@ export namespace Colord {
          * @param data text data
          * @returns `true` if a valid it8 file was read.
          * @since 0.1.20
+         * @throws GLib.Error
          */
         load_from_data(data: string[]): boolean;
 
@@ -4309,6 +4695,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @returns `true` if a valid it8 file was read.
          * @since 0.1.20
+         * @throws GLib.Error
          */
         load_from_file(file: Gio.File): boolean;
 
@@ -4317,6 +4704,7 @@ export namespace Colord {
          * @param data a pointer to returned data
          * @returns `true` if it8 file was saved.
          * @since 0.1.26
+         * @throws GLib.Error
          */
         save_to_data(data: string[]): boolean;
 
@@ -4325,6 +4713,7 @@ export namespace Colord {
          * @param file a {@link Gio.File}
          * @returns `true` if it8 file was saved.
          * @since 0.1.20
+         * @throws GLib.Error
          */
         save_to_file(file: Gio.File): boolean;
 
@@ -4733,6 +5122,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -4744,6 +5134,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4918,6 +5309,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         install_system_wide_finish(res: Gio.AsyncResult): boolean;
 
@@ -4929,6 +5321,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         install_system_wide_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4938,6 +5331,7 @@ export namespace Colord {
          * @param cancellable A {@link Gio.Cancellable}, or `null`
          * @returns A new {@link Colord.Icc} object, or `null` for error
          * @since 0.1.32
+         * @throws GLib.Error
          */
         load_icc(flags: IccLoadFlags, cancellable: Gio.Cancellable | null): Icc;
 
@@ -4988,6 +5382,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         set_property_finish(res: Gio.AsyncResult): boolean;
 
@@ -5001,6 +5396,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         set_property_sync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5293,6 +5689,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if we could connect to to the sensor
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_finish(res: Gio.AsyncResult): boolean;
 
@@ -5304,6 +5701,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5446,6 +5844,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the XYZ reading, or `null`
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_sample_finish(res: Gio.AsyncResult): ColorXYZ;
 
@@ -5458,6 +5857,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
          * @since 0.1.8
+         * @throws GLib.Error
          */
         get_sample_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): ColorXYZ;
 
@@ -5499,6 +5899,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns the XYZ reading, or `null`
          * @since 1.3.1
+         * @throws GLib.Error
          */
         get_spectrum_finish(res: Gio.AsyncResult): Spectrum;
 
@@ -5511,6 +5912,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns the XYZ reading, with ambient levels in Lux encoded in X, or `null` for error.
          * @since 1.3.1
+         * @throws GLib.Error
          */
         get_spectrum_sync(cap: SensorCap, cancellable: Gio.Cancellable | null): Spectrum;
 
@@ -5564,6 +5966,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         lock_finish(res: Gio.AsyncResult): boolean;
 
@@ -5575,6 +5978,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.6
+         * @throws GLib.Error
          */
         lock_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -5616,6 +6020,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.20
+         * @throws GLib.Error
          */
         set_options_finish(res: Gio.AsyncResult): boolean;
 
@@ -5628,6 +6033,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.20
+         * @throws GLib.Error
          */
         set_options_sync(values: { [key: string]: GLib.Variant }, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5661,6 +6067,7 @@ export namespace Colord {
          * @param res the {@link Gio.AsyncResult}
          * @returns success
          * @since 0.1.8
+         * @throws GLib.Error
          */
         unlock_finish(res: Gio.AsyncResult): boolean;
 
@@ -5672,6 +6079,7 @@ export namespace Colord {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns `true` for success, else `false`.
          * @since 0.1.6
+         * @throws GLib.Error
          */
         unlock_sync(cancellable: Gio.Cancellable | null): boolean;
     }

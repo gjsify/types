@@ -43,9 +43,9 @@ export namespace MetaTest {
      * @gir-type Enum
      */
     enum ContextTestType {
-        HEADLESS,
-        VKMS,
-        TEST,
+        HEADLESS = 0,
+        VKMS = 1,
+        TEST = 2,
     }
 
 
@@ -53,9 +53,9 @@ export namespace MetaTest {
      * @gir-type Flags
      */
     enum ContextTestFlag {
-        NONE,
-        TEST_CLIENT,
-        NO_X11,
+        NONE = 0,
+        TEST_CLIENT = 1,
+        NO_X11 = 2,
     }
 
 
@@ -63,8 +63,8 @@ export namespace MetaTest {
      * @gir-type Flags
      */
     enum TestRunFlags {
-        NONE,
-        CAN_SKIP,
+        NONE = 0,
+        CAN_SKIP = 1,
     }
 
 

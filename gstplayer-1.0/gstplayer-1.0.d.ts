@@ -42,20 +42,20 @@ export namespace GstPlayer {
         /**
          * hue or color balance.
          */
-        HUE,
+        HUE = 3,
         /**
          * brightness or black level.
          */
-        BRIGHTNESS,
+        BRIGHTNESS = 0,
         /**
          * color saturation or chroma
          * gain.
          */
-        SATURATION,
+        SATURATION = 2,
         /**
          * contrast or luma gain.
          */
-        CONTRAST,
+        CONTRAST = 1,
     }
 
 
@@ -89,11 +89,11 @@ export namespace GstPlayer {
      * @gir-type Enum
      */
     enum PlayerSnapshotFormat {
-        RAW_NATIVE,
-        RAW_XRGB,
-        RAW_BGRX,
-        JPG,
-        PNG,
+        RAW_NATIVE = 0,
+        RAW_XRGB = 1,
+        RAW_BGRX = 2,
+        JPG = 3,
+        PNG = 4,
     }
 
 
@@ -111,20 +111,20 @@ export namespace GstPlayer {
         /**
          * the player is stopped.
          */
-        STOPPED,
+        STOPPED = 0,
         /**
          * the player is buffering.
          */
-        BUFFERING,
+        BUFFERING = 1,
         /**
          * the player is paused.
          */
-        PAUSED,
+        PAUSED = 2,
         /**
          * the player is currently playing a
          * stream.
          */
-        PLAYING,
+        PLAYING = 3,
     }
 
 
@@ -165,12 +165,12 @@ export namespace GstPlayer {
              * @signal
              * @run-last
              */
-            buffering: (arg0: number) => void;
+            buffering: (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "duration-changed": (arg0: number) => void;
+            "duration-changed": (object: number) => void;
             /**
              * @signal
              * @run-last
@@ -180,12 +180,12 @@ export namespace GstPlayer {
              * @signal
              * @run-last
              */
-            error: (arg0: GLib.Error) => void;
+            error: (object: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "media-info-updated": (arg0: PlayerMediaInfo) => void;
+            "media-info-updated": (object: PlayerMediaInfo) => void;
             /**
              * @signal
              * @run-last
@@ -195,27 +195,27 @@ export namespace GstPlayer {
              * @signal
              * @run-last
              */
-            "position-updated": (arg0: number) => void;
+            "position-updated": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "seek-done": (arg0: number) => void;
+            "seek-done": (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: PlayerState) => void;
+            "state-changed": (object: PlayerState) => void;
             /**
              * @signal
              * @run-last
              */
-            "uri-loaded": (arg0: string) => void;
+            "uri-loaded": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "video-dimensions-changed": (arg0: number, arg1: number) => void;
+            "video-dimensions-changed": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
@@ -225,7 +225,7 @@ export namespace GstPlayer {
              * @signal
              * @run-last
              */
-            warning: (arg0: GLib.Error) => void;
+            warning: (object: GLib.Error) => void;
             "notify::audio-video-offset": (pspec: GObject.ParamSpec) => void;
             "notify::current-audio-track": (pspec: GObject.ParamSpec) => void;
             "notify::current-subtitle-track": (pspec: GObject.ParamSpec) => void;

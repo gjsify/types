@@ -39,17 +39,17 @@ export namespace Nautilus {
          * the operation succeeded, and the extension
          *  is done with the request.
          */
-        COMPLETE,
+        COMPLETE = 0,
         /**
          * the operation failed.
          */
-        FAILED,
+        FAILED = 1,
         /**
          * the extension has begin an async operation.
          *  When this value is returned, the extension must set the handle parameter
          *  and call the callback closure when the operation is complete.
          */
-        IN_PROGRESS,
+        IN_PROGRESS = 2,
     }
 
 

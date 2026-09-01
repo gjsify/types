@@ -240,65 +240,74 @@ export namespace Signon {
         /**
          * The plugin can decide when to show UI.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Force the user to enter the password.
          */
-        REQUEST_PASSWORD,
+        REQUEST_PASSWORD = 1,
         /**
          * No UI elements will be shown to the user.
          */
-        NO_USER_INTERACTION,
+        NO_USER_INTERACTION = 2,
         /**
          * UI elements can be shown to the user only when
          * CAPTCHA-like security measures are required.
          */
-        VALIDATION,
+        VALIDATION = 3,
     }
 
 
     /**
      * Caption for the UI dialog.
+     * @default Caption
      */
     const SESSION_DATA_CAPTION: string;
 
     /**
      * Proxy.
+     * @default NetworkProxy
      */
     const SESSION_DATA_PROXY: string;
 
     /**
      * Realm.
+     * @default Realm
      */
     const SESSION_DATA_REALM: string;
 
     /**
      * Requests the signon plugin to obtain a new token (boolean).
+     * @default RenewToken
      */
     const SESSION_DATA_RENEW_TOKEN: string;
 
     /**
      * Secret.
+     * @default Secret
      */
     const SESSION_DATA_SECRET: string;
 
     /**
      * Network timeout, in milliseconds (uint32).
+     * @default NetworkTimeout
      */
     const SESSION_DATA_TIMEOUT: string;
 
     /**
      * Policy for the signon process.
+     * @default UiPolicy
      */
     const SESSION_DATA_UI_POLICY: string;
 
     /**
      * Username.
+     * @default UserName
      */
     const SESSION_DATA_USERNAME: string;
 
     /**
      * Platform-specific window id (for dialog transiency) - uint32.
+     * @default WindowId
      */
     const SESSION_DATA_WINDOW_ID: string;
 
@@ -319,19 +328,19 @@ export namespace Signon {
         /**
          * an identity that is not an app, web or network
          */
-        OTHER,
+        OTHER = 0,
         /**
          * an application identity
          */
-        APP,
+        APP = 1,
         /**
          * a web identity
          */
-        WEB,
+        WEB = 2,
         /**
          * a network server identity
          */
-        NETWORK,
+        NETWORK = 4,
     }
 
 
@@ -410,6 +419,7 @@ export namespace Signon {
          * Completes an asynchronous request to `signon_auth_service_get_mechanisms()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A list of available mechanisms.
+         * @throws GLib.Error
          */
         get_mechanisms_finish(result: Gio.AsyncResult): string[];
 
@@ -420,6 +430,7 @@ export namespace Signon {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A list of available mechanisms.
          * @since 2.0
+         * @throws GLib.Error
          */
         get_mechanisms_sync(method: string, cancellable: Gio.Cancellable | null): string[];
 
@@ -450,6 +461,7 @@ export namespace Signon {
          * Completes an asynchronous request to `signon_auth_service_get_methods()`.
          * @param result a {@link Gio.AsyncResult}
          * @returns A list of available methods.
+         * @throws GLib.Error
          */
         get_methods_finish(result: Gio.AsyncResult): string[];
 
@@ -459,6 +471,7 @@ export namespace Signon {
          * @param cancellable a {@link Gio.Cancellable} or `null`
          * @returns A list of available methods.
          * @since 2.0
+         * @throws GLib.Error
          */
         get_methods_sync(cancellable: Gio.Cancellable | null): string[];
     }
@@ -473,7 +486,7 @@ export namespace Signon {
              * @action
              * @run-last
              */
-            "state-changed": (arg0: number, arg1: string) => void;
+            "state-changed": (state: number, message: string) => void;
         }
 
         // Constructor properties interface
@@ -577,6 +590,7 @@ export namespace Signon {
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_auth_session_process()`.
          * @returns a {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing the authentication reply.
          * @since 1.8
+         * @throws GLib.Error
          */
         process_finish(res: Gio.AsyncResult): GLib.Variant;
     }
@@ -649,6 +663,7 @@ export namespace Signon {
          * Creates an authentication session for this identity.
          * @param method method.
          * @returns a new {@link Signon.AuthSession}.
+         * @throws GLib.Error
          */
         create_session(method: string): AuthSession;
 
@@ -692,6 +707,7 @@ export namespace Signon {
          * Collect the result of the `signon_identity_query_info()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_query_info()`.
          * @returns the {@link Signon.IdentityInfo} associated with this identity.
+         * @throws GLib.Error
          */
         query_info_finish(res: Gio.AsyncResult): IdentityInfo;
 
@@ -720,6 +736,7 @@ export namespace Signon {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         remove_finish(res: Gio.AsyncResult): boolean;
 
@@ -754,6 +771,7 @@ export namespace Signon {
 
         /**
          * @param res 
+         * @throws GLib.Error
          */
         sign_out_finish(res: Gio.AsyncResult): boolean;
 
@@ -787,6 +805,7 @@ export namespace Signon {
          * Collect the result of the `signon_identity_store_info()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_store_info()`.
          * @returns `true` if the info has been stored, `false` otherwise.
+         * @throws GLib.Error
          */
         store_info_finish(res: Gio.AsyncResult): boolean;
 
@@ -820,6 +839,7 @@ export namespace Signon {
          * Collect the result of the `signon_identity_verify_secret()` operation.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_identity_verify_secret()`.
          * @returns `true` if the secret is valid, `false` otherwise.
+         * @throws GLib.Error
          */
         verify_secret_finish(res: Gio.AsyncResult): boolean;
     }

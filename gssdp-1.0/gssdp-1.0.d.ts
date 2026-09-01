@@ -49,6 +49,7 @@ export namespace GSSDP {
 
     /**
      * SSDP search target for finding all possible resources.
+     * @default ssdp:all
      */
     const ALL_RESOURCES: string;
 
@@ -65,7 +66,7 @@ export namespace GSSDP {
              * @signal
              * @run-last
              */
-            "message-received": (arg0: string, arg1: number, arg2: number, arg3: Soup.MessageHeaders) => void;
+            "message-received": (from_ip: string, from_port: number, type: number, headers: Soup.MessageHeaders) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::host-ip": (pspec: GObject.ParamSpec) => void;
             "notify::interface": (pspec: GObject.ParamSpec) => void;
@@ -329,6 +330,7 @@ export namespace GSSDP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -388,14 +390,14 @@ export namespace GSSDP {
              * @signal
              * @run-last
              */
-            "resource-available": (arg0: string, arg1: string[]) => void;
+            "resource-available": (usn: string, locations: string[]) => void;
             /**
              * The ::resource-unavailable signal is emitted whenever a resource
              * is not available any more.
              * @signal
              * @run-last
              */
-            "resource-unavailable": (arg0: string) => void;
+            "resource-unavailable": (usn: string) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::mx": (pspec: GObject.ParamSpec) => void;

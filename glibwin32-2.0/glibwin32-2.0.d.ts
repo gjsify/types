@@ -30,17 +30,17 @@ export namespace GLibWin32 {
          * The running system can be a workstation or a server edition of
          *  Windows.  The type of the running system is therefore not checked.
          */
-        ANY,
+        ANY = 0,
         /**
          * The running system is a workstation edition of Windows,
          *  such as Windows 7 Professional.
          */
-        WORKSTATION,
+        WORKSTATION = 1,
         /**
          * The running system is a server edition of Windows, such as
          *  Windows Server 2008 R2.
          */
-        SERVER,
+        SERVER = 2,
     }
 
 

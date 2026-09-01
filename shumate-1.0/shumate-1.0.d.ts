@@ -73,31 +73,31 @@ export namespace Shumate {
         /**
          * Unknown geometry type
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * A single point
          */
-        POINT,
+        POINT = 1,
         /**
          * A collection of points
          */
-        MULTIPOINT,
+        MULTIPOINT = 2,
         /**
          * A single line
          */
-        LINESTRING,
+        LINESTRING = 3,
         /**
          * A collection of lines
          */
-        MULTILINESTRING,
+        MULTILINESTRING = 4,
         /**
          * A single polygon
          */
-        POLYGON,
+        POLYGON = 5,
         /**
          * A collection of polygons
          */
-        MULTIPOLYGON,
+        MULTIPOLYGON = 6,
     }
 
 
@@ -116,7 +116,7 @@ export namespace Shumate {
         /**
          * Currently the only supported projection
          */
-        MERCATOR,
+        MERCATOR = 0,
     }
 
 
@@ -135,20 +135,20 @@ export namespace Shumate {
         /**
          * Initial or undefined state
          */
-        NONE,
+        NONE = 0,
         /**
          * Tile is loading
          */
-        LOADING,
+        LOADING = 1,
         /**
          * Tile is loaded but not yet displayed
          */
-        LOADED,
+        LOADED = 2,
         /**
          * Tile loading finished. Also used to inform map sources
          *     that tile loading has been cancelled.
          */
-        DONE,
+        DONE = 3,
     }
 
 
@@ -257,15 +257,15 @@ export namespace Shumate {
         /**
          * Both metric and imperial units
          */
-        BOTH,
+        BOTH = 0,
         /**
          * Metric units (meters)
          */
-        METRIC,
+        METRIC = 1,
         /**
          * Imperial units (miles)
          */
-        IMPERIAL,
+        IMPERIAL = 2,
     }
 
 
@@ -285,114 +285,129 @@ export namespace Shumate {
         /**
          * Null value
          */
-        NULL,
+        NULL = 0,
         /**
          * Number value
          */
-        NUMBER,
+        NUMBER = 1,
         /**
          * Boolean value
          */
-        BOOLEAN,
+        BOOLEAN = 2,
         /**
          * String value
          */
-        STRING,
+        STRING = 3,
         /**
          * Color value
          */
-        COLOR,
+        COLOR = 4,
         /**
          * Array value
          */
-        ARRAY,
+        ARRAY = 5,
         /**
          * Resolved image value
          */
-        RESOLVED_IMAGE,
+        RESOLVED_IMAGE = 6,
         /**
          * Formatted string value
          */
-        FORMATTED_STRING,
+        FORMATTED_STRING = 7,
         /**
          * Collator value
          */
-        COLLATOR,
+        COLLATOR = 8,
     }
 
 
     /**
      * The major version of libshumate (1, if `SHUMATE_VERSION` is 1.2.3)
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * Maps for Free Relief
+     * @default mff-relief
      */
     const MAP_SOURCE_MFF_RELIEF: string;
 
     /**
      * OpenStreetMap Cycle Map
+     * @default osm-cyclemap
      */
     const MAP_SOURCE_OSM_CYCLE_MAP: string;
 
     /**
      * OpenStreetMap Mapnik
+     * @default osm-mapnik
      */
     const MAP_SOURCE_OSM_MAPNIK: string;
 
     /**
      * OpenStreetMap Transport Map
+     * @default osm-transportmap
      */
     const MAP_SOURCE_OSM_TRANSPORT_MAP: string;
 
     /**
      * OpenWeatherMap clouds layer
+     * @default owm-clouds
      */
     const MAP_SOURCE_OWM_CLOUDS: string;
 
     /**
      * OpenWeatherMap precipitation
+     * @default owm-precipitation
      */
     const MAP_SOURCE_OWM_PRECIPITATION: string;
 
     /**
      * OpenWeatherMap sea level pressure
+     * @default owm-pressure
      */
     const MAP_SOURCE_OWM_PRESSURE: string;
 
     /**
      * OpenWeatherMap temperature
+     * @default owm-temperature
      */
     const MAP_SOURCE_OWM_TEMPERATURE: string;
 
     /**
      * OpenWeatherMap wind
+     * @default owm-wind
      */
     const MAP_SOURCE_OWM_WIND: string;
 
     /**
      * The maximal possible latitude value.
+     * @default 85.0511287798
      */
     const MAX_LATITUDE: number;
 
     /**
      * The maximal possible longitude value.
+     * @default 180.0
      */
     const MAX_LONGITUDE: number;
 
     /**
      * The minor version of libshumate (2, if `SHUMATE_VERSION` is 1.2.3)
+     * @default 7
      */
     const MINOR_VERSION: number;
 
     /**
      * The minimal possible latitude value.
+     * @default -85.0511287798
      */
     const MIN_LATITUDE: number;
 
     /**
      * The minimal possible longitude value.
+     * @default -180.0
      */
     const MIN_LONGITUDE: number;
 
@@ -1044,7 +1059,7 @@ export namespace Shumate {
              * @deprecated since 1.1: Use {@link DataSource.start_request} and connect to the notify signals of the resulting {@link DataSourceRequest}.
              * @run-last
              */
-            "received-data": (arg0: number, arg1: number, arg2: number, arg3: GLib.Bytes) => void;
+            "received-data": (x: number, y: number, zoom_level: number, bytes: GLib.Bytes) => void;
             "notify::max-zoom-level": (pspec: GObject.ParamSpec) => void;
             "notify::min-zoom-level": (pspec: GObject.ParamSpec) => void;
         }
@@ -1225,6 +1240,7 @@ export namespace Shumate {
          * `shumate_data_source_get_tile_data_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns The requested data, or `null` if an error occurred
+         * @throws GLib.Error
          */
         get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
 
@@ -1650,6 +1666,7 @@ export namespace Shumate {
          * `etag` will be set to the data's ETag, if present.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns a {@link GLib.Bytes} containing the tile data, or `null` if the tile was not in the cache or an error occurred
+         * @throws GLib.Error
          */
         get_tile_finish(result: Gio.AsyncResult): [GLib.Bytes, string, GLib.DateTime | null];
 
@@ -1692,6 +1709,7 @@ export namespace Shumate {
          * `shumate_file_cache_purge_cache_async()`.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if any tiles were removed, otherwise `false`
+         * @throws GLib.Error
          */
         purge_cache_finish(result: Gio.AsyncResult): boolean;
 
@@ -1741,6 +1759,7 @@ export namespace Shumate {
          * operation.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the operation was successful, otherwise `false`
+         * @throws GLib.Error
          */
         store_tile_finish(result: Gio.AsyncResult): boolean;
     }
@@ -3852,21 +3871,21 @@ export namespace Shumate {
              * @since 1.4
              * @run-last
              */
-            "map-loaded": (arg0: boolean) => void;
+            "map-loaded": (errors: boolean) => void;
             /**
              * Emitted when a symbol in the map layer is clicked.
              * @signal
              * @since 1.1
              * @run-last
              */
-            "symbol-clicked": (arg0: SymbolEvent) => void;
+            "symbol-clicked": (event: SymbolEvent) => void;
             /**
              * Emitted when a tile fails to load.
              * @signal
              * @since 1.4
              * @run-last
              */
-            "tile-error": (arg0: Tile, arg1: GLib.Error) => void;
+            "tile-error": (tile: Tile, error: GLib.Error) => void;
             "notify::map-source": (pspec: GObject.ParamSpec) => void;
             "notify::viewport": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -4212,6 +4231,7 @@ export namespace Shumate {
          * operation.
          * @param result a {@link Gio.AsyncResult} provided to callback
          * @returns `true` if the tile was filled with valid data, otherwise `false`
+         * @throws GLib.Error
          */
         fill_tile_finish(result: Gio.AsyncResult): boolean;
 
@@ -5246,13 +5266,13 @@ export namespace Shumate {
              * @signal
              * @run-last
              */
-            "marker-selected": (arg0: Marker) => void;
+            "marker-selected": (marker: Marker) => void;
             /**
              * Emitted when a marker in the layer is unselected.
              * @signal
              * @run-last
              */
-            "marker-unselected": (arg0: Marker) => void;
+            "marker-unselected": (marker: Marker) => void;
             "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
             "notify::viewport": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -6552,7 +6572,7 @@ export namespace Shumate {
              * @since 1.1
              * @run-last
              */
-            "symbol-clicked": (arg0: SymbolEvent) => void;
+            "symbol-clicked": (event: SymbolEvent) => void;
             "notify::base-map-layer": (pspec: GObject.ParamSpec) => void;
             "notify::compass": (pspec: GObject.ParamSpec) => void;
             "notify::license": (pspec: GObject.ParamSpec) => void;
@@ -8227,6 +8247,7 @@ export namespace Shumate {
          * @param sprites_json a JSON string
          * @returns whether the sprite sheet was loaded successfully
          * @deprecated since 1.1: Use the methods of {@link VectorRenderer.sprite_sheet} instead.
+         * @throws GLib.Error
          */
         set_sprite_sheet_data(sprites_pixbuf: GdkPixbuf.Pixbuf, sprites_json: string): boolean;
 
@@ -8272,6 +8293,7 @@ export namespace Shumate {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -8856,6 +8878,7 @@ export namespace Shumate {
          * @param default_scale the default scale factor of the page
          * @returns `true` if the page was added successfully, `false` otherwise
          * @since 1.1
+         * @throws GLib.Error
          */
         add_page(texture: Gdk.Texture, json: string, default_scale: number): boolean;
 

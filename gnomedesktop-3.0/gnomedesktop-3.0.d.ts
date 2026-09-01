@@ -37,13 +37,16 @@ export namespace GnomeDesktop {
      * @gir-type Enum
      */
     enum DesktopThumbnailSize {
-        NORMAL,
-        LARGE,
-        XLARGE,
-        XXLARGE,
+        NORMAL = 0,
+        LARGE = 1,
+        XLARGE = 2,
+        XXLARGE = 3,
     }
 
 
+    /**
+     * @default 51
+     */
     const DESKTOP_PLATFORM_VERSION: number;
 
     /**
@@ -263,6 +266,7 @@ export namespace GnomeDesktop {
      * created. It solely means that no error condition was hit sending the request.
      * @param res A {@link Gio.AsyncResult}
      * @returns `false` on error, `true` otherwise
+     * @throws GLib.Error
      */
     function start_systemd_scope_finish(res: Gio.AsyncResult): boolean;
 
@@ -433,7 +437,7 @@ export namespace GnomeDesktop {
              * @signal
              * @run-last
              */
-            finished: (arg0: GObject.Object) => void;
+            finished: (window: GObject.Object) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
         }
@@ -697,6 +701,7 @@ export namespace GnomeDesktop {
         /**
          * Tries to load the slide show.
          * @returns `true` if successful
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -732,6 +737,7 @@ export namespace GnomeDesktop {
          * @param res A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
          * @since 50.
+         * @throws GLib.Error
          */
         load_finish(res: Gio.AsyncResult): boolean;
     }
@@ -804,6 +810,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          * @since 2.2
+         * @throws GLib.Error
          */
         create_failed_thumbnail(uri: string, mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -842,6 +849,7 @@ export namespace GnomeDesktop {
         /**
          * @param result the result of the operation
          * @returns TRUE if the operation was correct; FALSE if there was an error Since 43.0
+         * @throws GLib.Error
          */
         create_failed_thumbnail_finish(result: Gio.AsyncResult): boolean;
 
@@ -855,6 +863,7 @@ export namespace GnomeDesktop {
          * @param cancellable a {@link Gio.Cancellable} object or NULL
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise and error will be set
          * @since 42.0
+         * @throws GLib.Error
          */
         generate_thumbnail(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf;
 
@@ -893,6 +902,7 @@ export namespace GnomeDesktop {
         /**
          * @param result the result of the operation
          * @returns thumbnail pixbuf if thumbnailing succeeded, `null` otherwise. Since 43.0
+         * @throws GLib.Error
          */
         generate_thumbnail_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf;
 
@@ -931,6 +941,7 @@ export namespace GnomeDesktop {
          * @param cancellable a GCancellable object, or NULL
          * @returns TRUE if everything went fine; FALSE if there was an error.
          * @since 2.2
+         * @throws GLib.Error
          */
         save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -972,6 +983,7 @@ export namespace GnomeDesktop {
         /**
          * @param result the result of the operation
          * @returns TRUE if the operation was correct; FALSE if there was an error Since 43.0
+         * @throws GLib.Error
          */
         save_thumbnail_finish(result: Gio.AsyncResult): boolean;
     }
@@ -1089,6 +1101,7 @@ export namespace GnomeDesktop {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

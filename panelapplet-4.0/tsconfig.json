@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./panelapplet-4.0.d.ts","./panelapplet-4.0-surface.d.ts"]
+  "include": ["./panelapplet-4.0.d.ts","./panelapplet-4.0-vocabulary.d.ts"]
 }
 
 

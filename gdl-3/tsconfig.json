@@ -62,7 +62,7 @@
       ]
 }
   },
-  "include": ["./gdl-3.d.ts","./gdl-3-surface.d.ts"]
+  "include": ["./gdl-3.d.ts","./gdl-3-vocabulary.d.ts"]
 }
 
 

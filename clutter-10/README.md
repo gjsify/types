@@ -4,82 +4,77 @@
 ![version](https://img.shields.io/npm/v/@girs/clutter-10)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clutter-10)
 
+GJS TypeScript type definitions for Clutter-10 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
 
-GJS TypeScript type definitions for Clutter-10 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.4.0.
+This package contains type declarations only. It ships no runtime code, so it adds
+nothing to your program and works with any bundler or none at all.
 
 ## Install
 
-Install the type definitions with npm:
 ```bash
 npm install @girs/clutter-10
 ```
 
-## Usage
+Any package manager works. The package has no dependencies beyond other `@girs/*`
+type packages.
 
-Import it like any other module:
+## What it exports
+
+| Import | What you get |
+|---|---|
+| `@girs/clutter-10` | the namespace as a default export, plus the ambient and global declarations |
+| `@girs/clutter-10/ambient` | only the `gi://` module declarations |
+| `@girs/clutter-10/import` | only the `imports.gi` declarations |
+| `@girs/clutter-10/clutter-10` | the namespace, without the side-effecting declarations |
+
+## Three ways to import
+
+Which one you use depends on how you write imports elsewhere, not on your toolchain.
+
+### As a module
+
 ```ts
 import Clutter from '@girs/clutter-10';
 ```
 
-### Ambient Modules
+### As `gi://`
 
-[Ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) let you write the same import you would in plain JavaScript.
-For this you need to include `@girs/clutter-10` or `@girs/clutter-10/ambient` in your `tsconfig` or entry point Typescript file:
+GJS resolves `gi://` at runtime. To give it types, reference the package once, either
+from your entry point or from `tsconfig.json`:
 
-`index.ts`:
 ```ts
-import '@girs/clutter-10'
+import '@girs/clutter-10';
 ```
 
-`tsconfig.json`:
 ```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/clutter-10"],
-  ...
-}
+{ "include": ["@girs/clutter-10"] }
 ```
 
-The ambient module now resolves with types:
+Then the runtime spelling type-checks:
 
 ```ts
 import Clutter from 'gi://Clutter?version=10';
 ```
 
-### Global import
+Referencing `@girs/clutter-10/ambient` instead pulls in these declarations
+alone. See [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules).
 
-GJS's global `imports.gi` works too, with types.
-For this you need to include `@girs/clutter-10` or `@girs/clutter-10/import` in your `tsconfig` or entry point Typescript file:
+### As `imports.gi`
 
-`index.ts`:
-```ts
-import '@girs/clutter-10'
-```
-
-`tsconfig.json`:
-```json
-{
-  "compilerOptions": {
-    ...
-  },
-  "include": ["@girs/clutter-10"],
-  ...
-}
-```
-
-That form carries types as well:
+GJS's global object works the same way, via `@girs/clutter-10/import`:
 
 ```ts
 const Clutter = imports.gi.Clutter;
 ```
 
-### Bundle
+## Building
 
-Most projects want a bundler. [esbuild](https://esbuild.github.io/) is the smallest thing that works; the [examples directory](https://github.com/gjsify/ts-for-gir/tree/main/examples) has setups for several others.
+The declarations need no build step. If you bundle, every bundler works, since there is
+no runtime code to resolve. The [examples](https://github.com/gjsify/ts-for-gir/tree/main/examples)
+show working setups for several.
 
 ## Other packages
 
-All existing pre-generated packages can be found on [gjsify/types](https://github.com/gjsify/types).
+Every pre-generated package is at [gjsify/types](https://github.com/gjsify/types).
+
 

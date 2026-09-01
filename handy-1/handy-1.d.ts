@@ -48,11 +48,11 @@ export namespace Handy {
         /**
          * Keep the title centered when possible
          */
-        LOOSE,
+        LOOSE = 0,
         /**
          * Keep the title centered at all cost
          */
-        STRICT,
+        STRICT = 1,
     }
 
 
@@ -74,25 +74,25 @@ export namespace Handy {
          *   {@link StyleManager} returned by {@link StyleManager.get_default}, it's
          *   equivalent to `HDY_COLOR_SCHEME_FORCE_LIGHT`.
          */
-        DEFAULT,
+        DEFAULT = 0,
         /**
          * Always use light appearance.
          */
-        FORCE_LIGHT,
+        FORCE_LIGHT = 1,
         /**
          * Use light appearance unless the system
          *   prefers dark colors.
          */
-        PREFER_LIGHT,
+        PREFER_LIGHT = 2,
         /**
          * Use dark appearance unless the system prefers
          *   light colors.
          */
-        PREFER_DARK,
+        PREFER_DARK = 3,
         /**
          * Always use dark appearance.
          */
-        FORCE_DARK,
+        FORCE_DARK = 4,
     }
 
 
@@ -116,18 +116,18 @@ export namespace Handy {
          *   sliding from or towards the end according to orientation, text direction
          *   and children order
          */
-        OVER,
+        OVER = 0,
         /**
          * Uncover the new page or cover the old page,
          *   sliding from or towards the start according to orientation, text direction
          *   and children order
          */
-        UNDER,
+        UNDER = 1,
         /**
          * Slide from left, right, up or down according
          *   to the orientation, text direction and the children order
          */
-        SLIDE,
+        SLIDE = 2,
     }
 
 
@@ -148,16 +148,16 @@ export namespace Handy {
          * Disable folding, the flap cannot reach narrow
          *   sizes.
          */
-        NEVER,
+        NEVER = 0,
         /**
          * Keep the flap always folded.
          */
-        ALWAYS,
+        ALWAYS = 1,
         /**
          * Fold and unfold the flap based on available
          *   space.
          */
-        AUTO,
+        AUTO = 2,
     }
 
 
@@ -184,18 +184,18 @@ export namespace Handy {
          * The flap slides over the content, which is
          *   dimmed. When folded, only the flap can be swiped.
          */
-        OVER,
+        OVER = 0,
         /**
          * The content slides over the flap. Only the
          *   content can be swiped.
          */
-        UNDER,
+        UNDER = 1,
         /**
          * The flap slides offscreen when hidden,
          *   neither the flap nor content overlap each other. Both widgets can be
          *   swiped.
          */
-        SLIDE,
+        SLIDE = 2,
     }
 
 
@@ -217,17 +217,17 @@ export namespace Handy {
         /**
          * The child is a {@link HeaderBar}
          */
-        HEADER_BAR,
+        HEADER_BAR = 0,
         /**
          * The child is a
          *   {@link Gtk.HeaderBar}
          */
-        GTK_HEADER_BAR,
+        GTK_HEADER_BAR = 1,
         /**
          * The child is a
          *   {@link HeaderGroup}
          */
-        HEADER_GROUP,
+        HEADER_GROUP = 2,
     }
 
 
@@ -251,18 +251,18 @@ export namespace Handy {
          *   page, sliding from or towards the end according to orientation, text
          *   direction and children order
          */
-        OVER,
+        OVER = 0,
         /**
          * Uncover the new page or cover the old
          *   page, sliding from or towards the start according to orientation, text
          *   direction and children order
          */
-        UNDER,
+        UNDER = 1,
         /**
          * Slide from left, right, up or down
          *   according to the orientation, text direction and the children order
          */
-        SLIDE,
+        SLIDE = 2,
     }
 
 
@@ -283,12 +283,12 @@ export namespace Handy {
          * Corresponds to start or top, depending on
          *   orientation and text direction
          */
-        BACK,
+        BACK = 0,
         /**
          * Corresponds to end or bottom, depending on
          *   orientation and text direction
          */
-        FORWARD,
+        FORWARD = 1,
     }
 
 
@@ -308,11 +308,11 @@ export namespace Handy {
         /**
          * No transition
          */
-        NONE,
+        NONE = 0,
         /**
          * A cross-fade
          */
-        CROSSFADE,
+        CROSSFADE = 1,
     }
 
 
@@ -332,15 +332,15 @@ export namespace Handy {
         /**
          * Automatically adapt to the best fitting mode
          */
-        AUTO,
+        AUTO = 0,
         /**
          * Force the narrow mode
          */
-        NARROW,
+        NARROW = 1,
         /**
          * Force the wide mode
          */
-        WIDE,
+        WIDE = 2,
     }
 
 
@@ -1892,7 +1892,7 @@ export namespace Handy {
              * @since 1.0
              * @run-last
              */
-            "page-changed": (arg0: number) => void;
+            "page-changed": (index: number) => void;
             "notify::allow-long-swipes": (pspec: GObject.ParamSpec) => void;
             "notify::allow-mouse-drag": (pspec: GObject.ParamSpec) => void;
             "notify::allow-scroll-wheel": (pspec: GObject.ParamSpec) => void;
@@ -9781,21 +9781,21 @@ export namespace Handy {
              * @since 1.0
              * @run-first
              */
-            "begin-swipe": (arg0: NavigationDirection, arg1: boolean) => void;
+            "begin-swipe": (direction: NavigationDirection, direct: boolean) => void;
             /**
              * This signal is emitted as soon as the gesture has stopped.
              * @signal
              * @since 1.0
              * @run-first
              */
-            "end-swipe": (arg0: number, arg1: number) => void;
+            "end-swipe": (duration: number, to: number) => void;
             /**
              * This signal is emitted every time the progress value changes.
              * @signal
              * @since 1.0
              * @run-first
              */
-            "update-swipe": (arg0: number) => void;
+            "update-swipe": (progress: number) => void;
             "notify::allow-long-swipes": (pspec: GObject.ParamSpec) => void;
             "notify::allow-mouse-drag": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;
@@ -10055,7 +10055,7 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "extra-drag-data-received": (arg0: TabPage, arg1: Gdk.DragContext, arg2: Gtk.SelectionData, arg3: number, arg4: number) => void;
+            "extra-drag-data-received": (page: TabPage, context: Gdk.DragContext, data: Gtk.SelectionData, info: number, time: number) => void;
             "notify::autohide": (pspec: GObject.ParamSpec) => void;
             "notify::end-action-widget": (pspec: GObject.ParamSpec) => void;
             "notify::expand-tabs": (pspec: GObject.ParamSpec) => void;
@@ -10881,7 +10881,7 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "close-page": (arg0: TabPage) => boolean | void;
+            "close-page": (page: TabPage) => boolean | void;
             /**
              * Emitted when a tab should be transferred into a new window.
              * 
@@ -10903,7 +10903,7 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "indicator-activated": (arg0: TabPage) => void;
+            "indicator-activated": (page: TabPage) => void;
             /**
              * Emitted when a page has been created or transferred to the view.
              * 
@@ -10913,7 +10913,7 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "page-attached": (arg0: TabPage, arg1: number) => void;
+            "page-attached": (page: TabPage, position: number) => void;
             /**
              * Emitted when a page has been removed or transferred to another view.
              * 
@@ -10928,14 +10928,14 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "page-detached": (arg0: TabPage, arg1: number) => void;
+            "page-detached": (page: TabPage, position: number) => void;
             /**
              * This signal is emitted after `page` has been reordered to `position`.
              * @signal
              * @since 1.2
              * @run-last
              */
-            "page-reordered": (arg0: TabPage, arg1: number) => void;
+            "page-reordered": (page: TabPage, position: number) => void;
             /**
              * Emitted when a context menu is opened or closed for `page`.
              * 
@@ -10947,7 +10947,7 @@ export namespace Handy {
              * @since 1.2
              * @run-last
              */
-            "setup-menu": (arg0: TabPage) => void;
+            "setup-menu": (page: TabPage) => void;
             "notify::default-icon": (pspec: GObject.ParamSpec) => void;
             "notify::is-transferring-page": (pspec: GObject.ParamSpec) => void;
             "notify::menu-model": (pspec: GObject.ParamSpec) => void;

@@ -68,15 +68,15 @@ export namespace MediaArt {
         /**
          * No media art is available
          */
-        NONE,
+        NONE = 0,
         /**
          * Media art is an album
          */
-        ALBUM,
+        ALBUM = 1,
         /**
          * Media art is a movie or video
          */
-        VIDEO,
+        VIDEO = 2,
     }
 
 
@@ -90,6 +90,7 @@ export namespace MediaArt {
      * @param target Output file name (not URI) to save converted content to
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
+     * @throws GLib.Error
      */
     function buffer_to_jpeg(buffer: number, len: bigint | number, buffer_mime: string, target: string): boolean;
 
@@ -106,6 +107,7 @@ export namespace MediaArt {
      * @param target Output file name (not URI) to save converted content to
      * @returns `true` if conversion was successful, otherwise `false` is returned if `error` is set.
      * @since 0.1.0
+     * @throws GLib.Error
      */
     function file_to_jpeg(filename: string, target: string): boolean;
 
@@ -214,11 +216,11 @@ export namespace MediaArt {
         /**
          * Normal operation.
          */
-        NONE,
+        NONE = 0,
         /**
          * Force media art to be re-saved to disk even if it already exists and the related file or URI has the same modified time (mtime).
          */
-        FORCE,
+        FORCE = 1,
     }
 
 
@@ -286,6 +288,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          * @since 0.5.0
+         * @throws GLib.Error
          */
         buffer(type: Type, flags: ProcessFlags, related_file: Gio.File, buffer: Uint8Array | string | null, mime: string, artist: string | null, title: string | null): boolean;
 
@@ -324,6 +327,7 @@ export namespace MediaArt {
          * @param title The title for `file` or `null`
          * @returns `true` if `file` could be processed or `false` if `error` is set.
          * @since 0.3.0
+         * @throws GLib.Error
          */
         file(type: Type, flags: ProcessFlags, file: Gio.File, artist: string | null, title: string | null): boolean;
 
@@ -338,6 +342,7 @@ export namespace MediaArt {
          * @param title The title for `uri` or `null`
          * @returns `true` if `uri` could be processed or `false` if `error` is set.
          * @since 0.5.0
+         * @throws GLib.Error
          */
         uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null): boolean;
 
@@ -383,6 +388,7 @@ export namespace MediaArt {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 

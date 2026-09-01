@@ -52,16 +52,16 @@ export namespace ClutterX11 {
          * The event was not handled, continues the
          *   processing
          */
-        CONTINUE,
+        CONTINUE = 0,
         /**
          * Native event translated into a Clutter
          *   event, stops the processing
          */
-        TRANSLATE,
+        TRANSLATE = 1,
         /**
          * Remove the event, stops the processing
          */
-        REMOVE,
+        REMOVE = 2,
     }
 
 
@@ -299,7 +299,7 @@ export namespace ClutterX11 {
              * @since 1.2
              * @run-first
              */
-            "queue-damage-redraw": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "queue-damage-redraw": (x: number, y: number, width: number, height: number) => void;
             /**
              * The ::update-area signal is emitted to ask the texture to update its
              * content from its source pixmap.
@@ -307,7 +307,7 @@ export namespace ClutterX11 {
              * @since 0.8
              * @run-first
              */
-            "update-area": (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            "update-area": (x: number, y: number, width: number, height: number) => void;
             "notify::automatic-updates": (pspec: GObject.ParamSpec) => void;
             "notify::destroyed": (pspec: GObject.ParamSpec) => void;
             "notify::pixmap": (pspec: GObject.ParamSpec) => void;

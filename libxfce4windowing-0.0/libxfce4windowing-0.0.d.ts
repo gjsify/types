@@ -43,11 +43,11 @@ export namespace Libxfce4windowing {
         /**
          * a regular application
          */
-        APPLICATION,
+        APPLICATION = 1,
         /**
          * a pager or other user-controlled desktop component
          */
-        PAGER,
+        PAGER = 2,
     }
 
 
@@ -68,19 +68,19 @@ export namespace Libxfce4windowing {
         /**
          * upward from the current location
          */
-        UP,
+        UP = 0,
         /**
          * downward from the current location
          */
-        DOWN,
+        DOWN = 1,
         /**
          * to the left of the current location
          */
-        LEFT,
+        LEFT = 2,
         /**
          * to the right of the current location
          */
-        RIGHT,
+        RIGHT = 3,
     }
 
 
@@ -124,27 +124,27 @@ export namespace Libxfce4windowing {
         /**
          * unknown subpixel ordering.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * no subpixel geometry.
          */
-        NONE,
+        NONE = 1,
         /**
          * horizontal RGB.
          */
-        HRGB,
+        HRGB = 2,
         /**
          * horizontal BGR.
          */
-        HBGR,
+        HBGR = 3,
         /**
          * vertical RGB.
          */
-        VRGB,
+        VRGB = 4,
         /**
          * vertical BGR.
          */
-        VBGR,
+        VBGR = 5,
     }
 
 
@@ -216,36 +216,36 @@ export namespace Libxfce4windowing {
         /**
          * window is a regular window.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * window is responsible for drawing the desktop.
          */
-        DESKTOP,
+        DESKTOP = 1,
         /**
          * window is a dock or panel.
          */
-        DOCK,
+        DOCK = 2,
         /**
          * window is a temporary dialog, like an error alert.
          */
-        DIALOG,
+        DIALOG = 3,
         /**
          * window is a detached toolbar.
          */
-        TOOLBAR,
+        TOOLBAR = 4,
         /**
          * window is a popup menu.
          */
-        MENU,
+        MENU = 5,
         /**
          * window is a utility menu, like a tool picker or
          *                           color palette.
          */
-        UTILITY,
+        UTILITY = 6,
         /**
          * window is an application splash screen.
          */
-        SPLASHSCREEN,
+        SPLASHSCREEN = 7,
     }
 
 
@@ -259,34 +259,37 @@ export namespace Libxfce4windowing {
          * the application is running under an unknown
          *                         or unsupported windowing system.
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the application is running under an X11 server.
          */
-        X11,
+        X11 = 1,
         /**
          * the application is running under a Wayland
          *                         comopositor.
          */
-        WAYLAND,
+        WAYLAND = 2,
     }
 
 
     /**
      * A macro that evaluates to the major version of libxfce4windowing, in a format
      * that can be used by the C pre-processor.
+     * @default 4
      */
     const MAJOR_VERSION: number;
 
     /**
      * A macro that evaluates to the micro version of libxfce4windowing, in a format
      * that can be used by the C pre-processor.
+     * @default 7
      */
     const MICRO_VERSION: number;
 
     /**
      * A macro that evaluates to the minor version of libxfce4windowing, in a format
      * that can be used by the C pre-processor.
+     * @default 20
      */
     const MINOR_VERSION: number;
 
@@ -353,73 +356,73 @@ export namespace Libxfce4windowing {
         /**
          * window has no capabilities.
          */
-        NONE,
+        NONE = 0,
         /**
          * window can be minimized/hidden.
          */
-        CAN_MINIMIZE,
+        CAN_MINIMIZE = 1,
         /**
          * window can be unminimized/unhidden.
          */
-        CAN_UNMINIMIZE,
+        CAN_UNMINIMIZE = 2,
         /**
          * window can be maximized.
          */
-        CAN_MAXIMIZE,
+        CAN_MAXIMIZE = 4,
         /**
          * window can be unmaximized/restored.
          */
-        CAN_UNMAXIMIZE,
+        CAN_UNMAXIMIZE = 8,
         /**
          * window can be set fullscreen.
          */
-        CAN_FULLSCREEN,
+        CAN_FULLSCREEN = 16,
         /**
          * window can be unset fullscreen.
          */
-        CAN_UNFULLSCREEN,
+        CAN_UNFULLSCREEN = 32,
         /**
          * window can be shaded.
          */
-        CAN_SHADE,
+        CAN_SHADE = 64,
         /**
          * window can be unshaded.
          */
-        CAN_UNSHADE,
+        CAN_UNSHADE = 128,
         /**
          * window can be moved.
          */
-        CAN_MOVE,
+        CAN_MOVE = 256,
         /**
          * window can be resized.
          */
-        CAN_RESIZE,
+        CAN_RESIZE = 512,
         /**
          * window can be placed above others.
          */
-        CAN_PLACE_ABOVE,
+        CAN_PLACE_ABOVE = 1024,
         /**
          * always above window can be
          *                                             returned to the normal stacking
          *                                             order.
          */
-        CAN_UNPLACE_ABOVE,
+        CAN_UNPLACE_ABOVE = 2048,
         /**
          * window can be placed below others.
          */
-        CAN_PLACE_BELOW,
+        CAN_PLACE_BELOW = 4096,
         /**
          * always below window can be
          *                                             returned to the normal stacking
          *                                             order.
          */
-        CAN_UNPLACE_BELOW,
+        CAN_UNPLACE_BELOW = 8192,
         /**
          * window can be moved to a
          *                                                different workspace or can be
          *                                                pinned and unpinned.
          */
-        CAN_CHANGE_WORKSPACE,
+        CAN_CHANGE_WORKSPACE = 16384,
     }
 
 
@@ -438,52 +441,52 @@ export namespace Libxfce4windowing {
         /**
          * window has no state bits set.
          */
-        NONE,
+        NONE = 0,
         /**
          * window is active (and often has the keyboard
          *                           focus).
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * window is minimized/hidden.
          */
-        MINIMIZED,
+        MINIMIZED = 2,
         /**
          * window is maximized.
          */
-        MAXIMIZED,
+        MAXIMIZED = 4,
         /**
          * window is filling the entire screen.
          */
-        FULLSCREEN,
+        FULLSCREEN = 8,
         /**
          * window should not be shown in pagers.
          */
-        SKIP_PAGER,
+        SKIP_PAGER = 16,
         /**
          * window should not be shown in task lists.
          */
-        SKIP_TASKLIST,
+        SKIP_TASKLIST = 32,
         /**
          * window is shown on al workspaces.
          */
-        PINNED,
+        PINNED = 64,
         /**
          * window is hidden, except for its title bar.
          */
-        SHADED,
+        SHADED = 128,
         /**
          * window is always shown above other windows.
          */
-        ABOVE,
+        ABOVE = 256,
         /**
          * window is always shown below other windows.
          */
-        BELOW,
+        BELOW = 512,
         /**
          * window is attempting to get the user's attention.
          */
-        URGENT,
+        URGENT = 1024,
     }
 
 
@@ -503,15 +506,15 @@ export namespace Libxfce4windowing {
         /**
          * workspace has no capabilities.
          */
-        NONE,
+        NONE = 0,
         /**
          * workspace can be activated.
          */
-        ACTIVATE,
+        ACTIVATE = 1,
         /**
          * workspace can be removed.
          */
-        REMOVE,
+        REMOVE = 4,
     }
 
 
@@ -531,23 +534,23 @@ export namespace Libxfce4windowing {
         /**
          * group has no capabilities.
          */
-        NONE,
+        NONE = 0,
         /**
          * new workspaces can be
          *                                                     created in this group.
          */
-        CREATE_WORKSPACE,
+        CREATE_WORKSPACE = 1,
         /**
          * the viewport coordinates
          *                                                  for this group can be
          *                                                  changed.
          */
-        MOVE_VIEWPORT,
+        MOVE_VIEWPORT = 2,
         /**
          * the number of rows and columns
          *                                               for this group can be changed.
          */
-        SET_LAYOUT,
+        SET_LAYOUT = 4,
     }
 
 
@@ -566,25 +569,25 @@ export namespace Libxfce4windowing {
         /**
          * workspace has no state information.
          */
-        NONE,
+        NONE = 0,
         /**
          * workspace is the active workspace in its group.
          */
-        ACTIVE,
+        ACTIVE = 1,
         /**
          * workspace contains a window that is requesting
          *                              attention.
          */
-        URGENT,
+        URGENT = 2,
         /**
          * workspace should be hidden from pagers or other
          *                              UI elements.
          */
-        HIDDEN,
+        HIDDEN = 4,
         /**
          * workspace has a valid, visible viewport.
          */
-        VIRTUAL,
+        VIRTUAL = 8,
     }
 
 
@@ -1213,21 +1216,21 @@ export namespace Libxfce4windowing {
              * @signal
              * @run-last
              */
-            "active-window-changed": (arg0: Window) => void;
+            "active-window-changed": (window: Window) => void;
             /**
              * Emitted when a monitor is added to `screen`.
              * @signal
              * @since 4.19.4
              * @run-last
              */
-            "monitor-added": (arg0: Monitor) => void;
+            "monitor-added": (monitor: Monitor) => void;
             /**
              * Emitted when a monitor is removed from `screen`.
              * @signal
              * @since 4.19.4
              * @run-last
              */
-            "monitor-removed": (arg0: Monitor) => void;
+            "monitor-removed": (monitor: Monitor) => void;
             /**
              * Emitted when one of the following has changed about the monitors
              * attached to `screen`:
@@ -1252,19 +1255,19 @@ export namespace Libxfce4windowing {
              * @signal
              * @run-last
              */
-            "seat-added": (arg0: Seat) => void;
+            "seat-added": (seat: Seat) => void;
             /**
              * Emitted when `seat` has been added to `screen`.
              * @signal
              * @run-last
              */
-            "seat-removed": (arg0: Seat) => void;
+            "seat-removed": (seat: Seat) => void;
             /**
              * Emitted when a window is closed on the screen.
              * @signal
              * @run-last
              */
-            "window-closed": (arg0: Window) => void;
+            "window-closed": (window: Window) => void;
             /**
              * Emitted when the window manager on `screen` has changed.
              * 
@@ -1278,7 +1281,7 @@ export namespace Libxfce4windowing {
              * @signal
              * @run-last
              */
-            "window-opened": (arg0: Window) => void;
+            "window-opened": (window: Window) => void;
             /**
              * Emitted when the order of the windows as displayed on the screen has
              * changed.  Windows, in stacking order, can be retrieved via
@@ -1554,7 +1557,7 @@ export namespace Libxfce4windowing {
              * @signal
              * @run-last
              */
-            "capabilities-changed": (arg0: WindowCapabilities, arg1: WindowCapabilities) => void;
+            "capabilities-changed": (changed_mask: WindowCapabilities, new_state: WindowCapabilities) => void;
             /**
              * Emitted when at least one of the `window`'s class ids changes.
              * @signal
@@ -1591,13 +1594,13 @@ export namespace Libxfce4windowing {
              * @signal
              * @run-last
              */
-            "state-changed": (arg0: WindowState, arg1: WindowState) => void;
+            "state-changed": (changed_mask: WindowState, new_state: WindowState) => void;
             /**
              * Emitted when `window`'s type changes.
              * @signal
              * @run-last
              */
-            "type-changed": (arg0: WindowType) => void;
+            "type-changed": (old_type: WindowType) => void;
             /**
              * Emitted when `window` is moved to a different worksapce.
              * @signal
@@ -1740,11 +1743,13 @@ export namespace Libxfce4windowing {
         /**
          * @param seat 
          * @param event_timestamp 
+         * @throws GLib.Error
          */
         activate(seat: Seat, event_timestamp: bigint | number): boolean;
 
         /**
          * @param event_timestamp 
+         * @throws GLib.Error
          */
         close(event_timestamp: bigint | number): boolean;
 
@@ -1871,67 +1876,85 @@ export namespace Libxfce4windowing {
 
         /**
          * @param workspace 
+         * @throws GLib.Error
          */
         move_to_workspace(workspace: Workspace): boolean;
 
         /**
          * @param is_above 
+         * @throws GLib.Error
          */
         set_above(is_above: boolean): boolean;
 
         /**
          * @param is_below 
+         * @throws GLib.Error
          */
         set_below(is_below: boolean): boolean;
 
         /**
          * @param relative_to 
          * @param rect 
+         * @throws GLib.Error
          */
         set_button_geometry(relative_to: Gdk.Window, rect: Gdk.Rectangle): boolean;
 
         /**
          * @param is_fullscreen 
+         * @throws GLib.Error
          */
         set_fullscreen(is_fullscreen: boolean): boolean;
 
         /**
          * @param rect 
+         * @throws GLib.Error
          */
         set_geometry(rect: Gdk.Rectangle): boolean;
 
         /**
          * @param is_maximized 
+         * @throws GLib.Error
          */
         set_maximized(is_maximized: boolean): boolean;
 
         /**
          * @param is_minimized 
+         * @throws GLib.Error
          */
         set_minimized(is_minimized: boolean): boolean;
 
         /**
          * @param is_pinned 
+         * @throws GLib.Error
          */
         set_pinned(is_pinned: boolean): boolean;
 
         /**
          * @param is_shaded 
+         * @throws GLib.Error
          */
         set_shaded(is_shaded: boolean): boolean;
 
         /**
          * @param is_skip_pager 
+         * @throws GLib.Error
          */
         set_skip_pager(is_skip_pager: boolean): boolean;
 
         /**
          * @param is_skip_tasklist 
+         * @throws GLib.Error
          */
         set_skip_tasklist(is_skip_tasklist: boolean): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         start_move(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         start_resize(): boolean;
 
         /**
@@ -2152,6 +2175,7 @@ export namespace Libxfce4windowing {
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
          * @returns `true` if workspace activation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
+         * @throws GLib.Error
          */
         activate(): boolean;
 
@@ -2162,6 +2186,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param group an {@link Libxfce4windowing.WorkspaceGroup}.
          * @returns `true` if workspace assignment succeeded, `false` otherwise. If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free()`.
+         * @throws GLib.Error
          */
         assign_to_workspace_group(group: WorkspaceGroup): boolean;
 
@@ -2252,6 +2277,7 @@ export namespace Libxfce4windowing {
          * On failure, `error` (if provided) will be set to a description of the error
          * that occurred.
          * @returns `true` if workspace removal succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
+         * @throws GLib.Error
          */
         remove(): boolean;
     }
@@ -2336,6 +2362,7 @@ export namespace Libxfce4windowing {
          * that occurred.
          * @param name a name for the new workspace.
          * @returns `true` if workspace creation succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
+         * @throws GLib.Error
          */
         create_workspace(name: string): boolean;
 
@@ -2383,6 +2410,7 @@ export namespace Libxfce4windowing {
          * @param x a coordinate in the horizontal direction.
          * @param y a coordinate in the vertical direction.
          * @returns `true` if moving the workspace group succeeded, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
+         * @throws GLib.Error
          */
         move_viewport(x: number, y: number): boolean;
 
@@ -2397,6 +2425,7 @@ export namespace Libxfce4windowing {
          * @param rows the new numbers of rows.
          * @param columns the new number of columns.
          * @returns `true` if changing the layout of `group` succeede, `false` otherwise.  If `false`, and `error` is non-`null`, an error will be returned that must be freed using `g_error_free`().
+         * @throws GLib.Error
          */
         set_layout(rows: number, columns: number): boolean;
     }

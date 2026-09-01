@@ -49,15 +49,15 @@ export namespace Libxfce4panel {
         /**
          * Horizontal panel and plugins
          */
-        HORIZONTAL,
+        HORIZONTAL = 0,
         /**
          * Vertical rotated panel and plugins
          */
-        VERTICAL,
+        VERTICAL = 1,
         /**
          * Vertical panel with horizontal plugins
          */
-        DESKBAR,
+        DESKBAR = 2,
     }
 
 
@@ -80,69 +80,70 @@ export namespace Libxfce4panel {
         /**
          * No position has been set.
          */
-        NONE,
+        NONE = 0,
         /**
          * North West Horizontal
          */
-        NW_H,
+        NW_H = 1,
         /**
          * North
          */
-        N,
+        N = 2,
         /**
          * North East Horizontal
          */
-        NE_H,
+        NE_H = 3,
         /**
          * North West Vertical
          */
-        NW_V,
+        NW_V = 4,
         /**
          * West
          */
-        W,
+        W = 5,
         /**
          * South West Vertical
          */
-        SW_V,
+        SW_V = 6,
         /**
          * North East Vertical
          */
-        NE_V,
+        NE_V = 7,
         /**
          * East
          */
-        E,
+        E = 8,
         /**
          * South East Vertical
          */
-        SE_V,
+        SE_V = 9,
         /**
          * South West Horizontal
          */
-        SW_H,
+        SW_H = 10,
         /**
          * South
          */
-        S,
+        S = 11,
         /**
          * South East Horizontal
          */
-        SE_H,
+        SE_H = 12,
         /**
          * Floating Horizontal
          */
-        FLOATING_H,
+        FLOATING_H = 13,
         /**
          * Floating Vertical
          */
-        FLOATING_V,
+        FLOATING_V = 14,
     }
 
 
     /**
      * Defines padding to be used for panel plugin icons (size difference between the button and the icon)
      * @since 4.19.6
+     * @default 4
      */
     const PANEL_PLUGIN_ICON_PADDING: number;
 
@@ -242,7 +243,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            "arrow-type-changed": (arg0: Gtk.ArrowType) => void;
+            "arrow-type-changed": (type: Gtk.ArrowType) => void;
             "notify::arrow-type": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::draw-indicator": (pspec: GObject.ParamSpec) => void;
@@ -847,7 +848,7 @@ export namespace Libxfce4panel {
              * @since 4.21.0
              * @run-last
              */
-            "hidden-event": (arg0: boolean) => void;
+            "hidden-event": (hidden: boolean) => void;
             /**
              * This signal is emmitted whenever the mode of the panel
              * the `plugin` is on changes.
@@ -855,7 +856,7 @@ export namespace Libxfce4panel {
              * @since 4.10
              * @run-last
              */
-            "mode-changed": (arg0: PanelPluginMode) => void;
+            "mode-changed": (mode: PanelPluginMode) => void;
             /**
              * This signal is emmitted whenever the nrows of the panel
              * the `plugin` is on changes.
@@ -863,7 +864,7 @@ export namespace Libxfce4panel {
              * @since 4.10
              * @run-last
              */
-            "nrows-changed": (arg0: number) => void;
+            "nrows-changed": (rows: number) => void;
             /**
              * This signal is emmitted whenever the orientation of the panel
              * the `plugin` is on changes. Plugins writers can for example use
@@ -871,7 +872,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            "orientation-changed": (arg0: Gtk.Orientation) => void;
+            "orientation-changed": (orientation: Gtk.Orientation) => void;
             /**
              * This signal is emmitted by the user by running
              * xfce4-panel --plugin-event=plugin-name:name:type:value. It can be
@@ -879,7 +880,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            "remote-event": (arg0: string, arg1: unknown) => boolean | void;
+            "remote-event": (name: string, value: unknown) => boolean | void;
             /**
              * This signal is emmitted when the plugin is permanently removed from
              * the panel configuration by the user. Developers can use this signal
@@ -914,7 +915,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            "screen-position-changed": (arg0: ScreenPosition) => void;
+            "screen-position-changed": (position: ScreenPosition) => void;
             /**
              * This signal is emmitted whenever the size of the panel
              * the `plugin` is on changes. Plugins writers can for example use
@@ -928,7 +929,7 @@ export namespace Libxfce4panel {
              * @signal
              * @run-last
              */
-            "size-changed": (arg0: number) => boolean | void;
+            "size-changed": (size: number) => boolean | void;
             "notify::arguments": (pspec: GObject.ParamSpec) => void;
             "notify::comment": (pspec: GObject.ParamSpec) => void;
             "notify::dark-mode": (pspec: GObject.ParamSpec) => void;

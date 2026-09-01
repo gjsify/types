@@ -30,10 +30,10 @@ export namespace ColorHug {
      * @gir-type Enum
      */
     enum ColorSelect {
-        RED,
-        WHITE,
-        BLUE,
-        GREEN,
+        RED = 0,
+        WHITE = 1,
+        BLUE = 2,
+        GREEN = 3,
     }
 
 
@@ -41,16 +41,16 @@ export namespace ColorHug {
      * @gir-type Enum
      */
     enum DeviceMode {
-        UNKNOWN,
-        LEGACY,
-        BOOTLOADER,
-        FIRMWARE,
-        BOOTLOADER_PLUS,
-        FIRMWARE_PLUS,
-        FIRMWARE2,
-        BOOTLOADER2,
-        BOOTLOADER_ALS,
-        FIRMWARE_ALS,
+        UNKNOWN = 0,
+        LEGACY = 1,
+        BOOTLOADER = 2,
+        FIRMWARE = 3,
+        BOOTLOADER_PLUS = 4,
+        FIRMWARE_PLUS = 5,
+        FIRMWARE2 = 6,
+        BOOTLOADER2 = 7,
+        BOOTLOADER_ALS = 8,
+        FIRMWARE_ALS = 9,
     }
 
 
@@ -58,42 +58,42 @@ export namespace ColorHug {
      * @gir-type Enum
      */
     enum Error {
-        NONE,
-        UNKNOWN_CMD,
-        WRONG_UNLOCK_CODE,
-        NOT_IMPLEMENTED,
-        UNDERFLOW_SENSOR,
-        NO_SERIAL,
-        WATCHDOG,
-        INVALID_ADDRESS,
-        INVALID_LENGTH,
-        INVALID_CHECKSUM,
-        INVALID_VALUE,
-        UNKNOWN_CMD_FOR_BOOTLOADER,
-        NO_CALIBRATION,
-        OVERFLOW_MULTIPLY,
-        OVERFLOW_ADDITION,
-        OVERFLOW_SENSOR,
-        OVERFLOW_STACK,
-        DEVICE_DEACTIVATED,
-        INCOMPLETE_REQUEST,
-        SELF_TEST_SENSOR,
-        SELF_TEST_RED,
-        SELF_TEST_GREEN,
-        SELF_TEST_BLUE,
-        SELF_TEST_COLOR_SELECT,
-        SELF_TEST_MULTIPLIER,
-        INVALID_CALIBRATION,
-        SRAM_FAILED,
-        OUT_OF_MEMORY,
-        SELF_TEST_TEMPERATURE,
-        SELF_TEST_I2C,
-        SELF_TEST_ADC_VDD,
-        SELF_TEST_ADC_VSS,
-        SELF_TEST_ADC_VREF,
-        I2C_SLAVE_ADDRESS,
-        I2C_SLAVE_CONFIG,
-        SELF_TEST_EEPROM,
+        NONE = 0,
+        UNKNOWN_CMD = 1,
+        WRONG_UNLOCK_CODE = 2,
+        NOT_IMPLEMENTED = 3,
+        UNDERFLOW_SENSOR = 4,
+        NO_SERIAL = 5,
+        WATCHDOG = 6,
+        INVALID_ADDRESS = 7,
+        INVALID_LENGTH = 8,
+        INVALID_CHECKSUM = 9,
+        INVALID_VALUE = 10,
+        UNKNOWN_CMD_FOR_BOOTLOADER = 11,
+        NO_CALIBRATION = 12,
+        OVERFLOW_MULTIPLY = 13,
+        OVERFLOW_ADDITION = 14,
+        OVERFLOW_SENSOR = 15,
+        OVERFLOW_STACK = 16,
+        DEVICE_DEACTIVATED = 17,
+        INCOMPLETE_REQUEST = 18,
+        SELF_TEST_SENSOR = 19,
+        SELF_TEST_RED = 20,
+        SELF_TEST_GREEN = 21,
+        SELF_TEST_BLUE = 22,
+        SELF_TEST_COLOR_SELECT = 23,
+        SELF_TEST_MULTIPLIER = 24,
+        INVALID_CALIBRATION = 25,
+        SRAM_FAILED = 26,
+        OUT_OF_MEMORY = 27,
+        SELF_TEST_TEMPERATURE = 28,
+        SELF_TEST_I2C = 29,
+        SELF_TEST_ADC_VDD = 30,
+        SELF_TEST_ADC_VSS = 31,
+        SELF_TEST_ADC_VREF = 32,
+        I2C_SLAVE_ADDRESS = 33,
+        I2C_SLAVE_CONFIG = 34,
+        SELF_TEST_EEPROM = 35,
     }
 
 
@@ -118,8 +118,8 @@ export namespace ColorHug {
      * @gir-type Enum
      */
     enum MeasureMode {
-        FREQUENCY,
-        DURATION,
+        FREQUENCY = 0,
+        DURATION = 1,
     }
 
 
@@ -127,52 +127,112 @@ export namespace ColorHug {
      * @gir-type Enum
      */
     enum SpectrumKind {
-        RAW,
-        DARK_CAL,
-        TEMP_CAL,
-        IRRADIANCE_CAL,
-        LAST,
+        RAW = 0,
+        DARK_CAL = 1,
+        TEMP_CAL = 2,
+        IRRADIANCE_CAL = 3,
+        LAST = 4,
     }
 
 
+    /**
+     * @default 0
+     */
     const BUFFER_INPUT_CMD: number;
 
+    /**
+     * @default 1
+     */
     const BUFFER_INPUT_DATA: number;
 
+    /**
+     * @default 1
+     */
     const BUFFER_OUTPUT_CMD: number;
 
+    /**
+     * @default 2
+     */
     const BUFFER_OUTPUT_DATA: number;
 
+    /**
+     * @default 0
+     */
     const BUFFER_OUTPUT_RETVAL: number;
 
+    /**
+     * @default 23
+     */
     const CALIBRATION_DESCRIPTION_LEN: number;
 
+    /**
+     * @default 1
+     */
     const CALIBRATION_INDEX_CRT: number;
 
+    /**
+     * @default 0
+     */
     const CALIBRATION_INDEX_FACTORY_ONLY: number;
 
+    /**
+     * @default 0
+     */
     const CALIBRATION_INDEX_LCD: number;
 
+    /**
+     * @default 3
+     */
     const CALIBRATION_INDEX_LED: number;
 
+    /**
+     * @default 6
+     */
     const CALIBRATION_INDEX_MAX: number;
 
+    /**
+     * @default 2
+     */
     const CALIBRATION_INDEX_PROJECTOR: number;
 
+    /**
+     * @default 64
+     */
     const CALIBRATION_MAX: number;
 
+    /**
+     * @default 65535
+     */
     const CALIBRATION_SPECTRAL: number;
 
+    /**
+     * @default 255
+     */
     const CALIBRATION_TYPE_ALL: number;
 
+    /**
+     * @default 2
+     */
     const CALIBRATION_TYPE_CRT: number;
 
+    /**
+     * @default 1
+     */
     const CALIBRATION_TYPE_LCD: number;
 
+    /**
+     * @default 8
+     */
     const CALIBRATION_TYPE_LED: number;
 
+    /**
+     * @default 4
+     */
     const CALIBRATION_TYPE_PROJECTOR: number;
 
+    /**
+     * @default 1024
+     */
     const CCD_SPECTRAL_RESOLUTION: number;
 
     /**
@@ -190,6 +250,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ×
      * ColorHugALS    |      ✓       |      ×
      * @since 0.1.29
+     * @default 39
      */
     const CMD_BOOT_FLASH: number;
 
@@ -213,6 +274,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.3.1
+     * @default 97
      */
     const CMD_CLEAR_ERROR: number;
 
@@ -233,6 +295,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ×
      * ColorHugALS    |      ✓       |      ×
      * @since 0.1.29
+     * @default 41
      */
     const CMD_ERASE_FLASH: number;
 
@@ -252,6 +315,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.31
+     * @default 82
      */
     const CMD_GET_ADC_CALIBRATION_NEG: number;
 
@@ -271,6 +335,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.31
+     * @default 81
      */
     const CMD_GET_ADC_CALIBRATION_POS: number;
 
@@ -299,6 +364,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 9
      */
     const CMD_GET_CALIBRATION: number;
 
@@ -329,6 +395,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 46
      */
     const CMD_GET_CALIBRATION_MAP: number;
 
@@ -349,6 +416,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.31
+     * @default 83
      */
     const CMD_GET_CCD_CALIBRATION: number;
 
@@ -367,6 +435,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 1
      */
     const CMD_GET_COLOR_SELECT: number;
 
@@ -385,6 +454,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.1.6
+     * @default 60
      */
     const CMD_GET_DAC_VALUE: number;
 
@@ -403,6 +473,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 15
      */
     const CMD_GET_DARK_OFFSETS: number;
 
@@ -426,6 +497,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.3.1
+     * @default 96
      */
     const CMD_GET_ERROR: number;
 
@@ -444,6 +516,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ✓
      * ColorHugALS    |      ✓       |      ✓
      * @since 0.1.29
+     * @default 7
      */
     const CMD_GET_FIRMWARE_VERSION: number;
 
@@ -470,6 +543,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ✓
      * ColorHugALS    |      ✓       |      ✓
      * @since 0.1.29
+     * @default 48
      */
     const CMD_GET_HARDWARE_VERSION: number;
 
@@ -488,6 +562,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.3.4
+     * @default 21
      */
     const CMD_GET_ILLUMINANTS: number;
 
@@ -506,6 +581,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 5
      */
     const CMD_GET_INTEGRAL_TIME: number;
 
@@ -524,6 +600,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ✓       |      ✓
      * @since 0.1.29
+     * @default 13
      */
     const CMD_GET_LEDS: number;
 
@@ -542,6 +619,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 55
      */
     const CMD_GET_MEASURE_MODE: number;
 
@@ -560,6 +638,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 3
      */
     const CMD_GET_MULTIPLIER: number;
 
@@ -578,6 +657,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 19
      */
     const CMD_GET_OWNER_EMAIL: number;
 
@@ -596,6 +676,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 17
      */
     const CMD_GET_OWNER_NAME: number;
 
@@ -614,6 +695,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 51
      */
     const CMD_GET_PCB_ERRATA: number;
 
@@ -632,6 +714,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 42
      */
     const CMD_GET_POST_SCALE: number;
 
@@ -650,6 +733,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 44
      */
     const CMD_GET_PRE_SCALE: number;
 
@@ -669,6 +753,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 53
      */
     const CMD_GET_REMOTE_HASH: number;
 
@@ -687,6 +772,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 11
      */
     const CMD_GET_SERIAL_NUMBER: number;
 
@@ -705,6 +791,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 59
      */
     const CMD_GET_TEMPERATURE: number;
 
@@ -728,6 +815,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 65
      */
     const CMD_LOAD_SRAM: number;
 
@@ -746,6 +834,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ×
      * ColorHugALS    |      ✓       |      ×
      * @since 0.1.29
+     * @default 37
      */
     const CMD_READ_FLASH: number;
 
@@ -773,6 +862,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 56
      */
     const CMD_READ_SRAM: number;
 
@@ -791,6 +881,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ✓
      * ColorHugALS    |      ✓       |      ✓
      * @since 0.1.29
+     * @default 36
      */
     const CMD_RESET: number;
 
@@ -814,6 +905,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 66
      */
     const CMD_SAVE_SRAM: number;
 
@@ -833,6 +925,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ✓
      * ColorHugALS    |      ✓       |      ×
      * @since 0.1.29
+     * @default 64
      */
     const CMD_SELF_TEST: number;
 
@@ -851,6 +944,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 10
      */
     const CMD_SET_CALIBRATION: number;
 
@@ -869,6 +963,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 47
      */
     const CMD_SET_CALIBRATION_MAP: number;
 
@@ -887,6 +982,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.31
+     * @default 84
      */
     const CMD_SET_CCD_CALIBRATION: number;
 
@@ -905,6 +1001,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 2
      */
     const CMD_SET_COLOR_SELECT: number;
 
@@ -928,6 +1025,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.3.1
+     * @default 112
      */
     const CMD_SET_CRYPTO_KEY: number;
 
@@ -946,6 +1044,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.1.6
+     * @default 61
      */
     const CMD_SET_DAC_VALUE: number;
 
@@ -966,6 +1065,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 16
      */
     const CMD_SET_DARK_OFFSETS: number;
 
@@ -999,6 +1099,7 @@ export namespace ColorHug {
      * 
      * Different values of `success` are permitted in each mode.
      * @since 0.1.29
+     * @default 40
      */
     const CMD_SET_FLASH_SUCCESS: number;
 
@@ -1017,6 +1118,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 1.3.4
+     * @default 22
      */
     const CMD_SET_ILLUMINANTS: number;
 
@@ -1035,6 +1137,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 6
      */
     const CMD_SET_INTEGRAL_TIME: number;
 
@@ -1057,6 +1160,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 14
      */
     const CMD_SET_LEDS: number;
 
@@ -1077,6 +1181,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 54
      */
     const CMD_SET_MEASURE_MODE: number;
 
@@ -1095,6 +1200,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 4
      */
     const CMD_SET_MULTIPLIER: number;
 
@@ -1113,6 +1219,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 20
      */
     const CMD_SET_OWNER_EMAIL: number;
 
@@ -1131,6 +1238,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 18
      */
     const CMD_SET_OWNER_NAME: number;
 
@@ -1156,6 +1264,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 50
      */
     const CMD_SET_PCB_ERRATA: number;
 
@@ -1174,6 +1283,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 43
      */
     const CMD_SET_POST_SCALE: number;
 
@@ -1192,6 +1302,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 45
      */
     const CMD_SET_PRE_SCALE: number;
 
@@ -1212,6 +1323,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 52
      */
     const CMD_SET_REMOTE_HASH: number;
 
@@ -1230,6 +1342,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 12
      */
     const CMD_SET_SERIAL_NUMBER: number;
 
@@ -1251,6 +1364,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 34
      */
     const CMD_TAKE_READINGS: number;
 
@@ -1277,6 +1391,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ×
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 49
      */
     const CMD_TAKE_READING_ARRAY: number;
 
@@ -1295,6 +1410,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ✓
      * @since 0.1.29
+     * @default 33
      */
     const CMD_TAKE_READING_RAW: number;
 
@@ -1316,6 +1432,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.31
+     * @default 85
      */
     const CMD_TAKE_READING_SPECTRAL: number;
 
@@ -1343,6 +1460,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 35
      */
     const CMD_TAKE_READING_XYZ: number;
 
@@ -1361,6 +1479,7 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 32
      */
     const CMD_WRITE_EEPROM: number;
 
@@ -1380,6 +1499,7 @@ export namespace ColorHug {
      * ColorHug+      |      ✓       |      ×
      * ColorHugALS    |      ✓       |      ×
      * @since 0.1.29
+     * @default 38
      */
     const CMD_WRITE_FLASH: number;
 
@@ -1398,91 +1518,218 @@ export namespace ColorHug {
      * ColorHug+      |      ×       |      ✓
      * ColorHugALS    |      ×       |      ×
      * @since 0.1.29
+     * @default 57
      */
     const CMD_WRITE_SRAM: number;
 
+    /**
+     * @default 40338ceb-b966-4eae-adae-9c32edfcc484
+     */
     const DEVICE_GUID_COLORHUG: string;
 
+    /**
+     * @default 2082b5e0-7a64-478a-b1b2-e3404fab6dad
+     */
     const DEVICE_GUID_COLORHUG2: string;
 
+    /**
+     * @default 84f40464-9272-4ef7-9399-cd95f12da696
+     */
     const DEVICE_GUID_COLORHUG_ALS: string;
 
+    /**
+     * @default 6d6f05a9-3ecb-43a2-bcbb-3844f1825366
+     */
     const DEVICE_GUID_COLORHUG_PLUS: string;
 
+    /**
+     * @default 10000
+     */
     const DEVICE_USB_TIMEOUT: number;
 
+    /**
+     * @default 16384
+     */
     const EEPROM_ADDR_RUNCODE: number;
 
+    /**
+     * @default 8192
+     */
     const EEPROM_ADDR_RUNCODE_ALS: number;
 
+    /**
+     * @default 64
+     */
     const EP0_TRANSFER_SIZE: number;
 
+    /**
+     * @default 1024
+     */
     const EP0_TRANSFER_SIZE_V2: number;
 
+    /**
+     * @default 40338ceb
+     */
     const FIRMWARE_ID_TOKEN1: string;
 
+    /**
+     * @default 2082b5e0
+     */
     const FIRMWARE_ID_TOKEN2: string;
 
+    /**
+     * @default 84f40464
+     */
     const FIRMWARE_ID_TOKEN_ALS: string;
 
+    /**
+     * @default 6d6f05a9
+     */
     const FIRMWARE_ID_TOKEN_PLUS: string;
 
+    /**
+     * @default 1024
+     */
     const FLASH_ERASE_BLOCK_SIZE: number;
 
+    /**
+     * @default 5000
+     */
     const FLASH_RECONNECT_TIMEOUT: number;
 
+    /**
+     * @default 32
+     */
     const FLASH_TRANSFER_BLOCK_SIZE: number;
 
+    /**
+     * @default 64
+     */
     const FLASH_WRITE_BLOCK_SIZE: number;
 
+    /**
+     * @default 14848
+     */
     const INTEGRAL_TIME_VALUE_100MS: number;
 
+    /**
+     * @default 29952
+     */
     const INTEGRAL_TIME_VALUE_200MS: number;
 
+    /**
+     * @default 7936
+     */
     const INTEGRAL_TIME_VALUE_50MS: number;
 
+    /**
+     * @default 768
+     */
     const INTEGRAL_TIME_VALUE_5MS: number;
 
+    /**
+     * @default 65535
+     */
     const INTEGRAL_TIME_VALUE_MAX: number;
 
+    /**
+     * @default 60
+     */
     const OWNER_LENGTH_MAX: number;
 
+    /**
+     * @default 1
+     */
     const USB_CONFIG: number;
 
+    /**
+     * @default 1
+     */
     const USB_HID_EP: number;
 
+    /**
+     * @default 128
+     */
     const USB_HID_EP_IN: number;
 
+    /**
+     * @default 0
+     */
     const USB_HID_EP_OUT: number;
 
+    /**
+     * @default 64
+     */
     const USB_HID_EP_SIZE: number;
 
+    /**
+     * @default 0
+     */
     const USB_INTERFACE: number;
 
+    /**
+     * @default 4096
+     */
     const USB_PID_BOOTLOADER: number;
 
+    /**
+     * @default 4101
+     */
     const USB_PID_BOOTLOADER2: number;
 
+    /**
+     * @default 4102
+     */
     const USB_PID_BOOTLOADER_ALS: number;
 
+    /**
+     * @default 4099
+     */
     const USB_PID_BOOTLOADER_PLUS: number;
 
+    /**
+     * @default 4097
+     */
     const USB_PID_FIRMWARE: number;
 
+    /**
+     * @default 4100
+     */
     const USB_PID_FIRMWARE2: number;
 
+    /**
+     * @default 4103
+     */
     const USB_PID_FIRMWARE_ALS: number;
 
+    /**
+     * @default 4104
+     */
     const USB_PID_FIRMWARE_ALS_SENSOR_HID: number;
 
+    /**
+     * @default 4098
+     */
     const USB_PID_FIRMWARE_PLUS: number;
 
+    /**
+     * @default 63706
+     */
     const USB_PID_LEGACY: number;
 
+    /**
+     * @default 10047
+     */
     const USB_VID: number;
 
+    /**
+     * @default 1240
+     */
     const USB_VID_LEGACY: number;
 
+    /**
+     * @default Un1c0rn2
+     */
     const WRITE_EEPROM_MAGIC: string;
 
     /**
@@ -1504,12 +1751,14 @@ export namespace ColorHug {
      * @param data_len size of `data`
      * @returns `true` if the command was executed successfully.
      * @since 1.2.3
+     * @throws GLib.Error
      */
     function device_check_firmware(device: GUsb.Device, data: number, data_len: bigint | number): boolean;
 
     /**
      * @param device 
      * @since 1.2.11
+     * @throws GLib.Error
      */
     function device_close(device: GUsb.Device): boolean;
 
@@ -1525,6 +1774,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_get_adc_calibration_neg(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1534,6 +1784,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_get_adc_calibration_pos(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1547,6 +1798,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1556,6 +1808,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_error(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Error, Cmd];
 
@@ -1573,6 +1826,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_get_illuminants(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, Illuminant];
 
@@ -1582,6 +1836,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_integral_time(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1591,6 +1846,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_leds(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, StatusLed];
 
@@ -1606,6 +1862,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_pcb_errata(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, PcbErrata];
 
@@ -1623,6 +1880,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_serial_number(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1633,6 +1891,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns a {@link Colord.Spectrum}, or `null` for error
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_spectrum(device: GUsb.Device, cancellable: Gio.Cancellable | null): Colord.Spectrum;
 
@@ -1644,6 +1903,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns a {@link Colord.Spectrum}, or `null` for error
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_get_spectrum_full(device: GUsb.Device, kind: SpectrumKind, cancellable: Gio.Cancellable | null): Colord.Spectrum;
 
@@ -1653,6 +1913,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_get_temperature(device: GUsb.Device, cancellable: Gio.Cancellable | null): [boolean, number];
 
@@ -1668,6 +1929,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_load_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1691,6 +1953,7 @@ export namespace ColorHug {
     /**
      * @param device 
      * @since 0.1.29
+     * @throws GLib.Error
      */
     function device_open(device: GUsb.Device): boolean;
 
@@ -1700,6 +1963,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_open_full(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1711,6 +1975,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_read_sram(device: GUsb.Device, addr: number, len: number, cancellable: Gio.Cancellable | null): GLib.Bytes;
 
@@ -1720,6 +1985,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_save_sram(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1729,6 +1995,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_self_test(device: GUsb.Device, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1742,6 +2009,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_ccd_calibration(device: GUsb.Device, nm_start: number, c0: number, c1: number, c2: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1754,6 +2022,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_crypto_key(device: GUsb.Device, keys: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1764,6 +2033,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_set_illuminants(device: GUsb.Device, value: Illuminant, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1774,6 +2044,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_integral_time(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1784,6 +2055,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_leds(device: GUsb.Device, value: StatusLed, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1794,6 +2066,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_pcb_errata(device: GUsb.Device, value: PcbErrata, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1804,6 +2077,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_set_serial_number(device: GUsb.Device, value: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1816,6 +2090,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_set_spectrum_full(device: GUsb.Device, kind: SpectrumKind, sp: Colord.Spectrum, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1826,6 +2101,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_take_reading_spectral(device: GUsb.Device, value: SpectrumKind, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1836,6 +2112,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns a {@link Colord.ColorXYZ}, or `null` for error
      * @since 1.3.1
+     * @throws GLib.Error
      */
     function device_take_reading_xyz(device: GUsb.Device, calibration_idx: number, cancellable: Gio.Cancellable | null): Colord.ColorXYZ;
 
@@ -1850,6 +2127,7 @@ export namespace ColorHug {
      * @param cancellable A {@link Gio.Cancellable} or `null`
      * @returns `true` if the command was executed successfully.
      * @since 0.1.29
+     * @throws GLib.Error
      */
     function device_write_command(device: GUsb.Device, cmd: number, buffer_in: number, buffer_in_len: bigint | number, buffer_out: number, buffer_out_len: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1898,6 +2176,7 @@ export namespace ColorHug {
      * @param res the {@link Gio.AsyncResult}
      * @returns `true` if the request was fulfilled.
      * @since 0.1.29
+     * @throws GLib.Error
      */
     function device_write_command_finish(device: GUsb.Device, res: Gio.AsyncResult): boolean;
 
@@ -1909,6 +2188,7 @@ export namespace ColorHug {
      * @param cancellable a {@link Gio.Cancellable}, or `null`
      * @returns `true` for success
      * @since 1.3.4
+     * @throws GLib.Error
      */
     function device_write_sram(device: GUsb.Device, addr: number, data: GLib.Bytes | Uint8Array, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1930,6 +2210,7 @@ export namespace ColorHug {
      * @param sha1 A %ChSha1
      * @returns `true` for success
      * @since 0.1.29
+     * @throws GLib.Error
      */
     function sha1_parse(value: string, sha1: Sha1): boolean;
 
@@ -1960,9 +2241,9 @@ export namespace ColorHug {
      * @gir-type Flags
      */
     enum DeviceQueueProcessFlags {
-        NONE,
-        CONTINUE_ERRORS,
-        NONFATAL_ERRORS,
+        NONE = 0,
+        CONTINUE_ERRORS = 1,
+        NONFATAL_ERRORS = 2,
     }
 
 
@@ -1970,9 +2251,9 @@ export namespace ColorHug {
      * @gir-type Flags
      */
     enum Illuminant {
-        NONE,
-        A,
-        UV,
+        NONE = 0,
+        A = 1,
+        UV = 2,
     }
 
 
@@ -1980,9 +2261,9 @@ export namespace ColorHug {
      * @gir-type Flags
      */
     enum PcbErrata {
-        NONE,
-        SWAPPED_LEDS,
-        NO_WELCOME,
+        NONE = 0,
+        SWAPPED_LEDS = 1,
+        NO_WELCOME = 2,
     }
 
 
@@ -1990,9 +2271,9 @@ export namespace ColorHug {
      * @gir-type Flags
      */
     enum StatusLed {
-        GREEN,
-        RED,
-        BLUE,
+        GREEN = 1,
+        RED = 2,
+        BLUE = 4,
     }
 
 
@@ -2003,12 +2284,12 @@ export namespace ColorHug {
              * @signal
              * @run-last
              */
-            "device-failed": (arg0: GObject.Object, arg1: string) => void;
+            "device-failed": (object: GObject.Object, p0: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "progress-changed": (arg0: number) => void;
+            "progress-changed": (object: number) => void;
         }
 
         // Constructor properties interface
@@ -2340,6 +2621,7 @@ export namespace ColorHug {
          * @param cancellable {@link Gio.Cancellable} or `null`
          * @returns `true` if the commands were executed successfully.
          * @since 0.1.29
+         * @throws GLib.Error
          */
         process(process_flags: DeviceQueueProcessFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -2374,6 +2656,7 @@ export namespace ColorHug {
          * @param res the {@link Gio.AsyncResult}
          * @returns `true` if the request was fulfilled.
          * @since 0.1.29
+         * @throws GLib.Error
          */
         process_finish(res: Gio.AsyncResult): boolean;
 
@@ -2448,6 +2731,7 @@ export namespace ColorHug {
          * @param calibration_index 
          * @param ccmx 
          * @since 0.1.29
+         * @throws GLib.Error
          */
         set_calibration_ccmx(device: GUsb.Device, calibration_index: number, ccmx: Colord.It8): boolean;
 

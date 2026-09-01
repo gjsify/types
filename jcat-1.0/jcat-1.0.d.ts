@@ -32,51 +32,51 @@ export namespace Jcat {
         /**
          * No known blob kind
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * SHA-256 checksum
          */
-        SHA256,
+        SHA256 = 1,
         /**
          * GPG detached signature
          */
-        GPG,
+        GPG = 2,
         /**
          * PKCS-7 detached signature
          */
-        PKCS7,
+        PKCS7 = 3,
         /**
          * SHA-1 checksum
          */
-        SHA1,
+        SHA1 = 4,
         /**
          * Binary transparency manifest
          */
-        BT_MANIFEST,
+        BT_MANIFEST = 5,
         /**
          * Binary transparency checkpoint
          */
-        BT_CHECKPOINT,
+        BT_CHECKPOINT = 6,
         /**
          * Binary transparency inclusion proof
          */
-        BT_INCLUSION_PROOF,
+        BT_INCLUSION_PROOF = 7,
         /**
          * Binary transparency verifier
          */
-        BT_VERIFIER,
+        BT_VERIFIER = 8,
         /**
          * ED25519 signature
          */
-        ED25519,
+        ED25519 = 9,
         /**
          * SHA-512 checksum
          */
-        SHA512,
+        SHA512 = 10,
         /**
          * Binary transparency log index
          */
-        BT_LOGINDEX,
+        BT_LOGINDEX = 11,
     }
 
 
@@ -88,15 +88,15 @@ export namespace Jcat {
         /**
          * Unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Checksum
          */
-        CHECKSUM,
+        CHECKSUM = 1,
         /**
          * Signature
          */
-        SIGNATURE,
+        SIGNATURE = 2,
     }
 
 
@@ -108,25 +108,28 @@ export namespace Jcat {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
     }
 
 
     /**
      * The compile-time major version
      * @since 0.1.0
+     * @default 0
      */
     const MAJOR_VERSION: number;
 
     /**
      * The compile-time micro version
      * @since 0.1.0
+     * @default 6
      */
     const MICRO_VERSION: number;
 
     /**
      * The compile-time minor version
      * @since 0.1.0
+     * @default 2
      */
     const MINOR_VERSION: number;
 
@@ -145,11 +148,11 @@ export namespace Jcat {
         /**
          * Generic binary data
          */
-        NONE,
+        NONE = 0,
         /**
          * ASCII text
          */
-        IS_UTF8,
+        IS_UTF8 = 1,
     }
 
 
@@ -161,11 +164,11 @@ export namespace Jcat {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Do not export timestamps
          */
-        NO_TIMESTAMP,
+        NO_TIMESTAMP = 2,
     }
 
 
@@ -177,19 +180,19 @@ export namespace Jcat {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Add a timestamp
          */
-        ADD_TIMESTAMP,
+        ADD_TIMESTAMP = 1,
         /**
          * Add a certificate
          */
-        ADD_CERT,
+        ADD_CERT = 2,
         /**
          * Use post-quantum algorithm
          */
-        USE_PQ,
+        USE_PQ = 4,
     }
 
 
@@ -201,23 +204,23 @@ export namespace Jcat {
         /**
          * No flags set
          */
-        NONE,
+        NONE = 0,
         /**
          * Disable checking of validity periods
          */
-        DISABLE_TIME_CHECKS,
+        DISABLE_TIME_CHECKS = 4,
         /**
          * Require the item contains at least one checksum
          */
-        REQUIRE_CHECKSUM,
+        REQUIRE_CHECKSUM = 8,
         /**
          * Require the item contains at least one signature
          */
-        REQUIRE_SIGNATURE,
+        REQUIRE_SIGNATURE = 16,
         /**
          * Only consider post-quantum signatures
          */
-        ONLY_PQ,
+        ONLY_PQ = 32,
     }
 
 
@@ -635,6 +638,7 @@ export namespace Jcat {
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.GPG}
          * @returns {@link Jcat.Engine}, or `null` for unavailable
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_engine(kind: BlobKind): Engine;
 
@@ -659,6 +663,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         verify_blob(data: GLib.Bytes | Uint8Array, blob: Blob, flags: VerifyFlags): Result;
 
@@ -671,6 +676,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
          * @returns array of {@link Jcat.Result}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         verify_item(data: GLib.Bytes | Uint8Array, item: Item, flags: VerifyFlags): Result[];
 
@@ -682,6 +688,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.REQUIRE_SIGNATURE}
          * @returns results, or `null` for failed
          * @since 0.2.0
+         * @throws GLib.Error
          */
         verify_target(item_target: Item, item: Item, flags: VerifyFlags): Result[];
     }
@@ -835,6 +842,7 @@ export namespace Jcat {
          * @param blob {@link GLib.Bytes}
          * @returns %
          * @since 0.1.9
+         * @throws GLib.Error
          */
         add_public_key_raw(blob: GLib.Bytes | Uint8Array): boolean;
 
@@ -860,6 +868,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @returns {@link Jcat.Blob}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         pubkey_sign(blob: GLib.Bytes | Uint8Array, cert: GLib.Bytes | Uint8Array, privkey: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
 
@@ -870,6 +879,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         pubkey_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
 
@@ -879,6 +889,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.SignFlags}, e.g. {@link Jcat.SignFlags.ADD_TIMESTAMP}
          * @returns {@link Jcat.Blob}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         self_sign(blob: GLib.Bytes | Uint8Array, flags: SignFlags): Blob;
 
@@ -889,6 +900,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.VerifyFlags}, e.g. {@link Jcat.VerifyFlags.DISABLE_TIME_CHECKS}
          * @returns {@link Jcat.Result}, or `null` for failed
          * @since 0.1.0
+         * @throws GLib.Error
          */
         self_verify(blob: GLib.Bytes | Uint8Array, blob_signature: GLib.Bytes | Uint8Array, flags: VerifyFlags): Result;
     }
@@ -952,6 +964,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         export_file(gfile: Gio.File, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -960,6 +973,7 @@ export namespace Jcat {
          * @param flags a {@link Jcat.ExportFlags}, typically {@link Jcat.ExportFlags.NONE}
          * @returns JSON output, or `null` for error
          * @since 0.1.0
+         * @throws GLib.Error
          */
         export_json(flags: ExportFlags): string;
 
@@ -970,6 +984,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         export_stream(ostream: Gio.OutputStream, flags: ExportFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -978,6 +993,7 @@ export namespace Jcat {
          * @param id An ID, typically a filename basename
          * @returns a {@link Jcat.Item}, or `null` if the filename was not found
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_item_by_id(id: string): Item;
 
@@ -986,6 +1002,7 @@ export namespace Jcat {
          * return with an error.
          * @returns a {@link Jcat.Item}, or `null` if no default exists
          * @since 0.1.0
+         * @throws GLib.Error
          */
         get_item_default(): Item;
 
@@ -1017,6 +1034,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         import_file(gfile: Gio.File, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1026,6 +1044,7 @@ export namespace Jcat {
          * @param flags {@link Jcat.ImportFlags}, typically {@link Jcat.ImportFlags.NONE}
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         import_json(json: string, flags: ImportFlags): boolean;
 
@@ -1036,6 +1055,7 @@ export namespace Jcat {
          * @param cancellable {@link Gio.Cancellable}, or `null`
          * @returns `true` for success
          * @since 0.1.0
+         * @throws GLib.Error
          */
         import_stream(istream: Gio.InputStream, flags: ImportFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1119,6 +1139,7 @@ export namespace Jcat {
          * @param kind {@link Jcat.BlobKind}, e.g. {@link Jcat.BlobKind.SHA256}
          * @returns a blob, or `null`
          * @since 0.2.0
+         * @throws GLib.Error
          */
         get_blob_by_kind(kind: BlobKind): Blob;
 

@@ -42,19 +42,19 @@ export namespace Libxfce4ui {
         /**
          * see {@link Libxfce4ui.GtkMenuItem}
          */
-        MENU_ITEM,
+        MENU_ITEM = 0,
         /**
          * see {@link Gtk.ImageMenuItem}
          */
-        IMAGE_MENU_ITEM,
+        IMAGE_MENU_ITEM = 1,
         /**
          * see {@link Gtk.CheckMenuItem}
          */
-        CHECK_MENU_ITEM,
+        CHECK_MENU_ITEM = 2,
         /**
          * see {@link Gtk.RadioMenuItem}
          */
-        RADIO_MENU_ITEM,
+        RADIO_MENU_ITEM = 3,
     }
 
 
@@ -67,30 +67,30 @@ export namespace Libxfce4ui {
          * A high priority value.  You probably
          *                                   don't want to use this.
          */
-        HIGHEST,
+        HIGHEST = 0,
         /**
          * A priority value for use by the window manager.
          */
-        WM,
+        WM = 15,
         /**
          * A priority value for use by applications that
          *                                place windows on the screen and possibly set
          *                                window manager struts.
          */
-        CORE,
+        CORE = 25,
         /**
          * A priority value for use by applications
          *                                   that draw on the desktop.
          */
-        DESKTOP,
+        DESKTOP = 35,
         /**
          * A priority value for regular applications.
          */
-        DEFAULT,
+        DEFAULT = 50,
         /**
          * The lowest possible priority value.
          */
-        LOWEST,
+        LOWEST = 255,
     }
 
 
@@ -105,12 +105,12 @@ export namespace Libxfce4ui {
          *                                 still running when the session is next
          *                                 saved.
          */
-        NORMAL,
+        NORMAL = 0,
         /**
          * Immediately restart the application
          *                                      if it ever quits.
          */
-        IMMEDIATELY,
+        IMMEDIATELY = 1,
     }
 
 
@@ -123,19 +123,19 @@ export namespace Libxfce4ui {
         /**
          * Prompt the user for a choice,
          */
-        ASK,
+        ASK = 0,
         /**
          * End the current session,
          */
-        LOGOUT,
+        LOGOUT = 1,
         /**
          * Shut down the computer.
          */
-        HALT,
+        HALT = 2,
         /**
          * Restart the computer.
          */
-        REBOOT,
+        REBOOT = 3,
     }
 
 
@@ -147,11 +147,11 @@ export namespace Libxfce4ui {
         /**
          * Failed to connect to the session manager.
          */
-        FAILED,
+        FAILED = 0,
         /**
          * Session does not have a valid client id.
          */
-        INVALID_CLIENT,
+        INVALID_CLIENT = 1,
     }
 
 
@@ -159,6 +159,7 @@ export namespace Libxfce4ui {
      * This allows you to easily create mixed buttons in a dialog.
      * param1 is used for the stock_id, param2 for the label and
      * param3 for the response_id. See also `xfce_gtk_button_new_mixed()`.
+     * @default button-mixed
      */
     const BUTTON_TYPE_MIXED: string;
 
@@ -166,6 +167,7 @@ export namespace Libxfce4ui {
      * Creates a button with the {@link GdkPixbuf.Pixbuf} as button icon.
      * param1 is the {@link GdkPixbuf.Pixbuf}, param2 for the label and
      * param3 for the response_id.
+     * @default button-pixbuf
      */
     const BUTTON_TYPE_PIXBUF: string;
 
@@ -594,6 +596,7 @@ export namespace Libxfce4ui {
      * @param child_process `true` if the process should be a child process,                      `false` if it should be reparented to init.
      * @returns `true` on success, `false` if `error` is set.
      * @since 4.16
+     * @throws GLib.Error
      */
     function spawn(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null, child_process: boolean): boolean;
 
@@ -608,6 +611,7 @@ export namespace Libxfce4ui {
      * @param child_process `true` if the process should be a child process, `false` if it should be reparented to init.
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @since 4.16
+     * @throws GLib.Error
      */
     function spawn_command_line(screen: Gdk.Screen | null, command_line: string, in_terminal: boolean, startup_notify: boolean, child_process: boolean): boolean;
 
@@ -621,6 +625,7 @@ export namespace Libxfce4ui {
      * @param startup_notify whether to use startup notification.
      * @returns `true` if the `command_line` was executed          successfully, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn_command_line` instead.
+     * @throws GLib.Error
      */
     function spawn_command_line_on_screen(screen: Gdk.Screen | null, command_line: string, in_terminal: boolean, startup_notify: boolean): boolean;
 
@@ -637,6 +642,7 @@ export namespace Libxfce4ui {
      * @param startup_icon_name application icon or `null`.
      * @returns `true` on success, `false` if `error` is set.
      * @deprecated since 4.16: Use `xfce_spawn` instead.
+     * @throws GLib.Error
      */
     function spawn_on_screen(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null): boolean;
 
@@ -679,6 +685,7 @@ export namespace Libxfce4ui {
      * @param startup_icon_name application icon or `null`.
      * @param child_watch_closure closure that is triggered when the child exists                        or `null`.
      * @returns `true` on success, `false` if `error` is set.
+     * @throws GLib.Error
      */
     function spawn_on_screen_with_child_watch(screen: Gdk.Screen | null, working_directory: string | null, argv: string, envp: string | null, flags: GLib.SpawnFlags, startup_notify: boolean, startup_timestamp: number, startup_icon_name: string | null, child_watch_closure: GObject.Closure | null): boolean;
 
@@ -1193,6 +1200,7 @@ export namespace Libxfce4ui {
         /**
          * Attempts to connect to the session manager.
          * @returns `true` on success, `false` otherwise.  If an error          occurs, `error` will be set.
+         * @throws GLib.Error
          */
         connect(): boolean;
 

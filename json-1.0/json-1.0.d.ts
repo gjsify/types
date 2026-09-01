@@ -38,19 +38,19 @@ export namespace Json {
         /**
          * The node contains a JSON object
          */
-        OBJECT,
+        OBJECT = 0,
         /**
          * The node contains a JSON array
          */
-        ARRAY,
+        ARRAY = 1,
         /**
          * The node contains a fundamental type
          */
-        VALUE,
+        VALUE = 2,
         /**
          * Special type, for nodes containing null
          */
-        NULL,
+        NULL = 3,
     }
 
 
@@ -212,28 +212,33 @@ export namespace Json {
 
     /**
      * Json major version component (e.g. 1 if `JSON_VERSION` is "1.2.3")
+     * @default 1
      */
     const MAJOR_VERSION: number;
 
     /**
      * Json micro version component (e.g. 3 if `JSON_VERSION` is "1.2.3")
+     * @default 8
      */
     const MICRO_VERSION: number;
 
     /**
      * Json minor version component (e.g. 2 if `JSON_VERSION` is "1.2.3")
+     * @default 10
      */
     const MINOR_VERSION: number;
 
     /**
      * The maximum recursion depth for a JSON tree.
      * @since 1.10
+     * @default 1024
      */
     const PARSER_MAX_RECURSION_DEPTH: number;
 
     /**
      * The version of JSON-GLib, encoded as a string, useful for printing and
      * concatenation.
+     * @default 1.10.8
      */
     const VERSION_S: string;
 
@@ -298,6 +303,7 @@ export namespace Json {
      * @returns a new object instance of the given   type
      * @since 0.4
      * @deprecated since 0.10: Use {@link Json.gobject_from_data} instead
+     * @throws GLib.Error
      */
     function construct_gobject<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
 
@@ -311,6 +317,7 @@ export namespace Json {
      * @param str a valid UTF-8 string containing JSON data
      * @returns the root node of the JSON tree
      * @since 1.2
+     * @throws GLib.Error
      */
     function from_string(str: string): Node | null;
 
@@ -339,6 +346,7 @@ export namespace Json {
      * @param length length of the data stream, or -1 if it is `NUL`-terminated
      * @returns a new object instance of the given type
      * @since 0.10
+     * @throws GLib.Error
      */
     function gobject_from_data<T = GObject.Object>(gtype: GObject.GType, data: string, length: bigint | number): T;
 
@@ -395,6 +403,7 @@ export namespace Json {
      * @param signature a valid {@link GLib.Variant} type string
      * @returns A newly created {@link GLib.Variant}
      * @since 0.14
+     * @throws GLib.Error
      */
     function gvariant_deserialize(json_node: Node, signature: string | null): GLib.Variant | null;
 
@@ -415,6 +424,7 @@ export namespace Json {
      * @param signature A valid {@link GLib.Variant} type string
      * @returns A newly created {@link GLib.Variant}D compliant
      * @since 0.14
+     * @throws GLib.Error
      */
     function gvariant_deserialize_data(json: string, length: bigint | number, signature: string | null): GLib.Variant | null;
 
@@ -965,6 +975,7 @@ export namespace Json {
          * temporary file which is then renamed to the given `filename`.
          * @param filename the path to the target file
          * @returns `true` if saving was successful.
+         * @throws GLib.Error
          */
         to_file(filename: string): boolean;
 
@@ -982,6 +993,7 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns whether the write operation was successful
          * @since 0.12
+         * @throws GLib.Error
          */
         to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -997,7 +1009,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_element} virtual function
              * @run-last
              */
-            "array-element": (arg0: Array, arg1: number) => void;
+            "array-element": (array: Array, index_: number) => void;
             /**
              * The `::array-end` signal is emitted each time a parser
              * has successfully parsed an entire JSON array.
@@ -1005,7 +1017,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.array_end} virtual function
              * @run-last
              */
-            "array-end": (arg0: Array) => void;
+            "array-end": (array: Array) => void;
             /**
              * The `::array-start` signal is emitted each time a parser
              * starts parsing a JSON array.
@@ -1021,7 +1033,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.error} virtual function
              * @run-last
              */
-            error: (arg0: null) => void;
+            error: (error: null) => void;
             /**
              * The `::object-end` signal is emitted each time a parser
              * has successfully parsed an entire JSON object.
@@ -1029,7 +1041,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_end} virtual function
              * @run-last
              */
-            "object-end": (arg0: Object) => void;
+            "object-end": (object: Object) => void;
             /**
              * The `::object-member` signal is emitted each time a parser
              * has successfully parsed a single member of a JSON object.
@@ -1037,7 +1049,7 @@ export namespace Json {
              * @deprecated since 1.10: Derive your own parser type from {@link Json.Parser} and   override the {@link Json.Parser.object_member} virtual function
              * @run-last
              */
-            "object-member": (arg0: Object, arg1: string) => void;
+            "object-member": (object: Object, member_name: string) => void;
             /**
              * This signal is emitted each time a parser starts parsing a JSON object.
              * @signal
@@ -1293,6 +1305,7 @@ export namespace Json {
          * @param data the buffer to parse
          * @param length the length of the buffer, or -1 if it is `NUL` terminated
          * @returns `TRUE` if the buffer was succesfully parsed
+         * @throws GLib.Error
          */
         load_from_data(data: string, length: bigint | number): boolean;
 
@@ -1306,6 +1319,7 @@ export namespace Json {
          * See also: {@link Json.Parser.load_from_data}
          * @param filename the path for the file to parse
          * @returns `TRUE` if the file was successfully loaded and parsed.
+         * @throws GLib.Error
          */
         load_from_file(filename: string): boolean;
 
@@ -1320,6 +1334,7 @@ export namespace Json {
          * @param filename the path for the file to parse
          * @returns `TRUE` if the file was successfully loaded and parsed.
          * @since 1.6
+         * @throws GLib.Error
          */
         load_from_mapped_file(filename: string): boolean;
 
@@ -1334,6 +1349,7 @@ export namespace Json {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns `TRUE` if the data stream was successfully read and   parsed, and `FALSE` otherwise
          * @since 0.12
+         * @throws GLib.Error
          */
         load_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1390,6 +1406,7 @@ export namespace Json {
          * @param result the result of the asynchronous operation
          * @returns `TRUE` if the content of the stream was successfully retrieved   and parsed, and `FALSE` otherwise
          * @since 0.12
+         * @throws GLib.Error
          */
         load_from_stream_finish(result: Gio.AsyncResult): boolean;
 
@@ -1612,6 +1629,7 @@ export namespace Json {
          * @param expression a JSONPath expression
          * @returns `TRUE` if the compilation was successful, and `FALSE`   otherwise
          * @since 0.14
+         * @throws GLib.Error
          */
         compile(expression: string): boolean;
 

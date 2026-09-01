@@ -36,8 +36,8 @@ export namespace AyatanaIdo3 {
      * @gir-type Enum
      */
     enum RangeStyle {
-        DEFAULT,
-        SMALL,
+        DEFAULT = 0,
+        SMALL = 1,
     }
 
 
@@ -45,9 +45,9 @@ export namespace AyatanaIdo3 {
      * @gir-type Enum
      */
     enum ScaleMenuItemStyle {
-        NONE,
-        IMAGE,
-        LABEL,
+        NONE = 0,
+        IMAGE = 1,
+        LABEL = 2,
     }
 
 
@@ -55,8 +55,8 @@ export namespace AyatanaIdo3 {
      * @gir-type Enum
      */
     enum TimelineDirection {
-        FORWARD,
-        BACKWARD,
+        FORWARD = 0,
+        BACKWARD = 1,
     }
 
 
@@ -64,10 +64,10 @@ export namespace AyatanaIdo3 {
      * @gir-type Enum
      */
     enum TimelineProgressType {
-        LINEAR,
-        SINUSOIDAL,
-        EXPONENTIAL,
-        EASE_IN_EASE_OUT,
+        LINEAR = 0,
+        SINUSOIDAL = 1,
+        EXPONENTIAL = 2,
+        EASE_IN_EASE_OUT = 3,
     }
 
 
@@ -1252,7 +1252,7 @@ export namespace AyatanaIdo3 {
              * @signal
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (value: number) => void;
             "notify::adjustment": (pspec: GObject.ParamSpec) => void;
             "notify::reverse-scroll-events": (pspec: GObject.ParamSpec) => void;
             "notify::accel-path": (pspec: GObject.ParamSpec) => void;
@@ -2080,7 +2080,7 @@ export namespace AyatanaIdo3 {
              * @signal
              * @run-last
              */
-            frame: (arg0: number) => void;
+            frame: (progress: number) => void;
             /**
              * The ::paused signal is emitted when the timeline pauses.
              * @signal

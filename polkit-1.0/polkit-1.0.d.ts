@@ -74,31 +74,31 @@ export namespace Polkit {
         /**
          * Unknown whether the subject is authorized, never returned in any public API.
          */
-        UNKNOWN,
+        UNKNOWN = -1,
         /**
          * Subject is not authorized.
          */
-        NOT_AUTHORIZED,
+        NOT_AUTHORIZED = 0,
         /**
          * Authentication is required.
          */
-        AUTHENTICATION_REQUIRED,
+        AUTHENTICATION_REQUIRED = 1,
         /**
          * Authentication as an administrator is required.
          */
-        ADMINISTRATOR_AUTHENTICATION_REQUIRED,
+        ADMINISTRATOR_AUTHENTICATION_REQUIRED = 2,
         /**
          * Authentication is required. If the authorization is obtained, it is retained.
          */
-        AUTHENTICATION_REQUIRED_RETAINED,
+        AUTHENTICATION_REQUIRED_RETAINED = 3,
         /**
          * Authentication as an administrator is required. If the authorization is obtained, it is retained.
          */
-        ADMINISTRATOR_AUTHENTICATION_REQUIRED_RETAINED,
+        ADMINISTRATOR_AUTHENTICATION_REQUIRED_RETAINED = 4,
         /**
          * The subject is authorized
          */
-        AUTHORIZED,
+        AUTHORIZED = 5,
     }
 
 
@@ -109,6 +109,7 @@ export namespace Polkit {
      * interface.
      * @param str A string obtained from `polkit_identity_to_string()`.
      * @returns A {@link Polkit.Identity} or `null` if `error` is set. Free with `g_object_unref()`.
+     * @throws GLib.Error
      */
     function identity_from_string(str: string): Identity | null;
 
@@ -127,6 +128,7 @@ export namespace Polkit {
      * interface.
      * @param str A string obtained from `polkit_subject_to_string()`.
      * @returns A {@link Polkit.Subject} or `null` if `error` is set. Free with `g_object_unref()`.
+     * @throws GLib.Error
      */
     function subject_from_string(str: string): Subject;
 
@@ -145,12 +147,12 @@ export namespace Polkit {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * The authority supports temporary authorizations
          * that can be obtained through authentication.
          */
-        TEMPORARY_AUTHORIZATION,
+        TEMPORARY_AUTHORIZATION = 1,
     }
 
 
@@ -169,17 +171,17 @@ export namespace Polkit {
         /**
          * No flags set.
          */
-        NONE,
+        NONE = 0,
         /**
          * If the subject can obtain the authorization
          * through authentication, and an authentication agent is available, then attempt to do so. Note, this
          * means that the method used for checking authorization is likely to block for a long time.
          */
-        ALLOW_USER_INTERACTION,
+        ALLOW_USER_INTERACTION = 1,
         /**
          * Check access against policy even for root user.
          */
-        ALWAYS_CHECK,
+        ALWAYS_CHECK = 2,
     }
 
 
@@ -524,6 +526,7 @@ export namespace Polkit {
          * Finishes providing response from an authentication agent.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if `authority` acknowledged the call, `false` if `error` is set.
+         * @throws GLib.Error
          */
         authentication_agent_response_finish(res: Gio.AsyncResult): boolean;
 
@@ -539,6 +542,7 @@ export namespace Polkit {
          * @param identity The identity that was authenticated.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if `authority` acknowledged the call, `false` if `error` is set.
+         * @throws GLib.Error
          */
         authentication_agent_response_sync(cookie: string, identity: Identity, cancellable: Gio.Cancellable | null): boolean;
 
@@ -577,6 +581,7 @@ export namespace Polkit {
          * @param subject The subject that requested the authentication.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if `authority` acknowledged the call, `false` if `error` is set.
+         * @throws GLib.Error
          */
         authentication_agent_response_with_subject_sync(cookie: string, identity: Identity, subject: Subject, cancellable: Gio.Cancellable | null): boolean;
 
@@ -685,6 +690,7 @@ export namespace Polkit {
          * Finishes checking if a subject is authorized for an action.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns A {@link Polkit.AuthorizationResult} or `null` if `error` is set. Free with `g_object_unref()`.
+         * @throws GLib.Error
          */
         check_authorization_finish(res: Gio.AsyncResult): AuthorizationResult;
 
@@ -716,6 +722,7 @@ export namespace Polkit {
          * @param flags A set of {@link Polkit.CheckAuthorizationFlags}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link Polkit.AuthorizationResult} or `null` if `error` is set. Free with `g_object_unref()`.
+         * @throws GLib.Error
          */
         check_authorization_sync(subject: Subject, action_id: string, details: Details | null, flags: CheckAuthorizationFlags, cancellable: Gio.Cancellable | null): AuthorizationResult;
 
@@ -761,6 +768,7 @@ export namespace Polkit {
          * Finishes retrieving all registered actions.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns A list of {@link Polkit.ActionDescription} objects or `null` if `error` is set. The returned list should be freed with `g_list_free()` after each element have been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         enumerate_actions_finish(res: Gio.AsyncResult): ActionDescription[];
 
@@ -770,6 +778,7 @@ export namespace Polkit {
          * `polkit_authority_enumerate_actions()` for the asynchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link Polkit.ActionDescription} or `null` if `error` is set. The returned list should be freed with `g_list_free()` after each element have been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         enumerate_actions_sync(cancellable: Gio.Cancellable | null): ActionDescription[];
 
@@ -821,6 +830,7 @@ export namespace Polkit {
          * Finishes retrieving all registered actions.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns A list of {@link Polkit.TemporaryAuthorization} objects or `null` if `error` is set. The returned list should be freed with `g_list_free()` after each element have been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         enumerate_temporary_authorizations_finish(res: Gio.AsyncResult): TemporaryAuthorization[];
 
@@ -833,6 +843,7 @@ export namespace Polkit {
          * @param subject A {@link Polkit.Subject}, typically a {@link Polkit.UnixSession}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A list of {@link Polkit.TemporaryAuthorization} objects or `null` if `error` is set. The returned list should be freed with `g_list_free()` after each element have been freed with `g_object_unref()`.
+         * @throws GLib.Error
          */
         enumerate_temporary_authorizations_sync(subject: Subject, cancellable: Gio.Cancellable | null): TemporaryAuthorization[];
 
@@ -929,6 +940,7 @@ export namespace Polkit {
          * Finishes registering an authentication agent.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if the authentication agent was successfully registered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         register_authentication_agent_finish(res: Gio.AsyncResult): boolean;
 
@@ -948,6 +960,7 @@ export namespace Polkit {
          * @param object_path The object path for the authentication agent.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the authentication agent was successfully registered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         register_authentication_agent_sync(subject: Subject, locale: string, object_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1020,6 +1033,7 @@ export namespace Polkit {
          * Finishes registering an authentication agent.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if the authentication agent was successfully registered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         register_authentication_agent_with_options_finish(res: Gio.AsyncResult): boolean;
 
@@ -1040,6 +1054,7 @@ export namespace Polkit {
          * @param options A {@link GLib.Variant} with options or `null`.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the authentication agent was successfully registered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         register_authentication_agent_with_options_sync(subject: Subject, locale: string, object_path: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1091,6 +1106,7 @@ export namespace Polkit {
          * Finishes revoking a temporary authorization by id.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if the temporary authorization was revoked, `false` if error is set.
+         * @throws GLib.Error
          */
         revoke_temporary_authorization_by_id_finish(res: Gio.AsyncResult): boolean;
 
@@ -1103,6 +1119,7 @@ export namespace Polkit {
          * @param id The opaque identifier for the temporary authorization.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the temporary authorization was revoked, `false` if error is set.
+         * @throws GLib.Error
          */
         revoke_temporary_authorization_by_id_sync(id: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1154,6 +1171,7 @@ export namespace Polkit {
          * Finishes revoking temporary authorizations.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if all the temporary authorizations was revoked, `false` if error is set.
+         * @throws GLib.Error
          */
         revoke_temporary_authorizations_finish(res: Gio.AsyncResult): boolean;
 
@@ -1166,6 +1184,7 @@ export namespace Polkit {
          * @param subject The subject to revoke authorizations from, typically a {@link Polkit.UnixSession}.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the temporary authorization was revoked, `false` if error is set.
+         * @throws GLib.Error
          */
         revoke_temporary_authorizations_sync(subject: Subject, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1220,6 +1239,7 @@ export namespace Polkit {
          * Finishes unregistering an authentication agent.
          * @param res A {@link Gio.AsyncResult} obtained from the callback.
          * @returns `true` if the authentication agent was successfully unregistered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         unregister_authentication_agent_finish(res: Gio.AsyncResult): boolean;
 
@@ -1232,6 +1252,7 @@ export namespace Polkit {
          * @param object_path The object path for the authentication agent.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the authentication agent was successfully unregistered, `false` if `error` is set.
+         * @throws GLib.Error
          */
         unregister_authentication_agent_sync(subject: Subject, object_path: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -1372,6 +1393,7 @@ export namespace Polkit {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1381,6 +1403,7 @@ export namespace Polkit {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Authority;
 
@@ -1480,6 +1503,7 @@ export namespace Polkit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -1962,6 +1986,7 @@ export namespace Polkit {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1971,6 +1996,7 @@ export namespace Polkit {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Permission;
 
@@ -2070,6 +2096,7 @@ export namespace Polkit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2193,6 +2220,7 @@ export namespace Polkit {
          * - the calling thread is blocked until a reply is received.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link Polkit.UnixProcess} object or `null` if `error` is set.
+         * @throws GLib.Error
          */
         get_process_sync(cancellable: Gio.Cancellable | null): Subject | null;
 
@@ -2201,6 +2229,7 @@ export namespace Polkit {
          * the calling thread is blocked until a reply is received.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns A {@link Polkit.UnixUser} object or `null` if `error` is set.
+         * @throws GLib.Error
          */
         get_user_sync(cancellable: Gio.Cancellable | null): UnixUser | null;
 
@@ -2263,6 +2292,7 @@ export namespace Polkit {
          * Finishes checking whether a subject exists.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `polkit_subject_exists()`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_finish(res: Gio.AsyncResult): boolean;
 
@@ -2274,6 +2304,7 @@ export namespace Polkit {
          * asynchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -2898,6 +2929,7 @@ export namespace Polkit {
 
         /**
          * (deprecated)
+         * @throws GLib.Error
          */
         get_owner(): number;
 
@@ -3034,6 +3066,7 @@ export namespace Polkit {
          * Finishes checking whether a subject exists.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `polkit_subject_exists()`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_finish(res: Gio.AsyncResult): boolean;
 
@@ -3045,6 +3078,7 @@ export namespace Polkit {
          * asynchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3385,6 +3419,7 @@ export namespace Polkit {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -3394,6 +3429,7 @@ export namespace Polkit {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): UnixSession;
 
@@ -3493,6 +3529,7 @@ export namespace Polkit {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -3594,6 +3631,7 @@ export namespace Polkit {
          * Finishes checking whether a subject exists.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `polkit_subject_exists()`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_finish(res: Gio.AsyncResult): boolean;
 
@@ -3605,6 +3643,7 @@ export namespace Polkit {
          * asynchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -4100,6 +4139,7 @@ export namespace Polkit {
          * Finishes checking whether a subject exists.
          * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `polkit_subject_exists()`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_finish(res: Gio.AsyncResult): boolean;
 
@@ -4111,6 +4151,7 @@ export namespace Polkit {
          * asynchronous version.
          * @param cancellable A {@link Gio.Cancellable} or `null`.
          * @returns `true` if the subject exists, `false` if not or `error` is set.
+         * @throws GLib.Error
          */
         exists_sync(cancellable: Gio.Cancellable | null): boolean;
 

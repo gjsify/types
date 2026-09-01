@@ -40,15 +40,15 @@ export namespace Camel {
         /**
          * An error occurred while authenticating.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * Server accepted our authentication attempt.
          */
-        ACCEPTED,
+        ACCEPTED = 1,
         /**
          * Server rejected our authentication attempt.
          */
-        REJECTED,
+        REJECTED = 2,
     }
 
 
@@ -56,12 +56,12 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CertTrust {
-        UNKNOWN,
-        NEVER,
-        MARGINAL,
-        FULLY,
-        ULTIMATE,
-        TEMPORARY,
+        UNKNOWN = 0,
+        NEVER = 1,
+        MARGINAL = 2,
+        FULLY = 3,
+        ULTIMATE = 4,
+        TEMPORARY = 5,
     }
 
 
@@ -73,7 +73,7 @@ export namespace Camel {
         /**
          * one or more recipient's public key was not found
          */
-        CIPHER_CONTEXT_ERROR_KEY_NOT_FOUND,
+        CIPHER_CONTEXT_ERROR_KEY_NOT_FOUND = 0,
     }
 
 
@@ -81,16 +81,16 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CipherHash {
-        DEFAULT,
-        MD2,
-        MD5,
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512,
-        RIPEMD160,
-        TIGER192,
-        HAVAL5160,
+        DEFAULT = 0,
+        MD2 = 1,
+        MD5 = 2,
+        SHA1 = 3,
+        SHA256 = 4,
+        SHA384 = 5,
+        SHA512 = 6,
+        RIPEMD160 = 7,
+        TIGER192 = 8,
+        HAVAL5160 = 9,
     }
 
 
@@ -98,10 +98,10 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CipherValidityEncrypt {
-        NONE,
-        WEAK,
-        ENCRYPTED,
-        STRONG,
+        NONE = 0,
+        WEAK = 1,
+        ENCRYPTED = 2,
+        STRONG = 3,
     }
 
 
@@ -109,8 +109,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CipherValidityMode {
-        SIGN,
-        ENCRYPT,
+        SIGN = 0,
+        ENCRYPT = 1,
     }
 
 
@@ -118,11 +118,11 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CipherValiditySign {
-        NONE,
-        GOOD,
-        BAD,
-        UNKNOWN,
-        NEED_PUBLIC_KEY,
+        NONE = 0,
+        GOOD = 1,
+        BAD = 2,
+        UNKNOWN = 3,
+        NEED_PUBLIC_KEY = 4,
     }
 
 
@@ -130,8 +130,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CmpBodyKind {
-        TEXT,
-        REGEX,
+        TEXT = 0,
+        REGEX = 1,
     }
 
 
@@ -139,15 +139,15 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum CmpHeaderKind {
-        CONTAINS,
-        MATCHES,
-        STARTS_WITH,
-        ENDS_WITH,
-        EXISTS,
-        SOUNDEX,
-        REGEX,
-        FULL_REGEX,
-        HAS_WORDS,
+        CONTAINS = 0,
+        MATCHES = 1,
+        STARTS_WITH = 2,
+        ENDS_WITH = 3,
+        EXISTS = 4,
+        SOUNDEX = 5,
+        REGEX = 6,
+        FULL_REGEX = 7,
+        HAS_WORDS = 8,
     }
 
 
@@ -167,11 +167,11 @@ export namespace Camel {
         /**
          * compare case insensitively
          */
-        INSENSITIVE,
+        INSENSITIVE = 0,
         /**
          * compare case sensitively
          */
-        SENSITIVE,
+        SENSITIVE = 1,
     }
 
 
@@ -183,7 +183,7 @@ export namespace Camel {
         /**
          * database is corrupt
          */
-        DB_ERROR_CORRUPT,
+        DB_ERROR_CORRUPT = 0,
     }
 
 
@@ -220,15 +220,15 @@ export namespace Camel {
         /**
          * Fetch only basic headers (Date, From, To, Subject, etc.).
          */
-        BASIC,
+        BASIC = 0,
         /**
          * Fetch all basic headers and mailing list headers.
          */
-        BASIC_AND_MAILING_LIST,
+        BASIC_AND_MAILING_LIST = 1,
         /**
          * Fetch all available message headers.
          */
-        ALL,
+        ALL = 2,
     }
 
 
@@ -247,11 +247,11 @@ export namespace Camel {
         /**
          * fetch old messages
          */
-        OLD_MESSAGES,
+        OLD_MESSAGES = 0,
         /**
          * fetch new messages
          */
-        NEW_MESSAGES,
+        NEW_MESSAGES = 1,
     }
 
 
@@ -326,27 +326,27 @@ export namespace Camel {
         /**
          * no trust set
          */
-        NONE,
+        NONE = 0,
         /**
          * unknown trust level
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * never trust the key
          */
-        NEVER,
+        NEVER = 2,
         /**
          * marginally trust the key
          */
-        MARGINAL,
+        MARGINAL = 3,
         /**
          * fully trust the key
          */
-        FULL,
+        FULL = 4,
         /**
          * ultimately trust the key
          */
-        ULTIMATE,
+        ULTIMATE = 5,
     }
 
 
@@ -354,20 +354,20 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum HTMLParserState {
-        DATA,
-        ENT,
-        ELEMENT,
-        TAG,
-        DTDENT,
-        COMMENT0,
-        COMMENT,
-        ATTR0,
-        ATTR,
-        VAL0,
-        VAL,
-        VAL_ENT,
-        EOD,
-        EOF,
+        DATA = 0,
+        ENT = 1,
+        ELEMENT = 2,
+        TAG = 3,
+        DTDENT = 4,
+        COMMENT0 = 5,
+        COMMENT = 6,
+        ATTR0 = 7,
+        ATTR = 8,
+        VAL0 = 9,
+        VAL = 10,
+        VAL_ENT = 11,
+        EOD = 12,
+        EOF = 13,
     }
 
 
@@ -375,9 +375,9 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum HeaderAddressType {
-        NONE,
-        NAME,
-        GROUP,
+        NONE = 0,
+        NAME = 1,
+        GROUP = 2,
     }
 
 
@@ -396,19 +396,19 @@ export namespace Camel {
         /**
          * An error occurred while invoking the junk filter.
          */
-        ERROR,
+        ERROR = 0,
         /**
          * The junk filter could not determine whether the message is junk.
          */
-        INCONCLUSIVE,
+        INCONCLUSIVE = 1,
         /**
          * The junk filter believes the message is junk.
          */
-        MESSAGE_IS_JUNK,
+        MESSAGE_IS_JUNK = 2,
         /**
          * The junk filter believes the message is not junk.
          */
-        MESSAGE_IS_NOT_JUNK,
+        MESSAGE_IS_NOT_JUNK = 3,
     }
 
 
@@ -416,8 +416,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum LockType {
-        READ,
-        WRITE,
+        READ = 0,
+        WRITE = 1,
     }
 
 
@@ -437,27 +437,27 @@ export namespace Camel {
         /**
          * do not match on threads
          */
-        NONE,
+        NONE = 0,
         /**
          * include all related messages in the thread
          */
-        ALL,
+        ALL = 1,
         /**
          * include replies of the message
          */
-        REPLIES,
+        REPLIES = 2,
         /**
          * include replies and parents
          */
-        REPLIES_AND_PARENTS,
+        REPLIES_AND_PARENTS = 3,
         /**
          * include messages not being in any thread
          */
-        SINGLE,
+        SINGLE = 4,
         /**
          * include messages not part of the {@link Camel.MatchThreadsKind.ALL} (Since: 3.60)
          */
-        NOT_ALL,
+        NOT_ALL = 5,
     }
 
 
@@ -469,19 +469,19 @@ export namespace Camel {
         /**
          * Allocate to native structure alignment
          */
-        STRUCT,
+        STRUCT = 0,
         /**
          * Allocate to words - 16 bit alignment
          */
-        WORD,
+        WORD = 1,
         /**
          * Allocate to bytes - 8 bit alignment
          */
-        BYTE,
+        BYTE = 2,
         /**
          * Which bits determine the alignment information
          */
-        MASK,
+        MASK = 3,
     }
 
 
@@ -496,13 +496,13 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeFilterBasicType {
-        INVALID,
-        BASE64_ENC,
-        BASE64_DEC,
-        QP_ENC,
-        QP_DEC,
-        UU_ENC,
-        UU_DEC,
+        INVALID = 0,
+        BASE64_ENC = 1,
+        BASE64_DEC = 2,
+        QP_ENC = 3,
+        QP_DEC = 4,
+        UU_ENC = 5,
+        UU_DEC = 6,
     }
 
 
@@ -517,8 +517,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeFilterCRLFDirection {
-        ENCODE,
-        DECODE,
+        ENCODE = 0,
+        DECODE = 1,
     }
 
 
@@ -533,8 +533,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeFilterCRLFMode {
-        DOTS,
-        ONLY,
+        DOTS = 0,
+        ONLY = 1,
     }
 
 
@@ -549,8 +549,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeFilterGZipMode {
-        ZIP,
-        UNZIP,
+        ZIP = 0,
+        UNZIP = 1,
     }
 
 
@@ -565,8 +565,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeFilterYencDirection {
-        ENCODE,
-        DECODE,
+        ENCODE = 0,
+        DECODE = 1,
     }
 
 
@@ -574,22 +574,22 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum MimeParserState {
-        INITIAL,
-        PRE_FROM,
-        FROM,
-        HEADER,
-        BODY,
-        MULTIPART,
-        MESSAGE,
-        PART,
-        END,
-        EOF,
-        PRE_FROM_END,
-        FROM_END,
-        HEADER_END,
-        BODY_END,
-        MULTIPART_END,
-        MESSAGE_END,
+        INITIAL = 0,
+        PRE_FROM = 1,
+        FROM = 2,
+        HEADER = 3,
+        BODY = 4,
+        MULTIPART = 5,
+        MESSAGE = 6,
+        PART = 7,
+        END = 8,
+        EOF = 8,
+        PRE_FROM_END = 9,
+        FROM_END = 10,
+        HEADER_END = 11,
+        BODY_END = 12,
+        MULTIPART_END = 13,
+        MESSAGE_END = 14,
     }
 
 
@@ -609,16 +609,16 @@ export namespace Camel {
         /**
          * Use an unencrypted network connection.
          */
-        NONE,
+        NONE = 0,
         /**
          * Use SSL by connecting to an alternate port number.
          */
-        SSL_ON_ALTERNATE_PORT,
+        SSL_ON_ALTERNATE_PORT = 1,
         /**
          * Use SSL or TLS by connecting to the standard port and invoking
          *   STARTTLS before authenticating.  This is the recommended method.
          */
-        STARTTLS_ON_STANDARD_PORT,
+        STARTTLS_ON_STANDARD_PORT = 2,
     }
 
 
@@ -633,17 +633,17 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum ProviderConfType {
-        END,
-        SECTION_START,
-        SECTION_END,
-        CHECKBOX,
-        CHECKSPIN,
-        ENTRY,
-        LABEL,
-        HIDDEN,
-        OPTIONS,
-        PLACEHOLDER,
-        ADVANCED_SECTION_START,
+        END = 0,
+        SECTION_START = 1,
+        SECTION_END = 2,
+        CHECKBOX = 3,
+        CHECKSPIN = 4,
+        ENTRY = 5,
+        LABEL = 6,
+        HIDDEN = 7,
+        OPTIONS = 8,
+        PLACEHOLDER = 9,
+        ADVANCED_SECTION_START = 10,
     }
 
 
@@ -658,8 +658,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum ProviderType {
-        STORE,
-        TRANSPORT,
+        STORE = 0,
+        TRANSPORT = 1,
     }
 
 
@@ -679,27 +679,27 @@ export namespace Camel {
         /**
          * type is a ptrarray, what it points to is implementation dependant
          */
-        ARRAY_PTR,
+        ARRAY_PTR = 0,
         /**
          * type is a number
          */
-        INT,
+        INT = 1,
         /**
          * type is a pointer to a single string
          */
-        STRING,
+        STRING = 2,
         /**
          * boolean type
          */
-        BOOL,
+        BOOL = 3,
         /**
          * time_t type
          */
-        TIME,
+        TIME = 4,
         /**
          * unknown type
          */
-        UNDEFINED,
+        UNDEFINED = 5,
     }
 
 
@@ -719,31 +719,31 @@ export namespace Camel {
         /**
          * integer literal
          */
-        INT,
+        INT = 0,
         /**
          * boolean literal
          */
-        BOOL,
+        BOOL = 1,
         /**
          * string literal
          */
-        STRING,
+        STRING = 2,
         /**
          * time_t literal (number of seconds past the epoch)
          */
-        TIME,
+        TIME = 3,
         /**
          * normal function, arguments are evaluated before calling
          */
-        FUNC,
+        FUNC = 4,
         /**
          * immediate function, raw terms are arguments
          */
-        IFUNC,
+        IFUNC = 5,
         /**
          * variable reference
          */
-        VAR,
+        VAR = 6,
     }
 
 
@@ -751,8 +751,8 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum SMIMESign {
-        CLEARSIGN,
-        ENVELOPED,
+        CLEARSIGN = 0,
+        ENVELOPED = 1,
     }
 
 
@@ -767,9 +767,9 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum SaslAnonTraceType {
-        EMAIL,
-        OPAQUE,
-        EMPTY,
+        EMAIL = 0,
+        OPAQUE = 1,
+        EMPTY = 2,
     }
 
 
@@ -789,19 +789,19 @@ export namespace Camel {
         /**
          * {@link Camel.Service} is disconnected from a remote server.
          */
-        DISCONNECTED,
+        DISCONNECTED = 0,
         /**
          * {@link Camel.Service} is connecting to a remote server.
          */
-        CONNECTING,
+        CONNECTING = 1,
         /**
          * {@link Camel.Service} is connected to a remote server.
          */
-        CONNECTED,
+        CONNECTED = 2,
         /**
          * {@link Camel.Service} is disconnecting from a remote server.
          */
-        DISCONNECTING,
+        DISCONNECTING = 3,
     }
 
 
@@ -856,9 +856,9 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum SessionAlertType {
-        INFO,
-        WARNING,
-        ERROR,
+        INFO = 0,
+        WARNING = 1,
+        ERROR = 2,
     }
 
 
@@ -878,11 +878,11 @@ export namespace Camel {
         /**
          * Sorting is in ascending order.
          */
-        ASCENDING,
+        ASCENDING = 0,
         /**
          * Sorting is in descending order.
          */
-        DESCENDING,
+        DESCENDING = 1,
     }
 
 
@@ -903,31 +903,31 @@ export namespace Camel {
         /**
          * all messages
          */
-        TOTAL,
+        TOTAL = 1,
         /**
          * only unread and not deleted messages
          */
-        UNREAD,
+        UNREAD = 2,
         /**
          * only junk messages
          */
-        JUNK,
+        JUNK = 3,
         /**
          * only deleted messages
          */
-        DELETED,
+        DELETED = 4,
         /**
          * all except of junk and deleted messages
          */
-        NOT_JUNK_NOT_DELETED,
+        NOT_JUNK_NOT_DELETED = 5,
         /**
          * all unread, except of junk and deleted messages
          */
-        NOT_JUNK_NOT_DELETED_UNREAD,
+        NOT_JUNK_NOT_DELETED_UNREAD = 6,
         /**
          * only junk messages, which are not deleted
          */
-        JUNK_NOT_DELETED,
+        JUNK_NOT_DELETED = 7,
     }
 
 
@@ -960,11 +960,11 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum StreamBufferMode {
-        BUFFER,
-        NONE,
-        READ,
-        WRITE,
-        MODE,
+        BUFFER = 0,
+        NONE = 1,
+        READ = 0,
+        WRITE = 128,
+        MODE = 128,
     }
 
 
@@ -984,15 +984,15 @@ export namespace Camel {
         /**
          * the three-state value is Off
          */
-        OFF,
+        OFF = 0,
         /**
          * the three-state value is On
          */
-        ON,
+        ON = 1,
         /**
          * the three-state value is neither On, nor Off
          */
-        INCONSISTENT,
+        INCONSISTENT = 2,
     }
 
 
@@ -1013,19 +1013,19 @@ export namespace Camel {
         /**
          * days
          */
-        DAYS,
+        DAYS = 1,
         /**
          * weeks
          */
-        WEEKS,
+        WEEKS = 2,
         /**
          * months
          */
-        MONTHS,
+        MONTHS = 3,
         /**
          * years
          */
-        YEARS,
+        YEARS = 4,
     }
 
 
@@ -1040,14 +1040,14 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum TransferEncoding {
-        ENCODING_DEFAULT,
-        ENCODING_7BIT,
-        ENCODING_8BIT,
-        ENCODING_BASE64,
-        ENCODING_QUOTEDPRINTABLE,
-        ENCODING_BINARY,
-        ENCODING_UUENCODE,
-        NUM_ENCODINGS,
+        ENCODING_DEFAULT = 0,
+        ENCODING_7BIT = 1,
+        ENCODING_8BIT = 2,
+        ENCODING_BASE64 = 3,
+        ENCODING_QUOTEDPRINTABLE = 4,
+        ENCODING_BINARY = 5,
+        ENCODING_UUENCODE = 6,
+        NUM_ENCODINGS = 7,
     }
 
 
@@ -1055,9 +1055,9 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum VTrashFolderType {
-        TRASH,
-        JUNK,
-        LAST,
+        TRASH = 0,
+        JUNK = 1,
+        LAST = 2,
     }
 
 
@@ -1065,14 +1065,14 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum _search_match_t {
-        EXACT,
-        CONTAINS,
-        WORD,
-        STARTS,
-        ENDS,
-        SOUNDEX,
-        REGEX_SINGLELINE,
-        REGEX_MULTILINE,
+        EXACT = 0,
+        CONTAINS = 1,
+        WORD = 2,
+        STARTS = 3,
+        ENDS = 4,
+        SOUNDEX = 5,
+        REGEX_SINGLELINE = 6,
+        REGEX_MULTILINE = 7,
     }
 
 
@@ -1080,11 +1080,11 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum _search_t {
-        ASIS,
-        ENCODED,
-        ADDRESS,
-        ADDRESS_ENCODED,
-        MLIST,
+        ASIS = 0,
+        ENCODED = 1,
+        ADDRESS = 2,
+        ADDRESS_ENCODED = 3,
+        MLIST = 4,
     }
 
 
@@ -1092,24 +1092,37 @@ export namespace Camel {
      * @gir-type Enum
      */
     enum _search_word_t {
-        SIMPLE,
-        COMPLEX,
-        "8BIT",
+        SIMPLE = 1,
+        COMPLEX = 2,
+        "8BIT" = 4,
     }
 
 
+    /**
+     * @default 2
+     */
     const AI_CANONNAME: number;
 
+    /**
+     * @default 4
+     */
     const AI_NUMERICHOST: number;
 
+    /**
+     * @default 1024
+     */
     const BLOCK_SIZE: number;
 
+    /**
+     * @default 10
+     */
     const BLOCK_SIZE_BITS: number;
 
     /**
      * Name of the photo-filename property which can be stored
      * on a {@link Camel.CipherCertInfo}.
      * @since 3.22
+     * @default photo-filename
      */
     const CIPHER_CERT_INFO_PROPERTY_PHOTO_FILENAME: string;
 
@@ -1120,129 +1133,276 @@ export namespace Camel {
      * only on the first signer of the first validity, even the addresses
      * can belong to a different signer.
      * @since 3.28
+     * @default signers-alt-emails
      */
     const CIPHER_CERT_INFO_PROPERTY_SIGNERS_ALT_EMAILS: string;
 
+    /**
+     * @default imap
+     */
     const DEBUG_IMAP: string;
 
+    /**
+     * @default imap:folder
+     */
     const DEBUG_IMAP_FOLDER: string;
 
+    /**
+     * @default 30
+     */
     const DOT_LOCK_REFRESH: number;
 
+    /**
+     * @default -9
+     */
     const EAI_ADDRFAMILY: number;
 
+    /**
+     * @default -3
+     */
     const EAI_AGAIN: number;
 
+    /**
+     * @default -1
+     */
     const EAI_BADFLAGS: number;
 
+    /**
+     * @default -4
+     */
     const EAI_FAIL: number;
 
+    /**
+     * @default -6
+     */
     const EAI_FAMILY: number;
 
+    /**
+     * @default -10
+     */
     const EAI_MEMORY: number;
 
+    /**
+     * @default -5
+     */
     const EAI_NODATA: number;
 
+    /**
+     * @default -2
+     */
     const EAI_NONAME: number;
 
+    /**
+     * @default -12
+     */
     const EAI_OVERFLOW: number;
 
+    /**
+     * @default -8
+     */
     const EAI_SERVICE: number;
 
+    /**
+     * @default -7
+     */
     const EAI_SOCKTYPE: number;
 
+    /**
+     * @default -11
+     */
     const EAI_SYSTEM: number;
 
     /**
      * This environment variable configures where the camel
      * provider modules are loaded from.
+     * @default EDS_CAMEL_PROVIDER_DIR
      */
     const EDS_CAMEL_PROVIDER_DIR: string;
 
     /**
      * The folder type bitshift value.
+     * @default 10
      */
     const FOLDER_TYPE_BIT: number;
 
     /**
      * The folder type mask value.
+     * @default 64512
      */
     const FOLDER_TYPE_MASK: number;
 
+    /**
+     * @default 998
+     */
     const FOLD_MAX_SIZE: number;
 
+    /**
+     * @default 77
+     */
     const FOLD_SIZE: number;
 
+    /**
+     * @default 1
+     */
     const INDEX_DELETED: number;
 
+    /**
+     * @default 128
+     */
     const KEY_TABLE_MAX_KEY: number;
 
+    /**
+     * @default 2
+     */
     const LOCK_DELAY: number;
 
+    /**
+     * @default 2
+     */
     const LOCK_DOT_DELAY: number;
 
+    /**
+     * @default 5
+     */
     const LOCK_DOT_RETRY: number;
 
+    /**
+     * @default 60
+     */
     const LOCK_DOT_STALE: number;
 
+    /**
+     * @default 5
+     */
     const LOCK_RETRY: number;
 
     /**
      * Maximum length, in characters, of a mime part preview.
      * @since 3.52
+     * @default 256
      */
     const MAX_PREVIEW_LENGTH: number;
 
+    /**
+     * @default -1
+     */
     const MESSAGE_DATE_CURRENT: number;
 
+    /**
+     * @default 4294901760
+     */
     const MESSAGE_SYSTEM_MASK: number;
 
+    /**
+     * @default 4096
+     */
     const MIME_YDECODE_STATE_BEGIN: number;
 
+    /**
+     * @default 16384
+     */
     const MIME_YDECODE_STATE_DECODE: number;
 
+    /**
+     * @default 32768
+     */
     const MIME_YDECODE_STATE_END: number;
 
+    /**
+     * @default 256
+     */
     const MIME_YDECODE_STATE_EOLN: number;
 
+    /**
+     * @default 512
+     */
     const MIME_YDECODE_STATE_ESCAPE: number;
 
+    /**
+     * @default 0
+     */
     const MIME_YDECODE_STATE_INIT: number;
 
+    /**
+     * @default 8192
+     */
     const MIME_YDECODE_STATE_PART: number;
 
+    /**
+     * @default -1
+     */
     const MIME_YENCODE_CRC_INIT: number;
 
+    /**
+     * @default 0
+     */
     const MIME_YENCODE_STATE_INIT: number;
 
+    /**
+     * @default 16
+     */
     const NI_DGRAM: number;
 
+    /**
+     * @default 8
+     */
     const NI_NAMEREQD: number;
 
+    /**
+     * @default 4
+     */
     const NI_NOFQDN: number;
 
+    /**
+     * @default 1
+     */
     const NI_NUMERICHOST: number;
 
+    /**
+     * @default 2
+     */
     const NI_NUMERICSERV: number;
 
+    /**
+     * @default 0
+     */
     const O_BINARY: number;
 
+    /**
+     * @default Bcc
+     */
     const RECIPIENT_TYPE_BCC: string;
 
+    /**
+     * @default Cc
+     */
     const RECIPIENT_TYPE_CC: string;
 
+    /**
+     * @default Resent-Bcc
+     */
     const RECIPIENT_TYPE_RESENT_BCC: string;
 
+    /**
+     * @default Resent-Cc
+     */
     const RECIPIENT_TYPE_RESENT_CC: string;
 
+    /**
+     * @default Resent-To
+     */
     const RECIPIENT_TYPE_RESENT_TO: string;
 
+    /**
+     * @default To
+     */
     const RECIPIENT_TYPE_TO: string;
 
     /**
      * Can be used with `camel_session_addressbook_contains_sync()` as the book UID,
      * meaning to check in all configured address books.
      * @since 3.44
+     * @default *any
      */
     const SESSION_BOOK_UID_ANY: string;
 
@@ -1250,61 +1410,122 @@ export namespace Camel {
      * Can be used with `camel_session_addressbook_contains_sync()` as the book UID,
      * meaning to check in all address books enabled for auto-completion.
      * @since 3.44
+     * @default *completion
      */
     const SESSION_BOOK_UID_COMPLETION: string;
 
     /**
      * File name used by the {@link Camel.Store} for the {@link Camel.StoreDB}.
      * @since 3.58
+     * @default folders.db
      */
     const STORE_DB_FILE: string;
 
     /**
      * The folder store info type bitshift value.
+     * @default 10
      */
     const STORE_INFO_FOLDER_TYPE_BIT: number;
 
     /**
      * The folder store info type mask value.
+     * @default 64512
      */
     const STORE_INFO_FOLDER_TYPE_MASK: number;
 
+    /**
+     * @default -1
+     */
     const STORE_INFO_FOLDER_UNKNOWN: number;
 
+    /**
+     * @default Account:Mail Account:archive-folder:f
+     */
     const STORE_SETUP_ARCHIVE_FOLDER: string;
 
+    /**
+     * @default Submission:Mail Composition:drafts-folder:f
+     */
     const STORE_SETUP_DRAFTS_FOLDER: string;
 
+    /**
+     * @default Submission:Mail Submission:sent-folder:f
+     */
     const STORE_SETUP_SENT_FOLDER: string;
 
+    /**
+     * @default Submission:Mail Composition:templates-folder:f
+     */
     const STORE_SETUP_TEMPLATES_FOLDER: string;
 
+    /**
+     * @default 3
+     */
     const URL_HIDE_ALL: number;
 
+    /**
+     * @default 2
+     */
     const URL_PART_AUTH: number;
 
+    /**
+     * @default 8
+     */
     const URL_PART_HIDDEN: number;
 
+    /**
+     * @default 8
+     */
     const URL_PART_HOST: number;
 
+    /**
+     * @default 8
+     */
     const URL_PART_NEED: number;
 
+    /**
+     * @default 4
+     */
     const URL_PART_PASSWORD: number;
 
+    /**
+     * @default 32
+     */
     const URL_PART_PATH: number;
 
+    /**
+     * @default 64
+     */
     const URL_PART_PATH_DIR: number;
 
+    /**
+     * @default 16
+     */
     const URL_PART_PORT: number;
 
+    /**
+     * @default 1
+     */
     const URL_PART_USER: number;
 
+    /**
+     * @default 3
+     */
     const UTILS_MAX_USER_HEADERS: number;
 
+    /**
+     * @default 196608
+     */
     const UUDECODE_STATE_MASK: number;
 
+    /**
+     * @default .#evolution/Junk
+     */
     const VJUNK_NAME: string;
 
+    /**
+     * @default .#evolution/Trash
+     */
     const VTRASH_NAME: string;
 
     /**
@@ -1362,6 +1583,7 @@ export namespace Camel {
      * @param ostream stream to write canonicalised output to.
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns -1 on error;
+     * @throws GLib.Error
      */
     function cipher_canonical_to_stream(part: MimePart, flags: number, ostream: Stream, cancellable: Gio.Cancellable | null): number;
 
@@ -1716,6 +1938,7 @@ export namespace Camel {
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns a newly allocated #addrinfo. Free it    with `camel_freeaddrinfo()` when done with it.
      * @since 2.22
+     * @throws GLib.Error
      */
     function getaddrinfo(name: string, service: string, hints: null, cancellable: Gio.Cancellable | null): null;
 
@@ -2009,6 +2232,7 @@ export namespace Camel {
      * when dot locking had not been compiled.
      * @param path a path to lock
      * @returns -1 on error, sets `ex` appropriately.
+     * @throws GLib.Error
      */
     function lock_dot(path: string): number;
 
@@ -2023,6 +2247,7 @@ export namespace Camel {
      * @param fd a file descriptor
      * @param type a {@link Camel.LockType}
      * @returns -1 on error.
+     * @throws GLib.Error
      */
     function lock_fcntl(fd: number, type: LockType): number;
 
@@ -2037,6 +2262,7 @@ export namespace Camel {
      * @param fd a file descriptor
      * @param type a {@link Camel.LockType}
      * @returns -1 on error.
+     * @throws GLib.Error
      */
     function lock_flock(fd: number, type: LockType): number;
 
@@ -2047,11 +2273,13 @@ export namespace Camel {
      * @param fd Open file descriptor of the right type to lock.
      * @param type Type of lock, CAMEL_LOCK_READ or CAMEL_LOCK_WRITE.
      * @returns -1 on error, `ex` will describe the locking system that failed.
+     * @throws GLib.Error
      */
     function lock_folder(path: string, fd: number, type: LockType): number;
 
     /**
      * @param path 
+     * @throws GLib.Error
      */
     function lock_helper_lock(path: string): number;
 
@@ -2076,6 +2304,7 @@ export namespace Camel {
      * @param source source file
      * @param dest destination file
      * @returns Returns -1 on error or 0 on success.
+     * @throws GLib.Error
      */
     function movemail(source: string, dest: string): number;
 
@@ -2125,6 +2354,7 @@ export namespace Camel {
      * modified or freed.
      * @param protocol a {@link Camel.Provider} protocol name
      * @returns a {@link Camel.Provider} for `protocol`, or `null` on error
+     * @throws GLib.Error
      */
     function provider_get(protocol: string): Provider;
 
@@ -2159,6 +2389,7 @@ export namespace Camel {
      * itself with `session`.
      * @param path the path to a shared library
      * @returns `true` on success, `false` on failure
+     * @throws GLib.Error
      */
     function provider_load(path: string): boolean;
 
@@ -2266,6 +2497,7 @@ export namespace Camel {
      * @param n number of bytes to read into `buf`
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes read or -1 on fail. On failure, errno will be set appropriately.
+     * @throws GLib.Error
      */
     function read(fd: number, buf: string, n: bigint | number, cancellable: Gio.Cancellable | null): number;
 
@@ -2853,6 +3085,7 @@ export namespace Camel {
      * @param n number of bytes of `buf` to write
      * @param cancellable optional {@link Gio.Cancellable} object, or `null`
      * @returns number of bytes written or -1 on fail. On failure, errno will be set appropriately.
+     * @throws GLib.Error
      */
     function write(fd: number, buf: string, n: bigint | number, cancellable: Gio.Cancellable | null): number;
 
@@ -3051,10 +3284,10 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum BestencEncoding {
-        "7BIT",
-        "8BIT",
-        BINARY,
-        TEXT,
+        "7BIT" = 0,
+        "8BIT" = 1,
+        BINARY = 2,
+        TEXT = 256,
     }
 
 
@@ -3062,10 +3295,10 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum BestencRequired {
-        GET_ENCODING,
-        GET_CHARSET,
-        LF_IS_CRLF,
-        NO_FROM,
+        GET_ENCODING = 1,
+        GET_CHARSET = 2,
+        LF_IS_CRLF = 256,
+        NO_FROM = 512,
     }
 
 
@@ -3073,7 +3306,7 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum BlockFileFlags {
-        BLOCK_FILE_SYNC,
+        BLOCK_FILE_SYNC = 1,
     }
 
 
@@ -3081,8 +3314,8 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum BlockFlags {
-        DIRTY,
-        DETACHED,
+        DIRTY = 1,
+        DETACHED = 2,
     }
 
 
@@ -3102,11 +3335,11 @@ export namespace Camel {
         /**
          * escape the text and enclose it into apostrophes
          */
-        FULL,
+        FULL = 0,
         /**
          * only escape the text, without adding surrounding apostrophes
          */
-        ESCAPE_ONLY,
+        ESCAPE_ONLY = 1,
     }
 
 
@@ -3121,12 +3354,12 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum FolderFlags {
-        HAS_SUMMARY_CAPABILITY,
-        FILTER_RECENT,
-        HAS_BEEN_DELETED,
-        IS_TRASH,
-        IS_JUNK,
-        FILTER_JUNK,
+        HAS_SUMMARY_CAPABILITY = 1,
+        FILTER_RECENT = 4,
+        HAS_BEEN_DELETED = 8,
+        IS_TRASH = 16,
+        IS_JUNK = 32,
+        FILTER_JUNK = 64,
     }
 
 
@@ -3147,115 +3380,115 @@ export namespace Camel {
         /**
          * The folder cannot contain messages.
          */
-        NOSELECT,
+        NOSELECT = 1,
         /**
          * The folder cannot have child folders.
          */
-        NOINFERIORS,
+        NOINFERIORS = 2,
         /**
          * The folder has children (not yet fully implemented).
          */
-        CHILDREN,
+        CHILDREN = 4,
         /**
          * The folder does not have children (not yet fully implemented).
          */
-        NOCHILDREN,
+        NOCHILDREN = 8,
         /**
          * The folder is subscribed.
          */
-        SUBSCRIBED,
+        SUBSCRIBED = 16,
         /**
          * The folder is virtual.  Messages cannot be copied or moved to
          *    virtual folders since they are only queries of other folders.
          */
-        VIRTUAL,
+        VIRTUAL = 32,
         /**
          * The folder is a built-in "system" folder.  System folders
          *    cannot be renamed or deleted.
          */
-        SYSTEM,
+        SYSTEM = 64,
         /**
          * The folder is a virtual trash folder.  It cannot be copied to,
          *    and can only be moved to if in an existing folder.
          */
-        VTRASH,
+        VTRASH = 128,
         /**
          * A folder being shared by someone else.
          */
-        SHARED_TO_ME,
+        SHARED_TO_ME = 256,
         /**
          * A folder being shared by the user.
          */
-        SHARED_BY_ME,
+        SHARED_BY_ME = 512,
         /**
          * The folder is a normal folder.
          */
-        TYPE_NORMAL,
+        TYPE_NORMAL = 0,
         /**
          * The folder is an inbox folder.
          */
-        TYPE_INBOX,
+        TYPE_INBOX = 1024,
         /**
          * The folder is an outbox folder.
          */
-        TYPE_OUTBOX,
+        TYPE_OUTBOX = 2048,
         /**
          * The folder shows deleted messages.
          */
-        TYPE_TRASH,
+        TYPE_TRASH = 3072,
         /**
          * The folder shows junk messages.
          */
-        TYPE_JUNK,
+        TYPE_JUNK = 4096,
         /**
          * The folder shows sent messages.
          */
-        TYPE_SENT,
+        TYPE_SENT = 5120,
         /**
          * The folder contains contacts, instead of mail messages.
          */
-        TYPE_CONTACTS,
+        TYPE_CONTACTS = 6144,
         /**
          * The folder contains calendar events, instead of mail messages.
          */
-        TYPE_EVENTS,
+        TYPE_EVENTS = 7168,
         /**
          * The folder contains memos, instead of mail messages.
          */
-        TYPE_MEMOS,
+        TYPE_MEMOS = 8192,
         /**
          * The folder contains tasks, instead of mail messages.
          */
-        TYPE_TASKS,
+        TYPE_TASKS = 9216,
         /**
          * This folder contains all the messages. Used by RFC 6154.
          */
-        TYPE_ALL,
+        TYPE_ALL = 10240,
         /**
          * This folder contains archived messages. Used by RFC 6154.
          */
-        TYPE_ARCHIVE,
+        TYPE_ARCHIVE = 11264,
         /**
          * This folder contains drafts. Used by RFC 6154.
          */
-        TYPE_DRAFTS,
+        TYPE_DRAFTS = 12288,
         /**
          * The folder is read only.
          */
-        READONLY,
+        READONLY = 65536,
         /**
          * The folder is write only.
          */
-        WRITEONLY,
+        WRITEONLY = 131072,
         /**
          * This folder contains flagged messages. Some clients call this "starred". Used by RFC 6154.
          */
-        FLAGGED,
+        FLAGGED = 262144,
         /**
          * The last define bit of the flags. The {@link Camel.Provider} can use this and
          *    upper bits to store its own flags.
          */
-        FLAGS_LAST,
+        FLAGS_LAST = 16777216,
     }
 
 
@@ -3277,7 +3510,7 @@ export namespace Camel {
          * The parameter is persistent, which means its value is saved to
          *     the disk between sessions.
          */
-        PERSISTENT,
+        PERSISTENT = 256,
     }
 
 
@@ -3288,12 +3521,12 @@ export namespace Camel {
         /**
          * There are changes in summary, which should be saved.
          */
-        DIRTY,
+        DIRTY = 1,
         /**
          * Summary with this flag doesn't use DB for storing its content,
          *    it is always created on the fly.
          */
-        IN_MEMORY_ONLY,
+        IN_MEMORY_ONLY = 2,
     }
 
 
@@ -3314,15 +3547,15 @@ export namespace Camel {
         /**
          * no flag set
          */
-        NONE,
+        NONE = 0,
         /**
          * thread by subject
          */
-        SUBJECT,
+        SUBJECT = 1,
         /**
          * sort threads by sent/received date
          */
-        SORT,
+        SORT = 2,
     }
 
 
@@ -3337,20 +3570,20 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum MessageFlags {
-        ANSWERED,
-        DELETED,
-        DRAFT,
-        FLAGGED,
-        SEEN,
-        ATTACHMENTS,
-        ANSWERED_ALL,
-        JUNK,
-        SECURE,
-        NOTJUNK,
-        FORWARDED,
-        FOLDER_FLAGGED,
-        JUNK_LEARN,
-        USER,
+        ANSWERED = 1,
+        DELETED = 2,
+        DRAFT = 4,
+        FLAGGED = 8,
+        SEEN = 16,
+        ATTACHMENTS = 32,
+        ANSWERED_ALL = 64,
+        JUNK = 128,
+        SECURE = 256,
+        NOTJUNK = 512,
+        FORWARDED = 1024,
+        FOLDER_FLAGGED = 65536,
+        JUNK_LEARN = 1073741824,
+        USER = 2147483648,
     }
 
 
@@ -3365,9 +3598,9 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum MimeFilterCanonFlags {
-        CRLF,
-        FROM,
-        STRIP,
+        CRLF = 1,
+        FROM = 2,
+        STRIP = 4,
     }
 
 
@@ -3382,8 +3615,8 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum MimeFilterEnrichedFlags {
-        NONE,
-        IS_RICHTEXT,
+        NONE = 0,
+        IS_RICHTEXT = 1,
     }
 
 
@@ -3403,59 +3636,59 @@ export namespace Camel {
          * Enclose the content in &lt;pre&gt; ... &lt;/pre&gt; tags.
          *     Cannot be used together with {@link Camel.MimeFilterToHTMLFlags.DIV}.
          */
-        PRE,
+        PRE = 1,
         /**
          * Convert newline characters to &lt;br&gt; tags.
          */
-        CONVERT_NL,
+        CONVERT_NL = 2,
         /**
          * Convert space and tab characters to a non-breaking space (&amp;nbsp;).
          */
-        CONVERT_SPACES,
+        CONVERT_SPACES = 4,
         /**
          * Convert recognized URLs to &lt;a href="foo"&gt;foo&lt;/a&gt;.
          */
-        CONVERT_URLS,
+        CONVERT_URLS = 8,
         /**
          * Color quoted lines (lines beginning with '&gt;').
          */
-        MARK_CITATION,
+        MARK_CITATION = 16,
         /**
          * Convert mailto: URLs to &lt;a href="mailto:foo"&gt;mailto:foo&lt;/a&gt;.
          */
-        CONVERT_ADDRESSES,
+        CONVERT_ADDRESSES = 32,
         /**
          * Convert 8-bit characters to escaped hexdecimal (&amp;#nnn;).
          */
-        ESCAPE_8BIT,
+        ESCAPE_8BIT = 64,
         /**
          * Prefix each line with "&gt; ".
          */
-        CITE,
+        CITE = 128,
         /**
          * This flag is not used by {@link Camel.MimeFilterToHTML}.
          */
-        PRESERVE_8BIT,
+        PRESERVE_8BIT = 256,
         /**
          * This flag is not used by {@link Camel.MimeFilterToHTML}.
          */
-        FORMAT_FLOWED,
+        FORMAT_FLOWED = 512,
         /**
          * Group lines beginning with one or more '&gt;' characters in
          *     &lt;blockquote type="cite"&gt; ... &lt;/blockquote&gt; tags. The tags
          *     are nested according to the number of '&gt;' characters.
          */
-        QUOTE_CITATION,
+        QUOTE_CITATION = 1024,
         /**
          * Enclose the paragraphs in &lt;div&gt; ... &lt;/div&gt; tags.
          *     Cannot be used together with {@link Camel.MimeFilterToHTMLFlags.PRE}.
          */
-        DIV,
+        DIV = 2048,
         /**
          * Set in combination with {@link Camel.MimeFilterToHTMLFlags.CONVERT_SPACES},
          *     to keep tab characters. If not set, converts them into the spaces.
          */
-        PRESERVE_TABS,
+        PRESERVE_TABS = 4096,
     }
 
 
@@ -3473,59 +3706,59 @@ export namespace Camel {
         /**
          * Provider works with remote data.
          */
-        IS_REMOTE,
+        IS_REMOTE = 1,
         /**
          * Provider can be used as a backend for local folder tree folders.
          *   (Not just the opposite of #CAMEL_PROVIDER_IS_REMOTE.)
          */
-        IS_LOCAL,
+        IS_LOCAL = 2,
         /**
          * Provider appears in the folder tree but is not created by the
          *   mail component.
          */
-        IS_EXTERNAL,
+        IS_EXTERNAL = 4,
         /**
          * Mail arrives there, so it should be offered as an option in the
          *   mail config dialog.
          */
-        IS_SOURCE,
+        IS_SOURCE = 8,
         /**
          * Mail is stored there.  It will appear in the folder tree.
          */
-        IS_STORAGE,
+        IS_STORAGE = 16,
         /**
          * Provider supports SSL/TLS connections.
          */
-        SUPPORTS_SSL,
+        SUPPORTS_SSL = 32,
         /**
          * Provider configuration first needs the license to be accepted.
          *   (No longer used.)
          */
-        HAS_LICENSE,
+        HAS_LICENSE = 64,
         /**
          * Provider requests to not use the Sent folder when sending with it.
          */
-        DISABLE_SENT_FOLDER,
+        DISABLE_SENT_FOLDER = 128,
         /**
          * Provider may use a real trash folder instead of a virtual folder.
          */
-        ALLOW_REAL_TRASH_FOLDER,
+        ALLOW_REAL_TRASH_FOLDER = 256,
         /**
          * Provider may use a real junk folder instead of a virtual folder.
          */
-        ALLOW_REAL_JUNK_FOLDER,
+        ALLOW_REAL_JUNK_FOLDER = 512,
         /**
          * Download limited set of emails instead of operating on full cache.
          */
-        SUPPORTS_MOBILE_DEVICES,
+        SUPPORTS_MOBILE_DEVICES = 1024,
         /**
          * Support to fetch messages in batch.
          */
-        SUPPORTS_BATCH_FETCH,
+        SUPPORTS_BATCH_FETCH = 2048,
         /**
          * Support to remove oldest downloaded messages to conserve space.
          */
-        SUPPORTS_PURGE_MESSAGE_CACHE,
+        SUPPORTS_PURGE_MESSAGE_CACHE = 4096,
     }
 
 
@@ -3533,25 +3766,25 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum ProviderURLFlags {
-        ALLOW_USER,
-        ALLOW_AUTH,
-        ALLOW_PASSWORD,
-        ALLOW_HOST,
-        ALLOW_PORT,
-        ALLOW_PATH,
-        NEED_USER,
-        NEED_AUTH,
-        NEED_PASSWORD,
-        NEED_HOST,
-        NEED_PORT,
-        NEED_PATH,
-        NEED_PATH_DIR,
-        HIDDEN_USER,
-        HIDDEN_AUTH,
-        HIDDEN_PASSWORD,
-        HIDDEN_HOST,
-        HIDDEN_PORT,
-        HIDDEN_PATH,
+        ALLOW_USER = 1,
+        ALLOW_AUTH = 2,
+        ALLOW_PASSWORD = 4,
+        ALLOW_HOST = 8,
+        ALLOW_PORT = 16,
+        ALLOW_PATH = 32,
+        NEED_USER = 256,
+        NEED_AUTH = 512,
+        NEED_PASSWORD = 1024,
+        NEED_HOST = 2048,
+        NEED_PORT = 4096,
+        NEED_PATH = 8192,
+        NEED_PATH_DIR = 16384,
+        HIDDEN_USER = 65536,
+        HIDDEN_AUTH = 131072,
+        HIDDEN_PASSWORD = 262144,
+        HIDDEN_HOST = 524288,
+        HIDDEN_PORT = 1048576,
+        HIDDEN_PATH = 2097152,
     }
 
 
@@ -3572,12 +3805,12 @@ export namespace Camel {
          * Retrieve S/MIME certificates; this cannot be used
          *    together with `CAMEL_RECIPIENT_CERTIFICATE_PGP`
          */
-        SMIME,
+        SMIME = 1,
         /**
          * Retrieve PGP keys; this cannot be used
          *    together with `CAMEL_RECIPIENT_CERTIFICATE_SMIME`.
          */
-        PGP,
+        PGP = 2,
     }
 
 
@@ -3585,10 +3818,10 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum SMIMEDescribe {
-        SIGNED,
-        ENCRYPTED,
-        CERTS,
-        CRLS,
+        SIGNED = 1,
+        ENCRYPTED = 2,
+        CERTS = 4,
+        CRLS = 8,
     }
 
 
@@ -3603,17 +3836,17 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum StoreFlags {
-        VTRASH,
-        VJUNK,
-        PROXY,
-        IS_MIGRATING,
-        REAL_JUNK_FOLDER,
-        CAN_EDIT_FOLDERS,
-        USE_CACHE_DIR,
-        CAN_DELETE_FOLDERS_AT_ONCE,
-        SUPPORTS_INITIAL_SETUP,
-        IS_BUILTIN,
-        USE_TEMP_DIR,
+        VTRASH = 1,
+        VJUNK = 2,
+        PROXY = 4,
+        IS_MIGRATING = 8,
+        REAL_JUNK_FOLDER = 16,
+        CAN_EDIT_FOLDERS = 32,
+        USE_CACHE_DIR = 64,
+        CAN_DELETE_FOLDERS_AT_ONCE = 128,
+        SUPPORTS_INITIAL_SETUP = 256,
+        IS_BUILTIN = 512,
+        USE_TEMP_DIR = 1024,
     }
 
 
@@ -3632,20 +3865,20 @@ export namespace Camel {
         /**
          * no flags
          */
-        NONE,
+        NONE = 0,
         /**
          * create the folder
          */
-        CREATE,
+        CREATE = 1,
         /**
          * save the body index
          */
-        BODY_INDEX,
+        BODY_INDEX = 2,
         /**
          * a private folder that should not show up in
          *  unmatched, folder info's, etc.
          */
-        PRIVATE,
+        PRIVATE = 4,
     }
 
 
@@ -3660,26 +3893,26 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum StoreGetFolderInfoFlags {
-        FAST,
-        RECURSIVE,
-        SUBSCRIBED,
+        FAST = 1,
+        RECURSIVE = 2,
+        SUBSCRIBED = 4,
         /**
          * Do not include virtual trash or junk folders.
          */
-        NO_VIRTUAL,
+        NO_VIRTUAL = 8,
         /**
          * Fetch only the subscription list. Clients should use this
          *   flag for requesting the list of folders available for
          *   subscription. Used in Exchange / IMAP connectors for public
          *   folder fetching.
          */
-        SUBSCRIPTION_LIST,
+        SUBSCRIPTION_LIST = 16,
         /**
          * Treat this call as a request to refresh the folder summary;
          *   for remote accounts it can be to re-fetch fresh folder
          *   content from the server and update the local cache.
          */
-        REFRESH,
+        REFRESH = 32,
     }
 
 
@@ -3694,32 +3927,32 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum StoreInfoFlags {
-        NOSELECT,
-        NOINFERIORS,
-        CHILDREN,
-        NOCHILDREN,
-        SUBSCRIBED,
-        VIRTUAL,
-        SYSTEM,
-        VTRASH,
-        SHARED_TO_ME,
-        SHARED_BY_ME,
-        TYPE_NORMAL,
-        TYPE_INBOX,
-        TYPE_OUTBOX,
-        TYPE_TRASH,
-        TYPE_JUNK,
-        TYPE_SENT,
-        TYPE_CONTACTS,
-        TYPE_EVENTS,
-        TYPE_MEMOS,
-        TYPE_TASKS,
-        TYPE_ALL,
-        TYPE_ARCHIVE,
-        TYPE_DRAFTS,
-        READONLY,
-        WRITEONLY,
-        FLAGGED,
+        NOSELECT = 1,
+        NOINFERIORS = 2,
+        CHILDREN = 4,
+        NOCHILDREN = 8,
+        SUBSCRIBED = 16,
+        VIRTUAL = 32,
+        SYSTEM = 64,
+        VTRASH = 128,
+        SHARED_TO_ME = 256,
+        SHARED_BY_ME = 512,
+        TYPE_NORMAL = 0,
+        TYPE_INBOX = 1024,
+        TYPE_OUTBOX = 2048,
+        TYPE_TRASH = 3072,
+        TYPE_JUNK = 4096,
+        TYPE_SENT = 5120,
+        TYPE_CONTACTS = 6144,
+        TYPE_EVENTS = 7168,
+        TYPE_MEMOS = 8192,
+        TYPE_TASKS = 9216,
+        TYPE_ALL = 10240,
+        TYPE_ARCHIVE = 11264,
+        TYPE_DRAFTS = 12288,
+        READONLY = 65536,
+        WRITEONLY = 131072,
+        FLAGGED = 262144,
     }
 
 
@@ -3734,8 +3967,8 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum StorePermissionFlags {
-        READ,
-        WRITE,
+        READ = 1,
+        WRITE = 2,
     }
 
 
@@ -3750,8 +3983,8 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum URLFlags {
-        PARAMS,
-        AUTH,
+        PARAMS = 1,
+        AUTH = 2,
     }
 
 
@@ -3759,9 +3992,9 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum UUDecodeState {
-        INIT,
-        BEGIN,
-        END,
+        INIT = 0,
+        BEGIN = 65536,
+        END = 131072,
     }
 
 
@@ -3785,15 +4018,15 @@ export namespace Camel {
         /**
          * no flag set
          */
-        NONE,
+        NONE = 0,
         /**
          * skip rebuild of the search folder
          */
-        SKIP_REBUILD,
+        SKIP_REBUILD = 1,
         /**
          * skip emit of internal "vee-setup-changed" signal
          */
-        SKIP_EMIT,
+        SKIP_EMIT = 2,
     }
 
 
@@ -3801,11 +4034,11 @@ export namespace Camel {
      * @gir-type Flags
      */
     enum _search_flags_t {
-        START,
-        END,
-        REGEX,
-        ICASE,
-        NEWLINE,
+        START = 1,
+        END = 2,
+        REGEX = 4,
+        ICASE = 8,
+        NEWLINE = 16,
     }
 
 
@@ -4440,6 +4673,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a validity/encryption status, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         decrypt_finish(result: Gio.AsyncResult): CipherValidity;
 
@@ -4450,6 +4684,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a validity/encryption status, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         decrypt_sync(ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
 
@@ -4517,6 +4752,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         encrypt_finish(result: Gio.AsyncResult): boolean;
 
@@ -4531,6 +4767,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         encrypt_sync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4608,6 +4845,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         sign_finish(result: Gio.AsyncResult): boolean;
 
@@ -4622,6 +4860,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         sign_sync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean;
 
@@ -4671,6 +4910,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Camel.CipherValidity} structure containing information about the integrity of the input stream, or `null` on failure to execute at all
          * @since 3.0
+         * @throws GLib.Error
          */
         verify_finish(result: Gio.AsyncResult): CipherValidity;
 
@@ -4679,6 +4919,7 @@ export namespace Camel {
          * @param ipart the {@link Camel.MimePart} to verify
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.CipherValidity} structure containing information about the integrity of the input stream, or `null` on failure to execute at all
+         * @throws GLib.Error
          */
         verify_sync(ipart: MimePart, cancellable: Gio.Cancellable | null): CipherValidity;
     }
@@ -4768,6 +5009,7 @@ export namespace Camel {
          * Ends an ongoing transaction by ignoring the changes.
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         abort_transaction(): boolean;
 
@@ -4775,6 +5017,7 @@ export namespace Camel {
          * Begins transaction. End it with `camel_db_end_transaction()` or `camel_db_abort_transaction()`.
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         begin_transaction(): boolean;
 
@@ -4782,6 +5025,7 @@ export namespace Camel {
          * Ends an ongoing transaction by committing the changes.
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         end_transaction(): boolean;
 
@@ -4791,6 +5035,7 @@ export namespace Camel {
          * @param callback a callback to call for each row
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         exec_select(stmt: string, callback: DBSelectCB): boolean;
 
@@ -4799,6 +5044,7 @@ export namespace Camel {
          * @param stmt an SQL (SQLite) statement to execute
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         exec_statement(stmt: string): boolean;
 
@@ -4830,6 +5076,7 @@ export namespace Camel {
          * Runs a `cdb` maintenance, which includes vacuum, if necessary.
          * @returns Whether succeeded.
          * @since 3.16
+         * @throws GLib.Error
          */
         maybe_run_maintenance(): boolean;
 
@@ -4839,6 +5086,7 @@ export namespace Camel {
          * @param filename A file name with the database to open/create
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         open(filename: string): boolean;
 
@@ -5014,6 +5262,7 @@ export namespace Camel {
          * @param key Key of item to add.
          * @returns a {@link Gio.IOStream} for writing, or `null` on error
          * @since 3.62
+         * @throws GLib.Error
          */
         add_atomic(path: string, key: string): Gio.IOStream;
 
@@ -5036,6 +5285,7 @@ export namespace Camel {
          * @param stream the {@link Gio.IOStream} returned by `camel_data_cache_add_atomic()`
          * @returns a {@link Gio.IOStream} for the committed file, or `null` on error
          * @since 3.62
+         * @throws GLib.Error
          */
         commit_atomic(stream: Gio.IOStream): Gio.IOStream;
 
@@ -5069,6 +5319,7 @@ export namespace Camel {
          * @param path Path to the (sub) cache the item exists in.
          * @param key Key for the cache item.
          * @returns a {@link Gio.IOStream} for the requested cache item, or `null` on error
+         * @throws GLib.Error
          */
         get(path: string, key: string): Gio.IOStream;
 
@@ -5105,6 +5356,7 @@ export namespace Camel {
          * @param path Path to the (sub) cache the item exists in.
          * @param key Key for the cache item.
          * @returns 0 on success, -1 on error
+         * @throws GLib.Error
          */
         remove(path: string, key: string): number;
 
@@ -5366,6 +5618,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns how many bytes the `data_wrapper` would use when saved,   or -1 on error.
          * @since 3.24
+         * @throws GLib.Error
          */
         calculate_decoded_size_sync(cancellable: Gio.Cancellable | null): number;
 
@@ -5376,6 +5629,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns how many bytes the `data_wrapper` would use when saved,   or -1 on error.
          * @since 3.24
+         * @throws GLib.Error
          */
         calculate_size_sync(cancellable: Gio.Cancellable | null): number;
 
@@ -5386,6 +5640,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.46
+         * @throws GLib.Error
          */
         construct_from_data_sync(data: never, data_len: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5436,6 +5691,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.12
+         * @throws GLib.Error
          */
         construct_from_input_stream_finish(result: Gio.AsyncResult): boolean;
 
@@ -5445,6 +5701,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.12
+         * @throws GLib.Error
          */
         construct_from_input_stream_sync(input_stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5498,6 +5755,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         construct_from_stream_finish(result: Gio.AsyncResult): boolean;
 
@@ -5507,6 +5765,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         construct_from_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): boolean;
 
@@ -5557,6 +5816,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the number of bytes written, or -1 on error
          * @since 3.12
+         * @throws GLib.Error
          */
         decode_to_output_stream_finish(result: Gio.AsyncResult): number;
 
@@ -5574,6 +5834,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          * @since 3.12
+         * @throws GLib.Error
          */
         decode_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): number;
 
@@ -5623,6 +5884,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the number of bytes written, or -1 on error
          * @since 3.0
+         * @throws GLib.Error
          */
         decode_to_stream_finish(result: Gio.AsyncResult): number;
 
@@ -5640,6 +5902,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          * @since 3.0
+         * @throws GLib.Error
          */
         decode_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): number;
 
@@ -5771,6 +6034,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the number of bytes written, or -1 on error
          * @since 3.12
+         * @throws GLib.Error
          */
         write_to_output_stream_finish(result: Gio.AsyncResult): number;
 
@@ -5789,6 +6053,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          * @since 3.12
+         * @throws GLib.Error
          */
         write_to_output_stream_sync(output_stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): number;
 
@@ -5847,6 +6112,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the number of bytes written, or -1 or error
          * @since 3.0
+         * @throws GLib.Error
          */
         write_to_stream_finish(result: Gio.AsyncResult): number;
 
@@ -5867,6 +6133,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written, or -1 on error
          * @since 3.0
+         * @throws GLib.Error
          */
         write_to_stream_sync(stream: Stream, cancellable: Gio.Cancellable | null): number;
     }
@@ -5954,6 +6221,7 @@ export namespace Camel {
          * @param remove TRUE to mark filtered messages as deleted
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
+         * @throws GLib.Error
          */
         filter_folder(folder: Folder, cache: UIDCache, uids: string[] | null, remove: boolean, cancellable: Gio.Cancellable | null): number;
 
@@ -5965,6 +6233,7 @@ export namespace Camel {
          * @param original_source_url URI of the `mbox`, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
+         * @throws GLib.Error
          */
         filter_mbox(mbox: string, original_source_url: string | null, cancellable: Gio.Cancellable | null): number;
 
@@ -5982,11 +6251,13 @@ export namespace Camel {
          * @param original_store_uid UID of source store (pre-movemail), or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 if errors were encountered during filtering, otherwise returns 0.
+         * @throws GLib.Error
          */
         filter_message(message: MimeMessage | null, info: MessageInfo | null, uid: string | null, source: Folder | null, store_uid: string | null, original_store_uid: string | null, cancellable: Gio.Cancellable | null): number;
 
         /**
          * Flush all of the only-once filter actions.
+         * @throws GLib.Error
          */
         flush(): void;
 
@@ -6190,7 +6461,7 @@ export namespace Camel {
              * @signal
              * @run-first
              */
-            changed: (arg0: FolderChangeInfo) => void;
+            changed: (changes: FolderChangeInfo) => void;
             /**
              * @signal
              * @run-first
@@ -6200,7 +6471,7 @@ export namespace Camel {
              * @signal
              * @run-first
              */
-            renamed: (arg0: string) => void;
+            renamed: (old_name: string) => void;
             "notify::description": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -6768,6 +7039,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         append_message_finish(result: Gio.AsyncResult): [boolean, string];
 
@@ -6779,6 +7051,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         append_message_sync(message: MimeMessage, info: MessageInfo | null, cancellable: Gio.Cancellable | null): [boolean, string];
 
@@ -6853,6 +7126,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether the headers had been found and the `out_headers` populated
          * @since 3.58
+         * @throws GLib.Error
          */
         dup_headers_sync(uid: string, cancellable: Gio.Cancellable | null): [boolean, NameValueArray];
 
@@ -6873,6 +7147,7 @@ export namespace Camel {
          * @param uids the array of uids to filter down to uncached ones.
          * @returns a new {@link GLib.PtrArray} with UID-s,    which are not cached locally
          * @since 3.58
+         * @throws GLib.Error
          */
         dup_uncached_uids(uids: string[]): string[];
 
@@ -6916,6 +7191,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         expunge_finish(result: Gio.AsyncResult): boolean;
 
@@ -6924,6 +7200,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         expunge_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -6954,6 +7231,7 @@ export namespace Camel {
          * @param uid a message UID
          * @returns a file name corresponding to a message   with UID `uid`. Free the returned string with `g_free()`, when   no longer needed.
          * @since 2.26
+         * @throws GLib.Error
          */
         get_filename(uid: string): string;
 
@@ -7065,6 +7343,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Camel.MimeMessage} corresponding to the requested UID
          * @since 3.0
+         * @throws GLib.Error
          */
         get_message_finish(result: Gio.AsyncResult): MimeMessage;
 
@@ -7087,6 +7366,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.MimeMessage} corresponding to the requested UID
          * @since 3.0
+         * @throws GLib.Error
          */
         get_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): MimeMessage;
 
@@ -7148,6 +7428,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Camel.FolderQuotaInfo}, or `null` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         get_quota_info_finish(result: Gio.AsyncResult): FolderQuotaInfo;
 
@@ -7160,6 +7441,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.FolderQuotaInfo}, or `null` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         get_quota_info_sync(cancellable: Gio.Cancellable | null): FolderQuotaInfo;
 
@@ -7255,6 +7537,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.4
+         * @throws GLib.Error
          */
         purge_message_cache_finish(result: Gio.AsyncResult): boolean;
 
@@ -7265,6 +7548,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.4
+         * @throws GLib.Error
          */
         purge_message_cache_sync(start_uid: string, end_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7308,6 +7592,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         refresh_info_finish(result: Gio.AsyncResult): boolean;
 
@@ -7316,6 +7601,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         refresh_info_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -7355,6 +7641,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether could search and set the `out_uids`.
          * @since 3.58
+         * @throws GLib.Error
          */
         search_body_sync(words: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -7373,6 +7660,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether could search and set the `out_uids`.
          * @since 3.58
+         * @throws GLib.Error
          */
         search_header_sync(header_name: string, words: string[] | null, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -7384,6 +7672,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         search_sync(expression: string, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -7509,6 +7798,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_finish(result: Gio.AsyncResult): boolean;
 
@@ -7564,6 +7854,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_message_finish(result: Gio.AsyncResult): boolean;
 
@@ -7575,6 +7866,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_message_sync(message_uid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7585,6 +7877,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -7670,6 +7963,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         transfer_messages_to_finish(result: Gio.AsyncResult): [boolean, string[] | null];
 
@@ -7683,6 +7977,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.0
+         * @throws GLib.Error
          */
         transfer_messages_to_sync(message_uids: string[], destination: Folder, delete_originals: boolean, cancellable: Gio.Cancellable | null): [boolean, string[] | null];
 
@@ -7704,7 +7999,7 @@ export namespace Camel {
              * @since 3.58
              * @run-first
              */
-            "info-flags-changed": (arg0: string, arg1: number) => void;
+            "info-flags-changed": (uid: string, new_flags: number) => void;
             "notify::deleted-count": (pspec: GObject.ParamSpec) => void;
             "notify::folder": (pspec: GObject.ParamSpec) => void;
             "notify::junk-count": (pspec: GObject.ParamSpec) => void;
@@ -7975,6 +8270,7 @@ export namespace Camel {
         /**
          * Empty the summary contents.
          * @returns whether succeeded
+         * @throws GLib.Error
          */
         clear(): boolean;
 
@@ -8113,6 +8409,7 @@ export namespace Camel {
          * @param folder_name a folder name corresponding to `summary`
          * @returns whether succeeded
          * @since 3.24
+         * @throws GLib.Error
          */
         header_load(store: null, folder_name: string): boolean;
 
@@ -8121,6 +8418,7 @@ export namespace Camel {
          * nothing, if the summary doesn't support save to disk.
          * @returns whether succeeded
          * @since 3.24
+         * @throws GLib.Error
          */
         header_save(): boolean;
 
@@ -8162,6 +8460,7 @@ export namespace Camel {
          * changes first.
          * @returns whether succeeded
          * @since 3.24
+         * @throws GLib.Error
          */
         load(): boolean;
 
@@ -8198,6 +8497,7 @@ export namespace Camel {
          * for better performance.
          * @returns `true` on success
          * @since 2.32
+         * @throws GLib.Error
          */
         prepare_fetch_all(): boolean;
 
@@ -8238,6 +8538,7 @@ export namespace Camel {
          * permanent save.
          * @returns whether succeeded
          * @since 3.24
+         * @throws GLib.Error
          */
         save(): boolean;
 
@@ -8481,6 +8782,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         get_key_data_info_sync(data: number, data_size: bigint | number, flags: number, cancellable: Gio.Cancellable | null): [boolean, GpgKeyInfo[]];
 
@@ -8512,6 +8814,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         get_public_key_info_sync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [boolean, GpgKeyInfo[]];
 
@@ -8529,6 +8832,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         get_public_key_sync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [boolean, number, number];
 
@@ -8540,6 +8844,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether the key could be found
          * @since 3.50
+         * @throws GLib.Error
          */
         has_public_key_sync(keyid: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8552,6 +8857,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         import_key_sync(data: number, data_size: bigint | number, flags: number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -8571,6 +8877,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.50
+         * @throws GLib.Error
          */
         set_key_trust_sync(keyid: string, trust: GpgTrust, cancellable: Gio.Cancellable | null): boolean;
 
@@ -12786,6 +13093,7 @@ export namespace Camel {
          * be seeked using the parser seek function.
          * @param stream a {@link Camel.Stream} to init with
          * @returns -1 on error.
+         * @throws GLib.Error
          */
         init_with_stream(stream: Stream): number;
 
@@ -12828,6 +13136,7 @@ export namespace Camel {
          * is updated appropriately.
          * @param len The length of data to read
          * @returns The number of bytes available, or -1 on error.
+         * @throws GLib.Error
          */
         read(len: bigint | number): [number, Uint8Array];
 
@@ -13116,6 +13425,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 2.24
+         * @throws GLib.Error
          */
         construct_content_from_parser(mp: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13165,6 +13475,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         construct_from_parser_finish(result: Gio.AsyncResult): boolean;
 
@@ -13174,6 +13485,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         construct_from_parser_sync(parser: MimeParser, cancellable: Gio.Cancellable | null): boolean;
 
@@ -13627,6 +13939,7 @@ export namespace Camel {
          * Get the raw signed content stream of the multipart/signed MIME part
          * suitable for use with verification of the signature.
          * @returns the signed content stream
+         * @throws GLib.Error
          */
         get_content_stream(): Stream;
 
@@ -13930,6 +14243,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         downsync_finish(result: Gio.AsyncResult): boolean;
 
@@ -13940,6 +14254,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         downsync_sync(expression: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14254,6 +14569,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 2.22
+         * @throws GLib.Error
          */
         prepare_for_offline_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -14304,6 +14620,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns Whether succeeded.
          * @since 3.26
+         * @throws GLib.Error
          */
         set_online_finish(result: Gio.AsyncResult): boolean;
 
@@ -14312,6 +14629,7 @@ export namespace Camel {
          * @param online `true` for online, `false` for offline
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded. See: camel_offline_store_set_online
+         * @throws GLib.Error
          */
         set_online_sync(online: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -14341,17 +14659,17 @@ export namespace Camel {
              * @signal
              * @run-last
              */
-            progress: (arg0: number) => void;
+            progress: (object: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "push-message": (arg0: string) => void;
+            "push-message": (object: string) => void;
             /**
              * @signal
              * @run-last
              */
-            status: (arg0: string, arg1: number) => void;
+            status: (object: string, p0: number) => void;
         }
 
         // Constructor properties interface
@@ -15080,6 +15398,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the base64-encoded response
          * @since 3.0
+         * @throws GLib.Error
          */
         challenge_base64_finish(result: Gio.AsyncResult): string;
 
@@ -15090,6 +15409,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the base64-encoded response
          * @since 3.0
+         * @throws GLib.Error
          */
         challenge_base64_sync(token: string, cancellable: Gio.Cancellable | null): string;
 
@@ -15099,6 +15419,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the SASL response or `null`.  If an error occurred, `error` will also be set.
          * @since 3.0
+         * @throws GLib.Error
          */
         challenge_finish(result: Gio.AsyncResult): Uint8Array | null;
 
@@ -15112,6 +15433,7 @@ export namespace Camel {
          * @param token a token, or `null`
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the SASL response or `null`. If an error occurred, `error` will also be set.
+         * @throws GLib.Error
          */
         challenge_sync(token: Uint8Array | string | null, cancellable: Gio.Cancellable | null): Uint8Array | null;
 
@@ -15187,6 +15509,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the SASL response.  If an error occurred, `error` will also be set.
          * @since 3.2
+         * @throws GLib.Error
          */
         try_empty_password_finish(result: Gio.AsyncResult): boolean;
 
@@ -15194,6 +15517,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether or not `sasl` can attempt to authenticate without a password being provided by the caller. This will be `true` for an authentication method which can attempt to use single-sign-on credentials, but which can fall back to using a provided password so it still has the `need_password` flag set in its description.
          * @since 3.2
+         * @throws GLib.Error
          */
         try_empty_password_sync(cancellable: Gio.Cancellable | null): boolean;
     }
@@ -16115,6 +16439,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the authentication result
          * @since 3.4
+         * @throws GLib.Error
          */
         authenticate_finish(result: Gio.AsyncResult): AuthenticationResult;
 
@@ -16139,6 +16464,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the authentication result
          * @since 3.4
+         * @throws GLib.Error
          */
         authenticate_sync(mechanism: string | null, cancellable: Gio.Cancellable | null): AuthenticationResult;
 
@@ -16211,6 +16537,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the connection was made or `false` otherwise
          * @since 3.6
+         * @throws GLib.Error
          */
         connect_finish(result: Gio.AsyncResult): boolean;
 
@@ -16223,6 +16550,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the connection is made or `false` otherwise
          * @since 3.6
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16290,6 +16618,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if the connection was severed or `false` otherwise
          * @since 3.6
+         * @throws GLib.Error
          */
         disconnect_finish(result: Gio.AsyncResult): boolean;
 
@@ -16306,6 +16635,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if the connection was severed or `false` otherwise
          * @since 3.6
+         * @throws GLib.Error
          */
         disconnect_sync(clean: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -16446,6 +16776,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a list of {@link Camel.ServiceAuthType} structs
          * @since 3.2
+         * @throws GLib.Error
          */
         query_auth_types_finish(result: Gio.AsyncResult): ServiceAuthType[];
 
@@ -16454,6 +16785,7 @@ export namespace Camel {
          * Free the returned list with `g_list_free()`.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a list of {@link Camel.ServiceAuthType} structs
+         * @throws GLib.Error
          */
         query_auth_types_sync(cancellable: Gio.Cancellable | null): ServiceAuthType[];
 
@@ -16587,6 +16919,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -16644,12 +16977,12 @@ export namespace Camel {
              * @signal
              * @run-last
              */
-            "job-finished": (arg0: Gio.Cancellable | null, arg1: GLib.Error) => void;
+            "job-finished": (object: Gio.Cancellable | null, p0: GLib.Error) => void;
             /**
              * @signal
              * @run-last
              */
-            "job-started": (arg0: Gio.Cancellable | null) => void;
+            "job-started": (object: Gio.Cancellable | null) => void;
             /**
              * This purpose of this signal is to propagate a server-issued alert
              * message from `service` to a user interface.  The `type` hints at the
@@ -16657,7 +16990,7 @@ export namespace Camel {
              * @signal
              * @run-last
              */
-            "user-alert": (arg0: Service, arg1: SessionAlertType, arg2: string) => void;
+            "user-alert": (service: Service, type: SessionAlertType, message: string) => void;
             "notify::junk-filter": (pspec: GObject.ParamSpec) => void;
             "notify::main-context": (pspec: GObject.ParamSpec) => void;
             "notify::network-monitor": (pspec: GObject.ParamSpec) => void;
@@ -17061,6 +17394,7 @@ export namespace Camel {
          * @param type the service type
          * @returns a {@link Camel.Service} instance, or `null` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         add_service(uid: string, protocol: string, type: ProviderType): Service;
 
@@ -17079,6 +17413,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true`, when the `email_address` could be found in the `book_uid`
          * @since 3.44
+         * @throws GLib.Error
          */
         addressbook_contains_sync(book_uid: string, email_address: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17146,6 +17481,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.4
+         * @throws GLib.Error
          */
         authenticate_finish(result: Gio.AsyncResult): boolean;
 
@@ -17163,6 +17499,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.4
+         * @throws GLib.Error
          */
         authenticate_sync(service: Service, mechanism: string | null, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17178,6 +17515,7 @@ export namespace Camel {
          * @param service the {@link Camel.Service} rejecting the password
          * @param item an identifier, unique within this service, for the information
          * @returns `true` on success, `false` on failure
+         * @throws GLib.Error
          */
         forget_password(service: Service, item: string): boolean;
 
@@ -17238,6 +17576,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         forward_to_finish(result: Gio.AsyncResult): boolean;
 
@@ -17251,6 +17590,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.6
+         * @throws GLib.Error
          */
         forward_to_sync(folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -17260,6 +17600,7 @@ export namespace Camel {
          * @param type the type of filter (eg, "incoming")
          * @param for_folder an optional {@link Camel.Folder}, for which the filter driver will run, or `null`
          * @returns a filter driver, loaded with applicable rules
+         * @throws GLib.Error
          */
         get_filter_driver(type: string, for_folder: Folder | null): FilterDriver;
 
@@ -17290,6 +17631,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether succeeded
          * @since 3.28
+         * @throws GLib.Error
          */
         get_oauth2_access_token_sync(service: Service, cancellable: Gio.Cancellable | null): [boolean, string, number];
 
@@ -17321,6 +17663,7 @@ export namespace Camel {
          * @param item an identifier, unique within this service, for the information
          * @param flags `CAMEL_SESSION_PASSWORD_REPROMPT`, the prompt should force a reprompt `CAMEL_SESSION_PASSWORD_SECRET`, whether the password is secret `CAMEL_SESSION_PASSWORD_STATIC`, the password is remembered externally
          * @returns the authentication information or `null` on error
+         * @throws GLib.Error
          */
         get_password(service: Service, prompt: string, item: string, flags: number): string;
 
@@ -17348,6 +17691,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns Whether succeeded, or better whether no fatal error happened.
          * @since 3.30
+         * @throws GLib.Error
          */
         get_recipient_certificates_sync(flags: number, recipients: string[], cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -17656,12 +18000,12 @@ export namespace Camel {
              * @signal
              * @run-first
              */
-            "folder-created": (arg0: FolderInfo) => void;
+            "folder-created": (object: FolderInfo) => void;
             /**
              * @signal
              * @run-first
              */
-            "folder-deleted": (arg0: FolderInfo) => void;
+            "folder-deleted": (object: FolderInfo) => void;
             /**
              * This signal indicates significant changes have occurred to
              * the folder hierarchy of `store`, and that previously fetched
@@ -17684,12 +18028,12 @@ export namespace Camel {
              * @signal
              * @run-first
              */
-            "folder-opened": (arg0: Folder) => void;
+            "folder-opened": (object: Folder) => void;
             /**
              * @signal
              * @run-first
              */
-            "folder-renamed": (arg0: string, arg1: FolderInfo) => void;
+            "folder-renamed": (object: string, p0: FolderInfo) => void;
             "notify::connection-status": (pspec: GObject.ParamSpec) => void;
             "notify::display-name": (pspec: GObject.ParamSpec) => void;
             "notify::password": (pspec: GObject.ParamSpec) => void;
@@ -17983,6 +18327,7 @@ export namespace Camel {
          * @param info a {@link Camel.FolderInfo}
          * @returns whether folder should be checked for new mails
          * @since 2.22
+         * @throws GLib.Error
          */
         can_refresh_folder(info: FolderInfo): boolean;
 
@@ -18037,6 +18382,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns info about the created folder, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         create_folder_finish(result: Gio.AsyncResult): FolderInfo | null;
 
@@ -18050,6 +18396,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns info about the created folder, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         create_folder_sync(parent_name: string | null, folder_name: string, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
@@ -18111,6 +18458,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         delete_folder_finish(result: Gio.AsyncResult): boolean;
 
@@ -18120,6 +18468,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on failure
          * @since 3.0
+         * @throws GLib.Error
          */
         delete_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18257,6 +18606,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the requested {@link Camel.Folder} object, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         get_folder_finish(result: Gio.AsyncResult): Folder | null;
 
@@ -18317,6 +18667,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Camel.FolderInfo} tree, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         get_folder_info_finish(result: Gio.AsyncResult): FolderInfo | null;
 
@@ -18347,6 +18698,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Camel.FolderInfo} tree, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         get_folder_info_sync(top: string | null, flags: StoreGetFolderInfoFlags, cancellable: Gio.Cancellable | null): FolderInfo | null;
 
@@ -18357,6 +18709,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the requested {@link Camel.Folder} object, or `null` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         get_folder_sync(folder_name: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null;
 
@@ -18409,6 +18762,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the inbox folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_inbox_folder_finish(result: Gio.AsyncResult): Folder | null;
 
@@ -18417,6 +18771,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the inbox folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_inbox_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
@@ -18463,6 +18818,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the junk folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_junk_folder_finish(result: Gio.AsyncResult): Folder | null;
 
@@ -18471,6 +18827,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the junk folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_junk_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
@@ -18523,6 +18880,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns the trash folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_trash_folder_finish(result: Gio.AsyncResult): Folder | null;
 
@@ -18531,6 +18889,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the trash folder for `store`, or `null` on error or if no such folder exists
          * @since 3.0
+         * @throws GLib.Error
          */
         get_trash_folder_sync(cancellable: Gio.Cancellable | null): Folder | null;
 
@@ -18587,6 +18946,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.20
+         * @throws GLib.Error
          */
         initial_setup_finish(result: Gio.AsyncResult): [boolean, { [key: string]: string }];
 
@@ -18608,6 +18968,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.20
+         * @throws GLib.Error
          */
         initial_setup_sync(cancellable: Gio.Cancellable | null): [boolean, { [key: string]: string }];
 
@@ -18616,6 +18977,7 @@ export namespace Camel {
          * runs maintenance routines on it.
          * @returns Whether succeeded.
          * @since 3.16
+         * @throws GLib.Error
          */
         maybe_run_db_maintenance(): boolean;
 
@@ -18665,6 +19027,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         rename_folder_finish(result: Gio.AsyncResult): boolean;
 
@@ -18675,6 +19038,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         rename_folder_sync(old_name: string, new_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18687,6 +19051,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns whether search succeeded
          * @since 3.62
+         * @throws GLib.Error
          */
         search_multimailbox_sync(folders: Folder[], search_key: string, words: string[], cancellable: Gio.Cancellable | null): [boolean, { [key: string]: any }];
 
@@ -18750,6 +19115,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_finish(result: Gio.AsyncResult): boolean;
 
@@ -18760,6 +19126,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         synchronize_sync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean;
 
@@ -18805,6 +19172,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -18933,6 +19301,7 @@ export namespace Camel {
          * @param folder_name a folder name
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         clear_folder(folder_name: string): boolean;
 
@@ -18942,6 +19311,7 @@ export namespace Camel {
          * @param kind a {@link Camel.StoreDBCountKind}
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         count_messages(folder_name: string, kind: StoreDBCountKind): [boolean, number];
 
@@ -18951,6 +19321,7 @@ export namespace Camel {
          * @param folder_name a folder name
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         delete_folder(folder_name: string): boolean;
 
@@ -18964,6 +19335,7 @@ export namespace Camel {
          * @param uid message UID
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         delete_message(folder_name: string, uid: string): boolean;
 
@@ -18977,6 +19349,7 @@ export namespace Camel {
          * @param uids a {@link GLib.PtrArray} of strings with message UID-s
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         delete_messages(folder_name: string, uids: string[]): boolean;
 
@@ -18986,6 +19359,7 @@ export namespace Camel {
          * @param folder_name a folder name
          * @returns a {@link GLib.PtrArray} of message UID-s    in folder `folder_name`, which are marked as deleted, or `null` on error
          * @since 3.58
+         * @throws GLib.Error
          */
         dup_deleted_uids(folder_name: string): string[];
 
@@ -18995,6 +19369,7 @@ export namespace Camel {
          * @param folder_name a folder name
          * @returns a {@link GLib.PtrArray} of message UID-s    in folder `folder_name`, which are marked as junk, or `null` on error
          * @since 3.58
+         * @throws GLib.Error
          */
         dup_junk_uids(folder_name: string): string[];
 
@@ -19017,6 +19392,7 @@ export namespace Camel {
          * @param folder_name a folder name
          * @returns a {@link GLib.HashTable} of    the message UID-s and their flags, or `null` on error
          * @since 3.58
+         * @throws GLib.Error
          */
         dup_uids_with_flags(folder_name: string): { [key: string]: number };
 
@@ -19048,6 +19424,7 @@ export namespace Camel {
          * @param folder_name name of the folder to read the record for
          * @returns whether succeeded with the read, but check the non-zero-ness of    the folder_id member of the `out_record` to recognize whether it was    found
          * @since 3.58
+         * @throws GLib.Error
          */
         read_folder(folder_name: string): [boolean, StoreDBFolderRecord];
 
@@ -19064,6 +19441,7 @@ export namespace Camel {
          * @param uid message UID
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         read_message(folder_name: string, uid: string): [boolean, StoreDBMessageRecord];
 
@@ -19076,6 +19454,7 @@ export namespace Camel {
          * @param func a {@link Camel.StoreDBReadMessagesFunc} to be called
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         read_messages(folder_name: string, func: StoreDBReadMessagesFunc): boolean;
 
@@ -19088,6 +19467,7 @@ export namespace Camel {
          * @param new_folder_name a folder name to rename to
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         rename_folder(old_folder_name: string, new_folder_name: string): boolean;
 
@@ -19097,6 +19477,7 @@ export namespace Camel {
          * @param value a value to set
          * @returns whether succeeded See also `camel_store_db_get_int_key()`, `camel_store_db_set_string_key()`
          * @since 3.58
+         * @throws GLib.Error
          */
         set_int_key(key: string, value: number): boolean;
 
@@ -19106,6 +19487,7 @@ export namespace Camel {
          * @param value a value to set
          * @returns whether succeeded See also `camel_store_db_dup_string_key()`, `camel_store_db_set_int_key()`
          * @since 3.58
+         * @throws GLib.Error
          */
         set_string_key(key: string, value: string): boolean;
 
@@ -19118,6 +19500,7 @@ export namespace Camel {
          * @param record an {@link Camel.StoreDBFolderRecord}
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         write_folder(folder_name: string, record: StoreDBFolderRecord): boolean;
 
@@ -19129,6 +19512,7 @@ export namespace Camel {
          * @param record a {@link Camel.StoreDBMessageRecord}
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         write_message(folder_name: string, record: StoreDBMessageRecord): boolean;
     }
@@ -19239,6 +19623,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns whether succeeded; note the `inout_items` can be still set,    even when the call failed
          * @since 3.58
+         * @throws GLib.Error
          */
         add_match_threads_items_sync(inout_items: StoreSearchThreadItem[], cancellable: Gio.Cancellable | null): [boolean, StoreSearchThreadItem[]];
 
@@ -19267,6 +19652,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         get_items_sync(cancellable: Gio.Cancellable | null): [boolean, StoreSearchItem[]];
 
@@ -19301,6 +19687,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         get_uids_sync(folder_name: string, cancellable: Gio.Cancellable | null): [boolean, string[]];
 
@@ -19329,6 +19716,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `NULL`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         rebuild_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -19855,6 +20243,7 @@ export namespace Camel {
          * Closes the stream.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0 on success or -1 on error.
+         * @throws GLib.Error
          */
         close(cancellable: Gio.Cancellable | null): number;
 
@@ -19869,6 +20258,7 @@ export namespace Camel {
          * meaningful for writable streams.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns 0 on success or -1 on fail along with setting `error`
+         * @throws GLib.Error
          */
         flush(cancellable: Gio.Cancellable | null): number;
 
@@ -19877,6 +20267,7 @@ export namespace Camel {
          * @param buffer output buffer
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes actually read, or -1 on error and set errno.
+         * @throws GLib.Error
          */
         read(buffer: number[], cancellable: Gio.Cancellable | null): number;
 
@@ -19906,6 +20297,7 @@ export namespace Camel {
          * @param buffer buffer to write.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of bytes written to the stream, or -1 on error along with setting errno.
+         * @throws GLib.Error
          */
         write(buffer: number[], cancellable: Gio.Cancellable | null): number;
 
@@ -19914,6 +20306,7 @@ export namespace Camel {
          * @param string a string
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of characters written or -1 on error.
+         * @throws GLib.Error
          */
         write_string(string: string, cancellable: Gio.Cancellable | null): number;
 
@@ -19923,6 +20316,7 @@ export namespace Camel {
          * @param output_stream destination {@link Camel.Stream} object
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns -1 on error, or the number of bytes successfully copied across streams.
+         * @throws GLib.Error
          */
         write_to_stream(output_stream: Stream, cancellable: Gio.Cancellable | null): number;
 
@@ -19958,6 +20352,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -19980,6 +20375,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20133,6 +20529,7 @@ export namespace Camel {
          * @param buf Memory to write the string to.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the number of characters read, or 0 for end of file, and -1 on error.
+         * @throws GLib.Error
          */
         gets(buf: number[], cancellable: Gio.Cancellable | null): number;
 
@@ -20142,6 +20539,7 @@ export namespace Camel {
          * return if any) are not included in the returned string.
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the line read, which the caller must free when done with, or `null` on eof. If an error occurs, `error` will be set.
+         * @throws GLib.Error
          */
         read_line(cancellable: Gio.Cancellable | null): string | null;
 
@@ -20177,6 +20575,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20199,6 +20598,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20375,6 +20775,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20397,6 +20798,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20544,6 +20946,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20566,6 +20969,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20740,6 +21144,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20762,6 +21167,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20914,6 +21320,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -20936,6 +21343,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21047,6 +21455,7 @@ export namespace Camel {
         /**
          * @param command 
          * @param env 
+         * @throws GLib.Error
          */
         connect(command: string, env: string): number;
 
@@ -21087,6 +21496,7 @@ export namespace Camel {
          * @param type a {@link GLib.SeekType}.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         seek(offset: bigint | number, type: GLib.SeekType, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21109,6 +21519,7 @@ export namespace Camel {
          * @param offset new length for `seekable`, in bytes.
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error     has occurred, this function will return `false` and set `error`     appropriately if present.
+         * @throws GLib.Error
          */
         truncate(offset: bigint | number, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21512,6 +21923,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         send_to_finish(result: Gio.AsyncResult): [boolean, boolean];
 
@@ -21525,6 +21937,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success or `false` on error
          * @since 3.0
+         * @throws GLib.Error
          */
         send_to_sync(message: MimeMessage, from: Address, recipients: Address, cancellable: Gio.Cancellable | null): [boolean, boolean];
 
@@ -21578,6 +21991,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -21807,6 +22221,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         add_folder_sync(subfolder: Folder, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21868,6 +22283,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         remove_folder_sync(subfolder: Folder, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21888,6 +22304,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         set_expression_sync(expression: string, op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
 
@@ -21898,6 +22315,7 @@ export namespace Camel {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns whether succeeded
          * @since 3.58
+         * @throws GLib.Error
          */
         set_folders_sync(folders: Folder[], op_flags: VeeFolderOpFlags, cancellable: Gio.Cancellable | null): boolean;
     }
@@ -22256,12 +22674,16 @@ export namespace Camel {
         static ["new"](): Cert;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         load_cert_file(): boolean;
 
         ref(): Cert;
 
         /**
          * @param der_data 
+         * @throws GLib.Error
          */
         save_cert_file(der_data: Uint8Array | string): boolean;
 
@@ -26098,6 +26520,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns the junk status determined by `junk_filter`
          * @since 3.2
+         * @throws GLib.Error
          */
         classify(message: MimeMessage, cancellable: Gio.Cancellable | null): JunkStatus;
 
@@ -26111,6 +26534,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `message` was successfully classified
          * @since 3.2
+         * @throws GLib.Error
          */
         learn_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26124,6 +26548,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `message` was successfully classified
          * @since 3.2
+         * @throws GLib.Error
          */
         learn_not_junk(message: MimeMessage, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26136,6 +26561,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` if `junk_filter` was successfully synchronized
          * @since 3.2
+         * @throws GLib.Error
          */
         synchronize(cancellable: Gio.Cancellable | null): boolean;
     }
@@ -26287,6 +26713,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns whether the host for `service` can be reached
          * @since 3.12
+         * @throws GLib.Error
          */
         can_reach_finish(result: Gio.AsyncResult): boolean;
 
@@ -26304,6 +26731,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns whether the host for `service` can be reached
          * @since 3.12
+         * @throws GLib.Error
          */
         can_reach_sync(cancellable: Gio.Cancellable | null): boolean;
 
@@ -26316,6 +26744,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns a {@link Gio.IOStream}, or `null` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         connect_sync(cancellable: Gio.Cancellable | null): Gio.IOStream;
 
@@ -26386,6 +26815,7 @@ export namespace Camel {
          * @param base_stream a {@link Gio.IOStream}
          * @returns the new {@link Gio.TlsClientConnection}, or `null` on error
          * @since 3.12
+         * @throws GLib.Error
          */
         starttls(base_stream: Gio.IOStream): Gio.IOStream | null;
 
@@ -26817,6 +27247,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         subscribe_folder_finish(result: Gio.AsyncResult): boolean;
 
@@ -26826,6 +27257,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         subscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
 
@@ -26875,6 +27307,7 @@ export namespace Camel {
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         unsubscribe_folder_finish(result: Gio.AsyncResult): boolean;
 
@@ -26884,6 +27317,7 @@ export namespace Camel {
          * @param cancellable optional {@link Gio.Cancellable} object, or `null`
          * @returns `true` on success, `false` on error
          * @since 3.2
+         * @throws GLib.Error
          */
         unsubscribe_folder_sync(folder_name: string, cancellable: Gio.Cancellable | null): boolean;
     }

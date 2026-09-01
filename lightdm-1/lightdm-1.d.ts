@@ -78,11 +78,11 @@ export namespace LightDM {
         /**
          * Informational message.
          */
-        INFO,
+        INFO = 0,
         /**
          * Error message.
          */
-        ERROR,
+        ERROR = 1,
     }
 
 
@@ -101,32 +101,62 @@ export namespace LightDM {
         /**
          * prompt is a question.  The information can be shown as it is entered.
          */
-        QUESTION,
+        QUESTION = 0,
         /**
          * prompt is for secret information.  The entered information should be obscured so it can't be publicly visible.
          */
-        SECRET,
+        SECRET = 1,
     }
 
 
+    /**
+     * @default authentication-complete
+     */
     const GREETER_SIGNAL_AUTHENTICATION_COMPLETE: string;
 
+    /**
+     * @default autologin-timer-expired
+     */
     const GREETER_SIGNAL_AUTOLOGIN_TIMER_EXPIRED: string;
 
+    /**
+     * @default idle
+     */
     const GREETER_SIGNAL_IDLE: string;
 
+    /**
+     * @default reset
+     */
     const GREETER_SIGNAL_RESET: string;
 
+    /**
+     * @default show-message
+     */
     const GREETER_SIGNAL_SHOW_MESSAGE: string;
 
+    /**
+     * @default show-prompt
+     */
     const GREETER_SIGNAL_SHOW_PROMPT: string;
 
+    /**
+     * @default changed
+     */
     const SIGNAL_USER_CHANGED: string;
 
+    /**
+     * @default user-added
+     */
     const USER_LIST_SIGNAL_USER_ADDED: string;
 
+    /**
+     * @default user-changed
+     */
     const USER_LIST_SIGNAL_USER_CHANGED: string;
 
+    /**
+     * @default user-removed
+     */
     const USER_LIST_SIGNAL_USER_REMOVED: string;
 
     /**
@@ -241,12 +271,14 @@ export namespace LightDM {
     /**
      * Triggers a system hibernate.
      * @returns `TRUE` if hibernate initiated.
+     * @throws GLib.Error
      */
     function hibernate(): boolean;
 
     /**
      * Triggers a system restart.
      * @returns `TRUE` if restart initiated.
+     * @throws GLib.Error
      */
     function restart(): boolean;
 
@@ -259,12 +291,14 @@ export namespace LightDM {
     /**
      * Triggers a system shutdown.
      * @returns `TRUE` if shutdown initiated.
+     * @throws GLib.Error
      */
     function shutdown(): boolean;
 
     /**
      * Triggers a system suspend.
      * @returns `TRUE` if suspend initiated.
+     * @throws GLib.Error
      */
     function suspend(): boolean;
 
@@ -314,7 +348,7 @@ export namespace LightDM {
              * @signal
              * @run-last
              */
-            "show-message": (arg0: string, arg1: MessageType) => void;
+            "show-message": (text: string, type: MessageType) => void;
             /**
              * The ::show-prompt signal gets emitted when the greeter should show a
              * prompt to the user.  The given text should be displayed and an input
@@ -325,7 +359,7 @@ export namespace LightDM {
              * @signal
              * @run-last
              */
-            "show-prompt": (arg0: string, arg1: PromptType) => void;
+            "show-prompt": (text: string, type: PromptType) => void;
             "notify::authentication-user": (pspec: GObject.ParamSpec) => void;
             "notify::autologin-guest-hint": (pspec: GObject.ParamSpec) => void;
             "notify::autologin-session-hint": (pspec: GObject.ParamSpec) => void;
@@ -636,18 +670,21 @@ export namespace LightDM {
          * Starts the authentication procedure for a user.
          * @param username A username or `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
+         * @throws GLib.Error
          */
         authenticate(username: string | null): boolean;
 
         /**
          * Starts the authentication procedure for the guest user.
          * @returns `TRUE` if authentication request sent.
+         * @throws GLib.Error
          */
         authenticate_as_guest(): boolean;
 
         /**
          * Starts the authentication procedure for the automatic login user.
          * @returns `TRUE` if authentication request sent.
+         * @throws GLib.Error
          */
         authenticate_autologin(): boolean;
 
@@ -656,12 +693,14 @@ export namespace LightDM {
          * @param session The name of a remote session
          * @param username A username of `NULL` to prompt for a username.
          * @returns `TRUE` if authentication request sent.
+         * @throws GLib.Error
          */
         authenticate_remote(session: string, username: string | null): boolean;
 
         /**
          * Cancel the current user authentication.
          * @returns `TRUE` if cancel request sent.
+         * @throws GLib.Error
          */
         cancel_authentication(): boolean;
 
@@ -674,6 +713,7 @@ export namespace LightDM {
          * Connects the greeter to the display manager.  Will block until connected.
          * @returns `TRUE` if successfully connected
          * @deprecated since 1.11.1: Use `lightdm_greeter_connect_to_daemon_sync()` instead
+         * @throws GLib.Error
          */
         connect_sync(): boolean;
 
@@ -713,12 +753,14 @@ export namespace LightDM {
          * Finishes an operation started with `lightdm_greeter_connect_to_daemon()`.
          * @param result A {@link Gio.AsyncResult}.
          * @returns `TRUE` if successfully connected
+         * @throws GLib.Error
          */
         connect_to_daemon_finish(result: Gio.AsyncResult): boolean;
 
         /**
          * Connects the greeter to the display manager.  Will block until connected.
          * @returns `TRUE` if successfully connected
+         * @throws GLib.Error
          */
         connect_to_daemon_sync(): boolean;
 
@@ -776,6 +818,7 @@ export namespace LightDM {
          * Function to call from lightdm_greeter_ensure_shared_data_dir callback.
          * @param result A {@link Gio.AsyncResult}.
          * @returns The path to the shared directory, free with g_free.
+         * @throws GLib.Error
          */
         ensure_shared_data_dir_finish(result: Gio.AsyncResult): string;
 
@@ -792,6 +835,7 @@ export namespace LightDM {
          * the directory themselves.
          * @param username A username
          * @returns The path to the shared directory, free with g_free.
+         * @throws GLib.Error
          */
         ensure_shared_data_dir_sync(username: string): string;
 
@@ -906,6 +950,7 @@ export namespace LightDM {
          * Provide response to a prompt.  May be one in a series.
          * @param response Response to a prompt
          * @returns `TRUE` if response sent.
+         * @throws GLib.Error
          */
         respond(response: string): boolean;
 
@@ -913,6 +958,7 @@ export namespace LightDM {
          * Set the language for the currently authenticated user.
          * @param language The language to use for this user in the form of a locale specification (e.g. "de_DE.UTF-8").
          * @returns `TRUE` if set language request sent.
+         * @throws GLib.Error
          */
         set_language(language: string): boolean;
 
@@ -962,6 +1008,7 @@ export namespace LightDM {
          * Start a session for the authenticated user.
          * @param result A {@link Gio.AsyncResult}.
          * @returns TRUE if the session was started.
+         * @throws GLib.Error
          */
         start_session_finish(result: Gio.AsyncResult): boolean;
 
@@ -969,6 +1016,7 @@ export namespace LightDM {
          * Start a session for the authenticated user.
          * @param session The session to log into or `NULL` to use the default.
          * @returns TRUE if the session was started.
+         * @throws GLib.Error
          */
         start_session_sync(session: string | null): boolean;
     }
@@ -1573,19 +1621,19 @@ export namespace LightDM {
              * @signal
              * @run-last
              */
-            "user-added": (arg0: User) => void;
+            "user-added": (user: User) => void;
             /**
              * The ::user-changed signal gets emitted when a user account is modified.
              * @signal
              * @run-last
              */
-            "user-changed": (arg0: User) => void;
+            "user-changed": (user: User) => void;
             /**
              * The ::user-removed signal gets emitted when a user account is removed.
              * @signal
              * @run-last
              */
-            "user-removed": (arg0: User) => void;
+            "user-removed": (user: User) => void;
             "notify::length": (pspec: GObject.ParamSpec) => void;
             "notify::num-users": (pspec: GObject.ParamSpec) => void;
         }

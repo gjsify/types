@@ -31,22 +31,22 @@ export namespace TelepathyLogger {
         /**
          * the current contact's type is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * the contact's type represents a user (buddy), but not
          *    the account's owner for which `TPL_ENTITY_SELF` is used
          */
-        CONTACT,
+        CONTACT = 1,
         /**
          * a named room (#TP_HANDLE_TYPE_ROOM)
          */
-        ROOM,
+        ROOM = 2,
         /**
          * the contact's type represents the owner of the account
          *    whose channel has been logged, as opposed to `TPL_ENTITY_CONTACT` which
          *    represents any other user
          */
-        SELF,
+        SELF = 3,
     }
 
 
@@ -57,7 +57,7 @@ export namespace TelepathyLogger {
         /**
          * Error return when adding logs fails
          */
-        LOG_MANAGER_ERROR_ADD_EVENT,
+        LOG_MANAGER_ERROR_ADD_EVENT = 0,
     }
 
 
@@ -76,15 +76,15 @@ export namespace TelepathyLogger {
         /**
          * Mask to {@link TelepathyLogger.TextEvent}
          */
-        TEXT,
+        TEXT = 1,
         /**
          * Mask to {@link TelepathyLogger.CallEvent}
          */
-        CALL,
+        CALL = 2,
         /**
          * Special value to select all type of {@link TelepathyLogger.Event}
          */
-        ANY,
+        ANY = 65535,
     }
 
 
@@ -591,6 +591,7 @@ export namespace TelepathyLogger {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         * @throws GLib.Error
          */
         get_dates_finish(result: Gio.AsyncResult): [boolean, GLib.Date[]];
 
@@ -617,6 +618,7 @@ export namespace TelepathyLogger {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         * @throws GLib.Error
          */
         get_entities_finish(result: Gio.AsyncResult): [boolean, Entity[]];
 
@@ -652,6 +654,7 @@ export namespace TelepathyLogger {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         * @throws GLib.Error
          */
         get_events_for_date_finish(result: Gio.AsyncResult): [boolean, Event[]];
 
@@ -690,6 +693,7 @@ export namespace TelepathyLogger {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
+         * @throws GLib.Error
          */
         get_filtered_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
 
@@ -728,6 +732,7 @@ export namespace TelepathyLogger {
         /**
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`
+         * @throws GLib.Error
          */
         search_finish(result: Gio.AsyncResult): [boolean, LogSearchHit[]];
 
@@ -837,6 +842,7 @@ export namespace TelepathyLogger {
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         get_events_finish(result: Gio.AsyncResult): [boolean, Event[]];
 
@@ -887,6 +893,7 @@ export namespace TelepathyLogger {
          * @param result a {@link Gio.AsyncResult}
          * @returns `TRUE` if the operation was successful, otherwise `FALSE`.
          * @since 0.8.0
+         * @throws GLib.Error
          */
         rewind_finish(result: Gio.AsyncResult): boolean;
     }

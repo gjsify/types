@@ -121,28 +121,28 @@ export namespace FPrint {
          * The scan did not succeed due to poor scan quality
          *   or other general user scanning problem.
          */
-        GENERAL,
+        GENERAL = 0,
         /**
          * The scan did not succeed because the finger
          *   swipe was too short.
          */
-        TOO_SHORT,
+        TOO_SHORT = 1,
         /**
          * The scan did not succeed because the finger
          *   was not centered on the scanner.
          */
-        CENTER_FINGER,
+        CENTER_FINGER = 2,
         /**
          * The scan did not succeed due to quality or
          *   pressure problems; the user should remove their finger from the scanner
          *   before retrying.
          */
-        REMOVE_FINGER,
+        REMOVE_FINGER = 3,
         /**
          * The scan did not succeed because the finger
          *   swipe or touch was too fast.
          */
-        TOO_FAST,
+        TOO_FAST = 4,
     }
 
 
@@ -160,15 +160,15 @@ export namespace FPrint {
         /**
          * The device is a virtual device
          */
-        VIRTUAL,
+        VIRTUAL = 0,
         /**
          * The device is a udev device
          */
-        UDEV,
+        UDEV = 1,
         /**
          * The device is a USB device
          */
-        USB,
+        USB = 2,
     }
 
 
@@ -186,55 +186,55 @@ export namespace FPrint {
         /**
          * The finger is unknown
          */
-        UNKNOWN,
+        UNKNOWN = 0,
         /**
          * Left thumb
          */
-        LEFT_THUMB,
+        LEFT_THUMB = 1,
         /**
          * Left index finger
          */
-        LEFT_INDEX,
+        LEFT_INDEX = 2,
         /**
          * Left middle finger
          */
-        LEFT_MIDDLE,
+        LEFT_MIDDLE = 3,
         /**
          * Left ring finger
          */
-        LEFT_RING,
+        LEFT_RING = 4,
         /**
          * Left little finger
          */
-        LEFT_LITTLE,
+        LEFT_LITTLE = 5,
         /**
          * Right thumb
          */
-        RIGHT_THUMB,
+        RIGHT_THUMB = 6,
         /**
          * Right index finger
          */
-        RIGHT_INDEX,
+        RIGHT_INDEX = 7,
         /**
          * Right middle finger
          */
-        RIGHT_MIDDLE,
+        RIGHT_MIDDLE = 8,
         /**
          * Right ring finger
          */
-        RIGHT_RING,
+        RIGHT_RING = 9,
         /**
          * Right little finger
          */
-        RIGHT_LITTLE,
+        RIGHT_LITTLE = 10,
         /**
          * The first finger in the fp-print order
          */
-        FIRST,
+        FIRST = 1,
         /**
          * The last finger in the fp-print order
          */
-        LAST,
+        LAST = 10,
     }
 
 
@@ -252,11 +252,11 @@ export namespace FPrint {
         /**
          * Sensor requires swiping the finger.
          */
-        SWIPE,
+        SWIPE = 0,
         /**
          * Sensor requires placing/pressing down the finger.
          */
-        PRESS,
+        PRESS = 1,
     }
 
 
@@ -278,15 +278,15 @@ export namespace FPrint {
         /**
          * Sensor is considered cold.
          */
-        COLD,
+        COLD = 0,
         /**
          * Sensor is warm, usage time may be limited.
          */
-        WARM,
+        WARM = 1,
         /**
          * Sensor is hot and cannot be used.
          */
-        HOT,
+        HOT = 2,
     }
 
 
@@ -328,47 +328,47 @@ export namespace FPrint {
         /**
          * Device does not support any feature
          */
-        NONE,
+        NONE = 0,
         /**
          * Supports image capture
          */
-        CAPTURE,
+        CAPTURE = 1,
         /**
          * Supports finger identification
          */
-        IDENTIFY,
+        IDENTIFY = 2,
         /**
          * Supports finger verification
          */
-        VERIFY,
+        VERIFY = 4,
         /**
          * Device has a persistent storage
          */
-        STORAGE,
+        STORAGE = 8,
         /**
          * Supports listing the storage templates
          */
-        STORAGE_LIST,
+        STORAGE_LIST = 16,
         /**
          * Supports deleting stored templates
          */
-        STORAGE_DELETE,
+        STORAGE_DELETE = 32,
         /**
          * Supports clearing the whole storage
          */
-        STORAGE_CLEAR,
+        STORAGE_CLEAR = 64,
         /**
          * Natively supports duplicates detection
          */
-        DUPLICATES_CHECK,
+        DUPLICATES_CHECK = 128,
         /**
          * Whether the device can run continuously
          */
-        ALWAYS_ON,
+        ALWAYS_ON = 256,
         /**
          * Supports updating an existing print record using new scans
          */
-        UPDATE_PRINT,
+        UPDATE_PRINT = 512,
     }
 
 
@@ -386,15 +386,15 @@ export namespace FPrint {
         /**
          * Sensor has not the finger on it, nor requires it
          */
-        NONE,
+        NONE = 0,
         /**
          * Sensor waits for the finger
          */
-        NEEDED,
+        NEEDED = 1,
         /**
          * Sensor has the finger on it
          */
-        PRESENT,
+        PRESENT = 2,
     }
 
 
@@ -406,7 +406,7 @@ export namespace FPrint {
              * @signal
              * @run-last
              */
-            "device-added": (arg0: Device) => void;
+            "device-added": (device: Device) => void;
             /**
              * This signal is emitted when a fingerprint reader is removed.
              * 
@@ -416,7 +416,7 @@ export namespace FPrint {
              * @signal
              * @run-last
              */
-            "device-removed": (arg0: Device) => void;
+            "device-removed": (device: Device) => void;
         }
 
         // Constructor properties interface
@@ -759,6 +759,7 @@ export namespace FPrint {
          * See `fp_device_capture()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns {@link FPrint.Image} or `null` on error
+         * @throws GLib.Error
          */
         capture_finish(result: Gio.AsyncResult): Image;
 
@@ -767,6 +768,7 @@ export namespace FPrint {
          * @param wait_for_finger Whether to wait for a finger or not
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns A new {@link FPrint.Image} or `null` on error
+         * @throws GLib.Error
          */
         capture_sync(wait_for_finger: boolean, cancellable: Gio.Cancellable | null): Image;
 
@@ -811,6 +813,7 @@ export namespace FPrint {
          * See `fp_device_clear_storage()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         clear_storage_finish(result: Gio.AsyncResult): void;
 
@@ -818,6 +821,7 @@ export namespace FPrint {
          * Clear sensor storage.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         clear_storage_sync(cancellable: Gio.Cancellable | null): void;
 
@@ -852,6 +856,7 @@ export namespace FPrint {
          * See `fp_device_close()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         close_finish(result: Gio.AsyncResult): void;
 
@@ -859,6 +864,7 @@ export namespace FPrint {
          * Close the device synchronously.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         close_sync(cancellable: Gio.Cancellable | null): void;
 
@@ -906,6 +912,7 @@ export namespace FPrint {
          * See `fp_device_delete_print()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         delete_print_finish(result: Gio.AsyncResult): void;
 
@@ -914,6 +921,7 @@ export namespace FPrint {
          * @param enrolled_print a {@link FPrint.Print} to verify
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         delete_print_sync(enrolled_print: Print, cancellable: Gio.Cancellable | null): void;
 
@@ -977,6 +985,7 @@ export namespace FPrint {
          * See `fp_device_enroll()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns The enrolled {@link FPrint.Print}, or `null` on error
+         * @throws GLib.Error
          */
         enroll_finish(result: Gio.AsyncResult): Print;
 
@@ -987,6 +996,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param progress_cb progress reporting callback
          * @returns A {@link FPrint.Print} on success, `null` otherwise
+         * @throws GLib.Error
          */
         enroll_sync(template_print: Print, cancellable: Gio.Cancellable | null, progress_cb: EnrollProgress | null): Print;
 
@@ -1098,6 +1108,7 @@ export namespace FPrint {
          * See `fp_device_identify()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         identify_finish(result: Gio.AsyncResult): [Print | null, Print | null];
 
@@ -1107,6 +1118,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param match_cb match reporting callback
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         identify_sync(prints: Print[], cancellable: Gio.Cancellable | null, match_cb: MatchCb | null): [Print | null, Print | null];
 
@@ -1150,6 +1162,7 @@ export namespace FPrint {
          * See `fp_device_list_prints()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns Array of prints or `null` on error
+         * @throws GLib.Error
          */
         list_prints_finish(result: Gio.AsyncResult): Print[];
 
@@ -1157,6 +1170,7 @@ export namespace FPrint {
          * List device stored prints synchronously.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns Array of prints, or `null` on error
+         * @throws GLib.Error
          */
         list_prints_sync(cancellable: Gio.Cancellable | null): Print[];
 
@@ -1165,6 +1179,7 @@ export namespace FPrint {
          * See `fp_device_open()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         open_finish(result: Gio.AsyncResult): void;
 
@@ -1172,6 +1187,7 @@ export namespace FPrint {
          * Open the device synchronously.
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         open_sync(cancellable: Gio.Cancellable | null): void;
 
@@ -1217,6 +1233,7 @@ export namespace FPrint {
          * The API user should accept an error of #FP_DEVICE_ERROR_NOT_SUPPORTED.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         resume_finish(result: Gio.AsyncResult): void;
 
@@ -1224,6 +1241,7 @@ export namespace FPrint {
          * Resume device after suspend.
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         resume_sync(cancellable: Gio.Cancellable | null): void;
 
@@ -1310,6 +1328,7 @@ export namespace FPrint {
          * The API user should accept an error of #FP_DEVICE_ERROR_NOT_SUPPORTED.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         suspend_finish(result: Gio.AsyncResult): void;
 
@@ -1317,6 +1336,7 @@ export namespace FPrint {
          * Prepare device for suspend.
          * @param cancellable a {@link Gio.Cancellable}, or `null`, currently not used
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         suspend_sync(cancellable: Gio.Cancellable | null): void;
 
@@ -1362,6 +1382,7 @@ export namespace FPrint {
          * See `fp_device_verify()`.
          * @param result A {@link Gio.AsyncResult}
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         verify_finish(result: Gio.AsyncResult): [boolean, Print | null];
 
@@ -1371,6 +1392,7 @@ export namespace FPrint {
          * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param match_cb match reporting callback
          * @returns `false` on error, `true` otherwise
+         * @throws GLib.Error
          */
         verify_sync(enrolled_print: Print, cancellable: Gio.Cancellable | null, match_cb: MatchCb | null): [boolean, Print | null];
 
@@ -1511,6 +1533,7 @@ export namespace FPrint {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1520,6 +1543,7 @@ export namespace FPrint {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): Device;
 
@@ -1666,6 +1690,7 @@ export namespace FPrint {
          * Finish minutiae detection in an image
          * @param result A {@link Gio.AsyncResult}
          * @returns `true` on success
+         * @throws GLib.Error
          */
         detect_minutiae_finish(result: Gio.AsyncResult): boolean;
 
@@ -1727,7 +1752,7 @@ export namespace FPrint {
              * @signal
              * @run-first
              */
-            "fpi-image-device-state-changed": (arg0: unknown) => void;
+            "fpi-image-device-state-changed": (new_state: unknown) => void;
             "notify::device-id": (pspec: GObject.ParamSpec) => void;
             "notify::driver": (pspec: GObject.ParamSpec) => void;
             "notify::finger-status": (pspec: GObject.ParamSpec) => void;
@@ -1918,6 +1943,7 @@ export namespace FPrint {
          * @param res a {@link Gio.AsyncResult}.
          * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init_finish(res: Gio.AsyncResult): boolean;
 
@@ -1927,6 +1953,7 @@ export namespace FPrint {
          * @param res the {@link Gio.AsyncResult} from the callback
          * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          * @since 2.22
+         * @throws GLib.Error
          */
         new_finish(res: Gio.AsyncResult): ImageDevice;
 
@@ -2204,6 +2231,7 @@ export namespace FPrint {
          * Serialize a print definition for permanent storage. Note that this is
          * lossy in the sense that e.g. the image data is discarded.
          * @returns `true` on success
+         * @throws GLib.Error
          */
         serialize(): Uint8Array;
 

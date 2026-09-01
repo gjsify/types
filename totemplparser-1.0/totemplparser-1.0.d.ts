@@ -70,24 +70,24 @@ export namespace TotemPlParser {
         /**
          * The playlist could not be handled.
          */
-        UNHANDLED,
+        UNHANDLED = 0,
         /**
          * There was an error parsing the playlist.
          */
-        ERROR,
+        ERROR = 1,
         /**
          * The playlist was parsed successfully.
          */
-        SUCCESS,
+        SUCCESS = 2,
         /**
          * The playlist was ignored due to its scheme or MIME type (see `totem_pl_parser_add_ignored_scheme()`
          * and `totem_pl_parser_add_ignored_mimetype()`).
          */
-        IGNORED,
+        IGNORED = 3,
         /**
          * Parsing of the playlist was cancelled part-way through.
          */
-        CANCELLED,
+        CANCELLED = 4,
     }
 
 
@@ -106,65 +106,81 @@ export namespace TotemPlParser {
         /**
          * PLS parser
          */
-        PLS,
+        PLS = 0,
         /**
          * M3U parser
          */
-        M3U,
+        M3U = 1,
         /**
          * M3U (DOS linebreaks) parser
          */
-        M3U_DOS,
+        M3U_DOS = 2,
         /**
          * XSPF parser
          */
-        XSPF,
+        XSPF = 3,
         /**
          * iRiver PLA parser
          */
-        IRIVER_PLA,
+        IRIVER_PLA = 4,
     }
 
 
+    /**
+     * @default clean
+     */
     const PARSER_CONTENT_RATING_CLEAN: string;
 
+    /**
+     * @default explicit
+     */
     const PARSER_CONTENT_RATING_EXPLICIT: string;
 
+    /**
+     * @default unrated
+     */
     const PARSER_CONTENT_RATING_UNRATED: string;
 
     /**
      * Metadata field for an entry's abstract text.
+     * @default abstract
      */
     const PARSER_FIELD_ABSTRACT: string;
 
     /**
      * Metadata field for an entry's album.
+     * @default album
      */
     const PARSER_FIELD_ALBUM: string;
 
     /**
      * Metadata field for an entry's default audio-track selection. The default
      * track is defined as NULL. Note that the value is sent as a string.
+     * @default audio-track
      */
     const PARSER_FIELD_AUDIO_TRACK: string;
 
     /**
      * Metadata field for an entry's author/composer/director.
+     * @default author
      */
     const PARSER_FIELD_AUTHOR: string;
 
     /**
      * Metadata field for an entry's "autoplay" flag, which is `true` if the entry should play automatically.
+     * @default autoplay
      */
     const PARSER_FIELD_AUTOPLAY: string;
 
     /**
      * Metadata field for an entry's base path.
+     * @default base
      */
     const PARSER_FIELD_BASE: string;
 
     /**
      * Metadata field for an entry's contact details for the webmaster.
+     * @default contact
      */
     const PARSER_FIELD_CONTACT: string;
 
@@ -174,22 +190,26 @@ export namespace TotemPlParser {
      * `TOTEM_PL_PARSER_CONTENT_RATING_EXPLICIT` for explicit content and
      * `TOTEM_PL_PARSER_CONTENT_RATING_UNRATED` for content which is not
      * rated.
+     * @default content-rating
      */
     const PARSER_FIELD_CONTENT_RATING: string;
 
     /**
      * Metadata field for an entry's content-type (usually a mime-type coming
      * from a web server).
+     * @default content-type
      */
     const PARSER_FIELD_CONTENT_TYPE: string;
 
     /**
      * Metadata field for an entry's copyright line.
+     * @default copyright
      */
     const PARSER_FIELD_COPYRIGHT: string;
 
     /**
      * Metadata field for an entry's description.
+     * @default description
      */
     const PARSER_FIELD_DESCRIPTION: string;
 
@@ -197,11 +217,13 @@ export namespace TotemPlParser {
      * Metadata field for an entry's download URI. Only used if an alternate download
      * location is available for the entry.
      * @since 2.26
+     * @default download-url
      */
     const PARSER_FIELD_DOWNLOAD_URI: string;
 
     /**
      * Metadata field for an entry's playback duration, which should be parsed using `totem_pl_parser_parse_duration()`.
+     * @default duration
      */
     const PARSER_FIELD_DURATION: string;
 
@@ -209,40 +231,47 @@ export namespace TotemPlParser {
      * Metadata field for an entry's playback duration, in milliseconds. It's only used when an entry's
      * duration is available in that format, so one would get either the `TOTEM_PL_PARSER_FIELD_DURATION`
      * or `TOTEM_PL_PARSER_FIELD_DURATION_MS` as metadata.
+     * @default duration-ms
      */
     const PARSER_FIELD_DURATION_MS: string;
 
     /**
      * Metadata field for an entry's playback end time.
+     * @default endtime
      */
     const PARSER_FIELD_ENDTIME: string;
 
     /**
      * Metadata field for an entry's filesize in bytes. This is only advisory, and can sometimes not match the actual filesize of the stream.
+     * @default filesize
      */
     const PARSER_FIELD_FILESIZE: string;
 
     /**
      * Metadata field for an entry's primary genre. This is a string of
      * the form 'Genre1' or 'Genre1/SubGenre1".
+     * @default genre
      */
     const PARSER_FIELD_GENRE: string;
 
     /**
      * Metadata field for an entry's full genre. This is a concatenated
      * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
+     * @default genres
      */
     const PARSER_FIELD_GENRES: string;
 
     /**
      * Metadata field for an entry's identifier. Its use is dependent on the format
      * of the playlist parsed, and its origin.
+     * @default id
      */
     const PARSER_FIELD_ID: string;
 
     /**
      * Metadata field for an entry's thumbnail image URI.
      * @since 2.26
+     * @default image-url
      */
     const PARSER_FIELD_IMAGE_URI: string;
 
@@ -250,70 +279,91 @@ export namespace TotemPlParser {
      * Metadata field used to tell the calling code that the parsing of a playlist
      * started. It is only `true` for the metadata passed to {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started} or
      * {@link TotemPlParser.Parser.SignalSignatures.playlist_ended | TotemPlParser.Parser::playlist-ended} signal handlers.
+     * @default is-playlist
      */
     const PARSER_FIELD_IS_PLAYLIST: string;
 
     /**
      * Metadata field for an entry's audio language.
+     * @default language
      */
     const PARSER_FIELD_LANGUAGE: string;
 
     /**
      * Metadata field for an entry's "more info" URI.
+     * @default moreinfo
      */
     const PARSER_FIELD_MOREINFO: string;
 
     /**
      * Metadata field for an entry's status in a playlist. This is usually
      * used when saving the state of an on-going playlist.
+     * @default playing
      */
     const PARSER_FIELD_PLAYING: string;
 
     /**
      * Metadata field for an entry's publication date, which should be parsed using `totem_pl_parser_parse_date()`.
+     * @default publication-date
      */
     const PARSER_FIELD_PUB_DATE: string;
 
     /**
      * Metadata field for an entry's preferred screen size.
+     * @default screensize
      */
     const PARSER_FIELD_SCREENSIZE: string;
 
     /**
      * Metadata field for an entry's playback start time, which should be parsed using `totem_pl_parser_parse_duration()`.
+     * @default starttime
      */
     const PARSER_FIELD_STARTTIME: string;
 
     /**
      * The URI of the entry's subtitle file.
+     * @default subtitle-uri
      */
     const PARSER_FIELD_SUBTITLE_URI: string;
 
     /**
      * Metadata field for an entry's displayable title.
+     * @default title
      */
     const PARSER_FIELD_TITLE: string;
 
     /**
      * Metadata field for an entry's preferred UI mode.
+     * @default ui-mode
      */
     const PARSER_FIELD_UI_MODE: string;
 
     /**
      * Metadata field for an entry's URI.
      * @since 2.26
+     * @default url
      */
     const PARSER_FIELD_URI: string;
 
     /**
      * Metadata field for an entry's playback volume.
+     * @default volume
      */
     const PARSER_FIELD_VOLUME: string;
 
+    /**
+     * @default 3
+     */
     const PARSER_VERSION_MAJOR: number;
 
+    /**
+     * @default 7
+     */
     const PARSER_VERSION_MICRO: number;
 
+    /**
+     * @default 26
+     */
     const PARSER_VERSION_MINOR: number;
 
     function parser_error_quark(): GLib.Quark;
@@ -328,7 +378,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            "entry-parsed": (arg0: string, arg1: { [key: string]: string }) => void;
+            "entry-parsed": (uri: string, metadata: { [key: string]: string }) => void;
             /**
              * The ::playlist-ended signal is emitted when a playlist is finished
              * parsing. It is only called when {@link TotemPlParser.Parser.SignalSignatures.playlist_started | TotemPlParser.Parser::playlist-started}
@@ -336,7 +386,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            "playlist-ended": (arg0: string) => void;
+            "playlist-ended": (uri: string) => void;
             /**
              * The ::playlist-started signal is emitted when a playlist parsing has
              * started. This signal isn't emitted for all types of playlists, but
@@ -345,7 +395,7 @@ export namespace TotemPlParser {
              * @signal
              * @run-last
              */
-            "playlist-started": (arg0: string, arg1: { [key: string]: string }) => void;
+            "playlist-started": (uri: string, metadata: { [key: string]: string }) => void;
             "notify::debug": (pspec: GObject.ParamSpec) => void;
             "notify::disable-unsafe": (pspec: GObject.ParamSpec) => void;
             "notify::force": (pspec: GObject.ParamSpec) => void;
@@ -599,6 +649,7 @@ export namespace TotemPlParser {
          * this function is called.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns a {@link TotemPlParser.ParserResult}
+         * @throws GLib.Error
          */
         parse_finish(async_result: Gio.AsyncResult): ParserResult;
 
@@ -651,6 +702,7 @@ export namespace TotemPlParser {
          * @param title the playlist title
          * @param type a {@link TotemPlParser.ParserType} for the outputted playlist
          * @returns `true` on success
+         * @throws GLib.Error
          */
         save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType): boolean;
 
@@ -705,6 +757,7 @@ export namespace TotemPlParser {
          * returned when this function is called.
          * @param async_result a {@link Gio.AsyncResult}
          * @returns `true` on success, `false` on failure.
+         * @throws GLib.Error
          */
         save_finish(async_result: Gio.AsyncResult): boolean;
     }

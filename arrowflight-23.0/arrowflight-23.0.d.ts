@@ -27,18 +27,21 @@ export namespace ArrowFlight {
     /**
      * The major version.
      * @since 17.0.0
+     * @default 23
      */
     const VERSION_MAJOR: number;
 
     /**
      * The micro version.
      * @since 17.0.0
+     * @default 1
      */
     const VERSION_MICRO: number;
 
     /**
      * The minor version.
      * @since 17.0.0
+     * @default 0
      */
     const VERSION_MINOR: number;
 
@@ -199,12 +202,14 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns `true` on success, `false` if there was an error.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         authenticate_basic_token(user: string, password: string, options: CallOptions | null): [boolean, string, string];
 
         /**
          * @returns `true` on success, `false` if there was an error.
          * @since 8.0.0
+         * @throws GLib.Error
          */
         close(): boolean;
 
@@ -213,6 +218,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The {@link ArrowFlight.StreamReader} to read record batched from the server   on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         do_get(ticket: Ticket, options: CallOptions | null): StreamReader | null;
 
@@ -229,6 +235,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The `GAFlighDoPutResult` holding a reader and a writer on success,   `null` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         do_put(descriptor: Descriptor, schema: Arrow.Schema, options: CallOptions | null): DoPutResult | null;
 
@@ -237,6 +244,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned {@link ArrowFlight.Info} on   success, `null` on error.
          * @since 9.0.0
+         * @throws GLib.Error
          */
         get_flight_info(descriptor: Descriptor, options: CallOptions | null): Info | null;
 
@@ -245,6 +253,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.CallOptions}.
          * @returns The returned list of {@link ArrowFlight.Info} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         list_flights(criteria: Criteria | null, options: CallOptions | null): Info[] | null;
     }
@@ -866,6 +875,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.ReadOptions}.
          * @returns Deserialized {@link Arrow.Schema}, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         get_schema(options: Arrow.ReadOptions | null): Arrow.Schema;
 
@@ -1056,6 +1066,7 @@ export namespace ArrowFlight {
         /**
          * @returns The metadata on success, `null` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         read(): Arrow.Buffer;
     }
@@ -1118,6 +1129,7 @@ export namespace ArrowFlight {
          * @param metadata A {@link Arrow.Buffer} to be sent.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         write(metadata: Arrow.Buffer): boolean;
     }
@@ -1247,12 +1259,14 @@ export namespace ArrowFlight {
         /**
          * @returns The all data on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         read_all(): Arrow.Table;
 
         /**
          * @returns The next chunk on success, `null` on end   of stream, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         read_next(): StreamChunk;
     }
@@ -1367,6 +1381,7 @@ export namespace ArrowFlight {
          * @param options A {@link Arrow.WriteOptions}.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         begin(schema: Arrow.Schema, options: Arrow.WriteOptions | null): boolean;
 
@@ -1375,6 +1390,7 @@ export namespace ArrowFlight {
          * @param metadata A {@link Arrow.Buffer}.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         write_metadata(metadata: Arrow.Buffer): boolean;
 
@@ -1384,6 +1400,7 @@ export namespace ArrowFlight {
          * @param metadata A {@link Arrow.Buffer}.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         write_record_batch(record_batch: Arrow.RecordBatch, metadata: Arrow.Buffer | null): boolean;
 
@@ -1479,6 +1496,7 @@ export namespace ArrowFlight {
          * @param ticket A {@link ArrowFlight.Ticket}.
          * @returns {@link ArrowFlight.DataStream} on success, `null` on error.
          * @since 6.0.0
+         * @throws GLib.Error
          */
         do_get(context: ServerCallContext, ticket: Ticket): DataStream;
 
@@ -1489,6 +1507,7 @@ export namespace ArrowFlight {
          * @param writer A {@link ArrowFlight.MetadataWriter}.
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         do_put(context: ServerCallContext, reader: MessageReader, writer: MetadataWriter): boolean;
 
@@ -1497,6 +1516,7 @@ export namespace ArrowFlight {
          * @param request A {@link ArrowFlight.Descriptor}.
          * @returns A {@link ArrowFlight.Info} on success, `null` on error.
          * @since 9.0.0
+         * @throws GLib.Error
          */
         get_flight_info(context: ServerCallContext, request: Descriptor): Info;
 
@@ -1507,6 +1527,7 @@ export namespace ArrowFlight {
          * @param criteria A {@link ArrowFlight.Criteria}.
          * @returns {@link GLib.List} of {@link ArrowFlight.Info} on success, `null` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         list_flights(context: ServerCallContext, criteria: Criteria | null): Info[];
 
@@ -1514,6 +1535,7 @@ export namespace ArrowFlight {
          * @param options A {@link ArrowFlight.ServerOptions}.
          * @returns `true` on success, `false` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         listen(options: ServerOptions): boolean;
 
@@ -1522,9 +1544,13 @@ export namespace ArrowFlight {
          * handler or another thread.
          * @returns `true` on success, `false` on error.
          * @since 5.0.0
+         * @throws GLib.Error
          */
         shutdown(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         wait(): boolean;
     }
 
@@ -1638,6 +1664,7 @@ export namespace ArrowFlight {
          * Reads a message from the client.
          * @returns Read data as {@link GLib.Bytes} on   success, `null` on error.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         read(): GLib.Bytes | null;
     }
@@ -1700,6 +1727,7 @@ export namespace ArrowFlight {
          * @param message A {@link GLib.Bytes} to be sent.
          * @returns `true` on success, `false` on error.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         write(message: GLib.Bytes | Uint8Array): boolean;
     }
@@ -1844,6 +1872,7 @@ export namespace ArrowFlight {
          * @param sender A {@link ArrowFlight.ServerAuthSender}.
          * @param reader A {@link ArrowFlight.ServerAuthReader}.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         authenticate(context: ServerCallContext, sender: ServerAuthSender, reader: ServerAuthReader): void;
 
@@ -1853,6 +1882,7 @@ export namespace ArrowFlight {
          * @param token The client token. May be the empty string if the client does not   provide a token.
          * @returns The identity of the peer, if   this authentication method supports it.
          * @since 12.0.0
+         * @throws GLib.Error
          */
         is_valid(context: ServerCallContext, token: GLib.Bytes | Uint8Array): GLib.Bytes | null;
     }
@@ -2097,6 +2127,7 @@ export namespace ArrowFlight {
         /**
          * @returns `true` on success, `false` on error.
          * @since 18.0.0
+         * @throws GLib.Error
          */
         done_writing(): boolean;
     }

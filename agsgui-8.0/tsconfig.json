@@ -68,7 +68,7 @@
       ]
 }
   },
-  "include": ["./agsgui-8.0.d.ts","./agsgui-8.0-surface.d.ts"]
+  "include": ["./agsgui-8.0.d.ts","./agsgui-8.0-vocabulary.d.ts"]
 }
 
 

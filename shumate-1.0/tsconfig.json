@@ -65,7 +65,7 @@
       ]
 }
   },
-  "include": ["./shumate-1.0.d.ts","./shumate-1.0-surface.d.ts"]
+  "include": ["./shumate-1.0.d.ts","./shumate-1.0-vocabulary.d.ts"]
 }
 
 

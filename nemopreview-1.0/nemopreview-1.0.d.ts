@@ -57,11 +57,11 @@ export namespace NemoPreview {
      * @gir-type Enum
      */
     enum SoundPlayerState {
-        UNKNOWN,
-        IDLE,
-        PLAYING,
-        DONE,
-        ERROR,
+        UNKNOWN = 0,
+        IDLE = 1,
+        PLAYING = 2,
+        DONE = 3,
+        ERROR = 4,
     }
 
 
@@ -271,7 +271,7 @@ export namespace NemoPreview {
              * @signal
              * @run-first
              */
-            error: (arg0: string) => void;
+            error: (object: string) => void;
             /**
              * @signal
              * @run-first
@@ -536,7 +536,7 @@ export namespace NemoPreview {
              * @signal
              * @run-first
              */
-            loaded: (arg0: GtkSource.Buffer) => void;
+            loaded: (object: GtkSource.Buffer) => void;
             "notify::uri": (pspec: GObject.ParamSpec) => void;
         }
 

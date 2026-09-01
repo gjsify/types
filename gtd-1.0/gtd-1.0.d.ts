@@ -651,48 +651,48 @@ export namespace Gtd {
              * @signal
              * @run-last
              */
-            "list-added": (arg0: TaskList) => void;
+            "list-added": (list: TaskList) => void;
             /**
              * The ::list-changed signal is emmited after a {@link Gtd.TaskList}
              * has any of it's properties changed.
              * @signal
              * @run-last
              */
-            "list-changed": (arg0: TaskList) => void;
+            "list-changed": (list: TaskList) => void;
             /**
              * The ::list-removed signal is emmited after a {@link Gtd.TaskList}
              * is disconnected.
              * @signal
              * @run-last
              */
-            "list-removed": (arg0: TaskList) => void;
+            "list-removed": (list: TaskList) => void;
             /**
              * The ::provider-added signal is emmited after a {@link Gtd.Provider}
              * is added.
              * @signal
              * @run-last
              */
-            "provider-added": (arg0: Provider) => void;
+            "provider-added": (provider: Provider) => void;
             /**
              * The ::provider-removed signal is emmited after a {@link Gtd.Provider}
              * is removed from the list.
              * @signal
              * @run-last
              */
-            "provider-removed": (arg0: Provider) => void;
+            "provider-removed": (provider: Provider) => void;
             /**
              * Notifies about errors, and sends the error message for widgets
              * to display.
              * @signal
              * @run-last
              */
-            "show-error-message": (arg0: string, arg1: string, arg2: null, arg3: null) => void;
+            "show-error-message": (primary_text: string, secondary_text: string, action: null, user_data: null) => void;
             /**
              * Sends a notification.
              * @signal
              * @run-last
              */
-            "show-notification": (arg0: Notification) => void;
+            "show-notification": (notification: Notification) => void;
             "notify::clock": (pspec: GObject.ParamSpec) => void;
             "notify::default-provider": (pspec: GObject.ParamSpec) => void;
             "notify::loading": (pspec: GObject.ParamSpec) => void;
@@ -2744,21 +2744,21 @@ export namespace Gtd {
              * @signal
              * @run-last
              */
-            "task-added": (arg0: Task) => void;
+            "task-added": (task: Task) => void;
             /**
              * The ::task-removed signal is emitted after a {@link Gtd.Task}
              * is removed from the list.
              * @signal
              * @run-last
              */
-            "task-removed": (arg0: Task) => void;
+            "task-removed": (task: Task) => void;
             /**
              * The ::task-updated signal is emitted after a {@link Gtd.Task}
              * in the list is updated.
              * @signal
              * @run-last
              */
-            "task-updated": (arg0: Task) => void;
+            "task-updated": (task: Task) => void;
             "notify::archived": (pspec: GObject.ParamSpec) => void;
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::is-removable": (pspec: GObject.ParamSpec) => void;
@@ -2955,6 +2955,7 @@ export namespace Gtd {
          * Imports task into `self`
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gio.Task}
+         * @throws GLib.Error
          */
         import_task_finish(result: Gio.AsyncResult): Gio.Task;
 
@@ -3341,7 +3342,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped": (arg0: string, arg1: boolean) => void;
+            "transition-stopped": (name: string, is_finished: boolean) => void;
             /**
              * The ::transitions-completed signal is emitted once all transitions
              * involving `actor` are complete.
@@ -3407,7 +3408,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::pivot-point": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::pivot-point": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3419,7 +3420,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3431,7 +3432,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3443,7 +3444,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::rotation-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::rotation-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3455,7 +3456,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3467,7 +3468,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3479,7 +3480,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3491,7 +3492,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-x": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-x": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3503,7 +3504,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-y": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-y": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3515,7 +3516,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::translation-z": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::translation-z": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3527,7 +3528,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::can-focus": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::can-focus": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3539,7 +3540,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::can-target": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::can-target": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3551,7 +3552,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::css-classes": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::css-classes": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3563,7 +3564,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::css-name": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::css-name": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3575,7 +3576,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::cursor": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::cursor": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3587,7 +3588,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::focus-on-click": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::focus-on-click": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3599,7 +3600,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::focusable": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::focusable": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3611,7 +3612,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::halign": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::halign": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3623,7 +3624,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::has-default": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::has-default": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3635,7 +3636,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::has-focus": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::has-focus": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3647,7 +3648,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::has-tooltip": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::has-tooltip": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3659,7 +3660,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::height-request": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::height-request": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3671,7 +3672,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::hexpand": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::hexpand": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3683,7 +3684,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::hexpand-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::hexpand-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3695,7 +3696,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::layout-manager": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::layout-manager": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3707,7 +3708,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::limit-events": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::limit-events": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3719,7 +3720,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-bottom": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-bottom": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3731,7 +3732,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-end": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-end": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3743,7 +3744,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-start": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-start": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3755,7 +3756,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::margin-top": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::margin-top": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3767,7 +3768,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::name": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::name": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3779,7 +3780,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::opacity": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::opacity": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3791,7 +3792,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::overflow": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::overflow": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3803,7 +3804,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::parent": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::parent": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3815,7 +3816,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::receives-default": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::receives-default": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3827,7 +3828,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::root": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::root": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3839,7 +3840,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::scale-factor": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::scale-factor": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3851,7 +3852,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::sensitive": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::sensitive": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3863,7 +3864,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::tooltip-markup": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::tooltip-markup": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3875,7 +3876,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::tooltip-text": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::tooltip-text": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3887,7 +3888,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::valign": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::valign": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3899,7 +3900,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::vexpand": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::vexpand": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3911,7 +3912,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::vexpand-set": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::vexpand-set": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3923,7 +3924,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::visible": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::visible": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3935,7 +3936,7 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::width-request": (arg0: string, arg1: boolean) => void;
+            "transition-stopped::width-request": (name: string, is_finished: boolean) => void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -3947,8 +3948,8 @@ export namespace Gtd {
              * @detailed
              * @run-last
              */
-            "transition-stopped::accessible-role": (arg0: string, arg1: boolean) => void;
-            [key: `transition-stopped::${string}`]: (arg0: string, arg1: boolean) => void;
+            "transition-stopped::accessible-role": (name: string, is_finished: boolean) => void;
+            [key: `transition-stopped::${string}`]: (name: string, is_finished: boolean) => void;
         }
 
         // Constructor properties interface
@@ -6282,6 +6283,7 @@ export namespace Gtd {
          * Finishes creating the task.
          * @param result a {@link Gio.AsyncResult}
          * @returns a {@link Gtd.Task}
+         * @throws GLib.Error
          */
         create_task_finish(result: Gio.AsyncResult): Task | null;
 
@@ -6313,6 +6315,7 @@ export namespace Gtd {
          * GtdProvider:list-added signal after creating the task list.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if task list was successfully created, `false` otherwise
+         * @throws GLib.Error
          */
         create_task_list_finish(result: Gio.AsyncResult): boolean;
 
@@ -6406,6 +6409,7 @@ export namespace Gtd {
          * Finishes removing the task.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if task was successfully removed, `false` otherwise
+         * @throws GLib.Error
          */
         remove_task_finish(result: Gio.AsyncResult): boolean;
 
@@ -6437,6 +6441,7 @@ export namespace Gtd {
          * GtdProvider:list-removed signal after removing the task list.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if task list was successfully removed, `false` otherwise
+         * @throws GLib.Error
          */
         remove_task_list_finish(result: Gio.AsyncResult): boolean;
 
@@ -6467,6 +6472,7 @@ export namespace Gtd {
          * Finishes updating the task list.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if task list was successfully updated, `false` otherwise
+         * @throws GLib.Error
          */
         update_task_finish(result: Gio.AsyncResult): boolean;
 
@@ -6498,6 +6504,7 @@ export namespace Gtd {
          * GtdProvider:list-updated signal after updating the task list.
          * @param result a {@link Gio.AsyncResult}
          * @returns `true` if task list was successfully updated, `false` otherwise
+         * @throws GLib.Error
          */
         update_task_list_finish(result: Gio.AsyncResult): boolean;
     }

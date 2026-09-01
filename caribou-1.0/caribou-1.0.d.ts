@@ -40,9 +40,9 @@ export namespace Caribou {
      * @gir-type Enum
      */
     enum ModifierState {
-        NONE,
-        LATCHED,
-        LOCKED,
+        NONE = 0,
+        LATCHED = 1,
+        LOCKED = 2,
     }
 
 
@@ -57,10 +57,10 @@ export namespace Caribou {
      * @gir-type Enum
      */
     enum ScanGrouping {
-        NONE,
-        SUBGROUPS,
-        ROWS,
-        LINEAR,
+        NONE = 0,
+        SUBGROUPS = 1,
+        ROWS = 2,
+        LINEAR = 3,
     }
 
 
@@ -77,11 +77,11 @@ export namespace Caribou {
             /**
              * @signal
              */
-            "modifiers-changed": (arg0: number) => void;
+            "modifiers-changed": (modifiers: number) => void;
             /**
              * @signal
              */
-            "group-changed": (arg0: number, arg1: string, arg2: string) => void;
+            "group-changed": (gid: number, group: string, variant: string) => void;
             /**
              * @signal
              */
@@ -354,11 +354,11 @@ export namespace Caribou {
             /**
              * @signal
              */
-            "group-added": (arg0: string) => void;
+            "group-added": (name: string) => void;
             /**
              * @signal
              */
-            "group-removed": (arg0: string) => void;
+            "group-removed": (name: string) => void;
             "notify::active-group": (pspec: GObject.ParamSpec) => void;
             "notify::keyboard-type": (pspec: GObject.ParamSpec) => void;
             "notify::keyboard-file": (pspec: GObject.ParamSpec) => void;
@@ -683,7 +683,7 @@ export namespace Caribou {
             /**
              * @signal
              */
-            "level-toggled": (arg0: string) => void;
+            "level-toggled": (new_level: string) => void;
             "notify::mode": (pspec: GObject.ParamSpec) => void;
         }
 

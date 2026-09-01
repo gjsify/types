@@ -33,11 +33,11 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum BrowserEvent {
-        GA_BROWSER_NEW,
-        GA_BROWSER_REMOVE,
-        GA_BROWSER_CACHE_EXHAUSTED,
-        GA_BROWSER_ALL_FOR_NOW,
-        GA_BROWSER_FAILURE,
+        GA_BROWSER_NEW = 0,
+        GA_BROWSER_REMOVE = 1,
+        GA_BROWSER_CACHE_EXHAUSTED = 2,
+        GA_BROWSER_ALL_FOR_NOW = 3,
+        GA_BROWSER_FAILURE = 4,
     }
 
 
@@ -52,9 +52,9 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum ClientFlags {
-        GA_CLIENT_FLAG_NO_FLAGS,
-        GA_CLIENT_FLAG_IGNORE_USER_CONFIG,
-        GA_CLIENT_FLAG_NO_FAIL,
+        GA_CLIENT_FLAG_NO_FLAGS = 0,
+        GA_CLIENT_FLAG_IGNORE_USER_CONFIG = 1,
+        GA_CLIENT_FLAG_NO_FAIL = 2,
     }
 
 
@@ -69,12 +69,12 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum ClientState {
-        GA_CLIENT_STATE_NOT_STARTED,
-        GA_CLIENT_STATE_S_REGISTERING,
-        GA_CLIENT_STATE_S_RUNNING,
-        GA_CLIENT_STATE_S_COLLISION,
-        GA_CLIENT_STATE_FAILURE,
-        GA_CLIENT_STATE_CONNECTING,
+        GA_CLIENT_STATE_NOT_STARTED = -1,
+        GA_CLIENT_STATE_S_REGISTERING = 1,
+        GA_CLIENT_STATE_S_RUNNING = 2,
+        GA_CLIENT_STATE_S_COLLISION = 3,
+        GA_CLIENT_STATE_FAILURE = 100,
+        GA_CLIENT_STATE_CONNECTING = 101,
     }
 
 
@@ -89,11 +89,11 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum EntryGroupState {
-        GA_ENTRY_GROUP_STATE_UNCOMMITED,
-        GA_ENTRY_GROUP_STATE_REGISTERING,
-        GA_ENTRY_GROUP_STATE_ESTABLISHED,
-        GA_ENTRY_GROUP_STATE_COLLISTION,
-        GA_ENTRY_GROUP_STATE_FAILURE,
+        GA_ENTRY_GROUP_STATE_UNCOMMITED = 0,
+        GA_ENTRY_GROUP_STATE_REGISTERING = 1,
+        GA_ENTRY_GROUP_STATE_ESTABLISHED = 2,
+        GA_ENTRY_GROUP_STATE_COLLISTION = 3,
+        GA_ENTRY_GROUP_STATE_FAILURE = 4,
     }
 
 
@@ -108,11 +108,11 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum LookupFlags {
-        GA_LOOKUP_NO_FLAGS,
-        GA_LOOKUP_USE_WIDE_AREA,
-        GA_LOOKUP_USE_MULTICAST,
-        GA_LOOKUP_NO_TXT,
-        GA_LOOKUP_NO_ADDRESS,
+        GA_LOOKUP_NO_FLAGS = 0,
+        GA_LOOKUP_USE_WIDE_AREA = 1,
+        GA_LOOKUP_USE_MULTICAST = 2,
+        GA_LOOKUP_NO_TXT = 4,
+        GA_LOOKUP_NO_ADDRESS = 8,
     }
 
 
@@ -127,12 +127,12 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum LookupResultFlags {
-        GA_LOOKUP_RESULT_CACHED,
-        GA_LOOKUP_RESULT_WIDE_AREA,
-        GA_LOOKUP_RESULT_MULTICAST,
-        GA_LOOKUP_RESULT_LOCAL,
-        GA_LOOKUP_RESULT_OUR_OWN,
-        GA_LOOKUP_RESULT_STATIC,
+        GA_LOOKUP_RESULT_CACHED = 1,
+        GA_LOOKUP_RESULT_WIDE_AREA = 2,
+        GA_LOOKUP_RESULT_MULTICAST = 4,
+        GA_LOOKUP_RESULT_LOCAL = 8,
+        GA_LOOKUP_RESULT_OUR_OWN = 16,
+        GA_LOOKUP_RESULT_STATIC = 32,
     }
 
 
@@ -147,9 +147,9 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum Protocol {
-        GA_PROTOCOL_INET,
-        GA_PROTOCOL_INET6,
-        GA_PROTOCOL_UNSPEC,
+        GA_PROTOCOL_INET = 0,
+        GA_PROTOCOL_INET6 = 1,
+        GA_PROTOCOL_UNSPEC = -1,
     }
 
 
@@ -164,8 +164,8 @@ export namespace Avahi {
      * @gir-type Enum
      */
     enum ResolverEvent {
-        GA_RESOLVER_FOUND,
-        GA_RESOLVER_FAILURE,
+        GA_RESOLVER_FOUND = 0,
+        GA_RESOLVER_FAILURE = 1,
     }
 
 
@@ -179,7 +179,7 @@ export namespace Avahi {
              * @detailed
              * @run-last
              */
-            "state-changed": (arg0: ClientState) => void;
+            "state-changed": (object: ClientState) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             /**
@@ -187,14 +187,14 @@ export namespace Avahi {
              * @detailed
              * @run-last
              */
-            "state-changed::flags": (arg0: ClientState) => void;
+            "state-changed::flags": (object: ClientState) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "state-changed::state": (arg0: ClientState) => void;
-            [key: `state-changed::${string}`]: (arg0: ClientState) => void;
+            "state-changed::state": (object: ClientState) => void;
+            [key: `state-changed::${string}`]: (object: ClientState) => void;
         }
 
         // Constructor properties interface
@@ -253,10 +253,14 @@ export namespace Avahi {
         emit(signal: string, ...args: any[]): void;
 
         // Methods
+        /**
+         * @throws GLib.Error
+         */
         start(): boolean;
 
         /**
          * @param context 
+         * @throws GLib.Error
          */
         start_in_context(context: GLib.MainContext): boolean;
     }
@@ -270,15 +274,15 @@ export namespace Avahi {
              * @detailed
              * @run-last
              */
-            "state-changed": (arg0: EntryGroupState) => void;
+            "state-changed": (object: EntryGroupState) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
             /**
              * @signal
              * @detailed
              * @run-last
              */
-            "state-changed::state": (arg0: EntryGroupState) => void;
-            [key: `state-changed::${string}`]: (arg0: EntryGroupState) => void;
+            "state-changed::state": (object: EntryGroupState) => void;
+            [key: `state-changed::${string}`]: (object: EntryGroupState) => void;
         }
 
         // Constructor properties interface
@@ -337,6 +341,7 @@ export namespace Avahi {
          * @param ttl 
          * @param rdata 
          * @param size 
+         * @throws GLib.Error
          */
         add_record(flags: AvahiCore.PublishFlags, name: string, type: number, ttl: number, rdata: null, size: bigint | number): boolean;
 
@@ -350,16 +355,24 @@ export namespace Avahi {
          * @param ttl 
          * @param rdata 
          * @param size 
+         * @throws GLib.Error
          */
         add_record_full(_interface: AvahiCore.IfIndex, protocol: AvahiCore.Protocol, flags: AvahiCore.PublishFlags, name: string, clazz: number, type: number, ttl: number, rdata: null, size: bigint | number): boolean;
 
         /**
          * @param client 
+         * @throws GLib.Error
          */
         attach(client: Client): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         commit(): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         reset(): boolean;
     }
 
@@ -381,17 +394,17 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: null) => void;
+            failure: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "new-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: null, arg6: number, arg7: LookupResultFlags) => void;
+            "new-record": (object: number, p0: Protocol, p1: string, p2: number, p3: number, p4: null, p5: number, p6: LookupResultFlags) => void;
             /**
              * @signal
              * @run-last
              */
-            "removed-record": (arg0: number, arg1: Protocol, arg2: string, arg3: number, arg4: number, arg5: null, arg6: number, arg7: LookupResultFlags) => void;
+            "removed-record": (object: number, p0: Protocol, p1: string, p2: number, p3: number, p4: null, p5: number, p6: LookupResultFlags) => void;
             "notify::class": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::interface": (pspec: GObject.ParamSpec) => void;
@@ -488,6 +501,7 @@ export namespace Avahi {
         // Methods
         /**
          * @param client 
+         * @throws GLib.Error
          */
         attach(client: Client): boolean;
     }
@@ -510,17 +524,17 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: null) => void;
+            failure: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            "new-service": (arg0: number, arg1: Protocol, arg2: string, arg3: string, arg4: string, arg5: LookupResultFlags) => void;
+            "new-service": (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: LookupResultFlags) => void;
             /**
              * @signal
              * @run-last
              */
-            "removed-service": (arg0: number, arg1: Protocol, arg2: string, arg3: string, arg4: string, arg5: LookupResultFlags) => void;
+            "removed-service": (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: LookupResultFlags) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::interface": (pspec: GObject.ParamSpec) => void;
@@ -609,6 +623,7 @@ export namespace Avahi {
         // Methods
         /**
          * @param client 
+         * @throws GLib.Error
          */
         attach(client: Client): boolean;
     }
@@ -621,12 +636,12 @@ export namespace Avahi {
              * @signal
              * @run-last
              */
-            failure: (arg0: null) => void;
+            failure: (object: null) => void;
             /**
              * @signal
              * @run-last
              */
-            found: (arg0: number, arg1: Protocol, arg2: string, arg3: string, arg4: string, arg5: string, arg6: null, arg7: number, arg8: null, arg9: LookupResultFlags) => void;
+            found: (object: number, p0: Protocol, p1: string, p2: string, p3: string, p4: string, p5: null, p6: number, p7: null, p8: LookupResultFlags) => void;
             "notify::aprotocol": (pspec: GObject.ParamSpec) => void;
             "notify::domain": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -729,6 +744,7 @@ export namespace Avahi {
         // Methods
         /**
          * @param client 
+         * @throws GLib.Error
          */
         attach(client: Client): boolean;
 
@@ -778,12 +794,14 @@ export namespace Avahi {
 
         /**
          * @param key 
+         * @throws GLib.Error
          */
         remove_key(key: string): boolean;
 
         /**
          * @param key 
          * @param value 
+         * @throws GLib.Error
          */
         set(key: string, value: string): boolean;
 
@@ -791,9 +809,13 @@ export namespace Avahi {
          * @param key 
          * @param value 
          * @param size 
+         * @throws GLib.Error
          */
         set_arbitrary(key: string, value: number, size: bigint | number): boolean;
 
+        /**
+         * @throws GLib.Error
+         */
         thaw(): boolean;
     }
 

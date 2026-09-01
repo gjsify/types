@@ -141,11 +141,11 @@ export namespace GUPnP {
         /**
          * An "in" variable, to the service.
          */
-        IN,
+        IN = 0,
         /**
          * An "out" variable, from the service.
          */
-        OUT,
+        OUT = 1,
     }
 
 
@@ -556,6 +556,7 @@ export namespace GUPnP {
          * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          * @since 2.22
+         * @throws GLib.Error
          */
         init(cancellable: Gio.Cancellable | null): boolean;
 
@@ -614,13 +615,13 @@ export namespace GUPnP {
              * @signal
              * @run-first
              */
-            "context-available": (arg0: Context) => void;
+            "context-available": (context: Context) => void;
             /**
              * Signals the unavailability of a {@link GUPnP.Context}.
              * @signal
              * @run-first
              */
-            "context-unavailable": (arg0: Context) => void;
+            "context-unavailable": (context: Context) => void;
             "notify::main-context": (pspec: GObject.ParamSpec) => void;
             "notify::port": (pspec: GObject.ParamSpec) => void;
             "notify::white-list": (pspec: GObject.ParamSpec) => void;
@@ -770,28 +771,28 @@ export namespace GUPnP {
              * @signal
              * @run-last
              */
-            "device-proxy-available": (arg0: DeviceProxy) => void;
+            "device-proxy-available": (proxy: DeviceProxy) => void;
             /**
              * The ::device-proxy-unavailable signal is emitted whenever a
              * device is not available any more.
              * @signal
              * @run-last
              */
-            "device-proxy-unavailable": (arg0: DeviceProxy) => void;
+            "device-proxy-unavailable": (proxy: DeviceProxy) => void;
             /**
              * The ::service-proxy-available signal is emitted whenever a new
              * service has become available.
              * @signal
              * @run-last
              */
-            "service-proxy-available": (arg0: ServiceProxy) => void;
+            "service-proxy-available": (proxy: ServiceProxy) => void;
             /**
              * The ::service-proxy-unavailable signal is emitted whenever a
              * service is not available any more.
              * @signal
              * @run-last
              */
-            "service-proxy-unavailable": (arg0: ServiceProxy) => void;
+            "service-proxy-unavailable": (proxy: ServiceProxy) => void;
             "notify::resource-factory": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::client": (pspec: GObject.ParamSpec) => void;
@@ -1642,13 +1643,13 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked": (arg0: ServiceAction) => void;
+            "action-invoked": (action: ServiceAction) => void;
             /**
              * Emitted whenever notification of a client fails.
              * @signal
              * @run-last
              */
-            "notify-failed": (arg0: Soup.URI[], arg1: GLib.Error) => void;
+            "notify-failed": (callback_url: Soup.URI[], reason: GLib.Error) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1656,7 +1657,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable": (arg0: string, arg1: unknown) => void;
+            "query-variable": (variable: string, value: unknown) => void;
             "notify::root-device": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
@@ -1673,7 +1674,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::root-device": (arg0: ServiceAction) => void;
+            "action-invoked::root-device": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1682,7 +1683,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::context": (arg0: ServiceAction) => void;
+            "action-invoked::context": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1691,7 +1692,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::document": (arg0: ServiceAction) => void;
+            "action-invoked::document": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1700,7 +1701,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::element": (arg0: ServiceAction) => void;
+            "action-invoked::element": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1709,7 +1710,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::location": (arg0: ServiceAction) => void;
+            "action-invoked::location": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1718,7 +1719,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::service-type": (arg0: ServiceAction) => void;
+            "action-invoked::service-type": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1727,7 +1728,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::udn": (arg0: ServiceAction) => void;
+            "action-invoked::udn": (action: ServiceAction) => void;
             /**
              * Emitted whenever an action is invoked. Handler should process
              * `action` and must call either `gupnp_service_action_return()` or
@@ -1736,8 +1737,8 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "action-invoked::url-base": (arg0: ServiceAction) => void;
-            [key: `action-invoked::${string}`]: (arg0: ServiceAction) => void;
+            "action-invoked::url-base": (action: ServiceAction) => void;
+            [key: `action-invoked::${string}`]: (action: ServiceAction) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1745,7 +1746,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::root-device": (arg0: string, arg1: unknown) => void;
+            "query-variable::root-device": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1753,7 +1754,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::context": (arg0: string, arg1: unknown) => void;
+            "query-variable::context": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1761,7 +1762,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::document": (arg0: string, arg1: unknown) => void;
+            "query-variable::document": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1769,7 +1770,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::element": (arg0: string, arg1: unknown) => void;
+            "query-variable::element": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1777,7 +1778,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::location": (arg0: string, arg1: unknown) => void;
+            "query-variable::location": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1785,7 +1786,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::service-type": (arg0: string, arg1: unknown) => void;
+            "query-variable::service-type": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1793,7 +1794,7 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::udn": (arg0: string, arg1: unknown) => void;
+            "query-variable::udn": (variable: string, value: unknown) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -1801,8 +1802,8 @@ export namespace GUPnP {
              * @detailed
              * @run-last
              */
-            "query-variable::url-base": (arg0: string, arg1: unknown) => void;
-            [key: `query-variable::${string}`]: (arg0: string, arg1: unknown) => void;
+            "query-variable::url-base": (variable: string, value: unknown) => void;
+            [key: `query-variable::${string}`]: (variable: string, value: unknown) => void;
         }
 
         // Constructor properties interface
@@ -1914,6 +1915,7 @@ export namespace GUPnP {
          * resulting signal connections will be correct as it depends heavily on a
          * particular naming schemes described above.</warning>
          * @param user_data the data to pass to each of the callbacks
+         * @throws GLib.Error
          */
         signals_autoconnect(user_data: null): void;
 
@@ -2075,6 +2077,7 @@ export namespace GUPnP {
          * even block.
          * @returns A new {@link GUPnP.ServiceIntrospection} for this service or `null`. Unref after use.
          * @deprecated since 0.20.15.: Use `gupnp_service_info_get_introspection_async()` or `gupnp_service_info_get_introspection_async_full()` instead.
+         * @throws GLib.Error
          */
         get_introspection(): ServiceIntrospection;
 
@@ -2237,7 +2240,7 @@ export namespace GUPnP {
              * @signal
              * @run-last
              */
-            "subscription-lost": (arg0: GLib.Error) => void;
+            "subscription-lost": (error: GLib.Error) => void;
             "notify::subscribed": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::document": (pspec: GObject.ParamSpec) => void;
@@ -2349,6 +2352,7 @@ export namespace GUPnP {
          * @param action A {@link GUPnP.ServiceProxyAction} handle
          * @param hash A {@link GLib.HashTable} of out parameter name and initialised {@link GObject.Value} pairs
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         end_action_hash(action: ServiceProxyAction, hash: { [key: string]: GObject.Value }): [boolean, { [key: string]: GObject.Value }];
 
@@ -2361,6 +2365,7 @@ export namespace GUPnP {
          * @param out_names {@link GLib.List} of 'out' parameter names (as strings)
          * @param out_types {@link GLib.List} of types (as {@link GObject.GType}) that line up with `out_names`
          * @returns `true` on success.
+         * @throws GLib.Error
          */
         end_action_list(action: ServiceProxyAction, out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
 
@@ -2403,6 +2408,7 @@ export namespace GUPnP {
          * @param out_names {@link GLib.List} of 'out' parameter names (as strings)
          * @param out_types {@link GLib.List} of types (as {@link GObject.GType}) that line up with `out_names`
          * @returns `true` if sending the action was succesful.
+         * @throws GLib.Error
          */
         send_action_list(action: string, in_names: string[], in_values: (GObject.Value | any)[], out_names: string[], out_types: GObject.GType[]): [boolean, unknown[]];
 
@@ -3083,6 +3089,7 @@ export namespace GUPnP {
         /**
          * @param res %GAsyncResult obtained from the callback in `gupnp_acl_is_allowed_async()`
          * @since 0.20.11
+         * @throws GLib.Error
          */
         is_allowed_finish(res: Gio.AsyncResult): boolean;
     }

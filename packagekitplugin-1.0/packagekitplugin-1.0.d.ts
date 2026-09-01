@@ -28,28 +28,28 @@ export namespace PackageKitPlugin {
      * @gir-type Enum
      */
     enum BackendJobSignal {
-        ALLOW_CANCEL,
-        DETAILS,
-        ERROR_CODE,
-        DISTRO_UPGRADE,
-        FINISHED,
-        PACKAGE,
-        ITEM_PROGRESS,
-        FILES,
-        PERCENTAGE,
-        REMAINING,
-        SPEED,
-        DOWNLOAD_SIZE_REMAINING,
-        REPO_DETAIL,
-        REPO_SIGNATURE_REQUIRED,
-        EULA_REQUIRED,
-        MEDIA_CHANGE_REQUIRED,
-        REQUIRE_RESTART,
-        STATUS_CHANGED,
-        LOCKED_CHANGED,
-        UPDATE_DETAIL,
-        CATEGORY,
-        LAST,
+        ALLOW_CANCEL = 0,
+        DETAILS = 1,
+        ERROR_CODE = 2,
+        DISTRO_UPGRADE = 3,
+        FINISHED = 4,
+        PACKAGE = 5,
+        ITEM_PROGRESS = 6,
+        FILES = 7,
+        PERCENTAGE = 8,
+        REMAINING = 9,
+        SPEED = 10,
+        DOWNLOAD_SIZE_REMAINING = 11,
+        REPO_DETAIL = 12,
+        REPO_SIGNATURE_REQUIRED = 13,
+        EULA_REQUIRED = 14,
+        MEDIA_CHANGE_REQUIRED = 15,
+        REQUIRE_RESTART = 16,
+        STATUS_CHANGED = 17,
+        LOCKED_CHANGED = 18,
+        UPDATE_DETAIL = 19,
+        CATEGORY = 20,
+        LAST = 21,
     }
 
 
@@ -57,11 +57,11 @@ export namespace PackageKitPlugin {
      * @gir-type Enum
      */
     enum HintEnum {
-        FALSE,
-        TRUE,
-        UNSET,
-        INVALID,
-        LAST,
+        FALSE = 0,
+        TRUE = 1,
+        UNSET = 2,
+        INVALID = 3,
+        LAST = 4,
     }
 
 
@@ -69,15 +69,15 @@ export namespace PackageKitPlugin {
      * @gir-type Enum
      */
     enum PluginPhase {
-        INIT,
-        TRANSACTION_CONTENT_TYPES,
-        TRANSACTION_RUN,
-        TRANSACTION_STARTED,
-        TRANSACTION_FINISHED_RESULTS,
-        TRANSACTION_FINISHED_END,
-        DESTROY,
-        STATE_CHANGED,
-        UNKNOWN,
+        INIT = 0,
+        TRANSACTION_CONTENT_TYPES = 1,
+        TRANSACTION_RUN = 2,
+        TRANSACTION_STARTED = 3,
+        TRANSACTION_FINISHED_RESULTS = 4,
+        TRANSACTION_FINISHED_END = 5,
+        DESTROY = 6,
+        STATE_CHANGED = 7,
+        UNKNOWN = 8,
     }
 
 
@@ -85,23 +85,30 @@ export namespace PackageKitPlugin {
      * @gir-type Enum
      */
     enum TransactionState {
-        NEW,
-        WAITING_FOR_AUTH,
-        COMMITTED,
-        READY,
-        RUNNING,
-        FINISHED,
-        UNKNOWN,
+        NEW = 0,
+        WAITING_FOR_AUTH = 1,
+        COMMITTED = 2,
+        READY = 3,
+        RUNNING = 4,
+        FINISHED = 5,
+        UNKNOWN = 6,
     }
 
 
     /**
      * The unknown percentage value
+     * @default 101
      */
     const BACKEND_PERCENTAGE_INVALID: number;
 
+    /**
+     * @default 4294967295
+     */
     const TRANSACTION_ALL_BACKEND_SIGNALS: number;
 
+    /**
+     * @default 0
+     */
     const TRANSACTION_NO_BACKEND_SIGNALS: number;
 
     /**
@@ -124,6 +131,7 @@ export namespace PackageKitPlugin {
 
     /**
      * @param filename 
+     * @throws GLib.Error
      */
     function load_introspection(filename: string): Gio.DBusNodeInfo;
 
@@ -424,6 +432,7 @@ export namespace PackageKitPlugin {
          * This method should only be called from the engine, unless the backend object
          * is used in self-check code, in which case the lock and unlock will have to
          * be done manually.
+         * @throws GLib.Error
          */
         load(): boolean;
 

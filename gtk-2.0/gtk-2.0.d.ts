@@ -41,23 +41,23 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum AnchorType {
-        CENTER,
-        NORTH,
-        NORTH_WEST,
-        NORTH_EAST,
-        SOUTH,
-        SOUTH_WEST,
-        SOUTH_EAST,
-        WEST,
-        EAST,
-        N,
-        NW,
-        NE,
-        S,
-        SW,
-        SE,
-        W,
-        E,
+        CENTER = 0,
+        NORTH = 1,
+        NORTH_WEST = 2,
+        NORTH_EAST = 3,
+        SOUTH = 4,
+        SOUTH_WEST = 5,
+        SOUTH_EAST = 6,
+        WEST = 7,
+        EAST = 8,
+        N = 1,
+        NW = 2,
+        NE = 3,
+        S = 4,
+        SW = 5,
+        SE = 6,
+        W = 7,
+        E = 8,
     }
 
 
@@ -72,9 +72,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ArrowPlacement {
-        BOTH,
-        START,
-        END,
+        BOTH = 0,
+        START = 1,
+        END = 2,
     }
 
 
@@ -89,11 +89,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ArrowType {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        NONE,
+        UP = 0,
+        DOWN = 1,
+        LEFT = 2,
+        RIGHT = 3,
+        NONE = 4,
     }
 
 
@@ -117,27 +117,27 @@ export namespace Gtk {
         /**
          * The page has regular contents.
          */
-        CONTENT,
+        CONTENT = 0,
         /**
          * The page contains an introduction to the
          *  assistant task.
          */
-        INTRO,
+        INTRO = 1,
         /**
          * The page lets the user confirm or deny the
          *  changes.
          */
-        CONFIRM,
+        CONFIRM = 2,
         /**
          * The page informs the user of the changes
          *  done.
          */
-        SUMMARY,
+        SUMMARY = 3,
         /**
          * Used for tasks that take a long time to
          *  complete, blocks the assistant until the page is marked as complete.
          */
-        PROGRESS,
+        PROGRESS = 4,
     }
 
 
@@ -185,12 +185,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ButtonBoxStyle {
-        DEFAULT_STYLE,
-        SPREAD,
-        EDGE,
-        START,
-        END,
-        CENTER,
+        DEFAULT_STYLE = 0,
+        SPREAD = 1,
+        EDGE = 2,
+        START = 3,
+        END = 4,
+        CENTER = 5,
     }
 
 
@@ -216,27 +216,27 @@ export namespace Gtk {
         /**
          * no buttons at all
          */
-        NONE,
+        NONE = 0,
         /**
          * an OK button
          */
-        OK,
+        OK = 1,
         /**
          * a Close button
          */
-        CLOSE,
+        CLOSE = 2,
         /**
          * a Cancel button
          */
-        CANCEL,
+        CANCEL = 3,
         /**
          * Yes and No buttons
          */
-        YES_NO,
+        YES_NO = 4,
         /**
          * OK and Cancel buttons
          */
-        OK_CANCEL,
+        OK_CANCEL = 5,
     }
 
 
@@ -251,10 +251,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CListDragPos {
-        NONE,
-        BEFORE,
-        INTO,
-        AFTER,
+        NONE = 0,
+        BEFORE = 1,
+        INTO = 2,
+        AFTER = 3,
     }
 
 
@@ -269,10 +269,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CTreeExpanderStyle {
-        NONE,
-        SQUARE,
-        TRIANGLE,
-        CIRCULAR,
+        NONE = 0,
+        SQUARE = 1,
+        TRIANGLE = 2,
+        CIRCULAR = 3,
     }
 
 
@@ -287,12 +287,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CTreeExpansionType {
-        EXPAND,
-        EXPAND_RECURSIVE,
-        COLLAPSE,
-        COLLAPSE_RECURSIVE,
-        TOGGLE,
-        TOGGLE_RECURSIVE,
+        EXPAND = 0,
+        EXPAND_RECURSIVE = 1,
+        COLLAPSE = 2,
+        COLLAPSE_RECURSIVE = 3,
+        TOGGLE = 4,
+        TOGGLE_RECURSIVE = 5,
     }
 
 
@@ -307,10 +307,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CTreeLineStyle {
-        NONE,
-        SOLID,
-        DOTTED,
-        TABBED,
+        NONE = 0,
+        SOLID = 1,
+        DOTTED = 2,
+        TABBED = 3,
     }
 
 
@@ -325,9 +325,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CTreePos {
-        BEFORE,
-        AS_CHILD,
-        AFTER,
+        BEFORE = 0,
+        AS_CHILD = 1,
+        AFTER = 2,
     }
 
 
@@ -342,8 +342,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CellRendererAccelMode {
-        GTK,
-        OTHER,
+        GTK = 0,
+        OTHER = 1,
     }
 
 
@@ -358,9 +358,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CellRendererMode {
-        INERT,
-        ACTIVATABLE,
-        EDITABLE,
+        INERT = 0,
+        ACTIVATABLE = 1,
+        EDITABLE = 2,
     }
 
 
@@ -375,11 +375,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CellType {
-        EMPTY,
-        TEXT,
-        PIXMAP,
-        PIXTEXT,
-        WIDGET,
+        EMPTY = 0,
+        TEXT = 1,
+        PIXMAP = 2,
+        PIXTEXT = 3,
+        WIDGET = 4,
     }
 
 
@@ -394,10 +394,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CornerType {
-        TOP_LEFT,
-        BOTTOM_LEFT,
-        TOP_RIGHT,
-        BOTTOM_RIGHT,
+        TOP_LEFT = 0,
+        BOTTOM_LEFT = 1,
+        TOP_RIGHT = 2,
+        BOTTOM_RIGHT = 3,
     }
 
 
@@ -412,9 +412,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum CurveType {
-        LINEAR,
-        SPLINE,
-        FREE,
+        LINEAR = 0,
+        SPLINE = 1,
+        FREE = 2,
     }
 
 
@@ -429,14 +429,14 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum DeleteType {
-        CHARS,
-        WORD_ENDS,
-        WORDS,
-        DISPLAY_LINES,
-        DISPLAY_LINE_ENDS,
-        PARAGRAPH_ENDS,
-        PARAGRAPHS,
-        WHITESPACE,
+        CHARS = 0,
+        WORD_ENDS = 1,
+        WORDS = 2,
+        DISPLAY_LINES = 3,
+        DISPLAY_LINE_ENDS = 4,
+        PARAGRAPH_ENDS = 5,
+        PARAGRAPHS = 6,
+        WHITESPACE = 7,
     }
 
 
@@ -451,12 +451,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum DirectionType {
-        TAB_FORWARD,
-        TAB_BACKWARD,
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
+        TAB_FORWARD = 0,
+        TAB_BACKWARD = 1,
+        UP = 2,
+        DOWN = 3,
+        LEFT = 4,
+        RIGHT = 5,
     }
 
 
@@ -471,12 +471,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum DragResult {
-        SUCCESS,
-        NO_TARGET,
-        USER_CANCELLED,
-        TIMEOUT_EXPIRED,
-        GRAB_BROKEN,
-        ERROR,
+        SUCCESS = 0,
+        NO_TARGET = 1,
+        USER_CANCELLED = 2,
+        TIMEOUT_EXPIRED = 3,
+        GRAB_BROKEN = 4,
+        ERROR = 5,
     }
 
 
@@ -491,8 +491,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum EntryIconPosition {
-        PRIMARY,
-        SECONDARY,
+        PRIMARY = 0,
+        SECONDARY = 1,
     }
 
 
@@ -507,10 +507,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ExpanderStyle {
-        COLLAPSED,
-        SEMI_COLLAPSED,
-        SEMI_EXPANDED,
-        EXPANDED,
+        COLLAPSED = 0,
+        SEMI_COLLAPSED = 1,
+        SEMI_EXPANDED = 2,
+        EXPANDED = 3,
     }
 
 
@@ -531,25 +531,25 @@ export namespace Gtk {
          * Indicates open mode.  The file chooser
          *  will only let the user pick an existing file.
          */
-        OPEN,
+        OPEN = 0,
         /**
          * Indicates save mode.  The file chooser
          *  will let the user pick an existing file, or type in a new
          *  filename.
          */
-        SAVE,
+        SAVE = 1,
         /**
          * Indicates an Open mode for
          *  selecting folders.  The file chooser will let the user pick an
          *  existing folder.
          */
-        SELECT_FOLDER,
+        SELECT_FOLDER = 2,
         /**
          * Indicates a mode for creating a
          *  new folder.  The file chooser will let the user name an existing or
          *  new folder.
          */
-        CREATE_FOLDER,
+        CREATE_FOLDER = 3,
     }
 
 
@@ -574,17 +574,17 @@ export namespace Gtk {
          * The file chooser will present
          *  its stock dialog to confirm about overwriting an existing file.
          */
-        CONFIRM,
+        CONFIRM = 0,
         /**
          * The file chooser will
          *  terminate and accept the user's choice of a file name.
          */
-        ACCEPT_FILENAME,
+        ACCEPT_FILENAME = 1,
         /**
          * The file chooser will
          *  continue running, so as to let the user select another file name.
          */
-        SELECT_AGAIN,
+        SELECT_AGAIN = 2,
     }
 
 
@@ -641,9 +641,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum IMPreeditStyle {
-        NOTHING,
-        CALLBACK,
-        NONE,
+        NOTHING = 0,
+        CALLBACK = 1,
+        NONE = 2,
     }
 
 
@@ -658,9 +658,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum IMStatusStyle {
-        NOTHING,
-        CALLBACK,
-        NONE,
+        NOTHING = 0,
+        CALLBACK = 1,
+        NONE = 2,
     }
 
 
@@ -675,13 +675,13 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum IconSize {
-        INVALID,
-        MENU,
-        SMALL_TOOLBAR,
-        LARGE_TOOLBAR,
-        BUTTON,
-        DND,
-        DIALOG,
+        INVALID = 0,
+        MENU = 1,
+        SMALL_TOOLBAR = 2,
+        LARGE_TOOLBAR = 3,
+        BUTTON = 4,
+        DND = 5,
+        DIALOG = 6,
     }
 
 
@@ -722,12 +722,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum IconViewDropPosition {
-        NO_DROP,
-        DROP_INTO,
-        DROP_LEFT,
-        DROP_RIGHT,
-        DROP_ABOVE,
-        DROP_BELOW,
+        NO_DROP = 0,
+        DROP_INTO = 1,
+        DROP_LEFT = 2,
+        DROP_RIGHT = 3,
+        DROP_ABOVE = 4,
+        DROP_BELOW = 5,
     }
 
 
@@ -752,41 +752,41 @@ export namespace Gtk {
         /**
          * there is no image displayed by the widget
          */
-        EMPTY,
+        EMPTY = 0,
         /**
          * the widget contains a {@link Gdk.Pixmap}
          */
-        PIXMAP,
+        PIXMAP = 1,
         /**
          * the widget contains a {@link Gdk.Image}
          */
-        IMAGE,
+        IMAGE = 2,
         /**
          * the widget contains a {@link GdkPixbuf.Pixbuf}
          */
-        PIXBUF,
+        PIXBUF = 3,
         /**
          * the widget contains a stock icon name (see <xref linkend="gtk-Stock-Items"/>)
          */
-        STOCK,
+        STOCK = 4,
         /**
          * the widget contains a {@link Gtk.IconSet}
          */
-        ICON_SET,
+        ICON_SET = 5,
         /**
          * the widget contains a {@link GdkPixbuf.PixbufAnimation}
          */
-        ANIMATION,
+        ANIMATION = 6,
         /**
          * the widget contains a named icon.
          *  This image type was added in GTK+ 2.6
          */
-        ICON_NAME,
+        ICON_NAME = 7,
         /**
          * the widget contains a {@link Gio.Icon}.
          *  This image type was added in GTK+ 2.14
          */
-        GICON,
+        GICON = 8,
     }
 
 
@@ -801,10 +801,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum Justification {
-        LEFT,
-        RIGHT,
-        CENTER,
-        FILL,
+        LEFT = 0,
+        RIGHT = 1,
+        CENTER = 2,
+        FILL = 3,
     }
 
 
@@ -819,12 +819,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum MatchType {
-        ALL,
-        ALL_TAIL,
-        HEAD,
-        TAIL,
-        EXACT,
-        LAST,
+        ALL = 0,
+        ALL_TAIL = 1,
+        HEAD = 2,
+        TAIL = 3,
+        EXACT = 4,
+        LAST = 5,
     }
 
 
@@ -839,10 +839,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum MenuDirectionType {
-        PARENT,
-        CHILD,
-        NEXT,
-        PREV,
+        PARENT = 0,
+        CHILD = 1,
+        NEXT = 2,
+        PREV = 3,
     }
 
 
@@ -861,23 +861,23 @@ export namespace Gtk {
         /**
          * Informational message
          */
-        INFO,
+        INFO = 0,
         /**
          * Nonfatal warning message
          */
-        WARNING,
+        WARNING = 1,
         /**
          * Question requiring a choice
          */
-        QUESTION,
+        QUESTION = 2,
         /**
          * Fatal error message
          */
-        ERROR,
+        ERROR = 3,
         /**
          * None of the above, doesn't get an icon
          */
-        OTHER,
+        OTHER = 4,
     }
 
 
@@ -892,9 +892,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum MetricType {
-        PIXELS,
-        INCHES,
-        CENTIMETERS,
+        PIXELS = 0,
+        INCHES = 1,
+        CENTIMETERS = 2,
     }
 
 
@@ -909,16 +909,16 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum MovementStep {
-        LOGICAL_POSITIONS,
-        VISUAL_POSITIONS,
-        WORDS,
-        DISPLAY_LINES,
-        DISPLAY_LINE_ENDS,
-        PARAGRAPHS,
-        PARAGRAPH_ENDS,
-        PAGES,
-        BUFFER_ENDS,
-        HORIZONTAL_PAGES,
+        LOGICAL_POSITIONS = 0,
+        VISUAL_POSITIONS = 1,
+        WORDS = 2,
+        DISPLAY_LINES = 3,
+        DISPLAY_LINE_ENDS = 4,
+        PARAGRAPHS = 5,
+        PARAGRAPH_ENDS = 6,
+        PAGES = 7,
+        BUFFER_ENDS = 8,
+        HORIZONTAL_PAGES = 9,
     }
 
 
@@ -933,8 +933,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum NotebookTab {
-        FIRST,
-        LAST,
+        FIRST = 0,
+        LAST = 1,
     }
 
 
@@ -949,14 +949,14 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum NumberUpLayout {
-        LRTB,
-        LRBT,
-        RLTB,
-        RLBT,
-        TBLR,
-        TBRL,
-        BTLR,
-        BTRL,
+        LRTB = 0,
+        LRBT = 1,
+        RLTB = 2,
+        RLBT = 3,
+        TBLR = 4,
+        TBRL = 5,
+        BTLR = 6,
+        BTRL = 7,
     }
 
 
@@ -971,8 +971,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum Orientation {
-        HORIZONTAL,
-        VERTICAL,
+        HORIZONTAL = 0,
+        VERTICAL = 1,
     }
 
 
@@ -987,10 +987,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PackDirection {
-        LTR,
-        RTL,
-        TTB,
-        BTT,
+        LTR = 0,
+        RTL = 1,
+        TTB = 2,
+        BTT = 3,
     }
 
 
@@ -1005,8 +1005,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PackType {
-        START,
-        END,
+        START = 0,
+        END = 1,
     }
 
 
@@ -1021,10 +1021,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PageOrientation {
-        PORTRAIT,
-        LANDSCAPE,
-        REVERSE_PORTRAIT,
-        REVERSE_LANDSCAPE,
+        PORTRAIT = 0,
+        LANDSCAPE = 1,
+        REVERSE_PORTRAIT = 2,
+        REVERSE_LANDSCAPE = 3,
     }
 
 
@@ -1039,9 +1039,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PageSet {
-        ALL,
-        EVEN,
-        ODD,
+        ALL = 0,
+        EVEN = 1,
+        ODD = 2,
     }
 
 
@@ -1056,12 +1056,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PathPriorityType {
-        LOWEST,
-        GTK,
-        APPLICATION,
-        THEME,
-        RC,
-        HIGHEST,
+        LOWEST = 0,
+        GTK = 4,
+        APPLICATION = 8,
+        THEME = 10,
+        RC = 12,
+        HIGHEST = 15,
     }
 
 
@@ -1076,9 +1076,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PathType {
-        WIDGET,
-        WIDGET_CLASS,
-        CLASS,
+        WIDGET = 0,
+        WIDGET_CLASS = 1,
+        CLASS = 2,
     }
 
 
@@ -1093,9 +1093,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PolicyType {
-        ALWAYS,
-        AUTOMATIC,
-        NEVER,
+        ALWAYS = 0,
+        AUTOMATIC = 1,
+        NEVER = 2,
     }
 
 
@@ -1110,10 +1110,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PositionType {
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM,
+        LEFT = 0,
+        RIGHT = 1,
+        TOP = 2,
+        BOTTOM = 3,
     }
 
 
@@ -1128,8 +1128,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PreviewType {
-        COLOR,
-        GRAYSCALE,
+        COLOR = 0,
+        GRAYSCALE = 1,
     }
 
 
@@ -1144,9 +1144,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintDuplex {
-        SIMPLEX,
-        HORIZONTAL,
-        VERTICAL,
+        SIMPLEX = 0,
+        HORIZONTAL = 1,
+        VERTICAL = 2,
     }
 
 
@@ -1188,10 +1188,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintOperationAction {
-        PRINT_DIALOG,
-        PRINT,
-        PREVIEW,
-        EXPORT,
+        PRINT_DIALOG = 0,
+        PRINT = 1,
+        PREVIEW = 2,
+        EXPORT = 3,
     }
 
 
@@ -1206,10 +1206,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintOperationResult {
-        ERROR,
-        APPLY,
-        CANCEL,
-        IN_PROGRESS,
+        ERROR = 0,
+        APPLY = 1,
+        CANCEL = 2,
+        IN_PROGRESS = 3,
     }
 
 
@@ -1224,10 +1224,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintPages {
-        ALL,
-        CURRENT,
-        RANGES,
-        SELECTION,
+        ALL = 0,
+        CURRENT = 1,
+        RANGES = 2,
+        SELECTION = 3,
     }
 
 
@@ -1242,10 +1242,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintQuality {
-        LOW,
-        NORMAL,
-        HIGH,
-        DRAFT,
+        LOW = 0,
+        NORMAL = 1,
+        HIGH = 2,
+        DRAFT = 3,
     }
 
 
@@ -1260,15 +1260,15 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum PrintStatus {
-        INITIAL,
-        PREPARING,
-        GENERATING_DATA,
-        SENDING_DATA,
-        PENDING,
-        PENDING_ISSUE,
-        PRINTING,
-        FINISHED,
-        FINISHED_ABORTED,
+        INITIAL = 0,
+        PREPARING = 1,
+        GENERATING_DATA = 2,
+        SENDING_DATA = 3,
+        PENDING = 4,
+        PENDING_ISSUE = 5,
+        PRINTING = 6,
+        FINISHED = 7,
+        FINISHED_ABORTED = 8,
     }
 
 
@@ -1283,10 +1283,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ProgressBarOrientation {
-        LEFT_TO_RIGHT,
-        RIGHT_TO_LEFT,
-        BOTTOM_TO_TOP,
-        TOP_TO_BOTTOM,
+        LEFT_TO_RIGHT = 0,
+        RIGHT_TO_LEFT = 1,
+        BOTTOM_TO_TOP = 2,
+        TOP_TO_BOTTOM = 3,
     }
 
 
@@ -1301,8 +1301,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ProgressBarStyle {
-        CONTINUOUS,
-        DISCRETE,
+        CONTINUOUS = 0,
+        DISCRETE = 1,
     }
 
 
@@ -1317,46 +1317,46 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum RcTokenType {
-        INVALID,
-        INCLUDE,
-        NORMAL,
-        ACTIVE,
-        PRELIGHT,
-        SELECTED,
-        INSENSITIVE,
-        FG,
-        BG,
-        TEXT,
-        BASE,
-        XTHICKNESS,
-        YTHICKNESS,
-        FONT,
-        FONTSET,
-        FONT_NAME,
-        BG_PIXMAP,
-        PIXMAP_PATH,
-        STYLE,
-        BINDING,
-        BIND,
-        WIDGET,
-        WIDGET_CLASS,
-        CLASS,
-        LOWEST,
-        GTK,
-        APPLICATION,
-        THEME,
-        RC,
-        HIGHEST,
-        ENGINE,
-        MODULE_PATH,
-        IM_MODULE_PATH,
-        IM_MODULE_FILE,
-        STOCK,
-        LTR,
-        RTL,
-        COLOR,
-        UNBIND,
-        LAST,
+        INVALID = 270,
+        INCLUDE = 271,
+        NORMAL = 272,
+        ACTIVE = 273,
+        PRELIGHT = 274,
+        SELECTED = 275,
+        INSENSITIVE = 276,
+        FG = 277,
+        BG = 278,
+        TEXT = 279,
+        BASE = 280,
+        XTHICKNESS = 281,
+        YTHICKNESS = 282,
+        FONT = 283,
+        FONTSET = 284,
+        FONT_NAME = 285,
+        BG_PIXMAP = 286,
+        PIXMAP_PATH = 287,
+        STYLE = 288,
+        BINDING = 289,
+        BIND = 290,
+        WIDGET = 291,
+        WIDGET_CLASS = 292,
+        CLASS = 293,
+        LOWEST = 294,
+        GTK = 295,
+        APPLICATION = 296,
+        THEME = 297,
+        RC = 298,
+        HIGHEST = 299,
+        ENGINE = 300,
+        MODULE_PATH = 301,
+        IM_MODULE_PATH = 302,
+        IM_MODULE_FILE = 303,
+        STOCK = 304,
+        LTR = 305,
+        RTL = 306,
+        COLOR = 307,
+        UNBIND = 308,
+        LAST = 309,
     }
 
 
@@ -1452,22 +1452,22 @@ export namespace Gtk {
          * Do not sort the returned list of recently used
          *   resources.
          */
-        NONE,
+        NONE = 0,
         /**
          * Sort the returned list with the most recently used
          *   items first.
          */
-        MRU,
+        MRU = 1,
         /**
          * Sort the returned list with the least recently used
          *   items first.
          */
-        LRU,
+        LRU = 2,
         /**
          * Sort the returned list using a custom sorting
          *   function passed using `gtk_recent_manager_set_sort_func()`.
          */
-        CUSTOM,
+        CUSTOM = 3,
     }
 
 
@@ -1482,9 +1482,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ReliefStyle {
-        NORMAL,
-        HALF,
-        NONE,
+        NORMAL = 0,
+        HALF = 1,
+        NONE = 2,
     }
 
 
@@ -1499,9 +1499,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ResizeMode {
-        PARENT,
-        QUEUE,
-        IMMEDIATE,
+        PARENT = 0,
+        QUEUE = 1,
+        IMMEDIATE = 2,
     }
 
 
@@ -1516,17 +1516,17 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ResponseType {
-        NONE,
-        REJECT,
-        ACCEPT,
-        DELETE_EVENT,
-        OK,
-        CANCEL,
-        CLOSE,
-        YES,
-        NO,
-        APPLY,
-        HELP,
+        NONE = -1,
+        REJECT = -2,
+        ACCEPT = -3,
+        DELETE_EVENT = -4,
+        OK = -5,
+        CANCEL = -6,
+        CLOSE = -7,
+        YES = -8,
+        NO = -9,
+        APPLY = -10,
+        HELP = -11,
     }
 
 
@@ -1541,12 +1541,12 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ScrollStep {
-        STEPS,
-        PAGES,
-        ENDS,
-        HORIZONTAL_STEPS,
-        HORIZONTAL_PAGES,
-        HORIZONTAL_ENDS,
+        STEPS = 0,
+        PAGES = 1,
+        ENDS = 2,
+        HORIZONTAL_STEPS = 3,
+        HORIZONTAL_PAGES = 4,
+        HORIZONTAL_ENDS = 5,
     }
 
 
@@ -1561,22 +1561,22 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ScrollType {
-        NONE,
-        JUMP,
-        STEP_BACKWARD,
-        STEP_FORWARD,
-        PAGE_BACKWARD,
-        PAGE_FORWARD,
-        STEP_UP,
-        STEP_DOWN,
-        PAGE_UP,
-        PAGE_DOWN,
-        STEP_LEFT,
-        STEP_RIGHT,
-        PAGE_LEFT,
-        PAGE_RIGHT,
-        START,
-        END,
+        NONE = 0,
+        JUMP = 1,
+        STEP_BACKWARD = 2,
+        STEP_FORWARD = 3,
+        PAGE_BACKWARD = 4,
+        PAGE_FORWARD = 5,
+        STEP_UP = 6,
+        STEP_DOWN = 7,
+        PAGE_UP = 8,
+        PAGE_DOWN = 9,
+        STEP_LEFT = 10,
+        STEP_RIGHT = 11,
+        PAGE_LEFT = 12,
+        PAGE_RIGHT = 13,
+        START = 14,
+        END = 15,
     }
 
 
@@ -1591,11 +1591,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SelectionMode {
-        NONE,
-        SINGLE,
-        BROWSE,
-        MULTIPLE,
-        EXTENDED,
+        NONE = 0,
+        SINGLE = 1,
+        BROWSE = 2,
+        MULTIPLE = 3,
+        EXTENDED = 3,
     }
 
 
@@ -1610,9 +1610,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SensitivityType {
-        AUTO,
-        ON,
-        OFF,
+        AUTO = 0,
+        ON = 1,
+        OFF = 2,
     }
 
 
@@ -1627,11 +1627,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ShadowType {
-        NONE,
-        IN,
-        OUT,
-        ETCHED_IN,
-        ETCHED_OUT,
+        NONE = 0,
+        IN = 1,
+        OUT = 2,
+        ETCHED_IN = 3,
+        ETCHED_OUT = 4,
     }
 
 
@@ -1646,10 +1646,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SideType {
-        TOP,
-        BOTTOM,
-        LEFT,
-        RIGHT,
+        TOP = 0,
+        BOTTOM = 1,
+        LEFT = 2,
+        RIGHT = 3,
     }
 
 
@@ -1669,19 +1669,19 @@ export namespace Gtk {
         /**
          * group has no effect
          */
-        NONE,
+        NONE = 0,
         /**
          * group affects horizontal requisition
          */
-        HORIZONTAL,
+        HORIZONTAL = 1,
         /**
          * group affects vertical requisition
          */
-        VERTICAL,
+        VERTICAL = 2,
         /**
          * group affects both horizontal and vertical requisition
          */
-        BOTH,
+        BOTH = 3,
     }
 
 
@@ -1696,8 +1696,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SortType {
-        ASCENDING,
-        DESCENDING,
+        ASCENDING = 0,
+        DESCENDING = 1,
     }
 
 
@@ -1712,8 +1712,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SpinButtonUpdatePolicy {
-        ALWAYS,
-        IF_VALID,
+        ALWAYS = 0,
+        IF_VALID = 1,
     }
 
 
@@ -1728,13 +1728,13 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SpinType {
-        STEP_FORWARD,
-        STEP_BACKWARD,
-        PAGE_FORWARD,
-        PAGE_BACKWARD,
-        HOME,
-        END,
-        USER_DEFINED,
+        STEP_FORWARD = 0,
+        STEP_BACKWARD = 1,
+        PAGE_FORWARD = 2,
+        PAGE_BACKWARD = 3,
+        HOME = 4,
+        END = 5,
+        USER_DEFINED = 6,
     }
 
 
@@ -1749,11 +1749,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum StateType {
-        NORMAL,
-        ACTIVE,
-        PRELIGHT,
-        SELECTED,
-        INSENSITIVE,
+        NORMAL = 0,
+        ACTIVE = 1,
+        PRELIGHT = 2,
+        SELECTED = 3,
+        INSENSITIVE = 4,
     }
 
 
@@ -1768,8 +1768,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SubmenuDirection {
-        LEFT,
-        RIGHT,
+        LEFT = 0,
+        RIGHT = 1,
     }
 
 
@@ -1784,8 +1784,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum SubmenuPlacement {
-        TOP_BOTTOM,
-        LEFT_RIGHT,
+        TOP_BOTTOM = 0,
+        LEFT_RIGHT = 1,
     }
 
 
@@ -1800,9 +1800,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TextBufferTargetInfo {
-        BUFFER_CONTENTS,
-        RICH_TEXT,
-        TEXT,
+        BUFFER_CONTENTS = -1,
+        RICH_TEXT = -2,
+        TEXT = -3,
     }
 
 
@@ -1817,9 +1817,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TextDirection {
-        NONE,
-        LTR,
-        RTL,
+        NONE = 0,
+        LTR = 1,
+        RTL = 2,
     }
 
 
@@ -1834,13 +1834,13 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TextWindowType {
-        PRIVATE,
-        WIDGET,
-        TEXT,
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM,
+        PRIVATE = 0,
+        WIDGET = 1,
+        TEXT = 2,
+        LEFT = 3,
+        RIGHT = 4,
+        TOP = 5,
+        BOTTOM = 6,
     }
 
 
@@ -1855,11 +1855,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ToolbarChildType {
-        SPACE,
-        BUTTON,
-        TOGGLEBUTTON,
-        RADIOBUTTON,
-        WIDGET,
+        SPACE = 0,
+        BUTTON = 1,
+        TOGGLEBUTTON = 2,
+        RADIOBUTTON = 3,
+        WIDGET = 4,
     }
 
 
@@ -1874,8 +1874,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ToolbarSpaceStyle {
-        EMPTY,
-        LINE,
+        EMPTY = 0,
+        LINE = 1,
     }
 
 
@@ -1890,10 +1890,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum ToolbarStyle {
-        ICONS,
-        TEXT,
-        BOTH,
-        BOTH_HORIZ,
+        ICONS = 0,
+        TEXT = 1,
+        BOTH = 2,
+        BOTH_HORIZ = 3,
     }
 
 
@@ -1908,9 +1908,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TreeViewColumnSizing {
-        GROW_ONLY,
-        AUTOSIZE,
-        FIXED,
+        GROW_ONLY = 0,
+        AUTOSIZE = 1,
+        FIXED = 2,
     }
 
 
@@ -1925,10 +1925,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TreeViewDropPosition {
-        BEFORE,
-        AFTER,
-        INTO_OR_BEFORE,
-        INTO_OR_AFTER,
+        BEFORE = 0,
+        AFTER = 1,
+        INTO_OR_BEFORE = 2,
+        INTO_OR_AFTER = 3,
     }
 
 
@@ -1943,10 +1943,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TreeViewGridLines {
-        NONE,
-        HORIZONTAL,
-        VERTICAL,
-        BOTH,
+        NONE = 0,
+        HORIZONTAL = 1,
+        VERTICAL = 2,
+        BOTH = 3,
     }
 
 
@@ -1961,8 +1961,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum TreeViewMode {
-        LINE,
-        ITEM,
+        LINE = 0,
+        ITEM = 1,
     }
 
 
@@ -1977,10 +1977,10 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum Unit {
-        PIXEL,
-        POINTS,
-        INCH,
-        MM,
+        PIXEL = 0,
+        POINTS = 1,
+        INCH = 2,
+        MM = 3,
     }
 
 
@@ -1995,9 +1995,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum UpdateType {
-        CONTINUOUS,
-        DISCONTINUOUS,
-        DELAYED,
+        CONTINUOUS = 0,
+        DISCONTINUOUS = 1,
+        DELAYED = 2,
     }
 
 
@@ -2012,9 +2012,9 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum Visibility {
-        NONE,
-        PARTIAL,
-        FULL,
+        NONE = 0,
+        PARTIAL = 1,
+        FULL = 2,
     }
 
 
@@ -2029,8 +2029,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum WidgetHelpType {
-        TOOLTIP,
-        WHATS_THIS,
+        TOOLTIP = 0,
+        WHATS_THIS = 1,
     }
 
 
@@ -2045,11 +2045,11 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum WindowPosition {
-        NONE,
-        CENTER,
-        MOUSE,
-        CENTER_ALWAYS,
-        CENTER_ON_PARENT,
+        NONE = 0,
+        CENTER = 1,
+        MOUSE = 2,
+        CENTER_ALWAYS = 3,
+        CENTER_ON_PARENT = 4,
     }
 
 
@@ -2064,8 +2064,8 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum WindowType {
-        TOPLEVEL,
-        POPUP,
+        TOPLEVEL = 0,
+        POPUP = 1,
     }
 
 
@@ -2080,147 +2080,311 @@ export namespace Gtk {
      * @gir-type Enum
      */
     enum WrapMode {
-        NONE,
-        CHAR,
-        WORD,
-        WORD_CHAR,
+        NONE = 0,
+        CHAR = 1,
+        WORD = 2,
+        WORD_CHAR = 3,
     }
 
 
+    /**
+     * @default 3
+     */
     const ARG_READWRITE: number;
 
+    /**
+     * @default 2433
+     */
     const BINARY_AGE: number;
 
+    /**
+     * @default -1
+     */
     const BUTTONBOX_DEFAULT: number;
 
+    /**
+     * @default -1
+     */
     const INPUT_ERROR: number;
 
+    /**
+     * @default 33
+     */
     const INTERFACE_AGE: number;
 
+    /**
+     * @default 2
+     */
     const MAJOR_VERSION: number;
 
+    /**
+     * @default 7
+     */
     const MAX_COMPOSE_LEN: number;
 
+    /**
+     * @default 33
+     */
     const MICRO_VERSION: number;
 
+    /**
+     * @default 24
+     */
     const MINOR_VERSION: number;
 
+    /**
+     * @default 12
+     */
     const NO_TEXT_INPUT_MOD_MASK: number;
 
+    /**
+     * @default iso_a3
+     */
     const PAPER_NAME_A3: string;
 
+    /**
+     * @default iso_a4
+     */
     const PAPER_NAME_A4: string;
 
+    /**
+     * @default iso_a5
+     */
     const PAPER_NAME_A5: string;
 
+    /**
+     * @default iso_b5
+     */
     const PAPER_NAME_B5: string;
 
+    /**
+     * @default na_executive
+     */
     const PAPER_NAME_EXECUTIVE: string;
 
+    /**
+     * @default na_legal
+     */
     const PAPER_NAME_LEGAL: string;
 
+    /**
+     * @default na_letter
+     */
     const PAPER_NAME_LETTER: string;
 
+    /**
+     * @default 225
+     */
     const PARAM_READABLE: number;
 
+    /**
+     * @default 227
+     */
     const PARAM_READWRITE: number;
 
+    /**
+     * @default 226
+     */
     const PARAM_WRITABLE: number;
 
+    /**
+     * @default 15
+     */
     const PATH_PRIO_MASK: number;
 
+    /**
+     * @default collate
+     */
     const PRINT_SETTINGS_COLLATE: string;
 
+    /**
+     * @default default-source
+     */
     const PRINT_SETTINGS_DEFAULT_SOURCE: string;
 
+    /**
+     * @default dither
+     */
     const PRINT_SETTINGS_DITHER: string;
 
+    /**
+     * @default duplex
+     */
     const PRINT_SETTINGS_DUPLEX: string;
 
+    /**
+     * @default finishings
+     */
     const PRINT_SETTINGS_FINISHINGS: string;
 
+    /**
+     * @default media-type
+     */
     const PRINT_SETTINGS_MEDIA_TYPE: string;
 
+    /**
+     * @default number-up
+     */
     const PRINT_SETTINGS_NUMBER_UP: string;
 
+    /**
+     * @default number-up-layout
+     */
     const PRINT_SETTINGS_NUMBER_UP_LAYOUT: string;
 
+    /**
+     * @default n-copies
+     */
     const PRINT_SETTINGS_N_COPIES: string;
 
+    /**
+     * @default orientation
+     */
     const PRINT_SETTINGS_ORIENTATION: string;
 
+    /**
+     * @default output-bin
+     */
     const PRINT_SETTINGS_OUTPUT_BIN: string;
 
+    /**
+     * @default output-file-format
+     */
     const PRINT_SETTINGS_OUTPUT_FILE_FORMAT: string;
 
+    /**
+     * @default output-uri
+     */
     const PRINT_SETTINGS_OUTPUT_URI: string;
 
+    /**
+     * @default page-ranges
+     */
     const PRINT_SETTINGS_PAGE_RANGES: string;
 
+    /**
+     * @default page-set
+     */
     const PRINT_SETTINGS_PAGE_SET: string;
 
+    /**
+     * @default paper-format
+     */
     const PRINT_SETTINGS_PAPER_FORMAT: string;
 
+    /**
+     * @default paper-height
+     */
     const PRINT_SETTINGS_PAPER_HEIGHT: string;
 
+    /**
+     * @default paper-width
+     */
     const PRINT_SETTINGS_PAPER_WIDTH: string;
 
+    /**
+     * @default printer
+     */
     const PRINT_SETTINGS_PRINTER: string;
 
+    /**
+     * @default printer-lpi
+     */
     const PRINT_SETTINGS_PRINTER_LPI: string;
 
+    /**
+     * @default print-pages
+     */
     const PRINT_SETTINGS_PRINT_PAGES: string;
 
+    /**
+     * @default quality
+     */
     const PRINT_SETTINGS_QUALITY: string;
 
+    /**
+     * @default resolution
+     */
     const PRINT_SETTINGS_RESOLUTION: string;
 
+    /**
+     * @default resolution-x
+     */
     const PRINT_SETTINGS_RESOLUTION_X: string;
 
+    /**
+     * @default resolution-y
+     */
     const PRINT_SETTINGS_RESOLUTION_Y: string;
 
+    /**
+     * @default reverse
+     */
     const PRINT_SETTINGS_REVERSE: string;
 
+    /**
+     * @default scale
+     */
     const PRINT_SETTINGS_SCALE: string;
 
+    /**
+     * @default use-color
+     */
     const PRINT_SETTINGS_USE_COLOR: string;
 
+    /**
+     * @default win32-driver-extra
+     */
     const PRINT_SETTINGS_WIN32_DRIVER_EXTRA: string;
 
+    /**
+     * @default win32-driver-version
+     */
     const PRINT_SETTINGS_WIN32_DRIVER_VERSION: string;
 
+    /**
+     * @default 20
+     */
     const PRIORITY_REDRAW: number;
 
+    /**
+     * @default 10
+     */
     const PRIORITY_RESIZE: number;
 
     /**
      * The "About" item.
      * <inlinegraphic fileref="help-about.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-about
      */
     const STOCK_ABOUT: string;
 
     /**
      * The "Add" item.
      * <inlinegraphic fileref="list-add.png" format="PNG"></inlinegraphic>
+     * @default gtk-add
      */
     const STOCK_ADD: string;
 
     /**
      * The "Apply" item.
      * <inlinegraphic fileref="gtk-apply.png" format="PNG"></inlinegraphic>
+     * @default gtk-apply
      */
     const STOCK_APPLY: string;
 
     /**
      * The "Bold" item.
      * <inlinegraphic fileref="format-text-bold.png" format="PNG"></inlinegraphic>
+     * @default gtk-bold
      */
     const STOCK_BOLD: string;
 
     /**
      * The "Cancel" item.
      * <inlinegraphic fileref="gtk-cancel.png" format="PNG"></inlinegraphic>
+     * @default gtk-cancel
      */
     const STOCK_CANCEL: string;
 
@@ -2228,24 +2392,28 @@ export namespace Gtk {
      * The "Caps Lock Warning" icon.
      * <inlinegraphic fileref="gtk-caps-lock-warning.png" format="PNG"></inlinegraphic>
      * @since 2.16
+     * @default gtk-caps-lock-warning
      */
     const STOCK_CAPS_LOCK_WARNING: string;
 
     /**
      * The "CD-Rom" item.
      * <inlinegraphic fileref="media-optical.png" format="PNG"></inlinegraphic>
+     * @default gtk-cdrom
      */
     const STOCK_CDROM: string;
 
     /**
      * The "Clear" item.
      * <inlinegraphic fileref="edit-clear.png" format="PNG"></inlinegraphic>
+     * @default gtk-clear
      */
     const STOCK_CLEAR: string;
 
     /**
      * The "Close" item.
      * <inlinegraphic fileref="window-close.png" format="PNG"></inlinegraphic>
+     * @default gtk-close
      */
     const STOCK_CLOSE: string;
 
@@ -2253,6 +2421,7 @@ export namespace Gtk {
      * The "Color Picker" item.
      * <inlinegraphic fileref="gtk-color-picker.png" format="PNG"></inlinegraphic>
      * @since 2.2
+     * @default gtk-color-picker
      */
     const STOCK_COLOR_PICKER: string;
 
@@ -2260,30 +2429,35 @@ export namespace Gtk {
      * The "Connect" icon.
      * <inlinegraphic fileref="gtk-connect.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-connect
      */
     const STOCK_CONNECT: string;
 
     /**
      * The "Convert" item.
      * <inlinegraphic fileref="gtk-convert.png" format="PNG"></inlinegraphic>
+     * @default gtk-convert
      */
     const STOCK_CONVERT: string;
 
     /**
      * The "Copy" item.
      * <inlinegraphic fileref="edit-copy.png" format="PNG"></inlinegraphic>
+     * @default gtk-copy
      */
     const STOCK_COPY: string;
 
     /**
      * The "Cut" item.
      * <inlinegraphic fileref="edit-cut.png" format="PNG"></inlinegraphic>
+     * @default gtk-cut
      */
     const STOCK_CUT: string;
 
     /**
      * The "Delete" item.
      * <inlinegraphic fileref="edit-delete.png" format="PNG"></inlinegraphic>
+     * @default gtk-delete
      */
     const STOCK_DELETE: string;
 
@@ -2291,30 +2465,35 @@ export namespace Gtk {
      * The "Authentication" item.
      * <inlinegraphic fileref="dialog-password.png" format="PNG"></inlinegraphic>
      * @since 2.4
+     * @default gtk-dialog-authentication
      */
     const STOCK_DIALOG_AUTHENTICATION: string;
 
     /**
      * The "Error" item.
      * <inlinegraphic fileref="dialog-error.png" format="PNG"></inlinegraphic>
+     * @default gtk-dialog-error
      */
     const STOCK_DIALOG_ERROR: string;
 
     /**
      * The "Information" item.
      * <inlinegraphic fileref="dialog-information.png" format="PNG"></inlinegraphic>
+     * @default gtk-dialog-info
      */
     const STOCK_DIALOG_INFO: string;
 
     /**
      * The "Question" item.
      * <inlinegraphic fileref="dialog-question.png" format="PNG"></inlinegraphic>
+     * @default gtk-dialog-question
      */
     const STOCK_DIALOG_QUESTION: string;
 
     /**
      * The "Warning" item.
      * <inlinegraphic fileref="dialog-warning.png" format="PNG"></inlinegraphic>
+     * @default gtk-dialog-warning
      */
     const STOCK_DIALOG_WARNING: string;
 
@@ -2322,12 +2501,14 @@ export namespace Gtk {
      * The "Directory" icon.
      * <inlinegraphic fileref="folder.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-directory
      */
     const STOCK_DIRECTORY: string;
 
     /**
      * The "Discard" item.
      * @since 2.12
+     * @default gtk-discard
      */
     const STOCK_DISCARD: string;
 
@@ -2335,18 +2516,21 @@ export namespace Gtk {
      * The "Disconnect" icon.
      * <inlinegraphic fileref="gtk-disconnect.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-disconnect
      */
     const STOCK_DISCONNECT: string;
 
     /**
      * The "Drag-And-Drop" icon.
      * <inlinegraphic fileref="gtk-dnd.png" format="PNG"></inlinegraphic>
+     * @default gtk-dnd
      */
     const STOCK_DND: string;
 
     /**
      * The "Drag-And-Drop multiple" icon.
      * <inlinegraphic fileref="gtk-dnd-multiple.png" format="PNG"></inlinegraphic>
+     * @default gtk-dnd-multiple
      */
     const STOCK_DND_MULTIPLE: string;
 
@@ -2354,12 +2538,14 @@ export namespace Gtk {
      * The "Edit" item.
      * <inlinegraphic fileref="gtk-edit.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-edit
      */
     const STOCK_EDIT: string;
 
     /**
      * The "Execute" item.
      * <inlinegraphic fileref="system-run.png" format="PNG"></inlinegraphic>
+     * @default gtk-execute
      */
     const STOCK_EXECUTE: string;
 
@@ -2367,24 +2553,28 @@ export namespace Gtk {
      * The "File" icon.
      * <inlinegraphic fileref="document-x-generic.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-file
      */
     const STOCK_FILE: string;
 
     /**
      * The "Find" item.
      * <inlinegraphic fileref="edit-find.png" format="PNG"></inlinegraphic>
+     * @default gtk-find
      */
     const STOCK_FIND: string;
 
     /**
      * The "Find and Replace" item.
      * <inlinegraphic fileref="edit-find-replace.png" format="PNG"></inlinegraphic>
+     * @default gtk-find-and-replace
      */
     const STOCK_FIND_AND_REPLACE: string;
 
     /**
      * The "Floppy" item.
      * <inlinegraphic fileref="media-floppy.png" format="PNG"></inlinegraphic>
+     * @default gtk-floppy
      */
     const STOCK_FLOPPY: string;
 
@@ -2392,12 +2582,14 @@ export namespace Gtk {
      * The "Fullscreen" item.
      * <inlinegraphic fileref="view-fullscreen.png" format="PNG"></inlinegraphic>
      * @since 2.8
+     * @default gtk-fullscreen
      */
     const STOCK_FULLSCREEN: string;
 
     /**
      * The "Bottom" item.
      * <inlinegraphic fileref="go-bottom.png" format="PNG"></inlinegraphic>
+     * @default gtk-goto-bottom
      */
     const STOCK_GOTO_BOTTOM: string;
 
@@ -2406,6 +2598,7 @@ export namespace Gtk {
      * <inlinegraphic fileref="go-first-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="go-first-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-goto-first
      */
     const STOCK_GOTO_FIRST: string;
 
@@ -2414,12 +2607,14 @@ export namespace Gtk {
      * <inlinegraphic fileref="go-last-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="go-last-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-goto-last
      */
     const STOCK_GOTO_LAST: string;
 
     /**
      * The "Top" item.
      * <inlinegraphic fileref="go-top.png" format="PNG"></inlinegraphic>
+     * @default gtk-goto-top
      */
     const STOCK_GOTO_TOP: string;
 
@@ -2428,12 +2623,14 @@ export namespace Gtk {
      * <inlinegraphic fileref="go-previous-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="go-previous-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-go-back
      */
     const STOCK_GO_BACK: string;
 
     /**
      * The "Down" item.
      * <inlinegraphic fileref="go-down.png" format="PNG"></inlinegraphic>
+     * @default gtk-go-down
      */
     const STOCK_GO_DOWN: string;
 
@@ -2442,12 +2639,14 @@ export namespace Gtk {
      * <inlinegraphic fileref="go-next-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="go-next-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-go-forward
      */
     const STOCK_GO_FORWARD: string;
 
     /**
      * The "Up" item.
      * <inlinegraphic fileref="go-up.png" format="PNG"></inlinegraphic>
+     * @default gtk-go-up
      */
     const STOCK_GO_UP: string;
 
@@ -2455,18 +2654,21 @@ export namespace Gtk {
      * The "Harddisk" item.
      * <inlinegraphic fileref="drive-harddisk.png" format="PNG"></inlinegraphic>
      * @since 2.4
+     * @default gtk-harddisk
      */
     const STOCK_HARDDISK: string;
 
     /**
      * The "Help" item.
      * <inlinegraphic fileref="help-contents.png" format="PNG"></inlinegraphic>
+     * @default gtk-help
      */
     const STOCK_HELP: string;
 
     /**
      * The "Home" item.
      * <inlinegraphic fileref="go-home.png" format="PNG"></inlinegraphic>
+     * @default gtk-home
      */
     const STOCK_HOME: string;
 
@@ -2476,12 +2678,14 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="gtk-indent-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.4
+     * @default gtk-indent
      */
     const STOCK_INDENT: string;
 
     /**
      * The "Index" item.
      * <inlinegraphic fileref="gtk-index.png" format="PNG"></inlinegraphic>
+     * @default gtk-index
      */
     const STOCK_INDEX: string;
 
@@ -2489,12 +2693,14 @@ export namespace Gtk {
      * The "Info" item.
      * <inlinegraphic fileref="dialog-information.png" format="PNG"></inlinegraphic>
      * @since 2.8
+     * @default gtk-info
      */
     const STOCK_INFO: string;
 
     /**
      * The "Italic" item.
      * <inlinegraphic fileref="format-text-italic.png" format="PNG"></inlinegraphic>
+     * @default gtk-italic
      */
     const STOCK_ITALIC: string;
 
@@ -2503,30 +2709,35 @@ export namespace Gtk {
      * <inlinegraphic fileref="go-jump-ltr.png" format="PNG"></inlinegraphic>
      * RTL-variant
      * <inlinegraphic fileref="go-jump-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-jump-to
      */
     const STOCK_JUMP_TO: string;
 
     /**
      * The "Center" item.
      * <inlinegraphic fileref="format-justify-center.png" format="PNG"></inlinegraphic>
+     * @default gtk-justify-center
      */
     const STOCK_JUSTIFY_CENTER: string;
 
     /**
      * The "Fill" item.
      * <inlinegraphic fileref="format-justify-fill.png" format="PNG"></inlinegraphic>
+     * @default gtk-justify-fill
      */
     const STOCK_JUSTIFY_FILL: string;
 
     /**
      * The "Left" item.
      * <inlinegraphic fileref="format-justify-left.png" format="PNG"></inlinegraphic>
+     * @default gtk-justify-left
      */
     const STOCK_JUSTIFY_LEFT: string;
 
     /**
      * The "Right" item.
      * <inlinegraphic fileref="format-justify-right.png" format="PNG"></inlinegraphic>
+     * @default gtk-justify-right
      */
     const STOCK_JUSTIFY_RIGHT: string;
 
@@ -2534,6 +2745,7 @@ export namespace Gtk {
      * The "Leave Fullscreen" item.
      * <inlinegraphic fileref="view-restore.png" format="PNG"></inlinegraphic>
      * @since 2.8
+     * @default gtk-leave-fullscreen
      */
     const STOCK_LEAVE_FULLSCREEN: string;
 
@@ -2543,6 +2755,7 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="media-seek-forward-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-forward
      */
     const STOCK_MEDIA_FORWARD: string;
 
@@ -2552,6 +2765,7 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="media-skip-forward-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-next
      */
     const STOCK_MEDIA_NEXT: string;
 
@@ -2559,6 +2773,7 @@ export namespace Gtk {
      * The "Media Pause" item.
      * <inlinegraphic fileref="media-playback-pause.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-pause
      */
     const STOCK_MEDIA_PAUSE: string;
 
@@ -2568,6 +2783,7 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="media-playback-start-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-play
      */
     const STOCK_MEDIA_PLAY: string;
 
@@ -2577,6 +2793,7 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="media-skip-backward-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-previous
      */
     const STOCK_MEDIA_PREVIOUS: string;
 
@@ -2584,6 +2801,7 @@ export namespace Gtk {
      * The "Media Record" item.
      * <inlinegraphic fileref="media-record.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-record
      */
     const STOCK_MEDIA_RECORD: string;
 
@@ -2593,6 +2811,7 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="media-seek-backward-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-rewind
      */
     const STOCK_MEDIA_REWIND: string;
 
@@ -2600,12 +2819,14 @@ export namespace Gtk {
      * The "Media Stop" item.
      * <inlinegraphic fileref="media-playback-stop.png" format="PNG"></inlinegraphic>
      * @since 2.6
+     * @default gtk-media-stop
      */
     const STOCK_MEDIA_STOP: string;
 
     /**
      * The "Missing image" icon.
      * <inlinegraphic fileref="image-missing.png" format="PNG"></inlinegraphic>
+     * @default gtk-missing-image
      */
     const STOCK_MISSING_IMAGE: string;
 
@@ -2613,30 +2834,35 @@ export namespace Gtk {
      * The "Network" item.
      * <inlinegraphic fileref="network-idle.png" format="PNG"></inlinegraphic>
      * @since 2.4
+     * @default gtk-network
      */
     const STOCK_NETWORK: string;
 
     /**
      * The "New" item.
      * <inlinegraphic fileref="document-new.png" format="PNG"></inlinegraphic>
+     * @default gtk-new
      */
     const STOCK_NEW: string;
 
     /**
      * The "No" item.
      * <inlinegraphic fileref="gtk-no.png" format="PNG"></inlinegraphic>
+     * @default gtk-no
      */
     const STOCK_NO: string;
 
     /**
      * The "OK" item.
      * <inlinegraphic fileref="gtk-ok.png" format="PNG"></inlinegraphic>
+     * @default gtk-ok
      */
     const STOCK_OK: string;
 
     /**
      * The "Open" item.
      * <inlinegraphic fileref="document-open.png" format="PNG"></inlinegraphic>
+     * @default gtk-open
      */
     const STOCK_OPEN: string;
 
@@ -2644,6 +2870,7 @@ export namespace Gtk {
      * The "Landscape Orientation" item.
      * <inlinegraphic fileref="gtk-orientation-landscape.png" format="PNG"></inlinegraphic>
      * @since 2.10
+     * @default gtk-orientation-landscape
      */
     const STOCK_ORIENTATION_LANDSCAPE: string;
 
@@ -2651,6 +2878,7 @@ export namespace Gtk {
      * The "Portrait Orientation" item.
      * <inlinegraphic fileref="gtk-orientation-portrait.png" format="PNG"></inlinegraphic>
      * @since 2.10
+     * @default gtk-orientation-portrait
      */
     const STOCK_ORIENTATION_PORTRAIT: string;
 
@@ -2658,6 +2886,7 @@ export namespace Gtk {
      * The "Reverse Landscape Orientation" item.
      * <inlinegraphic fileref="gtk-orientation-reverse-landscape.png" format="PNG"></inlinegraphic>
      * @since 2.10
+     * @default gtk-orientation-reverse-landscape
      */
     const STOCK_ORIENTATION_REVERSE_LANDSCAPE: string;
 
@@ -2665,6 +2894,7 @@ export namespace Gtk {
      * The "Reverse Portrait Orientation" item.
      * <inlinegraphic fileref="gtk-orientation-reverse-portrait.png" format="PNG"></inlinegraphic>
      * @since 2.10
+     * @default gtk-orientation-reverse-portrait
      */
     const STOCK_ORIENTATION_REVERSE_PORTRAIT: string;
 
@@ -2672,24 +2902,28 @@ export namespace Gtk {
      * The "Page Setup" item.
      * <inlinegraphic fileref="gtk-page-setup.png" format="PNG"></inlinegraphic>
      * @since 2.14
+     * @default gtk-page-setup
      */
     const STOCK_PAGE_SETUP: string;
 
     /**
      * The "Paste" item.
      * <inlinegraphic fileref="edit-paste.png" format="PNG"></inlinegraphic>
+     * @default gtk-paste
      */
     const STOCK_PASTE: string;
 
     /**
      * The "Preferences" item.
      * <inlinegraphic fileref="gtk-preferences.png" format="PNG"></inlinegraphic>
+     * @default gtk-preferences
      */
     const STOCK_PREFERENCES: string;
 
     /**
      * The "Print" item.
      * <inlinegraphic fileref="document-print.png" format="PNG"></inlinegraphic>
+     * @default gtk-print
      */
     const STOCK_PRINT: string;
 
@@ -2697,6 +2931,7 @@ export namespace Gtk {
      * The "Print Error" icon.
      * <inlinegraphic fileref="printer-error.png" format="PNG"></inlinegraphic>
      * @since 2.14
+     * @default gtk-print-error
      */
     const STOCK_PRINT_ERROR: string;
 
@@ -2704,12 +2939,14 @@ export namespace Gtk {
      * The "Print Paused" icon.
      * <inlinegraphic fileref="printer-paused.png" format="PNG"></inlinegraphic>
      * @since 2.14
+     * @default gtk-print-paused
      */
     const STOCK_PRINT_PAUSED: string;
 
     /**
      * The "Print Preview" item.
      * <inlinegraphic fileref="document-print-preview.png" format="PNG"></inlinegraphic>
+     * @default gtk-print-preview
      */
     const STOCK_PRINT_PREVIEW: string;
 
@@ -2717,6 +2954,7 @@ export namespace Gtk {
      * The "Print Report" icon.
      * <inlinegraphic fileref="printer-info.png" format="PNG"></inlinegraphic>
      * @since 2.14
+     * @default gtk-print-report
      */
     const STOCK_PRINT_REPORT: string;
 
@@ -2724,18 +2962,21 @@ export namespace Gtk {
      * The "Print Warning" icon.
      * <inlinegraphic fileref="printer-warning.png" format="PNG"></inlinegraphic>
      * @since 2.14
+     * @default gtk-print-warning
      */
     const STOCK_PRINT_WARNING: string;
 
     /**
      * The "Properties" item.
      * <inlinegraphic fileref="document-properties.png" format="PNG"></inlinegraphic>
+     * @default gtk-properties
      */
     const STOCK_PROPERTIES: string;
 
     /**
      * The "Quit" item.
      * <inlinegraphic fileref="application-exit.png" format="PNG"></inlinegraphic>
+     * @default gtk-quit
      */
     const STOCK_QUIT: string;
 
@@ -2744,18 +2985,21 @@ export namespace Gtk {
      * <inlinegraphic fileref="edit-redo-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="edit-redo-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-redo
      */
     const STOCK_REDO: string;
 
     /**
      * The "Refresh" item.
      * <inlinegraphic fileref="view-refresh.png" format="PNG"></inlinegraphic>
+     * @default gtk-refresh
      */
     const STOCK_REFRESH: string;
 
     /**
      * The "Remove" item.
      * <inlinegraphic fileref="list-remove.png" format="PNG"></inlinegraphic>
+     * @default gtk-remove
      */
     const STOCK_REMOVE: string;
 
@@ -2764,18 +3008,21 @@ export namespace Gtk {
      * <inlinegraphic fileref="document-revert-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="document-revert-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-revert-to-saved
      */
     const STOCK_REVERT_TO_SAVED: string;
 
     /**
      * The "Save" item.
      * <inlinegraphic fileref="document-save.png" format="PNG"></inlinegraphic>
+     * @default gtk-save
      */
     const STOCK_SAVE: string;
 
     /**
      * The "Save As" item.
      * <inlinegraphic fileref="document-save-as.png" format="PNG"></inlinegraphic>
+     * @default gtk-save-as
      */
     const STOCK_SAVE_AS: string;
 
@@ -2783,48 +3030,56 @@ export namespace Gtk {
      * The "Select All" item.
      * <inlinegraphic fileref="edit-select-all.png" format="PNG"></inlinegraphic>
      * @since 2.10
+     * @default gtk-select-all
      */
     const STOCK_SELECT_ALL: string;
 
     /**
      * The "Color" item.
      * <inlinegraphic fileref="gtk-select-color.png" format="PNG"></inlinegraphic>
+     * @default gtk-select-color
      */
     const STOCK_SELECT_COLOR: string;
 
     /**
      * The "Font" item.
      * <inlinegraphic fileref="gtk-font.png" format="PNG"></inlinegraphic>
+     * @default gtk-select-font
      */
     const STOCK_SELECT_FONT: string;
 
     /**
      * The "Ascending" item.
      * <inlinegraphic fileref="view-sort-ascending.png" format="PNG"></inlinegraphic>
+     * @default gtk-sort-ascending
      */
     const STOCK_SORT_ASCENDING: string;
 
     /**
      * The "Descending" item.
      * <inlinegraphic fileref="view-sort-descending.png" format="PNG"></inlinegraphic>
+     * @default gtk-sort-descending
      */
     const STOCK_SORT_DESCENDING: string;
 
     /**
      * The "Spell Check" item.
      * <inlinegraphic fileref="tools-check-spelling.png" format="PNG"></inlinegraphic>
+     * @default gtk-spell-check
      */
     const STOCK_SPELL_CHECK: string;
 
     /**
      * The "Stop" item.
      * <inlinegraphic fileref="process-stop.png" format="PNG"></inlinegraphic>
+     * @default gtk-stop
      */
     const STOCK_STOP: string;
 
     /**
      * The "Strikethrough" item.
      * <inlinegraphic fileref="format-text-strikethrough.png" format="PNG"></inlinegraphic>
+     * @default gtk-strikethrough
      */
     const STOCK_STRIKETHROUGH: string;
 
@@ -2833,12 +3088,14 @@ export namespace Gtk {
      * <inlinegraphic fileref="gtk-undelete-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="gtk-undelete-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-undelete
      */
     const STOCK_UNDELETE: string;
 
     /**
      * The "Underline" item.
      * <inlinegraphic fileref="format-text-underline.png" format="PNG"></inlinegraphic>
+     * @default gtk-underline
      */
     const STOCK_UNDERLINE: string;
 
@@ -2847,6 +3104,7 @@ export namespace Gtk {
      * <inlinegraphic fileref="edit-undo-ltr.png" format="PNG"></inlinegraphic>
      * RTL variant
      * <inlinegraphic fileref="edit-undo-rtl.png" format="PNG"></inlinegraphic>
+     * @default gtk-undo
      */
     const STOCK_UNDO: string;
 
@@ -2856,43 +3114,58 @@ export namespace Gtk {
      * RTL variant
      * <inlinegraphic fileref="format-indent-less-rtl.png" format="PNG"></inlinegraphic>
      * @since 2.4
+     * @default gtk-unindent
      */
     const STOCK_UNINDENT: string;
 
     /**
      * The "Yes" item.
      * <inlinegraphic fileref="gtk-yes.png" format="PNG"></inlinegraphic>
+     * @default gtk-yes
      */
     const STOCK_YES: string;
 
     /**
      * The "Zoom 100%" item.
      * <inlinegraphic fileref="zoom-original.png" format="PNG"></inlinegraphic>
+     * @default gtk-zoom-100
      */
     const STOCK_ZOOM_100: string;
 
     /**
      * The "Zoom to Fit" item.
      * <inlinegraphic fileref="zoom-fit-best.png" format="PNG"></inlinegraphic>
+     * @default gtk-zoom-fit
      */
     const STOCK_ZOOM_FIT: string;
 
     /**
      * The "Zoom In" item.
      * <inlinegraphic fileref="zoom-in.png" format="PNG"></inlinegraphic>
+     * @default gtk-zoom-in
      */
     const STOCK_ZOOM_IN: string;
 
     /**
      * The "Zoom Out" item.
      * <inlinegraphic fileref="zoom-out.png" format="PNG"></inlinegraphic>
+     * @default gtk-zoom-out
      */
     const STOCK_ZOOM_OUT: string;
 
+    /**
+     * @default 5
+     */
     const TEXT_VIEW_PRIORITY_VALIDATE: number;
 
+    /**
+     * @default 0
+     */
     const TOGGLE_GROUP_MOD_MASK: number;
 
+    /**
+     * @default -1
+     */
     const TYPE_FUNDAMENTAL_LAST: number;
 
     /**
@@ -4083,6 +4356,7 @@ export namespace Gtk {
      * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    and the `parameter_string` with `gettext()`, or `null`
      * @returns `true` if the GUI has been successfully initialized,               `false` otherwise.
      * @since 2.6
+     * @throws GLib.Error
      */
     function init_with_args(argv: string[], parameter_string: string, entries: GLib.OptionEntry[], translation_domain: string): [boolean, string[]];
 
@@ -5250,6 +5524,7 @@ export namespace Gtk {
      * @param timestamp a timestamp to prevent focus stealing.
      * @returns `true` on success, `false` on error.
      * @since 2.14
+     * @throws GLib.Error
      */
     function show_uri(screen: Gdk.Screen | null, uri: string, timestamp: number): boolean;
 
@@ -6131,9 +6406,9 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum AccelFlags {
-        VISIBLE,
-        LOCKED,
-        MASK,
+        VISIBLE = 1,
+        LOCKED = 2,
+        MASK = 7,
     }
 
 
@@ -6148,11 +6423,11 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum ArgFlags {
-        READABLE,
-        WRITABLE,
-        CONSTRUCT,
-        CONSTRUCT_ONLY,
-        CHILD_ARG,
+        READABLE = 1,
+        WRITABLE = 2,
+        CONSTRUCT = 4,
+        CONSTRUCT_ONLY = 8,
+        CHILD_ARG = 16,
     }
 
 
@@ -6167,9 +6442,9 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum AttachOptions {
-        EXPAND,
-        SHRINK,
-        FILL,
+        EXPAND = 1,
+        SHRINK = 2,
+        FILL = 4,
     }
 
 
@@ -6184,10 +6459,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum ButtonAction {
-        IGNORED,
-        SELECTS,
-        DRAGS,
-        EXPANDS,
+        IGNORED = 0,
+        SELECTS = 1,
+        DRAGS = 2,
+        EXPANDS = 4,
     }
 
 
@@ -6206,30 +6481,30 @@ export namespace Gtk {
         /**
          * Specifies that the month and year should be displayed.
          */
-        SHOW_HEADING,
+        SHOW_HEADING = 1,
         /**
          * Specifies that three letter day descriptions should be present.
          */
-        SHOW_DAY_NAMES,
+        SHOW_DAY_NAMES = 2,
         /**
          * Prevents the user from switching months with the calendar.
          */
-        NO_MONTH_CHANGE,
+        NO_MONTH_CHANGE = 4,
         /**
          * Displays each week numbers of the current year, down the
          * left side of the calendar.
          */
-        SHOW_WEEK_NUMBERS,
+        SHOW_WEEK_NUMBERS = 8,
         /**
          * Since GTK+ 2.4, this option is deprecated and ignored by GTK+.
          * The information on which day the calendar week starts is derived from the locale.
          */
-        WEEK_START_MONDAY,
+        WEEK_START_MONDAY = 16,
         /**
          * Just show an indicator, not the full details
          * text when details are provided. See `gtk_calendar_set_detail_func()`.
          */
-        SHOW_DETAILS,
+        SHOW_DETAILS = 32,
     }
 
 
@@ -6244,11 +6519,11 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum CellRendererState {
-        SELECTED,
-        PRELIT,
-        INSENSITIVE,
-        SORTED,
-        FOCUSED,
+        SELECTED = 1,
+        PRELIT = 2,
+        INSENSITIVE = 4,
+        SORTED = 8,
+        FOCUSED = 16,
     }
 
 
@@ -6263,18 +6538,18 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum DebugFlag {
-        MISC,
-        PLUGSOCKET,
-        TEXT,
-        TREE,
-        UPDATES,
-        KEYBINDINGS,
-        MULTIHEAD,
-        MODULES,
-        GEOMETRY,
-        ICONTHEME,
-        PRINTING,
-        BUILDER,
+        MISC = 1,
+        PLUGSOCKET = 2,
+        TEXT = 4,
+        TREE = 8,
+        UPDATES = 16,
+        KEYBINDINGS = 32,
+        MULTIHEAD = 64,
+        MODULES = 128,
+        GEOMETRY = 256,
+        ICONTHEME = 512,
+        PRINTING = 1024,
+        BUILDER = 2048,
     }
 
 
@@ -6289,10 +6564,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum DestDefaults {
-        MOTION,
-        HIGHLIGHT,
-        DROP,
-        ALL,
+        MOTION = 1,
+        HIGHLIGHT = 2,
+        DROP = 4,
+        ALL = 7,
     }
 
 
@@ -6307,9 +6582,9 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum DialogFlags {
-        MODAL,
-        DESTROY_WITH_PARENT,
-        NO_SEPARATOR,
+        MODAL = 1,
+        DESTROY_WITH_PARENT = 2,
+        NO_SEPARATOR = 4,
     }
 
 
@@ -6324,10 +6599,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum FileFilterFlags {
-        FILENAME,
-        URI,
-        DISPLAY_NAME,
-        MIME_TYPE,
+        FILENAME = 1,
+        URI = 2,
+        DISPLAY_NAME = 4,
+        MIME_TYPE = 8,
     }
 
 
@@ -6347,31 +6622,31 @@ export namespace Gtk {
          * Never return SVG icons, even if gdk-pixbuf
          *   supports them. Cannot be used together with {@link Gtk.IconLookupFlags.FORCE_SVG}.
          */
-        NO_SVG,
+        NO_SVG = 1,
         /**
          * Return SVG icons, even if gdk-pixbuf
          *   doesn't support them.
          *   Cannot be used together with {@link Gtk.IconLookupFlags.NO_SVG}.
          */
-        FORCE_SVG,
+        FORCE_SVG = 2,
         /**
          * When passed to
          *   `gtk_icon_theme_lookup_icon()` includes builtin icons
          *   as well as files. For a builtin icon, `gtk_icon_info_get_filename()`
          *   returns `null` and you need to call `gtk_icon_info_get_builtin_pixbuf()`.
          */
-        USE_BUILTIN,
+        USE_BUILTIN = 4,
         /**
          * Try to shorten icon name at '-'
          *   characters before looking at inherited themes. For more general
          *   fallback, see `gtk_icon_theme_choose_icon()`. Since 2.12.
          */
-        GENERIC_FALLBACK,
+        GENERIC_FALLBACK = 8,
         /**
          * Always return the icon scaled to the
          *   requested size. Since 2.14.
          */
-        FORCE_SIZE,
+        FORCE_SIZE = 16,
     }
 
 
@@ -6386,10 +6661,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum ObjectFlags {
-        IN_DESTRUCTION,
-        FLOATING,
-        RESERVED_1,
-        RESERVED_2,
+        IN_DESTRUCTION = 1,
+        FLOATING = 2,
+        RESERVED_1 = 4,
+        RESERVED_2 = 8,
     }
 
 
@@ -6404,19 +6679,19 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum PrivateFlags {
-        USER_STYLE,
-        RESIZE_PENDING,
-        HAS_POINTER,
-        SHADOWED,
-        HAS_SHAPE_MASK,
-        IN_REPARENT,
-        DIRECTION_SET,
-        DIRECTION_LTR,
-        ANCHORED,
-        CHILD_VISIBLE,
-        REDRAW_ON_ALLOC,
-        ALLOC_NEEDED,
-        REQUEST_NEEDED,
+        USER_STYLE = 1,
+        RESIZE_PENDING = 4,
+        HAS_POINTER = 8,
+        SHADOWED = 16,
+        HAS_SHAPE_MASK = 32,
+        IN_REPARENT = 64,
+        DIRECTION_SET = 128,
+        DIRECTION_LTR = 256,
+        ANCHORED = 512,
+        CHILD_VISIBLE = 1024,
+        REDRAW_ON_ALLOC = 2048,
+        ALLOC_NEEDED = 4096,
+        REQUEST_NEEDED = 8192,
     }
 
 
@@ -6431,10 +6706,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum RcFlags {
-        FG,
-        BG,
-        TEXT,
-        BASE,
+        FG = 1,
+        BG = 2,
+        TEXT = 4,
+        BASE = 8,
     }
 
 
@@ -6449,12 +6724,12 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum RecentFilterFlags {
-        URI,
-        DISPLAY_NAME,
-        MIME_TYPE,
-        APPLICATION,
-        GROUP,
-        AGE,
+        URI = 1,
+        DISPLAY_NAME = 2,
+        MIME_TYPE = 4,
+        APPLICATION = 8,
+        GROUP = 16,
+        AGE = 32,
     }
 
 
@@ -6469,12 +6744,12 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum SignalRunType {
-        FIRST,
-        LAST,
-        BOTH,
-        NO_RECURSE,
-        ACTION,
-        NO_HOOKS,
+        FIRST = 1,
+        LAST = 2,
+        BOTH = 3,
+        NO_RECURSE = 8,
+        ACTION = 32,
+        NO_HOOKS = 64,
     }
 
 
@@ -6489,10 +6764,10 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum TargetFlags {
-        SAME_APP,
-        SAME_WIDGET,
-        OTHER_APP,
-        OTHER_WIDGET,
+        SAME_APP = 1,
+        SAME_WIDGET = 2,
+        OTHER_APP = 4,
+        OTHER_WIDGET = 8,
     }
 
 
@@ -6507,8 +6782,8 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum TextSearchFlags {
-        VISIBLE_ONLY,
-        TEXT_ONLY,
+        VISIBLE_ONLY = 1,
+        TEXT_ONLY = 2,
     }
 
 
@@ -6527,11 +6802,11 @@ export namespace Gtk {
         /**
          * Support drag of items.
          */
-        ITEMS,
+        ITEMS = 1,
         /**
          * Support drag of groups.
          */
-        GROUPS,
+        GROUPS = 2,
     }
 
 
@@ -6546,8 +6821,8 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum TreeModelFlags {
-        ITERS_PERSIST,
-        LIST_ONLY,
+        ITERS_PERSIST = 1,
+        LIST_ONLY = 2,
     }
 
 
@@ -6562,17 +6837,17 @@ export namespace Gtk {
      * @gir-type Flags
      */
     enum UIManagerItemType {
-        AUTO,
-        MENUBAR,
-        MENU,
-        TOOLBAR,
-        PLACEHOLDER,
-        POPUP,
-        MENUITEM,
-        TOOLITEM,
-        SEPARATOR,
-        ACCELERATOR,
-        POPUP_WITH_ACCELS,
+        AUTO = 0,
+        MENUBAR = 1,
+        MENU = 2,
+        TOOLBAR = 4,
+        PLACEHOLDER = 8,
+        POPUP = 16,
+        MENUITEM = 32,
+        TOOLITEM = 64,
+        SEPARATOR = 128,
+        ACCELERATOR = 256,
+        POPUP_WITH_ACCELS = 512,
     }
 
 
@@ -6593,35 +6868,35 @@ export namespace Gtk {
          *  {@link Gtk.Menu}<!-- -->s have this flag set throughout their lifetime.
          *  Toplevel widgets always contain their own {@link Gdk.Window}.
          */
-        TOPLEVEL,
+        TOPLEVEL = 16,
         /**
          * Indicative for a widget that does not provide its own {@link Gdk.Window}.
          *  Visible action (e.g. drawing) is performed on the parent's {@link Gdk.Window}.
          */
-        NO_WINDOW,
+        NO_WINDOW = 32,
         /**
          * Set by `gtk_widget_realize()`, unset by `gtk_widget_unrealize()`.
          *  A realized widget has an associated {@link Gdk.Window}.
          */
-        REALIZED,
+        REALIZED = 64,
         /**
          * Set by `gtk_widget_map()`, unset by `gtk_widget_unmap()`.
          *  Only realized widgets can be mapped. It means that `gdk_window_show()`
          *  has been called on the widgets window(s).
          */
-        MAPPED,
+        MAPPED = 128,
         /**
          * Set by `gtk_widget_show()`, unset by `gtk_widget_hide()`. Implies that a
          *  widget will be mapped as soon as its parent is mapped.
          */
-        VISIBLE,
+        VISIBLE = 256,
         /**
          * Set and unset by `gtk_widget_set_sensitive()`.
          *  The sensitivity of a widget determines whether it will receive
          *  certain events (e.g. button or key presses). One premise for
          *  the widget's sensitivity is to have this flag set.
          */
-        SENSITIVE,
+        SENSITIVE = 512,
         /**
          * Set and unset by `gtk_widget_set_sensitive()` operations on the
          *  parents of the widget.
@@ -6630,48 +6905,48 @@ export namespace Gtk {
          *  effectively sensitive. This is expressed (and can be examined) by
          *  the #GTK_WIDGET_IS_SENSITIVE macro.
          */
-        PARENT_SENSITIVE,
+        PARENT_SENSITIVE = 1024,
         /**
          * Determines whether a widget is able to handle focus grabs.
          */
-        CAN_FOCUS,
+        CAN_FOCUS = 2048,
         /**
          * Set by `gtk_widget_grab_focus()` for widgets that also
          *  have {@link Gtk.WidgetFlags.CAN_FOCUS} set. The flag will be unset once another widget
          *  grabs the focus.
          */
-        HAS_FOCUS,
+        HAS_FOCUS = 4096,
         /**
          * The widget is allowed to receive the default action via
          *  `gtk_widget_grab_default()` and will reserve space to draw the default if possible
          */
-        CAN_DEFAULT,
+        CAN_DEFAULT = 8192,
         /**
          * The widget currently is receiving the default action and
          *  should be drawn appropriately if possible
          */
-        HAS_DEFAULT,
+        HAS_DEFAULT = 16384,
         /**
          * Set by `gtk_grab_add()`, unset by `gtk_grab_remove()`. It means that the
          *  widget is in the grab_widgets stack, and will be the preferred one for
          *  receiving events other than ones of cosmetic value.
          */
-        HAS_GRAB,
+        HAS_GRAB = 32768,
         /**
          * Indicates that the widget's style has been looked up through the rc
          *  mechanism. It does not imply that the widget actually had a style
          *  defined through the rc mechanism.
          */
-        RC_STYLE,
+        RC_STYLE = 65536,
         /**
          * Indicates that the widget is a composite child of its parent; see
          *  `gtk_widget_push_composite_child()`, `gtk_widget_pop_composite_child()`.
          */
-        COMPOSITE_CHILD,
+        COMPOSITE_CHILD = 131072,
         /**
          * Unused since before GTK+ 1.2, will be removed in a future version.
          */
-        NO_REPARENT,
+        NO_REPARENT = 262144,
         /**
          * Set and unset by `gtk_widget_set_app_paintable()`.
          *  Must be set on widgets whose window the application directly draws on,
@@ -6679,12 +6954,12 @@ export namespace Gtk {
          *  <xref linkend="app-paintable-widgets"/> for a detailed
          *  description of this flag.
          */
-        APP_PAINTABLE,
+        APP_PAINTABLE = 524288,
         /**
          * The widget when focused will receive the default action and have
          *  {@link Gtk.WidgetFlags.HAS_DEFAULT} set even if there is a different widget set as default.
          */
-        RECEIVES_DEFAULT,
+        RECEIVES_DEFAULT = 1048576,
         /**
          * Set and unset by `gtk_widget_set_double_buffered()`.
          *  Indicates that exposes done on the widget should be
@@ -6692,8 +6967,8 @@ export namespace Gtk {
          *  detailed discussion of how double-buffering works in GTK+ and
          *  why you may want to disable it for special cases.
          */
-        DOUBLE_BUFFERED,
-        NO_SHOW_ALL,
+        DOUBLE_BUFFERED = 2097152,
+        NO_SHOW_ALL = 4194304,
     }
 
 
@@ -6708,7 +6983,7 @@ export namespace Gtk {
              * @since 2.24
              * @run-last
              */
-            "activate-link": (arg0: string) => boolean | void;
+            "activate-link": (uri: string) => boolean | void;
             "notify::artists": (pspec: GObject.ParamSpec) => void;
             "notify::authors": (pspec: GObject.ParamSpec) => void;
             "notify::comments": (pspec: GObject.ParamSpec) => void;
@@ -7374,7 +7649,7 @@ export namespace Gtk {
              * @signal
              * @detailed
              */
-            "accel-activate": (arg0: GObject.Object, arg1: number, arg2: Gdk.ModifierType) => boolean | void;
+            "accel-activate": (acceleratable: GObject.Object, keyval: number, modifier: Gdk.ModifierType) => boolean | void;
             /**
              * The accel-changed signal is emitted when a {@link Gtk.AccelGroupEntry}
              * is added to or removed from the accel group.
@@ -7386,7 +7661,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "accel-changed": (arg0: number, arg1: Gdk.ModifierType, arg2: GObject.Closure) => void;
+            "accel-changed": (keyval: number, modifier: Gdk.ModifierType, accel_closure: GObject.Closure) => void;
             "notify::is-locked": (pspec: GObject.ParamSpec) => void;
             "notify::modifier-mask": (pspec: GObject.ParamSpec) => void;
             /**
@@ -7395,15 +7670,15 @@ export namespace Gtk {
              * @signal
              * @detailed
              */
-            "accel-activate::is-locked": (arg0: GObject.Object, arg1: number, arg2: Gdk.ModifierType) => boolean | void;
+            "accel-activate::is-locked": (acceleratable: GObject.Object, keyval: number, modifier: Gdk.ModifierType) => boolean | void;
             /**
              * The accel-activate signal is an implementation detail of
              * {@link Gtk.AccelGroup} and not meant to be used by applications.
              * @signal
              * @detailed
              */
-            "accel-activate::modifier-mask": (arg0: GObject.Object, arg1: number, arg2: Gdk.ModifierType) => boolean | void;
-            [key: `accel-activate::${string}`]: (arg0: GObject.Object, arg1: number, arg2: Gdk.ModifierType) => boolean | void;
+            "accel-activate::modifier-mask": (acceleratable: GObject.Object, keyval: number, modifier: Gdk.ModifierType) => boolean | void;
+            [key: `accel-activate::${string}`]: (acceleratable: GObject.Object, keyval: number, modifier: Gdk.ModifierType) => boolean | void;
             /**
              * The accel-changed signal is emitted when a {@link Gtk.AccelGroupEntry}
              * is added to or removed from the accel group.
@@ -7415,7 +7690,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "accel-changed::is-locked": (arg0: number, arg1: Gdk.ModifierType, arg2: GObject.Closure) => void;
+            "accel-changed::is-locked": (keyval: number, modifier: Gdk.ModifierType, accel_closure: GObject.Closure) => void;
             /**
              * The accel-changed signal is emitted when a {@link Gtk.AccelGroupEntry}
              * is added to or removed from the accel group.
@@ -7427,8 +7702,8 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "accel-changed::modifier-mask": (arg0: number, arg1: Gdk.ModifierType, arg2: GObject.Closure) => void;
-            [key: `accel-changed::${string}`]: (arg0: number, arg1: Gdk.ModifierType, arg2: GObject.Closure) => void;
+            "accel-changed::modifier-mask": (keyval: number, modifier: Gdk.ModifierType, accel_closure: GObject.Closure) => void;
+            [key: `accel-changed::${string}`]: (keyval: number, modifier: Gdk.ModifierType, accel_closure: GObject.Closure) => void;
         }
 
         // Constructor properties interface
@@ -7913,8 +8188,8 @@ export namespace Gtk {
              * @detailed
              * @run-last
              */
-            changed: (arg0: string, arg1: number, arg2: Gdk.ModifierType) => void;
-            [key: `changed::${string}`]: (arg0: string, arg1: number, arg2: Gdk.ModifierType) => void;
+            changed: (accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType) => void;
+            [key: `changed::${string}`]: (accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType) => void;
         }
 
         // Constructor properties interface
@@ -9179,7 +9454,7 @@ export namespace Gtk {
              * @signal
              * @since 2.4
              */
-            "connect-proxy": (arg0: Action, arg1: Widget) => void;
+            "connect-proxy": (action: Action, proxy: Widget) => void;
             /**
              * The ::disconnect-proxy signal is emitted after disconnecting a proxy
              * from an action in the group.
@@ -9190,7 +9465,7 @@ export namespace Gtk {
              * @signal
              * @since 2.4
              */
-            "disconnect-proxy": (arg0: Action, arg1: Widget) => void;
+            "disconnect-proxy": (action: Action, proxy: Widget) => void;
             /**
              * The ::post-activate signal is emitted just after the `action` in the
              * `action_group` is activated
@@ -9200,7 +9475,7 @@ export namespace Gtk {
              * @signal
              * @since 2.4
              */
-            "post-activate": (arg0: Action) => void;
+            "post-activate": (action: Action) => void;
             /**
              * The ::pre-activate signal is emitted just before the `action` in the
              * `action_group` is activated
@@ -9210,7 +9485,7 @@ export namespace Gtk {
              * @signal
              * @since 2.4
              */
-            "pre-activate": (arg0: Action) => void;
+            "pre-activate": (action: Action) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::sensitive": (pspec: GObject.ParamSpec) => void;
             "notify::visible": (pspec: GObject.ParamSpec) => void;
@@ -10638,7 +10913,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            prepare: (arg0: Widget) => void;
+            prepare: (page: Widget) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::allow-grow": (pspec: GObject.ParamSpec) => void;
             "notify::allow-shrink": (pspec: GObject.ParamSpec) => void;
@@ -11502,6 +11777,7 @@ export namespace Gtk {
          * @param filename the name of the file to parse
          * @returns A positive value on success, 0 if an error occurred
          * @since 2.12
+         * @throws GLib.Error
          */
         add_from_file(filename: string): number;
 
@@ -11515,6 +11791,7 @@ export namespace Gtk {
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns A positive value on success, 0 if an error occurred
          * @since 2.12
+         * @throws GLib.Error
          */
         add_from_string(buffer: string, length: bigint | number): number;
 
@@ -11536,6 +11813,7 @@ export namespace Gtk {
          * @param object_ids nul-terminated array of objects to build
          * @returns A positive value on success, 0 if an error occurred
          * @since 2.14
+         * @throws GLib.Error
          */
         add_objects_from_file(filename: string, object_ids: string): number;
 
@@ -11557,6 +11835,7 @@ export namespace Gtk {
          * @param object_ids nul-terminated array of objects to build
          * @returns A positive value on success, 0 if an error occurred
          * @since 2.14
+         * @throws GLib.Error
          */
         add_objects_from_string(buffer: string, length: bigint | number, object_ids: string): number;
 
@@ -11648,6 +11927,7 @@ export namespace Gtk {
          * @param string the string representation of the value
          * @returns `true` on success
          * @since 2.12
+         * @throws GLib.Error
          */
         value_from_string(pspec: GObject.ParamSpec, string: string): [boolean, unknown];
 
@@ -11663,6 +11943,7 @@ export namespace Gtk {
          * @param string the string representation of the value
          * @returns `true` on success
          * @since 2.12
+         * @throws GLib.Error
          */
         value_from_string_type(type: GObject.GType, string: string): [boolean, unknown];
     }
@@ -12510,7 +12791,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "click-column": (arg0: number) => void;
+            "click-column": (object: number) => void;
             /**
              * @signal
              * @action
@@ -12522,29 +12803,29 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "extend-selection": (arg0: ScrollType, arg1: number, arg2: boolean) => void;
+            "extend-selection": (object: ScrollType, p0: number, p1: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "resize-column": (arg0: number, arg1: number) => void;
+            "resize-column": (object: number, p0: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "row-move": (arg0: number, arg1: number) => void;
-            /**
-             * @signal
-             * @action
-             * @run-last
-             */
-            "scroll-horizontal": (arg0: ScrollType, arg1: number) => void;
+            "row-move": (object: number, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "scroll-vertical": (arg0: ScrollType, arg1: number) => void;
+            "scroll-horizontal": (object: ScrollType, p0: number) => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            "scroll-vertical": (object: ScrollType, p0: number) => void;
             /**
              * @signal
              * @action
@@ -12555,12 +12836,12 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "select-row": (arg0: number, arg1: number, arg2: Gdk.Event) => void;
+            "select-row": (object: number, p0: number, p1: Gdk.Event) => void;
             /**
              * @signal
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             /**
              * @signal
              * @action
@@ -12595,7 +12876,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "unselect-row": (arg0: number, arg1: number, arg2: Gdk.Event) => void;
+            "unselect-row": (object: number, p0: number, p1: Gdk.Event) => void;
             "notify::n-columns": (pspec: GObject.ParamSpec) => void;
             "notify::reorderable": (pspec: GObject.ParamSpec) => void;
             "notify::row-height": (pspec: GObject.ParamSpec) => void;
@@ -13439,32 +13720,32 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "change-focus-row-expansion": (arg0: CTreeExpansionType) => void;
+            "change-focus-row-expansion": (object: CTreeExpansionType) => void;
             /**
              * @signal
              * @run-last
              */
-            "tree-collapse": (arg0: CTreeNode) => void;
+            "tree-collapse": (object: CTreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "tree-expand": (arg0: CTreeNode) => void;
+            "tree-expand": (object: CTreeNode) => void;
             /**
              * @signal
              * @run-last
              */
-            "tree-move": (arg0: CTreeNode, arg1: CTreeNode, arg2: CTreeNode) => void;
+            "tree-move": (object: CTreeNode, p0: CTreeNode, p1: CTreeNode) => void;
             /**
              * @signal
              * @run-first
              */
-            "tree-select-row": (arg0: CTreeNode, arg1: number) => void;
+            "tree-select-row": (object: CTreeNode, p0: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "tree-unselect-row": (arg0: CTreeNode, arg1: number) => void;
+            "tree-unselect-row": (object: CTreeNode, p0: number) => void;
             "notify::expander-style": (pspec: GObject.ParamSpec) => void;
             "notify::indent": (pspec: GObject.ParamSpec) => void;
             "notify::line-style": (pspec: GObject.ParamSpec) => void;
@@ -14839,7 +15120,7 @@ export namespace Gtk {
              * @since 2.6
              * @run-first
              */
-            "editing-started": (arg0: CellEditable, arg1: string) => void;
+            "editing-started": (editable: CellEditable, path: string) => void;
             "notify::cell-background": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background-gdk": (pspec: GObject.ParamSpec) => void;
             "notify::cell-background-set": (pspec: GObject.ParamSpec) => void;
@@ -15271,14 +15552,14 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "accel-cleared": (arg0: string) => void;
+            "accel-cleared": (path_string: string) => void;
             /**
              * Gets emitted when the user has selected a new accelerator.
              * @signal
              * @since 2.10
              * @run-last
              */
-            "accel-edited": (arg0: string, arg1: number, arg2: Gdk.ModifierType, arg3: number) => void;
+            "accel-edited": (path_string: string, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number) => void;
             "notify::accel-key": (pspec: GObject.ParamSpec) => void;
             "notify::accel-mode": (pspec: GObject.ParamSpec) => void;
             "notify::accel-mods": (pspec: GObject.ParamSpec) => void;
@@ -15494,7 +15775,7 @@ export namespace Gtk {
              * @since 2.14
              * @run-last
              */
-            changed: (arg0: string, arg1: TreeIter) => void;
+            changed: (path_string: string, new_iter: TreeIter) => void;
             "notify::has-entry": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::text-column": (pspec: GObject.ParamSpec) => void;
@@ -16284,7 +16565,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            edited: (arg0: string, arg1: string) => void;
+            edited: (path: string, new_text: string) => void;
             "notify::align-set": (pspec: GObject.ParamSpec) => void;
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
@@ -16909,7 +17190,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            toggled: (arg0: string) => void;
+            toggled: (path: string) => void;
             "notify::activatable": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::inconsistent": (pspec: GObject.ParamSpec) => void;
@@ -18174,7 +18455,7 @@ export namespace Gtk {
              * @since 2.6
              * @run-first
              */
-            "owner-change": (arg0: Gdk.Event) => void;
+            "owner-change": (event: Gdk.Event) => void;
         }
 
         // Constructor properties interface
@@ -19603,7 +19884,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-active": (arg0: ScrollType) => void;
+            "move-active": (scroll_type: ScrollType) => void;
             /**
              * The ::popdown signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -21426,7 +21707,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            add: (arg0: Widget) => void;
+            add: (object: Widget) => void;
             /**
              * @signal
              * @run-last
@@ -21436,12 +21717,12 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            remove: (arg0: Widget) => void;
+            remove: (object: Widget) => void;
             /**
              * @signal
              * @run-first
              */
-            "set-focus-child": (arg0: Widget) => void;
+            "set-focus-child": (object: Widget) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
@@ -22397,7 +22678,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response_id: number) => void;
             "notify::has-separator": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::allow-grow": (pspec: GObject.ParamSpec) => void;
@@ -23130,7 +23411,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "delete-from-cursor": (arg0: DeleteType, arg1: number) => void;
+            "delete-from-cursor": (type: DeleteType, count: number) => void;
             /**
              * The ::icon-press signal is emitted when an activatable icon
              * is clicked.
@@ -23138,7 +23419,7 @@ export namespace Gtk {
              * @since 2.16
              * @run-last
              */
-            "icon-press": (arg0: EntryIconPosition, arg1: Gdk.Event) => void;
+            "icon-press": (icon_pos: EntryIconPosition, event: Gdk.Event) => void;
             /**
              * The ::icon-release signal is emitted on the button release from a
              * mouse click over an activatable icon.
@@ -23146,7 +23427,7 @@ export namespace Gtk {
              * @since 2.16
              * @run-last
              */
-            "icon-release": (arg0: EntryIconPosition, arg1: Gdk.Event) => void;
+            "icon-release": (icon_pos: EntryIconPosition, event: Gdk.Event) => void;
             /**
              * The ::insert-at-cursor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -23158,7 +23439,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "insert-at-cursor": (arg0: string) => void;
+            "insert-at-cursor": (string: string) => void;
             /**
              * The ::move-cursor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -23183,7 +23464,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend_selection: boolean) => void;
             /**
              * The ::paste-clipboard signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -23206,7 +23487,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Menu) => void;
+            "populate-popup": (menu: Menu) => void;
             /**
              * If an input method is used, the typed text will not immediately
              * be committed to the buffer. So if you are interested in the text,
@@ -23216,7 +23497,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "preedit-changed": (arg0: string) => void;
+            "preedit-changed": (preedit: string) => void;
             /**
              * The ::toggle-overwrite signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -25279,14 +25560,14 @@ export namespace Gtk {
              * @since 2.18
              * @run-first
              */
-            "deleted-text": (arg0: number, arg1: number) => void;
+            "deleted-text": (position: number, n_chars: number) => void;
             /**
              * This signal is emitted after text is inserted into the buffer.
              * @signal
              * @since 2.18
              * @run-first
              */
-            "inserted-text": (arg0: number, arg1: string, arg2: number) => void;
+            "inserted-text": (position: number, chars: string, n_chars: number) => void;
             "notify::length": (pspec: GObject.ParamSpec) => void;
             "notify::max-length": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
@@ -25561,7 +25842,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-last
              */
-            "action-activated": (arg0: number) => void;
+            "action-activated": (index: number) => void;
             /**
              * Gets emitted when a match from the cursor is on a match
              * of the list. The default behaviour is to replace the contents
@@ -25571,7 +25852,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "cursor-on-match": (arg0: TreeModel, arg1: TreeIter) => boolean | void;
+            "cursor-on-match": (model: TreeModel, iter: TreeIter) => boolean | void;
             /**
              * Gets emitted when the inline autocompletion is triggered.
              * The default behaviour is to make the entry display the
@@ -25585,7 +25866,7 @@ export namespace Gtk {
              * @since 2.6
              * @run-last
              */
-            "insert-prefix": (arg0: string) => boolean | void;
+            "insert-prefix": (prefix: string) => boolean | void;
             /**
              * Gets emitted when a match from the list is selected.
              * The default behaviour is to replace the contents of the
@@ -25595,7 +25876,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-last
              */
-            "match-selected": (arg0: TreeModel, arg1: TreeIter) => boolean | void;
+            "match-selected": (model: TreeModel, iter: TreeIter) => boolean | void;
             "notify::inline-completion": (pspec: GObject.ParamSpec) => void;
             "notify::inline-selection": (pspec: GObject.ParamSpec) => void;
             "notify::minimum-key-length": (pspec: GObject.ParamSpec) => void;
@@ -27331,6 +27612,7 @@ export namespace Gtk {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -27342,6 +27624,7 @@ export namespace Gtk {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -27594,6 +27877,7 @@ export namespace Gtk {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -27602,6 +27886,7 @@ export namespace Gtk {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -27617,6 +27902,7 @@ export namespace Gtk {
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -27676,6 +27962,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -27767,6 +28054,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -28329,6 +28617,7 @@ export namespace Gtk {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -28340,6 +28629,7 @@ export namespace Gtk {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -28592,6 +28882,7 @@ export namespace Gtk {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -28600,6 +28891,7 @@ export namespace Gtk {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -28615,6 +28907,7 @@ export namespace Gtk {
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -28674,6 +28967,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -28765,6 +29059,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -29321,6 +29616,7 @@ export namespace Gtk {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -29332,6 +29628,7 @@ export namespace Gtk {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -29584,6 +29881,7 @@ export namespace Gtk {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -29592,6 +29890,7 @@ export namespace Gtk {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -29607,6 +29906,7 @@ export namespace Gtk {
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -29666,6 +29966,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -29757,6 +30058,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -32483,7 +32785,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            move: (arg0: DirectionType) => void;
+            move: (object: DirectionType) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -33237,12 +33539,12 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "child-attached": (arg0: Widget) => void;
+            "child-attached": (object: Widget) => void;
             /**
              * @signal
              * @run-first
              */
-            "child-detached": (arg0: Widget) => void;
+            "child-detached": (object: Widget) => void;
             "notify::child-detached": (pspec: GObject.ParamSpec) => void;
             "notify::handle-position": (pspec: GObject.ParamSpec) => void;
             "notify::shadow": (pspec: GObject.ParamSpec) => void;
@@ -33520,14 +33822,14 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            commit: (arg0: string) => void;
+            commit: (str: string) => void;
             /**
              * The ::delete-surrounding signal is emitted when the input method
              * needs to delete all or part of the context surrounding the cursor.
              * @signal
              * @run-last
              */
-            "delete-surrounding": (arg0: number, arg1: number) => boolean | void;
+            "delete-surrounding": (offset: number, n_chars: number) => boolean | void;
             /**
              * The ::preedit-changed signal is emitted whenever the preedit sequence
              * currently being entered has changed.  It is also emitted at the end of
@@ -34610,6 +34912,7 @@ export namespace Gtk {
          * @param flags flags modifying the behavior of the icon lookup
          * @returns the rendered icon; this may be a newly  created icon or a new reference to an internal icon, so you must not modify  the icon. Use `g_object_unref()` to release your reference to the  icon. `null` if the icon isn't found.
          * @since 2.4
+         * @throws GLib.Error
          */
         load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf;
 
@@ -34725,7 +35028,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "item-activated": (arg0: TreePath) => void;
+            "item-activated": (path: TreePath) => void;
             /**
              * The ::move-cursor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -34748,7 +35051,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number) => boolean | void;
+            "move-cursor": (step: MovementStep, count: number) => boolean | void;
             /**
              * A <link linkend="keybinding-signals">keybinding signal</link>
              * which gets emitted when the user selects all items.
@@ -34792,7 +35095,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             /**
              * A <link linkend="keybinding-signals">keybinding signal</link>
              * which gets emitted when the user toggles whether the currently
@@ -37016,7 +37319,7 @@ export namespace Gtk {
              * @since 2.18
              * @run-last
              */
-            response: (arg0: number) => void;
+            response: (response_id: number) => void;
             "notify::message-type": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -37335,12 +37638,12 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "disable-device": (arg0: Gdk.Device) => void;
+            "disable-device": (object: Gdk.Device) => void;
             /**
              * @signal
              * @run-last
              */
-            "enable-device": (arg0: Gdk.Device) => void;
+            "enable-device": (object: Gdk.Device) => void;
             "notify::has-separator": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::allow-grow": (pspec: GObject.ParamSpec) => void;
@@ -38266,7 +38569,7 @@ export namespace Gtk {
              * @since 2.18
              * @run-last
              */
-            "activate-link": (arg0: string) => boolean | void;
+            "activate-link": (uri: string) => boolean | void;
             /**
              * The ::copy-clipboard signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -38302,7 +38605,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend_selection: boolean) => void;
             /**
              * The ::populate-popup signal gets emitted before showing the
              * context menu of the label. Note that only selectable labels
@@ -38313,7 +38616,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Menu) => void;
+            "populate-popup": (menu: Menu) => void;
             "notify::angle": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
@@ -39141,7 +39444,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
@@ -39717,7 +40020,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "select-child": (arg0: Widget) => void;
+            "select-child": (object: Widget) => void;
             /**
              * @signal
              * @run-first
@@ -39727,7 +40030,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "unselect-child": (arg0: Widget) => void;
+            "unselect-child": (object: Widget) => void;
             "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -39985,19 +40288,19 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "extend-selection": (arg0: ScrollType, arg1: number, arg2: boolean) => void;
+            "extend-selection": (object: ScrollType, p0: number, p1: boolean) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "scroll-horizontal": (arg0: ScrollType, arg1: number) => void;
+            "scroll-horizontal": (object: ScrollType, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "scroll-vertical": (arg0: ScrollType, arg1: number) => void;
+            "scroll-vertical": (object: ScrollType, p0: number) => void;
             /**
              * @signal
              * @action
@@ -41263,7 +41566,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-scroll": (arg0: ScrollType) => void;
+            "move-scroll": (object: ScrollType) => void;
             "notify::accel-group": (pspec: GObject.ParamSpec) => void;
             "notify::accel-path": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -41943,12 +42246,12 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "toggle-size-allocate": (arg0: number) => void;
+            "toggle-size-allocate": (object: number) => void;
             /**
              * @signal
              * @run-first
              */
-            "toggle-size-request": (arg0: null) => void;
+            "toggle-size-request": (object: null) => void;
             "notify::accel-path": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::right-justified": (pspec: GObject.ParamSpec) => void;
@@ -42481,7 +42784,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "activate-current": (arg0: boolean) => void;
+            "activate-current": (object: boolean) => void;
             /**
              * @signal
              * @action
@@ -42493,7 +42796,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "cycle-focus": (arg0: DirectionType) => void;
+            "cycle-focus": (object: DirectionType) => void;
             /**
              * @signal
              * @run-first
@@ -42510,13 +42813,13 @@ export namespace Gtk {
              * @since 2.24.15
              * @run-first
              */
-            insert: (arg0: Widget, arg1: number) => void;
+            insert: (child: Widget, position: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-current": (arg0: MenuDirectionType) => void;
+            "move-current": (object: MenuDirectionType) => void;
             /**
              * The ::move-selected signal is emitted to move the selection to
              * another item.
@@ -42524,7 +42827,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "move-selected": (arg0: number) => boolean | void;
+            "move-selected": (distance: number) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -43863,7 +44166,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "change-current-page": (arg0: number) => boolean | void;
+            "change-current-page": (object: number) => boolean | void;
             /**
              * The ::create-window signal is emitted when a detachable
              * tab is dropped on the root window.
@@ -43880,19 +44183,19 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "create-window": (arg0: Widget, arg1: number, arg2: number) => Notebook;
+            "create-window": (page: Widget, x: number, y: number) => Notebook;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "focus-tab": (arg0: NotebookTab) => boolean | void;
+            "focus-tab": (object: NotebookTab) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-focus-out": (arg0: DirectionType) => void;
+            "move-focus-out": (object: DirectionType) => void;
             /**
              * the ::page-added signal is emitted in the notebook
              * right after a page is added to the notebook.
@@ -43900,7 +44203,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "page-added": (arg0: Widget, arg1: number) => void;
+            "page-added": (child: Widget, page_num: number) => void;
             /**
              * the ::page-removed signal is emitted in the notebook
              * right after a page is removed from the notebook.
@@ -43908,7 +44211,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "page-removed": (arg0: Widget, arg1: number) => void;
+            "page-removed": (child: Widget, page_num: number) => void;
             /**
              * the ::page-reordered signal is emitted in the notebook
              * right after a page has been reordered.
@@ -43916,24 +44219,24 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "page-reordered": (arg0: Widget, arg1: number) => void;
+            "page-reordered": (child: Widget, page_num: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "reorder-tab": (arg0: DirectionType, arg1: boolean) => boolean | void;
+            "reorder-tab": (object: DirectionType, p0: boolean) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "select-page": (arg0: boolean) => boolean | void;
+            "select-page": (object: boolean) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "switch-page": (arg0: null, arg1: number) => void;
+            "switch-page": (object: null, p0: number) => void;
             "notify::enable-popup": (pspec: GObject.ParamSpec) => void;
             "notify::group": (pspec: GObject.ParamSpec) => void;
             "notify::group-id": (pspec: GObject.ParamSpec) => void;
@@ -45143,49 +45446,49 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "kill-char": (arg0: number) => void;
+            "kill-char": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "kill-line": (arg0: number) => void;
+            "kill-line": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "kill-word": (arg0: number) => void;
+            "kill-word": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: number, arg1: number) => void;
+            "move-cursor": (object: number, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-page": (arg0: number, arg1: number) => void;
+            "move-page": (object: number, p0: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-to-column": (arg0: number) => void;
+            "move-to-column": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-to-row": (arg0: number) => void;
+            "move-to-row": (object: number) => void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-word": (arg0: number) => void;
+            "move-word": (object: number) => void;
             /**
              * @signal
              * @action
@@ -45197,7 +45500,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-editable": (arg0: boolean) => void;
+            "set-editable": (object: boolean) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::text-position": (pspec: GObject.ParamSpec) => void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
@@ -46248,6 +46551,7 @@ export namespace Gtk {
          * @param file_name the filename to read the page setup from
          * @returns `true` on success
          * @since 2.14
+         * @throws GLib.Error
          */
         load_file(file_name: string): boolean;
 
@@ -46258,6 +46562,7 @@ export namespace Gtk {
          * @param group_name the name of the group in the key_file to read, or `null`              to use the default name "Page Setup"
          * @returns `true` on success
          * @since 2.14
+         * @throws GLib.Error
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -46322,6 +46627,7 @@ export namespace Gtk {
          * @param file_name the file to save to
          * @returns `true` on success
          * @since 2.12
+         * @throws GLib.Error
          */
         to_file(file_name: string): boolean;
 
@@ -46376,7 +46682,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "cycle-child-focus": (arg0: boolean) => boolean | void;
+            "cycle-child-focus": (reversed: boolean) => boolean | void;
             /**
              * The ::cycle-handle-focus signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -46389,7 +46695,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "cycle-handle-focus": (arg0: boolean) => boolean | void;
+            "cycle-handle-focus": (reversed: boolean) => boolean | void;
             /**
              * The ::move-handle signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -46400,7 +46706,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-handle": (arg0: ScrollType) => boolean | void;
+            "move-handle": (scroll_type: ScrollType) => boolean | void;
             /**
              * The ::toggle-handle-focus is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -47662,7 +47968,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "begin-print": (arg0: PrintContext) => void;
+            "begin-print": (context: PrintContext) => void;
             /**
              * Emitted when displaying the print dialog. If you return a
              * widget in a handler for this signal it will be added to a custom
@@ -47689,7 +47995,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "custom-widget-apply": (arg0: Widget) => void;
+            "custom-widget-apply": (widget: Widget) => void;
             /**
              * Emitted when the print operation run has finished doing
              * everything required for printing.
@@ -47705,7 +48011,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            done: (arg0: PrintOperationResult) => void;
+            done: (result: PrintOperationResult) => void;
             /**
              * Emitted for every page that is printed. The signal handler
              * must render the `page_nr`'s page onto the cairo context obtained
@@ -47761,7 +48067,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "draw-page": (arg0: PrintContext, arg1: number) => void;
+            "draw-page": (context: PrintContext, page_nr: number) => void;
             /**
              * Emitted after all pages have been rendered.
              * A handler for this signal can clean up any resources that have
@@ -47770,7 +48076,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "end-print": (arg0: PrintContext) => void;
+            "end-print": (context: PrintContext) => void;
             /**
              * Emitted after the {@link Gtk.PrintOperation.SignalSignatures.begin_print | Gtk.PrintOperation::begin-print} signal, but before
              * the actual rendering starts. It keeps getting emitted until a connected
@@ -47789,7 +48095,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            paginate: (arg0: PrintContext) => boolean | void;
+            paginate: (context: PrintContext) => boolean | void;
             /**
              * Gets emitted when a preview is requested from the native dialog.
              * 
@@ -47811,7 +48117,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            preview: (arg0: PrintOperationPreview, arg1: PrintContext, arg2: Window | null) => boolean | void;
+            preview: (preview: PrintOperationPreview, context: PrintContext, parent: Window | null) => boolean | void;
             /**
              * Emitted once for every page that is printed, to give
              * the application a chance to modify the page setup. Any changes
@@ -47820,7 +48126,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "request-page-setup": (arg0: PrintContext, arg1: number, arg2: PageSetup) => void;
+            "request-page-setup": (context: PrintContext, page_nr: number, setup: PageSetup) => void;
             /**
              * Emitted at between the various phases of the print operation.
              * See {@link Gtk.PrintStatus} for the phases that are being discriminated.
@@ -47839,7 +48145,7 @@ export namespace Gtk {
              * @since 2.18
              * @run-last
              */
-            "update-custom-widget": (arg0: Widget, arg1: PageSetup, arg2: PrintSettings) => void;
+            "update-custom-widget": (widget: Widget, setup: PageSetup, settings: PrintSettings) => void;
             "notify::allow-async": (pspec: GObject.ParamSpec) => void;
             "notify::current-page": (pspec: GObject.ParamSpec) => void;
             "notify::custom-tab-label": (pspec: GObject.ParamSpec) => void;
@@ -48460,6 +48766,7 @@ export namespace Gtk {
          * `gtk_print_operation_run()`, or in the {@link Gtk.PrintOperation.SignalSignatures.done | Gtk.PrintOperation::done} signal
          * handler. The returned {@link GLib.Error} will contain more details on what went wrong.
          * @since 2.10
+         * @throws GLib.Error
          */
         get_error(): void;
 
@@ -48598,6 +48905,7 @@ export namespace Gtk {
          * @param parent Transient parent of the dialog
          * @returns the result of the print operation. A return value of   {@link Gtk.PrintOperationResult.APPLY} indicates that the printing was   completed successfully. In this case, it is a good idea to obtain   the used print settings with `gtk_print_operation_get_print_settings()`   and store them for reuse with the next print operation. A value of   {@link Gtk.PrintOperationResult.IN_PROGRESS} means the operation is running   asynchronously, and will emit the {@link Gtk.PrintOperation.SignalSignatures.done | Gtk.PrintOperation::done} signal when   done.
          * @since 2.10
+         * @throws GLib.Error
          */
         run(action: PrintOperationAction, parent: Window | null): PrintOperationResult;
 
@@ -49188,6 +49496,7 @@ export namespace Gtk {
          * @param file_name the filename to read the settings from
          * @returns `true` on success
          * @since 2.14
+         * @throws GLib.Error
          */
         load_file(file_name: string): boolean;
 
@@ -49199,6 +49508,7 @@ export namespace Gtk {
          * @param group_name the name of the group to use, or `null` to use the default     "Print Settings"
          * @returns `true` on success
          * @since 2.14
+         * @throws GLib.Error
          */
         load_key_file(key_file: GLib.KeyFile, group_name: string | null): boolean;
 
@@ -49444,6 +49754,7 @@ export namespace Gtk {
          * @param file_name the file to save to
          * @returns `true` on success
          * @since 2.12
+         * @throws GLib.Error
          */
         to_file(file_name: string): boolean;
 
@@ -50293,7 +50604,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            changed: (arg0: RadioAction) => void;
+            changed: (current: RadioAction) => void;
             "notify::current-value": (pspec: GObject.ParamSpec) => void;
             "notify::group": (pspec: GObject.ParamSpec) => void;
             "notify::value": (pspec: GObject.ParamSpec) => void;
@@ -50951,7 +51262,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "adjust-bounds": (arg0: number) => void;
+            "adjust-bounds": (object: number) => void;
             /**
              * The ::change-value signal is emitted when a scroll action is
              * performed on a range.  It allows an application to determine the
@@ -50972,14 +51283,14 @@ export namespace Gtk {
              * @since 2.6
              * @run-last
              */
-            "change-value": (arg0: ScrollType, arg1: number) => boolean | void;
+            "change-value": (scroll: ScrollType, value: number) => boolean | void;
             /**
              * Virtual function that moves the slider. Used for keybindings.
              * @signal
              * @action
              * @run-last
              */
-            "move-slider": (arg0: ScrollType) => void;
+            "move-slider": (step: ScrollType) => void;
             /**
              * Emitted when the range value changes.
              * @signal
@@ -52512,6 +52823,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if `uri` was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         select_uri(uri: string): boolean;
 
@@ -52520,6 +52832,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if the URI was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_current_uri(uri: string): boolean;
 
@@ -53162,6 +53475,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if `uri` was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         select_uri(uri: string): boolean;
 
@@ -53170,6 +53484,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if the URI was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_current_uri(uri: string): boolean;
 
@@ -54021,6 +54336,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if `uri` was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         select_uri(uri: string): boolean;
 
@@ -54029,6 +54345,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if the URI was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_current_uri(uri: string): boolean;
 
@@ -54681,6 +54998,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if `uri` was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         select_uri(uri: string): boolean;
 
@@ -54689,6 +55007,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if the URI was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_current_uri(uri: string): boolean;
 
@@ -55269,6 +55588,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns a {@link Gtk.RecentInfo} structure containing information   about the resource pointed by `uri`, or `null` if the URI was   not registered in the recently used resources list.  Free with   `gtk_recent_info_unref()`.
          * @since 2.10
+         * @throws GLib.Error
          */
         lookup_item(uri: string): RecentInfo;
 
@@ -55281,6 +55601,7 @@ export namespace Gtk {
          * @param new_uri the new URI of the recently used resource, or `null` to    remove the item pointed by `uri` in the list
          * @returns `true` on success.
          * @since 2.10
+         * @throws GLib.Error
          */
         move_item(uri: string, new_uri: string | null): boolean;
 
@@ -55288,6 +55609,7 @@ export namespace Gtk {
          * Purges every item from the recently used resources list.
          * @returns the number of items that have been removed from the   recently used resources list.
          * @since 2.10
+         * @throws GLib.Error
          */
         purge_items(): number;
 
@@ -55297,6 +55619,7 @@ export namespace Gtk {
          * @param uri the URI of the item you wish to remove
          * @returns `true` if the item pointed by `uri` has been successfully   removed by the recently used resources list, and `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         remove_item(uri: string): boolean;
 
@@ -55793,7 +56116,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "format-value": (arg0: number) => string;
+            "format-value": (value: number) => string;
             "notify::digits": (pspec: GObject.ParamSpec) => void;
             "notify::draw-value": (pspec: GObject.ParamSpec) => void;
             "notify::value-pos": (pspec: GObject.ParamSpec) => void;
@@ -56115,7 +56438,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "value-changed": (arg0: number) => void;
+            "value-changed": (value: number) => void;
             "notify::adjustment": (pspec: GObject.ParamSpec) => void;
             "notify::icons": (pspec: GObject.ParamSpec) => void;
             "notify::size": (pspec: GObject.ParamSpec) => void;
@@ -56678,7 +57001,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-focus-out": (arg0: DirectionType) => void;
+            "move-focus-out": (object: DirectionType) => void;
             /**
              * The ::scroll-child signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -56689,7 +57012,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "scroll-child": (arg0: ScrollType, arg1: boolean) => boolean | void;
+            "scroll-child": (scroll: ScrollType, horizontal: boolean) => boolean | void;
             "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
             "notify::hscrollbar-policy": (pspec: GObject.ParamSpec) => void;
             "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
@@ -60016,12 +60339,12 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "change-value": (arg0: ScrollType) => void;
+            "change-value": (object: ScrollType) => void;
             /**
              * @signal
              * @run-last
              */
-            input: (arg0: null) => number;
+            input: (object: null) => number;
             /**
              * The ::output signal can be used to change to formatting
              * of the value that is displayed in the spin buttons entry.
@@ -60851,7 +61174,7 @@ export namespace Gtk {
              * @since 2.14
              * @run-last
              */
-            "button-press-event": (arg0: Gdk.Event) => boolean | void;
+            "button-press-event": (event: Gdk.Event) => boolean | void;
             /**
              * The ::button-release-event signal will be emitted when a button
              * (typically from a mouse) is released.
@@ -60862,7 +61185,7 @@ export namespace Gtk {
              * @since 2.14
              * @run-last
              */
-            "button-release-event": (arg0: Gdk.Event) => boolean | void;
+            "button-release-event": (event: Gdk.Event) => boolean | void;
             /**
              * Gets emitted when the user brings up the context menu
              * of the status icon. Whether status icons can have context
@@ -60878,7 +61201,7 @@ export namespace Gtk {
              * @action
              * @run-first
              */
-            "popup-menu": (arg0: number, arg1: number) => void;
+            "popup-menu": (button: number, activate_time: number) => void;
             /**
              * Emitted when the {@link Gtk.Settings.gtk_tooltip_timeout} has expired with the
              * cursor hovering above `status_icon`; or emitted when `status_icon` got
@@ -60899,7 +61222,7 @@ export namespace Gtk {
              * @since 2.16
              * @run-last
              */
-            "query-tooltip": (arg0: number, arg1: number, arg2: boolean, arg3: Tooltip) => boolean | void;
+            "query-tooltip": (x: number, y: number, keyboard_mode: boolean, tooltip: Tooltip) => boolean | void;
             /**
              * The ::scroll-event signal is emitted when a button in the 4 to 7
              * range is pressed. Wheel mice are usually configured to generate
@@ -60909,7 +61232,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "scroll-event": (arg0: Gdk.Event) => boolean | void;
+            "scroll-event": (event: Gdk.Event) => boolean | void;
             /**
              * Gets emitted when the size available for the image
              * changes, e.g. because the notification area got resized.
@@ -60917,7 +61240,7 @@ export namespace Gtk {
              * @since 2.10
              * @run-last
              */
-            "size-changed": (arg0: number) => boolean | void;
+            "size-changed": (size: number) => boolean | void;
             "notify::blinking": (pspec: GObject.ParamSpec) => void;
             "notify::embedded": (pspec: GObject.ParamSpec) => void;
             "notify::file": (pspec: GObject.ParamSpec) => void;
@@ -61589,13 +61912,13 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "text-popped": (arg0: number, arg1: string) => void;
+            "text-popped": (context_id: number, text: string) => void;
             /**
              * Is emitted whenever a new message gets pushed onto a statusbar's stack.
              * @signal
              * @run-last
              */
-            "text-pushed": (arg0: number, arg1: string) => void;
+            "text-pushed": (context_id: number, text: string) => void;
             "notify::has-resize-grip": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -62995,7 +63318,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "apply-tag": (arg0: TextTag, arg1: TextIter, arg2: TextIter) => void;
+            "apply-tag": (tag: TextTag, start: TextIter, end: TextIter) => void;
             /**
              * The ::begin-user-action signal is emitted at the beginning of a single
              * user-visible operation on a {@link Gtk.TextBuffer}.
@@ -63033,7 +63356,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "delete-range": (arg0: TextIter, arg1: TextIter) => void;
+            "delete-range": (start: TextIter, end: TextIter) => void;
             /**
              * The ::end-user-action signal is emitted at the end of a single
              * user-visible operation on the {@link Gtk.TextBuffer}.
@@ -63064,7 +63387,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "insert-child-anchor": (arg0: TextIter, arg1: TextChildAnchor) => void;
+            "insert-child-anchor": (location: TextIter, anchor: TextChildAnchor) => void;
             /**
              * The ::insert-pixbuf signal is emitted to insert a {@link GdkPixbuf.Pixbuf}
              * in a {@link Gtk.TextBuffer}. Insertion actually occurs in the default handler.
@@ -63078,7 +63401,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "insert-pixbuf": (arg0: TextIter, arg1: GdkPixbuf.Pixbuf) => void;
+            "insert-pixbuf": (location: TextIter, pixbuf: GdkPixbuf.Pixbuf) => void;
             /**
              * The ::insert-text signal is emitted to insert text in a {@link Gtk.TextBuffer}.
              * Insertion actually occurs in the default handler.
@@ -63094,7 +63417,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "insert-text": (arg0: TextIter, arg1: string, arg2: number) => void;
+            "insert-text": (location: TextIter, text: string, len: number) => void;
             /**
              * The ::mark-deleted signal is emitted as notification
              * after a {@link Gtk.TextMark} is deleted.
@@ -63104,7 +63427,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "mark-deleted": (arg0: TextMark) => void;
+            "mark-deleted": (mark: TextMark) => void;
             /**
              * The ::mark-set signal is emitted as notification
              * after a {@link Gtk.TextMark} is set.
@@ -63115,7 +63438,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "mark-set": (arg0: TextIter, arg1: TextMark) => void;
+            "mark-set": (location: TextIter, mark: TextMark) => void;
             /**
              * The ::modified-changed signal is emitted when the modified bit of a
              * {@link Gtk.TextBuffer} flips.
@@ -63134,7 +63457,7 @@ export namespace Gtk {
              * @since 2.16
              * @run-last
              */
-            "paste-done": (arg0: Clipboard) => void;
+            "paste-done": (object: Clipboard) => void;
             /**
              * The ::remove-tag signal is emitted to remove all occurrences of `tag` from
              * a range of text in a {@link Gtk.TextBuffer}.
@@ -63148,7 +63471,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "remove-tag": (arg0: TextTag, arg1: TextIter, arg2: TextIter) => void;
+            "remove-tag": (tag: TextTag, start: TextIter, end: TextIter) => void;
             "notify::copy-target-list": (pspec: GObject.ParamSpec) => void;
             "notify::cursor-position": (pspec: GObject.ParamSpec) => void;
             "notify::has-selection": (pspec: GObject.ParamSpec) => void;
@@ -63635,6 +63958,7 @@ export namespace Gtk {
          * @param data data to deserialize
          * @returns `true` on success, `false` otherwise.
          * @since 2.10
+         * @throws GLib.Error
          */
         deserialize(content_buffer: TextBuffer, format: Gdk.Atom, iter: TextIter, data: Uint8Array | string): boolean;
 
@@ -64303,12 +64627,12 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "allocate-child": (arg0: Object, arg1: number, arg2: number) => void;
+            "allocate-child": (object: Object, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
              */
-            changed: (arg0: number, arg1: number, arg2: number) => void;
+            changed: (object: number, p0: number, p1: number) => void;
             /**
              * @signal
              * @run-last
@@ -64841,7 +65165,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            event: (arg0: GObject.Object, arg1: Gdk.Event, arg2: TextIter) => boolean | void;
+            event: (object: GObject.Object, event: Gdk.Event, iter: TextIter) => boolean | void;
             "notify::accumulative-margin": (pspec: GObject.ParamSpec) => void;
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::background-full-height": (pspec: GObject.ParamSpec) => void;
@@ -65786,17 +66110,17 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "tag-added": (arg0: TextTag) => void;
+            "tag-added": (object: TextTag) => void;
             /**
              * @signal
              * @run-last
              */
-            "tag-changed": (arg0: TextTag, arg1: boolean) => void;
+            "tag-changed": (object: TextTag, p0: boolean) => void;
             /**
              * @signal
              * @run-last
              */
-            "tag-removed": (arg0: TextTag) => void;
+            "tag-removed": (object: TextTag) => void;
         }
 
         // Constructor properties interface
@@ -66193,7 +66517,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "delete-from-cursor": (arg0: DeleteType, arg1: number) => void;
+            "delete-from-cursor": (type: DeleteType, count: number) => void;
             /**
              * The ::insert-at-cursor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66205,7 +66529,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "insert-at-cursor": (arg0: string) => void;
+            "insert-at-cursor": (string: string) => void;
             /**
              * The ::move-cursor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66232,7 +66556,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number, arg2: boolean) => void;
+            "move-cursor": (step: MovementStep, count: number, extend_selection: boolean) => void;
             /**
              * The ::move-viewport signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66245,7 +66569,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "move-viewport": (arg0: ScrollStep, arg1: number) => void;
+            "move-viewport": (step: ScrollStep, count: number) => void;
             /**
              * The ::page-horizontally signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66259,7 +66583,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "page-horizontally": (arg0: number, arg1: boolean) => void;
+            "page-horizontally": (count: number, extend_selection: boolean) => void;
             /**
              * The ::paste-clipboard signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66282,7 +66606,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "populate-popup": (arg0: Menu) => void;
+            "populate-popup": (menu: Menu) => void;
             /**
              * If an input method is used, the typed text will not immediately
              * be committed to the buffer. So if you are interested in the text,
@@ -66295,7 +66619,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "preedit-changed": (arg0: string) => void;
+            "preedit-changed": (preedit: string) => void;
             /**
              * The ::select-all signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66308,7 +66632,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "select-all": (arg0: boolean) => void;
+            "select-all": (select: boolean) => void;
             /**
              * The ::set-anchor signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -66330,7 +66654,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             /**
              * The ::toggle-cursor-visible signal is a
              * <link linkend="keybinding-signals">keybinding signal</link>
@@ -67402,12 +67726,12 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "widget-entered": (arg0: Widget, arg1: string, arg2: string) => void;
+            "widget-entered": (object: Widget, p0: string, p1: string) => void;
             /**
              * @signal
              * @run-last
              */
-            "widget-selected": (arg0: Widget, arg1: string, arg2: string, arg3: Gdk.Event) => boolean | void;
+            "widget-selected": (object: Widget, p0: string, p1: string, p2: Gdk.Event) => boolean | void;
             "notify::caller": (pspec: GObject.ParamSpec) => void;
             "notify::emit-always": (pspec: GObject.ParamSpec) => void;
             "notify::label-inactive": (pspec: GObject.ParamSpec) => void;
@@ -69032,7 +69356,7 @@ export namespace Gtk {
              * @deprecated since 2.12: With the new tooltip API, there is no   need to use this signal anymore.
              * @run-last
              */
-            "set-tooltip": (arg0: Tooltips, arg1: string, arg2: string) => boolean | void;
+            "set-tooltip": (tooltips: Tooltips, tip_text: string, tip_private: string) => boolean | void;
             /**
              * This signal is emitted when some property of the toolbar that the
              * item is a child of changes. For custom subclasses of {@link Gtk.ToolItem},
@@ -70149,7 +70473,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (hadjustment: Adjustment, vadjustment: Adjustment) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size-set": (pspec: GObject.ParamSpec) => void;
             "notify::toolbar-style": (pspec: GObject.ParamSpec) => void;
@@ -70615,13 +70939,13 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "focus-home-or-end": (arg0: boolean) => boolean | void;
+            "focus-home-or-end": (focus_home: boolean) => boolean | void;
             /**
              * Emitted when the orientation of the toolbar changes.
              * @signal
              * @run-first
              */
-            "orientation-changed": (arg0: Orientation) => void;
+            "orientation-changed": (orientation: Orientation) => void;
             /**
              * Emitted when the user right-clicks the toolbar or uses the
              * keybinding to display a popup menu.
@@ -70634,13 +70958,13 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "popup-context-menu": (arg0: number, arg1: number, arg2: number) => boolean | void;
+            "popup-context-menu": (x: number, y: number, button: number) => boolean | void;
             /**
              * Emitted when the style of the toolbar changes.
              * @signal
              * @run-first
              */
-            "style-changed": (arg0: ToolbarStyle) => void;
+            "style-changed": (style: ToolbarStyle) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size-set": (pspec: GObject.ParamSpec) => void;
             "notify::show-arrow": (pspec: GObject.ParamSpec) => void;
@@ -74176,13 +74500,13 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "expand-collapse-cursor-row": (arg0: boolean, arg1: boolean, arg2: boolean) => boolean | void;
+            "expand-collapse-cursor-row": (object: boolean, p0: boolean, p1: boolean) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-cursor": (arg0: MovementStep, arg1: number) => boolean | void;
+            "move-cursor": (object: MovementStep, p0: number) => boolean | void;
             /**
              * The "row-activated" signal is emitted when the method
              * `gtk_tree_view_row_activated()` is called or the user double clicks
@@ -74196,19 +74520,19 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "row-activated": (arg0: TreePath, arg1: TreeViewColumn) => void;
+            "row-activated": (path: TreePath, column: TreeViewColumn) => void;
             /**
              * The given row has been collapsed (child nodes are hidden).
              * @signal
              * @run-last
              */
-            "row-collapsed": (arg0: TreeIter, arg1: TreePath) => void;
+            "row-collapsed": (iter: TreeIter, path: TreePath) => void;
             /**
              * The given row has been expanded (child nodes are shown).
              * @signal
              * @run-last
              */
-            "row-expanded": (arg0: TreeIter, arg1: TreePath) => void;
+            "row-expanded": (iter: TreeIter, path: TreePath) => void;
             /**
              * @signal
              * @action
@@ -74226,7 +74550,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "select-cursor-row": (arg0: boolean) => boolean | void;
+            "select-cursor-row": (object: boolean) => boolean | void;
             /**
              * Set the scroll adjustments for the tree view. Usually scrolled containers
              * like {@link Gtk.ScrolledWindow} will emit this signal to connect two instances
@@ -74235,7 +74559,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             /**
              * @signal
              * @action
@@ -74248,14 +74572,14 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "test-collapse-row": (arg0: TreeIter, arg1: TreePath) => boolean | void;
+            "test-collapse-row": (iter: TreeIter, path: TreePath) => boolean | void;
             /**
              * The given row is about to be expanded (show its children nodes). Use this
              * signal if you need to control the expandability of individual rows.
              * @signal
              * @run-last
              */
-            "test-expand-row": (arg0: TreeIter, arg1: TreePath) => boolean | void;
+            "test-expand-row": (iter: TreeIter, path: TreePath) => boolean | void;
             /**
              * @signal
              * @action
@@ -76675,7 +76999,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            "add-widget": (arg0: Widget) => void;
+            "add-widget": (widget: Widget) => void;
             /**
              * The connect_proxy signal is emitted after connecting a proxy to
              * an action in the group.
@@ -76687,7 +77011,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            "connect-proxy": (arg0: Action, arg1: Widget) => void;
+            "connect-proxy": (action: Action, proxy: Widget) => void;
             /**
              * The disconnect_proxy signal is emitted after disconnecting a proxy
              * from an action in the group.
@@ -76695,7 +77019,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            "disconnect-proxy": (arg0: Action, arg1: Widget) => void;
+            "disconnect-proxy": (action: Action, proxy: Widget) => void;
             /**
              * The post_activate signal is emitted just after the `action`
              * is activated.
@@ -76706,7 +77030,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            "post-activate": (arg0: Action) => void;
+            "post-activate": (action: Action) => void;
             /**
              * The pre_activate signal is emitted just before the `action`
              * is activated.
@@ -76717,7 +77041,7 @@ export namespace Gtk {
              * @since 2.4
              * @run-first
              */
-            "pre-activate": (arg0: Action) => void;
+            "pre-activate": (action: Action) => void;
             "notify::add-tearoffs": (pspec: GObject.ParamSpec) => void;
             "notify::ui": (pspec: GObject.ParamSpec) => void;
         }
@@ -76890,6 +77214,7 @@ export namespace Gtk {
          * @param filename the name of the file to parse
          * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with `gtk_ui_manager_remove_ui()`. If an error occurred,   the return value is 0.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_ui_from_file(filename: string): number;
 
@@ -76901,6 +77226,7 @@ export namespace Gtk {
          * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
          * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with `gtk_ui_manager_remove_ui()`. If an error occurred,   the return value is 0.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_ui_from_string(buffer: string, length: bigint | number): number;
 
@@ -78214,7 +78540,7 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "set-scroll-adjustments": (arg0: Adjustment, arg1: Adjustment) => void;
+            "set-scroll-adjustments": (object: Adjustment, p0: Adjustment) => void;
             "notify::hadjustment": (pspec: GObject.ParamSpec) => void;
             "notify::shadow-type": (pspec: GObject.ParamSpec) => void;
             "notify::vadjustment": (pspec: GObject.ParamSpec) => void;
@@ -78589,7 +78915,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "button-press-event": (arg0: Gdk.EventButton) => boolean | void;
+            "button-press-event": (event: Gdk.EventButton) => boolean | void;
             /**
              * The ::button-release-event signal will be emitted when a button
              * (typically from a mouse) is released.
@@ -78601,7 +78927,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "button-release-event": (arg0: Gdk.EventButton) => boolean | void;
+            "button-release-event": (event: Gdk.EventButton) => boolean | void;
             /**
              * Determines whether an accelerator that activates the signal
              * identified by `signal_id` can currently be activated.
@@ -78611,7 +78937,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "can-activate-accel": (arg0: number) => boolean | void;
+            "can-activate-accel": (signal_id: number) => boolean | void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -78620,7 +78946,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify": (arg0: GObject.ParamSpec) => void;
+            "child-notify": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::client-event will be emitted when the `widget`'s window
              * receives a message (via a ClientMessage event) from another
@@ -78628,7 +78954,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "client-event": (arg0: Gdk.EventClient) => boolean | void;
+            "client-event": (event: Gdk.EventClient) => boolean | void;
             /**
              * The ::composited-changed signal is emitted when the composited
              * status of `widget`<!-- -->s screen changes.
@@ -78648,7 +78974,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "configure-event": (arg0: Gdk.EventConfigure) => boolean | void;
+            "configure-event": (event: Gdk.EventConfigure) => boolean | void;
             /**
              * Emitted when a redirected window belonging to `widget` gets drawn into.
              * The region/area members of the event shows what area of the redirected
@@ -78657,7 +78983,7 @@ export namespace Gtk {
              * @since 2.14
              * @run-last
              */
-            "damage-event": (arg0: Gdk.Event) => boolean | void;
+            "damage-event": (event: Gdk.Event) => boolean | void;
             /**
              * The ::delete-event signal is emitted if a user requests that
              * a toplevel window is closed. The default handler for this signal
@@ -78667,7 +78993,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "delete-event": (arg0: Gdk.Event) => boolean | void;
+            "delete-event": (event: Gdk.Event) => boolean | void;
             /**
              * The ::destroy-event signal is emitted when a {@link Gdk.Window} is destroyed.
              * You rarely get this signal, because most widgets disconnect themselves
@@ -78680,14 +79006,14 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "destroy-event": (arg0: Gdk.Event) => boolean | void;
+            "destroy-event": (event: Gdk.Event) => boolean | void;
             /**
              * The ::direction-changed signal is emitted when the text direction
              * of a widget changes.
              * @signal
              * @run-first
              */
-            "direction-changed": (arg0: TextDirection) => void;
+            "direction-changed": (previous_direction: TextDirection) => void;
             /**
              * The ::drag-begin signal is emitted on the drag source when a drag is
              * started. A typical reason to connect to this signal is to set up a
@@ -78699,7 +79025,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-begin": (arg0: Gdk.DragContext) => void;
+            "drag-begin": (drag_context: Gdk.DragContext) => void;
             /**
              * The ::drag-data-delete signal is emitted on the drag source when a drag
              * with the action {@link Gdk.DragAction.MOVE} is successfully completed. The signal
@@ -78708,7 +79034,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-data-delete": (arg0: Gdk.DragContext) => void;
+            "drag-data-delete": (drag_context: Gdk.DragContext) => void;
             /**
              * The ::drag-data-get signal is emitted on the drag source when the drop
              * site requests the data which is dragged. It is the responsibility of
@@ -78718,7 +79044,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-data-get": (arg0: Gdk.DragContext, arg1: SelectionData, arg2: number, arg3: number) => void;
+            "drag-data-get": (drag_context: Gdk.DragContext, data: SelectionData, info: number, time: number) => void;
             /**
              * The ::drag-data-received signal is emitted on the drop site when the
              * dragged data has been received. If the data was received in order to
@@ -78777,7 +79103,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-data-received": (arg0: Gdk.DragContext, arg1: number, arg2: number, arg3: SelectionData, arg4: number, arg5: number) => void;
+            "drag-data-received": (drag_context: Gdk.DragContext, x: number, y: number, data: SelectionData, info: number, time: number) => void;
             /**
              * The ::drag-drop signal is emitted on the drop site when the user drops
              * the data onto the widget. The signal handler must determine whether
@@ -78792,7 +79118,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-drop": (arg0: Gdk.DragContext, arg1: number, arg2: number, arg3: number) => boolean | void;
+            "drag-drop": (drag_context: Gdk.DragContext, x: number, y: number, time: number) => boolean | void;
             /**
              * The ::drag-end signal is emitted on the drag source when a drag is
              * finished.  A typical reason to connect to this signal is to undo
@@ -78800,7 +79126,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-end": (arg0: Gdk.DragContext) => void;
+            "drag-end": (drag_context: Gdk.DragContext) => void;
             /**
              * The ::drag-failed signal is emitted on the drag source when a drag has
              * failed. The signal handler may hook custom code to handle a failed DND
@@ -78811,7 +79137,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "drag-failed": (arg0: Gdk.DragContext, arg1: DragResult) => boolean | void;
+            "drag-failed": (drag_context: Gdk.DragContext, result: DragResult) => boolean | void;
             /**
              * The ::drag-leave signal is emitted on the drop site when the cursor
              * leaves the widget. A typical reason to connect to this signal is to
@@ -78820,7 +79146,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-leave": (arg0: Gdk.DragContext, arg1: number) => void;
+            "drag-leave": (drag_context: Gdk.DragContext, time: number) => void;
             /**
              * The drag-motion signal is emitted on the drop site when the user
              * moves the cursor over the widget during a drag. The signal handler
@@ -78910,7 +79236,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "drag-motion": (arg0: Gdk.DragContext, arg1: number, arg2: number, arg3: number) => boolean | void;
+            "drag-motion": (drag_context: Gdk.DragContext, x: number, y: number, time: number) => boolean | void;
             /**
              * The ::enter-notify-event will be emitted when the pointer enters
              * the `widget`'s window.
@@ -78922,7 +79248,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "enter-notify-event": (arg0: Gdk.EventCrossing) => boolean | void;
+            "enter-notify-event": (event: Gdk.EventCrossing) => boolean | void;
             /**
              * The GTK+ main loop will emit three signals for each GDK event delivered
              * to a widget: one generic ::event signal, another, more specific,
@@ -78932,14 +79258,14 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            event: (arg0: Gdk.Event) => boolean | void;
+            event: (event: Gdk.Event) => boolean | void;
             /**
              * After the emission of the {@link Gtk.Widget.SignalSignatures.event | Gtk.Widget::event} signal and (optionally)
              * the second more specific signal, ::event-after will be emitted
              * regardless of the previous two signals handlers return values.
              * @signal
              */
-            "event-after": (arg0: Gdk.Event) => void;
+            "event-after": (event: Gdk.Event) => void;
             /**
              * The ::expose-event signal is emitted when an area of a previously
              * obscured {@link Gdk.Window} is made visible and needs to be redrawn.
@@ -78955,12 +79281,12 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "expose-event": (arg0: Gdk.EventExpose) => boolean | void;
+            "expose-event": (event: Gdk.EventExpose) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            focus: (arg0: DirectionType) => boolean | void;
+            focus: (direction: DirectionType) => boolean | void;
             /**
              * The ::focus-in-event signal will be emitted when the keyboard focus
              * enters the `widget`'s window.
@@ -78970,7 +79296,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "focus-in-event": (arg0: Gdk.EventFocus) => boolean | void;
+            "focus-in-event": (event: Gdk.EventFocus) => boolean | void;
             /**
              * The ::focus-out-event signal will be emitted when the keyboard focus
              * leaves the `widget`'s window.
@@ -78980,7 +79306,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "focus-out-event": (arg0: Gdk.EventFocus) => boolean | void;
+            "focus-out-event": (event: Gdk.EventFocus) => boolean | void;
             /**
              * Emitted when a pointer or keyboard grab on a window belonging
              * to `widget` gets broken.
@@ -78992,7 +79318,7 @@ export namespace Gtk {
              * @since 2.8
              * @run-last
              */
-            "grab-broken-event": (arg0: Gdk.Event) => boolean | void;
+            "grab-broken-event": (event: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @action
@@ -79011,7 +79337,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "grab-notify": (arg0: boolean) => void;
+            "grab-notify": (was_grabbed: boolean) => void;
             /**
              * @signal
              * @run-first
@@ -79026,7 +79352,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "hierarchy-changed": (arg0: Widget | null) => void;
+            "hierarchy-changed": (previous_toplevel: Widget | null) => void;
             /**
              * The ::key-press-event signal is emitted when a key is pressed.
              * 
@@ -79037,7 +79363,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "key-press-event": (arg0: Gdk.EventKey) => boolean | void;
+            "key-press-event": (event: Gdk.EventKey) => boolean | void;
             /**
              * The ::key-release-event signal is emitted when a key is pressed.
              * 
@@ -79048,7 +79374,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "key-release-event": (arg0: Gdk.EventKey) => boolean | void;
+            "key-release-event": (event: Gdk.EventKey) => boolean | void;
             /**
              * Gets emitted if keyboard navigation fails.
              * See `gtk_widget_keynav_failed()` for details.
@@ -79056,7 +79382,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "keynav-failed": (arg0: DirectionType) => boolean | void;
+            "keynav-failed": (direction: DirectionType) => boolean | void;
             /**
              * The ::leave-notify-event will be emitted when the pointer leaves
              * the `widget`'s window.
@@ -79068,7 +79394,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "leave-notify-event": (arg0: Gdk.EventCrossing) => boolean | void;
+            "leave-notify-event": (event: Gdk.EventCrossing) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -79084,12 +79410,12 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "map-event": (arg0: Gdk.EventAny) => boolean | void;
+            "map-event": (event: Gdk.EventAny) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "mnemonic-activate": (arg0: boolean) => boolean | void;
+            "mnemonic-activate": (arg1: boolean) => boolean | void;
             /**
              * The ::motion-notify-event signal is emitted when the pointer moves
              * over the widget's {@link Gdk.Window}.
@@ -79101,13 +79427,13 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "motion-notify-event": (arg0: Gdk.EventMotion) => boolean | void;
+            "motion-notify-event": (event: Gdk.EventMotion) => boolean | void;
             /**
              * @signal
              * @action
              * @run-last
              */
-            "move-focus": (arg0: DirectionType) => void;
+            "move-focus": (direction: DirectionType) => void;
             /**
              * The ::no-expose-event will be emitted when the `widget`'s window is
              * drawn as a copy of another {@link Gdk.Drawable} (with `gdk_draw_drawable()` or
@@ -79117,14 +79443,14 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "no-expose-event": (arg0: Gdk.EventNoExpose) => boolean | void;
+            "no-expose-event": (event: Gdk.EventNoExpose) => boolean | void;
             /**
              * The ::parent-set signal is emitted when a new parent
              * has been set on a widget.
              * @signal
              * @run-first
              */
-            "parent-set": (arg0: Widget | null) => void;
+            "parent-set": (old_parent: Widget | null) => void;
             /**
              * This signal gets emitted whenever a widget should pop up a context
              * menu. This usually happens through the standard key binding mechanism;
@@ -79146,7 +79472,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "property-notify-event": (arg0: Gdk.EventProperty) => boolean | void;
+            "property-notify-event": (event: Gdk.EventProperty) => boolean | void;
             /**
              * To receive this signal the {@link Gdk.Window} associated to the widget needs
              * to enable the #GDK_PROXIMITY_IN_MASK mask.
@@ -79155,7 +79481,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "proximity-in-event": (arg0: Gdk.EventProximity) => boolean | void;
+            "proximity-in-event": (event: Gdk.EventProximity) => boolean | void;
             /**
              * To receive this signal the {@link Gdk.Window} associated to the widget needs
              * to enable the #GDK_PROXIMITY_OUT_MASK mask.
@@ -79164,7 +79490,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "proximity-out-event": (arg0: Gdk.EventProximity) => boolean | void;
+            "proximity-out-event": (event: Gdk.EventProximity) => boolean | void;
             /**
              * Emitted when {@link Gtk.Widget.has_tooltip} is `true` and the {@link Gtk.Settings.gtk_tooltip_timeout}
              * has expired with the cursor hovering "above" `widget`; or emitted when `widget` got
@@ -79182,7 +79508,7 @@ export namespace Gtk {
              * @since 2.12
              * @run-last
              */
-            "query-tooltip": (arg0: number, arg1: number, arg2: boolean, arg3: Tooltip) => boolean | void;
+            "query-tooltip": (x: number, y: number, keyboard_mode: boolean, tooltip: Tooltip) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -79194,7 +79520,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "screen-changed": (arg0: Gdk.Screen | null) => void;
+            "screen-changed": (previous_screen: Gdk.Screen | null) => void;
             /**
              * The ::scroll-event signal is emitted when a button in the 4 to 7
              * range is pressed. Wheel mice are usually configured to generate
@@ -79207,29 +79533,29 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "scroll-event": (arg0: Gdk.EventScroll) => boolean | void;
+            "scroll-event": (event: Gdk.EventScroll) => boolean | void;
             /**
              * The ::selection-clear-event signal will be emitted when the
              * the `widget`'s window has lost ownership of a selection.
              * @signal
              * @run-last
              */
-            "selection-clear-event": (arg0: Gdk.EventSelection) => boolean | void;
+            "selection-clear-event": (event: Gdk.EventSelection) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "selection-get": (arg0: SelectionData, arg1: number, arg2: number) => void;
+            "selection-get": (data: SelectionData, info: number, time: number) => void;
             /**
              * @signal
              * @run-last
              */
-            "selection-notify-event": (arg0: Gdk.Event) => boolean | void;
+            "selection-notify-event": (event: Gdk.Event) => boolean | void;
             /**
              * @signal
              * @run-last
              */
-            "selection-received": (arg0: SelectionData, arg1: number) => void;
+            "selection-received": (data: SelectionData, time: number) => void;
             /**
              * The ::selection-request-event signal will be emitted when
              * another client requests ownership of the selection owned by
@@ -79237,7 +79563,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "selection-request-event": (arg0: Gdk.EventSelection) => boolean | void;
+            "selection-request-event": (event: Gdk.EventSelection) => boolean | void;
             /**
              * @signal
              * @run-first
@@ -79248,24 +79574,24 @@ export namespace Gtk {
              * @action
              * @run-last
              */
-            "show-help": (arg0: WidgetHelpType) => boolean | void;
+            "show-help": (help_type: WidgetHelpType) => boolean | void;
             /**
              * @signal
              * @run-first
              */
-            "size-allocate": (arg0: Gdk.Rectangle) => void;
+            "size-allocate": (allocation: Gdk.Rectangle) => void;
             /**
              * @signal
              * @run-first
              */
-            "size-request": (arg0: Requisition) => void;
+            "size-request": (requisition: Requisition) => void;
             /**
              * The ::state-changed signal is emitted when the widget state changes.
              * See `gtk_widget_get_state()`.
              * @signal
              * @run-first
              */
-            "state-changed": (arg0: StateType) => void;
+            "state-changed": (state: StateType) => void;
             /**
              * The ::style-set signal is emitted when a new style has been set
              * on a widget. Note that style-modifying functions like
@@ -79273,7 +79599,7 @@ export namespace Gtk {
              * @signal
              * @run-first
              */
-            "style-set": (arg0: Style | null) => void;
+            "style-set": (previous_style: Style | null) => void;
             /**
              * @signal
              * @run-first
@@ -79289,7 +79615,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "unmap-event": (arg0: Gdk.EventAny) => boolean | void;
+            "unmap-event": (event: Gdk.EventAny) => boolean | void;
             /**
              * @signal
              * @run-last
@@ -79304,7 +79630,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "visibility-notify-event": (arg0: Gdk.EventVisibility) => boolean | void;
+            "visibility-notify-event": (event: Gdk.EventVisibility) => boolean | void;
             /**
              * The ::window-state-event will be emitted when the state of the
              * toplevel window associated to the `widget` changes.
@@ -79315,7 +79641,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "window-state-event": (arg0: Gdk.EventWindowState) => boolean | void;
+            "window-state-event": (event: Gdk.EventWindowState) => boolean | void;
             "notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             "notify::can-default": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -79348,7 +79674,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::app-paintable": (arg0: GObject.ParamSpec) => void;
+            "child-notify::app-paintable": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79357,7 +79683,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::can-default": (arg0: GObject.ParamSpec) => void;
+            "child-notify::can-default": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79366,7 +79692,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::can-focus": (arg0: GObject.ParamSpec) => void;
+            "child-notify::can-focus": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79375,7 +79701,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::composite-child": (arg0: GObject.ParamSpec) => void;
+            "child-notify::composite-child": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79384,7 +79710,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::double-buffered": (arg0: GObject.ParamSpec) => void;
+            "child-notify::double-buffered": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79393,7 +79719,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::events": (arg0: GObject.ParamSpec) => void;
+            "child-notify::events": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79402,7 +79728,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::extension-events": (arg0: GObject.ParamSpec) => void;
+            "child-notify::extension-events": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79411,7 +79737,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::has-default": (arg0: GObject.ParamSpec) => void;
+            "child-notify::has-default": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79420,7 +79746,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::has-focus": (arg0: GObject.ParamSpec) => void;
+            "child-notify::has-focus": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79429,7 +79755,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::has-tooltip": (arg0: GObject.ParamSpec) => void;
+            "child-notify::has-tooltip": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79438,7 +79764,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::height-request": (arg0: GObject.ParamSpec) => void;
+            "child-notify::height-request": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79447,7 +79773,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::is-focus": (arg0: GObject.ParamSpec) => void;
+            "child-notify::is-focus": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79456,7 +79782,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::name": (arg0: GObject.ParamSpec) => void;
+            "child-notify::name": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79465,7 +79791,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::no-show-all": (arg0: GObject.ParamSpec) => void;
+            "child-notify::no-show-all": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79474,7 +79800,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::parent": (arg0: GObject.ParamSpec) => void;
+            "child-notify::parent": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79483,7 +79809,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::receives-default": (arg0: GObject.ParamSpec) => void;
+            "child-notify::receives-default": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79492,7 +79818,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::sensitive": (arg0: GObject.ParamSpec) => void;
+            "child-notify::sensitive": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79501,7 +79827,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::style": (arg0: GObject.ParamSpec) => void;
+            "child-notify::style": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79510,7 +79836,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::tooltip-markup": (arg0: GObject.ParamSpec) => void;
+            "child-notify::tooltip-markup": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79519,7 +79845,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::tooltip-text": (arg0: GObject.ParamSpec) => void;
+            "child-notify::tooltip-text": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79528,7 +79854,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::visible": (arg0: GObject.ParamSpec) => void;
+            "child-notify::visible": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79537,7 +79863,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::width-request": (arg0: GObject.ParamSpec) => void;
+            "child-notify::width-request": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79546,7 +79872,7 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::window": (arg0: GObject.ParamSpec) => void;
+            "child-notify::window": (pspec: GObject.ParamSpec) => void;
             /**
              * The ::child-notify signal is emitted for each
              * <link linkend="child-properties">child property</link>  that has
@@ -79555,8 +79881,8 @@ export namespace Gtk {
              * @detailed
              * @run-first
              */
-            "child-notify::user-data": (arg0: GObject.ParamSpec) => void;
-            [key: `child-notify::${string}`]: (arg0: GObject.ParamSpec) => void;
+            "child-notify::user-data": (pspec: GObject.ParamSpec) => void;
+            [key: `child-notify::${string}`]: (pspec: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -82669,7 +82995,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "frame-event": (arg0: Gdk.Event) => boolean | void;
+            "frame-event": (object: Gdk.Event) => boolean | void;
             /**
              * The ::keys-changed signal gets emitted when the set of accelerators
              * or mnemonics that are associated with `window` changes.
@@ -82681,7 +83007,7 @@ export namespace Gtk {
              * @signal
              * @run-last
              */
-            "set-focus": (arg0: Widget) => void;
+            "set-focus": (object: Widget) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::allow-grow": (pspec: GObject.ParamSpec) => void;
             "notify::allow-shrink": (pspec: GObject.ParamSpec) => void;
@@ -84189,6 +84515,7 @@ export namespace Gtk {
          * @param filename location of icon file
          * @returns `true` if setting the icon succeeded.
          * @since 2.2
+         * @throws GLib.Error
          */
         set_icon_from_file(filename: string): boolean;
 
@@ -85823,6 +86150,7 @@ export namespace Gtk {
          * returned by this function will be scaled to the exact size.
          * @returns the rendered icon; this may be a newly     created icon or a new reference to an internal icon, so you must     not modify the icon. Use `g_object_unref()` to release your reference     to the icon.
          * @since 2.4
+         * @throws GLib.Error
          */
         load_icon(): GdkPixbuf.Pixbuf;
 
@@ -91592,6 +91920,7 @@ export namespace Gtk {
          * @param folder filename of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder(folder: string): boolean;
 
@@ -91603,6 +91932,7 @@ export namespace Gtk {
          * @param uri URI of the folder to add
          * @returns `true` if the folder could be added successfully, `false` otherwise.  In the latter case, the `error` will be set as appropriate.
          * @since 2.4
+         * @throws GLib.Error
          */
         add_shortcut_folder_uri(uri: string): boolean;
 
@@ -91855,6 +92185,7 @@ export namespace Gtk {
          * @param folder filename of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder(folder: string): boolean;
 
@@ -91863,6 +92194,7 @@ export namespace Gtk {
          * @param uri URI of the folder to remove
          * @returns `true` if the operation succeeds, `false` otherwise. In the latter case, the `error` will be set as appropriate. See also: `gtk_file_chooser_add_shortcut_folder_uri()`
          * @since 2.4
+         * @throws GLib.Error
          */
         remove_shortcut_folder_uri(uri: string): boolean;
 
@@ -91878,6 +92210,7 @@ export namespace Gtk {
          * @param file the file to select
          * @returns `true` if both the folder could be changed and the path was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         select_file(file: Gio.File): boolean;
 
@@ -91937,6 +92270,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} for the new folder
          * @returns `true` if the folder could be changed successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_current_folder_file(file: Gio.File): boolean;
 
@@ -92028,6 +92362,7 @@ export namespace Gtk {
          * @param file the {@link Gio.File} to set as current
          * @returns `true` if both the folder could be changed and the file was selected successfully, `false` otherwise.
          * @since 2.14
+         * @throws GLib.Error
          */
         set_file(file: Gio.File): boolean;
 
@@ -92853,6 +93188,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if `uri` was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         select_uri(uri: string): boolean;
 
@@ -92861,6 +93197,7 @@ export namespace Gtk {
          * @param uri a URI
          * @returns `true` if the URI was found.
          * @since 2.10
+         * @throws GLib.Error
          */
         set_current_uri(uri: string): boolean;
 

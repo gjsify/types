@@ -41,11 +41,11 @@ export namespace Hex {
         /**
          * the change is a string
          */
-        STRING,
+        STRING = 0,
         /**
          * the change is a single byte/character
          */
-        BYTE,
+        BYTE = 1,
     }
 
 
@@ -57,19 +57,19 @@ export namespace Hex {
         /**
          * group data by byte (8-bit)
          */
-        BYTE,
+        BYTE = 1,
         /**
          * group data by word (16-bit)
          */
-        WORD,
+        WORD = 2,
         /**
          * group data by long (32-bit)
          */
-        LONG,
+        LONG = 4,
         /**
          * group data by quadword (64-bit)
          */
-        QUAD,
+        QUAD = 8,
     }
 
 
@@ -115,15 +115,15 @@ export namespace Hex {
         /**
          * no search flags (byte-for-byte match)
          */
-        NONE,
+        NONE = 0,
         /**
          * regular expression search
          */
-        REGEX,
+        REGEX = 1,
         /**
          * case-insensitive search
          */
-        IGNORE_CASE,
+        IGNORE_CASE = 2,
     }
 
 
@@ -134,7 +134,7 @@ export namespace Hex {
              * @signal
              * @run-first
              */
-            "document-changed": (arg0: null, arg1: boolean) => void;
+            "document-changed": (object: null, p0: boolean) => void;
             /**
              * @signal
              * @run-first
@@ -559,6 +559,7 @@ export namespace Hex {
          * operation.
          * @param result result of the task
          * @returns `true` if the operation was successful; `false` otherwise.
+         * @throws GLib.Error
          */
         read_finish(result: Gio.AsyncResult): boolean;
 
@@ -691,6 +692,7 @@ export namespace Hex {
          * operation.
          * @param result result of the task
          * @returns `true` if the operation was successful; `false` otherwise.
+         * @throws GLib.Error
          */
         write_finish(result: Gio.AsyncResult): boolean;
 
@@ -2019,6 +2021,7 @@ export namespace Hex {
          * operation.
          * @param result result of the task
          * @returns `true` if the operation was successful; `false` otherwise.
+         * @throws GLib.Error
          */
         read_finish(result: Gio.AsyncResult): boolean;
 
@@ -2092,6 +2095,7 @@ export namespace Hex {
          * the operation.
          * @param result result of the task
          * @returns `true` if the operation was successful; `false` otherwise.
+         * @throws GLib.Error
          */
         write_to_file_finish(result: Gio.AsyncResult): boolean;
     }

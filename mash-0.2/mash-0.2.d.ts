@@ -42,28 +42,28 @@ export namespace Mash {
         /**
          * The file has an unknown format.
          */
-        UNKNOWN_FORMAT,
+        UNKNOWN_FORMAT = 0,
         /**
          * The underlying library reported an error.
          */
-        UNKNOWN,
+        UNKNOWN = 1,
         /**
          * A property that is needed
          *  by {@link Mash.Data} is not present in the file. For example, this
          *  will happen if the file does not contain the x, y and z properties.
          */
-        MISSING_PROPERTY,
+        MISSING_PROPERTY = 2,
         /**
          * The file is not valid.
          */
-        INVALID,
+        INVALID = 3,
         /**
          * The file is not supported
          *  by your GL driver. This will happen if your driver can't support
          *  GL_UNSIGNED_INT indices but the model has more than 65,536
          *  vertices.
          */
-        UNSUPPORTED,
+        UNSUPPORTED = 4,
     }
 
 
@@ -92,19 +92,19 @@ export namespace Mash {
         /**
          * No flags
          */
-        NONE,
+        NONE = 0,
         /**
          * Negate the X axis
          */
-        NEGATE_X,
+        NEGATE_X = 1,
         /**
          * Negate the Y axis
          */
-        NEGATE_Y,
+        NEGATE_Y = 2,
         /**
          * Negate the Z axis
          */
-        NEGATE_Z,
+        NEGATE_Z = 4,
     }
 
 
@@ -176,6 +176,7 @@ export namespace Mash {
          * @param flags Flags used to specify load-time modifications to the data
          * @param filename The name of a file to load
          * @returns `true` if the load succeeded or `false` otherwise.
+         * @throws GLib.Error
          */
         load(flags: DataFlags, filename: string): boolean;
 
@@ -267,6 +268,7 @@ export namespace Mash {
          * This function is not usually called by applications.
          * @param flags 
          * @param filename 
+         * @throws GLib.Error
          */
         load(flags: DataFlags, filename: string): boolean;
     }

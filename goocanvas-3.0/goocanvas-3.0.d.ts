@@ -47,10 +47,10 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoAntialias {
-        DEFAULT,
-        NONE,
-        GRAY,
-        SUBPIXEL,
+        DEFAULT = 0,
+        NONE = 1,
+        GRAY = 2,
+        SUBPIXEL = 3,
     }
 
 
@@ -69,8 +69,8 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoFillRule {
-        WINDING,
-        EVEN_ODD,
+        WINDING = 0,
+        EVEN_ODD = 1,
     }
 
 
@@ -89,9 +89,9 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoHintMetrics {
-        DEFAULT,
-        OFF,
-        ON,
+        DEFAULT = 0,
+        OFF = 1,
+        ON = 2,
     }
 
 
@@ -110,9 +110,9 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoLineCap {
-        BUTT,
-        ROUND,
-        SQUARE,
+        BUTT = 0,
+        ROUND = 1,
+        SQUARE = 2,
     }
 
 
@@ -131,9 +131,9 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoLineJoin {
-        MITER,
-        ROUND,
-        BEVEL,
+        MITER = 0,
+        ROUND = 1,
+        BEVEL = 2,
     }
 
 
@@ -152,20 +152,20 @@ export namespace GooCanvas {
      * @gir-type Enum
      */
     enum CairoOperator {
-        CLEAR,
-        SOURCE,
-        OVER,
-        IN,
-        OUT,
-        ATOP,
-        DEST,
-        DEST_OVER,
-        DEST_IN,
-        DEST_OUT,
-        DEST_ATOP,
-        XOR,
-        ADD,
-        SATURATE,
+        CLEAR = 0,
+        SOURCE = 1,
+        OVER = 2,
+        IN = 3,
+        OUT = 4,
+        ATOP = 5,
+        DEST = 6,
+        DEST_OVER = 7,
+        DEST_IN = 8,
+        DEST_OUT = 9,
+        DEST_ATOP = 10,
+        XOR = 11,
+        ADD = 12,
+        SATURATE = 13,
     }
 
 
@@ -185,71 +185,71 @@ export namespace GooCanvas {
         /**
          * the anchor is in the center of the object.
          */
-        CENTER,
+        CENTER = 0,
         /**
          * the anchor is at the top of the object, centered horizontally.
          */
-        NORTH,
+        NORTH = 1,
         /**
          * the anchor is at the top-left of the object.
          */
-        NORTH_WEST,
+        NORTH_WEST = 2,
         /**
          * the anchor is at the top-right of the object.
          */
-        NORTH_EAST,
+        NORTH_EAST = 3,
         /**
          * the anchor is at the bottom of the object, centered horizontally.
          */
-        SOUTH,
+        SOUTH = 4,
         /**
          * the anchor is at the bottom-left of the object.
          */
-        SOUTH_WEST,
+        SOUTH_WEST = 5,
         /**
          * the anchor is at the bottom-right of the object.
          */
-        SOUTH_EAST,
+        SOUTH_EAST = 6,
         /**
          * the anchor is on the left of the object, centered vertically.
          */
-        WEST,
+        WEST = 7,
         /**
          * the anchor is on the right of the object, centered vertically.
          */
-        EAST,
+        EAST = 8,
         /**
          * see GOO_CANVAS_ANCHOR_NORTH.
          */
-        N,
+        N = 1,
         /**
          * see GOO_CANVAS_ANCHOR_NORTH_WEST.
          */
-        NW,
+        NW = 2,
         /**
          * see GOO_CANVAS_ANCHOR_NORTH_EAST.
          */
-        NE,
+        NE = 3,
         /**
          * see GOO_CANVAS_ANCHOR_SOUTH.
          */
-        S,
+        S = 4,
         /**
          * see GOO_CANVAS_ANCHOR_SOUTH_WEST.
          */
-        SW,
+        SW = 5,
         /**
          * see GOO_CANVAS_ANCHOR_SOUTH_EAST.
          */
-        SE,
+        SE = 6,
         /**
          * see GOO_CANVAS_ANCHOR_WEST.
          */
-        W,
+        W = 7,
         /**
          * see GOO_CANVAS_ANCHOR_EAST.
          */
-        E,
+        E = 8,
     }
 
 
@@ -269,21 +269,21 @@ export namespace GooCanvas {
         /**
          * the item remains in the final position.
          */
-        FREEZE,
+        FREEZE = 0,
         /**
          * the item is moved back to the initial position.
          */
-        RESET,
+        RESET = 1,
         /**
          * the animation is restarted from the initial
          *  position.
          */
-        RESTART,
+        RESTART = 2,
         /**
          * the animation bounces back and forth between the
          *  start and end positions.
          */
-        BOUNCE,
+        BOUNCE = 3,
     }
 
 
@@ -304,22 +304,22 @@ export namespace GooCanvas {
          * the item is invisible, and is not allocated any
          *  space in layout container items such as {@link GooCanvas.CanvasTable}.
          */
-        HIDDEN,
+        HIDDEN = 0,
         /**
          * the item is invisible, but it is still allocated
          *  space in layout container items.
          */
-        INVISIBLE,
+        INVISIBLE = 1,
         /**
          * the item is visible.
          */
-        VISIBLE,
+        VISIBLE = 2,
         /**
          * the item is visible when the
          *  canvas scale setting is greater than or equal to the item's visibility
          *  threshold setting.
          */
-        VISIBLE_ABOVE_THRESHOLD,
+        VISIBLE_ABOVE_THRESHOLD = 3,
     }
 
 
@@ -340,57 +340,60 @@ export namespace GooCanvas {
         /**
          * move to the given point.
          */
-        MOVE_TO,
+        MOVE_TO = 0,
         /**
          * close the current path, drawing a line from the
          *  current position to the start of the path.
          */
-        CLOSE_PATH,
+        CLOSE_PATH = 1,
         /**
          * draw a line to the given point.
          */
-        LINE_TO,
+        LINE_TO = 2,
         /**
          * draw a horizontal line to the given
          *  x coordinate.
          */
-        HORIZONTAL_LINE_TO,
+        HORIZONTAL_LINE_TO = 3,
         /**
          * draw a vertical line to the given y
          *  coordinate.
          */
-        VERTICAL_LINE_TO,
+        VERTICAL_LINE_TO = 4,
         /**
          * draw a bezier curve using two control
          *  points to the given point.
          */
-        CURVE_TO,
+        CURVE_TO = 5,
         /**
          * draw a bezier curve using a reflection
          *  of the last control point of the last curve as the first control point,
          *  and one new control point, to the given point.
          */
-        SMOOTH_CURVE_TO,
+        SMOOTH_CURVE_TO = 6,
         /**
          * draw a quadratic bezier curve using
          *  a single control point to the given point.
          */
-        QUADRATIC_CURVE_TO,
+        QUADRATIC_CURVE_TO = 7,
         /**
          * draw a quadratic bezier curve
          *  using a reflection of the control point from the previous curve as the
          *  control point, to the given point.
          */
-        SMOOTH_QUADRATIC_CURVE_TO,
+        SMOOTH_QUADRATIC_CURVE_TO = 8,
         /**
          * draw an elliptical arc, using the given
          *  2 radii, the x axis rotation, and the 2 flags to disambiguate the arc,
          *  to the given point.
          */
-        ELLIPTICAL_ARC,
+        ELLIPTICAL_ARC = 9,
     }
 
 
+    /**
+     * @default 5
+     */
     const CANVAS_POLYLINE_NUM_ARROW_POINTS: number;
 
     /**
@@ -496,66 +499,66 @@ export namespace GooCanvas {
          * a mask indicating that the item only
          *  receives events when it is visible.
          */
-        VISIBLE_MASK,
+        VISIBLE_MASK = 1,
         /**
          * a mask indicating that the item only
          *  receives events when the specified parts of it are painted.
          */
-        PAINTED_MASK,
+        PAINTED_MASK = 2,
         /**
          * a mask indicating that the filled part of
          *  the item receives events.
          */
-        FILL_MASK,
+        FILL_MASK = 4,
         /**
          * a mask indicating that the stroked part
          *  of the item receives events.
          */
-        STROKE_MASK,
+        STROKE_MASK = 8,
         /**
          * the item doesn't receive events at all.
          */
-        NONE,
+        NONE = 0,
         /**
          * the item receives events in its
          *  painted areas when it is visible (the default).
          */
-        VISIBLE_PAINTED,
+        VISIBLE_PAINTED = 15,
         /**
          * the item's interior receives events
          *  when it is visible.
          */
-        VISIBLE_FILL,
+        VISIBLE_FILL = 5,
         /**
          * the item's perimeter receives
          *  events when it is visible.
          */
-        VISIBLE_STROKE,
+        VISIBLE_STROKE = 9,
         /**
          * the item receives events when it is visible,
          *  whether it is painted or not.
          */
-        VISIBLE,
+        VISIBLE = 13,
         /**
          * the item receives events in its painted areas,
          *  whether it is visible or not.
          */
-        PAINTED,
+        PAINTED = 14,
         /**
          * the item's interior receives events, whether it
          *  is visible or painted or not.
          */
-        FILL,
+        FILL = 4,
         /**
          * the item's perimeter receives events, whether
          *  it is visible or painted or not.
          */
-        STROKE,
+        STROKE = 8,
         /**
          * the item's perimeter and interior receive events,
          *  whether it is visible or painted or not.
          */
-        ALL,
+        ALL = 12,
     }
 
 
@@ -569,7 +572,7 @@ export namespace GooCanvas {
              * @signal
              * @run-last
              */
-            "item-created": (arg0: CanvasItem, arg1: CanvasItemModel) => void;
+            "item-created": (item: CanvasItem, model: CanvasItemModel) => void;
             "notify::anchor": (pspec: GObject.ParamSpec) => void;
             "notify::automatic-bounds": (pspec: GObject.ParamSpec) => void;
             "notify::background-color": (pspec: GObject.ParamSpec) => void;

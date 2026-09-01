@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstrtsp-1.0",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "GJS TypeScript type definitions for GstRtsp-1.0",
     "type": "module",
     "module": "gstrtsp-1.0.js",
@@ -31,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.4.0",
-      "@girs/gstsdp-1.0": "^4.4.0",
-      "@girs/gst-1.0": "^4.4.0",
-      "@girs/gobject-2.0": "^4.4.0",
-      "@girs/glib-2.0": "^4.4.0",
-      "@girs/gmodule-2.0": "^4.4.0",
-      "@girs/gstbase-1.0": "^4.4.0",
-      "@girs/gio-2.0": "^4.4.0"    },
+      "@girs/gjs": "^4.5.0",
+      "@girs/gstsdp-1.0": "^4.5.0",
+      "@girs/gst-1.0": "^4.5.0",
+      "@girs/gobject-2.0": "^4.5.0",
+      "@girs/glib-2.0": "^4.5.0",
+      "@girs/gmodule-2.0": "^4.5.0",
+      "@girs/gstbase-1.0": "^4.5.0",
+      "@girs/gio-2.0": "^4.5.0"    },
     "devDependencies": {
       "typescript": "*"
     },
