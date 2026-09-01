@@ -1515,7 +1515,7 @@ export namespace Gcr {
 
     namespace FilterCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Collection.SignalSignatures {
             "notify::underlying": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2887,7 +2887,7 @@ export namespace Gcr {
 
     namespace SimpleCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Collection.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -3087,7 +3087,7 @@ export namespace Gcr {
 
     namespace SystemPrompt {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Prompt.SignalSignatures {
             "notify::bus-name": (pspec: GObject.ParamSpec) => void;
             "notify::secret-exchange": (pspec: GObject.ParamSpec) => void;
             "notify::timeout-seconds": (pspec: GObject.ParamSpec) => void;
@@ -4412,7 +4412,7 @@ export namespace Gcr {
 
     namespace UnionCollection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Collection.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Collection.ConstructorProps {}
@@ -5141,6 +5141,21 @@ export namespace Gcr {
     };
 
     namespace Collection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when an object is added to the collection.
+             * @signal
+             * @run-last
+             */
+            added: (object: GObject.Object) => void;
+            /**
+             * This signal is emitted when an object is removed from the collection.
+             * @signal
+             * @run-last
+             */
+            removed: (object: GObject.Object) => void;
+        }
         /**
          * Interface for implementing Collection.
          * Contains only the virtual methods that need to be implemented.
@@ -5649,6 +5664,19 @@ export namespace Gcr {
     };
 
     namespace Prompt {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Action signal fired when the prompt is to be closed. After the default
+             * handler has run, the prompt is closed. The various prompting methods
+             * will return results as if the user dismissed the prompt.
+             * 
+             * You can use the {@link Prompt.close} method to emit this signal.
+             * @signal
+             * @run-first
+             */
+            "prompt-close": () => void;
+        }
         /**
          * Interface for implementing Prompt.
          * Contains only the virtual methods that need to be implemented.

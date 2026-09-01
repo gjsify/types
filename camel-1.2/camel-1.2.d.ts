@@ -27101,6 +27101,19 @@ export namespace Camel {
     };
 
     namespace Subscribable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "folder-subscribed": (object: FolderInfo) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "folder-unsubscribed": (object: FolderInfo) => void;
+        }
         /**
          * Interface for implementing Subscribable.
          * Contains only the virtual methods that need to be implemented.

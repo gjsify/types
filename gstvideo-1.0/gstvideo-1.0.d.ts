@@ -10133,6 +10133,15 @@ export namespace GstVideo {
 
 
     namespace ColorBalance {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Fired when the value of the indicated channel has changed.
+             * @signal
+             * @run-last
+             */
+            "value-changed": (channel: ColorBalanceChannel, value: number) => void;
+        }
         /**
          * Interface for implementing ColorBalance.
          * Contains only the virtual methods that need to be implemented.

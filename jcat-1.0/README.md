@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/jcat-1.0)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/jcat-1.0)
 
-GJS TypeScript type definitions for Jcat-1.0, generated from library version 0.2.6 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
+GJS TypeScript type definitions for Jcat-1.0, generated from library version 0.2.6 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.6.0.
 
 This package contains type declarations only. It ships no runtime code, so it adds
 nothing to your program and works with any bundler or none at all.

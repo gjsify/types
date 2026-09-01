@@ -352,7 +352,7 @@ export namespace Gdm {
 
     namespace GreeterProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Greeter.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -1329,7 +1329,7 @@ export namespace Gdm {
 
     namespace GreeterSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Greeter.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1949,7 +1949,7 @@ export namespace Gdm {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Manager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -2704,7 +2704,7 @@ export namespace Gdm {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Manager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::version": (pspec: GObject.ParamSpec) => void;
         }
@@ -3102,7 +3102,7 @@ export namespace Gdm {
 
     namespace UserVerifierChoiceListProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, UserVerifierChoiceList.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -3671,7 +3671,7 @@ export namespace Gdm {
 
     namespace UserVerifierChoiceListSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, UserVerifierChoiceList.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -3883,7 +3883,7 @@ export namespace Gdm {
 
     namespace UserVerifierCustomJSONProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, UserVerifierCustomJSON.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -4529,7 +4529,7 @@ export namespace Gdm {
 
     namespace UserVerifierCustomJSONSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, UserVerifierCustomJSON.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -4818,7 +4818,7 @@ export namespace Gdm {
 
     namespace UserVerifierProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, UserVerifier.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -5801,7 +5801,7 @@ export namespace Gdm {
 
     namespace UserVerifierSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, UserVerifier.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6427,7 +6427,7 @@ export namespace Gdm {
 
     namespace WorkerManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, WorkerManager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -7438,7 +7438,7 @@ export namespace Gdm {
 
     namespace WorkerManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, WorkerManager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -8282,6 +8282,105 @@ export namespace Gdm {
 
 
     namespace Greeter {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultLanguageNameChanged">"DefaultLanguageNameChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "default-language-name-changed": (arg_language_name: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.DefaultSessionNameChanged">"DefaultSessionNameChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "default-session-name-changed": (arg_session_name: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.BeginAutoLogin">BeginAutoLogin()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_begin_auto_login()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-begin-auto-login": (invocation: Gio.DBusMethodInvocation, arg_username: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.GetTimedLoginDetails">GetTimedLoginDetails()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_get_timed_login_details()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-timed-login-details": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectSession">SelectSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_select_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-select-session": (invocation: Gio.DBusMethodInvocation, arg_session: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.SelectUser">SelectUser()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_select_user()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-select-user": (invocation: Gio.DBusMethodInvocation, arg_username: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StartSessionWhenReady">StartSessionWhenReady()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_start_session_when_ready()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-start-session-when-ready": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_should_start_session: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Greeter.StopConflictingSession">StopConflictingSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_greeter_complete_stop_conflicting_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-stop-conflicting-session": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.Reauthenticated">"Reauthenticated"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            reauthenticated: (arg_service_name: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SelectedUserChanged">"SelectedUserChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "selected-user-changed": (arg_username: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.SessionOpened">"SessionOpened"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "session-opened": (arg_service_name: string, arg_session_id: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-Greeter.TimedLoginRequested">"TimedLoginRequested"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "timed-login-requested": (arg_username: string, arg_delay: number) => void;
+        }
         /**
          * Interface for implementing Greeter.
          * Contains only the virtual methods that need to be implemented.
@@ -8824,6 +8923,41 @@ export namespace Gdm {
     };
 
     namespace Manager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenReauthenticationChannel">OpenReauthenticationChannel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_manager_complete_open_reauthentication_channel()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-open-reauthentication-channel": (invocation: Gio.DBusMethodInvocation, arg_username: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.OpenSession">OpenSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_manager_complete_open_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-open-session": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterDisplay">RegisterDisplay()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_manager_complete_register_display()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-register-display": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-Manager.RegisterSession">RegisterSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_manager_complete_register_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-register-session": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing Manager.
          * Contains only the virtual methods that need to be implemented.
@@ -9145,6 +9279,137 @@ export namespace Gdm {
     };
 
     namespace UserVerifier {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStarted">"ConversationStarted"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "conversation-started": (arg_service_name: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ConversationStopped">"ConversationStopped"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "conversation-stopped": (arg_service_name: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.AnswerQuery">AnswerQuery()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_complete_answer_query()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-answer-query": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_answer: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerification">BeginVerification()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_complete_begin_verification()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-begin-verification": (invocation: Gio.DBusMethodInvocation, arg_service_name: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.BeginVerificationForUser">BeginVerificationForUser()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_complete_begin_verification_for_user()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-begin-verification-for-user": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_username: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.Cancel">Cancel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_complete_cancel()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-cancel": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier.EnableExtensions">EnableExtensions()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_complete_enable_extensions()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-enable-extensions": (invocation: Gio.DBusMethodInvocation, arg_extensions: string[]) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Info">"Info"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            info: (arg_service_name: string, arg_info: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.InfoQuery">"InfoQuery"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "info-query": (arg_service_name: string, arg_query: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Problem">"Problem"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            problem: (arg_service_name: string, arg_problem: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ReauthenticationStarted">"ReauthenticationStarted"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "reauthentication-started": (arg_pid_of_caller: number) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.Reset">"Reset"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            reset: () => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.SecretInfoQuery">"SecretInfoQuery"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "secret-info-query": (arg_service_name: string, arg_query: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.ServiceUnavailable">"ServiceUnavailable"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "service-unavailable": (arg_service_name: string, arg_message: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationComplete">"VerificationComplete"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "verification-complete": (arg_service_name: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier.VerificationFailed">"VerificationFailed"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "verification-failed": (arg_service_name: string) => void;
+        }
         /**
          * Interface for implementing UserVerifier.
          * Contains only the virtual methods that need to be implemented.
@@ -9693,6 +9958,25 @@ export namespace Gdm {
     };
 
     namespace UserVerifierChoiceList {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-ChoiceList.ChoiceQuery">"ChoiceQuery"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "choice-query": (arg_service_name: string, arg_prompt_message: string, arg_list: GLib.Variant) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-ChoiceList.SelectChoice">SelectChoice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_choice_list_complete_select_choice()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-select-choice": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_choice: string) => boolean | void;
+        }
         /**
          * Interface for implementing UserVerifierChoiceList.
          * Contains only the virtual methods that need to be implemented.
@@ -9827,6 +10111,33 @@ export namespace Gdm {
     };
 
     namespace UserVerifierCustomJSON {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.Reply">Reply()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_custom_json_complete_reply()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-reply": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_reply: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-UserVerifier-CustomJSON.ReportError">ReportError()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_user_verifier_custom_json_complete_report_error()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-report-error": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_error: string) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-gnome-DisplayManager-UserVerifier-CustomJSON.Request">"Request"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            request: (arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string) => void;
+        }
         /**
          * Interface for implementing UserVerifierCustomJSON.
          * Contains only the virtual methods that need to be implemented.
@@ -10038,6 +10349,65 @@ export namespace Gdm {
     };
 
     namespace WorkerManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.ChoiceListQuery">ChoiceListQuery()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_choice_list_query()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-choice-list-query": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_prompt_message: string, arg_query: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.CustomJSONRequest">CustomJSONRequest()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_custom_json_request()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-custom-json-request": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_protocol: string, arg_version: number, arg_request: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Hello">Hello()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_hello()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-hello": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Info">Info()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_info()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-info": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_info: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.InfoQuery">InfoQuery()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_info_query()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-info-query": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.Problem">Problem()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_problem()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-problem": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_problem: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-DisplayManager-WorkerManager.SecretInfoQuery">SecretInfoQuery()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gdm_worker_manager_complete_secret_info_query()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-secret-info-query": (invocation: Gio.DBusMethodInvocation, arg_service_name: string, arg_query: string) => boolean | void;
+        }
         /**
          * Interface for implementing WorkerManager.
          * Contains only the virtual methods that need to be implemented.

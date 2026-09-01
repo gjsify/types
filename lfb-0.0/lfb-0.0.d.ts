@@ -593,7 +593,7 @@ export namespace Lfb {
 
     namespace GdbusFeedbackHapticProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusFeedbackHaptic.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -1146,7 +1146,7 @@ export namespace Lfb {
 
     namespace GdbusFeedbackHapticSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusFeedbackHaptic.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1342,7 +1342,7 @@ export namespace Lfb {
 
     namespace GdbusFeedbackProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusFeedback.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -2001,7 +2001,7 @@ export namespace Lfb {
 
     namespace GdbusFeedbackSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusFeedback.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::profile": (pspec: GObject.ParamSpec) => void;
         }
@@ -2369,6 +2369,33 @@ export namespace Lfb {
 
 
     namespace GdbusFeedback {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-sigxcpu-Feedback.FeedbackEnded">"FeedbackEnded"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "feedback-ended": (arg_id: number, arg_reason: number) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-sigxcpu-Feedback.EndFeedback">EndFeedback()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `lfb_gdbus_feedback_complete_end_feedback()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-end-feedback": (invocation: Gio.DBusMethodInvocation, arg_id: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-sigxcpu-Feedback.TriggerFeedback">TriggerFeedback()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `lfb_gdbus_feedback_complete_trigger_feedback()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-trigger-feedback": (invocation: Gio.DBusMethodInvocation, arg_app_id: string, arg_event: string, arg_hints: GLib.Variant, arg_timeout: number) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusFeedback.
          * Contains only the virtual methods that need to be implemented.
@@ -2594,6 +2621,17 @@ export namespace Lfb {
     };
 
     namespace GdbusFeedbackHaptic {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-sigxcpu-Feedback-Haptic.Vibrate">Vibrate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `lfb_gdbus_feedback_haptic_complete_vibrate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-vibrate": (invocation: Gio.DBusMethodInvocation, arg_app_id: string, arg_pattern: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusFeedbackHaptic.
          * Contains only the virtual methods that need to be implemented.

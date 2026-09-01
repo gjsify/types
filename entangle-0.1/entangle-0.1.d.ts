@@ -139,7 +139,7 @@ export namespace Entangle {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-cameras": (pspec: GObject.ParamSpec) => void;
             "notify::preferences": (pspec: GObject.ParamSpec) => void;
             "notify::supported-cameras": (pspec: GObject.ParamSpec) => void;
@@ -1958,7 +1958,7 @@ export namespace Entangle {
 
     namespace CameraManager {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-first

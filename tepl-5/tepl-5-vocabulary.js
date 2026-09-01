@@ -24,6 +24,7 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
+    TeplLanguageChooser: ['language-activated'],
     TeplTab: ['close-request'],
 };
 
@@ -66,6 +67,7 @@ export const SLOT_CANDIDATES = {
 };
 
 export const SINCE = {
+    'TeplLanguageChooser::language-activated': '5.2',
     'TeplStyleSchemeChooserWidget.tepl-style-scheme-id': '5.0',
     'TeplTab.view': '3.0',
     'TeplTab::close-request': '3.0',

@@ -4502,7 +4502,7 @@ export namespace Egg {
 
     namespace SuggestionEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @action
@@ -5772,7 +5772,7 @@ export namespace Egg {
 
     namespace WidgetActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 

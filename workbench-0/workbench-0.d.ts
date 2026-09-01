@@ -409,7 +409,7 @@ export namespace Workbench {
 
     namespace CompletionRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::item-type": (pspec: GObject.ParamSpec) => void;

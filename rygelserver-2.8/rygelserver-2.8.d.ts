@@ -3839,7 +3839,7 @@ export namespace RygelServer {
 
     namespace HTTPRequest {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, RygelCore.StateMachine.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -4021,7 +4021,7 @@ export namespace RygelServer {
 
     namespace HTTPResponse {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, RygelCore.StateMachine.SignalSignatures {
             "notify::server": (pspec: GObject.ParamSpec) => void;
             "notify::priority": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
@@ -4227,7 +4227,7 @@ export namespace RygelServer {
 
     namespace HTTPServer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, RygelCore.StateMachine.SignalSignatures {
             "notify::path-root": (pspec: GObject.ParamSpec) => void;
             "notify::server-name": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
@@ -6003,6 +6003,17 @@ export namespace RygelServer {
     };
 
     namespace TrackableContainer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "child-added": (object: MediaObject) => void;
+            /**
+             * @signal
+             */
+            "child-removed": (object: MediaObject) => void;
+        }
         /**
          * Interface for implementing TrackableContainer.
          * Contains only the virtual methods that need to be implemented.
@@ -6600,6 +6611,21 @@ export namespace RygelServer {
     };
 
     namespace DataSource {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "data-available": (data: Uint8Array) => void;
+            /**
+             * @signal
+             */
+            done: () => void;
+            /**
+             * @signal
+             */
+            error: (_error_: GLib.Error) => void;
+        }
         /**
          * Interface for implementing DataSource.
          * Contains only the virtual methods that need to be implemented.

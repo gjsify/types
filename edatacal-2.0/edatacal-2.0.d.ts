@@ -107,7 +107,7 @@ export namespace EDataCal {
 
     namespace CalBackend {
         // Signal signatures
-        interface SignalSignatures extends EBackend.Backend.SignalSignatures {
+        interface SignalSignatures extends EBackend.Backend.SignalSignatures, ECal.TimezoneCache.SignalSignatures {
             /**
              * Emitted when a client destroys its {@link ECal.Client} for `backend`
              * @signal
@@ -1855,7 +1855,7 @@ export namespace EDataCal {
 
     namespace CalBackendSync {
         // Signal signatures
-        interface SignalSignatures extends CalBackend.SignalSignatures {
+        interface SignalSignatures extends CalBackend.SignalSignatures, ECal.TimezoneCache.SignalSignatures {
             "notify::cache-dir": (pspec: GObject.ParamSpec) => void;
             "notify::kind": (pspec: GObject.ParamSpec) => void;
             "notify::proxy-resolver": (pspec: GObject.ParamSpec) => void;
@@ -2240,7 +2240,7 @@ export namespace EDataCal {
 
     namespace CalCache {
         // Signal signatures
-        interface SignalSignatures extends EBackend.Cache.SignalSignatures {
+        interface SignalSignatures extends EBackend.Cache.SignalSignatures, ECal.TimezoneCache.SignalSignatures {
             /**
              * @signal
              * @action
@@ -2813,7 +2813,7 @@ export namespace EDataCal {
 
     namespace CalMetaBackend {
         // Signal signatures
-        interface SignalSignatures extends CalBackendSync.SignalSignatures {
+        interface SignalSignatures extends CalBackendSync.SignalSignatures, ECal.TimezoneCache.SignalSignatures {
             /**
              * @signal
              * @run-last

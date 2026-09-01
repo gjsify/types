@@ -27,6 +27,7 @@ export const OWN_PROPS = {
 };
 
 export const OWN_SIGNALS = {
+    TeplLanguageChooser: ['language-activated'],
     TeplPrefsDialog: ['reset-all'],
     TeplTab: ['close-request'],
 };
@@ -85,6 +86,7 @@ export const SINCE = {
     'TeplInfoBar.handle-close-response': '6.0',
     'TeplInfoBar.icon-from-message-type': '6.0',
     'TeplInfoBar.icon-name': '6.0',
+    'TeplLanguageChooser::language-activated': '6.0',
     'TeplOverwriteIndicator.overwrite': '6.4',
     'TeplPrefsDialog::reset-all': '6.13',
     'TeplProgressInfoBar.has-cancel-button': '6.0',

@@ -818,7 +818,7 @@ export namespace Handy {
 
     namespace ApplicationWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -1882,7 +1882,7 @@ export namespace Handy {
 
     namespace Carousel {
         // Signal signatures
-        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures, Swipeable.SignalSignatures {
             /**
              * This signal is emitted after a page has been changed.
              * 
@@ -3350,7 +3350,7 @@ export namespace Handy {
 
     namespace Deck {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, Swipeable.SignalSignatures {
             "notify::can-swipe-back": (pspec: GObject.ParamSpec) => void;
             "notify::can-swipe-forward": (pspec: GObject.ParamSpec) => void;
             "notify::hhomogeneous": (pspec: GObject.ParamSpec) => void;
@@ -4441,7 +4441,7 @@ export namespace Handy {
 
     namespace Flap {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, Swipeable.SignalSignatures {
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::flap": (pspec: GObject.ParamSpec) => void;
             "notify::flap-position": (pspec: GObject.ParamSpec) => void;
@@ -6610,7 +6610,7 @@ export namespace Handy {
 
     namespace Leaflet {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, Swipeable.SignalSignatures {
             "notify::can-swipe-back": (pspec: GObject.ParamSpec) => void;
             "notify::can-swipe-forward": (pspec: GObject.ParamSpec) => void;
             "notify::child-transition-duration": (pspec: GObject.ParamSpec) => void;
@@ -13092,6 +13092,20 @@ export namespace Handy {
     type WindowHandleClass = typeof WindowHandle;
 
     namespace Swipeable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the widget's visible child is changed.
+             * 
+             * `duration` can be 0 if the child is switched without animation.
+             * 
+             * This is used by {@link SwipeGroup}, applications should not connect to it.
+             * @signal
+             * @since 1.0
+             * @run-first
+             */
+            "child-switched": (index: number, duration: number) => void;
+        }
         /**
          * Interface for implementing Swipeable.
          * Contains only the virtual methods that need to be implemented.

@@ -797,7 +797,7 @@ export namespace Dazzle {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::menu-manager": (pspec: GObject.ParamSpec) => void;
             "notify::shortcut-manager": (pspec: GObject.ParamSpec) => void;
             "notify::theme-manager": (pspec: GObject.ParamSpec) => void;
@@ -971,7 +971,7 @@ export namespace Dazzle {
 
     namespace ApplicationWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::fullscreen": (pspec: GObject.ParamSpec) => void;
             "notify::titlebar-animation": (pspec: GObject.ParamSpec) => void;
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
@@ -3497,7 +3497,7 @@ export namespace Dazzle {
 
     namespace DirectoryModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::directory": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -3787,7 +3787,7 @@ export namespace Dazzle {
 
     namespace DockBin {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, DockItem.SignalSignatures {
             "notify::bottom-visible": (pspec: GObject.ParamSpec) => void;
             "notify::left-visible": (pspec: GObject.ParamSpec) => void;
             "notify::right-visible": (pspec: GObject.ParamSpec) => void;
@@ -4270,7 +4270,7 @@ export namespace Dazzle {
 
     namespace DockBinEdge {
         // Signal signatures
-        interface SignalSignatures extends DockRevealer.SignalSignatures {
+        interface SignalSignatures extends DockRevealer.SignalSignatures, DockItem.SignalSignatures {
             /**
              * @signal
              * @action
@@ -4791,7 +4791,7 @@ export namespace Dazzle {
 
     namespace DockOverlay {
         // Signal signatures
-        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures, DockItem.SignalSignatures {
             /**
              * @signal
              * @action
@@ -5212,7 +5212,7 @@ export namespace Dazzle {
 
     namespace DockOverlayEdge {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, DockItem.SignalSignatures {
             "notify::edge": (pspec: GObject.ParamSpec) => void;
             "notify::position": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
@@ -5630,7 +5630,7 @@ export namespace Dazzle {
 
     namespace DockPaned {
         // Signal signatures
-        interface SignalSignatures extends MultiPaned.SignalSignatures {
+        interface SignalSignatures extends MultiPaned.SignalSignatures, DockItem.SignalSignatures {
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -6273,7 +6273,7 @@ export namespace Dazzle {
 
     namespace DockStack {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DockItem.SignalSignatures {
             "notify::edge": (pspec: GObject.ParamSpec) => void;
             "notify::show-pinned-button": (pspec: GObject.ParamSpec) => void;
             "notify::style": (pspec: GObject.ParamSpec) => void;
@@ -6850,7 +6850,7 @@ export namespace Dazzle {
 
     namespace DockWidget {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, DockItem.SignalSignatures {
             "notify::can-close": (pspec: GObject.ParamSpec) => void;
             "notify::gicon": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -7303,7 +7303,7 @@ export namespace Dazzle {
 
     namespace DockWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+        interface SignalSignatures extends Gtk.Window.SignalSignatures, DockItem.SignalSignatures {
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::attached-to": (pspec: GObject.ParamSpec) => void;
@@ -8809,7 +8809,7 @@ export namespace Dazzle {
 
     namespace FuzzyIndexCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::case-sensitive": (pspec: GObject.ParamSpec) => void;
             "notify::index": (pspec: GObject.ParamSpec) => void;
             "notify::max-matches": (pspec: GObject.ParamSpec) => void;
@@ -10309,7 +10309,7 @@ export namespace Dazzle {
 
     namespace ListModelFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::child-model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10495,7 +10495,7 @@ export namespace Dazzle {
 
     namespace ListStoreAdapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -14620,7 +14620,7 @@ export namespace Dazzle {
 
     namespace PropertiesGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::object": (pspec: GObject.ParamSpec) => void;
             "notify::object-type": (pspec: GObject.ParamSpec) => void;
         }
@@ -15379,7 +15379,7 @@ export namespace Dazzle {
 
     namespace ReadOnlyListModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::base-model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -17175,7 +17175,7 @@ export namespace Dazzle {
 
     namespace ShortcutManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -17576,7 +17576,7 @@ export namespace Dazzle {
 
     namespace ShortcutModel {
         // Signal signatures
-        interface SignalSignatures extends Gtk.TreeStore.SignalSignatures {
+        interface SignalSignatures extends Gtk.TreeStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             "notify::manager": (pspec: GObject.ParamSpec) => void;
             "notify::theme": (pspec: GObject.ParamSpec) => void;
         }
@@ -21934,7 +21934,7 @@ export namespace Dazzle {
 
     namespace SuggestionEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @action
@@ -25189,7 +25189,7 @@ export namespace Dazzle {
 
     namespace WidgetActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -26927,6 +26927,24 @@ export namespace Dazzle {
     };
 
     namespace DockItem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "manager-set": (object: DockManager) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "needs-attention": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            presented: () => void;
+        }
         /**
          * Interface for implementing DockItem.
          * Contains only the virtual methods that need to be implemented.

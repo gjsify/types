@@ -1553,6 +1553,14 @@ export namespace Nemo {
     };
 
     namespace MenuProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "items-updated": () => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

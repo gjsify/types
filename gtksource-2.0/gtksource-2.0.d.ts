@@ -1441,7 +1441,7 @@ export namespace GtkSource {
 
     namespace CompletionItem {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, CompletionProposal.SignalSignatures {
             "notify::icon": (pspec: GObject.ParamSpec) => void;
             "notify::info": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
@@ -4333,6 +4333,17 @@ export namespace GtkSource {
 
 
     namespace CompletionProposal {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the proposal has changed. The completion popup
+             * will react to this by updating the shown information.
+             * @signal
+             * @action
+             * @run-last
+             */
+            changed: () => void;
+        }
         /**
          * Interface for implementing CompletionProposal.
          * Contains only the virtual methods that need to be implemented.
@@ -4666,6 +4677,25 @@ export namespace GtkSource {
     };
 
     namespace UndoManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the ability to redo has changed.
+             * @signal
+             * @since 2.10
+             * @action
+             * @run-last
+             */
+            "can-redo-changed": () => void;
+            /**
+             * Emitted when the ability to undo has changed.
+             * @signal
+             * @since 2.10
+             * @action
+             * @run-last
+             */
+            "can-undo-changed": () => void;
+        }
         /**
          * Interface for implementing UndoManager.
          * Contains only the virtual methods that need to be implemented.

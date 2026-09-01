@@ -350,7 +350,7 @@ export namespace Caribou {
 
     namespace KeyboardModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, IKeyboardObject.SignalSignatures {
             /**
              * @signal
              */
@@ -586,7 +586,7 @@ export namespace Caribou {
 
     namespace GroupModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, IKeyboardObject.SignalSignatures {
             "notify::active-level": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -679,7 +679,7 @@ export namespace Caribou {
 
     namespace LevelModel {
         // Signal signatures
-        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+        interface SignalSignatures extends ScannableGroup.SignalSignatures, IKeyboardObject.SignalSignatures {
             /**
              * @signal
              */
@@ -755,7 +755,7 @@ export namespace Caribou {
 
     namespace RowModel {
         // Signal signatures
-        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+        interface SignalSignatures extends ScannableGroup.SignalSignatures, IKeyboardObject.SignalSignatures {
             "notify::scan-stepping": (pspec: GObject.ParamSpec) => void;
             "notify::scan-selected": (pspec: GObject.ParamSpec) => void;
         }
@@ -872,7 +872,7 @@ export namespace Caribou {
 
     namespace KeyModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, IKeyboardObject.SignalSignatures {
             /**
              * @signal
              */
@@ -1116,7 +1116,7 @@ export namespace Caribou {
 
     namespace ColumnModel {
         // Signal signatures
-        interface SignalSignatures extends ScannableGroup.SignalSignatures {
+        interface SignalSignatures extends ScannableGroup.SignalSignatures, IKeyboardObject.SignalSignatures {
             "notify::scan-stepping": (pspec: GObject.ParamSpec) => void;
             "notify::scan-selected": (pspec: GObject.ParamSpec) => void;
         }
@@ -1449,7 +1449,7 @@ export namespace Caribou {
 
     namespace ScannableGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, IScannableGroup.SignalSignatures {
             "notify::scan-grouping": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -1822,6 +1822,21 @@ export namespace Caribou {
     };
 
     namespace IScannableGroup {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "selected-item-changed": (selected_item: IScannableItem | null) => void;
+            /**
+             * @signal
+             */
+            "step-item-changed": (step_item: IScannableItem | null) => void;
+            /**
+             * @signal
+             */
+            "scan-cleared": () => void;
+        }
         /**
          * Interface for implementing IScannableGroup.
          * Contains only the virtual methods that need to be implemented.
@@ -1926,6 +1941,21 @@ export namespace Caribou {
     };
 
     namespace IKeyboardObject {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "key-clicked": (key: KeyModel) => void;
+            /**
+             * @signal
+             */
+            "key-pressed": (key: KeyModel) => void;
+            /**
+             * @signal
+             */
+            "key-released": (key: KeyModel) => void;
+        }
         /**
          * Interface for implementing IKeyboardObject.
          * Contains only the virtual methods that need to be implemented.

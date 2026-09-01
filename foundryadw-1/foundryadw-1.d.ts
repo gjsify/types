@@ -177,7 +177,7 @@ export namespace FoundryAdw {
 
     namespace FileRow {
         // Signal signatures
-        interface SignalSignatures extends Adw.EntryRow.SignalSignatures {
+        interface SignalSignatures extends Adw.EntryRow.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::file": (pspec: GObject.ParamSpec) => void;
             "notify::file-type": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;

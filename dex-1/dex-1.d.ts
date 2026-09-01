@@ -2376,7 +2376,7 @@ export namespace Dex {
 
     namespace FutureListModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}

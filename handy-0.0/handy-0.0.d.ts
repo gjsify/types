@@ -3606,7 +3606,7 @@ export namespace Handy {
 
     namespace Leaflet {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, Swipeable.SignalSignatures {
             "notify::can-swipe-back": (pspec: GObject.ParamSpec) => void;
             "notify::can-swipe-forward": (pspec: GObject.ParamSpec) => void;
             "notify::child-transition-duration": (pspec: GObject.ParamSpec) => void;
@@ -4240,7 +4240,7 @@ export namespace Handy {
 
     namespace Paginator {
         // Signal signatures
-        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures, Swipeable.SignalSignatures {
             /**
              * This signal is emitted after a page has been changed. This can be used to
              * implement "infinite scrolling" by connecting to this signal and amending
@@ -7103,6 +7103,44 @@ export namespace Handy {
     type ViewSwitcherClass = typeof ViewSwitcher;
 
     namespace Swipeable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when a possible swipe is detected. This is used by
+             * {@link Handy.SwipeGroup}, applications should not connect to it.
+             * The `direction` value can be used to restrict the swipe to a certain
+             * direction.
+             * @signal
+             * @since 0.0.12
+             * @run-first
+             */
+            "begin-swipe": (direction: number) => void;
+            /**
+             * This signal is emitted as soon as the gesture has stopped. This is used by
+             * {@link Handy.SwipeGroup}, applications should not connect to it.
+             * @signal
+             * @since 0.0.12
+             * @run-first
+             */
+            "end-swipe": (duration: number, to: number) => void;
+            /**
+             * This signal should be emitted when the widget's visible child is changed.
+             * 
+             * `duration` can be 0 if the child is switched without animation.
+             * @signal
+             * @since 0.0.12
+             * @run-first
+             */
+            "switch-child": (index: number, duration: number) => void;
+            /**
+             * This signal is emitted every time the progress value changes. This is used
+             * by {@link Handy.SwipeGroup}, applications should not connect to it.
+             * @signal
+             * @since 0.0.12
+             * @run-first
+             */
+            "update-swipe": (value: number) => void;
+        }
         /**
          * Interface for implementing Swipeable.
          * Contains only the virtual methods that need to be implemented.

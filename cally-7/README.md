@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/cally-7)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/cally-7)
 
-GJS TypeScript type definitions for Cally-7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
+GJS TypeScript type definitions for Cally-7 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.6.0.
 
 This package contains type declarations only. It ships no runtime code, so it adds
 nothing to your program and works with any bundler or none at all.

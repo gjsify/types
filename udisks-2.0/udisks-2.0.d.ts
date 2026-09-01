@@ -1294,7 +1294,7 @@ export namespace UDisks {
 
     namespace BlockProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Block.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -3068,7 +3068,7 @@ export namespace UDisks {
 
     namespace BlockSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Block.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::configuration": (pspec: GObject.ParamSpec) => void;
             "notify::crypto-backing-device": (pspec: GObject.ParamSpec) => void;
@@ -5247,7 +5247,7 @@ export namespace UDisks {
 
     namespace DriveAtaProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, DriveAta.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -6897,7 +6897,7 @@ export namespace UDisks {
 
     namespace DriveAtaSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, DriveAta.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::aam-enabled": (pspec: GObject.ParamSpec) => void;
             "notify::aam-supported": (pspec: GObject.ParamSpec) => void;
@@ -9251,7 +9251,7 @@ export namespace UDisks {
 
     namespace DriveLsmLocalProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, DriveLsmLocal.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -10032,7 +10032,7 @@ export namespace UDisks {
 
     namespace DriveLsmLocalSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, DriveLsmLocal.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10456,7 +10456,7 @@ export namespace UDisks {
 
     namespace DriveProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Drive.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -11630,7 +11630,7 @@ export namespace UDisks {
 
     namespace DriveSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Drive.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::can-power-off": (pspec: GObject.ParamSpec) => void;
             "notify::configuration": (pspec: GObject.ParamSpec) => void;
@@ -12447,7 +12447,7 @@ export namespace UDisks {
 
     namespace EncryptedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Encrypted.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -13475,7 +13475,7 @@ export namespace UDisks {
 
     namespace EncryptedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Encrypted.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::child-configuration": (pspec: GObject.ParamSpec) => void;
             "notify::cleartext-device": (pspec: GObject.ParamSpec) => void;
@@ -14146,7 +14146,7 @@ export namespace UDisks {
 
     namespace FilesystemBTRFSProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, FilesystemBTRFS.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -15579,7 +15579,7 @@ export namespace UDisks {
 
     namespace FilesystemBTRFSSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, FilesystemBTRFS.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::num-devices": (pspec: GObject.ParamSpec) => void;
@@ -16653,7 +16653,7 @@ export namespace UDisks {
 
     namespace FilesystemProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Filesystem.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -17750,7 +17750,7 @@ export namespace UDisks {
 
     namespace FilesystemSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Filesystem.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::mount-points": (pspec: GObject.ParamSpec) => void;
             "notify::size": (pspec: GObject.ParamSpec) => void;
@@ -18490,7 +18490,7 @@ export namespace UDisks {
 
     namespace ISCSISessionProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, ISCSISession.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -19304,7 +19304,7 @@ export namespace UDisks {
 
     namespace ISCSISessionSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, ISCSISession.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::abort-timeout": (pspec: GObject.ParamSpec) => void;
             "notify::address": (pspec: GObject.ParamSpec) => void;
@@ -19761,7 +19761,7 @@ export namespace UDisks {
 
     namespace JobProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Job.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -20472,7 +20472,7 @@ export namespace UDisks {
 
     namespace JobSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Job.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::bytes": (pspec: GObject.ParamSpec) => void;
             "notify::cancelable": (pspec: GObject.ParamSpec) => void;
@@ -20826,7 +20826,7 @@ export namespace UDisks {
 
     namespace LogicalVolumeProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, LogicalVolume.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -22353,7 +22353,7 @@ export namespace UDisks {
 
     namespace LogicalVolumeSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, LogicalVolume.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::block-device": (pspec: GObject.ParamSpec) => void;
@@ -23521,7 +23521,7 @@ export namespace UDisks {
 
     namespace LoopProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Loop.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -24272,7 +24272,7 @@ export namespace UDisks {
 
     namespace LoopSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Loop.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::autoclear": (pspec: GObject.ParamSpec) => void;
             "notify::backing-file": (pspec: GObject.ParamSpec) => void;
@@ -24666,7 +24666,7 @@ export namespace UDisks {
 
     namespace MDRaidProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, MDRaid.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -25996,7 +25996,7 @@ export namespace UDisks {
 
     namespace MDRaidSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, MDRaid.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::active-devices": (pspec: GObject.ParamSpec) => void;
             "notify::bitmap-location": (pspec: GObject.ParamSpec) => void;
@@ -26967,7 +26967,7 @@ export namespace UDisks {
 
     namespace ManagerBTRFSProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, ManagerBTRFS.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -27543,7 +27543,7 @@ export namespace UDisks {
 
     namespace ManagerBTRFSSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, ManagerBTRFS.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -27760,7 +27760,7 @@ export namespace UDisks {
 
     namespace ManagerISCSIInitiatorProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, ManagerISCSIInitiator.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -28928,7 +28928,7 @@ export namespace UDisks {
 
     namespace ManagerISCSIInitiatorSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, ManagerISCSIInitiator.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::sessions-supported": (pspec: GObject.ParamSpec) => void;
         }
@@ -29737,7 +29737,7 @@ export namespace UDisks {
 
     namespace ManagerLVM2Proxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, ManagerLVM2.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -30304,7 +30304,7 @@ export namespace UDisks {
 
     namespace ManagerLVM2Skeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, ManagerLVM2.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -30512,7 +30512,7 @@ export namespace UDisks {
 
     namespace ManagerNVMeProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, ManagerNVMe.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -31285,7 +31285,7 @@ export namespace UDisks {
 
     namespace ManagerNVMeSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, ManagerNVMe.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::host-id": (pspec: GObject.ParamSpec) => void;
             "notify::host-nqn": (pspec: GObject.ParamSpec) => void;
@@ -31701,7 +31701,7 @@ export namespace UDisks {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Manager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -33132,7 +33132,7 @@ export namespace UDisks {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Manager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::default-encryption-type": (pspec: GObject.ParamSpec) => void;
             "notify::supported-encryption-types": (pspec: GObject.ParamSpec) => void;
@@ -34206,7 +34206,7 @@ export namespace UDisks {
 
     namespace NVMeControllerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, NVMeController.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -35350,7 +35350,7 @@ export namespace UDisks {
 
     namespace NVMeControllerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, NVMeController.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::controller-id": (pspec: GObject.ParamSpec) => void;
             "notify::fguid": (pspec: GObject.ParamSpec) => void;
@@ -36137,7 +36137,7 @@ export namespace UDisks {
 
     namespace NVMeFabricsProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, NVMeFabrics.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -36764,7 +36764,7 @@ export namespace UDisks {
 
     namespace NVMeFabricsSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, NVMeFabrics.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::host-id": (pspec: GObject.ParamSpec) => void;
             "notify::host-nqn": (pspec: GObject.ParamSpec) => void;
@@ -37034,7 +37034,7 @@ export namespace UDisks {
 
     namespace NVMeNamespaceProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, NVMeNamespace.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -37757,7 +37757,7 @@ export namespace UDisks {
 
     namespace NVMeNamespaceSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, NVMeNamespace.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::eui64": (pspec: GObject.ParamSpec) => void;
             "notify::format-percent-remaining": (pspec: GObject.ParamSpec) => void;
@@ -38259,7 +38259,7 @@ export namespace UDisks {
 
     namespace ObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -38780,7 +38780,7 @@ export namespace UDisks {
 
     namespace ObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::block": (pspec: GObject.ParamSpec) => void;
@@ -39531,7 +39531,7 @@ export namespace UDisks {
 
     namespace ObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::block": (pspec: GObject.ParamSpec) => void;
             "notify::block-lvm2": (pspec: GObject.ParamSpec) => void;
@@ -40461,7 +40461,7 @@ export namespace UDisks {
 
     namespace PartitionProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Partition.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -41519,7 +41519,7 @@ export namespace UDisks {
 
     namespace PartitionSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Partition.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::is-contained": (pspec: GObject.ParamSpec) => void;
@@ -42220,7 +42220,7 @@ export namespace UDisks {
 
     namespace PartitionTableProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, PartitionTable.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -42910,7 +42910,7 @@ export namespace UDisks {
 
     namespace PartitionTableSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, PartitionTable.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::partitions": (pspec: GObject.ParamSpec) => void;
             "notify::type": (pspec: GObject.ParamSpec) => void;
@@ -43960,7 +43960,7 @@ export namespace UDisks {
 
     namespace SwapspaceProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Swapspace.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -44744,7 +44744,7 @@ export namespace UDisks {
 
     namespace SwapspaceSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Swapspace.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
         }
@@ -45171,7 +45171,7 @@ export namespace UDisks {
 
     namespace VDOVolumeProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, VDOVolume.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -46191,7 +46191,7 @@ export namespace UDisks {
 
     namespace VDOVolumeSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, VDOVolume.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::compression": (pspec: GObject.ParamSpec) => void;
             "notify::compression-state": (pspec: GObject.ParamSpec) => void;
@@ -46852,7 +46852,7 @@ export namespace UDisks {
 
     namespace VolumeGroupProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, VolumeGroup.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -48496,7 +48496,7 @@ export namespace UDisks {
 
     namespace VolumeGroupSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, VolumeGroup.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::extent-size": (pspec: GObject.ParamSpec) => void;
             "notify::free-size": (pspec: GObject.ParamSpec) => void;
@@ -50723,6 +50723,99 @@ export namespace UDisks {
 
 
     namespace Block {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.AddConfigurationItem">AddConfigurationItem()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_add_configuration_item()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-add-configuration-item": (invocation: Gio.DBusMethodInvocation, arg_item: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Format">Format()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_format()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-format": (invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.GetSecretConfiguration">GetSecretConfiguration()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_get_secret_configuration()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-secret-configuration": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenDevice">OpenDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_open_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.3
+             * @run-last
+             */
+            "handle-open-device": (invocation: Gio.DBusMethodInvocation, fd_list: Gio.UnixFDList | null, arg_mode: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBackup">OpenForBackup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_open_for_backup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-open-for-backup": (invocation: Gio.DBusMethodInvocation, fd_list: Gio.UnixFDList | null, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForBenchmark">OpenForBenchmark()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_open_for_benchmark()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-open-for-benchmark": (invocation: Gio.DBusMethodInvocation, fd_list: Gio.UnixFDList | null, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.OpenForRestore">OpenForRestore()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_open_for_restore()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-open-for-restore": (invocation: Gio.DBusMethodInvocation, fd_list: Gio.UnixFDList | null, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RemoveConfigurationItem">RemoveConfigurationItem()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_remove_configuration_item()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-remove-configuration-item": (invocation: Gio.DBusMethodInvocation, arg_item: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.Rescan">Rescan()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_rescan()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-rescan": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.RestoreEncryptedHeader">RestoreEncryptedHeader()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_restore_encrypted_header()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-restore-encrypted-header": (invocation: Gio.DBusMethodInvocation, arg_backup_file: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.UpdateConfigurationItem">UpdateConfigurationItem()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_block_complete_update_configuration_item()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-update-configuration-item": (invocation: Gio.DBusMethodInvocation, arg_old_item: GLib.Variant, arg_new_item: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Block.
          * Contains only the virtual methods that need to be implemented.
@@ -52097,6 +52190,34 @@ export namespace UDisks {
     };
 
     namespace Drive {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.Eject">Eject()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_complete_eject()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-eject": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.PowerOff">PowerOff()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_complete_power_off()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-power-off": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive.SetConfiguration">SetConfiguration()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_complete_set_configuration()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-configuration": (invocation: Gio.DBusMethodInvocation, arg_value: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Drive.
          * Contains only the virtual methods that need to be implemented.
@@ -52809,6 +52930,82 @@ export namespace UDisks {
     };
 
     namespace DriveAta {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmGetState">PmGetState()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_pm_get_state()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-pm-get-state": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmStandby">PmStandby()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_pm_standby()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-pm-standby": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.PmWakeup">PmWakeup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_pm_wakeup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-pm-wakeup": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SecurityEraseUnit">SecurityEraseUnit()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_security_erase_unit()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-security-erase-unit": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_smart_get_attributes()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-smart-get-attributes": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_smart_selftest_abort()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-smart-selftest-abort": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_smart_selftest_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-smart-selftest-start": (invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSetEnabled">SmartSetEnabled()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_smart_set_enabled()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-smart-set-enabled": (invocation: Gio.DBusMethodInvocation, arg_value: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartUpdate">SmartUpdate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_ata_complete_smart_update()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-smart-update": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing DriveAta.
          * Contains only the virtual methods that need to be implemented.
@@ -54257,6 +54454,45 @@ export namespace UDisks {
     };
 
     namespace DriveLsmLocal {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-LsmLocal.TurnFaultLEDOff">TurnFaultLEDOff()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_lsm_local_complete_turn_fault_ledoff()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.6.3
+             * @run-last
+             */
+            "handle-turn-fault-ledoff": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-LsmLocal.TurnFaultLEDOn">TurnFaultLEDOn()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_lsm_local_complete_turn_fault_ledon()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.6.3
+             * @run-last
+             */
+            "handle-turn-fault-ledon": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-LsmLocal.TurnIdentLEDOff">TurnIdentLEDOff()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_lsm_local_complete_turn_ident_ledoff()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.6.3
+             * @run-last
+             */
+            "handle-turn-ident-ledoff": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-LsmLocal.TurnIdentLEDOn">TurnIdentLEDOn()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_drive_lsm_local_complete_turn_ident_ledon()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.6.3
+             * @run-last
+             */
+            "handle-turn-ident-ledon": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing DriveLsmLocal.
          * Contains only the virtual methods that need to be implemented.
@@ -54603,6 +54839,60 @@ export namespace UDisks {
     };
 
     namespace Encrypted {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_change_passphrase()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-change-passphrase": (invocation: Gio.DBusMethodInvocation, arg_passphrase: string, arg_new_passphrase: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Convert">Convert()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_convert()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-convert": (invocation: Gio.DBusMethodInvocation, arg_target_version: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.HeaderBackup">HeaderBackup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_header_backup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-header-backup": (invocation: Gio.DBusMethodInvocation, arg_backup_file: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_lock()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-lock": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Resize">Resize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.8.0
+             * @run-last
+             */
+            "handle-resize": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Unlock">Unlock()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_encrypted_complete_unlock()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-unlock": (invocation: Gio.DBusMethodInvocation, arg_passphrase: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Encrypted.
          * Contains only the virtual methods that need to be implemented.
@@ -55194,6 +55484,75 @@ export namespace UDisks {
     };
 
     namespace Filesystem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Check">Check()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_check()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-check": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Mount">Mount()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_mount()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-mount": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Repair">Repair()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_repair()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-repair": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Resize">Resize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-resize": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetLabel">SetLabel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_set_label()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-label": (invocation: Gio.DBusMethodInvocation, arg_label: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetUUID">SetUUID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_set_uuid()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-set-uuid": (invocation: Gio.DBusMethodInvocation, arg_uuid: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.TakeOwnership">TakeOwnership()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_take_ownership()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-take-ownership": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Unmount">Unmount()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_complete_unmount()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-unmount": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Filesystem.
          * Contains only the virtual methods that need to be implemented.
@@ -55856,6 +56215,108 @@ export namespace UDisks {
     };
 
     namespace FilesystemBTRFS {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.AddDevice">AddDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_add_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.0
+             * @run-last
+             */
+            "handle-add-device": (invocation: Gio.DBusMethodInvocation, arg_device: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSnapshot">CreateSnapshot()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_create_snapshot()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-create-snapshot": (invocation: Gio.DBusMethodInvocation, arg_source: string, arg_dest: string, arg_ro: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.CreateSubvolume">CreateSubvolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_create_subvolume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-create-subvolume": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetDefaultSubvolumeID">GetDefaultSubvolumeID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_get_default_subvolume_id()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-get-default-subvolume-id": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.GetSubvolumes">GetSubvolumes()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_get_subvolumes()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-get-subvolumes": (invocation: Gio.DBusMethodInvocation, arg_snapshots_only: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveDevice">RemoveDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_remove_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.0
+             * @run-last
+             */
+            "handle-remove-device": (invocation: Gio.DBusMethodInvocation, arg_device: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.RemoveSubvolume">RemoveSubvolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_remove_subvolume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-remove-subvolume": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Repair">Repair()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_repair()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.0
+             * @run-last
+             */
+            "handle-repair": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.Resize">Resize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.0
+             * @run-last
+             */
+            "handle-resize": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetDefaultSubvolumeID">SetDefaultSubvolumeID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_set_default_subvolume_id()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-set-default-subvolume-id": (invocation: Gio.DBusMethodInvocation, arg_id: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem-BTRFS.SetLabel">SetLabel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_filesystem_btrfs_complete_set_label()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-set-label": (invocation: Gio.DBusMethodInvocation, arg_label: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing FilesystemBTRFS.
          * Contains only the virtual methods that need to be implemented.
@@ -56850,6 +57311,27 @@ export namespace UDisks {
     };
 
     namespace ISCSISession {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-ISCSI-Session.Logout">Logout()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_iscsi_session_complete_logout()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-logout": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-ISCSI-Session.LogoutInterface">LogoutInterface()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_iscsi_session_complete_logout_interface()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-logout-interface": (invocation: Gio.DBusMethodInvocation, arg_iface: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing ISCSISession.
          * Contains only the virtual methods that need to be implemented.
@@ -57221,6 +57703,25 @@ export namespace UDisks {
     };
 
     namespace Job {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-UDisks2-Job.Completed">"Completed"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            completed: (arg_success: boolean, arg_message: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Job.Cancel">Cancel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_job_complete_cancel()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-cancel": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Job.
          * Contains only the virtual methods that need to be implemented.
@@ -57489,6 +57990,99 @@ export namespace UDisks {
     };
 
     namespace LogicalVolume {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Activate">Activate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_activate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-activate": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheAttach">CacheAttach()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_cache_attach()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-cache-attach": (invocation: Gio.DBusMethodInvocation, arg_cache_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheDetach">CacheDetach()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_cache_detach()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-cache-detach": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CacheSplit">CacheSplit()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_cache_split()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-cache-split": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.CreateSnapshot">CreateSnapshot()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_create_snapshot()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-snapshot": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Deactivate">Deactivate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_deactivate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-deactivate": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Rename">Rename()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_rename()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-rename": (invocation: Gio.DBusMethodInvocation, arg_new_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Repair">Repair()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_repair()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-repair": (invocation: Gio.DBusMethodInvocation, arg_pvs: string[], arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-LogicalVolume.Resize">Resize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_logical_volume_complete_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-resize": (invocation: Gio.DBusMethodInvocation, arg_new_size: number, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing LogicalVolume.
          * Contains only the virtual methods that need to be implemented.
@@ -58566,6 +59160,34 @@ export namespace UDisks {
     };
 
     namespace Loop {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_loop_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetAutoclear">SetAutoclear()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_loop_complete_set_autoclear()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-autoclear": (invocation: Gio.DBusMethodInvocation, arg_value: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Loop.SetCapacity">SetCapacity()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_loop_complete_set_capacity()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11.0
+             * @run-last
+             */
+            "handle-set-capacity": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Loop.
          * Contains only the virtual methods that need to be implemented.
@@ -58881,6 +59503,72 @@ export namespace UDisks {
     };
 
     namespace MDRaid {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.AddDevice">AddDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_add_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-add-device": (invocation: Gio.DBusMethodInvocation, arg_device: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RemoveDevice">RemoveDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_remove_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-remove-device": (invocation: Gio.DBusMethodInvocation, arg_device: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RequestSyncAction">RequestSyncAction()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_request_sync_action()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-request-sync-action": (invocation: Gio.DBusMethodInvocation, arg_sync_action: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.SetBitmapLocation">SetBitmapLocation()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_set_bitmap_location()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-set-bitmap-location": (invocation: Gio.DBusMethodInvocation, arg_value: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Start">Start()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-start": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Stop">Stop()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_mdraid_complete_stop()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-stop": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing MDRaid.
          * Contains only the virtual methods that need to be implemented.
@@ -59760,6 +60448,107 @@ export namespace UDisks {
     };
 
     namespace Manager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanCheck">CanCheck()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_can_check()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-can-check": (invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanFormat">CanFormat()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_can_format()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-can-format": (invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanRepair">CanRepair()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_can_repair()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-can-repair": (invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.CanResize">CanResize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_can_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-can-resize": (invocation: Gio.DBusMethodInvocation, arg_type: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModule">EnableModule()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_enable_module()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-enable-module": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_enable: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModules">EnableModules()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_enable_modules()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @deprecated The D-Bus method has been deprecated.
+             * @run-last
+             */
+            "handle-enable-modules": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetBlockDevices">GetBlockDevices()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_get_block_devices()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.2
+             * @run-last
+             */
+            "handle-get-block-devices": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.GetDrives">GetDrives()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_get_drives()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.11
+             * @run-last
+             */
+            "handle-get-drives": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.LoopSetup">LoopSetup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_loop_setup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-loop-setup": (invocation: Gio.DBusMethodInvocation, fd_list: Gio.UnixFDList | null, arg_fd: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.MDRaidCreate">MDRaidCreate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_mdraid_create()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-mdraid-create": (invocation: Gio.DBusMethodInvocation, arg_blocks: string[], arg_level: string, arg_name: string, arg_chunk: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.ResolveDevice">ResolveDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_complete_resolve_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.7.3
+             * @run-last
+             */
+            "handle-resolve-device": (invocation: Gio.DBusMethodInvocation, arg_devspec: GLib.Variant, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Manager.
          * Contains only the virtual methods that need to be implemented.
@@ -60754,6 +61543,18 @@ export namespace UDisks {
     };
 
     namespace ManagerBTRFS {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-BTRFS.CreateVolume">CreateVolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_btrfs_complete_create_volume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.0
+             * @run-last
+             */
+            "handle-create-volume": (invocation: Gio.DBusMethodInvocation, arg_devices: string[], arg_label: string, arg_data_level: string, arg_md_level: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing ManagerBTRFS.
          * Contains only the virtual methods that need to be implemented.
@@ -60893,6 +61694,81 @@ export namespace UDisks {
     };
 
     namespace ManagerISCSIInitiator {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.DiscoverFirmware">DiscoverFirmware()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_discover_firmware()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-discover-firmware": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.DiscoverSendTargets">DiscoverSendTargets()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_discover_send_targets()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.3.1
+             * @run-last
+             */
+            "handle-discover-send-targets": (invocation: Gio.DBusMethodInvocation, arg_address: string, arg_port: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.GetFirmwareInitiatorName">GetFirmwareInitiatorName()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_get_firmware_initiator_name()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.4.0
+             * @run-last
+             */
+            "handle-get-firmware-initiator-name": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.GetInitiatorName">GetInitiatorName()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_get_initiator_name()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.1
+             * @run-last
+             */
+            "handle-get-initiator-name": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.GetInitiatorNameRaw">GetInitiatorNameRaw()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_get_initiator_name_raw()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.8.3
+             * @run-last
+             */
+            "handle-get-initiator-name-raw": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.Login">Login()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_login()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-login": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.Logout">Logout()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_logout()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-logout": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_tpgt: number, arg_address: string, arg_port: number, arg_iface: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-ISCSI-Initiator.SetInitiatorName">SetInitiatorName()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_iscsi_initiator_complete_set_initiator_name()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.1.3
+             * @run-last
+             */
+            "handle-set-initiator-name": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing ManagerISCSIInitiator.
          * Contains only the virtual methods that need to be implemented.
@@ -61625,6 +62501,18 @@ export namespace UDisks {
     };
 
     namespace ManagerLVM2 {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-LVM2.VolumeGroupCreate">VolumeGroupCreate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_lvm2_complete_volume_group_create()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-volume-group-create": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_blocks: string[], arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing ManagerLVM2.
          * Contains only the virtual methods that need to be implemented.
@@ -61755,6 +62643,36 @@ export namespace UDisks {
     };
 
     namespace ManagerNVMe {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.Connect">Connect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_nvme_complete_connect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-connect": (invocation: Gio.DBusMethodInvocation, arg_subsysnqn: string, arg_transport: string, arg_transport_addr: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostID">SetHostID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_nvme_complete_set_host_id()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-set-host-id": (invocation: Gio.DBusMethodInvocation, arg_hostid: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager-NVMe.SetHostNQN">SetHostNQN()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_manager_nvme_complete_set_host_nqn()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-set-host-nqn": (invocation: Gio.DBusMethodInvocation, arg_hostnqn: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing ManagerNVMe.
          * Contains only the virtual methods that need to be implemented.
@@ -62093,6 +63011,54 @@ export namespace UDisks {
     };
 
     namespace NVMeController {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SanitizeStart">SanitizeStart()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_controller_complete_sanitize_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-sanitize-start": (invocation: Gio.DBusMethodInvocation, arg_action: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartGetAttributes">SmartGetAttributes()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_controller_complete_smart_get_attributes()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-smart-get-attributes": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestAbort">SmartSelftestAbort()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_controller_complete_smart_selftest_abort()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-smart-selftest-abort": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartSelftestStart">SmartSelftestStart()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_controller_complete_smart_selftest_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-smart-selftest-start": (invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Controller.SmartUpdate">SmartUpdate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_controller_complete_smart_update()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-smart-update": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing NVMeController.
          * Contains only the virtual methods that need to be implemented.
@@ -62790,6 +63756,18 @@ export namespace UDisks {
     };
 
     namespace NVMeFabrics {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Fabrics.Disconnect">Disconnect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_fabrics_complete_disconnect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-disconnect": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing NVMeFabrics.
          * Contains only the virtual methods that need to be implemented.
@@ -62980,6 +63958,18 @@ export namespace UDisks {
     };
 
     namespace NVMeNamespace {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-NVMe-Namespace.FormatNamespace">FormatNamespace()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_nvme_namespace_complete_format_namespace()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-format-namespace": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing NVMeNamespace.
          * Contains only the virtual methods that need to be implemented.
@@ -63259,6 +64249,8 @@ export namespace UDisks {
     };
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObject.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -63898,6 +64890,58 @@ export namespace UDisks {
     };
 
     namespace Partition {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Resize">Resize()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_resize()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-resize": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetFlags">SetFlags()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_set_flags()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-flags": (invocation: Gio.DBusMethodInvocation, arg_flags: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetName">SetName()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_set_name()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-name": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetType">SetType()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_set_type()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-type": (invocation: Gio.DBusMethodInvocation, arg_type: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetUUID">SetUUID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_complete_set_uuid()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-set-uuid": (invocation: Gio.DBusMethodInvocation, arg_uuid: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Partition.
          * Contains only the virtual methods that need to be implemented.
@@ -64513,6 +65557,25 @@ export namespace UDisks {
     };
 
     namespace PartitionTable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_table_complete_create_partition()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create-partition": (invocation: Gio.DBusMethodInvocation, arg_offset: number, arg_size: number, arg_type: string, arg_name: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_partition_table_complete_create_partition_and_format()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create-partition-and-format": (invocation: Gio.DBusMethodInvocation, arg_offset: number, arg_size: number, arg_type: string, arg_name: string, arg_options: GLib.Variant, arg_format_type: string, arg_format_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing PartitionTable.
          * Contains only the virtual methods that need to be implemented.
@@ -64859,6 +65922,42 @@ export namespace UDisks {
     };
 
     namespace Swapspace {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetLabel">SetLabel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_swapspace_complete_set_label()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-label": (invocation: Gio.DBusMethodInvocation, arg_label: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.SetUUID">SetUUID()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_swapspace_complete_set_uuid()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.10.0
+             * @run-last
+             */
+            "handle-set-uuid": (invocation: Gio.DBusMethodInvocation, arg_uuid: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Start">Start()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_swapspace_complete_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-start": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-Swapspace.Stop">Stop()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_swapspace_complete_stop()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-stop": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing Swapspace.
          * Contains only the virtual methods that need to be implemented.
@@ -65209,6 +66308,54 @@ export namespace UDisks {
     };
 
     namespace VDOVolume {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableCompression">EnableCompression()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_vdo_volume_complete_enable_compression()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-enable-compression": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.EnableDeduplication">EnableDeduplication()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_vdo_volume_complete_enable_deduplication()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-enable-deduplication": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.GetStatistics">GetStatistics()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_vdo_volume_complete_get_statistics()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-get-statistics": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizeLogical">ResizeLogical()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_vdo_volume_complete_resize_logical()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-resize-logical": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VDOVolume.ResizePhysical">ResizePhysical()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_vdo_volume_complete_resize_physical()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.9.0
+             * @run-last
+             */
+            "handle-resize-physical": (invocation: Gio.DBusMethodInvocation, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing VDOVolume.
          * Contains only the virtual methods that need to be implemented.
@@ -65787,6 +66934,117 @@ export namespace UDisks {
     };
 
     namespace VolumeGroup {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.AddDevice">AddDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_add_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-add-device": (invocation: Gio.DBusMethodInvocation, arg_block: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolume">CreatePlainVolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_create_plain_volume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-plain-volume": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreatePlainVolumeWithLayout">CreatePlainVolumeWithLayout()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_create_plain_volume_with_layout()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-plain-volume-with-layout": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_size: number, arg_layout: string, arg_pvs: string[], arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinPoolVolume">CreateThinPoolVolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_create_thin_pool_volume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-thin-pool-volume": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_size: number, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateThinVolume">CreateThinVolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_create_thin_volume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-thin-volume": (invocation: Gio.DBusMethodInvocation, arg_name: string, arg_size: number, arg_pool: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.CreateVDOVolume">CreateVDOVolume()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_create_vdo_volume()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-create-vdo-volume": (invocation: Gio.DBusMethodInvocation, arg_lv_name: string, arg_pool_name: string, arg_data_size: number, arg_virtual_size: number, arg_index_memory: number, arg_compression: boolean, arg_deduplication: boolean, arg_write_policy: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_wipe: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.EmptyDevice">EmptyDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_empty_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-empty-device": (invocation: Gio.DBusMethodInvocation, arg_block: string, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Poll">Poll()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_poll()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-poll": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveDevice">RemoveDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_remove_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-remove-device": (invocation: Gio.DBusMethodInvocation, arg_block: string, arg_wipe: boolean, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.RemoveMissingPhysicalVolumes">RemoveMissingPhysicalVolumes()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_remove_missing_physical_volumes()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-remove-missing-physical-volumes": (invocation: Gio.DBusMethodInvocation, arg_options: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-UDisks2-VolumeGroup.Rename">Rename()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `udisks_volume_group_complete_rename()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 2.0.0
+             * @run-last
+             */
+            "handle-rename": (invocation: Gio.DBusMethodInvocation, arg_new_name: string, arg_options: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing VolumeGroup.
          * Contains only the virtual methods that need to be implemented.

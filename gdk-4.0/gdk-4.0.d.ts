@@ -18625,7 +18625,7 @@ export namespace Gdk {
 
     namespace DmabufTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {
+        interface SignalSignatures extends Texture.SignalSignatures, Paintable.SignalSignatures {
             "notify::color-state": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -21102,7 +21102,7 @@ export namespace Gdk {
 
     namespace GLTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {
+        interface SignalSignatures extends Texture.SignalSignatures, Paintable.SignalSignatures {
             "notify::color-state": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -22070,7 +22070,7 @@ export namespace Gdk {
 
     namespace MemoryTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {
+        interface SignalSignatures extends Texture.SignalSignatures, Paintable.SignalSignatures {
             "notify::color-state": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -24013,7 +24013,7 @@ export namespace Gdk {
 
     namespace Texture {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Paintable.SignalSignatures {
             "notify::color-state": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -26393,6 +26393,28 @@ export namespace Gdk {
     };
 
     namespace DragSurface {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the size for the surface needs to be computed, when it is
+             * present.
+             * 
+             * This signal will normally be emitted during the native surface layout
+             * cycle when the surface size needs to be recomputed.
+             * 
+             * It is the responsibility of the drag surface user to handle this signal
+             * and compute the desired size of the surface, storing the computed size
+             * in the {@link Gdk.DragSurfaceSize} object that is passed to the signal
+             * handler, using {@link Gdk.DragSurfaceSize.set_size}.
+             * 
+             * Failing to set a size so will result in an arbitrary size being used as
+             * a result.
+             * @signal
+             * @since 4.12
+             * @run-last
+             */
+            "compute-size": (size: DragSurfaceSize) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Surface.ConstructorProps {}
@@ -26424,6 +26446,33 @@ export namespace Gdk {
     };
 
     namespace Paintable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the contents of the `paintable` change.
+             * 
+             * Examples for such an event would be videos changing to the next frame or
+             * the icon theme for an icon changing.
+             * @signal
+             * @run-last
+             */
+            "invalidate-contents": () => void;
+            /**
+             * Emitted when the intrinsic size of the `paintable` changes.
+             * 
+             * This means the values reported by at least one of
+             * {@link Gdk.Paintable.get_intrinsic_width},
+             * {@link Gdk.Paintable.get_intrinsic_height} or
+             * {@link Gdk.Paintable.get_intrinsic_aspect_ratio}
+             * has changed.
+             * 
+             * Examples for such an event would be a paintable displaying
+             * the contents of a toplevel surface being resized.
+             * @signal
+             * @run-last
+             */
+            "invalidate-size": () => void;
+        }
         /**
          * Interface for implementing Paintable.
          * Contains only the virtual methods that need to be implemented.
@@ -26838,6 +26887,27 @@ export namespace Gdk {
     };
 
     namespace Toplevel {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the size for the surface needs to be computed, when
+             * it is present.
+             * 
+             * This signal will normally be emitted during or after a call to
+             * {@link Gdk.Toplevel.present}, depending on the configuration
+             * received by the windowing system. It may also be emitted at any
+             * other point in time, in response to the windowing system
+             * spontaneously changing the configuration of the toplevel surface.
+             * 
+             * It is the responsibility of the toplevel user to handle this signal
+             * and compute the desired size of the toplevel, given the information
+             * passed via the {@link Gdk.ToplevelSize} object. Failing to do so
+             * will result in an arbitrary size being used as a result.
+             * @signal
+             * @run-last
+             */
+            "compute-size": (size: ToplevelSize) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Surface.ConstructorProps {

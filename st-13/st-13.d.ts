@@ -814,7 +814,7 @@ export namespace St {
 
     namespace Bin {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
@@ -1223,7 +1223,7 @@ export namespace St {
 
     namespace BoxLayout {
         // Signal signatures
-        interface SignalSignatures extends Viewport.SignalSignatures {
+        interface SignalSignatures extends Viewport.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::pack-start": (pspec: GObject.ParamSpec) => void;
             "notify::vertical": (pspec: GObject.ParamSpec) => void;
             "notify::clip-to-view": (pspec: GObject.ParamSpec) => void;
@@ -1687,7 +1687,7 @@ export namespace St {
 
     namespace Button {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Emitted when the user activates the button, either with a mouse press and
              * release or with the keyboard.
@@ -2285,7 +2285,7 @@ export namespace St {
 
     namespace DrawingArea {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -2654,7 +2654,7 @@ export namespace St {
 
     namespace Entry {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Emitted when the primary icon is clicked.
              * @signal
@@ -3315,7 +3315,7 @@ export namespace St {
 
     namespace GenericAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             /**
              * Emitted when `atk_value_get_current_value()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3600,7 +3600,7 @@ export namespace St {
 
     namespace Icon {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::fallback-gicon": (pspec: GObject.ParamSpec) => void;
             "notify::fallback-icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::gicon": (pspec: GObject.ParamSpec) => void;
@@ -4594,7 +4594,7 @@ export namespace St {
 
     namespace ImageContent {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Image.SignalSignatures {
+        interface SignalSignatures extends Clutter.Image.SignalSignatures, Clutter.Content.SignalSignatures {
             "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
             "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
         }
@@ -4933,7 +4933,7 @@ export namespace St {
 
     namespace Label {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
             "notify::text": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
@@ -5301,7 +5301,7 @@ export namespace St {
 
     namespace PasswordEntry {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::password-visible": (pspec: GObject.ParamSpec) => void;
             "notify::show-peek-icon": (pspec: GObject.ParamSpec) => void;
             "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
@@ -5691,7 +5691,7 @@ export namespace St {
 
     namespace ScrollBar {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Emitted when the {@link St.ScrollBar} begins scrolling.
              * @signal
@@ -6065,7 +6065,7 @@ export namespace St {
 
     namespace ScrollView {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::enable-mouse-scrolling": (pspec: GObject.ParamSpec) => void;
             "notify::hscroll": (pspec: GObject.ParamSpec) => void;
             "notify::hscrollbar-policy": (pspec: GObject.ParamSpec) => void;
@@ -7837,7 +7837,7 @@ export namespace St {
 
     namespace Viewport {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::clip-to-view": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
@@ -8368,7 +8368,7 @@ export namespace St {
 
     namespace Widget {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Emitted when the user has requested a context menu (eg, via a keybinding)
              * @signal
@@ -9474,7 +9474,7 @@ export namespace St {
 
     namespace WidgetAccessible {
         // Signal signatures
-        interface SignalSignatures extends Cally.Actor.SignalSignatures {
+        interface SignalSignatures extends Cally.Actor.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;

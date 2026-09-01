@@ -1574,7 +1574,7 @@ export namespace Vda {
 
     namespace Expression {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::g-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
             "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
@@ -6057,7 +6057,7 @@ export namespace Vda {
 
     namespace HashList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::g-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
             "notify::g-destroy-func": (pspec: GObject.ParamSpec) => void;
@@ -11137,6 +11137,33 @@ export namespace Vda {
     };
 
     namespace Connection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            closed: () => void;
+            /**
+             * @signal
+             */
+            opened: () => void;
+            /**
+             * @signal
+             */
+            closing: () => void;
+            /**
+             * @signal
+             */
+            canceled: (message: string) => void;
+            /**
+             * @signal
+             */
+            timeout: () => void;
+            /**
+             * @signal
+             */
+            disconnected: () => void;
+        }
         /**
          * Interface for implementing Connection.
          * Contains only the virtual methods that need to be implemented.

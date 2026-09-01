@@ -595,7 +595,7 @@ export namespace GdkWayland {
 
     namespace WaylandToplevel {
         // Signal signatures
-        interface SignalSignatures extends WaylandSurface.SignalSignatures {
+        interface SignalSignatures extends WaylandSurface.SignalSignatures, Gdk.Toplevel.SignalSignatures {
             "notify::cursor": (pspec: GObject.ParamSpec) => void;
             "notify::display": (pspec: GObject.ParamSpec) => void;
             "notify::frame-clock": (pspec: GObject.ParamSpec) => void;

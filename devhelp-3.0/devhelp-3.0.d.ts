@@ -1164,7 +1164,7 @@ export namespace Devhelp {
 
     namespace KeywordModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gtk.TreeModel.ConstructorProps {}

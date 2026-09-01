@@ -2375,6 +2375,14 @@ export namespace GstRtsp {
 
 
     namespace RTSPExtension {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            send: (object: null, p0: null) => RTSPResult;
+        }
         /**
          * Interface for implementing RTSPExtension.
          * Contains only the virtual methods that need to be implemented.

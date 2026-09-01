@@ -26696,7 +26696,7 @@ export namespace Clutter {
 
     namespace Actor {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures, Container.SignalSignatures {
             /**
              * The ::allocation-changed signal is emitted when the
              * {@link Clutter.Actor.allocation} property changes. Usually, application
@@ -36153,7 +36153,7 @@ export namespace Clutter {
 
     namespace Box {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::color-set": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
@@ -37472,7 +37472,7 @@ export namespace Clutter {
 
     namespace CairoTexture {
         // Signal signatures
-        interface SignalSignatures extends Texture.SignalSignatures {
+        interface SignalSignatures extends Texture.SignalSignatures, Container.SignalSignatures {
             /**
              * The ::create-surface signal is emitted when a {@link Clutter.CairoTexture}
              * news its surface (re)created, which happens either when the Cairo
@@ -37843,7 +37843,7 @@ export namespace Clutter {
 
     namespace Canvas {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {
             /**
              * The {@link Clutter.Canvas.SignalSignatures.draw | Clutter.Canvas::draw} signal is emitted each time a canvas is
              * invalidated.
@@ -38427,7 +38427,7 @@ export namespace Clutter {
 
     namespace Clone {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::source": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -41459,7 +41459,7 @@ export namespace Clutter {
 
     namespace Group {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
             "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
@@ -42167,7 +42167,7 @@ export namespace Clutter {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -45491,7 +45491,7 @@ export namespace Clutter {
 
     namespace Rectangle {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::border-color": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::color": (pspec: GObject.ParamSpec) => void;
@@ -46677,7 +46677,7 @@ export namespace Clutter {
 
     namespace ScrollActor {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::scroll-mode": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -48106,7 +48106,7 @@ export namespace Clutter {
 
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends Group.SignalSignatures {
+        interface SignalSignatures extends Group.SignalSignatures, Container.SignalSignatures {
             /**
              * The ::activate signal is emitted when the stage receives key focus
              * from the underlying window system.
@@ -50041,7 +50041,7 @@ export namespace Clutter {
 
     namespace Text {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             /**
              * The ::activate signal is emitted each time the actor is 'activated'
              * by the user, normally by pressing the 'Enter' key. The signal is
@@ -52297,7 +52297,7 @@ export namespace Clutter {
 
     namespace Texture {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             /**
              * The ::load-finished signal is emitted when a texture load has
              * completed. If there was an error during loading, `error` will
@@ -58819,6 +58819,36 @@ export namespace Clutter {
     };
 
     namespace Container {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::actor-added signal is emitted each time an actor
+             * has been added to `container`.
+             * @signal
+             * @since 0.4
+             * @run-first
+             */
+            "actor-added": (actor: Actor) => void;
+            /**
+             * The ::actor-removed signal is emitted each time an actor
+             * is removed from `container`.
+             * @signal
+             * @since 0.4
+             * @run-first
+             */
+            "actor-removed": (actor: Actor) => void;
+            /**
+             * The ::child-notify signal is emitted each time a property is
+             * being set through the `clutter_container_child_set()` and
+             * `clutter_container_child_set_property()` calls.
+             * @signal
+             * @since 0.8
+             * @detailed
+             * @run-first
+             */
+            "child-notify": (actor: Actor, pspec: GObject.ParamSpec) => void;
+            [key: `child-notify::${string}`]: (actor: Actor, pspec: GObject.ParamSpec) => void;
+        }
         /**
          * Interface for implementing Container.
          * Contains only the virtual methods that need to be implemented.
@@ -59204,6 +59234,25 @@ export namespace Clutter {
     };
 
     namespace Content {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * assigned to a {@link Clutter.Actor}.
+             * @signal
+             * @since 1.10
+             * @run-first
+             */
+            attached: (actor: Actor) => void;
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * removed from a {@link Clutter.Actor}.
+             * @signal
+             * @since 1.10
+             * @run-first
+             */
+            detached: (actor: Actor) => void;
+        }
         /**
          * Interface for implementing Content.
          * Contains only the virtual methods that need to be implemented.

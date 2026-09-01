@@ -29,6 +29,7 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GcrImportButton: ['imported', 'importing'],
+    GcrPrompt: ['prompt-close'],
     GcrViewerWidget: ['added'],
 };
 

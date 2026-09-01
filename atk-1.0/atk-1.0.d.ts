@@ -2624,7 +2624,7 @@ export namespace Atk {
 
     namespace NoOpObject {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Component.SignalSignatures, Document.SignalSignatures, Hypertext.SignalSignatures, Selection.SignalSignatures, Table.SignalSignatures, Text.SignalSignatures, Value.SignalSignatures, Window.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -6803,7 +6803,7 @@ export namespace Atk {
 
     namespace Plug {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -7514,7 +7514,7 @@ export namespace Atk {
 
     namespace Socket {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -8767,6 +8767,16 @@ export namespace Atk {
     };
 
     namespace Component {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The 'bounds-changed" signal is emitted when the position or
+             * size of the component changes.
+             * @signal
+             * @run-last
+             */
+            "bounds-changed": (arg1: Rectangle) => void;
+        }
         /**
          * Interface for implementing Component.
          * Contains only the virtual methods that need to be implemented.
@@ -9107,6 +9117,62 @@ export namespace Atk {
     };
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "document-attribute-changed" signal should be emitted when there is a
+             * change to one of the document attributes returned by
+             * atk_document_get_attributes.
+             * @signal
+             * @since 2.52
+             * @run-last
+             */
+            "document-attribute-changed": (arg1: string, arg2: string) => void;
+            /**
+             * The 'load-complete' signal is emitted when a pending load of
+             * a static document has completed.  This signal is to be
+             * expected by ATK clients if and when AtkDocument implementors
+             * expose ATK_STATE_BUSY.  If the state of an AtkObject which
+             * implements AtkDocument does not include ATK_STATE_BUSY, it
+             * should be safe for clients to assume that the AtkDocument's
+             * static contents are fully loaded into the container.
+             * (Dynamic document contents should be exposed via other
+             * signals.)
+             * @signal
+             * @run-last
+             */
+            "load-complete": () => void;
+            /**
+             * The 'load-stopped' signal is emitted when a pending load of
+             * document contents is cancelled, paused, or otherwise
+             * interrupted by the user or application logic.  It should not
+             * however be emitted while waiting for a resource (for instance
+             * while blocking on a file or network read) unless a
+             * user-significant timeout has occurred.
+             * @signal
+             * @run-last
+             */
+            "load-stopped": () => void;
+            /**
+             * The 'page-changed' signal is emitted when the current page of
+             * a document changes, e.g. pressing page up/down in a document
+             * viewer.
+             * @signal
+             * @since 2.12
+             * @run-last
+             */
+            "page-changed": (page_number: number) => void;
+            /**
+             * The 'reload' signal is emitted when the contents of a
+             * document is refreshed from its source.  Once 'reload' has
+             * been emitted, a matching 'load-complete' or 'load-stopped'
+             * signal should follow, which clients may await before
+             * interrogating ATK for the latest document content.
+             * @signal
+             * @run-last
+             */
+            reload: () => void;
+        }
         /**
          * Interface for implementing Document.
          * Contains only the virtual methods that need to be implemented.
@@ -9523,6 +9589,17 @@ export namespace Atk {
     };
 
     namespace Hypertext {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "link-selected" signal is emitted by an AtkHyperText
+             * object when one of the hyperlinks associated with the object
+             * is selected.
+             * @signal
+             * @run-last
+             */
+            "link-selected": (arg1: number) => void;
+        }
         /**
          * Interface for implementing Hypertext.
          * Contains only the virtual methods that need to be implemented.
@@ -9765,6 +9842,16 @@ export namespace Atk {
     };
 
     namespace Selection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "selection-changed" signal is emitted by an object which
+             * implements AtkSelection interface when the selection changes.
+             * @signal
+             * @run-last
+             */
+            "selection-changed": () => void;
+        }
         /**
          * Interface for implementing Selection.
          * Contains only the virtual methods that need to be implemented.
@@ -10056,6 +10143,61 @@ export namespace Atk {
     };
 
     namespace Table {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "column-deleted" signal is emitted by an object which
+             * implements the AtkTable interface when a column is deleted.
+             * @signal
+             * @run-last
+             */
+            "column-deleted": (arg1: number, arg2: number) => void;
+            /**
+             * The "column-inserted" signal is emitted by an object which
+             * implements the AtkTable interface when a column is inserted.
+             * @signal
+             * @run-last
+             */
+            "column-inserted": (arg1: number, arg2: number) => void;
+            /**
+             * The "column-reordered" signal is emitted by an object which
+             * implements the AtkTable interface when the columns are
+             * reordered.
+             * @signal
+             * @run-last
+             */
+            "column-reordered": () => void;
+            /**
+             * The "model-changed" signal is emitted by an object which
+             * implements the AtkTable interface when the model displayed by
+             * the table changes.
+             * @signal
+             * @run-last
+             */
+            "model-changed": () => void;
+            /**
+             * The "row-deleted" signal is emitted by an object which
+             * implements the AtkTable interface when a row is deleted.
+             * @signal
+             * @run-last
+             */
+            "row-deleted": (arg1: number, arg2: number) => void;
+            /**
+             * The "row-inserted" signal is emitted by an object which
+             * implements the AtkTable interface when a row is inserted.
+             * @signal
+             * @run-last
+             */
+            "row-inserted": (arg1: number, arg2: number) => void;
+            /**
+             * The "row-reordered" signal is emitted by an object which
+             * implements the AtkTable interface when the rows are
+             * reordered.
+             * @signal
+             * @run-last
+             */
+            "row-reordered": () => void;
+        }
         /**
          * Interface for implementing Table.
          * Contains only the virtual methods that need to be implemented.
@@ -10736,6 +10878,67 @@ export namespace Atk {
     };
 
     namespace Text {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "text-attributes-changed" signal is emitted when the text
+             * attributes of the text of an object which implements AtkText
+             * changes.
+             * @signal
+             * @run-last
+             */
+            "text-attributes-changed": () => void;
+            /**
+             * The "text-caret-moved" signal is emitted when the caret
+             * position of the text of an object which implements AtkText
+             * changes.
+             * @signal
+             * @run-last
+             */
+            "text-caret-moved": (arg1: number) => void;
+            /**
+             * The "text-changed" signal is emitted when the text of the
+             * object which implements the AtkText interface changes, This
+             * signal will have a detail which is either "insert" or
+             * "delete" which identifies whether the text change was an
+             * insertion or a deletion.
+             * @signal
+             * @deprecated since 2.9.4: Use {@link Atk.Object.SignalSignatures.text_insert | Atk.Object::text-insert} or {@link Atk.Object.SignalSignatures.text_remove | Atk.Object::text-remove} instead.
+             * @detailed
+             * @run-last
+             */
+            "text-changed": (arg1: number, arg2: number) => void;
+            /**
+             * The "text-insert" signal is emitted when a new text is
+             * inserted. If the signal was not triggered by the user
+             * (e.g. typing or pasting text), the "system" detail should be
+             * included.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            "text-insert": (arg1: number, arg2: number, arg3: string) => void;
+            /**
+             * The "text-remove" signal is emitted when a new text is
+             * removed. If the signal was not triggered by the user
+             * (e.g. typing or pasting text), the "system" detail should be
+             * included.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            "text-remove": (arg1: number, arg2: number, arg3: string) => void;
+            /**
+             * The "text-selection-changed" signal is emitted when the
+             * selected text of an object which implements AtkText changes.
+             * @signal
+             * @run-last
+             */
+            "text-selection-changed": () => void;
+            [key: `text-changed::${string}`]: (arg1: number, arg2: number) => void;
+            [key: `text-insert::${string}`]: (arg1: number, arg2: number, arg3: string) => void;
+            [key: `text-remove::${string}`]: (arg1: number, arg2: number, arg3: string) => void;
+        }
         /**
          * Interface for implementing Text.
          * Contains only the virtual methods that need to be implemented.
@@ -11352,6 +11555,27 @@ export namespace Atk {
     };
 
     namespace Value {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The 'value-changed' signal is emitted when the current value
+             * that represent the object changes. `value` is the numerical
+             * representation of this new value.  `text` is the human
+             * readable text alternative of `value`, and can be NULL if it is
+             * not available. Note that if there is a textual description
+             * associated with the new numeric value, that description
+             * should be included regardless of whether or not it has also
+             * changed.
+             * 
+             * Example: a password meter whose value changes as the user
+             * types their new password. Appropiate value text would be
+             * "weak", "acceptable" and "strong".
+             * @signal
+             * @since 2.12
+             * @run-last
+             */
+            "value-changed": (value: number, text: string) => void;
+        }
         /**
          * Interface for implementing Value.
          * Contains only the virtual methods that need to be implemented.
@@ -11706,6 +11930,81 @@ export namespace Atk {
     };
 
     namespace Window {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.activate | Atk.Window::activate} is emitted when a window
+             * becomes the active window of the application or session.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            activate: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.create | Atk.Window::create} is emitted when a new window
+             * is created.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            create: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.deactivate | Atk.Window::deactivate} is emitted when a window is
+             * no longer the active window of the application or session.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            deactivate: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.destroy | Atk.Window::destroy} is emitted when a window is
+             * destroyed.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            destroy: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.maximize | Atk.Window::maximize} is emitted when a window
+             * is maximized.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            maximize: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.minimize | Atk.Window::minimize} is emitted when a window
+             * is minimized.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            minimize: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.move | Atk.Window::move} is emitted when a window
+             * is moved.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            move: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.resize | Atk.Window::resize} is emitted when a window
+             * is resized.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            resize: () => void;
+            /**
+             * The signal {@link Atk.Window.SignalSignatures.restore | Atk.Window::restore} is emitted when a window
+             * is restored.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
+            restore: () => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Object.ConstructorProps {}

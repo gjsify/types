@@ -6714,7 +6714,7 @@ export namespace GXml {
 
     namespace NodeIterator {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DomNodeIterator.SignalSignatures {
             "notify::root": (pspec: GObject.ParamSpec) => void;
             "notify::reference-node": (pspec: GObject.ParamSpec) => void;
             "notify::pointer-before-reference-node": (pspec: GObject.ParamSpec) => void;
@@ -9074,7 +9074,7 @@ export namespace GXml {
 
     namespace TreeWalker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DomTreeWalker.SignalSignatures {
             "notify::root": (pspec: GObject.ParamSpec) => void;
             "notify::what-to-show": (pspec: GObject.ParamSpec) => void;
             "notify::current-node": (pspec: GObject.ParamSpec) => void;
@@ -20781,6 +20781,13 @@ export namespace GXml {
     };
 
     namespace DomNodeIterator {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "accept-node": (node: DomNode) => DomNodeFilterFilter;
+        }
         /**
          * Interface for implementing DomNodeIterator.
          * Contains only the virtual methods that need to be implemented.
@@ -20904,6 +20911,13 @@ export namespace GXml {
     };
 
     namespace DomTreeWalker {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "accept-node": (node: DomNode) => DomNodeFilterFilter;
+        }
         /**
          * Interface for implementing DomTreeWalker.
          * Contains only the virtual methods that need to be implemented.

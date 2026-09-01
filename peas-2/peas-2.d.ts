@@ -64,7 +64,7 @@ export namespace Peas {
 
     namespace Engine {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * The load-plugin signal is emitted when a plugin is being loaded.
              * 
@@ -589,7 +589,7 @@ export namespace Peas {
 
     namespace ExtensionSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * Emitted when a new extension has been added to the {@link Peas.ExtensionSet}.
              * 

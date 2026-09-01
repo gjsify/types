@@ -432,7 +432,7 @@ export namespace Farstream {
 
     namespace Conference {
         // Signal signatures
-        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+        interface SignalSignatures extends Gst.Bin.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             "notify::async-handling": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }

@@ -2617,7 +2617,7 @@ export namespace Meta {
 
     namespace BackgroundActor {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::brightness": (pspec: GObject.ParamSpec) => void;
             "notify::gradient": (pspec: GObject.ParamSpec) => void;
@@ -3398,7 +3398,7 @@ export namespace Meta {
 
     namespace BackgroundGroup {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
             "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
@@ -6039,7 +6039,7 @@ export namespace Meta {
 
     namespace ShapedTexture {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Clutter.Content.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -6263,7 +6263,7 @@ export namespace Meta {
 
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Stage.SignalSignatures {
+        interface SignalSignatures extends Clutter.Stage.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -7500,7 +7500,7 @@ export namespace Meta {
 
     namespace WindowActor {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Notify that one or more of the surfaces of the window have been damaged.
              * @signal
@@ -8272,7 +8272,7 @@ export namespace Meta {
 
     namespace WindowGroup {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
             "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
@@ -9926,6 +9926,15 @@ export namespace Meta {
     type X11DisplayClass = typeof X11Display;
 
     namespace CloseDialog {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            response: (object: CloseDialogResponse) => void;
+        }
         /**
          * Interface for implementing CloseDialog.
          * Contains only the virtual methods that need to be implemented.
@@ -10012,6 +10021,15 @@ export namespace Meta {
     };
 
     namespace InhibitShortcutsDialog {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            response: (object: InhibitShortcutsDialogResponse) => void;
+        }
         /**
          * Interface for implementing InhibitShortcutsDialog.
          * Contains only the virtual methods that need to be implemented.

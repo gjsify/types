@@ -48,6 +48,7 @@ export const OWN_PROPS = {
 export const OWN_SIGNALS = {
     HdyActionRow: ['activated'],
     HdyCarousel: ['page-changed'],
+    HdySwipeable: ['child-switched'],
     HdyTabBar: ['extra-drag-data-received'],
     HdyTabView: ['close-page', 'create-window', 'indicator-activated', 'page-attached', 'page-detached', 'page-reordered', 'setup-menu'],
 };
@@ -286,6 +287,7 @@ export const SINCE = {
     'HdyStatusPage.icon-name': '1.2',
     'HdyStatusPage.title': '1.2',
     'HdySwipeable': '1.0',
+    'HdySwipeable::child-switched': '1.0',
     'HdyTabBar': '1.2',
     'HdyTabBar.autohide': '1.2',
     'HdyTabBar.end-action-widget': '1.2',

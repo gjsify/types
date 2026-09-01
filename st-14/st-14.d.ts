@@ -2356,7 +2356,7 @@ export namespace St {
 
     namespace GenericAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             /**
              * Emitted when `atk_value_get_current_value()` is called on
              * `self`. Right now we only care about doubles, so the value is
@@ -3464,7 +3464,7 @@ export namespace St {
 
     namespace ImageContent {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Image.SignalSignatures {
+        interface SignalSignatures extends Clutter.Image.SignalSignatures, Clutter.Content.SignalSignatures {
             "notify::preferred-height": (pspec: GObject.ParamSpec) => void;
             "notify::preferred-width": (pspec: GObject.ParamSpec) => void;
         }
@@ -6938,7 +6938,7 @@ export namespace St {
 
     namespace WidgetAccessible {
         // Signal signatures
-        interface SignalSignatures extends Cally.Actor.SignalSignatures {
+        interface SignalSignatures extends Cally.Actor.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;

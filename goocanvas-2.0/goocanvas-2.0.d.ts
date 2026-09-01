@@ -1729,7 +1729,7 @@ export namespace GooCanvas {
 
     namespace CanvasEllipse {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::center-x": (pspec: GObject.ParamSpec) => void;
             "notify::center-y": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
@@ -2813,7 +2813,7 @@ export namespace GooCanvas {
 
     namespace CanvasEllipseModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::center-x": (pspec: GObject.ParamSpec) => void;
             "notify::center-y": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
@@ -3448,7 +3448,7 @@ export namespace GooCanvas {
 
     namespace CanvasGrid {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::border-color": (pspec: GObject.ParamSpec) => void;
             "notify::border-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
             "notify::border-color-rgba": (pspec: GObject.ParamSpec) => void;
@@ -4847,7 +4847,7 @@ export namespace GooCanvas {
 
     namespace CanvasGridModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::border-color": (pspec: GObject.ParamSpec) => void;
             "notify::border-color-gdk-rgba": (pspec: GObject.ParamSpec) => void;
             "notify::border-color-rgba": (pspec: GObject.ParamSpec) => void;
@@ -5775,7 +5775,7 @@ export namespace GooCanvas {
 
     namespace CanvasGroup {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
             "notify::x": (pspec: GObject.ParamSpec) => void;
@@ -6804,7 +6804,7 @@ export namespace GooCanvas {
 
     namespace CanvasGroupModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
             "notify::x": (pspec: GObject.ParamSpec) => void;
@@ -7381,7 +7381,7 @@ export namespace GooCanvas {
 
     namespace CanvasImage {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::alpha": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::pattern": (pspec: GObject.ParamSpec) => void;
@@ -8439,7 +8439,7 @@ export namespace GooCanvas {
 
     namespace CanvasImageModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::alpha": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::pattern": (pspec: GObject.ParamSpec) => void;
@@ -9093,7 +9093,7 @@ export namespace GooCanvas {
 
     namespace CanvasItemModelSimple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::antialias": (pspec: GObject.ParamSpec) => void;
             "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
             "notify::clip-path": (pspec: GObject.ParamSpec) => void;
@@ -9897,7 +9897,7 @@ export namespace GooCanvas {
 
     namespace CanvasItemSimple {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::antialias": (pspec: GObject.ParamSpec) => void;
             "notify::clip-fill-rule": (pspec: GObject.ParamSpec) => void;
             "notify::clip-path": (pspec: GObject.ParamSpec) => void;
@@ -11306,7 +11306,7 @@ export namespace GooCanvas {
 
     namespace CanvasPath {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::data": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -12340,7 +12340,7 @@ export namespace GooCanvas {
 
     namespace CanvasPathModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::data": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;
@@ -12924,7 +12924,7 @@ export namespace GooCanvas {
 
     namespace CanvasPolyline {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::arrow-length": (pspec: GObject.ParamSpec) => void;
             "notify::arrow-tip-length": (pspec: GObject.ParamSpec) => void;
             "notify::arrow-width": (pspec: GObject.ParamSpec) => void;
@@ -14039,7 +14039,7 @@ export namespace GooCanvas {
 
     namespace CanvasPolylineModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::arrow-length": (pspec: GObject.ParamSpec) => void;
             "notify::arrow-tip-length": (pspec: GObject.ParamSpec) => void;
             "notify::arrow-width": (pspec: GObject.ParamSpec) => void;
@@ -14707,7 +14707,7 @@ export namespace GooCanvas {
 
     namespace CanvasRect {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::radius-x": (pspec: GObject.ParamSpec) => void;
             "notify::radius-y": (pspec: GObject.ParamSpec) => void;
@@ -15755,7 +15755,7 @@ export namespace GooCanvas {
 
     namespace CanvasRectModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::radius-x": (pspec: GObject.ParamSpec) => void;
             "notify::radius-y": (pspec: GObject.ParamSpec) => void;
@@ -16488,7 +16488,7 @@ export namespace GooCanvas {
 
     namespace CanvasTable {
         // Signal signatures
-        interface SignalSignatures extends CanvasGroup.SignalSignatures {
+        interface SignalSignatures extends CanvasGroup.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous-columns": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous-rows": (pspec: GObject.ParamSpec) => void;
@@ -16706,7 +16706,7 @@ export namespace GooCanvas {
 
     namespace CanvasTableModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasGroupModel.SignalSignatures {
+        interface SignalSignatures extends CanvasGroupModel.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous-columns": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous-rows": (pspec: GObject.ParamSpec) => void;
@@ -16927,7 +16927,7 @@ export namespace GooCanvas {
 
     namespace CanvasText {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::anchor": (pspec: GObject.ParamSpec) => void;
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
@@ -18015,7 +18015,7 @@ export namespace GooCanvas {
 
     namespace CanvasTextModel {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemModelSimple.SignalSignatures, CanvasItemModel.SignalSignatures {
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::anchor": (pspec: GObject.ParamSpec) => void;
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
@@ -18641,7 +18641,7 @@ export namespace GooCanvas {
 
     namespace CanvasWidget {
         // Signal signatures
-        interface SignalSignatures extends CanvasItemSimple.SignalSignatures {
+        interface SignalSignatures extends CanvasItemSimple.SignalSignatures, CanvasItem.SignalSignatures {
             "notify::anchor": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
@@ -20327,6 +20327,180 @@ export namespace GooCanvas {
 
 
     namespace CanvasItem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the item animation has finished.
+             * @signal
+             * @run-last
+             */
+            "animation-finished": (stopped: boolean) => void;
+            /**
+             * Emitted when a mouse button is pressed in an item.
+             * @signal
+             * @run-last
+             */
+            "button-press-event": (target_item: CanvasItem, event: Gdk.EventButton) => boolean | void;
+            /**
+             * Emitted when a mouse button is released in an item.
+             * @signal
+             * @run-last
+             */
+            "button-release-event": (target_item: CanvasItem, event: Gdk.EventButton) => boolean | void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted when the mouse enters an item.
+             * @signal
+             * @run-last
+             */
+            "enter-notify-event": (target_item: CanvasItem, event: Gdk.EventCrossing) => boolean | void;
+            /**
+             * Emitted when the item receives the keyboard focus.
+             * @signal
+             * @run-last
+             */
+            "focus-in-event": (target_item: CanvasItem, event: Gdk.EventFocus) => boolean | void;
+            /**
+             * Emitted when the item loses the keyboard focus.
+             * @signal
+             * @run-last
+             */
+            "focus-out-event": (target_item: CanvasItem, event: Gdk.EventFocus) => boolean | void;
+            /**
+             * Emitted when the item's keyboard or pointer grab was lost
+             * unexpectedly.
+             * @signal
+             * @run-last
+             */
+            "grab-broken-event": (target_item: CanvasItem, event: Gdk.EventGrabBroken) => boolean | void;
+            /**
+             * Emitted when a key is pressed and the item has the keyboard
+             * focus.
+             * @signal
+             * @run-last
+             */
+            "key-press-event": (target_item: CanvasItem, event: Gdk.EventKey) => boolean | void;
+            /**
+             * Emitted when a key is released and the item has the keyboard
+             * focus.
+             * @signal
+             * @run-last
+             */
+            "key-release-event": (target_item: CanvasItem, event: Gdk.EventKey) => boolean | void;
+            /**
+             * Emitted when the mouse leaves an item.
+             * @signal
+             * @run-last
+             */
+            "leave-notify-event": (target_item: CanvasItem, event: Gdk.EventCrossing) => boolean | void;
+            /**
+             * Emitted when the mouse moves within an item.
+             * @signal
+             * @run-last
+             */
+            "motion-notify-event": (target_item: CanvasItem, event: Gdk.EventMotion) => boolean | void;
+            /**
+             * Emitted when the mouse has paused over the item for a certain amount
+             * of time, or the tooltip was requested via the keyboard.
+             * 
+             * Note that if `keyboard_mode` is `true`, the values of `x` and `y` are
+             * undefined and should not be used.
+             * 
+             * If the item wants to display a tooltip it should update `tooltip`
+             * and return `true`.
+             * @signal
+             * @run-last
+             */
+            "query-tooltip": (x: number, y: number, keyboard_mode: boolean, tooltip: Gtk.Tooltip) => boolean | void;
+            /**
+             * Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
+             * usually configured to generate button press events for buttons 4 and 5
+             * when the wheel is turned in an item.
+             * @signal
+             * @run-last
+             */
+            "scroll-event": (target_item: CanvasItem, event: Gdk.EventScroll) => boolean | void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::description": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::parent": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::title": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::transform": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::visibility": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
+            [key: `child-notify::${string}`]: (pspec: GObject.ParamSpec) => void;
+        }
         /**
          * Interface for implementing CanvasItem.
          * Contains only the virtual methods that need to be implemented.
@@ -21280,6 +21454,120 @@ export namespace GooCanvas {
     };
 
     namespace CanvasItemModel {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the item model animation has finished.
+             * @signal
+             * @run-last
+             */
+            "animation-finished": (stopped: boolean) => void;
+            /**
+             * Emitted when the item model has been changed.
+             * @signal
+             * @run-last
+             */
+            changed: (recompute_bounds: boolean) => void;
+            /**
+             * Emitted when a child has been added.
+             * @signal
+             * @run-last
+             */
+            "child-added": (child_num: number) => void;
+            /**
+             * Emitted when a child has been moved in the stacking order.
+             * @signal
+             * @run-last
+             */
+            "child-moved": (old_child_num: number, new_child_num: number) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted when a child has been removed.
+             * @signal
+             * @run-last
+             */
+            "child-removed": (child_num: number) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::can-focus": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::description": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::parent": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::pointer-events": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::title": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::tooltip": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::transform": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::visibility": (pspec: GObject.ParamSpec) => void;
+            /**
+             * Emitted for each child property that has changed.
+             * The signal's detail holds the property name.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify::visibility-threshold": (pspec: GObject.ParamSpec) => void;
+            [key: `child-notify::${string}`]: (pspec: GObject.ParamSpec) => void;
+        }
         /**
          * Interface for implementing CanvasItemModel.
          * Contains only the virtual methods that need to be implemented.

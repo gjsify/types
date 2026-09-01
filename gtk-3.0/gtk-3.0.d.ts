@@ -13824,7 +13824,7 @@ export namespace Gtk {
 
     namespace AppChooserButton {
         // Signal signatures
-        interface SignalSignatures extends ComboBox.SignalSignatures {
+        interface SignalSignatures extends ComboBox.SignalSignatures, CellEditable.SignalSignatures {
             /**
              * Emitted when a custom item, previously added with
              * `gtk_app_chooser_button_append_custom_item()`, is activated from the
@@ -15805,7 +15805,7 @@ export namespace Gtk {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gio.Application.SignalSignatures {
+        interface SignalSignatures extends Gio.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * Emitted when the session manager is about to end the session, only
              * if {@link Gtk.Application.SignalSignatures.register_session | Gtk.Application::register-session} is `true`. Applications can
@@ -16973,7 +16973,7 @@ export namespace Gtk {
 
     namespace ApplicationWindow {
         // Signal signatures
-        interface SignalSignatures extends Window.SignalSignatures {
+        interface SignalSignatures extends Window.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -18025,7 +18025,7 @@ export namespace Gtk {
 
     namespace ArrowAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -19247,7 +19247,7 @@ export namespace Gtk {
 
     namespace BooleanCellAccessible {
         // Signal signatures
-        interface SignalSignatures extends RendererCellAccessible.SignalSignatures {
+        interface SignalSignatures extends RendererCellAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::renderer": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
@@ -21074,7 +21074,7 @@ export namespace Gtk {
 
     namespace ButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -22295,7 +22295,7 @@ export namespace Gtk {
 
     namespace CellAccessible {
         // Signal signatures
-        interface SignalSignatures extends Accessible.SignalSignatures {
+        interface SignalSignatures extends Accessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -29767,7 +29767,7 @@ export namespace Gtk {
 
     namespace CheckMenuItemAccessible {
         // Signal signatures
-        interface SignalSignatures extends MenuItemAccessible.SignalSignatures {
+        interface SignalSignatures extends MenuItemAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -30605,7 +30605,7 @@ export namespace Gtk {
 
     namespace ColorButton {
         // Signal signatures
-        interface SignalSignatures extends Button.SignalSignatures {
+        interface SignalSignatures extends Button.SignalSignatures, ColorChooser.SignalSignatures {
             /**
              * The ::color-set signal is emitted when the user selects a color.
              * When handling this signal, use `gtk_color_button_get_rgba()` to
@@ -31339,7 +31339,7 @@ export namespace Gtk {
 
     namespace ColorChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Dialog.SignalSignatures {
+        interface SignalSignatures extends Dialog.SignalSignatures, ColorChooser.SignalSignatures {
             "notify::show-editor": (pspec: GObject.ParamSpec) => void;
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
@@ -31625,7 +31625,7 @@ export namespace Gtk {
 
     namespace ColorChooserWidget {
         // Signal signatures
-        interface SignalSignatures extends Box.SignalSignatures {
+        interface SignalSignatures extends Box.SignalSignatures, ColorChooser.SignalSignatures {
             "notify::show-editor": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -32466,7 +32466,7 @@ export namespace Gtk {
 
     namespace ComboBox {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, CellEditable.SignalSignatures {
             /**
              * The changed signal is emitted when the active
              * item is changed. The can be due to the user selecting
@@ -33658,7 +33658,7 @@ export namespace Gtk {
 
     namespace ComboBoxAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -34058,7 +34058,7 @@ export namespace Gtk {
 
     namespace ComboBoxText {
         // Signal signatures
-        interface SignalSignatures extends ComboBox.SignalSignatures {
+        interface SignalSignatures extends ComboBox.SignalSignatures, CellEditable.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::active-id": (pspec: GObject.ParamSpec) => void;
             "notify::add-tearoffs": (pspec: GObject.ParamSpec) => void;
@@ -35624,7 +35624,7 @@ export namespace Gtk {
 
     namespace ContainerAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -35982,7 +35982,7 @@ export namespace Gtk {
 
     namespace ContainerCellAccessible {
         // Signal signatures
-        interface SignalSignatures extends CellAccessible.SignalSignatures {
+        interface SignalSignatures extends CellAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -37750,7 +37750,7 @@ export namespace Gtk {
 
     namespace Entry {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, CellEditable.SignalSignatures, Editable.SignalSignatures {
             /**
              * The ::activate signal is emitted when the user hits
              * the Enter key.
@@ -40465,7 +40465,7 @@ export namespace Gtk {
 
     namespace EntryAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Text.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -42965,7 +42965,7 @@ export namespace Gtk {
 
     namespace EntryIconAccessible {
         // Signal signatures
-        interface SignalSignatures extends Atk.Object.SignalSignatures {
+        interface SignalSignatures extends Atk.Object.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -44613,7 +44613,7 @@ export namespace Gtk {
 
     namespace ExpanderAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -44884,7 +44884,7 @@ export namespace Gtk {
 
     namespace FileChooserButton {
         // Signal signatures
-        interface SignalSignatures extends Box.SignalSignatures {
+        interface SignalSignatures extends Box.SignalSignatures, FileChooser.SignalSignatures {
             /**
              * The ::file-set signal is emitted when the user selects a file.
              * 
@@ -46031,7 +46031,7 @@ export namespace Gtk {
 
     namespace FileChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Dialog.SignalSignatures {
+        interface SignalSignatures extends Dialog.SignalSignatures, FileChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -47196,7 +47196,7 @@ export namespace Gtk {
 
     namespace FileChooserNative {
         // Signal signatures
-        interface SignalSignatures extends NativeDialog.SignalSignatures {
+        interface SignalSignatures extends NativeDialog.SignalSignatures, FileChooser.SignalSignatures {
             "notify::accept-label": (pspec: GObject.ParamSpec) => void;
             "notify::cancel-label": (pspec: GObject.ParamSpec) => void;
             "notify::modal": (pspec: GObject.ParamSpec) => void;
@@ -48371,7 +48371,7 @@ export namespace Gtk {
 
     namespace FileChooserWidget {
         // Signal signatures
-        interface SignalSignatures extends Box.SignalSignatures {
+        interface SignalSignatures extends Box.SignalSignatures, FileChooser.SignalSignatures {
             /**
              * The ::desktop-folder signal is a [keybinding signal][GtkBindingSignal]
              * which gets emitted when the user asks for it.
@@ -49569,7 +49569,7 @@ export namespace Gtk {
 
     namespace FileChooserWidgetAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -51079,7 +51079,7 @@ export namespace Gtk {
 
     namespace FlowBoxAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -51414,7 +51414,7 @@ export namespace Gtk {
 
     namespace FlowBoxChildAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -51476,7 +51476,7 @@ export namespace Gtk {
 
     namespace FontButton {
         // Signal signatures
-        interface SignalSignatures extends Button.SignalSignatures {
+        interface SignalSignatures extends Button.SignalSignatures, FontChooser.SignalSignatures {
             /**
              * The ::font-set signal is emitted when the user selects a font.
              * When handling this signal, use `gtk_font_chooser_get_font()`
@@ -52551,7 +52551,7 @@ export namespace Gtk {
 
     namespace FontChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Dialog.SignalSignatures {
+        interface SignalSignatures extends Dialog.SignalSignatures, FontChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -53055,7 +53055,7 @@ export namespace Gtk {
 
     namespace FontChooserWidget {
         // Signal signatures
-        interface SignalSignatures extends Box.SignalSignatures {
+        interface SignalSignatures extends Box.SignalSignatures, FontChooser.SignalSignatures {
             "notify::tweak-action": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -54297,7 +54297,7 @@ export namespace Gtk {
 
     namespace FrameAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -58633,7 +58633,7 @@ export namespace Gtk {
 
     namespace HeaderBarAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -62101,7 +62101,7 @@ export namespace Gtk {
 
     namespace IconViewAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -62816,7 +62816,7 @@ export namespace Gtk {
 
     namespace ImageAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -63256,7 +63256,7 @@ export namespace Gtk {
 
     namespace ImageCellAccessible {
         // Signal signatures
-        interface SignalSignatures extends RendererCellAccessible.SignalSignatures {
+        interface SignalSignatures extends RendererCellAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::renderer": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
@@ -66004,7 +66004,7 @@ export namespace Gtk {
 
     namespace LabelAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Hypertext.SignalSignatures, Atk.Text.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -68501,7 +68501,7 @@ export namespace Gtk {
 
     namespace LevelBarAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -69608,7 +69608,7 @@ export namespace Gtk {
 
     namespace LinkButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -70536,7 +70536,7 @@ export namespace Gtk {
 
     namespace ListBoxAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -71121,7 +71121,7 @@ export namespace Gtk {
 
     namespace ListBoxRowAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -71183,7 +71183,7 @@ export namespace Gtk {
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, TreeModel.SignalSignatures, TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Buildable.ConstructorProps, TreeDragDest.ConstructorProps, TreeDragSource.ConstructorProps, TreeModel.ConstructorProps, TreeSortable.ConstructorProps {}
@@ -73027,7 +73027,7 @@ export namespace Gtk {
 
     namespace LockButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -74235,7 +74235,7 @@ export namespace Gtk {
 
     namespace MenuAccessible {
         // Signal signatures
-        interface SignalSignatures extends MenuShellAccessible.SignalSignatures {
+        interface SignalSignatures extends MenuShellAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -75054,7 +75054,7 @@ export namespace Gtk {
 
     namespace MenuButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ToggleButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ToggleButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -75934,7 +75934,7 @@ export namespace Gtk {
 
     namespace MenuItemAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -76763,7 +76763,7 @@ export namespace Gtk {
 
     namespace MenuShellAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -79995,7 +79995,7 @@ export namespace Gtk {
 
     namespace NotebookAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -80186,7 +80186,7 @@ export namespace Gtk {
 
     namespace NotebookPageAccessible {
         // Signal signatures
-        interface SignalSignatures extends Atk.Object.SignalSignatures {
+        interface SignalSignatures extends Atk.Object.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -82139,7 +82139,7 @@ export namespace Gtk {
 
     namespace PanedAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -83321,7 +83321,7 @@ export namespace Gtk {
 
     namespace PlugAccessible {
         // Signal signatures
-        interface SignalSignatures extends WindowAccessible.SignalSignatures {
+        interface SignalSignatures extends WindowAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Window.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -83826,7 +83826,7 @@ export namespace Gtk {
 
     namespace PopoverAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -84293,7 +84293,7 @@ export namespace Gtk {
 
     namespace PrintOperation {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, PrintOperationPreview.SignalSignatures {
             /**
              * Emitted after the user has finished changing print settings
              * in the dialog, before the actual rendering starts.
@@ -86777,7 +86777,7 @@ export namespace Gtk {
 
     namespace ProgressBarAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -87852,7 +87852,7 @@ export namespace Gtk {
 
     namespace RadioButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ToggleButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ToggleButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -88203,7 +88203,7 @@ export namespace Gtk {
 
     namespace RadioMenuItemAccessible {
         // Signal signatures
-        interface SignalSignatures extends CheckMenuItemAccessible.SignalSignatures {
+        interface SignalSignatures extends CheckMenuItemAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -89257,7 +89257,7 @@ export namespace Gtk {
 
     namespace RangeAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -89889,7 +89889,7 @@ export namespace Gtk {
 
     namespace RecentAction {
         // Signal signatures
-        interface SignalSignatures extends Action.SignalSignatures {
+        interface SignalSignatures extends Action.SignalSignatures, RecentChooser.SignalSignatures {
             "notify::show-numbers": (pspec: GObject.ParamSpec) => void;
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::always-show-image": (pspec: GObject.ParamSpec) => void;
@@ -90753,7 +90753,7 @@ export namespace Gtk {
 
     namespace RecentChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Dialog.SignalSignatures {
+        interface SignalSignatures extends Dialog.SignalSignatures, RecentChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -91459,7 +91459,7 @@ export namespace Gtk {
 
     namespace RecentChooserMenu {
         // Signal signatures
-        interface SignalSignatures extends Menu.SignalSignatures {
+        interface SignalSignatures extends Menu.SignalSignatures, RecentChooser.SignalSignatures {
             "notify::show-numbers": (pspec: GObject.ParamSpec) => void;
             "notify::accel-group": (pspec: GObject.ParamSpec) => void;
             "notify::accel-path": (pspec: GObject.ParamSpec) => void;
@@ -92328,7 +92328,7 @@ export namespace Gtk {
 
     namespace RecentChooserWidget {
         // Signal signatures
-        interface SignalSignatures extends Box.SignalSignatures {
+        interface SignalSignatures extends Box.SignalSignatures, RecentChooser.SignalSignatures {
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -93651,7 +93651,7 @@ export namespace Gtk {
 
     namespace RendererCellAccessible {
         // Signal signatures
-        interface SignalSignatures extends CellAccessible.SignalSignatures {
+        interface SignalSignatures extends CellAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::renderer": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
@@ -94971,7 +94971,7 @@ export namespace Gtk {
 
     namespace ScaleAccessible {
         // Signal signatures
-        interface SignalSignatures extends RangeAccessible.SignalSignatures {
+        interface SignalSignatures extends RangeAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -95862,7 +95862,7 @@ export namespace Gtk {
 
     namespace ScaleButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -97371,7 +97371,7 @@ export namespace Gtk {
 
     namespace ScrolledWindowAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -97666,7 +97666,7 @@ export namespace Gtk {
 
     namespace SearchEntry {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, CellEditable.SignalSignatures, Editable.SignalSignatures {
             /**
              * The ::next-match signal is a [keybinding signal][GtkBindingSignal]
              * which gets emitted when the user initiates a move to the next match
@@ -103194,7 +103194,7 @@ export namespace Gtk {
 
     namespace SocketAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -103263,7 +103263,7 @@ export namespace Gtk {
 
     namespace SpinButton {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, CellEditable.SignalSignatures, Editable.SignalSignatures {
             /**
              * The ::change-value signal is a [keybinding signal][GtkBindingSignal]
              * which gets emitted when the user initiates a value change.
@@ -104189,7 +104189,7 @@ export namespace Gtk {
 
     namespace SpinButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends EntryAccessible.SignalSignatures {
+        interface SignalSignatures extends EntryAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Text.SignalSignatures, Atk.Value.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -105643,7 +105643,7 @@ export namespace Gtk {
 
     namespace SpinnerAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -106515,7 +106515,7 @@ export namespace Gtk {
 
     namespace StackAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -107908,7 +107908,7 @@ export namespace Gtk {
 
     namespace StatusbarAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -110268,7 +110268,7 @@ export namespace Gtk {
 
     namespace SwitchAccessible {
         // Signal signatures
-        interface SignalSignatures extends WidgetAccessible.SignalSignatures {
+        interface SignalSignatures extends WidgetAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -112934,7 +112934,7 @@ export namespace Gtk {
 
     namespace TextCellAccessible {
         // Signal signatures
-        interface SignalSignatures extends RendererCellAccessible.SignalSignatures {
+        interface SignalSignatures extends RendererCellAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Text.SignalSignatures {
             "notify::renderer": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
@@ -116945,7 +116945,7 @@ export namespace Gtk {
 
     namespace TextViewAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Text.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -119193,7 +119193,7 @@ export namespace Gtk {
 
     namespace ToggleButtonAccessible {
         // Signal signatures
-        interface SignalSignatures extends ButtonAccessible.SignalSignatures {
+        interface SignalSignatures extends ButtonAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -123108,7 +123108,7 @@ export namespace Gtk {
 
     namespace TreeModelFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, TreeModel.SignalSignatures {
             "notify::child-model": (pspec: GObject.ParamSpec) => void;
             "notify::virtual-root": (pspec: GObject.ParamSpec) => void;
         }
@@ -123933,7 +123933,7 @@ export namespace Gtk {
 
     namespace TreeModelSort {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, TreeModel.SignalSignatures, TreeSortable.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -125060,7 +125060,7 @@ export namespace Gtk {
 
     namespace TreeStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, TreeModel.SignalSignatures, TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Buildable.ConstructorProps, TreeDragDest.ConstructorProps, TreeDragSource.ConstructorProps, TreeModel.ConstructorProps, TreeSortable.ConstructorProps {}
@@ -127957,7 +127957,7 @@ export namespace Gtk {
 
     namespace TreeViewAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Selection.SignalSignatures, Atk.Table.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -138506,7 +138506,7 @@ export namespace Gtk {
 
     namespace WidgetAccessible {
         // Signal signatures
-        interface SignalSignatures extends Accessible.SignalSignatures {
+        interface SignalSignatures extends Accessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -141126,7 +141126,7 @@ export namespace Gtk {
 
     namespace WindowAccessible {
         // Signal signatures
-        interface SignalSignatures extends ContainerAccessible.SignalSignatures {
+        interface SignalSignatures extends ContainerAccessible.SignalSignatures, Atk.Component.SignalSignatures, Atk.Window.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
@@ -149412,6 +149412,42 @@ export namespace Gtk {
     };
 
     namespace CellEditable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is a sign for the cell renderer to update its
+             * value from the `cell_editable`.
+             * 
+             * Implementations of {@link Gtk.CellEditable} are responsible for
+             * emitting this signal when they are done editing, e.g.
+             * {@link Gtk.Entry} emits this signal when the user presses Enter. Typical things to
+             * do in a handler for ::editing-done are to capture the edited value,
+             * disconnect the `cell_editable` from signals on the {@link Gtk.CellRenderer}, etc.
+             * 
+             * `gtk_cell_editable_editing_done()` is a convenience method
+             * for emitting {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done}.
+             * @signal
+             * @run-last
+             */
+            "editing-done": () => void;
+            /**
+             * This signal is meant to indicate that the cell is finished
+             * editing, and the `cell_editable` widget is being removed and may
+             * subsequently be destroyed.
+             * 
+             * Implementations of {@link Gtk.CellEditable} are responsible for
+             * emitting this signal when they are done editing. It must
+             * be emitted after the {@link Gtk.CellEditable.SignalSignatures.editing_done | Gtk.CellEditable::editing-done} signal,
+             * to give the cell renderer a chance to update the cell's value
+             * before the widget is removed.
+             * 
+             * `gtk_cell_editable_remove_widget()` is a convenience method
+             * for emitting {@link Gtk.CellEditable.SignalSignatures.remove_widget | Gtk.CellEditable::remove-widget}.
+             * @signal
+             * @run-last
+             */
+            "remove-widget": () => void;
+        }
         /**
          * Interface for implementing CellEditable.
          * Contains only the virtual methods that need to be implemented.
@@ -149855,6 +149891,19 @@ export namespace Gtk {
     };
 
     namespace ColorChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when a color is activated from the color chooser.
+             * This usually happens when the user clicks a color swatch,
+             * or a color is selected and the user presses one of the keys
+             * Space, Shift+Space, Return or Enter.
+             * @signal
+             * @since 3.4
+             * @run-first
+             */
+            "color-activated": (color: Gdk.RGBA) => void;
+        }
         /**
          * Interface for implementing ColorChooser.
          * Contains only the virtual methods that need to be implemented.
@@ -150033,6 +150082,48 @@ export namespace Gtk {
     };
 
     namespace Editable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::changed signal is emitted at the end of a single
+             * user-visible operation on the contents of the {@link Gtk.Editable}.
+             * 
+             * E.g., a paste operation that replaces the contents of the
+             * selection will cause only one signal emission (even though it
+             * is implemented by first deleting the selection, then inserting
+             * the new content, and may cause multiple ::notify::text signals
+             * to be emitted).
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+            /**
+             * This signal is emitted when text is deleted from
+             * the widget by the user. The default handler for
+             * this signal will normally be responsible for deleting
+             * the text, so by connecting to this signal and then
+             * stopping the signal with `g_signal_stop_emission()`, it
+             * is possible to modify the range of deleted text, or
+             * prevent it from being deleted entirely. The `start_pos`
+             * and `end_pos` parameters are interpreted as for
+             * `gtk_editable_delete_text()`.
+             * @signal
+             * @run-last
+             */
+            "delete-text": (start_pos: number, end_pos: number) => void;
+            /**
+             * This signal is emitted when text is inserted into
+             * the widget by the user. The default handler for
+             * this signal will normally be responsible for inserting
+             * the text, so by connecting to this signal and then
+             * stopping the signal with `g_signal_stop_emission()`, it
+             * is possible to modify the inserted text, or prevent
+             * it from being inserted entirely.
+             * @signal
+             * @run-last
+             */
+            "insert-text": (new_text: string, new_text_length: number, position: number) => void;
+        }
         /**
          * Interface for implementing Editable.
          * Contains only the virtual methods that need to be implemented.
@@ -150335,6 +150426,155 @@ export namespace Gtk {
     };
 
     namespace FileChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal gets emitted whenever it is appropriate to present a
+             * confirmation dialog when the user has selected a file name that
+             * already exists.  The signal only gets emitted when the file
+             * chooser is in {@link Gtk.FileChooserAction.SAVE} mode.
+             * 
+             * Most applications just need to turn on the
+             * {@link Gtk.FileChooser.do_overwrite_confirmation} property (or call the
+             * `gtk_file_chooser_set_do_overwrite_confirmation()` function), and
+             * they will automatically get a stock confirmation dialog.
+             * Applications which need to customize this behavior should do
+             * that, and also connect to the {@link Gtk.FileChooser.SignalSignatures.confirm_overwrite | Gtk.FileChooser::confirm-overwrite}
+             * signal.
+             * 
+             * A signal handler for this signal must return a
+             * {@link Gtk.FileChooserConfirmation} value, which indicates the action to
+             * take.  If the handler determines that the user wants to select a
+             * different filename, it should return
+             * {@link Gtk.FileChooserConfirmation.SELECT_AGAIN}.  If it determines
+             * that the user is satisfied with his choice of file name, it
+             * should return {@link Gtk.FileChooserConfirmation.ACCEPT_FILENAME}.
+             * On the other hand, if it determines that the stock confirmation
+             * dialog should be used, it should return
+             * {@link Gtk.FileChooserConfirmation.CONFIRM}. The following example
+             * illustrates this.
+             * 
+             * ## Custom confirmation ## {#gtkfilechooser-confirmation}
+             * 
+             * 
+             * ```c
+             * static GtkFileChooserConfirmation
+             * confirm_overwrite_callback (GtkFileChooser *chooser, gpointer data)
+             * {
+             *   char *uri;
+             * 
+             *   uri = gtk_file_chooser_get_uri (chooser);
+             * 
+             *   if (is_uri_read_only (uri))
+             *     {
+             *       if (user_wants_to_replace_read_only_file (uri))
+             *         return GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+             *       else
+             *         return GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+             *     } else
+             *       return GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM; // fall back to the default dialog
+             * }
+             * 
+             * ...
+             * 
+             * chooser = gtk_file_chooser_dialog_new (...);
+             * 
+             * gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+             * g_signal_connect (chooser, "confirm-overwrite",
+             *                   G_CALLBACK (confirm_overwrite_callback), NULL);
+             * 
+             * if (gtk_dialog_run (chooser) == GTK_RESPONSE_ACCEPT)
+             *         save_to_file (gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+             * 
+             * gtk_widget_destroy (chooser);
+             * ```
+             * 
+             * @signal
+             * @since 2.8
+             * @run-last
+             */
+            "confirm-overwrite": () => FileChooserConfirmation;
+            /**
+             * This signal is emitted when the current folder in a {@link Gtk.FileChooser}
+             * changes.  This can happen due to the user performing some action that
+             * changes folders, such as selecting a bookmark or visiting a folder on the
+             * file list.  It can also happen as a result of calling a function to
+             * explicitly change the current folder in a file chooser.
+             * 
+             * Normally you do not need to connect to this signal, unless you need to keep
+             * track of which folder a file chooser is showing.
+             * 
+             * See also:  `gtk_file_chooser_set_current_folder()`,
+             * `gtk_file_chooser_get_current_folder()`,
+             * `gtk_file_chooser_set_current_folder_uri()`,
+             * `gtk_file_chooser_get_current_folder_uri()`.
+             * @signal
+             * @run-last
+             */
+            "current-folder-changed": () => void;
+            /**
+             * This signal is emitted when the user "activates" a file in the file
+             * chooser.  This can happen by double-clicking on a file in the file list, or
+             * by pressing `Enter`.
+             * 
+             * Normally you do not need to connect to this signal.  It is used internally
+             * by {@link Gtk.FileChooserDialog} to know when to activate the default button in the
+             * dialog.
+             * 
+             * See also: `gtk_file_chooser_get_filename()`,
+             * `gtk_file_chooser_get_filenames()`, `gtk_file_chooser_get_uri()`,
+             * `gtk_file_chooser_get_uris()`.
+             * @signal
+             * @run-last
+             */
+            "file-activated": () => void;
+            /**
+             * This signal is emitted when there is a change in the set of selected files
+             * in a {@link Gtk.FileChooser}.  This can happen when the user modifies the selection
+             * with the mouse or the keyboard, or when explicitly calling functions to
+             * change the selection.
+             * 
+             * Normally you do not need to connect to this signal, as it is easier to wait
+             * for the file chooser to finish running, and then to get the list of
+             * selected files using the functions mentioned below.
+             * 
+             * See also: `gtk_file_chooser_select_filename()`,
+             * `gtk_file_chooser_unselect_filename()`, `gtk_file_chooser_get_filename()`,
+             * `gtk_file_chooser_get_filenames()`, `gtk_file_chooser_select_uri()`,
+             * `gtk_file_chooser_unselect_uri()`, `gtk_file_chooser_get_uri()`,
+             * `gtk_file_chooser_get_uris()`.
+             * @signal
+             * @run-last
+             */
+            "selection-changed": () => void;
+            /**
+             * This signal is emitted when the preview in a file chooser should be
+             * regenerated.  For example, this can happen when the currently selected file
+             * changes.  You should use this signal if you want your file chooser to have
+             * a preview widget.
+             * 
+             * Once you have installed a preview widget with
+             * `gtk_file_chooser_set_preview_widget()`, you should update it when this
+             * signal is emitted.  You can use the functions
+             * `gtk_file_chooser_get_preview_filename()` or
+             * `gtk_file_chooser_get_preview_uri()` to get the name of the file to preview.
+             * Your widget may not be able to preview all kinds of files; your callback
+             * must call `gtk_file_chooser_set_preview_widget_active()` to inform the file
+             * chooser about whether the preview was generated successfully or not.
+             * 
+             * Please see the example code in
+             * [Using a Preview Widget][gtkfilechooser-preview].
+             * 
+             * See also: `gtk_file_chooser_set_preview_widget()`,
+             * `gtk_file_chooser_set_preview_widget_active()`,
+             * `gtk_file_chooser_set_use_preview_label()`,
+             * `gtk_file_chooser_get_preview_filename()`,
+             * `gtk_file_chooser_get_preview_uri()`.
+             * @signal
+             * @run-last
+             */
+            "update-preview": () => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -151360,6 +151600,18 @@ export namespace Gtk {
     };
 
     namespace FontChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when a font is activated.
+             * This usually happens when the user double clicks an item,
+             * or an item is selected and the user presses one of the keys
+             * Space, Shift+Space, Return or Enter.
+             * @signal
+             * @run-first
+             */
+            "font-activated": (fontname: string) => void;
+        }
         /**
          * Interface for implementing FontChooser.
          * Contains only the virtual methods that need to be implemented.
@@ -151815,6 +152067,29 @@ export namespace Gtk {
     };
 
     namespace PrintOperationPreview {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::got-page-size signal is emitted once for each page
+             * that gets rendered to the preview.
+             * 
+             * A handler for this signal should update the `context`
+             * according to `page_setup` and set up a suitable cairo
+             * context, using `gtk_print_context_set_cairo_context()`.
+             * @signal
+             * @run-last
+             */
+            "got-page-size": (context: PrintContext, page_setup: PageSetup) => void;
+            /**
+             * The ::ready signal gets emitted once per preview operation,
+             * before the first page is rendered.
+             * 
+             * A handler for this signal can be used for setup tasks.
+             * @signal
+             * @run-last
+             */
+            ready: (context: PrintContext) => void;
+        }
         /**
          * Interface for implementing PrintOperationPreview.
          * Contains only the virtual methods that need to be implemented.
@@ -151924,6 +152199,29 @@ export namespace Gtk {
     };
 
     namespace RecentChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when the user "activates" a recent item
+             * in the recent chooser.  This can happen by double-clicking on an item
+             * in the recently used resources list, or by pressing
+             * `Enter`.
+             * @signal
+             * @since 2.10
+             * @run-last
+             */
+            "item-activated": () => void;
+            /**
+             * This signal is emitted when there is a change in the set of
+             * selected recently used resources.  This can happen when a user
+             * modifies the selection with the mouse or the keyboard, or when
+             * explicitly calling functions to change the selection.
+             * @signal
+             * @since 2.10
+             * @run-last
+             */
+            "selection-changed": () => void;
+        }
         /**
          * Interface for implementing RecentChooser.
          * Contains only the virtual methods that need to be implemented.
@@ -153159,6 +153457,57 @@ export namespace Gtk {
     };
 
     namespace TreeModel {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when a row in the model has changed.
+             * @signal
+             * @run-last
+             */
+            "row-changed": (path: TreePath, iter: TreeIter) => void;
+            /**
+             * This signal is emitted when a row has been deleted.
+             * 
+             * Note that no iterator is passed to the signal handler,
+             * since the row is already deleted.
+             * 
+             * This should be called by models after a row has been removed.
+             * The location pointed to by `path` should be the location that
+             * the row previously was at. It may not be a valid location anymore.
+             * @signal
+             * @run-first
+             */
+            "row-deleted": (path: TreePath) => void;
+            /**
+             * This signal is emitted when a row has gotten the first child
+             * row or lost its last child row.
+             * @signal
+             * @run-last
+             */
+            "row-has-child-toggled": (path: TreePath, iter: TreeIter) => void;
+            /**
+             * This signal is emitted when a new row has been inserted in
+             * the model.
+             * 
+             * Note that the row may still be empty at this point, since
+             * it is a common pattern to first insert an empty row, and
+             * then fill it with the desired values.
+             * @signal
+             * @run-first
+             */
+            "row-inserted": (path: TreePath, iter: TreeIter) => void;
+            /**
+             * This signal is emitted when the children of a node in the
+             * {@link Gtk.TreeModel} have been reordered.
+             * 
+             * Note that this signal is not emitted
+             * when rows are reordered by DND, since this is implemented
+             * by removing and then reinserting the row.
+             * @signal
+             * @run-first
+             */
+            "rows-reordered": (path: TreePath, iter: TreeIter, new_order: null) => void;
+        }
         /**
          * Interface for implementing TreeModel.
          * Contains only the virtual methods that need to be implemented.
@@ -153856,6 +154205,17 @@ export namespace Gtk {
     };
 
     namespace TreeSortable {
+        // Signal signatures
+        interface SignalSignatures extends TreeModel.SignalSignatures {
+            /**
+             * The ::sort-column-changed signal is emitted when the sort column
+             * or sort order of `sortable` is changed. The signal is emitted before
+             * the contents of `sortable` are resorted.
+             * @signal
+             * @run-last
+             */
+            "sort-column-changed": () => void;
+        }
         /**
          * Interface for implementing TreeSortable.
          * Contains only the virtual methods that need to be implemented.

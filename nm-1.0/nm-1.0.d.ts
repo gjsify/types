@@ -22509,7 +22509,7 @@ export namespace NM {
 
     namespace RemoteConnection {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Connection.SignalSignatures {
             "notify::filename": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
             "notify::unsaved": (pspec: GObject.ParamSpec) => void;
@@ -43056,7 +43056,7 @@ export namespace NM {
 
     namespace SimpleConnection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Connection.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connection.ConstructorProps {}
@@ -47520,6 +47520,31 @@ export namespace NM {
 
 
     namespace Connection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::changed signal is emitted when any property (including secrets)
+             * of any setting of the connection is modified, or when settings are
+             * added or removed.
+             * @signal
+             * @run-first
+             */
+            changed: () => void;
+            /**
+             * The ::secrets-cleared signal is emitted when the secrets of a connection
+             * are cleared.
+             * @signal
+             * @run-first
+             */
+            "secrets-cleared": () => void;
+            /**
+             * The ::secrets-updated signal is emitted when the secrets of a setting
+             * have been changed.
+             * @signal
+             * @run-first
+             */
+            "secrets-updated": (setting_name: string) => void;
+        }
         /**
          * Interface for implementing Connection.
          * Contains only the virtual methods that need to be implemented.
@@ -48064,6 +48089,14 @@ export namespace NM {
     };
 
     namespace VpnEditor {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            changed: () => void;
+        }
         /**
          * Interface for implementing VpnEditor.
          * Contains only the virtual methods that need to be implemented.

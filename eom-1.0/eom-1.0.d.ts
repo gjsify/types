@@ -445,7 +445,7 @@ export namespace Eom {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::app-menu": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -628,7 +628,7 @@ export namespace Eom {
 
     namespace FileChooser {
         // Signal signatures
-        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures {
+        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures, Gtk.FileChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -2423,7 +2423,7 @@ export namespace Eom {
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {}
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
@@ -5088,7 +5088,7 @@ export namespace Eom {
 
     namespace Window {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The {@link Eom.Window.SignalSignatures.prepared | Eom.Window::prepared} signal is emitted when the `window` is ready
              * to be shown.

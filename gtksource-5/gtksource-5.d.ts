@@ -2430,7 +2430,7 @@ export namespace GtkSource {
 
     namespace CompletionContext {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * Emitted when a provider changes a model.
              * 

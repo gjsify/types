@@ -30,6 +30,7 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     PnlDockBinEdge: ['move-to-bin-child'],
+    PnlDockItem: ['manager-set'],
     PnlDockOverlay: ['hide-edges'],
     PnlMultiPaned: ['resize-drag-begin', 'resize-drag-end'],
 };

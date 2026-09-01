@@ -43,6 +43,9 @@ export const OWN_PROPS = {
 export const OWN_SIGNALS = {
     GdauiBasicForm: ['activated', 'holder-changed', 'layout-changed', 'populate-popup'],
     GdauiCloud: ['activate'],
+    GdauiDataEntry: ['contents-activated', 'contents-modified', 'contents-valid', 'expand-changed', 'status-changed'],
+    GdauiDataProxy: ['proxy-changed'],
+    GdauiDataSelector: ['selection-changed'],
     GdauiLogin: ['changed'],
     GdauiRawGrid: ['double-clicked', 'populate-popup'],
     GdauiRtEditor: ['changed'],

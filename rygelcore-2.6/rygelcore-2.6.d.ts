@@ -894,7 +894,7 @@ export namespace RygelCore {
 
     namespace MetaConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Configuration.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -1651,7 +1651,7 @@ export namespace RygelCore {
 
     namespace BaseConfiguration {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Configuration.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -1926,7 +1926,7 @@ export namespace RygelCore {
 
     namespace CmdlineConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Configuration.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2215,7 +2215,7 @@ export namespace RygelCore {
 
     namespace EnvironmentConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Configuration.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -2493,7 +2493,7 @@ export namespace RygelCore {
 
     namespace UserConfig {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Configuration.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Configuration.ConstructorProps {}
@@ -3577,6 +3577,21 @@ export namespace RygelCore {
     };
 
     namespace Configuration {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "configuration-changed": (entry: ConfigurationEntry) => void;
+            /**
+             * @signal
+             */
+            "section-changed": (section: string, entry: SectionEntry) => void;
+            /**
+             * @signal
+             */
+            "setting-changed": (section: string, key: string) => void;
+        }
         /**
          * Interface for implementing Configuration.
          * Contains only the virtual methods that need to be implemented.
@@ -3837,6 +3852,13 @@ export namespace RygelCore {
     };
 
     namespace StateMachine {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            completed: () => void;
+        }
         /**
          * Interface for implementing StateMachine.
          * Contains only the virtual methods that need to be implemented.

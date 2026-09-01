@@ -281,7 +281,7 @@ export namespace ClutterX11 {
 
     namespace TexturePixmap {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Texture.SignalSignatures {
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * ::queue-damage-redraw is emitted to notify that some sub-region
              * of the texture has been changed (either by an automatic damage

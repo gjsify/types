@@ -749,7 +749,7 @@ export namespace Dee {
 
     namespace FilterModel {
         // Signal signatures
-        interface SignalSignatures extends ProxyModel.SignalSignatures {
+        interface SignalSignatures extends ProxyModel.SignalSignatures, Model.SignalSignatures {
             "notify::filter": (pspec: GObject.ParamSpec) => void;
             "notify::back-end": (pspec: GObject.ParamSpec) => void;
             "notify::inherit-seqnums": (pspec: GObject.ParamSpec) => void;
@@ -1479,7 +1479,7 @@ export namespace Dee {
 
     namespace ProxyModel {
         // Signal signatures
-        interface SignalSignatures extends SerializableModel.SignalSignatures {
+        interface SignalSignatures extends SerializableModel.SignalSignatures, Model.SignalSignatures {
             "notify::back-end": (pspec: GObject.ParamSpec) => void;
             "notify::inherit-seqnums": (pspec: GObject.ParamSpec) => void;
             "notify::proxy-signals": (pspec: GObject.ParamSpec) => void;
@@ -2497,7 +2497,7 @@ export namespace Dee {
 
     namespace SequenceModel {
         // Signal signatures
-        interface SignalSignatures extends SerializableModel.SignalSignatures {}
+        interface SignalSignatures extends SerializableModel.SignalSignatures, Model.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends SerializableModel.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {}
@@ -3453,7 +3453,7 @@ export namespace Dee {
 
     namespace SerializableModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Model.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Model.ConstructorProps, Serializable.ConstructorProps {}
@@ -4523,7 +4523,7 @@ export namespace Dee {
 
     namespace SharedModel {
         // Signal signatures
-        interface SignalSignatures extends ProxyModel.SignalSignatures {
+        interface SignalSignatures extends ProxyModel.SignalSignatures, Model.SignalSignatures {
             /**
              * Emitted right before a remote transaction will be committed to the model.
              * @signal
@@ -4947,7 +4947,7 @@ export namespace Dee {
 
     namespace Transaction {
         // Signal signatures
-        interface SignalSignatures extends SerializableModel.SignalSignatures {
+        interface SignalSignatures extends SerializableModel.SignalSignatures, Model.SignalSignatures {
             "notify::target": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6438,6 +6438,48 @@ export namespace Dee {
 
 
     namespace Model {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Connect to this signal to be notified when a changeset that can contain
+             * multiple row additions / changes / removals has been committed
+             * to the model.
+             * @signal
+             * @run-last
+             */
+            "changeset-finished": () => void;
+            /**
+             * Connect to this signal to be notified when a changeset that can contain
+             * multiple row additions / changes / removals is about to be committed
+             * to the model.
+             * Note that not all model implementations use the changeset approach and
+             * you might still get a row change signal outside of changeset-started and
+             * changeset-finished signals. It also isn't guaranteed that a changeset
+             * would always be non-empty.
+             * @signal
+             * @run-last
+             */
+            "changeset-started": () => void;
+            /**
+             * Connect to this signal to be notified when a row is added to `self`.
+             * @signal
+             * @run-last
+             */
+            "row-added": (iter: ModelIter) => void;
+            /**
+             * Connect to this signal to be notified when a row is changed.
+             * @signal
+             * @run-last
+             */
+            "row-changed": (iter: ModelIter) => void;
+            /**
+             * Connect to this signal to be notified when a row is removed from `self`.
+             *   The row is still valid while the signal is being emitted.
+             * @signal
+             * @run-last
+             */
+            "row-removed": (iter: ModelIter) => void;
+        }
         /**
          * Interface for implementing Model.
          * Contains only the virtual methods that need to be implemented.

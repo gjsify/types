@@ -7755,7 +7755,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, ActionGroup.SignalSignatures {
             /**
              * The ::activate signal is emitted on the primary instance when an
              * activation occurs. See `g_application_activate()`.
@@ -12487,7 +12487,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace DBusActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, ActionGroup.SignalSignatures, RemoteActionGroup.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, ActionGroup.ConstructorProps, RemoteActionGroup.ConstructorProps {}
@@ -16283,7 +16283,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace DBusObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DBusObjectManager.SignalSignatures {
             /**
              * Emitted when one or more D-Bus properties on proxy changes. The
              * local cache has already been updated when this signal fires. Note
@@ -17086,7 +17086,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace DBusObjectManagerServer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DBusObjectManager.SignalSignatures {
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::object-path": (pspec: GObject.ParamSpec) => void;
         }
@@ -17339,7 +17339,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace DBusObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DBusObject.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
         }
@@ -17496,7 +17496,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace DBusObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DBusObject.SignalSignatures {
             /**
              * Emitted when a method is invoked by a remote caller and used to
              * determine if the method call is authorized.
@@ -26272,7 +26272,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
         }
@@ -35123,7 +35123,7 @@ export const _LocalFilePrototype: typeof File.prototype;
 
     namespace SimpleActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, ActionGroup.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, ActionGroup.ConstructorProps, ActionMap.ConstructorProps {}
@@ -51405,6 +51405,51 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace ActionGroup {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signals that a new action was just added to the group.
+             * 
+             * This signal is emitted after the action has been added
+             * and is now visible.
+             * @signal
+             * @since 2.28
+             * @detailed
+             * @run-last
+             */
+            "action-added": (action_name: string) => void;
+            /**
+             * Signals that the enabled status of the named action has changed.
+             * @signal
+             * @since 2.28
+             * @detailed
+             * @run-last
+             */
+            "action-enabled-changed": (action_name: string, enabled: boolean) => void;
+            /**
+             * Signals that an action is just about to be removed from the group.
+             * 
+             * This signal is emitted before the action is removed, so the action
+             * is still visible and can be queried from the signal handler.
+             * @signal
+             * @since 2.28
+             * @detailed
+             * @run-last
+             */
+            "action-removed": (action_name: string) => void;
+            /**
+             * Signals that the state of the named action has changed.
+             * @signal
+             * @since 2.28
+             * @detailed
+             * @run-last
+             */
+            "action-state-changed": (action_name: string, value: GLib.Variant) => void;
+            [key: `action-added::${string}`]: (action_name: string) => void;
+            [key: `action-enabled-changed::${string}`]: (action_name: string, enabled: boolean) => void;
+            [key: `action-removed::${string}`]: (action_name: string) => void;
+            [key: `action-state-changed::${string}`]: (action_name: string, value: GLib.Variant) => void;
+        }
         /**
          * Interface for implementing ActionGroup.
          * Contains only the virtual methods that need to be implemented.
@@ -53743,6 +53788,23 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace DBusObject {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when `interface` is added to `object`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "interface-added": (_interface: DBusInterface) => void;
+            /**
+             * Emitted when `interface` is removed from `object`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "interface-removed": (_interface: DBusInterface) => void;
+        }
         /**
          * Interface for implementing DBusObject.
          * Contains only the virtual methods that need to be implemented.
@@ -53837,6 +53899,43 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace DBusObjectManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when `interface` is added to `object`.
+             * 
+             * This signal exists purely as a convenience to avoid having to
+             * connect signals to all objects managed by `manager`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "interface-added": (object: DBusObject, _interface: DBusInterface) => void;
+            /**
+             * Emitted when `interface` has been removed from `object`.
+             * 
+             * This signal exists purely as a convenience to avoid having to
+             * connect signals to all objects managed by `manager`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "interface-removed": (object: DBusObject, _interface: DBusInterface) => void;
+            /**
+             * Emitted when `object` is added to `manager`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "object-added": (object: DBusObject) => void;
+            /**
+             * Emitted when `object` is removed from `manager`.
+             * @signal
+             * @since 2.30
+             * @run-last
+             */
+            "object-removed": (object: DBusObject) => void;
+        }
         /**
          * Interface for implementing DBusObjectManager.
          * Contains only the virtual methods that need to be implemented.
@@ -54508,6 +54607,39 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace Drive {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the drive's state has changed.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+            /**
+             * This signal is emitted when the {@link Gio.Drive} have been
+             * disconnected. If the recipient is holding references to the
+             * object they should release them so the object can be
+             * finalized.
+             * @signal
+             * @run-last
+             */
+            disconnected: () => void;
+            /**
+             * Emitted when the physical eject button (if any) of a drive has
+             * been pressed.
+             * @signal
+             * @run-last
+             */
+            "eject-button": () => void;
+            /**
+             * Emitted when the physical stop button (if any) of a drive has
+             * been pressed.
+             * @signal
+             * @since 2.22
+             * @run-last
+             */
+            "stop-button": () => void;
+        }
         /**
          * Interface for implementing Drive.
          * Contains only the virtual methods that need to be implemented.
@@ -55391,6 +55523,57 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace DtlsConnection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted during the TLS handshake after the peer certificate has
+             * been received. You can examine `peer_cert`'s certification path by
+             * calling `g_tls_certificate_get_issuer()` on it.
+             * 
+             * For a client-side connection, `peer_cert` is the server's
+             * certificate, and the signal will only be emitted if the
+             * certificate was not acceptable according to `conn`'s
+             * {@link Gio.DtlsClientConnection.validation_flags}. If you would like the
+             * certificate to be accepted despite `errors`, return `true` from the
+             * signal handler. Otherwise, if no handler accepts the certificate,
+             * the handshake will fail with {@link Gio.TlsError.BAD_CERTIFICATE}.
+             * 
+             * GLib guarantees that if certificate verification fails, this signal
+             * will be emitted with at least one error will be set in `errors`, but
+             * it does not guarantee that all possible errors will be set.
+             * Accordingly, you may not safely decide to ignore any particular
+             * type of error. For example, it would be incorrect to ignore
+             * {@link Gio.TlsCertificateFlags.EXPIRED} if you want to allow expired
+             * certificates, because this could potentially be the only error flag
+             * set even if other problems exist with the certificate.
+             * 
+             * For a server-side connection, `peer_cert` is the certificate
+             * presented by the client, if this was requested via the server's
+             * {@link Gio.DtlsServerConnection.authentication_mode}. On the server side,
+             * the signal is always emitted when the client presents a
+             * certificate, and the certificate will only be accepted if a
+             * handler returns `true`.
+             * 
+             * Note that if this signal is emitted as part of asynchronous I/O
+             * in the main thread, then you should not attempt to interact with
+             * the user before returning from the signal handler. If you want to
+             * let the user decide whether or not to accept the certificate, you
+             * would have to return `false` from the signal handler on the first
+             * attempt, and then after the connection attempt returns a
+             * {@link Gio.TlsError.BAD_CERTIFICATE}, you can interact with the user, and
+             * if the user decides to accept the certificate, remember that fact,
+             * create a new connection, and return `true` from the signal handler
+             * the next time.
+             * 
+             * If you are doing I/O in another thread, you do not
+             * need to worry about this, and can simply block in the signal
+             * handler until the UI thread returns an answer.
+             * @signal
+             * @since 2.48
+             * @run-last
+             */
+            "accept-certificate": (peer_cert: TlsCertificate, errors: TlsCertificateFlags) => boolean | void;
+        }
         /**
          * Interface for implementing DtlsConnection.
          * Contains only the virtual methods that need to be implemented.
@@ -61661,6 +61844,21 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace ListModel {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted whenever items were added to or removed
+             * from `list`. At `position`, `removed` items were removed and `added`
+             * items were added in their place.
+             * 
+             * Note: If `removed != added`, the positions of all later items
+             * in the model change.
+             * @signal
+             * @since 2.44
+             * @run-last
+             */
+            "items-changed": (position: number, removed: number, added: number) => void;
+        }
         /**
          * Interface for implementing ListModel.
          * Contains only the virtual methods that need to be implemented.
@@ -61972,6 +62170,25 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace MemoryMonitor {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the system is running low on free memory.
+             * 
+             * The signal
+             * handler should then take the appropriate action depending on the
+             * warning level. See the {@link Gio.MemoryMonitorWarningLevel} documentation for
+             * details.
+             * 
+             * Since the {@link Gio.MemoryMonitor} is a singleton, this signal will be
+             * emitted in the {@link GLib.MainContext.default}[global-default main
+             * context].
+             * @signal
+             * @since 2.64
+             * @run-last
+             */
+            "low-memory-warning": (level: MemoryMonitorWarningLevel) => void;
+        }
         /**
          * Interface for implementing MemoryMonitor.
          * Contains only the virtual methods that need to be implemented.
@@ -62062,6 +62279,35 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace Mount {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the mount has been changed.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+            /**
+             * This signal may be emitted when the {@link Gio.Mount} is about to be
+             * unmounted.
+             * 
+             * This signal depends on the backend and is only emitted if
+             * GIO was used to unmount.
+             * @signal
+             * @since 2.22
+             * @run-last
+             */
+            "pre-unmount": () => void;
+            /**
+             * This signal is emitted when the {@link Gio.Mount} have been
+             * unmounted. If the recipient is holding references to the
+             * object they should release them so the object can be
+             * finalized.
+             * @signal
+             * @run-last
+             */
+            unmounted: () => void;
+        }
         /**
          * Interface for implementing Mount.
          * Contains only the virtual methods that need to be implemented.
@@ -62815,6 +63061,16 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace NetworkMonitor {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the network configuration changes.
+             * @signal
+             * @since 2.32
+             * @run-last
+             */
+            "network-changed": (network_available: boolean) => void;
+        }
         /**
          * Interface for implementing NetworkMonitor.
          * Contains only the virtual methods that need to be implemented.
@@ -63991,6 +64247,8 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace RemoteActionGroup {
+        // Signal signatures
+        interface SignalSignatures extends ActionGroup.SignalSignatures {}
         /**
          * Interface for implementing RemoteActionGroup.
          * Contains only the virtual methods that need to be implemented.
@@ -65012,6 +65270,23 @@ export const _LocalFilePrototype: typeof File.prototype;
     };
 
     namespace Volume {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the volume has been changed.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+            /**
+             * This signal is emitted when the {@link Gio.Volume} have been removed. If
+             * the recipient is holding references to the object they should
+             * release them so the object can be finalized.
+             * @signal
+             * @run-last
+             */
+            removed: () => void;
+        }
         /**
          * Interface for implementing Volume.
          * Contains only the virtual methods that need to be implemented.

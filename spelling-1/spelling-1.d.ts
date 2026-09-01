@@ -471,7 +471,7 @@ export namespace Spelling {
 
     namespace TextBufferAdapter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
             "notify::checker": (pspec: GObject.ParamSpec) => void;
             "notify::enabled": (pspec: GObject.ParamSpec) => void;

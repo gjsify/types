@@ -1582,7 +1582,7 @@ export namespace Shell {
 
     namespace GtkEmbed {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Clone.SignalSignatures {
+        interface SignalSignatures extends Clutter.Clone.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::window": (pspec: GObject.ParamSpec) => void;
             "notify::source": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
@@ -1760,7 +1760,7 @@ export namespace Shell {
 
     namespace KeyringPrompt {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gcr.Prompt.SignalSignatures {
             /**
              * @signal
              */
@@ -3557,7 +3557,7 @@ export namespace Shell {
 
     namespace SquareBin {
         // Signal signatures
-        interface SignalSignatures extends St.Bin.SignalSignatures {
+        interface SignalSignatures extends St.Bin.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
@@ -3681,7 +3681,7 @@ export namespace Shell {
 
     namespace Stack {
         // Signal signatures
-        interface SignalSignatures extends St.Widget.SignalSignatures {
+        interface SignalSignatures extends St.Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
@@ -3804,7 +3804,7 @@ export namespace Shell {
 
     namespace TrayIcon {
         // Signal signatures
-        interface SignalSignatures extends GtkEmbed.SignalSignatures {
+        interface SignalSignatures extends GtkEmbed.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::pid": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::wm-class": (pspec: GObject.ParamSpec) => void;
@@ -4214,7 +4214,7 @@ export namespace Shell {
 
     namespace WindowPreview {
         // Signal signatures
-        interface SignalSignatures extends St.Widget.SignalSignatures {
+        interface SignalSignatures extends St.Widget.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::window-container": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-name": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-role": (pspec: GObject.ParamSpec) => void;

@@ -1250,7 +1250,7 @@ export namespace Gitg {
 
     namespace CommitModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * @signal
              */
@@ -4862,7 +4862,7 @@ export namespace Gitg {
 
     namespace SidebarStoreSidebarText {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, SidebarItem.SignalSignatures {
             "notify::text": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
         }
@@ -7321,6 +7321,13 @@ export namespace Gitg {
     };
 
     namespace SidebarItem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            activated: (numclick: number) => void;
+        }
         /**
          * Interface for implementing SidebarItem.
          * Contains only the virtual methods that need to be implemented.

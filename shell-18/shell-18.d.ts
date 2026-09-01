@@ -1932,7 +1932,7 @@ export namespace Shell {
 
     namespace KeyringPrompt {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gcr.Prompt.SignalSignatures {
             /**
              * @signal
              */

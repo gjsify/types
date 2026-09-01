@@ -131,7 +131,7 @@ export namespace FolksEds {
 
     namespace Persona {
         // Signal signatures
-        interface SignalSignatures extends Folks.Persona.SignalSignatures {
+        interface SignalSignatures extends Folks.Persona.SignalSignatures, Folks.GroupDetails.SignalSignatures {
             "notify::contact": (pspec: GObject.ParamSpec) => void;
             "notify::contact-id": (pspec: GObject.ParamSpec) => void;
             "notify::system-groups": (pspec: GObject.ParamSpec) => void;

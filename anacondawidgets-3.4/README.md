@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/anacondawidgets-3.4)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/anacondawidgets-3.4)
 
-GJS TypeScript type definitions for AnacondaWidgets-3.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.5.0.
+GJS TypeScript type definitions for AnacondaWidgets-3.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.6.0.
 
 This package contains type declarations only. It ships no runtime code, so it adds
 nothing to your program and works with any bundler or none at all.

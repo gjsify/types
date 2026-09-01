@@ -4786,7 +4786,7 @@ export namespace GimpUi {
 
     namespace ChannelComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -5774,7 +5774,7 @@ export namespace GimpUi {
 
     namespace ColorHexEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @run-first
@@ -6388,7 +6388,7 @@ export namespace GimpUi {
 
     namespace ColorProfileChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures {
+        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures, Gtk.FileChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -7398,7 +7398,7 @@ export namespace GimpUi {
 
     namespace ColorProfileComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::dialog": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -7871,7 +7871,7 @@ export namespace GimpUi {
 
     namespace ColorProfileStore {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             "notify::history": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10594,7 +10594,7 @@ export namespace GimpUi {
 
     namespace DrawableComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -10846,7 +10846,7 @@ export namespace GimpUi {
 
     namespace EnumComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
@@ -11166,7 +11166,7 @@ export namespace GimpUi {
 
     namespace EnumStore {
         // Signal signatures
-        interface SignalSignatures extends IntStore.SignalSignatures {
+        interface SignalSignatures extends IntStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             "notify::enum-type": (pspec: GObject.ParamSpec) => void;
             "notify::user-data-type": (pspec: GObject.ParamSpec) => void;
         }
@@ -12257,7 +12257,7 @@ export namespace GimpUi {
 
     namespace ImageComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -12401,7 +12401,7 @@ export namespace GimpUi {
 
     namespace IntComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -13142,7 +13142,7 @@ export namespace GimpUi {
 
     namespace IntStore {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             "notify::user-data-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -15272,7 +15272,7 @@ export namespace GimpUi {
 
     namespace LayerComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -15562,7 +15562,7 @@ export namespace GimpUi {
 
     namespace NumberPairEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @run-first
@@ -16775,7 +16775,7 @@ export namespace GimpUi {
 
     namespace PathComboBox {
         // Signal signatures
-        interface SignalSignatures extends IntComboBox.SignalSignatures {
+        interface SignalSignatures extends IntComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::layout": (pspec: GObject.ParamSpec) => void;
@@ -20406,7 +20406,7 @@ export namespace GimpUi {
 
     namespace SpinButton {
         // Signal signatures
-        interface SignalSignatures extends Gtk.SpinButton.SignalSignatures {
+        interface SignalSignatures extends Gtk.SpinButton.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::adjustment": (pspec: GObject.ParamSpec) => void;
             "notify::climb-rate": (pspec: GObject.ParamSpec) => void;
             "notify::digits": (pspec: GObject.ParamSpec) => void;
@@ -20589,7 +20589,7 @@ export namespace GimpUi {
 
     namespace SpinScale {
         // Signal signatures
-        interface SignalSignatures extends SpinButton.SignalSignatures {
+        interface SignalSignatures extends SpinButton.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::label": (pspec: GObject.ParamSpec) => void;
             "notify::adjustment": (pspec: GObject.ParamSpec) => void;
             "notify::climb-rate": (pspec: GObject.ParamSpec) => void;
@@ -20793,7 +20793,7 @@ export namespace GimpUi {
 
     namespace StringComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::ellipsize": (pspec: GObject.ParamSpec) => void;
             "notify::id-column": (pspec: GObject.ParamSpec) => void;
             "notify::label-column": (pspec: GObject.ParamSpec) => void;
@@ -21311,7 +21311,7 @@ export namespace GimpUi {
 
     namespace UnitComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::active-id": (pspec: GObject.ParamSpec) => void;
             "notify::add-tearoffs": (pspec: GObject.ParamSpec) => void;
@@ -21746,7 +21746,7 @@ export namespace GimpUi {
 
     namespace UnitStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             "notify::has-percent": (pspec: GObject.ParamSpec) => void;
             "notify::has-pixels": (pspec: GObject.ParamSpec) => void;
             "notify::long-format": (pspec: GObject.ParamSpec) => void;

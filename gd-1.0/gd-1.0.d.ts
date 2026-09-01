@@ -1432,7 +1432,7 @@ export namespace Gd {
 
     namespace MainIconView {
         // Signal signatures
-        interface SignalSignatures extends Gtk.IconView.SignalSignatures {
+        interface SignalSignatures extends Gtk.IconView.SignalSignatures, MainViewGeneric.SignalSignatures {
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::cell-area": (pspec: GObject.ParamSpec) => void;
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
@@ -1987,7 +1987,7 @@ export namespace Gd {
 
     namespace MainListView {
         // Signal signatures
-        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures, MainViewGeneric.SignalSignatures {
             "notify::activate-on-single-click": (pspec: GObject.ParamSpec) => void;
             "notify::enable-grid-lines": (pspec: GObject.ParamSpec) => void;
             "notify::enable-search": (pspec: GObject.ParamSpec) => void;
@@ -3488,7 +3488,7 @@ export namespace Gd {
 
     namespace TaggedEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {
+        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @detailed
@@ -5345,6 +5345,14 @@ export namespace Gd {
     };
 
     namespace MainViewGeneric {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "view-selection-changed": () => void;
+        }
         /**
          * Interface for implementing MainViewGeneric.
          * Contains only the virtual methods that need to be implemented.

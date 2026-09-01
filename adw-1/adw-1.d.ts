@@ -6801,7 +6801,7 @@ export namespace Adw {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::style-manager": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -6938,7 +6938,7 @@ export namespace Adw {
 
     namespace ApplicationWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::adaptive-preview": (pspec: GObject.ParamSpec) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;
             "notify::current-breakpoint": (pspec: GObject.ParamSpec) => void;
@@ -17968,7 +17968,7 @@ export namespace Adw {
 
     namespace EntryRow {
         // Signal signatures
-        interface SignalSignatures extends PreferencesRow.SignalSignatures {
+        interface SignalSignatures extends PreferencesRow.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * Emitted when the apply button is pressed.
              * 
@@ -19090,7 +19090,7 @@ export namespace Adw {
 
     namespace EnumListModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::enum-type": (pspec: GObject.ParamSpec) => void;
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
@@ -31076,7 +31076,7 @@ export namespace Adw {
 
     namespace PasswordEntryRow {
         // Signal signatures
-        interface SignalSignatures extends EntryRow.SignalSignatures {
+        interface SignalSignatures extends EntryRow.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::enable-emoji-completion": (pspec: GObject.ParamSpec) => void;
@@ -35168,7 +35168,7 @@ export namespace Adw {
 
     namespace ShortcutsSection {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
@@ -37610,7 +37610,7 @@ export namespace Adw {
 
     namespace SpinRow {
         // Signal signatures
-        interface SignalSignatures extends ActionRow.SignalSignatures {
+        interface SignalSignatures extends ActionRow.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * Emitted to convert the user's input into a double value.
              * 
@@ -39089,7 +39089,7 @@ export namespace Adw {
 
     namespace SpinnerPaintable {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gdk.Paintable.SignalSignatures, Gtk.SymbolicPaintable.SignalSignatures {
             "notify::widget": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -53205,7 +53205,7 @@ export namespace Adw {
 
     namespace ViewStackPages {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures, Gtk.SectionModel.SignalSignatures, Gtk.SelectionModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
             "notify::selected-page": (pspec: GObject.ParamSpec) => void;

@@ -363,7 +363,7 @@ export namespace Liferea {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
             "notify::register-session": (pspec: GObject.ParamSpec) => void;

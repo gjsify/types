@@ -17043,7 +17043,7 @@ export namespace GXml {
 
     namespace SerializableArrayList {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures, Serializable.SignalSignatures {
             "notify::ignored-serializable-properties": (pspec: GObject.ParamSpec) => void;
             "notify::g-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;
@@ -17387,7 +17387,7 @@ export namespace GXml {
 
     namespace SerializableDualKeyMap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Serializable.SignalSignatures {
             "notify::value-type": (pspec: GObject.ParamSpec) => void;
             "notify::primary-key-type": (pspec: GObject.ParamSpec) => void;
             "notify::secondary-key-type": (pspec: GObject.ParamSpec) => void;
@@ -18014,7 +18014,7 @@ export namespace GXml {
 
     namespace SerializableHashMap {
         // Signal signatures
-        interface SignalSignatures extends Gee.HashMap.SignalSignatures {
+        interface SignalSignatures extends Gee.HashMap.SignalSignatures, Serializable.SignalSignatures {
             "notify::ignored-serializable-properties": (pspec: GObject.ParamSpec) => void;
             "notify::k-type": (pspec: GObject.ParamSpec) => void;
             "notify::k-dup-func": (pspec: GObject.ParamSpec) => void;
@@ -18364,7 +18364,7 @@ export namespace GXml {
 
     namespace SerializableTreeMap {
         // Signal signatures
-        interface SignalSignatures extends Gee.TreeMap.SignalSignatures {
+        interface SignalSignatures extends Gee.TreeMap.SignalSignatures, Serializable.SignalSignatures {
             "notify::ignored-serializable-properties": (pspec: GObject.ParamSpec) => void;
             "notify::k-type": (pspec: GObject.ParamSpec) => void;
             "notify::k-dup-func": (pspec: GObject.ParamSpec) => void;
@@ -18769,7 +18769,7 @@ export namespace GXml {
 
     namespace SerializableObjectModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Serializable.SignalSignatures {
             "notify::ignored-serializable-properties": (pspec: GObject.ParamSpec) => void;
             "notify::unknown-serializable-properties": (pspec: GObject.ParamSpec) => void;
             "notify::unknown-serializable-nodes": (pspec: GObject.ParamSpec) => void;
@@ -32082,6 +32082,25 @@ export namespace GXml {
     };
 
     namespace Serializable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "serialize-unknown-property": (element: Node, prop: GObject.ParamSpec, node: Node) => void;
+            /**
+             * @signal
+             */
+            "serialize-unknown-property-type": (element: Node, prop: GObject.ParamSpec, node: Node) => void;
+            /**
+             * @signal
+             */
+            "deserialize-unknown-property": (node: Node, prop: GObject.ParamSpec) => void;
+            /**
+             * @signal
+             */
+            "deserialize-unknown-property-type": (node: Node, prop: GObject.ParamSpec) => void;
+        }
         /**
          * Interface for implementing Serializable.
          * Contains only the virtual methods that need to be implemented.

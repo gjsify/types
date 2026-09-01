@@ -43,6 +43,7 @@ export const OWN_SIGNALS = {
     HdyDialer: ['deleted', 'submitted', 'symbol-clicked'],
     HdyDialerCycleButton: ['cycle-end', 'cycle-start'],
     HdyPaginator: ['page-changed'],
+    HdySwipeable: ['begin-swipe', 'end-swipe', 'switch-child', 'update-swipe'],
 };
 
 export const DECLS = {
@@ -145,6 +146,10 @@ export const SINCE = {
     'HdyPreferencesPage.title': '0.0.10',
     'HdyPreferencesRow.title': '0.0.10',
     'HdyPreferencesRow.use-underline': '0.0.10',
+    'HdySwipeable::begin-swipe': '0.0.12',
+    'HdySwipeable::end-swipe': '0.0.12',
+    'HdySwipeable::switch-child': '0.0.12',
+    'HdySwipeable::update-swipe': '0.0.12',
     'HdyViewSwitcher.icon-size': '0.0.10',
     'HdyViewSwitcher.narrow-ellipsize': '0.0.10',
     'HdyViewSwitcher.policy': '0.0.10',

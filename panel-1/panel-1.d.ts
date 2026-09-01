@@ -179,7 +179,7 @@ export namespace Panel {
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
@@ -743,7 +743,7 @@ export namespace Panel {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Adw.Application.SignalSignatures {
+        interface SignalSignatures extends Adw.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::style-manager": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -1777,7 +1777,7 @@ export namespace Panel {
 
     namespace DocumentWorkspace {
         // Signal signatures
-        interface SignalSignatures extends Workspace.SignalSignatures {
+        interface SignalSignatures extends Workspace.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * This signal is used to add a {@link Panel.Widget} to the document workspace,
              * generally in the document grid.
@@ -4367,7 +4367,7 @@ export namespace Panel {
 
     namespace GSettingsActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::settings": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -8574,7 +8574,7 @@ export namespace Panel {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @detailed
@@ -11795,7 +11795,7 @@ export namespace Panel {
 
     namespace Workspace {
         // Signal signatures
-        interface SignalSignatures extends Adw.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Adw.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::adaptive-preview": (pspec: GObject.ParamSpec) => void;
             "notify::content": (pspec: GObject.ParamSpec) => void;

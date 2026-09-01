@@ -3914,7 +3914,7 @@ export namespace Gda {
 
     namespace DataAccessWrapper {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -4913,7 +4913,7 @@ export namespace Gda {
 
     namespace DataModelArray {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::n-columns": (pspec: GObject.ParamSpec) => void;
             "notify::read-only": (pspec: GObject.ParamSpec) => void;
         }
@@ -5806,7 +5806,7 @@ export namespace Gda {
 
     namespace DataModelDir {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::basedir": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -6676,7 +6676,7 @@ export namespace Gda {
 
     namespace DataModelImport {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::data-string": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
             "notify::options": (pspec: GObject.ParamSpec) => void;
@@ -7892,7 +7892,7 @@ export namespace Gda {
 
     namespace DataModelLdap {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::base": (pspec: GObject.ParamSpec) => void;
             "notify::cnc": (pspec: GObject.ParamSpec) => void;
@@ -8818,7 +8818,7 @@ export namespace Gda {
 
     namespace DataPivot {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -9733,7 +9733,7 @@ export namespace Gda {
 
     namespace DataProxy {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             /**
              * Gets emitted when `proxy`'s filter has been changed
              * @signal
@@ -10958,7 +10958,7 @@ export namespace Gda {
 
     namespace DataSelect {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, DataModel.SignalSignatures {
             "notify::auto-reset": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::delete-stmt": (pspec: GObject.ParamSpec) => void;
@@ -20215,6 +20215,47 @@ export namespace Gda {
     };
 
     namespace DataModel {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Gets emitted when `model`'s access flags have changed. Use
+             * `gda_data_model_get_access_flags()` to get the access flags.
+             * @signal
+             * @run-last
+             */
+            "access-changed": () => void;
+            /**
+             * Gets emitted when any value in `model` has been changed
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+            /**
+             * Gets emitted when `model`'s contents has been completely reset (the number and
+             * type of columns may also have changed)
+             * @signal
+             * @run-last
+             */
+            reset: () => void;
+            /**
+             * Gets emitted when a row has been inserted in `model`
+             * @signal
+             * @run-last
+             */
+            "row-inserted": (row: number) => void;
+            /**
+             * Gets emitted when a row has been removed from `model`
+             * @signal
+             * @run-last
+             */
+            "row-removed": (row: number) => void;
+            /**
+             * Gets emitted when a row has been modified in `model`
+             * @signal
+             * @run-last
+             */
+            "row-updated": (row: number) => void;
+        }
         /**
          * Interface for implementing DataModel.
          * Contains only the virtual methods that need to be implemented.

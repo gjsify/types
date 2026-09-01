@@ -229,7 +229,7 @@ export namespace Totem {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The {@link Totem.Object.SignalSignatures.file_closed | Totem.Object::file-closed} signal is emitted when Totem closes a stream.
              * @signal

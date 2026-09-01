@@ -1416,7 +1416,7 @@ export namespace FoundryGtk {
 
     namespace ShortcutBundle {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -1595,7 +1595,7 @@ export namespace FoundryGtk {
 
     namespace ShortcutManager {
         // Signal signatures
-        interface SignalSignatures extends Foundry.Service.SignalSignatures {
+        interface SignalSignatures extends Foundry.Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 

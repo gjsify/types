@@ -2959,7 +2959,7 @@ export namespace Anjuta {
 
     namespace DropEntry {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::help-text": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
@@ -3096,7 +3096,7 @@ export namespace Anjuta {
 
     namespace Entry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::help-text": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
@@ -3681,7 +3681,7 @@ export namespace Anjuta {
 
     namespace FileDropEntry {
         // Signal signatures
-        interface SignalSignatures extends DropEntry.SignalSignatures {
+        interface SignalSignatures extends DropEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::relative-path": (pspec: GObject.ParamSpec) => void;
             "notify::help-text": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
@@ -8837,6 +8837,34 @@ export namespace Anjuta {
 
 
     namespace Shell {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "load-session": (object: number, p0: GObject.Object) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "save-prompt": (object: GObject.Object) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "save-session": (object: number, p0: GObject.Object) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "value-added": (object: string, p0: unknown) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "value-removed": (object: string) => void;
+        }
         /**
          * Interface for implementing Shell.
          * Contains only the virtual methods that need to be implemented.

@@ -846,7 +846,7 @@ export namespace Wp {
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
             "notify::permissions": (pspec: GObject.ParamSpec) => void;
@@ -1720,7 +1720,7 @@ export namespace Wp {
 
     namespace Device {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
             "notify::permissions": (pspec: GObject.ParamSpec) => void;
@@ -2263,7 +2263,7 @@ export namespace Wp {
 
     namespace Factory {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
             "notify::permissions": (pspec: GObject.ParamSpec) => void;
@@ -2991,7 +2991,7 @@ export namespace Wp {
 
     namespace ImplNode {
         // Signal signatures
-        interface SignalSignatures extends Proxy.SignalSignatures {
+        interface SignalSignatures extends Proxy.SignalSignatures, PipewireObject.SignalSignatures {
             "notify::pw-impl-node": (pspec: GObject.ParamSpec) => void;
             "notify::bound-id": (pspec: GObject.ParamSpec) => void;
             "notify::pw-proxy": (pspec: GObject.ParamSpec) => void;
@@ -3347,7 +3347,7 @@ export namespace Wp {
 
     namespace Link {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -3766,7 +3766,7 @@ export namespace Wp {
 
     namespace Node {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -4672,7 +4672,7 @@ export namespace Wp {
 
     namespace Port {
         // Signal signatures
-        interface SignalSignatures extends GlobalProxy.SignalSignatures {
+        interface SignalSignatures extends GlobalProxy.SignalSignatures, PipewireObject.SignalSignatures {
             "notify::factory-name": (pspec: GObject.ParamSpec) => void;
             "notify::global-properties": (pspec: GObject.ParamSpec) => void;
             "notify::permissions": (pspec: GObject.ParamSpec) => void;
@@ -8165,6 +8165,14 @@ export namespace Wp {
     };
 
     namespace PipewireObject {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "params-changed": (object: string) => void;
+        }
         /**
          * Interface for implementing PipewireObject.
          * Contains only the virtual methods that need to be implemented.
@@ -8537,6 +8545,14 @@ export namespace Wp {
     };
 
     namespace SiAdapter {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "adapter-ports-state-changed": (object: SiAdapterPortsState, p0: SiAdapterPortsState) => void;
+        }
         /**
          * Interface for implementing SiAdapter.
          * Contains only the virtual methods that need to be implemented.
@@ -8653,6 +8669,14 @@ export namespace Wp {
     };
 
     namespace SiLink {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "link-properties-changed": () => void;
+        }
         /**
          * Interface for implementing SiLink.
          * Contains only the virtual methods that need to be implemented.

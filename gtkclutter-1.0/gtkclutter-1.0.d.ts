@@ -73,7 +73,7 @@ export namespace GtkClutter {
 
     namespace Actor {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::contents": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -939,7 +939,7 @@ export namespace GtkClutter {
 
     namespace Texture {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Texture.SignalSignatures {
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::disable-slicing": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
             "notify::filter-quality": (pspec: GObject.ParamSpec) => void;

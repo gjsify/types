@@ -89,7 +89,7 @@ export namespace FolksDummy {
 
     namespace FullPersona {
         // Signal signatures
-        interface SignalSignatures extends Persona.SignalSignatures {
+        interface SignalSignatures extends Persona.SignalSignatures, Folks.GroupDetails.SignalSignatures {
             "notify::property-change-delay": (pspec: GObject.ParamSpec) => void;
             "notify::iid": (pspec: GObject.ParamSpec) => void;
             "notify::uid": (pspec: GObject.ParamSpec) => void;

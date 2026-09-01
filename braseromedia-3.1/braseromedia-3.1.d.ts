@@ -498,7 +498,7 @@ export namespace BraseroMedia {
 
     namespace DriveSelection {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             /**
              * This signal gets emitted when the selected medium has changed
              * @signal
@@ -1307,7 +1307,7 @@ export namespace BraseroMedia {
 
     namespace MediumSelection {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             /**
              * This signal gets emitted when the selected medium has changed.
              * @signal

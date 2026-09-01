@@ -32,7 +32,7 @@ export namespace GstInsertBin {
 
     namespace InsertBin {
         // Signal signatures
-        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+        interface SignalSignatures extends Gst.Bin.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             /**
              * This action signal adds the filter like element after any other element
              * in the bin.

@@ -867,6 +867,8 @@ export namespace GitgExt {
     type UIElementIface = typeof UIElement;
 
     namespace Action {
+        // Signal signatures
+        interface SignalSignatures extends UIElement.SignalSignatures {}
         /**
          * Interface for implementing Action.
          * Contains only the virtual methods that need to be implemented.
@@ -989,6 +991,17 @@ export namespace GitgExt {
     };
 
     namespace Application {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "repository-changed-externally": (hint: ExternalChangeHint) => void;
+            /**
+             * @signal
+             */
+            "repository-commits-changed": () => void;
+        }
         /**
          * Interface for implementing Application.
          * Contains only the virtual methods that need to be implemented.
@@ -1317,6 +1330,13 @@ export namespace GitgExt {
     };
 
     namespace CommitAction {
+        // Signal signatures
+        interface SignalSignatures extends UIElement.SignalSignatures {
+            /**
+             * @signal
+             */
+            finished: () => void;
+        }
         /**
          * Interface for implementing CommitAction.
          * Contains only the virtual methods that need to be implemented.
@@ -1509,6 +1529,13 @@ export namespace GitgExt {
     };
 
     namespace History {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "selection-changed": () => void;
+        }
         /**
          * Interface for implementing History.
          * Contains only the virtual methods that need to be implemented.
@@ -1561,6 +1588,13 @@ export namespace GitgExt {
     };
 
     namespace Notification {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            close: (delay: number) => void;
+        }
         /**
          * Interface for implementing Notification.
          * Contains only the virtual methods that need to be implemented.
@@ -1872,6 +1906,13 @@ export namespace GitgExt {
     };
 
     namespace RefAction {
+        // Signal signatures
+        interface SignalSignatures extends UIElement.SignalSignatures {
+            /**
+             * @signal
+             */
+            finished: () => void;
+        }
         /**
          * Interface for implementing RefAction.
          * Contains only the virtual methods that need to be implemented.
@@ -2254,6 +2295,13 @@ export namespace GitgExt {
     };
 
     namespace UIElement {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            activate: () => void;
+        }
         /**
          * Interface for implementing UIElement.
          * Contains only the virtual methods that need to be implemented.

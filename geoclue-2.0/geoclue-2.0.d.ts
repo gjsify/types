@@ -106,7 +106,7 @@ export namespace Geoclue {
 
     namespace ClientProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Client.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -909,7 +909,7 @@ export namespace Geoclue {
 
     namespace ClientSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Client.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::desktop-id": (pspec: GObject.ParamSpec) => void;
@@ -2051,7 +2051,7 @@ export namespace Geoclue {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Manager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -2842,7 +2842,7 @@ export namespace Geoclue {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Manager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::available-accuracy-level": (pspec: GObject.ParamSpec) => void;
             "notify::in-use": (pspec: GObject.ParamSpec) => void;
@@ -3787,6 +3787,33 @@ export namespace Geoclue {
 
 
     namespace Client {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Start">Start()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_client_complete_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-start": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Client.Stop">Stop()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_client_complete_stop()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-stop": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-GeoClue2-Client.LocationUpdated">"LocationUpdated"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "location-updated": (arg_old: string, arg_new: string) => void;
+        }
         /**
          * Interface for implementing Client.
          * Contains only the virtual methods that need to be implemented.
@@ -4190,6 +4217,41 @@ export namespace Geoclue {
     };
 
     namespace Manager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_manager_complete_add_agent()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-add-agent": (invocation: Gio.DBusMethodInvocation, arg_id: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_manager_complete_create_client()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create-client": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_manager_complete_delete_client()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete-client": (invocation: Gio.DBusMethodInvocation, arg_client: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `gclue_manager_complete_get_client()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-client": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing Manager.
          * Contains only the virtual methods that need to be implemented.

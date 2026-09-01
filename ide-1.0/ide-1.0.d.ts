@@ -1234,7 +1234,7 @@ export namespace Ide {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.Application.SignalSignatures {
+        interface SignalSignatures extends Dazzle.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::menu-manager": (pspec: GObject.ParamSpec) => void;
             "notify::shortcut-manager": (pspec: GObject.ParamSpec) => void;
             "notify::theme-manager": (pspec: GObject.ParamSpec) => void;
@@ -2130,7 +2130,7 @@ export namespace Ide {
 
     namespace BufferManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted when a view for `buffer` has received focus. You might connect to this
              * signal when you want to perform an operation while a buffer is in focus.
@@ -2629,7 +2629,7 @@ export namespace Ide {
 
     namespace BuildManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The "build-failed" signal is emitted when a build that was previously
              * notified via {@link Ide.BuildManager.SignalSignatures.build_started | Ide.BuildManager::build-started} has failed to complete
@@ -5821,7 +5821,7 @@ export namespace Ide {
 
     namespace ConfigurationManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted any time a new configuration is selected or the
              * currently selected configurations state changes.
@@ -7157,7 +7157,7 @@ export namespace Ide {
 
     namespace DeviceManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -7926,7 +7926,7 @@ export namespace Ide {
 
     namespace DirectoryVcs {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Vcs.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::branch-name": (pspec: GObject.ParamSpec) => void;
             "notify::working-directory": (pspec: GObject.ParamSpec) => void;
@@ -8504,7 +8504,7 @@ export namespace Ide {
 
     namespace EditorPerspective {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.DockOverlay.SignalSignatures {
+        interface SignalSignatures extends Dazzle.DockOverlay.SignalSignatures, Dazzle.DockItem.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -9281,7 +9281,7 @@ export namespace Ide {
 
     namespace Environment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -10994,7 +10994,7 @@ export namespace Ide {
 
     namespace LangservDiagnosticProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, DiagnosticProvider.SignalSignatures {
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -11894,7 +11894,7 @@ export namespace Ide {
 
     namespace Layout {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.DockBin.SignalSignatures {
+        interface SignalSignatures extends Dazzle.DockBin.SignalSignatures, Dazzle.DockItem.SignalSignatures {
             "notify::active-view": (pspec: GObject.ParamSpec) => void;
             "notify::bottom-visible": (pspec: GObject.ParamSpec) => void;
             "notify::left-visible": (pspec: GObject.ParamSpec) => void;
@@ -12448,7 +12448,7 @@ export namespace Ide {
 
     namespace LayoutPane {
         // Signal signatures
-        interface SignalSignatures extends Dazzle.DockBinEdge.SignalSignatures {
+        interface SignalSignatures extends Dazzle.DockBinEdge.SignalSignatures, Dazzle.DockItem.SignalSignatures {
             "notify::edge": (pspec: GObject.ParamSpec) => void;
             "notify::child-revealed": (pspec: GObject.ParamSpec) => void;
             "notify::position": (pspec: GObject.ParamSpec) => void;
@@ -13678,7 +13678,7 @@ export namespace Ide {
 
     namespace OmniSearchEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             /**
              * @signal
              * @action
@@ -15847,7 +15847,7 @@ export namespace Ide {
 
     namespace RecentProjects {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -16159,7 +16159,7 @@ export namespace Ide {
 
     namespace RunManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * This signal is emitted right before `ide_runner_run_async()` is called
              * on an {@link Ide.Runner}. It can be used by plugins to tweak things right
@@ -17355,7 +17355,7 @@ export namespace Ide {
 
     namespace RuntimeManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -21715,7 +21715,7 @@ export namespace Ide {
 
     namespace TransferManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted when all of the transfers have completed or failed.
              * @signal
@@ -22493,7 +22493,7 @@ export namespace Ide {
 
     namespace Workbench {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @action
@@ -25988,6 +25988,19 @@ export namespace Ide {
     };
 
     namespace DeviceProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "device-added": (object: Device) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "device-removed": (object: Device) => void;
+        }
         /**
          * Interface for implementing DeviceProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -26061,6 +26074,14 @@ export namespace Ide {
     };
 
     namespace DiagnosticProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            invalidated: () => void;
+        }
         /**
          * Interface for implementing DiagnosticProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -27009,6 +27030,17 @@ export namespace Ide {
     };
 
     namespace ProjectMiner {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when a new project has been discovered by the miner.
+             * The signal will always be emitted from the primary thread (Gtk+) as long as
+             * `ide_project_miner_emit_discovered()` was used to emit the signal.
+             * @signal
+             * @run-last
+             */
+            discovered: (project_info: ProjectInfo) => void;
+        }
         /**
          * Interface for implementing ProjectMiner.
          * Contains only the virtual methods that need to be implemented.
@@ -27670,6 +27702,14 @@ export namespace Ide {
     };
 
     namespace Service {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "context-loaded": () => void;
+        }
         /**
          * Interface for implementing Service.
          * Contains only the virtual methods that need to be implemented.
@@ -28458,6 +28498,17 @@ export namespace Ide {
     };
 
     namespace Vcs {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "changed" signal should be emitted when the VCS has detected a change
+             * to the underlying VCS storage. This can be used by consumers to reload
+             * their respective data structures.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+        }
         /**
          * Interface for implementing Vcs.
          * Contains only the virtual methods that need to be implemented.

@@ -256,7 +256,7 @@ export namespace Pnl {
 
     namespace DockBin {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Container.SignalSignatures {
+        interface SignalSignatures extends Gtk.Container.SignalSignatures, DockItem.SignalSignatures {
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::resize-mode": (pspec: GObject.ParamSpec) => void;
@@ -500,7 +500,7 @@ export namespace Pnl {
 
     namespace DockBinEdge {
         // Signal signatures
-        interface SignalSignatures extends DockRevealer.SignalSignatures {
+        interface SignalSignatures extends DockRevealer.SignalSignatures, DockItem.SignalSignatures {
             /**
              * @signal
              * @action
@@ -821,7 +821,7 @@ export namespace Pnl {
 
     namespace DockOverlay {
         // Signal signatures
-        interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.EventBox.SignalSignatures, DockItem.SignalSignatures {
             /**
              * @signal
              * @action
@@ -1065,7 +1065,7 @@ export namespace Pnl {
 
     namespace DockOverlayEdge {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures, DockItem.SignalSignatures {
             "notify::edge": (pspec: GObject.ParamSpec) => void;
             "notify::position": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
@@ -1300,7 +1300,7 @@ export namespace Pnl {
 
     namespace DockPaned {
         // Signal signatures
-        interface SignalSignatures extends MultiPaned.SignalSignatures {
+        interface SignalSignatures extends MultiPaned.SignalSignatures, DockItem.SignalSignatures {
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
             "notify::child": (pspec: GObject.ParamSpec) => void;
@@ -1735,7 +1735,7 @@ export namespace Pnl {
 
     namespace DockStack {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DockItem.SignalSignatures {
             "notify::edge": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -2170,7 +2170,7 @@ export namespace Pnl {
 
     namespace DockWidget {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Bin.SignalSignatures {
+        interface SignalSignatures extends Gtk.Bin.SignalSignatures, DockItem.SignalSignatures {
             "notify::manager": (pspec: GObject.ParamSpec) => void;
             "notify::title": (pspec: GObject.ParamSpec) => void;
             "notify::border-width": (pspec: GObject.ParamSpec) => void;
@@ -2400,7 +2400,7 @@ export namespace Pnl {
 
     namespace DockWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Window.SignalSignatures {
+        interface SignalSignatures extends Gtk.Window.SignalSignatures, DockItem.SignalSignatures {
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
             "notify::attached-to": (pspec: GObject.ParamSpec) => void;
@@ -3287,6 +3287,14 @@ export namespace Pnl {
     };
 
     namespace DockItem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "manager-set": (object: DockManager) => void;
+        }
         /**
          * Interface for implementing DockItem.
          * Contains only the virtual methods that need to be implemented.

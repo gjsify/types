@@ -91,7 +91,7 @@ export namespace GdkWin32 {
 
     namespace D3D12Texture {
         // Signal signatures
-        interface SignalSignatures extends Gdk.Texture.SignalSignatures {
+        interface SignalSignatures extends Gdk.Texture.SignalSignatures, Gdk.Paintable.SignalSignatures {
             "notify::color-state": (pspec: GObject.ParamSpec) => void;
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::width": (pspec: GObject.ParamSpec) => void;

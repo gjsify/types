@@ -1141,7 +1141,7 @@ export namespace Clapper {
 
     namespace EnhancerProxyList {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {
+        interface SignalSignatures extends Gst.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::n-proxies": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -3971,7 +3971,7 @@ export namespace Clapper {
 
     namespace Queue {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {
+        interface SignalSignatures extends Gst.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::current-index": (pspec: GObject.ParamSpec) => void;
             "notify::current-item": (pspec: GObject.ParamSpec) => void;
             "notify::gapless": (pspec: GObject.ParamSpec) => void;
@@ -4747,7 +4747,7 @@ export namespace Clapper {
 
     namespace StreamList {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {
+        interface SignalSignatures extends Gst.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::current-index": (pspec: GObject.ParamSpec) => void;
             "notify::current-stream": (pspec: GObject.ParamSpec) => void;
             "notify::n-streams": (pspec: GObject.ParamSpec) => void;
@@ -5205,7 +5205,7 @@ export namespace Clapper {
 
     namespace Timeline {
         // Signal signatures
-        interface SignalSignatures extends Gst.Object.SignalSignatures {
+        interface SignalSignatures extends Gst.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::n-markers": (pspec: GObject.ParamSpec) => void;
             "notify::name": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;

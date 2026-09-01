@@ -2319,7 +2319,7 @@ export namespace BraseroBurn {
 
     namespace TrackDataCfg {
         // Signal signatures
-        interface SignalSignatures extends TrackData.SignalSignatures {
+        interface SignalSignatures extends TrackData.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             /**
              * @signal
              * @run-last

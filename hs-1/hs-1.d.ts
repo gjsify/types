@@ -4149,6 +4149,17 @@ export namespace Hs {
     };
 
     namespace PlayStationCore {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when DualShock mode changes for `player`.
+             * 
+             * Use {@link PlayStationCore.get_dualshock_mode} to get the new mode.
+             * @signal
+             * @run-first
+             */
+            "dualshock-mode-changed": (player: number) => void;
+        }
         /**
          * Interface for implementing PlayStationCore.
          * Contains only the virtual methods that need to be implemented.

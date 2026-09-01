@@ -1314,7 +1314,7 @@ export namespace GES {
 
     namespace Asset {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::proxy": (pspec: GObject.ParamSpec) => void;
@@ -2487,7 +2487,7 @@ export namespace GES {
 
     namespace AudioSource {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {
+        interface SignalSignatures extends Source.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -2552,7 +2552,7 @@ export namespace GES {
 
     namespace AudioTestSource {
         // Signal signatures
-        interface SignalSignatures extends AudioSource.SignalSignatures {
+        interface SignalSignatures extends AudioSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -2638,7 +2638,7 @@ export namespace GES {
 
     namespace AudioTrack {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
+        interface SignalSignatures extends Track.SignalSignatures, MetaContainer.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -3154,7 +3154,7 @@ export namespace GES {
 
     namespace AudioTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {
+        interface SignalSignatures extends Transition.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -3214,7 +3214,7 @@ export namespace GES {
 
     namespace AudioUriSource {
         // Signal signatures
-        interface SignalSignatures extends AudioSource.SignalSignatures {
+        interface SignalSignatures extends AudioSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
@@ -3286,7 +3286,7 @@ export namespace GES {
 
     namespace BaseEffect {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {
+        interface SignalSignatures extends Operation.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -3446,7 +3446,7 @@ export namespace GES {
 
     namespace BaseEffectClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {
+        interface SignalSignatures extends OperationClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -3515,7 +3515,7 @@ export namespace GES {
 
     namespace BaseTransitionClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {
+        interface SignalSignatures extends OperationClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -3682,7 +3682,7 @@ export namespace GES {
 
     namespace Clip {
         // Signal signatures
-        interface SignalSignatures extends Container.SignalSignatures {
+        interface SignalSignatures extends Container.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -4402,7 +4402,7 @@ export namespace GES {
 
     namespace ClipAsset {
         // Signal signatures
-        interface SignalSignatures extends Asset.SignalSignatures {
+        interface SignalSignatures extends Asset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -5347,7 +5347,7 @@ export namespace GES {
 
     namespace Container {
         // Signal signatures
-        interface SignalSignatures extends TimelineElement.SignalSignatures {
+        interface SignalSignatures extends TimelineElement.SignalSignatures, MetaContainer.SignalSignatures {
             /**
              * Will be emitted after a child is added to the container. Usually,
              * you should connect with `g_signal_connect_after()` since the signal
@@ -6195,7 +6195,7 @@ export namespace GES {
 
     namespace Effect {
         // Signal signatures
-        interface SignalSignatures extends BaseEffect.SignalSignatures {
+        interface SignalSignatures extends BaseEffect.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::bin-description": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
@@ -6308,7 +6308,7 @@ export namespace GES {
 
     namespace EffectAsset {
         // Signal signatures
-        interface SignalSignatures extends TrackElementAsset.SignalSignatures {
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::track-type": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -6564,7 +6564,7 @@ export namespace GES {
 
     namespace EffectClip {
         // Signal signatures
-        interface SignalSignatures extends BaseEffectClip.SignalSignatures {
+        interface SignalSignatures extends BaseEffectClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::audio-bin-description": (pspec: GObject.ParamSpec) => void;
             "notify::video-bin-description": (pspec: GObject.ParamSpec) => void;
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
@@ -6870,7 +6870,7 @@ export namespace GES {
 
     namespace Group {
         // Signal signatures
-        interface SignalSignatures extends Container.SignalSignatures {
+        interface SignalSignatures extends Container.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::in-point": (pspec: GObject.ParamSpec) => void;
             "notify::max-duration": (pspec: GObject.ParamSpec) => void;
@@ -7030,7 +7030,7 @@ export namespace GES {
 
     namespace ImageSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {
+        interface SignalSignatures extends VideoSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
@@ -7103,7 +7103,7 @@ export namespace GES {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures, MetaContainer.SignalSignatures {
             /**
              * Will be emitted whenever the layer is activated or deactivated
              * for some {@link GES.Track}. See `ges_layer_set_active_for_tracks()`.
@@ -7887,7 +7887,7 @@ export namespace GES {
 
     namespace Marker {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::position": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -8478,7 +8478,7 @@ export namespace GES {
 
     namespace MultiFileSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {
+        interface SignalSignatures extends VideoSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
@@ -8565,7 +8565,7 @@ export namespace GES {
 
     namespace Operation {
         // Signal signatures
-        interface SignalSignatures extends TrackElement.SignalSignatures {
+        interface SignalSignatures extends TrackElement.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -8624,7 +8624,7 @@ export namespace GES {
 
     namespace OperationClip {
         // Signal signatures
-        interface SignalSignatures extends Clip.SignalSignatures {
+        interface SignalSignatures extends Clip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -8682,7 +8682,7 @@ export namespace GES {
 
     namespace OverlayClip {
         // Signal signatures
-        interface SignalSignatures extends OperationClip.SignalSignatures {
+        interface SignalSignatures extends OperationClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -8745,7 +8745,7 @@ export namespace GES {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Gst.Pipeline.SignalSignatures {
+        interface SignalSignatures extends Gst.Pipeline.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             "notify::audio-filter": (pspec: GObject.ParamSpec) => void;
             "notify::audio-sink": (pspec: GObject.ParamSpec) => void;
             "notify::mode": (pspec: GObject.ParamSpec) => void;
@@ -9261,7 +9261,7 @@ export namespace GES {
 
     namespace Project {
         // Signal signatures
-        interface SignalSignatures extends Asset.SignalSignatures {
+        interface SignalSignatures extends Asset.SignalSignatures, MetaContainer.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -10289,7 +10289,7 @@ export namespace GES {
 
     namespace Source {
         // Signal signatures
-        interface SignalSignatures extends TrackElement.SignalSignatures {
+        interface SignalSignatures extends TrackElement.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -10366,7 +10366,7 @@ export namespace GES {
 
     namespace SourceClip {
         // Signal signatures
-        interface SignalSignatures extends Clip.SignalSignatures {
+        interface SignalSignatures extends Clip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -10433,7 +10433,7 @@ export namespace GES {
 
     namespace SourceClipAsset {
         // Signal signatures
-        interface SignalSignatures extends ClipAsset.SignalSignatures {
+        interface SignalSignatures extends ClipAsset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -10689,7 +10689,7 @@ export namespace GES {
 
     namespace TestClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {
+        interface SignalSignatures extends SourceClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::freq": (pspec: GObject.ParamSpec) => void;
             "notify::mute": (pspec: GObject.ParamSpec) => void;
             "notify::volume": (pspec: GObject.ParamSpec) => void;
@@ -10849,7 +10849,7 @@ export namespace GES {
 
     namespace TextOverlay {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {
+        interface SignalSignatures extends Operation.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -10995,7 +10995,7 @@ export namespace GES {
 
     namespace TextOverlayClip {
         // Signal signatures
-        interface SignalSignatures extends OverlayClip.SignalSignatures {
+        interface SignalSignatures extends OverlayClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::font-desc": (pspec: GObject.ParamSpec) => void;
             "notify::halignment": (pspec: GObject.ParamSpec) => void;
@@ -11212,7 +11212,7 @@ export namespace GES {
 
     namespace Timeline {
         // Signal signatures
-        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+        interface SignalSignatures extends Gst.Bin.SignalSignatures, MetaContainer.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             /**
              * This signal will be emitted once the changes initiated by
              * `ges_timeline_commit()` have been executed in the backend. Use
@@ -12547,7 +12547,7 @@ export namespace GES {
 
     namespace TimelineElement {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures, MetaContainer.SignalSignatures {
             /**
              * Emitted when the element has a new child property registered. See
              * `ges_timeline_element_add_child_property()`.
@@ -14111,7 +14111,7 @@ export namespace GES {
 
     namespace TitleClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {
+        interface SignalSignatures extends SourceClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::font-desc": (pspec: GObject.ParamSpec) => void;
@@ -14375,7 +14375,7 @@ export namespace GES {
 
     namespace TitleSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {
+        interface SignalSignatures extends VideoSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -14536,7 +14536,7 @@ export namespace GES {
 
     namespace Track {
         // Signal signatures
-        interface SignalSignatures extends Gst.Bin.SignalSignatures {
+        interface SignalSignatures extends Gst.Bin.SignalSignatures, MetaContainer.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             /**
              * This signal will be emitted once the changes initiated by
              * `ges_track_commit()` have been executed in the backend. In particular,
@@ -15449,7 +15449,7 @@ export namespace GES {
 
     namespace TrackElement {
         // Signal signatures
-        interface SignalSignatures extends TimelineElement.SignalSignatures {
+        interface SignalSignatures extends TimelineElement.SignalSignatures, MetaContainer.SignalSignatures {
             /**
              * This is emitted when a control binding is added to a child property
              * of the track element.
@@ -16441,7 +16441,7 @@ export namespace GES {
 
     namespace TrackElementAsset {
         // Signal signatures
-        interface SignalSignatures extends Asset.SignalSignatures {
+        interface SignalSignatures extends Asset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::track-type": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -17245,7 +17245,7 @@ export namespace GES {
 
     namespace Transition {
         // Signal signatures
-        interface SignalSignatures extends Operation.SignalSignatures {
+        interface SignalSignatures extends Operation.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -17304,7 +17304,7 @@ export namespace GES {
 
     namespace TransitionClip {
         // Signal signatures
-        interface SignalSignatures extends BaseTransitionClip.SignalSignatures {
+        interface SignalSignatures extends BaseTransitionClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::vtype": (pspec: GObject.ParamSpec) => void;
             "notify::duration-limit": (pspec: GObject.ParamSpec) => void;
             "notify::layer": (pspec: GObject.ParamSpec) => void;
@@ -17388,7 +17388,7 @@ export namespace GES {
 
     namespace UriClip {
         // Signal signatures
-        interface SignalSignatures extends SourceClip.SignalSignatures {
+        interface SignalSignatures extends SourceClip.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::is-image": (pspec: GObject.ParamSpec) => void;
             "notify::mute": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -17527,7 +17527,7 @@ export namespace GES {
 
     namespace UriClipAsset {
         // Signal signatures
-        interface SignalSignatures extends SourceClipAsset.SignalSignatures {
+        interface SignalSignatures extends SourceClipAsset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::is-nested-timeline": (pspec: GObject.ParamSpec) => void;
             "notify::supported-formats": (pspec: GObject.ParamSpec) => void;
@@ -17904,7 +17904,7 @@ export namespace GES {
 
     namespace UriSourceAsset {
         // Signal signatures
-        interface SignalSignatures extends TrackElementAsset.SignalSignatures {
+        interface SignalSignatures extends TrackElementAsset.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::track-type": (pspec: GObject.ParamSpec) => void;
             "notify::extractable-type": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -18184,7 +18184,7 @@ export namespace GES {
 
     namespace VideoSource {
         // Signal signatures
-        interface SignalSignatures extends Source.SignalSignatures {
+        interface SignalSignatures extends Source.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -18257,7 +18257,7 @@ export namespace GES {
 
     namespace VideoTestSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {
+        interface SignalSignatures extends VideoSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
             "notify::has-internal-source": (pspec: GObject.ParamSpec) => void;
@@ -18331,7 +18331,7 @@ export namespace GES {
 
     namespace VideoTrack {
         // Signal signatures
-        interface SignalSignatures extends Track.SignalSignatures {
+        interface SignalSignatures extends Track.SignalSignatures, MetaContainer.SignalSignatures, Gst.ChildProxy.SignalSignatures {
             "notify::caps": (pspec: GObject.ParamSpec) => void;
             "notify::duration": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
@@ -18846,7 +18846,7 @@ export namespace GES {
 
     namespace VideoTransition {
         // Signal signatures
-        interface SignalSignatures extends Transition.SignalSignatures {
+        interface SignalSignatures extends Transition.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::border": (pspec: GObject.ParamSpec) => void;
             "notify::invert": (pspec: GObject.ParamSpec) => void;
             "notify::transition-type": (pspec: GObject.ParamSpec) => void;
@@ -18992,7 +18992,7 @@ export namespace GES {
 
     namespace VideoUriSource {
         // Signal signatures
-        interface SignalSignatures extends VideoSource.SignalSignatures {
+        interface SignalSignatures extends VideoSource.SignalSignatures, MetaContainer.SignalSignatures {
             "notify::uri": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::auto-clamp-control-sources": (pspec: GObject.ParamSpec) => void;
@@ -19955,6 +19955,19 @@ export namespace GES {
     };
 
     namespace MetaContainer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This is emitted for a meta container whenever the metadata under one
+             * of its fields changes, is set for the first time, or is removed. In
+             * the latter case, `value` will be `null`.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "notify-meta": (key: string, value: unknown | null) => void;
+            [key: `notify-meta::${string}`]: (key: string, value: unknown | null) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {}

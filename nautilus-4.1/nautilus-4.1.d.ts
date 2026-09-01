@@ -1189,6 +1189,15 @@ export namespace Nautilus {
     };
 
     namespace MenuProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * A signal to be emitted whenever the extension modifies the list of menu items.
+             * @signal
+             * @run-last
+             */
+            "items-updated": () => void;
+        }
         /**
          * Interface for implementing MenuProvider.
          * Contains only the virtual methods that need to be implemented.

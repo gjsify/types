@@ -534,7 +534,7 @@ export namespace Peas {
 
     namespace ExtensionSet {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * Emitted when a new extension has been added to the {@link Peas.ExtensionSet}.
              * 

@@ -16865,7 +16865,7 @@ export namespace ParamArray {
 
     namespace ModuleDB {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -24519,6 +24519,29 @@ export namespace ParamArray {
     type VectorLoadProcedureClass = typeof VectorLoadProcedure;
 
     namespace ColorManaged {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "profile-changed": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "simulation-bpc-changed": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "simulation-intent-changed": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "simulation-profile-changed": () => void;
+        }
         /**
          * Interface for implementing ColorManaged.
          * Contains only the virtual methods that need to be implemented.

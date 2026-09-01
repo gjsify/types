@@ -29,6 +29,7 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     GdMainView: ['item-activated', 'selection-mode-request', 'view-selection-changed'],
+    GdMainViewGeneric: ['view-selection-changed'],
     GdTaggedEntry: ['tag-button-clicked', 'tag-clicked'],
 };
 

@@ -2374,7 +2374,7 @@ export namespace Ide {
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
@@ -3081,7 +3081,7 @@ export namespace Ide {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Adw.Application.SignalSignatures {
+        interface SignalSignatures extends Adw.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -4415,7 +4415,7 @@ export namespace Ide {
 
     namespace BufferManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * The "buffer-loaded" signal is emitted when an {@link Ide.Buffer} has loaded
              * a file from storage.
@@ -4907,7 +4907,7 @@ export namespace Ide {
 
     namespace BuildManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The "build-failed" signal is emitted when a build that was previously
              * notified via {@link Ide.BuildManager.SignalSignatures.build_started | Ide.BuildManager::build-started} has failed to complete
@@ -6005,7 +6005,7 @@ export namespace Ide {
 
     namespace CachedListModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -7003,7 +7003,7 @@ export namespace Ide {
 
     namespace ConfigManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted any time a new configuration is selected or the
              * currently selected configurations state changes.
@@ -8410,7 +8410,7 @@ export namespace Ide {
 
     namespace Debugger {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The "breakpoint-added" signal is emitted when a breakpoint has been
              * added to the debugger.
@@ -11932,7 +11932,7 @@ export namespace Ide {
 
     namespace DeviceManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -13316,7 +13316,7 @@ export namespace Ide {
 
     namespace DiagnosticTool {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, DiagnosticProvider.SignalSignatures {
             "notify::bundled-program-path": (pspec: GObject.ParamSpec) => void;
             "notify::local-program-path": (pspec: GObject.ParamSpec) => void;
             "notify::program-name": (pspec: GObject.ParamSpec) => void;
@@ -13589,7 +13589,7 @@ export namespace Ide {
 
     namespace Diagnostics {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::has-errors": (pspec: GObject.ParamSpec) => void;
             "notify::has-warnings": (pspec: GObject.ParamSpec) => void;
             "notify::n-errors": (pspec: GObject.ParamSpec) => void;
@@ -14116,7 +14116,7 @@ export namespace Ide {
 
     namespace DirectoryVcs {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Vcs.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
             "notify::branch-name": (pspec: GObject.ParamSpec) => void;
@@ -15032,7 +15032,7 @@ export namespace Ide {
 
     namespace EditorWorkspace {
         // Signal signatures
-        interface SignalSignatures extends Workspace.SignalSignatures {
+        interface SignalSignatures extends Workspace.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::search-popover": (pspec: GObject.ParamSpec) => void;
@@ -15506,7 +15506,7 @@ export namespace Ide {
 
     namespace Environment {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -16381,7 +16381,7 @@ export namespace Ide {
 
     namespace ExtensionSetAdapter {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -18230,7 +18230,7 @@ export namespace Ide {
 
     namespace FuzzyIndexCursor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::case-sensitive": (pspec: GObject.ParamSpec) => void;
             "notify::index": (pspec: GObject.ParamSpec) => void;
             "notify::max-matches": (pspec: GObject.ParamSpec) => void;
@@ -18740,7 +18740,7 @@ export namespace Ide {
 
     namespace GSettingsActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::settings": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -19576,7 +19576,7 @@ export namespace Ide {
 
     namespace GreeterWorkspace {
         // Signal signatures
-        interface SignalSignatures extends Workspace.SignalSignatures {
+        interface SignalSignatures extends Workspace.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -22929,7 +22929,7 @@ export namespace Ide {
 
     namespace LspCompletionResults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -23163,7 +23163,7 @@ export namespace Ide {
 
     namespace LspDiagnosticProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, DiagnosticProvider.SignalSignatures {
             "notify::client": (pspec: GObject.ParamSpec) => void;
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
@@ -25762,7 +25762,7 @@ export namespace Ide {
 
     namespace Notifications {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::has-progress": (pspec: GObject.ParamSpec) => void;
             "notify::progress": (pspec: GObject.ParamSpec) => void;
             "notify::progress-is-imprecise": (pspec: GObject.ParamSpec) => void;
@@ -26976,7 +26976,7 @@ export namespace Ide {
 
     namespace OmniBar {
         // Signal signatures
-        interface SignalSignatures extends Panel.OmniBar.SignalSignatures {
+        interface SignalSignatures extends Panel.OmniBar.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::menu-id": (pspec: GObject.ParamSpec) => void;
             "notify::action-tooltip": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
@@ -28399,7 +28399,7 @@ export namespace Ide {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted when a plugin has detected a diagnostic while
              * building the pipeline.
@@ -30494,7 +30494,7 @@ export namespace Ide {
 
     namespace PrimaryWorkspace {
         // Signal signatures
-        interface SignalSignatures extends Workspace.SignalSignatures {
+        interface SignalSignatures extends Workspace.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::search-popover": (pspec: GObject.ParamSpec) => void;
@@ -31980,7 +31980,7 @@ export namespace Ide {
 
     namespace PropertyActionGroup {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::item": (pspec: GObject.ParamSpec) => void;
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
@@ -33160,7 +33160,7 @@ export namespace Ide {
 
     namespace RecentProjects {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -34199,7 +34199,7 @@ export namespace Ide {
 
     namespace RunCommands {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -34668,7 +34668,7 @@ export namespace Ide {
 
     namespace RunManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * This signal is emitted to allow plugins to add additional settings to a
              * run context before a launcher is created.
@@ -35933,7 +35933,7 @@ export namespace Ide {
 
     namespace RuntimeManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -36252,7 +36252,7 @@ export namespace Ide {
 
     namespace RuntimeProvider {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -37130,7 +37130,7 @@ export namespace Ide {
 
     namespace SdkManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -37308,7 +37308,7 @@ export namespace Ide {
 
     namespace SdkProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -37679,7 +37679,7 @@ export namespace Ide {
 
     namespace SearchEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+        interface SignalSignatures extends Gtk.Widget.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::can-focus": (pspec: GObject.ParamSpec) => void;
             "notify::can-target": (pspec: GObject.ParamSpec) => void;
             "notify::css-classes": (pspec: GObject.ParamSpec) => void;
@@ -39582,7 +39582,7 @@ export namespace Ide {
 
     namespace SearchResults {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -40052,7 +40052,7 @@ export namespace Ide {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @detailed
@@ -45459,7 +45459,7 @@ export namespace Ide {
 
     namespace TestManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -46435,7 +46435,7 @@ export namespace Ide {
 
     namespace ToolchainManager {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::cancellable": (pspec: GObject.ParamSpec) => void;
             "notify::parent": (pspec: GObject.ParamSpec) => void;
         }
@@ -47058,7 +47058,7 @@ export namespace Ide {
 
     namespace TransferManager {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * This signal is emitted when all of the transfers have completed or failed.
              * @signal
@@ -48558,7 +48558,7 @@ export namespace Ide {
 
     namespace TreeNode {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -49091,7 +49091,7 @@ export namespace Ide {
 
     namespace TruncateModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::can-expand": (pspec: GObject.ParamSpec) => void;
             "notify::child-model": (pspec: GObject.ParamSpec) => void;
             "notify::expanded": (pspec: GObject.ParamSpec) => void;
@@ -52701,7 +52701,7 @@ export namespace Ide {
 
     namespace UniqueListModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::incremental": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
@@ -54486,7 +54486,7 @@ export namespace Ide {
 
     namespace Workspace {
         // Signal signatures
-        interface SignalSignatures extends Adw.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Adw.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
             "notify::id": (pspec: GObject.ParamSpec) => void;
             "notify::search-popover": (pspec: GObject.ParamSpec) => void;
@@ -58576,6 +58576,19 @@ export namespace Ide {
     };
 
     namespace ConfigProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            added: (object: Config) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            removed: (object: Config) => void;
+        }
         /**
          * Interface for implementing ConfigProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -58893,6 +58906,14 @@ export namespace Ide {
     };
 
     namespace DiagnosticProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            invalidated: () => void;
+        }
         /**
          * Interface for implementing DiagnosticProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -59326,6 +59347,19 @@ export namespace Ide {
     };
 
     namespace GreeterSection {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "project-activated" signal is emitted when a project has been
+             * selected by the user in the section.
+             * 
+             * Use `ide_greeter_section_emit_project_activated()` to activate
+             * this signal.
+             * @signal
+             * @run-last
+             */
+            "project-activated": (project_info: ProjectInfo) => void;
+        }
         /**
          * Interface for implementing GreeterSection.
          * Contains only the virtual methods that need to be implemented.
@@ -59444,6 +59478,14 @@ export namespace Ide {
     };
 
     namespace Gutter {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "style-changed": () => void;
+        }
         /**
          * Interface for implementing Gutter.
          * Contains only the virtual methods that need to be implemented.
@@ -60008,6 +60050,14 @@ export namespace Ide {
     };
 
     namespace RunCommandProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            invalidated: () => void;
+        }
         /**
          * Interface for implementing RunCommandProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -61112,6 +61162,19 @@ export namespace Ide {
     };
 
     namespace ToolchainProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            added: (object: Toolchain) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            removed: (object: Toolchain) => void;
+        }
         /**
          * Interface for implementing ToolchainProvider.
          * Contains only the virtual methods that need to be implemented.
@@ -61538,6 +61601,17 @@ export namespace Ide {
     };
 
     namespace Vcs {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "changed" signal should be emitted when the VCS has detected a change
+             * to the underlying VCS storage. This can be used by consumers to reload
+             * their respective data structures.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+        }
         /**
          * Interface for implementing Vcs.
          * Contains only the virtual methods that need to be implemented.

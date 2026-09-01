@@ -86,7 +86,7 @@ export namespace Phosh {
 
     namespace DBusScreenshotProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, DBusScreenshot.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -1049,7 +1049,7 @@ export namespace Phosh {
 
     namespace DBusScreenshotSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, DBusScreenshot.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2679,7 +2679,7 @@ export namespace Phosh {
 
     namespace ScreenshotManager {
         // Signal signatures
-        interface SignalSignatures extends DBusScreenshotSkeleton.SignalSignatures {
+        interface SignalSignatures extends DBusScreenshotSkeleton.SignalSignatures, DBusScreenshot.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -3228,7 +3228,7 @@ export namespace Phosh {
 
     namespace Shell {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The ready signal is emitted once when the shell finished starting
              * up.
@@ -4603,6 +4603,57 @@ export namespace Phosh {
     type WallClockClass = typeof WallClock;
 
     namespace DBusScreenshot {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.FlashArea">FlashArea()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_flash_area()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-flash-area": (invocation: Gio.DBusMethodInvocation, arg_x: number, arg_y: number, arg_width: number, arg_height: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.PickColor">PickColor()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_pick_color()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-pick-color": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.Screenshot">Screenshot()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_screenshot()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-screenshot": (invocation: Gio.DBusMethodInvocation, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotArea">ScreenshotArea()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_screenshot_area()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-screenshot-area": (invocation: Gio.DBusMethodInvocation, arg_x: number, arg_y: number, arg_width: number, arg_height: number, arg_flash: boolean, arg_filename: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.ScreenshotWindow">ScreenshotWindow()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_screenshot_window()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-screenshot-window": (invocation: Gio.DBusMethodInvocation, arg_include_frame: boolean, arg_include_cursor: boolean, arg_flash: boolean, arg_filename: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-Shell-Screenshot.SelectArea">SelectArea()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `phosh_dbus_screenshot_complete_select_area()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-select-area": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing DBusScreenshot.
          * Contains only the virtual methods that need to be implemented.

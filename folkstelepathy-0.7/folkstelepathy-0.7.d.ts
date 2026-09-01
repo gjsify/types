@@ -109,7 +109,7 @@ export namespace FolksTelepathy {
 
     namespace Persona {
         // Signal signatures
-        interface SignalSignatures extends Folks.Persona.SignalSignatures {
+        interface SignalSignatures extends Folks.Persona.SignalSignatures, Folks.GroupDetails.SignalSignatures {
             "notify::is-in-contact-list": (pspec: GObject.ParamSpec) => void;
             "notify::contact": (pspec: GObject.ParamSpec) => void;
             "notify::iid": (pspec: GObject.ParamSpec) => void;

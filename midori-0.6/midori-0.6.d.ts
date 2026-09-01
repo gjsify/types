@@ -652,7 +652,7 @@ export namespace Midori {
 
     namespace Completion {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::incognito": (pspec: GObject.ParamSpec) => void;
             "notify::key": (pspec: GObject.ParamSpec) => void;
         }
@@ -1086,7 +1086,7 @@ export namespace Midori {
 
     namespace Database {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::table": (pspec: GObject.ParamSpec) => void;
             "notify::path": (pspec: GObject.ParamSpec) => void;
             "notify::key": (pspec: GObject.ParamSpec) => void;
@@ -4592,6 +4592,13 @@ export namespace Midori {
     };
 
     namespace BrowserActivatable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            deactivate: () => void;
+        }
         /**
          * Interface for implementing BrowserActivatable.
          * Contains only the virtual methods that need to be implemented.
@@ -4836,6 +4843,13 @@ export namespace Midori {
     };
 
     namespace PreferencesActivatable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            deactivate: () => void;
+        }
         /**
          * Interface for implementing PreferencesActivatable.
          * Contains only the virtual methods that need to be implemented.
@@ -4897,6 +4911,13 @@ export namespace Midori {
     };
 
     namespace TabActivatable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            deactivate: () => void;
+        }
         /**
          * Interface for implementing TabActivatable.
          * Contains only the virtual methods that need to be implemented.

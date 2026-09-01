@@ -14771,7 +14771,7 @@ export namespace Clutter {
 
     namespace Actor {
         // Signal signatures
-        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures {
+        interface SignalSignatures extends GObject.InitiallyUnowned.SignalSignatures, Container.SignalSignatures {
             /**
              * The signal is emitted each time a mouse button
              * is pressed on `actor`.
@@ -24070,7 +24070,7 @@ export namespace Clutter {
 
     namespace Canvas {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {
             /**
              * The {@link Clutter.Canvas.SignalSignatures.draw | Clutter.Canvas::draw} signal is emitted each time a canvas is
              * invalidated.
@@ -24698,7 +24698,7 @@ export namespace Clutter {
 
     namespace Clone {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::source": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -27172,7 +27172,7 @@ export namespace Clutter {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -30824,7 +30824,7 @@ export namespace Clutter {
 
     namespace ScrollActor {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             "notify::scroll-mode": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -32447,7 +32447,7 @@ export namespace Clutter {
 
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             /**
              * The signal is emitted when the stage receives key focus
              * from the underlying window system.
@@ -33785,7 +33785,7 @@ export namespace Clutter {
 
     namespace Text {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Container.SignalSignatures {
             /**
              * The signal is emitted each time the actor is 'activated'
              * by the user, normally by pressing the 'Enter' key. The signal is
@@ -35763,7 +35763,7 @@ export namespace Clutter {
 
     namespace TextureContent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -40111,6 +40111,33 @@ export namespace Clutter {
     };
 
     namespace Container {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The signal is emitted each time an actor
+             * has been added to `container`.
+             * @signal
+             * @run-first
+             */
+            "actor-added": (actor: Actor) => void;
+            /**
+             * The signal is emitted each time an actor
+             * is removed from `container`.
+             * @signal
+             * @run-first
+             */
+            "actor-removed": (actor: Actor) => void;
+            /**
+             * The signal is emitted each time a property is
+             * being set through the `clutter_container_child_set()` and
+             * `clutter_container_child_set_property()` calls.
+             * @signal
+             * @detailed
+             * @run-first
+             */
+            "child-notify": (actor: Actor, pspec: GObject.ParamSpec) => void;
+            [key: `child-notify::${string}`]: (actor: Actor, pspec: GObject.ParamSpec) => void;
+        }
         /**
          * Interface for implementing Container.
          * Contains only the virtual methods that need to be implemented.
@@ -40349,6 +40376,23 @@ export namespace Clutter {
     };
 
     namespace Content {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * assigned to a {@link Clutter.Actor}.
+             * @signal
+             * @run-first
+             */
+            attached: (actor: Actor) => void;
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * removed from a {@link Clutter.Actor}.
+             * @signal
+             * @run-first
+             */
+            detached: (actor: Actor) => void;
+        }
         /**
          * Interface for implementing Content.
          * Contains only the virtual methods that need to be implemented.

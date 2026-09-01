@@ -1039,6 +1039,14 @@ export namespace Caja {
     };
 
     namespace MenuProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "items-updated": () => void;
+        }
         /**
          * Interface for implementing MenuProvider.
          * Contains only the virtual methods that need to be implemented.

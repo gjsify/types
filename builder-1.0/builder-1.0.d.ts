@@ -84,7 +84,7 @@ export namespace Builder {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::app-menu": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -1791,7 +1791,7 @@ export namespace Builder {
 
     namespace Workbench {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -2739,6 +2739,15 @@ export namespace Builder {
     };
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Creates a new view for the document.
+             * @signal
+             * @run-last
+             */
+            "create-view": () => View;
+        }
         /**
          * Interface for implementing Document.
          * Contains only the virtual methods that need to be implemented.

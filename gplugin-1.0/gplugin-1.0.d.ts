@@ -1379,6 +1379,15 @@ export namespace GPlugin {
     type SourceInterface = typeof Source;
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when `plugin` changes state.
+             * @signal
+             * @run-last
+             */
+            "state-changed": (oldstate: PluginState, newstate: PluginState) => void;
+        }
         /**
          * Interface for implementing Plugin.
          * Contains only the virtual methods that need to be implemented.

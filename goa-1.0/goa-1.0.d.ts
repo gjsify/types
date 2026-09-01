@@ -475,7 +475,7 @@ export namespace Goa {
 
     namespace AccountProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Account.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -1535,7 +1535,7 @@ export namespace Goa {
 
     namespace AccountSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Account.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::attention-needed": (pspec: GObject.ParamSpec) => void;
             "notify::calendar-disabled": (pspec: GObject.ParamSpec) => void;
@@ -7863,7 +7863,7 @@ export namespace Goa {
 
     namespace ManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Manager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -8502,7 +8502,7 @@ export namespace Goa {
 
     namespace ManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Manager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10671,7 +10671,7 @@ export namespace Goa {
 
     namespace OAuth2BasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, OAuth2Based.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -11257,7 +11257,7 @@ export namespace Goa {
 
     namespace OAuth2BasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, OAuth2Based.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::client-id": (pspec: GObject.ParamSpec) => void;
             "notify::client-secret": (pspec: GObject.ParamSpec) => void;
@@ -11486,7 +11486,7 @@ export namespace Goa {
 
     namespace OAuthBasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, OAuthBased.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -12073,7 +12073,7 @@ export namespace Goa {
 
     namespace OAuthBasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, OAuthBased.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::consumer-key": (pspec: GObject.ParamSpec) => void;
             "notify::consumer-secret": (pspec: GObject.ParamSpec) => void;
@@ -12303,7 +12303,7 @@ export namespace Goa {
 
     namespace ObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -12824,7 +12824,7 @@ export namespace Goa {
 
     namespace ObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
@@ -13337,7 +13337,7 @@ export namespace Goa {
 
     namespace ObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::calendar": (pspec: GObject.ParamSpec) => void;
@@ -13987,7 +13987,7 @@ export namespace Goa {
 
     namespace PasswordBasedProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, PasswordBased.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -14544,7 +14544,7 @@ export namespace Goa {
 
     namespace PasswordBasedSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, PasswordBased.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -16553,7 +16553,7 @@ export namespace Goa {
 
     namespace TicketingProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, Ticketing.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -17115,7 +17115,7 @@ export namespace Goa {
 
     namespace TicketingSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, Ticketing.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::details": (pspec: GObject.ParamSpec) => void;
         }
@@ -18591,6 +18591,25 @@ export namespace Goa {
 
 
     namespace Account {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.EnsureCredentials">EnsureCredentials()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_account_complete_ensure_credentials()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-ensure-credentials": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Account.Remove">Remove()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_account_complete_remove()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-remove": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing Account.
          * Contains only the virtual methods that need to be implemented.
@@ -19916,6 +19935,25 @@ export namespace Goa {
     };
 
     namespace Manager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_manager_complete_add_account()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-add-account": (invocation: Gio.DBusMethodInvocation, arg_provider: string, arg_identity: string, arg_presentation_identity: string, arg_credentials: GLib.Variant, arg_details: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_manager_complete_is_supported_provider()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-is-supported-provider": (invocation: Gio.DBusMethodInvocation, arg_provider_type: string) => boolean | void;
+        }
         /**
          * Interface for implementing Manager.
          * Contains only the virtual methods that need to be implemented.
@@ -20262,6 +20300,17 @@ export namespace Goa {
     };
 
     namespace OAuth2Based {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_oauth2_based_complete_get_access_token()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-access-token": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing OAuth2Based.
          * Contains only the virtual methods that need to be implemented.
@@ -20413,6 +20462,17 @@ export namespace Goa {
     };
 
     namespace OAuthBased {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_oauth_based_complete_get_access_token()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-access-token": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing OAuthBased.
          * Contains only the virtual methods that need to be implemented.
@@ -20565,6 +20625,8 @@ export namespace Goa {
     };
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObject.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -20974,6 +21036,18 @@ export namespace Goa {
     };
 
     namespace PasswordBased {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_password_based_complete_get_password()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 3.6.0
+             * @run-last
+             */
+            "handle-get-password": (invocation: Gio.DBusMethodInvocation, arg_id: string) => boolean | void;
+        }
         /**
          * Interface for implementing PasswordBased.
          * Contains only the virtual methods that need to be implemented.
@@ -21198,6 +21272,18 @@ export namespace Goa {
     };
 
     namespace Ticketing {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Ticketing.GetTicket">GetTicket()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `goa_ticketing_complete_get_ticket()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @since 3.6.0
+             * @run-last
+             */
+            "handle-get-ticket": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing Ticketing.
          * Contains only the virtual methods that need to be implemented.

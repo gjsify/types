@@ -1932,6 +1932,14 @@ export namespace Retro {
 
 
     namespace Controller {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "state-changed": () => void;
+        }
         /**
          * Interface for implementing Controller.
          * Contains only the virtual methods that need to be implemented.

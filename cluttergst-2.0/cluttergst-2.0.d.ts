@@ -364,7 +364,7 @@ export namespace ClutterGst {
 
     namespace VideoTexture {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Texture.SignalSignatures {
+        interface SignalSignatures extends Clutter.Texture.SignalSignatures, Clutter.Container.SignalSignatures, Clutter.Media.SignalSignatures, Player.SignalSignatures {
             "notify::pixel-aspect-ratio": (pspec: GObject.ParamSpec) => void;
             "notify::disable-slicing": (pspec: GObject.ParamSpec) => void;
             "notify::filename": (pspec: GObject.ParamSpec) => void;
@@ -1285,6 +1285,17 @@ export namespace ClutterGst {
 
 
     namespace Player {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Media.SignalSignatures {
+            /**
+             * The ::download-buffering signal is emitted each time their an
+             * update about the buffering of the current media.
+             * @signal
+             * @since 1.4
+             * @run-last
+             */
+            "download-buffering": (start: number, stop: number) => void;
+        }
         /**
          * Interface for implementing Player.
          * Contains only the virtual methods that need to be implemented.

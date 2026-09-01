@@ -10095,7 +10095,7 @@ export namespace AgsAudio {
 
     namespace AlsaDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -11241,7 +11241,7 @@ export namespace AgsAudio {
 
     namespace AlsaDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -12387,7 +12387,7 @@ export namespace AgsAudio {
 
     namespace AlsaMidiin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Sequencer.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -19132,7 +19132,7 @@ export namespace AgsAudio {
 
     namespace AudioLoop {
         // Signal signatures
-        interface SignalSignatures extends Ags.Thread.SignalSignatures {
+        interface SignalSignatures extends Ags.Thread.SignalSignatures, Ags.MainLoop.SignalSignatures {
             "notify::play-audio": (pspec: GObject.ParamSpec) => void;
             "notify::play-channel": (pspec: GObject.ParamSpec) => void;
             "notify::delay": (pspec: GObject.ParamSpec) => void;
@@ -21565,7 +21565,7 @@ export namespace AgsAudio {
 
     namespace AudioUnitDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::audio-unit-client": (pspec: GObject.ParamSpec) => void;
             "notify::audio-unit-port": (pspec: GObject.ParamSpec) => void;
@@ -22793,7 +22793,7 @@ export namespace AgsAudio {
 
     namespace AudioUnitDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::audio-unit-client": (pspec: GObject.ParamSpec) => void;
             "notify::audio-unit-port": (pspec: GObject.ParamSpec) => void;
@@ -29278,7 +29278,7 @@ export namespace AgsAudio {
 
     namespace CoreAudioDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -30458,7 +30458,7 @@ export namespace AgsAudio {
 
     namespace CoreAudioDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -31638,7 +31638,7 @@ export namespace AgsAudio {
 
     namespace CoreAudioMidiin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Sequencer.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -34253,7 +34253,7 @@ export namespace AgsAudio {
 
     namespace Fifoout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -37025,7 +37025,7 @@ export namespace AgsAudio {
 
     namespace FxDssiAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -39769,7 +39769,7 @@ export namespace AgsAudio {
 
     namespace FxFMSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -42684,7 +42684,7 @@ export namespace AgsAudio {
 
     namespace FxLv2AudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -44429,7 +44429,7 @@ export namespace AgsAudio {
 
     namespace FxModularSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -45314,7 +45314,7 @@ export namespace AgsAudio {
 
     namespace FxNotationAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends RecallAudioRun.SignalSignatures {
+        interface SignalSignatures extends RecallAudioRun.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -46313,7 +46313,7 @@ export namespace AgsAudio {
 
     namespace FxPatternAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends RecallAudioRun.SignalSignatures {
+        interface SignalSignatures extends RecallAudioRun.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -47890,7 +47890,7 @@ export namespace AgsAudio {
 
     namespace FxPlaybackAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends RecallAudioRun.SignalSignatures {
+        interface SignalSignatures extends RecallAudioRun.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -51359,7 +51359,7 @@ export namespace AgsAudio {
 
     namespace FxRavenSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -52384,7 +52384,7 @@ export namespace AgsAudio {
 
     namespace FxSF2SynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -53399,7 +53399,7 @@ export namespace AgsAudio {
 
     namespace FxSFZSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -55881,7 +55881,7 @@ export namespace AgsAudio {
 
     namespace FxSeqSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -57643,7 +57643,7 @@ export namespace AgsAudio {
 
     namespace FxStarSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -59242,7 +59242,7 @@ export namespace AgsAudio {
 
     namespace FxSynthAudioProcessor {
         // Signal signatures
-        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures {
+        interface SignalSignatures extends FxNotationAudioProcessor.SignalSignatures, Ags.Seekable.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::audio": (pspec: GObject.ParamSpec) => void;
             "notify::recall-audio": (pspec: GObject.ParamSpec) => void;
             "notify::audio-channel": (pspec: GObject.ParamSpec) => void;
@@ -62730,7 +62730,7 @@ export namespace AgsAudio {
 
     namespace GstreamerDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -63967,7 +63967,7 @@ export namespace AgsAudio {
 
     namespace GstreamerDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -69560,7 +69560,7 @@ export namespace AgsAudio {
 
     namespace JackDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -70740,7 +70740,7 @@ export namespace AgsAudio {
 
     namespace JackDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -71920,7 +71920,7 @@ export namespace AgsAudio {
 
     namespace JackMidiin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Sequencer.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -83575,7 +83575,7 @@ export namespace AgsAudio {
 
     namespace OssDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -84721,7 +84721,7 @@ export namespace AgsAudio {
 
     namespace OssDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -85867,7 +85867,7 @@ export namespace AgsAudio {
 
     namespace OssMidiin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Sequencer.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -86841,7 +86841,7 @@ export namespace AgsAudio {
 
     namespace Pattern {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Tactable.SignalSignatures {
             "notify::channel": (pspec: GObject.ParamSpec) => void;
             "notify::current-bit": (pspec: GObject.ParamSpec) => void;
             "notify::first-index": (pspec: GObject.ParamSpec) => void;
@@ -90150,7 +90150,7 @@ export namespace AgsAudio {
 
     namespace PulseDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -91330,7 +91330,7 @@ export namespace AgsAudio {
 
     namespace PulseDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -106830,7 +106830,7 @@ export namespace AgsAudio {
 
     namespace WasapiDevin {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;
@@ -108032,7 +108032,7 @@ export namespace AgsAudio {
 
     namespace WasapiDevout {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Ags.Soundcard.SignalSignatures {
             "notify::attack": (pspec: GObject.ParamSpec) => void;
             "notify::bpm": (pspec: GObject.ParamSpec) => void;
             "notify::buffer": (pspec: GObject.ParamSpec) => void;

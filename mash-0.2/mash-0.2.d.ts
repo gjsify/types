@@ -276,7 +276,7 @@ export namespace Mash {
 
     namespace DirectionalLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {
+        interface SignalSignatures extends Light.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::ambient": (pspec: GObject.ParamSpec) => void;
             "notify::diffuse": (pspec: GObject.ParamSpec) => void;
             "notify::specular": (pspec: GObject.ParamSpec) => void;
@@ -409,7 +409,7 @@ export namespace Mash {
 
     namespace Light {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::ambient": (pspec: GObject.ParamSpec) => void;
             "notify::diffuse": (pspec: GObject.ParamSpec) => void;
             "notify::specular": (pspec: GObject.ParamSpec) => void;
@@ -1524,7 +1524,7 @@ export namespace Mash {
 
     namespace Model {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::data": (pspec: GObject.ParamSpec) => void;
             "notify::fit-to-allocation": (pspec: GObject.ParamSpec) => void;
             "notify::light-set": (pspec: GObject.ParamSpec) => void;
@@ -2369,7 +2369,7 @@ export namespace Mash {
 
     namespace PointLight {
         // Signal signatures
-        interface SignalSignatures extends Light.SignalSignatures {
+        interface SignalSignatures extends Light.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::constant-attenuation": (pspec: GObject.ParamSpec) => void;
             "notify::linear-attenuation": (pspec: GObject.ParamSpec) => void;
             "notify::quadratic-attenuation": (pspec: GObject.ParamSpec) => void;
@@ -2591,7 +2591,7 @@ export namespace Mash {
 
     namespace SpotLight {
         // Signal signatures
-        interface SignalSignatures extends PointLight.SignalSignatures {
+        interface SignalSignatures extends PointLight.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::spot-cutoff": (pspec: GObject.ParamSpec) => void;
             "notify::spot-exponent": (pspec: GObject.ParamSpec) => void;
             "notify::constant-attenuation": (pspec: GObject.ParamSpec) => void;

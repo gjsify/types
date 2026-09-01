@@ -26019,7 +26019,7 @@ export namespace Clutter {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -32971,7 +32971,7 @@ export namespace Clutter {
 
     namespace TextureContent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Content.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Content.ConstructorProps {}
@@ -36584,6 +36584,23 @@ export namespace Clutter {
     };
 
     namespace Content {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * assigned to a {@link Clutter.Actor}.
+             * @signal
+             * @run-first
+             */
+            attached: (actor: Actor) => void;
+            /**
+             * This signal is emitted each time a {@link Clutter.Content} implementation is
+             * removed from a {@link Clutter.Actor}.
+             * @signal
+             * @run-first
+             */
+            detached: (actor: Actor) => void;
+        }
         /**
          * Interface for implementing Content.
          * Contains only the virtual methods that need to be implemented.

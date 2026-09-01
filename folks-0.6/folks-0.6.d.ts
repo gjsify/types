@@ -1674,7 +1674,7 @@ export namespace Folks {
 
     namespace Individual {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, GroupDetails.SignalSignatures {
             /**
              * @signal
              */
@@ -6866,6 +6866,13 @@ export namespace Folks {
     };
 
     namespace GroupDetails {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "group-changed": (group: string, is_member: boolean) => void;
+        }
         /**
          * Interface for implementing GroupDetails.
          * Contains only the virtual methods that need to be implemented.

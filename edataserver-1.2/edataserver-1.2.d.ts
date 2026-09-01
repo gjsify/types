@@ -4804,7 +4804,7 @@ export namespace EDataServer {
 
     namespace NetworkMonitor {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.NetworkMonitor.SignalSignatures {
             "notify::gio-name": (pspec: GObject.ParamSpec) => void;
             "notify::connectivity": (pspec: GObject.ParamSpec) => void;
             "notify::network-available": (pspec: GObject.ParamSpec) => void;

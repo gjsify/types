@@ -2956,7 +2956,7 @@ export namespace Meta {
 
     namespace BackgroundContent {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Clutter.Content.SignalSignatures {
             "notify::background": (pspec: GObject.ParamSpec) => void;
             "notify::brightness": (pspec: GObject.ParamSpec) => void;
             "notify::gradient": (pspec: GObject.ParamSpec) => void;
@@ -6291,7 +6291,7 @@ export namespace Meta {
 
     namespace ShapedTexture {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Clutter.Content.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -9676,6 +9676,15 @@ export namespace Meta {
     type X11DisplayClass = typeof X11Display;
 
     namespace CloseDialog {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            response: (object: CloseDialogResponse) => void;
+        }
         /**
          * Interface for implementing CloseDialog.
          * Contains only the virtual methods that need to be implemented.
@@ -9762,6 +9771,15 @@ export namespace Meta {
     };
 
     namespace InhibitShortcutsDialog {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            response: (object: InhibitShortcutsDialogResponse) => void;
+        }
         /**
          * Interface for implementing InhibitShortcutsDialog.
          * Contains only the virtual methods that need to be implemented.

@@ -2003,7 +2003,7 @@ export namespace ECal {
 
     namespace Client {
         // Signal signatures
-        interface SignalSignatures extends EDataServer.Client.SignalSignatures {
+        interface SignalSignatures extends EDataServer.Client.SignalSignatures, TimezoneCache.SignalSignatures {
             /**
              * @signal
              * @run-first
@@ -7860,6 +7860,15 @@ export namespace ECal {
     type TimezoneCacheInterface = typeof TimezoneCache;
 
     namespace TimezoneCache {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when a new #icaltimezone is added to `cache`.
+             * @signal
+             * @run-first
+             */
+            "timezone-added": (zone: ICalGLib.Timezone) => void;
+        }
         /**
          * Interface for implementing TimezoneCache.
          * Contains only the virtual methods that need to be implemented.

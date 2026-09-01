@@ -65,7 +65,7 @@ export namespace Cally {
 
     namespace Actor {
         // Signal signatures
-        interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures {
+        interface SignalSignatures extends Atk.GObjectAccessible.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -665,7 +665,7 @@ export namespace Cally {
 
     namespace Clone {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Atk.Component.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -1302,7 +1302,7 @@ export namespace Cally {
 
     namespace Stage {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Atk.Component.SignalSignatures, Atk.Window.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;
@@ -1873,7 +1873,7 @@ export namespace Cally {
 
     namespace Text {
         // Signal signatures
-        interface SignalSignatures extends Actor.SignalSignatures {
+        interface SignalSignatures extends Actor.SignalSignatures, Atk.Component.SignalSignatures, Atk.Text.SignalSignatures {
             "notify::accessible-component-layer": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-component-mdi-zorder": (pspec: GObject.ParamSpec) => void;
             "notify::accessible-description": (pspec: GObject.ParamSpec) => void;

@@ -4406,7 +4406,7 @@ export namespace Shumate {
 
     namespace MapSourceRegistry {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -8346,7 +8346,7 @@ export namespace Shumate {
 
     namespace VectorSprite {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gdk.Paintable.SignalSignatures, Gtk.SymbolicPaintable.SignalSignatures {
             "notify::height": (pspec: GObject.ParamSpec) => void;
             "notify::scale-factor": (pspec: GObject.ParamSpec) => void;
             "notify::source-paintable": (pspec: GObject.ParamSpec) => void;

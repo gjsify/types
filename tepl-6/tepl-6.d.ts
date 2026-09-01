@@ -2959,7 +2959,7 @@ export namespace Tepl {
 
     namespace LanguageChooserDialog {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Dialog.SignalSignatures {
+        interface SignalSignatures extends Gtk.Dialog.SignalSignatures, LanguageChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -3107,7 +3107,7 @@ export namespace Tepl {
 
     namespace LanguageChooserWidget {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+        interface SignalSignatures extends Gtk.Grid.SignalSignatures, LanguageChooser.SignalSignatures {
             "notify::baseline-row": (pspec: GObject.ParamSpec) => void;
             "notify::column-homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
@@ -7157,6 +7157,16 @@ export namespace Tepl {
     type ViewClass = typeof View;
 
     namespace LanguageChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when the user has chosen a language.
+             * @signal
+             * @since 6.0
+             * @run-last
+             */
+            "language-activated": (language: GtkSource.Language | null) => void;
+        }
         /**
          * Interface for implementing LanguageChooser.
          * Contains only the virtual methods that need to be implemented.

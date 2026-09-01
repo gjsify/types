@@ -178,7 +178,7 @@ export namespace Gtd {
 
     namespace ListModelFilter {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::child-model": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -364,7 +364,7 @@ export namespace Gtd {
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -2737,7 +2737,7 @@ export namespace Gtd {
 
     namespace TaskList {
         // Signal signatures
-        interface SignalSignatures extends Object.SignalSignatures {
+        interface SignalSignatures extends Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * The ::task-added signal is emitted after a {@link Gtd.Task}
              * is added to the list.
@@ -4668,7 +4668,7 @@ export namespace Gtd {
 
     namespace Window {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::current-workspace": (pspec: GObject.ParamSpec) => void;
             "notify::show-menubar": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -6004,6 +6004,30 @@ export namespace Gtd {
     };
 
     namespace Provider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::list-added signal is emmited after a {@link Gtd.TaskList}
+             * is connected.
+             * @signal
+             * @run-last
+             */
+            "list-added": (list: TaskList) => void;
+            /**
+             * The ::list-changed signal is emmited after a {@link Gtd.TaskList}
+             * has any of it's properties changed.
+             * @signal
+             * @run-last
+             */
+            "list-changed": (list: TaskList) => void;
+            /**
+             * The ::list-removed signal is emmited after a {@link Gtd.TaskList}
+             * is disconnected.
+             * @signal
+             * @run-last
+             */
+            "list-removed": (list: TaskList) => void;
+        }
         /**
          * Interface for implementing Provider.
          * Contains only the virtual methods that need to be implemented.

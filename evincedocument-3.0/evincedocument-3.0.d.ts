@@ -4245,6 +4245,14 @@ export namespace EvinceDocument {
     };
 
     namespace AsyncRenderer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "render-finished": (object: GdkPixbuf.Pixbuf) => void;
+        }
         /**
          * Interface for implementing AsyncRenderer.
          * Contains only the virtual methods that need to be implemented.

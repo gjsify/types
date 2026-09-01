@@ -520,7 +520,7 @@ export namespace Eog {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::app-menu": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -842,7 +842,7 @@ export namespace Eog {
 
     namespace FileChooser {
         // Signal signatures
-        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures {
+        interface SignalSignatures extends Gtk.FileChooserDialog.SignalSignatures, Gtk.FileChooser.SignalSignatures {
             "notify::use-header-bar": (pspec: GObject.ParamSpec) => void;
             "notify::accept-focus": (pspec: GObject.ParamSpec) => void;
             "notify::application": (pspec: GObject.ParamSpec) => void;
@@ -2663,7 +2663,7 @@ export namespace Eog {
 
     namespace ListStore {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -5691,7 +5691,7 @@ export namespace Eog {
 
     namespace Window {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * The {@link Eog.Window.SignalSignatures.prepared | Eog.Window::prepared} signal is emitted when the `window` is ready
              * to be shown.

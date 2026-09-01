@@ -8030,6 +8030,13 @@ export interface GraniteServicesSettingsSerializable extends ServicesSettingsSer
     };
 
     namespace WidgetsSourceListSortable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "user-moved-item": (moved: WidgetsSourceListItem) => void;
+        }
         /**
          * Interface for implementing WidgetsSourceListSortable.
          * Contains only the virtual methods that need to be implemented.

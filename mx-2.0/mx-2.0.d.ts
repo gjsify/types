@@ -1624,7 +1624,7 @@ export namespace Mx {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gio.Application.SignalSignatures {
+        interface SignalSignatures extends Gio.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::action-group": (pspec: GObject.ParamSpec) => void;
             "notify::application-id": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -2305,7 +2305,7 @@ export namespace Mx {
 
     namespace Bin {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::child": (pspec: GObject.ParamSpec) => void;
             "notify::x-align": (pspec: GObject.ParamSpec) => void;
             "notify::x-fill": (pspec: GObject.ParamSpec) => void;
@@ -2799,7 +2799,7 @@ export namespace Mx {
 
     namespace BoxLayout {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::enable-animations": (pspec: GObject.ParamSpec) => void;
             "notify::orientation": (pspec: GObject.ParamSpec) => void;
             "notify::scroll-to-focused": (pspec: GObject.ParamSpec) => void;
@@ -3459,7 +3459,7 @@ export namespace Mx {
 
     namespace Button {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted when the user activates the button, either with a mouse press and
              * release or with the keyboard.
@@ -4227,7 +4227,7 @@ export namespace Mx {
 
     namespace ComboBox {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::active-icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::active-text": (pspec: GObject.ParamSpec) => void;
             "notify::index": (pspec: GObject.ParamSpec) => void;
@@ -4693,7 +4693,7 @@ export namespace Mx {
 
     namespace Dialog {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -5106,7 +5106,7 @@ export namespace Mx {
 
     namespace Entry {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted when the primary icon is clicked
              * @signal
@@ -5641,7 +5641,7 @@ export namespace Mx {
 
     namespace Expander {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted after the expand animation finishes. Check the "expanded" property
              * of the {@link Mx.Expander} to determine if the expander is expanded or not.
@@ -6214,7 +6214,7 @@ export namespace Mx {
 
     namespace FloatingWidget {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -6657,7 +6657,7 @@ export namespace Mx {
 
     namespace Frame {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -6992,7 +6992,7 @@ export namespace Mx {
 
     namespace Grid {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::child-x-align": (pspec: GObject.ParamSpec) => void;
             "notify::child-xalign": (pspec: GObject.ParamSpec) => void;
             "notify::child-y-align": (pspec: GObject.ParamSpec) => void;
@@ -7546,7 +7546,7 @@ export namespace Mx {
 
     namespace Icon {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
@@ -8035,7 +8035,7 @@ export namespace Mx {
 
     namespace Image {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted when an asynchronous image load has encountered an error
              * and cannot load the requested image.
@@ -8678,7 +8678,7 @@ export namespace Mx {
 
     namespace ItemView {
         // Signal signatures
-        interface SignalSignatures extends Grid.SignalSignatures {
+        interface SignalSignatures extends Grid.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::factory": (pspec: GObject.ParamSpec) => void;
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
@@ -8977,7 +8977,7 @@ export namespace Mx {
 
     namespace KineticScrollView {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::acceleration-factor": (pspec: GObject.ParamSpec) => void;
             "notify::clamp-duration": (pspec: GObject.ParamSpec) => void;
             "notify::clamp-mode": (pspec: GObject.ParamSpec) => void;
@@ -9673,7 +9673,7 @@ export namespace Mx {
 
     namespace Label {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::clutter-text": (pspec: GObject.ParamSpec) => void;
             "notify::fade-out": (pspec: GObject.ParamSpec) => void;
             "notify::line-wrap": (pspec: GObject.ParamSpec) => void;
@@ -10241,7 +10241,7 @@ export namespace Mx {
 
     namespace ListView {
         // Signal signatures
-        interface SignalSignatures extends BoxLayout.SignalSignatures {
+        interface SignalSignatures extends BoxLayout.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::factory": (pspec: GObject.ParamSpec) => void;
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
@@ -10533,7 +10533,7 @@ export namespace Mx {
 
     namespace Menu {
         // Signal signatures
-        interface SignalSignatures extends FloatingWidget.SignalSignatures {
+        interface SignalSignatures extends FloatingWidget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -10747,7 +10747,7 @@ export namespace Mx {
 
     namespace Notebook {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::current-page": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
@@ -11145,7 +11145,7 @@ export namespace Mx {
 
     namespace Pager {
         // Signal signatures
-        interface SignalSignatures extends Stack.SignalSignatures {
+        interface SignalSignatures extends Stack.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::edge-previews": (pspec: GObject.ParamSpec) => void;
             "notify::page-actor": (pspec: GObject.ParamSpec) => void;
             "notify::page-num": (pspec: GObject.ParamSpec) => void;
@@ -11401,7 +11401,7 @@ export namespace Mx {
 
     namespace PathBar {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::clear-on-change": (pspec: GObject.ParamSpec) => void;
             "notify::editable": (pspec: GObject.ParamSpec) => void;
             "notify::entry": (pspec: GObject.ParamSpec) => void;
@@ -11861,7 +11861,7 @@ export namespace Mx {
 
     namespace ProgressBar {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::progress": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
@@ -12216,7 +12216,7 @@ export namespace Mx {
 
     namespace ScrollBar {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -12606,7 +12606,7 @@ export namespace Mx {
 
     namespace ScrollView {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::enable-mouse-scrolling": (pspec: GObject.ParamSpec) => void;
             "notify::scroll-policy": (pspec: GObject.ParamSpec) => void;
             "notify::scroll-visibility": (pspec: GObject.ParamSpec) => void;
@@ -13105,7 +13105,7 @@ export namespace Mx {
 
     namespace Slider {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -13523,7 +13523,7 @@ export namespace Mx {
 
     namespace Spinner {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted after the animation has displayed the final frame.
              * @signal
@@ -13894,7 +13894,7 @@ export namespace Mx {
 
     namespace Stack {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
             "notify::tooltip-delay": (pspec: GObject.ParamSpec) => void;
@@ -14559,7 +14559,7 @@ export namespace Mx {
 
     namespace Table {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::column-count": (pspec: GObject.ParamSpec) => void;
             "notify::column-spacing": (pspec: GObject.ParamSpec) => void;
             "notify::row-count": (pspec: GObject.ParamSpec) => void;
@@ -15480,7 +15480,7 @@ export namespace Mx {
 
     namespace TextureFrame {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::bottom": (pspec: GObject.ParamSpec) => void;
             "notify::left": (pspec: GObject.ParamSpec) => void;
             "notify::parent-texture": (pspec: GObject.ParamSpec) => void;
@@ -16253,7 +16253,7 @@ export namespace Mx {
 
     namespace Toggle {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
             "notify::menu": (pspec: GObject.ParamSpec) => void;
@@ -16633,7 +16633,7 @@ export namespace Mx {
 
     namespace Toolbar {
         // Signal signatures
-        interface SignalSignatures extends Widget.SignalSignatures {
+        interface SignalSignatures extends Widget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted when the close button of the toolbar is clicked.
              * 
@@ -17038,7 +17038,7 @@ export namespace Mx {
 
     namespace Tooltip {
         // Signal signatures
-        interface SignalSignatures extends FloatingWidget.SignalSignatures {
+        interface SignalSignatures extends FloatingWidget.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::text": (pspec: GObject.ParamSpec) => void;
             "notify::tip-area": (pspec: GObject.ParamSpec) => void;
             "notify::disabled": (pspec: GObject.ParamSpec) => void;
@@ -17240,7 +17240,7 @@ export namespace Mx {
 
     namespace Viewport {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             "notify::sync-adjustments": (pspec: GObject.ParamSpec) => void;
             "notify::x-origin": (pspec: GObject.ParamSpec) => void;
             "notify::y-origin": (pspec: GObject.ParamSpec) => void;
@@ -17512,7 +17512,7 @@ export namespace Mx {
 
     namespace Widget {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures, Stylable.SignalSignatures {
             /**
              * Emitted when the user holds a mouse button down for a longer period.
              * @signal
@@ -19686,6 +19686,24 @@ export namespace Mx {
 
 
     namespace Draggable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "drag-begin": (object: number, p0: number, p1: number, p2: Clutter.ModifierType) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "drag-end": (object: number, p0: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "drag-motion": (object: number, p0: number) => void;
+        }
         /**
          * Interface for implementing Draggable.
          * Contains only the virtual methods that need to be implemented.
@@ -19811,6 +19829,24 @@ export namespace Mx {
     };
 
     namespace Droppable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            drop: (object: Clutter.Actor, p0: number, p1: number, p2: number, p3: Clutter.ModifierType) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "over-in": (object: Clutter.Actor) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "over-out": (object: Clutter.Actor) => void;
+        }
         /**
          * Interface for implementing Droppable.
          * Contains only the virtual methods that need to be implemented.
@@ -20080,6 +20116,16 @@ export namespace Mx {
     };
 
     namespace Stylable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::style-changed signal is emitted each time one of the style
+             * properties have changed.
+             * @signal
+             * @run-first
+             */
+            "style-changed": (flags: StyleChangedFlags) => void;
+        }
         /**
          * Interface for implementing Stylable.
          * Contains only the virtual methods that need to be implemented.

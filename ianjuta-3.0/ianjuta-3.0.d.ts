@@ -2240,6 +2240,79 @@ export namespace IAnjuta {
     };
 
     namespace DebugManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "breakpoint-changed": (object: null) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "debugger-started": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "debugger-stopped": (object: GLib.Error) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "frame-changed": (object: number, p0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "location-changed": (object: number, p0: string, p1: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-exited": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-loaded": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-moved": (object: number, p0: number, p1: number, p2: string, p3: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-running": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-started": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-stopped": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-unloaded": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "sharedlib-event": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "signal-received": (object: string, p0: string) => void;
+        }
         /**
          * Interface for implementing DebugManager.
          * Contains only the virtual methods that need to be implemented.
@@ -2400,6 +2473,64 @@ export namespace IAnjuta {
     };
 
     namespace Debugger {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "debugger-ready": (object: DebuggerState) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "debugger-started": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "debugger-stopped": (object: GLib.Error) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "frame-changed": (object: number, p0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-exited": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-loaded": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-moved": (object: number, p0: number, p1: number, p2: string, p3: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-running": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "program-stopped": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "sharedlib-event": () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "signal-received": (object: string, p0: string) => void;
+        }
         /**
          * Interface for implementing Debugger.
          * Contains only the virtual methods that need to be implemented.
@@ -2875,6 +3006,8 @@ export namespace IAnjuta {
     };
 
     namespace DebuggerBreakpoint {
+        // Signal signatures
+        interface SignalSignatures extends Debugger.SignalSignatures {}
         /**
          * Interface for implementing DebuggerBreakpoint.
          * Contains only the virtual methods that need to be implemented.
@@ -2919,6 +3052,8 @@ export namespace IAnjuta {
     };
 
     namespace DebuggerInstruction {
+        // Signal signatures
+        interface SignalSignatures extends Debugger.SignalSignatures {}
         /**
          * Interface for implementing DebuggerInstruction.
          * Contains only the virtual methods that need to be implemented.
@@ -3008,6 +3143,8 @@ export namespace IAnjuta {
     };
 
     namespace DebuggerMemory {
+        // Signal signatures
+        interface SignalSignatures extends Debugger.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Debugger.ConstructorProps {}
@@ -3030,6 +3167,8 @@ export namespace IAnjuta {
     };
 
     namespace DebuggerRegister {
+        // Signal signatures
+        interface SignalSignatures extends Debugger.SignalSignatures {}
         /**
          * Interface for implementing DebuggerRegister.
          * Contains only the virtual methods that need to be implemented.
@@ -3076,6 +3215,8 @@ export namespace IAnjuta {
     };
 
     namespace DebuggerVariable {
+        // Signal signatures
+        interface SignalSignatures extends Debugger.SignalSignatures {}
         /**
          * Interface for implementing DebuggerVariable.
          * Contains only the virtual methods that need to be implemented.
@@ -3141,6 +3282,17 @@ export namespace IAnjuta {
     };
 
     namespace Document {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when the document assumes the UI must be updated
+             * because some internal state of the document has changed. For example, if
+             * current line position is changed, it needs to be reflected to the UI.
+             * @signal
+             * @run-last
+             */
+            "update-ui": () => void;
+        }
         /**
          * Interface for implementing Document.
          * Contains only the virtual methods that need to be implemented.
@@ -3326,6 +3478,21 @@ export namespace IAnjuta {
     };
 
     namespace DocumentManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when a document was added to the document manager.
+             * @signal
+             * @run-last
+             */
+            "document-added": (doc: Document) => void;
+            /**
+             * Emitted when a document was removed from the document manager.
+             * @signal
+             * @run-last
+             */
+            "document-removed": (doc: Document) => void;
+        }
         /**
          * Interface for implementing DocumentManager.
          * Contains only the virtual methods that need to be implemented.
@@ -3556,6 +3723,62 @@ export namespace IAnjuta {
     };
 
     namespace Editor {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The signal is emitted when the user presses backspace
+             * @signal
+             * @run-last
+             */
+            backspace: () => void;
+            /**
+             * This signal is emitted when any text change happens in editor.
+             * The changes begin at `position`. `text` is not garanteed to be NULL
+             * terminated. Use `length` to read the text. `lines` represent the
+             * number of line breaks in the added or removed text.
+             * @signal
+             * @run-last
+             */
+            changed: (added: Iterable, length: boolean, lines: number, text: number, obj: string) => void;
+            /**
+             * This signal is emitted when any character is added inside the editor.
+             * The newly added character is `ch` which has been inserted at `position`.
+             * @signal
+             * @run-last
+             */
+            "char-added": (ch: Iterable, obj: number) => void;
+            /**
+             * This signal is emitted when code is changed inside the editor.
+             * When such information is availabe, `position` stores the position where `code` was added.
+             * @signal
+             * @run-last
+             */
+            "code-changed": (code: Iterable, obj: string) => void;
+            /**
+             * The signal is a hint that the cursor was moved.
+             * @signal
+             * @run-last
+             */
+            "cursor-moved": () => void;
+            /**
+             * This signal is emitted when code for a widget must be generated.
+             * @signal
+             * @run-last
+             */
+            "glade-callback-add": (signal_name: string, handler_name: string, object: string, swap: string, after: boolean, filename: boolean, obj: string) => void;
+            /**
+             * This signal is emitted when code for a widget must be generated.
+             * @signal
+             * @run-last
+             */
+            "glade-member-add": (widget_name: string, filename: string, obj: string) => void;
+            /**
+             * The signal is emitted when the user clicks on a marker
+             * @signal
+             * @run-last
+             */
+            "line-marks-gutter-clicked": (double_click: number) => void;
+        }
         /**
          * Interface for implementing Editor.
          * Contains only the virtual methods that need to be implemented.
@@ -4092,6 +4315,17 @@ export namespace IAnjuta {
     };
 
     namespace EditorAssist {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {
+            /**
+             * This signal is emitted when the autocompletion is cancelled due to various
+             * reasons. The provider should avoid to call `ianjuta_editor_assist_proposals()` after
+             * this signal.
+             * @signal
+             * @run-last
+             */
+            cancelled: () => void;
+        }
         /**
          * Interface for implementing EditorAssist.
          * Contains only the virtual methods that need to be implemented.
@@ -4353,6 +4587,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorComment {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorComment.
          * Contains only the virtual methods that need to be implemented.
@@ -4420,6 +4656,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorConvert {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorConvert.
          * Contains only the virtual methods that need to be implemented.
@@ -4505,6 +4743,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorFolds {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorFolds.
          * Contains only the virtual methods that need to be implemented.
@@ -4566,6 +4806,21 @@ export namespace IAnjuta {
     };
 
     namespace EditorGladeSignal {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {
+            /**
+             * Emitted when a signal was received per drag & drop
+             * @signal
+             * @run-last
+             */
+            drop: (iter: Iterable, signal_data: string) => void;
+            /**
+             * Emitted when a signal is dragged over the editor
+             * @signal
+             * @run-last
+             */
+            "drop-possible": (iter: Iterable) => boolean | void;
+        }
         /**
          * Interface for implementing EditorGladeSignal.
          * Contains only the virtual methods that need to be implemented.
@@ -4609,6 +4864,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorGoto {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorGoto.
          * Contains only the virtual methods that need to be implemented.
@@ -4676,6 +4933,23 @@ export namespace IAnjuta {
     };
 
     namespace EditorHover {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {
+            /**
+             * User moved the mouse away - can be used to clean up things done in
+             * {@link IAnjuta.EditorHover.SignalSignatures.hover_over | IAnjuta.EditorHover::hover-over}
+             * @signal
+             * @run-last
+             */
+            "hover-leave": (position: Iterable) => void;
+            /**
+             * The mouse is held for a moment over `position`. This can be used to show
+             * all tooltip.
+             * @signal
+             * @run-last
+             */
+            "hover-over": (position: Iterable) => void;
+        }
         /**
          * Interface for implementing EditorHover.
          * Contains only the virtual methods that need to be implemented.
@@ -4735,6 +5009,15 @@ export namespace IAnjuta {
     };
 
     namespace EditorLanguage {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {
+            /**
+             * the language of the editor changed to `language`
+             * @signal
+             * @run-last
+             */
+            "language-changed": (language: string) => void;
+        }
         /**
          * Interface for implementing EditorLanguage.
          * Contains only the virtual methods that need to be implemented.
@@ -4826,6 +5109,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorLineMode {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorLineMode.
          * Contains only the virtual methods that need to be implemented.
@@ -4925,6 +5210,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorSearch {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorSearch.
          * Contains only the virtual methods that need to be implemented.
@@ -4996,6 +5283,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorSelection {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorSelection.
          * Contains only the virtual methods that need to be implemented.
@@ -5147,6 +5436,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorTip {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorTip.
          * Contains only the virtual methods that need to be implemented.
@@ -5227,6 +5518,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorView {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorView.
          * Contains only the virtual methods that need to be implemented.
@@ -5302,6 +5595,8 @@ export namespace IAnjuta {
     };
 
     namespace EditorZoom {
+        // Signal signatures
+        interface SignalSignatures extends Editor.SignalSignatures {}
         /**
          * Interface for implementing EditorZoom.
          * Contains only the virtual methods that need to be implemented.
@@ -5427,6 +5722,15 @@ export namespace IAnjuta {
     };
 
     namespace File {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when the content is loaded completely.
+             * @signal
+             * @run-last
+             */
+            opened: () => void;
+        }
         /**
          * Interface for implementing File.
          * Contains only the virtual methods that need to be implemented.
@@ -5533,6 +5837,15 @@ export namespace IAnjuta {
     };
 
     namespace FileManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * fixme
+             * @signal
+             * @run-last
+             */
+            "section-changed": (err: Gio.File) => void;
+        }
         /**
          * Interface for implementing FileManager.
          * Contains only the virtual methods that need to be implemented.
@@ -5598,6 +5911,20 @@ export namespace IAnjuta {
     };
 
     namespace FileSavable {
+        // Signal signatures
+        interface SignalSignatures extends File.SignalSignatures {
+            /**
+             * This signal is emitted when the content is saved.
+             * @signal
+             * @run-last
+             */
+            saved: (file: Gio.File) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "update-save-ui": () => void;
+        }
         /**
          * Interface for implementing FileSavable.
          * Contains only the virtual methods that need to be implemented.
@@ -6488,6 +6815,15 @@ export namespace IAnjuta {
     };
 
     namespace Markable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The signal is emitted when the user clicks on a marker
+             * @signal
+             * @run-last
+             */
+            "marker-clicked": (double_click: boolean, location: number) => void;
+        }
         /**
          * Interface for implementing Markable.
          * Contains only the virtual methods that need to be implemented.
@@ -6724,6 +7060,21 @@ export namespace IAnjuta {
     };
 
     namespace MessageView {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when `ianjuta_message_view_buffer_append` found a newline
+             * @signal
+             * @run-last
+             */
+            "buffer-flushed": (line: string) => void;
+            /**
+             * Emitted when the user clicks on a message
+             * @signal
+             * @run-last
+             */
+            "message-clicked": (message: string) => void;
+        }
         /**
          * Interface for implementing MessageView.
          * Contains only the virtual methods that need to be implemented.
@@ -6986,6 +7337,38 @@ export namespace IAnjuta {
     };
 
     namespace Project {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is emitted when the project is changed on the disk. The
+             * corresponding node has to be reloaded.
+             * @signal
+             * @run-last
+             */
+            "file-changed": (node: null) => void;
+            /**
+             * This signal is emitted when a node is changed by a function of this
+             * interface. The error argument is not NULL if the change was not
+             * possible. The corresponding node need to be saved.
+             * @signal
+             * @run-last
+             */
+            "node-changed": (node: null, error: GLib.Error) => void;
+            /**
+             * This signal is emitted when a node is loaded. It returns an error if the
+             * load operation fail.
+             * @signal
+             * @run-last
+             */
+            "node-loaded": (node: null, error: GLib.Error) => void;
+            /**
+             * This signal is emitted when a node is saved. It returns an error if the
+             * save operation fail.
+             * @signal
+             * @run-last
+             */
+            "node-saved": (node: null, error: GLib.Error) => void;
+        }
         /**
          * Interface for implementing Project.
          * Contains only the virtual methods that need to be implemented.
@@ -7448,6 +7831,15 @@ export namespace IAnjuta {
     };
 
     namespace ProjectChooser {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the selected node is changed.
+             * @signal
+             * @run-last
+             */
+            changed: () => void;
+        }
         /**
          * Interface for implementing ProjectChooser.
          * Contains only the virtual methods that need to be implemented.
@@ -7542,6 +7934,29 @@ export namespace IAnjuta {
     };
 
     namespace ProjectManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "element-added": (object: Gio.File) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "element-removed": (object: Gio.File) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "element-selected": (object: Gio.File) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "project-loaded": (object: GLib.Error) => void;
+        }
         /**
          * Interface for implementing ProjectManager.
          * Contains only the virtual methods that need to be implemented.
@@ -8255,6 +8670,19 @@ export namespace IAnjuta {
     };
 
     namespace SymbolManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "prj-scan-end": (object: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            "sys-scan-end": (object: number) => void;
+        }
         /**
          * Interface for implementing SymbolManager.
          * Contains only the virtual methods that need to be implemented.
@@ -8345,6 +8773,14 @@ export namespace IAnjuta {
     };
 
     namespace SymbolQuery {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "async-result": (object: GObject.Object) => void;
+        }
         /**
          * Interface for implementing SymbolQuery.
          * Contains only the virtual methods that need to be implemented.
@@ -8516,6 +8952,14 @@ export namespace IAnjuta {
     };
 
     namespace Terminal {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "child-exited": (object: number, p0: number) => void;
+        }
         /**
          * Interface for implementing Terminal.
          * Contains only the virtual methods that need to be implemented.
@@ -8618,6 +9062,14 @@ export namespace IAnjuta {
     };
 
     namespace Vcs {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            "status-changed": () => void;
+        }
         /**
          * Interface for implementing Vcs.
          * Contains only the virtual methods that need to be implemented.

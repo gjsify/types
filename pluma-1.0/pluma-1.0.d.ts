@@ -629,7 +629,7 @@ export namespace Pluma {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::app-menu": (pspec: GObject.ParamSpec) => void;
             "notify::menubar": (pspec: GObject.ParamSpec) => void;
@@ -1151,7 +1151,7 @@ export namespace Pluma {
 
     namespace EncodingsComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::save-mode": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::active-id": (pspec: GObject.ParamSpec) => void;
@@ -3215,7 +3215,7 @@ export namespace Pluma {
 
     namespace Window {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-first

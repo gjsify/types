@@ -88,7 +88,7 @@ export namespace CambalachePrivate {
 
     namespace Svg {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gdk.Paintable.SignalSignatures, Gtk.SymbolicPaintable.SignalSignatures {
             /**
              * Signals that an error occurred.
              * 

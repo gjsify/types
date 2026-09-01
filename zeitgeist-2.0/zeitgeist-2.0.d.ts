@@ -2697,6 +2697,21 @@ export namespace Zeitgeist {
 
 
     namespace RemoteRegistry {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "data-source-disconnected": (data_source: GLib.Variant) => void;
+            /**
+             * @signal
+             */
+            "data-source-enabled": (unique_id: string, enabled: boolean) => void;
+            /**
+             * @signal
+             */
+            "data-source-registered": (data_source: GLib.Variant) => void;
+        }
         /**
          * Interface for implementing RemoteRegistry.
          * Contains only the virtual methods that need to be implemented.
@@ -3658,6 +3673,13 @@ export namespace Zeitgeist {
     };
 
     namespace NetworkManagerDBus {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "state-changed": (state: number) => void;
+        }
         /**
          * Interface for implementing NetworkManagerDBus.
          * Contains only the virtual methods that need to be implemented.
@@ -3698,6 +3720,13 @@ export namespace Zeitgeist {
     };
 
     namespace ConnmanManagerDBus {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "state-changed": (state: string) => void;
+        }
         /**
          * Interface for implementing ConnmanManagerDBus.
          * Contains only the virtual methods that need to be implemented.

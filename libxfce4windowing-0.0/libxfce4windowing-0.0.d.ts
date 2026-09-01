@@ -2066,6 +2066,33 @@ export namespace Libxfce4windowing {
 
 
     namespace Workspace {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when `workspace`'s capabilities change.
+             * @signal
+             * @run-last
+             */
+            "capabilities-changed": (changed_mask: WorkspaceCapabilities, new_capabilities: WorkspaceCapabilities) => void;
+            /**
+             * Emitted when `workspace` is assigned to an {@link Libxfce4windowing.WorkspaceGroup}.
+             * @signal
+             * @run-last
+             */
+            "group-changed": (previous_group: WorkspaceGroup) => void;
+            /**
+             * Emitted when `workspace`'s name changes.
+             * @signal
+             * @run-last
+             */
+            "name-changed": () => void;
+            /**
+             * Emitted when `workspace`'s state changes.
+             * @signal
+             * @run-last
+             */
+            "state-changed": (changed_mask: WorkspaceState, new_state: WorkspaceState) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2288,6 +2315,57 @@ export namespace Libxfce4windowing {
     };
 
     namespace WorkspaceGroup {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the active workspace of `group` changes.
+             * @signal
+             * @run-last
+             */
+            "active-workspace-changed": (previously_active_workspace: Workspace | null) => void;
+            /**
+             * Emitted when capabilities have changed on `group`.
+             * @signal
+             * @run-last
+             */
+            "capabilities-changed": (changed_mask: WorkspaceGroupCapabilities, new_capabilities: WorkspaceGroupCapabilities) => void;
+            /**
+             * Emitted when `group` is added to a new monitor.
+             * @signal
+             * @run-last
+             */
+            "monitor-added": (monitor: Monitor) => void;
+            /**
+             * Emitted when `group` is removed from a monitor.
+             * @signal
+             * @run-last
+             */
+            "monitor-removed": (monitor: Monitor) => void;
+            /**
+             * Emitted when `group` moves to a new set of monitors.
+             * @signal
+             * @run-last
+             */
+            "monitors-changed": () => void;
+            /**
+             * Emitted when `group`'s viewport coordinates have changed.
+             * @signal
+             * @run-last
+             */
+            "viewports-changed": () => void;
+            /**
+             * Emitted when `workspace` joins `group`.
+             * @signal
+             * @run-last
+             */
+            "workspace-added": (workspace: Workspace) => void;
+            /**
+             * Emitted when `workspace` leaves `group`.
+             * @signal
+             * @run-last
+             */
+            "workspace-removed": (workspace: Workspace) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {
@@ -2436,6 +2514,33 @@ export namespace Libxfce4windowing {
     };
 
     namespace WorkspaceManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when a new workspace is created.
+             * @signal
+             * @run-last
+             */
+            "workspace-created": (workspace: Workspace) => void;
+            /**
+             * Emitted when a workspace is destroyed.
+             * @signal
+             * @run-last
+             */
+            "workspace-destroyed": (workspace: Workspace) => void;
+            /**
+             * Emitted when a new workspace group is craeted.
+             * @signal
+             * @run-last
+             */
+            "workspace-group-created": (group: WorkspaceGroup) => void;
+            /**
+             * Emitted when a workspace group is destroyed.
+             * @signal
+             * @run-last
+             */
+            "workspace-group-destroyed": (group: WorkspaceGroup) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps {

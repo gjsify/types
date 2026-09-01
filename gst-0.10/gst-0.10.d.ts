@@ -4475,7 +4475,7 @@ export namespace Gst {
 
     namespace Bin {
         // Signal signatures
-        interface SignalSignatures extends Element.SignalSignatures {
+        interface SignalSignatures extends Element.SignalSignatures, ChildProxy.SignalSignatures {
             /**
              * @signal
              */
@@ -7865,7 +7865,7 @@ export namespace Gst {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, ChildProxy.SignalSignatures {
             "notify::auto-flush-bus": (pspec: GObject.ParamSpec) => void;
             "notify::delay": (pspec: GObject.ParamSpec) => void;
             "notify::async-handling": (pspec: GObject.ParamSpec) => void;
@@ -11292,6 +11292,17 @@ export namespace Gst {
     type XMLClass = typeof XML;
 
     namespace ChildProxy {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "child-added": (object: GObject.Object) => void;
+            /**
+             * @signal
+             */
+            "child-removed": (object: GObject.Object) => void;
+        }
         /**
          * Interface for implementing ChildProxy.
          * Contains only the virtual methods that need to be implemented.
@@ -11429,6 +11440,13 @@ export namespace Gst {
     };
 
     namespace URIHandler {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "new-uri": (object: string) => void;
+        }
         /**
          * Interface for implementing URIHandler.
          * Contains only the virtual methods that need to be implemented.

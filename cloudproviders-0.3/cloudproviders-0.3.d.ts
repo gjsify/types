@@ -1231,7 +1231,7 @@ export namespace CloudProviders {
 
     namespace DbusObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -1752,7 +1752,7 @@ export namespace CloudProviders {
 
     namespace DbusObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures, DbusObject.SignalSignatures, Gio.DBusObject.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
@@ -1893,7 +1893,7 @@ export namespace CloudProviders {
 
     namespace DbusObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures, DbusObject.SignalSignatures, Gio.DBusObject.SignalSignatures {
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::account": (pspec: GObject.ParamSpec) => void;
             "notify::provider": (pspec: GObject.ParamSpec) => void;
@@ -3117,6 +3117,8 @@ export namespace CloudProviders {
     };
 
     namespace DbusObject {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObject.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {

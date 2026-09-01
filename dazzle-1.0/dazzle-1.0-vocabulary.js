@@ -75,6 +75,7 @@ export const OWN_PROPS = {
 
 export const OWN_SIGNALS = {
     DzlDockBinEdge: ['move-to-bin-child'],
+    DzlDockItem: ['manager-set', 'needs-attention', 'presented'],
     DzlDockOverlay: ['hide-edges'],
     DzlMultiPaned: ['resize-drag-begin', 'resize-drag-end'],
     DzlPathBar: ['element-selected', 'populate-menu'],

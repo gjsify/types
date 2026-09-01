@@ -1367,6 +1367,31 @@ export namespace Thunarx {
     type RenamerProviderIface = typeof RenamerProvider;
 
     namespace FileInfo {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted whenever the system notices a change to `file_info`.
+             * 
+             * Thunar plugins should use this signal to stay informed about
+             * changes to a `file_info` for which they currently display
+             * information (i.e. in a {@link Thunarx.PropertyPage}), and update
+             * it's user interface whenever a change is noticed on `file_info`.
+             * @signal
+             * @run-first
+             */
+            changed: () => void;
+            /**
+             * Emitted when the `file_info` is renamed to another
+             * name.
+             * 
+             * For example, within Thunar, `ThunarFolder` uses this
+             * signal to reregister it's VFS directory monitor, after
+             * the corresponding file was renamed.
+             * @signal
+             * @run-first
+             */
+            renamed: () => void;
+        }
         /**
          * Interface for implementing FileInfo.
          * Contains only the virtual methods that need to be implemented.

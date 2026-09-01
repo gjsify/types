@@ -2358,7 +2358,7 @@ export namespace GPaste {
 
     namespace GnomeShellClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, KeybindingProvider.SignalSignatures {
             /**
              * The "accelerator-activated" signal is emitted when gnome-shell notifies us
              * that an accelerator has been pressed.
@@ -4017,6 +4017,16 @@ export namespace GPaste {
     type SettingsClass = typeof Settings;
 
     namespace KeybindingProvider {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The "keybinding-activated" signal is emitted when a registered shortcut
+             * is pressed by the user.
+             * @signal
+             * @run-last
+             */
+            "keybinding-activated": (id: string) => void;
+        }
         /**
          * Interface for implementing KeybindingProvider.
          * Contains only the virtual methods that need to be implemented.

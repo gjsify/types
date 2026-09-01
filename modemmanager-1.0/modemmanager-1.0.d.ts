@@ -4583,7 +4583,7 @@ export namespace ModemManager {
 
     namespace Bearer {
         // Signal signatures
-        interface SignalSignatures extends GdbusBearerProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusBearerProxy.SignalSignatures, GdbusBearer.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -6038,7 +6038,7 @@ export namespace ModemManager {
 
     namespace Call {
         // Signal signatures
-        interface SignalSignatures extends GdbusCallProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusCallProxy.SignalSignatures, GdbusCall.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -9261,7 +9261,7 @@ export namespace ModemManager {
 
     namespace GdbusBearerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusBearer.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -10073,7 +10073,7 @@ export namespace ModemManager {
 
     namespace GdbusBearerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusBearer.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::bearer-type": (pspec: GObject.ParamSpec) => void;
             "notify::connected": (pspec: GObject.ParamSpec) => void;
@@ -10528,7 +10528,7 @@ export namespace ModemManager {
 
     namespace GdbusCallProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusCall.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -11605,7 +11605,7 @@ export namespace ModemManager {
 
     namespace GdbusCallSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusCall.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::audio-format": (pspec: GObject.ParamSpec) => void;
             "notify::audio-port": (pspec: GObject.ParamSpec) => void;
@@ -13052,7 +13052,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppProfileManagerProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModem3gppProfileManager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -13768,7 +13768,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppProfileManagerSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModem3gppProfileManager.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::index-field": (pspec: GObject.ParamSpec) => void;
         }
@@ -14127,7 +14127,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModem3gpp.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -15406,7 +15406,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModem3gpp.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::enabled-facility-locks": (pspec: GObject.ParamSpec) => void;
             "notify::eps-ue-mode-operation": (pspec: GObject.ParamSpec) => void;
@@ -16328,7 +16328,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppUssdProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModem3gppUssd.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -17065,7 +17065,7 @@ export namespace ModemManager {
 
     namespace GdbusModem3gppUssdSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModem3gppUssd.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::network-notification": (pspec: GObject.ParamSpec) => void;
             "notify::network-request": (pspec: GObject.ParamSpec) => void;
@@ -17445,7 +17445,7 @@ export namespace ModemManager {
 
     namespace GdbusModemCdmaProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemCdma.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -18186,7 +18186,7 @@ export namespace ModemManager {
 
     namespace GdbusModemCdmaSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemCdma.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::activation-state": (pspec: GObject.ParamSpec) => void;
             "notify::cdma1x-registration-state": (pspec: GObject.ParamSpec) => void;
@@ -18570,7 +18570,7 @@ export namespace ModemManager {
 
     namespace GdbusModemCellBroadcastProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemCellBroadcast.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -19308,7 +19308,7 @@ export namespace ModemManager {
 
     namespace GdbusModemCellBroadcastSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemCellBroadcast.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::cell-broadcasts": (pspec: GObject.ParamSpec) => void;
             "notify::channels": (pspec: GObject.ParamSpec) => void;
@@ -19689,7 +19689,7 @@ export namespace ModemManager {
 
     namespace GdbusModemFirmwareProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemFirmware.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -20322,7 +20322,7 @@ export namespace ModemManager {
 
     namespace GdbusModemFirmwareSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemFirmware.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::update-settings": (pspec: GObject.ParamSpec) => void;
         }
@@ -20598,7 +20598,7 @@ export namespace ModemManager {
 
     namespace GdbusModemLocationProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemLocation.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -21561,7 +21561,7 @@ export namespace ModemManager {
 
     namespace GdbusModemLocationSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemLocation.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::assistance-data-servers": (pspec: GObject.ParamSpec) => void;
             "notify::capabilities": (pspec: GObject.ParamSpec) => void;
@@ -22167,7 +22167,7 @@ export namespace ModemManager {
 
     namespace GdbusModemMessagingProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemMessaging.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -22999,7 +22999,7 @@ export namespace ModemManager {
 
     namespace GdbusModemMessagingSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemMessaging.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::default-storage": (pspec: GObject.ParamSpec) => void;
             "notify::messages": (pspec: GObject.ParamSpec) => void;
@@ -23474,7 +23474,7 @@ export namespace ModemManager {
 
     namespace GdbusModemOmaProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemOma.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -24320,7 +24320,7 @@ export namespace ModemManager {
 
     namespace GdbusModemOmaSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemOma.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::features": (pspec: GObject.ParamSpec) => void;
             "notify::pending-network-initiated-sessions": (pspec: GObject.ParamSpec) => void;
@@ -24809,7 +24809,7 @@ export namespace ModemManager {
 
     namespace GdbusModemProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModem.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -26832,7 +26832,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSarProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemSar.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -27481,7 +27481,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSarSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemSar.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::power-level": (pspec: GObject.ParamSpec) => void;
             "notify::state": (pspec: GObject.ParamSpec) => void;
@@ -27773,7 +27773,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSignalProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemSignal.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -28503,7 +28503,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSignalSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemSignal.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::cdma": (pspec: GObject.ParamSpec) => void;
             "notify::error-rate-threshold": (pspec: GObject.ParamSpec) => void;
@@ -28876,7 +28876,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSimpleProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemSimple.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -29560,7 +29560,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSimpleSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemSimple.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -29887,7 +29887,7 @@ export namespace ModemManager {
 
     namespace GdbusModemSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModem.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::access-technologies": (pspec: GObject.ParamSpec) => void;
             "notify::bearers": (pspec: GObject.ParamSpec) => void;
@@ -31553,7 +31553,7 @@ export namespace ModemManager {
 
     namespace GdbusModemTimeProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemTime.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -32128,7 +32128,7 @@ export namespace ModemManager {
 
     namespace GdbusModemTimeSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemTime.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::network-timezone": (pspec: GObject.ParamSpec) => void;
         }
@@ -32346,7 +32346,7 @@ export namespace ModemManager {
 
     namespace GdbusModemVoiceProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusModemVoice.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -33483,7 +33483,7 @@ export namespace ModemManager {
 
     namespace GdbusModemVoiceSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusModemVoice.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::calls": (pspec: GObject.ParamSpec) => void;
             "notify::emergency-only": (pspec: GObject.ParamSpec) => void;
@@ -34263,7 +34263,7 @@ export namespace ModemManager {
 
     namespace GdbusObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -34784,7 +34784,7 @@ export namespace ModemManager {
 
     namespace GdbusObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures, Gio.DBusObject.SignalSignatures, GdbusObject.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::modem": (pspec: GObject.ParamSpec) => void;
@@ -35250,7 +35250,7 @@ export namespace ModemManager {
 
     namespace GdbusObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures, Gio.DBusObject.SignalSignatures, GdbusObject.SignalSignatures {
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::modem": (pspec: GObject.ParamSpec) => void;
             "notify::modem-cdma": (pspec: GObject.ParamSpec) => void;
@@ -35806,7 +35806,7 @@ export namespace ModemManager {
 
     namespace GdbusOrgFreedesktopModemManager1Proxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusOrgFreedesktopModemManager1.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -36574,7 +36574,7 @@ export namespace ModemManager {
 
     namespace GdbusOrgFreedesktopModemManager1Skeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusOrgFreedesktopModemManager1.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::version": (pspec: GObject.ParamSpec) => void;
         }
@@ -36985,7 +36985,7 @@ export namespace ModemManager {
 
     namespace GdbusSimProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusSim.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -38034,7 +38034,7 @@ export namespace ModemManager {
 
     namespace GdbusSimSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusSim.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::eid": (pspec: GObject.ParamSpec) => void;
@@ -38726,7 +38726,7 @@ export namespace ModemManager {
 
     namespace GdbusSmsProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, GdbusSms.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -39582,7 +39582,7 @@ export namespace ModemManager {
 
     namespace GdbusSmsSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, GdbusSms.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::class": (pspec: GObject.ParamSpec) => void;
             "notify::data": (pspec: GObject.ParamSpec) => void;
@@ -40487,7 +40487,7 @@ export namespace ModemManager {
 
     namespace Manager {
         // Signal signatures
-        interface SignalSignatures extends GdbusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends GdbusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -41235,7 +41235,7 @@ export namespace ModemManager {
 
     namespace Modem {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemProxy.SignalSignatures, GdbusModem.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -44842,7 +44842,7 @@ export namespace ModemManager {
 
     namespace Modem3gpp {
         // Signal signatures
-        interface SignalSignatures extends GdbusModem3gppProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModem3gppProxy.SignalSignatures, GdbusModem3gpp.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -46795,7 +46795,7 @@ export namespace ModemManager {
 
     namespace Modem3gppProfileManager {
         // Signal signatures
-        interface SignalSignatures extends GdbusModem3gppProfileManagerProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModem3gppProfileManagerProxy.SignalSignatures, GdbusModem3gppProfileManager.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -47590,7 +47590,7 @@ export namespace ModemManager {
 
     namespace Modem3gppUssd {
         // Signal signatures
-        interface SignalSignatures extends GdbusModem3gppUssdProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModem3gppUssdProxy.SignalSignatures, GdbusModem3gppUssd.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -48422,7 +48422,7 @@ export namespace ModemManager {
 
     namespace ModemCdma {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemCdmaProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemCdmaProxy.SignalSignatures, GdbusModemCdma.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -49208,7 +49208,7 @@ export namespace ModemManager {
 
     namespace ModemCellBroadcast {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemCellBroadcastProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemCellBroadcastProxy.SignalSignatures, GdbusModemCellBroadcast.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -49979,7 +49979,7 @@ export namespace ModemManager {
 
     namespace ModemFirmware {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemFirmwareProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemFirmwareProxy.SignalSignatures, GdbusModemFirmware.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -50595,7 +50595,7 @@ export namespace ModemManager {
 
     namespace ModemLocation {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemLocationProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemLocationProxy.SignalSignatures, GdbusModemLocation.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -52233,7 +52233,7 @@ export namespace ModemManager {
 
     namespace ModemMessaging {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemMessagingProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemMessagingProxy.SignalSignatures, GdbusModemMessaging.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -53175,7 +53175,7 @@ export namespace ModemManager {
 
     namespace ModemOma {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemOmaProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemOmaProxy.SignalSignatures, GdbusModemOma.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -54159,7 +54159,7 @@ export namespace ModemManager {
 
     namespace ModemSar {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemSarProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemSarProxy.SignalSignatures, GdbusModemSar.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -54768,7 +54768,7 @@ export namespace ModemManager {
 
     namespace ModemSignal {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemSignalProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemSignalProxy.SignalSignatures, GdbusModemSignal.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -55616,7 +55616,7 @@ export namespace ModemManager {
 
     namespace ModemSimple {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemSimpleProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemSimpleProxy.SignalSignatures, GdbusModemSimple.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -56328,7 +56328,7 @@ export namespace ModemManager {
 
     namespace ModemTime {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemTimeProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemTimeProxy.SignalSignatures, GdbusModemTime.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -56799,7 +56799,7 @@ export namespace ModemManager {
 
     namespace ModemVoice {
         // Signal signatures
-        interface SignalSignatures extends GdbusModemVoiceProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusModemVoiceProxy.SignalSignatures, GdbusModemVoice.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -58608,7 +58608,7 @@ export namespace ModemManager {
 
     namespace Object {
         // Signal signatures
-        interface SignalSignatures extends GdbusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusObjectProxy.SignalSignatures, Gio.DBusObject.SignalSignatures, GdbusObject.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::modem": (pspec: GObject.ParamSpec) => void;
@@ -59352,7 +59352,7 @@ export namespace ModemManager {
 
     namespace Sim {
         // Signal signatures
-        interface SignalSignatures extends GdbusSimProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusSimProxy.SignalSignatures, GdbusSim.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -61350,7 +61350,7 @@ export namespace ModemManager {
 
     namespace Sms {
         // Signal signatures
-        interface SignalSignatures extends GdbusSmsProxy.SignalSignatures {
+        interface SignalSignatures extends GdbusSmsProxy.SignalSignatures, GdbusSms.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -64144,6 +64144,25 @@ export namespace ModemManager {
 
 
     namespace GdbusBearer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Connect">Connect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_bearer_complete_connect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-connect": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Bearer.Disconnect">Disconnect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_bearer_complete_disconnect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-disconnect": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusBearer.
          * Contains only the virtual methods that need to be implemented.
@@ -64510,6 +64529,81 @@ export namespace ModemManager {
     };
 
     namespace GdbusCall {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Call.DtmfReceived">"DtmfReceived"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "dtmf-received": (arg_dtmf: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Accept">Accept()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_accept()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-accept": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Deflect">Deflect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_deflect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-deflect": (invocation: Gio.DBusMethodInvocation, arg_number: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_hangup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-hangup": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.JoinMultiparty">JoinMultiparty()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_join_multiparty()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-join-multiparty": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.LeaveMultiparty">LeaveMultiparty()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_leave_multiparty()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-leave-multiparty": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.SendDtmf">SendDtmf()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_send_dtmf()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-send-dtmf": (invocation: Gio.DBusMethodInvocation, arg_dtmf: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_call_complete_start()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-start": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Call.StateChanged">"StateChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "state-changed": (arg_old: number, arg_new: number, arg_reason: number) => void;
+        }
         /**
          * Interface for implementing GdbusCall.
          * Contains only the virtual methods that need to be implemented.
@@ -65242,6 +65336,121 @@ export namespace ModemManager {
     };
 
     namespace GdbusModem {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_command()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-command": (invocation: Gio.DBusMethodInvocation, arg_cmd: string, arg_timeout: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_create_bearer()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create-bearer": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_delete_bearer()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete-bearer": (invocation: Gio.DBusMethodInvocation, arg_bearer: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_enable()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-enable": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.FactoryReset">FactoryReset()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_factory_reset()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-factory-reset": (invocation: Gio.DBusMethodInvocation, arg_code: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_get_cell_info()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-cell-info": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.ListBearers">ListBearers()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_list_bearers()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list-bearers": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_reset()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-reset": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentBands">SetCurrentBands()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_set_current_bands()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-current-bands": (invocation: Gio.DBusMethodInvocation, arg_bands: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentCapabilities">SetCurrentCapabilities()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_set_current_capabilities()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-current-capabilities": (invocation: Gio.DBusMethodInvocation, arg_capabilities: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetCurrentModes">SetCurrentModes()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_set_current_modes()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-current-modes": (invocation: Gio.DBusMethodInvocation, arg_modes: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPowerState">SetPowerState()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_set_power_state()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-power-state": (invocation: Gio.DBusMethodInvocation, arg_state: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.SetPrimarySimSlot">SetPrimarySimSlot()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_complete_set_primary_sim_slot()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-primary-sim-slot": (invocation: Gio.DBusMethodInvocation, arg_sim_slot: number) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem.StateChanged">"StateChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "state-changed": (arg_old: number, arg_new: number, arg_reason: number) => void;
+        }
         /**
          * Interface for implementing GdbusModem.
          * Contains only the virtual methods that need to be implemented.
@@ -66796,6 +67005,73 @@ export namespace ModemManager {
     };
 
     namespace GdbusModem3gpp {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.DisableFacilityLock">DisableFacilityLock()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_disable_facility_lock()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-disable-facility-lock": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Register">Register()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_register()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-register": (invocation: Gio.DBusMethodInvocation, arg_operator_id: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_scan()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-scan": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetCarrierLock">SetCarrierLock()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_set_carrier_lock()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-carrier-lock": (invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetEpsUeModeOperation">SetEpsUeModeOperation()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_set_eps_ue_mode_operation()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-eps-ue-mode-operation": (invocation: Gio.DBusMethodInvocation, arg_mode: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetInitialEpsBearerSettings">SetInitialEpsBearerSettings()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_set_initial_eps_bearer_settings()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-initial-eps-bearer-settings": (invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetNr5gRegistrationSettings">SetNr5gRegistrationSettings()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_set_nr5g_registration_settings()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-nr5g-registration-settings": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.SetPacketServiceState">SetPacketServiceState()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_complete_set_packet_service_state()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-packet-service-state": (invocation: Gio.DBusMethodInvocation, arg_state: number) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModem3gpp.
          * Contains only the virtual methods that need to be implemented.
@@ -67629,6 +67905,41 @@ export namespace ModemManager {
     };
 
     namespace GdbusModem3gppProfileManager {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_profile_manager_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.List">List()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_profile_manager_complete_list()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Set">Set()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_profile_manager_complete_set()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set": (invocation: Gio.DBusMethodInvocation, arg_requested_properties: GLib.Variant) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.Updated">"Updated"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            updated: () => void;
+        }
         /**
          * Interface for implementing GdbusModem3gppProfileManager.
          * Contains only the virtual methods that need to be implemented.
@@ -67911,6 +68222,33 @@ export namespace ModemManager {
     };
 
     namespace GdbusModem3gppUssd {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_ussd_complete_cancel()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-cancel": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_ussd_complete_initiate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-initiate": (invocation: Gio.DBusMethodInvocation, arg_command: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem3gpp_ussd_complete_respond()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-respond": (invocation: Gio.DBusMethodInvocation, arg_response: string) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModem3gppUssd.
          * Contains only the virtual methods that need to be implemented.
@@ -68212,6 +68550,33 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemCdma {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivationStateChanged">"ActivationStateChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "activation-state-changed": (arg_activation_state: number, arg_activation_error: number, arg_status_changes: GLib.Variant) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_cdma_complete_activate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-activate": (invocation: Gio.DBusMethodInvocation, arg_carrier_code: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.ActivateManual">ActivateManual()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_cdma_complete_activate_manual()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-activate-manual": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemCdma.
          * Contains only the virtual methods that need to be implemented.
@@ -68513,6 +68878,49 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemCellBroadcast {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-CellBroadcast.Added">"Added"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            added: (arg_path: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-CellBroadcast.Deleted">"Deleted"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            deleted: (arg_path: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_cell_broadcast_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_path: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.List">List()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_cell_broadcast_complete_list()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-CellBroadcast.SetChannels">SetChannels()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_cell_broadcast_complete_set_channels()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-channels": (invocation: Gio.DBusMethodInvocation, arg_channels: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemCellBroadcast.
          * Contains only the virtual methods that need to be implemented.
@@ -68816,6 +69224,25 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemFirmware {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_firmware_complete_list()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_firmware_complete_select()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-select": (invocation: Gio.DBusMethodInvocation, arg_uniqueid: string) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemFirmware.
          * Contains only the virtual methods that need to be implemented.
@@ -69015,6 +69442,49 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemLocation {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.GetLocation">GetLocation()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_location_complete_get_location()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-location": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.InjectAssistanceData">InjectAssistanceData()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_location_complete_inject_assistance_data()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-inject-assistance-data": (invocation: Gio.DBusMethodInvocation, arg_data: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetGpsRefreshRate">SetGpsRefreshRate()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_location_complete_set_gps_refresh_rate()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-gps-refresh-rate": (invocation: Gio.DBusMethodInvocation, arg_rate: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.SetSuplServer">SetSuplServer()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_location_complete_set_supl_server()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-supl-server": (invocation: Gio.DBusMethodInvocation, arg_supl: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_location_complete_setup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-setup": (invocation: Gio.DBusMethodInvocation, arg_sources: number, arg_signal_location: boolean) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemLocation.
          * Contains only the virtual methods that need to be implemented.
@@ -69537,6 +70007,57 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemMessaging {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Messaging.Added">"Added"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            added: (arg_path: string, arg_received: boolean) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Messaging.Deleted">"Deleted"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            deleted: (arg_path: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_messaging_complete_create()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_messaging_complete_delete()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete": (invocation: Gio.DBusMethodInvocation, arg_path: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_messaging_complete_list()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.SetDefaultStorage">SetDefaultStorage()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_messaging_complete_set_default_storage()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-default-storage": (invocation: Gio.DBusMethodInvocation, arg_storage: number) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemMessaging.
          * Contains only the virtual methods that need to be implemented.
@@ -69933,6 +70454,49 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemOma {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.AcceptNetworkInitiatedSession">AcceptNetworkInitiatedSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_oma_complete_accept_network_initiated_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-accept-network-initiated-session": (invocation: Gio.DBusMethodInvocation, arg_session_id: number, arg_accept: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.CancelSession">CancelSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_oma_complete_cancel_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-cancel-session": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.Setup">Setup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_oma_complete_setup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-setup": (invocation: Gio.DBusMethodInvocation, arg_features: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Oma.StartClientInitiatedSession">StartClientInitiatedSession()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_oma_complete_start_client_initiated_session()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-start-client-initiated-session": (invocation: Gio.DBusMethodInvocation, arg_session_type: number) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Oma.SessionStateChanged">"SessionStateChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "session-state-changed": (arg_old_session_state: number, arg_new_session_state: number, arg_session_state_failed_reason: number) => void;
+        }
         /**
          * Interface for implementing GdbusModemOma.
          * Contains only the virtual methods that need to be implemented.
@@ -70342,6 +70906,25 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemSar {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.Enable">Enable()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_sar_complete_enable()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-enable": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Sar.SetPowerLevel">SetPowerLevel()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_sar_complete_set_power_level()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-power-level": (invocation: Gio.DBusMethodInvocation, arg_level: number) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemSar.
          * Contains only the virtual methods that need to be implemented.
@@ -70556,6 +71139,25 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemSignal {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.Setup">Setup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_signal_complete_setup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-setup": (invocation: Gio.DBusMethodInvocation, arg_rate: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Signal.SetupThresholds">SetupThresholds()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_signal_complete_setup_thresholds()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-setup-thresholds": (invocation: Gio.DBusMethodInvocation, arg_settings: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemSignal.
          * Contains only the virtual methods that need to be implemented.
@@ -70844,6 +71446,33 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemSimple {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_simple_complete_connect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-connect": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_simple_complete_disconnect()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-disconnect": (invocation: Gio.DBusMethodInvocation, arg_bearer: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_simple_complete_get_status()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-status": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemSimple.
          * Contains only the virtual methods that need to be implemented.
@@ -71093,6 +71722,25 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemTime {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_time_complete_get_network_time()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-get-network-time": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Time.NetworkTimeChanged">"NetworkTimeChanged"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "network-time-changed": (arg_time: string) => void;
+        }
         /**
          * Interface for implementing GdbusModemTime.
          * Contains only the virtual methods that need to be implemented.
@@ -71234,6 +71882,97 @@ export namespace ModemManager {
     };
 
     namespace GdbusModemVoice {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Voice.CallAdded">"CallAdded"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "call-added": (arg_path: string) => void;
+            /**
+             * On the client-side, this signal is emitted whenever the D-Bus signal <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Voice.CallDeleted">"CallDeleted"</link> is received.
+             * 
+             * On the service-side, this signal can be used with e.g. `g_signal_emit_by_name()` to make the object emit the D-Bus signal.
+             * @signal
+             * @run-last
+             */
+            "call-deleted": (arg_path: string) => void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingQuery">CallWaitingQuery()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_call_waiting_query()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-call-waiting-query": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CallWaitingSetup">CallWaitingSetup()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_call_waiting_setup()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-call-waiting-setup": (invocation: Gio.DBusMethodInvocation, arg_enable: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_create_call()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-create-call": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_delete_call()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-delete-call": (invocation: Gio.DBusMethodInvocation, arg_path: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_hangup_all()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-hangup-all": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAndAccept">HangupAndAccept()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_hangup_and_accept()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-hangup-and-accept": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HoldAndAccept">HoldAndAccept()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_hold_and_accept()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-hold-and-accept": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.ListCalls">ListCalls()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_list_calls()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-list-calls": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_modem_voice_complete_transfer()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-transfer": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusModemVoice.
          * Contains only the virtual methods that need to be implemented.
@@ -71936,6 +72675,8 @@ export namespace ModemManager {
     };
 
     namespace GdbusObject {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObject.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -72303,6 +73044,41 @@ export namespace ModemManager {
     };
 
     namespace GdbusOrgFreedesktopModemManager1 {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_org_freedesktop_modem_manager1_complete_inhibit_device()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-inhibit-device": (invocation: Gio.DBusMethodInvocation, arg_uid: string, arg_inhibit: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ReportKernelEvent">ReportKernelEvent()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_org_freedesktop_modem_manager1_complete_report_kernel_event()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-report-kernel-event": (invocation: Gio.DBusMethodInvocation, arg_properties: GLib.Variant) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ScanDevices">ScanDevices()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_org_freedesktop_modem_manager1_complete_scan_devices()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-scan-devices": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1.SetLogging">SetLogging()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_org_freedesktop_modem_manager1_complete_set_logging()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-logging": (invocation: Gio.DBusMethodInvocation, arg_level: string) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusOrgFreedesktopModemManager1.
          * Contains only the virtual methods that need to be implemented.
@@ -72637,6 +73413,49 @@ export namespace ModemManager {
     };
 
     namespace GdbusSim {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.ChangePin">ChangePin()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sim_complete_change_pin()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-change-pin": (invocation: Gio.DBusMethodInvocation, arg_old_pin: string, arg_new_pin: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sim_complete_enable_pin()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-enable-pin": (invocation: Gio.DBusMethodInvocation, arg_pin: string, arg_enabled: boolean) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sim_complete_send_pin()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-send-pin": (invocation: Gio.DBusMethodInvocation, arg_pin: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sim_complete_send_puk()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-send-puk": (invocation: Gio.DBusMethodInvocation, arg_puk: string, arg_pin: string) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sim_complete_set_preferred_networks()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-set-preferred-networks": (invocation: Gio.DBusMethodInvocation, arg_preferred_networks: GLib.Variant) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusSim.
          * Contains only the virtual methods that need to be implemented.
@@ -73240,6 +74059,25 @@ export namespace ModemManager {
     };
 
     namespace GdbusSms {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Send">Send()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sms_complete_send()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-send": (invocation: Gio.DBusMethodInvocation) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sms.Store">Store()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `mm_gdbus_sms_complete_store()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-store": (invocation: Gio.DBusMethodInvocation, arg_storage: number) => boolean | void;
+        }
         /**
          * Interface for implementing GdbusSms.
          * Contains only the virtual methods that need to be implemented.

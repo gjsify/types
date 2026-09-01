@@ -2593,7 +2593,7 @@ export namespace Foundry {
 
     namespace AcpManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -3439,7 +3439,7 @@ export namespace Foundry {
 
     namespace AcpProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -4689,7 +4689,7 @@ export namespace Foundry {
 
     namespace ActionMuxer {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.ActionGroup.ConstructorProps {}
@@ -6088,7 +6088,7 @@ export namespace Foundry {
 
     namespace BuildPipeline {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::arch": (pspec: GObject.ParamSpec) => void;
             "notify::build-system": (pspec: GObject.ParamSpec) => void;
             "notify::config": (pspec: GObject.ParamSpec) => void;
@@ -10027,7 +10027,7 @@ export namespace Foundry {
 
     namespace CommandManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -10192,7 +10192,7 @@ export namespace Foundry {
 
     namespace CommandProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -11913,7 +11913,7 @@ export namespace Foundry {
 
     namespace ConfigManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::config": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -12100,7 +12100,7 @@ export namespace Foundry {
 
     namespace ConfigProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -14413,7 +14413,7 @@ export namespace Foundry {
 
     namespace DebuggerActions {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::debugger": (pspec: GObject.ParamSpec) => void;
             "notify::thread": (pspec: GObject.ParamSpec) => void;
         }
@@ -18938,7 +18938,7 @@ export namespace Foundry {
 
     namespace DeviceManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::device": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -19123,7 +19123,7 @@ export namespace Foundry {
 
     namespace DeviceProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -20614,7 +20614,7 @@ export namespace Foundry {
 
     namespace DirectoryListing {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::attributes": (pspec: GObject.ParamSpec) => void;
             "notify::directory": (pspec: GObject.ParamSpec) => void;
             "notify::include-parent": (pspec: GObject.ParamSpec) => void;
@@ -22284,7 +22284,7 @@ export namespace Foundry {
 
     namespace DocumentationMatches {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::query": (pspec: GObject.ParamSpec) => void;
             "notify::sections": (pspec: GObject.ParamSpec) => void;
         }
@@ -23442,7 +23442,7 @@ export namespace Foundry {
 
     namespace ExtensionSet {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -25880,7 +25880,7 @@ export namespace Foundry {
 
     namespace FlatpakExtensions {
         // Signal signatures
-        interface SignalSignatures extends FlatpakList.SignalSignatures {
+        interface SignalSignatures extends FlatpakList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -26036,7 +26036,7 @@ export namespace Foundry {
 
     namespace FlatpakList {
         // Signal signatures
-        interface SignalSignatures extends FlatpakSerializable.SignalSignatures {
+        interface SignalSignatures extends FlatpakSerializable.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -27899,7 +27899,7 @@ export namespace Foundry {
 
     namespace FlatpakModules {
         // Signal signatures
-        interface SignalSignatures extends FlatpakList.SignalSignatures {
+        interface SignalSignatures extends FlatpakList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -30290,7 +30290,7 @@ export namespace Foundry {
 
     namespace FlatpakSources {
         // Signal signatures
-        interface SignalSignatures extends FlatpakList.SignalSignatures {
+        interface SignalSignatures extends FlatpakList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::item-type": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -30970,7 +30970,7 @@ export namespace Foundry {
 
     namespace ForgeListing {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::auto-load": (pspec: GObject.ParamSpec) => void;
             "notify::n-pages": (pspec: GObject.ParamSpec) => void;
             "notify::page-size": (pspec: GObject.ParamSpec) => void;
@@ -31246,7 +31246,7 @@ export namespace Foundry {
 
     namespace ForgeManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::forge": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -33986,7 +33986,7 @@ export namespace Foundry {
 
     namespace GitStatusList {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -37522,7 +37522,7 @@ export namespace Foundry {
 
     namespace LlmManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -39259,7 +39259,7 @@ export namespace Foundry {
 
     namespace LogManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -39954,7 +39954,7 @@ export namespace Foundry {
 
     namespace LspManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -40127,7 +40127,7 @@ export namespace Foundry {
 
     namespace LspProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
@@ -41440,7 +41440,7 @@ export namespace Foundry {
 
     namespace OnTypeDiagnostics {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -41935,7 +41935,7 @@ export namespace Foundry {
 
     namespace OperationManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::n-items": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -42251,7 +42251,7 @@ export namespace Foundry {
 
     namespace PluginLspProvider {
         // Signal signatures
-        interface SignalSignatures extends LspProvider.SignalSignatures {
+        interface SignalSignatures extends LspProvider.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
             "notify::server": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
@@ -42767,7 +42767,7 @@ export namespace Foundry {
 
     namespace PtyDiagnostics {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -44493,7 +44493,7 @@ export namespace Foundry {
 
     namespace SdkManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::sdk": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -44678,7 +44678,7 @@ export namespace Foundry {
 
     namespace SdkProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -46339,7 +46339,7 @@ export namespace Foundry {
 
     namespace Settings {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @detailed
@@ -49080,7 +49080,7 @@ export namespace Foundry {
 
     namespace TestManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -49538,7 +49538,7 @@ export namespace Foundry {
 
     namespace TestSuite {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::name": (pspec: GObject.ParamSpec) => void;
         }
 
@@ -54818,7 +54818,7 @@ export namespace Foundry {
 
     namespace VcsGraph {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gio.ListModel.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps<A extends GObject.Object = GObject.Object> extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {}
@@ -55234,7 +55234,7 @@ export namespace Foundry {
 
     namespace VcsManager {
         // Signal signatures
-        interface SignalSignatures extends Service.SignalSignatures {
+        interface SignalSignatures extends Service.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::vcs": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }
@@ -55428,7 +55428,7 @@ export namespace Foundry {
 
     namespace VcsProvider {
         // Signal signatures
-        interface SignalSignatures extends Contextual.SignalSignatures {
+        interface SignalSignatures extends Contextual.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::plugin-info": (pspec: GObject.ParamSpec) => void;
             "notify::context": (pspec: GObject.ParamSpec) => void;
         }

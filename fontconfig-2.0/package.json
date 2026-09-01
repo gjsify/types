@@ -1,6 +1,6 @@
 {
     "name": "@girs/fontconfig-2.0",
-    "version": "4.5.0",
+    "version": "4.6.0",
     "description": "GJS TypeScript type definitions for fontconfig-2.0",
     "type": "module",
     "module": "fontconfig-2.0.js",
@@ -31,8 +31,8 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.5.0",
-      "@girs/gobject-2.0": "^4.5.0"    },
+      "@girs/gjs": "^4.6.0",
+      "@girs/gobject-2.0": "^4.6.0"    },
     "devDependencies": {
       "typescript": "*"
     },

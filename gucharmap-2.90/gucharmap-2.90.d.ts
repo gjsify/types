@@ -317,7 +317,7 @@ export namespace Gucharmap {
 
     namespace BlockChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
+        interface SignalSignatures extends ChaptersModel.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
@@ -452,7 +452,7 @@ export namespace Gucharmap {
 
     namespace ChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ListStore.SignalSignatures {}
+        interface SignalSignatures extends Gtk.ListStore.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gtk.ListStore.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}
@@ -2552,7 +2552,7 @@ export namespace Gucharmap {
 
     namespace ScriptChaptersModel {
         // Signal signatures
-        interface SignalSignatures extends ChaptersModel.SignalSignatures {}
+        interface SignalSignatures extends ChaptersModel.SignalSignatures, Gtk.TreeModel.SignalSignatures, Gtk.TreeSortable.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends ChaptersModel.ConstructorProps, Gtk.Buildable.ConstructorProps, Gtk.TreeDragDest.ConstructorProps, Gtk.TreeDragSource.ConstructorProps, Gtk.TreeModel.ConstructorProps, Gtk.TreeSortable.ConstructorProps {}

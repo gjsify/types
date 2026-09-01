@@ -979,6 +979,14 @@ export namespace GstInterfaces {
 
 
     namespace ColorBalance {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Fired when the value of the indicated channel has changed.
+             * @signal
+             */
+            "value-changed": (object: ColorBalanceChannel, p0: number) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1046,6 +1054,25 @@ export namespace GstInterfaces {
     };
 
     namespace Mixer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "mute-toggled": (object: MixerTrack, p0: boolean) => void;
+            /**
+             * @signal
+             */
+            "option-changed": (object: MixerOptions, p0: string) => void;
+            /**
+             * @signal
+             */
+            "record-toggled": (object: MixerTrack, p0: boolean) => void;
+            /**
+             * @signal
+             */
+            "volume-changed": (object: MixerTrack, p0: null) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Element.ConstructorProps {}
@@ -1277,6 +1304,13 @@ export namespace GstInterfaces {
     };
 
     namespace PropertyProbe {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             */
+            "probe-needed": (object: null) => void;
+        }
         /**
          * Interface for implementing PropertyProbe.
          * Contains only the virtual methods that need to be implemented.
@@ -1475,6 +1509,29 @@ export namespace GstInterfaces {
     };
 
     namespace Tuner {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Reports that the current {@link GstInterfaces.TunerChannel} has changed.
+             * @signal
+             */
+            "channel-changed": (object: TunerChannel) => void;
+            /**
+             * Reports that the current frequency has changed.
+             * @signal
+             */
+            "frequency-changed": (object: TunerChannel, p0: number) => void;
+            /**
+             * Reports that the current {@link GstInterfaces.TunerNorm} has changed.
+             * @signal
+             */
+            "norm-changed": (object: TunerNorm) => void;
+            /**
+             * Reports that the signal strength has changed.
+             * @signal
+             */
+            "signal-changed": (object: TunerChannel, p0: number) => void;
+        }
 
         // Constructor properties interface
         interface ConstructorProps extends Gst.Element.ConstructorProps {}

@@ -667,7 +667,7 @@ export namespace Gdaui {
 
     namespace Cloud {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataSelector.SignalSignatures {
             /**
              * @signal
              * @run-first
@@ -1043,7 +1043,7 @@ export namespace Gdaui {
 
     namespace Combo {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, DataSelector.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::as-list": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -2920,7 +2920,7 @@ export namespace Gdaui {
 
     namespace DataStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::prepend-null-entry": (pspec: GObject.ParamSpec) => void;
             "notify::proxy": (pspec: GObject.ParamSpec) => void;
@@ -3531,7 +3531,7 @@ export namespace Gdaui {
 
     namespace Entry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Entry.SignalSignatures {
+        interface SignalSignatures extends Gtk.Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::prefix": (pspec: GObject.ParamSpec) => void;
             "notify::suffix": (pspec: GObject.ParamSpec) => void;
             "notify::activates-default": (pspec: GObject.ParamSpec) => void;
@@ -4086,7 +4086,7 @@ export namespace Gdaui {
 
     namespace EntryBin {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures {
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -4508,7 +4508,7 @@ export namespace Gdaui {
 
     namespace EntryBoolean {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures {
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -4930,7 +4930,7 @@ export namespace Gdaui {
 
     namespace EntryCombo {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures {
             "notify::set-default-if-invalid": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
@@ -5422,7 +5422,7 @@ export namespace Gdaui {
 
     namespace EntryCommonTime {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::type": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -5914,7 +5914,7 @@ export namespace Gdaui {
 
     namespace EntryDate {
         // Signal signatures
-        interface SignalSignatures extends EntryCommonTime.SignalSignatures {
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::type": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -6385,7 +6385,7 @@ export namespace Gdaui {
 
     namespace EntryNone {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures {
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
             "notify::homogeneous": (pspec: GObject.ParamSpec) => void;
             "notify::spacing": (pspec: GObject.ParamSpec) => void;
@@ -6807,7 +6807,7 @@ export namespace Gdaui {
 
     namespace EntryNumber {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::options": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -7313,7 +7313,7 @@ export namespace Gdaui {
 
     namespace EntryString {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::multiline": (pspec: GObject.ParamSpec) => void;
             "notify::options": (pspec: GObject.ParamSpec) => void;
@@ -7821,7 +7821,7 @@ export namespace Gdaui {
 
     namespace EntryTime {
         // Signal signatures
-        interface SignalSignatures extends EntryCommonTime.SignalSignatures {
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::type": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -8292,7 +8292,7 @@ export namespace Gdaui {
 
     namespace EntryTimestamp {
         // Signal signatures
-        interface SignalSignatures extends EntryCommonTime.SignalSignatures {
+        interface SignalSignatures extends EntryCommonTime.SignalSignatures, DataEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::editing-canceled": (pspec: GObject.ParamSpec) => void;
             "notify::type": (pspec: GObject.ParamSpec) => void;
             "notify::baseline-position": (pspec: GObject.ParamSpec) => void;
@@ -8763,7 +8763,7 @@ export namespace Gdaui {
 
     namespace Form {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataProxy.SignalSignatures, DataSelector.SignalSignatures {
             "notify::info": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::raw-form": (pspec: GObject.ParamSpec) => void;
@@ -9185,7 +9185,7 @@ export namespace Gdaui {
 
     namespace FormattedEntry {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::format": (pspec: GObject.ParamSpec) => void;
             "notify::mask": (pspec: GObject.ParamSpec) => void;
             "notify::prefix": (pspec: GObject.ParamSpec) => void;
@@ -9360,7 +9360,7 @@ export namespace Gdaui {
 
     namespace Grid {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Box.SignalSignatures {
+        interface SignalSignatures extends Gtk.Box.SignalSignatures, DataProxy.SignalSignatures, DataSelector.SignalSignatures {
             "notify::info": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::raw-grid": (pspec: GObject.ParamSpec) => void;
@@ -9980,7 +9980,7 @@ export namespace Gdaui {
 
     namespace NumericEntry {
         // Signal signatures
-        interface SignalSignatures extends Entry.SignalSignatures {
+        interface SignalSignatures extends Entry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::decimal-sep": (pspec: GObject.ParamSpec) => void;
             "notify::n-decimals": (pspec: GObject.ParamSpec) => void;
             "notify::thousands-sep": (pspec: GObject.ParamSpec) => void;
@@ -10176,7 +10176,7 @@ export namespace Gdaui {
 
     namespace ProviderSelector {
         // Signal signatures
-        interface SignalSignatures extends Combo.SignalSignatures {
+        interface SignalSignatures extends Combo.SignalSignatures, DataSelector.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::as-list": (pspec: GObject.ParamSpec) => void;
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;
@@ -10524,7 +10524,7 @@ export namespace Gdaui {
 
     namespace RawForm {
         // Signal signatures
-        interface SignalSignatures extends BasicForm.SignalSignatures {
+        interface SignalSignatures extends BasicForm.SignalSignatures, DataProxy.SignalSignatures, DataSelector.SignalSignatures {
             "notify::model": (pspec: GObject.ParamSpec) => void;
             "notify::can-expand-v": (pspec: GObject.ParamSpec) => void;
             "notify::entries-auto-default": (pspec: GObject.ParamSpec) => void;
@@ -10904,7 +10904,7 @@ export namespace Gdaui {
 
     namespace RawGrid {
         // Signal signatures
-        interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+        interface SignalSignatures extends Gtk.TreeView.SignalSignatures, DataProxy.SignalSignatures, DataSelector.SignalSignatures {
             /**
              * Emitted when the user double clicks on a row
              * @signal
@@ -12030,7 +12030,7 @@ export namespace Gdaui {
 
     namespace TreeStore {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -13130,6 +13130,29 @@ export namespace Gdaui {
     type TreeStoreClass = typeof TreeStore;
 
     namespace DataEntry {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "contents-activated": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "contents-modified": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "expand-changed": () => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            "status-changed": () => void;
+        }
         /**
          * Interface for implementing DataEntry.
          * Contains only the virtual methods that need to be implemented.
@@ -13447,6 +13470,18 @@ export namespace Gdaui {
     };
 
     namespace DataProxy {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::proxy-changed signal is emitted each time the {@link Gda.DataProxy} which would be
+             * returned by `gdaui_data_proxy_get_proxy()` changes. This is generally the result
+             * of changes in the structure of the proxied data model (different number and/or type
+             * of columns for example).
+             * @signal
+             * @run-first
+             */
+            "proxy-changed": (arg1: Gda.DataProxy) => void;
+        }
         /**
          * Interface for implementing DataProxy.
          * Contains only the virtual methods that need to be implemented.
@@ -13584,6 +13619,14 @@ export namespace Gdaui {
     };
 
     namespace DataSelector {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
+            "selection-changed": () => void;
+        }
         /**
          * Interface for implementing DataSelector.
          * Contains only the virtual methods that need to be implemented.

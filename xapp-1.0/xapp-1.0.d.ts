@@ -1818,7 +1818,7 @@ export namespace XApp {
 
     namespace ObjectManagerClient {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectManagerClient.SignalSignatures, Gio.DBusObjectManager.SignalSignatures {
             "notify::bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::connection": (pspec: GObject.ParamSpec) => void;
             "notify::flags": (pspec: GObject.ParamSpec) => void;
@@ -2339,7 +2339,7 @@ export namespace XApp {
 
     namespace ObjectProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectProxy.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::status-icon-interface": (pspec: GObject.ParamSpec) => void;
@@ -2473,7 +2473,7 @@ export namespace XApp {
 
     namespace ObjectSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusObjectSkeleton.SignalSignatures, Gio.DBusObject.SignalSignatures, Object.SignalSignatures {
             "notify::g-object-path": (pspec: GObject.ParamSpec) => void;
             "notify::status-icon-interface": (pspec: GObject.ParamSpec) => void;
         }
@@ -3225,7 +3225,7 @@ export namespace XApp {
 
     namespace StatusIconInterfaceProxy {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusProxy.SignalSignatures, StatusIconInterface.SignalSignatures {
             "notify::g-bus-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-connection": (pspec: GObject.ParamSpec) => void;
             "notify::g-default-timeout": (pspec: GObject.ParamSpec) => void;
@@ -4111,7 +4111,7 @@ export namespace XApp {
 
     namespace StatusIconInterfaceSkeleton {
         // Signal signatures
-        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures {
+        interface SignalSignatures extends Gio.DBusInterfaceSkeleton.SignalSignatures, StatusIconInterface.SignalSignatures {
             "notify::g-flags": (pspec: GObject.ParamSpec) => void;
             "notify::icon-name": (pspec: GObject.ParamSpec) => void;
             "notify::icon-size": (pspec: GObject.ParamSpec) => void;
@@ -5861,6 +5861,8 @@ export namespace XApp {
 
 
     namespace Object {
+        // Signal signatures
+        interface SignalSignatures extends Gio.DBusObject.SignalSignatures {}
 
         // Constructor properties interface
         interface ConstructorProps extends Gio.DBusObject.ConstructorProps {
@@ -5910,6 +5912,33 @@ export namespace XApp {
     };
 
     namespace StatusIconInterface {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-x-StatusIcon.ButtonPress">ButtonPress()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `xapp_status_icon_interface_complete_button_press()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-button-press": (invocation: Gio.DBusMethodInvocation, arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-x-StatusIcon.ButtonRelease">ButtonRelease()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `xapp_status_icon_interface_complete_button_release()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-button-release": (invocation: Gio.DBusMethodInvocation, arg_x: number, arg_y: number, arg_button: number, arg_time: number, arg_panel_position: number) => boolean | void;
+            /**
+             * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-org-x-StatusIcon.Scroll">Scroll()</link> D-Bus method.
+             * 
+             * If a signal handler returns `true`, it means the signal handler will handle the invocation (e.g. take a reference to `invocation` and eventually call `xapp_status_icon_interface_complete_scroll()` or e.g. `g_dbus_method_invocation_return_error()` on it) and no other signal handlers will run. If no signal handler handles the invocation, the {@link Gio.DBusError.UNKNOWN_METHOD} error is returned.
+             * @signal
+             * @run-last
+             */
+            "handle-scroll": (invocation: Gio.DBusMethodInvocation, arg_delta: number, arg_orientation: number, arg_time: number) => boolean | void;
+        }
         /**
          * Interface for implementing StatusIconInterface.
          * Contains only the virtual methods that need to be implemented.

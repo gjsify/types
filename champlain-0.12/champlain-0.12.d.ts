@@ -542,7 +542,7 @@ export namespace Champlain {
 
     namespace CustomMarker {
         // Signal signatures
-        interface SignalSignatures extends Marker.SignalSignatures {
+        interface SignalSignatures extends Marker.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::draggable": (pspec: GObject.ParamSpec) => void;
             "notify::selectable": (pspec: GObject.ParamSpec) => void;
             "notify::selected": (pspec: GObject.ParamSpec) => void;
@@ -1074,7 +1074,7 @@ export namespace Champlain {
 
     namespace KineticScrollView {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -1807,7 +1807,7 @@ export namespace Champlain {
 
     namespace Label {
         // Signal signatures
-        interface SignalSignatures extends Marker.SignalSignatures {
+        interface SignalSignatures extends Marker.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::draw-background": (pspec: GObject.ParamSpec) => void;
@@ -2405,7 +2405,7 @@ export namespace Champlain {
 
     namespace Layer {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
             "notify::anchor-gravity": (pspec: GObject.ParamSpec) => void;
@@ -3127,7 +3127,7 @@ export namespace Champlain {
 
     namespace License {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::alignment": (pspec: GObject.ParamSpec) => void;
             "notify::extra-text": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
@@ -4617,7 +4617,7 @@ export namespace Champlain {
 
     namespace Marker {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * Emitted when button is pressed.
              * @signal
@@ -5530,7 +5530,7 @@ export namespace Champlain {
 
     namespace MarkerLayer {
         // Signal signatures
-        interface SignalSignatures extends Layer.SignalSignatures {
+        interface SignalSignatures extends Layer.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::selection-mode": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
             "notify::allocation": (pspec: GObject.ParamSpec) => void;
@@ -6367,7 +6367,7 @@ export namespace Champlain {
 
     namespace PathLayer {
         // Signal signatures
-        interface SignalSignatures extends Layer.SignalSignatures {
+        interface SignalSignatures extends Layer.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::closed": (pspec: GObject.ParamSpec) => void;
             "notify::fill": (pspec: GObject.ParamSpec) => void;
             "notify::fill-color": (pspec: GObject.ParamSpec) => void;
@@ -6789,7 +6789,7 @@ export namespace Champlain {
 
     namespace Point {
         // Signal signatures
-        interface SignalSignatures extends Marker.SignalSignatures {
+        interface SignalSignatures extends Marker.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::color": (pspec: GObject.ParamSpec) => void;
             "notify::size": (pspec: GObject.ParamSpec) => void;
             "notify::draggable": (pspec: GObject.ParamSpec) => void;
@@ -7173,7 +7173,7 @@ export namespace Champlain {
 
     namespace Scale {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             "notify::max-width": (pspec: GObject.ParamSpec) => void;
             "notify::unit": (pspec: GObject.ParamSpec) => void;
             "notify::actions": (pspec: GObject.ParamSpec) => void;
@@ -7932,7 +7932,7 @@ export namespace Champlain {
 
     namespace Tile {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * The {@link Champlain.Tile.SignalSignatures.render_complete | Champlain.Tile::render-complete} signal is emitted when rendering of the tile is
              * completed by the renderer.
@@ -9273,7 +9273,7 @@ export namespace Champlain {
 
     namespace View {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * The {@link Champlain.View.SignalSignatures.animation_completed | Champlain.View::animation-completed} signal is emitted when any animation in the view
              * ends.  This is a detailed signal.  For example, if you want to be signaled
@@ -11754,7 +11754,7 @@ export namespace Champlain {
 
     namespace Viewport {
         // Signal signatures
-        interface SignalSignatures extends Clutter.Actor.SignalSignatures {
+        interface SignalSignatures extends Clutter.Actor.SignalSignatures, Clutter.Container.SignalSignatures {
             /**
              * @signal
              * @run-last

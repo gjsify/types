@@ -31,7 +31,7 @@ export namespace Vgda {
 
     namespace GProvider {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Vda.Connection.SignalSignatures {
             "notify::status": (pspec: GObject.ParamSpec) => void;
             "notify::parameters": (pspec: GObject.ParamSpec) => void;
             "notify::is-opened": (pspec: GObject.ParamSpec) => void;

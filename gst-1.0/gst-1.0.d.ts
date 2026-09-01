@@ -8410,7 +8410,7 @@ export namespace Gst {
 
     namespace Bin {
         // Signal signatures
-        interface SignalSignatures extends Element.SignalSignatures {
+        interface SignalSignatures extends Element.SignalSignatures, ChildProxy.SignalSignatures {
             /**
              * Will be emitted after the element was added to `sub_bin`.
              * @signal
@@ -15343,7 +15343,7 @@ export namespace Gst {
 
     namespace Pipeline {
         // Signal signatures
-        interface SignalSignatures extends Bin.SignalSignatures {
+        interface SignalSignatures extends Bin.SignalSignatures, ChildProxy.SignalSignatures {
             "notify::auto-flush-bus": (pspec: GObject.ParamSpec) => void;
             "notify::delay": (pspec: GObject.ParamSpec) => void;
             "notify::latency": (pspec: GObject.ParamSpec) => void;
@@ -26859,6 +26859,21 @@ export namespace Gst {
 
 
     namespace ChildProxy {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Will be emitted after the `object` was added to the `child_proxy`.
+             * @signal
+             * @run-first
+             */
+            "child-added": (object: GObject.Object, name: string) => void;
+            /**
+             * Will be emitted after the `object` was removed from the `child_proxy`.
+             * @signal
+             * @run-first
+             */
+            "child-removed": (object: GObject.Object, name: string) => void;
+        }
         /**
          * Interface for implementing ChildProxy.
          * Contains only the virtual methods that need to be implemented.

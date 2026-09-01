@@ -2208,6 +2208,68 @@ export namespace GSignond {
 
 
     namespace Plugin {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * This signal is issued by the plugin when an error has occurred, or the
+             * plugin otherwise has a reason to cancel the authentication session. The
+             * `error` should be specified according to
+             * <link linkend="gsignond-Errors">GSignond errors.</link>
+             * @signal
+             * @run-first
+             */
+            error: (error: GLib.Error) => void;
+            /**
+             * This signal is issued by the plugin when the UI interaction is ongoing
+             * and the UI needs to be refreshed. This can be used for example to update
+             * captcha image in the UI.
+             * @signal
+             * @run-first
+             */
+            refreshed: (ui_data: SignonuiData) => void;
+            /**
+             * This signal is issued by the plugin when it wants to provide an intermediate
+             * response to the application or needs additional information from the application.
+             * 
+             * After issuing this signal the plugin expects a `gsignond_plugin_response()` call.
+             * @signal
+             * @run-first
+             */
+            response: (session_data: SessionData) => void;
+            /**
+             * This signal is issued by the plugin when it has completed the authentication
+             * sequence and is used to provide the final response to the application.
+             * 
+             * After issuing this signal the plugin is idle and is ready for a new
+             * authentication session.
+             * @signal
+             * @run-first
+             */
+            "response-final": (session_data: SessionData) => void;
+            /**
+             * This signal is issued by the plugin when plugin state has changed. This
+             * can be used by applications to report authentication progress.
+             * @signal
+             * @run-first
+             */
+            "status-changed": (state: PluginState, message: string) => void;
+            /**
+             * This signal is issued by the plugin when it has data to store in persistent
+             * storage. The same data would later be provided to plugin via
+             * gsignond_plugin_request_initial `identity_method_cache` parameter.
+             * @signal
+             * @run-first
+             */
+            store: (data: Dictionary) => void;
+            /**
+             * This signal is issued by the plugin when it needs a UI interaction with
+             * the user to happen. When the interaction is complete, `gsignond_plugin_user_action_finished()`
+             * should be issued.
+             * @signal
+             * @run-first
+             */
+            "user-action-required": (ui_data: SignonuiData) => void;
+        }
         /**
          * Interface for implementing Plugin.
          * Contains only the virtual methods that need to be implemented.

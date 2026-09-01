@@ -2265,7 +2265,7 @@ export namespace RB {
 
     namespace Application {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             "notify::shell": (pspec: GObject.ParamSpec) => void;
             "notify::active-window": (pspec: GObject.ParamSpec) => void;
             "notify::app-menu": (pspec: GObject.ParamSpec) => void;
@@ -3678,7 +3678,7 @@ export namespace RB {
 
     namespace DisplayPageModel {
         // Signal signatures
-        interface SignalSignatures extends Gtk.TreeModelFilter.SignalSignatures {
+        interface SignalSignatures extends Gtk.TreeModelFilter.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * Emitted when a drag and drop operation to the display page tree completes.
              * @signal
@@ -10099,7 +10099,7 @@ export namespace RB {
 
     namespace RhythmDBPropertyModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * Emitted just before a row is deleted from the model.
              * @signal
@@ -10684,7 +10684,7 @@ export namespace RB {
 
     namespace RhythmDBQueryModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * Emitted when the database query populating the model is complete.
              * @signal
@@ -17700,6 +17700,23 @@ export namespace RB {
     };
 
     namespace Encoder {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Emitted when the encoding process is complete, or when a fatal error
+             * has occurred.  The destination file, if one exists,  will be closed
+             * and flushed to disk before this signal is emitted.
+             * @signal
+             * @run-last
+             */
+            completed: (dest_uri: string, dest_size: number, mediatype: string, error: null) => void;
+            /**
+             * Emitted regularly during the encoding process to provide progress updates.
+             * @signal
+             * @run-last
+             */
+            progress: (fraction: number) => void;
+        }
         /**
          * Interface for implementing Encoder.
          * Contains only the virtual methods that need to be implemented.
@@ -17809,6 +17826,89 @@ export namespace RB {
     };
 
     namespace Player {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The 'buffering' signal is emitted while a stream is paused so
+             * that a buffer can be filled.  The progress value typically varies
+             * from 0 to 100, and once it reaches 100, playback resumes.
+             * @signal
+             * @run-last
+             */
+            buffering: (stream_data: null, progress: number) => void;
+            /**
+             * The 'eos' signal is emitted when a stream finishes, or in some cases, when it
+             * is about to finish (with `early` set to `true`) to allow for a new track to be
+             * played immediately afterwards.
+             * @signal
+             * @run-last
+             */
+            eos: (stream_data: null, early: boolean) => void;
+            /**
+             * The 'error' signal is emitted when an error is encountered
+             * while opening or playing a stream.
+             * @signal
+             * @run-last
+             */
+            error: (stream_data: null, error: null) => void;
+            /**
+             * The 'event' signal provides a means for custom GStreamer
+             * elements to communicate events back to the rest of the
+             * application.  The GStreamer element posts an application
+             * message on the GStreamer bus, which is translated into an
+             * event signal with the detail of the signal set to the name
+             * of the structure found in the message.
+             * @signal
+             * @detailed
+             * @run-last
+             */
+            event: (stream_data: null, data: null) => void;
+            /**
+             * The 'image' signal is emitted to provide access to images extracted
+             * from the stream.
+             * @signal
+             * @run-last
+             */
+            image: (stream_data: null, image: GdkPixbuf.Pixbuf) => void;
+            /**
+             * The 'info' signal is emitted when a metadata value is found in
+             * the stream.
+             * @signal
+             * @run-last
+             */
+            info: (stream_data: null, field: number, value: unknown) => void;
+            /**
+             * The 'playing-stream' signal is emitted when the main playing stream
+             * changes. It should be used to update the UI to show the new
+             * stream. It can either be emitted before or after `rb_player_play` returns,
+             * depending on the player backend.
+             * @signal
+             * @run-last
+             */
+            "playing-stream": (stream_data: null) => void;
+            /**
+             * The 'redirect' signal is emitted to indicate when a stream has change URI.
+             * @signal
+             * @run-last
+             */
+            redirect: (stream_data: null, uri: string) => void;
+            /**
+             * The 'tick' signal is emitted repeatedly while the stream is
+             * playing. Signal handlers can use this to update UI and to
+             * prepare new streams for crossfade or gapless playback.
+             * @signal
+             * @run-last
+             */
+            tick: (stream_data: null, elapsed: number, duration: number) => void;
+            /**
+             * The 'volume-changed' signal is emitted when the output stream volume is
+             * changed externally.
+             * @signal
+             * @run-last
+             */
+            "volume-changed": (volume: number) => void;
+            [key: `event::${string}`]: (stream_data: null, data: null) => void;
+        }
         /**
          * Interface for implementing Player.
          * Contains only the virtual methods that need to be implemented.
@@ -18179,6 +18279,23 @@ export namespace RB {
     };
 
     namespace PlayerGstFilter {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The 'filter-inserted' signal is emitted when the tee element has been
+             * inserted into the pipeline and fully linked
+             * @signal
+             * @run-last
+             */
+            "filter-inserted": (filter: GObject.Object) => void;
+            /**
+             * The 'filter-pre-remove' signal is emitted immediately before the element
+             * is unlinked and removed from the pipeline
+             * @signal
+             * @run-last
+             */
+            "filter-pre-remove": (filter: GObject.Object) => void;
+        }
         /**
          * Interface for implementing PlayerGstFilter.
          * Contains only the virtual methods that need to be implemented.
@@ -18259,6 +18376,23 @@ export namespace RB {
     };
 
     namespace PlayerGstTee {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The 'tee-inserted' signal is emitted when the tee element has been
+             * inserted into the pipeline and fully linked
+             * @signal
+             * @run-last
+             */
+            "tee-inserted": (tee: GObject.Object) => void;
+            /**
+             * The 'tee-pre-remove' signal is emitted immediately before the element
+             * is unlinked and removed from the pipeline
+             * @signal
+             * @run-last
+             */
+            "tee-pre-remove": (tee: GObject.Object) => void;
+        }
         /**
          * Interface for implementing PlayerGstTee.
          * Contains only the virtual methods that need to be implemented.

@@ -268,7 +268,7 @@ export namespace InputPad {
 
     namespace GtkApplication {
         // Signal signatures
-        interface SignalSignatures extends Gtk.Application.SignalSignatures {
+        interface SignalSignatures extends Gtk.Application.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -896,7 +896,7 @@ export namespace InputPad {
 
     namespace GtkComboBox {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::active": (pspec: GObject.ParamSpec) => void;
             "notify::active-id": (pspec: GObject.ParamSpec) => void;
             "notify::add-tearoffs": (pspec: GObject.ParamSpec) => void;
@@ -1623,7 +1623,7 @@ export namespace InputPad {
 
     namespace GtkWindow {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
+        interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures, Gio.ActionGroup.SignalSignatures {
             /**
              * @signal
              * @run-last

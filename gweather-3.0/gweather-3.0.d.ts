@@ -1044,7 +1044,7 @@ export namespace GWeather {
 
     namespace LocationEntry {
         // Signal signatures
-        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures {
+        interface SignalSignatures extends Gtk.SearchEntry.SignalSignatures, Gtk.CellEditable.SignalSignatures, Gtk.Editable.SignalSignatures {
             "notify::location": (pspec: GObject.ParamSpec) => void;
             "notify::show-named-timezones": (pspec: GObject.ParamSpec) => void;
             "notify::top": (pspec: GObject.ParamSpec) => void;
@@ -1247,7 +1247,7 @@ export namespace GWeather {
 
     namespace TimezoneMenu {
         // Signal signatures
-        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures {
+        interface SignalSignatures extends Gtk.ComboBox.SignalSignatures, Gtk.CellEditable.SignalSignatures {
             "notify::top": (pspec: GObject.ParamSpec) => void;
             "notify::tzid": (pspec: GObject.ParamSpec) => void;
             "notify::active": (pspec: GObject.ParamSpec) => void;

@@ -5787,7 +5787,7 @@ export namespace Ags {
 
     namespace GenericMainLoop {
         // Signal signatures
-        interface SignalSignatures extends Thread.SignalSignatures {
+        interface SignalSignatures extends Thread.SignalSignatures, MainLoop.SignalSignatures {
             "notify::delay": (pspec: GObject.ParamSpec) => void;
             "notify::frequency": (pspec: GObject.ParamSpec) => void;
             "notify::max-precision": (pspec: GObject.ParamSpec) => void;
@@ -15423,6 +15423,16 @@ export namespace Ags {
     };
 
     namespace MainLoop {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * Change frequency.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-frequency": (frequency: number) => void;
+        }
         /**
          * Interface for implementing MainLoop.
          * Contains only the virtual methods that need to be implemented.
@@ -16112,6 +16122,17 @@ export namespace Ags {
     };
 
     namespace Seekable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::seek signal notifies about changed position
+             * of sequencer.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            seek: (offset: number, whence: number) => void;
+        }
         /**
          * Interface for implementing Seekable.
          * Contains only the virtual methods that need to be implemented.
@@ -16159,6 +16180,25 @@ export namespace Ags {
     };
 
     namespace Sequencer {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::offset-changed signal notifies about changed position within
+             * notation.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "offset-changed": (note_offset: number) => void;
+            /**
+             * The ::tic signal is emitted every tic of the sequencer. This notifies
+             * about a newly played buffer.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            tic: () => void;
+        }
         /**
          * Interface for implementing Sequencer.
          * Contains only the virtual methods that need to be implemented.
@@ -16912,6 +16952,33 @@ export namespace Ags {
     };
 
     namespace Soundcard {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::offset-changed signal notifies about changed position within
+             * notation.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "offset-changed": (note_offset: number) => void;
+            /**
+             * The ::stop signal is emitted every stop of the soundcard. This notifies
+             * about a newly played buffer.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            stop: () => void;
+            /**
+             * The ::tic signal is emitted every tic of the soundcard. This notifies
+             * about a newly played buffer.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            tic: () => void;
+        }
         /**
          * Interface for implementing Soundcard.
          * Contains only the virtual methods that need to be implemented.
@@ -17712,6 +17779,55 @@ export namespace Ags {
     };
 
     namespace Tactable {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::change-bpm signal notifies about changed bpm.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-bpm": (new_bpm: number, old_bpm: number) => void;
+            /**
+             * The ::change-midi-duration signal notifies about changed duration
+             * of midi.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-midi-duration": (midi_duration: number) => void;
+            /**
+             * The ::change-notation-duration signal notifies about changed duration
+             * of notation.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-notation-duration": (notation_duration: number) => void;
+            /**
+             * The ::change-sequencer-duration signal notifies about changed duration
+             * of sequencer.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-sequencer-duration": (sequencer_duration: number) => void;
+            /**
+             * The ::change-tact signal notifies about changed tact.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-tact": (new_tact: number, old_tact: number) => void;
+            /**
+             * The ::change-wave-duration signal notifies about changed duration
+             * of wave.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
+            "change-wave-duration": (wave_duration: number) => void;
+        }
         /**
          * Interface for implementing Tactable.
          * Contains only the virtual methods that need to be implemented.

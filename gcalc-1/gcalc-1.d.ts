@@ -208,7 +208,7 @@ export namespace GCalc {
 
     namespace ExpressionContainer {
         // Signal signatures
-        interface SignalSignatures extends Gee.ArrayList.SignalSignatures {
+        interface SignalSignatures extends Gee.ArrayList.SignalSignatures, Gio.ListModel.SignalSignatures {
             "notify::parent": (pspec: GObject.ParamSpec) => void;
             "notify::g-type": (pspec: GObject.ParamSpec) => void;
             "notify::g-dup-func": (pspec: GObject.ParamSpec) => void;

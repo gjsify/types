@@ -7340,7 +7340,7 @@ export namespace Gladeui {
 
     namespace Project {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             /**
              * @signal
              * @run-last
@@ -10002,7 +10002,7 @@ export namespace Gladeui {
 
     namespace SignalModel {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Gtk.TreeModel.SignalSignatures {
             "notify::signals": (pspec: GObject.ParamSpec) => void;
             "notify::widget": (pspec: GObject.ParamSpec) => void;
         }

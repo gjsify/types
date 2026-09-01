@@ -162,7 +162,7 @@ export namespace ClutterGst {
 
     namespace Aspectratio {
         // Signal signatures
-        interface SignalSignatures extends Content.SignalSignatures {
+        interface SignalSignatures extends Content.SignalSignatures, Clutter.Content.SignalSignatures {
             "notify::fill-allocation": (pspec: GObject.ParamSpec) => void;
             "notify::paint-borders": (pspec: GObject.ParamSpec) => void;
             "notify::frame": (pspec: GObject.ParamSpec) => void;
@@ -323,7 +323,7 @@ export namespace ClutterGst {
 
     namespace Camera {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Player.SignalSignatures {
             /**
              * The ::photo-saved signal is emitted when a photo was saved to disk.
              * @signal
@@ -1084,7 +1084,7 @@ export namespace ClutterGst {
 
     namespace Content {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Clutter.Content.SignalSignatures {
             /**
              * The ::size-change signal is emitted each time the video size changes.
              * @signal
@@ -1305,7 +1305,7 @@ export namespace ClutterGst {
 
     namespace Crop {
         // Signal signatures
-        interface SignalSignatures extends Content.SignalSignatures {
+        interface SignalSignatures extends Content.SignalSignatures, Clutter.Content.SignalSignatures {
             "notify::cull-backface": (pspec: GObject.ParamSpec) => void;
             "notify::input-region": (pspec: GObject.ParamSpec) => void;
             "notify::output-region": (pspec: GObject.ParamSpec) => void;
@@ -1500,7 +1500,7 @@ export namespace ClutterGst {
 
     namespace Playback {
         // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {
+        interface SignalSignatures extends GObject.Object.SignalSignatures, Player.SignalSignatures {
             /**
              * The ::should-buffer signal is emitted every time the base class needs to
              * decide whether it should continue buffering in download-buffering mode.
@@ -2209,7 +2209,7 @@ export namespace ClutterGst {
 
     namespace VideoSink {
         // Signal signatures
-        interface SignalSignatures extends GstVideo.VideoSink.SignalSignatures {
+        interface SignalSignatures extends GstVideo.VideoSink.SignalSignatures, GstVideo.ColorBalance.SignalSignatures {
             /**
              * The sink will emit this signal whenever there are new textures
              * available for a new frame of the video. After this signal is
@@ -2827,6 +2827,42 @@ export namespace ClutterGst {
 
 
     namespace Player {
+        // Signal signatures
+        interface SignalSignatures {
+            /**
+             * The ::eos signal is emitted each time the media stream ends.
+             * @signal
+             * @run-last
+             */
+            eos: () => void;
+            /**
+             * The ::error signal is emitted each time an error occurred.
+             * @signal
+             * @run-last
+             */
+            error: (error: GLib.Error) => void;
+            /**
+             * The ::new-frame signal is emitted each time a frame is received
+             * from the video sink.
+             * @signal
+             * @run-last
+             */
+            "new-frame": (frame: Frame) => void;
+            /**
+             * The ::ready signal is emitted each time the gstreamer pipeline
+             * becomes ready.
+             * @signal
+             * @run-last
+             */
+            ready: () => void;
+            /**
+             * The ::size-change signal is emitted each time the new frame
+             * has different dimensions to the previous frame.
+             * @signal
+             * @run-last
+             */
+            "size-change": (width: number, height: number) => void;
+        }
         /**
          * Interface for implementing Player.
          * Contains only the virtual methods that need to be implemented.
