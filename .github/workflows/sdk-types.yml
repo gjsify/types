@@ -230,7 +230,9 @@ jobs:
               --arg commit '${{ steps.sdk.outputs.commit }}' \
               --arg generator '${{ needs.plan.outputs.generator }}' \
               --arg version '${{ steps.channel_plan.outputs.version }}' \
-              '{sdk: {id: $id, branch: $branch, commit: $commit}, generator: $generator, version: $version}')" \
+              --arg repo "git+${{ github.server_url }}/${{ github.repository }}.git" \
+              '{sdk: {id: $id, branch: $branch, commit: $commit}, generator: $generator, version: $version,
+                repository: {type: "git", url: $repo}}')" \
             --ignoreVersionConflicts
 
       # The manifest decides what is published, so it is checked before the sweep runs rather
@@ -247,6 +249,11 @@ jobs:
             if (manifest.name !== name) fail(`name ${manifest.name} != ${name}`);
             if (manifest.version !== version) fail(`version ${manifest.version} != ${version}`);
             if (manifest.sdk?.commit !== commit) fail("sdk.commit missing or wrong");
+            // npm --provenance refuses a package whose repository.url does not match the
+            // repository the attestation names, and says so only after uploading the tarball:
+            // "E422 … \"repository.url\" is \"\"". The generator cannot know where a bundle
+            // gets published, so the workflow supplies it — and checks that it arrived.
+            if (!manifest.repository?.url) fail("repository.url missing — provenance would fail with E422");
             const subpaths = Object.keys(manifest.exports ?? {});
             if (subpaths.length < 50) fail(`only ${subpaths.length} subpaths — the bundle is short`);
             console.log(`${manifest.name}@${manifest.version}: ${subpaths.length} subpaths`);
