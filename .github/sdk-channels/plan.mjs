@@ -51,14 +51,20 @@ export function decide(published, sdkCommit, generatorVersion) {
 export function nextVersion(publishedVersions, generatorVersion) {
   const match = /^(\d+)\.(\d+)\./.exec(generatorVersion);
   if (!match) throw new Error(`generator version is not semver: ${generatorVersion}`);
-  const line = `${match[1]}.${match[2]}`;
+  const [, major, minor] = match;
 
+  // A constant pattern, compared field by field, rather than one built from `generatorVersion`.
+  // Building it would be a regex assembled from an argument — and the escaping that made it
+  // safe, `line.replace(".", "\\.")`, replaces only the FIRST dot, so it was one input away
+  // from meaning something else than it read.
   const patches = publishedVersions
-    .map((version) => new RegExp(`^${line.replace(".", "\\.")}\\.(\\d+)$`).exec(version))
-    .filter((found) => found !== null)
-    .map((found) => Number.parseInt(found[1], 10));
+    .map((version) => /^(\d+)\.(\d+)\.(\d+)$/.exec(version))
+    .filter((found) => found !== null && found[1] === major && found[2] === minor)
+    .map((found) => Number.parseInt(found[3], 10));
 
-  return patches.length === 0 ? `${line}.0` : `${line}.${Math.max(...patches) + 1}`;
+  return patches.length === 0
+    ? `${major}.${minor}.0`
+    : `${major}.${minor}.${Math.max(...patches) + 1}`;
 }
 
 /**

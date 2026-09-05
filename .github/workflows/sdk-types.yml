@@ -46,6 +46,9 @@ jobs:
   plan:
     name: Channels
     runs-on: ubuntu-24.04
+    # Reads the repository and the public registry, writes nothing.
+    permissions:
+      contents: read
     outputs:
       matrix: ${{ steps.channels.outputs.matrix }}
       runtime: ${{ steps.channels.outputs.runtime }}
