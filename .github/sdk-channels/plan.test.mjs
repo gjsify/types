@@ -42,6 +42,21 @@ test("a manifest without provenance rebuilds rather than assuming it matches", (
   assert.equal(decide({}, SDK, "4.6.0").rebuild, true);
 });
 
+test("a published version whose tarball is gone rebuilds, however matching it looks", () => {
+  // Measured on @girs/sdk-gnome-master@4.7.0: publish reported success, `npm view` listed it
+  // with an attestation, `npm install` answered E404. Everything the manifest says agrees
+  // here — only the artifact is missing.
+  const published = { sdk: { commit: SDK }, generator: "4.6.0" };
+  const { rebuild, reason } = decide(published, SDK, "4.6.0", false);
+  assert.equal(rebuild, true);
+  assert.match(reason, /not installable/);
+});
+
+test("an installable, matching version is still skipped", () => {
+  const published = { sdk: { commit: SDK }, generator: "4.6.0" };
+  assert.equal(decide(published, SDK, "4.6.0", true).rebuild, false);
+});
+
 test("the first build of a generator line starts at .0", () => {
   assert.equal(nextVersion([], "4.6.0"), "4.6.0");
   assert.equal(nextVersion(["4.5.0", "4.5.1"], "4.6.0"), "4.6.0");

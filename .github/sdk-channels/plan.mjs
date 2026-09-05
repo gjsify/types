@@ -27,8 +27,16 @@ const REGISTRY = process.env.NPM_REGISTRY || "https://registry.npmjs.org";
  * @param {string} generatorVersion the ts-for-gir version this run will use
  * @returns {{rebuild: boolean, reason: string}}
  */
-export function decide(published, sdkCommit, generatorVersion) {
+export function decide(published, sdkCommit, generatorVersion, installable = true) {
   if (!published) return { rebuild: true, reason: "never published" };
+  // The packument is a claim, not the artifact. npm can serve a version whose tarball is not
+  // there — measured on `@girs/sdk-gnome-master@4.7.0`, which the publish reported as
+  // successful, which `npm view` listed with an attestation, and which `npm install` refused
+  // with E404. Trusting the manifest alone would have parked that channel as "up to date"
+  // forever, uninstallable and never rebuilt, on nothing but green runs.
+  if (!installable) {
+    return { rebuild: true, reason: "published version is not installable — its tarball is missing" };
+  }
   if (published.sdk?.commit !== sdkCommit) {
     return { rebuild: true, reason: `SDK moved: ${published.sdk?.commit ?? "unknown"} → ${sdkCommit}` };
   }
@@ -73,14 +81,33 @@ export function nextVersion(publishedVersions, generatorVersion) {
  */
 export async function readRegistry(packageName) {
   const response = await fetch(`${REGISTRY}/${encodeURIComponent(packageName)}`);
-  if (response.status === 404) return { versions: [], latest: null };
+  if (response.status === 404) return { versions: [], latest: null, installable: true };
   if (!response.ok) {
     throw new Error(`registry returned ${response.status} for ${packageName}`);
   }
   const packument = await response.json();
   const versions = Object.keys(packument.versions ?? {});
   const latestTag = packument["dist-tags"]?.latest;
-  return { versions, latest: latestTag ? (packument.versions[latestTag] ?? null) : null };
+  const latest = latestTag ? (packument.versions[latestTag] ?? null) : null;
+  return { versions, latest, installable: await isInstallable(latest) };
+}
+
+/**
+ * Ask for the tarball the manifest points at, rather than believing the manifest. A HEAD is
+ * enough: what matters is whether npm will serve the bytes an install needs.
+ *
+ * A network failure answers "yes" on purpose — an unreachable registry must not be reported as
+ * a broken publish, which would republish a channel that is fine.
+ */
+async function isInstallable(version) {
+  const tarball = version?.dist?.tarball;
+  if (!tarball) return true;
+  try {
+    const response = await fetch(tarball, { method: "HEAD" });
+    return response.ok;
+  } catch {
+    return true;
+  }
 }
 
 function argValue(name) {
@@ -94,8 +121,8 @@ async function main() {
   const sdkCommit = argValue("sdk-commit");
   const generatorVersion = argValue("generator");
 
-  const { versions, latest } = await readRegistry(packageName);
-  const { rebuild, reason } = decide(latest, sdkCommit, generatorVersion);
+  const { versions, latest, installable } = await readRegistry(packageName);
+  const { rebuild, reason } = decide(latest, sdkCommit, generatorVersion, installable);
   const version = rebuild ? nextVersion(versions, generatorVersion) : (latest?.version ?? "");
 
   const plan = { rebuild, version, reason };
