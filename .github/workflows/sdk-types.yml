@@ -85,9 +85,33 @@ jobs:
 
       # Resolved once and passed to every leg: two legs of one run must not silently use
       # different generators, which is exactly what `@latest` per job would allow.
+      #
+      # A release dispatch names its own version, and it has to: `release-types.yml` (which
+      # sends it) and `release-app.yml` (which publishes the CLI) both fire on the SAME
+      # `release: published` event, so asking npm for `latest` here races the publish that is
+      # meant to have happened already. Waiting for the named version turns that race into a
+      # wait; every other trigger has no version in mind and asks for the current one.
       - name: Resolve the generator version
         id: generator
-        run: echo "version=$(npm view @ts-for-gir/cli version)" >> "$GITHUB_OUTPUT"
+        env:
+          RELEASE: ${{ github.event.client_payload.release }}
+        run: |
+          set -euo pipefail
+          if [ -n "${RELEASE:-}" ]; then
+            wanted="${RELEASE#v}"
+            echo "waiting for @ts-for-gir/cli@${wanted} to appear on the registry…"
+            for attempt in $(seq 1 40); do
+              if npm view "@ts-for-gir/cli@${wanted}" version > /dev/null 2>&1; then
+                echo "version=${wanted}" >> "$GITHUB_OUTPUT"
+                echo "::notice::generator ${wanted} (from the release dispatch, after ${attempt} check(s))"
+                exit 0
+              fi
+              sleep 30
+            done
+            echo "@ts-for-gir/cli@${wanted} did not appear within 20 minutes" >&2
+            exit 1
+          fi
+          echo "version=$(npm view @ts-for-gir/cli version)" >> "$GITHUB_OUTPUT"
 
       # A generator without `--bundle` does NOT fail on the flag — yargs ignores what it does
       # not know — it quietly emits per-namespace packages named `@girs/gtk-4.0` instead, into
