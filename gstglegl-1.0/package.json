@@ -1,6 +1,6 @@
 {
     "name": "@girs/gstglegl-1.0",
-    "version": "4.6.0",
+    "version": "4.7.0",
     "description": "GJS TypeScript type definitions for GstGLEGL-1.0",
     "type": "module",
     "module": "gstglegl-1.0.js",
@@ -31,14 +31,14 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "^4.6.0",
-      "@girs/gstvideo-1.0": "^4.6.0",
-      "@girs/gstbase-1.0": "^4.6.0",
-      "@girs/gst-1.0": "^4.6.0",
-      "@girs/gobject-2.0": "^4.6.0",
-      "@girs/glib-2.0": "^4.6.0",
-      "@girs/gmodule-2.0": "^4.6.0",
-      "@girs/gstgl-1.0": "^4.6.0"    },
+      "@girs/gjs": "^4.7.0",
+      "@girs/gstvideo-1.0": "^4.7.0",
+      "@girs/gstbase-1.0": "^4.7.0",
+      "@girs/gst-1.0": "^4.7.0",
+      "@girs/gobject-2.0": "^4.7.0",
+      "@girs/glib-2.0": "^4.7.0",
+      "@girs/gmodule-2.0": "^4.7.0",
+      "@girs/gstgl-1.0": "^4.7.0"    },
     "devDependencies": {
       "typescript": "*"
     },

@@ -4,7 +4,7 @@
 ![version](https://img.shields.io/npm/v/@girs/gjs)
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gjs)
 
-GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.6.0.
+GJS TypeScript type definitions for Gjs using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.7.0.
 
 [GJS](https://gitlab.gnome.org/GNOME/gjs) is GNOME's JavaScript runtime. With these type definitions your editor knows the GTK API: it type-checks calls, completes method names, and shows the upstream C documentation inline.
 
