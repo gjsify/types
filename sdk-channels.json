@@ -1,10 +1,15 @@
 {
   "$comment": "The SDK channels published from this repository. Adding a channel is a one-line change here plus one `gjsify onboard` bootstrap for the new package name — npm Trusted Publishing can update a package but cannot create one, and the 404 it fails with reads like a broken trusted publisher.",
   "runtime": "org.gnome.Sdk",
-  "remote": "flathub",
+  "$remotes": "Per channel, because they do not all live in the same place: measured against the Flathub OSTree repo on 2026-09-05, stable `org.gnome.Sdk` ends at 50 — `master` is only on gnome-nightly, and 51 exists so far only as `51beta` on flathub-beta.",
+  "remotes": {
+    "flathub": "https://dl.flathub.org/repo/flathub.flatpakrepo",
+    "flathub-beta": "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo",
+    "gnome-nightly": "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+  },
   "channels": [
-    { "branch": "49", "package": "@girs/sdk-gnome-49" },
-    { "branch": "50", "package": "@girs/sdk-gnome-50" },
-    { "branch": "master", "package": "@girs/sdk-gnome-master" }
+    { "branch": "49", "remote": "flathub", "package": "@girs/sdk-gnome-49" },
+    { "branch": "50", "remote": "flathub", "package": "@girs/sdk-gnome-50" },
+    { "branch": "master", "remote": "gnome-nightly", "package": "@girs/sdk-gnome-master" }
   ]
 }

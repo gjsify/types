@@ -49,7 +49,7 @@ jobs:
     outputs:
       matrix: ${{ steps.channels.outputs.matrix }}
       runtime: ${{ steps.channels.outputs.runtime }}
-      remote: ${{ steps.channels.outputs.remote }}
+      remotes: ${{ steps.channels.outputs.remotes }}
       generator: ${{ steps.generator.outputs.version }}
     steps:
       - uses: actions/checkout@v6
@@ -69,10 +69,15 @@ jobs:
             echo "no channel matches '${ONLY}'" >&2
             exit 1
           fi
+          # Every channel must name a remote the manifest defines; a typo here would
+          # otherwise surface as `flatpak install` failing against a remote that was never
+          # added, six steps later and under the wrong name.
+          jq -e '[.channels[].remote] - (.remotes | keys) | length == 0' sdk-channels.json > /dev/null \
+            || { echo "a channel names a remote that sdk-channels.json does not define" >&2; exit 1; }
           {
             echo "matrix=$matrix"
             echo "runtime=$(jq -r .runtime sdk-channels.json)"
-            echo "remote=$(jq -r .remote sdk-channels.json)"
+            echo "remotes=$(jq -c .remotes sdk-channels.json)"
           } >> "$GITHUB_OUTPUT"
 
       # Resolved once and passed to every leg: two legs of one run must not silently use
@@ -126,16 +131,29 @@ jobs:
           npm install -g npm@^11.5.1
           npm --version
 
+      # The remote comes from the channel, not from a global default: measured on 2026-09-05,
+      # stable `org.gnome.Sdk` on Flathub ends at 50, so `master` lives on gnome-nightly and a
+      # pre-release cycle on flathub-beta. One shared remote would install the wrong thing or
+      # nothing at all.
       - name: Install flatpak and the SDK
+        env:
+          REMOTES: ${{ needs.plan.outputs.remotes }}
+          REMOTE: ${{ matrix.channel.remote }}
+          REF: ${{ needs.plan.outputs.runtime }}//${{ matrix.channel.branch }}
         run: |
           set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y flatpak
-          flatpak remote-add --if-not-exists --user \
-            ${{ needs.plan.outputs.remote }} https://dl.flathub.org/repo/flathub.flatpakrepo
-          flatpak install --user --noninteractive --no-related \
-            ${{ needs.plan.outputs.remote }} \
-            ${{ needs.plan.outputs.runtime }}//${{ matrix.channel.branch }}
+          sudo apt-get install -y flatpak jq
+          url=$(jq -r --arg name "$REMOTE" '.[$name]' <<<"$REMOTES")
+          flatpak remote-add --if-not-exists --user "$REMOTE" "$url"
+          # A branch a remote does not carry is a declaration that ran ahead of reality — the
+          # usual case being a GNOME cycle added here before Flathub publishes it. Say which,
+          # rather than let `install` fail with a resolution error that names neither.
+          if ! flatpak remote-info --user "$REMOTE" "$REF" > /dev/null 2>&1; then
+            echo "$REMOTE does not carry $REF yet" >&2
+            exit 1
+          fi
+          flatpak install --user --noninteractive --no-related "$REMOTE" "$REF"
 
       # The SDK ships the GIR XML the Platform runtime does not, and it lies on disk as ordinary
       # files — no sandbox to enter, so the generator runs beside it with the normal toolchain.
