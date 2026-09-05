@@ -10,6 +10,15 @@ interface Config {
 	dryRun: boolean;
 	continueOnError: boolean;
 	/**
+	 * Directory the sweep scans, relative to the repository root.
+	 *
+	 * Defaults to the repository root, which is every `@girs/*` namespace package. The SDK
+	 * channel bundles are generated into `sdk/` by a different workflow on a different cadence
+	 * and are not committed, so a sweep that always scanned everything would publish whichever
+	 * of the two happened to be on disk — and silently report success for the other.
+	 */
+	root: string;
+	/**
 	 * How this run authenticates to npm. BOTH are supported on purpose.
 	 *
 	 * `token` is the simple path and it stays: npm Trusted Publishing cannot
@@ -353,6 +362,7 @@ function showUsage(): void {
 	console.log("Options:");
 	console.log("  --dry-run, -d           Show what would be published without actually publishing");
 	console.log("  --continue-on-error, -c Continue processing even if some packages fail");
+	console.log("  --root <dir>            Scan only <dir> for packages (default: the whole repository)");
 	console.log("  --help, -h              Show this help message");
 	console.log("");
 	console.log("Environment variables:");
@@ -378,12 +388,30 @@ function getApiUrl(registry: string, packageName: string): string {
 	return `${baseUrl}${encodeURIComponent(packageName)}`;
 }
 
-function parseArgs(): Pick<Config, "dryRun" | "continueOnError"> {
+function parseArgs(): Pick<Config, "dryRun" | "continueOnError" | "root"> {
 	const args = process.argv;
 	return {
 		dryRun: args.includes("--dry-run") || args.includes("-d"),
 		continueOnError: args.includes("--continue-on-error") || args.includes("-c"),
+		root: parseRoot(args),
 	};
+}
+
+/**
+ * `--root <dir>` or `--root=<dir>`, relative to the repository root. Absolute paths and `..`
+ * are refused: this value decides what gets published, so it stays inside the repository.
+ */
+function parseRoot(args: string[]): string {
+	const inline = args.find((arg) => arg.startsWith("--root="));
+	const flagAt = args.indexOf("--root");
+	const raw = inline ? inline.slice("--root=".length) : flagAt >= 0 ? args[flagAt + 1] : undefined;
+
+	if (raw === undefined || raw === "") return ".";
+	if (raw.startsWith("-")) throw new Error("--root needs a directory argument");
+	if (raw.startsWith("/") || raw.split("/").includes("..")) {
+		throw new Error(`--root must stay inside the repository: ${raw}`);
+	}
+	return raw;
 }
 
 function getEnvConfig(): Pick<Config, "token" | "registry" | "timeoutSec"> {
@@ -648,10 +676,10 @@ async function publishPackageWithRetry(pkg: Package, config: Config): Promise<vo
 	}
 }
 
-async function collectPackages(): Promise<Package[]> {
+async function collectPackages(root: string): Promise<Package[]> {
 	// Get project root (3 levels up from .github/release-script/src/)
 	const scriptDir = new URL(".", import.meta.url).pathname;
-	const projectRoot = join(scriptDir, "..", "..", "..");
+	const projectRoot = join(scriptDir, "..", "..", "..", root);
 
 	console.log(`📁 Scanning ${projectRoot} for packages...`);
 
@@ -919,7 +947,7 @@ async function main(): Promise<void> {
 		console.log(`⚙️  Config: batch=${BATCH_SIZE}, batchDelay=${BATCH_DELAY_MS}ms, publishDelay=${PUBLISH_DELAY_MS}ms, statusConcurrency=${STATUS_CONCURRENCY}`);
 
 		await assertCanAuthenticate(config);
-		const packages = await collectPackages();
+		const packages = await collectPackages(config.root);
 
 		// Check for test packages with workspace dependencies
 		await checkForTestPackages(packages);

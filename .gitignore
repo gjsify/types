@@ -1,1 +1,3 @@
 node_modules/
+# SDK channel bundles: regenerated per run by sdk-types.yml, published to npm, never committed
+sdk/

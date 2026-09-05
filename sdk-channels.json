@@ -1,0 +1,10 @@
+{
+  "$comment": "The SDK channels published from this repository. Adding a channel is a one-line change here plus one `gjsify onboard` bootstrap for the new package name — npm Trusted Publishing can update a package but cannot create one, and the 404 it fails with reads like a broken trusted publisher.",
+  "runtime": "org.gnome.Sdk",
+  "remote": "flathub",
+  "channels": [
+    { "branch": "49", "package": "@girs/sdk-gnome-49" },
+    { "branch": "50", "package": "@girs/sdk-gnome-50" },
+    { "branch": "master", "package": "@girs/sdk-gnome-master" }
+  ]
+}
