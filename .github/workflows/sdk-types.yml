@@ -34,6 +34,10 @@ on:
         description: "Generate and plan, publish nothing"
         type: boolean
         default: false
+      force:
+        description: "Rebuild and publish even when the plan says up to date"
+        type: boolean
+        default: false
 
 concurrency:
   group: npm-publish-sdk-types
@@ -209,7 +213,8 @@ jobs:
           node .github/sdk-channels/plan.mjs \
             --package '${{ matrix.channel.package }}' \
             --sdk-commit '${{ steps.sdk.outputs.commit }}' \
-            --generator '${{ needs.plan.outputs.generator }}'
+            --generator '${{ needs.plan.outputs.generator }}' \
+            ${{ inputs.force && '--force' || '' }}
 
       - name: Up to date
         if: steps.channel_plan.outputs.rebuild != 'true'

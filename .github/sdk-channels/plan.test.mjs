@@ -80,3 +80,10 @@ test("versions from other lines and non-releases do not occupy the line", () => 
 test("a generator version that is not semver fails loudly", () => {
   assert.throws(() => nextVersion([], "latest"), /not semver/);
 });
+
+test("the version counter is what makes a forced rebuild publishable", () => {
+  // `--force` exists for content that is published but wrong — a bootstrap without
+  // provenance, say — which no comparison of SDK commit and generator can see. npm will not
+  // take the same version twice, so forcing is only useful because the counter moves on.
+  assert.equal(nextVersion(["4.7.0"], "4.7.0"), "4.7.1");
+});

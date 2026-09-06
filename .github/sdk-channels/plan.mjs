@@ -12,6 +12,9 @@
 //
 // Usage:
 //   node plan.mjs --package @girs/sdk-gnome-50 --sdk-commit <hex> --generator 4.6.0
+//   … --force  rebuild whatever the registry says. For content that is published but wrong —
+//              bootstrapped without provenance, say — which no comparison of SDK commit and
+//              generator can notice, because both of them match.
 //   → {"rebuild":true,"version":"4.6.0","reason":"never published"} on stdout,
 //     and the same fields appended to $GITHUB_OUTPUT when running in Actions.
 
@@ -121,8 +124,11 @@ async function main() {
   const sdkCommit = argValue("sdk-commit");
   const generatorVersion = argValue("generator");
 
+  const forced = process.argv.includes("--force");
   const { versions, latest, installable } = await readRegistry(packageName);
-  const { rebuild, reason } = decide(latest, sdkCommit, generatorVersion, installable);
+  const { rebuild, reason } = forced
+    ? { rebuild: true, reason: "forced" }
+    : decide(latest, sdkCommit, generatorVersion, installable);
   const version = rebuild ? nextVersion(versions, generatorVersion) : (latest?.version ?? "");
 
   const plan = { rebuild, version, reason };
