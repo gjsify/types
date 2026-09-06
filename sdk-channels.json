@@ -1,7 +1,8 @@
 {
   "$comment": "The SDK channels published from this repository. Adding a channel is a one-line change here plus one `gjsify onboard` bootstrap for the new package name — npm Trusted Publishing can update a package but cannot create one, and the 404 it fails with reads like a broken trusted publisher.",
   "runtime": "org.gnome.Sdk",
-  "$remotes": "Per channel, because they do not all live in the same place: measured against the Flathub OSTree repo on 2026-09-05, stable `org.gnome.Sdk` ends at 50 — `master` is only on gnome-nightly, and 51 exists so far only as `51beta` on flathub-beta.",
+  "$remotes": "Per channel, because they do not all live in the same place: measured against the Flathub OSTree repo on 2026-09-05, stable `org.gnome.Sdk` ends at 50 — `master` is only on gnome-nightly, and 51 so far only as `51beta` on flathub-beta.",
+  "$gnome51": "`@girs/sdk-gnome-51` is deliberately built from `51beta` until Flathub publishes the stable branch: the package name is what consumers depend on, and renaming it at release would break every dependency for the sake of eleven days. Its manifest says `sdk.branch: 51beta`, so what it was built from is never in doubt. When stable 51 lands, change `branch` to `51` and `remote` to `flathub` — the SDK commit changes with it and the channel rebuilds on the next run, with no bootstrap and no consumer change.",
   "remotes": {
     "flathub": "https://dl.flathub.org/repo/flathub.flatpakrepo",
     "flathub-beta": "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo",
@@ -10,6 +11,7 @@
   "channels": [
     { "branch": "49", "remote": "flathub", "package": "@girs/sdk-gnome-49" },
     { "branch": "50", "remote": "flathub", "package": "@girs/sdk-gnome-50" },
+    { "branch": "51beta", "remote": "flathub-beta", "package": "@girs/sdk-gnome-51" },
     { "branch": "master", "remote": "gnome-nightly", "package": "@girs/sdk-gnome-master" }
   ]
 }
