@@ -203,6 +203,185 @@ export const ENUM_NICKS = {
     AdwWrapPolicy: ['minimum', 'natural'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'AdwAccentColor.blue': 0,
+    'AdwAccentColor.green': 2,
+    'AdwAccentColor.orange': 4,
+    'AdwAccentColor.pink': 6,
+    'AdwAccentColor.purple': 7,
+    'AdwAccentColor.red': 5,
+    'AdwAccentColor.slate': 8,
+    'AdwAccentColor.teal': 1,
+    'AdwAccentColor.yellow': 3,
+    'AdwAnimationState.finished': 3,
+    'AdwAnimationState.idle': 0,
+    'AdwAnimationState.paused': 1,
+    'AdwAnimationState.playing': 2,
+    'AdwBannerButtonStyle.default': 0,
+    'AdwBannerButtonStyle.suggested': 1,
+    'AdwBreakpointConditionLengthType.max-height': 3,
+    'AdwBreakpointConditionLengthType.max-width': 1,
+    'AdwBreakpointConditionLengthType.min-height': 2,
+    'AdwBreakpointConditionLengthType.min-width': 0,
+    'AdwBreakpointConditionRatioType.max-aspect-ratio': 1,
+    'AdwBreakpointConditionRatioType.min-aspect-ratio': 0,
+    'AdwCenteringPolicy.loose': 0,
+    'AdwCenteringPolicy.strict': 1,
+    'AdwColorScheme.default': 0,
+    'AdwColorScheme.force-dark': 4,
+    'AdwColorScheme.force-light': 1,
+    'AdwColorScheme.prefer-dark': 3,
+    'AdwColorScheme.prefer-light': 2,
+    'AdwDialogPresentationMode.auto': 0,
+    'AdwDialogPresentationMode.bottom-sheet': 2,
+    'AdwDialogPresentationMode.floating': 1,
+    'AdwEasing.ease': 31,
+    'AdwEasing.ease-in': 32,
+    'AdwEasing.ease-in-back': 25,
+    'AdwEasing.ease-in-bounce': 28,
+    'AdwEasing.ease-in-circ': 19,
+    'AdwEasing.ease-in-cubic': 4,
+    'AdwEasing.ease-in-elastic': 22,
+    'AdwEasing.ease-in-expo': 16,
+    'AdwEasing.ease-in-out': 34,
+    'AdwEasing.ease-in-out-back': 27,
+    'AdwEasing.ease-in-out-bounce': 30,
+    'AdwEasing.ease-in-out-circ': 21,
+    'AdwEasing.ease-in-out-cubic': 6,
+    'AdwEasing.ease-in-out-elastic': 24,
+    'AdwEasing.ease-in-out-expo': 18,
+    'AdwEasing.ease-in-out-quad': 3,
+    'AdwEasing.ease-in-out-quart': 9,
+    'AdwEasing.ease-in-out-quint': 12,
+    'AdwEasing.ease-in-out-sine': 15,
+    'AdwEasing.ease-in-quad': 1,
+    'AdwEasing.ease-in-quart': 7,
+    'AdwEasing.ease-in-quint': 10,
+    'AdwEasing.ease-in-sine': 13,
+    'AdwEasing.ease-out': 33,
+    'AdwEasing.ease-out-back': 26,
+    'AdwEasing.ease-out-bounce': 29,
+    'AdwEasing.ease-out-circ': 20,
+    'AdwEasing.ease-out-cubic': 5,
+    'AdwEasing.ease-out-elastic': 23,
+    'AdwEasing.ease-out-expo': 17,
+    'AdwEasing.ease-out-quad': 2,
+    'AdwEasing.ease-out-quart': 8,
+    'AdwEasing.ease-out-quint': 11,
+    'AdwEasing.ease-out-sine': 14,
+    'AdwEasing.linear': 0,
+    'AdwFlapFoldPolicy.always': 1,
+    'AdwFlapFoldPolicy.auto': 2,
+    'AdwFlapFoldPolicy.never': 0,
+    'AdwFlapTransitionType.over': 0,
+    'AdwFlapTransitionType.slide': 2,
+    'AdwFlapTransitionType.under': 1,
+    'AdwFoldThresholdPolicy.minimum': 0,
+    'AdwFoldThresholdPolicy.natural': 1,
+    'AdwInlineViewSwitcherDisplayMode.both': 2,
+    'AdwInlineViewSwitcherDisplayMode.icons': 1,
+    'AdwInlineViewSwitcherDisplayMode.labels': 0,
+    'AdwJustifyMode.fill': 1,
+    'AdwJustifyMode.none': 0,
+    'AdwJustifyMode.spread': 2,
+    'AdwLeafletTransitionType.over': 0,
+    'AdwLeafletTransitionType.slide': 2,
+    'AdwLeafletTransitionType.under': 1,
+    'AdwLengthUnit.pt': 1,
+    'AdwLengthUnit.px': 0,
+    'AdwLengthUnit.sp': 2,
+    'AdwNavigationDirection.back': 0,
+    'AdwNavigationDirection.forward': 1,
+    'AdwPackDirection.end-to-start': 1,
+    'AdwPackDirection.start-to-end': 0,
+    'AdwResponseAppearance.default': 0,
+    'AdwResponseAppearance.destructive': 2,
+    'AdwResponseAppearance.suggested': 1,
+    'AdwSidebarMode.page': 1,
+    'AdwSidebarMode.sidebar': 0,
+    'AdwSqueezerTransitionType.crossfade': 1,
+    'AdwSqueezerTransitionType.none': 0,
+    'AdwToastPriority.high': 1,
+    'AdwToastPriority.normal': 0,
+    'AdwToolbarStyle.flat': 0,
+    'AdwToolbarStyle.raised': 1,
+    'AdwToolbarStyle.raised-border': 2,
+    'AdwViewSwitcherPolicy.narrow': 0,
+    'AdwViewSwitcherPolicy.wide': 1,
+    'AdwWrapPolicy.minimum': 0,
+    'AdwWrapPolicy.natural': 1,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'AdwTabViewShortcuts.all-shortcuts': 4095,
+    'AdwTabViewShortcuts.alt-digits': 1024,
+    'AdwTabViewShortcuts.alt-zero': 2048,
+    'AdwTabViewShortcuts.control-end': 32,
+    'AdwTabViewShortcuts.control-home': 16,
+    'AdwTabViewShortcuts.control-page-down': 8,
+    'AdwTabViewShortcuts.control-page-up': 4,
+    'AdwTabViewShortcuts.control-shift-end': 512,
+    'AdwTabViewShortcuts.control-shift-home': 256,
+    'AdwTabViewShortcuts.control-shift-page-down': 128,
+    'AdwTabViewShortcuts.control-shift-page-up': 64,
+    'AdwTabViewShortcuts.control-shift-tab': 2,
+    'AdwTabViewShortcuts.control-tab': 1,
+    'AdwTabViewShortcuts.none': 0,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     AdwActionRow: {
         'activatable': 'set_activatable_widget',

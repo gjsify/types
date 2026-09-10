@@ -63,6 +63,105 @@ export const ENUM_NICKS = {
     GdlSwitcherStyle: ['text', 'icon', 'both', 'toolbar', 'tabs', 'none'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'GdlDockBarStyle.auto': 3,
+    'GdlDockBarStyle.both': 2,
+    'GdlDockBarStyle.icons': 0,
+    'GdlDockBarStyle.text': 1,
+    'GdlDockPlacement.bottom': 2,
+    'GdlDockPlacement.center': 5,
+    'GdlDockPlacement.floating': 6,
+    'GdlDockPlacement.left': 4,
+    'GdlDockPlacement.none': 0,
+    'GdlDockPlacement.right': 3,
+    'GdlDockPlacement.top': 1,
+    'GdlSwitcherStyle.both': 2,
+    'GdlSwitcherStyle.icon': 1,
+    'GdlSwitcherStyle.none': 5,
+    'GdlSwitcherStyle.tabs': 4,
+    'GdlSwitcherStyle.text': 0,
+    'GdlSwitcherStyle.toolbar': 3,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'GdlDockItemBehavior.cant-close': 512,
+    'GdlDockItemBehavior.cant-dock-bottom': 32,
+    'GdlDockItemBehavior.cant-dock-center': 256,
+    'GdlDockItemBehavior.cant-dock-left': 64,
+    'GdlDockItemBehavior.cant-dock-right': 128,
+    'GdlDockItemBehavior.cant-dock-top': 16,
+    'GdlDockItemBehavior.cant-iconify': 1024,
+    'GdlDockItemBehavior.locked': 8,
+    'GdlDockItemBehavior.never-floating': 1,
+    'GdlDockItemBehavior.never-horizontal': 4,
+    'GdlDockItemBehavior.never-vertical': 2,
+    'GdlDockItemBehavior.no-grip': 2048,
+    'GdlDockItemBehavior.normal': 0,
+    'GdlDockItemFlags.iconified': 1024,
+    'GdlDockItemFlags.in-drag': 256,
+    'GdlDockItemFlags.in-predrag': 512,
+    'GdlDockItemFlags.user-action': 2048,
+    'GdlDockObjectFlags.attached': 2,
+    'GdlDockObjectFlags.automatic': 1,
+    'GdlDockObjectFlags.in-detach': 8,
+    'GdlDockObjectFlags.in-reflow': 4,
+    'GdlDockParamFlags.after': 512,
+    'GdlDockParamFlags.export': 256,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     GdlDockItem: {
         'child': 'set_child',

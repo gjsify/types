@@ -172,6 +172,116 @@ export const ENUM_NICKS = {
     PangoEllipsizeMode: ['none', 'start', 'middle', 'end'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'GimpAspectType.landscape': 2,
+    'GimpAspectType.portrait': 1,
+    'GimpAspectType.square': 0,
+    'GimpChainPosition.bottom': 2,
+    'GimpChainPosition.left': 1,
+    'GimpChainPosition.right': 3,
+    'GimpChainPosition.top': 0,
+    'GimpCheckSize.large-checks': 2,
+    'GimpCheckSize.medium-checks': 1,
+    'GimpCheckSize.small-checks': 0,
+    'GimpCheckType.black-only': 5,
+    'GimpCheckType.custom-checks': 6,
+    'GimpCheckType.dark-checks': 2,
+    'GimpCheckType.gray-checks': 1,
+    'GimpCheckType.gray-only': 4,
+    'GimpCheckType.light-checks': 0,
+    'GimpCheckType.white-only': 3,
+    'GimpColorAreaType.flat': 0,
+    'GimpColorAreaType.large-checks': 2,
+    'GimpColorAreaType.small-checks': 1,
+    'GimpColorSelectorChannel.alpha': 6,
+    'GimpColorSelectorChannel.blue': 5,
+    'GimpColorSelectorChannel.green': 4,
+    'GimpColorSelectorChannel.hue': 0,
+    'GimpColorSelectorChannel.lch-chroma': 8,
+    'GimpColorSelectorChannel.lch-hue': 9,
+    'GimpColorSelectorChannel.lch-lightness': 7,
+    'GimpColorSelectorChannel.red': 3,
+    'GimpColorSelectorChannel.saturation': 1,
+    'GimpColorSelectorChannel.value': 2,
+    'GimpColorSelectorModel.hsv': 2,
+    'GimpColorSelectorModel.lch': 1,
+    'GimpColorSelectorModel.rgb': 0,
+    'GimpFileChooserAction.any': -1,
+    'GimpFileChooserAction.create-folder': 3,
+    'GimpFileChooserAction.open': 0,
+    'GimpFileChooserAction.save': 1,
+    'GimpFileChooserAction.select-folder': 2,
+    'GimpIntComboBoxLayout.abbreviated': 1,
+    'GimpIntComboBoxLayout.full': 2,
+    'GimpIntComboBoxLayout.icon-only': 0,
+    'GimpPageSelectorTarget.images': 1,
+    'GimpPageSelectorTarget.layers': 0,
+    'GimpSizeEntryUpdatePolicy.none': 0,
+    'GimpSizeEntryUpdatePolicy.resolution': 2,
+    'GimpSizeEntryUpdatePolicy.size': 1,
+    'GimpZoomType.in': 0,
+    'GimpZoomType.out': 1,
+    'PangoEllipsizeMode.end': 3,
+    'PangoEllipsizeMode.middle': 2,
+    'PangoEllipsizeMode.none': 0,
+    'PangoEllipsizeMode.start': 1,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     GimpBrowser: {
         'widget': 'set_widget',

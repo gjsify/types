@@ -68,6 +68,202 @@ export const ENUM_NICKS = {
     AnjutaShellPlacement: ['none', 'top', 'bottom', 'right', 'left', 'center', 'floating'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'AnjutaCommandBarEntryType.button': 1,
+    'AnjutaCommandBarEntryType.frame': 0,
+    'AnjutaCommandQueueExecuteMode.automatic': 0,
+    'AnjutaCommandQueueExecuteMode.manual': 1,
+    'AnjutaLauncherOutputType.pty': 2,
+    'AnjutaLauncherOutputType.stderr': 1,
+    'AnjutaLauncherOutputType.stdout': 0,
+    'AnjutaProjectValueType.boolean': 3,
+    'AnjutaProjectValueType.list': 2,
+    'AnjutaProjectValueType.map': 4,
+    'AnjutaProjectValueType.string': 1,
+    'AnjutaSerializerMode.read': 0,
+    'AnjutaSerializerMode.write': 1,
+    'AnjutaSessionPhase.end': 4,
+    'AnjutaSessionPhase.first': 1,
+    'AnjutaSessionPhase.last': 3,
+    'AnjutaSessionPhase.normal': 2,
+    'AnjutaSessionPhase.start': 0,
+    'AnjutaShellPlacement.bottom': 2,
+    'AnjutaShellPlacement.center': 5,
+    'AnjutaShellPlacement.floating': 6,
+    'AnjutaShellPlacement.left': 4,
+    'AnjutaShellPlacement.none': 0,
+    'AnjutaShellPlacement.right': 3,
+    'AnjutaShellPlacement.top': 1,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'AnjutaProjectNodeState.can-add-group': 256,
+    'AnjutaProjectNodeState.can-add-module': 2048,
+    'AnjutaProjectNodeState.can-add-package': 4096,
+    'AnjutaProjectNodeState.can-add-source': 1024,
+    'AnjutaProjectNodeState.can-add-target': 512,
+    'AnjutaProjectNodeState.can-remove': 65536,
+    'AnjutaProjectNodeState.can-save': 131072,
+    'AnjutaProjectNodeState.incomplete': 2,
+    'AnjutaProjectNodeState.loading': 4,
+    'AnjutaProjectNodeState.modified': 1,
+    'AnjutaProjectNodeState.ok': 0,
+    'AnjutaProjectNodeState.remove-file': 262144,
+    'AnjutaProjectNodeState.removed': 8,
+    'AnjutaProjectNodeType.configure': 14,
+    'AnjutaProjectNodeType.data': 11,
+    'AnjutaProjectNodeType.executable': 524288,
+    'AnjutaProjectNodeType.extra': 12,
+    'AnjutaProjectNodeType.flag-mask': 16711680,
+    'AnjutaProjectNodeType.frame': 2097152,
+    'AnjutaProjectNodeType.generic': 10,
+    'AnjutaProjectNodeType.genmarshal': 17,
+    'AnjutaProjectNodeType.group': 33554432,
+    'AnjutaProjectNodeType.header': 7,
+    'AnjutaProjectNodeType.id-mask': 65535,
+    'AnjutaProjectNodeType.idl': 15,
+    'AnjutaProjectNodeType.info': 9,
+    'AnjutaProjectNodeType.intltool': 13,
+    'AnjutaProjectNodeType.java': 5,
+    'AnjutaProjectNodeType.lisp': 6,
+    'AnjutaProjectNodeType.lt-module': 20,
+    'AnjutaProjectNodeType.man': 8,
+    'AnjutaProjectNodeType.mkenums': 16,
+    'AnjutaProjectNodeType.module': 83886080,
+    'AnjutaProjectNodeType.object': 134217728,
+    'AnjutaProjectNodeType.package': 100663296,
+    'AnjutaProjectNodeType.primary': 262144,
+    'AnjutaProjectNodeType.program': 3,
+    'AnjutaProjectNodeType.project': 131072,
+    'AnjutaProjectNodeType.proxy': 65536,
+    'AnjutaProjectNodeType.python': 4,
+    'AnjutaProjectNodeType.read-only': 1048576,
+    'AnjutaProjectNodeType.root': 16777216,
+    'AnjutaProjectNodeType.root-group': 19,
+    'AnjutaProjectNodeType.script': 18,
+    'AnjutaProjectNodeType.sharedlib': 1,
+    'AnjutaProjectNodeType.source': 67108864,
+    'AnjutaProjectNodeType.staticlib': 2,
+    'AnjutaProjectNodeType.target': 50331648,
+    'AnjutaProjectNodeType.type-mask': 4278190080,
+    'AnjutaProjectNodeType.unknown': 0,
+    'AnjutaProjectNodeType.variable': 117440512,
+    'AnjutaProjectPropertyFlags.hidden': 4,
+    'AnjutaProjectPropertyFlags.read-only': 1,
+    'AnjutaProjectPropertyFlags.read-write': 2,
+    'AnjutaProjectPropertyFlags.static': 8,
+    'AnjutaTokenType.added': 134217728,
+    'AnjutaTokenType.any': 16414,
+    'AnjutaTokenType.argument': 16388,
+    'AnjutaTokenType.case-insensitive': 16777216,
+    'AnjutaTokenType.close': 262144,
+    'AnjutaTokenType.close-quote': 16402,
+    'AnjutaTokenType.comma': 44,
+    'AnjutaTokenType.comment': 16400,
+    'AnjutaTokenType.content': 16387,
+    'AnjutaTokenType.definition': 16396,
+    'AnjutaTokenType.eol': 92,
+    'AnjutaTokenType.eov': 16390,
+    'AnjutaTokenType.error': 16411,
+    'AnjutaTokenType.escape': 16403,
+    'AnjutaTokenType.file': 16385,
+    'AnjutaTokenType.first': 16384,
+    'AnjutaTokenType.flags': 4294901760,
+    'AnjutaTokenType.function': 16404,
+    'AnjutaTokenType.irrelevant': 65536,
+    'AnjutaTokenType.item': 16409,
+    'AnjutaTokenType.junk': 16399,
+    'AnjutaTokenType.keyword': 16392,
+    'AnjutaTokenType.last': 16408,
+    'AnjutaTokenType.list': 16413,
+    'AnjutaTokenType.macro': 16386,
+    'AnjutaTokenType.name': 16394,
+    'AnjutaTokenType.next': 16407,
+    'AnjutaTokenType.none': 0,
+    'AnjutaTokenType.number': 16398,
+    'AnjutaTokenType.open': 131072,
+    'AnjutaTokenType.open-quote': 16401,
+    'AnjutaTokenType.operator': 16393,
+    'AnjutaTokenType.parsed': 16391,
+    'AnjutaTokenType.private-flags': 4278190080,
+    'AnjutaTokenType.public-flags': 16711680,
+    'AnjutaTokenType.removed': 67108864,
+    'AnjutaTokenType.significant': 1048576,
+    'AnjutaTokenType.space': 16405,
+    'AnjutaTokenType.start': 16406,
+    'AnjutaTokenType.statement': 16397,
+    'AnjutaTokenType.static': 33554432,
+    'AnjutaTokenType.string': 16410,
+    'AnjutaTokenType.type': 65535,
+    'AnjutaTokenType.user': 16415,
+    'AnjutaTokenType.value': 16389,
+    'AnjutaTokenType.variable': 16395,
+    'AnjutaTokenType.word': 16412,
+    'AnjutaVcsStatus.added': 2,
+    'AnjutaVcsStatus.all': -1,
+    'AnjutaVcsStatus.conflicted': 8,
+    'AnjutaVcsStatus.deleted': 4,
+    'AnjutaVcsStatus.ignored': 256,
+    'AnjutaVcsStatus.locked': 32,
+    'AnjutaVcsStatus.missing': 64,
+    'AnjutaVcsStatus.modified': 1,
+    'AnjutaVcsStatus.unversioned': 128,
+    'AnjutaVcsStatus.uptodate': 16,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     AnjutaDock: {
         'command-bar': 'set_command_bar',

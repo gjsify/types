@@ -88,6 +88,137 @@ export const ENUM_NICKS = {
     GladeUtilFileDialogType: ['open', 'save'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'GladeCreateReason.copy': 1,
+    'GladeCreateReason.load': 2,
+    'GladeCreateReason.reasons': 4,
+    'GladeCreateReason.rebuild': 3,
+    'GladeCreateReason.user': 0,
+    'GladeCursorType.add-widget': 1,
+    'GladeCursorType.drag': 10,
+    'GladeCursorType.resize-bottom': 9,
+    'GladeCursorType.resize-bottom-left': 4,
+    'GladeCursorType.resize-bottom-right': 5,
+    'GladeCursorType.resize-left': 6,
+    'GladeCursorType.resize-right': 7,
+    'GladeCursorType.resize-top': 8,
+    'GladeCursorType.resize-top-left': 2,
+    'GladeCursorType.resize-top-right': 3,
+    'GladeCursorType.selector': 0,
+    'GladeEditorPageType.atk': 3,
+    'GladeEditorPageType.common': 1,
+    'GladeEditorPageType.general': 0,
+    'GladeEditorPageType.packing': 2,
+    'GladeEditorPageType.query': 4,
+    'GladeEditorPageType.signal': 5,
+    'GladeItemAppearance.icon-and-label': 0,
+    'GladeItemAppearance.icon-only': 1,
+    'GladeItemAppearance.label-only': 2,
+    'GladePointerMode.add-widget': 1,
+    'GladePointerMode.align-edit': 4,
+    'GladePointerMode.drag-resize': 2,
+    'GladePointerMode.margin-edit': 3,
+    'GladePointerMode.select': 0,
+    'GladeProjectModelColumns.column-icon-name': 0,
+    'GladeProjectModelColumns.column-misc': 4,
+    'GladeProjectModelColumns.column-name': 1,
+    'GladeProjectModelColumns.column-object': 3,
+    'GladeProjectModelColumns.column-type-name': 2,
+    'GladeProjectModelColumns.column-warning': 5,
+    'GladeProjectModelColumns.n-columns': 6,
+    'GladeSignalModelColumns.column-after': 5,
+    'GladeSignalModelColumns.column-detail': 8,
+    'GladeSignalModelColumns.column-handler': 2,
+    'GladeSignalModelColumns.column-name': 0,
+    'GladeSignalModelColumns.column-object': 3,
+    'GladeSignalModelColumns.column-show-name': 1,
+    'GladeSignalModelColumns.column-signal': 7,
+    'GladeSignalModelColumns.column-swap': 4,
+    'GladeSignalModelColumns.column-tooltip': 6,
+    'GladeSignalModelColumns.n-columns': 9,
+    'GladeStock.Dummy': 0,
+    'GladeStockImage.Dummy': 0,
+    'GladeUIMessageType.are-you-sure': 3,
+    'GladeUIMessageType.error': 2,
+    'GladeUIMessageType.info': 0,
+    'GladeUIMessageType.warn': 1,
+    'GladeUIMessageType.yes-or-no': 4,
+    'GladeUtilFileDialogType.open': 0,
+    'GladeUtilFileDialogType.save': 1,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'GladeDebugFlag.commands': 4,
+    'GladeDebugFlag.properties': 8,
+    'GladeDebugFlag.ref-counts': 1,
+    'GladeDebugFlag.verify': 16,
+    'GladeDebugFlag.widget-events': 2,
+    'GladePropertyState.changed': 1,
+    'GladePropertyState.normal': 0,
+    'GladePropertyState.support-disabled': 4,
+    'GladePropertyState.unsupported': 2,
+    'GladeSupportMask.deprecated': 1,
+    'GladeSupportMask.mismatch': 2,
+    'GladeSupportMask.ok': 0,
+    'GladeVerifyFlags.deprecations': 2,
+    'GladeVerifyFlags.none': 0,
+    'GladeVerifyFlags.unrecognized': 4,
+    'GladeVerifyFlags.versions': 1,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     GladeEditorSkeleton: {
         'editor': 'add_editor',

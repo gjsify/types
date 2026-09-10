@@ -64,6 +64,154 @@ export const ENUM_NICKS = {
     EogZoomMode: ['free', 'shrink-to-fit'],
 };
 
+// The number behind each of those nicks, read from GIR's own `value` attribute.
+//
+// It ships because position in `ENUM_NICKS` is not the value and a consumer with no
+// typelib has no other way to learn it: a surface without GI still has to hand GObject an
+// integer. The alternative a consumer reaches for first is counting, and counting is wrong
+// on 6 of the 129 enums a GTK 4 vocabulary carries (104 in Gtk-4.0, 25 in Adw-1) --
+// `GtkResponseType` runs -1 down to
+// -11, `GtkTextWindowType` starts at 1, and `GtkConstraintStrength.required` is
+// 1001001000 where counting answers 0.
+//
+// Same provenance as the nicks above, which is the point: a consumer that reads the numbers
+// from an INSTALLED library instead gets two provenances for one table, and a member the
+// vocabulary describes but the host predates then looks like a missing number rather than a
+// version gap.
+export const ENUM_VALUES = {
+    'EogImageMetadataStatus.not-available': 1,
+    'EogImageMetadataStatus.not-read': 0,
+    'EogImageMetadataStatus.ready': 2,
+    'EogImageStatus.failed': 4,
+    'EogImageStatus.loaded': 2,
+    'EogImageStatus.loading': 1,
+    'EogImageStatus.saving': 3,
+    'EogImageStatus.unknown': 0,
+    'EogJobPriority.n-priorities': 3,
+    'EogJobPriority.priority-high': 0,
+    'EogJobPriority.priority-low': 2,
+    'EogJobPriority.priority-medium': 1,
+    'EogListStoreColumn.eog-image': 2,
+    'EogListStoreColumn.eog-job': 3,
+    'EogListStoreColumn.num-columns': 4,
+    'EogListStoreColumn.thumb-set': 1,
+    'EogListStoreColumn.thumbnail': 0,
+    'EogThumbNavMode.multiple-columns': 3,
+    'EogThumbNavMode.multiple-rows': 2,
+    'EogThumbNavMode.one-column': 1,
+    'EogThumbNavMode.one-row': 0,
+    'EogThumbViewSelectionChange.current': 0,
+    'EogThumbViewSelectionChange.first': 3,
+    'EogThumbViewSelectionChange.last': 4,
+    'EogThumbViewSelectionChange.left': 1,
+    'EogThumbViewSelectionChange.random': 5,
+    'EogThumbViewSelectionChange.right': 2,
+    'EogTransformType.flip-horizontal': 4,
+    'EogTransformType.flip-vertical': 5,
+    'EogTransformType.none': 0,
+    'EogTransformType.rot-180': 2,
+    'EogTransformType.rot-270': 3,
+    'EogTransformType.rot-90': 1,
+    'EogTransformType.transpose': 6,
+    'EogTransformType.transverse': 7,
+    'EogTransparencyStyle.background': 0,
+    'EogTransparencyStyle.checked': 1,
+    'EogTransparencyStyle.color': 2,
+    'EogUCType.comment': 3,
+    'EogUCType.counter': 2,
+    'EogUCType.date': 4,
+    'EogUCType.day': 6,
+    'EogUCType.end': 12,
+    'EogUCType.filename': 1,
+    'EogUCType.hour': 9,
+    'EogUCType.minute': 10,
+    'EogUCType.month': 7,
+    'EogUCType.second': 11,
+    'EogUCType.string': 0,
+    'EogUCType.time': 5,
+    'EogUCType.year': 8,
+    'EogWindowError.control-not-found': 0,
+    'EogWindowError.generic': 5,
+    'EogWindowError.io': 3,
+    'EogWindowError.no-persist-file-interface': 2,
+    'EogWindowError.trash-not-found': 4,
+    'EogWindowError.ui-not-found': 1,
+    'EogWindowError.unknown': 6,
+    'EogWindowGalleryPos.bottom': 0,
+    'EogWindowGalleryPos.left': 1,
+    'EogWindowGalleryPos.right': 3,
+    'EogWindowGalleryPos.top': 2,
+    'EogWindowMode.fullscreen': 2,
+    'EogWindowMode.normal': 1,
+    'EogWindowMode.slideshow': 3,
+    'EogWindowMode.unknown': 0,
+    'EogZoomMode.free': 0,
+    'EogZoomMode.shrink-to-fit': 1,
+};
+
+// The nicks GIR marks `deprecated="1"`.
+//
+// Two members of one enum may share a value -- that is how GObject spells an alias, and
+// `GTK_ALIGN_BASELINE` and `GTK_ALIGN_BASELINE_FILL` are both 4. `ENUM_VALUES` keeps
+// both names, so nothing is lost, and this is what says which of the two a number should be
+// spelled back as. Stated rather than derived: the pairing is visible in the values, the
+// DIRECTION is not.
+//
+// Read it as evidence, not as a negative: 4 registered-enum members in the 718 GIRs carry
+// the attribute at all, and 179 of the 182 value-sharing pairs carry it on neither half.
+// A nick missing from here is a nick GIR says nothing about, not a nick GIR calls current.
+export const ENUM_DEPRECATED = [];
+
+// The declared remainder: nicks whose GIR `value` is not a number this can carry.
+//
+// Every nick in `ENUM_NICKS` is in `ENUM_VALUES` or here -- a nick in neither would be a
+// silent drop. GIR carries two shapes no integer holds: a symbolic or absent value (Vala
+// writes `(null)`, a char enum writes a letter) and an integer past
+// `Number.MAX_SAFE_INTEGER`. The value kept here is the raw attribute, so the entry says
+// WHAT was unreadable rather than only that something was. Measured over the 718 GIRs in
+// ts-for-gir's `girs/`: 32 of 34096 registered-enum members, none in Gtk, Adw, GLib or Gio.
+export const ENUM_VALUES_UNREADABLE = {};
+
+// The number behind each member of a registered BITFIELD, keyed the same way.
+//
+// `ENUM_NICKS` refuses a bitfield because GObject cannot resolve a nick SET, and that
+// reason says nothing about one member's number. 21 writable widget properties in Gtk-4.0
+// and Adw-1 are bitfield-typed -- `GtkEntry:input-hints`, `GtkPopoverMenu:flags`,
+// `AdwTabView:shortcuts`, ... -- and they are typed bare `number`, so a host without GI
+// has nothing to compute one from. Counting is worst exactly here: 95 of 121 Gtk-4.0
+// bitfield members disagree with their position, against 29 of 685 enumeration members.
+//
+// A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
+// `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
+export const FLAG_VALUES = {
+    'EogDebug.image-data': 16,
+    'EogDebug.image-load': 32,
+    'EogDebug.image-save': 64,
+    'EogDebug.jobs': 4,
+    'EogDebug.lcms': 1024,
+    'EogDebug.list-store': 128,
+    'EogDebug.no-debug': 0,
+    'EogDebug.plugins': 2048,
+    'EogDebug.preferences': 256,
+    'EogDebug.printing': 512,
+    'EogDebug.thumbnail': 8,
+    'EogDebug.view': 2,
+    'EogDebug.window': 1,
+    'EogImageData.dimension': 2,
+    'EogImageData.exif': 4,
+    'EogImageData.image': 1,
+    'EogImageData.xmp': 8,
+    'EogStartupFlags.disable-gallery': 4,
+    'EogStartupFlags.fullscreen': 1,
+    'EogStartupFlags.single-window': 8,
+    'EogStartupFlags.slide-show': 2,
+};
+
+// The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
+// `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
+// so this is the table that shape actually reaches.
+export const FLAG_VALUES_UNREADABLE = {};
+
 export const SLOT_CANDIDATES = {
     EogScrollView: {
         'popup': 'set_popup',
