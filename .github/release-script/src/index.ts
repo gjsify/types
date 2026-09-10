@@ -37,6 +37,8 @@ interface Package {
 	name: string;
 	version: string;
 	rootFolder: string;
+	/** The dependency maps a CONSUMER resolves, kept so Phase 3 can check every range. */
+	dependencies: Partial<Record<(typeof CONSUMER_DEPENDENCY_FIELDS)[number], Record<string, string>>>;
 }
 
 interface PackageStatus {
@@ -508,10 +510,19 @@ async function parsePackageJson(packageFile: string): Promise<Package> {
 		throw new Error(`Invalid package.json at ${packageFile}: missing name or version`);
 	}
 
+	const dependencies: Package["dependencies"] = {};
+	for (const field of CONSUMER_DEPENDENCY_FIELDS) {
+		const value = data[field];
+		if (value && typeof value === "object") {
+			dependencies[field] = value as Record<string, string>;
+		}
+	}
+
 	return {
 		name: data.name,
 		version: data.version,
 		rootFolder: dirname(packageFile),
+		dependencies,
 	};
 }
 
@@ -925,7 +936,7 @@ async function publishPendingPackages(
 	packages: Package[],
 	statuses: Map<string, PackageStatus>,
 	config: Config,
-): Promise<{ alreadyPublished: number; processed: number; errors: number }> {
+): Promise<{ alreadyPublished: number; processed: number; errors: number; publishedNow: Map<string, string> }> {
 	// Split into already-published and needs-publish
 	const needsPublish: { pkg: Package; isUpdate: boolean }[] = [];
 	let alreadyPublished = 0;
@@ -941,8 +952,12 @@ async function publishPendingPackages(
 
 	console.log(`📊 ${alreadyPublished} already published, ${needsPublish.length} to publish\n`);
 
+	// Every name this run put on the registry, at the version it put there. Phase 3
+	// needs it to tell a propagation lag apart from a genuinely missing sibling.
+	const publishedNow = new Map<string, string>();
+
 	if (needsPublish.length === 0) {
-		return { alreadyPublished, processed: 0, errors: 0 };
+		return { alreadyPublished, processed: 0, errors: 0, publishedNow };
 	}
 
 	console.log(`🚀 Phase 2: Publishing ${needsPublish.length} packages (batch size: ${BATCH_SIZE})...\n`);
@@ -982,6 +997,7 @@ async function publishPendingPackages(
 					}
 
 					await publishPackageWithRetry(pkg, config);
+					publishedNow.set(pkg.name, pkg.version);
 					return { result: isUpdate ? "updated" : "created", pkg };
 				} catch (error) {
 					const message = error instanceof Error ? error.message : "Unknown error";
@@ -1029,12 +1045,459 @@ async function publishPendingPackages(
 		}
 	}
 
-	return { alreadyPublished, processed, errors };
+	return { alreadyPublished, processed, errors, publishedNow };
+}
+
+// ---------------------------------------------------------------------------
+// Phase 3: the set that was published must actually install
+// ---------------------------------------------------------------------------
+//
+// THE HOLE THIS FILLS. Phase 2 reports on publishes, one package at a time, and
+// nothing ever asked the question a consumer asks: does the set RESOLVE? On
+// 2026-09-10 it did not. The 4.8.0 sweep publishes in directory order, ~10.8 s
+// per package, 2.14 h end to end (measured on run 34509558730), and every
+// package it publishes declares `^4.8.0` for its siblings. So for two hours the
+// registry held packages demanding a version of `@girs/gjs` that was not there
+// yet, and `npm install @gjsify/cli` answered:
+//
+//     npm error code ETARGET
+//     npm error notarget No matching version found for @girs/gjs@^4.8.0.
+//
+// The run itself was green about this the whole time, and would have ended green.
+//
+// WHY RANGE-BY-RANGE AND NOT `npm install --dry-run`. The install is what a human
+// reaches for, and it was how this was found, but as a gate it checks almost
+// nothing: it only ever exercises the dependency CLOSURE of whatever root package
+// it is pointed at. Measured on this tree — 716 packages, 7637 dependency edges —
+// a root like `@gjsify/cli` pulls in a double-digit handful of them; the other
+// ~690 would go unverified, and the incident would have been caught only because
+// `@girs/gjs` happens to sit in that one closure. It also needs a root package
+// from ANOTHER repository, published AFTER this one, which is a dependency
+// pointing the wrong way down the release train.
+//
+// Asking the registry per range has none of that. It covers every edge, it names
+// the exact dependent, and it is cheaper: the 7637 edges carry only 281 distinct
+// dependency names (280 `@girs/*` siblings plus `typescript`), so the whole
+// question costs 281 packument reads.
+const CONSUMER_DEPENDENCY_FIELDS = ["dependencies", "peerDependencies", "optionalDependencies"] as const;
+
+/**
+ * How long a MISSING-BECAUSE-JUST-PUBLISHED version may stay missing.
+ *
+ * npm is read-after-write inconsistent and not even monotonic about it. Measured
+ * on the incident, comparing what attempt 1 published against what attempt 2's
+ * status check could see 2 minutes later:
+ *
+ *     @girs/glib-2.0      published 18:31:07Z  -> INVISIBLE at 18:33:09Z (>122 s)
+ *     @girs/glibunix-2.0  published 18:31:17Z  -> INVISIBLE at 18:33:09Z (>112 s)
+ *     @girs/glibwin32-2.0 published 18:31:28Z  -> visible
+ *     @girs/gly-2         published 18:31:49Z  -> visible
+ *
+ * Two packages published EARLIER were still hidden while two published later were
+ * already served, so "wait until the last publish is N seconds old" is not a rule
+ * the registry honours. The budget is therefore a per-name poll with a ceiling,
+ * set well above the 122 s actually observed — and it is a CEILING: when it runs
+ * out the run fails.
+ */
+const VERIFY_LAG_BUDGET_SEC = Math.max(0, getEnvInt("NPM_VERIFY_LAG_BUDGET_SEC", 600));
+const VERIFY_LAG_POLL_MS = Math.max(1000, getEnvInt("NPM_VERIFY_LAG_POLL_MS", 15_000));
+
+interface SemVer {
+	major: number;
+	minor: number;
+	patch: number;
+	prerelease: string;
+}
+
+class UnsupportedRangeError extends Error {}
+
+function parseVersion(raw: string): SemVer | null {
+	const m = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?$/.exec(raw.trim());
+	if (!m) return null;
+	return { major: Number(m[1]), minor: Number(m[2]), patch: Number(m[3]), prerelease: m[4] ?? "" };
+}
+
+function comparePrerelease(a: string, b: string): number {
+	// Per semver: a version WITHOUT a prerelease outranks one with.
+	if (a === b) return 0;
+	if (a === "") return 1;
+	if (b === "") return -1;
+	const as = a.split(".");
+	const bs = b.split(".");
+	for (let i = 0; i < Math.max(as.length, bs.length); i++) {
+		const x = as[i];
+		const y = bs[i];
+		if (x === undefined) return -1;
+		if (y === undefined) return 1;
+		const xn = /^\d+$/.test(x);
+		const yn = /^\d+$/.test(y);
+		if (xn && yn) {
+			if (Number(x) !== Number(y)) return Number(x) < Number(y) ? -1 : 1;
+		} else if (xn !== yn) {
+			return xn ? -1 : 1;
+		} else if (x !== y) {
+			return x < y ? -1 : 1;
+		}
+	}
+	return 0;
+}
+
+function compareVersions(a: SemVer, b: SemVer): number {
+	if (a.major !== b.major) return a.major < b.major ? -1 : 1;
+	if (a.minor !== b.minor) return a.minor < b.minor ? -1 : 1;
+	if (a.patch !== b.patch) return a.patch < b.patch ? -1 : 1;
+	return comparePrerelease(a.prerelease, b.prerelease);
+}
+
+/**
+ * Does `version` satisfy `range`?
+ *
+ * A deliberately SMALL subset — `*`, an exact version, `^` and `~` — because that
+ * is what this tree contains: measured across all 716 packages, the 7637
+ * dependency entries use exactly two spellings, `^4.8.0` and `typescript: "*"`.
+ * A dependency-free implementation is worth more here than semver-the-package,
+ * for a reason that is not taste: `sdk-types.yml` runs this publisher on its
+ * dry-run path WITHOUT having run `npm ci` in the release-script directory, so a
+ * runtime import would be a crash on a path nobody exercises before a release.
+ *
+ * Anything outside the subset THROWS rather than returning false or true. A
+ * matcher that silently mishandles a spelling it does not know is a gate that
+ * reports on a question it never asked, and this one exists precisely to stop
+ * that. The generator changing its range spelling should break the release
+ * loudly, once, and be a one-line addition here.
+ */
+function satisfiesRange(version: string, range: string): boolean {
+	const v = parseVersion(version);
+	if (!v) return false;
+
+	const r = range.trim();
+	if (r === "" || r === "*" || r === "x" || r === "X") {
+		// `*` still does not match a prerelease unless one is asked for.
+		return v.prerelease === "";
+	}
+
+	const operator = r.startsWith("^") ? "^" : r.startsWith("~") ? "~" : "=";
+	const base = parseVersion(operator === "=" ? r.replace(/^=/, "") : r.slice(1));
+	if (!base) {
+		throw new UnsupportedRangeError(`unsupported dependency range: ${JSON.stringify(range)}`);
+	}
+
+	// A prerelease candidate only counts when the range names a prerelease on the
+	// same major.minor.patch — npm's rule, and the one that keeps a stray
+	// `4.9.0-beta.1` from satisfying `^4.8.0`.
+	if (v.prerelease !== "") {
+		const sameTuple = v.major === base.major && v.minor === base.minor && v.patch === base.patch;
+		if (base.prerelease === "" || !sameTuple) return false;
+	}
+
+	if (operator === "=") return compareVersions(v, base) === 0;
+	if (compareVersions(v, base) < 0) return false;
+
+	if (operator === "~") {
+		return v.major === base.major && v.minor === base.minor;
+	}
+	// Caret, including the 0.x and 0.0.x narrowings.
+	if (base.major > 0) return v.major === base.major;
+	if (base.minor > 0) return v.major === 0 && v.minor === base.minor;
+	return v.major === 0 && v.minor === 0 && v.patch === base.patch;
+}
+
+/** One `dependent -> dependency@range` edge, kept whole so a failure can name both ends. */
+interface DependencyEdge {
+	from: string;
+	fromVersion: string;
+	dep: string;
+	range: string;
+	field: string;
+}
+
+/**
+ * Why an edge is unsatisfied — the whole point of the check, so it is a pure
+ * function the self-test can drive rather than a branch buried in the polling loop.
+ *
+ * `lag` is the ONLY verdict that earns a retry, and it is earned narrowly: this run
+ * published that exact name at a version that does satisfy the range, so the only
+ * thing missing is the registry catching up with a write we watched succeed.
+ * Everything else is `defect` and fails at once. Without that split, the obvious
+ * "just retry a bit, the registry is slow" turns the one failure this gate exists
+ * to catch — a sibling that is NOT coming, because nothing is going to publish it —
+ * into a ten-minute wait followed by the same red, and teaches everyone reading the
+ * log that the check is flaky.
+ */
+function classifyUnsatisfiedEdge(
+	edge: DependencyEdge,
+	registryVersions: string[],
+	publishedNow: Map<string, string>,
+): "lag" | "defect" {
+	const justPublished = publishedNow.get(edge.dep);
+	if (justPublished === undefined) return "defect";
+	if (registryVersions.includes(justPublished)) return "defect";
+	return satisfiesRange(justPublished, edge.range) ? "lag" : "defect";
+}
+
+/** Ask the registry which versions of `name` it currently serves. `null` = no such package. */
+async function fetchRegistryVersions(name: string, registry: string): Promise<string[] | null> {
+	return await withRetry(
+		async () => {
+			const response = await fetch(getApiUrl(registry, name), {
+				headers: { Accept: "application/json", "User-Agent": "ts-for-gir-release-script/1.0.0" },
+				signal: AbortSignal.timeout(API_TIMEOUT_MS),
+			});
+			if (response.status === 404) return null;
+			if (!response.ok) throw new HttpStatusError(response.status, `Registry responded with ${response.status} for ${name}`);
+			const data = (await response.json()) as { versions?: Record<string, unknown> };
+			return Object.keys(data.versions ?? {});
+		},
+		{
+			label: `verify:${name}`,
+			maxRetries: MAX_RETRIES_STATUS,
+			baseDelayMs: RETRY_BASE_MS,
+			maxDelayMs: RETRY_MAX_MS,
+			shouldRetry: (err) => isHttpStatusError(err) && isRetryableHttpStatus(err.status),
+		},
+	);
+}
+
+function collectDependencyEdges(packages: Package[]): DependencyEdge[] {
+	const edges: DependencyEdge[] = [];
+	for (const pkg of packages) {
+		for (const field of CONSUMER_DEPENDENCY_FIELDS) {
+			// devDependencies are deliberately absent: npm does not install a
+			// published package's devDependencies, so a range there cannot break a
+			// consumer's install. Measured, the only one in this tree is
+			// `typescript: "*"` on all 716 packages — 716 questions nobody asks.
+			for (const [dep, range] of Object.entries(pkg.dependencies[field] ?? {})) {
+				edges.push({ from: pkg.name, fromVersion: pkg.version, dep, range, field });
+			}
+		}
+	}
+	return edges;
+}
+
+/**
+ * Phase 3 proper: every dependency range of every package in the set must resolve
+ * against the registry, or this run is red.
+ */
+async function verifyPublishedSetResolves(
+	packages: Package[],
+	publishedNow: Map<string, string>,
+	config: Config,
+): Promise<void> {
+	console.log("\n🔎 Phase 3: Verifying the published set resolves...");
+
+	const edges = collectDependencyEdges(packages);
+	const depNames = [...new Set(edges.map((e) => e.dep))].sort();
+
+	// ANTI-VACUITY. A check that iterates an empty list is green and has proved
+	// nothing, and this one is downstream of a directory scan and a JSON parse —
+	// both of which can legitimately produce nothing and neither of which would
+	// complain. So the positive facts are asserted, then PRINTED on every run, so
+	// that "it passed" is never separable from "and here is what it looked at".
+	if (packages.length === 0) {
+		throw new Error("Phase 3 has no packages to verify — the sweep found nothing, which cannot be a successful release");
+	}
+	if (edges.length === 0) {
+		throw new Error(
+			`Phase 3 found 0 dependency ranges across ${packages.length} package(s). Every @girs package depends on ` +
+				"its siblings, so zero edges means the manifests were not read, not that there is nothing to check.",
+		);
+	}
+
+	console.log(`   ${packages.length} package(s), ${edges.length} dependency range(s), ${depNames.length} distinct dependencies`);
+
+	// Every distinct range spelling is probed BEFORE the registry is asked anything,
+	// so an unknown one fails here — naming a package that uses it — instead of
+	// deep inside the comparison loop where it would read like a resolution failure.
+	for (const range of new Set(edges.map((e) => e.range))) {
+		const example = edges.find((e) => e.range === range) as DependencyEdge;
+		try {
+			satisfiesRange("0.0.0", range);
+		} catch (error) {
+			if (!(error instanceof UnsupportedRangeError)) throw error;
+			throw new UnsupportedRangeError(
+				`${example.from}@${example.fromVersion} declares ${example.dep}@${range} (${example.field}) — this verifier ` +
+					"cannot evaluate that range spelling. Teach satisfiesRange about it; do not let the release skip the check.",
+			);
+		}
+	}
+
+	const versions = new Map<string, string[] | null>();
+	let fetched = 0;
+	await pMap(
+		depNames,
+		async (name) => {
+			versions.set(name, await fetchRegistryVersions(name, config.registry));
+			fetched++;
+			if (fetched % 50 === 0 || fetched === depNames.length) {
+				console.log(`   Resolved ${fetched}/${depNames.length} dependencies...`);
+			}
+		},
+		STATUS_CONCURRENCY,
+	);
+
+	const unsatisfied = (): DependencyEdge[] =>
+		edges.filter((e) => !(versions.get(e.dep) ?? []).some((v) => satisfiesRange(v, e.range)));
+
+	let broken = unsatisfied();
+
+	// Give the registry the measured propagation lag, but ONLY for names this run
+	// published at a version that satisfies the range. Anything else is already the
+	// answer.
+	const lagDeadline = Date.now() + VERIFY_LAG_BUDGET_SEC * 1000;
+	while (broken.length > 0) {
+		const lagging = new Set(
+			broken.filter((e) => classifyUnsatisfiedEdge(e, versions.get(e.dep) ?? [], publishedNow) === "lag").map((e) => e.dep),
+		);
+		const defects = broken.filter((e) => classifyUnsatisfiedEdge(e, versions.get(e.dep) ?? [], publishedNow) === "defect");
+		if (defects.length > 0 || lagging.size === 0) break;
+		if (Date.now() >= lagDeadline) {
+			console.log(`   ⏱️  lag budget of ${VERIFY_LAG_BUDGET_SEC}s exhausted with ${lagging.size} name(s) still not served`);
+			break;
+		}
+		console.log(
+			`   ⏳ ${lagging.size} just-published name(s) not served yet (${[...lagging].slice(0, 5).join(", ")}` +
+				`${lagging.size > 5 ? ", …" : ""}) — re-asking in ${Math.round(VERIFY_LAG_POLL_MS / 1000)}s`,
+		);
+		await sleep(VERIFY_LAG_POLL_MS);
+		await pMap(
+			[...lagging],
+			async (name) => {
+				versions.set(name, await fetchRegistryVersions(name, config.registry));
+			},
+			STATUS_CONCURRENCY,
+		);
+		broken = unsatisfied();
+	}
+
+	if (broken.length > 0) {
+		const shown = broken.slice(0, 15);
+		const lines = shown.map((e) => {
+			const have = versions.get(e.dep);
+			const latest =
+				have === null || have === undefined ? "NO SUCH PACKAGE" : have.length === 0 ? "no versions" : have.slice(-5).join(", ");
+			return `   ${e.from}@${e.fromVersion} needs ${e.dep}@${e.range} (${e.field}); registry has: ${latest}`;
+		});
+		throw new Error(
+			`the published set does not resolve: ${broken.length} of ${edges.length} dependency range(s) ` +
+				`across ${new Set(broken.map((e) => e.from)).size} package(s) cannot be satisfied.\n` +
+				`${lines.join("\n")}${broken.length > shown.length ? `\n   … and ${broken.length - shown.length} more` : ""}\n` +
+				"A consumer installing this release gets npm ETARGET.",
+		);
+	}
+
+	console.log(`✅ Phase 3: ${edges.length} dependency range(s) over ${packages.length} package(s) all resolve on ${config.registry}\n`);
+}
+
+/**
+ * Always-on self-test of the range matcher and the lag/defect split.
+ *
+ * Same reasoning as the retry classifier above: there is no test runner in this
+ * repository, and a test nothing runs is worse than none. These two decide
+ * whether a release is allowed to be green, so they run every time the script
+ * does and they fail the process rather than warn.
+ *
+ * Vector "the incident" is the 4.8.0 state, verbatim in shape: the tree demands
+ * `^4.8.0` and the registry is still serving 4.7.0.
+ */
+const RANGE_VECTORS: { name: string; version: string; range: string; satisfied: boolean }[] = [
+	{ name: "the incident: ^4.8.0 is not satisfied by 4.7.0", version: "4.7.0", range: "^4.8.0", satisfied: false },
+	{ name: "^4.8.0 is satisfied by 4.8.0", version: "4.8.0", range: "^4.8.0", satisfied: true },
+	{ name: "^4.8.0 is satisfied by a later minor", version: "4.9.1", range: "^4.8.0", satisfied: true },
+	{ name: "^4.8.0 is not satisfied by an earlier patch on the same minor", version: "4.8.0", range: "^4.8.1", satisfied: false },
+	{ name: "^4.8.0 is not satisfied across a major", version: "5.0.0", range: "^4.8.0", satisfied: false },
+	{ name: "* is satisfied by anything released", version: "5.9.3", range: "*", satisfied: true },
+	{ name: "* is not satisfied by a prerelease", version: "5.9.3-beta.1", range: "*", satisfied: false },
+	{ name: "a prerelease does not sneak into a caret range", version: "4.9.0-beta.1", range: "^4.8.0", satisfied: false },
+	{ name: "a prerelease counts when the range names one on the same tuple", version: "4.9.0-beta.2", range: "^4.9.0-beta.1", satisfied: true },
+	{ name: "~ pins the minor", version: "4.9.0", range: "~4.8.0", satisfied: false },
+	{ name: "~ allows a patch", version: "4.8.7", range: "~4.8.0", satisfied: true },
+	{ name: "an exact range is exact", version: "4.8.1", range: "4.8.0", satisfied: false },
+	{ name: "caret on 0.x pins the minor", version: "0.3.0", range: "^0.2.9", satisfied: false },
+	{ name: "caret on 0.0.x pins the patch", version: "0.0.4", range: "^0.0.3", satisfied: false },
+	{ name: "a garbage version satisfies nothing", version: "not-a-version", range: "^4.8.0", satisfied: false },
+];
+
+/** Ranges this matcher must REFUSE rather than guess at. */
+const UNSUPPORTED_RANGES = [">=4.8.0 <5.0.0", "^4.8.0 || ^5.0.0", "workspace:^", "npm:@girs/gjs@^4.8.0", "latest"];
+
+const CLASSIFY_VECTORS: {
+	name: string;
+	edge: DependencyEdge;
+	registryVersions: string[];
+	publishedNow: [string, string][];
+	verdict: "lag" | "defect";
+}[] = [
+	{
+		name: "we published it and the registry has not caught up — lag",
+		edge: { from: "@girs/adw-1", fromVersion: "4.8.0", dep: "@girs/gjs", range: "^4.8.0", field: "dependencies" },
+		registryVersions: ["4.7.0"],
+		publishedNow: [["@girs/gjs", "4.8.0"]],
+		verdict: "lag",
+	},
+	{
+		name: "nobody published it this run — defect, and it must NOT be waited on",
+		edge: { from: "@girs/adw-1", fromVersion: "4.8.0", dep: "@girs/gjs", range: "^4.8.0", field: "dependencies" },
+		registryVersions: ["4.7.0"],
+		publishedNow: [],
+		verdict: "defect",
+	},
+	{
+		name: "what we published does not satisfy the range either — defect",
+		edge: { from: "@girs/adw-1", fromVersion: "4.8.0", dep: "@girs/gjs", range: "^4.8.0", field: "dependencies" },
+		registryVersions: ["4.7.0"],
+		publishedNow: [["@girs/gjs", "4.7.1"]],
+		verdict: "defect",
+	},
+	{
+		name: "the registry already serves what we published, so waiting cannot help — defect",
+		edge: { from: "@girs/adw-1", fromVersion: "4.8.0", dep: "@girs/gjs", range: "^4.9.0", field: "dependencies" },
+		registryVersions: ["4.7.0", "4.8.0"],
+		publishedNow: [["@girs/gjs", "4.8.0"]],
+		verdict: "defect",
+	},
+];
+
+function selfTestResolution(): void {
+	const failures: string[] = [];
+
+	for (const v of RANGE_VECTORS) {
+		let got: boolean | string;
+		try {
+			got = satisfiesRange(v.version, v.range);
+		} catch (error) {
+			got = `threw ${error instanceof Error ? error.message : String(error)}`;
+		}
+		if (got !== v.satisfied) failures.push(`${v.name}: expected ${v.satisfied}, got ${got}`);
+	}
+
+	for (const range of UNSUPPORTED_RANGES) {
+		let threw = false;
+		try {
+			satisfiesRange("4.8.0", range);
+		} catch (error) {
+			threw = error instanceof UnsupportedRangeError;
+		}
+		if (!threw) failures.push(`unsupported range ${JSON.stringify(range)} was answered instead of refused`);
+	}
+
+	for (const v of CLASSIFY_VECTORS) {
+		const got = classifyUnsatisfiedEdge(v.edge, v.registryVersions, new Map(v.publishedNow));
+		if (got !== v.verdict) failures.push(`${v.name}: expected ${v.verdict}, got ${got}`);
+	}
+
+	if (failures.length > 0) {
+		throw new Error(`resolution self-test FAILED:\n  ${failures.join("\n  ")}`);
+	}
+	console.log(
+		`🧪 resolution self-test green — ${RANGE_VECTORS.length} range vector(s), ` +
+			`${UNSUPPORTED_RANGES.length} refusal(s), ${CLASSIFY_VECTORS.length} lag/defect vector(s)`,
+	);
 }
 
 async function main(): Promise<void> {
 	try {
 		selfTestClassifier();
+		selfTestResolution();
 
 		const config = createConfig();
 		assertRunningInCi(config);
@@ -1061,7 +1524,7 @@ async function main(): Promise<void> {
 		const statuses = await checkAllStatuses(packages, config.registry);
 
 		// Phase 2: Publish only what's needed
-		const { alreadyPublished, processed, errors } = await publishPendingPackages(packages, statuses, config);
+		const { alreadyPublished, processed, errors, publishedNow } = await publishPendingPackages(packages, statuses, config);
 
 		// Final summary
 		console.log("📊 Final Summary:");
@@ -1082,6 +1545,15 @@ async function main(): Promise<void> {
 				`${errors} of ${errors + processed} package(s) failed to publish` +
 					(config.continueOnError ? " (--continue-on-error kept the sweep going; the run still failed)" : ""),
 			);
+		}
+
+		// Phase 3 runs only once the sweep is otherwise clean, and it is the LAST word:
+		// "every publish succeeded" and "the result installs" are different claims, and
+		// only the second one is what a release is for.
+		if (config.dryRun) {
+			console.log("\n⏭️  Phase 3 skipped: --dry-run published nothing, so there is no set to verify");
+		} else {
+			await verifyPublishedSetResolves(packages, publishedNow, config);
 		}
 
 		console.log(`✅ ${config.dryRun ? "DRY RUN" : "Processing"} completed successfully`);
