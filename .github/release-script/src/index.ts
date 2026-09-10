@@ -76,6 +76,9 @@ const RETRY_MAX_MS = Math.max(RETRY_BASE_MS, getEnvInt("NPM_RETRY_MAX_MS", 60000
 
 const API_TIMEOUT_MS = 10000;
 
+/** How long a timed-out `npm publish` gets to honour SIGTERM before it is SIGKILLed. */
+const KILL_GRACE_MS = 10_000;
+
 /** Run async tasks with a concurrency limit */
 async function pMap<T, R>(items: T[], fn: (item: T, index: number) => Promise<R>, concurrency: number): Promise<R[]> {
 	const results: R[] = new Array(items.length);
@@ -597,10 +600,6 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 	console.log(`🚀 Publishing ${pkg.name}@${pkg.version}...`);
 
 	return new Promise((resolve, reject) => {
-		const timeoutId = setTimeout(() => {
-			reject(new Error(`Timeout after ${config.timeoutSec}s for ${pkg.name}`));
-		}, config.timeoutSec * 1000);
-
 		// In OIDC mode the token must be ABSENT, not empty — an unset secret still
 		// exports `NODE_AUTH_TOKEN=""` into this process.
 		const env = { ...process.env } as NodeJS.ProcessEnv;
@@ -616,22 +615,84 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 		});
 
 		let stderr = "";
+		let settled = false;
+		let killTimer: NodeJS.Timeout | undefined;
+
+		const clearTimers = (): void => {
+			clearTimeout(timeoutId);
+			if (killTimer) clearTimeout(killTimer);
+		};
+		const settleResolve = (): void => {
+			if (settled) return;
+			settled = true;
+			resolve();
+		};
+		const settleReject = (err: Error): void => {
+			if (settled) return;
+			settled = true;
+			reject(err);
+		};
+
+		// The timeout TERMINATES the attempt; it used to only reject.
+		//
+		// Rejecting left `npm publish` running and nothing else ever killed it. A live
+		// child holds its piped stdio open, those handles keep Node's event loop
+		// referenced, and the process then does not exit when `main()` is done — the
+		// step goes silent with the sweep already finished. Measured against the exact
+		// structure this replaces, a 2 s timeout over a 600 s child: `main()` finished
+		// at 2.0 s, the process was still alive at 25 s.
+		//
+		// BE PRECISE ABOUT WHAT THAT COSTS TODAY, or the next reader deletes this as
+		// paranoia: right now the leak cannot actually hang a run, because a timeout is
+		// not in `isRetryablePublishError`, so every path that produces a live child
+		// also lands in `errors > 0` and exits through `process.exit(1)`, which does not
+		// wait for handles. This is a landmine, not a live defect — and it is armed the
+		// moment someone makes timeouts retryable, which is the obvious next change,
+		// since killing the child is exactly what makes a timed-out publish safe to
+		// retry (npm answers the duplicate with EPUBLISHCONFLICT, which this script
+		// already resolves as already-published).
+		//
+		// `shell: true` puts a shell between us and npm, so SIGTERM reaches the shell
+		// first; the SIGKILL escalation is what reclaims a child wedged in a write or an
+		// unanswered socket read. The escalation timer is `unref`'d so it can never
+		// itself be the handle that keeps the loop alive.
+		const timeoutId = setTimeout(() => {
+			proc.kill("SIGTERM");
+			killTimer = setTimeout(() => proc.kill("SIGKILL"), KILL_GRACE_MS);
+			killTimer.unref();
+			settleReject(
+				new Error(
+					`Timeout after ${config.timeoutSec}s for ${pkg.name}@${pkg.version} — publish killed. ` +
+						"Raise NPM_TIMEOUT_SEC if the package is genuinely slow; otherwise the registry stalled.",
+				),
+			);
+		}, config.timeoutSec * 1000);
 
 		proc.stderr.on("data", (data) => {
 			stderr += data.toString();
 		});
 
+		// npm writes its notices to STDERR — measured 167,468 bytes of stderr against
+		// 28 bytes of stdout for a 6000-file package — so this pipe is near-empty
+		// today. It is drained anyway: an unread pipe is a 64 KiB deadlock waiting for
+		// the release npm decides to say something on stdout, and that deadlock would
+		// present as exactly the silent stall this timeout now has to clean up.
+		proc.stdout.on("data", () => {});
+
 		proc.on("error", (err) => {
-			clearTimeout(timeoutId);
-			reject(new Error(`Spawn error for ${pkg.name}: ${err.message}`));
+			clearTimers();
+			settleReject(new Error(`Spawn error for ${pkg.name}: ${err.message}`));
 		});
 
 		proc.on("exit", (code) => {
-			clearTimeout(timeoutId);
+			clearTimers();
+			// The timeout already decided this attempt; what arrives now is the corpse
+			// of the process it killed, and its exit code says nothing about the publish.
+			if (settled) return;
 
 			if (code === 0) {
 				console.log(`✅ Published ${pkg.name}@${pkg.version}`);
-				resolve();
+				settleResolve();
 				return;
 			}
 
@@ -641,17 +702,17 @@ async function publishPackageOnce(pkg: Package, config: Config): Promise<void> {
 				stderr.includes("Cannot publish over existing version")
 			) {
 				console.log(`⚠️  ${pkg.name}@${pkg.version} already published`);
-				resolve();
+				settleResolve();
 				return;
 			}
 
 			if (stderr.includes("404 Not Found") && stderr.includes("organization")) {
 				const orgName = pkg.name.split("/")[0];
-				reject(new Error(`Organization '${orgName}' not found. Create it at https://www.npmjs.com/org/create`));
+				settleReject(new Error(`Organization '${orgName}' not found. Create it at https://www.npmjs.com/org/create`));
 				return;
 			}
 
-			reject(new Error(`Failed to publish ${pkg.name}: ${stderr.trim() || `exit code ${code}`}`));
+			settleReject(new Error(`Failed to publish ${pkg.name}: ${stderr.trim() || `exit code ${code}`}`));
 		});
 	});
 }
