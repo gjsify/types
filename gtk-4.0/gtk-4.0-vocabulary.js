@@ -1096,6 +1096,8 @@ export const ENUM_VALUES_UNREADABLE = {};
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
 export const FLAG_VALUES = {
+    'GdkGLAPI.gl': 1,
+    'GdkGLAPI.gles': 2,
     'GtkApplicationInhibitFlags.idle': 8,
     'GtkApplicationInhibitFlags.logout': 1,
     'GtkApplicationInhibitFlags.suspend': 4,
@@ -1223,6 +1225,90 @@ export const FLAG_VALUES = {
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
 // so this is the table that shape actually reaches.
 export const FLAG_VALUES_UNREADABLE = {};
+
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {
+    'GtkAboutDialog.license-type': 'GtkLicense',
+    'GtkAccessible.accessible-role': 'GtkAccessibleRole',
+    'GtkBox.baseline-position': 'GtkBaselinePosition',
+    'GtkCenterBox.baseline-position': 'GtkBaselinePosition',
+    'GtkColumnView.tab-behavior': 'GtkListTabBehavior',
+    'GtkComboBox.button-sensitivity': 'GtkSensitivityType',
+    'GtkDropDown.search-match-mode': 'GtkStringFilterMatchMode',
+    'GtkEntry.input-hints': 'GtkInputHints',
+    'GtkEntry.input-purpose': 'GtkInputPurpose',
+    'GtkFileChooser.action': 'GtkFileChooserAction',
+    'GtkFlowBox.selection-mode': 'GtkSelectionMode',
+    'GtkFontChooser.level': 'GtkFontChooserLevel',
+    'GtkFontDialogButton.level': 'GtkFontLevel',
+    'GtkGLArea.allowed-apis': 'GdkGLAPI',
+    'GtkGraphicsOffload.enabled': 'GtkGraphicsOffloadEnabled',
+    'GtkGridView.tab-behavior': 'GtkListTabBehavior',
+    'GtkIconView.item-orientation': 'GtkOrientation',
+    'GtkIconView.selection-mode': 'GtkSelectionMode',
+    'GtkImage.icon-size': 'GtkIconSize',
+    'GtkInfoBar.message-type': 'GtkMessageType',
+    'GtkInscription.text-overflow': 'GtkInscriptionOverflow',
+    'GtkInscription.wrap-mode': 'PangoWrapMode',
+    'GtkLabel.ellipsize': 'PangoEllipsizeMode',
+    'GtkLabel.justify': 'GtkJustification',
+    'GtkLabel.natural-wrap-mode': 'GtkNaturalWrapMode',
+    'GtkLabel.wrap-mode': 'PangoWrapMode',
+    'GtkLevelBar.mode': 'GtkLevelBarMode',
+    'GtkListBase.orientation': 'GtkOrientation',
+    'GtkListBox.selection-mode': 'GtkSelectionMode',
+    'GtkListBox.tab-behavior': 'GtkListTabBehavior',
+    'GtkListView.tab-behavior': 'GtkListTabBehavior',
+    'GtkMenuButton.direction': 'GtkArrowType',
+    'GtkMessageDialog.buttons': 'GtkButtonsType',
+    'GtkMessageDialog.message-type': 'GtkMessageType',
+    'GtkNotebook.tab-pos': 'GtkPositionType',
+    'GtkOrientable.orientation': 'GtkOrientation',
+    'GtkPicture.content-fit': 'GtkContentFit',
+    'GtkPopover.position': 'GtkPositionType',
+    'GtkPopoverMenu.flags': 'GtkPopoverMenuFlags',
+    'GtkPrintUnixDialog.manual-capabilities': 'GtkPrintCapabilities',
+    'GtkProgressBar.ellipsize': 'PangoEllipsizeMode',
+    'GtkRevealer.transition-type': 'GtkRevealerTransitionType',
+    'GtkScale.value-pos': 'GtkPositionType',
+    'GtkScrollable.hscroll-policy': 'GtkScrollablePolicy',
+    'GtkScrollable.vscroll-policy': 'GtkScrollablePolicy',
+    'GtkScrolledWindow.hscrollbar-policy': 'GtkPolicyType',
+    'GtkScrolledWindow.vscrollbar-policy': 'GtkPolicyType',
+    'GtkScrolledWindow.window-placement': 'GtkCornerType',
+    'GtkSearchEntry.input-hints': 'GtkInputHints',
+    'GtkSearchEntry.input-purpose': 'GtkInputPurpose',
+    'GtkShortcutsShortcut.direction': 'GtkTextDirection',
+    'GtkShortcutsShortcut.shortcut-type': 'GtkShortcutType',
+    'GtkSpinButton.update-policy': 'GtkSpinButtonUpdatePolicy',
+    'GtkStack.transition-type': 'GtkStackTransitionType',
+    'GtkText.input-hints': 'GtkInputHints',
+    'GtkText.input-purpose': 'GtkInputPurpose',
+    'GtkTextView.input-hints': 'GtkInputHints',
+    'GtkTextView.input-purpose': 'GtkInputPurpose',
+    'GtkTextView.justification': 'GtkJustification',
+    'GtkTextView.wrap-mode': 'GtkWrapMode',
+    'GtkTreeView.enable-grid-lines': 'GtkTreeViewGridLines',
+    'GtkVideo.graphics-offload': 'GtkGraphicsOffloadEnabled',
+    'GtkWidget.halign': 'GtkAlign',
+    'GtkWidget.overflow': 'GtkOverflow',
+    'GtkWidget.valign': 'GtkAlign',
+    'GtkWindow.gravity': 'GtkWindowGravity',
+    'GtkWindowControls.side': 'GtkPackType',
+};
 
 export const SLOT_CANDIDATES = {
     GtkActionBar: {

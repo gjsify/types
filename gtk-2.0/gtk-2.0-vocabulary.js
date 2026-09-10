@@ -900,6 +900,28 @@ export const ENUM_VALUES_UNREADABLE = {};
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
 export const FLAG_VALUES = {
+    'GdkEventMask.all-events-mask': 4194302,
+    'GdkEventMask.button-motion-mask': 16,
+    'GdkEventMask.button-press-mask': 256,
+    'GdkEventMask.button-release-mask': 512,
+    'GdkEventMask.button1-motion-mask': 32,
+    'GdkEventMask.button2-motion-mask': 64,
+    'GdkEventMask.button3-motion-mask': 128,
+    'GdkEventMask.enter-notify-mask': 4096,
+    'GdkEventMask.exposure-mask': 2,
+    'GdkEventMask.focus-change-mask': 16384,
+    'GdkEventMask.key-press-mask': 1024,
+    'GdkEventMask.key-release-mask': 2048,
+    'GdkEventMask.leave-notify-mask': 8192,
+    'GdkEventMask.pointer-motion-hint-mask': 8,
+    'GdkEventMask.pointer-motion-mask': 4,
+    'GdkEventMask.property-change-mask': 65536,
+    'GdkEventMask.proximity-in-mask': 262144,
+    'GdkEventMask.proximity-out-mask': 524288,
+    'GdkEventMask.scroll-mask': 2097152,
+    'GdkEventMask.structure-mask': 32768,
+    'GdkEventMask.substructure-mask': 1048576,
+    'GdkEventMask.visibility-notify-mask': 131072,
     'GtkAccelFlags.locked': 2,
     'GtkAccelFlags.mask': 7,
     'GtkAccelFlags.visible': 1,
@@ -1033,6 +1055,88 @@ export const FLAG_VALUES = {
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
 // so this is the table that shape actually reaches.
 export const FLAG_VALUES_UNREADABLE = {};
+
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {
+    'GtkArrow.arrow-type': 'GtkArrowType',
+    'GtkArrow.shadow-type': 'GtkShadowType',
+    'GtkButton.image-position': 'GtkPositionType',
+    'GtkButton.relief': 'GtkReliefStyle',
+    'GtkButtonBox.layout-style': 'GtkButtonBoxStyle',
+    'GtkCList.selection-mode': 'GtkSelectionMode',
+    'GtkCList.shadow-type': 'GtkShadowType',
+    'GtkCList.sort-type': 'GtkSortType',
+    'GtkCTree.expander-style': 'GtkCTreeExpanderStyle',
+    'GtkCTree.line-style': 'GtkCTreeLineStyle',
+    'GtkComboBox.button-sensitivity': 'GtkSensitivityType',
+    'GtkContainer.resize-mode': 'GtkResizeMode',
+    'GtkCurve.curve-type': 'GtkCurveType',
+    'GtkEntry.shadow-type': 'GtkShadowType',
+    'GtkFileChooser.action': 'GtkFileChooserAction',
+    'GtkFrame.shadow': 'GtkShadowType',
+    'GtkFrame.shadow-type': 'GtkShadowType',
+    'GtkHandleBox.handle-position': 'GtkPositionType',
+    'GtkHandleBox.shadow': 'GtkShadowType',
+    'GtkHandleBox.shadow-type': 'GtkShadowType',
+    'GtkHandleBox.snap-edge': 'GtkPositionType',
+    'GtkIconView.item-orientation': 'GtkOrientation',
+    'GtkIconView.orientation': 'GtkOrientation',
+    'GtkIconView.selection-mode': 'GtkSelectionMode',
+    'GtkInfoBar.message-type': 'GtkMessageType',
+    'GtkLabel.ellipsize': 'PangoEllipsizeMode',
+    'GtkLabel.justify': 'GtkJustification',
+    'GtkLabel.wrap-mode': 'PangoWrapMode',
+    'GtkList.selection-mode': 'GtkSelectionMode',
+    'GtkMenuBar.child-pack-direction': 'GtkPackDirection',
+    'GtkMenuBar.pack-direction': 'GtkPackDirection',
+    'GtkMessageDialog.buttons': 'GtkButtonsType',
+    'GtkMessageDialog.message-type': 'GtkMessageType',
+    'GtkNotebook.tab-pos': 'GtkPositionType',
+    'GtkOrientable.orientation': 'GtkOrientation',
+    'GtkProgressBar.bar-style': 'GtkProgressBarStyle',
+    'GtkProgressBar.ellipsize': 'PangoEllipsizeMode',
+    'GtkProgressBar.orientation': 'GtkProgressBarOrientation',
+    'GtkRange.lower-stepper-sensitivity': 'GtkSensitivityType',
+    'GtkRange.update-policy': 'GtkUpdateType',
+    'GtkRange.upper-stepper-sensitivity': 'GtkSensitivityType',
+    'GtkRecentChooser.sort-type': 'GtkRecentSortType',
+    'GtkRuler.metric': 'GtkMetricType',
+    'GtkScale.value-pos': 'GtkPositionType',
+    'GtkScaleButton.size': 'GtkIconSize',
+    'GtkScrolledWindow.hscrollbar-policy': 'GtkPolicyType',
+    'GtkScrolledWindow.shadow-type': 'GtkShadowType',
+    'GtkScrolledWindow.vscrollbar-policy': 'GtkPolicyType',
+    'GtkScrolledWindow.window-placement': 'GtkCornerType',
+    'GtkSpinButton.update-policy': 'GtkSpinButtonUpdatePolicy',
+    'GtkTextView.justification': 'GtkJustification',
+    'GtkTextView.wrap-mode': 'GtkWrapMode',
+    'GtkToolItemGroup.ellipsize': 'PangoEllipsizeMode',
+    'GtkToolItemGroup.header-relief': 'GtkReliefStyle',
+    'GtkToolPalette.icon-size': 'GtkIconSize',
+    'GtkToolPalette.toolbar-style': 'GtkToolbarStyle',
+    'GtkToolbar.toolbar-style': 'GtkToolbarStyle',
+    'GtkTreeView.enable-grid-lines': 'GtkTreeViewGridLines',
+    'GtkViewport.shadow-type': 'GtkShadowType',
+    'GtkWidget.events': 'GdkEventMask',
+    'GtkWidget.extension-events': 'GdkExtensionMode',
+    'GtkWindow.gravity': 'GdkGravity',
+    'GtkWindow.type': 'GtkWindowType',
+    'GtkWindow.type-hint': 'GdkWindowTypeHint',
+    'GtkWindow.window-position': 'GtkWindowPosition',
+};
 
 export const SLOT_CANDIDATES = {
     GtkAccelLabel: {

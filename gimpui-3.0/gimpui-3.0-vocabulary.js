@@ -275,12 +275,77 @@ export const ENUM_VALUES_UNREADABLE = {};
 //
 // A table of its own rather than more rows in `ENUM_VALUES`, so that "every nick in
 // `ENUM_NICKS` has a number or a declared reason" stays a claim about one set.
-export const FLAG_VALUES = {};
+export const FLAG_VALUES = {
+    'GdkModifierType.button1-mask': 256,
+    'GdkModifierType.button2-mask': 512,
+    'GdkModifierType.button3-mask': 1024,
+    'GdkModifierType.button4-mask': 2048,
+    'GdkModifierType.button5-mask': 4096,
+    'GdkModifierType.control-mask': 4,
+    'GdkModifierType.hyper-mask': 134217728,
+    'GdkModifierType.lock-mask': 2,
+    'GdkModifierType.meta-mask': 268435456,
+    'GdkModifierType.mod1-mask': 8,
+    'GdkModifierType.mod2-mask': 16,
+    'GdkModifierType.mod3-mask': 32,
+    'GdkModifierType.mod4-mask': 64,
+    'GdkModifierType.mod5-mask': 128,
+    'GdkModifierType.modifier-mask': 1543512063,
+    'GdkModifierType.modifier-reserved-13-mask': 8192,
+    'GdkModifierType.modifier-reserved-14-mask': 16384,
+    'GdkModifierType.modifier-reserved-15-mask': 32768,
+    'GdkModifierType.modifier-reserved-16-mask': 65536,
+    'GdkModifierType.modifier-reserved-17-mask': 131072,
+    'GdkModifierType.modifier-reserved-18-mask': 262144,
+    'GdkModifierType.modifier-reserved-19-mask': 524288,
+    'GdkModifierType.modifier-reserved-20-mask': 1048576,
+    'GdkModifierType.modifier-reserved-21-mask': 2097152,
+    'GdkModifierType.modifier-reserved-22-mask': 4194304,
+    'GdkModifierType.modifier-reserved-23-mask': 8388608,
+    'GdkModifierType.modifier-reserved-24-mask': 16777216,
+    'GdkModifierType.modifier-reserved-25-mask': 33554432,
+    'GdkModifierType.modifier-reserved-29-mask': 536870912,
+    'GdkModifierType.release-mask': 1073741824,
+    'GdkModifierType.shift-mask': 1,
+    'GdkModifierType.super-mask': 67108864,
+};
 
 // The same declared remainder for the bitfields. Every one of the 13 members in ts-for-gir's
 // `girs/` whose value is past `Number.MAX_SAFE_INTEGER` is a bitfield member (Fwupd, Qmi),
 // so this is the table that shape actually reaches.
 export const FLAG_VALUES_UNREADABLE = {};
+
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {
+    'GimpChainButton.icon-size': 'GtkIconSize',
+    'GimpChainButton.position': 'GimpChainPosition',
+    'GimpColorArea.drag-mask': 'GdkModifierType',
+    'GimpColorArea.type': 'GimpColorAreaType',
+    'GimpColorButton.type': 'GimpColorAreaType',
+    'GimpColorScale.channel': 'GimpColorSelectorChannel',
+    'GimpFileChooser.action': 'GimpFileChooserAction',
+    'GimpIntComboBox.ellipsize': 'PangoEllipsizeMode',
+    'GimpIntComboBox.layout': 'GimpIntComboBoxLayout',
+    'GimpNumberPairEntry.aspect': 'GimpAspectType',
+    'GimpPageSelector.target': 'GimpPageSelectorTarget',
+    'GimpPreviewArea.check-size': 'GimpCheckSize',
+    'GimpPreviewArea.check-type': 'GimpCheckType',
+    'GimpRuler.orientation': 'GtkOrientation',
+    'GimpStringComboBox.ellipsize': 'PangoEllipsizeMode',
+};
 
 export const SLOT_CANDIDATES = {
     GimpBrowser: {

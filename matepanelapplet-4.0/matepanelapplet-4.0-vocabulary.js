@@ -109,6 +109,22 @@ export const FLAG_VALUES = {
 // so this is the table that shape actually reaches.
 export const FLAG_VALUES_UNREADABLE = {};
 
+// Declaration GType + property name -> the GType of that property's enum or bitfield.
+//
+// Without it the value tables above are half an answer. A host with no GI knows it must set
+// `orientation` to the number behind the nick `vertical`; `ENUM_VALUES` is keyed
+// `GtkOrientation.vertical`, and nothing else says that `orientation` is a
+// `GtkOrientation`. Deriving it is not available: `never` is a member of several Gtk enums,
+// and choosing between them produces a wrong number rather than a missing one.
+//
+// Only where the property's OWN type is the enum. An array of them and a union that mentions
+// one are both entries a consumer would resolve wrongly, so neither is written.
+//
+// A GType named here has numbers in SOME vocabulary, not necessarily this one: the namespace
+// that OWNS an enum publishes it, so 57 of the 438 entries a full run emits want the owner's
+// vocabulary loaded too. Owners that emit none (Gdk, Pango) are inlined into the tables above.
+export const PROP_ENUMS = {};
+
 export const SLOT_CANDIDATES = {
     MatePanelApplet: {
         'background': 'set_background_widget',
