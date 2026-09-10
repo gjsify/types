@@ -1275,6 +1275,38 @@ function collectDependencyEdges(packages: Package[]): DependencyEdge[] {
 }
 
 /**
+ * Confirm "this set has no dependencies" against the raw manifests.
+ *
+ * Deliberately does NOT reuse `Package.dependencies` or `collectDependencyEdges`:
+ * a claim of emptiness checked by the code that produced it confirms nothing. This
+ * re-reads each package.json and counts entries across all four dependency fields,
+ * devDependencies included, because the question here is not "what would a consumer
+ * install" but "did we actually read these files".
+ */
+async function assertNoDependenciesOnDisk(packages: Package[]): Promise<void> {
+	const fields = ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"];
+	const offenders: string[] = [];
+
+	for (const pkg of packages) {
+		const raw = JSON.parse(await readFile(join(pkg.rootFolder, "package.json"), "utf-8")) as Record<string, unknown>;
+		for (const field of fields) {
+			const value = raw[field];
+			if (value && typeof value === "object" && Object.keys(value).length > 0) {
+				offenders.push(`${pkg.name} has ${Object.keys(value).length} ${field}`);
+			}
+		}
+	}
+
+	if (offenders.length > 0) {
+		throw new Error(
+			`Phase 3 collected 0 dependency ranges, but the manifests on disk disagree: ${offenders.slice(0, 5).join("; ")}` +
+				`${offenders.length > 5 ? ` (and ${offenders.length - 5} more)` : ""}. The edge collector is broken — ` +
+				"a release must not pass by having looked at nothing.",
+		);
+	}
+}
+
+/**
  * Phase 3 proper: every dependency range of every package in the set must resolve
  * against the registry, or this run is red.
  */
@@ -1297,10 +1329,24 @@ async function verifyPublishedSetResolves(
 		throw new Error("Phase 3 has no packages to verify — the sweep found nothing, which cannot be a successful release");
 	}
 	if (edges.length === 0) {
-		throw new Error(
-			`Phase 3 found 0 dependency ranges across ${packages.length} package(s). Every @girs package depends on ` +
-				"its siblings, so zero edges means the manifests were not read, not that there is nothing to check.",
+		// Zero edges is a LEGITIMATE shape here, and nearly was a self-inflicted
+		// outage: `sdk-types.yml` runs this same publisher with `--root sdk` over a
+		// single self-contained channel bundle, and those declare no dependencies at
+		// all — measured on @girs/sdk-gnome-50@4.8.0, which has 458 export subpaths
+		// and not one dependency field. A flat `edges === 0 -> throw` would have
+		// turned every SDK channel publish red.
+		//
+		// But zero edges is ALSO what a broken collector looks like, and that is the
+		// vacuity this phase exists to refuse. So the claim is confirmed against the
+		// manifests on disk, by a different path than the one that produced it: if any
+		// manifest actually carries a dependency entry, the collector is wrong and the
+		// release stops.
+		await assertNoDependenciesOnDisk(packages);
+		console.log(
+			`✅ Phase 3: ${packages.length} package(s) declare no dependencies at all — confirmed against the manifests ` +
+				"on disk. Nothing to resolve.\n",
 		);
+		return;
 	}
 
 	console.log(`   ${packages.length} package(s), ${edges.length} dependency range(s), ${depNames.length} distinct dependencies`);
