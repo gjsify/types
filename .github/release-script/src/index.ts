@@ -79,6 +79,18 @@ const API_TIMEOUT_MS = 10000;
 /** How long a timed-out `npm publish` gets to honour SIGTERM before it is SIGKILLed. */
 const KILL_GRACE_MS = 10_000;
 
+/**
+ * Wall-clock budget for the whole sweep, after which the run FAILS BY NAME.
+ *
+ * The job's `timeout-minutes` is the only other bound, and a job killed by it
+ * says "The job running on runner … has exceeded the maximum execution time" —
+ * which names the runner, not the package the sweep was on. The default sits
+ * under release.yml's 360 minutes on purpose, so this message is the one a human
+ * reads. Measured for scale: the 4.8.0 sweep published 716 packages at 10.78 s
+ * each, 2.14 h end to end.
+ */
+const DEADLINE_MIN = Math.max(0, getEnvInt("NPM_DEADLINE_MIN", 300));
+
 /** Run async tasks with a concurrency limit */
 async function pMap<T, R>(items: T[], fn: (item: T, index: number) => Promise<R>, concurrency: number): Promise<R[]> {
 	const results: R[] = new Array(items.length);
@@ -98,6 +110,14 @@ async function pMap<T, R>(items: T[], fn: (item: T, index: number) => Promise<R>
 
 function sleep(ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function formatDuration(seconds: number): string {
+	const s = Math.max(0, Math.round(seconds));
+	if (s < 60) return `${s}s`;
+	const m = Math.floor(s / 60);
+	if (m < 60) return `${m}m${String(s % 60).padStart(2, "0")}s`;
+	return `${Math.floor(m / 60)}h${String(m % 60).padStart(2, "0")}m`;
 }
 
 function calcBackoffMs(attempt: number, baseMs: number, maxMs: number): number {
@@ -929,8 +949,22 @@ async function publishPendingPackages(
 
 	let processed = 0;
 	let errors = 0;
+	const startedAt = Date.now();
+	const deadlineAt = DEADLINE_MIN > 0 ? startedAt + DEADLINE_MIN * 60_000 : undefined;
 
 	for (let i = 0; i < needsPublish.length; i += BATCH_SIZE) {
+		// Checked between batches rather than only at the end: a sweep that will not
+		// finish should say so while it still has a runner to say it on. This is fatal
+		// even under `--continue-on-error`, which governs a failing PACKAGE, not a run
+		// that has stopped fitting in its job.
+		if (deadlineAt !== undefined && Date.now() > deadlineAt) {
+			throw new Error(
+				`sweep deadline of ${DEADLINE_MIN} min reached with ${needsPublish.length - i} of ` +
+					`${needsPublish.length} package(s) unpublished (published: ${processed}, errors: ${errors}). ` +
+					"Raise NPM_DEADLINE_MIN, or find why the registry got slow.",
+			);
+		}
+
 		const batch = needsPublish.slice(i, i + BATCH_SIZE);
 		const batchNum = Math.floor(i / BATCH_SIZE) + 1;
 		const totalBatches = Math.ceil(needsPublish.length / BATCH_SIZE);
@@ -976,9 +1010,17 @@ async function publishPendingPackages(
 			}
 		}
 
+		// Elapsed and ETA on every batch line, because the run-level `updatedAt` GitHub
+		// exposes does NOT advance while a job streams logs — from the API a sweep that
+		// is working looks exactly like one that is wedged. That reading is what got the
+		// 4.8.0 release cancelled at 38 % while it was publishing normally.
 		const progress = (((i + BATCH_SIZE) / needsPublish.length) * 100).toFixed(1);
+		const elapsedS = (Date.now() - startedAt) / 1000;
+		const done = i + batch.length;
+		const etaS = done > 0 ? (elapsedS / done) * (needsPublish.length - done) : 0;
 		console.log(
-			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Processed: ${processed}, Errors: ${errors}\n`,
+			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Processed: ${processed}, Errors: ${errors}` +
+				` - elapsed ${formatDuration(elapsedS)}, ETA ${formatDuration(etaS)}\n`,
 		);
 
 		// Delay between batches (not after the last one)
