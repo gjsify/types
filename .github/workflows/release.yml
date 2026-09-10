@@ -23,6 +23,12 @@ env:
   NPM_RETRY_BASE_MS: 5000
   NPM_RETRY_MAX_MS: 300000
   NPM_TIMEOUT_SEC: 600
+  # The sweep's own wall-clock budget, deliberately UNDER `timeout-minutes: 360`
+  # below. A job killed by `timeout-minutes` reports that the runner exceeded its
+  # maximum execution time — it names the runner, not the package the sweep was
+  # on. Crossing this first means the failure is the publisher's to explain.
+  # Measured for scale: the 4.8.0 sweep did 716 packages at 10.78 s each, 2.14 h.
+  NPM_DEADLINE_MIN: 300
 
 jobs:
   release:
@@ -79,7 +85,12 @@ jobs:
       # Without one: OIDC, via `id-token: write` above and the `registry-url`
       # npmrc setup-node wrote. An unset secret makes this an EMPTY string, which
       # both npm and the script read as no token at all.
-      - name: Publish
+      # Publishes, and then VERIFIES: the script's Phase 3 asks the registry whether
+      # every dependency range of every package it just published resolves. Without
+      # it this step reports on publish calls only, which is how the 4.8.0 release
+      # (run 34509558730) was green for two hours over a set that answered
+      # `npm error code ETARGET / No matching version found for @girs/gjs@^4.8.0`.
+      - name: Publish and verify the set resolves
         run: node --experimental-specifier-resolution=node --experimental-strip-types --experimental-transform-types --no-warnings ./.github/release-script/src/index.ts --continue-on-error
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
