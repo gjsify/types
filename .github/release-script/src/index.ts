@@ -7,6 +7,7 @@ import { satisfies } from "semver";
 import {
 	type ClosureGap,
 	closureGaps,
+	classifyGap,
 	describeGap,
 	planPublishOrder,
 	type PublishGroup,
@@ -973,14 +974,18 @@ class LiveRegistry implements RegistryView {
 }
 
 /**
- * How long a gap may be blamed on registry lag before it is called an ordering defect.
+ * How long to keep re-asking before recording a gap as "published, not readable yet".
  *
- * A package this process uploaded is not instantly visible to every read replica, so the first
- * look after a publish can legitimately answer "not there". That window is seconds. Waiting
- * longer than this would turn the gate's whole purpose — being red DURING the window — into a
- * slow green, so the budget is bounded and small.
+ * This budget buys NOTHING for correctness, and it is important to know why: whether a gap is an
+ * ordering defect is decided by the PLAN (`classifyGap`), not by how long the registry is asked.
+ * A defect is fatal on the first look; waiting cannot change the verdict either way.
+ *
+ * What it buys is quiet — a gap that resolves inside the window never reaches the log. That is
+ * worth a few seconds and no more. It was 60s, and the v5.0.0 sweep spent roughly an hour of its
+ * two hours sitting in this loop over 76 gaps that were all lag: 19.2 s per package against the
+ * 10.7 s of the release before it.
  */
-const CLOSURE_LAG_BUDGET_MS = Math.max(0, getEnvInt("NPM_CLOSURE_LAG_MS", 60_000));
+const CLOSURE_LAG_BUDGET_MS = Math.max(0, getEnvInt("NPM_CLOSURE_LAG_MS", 15_000));
 const CLOSURE_LAG_STEP_MS = Math.max(250, getEnvInt("NPM_CLOSURE_LAG_STEP_MS", 5_000));
 
 /**
@@ -1010,17 +1015,28 @@ async function verifyGroupClosure(
 	}
 
 	for (const gap of gaps) {
-		// A GitHub annotation, so the failure is visible at the moment it happens rather than only
-		// in the 700-package log tail. The message names the package AND the repository, which is
-		// what `npm error notarget No matching version found for @girs/pango-1.0@^4.9.0` does not.
-		console.log(`::error title=Incomplete closure::${describeGap(gap)}`);
-		const plannedAt = plannedGroupOf.get(gap.dependency);
-		if (plannedAt !== undefined && plannedAt > group.index) {
+		const verdict = classifyGap(gap, plannedGroupOf, group.index);
+		if (verdict === "ordering-defect") {
+			// A GitHub annotation, so the failure is visible at the moment it happens rather than
+			// only in the 700-package log tail. The message names the package AND the repository,
+			// which `npm error notarget No matching version found for @girs/pango-1.0@^4.9.0` does not.
+			console.log(`::error title=Incomplete closure::${describeGap(gap)}`);
+			const plannedAt = plannedGroupOf.get(gap.dependency);
 			throw new Error(
 				`publish plan is wrong: ${gap.package} (group ${group.index}) needs ${gap.dependency}, ` +
 					`which this run does not publish until group ${plannedAt}. Stopping rather than widening the window.`,
 			);
 		}
+		if (verdict === "not-in-release") {
+			console.log(`::error title=Incomplete closure::${describeGap(gap)}`);
+			throw new Error(
+				`${gap.package} needs ${gap.dependency}, which this release does not publish at all — ` +
+					`no amount of waiting produces it, and every consumer gets npm error notarget.`,
+			);
+		}
+		// Lag: this run published it in an earlier or the same group. A notice, not an error —
+		// the set is right and the replica is behind. Phase 3 is what proves the end state.
+		console.log(`::notice title=Not visible yet::${describeGap(gap)} (published earlier in this run)`);
 	}
 
 	return gaps;
@@ -1032,7 +1048,7 @@ async function publishPendingPackages(
 	statuses: Map<string, PackageStatus>,
 	config: Config,
 	registry: LiveRegistry,
-): Promise<{ alreadyPublished: number; processed: number; errors: number; published: Package[] }> {
+): Promise<{ alreadyPublished: number; processed: number; publishErrors: number; unresolved: number; published: Package[] }> {
 	// The plan is built over the WHOLE set, not over the subset that needs publishing. A package
 	// that is already on the registry is still a dependency, and leaving it out of the graph would
 	// make the remaining order look like it had no constraints.
@@ -1062,13 +1078,16 @@ async function publishPendingPackages(
 	console.log(`📊 ${alreadyPublished} already published, ${pendingCount} to publish\n`);
 
 	if (pendingCount === 0) {
-		return { alreadyPublished, processed: 0, errors: 0, published: [] };
+		return { alreadyPublished, processed: 0, publishErrors: 0, unresolved: 0, published: [] };
 	}
 
 	console.log(`🚀 Phase 2: Publishing ${pendingCount} packages in plan order (batch size: ${BATCH_SIZE})...\n`);
 
 	let processed = 0;
-	let errors = 0;
+	// A failed PUBLISH and a closure not yet readable are different facts with different
+	// remedies. One counter for both is what printed "76 of 792 package(s) failed to publish"
+	let publishErrors = 0;
+	let unresolved = 0;
 	const published: Package[] = [];
 
 	for (let i = 0; i < pendingGroups.length; ) {
@@ -1105,7 +1124,7 @@ async function publishPendingPackages(
 		const failed: BatchResult[] = [];
 		for (const result of batchResults) {
 			if (result.result === "error") {
-				errors++;
+				publishErrors++;
 				failed.push(result);
 				continue;
 			}
@@ -1125,25 +1144,20 @@ async function publishPendingPackages(
 		// and the check would be red on every unreleased version — it is skipped, and said so.
 		if (!config.dryRun) {
 			for (const group of run) {
-				const gaps = await verifyGroupClosure(group, registry, plannedGroupOf);
-				if (gaps.length > 0) {
-					errors += gaps.length;
-					if (!config.continueOnError) {
-						throw new Error(`group ${group.index} published with an incomplete closure: ${describeGap(gaps[0])}`);
-					}
-				}
+				// Anything fatal already threw inside. What comes back is lag: published, not yet readable.
+				unresolved += (await verifyGroupClosure(group, registry, plannedGroupOf)).length;
 			}
 		}
 
-		const progress = ((processed + errors) / pendingCount * 100).toFixed(1);
-		console.log(`✅ ${progress}% - Processed: ${processed}, Errors: ${errors}\n`);
+		const progress = (((processed + publishErrors) / pendingCount) * 100).toFixed(1);
+		console.log(`✅ ${progress}% - Processed: ${processed}, Errors: ${publishErrors}\n`);
 
 		if (i < pendingGroups.length && BATCH_DELAY_MS > 0) {
 			await sleep(BATCH_DELAY_MS);
 		}
 	}
 
-	return { alreadyPublished, processed, errors, published };
+	return { alreadyPublished, processed, publishErrors, unresolved, published };
 }
 
 /**
@@ -1160,6 +1174,11 @@ async function publishPendingPackages(
  * Measured cost for the full 716-package set on a cold cache: 5.5 minutes, 225 MB unpacked.
  * Against a two-hour sweep that is the cheapest proof available that the release is installable.
  */
+/** npm's vocabulary for "that version is not there (yet)", as opposed to a broken artifact. */
+const RESOLUTION_MISS = /ETARGET|E404|notarget|No matching version/i;
+const INSTALL_ATTEMPTS = Math.max(1, getEnvInt("NPM_INSTALL_ATTEMPTS", 4));
+const INSTALL_RETRY_MS = Math.max(1_000, getEnvInt("NPM_INSTALL_RETRY_MS", 60_000));
+
 async function verifyInstallableClosure(packages: Package[], config: Config): Promise<void> {
 	if (config.dryRun || packages.length === 0) return;
 
@@ -1167,6 +1186,7 @@ async function verifyInstallableClosure(packages: Package[], config: Config): Pr
 	console.log(`\n🔎 Phase 3: resolving the published set from an empty directory (${packages.length} roots)…`);
 
 	try {
+		for (let attempt = 1; attempt <= INSTALL_ATTEMPTS; attempt++) {
 		await writeFile(
 			join(dir, "package.json"),
 			JSON.stringify(
@@ -1192,11 +1212,25 @@ async function verifyInstallableClosure(packages: Package[], config: Config): Pr
 		);
 
 		if (code !== 0) {
+			// A resolution miss right after a publish is the registry, not the release. Measured on
+			// v5.0.0: `@girs/matekbd-1.0` was readable 4m12s after its own publish returned success,
+			// and three SDK channels were published cleanly and then reported uninstallable by this
+			// very probe, seconds later. Retry a bounded number of times before believing it —
+			// anything else, and any miss that outlives the budget, still fails.
+			if (RESOLUTION_MISS.test(output) && attempt < INSTALL_ATTEMPTS) {
+				console.log(
+					`⏳ not resolvable yet (attempt ${attempt}/${INSTALL_ATTEMPTS}), waiting ${INSTALL_RETRY_MS / 1000}s…`,
+				);
+				await sleep(INSTALL_RETRY_MS);
+				continue;
+			}
 			// npm's own words, because they are the words the consumer would have seen.
 			console.log(`::error title=Published set is not installable::${output.trim().split("\n").slice(-3).join(" ")}`);
 			throw new Error(`the published set does not install:\n${output.trim()}`);
 		}
 		console.log(`✅ the published set installs from an empty directory`);
+		return;
+		}
 	} finally {
 		await rm(dir, { recursive: true, force: true });
 	}
@@ -1305,17 +1339,18 @@ async function main(): Promise<void> {
 		}
 
 		// Phase 2: Publish only what's needed, in topological order, gated after every group
-		const { alreadyPublished, processed, errors } = await publishPendingPackages(
+		const { alreadyPublished, processed, publishErrors, unresolved } = await publishPendingPackages(
 			packages,
 			statuses,
 			config,
 			registry,
 		);
 
-		// Phase 3: prove the whole set installs. Only after a sweep that published something and
-		// reported no errors — a failed sweep is already red, and a five-minute install that is
-		// certain to fail adds nothing but noise to the log that has to be read.
-		if (processed > 0 && errors === 0) {
+		// Phase 3: prove the whole set installs. Skipped only after a sweep that FAILED to publish
+		// something — that run is already red, and a five-minute install certain to fail adds nothing
+		// but noise. A sweep whose only gaps were lag still runs it: the per-group gate deliberately
+		// stops short of failing on lag, so this is the check that has the last word on the end state.
+		if (processed > 0 && publishErrors === 0) {
 			await verifyInstallableClosure(packages, config);
 		}
 
@@ -1323,8 +1358,11 @@ async function main(): Promise<void> {
 		console.log("📊 Final Summary:");
 		console.log(`   ✅ Already published: ${alreadyPublished}`);
 		console.log(`   🚀 ${config.dryRun ? "Would process" : "Processed"}: ${processed}`);
-		console.log(`   ❌ Errors: ${errors}`);
-		console.log(`   📋 Total: ${alreadyPublished + processed + errors}`);
+		console.log(`   ❌ Failed to publish: ${publishErrors}`);
+		if (unresolved > 0) {
+			console.log(`   ⏳ Published but not yet readable when checked: ${unresolved}`);
+		}
+		console.log(`   📋 Total: ${alreadyPublished + processed + publishErrors}`);
 
 		// `--continue-on-error` governs whether the SWEEP stops at the first
 		// failure. It never governed whether failure is REPORTED, and reading it
@@ -1333,9 +1371,9 @@ async function main(): Promise<void> {
 		// passes the flag, so that green check was one broken credential away at
 		// all times: a release job whose whole job is publishing, reporting
 		// success having published nothing.
-		if (errors > 0) {
+		if (publishErrors > 0) {
 			throw new Error(
-				`${errors} of ${errors + processed} package(s) failed to publish` +
+				`${publishErrors} of ${publishErrors + processed} package(s) failed to publish` +
 					(config.continueOnError ? " (--continue-on-error kept the sweep going; the run still failed)" : ""),
 			);
 		}

@@ -340,3 +340,33 @@ export function describeGap(gap: ClosureGap): string {
 			: `the registry has ${gap.available?.length ?? 0} version(s), none matching`;
 	return `${gap.package} declares ${gap.dependency}@${gap.range} — ${have}`;
 }
+
+/**
+ * What a gap that survived the wait actually means.
+ *
+ * The gate asks the registry, and the registry answers from a replica that may not have caught
+ * up yet. That makes "not resolvable" ambiguous, and treating every case as a failure is how the
+ * v5.0.0 sweep ended red over 76 gaps of which none was a defect: every one named a dependency
+ * this same run had already published, some of them minutes earlier. Measured on that run,
+ * `@girs/matekbd-1.0` was readable 4m12s after its own publish returned success.
+ *
+ * The three cases are not the same failure and must not be reported as one:
+ *
+ * - `lag` — this run publishes the dependency in an earlier or the same group, so it is on its
+ *   way. The set is correct; the read is behind. Worth saying, not worth failing.
+ * - `ordering-defect` — this run publishes it LATER. The plan is wrong, and the window the plan
+ *   exists to close is open right now.
+ * - `not-in-release` — nothing in this run publishes it at all. Permanent: no amount of waiting
+ *   produces it, and every consumer gets `npm error notarget`.
+ */
+export type GapVerdict = "lag" | "ordering-defect" | "not-in-release";
+
+export function classifyGap(
+	gap: ClosureGap,
+	plannedGroupOf: Map<string, number>,
+	publishedAtGroup: number,
+): GapVerdict {
+	const plannedAt = plannedGroupOf.get(gap.dependency);
+	if (plannedAt === undefined) return "not-in-release";
+	return plannedAt > publishedAtGroup ? "ordering-defect" : "lag";
+}
